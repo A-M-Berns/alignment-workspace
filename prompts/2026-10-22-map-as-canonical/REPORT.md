@@ -461,6 +461,159 @@ ALL GREEN (80 project(s))
   … 80 PASS lines, one per project runner, elided (the run on the fifth commit's tree; the sixth commit changes documents only and its run is green too)
 ```
 
+## Second follow-up of 2026-10-23
+
+Prompt: `prompts/2026-10-22-map-as-canonical/PROMPT-followup-2.md`, verbatim. Rulings G1–G4 landed as one dated `DECISIONS.md` entry (anchor `2026-10-23--map-second-follow-up-digest-one-shape-frames-hold-bearing-unconfirmed-want-weighs-nothing`), the first commit of this follow-up, with the second maintainer's confirmation appended to the round's M1–M8 queue entry; the queued entry *How a docket is represented* is closed by G2. Auto-merge stays off. Every commit was preceded by `python3 -m checkers.graph --root .`, `python3 tests/run.py` and, at the commits that touch the checker, `python3 -m unittest discover -s checkers/tests -t .` in a detached checkout of the commit under test with no `graph/derived.json` on disk and no `derived` branch (the state CI is in). Commits above `4dc8811`: `c81f0ca4` (the rulings), `92b973c0` (G1), `b183ad66` (G2), `1d0c2e25` (G3), `84872ad5` (G4), `eaee0762` (Part 4) and the report commit.
+
+### 1. Verification
+
+Before (the branch at `4dc8811`, the CI run of that head): the checker `OK 2415 nodes, 2411 events, 3389 ranked units`; CI red on one test, `test_table_filed_on_the_fixture_passes`, `KeyError: 'statuses_flipped'` (`Ran 142 tests … FAILED (errors=1)`); no other test failed there.
+
+After (the last commit):
+
+- the checker: `OK 2408 nodes, 2411 events, 1886 ranked units; research first: the decision term (printed, not applied) favours vet hull-condition-total-trust (ranked unit 16), D 0.00016`, one WARN (the summary of unpointed decision anchors, `244 of 295`), and `DIGEST compared with graph/derived.json on disk (the derivation versions.json at HEAD records): 0 status(es) flipped, 0 root status(es) flipped, 0 level(s) moved, 0 event(s) counted since, 0 revision(s), 0 want(s) filed since, 0 proposal(s) awaiting`;
+- `tests/run.py`: `ALL GREEN (80 project(s))` (the gates' lines in §9);
+- the unit tests the way CI runs them, in the CI-shaped checkout: ``Ran 146 tests in 108.321s`, `OK``.
+
+Node count 2415 → 2408 (the seven docket files). Ranked units 3389 → 1886: the 177 formal results and 120 items that were goals of the ranking as shared-claim roots are held now, so the units that read them for their own entropy are gone; the units on the claims that remain roots are unchanged in kind.
+
+Root counts per frame before (`4dc8811`) and after, with what each frame now holds; the 32 other frames have the roots they had and hold nothing. The top frame holds nothing.
+
+| frame | roots before | roots after | held |
+|---|---|---|---|
+| `authorship-and-transparency` | 31 | 11 | 20 |
+| `deference-and-trust` | 29 | 28 | 38 |
+| `deference-finite-results` | 31 | 0 | 31 |
+| `enabling-work` | 8 | 7 | 15 |
+| `integrity-and-record` | 17 | 0 | 17 |
+| `legitimacy` | 72 | 11 | 82 |
+| `normative-inductor` | 18 | 1 | 17 |
+| `normativity` | 9 | 8 | 36 |
+| `openness-and-non-capture` | 4 | 0 | 4 |
+| `operative-force` | 29 | 1 | 28 |
+| `public-corrigibility-line` | 65 | 12 | 53 |
+| `seed-theory` | 10 | 0 | 16 |
+
+Held nodes in all: 357, in 12 frames. Frames whose `roots` became empty: `deference-finite-results`, `integrity-and-record`, `openness-and-non-capture`, `seed-theory`; each is flagged *spelled; nothing yet a goal (N held)* and is no spell-out candidate (spell-out candidates 13 → 13).
+
+### 2. Part 1 — the digest has one shape (G1)
+
+`digest()` returns the same eight keys whatever `previous_derivation` found: with nothing to compare with, `compared_with` is null, the four lists are empty, `events_new` is 0, and `proposals_awaiting` lists the proposals awaiting approval as before (see §7, deviations). `digest_line` prints `DIGEST no previous derivation to compare with …` when `compared_with` is null, as before. `DIGEST_KEYS` names the shape and a unit test (`test_digest_has_one_shape_without_a_previous_derivation`) pins it on a fresh tree and after a second run.
+
+The audit of every test under `checkers/tests/` that reads `D["digest"]`:
+
+| test | how it gets its previous derivation |
+|---|---|
+| `test_revise_and_draft` | three plain runs on its own temporary tree; the second and third compare with the first's `derived.json`, written by the test |
+| `test_digest_reports_node_and_root_flips` | the same pattern, twice |
+| `test_digest_has_one_shape_without_a_previous_derivation` (new) | asserts the keys with no previous derivation, then runs again and asserts the same keys with one |
+| `test_table_filed_on_the_fixture_passes` | the only one that read a file a prior run left behind (the `graph/derived.json` copied from the working tree, present locally, absent in CI); it now runs the plain run once on its unmodified copy before the edit, and asserts `compared_with` names that file |
+
+`Fixtures.copy_fixture` now drops the two uncommitted generated files from every copy (`g.UNCOMMITTED`), so no fixture test can depend on a `derived.json` or `index.json` the working tree happened to hold. No test was loosened to tolerate a missing key. The CI run at `4dc8811` failed on no other test.
+
+### 3. Part 2 — what a frame holds (G2)
+
+The field, the rules and the renders are in §6. The three moves, mechanically:
+
+- **Dockets dissolved.** The seven `docket-*` nodes (every node whose id begins `docket-`): each removed from its frame's `roots` and `children`, its children appended to the frame's `holds` in the docket's order, its file deleted (not superseded). 120 items held: `docket-deference` (38 under `deference-and-trust`), `docket-legitimacy` (22 under `legitimacy`), `docket-normative-inductor` (1 under `normative-inductor`), `docket-normativity` (36 under `normativity`), `docket-operative-force` (1 under `operative-force`), `docket-seed` (7 under `seed-theory`), `docket-workspace` (15 under `enabling-work`).
+- **Round-filed formal results.** A shared-claim root of a frame at `4dc8811` that is a formal result (an `and` with a `record` child) and was a root of no frame at `4eb420f8`, the commit the round began from, moved from `roots` to `holds`. That is how the round's and the follow-up's filings were told from roots that predate the round: a formal result that was already a root somewhere on 2026-10-21 (the 72 landed results under `updateless-dt-programme`, `level-super-turing`, `legitimacy-weighted-deference` and the other pre-existing programmes, and the two claims F5 merged results into) stays a root. 177 results held, in 8 frames.
+- **F4's line-level roots.** The 60 rows of the follow-up's moves table whose destination is `legitimacy` with the reason "bears on none of the three programmes" (the three sub-frames moved whole and the three wants are roots still: a frame and a want may not be held). Held by `legitimacy`.
+
+What the rule left as roots: the item nodes that are shared-claim roots of a frame directly rather than through a docket (`item-75`, `item-91`, `item-108`, `item-109`, `item-110`; `item-75` is among the 60 F4 rows and is held), the two enabling-work claims the round filed (`enabling-map-as-canonical`, `enabling-program-site`), and every root that predates the round (§8).
+
+A gestalt on a held node: 40 AI gestalt events (`@smithy-verity`) target nodes that are now held and roots nowhere (the F4 line-level claims). Rule 5 ("a gestalt targets a goal") would have refused the tree; a held node ranks under `--scope` naming it, where its gestalt is used, so rule 5 now admits a node a frame holds as a gestalt target. No event was written, withdrawn or moved.
+
+### 4. Part 3 — bearing (G3) and the want weight (G4)
+
+G3: the render line reads *Registered results bearing on this item:*; the index keys are `items[].bearing` and `formal_result.bears_on` (the second renamed with the first, since a result that bears on an item does not answer it); schema `graph-index/3` covers G2's `membership` and `holds` too. `item_status` is read from the item node and nothing in the checker or the render moves it (the fixture test asserts every item's status is the file's word).
+
+G4: `priority_value` returns 0 for a want with `filed_from: quote` and no `priority` event by its owner, the word's weight once the owner writes one, and the Default `medium` for a want filed in a session; `none` still disowns. The view says *priority unset (owner has not confirmed: weight 0)*, the pooled list's note says the want weighs nothing until the word, and the per-owner line says so too. The self-test gained three facts: a quoted want with no word weighs `0/1`, with `low` `1/4`, a want its owner filed without a word `1/2`. The shipped graph: 13 wants are `filed_from: quote` without a word; their weight went from 1/2 to 0.
+
+### 5. Part 4 — the recorded hash of `derived.json`
+
+Cause, as far as this machine can tell. Two plain derivations of the same tree under Python 3.12.13 and Python 3.13.13 (the `uv` builds, this Mac) are byte-identical, and so are two under `PYTHONHASHSEED=1` and `=777`: the interpreter's version and the hash seed are not the cause. The derivation reads the disk in one place beyond the tree, the private-source flag (`source_private_only`, a path's existence), and the one node it applies to names a tracked path, so a checkout of the same commit cannot differ there. The derivation holds about 30,600 floats (per unit: bits, weighted bits, rate, the decision term, the per-goal shares; per goal: weight, entropy, promise; per node: weighted informs), each computed through the platform's math library (`log2`, `exp`, `pow`) and serialized at full `repr` precision; two math libraries that differ in the last bit of `log2` give two hashes of one derivation while every rendered number (three decimals) agrees, which is the symptom reported (the renders unchanged, the hash moved). That is the remaining variable, and it is the one the prompt's remedy addresses.
+
+Fix: `derivation_hash` is taken over `canonical(D)`: keys as strings and sorted, Fractions exact as `p/q`, sets sorted, dates as ISO strings, every float at six significant digits (`HASH_FLOAT_DIGITS`), a signed zero as zero. The hash is a function of the derivation at that precision. A unit test perturbs every unit's bits, weighted bits and rate by one ulp and expects the same hash, and expects a different one for a changed status or a changed number. Not verified on the other machine: this follow-up had no second platform; if a plain run there still dirties `versions.json`, the diff of `derived.json` between the two machines names the field, and §10 reserves it.
+
+### 6. Protocol and checker changes, with the design-log lines
+
+| change | where | rule | design-log line |
+|---|---|---|---|
+| the digest has one shape (`DIGEST_KEYS`); `digest_line` reads `compared_with` | `checkers/graph.py` | — (a derived file's shape) | none: a derived-file shape, no protocol change; G1's text in `DECISIONS.md` |
+| a frame's `holds`: attachment by membership; a held id must resolve; no node both held and a root of one frame, none held twice, no frame, valuation node or want held; a retired frame holds nothing | `checkers/graph.py` (lint), `PROTOCOL.md` §2 *What a frame holds*, §9 rules 1 and 2 | 1, 2 | ruling G2 |
+| held nodes outside status, value, stake, goal set, margin, load and units; `--scope` naming a held node ranks it (kind `held`); a frame with `roots: []` and a non-empty `holds` is spelled, flagged *spelled; nothing yet a goal (N held)*, no spell-out candidate | `checkers/graph.py` (`goal_info`, `ranking`, `derive`), `PROTOCOL.md` §2, §8 | — | ruling G2 |
+| `derived.json`: `held` per frame, `held_by` and the flag *held by* on the node, `frame.holds`, `subframe.holds`; the index: `in_frames[].membership`, `frame.holds`, schema `graph-index/3`; the view: *Held* under each frame, counts on the frame lines; tasks: the count on the goal tree | `checkers/graph.py`, `graph/MAP-AS-CANONICAL.md` §6, §6.1 | — | ruling G2 |
+| a gestalt may target a node a frame holds | `checkers/graph.py`, `PROTOCOL.md` §9 rule 5 | 5 | ruling G2 (the first line) |
+| the dockets retired: §5's item sentence, §8 *Item node, docket (retired)*, `MAP-AS-CANONICAL.md` §7 | `PROTOCOL.md`, `graph/MAP-AS-CANONICAL.md` | — | ruling G2, the three moves |
+| *Registered results bearing on this item*; `items[].bearing`, `formal_result.bears_on` | `checkers/priorities_render.py`, `checkers/graph.py`, `PROTOCOL.md` §2, `MAP-AS-CANONICAL.md` §6.1 | — | ruling G3 |
+| an unconfirmed quoted want weighs 0 | `checkers/graph.py` (`priority_value`, the notes and lines), `PROTOCOL.md` §2, §6, §8, `graph/README.md` | — (a Default) | ruling G4 |
+| the derivation hash over `canonical(D)` | `checkers/graph.py` | — | Part 4 |
+
+Self-test null inputs added (rule): a held id that resolves to nothing (1); a node both held and a root of one frame (2); a want in `holds` (2). Self-test facts added: the three want weights of G4. Unit tests added: `test_digest_has_one_shape_without_a_previous_derivation`, `test_held_nodes_are_attached_and_no_goals`, `test_unconfirmed_want_weighs_nothing`, `test_derivation_hash_is_canonical`; `test_index_schema_two_on_the_fixture` became `test_index_schema_three_on_the_fixture`; `test_hoist_rule_on_the_fixture` counts a `spell-out` line among the lines that rest on no AI number (an unspelled frame is read at a stand-in 1/2), because with the held results out of the goal set the spell-out of `normative-record` rose into the printed forty; `test_personal_weights` gives its quoted want the owner's word first (G4).
+
+Documents touched beyond the protocol: `graph/README.md` (the frame paragraph, the want line), `AGENTS.md` (*Goals are frames and wants*), `graph/MAP-AS-CANONICAL.md` §1, §6, §6.1, §7, the Notes of the twelve frames whose roots moved (what each holds now and where the dockets went), `graph/DESIGN-LOG.md` (five new lines).
+
+### 7. Deviations from this prompt, with reasons
+
+- **`proposals_awaiting` is not emptied** when there is nothing to compare with. The ruling says the lists are empty in that case; this list is not a comparison (it names the proposals awaiting approval in the current derivation, and `tasks.md` prints the same list), so emptying it would make the digest say there are none when there are. The key is always present; the comparison lists and counts are empty and zero as ruled. Reversible in one line.
+- **`formal_result.answers` renamed to `bears_on`** beside the ruled `answered_by` → `bearing`: the ruling's principle (a result bears on an item, it does not answer it) covers both ends of the join; leaving one as *answers* would have left the schema saying what the ruling retracts.
+- **Rule 5 admits a held node as a gestalt target.** Not in the prompt; forced by the tree: 40 AI gestalts sit on claims that the third move holds and no frame roots. The alternatives were to write or withdraw events (forbidden) or to leave those claims as roots (against G2).
+- **The schema is `graph-index/3` from the G2 commit**, not the G3 commit: G2 changes `in_frames` and the frame records, and a schema number names a shape; the G3 commit renames the keys inside the same number. §6.1 describes schema 3 as both.
+- **The unit tests in the CI-shaped checkout** were run at the G1 commit, the G2 commit and the last commit, not before every commit: the checkout is a detached worktree of the commit under test, and the two commits between change documents and one function each; `tests/run.py` (which runs the same suite on the working tree, with `derived.json` present) ran before every commit.
+
+### 8. Corrections to this prompt
+
+- The prompt's "five things to fix" says CI raises `KeyError` in `test_table_filed_on_the_fixture_passes` "and possibly others": the run at `4dc8811` failed on that one test only (`Ran 142 tests`, `FAILED (errors=1)`).
+- "A docket is an `or` with `either-suffices`": correct; seven dockets, not five (the follow-up added `docket-operative-force` and `docket-normative-inductor`).
+- The want-weight function is `priority_value` (the prompt says "the want-weight function"); `PRIORITY_WORDS` is a dict constant and keeps its values, the Default moved in the function.
+- "`in_frames` gains a `membership: holds` entry beside `role`": done so that every entry carries `membership` (`root` or `holds`); a held entry's `role` is null.
+- The prompt names `previous_derivation`'s "callers": there is one, `committed_files`; the fix is in `digest` itself, which every caller gets.
+- Part 4's premise, "varies across interpreters": not reproduced on this machine across 3.12 and 3.13 (§5); the hash was still made canonical as the part asks.
+
+### 9. Test output
+
+```
+WORKFLOW SCOPE: clean over 4 workflow(s); 3 enumerated write-scope job(s)
+DEAD POINTERS: clean over 58 live document(s) — 940 rooted path(s) resolve, 8 of them into declared trees and each saying so; 106 unrooted and 222 glob(s) not this gate's business; 14 historical span(s) and 5 ledger citation(s) exempt
+UNTRACKED POINTERS: clean — 333 round-record path(s) and 998 resolving citation(s) are in the repository, not merely on this disk
+WORKSPACE STATE: valid — 6 projects, 178 modern claims, 1 foundations, 180 foundation claims, 126 rounds, 52 terms, 137 priorities, 10 interface objects
+WIKI REFS: clean over 34 page(s); 304 reference(s) resolve
+PRIORITIES RENDER: the committed file equals the render (137 items)
+OK 2408 nodes, 2411 events, 1886 ranked units; research first: the decision term (printed, not applied) favours vet hull-condition-total-trust (ranked unit 16), D 0.00016; nothing written (--dry-run)
+Ran 146 tests in 109.309s
+OK
+GATE COVERAGE: 11 gate scripts, all invoked (5 self-test only — no local form)
+LEAN SORRY GATE: clean over 108 files
+LEAN AXIOM DISCIPLINE: every file carries `#print axioms`
+PROJECTS:
+  … 80 PASS lines, one per project runner, elided (the run on the Part 4 commit's tree; the report commit changes documents only and its run is green too)
+LEAN BUILD SKIPPED: set WORKSPACE_LEAN=1 to run `lake build`
+ALL GREEN (80 project(s))
+```
+
+The unit tests in the CI-shaped checkout (the last commit):
+
+```
+$ python3 -m unittest discover -s checkers/tests -t .   # in a detached checkout of eaee0762; no graph/derived.json, no branch derived
+Ran 146 tests in 108.321s
+OK
+```
+
+### 10. What this follow-up did not do, and the notes for the maintainers
+
+Not done:
+
+- The item nodes that are shared-claim roots directly (`item-91` under `deference-and-trust`; `item-108`, `item-109`, `item-110` under `authorship-and-transparency`) and the two enabling-work claims (`enabling-map-as-canonical`, `enabling-program-site`) stay roots: the ruling's three moves do not name them. They are goals of the ranking as the dockets were. *Turns on:* whether a single work order filed under the goal it serves is a route of that goal (a child) or a thing the frame holds — the same question G2 answered for the dockets, asked of five nodes.
+- The 4 frames with `roots: []` and held nodes have no goal; the ranking values each programme as unspelled did (no option value). Naming their goals is a maintainer's spelling-out.
+- Part 4 is not verified on a second platform.
+
+Notes for the maintainers:
+
+- **The branch's history holds seven versions of the derived files** (the prompt says five; `git log -- graph/derived.json graph/index.json` lists seven commits that changed them, from `0a73a063` to `a0ae3d07`, before `5b1e2bba` removed them): each a blob of 11–15 MB for `graph/derived.json` and 3–4 MB for `graph/index.json`. A squash merge of the pull request keeps none (the squashed tree has neither file), where the repository's convention is a merge commit, which keeps all seven in the history forever (pack loose objects 41.51 MiB, 10 packs 77.83 MiB at the Part 4 commit). *Turns on:* whether the maintainers trade the merge-commit convention for a small history once, or keep the convention and the copies, or rewrite the branch before merging (a force-push to the pull request, which nobody but the maintainers should do).
+- **`stance-and-level` is a plan root only because the protocol makes every frame one.** The cruxes the second maintainer filed (the computability levels as three sub-frames and nine shared claims, the updateful-versus-updateless questions among them) are roots of a frame that is a plan root of `the-program`; a frame node is a root only as a plan (rule 2), so the group of cruxes enters the plan decision as a programme whose steps are the level frames, and is valued as one. The second maintainer may prefer his cruxes back as `shared-claim` roots of `the-program`, grouped by a field rather than a frame. Not changed here. *Turns on:* whether the frame tree is the only grouping the map offers (then a group of cruxes is a frame and a plan) or a field on a root may group roots without making the group a goal — a protocol choice the second maintainer's own filing should drive.
+
+Reserved additions to `DECISIONS.md`, *Awaiting the author*: none new; the M1–M8 entry now carries G1–G4's confirmation.
+
 ## Provenance
 
 Generator: Claude Fable 5.1 (Anthropic), executing the maintainer's prompt; review status `ci-only`. The scripts that produced the mechanical parts (the signature parser, the item transcription, the anchor writer, the survey counts) ran from the session's scratch directory and are not committed; `graph/SURVEY.md`'s appendix gives the one-liners that reproduce every count. Model attribution trailer on every commit.
