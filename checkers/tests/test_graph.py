@@ -935,6 +935,30 @@ class Synthetic(Base):
         self.assertEqual(tuple(sorted(D["digest"])), tuple(sorted(g.DIGEST_KEYS)))
         self.assertTrue(D["digest"]["compared_with"].startswith("graph/derived.json on disk"))
 
+    def test_derivation_hash_is_canonical(self):
+        # Part 4 of the second follow-up (2026-10-23): the hash versions.json records reads floats at six significant digits,
+        # so a last-bit difference between math libraries leaves it alone, while a changed status or a changed number moves it
+        self.tree()
+        D = self.derived()
+        V = json.loads((self.root / "graph" / "versions.json").read_text())
+        self.assertEqual(V["generated"]["derived.json"], g.derivation_hash(D))
+        ulp = json.loads(json.dumps(D))
+        touched = 0
+        for u in ulp["units"]:
+            for k in ("bits", "wbits", "rate"):
+                if isinstance(u.get(k), float) and u[k]:
+                    u[k] = math.nextafter(u[k], math.inf)
+                    touched += 1
+        self.assertGreater(touched, 0)
+        self.assertEqual(g.derivation_hash(ulp), g.derivation_hash(D))
+        moved = json.loads(json.dumps(D))
+        moved["nodes"]["shared-leaf"]["status"] = "conceded"
+        self.assertNotEqual(g.derivation_hash(moved), g.derivation_hash(D))
+        bigger = json.loads(json.dumps(D))
+        bigger["units"][0]["bits"] = (bigger["units"][0]["bits"] or 0.0) + 0.5
+        self.assertNotEqual(g.derivation_hash(bigger), g.derivation_hash(D))
+        self.assertEqual(g.canonical({"a": 1e-9 + 1e-25, "b": -0.0, "c": g.Q(1, 3), "d": {"y", "x"}}), {"a": 1e-9, "b": 0.0, "c": "1/3", "d": ["x", "y"]})
+
     def test_digest_reports_node_and_root_flips(self):
         self.tree(p_h=["0.2", "0.4"], p_reason=False)
         self.derived()

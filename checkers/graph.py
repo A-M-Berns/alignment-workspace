@@ -4558,9 +4558,41 @@ def work_text(w):
             "decision": f"decision: {w['ref']}", "foundation": f"foundation: {w['ref']}"}[w["kind"]]
 
 
+HASH_FLOAT_DIGITS = 6      # the derivation hash reads every float at this many significant digits (Part 4 of the second follow-up, 2026-10-23)
+
+
+def canonical(o):
+    """The canonical form the derivation hash is taken over: keys as strings (sorted on dump), Fractions exact as "p/q", sets
+    sorted, dates as ISO strings, and every float at HASH_FLOAT_DIGITS significant digits with a signed zero read as zero.
+    The floats in a derivation (bits, weighted bits, rates, weights, the decision term) come through the platform's math
+    library (log2, exp, pow), whose last bits differ between libraries while nothing a reader sees changes; the hash
+    versions.json records is a function of the derivation at this precision, not of the machine that ran it."""
+    if isinstance(o, bool):
+        return o
+    if isinstance(o, float):
+        if math.isinf(o):
+            return "inf"
+        if math.isnan(o):
+            return "nan"
+        v = float(f"{o:.{HASH_FLOAT_DIGITS}g}")
+        return 0.0 if v == 0 else v
+    if isinstance(o, Q):
+        return f"{o.numerator}/{o.denominator}"
+    if isinstance(o, dict):
+        return {str(k): canonical(v) for k, v in o.items()}
+    if isinstance(o, (set, frozenset)):
+        return sorted(canonical(v) for v in o)
+    if isinstance(o, (list, tuple)):
+        return [canonical(v) for v in o]
+    if isinstance(o, _dt.date):
+        return o.isoformat()
+    return o
+
+
 def derivation_hash(D):
-    """The hash versions.json records for derived.json: the derivation without its digest, its own hash and the day's audit draw."""
-    return sha(dumps({k: v for k, v in D.items() if k not in DERIVATION_HASH_SKIPS}))
+    """The hash versions.json records for derived.json: the derivation without its digest, its own hash and the day's audit
+    draw, over its canonical form (`canonical`: sorted keys, exact Fractions, floats at HASH_FLOAT_DIGITS significant digits)."""
+    return sha(json.dumps(canonical({k: v for k, v in D.items() if k not in DERIVATION_HASH_SKIPS}), indent=1, sort_keys=True, allow_nan=False))
 
 
 def index_hash(idx):
