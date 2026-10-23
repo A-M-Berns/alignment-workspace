@@ -826,6 +826,11 @@ def lint(t):
                 raise Refuse(1, "graph/frame.yaml", f"{rid!r} is a root of several frames with different roles ({', '.join(str(r.get('role')) for r in rs)})")
     entries = all_roots(t)
     for x in frame_nodes:
+        if nodes[x].get("superseded_by"):
+            # a retired frame (ruling F4, 2026-10-23): its roots moved to the frame that supersedes it; the file stays as an alias
+            if nodes[x]["children"] or nodes[x]["roots"]:
+                raise Refuse(2, nodes[x]["_path"], "a retired frame (superseded_by) holds no roots and no children: they moved to the frame that supersedes it")
+            continue
         if x not in seen:
             raise Refuse(2, nodes[x]["_path"], "a frame node is a plan root of the top frame or of another frame")
         kids, rids = set(nodes[x]["children"]), {r["id"] for r in nodes[x]["roots"]}
@@ -856,6 +861,12 @@ def lint(t):
                 raise Refuse(1, n["_path"], f"child {c!r} resolves to no node")
         for k in refs:
             v = n.get(k)
+            if k == "hypotheses" and v is not None:
+                # ruling F1 (2026-10-23): a record whose hypotheses nobody has filed by reading says `unread`; the word and a list never mix
+                if v == "unread":
+                    continue
+                if not isinstance(v, list) or "unread" in v:
+                    raise Refuse(2, n["_path"], "a record's hypotheses are a list of hypothesis-leaf ids or the word unread, never both")
             for x in (v if isinstance(v, list) else [v] if v not in (None, "none") else []):
                 if x not in nodes:
                     raise Refuse(1, n["_path"], f"{k} {x!r} resolves to no node")
@@ -1416,7 +1427,7 @@ class Ctx:
         self.cls = classes(t)
         # every root of every frame, a sub-frame's steps before the sub-frame itself; `frame` names the frame
         self.roots = {r["id"]: r for r in all_roots(t)}
-        self.frames = [x for x, n in t.nodes.items() if n.get("kind") == "frame"]
+        self.frames = [x for x, n in t.nodes.items() if n.get("kind") == "frame" and not n.get("superseded_by")]
         self.rates = self.po.get("rate_table") or {}
         self.floor = sorted((int(k), q(v)) for k, v in (self.po.get("floor_table") or {}).items())
         self.est_level = int(self.fr.get("establishment_level", 8))
@@ -3133,7 +3144,7 @@ def ranking(C, D, scope, lam, window_dp, frontier, as_handle=None):
                                           "reconciles the derived number with the gestalt"], read_error, prior=prior_mix,
                 extra={"signals": sig, "odds_ratio": ratio})
     for x, n in t.nodes.items():
-        if n.get("kind") == "frame" and not n["children"] and n.get("opened") is not False and (not scope or x in in_scope or x == sbase):
+        if n.get("kind") == "frame" and not n["children"] and n.get("opened") is not False and not n.get("superseded_by") and (not scope or x in in_scope or x == sbase):
             # an unspelled frame: a read of an agent's draft, valued as a binary stand-in at 1/2 with a plan's stake
             stake_f = (max(utility(C, c) for c in C.cls) - outside_u) / 2 if C.cls else Q(1, 2)
             w = float(stake_f) * (0.5 ** e_exp if e_exp else 1.0)
@@ -3173,7 +3184,7 @@ def ranking(C, D, scope, lam, window_dp, frontier, as_handle=None):
     C.GI = GI
     D["goal_order"] = goal_order(C, GI)
     cands = [(GI[g]["w"] if g in GI else 0.0, g) for g, n in t.nodes.items()
-             if (n.get("kind") == "frame" and not n["children"] and n.get("opened") is not False) or (n.get("want") is True and not n["children"])]
+             if (n.get("kind") == "frame" and not n["children"] and n.get("opened") is not False and not n.get("superseded_by")) or (n.get("want") is True and not n["children"])]
     D["spell_out"] = {"count": len(cands), "top": [g for _, g in sorted(cands, key=lambda c: (-c[0], c[1]))[:3]]}
     D["agent_top"] = [f"do {u['target']}" for u in units if u.get("section") == "agent"][:5]
     rank = 0
@@ -3383,6 +3394,8 @@ def unit_signals(C, D, u, GI):
         out.append("owner has not confirmed")
     if n.get("leaf_kind") == "record" and (N.get("V") or {}).get("valid", 0) >= 4:
         out.append("kernel-checked record")
+    if "hypotheses unread" in (N.get("flags") or []):
+        out.append("hypotheses unread")
     for w in n.get("work") or []:
         out.append({"priorities": f"work order #{w['ref']}", "open": "open statement", "round": "round", "private": "private source",
                     "decision": "decision", "foundation": "foundation"}[w["kind"]])
@@ -3684,13 +3697,16 @@ def derive(t, scope=None, lam=None, window_dp=False, frontier=0, today=None, wit
             C.flags[x].add("provisional")
         if n.get("superseded_by"):
             C.flags[x].add(f"superseded by {n['superseded_by']}")      # it stays wherever a parent still lists it
+        if (n.get("leaf_kind") == "record" and n.get("hypotheses") == "unread") or (n.get("kind") == "and" and any(
+                t.nodes[c].get("leaf_kind") == "record" and t.nodes[c].get("hypotheses") == "unread" for c in n["children"])):
+            C.flags[x].add("hypotheses unread")        # ruling F1 (2026-10-23): the record's Source carries the signature; a reader files the leaves
         if n.get("refinement_of"):
             C.flags[x].add(f"refinement of {n['refinement_of']}")
         if "improves" in n:
             C.flags[x].add(f"improvement claim on {n['improves']} (reality: {n['reality']})")
         if n.get("kind") == "frame" and n.get("opened") is False:
             C.flags[x].add("not opened; see Notes")
-        elif n.get("kind") == "frame" and not n["children"]:
+        elif n.get("kind") == "frame" and not n["children"] and not n.get("superseded_by"):
             C.flags[x].add("unspelled")
         if n.get("kind") == "frame" and n.get("filed_from") == "wiki":
             # a frame an agent drafted from a wiki page (ruling M3): the owner confirms by removing filed_from from the file
@@ -4540,6 +4556,21 @@ def structure_index(t, today):
     for r in all_roots(t):
         for f in r.get("frames") or [r["frame"]]:
             in_frames[r["id"]].append({"frame": f or "top", "role": r.get("role")})
+    # formal results (ruling F2, 2026-10-23): the record child, its hypotheses (a list or "unread"), the registry id the record
+    # carries, and the items the result answers through its priorities pointers; `claims` maps a registry id to its node
+    formal, answered_by, claims = {}, defaultdict(list), {}
+    for x, n in sorted(t.nodes.items()):
+        recs = [c for c in n["children"] if t.nodes.get(c, {}).get("leaf_kind") == "record"]
+        if n.get("kind") == "and" and recs:
+            rec = t.nodes[recs[0]]
+            answers = sorted({str(w.get("ref")) for w in n.get("work") or [] if w.get("kind") == "priorities"}, key=lambda s: (len(s), s))
+            rid = rec.get("registry_id") or (x if t.registry and x in t.registry else None)
+            formal[x] = {"record": recs[0], "hypotheses": rec.get("hypotheses") if rec.get("hypotheses") is not None else [],
+                         "registry_id": rid, "answers": answers}
+            for a in answers:
+                answered_by[a].append(x)
+            if rid:
+                claims.setdefault(rid, x)
     for x, n in sorted(t.nodes.items()):
         rec = {"kind": n.get("kind"), "leaf_kind": n.get("leaf_kind"), "author": n.get("author"), "size": n.get("size"), "version": n.get("version"),
                "statement": n["_statement"], "source": n["_source"], "notes": n.get("_notes") or "", "narrative": narratives_of(n),
@@ -4552,6 +4583,11 @@ def structure_index(t, today):
                             "opened": n.get("opened") is not False, "filed_from": n.get("filed_from")}
         if n.get("_item"):
             rec["item_body"] = n["_item"]
+        if n.get("leaf_kind") == "record":
+            rec["hypotheses"] = n.get("hypotheses") if n.get("hypotheses") is not None else []
+            rec["registry_id"] = n.get("registry_id")
+        if x in formal:
+            rec["formal_result"] = formal[x]
         nodes[x] = rec
     rounds_pointed, decisions_pointed, narratives = defaultdict(list), defaultdict(list), defaultdict(list)
     for x, n in t.nodes.items():
@@ -4567,7 +4603,7 @@ def structure_index(t, today):
         narratives[page].append("top")
     handles = t.policy.get("handles") or {}
     events = [e for e in t.events if is_human(t, e.get("by"))]
-    return {"schema": "graph-index/1", "generated": str(today), "generated_hash": "",
+    return {"schema": "graph-index/2", "generated": str(today), "generated_hash": "",
             "frame": {"question": fr.get("question"), "owners": owners_of(fr), "narrative": narratives_of(fr),
                       "classes": [c.get("id") for c in fr.get("classes") or [] if isinstance(c, dict)], "valuations": valuations(t),
                       "outside_option": fr.get("outside_option"), "undescribed_failure": fr.get("undescribed_failure"),
@@ -4575,7 +4611,9 @@ def structure_index(t, today):
             "handles": {h: {k: v for k, v in (spec or {}).items()} for h, spec in handles.items()},
             "maintainers": maintainers(t),
             "nodes": nodes,
-            "items": {str(n["item"]): x for x, n in sorted(t.nodes.items()) if "item" in n},
+            "items": {str(n["item"]): {"node": x, "answered_by": sorted(answered_by.get(str(n["item"]), []))}
+                      for x, n in sorted(t.nodes.items()) if "item" in n},
+            "claims": claims,
             "decisions": [{"anchor": a, "date": d["date"], "title": d["title"], "status": d["status"], "touches": d["touches"],
                            "pointed_by": sorted(decisions_pointed.get(a, []))} for a, d in sorted(t.decisions.items(), key=lambda kv: kv[1]["line"])],
             "rounds": [{"id": r["id"], "path": r.get("path"), "pointed_by": sorted(rounds_pointed.get(r["id"], []))}
@@ -5008,6 +5046,9 @@ NULL_INPUTS = [
     ("a rate row below zero minutes", 10, {"edits": [("policy.yaml", "reread:   {S: 4", "reread:   {S: -1")]}),
     # owners, frames, wants, priorities, tasks
     ("a frame owned by an AI handle", 2, {"programme": True, "edits": [("nodes/prog.md", 'owner: "@h1"', 'owner: "@ai"')]}),
+    # 2026-10-23: a record's hypotheses are a list or the word unread, never both; a retired frame holds nothing
+    ("a record whose hypotheses mix ids with unread", 2, {"edits": [("nodes/alt-2.md", "leaf_kind: step\n", "leaf_kind: record\nstatement_of_record: x\nhypotheses: [shared-leaf, unread]\n")]}),
+    ("a retired frame still holding its roots", 2, {"programme": True, "edits": [("nodes/prog.md", 'owner: "@h1"', 'owner: "@h1"\nsuperseded_by: plan-a')]}),
     ("a frame with opened: false and a plan root", 2, {"programme": True, "edits": [("nodes/prog.md", "kind: frame\n", "kind: frame\nopened: false\n")]}),
     ("a frame with roots: [] and non-empty children", 2, {"programme": True, "edits": [
         ("nodes/prog.md", "roots: \n  - {id: step-1, role: plan, preset: worst-case, success_class: utopia}\n  - {id: step-2, role: plan, preset: worst-case, success_class: utopia}\n  - {id: sc-1, role: shared-claim, preset: worst-case}", "roots: []")]}),

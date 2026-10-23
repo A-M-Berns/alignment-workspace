@@ -1,8 +1,8 @@
 ---
 id: li.assessment.budgeter-value
 kind: and
-children: [li.assessment.budgeter-value.record, li.assessment.budgeter-value.bridge, li.assessment.budgeter-value.complete, li.assessment.budgeter-value.setting, li.assessment.budgeter-value.h1, li.assessment.budgeter-value.h2, li.assessment.budgeter-value.h3, li.assessment.budgeter-value.h4, li.assessment.budgeter-value.h5]
-work: [{kind: round, ref: projects/normativity/rounds/2026-08-16-traderized-enforcement}]
+children: [li.assessment.budgeter-value.record, li.assessment.budgeter-value.bridge, li.assessment.budgeter-value.complete]
+work: [{kind: round, ref: projects/normativity/rounds/2026-08-16-traderized-enforcement}, {kind: priorities, ref: 47}]
 size: M
 size_reason: "one registry entry, its Lean declaration and its bridge"
 version: 1
@@ -17,4 +17,4 @@ Documentation: verification: projects/normativity/notes/GENERALIZED_LI_PAPER_HAN
 The signature of `Workspace.Normativity.Contrib.AssessmentProcess.BudgeterAt_value_eq_of_safe` in lean/Workspace/Normativity/Contrib/AssessmentProcess.lean.
 
 ## Notes
-Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; the hypotheses are the signature's explicit proposition binders, tagged open unless the registry settles them, and the data binders are the setting leaf. Registry note: The budgeted trader's value equals the raw trader's while the budget is safe, over an arbitrary assessment process. Nesting is consumed here as well as in the floor: the available capital in each world's loss cap must be positive.
+Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; its hypotheses are unread (ruling F1, 2026-10-23): the record's Source carries the signature verbatim, and a reader files the hypothesis leaves. Registry note: The budgeted trader's value equals the raw trader's while the budget is safe, over an arbitrary assessment process. Nesting is consumed here as well as in the floor: the available capital in each world's loss cap must be positive. The registry's `answers_item` is the `priorities` pointer to item 47 (ruling F2).

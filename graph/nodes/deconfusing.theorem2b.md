@@ -1,8 +1,8 @@
 ---
 id: deconfusing.theorem2b
 kind: and
-children: [deconfusing.theorem2b.record, deconfusing.theorem2b.bridge, deconfusing.theorem2b.complete, deconfusing.theorem2b.setting, deconfusing.theorem2b.h1]
-work: [{kind: round, ref: prompts/2026-10-17-post-companion-formalization}]
+children: [deconfusing.theorem2b.record, deconfusing.theorem2b.bridge, deconfusing.theorem2b.complete]
+work: [{kind: round, ref: prompts/2026-10-17-post-companion-formalization}, {kind: priorities, ref: 107}]
 size: M
 size_reason: "one registry entry, its Lean declaration and its bridge"
 version: 1
@@ -17,4 +17,4 @@ Documentation: verification: prompts/2026-10-17-post-companion-formalization/REP
 The signature of `Workspace.Deference.Contrib.DeconfusingCorrigibility.Decision.theorem2b` in lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean.
 
 ## Notes
-Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; the hypotheses are the signature's explicit proposition binders, tagged open unless the registry settles them, and the data binders are the setting leaf. Registry note: Inhabited by `Witness.respects` on `Witness.decision`.
+Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; its hypotheses are unread (ruling F1, 2026-10-23): the record's Source carries the signature verbatim, and a reader files the hypothesis leaves. Registry note: Inhabited by `Witness.respects` on `Witness.decision`. The registry's `answers_item` is the `priorities` pointer to item 107 (ruling F2).

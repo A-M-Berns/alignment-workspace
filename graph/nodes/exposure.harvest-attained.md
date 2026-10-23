@@ -1,8 +1,8 @@
 ---
 id: exposure.harvest-attained
 kind: and
-children: [exposure.harvest-attained.record, exposure.harvest-attained.bridge, exposure.harvest-attained.complete, exposure.harvest-attained.setting, exposure.harvest-attained.h1, exposure.harvest-attained.h2, exposure.harvest-attained.h3]
-work: [{kind: round, ref: prompts/2026-08-11-phase-ii-promotion}]
+children: [exposure.harvest-attained.record, exposure.harvest-attained.bridge, exposure.harvest-attained.complete]
+work: [{kind: round, ref: prompts/2026-08-11-phase-ii-promotion}, {kind: priorities, ref: 23}]
 size: M
 size_reason: "one registry entry, its Lean declaration and its bridge"
 version: 1
@@ -17,4 +17,4 @@ Documentation: verification: prompts/2026-08-11-phase-ii-promotion/REPORT.md; co
 The signature of `Workspace.Deference.Contrib.ExposureGeometry.exposure_harvest_attained` in lean/Workspace/Deference/Contrib/ExposureGeometry.lean.
 
 ## Notes
-Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; the hypotheses are the signature's explicit proposition binders, tagged open unless the registry settles them, and the data binders are the setting leaf. Registry note: Sharpness: the bound is not merely an upper bound.
+Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; its hypotheses are unread (ruling F1, 2026-10-23): the record's Source carries the signature verbatim, and a reader files the hypothesis leaves. Registry note: Sharpness: the bound is not merely an upper bound. The registry's `answers_item` is the `priorities` pointer to item 23 (ruling F2).

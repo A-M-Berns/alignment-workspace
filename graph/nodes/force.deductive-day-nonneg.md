@@ -1,8 +1,8 @@
 ---
 id: force.deductive-day-nonneg
 kind: and
-children: [force.deductive-day-nonneg.record, force.deductive-day-nonneg.bridge, force.deductive-day-nonneg.complete, force.deductive-day-nonneg.setting, force.deductive-day-nonneg.h1, force.deductive-day-nonneg.h2, force.deductive-day-nonneg.h3]
-work: [{kind: round, ref: projects/normativity/rounds/2026-08-16-traderized-enforcement}]
+children: [force.deductive-day-nonneg.record, force.deductive-day-nonneg.bridge, force.deductive-day-nonneg.complete]
+work: [{kind: round, ref: projects/normativity/rounds/2026-08-16-traderized-enforcement}, {kind: priorities, ref: 41}]
 size: M
 size_reason: "one registry entry, its Lean declaration and its bridge"
 version: 1
@@ -17,4 +17,4 @@ Documentation: verification: projects/normativity/notes/GENERALIZED_LI_PAPER_HAN
 The signature of `Workspace.Normativity.Contrib.DeductiveEnforcement.enforcement_day_value_nonneg` in lean/Workspace/Normativity/Contrib/DeductiveEnforcement.lean.
 
 ## Notes
-Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; the hypotheses are the signature's explicit proposition binders, tagged open unless the registry settles them, and the data binders are the setting leaf. Registry note: Every deductively plausible world lies in the coherence polytope, so the enforcement position's day value is nonnegative there for any nonnegative intensity.
+Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; its hypotheses are unread (ruling F1, 2026-10-23): the record's Source carries the signature verbatim, and a reader files the hypothesis leaves. Registry note: Every deductively plausible world lies in the coherence polytope, so the enforcement position's day value is nonnegative there for any nonnegative intensity. The registry's `answers_item` is the `priorities` pointer to item 41 (ruling F2).

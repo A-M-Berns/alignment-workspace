@@ -1,8 +1,8 @@
 ---
 id: asklist.offprotocol-deviation-finite
 kind: and
-children: [asklist.offprotocol-deviation-finite.record, asklist.offprotocol-deviation-finite.bridge, asklist.offprotocol-deviation-finite.complete, asklist.offprotocol-deviation-finite.setting, asklist.offprotocol-deviation-finite.h1, asklist.offprotocol-deviation-finite.h2, asklist.offprotocol-deviation-finite.h3, asklist.offprotocol-deviation-finite.h4]
-work: [{kind: round, ref: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority}]
+children: [asklist.offprotocol-deviation-finite.record, asklist.offprotocol-deviation-finite.bridge, asklist.offprotocol-deviation-finite.complete]
+work: [{kind: round, ref: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority}, {kind: priorities, ref: 107}]
 size: M
 size_reason: "one registry entry, its Lean declaration and its bridge"
 version: 1
@@ -17,4 +17,4 @@ Documentation: verification: projects/deference/rounds/2026-10-01-thin-legitimac
 The signature of `Workspace.Deference.Contrib.AskList.offProtocol_deviation_finite` in lean/Workspace/Deference/Contrib/AskListDimension.lean.
 
 ## Notes
-Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; the hypotheses are the signature's explicit proposition binders, tagged open unless the registry settles them, and the data binders are the setting leaf. Registry note: `deviates3` with `GateIsLegitimacy.deviation_finite`; `asks_off_deviates3` passes from the ask-list clause to the deviation. Inhabited by the flood row's deviation (`volume_by_want_tainted`) at any `0 ≤ D < ϖ`.
+Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; its hypotheses are unread (ruling F1, 2026-10-23): the record's Source carries the signature verbatim, and a reader files the hypothesis leaves. Registry note: `deviates3` with `GateIsLegitimacy.deviation_finite`; `asks_off_deviates3` passes from the ask-list clause to the deviation. Inhabited by the flood row's deviation (`volume_by_want_tainted`) at any `0 ≤ D < ϖ`. The registry's `answers_item` is the `priorities` pointer to item 107 (ruling F2).

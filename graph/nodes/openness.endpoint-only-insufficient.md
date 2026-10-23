@@ -5,9 +5,7 @@ children: [openness.endpoint-only-insufficient.record, openness.endpoint-only-in
 size: M
 size_reason: "one registry entry, its Lean declaration and its bridge"
 version: 1
-work:
-  - {kind: round, ref: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass}
-  - {kind: decision, ref: 2026-09-25--legitimacy-internal-external-robust-openness-external}
+work: [{kind: round, ref: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass}, {kind: decision, ref: 2026-09-25--legitimacy-internal-external-robust-openness-external}, {kind: priorities, ref: 78}]
 author: "@smithy-verity"
 ---
 ## Statement
@@ -19,4 +17,4 @@ Documentation: verification: projects/normativity/legitimacy/rounds/2026-09-07-f
 The signature of `Workspace.Normativity.Contrib.OpenIntegrityEvolution.Witness.endpoint_only_insufficient` in lean/Workspace/Normativity/Contrib/OpenIntegrityEvolution.lean.
 
 ## Notes
-Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; the hypotheses are the signature's explicit proposition binders, tagged open unless the registry settles them, and the data binders are the setting leaf. Registry note: Exact counterexample: a two-transition evolution open at both endpoints whose middle state has a live concern with no adequate route; it is not a legitimate segment. This is why openness is required at every state. Renamed 2026-09-25 (the legitimacy-internal-external round): a Robust Openness necessity witness; the id names the component of external legitimacy.
+Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; its hypotheses are unread (ruling F1, 2026-10-23): the record's Source carries the signature verbatim, and a reader files the hypothesis leaves. Registry note: Exact counterexample: a two-transition evolution open at both endpoints whose middle state has a live concern with no adequate route; it is not a legitimate segment. This is why openness is required at every state. Renamed 2026-09-25 (the legitimacy-internal-external round): a Robust Openness necessity witness; the id names the component of external legitimacy. The registry's `answers_item` is the `priorities` pointer to item 78 (ruling F2).

@@ -12,7 +12,9 @@ transcribed), `difficulty` (the bold bracket of the heading, absent on an ingenu
 `heading_notes` (the heading's trailing annotations, verbatim), `project` and `dispatchable` (the
 `workspace-priority` marker's values), and a `## Item` section with the entry's body verbatim. The render is:
 the preamble; for each section, its heading, its intro and its items in `maintainer_order`, each as the heading
-line rebuilt from the fields, the marker line rebuilt from the fields, a blank line, and the body.
+line rebuilt from the fields, the marker line rebuilt from the fields, one line naming the formal results that answer the
+item (ruling F2, 2026-10-23: every formal result built from a registry entry points at the item its `answers_item` names,
+and the render inverts the pointer; absent when nothing answers the item), a blank line, and the body.
 
 This module reads node files with the checker's own parser and validates only what the render needs: every item
 node carries the fields, item ids are unique, every `section` names a section of the sections file, and no body
@@ -57,6 +59,31 @@ def item_nodes(root: pathlib.Path) -> list[dict]:
         n["_item_body"] = "\n".join(sec.get("Item", [])).strip("\n")
         nodes.append(n)
     return nodes
+
+
+def answers(root: pathlib.Path) -> dict[str, list[str]]:
+    """{item: [formal results answering it]}: every `and` with a record child and a `priorities` pointer (ruling F2). A result
+    whose record carries a registry id other than the node's id prints both, `node (registry id)`."""
+    nodes = {}
+    for p in sorted((root / "graph" / "nodes").glob("*.md")):
+        nodes[p.stem] = g.parse_node_text(p.read_text(), str(p.relative_to(root)))
+    out: dict[str, list[str]] = {}
+    for x, n in nodes.items():
+        if n.get("kind") != "and":
+            continue
+        recs = [c for c in n.get("children") or [] if nodes.get(c, {}).get("leaf_kind") == "record"]
+        if not recs:
+            continue
+        rid = nodes[recs[0]].get("registry_id")
+        label = f"{x} ({rid})" if rid and rid != x else x
+        for w in n.get("work") or []:
+            if isinstance(w, dict) and w.get("kind") == "priorities":
+                out.setdefault(str(w.get("ref")), []).append(label)
+    return {k: sorted(v) for k, v in out.items()}
+
+
+def answers_line(ids: list[str]) -> str:
+    return "*Registered answers in the map:* " + ", ".join(ids) + "."
 
 
 def sections(root: pathlib.Path) -> tuple[str, list[tuple[str, str]]]:
@@ -113,11 +140,12 @@ def render(root: pathlib.Path) -> str:
     orders = sorted(n["maintainer_order"] for n in nodes)
     if len(set(orders)) != len(orders):
         raise RenderError("two item nodes share a maintainer_order")
+    ans = answers(root)
     out = [pre.rstrip("\n"), ""]
     for s, intro in secs:
         out += [f"## {s}", intro.strip("\n"), ""]
         for n in by_section[s]:
-            out += [heading(n), marker(n), "", n["_item_body"], ""]
+            out += [heading(n), marker(n)] + ([answers_line(ans[str(n["item"])])] if ans.get(str(n["item"])) else []) + ["", n["_item_body"], ""]
     text = "\n".join(out)
     return re.sub(r"\n{3,}", "\n\n", text).rstrip("\n") + "\n"
 

@@ -1,8 +1,8 @@
 ---
 id: thin.preservation-pair
 kind: and
-children: [thin.preservation-pair.record, thin.preservation-pair.bridge, thin.preservation-pair.complete, thin.preservation-pair.setting, thin.preservation-pair.h1, thin.preservation-pair.h2, thin.preservation-pair.h3, thin.preservation-pair.h4]
-work: [{kind: round, ref: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority}]
+children: [thin.preservation-pair.record, thin.preservation-pair.bridge, thin.preservation-pair.complete]
+work: [{kind: round, ref: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority}, {kind: priorities, ref: 107}]
 size: M
 size_reason: "one registry entry, its Lean declaration and its bridge"
 version: 1
@@ -17,4 +17,4 @@ Documentation: verification: projects/deference/rounds/2026-10-01-thin-legitimac
 The signature of `Workspace.Deference.Contrib.ThinLegitimacy.preservation_pair` in lean/Workspace/Deference/Contrib/ThinLegitimacy.lean.
 
 ## Notes
-Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; the hypotheses are the signature's explicit proposition binders, tagged open unless the registry settles them, and the data binders are the setting leaf. Registry note: The pair form of theorem 6: the actual later record beside the earlier one carries the posterior of the later record alone. Inhabited by `Witness.thick_inhabited` (earlier record blank).
+Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; its hypotheses are unread (ruling F1, 2026-10-23): the record's Source carries the signature verbatim, and a reader files the hypothesis leaves. Registry note: The pair form of theorem 6: the actual later record beside the earlier one carries the posterior of the later record alone. Inhabited by `Witness.thick_inhabited` (earlier record blank). The registry's `answers_item` is the `priorities` pointer to item 107 (ruling F2).

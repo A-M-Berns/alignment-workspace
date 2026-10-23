@@ -156,7 +156,7 @@ number, level, status or rank.
 
 ```
 {
-  "schema": "graph-index/1",
+  "schema": "graph-index/2",
   "generated": "<ISO date>",
   "generated_hash": "<sha over the rest>",
   "frame": {"question", "owners": [handles], "narrative", "classes": [ids],
@@ -170,9 +170,13 @@ number, level, status or rank.
       "given", "work": [{"kind", "ref"}],
       "fields": {every other frontmatter key as written},
       "frame": {"question", "owners", "roots": [{"id", "role"}]}   // frames only
-      "in_frames": [frame ids the node is a root of]
+      "in_frames": [frame ids the node is a root of],
+      "hypotheses": [ids] | "unread", "registry_id"                // record leaves only (schema 2)
+      "formal_result": {"record", "hypotheses": [ids] | "unread",  // an and with a record child (schema 2)
+                        "registry_id", "answers": [item numbers]}
   }},
-  "items": {"<item>": "<node id>"},
+  "items": {"<item>": {"node": "<node id>", "answered_by": [formal-result node ids]}},   // schema 2
+  "claims": {"<registry id>": "<node id of its formal result>"},                          // schema 2
   "decisions": [{"anchor", "date", "title", "status", "touches": [{"kind", "ref"}],
                  "pointed_by": [node ids]}],
   "rounds": [{"id", "path", "pointed_by": [node ids]}],
@@ -183,6 +187,15 @@ number, level, status or rank.
 
 Every id is the id a URL carries: node ids, registry ids (formal results),
 `item-<n>`, decision anchors, round ids and wiki paths.
+
+Schema 2 (the follow-up of 2026-10-23, rulings F1 and F2) adds the registry
+join as data: a record leaf's `hypotheses` (a list of hypothesis-leaf ids, or
+`"unread"` where no one has filed them by reading) and `registry_id`; on the
+`and` of every formal result a `formal_result` block with the record, the
+hypotheses, the registry id and the items it answers; `items` as records with
+`answered_by`; and `claims`, which resolves a registry id to its node whatever
+the node's id is (a result merged under the claim it establishes keeps its
+registry id here).
 
 ## 7. Choices beyond the rulings, and the reserved list
 

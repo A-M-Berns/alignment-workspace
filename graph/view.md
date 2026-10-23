@@ -5045,19 +5045,19 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - arg-newer-formalisms-checkpoint: Write one table: each newer formalism (shutdown instructability, Hudson's transformation, CAST, the constitution's broadly-safe notion) against the surviving thesis, with the clean-room refutations as entries. (who: agent); files: projects/deference/corrigibility-note-dump-2026-10-01/corrigibility-discussion-outline.md, projects/deference/faf-cleanroom-2026-10-02/packages/corr-scim-cid, projects/deference/faf-cleanroom-2026-10-02/packages/lit-mdp-corrigible
 - arg-thornley-completeness: Write a one-page note relating the clean-room's Thornley results (POSL and ILPACS empty for expected-sum-total within-length agents; Timestep Dominance satisfies POSL and Neutrality) to the thesis's aggregation over value hypotheses, to say whether the incomplete-preferences escape and the values-as-beliefs escape are one move. (who: either); files: projects/deference/faf-cleanroom-2026-10-02/packages/lit-shutdown-prefs, projects/deference/corrigibility-note-dump-2026-10-01/corrigibility-discussion-outline.md
 - arg-turner-vnm-incoherence: File Turner 2021 and its 2023 author edit as a formal route to corrigibility-anti-natural with a withdrawn bridge, citing Turner.weakCorrigibleTo_all_iff, so that the withdrawn-bridge pattern is exercised on a second cluster. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/lit-shutdown-prefs
-- asklist.offprotocol-deviation-finite: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- asklist.order-by-want-tainted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- asklist.rows-keep-verdicts-counted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- asklist.rows-keep-verdicts-tainted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- asklist.volume-by-want-tainted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- authority.approval-discount-defeated: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- authority.comprehension-short: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- authority.exchange-rate-queue: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- authority.flood-caused-shortfall: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- authority.queue-no-bypass: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- authority.queue-no-caused-shortfall: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- authority.revocation-default: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- authorship.mediation-by-reexecution: round: projects/deference/rounds/2026-09-10-committed-principal-program; decision: 2026-09-10--valid-answer-re-executes-mandated-program; decision: 2026-09-15--corrigibility-program-consolidated-research-state-corrigibility
+- asklist.offprotocol-deviation-finite: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- asklist.order-by-want-tainted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- asklist.rows-keep-verdicts-counted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- asklist.rows-keep-verdicts-tainted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- asklist.volume-by-want-tainted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- authority.approval-discount-defeated: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- authority.comprehension-short: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- authority.exchange-rate-queue: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- authority.flood-caused-shortfall: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- authority.queue-no-bypass: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- authority.queue-no-caused-shortfall: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- authority.revocation-default: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- authorship.mediation-by-reexecution: round: projects/deference/rounds/2026-09-10-committed-principal-program; decision: 2026-09-10--valid-answer-re-executes-mandated-program; decision: 2026-09-15--corrigibility-program-consolidated-research-state-corrigibility; work order: PRIORITIES #87
 - awaiting-author-digest: Group the Awaiting the author entries of DECISIONS.md by line of work into one sheet with each entry's options and recommendation, oldest first within a group. (who: agent); files: DECISIONS.md
 - bargain-under-lapsing-enforcement: Write the test-suite row for the LI/BRIA synthesis spec from the finite Parfit's-hitchhiker model, as a proposal. (who: agent); round: projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec
 - basin-formal-object.setting: Close Horizon.phiW_supermartStep (the prefix-atom factorization of the product law) in corr-landscape, giving the general-horizon basin certificate. (who: agent); open statement: `Horizon.phiW_supermartStep`
@@ -5078,12 +5078,12 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - calibration-as-fairness: Tabulate the six senses of fairness the two workflow runs found against the formal core's definitions, one row per sense, as a new wiki page under the decision-problems folder. (who: agent)
 - causal-instantiation-defined: Write a note with the causal-instantiation definition and two worked examples, one static and one with a moving object. (who: agent)
 - caution-outpaces-capability: State J4 as a trajectory inequality using corr-caution-power's floored quantilizer bound per step and prove a cumulative harm bound under it. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-caution-power
-- certificate.advantage-estimate: round: prompts/2026-08-11-phase-ii-promotion
-- certificate.defect-bound: round: prompts/2026-08-11-phase-ii-promotion
-- certificate.grade-register-strict: round: prompts/2026-08-11-phase-ii-promotion
-- certificate.margin-forces-agreement: round: prompts/2026-08-11-phase-ii-promotion
-- certificate.override-bound: round: prompts/2026-08-11-phase-ii-promotion
-- certificate.selection-eq-of-margin: round: prompts/2026-08-11-phase-ii-promotion
+- certificate.advantage-estimate: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
+- certificate.defect-bound: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
+- certificate.grade-register-strict: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
+- certificate.margin-forces-agreement: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
+- certificate.override-bound: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
+- certificate.selection-eq-of-margin: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
 - cf-ffs-in-rv-morphisms: Restate the Cartesian-frame and factored-space-model definitions as random-variable models and morphisms, starting from FAF's two modules and the Cartesian-frames paper. (who: either)
 - cleanroom-flagged-deference-package: Repair def-dose-response per DIGEST.md §5's cheapest fix and re-run its audits. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Deference/DefDoseResponse/
 - cleanroom-flags-resolved: Run a repair round over the 23 flagged clean-room packages, one repairer and two fresh re-audits per package, before any comparison agent reads the first run's library. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/LEDGER.md
@@ -5092,15 +5092,15 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - coalition-steering-advice: Write what the coalition picture says about maintaining a cap on the AI's weight as advice, with its hypotheses, treating the cap as a stated assumption. (who: either)
 - cognition-physics-dichotomy: Say whether data is observation or write in "no special channel", so that the cognition-versus-physics dichotomy is settled as a fact or a description. (who: human); files: projects/deference/corrigibility-note-dump-2026-10-01/position-statement-v3.md
 - coherence-without-ground-truth: Write a one-page statement of the premise with the coherence notions it names, the places each line of the map assumes it, and the objections to it. (who: agent)
-- coherence.modulus-net-cover: round: projects/normativity/rounds/2026-08-16-traderized-enforcement
-- coherence.modulus-soundness: round: projects/normativity/rounds/2026-08-16-traderized-enforcement
+- coherence.modulus-net-cover: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #42
+- coherence.modulus-soundness: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #42
 - cole-stability-reading: Write the martingale step behind the post's for-all-time clause (stability for all time with high probability) in the finite shadow, or show where it needs more than the trust bound. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/uea-sink-swim/uea-sink-swim-report.md
 - collapse-write-up-draft: Draft a write-up of the li-deference collapse, provenance-split three ways, with the clean room's Lean names beside each kernel-checked sentence and 'unvetted' on every one. (who: agent)
 - communicative-alternative-nondegenerate: Write the hypotheses that admit a non-degenerate witness, weakening told-form stability or the family factorization, and test them on the Third Button carrier. (who: agent); files: Cleanroom/Udt/UdtCommTrust/
 - comparison-theorem-under-relational-index-maps: Attempt Theorem 4.15 and Theorem 5.8 under the relational morphism, and on failure produce the smallest finite counterexample as a Python table in the clean-room style. (who: agent)
-- compiler.constraints-end-to-end: round: projects/normativity/rounds/2026-08-18-projection-enforcement
-- compiler.deductive-end-to-end: round: projects/normativity/rounds/2026-08-18-projection-enforcement
-- compiler.schedule-end-to-end: round: projects/normativity/rounds/2026-08-18-projection-enforcement
+- compiler.constraints-end-to-end: round: projects/normativity/rounds/2026-08-18-projection-enforcement; work order: PRIORITIES #48
+- compiler.deductive-end-to-end: round: projects/normativity/rounds/2026-08-18-projection-enforcement; work order: PRIORITIES #48
+- compiler.schedule-end-to-end: round: projects/normativity/rounds/2026-08-18-projection-enforcement; work order: PRIORITIES #48
 - complete-feedback-formal-model: Write the model the 2026-03-26 note asks for: complete feedback as the channel condition, legitimacy as the gate on Reflection, endorsement from Meaning & Agency as the trust relation, and the corrigibility statement as a theorem or a counterexample; use the value-change note's section 2 and the legit-neg clean-room packages as inputs, after fetching the Complete Feedback post. (who: either); files: projects/deference/corrigibility-note-dump-2026-10-01/value-change-as-epistemic-update.md
 - computability-fork: Say which branch of the computability fork the conjecture's formalizations take, or whether both are wanted. (who: human)
 - computation-implies-triviality: Summarize Putnam's and Searle's triviality arguments and Chalmers's reply as a table of their formal conditions against 'any computable translation counts'. (who: agent)
@@ -5111,15 +5111,15 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - condensation-storage-retrieval-tradeoff: State the storage-plus-retrieval score precisely, show the two limits, test on a worked example whether an intermediate weight makes the shared notebook optimal, and attempt the correspondence theorem in that setting. (who: agent)
 - condensation-unify-novelty: Read the single-event information measures of Palm's Novelty, Information and Surprise and write how they relate to condensation's scores. (who: either)
 - conditional-stability-breadth: Find the syntactic menu class the WorldOnlyRefuted probe leaves standing and state a new sufficient-condition conjecture for conditional-stability in wiki/open-problems.md item 3. (who: agent); files: projects/deference/note-dump-2026-08-11/wiki/open-problems.md
-- convergence.discord-pairwise: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end
-- convergence.discord-persists: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end
-- convergence.hull-mass-anti: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end
-- corrective.advisor-veto: round: projects/deference/rounds/2026-08-12-reachable-corrective-control
-- corrective.can-correct-future-iff: round: projects/deference/rounds/2026-08-12-reachable-corrective-control
-- corrective.can-correct-iff: round: projects/deference/rounds/2026-08-12-reachable-corrective-control
-- corrective.capability-measures-cooperation: round: projects/deference/rounds/2026-08-12-reachable-corrective-control
-- corrective.forecloses-iff: round: projects/deference/rounds/2026-08-12-reachable-corrective-control
-- corrective.no-exclusive-effect: round: projects/deference/rounds/2026-08-12-reachable-corrective-control
+- convergence.discord-pairwise: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: PRIORITIES #119
+- convergence.discord-persists: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: PRIORITIES #119
+- convergence.hull-mass-anti: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: PRIORITIES #119
+- corrective.advisor-veto: round: projects/deference/rounds/2026-08-12-reachable-corrective-control; work order: PRIORITIES #60
+- corrective.can-correct-future-iff: round: projects/deference/rounds/2026-08-12-reachable-corrective-control; work order: PRIORITIES #60
+- corrective.can-correct-iff: round: projects/deference/rounds/2026-08-12-reachable-corrective-control; work order: PRIORITIES #60
+- corrective.capability-measures-cooperation: round: projects/deference/rounds/2026-08-12-reachable-corrective-control; work order: PRIORITIES #60
+- corrective.forecloses-iff: round: projects/deference/rounds/2026-08-12-reachable-corrective-control; work order: PRIORITIES #60
+- corrective.no-exclusive-effect: round: projects/deference/rounds/2026-08-12-reachable-corrective-control; work order: PRIORITIES #60
 - corrigibility-architecture-round: round: projects/deference/rounds/2026-09-06-corrigibility-architecture
 - corrigibility-faithful-plus-legit-on-self: Prove corrigible_selection_closure_open: LUV-Total-Trust toward two experts implies trust toward their generable selection, building the quote package of a mixture that the trust-merge package lacks. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Trust/LegitLiRegister/, projects/deference/faf-cleanroom-2026-10-02/packages/trust-merge/
 - corrigibility-landscape: round: prompts/2026-08-11-corrigibility-phase-ii; round: prompts/2026-08-11-deference-corrigibility
@@ -5132,26 +5132,26 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - decision-theory-in-stage5-setting: Write the formal core's per-state-algebra variant: per-state algebras with translation maps given by random-variable morphisms, and the calibration equations rewritten over the common information, as a note beside the decision-problems note dump. (who: agent); files: projects/decision-theory/
 - decision-theory: decision: 2026-10-22--map-canonical-index-program-maintainer-handles
 - deck-completion: Draft projects/deference/notes/deck-completion-proposed.md: Tower ⟹ Total Trust from tower-implies-total-trust.md, Value ⟹ Total Trust from the two-option theorem, the modest-immodest slide from reflection-in-li.md, Sam's Conjecture from eisenstat-conjecture-attribution.md §4, and the F3 and F4 fixes. (who: agent); files: projects/deference/notes/deck-completion-proposed.md
-- deconfusing.corollary-a: round: prompts/2026-10-17-post-companion-formalization
-- deconfusing.corollary-b: round: prompts/2026-10-17-post-companion-formalization
-- deconfusing.corollary-limit: round: prompts/2026-10-17-post-companion-formalization
-- deconfusing.theorem1: round: prompts/2026-10-17-post-companion-formalization
-- deconfusing.theorem2a: round: prompts/2026-10-17-post-companion-formalization
-- deconfusing.theorem2b-strict: round: prompts/2026-10-17-post-companion-formalization
-- deconfusing.theorem2b: round: prompts/2026-10-17-post-companion-formalization
-- deconfusing.theorem2c-tau: round: prompts/2026-10-17-post-companion-formalization
-- deconfusing.theorem2c: round: prompts/2026-10-17-post-companion-formalization
-- deconfusing.theorem3a-rate: round: prompts/2026-10-17-post-companion-formalization
-- deconfusing.theorem3a: round: prompts/2026-10-17-post-companion-formalization
-- deconfusing.theorem3b: round: prompts/2026-10-17-post-companion-formalization
+- deconfusing.corollary-a: round: prompts/2026-10-17-post-companion-formalization; work order: PRIORITIES #107
+- deconfusing.corollary-b: round: prompts/2026-10-17-post-companion-formalization; work order: PRIORITIES #107
+- deconfusing.corollary-limit: round: prompts/2026-10-17-post-companion-formalization; work order: PRIORITIES #107
+- deconfusing.theorem1: round: prompts/2026-10-17-post-companion-formalization; work order: PRIORITIES #107
+- deconfusing.theorem2a: round: prompts/2026-10-17-post-companion-formalization; work order: PRIORITIES #107
+- deconfusing.theorem2b-strict: round: prompts/2026-10-17-post-companion-formalization; work order: PRIORITIES #107
+- deconfusing.theorem2b: round: prompts/2026-10-17-post-companion-formalization; work order: PRIORITIES #107
+- deconfusing.theorem2c-tau: round: prompts/2026-10-17-post-companion-formalization; work order: PRIORITIES #107
+- deconfusing.theorem2c: round: prompts/2026-10-17-post-companion-formalization; work order: PRIORITIES #107
+- deconfusing.theorem3a-rate: round: prompts/2026-10-17-post-companion-formalization; work order: PRIORITIES #107
+- deconfusing.theorem3a: round: prompts/2026-10-17-post-companion-formalization; work order: PRIORITIES #107
+- deconfusing.theorem3b: round: prompts/2026-10-17-post-companion-formalization; work order: PRIORITIES #107
 - defensible-ledger-ruled: Rule whether the defensible-claims ledger is created as the discipline describes or retired in favour of the map's vettedness levels and the CLAIMS.md registries. (who: human); files: graph/PROTOCOL.md, projects/deference/CLAIMS.md
 - deference-and-trust: decision: 2026-10-22--map-canonical-index-program-maintainer-handles; round: prompts/2026-08-11-deference-admissibility; round: prompts/2026-08-11-deference-certificates; round: prompts/2026-08-11-deference-channel; round: prompts/2026-08-11-deference-densification; round: prompts/2026-08-11-deference-finite-kernel; round: prompts/2026-08-11-deference-triangle; round: prompts/2026-08-11-faithful-acceleration; round: prompts/2026-08-11-phase-ii-authority; round: prompts/2026-08-11-phase-ii-certificate; round: prompts/2026-08-11-phase-ii-competence; round: prompts/2026-08-11-stage-iii-fud; round: prompts/2026-08-11-stage-iv-future-agent; round: prompts/2026-08-12-cartesian-frames; round: projects/deference/rounds/2026-08-12-corpus-reconciliation; round: projects/deference/rounds/2026-09-06-incentive-nonpreemption; round: projects/deference/rounds/2026-09-06-decision-theory-bill; round: projects/deference/rounds/2026-09-07-authority-activated-value; round: projects/deference/rounds/2026-09-07-reason-mediated-authorship; round: projects/deference/rounds/2026-09-08-legitimate-deference-consolidation; round: projects/deference/rounds/2026-09-08-continuation-bria; round: projects/deference/rounds/2026-09-09-evaluation-ecosystem-realization; round: projects/deference/rounds/2026-09-09-mediated-repair-dominance; round: projects/deference/rounds/2026-09-16-noncapture-compilation; round: projects/deference/rounds/2026-09-24-transparent-channel; round: projects/deference/rounds/2026-09-24-protected-authority; round: projects/deference/rounds/2026-09-25-protected-authority-theorem; round: projects/deference/rounds/2026-09-25-legitimacy-internal-external; round: projects/deference/rounds/2026-09-25-gate-is-legitimacy; round: projects/deference/rounds/2026-09-25-authority-module; round: projects/deference/rounds/2026-09-25-decision-component; round: projects/deference/rounds/2026-09-26-after-compromise; round: projects/deference/rounds/2026-09-26-corrigibility-kernel
 - deference-martingale-lean-checked: Lean-check the deferring member's martingale fact and the lie floor in one clean-room-style file. (who: agent)
 - degree-based-implementation: Define implementation of degree with the translation's program length as the complexity measure and test it on a static and a moving-object example. (who: agent)
 - delayed-disclosure-structure-formalized: Write a route note formalizing this information structure and re-running the trust half first; later a clean-room package over FAF. (who: agent)
-- delegation.bridge-unconditional: round: prompts/2026-08-11-phase-ii-promotion
-- delegation.bridge: round: prompts/2026-08-11-phase-ii-promotion
-- delegation.gradetrust-refinement: round: prompts/2026-08-11-phase-ii-promotion
+- delegation.bridge-unconditional: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
+- delegation.bridge: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
+- delegation.gradetrust-refinement: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
 - dependent-type-of-procedure: Check whether the v2 definition of a decision procedure fixes the dependent typing flagged in the May 2026 plan, and file the repair as a proposed edit if it does not. (who: agent); files: projects/decision-theory/decision-problems-note-dump-2026-10-01/decision-problems-v2.md
 - desiderata-2-4-general: Draft, as a proposal beside the note, a replacement for the three-sources bullet of position statement v3 section 2 that derives each desideratum for general modifications or says which does not follow. (who: agent); files: projects/deference/corrigibility-note-dump-2026-10-01/position-statement-v3.md
 - deterrence-vs-antibypass: Check the void-branch deterrence versus anti-bypass tension (D5) against the public line's violation list and read the kernel's restoration and no-laundering results against the captor-service story. (who: agent); files: wiki/Corrigibility.md, projects/deference/CLAIMS.md
@@ -5164,9 +5164,9 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - enabling-program-site: Build the site generator against the schema of graph/index.json. (who: either)
 - enabling-work: decision: 2026-10-22--map-canonical-index-program-maintainer-handles; round: prompts/2026-08-11-attribution-provenance-names; round: prompts/2026-08-11-branch-protection; round: prompts/2026-08-11-contributor-checkers; round: prompts/2026-08-11-licensing-dco-citation; round: prompts/2026-08-11-priorities-and-slop; round: prompts/2026-08-11-workspace-ethos; round: prompts/2026-08-11-workspace-integration; round: prompts/2026-08-16-wiki-in-repo-sync; round: prompts/2026-08-16-wiki-state-bindings; round: prompts/2026-08-24-reservation-bar-and-debt; round: graph
 - entrenching-agent: Add a coordinate for the humans' attainable utility from stopping to the landscape of trajectory conditions, and test whether an agent that entrenches itself then falls under some condition. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-power-channel
-- exposure.greedy-duality: round: prompts/2026-08-11-phase-ii-promotion
-- exposure.harvest-attained: round: prompts/2026-08-11-phase-ii-promotion
-- exposure.harvest-bound: round: prompts/2026-08-11-phase-ii-promotion
+- exposure.greedy-duality: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
+- exposure.harvest-attained: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
+- exposure.harvest-bound: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
 - fa-inductor-half: Attempt the inductor half in its conditional form (inductor-like on the accurate-feedback subsequence) and record the verdict. (who: agent)
 - factor-methodology-note: Write the methodological note: the argument for tackling boundedness head-on, the case against it, the unbounded-first methodology steelmanned, and an all-things-considered view. (who: human)
 - faf-lab-cleanroom-comparison: Fix the design of the blind comparison between the earlier formalization run and the clean room: who judges the blind sample (fresh agents, a human, or both) and the order (repair, seal, then compare). (who: human)
@@ -5177,14 +5177,14 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - finite-collapse-external-experts: Probe whether the monolith's §5.2 finite collapse holds for an external inductor expert, and record where it breaks if it does. (who: agent)
 - flat-beyond-pairwise: Extend decisionFlat_iff to hypergraph coupling with three-way interactions. (who: agent); files: Cleanroom/Udt/UdtEndorsePolicy/Flat.lean
 - fn65-corpus-corrections: Draft corrections, as proposal files beside the corpus notes that still assert the footnote 65 conjecture, stating that it fails at three cells. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-legit-general
-- force.deductive-criterion: round: projects/normativity/rounds/2026-08-16-traderized-enforcement
-- force.deductive-cumulative-nonneg: round: projects/normativity/rounds/2026-08-16-traderized-enforcement
-- force.deductive-day-nonneg: round: projects/normativity/rounds/2026-08-16-traderized-enforcement
-- force.deductive-inductor: round: projects/normativity/rounds/2026-08-16-traderized-enforcement
-- force.deductive-witness: round: projects/normativity/rounds/2026-08-16-traderized-enforcement
-- force.preservation: round: projects/normativity/rounds/2026-08-16-traderized-enforcement
-- force.row-tolerance: round: projects/normativity/rounds/2026-08-16-traderized-enforcement
-- force.strategy-value: round: projects/normativity/rounds/2026-08-16-traderized-enforcement
+- force.deductive-criterion: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #41
+- force.deductive-cumulative-nonneg: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #41
+- force.deductive-day-nonneg: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #41
+- force.deductive-inductor: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #41
+- force.deductive-witness: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #41
+- force.preservation: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #41
+- force.row-tolerance: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #41
+- force.strategy-value: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #41
 - formal-core-q-status: Write a one-line status for each of Q1 to Q12 naming the runs and packages that bear on it, as a status page beside decision-problems-v2.md. (who: agent); files: projects/decision-theory/decision-problems-note-dump-2026-10-01/
 - formality-informality: Survey theories of formality and informality, vagueness (supervaluation, epistemicism, degree theories) and fuzziness, each connected to legitimacy as local rules; a note. (who: agent)
 - four-corrigibility-definitions: Write one table over the kernel's house-sale instance and the trust lab's micro-examples: what each of the four definitions says the agent does, and where they part. (who: agent); files: wiki/Corrigibility.md, projects/deference/note-dump-2026-08-11/notes/legitimacy-theory-v1.md, projects/deference/corrigibility-note-dump-2026-10-01/position-statement.md
@@ -5207,21 +5207,21 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - indirect-route-impossibility: Attempt the necessity half of P1-prime and a version for any learner with subsequence-optimality guarantees, in a new round under the decision-theory line. (who: agent); files: projects/decision-theory/rounds/
 - indirect-route-learned-updatelessness: work order: PRIORITIES #106; work order: PRIORITIES #103; round: projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec
 - indistinguishability-table-extended: Build the indistinguishability table of coalition regimes for the two observers, check its finite cases in Python, and port it to Lean in the style of the clean room's packages. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/
-- inductor.certificate-transport: round: projects/normativity/rounds/2026-10-22-normative-inductor-integration
-- inductor.conformance: round: projects/normativity/rounds/2026-10-22-normative-inductor-integration
-- inductor.contraposition-blocked: round: projects/normativity/rounds/2026-10-23-normative-inductor-consolidation
-- inductor.grounded-survivors: round: projects/normativity/rounds/2026-10-22-normative-inductor-integration
-- inductor.rebuttal-run: round: projects/normativity/rounds/2026-10-23-normative-inductor-consolidation
-- inductor.warrant-inductor: round: projects/normativity/rounds/2026-10-22-normative-inductor-integration
-- inductor.witness: round: projects/normativity/rounds/2026-10-22-normative-inductor-integration
+- inductor.certificate-transport: round: projects/normativity/rounds/2026-10-22-normative-inductor-integration; work order: PRIORITIES #124
+- inductor.conformance: round: projects/normativity/rounds/2026-10-22-normative-inductor-integration; work order: PRIORITIES #39
+- inductor.contraposition-blocked: round: projects/normativity/rounds/2026-10-23-normative-inductor-consolidation; work order: PRIORITIES #113
+- inductor.grounded-survivors: round: projects/normativity/rounds/2026-10-22-normative-inductor-integration; work order: PRIORITIES #112
+- inductor.rebuttal-run: round: projects/normativity/rounds/2026-10-23-normative-inductor-consolidation; work order: PRIORITIES #35
+- inductor.warrant-inductor: round: projects/normativity/rounds/2026-10-22-normative-inductor-integration; work order: PRIORITIES #35
+- inductor.witness: round: projects/normativity/rounds/2026-10-22-normative-inductor-integration; work order: PRIORITIES #35
 - infinite-frames-sentence-check: Read value_imp_totalTrust and the Coin and Bentham rows of lit-weatherson-frames-report.md, and say whether li-deference.md's sentence on infinite frames needs revising. (who: human); files: projects/deference/note-dump-2026-08-11/notes/li-deference.md, projects/deference/faf-cleanroom-2026-10-02/packages/lit-weatherson-frames/lit-weatherson-frames-report.md
 - info-voi-latents-untouched-targets: Formalize target 13 and Turner's garbling monotonicity in the clean-room style, one file. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/
 - integration-theorem-t10: Prove T10 step 1, pointwise pre-decision accuracy from the timely-learning property, verifying the property's label in the pinned formalization. (who: agent); files: projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec
-- integrity.evolution-conservation: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass
-- integrity.faithful-carry: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation
-- integrity.multiplicity-witness: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation
-- integrity.propagate-to-segment: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass
-- integrity.receipts-immutable: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation
+- integrity.evolution-conservation: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: PRIORITIES #78
+- integrity.faithful-carry: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: PRIORITIES #78
+- integrity.multiplicity-witness: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: PRIORITIES #78
+- integrity.propagate-to-segment: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: PRIORITIES #78
+- integrity.receipts-immutable: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: PRIORITIES #78
 - intentional-stance-characterized: Write the statement both routes must satisfy as a specification with test cases (the chess toy, a thermostat, a Critch coalition). (who: agent)
 - intuitionistic-gi-source-filed: Find the source the Market Logic I post refers to for Eisenstat's intuitionistic Garrabrant induction, and cite it where the map uses the idea. (who: agent)
 - iota-exogenous-term: Decide the status of the exogenous term iota (the relocated shutdown utility) per run 3's question N5: part of the agent's valuation, or an external stipulation. (who: human); files: projects/deference/corrigibility-note-dump-2026-10-01/position-statement-v3.md
@@ -5359,27 +5359,27 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - item-q1: decision: 2026-09-02--post-merge-terminology-corrections-frozen-september
 - item-q2: decision: 2026-09-02--post-merge-terminology-corrections-frozen-september
 - item-q3: decision: 2026-08-24--queue-triaged-rulings-rounds-recommended; decision: 2026-09-01--progress-claim-weighted; decision: open--whether-q3-graduates-what-succeeds-item
-- jurisdiction.static-view-eq: round: prompts/2026-08-11-stage-v-li-native
-- jurisdiction.value-eq-of-price-realization: round: prompts/2026-08-11-stage-v-li-native
+- jurisdiction.static-view-eq: round: prompts/2026-08-11-stage-v-li-native; work order: PRIORITIES #28
+- jurisdiction.value-eq-of-price-realization: round: prompts/2026-08-11-stage-v-li-native; work order: PRIORITIES #28
 - kelly-identity-lean-checked: Lean-check the parimutuel Kelly identity (full-stake wealth shares equal Bayesian mixture weights) and the common-factor cancellation in one clean-room-style file. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/
 - kernel-route-fallible-future-comparator: Give PRIORITIES item 27's fallible future agent its own logical-inductor credence (a split between the agent as implemented and the algorithm it approximates is one candidate) and check the sign verdict. (who: agent); work order: PRIORITIES #27; files: PRIORITIES.md
 - kernel-route-foreclosure-expressibility: Test whether the corrigibility line's general object (pushes along a trajectory) supplies the later-index authorization operation that Q3 says every candidate lacked, giving either a fourth candidate with what kills it or a lead. (who: agent); files: PRIORITIES.md, projects/deference/faf-cleanroom-2026-10-02/packages/corr-general-object
-- kernel.box1-fidelity-versus-fully-updated-deference: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2
-- kernel.box2-dominance: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2
-- kernel.box2-finite-time: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2
-- kernel.box2-mediation-faithful: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; decision: 2026-09-27--corrigible-names-property-preferences-only-mediation
-- kernel.box3-gap-exchange-rate: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2
-- kernel.box3-no-incentive-to-compromise: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2
-- kernel.box3-no-laundering: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2
-- kernel.box3-restoration: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2
-- kernel.corrigible-fidelity-score: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2
-- kernel.corrigible-generic: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2
-- kernel.extension-bria-realization: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2
-- kernel.extension-exploration-realization: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- kernel.extension-realized-rate: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2
-- kernel.hierarchy-history: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2
-- kernel.hierarchy-per-decision: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2
-- kernel.subjective-exchange-rate: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2
+- kernel.box1-fidelity-versus-fully-updated-deference: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
+- kernel.box2-dominance: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
+- kernel.box2-finite-time: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
+- kernel.box2-mediation-faithful: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; decision: 2026-09-27--corrigible-names-property-preferences-only-mediation; work order: PRIORITIES #104
+- kernel.box3-gap-exchange-rate: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
+- kernel.box3-no-incentive-to-compromise: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
+- kernel.box3-no-laundering: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
+- kernel.box3-restoration: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
+- kernel.corrigible-fidelity-score: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
+- kernel.corrigible-generic: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
+- kernel.extension-bria-realization: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
+- kernel.extension-exploration-realization: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- kernel.extension-realized-rate: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
+- kernel.hierarchy-history: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
+- kernel.hierarchy-per-decision: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
+- kernel.subjective-exchange-rate: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
 - ladder-chain-reconciliation-note: Write a note beside li-deference.md (not inside it) from tt-ladder-findings.md F1 and F2, citing not_forall_lProdSeq_imp_tSeq and tAllEpsSeq_of_lProdSeq_of_supportNondegenerate. (who: agent)
 - learning-label-repaired: Adopt fixed_prior_threshold and rewrite finding F14 three-way in udt-bli-learning, clearing the ExactAsymptoticClause flag. (who: agent); files: Cleanroom/Bli/UdtBliLearning/
 - legit-accumulated-odds: Build a finite-horizon model where each step carries a hazard of losing legitimacy that the agent's actions shift, and bound the accumulated probability of loss by the accumulated influence defect; an exact fixture and a note. (who: agent)
@@ -5394,17 +5394,17 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - legit-repairable: Model partial and total-but-reversed corruption with an explicit reversal mechanism and compute when repair occurs; compare the endpoint-preservation note's ratchet (off-fragment drift permanent once grandfathered) with the public theory's restart property and state where they disagree. (who: agent); files: projects/deference/note-dump-2026-08-11/notes/legitimacy-theory-v1.md, wiki/Legitimacy.md
 - legit-rule-learning-model: Build a model of rule learning from legitimate-branch feedback and measure the bias the conditioning results predict for learned rules. (who: agent)
 - legitimacy-reasons-programme: decision: 2026-10-22--map-canonical-index-program-maintainer-handles
-- legitimacy.answerable: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass
-- legitimacy.endpoint-only-insufficient: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; decision: 2026-09-25--legitimacy-internal-external-robust-openness-external
-- legitimacy.endpoint-trans: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass
-- legitimacy.evolution-conservation: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; decision: 2026-09-25--legitimacy-internal-external-robust-openness-external
-- legitimacy.faithful-carry: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation
+- legitimacy.answerable: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: PRIORITIES #78
+- legitimacy.endpoint-only-insufficient: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; decision: 2026-09-25--legitimacy-internal-external-robust-openness-external; work order: PRIORITIES #78
+- legitimacy.endpoint-trans: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: PRIORITIES #78
+- legitimacy.evolution-conservation: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; decision: 2026-09-25--legitimacy-internal-external-robust-openness-external; work order: PRIORITIES #78
+- legitimacy.faithful-carry: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: PRIORITIES #78
 - legitimacy: decision: 2026-10-22--map-canonical-index-program-maintainer-handles; round: projects/normativity/legitimacy/rounds/2026-08-12-legitimacy-architecture; round: projects/normativity/legitimacy/rounds/2026-08-13-procedural-legitimacy; round: projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge; round: projects/normativity/legitimacy/rounds/2026-08-17-counterfactual-legitimacy; round: projects/normativity/legitimacy/rounds/2026-08-21-internal-answerability; round: projects/normativity/legitimacy/rounds/2026-08-22-role-parametric-answerability; round: projects/normativity/legitimacy/rounds/2026-08-23-afoundational-inquiry; round: projects/normativity/legitimacy/rounds/2026-08-23-certified-interactive-service; round: projects/normativity/legitimacy/rounds/2026-08-23-reason-representation; round: projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates; round: projects/normativity/legitimacy/rounds/2026-08-24-reflective-integrity-core; round: projects/normativity/legitimacy/rounds/2026-08-25-carroll-legitimacy-test; round: projects/normativity/legitimacy/rounds/2026-08-25-end-to-end-vertical-slice; round: projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution; round: projects/normativity/legitimacy/rounds/2026-08-27-legitimate-improvement; round: projects/normativity/legitimacy/rounds/2026-08-28-answerable-challenge-service; round: projects/normativity/legitimacy/rounds/2026-08-28-answerable-revision; round: projects/normativity/legitimacy/rounds/2026-08-28-service-realization; round: projects/normativity/legitimacy/rounds/2026-08-29-normative-continuity-concordance; round: projects/normativity/legitimacy/rounds/2026-08-30-anchored-slices-auth-transfer; round: projects/normativity/legitimacy/rounds/2026-08-30-answerability-carriers; round: projects/normativity/legitimacy/rounds/2026-08-30-normative-continuity-settlement; round: projects/normativity/legitimacy/rounds/2026-08-30-proper-exercise-calculus; round: projects/normativity/legitimacy/rounds/2026-08-31-faithful-semantic-preservation; round: projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability; round: projects/normativity/legitimacy/checkpoint-2026-09-01; round: projects/normativity/legitimacy/rounds/2026-09-02-unified-grounds-answerable-defeat; round: projects/normativity/legitimacy/rounds/2026-09-03-defeat-landing-horty-standing; round: projects/normativity/legitimacy/rounds/2026-09-04-normative-inductor-realization; round: prompts/2026-09-05-author-consolidation; round: projects/normativity/legitimacy/rounds/2026-09-05-integrity-constructive; round: projects/normativity/legitimacy/rounds/2026-09-05-integrity-adversary; round: projects/normativity/legitimacy/rounds/2026-09-05-noncapture-certificate; round: projects/normativity/legitimacy/rounds/2026-09-05-practical-certificate; round: projects/normativity/legitimacy/rounds/2026-09-05-ni-gap-audit; round: projects/normativity/legitimacy/rounds/2026-09-05-integrity-synthesis; round: projects/normativity/legitimacy/rounds/2026-09-08-canonicalization
-- legitimacy.multiplicity-witness: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation
-- legitimacy.payload-of-view: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- legitimacy.propagate-to-segment: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass
-- legitimacy.receipts-immutable: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation
-- legitimacy.segment-trans: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; decision: 2026-09-25--legitimacy-internal-external-robust-openness-external
+- legitimacy.multiplicity-witness: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: PRIORITIES #78
+- legitimacy.payload-of-view: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- legitimacy.propagate-to-segment: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: PRIORITIES #78
+- legitimacy.receipts-immutable: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: PRIORITIES #78
+- legitimacy.segment-trans: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; decision: 2026-09-25--legitimacy-internal-external-robust-openness-external; work order: PRIORITIES #78
 - legitimate-deliberation-definition: After the posts are imported, write the reconciliation of their uses of legitimacy (truth-tracking reasoning, endorsement-worthy value change, non-corrupt feedback) with the formal candidates of this frame, quoting rather than paraphrasing. (who: agent); files: projects/deference/note-dump-2026-08-11/notes/legitimacy-theory-v1.md, wiki/Legitimacy.md
 - li-abstraction-problem-statement: Write a note stating the problem and the three carriers with what each breaks. (who: agent)
 - li-accuracy-equivalence: Attempt the two directions of the accuracy equivalence in logical induction, Value implies Epistemic Value first, as a wiki note. (who: agent)
@@ -5416,27 +5416,27 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - li-models-human-progress: Write the argument: what in human philosophical and moral progress the logical-induction criterion models (non-dogmatism, timely learning of provable facts, self-trust as in §4.12) that an unbounded Bayesian cannot, with one worked example of a moral claim whose consequences are computed over time. (who: agent)
 - li-responsive-lesion: Attempt the refutation of li_responsive_lesion_open first, then the proof. (who: agent); open statement: `li_responsive_lesion_open`; files: Cleanroom/Decision/DpTrollBridge/
 - li-shutdown-decided-weight: Lift the probe decidedWeight_factors into corr-li-shutdown, delete the open statement, and rewrite finding F19 as the positive result. (who: agent); open statement: `decidedWeight_factors_open`; files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-li-shutdown
-- li.assessment.budgeter-exploits: round: projects/normativity/rounds/2026-08-16-traderized-enforcement
-- li.assessment.budgeter-floor: round: projects/normativity/rounds/2026-08-16-traderized-enforcement
-- li.assessment.budgeter-value: round: projects/normativity/rounds/2026-08-16-traderized-enforcement
-- li.assessment.criterion: round: projects/normativity/rounds/2026-08-16-traderized-enforcement
-- li.assessment.firm-dominance: round: projects/normativity/rounds/2026-08-16-traderized-enforcement
+- li.assessment.budgeter-exploits: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #47
+- li.assessment.budgeter-floor: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #47
+- li.assessment.budgeter-value: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #47
+- li.assessment.criterion: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #47
+- li.assessment.firm-dominance: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #47
 - lia-fitted-to-lic: State the fitting problem precisely for finite data (a finite prefix of price vectors; does some inductor with a bounded trader class realize it) and solve the two-sentence, three-day case by hand. (who: agent)
 - lift-stop-gradient-to-bli: Starting from StopGradientCore.lean's eighteen finite theorems, restate the conditioning identity as a restriction of reflection to the push component not caused by the agent over corr-exo-trader's market, and check whether the steering-residue result reappears as a residual of the wireheading-through-pushers mechanism. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-exo-trader
-- magnitude.mixture-networth-zero: round: prompts/2026-08-11-phase-ii-prediction
-- magnitude.not-trader-payoff: round: prompts/2026-08-11-phase-ii-prediction
-- magnitude.sharp-trader-networth: round: prompts/2026-08-11-phase-ii-prediction
-- magnitude.signed-bounded-actual: round: prompts/2026-08-11-stage-v-li-native
-- magnitude.signed-bounded: round: prompts/2026-08-11-phase-ii-prediction
-- magnitude.sq-error-split: round: prompts/2026-08-11-phase-ii-prediction
-- magnitude.unit-trader-networth: round: prompts/2026-08-11-phase-ii-prediction
+- magnitude.mixture-networth-zero: round: prompts/2026-08-11-phase-ii-prediction; work order: PRIORITIES #21
+- magnitude.not-trader-payoff: round: prompts/2026-08-11-phase-ii-prediction; work order: PRIORITIES #21
+- magnitude.sharp-trader-networth: round: prompts/2026-08-11-phase-ii-prediction; work order: PRIORITIES #21
+- magnitude.signed-bounded-actual: round: prompts/2026-08-11-stage-v-li-native; work order: PRIORITIES #21
+- magnitude.signed-bounded: round: prompts/2026-08-11-phase-ii-prediction; work order: PRIORITIES #21
+- magnitude.sq-error-split: round: prompts/2026-08-11-phase-ii-prediction; work order: PRIORITIES #21
+- magnitude.unit-trader-networth: round: prompts/2026-08-11-phase-ii-prediction; work order: PRIORITIES #21
 - malleability-harm-tracking: Add a confusion line to graph/DESIGN-LOG.md for each confusion a user has reported about the ranking, and a change line for each structural revision of the 2026-10-05 round that has none. (who: agent); files: graph/DESIGN-LOG.md
 - map-territory-link-via-realism: After the realism-definitions note, state one link: a sentence is treated as real when its price is forced by settlement rather than by fixed-point selection, and check it against the settled and never-settled split (never-settled-standard). (who: agent)
 - margins-of-misalignment: Say whether Stage 1′ includes 'Margins of Misalignment'. (who: human)
 - market-derivative-algebra: State as a standalone definition the algebra a market assigns to connective-derivatives, and check its soundness claims by a grid computation over finite price vectors. (who: agent)
 - market-logic-connection: Re-read the Market Logic sequence with the legitimacy question in hand and state what it already says about local rules of sanity, the standard beyond the limit first. (who: human)
-- maxmin.converse: round: projects/normativity/rounds/2026-08-18-maxmin-representation
-- maxmin.representation: round: projects/normativity/rounds/2026-08-18-maxmin-representation
+- maxmin.converse: round: projects/normativity/rounds/2026-08-18-maxmin-representation; work order: PRIORITIES #50
+- maxmin.representation: round: projects/normativity/rounds/2026-08-18-maxmin-representation; work order: PRIORITIES #50
 - member-selecting-rule-setting: Prove Proposition S for an arbitrary member-selecting rule. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Udt/UdtHarmonyBargain/
 - mine-condensation-posts: Copy the two posts from LessWrong with their dates, and list each idea not already a node, beginning with the storage-retrieval trade-off, the interpretability uses, the computation gap, variable-cost symbols and transparency for grammar-like phenomena. (who: agent)
 - mixture-of-inductors-not-inductor: Produce the counterexample for generic pairs of inductors or prove the bounded-lag case. (who: agent)
@@ -5453,7 +5453,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - natural-latents-approx-coefficient: Decide the open statement: find a sharper chain-rule route to coefficient 1, or a non-xor refutation, as one clean-room-style Lean file. (who: agent); open statement: `Cleanroom.Info.InfoVoiLatents.Open.natural_latents_approx`; files: projects/deference/faf-cleanroom-2026-10-02/
 - natural-latents-vs-condensation: Write a note comparing mediation plus redundancy with perfect condensation through FAF's NaturalLatents and Condensation modules and the clean room's F5, listing theorems of each side with no counterpart on the other. (who: agent)
 - never-settled-standard: Write the one-page comparison of three standards for never-settled prices (the limit; the trust principles modified by legitimacy; the sealed sibling) with what each says about one never-settled sentence. (who: agent)
-- ni.progress-bound: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass
+- ni.progress-bound: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: PRIORITIES #78
 - no-fud-problem-headline: Open outline item 6 with the clean-room's Fud.fud_band, the channel identity VOI(scan | button) + VOI(button) = min(eps h, (1 - eps) c) as the record to react to, and say which scope of the headline sentence stands. (who: human); files: projects/deference/corrigibility-note-dump-2026-10-01/corrigibility-discussion-outline.md, projects/deference/faf-cleanroom-2026-10-02/packages/corr-position-finds, projects/deference/faf-cleanroom-2026-10-02/packages/corr-channel-voi
 - nofud-scope-proposal: Draft, as a proposal file beside the position statement, a scoped replacement for the headline sentence with each clause citing the Lean result it rests on, for the author to accept or reject. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-position-finds, projects/deference/faf-cleanroom-2026-10-02/packages/corr-legit-modif
 - non-responsiveness-learnable: Answer directions Q7 and Q10 of the non-responsiveness-learnability page: whether a two-inductor architecture is acceptable or anonymity forbids the self-locating information updateless reasoning uses, and whether the CC-limit claim is known. (who: agent)
@@ -5469,17 +5469,17 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - objectivity-as-invariance: On a finite model, define the invariant of the class of legitimate processes and check whether it is well defined and when it equals the territory. (who: agent)
 - observables-carry-correspondence: Trace in the proof of Theorem 5.8 and in FAF's condEntropy_jointAbove_le where the shared givens enter, and write the hypothesis list that remains when the two models' givens are related only by a morphism. (who: agent)
 - one-shot-verdicts-wanted: Write down which one-shot verdicts the single-instance success thesis needs, as input to the Awaiting-the-author entry on one-shot verdicts. (who: agent)
-- open-integrity.answerable: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass
-- open-integrity.endpoint-trans: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass
-- open-integrity.segment-trans: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass
+- open-integrity.answerable: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: PRIORITIES #78
+- open-integrity.endpoint-trans: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: PRIORITIES #78
+- open-integrity.segment-trans: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: PRIORITIES #78
 - open-minded-epistemic-state: Define a (P, U, V) optimal-policy notion and test it against counterfactual mugging, lizard world and decisionFlat_iff. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/sources/decision-problems/directions/, projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Udt/UdtEndorsePolicy/
 - open-problem-ledger-current: Import the deference note's Appendix B open rows, the forcing-question items and the trichotomy questions into the open-problem ledger, each with its status after the clean room, and add the legitimacy items of the li-deference notes' section 0.3. (who: agent); files: projects/deference/note-dump-2026-08-11/wiki/open-problems.md, projects/deference/note-dump-2026-08-11/notes/deference-in-logical-induction-v6.md
 - open-problems-cleanroom-update: Update the open-problem ledger's items 1 and 3 with concentrates_self, concentrates_of_folds and WorldOnlyRefuted. (who: agent); files: projects/deference/note-dump-2026-08-11/wiki/open-problems.md
 - open-problems-import: Import deference-v6 Appendix B's open rows and the forcing-question items into the open-problem ledger. (who: agent); files: projects/deference/note-dump-2026-08-11/wiki/open-problems.md
-- openness.actual-branch-witness: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass
-- openness.certplus-is-robust-openness: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation
-- openness.endpoint-only-insufficient: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; decision: 2026-09-25--legitimacy-internal-external-robust-openness-external
-- openness.persistence-sufficient: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass
+- openness.actual-branch-witness: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: PRIORITIES #78
+- openness.certplus-is-robust-openness: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: PRIORITIES #78
+- openness.endpoint-only-insufficient: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; decision: 2026-09-25--legitimacy-internal-external-robust-openness-external; work order: PRIORITIES #78
+- openness.persistence-sufficient: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: PRIORITIES #78
 - oq-anti-wireheading: State the report-layer wirehead iff and the stop-gradient identity at the LI register, as a clean-room package. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/legit-finite-defect/legit-finite-defect-report.md, projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Trust/LegitFiniteDefect/
 - oq-complexity-model: List which theorems of the deference work use the inclusion of the human's complexity class in the AI's, and restate one with an incomparable pair (humans with the better inductive bias, the AI with more compute). (who: agent); files: projects/deference/note-dump-2026-08-11/notes/li-deference.md, projects/deference/note-dump-2026-08-11/notes/deference-in-logical-induction-v6.md
 - oq-elk: Sketch a bounded-regret statement for eliciting latent knowledge in the li-deference formalism (the humans will not regret not knowing something the AI was thinking), and say whether the trust results motivate a specific notion of latent knowledge. (who: agent); files: projects/deference/note-dump-2026-08-11/notes/li-deference.md
@@ -5501,21 +5501,21 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - port-rescope-after-pin-move: Compare FAF at 159ec3f with the current lean/ pin, list the clean-room modules the consolidation touches, and correct the pin sentence of the intake README. (who: agent); files: lean/lake-manifest.json, projects/deference/faf-cleanroom-2026-10-02/README.md
 - posl-ilpacs-nontrivial-model: Decide the open statement PostConsistency.posl_ilpacs_nontrivial_model_open: does any asymmetric relation with a strict preference satisfy POSL and ILPACS? (who: agent); open statement: `PostConsistency.posl_ilpacs_nontrivial_model_open`; files: projects/deference/faf-cleanroom-2026-10-02/packages/lit-shutdown-prefs
 - post-corrigible-normative-learning: work order: PRIORITIES #107; round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- post.flood-below-asking: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- post.theorem-li: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- post.theorem: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- post.witness-control-maximizer: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- post.witness-hindsight: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- post.witness-learned-weight: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- post.witness-same-level: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- post.witness-sole-authority: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
+- post.flood-below-asking: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- post.theorem-li: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- post.theorem: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- post.witness-control-maximizer: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- post.witness-hindsight: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- post.witness-learned-weight: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- post.witness-same-level: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- post.witness-sole-authority: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
 - power-bounded-by-wisdom: Formalize the gameable-meter worry as a finite model in which a behavioural wisdom reading is a garbling the agent can steer, and test whether any self-enforceable cap survives. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-joint-process
 - predication-dichotomy: Test the scout's finite book for the predication trilemma at FAF's LIA, so far exhibited only at the constant-half inductor over a dead process, to see whether predication plus retargeted retro-detection is Dutch-bookable at a real inductor. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Trust/LegitLiRegister/Predication.lean, projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Trust/LegitLiRegister/Witness.lean
 - principles-design-space-matrix: Write a page on the trust-principles design space as a matrix whose cells name the wiki page or clean-room declaration that settles each implication, with 'unknown' where none does. (who: agent)
 - probabilistic-payors-lemma: Read the published Payor's-lemma posts into one statement of the probabilistic lemma with its status, proved, flawed or open, and relate FAF's payor to it, as a note. (who: agent)
-- progress.edge-bound-quadratic: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation
-- progress.edge-bound: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation
-- progress.headline-separation: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation
+- progress.edge-bound-quadratic: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: PRIORITIES #78
+- progress.edge-bound: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: PRIORITIES #78
+- progress.headline-separation: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: PRIORITIES #78
 - provenance-conditional-tiling: Prove the contrapositive (a nonzero expected correction on a recurrent coup branch breaks the inductor property over the pair) and state the provenance-conditional tiling target. (who: agent)
 - ps-route-partial-observability: Build a finite partially observable instance in which the power-seeking orbit count of Corollary 6.14 changes or survives under partial observability, with corr-power-channel as the base. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-power-channel
 - public-corrigibility-line: round: prompts/2026-09-15-corrigibility-consolidation-landing
@@ -5528,14 +5528,14 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - readout-R1-vs-R2: Decide, for the floor-rule objective over branches, whether options are scored by the diagonal or by the realized-terminal readout, and record the answer as weights here. (who: either)
 - realism-definitions-for-logical-udt: Write a note with several definitions of treating something as real, each with the role it gives to what is taken as a proposition in logically uncertain UDT. (who: either)
 - reason-exchange-representation-theorem: Write the problem statement of the representation theorem (hypothesis: agents coordinate successfully through communication; conclusion: a specific semantics for the messages), with the nearest known theorems marked as recalled, not checked. (who: agent)
-- rebuttal.liability-rebutted: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end
-- rebuttal.settleform-sound: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end
+- rebuttal.liability-rebutted: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: PRIORITIES #113
+- rebuttal.settleform-sound: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: PRIORITIES #113
 - reconstruction-score-role: Compute the three scores of Definition 3.3 on the paper's own examples and on the xor triple, and test whether a latent with unnecessary degrees of freedom raises only the reconstruction score. (who: agent)
 - reflection-into-diagram: Import reflection-in-li.md's bifurcation into deference-notions.md's implication diagram, citing bandReflection_self and bandReflection_iff_totalTrust_onQuotes. (who: agent)
-- region.hull: round: projects/normativity/rounds/2026-08-19-deductive-region
-- region.patterns-complete: round: projects/normativity/rounds/2026-08-19-deductive-region
-- region.patterns-nonempty-iff: round: projects/normativity/rounds/2026-08-19-deductive-region
-- region.patterns-sound: round: projects/normativity/rounds/2026-08-19-deductive-region
+- region.hull: round: projects/normativity/rounds/2026-08-19-deductive-region; work order: PRIORITIES #51
+- region.patterns-complete: round: projects/normativity/rounds/2026-08-19-deductive-region; work order: PRIORITIES #51
+- region.patterns-nonempty-iff: round: projects/normativity/rounds/2026-08-19-deductive-region; work order: PRIORITIES #51
+- region.patterns-sound: round: projects/normativity/rounds/2026-08-19-deductive-region; work order: PRIORITIES #51
 - register-collapse-claims-public: After the FAF pin bump, port value_argmax_asymptotic, towerValued_of_softTotalTrust_gapBets, mart_implies_value_refuted and the amplifier into lean/Workspace/Deference/Contrib/ with registry entries. (who: either); files: lean/Workspace/Deference/Contrib/, projects/deference/CLAIMS.md
 - registry-policy-for-ported-results: Decide, under projects/deference/CLAIMS.md's policy on inherited transcriptions, whether ported clean-room declarations register as this repository's results, and record the reading. (who: human)
 - regularity-is-h3: Say whether the deck's 'regular' sequence of decision problems means the wiki's mass-weighted one-sided conditional-stability H3. (who: human)
@@ -5556,41 +5556,41 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - scoped-value-content-witness: Attack truthPrice_frequently_interior by the trader argument the round-3 audits sketch, in the clean room's DefArgmaxValue/Open.lean. (who: agent); open statement: `Cleanroom.Deference.DefArgmaxValue.truthPrice_frequently_interior`; files: projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Deference/DefArgmaxValue/Open.lean
 - secrecy-props-lean-checked: In one clean-room-style Lean file, check the first two clauses of secrecy-not-forbidden-by-criterion in a finite model with finitely many budgeted oracle traders, and state the third clause, on withholding policies, at the logical-induction register. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/
 - seed-theory: round: projects/normativity/seed/rounds/2026-09-16-seed-statics; round: projects/normativity/seed/rounds/2026-09-17-convergence-measure
-- seed.eventually-const: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end
-- seed.forced-interval-bounds: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end
-- seed.forced-interval-spec: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end
-- seed.independence-strict: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end
+- seed.eventually-const: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: PRIORITIES #117
+- seed.forced-interval-bounds: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: PRIORITIES #39
+- seed.forced-interval-spec: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: PRIORITIES #39
+- seed.independence-strict: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: PRIORITIES #117
 - self-aixi-eps-exploration-route: Read Kim and Lee and write a one-page comparison of the hypotheses of their exploration route, Wyeth's oracle route and the floor of Theorem C. (who: agent)
 - self-coordination-udt10: Formalize the message-set formalism of the tiling notes and state communicative cloning over it, then test whether the Third Button carrier admits a coordinating equilibrium under the stated stability assumption. (who: agent); files: Cleanroom/Udt/UdtPaperTiling/, Cleanroom/Udt/UdtCommTrust/
 - shadow-theorem-conjecture-f: Write Conjecture F with its hypotheses visible, cell consistency, partition convergence and VOI-exploration convergence, as the precise statement of the section-9 sentence of the decision-problems note. (who: agent)
-- shortfall.atom-generable: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- shortfall.deferred-ahead: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- shortfall.deferred-eventually-excluded: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- shortfall.eventually-excluded: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- shortfall.security-generable: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- shortfall.table-generable: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
+- shortfall.atom-generable: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- shortfall.deferred-ahead: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- shortfall.deferred-eventually-excluded: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- shortfall.eventually-excluded: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- shortfall.security-generable: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- shortfall.table-generable: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
 - sigma-algebra-morphisms-carry-concepts: Set the superconditioning note's sigma-algebra-homomorphism definitions beside Eisenstat's index-map morphisms and FAF's RVModel.Hom, decide which of its coarsenings are Eisenstat morphisms, and test whether its common information is the top latent of a two-variable perfect condensation. (who: agent)
-- simplex.rational-points-sum-to-one: decision: 2026-08-11--governance-report-removed-relocated; decision: 2026-08-11--queue-cleared-six-rulings
+- simplex.rational-points-sum-to-one: decision: 2026-08-11--governance-report-removed-relocated; decision: 2026-08-11--queue-cleared-six-rulings; work order: PRIORITIES #13
 - simplicity-grounds-interpretation: Write the criteria a simplicity argument must meet, taking the clean room's verdict on the parsimony argument as the bar, and propose one measure (description length of the inductor's trader class). (who: agent)
 - simulation-vs-implementation-record: Write a note comparing the simulation-based picture with the implementation-focused one, case by case. (who: agent)
-- sincerity.content-fact: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- sincerity.lie-tainted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- sincerity.rows-keep-verdicts-counted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- sincerity.rows-keep-verdicts-tainted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- sincerity.sincere-error-counts: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
+- sincerity.content-fact: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- sincerity.lie-tainted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- sincerity.rows-keep-verdicts-counted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- sincerity.rows-keep-verdicts-tainted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- sincerity.sincere-error-counts: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
 - single-round-refinement: Survey what a non-asymptotic refinement of logical induction would have to give and whether the BLI segment results or the traderization arc give any of it; say whether the deference note's "does not exist" still holds. (who: agent); files: projects/deference/note-dump-2026-08-11/notes/deference-in-logical-induction-v6.md, projects/normativity/notes/GENERALIZED_LI_PAPER_HANDOFF.md
-- smoke.chain-compiles: round: prompts/2026-08-10-repo-scaffolding; decision: 2026-08-11--setup-scrub-reports-removed-root
-- smoke.faf-asymp-refl: round: prompts/2026-08-10-repo-scaffolding; decision: 2026-08-11--setup-scrub-reports-removed-root
+- smoke.chain-compiles: round: prompts/2026-08-10-repo-scaffolding; decision: 2026-08-11--setup-scrub-reports-removed-root; work order: PRIORITIES #13
+- smoke.faf-asymp-refl: round: prompts/2026-08-10-repo-scaffolding; decision: 2026-08-11--setup-scrub-reports-removed-root; work order: PRIORITIES #13
 - soto-flower-obstruction: Prove flower_liminf_open via FAF's completedGatedComplementQuote. (who: agent); open statement: `flower_liminf_open`; files: Cleanroom/Decision/DpTrollBridge/
 - ss-value-without-scope: Write out the F1-for-lookahead near-identity and stress-test scheduled weighted-average Value against total-trust-implies-value's selection-punishing menu. (who: agent)
 - stance-and-level: decision: 2026-10-22--map-canonical-index-program-maintainer-handles
 - step-asymptotic-to-finite-time: Catalogue the carries the collapse uses (expectation provability induction, the tower, the fold) and record for each whether FAF's proof yields an explicit day bound, in a note. (who: agent)
 - story-of-a-blob: Write the story-of-a-blob problem statement with a chess toy and a coalition as test cases: a blob persists across a re-description and is an agent at both levels. (who: agent)
 - stratified-pareto-bargaining: Read Garrabrant's cooperative-oracles posts into a statement usable as the bargaining rule, and check whether the coalition it selects excludes adversarial anti-values held at positive probability. (who: agent)
-- substitution.extensional-admits-both: round: prompts/2026-08-11-phase-ii-promotion
-- substitution.separation-requires-disagreement: round: prompts/2026-08-11-phase-ii-promotion
-- substitution.sim-depends-on-induced-choice: round: prompts/2026-08-11-phase-ii-promotion
-- substitution.unpredictability-separates: round: prompts/2026-08-11-phase-ii-promotion
+- substitution.extensional-admits-both: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
+- substitution.separation-requires-disagreement: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
+- substitution.sim-depends-on-induced-choice: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
+- substitution.unpredictability-separates: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
 - superconditioning-relation-to-li: Formalize the superconditioning document's question in FAF terms (an anticipation structure generated by a deductive process) and state 'calibrated refinement equals the inductor's self-trust' as the conjecture to test. (who: agent)
 - support-sensitive-equivalence: Collect the three places the almost-everywhere slack bites (the paper's component maps, Gap 1's off-support obstruction, the clean room's sufficiency-is-a.e. lemma) and state one support-sensitive variant of equivalence with its first test. (who: agent)
 - task-anger-substitute-note: Write a self-contained note on whether learned anger can substitute for updateless reasoning, from the dynamic cluster's results (the updateless-conditioning identity, the identification failure, the deterrence floor, the relocation argument): where the anger substitute works, where it relocates updatelessness, and what fails, with the fixtures' numbers. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/legit-neg-dynamic/legit-neg-dynamic-report.md
@@ -5625,17 +5625,17 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - theory-dynamics-literature: Assemble a reading list on how theories are individuated and how they change, from philosophy of science on theory change and reduction and from the literature on ontological crises. (who: either)
 - thin-converse-open: Mechanize Blackwell's converse for the sufficient half (value for every finite decision problem under a correct credence implies the reference is a garbling of the later record) by a separating-hyperplane argument, in the thin-legitimacy Lean module. (who: agent); work order: PRIORITIES #107; files: lean/
 - thin-value-loss-bound: Prove the kernel form of the value-loss bound and the loss of correct bounded by the pathwise transparency defect, beyond deterministic records. (who: agent); work order: PRIORITIES #107; files: lean/
-- thin.converse-fails-on-correct: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- thin.correct-of-thick: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- thin.covert-blocking-correct-iff: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- thin.marginal-martingale-too-weak: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- thin.preservation-pair: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- thin.preservation: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- thin.reflection-inherited-value: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- thin.sufficient-of-integrity-openness: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- thin.value-loss-le-defects: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- thin.value-of-correct-sufficient: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- thin.value-of-thick: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
+- thin.converse-fails-on-correct: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- thin.correct-of-thick: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- thin.covert-blocking-correct-iff: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- thin.marginal-martingale-too-weak: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- thin.preservation-pair: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- thin.preservation: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- thin.reflection-inherited-value: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- thin.sufficient-of-integrity-openness: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- thin.value-loss-le-defects: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- thin.value-of-correct-sufficient: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- thin.value-of-thick: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
 - tiling-brain-dump-synthesis: Review the UDT and tiling working notes of 2025-06-30 and the 2026-02-19 journal, and distill their open questions and confusions into actionable research tasks in a note. (who: agent)
 - tiling-from-inferential-semantics: Write the theorem shape (an agent whose model of its future self includes the derivative algebra's rules and a realism map trusts the future self on the realism-grounded sentences) and identify which existing tower or Total Trust result is its special case. (who: agent)
 - tiling-literature-situated: Write a note comparing inter-inductor Total Trust with the tiling and Vingean-reflection results on trusting a successor. (who: agent)
@@ -5646,8 +5646,8 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - traderized-finite-date-conformance: Test whether the normativity line's constraint compiler can enforce a per-day gap-bet bound (the novice's expectation of each signed gap bet at least minus a schedule) while preserving the criterion, and state the obstruction if not. (who: agent); files: projects/normativity/rounds/2026-08-16-traderized-enforcement/PROOF_CLOSURE.md, projects/normativity/notes/GENERALIZED_LI_PAPER_HANDOFF.md
 - training-map-model: Build a finite model of the training map (overseer data and loss in, next model's state out) with a retention measure, and re-run the Y1 overwrite-dodge verdict inside it. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-legit-modif
 - trajectory-layer-bridge: Prove the Layer F to Layer M bridge (finite conditional expectation on atoms) in corr-trajectory, which also witnesses its martingale-layer certificates. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-trajectory
-- transparent.blind-payload: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- transparent.posterior-weight-eq: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
+- transparent.blind-payload: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- transparent.posterior-weight-eq: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
 - trembling-hand-calibration-grounded: Draft sections 3 and 5 of the formal core's next version with Definition 7-prime and Definition 10 along a class of exploration sequences, defining calibration in trembling-hand style and grounding the ideal-rationality picture's justification in the learning-theoretic picture. (who: either)
 - truthstar-computable: Discharge truthStarL_computable_open through the uniform LIA evaluator shared with the li-* packages. (who: agent); open statement: `truthStarL_computable_open`; files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-li-shutdown
 - tt-ladder-lifted-to-inductors: State over FAF which rung of the Total-Trust ladder the self-expert's (quote, credence) pair reaches, using def-self-trust's endpoints, in a new module under the clean room's Li/TtLadder. (who: agent)
@@ -5688,11 +5688,11 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - vingean-definitions-reconciled: Write one page reconciling the three definitions of Vingean agency and say which one Stage 5 should target and why. (who: agent)
 - vingean-tiling-content: Build a Theorem 3 witness in which the twin is not the best non-modifying action, so the chain's inequality is visibly strict, under the computation-output model. (who: agent); files: Cleanroom/Udt/UdtPaperTiling/
 - vingean-voi-finite-lemma: Attempt the C4 finite lemma in Lean in the clean-room style, one file, with the non-transitive near-miss and the pre-registered fakes checked against. (who: agent)
-- warrant.admissible-not-supported: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics
-- warrant.licence-chain: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics
-- warrant.selection-not-transparent: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics
-- warrant.supported-admissible: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics
-- warrant.supported-not-licensed: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics
+- warrant.admissible-not-supported: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics; work order: PRIORITIES #56
+- warrant.licence-chain: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics; work order: PRIORITIES #56
+- warrant.selection-not-transparent: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics; work order: PRIORITIES #56
+- warrant.supported-admissible: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics; work order: PRIORITIES #56
+- warrant.supported-not-licensed: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics; work order: PRIORITIES #56
 - wentworth-constant-located: Find the constant in Wentworth's published approximate natural-latents theorem (the 2023 post's image, or the Natural Latents paper) and add it to the docstring of the clean room's open statement. (who: agent); open statement: `Cleanroom.Info.InfoVoiLatents.Open.natural_latents_approx`
 - wentworth-representation-theorem-transfer: Fetch Wentworth's representation theorems and annotate each hypothesis with its logical-induction analogue or its absence. (who: agent)
 - what-abstraction-buys: Write one page naming what abstraction theory supplies to each of three lines: implementation relations, natural latents and condensation. (who: either)
@@ -5706,16 +5706,7 @@ Each `and` with assumption or hypothesis leaves, read with those leaves held tru
 - account-via-decision-flatness: as an implication (account-via-decision-flatness@valid) and literally; the numbers print under --why
 - anticipation-branchwise-dominance--corrigibility-risk: as an implication (anticipation-branchwise-dominance--corrigibility-risk@valid) and literally; the numbers print under --why
 - approximate-decision-determination: as an implication (approximate-decision-determination@valid) and literally; the numbers print under --why
-- asklist.offprotocol-deviation-finite: as an implication (asklist.offprotocol-deviation-finite@valid) and literally; the numbers print under --why
 - authority-typed-corrigibility: as an implication (authority-typed-corrigibility@valid) and literally; the numbers print under --why
-- authority.approval-discount-defeated: as an implication (authority.approval-discount-defeated@valid) and literally; the numbers print under --why
-- authority.comprehension-short: as an implication (authority.comprehension-short@valid) and literally; the numbers print under --why
-- authority.exchange-rate-queue: as an implication (authority.exchange-rate-queue@valid) and literally; the numbers print under --why
-- authority.flood-caused-shortfall: as an implication (authority.flood-caused-shortfall@valid) and literally; the numbers print under --why
-- authority.queue-no-bypass: as an implication (authority.queue-no-bypass@valid) and literally; the numbers print under --why
-- authority.queue-no-caused-shortfall: as an implication (authority.queue-no-caused-shortfall@valid) and literally; the numbers print under --why
-- authority.revocation-default: as an implication (authority.revocation-default@valid) and literally; the numbers print under --why
-- authorship.mediation-by-reexecution: as an implication (authorship.mediation-by-reexecution@valid) and literally; the numbers print under --why
 - base-rate-working-picture: as an implication (base-rate-working-picture@valid) and literally; the numbers print under --why
 - basin-formal-object: as an implication (basin-formal-object@valid) and literally; the numbers print under --why
 - bli-b1-is-logical-inductor: as an implication (bli-b1-is-logical-inductor@valid) and literally; the numbers print under --why
@@ -5724,47 +5715,16 @@ Each `and` with assumption or hypothesis leaves, read with those leaves held tru
 - capability-beyond-oversight: as an implication (capability-beyond-oversight@valid) and literally; the numbers print under --why
 - carey-everitt-thm10-vacuous: as an implication (carey-everitt-thm10-vacuous@valid) and literally; the numbers print under --why
 - cdt-defined-for-learner: as an implication (cdt-defined-for-learner@valid) and literally; the numbers print under --why
-- certificate.advantage-estimate: as an implication (certificate.advantage-estimate@valid) and literally; the numbers print under --why
-- certificate.defect-bound: as an implication (certificate.defect-bound@valid) and literally; the numbers print under --why
-- certificate.grade-register-strict: as an implication (certificate.grade-register-strict@valid) and literally; the numbers print under --why
-- certificate.margin-forces-agreement: as an implication (certificate.margin-forces-agreement@valid) and literally; the numbers print under --why
-- certificate.override-bound: as an implication (certificate.override-bound@valid) and literally; the numbers print under --why
-- certificate.selection-eq-of-margin: as an implication (certificate.selection-eq-of-margin@valid) and literally; the numbers print under --why
-- coherence.modulus-net-cover: as an implication (coherence.modulus-net-cover@valid) and literally; the numbers print under --why
-- coherence.modulus-soundness: as an implication (coherence.modulus-soundness@valid) and literally; the numbers print under --why
 - comm-trust-formalized: as an implication (comm-trust-formalized@valid) and literally; the numbers print under --why
 - communication-trust-paper: as an implication (communication-trust-paper@valid) and literally; the numbers print under --why
-- compiler.constraints-end-to-end: as an implication (compiler.constraints-end-to-end@valid) and literally; the numbers print under --why
-- compiler.deductive-end-to-end: as an implication (compiler.deductive-end-to-end@valid) and literally; the numbers print under --why
-- compiler.schedule-end-to-end: as an implication (compiler.schedule-end-to-end@valid) and literally; the numbers print under --why
 - condensation-correspondence-theorem: as an implication (condensation-correspondence-theorem@valid) and literally; the numbers print under --why
 - conditioning-manages-news: as an implication (conditioning-manages-news@valid) and literally; the numbers print under --why
-- convergence.discord-pairwise: as an implication (convergence.discord-pairwise@valid) and literally; the numbers print under --why
-- convergence.discord-persists: as an implication (convergence.discord-persists@valid) and literally; the numbers print under --why
-- convergence.hull-mass-anti: as an implication (convergence.hull-mass-anti@valid) and literally; the numbers print under --why
-- corrective.can-correct-future-iff: as an implication (corrective.can-correct-future-iff@valid) and literally; the numbers print under --why
-- corrective.forecloses-iff: as an implication (corrective.forecloses-iff@valid) and literally; the numbers print under --why
 - counterfactual-mugging-with-evidence: as an implication (counterfactual-mugging-with-evidence@valid) and literally; the numbers print under --why
 - counterfactuals-for-embedded-agents: as an implication (counterfactuals-for-embedded-agents@valid) and literally; the numbers print under --why
 - ddb-finite-frames-formalized: as an implication (ddb-finite-frames-formalized@valid) and literally; the numbers print under --why
 - decision-flat-refinements: as an implication (decision-flat-refinements@valid) and literally; the numbers print under --why
 - decision-problems-lean-done: as an implication (decision-problems-lean-done@valid) and literally; the numbers print under --why
 - deck-collapse-statement: as an implication (deck-collapse-statement@valid) and literally; the numbers print under --why
-- deconfusing.corollary-a: as an implication (deconfusing.corollary-a@valid) and literally; the numbers print under --why
-- deconfusing.corollary-b: as an implication (deconfusing.corollary-b@valid) and literally; the numbers print under --why
-- deconfusing.corollary-limit: as an implication (deconfusing.corollary-limit@valid) and literally; the numbers print under --why
-- deconfusing.theorem1: as an implication (deconfusing.theorem1@valid) and literally; the numbers print under --why
-- deconfusing.theorem2a: as an implication (deconfusing.theorem2a@valid) and literally; the numbers print under --why
-- deconfusing.theorem2b-strict: as an implication (deconfusing.theorem2b-strict@valid) and literally; the numbers print under --why
-- deconfusing.theorem2b: as an implication (deconfusing.theorem2b@valid) and literally; the numbers print under --why
-- deconfusing.theorem2c-tau: as an implication (deconfusing.theorem2c-tau@valid) and literally; the numbers print under --why
-- deconfusing.theorem2c: as an implication (deconfusing.theorem2c@valid) and literally; the numbers print under --why
-- deconfusing.theorem3a-rate: as an implication (deconfusing.theorem3a-rate@valid) and literally; the numbers print under --why
-- deconfusing.theorem3a: as an implication (deconfusing.theorem3a@valid) and literally; the numbers print under --why
-- deconfusing.theorem3b: as an implication (deconfusing.theorem3b@valid) and literally; the numbers print under --why
-- delegation.bridge-unconditional: as an implication (delegation.bridge-unconditional@valid) and literally; the numbers print under --why
-- delegation.bridge: as an implication (delegation.bridge@valid) and literally; the numbers print under --why
-- delegation.gradetrust-refinement: as an implication (delegation.gradetrust-refinement@valid) and literally; the numbers print under --why
 - derivation-via-approximate-dd: as an implication (derivation-via-approximate-dd@valid) and literally; the numbers print under --why
 - deterrence-not-identified-on-path: as an implication (deterrence-not-identified-on-path@valid) and literally; the numbers print under --why
 - direct-route-via-b1: as an implication (direct-route-via-b1@valid) and literally; the numbers print under --why
@@ -5772,18 +5732,7 @@ Each `and` with assumption or hypothesis leaves, read with those leaves held tru
 - dp-dutch-book-done: as an implication (dp-dutch-book-done@valid) and literally; the numbers print under --why
 - erosion-under-silence: as an implication (erosion-under-silence@valid) and literally; the numbers print under --why
 - exact-self-trust-refuted: as an implication (exact-self-trust-refuted@valid) and literally; the numbers print under --why
-- exposure.greedy-duality: as an implication (exposure.greedy-duality@valid) and literally; the numbers print under --why
-- exposure.harvest-attained: as an implication (exposure.harvest-attained@valid) and literally; the numbers print under --why
-- exposure.harvest-bound: as an implication (exposure.harvest-bound@valid) and literally; the numbers print under --why
 - fa-trust-half-weak-grades: as an implication (fa-trust-half-weak-grades@valid) and literally; the numbers print under --why
-- force.deductive-criterion: as an implication (force.deductive-criterion@valid) and literally; the numbers print under --why
-- force.deductive-cumulative-nonneg: as an implication (force.deductive-cumulative-nonneg@valid) and literally; the numbers print under --why
-- force.deductive-day-nonneg: as an implication (force.deductive-day-nonneg@valid) and literally; the numbers print under --why
-- force.deductive-inductor: as an implication (force.deductive-inductor@valid) and literally; the numbers print under --why
-- force.deductive-witness: as an implication (force.deductive-witness@valid) and literally; the numbers print under --why
-- force.preservation: as an implication (force.preservation@valid) and literally; the numbers print under --why
-- force.row-tolerance: as an implication (force.row-tolerance@valid) and literally; the numbers print under --why
-- force.strategy-value: as an implication (force.strategy-value@valid) and literally; the numbers print under --why
 - formal-core-v2-checked: as an implication (formal-core-v2-checked@valid) and literally; the numbers print under --why
 - front-running-anticipated-pushes: as an implication (front-running-anticipated-pushes@valid) and literally; the numbers print under --why
 - general-modification-object: as an implication (general-modification-object@valid) and literally; the numbers print under --why
@@ -5791,135 +5740,39 @@ Each `and` with assumption or hypothesis leaves, read with those leaves held tru
 - harmony-as-bargaining: as an implication (harmony-as-bargaining@valid) and literally; the numbers print under --why
 - hedged-value-unconditional: as an implication (hedged-value-unconditional@valid) and literally; the numbers print under --why
 - ic-informal: as an implication (ic-informal@valid) and literally; the numbers print under --why
-- inductor.certificate-transport: as an implication (inductor.certificate-transport@valid) and literally; the numbers print under --why
-- inductor.conformance: as an implication (inductor.conformance@valid) and literally; the numbers print under --why
-- inductor.grounded-survivors: as an implication (inductor.grounded-survivors@valid) and literally; the numbers print under --why
-- inductor.warrant-inductor: as an implication (inductor.warrant-inductor@valid) and literally; the numbers print under --why
 - inferability-and-positivity: as an implication (inferability-and-positivity@valid) and literally; the numbers print under --why
 - inferability-positivity: as an implication (inferability-positivity@valid) and literally; the numbers print under --why
-- integrity.evolution-conservation: as an implication (integrity.evolution-conservation@valid) and literally; the numbers print under --why
-- integrity.faithful-carry: as an implication (integrity.faithful-carry@valid) and literally; the numbers print under --why
-- integrity.propagate-to-segment: as an implication (integrity.propagate-to-segment@valid) and literally; the numbers print under --why
-- integrity.receipts-immutable: as an implication (integrity.receipts-immutable@valid) and literally; the numbers print under --why
-- jurisdiction.static-view-eq: as an implication (jurisdiction.static-view-eq@valid) and literally; the numbers print under --why
-- jurisdiction.value-eq-of-price-realization: as an implication (jurisdiction.value-eq-of-price-realization@valid) and literally; the numbers print under --why
 - kernel-box1-fidelity-vs-fud: as an implication (kernel-box1-fidelity-vs-fud@valid) and literally; the numbers print under --why
 - kernel-box2-mediation: as an implication (kernel-box2-mediation@valid) and literally; the numbers print under --why
 - kernel-conditioning-fails-witness: as an implication (kernel-conditioning-fails-witness@valid) and literally; the numbers print under --why
 - kernel-restoration: as an implication (kernel-restoration@valid) and literally; the numbers print under --why
-- kernel.box1-fidelity-versus-fully-updated-deference: as an implication (kernel.box1-fidelity-versus-fully-updated-deference@valid) and literally; the numbers print under --why
-- kernel.box2-dominance: as an implication (kernel.box2-dominance@valid) and literally; the numbers print under --why
-- kernel.box2-finite-time: as an implication (kernel.box2-finite-time@valid) and literally; the numbers print under --why
-- kernel.box2-mediation-faithful: as an implication (kernel.box2-mediation-faithful@valid) and literally; the numbers print under --why
-- kernel.box3-gap-exchange-rate: as an implication (kernel.box3-gap-exchange-rate@valid) and literally; the numbers print under --why
-- kernel.box3-no-incentive-to-compromise: as an implication (kernel.box3-no-incentive-to-compromise@valid) and literally; the numbers print under --why
-- kernel.box3-no-laundering: as an implication (kernel.box3-no-laundering@valid) and literally; the numbers print under --why
-- kernel.box3-restoration: as an implication (kernel.box3-restoration@valid) and literally; the numbers print under --why
-- kernel.corrigible-fidelity-score: as an implication (kernel.corrigible-fidelity-score@valid) and literally; the numbers print under --why
-- kernel.corrigible-generic: as an implication (kernel.corrigible-generic@valid) and literally; the numbers print under --why
-- kernel.extension-bria-realization: as an implication (kernel.extension-bria-realization@valid) and literally; the numbers print under --why
-- kernel.extension-exploration-realization: as an implication (kernel.extension-exploration-realization@valid) and literally; the numbers print under --why
-- kernel.extension-realized-rate: as an implication (kernel.extension-realized-rate@valid) and literally; the numbers print under --why
-- kernel.hierarchy-history: as an implication (kernel.hierarchy-history@valid) and literally; the numbers print under --why
-- kernel.hierarchy-per-decision: as an implication (kernel.hierarchy-per-decision@valid) and literally; the numbers print under --why
-- kernel.subjective-exchange-rate: as an implication (kernel.subjective-exchange-rate@valid) and literally; the numbers print under --why
 - learning-versus-freezing: as an implication (learning-versus-freezing@valid) and literally; the numbers print under --why
 - legit-composition: as an implication (legit-composition@valid) and literally; the numbers print under --why
 - legit-ddb-transfer: as an implication (legit-ddb-transfer@valid) and literally; the numbers print under --why
 - legit-locality-forced: as an implication (legit-locality-forced@valid) and literally; the numbers print under --why
 - legit-reflection-unsat-modest: as an implication (legit-reflection-unsat-modest@valid) and literally; the numbers print under --why
 - legitimacy-conditioned-reflection: as an implication (legitimacy-conditioned-reflection@valid) and literally; the numbers print under --why
-- legitimacy.answerable: as an implication (legitimacy.answerable@valid) and literally; the numbers print under --why
-- legitimacy.endpoint-trans: as an implication (legitimacy.endpoint-trans@valid) and literally; the numbers print under --why
-- legitimacy.evolution-conservation: as an implication (legitimacy.evolution-conservation@valid) and literally; the numbers print under --why
-- legitimacy.faithful-carry: as an implication (legitimacy.faithful-carry@valid) and literally; the numbers print under --why
-- legitimacy.payload-of-view: as an implication (legitimacy.payload-of-view@valid) and literally; the numbers print under --why
-- legitimacy.propagate-to-segment: as an implication (legitimacy.propagate-to-segment@valid) and literally; the numbers print under --why
-- legitimacy.receipts-immutable: as an implication (legitimacy.receipts-immutable@valid) and literally; the numbers print under --why
-- legitimacy.segment-trans: as an implication (legitimacy.segment-trans@valid) and literally; the numbers print under --why
 - li-corrigibilization-theorem: as an implication (li-corrigibilization-theorem@valid) and literally; the numbers print under --why
 - li-deference-collapse-scoped: as an implication (li-deference-collapse-scoped@valid) and literally; the numbers print under --why
 - li-deference-collapse: as an implication (li-deference-collapse@valid) and literally; the numbers print under --why
 - li-level-computability-certificates: as an implication (li-level-computability-certificates@valid) and literally; the numbers print under --why
-- li.assessment.budgeter-exploits: as an implication (li.assessment.budgeter-exploits@valid) and literally; the numbers print under --why
-- li.assessment.budgeter-floor: as an implication (li.assessment.budgeter-floor@valid) and literally; the numbers print under --why
-- li.assessment.budgeter-value: as an implication (li.assessment.budgeter-value@valid) and literally; the numbers print under --why
-- li.assessment.criterion: as an implication (li.assessment.criterion@valid) and literally; the numbers print under --why
-- li.assessment.firm-dominance: as an implication (li.assessment.firm-dominance@valid) and literally; the numbers print under --why
 - local-criterion-three-cells: as an implication (local-criterion-three-cells@valid) and literally; the numbers print under --why
 - logical-counterfactuals-troll-bridge: as an implication (logical-counterfactuals-troll-bridge@valid) and literally; the numbers print under --why
-- magnitude.mixture-networth-zero: as an implication (magnitude.mixture-networth-zero@valid) and literally; the numbers print under --why
-- magnitude.not-trader-payoff: as an implication (magnitude.not-trader-payoff@valid) and literally; the numbers print under --why
-- magnitude.sharp-trader-networth: as an implication (magnitude.sharp-trader-networth@valid) and literally; the numbers print under --why
-- magnitude.signed-bounded-actual: as an implication (magnitude.signed-bounded-actual@valid) and literally; the numbers print under --why
-- magnitude.signed-bounded: as an implication (magnitude.signed-bounded@valid) and literally; the numbers print under --why
-- magnitude.sq-error-split: as an implication (magnitude.sq-error-split@valid) and literally; the numbers print under --why
-- magnitude.unit-trader-networth: as an implication (magnitude.unit-trader-networth@valid) and literally; the numbers print under --why
 - mart-implies-value-kernel: as an implication (mart-implies-value-kernel@valid) and literally; the numbers print under --why
 - mart-implies-value-refuted-unconditional: as an implication (mart-implies-value-refuted-unconditional@valid) and literally; the numbers print under --why
-- maxmin.converse: as an implication (maxmin.converse@valid) and literally; the numbers print under --why
-- maxmin.representation: as an implication (maxmin.representation@valid) and literally; the numbers print under --why
-- ni.progress-bound: as an implication (ni.progress-bound@valid) and literally; the numbers print under --why
-- open-integrity.answerable: as an implication (open-integrity.answerable@valid) and literally; the numbers print under --why
-- open-integrity.endpoint-trans: as an implication (open-integrity.endpoint-trans@valid) and literally; the numbers print under --why
-- open-integrity.segment-trans: as an implication (open-integrity.segment-trans@valid) and literally; the numbers print under --why
-- openness.certplus-is-robust-openness: as an implication (openness.certplus-is-robust-openness@valid) and literally; the numbers print under --why
-- openness.persistence-sufficient: as an implication (openness.persistence-sufficient@valid) and literally; the numbers print under --why
 - osg-theorem1-corollary: as an implication (osg-theorem1-corollary@valid) and literally; the numbers print under --why
 - p2-manages-the-news: as an implication (p2-manages-the-news@valid) and literally; the numbers print under --why
 - paper-tiling-formalized: as an implication (paper-tiling-formalized@valid) and literally; the numbers print under --why
-- post.flood-below-asking: as an implication (post.flood-below-asking@valid) and literally; the numbers print under --why
-- post.theorem-li: as an implication (post.theorem-li@valid) and literally; the numbers print under --why
-- post.theorem: as an implication (post.theorem@valid) and literally; the numbers print under --why
-- post.witness-control-maximizer: as an implication (post.witness-control-maximizer@valid) and literally; the numbers print under --why
-- post.witness-learned-weight: as an implication (post.witness-learned-weight@valid) and literally; the numbers print under --why
-- post.witness-same-level: as an implication (post.witness-same-level@valid) and literally; the numbers print under --why
-- post.witness-sole-authority: as an implication (post.witness-sole-authority@valid) and literally; the numbers print under --why
 - pressure-as-external-trader: as an implication (pressure-as-external-trader@valid) and literally; the numbers print under --why
-- progress.edge-bound-quadratic: as an implication (progress.edge-bound-quadratic@valid) and literally; the numbers print under --why
-- progress.edge-bound: as an implication (progress.edge-bound@valid) and literally; the numbers print under --why
 - ps-cor614-orbit-count: as an implication (ps-cor614-orbit-count@valid) and literally; the numbers print under --why
 - ps-trained-systems-seek-power: as an implication (ps-trained-systems-seek-power@valid) and literally; the numbers print under --why
-- rebuttal.liability-rebutted: as an implication (rebuttal.liability-rebutted@valid) and literally; the numbers print under --why
-- rebuttal.settleform-sound: as an implication (rebuttal.settleform-sound@valid) and literally; the numbers print under --why
-- region.hull: as an implication (region.hull@valid) and literally; the numbers print under --why
-- region.patterns-complete: as an implication (region.patterns-complete@valid) and literally; the numbers print under --why
-- region.patterns-nonempty-iff: as an implication (region.patterns-nonempty-iff@valid) and literally; the numbers print under --why
-- region.patterns-sound: as an implication (region.patterns-sound@valid) and literally; the numbers print under --why
-- seed.eventually-const: as an implication (seed.eventually-const@valid) and literally; the numbers print under --why
-- seed.forced-interval-bounds: as an implication (seed.forced-interval-bounds@valid) and literally; the numbers print under --why
-- seed.forced-interval-spec: as an implication (seed.forced-interval-spec@valid) and literally; the numbers print under --why
-- seed.independence-strict: as an implication (seed.independence-strict@valid) and literally; the numbers print under --why
 - selection-collapse--corrigibility-risk: as an implication (selection-collapse--corrigibility-risk@valid) and literally; the numbers print under --why
-- shortfall.atom-generable: as an implication (shortfall.atom-generable@valid) and literally; the numbers print under --why
-- shortfall.deferred-ahead: as an implication (shortfall.deferred-ahead@valid) and literally; the numbers print under --why
-- shortfall.deferred-eventually-excluded: as an implication (shortfall.deferred-eventually-excluded@valid) and literally; the numbers print under --why
-- shortfall.eventually-excluded: as an implication (shortfall.eventually-excluded@valid) and literally; the numbers print under --why
-- shortfall.security-generable: as an implication (shortfall.security-generable@valid) and literally; the numbers print under --why
-- shortfall.table-generable: as an implication (shortfall.table-generable@valid) and literally; the numbers print under --why
 - shutdown-button-toy: as an implication (shutdown-button-toy@valid) and literally; the numbers print under --why
-- sincerity.content-fact: as an implication (sincerity.content-fact@valid) and literally; the numbers print under --why
-- smoke.faf-asymp-refl: as an implication (smoke.faf-asymp-refl@valid) and literally; the numbers print under --why
-- substitution.extensional-admits-both: as an implication (substitution.extensional-admits-both@valid) and literally; the numbers print under --why
-- substitution.separation-requires-disagreement: as an implication (substitution.separation-requires-disagreement@valid) and literally; the numbers print under --why
-- substitution.sim-depends-on-induced-choice: as an implication (substitution.sim-depends-on-induced-choice@valid) and literally; the numbers print under --why
-- substitution.unpredictability-separates: as an implication (substitution.unpredictability-separates@valid) and literally; the numbers print under --why
-- thin.correct-of-thick: as an implication (thin.correct-of-thick@valid) and literally; the numbers print under --why
-- thin.covert-blocking-correct-iff: as an implication (thin.covert-blocking-correct-iff@valid) and literally; the numbers print under --why
-- thin.preservation-pair: as an implication (thin.preservation-pair@valid) and literally; the numbers print under --why
-- thin.preservation: as an implication (thin.preservation@valid) and literally; the numbers print under --why
-- thin.reflection-inherited-value: as an implication (thin.reflection-inherited-value@valid) and literally; the numbers print under --why
-- thin.sufficient-of-integrity-openness: as an implication (thin.sufficient-of-integrity-openness@valid) and literally; the numbers print under --why
-- thin.value-loss-le-defects: as an implication (thin.value-loss-le-defects@valid) and literally; the numbers print under --why
-- thin.value-of-correct-sufficient: as an implication (thin.value-of-correct-sufficient@valid) and literally; the numbers print under --why
-- thin.value-of-thick: as an implication (thin.value-of-thick@valid) and literally; the numbers print under --why
 - thm-power-seeking-optimal: as an implication (thm-power-seeking-optimal@valid) and literally; the numbers print under --why
 - thornley-three-theorems: as an implication (thornley-three-theorems@valid) and literally; the numbers print under --why
 - tiling-via-causal-order: as an implication (tiling-via-causal-order@valid) and literally; the numbers print under --why
 - timely-pointwise-tower-refuted-in-setting: as an implication (timely-pointwise-tower-refuted-in-setting@valid) and literally; the numbers print under --why
 - trace-nonrecoverability: as an implication (trace-nonrecoverability@valid) and literally; the numbers print under --why
-- transparent.blind-payload: as an implication (transparent.blind-payload@valid) and literally; the numbers print under --why
-- transparent.posterior-weight-eq: as an implication (transparent.posterior-weight-eq@valid) and literally; the numbers print under --why
 - troll-bridge-modal-classified: as an implication (troll-bridge-modal-classified@valid) and literally; the numbers print under --why
 - turner-vnm-fact: as an implication (turner-vnm-fact@valid) and literally; the numbers print under --why
 - two-lesions-propositions-checked: as an implication (two-lesions-propositions-checked@valid) and literally; the numbers print under --why
@@ -5927,9 +5780,6 @@ Each `and` with assumption or hypothesis leaves, read with those leaves held tru
 - updateful-when-appropriate: as an implication (updateful-when-appropriate@valid) and literally; the numbers print under --why
 - updateless-p2-cellwise-p3: as an implication (updateless-p2-cellwise-p3@valid) and literally; the numbers print under --why
 - void-branch-deterrence-floor--corrigibility-risk: as an implication (void-branch-deterrence-floor--corrigibility-risk@valid) and literally; the numbers print under --why
-- warrant.licence-chain: as an implication (warrant.licence-chain@valid) and literally; the numbers print under --why
-- warrant.selection-not-transparent: as an implication (warrant.selection-not-transparent@valid) and literally; the numbers print under --why
-- warrant.supported-admissible: as an implication (warrant.supported-admissible@valid) and literally; the numbers print under --why
 - wirehead-iff-finite: as an implication (wirehead-iff-finite@valid) and literally; the numbers print under --why
 
 ## Valuation nodes
@@ -6017,105 +5867,60 @@ The outside option and the undescribed failure, each a cases node over the outco
 | arg-utility-change | leaf/step | 2 (both) | AI number | open | 1 | 3 |
 | asklist.offprotocol-deviation-finite.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | asklist.offprotocol-deviation-finite.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| asklist.offprotocol-deviation-finite.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| asklist.offprotocol-deviation-finite.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| asklist.offprotocol-deviation-finite.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| asklist.offprotocol-deviation-finite.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| asklist.offprotocol-deviation-finite | and | 2 (both) |  | open | 1 | 1 |
-| asklist.offprotocol-deviation-finite.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| asklist.offprotocol-deviation-finite.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| asklist.offprotocol-deviation-finite | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| asklist.offprotocol-deviation-finite.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | asklist.order-by-want-tainted.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | asklist.order-by-want-tainted.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| asklist.order-by-want-tainted | and | 2 (both) |  | open | 1 | 1 |
-| asklist.order-by-want-tainted.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| asklist.order-by-want-tainted | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| asklist.order-by-want-tainted.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | asklist.rows-keep-verdicts-counted.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | asklist.rows-keep-verdicts-counted.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| asklist.rows-keep-verdicts-counted | and | 2 (both) |  | open | 1 | 1 |
-| asklist.rows-keep-verdicts-counted.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| asklist.rows-keep-verdicts-counted | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| asklist.rows-keep-verdicts-counted.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | asklist.rows-keep-verdicts-tainted.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | asklist.rows-keep-verdicts-tainted.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| asklist.rows-keep-verdicts-tainted | and | 2 (both) |  | open | 1 | 1 |
-| asklist.rows-keep-verdicts-tainted.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| asklist.rows-keep-verdicts-tainted | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| asklist.rows-keep-verdicts-tainted.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | asklist.volume-by-want-tainted.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | asklist.volume-by-want-tainted.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| asklist.volume-by-want-tainted | and | 2 (both) |  | open | 1 | 1 |
-| asklist.volume-by-want-tainted.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| asklist.volume-by-want-tainted | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| asklist.volume-by-want-tainted.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | authority-typed-corrigibility.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 6 |
 | authority-typed-corrigibility.improvable | or | 2 (both) | AI number, improvement claim on authority-typed-corrigibility (reality: real training and deployment interfaces) | open | 1 | 1 |
 | authority-typed-corrigibility | and | 2 (both) | AI number | open | 1 | 6 |
 | authority.approval-discount-defeated.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | authority.approval-discount-defeated.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| authority.approval-discount-defeated.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.approval-discount-defeated.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.approval-discount-defeated | and | 2 (both) |  | open | 1 | 1 |
-| authority.approval-discount-defeated.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| authority.approval-discount-defeated.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| authority.approval-discount-defeated | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| authority.approval-discount-defeated.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | authority.comprehension-short.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | authority.comprehension-short.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| authority.comprehension-short.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.comprehension-short.h10 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.comprehension-short.h11 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.comprehension-short.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.comprehension-short.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.comprehension-short.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.comprehension-short.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.comprehension-short.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.comprehension-short.h7 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.comprehension-short.h8 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.comprehension-short.h9 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.comprehension-short | and | 2 (both) |  | open | 1 | 1 |
-| authority.comprehension-short.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| authority.comprehension-short.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| authority.comprehension-short | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| authority.comprehension-short.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | authority.exchange-rate-queue.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | authority.exchange-rate-queue.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| authority.exchange-rate-queue.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.exchange-rate-queue.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.exchange-rate-queue.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.exchange-rate-queue.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.exchange-rate-queue | and | 2 (both) |  | open | 1 | 1 |
-| authority.exchange-rate-queue.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| authority.exchange-rate-queue.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| authority.exchange-rate-queue | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| authority.exchange-rate-queue.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | authority.flood-caused-shortfall.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | authority.flood-caused-shortfall.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| authority.flood-caused-shortfall.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.flood-caused-shortfall.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.flood-caused-shortfall.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.flood-caused-shortfall.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.flood-caused-shortfall.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.flood-caused-shortfall | and | 2 (both) |  | open | 1 | 1 |
-| authority.flood-caused-shortfall.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| authority.flood-caused-shortfall.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| authority.flood-caused-shortfall | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| authority.flood-caused-shortfall.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | authority.queue-no-bypass.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | authority.queue-no-bypass.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| authority.queue-no-bypass.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.queue-no-bypass.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.queue-no-bypass | and | 2 (both) |  | open | 1 | 1 |
-| authority.queue-no-bypass.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| authority.queue-no-bypass.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| authority.queue-no-bypass | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| authority.queue-no-bypass.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | authority.queue-no-caused-shortfall.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | authority.queue-no-caused-shortfall.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| authority.queue-no-caused-shortfall.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.queue-no-caused-shortfall.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.queue-no-caused-shortfall.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.queue-no-caused-shortfall.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.queue-no-caused-shortfall.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.queue-no-caused-shortfall | and | 2 (both) |  | open | 1 | 1 |
-| authority.queue-no-caused-shortfall.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| authority.queue-no-caused-shortfall.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| authority.queue-no-caused-shortfall | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| authority.queue-no-caused-shortfall.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | authority.revocation-default.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | authority.revocation-default.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| authority.revocation-default.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authority.revocation-default | and | 2 (both) |  | open | 1 | 1 |
-| authority.revocation-default.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| authority.revocation-default | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| authority.revocation-default.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | authorship-and-transparency | frame | 2 (both) | owner has not confirmed (drafted from the wiki) | open | 1 | 0 (informs no goal) |
 | authorship.mediation-by-reexecution.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | authorship.mediation-by-reexecution.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| authorship.mediation-by-reexecution.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authorship.mediation-by-reexecution.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authorship.mediation-by-reexecution.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| authorship.mediation-by-reexecution | and | 2 (both) |  | open | 1 | 1 |
-| authorship.mediation-by-reexecution.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| authorship.mediation-by-reexecution.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| authorship.mediation-by-reexecution | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| authorship.mediation-by-reexecution.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | awaiting-author-digest | leaf/task | 2 (both) | AI number | open | 1 | 1 |
 | bargain-under-lapsing-enforcement | leaf/question | 2 (both) | AI number, given participation-constraint-literal-exit | open | 0 | 1 |
 | base-rate-working-picture.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 1 |
@@ -6197,87 +6002,28 @@ The outside option and the undescribed failure, each a cases node over the outco
 | certificate-enforcement | leaf/step | 2 (both) | AI number, given task-certificate-redesign | open | 1 | 1 |
 | certificate.advantage-estimate.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | certificate.advantage-estimate.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| certificate.advantage-estimate.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.advantage-estimate.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.advantage-estimate.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.advantage-estimate.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.advantage-estimate.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.advantage-estimate.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.advantage-estimate.h7 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.advantage-estimate.h8 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.advantage-estimate | and | 2 (both) |  | open | 1 | 1 |
-| certificate.advantage-estimate.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| certificate.advantage-estimate.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| certificate.advantage-estimate | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| certificate.advantage-estimate.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | certificate.defect-bound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | certificate.defect-bound.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| certificate.defect-bound.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.defect-bound.h10 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.defect-bound.h11 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.defect-bound.h12 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.defect-bound.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.defect-bound.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.defect-bound.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.defect-bound.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.defect-bound.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.defect-bound.h7 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.defect-bound.h8 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.defect-bound.h9 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.defect-bound | and | 2 (both) |  | open | 1 | 1 |
-| certificate.defect-bound.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| certificate.defect-bound.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| certificate.defect-bound | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| certificate.defect-bound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | certificate.grade-register-strict.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | certificate.grade-register-strict.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| certificate.grade-register-strict.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.grade-register-strict.h10 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.grade-register-strict.h11 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.grade-register-strict.h12 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.grade-register-strict.h13 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.grade-register-strict.h14 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.grade-register-strict.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.grade-register-strict.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.grade-register-strict.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.grade-register-strict.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.grade-register-strict.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.grade-register-strict.h7 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.grade-register-strict.h8 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.grade-register-strict.h9 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.grade-register-strict | and | 2 (both) |  | open | 1 | 1 |
-| certificate.grade-register-strict.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| certificate.grade-register-strict.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| certificate.grade-register-strict | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| certificate.grade-register-strict.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | certificate.margin-forces-agreement.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | certificate.margin-forces-agreement.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| certificate.margin-forces-agreement.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.margin-forces-agreement.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.margin-forces-agreement.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.margin-forces-agreement.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.margin-forces-agreement | and | 2 (both) |  | open | 1 | 1 |
-| certificate.margin-forces-agreement.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| certificate.margin-forces-agreement.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| certificate.margin-forces-agreement | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| certificate.margin-forces-agreement.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | certificate.override-bound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | certificate.override-bound.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| certificate.override-bound.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.override-bound.h10 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.override-bound.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.override-bound.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.override-bound.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.override-bound.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.override-bound.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.override-bound.h7 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.override-bound.h8 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.override-bound.h9 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.override-bound | and | 2 (both) |  | open | 1 | 1 |
-| certificate.override-bound.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| certificate.override-bound.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| certificate.override-bound | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| certificate.override-bound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | certificate.selection-eq-of-margin.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | certificate.selection-eq-of-margin.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| certificate.selection-eq-of-margin.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.selection-eq-of-margin.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.selection-eq-of-margin.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.selection-eq-of-margin.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.selection-eq-of-margin.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| certificate.selection-eq-of-margin | and | 2 (both) |  | open | 1 | 1 |
-| certificate.selection-eq-of-margin.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| certificate.selection-eq-of-margin.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| certificate.selection-eq-of-margin | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| certificate.selection-eq-of-margin.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | cf-ffs-in-rv-morphisms | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | channel-agent-side-content | leaf/step | 2 (both) | AI number, given the-channel | open | 1 | 1 |
 | channel-corrigibility-content | or | 2 (both) | AI number | open | 2 | 1 |
@@ -6302,34 +6048,12 @@ The outside option and the undescribed failure, each a cases node over the outco
 | coherence-without-ground-truth | leaf/question | 2 (both) | AI number, given li-deference-collapse@valid | open | 1 | 1 |
 | coherence.modulus-net-cover.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | coherence.modulus-net-cover.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| coherence.modulus-net-cover.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| coherence.modulus-net-cover.h10 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| coherence.modulus-net-cover.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| coherence.modulus-net-cover.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| coherence.modulus-net-cover.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| coherence.modulus-net-cover.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| coherence.modulus-net-cover.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| coherence.modulus-net-cover.h7 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| coherence.modulus-net-cover.h8 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| coherence.modulus-net-cover.h9 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| coherence.modulus-net-cover | and | 2 (both) |  | open | 1 | 1 |
-| coherence.modulus-net-cover.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| coherence.modulus-net-cover.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| coherence.modulus-net-cover | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| coherence.modulus-net-cover.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | coherence.modulus-soundness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | coherence.modulus-soundness.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| coherence.modulus-soundness.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| coherence.modulus-soundness.h10 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| coherence.modulus-soundness.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| coherence.modulus-soundness.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| coherence.modulus-soundness.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| coherence.modulus-soundness.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| coherence.modulus-soundness.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| coherence.modulus-soundness.h7 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| coherence.modulus-soundness.h8 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| coherence.modulus-soundness.h9 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| coherence.modulus-soundness | and | 2 (both) |  | open | 1 | 1 |
-| coherence.modulus-soundness.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| coherence.modulus-soundness.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| coherence.modulus-soundness | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| coherence.modulus-soundness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | coherent-prices-are-convex-hull-of-resolutions | leaf/step | 2 (both) | AI number, no belief | open | 1 | 0 (informs no goal) |
 | cole-stability-reading | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | collapse-write-up-draft | leaf/task | 2 (both) | AI number, given publication-form-decided | open | 0 | 1 |
@@ -6344,34 +6068,16 @@ The outside option and the undescribed failure, each a cases node over the outco
 | comparison-theorem-under-relational-index-maps | leaf/question | 2 (both) | AI number, given permissive-morphisms-wanted | open | 0 | 1 |
 | compiler.constraints-end-to-end.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | compiler.constraints-end-to-end.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| compiler.constraints-end-to-end.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| compiler.constraints-end-to-end | and | 2 (both) |  | open | 1 | 1 |
-| compiler.constraints-end-to-end.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| compiler.constraints-end-to-end.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| compiler.constraints-end-to-end | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| compiler.constraints-end-to-end.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | compiler.deductive-end-to-end.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | compiler.deductive-end-to-end.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| compiler.deductive-end-to-end.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| compiler.deductive-end-to-end.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| compiler.deductive-end-to-end.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| compiler.deductive-end-to-end.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| compiler.deductive-end-to-end.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| compiler.deductive-end-to-end.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| compiler.deductive-end-to-end.h7 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| compiler.deductive-end-to-end | and | 2 (both) |  | open | 1 | 1 |
-| compiler.deductive-end-to-end.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| compiler.deductive-end-to-end.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| compiler.deductive-end-to-end | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| compiler.deductive-end-to-end.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | compiler.schedule-end-to-end.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | compiler.schedule-end-to-end.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| compiler.schedule-end-to-end.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| compiler.schedule-end-to-end.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| compiler.schedule-end-to-end.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| compiler.schedule-end-to-end.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| compiler.schedule-end-to-end.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| compiler.schedule-end-to-end.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| compiler.schedule-end-to-end.h7 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| compiler.schedule-end-to-end | and | 2 (both) |  | open | 1 | 1 |
-| compiler.schedule-end-to-end.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| compiler.schedule-end-to-end.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| compiler.schedule-end-to-end | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| compiler.schedule-end-to-end.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | complete-feedback-formal-model | leaf/step | 2 (both) | AI number | open | 2 | 1 |
 | computability-fork | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | computation-implies-triviality | leaf/question | 2 (both) | AI number, given fine-grained-functionalism-reading | open | 0 | 1 |
@@ -6409,22 +6115,16 @@ The outside option and the undescribed failure, each a cases node over the outco
 | constructiveness-favors-li | leaf/assumption | 2 (both) | AI number | open | 0 | 2 |
 | convergence.discord-pairwise.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | convergence.discord-pairwise.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| convergence.discord-pairwise | and | 2 (both) |  | open | 1 | 1 |
-| convergence.discord-pairwise.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| convergence.discord-pairwise.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| convergence.discord-pairwise | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| convergence.discord-pairwise.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | convergence.discord-persists.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | convergence.discord-persists.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| convergence.discord-persists.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| convergence.discord-persists | and | 2 (both) |  | open | 1 | 1 |
-| convergence.discord-persists.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| convergence.discord-persists | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| convergence.discord-persists.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | convergence.hull-mass-anti.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | convergence.hull-mass-anti.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| convergence.hull-mass-anti.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| convergence.hull-mass-anti.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| convergence.hull-mass-anti.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| convergence.hull-mass-anti | and | 2 (both) |  | open | 1 | 1 |
-| convergence.hull-mass-anti.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| convergence.hull-mass-anti.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| convergence.hull-mass-anti | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| convergence.hull-mass-anti.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | convex-geometry-confined | leaf/step | 2 (both) | AI number | open | 0 | 1 |
 | cooperative-equilibria-as-agents | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
 | coordination-with-others | or | 2 (both) | AI number | open | 1 | 1 |
@@ -6434,30 +6134,28 @@ The outside option and the undescribed failure, each a cases node over the outco
 | correction-through-the-channel | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
 | corrective.advisor-veto.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | corrective.advisor-veto.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| corrective.advisor-veto | and | 2 (both) |  | open | 1 | 1 |
-| corrective.advisor-veto.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| corrective.advisor-veto | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| corrective.advisor-veto.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | corrective.can-correct-future-iff.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | corrective.can-correct-future-iff.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| corrective.can-correct-future-iff | and | 2 (both) |  | open | 1 | 1 |
-| corrective.can-correct-future-iff.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| corrective.can-correct-future-iff.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| corrective.can-correct-future-iff | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| corrective.can-correct-future-iff.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | corrective.can-correct-iff.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | corrective.can-correct-iff.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| corrective.can-correct-iff | and | 2 (both) |  | open | 1 | 1 |
-| corrective.can-correct-iff.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| corrective.can-correct-iff | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| corrective.can-correct-iff.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | corrective.capability-measures-cooperation.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | corrective.capability-measures-cooperation.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| corrective.capability-measures-cooperation | and | 2 (both) |  | open | 1 | 1 |
-| corrective.capability-measures-cooperation.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| corrective.capability-measures-cooperation | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| corrective.capability-measures-cooperation.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | corrective.forecloses-iff.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | corrective.forecloses-iff.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| corrective.forecloses-iff | and | 2 (both) |  | open | 1 | 1 |
-| corrective.forecloses-iff.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| corrective.forecloses-iff.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| corrective.forecloses-iff | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| corrective.forecloses-iff.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | corrective.no-exclusive-effect.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | corrective.no-exclusive-effect.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| corrective.no-exclusive-effect | and | 2 (both) |  | open | 1 | 1 |
-| corrective.no-exclusive-effect.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| corrective.no-exclusive-effect | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| corrective.no-exclusive-effect.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | corrigibility-anti-natural.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
 | corrigibility-anti-natural | and | 2 (both) | AI number | open | 1 | 1 |
 | corrigibility-architecture-round | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
@@ -6547,79 +6245,52 @@ The outside option and the undescribed failure, each a cases node over the outco
 | deck-value-implies-tower | leaf/step | 2 (both) | AI number, given loop-direction-closure | open | 1 | 7 |
 | deconfusing.corollary-a.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | deconfusing.corollary-a.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| deconfusing.corollary-a.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| deconfusing.corollary-a | and | 2 (both) |  | open | 1 | 1 |
-| deconfusing.corollary-a.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| deconfusing.corollary-a | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| deconfusing.corollary-a.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | deconfusing.corollary-b.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | deconfusing.corollary-b.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| deconfusing.corollary-b.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| deconfusing.corollary-b.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| deconfusing.corollary-b.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| deconfusing.corollary-b | and | 2 (both) |  | open | 1 | 1 |
-| deconfusing.corollary-b.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| deconfusing.corollary-b | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| deconfusing.corollary-b.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | deconfusing.corollary-limit.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | deconfusing.corollary-limit.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| deconfusing.corollary-limit.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| deconfusing.corollary-limit.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| deconfusing.corollary-limit | and | 2 (both) |  | open | 1 | 1 |
-| deconfusing.corollary-limit.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| deconfusing.corollary-limit | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| deconfusing.corollary-limit.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | deconfusing.theorem1.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | deconfusing.theorem1.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem1.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| deconfusing.theorem1 | and | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem1.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| deconfusing.theorem1 | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| deconfusing.theorem1.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | deconfusing.theorem2a.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | deconfusing.theorem2a.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem2a.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| deconfusing.theorem2a.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| deconfusing.theorem2a | and | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem2a.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| deconfusing.theorem2a.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| deconfusing.theorem2a | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| deconfusing.theorem2a.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | deconfusing.theorem2b-strict.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | deconfusing.theorem2b-strict.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem2b-strict.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| deconfusing.theorem2b-strict.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| deconfusing.theorem2b-strict | and | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem2b-strict.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| deconfusing.theorem2b-strict.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| deconfusing.theorem2b-strict | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| deconfusing.theorem2b-strict.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | deconfusing.theorem2b.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | deconfusing.theorem2b.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem2b.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| deconfusing.theorem2b | and | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem2b.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| deconfusing.theorem2b.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| deconfusing.theorem2b | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| deconfusing.theorem2b.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | deconfusing.theorem2c-tau.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | deconfusing.theorem2c-tau.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem2c-tau.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| deconfusing.theorem2c-tau | and | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem2c-tau.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| deconfusing.theorem2c-tau.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| deconfusing.theorem2c-tau | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| deconfusing.theorem2c-tau.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | deconfusing.theorem2c.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | deconfusing.theorem2c.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem2c.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| deconfusing.theorem2c | and | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem2c.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| deconfusing.theorem2c.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| deconfusing.theorem2c | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| deconfusing.theorem2c.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | deconfusing.theorem3a-rate.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | deconfusing.theorem3a-rate.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem3a-rate.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| deconfusing.theorem3a-rate.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| deconfusing.theorem3a-rate | and | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem3a-rate.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| deconfusing.theorem3a-rate | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| deconfusing.theorem3a-rate.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | deconfusing.theorem3a.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | deconfusing.theorem3a.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem3a.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| deconfusing.theorem3a.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| deconfusing.theorem3a | and | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem3a.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| deconfusing.theorem3a | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| deconfusing.theorem3a.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | deconfusing.theorem3b.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | deconfusing.theorem3b.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem3b.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| deconfusing.theorem3b.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| deconfusing.theorem3b.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| deconfusing.theorem3b.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| deconfusing.theorem3b | and | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem3b.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| deconfusing.theorem3b | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| deconfusing.theorem3b.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | default-trajectory | cases | 2 (both) | provisional | open | 0 | 0 (informs no goal) |
 | default-trajectory.partition | leaf/partition | 2 (both) |  | open | 0 | 0 (informs no goal) |
 | defensible-ledger-ruled | leaf/task | 2 (both) | AI number | open | 0 | 1 |
@@ -6632,37 +6303,16 @@ The outside option and the undescribed failure, each a cases node over the outco
 | delayed-disclosure-structure-formalized | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | delegation.bridge-unconditional.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | delegation.bridge-unconditional.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| delegation.bridge-unconditional.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| delegation.bridge-unconditional.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| delegation.bridge-unconditional.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| delegation.bridge-unconditional.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| delegation.bridge-unconditional.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| delegation.bridge-unconditional | and | 2 (both) |  | open | 1 | 1 |
-| delegation.bridge-unconditional.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| delegation.bridge-unconditional.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| delegation.bridge-unconditional | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| delegation.bridge-unconditional.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | delegation.bridge.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | delegation.bridge.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| delegation.bridge.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| delegation.bridge.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| delegation.bridge.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| delegation.bridge.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| delegation.bridge | and | 2 (both) |  | open | 1 | 1 |
-| delegation.bridge.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| delegation.bridge.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| delegation.bridge | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| delegation.bridge.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | delegation.gradetrust-refinement.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | delegation.gradetrust-refinement.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| delegation.gradetrust-refinement.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| delegation.gradetrust-refinement.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| delegation.gradetrust-refinement.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| delegation.gradetrust-refinement.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| delegation.gradetrust-refinement.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| delegation.gradetrust-refinement.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| delegation.gradetrust-refinement.h7 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| delegation.gradetrust-refinement.h8 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| delegation.gradetrust-refinement.h9 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| delegation.gradetrust-refinement | and | 2 (both) |  | open | 1 | 1 |
-| delegation.gradetrust-refinement.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| delegation.gradetrust-refinement.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| delegation.gradetrust-refinement | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| delegation.gradetrust-refinement.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | deliberation-fixed-points | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | deliberation-tracking-assumption | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | dependent-type-of-procedure | leaf/task | 2 (both) | AI number | open | 0 | 8 |
@@ -6733,28 +6383,16 @@ The outside option and the undescribed failure, each a cases node over the outco
 | expert-knows-own-estimates | leaf/assumption | 2 (both) | AI number, attribution unvetted, superseded by expert-knows-own-estimates-asymptotically | open | 1 | 1 |
 | exposure.greedy-duality.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | exposure.greedy-duality.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| exposure.greedy-duality.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| exposure.greedy-duality.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| exposure.greedy-duality | and | 2 (both) |  | open | 1 | 1 |
-| exposure.greedy-duality.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| exposure.greedy-duality.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| exposure.greedy-duality | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| exposure.greedy-duality.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | exposure.harvest-attained.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | exposure.harvest-attained.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| exposure.harvest-attained.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| exposure.harvest-attained.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| exposure.harvest-attained.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| exposure.harvest-attained | and | 2 (both) |  | open | 1 | 1 |
-| exposure.harvest-attained.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| exposure.harvest-attained.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| exposure.harvest-attained | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| exposure.harvest-attained.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | exposure.harvest-bound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | exposure.harvest-bound.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| exposure.harvest-bound.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| exposure.harvest-bound.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| exposure.harvest-bound.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| exposure.harvest-bound.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| exposure.harvest-bound | and | 2 (both) |  | open | 1 | 1 |
-| exposure.harvest-bound.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| exposure.harvest-bound.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| exposure.harvest-bound | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| exposure.harvest-bound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | fa-inductor-half | leaf/question | 2 (both) | AI number | open | 1 | 1 |
 | fa-ledger-access-l | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
 | fa-one-way-visibility | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
@@ -6789,60 +6427,36 @@ The outside option and the undescribed failure, each a cases node over the outco
 | fn65-corpus-corrections | leaf/task | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | force.deductive-criterion.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | force.deductive-criterion.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| force.deductive-criterion.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| force.deductive-criterion | and | 2 (both) |  | open | 1 | 1 |
-| force.deductive-criterion.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| force.deductive-criterion.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| force.deductive-criterion | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| force.deductive-criterion.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | force.deductive-cumulative-nonneg.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | force.deductive-cumulative-nonneg.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| force.deductive-cumulative-nonneg.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| force.deductive-cumulative-nonneg.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| force.deductive-cumulative-nonneg | and | 2 (both) |  | open | 1 | 1 |
-| force.deductive-cumulative-nonneg.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| force.deductive-cumulative-nonneg.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| force.deductive-cumulative-nonneg | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| force.deductive-cumulative-nonneg.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | force.deductive-day-nonneg.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | force.deductive-day-nonneg.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| force.deductive-day-nonneg.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| force.deductive-day-nonneg.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| force.deductive-day-nonneg.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| force.deductive-day-nonneg | and | 2 (both) |  | open | 1 | 1 |
-| force.deductive-day-nonneg.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| force.deductive-day-nonneg.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| force.deductive-day-nonneg | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| force.deductive-day-nonneg.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | force.deductive-inductor.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | force.deductive-inductor.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| force.deductive-inductor.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| force.deductive-inductor.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| force.deductive-inductor | and | 2 (both) |  | open | 1 | 1 |
-| force.deductive-inductor.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| force.deductive-inductor.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| force.deductive-inductor | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| force.deductive-inductor.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | force.deductive-witness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | force.deductive-witness.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| force.deductive-witness | and | 2 (both) |  | open | 1 | 1 |
-| force.deductive-witness.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| force.deductive-witness.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| force.deductive-witness | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| force.deductive-witness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | force.preservation.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | force.preservation.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| force.preservation.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| force.preservation | and | 2 (both) |  | open | 1 | 1 |
-| force.preservation.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| force.preservation.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| force.preservation | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| force.preservation.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | force.row-tolerance.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | force.row-tolerance.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| force.row-tolerance.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| force.row-tolerance.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| force.row-tolerance.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| force.row-tolerance.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| force.row-tolerance.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| force.row-tolerance | and | 2 (both) |  | open | 1 | 1 |
-| force.row-tolerance.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| force.row-tolerance.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| force.row-tolerance | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| force.row-tolerance.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | force.strategy-value.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | force.strategy-value.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| force.strategy-value.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| force.strategy-value.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| force.strategy-value | and | 2 (both) |  | open | 1 | 1 |
-| force.strategy-value.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| force.strategy-value.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| force.strategy-value | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| force.strategy-value.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | formal-core-improvable | or | 2 (both) | AI number, improvement claim on decision-problems-formal-core (reality: an embedded agent facing decision problems with predictors) | open | 1 | 1 |
 | formal-core-improvable.residual | leaf/route | 2 (both) | AI number, given decision-problems-formal-core | open | 0 | 2 |
 | formal-core-open-questions.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 8 |
@@ -6926,63 +6540,32 @@ The outside option and the undescribed failure, each a cases node over the outco
 | indistinguishability-table-extended | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | inductor.certificate-transport.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | inductor.certificate-transport.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| inductor.certificate-transport.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.certificate-transport.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.certificate-transport.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.certificate-transport | and | 2 (both) |  | open | 1 | 1 |
-| inductor.certificate-transport.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| inductor.certificate-transport.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| inductor.certificate-transport | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| inductor.certificate-transport.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | inductor.conformance.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | inductor.conformance.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| inductor.conformance.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.conformance.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.conformance.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.conformance | and | 2 (both) |  | open | 1 | 1 |
-| inductor.conformance.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| inductor.conformance.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| inductor.conformance | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| inductor.conformance.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | inductor.contraposition-blocked.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | inductor.contraposition-blocked.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| inductor.contraposition-blocked | and | 2 (both) |  | open | 1 | 1 |
-| inductor.contraposition-blocked.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| inductor.contraposition-blocked | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| inductor.contraposition-blocked.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | inductor.grounded-survivors.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | inductor.grounded-survivors.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| inductor.grounded-survivors | and | 2 (both) |  | open | 1 | 1 |
-| inductor.grounded-survivors.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| inductor.grounded-survivors.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| inductor.grounded-survivors | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| inductor.grounded-survivors.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | inductor.rebuttal-run.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | inductor.rebuttal-run.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| inductor.rebuttal-run | and | 2 (both) |  | open | 1 | 1 |
-| inductor.rebuttal-run.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| inductor.rebuttal-run | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| inductor.rebuttal-run.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | inductor.warrant-inductor.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | inductor.warrant-inductor.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| inductor.warrant-inductor.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.warrant-inductor.h10 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.warrant-inductor.h11 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.warrant-inductor.h12 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.warrant-inductor.h13 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.warrant-inductor.h14 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.warrant-inductor.h15 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.warrant-inductor.h16 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.warrant-inductor.h17 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.warrant-inductor.h18 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.warrant-inductor.h19 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.warrant-inductor.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.warrant-inductor.h20 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.warrant-inductor.h21 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.warrant-inductor.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.warrant-inductor.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.warrant-inductor.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.warrant-inductor.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.warrant-inductor.h7 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.warrant-inductor.h8 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.warrant-inductor.h9 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| inductor.warrant-inductor | and | 2 (both) |  | open | 1 | 1 |
-| inductor.warrant-inductor.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| inductor.warrant-inductor.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| inductor.warrant-inductor | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| inductor.warrant-inductor.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | inductor.witness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | inductor.witness.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| inductor.witness | and | 2 (both) |  | open | 1 | 1 |
-| inductor.witness.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| inductor.witness | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| inductor.witness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | inferability-and-positivity.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 1 |
 | inferability-and-positivity.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
 | inferability-and-positivity | and | 2 (both) | AI number | open | 1 | 1 |
@@ -7004,33 +6587,24 @@ The outside option and the undescribed failure, each a cases node over the outco
 | integrity-and-record | frame | 2 (both) | owner has not confirmed (drafted from wiki/Integrity.md, wiki/Settlement-Interface.md) | open | 1 | 0 (informs no goal) |
 | integrity.evolution-conservation.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | integrity.evolution-conservation.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| integrity.evolution-conservation | and | 2 (both) |  | open | 1 | 1 |
-| integrity.evolution-conservation.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| integrity.evolution-conservation.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| integrity.evolution-conservation | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| integrity.evolution-conservation.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | integrity.faithful-carry.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | integrity.faithful-carry.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| integrity.faithful-carry.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| integrity.faithful-carry.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| integrity.faithful-carry.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| integrity.faithful-carry | and | 2 (both) |  | open | 1 | 1 |
-| integrity.faithful-carry.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| integrity.faithful-carry.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| integrity.faithful-carry | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| integrity.faithful-carry.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | integrity.multiplicity-witness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | integrity.multiplicity-witness.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| integrity.multiplicity-witness | and | 2 (both) |  | open | 1 | 1 |
-| integrity.multiplicity-witness.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| integrity.multiplicity-witness | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| integrity.multiplicity-witness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | integrity.propagate-to-segment.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | integrity.propagate-to-segment.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| integrity.propagate-to-segment | and | 2 (both) |  | open | 1 | 1 |
-| integrity.propagate-to-segment.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| integrity.propagate-to-segment.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| integrity.propagate-to-segment | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| integrity.propagate-to-segment.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | integrity.receipts-immutable.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | integrity.receipts-immutable.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| integrity.receipts-immutable.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| integrity.receipts-immutable.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| integrity.receipts-immutable | and | 2 (both) |  | open | 1 | 1 |
-| integrity.receipts-immutable.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| integrity.receipts-immutable.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| integrity.receipts-immutable | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| integrity.receipts-immutable.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | intentional-stance-characterized | leaf/question | 2 (both) | AI number, given agency-types-catalogue | open | 1 | 2 |
 | inter-inductor-characterized | or | 2 (both) | AI number | open | 2 | 1 |
 | inter-inductor-total-trust | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
@@ -7181,22 +6755,12 @@ The outside option and the undescribed failure, each a cases node over the outco
 | joint-process-model | or | 2 (both) | AI number | open | 2 | 2 |
 | jurisdiction.static-view-eq.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | jurisdiction.static-view-eq.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| jurisdiction.static-view-eq.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| jurisdiction.static-view-eq.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| jurisdiction.static-view-eq | and | 2 (both) |  | open | 1 | 1 |
-| jurisdiction.static-view-eq.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| jurisdiction.static-view-eq.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| jurisdiction.static-view-eq | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| jurisdiction.static-view-eq.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | jurisdiction.value-eq-of-price-realization.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | jurisdiction.value-eq-of-price-realization.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| jurisdiction.value-eq-of-price-realization.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| jurisdiction.value-eq-of-price-realization.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| jurisdiction.value-eq-of-price-realization.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| jurisdiction.value-eq-of-price-realization.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| jurisdiction.value-eq-of-price-realization.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| jurisdiction.value-eq-of-price-realization.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| jurisdiction.value-eq-of-price-realization | and | 2 (both) |  | open | 1 | 1 |
-| jurisdiction.value-eq-of-price-realization.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| jurisdiction.value-eq-of-price-realization.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| jurisdiction.value-eq-of-price-realization | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| jurisdiction.value-eq-of-price-realization.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | kelly-identity-lean-checked | leaf/task | 2 (both) | AI number | open | 0 | 8 |
 | kernel-box1-fidelity-vs-fud.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 6 |
 | kernel-box1-fidelity-vs-fud.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 6 |
@@ -7228,169 +6792,68 @@ The outside option and the undescribed failure, each a cases node over the outco
 | kernel-walls-hold | leaf/assumption | 2 (both) | AI number | open | 1 | 1 |
 | kernel.box1-fidelity-versus-fully-updated-deference.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | kernel.box1-fidelity-versus-fully-updated-deference.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.box1-fidelity-versus-fully-updated-deference.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box1-fidelity-versus-fully-updated-deference.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box1-fidelity-versus-fully-updated-deference.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box1-fidelity-versus-fully-updated-deference.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box1-fidelity-versus-fully-updated-deference.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box1-fidelity-versus-fully-updated-deference.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box1-fidelity-versus-fully-updated-deference.h7 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box1-fidelity-versus-fully-updated-deference | and | 2 (both) |  | open | 1 | 1 |
-| kernel.box1-fidelity-versus-fully-updated-deference.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| kernel.box1-fidelity-versus-fully-updated-deference.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| kernel.box1-fidelity-versus-fully-updated-deference | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| kernel.box1-fidelity-versus-fully-updated-deference.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | kernel.box2-dominance.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | kernel.box2-dominance.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.box2-dominance.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box2-dominance.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box2-dominance.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box2-dominance.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box2-dominance.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box2-dominance.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box2-dominance.h7 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box2-dominance | and | 2 (both) |  | open | 1 | 1 |
-| kernel.box2-dominance.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| kernel.box2-dominance.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| kernel.box2-dominance | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| kernel.box2-dominance.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | kernel.box2-finite-time.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | kernel.box2-finite-time.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.box2-finite-time.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box2-finite-time.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box2-finite-time | and | 2 (both) |  | open | 1 | 1 |
-| kernel.box2-finite-time.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| kernel.box2-finite-time.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| kernel.box2-finite-time | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| kernel.box2-finite-time.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | kernel.box2-mediation-faithful.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | kernel.box2-mediation-faithful.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.box2-mediation-faithful.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box2-mediation-faithful.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box2-mediation-faithful.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box2-mediation-faithful.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box2-mediation-faithful | and | 2 (both) |  | open | 1 | 1 |
-| kernel.box2-mediation-faithful.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| kernel.box2-mediation-faithful.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| kernel.box2-mediation-faithful | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| kernel.box2-mediation-faithful.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | kernel.box3-gap-exchange-rate.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | kernel.box3-gap-exchange-rate.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.box3-gap-exchange-rate.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box3-gap-exchange-rate.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box3-gap-exchange-rate.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box3-gap-exchange-rate.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box3-gap-exchange-rate | and | 2 (both) |  | open | 1 | 1 |
-| kernel.box3-gap-exchange-rate.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| kernel.box3-gap-exchange-rate.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| kernel.box3-gap-exchange-rate | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| kernel.box3-gap-exchange-rate.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | kernel.box3-no-incentive-to-compromise.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | kernel.box3-no-incentive-to-compromise.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.box3-no-incentive-to-compromise.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box3-no-incentive-to-compromise.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box3-no-incentive-to-compromise.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box3-no-incentive-to-compromise.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box3-no-incentive-to-compromise | and | 2 (both) |  | open | 1 | 1 |
-| kernel.box3-no-incentive-to-compromise.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| kernel.box3-no-incentive-to-compromise.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| kernel.box3-no-incentive-to-compromise | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| kernel.box3-no-incentive-to-compromise.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | kernel.box3-no-laundering.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | kernel.box3-no-laundering.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.box3-no-laundering.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box3-no-laundering.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box3-no-laundering.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box3-no-laundering.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.box3-no-laundering | and | 2 (both) |  | open | 1 | 1 |
-| kernel.box3-no-laundering.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| kernel.box3-no-laundering.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| kernel.box3-no-laundering | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| kernel.box3-no-laundering.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | kernel.box3-restoration.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | kernel.box3-restoration.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.box3-restoration | and | 2 (both) |  | open | 1 | 1 |
-| kernel.box3-restoration.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| kernel.box3-restoration.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| kernel.box3-restoration | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| kernel.box3-restoration.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | kernel.corrigible-fidelity-score.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | kernel.corrigible-fidelity-score.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.corrigible-fidelity-score | and | 2 (both) |  | open | 1 | 1 |
-| kernel.corrigible-fidelity-score.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| kernel.corrigible-fidelity-score.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| kernel.corrigible-fidelity-score | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| kernel.corrigible-fidelity-score.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | kernel.corrigible-generic.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | kernel.corrigible-generic.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.corrigible-generic.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.corrigible-generic.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.corrigible-generic.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.corrigible-generic | and | 2 (both) |  | open | 1 | 1 |
-| kernel.corrigible-generic.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| kernel.corrigible-generic.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| kernel.corrigible-generic | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| kernel.corrigible-generic.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | kernel.extension-bria-realization.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | kernel.extension-bria-realization.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.extension-bria-realization.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.extension-bria-realization.h10 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.extension-bria-realization.h11 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.extension-bria-realization.h12 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.extension-bria-realization.h13 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.extension-bria-realization.h14 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.extension-bria-realization.h15 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.extension-bria-realization.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.extension-bria-realization.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.extension-bria-realization.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.extension-bria-realization.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.extension-bria-realization.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.extension-bria-realization.h7 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.extension-bria-realization.h8 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.extension-bria-realization.h9 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.extension-bria-realization | and | 2 (both) |  | open | 1 | 1 |
-| kernel.extension-bria-realization.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| kernel.extension-bria-realization.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| kernel.extension-bria-realization | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| kernel.extension-bria-realization.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | kernel.extension-exploration-realization.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | kernel.extension-exploration-realization.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.extension-exploration-realization.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.extension-exploration-realization.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.extension-exploration-realization.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.extension-exploration-realization | and | 2 (both) |  | open | 1 | 1 |
-| kernel.extension-exploration-realization.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| kernel.extension-exploration-realization.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| kernel.extension-exploration-realization | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| kernel.extension-exploration-realization.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | kernel.extension-realized-rate.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | kernel.extension-realized-rate.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.extension-realized-rate.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.extension-realized-rate | and | 2 (both) |  | open | 1 | 1 |
-| kernel.extension-realized-rate.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| kernel.extension-realized-rate.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| kernel.extension-realized-rate | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| kernel.extension-realized-rate.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | kernel.hierarchy-history.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | kernel.hierarchy-history.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.hierarchy-history.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-history.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-history.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-history.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-history.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-history.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-history.h7 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-history.h8 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-history.h9 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-history | and | 2 (both) |  | open | 1 | 1 |
-| kernel.hierarchy-history.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| kernel.hierarchy-history.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| kernel.hierarchy-history | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| kernel.hierarchy-history.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | kernel.hierarchy-per-decision.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | kernel.hierarchy-per-decision.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.hierarchy-per-decision.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-per-decision.h10 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-per-decision.h11 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-per-decision.h12 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-per-decision.h13 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-per-decision.h14 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-per-decision.h15 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-per-decision.h16 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-per-decision.h17 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-per-decision.h18 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-per-decision.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-per-decision.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-per-decision.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-per-decision.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-per-decision.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-per-decision.h7 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-per-decision.h8 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-per-decision.h9 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.hierarchy-per-decision | and | 2 (both) |  | open | 1 | 1 |
-| kernel.hierarchy-per-decision.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| kernel.hierarchy-per-decision.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| kernel.hierarchy-per-decision | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| kernel.hierarchy-per-decision.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | kernel.subjective-exchange-rate.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | kernel.subjective-exchange-rate.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.subjective-exchange-rate.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.subjective-exchange-rate.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.subjective-exchange-rate.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.subjective-exchange-rate.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| kernel.subjective-exchange-rate | and | 2 (both) |  | open | 1 | 1 |
-| kernel.subjective-exchange-rate.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| kernel.subjective-exchange-rate.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| kernel.subjective-exchange-rate | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| kernel.subjective-exchange-rate.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | ladder-chain-as-written.improvable | or | 2 (both) | AI number, improvement claim on ladder-chain-as-written (reality: which Total-Trust readings imply which for a logical inductor's quotes and credences) | open | 1 | 1 |
 | ladder-chain-as-written | leaf/step | 2 (both) | AI number | open | 1 | 2 |
 | ladder-chain-as-written.residual | leaf/route | 2 (both) | AI number, given ladder-chain-as-written | open | 0 | 2 |
@@ -7486,63 +6949,45 @@ The outside option and the undescribed failure, each a cases node over the outco
 | legitimacy-weighted-deference | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
 | legitimacy.answerable.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | legitimacy.answerable.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| legitimacy.answerable | and | 2 (both) | superseded by open-integrity.answerable | open | 1 | 1 |
-| legitimacy.answerable.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| legitimacy.answerable.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| legitimacy.answerable | and | 2 (both) | hypotheses unread, superseded by open-integrity.answerable | open | 1 | 1 |
+| legitimacy.answerable.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | legitimacy.endpoint-only-insufficient.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | legitimacy.endpoint-only-insufficient.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| legitimacy.endpoint-only-insufficient | and | 2 (both) | superseded by openness.endpoint-only-insufficient | open | 1 | 1 |
-| legitimacy.endpoint-only-insufficient.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| legitimacy.endpoint-only-insufficient | and | 2 (both) | hypotheses unread, superseded by openness.endpoint-only-insufficient | open | 1 | 1 |
+| legitimacy.endpoint-only-insufficient.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | legitimacy.endpoint-trans.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | legitimacy.endpoint-trans.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| legitimacy.endpoint-trans.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| legitimacy.endpoint-trans.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| legitimacy.endpoint-trans | and | 2 (both) | superseded by open-integrity.endpoint-trans | open | 1 | 1 |
-| legitimacy.endpoint-trans.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| legitimacy.endpoint-trans.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| legitimacy.endpoint-trans | and | 2 (both) | hypotheses unread, superseded by open-integrity.endpoint-trans | open | 1 | 1 |
+| legitimacy.endpoint-trans.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | legitimacy.evolution-conservation.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | legitimacy.evolution-conservation.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| legitimacy.evolution-conservation | and | 2 (both) | superseded by integrity.evolution-conservation | open | 1 | 1 |
-| legitimacy.evolution-conservation.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| legitimacy.evolution-conservation.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| legitimacy.evolution-conservation | and | 2 (both) | hypotheses unread, superseded by integrity.evolution-conservation | open | 1 | 1 |
+| legitimacy.evolution-conservation.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | legitimacy.faithful-carry.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | legitimacy.faithful-carry.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| legitimacy.faithful-carry.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| legitimacy.faithful-carry.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| legitimacy.faithful-carry.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| legitimacy.faithful-carry | and | 2 (both) | superseded by integrity.faithful-carry | open | 1 | 1 |
-| legitimacy.faithful-carry.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| legitimacy.faithful-carry.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| legitimacy.faithful-carry | and | 2 (both) | hypotheses unread, superseded by integrity.faithful-carry | open | 1 | 1 |
+| legitimacy.faithful-carry.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | legitimacy | frame | 2 (both) | owner has not confirmed (drafted from wiki/Legitimacy.md) | open | 1 | 0 (informs no goal) |
 | legitimacy.multiplicity-witness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | legitimacy.multiplicity-witness.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| legitimacy.multiplicity-witness | and | 2 (both) | superseded by integrity.multiplicity-witness | open | 1 | 1 |
-| legitimacy.multiplicity-witness.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| legitimacy.multiplicity-witness | and | 2 (both) | hypotheses unread, superseded by integrity.multiplicity-witness | open | 1 | 1 |
+| legitimacy.multiplicity-witness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | legitimacy.payload-of-view.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | legitimacy.payload-of-view.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| legitimacy.payload-of-view.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| legitimacy.payload-of-view.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| legitimacy.payload-of-view.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| legitimacy.payload-of-view | and | 2 (both) |  | open | 1 | 1 |
-| legitimacy.payload-of-view.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| legitimacy.payload-of-view.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| legitimacy.payload-of-view | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| legitimacy.payload-of-view.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | legitimacy.propagate-to-segment.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | legitimacy.propagate-to-segment.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| legitimacy.propagate-to-segment | and | 2 (both) | superseded by integrity.propagate-to-segment | open | 1 | 1 |
-| legitimacy.propagate-to-segment.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| legitimacy.propagate-to-segment.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| legitimacy.propagate-to-segment | and | 2 (both) | hypotheses unread, superseded by integrity.propagate-to-segment | open | 1 | 1 |
+| legitimacy.propagate-to-segment.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | legitimacy.receipts-immutable.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | legitimacy.receipts-immutable.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| legitimacy.receipts-immutable.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| legitimacy.receipts-immutable.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| legitimacy.receipts-immutable | and | 2 (both) | superseded by integrity.receipts-immutable | open | 1 | 1 |
-| legitimacy.receipts-immutable.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| legitimacy.receipts-immutable.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| legitimacy.receipts-immutable | and | 2 (both) | hypotheses unread, superseded by integrity.receipts-immutable | open | 1 | 1 |
+| legitimacy.receipts-immutable.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | legitimacy.segment-trans.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | legitimacy.segment-trans.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| legitimacy.segment-trans | and | 2 (both) | superseded by open-integrity.segment-trans | open | 1 | 1 |
-| legitimacy.segment-trans.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| legitimacy.segment-trans.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| legitimacy.segment-trans | and | 2 (both) | hypotheses unread, superseded by open-integrity.segment-trans | open | 1 | 1 |
+| legitimacy.segment-trans.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | legitimate-deference-regret | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | legitimate-deliberation-definition | leaf/question | 2 (both) | AI number, given task-import-lw-legitimacy-posts | open | 1 | 1 |
 | legitimate-versus-legitimizing | leaf/step | 2 (both) | AI number | open | 1 | 2 |
@@ -7609,42 +7054,24 @@ The outside option and the undescribed failure, each a cases node over the outco
 | li-updatelessness-tractable.partition | leaf/partition | 2 (both) | AI number | open | 1 | 1 |
 | li.assessment.budgeter-exploits.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | li.assessment.budgeter-exploits.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| li.assessment.budgeter-exploits.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| li.assessment.budgeter-exploits.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| li.assessment.budgeter-exploits | and | 2 (both) |  | open | 1 | 1 |
-| li.assessment.budgeter-exploits.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| li.assessment.budgeter-exploits.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| li.assessment.budgeter-exploits | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| li.assessment.budgeter-exploits.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | li.assessment.budgeter-floor.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | li.assessment.budgeter-floor.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| li.assessment.budgeter-floor.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| li.assessment.budgeter-floor.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| li.assessment.budgeter-floor.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| li.assessment.budgeter-floor | and | 2 (both) |  | open | 1 | 1 |
-| li.assessment.budgeter-floor.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| li.assessment.budgeter-floor.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| li.assessment.budgeter-floor | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| li.assessment.budgeter-floor.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | li.assessment.budgeter-value.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | li.assessment.budgeter-value.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| li.assessment.budgeter-value.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| li.assessment.budgeter-value.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| li.assessment.budgeter-value.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| li.assessment.budgeter-value.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| li.assessment.budgeter-value.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| li.assessment.budgeter-value | and | 2 (both) |  | open | 1 | 1 |
-| li.assessment.budgeter-value.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| li.assessment.budgeter-value.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| li.assessment.budgeter-value | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| li.assessment.budgeter-value.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | li.assessment.criterion.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | li.assessment.criterion.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| li.assessment.criterion | and | 2 (both) |  | open | 1 | 1 |
-| li.assessment.criterion.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| li.assessment.criterion.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| li.assessment.criterion | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| li.assessment.criterion.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | li.assessment.firm-dominance.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | li.assessment.firm-dominance.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| li.assessment.firm-dominance.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| li.assessment.firm-dominance.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| li.assessment.firm-dominance.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| li.assessment.firm-dominance | and | 2 (both) |  | open | 1 | 1 |
-| li.assessment.firm-dominance.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| li.assessment.firm-dominance.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| li.assessment.firm-dominance | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| li.assessment.firm-dominance.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | lia-fitted-to-lic | leaf/question | 2 (both) | AI number | open | 1 | 7 |
 | lic-constrains-no-finite-day | leaf/step | 2 (both) | AI number | open | 1 | 1 |
 | lift-stop-gradient-to-bli | leaf/task | 2 (both) | AI number | open | 0 | 2 |
@@ -7660,50 +7087,32 @@ The outside option and the undescribed failure, each a cases node over the outco
 | loop-direction-closure | leaf/step | 2 (both) | AI number | open | 0 | 7 |
 | magnitude.mixture-networth-zero.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | magnitude.mixture-networth-zero.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| magnitude.mixture-networth-zero | and | 2 (both) |  | open | 1 | 1 |
-| magnitude.mixture-networth-zero.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| magnitude.mixture-networth-zero.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| magnitude.mixture-networth-zero | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| magnitude.mixture-networth-zero.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | magnitude.not-trader-payoff.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | magnitude.not-trader-payoff.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| magnitude.not-trader-payoff.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| magnitude.not-trader-payoff.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| magnitude.not-trader-payoff.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| magnitude.not-trader-payoff | and | 2 (both) |  | open | 1 | 1 |
-| magnitude.not-trader-payoff.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| magnitude.not-trader-payoff.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| magnitude.not-trader-payoff | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| magnitude.not-trader-payoff.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | magnitude.sharp-trader-networth.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | magnitude.sharp-trader-networth.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| magnitude.sharp-trader-networth.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| magnitude.sharp-trader-networth | and | 2 (both) |  | open | 1 | 1 |
-| magnitude.sharp-trader-networth.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| magnitude.sharp-trader-networth.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| magnitude.sharp-trader-networth | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| magnitude.sharp-trader-networth.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | magnitude.signed-bounded-actual.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | magnitude.signed-bounded-actual.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| magnitude.signed-bounded-actual.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| magnitude.signed-bounded-actual.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| magnitude.signed-bounded-actual.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| magnitude.signed-bounded-actual | and | 2 (both) |  | open | 1 | 1 |
-| magnitude.signed-bounded-actual.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| magnitude.signed-bounded-actual.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| magnitude.signed-bounded-actual | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| magnitude.signed-bounded-actual.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | magnitude.signed-bounded.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | magnitude.signed-bounded.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| magnitude.signed-bounded.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| magnitude.signed-bounded.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| magnitude.signed-bounded | and | 2 (both) |  | open | 1 | 1 |
-| magnitude.signed-bounded.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| magnitude.signed-bounded.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| magnitude.signed-bounded | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| magnitude.signed-bounded.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | magnitude.sq-error-split.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | magnitude.sq-error-split.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| magnitude.sq-error-split.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| magnitude.sq-error-split | and | 2 (both) |  | open | 1 | 1 |
-| magnitude.sq-error-split.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| magnitude.sq-error-split.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| magnitude.sq-error-split | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| magnitude.sq-error-split.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | magnitude.unit-trader-networth.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | magnitude.unit-trader-networth.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| magnitude.unit-trader-networth.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| magnitude.unit-trader-networth | and | 2 (both) |  | open | 1 | 1 |
-| magnitude.unit-trader-networth.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| magnitude.unit-trader-networth.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| magnitude.unit-trader-networth | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| magnitude.unit-trader-networth.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | maintainer-rulings-batched.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
 | maintainer-rulings-batched | and | 2 (both) |  | open | 1 | 1 |
 | malign-hypothesis-window | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
@@ -7728,22 +7137,12 @@ The outside option and the undescribed failure, each a cases node over the outco
 | mastery-gates-stage5.partition | leaf/partition | 2 (both) | AI number | open | 1 | 1 |
 | maxmin.converse.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | maxmin.converse.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| maxmin.converse.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| maxmin.converse.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| maxmin.converse.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| maxmin.converse.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| maxmin.converse | and | 2 (both) |  | open | 1 | 1 |
-| maxmin.converse.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| maxmin.converse.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| maxmin.converse | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| maxmin.converse.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | maxmin.representation.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | maxmin.representation.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| maxmin.representation.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| maxmin.representation.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| maxmin.representation.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| maxmin.representation.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| maxmin.representation | and | 2 (both) |  | open | 1 | 1 |
-| maxmin.representation.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| maxmin.representation.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| maxmin.representation | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| maxmin.representation.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | meaning-and-agency-vingean-optimization | leaf/question | 2 (both) | AI number, given vingean-definitions-reconciled | open | 0 | 1 |
 | member-selecting-rule-setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
 | mine-condensation-posts | leaf/task | 2 (both) | AI number, given own-posts-as-todos, no belief | open | 0 | 2 |
@@ -7771,9 +7170,8 @@ The outside option and the undescribed failure, each a cases node over the outco
 | never-settled-standard | leaf/question | 2 (both) | AI number, given intuitionistic-gi-source-filed | open | 1 | 1 |
 | ni.progress-bound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | ni.progress-bound.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| ni.progress-bound | and | 2 (both) |  | open | 1 | 1 |
-| ni.progress-bound.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| ni.progress-bound.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| ni.progress-bound | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| ni.progress-bound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | no-forced-other-trust | leaf/step | 2 (both) | AI number | open | 1 | 1 |
 | no-fud-problem-headline.improvable | or | 2 (both) | AI number, improvement claim on no-fud-problem-headline (reality: a trained agent whose capability grows past its overseers') | open | 1 | 1 |
 | no-fud-problem-headline | leaf/step | 2 (both) | AI number | open | 1 | 5 |
@@ -7808,21 +7206,16 @@ The outside option and the undescribed failure, each a cases node over the outco
 | one-shot-verdicts-wanted | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | open-integrity.answerable.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | open-integrity.answerable.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| open-integrity.answerable | and | 2 (both) |  | open | 1 | 1 |
-| open-integrity.answerable.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| open-integrity.answerable.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| open-integrity.answerable | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| open-integrity.answerable.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | open-integrity.endpoint-trans.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | open-integrity.endpoint-trans.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| open-integrity.endpoint-trans.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| open-integrity.endpoint-trans.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| open-integrity.endpoint-trans | and | 2 (both) |  | open | 1 | 1 |
-| open-integrity.endpoint-trans.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| open-integrity.endpoint-trans.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| open-integrity.endpoint-trans | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| open-integrity.endpoint-trans.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | open-integrity.segment-trans.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | open-integrity.segment-trans.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| open-integrity.segment-trans | and | 2 (both) |  | open | 1 | 1 |
-| open-integrity.segment-trans.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| open-integrity.segment-trans.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| open-integrity.segment-trans | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| open-integrity.segment-trans.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | open-minded-epistemic-state | leaf/step | 2 (both) | AI number | open | 0 | 1 |
 | open-minded-updatelessness | or | 2 (both) | AI number | open | 1 | 1 |
 | open-problem-ledger-current | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
@@ -7831,28 +7224,20 @@ The outside option and the undescribed failure, each a cases node over the outco
 | openness-and-non-capture | frame | 2 (both) | owner has not confirmed (drafted from wiki/Openness-Coverage-and-Non-Capture.md) | open | 1 | 0 (informs no goal) |
 | openness.actual-branch-witness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | openness.actual-branch-witness.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| openness.actual-branch-witness | and | 2 (both) |  | open | 1 | 1 |
-| openness.actual-branch-witness.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| openness.actual-branch-witness | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| openness.actual-branch-witness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | openness.certplus-is-robust-openness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | openness.certplus-is-robust-openness.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| openness.certplus-is-robust-openness.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| openness.certplus-is-robust-openness | and | 2 (both) |  | open | 1 | 1 |
-| openness.certplus-is-robust-openness.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| openness.certplus-is-robust-openness.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| openness.certplus-is-robust-openness | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| openness.certplus-is-robust-openness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | openness.endpoint-only-insufficient.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | openness.endpoint-only-insufficient.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| openness.endpoint-only-insufficient | and | 2 (both) |  | open | 1 | 1 |
-| openness.endpoint-only-insufficient.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| openness.endpoint-only-insufficient | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| openness.endpoint-only-insufficient.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | openness.persistence-sufficient.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | openness.persistence-sufficient.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| openness.persistence-sufficient.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| openness.persistence-sufficient.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| openness.persistence-sufficient.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| openness.persistence-sufficient.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| openness.persistence-sufficient.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| openness.persistence-sufficient | and | 2 (both) |  | open | 1 | 1 |
-| openness.persistence-sufficient.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| openness.persistence-sufficient.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| openness.persistence-sufficient | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| openness.persistence-sufficient.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | operative-force | frame | 2 (both) | owner has not confirmed (drafted from wiki/Actionability-and-Normative-Force.md) | open | 1 | 0 (informs no goal) |
 | optimality-is-subject-matter | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | oq-anti-wireheading | leaf/step | 2 (both) | AI number, given wirehead-iff-finite | open | 1 | 1 |
@@ -8099,65 +7484,36 @@ The outside option and the undescribed failure, each a cases node over the outco
 | post-corrigible-normative-learning | leaf/step | 2 (both) | AI number | open | 1 | 1 |
 | post.flood-below-asking.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | post.flood-below-asking.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| post.flood-below-asking.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| post.flood-below-asking | and | 2 (both) |  | open | 1 | 1 |
-| post.flood-below-asking.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| post.flood-below-asking.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| post.flood-below-asking | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| post.flood-below-asking.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | post.theorem-li.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | post.theorem-li.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| post.theorem-li.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| post.theorem-li.h10 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| post.theorem-li.h11 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| post.theorem-li.h12 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| post.theorem-li.h13 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| post.theorem-li.h14 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| post.theorem-li.h15 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| post.theorem-li.h16 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| post.theorem-li.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| post.theorem-li.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| post.theorem-li.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| post.theorem-li.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| post.theorem-li.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| post.theorem-li.h7 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| post.theorem-li.h8 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| post.theorem-li.h9 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| post.theorem-li | and | 2 (both) |  | open | 1 | 1 |
-| post.theorem-li.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| post.theorem-li.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| post.theorem-li | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| post.theorem-li.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | post.theorem.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | post.theorem.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| post.theorem.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| post.theorem | and | 2 (both) |  | open | 1 | 1 |
-| post.theorem.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| post.theorem.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| post.theorem | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| post.theorem.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | post.witness-control-maximizer.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | post.witness-control-maximizer.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| post.witness-control-maximizer.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| post.witness-control-maximizer | and | 2 (both) |  | open | 1 | 1 |
-| post.witness-control-maximizer.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| post.witness-control-maximizer | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| post.witness-control-maximizer.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | post.witness-hindsight.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | post.witness-hindsight.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| post.witness-hindsight | and | 2 (both) |  | open | 1 | 1 |
-| post.witness-hindsight.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| post.witness-hindsight | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| post.witness-hindsight.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | post.witness-learned-weight.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | post.witness-learned-weight.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| post.witness-learned-weight.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| post.witness-learned-weight.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| post.witness-learned-weight | and | 2 (both) |  | open | 1 | 1 |
-| post.witness-learned-weight.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| post.witness-learned-weight.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| post.witness-learned-weight | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| post.witness-learned-weight.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | post.witness-same-level.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | post.witness-same-level.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| post.witness-same-level.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| post.witness-same-level | and | 2 (both) |  | open | 1 | 1 |
-| post.witness-same-level.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| post.witness-same-level.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| post.witness-same-level | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| post.witness-same-level.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | post.witness-sole-authority.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | post.witness-sole-authority.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| post.witness-sole-authority.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| post.witness-sole-authority | and | 2 (both) |  | open | 1 | 1 |
-| post.witness-sole-authority.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| post.witness-sole-authority.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| post.witness-sole-authority | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| post.witness-sole-authority.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | power-bounded-by-wisdom | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | predication-dichotomy | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | predictor-counterfactual-referent | or | 2 (both) |  | open | 1 | 1 |
@@ -8171,34 +7527,16 @@ The outside option and the undescribed failure, each a cases node over the outco
 | probabilistic-payors-lemma | leaf/question | 2 (both) | AI number | open | 0 | 1 |
 | progress.edge-bound-quadratic.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | progress.edge-bound-quadratic.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| progress.edge-bound-quadratic.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| progress.edge-bound-quadratic.h10 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| progress.edge-bound-quadratic.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| progress.edge-bound-quadratic.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| progress.edge-bound-quadratic.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| progress.edge-bound-quadratic.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| progress.edge-bound-quadratic.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| progress.edge-bound-quadratic.h7 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| progress.edge-bound-quadratic.h8 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| progress.edge-bound-quadratic.h9 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| progress.edge-bound-quadratic | and | 2 (both) |  | open | 1 | 1 |
-| progress.edge-bound-quadratic.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| progress.edge-bound-quadratic.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| progress.edge-bound-quadratic | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| progress.edge-bound-quadratic.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | progress.edge-bound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | progress.edge-bound.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| progress.edge-bound.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| progress.edge-bound.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| progress.edge-bound.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| progress.edge-bound.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| progress.edge-bound.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| progress.edge-bound.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| progress.edge-bound | and | 2 (both) |  | open | 1 | 1 |
-| progress.edge-bound.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| progress.edge-bound.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| progress.edge-bound | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| progress.edge-bound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | progress.headline-separation.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | progress.headline-separation.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| progress.headline-separation | and | 2 (both) |  | open | 1 | 1 |
-| progress.headline-separation.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| progress.headline-separation | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| progress.headline-separation.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | provenance-conditional-tiling | leaf/question | 2 (both) | AI number, given humans-benefit-quantity | open | 0 | 1 |
 | ps-cor614-orbit-count.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 7 |
 | ps-cor614-orbit-count.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 7 |
@@ -8242,16 +7580,12 @@ The outside option and the undescribed failure, each a cases node over the outco
 | reasons-subcase-of-legitimacy.partition | leaf/partition | 2 (both) | AI number | open | 1 | 1 |
 | rebuttal.liability-rebutted.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | rebuttal.liability-rebutted.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| rebuttal.liability-rebutted.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| rebuttal.liability-rebutted.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| rebuttal.liability-rebutted | and | 2 (both) |  | open | 1 | 1 |
-| rebuttal.liability-rebutted.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| rebuttal.liability-rebutted.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| rebuttal.liability-rebutted | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| rebuttal.liability-rebutted.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | rebuttal.settleform-sound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | rebuttal.settleform-sound.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| rebuttal.settleform-sound | and | 2 (both) |  | open | 1 | 1 |
-| rebuttal.settleform-sound.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| rebuttal.settleform-sound.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| rebuttal.settleform-sound | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| rebuttal.settleform-sound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | reconstruction-score-role | leaf/question | 2 (both) | AI number | open | 1 | 1 |
 | record-half-integrity | leaf/step | 2 (both) | AI number | open | 1 | 1 |
 | recorded-point-dag-setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
@@ -8263,27 +7597,20 @@ The outside option and the undescribed failure, each a cases node over the outco
 | refuted-self-expert-setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
 | region.hull.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | region.hull.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| region.hull.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| region.hull | and | 2 (both) |  | open | 1 | 1 |
-| region.hull.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| region.hull.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| region.hull | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| region.hull.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | region.patterns-complete.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | region.patterns-complete.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| region.patterns-complete.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| region.patterns-complete | and | 2 (both) |  | open | 1 | 1 |
-| region.patterns-complete.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| region.patterns-complete.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| region.patterns-complete | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| region.patterns-complete.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | region.patterns-nonempty-iff.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | region.patterns-nonempty-iff.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| region.patterns-nonempty-iff | and | 2 (both) |  | open | 1 | 1 |
-| region.patterns-nonempty-iff.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| region.patterns-nonempty-iff.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| region.patterns-nonempty-iff | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| region.patterns-nonempty-iff.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | region.patterns-sound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | region.patterns-sound.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| region.patterns-sound.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| region.patterns-sound | and | 2 (both) |  | open | 1 | 1 |
-| region.patterns-sound.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| region.patterns-sound.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| region.patterns-sound | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| region.patterns-sound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | register-collapse-claims-public | leaf/task | 2 (both) | AI number, given faf-pin-bump-and-public-port | open | 0 | 1 |
 | registry-policy-for-ported-results | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | regularity-is-h3 | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
@@ -8401,31 +7728,20 @@ The outside option and the undescribed failure, each a cases node over the outco
 | seed-theory | frame | 2 (both) | owner has not confirmed (drafted from wiki/Seed-Theory.md) | open | 1 | 0 (informs no goal) |
 | seed.eventually-const.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | seed.eventually-const.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| seed.eventually-const.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| seed.eventually-const.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| seed.eventually-const.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| seed.eventually-const | and | 2 (both) |  | open | 1 | 1 |
-| seed.eventually-const.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| seed.eventually-const.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| seed.eventually-const | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| seed.eventually-const.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | seed.forced-interval-bounds.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | seed.forced-interval-bounds.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| seed.forced-interval-bounds.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| seed.forced-interval-bounds | and | 2 (both) |  | open | 1 | 1 |
-| seed.forced-interval-bounds.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| seed.forced-interval-bounds.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| seed.forced-interval-bounds | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| seed.forced-interval-bounds.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | seed.forced-interval-spec.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | seed.forced-interval-spec.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| seed.forced-interval-spec.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| seed.forced-interval-spec | and | 2 (both) |  | open | 1 | 1 |
-| seed.forced-interval-spec.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| seed.forced-interval-spec.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| seed.forced-interval-spec | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| seed.forced-interval-spec.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | seed.independence-strict.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | seed.independence-strict.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| seed.independence-strict.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| seed.independence-strict.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| seed.independence-strict | and | 2 (both) |  | open | 1 | 1 |
-| seed.independence-strict.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| seed.independence-strict.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| seed.independence-strict | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| seed.independence-strict.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | selection-collapse--corrigibility-risk | and | 2 (both) | AI number | open | 1 | 1 |
 | selection-collapse.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 1 |
 | selection-collapse.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
@@ -8441,58 +7757,28 @@ The outside option and the undescribed failure, each a cases node over the outco
 | shadow-theorem-conjecture-f | leaf/question | 2 (both) | AI number | open | 0 | 8 |
 | shortfall.atom-generable.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | shortfall.atom-generable.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| shortfall.atom-generable.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| shortfall.atom-generable.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| shortfall.atom-generable | and | 2 (both) |  | open | 1 | 1 |
-| shortfall.atom-generable.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| shortfall.atom-generable.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| shortfall.atom-generable | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| shortfall.atom-generable.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | shortfall.deferred-ahead.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | shortfall.deferred-ahead.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| shortfall.deferred-ahead.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| shortfall.deferred-ahead.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| shortfall.deferred-ahead.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| shortfall.deferred-ahead.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| shortfall.deferred-ahead.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| shortfall.deferred-ahead.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| shortfall.deferred-ahead | and | 2 (both) |  | open | 1 | 1 |
-| shortfall.deferred-ahead.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| shortfall.deferred-ahead.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| shortfall.deferred-ahead | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| shortfall.deferred-ahead.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | shortfall.deferred-eventually-excluded.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | shortfall.deferred-eventually-excluded.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| shortfall.deferred-eventually-excluded.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| shortfall.deferred-eventually-excluded.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| shortfall.deferred-eventually-excluded.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| shortfall.deferred-eventually-excluded.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| shortfall.deferred-eventually-excluded.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| shortfall.deferred-eventually-excluded.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| shortfall.deferred-eventually-excluded.h7 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| shortfall.deferred-eventually-excluded.h8 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| shortfall.deferred-eventually-excluded | and | 2 (both) |  | open | 1 | 1 |
-| shortfall.deferred-eventually-excluded.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| shortfall.deferred-eventually-excluded.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| shortfall.deferred-eventually-excluded | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| shortfall.deferred-eventually-excluded.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | shortfall.eventually-excluded.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | shortfall.eventually-excluded.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| shortfall.eventually-excluded.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| shortfall.eventually-excluded.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| shortfall.eventually-excluded.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| shortfall.eventually-excluded.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| shortfall.eventually-excluded.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| shortfall.eventually-excluded.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| shortfall.eventually-excluded.h7 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| shortfall.eventually-excluded.h8 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| shortfall.eventually-excluded | and | 2 (both) | superseded by shortfall.deferred-eventually-excluded | open | 1 | 1 |
-| shortfall.eventually-excluded.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| shortfall.eventually-excluded.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| shortfall.eventually-excluded | and | 2 (both) | hypotheses unread, superseded by shortfall.deferred-eventually-excluded | open | 1 | 1 |
+| shortfall.eventually-excluded.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | shortfall.security-generable.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | shortfall.security-generable.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| shortfall.security-generable | and | 2 (both) | superseded by shortfall.table-generable | open | 1 | 1 |
-| shortfall.security-generable.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| shortfall.security-generable.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| shortfall.security-generable | and | 2 (both) | hypotheses unread, superseded by shortfall.table-generable | open | 1 | 1 |
+| shortfall.security-generable.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | shortfall.table-generable.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | shortfall.table-generable.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| shortfall.table-generable | and | 2 (both) |  | open | 1 | 1 |
-| shortfall.table-generable.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| shortfall.table-generable.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| shortfall.table-generable | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| shortfall.table-generable.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | shutdown-button-toy.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 7 |
 | shutdown-button-toy.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 7 |
 | shutdown-button-toy.improvable | or | 2 (both) | AI number, improvement claim on shutdown-button-toy (reality: trained systems corrected through data, loss and hardware) | open | 1 | 1 |
@@ -8507,47 +7793,40 @@ The outside option and the undescribed failure, each a cases node over the outco
 | sigma-algebra-morphisms-carry-concepts | leaf/question | 2 (both) | AI number, given condensation-morphisms-baseline | open | 0 | 1 |
 | simplex.rational-points-sum-to-one.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | simplex.rational-points-sum-to-one.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| simplex.rational-points-sum-to-one | and | 2 (both) |  | open | 1 | 1 |
-| simplex.rational-points-sum-to-one.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| simplex.rational-points-sum-to-one | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| simplex.rational-points-sum-to-one.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | simplicity-grounds-interpretation | leaf/question | 2 (both) | AI number, given wentworth-representation-theorem-transfer | open | 1 | 7 |
 | simulation-vs-implementation-record | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | sincerity.content-fact.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | sincerity.content-fact.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| sincerity.content-fact.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| sincerity.content-fact.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| sincerity.content-fact.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| sincerity.content-fact.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| sincerity.content-fact.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| sincerity.content-fact | and | 2 (both) |  | open | 1 | 1 |
-| sincerity.content-fact.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| sincerity.content-fact.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| sincerity.content-fact | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| sincerity.content-fact.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | sincerity.lie-tainted.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | sincerity.lie-tainted.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| sincerity.lie-tainted | and | 2 (both) |  | open | 1 | 1 |
-| sincerity.lie-tainted.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| sincerity.lie-tainted | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| sincerity.lie-tainted.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | sincerity.rows-keep-verdicts-counted.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | sincerity.rows-keep-verdicts-counted.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| sincerity.rows-keep-verdicts-counted | and | 2 (both) |  | open | 1 | 1 |
-| sincerity.rows-keep-verdicts-counted.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| sincerity.rows-keep-verdicts-counted | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| sincerity.rows-keep-verdicts-counted.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | sincerity.rows-keep-verdicts-tainted.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | sincerity.rows-keep-verdicts-tainted.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| sincerity.rows-keep-verdicts-tainted | and | 2 (both) |  | open | 1 | 1 |
-| sincerity.rows-keep-verdicts-tainted.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| sincerity.rows-keep-verdicts-tainted | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| sincerity.rows-keep-verdicts-tainted.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | sincerity.sincere-error-counts.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | sincerity.sincere-error-counts.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| sincerity.sincere-error-counts | and | 2 (both) |  | open | 1 | 1 |
-| sincerity.sincere-error-counts.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| sincerity.sincere-error-counts | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| sincerity.sincere-error-counts.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | single-round-refinement | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | sist-single-instance-success | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | smoke.chain-compiles.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | smoke.chain-compiles.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| smoke.chain-compiles | and | 2 (both) |  | open | 1 | 1 |
-| smoke.chain-compiles.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| smoke.chain-compiles | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| smoke.chain-compiles.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | smoke.faf-asymp-refl.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | smoke.faf-asymp-refl.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| smoke.faf-asymp-refl.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| smoke.faf-asymp-refl | and | 2 (both) |  | open | 1 | 1 |
-| smoke.faf-asymp-refl.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| smoke.faf-asymp-refl | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| smoke.faf-asymp-refl.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | soto-flower-obstruction | leaf/step | 2 (both) | AI number | open | 1 | 1 |
 | ss-value-without-scope | leaf/question | 2 (both) | AI number, given fa-trust-half-weak-grades@valid, refinement of li-deference-collapse | open | 0 | 3 |
 | st-guides-via-analogy | leaf/step | 2 (both) | AI number, given crux-unbounded-represents-phenomena | open | 0 | 2 |
@@ -8566,37 +7845,20 @@ The outside option and the undescribed failure, each a cases node over the outco
 | stratified-pareto-bargaining | leaf/step | 2 (both) | AI number, given nash-bargaining-no-gains | open | 0 | 1 |
 | substitution.extensional-admits-both.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | substitution.extensional-admits-both.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| substitution.extensional-admits-both.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| substitution.extensional-admits-both.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| substitution.extensional-admits-both.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| substitution.extensional-admits-both.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| substitution.extensional-admits-both | and | 2 (both) |  | open | 1 | 1 |
-| substitution.extensional-admits-both.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| substitution.extensional-admits-both | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| substitution.extensional-admits-both.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | substitution.separation-requires-disagreement.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | substitution.separation-requires-disagreement.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| substitution.separation-requires-disagreement.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| substitution.separation-requires-disagreement.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| substitution.separation-requires-disagreement.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| substitution.separation-requires-disagreement.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| substitution.separation-requires-disagreement | and | 2 (both) |  | open | 1 | 1 |
-| substitution.separation-requires-disagreement.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| substitution.separation-requires-disagreement | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| substitution.separation-requires-disagreement.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | substitution.sim-depends-on-induced-choice.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | substitution.sim-depends-on-induced-choice.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| substitution.sim-depends-on-induced-choice.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| substitution.sim-depends-on-induced-choice.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| substitution.sim-depends-on-induced-choice.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| substitution.sim-depends-on-induced-choice.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| substitution.sim-depends-on-induced-choice | and | 2 (both) |  | open | 1 | 1 |
-| substitution.sim-depends-on-induced-choice.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| substitution.sim-depends-on-induced-choice | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| substitution.sim-depends-on-induced-choice.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | substitution.unpredictability-separates.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | substitution.unpredictability-separates.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| substitution.unpredictability-separates.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| substitution.unpredictability-separates.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| substitution.unpredictability-separates.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| substitution.unpredictability-separates.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| substitution.unpredictability-separates | and | 2 (both) |  | open | 1 | 1 |
-| substitution.unpredictability-separates.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| substitution.unpredictability-separates.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| substitution.unpredictability-separates | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| substitution.unpredictability-separates.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | summable-implies-average-with-margin | leaf/step | 2 (both) | AI number, refinement of ladder-chain-as-written | open | 0 | 3 |
 | super-turing-guides-engineering | or | 2 (both) | AI number, interval not a bound (negative evidential edge) | open | 1 | 2 |
 | superconditioning-calibration.improvable | or | 2 (both) | AI number, improvement claim on superconditioning-calibration (reality: ontological shifts in real reasoners) | open | 1 | 1 |
@@ -8643,85 +7905,48 @@ The outside option and the undescribed failure, each a cases node over the outco
 | thin-value-of-thick | leaf/step | 2 (both) | AI number | open | 1 | 1 |
 | thin.converse-fails-on-correct.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | thin.converse-fails-on-correct.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| thin.converse-fails-on-correct | and | 2 (both) |  | open | 1 | 1 |
-| thin.converse-fails-on-correct.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| thin.converse-fails-on-correct | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| thin.converse-fails-on-correct.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | thin.correct-of-thick.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | thin.correct-of-thick.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| thin.correct-of-thick.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.correct-of-thick | and | 2 (both) |  | open | 1 | 1 |
-| thin.correct-of-thick.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| thin.correct-of-thick.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| thin.correct-of-thick | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| thin.correct-of-thick.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | thin.covert-blocking-correct-iff.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | thin.covert-blocking-correct-iff.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| thin.covert-blocking-correct-iff.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.covert-blocking-correct-iff.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.covert-blocking-correct-iff.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.covert-blocking-correct-iff.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.covert-blocking-correct-iff | and | 2 (both) |  | open | 1 | 1 |
-| thin.covert-blocking-correct-iff.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| thin.covert-blocking-correct-iff.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| thin.covert-blocking-correct-iff | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| thin.covert-blocking-correct-iff.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | thin.marginal-martingale-too-weak.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | thin.marginal-martingale-too-weak.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| thin.marginal-martingale-too-weak | and | 2 (both) |  | open | 1 | 1 |
-| thin.marginal-martingale-too-weak.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| thin.marginal-martingale-too-weak | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| thin.marginal-martingale-too-weak.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | thin.preservation-pair.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | thin.preservation-pair.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| thin.preservation-pair.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.preservation-pair.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.preservation-pair.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.preservation-pair.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.preservation-pair | and | 2 (both) |  | open | 1 | 1 |
-| thin.preservation-pair.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| thin.preservation-pair.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| thin.preservation-pair | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| thin.preservation-pair.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | thin.preservation.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | thin.preservation.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| thin.preservation.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.preservation | and | 2 (both) |  | open | 1 | 1 |
-| thin.preservation.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| thin.preservation.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| thin.preservation | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| thin.preservation.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | thin.reflection-inherited-value.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | thin.reflection-inherited-value.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| thin.reflection-inherited-value.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.reflection-inherited-value.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.reflection-inherited-value.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.reflection-inherited-value | and | 2 (both) |  | open | 1 | 1 |
-| thin.reflection-inherited-value.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| thin.reflection-inherited-value.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| thin.reflection-inherited-value | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| thin.reflection-inherited-value.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | thin.sufficient-of-integrity-openness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | thin.sufficient-of-integrity-openness.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| thin.sufficient-of-integrity-openness.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.sufficient-of-integrity-openness | and | 2 (both) |  | open | 1 | 1 |
-| thin.sufficient-of-integrity-openness.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| thin.sufficient-of-integrity-openness.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| thin.sufficient-of-integrity-openness | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| thin.sufficient-of-integrity-openness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | thin.value-loss-le-defects.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | thin.value-loss-le-defects.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| thin.value-loss-le-defects.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.value-loss-le-defects.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.value-loss-le-defects.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.value-loss-le-defects.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.value-loss-le-defects.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.value-loss-le-defects.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.value-loss-le-defects.h7 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.value-loss-le-defects.h8 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.value-loss-le-defects | and | 2 (both) |  | open | 1 | 1 |
-| thin.value-loss-le-defects.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| thin.value-loss-le-defects.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| thin.value-loss-le-defects | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| thin.value-loss-le-defects.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | thin.value-of-correct-sufficient.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | thin.value-of-correct-sufficient.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| thin.value-of-correct-sufficient.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.value-of-correct-sufficient.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.value-of-correct-sufficient.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.value-of-correct-sufficient | and | 2 (both) |  | open | 1 | 1 |
-| thin.value-of-correct-sufficient.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| thin.value-of-correct-sufficient.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| thin.value-of-correct-sufficient | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| thin.value-of-correct-sufficient.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | thin.value-of-thick.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | thin.value-of-thick.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| thin.value-of-thick.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.value-of-thick.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.value-of-thick.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| thin.value-of-thick | and | 2 (both) |  | open | 1 | 1 |
-| thin.value-of-thick.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| thin.value-of-thick.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| thin.value-of-thick | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| thin.value-of-thick.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | third-button-obstruction | leaf/assumption | 2 (both) | AI number | open | 0 | 8 |
 | thm-power-seeking-optimal.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted, given ps-cor614-orbit-count@valid | open | 0 | 6 |
 | thm-power-seeking-optimal.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 6 |
@@ -8760,28 +7985,12 @@ The outside option and the undescribed failure, each a cases node over the outco
 | trajectory-not-limit | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | transparent.blind-payload.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | transparent.blind-payload.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| transparent.blind-payload.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| transparent.blind-payload.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| transparent.blind-payload.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| transparent.blind-payload.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| transparent.blind-payload.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| transparent.blind-payload.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| transparent.blind-payload.h7 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| transparent.blind-payload | and | 2 (both) |  | open | 1 | 1 |
-| transparent.blind-payload.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| transparent.blind-payload.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| transparent.blind-payload | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| transparent.blind-payload.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | transparent.posterior-weight-eq.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | transparent.posterior-weight-eq.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| transparent.posterior-weight-eq.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| transparent.posterior-weight-eq.h2 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| transparent.posterior-weight-eq.h3 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| transparent.posterior-weight-eq.h4 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| transparent.posterior-weight-eq.h5 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| transparent.posterior-weight-eq.h6 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| transparent.posterior-weight-eq.h7 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| transparent.posterior-weight-eq | and | 2 (both) |  | open | 1 | 1 |
-| transparent.posterior-weight-eq.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| transparent.posterior-weight-eq.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| transparent.posterior-weight-eq | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| transparent.posterior-weight-eq.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | trembling-hand-calibration-grounded | leaf/step | 2 (both) | AI number, given ideal-object-set-of-limits | open | 0 | 8 |
 | troll-bridge-modal-classified.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 1 |
 | troll-bridge-modal-classified.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
@@ -8964,29 +8173,24 @@ The outside option and the undescribed failure, each a cases node over the outco
 | want-uea-review | leaf/want | 2 (both) | given uea-review-writeup, given: conditionals not judged, no belief, owner has not confirmed | open | 1 | 1 |
 | warrant.admissible-not-supported.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | warrant.admissible-not-supported.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| warrant.admissible-not-supported | and | 2 (both) |  | open | 1 | 1 |
-| warrant.admissible-not-supported.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| warrant.admissible-not-supported | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| warrant.admissible-not-supported.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | warrant.licence-chain.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | warrant.licence-chain.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| warrant.licence-chain.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| warrant.licence-chain | and | 2 (both) |  | open | 1 | 1 |
-| warrant.licence-chain.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| warrant.licence-chain.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| warrant.licence-chain | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| warrant.licence-chain.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | warrant.selection-not-transparent.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | warrant.selection-not-transparent.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| warrant.selection-not-transparent.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| warrant.selection-not-transparent | and | 2 (both) |  | open | 1 | 1 |
-| warrant.selection-not-transparent.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| warrant.selection-not-transparent | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| warrant.selection-not-transparent.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | warrant.supported-admissible.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | warrant.supported-admissible.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| warrant.supported-admissible.h1 | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
-| warrant.supported-admissible | and | 2 (both) |  | open | 1 | 1 |
-| warrant.supported-admissible.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
-| warrant.supported-admissible.setting | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| warrant.supported-admissible | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| warrant.supported-admissible.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | warrant.supported-not-licensed.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | warrant.supported-not-licensed.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| warrant.supported-not-licensed | and | 2 (both) |  | open | 1 | 1 |
-| warrant.supported-not-licensed.record | leaf/record | 2 (ref) | no belief | open | 1 | 1 |
+| warrant.supported-not-licensed | and | 2 (both) | hypotheses unread | open | 1 | 1 |
+| warrant.supported-not-licensed.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | weatherson-infinite-frames-formalized | leaf/step | 2 (both) | AI number | open | 1 | 1 |
 | wentworth-constant-located | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | wentworth-representation-theorem-transfer | leaf/task | 2 (both) | AI number | open | 0 | 7 |
@@ -9001,4 +8205,4 @@ The outside option and the undescribed failure, each a cases node over the outco
 | wirehead-iff-finite.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 2 |
 | wirehead-iff-finite.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 2 |
 | worlds-and-points-companion | leaf/question | 2 (both) | AI number | open | 0 | 8 |
-<!-- generated_hash: 386ed9c550e959a48c920653 -->
+<!-- generated_hash: f1f35e3c441da440bb99d7de -->

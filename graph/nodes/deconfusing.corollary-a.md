@@ -1,8 +1,8 @@
 ---
 id: deconfusing.corollary-a
 kind: and
-children: [deconfusing.corollary-a.record, deconfusing.corollary-a.bridge, deconfusing.corollary-a.complete, deconfusing.corollary-a.h1]
-work: [{kind: round, ref: prompts/2026-10-17-post-companion-formalization}]
+children: [deconfusing.corollary-a.record, deconfusing.corollary-a.bridge, deconfusing.corollary-a.complete]
+work: [{kind: round, ref: prompts/2026-10-17-post-companion-formalization}, {kind: priorities, ref: 107}]
 size: M
 size_reason: "one registry entry, its Lean declaration and its bridge"
 version: 1
@@ -17,4 +17,4 @@ Documentation: verification: prompts/2026-10-17-post-companion-formalization/REP
 The signature of `Workspace.Deference.Contrib.DeconfusingCorrigibility.Exploration.corollary_a` in lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean.
 
 ## Notes
-Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; the hypotheses are the signature's explicit proposition binders, tagged open unless the registry settles them, and the data binders are the setting leaf. Registry note: The exploration-step hypothesis U_k a_k ≥ −δ − λ θ stands in for the post's linearity argument. Inhabited by `Witness.corollary_instance` on `Witness.exploration` (exploring at k = 0).
+Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; its hypotheses are unread (ruling F1, 2026-10-23): the record's Source carries the signature verbatim, and a reader files the hypothesis leaves. Registry note: The exploration-step hypothesis U_k a_k ≥ −δ − λ θ stands in for the post's linearity argument. Inhabited by `Witness.corollary_instance` on `Witness.exploration` (exploring at k = 0). The registry's `answers_item` is the `priorities` pointer to item 107 (ruling F2).

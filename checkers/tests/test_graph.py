@@ -1355,6 +1355,28 @@ class Validity(Base):
         self.assertIn("as an implication P(res@valid)", run(self.root, "--why")[1])
         self.assertIn("as an implication (res@valid) and literally", (self.root / "graph" / "view.md").read_text())
 
+    def test_record_hypotheses_unread(self):
+        """ruling F1 (2026-10-23): a record may say `hypotheses: unread`; the result is then record, bridge and completeness,
+        flagged in derived.json, index.json and the view; a list mixing ids with the word is refused."""
+        nodes = dict(RESULT, **{"res": ("and", "M", {"children": "[res.record, res.bridge, res.complete]"}, RESULT["res"][3]),
+                                "res.record": ("leaf", "S", {"leaf_kind": "record", "statement_of_record": "toy_result", "hypotheses": "unread",
+                                                             "registry_id": "toy.result"}, RESULT["res.record"][3])})
+        del nodes["res.h"]
+        self.tree(tweak=given_tree(nodes, ["res"]), extra={"h1": [e for e in RESULT_EVENTS if "res.h" not in e]})
+        D = self.derived()
+        self.assertIn("hypotheses unread", D["nodes"]["res.record"]["flags"])
+        self.assertIn("hypotheses unread", D["nodes"]["res"]["flags"])
+        idx = json.loads((self.root / "graph" / "index.json").read_text())
+        self.assertEqual(idx["schema"], "graph-index/2")
+        self.assertEqual(idx["nodes"]["res.record"]["hypotheses"], "unread")
+        self.assertEqual(idx["nodes"]["res"]["formal_result"], {"record": "res.record", "hypotheses": "unread", "registry_id": "toy.result", "answers": []})
+        self.assertEqual(idx["claims"], {"toy.result": "res"})
+        self.assertIn("hypotheses unread", (self.root / "graph" / "view.md").read_text())
+        self.edit("graph/nodes/res.record.md", "hypotheses: unread", "hypotheses: [res.bridge, unread]")
+        self.assertIn("never both", self.refused(2))
+        self.edit("graph/nodes/res.record.md", "hypotheses: [res.bridge, unread]", "hypotheses: [nonexistent]")
+        self.assertIn("resolves to no node", self.refused(1))
+
     def test_forcing_leaves_a_table_alone(self):
         nodes = {"res2": ("and", "M", {"children": "[res.h, cases-x, res2.complete]"}, "The second argument holds."),
                  "res.h": RESULT["res.h"],
@@ -2769,6 +2791,30 @@ class Fixtures(unittest.TestCase):
         self.assertEqual(code, 0, err)
         for n in g.GENERATED:
             self.assertEqual((self.root / "graph" / n).read_text(), snap[n], n)
+
+    def test_index_schema_two_on_the_fixture(self):
+        """ruling F2 (2026-10-23): the index inverts the registry join; every registry-built result points at its item, and
+        every record the round filed from a signature says its hypotheses are unread (ruling F1)."""
+        idx = json.loads((self.root / "graph" / "index.json").read_text())
+        self.assertEqual(idx["schema"], "graph-index/2")
+        formal = {x: N["formal_result"] for x, N in idx["nodes"].items() if "formal_result" in N}
+        self.assertGreater(len(formal), 200)
+        for item, rec in idx["items"].items():
+            self.assertEqual(set(rec), {"node", "answered_by"})
+            for r in rec["answered_by"]:
+                self.assertIn(item, formal[r]["answers"])
+        for x, F in formal.items():
+            for a in F["answers"]:
+                self.assertIn(x, idx["items"][a]["answered_by"])
+            if F["registry_id"]:
+                self.assertEqual(idx["claims"][F["registry_id"]], x)
+        unread = [x for x, F in formal.items() if F["hypotheses"] == "unread"]
+        self.assertGreater(len(unread), 150)
+        self.assertTrue(all(len(idx["nodes"][x]["children"]) == 3 for x in unread), "an unread result is record, bridge and completeness")
+        self.assertIn("hypotheses unread", self.D["nodes"][unread[0]]["flags"])
+        # the render shows the registered answers beside the item (one line under the heading)
+        text = (self.root / "PRIORITIES.md").read_text()
+        self.assertIn("*Registered answers in the map:* ", text)
 
     def test_hoist_rule_on_the_fixture(self):
         """every ranked line of the shipped fixture rests on AI numbers only, so the tag is said once in the header;

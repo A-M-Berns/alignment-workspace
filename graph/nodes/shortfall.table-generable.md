@@ -1,8 +1,8 @@
 ---
 id: shortfall.table-generable
 kind: and
-children: [shortfall.table-generable.record, shortfall.table-generable.bridge, shortfall.table-generable.complete, shortfall.table-generable.setting]
-work: [{kind: round, ref: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority}]
+children: [shortfall.table-generable.record, shortfall.table-generable.bridge, shortfall.table-generable.complete]
+work: [{kind: round, ref: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority}, {kind: priorities, ref: 107}]
 size: M
 size_reason: "one registry entry, its Lean declaration and its bridge"
 version: 1
@@ -17,4 +17,4 @@ Documentation: verification: projects/deference/rounds/2026-10-01-thin-legitimac
 The signature of `Workspace.Deference.Contrib.ShortfallSecurity.shortLUV_codes` in lean/Workspace/Deference/Contrib/ShortfallSecurity.lean.
 
 ## Notes
-Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; the hypotheses are the signature's explicit proposition binders, tagged open unless the registry settles them, and the data binders are the setting leaf. Registry note: The declaration formerly registered as `shortfall.security-generable`, under the name of what it is: the table is data, the sentence is decided before it is written. Inhabited by `Witness.fixtures_generable`. The market-priced form is `shortfall.atom-generable` and `shortfall.deferred-ahead`.
+Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; its hypotheses are unread (ruling F1, 2026-10-23): the record's Source carries the signature verbatim, and a reader files the hypothesis leaves. Registry note: The declaration formerly registered as `shortfall.security-generable`, under the name of what it is: the table is data, the sentence is decided before it is written. Inhabited by `Witness.fixtures_generable`. The market-priced form is `shortfall.atom-generable` and `shortfall.deferred-ahead`. The registry's `answers_item` is the `priorities` pointer to item 107 (ruling F2).
