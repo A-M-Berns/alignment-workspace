@@ -18,6 +18,7 @@ roots:
   - {id: normativity-paper-candidates, role: shared-claim, preset: worst-case}
 work:
   - {kind: decision, ref: 2026-10-22--map-canonical-index-program-maintainer-handles}
+  - {kind: decision, ref: 2026-10-23--map-follow-up-hypotheses-unread-registry-edge-derived-files-one-decomposition}
   - {kind: round, ref: projects/normativity/rounds/2026-08-11-phi-regret-applicability}
   - {kind: round, ref: projects/normativity/rounds/2026-08-11-phi-regret-bridge}
   - {kind: round, ref: projects/normativity/rounds/2026-08-11-phi-regret-learner}

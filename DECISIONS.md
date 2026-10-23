@@ -311,6 +311,38 @@ commit.
   the decision anchors as stated — a decision about the program's own shape.
   <!-- decision: open--second-maintainer-confirmation-rulings-m1-m8; touches: node:the-program, node:normativity, node:legitimacy; status: open -->
 
+- **The ambiguous and blocked merges of ruling F5 (2026-10-23).**  The mechanical match of
+  bagged formal results to the informal claims they establish merged 2 of
+  244; 54 results have several candidates or share their one candidate
+  with another result, and 8 have one candidate the protocol cannot merge into (a question
+  or route leaf, a `cases` or `or` node, a leaf carrying `given`, or a claim another result
+  already took). The lists are in `prompts/2026-10-22-map-as-canonical/REPORT.md`,
+  *Follow-up of 2026-10-23*, Part 3.
+  *Turns on:* which claim a result establishes where several summary claims cite the same
+  round, and whether a claim established by several registered declarations (one `and`
+  holds one record) gets a shape of its own — a reading of the mathematics, not a
+  mechanical rule.
+  <!-- decision: open--ambiguous-blocked-merges-ruling-f5; touches: node:effective-authority-layer, node:post-corrigible-normative-learning, node:authority-typed-corrigibility, node:kernel-lexical-order-hypothesis; status: open -->
+
+- **How a docket is represented (ruling F6, 2026-10-23).**  A docket is an `or` node filed as a
+  shared-claim root of its line or programme, tagged `either-suffices`, whose Statement now
+  says what it is ("Work orders filed against <programme>, not yet attached to the goal each
+  serves; their placement is the maintainer's"). The follow-up proposes, without applying
+  it, a `dockets` field on a frame (the item ids the frame's work orders are, read by the
+  ranking as routes under no goal and by the index as the frame's work orders), so that a
+  docket is no claim and carries no status.
+  *Turns on:* whether a work order with no goal identified should count as a goal of the
+  ranking at all — a decision about what the map's numbers are for.
+  <!-- decision: open--how-docket-represented-ruling-f6; touches: node:docket-normativity, node:docket-legitimacy, node:docket-deference, node:docket-workspace, node:docket-seed; status: open -->
+
+- **Whether `graph/tasks.md` and `graph/view.md` follow the derived files out of the tree.**  Ruling
+  F3 removed graph/derived.json and graph/index.json from the tree and kept the two renders
+  committed because a pull request's diff of them is the point. The sizes at the follow-up are
+  in the report; both grow with the node count.
+  *Turns on:* whether a reviewer reads the renders in the diff or on the published branch —
+  taste about where review happens, which the maintainers decide once the site exists.
+  <!-- decision: open--whether-tasks-view-follow-derived-files-out-of-tree; touches: none; status: open -->
+
 - **The wording of `the-program`'s question and of every line frame's.**  The round worded
   them from `wiki/Home.md` and the existing nodes' Statements (`graph/nodes/the-program.md`,
   `normativity.md`, `legitimacy.md`, `deference-and-trust.md`, `decision-theory.md`,

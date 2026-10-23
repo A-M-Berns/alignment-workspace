@@ -81,6 +81,7 @@ roots:
   - {id: want-legitimacy-anti-meme-post, role: want}
 work:
   - {kind: decision, ref: 2026-10-22--map-canonical-index-program-maintainer-handles}
+  - {kind: decision, ref: 2026-10-23--map-follow-up-hypotheses-unread-registry-edge-derived-files-one-decomposition}
   - {kind: round, ref: projects/normativity/legitimacy/rounds/2026-08-12-legitimacy-architecture}
   - {kind: round, ref: projects/normativity/legitimacy/rounds/2026-08-13-procedural-legitimacy}
   - {kind: round, ref: projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge}
