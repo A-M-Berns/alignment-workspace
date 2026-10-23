@@ -305,7 +305,9 @@ commit.
   follow-up rulings F1–F6 of 2026-10-23 (hypotheses filed when read, the registry join as an
   edge, the derived files out of the tree, one decomposition per line, a formal result under
   the claim it establishes, dockets by programme) were taken the same way and await the same
-  confirmation.
+  confirmation, as were the four rulings G1–G4 of the second follow-up of 2026-10-23 (the
+  digest's one shape, frames that hold what they are about with roots as goals, registered
+  results bearing on items rather than answering them, an unconfirmed want at weight 0).
   *Turns on:* whether the co-maintainer accepts the handle, the one-plan frame with its
   seven lines and their owners, the drafted programmes, the render of `PRIORITIES.md` and
   the decision anchors as stated — a decision about the program's own shape.
@@ -323,17 +325,6 @@ commit.
   holds one record) gets a shape of its own — a reading of the mathematics, not a
   mechanical rule.
   <!-- decision: open--ambiguous-blocked-merges-ruling-f5; touches: node:effective-authority-layer, node:post-corrigible-normative-learning, node:authority-typed-corrigibility, node:kernel-lexical-order-hypothesis; status: open -->
-
-- **How a docket is represented (ruling F6, 2026-10-23).**  A docket is an `or` node filed as a
-  shared-claim root of its line or programme, tagged `either-suffices`, whose Statement now
-  says what it is ("Work orders filed against <programme>, not yet attached to the goal each
-  serves; their placement is the maintainer's"). The follow-up proposes, without applying
-  it, a `dockets` field on a frame (the item ids the frame's work orders are, read by the
-  ranking as routes under no goal and by the index as the frame's work orders), so that a
-  docket is no claim and carries no status.
-  *Turns on:* whether a work order with no goal identified should count as a goal of the
-  ranking at all — a decision about what the map's numbers are for.
-  <!-- decision: open--how-docket-represented-ruling-f6; touches: node:docket-normativity, node:docket-legitimacy, node:docket-deference, node:docket-workspace, node:docket-seed; status: open -->
 
 - **Whether `graph/tasks.md` and `graph/view.md` follow the derived files out of the tree.**  Ruling
   F3 removed graph/derived.json and graph/index.json from the tree and kept the two renders
@@ -6686,3 +6677,58 @@ more honestly, and proposes the latter in a design-log line if so, without apply
 setting leaves, not 170; 244 formal results had a frame as their only parent, 5 more were
 attached only through `given` edges, and 11 sat under an `and`. The ruling text is the
 maintainer's and is not reworded.
+
+### 2026-10-23 — the map's second follow-up rulings: the digest has one shape, a frame holds what it is about and its roots are its goals, a registered result bears on an item rather than answering it, and an unconfirmed want weighs nothing (G1–G4)
+<!-- decision: 2026-10-23--map-second-follow-up-digest-one-shape-frames-hold-bearing-unconfirmed-want-weighs-nothing; touches: node:the-program, node:normativity, node:legitimacy, node:deference-and-trust, node:enabling-work, node:seed-theory, node:operative-force, node:normative-inductor, node:integrity-and-record, node:openness-and-non-capture, node:authorship-and-transparency, node:public-corrigibility-line, node:deference-finite-results -->
+
+**Maintainer rulings, taken by one maintainer in conversation; the second maintainer's
+confirmation is outstanding** (landed as the first commit of the map-as-canonical round's
+second follow-up, `prompts/2026-10-22-map-as-canonical/PROMPT-followup-2.md`; the
+confirmation is appended to the round's queue entry above rather than queued a third time).
+Two reviews of the branch at `4dc8811` agreed on the architecture and named the things to
+fix before merge; these four rulings answer them.
+
+**G1. The digest has one shape.** `derived.json`'s `digest` carries the same keys whatever
+`previous_derivation` returns: `compared_with` (a name, or `none`), `statuses_flipped`,
+`root_statuses_flipped`, `levels_moved`, `events_new`, `revisions`, `wants_new`,
+`proposals_awaiting` and whatever else the comparing branch emits — the lists empty and the
+counts zero when there is nothing to compare with. The `DIGEST` line says `no previous
+derivation` in that case, as now. A test that asserts a status flip supplies the previous
+derivation it needs explicitly — by writing the fixture's first derivation to the path
+`previous_derivation` reads, or by a test-only parameter — and never depends on a file a
+prior run left behind or on a branch existing. No test is loosened to tolerate a missing key.
+
+**G2. A frame holds what it is about; its roots are its goals.** A frame gains a field
+`holds` (provisional name): a list of node ids the frame is about that are not goals of the
+ranking. A node in `holds` is attached (rule 1's "attached to nothing" is satisfied by
+membership), carries no role or preset, is no root, enters no status, value, stake or unit
+of the frame, and is listed in `derived.json`, the index (`in_frames` gains a
+`membership: holds` entry beside `role`) and the view under the frame as *held*. A node may
+be both held by one frame and a root of another. Then: every docket `or` is dissolved — its
+items go into `holds` of the frame it hung under, the docket node files are deleted (not
+superseded: they were placeholders the follow-up created, not claims anyone filed) — and
+every formal result that is a `shared-claim` root of a frame solely because the round filed
+it there (the 2026-10-22 and 2026-10-23 filings; the report says how it told these from
+roots that predate the round) moves from `roots` to `holds`. The same for the roots F4
+moved to the `legitimacy` line frame on 2026-10-23 "because they bear on none of the three
+programmes": they are held, not goals, until a maintainer places them. The report gives
+root counts per frame before and after and the count of nodes held.
+
+**G3. Bearing, not answering.** The render line becomes *Registered results bearing on this
+item:* and the index key `answered_by` becomes `bearing` (schema `graph-index/3`; §6.1 of
+`graph/MAP-AS-CANONICAL.md` updated). An item's `item_status` is unchanged by any registered
+result; closing is a maintainer act with a statement of record, as the regulations say.
+
+**G4. An unconfirmed want weighs nothing.** A want with `filed_from: quote` and no
+`priority` event by its owner carries weight 0 in the ranking (it is listed, flagged *owner
+has not confirmed*, and the pooled list still asks for the word, as now); an explicit
+`priority` word gives it the word's weight; `none` still disowns. A want filed by its owner
+in a session (no `filed_from`) with no priority word keeps the Default `medium`, since the
+owner filed it. `PRIORITY_WORDS` and the want-weight function in `checkers/graph.py`,
+`PROTOCOL.md` §2 (owned wants) and the glossary say so; a design-log line records the Default
+change; the self-test gains the null input (a quoted want with no word weighs zero; with a
+word, the word).
+
+Ruling G2 closes the queued entry *How a docket is represented (ruling F6, 2026-10-23)*: a
+docket is no node; the work orders it held are held by the frame it hung under. The ruling
+text is the maintainer's and is not reworded.

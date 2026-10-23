@@ -670,7 +670,7 @@ change, and the count of those is the size of the free choice remaining.
 | `holdEF` | def | 2026-08-11-faithful-acceleration | Lean only | `Workspace.Deference.Contrib.FaithfulAcceleration.holdEF` |
 | `softInd` | def | 2026-08-11-faithful-acceleration | Lean only | `Workspace.Deference.Contrib.FaithfulAcceleration.softInd` |
 | `tradeEF` | def | 2026-08-11-faithful-acceleration | Lean only | `Workspace.Deference.Contrib.FaithfulAcceleration.tradeEF` |
-| `weight` | def | 2026-08-11-faithful-acceleration | wiki | `Workspace.Deference.Contrib.FaithfulAcceleration.weight` |
+| `weight` | def | 2026-08-11-faithful-acceleration | wiki, prose | `Workspace.Deference.Contrib.FaithfulAcceleration.weight` |
 | `weightEF` | def | 2026-08-11-faithful-acceleration | Lean only | `Workspace.Deference.Contrib.FaithfulAcceleration.weightEF` |
 | `Answer` | abbrev | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Answer` |
 | `Counted` | def | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Counted` |
@@ -1538,7 +1538,7 @@ change, and the count of those is the size of the free choice remaining.
 | `softGate` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.GatedChoice.softGate` |
 | `total` | def | unrecorded | note, prose | `Workspace.Normativity.Contrib.GatedChoice.total` |
 | `u` | def | unrecorded | wiki, note, prose | `Workspace.Normativity.Contrib.GatedChoice.Witness.u` |
-| `weight` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.GatedChoice.weight` |
+| `weight` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.GatedChoice.weight` |
 | `Integrity` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.Integrity` |
 | `Local` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.Local` |
 | `LocalConservation` | structure | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.LocalConservation` |
