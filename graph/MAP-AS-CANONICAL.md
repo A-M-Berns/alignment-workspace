@@ -29,15 +29,15 @@ content is not bent to fit.
 |---|---|---|
 | `graph/frame.yaml` | the top question, its owner, classes, valuations, four roots | unchanged in question and classes; `owner` may be a list; gains `narrative: wiki/Home.md`; the plan root `trust-modelling` is widened into `the-program` |
 | `graph/nodes/<id>.md` | one node per claim, frame, table, leaf | unchanged in kind; frames gain `narrative` and may have several owners; a node may be a root of several frames (shared roots) |
-| `graph/events/<handle>.jsonl` | one ledger per contributor | the only human ledger is renamed from `maintainer` to `anson`; a second human handle `@abram` is mapped and has no ledger until it writes an event |
+| `graph/events/<handle>.jsonl` | one ledger per contributor | the only human ledger is renamed from `maintainer` to `anson` (ids `anson-001`, `-002`); a second human handle `@abram` is mapped and has no ledger until it writes an event |
 | `graph/policy.yaml` | parameters, handles, registries | `maintainer` is a list of human handles; `handles` maps `@anson` and `@abram` |
 | `projects/*/CLAIMS.md` (two registries, 178 entries) | registered claims with a statement of record | each entry has exactly one formal result in the map: an `and` whose id is the registry id, of a `record` leaf (statement of record = the declaration), one hypothesis leaf per hypothesis read from the Lean signature, one `bridge` with `attribution`, one completeness leaf; the registry stays the statement of record and the map cites it |
 | the 82 landed `record` leaves whose declarations are not registry entries | clean-room and package declarations | kept as they are (they cap at level 2, *not in a claims registry*); the gap is filed in §7 |
-| `PRIORITIES.md`, numbered items | work orders | one node per item, id `item-<n>` (`item-q<n>` for *Where ingenuity is the bottleneck*, `item-f<n>` for *Workspace friction*), a `task` leaf for a work order and a `question` leaf for an ingenuity entry; the item's fields (number, title, difficulty tag, project, dispatchable, deliverable shape, acceptance check, context, status, position, section) on the node; the item's body verbatim in a `## Item` section of the node file |
+| `PRIORITIES.md`, numbered items | work orders (125, plus 4 ingenuity entries and 8 friction entries) | one node per entry, id `item-<n>` (`item-q<n>` for *Where ingenuity is the bottleneck*, `item-f<n>` for *Workspace friction*), a `task` leaf for a work order and a `question` leaf for an ingenuity entry, or the node that already stood for the item (17 merged, renamed into the scheme); the item's fields (number, title, difficulty tag, heading annotations, project, dispatchable, deliverable shape, acceptance check, context paths, open/closed status, position, section) on the node; the item's body verbatim in a `## Item` section of the node file |
 | `PRIORITIES.md`, the file | the maintainers' ordered list | **a render** of the item nodes in the transcribed order, written by `checkers/priorities_render.py` on the plain checker run from `state/priorities_sections.md` (the standing preamble and each section's intro) and the item nodes; `tests/run.py` gates that the committed file equals the render |
-| `DECISIONS.md` | the maintainers' prose rulings | stays the highest-precedence prose record; each entry gains one machine line (an anchor and a `touches` list); the map points at entries through the `work` pointer kind `decision`; no ruling is reworded and no event is written |
-| `wiki/*.md` | narrative pages | attached to frames and nodes through the `narrative` field; claims, items and rounds named in prose carry a resolvable reference (`checkers/wiki_refs.py`) |
-| `state/rounds.json` (125 rounds) | the round index | every round is pointed at by `work: {kind: round}` from the nodes it produced, or listed in the report as unpointed |
+| `DECISIONS.md` | the maintainers' prose rulings (261 settled, 22 queued before this round's additions) | stays the highest-precedence prose record; each entry gains one machine line (an anchor and a `touches` list: 283 anchors, 49 with touches read from the entries' explicit mentions); 61 nodes point at 50 entries through the `work` pointer kind `decision`; no ruling is reworded and no event is written |
+| `wiki/*.md` | narrative pages (32 pages, 2 repo-only files) | 24 pages attached to frames and nodes through the `narrative` field (a page or a list of pages); 304 claims, items and rounds named in prose carry a resolvable reference (`checkers/wiki_refs.py`), which found six superseded ids to correct |
+| `state/rounds.json` (125 rounds, 126 with this one) | the round index | 119 rounds pointed at by `work: {kind: round}` from 194 nodes (the formal results by `origin_round`, the line and programme frames by project, the enabling work by the infrastructure rounds); 6 administrative rounds unpointed, listed in the report |
 | `state/foundations.json` | the August 9 foundation | one node (`normativity-aug9-foundation`) whose `work` pointer of kind `foundation` names the foundation's id; its 180 claims are not filed |
 | `README.md`, `wiki/Home.md` | prose status claims | bound to the state where a binding form exists, corrected where it does not |
 | `graph/index.json` | — | **new, generated**: the structure-only emission the checker writes on the plain run (§6) |
@@ -207,15 +207,24 @@ Each **agent-decided** choice is reversible; the rejected alternative is named.
   the render regenerates the heading and the metadata line from the fields.
   *Rejected:* re-typing the bodies as Statements, which would reword the
   maintainers' work orders.
-- **Items hang under their section's programme** through one `or` per section
-  (a docket of routes) where no finer goal was identified; the report lists
-  those as *goal not identified*. *Rejected:* conjunct attachment, which the
-  protocol forbids for tasks.
+- **Items hang in per-project dockets** (`docket-normativity`, `-legitimacy`,
+  `-seed`, `-deference`, `-workspace`: one `or` of routes per project of the
+  `workspace-priority` marker, a shared-claim root of the line's frame) where no
+  finer goal was identified; the 17 items whose nodes already stood somewhere
+  keep their place; the report lists the 120 docketed items as *goal not
+  identified*. *Rejected:* conjunct attachment, which the protocol forbids for
+  tasks, and placement by section heading, which puts seed items under the
+  deference line because the file's late sections do not follow projects.
 - **Decision anchors** are `<date>--<slug>` for settled entries and
-  `open--<slug>` for queued ones, written as an HTML comment on the line after
-  the heading (settled) or as the bullet's last line (queued), with `touches`
-  extracted from the entry's explicit mentions of items, registry ids and node
-  ids. *Rejected:* heading ids, which the hosted renderers show.
+  `open--<slug>` for queued ones, the slug the first six content words of the
+  title, written as an HTML comment (`<!-- decision: <anchor>; touches:
+  kind:ref, … [; status: open] -->`) on the line after the heading (settled)
+  or as the bullet's last line (queued), with `touches` extracted mechanically
+  from the entry's explicit mentions of items (`item 87`, `items 92–93`),
+  registry ids and backticked node ids. A pointer is added to the node each
+  touch names: the item's node, the claim's formal result, the node itself.
+  *Rejected:* heading ids, which the hosted renderers show; hand-read touches,
+  which 283 entries do not allow in one round.
 - **Round pointers** use the round's `path` from `state/rounds.json`; the
   checker resolves a `round` ref as a directory or as a round id or path.
 - **A `foundation` work pointer kind** (ref an id in `state/foundations.json`)
@@ -225,6 +234,21 @@ Each **agent-decided** choice is reversible; the rejected alternative is named.
   order is its home for paths. *Rejected:* duplicating the node per frame.
 - **`owner` accepts a list** on frames (the form chosen over a second key
   `owners`), and `maintainer` accepts a list in `policy.yaml`.
+- **Existing frames are re-owned by the line they sit under** (29 frames:
+  `@abram` for the deference, decision-theory, stance and abstraction lines,
+  both maintainers under legitimacy, `@anson` for the corrigibility landscape
+  and its sub-frames), and **the thirteen wants by the attribution of their
+  source documents** (the deference note dump's `notes/`, lab and chats are
+  the second maintainer's by its own README; the corrigibility position
+  statements are the published post's material, the first maintainer's; the
+  unbounded-embedded sources sit in the second maintainer's level line): eight
+  wants to `@abram`, five to `@anson`, every one still *owner has not
+  confirmed*. *Rejected:* the blanket rename of every `@maintainer` to
+  `@anson`, which would have made the first maintainer the owner of wants
+  quoted from the second's words.
+- **A `foundation` pointer kind** and **a `wiki` value of `filed_from`** are
+  the two smallest extensions filed (§7 of the survey); **`narrative` accepts a
+  list** so that two pages can narrate one node.
 - **`wiki/ORIGIN.md`, `Sources.md`, `_Sidebar.md`, `Prior-Art.md`,
   `CONVENTIONS.md`, `Glossary.md`, `Relation-to-the-Field.md`** are legitimately
   unattached: receipt, bibliography, navigation, conventions, a glossary and a
@@ -233,8 +257,10 @@ Each **agent-decided** choice is reversible; the rejected alternative is named.
   frame stays as it is and lists owners for `the-program` and its lines only.
 
 **Reserved to the maintainers** (also in `DECISIONS.md`, *Awaiting the author*):
-the wording of `the-program`'s question and of every line frame's; the roots
-marked *owner has not confirmed*; which of the foundation's 180 claims are
-lifted into the map; the priority words on every want; the second maintainer's
-confirmation of M1–M8; whether the 82 clean-room records should have a registry
-of their own; whether the top frame's owner is one maintainer or both.
+the second maintainer's confirmation of M1–M8; the wording of `the-program`'s
+question and of every line frame's; the roots marked *owner has not confirmed*
+(nine drafted frames, the re-owned sub-frames, the re-owned wants); which of
+the foundation's 180 claims are lifted into the map; the priority words on
+every want; whether the 80 clean-room records should have a registry of their
+own; the top frame's owner and the sub-frames' owners; the placements the
+round left where they were.

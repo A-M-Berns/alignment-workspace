@@ -5457,6 +5457,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - no-fud-problem-headline: Open outline item 6 with the clean-room's Fud.fud_band, the channel identity VOI(scan | button) + VOI(button) = min(eps h, (1 - eps) c) as the record to react to, and say which scope of the headline sentence stands. (who: human); files: projects/deference/corrigibility-note-dump-2026-10-01/corrigibility-discussion-outline.md, projects/deference/faf-cleanroom-2026-10-02/packages/corr-position-finds, projects/deference/faf-cleanroom-2026-10-02/packages/corr-channel-voi
 - nofud-scope-proposal: Draft, as a proposal file beside the position statement, a scoped replacement for the headline sentence with each clause citing the Lean result it rests on, for the author to accept or reject. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-position-finds, projects/deference/faf-cleanroom-2026-10-02/packages/corr-legit-modif
 - non-responsiveness-learnable: Answer directions Q7 and Q10 of the non-responsiveness-learnability page: whether a two-inductor architecture is acceptable or anonymity forbids the self-locating information updateless reasoning uses, and whether the CC-limit claim is known. (who: agent)
+- normativity-aug9-foundation: foundation: normativity.consolidation-aug9
 - normativity-consolidation-open-1-6: Take up PRIORITIES items 1 and 2 (open), then 3 (entry) and 4 to 6 (substantial), each per its deliverable shape. (who: agent); work order: PRIORITIES #1; work order: PRIORITIES #2
 - normativity-layer-I-closed: Port Theorem F2 to Lean, the port the checkpoint ranks highest because everything downstream reduces to it; in the repository's Lean tree under the normativity namespace. (who: agent); files: lean/, projects/normativity/legitimacy/checkpoint-2026-09-01/ROADMAP.md
 - normativity-learning-track: Take up item 30's integration blocker and items 31 to 33 (entry level), each per its deliverable shape. (who: agent); work order: PRIORITIES #30; work order: PRIORITIES #31; files: projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/CROWN_JEWEL_THEOREM.md
@@ -9000,4 +9001,4 @@ The outside option and the undescribed failure, each a cases node over the outco
 | wirehead-iff-finite.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 2 |
 | wirehead-iff-finite.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 2 |
 | worlds-and-points-companion | leaf/question | 2 (both) | AI number | open | 0 | 8 |
-<!-- generated_hash: 204c6ecf08bcfa49311e5e22 -->
+<!-- generated_hash: ce620fe5ca2a53bb4042d091 -->

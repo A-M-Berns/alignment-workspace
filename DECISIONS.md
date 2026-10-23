@@ -299,6 +299,70 @@ commit.
   debt, which the account records and the mathematics does not decide.
   <!-- decision: open--whether-warrant-s-entitlement-ends-obligation; touches: none; status: open -->
 
+- **The second maintainer's confirmation of rulings M1–M8 (2026-10-22).**  The eight
+  rulings of the map-as-canonical round were taken by one maintainer in conversation and
+  landed as the round's second commit; the other maintainer has not confirmed them.
+  *Turns on:* whether the co-maintainer accepts the handle, the one-plan frame with its
+  seven lines and their owners, the drafted programmes, the render of `PRIORITIES.md` and
+  the decision anchors as stated — a decision about the program's own shape.
+  <!-- decision: open--second-maintainer-confirmation-rulings-m1-m8; touches: node:the-program; status: open -->
+
+- **The wording of `the-program`'s question and of every line frame's.**  The round worded
+  them from `wiki/Home.md` and the existing nodes' Statements (`graph/nodes/the-program.md`,
+  `normativity.md`, `legitimacy.md`, `deference-and-trust.md`, `decision-theory.md`,
+  `stance-and-level.md`); each is provisional.
+  *Turns on:* taste about how the maintainers would pose their own questions, which no
+  reading of the wiki supplies.
+  <!-- decision: open--wording-program-s-question-every-line-frame-s; touches: node:the-program, node:normativity, node:legitimacy, node:deference-and-trust, node:decision-theory, node:stance-and-level; status: open -->
+
+- **The roots marked *owner has not confirmed*.**  Nine frames drafted from the wiki
+  (`normativity`, `legitimacy`, `seed-theory`, `operative-force`, `normative-inductor`,
+  `response-learning`, `normative-record`, `integrity-and-record`,
+  `openness-and-non-capture`, `authorship-and-transparency`) carry `filed_from: wiki`; an
+  owner confirms one by removing the field. The existing sub-frames were re-owned by the
+  line they sit under and the thirteen wants by whose public words they quote
+  (`prompts/2026-10-22-map-as-canonical/REPORT.md`, Part 6).
+  *Turns on:* whether each decomposition is the owner's, which only the owner can say.
+  <!-- decision: open--roots-marked-owner-has-not-confirmed; touches: node:normativity, node:legitimacy, node:seed-theory, node:operative-force, node:normative-inductor, node:response-learning, node:normative-record, node:integrity-and-record, node:openness-and-non-capture, node:authorship-and-transparency; status: open -->
+
+- **Which of the foundation's 180 claims are lifted into the map.**  The August 9
+  consolidation is one node (`normativity-aug9-foundation`) with a `foundation` pointer;
+  four of its claims are cited by name from one existing node (the item-1 node, through
+  `NL-SI-A2`, `A3`, `A4`, `A7`) and none from any other.
+  *Turns on:* what is worth lifting into the modern registry's vocabulary, a decision
+  the registry's own first section reserves.
+  <!-- decision: open--which-foundation-s-180-claims-lifted; touches: node:normativity-aug9-foundation, item:1; status: open -->
+
+- **The priority words on every want.**  Thirteen wants stand, each `filed_from: quote`
+  with no priority word (none is filed by this round); five are now owned by `@anson`
+  and eight by `@abram` by the attribution of their source documents.
+  *Turns on:* each owner's one word (high, medium, low or none), which nobody else writes.
+  <!-- decision: open--priority-words-every-want; touches: none; status: open -->
+
+- **Whether the clean-room records get a registry.**  Eighty `record` leaves name
+  kernel-checked declarations of `projects/deference/faf-cleanroom-2026-10-02/`, which no
+  listed registry holds, so they cap at level 2 (`graph/SURVEY.md`, *What the protocol
+  cannot represent*, 1).
+  *Turns on:* whether a tree this repository's CI does not build may adjudicate validity
+  for the map — a trust-chain question.
+  <!-- decision: open--whether-clean-room-records-get-registry; touches: none; status: open -->
+
+- **The top frame's owner, and the sub-frames' owners.**  The top frame keeps one owner
+  (`@anson`) because ruling M2 lists owners for `the-program` and its lines only; the
+  existing sub-frames were re-owned by line (`@abram` for the deference, decision-theory,
+  stance and abstraction lines; both for legitimacy; `@anson` for the corrigibility
+  landscape, whose sources are the first maintainer's position statements).
+  *Turns on:* whose question each frame poses, a presentation input the owner sets.
+  <!-- decision: open--top-frame-s-owner-sub-frames-owners; touches: node:the-program, node:corrigibility-landscape; status: open -->
+
+- **Placements the round left where they were.**  `wiki-corpus-maintenance` stays a
+  plan of `deference-and-trust` rather than `enabling-work`; the Progress results
+  (`progress.*`, `ni.progress-bound`) sit under `normative-inductor` while the wiki's
+  sidebar lists normative induction under legitimacy; 120 items hang in per-project
+  dockets with no finer goal identified.
+  *Turns on:* where each belongs in the maintainers' own picture of the lines.
+  <!-- decision: open--placements-round-left-where-they-were; touches: node:wiki-corpus-maintenance, node:normative-inductor; status: open -->
+
 ## Settled
 
 ### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer

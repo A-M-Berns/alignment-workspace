@@ -4,7 +4,7 @@
 - statuses flipped: none
 - root statuses flipped: none
 - levels moved: none
-- events counted since the previous derivation: 2
+- events counted since the previous derivation: 0
 - revisions recorded: none
 - wants filed since the previous derivation: none
 - spell-out candidates (unspelled frames and childless wants): 13; heaviest want-address-anti-naturality, want-basin-of-attraction-formalized, want-corrigibility-theorems-via-legitimacy
@@ -893,4 +893,4 @@ In order: the owners' priority words, gestalts that set a goal's promise, estima
 - gestalt void-branch-deterrence-floor--corrigibility-risk — informs 7 goals; the derived number multiplies 4 unread guesses; your holistic number for void-branch-deterrence-floor--corrigibility-risk (about two minutes) sets its promise — under void-branch-deterrence-floor--corrigibility-risk
 - gestalt li-corrigibilization-theorem — informs 1 goal; the derived number multiplies 4 unread guesses; your holistic number for li-corrigibilization-theorem (about two minutes) sets its promise — under li-corrigibilization-theorem
 - … 266 more unranked units in `derived.json` (`--all` prints them)
-<!-- generated_hash: d8e036f12bee584a2dcc2aa3 -->
+<!-- generated_hash: 801845023e22162404672863 -->

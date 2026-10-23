@@ -215,6 +215,168 @@
    "touches": []
   },
   {
+   "anchor": "open--second-maintainer-confirmation-rulings-m1-m8",
+   "date": null,
+   "pointed_by": [],
+   "status": "open",
+   "title": null,
+   "touches": [
+    {
+     "kind": "node",
+     "ref": "the-program"
+    }
+   ]
+  },
+  {
+   "anchor": "open--wording-program-s-question-every-line-frame-s",
+   "date": null,
+   "pointed_by": [],
+   "status": "open",
+   "title": null,
+   "touches": [
+    {
+     "kind": "node",
+     "ref": "the-program"
+    },
+    {
+     "kind": "node",
+     "ref": "normativity"
+    },
+    {
+     "kind": "node",
+     "ref": "legitimacy"
+    },
+    {
+     "kind": "node",
+     "ref": "deference-and-trust"
+    },
+    {
+     "kind": "node",
+     "ref": "decision-theory"
+    },
+    {
+     "kind": "node",
+     "ref": "stance-and-level"
+    }
+   ]
+  },
+  {
+   "anchor": "open--roots-marked-owner-has-not-confirmed",
+   "date": null,
+   "pointed_by": [],
+   "status": "open",
+   "title": null,
+   "touches": [
+    {
+     "kind": "node",
+     "ref": "normativity"
+    },
+    {
+     "kind": "node",
+     "ref": "legitimacy"
+    },
+    {
+     "kind": "node",
+     "ref": "seed-theory"
+    },
+    {
+     "kind": "node",
+     "ref": "operative-force"
+    },
+    {
+     "kind": "node",
+     "ref": "normative-inductor"
+    },
+    {
+     "kind": "node",
+     "ref": "response-learning"
+    },
+    {
+     "kind": "node",
+     "ref": "normative-record"
+    },
+    {
+     "kind": "node",
+     "ref": "integrity-and-record"
+    },
+    {
+     "kind": "node",
+     "ref": "openness-and-non-capture"
+    },
+    {
+     "kind": "node",
+     "ref": "authorship-and-transparency"
+    }
+   ]
+  },
+  {
+   "anchor": "open--which-foundation-s-180-claims-lifted",
+   "date": null,
+   "pointed_by": [],
+   "status": "open",
+   "title": null,
+   "touches": [
+    {
+     "kind": "node",
+     "ref": "normativity-aug9-foundation"
+    },
+    {
+     "kind": "item",
+     "ref": "1"
+    }
+   ]
+  },
+  {
+   "anchor": "open--priority-words-every-want",
+   "date": null,
+   "pointed_by": [],
+   "status": "open",
+   "title": null,
+   "touches": []
+  },
+  {
+   "anchor": "open--whether-clean-room-records-get-registry",
+   "date": null,
+   "pointed_by": [],
+   "status": "open",
+   "title": null,
+   "touches": []
+  },
+  {
+   "anchor": "open--top-frame-s-owner-sub-frames-owners",
+   "date": null,
+   "pointed_by": [],
+   "status": "open",
+   "title": null,
+   "touches": [
+    {
+     "kind": "node",
+     "ref": "the-program"
+    },
+    {
+     "kind": "node",
+     "ref": "corrigibility-landscape"
+    }
+   ]
+  },
+  {
+   "anchor": "open--placements-round-left-where-they-were",
+   "date": null,
+   "pointed_by": [],
+   "status": "open",
+   "title": null,
+   "touches": [
+    {
+     "kind": "node",
+     "ref": "wiki-corpus-maintenance"
+    },
+    {
+     "kind": "node",
+     "ref": "normative-inductor"
+    }
+   ]
+  },
+  {
    "anchor": "2026-09-15--corrigibility-program-consolidated-research-state-corrigibility",
    "date": "2026-09-15",
    "pointed_by": [
@@ -2986,7 +3148,7 @@
   ]
  },
  "generated": "2026-10-22",
- "generated_hash": "539a81c9aacc087140cc323b",
+ "generated_hash": "b4a3e071f56f55f097212404",
  "handles": {
   "@abram": {
    "github": "abramdemski",
@@ -49322,13 +49484,18 @@
    "narrative": [
     "wiki/Reasons-Answerability-and-the-Score.md"
    ],
-   "notes": "Recorded; migrating selected claims as Lean ports is filed as open in the\nregistry.",
+   "notes": "Recorded; migrating selected claims as Lean ports is filed as open in the\nregistry. The one node standing for the foundation (Part 1 of the\nmap-as-canonical round): its `foundation` pointer names the entry of\nstate/foundations.json whose ledger is\nprojects/normativity/consolidation-aug9/LEDGER.md; none of the 180 claims is\nfiled, and which are lifted is reserved to the maintainers.",
    "rows": [],
    "size": "S",
    "source": "projects/normativity/CLAIMS.md, section \"The frozen consolidation is not\nmigrated into this registry\";\nprojects/normativity/legitimacy/checkpoint-2026-09-01/README.md (the evidence\nclasses of the frozen work).",
    "statement": "The August 9 consolidation carries one hundred and eighty claims under its own\nledger and statuses, verified continuously by the consolidation-verification\ngate and not re-registered.",
    "version": 1,
-   "work": []
+   "work": [
+    {
+     "kind": "foundation",
+     "ref": "normativity.consolidation-aug9"
+    }
+   ]
   },
   "normativity-consolidation-open-1-6": {
    "author": "@smithy-verity",
@@ -77142,6 +77309,11 @@
     "seed.forced-interval-spec",
     "seed.independence-strict"
    ]
+  },
+  {
+   "id": "2026-10-22-map-as-canonical",
+   "path": "prompts/2026-10-22-map-as-canonical",
+   "pointed_by": []
   },
   {
    "id": "2026-10-22-normative-inductor-integration",

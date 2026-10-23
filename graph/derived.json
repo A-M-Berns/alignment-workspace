@@ -87,7 +87,7 @@
  "audits": {},
  "checker_version": "0.4",
  "digest": {
-  "events_new": 2,
+  "events_new": 0,
   "levels_moved": [],
   "proposals_awaiting": [],
   "revisions": [],
@@ -2518,7 +2518,7 @@
   },
   "withdrawn": []
  },
- "generated_hash": "63d2497fa295f457cbaaaba8",
+ "generated_hash": "df79fafe287ff5385ddc6bfc",
  "goal_order": [
   [
    "the-program",
@@ -249361,7 +249361,13 @@
    "source_private_only": false,
    "stale_leaf_ranges": null,
    "status": "open",
-   "version": 1
+   "version": 1,
+   "work": [
+    {
+     "kind": "foundation",
+     "ref": "normativity.consolidation-aug9"
+    }
+   ]
   },
   "normativity-consolidation-open-1-6": {
    "V": {
