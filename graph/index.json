@@ -224,6 +224,14 @@
     {
      "kind": "node",
      "ref": "the-program"
+    },
+    {
+     "kind": "node",
+     "ref": "normativity"
+    },
+    {
+     "kind": "node",
+     "ref": "legitimacy"
     }
    ]
   },
@@ -2985,6 +2993,75 @@
      "ref": "125"
     }
    ]
+  },
+  {
+   "anchor": "2026-10-23--map-follow-up-hypotheses-unread-registry-edge-derived-files-one-decomposition",
+   "date": "2026-10-23",
+   "pointed_by": [],
+   "status": "settled",
+   "title": "the map's follow-up rulings: hypotheses are filed when read, the registry join is an edge, the large derived files leave the tree, one decomposition per line, a formal result sits under the claim it establishes, and items are docketed by programme (F1\u2013F6)",
+   "touches": [
+    {
+     "kind": "node",
+     "ref": "normativity"
+    },
+    {
+     "kind": "node",
+     "ref": "legitimacy"
+    },
+    {
+     "kind": "node",
+     "ref": "normativity-line"
+    },
+    {
+     "kind": "node",
+     "ref": "legitimacy-reasons-programme"
+    },
+    {
+     "kind": "node",
+     "ref": "seed-theory"
+    },
+    {
+     "kind": "node",
+     "ref": "operative-force"
+    },
+    {
+     "kind": "node",
+     "ref": "normative-inductor"
+    },
+    {
+     "kind": "node",
+     "ref": "response-learning"
+    },
+    {
+     "kind": "node",
+     "ref": "normative-record"
+    },
+    {
+     "kind": "node",
+     "ref": "integrity-and-record"
+    },
+    {
+     "kind": "node",
+     "ref": "openness-and-non-capture"
+    },
+    {
+     "kind": "node",
+     "ref": "authorship-and-transparency"
+    },
+    {
+     "kind": "item",
+     "ref": "39"
+    },
+    {
+     "kind": "item",
+     "ref": "123"
+    },
+    {
+     "kind": "item",
+     "ref": "124"
+    }
+   ]
   }
  ],
  "events": [
@@ -3147,8 +3224,8 @@
    "undescribed-failure"
   ]
  },
- "generated": "2026-10-22",
- "generated_hash": "b4a3e071f56f55f097212404",
+ "generated": "2026-10-23",
+ "generated_hash": "9996ac58afac4eff860ff51c",
  "handles": {
   "@abram": {
    "github": "abramdemski",

@@ -80,9 +80,9 @@
  "anchor_rules": "2026-10-02.1",
  "audit": {
   "by": "@anson",
-  "event": "anson-001",
+  "event": "anson-002",
   "minutes": "36/1",
-  "text": "audit (36 min of this session): re-perform estimate anson-001 by @anson on {\"row\": [\"default-trajectory\", \"dt-high-conflict\"], \"field\": \"p\"}; cross-audit preferred"
+  "text": "audit (36 min of this session): re-perform estimate anson-002 by @anson on {\"row\": [\"undescribed-failure\", \"uf-disutility-max\"], \"field\": \"w\"}; cross-audit preferred"
  },
  "audits": {},
  "checker_version": "0.4",
@@ -2518,7 +2518,7 @@
   },
   "withdrawn": []
  },
- "generated_hash": "df79fafe287ff5385ddc6bfc",
+ "generated_hash": "4057aee3b359b72882790086",
  "goal_order": [
   [
    "the-program",

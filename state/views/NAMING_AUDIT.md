@@ -395,7 +395,7 @@ change, and the count of those is the size of the free choice remaining.
 | `World` | structure | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.World` |
 | `agentSetoid` | def | 2026-08-12-cartesian-frames | Lean only | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.agentSetoid` |
 | `collapse` | def | 2026-08-12-cartesian-frames | Lean only | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.collapse` |
-| `commit` | def | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.commit` |
+| `commit` | def | 2026-08-12-cartesian-frames | note, prose | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.commit` |
 | `constSection` | def | 2026-08-12-cartesian-frames | Lean only | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.constSection` |
 | `delegated` | abbrev | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.delegated` |
 | `envSetoid` | def | 2026-08-12-cartesian-frames | Lean only | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.envSetoid` |

@@ -301,11 +301,15 @@ commit.
 
 - **The second maintainer's confirmation of rulings M1–M8 (2026-10-22).**  The eight
   rulings of the map-as-canonical round were taken by one maintainer in conversation and
-  landed as the round's second commit; the other maintainer has not confirmed them.
+  landed as the round's second commit; the other maintainer has not confirmed them. The six
+  follow-up rulings F1–F6 of 2026-10-23 (hypotheses filed when read, the registry join as an
+  edge, the derived files out of the tree, one decomposition per line, a formal result under
+  the claim it establishes, dockets by programme) were taken the same way and await the same
+  confirmation.
   *Turns on:* whether the co-maintainer accepts the handle, the one-plan frame with its
   seven lines and their owners, the drafted programmes, the render of `PRIORITIES.md` and
   the decision anchors as stated — a decision about the program's own shape.
-  <!-- decision: open--second-maintainer-confirmation-rulings-m1-m8; touches: node:the-program; status: open -->
+  <!-- decision: open--second-maintainer-confirmation-rulings-m1-m8; touches: node:the-program, node:normativity, node:legitimacy; status: open -->
 
 - **The wording of `the-program`'s question and of every line frame's.**  The round worded
   them from `wiki/Home.md` and the existing nodes' Statements (`graph/nodes/the-program.md`,
@@ -6568,3 +6572,85 @@ duplicated numbers.
 **Names, provisional:** *origin*, *entitlement*, *entitled*, *expresses*, *compile outcome*,
 *idle*, *enforced*, *withheld*, *obligations present*, *served protocol*, *Scenario A*,
 *Scenario B*, *same question*.
+
+### 2026-10-23 — the map's follow-up rulings: hypotheses are filed when read, the registry join is an edge, the large derived files leave the tree, one decomposition per line, a formal result sits under the claim it establishes, and items are docketed by programme (F1–F6)
+<!-- decision: 2026-10-23--map-follow-up-hypotheses-unread-registry-edge-derived-files-one-decomposition; touches: node:normativity, node:legitimacy, node:normativity-line, node:legitimacy-reasons-programme, node:seed-theory, node:operative-force, node:normative-inductor, node:response-learning, node:normative-record, node:integrity-and-record, node:openness-and-non-capture, node:authorship-and-transparency, item:39, item:123, item:124 -->
+
+**Maintainer rulings, taken by one maintainer in conversation; the second maintainer's
+confirmation is outstanding** (landed as the first commit of the map-as-canonical round's
+follow-up, `prompts/2026-10-22-map-as-canonical/PROMPT-followup.md`; the confirmation is
+appended to the round's queue entry above rather than queued a second time). The review
+they answer found that the round of 2026-10-22 made every object of the program exist in
+the map and left the map flat.
+
+**F1. Hypotheses are filed when read, not parsed.** A `record` leaf may carry
+`hypotheses: unread` in place of a list of hypothesis-leaf ids. The record's Source then
+carries the declaration's signature verbatim (binders included), so a reader has what the
+parsed leaves held. A formal result with an unread record is an `and` of record, bridge and
+completeness leaf, and the view and the index say *hypotheses unread* beside it. Filing the
+hypotheses is a human reading act or an agent act from a human's reading of the Lean;
+a later round may rank it as a unit, but this follow-up does not. The 511 hypothesis leaves
+and 170 setting leaves the round parsed from signatures are removed and the records they
+belonged to set to `unread`. Hypothesis leaves that predate the round (the 68 that existed on
+`main` at `4eb420f`, filed by reading) stay as they are.
+
+**F2. The registry join is an edge.** Every formal result built from a registry entry with
+an `answers_item` carries `work: [{kind: priorities, ref: <n>}]` for that item, and the
+index inverts it: each item record in the index lists `answered_by` (the formal-result
+ids) and each formal result lists `answers`. An item's `item_status` does not change — closing
+an item is the maintainer's (*the reservation bar and epistemic debt*, "closed needs a
+statement of record") — but the index and the render show the registered answers beside an
+open item.
+
+**F3. The large derived files leave the tree.** graph/derived.json and graph/index.json
+are no longer committed. The checker still writes them on the plain run, to `graph/` as now,
+and `.gitignore` excludes them; CI uploads both as workflow artifacts on every run and
+publishes them to the branch `derived` (orphan, force-pushed, one commit per `main` push,
+with the `main` commit hash in its message), which is where a site generator reads them
+from. `graph/versions.json` stays committed and keeps `generated_hash` for both files, so a
+hand-edited or stale derivation is still refused and a rerun still changes nothing. The
+digest's "previous committed derivation" (`checkers/graph.py`, the function that reads
+`HEAD:./graph/derived.json`) reads instead the `versions.json` at HEAD plus whatever
+derived.json is on disk or on the `derived` branch, and says in its digest line which it
+compared with. `graph/tasks.md` and `graph/view.md` stay committed: they are the
+human-readable renders and a pull request's diff of them is the point.
+
+**F4. One decomposition per line.** The pre-existing frames `normativity-line` (under
+`normativity`) and `legitimacy-reasons-programme` (under `legitimacy`) are dissolved: each
+child is moved to the new programme whose question it bears on (`seed-theory`,
+`operative-force`, `normative-inductor`, `response-learning`, `normative-record`;
+`integrity-and-record`, `openness-and-non-capture`, `authorship-and-transparency`), or,
+where it bears on none, made a root of the line frame directly, never of a docket. The two
+frame ids survive as deprecated aliases in the report's old→new map. Every move is a row in
+a table in the report so a maintainer can review placements in one sitting and reverse any.
+The same treatment for any other pre-existing sub-frame under the two lines whose question
+the new programmes now ask. `deference-and-trust`, `decision-theory`, `stance-and-level`,
+`abstraction-arc` and `enabling-work` are not touched by this ruling: their reorganization
+is the second maintainer's.
+
+**F5. A formal result sits under the claim it establishes.** For each formal result whose
+only parent is a frame, find the existing informal claim node it is the formal version of,
+and merge them: the existing claim node keeps its id and its place in every argument and
+becomes the `and` of the record, bridge and completeness leaf (the pattern
+`legit-composition` / `legit-composition.record` already follows); the registry-id node
+becomes a deprecated alias listed in the old→new map, and the registry id stays recorded on
+the record leaf and in the index so a claim id still resolves. The matching is mechanical
+and conservative, and a result with no match or more than one stays where it is, listed.
+The target is not zero bagged results; it is that every result that *has* an informal claim
+in the map is attached to it.
+
+**F6. Items are docketed by programme where the evidence places them.** An item whose
+`context` paths lie under a round directory from which a programme's formal results were
+registered (`origin_round`), or whose `project` marker names a subproject with its own
+programme (`normativity.seed` → `seed-theory`), moves from the line's docket to a docket
+under that programme; the rest stay in the line's docket. Each docket's Statement is
+rewritten to say what it is: "Work orders filed against <programme>, not yet attached to the
+goal each serves; their placement is the maintainer's." A docket is a `shared-claim` root
+today; the report says whether that role or a frame field for dockets would represent it
+more honestly, and proposes the latter in a design-log line if so, without applying it.
+
+*Counts in the rulings as the follow-up found them* (`prompts/2026-10-22-map-as-canonical/REPORT.md`,
+*Follow-up of 2026-10-23*, corrections): the round parsed 511 hypothesis leaves and 135
+setting leaves, not 170; 244 formal results had a frame as their only parent, 5 more were
+attached only through `given` edges, and 11 sat under an `and`. The ruling text is the
+maintainer's and is not reworded.
