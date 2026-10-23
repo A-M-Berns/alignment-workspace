@@ -33,9 +33,10 @@ registries: [projects/deference/CLAIMS.md, projects/normativity/CLAIMS.md]   # c
 evaluative_words: [good, bad, safe, dangerous, promising, works, succeeds, should, might, probably]
 reask_days: 90
 time_tested_years: 3
-maintainer: "@maintainer"
+maintainer: ["@anson", "@abram"]
 handles:
-  "@maintainer": {kind: human, github: "A-M-Berns"}
+  "@anson": {kind: human, github: "A-M-Berns"}
+  "@abram": {kind: human, github: "abramdemski"}
   "@smithy-verity": {kind: ai, model: "Claude Fable 5.1 (Anthropic)"}
   "@smithy-verity-opus55": {kind: ai, model: "Claude Opus 5.5 (Anthropic)"}
 users: {}                      # ruling 26: presentation preferences per user; none asked yet

@@ -12,19 +12,25 @@ works (its §9 lists every refusal the checker can make); the repository's
 ## What is here to start from
 
 The top frame asks how the relationship between humans and AI systems goes
-and what can be done about it; its owner is the maintainer. Under it sit
-one plan and a set of risk stories:
+and what can be done about it; its owner is the first maintainer. Under it
+sit one plan and a set of risk stories:
 
-- `trust-modelling`, the maintainer's research agenda, filed as a frame
-  (a plan whose parts are plans): its lines along two axes,
-  decision-theoretic stance (`updateful-trust-li`, `updateless-dt-programme`)
-  and level of computability (`level-super-turing`,
-  `level-above-quantifiable`, and `level-poly-time`, which is not opened),
-  the cruxes the agenda names, and the abstraction arc as its later stage.
-  Each line is in turn a frame over programmes, steps and shared claims,
-  about thirty sub-frames in all, down to task leaves that name concrete
-  work in the repository (a round, a `PRIORITIES.md` item, an open
-  statement).
+- `the-program`, the research program, filed as a frame owned by both
+  maintainers (a plan whose parts are plans): seven lines, each a sub-frame
+  with its own owner: `normativity` (what learning from reasons requires),
+  `legitimacy` (what must stay true of the process, with corrigibility as
+  its consumer), `deference-and-trust` (trust between a human inductor and
+  an AI inductor), `decision-theory` (the updateless programme and the
+  LI+BRIA synthesis), `stance-and-level` (the cruxes every line reads: the
+  computability levels `level-super-turing`, `level-above-quantifiable` and
+  `level-poly-time`, which is not opened, and the updateful-versus-updateless
+  cruxes), `abstraction-arc` and `enabling-work`. Each line is in turn a
+  frame over programmes, steps and shared claims, down to the formal results
+  (one per registered claim, its id the registry id), the item nodes (one per
+  `PRIORITIES.md` entry, `item-<n>`; the file is rendered from them) and the
+  task leaves that name concrete work. A programme an agent drafted from a
+  wiki page says *owner has not confirmed* until its owner removes the
+  `filed_from: wiki` field.
 - Risk stories (the instrumental-convergence cluster among them), each a
   claim that some failure happens by default under stated conditions.
 - Wants, inside the lines, each a state of affairs its owner wants,
@@ -49,17 +55,25 @@ graph by `checkers/tests/test_graph.py`, run by `tests/run.py` or by
 
 The li-deference cluster (the logical-induction deference collapse, its
 scoped refinements and its improvement claim) lives in the
-`updateful-trust-li` sub-frame; `--scope li-deference-collapse` ranks
+`deference-and-trust` sub-frame; `--scope li-deference-collapse` ranks
 inside it, and `--scope li-deference-collapse@valid` adds the goals that
 read the collapse as an implication.
+
+The map is the program's canonical index (`graph/MAP-AS-CANONICAL.md`):
+every registered claim, priority item, maintainer decision (through
+`decision` pointers at `DECISIONS.md` anchors), round and wiki page
+(`narrative`) is in it or attached to it, and `graph/index.json`, the
+structure-only index written on every plain run, is what a site renders
+from.
 
 ## First steps, with a coding agent
 
 1. From the repository root, in the terminal: `python3 -m checkers.graph
    --root .` It prints one line, `OK <n> nodes, <n> events, <n> ranked
-   units; <the commit line>`, on stderr, and regenerates the four committed
-   files `graph/derived.json`, `graph/versions.json`, `graph/tasks.md` and
-   `graph/view.md`. Those four are rendered the same way whatever flags you
+   units; <the commit line>`, on stderr, and regenerates the five committed
+   files `graph/derived.json`, `graph/versions.json`, `graph/tasks.md`,
+   `graph/view.md` and `graph/index.json`, and `PRIORITIES.md` from the item
+   nodes. Those files are rendered the same way whatever flags you
    add, so a run never leaves personal noise in a pull request, and the
    digest compares with the derivation committed at `HEAD`, so rerunning
    changes nothing. A `WARN` line before the `OK` names something that
@@ -126,7 +140,7 @@ read the collapse as an implication.
    (statuses and root statuses that flipped, levels that moved, events
    counted since the last committed derivation, wants filed, spell-out
    candidates, the agent work the map wants most), and open a pull request
-   with your ledger and the four regenerated files.
+   with your ledger and the regenerated files.
 
 Records of formal results (`leaf_kind: record`) reach level 4 when a
 claims registry listed under `registries` in `graph/policy.yaml` holds

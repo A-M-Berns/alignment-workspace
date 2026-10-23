@@ -12,7 +12,7 @@ A formal theory of trust developed as whole-mind models at polynomial time or
 below would guide AI safety engineering work.
 
 ## Source
-The level family of trust-modelling, one shared claim per level of
+The level family of the-program, one shared claim per level of
 computability, so the levels compare on the same claim; this member is
 stated from its content.
 

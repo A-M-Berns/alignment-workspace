@@ -30,7 +30,7 @@ either through direct self-modification or through manipulative influence over
 humans."
 
 ## Notes
-A crux of the trust-modelling frame, stated in magnitude form. No
+A crux of the-program frame, stated in magnitude form. No
 document in the repository has the engineering value of updatelessness as its
 subject; the pictures are assembled from motivation paragraphs, the
 maintainer's open-problem list, his May 2026 conjecture about values and his

@@ -2,7 +2,7 @@
 id: want-methodology-note
 kind: leaf
 leaf_kind: want
-owner: "@maintainer"
+owner: "@abram"
 want: true
 filed_from: quote
 given: factor-methodology-note

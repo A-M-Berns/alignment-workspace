@@ -128,10 +128,10 @@ of enforcement accomplishes; the scheduler fixes how much intensity goes where.
 ---
 
 **Evidence.** The kernel-checked results are in
-[`2026-08-16-traderized-enforcement`](https://github.com/A-M-Berns/alignment-workspace/tree/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/rounds/2026-08-16-traderized-enforcement),
+[`2026-08-16-traderized-enforcement`](https://github.com/A-M-Berns/alignment-workspace/tree/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/rounds/2026-08-16-traderized-enforcement)<!--ref:round:2026-08-16-traderized-enforcement-->,
 with the caller-facing summary in
 [`TRADERIZED_FORCE_INTERFACE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/notes/TRADERIZED_FORCE_INTERFACE.md).
 The action theory is
-[`FIXED_ERA_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/FIXED_ERA_THEOREM.md)
+[`FIXED_ERA_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/FIXED_ERA_THEOREM.md)<!--ref:round:2026-08-31-normative-affordability-->
 §1 and the typing argument is
-[`SERVICE_FORCE_TYPING.md`](https://github.com/A-M-Berns/alignment-workspace/blob/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/SERVICE_FORCE_TYPING.md).
+[`SERVICE_FORCE_TYPING.md`](https://github.com/A-M-Berns/alignment-workspace/blob/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/SERVICE_FORCE_TYPING.md)<!--ref:round:2026-08-31-normative-affordability-->.

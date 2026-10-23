@@ -117,14 +117,14 @@ which rules license which contests is the practice's.
 
 **Evidence.** The decomposition theorem is
 [`LegitimateEvolution.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/lean/Workspace/Normativity/Contrib/LegitimateEvolution.lean),
-registered as `open-integrity.answerable`; the conservation theorem is
-`integrity.evolution-conservation`. The counterexample to deriving standing from
+registered as `open-integrity.answerable`<!--ref:claim:open-integrity.answerable-->; the conservation theorem is
+`integrity.evolution-conservation`<!--ref:claim:integrity.evolution-conservation-->. The counterexample to deriving standing from
 Integrity is attack A6 of the integrity adversary round's
-[`ATTACKS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-05-integrity-adversary/ATTACKS.md).
+[`ATTACKS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-05-integrity-adversary/ATTACKS.md)<!--ref:round:2026-09-05-integrity-adversary-->.
 The Defeat Principle ruling is in the decision ledger; its first model, the
 defeat-disciplined trace, is the defeat-landing round's
-[`WITNESS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-03-defeat-landing-horty-standing/WITNESS.md),
+[`WITNESS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-03-defeat-landing-horty-standing/WITNESS.md)<!--ref:round:2026-09-03-defeat-landing-horty-standing-->,
 and the principal-relative form of standing is that round's
-[`STANDING_REPAIR.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-03-defeat-landing-horty-standing/STANDING_REPAIR.md).
+[`STANDING_REPAIR.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-03-defeat-landing-horty-standing/STANDING_REPAIR.md)<!--ref:round:2026-09-03-defeat-landing-horty-standing-->.
 How the defeat theory differs from default logic is on the [prior art](Prior-Art)
 page.

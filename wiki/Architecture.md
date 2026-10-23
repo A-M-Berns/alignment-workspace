@@ -141,9 +141,9 @@ next substantive problem.
 
 ## Evidence and verification
 
-- [Crown-jewel final report — `NORMATIVE-RESPONSE-LEARNING-THEOREM-SETTLED`; `BM-FEEDBACK-DYNAMICS-WITNESSED`](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/prompts/2026-08-13-crown-jewel-learning-theorem-final/REPORT.md)
-- [Three-interface boundary](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/INTERFACES.md)
-- [Compiler soundness and loss-blindness](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/COMPILER_SOUNDNESS.md)
-- [Coverage interface](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/COVERAGE_INTERFACE.md)
+- [Crown-jewel final report — `NORMATIVE-RESPONSE-LEARNING-THEOREM-SETTLED`; `BM-FEEDBACK-DYNAMICS-WITNESSED`](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/prompts/2026-08-13-crown-jewel-learning-theorem-final/REPORT.md)<!--ref:round:2026-08-13-crown-jewel-learning-theorem-final-->
+- [Three-interface boundary](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/INTERFACES.md)<!--ref:round:2026-08-13-crown-jewel-learning-theorem-->
+- [Compiler soundness and loss-blindness](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/COMPILER_SOUNDNESS.md)<!--ref:round:2026-08-13-crown-jewel-learning-theorem-->
+- [Coverage interface](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/COVERAGE_INTERFACE.md)<!--ref:round:2026-08-13-crown-jewel-learning-theorem-->
 - [Machine-readable interface ledger](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/state/theorem_interface.json)
-- [Legitimacy loss-dependency audit](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge/LOSS_DEPENDENCY_AUDIT.md)
+- [Legitimacy loss-dependency audit](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge/LOSS_DEPENDENCY_AUDIT.md)<!--ref:round:2026-08-13-relational-scorekeeping-bridge-->

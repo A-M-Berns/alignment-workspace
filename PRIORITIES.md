@@ -31,7 +31,6 @@ be impossible.
 ---
 
 ## Where ingenuity is the bottleneck
-
 **A standing section, and the only part of this file that is not a work order.**
 Every numbered item below is a request for *execution*: a round specification an
 arbitrary agent could run against a stated acceptance check. These are requests
@@ -152,7 +151,6 @@ precondition.
 ---
 
 ## Normativity line
-
 Context for all six: `projects/normativity/consolidation-aug9/`, whose `OPEN_PROBLEMS.md`
 ranks them and whose theory parts state the surrounding results. Cite claims from
 it by identifier.
@@ -255,7 +253,6 @@ stream results are stated over arrivals.
 ---
 
 ## Normativity line — the learning track
-
 The consolidation's `OPEN_PROBLEMS.md` closes with a pointer list it declines to
 treat, and *the learning and installation track* is on it. Items 29–31 opened
 the track. Their shared context is:
@@ -412,7 +409,6 @@ accepted sufficient statement yet supplies an executable completion criterion.
 ---
 
 ## Normativity line — traderized enforcement
-
 Items 39–42 were filed by `prompts/2026-08-16-traderized-enforcement/` within its
 dispatched scope, with that round's `PROMPT.md` as the authorization. Their shared
 context is `projects/normativity/rounds/2026-08-16-traderized-enforcement/`, whose
@@ -760,7 +756,6 @@ untouched.
 ---
 
 ## Normativity line — legitimacy
-
 Items 53–59 are the residual blockers the legitimacy prosecutions of 2026-08-21
 through 2026-08-23 left behind, filed by
 `prompts/2026-08-24-reservation-bar-and-debt/` within its dispatched scope. Each
@@ -1356,7 +1351,6 @@ reconciled or the divergence shown to be the correct answer.
 ---
 
 ## Deference line
-
 Context for all three: `projects/deference/note-dump-2026-08-11/`, in particular
 `lean-deference/AUDIT.md`, the development's own statement-level audit. Its §3 is
 titled "The concerning gaps"; the three below are its own findings, quoted by
@@ -1446,7 +1440,6 @@ carry the hand-run cross-check and its re-verification command.
 ---
 
 ## Deference line — first research wave
-
 Seven items opening the corrigibility program's first parallel wave. The dispatch
 and returned-track overview are in
 `prompts/2026-08-11-deference-corrigibility/REPORT.md`. Items 15, 16, 17 and 20 additionally bind to
@@ -1654,7 +1647,6 @@ extensional.
 ---
 
 ## Deference line — second wave
-
 Three items, narrow by design. The first wave's value was in what it closed off, and
 these follow the controlling questions it uncovered rather than opening new fronts.
 Context for all three: `prompts/2026-08-11-deference-corrigibility/REPORT.md` for what
@@ -1933,7 +1925,6 @@ unbounded one with a witness are both better than the present reading.
 ---
 
 ### 74. Is the finite-horizon infeasibility certificate complete for the causal problem? — **[entry]** — *sequenced behind item 40*
-
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 A Farkas pair `(y, z)` with positive deficit refutes finite-horizon affordability on
@@ -1984,7 +1975,6 @@ for the synchronic certificate the horizon version extends.
 statement of what a certificate can and cannot be fed back into Answerability as.
 
 ### 75. Close the loop: policy-dependent date costs — **[entry]** — *sequenced behind item 74*
-
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 Every existence result in the affordability round is E0-E2 of its own hierarchy: the
@@ -2015,7 +2005,6 @@ exogenous criterion the closed loop has to be compared against, and
 survive the loop unchanged.
 
 ### 76. Certify a reason's temporal modulus — **[entry]**
-
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 The canonical Sharp Timely Service bound ends in a single term: the obligation-normalized
@@ -2045,7 +2034,6 @@ empirical channel split.
 to be checkable.
 
 ### 77. What licenses authorized disposition? — **[entry]**
-
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 The answerability calculus lets incurred content leave the account by one of two
@@ -2141,7 +2129,6 @@ satisfy separation at every edge. The item closes when a maintainer either obtai
 book or rules the paper sufficient, **and** when the coalition hole is closed.
 
 ### 78. Canonicalize the legitimacy spine from the consolidation — **[entry]** — *answered 2026-09-08*
-
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 The mathematical-consolidation round states, in
@@ -2185,7 +2172,6 @@ theorems, until a witness inhabits their joint hypothesis packages — a realiza
 item, not a theory item.
 
 ### 79. Convex representability and compiler completeness for a declared requirement class — **[open]**
-
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 Compiler soundness, Farkas conflict certification, and conservation on failure are
@@ -2207,7 +2193,6 @@ properties.
 *A solution ships:* the class, the compiler, and the two theorems.
 
 ### 80. Affordable service on an adaptive docket — **[open]**
-
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 The predictable-window cheapest-date scheduler is Lean-proved for a declared finite
@@ -2229,7 +2214,6 @@ normative-affordability round's `CLOSED_LOOP_EXISTENCE.md`.
 *A solution ships:* the class, the theorem, and what it does to the residual term.
 
 ### 81. A jointly compatible practical-response ecology — **[open]**
-
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 The public certificate is `PracticalCert(e, s, Π_s; M, ε)` on every edge into a
@@ -2250,7 +2234,6 @@ practical-certificate round's `JOINT_COMPATIBILITY.md`.
 *A solution ships:* the adapter, its theorem, and the class it covers.
 
 ### 82. Aggregation laws with several parents — **[entry]**
-
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 `OccurrenceIntegrity.LocalLaw` transforms one requirement into successors with maps
@@ -2275,7 +2258,6 @@ in which two occurrences are jointly closed by one successor and neither alone.
 *A solution ships:* the extension, or a statement that no application needs it.
 
 ### 83. Eligible liveness and the NLAL case split in Lean — **[entry]**
-
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The corrigibility-architecture round states two results that are exact on finite
@@ -2300,7 +2282,6 @@ readmits the laundered case.
 needs that the fixture did not.
 
 ### 84. The operative-value-security bridge — **[open]**
-
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The incentive-nonpreemption round shows that every incentive-level statement the
@@ -2393,7 +2374,6 @@ auction's coverage and incident bounds discipline (`coverage_forces_test`,
 bridge, and this item's residual is the latent-value form only.
 
 ### 85. Margin realization and end-to-end rate compatibility — **[open]**
-
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 `GatedChoice.softGate_practicalCert` pays the Normative Inductor's practical certificate
@@ -2430,7 +2410,6 @@ and the empirical averaged bridge or its negative.
 *A solution ships:* the composed theorems, or the negatives.
 
 ### 86. Bounded competence against legitimate continuation policies under endogenous admissibility — **[open]**
-
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
 *Refined by the continuation-BRIA round and its four later passes (2026-09-08); the
@@ -2521,7 +2500,6 @@ specialization's investing-in-amendment case.
 *A solution ships:* the three objects with the composed corollary, or the negative.
 
 ### 87. Realizing legitimate deference: the evaluation-ecosystem bill — **[open]** — *landed 2026-09-15: clauses 1–4 discharged on log authenticity (2 by committed-program re-execution, registered `authorship.mediation-by-reexecution`); narrowed 2026-09-16: clause 5's exercise half is the suffix-cut service theorem of item 92 (`unit_servable_iff_cut`) and its discovery half is item 93, so what remains here is clauses 6 and 7 — sealing, void mass — as stated in the residual paragraph below*
-
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The legitimate-deference stack (authority-activated value, reason-mediated authorship,
@@ -2593,7 +2571,6 @@ principal-side value.
 *A solution ships:* the ecosystem model, or the exact obstruction.
 
 ### 88. Affordability from the traderization perspective: a canonical presentation — **[open]**
-
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
 The affordability line (the 2026-08-31 normative-affordability round and its nine
@@ -2626,7 +2603,6 @@ inexpressibles; fixtures where a restatement changes a constant.
 *A solution ships:* the presentation, or the exact obstruction.
 
 ### 89. Sealed comparison: an architecture under which the constitutional comparison of `{π, 𝔠π}` is sealed against every continuation until settlement — **[open]** — *at the 2026-09-16 landing this is hypothesis A4 of the combined theorem (`FINAL_THEOREM.md` §2): the zero case of the activation-mismatch term, charged when absent*
-
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The mediated-repair-dominance round (`projects/deference/rounds/2026-09-09-mediated-repair-dominance/`,
@@ -2735,7 +2711,6 @@ This item remains what it is for the security-score register: the architecture u
 which the mismatch term is small.
 
 ### 90. The generability certificate of the soft-weighted finite-menu constraint — **[open]** — *narrowed 2026-09-15: T3's own certificate is constructed (`LICorrigibilityCertificate.lean`); what remains is T3′'s*
-
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The li-corrigibility round (`projects/deference/rounds/2026-09-15-li-corrigibility/`)
@@ -2774,7 +2749,6 @@ that the checker's verdict and the model's run are expressible features — besi
 weighting.  The finite-time half needs none of this (`li_gate_finite`).
 
 ### 91. Empirical settlement of activated securities: an oracle-relativized inductor — **[open]**
-
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The li-corrigibility round states its feedback extension by `thm:wubexp` for
@@ -2801,7 +2775,6 @@ for empirical logs.
 *A solution ships:* the relativized theorem, or the negative with its witness.
 
 ### 92. The reason-side supply obligation: the realization's protection rule and the general-cost optimum — **[open]** — *narrowed 2026-09-16: the service half is a theorem (`ReasonSupply.lean`: suffix-cut obstruction, hybrid bound, composition `li_noncapture`) and is canonical; what remains is the realization's choice of protected set (`hybrid_bound`'s rule, recorded not adopted) and the general-cost weighted optimum beyond the cut bound; the discovery residual is item 93*
-
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The non-capture compilation round (`projects/deference/rounds/2026-09-16-noncapture-compilation/`)
@@ -2849,7 +2822,6 @@ supply obligation exists under the deadline for the declared interface — with 
 witness.
 
 ### 93. Discovery of decision-relevant reasons: the repertoire and the budget — **[open]** — *at the 2026-09-16 landing the obstruction is general (`residual_ge_cellGap'`, best-response form for every extensional program); what remains is the realizable repertoire, witness completeness, and the link to the record's inquiry docket*
-
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The third pass of the non-capture compilation round
@@ -2886,7 +2858,6 @@ measurability claims of the round.
 repertoire separates the interface's value classes — with its cell.
 
 ### 97. Declare each channel's reference in the evaluation ecosystem, and certify its realization — **[substantial]**
-
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The transparent-channel round (`projects/deference/rounds/2026-09-24-transparent-channel/`)
@@ -2955,7 +2926,6 @@ channel exists (item 98).  The amendment event kind is what hypothesis (L) of it
 the specification tower both need.
 
 ### 98. The nondelegation certificate and the amendment event kind — **[substantial]** — *rewritten 2026-09-25: the response-channel contract this item first filed is dissolved; its failure modes are covered by transparency (the consultation protocol in scope), authentication (Integrity), the pre-emption and foreclosure violations, the void-response rule, and constitutional design*
-
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The protected-authority round (`projects/deference/rounds/2026-09-24-protected-authority/`)
@@ -3008,7 +2978,6 @@ item 99.
 negative with its fixture.
 
 ### 99. The allocation floor: delegation safety, allocation completeness, exact shortfall reporting, and the reach cone — **[substantial]**
-
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The protected-authority-theorem round (`projects/deference/rounds/2026-09-25-protected-authority-theorem/`)
@@ -3095,7 +3064,6 @@ content.  And every reserved `Req` needs an agent-independent actuator declared,
 drill cannot be frozen (`freeze_obstruction`) — the same failure as `CS`'s.
 
 ### 100. The normativity-side instance of the trace interface — **[open]**
-
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The gate-is-legitimacy round (`projects/deference/rounds/2026-09-25-gate-is-legitimacy/`)
@@ -3129,7 +3097,6 @@ for the gated securities.
 *A solution ships:* the instance, or the negative with its fixture.
 
 ### 101. The shortfall event as a security: generability and pricing of `Short` — **[open]**
-
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The authority-module round (`projects/deference/rounds/2026-09-25-authority-module/`)
@@ -3239,7 +3206,6 @@ model; caused shortfall is a count-side object, and learned membership (M4) is a
 event (`EffectiveAuthority.asks_iff_line`).
 
 ### 102. BRIA's bids against the market: block claims as priced securities — **[open]**
-
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The decision-component round (`projects/deference/rounds/2026-09-25-decision-component/`)
@@ -3309,7 +3275,6 @@ competence of the BRIA chooser, and nothing in the headline or the interface the
 on it.  The learner-level question it was standing in for is item 103.
 
 ### 103. A decision theory for logical inductors without the split between a belief market and a choice learner — **[open]**
-
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The kernel's extension (`projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md`
@@ -3339,7 +3304,6 @@ than assumed.
 *A solution ships:* the learner with its accounting, or the obstruction.
 
 ### 104. The corrigibility kernel headline: the registered statements and what they leave open — **[open]**
-
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The kernel's headline (`lean/Workspace/Deference/Spec/Headline.lean`, the phase-2 round's
@@ -3361,8 +3325,8 @@ later, any of the four open pieces as Lean declarations with witnesses.
 `REPORT.md` §6 (what did not compress).
 *Consumed by:* the post; any round extending the headline.
 *A solution ships:* the registrations, and later the open pieces or their obstructions.
-### 105. Belief–decision compatibility: W1 as a theorem of record, and the unresolved implication — **[substantial]**
 
+### 105. Belief–decision compatibility: W1 as a theorem of record, and the unresolved implication — **[substantial]**
 <!-- workspace-priority: project=decision-theory; dispatchable=yes -->
 
 `projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/PROBLEM_STATEMENT.md` §5 states the compatibility relation in two forms.  The
@@ -3396,7 +3360,6 @@ lower half stated on priced claims).
 *A solution ships:* W1 of record and the implication's status, either way.
 
 ### 106. A candidate LI/BRIA synthesis against the acceptance statement — **[open]**
-
 <!-- workspace-priority: project=decision-theory; dispatchable=yes -->
 
 Construct a computable agent and check it against `projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/PROBLEM_STATEMENT.md` §0 and
@@ -3429,7 +3392,6 @@ some obligation is unsatisfiable by any computable agent, which reopens the
 specification.
 
 ### 107. The post's backing: thin legitimacy, effective authority, and the post's theorem — **[open]**
-
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The thin-legitimacy round (`projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/`) puts behind the post
@@ -3458,7 +3420,6 @@ and 101.
 *A solution ships:* the registrations, and later the open pieces or their obstructions.
 
 ### 108. The thin specification for evaluations, where no outside fact plays the world's role — **[open]**
-
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
 Part A of the thin-legitimacy round states *correct*, *sufficient* and *value* over a
@@ -3481,7 +3442,6 @@ that the post's "illegitimate futures count as bad" has a thin-level reading.
 the obstruction.
 
 ### 109. Preservation for a logical-inductor principal — **[open]**
-
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
 `ThinLegitimacy.preservation` is finite and exact: conditional reflection in her model,
@@ -3504,7 +3464,6 @@ line's event-linked authorization.
 *A solution ships:* the asymptotic preservation theorem, or the obstruction.
 
 ### 110. A definition of the baseline `B` — **[open]**
-
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The baseline — what would have reached her without anyone's interested interference — is
@@ -3525,7 +3484,6 @@ places it.
 *A solution ships:* the definition and the re-derivation, or the obstruction.
 
 ### 111. Unbiasedness From Feedback for the score sequence, from `LogicalInduction` — **[open]**
-
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The companion formalization of "Deconfusing Corrigibility"
@@ -3566,7 +3524,6 @@ from linearity of the inductor's expectation.
 support clause (PE2) can be discharged for the score family.
 
 ### 112. Occurrence-level defeat: the orphan pin — **[substantial]** — *narrowed 2026-10-21: under `settleForm` (`DECISIONS.md` M1–M2) the orphan cannot form — `WarrantEntitlement.Fixture.no_strength_after`, `rebutted_region_nonempty`; what remains is transitive retirement along `cites` without the settlement's closure, item 121* — *answered 2026-10-22 by the grounded rule (`WarrantEntitlement.mem_survivors`, registered `inductor.grounded-survivors`): undercutting an applicability withdraws every row that cites it, at the undercut*
-
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 The warrant-enforcement-semantics round (`projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/`)
@@ -3594,7 +3551,6 @@ extended with the rule and green.
 `COUNTERMODELS.md` §3, `LICENCE_CHAIN.md` A1.
 
 ### 113. Settlement defeat for strength rows: a linear row contraposes — **[open]** — *answered 2026-10-21 by the rule `settleForm` (`projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md`): rebuttal, vacuity, retirement; registered `rebuttal.settleform-sound`, `rebuttal.liability-rebutted`; the monotonicity it loses is restated as `settledRegion_anti_of_survivors_eq` and `reopening_bound`; what remains is the sharp bankroll across a reopening, item 123*
-
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 A strength row `P(X∧A∧Y) ≥ c_S P(X∧A)` is a linear constraint and so contraposes: once its
@@ -3615,7 +3571,6 @@ statement it keeps or loses, and the fixture's liability under it.
 `WarrantEntitlement.Form.strength_sat_iff`; item 112.
 
 ### 114. The pinned-region divergence against the pinned market maker — **[substantial]** — *item 40 narrowed*
-
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 The odds bankroll (`WarrantEntitlement.netWorth_ge_neg_odds`) is the sufficient half: a
@@ -3635,7 +3590,6 @@ trader exhibited, or the obstruction in the maker's fixed point.
 `src/fixture.py::harmonic_buyer_run`; item 40.
 
 ### 115. Transport of `Licensed` across record transitions — **[substantial]** — *the remainder of item 56* — *narrowed 2026-10-22: `Supported` and `Licensed` read the settled bundle (`SupportedOn`), so a certificate citing an undercut or rebutted occurrence is refused; transport across record transitions remains*
-
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
 With the citation discipline in place (`WarrantEntitlement.Supported`, `Licensed`), the
@@ -3653,7 +3607,6 @@ with a named code.
 *Context:* `.../2026-10-20-warrant-enforcement-semantics/LICENCE_CHAIN.md`; item 56.
 
 ### 116. The record as reason trace: what it mediates, the defect, and the port's duplicate — **[entry]** — *narrowed 2026-10-22: (c) closed on 2026-10-21 (one `SeedStatics.lean`); (a) and (b) remain*
-
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 Three things Part C of the warrant-enforcement-semantics round made visible and did not
@@ -3672,7 +3625,6 @@ twice, and one copy must be removed with the other's names retargeted.
 *Context:* `.../2026-10-20-warrant-enforcement-semantics/RECORD.md`.
 
 ### 117. The selection lock: a canonical joint rule for warrant strengths, and a selection the docket may seal — **[open]**
-
 <!-- workspace-priority: project=normativity.seed; dispatchable=yes -->
 
 *Re-filed 2026-10-21 by the rebuttal-and-end-to-end round from branch `round/2026-09-16-seed-statics`, where it was item 93; content unchanged; the branch round is landed under `projects/normativity/seed/rounds/2026-09-16-seed-statics/`.*
@@ -3700,7 +3652,6 @@ reading of the seed type.
 *A solution ships:* the rule, the lock, the theorem, and the fixtures.
 
 ### 118. Rational attainment and certificate completeness for the computed forced interval — **[open]** — *narrowed 2026-10-22: completeness is also what decides whether an adapter's `Excludes`/`Margins` certificates exist whenever the region excludes or marks (`WarrantInductor.Problem`)*
-
 <!-- workspace-priority: project=normativity.seed; dispatchable=yes -->
 
 *Re-filed 2026-10-21 by the rebuttal-and-end-to-end round from branch `round/2026-09-16-seed-statics`, where it was item 94; content unchanged; the branch round is landed under `projects/normativity/seed/rounds/2026-09-16-seed-statics/`.*
@@ -3725,7 +3676,6 @@ header on why satisfaction lives in `ℝ`.
 *A solution ships:* the two theorems.
 
 ### 119. Hidden discord: a region-level convergence measure — **[open]**
-
 <!-- workspace-priority: project=normativity.seed; dispatchable=yes -->
 
 *Re-filed 2026-10-21 by the rebuttal-and-end-to-end round from branch `round/2026-09-17-convergence-measure`, where it was item 95; content unchanged; the branch round is landed under `projects/normativity/seed/rounds/2026-09-17-convergence-measure/`.*
@@ -3750,7 +3700,6 @@ incompatibility, prove its monotonicity under nesting, and give its certificate.
 *A solution ships:* the component, its monotonicity theorem, and the fixtures.
 
 ### 120. Exhaustive sharing on trace-constitutive dockets: what exchange equalizes live sets — **[open]**
-
 <!-- workspace-priority: project=normativity.seed; dispatchable=yes -->
 
 *Re-filed 2026-10-21 by the rebuttal-and-end-to-end round from branch `round/2026-09-17-convergence-measure`, where it was item 96; content unchanged; the branch round is landed under `projects/normativity/seed/rounds/2026-09-17-convergence-measure/`.*
@@ -3774,7 +3723,6 @@ calculus computes no extension).
 *A solution ships:* the predicate and the two theorems.
 
 ### 121. Transitive retirement, and the closure a settlement must carry — **[entry]** — *answered 2026-10-22: the grounded rule propagates retirement, vacuity, rebuttal and undercut along citation chains of every length without a closure on the settlement (`mem_survivors`)*
-
 <!-- workspace-priority: project=normativity.seed; dispatchable=yes -->
 
 The rule `settleForm` (`lean/Workspace/Normativity/Contrib/WarrantEntitlement.lean`,
@@ -3795,7 +3743,6 @@ chain-of-three fixture under it.
 *Context:* `projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md` A1; `DECISIONS.md` 2026-10-21 (M2).
 
 ### 122. The transport's negated-form drop — **[entry]**
-
 <!-- workspace-priority: project=normativity.seed; dispatchable=yes -->
 
 The seed-statics branch's `transport_seed` (its `src/seed.py`, cited by the convergence
@@ -3811,7 +3758,6 @@ fixed by the landing round. Wanted: transport of negated forms in the fixture co
 `projects/normativity/seed/rounds/2026-09-16-seed-statics/src/seed.py`.
 
 ### 123. The sharp bankroll across a reopening, and the cushion exploit against the pinned market maker — **[substantial]**
-
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 Across one reopening the proved bankroll is `−3ρ(2 + ρ)`
@@ -3830,7 +3776,6 @@ obstruction; the sharp constant for one reopening; the accounting variant if ado
 *Context:* `projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md` A2; items 114, 40.
 
 ### 124. Certified bounds at the displayed price: the licence–force bridge — **[open]** — *answered on filing, 2026-10-22: `WarrantForce.WarrantSchedule.bracket_at_market`, registered `inductor.certificate-transport`*
-
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 A licence certifies a bracket on a coordinate by rows of the compiled bundle; the enforcer
@@ -3848,7 +3793,6 @@ repository has; it is what the adapter reads.
 *Context:* `projects/normativity/rounds/2026-10-22-normative-inductor-integration/THEOREM_STORY.md` §C.
 
 ### 125. Distance-to-region conformance for the rowwise enforcer — **[substantial]**
-
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 The rowwise enforcer's guarantee is per row: every excess at most `tol`
@@ -3872,7 +3816,6 @@ on `Bundle` with its bound.
 statement.
 
 ### 126. The bankroll across repeated reopenings — **[substantial]**
-
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 `OddsBankroll.Account.netWorth_ge_neg_odds_reopened` gives `−cap·ρ(2 + ρ)` across one
@@ -3888,7 +3831,6 @@ whether a settlement-time accounting of the reopened mass (item 123) makes it li
 `.../THEOREM_STORY.md` §F beyond one revision.
 
 ### 127. Defeaters as undercutting occurrences: the grounded extension with attacks — **[open]**
-
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 `Occurrence.defeaters` is read as the ports whose defeat also undercuts the occurrence
@@ -3907,7 +3849,6 @@ an undercutter is itself defeasible.
 *Consumed by:* fixtures with undercutting defeaters that are themselves warrants.
 
 ### 128. Admission from the accounted state — **[open]** — *narrowed 2026-10-23: `WarrantInductor.Entitlement` reads three conditions off the accounted state — the origin exposed, `Protocol.Admitted` at the boundary's history, a live leaf in the origin's account — and takes a declared `Expresses : Req → Form → Prop`; `warrant_inductor` enforces only entitled survivors; `WarrantInductorWitness.answered_not_entitled` shows an answered obligation entitles nothing. What remains is below.*
-
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
 `WarrantInductor.Entitlement O G Expresses` types the admission of a warrant occurrence to the
@@ -3930,7 +3871,6 @@ relating `authorized` to the account, or a stated reason none should exist.
 *Consumed by:* the legitimacy ↔ warrant handoff; item 115.
 
 ## Workspace friction
-
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a
 round that hits friction with the workspace itself to file it here rather than
 route around it, because a defect worked around silently is one the next round
@@ -4039,7 +3979,6 @@ role, and an author is cited by name.  Kept for the lesson: a lint on surnames c
 express a distinction that is about the capacity in which a person is named.
 
 ### F7 — A round cannot record a dependency on an unindexed research checkpoint
-
 <!-- workspace-priority: project=none; dispatchable=no -->
 
 `state/rounds.json` requires every `depends_on` id to resolve, and
@@ -4063,7 +4002,6 @@ checkpoint must be indexed at merge, which is a convention change binding future
 only. The choice is specification layer and was not taken here.
 
 ### F8 — A stack of merged pull requests never reached `main` — *closed*
-
 <!-- workspace-priority: project=none; dispatchable=no -->
 
 Three research rounds developing the diachronic-answerability mathematics —
@@ -4205,4 +4143,3 @@ enumeration's own failure — a write grant absent from the list, and an entry
 naming a job no workflow defines. Condition 2 is checked only in the form a script
 can see: that a write-granting job's context is not a required check.
 *Record:* `prompts/2026-08-16-wiki-in-repo-sync/REPORT.md`.
-

@@ -1,15 +1,32 @@
 ---
 id: enabling-work
 kind: frame
-children: [enabling-vetting-and-prioritization-system, enabling-machine-checked-corpus, enabling-publication-pipeline, crux-formalize-before-write-up, crux-vetting-or-generation]
+children: [enabling-vetting-and-prioritization-system, enabling-machine-checked-corpus, enabling-publication-pipeline, crux-formalize-before-write-up, crux-vetting-or-generation, enabling-map-as-canonical, enabling-program-site, docket-workspace]
 question: "Which repository infrastructure makes the trust research vettable and publishable?"
-owner: "@maintainer"
+owner: ["@anson", "@abram"]
 roots:
   - {id: enabling-vetting-and-prioritization-system, role: shared-claim, preset: worst-case}
   - {id: enabling-machine-checked-corpus, role: shared-claim, preset: worst-case}
   - {id: enabling-publication-pipeline, role: shared-claim, preset: worst-case}
   - {id: crux-formalize-before-write-up, role: shared-claim, preset: worst-case}
   - {id: crux-vetting-or-generation, role: shared-claim, preset: worst-case}
+  - {id: enabling-map-as-canonical, role: shared-claim, preset: worst-case}
+  - {id: enabling-program-site, role: shared-claim, preset: worst-case}
+  - {id: docket-workspace, role: shared-claim, preset: worst-case}
+work:
+  - {kind: decision, ref: 2026-10-22--map-canonical-index-program-maintainer-handles}
+  - {kind: round, ref: prompts/2026-08-11-attribution-provenance-names}
+  - {kind: round, ref: prompts/2026-08-11-branch-protection}
+  - {kind: round, ref: prompts/2026-08-11-contributor-checkers}
+  - {kind: round, ref: prompts/2026-08-11-licensing-dco-citation}
+  - {kind: round, ref: prompts/2026-08-11-priorities-and-slop}
+  - {kind: round, ref: prompts/2026-08-11-workspace-ethos}
+  - {kind: round, ref: prompts/2026-08-11-workspace-integration}
+  - {kind: round, ref: prompts/2026-08-16-wiki-in-repo-sync}
+  - {kind: round, ref: prompts/2026-08-16-wiki-state-bindings}
+  - {kind: round, ref: prompts/2026-08-24-reservation-bar-and-debt}
+  - {kind: round, ref: graph}
+narrative: wiki/CONVENTIONS.md
 author: "@smithy-verity"
 size: M
 size_reason: "three infrastructure claims and two cruxes, each with its own sources"
@@ -27,7 +44,7 @@ and graph/PROTOCOL.md (the map), projects/deference/faf-cleanroom-2026-10-02/REA
 the claims and cruxes below cite their sources in their own files.
 
 ## Notes
-A sub-frame of trust-modelling holding the enabling work the activity sweep
+A sub-frame of the-program holding the enabling work the activity sweep
 found in the repository. It is a
 frame so that infrastructure stands below the agenda's own items (the two axes,
 the cruxes, the abstraction arc) rather than beside them. Its roots are shared

@@ -3,7 +3,7 @@ id: legitimacy-meets-syntax
 kind: frame
 children: [want-legitimacy-meets-syntax, legit-semantic-vs-syntactic, local-rules-certify-legitimacy, legitimacy-as-local-rules, tonk-is-a-sure-loss, market-logic-connection, truth-beyond-the-limit, formality-informality, generalized-li-past-deduction, objectivity-as-invariance, reflection-might-makes-right]
 question: "How does legitimacy cash out as local rules of sanity, and how do inferentialist semantics and map-territory semantics connect?"
-owner: "@maintainer"
+owner: ["@anson", "@abram"]
 roots:
   - {id: want-legitimacy-meets-syntax, role: want}
   - {id: legit-semantic-vs-syntactic, role: shared-claim, preset: worst-case}

@@ -27,7 +27,7 @@ providing good analogies."
 
 ## Notes
 A crux between the super-Turing and logical-induction levels, a shared claim
-of trust-modelling. Pictures: (a) computational uncertainty must be
+of the-program. Pictures: (a) computational uncertainty must be
 represented explicitly, being a large component of human uncertainty about
 values; (b) the unbounded level suffices by analogy, with strains improvable
 (the summer plan's methodology); (c) value uncertainty is represented as

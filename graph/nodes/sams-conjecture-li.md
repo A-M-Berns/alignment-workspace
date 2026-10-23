@@ -3,7 +3,7 @@ id: sams-conjecture-li
 kind: frame
 children: [sams-conjecture-trust-half, fa-inductor-half, good-feedback-derived, fa-trust-half-weak-grades, fa-trust-half-weak-grades.improvable, timely-pointwise-tower-refuted-in-setting, non-paradoxical-cross-process-impossibility, computability-fork, crux-conjecture-information-structure]
 question: "Can a fast epistemic process that the human inductor trusts be built from the AI inductor's forecasts of the human inductor's later beliefs?"
-owner: "@maintainer"
+owner: "@abram"
 roots:
   - {id: sams-conjecture-trust-half, role: plan, preset: worst-case, success_class: utopia}
   - {id: fa-inductor-half, role: plan, preset: worst-case, success_class: utopia}

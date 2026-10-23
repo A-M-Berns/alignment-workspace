@@ -23,7 +23,7 @@ Dialogue, revision and the design log.
 
 ## Notes
 An enabling goal, filed by the activity sweep of 2026-10-05 as a shared claim
-of the trust-modelling plan, because every line of the agenda is ranked and
+of the-program, because every line of the agenda is ranked and
 vetted through it. The four conjuncts are the filing session's reading of the
 protocol paragraphs that shape the map, not a list the maintainer wrote. They
 are jointly necessary in the sense of the Statement: a map that files the

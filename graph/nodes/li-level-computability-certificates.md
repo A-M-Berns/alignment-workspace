@@ -1,7 +1,7 @@
 ---
 id: li-level-computability-certificates
 kind: and
-children: [modified-market-computable, computable-coherence-modulus, sigma-n-computable, bli-computability-open, li-level-computability-certificates.complete]
+children: [item-48, item-2, item-63, bli-computability-open, li-level-computability-certificates.complete]
 author: "@smithy-verity-opus55"
 size: M
 size_reason: "three work orders and one digest paragraph"

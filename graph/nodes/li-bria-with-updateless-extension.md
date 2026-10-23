@@ -1,7 +1,7 @@
 ---
 id: li-bria-with-updateless-extension
 kind: and
-children: [li-bria-updateful-endpoint, per-round-cm-policy-predictor, li-bria-with-updateless-extension.complete]
+children: [item-106, per-round-cm-policy-predictor, li-bria-with-updateless-extension.complete]
 author: "@smithy-verity"
 size: M
 size_reason: "two round documents"

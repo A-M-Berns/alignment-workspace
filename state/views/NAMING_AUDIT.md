@@ -746,7 +746,7 @@ change, and the count of those is the size of the free choice remaining.
 | `one` | def | 2026-09-25-gate-is-legitimacy | wiki, note, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.one` |
 | `parts` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.TraceInterface.parts` |
 | `presAt` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.presAt` |
-| `ref` | def | 2026-09-25-gate-is-legitimacy | prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.ref` |
+| `ref` | def | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.ref` |
 | `refProj` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.refProj` |
 | `refValues` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.refValues` |
 | `row1` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.row1` |

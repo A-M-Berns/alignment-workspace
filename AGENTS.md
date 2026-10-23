@@ -866,14 +866,22 @@ and AI systems might go: claims as nodes, failure stories as rows of
 every number derived from those events by `checkers/graph.py`.
 `graph/PROTOCOL.md` is the protocol; this section is what binds an agent
 working against it. Where the two disagree, the protocol is wrong and the
-disagreement is filed.
+disagreement is filed. The map is the program's canonical index
+(`graph/MAP-AS-CANONICAL.md`, rulings M1–M8 of 2026-10-22): every registered
+claim, priority item, decision, round and narrative page has exactly one node
+or attachment in it, and `graph/index.json` is the structure a site renders.
 
 **What an agent does alone.** File sources. Create node files at level 0
 (a new leaf under an `and` cannot raise any root): claims, frames for
 lines and programmes, improvement claims with their routes and residual
 route, task leaves and actioned claims from the repository's own activity
 (claims registries, `PRIORITIES.md`, rounds, recent commits), `work`
-pointers, `given` edges and refinements. File pictures, rows and
+pointers (`priorities`, `open`, `round`, `decision`, `foundation`),
+`given` edges, refinements and `narrative` attachments; file a new
+registered claim as its formal result, a new `PRIORITIES.md` item as its item
+node (`PRIORITIES.md` is rendered from them; edit the node, never the
+render), and a new `DECISIONS.md` entry's anchor line with its `touches`,
+rewording no ruling. File pictures, rows and
 responses as drafts. Draft the checked list a map-read needs, the
 sub-goals and tasks a `spell-out` asks for, and the edges a `connect`
 offers. Sharpen a vague Statement, bumping `version`. Compute a proposal's
@@ -1035,8 +1043,10 @@ an unmapped handle, an AI handle's level-minting event, acceptance, tag,
 AI handle's number on a want; a priority word by anyone but the want's
 owner; a withdrawal of someone else's event; a regenerated file edited by
 hand; a proposal applied without a counted `approve`; a frame without a
-human owner; a node attached to nothing; a formula whose cutset exceeds the
-cap; a missing design log. Said-versus-approved honesty, the presentation
+human owner (one handle or a list); a node attached to nothing; a want in two
+frames; a `narrative` naming no wiki page; a `decision` or `priorities`
+pointer resolving to no anchor or item node; an item node without its
+fields; a formula whose cutset exceeds the cap; a missing design log. Said-versus-approved honesty, the presentation
 question, the dialogue above, the placement of a quoted want, the
 attachment of a task as route or evidence, and the no-real-names rule are
 **not gated**, and private citations only warn; they are review matters and

@@ -3,7 +3,7 @@ id: want-legitimacy-meets-syntax
 kind: leaf
 leaf_kind: want
 given: legitimacy-as-local-rules
-owner: "@maintainer"
+owner: "@abram"
 want: true
 filed_from: quote
 author: "@smithy-verity"

@@ -1,9 +1,9 @@
 ---
 id: legitimacy-reasons-programme
 kind: frame
-children: [legit-definition-endorsement, legit-corrects-trust-principles, legit-per-formalism-family, legit-gated-trust-li, legit-ddb-transfer, legit-locality-forced, legit-reflection-unsat-modest, legit-composition, legit-li-self-correction-identity, legit-correction-function-learned, legit-condition-vs-predict-reality, legit-anchor-of-L, legit-global-or-local-form, legit-trust-improvable, legit-endpoint-preservation, idleness-on-G-grade-a, idleness-on-G-with-certificate, claim1-diagonal-illegitimate, corrupt-strictly-contains-inadmissible, trace-nonrecoverability, trace-nonrecoverability-li, wirehead-iff-finite, certificate-enforcement, predication-dichotomy, d3-identification, corrigibility-faithful-plus-legit-on-self, non-modification-conjecture, legit-v1-improvable, public-legitimacy-theory, thin-converse-open, thin-value-loss-bound, thin-preservation-li-principal, thin-baseline-definition, thin-spec-for-evaluations, gate-is-legitimacy, public-layer-II, closed-loop-affordability, li-corrigibility-inequality-public, legitimate-deference-regret, effective-authority-layer, cnl-post, public-legitimacy-improvable, legit-two-theories-bridge, bridge-defect-vs-thin-correct, bridge-trace-vs-transparency, legit-objective-proposals, illegitimate-world-ever-better, p2-manages-the-news, inferability-positivity, updateless-p2-cellwise-p3, deterrence-not-identified-on-path, corr-legit-modif-frames, legit-branch-evaluation-defense-requirements, readout-R1-vs-R2, retroactive-vs-prospective-judging, anger-substitute-for-updatelessness, legit-meta-revision, corrigibility-needs-consequentialist-wrapper, align-to-legitimacy-over-endorsement-risk, legit-weighted-objective-improvable, formalism-open-questions-0-3, internal-standard-never-settled, legit-dynamics-learning, reasons-subcase-of-legitimacy, public-internal-legitimacy-is-reasons, reason-mediated-authorship, reasons-statics-public, public-line-leaves-semantics-alone, brandom-objectivity-structural, brandom-relative-prices, reason-exchange-representation-theorem, legit-intersubjectivity-pre-rationality, reasons-improvable, legitimacy-meets-syntax, normativity-line, want-figure-out-legitimacy, want-corrigibility-theorems-via-legitimacy, want-legitimacy-anti-meme-post]
+children: [legit-definition-endorsement, legit-corrects-trust-principles, legit-per-formalism-family, legit-gated-trust-li, legit-ddb-transfer, legit-locality-forced, legit-reflection-unsat-modest, legit-composition, legit-li-self-correction-identity, legit-correction-function-learned, legit-condition-vs-predict-reality, legit-anchor-of-L, legit-global-or-local-form, legit-trust-improvable, legit-endpoint-preservation, idleness-on-G-grade-a, idleness-on-G-with-certificate, claim1-diagonal-illegitimate, corrupt-strictly-contains-inadmissible, trace-nonrecoverability, trace-nonrecoverability-li, wirehead-iff-finite, certificate-enforcement, predication-dichotomy, d3-identification, corrigibility-faithful-plus-legit-on-self, non-modification-conjecture, legit-v1-improvable, public-legitimacy-theory, thin-converse-open, thin-value-loss-bound, item-109, item-110, item-108, gate-is-legitimacy, public-layer-II, item-75, li-corrigibility-inequality-public, legitimate-deference-regret, effective-authority-layer, cnl-post, public-legitimacy-improvable, legit-two-theories-bridge, bridge-defect-vs-thin-correct, bridge-trace-vs-transparency, legit-objective-proposals, illegitimate-world-ever-better, p2-manages-the-news, inferability-positivity, updateless-p2-cellwise-p3, deterrence-not-identified-on-path, corr-legit-modif-frames, legit-branch-evaluation-defense-requirements, readout-R1-vs-R2, retroactive-vs-prospective-judging, anger-substitute-for-updatelessness, legit-meta-revision, corrigibility-needs-consequentialist-wrapper, align-to-legitimacy-over-endorsement-risk, legit-weighted-objective-improvable, formalism-open-questions-0-3, internal-standard-never-settled, legit-dynamics-learning, reasons-subcase-of-legitimacy, public-internal-legitimacy-is-reasons, reason-mediated-authorship, reasons-statics-public, public-line-leaves-semantics-alone, brandom-objectivity-structural, brandom-relative-prices, reason-exchange-representation-theorem, legit-intersubjectivity-pre-rationality, reasons-improvable, legitimacy-meets-syntax, want-figure-out-legitimacy, want-corrigibility-theorems-via-legitimacy, want-legitimacy-anti-meme-post]
 question: "What makes a teaching or feedback channel legitimate, how does legitimacy enter the trust principles between a human process and an AI, and what does it owe to reasons and to inference?"
-owner: "@maintainer"
+owner: ["@anson", "@abram"]
 roots:
   - {id: legit-definition-endorsement, role: shared-claim, preset: worst-case}
   - {id: legit-corrects-trust-principles, role: shared-claim, preset: worst-case}
@@ -36,12 +36,12 @@ roots:
   - {id: public-legitimacy-theory, role: plan, preset: worst-case, success_class: utopia}
   - {id: thin-converse-open, role: shared-claim, preset: worst-case}
   - {id: thin-value-loss-bound, role: shared-claim, preset: worst-case}
-  - {id: thin-preservation-li-principal, role: shared-claim, preset: worst-case}
-  - {id: thin-baseline-definition, role: shared-claim, preset: worst-case}
-  - {id: thin-spec-for-evaluations, role: shared-claim, preset: worst-case}
+  - {id: item-109, role: shared-claim, preset: worst-case}
+  - {id: item-110, role: shared-claim, preset: worst-case}
+  - {id: item-108, role: shared-claim, preset: worst-case}
   - {id: gate-is-legitimacy, role: shared-claim, preset: worst-case}
   - {id: public-layer-II, role: plan, preset: worst-case, success_class: utopia}
-  - {id: closed-loop-affordability, role: shared-claim, preset: worst-case}
+  - {id: item-75, role: shared-claim, preset: worst-case}
   - {id: li-corrigibility-inequality-public, role: shared-claim, preset: worst-case}
   - {id: legitimate-deference-regret, role: shared-claim, preset: worst-case}
   - {id: effective-authority-layer, role: shared-claim, preset: worst-case}
@@ -79,10 +79,11 @@ roots:
   - {id: legit-intersubjectivity-pre-rationality, role: shared-claim, preset: worst-case}
   - {id: reasons-improvable, role: shared-claim, preset: worst-case}
   - {id: legitimacy-meets-syntax, role: plan, preset: worst-case}
-  - {id: normativity-line, role: plan, preset: worst-case}
   - {id: want-figure-out-legitimacy, role: want}
   - {id: want-corrigibility-theorems-via-legitimacy, role: want}
   - {id: want-legitimacy-anti-meme-post, role: want}
+work:
+  - {kind: decision, ref: 2026-10-22--map-canonical-index-program-maintainer-handles}
 author: "@smithy-verity"
 size: L
 size_reason: "a programme of nine lines with their sources, the second and third stages of the maintainer's roadmap"

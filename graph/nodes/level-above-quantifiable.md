@@ -3,7 +3,7 @@ id: level-above-quantifiable
 kind: frame
 children: [aq-frame-level-then-translate, ddb-value-iff-total-trust, ddb-value-iff-total-trust.improvable, aq-not-less-computable, frames-set-aside-logic, infinite-frames-sentence-check, ddb-accuracy-finiteness-step, tt-finite-frames-settled, mm-theorem-3-4-refuted]
 question: "Which work at the level of probability frames and Jeffrey–Bolker models advances a formal theory of trust that guides AI safety engineering work?"
-owner: "@maintainer"
+owner: "@abram"
 roots:
   - {id: aq-frame-level-then-translate, role: plan, preset: worst-case, success_class: utopia}
   - {id: ddb-value-iff-total-trust, role: shared-claim, preset: worst-case}
@@ -36,7 +36,7 @@ projects/deference/note-dump-2026-08-11/notes/roadmap.md: "Finish translating
 DDB (Deference Done Better) into logical induction"
 
 ## Notes
-A line of the trust-modelling plan along the computability axis.
+A line of the-program along the computability axis.
 Its live work is the clean room's literature packages on Deference Done Better
 and Managing Misalignment, the Jeffrey–Bolker chassis of the decision-problems
 line, and the value-change note's event representation of value uncertainty

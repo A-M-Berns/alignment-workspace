@@ -2,6 +2,7 @@
 id: normativity-aug9-foundation
 kind: leaf
 leaf_kind: step
+narrative: wiki/Reasons-Answerability-and-the-Score.md
 author: "@smithy-verity"
 size: S
 size_reason: "one registry section"

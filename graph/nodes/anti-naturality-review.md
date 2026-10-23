@@ -3,7 +3,7 @@ id: anti-naturality-review
 kind: frame
 children: [anti-naturality-walk, corrigibility-less-anti-natural, anti-naturality-arguments-as-stated, no-fud-problem-headline, no-fud-problem-headline.improvable, anti-naturality-typical-case, indifference-wrong-target, generalization-from-corrections, five-notions-of-corrigibility, posl-ilpacs-nontrivial-model, thornley-three-theorems, turner-vnm-fact, carey-everitt-thm10-vacuous, osg-theorem1-corollary, want-address-anti-naturality, want-truth-through-literature-dialogue]
 question: "Which published anti-naturality arguments survive for an agent whose utility on the correction algebra depends on the corrections, and what notion of corrigibility survives the walk?"
-owner: "@maintainer"
+owner: "@anson"
 roots:
   - {id: anti-naturality-walk, role: plan, preset: worst-case, success_class: utopia}
   - {id: corrigibility-less-anti-natural, role: shared-claim, preset: worst-case}

@@ -38,9 +38,11 @@ The checker reads `graph/` (frame, policy, nodes, events, proposals), refuses
 on any rule violation (printed `REFUSE <rule> <path>: <reason>`, exit 1) and
 never repairs. When the tree passes it derives every number (levels, beliefs,
 statuses, proof sets, costs, loads, probabilities, values, the ranking) and
-writes `graph/derived.json`, `graph/tasks.md`, `graph/view.md` and
-`graph/versions.json`; each generated file carries a hash of its own content
-so a hand edit is detected and refused on the next run.
+writes `graph/derived.json`, `graph/tasks.md`, `graph/view.md`,
+`graph/versions.json` and the structure-only `graph/index.json`; each generated
+file carries a hash of its own content so a hand edit is detected and refused on
+the next run. Where the tree holds item nodes, the plain run also renders
+`PRIORITIES.md` from them (`checkers/priorities_render.py`).
 
 Numbers that are compared with a threshold or summed into a status or value
 are exact `fractions.Fraction`; the information estimates (bits) are floats,
@@ -98,7 +100,10 @@ ROLES = {"plan", "risk-story", "shared-claim", "want"}
 PRIORITY_WORDS = {"high": Q(1), "medium": Q(1, 2), "low": Q(1, 4), "none": Q(0)}   # a want's weight; unset reads as medium
 WHO = {"human", "agent", "either"}
 ACTION_LEAVES = {"task", "question", "step", "hypothesis", "route", "improvement"}   # leaves that may carry action and who
-WORK_KINDS = {"priorities", "open", "round", "private"}
+WORK_KINDS = {"priorities", "open", "round", "private", "decision", "foundation"}   # decision: a DECISIONS.md anchor; foundation: an id of state/foundations.json
+FILED_FROM = {"quote", "wiki"}     # quote: a want from its owner's public words; wiki: a frame an agent drafted from a wiki page (owner has not confirmed)
+_ITEM_ID = re.compile(r"^(\d+|[A-Z]\d+)$")
+_DECISION_LINE = re.compile(r"<!-- decision: ([^;\s]+); touches: ([^;]*?)(; status: open)? -->")
 PRESETS = {"worst-case", "probabilistic", "expected-utility"}
 EVENT_KINDS = {"map-read", "trace", "pass", "estimate", "gestalt", "admit", "classify",
                "identify", "approve", "audit", "withdraw", "external", "retrospective",
@@ -118,7 +123,7 @@ FORBIDDEN_KEYS = {"level", "V", "J", "credence", "probability", "status", "weigh
                   "conditional", "p", "value", "utility", "load", "cost"}
 PROPOSAL_KINDS = {"merge", "split", "retarget", "sharpen", "new-root", "edge", "class", "sub-frame"}
 PROPOSAL_STATUS = {"proposed", "approved", "applied", "withdrawn"}
-GENERATED = ("derived.json", "versions.json", "tasks.md", "view.md")
+GENERATED = ("derived.json", "versions.json", "tasks.md", "view.md", "index.json")   # index.json: the structure-only index (M8, 2026-10-22)
 LAYOUT_FILES = {"frame.yaml", "policy.yaml", "derived.json", "versions.json", "tasks.md",
                 "view.md", "PROTOCOL.md", "README.md", "DESIGN-LOG.md",
                 "MAP-AS-CANONICAL.md", "SURVEY.md", "index.json"}   # the 2026-10-22 round's two documents and its structure-only index
@@ -364,6 +369,7 @@ def parse_node_text(text, path):
     node = dict(fm)
     node["_path"], node["_statement"], node["_source"] = path, sec["Statement"], sec["Source"]
     node["_notes"] = sec.get("Notes", "")
+    node["_item"] = sec.get("Item")          # an item node's transcribed entry (PRIORITIES.md is rendered from it)
     node.setdefault("children", [])
     node.setdefault("rows", [])
     if node["children"] is None:
@@ -380,6 +386,9 @@ class Tree:
         self.versions = {}
         self.warnings = []
         self.registry = None
+        self.decisions = {}       # DECISIONS.md anchors: {anchor: {date, title, status, touches}}
+        self.rounds = {}          # state/rounds.json: {id or path: record}
+        self.foundations = set()  # state/foundations.json ids
 
     def rel(self, p):
         try:
@@ -459,6 +468,22 @@ def load_tree(root, registry=None):
     if cdir.is_dir():
         for p in sorted(cdir.glob("*.jsonl")):
             t.chats[p.name] = [json.loads(l) for l in p.read_text().splitlines() if l.strip()]
+    t.decisions = load_decisions(t.root / "DECISIONS.md")
+    rpath = t.root / "state" / "rounds.json"
+    if rpath.is_file():
+        try:
+            for r in json.loads(rpath.read_text()).get("rounds") or []:
+                t.rounds[r["id"]] = r
+                if r.get("path"):
+                    t.rounds[str(r["path"]).rstrip("/")] = r
+        except (json.JSONDecodeError, KeyError, TypeError):
+            t.warnings.append("state/rounds.json: not readable; round pointers are checked against directories only")
+    fpath = t.root / "state" / "foundations.json"
+    if fpath.is_file():
+        try:
+            t.foundations = {f["id"] for f in json.loads(fpath.read_text()).get("foundations") or []}
+        except (json.JSONDecodeError, KeyError, TypeError):
+            t.warnings.append("state/foundations.json: not readable; foundation pointers resolve to nothing")
     # the claims registries every derivation reads (`registries:` in policy.yaml, paths from the repository root), plus one a
     # personal run names with --registry; a listed registry that is no file is refused (rule 10), never skipped
     regs = t.policy.get("registries")
@@ -472,6 +497,30 @@ def load_tree(root, registry=None):
     if registry:
         t.registry = {**(t.registry or {}), **_load_registry(registry)}
     return t
+
+
+def load_decisions(path):
+    """The anchors of DECISIONS.md: one machine line per entry, `<!-- decision: <anchor>; touches: <kind:ref, ...>[; status: open] -->`,
+    the line after a settled entry's heading or the last line of a queued bullet (ruling M7, 2026-10-22)."""
+    out = {}
+    if not pathlib.Path(path).is_file():
+        return out
+    text = pathlib.Path(path).read_text()
+    heading = None
+    for i, line in enumerate(text.splitlines(), 1):
+        m = re.match(r"^### (\d{4}-\d{2}-\d{2}) — (.+)$", line)
+        if m:
+            heading = (m.group(1), m.group(2).strip())
+        d = _DECISION_LINE.search(line)
+        if d:
+            touches = [x.strip() for x in d.group(2).split(",") if x.strip() and x.strip() != "none"]
+            status = "open" if d.group(3) else "settled"
+            out[d.group(1)] = {"anchor": d.group(1), "date": heading[0] if heading and status == "settled" else None,
+                               "title": heading[1] if heading and status == "settled" else None, "status": status,
+                               "touches": [{"kind": x.split(":", 1)[0], "ref": x.split(":", 1)[1]} for x in touches if ":" in x], "line": i}
+            if status == "open":
+                heading = None
+    return out
 
 
 def _load_registry(path):
@@ -519,6 +568,34 @@ def is_handle(t, handle):
     return handle in (t.policy.get("handles") or {})
 
 
+def owners_of(x):
+    """A frame's owners: `owner` is one human handle or a list of them (ruling M5, 2026-10-22); a want's is one."""
+    o = (x or {}).get("owner")
+    if o is None or o == "":
+        return []
+    return [str(h) for h in o] if isinstance(o, list) else [str(o)]
+
+
+def all_human(t, handles):
+    return bool(handles) and all(isinstance(h, str) and is_human(t, h) for h in handles)
+
+
+def maintainers(t):
+    """The maintainer handles: `maintainer` in policy.yaml is one human handle or a list of them (ruling M1, 2026-10-22)."""
+    m = t.policy.get("maintainer")
+    if m is None or m == "":
+        return []
+    return [str(h) for h in m] if isinstance(m, list) else [str(m)]
+
+
+def narratives_of(x):
+    """A node's or the frame's narrative pages: `narrative` is one `wiki/<Page>.md` path or a list of them (2026-10-22)."""
+    n = (x or {}).get("narrative")
+    if n is None or n == "":
+        return []
+    return [str(v) for v in n] if isinstance(n, list) else [str(n)]
+
+
 def classes(t):
     return {c["id"]: c for c in (t.frame.get("classes") or []) if isinstance(c, dict)}
 
@@ -532,10 +609,12 @@ def valuations(t):
     return [v for v in (t.frame.get("valuations") or []) if isinstance(v, str)]
 
 
-def all_roots(t):
+def all_roots(t, unique=True):
     """Every root entry with the frame it belongs to, as dicts carrying `frame`: None for the top
     frame's roots, the frame node's id for a sub-frame's. A frame node's own roots come before the
-    frame node itself, so a programme's steps are derived before the programme."""
+    frame node itself, so a programme's steps are derived before the programme. A node may be a root
+    of several frames (a shared root, 2026-10-22): with `unique` the first entry in the frame tree's
+    order is kept as its home and carries every frame in `frames`; without, every entry is returned."""
     out, seen = [], set()
 
     def walk(entries, frame_id):
@@ -551,7 +630,17 @@ def all_roots(t):
                 e["preset"], e["_implied_preset"] = "worst-case", True   # a want takes the worst-case status rule
             out.append(e)
     walk(roots(t), None)
-    return out
+    if not unique:
+        return out
+    first, order = {}, []
+    for e in out:
+        if e["id"] in first:
+            first[e["id"]]["frames"].append(e["frame"])
+        else:
+            e["frames"] = [e["frame"]]
+            first[e["id"]] = e
+            order.append(e["id"])
+    return [first[i] for i in order]
 
 
 def plan_children(t, x):
@@ -605,6 +694,13 @@ def _check_given_parent(t, path, g, vals):
         raise Refuse(2, path, f"given {g!r} names {what}; a given parent is a claim leaf, an and, an or or a cases node")
     if str(g).endswith("@valid") and k != "and":
         raise Refuse(2, path, f"given {g!r}: @valid names an and-shaped argument (its assumption and hypothesis leaves held true), not a {k}")
+
+
+def _check_narrative(t, path, x):
+    """`narrative` names one or more pages under wiki/ that exist (a protocol extension of 2026-10-22; a missing page is refused)."""
+    for page in narratives_of(x):
+        if not re.match(r"^wiki/[^/]+\.md$", page) or not (t.root / page).is_file():
+            raise Refuse(2, path, f"narrative {page!r} is not a page under wiki/ of this repository")
 
 
 def given_base(name):
@@ -666,8 +762,9 @@ def lint(t):
     vals = valuations(t)
     if not roots(t):
         raise Refuse(1, "graph/frame.yaml", "frame names no roots")
-    if not is_human(t, fr.get("owner")):
-        raise Refuse(2, "graph/frame.yaml", f"the top frame carries owner, a human handle (the person whose question it poses), not {fr.get('owner')!r}")
+    if not all_human(t, owners_of(fr)):
+        raise Refuse(2, "graph/frame.yaml", f"the top frame carries owner, a human handle or a list of them (the people whose question it poses), not {fr.get('owner')!r}")
+    _check_narrative(t, "graph/frame.yaml", fr)
     for r in roots(t):
         if r.get("id") not in nodes:
             raise Refuse(1, "graph/frame.yaml", f"root {r.get('id')!r} resolves to no node")
@@ -688,10 +785,10 @@ def lint(t):
         n = nodes[x]
         if not isinstance(n.get("roots"), list) or not all(isinstance(r, dict) and isinstance(r.get("id"), str) for r in n["roots"]):
             raise Refuse(2, n["_path"], "a frame node carries roots, a list of {id, role, preset, ...} like frame.yaml's")
-    entries = all_roots(t)
+    entries = all_roots(t, unique=False)
     seen = defaultdict(list)
     for r in entries:
-        seen[r.get("id")].append(r["frame"])
+        seen[r.get("id")].append(r)
         where = "graph/frame.yaml" if r["frame"] is None else nodes[r["frame"]]["_path"]
         if r.get("role") not in ROLES:
             raise Refuse(2, where, f"unknown role {r.get('role')!r}")
@@ -716,9 +813,18 @@ def lint(t):
             raise Refuse(8, where, f"success_class {r['success_class']!r} names no class")
         if r["preset"] != "worst-case" and "budget" not in r:
             raise Refuse(8, where, f"root {r.get('id')!r} under {r['preset']} lacks budget")
-    for rid, frames in seen.items():
-        if len(frames) > 1:
-            raise Refuse(1, "graph/frame.yaml", f"{rid!r} is a root of more than one frame")
+    for rid, rs in seen.items():
+        if len(rs) > 1:
+            # a shared root (2026-10-22): one node listed by several frames that read it, filed once; a want sits in one frame
+            # (its placement is its owner's word) and the entries agree on role
+            frames = [r["frame"] for r in rs]
+            if len(set(frames)) < len(frames):
+                raise Refuse(1, "graph/frame.yaml", f"{rid!r} is listed twice as a root of one frame")
+            if rs[0].get("role") == "want":
+                raise Refuse(1, "graph/frame.yaml", f"want {rid!r} is a root of more than one frame; a want's placement is its owner's word")
+            if len({r.get("role") for r in rs}) > 1:
+                raise Refuse(1, "graph/frame.yaml", f"{rid!r} is a root of several frames with different roles ({', '.join(str(r.get('role')) for r in rs)})")
+    entries = all_roots(t)
     for x in frame_nodes:
         if x not in seen:
             raise Refuse(2, nodes[x]["_path"], "a frame node is a plan root of the top frame or of another frame")
@@ -727,8 +833,8 @@ def lint(t):
             raise Refuse(2, nodes[x]["_path"], "a frame node's children are exactly its roots")
         if not isinstance(nodes[x].get("question"), str) or not nodes[x]["question"].strip():
             raise Refuse(2, nodes[x]["_path"], "a frame node carries question")
-        if not is_human(t, nodes[x].get("owner")):
-            raise Refuse(2, nodes[x]["_path"], f"a frame carries owner, a human handle (the person whose question it poses), not {nodes[x].get('owner')!r}")
+        if not all_human(t, owners_of(nodes[x])):
+            raise Refuse(2, nodes[x]["_path"], f"a frame carries owner, a human handle or a list of them (the people whose question it poses), not {nodes[x].get('owner')!r}")
         if nodes[x].get("opened") is False and any(r.get("role") == "plan" for r in nodes[x]["roots"]):
             raise Refuse(2, nodes[x]["_path"], "a frame with opened: false records a line not opened: shared claims and risk stories only, no plan roots")
         if "outside_option" in nodes[x] and nodes[x]["outside_option"] not in vals:
@@ -803,6 +909,13 @@ def lint(t):
     words = [str(w).casefold() for w in (po.get("evaluative_words") or [])]
     prio_path = t.root / "PRIORITIES.md"
     prio_items = set(re.findall(r"^### (\d+)\.", prio_path.read_text(), re.M)) if prio_path.is_file() else set()
+    item_nodes = {}
+    for x, n in nodes.items():
+        if "item" in n:
+            if str(n["item"]) in item_nodes:
+                raise Refuse(1, n["_path"], f"item {n['item']!r} is also {item_nodes[str(n['item'])]}; one node per item")
+            item_nodes[str(n["item"])] = x
+    pointed_decisions = set()
     for x, n in nodes.items():
         path = n["_path"]
         for k in n:
@@ -875,8 +988,30 @@ def lint(t):
                 raise Refuse(2, path, "a want is a root, role want, of the frame its filer places it under")
         elif n.get("leaf_kind") == "want":
             raise Refuse(2, path, "a want leaf carries want: true and an owner")
-        if "filed_from" in n and n.get("filed_from") != "quote":
-            raise Refuse(2, path, "filed_from is quote (the want was filed from its owner's quoted words)")
+        if "filed_from" in n and n.get("filed_from") not in FILED_FROM:
+            raise Refuse(2, path, "filed_from is quote (a want filed from its owner's quoted words) or wiki (a frame an agent drafted from a wiki page)")
+        if n.get("filed_from") == "wiki" and kind != "frame":
+            raise Refuse(2, path, "filed_from: wiki marks a frame drafted from a wiki page; a want is filed_from: quote")
+        _check_narrative(t, path, n)
+        if "item" in n:
+            # an item node (ruling M6, 2026-10-22): the transcription of one PRIORITIES.md entry, rendered back by checkers/priorities_render.py
+            if not isinstance(n["item"], str) or not _ITEM_ID.match(n["item"]):
+                raise Refuse(2, path, f"item is the entry's number as a string (\"77\", \"Q1\", \"F3\"), not {n['item']!r}")
+            if not x.startswith("item-"):
+                raise Refuse(2, path, "an item node's id begins item-")
+            for f in ("title", "section"):
+                if not isinstance(n.get(f), str) or not n[f].strip():
+                    raise Refuse(2, path, f"an item node carries {f}")
+            if not isinstance(n.get("maintainer_order"), int) or isinstance(n.get("maintainer_order"), bool):
+                raise Refuse(2, path, "an item node carries maintainer_order, an integer (the hand ordering, transcribed)")
+            if n.get("dispatchable") not in (True, False):
+                raise Refuse(2, path, "an item node carries dispatchable: true or false")
+            if n.get("item_status") not in ("open", "closed"):
+                raise Refuse(2, path, "an item node carries item_status: open or closed")
+            if n.get("_item") is None or not n["_item"].strip():
+                raise Refuse(12, path, "an item node carries a '## Item' section with the entry's text")
+        elif x.startswith("item-") and "." not in x:
+            raise Refuse(2, path, "a node id beginning item- is an item node and carries item (its leaves are item-<n>.<part>)")
         if n.get("leaf_kind") == "task" and (not isinstance(n.get("action"), str) or not n["action"].strip() or "who" not in n):
             raise Refuse(2, path, "a task leaf carries action (one imperative sentence) and who (human, agent or either)")
         if "action" in n or "who" in n:
@@ -891,10 +1026,22 @@ def lint(t):
             for w in n["work"]:
                 if w["kind"] == "priorities" and not (isinstance(w["ref"], int) and not isinstance(w["ref"], bool)):
                     raise Refuse(2, path, f"work kind priorities refs an integer item number of PRIORITIES.md, not {w['ref']!r}")
-                if w["kind"] == "priorities" and str(w["ref"]) not in prio_items:
-                    t.warnings.append(f"{path}: work order PRIORITIES #{w['ref']} has no '### {w['ref']}.' heading in PRIORITIES.md")
-                if w["kind"] == "round" and not (t.root / str(w["ref"])).is_dir():
-                    t.warnings.append(f"{path}: round {w['ref']} is not a directory of the repository")
+                if w["kind"] == "priorities":
+                    if item_nodes and str(w["ref"]) not in item_nodes:
+                        raise Refuse(1, path, f"work order PRIORITIES #{w['ref']} names no item node (a node carrying item: \"{w['ref']}\")")
+                    if not item_nodes and str(w["ref"]) not in prio_items:
+                        t.warnings.append(f"{path}: work order PRIORITIES #{w['ref']} has no '### {w['ref']}.' heading in PRIORITIES.md")
+                    if "item" in n and str(w["ref"]) == n["item"]:
+                        t.warnings.append(f"{path}: an item node's work pointer to its own item is redundant with its item field")
+                if w["kind"] == "round" and not (t.root / str(w["ref"])).is_dir() and str(w["ref"]).rstrip("/") not in t.rounds:
+                    t.warnings.append(f"{path}: round {w['ref']} is neither a directory of the repository nor a round of state/rounds.json")
+                if w["kind"] == "decision":
+                    # a pointer to a maintainers' ruling (ruling M7): its ref is the anchor of a DECISIONS.md entry
+                    if str(w["ref"]) not in t.decisions:
+                        raise Refuse(1, path, f"decision {w['ref']!r} resolves to no anchor of DECISIONS.md")
+                    pointed_decisions.add(str(w["ref"]))
+                if w["kind"] == "foundation" and str(w["ref"]) not in t.foundations:
+                    raise Refuse(1, path, f"foundation {w['ref']!r} resolves to no id of state/foundations.json")
                 if w["kind"] == "private":
                     # the public map cites only what a public reader can open (2026-10-20); a warning until the staged
                     # nodes have dropped the kind, then a refusal
@@ -973,6 +1120,17 @@ def lint(t):
                 raise Refuse(4, path, "Statement changed without a version bump")
             if norm == last["normalized"] and n["version"] != last["version"]:
                 raise Refuse(4, path, "version bumped with an unchanged Statement")
+    unpointed = [a for a in t.decisions if a not in pointed_decisions]
+    if unpointed:
+        # one line, not one per entry: the index (graph/index.json, `decisions[].pointed_by`) lists every anchor
+        t.warnings.append(f"DECISIONS.md: {len(unpointed)} of {len(t.decisions)} decision anchors have no node pointing at them "
+                          f"(first: {', '.join(unpointed[:3])}; every anchor's pointers are in graph/index.json)")
+    for a, d in t.decisions.items():
+        for tch in d["touches"]:
+            if tch["kind"] == "node" and tch["ref"] not in nodes:
+                t.warnings.append(f"DECISIONS.md:{d['line']}: touches node {tch['ref']!r}, which is no node")
+            if tch["kind"] == "item" and item_nodes and tch["ref"] not in item_nodes:
+                t.warnings.append(f"DECISIONS.md:{d['line']}: touches item {tch['ref']!r}, which has no item node")
     improvement_ors = {x for x, n in nodes.items() if "improves" in n and n.get("kind") == "or"}
     in_improvement = set().union(*[support(t, x) for x, n in nodes.items() if "improves" in n] or [set()])
     for x, n in nodes.items():
@@ -1004,9 +1162,9 @@ def lint(t):
                                   "a route conditions on X@valid, X or a refinement of X")
     # rule 5, 6, 10: ledgers
     nodeset = set(nodes)
-    maint = po.get("maintainer")
-    if not is_human(t, maint):
-        raise Refuse(5, "graph/policy.yaml", "maintainer must name a human handle (rule and survey events are the maintainer's)")
+    maints = maintainers(t)
+    if not all_human(t, maints):
+        raise Refuse(5, "graph/policy.yaml", "maintainer names a human handle or a list of them (rule and survey events are the maintainers')")
     by_ledger = defaultdict(list)
     eids = {e.get("id"): e for e in t.events}
     goal_ids = static_goals(t)
@@ -1091,8 +1249,8 @@ def lint(t):
             raise Refuse(5, path, "a level-minting event has non-empty checked and not_checked")
         if e["kind"] == "withdraw" and (tk[0] != "event" or eids[tk[1]]["by"] != e["by"]):
             raise Refuse(5, path, "withdraw names an event by the same handle")
-        if e["kind"] in ("rule", "survey") and e["by"] != maint:
-            raise Refuse(5, path, f"{e['kind']} is by the maintainer")
+        if e["kind"] in ("rule", "survey") and e["by"] not in maints:
+            raise Refuse(5, path, f"{e['kind']} is by a maintainer ({', '.join(maints)})")
         if not is_human(t, e["by"]):
             # an AI handle may write estimates and gestalts (they count at J 0 "generated", with its reasoning in gloss);
             # it mints no level and accepts, approves, tags or identifies nothing
@@ -1401,7 +1559,7 @@ LEVELISH_KINDS = {"map-read", "trace", "pass", "external", "retrospective", "sur
 def _level_of(C, x, evs):
     """Headline level of a node from a set of level events (valid and ref dimensions, anchors 2–18)."""
     t, n = C.t, C.t.nodes[x]
-    maint = C.po.get("maintainer")
+    maints = maintainers(C.t)
     V, display = {}, {}
     for dim in ("valid", "ref"):
         de = [e for e in evs if e.get("dimension", "both") in (dim, "both")]
@@ -1431,7 +1589,7 @@ def _level_of(C, x, evs):
         anchors = {6: any(e["kind"] == "map-read" and said(e) for e in de), 8: bool(complete),
                    10: len(set(tracers)) >= 2, 12: bool(passes),
                    14: bool(externals), 16: any(e["kind"] == "retrospective" for e in de),
-                   18: any(e["kind"] == "survey" and e["by"] == maint for e in de)}
+                   18: any(e["kind"] == "survey" and e["by"] in maints for e in de)}
         for k in (6, 8, 10, 12, 14, 16, 18):
             if anchors[k]:
                 v = k
@@ -3226,7 +3384,8 @@ def unit_signals(C, D, u, GI):
     if n.get("leaf_kind") == "record" and (N.get("V") or {}).get("valid", 0) >= 4:
         out.append("kernel-checked record")
     for w in n.get("work") or []:
-        out.append({"priorities": f"work order #{w['ref']}", "open": "open statement", "round": "round", "private": "private source"}[w["kind"]])
+        out.append({"priorities": f"work order #{w['ref']}", "open": "open statement", "round": "round", "private": "private source",
+                    "decision": "decision", "foundation": "foundation"}[w["kind"]])
     if u["kind"] in ("do", "improve") and any(not (t.root / str(f)).exists() for f in n.get("files") or []):
         out.append("files outside the repository")   # a path the public reader cannot open (outside this repository)
     if u["kind"] in ("vet", "trace", "re-examine") and N.get("source_private_only") and "private source" not in out:
@@ -3470,7 +3629,7 @@ def derive(t, scope=None, lam=None, window_dp=False, frontier=0, today=None, wit
                          | {x for x in pset if t.nodes[x].get("kind") == "cases"
                             and any("AI number" in b["p"][2] or "AI number" in b.get("w", (0, 0, []))[2] for b in row_beliefs(C, x).values())}
                          | ({rid} if g is not None and g.get("generated") else set()))
-        D["roots"][rid] = {"role": r["role"], "preset": r["preset"], "frame": r["frame"], "status": rs, "diagnosis": rdiag,
+        D["roots"][rid] = {"role": r["role"], "preset": r["preset"], "frame": r["frame"], "frames": r.get("frames") or [r["frame"]], "status": rs, "diagnosis": rdiag,
                            "revival": revival(C, rid, status) if rs == "conceded" and status[rid][0] == "conceded" else None,
                            "proof_set": sorted(pset), "cost": cost, "choice": choice,
                            "disproof": min((rate(C, "attack", t.nodes[x]["size"])[0] for x in pset), default=None),
@@ -3533,6 +3692,9 @@ def derive(t, scope=None, lam=None, window_dp=False, frontier=0, today=None, wit
             C.flags[x].add("not opened; see Notes")
         elif n.get("kind") == "frame" and not n["children"]:
             C.flags[x].add("unspelled")
+        if n.get("kind") == "frame" and n.get("filed_from") == "wiki":
+            # a frame an agent drafted from a wiki page (ruling M3): the owner confirms by removing filed_from from the file
+            C.flags[x].add("owner has not confirmed (drafted from " + ", ".join(narratives_of(n)) + ")" if narratives_of(n) else "owner has not confirmed (drafted from the wiki)")
         cost, why = elem_cost(C, x, status) if n.get("kind") in ("leaf", "cases") else (None, [])
         D["nodes"][x] = {"kind": n.get("kind"), "leaf_kind": n.get("leaf_kind"), "size": n["size"], "version": n["version"],
                          "V": {k: v for k, v in C.V[x].items() if k != "draft"}, "draft": C.V[x]["draft"],
@@ -3556,8 +3718,11 @@ def derive(t, scope=None, lam=None, window_dp=False, frontier=0, today=None, wit
                                          e["kind"] == "priority" for e in C.on_node[x])),
                                      "attachment": want_attachment(C, x)}
         if n.get("kind") == "frame":
-            D["nodes"][x]["frame"] = {"owner": n.get("owner"), "unspelled": not n["children"] and n.get("opened") is not False,
-                                      "opened": n.get("opened") is not False}
+            D["nodes"][x]["frame"] = {"owner": ", ".join(owners_of(n)), "owners": owners_of(n), "unspelled": not n["children"] and n.get("opened") is not False,
+                                      "opened": n.get("opened") is not False, "confirmed": n.get("filed_from") != "wiki",
+                                      "narrative": narratives_of(n)}
+        elif narratives_of(n):
+            D["nodes"][x]["narrative"] = narratives_of(n)
         if n.get("kind") == "and" and C.E.forceable(x):
             # the argument as an implication (its assumption and hypothesis leaves held true) beside its literal reading
             D["nodes"][x]["valid_Pr"] = {m: C.E.prob((C.E.target_key(x + "@valid"),), {}, m) for m in ("mid", "lo", "hi")}
@@ -4014,7 +4179,7 @@ def render_tasks(t, D, pf, today):
         if g not in GI:
             Fr = (D["nodes"].get(g) or {}).get("frame") or {}
             L.append(f"{'  ' * depth}- {g} (frame, owner {Fr.get('owner')}{'; unspelled' if Fr.get('unspelled') else ''}"
-                     f"{'; not opened' if Fr and not Fr.get('opened') else ''}): {t.nodes[g].get('question')}")
+                     f"{'; not opened' if Fr and not Fr.get('opened') else ''}{'; owner has not confirmed' if Fr and not Fr.get('confirmed', True) else ''}): {t.nodes[g].get('question')}")
             continue
         G = GI[g]
         best = rank_of.get(g)
@@ -4162,7 +4327,7 @@ def goal_order(C, GI):
 
 def render_view(t, D, pf, today):
     L = [f"# View (generated {today}; regenerated by the checker, never edited)", "",
-         f"Top frame (owner {t.frame.get('owner')}): {t.frame.get('question')}", "",
+         f"Top frame (owner {', '.join(owners_of(t.frame))}): {t.frame.get('question')}", "",
          "How to read a root's block: the *weakest proof-set leaf* is the least-vetted element of the cheapest way to establish "
          "the root; a *safety margin* counts the established proof-set leaves whose concession would concede the root; *informs* "
          "counts the goals whose inference reaches the node (a programme informs through its steps). Sub-frames follow the top "
@@ -4210,7 +4375,10 @@ def render_view(t, D, pf, today):
         if N.get("frame"):
             Fr = N["frame"]
             L.append(f"- frame owner {Fr['owner']}" + ("; unspelled (no roots yet)" if Fr["unspelled"] else "")
-                     + ("; not opened; see Notes" if not Fr["opened"] else ""))
+                     + ("; not opened; see Notes" if not Fr["opened"] else "")
+                     + ("; owner has not confirmed (drafted from the wiki)" if not Fr.get("confirmed", True) else ""))
+        if len(R.get("frames") or []) > 1:
+            L.append("- also a root of: " + ", ".join(f or "the top frame" for f in R["frames"][1:]))
         k = len(N.get("informs") or [])
         if R.get("subframe"):
             L.append("- a programme: informs through its steps" + (f" ({k} goal{'s' if k != 1 else ''})" if k else ""))
@@ -4290,7 +4458,8 @@ def render_view(t, D, pf, today):
 def work_text(w):
     """How a work pointer prints."""
     return {"priorities": f"work order: PRIORITIES #{w['ref']}", "open": f"open statement: `{w['ref']}`",
-            "round": f"round: {w['ref']}", "private": f"private source: {w['ref']}"}[w["kind"]]
+            "round": f"round: {w['ref']}", "private": f"private source: {w['ref']}",
+            "decision": f"decision: {w['ref']}", "foundation": f"foundation: {w['ref']}"}[w["kind"]]
 
 
 def digest(prev, D):
@@ -4351,12 +4520,77 @@ def committed_files(t, D, today):
     vobj = {"generated_hash": "", "nodes": versions}
     vobj["generated_hash"] = sha(json.dumps(vobj, indent=1, sort_keys=True))
     files["versions.json"] = json.dumps(vobj, indent=1, sort_keys=True) + "\n"
+    idx = _clean(structure_index(t, today))          # Fractions in human events print as "p/q", as in derived.json
+    idx["generated_hash"] = ""
+    idx["generated_hash"] = sha(json.dumps(idx, indent=1, sort_keys=True))
+    files["index.json"] = json.dumps(idx, indent=1, sort_keys=True) + "\n"
     return files
+
+
+def structure_index(t, today):
+    """The structure-only index (ruling M8, 2026-10-22; schema in graph/MAP-AS-CANONICAL.md §6.1): every node with its kind,
+    fields, Statement, Source, Notes, narrative, pointers and edges, every frame with its roots and owners, the handles, the
+    decision anchors and rounds the map points at, the narratives, and every event of every human ledger; no derived number,
+    level, status or rank. Every id is the id a URL carries."""
+    fr = t.frame
+    nodes = {}
+    skip = {"id", "kind", "leaf_kind", "author", "size", "size_reason", "version", "children", "rows", "given", "work", "narrative",
+            "question", "owner", "roots", "_path", "_statement", "_source", "_notes", "_item"}
+    in_frames = defaultdict(list)
+    for r in all_roots(t):
+        for f in r.get("frames") or [r["frame"]]:
+            in_frames[r["id"]].append({"frame": f or "top", "role": r.get("role")})
+    for x, n in sorted(t.nodes.items()):
+        rec = {"kind": n.get("kind"), "leaf_kind": n.get("leaf_kind"), "author": n.get("author"), "size": n.get("size"), "version": n.get("version"),
+               "statement": n["_statement"], "source": n["_source"], "notes": n.get("_notes") or "", "narrative": narratives_of(n),
+               "children": list(n["children"]), "given": n.get("given"), "work": list(n.get("work") or []),
+               "rows": [{"picture": r.get("picture"), "class": r.get("class"), "given": r.get("given"), "residual": bool(r.get("residual"))}
+                        for r in n.get("rows") or [] if isinstance(r, dict)],
+               "fields": {k: v for k, v in n.items() if k not in skip}, "in_frames": in_frames.get(x, [])}
+        if n.get("kind") == "frame":
+            rec["frame"] = {"question": n.get("question"), "owners": owners_of(n), "roots": [{"id": r.get("id"), "role": r.get("role")} for r in n.get("roots") or []],
+                            "opened": n.get("opened") is not False, "filed_from": n.get("filed_from")}
+        if n.get("_item"):
+            rec["item_body"] = n["_item"]
+        nodes[x] = rec
+    rounds_pointed, decisions_pointed, narratives = defaultdict(list), defaultdict(list), defaultdict(list)
+    for x, n in t.nodes.items():
+        for w in n.get("work") or []:
+            if w.get("kind") == "round":
+                r = t.rounds.get(str(w.get("ref")).rstrip("/"))
+                rounds_pointed[r["id"] if r else str(w.get("ref"))].append(x)
+            if w.get("kind") == "decision":
+                decisions_pointed[str(w.get("ref"))].append(x)
+        for page in narratives_of(n):
+            narratives[page].append(x)
+    for page in narratives_of(fr):
+        narratives[page].append("top")
+    handles = t.policy.get("handles") or {}
+    events = [e for e in t.events if is_human(t, e.get("by"))]
+    return {"schema": "graph-index/1", "generated": str(today), "generated_hash": "",
+            "frame": {"question": fr.get("question"), "owners": owners_of(fr), "narrative": narratives_of(fr),
+                      "classes": [c.get("id") for c in fr.get("classes") or [] if isinstance(c, dict)], "valuations": valuations(t),
+                      "outside_option": fr.get("outside_option"), "undescribed_failure": fr.get("undescribed_failure"),
+                      "roots": [{"id": r.get("id"), "role": r.get("role")} for r in roots(t)]},
+            "handles": {h: {k: v for k, v in (spec or {}).items()} for h, spec in handles.items()},
+            "maintainers": maintainers(t),
+            "nodes": nodes,
+            "items": {str(n["item"]): x for x, n in sorted(t.nodes.items()) if "item" in n},
+            "decisions": [{"anchor": a, "date": d["date"], "title": d["title"], "status": d["status"], "touches": d["touches"],
+                           "pointed_by": sorted(decisions_pointed.get(a, []))} for a, d in sorted(t.decisions.items(), key=lambda kv: kv[1]["line"])],
+            "rounds": [{"id": r["id"], "path": r.get("path"), "pointed_by": sorted(rounds_pointed.get(r["id"], []))}
+                       for r in sorted({v["id"]: v for v in t.rounds.values()}.values(), key=lambda r: (str(r.get("date")), r["id"]))],
+            "narratives": {page: sorted(set(xs)) for page, xs in sorted(narratives.items())},
+            "events": [{k: v for k, v in e.items() if not k.startswith("_")} for e in events]}
 
 
 def write_outputs(t, files):
     for name, content in files.items():
         (t.graph / name).write_text(content)
+    # PRIORITIES.md is a render of the item nodes (ruling M6): written on the plain run beside the committed files
+    if any("item" in n for n in t.nodes.values()) and (t.root / "state" / "priorities_sections.md").is_file():
+        from checkers import priorities_render
+        (t.root / "PRIORITIES.md").write_text(priorities_render.render(t.root))
 
 
 def write_deltas(t, D):
@@ -4815,6 +5049,20 @@ NULL_INPUTS = [
     ("path_max below 3", 10, {"edits": [("policy.yaml", "path_max: 8", "path_max: 2")]}),
     ("also_for_share above 1", 10, {"edits": [("policy.yaml", "also_for_share: 0.2", "also_for_share: 2")]}),
     ("tasks_shown below 1", 10, {"edits": [("policy.yaml", "tasks_shown: 40", "tasks_shown: 0")]}),
+    # the 2026-10-22 map-as-canonical round: narratives, decision and foundation pointers, shared roots, owners, item nodes
+    ("a narrative naming no wiki page", 2, {"edits": [_alt2("narrative: wiki/No-Such-Page.md\n")]}),
+    ("a narrative outside wiki/", 2, {"programme": True, "edits": [("nodes/prog.md", "kind: frame\n", "kind: frame\nnarrative: AGENTS.md\n")]}),
+    ("a decision pointer to no anchor", 1, {"edits": [_alt2("work: [{kind: decision, ref: 2026-01-01--nothing}]\n")]}),
+    ("a foundation pointer to no foundation", 1, {"edits": [_alt2("work: [{kind: foundation, ref: no.such-foundation}]\n")]}),
+    ("a want that is a root of two frames", 1, {"programme": True, "tweak": _with_want, "edits": [_want_root(), ("nodes/prog.md", "children: [step-1, step-2, sc-1]", "children: [step-1, step-2, sc-1, want-x]"),
+                                                                                                    ("nodes/prog.md", "  - {id: sc-1, role: shared-claim, preset: worst-case}", "  - {id: sc-1, role: shared-claim, preset: worst-case}\n  - {id: want-x, role: want}")]}),
+    ("a shared root with two roles", 1, {"programme": True, "edits": [("nodes/prog.md", "children: [step-1, step-2, sc-1]", "children: [step-1, step-2, sc-1, plan-b]"),
+                                                                     ("nodes/prog.md", "  - {id: sc-1, role: shared-claim, preset: worst-case}", "  - {id: sc-1, role: shared-claim, preset: worst-case}\n  - {id: plan-b, role: shared-claim, preset: worst-case}")]}),
+    ("a frame owner list holding an AI handle", 2, {"programme": True, "edits": [("nodes/prog.md", 'owner: "@h1"', 'owner: ["@h1", "@ai"]')]}),
+    ("a maintainer list holding an AI handle", 5, {"edits": [("policy.yaml", 'maintainer: "@h1"', 'maintainer: ["@h1", "@ai"]')]}),
+    ("filed_from: wiki on a leaf", 2, {"edits": [_alt2("filed_from: wiki\n")]}),
+    ("an item node without its fields", 2, {"edits": [_alt2('item: "7"\n')]}),
+    ("a node id beginning item- without item", 2, {"edits": [("nodes/alt-2.md", "id: alt-2\n", "id: item-2\n"), ("nodes/choose-c.md", "[alt-1, alt-2]", "[alt-1, item-2]")]}),
     # improvement claims
     ("improves names no node", 1, {"edits": [("nodes/alt-2.md", "leaf_kind: step\n", 'leaf_kind: step\nimproves: nonexistent\nreality: "a trained agent"\n')]}),
     ("an improvement or with no residual route", 2, {"tweak": _null_improve("no-residual")}),

@@ -3,7 +3,7 @@ id: formalism-open-questions-0-3
 kind: frame
 children: [finite-time-guarantee-available, lic-constrains-no-finite-day, kernel-box2-finite-time, traderized-finite-date-conformance, quantitative-rates, single-round-refinement, malign-hypothesis-window, approx-introspection-quantitative, approx-introspection-pins-discharge, oq-complexity-model, oq-elk, oq-anti-wireheading, oq-purely-epistemic-ai, oq-whispering-earring, oq-manipulation-theorem, kernel-no-laundering, open-problem-ledger-current]
 question: "Which of the open questions listed for the li-deference formalism yield to the legitimacy and trust work, and in what form?"
-owner: "@maintainer"
+owner: ["@anson", "@abram"]
 roots:
   - {id: finite-time-guarantee-available, role: shared-claim, preset: worst-case}
   - {id: lic-constrains-no-finite-day, role: shared-claim, preset: worst-case}

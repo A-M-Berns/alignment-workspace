@@ -810,8 +810,9 @@ class Synthetic(Base):
         self.edit("graph/frame.yaml", "{id: prog, role: plan, preset: worst-case}", "{id: prog, role: shared-claim, preset: worst-case}")
         self.assertIn("only as a plan", self.refused(2))
         self.tree(programme=True)
+        # a step listed as a top-frame root too: a shared root is allowed (2026-10-22), but a top-frame root has no parent
         self.edit("graph/frame.yaml", "  - {id: prog, role: plan, preset: worst-case}", "  - {id: prog, role: plan, preset: worst-case}\n  - {id: step-1, role: plan, preset: worst-case, success_class: utopia}")
-        self.assertIn("more than one frame", self.refused(1))
+        self.assertIn("named in a children list", self.refused(1))
 
     def test_rule8_valuation_shapes(self):
         self.tree()
@@ -2266,12 +2267,17 @@ class Scale(Base):
         import resource
         root = scale_tree(self.root)
         n_nodes = len(list((root / "graph" / "nodes").glob("*.md")))
+        import subprocess
         t0 = time.perf_counter()
-        code, out, err = run(root, "--dry-run")
+        # the scale derivation runs in a child process, so its peak memory is its own and not the high-water mark of every
+        # fixture this process derived before it (the shipped graph's derivations dominate that mark since 2026-10-22)
+        proc = subprocess.run([sys.executable, "-m", "checkers.graph", "--root", str(root), "--dry-run", "--today", TODAY],
+                              cwd=ROOT, capture_output=True, text=True)
         elapsed = time.perf_counter() - t0
+        code, out, err = proc.returncode, proc.stdout, proc.stderr
         self.assertEqual(code, 0, err)
         # ru_maxrss is kilobytes on Linux and bytes on macOS; the bound is in megabytes either way
-        rss_mb = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / (1024 * 1024 if sys.platform == "darwin" else 1024)
+        rss_mb = resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss / (1024 * 1024 if sys.platform == "darwin" else 1024)
         D = json.loads(out)
         big = [c for c in D["inference"]["largest"] if c["phi"] == "big"]
         self.assertEqual(big[0]["assignments"], 1 << 12, D["inference"]["largest"])
@@ -2584,6 +2590,14 @@ class Fixtures(unittest.TestCase):
         for reg in ROOT.glob("projects/*/CLAIMS.md"):                  # the claims registries policy.yaml lists
             (root / reg.relative_to(ROOT)).parent.mkdir(parents=True, exist_ok=True)
             shutil.copy(reg, root / reg.relative_to(ROOT))
+        # narratives name wiki pages, decision pointers name DECISIONS.md anchors, round and foundation pointers read the
+        # state, and the item nodes render PRIORITIES.md from the sections file (2026-10-22)
+        if (ROOT / "wiki").is_dir():
+            shutil.copytree(ROOT / "wiki", root / "wiki")
+        for rel in ("DECISIONS.md", "state/rounds.json", "state/foundations.json", "state/priorities_sections.md"):
+            if (ROOT / rel).is_file():
+                (root / rel).parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy(ROOT / rel, root / rel)
         for f in (ROOT / "graph" / "nodes").glob("*.md"):
             n = g.parse_node_text(f.read_text(), f.name)
             for w in n.get("work") or []:
@@ -2631,7 +2645,7 @@ class Fixtures(unittest.TestCase):
         P = D["roots"][prog]
         # the sub-frame sits at the top frame as landed, or under the trust line the 2026-10-05b round moves it to
         self.assertEqual((D["nodes"][prog]["kind"], P["role"]), ("frame", "plan"))
-        self.assertIn(P["frame"], (None, "updateful-trust-li"))
+        self.assertIn(P["frame"], ("legitimacy", "deference-and-trust"))   # a shared root of both lines; its home is the first in the frame tree's order
         landed = {"tt-mart-repair-via-bounds-transfer", "step-asymptotic-to-finite-time", "step-legitimacy-conditioned-trust"}
         steps = set(P["subframe"]["steps"])
         self.assertTrue(steps and steps <= landed, steps)                      # the round re-roles the repair lemma as a shared claim
@@ -2648,7 +2662,7 @@ class Fixtures(unittest.TestCase):
         self.assertIn(P["subframe"]["leading_step"], steps)
         self.assertTrue(P.get("ai_only"), "the programme's value rests on AI numbers only and must say so")
         self.assertEqual(P["subframe"]["outside_option"], "default-trajectory")
-        self.assertIn(D["roots"]["li-deference-collapse"]["frame"], (None, "updateful-trust-li"))   # a shared claim, not a step
+        self.assertEqual(D["roots"]["li-deference-collapse"]["frame"], "deference-and-trust")   # a shared claim, not a step
         u = next(u for u in D["units"] if u["kind"] in ("vet", "map-read", "trace") and u["target"] == P["subframe"]["leading_step"])
         self.assertIn(prog, u["bears_on"])                                      # a step's unit ranks in the parent's list
         view = (self.root / "graph" / "view.md").read_text()
@@ -2660,7 +2674,7 @@ class Fixtures(unittest.TestCase):
         D = self.D
         # human events: the maintainer's two rulings only; every other counted event is the AI fill
         self.assertEqual([e for e in D["events"]["counted"] if not e.startswith("smithy-verity-")],
-                         ["maintainer-001", "maintainer-002"])
+                         ["anson-001", "anson-002"])
         self.assertTrue([e for e in D["events"]["counted"] if e.startswith("smithy-verity-")])
         # nothing is withdrawn; an AI number goes stale only where the 2026-10-05b round revised a node (a new version, or a
         # leaf that became a table), never for another reason
@@ -2668,7 +2682,7 @@ class Fixtures(unittest.TestCase):
         for e, why in D["events"]["stale_reasons"].items():
             self.assertTrue(why == "leaf became a table" or why.startswith("given against version"), (e, why))
         pol = g.parse_flat_yaml((self.root / "graph" / "policy.yaml").read_text())
-        self.assertEqual(set(pol["handles"]), {"@maintainer", "@smithy-verity", "@smithy-verity-opus55"})
+        self.assertEqual(set(pol["handles"]), {"@anson", "@abram", "@smithy-verity", "@smithy-verity-opus55"})
         self.assertNotIn("illustrative", (self.root / "graph" / "policy.yaml").read_text())
         for r, R in D["roots"].items():
             self.assertEqual(R["status"], "open", r)                           # no human judgment yet, so nothing concedes
@@ -2681,10 +2695,14 @@ class Fixtures(unittest.TestCase):
             self.assertIn("no belief", N["flags"])
         self.assertTrue({u["target"].split("/")[0] for u in D["units_unranked"] if u["kind"] == "admit"}
                         >= {"tt-implies-mart-gap-bets", "a1-fixed-objective-maximizer"})
-        # after the AI fill no gestalt unit is ranked: every goal carries an AI gestalt or a derived probability,
-        # except a goal left without AI numbers because its readings are a person's choice (Decided 2026-10-20)
-        self.assertEqual({u["target"] for u in D["units"] if u["kind"] == "gestalt"} - UNJUDGED_BY_POLICY, set())
-        first = next(u for u in D["units"] if u["target"] not in UNJUDGED_BY_POLICY)
+        # after the AI fill a gestalt unit is ranked only on a goal left without numbers: a goal whose readings are a
+        # person's choice (Decided 2026-10-20), or a root the map-as-canonical round filed as structure alone (2026-10-22:
+        # every formal result and docket is at level 0 with no judgment until someone gives one)
+        judged = {e["target"].get("node") for e in (json.loads(l) for p in (self.root / "graph" / "events").glob("*.jsonl")
+                                                   for l in p.read_text().splitlines() if l.strip()) if e["kind"] in ("estimate", "gestalt")}
+        unjudged = {g for g in D["ranking"]["goals"] if g not in judged} | UNJUDGED_BY_POLICY
+        self.assertEqual({u["target"] for u in D["units"] if u["kind"] == "gestalt"} - unjudged, set())
+        first = next(u for u in D["units"] if u["target"] not in unjudged)
         self.assertNotIn(first["kind"], ("gestalt", "revive"), first)
         self.assertNotIn("suspended", D["lines"]["commit"])
         self.assertFalse([u for u in D["units"] if u["kind"] == "revive"])
@@ -2735,10 +2753,11 @@ class Fixtures(unittest.TestCase):
         code, out, err = run(self.root)
         self.assertEqual((code, out), (0, ""))
         lines = [l for l in err.strip().splitlines() if l]
-        self.assertEqual(len(lines), 1, err)                           # one OK line, no WARN
-        self.assertTrue(lines[0].startswith("OK "))
+        # one OK line; the one WARN the shipped graph carries is the summary of decision anchors no node points at (2026-10-22)
+        self.assertEqual([l for l in lines if not l.startswith("WARN DECISIONS.md: ")], [lines[-1]], err)
+        self.assertTrue(lines[-1].startswith("OK "))
         snap = {n: (self.root / "graph" / n).read_text() for n in g.GENERATED}
-        code, out, err = run(self.root, "--why", "--as", "@maintainer")
+        code, out, err = run(self.root, "--why", "--as", "@anson")
         self.assertEqual(code, 0, err)
         for n in g.GENERATED:
             self.assertEqual((self.root / "graph" / n).read_text(), snap[n], n)
@@ -2753,8 +2772,9 @@ class Fixtures(unittest.TestCase):
         # a gestalt unit on a goal left without AI numbers (UNJUDGED_BY_POLICY), or a unit on a want (a want carries no AI
         # number, 2026-10-20), rests on no AI number, so nothing is hoisted and every other line says the tag itself
         wants = {x for x, N in self.D["nodes"].items() if N.get("want")}
+        # a gestalt unit on a goal without numbers rests on no AI number either (the formal results filed as structure alone)
         bare = [l for l in lines if any(f"gestalt {x} (" in l for x in UNJUDGED_BY_POLICY)
-                or any(f" {x} (" in l for x in wants)]
+                or any(f" {x} (" in l for x in wants) or l.split(". ", 1)[1].startswith("gestalt ")]
         if bare:
             self.assertNotIn("Hoisted from every line:", ranked)
             self.assertFalse([l for l in lines if l not in bare and "vet this AI number" not in l])
@@ -2806,7 +2826,7 @@ class Fixtures(unittest.TestCase):
         self.assertIn("tester-000", stale)                                     # the AI's earlier estimate on a2 goes stale too
         self.assertTrue(all(D["events"]["targets"][e] == "a2-monotone-in-resources" for e in stale) if "targets" in D["events"] else True)
         self.assertIn("a2-monotone-in-resources: open → conceded", D["digest"]["statuses_flipped"])
-        self.assertEqual(D["events"]["counted"][:2], ["maintainer-001", "maintainer-002"])
+        self.assertEqual(D["events"]["counted"][:2], ["anson-001", "anson-002"])
         type(self).notes += ["", "## The table case (a two-row table on a2, filed by a new contributor on a scratch copy)",
                              f"- passes in {elapsed:.2f} s; largest cutsets: " + ("; ".join(f"[{c['phi']}: {c['assignments']} assignments]" for c in comps) or "none"),
                              f"- a2: {D['nodes']['a2-monotone-in-resources']['status']} by {D['nodes']['a2-monotone-in-resources']['diagnosis']}; ic-informal: {D['nodes']['ic-informal']['status']}; "
