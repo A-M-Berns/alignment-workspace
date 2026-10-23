@@ -40,7 +40,7 @@ content is not bent to fit.
 | `state/rounds.json` (125 rounds, 126 with this one) | the round index | 119 rounds pointed at by `work: {kind: round}` from 194 nodes (the formal results by `origin_round`, the line and programme frames by project, the enabling work by the infrastructure rounds); 6 administrative rounds unpointed, listed in the report |
 | `state/foundations.json` | the August 9 foundation | one node (`normativity-aug9-foundation`) whose `work` pointer of kind `foundation` names the foundation's id; its 180 claims are not filed |
 | `README.md`, `wiki/Home.md` | prose status claims | bound to the state where a binding form exists, corrected where it does not |
-| `graph/index.json` | — | **new, generated**: the structure-only emission the checker writes on the plain run (§6) |
+| graph/index.json | — | **new, generated**: the structure-only emission the checker writes on the plain run (§6); not committed since the follow-up of 2026-10-23 (ruling F3), published to the branch `derived` |
 | `graph/SURVEY.md`, this document | — | new hand-written documents under `graph/` |
 
 What stays hand-written and specification layer: `AGENTS.md`, `CONTRIBUTING.md`,
@@ -125,7 +125,7 @@ response round, not the passage of time.
 
 ## 6. What the website renders from the index
 
-`graph/index.json` (schema in §6.1) is the contract. Page kinds, keyed by id:
+graph/index.json (schema in §6.1) is the contract. Page kinds, keyed by id:
 
 - **frame** (`the-program`, each line, each programme): question, owners,
   narrative, roots with roles, the frame chain above it.
@@ -148,11 +148,15 @@ AI-drafted structure (author an AI handle, no human event on it) renders
 visibly lighter than anything a human event has touched; the index carries the
 author handle and the human events, which is enough to decide it.
 
-### 6.1 Schema of `graph/index.json`
+### 6.1 Schema of graph/index.json
 
-Written on the plain run beside the four committed files, hashed like them
+Written on the plain run beside the other generated files, hashed like them
 (`generated_hash`), identical whatever flags the run was given, with no derived
-number, level, status or rank.
+number, level, status or rank. Since the follow-up of 2026-10-23 (ruling F3) it
+is not committed: `.gitignore` excludes it, CI keeps it as an artifact of every
+run and publishes `main`'s to the branch `derived` beside `derived.json`, and
+`graph/versions.json` records its derivation hash. A site generator reads the
+branch.
 
 ```
 {

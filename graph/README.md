@@ -62,24 +62,28 @@ read the collapse as an implication.
 The map is the program's canonical index (`graph/MAP-AS-CANONICAL.md`):
 every registered claim, priority item, maintainer decision (through
 `decision` pointers at `DECISIONS.md` anchors), round and wiki page
-(`narrative`) is in it or attached to it, and `graph/index.json`, the
-structure-only index written on every plain run, is what a site renders
-from.
+(`narrative`) is in it or attached to it, and the structure-only index
+graph/index.json, written on every plain run and published to the branch
+`derived`, is what a site renders from.
 
 ## First steps, with a coding agent
 
 1. From the repository root, in the terminal: `python3 -m checkers.graph
    --root .` It prints one line, `OK <n> nodes, <n> events, <n> ranked
-   units; <the commit line>`, on stderr, and regenerates the five committed
-   files `graph/derived.json`, `graph/versions.json`, `graph/tasks.md`,
-   `graph/view.md` and `graph/index.json`, and `PRIORITIES.md` from the item
-   nodes. Those files are rendered the same way whatever flags you
-   add, so a run never leaves personal noise in a pull request, and the
-   digest compares with the derivation committed at `HEAD`, so rerunning
-   changes nothing. A `WARN` line before the `OK` names something that
-   passed but deserves a look (a malformed design-log line, a work pointer
-   to a round that is not in the repository, a Source naming private
-   material).
+   units; <the commit line>`, on stderr, and regenerates the five generated
+   files: the committed `graph/versions.json`, `graph/tasks.md` and
+   `graph/view.md`, the uncommitted graph/derived.json (the full derivation)
+   and graph/index.json (the structure-only index), which `.gitignore`
+   excludes and CI publishes to the branch `derived` (ruling F3,
+   2026-10-23), and `PRIORITIES.md` from the item nodes. Those files are
+   rendered the same way whatever flags you add, so a run never leaves
+   personal noise in a pull request, and rerunning changes nothing. A
+   `DIGEST` line says what moved since the previous derivation and which
+   derivation it compared with (the branch `derived`, or the file on disk
+   when `versions.json` at `HEAD` records it). A `WARN` line before the `OK`
+   names something that passed but deserves a look (a malformed design-log
+   line, a work pointer to a round that is not in the repository, a Source
+   naming private material).
 2. To look without writing: `--print` prints the task list and the view on
    stdout and writes nothing; `--dry-run` prints the whole derivation as
    JSON on stdout for scripts, and also writes nothing.

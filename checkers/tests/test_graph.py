@@ -953,7 +953,8 @@ class Synthetic(Base):
         self.tree()
         code, out, err = run(self.root)
         self.assertEqual((code, out), (0, ""))                         # a plain run prints nothing on stdout
-        self.assertTrue(err.startswith("OK "), err)
+        lines = err.strip().splitlines()                               # the DIGEST line names what it compared with (F3, 2026-10-23)
+        self.assertTrue(lines[0].startswith("DIGEST ") and lines[-1].startswith("OK ") and len(lines) == 2, err)
         code, out, err = run(self.root, "--dry-run")
         self.assertEqual(code, 0, err)
         self.assertEqual(json.loads(out)["checker_version"], g.CHECKER_VERSION)   # stdout is the JSON alone
@@ -2786,7 +2787,9 @@ class Fixtures(unittest.TestCase):
         self.assertEqual((code, out), (0, ""))
         lines = [l for l in err.strip().splitlines() if l]
         # one OK line; the one WARN the shipped graph carries is the summary of decision anchors no node points at (2026-10-22)
-        self.assertEqual([l for l in lines if not l.startswith("WARN DECISIONS.md: ")], [lines[-1]], err)
+        # … and the DIGEST line names what the digest compared with (F3, 2026-10-23)
+        self.assertEqual([l for l in lines if not l.startswith(("WARN DECISIONS.md: ", "DIGEST "))], [lines[-1]], err)
+        self.assertTrue(any(l.startswith("DIGEST ") for l in lines), err)
         self.assertTrue(lines[-1].startswith("OK "))
         snap = {n: (self.root / "graph" / n).read_text() for n in g.GENERATED}
         code, out, err = run(self.root, "--why", "--as", "@anson")

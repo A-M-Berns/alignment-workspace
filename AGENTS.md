@@ -790,6 +790,13 @@ non-maintainer, and no single class says that. The fields are defined once, in
   - `pin-bump-publish`, which force-pushes a verified pin bump to the branch
     `bot/pin-bump` and opens or updates the issue reporting it. It never opens a
     pull request and never touches `main`; the maintainer opens the pull request.
+  <!-- write-scope: job=derived-publish; workflow=.github/workflows/derived.yml -->
+  - `derived-publish`, which force-pushes the argument map's two uncommitted
+    generated files (graph/derived.json and graph/index.json, written at read
+    scope by `derived-build` and handed over as an artifact) to the orphan
+    branch `derived`, one commit per push to `main` naming the `main` commit
+    (ruling F3, 2026-10-23). Nothing adjudicates on that branch; a site
+    generator reads it.
 
   `tests/workflow_scope.py` reads that list from this section and enforces
   conditions 1, 3 and 4 over every workflow, along with both of the
@@ -869,7 +876,8 @@ working against it. Where the two disagree, the protocol is wrong and the
 disagreement is filed. The map is the program's canonical index
 (`graph/MAP-AS-CANONICAL.md`, rulings M1–M8 of 2026-10-22): every registered
 claim, priority item, decision, round and narrative page has exactly one node
-or attachment in it, and `graph/index.json` is the structure a site renders.
+or attachment in it, and the structure-only index graph/index.json, written on
+every plain run and published to the branch `derived`, is what a site renders.
 
 **What an agent does alone.** File sources. Create node files at level 0
 (a new leaf under an `and` cannot raise any root): claims, frames for
@@ -964,12 +972,19 @@ is conceded, the agent poses the ranked `revive` task as what it is:
 arguing the conceding conditional back above the bar, in the user's words,
 never by deleting the row.
 
-**Commit only what the plain run writes.** The four generated files are
-the same whatever flags the checker ran with; a personal render (`--why`,
-`--as`, `--scope`, an extra `--registry`) goes to stdout or to a path
-outside `graph/` and is never committed. The claims registries the
-derivation reads are listed in `policy.yaml` (`registries`), not passed as
-flags.
+**Commit only what the plain run writes, and of that only the three
+committed files.** The five generated files are the same whatever flags the
+checker ran with; a personal render (`--why`, `--as`, `--scope`, an extra
+`--registry`) goes to stdout or to a path outside `graph/` and is never
+committed. Of the five, `graph/versions.json`, `graph/tasks.md` and
+`graph/view.md` are committed; graph/derived.json and graph/index.json are
+not (ruling F3, 2026-10-23: `.gitignore` excludes them, CI keeps them as
+artifacts and the `derived` workflow publishes `main`'s to the branch
+`derived`), and `versions.json` records each one's derivation hash so a
+stale or hand-edited derivation shows against the commit. An agent neither
+force-adds the two nor cites them as repository paths. The claims registries
+the derivation reads are listed in `policy.yaml` (`registries`), not passed
+as flags.
 
 **Nothing waits for a second person.** A contributor's own filings count at
 once, and a draft an AI session produced counts once any human, the

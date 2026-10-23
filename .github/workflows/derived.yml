@@ -1,0 +1,67 @@
+name: derived
+
+# The two large derived files of the argument map (graph/derived.json, the full
+# derivation, and graph/index.json, the structure-only index) are not committed
+# (ruling F3, 2026-10-23): the plain checker run writes them, the ci workflow
+# keeps them as artifacts, and this workflow publishes the derivation of `main`
+# to the orphan branch `derived`, force-pushed, one commit per push to `main`,
+# carrying the `main` commit hash in its message. A site generator reads them
+# from there.
+#
+# Never on pull_request: `derived-publish` holds write scope, and AGENTS.md's
+# Security section (conditions 1–5 and the `write-scope` enumeration) is where
+# that grant is justified. The derivation runs at read scope in `derived-build`;
+# the publishing job builds nothing and executes nothing from the proof layer
+# or a dependency: it hands the two files to `.github/derived-publish.sh`,
+# which commits them as data (condition 5).
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: derived
+  cancel-in-progress: false
+
+jobs:
+  derived-build:
+    name: derived-build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: The plain checker run writes the derived files
+        run: python3 -m checkers.graph --root .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: graph-derived
+          path: |
+            graph/derived.json
+            graph/index.json
+          if-no-files-found: error
+          retention-days: 90
+
+  derived-publish:
+    name: derived-publish
+    needs: derived-build
+    runs-on: ubuntu-latest
+    # Write scope, enumerated by name in AGENTS.md's Security section: push-only
+    # trigger on a protected branch, publishes rather than adjudicates (no
+    # required check reads the branch `derived`), the run token, the grant on
+    # the job, and no build or dependency code executed here.
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: graph-derived
+          path: ${{ runner.temp }}/graph-derived
+      - name: Publish the derivation of main to the branch derived and verify it landed
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FILES: ${{ runner.temp }}/graph-derived
+        run: bash .github/derived-publish.sh

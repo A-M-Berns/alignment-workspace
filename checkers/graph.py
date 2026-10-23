@@ -41,7 +41,10 @@ statuses, proof sets, costs, loads, probabilities, values, the ranking) and
 writes `graph/derived.json`, `graph/tasks.md`, `graph/view.md`,
 `graph/versions.json` and the structure-only `graph/index.json`; each generated
 file carries a hash of its own content so a hand edit is detected and refused on
-the next run. Where the tree holds item nodes, the plain run also renders
+the next run. `derived.json` and `index.json` are not committed (ruling F3,
+2026-10-23): `.gitignore` excludes them, CI keeps them as artifacts and publishes
+the derivation of `main` to the branch `derived`; `versions.json` records each
+one's derivation hash so a stale or foreign derivation shows against the commit. Where the tree holds item nodes, the plain run also renders
 `PRIORITIES.md` from them (`checkers/priorities_render.py`).
 
 Numbers that are compared with a threshold or summed into a status or value
@@ -56,8 +59,8 @@ each fix. A chat reference `chats/<file>.jsonl#t<n>` names the n-th line
 the turn; `verbatim` must occur in the answer turn, whitespace-normalized and
 case-folded.
 
-Streams. `REFUSE`, `WARN` and `OK` lines go to stderr. The four committed
-files (`derived.json`, `versions.json`, `tasks.md`, `view.md`) are rendered
+Streams. `REFUSE`, `WARN`, `DIGEST` and `OK` lines go to stderr. The generated
+files (`derived.json`, `versions.json`, `tasks.md`, `view.md`, `index.json`) are rendered
 the same way whatever flags are given: the pooled default view, unscoped,
 with numbers in no column. `--why`, `--as`, `--scope`, `--lambda`,
 `--window-dp` and `--frontier` produce a second, personal derivation whose
@@ -124,6 +127,8 @@ FORBIDDEN_KEYS = {"level", "V", "J", "credence", "probability", "status", "weigh
 PROPOSAL_KINDS = {"merge", "split", "retarget", "sharpen", "new-root", "edge", "class", "sub-frame"}
 PROPOSAL_STATUS = {"proposed", "approved", "applied", "withdrawn"}
 GENERATED = ("derived.json", "versions.json", "tasks.md", "view.md", "index.json")   # index.json: the structure-only index (M8, 2026-10-22)
+UNCOMMITTED = ("derived.json", "index.json")     # written on the plain run, excluded by .gitignore, published to the branch `derived` (F3, 2026-10-23)
+DERIVATION_HASH_SKIPS = ("digest", "generated_hash", "audit")    # the derivation hash versions.json records leaves out the digest and the day's audit draw
 LAYOUT_FILES = {"frame.yaml", "policy.yaml", "derived.json", "versions.json", "tasks.md",
                 "view.md", "PROTOCOL.md", "README.md", "DESIGN-LOG.md",
                 "MAP-AS-CANONICAL.md", "SURVEY.md", "index.json"}   # the 2026-10-22 round's two documents and its structure-only index
@@ -1377,7 +1382,7 @@ def lint(t):
                         raise Refuse(11, f"chats/{name}", "chat file changed after the commit that added it")
         except FileNotFoundError:
             t.warnings.append("chats/: git not found; the changed-after-commit rule is unchecked")
-    # rule 7: generated files
+    # rule 7: generated files (the two that are not committed are checked on disk when present, F3)
     for name in GENERATED:
         p = t.graph / name
         if p.is_file():
@@ -4108,18 +4113,13 @@ def render_tasks(t, D, pf, today):
     po = t.policy
     shown = len(D["units"]) if pf.get("all") else int(po.get("tasks_shown", 40))
     also = q(po.get("also_for_share", Q(1, 5)))
-    dg = D.get("digest") or {}
-    L += ["## Digest (what changed since the previous committed derivation)",
-          f"- statuses flipped: {', '.join(dg.get('statuses_flipped') or []) or 'none'}",
-          f"- root statuses flipped: {', '.join(dg.get('root_statuses_flipped') or []) or 'none'}",
-          f"- levels moved: {', '.join(dg.get('levels_moved') or []) or 'none'}",
-          f"- events counted since the previous derivation: {dg.get('events_new', 'all (first derivation)')}",
-          f"- revisions recorded: {', '.join(dg.get('revisions') or []) or 'none'}",
-          f"- wants filed since the previous derivation: {', '.join(dg.get('wants_new') or []) or 'none'}",
+    # the digest (what changed since the previous derivation) is in derived.json and on the DIGEST line, not here: since
+    # ruling F3 (2026-10-23) its comparison is whatever derivation is at hand, and a committed file reads nothing that varies
+    L += ["## Spell-out and agent work",
           f"- spell-out candidates (unspelled frames and childless wants): {D['spell_out']['count']}"
           + (f"; heaviest {', '.join(D['spell_out']['top'])}" if D["spell_out"]["top"] else ""),
           f"- agent work the map wants most: {', '.join(D['agent_top']) or 'none'}",
-          f"- proposals awaiting approval: {', '.join(dg.get('proposals_awaiting') or []) or 'none'}", ""]
+          f"- proposals awaiting approval: {', '.join(p['id'] for p in D.get('proposals', []) if p['status'] == 'proposed') or 'none'}", ""]
     L += ["## Lines", f"- commit line: {D['lines']['commit']}", f"- regime: {D['lines']['regime']}"]
     if D["lines"].get("act"):
         L.append(f"- act: {D['lines']['act']}")
@@ -4478,7 +4478,16 @@ def work_text(w):
             "decision": f"decision: {w['ref']}", "foundation": f"foundation: {w['ref']}"}[w["kind"]]
 
 
-def digest(prev, D):
+def derivation_hash(D):
+    """The hash versions.json records for derived.json: the derivation without its digest, its own hash and the day's audit draw."""
+    return sha(dumps({k: v for k, v in D.items() if k not in DERIVATION_HASH_SKIPS}))
+
+
+def index_hash(idx):
+    return sha(json.dumps({k: v for k, v in idx.items() if k not in ("generated", "generated_hash")}, indent=1, sort_keys=True))
+
+
+def digest(prev, D, source=None):
     if not prev:
         return {}
     flips = [f"{x}: {prev['nodes'][x]['status']} → {N['status']}" for x, N in D["nodes"].items() if x in prev["nodes"] and prev["nodes"][x]["status"] != N["status"]]
@@ -4490,36 +4499,71 @@ def digest(prev, D):
     revised = sorted(f"{x} (v{N['version']})" for x, N in D["nodes"].items() if any(f.startswith("human-revised") for f in N["flags"])
                      and not any(f.startswith("human-revised") for f in (prev["nodes"].get(x) or {}).get("flags", [])))
     wants_new = sorted(x for x, N in D["nodes"].items() if N.get("want") and not (prev["nodes"].get(x) or {}).get("want"))
-    return {"statuses_flipped": flips, "root_statuses_flipped": rflips, "levels_moved": moves, "events_new": len(new),
+    return {"compared_with": source, "statuses_flipped": flips, "root_statuses_flipped": rflips, "levels_moved": moves, "events_new": len(new),
             "revisions": revised, "wants_new": wants_new,
             "proposals_awaiting": [p["id"] for p in D.get("proposals", []) if p["status"] == "proposed"]}
+
+
+def digest_line(dg):
+    """One stderr line: what the digest compared with and what moved."""
+    if not dg:
+        return "DIGEST no previous derivation to compare with (neither the branch derived nor a derived.json on disk that versions.json records)"
+    return (f"DIGEST compared with {dg['compared_with']}: {len(dg['statuses_flipped'])} status(es) flipped, {len(dg['root_statuses_flipped'])} root status(es) flipped, "
+            f"{len(dg['levels_moved'])} level(s) moved, {dg['events_new']} event(s) counted since, {len(dg['revisions'])} revision(s), "
+            f"{len(dg['wants_new'])} want(s) filed since, {len(dg['proposals_awaiting'])} proposal(s) awaiting")
 
 
 POOLED = {"numbers": False, "alt": False, "handle": None, "all": False}   # how the committed files are always rendered
 
 
-def previous_derivation(t):
-    """The previous committed derivation: `graph/derived.json` at the repository's HEAD, so rerunning the checker leaves the
-    digest (and the committed files) as they were; outside a git checkout, or where HEAD has none, the file on disk."""
+def _git_show(t, spec):
     try:
-        r = subprocess.run(["git", "-C", str(t.root), "show", "HEAD:./graph/derived.json"], capture_output=True, text=True, timeout=30)
+        r = subprocess.run(["git", "-C", str(t.root), "show", spec], capture_output=True, text=True, timeout=30)
         if r.returncode == 0 and r.stdout.strip():
-            return json.loads(r.stdout)
-    except (OSError, subprocess.SubprocessError, json.JSONDecodeError):
+            return r.stdout
+    except (OSError, subprocess.SubprocessError):
         pass
+    return None
+
+
+def previous_derivation(t):
+    """The previous derivation the digest compares with, and its name (ruling F3, 2026-10-23: `derived.json` is not committed).
+    In order: the branch `derived` (`derived:graph/derived.json`, then `origin/derived:…`), the derivation of `main` CI publishes;
+    else the `graph/derived.json` on disk, when the `versions.json` at HEAD (outside a git checkout, the one on disk) records its
+    derivation hash, so a file left by a run on another tree is never mistaken for the previous derivation; else nothing.
+    The committed files never read the result: the digest lives in `derived.json` and in the DIGEST line."""
+    for spec, name in (("derived:graph/derived.json", "the branch derived"), ("origin/derived:graph/derived.json", "the branch origin/derived")):
+        text = _git_show(t, spec)
+        if text:
+            try:
+                return json.loads(text), name
+            except json.JSONDecodeError:
+                continue
     prev_path = t.graph / "derived.json"
     if prev_path.is_file():
         try:
-            return json.loads(prev_path.read_text())
+            prev = json.loads(prev_path.read_text())
         except json.JSONDecodeError:
-            return None
-    return None
+            return None, None
+        recorded = None
+        head = _git_show(t, "HEAD:./graph/versions.json")
+        where = "HEAD"
+        if head is None and (t.graph / "versions.json").is_file():
+            head, where = (t.graph / "versions.json").read_text(), "disk"
+        if head:
+            try:
+                recorded = (json.loads(head).get("generated") or {}).get("derived.json")
+            except json.JSONDecodeError:
+                recorded = None
+        if recorded and recorded == derivation_hash(prev):
+            return prev, f"graph/derived.json on disk (the derivation versions.json at {where} records)"
+    return None, None
 
 
 def committed_files(t, D, today):
     """The four committed files from the plain derivation: identical whatever flags the run was given."""
-    prev = previous_derivation(t)
-    D["digest"] = digest(prev, D)
+    prev, source = previous_derivation(t)
+    D["digest"] = digest(prev, D, source)
     D["generated_hash"] = ""
     D["generated_hash"] = sha(dumps(D))
     files = {"derived.json": dumps(D)}
@@ -4533,13 +4577,15 @@ def committed_files(t, D, today):
         if not hist or hist[-1]["version"] != n["version"]:
             hist = hist + [{"version": n["version"], "normalized": norm, "date": str(today)}]
             versions[x] = hist
-    vobj = {"generated_hash": "", "nodes": versions}
-    vobj["generated_hash"] = sha(json.dumps(vobj, indent=1, sort_keys=True))
-    files["versions.json"] = json.dumps(vobj, indent=1, sort_keys=True) + "\n"
     idx = _clean(structure_index(t, today))          # Fractions in human events print as "p/q", as in derived.json
     idx["generated_hash"] = ""
     idx["generated_hash"] = sha(json.dumps(idx, indent=1, sort_keys=True))
     files["index.json"] = json.dumps(idx, indent=1, sort_keys=True) + "\n"
+    # versions.json records the derivation hash of the two files that are not committed (F3): a derivation on disk or on the
+    # branch `derived` is checked against the commit it claims to come from, and a changed derivation shows in the diff
+    vobj = {"generated": {"derived.json": derivation_hash(D), "index.json": index_hash(idx)}, "generated_hash": "", "nodes": versions}
+    vobj["generated_hash"] = sha(json.dumps(vobj, indent=1, sort_keys=True))
+    files["versions.json"] = json.dumps(vobj, indent=1, sort_keys=True) + "\n"
     return files
 
 
@@ -4708,6 +4754,7 @@ def run(argv):
         return 1
     for w in t.warnings:
         print(f"WARN {w}", file=err)
+    print(digest_line(D.get("digest") or {}), file=err)
     where = "" if not (personal or a.print_render) else (f"; personal render written to {a.out}" if a.out and not (a.dry_run or a.print_render) else "; personal derivation on stdout")
     print(f"OK {len(t.nodes)} nodes, {len(t.events)} events, {len(D['units'])} ranked units; {D['lines']['commit']}"
           f"{'; nothing written (--dry-run)' if a.dry_run else '; nothing written (--print)' if a.print_render else ''}{where}", file=err)

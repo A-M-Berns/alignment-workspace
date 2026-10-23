@@ -86,15 +86,7 @@
  },
  "audits": {},
  "checker_version": "0.4",
- "digest": {
-  "events_new": 0,
-  "levels_moved": [],
-  "proposals_awaiting": [],
-  "revisions": [],
-  "root_statuses_flipped": [],
-  "statuses_flipped": [],
-  "wants_new": []
- },
+ "digest": {},
  "events": {
   "counted": [
    "anson-001",
@@ -2518,7 +2510,7 @@
   },
   "withdrawn": []
  },
- "generated_hash": "b7e9efcae6c746fd1da529ea",
+ "generated_hash": "404a8239c2cdd0896163a784",
  "goal_order": [
   [
    "the-program",
