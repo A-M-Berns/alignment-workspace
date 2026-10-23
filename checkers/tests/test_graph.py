@@ -921,6 +921,20 @@ class Synthetic(Base):
         self.assertNotIn("safety margin", sec_b)
         self.assertNotIn("None", sec_b)
 
+    def test_digest_has_one_shape_without_a_previous_derivation(self):
+        # ruling G1 (2026-10-23): a fresh tree has nothing to compare with; the keys are all there, the lists empty, the counts zero
+        self.tree()
+        code, out, err = run(self.root)
+        self.assertEqual(code, 0, err)
+        D = json.loads((self.root / "graph" / "derived.json").read_text())
+        self.assertEqual(tuple(sorted(D["digest"])), tuple(sorted(g.DIGEST_KEYS)))
+        self.assertEqual(D["digest"], {"compared_with": None, "statuses_flipped": [], "root_statuses_flipped": [], "levels_moved": [],
+                                       "events_new": 0, "revisions": [], "wants_new": [], "proposals_awaiting": []})
+        self.assertTrue(err.startswith("DIGEST no previous derivation"), err)
+        D = self.derived()                                             # the second run compares with the first, by the same keys
+        self.assertEqual(tuple(sorted(D["digest"])), tuple(sorted(g.DIGEST_KEYS)))
+        self.assertTrue(D["digest"]["compared_with"].startswith("graph/derived.json on disk"))
+
     def test_digest_reports_node_and_root_flips(self):
         self.tree(p_h=["0.2", "0.4"], p_reason=False)
         self.derived()
@@ -2636,8 +2650,8 @@ class Fixtures(unittest.TestCase):
                     (root / str(w["ref"])).mkdir(parents=True, exist_ok=True)
         for gen in g.GENERATED:
             p = root / "graph" / gen
-            if p.is_file() and not g.hash_ok(gen, p.read_text()):
-                p.unlink()
+            if p.is_file() and (gen in g.UNCOMMITTED or not g.hash_ok(gen, p.read_text())):
+                p.unlink()          # a derived.json a prior run left behind is no fixture: a test that needs one writes it (G1)
         return root
 
     @classmethod
@@ -2874,6 +2888,9 @@ class Fixtures(unittest.TestCase):
         if "a2-monotone-in-resources" not in D0["nodes"] or D0["nodes"]["a2-monotone-in-resources"]["kind"] != "leaf":
             self.skipTest("a2 is not a leaf in this fixture")
         root = self.copy_fixture("fx-table")
+        code, out, err = run(root)                                     # the fixture's own first derivation, the digest's previous (G1)
+        self.assertEqual(code, 0, err)
+        self.assertTrue((root / "graph" / "derived.json").is_file())
         for rel, text in A2_TABLE.items():
             (root / "graph" / rel).write_text(text)
         pol = root / "graph" / "policy.yaml"
@@ -2892,6 +2909,7 @@ class Fixtures(unittest.TestCase):
         stale = [e for e, why in D["events"]["stale_reasons"].items() if why == "leaf became a table"]
         self.assertIn("tester-000", stale)                                     # the AI's earlier estimate on a2 goes stale too
         self.assertTrue(all(D["events"]["targets"][e] == "a2-monotone-in-resources" for e in stale) if "targets" in D["events"] else True)
+        self.assertTrue(D["digest"]["compared_with"].startswith("graph/derived.json on disk"), D["digest"]["compared_with"])
         self.assertIn("a2-monotone-in-resources: open → conceded", D["digest"]["statuses_flipped"])
         self.assertEqual(D["events"]["counted"][:2], ["anson-001", "anson-002"])
         type(self).notes += ["", "## The table case (a two-row table on a2, filed by a new contributor on a scratch copy)",

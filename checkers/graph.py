@@ -4487,9 +4487,16 @@ def index_hash(idx):
     return sha(json.dumps({k: v for k, v in idx.items() if k not in ("generated", "generated_hash")}, indent=1, sort_keys=True))
 
 
+DIGEST_KEYS = ("compared_with", "statuses_flipped", "root_statuses_flipped", "levels_moved", "events_new", "revisions", "wants_new", "proposals_awaiting")
+
+
 def digest(prev, D, source=None):
+    """What moved since the previous derivation. One shape whatever `previous_derivation` found (ruling G1, 2026-10-23):
+    with nothing to compare with, `compared_with` is null, the lists are empty and the counts zero."""
+    awaiting = [p["id"] for p in D.get("proposals", []) if p["status"] == "proposed"]
     if not prev:
-        return {}
+        return {"compared_with": None, "statuses_flipped": [], "root_statuses_flipped": [], "levels_moved": [], "events_new": 0,
+                "revisions": [], "wants_new": [], "proposals_awaiting": awaiting}
     flips = [f"{x}: {prev['nodes'][x]['status']} → {N['status']}" for x, N in D["nodes"].items() if x in prev["nodes"] and prev["nodes"][x]["status"] != N["status"]]
     # root statuses include the preset's addition (a budget concession), which the node table does not show
     rflips = [f"root {r}: {prev['roots'][r]['status']} → {R['status']}" + (f" ({R['diagnosis']})" if R["status"] == "conceded" and R["diagnosis"] else "")
@@ -4500,13 +4507,12 @@ def digest(prev, D, source=None):
                      and not any(f.startswith("human-revised") for f in (prev["nodes"].get(x) or {}).get("flags", [])))
     wants_new = sorted(x for x, N in D["nodes"].items() if N.get("want") and not (prev["nodes"].get(x) or {}).get("want"))
     return {"compared_with": source, "statuses_flipped": flips, "root_statuses_flipped": rflips, "levels_moved": moves, "events_new": len(new),
-            "revisions": revised, "wants_new": wants_new,
-            "proposals_awaiting": [p["id"] for p in D.get("proposals", []) if p["status"] == "proposed"]}
+            "revisions": revised, "wants_new": wants_new, "proposals_awaiting": awaiting}
 
 
 def digest_line(dg):
     """One stderr line: what the digest compared with and what moved."""
-    if not dg:
+    if not dg or dg.get("compared_with") is None:
         return "DIGEST no previous derivation to compare with (neither the branch derived nor a derived.json on disk that versions.json records)"
     return (f"DIGEST compared with {dg['compared_with']}: {len(dg['statuses_flipped'])} status(es) flipped, {len(dg['root_statuses_flipped'])} root status(es) flipped, "
             f"{len(dg['levels_moved'])} level(s) moved, {dg['events_new']} event(s) counted since, {len(dg['revisions'])} revision(s), "
