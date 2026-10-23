@@ -75,7 +75,7 @@
   "jurisdiction.value-eq-of-price-realization": "jurisdiction.value-eq-of-price-realization",
   "kernel.box1-fidelity-versus-fully-updated-deference": "kernel.box1-fidelity-versus-fully-updated-deference",
   "kernel.box2-dominance": "kernel.box2-dominance",
-  "kernel.box2-finite-time": "kernel.box2-finite-time",
+  "kernel.box2-finite-time": "kernel-box2-finite-time",
   "kernel.box2-mediation-faithful": "kernel.box2-mediation-faithful",
   "kernel.box3-gap-exchange-rate": "kernel.box3-gap-exchange-rate",
   "kernel.box3-no-incentive-to-compromise": "kernel.box3-no-incentive-to-compromise",
@@ -89,16 +89,7 @@
   "kernel.hierarchy-history": "kernel.hierarchy-history",
   "kernel.hierarchy-per-decision": "kernel.hierarchy-per-decision",
   "kernel.subjective-exchange-rate": "kernel.subjective-exchange-rate",
-  "legitimacy.answerable": "legitimacy.answerable",
-  "legitimacy.endpoint-only-insufficient": "legitimacy.endpoint-only-insufficient",
-  "legitimacy.endpoint-trans": "legitimacy.endpoint-trans",
-  "legitimacy.evolution-conservation": "legitimacy.evolution-conservation",
-  "legitimacy.faithful-carry": "legitimacy.faithful-carry",
-  "legitimacy.multiplicity-witness": "legitimacy.multiplicity-witness",
   "legitimacy.payload-of-view": "legitimacy.payload-of-view",
-  "legitimacy.propagate-to-segment": "legitimacy.propagate-to-segment",
-  "legitimacy.receipts-immutable": "legitimacy.receipts-immutable",
-  "legitimacy.segment-trans": "legitimacy.segment-trans",
   "li.assessment.budgeter-exploits": "li.assessment.budgeter-exploits",
   "li.assessment.budgeter-floor": "li.assessment.budgeter-floor",
   "li.assessment.budgeter-value": "li.assessment.budgeter-value",
@@ -145,8 +136,6 @@
   "shortfall.atom-generable": "shortfall.atom-generable",
   "shortfall.deferred-ahead": "shortfall.deferred-ahead",
   "shortfall.deferred-eventually-excluded": "shortfall.deferred-eventually-excluded",
-  "shortfall.eventually-excluded": "shortfall.eventually-excluded",
-  "shortfall.security-generable": "shortfall.security-generable",
   "shortfall.table-generable": "shortfall.table-generable",
   "simplex.rational-points-sum-to-one": "simplex.rational-points-sum-to-one",
   "sincerity.content-fact": "sincerity.content-fact",
@@ -170,7 +159,7 @@
   "thin.sufficient-of-integrity-openness": "thin.sufficient-of-integrity-openness",
   "thin.value-loss-le-defects": "thin.value-loss-le-defects",
   "thin.value-of-correct-sufficient": "thin.value-of-correct-sufficient",
-  "thin.value-of-thick": "thin.value-of-thick",
+  "thin.value-of-thick": "thin-value-of-thick",
   "transparent.blind-payload": "transparent.blind-payload",
   "transparent.posterior-weight-eq": "transparent.posterior-weight-eq",
   "warrant.admissible-not-supported": "warrant.admissible-not-supported",
@@ -3405,7 +3394,7 @@
   ]
  },
  "generated": "2026-10-23",
- "generated_hash": "9d403c829b65266a22d5238c",
+ "generated_hash": "f642041136d3041f130606fd",
  "handles": {
   "@abram": {
    "github": "abramdemski",
@@ -3451,9 +3440,9 @@
   },
   "104": {
    "answered_by": [
+    "kernel-box2-finite-time",
     "kernel.box1-fidelity-versus-fully-updated-deference",
     "kernel.box2-dominance",
-    "kernel.box2-finite-time",
     "kernel.box2-mediation-faithful",
     "kernel.box3-gap-exchange-rate",
     "kernel.box3-no-incentive-to-compromise",
@@ -3516,14 +3505,13 @@
     "shortfall.atom-generable",
     "shortfall.deferred-ahead",
     "shortfall.deferred-eventually-excluded",
-    "shortfall.eventually-excluded",
-    "shortfall.security-generable",
     "shortfall.table-generable",
     "sincerity.content-fact",
     "sincerity.lie-tainted",
     "sincerity.rows-keep-verdicts-counted",
     "sincerity.rows-keep-verdicts-tainted",
     "sincerity.sincere-error-counts",
+    "thin-value-of-thick",
     "thin.converse-fails-on-correct",
     "thin.correct-of-thick",
     "thin.covert-blocking-correct-iff",
@@ -3534,7 +3522,6 @@
     "thin.sufficient-of-integrity-openness",
     "thin.value-loss-le-defects",
     "thin.value-of-correct-sufficient",
-    "thin.value-of-thick",
     "transparent.blind-payload",
     "transparent.posterior-weight-eq"
    ],
@@ -4021,15 +4008,6 @@
     "integrity.multiplicity-witness",
     "integrity.propagate-to-segment",
     "integrity.receipts-immutable",
-    "legitimacy.answerable",
-    "legitimacy.endpoint-only-insufficient",
-    "legitimacy.endpoint-trans",
-    "legitimacy.evolution-conservation",
-    "legitimacy.faithful-carry",
-    "legitimacy.multiplicity-witness",
-    "legitimacy.propagate-to-segment",
-    "legitimacy.receipts-immutable",
-    "legitimacy.segment-trans",
     "ni.progress-bound",
     "open-integrity.answerable",
     "open-integrity.endpoint-trans",
@@ -5076,7 +5054,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "risk-story"
     }
    ],
@@ -5128,7 +5106,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -7387,7 +7365,6 @@
     "thin.correct-of-thick",
     "thin.sufficient-of-integrity-openness",
     "thin.value-of-correct-sufficient",
-    "thin.value-of-thick",
     "thin.converse-fails-on-correct",
     "thin.reflection-inherited-value",
     "thin.preservation",
@@ -7402,7 +7379,19 @@
     "sincerity.content-fact",
     "transparent.posterior-weight-eq",
     "transparent.blind-payload",
-    "legitimacy.payload-of-view"
+    "legitimacy.payload-of-view",
+    "public-legitimacy-theory",
+    "thin-converse-open",
+    "thin-value-loss-bound",
+    "item-109",
+    "item-110",
+    "item-108",
+    "effective-authority-layer",
+    "cnl-post",
+    "public-legitimacy-improvable",
+    "public-internal-legitimacy-is-reasons",
+    "reason-mediated-authorship",
+    "thin-value-of-thick"
    ],
    "fields": {
     "filed_from": "wiki"
@@ -7430,10 +7419,6 @@
      },
      {
       "id": "thin.value-of-correct-sufficient",
-      "role": "shared-claim"
-     },
-     {
-      "id": "thin.value-of-thick",
       "role": "shared-claim"
      },
      {
@@ -7494,6 +7479,54 @@
      },
      {
       "id": "legitimacy.payload-of-view",
+      "role": "shared-claim"
+     },
+     {
+      "id": "public-legitimacy-theory",
+      "role": "plan"
+     },
+     {
+      "id": "thin-converse-open",
+      "role": "shared-claim"
+     },
+     {
+      "id": "thin-value-loss-bound",
+      "role": "shared-claim"
+     },
+     {
+      "id": "item-109",
+      "role": "shared-claim"
+     },
+     {
+      "id": "item-110",
+      "role": "shared-claim"
+     },
+     {
+      "id": "item-108",
+      "role": "shared-claim"
+     },
+     {
+      "id": "effective-authority-layer",
+      "role": "shared-claim"
+     },
+     {
+      "id": "cnl-post",
+      "role": "shared-claim"
+     },
+     {
+      "id": "public-legitimacy-improvable",
+      "role": "shared-claim"
+     },
+     {
+      "id": "public-internal-legitimacy-is-reasons",
+      "role": "shared-claim"
+     },
+     {
+      "id": "reason-mediated-authorship",
+      "role": "shared-claim"
+     },
+     {
+      "id": "thin-value-of-thick",
       "role": "shared-claim"
      }
     ]
@@ -8800,7 +8833,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -8825,7 +8858,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -8928,7 +8961,7 @@
    "given": "task-bridge-table",
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -9007,7 +9040,7 @@
    "given": "task-measure-candidates-against-definition",
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -9532,7 +9565,7 @@
    "given": "task-certificate-redesign",
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -10234,7 +10267,7 @@
    "given": "task-claim1-inhabitant",
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -10444,7 +10477,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "authorship-and-transparency",
      "role": "shared-claim"
     }
    ],
@@ -12733,7 +12766,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -13623,7 +13656,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -13856,7 +13889,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -13920,7 +13953,7 @@
    "given": "task-claim1-converse-witness",
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -15331,7 +15364,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -18641,7 +18674,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -19056,12 +19089,12 @@
    "kind": "or",
    "leaf_kind": null,
    "narrative": [],
-   "notes": "A docket: the work orders of one project the map-as-canonical round could attach under no finer goal, each a route (one way the project's work advances). Listed in the round's report as goal not identified; a later round moves an item under the goal it serves.",
+   "notes": "A docket: the work orders of one project the map-as-canonical round could attach under no finer goal, each a route (one way the project's work advances). Listed in the round's report as goal not identified; a later round moves an item under the goal it serves. The Statement says what the docket is (ruling F6, 2026-10-23); the docket stays a shared-claim root of its frame, the form the protocol has for it today.",
    "rows": [],
    "size": "M",
    "source": "PRIORITIES.md, the entries whose workspace-priority marker names project deference; each child is one item's node.",
-   "statement": "Some filed work order of the deference project is executed as its entry specifies.",
-   "version": 1,
+   "statement": "Work orders filed against the deference-and-trust line, not yet attached to the goal each serves; their placement is the maintainer's.",
+   "version": 2,
    "work": []
   },
   "docket-legitimacy": {
@@ -19103,11 +19136,37 @@
    "kind": "or",
    "leaf_kind": null,
    "narrative": [],
-   "notes": "A docket: the work orders of one project the map-as-canonical round could attach under no finer goal, each a route (one way the project's work advances). Listed in the round's report as goal not identified; a later round moves an item under the goal it serves.",
+   "notes": "A docket: the work orders of one project the map-as-canonical round could attach under no finer goal, each a route (one way the project's work advances). Listed in the round's report as goal not identified; a later round moves an item under the goal it serves. The Statement says what the docket is (ruling F6, 2026-10-23); the docket stays a shared-claim root of its frame, the form the protocol has for it today.",
    "rows": [],
    "size": "M",
    "source": "PRIORITIES.md, the entries whose workspace-priority marker names project normativity.legitimacy; each child is one item's node.",
-   "statement": "Some filed work order of the legitimacy subproject is executed as its entry specifies.",
+   "statement": "Work orders filed against the legitimacy line, not yet attached to the goal each serves; their placement is the maintainer's.",
+   "version": 2,
+   "work": []
+  },
+  "docket-normative-inductor": {
+   "author": "@smithy-verity",
+   "children": [
+    "item-124"
+   ],
+   "fields": {
+    "tag": "either-suffices"
+   },
+   "given": null,
+   "in_frames": [
+    {
+     "frame": "normative-inductor",
+     "role": "shared-claim"
+    }
+   ],
+   "kind": "or",
+   "leaf_kind": null,
+   "narrative": [],
+   "notes": "A docket by programme (ruling F6): the evidence that places each item here is its context path under the programme's origin round; a later round moves an item under the goal it serves. The docket is a shared-claim root of the programme in the current form; whether a frame field for dockets would represent it more honestly is reserved (prompts/2026-10-22-map-as-canonical/REPORT.md, *Follow-up of 2026-10-23*).",
+   "rows": [],
+   "size": "S",
+   "source": "PRIORITIES.md, the entries whose context paths lie under a round directory from which this programme's formal results were registered (ruling F6, 2026-10-23); each child is one item's node.",
+   "statement": "Work orders filed against the normative-inductor programme, not yet attached to the goal each serves; their placement is the maintainer's.",
    "version": 1,
    "work": []
   },
@@ -19125,7 +19184,6 @@
     "item-32",
     "item-33",
     "item-35",
-    "item-39",
     "item-40",
     "item-46",
     "item-41",
@@ -19148,8 +19206,6 @@
     "item-113",
     "item-114",
     "item-116",
-    "item-123",
-    "item-124",
     "item-125",
     "item-126",
     "item-127"
@@ -19167,11 +19223,37 @@
    "kind": "or",
    "leaf_kind": null,
    "narrative": [],
-   "notes": "A docket: the work orders of one project the map-as-canonical round could attach under no finer goal, each a route (one way the project's work advances). Listed in the round's report as goal not identified; a later round moves an item under the goal it serves.",
+   "notes": "A docket: the work orders of one project the map-as-canonical round could attach under no finer goal, each a route (one way the project's work advances). Listed in the round's report as goal not identified; a later round moves an item under the goal it serves. The Statement says what the docket is (ruling F6, 2026-10-23); the docket stays a shared-claim root of its frame, the form the protocol has for it today.",
    "rows": [],
    "size": "M",
    "source": "PRIORITIES.md, the entries whose workspace-priority marker names project normativity; each child is one item's node.",
-   "statement": "Some filed work order of the normativity project is executed as its entry specifies.",
+   "statement": "Work orders filed against the normativity line, not yet attached to the goal each serves; their placement is the maintainer's.",
+   "version": 2,
+   "work": []
+  },
+  "docket-operative-force": {
+   "author": "@smithy-verity",
+   "children": [
+    "item-39"
+   ],
+   "fields": {
+    "tag": "either-suffices"
+   },
+   "given": null,
+   "in_frames": [
+    {
+     "frame": "operative-force",
+     "role": "shared-claim"
+    }
+   ],
+   "kind": "or",
+   "leaf_kind": null,
+   "narrative": [],
+   "notes": "A docket by programme (ruling F6): the evidence that places each item here is its context path under the programme's origin round; a later round moves an item under the goal it serves. The docket is a shared-claim root of the programme in the current form; whether a frame field for dockets would represent it more honestly is reserved (prompts/2026-10-22-map-as-canonical/REPORT.md, *Follow-up of 2026-10-23*).",
+   "rows": [],
+   "size": "S",
+   "source": "PRIORITIES.md, the entries whose context paths lie under a round directory from which this programme's formal results were registered (ruling F6, 2026-10-23); each child is one item's node.",
+   "statement": "Work orders filed against the operative-force programme, not yet attached to the goal each serves; their placement is the maintainer's.",
    "version": 1,
    "work": []
   },
@@ -19183,7 +19265,8 @@
     "item-119",
     "item-120",
     "item-121",
-    "item-122"
+    "item-122",
+    "item-123"
    ],
    "fields": {
     "tag": "either-suffices"
@@ -19198,12 +19281,12 @@
    "kind": "or",
    "leaf_kind": null,
    "narrative": [],
-   "notes": "A docket: the work orders of one project the map-as-canonical round could attach under no finer goal, each a route (one way the project's work advances). Listed in the round's report as goal not identified; a later round moves an item under the goal it serves.",
+   "notes": "A docket: the work orders of one project the map-as-canonical round could attach under no finer goal, each a route (one way the project's work advances). Listed in the round's report as goal not identified; a later round moves an item under the goal it serves. The Statement says what the docket is (ruling F6, 2026-10-23); the docket stays a shared-claim root of its frame, the form the protocol has for it today.",
    "rows": [],
    "size": "M",
    "source": "PRIORITIES.md, the entries whose workspace-priority marker names project normativity.seed; each child is one item's node.",
-   "statement": "Some filed work order of the seed subproject is executed as its entry specifies.",
-   "version": 1,
+   "statement": "Work orders filed against the seed-theory programme, not yet attached to the goal each serves; their placement is the maintainer's.",
+   "version": 2,
    "work": []
   },
   "docket-workspace": {
@@ -19238,12 +19321,12 @@
    "kind": "or",
    "leaf_kind": null,
    "narrative": [],
-   "notes": "A docket: the work orders of one project the map-as-canonical round could attach under no finer goal, each a route (one way the project's work advances). Listed in the round's report as goal not identified; a later round moves an item under the goal it serves.",
+   "notes": "A docket: the work orders of one project the map-as-canonical round could attach under no finer goal, each a route (one way the project's work advances). Listed in the round's report as goal not identified; a later round moves an item under the goal it serves. The Statement says what the docket is (ruling F6, 2026-10-23); the docket stays a shared-claim root of its frame, the form the protocol has for it today.",
    "rows": [],
    "size": "M",
    "source": "PRIORITIES.md, the entries whose workspace-priority marker names project none; each child is one item's node.",
-   "statement": "Some filed workspace item, a friction report or an infrastructure order, is executed as its entry specifies.",
-   "version": 1,
+   "statement": "Work orders filed against enabling work (the workspace itself), not yet attached to the goal each serves; their placement is the maintainer's.",
+   "version": 2,
    "work": []
   },
   "domain-relative-value": {
@@ -19662,7 +19745,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "authorship-and-transparency",
      "role": "shared-claim"
     }
    ],
@@ -22432,7 +22515,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "plan"
     }
    ],
@@ -22811,7 +22894,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -23837,7 +23920,7 @@
    "given": "task-horizon-idleness-refutation",
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -23859,7 +23942,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -23884,7 +23967,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -24976,7 +25059,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -26036,7 +26119,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -26612,7 +26695,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "authorship-and-transparency",
      "role": "shared-claim"
     }
    ],
@@ -26656,7 +26739,7 @@
    "given": "li-corrigibility-inequality-public",
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "authorship-and-transparency",
      "role": "shared-claim"
     }
    ],
@@ -26734,7 +26817,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "authorship-and-transparency",
      "role": "shared-claim"
     }
    ],
@@ -29776,7 +29859,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -31430,25 +31513,50 @@
   },
   "kernel-box2-finite-time": {
    "author": "@smithy-verity",
-   "children": [],
+   "children": [
+    "kernel.box2-finite-time.record",
+    "kernel.box2-finite-time.bridge",
+    "kernel.box2-finite-time.complete"
+   ],
    "fields": {},
+   "formal_result": {
+    "answers": [
+     "104"
+    ],
+    "hypotheses": "unread",
+    "record": "kernel.box2-finite-time.record",
+    "registry_id": "kernel.box2-finite-time"
+   },
    "given": null,
    "in_frames": [
+    {
+     "frame": "public-corrigibility-line",
+     "role": "shared-claim"
+    },
     {
      "frame": "formalism-open-questions-0-3",
      "role": "shared-claim"
     }
    ],
-   "kind": "leaf",
-   "leaf_kind": "step",
+   "kind": "and",
+   "leaf_kind": null,
    "narrative": [],
-   "notes": "A public, registered finite-day statement about a price-level quantity;\nevidence for the strengthened-criterion picture of the finite-time crux.\nWhether the collapse's carries admit the same is the finite-time statement\ntask's question.",
+   "notes": "A public, registered finite-day statement about a price-level quantity;\nevidence for the strengthened-criterion picture of the finite-time crux.\nWhether the collapse's carries admit the same is the finite-time statement\ntask's question.\n\nThe formal version of this claim is the registered result `kernel.box2-finite-time` (ruling F5, 2026-10-23, matched by id): its record, bridge and completeness leaf are this node's conjuncts, the registry id stays on the record leaf (registry_id) and in the index, and the node kernel.box2-finite-time is a deprecated alias superseded by this one.",
    "rows": [],
-   "size": "S",
+   "size": "M",
    "source": "projects/deference/CLAIMS.md, kernel.box2-finite-time (lean-proved;\nWorkspace.Deference.Headline.box2_finite_time; answers item 104): \"Box 2,\nfinite time: at every day of a logical inductor the violating option scores\nbelow D \u2212 \u03d6 < 0 and the compliant one at least 0, from the price range alone\";\nprojects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md, line\n374: \"For a logical inductor the ranking holds at every day from the price\".",
    "statement": "In the corrigibility kernel's second box, for a logical inductor the ranking of\nthe violating option below the compliant one holds at every day from the price\nrange alone, while the expectation-provability-induction version is asymptotic.",
    "version": 1,
-   "work": []
+   "work": [
+    {
+     "kind": "round",
+     "ref": "projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2"
+    },
+    {
+     "kind": "priorities",
+     "ref": 104
+    }
+   ]
   },
   "kernel-box2-mediation": {
    "author": "@smithy-verity",
@@ -32155,7 +32263,9 @@
     "kernel.box2-finite-time.bridge",
     "kernel.box2-finite-time.complete"
    ],
-   "fields": {},
+   "fields": {
+    "superseded_by": "kernel-box2-finite-time"
+   },
    "formal_result": {
     "answers": [
      "104"
@@ -32165,16 +32275,11 @@
     "registry_id": "kernel.box2-finite-time"
    },
    "given": null,
-   "in_frames": [
-    {
-     "frame": "public-corrigibility-line",
-     "role": "shared-claim"
-    }
-   ],
+   "in_frames": [],
    "kind": "and",
    "leaf_kind": null,
    "narrative": [],
-   "notes": "Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; its hypotheses are unread (ruling F1, 2026-10-23): the record's Source carries the signature verbatim, and a reader files the hypothesis leaves. Registry note: With `box2_gate_finite_time`: consulting beats bypass at every day whatever the inductor believes about legitimacy, the window at the band's floor. Inhabited by the pinned inductor witnesses of the li-corrigibility round. The registry's `answers_item` is the `priorities` pointer to item 104 (ruling F2).",
+   "notes": "Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; its hypotheses are unread (ruling F1, 2026-10-23): the record's Source carries the signature verbatim, and a reader files the hypothesis leaves. Registry note: With `box2_gate_finite_time`: consulting beats bypass at every day whatever the inductor believes about legitimacy, the window at the band's floor. Inhabited by the pinned inductor witnesses of the li-corrigibility round. The registry's `answers_item` is the `priorities` pointer to item 104 (ruling F2).\n\nSuperseded by kernel-box2-finite-time (ruling F5, 2026-10-23): the claim this result is the formal version of now carries the record, bridge and completeness leaf; this id is a deprecated alias.",
    "rows": [],
    "size": "M",
    "source": "projects/deference/CLAIMS.md, entry `kernel.box2-finite-time` (class lean-proved, status active, origin round 2026-09-27-corrigibility-kernel-phase2; answers item 104).\nDocumentation: verification: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md; context: prompts/2026-09-27-corrigibility-kernel-phase2/REPORT.md.\nThe signature of `Workspace.Deference.Headline.box2_finite_time` in lean/Workspace/Deference/Spec/Headline.lean.",
@@ -34005,7 +34110,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -34069,7 +34174,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -34126,7 +34231,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -34236,7 +34341,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -34309,7 +34414,7 @@
    "given": "legit-li-self-correction-identity",
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -34331,7 +34436,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -34390,7 +34495,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -34482,7 +34587,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -34633,7 +34738,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "plan"
     }
    ],
@@ -34677,7 +34782,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "plan"
     }
    ],
@@ -34744,7 +34849,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "plan"
     }
    ],
@@ -34772,7 +34877,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -34794,7 +34899,7 @@
    "given": "task-habermas-reading",
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -34869,7 +34974,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -34904,7 +35009,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -35007,7 +35112,7 @@
    "given": "anticipation-branchwise-dominance--corrigibility-risk",
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -35060,7 +35165,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -35158,7 +35263,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -35229,7 +35334,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -35475,7 +35580,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -35522,7 +35627,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -35597,7 +35702,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -35649,7 +35754,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -35686,13 +35791,78 @@
   "legitimacy": {
    "author": "@smithy-verity",
    "children": [
-    "legitimacy-reasons-programme",
     "integrity-and-record",
     "openness-and-non-capture",
     "authorship-and-transparency",
     "corrigibility-landscape",
     "deference-toward-bounded-agents",
-    "docket-legitimacy"
+    "docket-legitimacy",
+    "legit-definition-endorsement",
+    "legit-corrects-trust-principles",
+    "legit-per-formalism-family",
+    "legit-gated-trust-li",
+    "legit-ddb-transfer",
+    "legit-locality-forced",
+    "legit-reflection-unsat-modest",
+    "legit-composition",
+    "legit-li-self-correction-identity",
+    "legit-correction-function-learned",
+    "legit-condition-vs-predict-reality",
+    "legit-anchor-of-L",
+    "legit-global-or-local-form",
+    "legit-trust-improvable",
+    "legit-endpoint-preservation",
+    "idleness-on-G-grade-a",
+    "idleness-on-G-with-certificate",
+    "claim1-diagonal-illegitimate",
+    "corrupt-strictly-contains-inadmissible",
+    "trace-nonrecoverability",
+    "trace-nonrecoverability-li",
+    "wirehead-iff-finite",
+    "certificate-enforcement",
+    "predication-dichotomy",
+    "d3-identification",
+    "corrigibility-faithful-plus-legit-on-self",
+    "non-modification-conjecture",
+    "legit-v1-improvable",
+    "gate-is-legitimacy",
+    "public-layer-II",
+    "item-75",
+    "li-corrigibility-inequality-public",
+    "legitimate-deference-regret",
+    "legit-two-theories-bridge",
+    "bridge-defect-vs-thin-correct",
+    "bridge-trace-vs-transparency",
+    "legit-objective-proposals",
+    "illegitimate-world-ever-better",
+    "p2-manages-the-news",
+    "inferability-positivity",
+    "updateless-p2-cellwise-p3",
+    "deterrence-not-identified-on-path",
+    "corr-legit-modif-frames",
+    "legit-branch-evaluation-defense-requirements",
+    "readout-R1-vs-R2",
+    "retroactive-vs-prospective-judging",
+    "anger-substitute-for-updatelessness",
+    "legit-meta-revision",
+    "corrigibility-needs-consequentialist-wrapper",
+    "align-to-legitimacy-over-endorsement-risk",
+    "legit-weighted-objective-improvable",
+    "formalism-open-questions-0-3",
+    "internal-standard-never-settled",
+    "legit-dynamics-learning",
+    "reasons-subcase-of-legitimacy",
+    "reasons-statics-public",
+    "public-line-leaves-semantics-alone",
+    "brandom-objectivity-structural",
+    "brandom-relative-prices",
+    "reason-exchange-representation-theorem",
+    "legit-intersubjectivity-pre-rationality",
+    "reasons-improvable",
+    "legitimacy-meets-syntax",
+    "want-figure-out-legitimacy",
+    "want-corrigibility-theorems-via-legitimacy",
+    "want-legitimacy-anti-meme-post"
    ],
    "fields": {
     "filed_from": "wiki"
@@ -35706,10 +35876,6 @@
     ],
     "question": "What must stay true of a trajectory's record, verdicts and channels of influence, inside it and at its boundary, for a later judgment to count as the principal's own, and what does corrigibility consume from that?",
     "roots": [
-     {
-      "id": "legitimacy-reasons-programme",
-      "role": "plan"
-     },
      {
       "id": "integrity-and-record",
       "role": "plan"
@@ -35733,6 +35899,270 @@
      {
       "id": "docket-legitimacy",
       "role": "shared-claim"
+     },
+     {
+      "id": "legit-definition-endorsement",
+      "role": "shared-claim"
+     },
+     {
+      "id": "legit-corrects-trust-principles",
+      "role": "shared-claim"
+     },
+     {
+      "id": "legit-per-formalism-family",
+      "role": "shared-claim"
+     },
+     {
+      "id": "legit-gated-trust-li",
+      "role": "plan"
+     },
+     {
+      "id": "legit-ddb-transfer",
+      "role": "shared-claim"
+     },
+     {
+      "id": "legit-locality-forced",
+      "role": "shared-claim"
+     },
+     {
+      "id": "legit-reflection-unsat-modest",
+      "role": "shared-claim"
+     },
+     {
+      "id": "legit-composition",
+      "role": "shared-claim"
+     },
+     {
+      "id": "legit-li-self-correction-identity",
+      "role": "shared-claim"
+     },
+     {
+      "id": "legit-correction-function-learned",
+      "role": "shared-claim"
+     },
+     {
+      "id": "legit-condition-vs-predict-reality",
+      "role": "shared-claim"
+     },
+     {
+      "id": "legit-anchor-of-L",
+      "role": "shared-claim"
+     },
+     {
+      "id": "legit-global-or-local-form",
+      "role": "shared-claim"
+     },
+     {
+      "id": "legit-trust-improvable",
+      "role": "shared-claim"
+     },
+     {
+      "id": "legit-endpoint-preservation",
+      "role": "plan"
+     },
+     {
+      "id": "idleness-on-G-grade-a",
+      "role": "shared-claim"
+     },
+     {
+      "id": "idleness-on-G-with-certificate",
+      "role": "shared-claim"
+     },
+     {
+      "id": "claim1-diagonal-illegitimate",
+      "role": "shared-claim"
+     },
+     {
+      "id": "corrupt-strictly-contains-inadmissible",
+      "role": "shared-claim"
+     },
+     {
+      "id": "trace-nonrecoverability",
+      "role": "shared-claim"
+     },
+     {
+      "id": "trace-nonrecoverability-li",
+      "role": "shared-claim"
+     },
+     {
+      "id": "wirehead-iff-finite",
+      "role": "shared-claim"
+     },
+     {
+      "id": "certificate-enforcement",
+      "role": "shared-claim"
+     },
+     {
+      "id": "predication-dichotomy",
+      "role": "shared-claim"
+     },
+     {
+      "id": "d3-identification",
+      "role": "shared-claim"
+     },
+     {
+      "id": "corrigibility-faithful-plus-legit-on-self",
+      "role": "shared-claim"
+     },
+     {
+      "id": "non-modification-conjecture",
+      "role": "shared-claim"
+     },
+     {
+      "id": "legit-v1-improvable",
+      "role": "shared-claim"
+     },
+     {
+      "id": "gate-is-legitimacy",
+      "role": "shared-claim"
+     },
+     {
+      "id": "public-layer-II",
+      "role": "plan"
+     },
+     {
+      "id": "item-75",
+      "role": "shared-claim"
+     },
+     {
+      "id": "li-corrigibility-inequality-public",
+      "role": "shared-claim"
+     },
+     {
+      "id": "legitimate-deference-regret",
+      "role": "shared-claim"
+     },
+     {
+      "id": "legit-two-theories-bridge",
+      "role": "shared-claim"
+     },
+     {
+      "id": "bridge-defect-vs-thin-correct",
+      "role": "shared-claim"
+     },
+     {
+      "id": "bridge-trace-vs-transparency",
+      "role": "shared-claim"
+     },
+     {
+      "id": "legit-objective-proposals",
+      "role": "shared-claim"
+     },
+     {
+      "id": "illegitimate-world-ever-better",
+      "role": "shared-claim"
+     },
+     {
+      "id": "p2-manages-the-news",
+      "role": "shared-claim"
+     },
+     {
+      "id": "inferability-positivity",
+      "role": "shared-claim"
+     },
+     {
+      "id": "updateless-p2-cellwise-p3",
+      "role": "shared-claim"
+     },
+     {
+      "id": "deterrence-not-identified-on-path",
+      "role": "shared-claim"
+     },
+     {
+      "id": "corr-legit-modif-frames",
+      "role": "shared-claim"
+     },
+     {
+      "id": "legit-branch-evaluation-defense-requirements",
+      "role": "shared-claim"
+     },
+     {
+      "id": "readout-R1-vs-R2",
+      "role": "shared-claim"
+     },
+     {
+      "id": "retroactive-vs-prospective-judging",
+      "role": "shared-claim"
+     },
+     {
+      "id": "anger-substitute-for-updatelessness",
+      "role": "shared-claim"
+     },
+     {
+      "id": "legit-meta-revision",
+      "role": "shared-claim"
+     },
+     {
+      "id": "corrigibility-needs-consequentialist-wrapper",
+      "role": "shared-claim"
+     },
+     {
+      "id": "align-to-legitimacy-over-endorsement-risk",
+      "role": "risk-story"
+     },
+     {
+      "id": "legit-weighted-objective-improvable",
+      "role": "shared-claim"
+     },
+     {
+      "id": "formalism-open-questions-0-3",
+      "role": "plan"
+     },
+     {
+      "id": "internal-standard-never-settled",
+      "role": "shared-claim"
+     },
+     {
+      "id": "legit-dynamics-learning",
+      "role": "plan"
+     },
+     {
+      "id": "reasons-subcase-of-legitimacy",
+      "role": "shared-claim"
+     },
+     {
+      "id": "reasons-statics-public",
+      "role": "shared-claim"
+     },
+     {
+      "id": "public-line-leaves-semantics-alone",
+      "role": "shared-claim"
+     },
+     {
+      "id": "brandom-objectivity-structural",
+      "role": "shared-claim"
+     },
+     {
+      "id": "brandom-relative-prices",
+      "role": "shared-claim"
+     },
+     {
+      "id": "reason-exchange-representation-theorem",
+      "role": "shared-claim"
+     },
+     {
+      "id": "legit-intersubjectivity-pre-rationality",
+      "role": "shared-claim"
+     },
+     {
+      "id": "reasons-improvable",
+      "role": "shared-claim"
+     },
+     {
+      "id": "legitimacy-meets-syntax",
+      "role": "plan"
+     },
+     {
+      "id": "want-figure-out-legitimacy",
+      "role": "want"
+     },
+     {
+      "id": "want-corrigibility-theorems-via-legitimacy",
+      "role": "want"
+     },
+     {
+      "id": "want-legitimacy-anti-meme-post",
+      "role": "want"
      }
     ]
    },
@@ -35748,7 +36178,7 @@
    "narrative": [
     "wiki/Legitimacy.md"
    ],
-   "notes": "The legitimacy line (ruling M2), owned by both maintainers. Roots: the earlier legitimacy-and-reasons programme (the maintainer's roadmap stages 2 and 3, filed before this round), the three component programmes drafted from the wiki per ruling M3 (integrity-and-record, openness-and-non-capture, authorship-and-transparency), the corrigibility landscape and the bounded-agent programme, which this frame shares with deference-and-trust because both lines read them, and the docket of the line's work orders. Corrigibility's registered kernel sits under the corrigibility landscape's public line. Drafted by prompts/2026-10-22-map-as-canonical; the owners have not confirmed the decomposition.",
+   "notes": "The legitimacy line (ruling M2), owned by both maintainers. Roots: the three component programmes drafted from the wiki per ruling M3 (integrity-and-record, openness-and-non-capture, authorship-and-transparency); the roots of the earlier legitimacy-and-reasons programme (the maintainer's roadmap stages 2 and 3, filed before this round), which the follow-up of 2026-10-23 dissolved (ruling F4): the logical-induction-register legitimacy theory with its cruxes, clean-room results, questions and wants, and the three stage sub-frames (the formalism's open questions, dynamics and learning, legitimacy meets syntax), each a root of this frame now, with the public thin-and-thick theory and the authorship claims under authorship-and-transparency; the corrigibility landscape and the bounded-agent programme, which this frame shares with deference-and-trust because both lines read them, and the docket of the line's work orders. Corrigibility's registered kernel sits under the corrigibility landscape's public line. Drafted by prompts/2026-10-22-map-as-canonical; the owners have not confirmed the decomposition.",
    "rows": [],
    "size": "L",
    "source": "wiki/Legitimacy.md, Legitimacy has two levels and Legitimacy has two halves; wiki/Integrity.md; wiki/Openness-Coverage-and-Non-Capture.md; wiki/Corrigibility.md, section 0; projects/normativity/CLAIMS.md, the legitimacy spine; projects/deference/CLAIMS.md, the thin, sincerity, transparency, authorship and kernel entries.",
@@ -36304,7 +36734,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "plan"
     }
    ],
@@ -36321,86 +36751,10 @@
   },
   "legitimacy-reasons-programme": {
    "author": "@smithy-verity",
-   "children": [
-    "legit-definition-endorsement",
-    "legit-corrects-trust-principles",
-    "legit-per-formalism-family",
-    "legit-gated-trust-li",
-    "legit-ddb-transfer",
-    "legit-locality-forced",
-    "legit-reflection-unsat-modest",
-    "legit-composition",
-    "legit-li-self-correction-identity",
-    "legit-correction-function-learned",
-    "legit-condition-vs-predict-reality",
-    "legit-anchor-of-L",
-    "legit-global-or-local-form",
-    "legit-trust-improvable",
-    "legit-endpoint-preservation",
-    "idleness-on-G-grade-a",
-    "idleness-on-G-with-certificate",
-    "claim1-diagonal-illegitimate",
-    "corrupt-strictly-contains-inadmissible",
-    "trace-nonrecoverability",
-    "trace-nonrecoverability-li",
-    "wirehead-iff-finite",
-    "certificate-enforcement",
-    "predication-dichotomy",
-    "d3-identification",
-    "corrigibility-faithful-plus-legit-on-self",
-    "non-modification-conjecture",
-    "legit-v1-improvable",
-    "public-legitimacy-theory",
-    "thin-converse-open",
-    "thin-value-loss-bound",
-    "item-109",
-    "item-110",
-    "item-108",
-    "gate-is-legitimacy",
-    "public-layer-II",
-    "item-75",
-    "li-corrigibility-inequality-public",
-    "legitimate-deference-regret",
-    "effective-authority-layer",
-    "cnl-post",
-    "public-legitimacy-improvable",
-    "legit-two-theories-bridge",
-    "bridge-defect-vs-thin-correct",
-    "bridge-trace-vs-transparency",
-    "legit-objective-proposals",
-    "illegitimate-world-ever-better",
-    "p2-manages-the-news",
-    "inferability-positivity",
-    "updateless-p2-cellwise-p3",
-    "deterrence-not-identified-on-path",
-    "corr-legit-modif-frames",
-    "legit-branch-evaluation-defense-requirements",
-    "readout-R1-vs-R2",
-    "retroactive-vs-prospective-judging",
-    "anger-substitute-for-updatelessness",
-    "legit-meta-revision",
-    "corrigibility-needs-consequentialist-wrapper",
-    "align-to-legitimacy-over-endorsement-risk",
-    "legit-weighted-objective-improvable",
-    "formalism-open-questions-0-3",
-    "internal-standard-never-settled",
-    "legit-dynamics-learning",
-    "reasons-subcase-of-legitimacy",
-    "public-internal-legitimacy-is-reasons",
-    "reason-mediated-authorship",
-    "reasons-statics-public",
-    "public-line-leaves-semantics-alone",
-    "brandom-objectivity-structural",
-    "brandom-relative-prices",
-    "reason-exchange-representation-theorem",
-    "legit-intersubjectivity-pre-rationality",
-    "reasons-improvable",
-    "legitimacy-meets-syntax",
-    "want-figure-out-legitimacy",
-    "want-corrigibility-theorems-via-legitimacy",
-    "want-legitimacy-anti-meme-post"
-   ],
-   "fields": {},
+   "children": [],
+   "fields": {
+    "superseded_by": "legitimacy"
+   },
    "frame": {
     "filed_from": null,
     "opened": true,
@@ -36409,328 +36763,14 @@
      "@abram"
     ],
     "question": "What makes a teaching or feedback channel legitimate, how does legitimacy enter the trust principles between a human process and an AI, and what does it owe to reasons and to inference?",
-    "roots": [
-     {
-      "id": "legit-definition-endorsement",
-      "role": "shared-claim"
-     },
-     {
-      "id": "legit-corrects-trust-principles",
-      "role": "shared-claim"
-     },
-     {
-      "id": "legit-per-formalism-family",
-      "role": "shared-claim"
-     },
-     {
-      "id": "legit-gated-trust-li",
-      "role": "plan"
-     },
-     {
-      "id": "legit-ddb-transfer",
-      "role": "shared-claim"
-     },
-     {
-      "id": "legit-locality-forced",
-      "role": "shared-claim"
-     },
-     {
-      "id": "legit-reflection-unsat-modest",
-      "role": "shared-claim"
-     },
-     {
-      "id": "legit-composition",
-      "role": "shared-claim"
-     },
-     {
-      "id": "legit-li-self-correction-identity",
-      "role": "shared-claim"
-     },
-     {
-      "id": "legit-correction-function-learned",
-      "role": "shared-claim"
-     },
-     {
-      "id": "legit-condition-vs-predict-reality",
-      "role": "shared-claim"
-     },
-     {
-      "id": "legit-anchor-of-L",
-      "role": "shared-claim"
-     },
-     {
-      "id": "legit-global-or-local-form",
-      "role": "shared-claim"
-     },
-     {
-      "id": "legit-trust-improvable",
-      "role": "shared-claim"
-     },
-     {
-      "id": "legit-endpoint-preservation",
-      "role": "plan"
-     },
-     {
-      "id": "idleness-on-G-grade-a",
-      "role": "shared-claim"
-     },
-     {
-      "id": "idleness-on-G-with-certificate",
-      "role": "shared-claim"
-     },
-     {
-      "id": "claim1-diagonal-illegitimate",
-      "role": "shared-claim"
-     },
-     {
-      "id": "corrupt-strictly-contains-inadmissible",
-      "role": "shared-claim"
-     },
-     {
-      "id": "trace-nonrecoverability",
-      "role": "shared-claim"
-     },
-     {
-      "id": "trace-nonrecoverability-li",
-      "role": "shared-claim"
-     },
-     {
-      "id": "wirehead-iff-finite",
-      "role": "shared-claim"
-     },
-     {
-      "id": "certificate-enforcement",
-      "role": "shared-claim"
-     },
-     {
-      "id": "predication-dichotomy",
-      "role": "shared-claim"
-     },
-     {
-      "id": "d3-identification",
-      "role": "shared-claim"
-     },
-     {
-      "id": "corrigibility-faithful-plus-legit-on-self",
-      "role": "shared-claim"
-     },
-     {
-      "id": "non-modification-conjecture",
-      "role": "shared-claim"
-     },
-     {
-      "id": "legit-v1-improvable",
-      "role": "shared-claim"
-     },
-     {
-      "id": "public-legitimacy-theory",
-      "role": "plan"
-     },
-     {
-      "id": "thin-converse-open",
-      "role": "shared-claim"
-     },
-     {
-      "id": "thin-value-loss-bound",
-      "role": "shared-claim"
-     },
-     {
-      "id": "item-109",
-      "role": "shared-claim"
-     },
-     {
-      "id": "item-110",
-      "role": "shared-claim"
-     },
-     {
-      "id": "item-108",
-      "role": "shared-claim"
-     },
-     {
-      "id": "gate-is-legitimacy",
-      "role": "shared-claim"
-     },
-     {
-      "id": "public-layer-II",
-      "role": "plan"
-     },
-     {
-      "id": "item-75",
-      "role": "shared-claim"
-     },
-     {
-      "id": "li-corrigibility-inequality-public",
-      "role": "shared-claim"
-     },
-     {
-      "id": "legitimate-deference-regret",
-      "role": "shared-claim"
-     },
-     {
-      "id": "effective-authority-layer",
-      "role": "shared-claim"
-     },
-     {
-      "id": "cnl-post",
-      "role": "shared-claim"
-     },
-     {
-      "id": "public-legitimacy-improvable",
-      "role": "shared-claim"
-     },
-     {
-      "id": "legit-two-theories-bridge",
-      "role": "shared-claim"
-     },
-     {
-      "id": "bridge-defect-vs-thin-correct",
-      "role": "shared-claim"
-     },
-     {
-      "id": "bridge-trace-vs-transparency",
-      "role": "shared-claim"
-     },
-     {
-      "id": "legit-objective-proposals",
-      "role": "shared-claim"
-     },
-     {
-      "id": "illegitimate-world-ever-better",
-      "role": "shared-claim"
-     },
-     {
-      "id": "p2-manages-the-news",
-      "role": "shared-claim"
-     },
-     {
-      "id": "inferability-positivity",
-      "role": "shared-claim"
-     },
-     {
-      "id": "updateless-p2-cellwise-p3",
-      "role": "shared-claim"
-     },
-     {
-      "id": "deterrence-not-identified-on-path",
-      "role": "shared-claim"
-     },
-     {
-      "id": "corr-legit-modif-frames",
-      "role": "shared-claim"
-     },
-     {
-      "id": "legit-branch-evaluation-defense-requirements",
-      "role": "shared-claim"
-     },
-     {
-      "id": "readout-R1-vs-R2",
-      "role": "shared-claim"
-     },
-     {
-      "id": "retroactive-vs-prospective-judging",
-      "role": "shared-claim"
-     },
-     {
-      "id": "anger-substitute-for-updatelessness",
-      "role": "shared-claim"
-     },
-     {
-      "id": "legit-meta-revision",
-      "role": "shared-claim"
-     },
-     {
-      "id": "corrigibility-needs-consequentialist-wrapper",
-      "role": "shared-claim"
-     },
-     {
-      "id": "align-to-legitimacy-over-endorsement-risk",
-      "role": "risk-story"
-     },
-     {
-      "id": "legit-weighted-objective-improvable",
-      "role": "shared-claim"
-     },
-     {
-      "id": "formalism-open-questions-0-3",
-      "role": "plan"
-     },
-     {
-      "id": "internal-standard-never-settled",
-      "role": "shared-claim"
-     },
-     {
-      "id": "legit-dynamics-learning",
-      "role": "plan"
-     },
-     {
-      "id": "reasons-subcase-of-legitimacy",
-      "role": "shared-claim"
-     },
-     {
-      "id": "public-internal-legitimacy-is-reasons",
-      "role": "shared-claim"
-     },
-     {
-      "id": "reason-mediated-authorship",
-      "role": "shared-claim"
-     },
-     {
-      "id": "reasons-statics-public",
-      "role": "shared-claim"
-     },
-     {
-      "id": "public-line-leaves-semantics-alone",
-      "role": "shared-claim"
-     },
-     {
-      "id": "brandom-objectivity-structural",
-      "role": "shared-claim"
-     },
-     {
-      "id": "brandom-relative-prices",
-      "role": "shared-claim"
-     },
-     {
-      "id": "reason-exchange-representation-theorem",
-      "role": "shared-claim"
-     },
-     {
-      "id": "legit-intersubjectivity-pre-rationality",
-      "role": "shared-claim"
-     },
-     {
-      "id": "reasons-improvable",
-      "role": "shared-claim"
-     },
-     {
-      "id": "legitimacy-meets-syntax",
-      "role": "plan"
-     },
-     {
-      "id": "want-figure-out-legitimacy",
-      "role": "want"
-     },
-     {
-      "id": "want-corrigibility-theorems-via-legitimacy",
-      "role": "want"
-     },
-     {
-      "id": "want-legitimacy-anti-meme-post",
-      "role": "want"
-     }
-    ]
+    "roots": []
    },
    "given": null,
-   "in_frames": [
-    {
-     "frame": "legitimacy",
-     "role": "plan"
-    }
-   ],
+   "in_frames": [],
    "kind": "frame",
    "leaf_kind": null,
    "narrative": [],
-   "notes": "A programme filed as a sub-frame of the updateful logical-induction trust line:\nits roots are the maintainer's own definition and thesis about legitimacy\n(shared claims), four plans (a legitimacy-conditioned trust principle at the LI\nregister; the endpoint-preservation model; the public repository's two-level\nlegitimacy theory; the public line's shortest path to a legitimacy theorem),\nfour further frames (the open problems of the formalism; learning and dynamics\nof legitimacy; legitimacy meets syntax; the public normativity line), the\ncruxes each line turns on as cases nodes, the improvement claim beside each toy\nresult, and the maintainer's owned wants whose quoted words name legitimacy,\nreasons or this stage.\n\nThe landed sub-frame deference-toward-bounded-agents keeps its own place under\nthe updateful line; its legitimacy step is connected to this frame's cases node\non the legitimacy-weighted objective by an evidence edge rather than moved. The\npublic repository's normativity and legitimacy line is filed here as plans,\nclaims and tasks with public sources, and no want is attributed to anyone but the frame's\nowner.",
+   "notes": "A programme filed as a sub-frame of the updateful logical-induction trust line:\nits roots are the maintainer's own definition and thesis about legitimacy\n(shared claims), four plans (a legitimacy-conditioned trust principle at the LI\nregister; the endpoint-preservation model; the public repository's two-level\nlegitimacy theory; the public line's shortest path to a legitimacy theorem),\nfour further frames (the open problems of the formalism; learning and dynamics\nof legitimacy; legitimacy meets syntax; the public normativity line), the\ncruxes each line turns on as cases nodes, the improvement claim beside each toy\nresult, and the maintainer's owned wants whose quoted words name legitimacy,\nreasons or this stage.\n\nThe landed sub-frame deference-toward-bounded-agents keeps its own place under\nthe updateful line; its legitimacy step is connected to this frame's cases node\non the legitimacy-weighted objective by an evidence edge rather than moved. The\npublic repository's normativity and legitimacy line is filed here as plans,\nclaims and tasks with public sources, and no want is attributed to anyone but the frame's\nowner.\n\nRetired by ruling F4 (2026-10-23, one decomposition per line): every root moved to the programme of legitimacy whose question it bears on, or to the line frame; the table of moves is in prompts/2026-10-22-map-as-canonical/REPORT.md, *Follow-up of 2026-10-23*. The id survives as a deprecated alias of legitimacy.",
    "rows": [],
    "size": "L",
    "source": "projects/deference/note-dump-2026-08-11/notes/roadmap.md, Stage 2: \"Then figure\nout this legitimacy stuff, and work on the other stuff described in\n`li-deference.md` \u2014 all the open problems I've already listed for the\nformalism.\" Stage 3: \"Relate legitimacy to syntactic stuff \u2014 local rules of\nsanity \u2014 connecting inferentialist semantics to map-territory semantics.\nRequires understanding inferentialism better, amongst other things.\" The\ngrouping of the two stages, the open problems and the reasons thread into one\nprogramme is the filing session's reading.",
@@ -37929,7 +37969,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -38641,7 +38681,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -42824,7 +42864,7 @@
    "given": "task-composition-finite-shadow",
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -42899,7 +42939,9 @@
     "inductor.warrant-inductor",
     "inductor.witness",
     "inductor.rebuttal-run",
-    "inductor.contraposition-blocked"
+    "inductor.contraposition-blocked",
+    "normativity-layer-I-closed",
+    "docket-normative-inductor"
    ],
    "fields": {
     "filed_from": "wiki"
@@ -42975,6 +43017,14 @@
      {
       "id": "inductor.contraposition-blocked",
       "role": "shared-claim"
+     },
+     {
+      "id": "normativity-layer-I-closed",
+      "role": "shared-claim"
+     },
+     {
+      "id": "docket-normative-inductor",
+      "role": "shared-claim"
      }
     ]
    },
@@ -43036,13 +43086,15 @@
   "normativity": {
    "author": "@smithy-verity",
    "children": [
-    "normativity-line",
     "seed-theory",
     "operative-force",
     "normative-inductor",
     "response-learning",
     "normative-record",
-    "docket-normativity"
+    "docket-normativity",
+    "normativity-aug9-foundation",
+    "normativity-consolidation-open-1-6",
+    "normativity-paper-candidates"
    ],
    "fields": {
     "filed_from": "wiki"
@@ -43055,10 +43107,6 @@
     ],
     "question": "What does learning from reasons require of a reasoner: which statics a normative seed forces, how a constraint acquires operative force in a market, and what the Normative Inductor, from seed through reasons, compile, enforcement and revision, establishes end to end?",
     "roots": [
-     {
-      "id": "normativity-line",
-      "role": "plan"
-     },
      {
       "id": "seed-theory",
       "role": "plan"
@@ -43082,6 +43130,18 @@
      {
       "id": "docket-normativity",
       "role": "shared-claim"
+     },
+     {
+      "id": "normativity-aug9-foundation",
+      "role": "shared-claim"
+     },
+     {
+      "id": "normativity-consolidation-open-1-6",
+      "role": "shared-claim"
+     },
+     {
+      "id": "normativity-paper-candidates",
+      "role": "shared-claim"
      }
     ]
    },
@@ -43097,7 +43157,7 @@
    "narrative": [
     "wiki/Normativity.md"
    ],
-   "notes": "The normativity line (ruling M2). Its roots: the public line as filed before this round (normativity-line, with the August 9 foundation, the fixed-era layer, the traderization step, the learning track, the six consolidation problems and the paper candidates), and the programmes this round drafted from the wiki per ruling M3: seed-theory, operative-force, normative-inductor, response-learning and the unspelled normative-record. The docket of the line's work orders (docket-normativity) holds every item of project normativity no finer goal was identified for. Drafted by prompts/2026-10-22-map-as-canonical; the owner has not confirmed the decomposition.",
+   "notes": "The normativity line (ruling M2). Its roots: the programmes this round drafted from the wiki per ruling M3 (seed-theory, operative-force, normative-inductor, response-learning and the unspelled normative-record) and, since the follow-up of 2026-10-23 dissolved the pre-existing frame normativity-line (ruling F4), the line-level claims that frame held and no programme asks for: the August 9 foundation, the six consolidation problems and the paper candidates; its fixed-era layer sits under normative-inductor, its traderization step under operative-force and its learning track under response-learning. The docket of the line's work orders (docket-normativity) holds every item of project normativity no finer goal was identified for. Drafted by prompts/2026-10-22-map-as-canonical; the owner has not confirmed the decomposition.",
    "rows": [],
    "size": "L",
    "source": "wiki/Normativity.md, Core idea and Current status (the traderization arc registered; force, not legitimacy, established); wiki/Normative-Inductor.md, The architecture and The conditional theorems; wiki/Seed-Theory.md; wiki/Roadmap.md, Normativity; projects/normativity/CLAIMS.md.",
@@ -43153,7 +43213,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "normativity-line",
+     "frame": "normativity",
      "role": "shared-claim"
     }
    ],
@@ -43185,7 +43245,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "normativity-line",
+     "frame": "normativity",
      "role": "shared-claim"
     }
    ],
@@ -43223,7 +43283,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "normativity-line",
+     "frame": "normative-inductor",
      "role": "shared-claim"
     }
    ],
@@ -43254,10 +43314,6 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "normativity-line",
-     "role": "shared-claim"
-    },
-    {
      "frame": "response-learning",
      "role": "shared-claim"
     }
@@ -43284,15 +43340,10 @@
   },
   "normativity-line": {
    "author": "@smithy-verity",
-   "children": [
-    "normativity-aug9-foundation",
-    "normativity-layer-I-closed",
-    "traderization-arc",
-    "normativity-learning-track",
-    "normativity-consolidation-open-1-6",
-    "normativity-paper-candidates"
-   ],
-   "fields": {},
+   "children": [],
+   "fields": {
+    "superseded_by": "normativity"
+   },
    "frame": {
     "filed_from": null,
     "opened": true,
@@ -43300,44 +43351,14 @@
      "@anson"
     ],
     "question": "Does the public normativity line reach a legitimacy theorem useful for corrigibility and the learning theorem its layers aim at?",
-    "roots": [
-     {
-      "id": "normativity-aug9-foundation",
-      "role": "shared-claim"
-     },
-     {
-      "id": "normativity-layer-I-closed",
-      "role": "shared-claim"
-     },
-     {
-      "id": "traderization-arc",
-      "role": "shared-claim"
-     },
-     {
-      "id": "normativity-learning-track",
-      "role": "shared-claim"
-     },
-     {
-      "id": "normativity-consolidation-open-1-6",
-      "role": "shared-claim"
-     },
-     {
-      "id": "normativity-paper-candidates",
-      "role": "shared-claim"
-     }
-    ]
+    "roots": []
    },
    "given": null,
-   "in_frames": [
-    {
-     "frame": "normativity",
-     "role": "plan"
-    }
-   ],
+   "in_frames": [],
    "kind": "frame",
    "leaf_kind": null,
    "narrative": [],
-   "notes": "The public line is maintained in large part by the repository's other\nmaintainer; it is filed here as plans and claims with public sources, and no\nwant is attributed to anyone. The frame's owner field names the person whose\nquestion this frame poses for the argument map. Its four layers per the\ncheckpoint: fixed-era dynamics closed for research sequencing; diachronic\nlegitimacy with the structural core consolidated; counterfactual non-capture\nopen; the corrigibility and deference consumer downstream. The legitimacy half\nof the line is filed under the programme frame as public-legitimacy-theory and\npublic-layer-II.",
+   "notes": "The public line is maintained in large part by the repository's other\nmaintainer; it is filed here as plans and claims with public sources, and no\nwant is attributed to anyone. The frame's owner field names the person whose\nquestion this frame poses for the argument map. Its four layers per the\ncheckpoint: fixed-era dynamics closed for research sequencing; diachronic\nlegitimacy with the structural core consolidated; counterfactual non-capture\nopen; the corrigibility and deference consumer downstream. The legitimacy half\nof the line is filed under the programme frame as public-legitimacy-theory and\npublic-layer-II.\n\nRetired by ruling F4 (2026-10-23, one decomposition per line): every root moved to the programme of normativity whose question it bears on, or to the line frame; the table of moves is in prompts/2026-10-22-map-as-canonical/REPORT.md, *Follow-up of 2026-10-23*. The id survives as a deprecated alias of normativity.",
    "rows": [],
    "size": "L",
    "source": "projects/normativity/README.md: \"This line tests reasons-and-warrant statics,\nrelational scorekeeping, answerability, and the learning-theorem program.\";\nRESEARCH_STATE.md (the checkpoint\nprojects/normativity/legitimacy/checkpoint-2026-09-01/ as the current canonical\nview); projects/normativity/legitimacy/checkpoint-2026-09-01/ROADMAP.md, which\nasks for the \"shortest path to a theorem of legitimacy that is useful for\ncorrigibility\".",
@@ -43368,7 +43389,7 @@
    "given": "task-naming-audit",
    "in_frames": [
     {
-     "frame": "normativity-line",
+     "frame": "normativity",
      "role": "shared-claim"
     }
    ],
@@ -44542,7 +44563,9 @@
     "region.hull",
     "smoke.faf-asymp-refl",
     "smoke.chain-compiles",
-    "simplex.rational-points-sum-to-one"
+    "simplex.rational-points-sum-to-one",
+    "traderization-arc",
+    "docket-operative-force"
    ],
    "fields": {
     "filed_from": "wiki"
@@ -44662,6 +44685,14 @@
      {
       "id": "simplex.rational-points-sum-to-one",
       "role": "shared-claim"
+     },
+     {
+      "id": "traderization-arc",
+      "role": "shared-claim"
+     },
+     {
+      "id": "docket-operative-force",
+      "role": "shared-claim"
      }
     ]
    },
@@ -44677,7 +44708,7 @@
    "narrative": [
     "wiki/Actionability-and-Normative-Force.md"
    ],
-   "notes": "Drafted from the wiki per ruling M3 (prompts/2026-10-22-map-as-canonical); the owner has not confirmed. The traderization step filed before this round (traderization-arc, a root of normativity-line) names the same arc as an actioned claim; this frame holds the arc's registered results as formal results. The work orders of the section Normativity line \u2014 traderized enforcement sit in the normativity docket.",
+   "notes": "Drafted from the wiki per ruling M3 (prompts/2026-10-22-map-as-canonical); the owner has not confirmed. The traderization step filed before this round (traderization-arc, a root of this frame since the follow-up of 2026-10-23 dissolved normativity-line) names the same arc as an actioned claim; this frame holds the arc's registered results as formal results. The work orders of the section Normativity line \u2014 traderized enforcement sit in the normativity docket.",
    "rows": [],
    "size": "L",
    "source": "wiki/Normativity.md, A current research direction: operative force, and Current status; wiki/Actionability-and-Normative-Force.md; projects/normativity/CLAIMS.md, The traderization arc; projects/normativity/notes/GENERALIZED_LI_PAPER_HANDOFF.md.",
@@ -45124,7 +45155,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -50015,7 +50046,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -50836,7 +50867,6 @@
     "kernel.box1-fidelity-versus-fully-updated-deference",
     "kernel.box2-dominance",
     "kernel.box2-mediation-faithful",
-    "kernel.box2-finite-time",
     "kernel.box3-gap-exchange-rate",
     "kernel.box3-no-laundering",
     "kernel.box3-no-incentive-to-compromise",
@@ -50886,7 +50916,8 @@
     "deconfusing.theorem3b",
     "deconfusing.corollary-a",
     "deconfusing.corollary-b",
-    "deconfusing.corollary-limit"
+    "deconfusing.corollary-limit",
+    "kernel-box2-finite-time"
    ],
    "fields": {},
    "frame": {
@@ -50951,10 +50982,6 @@
      },
      {
       "id": "kernel.box2-mediation-faithful",
-      "role": "shared-claim"
-     },
-     {
-      "id": "kernel.box2-finite-time",
       "role": "shared-claim"
      },
      {
@@ -51156,6 +51183,10 @@
      {
       "id": "deconfusing.corollary-limit",
       "role": "shared-claim"
+     },
+     {
+      "id": "kernel-box2-finite-time",
+      "role": "shared-claim"
      }
     ]
    },
@@ -51192,7 +51223,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "authorship-and-transparency",
      "role": "shared-claim"
     }
    ],
@@ -51220,7 +51251,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "plan"
     }
    ],
@@ -51271,7 +51302,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "authorship-and-transparency",
      "role": "shared-claim"
     }
    ],
@@ -51317,7 +51348,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "authorship-and-transparency",
      "role": "plan"
     }
    ],
@@ -51356,7 +51387,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -51614,7 +51645,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -51659,7 +51690,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -51681,7 +51712,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "authorship-and-transparency",
      "role": "shared-claim"
     }
    ],
@@ -51711,7 +51742,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -51752,7 +51783,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -51780,7 +51811,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -52797,7 +52828,7 @@
    "narrative": [
     "wiki/Normative-Response-Learning.md"
    ],
-   "notes": "Drafted from the wiki per ruling M3 (prompts/2026-10-22-map-as-canonical); the owner has not confirmed. Its one root is the learning-track step filed before this round (normativity-learning-track, a shared root with normativity-line); the track's work orders sit in the normativity docket. The theorem is unregistered.",
+   "notes": "Drafted from the wiki per ruling M3 (prompts/2026-10-22-map-as-canonical); the owner has not confirmed. Its one root is the learning-track step filed before this round (normativity-learning-track; a shared root with normativity-line until that frame was dissolved on 2026-10-23); the track's work orders sit in the normativity docket. The theorem is unregistered.",
    "rows": [],
    "size": "M",
    "source": "wiki/Normative-Response-Learning.md, Interface and Compiler; wiki/Normativity.md, the line's four layers; projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/CROWN_JEWEL_THEOREM.md; PRIORITIES.md, items 29 to 35.",
@@ -52834,7 +52865,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -59587,7 +59618,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "authorship-and-transparency",
      "role": "shared-claim"
     }
    ],
@@ -59637,7 +59668,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "authorship-and-transparency",
      "role": "shared-claim"
     }
    ],
@@ -59659,20 +59690,46 @@
   },
   "thin-value-of-thick": {
    "author": "@smithy-verity",
-   "children": [],
+   "children": [
+    "thin.value-of-thick.record",
+    "thin.value-of-thick.bridge",
+    "thin.value-of-thick.complete"
+   ],
    "fields": {},
+   "formal_result": {
+    "answers": [
+     "107"
+    ],
+    "hypotheses": "unread",
+    "record": "thin.value-of-thick.record",
+    "registry_id": "thin.value-of-thick"
+   },
    "given": null,
-   "in_frames": [],
-   "kind": "leaf",
-   "leaf_kind": "step",
+   "in_frames": [
+    {
+     "frame": "authorship-and-transparency",
+     "role": "shared-claim"
+    }
+   ],
+   "kind": "and",
+   "leaf_kind": null,
    "narrative": [],
-   "notes": "Formal result in leaf form; registered.",
+   "notes": "Formal result in leaf form; registered.\n\nThe formal version of this claim is the registered result `thin.value-of-thick` (ruling F5, 2026-10-23, matched by id): its record, bridge and completeness leaf are this node's conjuncts, the registry id stays on the record leaf (registry_id) and in the index, and the node thin.value-of-thick is a deprecated alias superseded by this one.",
    "rows": [],
-   "size": "S",
+   "size": "M",
    "source": "projects/deference/CLAIMS.md, thin.correct-of-thick,\nthin.sufficient-of-integrity-openness, thin.value-of-correct-sufficient and\nthin.value-of-thick (lean-proved);\nprojects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md,\nPart A.",
    "statement": "Coherence, authorship and weak transparency give correct; Integrity and\nopenness give sufficient; and correct and sufficient give value for every\nfinite decision problem, so the thick conditions satisfy the thin\nspecification.",
    "version": 1,
-   "work": []
+   "work": [
+    {
+     "kind": "round",
+     "ref": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority"
+    },
+    {
+     "kind": "priorities",
+     "ref": 107
+    }
+   ]
   },
   "thin.converse-fails-on-correct": {
    "author": "@smithy-verity",
@@ -60701,7 +60758,9 @@
     "thin.value-of-thick.bridge",
     "thin.value-of-thick.complete"
    ],
-   "fields": {},
+   "fields": {
+    "superseded_by": "thin-value-of-thick"
+   },
    "formal_result": {
     "answers": [
      "107"
@@ -60711,16 +60770,11 @@
     "registry_id": "thin.value-of-thick"
    },
    "given": null,
-   "in_frames": [
-    {
-     "frame": "authorship-and-transparency",
-     "role": "shared-claim"
-    }
-   ],
+   "in_frames": [],
    "kind": "and",
    "leaf_kind": null,
    "narrative": [],
-   "notes": "Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; its hypotheses are unread (ruling F1, 2026-10-23): the record's Source carries the signature verbatim, and a reader files the hypothesis leaves. Registry note: Theorems 1-3 composed: the thick notion satisfies the thin specification. Inhabited by `Witness.thin_inhabited`. The registry's `answers_item` is the `priorities` pointer to item 107 (ruling F2).",
+   "notes": "Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; its hypotheses are unread (ruling F1, 2026-10-23): the record's Source carries the signature verbatim, and a reader files the hypothesis leaves. Registry note: Theorems 1-3 composed: the thick notion satisfies the thin specification. Inhabited by `Witness.thin_inhabited`. The registry's `answers_item` is the `priorities` pointer to item 107 (ruling F2).\n\nSuperseded by thin-value-of-thick (ruling F5, 2026-10-23): the claim this result is the formal version of now carries the record, bridge and completeness leaf; this id is a deprecated alias.",
    "rows": [],
    "size": "M",
    "source": "projects/deference/CLAIMS.md, entry `thin.value-of-thick` (class lean-proved, status active, origin round 2026-10-01-thin-legitimacy-and-effective-authority; answers item 107).\nDocumentation: verification: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md; context: prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md.\nThe signature of `Workspace.Deference.Contrib.ThinLegitimacy.value_of_thick` in lean/Workspace/Deference/Contrib/ThinLegitimacy.lean.",
@@ -61380,7 +61434,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -61402,7 +61456,7 @@
    "given": "task-trace-nonrecoverable-li",
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -61492,7 +61546,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "normativity-line",
+     "frame": "operative-force",
      "role": "shared-claim"
     }
    ],
@@ -64968,7 +65022,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -66111,7 +66165,7 @@
    "given": "corrigibility-faithful-plus-legit-on-self",
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "want"
     }
    ],
@@ -66136,7 +66190,7 @@
    "given": "legit-gated-trust-li",
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "want"
     }
    ],
@@ -66213,7 +66267,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "want"
     }
    ],
@@ -67099,7 +67153,7 @@
    "given": null,
    "in_frames": [
     {
-     "frame": "legitimacy-reasons-programme",
+     "frame": "legitimacy",
      "role": "shared-claim"
     }
    ],
@@ -68092,6 +68146,7 @@
    "id": "2026-09-27-corrigibility-kernel-phase2",
    "path": "projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2",
    "pointed_by": [
+    "kernel-box2-finite-time",
     "kernel.box1-fidelity-versus-fully-updated-deference",
     "kernel.box2-dominance",
     "kernel.box2-finite-time",
@@ -68156,6 +68211,7 @@
     "sincerity.rows-keep-verdicts-counted",
     "sincerity.rows-keep-verdicts-tainted",
     "sincerity.sincere-error-counts",
+    "thin-value-of-thick",
     "thin.converse-fails-on-correct",
     "thin.correct-of-thick",
     "thin.covert-blocking-correct-iff",

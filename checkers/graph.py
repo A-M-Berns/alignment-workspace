@@ -4567,6 +4567,8 @@ def structure_index(t, today):
             rid = rec.get("registry_id") or (x if t.registry and x in t.registry else None)
             formal[x] = {"record": recs[0], "hypotheses": rec.get("hypotheses") if rec.get("hypotheses") is not None else [],
                          "registry_id": rid, "answers": answers}
+            if n.get("superseded_by"):
+                continue            # a deprecated alias (a result merged under its claim, F5): it answers nothing twice and resolves no id
             for a in answers:
                 answered_by[a].append(x)
             if rid:

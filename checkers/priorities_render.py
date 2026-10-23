@@ -69,7 +69,7 @@ def answers(root: pathlib.Path) -> dict[str, list[str]]:
         nodes[p.stem] = g.parse_node_text(p.read_text(), str(p.relative_to(root)))
     out: dict[str, list[str]] = {}
     for x, n in nodes.items():
-        if n.get("kind") != "and":
+        if n.get("kind") != "and" or n.get("superseded_by"):
             continue
         recs = [c for c in n.get("children") or [] if nodes.get(c, {}).get("leaf_kind") == "record"]
         if not recs:

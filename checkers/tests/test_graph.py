@@ -2731,6 +2731,8 @@ class Fixtures(unittest.TestCase):
         judged = {e["target"].get("node") for e in (json.loads(l) for p in (self.root / "graph" / "events").glob("*.jsonl")
                                                    for l in p.read_text().splitlines() if l.strip()) if e["kind"] in ("estimate", "gestalt")}
         unjudged = {g for g in D["ranking"]["goals"] if g not in judged} | UNJUDGED_BY_POLICY
+        # a formal result whose hypotheses are unread is structure alone too (2026-10-23), the claims merged under F5 included
+        unjudged |= {x for x, N in D["nodes"].items() if "hypotheses unread" in N["flags"]}
         self.assertEqual({u["target"] for u in D["units"] if u["kind"] == "gestalt"} - unjudged, set())
         first = next(u for u in D["units"] if u["target"] not in unjudged)
         self.assertNotIn(first["kind"], ("gestalt", "revive"), first)
@@ -2804,6 +2806,8 @@ class Fixtures(unittest.TestCase):
             for r in rec["answered_by"]:
                 self.assertIn(item, formal[r]["answers"])
         for x, F in formal.items():
+            if idx["nodes"][x]["fields"].get("superseded_by"):
+                continue                                                # a deprecated alias (F5) answers nothing twice
             for a in F["answers"]:
                 self.assertIn(x, idx["items"][a]["answered_by"])
             if F["registry_id"]:
@@ -2815,6 +2819,12 @@ class Fixtures(unittest.TestCase):
         # the render shows the registered answers beside the item (one line under the heading)
         text = (self.root / "PRIORITIES.md").read_text()
         self.assertIn("*Registered answers in the map:* ", text)
+        # ruling F4: the two pre-existing frames are retired aliases, their roots moved; ruling F5: a merged claim resolves its registry id
+        self.assertNotIn("normativity-line", idx["nodes"]["normativity"]["children"])
+        self.assertEqual(idx["nodes"]["normativity-line"]["fields"].get("superseded_by"), "normativity")
+        self.assertEqual(idx["nodes"]["normativity-line"]["children"], [])
+        for rid, x in idx["claims"].items():
+            self.assertEqual(idx["nodes"][x]["formal_result"]["registry_id"], rid)
 
     def test_hoist_rule_on_the_fixture(self):
         """every ranked line of the shipped fixture rests on AI numbers only, so the tag is said once in the header;

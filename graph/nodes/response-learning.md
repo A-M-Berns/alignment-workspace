@@ -22,4 +22,4 @@ Repeated, publicly exposed failures place diminishing weight on an inferior resp
 wiki/Normative-Response-Learning.md, Interface and Compiler; wiki/Normativity.md, the line's four layers; projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/CROWN_JEWEL_THEOREM.md; PRIORITIES.md, items 29 to 35.
 
 ## Notes
-Drafted from the wiki per ruling M3 (prompts/2026-10-22-map-as-canonical); the owner has not confirmed. Its one root is the learning-track step filed before this round (normativity-learning-track, a shared root with normativity-line); the track's work orders sit in the normativity docket. The theorem is unregistered.
+Drafted from the wiki per ruling M3 (prompts/2026-10-22-map-as-canonical); the owner has not confirmed. Its one root is the learning-track step filed before this round (normativity-learning-track; a shared root with normativity-line until that frame was dissolved on 2026-10-23); the track's work orders sit in the normativity docket. The theorem is unregistered.

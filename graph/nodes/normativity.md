@@ -1,19 +1,21 @@
 ---
 id: normativity
 kind: frame
-children: [normativity-line, seed-theory, operative-force, normative-inductor, response-learning, normative-record, docket-normativity]
+children: [seed-theory, operative-force, normative-inductor, response-learning, normative-record, docket-normativity, normativity-aug9-foundation, normativity-consolidation-open-1-6, normativity-paper-candidates]
 question: "What does learning from reasons require of a reasoner: which statics a normative seed forces, how a constraint acquires operative force in a market, and what the Normative Inductor, from seed through reasons, compile, enforcement and revision, establishes end to end?"
 owner: "@anson"
 filed_from: wiki
 narrative: wiki/Normativity.md
 roots:
-  - {id: normativity-line, role: plan, preset: worst-case}
   - {id: seed-theory, role: plan, preset: worst-case}
   - {id: operative-force, role: plan, preset: worst-case}
   - {id: normative-inductor, role: plan, preset: worst-case}
   - {id: response-learning, role: plan, preset: worst-case}
   - {id: normative-record, role: plan, preset: worst-case}
   - {id: docket-normativity, role: shared-claim, preset: worst-case}
+  - {id: normativity-aug9-foundation, role: shared-claim, preset: worst-case}
+  - {id: normativity-consolidation-open-1-6, role: shared-claim, preset: worst-case}
+  - {id: normativity-paper-candidates, role: shared-claim, preset: worst-case}
 work:
   - {kind: decision, ref: 2026-10-22--map-canonical-index-program-maintainer-handles}
   - {kind: round, ref: projects/normativity/rounds/2026-08-11-phi-regret-applicability}
@@ -37,4 +39,4 @@ A reasoner that answers to legitimately incurred obligations without ceasing to 
 wiki/Normativity.md, Core idea and Current status (the traderization arc registered; force, not legitimacy, established); wiki/Normative-Inductor.md, The architecture and The conditional theorems; wiki/Seed-Theory.md; wiki/Roadmap.md, Normativity; projects/normativity/CLAIMS.md.
 
 ## Notes
-The normativity line (ruling M2). Its roots: the public line as filed before this round (normativity-line, with the August 9 foundation, the fixed-era layer, the traderization step, the learning track, the six consolidation problems and the paper candidates), and the programmes this round drafted from the wiki per ruling M3: seed-theory, operative-force, normative-inductor, response-learning and the unspelled normative-record. The docket of the line's work orders (docket-normativity) holds every item of project normativity no finer goal was identified for. Drafted by prompts/2026-10-22-map-as-canonical; the owner has not confirmed the decomposition.
+The normativity line (ruling M2). Its roots: the programmes this round drafted from the wiki per ruling M3 (seed-theory, operative-force, normative-inductor, response-learning and the unspelled normative-record) and, since the follow-up of 2026-10-23 dissolved the pre-existing frame normativity-line (ruling F4), the line-level claims that frame held and no programme asks for: the August 9 foundation, the six consolidation problems and the paper candidates; its fixed-era layer sits under normative-inductor, its traderization step under operative-force and its learning track under response-learning. The docket of the line's work orders (docket-normativity) holds every item of project normativity no finer goal was identified for. Drafted by prompts/2026-10-22-map-as-canonical; the owner has not confirmed the decomposition.

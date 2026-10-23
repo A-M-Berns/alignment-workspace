@@ -7,6 +7,7 @@ size: M
 size_reason: "one registry entry, its Lean declaration and its bridge"
 version: 1
 author: "@smithy-verity"
+superseded_by: kernel-box2-finite-time
 ---
 ## Statement
 With `box2_gate_finite_time`: consulting beats bypass at every day whatever the inductor believes about legitimacy, the window at the band's floor. Inhabited by the pinned inductor witnesses of the li-corrigibility round.
@@ -18,3 +19,5 @@ The signature of `Workspace.Deference.Headline.box2_finite_time` in lean/Workspa
 
 ## Notes
 Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; its hypotheses are unread (ruling F1, 2026-10-23): the record's Source carries the signature verbatim, and a reader files the hypothesis leaves. Registry note: With `box2_gate_finite_time`: consulting beats bypass at every day whatever the inductor believes about legitimacy, the window at the band's floor. Inhabited by the pinned inductor witnesses of the li-corrigibility round. The registry's `answers_item` is the `priorities` pointer to item 104 (ruling F2).
+
+Superseded by kernel-box2-finite-time (ruling F5, 2026-10-23): the claim this result is the formal version of now carries the record, bridge and completeness leaf; this id is a deprecated alias.

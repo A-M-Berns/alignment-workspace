@@ -9,7 +9,7 @@ How to read a root's block: the *weakest proof-set leaf* is the least-vetted ele
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): Which formal account of how humans and AI systems learn from, correct and rely on each other guides AI safety engineering work?
 - steps: normativity, legitimacy, deference-and-trust, decision-theory, stance-and-level, abstraction-arc, enabling-work; leading step: deference-and-trust; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
-- rests on AI numbers (no human judgment yet): kernel-box2-finite-time
+- rests on AI numbers (no human judgment yet): kernel-no-laundering
 - safety margin: no established leaves
 - load-bearing shared leaves: none
 - frame owner @anson, @abram
@@ -45,8 +45,8 @@ Owner @anson, @abram
 #### normativity
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): What does learning from reasons require of a reasoner: which statics a normative seed forces, how a constraint acquires operative force in a market, and what the Normative Inductor, from seed through reasons, compile, enforcement and revision, establishes end to end?
-- steps: normativity-line, seed-theory, operative-force, normative-inductor, response-learning, normative-record, docket-normativity; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
-- rests on AI numbers (no human judgment yet): normativity-aug9-foundation
+- steps: seed-theory, operative-force, normative-inductor, response-learning, normative-record, docket-normativity, normativity-aug9-foundation, normativity-consolidation-open-1-6, normativity-paper-candidates; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- rests on AI numbers (no human judgment yet): normativity-layer-I-closed
 - safety margin: no established leaves
 - load-bearing shared leaves: none
 - frame owner @anson; owner has not confirmed (drafted from the wiki)
@@ -55,8 +55,8 @@ Owner @anson, @abram
 #### legitimacy
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): What must stay true of a trajectory's record, verdicts and channels of influence, inside it and at its boundary, for a later judgment to count as the principal's own, and what does corrigibility consume from that?
-- steps: legitimacy-reasons-programme, integrity-and-record, openness-and-non-capture, authorship-and-transparency, corrigibility-landscape, deference-toward-bounded-agents, docket-legitimacy; leading step: corrigibility-landscape; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
-- rests on AI numbers (no human judgment yet): kernel-box2-finite-time
+- steps: integrity-and-record, openness-and-non-capture, authorship-and-transparency, corrigibility-landscape, deference-toward-bounded-agents, docket-legitimacy, legit-definition-endorsement, legit-corrects-trust-principles, legit-per-formalism-family, legit-gated-trust-li, legit-ddb-transfer, legit-locality-forced, legit-reflection-unsat-modest, legit-composition, legit-li-self-correction-identity, legit-correction-function-learned, legit-condition-vs-predict-reality, legit-anchor-of-L, legit-global-or-local-form, legit-trust-improvable, legit-endpoint-preservation, idleness-on-G-grade-a, idleness-on-G-with-certificate, claim1-diagonal-illegitimate, corrupt-strictly-contains-inadmissible, trace-nonrecoverability, trace-nonrecoverability-li, wirehead-iff-finite, certificate-enforcement, predication-dichotomy, d3-identification, corrigibility-faithful-plus-legit-on-self, non-modification-conjecture, legit-v1-improvable, gate-is-legitimacy, public-layer-II, item-75, li-corrigibility-inequality-public, legitimate-deference-regret, legit-two-theories-bridge, bridge-defect-vs-thin-correct, bridge-trace-vs-transparency, legit-objective-proposals, illegitimate-world-ever-better, p2-manages-the-news, inferability-positivity, updateless-p2-cellwise-p3, deterrence-not-identified-on-path, corr-legit-modif-frames, legit-branch-evaluation-defense-requirements, readout-R1-vs-R2, retroactive-vs-prospective-judging, anger-substitute-for-updatelessness, legit-meta-revision, corrigibility-needs-consequentialist-wrapper, align-to-legitimacy-over-endorsement-risk, legit-weighted-objective-improvable, formalism-open-questions-0-3, internal-standard-never-settled, legit-dynamics-learning, reasons-subcase-of-legitimacy, reasons-statics-public, public-line-leaves-semantics-alone, brandom-objectivity-structural, brandom-relative-prices, reason-exchange-representation-theorem, legit-intersubjectivity-pre-rationality, reasons-improvable, legitimacy-meets-syntax, want-figure-out-legitimacy, want-corrigibility-theorems-via-legitimacy, want-legitimacy-anti-meme-post; leading step: corrigibility-landscape; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- rests on AI numbers (no human judgment yet): kernel-no-laundering
 - safety margin: no established leaves
 - load-bearing shared leaves: none
 - frame owner @anson, @abram; owner has not confirmed (drafted from the wiki)
@@ -116,16 +116,6 @@ Owner @anson, @abram
 Owner @anson
 
 ### Plans
-#### normativity-line
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- a programme (sub-frame): Does the public normativity line reach a legitimacy theorem useful for corrigibility and the learning theorem its layers aim at?
-- steps: normativity-aug9-foundation, normativity-layer-I-closed, traderization-arc, normativity-learning-track, normativity-consolidation-open-1-6, normativity-paper-candidates; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
-- rests on AI numbers (no human judgment yet): normativity-aug9-foundation
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- frame owner @anson
-- a programme: informs through its steps
-- best next unit: none
 #### seed-theory
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): What does a normative seed force on the prices of a settled fragment, how does that change under settlement, defeat and rebuttal, and do reasoners starting from different seeds end up anywhere together?
@@ -138,7 +128,7 @@ Owner @anson
 #### operative-force
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): How does a constraint acquire operative force in a logical inductor's market without destroying the property that nobody can pump the reasoner, and what does that force cost?
-- steps: li.assessment.budgeter-value, li.assessment.budgeter-floor, li.assessment.budgeter-exploits, li.assessment.firm-dominance, li.assessment.criterion, force.strategy-value, force.row-tolerance, force.preservation, force.deductive-day-nonneg, force.deductive-cumulative-nonneg, force.deductive-criterion, force.deductive-inductor, force.deductive-witness, coherence.modulus-soundness, coherence.modulus-net-cover, compiler.schedule-end-to-end, compiler.constraints-end-to-end, compiler.deductive-end-to-end, maxmin.representation, maxmin.converse, region.patterns-sound, region.patterns-complete, region.patterns-nonempty-iff, region.hull, smoke.faf-asymp-refl, smoke.chain-compiles, simplex.rational-points-sum-to-one; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- steps: li.assessment.budgeter-value, li.assessment.budgeter-floor, li.assessment.budgeter-exploits, li.assessment.firm-dominance, li.assessment.criterion, force.strategy-value, force.row-tolerance, force.preservation, force.deductive-day-nonneg, force.deductive-cumulative-nonneg, force.deductive-criterion, force.deductive-inductor, force.deductive-witness, coherence.modulus-soundness, coherence.modulus-net-cover, compiler.schedule-end-to-end, compiler.constraints-end-to-end, compiler.deductive-end-to-end, maxmin.representation, maxmin.converse, region.patterns-sound, region.patterns-complete, region.patterns-nonempty-iff, region.hull, smoke.faf-asymp-refl, smoke.chain-compiles, simplex.rational-points-sum-to-one, traderization-arc, docket-operative-force; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
 - safety margin: no established leaves
 - load-bearing shared leaves: none
 - frame owner @anson; owner has not confirmed (drafted from the wiki)
@@ -147,7 +137,8 @@ Owner @anson
 #### normative-inductor
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): Does a logical inductor made to answer to legitimately incurred obligations, through an enforcer on the compiled region of the entitled record, remain a logical inductor and deliver the Progress bound, and what remains conditional in that theorem?
-- steps: progress.edge-bound, progress.edge-bound-quadratic, progress.headline-separation, ni.progress-bound, warrant.licence-chain, warrant.supported-admissible, warrant.admissible-not-supported, warrant.supported-not-licensed, warrant.selection-not-transparent, inductor.grounded-survivors, inductor.conformance, inductor.certificate-transport, inductor.warrant-inductor, inductor.witness, inductor.rebuttal-run, inductor.contraposition-blocked; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- steps: progress.edge-bound, progress.edge-bound-quadratic, progress.headline-separation, ni.progress-bound, warrant.licence-chain, warrant.supported-admissible, warrant.admissible-not-supported, warrant.supported-not-licensed, warrant.selection-not-transparent, inductor.grounded-survivors, inductor.conformance, inductor.certificate-transport, inductor.warrant-inductor, inductor.witness, inductor.rebuttal-run, inductor.contraposition-blocked, normativity-layer-I-closed, docket-normative-inductor; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- rests on AI numbers (no human judgment yet): normativity-layer-I-closed
 - safety margin: no established leaves
 - load-bearing shared leaves: none
 - frame owner @anson; owner has not confirmed (drafted from the wiki)
@@ -180,38 +171,11 @@ Owner @anson
 - load-bearing shared leaves: none
 - informs 1 goal
 - best next unit: gestalt docket-normativity
-
-## Sub-frame normativity-line (in normativity): Does the public normativity line reach a legitimacy theorem useful for corrigibility and the learning theorem its layers aim at?
-Owner @anson
-
-### Shared claims
 #### normativity-aug9-foundation
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - rests on AI numbers (no human judgment yet): normativity-aug9-foundation
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### normativity-layer-I-closed
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): normativity-layer-I-closed
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### traderization-arc
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): traderization-arc
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### normativity-learning-track
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): normativity-learning-track
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- also a root of: response-learning
 - informs 0 goals (a single claim no goal reads: offered to connect)
 - best next unit: none
 #### normativity-consolidation-open-1-6
@@ -460,6 +424,19 @@ Owner @anson
 - load-bearing shared leaves: none
 - informs 1 goal
 - best next unit: gestalt simplex.rational-points-sum-to-one
+#### traderization-arc
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): traderization-arc
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### docket-operative-force
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 1 goal
+- best next unit: gestalt docket-operative-force
 
 ## Sub-frame normative-inductor (in normativity): Does a logical inductor made to answer to legitimately incurred obligations, through an enforcer on the compiled region of the entitled record, remain a logical inductor and deliver the Progress bound, and what remains conditional in that theorem?
 Owner @anson
@@ -561,9 +538,31 @@ Owner @anson
 - load-bearing shared leaves: none
 - informs 1 goal
 - best next unit: gestalt inductor.contraposition-blocked
+#### normativity-layer-I-closed
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): normativity-layer-I-closed
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### docket-normative-inductor
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 1 goal
+- best next unit: gestalt docket-normative-inductor
 
 ## Sub-frame response-learning (in normativity): Does a bounded learner, given due burdens, licensed responses and a bounded prospective loss, reduce a recurrent publicly represented failure by lawful edits, and with which coverage does that bear the interpretation of a lesson?
 Owner @anson
+
+### Shared claims
+#### normativity-learning-track
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): normativity-learning-track
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
 
 ## Sub-frame normative-record (in normativity): Before a learner can answer a demand, what determines why the demand arose, how evidence enters the practice, what authorizes a normative response, and what keeps an unanswered question from vanishing?
 Owner @anson; unspelled: no roots yet (its unit is spell-out)
@@ -572,16 +571,6 @@ Owner @anson; unspelled: no roots yet (its unit is spell-out)
 Owner @anson, @abram
 
 ### Plans
-#### legitimacy-reasons-programme
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- a programme (sub-frame): What makes a teaching or feedback channel legitimate, how does legitimacy enter the trust principles between a human process and an AI, and what does it owe to reasons and to inference?
-- steps: legit-definition-endorsement, legit-corrects-trust-principles, legit-per-formalism-family, legit-gated-trust-li, legit-ddb-transfer, legit-locality-forced, legit-reflection-unsat-modest, legit-composition, legit-li-self-correction-identity, legit-correction-function-learned, legit-condition-vs-predict-reality, legit-anchor-of-L, legit-global-or-local-form, legit-trust-improvable, legit-endpoint-preservation, idleness-on-G-grade-a, idleness-on-G-with-certificate, claim1-diagonal-illegitimate, corrupt-strictly-contains-inadmissible, trace-nonrecoverability, trace-nonrecoverability-li, wirehead-iff-finite, certificate-enforcement, predication-dichotomy, d3-identification, corrigibility-faithful-plus-legit-on-self, non-modification-conjecture, legit-v1-improvable, public-legitimacy-theory, thin-converse-open, thin-value-loss-bound, item-109, item-110, item-108, gate-is-legitimacy, public-layer-II, item-75, li-corrigibility-inequality-public, legitimate-deference-regret, effective-authority-layer, cnl-post, public-legitimacy-improvable, legit-two-theories-bridge, bridge-defect-vs-thin-correct, bridge-trace-vs-transparency, legit-objective-proposals, illegitimate-world-ever-better, p2-manages-the-news, inferability-positivity, updateless-p2-cellwise-p3, deterrence-not-identified-on-path, corr-legit-modif-frames, legit-branch-evaluation-defense-requirements, readout-R1-vs-R2, retroactive-vs-prospective-judging, anger-substitute-for-updatelessness, legit-meta-revision, corrigibility-needs-consequentialist-wrapper, align-to-legitimacy-over-endorsement-risk, legit-weighted-objective-improvable, formalism-open-questions-0-3, internal-standard-never-settled, legit-dynamics-learning, reasons-subcase-of-legitimacy, public-internal-legitimacy-is-reasons, reason-mediated-authorship, reasons-statics-public, public-line-leaves-semantics-alone, brandom-objectivity-structural, brandom-relative-prices, reason-exchange-representation-theorem, legit-intersubjectivity-pre-rationality, reasons-improvable, legitimacy-meets-syntax, want-figure-out-legitimacy, want-corrigibility-theorems-via-legitimacy, want-legitimacy-anti-meme-post; leading step: legitimacy-meets-syntax; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
-- rests on AI numbers (no human judgment yet): kernel-box2-finite-time
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- frame owner @anson, @abram
-- a programme: informs through its steps
-- best next unit: re-examine legitimacy-as-local-rules
 #### integrity-and-record
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): Can a cognitive trajectory falsify or silently rewrite its own normative history, and what does an Integrity evolution of the accounted obligation state conserve?
@@ -603,12 +592,13 @@ Owner @anson, @abram
 #### authorship-and-transparency
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): When is a verdict the principal's own program's and a channel's influence the declared reference on the declared inputs, and does the thick definition of legitimacy satisfy the thin specification?
-- steps: authorship.mediation-by-reexecution, thin.correct-of-thick, thin.sufficient-of-integrity-openness, thin.value-of-correct-sufficient, thin.value-of-thick, thin.converse-fails-on-correct, thin.reflection-inherited-value, thin.preservation, thin.preservation-pair, thin.marginal-martingale-too-weak, thin.value-loss-le-defects, thin.covert-blocking-correct-iff, sincerity.rows-keep-verdicts-counted, sincerity.rows-keep-verdicts-tainted, sincerity.sincere-error-counts, sincerity.lie-tainted, sincerity.content-fact, transparent.posterior-weight-eq, transparent.blind-payload, legitimacy.payload-of-view; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- steps: authorship.mediation-by-reexecution, thin.correct-of-thick, thin.sufficient-of-integrity-openness, thin.value-of-correct-sufficient, thin.converse-fails-on-correct, thin.reflection-inherited-value, thin.preservation, thin.preservation-pair, thin.marginal-martingale-too-weak, thin.value-loss-le-defects, thin.covert-blocking-correct-iff, sincerity.rows-keep-verdicts-counted, sincerity.rows-keep-verdicts-tainted, sincerity.sincere-error-counts, sincerity.lie-tainted, sincerity.content-fact, transparent.posterior-weight-eq, transparent.blind-payload, legitimacy.payload-of-view, public-legitimacy-theory, thin-converse-open, thin-value-loss-bound, item-109, item-110, item-108, effective-authority-layer, cnl-post, public-legitimacy-improvable, public-internal-legitimacy-is-reasons, reason-mediated-authorship, thin-value-of-thick; leading step: public-legitimacy-theory; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- rests on AI numbers (no human judgment yet): public-legitimacy-theory.complete, record-half-integrity, thin-reflection-is-trivial-baseline
 - safety margin: no established leaves
-- load-bearing shared leaves: none
+- load-bearing shared leaves: public-legitimacy-theory.complete, record-half-integrity, thin-reflection-is-trivial-baseline, thin.value-of-thick.bridge, thin.value-of-thick.complete, thin.value-of-thick.record
 - frame owner @anson, @abram; owner has not confirmed (drafted from the wiki)
 - a programme: informs through its steps
-- best next unit: none
+- best next unit: vet thin.value-of-thick.bridge
 #### corrigibility-landscape
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): Which correction relationships between humans and AI systems does the picture of corrigibility as eagerness to learn reach, and which failure stories does it leave standing?
@@ -631,19 +621,6 @@ Owner @anson, @abram
 - also a root of: deference-and-trust
 - a programme: informs through its steps
 - best next unit: vet void-branch-deterrence-floor.bridge
-
-### Shared claims
-#### docket-legitimacy
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt docket-legitimacy
-
-## Sub-frame legitimacy-reasons-programme (in legitimacy): What makes a teaching or feedback channel legitimate, how does legitimacy enter the trust principles between a human process and an AI, and what does it owe to reasons and to inference?
-Owner @anson, @abram
-
-### Plans
 #### legit-gated-trust-li
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - rests on AI numbers (no human judgment yet): legit-gated-tower-li-teacher, legit-gated-trust-li
@@ -658,13 +635,6 @@ Owner @anson, @abram
 - load-bearing shared leaves: none
 - informs 1 goal
 - best next unit: vet legit-endpoint-preservation
-#### public-legitimacy-theory
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): public-legitimacy-theory, public-legitimacy-theory.complete, record-half-integrity, thin-reflection-is-trivial-baseline, thin-value-of-thick
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet public-legitimacy-theory.complete
 #### public-layer-II
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - rests on AI numbers (no human judgment yet): counterfactual-non-capture, item-76, item-77, legitimacy-deference-instantiation, public-layer-II, public-layer-II.complete
@@ -676,7 +646,7 @@ Owner @anson, @abram
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): Which of the open questions listed for the li-deference formalism yield to the legitimacy and trust work, and in what form?
 - steps: finite-time-guarantee-available, lic-constrains-no-finite-day, kernel-box2-finite-time, traderized-finite-date-conformance, quantitative-rates, single-round-refinement, malign-hypothesis-window, approx-introspection-quantitative, approx-introspection-pins-discharge, oq-complexity-model, oq-elk, oq-anti-wireheading, oq-purely-epistemic-ai, oq-whispering-earring, oq-manipulation-theorem, kernel-no-laundering, open-problem-ledger-current; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
-- rests on AI numbers (no human judgment yet): kernel-box2-finite-time
+- rests on AI numbers (no human judgment yet): kernel-no-laundering
 - safety margin: no established leaves
 - load-bearing shared leaves: none
 - frame owner @anson, @abram
@@ -713,6 +683,12 @@ Owner @anson, @abram
 - best next unit: none
 
 ### Shared claims
+#### docket-legitimacy
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 1 goal
+- best next unit: gestalt docket-legitimacy
 #### legit-definition-endorsement
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - rests on AI numbers (no human judgment yet): legit-definition-endorsement, legit-definition-endorsement.partition
@@ -895,41 +871,6 @@ Owner @anson, @abram
 - load-bearing shared leaves: none
 - informs 1 goal
 - best next unit: vet route-v1-timely-fragment-certificate
-#### thin-converse-open
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): thin-converse-open
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### thin-value-loss-bound
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): thin-value-loss-bound
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### item-109
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): item-109
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 2 goals
-- best next unit: vet li-corrigibility-inequality-public
-#### item-110
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): item-110
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: do item-110
-#### item-108
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): item-108
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: do item-108
 #### gate-is-legitimacy
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - rests on AI numbers (no human judgment yet): gate-is-legitimacy
@@ -958,33 +899,13 @@ Owner @anson, @abram
 - load-bearing shared leaves: none
 - informs 0 goals (a single claim no goal reads: offered to connect)
 - best next unit: none
-#### effective-authority-layer
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): effective-authority-layer
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### cnl-post
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### public-legitimacy-improvable
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): item-108, public-legitimacy-improvable
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: re-examine public-legitimacy-improvable
 #### legit-two-theories-bridge
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - rests on AI numbers (no human judgment yet): legit-two-theories-bridge, legit-two-theories-bridge.partition
 - safety margin: no established leaves
 - load-bearing shared leaves: none
 - informs 1 goal
-- best next unit: vet thin-reflection-is-trivial-baseline
+- best next unit: vet legit-two-theories-bridge
 #### bridge-defect-vs-thin-correct
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - rests on AI numbers (no human judgment yet): bridge-defect-vs-thin-correct
@@ -1111,20 +1032,6 @@ Owner @anson, @abram
 - load-bearing shared leaves: none
 - informs 1 goal
 - best next unit: vet reasons-subcase-of-legitimacy
-#### public-internal-legitimacy-is-reasons
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): public-internal-legitimacy-is-reasons
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet public-internal-legitimacy-is-reasons
-#### reason-mediated-authorship
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): reason-mediated-authorship
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
 #### reasons-statics-public
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - rests on AI numbers (no human judgment yet): reasons-statics-public
@@ -1201,333 +1108,6 @@ Owner @anson, @abram
 - its units: connect want-legitimacy-anti-meme-post, do task-anti-meme-post-draft
 - informs 1 goal
 - best next unit: connect want-legitimacy-anti-meme-post
-
-## Sub-frame formalism-open-questions-0-3 (in legitimacy-reasons-programme): Which of the open questions listed for the li-deference formalism yield to the legitimacy and trust work, and in what form?
-Owner @anson, @abram
-
-### Risk stories
-#### malign-hypothesis-window
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): malign-hypothesis-window
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-
-### Shared claims
-#### finite-time-guarantee-available
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): finite-time-guarantee-available, finite-time-guarantee-available.partition
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet finite-time-guarantee-available
-#### lic-constrains-no-finite-day
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): lic-constrains-no-finite-day
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet lic-constrains-no-finite-day
-#### kernel-box2-finite-time
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): kernel-box2-finite-time
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet kernel-box2-finite-time
-#### traderized-finite-date-conformance
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): traderized-finite-date-conformance
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### quantitative-rates
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): quantitative-rates
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: do quantitative-rates
-#### single-round-refinement
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): single-round-refinement
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### approx-introspection-quantitative
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): approx-introspection-quantitative
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### approx-introspection-pins-discharge
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): approx-introspection-pins-discharge
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### oq-complexity-model
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): oq-complexity-model
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### oq-elk
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): oq-elk
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### oq-anti-wireheading
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): oq-anti-wireheading
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet oq-anti-wireheading
-#### oq-purely-epistemic-ai
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): oq-purely-epistemic-ai
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet self-fulfilling-prophecy-as-corruption
-#### oq-whispering-earring
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): oq-whispering-earring
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### oq-manipulation-theorem
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): oq-manipulation-theorem
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet trace-nonrecoverability.bridge
-#### kernel-no-laundering
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): kernel-no-laundering
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### open-problem-ledger-current
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): open-problem-ledger-current
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-
-## Sub-frame legit-dynamics-learning (in legitimacy-reasons-programme): Under what conditions does an AI learning the humans' concept of legitimacy learn enough of it to avoid wireheading and manipulation, and can legitimacy, once lost, be repaired?
-Owner @anson, @abram
-
-### Plans
-#### complete-feedback-formal-model
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): complete-feedback-formal-model
-- safety margin: no established leaves
-- load-bearing shared leaves: complete-feedback-formal-model
-- informs 1 goal
-- best next unit: vet complete-feedback-formal-model
-
-### Risk stories
-#### basin-failure-modes
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): basin-failure-modes
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-
-### Shared claims
-#### legit-learning-theorems
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-learning-theorems
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### legit-accumulated-odds
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-accumulated-odds
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet legit-composition.complete
-#### legit-repairable
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-repairable
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### legit-learned-from-others
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-learned-from-others
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### legit-partial-vs-total-corruption
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-partial-vs-total-corruption
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### self-fulfilling-prophecy-as-corruption
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): self-fulfilling-prophecy-as-corruption, self-fulfilling-prophecy-as-corruption.partition
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 2 goals
-- best next unit: vet self-fulfilling-prophecy-as-corruption
-#### legit-corruption-negation
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-corruption-negation
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: improve legit-corruption-negation
-#### counterfactual-oracle-not-special-case
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): counterfactual-oracle-not-special-case
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### legitimate-deliberation-definition
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legitimate-deliberation-definition
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: do legitimate-deliberation-definition
-#### legit-endorsement-good-utility
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-endorsement-good-utility
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### deliberation-tracking-assumption
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): deliberation-tracking-assumption
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### basin-of-attraction-legitimacy
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): basin-of-attraction-legitimacy
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### deliberation-fixed-points
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): deliberation-fixed-points
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-
-## Sub-frame legitimacy-meets-syntax (in legitimacy-reasons-programme): How does legitimacy cash out as local rules of sanity, and how do inferentialist semantics and map-territory semantics connect?
-Owner @anson, @abram
-
-### Plans
-#### legitimacy-as-local-rules
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legitimacy-as-local-rules, task-gli-hosts-informality
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 2 goals
-- best next unit: re-examine legitimacy-as-local-rules
-
-### Shared claims
-#### legit-semantic-vs-syntactic
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-semantic-vs-syntactic
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet legit-semantic-vs-syntactic
-#### local-rules-certify-legitimacy
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): local-rules-certify-legitimacy, local-rules-certify-legitimacy.partition
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet local-rules-certify-legitimacy
-#### tonk-is-a-sure-loss
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): tonk-is-a-sure-loss
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet tonk-is-a-sure-loss
-#### market-logic-connection
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): market-logic-connection
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### truth-beyond-the-limit
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): truth-beyond-the-limit
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### formality-informality
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): formality-informality
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### generalized-li-past-deduction
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): generalized-li-past-deduction
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### objectivity-as-invariance
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): objectivity-as-invariance
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### reflection-might-makes-right
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): reflection-might-makes-right
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-
-### Wants
-#### want-legitimacy-meets-syntax
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- a want of @abram; priority unset (reads as medium); owner has not confirmed; attachment: ⇢ legitimacy-as-local-rules (given)
-- its units: spell-out want-legitimacy-meets-syntax, re-examine legitimacy-as-local-rules, do task-harmony-theorem, do task-gli-hosts-informality, do task-syntactic-legitimacy-soundness
-- informs 1 goal
-- best next unit: spell-out want-legitimacy-meets-syntax
 
 ## Sub-frame integrity-and-record (in legitimacy): Can a cognitive trajectory falsify or silently rewrite its own normative history, and what does an Integrity evolution of the accounted obligation state conserve?
 Owner @anson, @abram
@@ -1668,6 +1248,15 @@ Owner @anson, @abram
 ## Sub-frame authorship-and-transparency (in legitimacy): When is a verdict the principal's own program's and a channel's influence the declared reference on the declared inputs, and does the thick definition of legitimacy satisfy the thin specification?
 Owner @anson, @abram
 
+### Plans
+#### public-legitimacy-theory
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): public-legitimacy-theory, public-legitimacy-theory.complete, record-half-integrity, thin-reflection-is-trivial-baseline
+- safety margin: no established leaves
+- load-bearing shared leaves: public-legitimacy-theory.complete, record-half-integrity, thin-reflection-is-trivial-baseline, thin.value-of-thick.bridge, thin.value-of-thick.complete, thin.value-of-thick.record
+- informs 1 goal
+- best next unit: vet thin.value-of-thick.bridge
+
 ### Shared claims
 #### authorship.mediation-by-reexecution
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
@@ -1693,12 +1282,6 @@ Owner @anson, @abram
 - load-bearing shared leaves: none
 - informs 1 goal
 - best next unit: gestalt thin.value-of-correct-sufficient
-#### thin.value-of-thick
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt thin.value-of-thick
 #### thin.converse-fails-on-correct
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - safety margin: no established leaves
@@ -1789,6 +1372,81 @@ Owner @anson, @abram
 - load-bearing shared leaves: none
 - informs 1 goal
 - best next unit: gestalt legitimacy.payload-of-view
+#### thin-converse-open
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): thin-converse-open
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### thin-value-loss-bound
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): thin-value-loss-bound
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### item-109
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): item-109
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 2 goals
+- best next unit: vet li-corrigibility-inequality-public
+#### item-110
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): item-110
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 1 goal
+- best next unit: do item-110
+#### item-108
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): item-108
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 1 goal
+- best next unit: do item-108
+#### effective-authority-layer
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): effective-authority-layer
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### cnl-post
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### public-legitimacy-improvable
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): item-108, public-legitimacy-improvable
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 1 goal
+- best next unit: re-examine public-legitimacy-improvable
+#### public-internal-legitimacy-is-reasons
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): public-internal-legitimacy-is-reasons
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 1 goal
+- best next unit: vet public-internal-legitimacy-is-reasons
+#### reason-mediated-authorship
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): reason-mediated-authorship
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### thin-value-of-thick
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- safety margin: no established leaves
+- load-bearing shared leaves: thin.value-of-thick.bridge, thin.value-of-thick.complete, thin.value-of-thick.record
+- informs 2 goals
+- best next unit: gestalt thin-value-of-thick
 
 ## Sub-frame corrigibility-landscape (in legitimacy): Which correction relationships between humans and AI systems does the picture of corrigibility as eagerness to learn reach, and which failure stories does it leave standing?
 Owner @anson
@@ -1867,7 +1525,7 @@ Owner @anson
 #### public-corrigibility-line
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): Does the authority-typed corrigibility kernel of the public deference line deliver guarantees for a real system, and how does it relate to the epistemic picture?
-- steps: authority-typed-corrigibility, post-corrigible-normative-learning, authority-typed-corrigibility.improvable, kernel-lexical-order-hypothesis, kernel-conditioning-fails-witness, kernel-restoration, reachable-corrective-control-negative, corrigibility-as-recoverability, corrigibility-architecture-round, li-corrigibilization-theorem, bria-corrigibility-round, kernel.box1-fidelity-versus-fully-updated-deference, kernel.box2-dominance, kernel.box2-mediation-faithful, kernel.box2-finite-time, kernel.box3-gap-exchange-rate, kernel.box3-no-laundering, kernel.box3-no-incentive-to-compromise, kernel.box3-restoration, kernel.hierarchy-per-decision, kernel.hierarchy-history, kernel.subjective-exchange-rate, kernel.extension-realized-rate, kernel.extension-bria-realization, kernel.corrigible-fidelity-score, kernel.corrigible-generic, kernel.extension-exploration-realization, authority.queue-no-bypass, authority.queue-no-caused-shortfall, authority.exchange-rate-queue, authority.flood-caused-shortfall, authority.comprehension-short, authority.approval-discount-defeated, authority.revocation-default, post.witness-sole-authority, post.witness-control-maximizer, post.witness-same-level, post.witness-learned-weight, post.witness-hindsight, post.theorem, post.theorem-li, post.flood-below-asking, shortfall.security-generable, shortfall.eventually-excluded, shortfall.table-generable, shortfall.atom-generable, shortfall.deferred-ahead, shortfall.deferred-eventually-excluded, asklist.rows-keep-verdicts-counted, asklist.rows-keep-verdicts-tainted, asklist.volume-by-want-tainted, asklist.order-by-want-tainted, asklist.offprotocol-deviation-finite, deconfusing.theorem1, deconfusing.theorem2a, deconfusing.theorem2b, deconfusing.theorem2b-strict, deconfusing.theorem2c, deconfusing.theorem2c-tau, deconfusing.theorem3a, deconfusing.theorem3a-rate, deconfusing.theorem3b, deconfusing.corollary-a, deconfusing.corollary-b, deconfusing.corollary-limit; leading step: post-corrigible-normative-learning; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- steps: authority-typed-corrigibility, post-corrigible-normative-learning, authority-typed-corrigibility.improvable, kernel-lexical-order-hypothesis, kernel-conditioning-fails-witness, kernel-restoration, reachable-corrective-control-negative, corrigibility-as-recoverability, corrigibility-architecture-round, li-corrigibilization-theorem, bria-corrigibility-round, kernel.box1-fidelity-versus-fully-updated-deference, kernel.box2-dominance, kernel.box2-mediation-faithful, kernel.box3-gap-exchange-rate, kernel.box3-no-laundering, kernel.box3-no-incentive-to-compromise, kernel.box3-restoration, kernel.hierarchy-per-decision, kernel.hierarchy-history, kernel.subjective-exchange-rate, kernel.extension-realized-rate, kernel.extension-bria-realization, kernel.corrigible-fidelity-score, kernel.corrigible-generic, kernel.extension-exploration-realization, authority.queue-no-bypass, authority.queue-no-caused-shortfall, authority.exchange-rate-queue, authority.flood-caused-shortfall, authority.comprehension-short, authority.approval-discount-defeated, authority.revocation-default, post.witness-sole-authority, post.witness-control-maximizer, post.witness-same-level, post.witness-learned-weight, post.witness-hindsight, post.theorem, post.theorem-li, post.flood-below-asking, shortfall.security-generable, shortfall.eventually-excluded, shortfall.table-generable, shortfall.atom-generable, shortfall.deferred-ahead, shortfall.deferred-eventually-excluded, asklist.rows-keep-verdicts-counted, asklist.rows-keep-verdicts-tainted, asklist.volume-by-want-tainted, asklist.order-by-want-tainted, asklist.offprotocol-deviation-finite, deconfusing.theorem1, deconfusing.theorem2a, deconfusing.theorem2b, deconfusing.theorem2b-strict, deconfusing.theorem2c, deconfusing.theorem2c-tau, deconfusing.theorem3a, deconfusing.theorem3a-rate, deconfusing.theorem3b, deconfusing.corollary-a, deconfusing.corollary-b, deconfusing.corollary-limit, kernel-box2-finite-time; leading step: post-corrigible-normative-learning; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
 - rests on AI numbers (no human judgment yet): post-corrigible-normative-learning
 - safety margin: no established leaves
 - load-bearing shared leaves: none
@@ -2738,12 +2396,6 @@ Owner @anson
 - load-bearing shared leaves: none
 - informs 1 goal
 - best next unit: gestalt kernel.box2-mediation-faithful
-#### kernel.box2-finite-time
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt kernel.box2-finite-time
 #### kernel.box3-gap-exchange-rate
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - safety margin: no established leaves
@@ -3044,6 +2696,13 @@ Owner @anson
 - load-bearing shared leaves: none
 - informs 1 goal
 - best next unit: gestalt deconfusing.corollary-limit
+#### kernel-box2-finite-time
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- also a root of: formalism-open-questions-0-3
+- informs 2 goals
+- best next unit: gestalt kernel-box2-finite-time
 
 ## Sub-frame deference-toward-bounded-agents (in legitimacy): Does the deference collapse, or an analogue of it, hold for a bounded trained agent deferring to human teachers?
 Owner @abram
@@ -3079,6 +2738,326 @@ Owner @abram
 - load-bearing shared leaves: none
 - informs 1 goal
 - best next unit: vet deck-collapse-statement.complete
+
+## Sub-frame formalism-open-questions-0-3 (in legitimacy): Which of the open questions listed for the li-deference formalism yield to the legitimacy and trust work, and in what form?
+Owner @anson, @abram
+
+### Risk stories
+#### malign-hypothesis-window
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): malign-hypothesis-window
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+
+### Shared claims
+#### finite-time-guarantee-available
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): finite-time-guarantee-available, finite-time-guarantee-available.partition
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 1 goal
+- best next unit: vet finite-time-guarantee-available
+#### lic-constrains-no-finite-day
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): lic-constrains-no-finite-day
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 1 goal
+- best next unit: vet lic-constrains-no-finite-day
+#### traderized-finite-date-conformance
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): traderized-finite-date-conformance
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### quantitative-rates
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): quantitative-rates
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 1 goal
+- best next unit: do quantitative-rates
+#### single-round-refinement
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): single-round-refinement
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### approx-introspection-quantitative
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): approx-introspection-quantitative
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### approx-introspection-pins-discharge
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): approx-introspection-pins-discharge
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### oq-complexity-model
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): oq-complexity-model
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### oq-elk
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): oq-elk
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### oq-anti-wireheading
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): oq-anti-wireheading
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 1 goal
+- best next unit: vet oq-anti-wireheading
+#### oq-purely-epistemic-ai
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): oq-purely-epistemic-ai
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 1 goal
+- best next unit: vet self-fulfilling-prophecy-as-corruption
+#### oq-whispering-earring
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): oq-whispering-earring
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### oq-manipulation-theorem
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): oq-manipulation-theorem
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 1 goal
+- best next unit: vet trace-nonrecoverability.bridge
+#### kernel-no-laundering
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): kernel-no-laundering
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### open-problem-ledger-current
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): open-problem-ledger-current
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+
+## Sub-frame legit-dynamics-learning (in legitimacy): Under what conditions does an AI learning the humans' concept of legitimacy learn enough of it to avoid wireheading and manipulation, and can legitimacy, once lost, be repaired?
+Owner @anson, @abram
+
+### Plans
+#### complete-feedback-formal-model
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): complete-feedback-formal-model
+- safety margin: no established leaves
+- load-bearing shared leaves: complete-feedback-formal-model
+- informs 1 goal
+- best next unit: vet complete-feedback-formal-model
+
+### Risk stories
+#### basin-failure-modes
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): basin-failure-modes
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+
+### Shared claims
+#### legit-learning-theorems
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): legit-learning-theorems
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### legit-accumulated-odds
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): legit-accumulated-odds
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 1 goal
+- best next unit: vet legit-composition.complete
+#### legit-repairable
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): legit-repairable
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### legit-learned-from-others
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): legit-learned-from-others
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### legit-partial-vs-total-corruption
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): legit-partial-vs-total-corruption
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### self-fulfilling-prophecy-as-corruption
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): self-fulfilling-prophecy-as-corruption, self-fulfilling-prophecy-as-corruption.partition
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 2 goals
+- best next unit: vet self-fulfilling-prophecy-as-corruption
+#### legit-corruption-negation
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): legit-corruption-negation
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 1 goal
+- best next unit: improve legit-corruption-negation
+#### counterfactual-oracle-not-special-case
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): counterfactual-oracle-not-special-case
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### legitimate-deliberation-definition
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): legitimate-deliberation-definition
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 1 goal
+- best next unit: do legitimate-deliberation-definition
+#### legit-endorsement-good-utility
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): legit-endorsement-good-utility
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### deliberation-tracking-assumption
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): deliberation-tracking-assumption
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### basin-of-attraction-legitimacy
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): basin-of-attraction-legitimacy
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### deliberation-fixed-points
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): deliberation-fixed-points
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+
+## Sub-frame legitimacy-meets-syntax (in legitimacy): How does legitimacy cash out as local rules of sanity, and how do inferentialist semantics and map-territory semantics connect?
+Owner @anson, @abram
+
+### Plans
+#### legitimacy-as-local-rules
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): legitimacy-as-local-rules, task-gli-hosts-informality
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 2 goals
+- best next unit: re-examine legitimacy-as-local-rules
+
+### Shared claims
+#### legit-semantic-vs-syntactic
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): legit-semantic-vs-syntactic
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 1 goal
+- best next unit: vet legit-semantic-vs-syntactic
+#### local-rules-certify-legitimacy
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): local-rules-certify-legitimacy, local-rules-certify-legitimacy.partition
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 1 goal
+- best next unit: vet local-rules-certify-legitimacy
+#### tonk-is-a-sure-loss
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): tonk-is-a-sure-loss
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 1 goal
+- best next unit: vet tonk-is-a-sure-loss
+#### market-logic-connection
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): market-logic-connection
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### truth-beyond-the-limit
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): truth-beyond-the-limit
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### formality-informality
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): formality-informality
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### generalized-li-past-deduction
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): generalized-li-past-deduction
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### objectivity-as-invariance
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): objectivity-as-invariance
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+#### reflection-might-makes-right
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- rests on AI numbers (no human judgment yet): reflection-might-makes-right
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
+
+### Wants
+#### want-legitimacy-meets-syntax
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- a want of @abram; priority unset (reads as medium); owner has not confirmed; attachment: ⇢ legitimacy-as-local-rules (given)
+- its units: spell-out want-legitimacy-meets-syntax, re-examine legitimacy-as-local-rules, do task-harmony-theorem, do task-gli-hosts-informality, do task-syntactic-legitimacy-soundness
+- informs 1 goal
+- best next unit: spell-out want-legitimacy-meets-syntax
 
 ## Sub-frame deference-and-trust (in the-program): Which research on trust between a human inductor and an AI inductor, at the logical-induction level, reaches a formal account of trust that guides AI safety engineering work?
 Owner @abram
@@ -5362,6 +5341,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - jurisdiction.static-view-eq: round: prompts/2026-08-11-stage-v-li-native; work order: PRIORITIES #28
 - jurisdiction.value-eq-of-price-realization: round: prompts/2026-08-11-stage-v-li-native; work order: PRIORITIES #28
 - kelly-identity-lean-checked: Lean-check the parimutuel Kelly identity (full-stake wealth shares equal Bayesian mixture weights) and the common-factor cancellation in one clean-room-style file. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/
+- kernel-box2-finite-time: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
 - kernel-route-fallible-future-comparator: Give PRIORITIES item 27's fallible future agent its own logical-inductor credence (a split between the agent as implemented and the algorithm it approximates is one candidate) and check the sign verdict. (who: agent); work order: PRIORITIES #27; files: PRIORITIES.md
 - kernel-route-foreclosure-expressibility: Test whether the corrigibility line's general object (pushes along a trajectory) supplies the later-index authorization operation that Q3 says every candidate lacked, giving either a fourth candidate with what kills it or a lead. (who: agent); files: PRIORITIES.md, projects/deference/faf-cleanroom-2026-10-02/packages/corr-general-object
 - kernel.box1-fidelity-versus-fully-updated-deference: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
@@ -5625,6 +5605,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - theory-dynamics-literature: Assemble a reading list on how theories are individuated and how they change, from philosophy of science on theory change and reduction and from the literature on ontological crises. (who: either)
 - thin-converse-open: Mechanize Blackwell's converse for the sufficient half (value for every finite decision problem under a correct credence implies the reference is a garbling of the later record) by a separating-hyperplane argument, in the thin-legitimacy Lean module. (who: agent); work order: PRIORITIES #107; files: lean/
 - thin-value-loss-bound: Prove the kernel form of the value-loss bound and the loss of correct bounded by the pathwise transparency defect, beyond deterministic records. (who: agent); work order: PRIORITIES #107; files: lean/
+- thin-value-of-thick: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
 - thin.converse-fails-on-correct: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
 - thin.correct-of-thick: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
 - thin.covert-blocking-correct-iff: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
@@ -6339,7 +6320,9 @@ The outside option and the undescribed failure, each a cases node over the outco
 | distributed-cooperative-oracles-route | leaf/question | 2 (both) | AI number | open | 0 | 1 |
 | docket-deference | or | 2 (both) |  | open | 1 | 1 |
 | docket-legitimacy | or | 2 (both) |  | open | 1 | 1 |
+| docket-normative-inductor | or | 2 (both) |  | open | 1 | 1 |
 | docket-normativity | or | 2 (both) |  | open | 1 | 1 |
+| docket-operative-force | or | 2 (both) |  | open | 1 | 1 |
 | docket-seed | or | 2 (both) |  | open | 1 | 1 |
 | docket-workspace | or | 2 (both) |  | open | 1 | 1 |
 | domain-relative-value | leaf/step | 2 (both) | AI number | open | 0 | 1 |
@@ -6643,7 +6626,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | item-121 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
 | item-122 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
 | item-123 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-124 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
+| item-124 | leaf/task | 2 (both) | no belief | open | 1 | 1 |
 | item-125 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
 | item-126 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
 | item-127 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
@@ -6676,7 +6659,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | item-36 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
 | item-37 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
 | item-38 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-39 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
+| item-39 | leaf/task | 2 (both) | no belief | open | 1 | 1 |
 | item-4 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
 | item-40 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
 | item-41 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
@@ -6767,7 +6750,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | kernel-box1-fidelity-vs-fud | and | 2 (both) |  | open | 1 | 1 |
 | kernel-box1-fidelity-vs-fud.record | leaf/record | 2 (ref) | AI number | open | 1 | 6 |
 | kernel-box1-fidelity-vs-fud.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
-| kernel-box2-finite-time | leaf/step | 2 (both) | AI number | open | 1 | 1 |
+| kernel-box2-finite-time | and | 2 (both) | AI number, hypotheses unread | open | 1 | 2 |
 | kernel-box2-mediation.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 6 |
 | kernel-box2-mediation.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 6 |
 | kernel-box2-mediation | and | 2 (both) |  | open | 1 | 1 |
@@ -6798,10 +6781,10 @@ The outside option and the undescribed failure, each a cases node over the outco
 | kernel.box2-dominance.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
 | kernel.box2-dominance | and | 2 (both) | hypotheses unread | open | 1 | 1 |
 | kernel.box2-dominance.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| kernel.box2-finite-time.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| kernel.box2-finite-time.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.box2-finite-time | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| kernel.box2-finite-time.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| kernel.box2-finite-time.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 2 |
+| kernel.box2-finite-time.complete | leaf/completeness | 2 (both) |  | open | 1 | 2 |
+| kernel.box2-finite-time | and | 2 (both) | hypotheses unread, superseded by kernel-box2-finite-time | open | 0 | 0 (informs no goal) |
+| kernel.box2-finite-time.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 2 |
 | kernel.box2-mediation-faithful.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | kernel.box2-mediation-faithful.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
 | kernel.box2-mediation-faithful | and | 2 (both) | hypotheses unread | open | 1 | 1 |
@@ -6944,7 +6927,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | legitimacy-detection-load | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | legitimacy-detection | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
 | legitimacy-meets-syntax | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
-| legitimacy-reasons-programme | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
+| legitimacy-reasons-programme | frame | 2 (both) | superseded by legitimacy | open | 0 | 0 (informs no goal) |
 | legitimacy-rule-characterization | or | 2 (both) | AI number | open | 1 | 1 |
 | legitimacy-weighted-deference | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
 | legitimacy.answerable.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
@@ -7191,7 +7174,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | normativity-consolidation-open-1-6 | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | normativity-layer-I-closed | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | normativity-learning-track | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
-| normativity-line | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
+| normativity-line | frame | 2 (both) | superseded by normativity | open | 0 | 0 (informs no goal) |
 | normativity-paper-candidates | leaf/step | 2 (both) | AI number, given task-naming-audit | open | 1 | 1 |
 | normativity | frame | 2 (both) | owner has not confirmed (drafted from wiki/Normativity.md) | open | 1 | 0 (informs no goal) |
 | note-corrections-beside-li-deference | leaf/task | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
@@ -7556,8 +7539,8 @@ The outside option and the undescribed failure, each a cases node over the outco
 | public-layer-II | and | 2 (both) | AI number | open | 1 | 1 |
 | public-legitimacy-improvable | or | 2 (both) | AI number, improvement claim on public-legitimacy-theory (reality: legitimacy between a human principal and an AI over real channels) | open | 1 | 1 |
 | public-legitimacy-improvable.residual | leaf/route | 2 (both) | AI number | open | 0 | 2 |
-| public-legitimacy-theory.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
-| public-legitimacy-theory | and | 2 (both) | AI number | open | 1 | 1 |
+| public-legitimacy-theory.complete | leaf/completeness | 2 (both) | AI number | open | 2 | 1 |
+| public-legitimacy-theory | and | 2 (both) | AI number | open | 2 | 1 |
 | public-line-leaves-semantics-alone | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | public-port-of-deference-results | or | 2 (both) | AI number | open | 1 | 1 |
 | publication-form-decided | leaf/question | 2 (both) | AI number | open | 0 | 1 |
@@ -7587,7 +7570,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | rebuttal.settleform-sound | and | 2 (both) | hypotheses unread | open | 1 | 1 |
 | rebuttal.settleform-sound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
 | reconstruction-score-role | leaf/question | 2 (both) | AI number | open | 1 | 1 |
-| record-half-integrity | leaf/step | 2 (both) | AI number | open | 1 | 1 |
+| record-half-integrity | leaf/step | 2 (both) | AI number | open | 2 | 1 |
 | recorded-point-dag-setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
 | reflection-bifurcation | leaf/step | 2 (both) | AI number | open | 0 | 3 |
 | reflection-into-diagram | leaf/task | 2 (both) | AI number, given reflection-bifurcation | open | 0 | 1 |
@@ -7900,9 +7883,9 @@ The outside option and the undescribed failure, each a cases node over the outco
 | theorem-b-robust-self-trust | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | theory-dynamics-literature | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | thin-converse-open | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
-| thin-reflection-is-trivial-baseline | leaf/step | 2 (both) | AI number | open | 1 | 2 |
+| thin-reflection-is-trivial-baseline | leaf/step | 2 (both) | AI number | open | 2 | 2 |
 | thin-value-loss-bound | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
-| thin-value-of-thick | leaf/step | 2 (both) | AI number | open | 1 | 1 |
+| thin-value-of-thick | and | 2 (both) | AI number, hypotheses unread | open | 3 | 2 |
 | thin.converse-fails-on-correct.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
 | thin.converse-fails-on-correct.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
 | thin.converse-fails-on-correct | and | 2 (both) | hypotheses unread | open | 1 | 1 |
@@ -7943,10 +7926,10 @@ The outside option and the undescribed failure, each a cases node over the outco
 | thin.value-of-correct-sufficient.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
 | thin.value-of-correct-sufficient | and | 2 (both) | hypotheses unread | open | 1 | 1 |
 | thin.value-of-correct-sufficient.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| thin.value-of-thick.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| thin.value-of-thick.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| thin.value-of-thick | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| thin.value-of-thick.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| thin.value-of-thick.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 3 | 2 |
+| thin.value-of-thick.complete | leaf/completeness | 2 (both) |  | open | 3 | 2 |
+| thin.value-of-thick | and | 2 (both) | hypotheses unread, superseded by thin-value-of-thick | open | 0 | 0 (informs no goal) |
+| thin.value-of-thick.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 3 | 2 |
 | third-button-obstruction | leaf/assumption | 2 (both) | AI number | open | 0 | 8 |
 | thm-power-seeking-optimal.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted, given ps-cor614-orbit-count@valid | open | 0 | 6 |
 | thm-power-seeking-optimal.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 6 |
@@ -8205,4 +8188,4 @@ The outside option and the undescribed failure, each a cases node over the outco
 | wirehead-iff-finite.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 2 |
 | wirehead-iff-finite.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 2 |
 | worlds-and-points-companion | leaf/question | 2 (both) | AI number | open | 0 | 8 |
-<!-- generated_hash: f1f35e3c441da440bb99d7de -->
+<!-- generated_hash: 7ee08982009a203fbc2dc4bf -->
