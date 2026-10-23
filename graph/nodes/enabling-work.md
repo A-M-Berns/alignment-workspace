@@ -1,7 +1,7 @@
 ---
 id: enabling-work
 kind: frame
-children: [enabling-vetting-and-prioritization-system, enabling-machine-checked-corpus, enabling-publication-pipeline, crux-formalize-before-write-up, crux-vetting-or-generation, enabling-map-as-canonical, enabling-program-site, docket-workspace]
+children: [enabling-vetting-and-prioritization-system, enabling-machine-checked-corpus, enabling-publication-pipeline, crux-formalize-before-write-up, crux-vetting-or-generation, enabling-map-as-canonical, enabling-program-site]
 question: "Which repository infrastructure makes the trust research vettable and publishable?"
 owner: ["@anson", "@abram"]
 roots:
@@ -12,7 +12,7 @@ roots:
   - {id: crux-vetting-or-generation, role: shared-claim, preset: worst-case}
   - {id: enabling-map-as-canonical, role: shared-claim, preset: worst-case}
   - {id: enabling-program-site, role: shared-claim, preset: worst-case}
-  - {id: docket-workspace, role: shared-claim, preset: worst-case}
+holds: [item-f1, item-f2, item-f3, item-f4, item-f5, item-f6, item-f7, item-f8, item-10, item-11, item-12, item-13, item-36, item-37, item-38]
 work:
   - {kind: decision, ref: 2026-10-22--map-canonical-index-program-maintainer-handles}
   - {kind: round, ref: prompts/2026-08-11-attribution-provenance-names}

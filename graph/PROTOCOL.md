@@ -177,9 +177,9 @@ Frames nest to any depth, and this nesting is how the agenda is filed: the
 maintainer's research aim is a frame under the top frame, each of its lines
 (a decision-theoretic stance at a level of computability) a frame under
 that, each programme a frame under its line. A frame whose roots are not
-yet spelled out has `roots: []` and `children: []`: it is *unspelled*, has
-no status, value or proof set, is outside the plan decision, and its unit
-is `spell-out` (§6). A frame marked `opened: false` records a line
+yet spelled out has `roots: []`, `children: []` and no `holds` (below): it
+is *unspelled*, has no status, value or proof set, is outside the plan
+decision, and its unit is `spell-out` (§6). A frame marked `opened: false` records a line
 deliberately not opened: it may hold shared claims and risk stories as
 roots but no plan root, gets no `spell-out` unit, is outside the plan
 decision, and the view prints *not opened; see Notes*. A step's status,
@@ -201,6 +201,28 @@ frame, its placement being its owner's word; a node listed twice by one
 frame, or with different roles by different frames, is refused (rule 1).
 **Decided (2026-10-22, ruling M2)** that a root belonging to two lines is
 filed once; **Default** for the home rule.
+
+**What a frame holds.** A frame (the top frame included) may carry `holds`,
+a list of node ids the frame is *about* that are not goals of the ranking
+(ruling G2, 2026-10-23; the field's name is provisional): the registered
+results filed under a programme because they belong to it, the work orders
+filed against a line or programme whose goal nobody has identified, the
+claims a dissolved frame left at its line until a maintainer places them. A
+held node is attached by its membership (rule 1), carries no role or
+preset, is no root, and enters no status, value, stake, safety margin, load
+or unit of the frame; `derived.json` lists it under the frame (`held`, and
+*held by* on the node), the index gives it an `in_frames` entry with
+`membership: holds`, and the view prints it under the frame's *Held*
+heading with its kind. A node may be held by one frame and a root of
+another: it ranks where it is a root, and otherwise only under `--scope`
+naming it. A held id that resolves to nothing is refused (rule 1); a node
+both held and a root of the same frame, a node held twice, and a frame, a
+valuation node or a want in `holds` are refused (rule 2; a want is a root of
+exactly one frame). A frame with `roots: []` and a non-empty `holds` is
+*spelled, with nothing yet a goal*: it is no `spell-out` candidate, and the
+flag and the view say so. **Decided (ruling G2)** that a frame holds what it
+is about and that its roots are its goals; **Default** for the field's name,
+its placement in the files and the renders.
 
 **Narratives and drafted frames.** `narrative`, on the top frame, a frame or
 any node, names one `wiki/<Page>.md` page or a list of them, the pages that
@@ -224,7 +246,11 @@ whose tables cite it. The first roots come from the maintainer's
 research agenda as filed in the map (a plan under the broad top frame, its
 lines along two axes, decision-theoretic stance and level of computability,
 with its named cruxes as `cases` nodes and the abstraction arc as its later
-stage) and from the repository's claims registries. **Decided.**
+stage) and from the repository's claims registries. A root is a *goal* of
+the ranking (§6); a node a frame is merely about, a registered result filed
+under its programme or a work order no goal was identified for, is held,
+not rooted (above). **Decided**; **Decided (ruling G2, 2026-10-23)** that
+what a frame is about without being its goal is held.
 
 **Owned wants.** Any contributor may add and own more specific
 wants without having a view on how they connect, so that contributors can
@@ -475,10 +501,12 @@ read from the annotations), `deliverable`, `acceptance` and `context` where
 the entry states them, and a `## Item` section holding the entry's body
 verbatim. `PRIORITIES.md` is rendered from them (§1); an item node hangs
 under the goal it serves as a route or as evidence, or, where no finer goal
-is identified, as a route of its project's *docket*, an `or` that is a
-shared-claim root of the line's frame. Item nodes are specification layer
+is identified, is held by the frame of its line or programme (`holds`, §2;
+ruling G2 of 2026-10-23 dissolved the *dockets*, the `or` nodes of work
+orders the round had filed as shared-claim roots, and deleted their files).
+Item nodes are specification layer
 (`tests/path_gate.py`, `.github/CODEOWNERS`). **Decided** for the render and
-the transcription; **Default** for the fields and the dockets.
+the transcription; **Default** for the fields and the holding.
 
 **Decision anchors.** Each entry of `DECISIONS.md` carries one machine line
 (ruling M7, 2026-10-22): `<!-- decision: <anchor>; touches: <kind:ref>, …
@@ -1465,9 +1493,16 @@ commit; a handle is created by a pull request adding its line to
   `frame`; the frame it holds, with its own question, owner and roots; one
   of those roots; the step whose value (else probability) the programme
   reads as its own.
-- **Unspelled frame, not opened.** A frame with `roots: []`, awaiting a
-  `spell-out`; a frame marked `opened: false`, a line recorded and
-  deliberately left closed, with no plan roots and no `spell-out`.
+- **Unspelled frame, not opened.** A frame with `roots: []` and no `holds`,
+  awaiting a `spell-out` (one with `roots: []` and held nodes is spelled,
+  with nothing yet a goal); a frame marked `opened: false`, a line recorded
+  and deliberately left closed, with no plan roots and no `spell-out`.
+- **Held, `holds`.** A node listed in a frame's `holds`: what the frame is
+  about without being a goal of the ranking (a registered result under its
+  programme, a work order whose goal is unidentified, a claim awaiting
+  placement); attached by membership, with no role, status, value or unit
+  there; it ranks where it is a root of another frame, else only under
+  `--scope` naming it (ruling G2, 2026-10-23).
 - **Want, priority word, owner has not confirmed, unattached.** A claim
   with `want: true` and a human owner, a root of role `want`: a state of
   affairs its owner wants to see, carrying its owner's priority and no AI
@@ -1494,13 +1529,13 @@ commit; a handle is created by a pull request adding its line to
   or node (`narrative`); a frame an agent drafted from a wiki page
   (`filed_from: wiki`), flagged *owner has not confirmed* until the owner
   removes the field.
-- **Item node, docket, decision anchor.** The node of one `PRIORITIES.md`
-  entry (`item-<n>`), from which the file is rendered; the `or` of a
-  project's work orders no finer goal was identified for, an `or` filed as a
-  shared-claim root of its line or programme whose Statement says what it is
-  (ruling F6, 2026-10-23: "Work orders filed against <programme>, not yet
-  attached to the goal each serves; their placement is the maintainer's"); the
-  machine line of a `DECISIONS.md` entry that a `decision` pointer names.
+- **Item node, docket (retired), decision anchor.** The node of one
+  `PRIORITIES.md` entry (`item-<n>`), from which the file is rendered; the
+  *docket*, the `or` of a project's work orders no finer goal was identified
+  for, filed as a shared-claim root of its line or programme (ruling F6,
+  2026-10-23), retired the same day by ruling G2: the work orders are held
+  by the frame (`holds`) and the docket nodes are deleted; the machine line
+  of a `DECISIONS.md` entry that a `decision` pointer names.
 - **Structure-only index.** graph/index.json, the fifth generated file (not
   committed since 2026-10-23; published to the branch `derived`): the map's
   structure and the human ledgers, with no derived number.
@@ -1634,11 +1669,11 @@ every clause below.
 
 | rule | refused when |
 |---|---|
-| 1 | an id is not unique across nodes, proposals and events; a reference (`children`, a row's `picture`, `hypotheses`, `negation_of`, `refines`, `committed`, `supersedes`, `superseded_by`, `given` on a node or a row, `improves`, `refinement_of`, an event `target`, a frame's `roots`, a `priorities` pointer where the tree holds item nodes, a `decision` pointer's anchor, a `foundation` pointer's id) resolves to nothing; two item nodes carry one item number; the graph over `children` and `given` edges (rows included, `@valid` stripped) has a cycle; a non-superseded node is attached to nothing (§2: not a root of any frame, not a valuation node, listed in no attached node's `children`, the given parent of no attached node or row), every such node named; a top-frame root or valuation node is named in a `children` list; a want is a root of more than one frame, a node is listed twice as a root of one frame, or a shared root's entries name different roles; an event targets `if-holds` or `if-fails` on a node without `given`, or `p-if-holds` or `p-if-fails` on a row without it |
-| 2 | a kind, `leaf_kind`, role, preset, event kind, `how`, `via`, `dimension`, `who`, `filed_from` value, `work` kind or class id is unknown; a kind's required fields are missing (a leaf's `leaf_kind`, an `and`'s one completeness child, a `cases` node's one partition child and matching rows, a `choose`'s `decided_at`, a hypothesis's `discharge`, a record's `statement_of_record` (its `hypotheses` a list of ids or the word `unread`, never both), a formal result's one bridge with `attribution`, a `frame`'s `question`, human `owner` and `roots` naming exactly its children, the top frame's human `owner`, a task leaf's `action` and `who`, an improvement leaf's `improves`); a `choose` lies outside every plan root's support; a choice point (an uncommitted `choose` or a `choose-one` `or`) lies in the support of two plan roots that are not programmes (each plan is refined by its own pick, and a shared one would be evaluated under one plan's pick; refused until shared choices have a ruled meaning); a frame node is not a plan root of some frame, or is a root in another role (a retired frame, one carrying `superseded_by`, is exempt and holds no roots and no children: they moved to the frame that supersedes it, ruling F4 of 2026-10-23); a frame has `opened: false` and a plan root, or `roots: []` and children; `given` sits on a leaf kind other than assumption, hypothesis, bridge, step, question, route, improvement, task or want, or names a frame, a `choose`, a valuation node or a picture, partition or completeness leaf; `@valid` names anything but an `and` (in a `given` or in `--scope`); `class_given` appears without `given` or is not a map of `holds` and `fails`; a `rule`'s row carries `given`; `improves` appears without `reality` (or with an empty one) or `reality` without `improves`, or `improves` sits on a frame or on anything but an improvement leaf, an `or` or a `cases` node; an improvement `or` lacks exactly one `residual: true` route child; `residual: true` sits on anything but a route child of an improvement `or`; a route leaf lies in no improvement claim's support; a node with `want: true` lacks a human owner, has an id not beginning `want-`, is a leaf of a kind other than `want`, or is not a root of role `want`; a want leaf lacks `want: true`; a root of role `want` lacks `want: true` or carries `preset`, `success_class` or `budget`; `action` or `who` sits on a leaf kind other than task, question, step, hypothesis, route or improvement; a `priorities` work ref is no integer; a frame's `owner` (the top frame's included) is not a human handle or a list of human handles; `narrative` names a page that is not under `wiki/` or does not exist; `filed_from` is neither `quote` nor `wiki`, or `filed_from: wiki` sits on anything but a frame; an item node lacks `item` (the number as a string), `title`, `section`, an integer `maintainer_order`, `dispatchable` or `item_status`, or a node whose id begins `item-` carries no `item` |
+| 1 | an id is not unique across nodes, proposals and events; a reference (`children`, a row's `picture`, `hypotheses`, `negation_of`, `refines`, `committed`, `supersedes`, `superseded_by`, `given` on a node or a row, `improves`, `refinement_of`, an event `target`, a frame's `roots`, a frame's `holds`, a `priorities` pointer where the tree holds item nodes, a `decision` pointer's anchor, a `foundation` pointer's id) resolves to nothing; two item nodes carry one item number; the graph over `children` and `given` edges (rows included, `@valid` stripped) has a cycle; a non-superseded node is attached to nothing (§2: not a root of any frame, held by no frame, not a valuation node, listed in no attached node's `children`, the given parent of no attached node or row), every such node named; a top-frame root or valuation node is named in a `children` list; a want is a root of more than one frame, a node is listed twice as a root of one frame, or a shared root's entries name different roles; an event targets `if-holds` or `if-fails` on a node without `given`, or `p-if-holds` or `p-if-fails` on a row without it |
+| 2 | a kind, `leaf_kind`, role, preset, event kind, `how`, `via`, `dimension`, `who`, `filed_from` value, `work` kind or class id is unknown; a kind's required fields are missing (a leaf's `leaf_kind`, an `and`'s one completeness child, a `cases` node's one partition child and matching rows, a `choose`'s `decided_at`, a hypothesis's `discharge`, a record's `statement_of_record` (its `hypotheses` a list of ids or the word `unread`, never both), a formal result's one bridge with `attribution`, a `frame`'s `question`, human `owner` and `roots` naming exactly its children, the top frame's human `owner`, a task leaf's `action` and `who`, an improvement leaf's `improves`); a `choose` lies outside every plan root's support; a choice point (an uncommitted `choose` or a `choose-one` `or`) lies in the support of two plan roots that are not programmes (each plan is refined by its own pick, and a shared one would be evaluated under one plan's pick; refused until shared choices have a ruled meaning); a frame node is not a plan root of some frame, or is a root in another role (a retired frame, one carrying `superseded_by`, is exempt and holds no roots, no children and no held nodes: they moved to the frame that supersedes it, ruling F4 of 2026-10-23); a frame has `opened: false` and a plan root, or `roots: []` and children; a frame's `holds` is not a list of node ids, lists a node twice, lists a node that is a root of the same frame, or lists a frame, a valuation node or a want (ruling G2, 2026-10-23); `given` sits on a leaf kind other than assumption, hypothesis, bridge, step, question, route, improvement, task or want, or names a frame, a `choose`, a valuation node or a picture, partition or completeness leaf; `@valid` names anything but an `and` (in a `given` or in `--scope`); `class_given` appears without `given` or is not a map of `holds` and `fails`; a `rule`'s row carries `given`; `improves` appears without `reality` (or with an empty one) or `reality` without `improves`, or `improves` sits on a frame or on anything but an improvement leaf, an `or` or a `cases` node; an improvement `or` lacks exactly one `residual: true` route child; `residual: true` sits on anything but a route child of an improvement `or`; a route leaf lies in no improvement claim's support; a node with `want: true` lacks a human owner, has an id not beginning `want-`, is a leaf of a kind other than `want`, or is not a root of role `want`; a want leaf lacks `want: true`; a root of role `want` lacks `want: true` or carries `preset`, `success_class` or `budget`; `action` or `who` sits on a leaf kind other than task, question, step, hypothesis, route or improvement; a `priorities` work ref is no integer; a frame's `owner` (the top frame's included) is not a human handle or a list of human handles; `narrative` names a page that is not under `wiki/` or does not exist; `filed_from` is neither `quote` nor `wiki`, or `filed_from: wiki` sits on anything but a frame; an item node lacks `item` (the number as a string), `title`, `section`, an integer `maintainer_order`, `dispatchable` or `item_status`, or a node whose id begins `item-` carries no `item` |
 | 3 | a Statement has no sentence or uses a word from `evaluative_words`; an improvement claim's normalized Statement omits its normalized `reality` phrase |
 | 4 | a node file or row carries a level, credence, status, weight, conditional, value, utility, load or cost; a Statement's normalized text changed without a `version` bump, or `version` was bumped with the text unchanged |
-| 5 | an event lacks a required field; its `by` is not a mapped handle or the ledger is not named for it; its id does not begin with the ledger's handle; its `rule` is not of the form `YYYY-MM-DD.n`; its `version` is above its node's; a level-minting event lacks a said `checked` item or `not_checked`; a `withdraw` names another handle's event; a `rule` or `survey` is not a maintainer's; a `rule` with `rows` targets no `cases` node, names a non-row, or sets `p` on a row with a given parent; an AI handle writes a level-minting event, an `external`, an `attribution`, an `admit`, `approve`, `classify`, `identify`, `revise` or `priority`, an `estimate` or `gestalt` without a `gloss`, or an `estimate` or `gestalt` on a want, a row of one or a field of one; a gestalt lacks `derived: false` or targets a node that is no goal (§6); an `external` lacks `ref`; an `audit` lacks a `verdict` or names no event; an `attribution` is not by a human other than the node's author, or lacks `verdict` (`vouched` or `disputed`) or `ref`; a `revise` targets no node, lacks `from`, has `from.version` not below its `version`, names in `from.node` a node the target does not supersede, or names a `version` known to neither `versions.json` nor the node file; a `priority` is written by anyone but the want's owner, targets a node without `want: true`, or carries an `estimate` outside `high`, `medium`, `low`, `none`; a ledger is empty; dates in a ledger decrease; `policy.yaml` names no human `maintainer`, or its list holds a handle that is not a human's |
+| 5 | an event lacks a required field; its `by` is not a mapped handle or the ledger is not named for it; its id does not begin with the ledger's handle; its `rule` is not of the form `YYYY-MM-DD.n`; its `version` is above its node's; a level-minting event lacks a said `checked` item or `not_checked`; a `withdraw` names another handle's event; a `rule` or `survey` is not a maintainer's; a `rule` with `rows` targets no `cases` node, names a non-row, or sets `p` on a row with a given parent; an AI handle writes a level-minting event, an `external`, an `attribution`, an `admit`, `approve`, `classify`, `identify`, `revise` or `priority`, an `estimate` or `gestalt` without a `gloss`, or an `estimate` or `gestalt` on a want, a row of one or a field of one; a gestalt lacks `derived: false` or targets a node that is no goal (§6) and is held by no frame (a held node ranks under `--scope` naming it, and a gestalt on it stands for then; ruling G2, 2026-10-23); an `external` lacks `ref`; an `audit` lacks a `verdict` or names no event; an `attribution` is not by a human other than the node's author, or lacks `verdict` (`vouched` or `disputed`) or `ref`; a `revise` targets no node, lacks `from`, has `from.version` not below its `version`, names in `from.node` a node the target does not supersede, or names a `version` known to neither `versions.json` nor the node file; a `priority` is written by anyone but the want's owner, targets a node without `want: true`, or carries an `estimate` outside `high`, `medium`, `low`, `none`; a ledger is empty; dates in a ledger decrease; `policy.yaml` names no human `maintainer`, or its list holds a handle that is not a human's |
 | 6 | `question` or `answer` is present without the other, resolves to no turn of one chat file, or `verbatim` does not occur in the answer turn |
 | 7 | a committed file's `generated_hash` is missing or does not match its content (edited by hand; deleting the file lets the checker regenerate it); a proposal's `## Delta` differs from the checker's recomputation |
 | 8 | a class lacks a utility or a human `placed_by`; `outside_option` or `undescribed_failure` names no valuation node, or a valuation node is not a `cases` node whose rows all name placed classes; a `success_class` names no class; a plan root lacks `success_class`, or a programme root carries one; a sub-frame's `outside_option` names no valuation node; a `probabilistic` or `expected-utility` root lacks `budget` |

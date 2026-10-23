@@ -1,7 +1,7 @@
 ---
 id: public-corrigibility-line
 kind: frame
-children: [authority-typed-corrigibility, post-corrigible-normative-learning, authority-typed-corrigibility.improvable, kernel-lexical-order-hypothesis, kernel-conditioning-fails-witness, kernel-restoration, reachable-corrective-control-negative, corrigibility-as-recoverability, corrigibility-architecture-round, li-corrigibilization-theorem, bria-corrigibility-round, kernel.box1-fidelity-versus-fully-updated-deference, kernel.box2-dominance, kernel.box2-mediation-faithful, kernel.box3-gap-exchange-rate, kernel.box3-no-laundering, kernel.box3-no-incentive-to-compromise, kernel.box3-restoration, kernel.hierarchy-per-decision, kernel.hierarchy-history, kernel.subjective-exchange-rate, kernel.extension-realized-rate, kernel.extension-bria-realization, kernel.corrigible-fidelity-score, kernel.corrigible-generic, kernel.extension-exploration-realization, authority.queue-no-bypass, authority.queue-no-caused-shortfall, authority.exchange-rate-queue, authority.flood-caused-shortfall, authority.comprehension-short, authority.approval-discount-defeated, authority.revocation-default, post.witness-sole-authority, post.witness-control-maximizer, post.witness-same-level, post.witness-learned-weight, post.witness-hindsight, post.theorem, post.theorem-li, post.flood-below-asking, shortfall.security-generable, shortfall.eventually-excluded, shortfall.table-generable, shortfall.atom-generable, shortfall.deferred-ahead, shortfall.deferred-eventually-excluded, asklist.rows-keep-verdicts-counted, asklist.rows-keep-verdicts-tainted, asklist.volume-by-want-tainted, asklist.order-by-want-tainted, asklist.offprotocol-deviation-finite, deconfusing.theorem1, deconfusing.theorem2a, deconfusing.theorem2b, deconfusing.theorem2b-strict, deconfusing.theorem2c, deconfusing.theorem2c-tau, deconfusing.theorem3a, deconfusing.theorem3a-rate, deconfusing.theorem3b, deconfusing.corollary-a, deconfusing.corollary-b, deconfusing.corollary-limit, kernel-box2-finite-time]
+children: [authority-typed-corrigibility, post-corrigible-normative-learning, authority-typed-corrigibility.improvable, kernel-lexical-order-hypothesis, kernel-conditioning-fails-witness, kernel-restoration, reachable-corrective-control-negative, corrigibility-as-recoverability, corrigibility-architecture-round, li-corrigibilization-theorem, bria-corrigibility-round, kernel-box2-finite-time]
 question: "Does the authority-typed corrigibility kernel of the public deference line deliver guarantees for a real system, and how does it relate to the epistemic picture?"
 owner: "@anson"
 roots:
@@ -16,60 +16,8 @@ roots:
   - {id: corrigibility-architecture-round, role: shared-claim, preset: worst-case}
   - {id: li-corrigibilization-theorem, role: shared-claim, preset: worst-case}
   - {id: bria-corrigibility-round, role: shared-claim, preset: worst-case}
-  - {id: kernel.box1-fidelity-versus-fully-updated-deference, role: shared-claim, preset: worst-case}
-  - {id: kernel.box2-dominance, role: shared-claim, preset: worst-case}
-  - {id: kernel.box2-mediation-faithful, role: shared-claim, preset: worst-case}
-  - {id: kernel.box3-gap-exchange-rate, role: shared-claim, preset: worst-case}
-  - {id: kernel.box3-no-laundering, role: shared-claim, preset: worst-case}
-  - {id: kernel.box3-no-incentive-to-compromise, role: shared-claim, preset: worst-case}
-  - {id: kernel.box3-restoration, role: shared-claim, preset: worst-case}
-  - {id: kernel.hierarchy-per-decision, role: shared-claim, preset: worst-case}
-  - {id: kernel.hierarchy-history, role: shared-claim, preset: worst-case}
-  - {id: kernel.subjective-exchange-rate, role: shared-claim, preset: worst-case}
-  - {id: kernel.extension-realized-rate, role: shared-claim, preset: worst-case}
-  - {id: kernel.extension-bria-realization, role: shared-claim, preset: worst-case}
-  - {id: kernel.corrigible-fidelity-score, role: shared-claim, preset: worst-case}
-  - {id: kernel.corrigible-generic, role: shared-claim, preset: worst-case}
-  - {id: kernel.extension-exploration-realization, role: shared-claim, preset: worst-case}
-  - {id: authority.queue-no-bypass, role: shared-claim, preset: worst-case}
-  - {id: authority.queue-no-caused-shortfall, role: shared-claim, preset: worst-case}
-  - {id: authority.exchange-rate-queue, role: shared-claim, preset: worst-case}
-  - {id: authority.flood-caused-shortfall, role: shared-claim, preset: worst-case}
-  - {id: authority.comprehension-short, role: shared-claim, preset: worst-case}
-  - {id: authority.approval-discount-defeated, role: shared-claim, preset: worst-case}
-  - {id: authority.revocation-default, role: shared-claim, preset: worst-case}
-  - {id: post.witness-sole-authority, role: shared-claim, preset: worst-case}
-  - {id: post.witness-control-maximizer, role: shared-claim, preset: worst-case}
-  - {id: post.witness-same-level, role: shared-claim, preset: worst-case}
-  - {id: post.witness-learned-weight, role: shared-claim, preset: worst-case}
-  - {id: post.witness-hindsight, role: shared-claim, preset: worst-case}
-  - {id: post.theorem, role: shared-claim, preset: worst-case}
-  - {id: post.theorem-li, role: shared-claim, preset: worst-case}
-  - {id: post.flood-below-asking, role: shared-claim, preset: worst-case}
-  - {id: shortfall.security-generable, role: shared-claim, preset: worst-case}
-  - {id: shortfall.eventually-excluded, role: shared-claim, preset: worst-case}
-  - {id: shortfall.table-generable, role: shared-claim, preset: worst-case}
-  - {id: shortfall.atom-generable, role: shared-claim, preset: worst-case}
-  - {id: shortfall.deferred-ahead, role: shared-claim, preset: worst-case}
-  - {id: shortfall.deferred-eventually-excluded, role: shared-claim, preset: worst-case}
-  - {id: asklist.rows-keep-verdicts-counted, role: shared-claim, preset: worst-case}
-  - {id: asklist.rows-keep-verdicts-tainted, role: shared-claim, preset: worst-case}
-  - {id: asklist.volume-by-want-tainted, role: shared-claim, preset: worst-case}
-  - {id: asklist.order-by-want-tainted, role: shared-claim, preset: worst-case}
-  - {id: asklist.offprotocol-deviation-finite, role: shared-claim, preset: worst-case}
-  - {id: deconfusing.theorem1, role: shared-claim, preset: worst-case}
-  - {id: deconfusing.theorem2a, role: shared-claim, preset: worst-case}
-  - {id: deconfusing.theorem2b, role: shared-claim, preset: worst-case}
-  - {id: deconfusing.theorem2b-strict, role: shared-claim, preset: worst-case}
-  - {id: deconfusing.theorem2c, role: shared-claim, preset: worst-case}
-  - {id: deconfusing.theorem2c-tau, role: shared-claim, preset: worst-case}
-  - {id: deconfusing.theorem3a, role: shared-claim, preset: worst-case}
-  - {id: deconfusing.theorem3a-rate, role: shared-claim, preset: worst-case}
-  - {id: deconfusing.theorem3b, role: shared-claim, preset: worst-case}
-  - {id: deconfusing.corollary-a, role: shared-claim, preset: worst-case}
-  - {id: deconfusing.corollary-b, role: shared-claim, preset: worst-case}
-  - {id: deconfusing.corollary-limit, role: shared-claim, preset: worst-case}
   - {id: kernel-box2-finite-time, role: shared-claim, preset: worst-case}
+holds: [kernel.box1-fidelity-versus-fully-updated-deference, kernel.box2-dominance, kernel.box2-mediation-faithful, kernel.box3-gap-exchange-rate, kernel.box3-no-laundering, kernel.box3-no-incentive-to-compromise, kernel.box3-restoration, kernel.hierarchy-per-decision, kernel.hierarchy-history, kernel.subjective-exchange-rate, kernel.extension-realized-rate, kernel.extension-bria-realization, kernel.corrigible-fidelity-score, kernel.corrigible-generic, kernel.extension-exploration-realization, authority.queue-no-bypass, authority.queue-no-caused-shortfall, authority.exchange-rate-queue, authority.flood-caused-shortfall, authority.comprehension-short, authority.approval-discount-defeated, authority.revocation-default, post.witness-sole-authority, post.witness-control-maximizer, post.witness-same-level, post.witness-learned-weight, post.witness-hindsight, post.theorem, post.theorem-li, post.flood-below-asking, shortfall.security-generable, shortfall.eventually-excluded, shortfall.table-generable, shortfall.atom-generable, shortfall.deferred-ahead, shortfall.deferred-eventually-excluded, asklist.rows-keep-verdicts-counted, asklist.rows-keep-verdicts-tainted, asklist.volume-by-want-tainted, asklist.order-by-want-tainted, asklist.offprotocol-deviation-finite, deconfusing.theorem1, deconfusing.theorem2a, deconfusing.theorem2b, deconfusing.theorem2b-strict, deconfusing.theorem2c, deconfusing.theorem2c-tau, deconfusing.theorem3a, deconfusing.theorem3a-rate, deconfusing.theorem3b, deconfusing.corollary-a, deconfusing.corollary-b, deconfusing.corollary-limit]
 work:
   - {kind: round, ref: prompts/2026-09-15-corrigibility-consolidation-landing}
 narrative: [wiki/Corrigibility.md, wiki/Deconfusing-Corrigibility-Companion.md]

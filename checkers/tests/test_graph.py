@@ -1382,7 +1382,7 @@ class Validity(Base):
         self.assertIn("hypotheses unread", D["nodes"]["res.record"]["flags"])
         self.assertIn("hypotheses unread", D["nodes"]["res"]["flags"])
         idx = json.loads((self.root / "graph" / "index.json").read_text())
-        self.assertEqual(idx["schema"], "graph-index/2")
+        self.assertEqual(idx["schema"], "graph-index/3")
         self.assertEqual(idx["nodes"]["res.record"]["hypotheses"], "unread")
         self.assertEqual(idx["nodes"]["res"]["formal_result"], {"record": "res.record", "hypotheses": "unread", "registry_id": "toy.result", "answers": []})
         self.assertEqual(idx["claims"], {"toy.result": "res"})
@@ -1556,6 +1556,49 @@ class Goals(Base):
         D = self.derived()
         self.assertIn("not opened; see Notes", D["nodes"]["prog"]["flags"])
         self.assertFalse(D["nodes"]["prog"]["frame"]["unspelled"])
+
+    def test_held_nodes_are_attached_and_no_goals(self):
+        # ruling G2 (2026-10-23): a frame holds what it is about; a held node is attached by membership, is no root and no
+        # goal, enters no unit of the frame, and is listed as held in derived.json, the index and the view
+        def held(nodes):
+            nodes["held-1"] = ("leaf", "S", {"leaf_kind": "assumption"}, "A premise the programme is about holds.")
+            nodes["prog"] = ("frame", "L", {**nodes["prog"][2], "holds": "[held-1]"}, nodes["prog"][3])
+        self.tree(programme=True, tweak=held, drop={"h1-s1", "h1-s2"})
+        D = self.derived()
+        self.assertEqual(D["held"], {"prog": ["held-1"]})
+        self.assertEqual(D["nodes"]["held-1"]["held_by"], ["prog"])
+        self.assertIn("held by prog", D["nodes"]["held-1"]["flags"])
+        self.assertNotIn("held-1", D["roots"])
+        self.assertNotIn("held-1", D["ranking"]["goals"])
+        self.assertFalse([u for u in D["units"] if u["target"] == "held-1" or "held-1" in u.get("bears_on", [])])
+        self.assertEqual(D["nodes"]["prog"]["frame"]["holds"], ["held-1"])
+        self.assertEqual(D["roots"]["prog"]["subframe"]["holds"], ["held-1"])
+        self.assertFalse(D["nodes"]["prog"]["frame"]["unspelled"])
+        idx = json.loads((self.root / "graph" / "index.json").read_text())
+        self.assertEqual(idx["schema"], "graph-index/3")
+        self.assertEqual(idx["nodes"]["held-1"]["in_frames"], [{"frame": "prog", "role": None, "membership": "holds"}])
+        self.assertEqual(idx["nodes"]["sc-1"]["in_frames"], [{"frame": "prog", "role": "shared-claim", "membership": "root"}])
+        self.assertEqual(idx["nodes"]["prog"]["frame"]["holds"], ["held-1"])
+        self.assertNotIn("holds", idx["nodes"]["prog"]["fields"])
+        view = (self.root / "graph" / "view.md").read_text()
+        self.assertIn("### Held", view)
+        self.assertIn("- held-1 (leaf/assumption)", view)
+        # --scope naming the held node ranks it there, and only there
+        S = self.derived_dry("--scope", "held-1")
+        self.assertEqual(S["ranking"]["goals"], ["held-1"])
+        self.assertEqual(next(gl for gl in S["goals"] if gl["id"] == "held-1")["kind"], "held")
+        # a frame with roots [] and a non-empty holds is spelled, with nothing yet a goal: no unspelled flag, no spell-out unit
+        self.edit("graph/nodes/prog.md", "children: [step-1, step-2, sc-1]", "children: []")
+        self.edit("graph/nodes/prog.md", "roots: \n  - {id: step-1, role: plan, preset: worst-case, success_class: utopia}\n  - {id: step-2, role: plan, preset: worst-case, success_class: utopia}\n  - {id: sc-1, role: shared-claim, preset: worst-case}", "roots: []")
+        for x in ("step-1", "step-2", "sc-1"):
+            (self.root / "graph" / "nodes" / f"{x}.md").unlink()
+        D = self.derived()
+        self.assertFalse(D["nodes"]["prog"]["frame"]["unspelled"])
+        self.assertIn("spelled; nothing yet a goal (1 held)", D["nodes"]["prog"]["flags"])
+        self.assertNotIn("unspelled", D["nodes"]["prog"]["flags"])
+        self.assertFalse([u for u in D["units"] if u["target"] == "prog"])
+        self.assertEqual(D["spell_out"]["count"], 0)
+        self.assertIn("spelled, nothing yet a goal", (self.root / "graph" / "view.md").read_text())
 
     def test_want_leaf_root(self):
         # with no number on it at all, the want derives, ranks by its owner's word and gets its spell-out unit
@@ -2815,7 +2858,7 @@ class Fixtures(unittest.TestCase):
         """ruling F2 (2026-10-23): the index inverts the registry join; every registry-built result points at its item, and
         every record the round filed from a signature says its hypotheses are unread (ruling F1)."""
         idx = json.loads((self.root / "graph" / "index.json").read_text())
-        self.assertEqual(idx["schema"], "graph-index/2")
+        self.assertEqual(idx["schema"], "graph-index/3")
         formal = {x: N["formal_result"] for x, N in idx["nodes"].items() if "formal_result" in N}
         self.assertGreater(len(formal), 200)
         for item, rec in idx["items"].items():
@@ -2853,9 +2896,11 @@ class Fixtures(unittest.TestCase):
         # a gestalt unit on a goal left without AI numbers (UNJUDGED_BY_POLICY), or a unit on a want (a want carries no AI
         # number, 2026-10-20), rests on no AI number, so nothing is hoisted and every other line says the tag itself
         wants = {x for x, N in self.D["nodes"].items() if N.get("want")}
-        # a gestalt unit on a goal without numbers rests on no AI number either (the formal results filed as structure alone)
+        # a gestalt unit on a goal without numbers rests on no AI number either (the formal results filed as structure alone),
+        # nor does a spell-out on an unspelled frame (an agent's draft read at a stand-in 1/2; in the printed forty since the
+        # held results left the goal set, 2026-10-23)
         bare = [l for l in lines if any(f"gestalt {x} (" in l for x in UNJUDGED_BY_POLICY)
-                or any(f" {x} (" in l for x in wants) or l.split(". ", 1)[1].startswith("gestalt ")]
+                or any(f" {x} (" in l for x in wants) or l.split(". ", 1)[1].startswith(("gestalt ", "spell-out "))]
         if bare:
             self.assertNotIn("Hoisted from every line:", ranked)
             self.assertFalse([l for l in lines if l not in bare and "vet this AI number" not in l])

@@ -948,7 +948,11 @@ steps (a research line whose parts are lines of work in their own right),
 the agent files it as a node of kind `frame` whose children are its roots,
 not as a long conjunction; the parent values it as its best step and ranks
 the steps' tasks; a frame whose roots nobody has spelled out yet is filed
-with `roots: []`, and the list asks for the spelling-out. A user's want is
+with `roots: []`, and the list asks for the spelling-out. A frame's roots
+are its goals; what it is about without being a goal, a registered result
+filed under its programme or a work order whose goal nobody has identified,
+goes in the frame's `holds` and is listed, not ranked (ruling G2,
+2026-10-23). A user's want is
 a claim with `want: true` under their handle, a root of role `want`,
 connected to nothing until the user or anyone connects it; the agent files
 it where the user's words place it and otherwise at the top frame, and asks

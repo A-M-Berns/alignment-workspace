@@ -655,6 +655,29 @@ def plan_children(t, x):
     return [c for c in n["children"] if c in plans]
 
 
+def frame_holds(t):
+    """{frame id (None for the top frame): [held ids]} (ruling G2, 2026-10-23): the nodes a frame is about that are no goals
+    of the ranking. A held node is attached by membership, carries no role or preset, is no root and enters no status,
+    value, stake or unit of the frame; it may be a root of another frame."""
+    out = {}
+    top = t.frame.get("holds")
+    if top:
+        out[None] = [str(v) for v in top] if isinstance(top, list) else [str(top)]
+    for x, n in t.nodes.items():
+        if n.get("kind") == "frame" and n.get("holds"):
+            out[x] = [str(v) for v in n["holds"]] if isinstance(n["holds"], list) else [str(n["holds"])]
+    return out
+
+
+def held_by(t):
+    """{held id: [the frames holding it, None for the top frame]}."""
+    out = defaultdict(list)
+    for f, ids in frame_holds(t).items():
+        for x in ids:
+            out[x].append(f)
+    return dict(out)
+
+
 def target_key(target):
     if not isinstance(target, dict):
         return None
@@ -833,8 +856,8 @@ def lint(t):
     for x in frame_nodes:
         if nodes[x].get("superseded_by"):
             # a retired frame (ruling F4, 2026-10-23): its roots moved to the frame that supersedes it; the file stays as an alias
-            if nodes[x]["children"] or nodes[x]["roots"]:
-                raise Refuse(2, nodes[x]["_path"], "a retired frame (superseded_by) holds no roots and no children: they moved to the frame that supersedes it")
+            if nodes[x]["children"] or nodes[x]["roots"] or nodes[x].get("holds"):
+                raise Refuse(2, nodes[x]["_path"], "a retired frame (superseded_by) holds no roots, no children and no held nodes: they moved to the frame that supersedes it")
             continue
         if x not in seen:
             raise Refuse(2, nodes[x]["_path"], "a frame node is a plan root of the top frame or of another frame")
@@ -849,6 +872,29 @@ def lint(t):
             raise Refuse(2, nodes[x]["_path"], "a frame with opened: false records a line not opened: shared claims and risk stories only, no plan roots")
         if "outside_option" in nodes[x] and nodes[x]["outside_option"] not in vals:
             raise Refuse(8, nodes[x]["_path"], "a sub-frame's outside_option names a valuation node of the top frame")
+    # holds (ruling G2, 2026-10-23): the nodes a frame is about that are no goals of the ranking; each resolves, is no root of
+    # the same frame, and is neither a frame, a valuation node nor a want (a want is a root of exactly one frame, rule 1)
+    root_sets = defaultdict(set)
+    for r in all_roots(t, unique=False):
+        root_sets[r["frame"]].add(r["id"])
+    for f, held in frame_holds(t).items():
+        where = "graph/frame.yaml" if f is None else nodes[f]["_path"]
+        raw = t.frame.get("holds") if f is None else nodes[f].get("holds")
+        if not isinstance(raw, list) or not all(isinstance(v, str) for v in raw):
+            raise Refuse(2, where, "holds is a list of node ids")
+        for x in held:
+            if x not in nodes:
+                raise Refuse(1, where, f"held id {x!r} resolves to no node")
+            if held.count(x) > 1:
+                raise Refuse(2, where, f"{x!r} is held twice by one frame")
+            if x in root_sets[f]:
+                raise Refuse(2, where, f"{x!r} is both held and a root of this frame; a root is a goal of the ranking, a held node is not")
+            if nodes[x].get("kind") == "frame":
+                raise Refuse(2, where, f"a frame ({x!r}) is a plan root of some frame, never held")
+            if x in vals:
+                raise Refuse(2, where, f"a valuation node ({x!r}) is never held")
+            if nodes[x].get("want") is True:
+                raise Refuse(2, where, f"a want ({x!r}) is a root of exactly one frame, never held")
     # rule 1: ids and references
     ids = set(nodes)
     for p in t.proposals:
@@ -903,7 +949,8 @@ def lint(t):
     named = sorted(x for x in root_ids if x in has_parent)
     if named:
         raise Refuse(1, "graph/frame.yaml", f"top-frame roots or valuation nodes {named} are named in a children list; a root has no parent")
-    attached, stack = set(root_ids), list(root_ids)
+    held_ids = set(held_by(t))                     # held by a frame: attached by membership (ruling G2, 2026-10-23)
+    attached, stack = set(root_ids) | held_ids, list(root_ids | held_ids)
     while stack:
         for c in succ[stack.pop()]:
             if c not in attached:
@@ -911,8 +958,8 @@ def lint(t):
                 stack.append(c)
     loose = sorted(x for x in nodes if x not in attached and not nodes[x].get("superseded_by"))
     if loose:
-        raise Refuse(1, "graph/frame.yaml", f"nodes attached to nothing: {loose} (a node is a frame root, a valuation node, a child "
-                     "of an attached node, or the given parent of one)")
+        raise Refuse(1, "graph/frame.yaml", f"nodes attached to nothing: {loose} (a node is a frame root, a node a frame holds, a valuation "
+                     "node, a child of an attached node, or the given parent of one)")
     # rule 2 and 4 per node, rule 3, rule 12 sentences
     plan_support = set()
     step_supports = []            # the supports of the plan roots refine() evaluates one by one (programmes excluded)
@@ -1183,7 +1230,7 @@ def lint(t):
         raise Refuse(5, "graph/policy.yaml", "maintainer names a human handle or a list of them (rule and survey events are the maintainers')")
     by_ledger = defaultdict(list)
     eids = {e.get("id"): e for e in t.events}
-    goal_ids = static_goals(t)
+    goal_ids = static_goals(t) | set(held_by(t))     # a held node ranks under --scope naming it; a gestalt on it stands for then (G2)
     for e in t.events:
         path = e["_path"]
         for k in ("id", "by", "date", "rule", "via", "kind", "target", "version"):
@@ -1283,7 +1330,7 @@ def lint(t):
         if e["kind"] == "gestalt" and e.get("derived") is not False:
             raise Refuse(5, path, "a gestalt carries derived: false (a holistic judgment, not a derived number)")
         if e["kind"] == "gestalt" and (tk[0] != "node" or tk[1] not in goal_ids):
-            raise Refuse(5, path, f"a gestalt targets a goal (a frame root, an improvement claim, a route, a refinement or a want), not {tk[1] if len(tk) > 1 else tk!r}")
+            raise Refuse(5, path, f"a gestalt targets a goal (a frame root, an improvement claim, a route, a refinement or a want) or a node a frame holds, not {tk[1] if len(tk) > 1 else tk!r}")
         if e["kind"] == "external" and not e.get("ref"):
             raise Refuse(5, path, "an external event carries ref, the pointer to the outside record")
         if e["kind"] == "audit":
@@ -1432,6 +1479,7 @@ class Ctx:
         self.cls = classes(t)
         # every root of every frame, a sub-frame's steps before the sub-frame itself; `frame` names the frame
         self.roots = {r["id"]: r for r in all_roots(t)}
+        self.held, self.held_by = frame_holds(t), held_by(t)     # ruling G2 (2026-10-23): what a frame holds, no goals
         self.frames = [x for x, n in t.nodes.items() if n.get("kind") == "frame" and not n.get("superseded_by")]
         self.rates = self.po.get("rate_table") or {}
         self.floor = sorted((int(k), q(v)) for k, v in (self.po.get("floor_table") or {}).items())
@@ -2769,6 +2817,8 @@ def goal_info(C, D, scope, as_handle=None):
     gids = [g for g in C.roots if g in static] + sorted(g for g in static if g not in C.roots)
     gids = [g for g in gids if not bare_claim(t, C, g) and not under_closed(g)]
     sbase = given_base(scope) if scope else None
+    if scope and sbase in C.held_by and sbase not in gids:
+        gids.append(sbase)              # ruling G2 (2026-10-23): a held node ranks only where --scope names it
     sclos = (set(support(t, sbase)) | E.closure((E.target_key(scope),)) | {sbase}) if scope else None
     info = {}
     for g in gids:
@@ -2780,7 +2830,7 @@ def goal_info(C, D, scope, as_handle=None):
         role = C.roots.get(g, {}).get("role")
         kind = ("want" if role == "want" else "plan" if role == "plan" else "improvement" if "improves" in n else
                 "route" if any("improves" in t.nodes[o] and t.nodes[o].get("kind") == "or" and g in t.nodes[o]["children"] for o in t.nodes)
-                else "refinement" if n.get("refinement_of") else role)
+                else "refinement" if n.get("refinement_of") else "held" if role is None and g in C.held_by else role)
         d = E.dag((gk,))
         h, tt, J = E.evaluate(d, root_base(C, g, C.psets[g]) if g in C.roots else {}, "verdict", joints=True)
         blanks = sorted(x for x in E.live_closure((gk,)) if t.nodes.get(x, {}).get("kind") in ("leaf", "cases") and E.no_belief(x))
@@ -3149,7 +3199,8 @@ def ranking(C, D, scope, lam, window_dp, frontier, as_handle=None):
                                           "reconciles the derived number with the gestalt"], read_error, prior=prior_mix,
                 extra={"signals": sig, "odds_ratio": ratio})
     for x, n in t.nodes.items():
-        if n.get("kind") == "frame" and not n["children"] and n.get("opened") is not False and not n.get("superseded_by") and (not scope or x in in_scope or x == sbase):
+        if (n.get("kind") == "frame" and not n["children"] and n.get("opened") is not False and not n.get("superseded_by") and not C.held.get(x)
+                and (not scope or x in in_scope or x == sbase)):
             # an unspelled frame: a read of an agent's draft, valued as a binary stand-in at 1/2 with a plan's stake
             stake_f = (max(utility(C, c) for c in C.cls) - outside_u) / 2 if C.cls else Q(1, 2)
             w = float(stake_f) * (0.5 ** e_exp if e_exp else 1.0)
@@ -3189,7 +3240,8 @@ def ranking(C, D, scope, lam, window_dp, frontier, as_handle=None):
     C.GI = GI
     D["goal_order"] = goal_order(C, GI)
     cands = [(GI[g]["w"] if g in GI else 0.0, g) for g, n in t.nodes.items()
-             if (n.get("kind") == "frame" and not n["children"] and n.get("opened") is not False and not n.get("superseded_by")) or (n.get("want") is True and not n["children"])]
+             if (n.get("kind") == "frame" and not n["children"] and n.get("opened") is not False and not n.get("superseded_by") and not C.held.get(g))
+             or (n.get("want") is True and not n["children"])]
     D["spell_out"] = {"count": len(cands), "top": [g for _, g in sorted(cands, key=lambda c: (-c[0], c[1]))[:3]]}
     D["agent_top"] = [f"do {u['target']}" for u in units if u.get("section") == "agent"][:5]
     rank = 0
@@ -3598,6 +3650,7 @@ def derive(t, scope=None, lam=None, window_dp=False, frontier=0, today=None, wit
                            "provisional": bool(t.nodes[x].get("provisional")),
                            "role": "outside option" if x == C.outside else "undescribed failure" if x == C.undescribed else "valuation"}
                        for x in sorted(C.valuations)}
+    D["held"] = {("top" if f is None else f): list(ids) for f, ids in C.held.items()}     # ruling G2: per frame, what it holds
     C.psets, C.costs, C.choice = {}, {}, {}
     for rid, r in C.roots.items():
         is_frame = t.nodes[rid].get("kind") == "frame"
@@ -3665,7 +3718,7 @@ def derive(t, scope=None, lam=None, window_dp=False, frontier=0, today=None, wit
                            "ai_only": ai_only,
                            # sub-frame fields: a programme lists its steps and the step whose value it carries
                            "subframe": {"question": t.nodes[rid].get("question"), "steps": steps, "leading_step": leading,
-                                        "roots": [c for c in t.nodes[rid]["children"]],
+                                        "roots": [c for c in t.nodes[rid]["children"]], "holds": list(C.held.get(rid, [])),
                                         "outside_option": t.nodes[rid].get("outside_option") or C.outside} if is_frame else None}
     # load, margin
     load = {}
@@ -3702,6 +3755,8 @@ def derive(t, scope=None, lam=None, window_dp=False, frontier=0, today=None, wit
             C.flags[x].add("provisional")
         if n.get("superseded_by"):
             C.flags[x].add(f"superseded by {n['superseded_by']}")      # it stays wherever a parent still lists it
+        for f in C.held_by.get(x, []):
+            C.flags[x].add(f"held by {f or 'the top frame'}")          # ruling G2: attached by membership, no goal of that frame
         if (n.get("leaf_kind") == "record" and n.get("hypotheses") == "unread") or (n.get("kind") == "and" and any(
                 t.nodes[c].get("leaf_kind") == "record" and t.nodes[c].get("hypotheses") == "unread" for c in n["children"])):
             C.flags[x].add("hypotheses unread")        # ruling F1 (2026-10-23): the record's Source carries the signature; a reader files the leaves
@@ -3712,7 +3767,10 @@ def derive(t, scope=None, lam=None, window_dp=False, frontier=0, today=None, wit
         if n.get("kind") == "frame" and n.get("opened") is False:
             C.flags[x].add("not opened; see Notes")
         elif n.get("kind") == "frame" and not n["children"] and not n.get("superseded_by"):
-            C.flags[x].add("unspelled")
+            if C.held.get(x):
+                C.flags[x].add(f"spelled; nothing yet a goal ({len(C.held[x])} held)")      # ruling G2: holds, no roots
+            else:
+                C.flags[x].add("unspelled")
         if n.get("kind") == "frame" and n.get("filed_from") == "wiki":
             # a frame an agent drafted from a wiki page (ruling M3): the owner confirms by removing filed_from from the file
             C.flags[x].add("owner has not confirmed (drafted from " + ", ".join(narratives_of(n)) + ")" if narratives_of(n) else "owner has not confirmed (drafted from the wiki)")
@@ -3738,10 +3796,13 @@ def derive(t, scope=None, lam=None, window_dp=False, frontier=0, today=None, wit
                                      "confirmed": not (n.get("filed_from") == "quote" and not any(
                                          e["kind"] == "priority" for e in C.on_node[x])),
                                      "attachment": want_attachment(C, x)}
+        if x in C.held_by:
+            D["nodes"][x]["held_by"] = ["top" if f is None else f for f in C.held_by[x]]
         if n.get("kind") == "frame":
-            D["nodes"][x]["frame"] = {"owner": ", ".join(owners_of(n)), "owners": owners_of(n), "unspelled": not n["children"] and n.get("opened") is not False,
+            D["nodes"][x]["frame"] = {"owner": ", ".join(owners_of(n)), "owners": owners_of(n),
+                                      "unspelled": not n["children"] and n.get("opened") is not False and not C.held.get(x),
                                       "opened": n.get("opened") is not False, "confirmed": n.get("filed_from") != "wiki",
-                                      "narrative": narratives_of(n)}
+                                      "narrative": narratives_of(n), "holds": list(C.held.get(x, []))}
         elif narratives_of(n):
             D["nodes"][x]["narrative"] = narratives_of(n)
         if n.get("kind") == "and" and C.E.forceable(x):
@@ -4195,6 +4256,7 @@ def render_tasks(t, D, pf, today):
         if g not in GI:
             Fr = (D["nodes"].get(g) or {}).get("frame") or {}
             L.append(f"{'  ' * depth}- {g} (frame, owner {Fr.get('owner')}{'; unspelled' if Fr.get('unspelled') else ''}"
+                     f"{'; holds ' + str(len(Fr['holds'])) if Fr.get('holds') else ''}"
                      f"{'; not opened' if Fr and not Fr.get('opened') else ''}{'; owner has not confirmed' if Fr and not Fr.get('confirmed', True) else ''}): {t.nodes[g].get('question')}")
             continue
         G = GI[g]
@@ -4391,6 +4453,7 @@ def render_view(t, D, pf, today):
         if N.get("frame"):
             Fr = N["frame"]
             L.append(f"- frame owner {Fr['owner']}" + ("; unspelled (no roots yet)" if Fr["unspelled"] else "")
+                     + (f"; holds {len(Fr['holds'])} node(s)" + ("; spelled, nothing yet a goal" if not R["subframe"]["roots"] else "") if Fr.get("holds") else "")
                      + ("; not opened; see Notes" if not Fr["opened"] else "")
                      + ("; owner has not confirmed (drafted from the wiki)" if not Fr.get("confirmed", True) else ""))
         if len(R.get("frames") or []) > 1:
@@ -4415,6 +4478,16 @@ def render_view(t, D, pf, today):
             for r, R in rs:
                 root_block(r, R, level + 1)
             L.append("")
+        held = (D.get("held") or {}).get(frame_id or "top") or []
+        if held:
+            # ruling G2 (2026-10-23): what the frame is about that is no goal of the ranking; no role, status, value or unit here
+            L.append(f"{'#' * level} Held")
+            L.append("Nodes this frame is about that are no goals of the ranking (held, not roots): listed with their kinds, no status or value here.")
+            for x in held:
+                N = D["nodes"][x]
+                L.append(f"- {x} ({N['kind']}" + (f"/{N['leaf_kind']}" if N.get("leaf_kind") else "") + ")"
+                         + (f"; also a root of {', '.join(f or 'the top frame' for f in D['roots'][x]['frames'])}" if x in D["roots"] else ""))
+            L.append("")
     frame_sections(None, 2)
     # sub-frames in the frame tree's order (pre-order, roots in file order), parents before children
     order, seenf = [], set()
@@ -4433,6 +4506,7 @@ def render_view(t, D, pf, today):
             Fr = D["nodes"][r].get("frame") or {}
             L.append(f"## Sub-frame {r} (in {R.get('frame') or 'the top frame'}): {R['subframe']['question']}")
             L.append(f"Owner {Fr.get('owner')}" + ("; unspelled: no roots yet (its unit is spell-out)" if Fr.get("unspelled") else "")
+                     + (f"; holds {len(Fr['holds'])} node(s)" + ("; spelled, nothing yet a goal (no roots)" if not R["subframe"]["roots"] else "") if Fr.get("holds") else "")
                      + ("; not opened; see Notes" if Fr and not Fr.get("opened") else ""))
             L.append("")
             frame_sections(r, 3)
@@ -4603,11 +4677,14 @@ def structure_index(t, today):
     fr = t.frame
     nodes = {}
     skip = {"id", "kind", "leaf_kind", "author", "size", "size_reason", "version", "children", "rows", "given", "work", "narrative",
-            "question", "owner", "roots", "_path", "_statement", "_source", "_notes", "_item"}
+            "question", "owner", "roots", "holds", "_path", "_statement", "_source", "_notes", "_item"}
     in_frames = defaultdict(list)
     for r in all_roots(t):
         for f in r.get("frames") or [r["frame"]]:
-            in_frames[r["id"]].append({"frame": f or "top", "role": r.get("role")})
+            in_frames[r["id"]].append({"frame": f or "top", "role": r.get("role"), "membership": "root"})
+    for f, ids in frame_holds(t).items():            # ruling G2 (2026-10-23): held by a frame, no role
+        for x in ids:
+            in_frames[x].append({"frame": f or "top", "role": None, "membership": "holds"})
     # formal results (ruling F2, 2026-10-23): the record child, its hypotheses (a list or "unread"), the registry id the record
     # carries, and the items the result answers through its priorities pointers; `claims` maps a registry id to its node
     formal, answered_by, claims = {}, defaultdict(list), {}
@@ -4634,7 +4711,7 @@ def structure_index(t, today):
                "fields": {k: v for k, v in n.items() if k not in skip}, "in_frames": in_frames.get(x, [])}
         if n.get("kind") == "frame":
             rec["frame"] = {"question": n.get("question"), "owners": owners_of(n), "roots": [{"id": r.get("id"), "role": r.get("role")} for r in n.get("roots") or []],
-                            "opened": n.get("opened") is not False, "filed_from": n.get("filed_from")}
+                            "holds": [str(v) for v in n.get("holds") or []], "opened": n.get("opened") is not False, "filed_from": n.get("filed_from")}
         if n.get("_item"):
             rec["item_body"] = n["_item"]
         if n.get("leaf_kind") == "record":
@@ -4657,11 +4734,12 @@ def structure_index(t, today):
         narratives[page].append("top")
     handles = t.policy.get("handles") or {}
     events = [e for e in t.events if is_human(t, e.get("by"))]
-    return {"schema": "graph-index/2", "generated": str(today), "generated_hash": "",
+    return {"schema": "graph-index/3", "generated": str(today), "generated_hash": "",
             "frame": {"question": fr.get("question"), "owners": owners_of(fr), "narrative": narratives_of(fr),
                       "classes": [c.get("id") for c in fr.get("classes") or [] if isinstance(c, dict)], "valuations": valuations(t),
                       "outside_option": fr.get("outside_option"), "undescribed_failure": fr.get("undescribed_failure"),
-                      "roots": [{"id": r.get("id"), "role": r.get("role")} for r in roots(t)]},
+                      "roots": [{"id": r.get("id"), "role": r.get("role")} for r in roots(t)],
+                      "holds": [str(v) for v in fr.get("holds") or []]},
             "handles": {h: {k: v for k, v in (spec or {}).items()} for h, spec in handles.items()},
             "maintainers": maintainers(t),
             "nodes": nodes,
@@ -5107,6 +5185,10 @@ NULL_INPUTS = [
     ("a frame with opened: false and a plan root", 2, {"programme": True, "edits": [("nodes/prog.md", "kind: frame\n", "kind: frame\nopened: false\n")]}),
     ("a frame with roots: [] and non-empty children", 2, {"programme": True, "edits": [
         ("nodes/prog.md", "roots: \n  - {id: step-1, role: plan, preset: worst-case, success_class: utopia}\n  - {id: step-2, role: plan, preset: worst-case, success_class: utopia}\n  - {id: sc-1, role: shared-claim, preset: worst-case}", "roots: []")]}),
+    # ruling G2 (2026-10-23): what a frame holds
+    ("a held id that resolves to nothing", 1, {"programme": True, "edits": [("nodes/prog.md", "kind: frame\n", "kind: frame\nholds: [nonexistent]\n")]}),
+    ("a node both held and a root of one frame", 2, {"programme": True, "edits": [("nodes/prog.md", "kind: frame\n", "kind: frame\nholds: [sc-1]\n")]}),
+    ("a want in holds", 2, {"programme": True, "tweak": _with_want, "edits": [_want_root(), ("nodes/prog.md", "kind: frame\n", "kind: frame\nholds: [want-x]\n")]}),
     ("a priority by an AI handle", 5, {"tweak": _with_want, "edits": [_want_root()], "extra": {"ai": [_priority("@ai", "want-x", "high", 1)]}}),
     ("a priority by a human who is not the want's owner", 5, {"tweak": _with_want, "edits": [_want_root()], "extra": {"h2": [_priority("@h2", "want-x", "high", 1)]}}),
     ("a gestalt by an AI handle on a want", 5, {"tweak": _with_want, "edits": [_want_root()], "extra": {"ai": [

@@ -28,7 +28,11 @@ sit one plan and a set of risk stories:
   frame over programmes, steps and shared claims, down to the formal results
   (one per registered claim, its id the registry id), the item nodes (one per
   `PRIORITIES.md` entry, `item-<n>`; the file is rendered from them) and the
-  task leaves that name concrete work. A programme an agent drafted from a
+  task leaves that name concrete work. A frame's `roots` are its goals;
+  what it is merely about, the registered results filed under a programme
+  and the work orders no goal was identified for, it *holds* (`holds`:
+  attached and listed, never a goal of the ranking; ruling G2, 2026-10-23).
+  A programme an agent drafted from a
   wiki page says *owner has not confirmed* until its owner removes the
   `filed_from: wiki` field.
 - Risk stories (the instrumental-convergence cluster among them), each a

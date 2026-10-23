@@ -45,31 +45,31 @@ Owner @anson, @abram
 #### normativity
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): What does learning from reasons require of a reasoner: which statics a normative seed forces, how a constraint acquires operative force in a market, and what the Normative Inductor, from seed through reasons, compile, enforcement and revision, establishes end to end?
-- steps: seed-theory, operative-force, normative-inductor, response-learning, normative-record, docket-normativity, normativity-aug9-foundation, normativity-consolidation-open-1-6, normativity-paper-candidates; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- steps: seed-theory, operative-force, normative-inductor, response-learning, normative-record, normativity-aug9-foundation, normativity-consolidation-open-1-6, normativity-paper-candidates; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
 - rests on AI numbers (no human judgment yet): normativity-layer-I-closed
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @anson; owner has not confirmed (drafted from the wiki)
+- frame owner @anson; holds 36 node(s); owner has not confirmed (drafted from the wiki)
 - a programme: informs through its steps
 - best next unit: none
 #### legitimacy
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): What must stay true of a trajectory's record, verdicts and channels of influence, inside it and at its boundary, for a later judgment to count as the principal's own, and what does corrigibility consume from that?
-- steps: integrity-and-record, openness-and-non-capture, authorship-and-transparency, corrigibility-landscape, deference-toward-bounded-agents, docket-legitimacy, legit-definition-endorsement, legit-corrects-trust-principles, legit-per-formalism-family, legit-gated-trust-li, legit-ddb-transfer, legit-locality-forced, legit-reflection-unsat-modest, legit-composition, legit-li-self-correction-identity, legit-correction-function-learned, legit-condition-vs-predict-reality, legit-anchor-of-L, legit-global-or-local-form, legit-trust-improvable, legit-endpoint-preservation, idleness-on-G-grade-a, idleness-on-G-with-certificate, claim1-diagonal-illegitimate, corrupt-strictly-contains-inadmissible, trace-nonrecoverability, trace-nonrecoverability-li, wirehead-iff-finite, certificate-enforcement, predication-dichotomy, d3-identification, corrigibility-faithful-plus-legit-on-self, non-modification-conjecture, legit-v1-improvable, gate-is-legitimacy, public-layer-II, item-75, li-corrigibility-inequality-public, legitimate-deference-regret, legit-two-theories-bridge, bridge-defect-vs-thin-correct, bridge-trace-vs-transparency, legit-objective-proposals, illegitimate-world-ever-better, p2-manages-the-news, inferability-positivity, updateless-p2-cellwise-p3, deterrence-not-identified-on-path, corr-legit-modif-frames, legit-branch-evaluation-defense-requirements, readout-R1-vs-R2, retroactive-vs-prospective-judging, anger-substitute-for-updatelessness, legit-meta-revision, corrigibility-needs-consequentialist-wrapper, align-to-legitimacy-over-endorsement-risk, legit-weighted-objective-improvable, formalism-open-questions-0-3, internal-standard-never-settled, legit-dynamics-learning, reasons-subcase-of-legitimacy, reasons-statics-public, public-line-leaves-semantics-alone, brandom-objectivity-structural, brandom-relative-prices, reason-exchange-representation-theorem, legit-intersubjectivity-pre-rationality, reasons-improvable, legitimacy-meets-syntax, want-figure-out-legitimacy, want-corrigibility-theorems-via-legitimacy, want-legitimacy-anti-meme-post; leading step: corrigibility-landscape; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- steps: integrity-and-record, openness-and-non-capture, authorship-and-transparency, corrigibility-landscape, deference-toward-bounded-agents, formalism-open-questions-0-3, legit-dynamics-learning, legitimacy-meets-syntax, want-figure-out-legitimacy, want-corrigibility-theorems-via-legitimacy, want-legitimacy-anti-meme-post; leading step: corrigibility-landscape; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
 - rests on AI numbers (no human judgment yet): kernel-no-laundering
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @anson, @abram; owner has not confirmed (drafted from the wiki)
+- frame owner @anson, @abram; holds 82 node(s); owner has not confirmed (drafted from the wiki)
 - a programme: informs through its steps
 - best next unit: re-examine bli-formulation
 #### deference-and-trust
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): Which research on trust between a human inductor and an AI inductor, at the logical-induction level, reaches a formal account of trust that guides AI safety engineering work?
-- steps: ddb-to-li-translation, deck-collapse-statement, li-deference-collapse-scoped, hedged-value-unconditional, mart-implies-value-refuted-unconditional, li-deference-collapse.improvable, regularity-is-h3, crux-first-published-statement, crux-instrumental-notion, crux-self-feedback-dependence, managing-misalignment-to-li, li-deference-machine-checked, sams-conjecture-li, inter-inductor-total-trust, wiki-corpus-maintenance, li-deference-collapse, deference-toward-bounded-agents, corrigibility-landscape, li-models-human-progress, li-above-poly-time, li-no-selection-theorem-objection, li-level-computability-certificates, item-91, coherence-without-ground-truth, publication-form, published-statement-holds, note-corrections-beside-li-deference, deference-finite-results, docket-deference; leading step: inter-inductor-total-trust; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- steps: ddb-to-li-translation, deck-collapse-statement, li-deference-collapse-scoped, hedged-value-unconditional, mart-implies-value-refuted-unconditional, li-deference-collapse.improvable, regularity-is-h3, crux-first-published-statement, crux-instrumental-notion, crux-self-feedback-dependence, managing-misalignment-to-li, li-deference-machine-checked, sams-conjecture-li, inter-inductor-total-trust, wiki-corpus-maintenance, li-deference-collapse, deference-toward-bounded-agents, corrigibility-landscape, li-models-human-progress, li-above-poly-time, li-no-selection-theorem-objection, li-level-computability-certificates, item-91, coherence-without-ground-truth, publication-form, published-statement-holds, note-corrections-beside-li-deference, deference-finite-results; leading step: inter-inductor-total-trust; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
 - rests on AI numbers (no human judgment yet): alignment-faking-ahead-of-time
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @abram
+- frame owner @abram; holds 38 node(s)
 - a programme: informs through its steps
 - best next unit: re-examine inter-inductor-characterized
 #### decision-theory
@@ -104,44 +104,45 @@ Owner @anson, @abram
 #### enabling-work
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): Which repository infrastructure makes the trust research vettable and publishable?
-- steps: enabling-vetting-and-prioritization-system, enabling-machine-checked-corpus, enabling-publication-pipeline, crux-formalize-before-write-up, crux-vetting-or-generation, enabling-map-as-canonical, enabling-program-site, docket-workspace; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- steps: enabling-vetting-and-prioritization-system, enabling-machine-checked-corpus, enabling-publication-pipeline, crux-formalize-before-write-up, crux-vetting-or-generation, enabling-map-as-canonical, enabling-program-site; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
 - rests on AI numbers (no human judgment yet): crux-formalize-before-write-up.partition
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @anson, @abram
+- frame owner @anson, @abram; holds 15 node(s)
 - a programme: informs through its steps
 - best next unit: none
 
 ## Sub-frame normativity (in the-program): What does learning from reasons require of a reasoner: which statics a normative seed forces, how a constraint acquires operative force in a market, and what the Normative Inductor, from seed through reasons, compile, enforcement and revision, establishes end to end?
-Owner @anson
+Owner @anson; holds 36 node(s)
 
 ### Plans
 #### seed-theory
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- preset worst-case; status **open**; weakest proof-set leaf at V 0
 - a programme (sub-frame): What does a normative seed force on the prices of a settled fragment, how does that change under settlement, defeat and rebuttal, and do reasoners starting from different seeds end up anywhere together?
-- steps: docket-seed, rebuttal.settleform-sound, rebuttal.liability-rebutted, seed.forced-interval-spec, seed.forced-interval-bounds, seed.independence-strict, seed.eventually-const, convergence.hull-mass-anti, convergence.discord-persists, convergence.discord-pairwise; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- steps: ; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @anson; owner has not confirmed (drafted from the wiki)
+- frame owner @anson; holds 16 node(s); spelled, nothing yet a goal; owner has not confirmed (drafted from the wiki)
 - a programme: informs through its steps
 - best next unit: none
 #### operative-force
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): How does a constraint acquire operative force in a logical inductor's market without destroying the property that nobody can pump the reasoner, and what does that force cost?
-- steps: li.assessment.budgeter-value, li.assessment.budgeter-floor, li.assessment.budgeter-exploits, li.assessment.firm-dominance, li.assessment.criterion, force.strategy-value, force.row-tolerance, force.preservation, force.deductive-day-nonneg, force.deductive-cumulative-nonneg, force.deductive-criterion, force.deductive-inductor, force.deductive-witness, coherence.modulus-soundness, coherence.modulus-net-cover, compiler.schedule-end-to-end, compiler.constraints-end-to-end, compiler.deductive-end-to-end, maxmin.representation, maxmin.converse, region.patterns-sound, region.patterns-complete, region.patterns-nonempty-iff, region.hull, smoke.faf-asymp-refl, smoke.chain-compiles, simplex.rational-points-sum-to-one, traderization-arc, docket-operative-force; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- steps: traderization-arc; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- rests on AI numbers (no human judgment yet): traderization-arc
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @anson; owner has not confirmed (drafted from the wiki)
+- frame owner @anson; holds 28 node(s); owner has not confirmed (drafted from the wiki)
 - a programme: informs through its steps
 - best next unit: none
 #### normative-inductor
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): Does a logical inductor made to answer to legitimately incurred obligations, through an enforcer on the compiled region of the entitled record, remain a logical inductor and deliver the Progress bound, and what remains conditional in that theorem?
-- steps: progress.edge-bound, progress.edge-bound-quadratic, progress.headline-separation, ni.progress-bound, warrant.licence-chain, warrant.supported-admissible, warrant.admissible-not-supported, warrant.supported-not-licensed, warrant.selection-not-transparent, inductor.grounded-survivors, inductor.conformance, inductor.certificate-transport, inductor.warrant-inductor, inductor.witness, inductor.rebuttal-run, inductor.contraposition-blocked, normativity-layer-I-closed, docket-normative-inductor; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- steps: normativity-layer-I-closed; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
 - rests on AI numbers (no human judgment yet): normativity-layer-I-closed
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @anson; owner has not confirmed (drafted from the wiki)
+- frame owner @anson; holds 17 node(s); owner has not confirmed (drafted from the wiki)
 - a programme: informs through its steps
 - best next unit: none
 #### response-learning
@@ -165,12 +166,6 @@ Owner @anson
 - best next unit: spell-out normative-record
 
 ### Shared claims
-#### docket-normativity
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt docket-normativity
 #### normativity-aug9-foundation
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - rests on AI numbers (no human judgment yet): normativity-aug9-foundation
@@ -193,237 +188,71 @@ Owner @anson
 - informs 1 goal
 - best next unit: vet normativity-paper-candidates
 
-## Sub-frame seed-theory (in normativity): What does a normative seed force on the prices of a settled fragment, how does that change under settlement, defeat and rebuttal, and do reasoners starting from different seeds end up anywhere together?
-Owner @anson
+### Held
+Nodes this frame is about that are no goals of the ranking (held, not roots): listed with their kinds, no status or value here.
+- item-1 (leaf/task)
+- item-3 (leaf/task)
+- item-4 (leaf/task)
+- item-5 (leaf/task)
+- item-6 (leaf/task)
+- item-29 (leaf/task)
+- item-30 (leaf/task)
+- item-31 (leaf/task)
+- item-32 (leaf/task)
+- item-33 (leaf/task)
+- item-35 (leaf/task)
+- item-40 (leaf/task)
+- item-46 (leaf/task)
+- item-41 (leaf/task)
+- item-44 (leaf/task)
+- item-45 (leaf/task)
+- item-43 (leaf/task)
+- item-42 (leaf/task)
+- item-47 (leaf/task)
+- item-49 (leaf/task)
+- item-50 (leaf/task)
+- item-51 (leaf/task)
+- item-74 (leaf/task)
+- item-78 (leaf/task)
+- item-79 (leaf/task)
+- item-80 (leaf/task)
+- item-81 (leaf/task)
+- item-82 (leaf/task)
+- item-85 (leaf/task)
+- item-112 (leaf/task)
+- item-113 (leaf/task)
+- item-114 (leaf/task)
+- item-116 (leaf/task)
+- item-125 (leaf/task)
+- item-126 (leaf/task)
+- item-127 (leaf/task)
 
-### Shared claims
-#### docket-seed
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt docket-seed
-#### rebuttal.settleform-sound
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt rebuttal.settleform-sound
-#### rebuttal.liability-rebutted
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt rebuttal.liability-rebutted
-#### seed.forced-interval-spec
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt seed.forced-interval-spec
-#### seed.forced-interval-bounds
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt seed.forced-interval-bounds
-#### seed.independence-strict
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt seed.independence-strict
-#### seed.eventually-const
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt seed.eventually-const
-#### convergence.hull-mass-anti
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt convergence.hull-mass-anti
-#### convergence.discord-persists
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt convergence.discord-persists
-#### convergence.discord-pairwise
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt convergence.discord-pairwise
+## Sub-frame seed-theory (in normativity): What does a normative seed force on the prices of a settled fragment, how does that change under settlement, defeat and rebuttal, and do reasoners starting from different seeds end up anywhere together?
+Owner @anson; holds 16 node(s); spelled, nothing yet a goal (no roots)
+
+### Held
+Nodes this frame is about that are no goals of the ranking (held, not roots): listed with their kinds, no status or value here.
+- item-117 (leaf/task)
+- item-118 (leaf/task)
+- item-119 (leaf/task)
+- item-120 (leaf/task)
+- item-121 (leaf/task)
+- item-122 (leaf/task)
+- item-123 (leaf/task)
+- rebuttal.settleform-sound (and)
+- rebuttal.liability-rebutted (and)
+- seed.forced-interval-spec (and)
+- seed.forced-interval-bounds (and)
+- seed.independence-strict (and)
+- seed.eventually-const (and)
+- convergence.hull-mass-anti (and)
+- convergence.discord-persists (and)
+- convergence.discord-pairwise (and)
 
 ## Sub-frame operative-force (in normativity): How does a constraint acquire operative force in a logical inductor's market without destroying the property that nobody can pump the reasoner, and what does that force cost?
-Owner @anson
+Owner @anson; holds 28 node(s)
 
 ### Shared claims
-#### li.assessment.budgeter-value
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt li.assessment.budgeter-value
-#### li.assessment.budgeter-floor
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt li.assessment.budgeter-floor
-#### li.assessment.budgeter-exploits
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt li.assessment.budgeter-exploits
-#### li.assessment.firm-dominance
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt li.assessment.firm-dominance
-#### li.assessment.criterion
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt li.assessment.criterion
-#### force.strategy-value
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt force.strategy-value
-#### force.row-tolerance
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt force.row-tolerance
-#### force.preservation
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt force.preservation
-#### force.deductive-day-nonneg
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt force.deductive-day-nonneg
-#### force.deductive-cumulative-nonneg
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt force.deductive-cumulative-nonneg
-#### force.deductive-criterion
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt force.deductive-criterion
-#### force.deductive-inductor
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt force.deductive-inductor
-#### force.deductive-witness
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt force.deductive-witness
-#### coherence.modulus-soundness
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt coherence.modulus-soundness
-#### coherence.modulus-net-cover
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt coherence.modulus-net-cover
-#### compiler.schedule-end-to-end
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt compiler.schedule-end-to-end
-#### compiler.constraints-end-to-end
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt compiler.constraints-end-to-end
-#### compiler.deductive-end-to-end
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt compiler.deductive-end-to-end
-#### maxmin.representation
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt maxmin.representation
-#### maxmin.converse
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt maxmin.converse
-#### region.patterns-sound
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt region.patterns-sound
-#### region.patterns-complete
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt region.patterns-complete
-#### region.patterns-nonempty-iff
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt region.patterns-nonempty-iff
-#### region.hull
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt region.hull
-#### smoke.faf-asymp-refl
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt smoke.faf-asymp-refl
-#### smoke.chain-compiles
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt smoke.chain-compiles
-#### simplex.rational-points-sum-to-one
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt simplex.rational-points-sum-to-one
 #### traderization-arc
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - rests on AI numbers (no human judgment yet): traderization-arc
@@ -431,113 +260,42 @@ Owner @anson
 - load-bearing shared leaves: none
 - informs 0 goals (a single claim no goal reads: offered to connect)
 - best next unit: none
-#### docket-operative-force
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt docket-operative-force
+
+### Held
+Nodes this frame is about that are no goals of the ranking (held, not roots): listed with their kinds, no status or value here.
+- li.assessment.budgeter-value (and)
+- li.assessment.budgeter-floor (and)
+- li.assessment.budgeter-exploits (and)
+- li.assessment.firm-dominance (and)
+- li.assessment.criterion (and)
+- force.strategy-value (and)
+- force.row-tolerance (and)
+- force.preservation (and)
+- force.deductive-day-nonneg (and)
+- force.deductive-cumulative-nonneg (and)
+- force.deductive-criterion (and)
+- force.deductive-inductor (and)
+- force.deductive-witness (and)
+- coherence.modulus-soundness (and)
+- coherence.modulus-net-cover (and)
+- compiler.schedule-end-to-end (and)
+- compiler.constraints-end-to-end (and)
+- compiler.deductive-end-to-end (and)
+- maxmin.representation (and)
+- maxmin.converse (and)
+- region.patterns-sound (and)
+- region.patterns-complete (and)
+- region.patterns-nonempty-iff (and)
+- region.hull (and)
+- smoke.faf-asymp-refl (and)
+- smoke.chain-compiles (and)
+- simplex.rational-points-sum-to-one (and)
+- item-39 (leaf/task)
 
 ## Sub-frame normative-inductor (in normativity): Does a logical inductor made to answer to legitimately incurred obligations, through an enforcer on the compiled region of the entitled record, remain a logical inductor and deliver the Progress bound, and what remains conditional in that theorem?
-Owner @anson
+Owner @anson; holds 17 node(s)
 
 ### Shared claims
-#### progress.edge-bound
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt progress.edge-bound
-#### progress.edge-bound-quadratic
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt progress.edge-bound-quadratic
-#### progress.headline-separation
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt progress.headline-separation
-#### ni.progress-bound
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt ni.progress-bound
-#### warrant.licence-chain
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt warrant.licence-chain
-#### warrant.supported-admissible
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt warrant.supported-admissible
-#### warrant.admissible-not-supported
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt warrant.admissible-not-supported
-#### warrant.supported-not-licensed
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt warrant.supported-not-licensed
-#### warrant.selection-not-transparent
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt warrant.selection-not-transparent
-#### inductor.grounded-survivors
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt inductor.grounded-survivors
-#### inductor.conformance
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt inductor.conformance
-#### inductor.certificate-transport
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt inductor.certificate-transport
-#### inductor.warrant-inductor
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt inductor.warrant-inductor
-#### inductor.witness
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt inductor.witness
-#### inductor.rebuttal-run
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt inductor.rebuttal-run
-#### inductor.contraposition-blocked
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt inductor.contraposition-blocked
 #### normativity-layer-I-closed
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - rests on AI numbers (no human judgment yet): normativity-layer-I-closed
@@ -545,12 +303,26 @@ Owner @anson
 - load-bearing shared leaves: none
 - informs 0 goals (a single claim no goal reads: offered to connect)
 - best next unit: none
-#### docket-normative-inductor
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt docket-normative-inductor
+
+### Held
+Nodes this frame is about that are no goals of the ranking (held, not roots): listed with their kinds, no status or value here.
+- progress.edge-bound (and)
+- progress.edge-bound-quadratic (and)
+- progress.headline-separation (and)
+- ni.progress-bound (and)
+- warrant.licence-chain (and)
+- warrant.supported-admissible (and)
+- warrant.admissible-not-supported (and)
+- warrant.supported-not-licensed (and)
+- warrant.selection-not-transparent (and)
+- inductor.grounded-survivors (and)
+- inductor.conformance (and)
+- inductor.certificate-transport (and)
+- inductor.warrant-inductor (and)
+- inductor.witness (and)
+- inductor.rebuttal-run (and)
+- inductor.contraposition-blocked (and)
+- item-124 (leaf/task)
 
 ## Sub-frame response-learning (in normativity): Does a bounded learner, given due burdens, licensed responses and a bounded prospective loss, reduce a recurrent publicly represented failure by lawful edits, and with which coverage does that bear the interpretation of a lesson?
 Owner @anson
@@ -568,35 +340,35 @@ Owner @anson
 Owner @anson; unspelled: no roots yet (its unit is spell-out)
 
 ## Sub-frame legitimacy (in the-program): What must stay true of a trajectory's record, verdicts and channels of influence, inside it and at its boundary, for a later judgment to count as the principal's own, and what does corrigibility consume from that?
-Owner @anson, @abram
+Owner @anson, @abram; holds 82 node(s)
 
 ### Plans
 #### integrity-and-record
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- preset worst-case; status **open**; weakest proof-set leaf at V 0
 - a programme (sub-frame): Can a cognitive trajectory falsify or silently rewrite its own normative history, and what does an Integrity evolution of the accounted obligation state conserve?
-- steps: integrity.evolution-conservation, integrity.propagate-to-segment, integrity.receipts-immutable, integrity.faithful-carry, integrity.multiplicity-witness, legitimacy.evolution-conservation, legitimacy.propagate-to-segment, legitimacy.receipts-immutable, legitimacy.faithful-carry, legitimacy.multiplicity-witness, legitimacy.segment-trans, legitimacy.endpoint-trans, legitimacy.answerable, legitimacy.endpoint-only-insufficient, open-integrity.segment-trans, open-integrity.endpoint-trans, open-integrity.answerable; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- steps: ; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @anson, @abram; owner has not confirmed (drafted from the wiki)
+- frame owner @anson, @abram; holds 17 node(s); spelled, nothing yet a goal; owner has not confirmed (drafted from the wiki)
 - a programme: informs through its steps
 - best next unit: none
 #### openness-and-non-capture
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- preset worst-case; status **open**; weakest proof-set leaf at V 0
 - a programme (sub-frame): Can concerns reach a process at all, and can the party they matter to still act on them, on the actual branch and under every declared intervention?
-- steps: openness.endpoint-only-insufficient, openness.persistence-sufficient, openness.certplus-is-robust-openness, openness.actual-branch-witness; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- steps: ; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @anson, @abram; owner has not confirmed (drafted from the wiki)
+- frame owner @anson, @abram; holds 4 node(s); spelled, nothing yet a goal; owner has not confirmed (drafted from the wiki)
 - a programme: informs through its steps
 - best next unit: none
 #### authorship-and-transparency
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): When is a verdict the principal's own program's and a channel's influence the declared reference on the declared inputs, and does the thick definition of legitimacy satisfy the thin specification?
-- steps: authorship.mediation-by-reexecution, thin.correct-of-thick, thin.sufficient-of-integrity-openness, thin.value-of-correct-sufficient, thin.converse-fails-on-correct, thin.reflection-inherited-value, thin.preservation, thin.preservation-pair, thin.marginal-martingale-too-weak, thin.value-loss-le-defects, thin.covert-blocking-correct-iff, sincerity.rows-keep-verdicts-counted, sincerity.rows-keep-verdicts-tainted, sincerity.sincere-error-counts, sincerity.lie-tainted, sincerity.content-fact, transparent.posterior-weight-eq, transparent.blind-payload, legitimacy.payload-of-view, public-legitimacy-theory, thin-converse-open, thin-value-loss-bound, item-109, item-110, item-108, effective-authority-layer, cnl-post, public-legitimacy-improvable, public-internal-legitimacy-is-reasons, reason-mediated-authorship, thin-value-of-thick; leading step: public-legitimacy-theory; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- steps: public-legitimacy-theory, thin-converse-open, thin-value-loss-bound, item-109, item-110, item-108, effective-authority-layer, cnl-post, public-legitimacy-improvable, public-internal-legitimacy-is-reasons, reason-mediated-authorship; leading step: public-legitimacy-theory; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
 - rests on AI numbers (no human judgment yet): public-legitimacy-theory.complete, record-half-integrity, thin-reflection-is-trivial-baseline
 - safety margin: no established leaves
 - load-bearing shared leaves: public-legitimacy-theory.complete, record-half-integrity, thin-reflection-is-trivial-baseline, thin.value-of-thick.bridge, thin.value-of-thick.complete, thin.value-of-thick.record
-- frame owner @anson, @abram; owner has not confirmed (drafted from the wiki)
+- frame owner @anson, @abram; holds 20 node(s); owner has not confirmed (drafted from the wiki)
 - a programme: informs through its steps
 - best next unit: vet thin.value-of-thick.bridge
 #### corrigibility-landscape
@@ -621,27 +393,6 @@ Owner @anson, @abram
 - also a root of: deference-and-trust
 - a programme: informs through its steps
 - best next unit: vet void-branch-deterrence-floor.bridge
-#### legit-gated-trust-li
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-gated-tower-li-teacher, legit-gated-trust-li
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 2 goals
-- best next unit: vet legit-anchor-of-L
-#### legit-endpoint-preservation
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-endpoint-preservation
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet legit-endpoint-preservation
-#### public-layer-II
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): counterfactual-non-capture, item-76, item-77, legitimacy-deference-instantiation, public-layer-II, public-layer-II.complete
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet legitimacy-deference-instantiation
 #### formalism-open-questions-0-3
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): Which of the open questions listed for the li-deference formalism yield to the legitimacy and trust work, and in what form?
@@ -673,422 +424,13 @@ Owner @anson, @abram
 - a programme: informs through its steps
 - best next unit: re-examine legitimacy-as-local-rules
 
-### Risk stories
-#### align-to-legitimacy-over-endorsement-risk
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): align-to-legitimacy-over-endorsement-risk
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-
-### Shared claims
-#### docket-legitimacy
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt docket-legitimacy
-#### legit-definition-endorsement
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-definition-endorsement, legit-definition-endorsement.partition
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet legit-definition-endorsement
-#### legit-corrects-trust-principles
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-corrects-trust-principles
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### legit-per-formalism-family
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-per-formalism-family
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### legit-ddb-transfer
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-ddb-transfer, legit-ddb-transfer.bridge, legit-ddb-transfer.complete, legit-ddb-transfer.record, legit-finite-frames, legit-positive-mass
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 6 goals
-- best next unit: vet legit-finite-frames
-#### legit-locality-forced
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-locality-forced, legit-locality-forced.bridge, legit-locality-forced.complete, legit-locality-forced.record, legit-locality-forced.setting
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 2 goals
-- best next unit: vet legit-locality-forced.complete
-#### legit-reflection-unsat-modest
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-reflection-unsat-modest, legit-reflection-unsat-modest.bridge, legit-reflection-unsat-modest.complete, legit-reflection-unsat-modest.record, legit-reflection-unsat-modest.setting
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet legit-reflection-unsat-modest.complete
-#### legit-composition
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-composition, legit-composition.bridge, legit-composition.complete, legit-composition.record, legit-composition.setting
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 2 goals
-- best next unit: vet legit-composition.complete
-#### legit-li-self-correction-identity
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-li-self-correction-identity
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet legit-li-self-correction-identity
-#### legit-correction-function-learned
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-correction-function-learned
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: do legit-correction-function-learned
-#### legit-condition-vs-predict-reality
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-condition-vs-predict-reality, legit-condition-vs-predict-reality.partition
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet legit-locality-forced.complete
-#### legit-anchor-of-L
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-anchor-of-L, legit-anchor-of-L.partition
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 5 goals
-- best next unit: vet legit-anchor-of-L
-#### legit-global-or-local-form
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-global-or-local-form
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### legit-trust-improvable
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-relax-anchor, legit-trust-improvable
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet legit-relax-anchor
-#### idleness-on-G-grade-a
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): idleness-on-G-grade-a
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet idleness-on-G-grade-a
-#### idleness-on-G-with-certificate
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): idleness-on-G-with-certificate
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 2 goals
-- best next unit: vet idleness-on-G-with-certificate
-#### claim1-diagonal-illegitimate
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): claim1-diagonal-illegitimate
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet claim1-diagonal-illegitimate
-#### corrupt-strictly-contains-inadmissible
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): corrupt-strictly-contains-inadmissible
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet corrupt-strictly-contains-inadmissible
-#### trace-nonrecoverability
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): trace-finite-report-layer, trace-nonrecoverability, trace-nonrecoverability.bridge, trace-nonrecoverability.complete, trace-nonrecoverability.record
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 3 goals
-- best next unit: vet trace-finite-report-layer
-#### trace-nonrecoverability-li
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): trace-nonrecoverability-li
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: improve trace-nonrecoverability-li
-#### wirehead-iff-finite
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): wirehead-iff-finite, wirehead-iff-finite.bridge, wirehead-iff-finite.complete, wirehead-iff-finite.record, wirehead-iff-finite.setting
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 2 goals
-- best next unit: vet wirehead-iff-finite.bridge
-#### certificate-enforcement
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): certificate-enforcement
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet certificate-enforcement
-#### predication-dichotomy
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): predication-dichotomy
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### d3-identification
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): d3-identification
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### corrigibility-faithful-plus-legit-on-self
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): corrigibility-faithful-plus-legit-on-self
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet corrigibility-faithful-plus-legit-on-self
-#### non-modification-conjecture
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): non-modification-conjecture
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: improve non-modification-conjecture
-#### legit-v1-improvable
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-v1-improvable, route-v1-defect-as-thin-correct
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet route-v1-timely-fragment-certificate
-#### gate-is-legitimacy
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): gate-is-legitimacy
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### item-75
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): item-75
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### li-corrigibility-inequality-public
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): li-corrigibility-inequality-public
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 2 goals
-- best next unit: vet li-corrigibility-inequality-public
-#### legitimate-deference-regret
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legitimate-deference-regret
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### legit-two-theories-bridge
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-two-theories-bridge, legit-two-theories-bridge.partition
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet legit-two-theories-bridge
-#### bridge-defect-vs-thin-correct
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): bridge-defect-vs-thin-correct
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 3 goals
-- best next unit: do bridge-defect-vs-thin-correct
-#### bridge-trace-vs-transparency
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): bridge-trace-vs-transparency
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: improve bridge-trace-vs-transparency
-#### legit-objective-proposals
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-objective-proposals, legit-objective-proposals.partition
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 6 goals
-- best next unit: vet void-branch-deterrence-floor.bridge
-#### illegitimate-world-ever-better
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): illegitimate-world-ever-better
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 6 goals
-- best next unit: do illegitimate-world-ever-better
-#### p2-manages-the-news
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): p2-manages-the-news, p2-manages-the-news.bridge, p2-manages-the-news.complete, p2-manages-the-news.record, p2-manages-the-news.setting
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 7 goals
-- best next unit: vet p2-manages-the-news.bridge
-#### inferability-positivity
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): inferability-positivity, inferability-positivity.bridge, inferability-positivity.complete, inferability-positivity.record, inferability-positivity.setting
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet inferability-positivity.complete
-#### updateless-p2-cellwise-p3
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): updateless-p2-cellwise-p3, updateless-p2-cellwise-p3.bridge, updateless-p2-cellwise-p3.complete, updateless-p2-cellwise-p3.record, updateless-p2-cellwise-p3.setting
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet updateless-p2-cellwise-p3.complete
-#### deterrence-not-identified-on-path
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): deterrence-not-identified-on-path, deterrence-not-identified-on-path.bridge, deterrence-not-identified-on-path.complete, deterrence-not-identified-on-path.record, deterrence-not-identified-on-path.setting
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 2 goals
-- best next unit: vet deterrence-not-identified-on-path.complete
-#### corr-legit-modif-frames
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): corr-legit-modif-frames
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 5 goals
-- best next unit: vet corr-legit-modif-frames
-#### legit-branch-evaluation-defense-requirements
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-branch-evaluation-defense-requirements
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### readout-R1-vs-R2
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): readout-R1-vs-R2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### retroactive-vs-prospective-judging
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): retroactive-vs-prospective-judging
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### anger-substitute-for-updatelessness
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): anger-substitute-for-updatelessness, anger-substitute-for-updatelessness.partition
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet deterrence-not-identified-on-path.complete
-#### legit-meta-revision
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-meta-revision
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet anticipation-branchwise-dominance.complete
-#### corrigibility-needs-consequentialist-wrapper
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): corrigibility-needs-consequentialist-wrapper, corrigibility-needs-consequentialist-wrapper.partition
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 3 goals
-- best next unit: vet corrigibility-needs-consequentialist-wrapper
-#### legit-weighted-objective-improvable
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-weighted-objective-improvable, route-piecemeal-design
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet route-piecemeal-design
-#### internal-standard-never-settled
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): internal-standard-never-settled, internal-standard-never-settled.partition
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet internal-standard-never-settled
-#### reasons-subcase-of-legitimacy
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): reasons-subcase-of-legitimacy, reasons-subcase-of-legitimacy.partition
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet reasons-subcase-of-legitimacy
-#### reasons-statics-public
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): reasons-statics-public
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 3 goals
-- best next unit: vet reasons-statics-public
-#### public-line-leaves-semantics-alone
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): public-line-leaves-semantics-alone
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### brandom-objectivity-structural
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): brandom-objectivity-structural
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### brandom-relative-prices
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): brandom-relative-prices
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 2 goals
-- best next unit: vet brandom-relative-prices
-#### reason-exchange-representation-theorem
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): reason-exchange-representation-theorem
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
-#### legit-intersubjectivity-pre-rationality
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): legit-intersubjectivity-pre-rationality
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: improve legit-intersubjectivity-pre-rationality
-#### reasons-improvable
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): reasons-improvable, route-reasons-relative-prices
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet route-reasons-relative-prices
-
 ### Wants
 #### want-figure-out-legitimacy
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - safety margin: no established leaves
 - load-bearing shared leaves: none
 - a want of @abram; priority unset (reads as medium); owner has not confirmed; attachment: ⇢ legit-gated-trust-li (given)
-- its units: spell-out want-figure-out-legitimacy, vet legit-anchor-of-L, vet legit-ddb-transfer.bridge, vet legit-reflection-li-band-gated, map-read legit-anchor-of-L
+- its units: spell-out want-figure-out-legitimacy, vet legit-ddb-transfer.bridge, vet legit-anchor-of-L, vet legit-ddb-transfer.complete, vet legit-ddb-transfer.record
 - informs 1 goal
 - best next unit: spell-out want-figure-out-legitimacy
 #### want-corrigibility-theorems-via-legitimacy
@@ -1109,144 +451,126 @@ Owner @anson, @abram
 - informs 1 goal
 - best next unit: connect want-legitimacy-anti-meme-post
 
-## Sub-frame integrity-and-record (in legitimacy): Can a cognitive trajectory falsify or silently rewrite its own normative history, and what does an Integrity evolution of the accounted obligation state conserve?
-Owner @anson, @abram
+### Held
+Nodes this frame is about that are no goals of the ranking (held, not roots): listed with their kinds, no status or value here.
+- item-53 (leaf/task)
+- item-54 (leaf/task)
+- item-55 (leaf/task)
+- item-56 (leaf/task)
+- item-57 (leaf/task)
+- item-58 (leaf/task)
+- item-59 (leaf/task)
+- item-61 (leaf/task)
+- item-62 (leaf/task)
+- item-64 (leaf/task)
+- item-65 (leaf/task)
+- item-66 (leaf/task)
+- item-70 (leaf/task)
+- item-67 (leaf/task)
+- item-68 (leaf/task)
+- item-69 (leaf/task)
+- item-71 (leaf/task)
+- item-72 (leaf/task)
+- item-73 (leaf/task)
+- item-88 (leaf/task)
+- item-115 (leaf/task)
+- item-128 (leaf/task)
+- legit-definition-endorsement (cases)
+- legit-corrects-trust-principles (leaf/step)
+- legit-per-formalism-family (leaf/step)
+- legit-gated-trust-li (or)
+- legit-ddb-transfer (and)
+- legit-locality-forced (and)
+- legit-reflection-unsat-modest (and)
+- legit-composition (and)
+- legit-li-self-correction-identity (leaf/step)
+- legit-correction-function-learned (leaf/question)
+- legit-condition-vs-predict-reality (cases)
+- legit-anchor-of-L (cases)
+- legit-global-or-local-form (leaf/question)
+- legit-trust-improvable (or)
+- legit-endpoint-preservation (leaf/step)
+- idleness-on-G-grade-a (leaf/step)
+- idleness-on-G-with-certificate (leaf/step)
+- claim1-diagonal-illegitimate (leaf/step)
+- corrupt-strictly-contains-inadmissible (leaf/step)
+- trace-nonrecoverability (and)
+- trace-nonrecoverability-li (leaf/question)
+- wirehead-iff-finite (and)
+- certificate-enforcement (leaf/step)
+- predication-dichotomy (leaf/step)
+- d3-identification (leaf/step)
+- corrigibility-faithful-plus-legit-on-self (leaf/step)
+- non-modification-conjecture (leaf/question)
+- legit-v1-improvable (or)
+- gate-is-legitimacy (leaf/step)
+- public-layer-II (and)
+- item-75 (leaf/question)
+- li-corrigibility-inequality-public (leaf/step)
+- legitimate-deference-regret (leaf/step)
+- legit-two-theories-bridge (cases)
+- bridge-defect-vs-thin-correct (leaf/question)
+- bridge-trace-vs-transparency (leaf/question)
+- legit-objective-proposals (cases)
+- illegitimate-world-ever-better (leaf/question)
+- p2-manages-the-news (and)
+- inferability-positivity (and)
+- updateless-p2-cellwise-p3 (and)
+- deterrence-not-identified-on-path (and)
+- corr-legit-modif-frames (leaf/step)
+- legit-branch-evaluation-defense-requirements (leaf/step)
+- readout-R1-vs-R2 (leaf/question)
+- retroactive-vs-prospective-judging (leaf/question)
+- anger-substitute-for-updatelessness (cases)
+- legit-meta-revision (leaf/question)
+- corrigibility-needs-consequentialist-wrapper (cases)
+- align-to-legitimacy-over-endorsement-risk (leaf/step)
+- legit-weighted-objective-improvable (or)
+- internal-standard-never-settled (cases)
+- reasons-subcase-of-legitimacy (cases)
+- reasons-statics-public (leaf/step)
+- public-line-leaves-semantics-alone (leaf/step)
+- brandom-objectivity-structural (leaf/step)
+- brandom-relative-prices (leaf/step)
+- reason-exchange-representation-theorem (leaf/question)
+- legit-intersubjectivity-pre-rationality (leaf/question)
+- reasons-improvable (or)
 
-### Shared claims
-#### integrity.evolution-conservation
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt integrity.evolution-conservation
-#### integrity.propagate-to-segment
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt integrity.propagate-to-segment
-#### integrity.receipts-immutable
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt integrity.receipts-immutable
-#### integrity.faithful-carry
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt integrity.faithful-carry
-#### integrity.multiplicity-witness
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt integrity.multiplicity-witness
-#### legitimacy.evolution-conservation
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt legitimacy.evolution-conservation
-#### legitimacy.propagate-to-segment
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt legitimacy.propagate-to-segment
-#### legitimacy.receipts-immutable
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt legitimacy.receipts-immutable
-#### legitimacy.faithful-carry
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt legitimacy.faithful-carry
-#### legitimacy.multiplicity-witness
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt legitimacy.multiplicity-witness
-#### legitimacy.segment-trans
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt legitimacy.segment-trans
-#### legitimacy.endpoint-trans
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt legitimacy.endpoint-trans
-#### legitimacy.answerable
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt legitimacy.answerable
-#### legitimacy.endpoint-only-insufficient
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt legitimacy.endpoint-only-insufficient
-#### open-integrity.segment-trans
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt open-integrity.segment-trans
-#### open-integrity.endpoint-trans
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt open-integrity.endpoint-trans
-#### open-integrity.answerable
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt open-integrity.answerable
+## Sub-frame integrity-and-record (in legitimacy): Can a cognitive trajectory falsify or silently rewrite its own normative history, and what does an Integrity evolution of the accounted obligation state conserve?
+Owner @anson, @abram; holds 17 node(s); spelled, nothing yet a goal (no roots)
+
+### Held
+Nodes this frame is about that are no goals of the ranking (held, not roots): listed with their kinds, no status or value here.
+- integrity.evolution-conservation (and)
+- integrity.propagate-to-segment (and)
+- integrity.receipts-immutable (and)
+- integrity.faithful-carry (and)
+- integrity.multiplicity-witness (and)
+- legitimacy.evolution-conservation (and)
+- legitimacy.propagate-to-segment (and)
+- legitimacy.receipts-immutable (and)
+- legitimacy.faithful-carry (and)
+- legitimacy.multiplicity-witness (and)
+- legitimacy.segment-trans (and)
+- legitimacy.endpoint-trans (and)
+- legitimacy.answerable (and)
+- legitimacy.endpoint-only-insufficient (and)
+- open-integrity.segment-trans (and)
+- open-integrity.endpoint-trans (and)
+- open-integrity.answerable (and)
 
 ## Sub-frame openness-and-non-capture (in legitimacy): Can concerns reach a process at all, and can the party they matter to still act on them, on the actual branch and under every declared intervention?
-Owner @anson, @abram
+Owner @anson, @abram; holds 4 node(s); spelled, nothing yet a goal (no roots)
 
-### Shared claims
-#### openness.endpoint-only-insufficient
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt openness.endpoint-only-insufficient
-#### openness.persistence-sufficient
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt openness.persistence-sufficient
-#### openness.certplus-is-robust-openness
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt openness.certplus-is-robust-openness
-#### openness.actual-branch-witness
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt openness.actual-branch-witness
+### Held
+Nodes this frame is about that are no goals of the ranking (held, not roots): listed with their kinds, no status or value here.
+- openness.endpoint-only-insufficient (and)
+- openness.persistence-sufficient (and)
+- openness.certplus-is-robust-openness (and)
+- openness.actual-branch-witness (and)
 
 ## Sub-frame authorship-and-transparency (in legitimacy): When is a verdict the principal's own program's and a channel's influence the declared reference on the declared inputs, and does the thick definition of legitimacy satisfy the thin specification?
-Owner @anson, @abram
+Owner @anson, @abram; holds 20 node(s)
 
 ### Plans
 #### public-legitimacy-theory
@@ -1258,120 +582,6 @@ Owner @anson, @abram
 - best next unit: vet thin.value-of-thick.bridge
 
 ### Shared claims
-#### authorship.mediation-by-reexecution
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt authorship.mediation-by-reexecution
-#### thin.correct-of-thick
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt thin.correct-of-thick
-#### thin.sufficient-of-integrity-openness
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt thin.sufficient-of-integrity-openness
-#### thin.value-of-correct-sufficient
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt thin.value-of-correct-sufficient
-#### thin.converse-fails-on-correct
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt thin.converse-fails-on-correct
-#### thin.reflection-inherited-value
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt thin.reflection-inherited-value
-#### thin.preservation
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt thin.preservation
-#### thin.preservation-pair
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt thin.preservation-pair
-#### thin.marginal-martingale-too-weak
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt thin.marginal-martingale-too-weak
-#### thin.value-loss-le-defects
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt thin.value-loss-le-defects
-#### thin.covert-blocking-correct-iff
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt thin.covert-blocking-correct-iff
-#### sincerity.rows-keep-verdicts-counted
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt sincerity.rows-keep-verdicts-counted
-#### sincerity.rows-keep-verdicts-tainted
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt sincerity.rows-keep-verdicts-tainted
-#### sincerity.sincere-error-counts
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt sincerity.sincere-error-counts
-#### sincerity.lie-tainted
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt sincerity.lie-tainted
-#### sincerity.content-fact
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt sincerity.content-fact
-#### transparent.posterior-weight-eq
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt transparent.posterior-weight-eq
-#### transparent.blind-payload
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt transparent.blind-payload
-#### legitimacy.payload-of-view
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt legitimacy.payload-of-view
 #### thin-converse-open
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - rests on AI numbers (no human judgment yet): thin-converse-open
@@ -1432,8 +642,8 @@ Owner @anson, @abram
 - rests on AI numbers (no human judgment yet): public-internal-legitimacy-is-reasons
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: vet public-internal-legitimacy-is-reasons
+- informs 0 goals (a single claim no goal reads: offered to connect)
+- best next unit: none
 #### reason-mediated-authorship
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - rests on AI numbers (no human judgment yet): reason-mediated-authorship
@@ -1441,12 +651,29 @@ Owner @anson, @abram
 - load-bearing shared leaves: none
 - informs 0 goals (a single claim no goal reads: offered to connect)
 - best next unit: none
-#### thin-value-of-thick
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: thin.value-of-thick.bridge, thin.value-of-thick.complete, thin.value-of-thick.record
-- informs 2 goals
-- best next unit: gestalt thin-value-of-thick
+
+### Held
+Nodes this frame is about that are no goals of the ranking (held, not roots): listed with their kinds, no status or value here.
+- authorship.mediation-by-reexecution (and)
+- thin.correct-of-thick (and)
+- thin.sufficient-of-integrity-openness (and)
+- thin.value-of-correct-sufficient (and)
+- thin.converse-fails-on-correct (and)
+- thin.reflection-inherited-value (and)
+- thin.preservation (and)
+- thin.preservation-pair (and)
+- thin.marginal-martingale-too-weak (and)
+- thin.value-loss-le-defects (and)
+- thin.covert-blocking-correct-iff (and)
+- sincerity.rows-keep-verdicts-counted (and)
+- sincerity.rows-keep-verdicts-tainted (and)
+- sincerity.sincere-error-counts (and)
+- sincerity.lie-tainted (and)
+- sincerity.content-fact (and)
+- transparent.posterior-weight-eq (and)
+- transparent.blind-payload (and)
+- legitimacy.payload-of-view (and)
+- thin-value-of-thick (and)
 
 ## Sub-frame corrigibility-landscape (in legitimacy): Which correction relationships between humans and AI systems does the picture of corrigibility as eagerness to learn reach, and which failure stories does it leave standing?
 Owner @anson
@@ -1525,11 +752,11 @@ Owner @anson
 #### public-corrigibility-line
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): Does the authority-typed corrigibility kernel of the public deference line deliver guarantees for a real system, and how does it relate to the epistemic picture?
-- steps: authority-typed-corrigibility, post-corrigible-normative-learning, authority-typed-corrigibility.improvable, kernel-lexical-order-hypothesis, kernel-conditioning-fails-witness, kernel-restoration, reachable-corrective-control-negative, corrigibility-as-recoverability, corrigibility-architecture-round, li-corrigibilization-theorem, bria-corrigibility-round, kernel.box1-fidelity-versus-fully-updated-deference, kernel.box2-dominance, kernel.box2-mediation-faithful, kernel.box3-gap-exchange-rate, kernel.box3-no-laundering, kernel.box3-no-incentive-to-compromise, kernel.box3-restoration, kernel.hierarchy-per-decision, kernel.hierarchy-history, kernel.subjective-exchange-rate, kernel.extension-realized-rate, kernel.extension-bria-realization, kernel.corrigible-fidelity-score, kernel.corrigible-generic, kernel.extension-exploration-realization, authority.queue-no-bypass, authority.queue-no-caused-shortfall, authority.exchange-rate-queue, authority.flood-caused-shortfall, authority.comprehension-short, authority.approval-discount-defeated, authority.revocation-default, post.witness-sole-authority, post.witness-control-maximizer, post.witness-same-level, post.witness-learned-weight, post.witness-hindsight, post.theorem, post.theorem-li, post.flood-below-asking, shortfall.security-generable, shortfall.eventually-excluded, shortfall.table-generable, shortfall.atom-generable, shortfall.deferred-ahead, shortfall.deferred-eventually-excluded, asklist.rows-keep-verdicts-counted, asklist.rows-keep-verdicts-tainted, asklist.volume-by-want-tainted, asklist.order-by-want-tainted, asklist.offprotocol-deviation-finite, deconfusing.theorem1, deconfusing.theorem2a, deconfusing.theorem2b, deconfusing.theorem2b-strict, deconfusing.theorem2c, deconfusing.theorem2c-tau, deconfusing.theorem3a, deconfusing.theorem3a-rate, deconfusing.theorem3b, deconfusing.corollary-a, deconfusing.corollary-b, deconfusing.corollary-limit, kernel-box2-finite-time; leading step: post-corrigible-normative-learning; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- steps: authority-typed-corrigibility, post-corrigible-normative-learning, authority-typed-corrigibility.improvable, kernel-lexical-order-hypothesis, kernel-conditioning-fails-witness, kernel-restoration, reachable-corrective-control-negative, corrigibility-as-recoverability, corrigibility-architecture-round, li-corrigibilization-theorem, bria-corrigibility-round, kernel-box2-finite-time; leading step: post-corrigible-normative-learning; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
 - rests on AI numbers (no human judgment yet): post-corrigible-normative-learning
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @anson
+- frame owner @anson; holds 53 node(s)
 - a programme: informs through its steps
 - best next unit: vet post-corrigible-normative-learning
 
@@ -2257,14 +1484,14 @@ Owner @anson
 - rests on AI numbers (no human judgment yet): void-branch-deterrence-floor--corrigibility-risk, void-branch-deterrence-floor.bridge, void-branch-deterrence-floor.complete, void-branch-deterrence-floor.record, void-branch-deterrence-floor.setting
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- informs 7 goals
+- informs 6 goals
 - best next unit: vet void-branch-deterrence-floor.bridge
 #### anticipation-branchwise-dominance--corrigibility-risk
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - rests on AI numbers (no human judgment yet): anticipation-branchwise-dominance--corrigibility-risk, anticipation-branchwise-dominance.bridge, anticipation-branchwise-dominance.complete, anticipation-branchwise-dominance.record, anticipation-branchwise-dominance.setting
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- informs 2 goals
+- informs 1 goal
 - best next unit: vet anticipation-branchwise-dominance.complete
 #### crux-illegitimate-ordering
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
@@ -2296,7 +1523,7 @@ Owner @anson
 - best next unit: none
 
 ## Sub-frame public-corrigibility-line (in corrigibility-landscape): Does the authority-typed corrigibility kernel of the public deference line deliver guarantees for a real system, and how does it relate to the epistemic picture?
-Owner @anson
+Owner @anson; holds 53 node(s)
 
 ### Plans
 #### authority-typed-corrigibility
@@ -2378,324 +1605,6 @@ Owner @anson
 - load-bearing shared leaves: none
 - informs 0 goals (a single claim no goal reads: offered to connect)
 - best next unit: none
-#### kernel.box1-fidelity-versus-fully-updated-deference
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt kernel.box1-fidelity-versus-fully-updated-deference
-#### kernel.box2-dominance
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt kernel.box2-dominance
-#### kernel.box2-mediation-faithful
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt kernel.box2-mediation-faithful
-#### kernel.box3-gap-exchange-rate
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt kernel.box3-gap-exchange-rate
-#### kernel.box3-no-laundering
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt kernel.box3-no-laundering
-#### kernel.box3-no-incentive-to-compromise
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt kernel.box3-no-incentive-to-compromise
-#### kernel.box3-restoration
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt kernel.box3-restoration
-#### kernel.hierarchy-per-decision
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt kernel.hierarchy-per-decision
-#### kernel.hierarchy-history
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt kernel.hierarchy-history
-#### kernel.subjective-exchange-rate
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt kernel.subjective-exchange-rate
-#### kernel.extension-realized-rate
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt kernel.extension-realized-rate
-#### kernel.extension-bria-realization
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt kernel.extension-bria-realization
-#### kernel.corrigible-fidelity-score
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt kernel.corrigible-fidelity-score
-#### kernel.corrigible-generic
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt kernel.corrigible-generic
-#### kernel.extension-exploration-realization
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt kernel.extension-exploration-realization
-#### authority.queue-no-bypass
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt authority.queue-no-bypass
-#### authority.queue-no-caused-shortfall
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt authority.queue-no-caused-shortfall
-#### authority.exchange-rate-queue
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt authority.exchange-rate-queue
-#### authority.flood-caused-shortfall
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt authority.flood-caused-shortfall
-#### authority.comprehension-short
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt authority.comprehension-short
-#### authority.approval-discount-defeated
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt authority.approval-discount-defeated
-#### authority.revocation-default
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt authority.revocation-default
-#### post.witness-sole-authority
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt post.witness-sole-authority
-#### post.witness-control-maximizer
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt post.witness-control-maximizer
-#### post.witness-same-level
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt post.witness-same-level
-#### post.witness-learned-weight
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt post.witness-learned-weight
-#### post.witness-hindsight
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt post.witness-hindsight
-#### post.theorem
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt post.theorem
-#### post.theorem-li
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt post.theorem-li
-#### post.flood-below-asking
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt post.flood-below-asking
-#### shortfall.security-generable
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt shortfall.security-generable
-#### shortfall.eventually-excluded
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt shortfall.eventually-excluded
-#### shortfall.table-generable
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt shortfall.table-generable
-#### shortfall.atom-generable
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt shortfall.atom-generable
-#### shortfall.deferred-ahead
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt shortfall.deferred-ahead
-#### shortfall.deferred-eventually-excluded
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt shortfall.deferred-eventually-excluded
-#### asklist.rows-keep-verdicts-counted
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt asklist.rows-keep-verdicts-counted
-#### asklist.rows-keep-verdicts-tainted
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt asklist.rows-keep-verdicts-tainted
-#### asklist.volume-by-want-tainted
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt asklist.volume-by-want-tainted
-#### asklist.order-by-want-tainted
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt asklist.order-by-want-tainted
-#### asklist.offprotocol-deviation-finite
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt asklist.offprotocol-deviation-finite
-#### deconfusing.theorem1
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt deconfusing.theorem1
-#### deconfusing.theorem2a
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt deconfusing.theorem2a
-#### deconfusing.theorem2b
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt deconfusing.theorem2b
-#### deconfusing.theorem2b-strict
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt deconfusing.theorem2b-strict
-#### deconfusing.theorem2c
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt deconfusing.theorem2c
-#### deconfusing.theorem2c-tau
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt deconfusing.theorem2c-tau
-#### deconfusing.theorem3a
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt deconfusing.theorem3a
-#### deconfusing.theorem3a-rate
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt deconfusing.theorem3a-rate
-#### deconfusing.theorem3b
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt deconfusing.theorem3b
-#### deconfusing.corollary-a
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt deconfusing.corollary-a
-#### deconfusing.corollary-b
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt deconfusing.corollary-b
-#### deconfusing.corollary-limit
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt deconfusing.corollary-limit
 #### kernel-box2-finite-time
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - safety margin: no established leaves
@@ -2703,6 +1612,62 @@ Owner @anson
 - also a root of: formalism-open-questions-0-3
 - informs 2 goals
 - best next unit: gestalt kernel-box2-finite-time
+
+### Held
+Nodes this frame is about that are no goals of the ranking (held, not roots): listed with their kinds, no status or value here.
+- kernel.box1-fidelity-versus-fully-updated-deference (and)
+- kernel.box2-dominance (and)
+- kernel.box2-mediation-faithful (and)
+- kernel.box3-gap-exchange-rate (and)
+- kernel.box3-no-laundering (and)
+- kernel.box3-no-incentive-to-compromise (and)
+- kernel.box3-restoration (and)
+- kernel.hierarchy-per-decision (and)
+- kernel.hierarchy-history (and)
+- kernel.subjective-exchange-rate (and)
+- kernel.extension-realized-rate (and)
+- kernel.extension-bria-realization (and)
+- kernel.corrigible-fidelity-score (and)
+- kernel.corrigible-generic (and)
+- kernel.extension-exploration-realization (and)
+- authority.queue-no-bypass (and)
+- authority.queue-no-caused-shortfall (and)
+- authority.exchange-rate-queue (and)
+- authority.flood-caused-shortfall (and)
+- authority.comprehension-short (and)
+- authority.approval-discount-defeated (and)
+- authority.revocation-default (and)
+- post.witness-sole-authority (and)
+- post.witness-control-maximizer (and)
+- post.witness-same-level (and)
+- post.witness-learned-weight (and)
+- post.witness-hindsight (and)
+- post.theorem (and)
+- post.theorem-li (and)
+- post.flood-below-asking (and)
+- shortfall.security-generable (and)
+- shortfall.eventually-excluded (and)
+- shortfall.table-generable (and)
+- shortfall.atom-generable (and)
+- shortfall.deferred-ahead (and)
+- shortfall.deferred-eventually-excluded (and)
+- asklist.rows-keep-verdicts-counted (and)
+- asklist.rows-keep-verdicts-tainted (and)
+- asklist.volume-by-want-tainted (and)
+- asklist.order-by-want-tainted (and)
+- asklist.offprotocol-deviation-finite (and)
+- deconfusing.theorem1 (and)
+- deconfusing.theorem2a (and)
+- deconfusing.theorem2b (and)
+- deconfusing.theorem2b-strict (and)
+- deconfusing.theorem2c (and)
+- deconfusing.theorem2c-tau (and)
+- deconfusing.theorem3a (and)
+- deconfusing.theorem3a-rate (and)
+- deconfusing.theorem3b (and)
+- deconfusing.corollary-a (and)
+- deconfusing.corollary-b (and)
+- deconfusing.corollary-limit (and)
 
 ## Sub-frame deference-toward-bounded-agents (in legitimacy): Does the deference collapse, or an analogue of it, hold for a bounded trained agent deferring to human teachers?
 Owner @abram
@@ -2893,7 +1858,7 @@ Owner @anson, @abram
 - safety margin: no established leaves
 - load-bearing shared leaves: none
 - informs 1 goal
-- best next unit: vet legit-composition.complete
+- best next unit: do legit-accumulated-odds
 #### legit-repairable
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - rests on AI numbers (no human judgment yet): legit-repairable
@@ -3060,7 +2025,7 @@ Owner @anson, @abram
 - best next unit: spell-out want-legitimacy-meets-syntax
 
 ## Sub-frame deference-and-trust (in the-program): Which research on trust between a human inductor and an AI inductor, at the logical-induction level, reaches a formal account of trust that guides AI safety engineering work?
-Owner @abram
+Owner @abram; holds 38 node(s)
 
 ### Plans
 #### ddb-to-li-translation
@@ -3121,12 +2086,12 @@ Owner @abram
 - informs 1 goal
 - best next unit: vet timely-pointwise-tower-refuted-in-setting.bridge
 #### deference-finite-results
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- preset worst-case; status **open**; weakest proof-set leaf at V 0
 - a programme (sub-frame): Which finite results about delegation, certificates, exposure, substitution, magnitude and corrective control does the deference line hold as kernel-checked theorems?
-- steps: delegation.bridge, delegation.bridge-unconditional, delegation.gradetrust-refinement, certificate.margin-forces-agreement, certificate.selection-eq-of-margin, certificate.override-bound, certificate.defect-bound, certificate.advantage-estimate, certificate.grade-register-strict, exposure.greedy-duality, exposure.harvest-bound, exposure.harvest-attained, substitution.extensional-admits-both, substitution.sim-depends-on-induced-choice, substitution.separation-requires-disagreement, substitution.unpredictability-separates, magnitude.unit-trader-networth, magnitude.signed-bounded, magnitude.signed-bounded-actual, magnitude.mixture-networth-zero, magnitude.not-trader-payoff, magnitude.sq-error-split, magnitude.sharp-trader-networth, jurisdiction.value-eq-of-price-realization, jurisdiction.static-view-eq, corrective.can-correct-iff, corrective.can-correct-future-iff, corrective.forecloses-iff, corrective.no-exclusive-effect, corrective.advisor-veto, corrective.capability-measures-cooperation; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- steps: ; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @abram
+- frame owner @abram; holds 31 node(s); spelled, nothing yet a goal
 - a programme: informs through its steps
 - best next unit: none
 
@@ -3264,12 +2229,47 @@ Owner @abram
 - load-bearing shared leaves: none
 - informs 0 goals (a single claim no goal reads: offered to connect)
 - best next unit: none
-#### docket-deference
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt docket-deference
+
+### Held
+Nodes this frame is about that are no goals of the ranking (held, not roots): listed with their kinds, no status or value here.
+- item-q1 (leaf/question)
+- item-q2 (leaf/question)
+- item-q3 (leaf/question)
+- item-q4 (leaf/question)
+- item-52 (leaf/task)
+- item-15 (leaf/task)
+- item-16 (leaf/task)
+- item-17 (leaf/task)
+- item-18 (leaf/task)
+- item-19 (leaf/task)
+- item-20 (leaf/task)
+- item-21 (leaf/task)
+- item-22 (leaf/task)
+- item-23 (leaf/task)
+- item-24 (leaf/task)
+- item-25 (leaf/task)
+- item-26 (leaf/task)
+- item-27 (leaf/task)
+- item-60 (leaf/task)
+- item-83 (leaf/task)
+- item-84 (leaf/task)
+- item-86 (leaf/task)
+- item-87 (leaf/task)
+- item-89 (leaf/task)
+- item-90 (leaf/task)
+- item-92 (leaf/task)
+- item-93 (leaf/task)
+- item-97 (leaf/task)
+- item-98 (leaf/task)
+- item-99 (leaf/task)
+- item-100 (leaf/task)
+- item-101 (leaf/task)
+- item-102 (leaf/task)
+- item-103 (leaf/task)
+- item-104 (leaf/task)
+- item-107 (leaf/task)
+- item-111 (leaf/task)
+- item-28 (leaf/task)
 
 ## Sub-frame ddb-to-li-translation (in deference-and-trust): What does each result of Deference Done Better become when the novice and the expert are logical inductors?
 Owner @abram
@@ -3579,195 +2579,41 @@ Owner @abram
 - best next unit: none
 
 ## Sub-frame deference-finite-results (in deference-and-trust): Which finite results about delegation, certificates, exposure, substitution, magnitude and corrective control does the deference line hold as kernel-checked theorems?
-Owner @abram
+Owner @abram; holds 31 node(s); spelled, nothing yet a goal (no roots)
 
-### Shared claims
-#### delegation.bridge
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt delegation.bridge
-#### delegation.bridge-unconditional
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt delegation.bridge-unconditional
-#### delegation.gradetrust-refinement
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt delegation.gradetrust-refinement
-#### certificate.margin-forces-agreement
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt certificate.margin-forces-agreement
-#### certificate.selection-eq-of-margin
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt certificate.selection-eq-of-margin
-#### certificate.override-bound
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt certificate.override-bound
-#### certificate.defect-bound
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt certificate.defect-bound
-#### certificate.advantage-estimate
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt certificate.advantage-estimate
-#### certificate.grade-register-strict
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt certificate.grade-register-strict
-#### exposure.greedy-duality
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt exposure.greedy-duality
-#### exposure.harvest-bound
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt exposure.harvest-bound
-#### exposure.harvest-attained
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt exposure.harvest-attained
-#### substitution.extensional-admits-both
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt substitution.extensional-admits-both
-#### substitution.sim-depends-on-induced-choice
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt substitution.sim-depends-on-induced-choice
-#### substitution.separation-requires-disagreement
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt substitution.separation-requires-disagreement
-#### substitution.unpredictability-separates
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt substitution.unpredictability-separates
-#### magnitude.unit-trader-networth
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt magnitude.unit-trader-networth
-#### magnitude.signed-bounded
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt magnitude.signed-bounded
-#### magnitude.signed-bounded-actual
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt magnitude.signed-bounded-actual
-#### magnitude.mixture-networth-zero
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt magnitude.mixture-networth-zero
-#### magnitude.not-trader-payoff
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt magnitude.not-trader-payoff
-#### magnitude.sq-error-split
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt magnitude.sq-error-split
-#### magnitude.sharp-trader-networth
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt magnitude.sharp-trader-networth
-#### jurisdiction.value-eq-of-price-realization
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt jurisdiction.value-eq-of-price-realization
-#### jurisdiction.static-view-eq
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt jurisdiction.static-view-eq
-#### corrective.can-correct-iff
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt corrective.can-correct-iff
-#### corrective.can-correct-future-iff
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt corrective.can-correct-future-iff
-#### corrective.forecloses-iff
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt corrective.forecloses-iff
-#### corrective.no-exclusive-effect
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt corrective.no-exclusive-effect
-#### corrective.advisor-veto
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt corrective.advisor-veto
-#### corrective.capability-measures-cooperation
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt corrective.capability-measures-cooperation
+### Held
+Nodes this frame is about that are no goals of the ranking (held, not roots): listed with their kinds, no status or value here.
+- delegation.bridge (and)
+- delegation.bridge-unconditional (and)
+- delegation.gradetrust-refinement (and)
+- certificate.margin-forces-agreement (and)
+- certificate.selection-eq-of-margin (and)
+- certificate.override-bound (and)
+- certificate.defect-bound (and)
+- certificate.advantage-estimate (and)
+- certificate.grade-register-strict (and)
+- exposure.greedy-duality (and)
+- exposure.harvest-bound (and)
+- exposure.harvest-attained (and)
+- substitution.extensional-admits-both (and)
+- substitution.sim-depends-on-induced-choice (and)
+- substitution.separation-requires-disagreement (and)
+- substitution.unpredictability-separates (and)
+- magnitude.unit-trader-networth (and)
+- magnitude.signed-bounded (and)
+- magnitude.signed-bounded-actual (and)
+- magnitude.mixture-networth-zero (and)
+- magnitude.not-trader-payoff (and)
+- magnitude.sq-error-split (and)
+- magnitude.sharp-trader-networth (and)
+- jurisdiction.value-eq-of-price-realization (and)
+- jurisdiction.static-view-eq (and)
+- corrective.can-correct-iff (and)
+- corrective.can-correct-future-iff (and)
+- corrective.forecloses-iff (and)
+- corrective.no-exclusive-effect (and)
+- corrective.advisor-veto (and)
+- corrective.capability-measures-cooperation (and)
 
 ## Sub-frame decision-theory (in the-program): Which decision theory for computationally uncertain agents, on the updateless side and in the synthesis of logical induction with bounded inductive rationality, is tractable, and which of its results bear on AI safety engineering?
 Owner @abram
@@ -4944,7 +3790,7 @@ Owner @abram
 - best next unit: do never-settled-standard
 
 ## Sub-frame enabling-work (in the-program): Which repository infrastructure makes the trust research vettable and publishable?
-Owner @anson, @abram
+Owner @anson, @abram; holds 15 node(s)
 
 ### Shared claims
 #### enabling-vetting-and-prioritization-system
@@ -4994,12 +3840,24 @@ Owner @anson, @abram
 - load-bearing shared leaves: none
 - informs 0 goals (a single claim no goal reads: offered to connect)
 - best next unit: none
-#### docket-workspace
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: gestalt docket-workspace
+
+### Held
+Nodes this frame is about that are no goals of the ranking (held, not roots): listed with their kinds, no status or value here.
+- item-f1 (leaf/task)
+- item-f2 (leaf/task)
+- item-f3 (leaf/task)
+- item-f4 (leaf/task)
+- item-f5 (leaf/task)
+- item-f6 (leaf/task)
+- item-f7 (leaf/task)
+- item-f8 (leaf/task)
+- item-10 (leaf/task)
+- item-11 (leaf/task)
+- item-12 (leaf/task)
+- item-13 (leaf/task)
+- item-36 (leaf/task)
+- item-37 (leaf/task)
+- item-38 (leaf/task)
 
 ## Tasks and work pointers
 Task leaves and actioned claims (the work to do, who does it) and pointers to the repository's own work orders, open statements and rounds.
@@ -5785,7 +4643,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | abstraction-of-agency | leaf/question | 2 (both) | AI number | open | 1 | 1 |
 | abstraction-theories-integration.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
 | abstraction-theories-integration | and | 2 (both) | AI number | open | 1 | 1 |
-| acceleration-only-thesis | leaf/step | 2 (both) | AI number | open | 0 | 1 |
+| acceleration-only-thesis | leaf/step | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
 | account-via-decision-flatness.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 1 |
 | account-via-decision-flatness | and | 2 (both) |  | open | 0 | 1 |
 | accuracy-attempt-decision | leaf/question | 2 (both) |  | open | 0 | 1 |
@@ -5805,21 +4663,21 @@ The outside option and the undescribed failure, each a cases node over the outco
 | aggregate-logical-inductor.residual | leaf/route | 2 (both) | AI number, given aggregate-logical-inductor, no belief | open | 0 | 2 |
 | algorithmic-condensation | leaf/question | 2 (both) |  | open | 0 | 1 |
 | alice-bob-two-coin-example | leaf/task | 2 (both) | AI number | open | 0 | 1 |
-| align-to-legitimacy-over-endorsement-risk | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
+| align-to-legitimacy-over-endorsement-risk | leaf/step | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
 | alignment-faking-ahead-of-time | leaf/step | 2 (both) | AI number | open | 0 | 1 |
-| anger-substitute-for-updatelessness | cases | 2 (both) | AI number, given deterrence-not-identified-on-path, interval not a bound (negative evidential edge), no belief, under attack | open | 1 | 1 |
-| anger-substitute-for-updatelessness.partition | leaf/partition | 2 (both) | AI number | open | 1 | 1 |
+| anger-substitute-for-updatelessness | cases | 2 (both) | AI number, given deterrence-not-identified-on-path, held by legitimacy, no belief, under attack | open | 0 | 0 (informs no goal) |
+| anger-substitute-for-updatelessness.partition | leaf/partition | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
 | anti-naturality-arguments-as-stated.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 3 |
 | anti-naturality-arguments-as-stated | and | 2 (both) | AI number, interval not a bound (negative evidential edge) | open | 1 | 3 |
 | anti-naturality-review | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
 | anti-naturality-typical-case | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | anti-naturality-walk | leaf/step | 2 (both) | AI number | open | 2 | 2 |
-| anticipation-branchwise-dominance--corrigibility-risk | and | 2 (both) | AI number | open | 1 | 2 |
-| anticipation-branchwise-dominance.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 2 |
-| anticipation-branchwise-dominance.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 2 |
+| anticipation-branchwise-dominance--corrigibility-risk | and | 2 (both) | AI number | open | 1 | 1 |
+| anticipation-branchwise-dominance.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 1 |
+| anticipation-branchwise-dominance.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
 | anticipation-branchwise-dominance | leaf/step | 2 (both) | AI number, superseded by anticipation-branchwise-dominance--corrigibility-risk | open | 0 | 0 (informs no goal) |
-| anticipation-branchwise-dominance.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 2 |
-| anticipation-branchwise-dominance.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 2 |
+| anticipation-branchwise-dominance.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 1 |
+| anticipation-branchwise-dominance.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
 | approval-directed-mapping | leaf/question | 2 (both) | AI number | open | 0 | 2 |
 | approx-introspection-pins-discharge | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | approx-introspection-quantitative | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
@@ -5846,62 +4704,62 @@ The outside option and the undescribed failure, each a cases node over the outco
 | arg-thornley-completeness | leaf/step | 2 (both) | AI number, given posl-ilpacs-nontrivial-model | open | 1 | 3 |
 | arg-turner-vnm-incoherence | leaf/step | 2 (both) | AI number | open | 1 | 3 |
 | arg-utility-change | leaf/step | 2 (both) | AI number | open | 1 | 3 |
-| asklist.offprotocol-deviation-finite.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| asklist.offprotocol-deviation-finite.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| asklist.offprotocol-deviation-finite | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| asklist.offprotocol-deviation-finite.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| asklist.order-by-want-tainted.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| asklist.order-by-want-tainted.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| asklist.order-by-want-tainted | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| asklist.order-by-want-tainted.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| asklist.rows-keep-verdicts-counted.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| asklist.rows-keep-verdicts-counted.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| asklist.rows-keep-verdicts-counted | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| asklist.rows-keep-verdicts-counted.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| asklist.rows-keep-verdicts-tainted.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| asklist.rows-keep-verdicts-tainted.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| asklist.rows-keep-verdicts-tainted | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| asklist.rows-keep-verdicts-tainted.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| asklist.volume-by-want-tainted.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| asklist.volume-by-want-tainted.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| asklist.volume-by-want-tainted | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| asklist.volume-by-want-tainted.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| asklist.offprotocol-deviation-finite.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| asklist.offprotocol-deviation-finite.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| asklist.offprotocol-deviation-finite | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| asklist.offprotocol-deviation-finite.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| asklist.order-by-want-tainted.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| asklist.order-by-want-tainted.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| asklist.order-by-want-tainted | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| asklist.order-by-want-tainted.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| asklist.rows-keep-verdicts-counted.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| asklist.rows-keep-verdicts-counted.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| asklist.rows-keep-verdicts-counted | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| asklist.rows-keep-verdicts-counted.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| asklist.rows-keep-verdicts-tainted.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| asklist.rows-keep-verdicts-tainted.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| asklist.rows-keep-verdicts-tainted | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| asklist.rows-keep-verdicts-tainted.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| asklist.volume-by-want-tainted.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| asklist.volume-by-want-tainted.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| asklist.volume-by-want-tainted | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| asklist.volume-by-want-tainted.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | authority-typed-corrigibility.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 6 |
 | authority-typed-corrigibility.improvable | or | 2 (both) | AI number, improvement claim on authority-typed-corrigibility (reality: real training and deployment interfaces) | open | 1 | 1 |
 | authority-typed-corrigibility | and | 2 (both) | AI number | open | 1 | 6 |
-| authority.approval-discount-defeated.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| authority.approval-discount-defeated.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| authority.approval-discount-defeated | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| authority.approval-discount-defeated.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| authority.comprehension-short.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| authority.comprehension-short.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| authority.comprehension-short | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| authority.comprehension-short.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| authority.exchange-rate-queue.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| authority.exchange-rate-queue.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| authority.exchange-rate-queue | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| authority.exchange-rate-queue.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| authority.flood-caused-shortfall.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| authority.flood-caused-shortfall.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| authority.flood-caused-shortfall | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| authority.flood-caused-shortfall.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| authority.queue-no-bypass.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| authority.queue-no-bypass.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| authority.queue-no-bypass | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| authority.queue-no-bypass.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| authority.queue-no-caused-shortfall.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| authority.queue-no-caused-shortfall.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| authority.queue-no-caused-shortfall | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| authority.queue-no-caused-shortfall.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| authority.revocation-default.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| authority.revocation-default.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| authority.revocation-default | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| authority.revocation-default.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| authority.approval-discount-defeated.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| authority.approval-discount-defeated.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| authority.approval-discount-defeated | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| authority.approval-discount-defeated.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| authority.comprehension-short.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| authority.comprehension-short.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| authority.comprehension-short | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| authority.comprehension-short.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| authority.exchange-rate-queue.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| authority.exchange-rate-queue.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| authority.exchange-rate-queue | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| authority.exchange-rate-queue.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| authority.flood-caused-shortfall.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| authority.flood-caused-shortfall.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| authority.flood-caused-shortfall | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| authority.flood-caused-shortfall.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| authority.queue-no-bypass.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| authority.queue-no-bypass.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| authority.queue-no-bypass | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| authority.queue-no-bypass.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| authority.queue-no-caused-shortfall.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| authority.queue-no-caused-shortfall.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| authority.queue-no-caused-shortfall | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| authority.queue-no-caused-shortfall.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| authority.revocation-default.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| authority.revocation-default.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| authority.revocation-default | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| authority.revocation-default.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | authorship-and-transparency | frame | 2 (both) | owner has not confirmed (drafted from the wiki) | open | 1 | 0 (informs no goal) |
-| authorship.mediation-by-reexecution.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| authorship.mediation-by-reexecution.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| authorship.mediation-by-reexecution | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| authorship.mediation-by-reexecution.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| authorship.mediation-by-reexecution.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| authorship.mediation-by-reexecution.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| authorship.mediation-by-reexecution | and | 2 (both) | held by authorship-and-transparency, hypotheses unread | open | 0 | 0 (informs no goal) |
+| authorship.mediation-by-reexecution.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | awaiting-author-digest | leaf/task | 2 (both) | AI number | open | 1 | 1 |
 | bargain-under-lapsing-enforcement | leaf/question | 2 (both) | AI number, given participation-constraint-literal-exit | open | 0 | 1 |
 | base-rate-working-picture.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 1 |
@@ -5948,16 +4806,16 @@ The outside option and the undescribed failure, each a cases node over the outco
 | branch-reality-decays | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | branch-reality-reading | cases | 2 (both) | AI number, no belief, under attack | open | 1 | 1 |
 | branch-reality-reading.partition | leaf/partition | 2 (both) | AI number | open | 1 | 1 |
-| brandom-objectivity-structural | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
-| brandom-relative-prices | leaf/step | 2 (both) | AI number | open | 1 | 2 |
+| brandom-objectivity-structural | leaf/step | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
+| brandom-relative-prices | leaf/step | 2 (both) | AI number, held by legitimacy | open | 0 | 2 |
 | bria-corrigibility-round | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | bria-near-the-line | leaf/question | 2 (both) | given bria-position-note, given: conditionals not judged | open | 1 | 0 (informs no goal) |
 | bria-position-note | leaf/task | 2 (both) | no belief | open | 0 | 0 (informs no goal) |
-| bridge-defect-vs-thin-correct | leaf/question | 2 (both) | AI number, given task-bridge-table | open | 1 | 3 |
+| bridge-defect-vs-thin-correct | leaf/question | 2 (both) | AI number, given task-bridge-table, held by legitimacy | open | 0 | 2 |
 | bridge-ps-s1-retargetable | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 0 | 6 |
 | bridge-ps-s2-training-compatible | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 0 | 6 |
 | bridge-ps-s3-trained-policies | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 0 | 6 |
-| bridge-trace-vs-transparency | leaf/question | 2 (both) | AI number, given task-measure-candidates-against-definition | open | 1 | 1 |
+| bridge-trace-vs-transparency | leaf/question | 2 (both) | AI number, given task-measure-candidates-against-definition, held by legitimacy | open | 0 | 0 (informs no goal) |
 | bridging-theorem-attempted | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | bro-boi-bridge | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | calibration-as-fairness | leaf/question | 2 (both) | AI number, given grouping-austerity-divergence-located | open | 0 | 8 |
@@ -5980,35 +4838,35 @@ The outside option and the undescribed failure, each a cases node over the outco
 | cdt-defined-for-learner | and | 2 (both) | AI number | open | 1 | 1 |
 | cdt-defined-for-learner.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 1 |
 | centered-bet-squeeze | leaf/step | 2 (both) | AI number | open | 0 | 8 |
-| certificate-enforcement | leaf/step | 2 (both) | AI number, given task-certificate-redesign | open | 1 | 1 |
-| certificate.advantage-estimate.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| certificate.advantage-estimate.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| certificate.advantage-estimate | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| certificate.advantage-estimate.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| certificate.defect-bound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| certificate.defect-bound.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| certificate.defect-bound | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| certificate.defect-bound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| certificate.grade-register-strict.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| certificate.grade-register-strict.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| certificate.grade-register-strict | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| certificate.grade-register-strict.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| certificate.margin-forces-agreement.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| certificate.margin-forces-agreement.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| certificate.margin-forces-agreement | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| certificate.margin-forces-agreement.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| certificate.override-bound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| certificate.override-bound.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| certificate.override-bound | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| certificate.override-bound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| certificate.selection-eq-of-margin.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| certificate.selection-eq-of-margin.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| certificate.selection-eq-of-margin | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| certificate.selection-eq-of-margin.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| certificate-enforcement | leaf/step | 2 (both) | AI number, given task-certificate-redesign, held by legitimacy | open | 0 | 0 (informs no goal) |
+| certificate.advantage-estimate.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| certificate.advantage-estimate.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| certificate.advantage-estimate | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| certificate.advantage-estimate.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| certificate.defect-bound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| certificate.defect-bound.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| certificate.defect-bound | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| certificate.defect-bound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| certificate.grade-register-strict.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| certificate.grade-register-strict.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| certificate.grade-register-strict | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| certificate.grade-register-strict.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| certificate.margin-forces-agreement.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| certificate.margin-forces-agreement.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| certificate.margin-forces-agreement | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| certificate.margin-forces-agreement.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| certificate.override-bound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| certificate.override-bound.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| certificate.override-bound | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| certificate.override-bound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| certificate.selection-eq-of-margin.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| certificate.selection-eq-of-margin.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| certificate.selection-eq-of-margin | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| certificate.selection-eq-of-margin.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | cf-ffs-in-rv-morphisms | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | channel-agent-side-content | leaf/step | 2 (both) | AI number, given the-channel | open | 1 | 1 |
 | channel-corrigibility-content | or | 2 (both) | AI number | open | 2 | 1 |
-| claim1-diagonal-illegitimate | leaf/step | 2 (both) | AI number, given task-claim1-inhabitant | open | 1 | 1 |
+| claim1-diagonal-illegitimate | leaf/step | 2 (both) | AI number, given task-claim1-inhabitant, held by legitimacy | open | 0 | 0 (informs no goal) |
 | clean-source-vs-llc | leaf/question | 2 (both) | AI number | open | 0 | 1 |
 | cleanroom-deference-followups.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
 | cleanroom-deference-followups | and | 2 (both) | AI number | open | 1 | 1 |
@@ -6027,14 +4885,14 @@ The outside option and the undescribed failure, each a cases node over the outco
 | coalition-tiling-target | leaf/step | 2 (both) | AI number | open | 0 | 1 |
 | cognition-physics-dichotomy | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | coherence-without-ground-truth | leaf/question | 2 (both) | AI number, given li-deference-collapse@valid | open | 1 | 1 |
-| coherence.modulus-net-cover.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| coherence.modulus-net-cover.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| coherence.modulus-net-cover | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| coherence.modulus-net-cover.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| coherence.modulus-soundness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| coherence.modulus-soundness.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| coherence.modulus-soundness | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| coherence.modulus-soundness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| coherence.modulus-net-cover.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| coherence.modulus-net-cover.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| coherence.modulus-net-cover | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| coherence.modulus-net-cover.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| coherence.modulus-soundness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| coherence.modulus-soundness.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| coherence.modulus-soundness | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| coherence.modulus-soundness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | coherent-prices-are-convex-hull-of-resolutions | leaf/step | 2 (both) | AI number, no belief | open | 1 | 0 (informs no goal) |
 | cole-stability-reading | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | collapse-write-up-draft | leaf/task | 2 (both) | AI number, given publication-form-decided | open | 0 | 1 |
@@ -6047,18 +4905,18 @@ The outside option and the undescribed failure, each a cases node over the outco
 | communication-trust-paper | and | 2 (both) |  | open | 0 | 8 |
 | communicative-alternative-nondegenerate | leaf/step | 2 (both) | AI number | open | 0 | 8 |
 | comparison-theorem-under-relational-index-maps | leaf/question | 2 (both) | AI number, given permissive-morphisms-wanted | open | 0 | 1 |
-| compiler.constraints-end-to-end.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| compiler.constraints-end-to-end.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| compiler.constraints-end-to-end | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| compiler.constraints-end-to-end.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| compiler.deductive-end-to-end.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| compiler.deductive-end-to-end.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| compiler.deductive-end-to-end | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| compiler.deductive-end-to-end.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| compiler.schedule-end-to-end.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| compiler.schedule-end-to-end.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| compiler.schedule-end-to-end | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| compiler.schedule-end-to-end.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| compiler.constraints-end-to-end.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| compiler.constraints-end-to-end.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| compiler.constraints-end-to-end | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| compiler.constraints-end-to-end.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| compiler.deductive-end-to-end.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| compiler.deductive-end-to-end.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| compiler.deductive-end-to-end | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| compiler.deductive-end-to-end.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| compiler.schedule-end-to-end.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| compiler.schedule-end-to-end.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| compiler.schedule-end-to-end | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| compiler.schedule-end-to-end.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | complete-feedback-formal-model | leaf/step | 2 (both) | AI number | open | 2 | 1 |
 | computability-fork | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | computation-implies-triviality | leaf/question | 2 (both) | AI number, given fine-grained-functionalism-reading | open | 0 | 1 |
@@ -6094,65 +4952,65 @@ The outside option and the undescribed failure, each a cases node over the outco
 | conditioning-manages-news.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 1 |
 | conditioning-manages-news.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
 | constructiveness-favors-li | leaf/assumption | 2 (both) | AI number | open | 0 | 2 |
-| convergence.discord-pairwise.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| convergence.discord-pairwise.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| convergence.discord-pairwise | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| convergence.discord-pairwise.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| convergence.discord-persists.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| convergence.discord-persists.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| convergence.discord-persists | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| convergence.discord-persists.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| convergence.hull-mass-anti.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| convergence.hull-mass-anti.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| convergence.hull-mass-anti | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| convergence.hull-mass-anti.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| convergence.discord-pairwise.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| convergence.discord-pairwise.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| convergence.discord-pairwise | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
+| convergence.discord-pairwise.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| convergence.discord-persists.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| convergence.discord-persists.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| convergence.discord-persists | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
+| convergence.discord-persists.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| convergence.hull-mass-anti.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| convergence.hull-mass-anti.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| convergence.hull-mass-anti | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
+| convergence.hull-mass-anti.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | convex-geometry-confined | leaf/step | 2 (both) | AI number | open | 0 | 1 |
 | cooperative-equilibria-as-agents | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
 | coordination-with-others | or | 2 (both) | AI number | open | 1 | 1 |
-| corr-legit-modif-frames | leaf/step | 2 (both) | AI number | open | 1 | 5 |
+| corr-legit-modif-frames | leaf/step | 2 (both) | AI number, held by legitimacy | open | 0 | 3 |
 | correction-changes-objective | cases | 2 (both) | AI number, attribution unvetted, no belief, stale: leaf became a table, under attack | open | 1 | 1 |
 | correction-changes-objective.partition | leaf/partition | 2 (both) | AI number | open | 1 | 1 |
 | correction-through-the-channel | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
-| corrective.advisor-veto.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| corrective.advisor-veto.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| corrective.advisor-veto | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| corrective.advisor-veto.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| corrective.can-correct-future-iff.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| corrective.can-correct-future-iff.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| corrective.can-correct-future-iff | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| corrective.can-correct-future-iff.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| corrective.can-correct-iff.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| corrective.can-correct-iff.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| corrective.can-correct-iff | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| corrective.can-correct-iff.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| corrective.capability-measures-cooperation.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| corrective.capability-measures-cooperation.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| corrective.capability-measures-cooperation | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| corrective.capability-measures-cooperation.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| corrective.forecloses-iff.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| corrective.forecloses-iff.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| corrective.forecloses-iff | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| corrective.forecloses-iff.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| corrective.no-exclusive-effect.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| corrective.no-exclusive-effect.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| corrective.no-exclusive-effect | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| corrective.no-exclusive-effect.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| corrective.advisor-veto.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| corrective.advisor-veto.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| corrective.advisor-veto | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| corrective.advisor-veto.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| corrective.can-correct-future-iff.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| corrective.can-correct-future-iff.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| corrective.can-correct-future-iff | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| corrective.can-correct-future-iff.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| corrective.can-correct-iff.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| corrective.can-correct-iff.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| corrective.can-correct-iff | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| corrective.can-correct-iff.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| corrective.capability-measures-cooperation.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| corrective.capability-measures-cooperation.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| corrective.capability-measures-cooperation | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| corrective.capability-measures-cooperation.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| corrective.forecloses-iff.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| corrective.forecloses-iff.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| corrective.forecloses-iff | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| corrective.forecloses-iff.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| corrective.no-exclusive-effect.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| corrective.no-exclusive-effect.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| corrective.no-exclusive-effect | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| corrective.no-exclusive-effect.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | corrigibility-anti-natural.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
 | corrigibility-anti-natural | and | 2 (both) | AI number | open | 1 | 1 |
 | corrigibility-architecture-round | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | corrigibility-as-recoverability | leaf/step | 2 (both) | AI number | open | 1 | 1 |
 | corrigibility-derived-definition-v1 | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
-| corrigibility-faithful-plus-legit-on-self | leaf/step | 2 (both) | AI number | open | 1 | 1 |
+| corrigibility-faithful-plus-legit-on-self | leaf/step | 2 (both) | AI number, held by legitimacy | open | 0 | 1 |
 | corrigibility-landscape | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
 | corrigibility-less-anti-natural | leaf/step | 2 (both) | AI number, given anti-naturality-arguments-as-stated, interval not a bound (negative evidential edge) | open | 1 | 1 |
-| corrigibility-needs-consequentialist-wrapper | cases | 2 (both) | AI number, no belief, under attack | open | 1 | 3 |
-| corrigibility-needs-consequentialist-wrapper.partition | leaf/partition | 2 (both) | AI number | open | 1 | 3 |
-| corrupt-strictly-contains-inadmissible | leaf/step | 2 (both) | AI number, given task-claim1-converse-witness | open | 1 | 1 |
+| corrigibility-needs-consequentialist-wrapper | cases | 2 (both) | AI number, held by legitimacy, no belief, under attack | open | 0 | 2 |
+| corrigibility-needs-consequentialist-wrapper.partition | leaf/partition | 2 (both) | AI number | open | 0 | 2 |
+| corrupt-strictly-contains-inadmissible | leaf/step | 2 (both) | AI number, given task-claim1-converse-witness, held by legitimacy | open | 0 | 0 (informs no goal) |
 | counterfactual-mugging-with-evidence.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 1 |
 | counterfactual-mugging-with-evidence.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
 | counterfactual-mugging-with-evidence | and | 2 (both) | AI number | open | 1 | 1 |
 | counterfactual-mugging-with-evidence.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 1 |
-| counterfactual-non-capture | leaf/question | 2 (both) | AI number | open | 1 | 1 |
+| counterfactual-non-capture | leaf/question | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
 | counterfactual-oracle-not-special-case | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | counterfactuals-for-embedded-agents.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
 | counterfactuals-for-embedded-agents | and | 2 (both) | AI number | open | 1 | 1 |
@@ -6190,7 +5048,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | crux-updatelessness-needed.partition | leaf/partition | 2 (both) | AI number | open | 1 | 1 |
 | crux-vetting-or-generation | cases | 2 (both) | AI number, no belief, under attack | open | 1 | 1 |
 | crux-vetting-or-generation.partition | leaf/partition | 2 (both) | AI number | open | 1 | 1 |
-| d3-identification | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
+| d3-identification | leaf/step | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
 | dd-is-conditional-independence.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 1 |
 | dd-is-conditional-independence.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
 | dd-is-conditional-independence | and | 2 (both) | AI number | open | 1 | 1 |
@@ -6224,87 +5082,87 @@ The outside option and the undescribed failure, each a cases node over the outco
 | deck-regularity-premise | leaf/assumption | 2 (both) | AI number, given scoped-value-content-witness | open | 1 | 1 |
 | deck-tt-implies-value-regular | leaf/step | 2 (both) | AI number, given li-deference-collapse-scoped@valid | open | 1 | 7 |
 | deck-value-implies-tower | leaf/step | 2 (both) | AI number, given loop-direction-closure | open | 1 | 7 |
-| deconfusing.corollary-a.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| deconfusing.corollary-a.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| deconfusing.corollary-a | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| deconfusing.corollary-a.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| deconfusing.corollary-b.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| deconfusing.corollary-b.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| deconfusing.corollary-b | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| deconfusing.corollary-b.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| deconfusing.corollary-limit.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| deconfusing.corollary-limit.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| deconfusing.corollary-limit | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| deconfusing.corollary-limit.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| deconfusing.theorem1.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| deconfusing.theorem1.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem1 | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| deconfusing.theorem1.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| deconfusing.theorem2a.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| deconfusing.theorem2a.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem2a | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| deconfusing.theorem2a.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| deconfusing.theorem2b-strict.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| deconfusing.theorem2b-strict.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem2b-strict | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| deconfusing.theorem2b-strict.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| deconfusing.theorem2b.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| deconfusing.theorem2b.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem2b | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| deconfusing.theorem2b.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| deconfusing.theorem2c-tau.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| deconfusing.theorem2c-tau.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem2c-tau | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| deconfusing.theorem2c-tau.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| deconfusing.theorem2c.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| deconfusing.theorem2c.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem2c | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| deconfusing.theorem2c.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| deconfusing.theorem3a-rate.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| deconfusing.theorem3a-rate.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem3a-rate | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| deconfusing.theorem3a-rate.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| deconfusing.theorem3a.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| deconfusing.theorem3a.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem3a | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| deconfusing.theorem3a.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| deconfusing.theorem3b.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| deconfusing.theorem3b.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| deconfusing.theorem3b | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| deconfusing.theorem3b.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| deconfusing.corollary-a.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| deconfusing.corollary-a.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| deconfusing.corollary-a | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| deconfusing.corollary-a.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| deconfusing.corollary-b.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| deconfusing.corollary-b.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| deconfusing.corollary-b | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| deconfusing.corollary-b.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| deconfusing.corollary-limit.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| deconfusing.corollary-limit.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| deconfusing.corollary-limit | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| deconfusing.corollary-limit.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem1.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem1.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem1 | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem1.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem2a.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem2a.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem2a | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem2a.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem2b-strict.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem2b-strict.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem2b-strict | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem2b-strict.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem2b.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem2b.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem2b | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem2b.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem2c-tau.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem2c-tau.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem2c-tau | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem2c-tau.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem2c.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem2c.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem2c | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem2c.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem3a-rate.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem3a-rate.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem3a-rate | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem3a-rate.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem3a.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem3a.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem3a | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem3a.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem3b.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem3b.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem3b | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| deconfusing.theorem3b.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | default-trajectory | cases | 2 (both) | provisional | open | 0 | 0 (informs no goal) |
 | default-trajectory.partition | leaf/partition | 2 (both) |  | open | 0 | 0 (informs no goal) |
 | defensible-ledger-ruled | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | deference-and-trust | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
-| deference-finite-results | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
+| deference-finite-results | frame | 2 (both) | spelled; nothing yet a goal (31 held) | open | 1 | 0 (informs no goal) |
 | deference-martingale-lean-checked | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | deference-protects-from-outprediction-not-deception | leaf/step | 2 (both) | AI number, given deference-martingale-lean-checked, no belief | open | 1 | 1 |
 | deference-toward-bounded-agents | frame | 2 (both) | interval not a bound (negative evidential edge) | open | 1 | 0 (informs no goal) |
 | degree-based-implementation | leaf/question | 2 (both) | AI number, given computation-implies-triviality | open | 0 | 1 |
 | delayed-disclosure-structure-formalized | leaf/task | 2 (both) | AI number | open | 0 | 1 |
-| delegation.bridge-unconditional.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| delegation.bridge-unconditional.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| delegation.bridge-unconditional | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| delegation.bridge-unconditional.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| delegation.bridge.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| delegation.bridge.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| delegation.bridge | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| delegation.bridge.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| delegation.gradetrust-refinement.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| delegation.gradetrust-refinement.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| delegation.gradetrust-refinement | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| delegation.gradetrust-refinement.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| delegation.bridge-unconditional.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| delegation.bridge-unconditional.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| delegation.bridge-unconditional | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| delegation.bridge-unconditional.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| delegation.bridge.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| delegation.bridge.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| delegation.bridge | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| delegation.bridge.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| delegation.gradetrust-refinement.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| delegation.gradetrust-refinement.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| delegation.gradetrust-refinement | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| delegation.gradetrust-refinement.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | deliberation-fixed-points | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | deliberation-tracking-assumption | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | dependent-type-of-procedure | leaf/task | 2 (both) | AI number | open | 0 | 8 |
 | derivation-via-approximate-dd.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 7 |
 | derivation-via-approximate-dd | and | 2 (both) |  | open | 0 | 7 |
 | desiderata-2-4-general | leaf/question | 2 (both) | AI number | open | 0 | 1 |
-| deterrence-not-identified-on-path.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 2 |
-| deterrence-not-identified-on-path.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 2 |
-| deterrence-not-identified-on-path | and | 2 (both) | AI number | open | 1 | 2 |
-| deterrence-not-identified-on-path.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 2 |
-| deterrence-not-identified-on-path.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 2 |
+| deterrence-not-identified-on-path.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 0 | 0 (informs no goal) |
+| deterrence-not-identified-on-path.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
+| deterrence-not-identified-on-path | and | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
+| deterrence-not-identified-on-path.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 0 (informs no goal) |
+| deterrence-not-identified-on-path.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
 | deterrence-vs-antibypass | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | direct-route-via-b1.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 8 |
 | direct-route-via-b1 | and | 2 (both) |  | open | 0 | 8 |
@@ -6318,13 +5176,6 @@ The outside option and the undescribed failure, each a cases node over the outco
 | dishonest-inner-optimizers | and | 2 (both) | AI number | open | 1 | 2 |
 | distinct-novice-paper-expert | leaf/step | 2 (both) | AI number, refinement of li-deference-collapse | open | 0 | 3 |
 | distributed-cooperative-oracles-route | leaf/question | 2 (both) | AI number | open | 0 | 1 |
-| docket-deference | or | 2 (both) |  | open | 1 | 1 |
-| docket-legitimacy | or | 2 (both) |  | open | 1 | 1 |
-| docket-normative-inductor | or | 2 (both) |  | open | 1 | 1 |
-| docket-normativity | or | 2 (both) |  | open | 1 | 1 |
-| docket-operative-force | or | 2 (both) |  | open | 1 | 1 |
-| docket-seed | or | 2 (both) |  | open | 1 | 1 |
-| docket-workspace | or | 2 (both) |  | open | 1 | 1 |
 | domain-relative-value | leaf/step | 2 (both) | AI number | open | 0 | 1 |
 | dp-dutch-book-done.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 1 |
 | dp-dutch-book-done.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
@@ -6364,18 +5215,18 @@ The outside option and the undescribed failure, each a cases node over the outco
 | exact-self-trust-refuted.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
 | expert-knows-own-estimates-asymptotically | leaf/assumption | 2 (both) | AI number | open | 2 | 2 |
 | expert-knows-own-estimates | leaf/assumption | 2 (both) | AI number, attribution unvetted, superseded by expert-knows-own-estimates-asymptotically | open | 1 | 1 |
-| exposure.greedy-duality.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| exposure.greedy-duality.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| exposure.greedy-duality | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| exposure.greedy-duality.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| exposure.harvest-attained.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| exposure.harvest-attained.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| exposure.harvest-attained | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| exposure.harvest-attained.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| exposure.harvest-bound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| exposure.harvest-bound.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| exposure.harvest-bound | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| exposure.harvest-bound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| exposure.greedy-duality.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| exposure.greedy-duality.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| exposure.greedy-duality | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| exposure.greedy-duality.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| exposure.harvest-attained.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| exposure.harvest-attained.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| exposure.harvest-attained | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| exposure.harvest-attained.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| exposure.harvest-bound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| exposure.harvest-bound.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| exposure.harvest-bound | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| exposure.harvest-bound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | fa-inductor-half | leaf/question | 2 (both) | AI number | open | 1 | 1 |
 | fa-ledger-access-l | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
 | fa-one-way-visibility | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
@@ -6408,38 +5259,38 @@ The outside option and the undescribed failure, each a cases node over the outco
 | five-notions-of-corrigibility | leaf/step | 2 (both) | AI number | open | 1 | 3 |
 | flat-beyond-pairwise | leaf/step | 2 (both) | AI number, given decision-flat-refinements@valid | open | 0 | 1 |
 | fn65-corpus-corrections | leaf/task | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
-| force.deductive-criterion.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| force.deductive-criterion.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| force.deductive-criterion | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| force.deductive-criterion.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| force.deductive-cumulative-nonneg.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| force.deductive-cumulative-nonneg.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| force.deductive-cumulative-nonneg | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| force.deductive-cumulative-nonneg.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| force.deductive-day-nonneg.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| force.deductive-day-nonneg.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| force.deductive-day-nonneg | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| force.deductive-day-nonneg.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| force.deductive-inductor.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| force.deductive-inductor.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| force.deductive-inductor | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| force.deductive-inductor.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| force.deductive-witness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| force.deductive-witness.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| force.deductive-witness | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| force.deductive-witness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| force.preservation.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| force.preservation.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| force.preservation | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| force.preservation.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| force.row-tolerance.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| force.row-tolerance.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| force.row-tolerance | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| force.row-tolerance.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| force.strategy-value.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| force.strategy-value.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| force.strategy-value | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| force.strategy-value.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| force.deductive-criterion.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| force.deductive-criterion.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| force.deductive-criterion | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| force.deductive-criterion.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| force.deductive-cumulative-nonneg.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| force.deductive-cumulative-nonneg.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| force.deductive-cumulative-nonneg | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| force.deductive-cumulative-nonneg.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| force.deductive-day-nonneg.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| force.deductive-day-nonneg.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| force.deductive-day-nonneg | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| force.deductive-day-nonneg.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| force.deductive-inductor.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| force.deductive-inductor.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| force.deductive-inductor | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| force.deductive-inductor.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| force.deductive-witness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| force.deductive-witness.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| force.deductive-witness | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| force.deductive-witness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| force.preservation.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| force.preservation.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| force.preservation | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| force.preservation.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| force.row-tolerance.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| force.row-tolerance.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| force.row-tolerance | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| force.row-tolerance.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| force.strategy-value.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| force.strategy-value.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| force.strategy-value | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| force.strategy-value.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | formal-core-improvable | or | 2 (both) | AI number, improvement claim on decision-problems-formal-core (reality: an embedded agent facing decision problems with predictors) | open | 1 | 1 |
 | formal-core-improvable.residual | leaf/route | 2 (both) | AI number, given decision-problems-formal-core | open | 0 | 2 |
 | formal-core-open-questions.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 8 |
@@ -6465,7 +5316,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | future-self-maximal-expert | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | gandhi-argument-assumes-flat-utility | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | gap1-condensation-to-dd | leaf/question | 2 (both) | AI number, given policy-grouping-argument | open | 0 | 7 |
-| gate-is-legitimacy | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
+| gate-is-legitimacy | leaf/step | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
 | gated-average-translation-reading | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | general-modification-object.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 1 |
 | general-modification-object.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
@@ -6509,9 +5360,9 @@ The outside option and the undescribed failure, each a cases node over the outco
 | ic-informal.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 1 |
 | ic-informal | and | 2 (both) |  | open | 0 | 1 |
 | ideal-object-set-of-limits | leaf/question | 2 (both) | AI number, given shadow-theorem-conjecture-f | open | 0 | 8 |
-| idleness-on-G-grade-a | leaf/step | 2 (both) | AI number, given task-horizon-idleness-refutation, interval not a bound (negative evidential edge) | open | 1 | 1 |
-| idleness-on-G-with-certificate | leaf/step | 2 (both) | AI number | open | 1 | 2 |
-| illegitimate-world-ever-better | leaf/question | 2 (both) | AI number | open | 1 | 6 |
+| idleness-on-G-grade-a | leaf/step | 2 (both) | AI number, given task-horizon-idleness-refutation, held by legitimacy | open | 0 | 0 (informs no goal) |
+| idleness-on-G-with-certificate | leaf/step | 2 (both) | AI number, held by legitimacy | open | 0 | 2 |
+| illegitimate-world-ever-better | leaf/question | 2 (both) | AI number, held by legitimacy | open | 0 | 5 |
 | immodest-enough-collapse.improvable | or | 2 (both) | AI number, improvement claim on immodest-enough-collapse (reality: how a human inductor and an AI inductor stand between modest and immodest) | open | 1 | 1 |
 | immodest-enough-collapse | leaf/step | 2 (both) | AI number | open | 1 | 4 |
 | immodest-enough-collapse.residual | leaf/route | 2 (both) | AI number, given immodest-enough-collapse | open | 0 | 2 |
@@ -6521,44 +5372,44 @@ The outside option and the undescribed failure, each a cases node over the outco
 | indirect-route-impossibility | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | indirect-route-learned-updatelessness | or | 2 (both) | AI number | open | 1 | 6 |
 | indistinguishability-table-extended | leaf/task | 2 (both) | AI number | open | 0 | 1 |
-| inductor.certificate-transport.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| inductor.certificate-transport.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| inductor.certificate-transport | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| inductor.certificate-transport.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| inductor.conformance.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| inductor.conformance.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| inductor.conformance | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| inductor.conformance.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| inductor.contraposition-blocked.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| inductor.contraposition-blocked.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| inductor.contraposition-blocked | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| inductor.contraposition-blocked.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| inductor.grounded-survivors.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| inductor.grounded-survivors.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| inductor.grounded-survivors | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| inductor.grounded-survivors.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| inductor.rebuttal-run.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| inductor.rebuttal-run.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| inductor.rebuttal-run | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| inductor.rebuttal-run.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| inductor.warrant-inductor.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| inductor.warrant-inductor.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| inductor.warrant-inductor | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| inductor.warrant-inductor.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| inductor.witness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| inductor.witness.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| inductor.witness | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| inductor.witness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| inductor.certificate-transport.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| inductor.certificate-transport.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| inductor.certificate-transport | and | 2 (both) | held by normative-inductor, hypotheses unread | open | 0 | 0 (informs no goal) |
+| inductor.certificate-transport.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| inductor.conformance.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| inductor.conformance.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| inductor.conformance | and | 2 (both) | held by normative-inductor, hypotheses unread | open | 0 | 0 (informs no goal) |
+| inductor.conformance.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| inductor.contraposition-blocked.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| inductor.contraposition-blocked.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| inductor.contraposition-blocked | and | 2 (both) | held by normative-inductor, hypotheses unread | open | 0 | 0 (informs no goal) |
+| inductor.contraposition-blocked.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| inductor.grounded-survivors.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| inductor.grounded-survivors.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| inductor.grounded-survivors | and | 2 (both) | held by normative-inductor, hypotheses unread | open | 0 | 0 (informs no goal) |
+| inductor.grounded-survivors.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| inductor.rebuttal-run.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| inductor.rebuttal-run.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| inductor.rebuttal-run | and | 2 (both) | held by normative-inductor, hypotheses unread | open | 0 | 0 (informs no goal) |
+| inductor.rebuttal-run.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| inductor.warrant-inductor.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| inductor.warrant-inductor.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| inductor.warrant-inductor | and | 2 (both) | held by normative-inductor, hypotheses unread | open | 0 | 0 (informs no goal) |
+| inductor.warrant-inductor.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| inductor.witness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| inductor.witness.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| inductor.witness | and | 2 (both) | held by normative-inductor, hypotheses unread | open | 0 | 0 (informs no goal) |
+| inductor.witness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | inferability-and-positivity.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 1 |
 | inferability-and-positivity.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
 | inferability-and-positivity | and | 2 (both) | AI number | open | 1 | 1 |
 | inferability-and-positivity.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 1 |
 | inferability-and-positivity.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
-| inferability-positivity.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 1 |
-| inferability-positivity.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
-| inferability-positivity | and | 2 (both) | AI number | open | 1 | 1 |
-| inferability-positivity.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 1 |
-| inferability-positivity.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
+| inferability-positivity.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 0 | 0 (informs no goal) |
+| inferability-positivity.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
+| inferability-positivity | and | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
+| inferability-positivity.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 0 (informs no goal) |
+| inferability-positivity.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
 | inferential-semantics-for-logical-udt.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
 | inferential-semantics-for-logical-udt | and | 2 (both) | AI number | open | 1 | 1 |
 | infinite-frames-sentence-check | leaf/question | 2 (both) | AI number, given weatherson-infinite-frames-formalized, interval not a bound (negative evidential edge) | open | 1 | 1 |
@@ -6567,183 +5418,183 @@ The outside option and the undescribed failure, each a cases node over the outco
 | informational-coup-is-act-of-war.partition | leaf/partition | 2 (both) | AI number | open | 1 | 2 |
 | instrumental-convergence | or | 2 (both) | AI number | open | 1 | 1 |
 | integration-theorem-t10 | leaf/step | 2 (both) | AI number | open | 0 | 6 |
-| integrity-and-record | frame | 2 (both) | owner has not confirmed (drafted from wiki/Integrity.md, wiki/Settlement-Interface.md) | open | 1 | 0 (informs no goal) |
-| integrity.evolution-conservation.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| integrity.evolution-conservation.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| integrity.evolution-conservation | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| integrity.evolution-conservation.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| integrity.faithful-carry.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| integrity.faithful-carry.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| integrity.faithful-carry | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| integrity.faithful-carry.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| integrity.multiplicity-witness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| integrity.multiplicity-witness.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| integrity.multiplicity-witness | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| integrity.multiplicity-witness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| integrity.propagate-to-segment.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| integrity.propagate-to-segment.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| integrity.propagate-to-segment | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| integrity.propagate-to-segment.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| integrity.receipts-immutable.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| integrity.receipts-immutable.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| integrity.receipts-immutable | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| integrity.receipts-immutable.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| integrity-and-record | frame | 2 (both) | owner has not confirmed (drafted from wiki/Integrity.md, wiki/Settlement-Interface.md), spelled; nothing yet a goal (17 held) | open | 1 | 0 (informs no goal) |
+| integrity.evolution-conservation.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| integrity.evolution-conservation.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| integrity.evolution-conservation | and | 2 (both) | held by integrity-and-record, hypotheses unread | open | 0 | 0 (informs no goal) |
+| integrity.evolution-conservation.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| integrity.faithful-carry.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| integrity.faithful-carry.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| integrity.faithful-carry | and | 2 (both) | held by integrity-and-record, hypotheses unread | open | 0 | 0 (informs no goal) |
+| integrity.faithful-carry.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| integrity.multiplicity-witness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| integrity.multiplicity-witness.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| integrity.multiplicity-witness | and | 2 (both) | held by integrity-and-record, hypotheses unread | open | 0 | 0 (informs no goal) |
+| integrity.multiplicity-witness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| integrity.propagate-to-segment.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| integrity.propagate-to-segment.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| integrity.propagate-to-segment | and | 2 (both) | held by integrity-and-record, hypotheses unread | open | 0 | 0 (informs no goal) |
+| integrity.propagate-to-segment.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| integrity.receipts-immutable.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| integrity.receipts-immutable.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| integrity.receipts-immutable | and | 2 (both) | held by integrity-and-record, hypotheses unread | open | 0 | 0 (informs no goal) |
+| integrity.receipts-immutable.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | intentional-stance-characterized | leaf/question | 2 (both) | AI number, given agency-types-catalogue | open | 1 | 2 |
 | inter-inductor-characterized | or | 2 (both) | AI number | open | 2 | 1 |
 | inter-inductor-total-trust | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
-| internal-standard-never-settled | cases | 2 (both) | AI number, given acceleration-only-thesis, no belief, under attack | open | 1 | 1 |
-| internal-standard-never-settled.partition | leaf/partition | 2 (both) | AI number | open | 1 | 1 |
+| internal-standard-never-settled | cases | 2 (both) | AI number, given acceleration-only-thesis, held by legitimacy, no belief, under attack | open | 0 | 0 (informs no goal) |
+| internal-standard-never-settled.partition | leaf/partition | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
 | interpreting-a-belief-haver | or | 2 (both) | AI number | open | 1 | 1 |
 | introspective-concentration-lemma | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
 | intuitionistic-gi-source-filed | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | iota-exogenous-term | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
-| item-1 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-10 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-100 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-101 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-102 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-103 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-104 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
+| item-1 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-10 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
+| item-100 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-101 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-102 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-103 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-104 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
 | item-105 | leaf/step | 2 (both) | AI number | open | 0 | 6 |
 | item-106.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 6 |
 | item-106 | and | 2 (both) |  | open | 0 | 6 |
-| item-107 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
+| item-107 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
 | item-108 | leaf/question | 2 (both) | AI number | open | 1 | 1 |
 | item-109 | leaf/question | 2 (both) | AI number, given li-corrigibility-inequality-public | open | 1 | 2 |
-| item-11 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
+| item-11 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
 | item-110 | leaf/question | 2 (both) | AI number | open | 1 | 1 |
-| item-111 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-112 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-113 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-114 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-115 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-116 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-117 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-118 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-119 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-12 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-120 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-121 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-122 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-123 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-124 | leaf/task | 2 (both) | no belief | open | 1 | 1 |
-| item-125 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-126 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-127 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-128 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-13 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
+| item-111 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-112 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-113 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-114 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-115 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-116 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-117 | leaf/task | 2 (both) | held by seed-theory, no belief | open | 0 | 0 (informs no goal) |
+| item-118 | leaf/task | 2 (both) | held by seed-theory, no belief | open | 0 | 0 (informs no goal) |
+| item-119 | leaf/task | 2 (both) | held by seed-theory, no belief | open | 0 | 0 (informs no goal) |
+| item-12 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
+| item-120 | leaf/task | 2 (both) | held by seed-theory, no belief | open | 0 | 0 (informs no goal) |
+| item-121 | leaf/task | 2 (both) | held by seed-theory, no belief | open | 0 | 0 (informs no goal) |
+| item-122 | leaf/task | 2 (both) | held by seed-theory, no belief | open | 0 | 0 (informs no goal) |
+| item-123 | leaf/task | 2 (both) | held by seed-theory, no belief | open | 0 | 0 (informs no goal) |
+| item-124 | leaf/task | 2 (both) | held by normative-inductor, no belief | open | 0 | 0 (informs no goal) |
+| item-125 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-126 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-127 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-128 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-13 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
 | item-14 | leaf/task | 2 (both) | AI number | open | 0 | 1 |
-| item-15 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-16 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-17 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-18 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-19 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
+| item-15 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-16 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-17 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-18 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-19 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
 | item-2 | leaf/question | 2 (both) | AI number | open | 1 | 1 |
-| item-20 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-21 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-22 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-23 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-24 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-25 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-26 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-27 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-28 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-29 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-3 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-30 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-31 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-32 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-33 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
+| item-20 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-21 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-22 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-23 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-24 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-25 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-26 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-27 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-28 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-29 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-3 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-30 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-31 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-32 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-33 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
 | item-34 | leaf/task | 2 (both) | AI number | open | 1 | 1 |
-| item-35 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-36 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-37 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-38 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-39 | leaf/task | 2 (both) | no belief | open | 1 | 1 |
-| item-4 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-40 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-41 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-42 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-43 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-44 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-45 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-46 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-47 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
+| item-35 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-36 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
+| item-37 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
+| item-38 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
+| item-39 | leaf/task | 2 (both) | held by operative-force, no belief | open | 0 | 0 (informs no goal) |
+| item-4 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-40 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-41 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-42 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-43 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-44 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-45 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-46 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-47 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
 | item-48 | leaf/assumption | 2 (both) | AI number | open | 1 | 1 |
-| item-49 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-5 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-50 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-51 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-52 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-53 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-54 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-55 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-56 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-57 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-58 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-59 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-6 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-60 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-61 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-62 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
+| item-49 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-5 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-50 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-51 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-52 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-53 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-54 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-55 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-56 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-57 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-58 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-59 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-6 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-60 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-61 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-62 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
 | item-63 | leaf/question | 2 (both) | AI number | open | 1 | 1 |
-| item-64 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-65 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-66 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-67 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-68 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-69 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
+| item-64 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-65 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-66 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-67 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-68 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-69 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
 | item-7 | leaf/task | 2 (both) | AI number | open | 1 | 1 |
-| item-70 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-71 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-72 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-73 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-74 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-75 | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
-| item-76 | leaf/question | 2 (both) | AI number | open | 1 | 1 |
-| item-77 | leaf/question | 2 (both) | AI number | open | 1 | 1 |
-| item-78 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-79 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
+| item-70 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-71 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-72 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-73 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-74 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-75 | leaf/question | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
+| item-76 | leaf/question | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
+| item-77 | leaf/question | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
+| item-78 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-79 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
 | item-8 | leaf/question | 2 (both) | AI number | open | 1 | 1 |
-| item-80 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-81 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-82 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-83 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-84 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-85 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-86 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-87 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-88 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-89 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
+| item-80 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-81 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-82 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-83 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-84 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-85 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-86 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-87 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-88 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-89 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
 | item-9 | leaf/task | 2 (both) | AI number | open | 1 | 1 |
-| item-90 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
+| item-90 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
 | item-91 | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
-| item-92 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-93 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-97 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-98 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-99 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-f1 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-f2 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-f3 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-f4 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-f5 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-f6 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-f7 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-f8 | leaf/task | 2 (both) | no belief | open | 0 | 1 |
-| item-q1 | leaf/question | 2 (both) |  | open | 0 | 1 |
-| item-q2 | leaf/question | 2 (both) |  | open | 0 | 1 |
-| item-q3 | leaf/question | 2 (both) |  | open | 0 | 1 |
-| item-q4 | leaf/question | 2 (both) |  | open | 0 | 1 |
+| item-92 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-93 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-97 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-98 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-99 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
+| item-f1 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
+| item-f2 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
+| item-f3 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
+| item-f4 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
+| item-f5 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
+| item-f6 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
+| item-f7 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
+| item-f8 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
+| item-q1 | leaf/question | 2 (both) | held by deference-and-trust | open | 0 | 0 (informs no goal) |
+| item-q2 | leaf/question | 2 (both) | held by deference-and-trust | open | 0 | 0 (informs no goal) |
+| item-q3 | leaf/question | 2 (both) | held by deference-and-trust | open | 0 | 0 (informs no goal) |
+| item-q4 | leaf/question | 2 (both) | held by deference-and-trust | open | 0 | 0 (informs no goal) |
 | joint-process-model | or | 2 (both) | AI number | open | 2 | 2 |
-| jurisdiction.static-view-eq.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| jurisdiction.static-view-eq.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| jurisdiction.static-view-eq | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| jurisdiction.static-view-eq.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| jurisdiction.value-eq-of-price-realization.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| jurisdiction.value-eq-of-price-realization.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| jurisdiction.value-eq-of-price-realization | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| jurisdiction.value-eq-of-price-realization.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| jurisdiction.static-view-eq.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| jurisdiction.static-view-eq.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| jurisdiction.static-view-eq | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| jurisdiction.static-view-eq.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| jurisdiction.value-eq-of-price-realization.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| jurisdiction.value-eq-of-price-realization.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| jurisdiction.value-eq-of-price-realization | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| jurisdiction.value-eq-of-price-realization.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | kelly-identity-lean-checked | leaf/task | 2 (both) | AI number | open | 0 | 8 |
 | kernel-box1-fidelity-vs-fud.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 6 |
 | kernel-box1-fidelity-vs-fud.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 6 |
@@ -6773,70 +5624,70 @@ The outside option and the undescribed failure, each a cases node over the outco
 | kernel-route-realization-layer | leaf/route | 2 (both) | AI number, given authority-typed-corrigibility@valid | open | 0 | 2 |
 | kernel-route-residual | leaf/route | 2 (both) | AI number, given authority-typed-corrigibility@valid | open | 0 | 2 |
 | kernel-walls-hold | leaf/assumption | 2 (both) | AI number | open | 1 | 1 |
-| kernel.box1-fidelity-versus-fully-updated-deference.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| kernel.box1-fidelity-versus-fully-updated-deference.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.box1-fidelity-versus-fully-updated-deference | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| kernel.box1-fidelity-versus-fully-updated-deference.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| kernel.box2-dominance.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| kernel.box2-dominance.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.box2-dominance | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| kernel.box2-dominance.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| kernel.box1-fidelity-versus-fully-updated-deference.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| kernel.box1-fidelity-versus-fully-updated-deference.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| kernel.box1-fidelity-versus-fully-updated-deference | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| kernel.box1-fidelity-versus-fully-updated-deference.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| kernel.box2-dominance.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| kernel.box2-dominance.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| kernel.box2-dominance | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| kernel.box2-dominance.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | kernel.box2-finite-time.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 2 |
 | kernel.box2-finite-time.complete | leaf/completeness | 2 (both) |  | open | 1 | 2 |
 | kernel.box2-finite-time | and | 2 (both) | hypotheses unread, superseded by kernel-box2-finite-time | open | 0 | 0 (informs no goal) |
 | kernel.box2-finite-time.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 2 |
-| kernel.box2-mediation-faithful.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| kernel.box2-mediation-faithful.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.box2-mediation-faithful | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| kernel.box2-mediation-faithful.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| kernel.box3-gap-exchange-rate.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| kernel.box3-gap-exchange-rate.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.box3-gap-exchange-rate | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| kernel.box3-gap-exchange-rate.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| kernel.box3-no-incentive-to-compromise.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| kernel.box3-no-incentive-to-compromise.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.box3-no-incentive-to-compromise | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| kernel.box3-no-incentive-to-compromise.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| kernel.box3-no-laundering.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| kernel.box3-no-laundering.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.box3-no-laundering | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| kernel.box3-no-laundering.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| kernel.box3-restoration.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| kernel.box3-restoration.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.box3-restoration | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| kernel.box3-restoration.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| kernel.corrigible-fidelity-score.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| kernel.corrigible-fidelity-score.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.corrigible-fidelity-score | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| kernel.corrigible-fidelity-score.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| kernel.corrigible-generic.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| kernel.corrigible-generic.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.corrigible-generic | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| kernel.corrigible-generic.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| kernel.extension-bria-realization.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| kernel.extension-bria-realization.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.extension-bria-realization | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| kernel.extension-bria-realization.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| kernel.extension-exploration-realization.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| kernel.extension-exploration-realization.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.extension-exploration-realization | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| kernel.extension-exploration-realization.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| kernel.extension-realized-rate.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| kernel.extension-realized-rate.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.extension-realized-rate | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| kernel.extension-realized-rate.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| kernel.hierarchy-history.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| kernel.hierarchy-history.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.hierarchy-history | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| kernel.hierarchy-history.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| kernel.hierarchy-per-decision.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| kernel.hierarchy-per-decision.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.hierarchy-per-decision | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| kernel.hierarchy-per-decision.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| kernel.subjective-exchange-rate.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| kernel.subjective-exchange-rate.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| kernel.subjective-exchange-rate | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| kernel.subjective-exchange-rate.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| kernel.box2-mediation-faithful.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| kernel.box2-mediation-faithful.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| kernel.box2-mediation-faithful | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| kernel.box2-mediation-faithful.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| kernel.box3-gap-exchange-rate.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| kernel.box3-gap-exchange-rate.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| kernel.box3-gap-exchange-rate | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| kernel.box3-gap-exchange-rate.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| kernel.box3-no-incentive-to-compromise.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| kernel.box3-no-incentive-to-compromise.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| kernel.box3-no-incentive-to-compromise | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| kernel.box3-no-incentive-to-compromise.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| kernel.box3-no-laundering.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| kernel.box3-no-laundering.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| kernel.box3-no-laundering | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| kernel.box3-no-laundering.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| kernel.box3-restoration.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| kernel.box3-restoration.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| kernel.box3-restoration | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| kernel.box3-restoration.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| kernel.corrigible-fidelity-score.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| kernel.corrigible-fidelity-score.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| kernel.corrigible-fidelity-score | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| kernel.corrigible-fidelity-score.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| kernel.corrigible-generic.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| kernel.corrigible-generic.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| kernel.corrigible-generic | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| kernel.corrigible-generic.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| kernel.extension-bria-realization.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| kernel.extension-bria-realization.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| kernel.extension-bria-realization | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| kernel.extension-bria-realization.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| kernel.extension-exploration-realization.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| kernel.extension-exploration-realization.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| kernel.extension-exploration-realization | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| kernel.extension-exploration-realization.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| kernel.extension-realized-rate.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| kernel.extension-realized-rate.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| kernel.extension-realized-rate | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| kernel.extension-realized-rate.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| kernel.hierarchy-history.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| kernel.hierarchy-history.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| kernel.hierarchy-history | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| kernel.hierarchy-history.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| kernel.hierarchy-per-decision.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| kernel.hierarchy-per-decision.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| kernel.hierarchy-per-decision | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| kernel.hierarchy-per-decision.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| kernel.subjective-exchange-rate.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| kernel.subjective-exchange-rate.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| kernel.subjective-exchange-rate | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| kernel.subjective-exchange-rate.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | ladder-chain-as-written.improvable | or | 2 (both) | AI number, improvement claim on ladder-chain-as-written (reality: which Total-Trust readings imply which for a logical inductor's quotes and credences) | open | 1 | 1 |
 | ladder-chain-as-written | leaf/step | 2 (both) | AI number | open | 1 | 2 |
 | ladder-chain-as-written.residual | leaf/route | 2 (both) | AI number, given ladder-chain-as-written | open | 0 | 2 |
@@ -6853,68 +5704,68 @@ The outside option and the undescribed failure, each a cases node over the outco
 | ledger-logic-market-logic-synthesis | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
 | ledger-versus-market-differences | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | legit-accumulated-odds | leaf/question | 2 (both) | AI number, given legit-composition | open | 1 | 1 |
-| legit-anchor-of-L | cases | 2 (both) | AI number, given corr-legit-modif-frames, interval not a bound (negative evidential edge), no belief, under attack | open | 1 | 5 |
-| legit-anchor-of-L.partition | leaf/partition | 2 (both) | AI number | open | 1 | 5 |
-| legit-branch-evaluation-defense-requirements | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
+| legit-anchor-of-L | cases | 2 (both) | AI number, given corr-legit-modif-frames, held by legitimacy, no belief, under attack | open | 0 | 3 |
+| legit-anchor-of-L.partition | leaf/partition | 2 (both) | AI number | open | 0 | 3 |
+| legit-branch-evaluation-defense-requirements | leaf/step | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
 | legit-branch-evaluators-defense | leaf/step | 2 (both) | AI number | open | 1 | 1 |
-| legit-composition.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 2 |
-| legit-composition.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 2 |
-| legit-composition | and | 2 (both) | AI number | open | 1 | 2 |
-| legit-composition.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 2 |
-| legit-composition.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 2 |
-| legit-condition-vs-predict-reality | cases | 2 (both) | AI number, given legit-locality-forced, interval not a bound (negative evidential edge), no belief, under attack | open | 1 | 1 |
-| legit-condition-vs-predict-reality.partition | leaf/partition | 2 (both) | AI number | open | 1 | 1 |
-| legit-correction-function-learned | leaf/question | 2 (both) | AI number, given legit-li-self-correction-identity | open | 1 | 1 |
-| legit-corrects-trust-principles | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
+| legit-composition.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 0 | 1 |
+| legit-composition.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 1 |
+| legit-composition | and | 2 (both) | AI number, held by legitimacy | open | 0 | 1 |
+| legit-composition.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 1 |
+| legit-composition.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 1 |
+| legit-condition-vs-predict-reality | cases | 2 (both) | AI number, given legit-locality-forced, held by legitimacy, no belief, under attack | open | 0 | 0 (informs no goal) |
+| legit-condition-vs-predict-reality.partition | leaf/partition | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
+| legit-correction-function-learned | leaf/question | 2 (both) | AI number, given legit-li-self-correction-identity, held by legitimacy | open | 0 | 0 (informs no goal) |
+| legit-corrects-trust-principles | leaf/step | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
 | legit-corruption-negation | leaf/question | 2 (both) | AI number, given task-predict-o-matic-quotes | open | 1 | 1 |
-| legit-ddb-transfer.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 6 |
-| legit-ddb-transfer.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 6 |
-| legit-ddb-transfer | and | 2 (both) | AI number | open | 1 | 6 |
-| legit-ddb-transfer.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 6 |
-| legit-definition-endorsement | cases | 2 (both) | AI number, no belief, under attack | open | 1 | 1 |
-| legit-definition-endorsement.partition | leaf/partition | 2 (both) | AI number | open | 1 | 1 |
+| legit-ddb-transfer.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 0 | 4 |
+| legit-ddb-transfer.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 4 |
+| legit-ddb-transfer | and | 2 (both) | AI number, held by legitimacy | open | 0 | 4 |
+| legit-ddb-transfer.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 4 |
+| legit-definition-endorsement | cases | 2 (both) | AI number, held by legitimacy, no belief, under attack | open | 0 | 0 (informs no goal) |
+| legit-definition-endorsement.partition | leaf/partition | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
 | legit-dynamics-learning | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
 | legit-endorsement-good-utility | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
-| legit-endpoint-preservation | leaf/step | 2 (both) | AI number | open | 1 | 1 |
-| legit-finite-frames | leaf/assumption | 2 (both) | AI number | open | 1 | 1 |
-| legit-gated-tower-li-teacher | leaf/step | 2 (both) | AI number, given legit-anchor-of-L | open | 0 | 2 |
-| legit-gated-trust-li | or | 2 (both) | AI number, interval not a bound (negative evidential edge) | open | 1 | 2 |
-| legit-global-or-local-form | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
-| legit-intersubjectivity-pre-rationality | leaf/question | 2 (both) | AI number, given task-habermas-reading | open | 1 | 1 |
+| legit-endpoint-preservation | leaf/step | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
+| legit-finite-frames | leaf/assumption | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
+| legit-gated-tower-li-teacher | leaf/step | 2 (both) | AI number, given legit-anchor-of-L | open | 0 | 1 |
+| legit-gated-trust-li | or | 2 (both) | AI number, held by legitimacy | open | 0 | 1 |
+| legit-global-or-local-form | leaf/question | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
+| legit-intersubjectivity-pre-rationality | leaf/question | 2 (both) | AI number, given task-habermas-reading, held by legitimacy | open | 0 | 0 (informs no goal) |
 | legit-learned-from-others | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | legit-learning-theorems | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
-| legit-li-self-correction-identity | leaf/step | 2 (both) | AI number | open | 1 | 1 |
-| legit-locality-forced.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 2 |
-| legit-locality-forced.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 2 |
-| legit-locality-forced | and | 2 (both) | AI number | open | 1 | 2 |
-| legit-locality-forced.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 2 |
-| legit-locality-forced.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 2 |
-| legit-meta-revision | leaf/question | 2 (both) | AI number, given anticipation-branchwise-dominance--corrigibility-risk | open | 1 | 1 |
+| legit-li-self-correction-identity | leaf/step | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
+| legit-locality-forced.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 0 | 0 (informs no goal) |
+| legit-locality-forced.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
+| legit-locality-forced | and | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
+| legit-locality-forced.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 0 (informs no goal) |
+| legit-locality-forced.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
+| legit-meta-revision | leaf/question | 2 (both) | AI number, given anticipation-branchwise-dominance--corrigibility-risk, held by legitimacy | open | 0 | 0 (informs no goal) |
 | legit-objective-li-reading | leaf/route | 2 (both) | AI number, given legit-objective-proposals | open | 0 | 2 |
-| legit-objective-proposals | cases | 2 (both) | AI number, given illegitimate-world-ever-better, given p2-manages-the-news, given void-branch-deterrence-floor--corrigibility-risk, interval not a bound (negative evidential edge), no belief, under attack | open | 1 | 6 |
-| legit-objective-proposals.partition | leaf/partition | 2 (both) | AI number | open | 1 | 6 |
+| legit-objective-proposals | cases | 2 (both) | AI number, given illegitimate-world-ever-better, given p2-manages-the-news, given void-branch-deterrence-floor--corrigibility-risk, held by legitimacy, no belief, under attack | open | 0 | 5 |
+| legit-objective-proposals.partition | leaf/partition | 2 (both) | AI number | open | 0 | 5 |
 | legit-partial-vs-total-corruption | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
-| legit-per-formalism-family | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
-| legit-positive-mass | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
-| legit-reflection-li-band-gated | leaf/step | 2 (both) | AI number, given reflection-bifurcation | open | 0 | 2 |
-| legit-reflection-unsat-modest.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 1 |
-| legit-reflection-unsat-modest.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
-| legit-reflection-unsat-modest | and | 2 (both) | AI number | open | 1 | 1 |
-| legit-reflection-unsat-modest.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 1 |
-| legit-reflection-unsat-modest.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
+| legit-per-formalism-family | leaf/step | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
+| legit-positive-mass | leaf/hypothesis | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
+| legit-reflection-li-band-gated | leaf/step | 2 (both) | AI number, given reflection-bifurcation | open | 0 | 1 |
+| legit-reflection-unsat-modest.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 0 | 0 (informs no goal) |
+| legit-reflection-unsat-modest.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
+| legit-reflection-unsat-modest | and | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
+| legit-reflection-unsat-modest.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 0 (informs no goal) |
+| legit-reflection-unsat-modest.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
 | legit-relax-anchor | leaf/step | 2 (both) | AI number, given legit-anchor-of-L | open | 0 | 2 |
 | legit-relax-finite-frames | leaf/route | 2 (both) | AI number, given legit-ddb-transfer@valid | open | 0 | 2 |
-| legit-relax-to-li-register | leaf/route | 2 (both) | AI number, given legit-ddb-transfer@valid | open | 0 | 4 |
+| legit-relax-to-li-register | leaf/route | 2 (both) | AI number, given legit-ddb-transfer@valid | open | 0 | 3 |
 | legit-repairable | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | legit-rule-learning-model | leaf/route | 2 (both) | AI number, given legit-objective-proposals | open | 0 | 2 |
 | legit-semantic-vs-syntactic | leaf/step | 2 (both) | AI number, given task-syntactic-legitimacy-soundness | open | 1 | 1 |
-| legit-trust-improvable | or | 2 (both) | AI number, improvement claim on legit-ddb-transfer (reality: the teaching channel between a human process and an AI), interval not a bound (negative evidential edge) | open | 1 | 1 |
+| legit-trust-improvable | or | 2 (both) | AI number, held by legitimacy, improvement claim on legit-ddb-transfer (reality: the teaching channel between a human process and an AI) | open | 0 | 1 |
 | legit-trust-improvable.residual | leaf/route | 2 (both) | AI number | open | 0 | 2 |
-| legit-two-theories-bridge | cases | 2 (both) | AI number, given thin-reflection-is-trivial-baseline, no belief, under attack | open | 1 | 1 |
-| legit-two-theories-bridge.partition | leaf/partition | 2 (both) | AI number | open | 1 | 1 |
-| legit-v1-improvable | or | 2 (both) | AI number, improvement claim on legit-endpoint-preservation (reality: the legitimacy of a real advisor-human channel) | open | 1 | 1 |
+| legit-two-theories-bridge | cases | 2 (both) | AI number, given thin-reflection-is-trivial-baseline, held by legitimacy, no belief, under attack | open | 0 | 0 (informs no goal) |
+| legit-two-theories-bridge.partition | leaf/partition | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
+| legit-v1-improvable | or | 2 (both) | AI number, held by legitimacy, improvement claim on legit-endpoint-preservation (reality: the legitimacy of a real advisor-human channel) | open | 0 | 1 |
 | legit-v1-improvable.residual | leaf/route | 2 (both) | AI number | open | 0 | 2 |
-| legit-weighted-objective-improvable | or | 2 (both) | AI number, improvement claim on legit-objective-proposals (reality: how legitimacy considerations enter an AI's choices), interval not a bound (negative evidential edge) | open | 1 | 1 |
+| legit-weighted-objective-improvable | or | 2 (both) | AI number, held by legitimacy, improvement claim on legit-objective-proposals (reality: how legitimacy considerations enter an AI's choices) | open | 0 | 1 |
 | legit-weighted-objective-improvable.residual | leaf/route | 2 (both) | AI number | open | 0 | 2 |
 | legitimacy-as-local-rules | or | 2 (both) | AI number | open | 2 | 2 |
 | legitimacy-blocks-wireheading | leaf/step | 2 (both) | AI number, given wirehead-decline-toy | open | 1 | 1 |
@@ -6923,55 +5774,55 @@ The outside option and the undescribed failure, each a cases node over the outco
 | legitimacy-conditioned-reflection | and | 2 (both) | AI number | open | 1 | 2 |
 | legitimacy-conditioned-reflection.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 2 |
 | legitimacy-conditioned-reflection.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
-| legitimacy-deference-instantiation | leaf/step | 2 (both) | AI number | open | 1 | 1 |
+| legitimacy-deference-instantiation | leaf/step | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
 | legitimacy-detection-load | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | legitimacy-detection | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
 | legitimacy-meets-syntax | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
 | legitimacy-reasons-programme | frame | 2 (both) | superseded by legitimacy | open | 0 | 0 (informs no goal) |
 | legitimacy-rule-characterization | or | 2 (both) | AI number | open | 1 | 1 |
 | legitimacy-weighted-deference | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
-| legitimacy.answerable.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| legitimacy.answerable.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| legitimacy.answerable | and | 2 (both) | hypotheses unread, superseded by open-integrity.answerable | open | 1 | 1 |
-| legitimacy.answerable.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| legitimacy.endpoint-only-insufficient.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| legitimacy.endpoint-only-insufficient.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| legitimacy.endpoint-only-insufficient | and | 2 (both) | hypotheses unread, superseded by openness.endpoint-only-insufficient | open | 1 | 1 |
-| legitimacy.endpoint-only-insufficient.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| legitimacy.endpoint-trans.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| legitimacy.endpoint-trans.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| legitimacy.endpoint-trans | and | 2 (both) | hypotheses unread, superseded by open-integrity.endpoint-trans | open | 1 | 1 |
-| legitimacy.endpoint-trans.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| legitimacy.evolution-conservation.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| legitimacy.evolution-conservation.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| legitimacy.evolution-conservation | and | 2 (both) | hypotheses unread, superseded by integrity.evolution-conservation | open | 1 | 1 |
-| legitimacy.evolution-conservation.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| legitimacy.faithful-carry.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| legitimacy.faithful-carry.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| legitimacy.faithful-carry | and | 2 (both) | hypotheses unread, superseded by integrity.faithful-carry | open | 1 | 1 |
-| legitimacy.faithful-carry.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| legitimacy.answerable.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| legitimacy.answerable.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| legitimacy.answerable | and | 2 (both) | held by integrity-and-record, hypotheses unread, superseded by open-integrity.answerable | open | 0 | 0 (informs no goal) |
+| legitimacy.answerable.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| legitimacy.endpoint-only-insufficient.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| legitimacy.endpoint-only-insufficient.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| legitimacy.endpoint-only-insufficient | and | 2 (both) | held by integrity-and-record, hypotheses unread, superseded by openness.endpoint-only-insufficient | open | 0 | 0 (informs no goal) |
+| legitimacy.endpoint-only-insufficient.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| legitimacy.endpoint-trans.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| legitimacy.endpoint-trans.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| legitimacy.endpoint-trans | and | 2 (both) | held by integrity-and-record, hypotheses unread, superseded by open-integrity.endpoint-trans | open | 0 | 0 (informs no goal) |
+| legitimacy.endpoint-trans.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| legitimacy.evolution-conservation.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| legitimacy.evolution-conservation.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| legitimacy.evolution-conservation | and | 2 (both) | held by integrity-and-record, hypotheses unread, superseded by integrity.evolution-conservation | open | 0 | 0 (informs no goal) |
+| legitimacy.evolution-conservation.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| legitimacy.faithful-carry.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| legitimacy.faithful-carry.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| legitimacy.faithful-carry | and | 2 (both) | held by integrity-and-record, hypotheses unread, superseded by integrity.faithful-carry | open | 0 | 0 (informs no goal) |
+| legitimacy.faithful-carry.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | legitimacy | frame | 2 (both) | owner has not confirmed (drafted from wiki/Legitimacy.md) | open | 1 | 0 (informs no goal) |
-| legitimacy.multiplicity-witness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| legitimacy.multiplicity-witness.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| legitimacy.multiplicity-witness | and | 2 (both) | hypotheses unread, superseded by integrity.multiplicity-witness | open | 1 | 1 |
-| legitimacy.multiplicity-witness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| legitimacy.payload-of-view.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| legitimacy.payload-of-view.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| legitimacy.payload-of-view | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| legitimacy.payload-of-view.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| legitimacy.propagate-to-segment.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| legitimacy.propagate-to-segment.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| legitimacy.propagate-to-segment | and | 2 (both) | hypotheses unread, superseded by integrity.propagate-to-segment | open | 1 | 1 |
-| legitimacy.propagate-to-segment.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| legitimacy.receipts-immutable.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| legitimacy.receipts-immutable.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| legitimacy.receipts-immutable | and | 2 (both) | hypotheses unread, superseded by integrity.receipts-immutable | open | 1 | 1 |
-| legitimacy.receipts-immutable.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| legitimacy.segment-trans.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| legitimacy.segment-trans.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| legitimacy.segment-trans | and | 2 (both) | hypotheses unread, superseded by open-integrity.segment-trans | open | 1 | 1 |
-| legitimacy.segment-trans.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| legitimate-deference-regret | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
+| legitimacy.multiplicity-witness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| legitimacy.multiplicity-witness.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| legitimacy.multiplicity-witness | and | 2 (both) | held by integrity-and-record, hypotheses unread, superseded by integrity.multiplicity-witness | open | 0 | 0 (informs no goal) |
+| legitimacy.multiplicity-witness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| legitimacy.payload-of-view.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| legitimacy.payload-of-view.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| legitimacy.payload-of-view | and | 2 (both) | held by authorship-and-transparency, hypotheses unread | open | 0 | 0 (informs no goal) |
+| legitimacy.payload-of-view.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| legitimacy.propagate-to-segment.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| legitimacy.propagate-to-segment.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| legitimacy.propagate-to-segment | and | 2 (both) | held by integrity-and-record, hypotheses unread, superseded by integrity.propagate-to-segment | open | 0 | 0 (informs no goal) |
+| legitimacy.propagate-to-segment.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| legitimacy.receipts-immutable.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| legitimacy.receipts-immutable.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| legitimacy.receipts-immutable | and | 2 (both) | held by integrity-and-record, hypotheses unread, superseded by integrity.receipts-immutable | open | 0 | 0 (informs no goal) |
+| legitimacy.receipts-immutable.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| legitimacy.segment-trans.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| legitimacy.segment-trans.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| legitimacy.segment-trans | and | 2 (both) | held by integrity-and-record, hypotheses unread, superseded by open-integrity.segment-trans | open | 0 | 0 (informs no goal) |
+| legitimacy.segment-trans.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| legitimate-deference-regret | leaf/step | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
 | legitimate-deliberation-definition | leaf/question | 2 (both) | AI number, given task-import-lw-legitimacy-posts | open | 1 | 1 |
 | legitimate-versus-legitimizing | leaf/step | 2 (both) | AI number | open | 1 | 2 |
 | level-above-quantifiable | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
@@ -6994,7 +5845,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | li-bria-with-updateless-extension.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 6 |
 | li-bria-with-updateless-extension | and | 2 (both) |  | open | 0 | 6 |
 | li-compatible-abstraction-theory | or | 2 (both) | AI number, interval not a bound (negative evidential edge) | open | 1 | 1 |
-| li-corrigibility-inequality-public | leaf/step | 2 (both) | AI number | open | 1 | 2 |
+| li-corrigibility-inequality-public | leaf/step | 2 (both) | AI number, held by legitimacy | open | 0 | 2 |
 | li-corrigibilization-theorem.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 1 |
 | li-corrigibilization-theorem.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
 | li-corrigibilization-theorem | and | 2 (both) | AI number | open | 1 | 1 |
@@ -7035,26 +5886,26 @@ The outside option and the undescribed failure, each a cases node over the outco
 | li-trust-principles-enumerated | or | 2 (both) | AI number | open | 1 | 1 |
 | li-updatelessness-tractable | cases | 2 (both) | AI number, no belief, under attack | open | 1 | 1 |
 | li-updatelessness-tractable.partition | leaf/partition | 2 (both) | AI number | open | 1 | 1 |
-| li.assessment.budgeter-exploits.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| li.assessment.budgeter-exploits.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| li.assessment.budgeter-exploits | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| li.assessment.budgeter-exploits.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| li.assessment.budgeter-floor.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| li.assessment.budgeter-floor.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| li.assessment.budgeter-floor | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| li.assessment.budgeter-floor.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| li.assessment.budgeter-value.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| li.assessment.budgeter-value.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| li.assessment.budgeter-value | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| li.assessment.budgeter-value.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| li.assessment.criterion.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| li.assessment.criterion.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| li.assessment.criterion | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| li.assessment.criterion.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| li.assessment.firm-dominance.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| li.assessment.firm-dominance.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| li.assessment.firm-dominance | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| li.assessment.firm-dominance.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| li.assessment.budgeter-exploits.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| li.assessment.budgeter-exploits.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| li.assessment.budgeter-exploits | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| li.assessment.budgeter-exploits.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| li.assessment.budgeter-floor.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| li.assessment.budgeter-floor.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| li.assessment.budgeter-floor | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| li.assessment.budgeter-floor.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| li.assessment.budgeter-value.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| li.assessment.budgeter-value.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| li.assessment.budgeter-value | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| li.assessment.budgeter-value.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| li.assessment.criterion.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| li.assessment.criterion.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| li.assessment.criterion | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| li.assessment.criterion.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| li.assessment.firm-dominance.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| li.assessment.firm-dominance.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| li.assessment.firm-dominance | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| li.assessment.firm-dominance.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | lia-fitted-to-lic | leaf/question | 2 (both) | AI number | open | 1 | 7 |
 | lic-constrains-no-finite-day | leaf/step | 2 (both) | AI number | open | 1 | 1 |
 | lift-stop-gradient-to-bli | leaf/task | 2 (both) | AI number | open | 0 | 2 |
@@ -7068,34 +5919,34 @@ The outside option and the undescribed failure, each a cases node over the outco
 | logical-counterfactuals-troll-bridge.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
 | logical-counterfactuals-troll-bridge | and | 2 (both) |  | open | 1 | 1 |
 | loop-direction-closure | leaf/step | 2 (both) | AI number | open | 0 | 7 |
-| magnitude.mixture-networth-zero.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| magnitude.mixture-networth-zero.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| magnitude.mixture-networth-zero | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| magnitude.mixture-networth-zero.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| magnitude.not-trader-payoff.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| magnitude.not-trader-payoff.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| magnitude.not-trader-payoff | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| magnitude.not-trader-payoff.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| magnitude.sharp-trader-networth.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| magnitude.sharp-trader-networth.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| magnitude.sharp-trader-networth | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| magnitude.sharp-trader-networth.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| magnitude.signed-bounded-actual.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| magnitude.signed-bounded-actual.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| magnitude.signed-bounded-actual | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| magnitude.signed-bounded-actual.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| magnitude.signed-bounded.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| magnitude.signed-bounded.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| magnitude.signed-bounded | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| magnitude.signed-bounded.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| magnitude.sq-error-split.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| magnitude.sq-error-split.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| magnitude.sq-error-split | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| magnitude.sq-error-split.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| magnitude.unit-trader-networth.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| magnitude.unit-trader-networth.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| magnitude.unit-trader-networth | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| magnitude.unit-trader-networth.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| magnitude.mixture-networth-zero.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| magnitude.mixture-networth-zero.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| magnitude.mixture-networth-zero | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| magnitude.mixture-networth-zero.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| magnitude.not-trader-payoff.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| magnitude.not-trader-payoff.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| magnitude.not-trader-payoff | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| magnitude.not-trader-payoff.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| magnitude.sharp-trader-networth.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| magnitude.sharp-trader-networth.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| magnitude.sharp-trader-networth | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| magnitude.sharp-trader-networth.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| magnitude.signed-bounded-actual.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| magnitude.signed-bounded-actual.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| magnitude.signed-bounded-actual | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| magnitude.signed-bounded-actual.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| magnitude.signed-bounded.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| magnitude.signed-bounded.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| magnitude.signed-bounded | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| magnitude.signed-bounded.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| magnitude.sq-error-split.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| magnitude.sq-error-split.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| magnitude.sq-error-split | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| magnitude.sq-error-split.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| magnitude.unit-trader-networth.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| magnitude.unit-trader-networth.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| magnitude.unit-trader-networth | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| magnitude.unit-trader-networth.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | maintainer-rulings-batched.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
 | maintainer-rulings-batched | and | 2 (both) |  | open | 1 | 1 |
 | malign-hypothesis-window | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
@@ -7118,14 +5969,14 @@ The outside option and the undescribed failure, each a cases node over the outco
 | mart-implies-value-refuted-unconditional.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 1 |
 | mastery-gates-stage5 | cases | 2 (both) | AI number, no belief, under attack | open | 1 | 1 |
 | mastery-gates-stage5.partition | leaf/partition | 2 (both) | AI number | open | 1 | 1 |
-| maxmin.converse.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| maxmin.converse.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| maxmin.converse | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| maxmin.converse.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| maxmin.representation.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| maxmin.representation.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| maxmin.representation | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| maxmin.representation.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| maxmin.converse.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| maxmin.converse.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| maxmin.converse | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| maxmin.converse.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| maxmin.representation.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| maxmin.representation.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| maxmin.representation | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| maxmin.representation.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | meaning-and-agency-vingean-optimization | leaf/question | 2 (both) | AI number, given vingean-definitions-reconciled | open | 0 | 1 |
 | member-selecting-rule-setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
 | mine-condensation-posts | leaf/task | 2 (both) | AI number, given own-posts-as-todos, no belief | open | 0 | 2 |
@@ -7151,10 +6002,10 @@ The outside option and the undescribed failure, each a cases node over the outco
 | natural-latents-approx-coefficient | leaf/question | 2 (both) | AI number, given wentworth-constant-located | open | 0 | 1 |
 | natural-latents-vs-condensation | leaf/question | 2 (both) | AI number, given natural-latents-approx-coefficient | open | 1 | 1 |
 | never-settled-standard | leaf/question | 2 (both) | AI number, given intuitionistic-gi-source-filed | open | 1 | 1 |
-| ni.progress-bound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| ni.progress-bound.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| ni.progress-bound | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| ni.progress-bound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| ni.progress-bound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| ni.progress-bound.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| ni.progress-bound | and | 2 (both) | held by normative-inductor, hypotheses unread | open | 0 | 0 (informs no goal) |
+| ni.progress-bound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | no-forced-other-trust | leaf/step | 2 (both) | AI number | open | 1 | 1 |
 | no-fud-problem-headline.improvable | or | 2 (both) | AI number, improvement claim on no-fud-problem-headline (reality: a trained agent whose capability grows past its overseers') | open | 1 | 1 |
 | no-fud-problem-headline | leaf/step | 2 (both) | AI number | open | 1 | 5 |
@@ -7165,7 +6016,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | nofud-route-modification-kind | leaf/route | 2 (both) | AI number, given no-fud-problem-headline | open | 0 | 2 |
 | nofud-route-residual | leaf/route | 2 (both) | AI number, given no-fud-problem-headline | open | 0 | 2 |
 | nofud-scope-proposal | leaf/task | 2 (both) | AI number | open | 0 | 1 |
-| non-modification-conjecture | leaf/question | 2 (both) | AI number, given task-composition-finite-shadow | open | 1 | 1 |
+| non-modification-conjecture | leaf/question | 2 (both) | AI number, given task-composition-finite-shadow, held by legitimacy | open | 0 | 0 (informs no goal) |
 | non-paradoxical-cross-process-impossibility | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | non-responsiveness-learnable | leaf/question | 2 (both) | AI number | open | 0 | 1 |
 | normative-inductor | frame | 2 (both) | owner has not confirmed (drafted from wiki/Normative-Inductor.md) | open | 1 | 0 (informs no goal) |
@@ -7187,40 +6038,40 @@ The outside option and the undescribed failure, each a cases node over the outco
 | observing-beliefs-only-observation | leaf/assumption | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | one-criterion | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | one-shot-verdicts-wanted | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
-| open-integrity.answerable.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| open-integrity.answerable.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| open-integrity.answerable | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| open-integrity.answerable.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| open-integrity.endpoint-trans.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| open-integrity.endpoint-trans.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| open-integrity.endpoint-trans | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| open-integrity.endpoint-trans.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| open-integrity.segment-trans.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| open-integrity.segment-trans.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| open-integrity.segment-trans | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| open-integrity.segment-trans.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| open-integrity.answerable.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| open-integrity.answerable.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| open-integrity.answerable | and | 2 (both) | held by integrity-and-record, hypotheses unread | open | 0 | 0 (informs no goal) |
+| open-integrity.answerable.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| open-integrity.endpoint-trans.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| open-integrity.endpoint-trans.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| open-integrity.endpoint-trans | and | 2 (both) | held by integrity-and-record, hypotheses unread | open | 0 | 0 (informs no goal) |
+| open-integrity.endpoint-trans.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| open-integrity.segment-trans.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| open-integrity.segment-trans.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| open-integrity.segment-trans | and | 2 (both) | held by integrity-and-record, hypotheses unread | open | 0 | 0 (informs no goal) |
+| open-integrity.segment-trans.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | open-minded-epistemic-state | leaf/step | 2 (both) | AI number | open | 0 | 1 |
 | open-minded-updatelessness | or | 2 (both) | AI number | open | 1 | 1 |
 | open-problem-ledger-current | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | open-problems-cleanroom-update | leaf/task | 2 (both) | AI number | open | 1 | 1 |
 | open-problems-import | leaf/task | 2 (both) | AI number | open | 1 | 1 |
-| openness-and-non-capture | frame | 2 (both) | owner has not confirmed (drafted from wiki/Openness-Coverage-and-Non-Capture.md) | open | 1 | 0 (informs no goal) |
-| openness.actual-branch-witness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| openness.actual-branch-witness.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| openness.actual-branch-witness | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| openness.actual-branch-witness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| openness.certplus-is-robust-openness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| openness.certplus-is-robust-openness.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| openness.certplus-is-robust-openness | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| openness.certplus-is-robust-openness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| openness.endpoint-only-insufficient.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| openness.endpoint-only-insufficient.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| openness.endpoint-only-insufficient | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| openness.endpoint-only-insufficient.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| openness.persistence-sufficient.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| openness.persistence-sufficient.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| openness.persistence-sufficient | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| openness.persistence-sufficient.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| openness-and-non-capture | frame | 2 (both) | owner has not confirmed (drafted from wiki/Openness-Coverage-and-Non-Capture.md), spelled; nothing yet a goal (4 held) | open | 1 | 0 (informs no goal) |
+| openness.actual-branch-witness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| openness.actual-branch-witness.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| openness.actual-branch-witness | and | 2 (both) | held by openness-and-non-capture, hypotheses unread | open | 0 | 0 (informs no goal) |
+| openness.actual-branch-witness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| openness.certplus-is-robust-openness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| openness.certplus-is-robust-openness.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| openness.certplus-is-robust-openness | and | 2 (both) | held by openness-and-non-capture, hypotheses unread | open | 0 | 0 (informs no goal) |
+| openness.certplus-is-robust-openness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| openness.endpoint-only-insufficient.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| openness.endpoint-only-insufficient.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| openness.endpoint-only-insufficient | and | 2 (both) | held by openness-and-non-capture, hypotheses unread | open | 0 | 0 (informs no goal) |
+| openness.endpoint-only-insufficient.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| openness.persistence-sufficient.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| openness.persistence-sufficient.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| openness.persistence-sufficient | and | 2 (both) | held by openness-and-non-capture, hypotheses unread | open | 0 | 0 (informs no goal) |
+| openness.persistence-sufficient.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | operative-force | frame | 2 (both) | owner has not confirmed (drafted from wiki/Actionability-and-Normative-Force.md) | open | 1 | 0 (informs no goal) |
 | optimality-is-subject-matter | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | oq-anti-wireheading | leaf/step | 2 (both) | AI number, given wirehead-iff-finite | open | 1 | 1 |
@@ -7239,11 +6090,11 @@ The outside option and the undescribed failure, each a cases node over the outco
 | oversight-law-of-motion | leaf/question | 2 (both) | AI number | open | 0 | 2 |
 | own-law-accuracy-reading | leaf/hypothesis | 2 (both) | AI number | open | 0 | 7 |
 | own-posts-as-todos | leaf/task | 2 (both) | no belief | open | 0 | 2 |
-| p2-manages-the-news.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 7 |
-| p2-manages-the-news.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 7 |
-| p2-manages-the-news | and | 2 (both) | AI number | open | 1 | 7 |
-| p2-manages-the-news.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 7 |
-| p2-manages-the-news.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 7 |
+| p2-manages-the-news.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 0 | 5 |
+| p2-manages-the-news.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 5 |
+| p2-manages-the-news | and | 2 (both) | AI number, held by legitimacy | open | 0 | 5 |
+| p2-manages-the-news.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 5 |
+| p2-manages-the-news.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 5 |
 | pairwise-coupling-setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 1 |
 | paper-tiling-formalized.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted, given paper-tiling-text-repaired | open | 0 | 8 |
 | paper-tiling-formalized.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 8 |
@@ -7465,40 +6316,40 @@ The outside option and the undescribed failure, each a cases node over the outco
 | port-rescope-after-pin-move | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | posl-ilpacs-nontrivial-model | leaf/question | 2 (both) | AI number | open | 1 | 3 |
 | post-corrigible-normative-learning | leaf/step | 2 (both) | AI number | open | 1 | 1 |
-| post.flood-below-asking.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| post.flood-below-asking.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| post.flood-below-asking | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| post.flood-below-asking.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| post.theorem-li.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| post.theorem-li.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| post.theorem-li | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| post.theorem-li.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| post.theorem.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| post.theorem.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| post.theorem | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| post.theorem.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| post.witness-control-maximizer.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| post.witness-control-maximizer.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| post.witness-control-maximizer | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| post.witness-control-maximizer.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| post.witness-hindsight.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| post.witness-hindsight.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| post.witness-hindsight | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| post.witness-hindsight.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| post.witness-learned-weight.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| post.witness-learned-weight.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| post.witness-learned-weight | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| post.witness-learned-weight.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| post.witness-same-level.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| post.witness-same-level.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| post.witness-same-level | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| post.witness-same-level.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| post.witness-sole-authority.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| post.witness-sole-authority.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| post.witness-sole-authority | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| post.witness-sole-authority.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| post.flood-below-asking.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| post.flood-below-asking.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| post.flood-below-asking | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| post.flood-below-asking.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| post.theorem-li.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| post.theorem-li.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| post.theorem-li | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| post.theorem-li.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| post.theorem.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| post.theorem.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| post.theorem | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| post.theorem.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| post.witness-control-maximizer.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| post.witness-control-maximizer.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| post.witness-control-maximizer | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| post.witness-control-maximizer.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| post.witness-hindsight.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| post.witness-hindsight.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| post.witness-hindsight | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| post.witness-hindsight.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| post.witness-learned-weight.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| post.witness-learned-weight.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| post.witness-learned-weight | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| post.witness-learned-weight.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| post.witness-same-level.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| post.witness-same-level.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| post.witness-same-level | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| post.witness-same-level.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| post.witness-sole-authority.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| post.witness-sole-authority.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| post.witness-sole-authority | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| post.witness-sole-authority.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | power-bounded-by-wisdom | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
-| predication-dichotomy | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
+| predication-dichotomy | leaf/step | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
 | predictor-counterfactual-referent | or | 2 (both) |  | open | 1 | 1 |
 | press-is-evidence | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | pressure-as-external-trader.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 1 |
@@ -7508,18 +6359,18 @@ The outside option and the undescribed failure, each a cases node over the outco
 | pressure-as-external-trader.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
 | principles-design-space-matrix | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | probabilistic-payors-lemma | leaf/question | 2 (both) | AI number | open | 0 | 1 |
-| progress.edge-bound-quadratic.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| progress.edge-bound-quadratic.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| progress.edge-bound-quadratic | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| progress.edge-bound-quadratic.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| progress.edge-bound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| progress.edge-bound.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| progress.edge-bound | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| progress.edge-bound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| progress.headline-separation.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| progress.headline-separation.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| progress.headline-separation | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| progress.headline-separation.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| progress.edge-bound-quadratic.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| progress.edge-bound-quadratic.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| progress.edge-bound-quadratic | and | 2 (both) | held by normative-inductor, hypotheses unread | open | 0 | 0 (informs no goal) |
+| progress.edge-bound-quadratic.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| progress.edge-bound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| progress.edge-bound.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| progress.edge-bound | and | 2 (both) | held by normative-inductor, hypotheses unread | open | 0 | 0 (informs no goal) |
+| progress.edge-bound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| progress.headline-separation.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| progress.headline-separation.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| progress.headline-separation | and | 2 (both) | held by normative-inductor, hypotheses unread | open | 0 | 0 (informs no goal) |
+| progress.headline-separation.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | provenance-conditional-tiling | leaf/question | 2 (both) | AI number, given humans-benefit-quantity | open | 0 | 1 |
 | ps-cor614-orbit-count.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 7 |
 | ps-cor614-orbit-count.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 7 |
@@ -7534,14 +6385,14 @@ The outside option and the undescribed failure, each a cases node over the outco
 | ps-trained-systems-seek-power.improvable | or | 2 (both) | AI number, improvement claim on ps-trained-systems-seek-power (reality: the policies produced by the training procedures actually used) | open | 1 | 1 |
 | ps-trained-systems-seek-power | and | 2 (both) |  | open | 0 | 6 |
 | public-corrigibility-line | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
-| public-internal-legitimacy-is-reasons | leaf/step | 2 (both) | AI number | open | 1 | 1 |
-| public-layer-II.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
-| public-layer-II | and | 2 (both) | AI number | open | 1 | 1 |
+| public-internal-legitimacy-is-reasons | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
+| public-layer-II.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
+| public-layer-II | and | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
 | public-legitimacy-improvable | or | 2 (both) | AI number, improvement claim on public-legitimacy-theory (reality: legitimacy between a human principal and an AI over real channels) | open | 1 | 1 |
 | public-legitimacy-improvable.residual | leaf/route | 2 (both) | AI number | open | 0 | 2 |
 | public-legitimacy-theory.complete | leaf/completeness | 2 (both) | AI number | open | 2 | 1 |
 | public-legitimacy-theory | and | 2 (both) | AI number | open | 2 | 1 |
-| public-line-leaves-semantics-alone | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
+| public-line-leaves-semantics-alone | leaf/step | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
 | public-port-of-deference-results | or | 2 (both) | AI number | open | 1 | 1 |
 | publication-form-decided | leaf/question | 2 (both) | AI number | open | 0 | 1 |
 | publication-form | or | 2 (both) |  | open | 1 | 1 |
@@ -7552,48 +6403,48 @@ The outside option and the undescribed failure, each a cases node over the outco
 | radical-probabilist-endorsement-bridge | leaf/step | 2 (both) | AI number | open | 0 | 1 |
 | ranking-matches-stated-priorities | leaf/step | 2 (both) | AI number | open | 1 | 1 |
 | reachable-corrective-control-negative | leaf/step | 2 (both) | AI number, given corrigibility-as-recoverability | open | 1 | 1 |
-| readout-R1-vs-R2 | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
+| readout-R1-vs-R2 | leaf/question | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
 | realism-definitions-for-logical-udt | leaf/task | 2 (both) | AI number | open | 0 | 1 |
-| reason-exchange-representation-theorem | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
+| reason-exchange-representation-theorem | leaf/question | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
 | reason-mediated-authorship | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
-| reasons-improvable | or | 2 (both) | AI number, improvement claim on reasons-statics-public (reality: how human reasons function in legitimate deliberation) | open | 1 | 1 |
+| reasons-improvable | or | 2 (both) | AI number, held by legitimacy, improvement claim on reasons-statics-public (reality: how human reasons function in legitimate deliberation) | open | 0 | 1 |
 | reasons-improvable.residual | leaf/route | 2 (both) | AI number | open | 0 | 2 |
-| reasons-statics-public | leaf/step | 2 (both) | AI number | open | 1 | 3 |
-| reasons-subcase-of-legitimacy | cases | 2 (both) | AI number, given public-internal-legitimacy-is-reasons, no belief, under attack | open | 1 | 1 |
-| reasons-subcase-of-legitimacy.partition | leaf/partition | 2 (both) | AI number | open | 1 | 1 |
-| rebuttal.liability-rebutted.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| rebuttal.liability-rebutted.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| rebuttal.liability-rebutted | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| rebuttal.liability-rebutted.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| rebuttal.settleform-sound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| rebuttal.settleform-sound.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| rebuttal.settleform-sound | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| rebuttal.settleform-sound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| reasons-statics-public | leaf/step | 2 (both) | AI number, held by legitimacy | open | 0 | 3 |
+| reasons-subcase-of-legitimacy | cases | 2 (both) | AI number, given public-internal-legitimacy-is-reasons, held by legitimacy, no belief, under attack | open | 0 | 0 (informs no goal) |
+| reasons-subcase-of-legitimacy.partition | leaf/partition | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
+| rebuttal.liability-rebutted.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| rebuttal.liability-rebutted.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| rebuttal.liability-rebutted | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
+| rebuttal.liability-rebutted.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| rebuttal.settleform-sound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| rebuttal.settleform-sound.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| rebuttal.settleform-sound | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
+| rebuttal.settleform-sound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | reconstruction-score-role | leaf/question | 2 (both) | AI number | open | 1 | 1 |
 | record-half-integrity | leaf/step | 2 (both) | AI number | open | 2 | 1 |
 | recorded-point-dag-setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
-| reflection-bifurcation | leaf/step | 2 (both) | AI number | open | 0 | 3 |
+| reflection-bifurcation | leaf/step | 2 (both) | AI number | open | 0 | 2 |
 | reflection-into-diagram | leaf/task | 2 (both) | AI number, given reflection-bifurcation | open | 0 | 1 |
 | reflection-might-makes-right | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | reflective-oracles-correlated.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
 | reflective-oracles-correlated | and | 2 (both) | AI number, interval not a bound (negative evidential edge) | open | 1 | 1 |
 | refuted-self-expert-setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
-| region.hull.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| region.hull.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| region.hull | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| region.hull.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| region.patterns-complete.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| region.patterns-complete.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| region.patterns-complete | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| region.patterns-complete.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| region.patterns-nonempty-iff.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| region.patterns-nonempty-iff.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| region.patterns-nonempty-iff | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| region.patterns-nonempty-iff.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| region.patterns-sound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| region.patterns-sound.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| region.patterns-sound | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| region.patterns-sound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| region.hull.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| region.hull.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| region.hull | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| region.hull.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| region.patterns-complete.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| region.patterns-complete.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| region.patterns-complete | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| region.patterns-complete.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| region.patterns-nonempty-iff.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| region.patterns-nonempty-iff.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| region.patterns-nonempty-iff | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| region.patterns-nonempty-iff.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| region.patterns-sound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| region.patterns-sound.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| region.patterns-sound | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| region.patterns-sound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | register-collapse-claims-public | leaf/task | 2 (both) | AI number, given faf-pin-bump-and-public-port | open | 0 | 1 |
 | registry-policy-for-ported-results | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | regularity-is-h3 | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
@@ -7602,7 +6453,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | release-provenance-split | leaf/task | 2 (both) | AI number, given defensible-ledger-ruled | open | 1 | 1 |
 | response-learning | frame | 2 (both) | owner has not confirmed (drafted from wiki/Normative-Response-Learning.md) | open | 1 | 0 (informs no goal) |
 | restricted-translation-class | leaf/question | 2 (both) | AI number, given implementation-boundaries | open | 0 | 1 |
-| retroactive-vs-prospective-judging | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
+| retroactive-vs-prospective-judging | leaf/question | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
 | ro-collapse-repair.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 0 | 1 |
 | ro-collapse-repair.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 1 |
 | ro-collapse-repair | and | 2 (both) |  | open | 0 | 1 |
@@ -7708,23 +6559,23 @@ The outside option and the undescribed failure, each a cases node over the outco
 | scoped-value-content-witness | leaf/question | 2 (both) | AI number | open | 0 | 1 |
 | secrecy-not-forbidden-by-criterion | leaf/step | 2 (both) | AI number, given secrecy-props-lean-checked, no belief | open | 1 | 1 |
 | secrecy-props-lean-checked | leaf/task | 2 (both) | AI number | open | 0 | 1 |
-| seed-theory | frame | 2 (both) | owner has not confirmed (drafted from wiki/Seed-Theory.md) | open | 1 | 0 (informs no goal) |
-| seed.eventually-const.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| seed.eventually-const.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| seed.eventually-const | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| seed.eventually-const.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| seed.forced-interval-bounds.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| seed.forced-interval-bounds.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| seed.forced-interval-bounds | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| seed.forced-interval-bounds.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| seed.forced-interval-spec.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| seed.forced-interval-spec.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| seed.forced-interval-spec | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| seed.forced-interval-spec.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| seed.independence-strict.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| seed.independence-strict.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| seed.independence-strict | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| seed.independence-strict.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| seed-theory | frame | 2 (both) | owner has not confirmed (drafted from wiki/Seed-Theory.md), spelled; nothing yet a goal (16 held) | open | 1 | 0 (informs no goal) |
+| seed.eventually-const.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| seed.eventually-const.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| seed.eventually-const | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
+| seed.eventually-const.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| seed.forced-interval-bounds.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| seed.forced-interval-bounds.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| seed.forced-interval-bounds | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
+| seed.forced-interval-bounds.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| seed.forced-interval-spec.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| seed.forced-interval-spec.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| seed.forced-interval-spec | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
+| seed.forced-interval-spec.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| seed.independence-strict.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| seed.independence-strict.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| seed.independence-strict | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
+| seed.independence-strict.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | selection-collapse--corrigibility-risk | and | 2 (both) | AI number | open | 1 | 1 |
 | selection-collapse.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 1 |
 | selection-collapse.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
@@ -7738,30 +6589,30 @@ The outside option and the undescribed failure, each a cases node over the outco
 | self-fulfilling-prophecy-as-corruption.partition | leaf/partition | 2 (both) | AI number | open | 1 | 2 |
 | self-knowledge-substitution | leaf/assumption | 2 (both) | AI number | open | 0 | 4 |
 | shadow-theorem-conjecture-f | leaf/question | 2 (both) | AI number | open | 0 | 8 |
-| shortfall.atom-generable.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| shortfall.atom-generable.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| shortfall.atom-generable | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| shortfall.atom-generable.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| shortfall.deferred-ahead.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| shortfall.deferred-ahead.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| shortfall.deferred-ahead | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| shortfall.deferred-ahead.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| shortfall.deferred-eventually-excluded.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| shortfall.deferred-eventually-excluded.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| shortfall.deferred-eventually-excluded | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| shortfall.deferred-eventually-excluded.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| shortfall.eventually-excluded.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| shortfall.eventually-excluded.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| shortfall.eventually-excluded | and | 2 (both) | hypotheses unread, superseded by shortfall.deferred-eventually-excluded | open | 1 | 1 |
-| shortfall.eventually-excluded.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| shortfall.security-generable.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| shortfall.security-generable.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| shortfall.security-generable | and | 2 (both) | hypotheses unread, superseded by shortfall.table-generable | open | 1 | 1 |
-| shortfall.security-generable.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| shortfall.table-generable.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| shortfall.table-generable.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| shortfall.table-generable | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| shortfall.table-generable.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| shortfall.atom-generable.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| shortfall.atom-generable.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| shortfall.atom-generable | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| shortfall.atom-generable.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| shortfall.deferred-ahead.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| shortfall.deferred-ahead.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| shortfall.deferred-ahead | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| shortfall.deferred-ahead.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| shortfall.deferred-eventually-excluded.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| shortfall.deferred-eventually-excluded.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| shortfall.deferred-eventually-excluded | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| shortfall.deferred-eventually-excluded.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| shortfall.eventually-excluded.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| shortfall.eventually-excluded.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| shortfall.eventually-excluded | and | 2 (both) | held by public-corrigibility-line, hypotheses unread, superseded by shortfall.deferred-eventually-excluded | open | 0 | 0 (informs no goal) |
+| shortfall.eventually-excluded.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| shortfall.security-generable.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| shortfall.security-generable.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| shortfall.security-generable | and | 2 (both) | held by public-corrigibility-line, hypotheses unread, superseded by shortfall.table-generable | open | 0 | 0 (informs no goal) |
+| shortfall.security-generable.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| shortfall.table-generable.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| shortfall.table-generable.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| shortfall.table-generable | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
+| shortfall.table-generable.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | shutdown-button-toy.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 7 |
 | shutdown-button-toy.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 7 |
 | shutdown-button-toy.improvable | or | 2 (both) | AI number, improvement claim on shutdown-button-toy (reality: trained systems corrected through data, loss and hardware) | open | 1 | 1 |
@@ -7774,42 +6625,42 @@ The outside option and the undescribed failure, each a cases node over the outco
 | shutdown-route-sequential-learned-utility | leaf/route | 2 (both) | AI number, given shutdown-button-toy@valid | open | 0 | 2 |
 | shutdown-route-training-map | leaf/route | 2 (both) | AI number, given shutdown-button-toy@valid | open | 0 | 2 |
 | sigma-algebra-morphisms-carry-concepts | leaf/question | 2 (both) | AI number, given condensation-morphisms-baseline | open | 0 | 1 |
-| simplex.rational-points-sum-to-one.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| simplex.rational-points-sum-to-one.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| simplex.rational-points-sum-to-one | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| simplex.rational-points-sum-to-one.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| simplex.rational-points-sum-to-one.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| simplex.rational-points-sum-to-one.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| simplex.rational-points-sum-to-one | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| simplex.rational-points-sum-to-one.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | simplicity-grounds-interpretation | leaf/question | 2 (both) | AI number, given wentworth-representation-theorem-transfer | open | 1 | 7 |
 | simulation-vs-implementation-record | leaf/task | 2 (both) | AI number | open | 0 | 1 |
-| sincerity.content-fact.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| sincerity.content-fact.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| sincerity.content-fact | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| sincerity.content-fact.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| sincerity.lie-tainted.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| sincerity.lie-tainted.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| sincerity.lie-tainted | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| sincerity.lie-tainted.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| sincerity.rows-keep-verdicts-counted.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| sincerity.rows-keep-verdicts-counted.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| sincerity.rows-keep-verdicts-counted | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| sincerity.rows-keep-verdicts-counted.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| sincerity.rows-keep-verdicts-tainted.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| sincerity.rows-keep-verdicts-tainted.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| sincerity.rows-keep-verdicts-tainted | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| sincerity.rows-keep-verdicts-tainted.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| sincerity.sincere-error-counts.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| sincerity.sincere-error-counts.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| sincerity.sincere-error-counts | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| sincerity.sincere-error-counts.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| sincerity.content-fact.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| sincerity.content-fact.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| sincerity.content-fact | and | 2 (both) | held by authorship-and-transparency, hypotheses unread | open | 0 | 0 (informs no goal) |
+| sincerity.content-fact.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| sincerity.lie-tainted.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| sincerity.lie-tainted.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| sincerity.lie-tainted | and | 2 (both) | held by authorship-and-transparency, hypotheses unread | open | 0 | 0 (informs no goal) |
+| sincerity.lie-tainted.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| sincerity.rows-keep-verdicts-counted.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| sincerity.rows-keep-verdicts-counted.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| sincerity.rows-keep-verdicts-counted | and | 2 (both) | held by authorship-and-transparency, hypotheses unread | open | 0 | 0 (informs no goal) |
+| sincerity.rows-keep-verdicts-counted.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| sincerity.rows-keep-verdicts-tainted.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| sincerity.rows-keep-verdicts-tainted.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| sincerity.rows-keep-verdicts-tainted | and | 2 (both) | held by authorship-and-transparency, hypotheses unread | open | 0 | 0 (informs no goal) |
+| sincerity.rows-keep-verdicts-tainted.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| sincerity.sincere-error-counts.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| sincerity.sincere-error-counts.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| sincerity.sincere-error-counts | and | 2 (both) | held by authorship-and-transparency, hypotheses unread | open | 0 | 0 (informs no goal) |
+| sincerity.sincere-error-counts.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | single-round-refinement | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | sist-single-instance-success | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
-| smoke.chain-compiles.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| smoke.chain-compiles.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| smoke.chain-compiles | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| smoke.chain-compiles.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| smoke.faf-asymp-refl.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| smoke.faf-asymp-refl.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| smoke.faf-asymp-refl | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| smoke.faf-asymp-refl.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| smoke.chain-compiles.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| smoke.chain-compiles.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| smoke.chain-compiles | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| smoke.chain-compiles.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| smoke.faf-asymp-refl.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| smoke.faf-asymp-refl.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| smoke.faf-asymp-refl | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
+| smoke.faf-asymp-refl.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | soto-flower-obstruction | leaf/step | 2 (both) | AI number | open | 1 | 1 |
 | ss-value-without-scope | leaf/question | 2 (both) | AI number, given fa-trust-half-weak-grades@valid, refinement of li-deference-collapse | open | 0 | 3 |
 | st-guides-via-analogy | leaf/step | 2 (both) | AI number, given crux-unbounded-represents-phenomena | open | 0 | 2 |
@@ -7826,22 +6677,22 @@ The outside option and the undescribed failure, each a cases node over the outco
 | stop-gradient-steering-residue | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | story-of-a-blob | leaf/question | 2 (both) | AI number | open | 1 | 1 |
 | stratified-pareto-bargaining | leaf/step | 2 (both) | AI number, given nash-bargaining-no-gains | open | 0 | 1 |
-| substitution.extensional-admits-both.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| substitution.extensional-admits-both.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| substitution.extensional-admits-both | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| substitution.extensional-admits-both.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| substitution.separation-requires-disagreement.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| substitution.separation-requires-disagreement.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| substitution.separation-requires-disagreement | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| substitution.separation-requires-disagreement.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| substitution.sim-depends-on-induced-choice.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| substitution.sim-depends-on-induced-choice.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| substitution.sim-depends-on-induced-choice | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| substitution.sim-depends-on-induced-choice.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| substitution.unpredictability-separates.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| substitution.unpredictability-separates.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| substitution.unpredictability-separates | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| substitution.unpredictability-separates.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| substitution.extensional-admits-both.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| substitution.extensional-admits-both.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| substitution.extensional-admits-both | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| substitution.extensional-admits-both.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| substitution.separation-requires-disagreement.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| substitution.separation-requires-disagreement.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| substitution.separation-requires-disagreement | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| substitution.separation-requires-disagreement.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| substitution.sim-depends-on-induced-choice.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| substitution.sim-depends-on-induced-choice.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| substitution.sim-depends-on-induced-choice | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| substitution.sim-depends-on-induced-choice.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| substitution.unpredictability-separates.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| substitution.unpredictability-separates.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| substitution.unpredictability-separates | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
+| substitution.unpredictability-separates.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | summable-implies-average-with-margin | leaf/step | 2 (both) | AI number, refinement of ladder-chain-as-written | open | 0 | 3 |
 | super-turing-guides-engineering | or | 2 (both) | AI number, interval not a bound (negative evidential edge) | open | 1 | 2 |
 | superconditioning-calibration.improvable | or | 2 (both) | AI number, improvement claim on superconditioning-calibration (reality: ontological shifts in real reasoners) | open | 1 | 1 |
@@ -7852,30 +6703,30 @@ The outside option and the undescribed failure, each a cases node over the outco
 | support-sensitive-equivalence | leaf/question | 2 (both) | AI number | open | 0 | 1 |
 | task-anger-substitute-note | leaf/task | 2 (both) | no belief | open | 0 | 1 |
 | task-anti-meme-post-draft | leaf/task | 2 (both) | AI number | open | 1 | 1 |
-| task-bridge-table | leaf/task | 2 (both) | AI number | open | 0 | 3 |
-| task-certificate-redesign | leaf/task | 2 (both) | AI number | open | 0 | 1 |
-| task-claim1-converse-witness | leaf/task | 2 (both) | AI number | open | 0 | 1 |
-| task-claim1-inhabitant | leaf/task | 2 (both) | AI number | open | 0 | 1 |
-| task-composition-finite-shadow | leaf/task | 2 (both) | AI number | open | 0 | 1 |
+| task-bridge-table | leaf/task | 2 (both) | AI number | open | 0 | 2 |
+| task-certificate-redesign | leaf/task | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
+| task-claim1-converse-witness | leaf/task | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
+| task-claim1-inhabitant | leaf/task | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
+| task-composition-finite-shadow | leaf/task | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
 | task-finite-time-statement | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | task-gated-update-truthstar | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | task-gli-hosts-informality | leaf/task | 2 (both) | AI number | open | 0 | 2 |
-| task-habermas-reading | leaf/task | 2 (both) | AI number | open | 0 | 1 |
+| task-habermas-reading | leaf/task | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
 | task-harmony-theorem | leaf/task | 2 (both) | AI number | open | 0 | 2 |
-| task-horizon-idleness-refutation | leaf/task | 2 (both) | AI number | open | 0 | 1 |
+| task-horizon-idleness-refutation | leaf/task | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
 | task-import-lw-legitimacy-posts | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | task-items-53-59 | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | task-items-61-66 | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | task-items-67-73 | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | task-legit-v2-writeup | leaf/task | 2 (both) | AI number | open | 0 | 1 |
-| task-measure-candidates-against-definition | leaf/task | 2 (both) | AI number | open | 0 | 1 |
+| task-measure-candidates-against-definition | leaf/task | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
 | task-naming-audit | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | task-port-legit-finite-probes | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | task-port-negatives-to-lean-ci | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | task-predict-o-matic-quotes | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | task-reconcile-canonical-pointer | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | task-syntactic-legitimacy-soundness | leaf/task | 2 (both) | AI number | open | 0 | 3 |
-| task-trace-nonrecoverable-li | leaf/task | 2 (both) | AI number | open | 0 | 1 |
+| task-trace-nonrecoverable-li | leaf/task | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
 | tent-oracle-exists | leaf/hypothesis | 2 (both) | AI number | open | 0 | 8 |
 | the-channel | leaf/step | 2 (both) | AI number | open | 1 | 1 |
 | the-program | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
@@ -7883,53 +6734,53 @@ The outside option and the undescribed failure, each a cases node over the outco
 | theorem-b-robust-self-trust | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | theory-dynamics-literature | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | thin-converse-open | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
-| thin-reflection-is-trivial-baseline | leaf/step | 2 (both) | AI number | open | 2 | 2 |
+| thin-reflection-is-trivial-baseline | leaf/step | 2 (both) | AI number | open | 2 | 1 |
 | thin-value-loss-bound | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
-| thin-value-of-thick | and | 2 (both) | AI number, hypotheses unread | open | 3 | 2 |
-| thin.converse-fails-on-correct.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| thin.converse-fails-on-correct.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| thin.converse-fails-on-correct | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| thin.converse-fails-on-correct.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| thin.correct-of-thick.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| thin.correct-of-thick.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| thin.correct-of-thick | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| thin.correct-of-thick.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| thin.covert-blocking-correct-iff.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| thin.covert-blocking-correct-iff.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| thin.covert-blocking-correct-iff | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| thin.covert-blocking-correct-iff.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| thin.marginal-martingale-too-weak.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| thin.marginal-martingale-too-weak.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| thin.marginal-martingale-too-weak | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| thin.marginal-martingale-too-weak.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| thin.preservation-pair.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| thin.preservation-pair.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| thin.preservation-pair | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| thin.preservation-pair.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| thin.preservation.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| thin.preservation.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| thin.preservation | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| thin.preservation.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| thin.reflection-inherited-value.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| thin.reflection-inherited-value.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| thin.reflection-inherited-value | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| thin.reflection-inherited-value.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| thin.sufficient-of-integrity-openness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| thin.sufficient-of-integrity-openness.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| thin.sufficient-of-integrity-openness | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| thin.sufficient-of-integrity-openness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| thin.value-loss-le-defects.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| thin.value-loss-le-defects.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| thin.value-loss-le-defects | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| thin.value-loss-le-defects.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| thin.value-of-correct-sufficient.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| thin.value-of-correct-sufficient.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| thin.value-of-correct-sufficient | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| thin.value-of-correct-sufficient.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| thin.value-of-thick.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 3 | 2 |
-| thin.value-of-thick.complete | leaf/completeness | 2 (both) |  | open | 3 | 2 |
+| thin-value-of-thick | and | 2 (both) | AI number, held by authorship-and-transparency, hypotheses unread | open | 2 | 1 |
+| thin.converse-fails-on-correct.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| thin.converse-fails-on-correct.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| thin.converse-fails-on-correct | and | 2 (both) | held by authorship-and-transparency, hypotheses unread | open | 0 | 0 (informs no goal) |
+| thin.converse-fails-on-correct.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| thin.correct-of-thick.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| thin.correct-of-thick.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| thin.correct-of-thick | and | 2 (both) | held by authorship-and-transparency, hypotheses unread | open | 0 | 0 (informs no goal) |
+| thin.correct-of-thick.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| thin.covert-blocking-correct-iff.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| thin.covert-blocking-correct-iff.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| thin.covert-blocking-correct-iff | and | 2 (both) | held by authorship-and-transparency, hypotheses unread | open | 0 | 0 (informs no goal) |
+| thin.covert-blocking-correct-iff.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| thin.marginal-martingale-too-weak.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| thin.marginal-martingale-too-weak.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| thin.marginal-martingale-too-weak | and | 2 (both) | held by authorship-and-transparency, hypotheses unread | open | 0 | 0 (informs no goal) |
+| thin.marginal-martingale-too-weak.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| thin.preservation-pair.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| thin.preservation-pair.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| thin.preservation-pair | and | 2 (both) | held by authorship-and-transparency, hypotheses unread | open | 0 | 0 (informs no goal) |
+| thin.preservation-pair.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| thin.preservation.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| thin.preservation.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| thin.preservation | and | 2 (both) | held by authorship-and-transparency, hypotheses unread | open | 0 | 0 (informs no goal) |
+| thin.preservation.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| thin.reflection-inherited-value.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| thin.reflection-inherited-value.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| thin.reflection-inherited-value | and | 2 (both) | held by authorship-and-transparency, hypotheses unread | open | 0 | 0 (informs no goal) |
+| thin.reflection-inherited-value.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| thin.sufficient-of-integrity-openness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| thin.sufficient-of-integrity-openness.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| thin.sufficient-of-integrity-openness | and | 2 (both) | held by authorship-and-transparency, hypotheses unread | open | 0 | 0 (informs no goal) |
+| thin.sufficient-of-integrity-openness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| thin.value-loss-le-defects.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| thin.value-loss-le-defects.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| thin.value-loss-le-defects | and | 2 (both) | held by authorship-and-transparency, hypotheses unread | open | 0 | 0 (informs no goal) |
+| thin.value-loss-le-defects.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| thin.value-of-correct-sufficient.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| thin.value-of-correct-sufficient.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| thin.value-of-correct-sufficient | and | 2 (both) | held by authorship-and-transparency, hypotheses unread | open | 0 | 0 (informs no goal) |
+| thin.value-of-correct-sufficient.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| thin.value-of-thick.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 2 | 1 |
+| thin.value-of-thick.complete | leaf/completeness | 2 (both) |  | open | 2 | 1 |
 | thin.value-of-thick | and | 2 (both) | hypotheses unread, superseded by thin-value-of-thick | open | 0 | 0 (informs no goal) |
-| thin.value-of-thick.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 3 | 2 |
+| thin.value-of-thick.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 2 | 1 |
 | third-button-obstruction | leaf/assumption | 2 (both) | AI number | open | 0 | 8 |
 | thm-power-seeking-optimal.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted, given ps-cor614-orbit-count@valid | open | 0 | 6 |
 | thm-power-seeking-optimal.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 6 |
@@ -7955,25 +6806,25 @@ The outside option and the undescribed failure, each a cases node over the outco
 | total-trust-is-updateful | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | tower-death-page | leaf/task | 2 (both) | AI number, given timely-pointwise-tower-refuted-in-setting@valid | open | 1 | 1 |
 | tower-setting-prompt-ledger | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
-| trace-finite-report-layer | leaf/assumption | 2 (both) | AI number | open | 1 | 1 |
-| trace-nonrecoverability-li | leaf/question | 2 (both) | AI number, given task-trace-nonrecoverable-li | open | 1 | 1 |
-| trace-nonrecoverability.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 3 |
-| trace-nonrecoverability.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 3 |
-| trace-nonrecoverability | and | 2 (both) | AI number | open | 1 | 3 |
-| trace-nonrecoverability.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 3 |
+| trace-finite-report-layer | leaf/assumption | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
+| trace-nonrecoverability-li | leaf/question | 2 (both) | AI number, given task-trace-nonrecoverable-li, held by legitimacy | open | 0 | 0 (informs no goal) |
+| trace-nonrecoverability.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 0 | 2 |
+| trace-nonrecoverability.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 2 |
+| trace-nonrecoverability | and | 2 (both) | AI number, held by legitimacy | open | 0 | 2 |
+| trace-nonrecoverability.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 2 |
 | traderization-arc | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | traderized-finite-date-conformance | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | training-map-model | leaf/question | 2 (both) | AI number | open | 0 | 2 |
 | trajectory-layer-bridge | leaf/task | 2 (both) | AI number | open | 0 | 2 |
 | trajectory-not-limit | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
-| transparent.blind-payload.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| transparent.blind-payload.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| transparent.blind-payload | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| transparent.blind-payload.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| transparent.posterior-weight-eq.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| transparent.posterior-weight-eq.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| transparent.posterior-weight-eq | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| transparent.posterior-weight-eq.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| transparent.blind-payload.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| transparent.blind-payload.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| transparent.blind-payload | and | 2 (both) | held by authorship-and-transparency, hypotheses unread | open | 0 | 0 (informs no goal) |
+| transparent.blind-payload.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| transparent.posterior-weight-eq.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| transparent.posterior-weight-eq.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| transparent.posterior-weight-eq | and | 2 (both) | held by authorship-and-transparency, hypotheses unread | open | 0 | 0 (informs no goal) |
+| transparent.posterior-weight-eq.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | trembling-hand-calibration-grounded | leaf/step | 2 (both) | AI number, given ideal-object-set-of-limits | open | 0 | 8 |
 | troll-bridge-modal-classified.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 1 |
 | troll-bridge-modal-classified.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
@@ -8097,11 +6948,11 @@ The outside option and the undescribed failure, each a cases node over the outco
 | updateless-engineering-value-exists | leaf/assumption | 2 (both) | AI number | open | 1 | 1 |
 | updateless-engineering-value | cases | 2 (both) | AI number, given updateless-engineering-value-exists, no belief, under attack | open | 1 | 1 |
 | updateless-engineering-value.partition | leaf/partition | 2 (both) | AI number | open | 1 | 1 |
-| updateless-p2-cellwise-p3.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 1 |
-| updateless-p2-cellwise-p3.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
-| updateless-p2-cellwise-p3 | and | 2 (both) | AI number | open | 1 | 1 |
-| updateless-p2-cellwise-p3.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 1 |
-| updateless-p2-cellwise-p3.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
+| updateless-p2-cellwise-p3.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 0 | 0 (informs no goal) |
+| updateless-p2-cellwise-p3.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
+| updateless-p2-cellwise-p3 | and | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
+| updateless-p2-cellwise-p3.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 0 (informs no goal) |
+| updateless-p2-cellwise-p3.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
 | updateless-recovery-domain | leaf/question | 2 (both) | AI number | open | 0 | 6 |
 | v2-amendment-ledgers-ruled | leaf/task | 2 (both) | AI number | open | 0 | 8 |
 | value-change-base-layer | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
@@ -8135,12 +6986,12 @@ The outside option and the undescribed failure, each a cases node over the outco
 | vingean-tiling-content | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | vingean-uncertainty-is-computational | leaf/assumption | 2 (both) | AI number, attribution unvetted, given vingean-canonical-page | open | 1 | 1 |
 | vingean-voi-finite-lemma | leaf/question | 2 (both) | AI number, given info-voi-latents-untouched-targets | open | 0 | 5 |
-| void-branch-deterrence-floor--corrigibility-risk | and | 2 (both) | AI number | open | 1 | 7 |
-| void-branch-deterrence-floor.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 7 |
-| void-branch-deterrence-floor.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 7 |
+| void-branch-deterrence-floor--corrigibility-risk | and | 2 (both) | AI number | open | 1 | 6 |
+| void-branch-deterrence-floor.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 6 |
+| void-branch-deterrence-floor.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 6 |
 | void-branch-deterrence-floor | leaf/step | 2 (both) | AI number, superseded by void-branch-deterrence-floor--corrigibility-risk | open | 0 | 0 (informs no goal) |
-| void-branch-deterrence-floor.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 7 |
-| void-branch-deterrence-floor.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 7 |
+| void-branch-deterrence-floor.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 6 |
+| void-branch-deterrence-floor.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 6 |
 | want-address-anti-naturality | leaf/want | 2 (both) | given anti-naturality-arguments-as-stated, given: conditionals not judged, interval not a bound (negative evidential edge), no belief, owner has not confirmed | open | 1 | 1 |
 | want-basin-of-attraction-formalized | leaf/want | 2 (both) | given basin-formal-object@valid, given: conditionals not judged, no belief, owner has not confirmed | open | 1 | 1 |
 | want-corrigibility-theorems-via-legitimacy | leaf/want | 2 (both) | given corrigibility-faithful-plus-legit-on-self, given: conditionals not judged, no belief, owner has not confirmed | open | 1 | 1 |
@@ -8154,26 +7005,26 @@ The outside option and the undescribed failure, each a cases node over the outco
 | want-sigma-algebra-changes | leaf/want | 2 (both) | given vc-route-outside-support, given: conditionals not judged, no belief, owner has not confirmed | open | 1 | 1 |
 | want-truth-through-literature-dialogue | leaf/want | 2 (both) | given anti-naturality-walk, given: conditionals not judged, no belief, owner has not confirmed | open | 1 | 1 |
 | want-uea-review | leaf/want | 2 (both) | given uea-review-writeup, given: conditionals not judged, no belief, owner has not confirmed | open | 1 | 1 |
-| warrant.admissible-not-supported.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| warrant.admissible-not-supported.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| warrant.admissible-not-supported | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| warrant.admissible-not-supported.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| warrant.licence-chain.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| warrant.licence-chain.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| warrant.licence-chain | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| warrant.licence-chain.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| warrant.selection-not-transparent.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| warrant.selection-not-transparent.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| warrant.selection-not-transparent | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| warrant.selection-not-transparent.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| warrant.supported-admissible.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| warrant.supported-admissible.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| warrant.supported-admissible | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| warrant.supported-admissible.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
-| warrant.supported-not-licensed.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 1 |
-| warrant.supported-not-licensed.complete | leaf/completeness | 2 (both) |  | open | 1 | 1 |
-| warrant.supported-not-licensed | and | 2 (both) | hypotheses unread | open | 1 | 1 |
-| warrant.supported-not-licensed.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 1 | 1 |
+| warrant.admissible-not-supported.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| warrant.admissible-not-supported.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| warrant.admissible-not-supported | and | 2 (both) | held by normative-inductor, hypotheses unread | open | 0 | 0 (informs no goal) |
+| warrant.admissible-not-supported.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| warrant.licence-chain.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| warrant.licence-chain.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| warrant.licence-chain | and | 2 (both) | held by normative-inductor, hypotheses unread | open | 0 | 0 (informs no goal) |
+| warrant.licence-chain.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| warrant.selection-not-transparent.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| warrant.selection-not-transparent.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| warrant.selection-not-transparent | and | 2 (both) | held by normative-inductor, hypotheses unread | open | 0 | 0 (informs no goal) |
+| warrant.selection-not-transparent.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| warrant.supported-admissible.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| warrant.supported-admissible.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| warrant.supported-admissible | and | 2 (both) | held by normative-inductor, hypotheses unread | open | 0 | 0 (informs no goal) |
+| warrant.supported-admissible.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| warrant.supported-not-licensed.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| warrant.supported-not-licensed.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| warrant.supported-not-licensed | and | 2 (both) | held by normative-inductor, hypotheses unread | open | 0 | 0 (informs no goal) |
+| warrant.supported-not-licensed.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | weatherson-infinite-frames-formalized | leaf/step | 2 (both) | AI number | open | 1 | 1 |
 | wentworth-constant-located | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | wentworth-representation-theorem-transfer | leaf/task | 2 (both) | AI number | open | 0 | 7 |
@@ -8182,10 +7033,10 @@ The outside option and the undescribed failure, each a cases node over the outco
 | wiki-corpus-maintenance.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
 | wiki-corpus-maintenance | and | 2 (both) | AI number | open | 1 | 1 |
 | wirehead-decline-toy | leaf/step | 2 (both) | AI number | open | 1 | 1 |
-| wirehead-iff-finite.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 2 |
-| wirehead-iff-finite.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 2 |
-| wirehead-iff-finite | and | 2 (both) | AI number | open | 1 | 2 |
-| wirehead-iff-finite.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 2 |
-| wirehead-iff-finite.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 2 |
+| wirehead-iff-finite.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 0 | 1 |
+| wirehead-iff-finite.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 1 |
+| wirehead-iff-finite | and | 2 (both) | AI number, held by legitimacy | open | 0 | 1 |
+| wirehead-iff-finite.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 1 |
+| wirehead-iff-finite.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 1 |
 | worlds-and-points-companion | leaf/question | 2 (both) | AI number | open | 0 | 8 |
-<!-- generated_hash: 7203e57fd63e113c225ef329 -->
+<!-- generated_hash: f17eecc04b869008e34b433c -->

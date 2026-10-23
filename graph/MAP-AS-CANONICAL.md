@@ -28,7 +28,7 @@ content is not bent to fit.
 | surface | holds | becomes |
 |---|---|---|
 | `graph/frame.yaml` | the top question, its owner, classes, valuations, four roots | unchanged in question and classes; `owner` may be a list; gains `narrative: wiki/Home.md`; the plan root `trust-modelling` is widened into `the-program` |
-| `graph/nodes/<id>.md` | one node per claim, frame, table, leaf | unchanged in kind; frames gain `narrative` and may have several owners; a node may be a root of several frames (shared roots) |
+| `graph/nodes/<id>.md` | one node per claim, frame, table, leaf | unchanged in kind; frames gain `narrative` and may have several owners; a node may be a root of several frames (shared roots); since the second follow-up of 2026-10-23 (ruling G2) a frame may `hold` nodes it is about without making them goals |
 | `graph/events/<handle>.jsonl` | one ledger per contributor | the only human ledger is renamed from `maintainer` to `anson` (ids `anson-001`, `-002`); a second human handle `@abram` is mapped and has no ledger until it writes an event |
 | `graph/policy.yaml` | parameters, handles, registries | `maintainer` is a list of human handles; `handles` maps `@anson` and `@abram` |
 | `projects/*/CLAIMS.md` (two registries, 178 entries) | registered claims with a statement of record | each entry has exactly one formal result in the map: an `and` whose id is the registry id, of a `record` leaf (statement of record = the declaration), one hypothesis leaf per hypothesis read from the Lean signature, one `bridge` with `attribution`, one completeness leaf; the registry stays the statement of record and the map cites it |
@@ -128,7 +128,7 @@ response round, not the passage of time.
 graph/index.json (schema in §6.1) is the contract. Page kinds, keyed by id:
 
 - **frame** (`the-program`, each line, each programme): question, owners,
-  narrative, roots with roles, the frame chain above it.
+  narrative, roots with roles, the nodes it holds, the frame chain above it.
 - **formal result** (the registry id): the `and`, its record (declaration,
   registry class and status read from the registry), its hypotheses with their
   `discharge`, its bridge with `attribution`, the decisions touching it, the
@@ -160,12 +160,12 @@ branch.
 
 ```
 {
-  "schema": "graph-index/2",
+  "schema": "graph-index/3",
   "generated": "<ISO date>",
   "generated_hash": "<sha over the rest>",
   "frame": {"question", "owners": [handles], "narrative", "classes": [ids],
             "valuations": [ids], "outside_option", "undescribed_failure",
-            "roots": [{"id", "role"}]},
+            "roots": [{"id", "role"}], "holds": [ids]},
   "handles": {"@h": {"kind": "human" | "ai", "github" | "model"}},
   "nodes": {"<id>": {
       "kind", "leaf_kind", "author", "size", "version",
@@ -173,8 +173,8 @@ branch.
       "children": [ids], "rows": [{"picture", "class", "given", "residual"}],
       "given", "work": [{"kind", "ref"}],
       "fields": {every other frontmatter key as written},
-      "frame": {"question", "owners", "roots": [{"id", "role"}]}   // frames only
-      "in_frames": [frame ids the node is a root of],
+      "frame": {"question", "owners", "roots": [{"id", "role"}], "holds": [ids]}   // frames only
+      "in_frames": [{"frame", "role", "membership": "root" | "holds"}],          // schema 3: held nodes have no role
       "hypotheses": [ids] | "unread", "registry_id"                // record leaves only (schema 2)
       "formal_result": {"record", "hypotheses": [ids] | "unread",  // an and with a record child (schema 2)
                         "registry_id", "answers": [item numbers]}
@@ -200,6 +200,12 @@ hypotheses, the registry id and the items it answers; `items` as records with
 `answered_by`; and `claims`, which resolves a registry id to its node whatever
 the node's id is (a result merged under the claim it establishes keeps its
 registry id here).
+
+Schema 3 (the second follow-up of 2026-10-23, ruling G2) adds what a frame
+holds: `holds` on the top frame and on every frame record, and `in_frames`
+entries that carry `membership` (`root` with the role, or `holds` with no
+role), so a site lists a programme's registered results and work orders
+under it without reading them as its goals.
 
 ## 7. Choices beyond the rulings, and the reserved list
 
@@ -232,6 +238,9 @@ Each **agent-decided** choice is reversible; the rejected alternative is named.
   identified*. *Rejected:* conjunct attachment, which the protocol forbids for
   tasks, and placement by section heading, which puts seed items under the
   deference line because the file's late sections do not follow projects.
+  *Dissolved* by ruling G2 of the second follow-up (2026-10-23): each
+  docket's items are held by the frame it hung under (`holds`) and the
+  docket files are deleted.
 - **Decision anchors** are `<date>--<slug>` for settled entries and
   `open--<slug>` for queued ones, the slug the first six content words of the
   title, written as an HTML comment (`<!-- decision: <anchor>; touches:
