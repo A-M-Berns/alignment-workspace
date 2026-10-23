@@ -177,9 +177,9 @@ branch.
       "in_frames": [{"frame", "role", "membership": "root" | "holds"}],          // schema 3: held nodes have no role
       "hypotheses": [ids] | "unread", "registry_id"                // record leaves only (schema 2)
       "formal_result": {"record", "hypotheses": [ids] | "unread",  // an and with a record child (schema 2)
-                        "registry_id", "answers": [item numbers]}
+                        "registry_id", "bears_on": [item numbers]}      // schema 3: bears_on (was answers)
   }},
-  "items": {"<item>": {"node": "<node id>", "answered_by": [formal-result node ids]}},   // schema 2
+  "items": {"<item>": {"node": "<node id>", "bearing": [formal-result node ids]}},   // schema 3: bearing (was answered_by)
   "claims": {"<registry id>": "<node id of its formal result>"},                          // schema 2
   "decisions": [{"anchor", "date", "title", "status", "touches": [{"kind", "ref"}],
                  "pointed_by": [node ids]}],
@@ -205,7 +205,10 @@ Schema 3 (the second follow-up of 2026-10-23, ruling G2) adds what a frame
 holds: `holds` on the top frame and on every frame record, and `in_frames`
 entries that carry `membership` (`root` with the role, or `holds` with no
 role), so a site lists a programme's registered results and work orders
-under it without reading them as its goals.
+under it without reading them as its goals. Ruling G3 (the same follow-up)
+renames `items[].answered_by` to `bearing` and `formal_result.answers` to
+`bears_on`: a registered result bears on an item and closes nothing; an item's
+`item_status` is the maintainer's word in the item node, which no result moves.
 
 ## 7. Choices beyond the rulings, and the reserved list
 

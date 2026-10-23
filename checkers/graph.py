@@ -4686,8 +4686,9 @@ def structure_index(t, today):
         for x in ids:
             in_frames[x].append({"frame": f or "top", "role": None, "membership": "holds"})
     # formal results (ruling F2, 2026-10-23): the record child, its hypotheses (a list or "unread"), the registry id the record
-    # carries, and the items the result answers through its priorities pointers; `claims` maps a registry id to its node
-    formal, answered_by, claims = {}, defaultdict(list), {}
+    # carries, and the items the result bears on through its priorities pointers (ruling G3: bearing, not answering; an item's
+    # status is a maintainer's word); `claims` maps a registry id to its node
+    formal, bearing, claims = {}, defaultdict(list), {}
     for x, n in sorted(t.nodes.items()):
         recs = [c for c in n["children"] if t.nodes.get(c, {}).get("leaf_kind") == "record"]
         if n.get("kind") == "and" and recs:
@@ -4695,11 +4696,11 @@ def structure_index(t, today):
             answers = sorted({str(w.get("ref")) for w in n.get("work") or [] if w.get("kind") == "priorities"}, key=lambda s: (len(s), s))
             rid = rec.get("registry_id") or (x if t.registry and x in t.registry else None)
             formal[x] = {"record": recs[0], "hypotheses": rec.get("hypotheses") if rec.get("hypotheses") is not None else [],
-                         "registry_id": rid, "answers": answers}
+                         "registry_id": rid, "bears_on": answers}
             if n.get("superseded_by"):
-                continue            # a deprecated alias (a result merged under its claim, F5): it answers nothing twice and resolves no id
+                continue            # a deprecated alias (a result merged under its claim, F5): it bears on nothing twice and resolves no id
             for a in answers:
-                answered_by[a].append(x)
+                bearing[a].append(x)
             if rid:
                 claims.setdefault(rid, x)
     for x, n in sorted(t.nodes.items()):
@@ -4743,7 +4744,7 @@ def structure_index(t, today):
             "handles": {h: {k: v for k, v in (spec or {}).items()} for h, spec in handles.items()},
             "maintainers": maintainers(t),
             "nodes": nodes,
-            "items": {str(n["item"]): {"node": x, "answered_by": sorted(answered_by.get(str(n["item"]), []))}
+            "items": {str(n["item"]): {"node": x, "bearing": sorted(bearing.get(str(n["item"]), []))}
                       for x, n in sorted(t.nodes.items()) if "item" in n},
             "claims": claims,
             "decisions": [{"anchor": a, "date": d["date"], "title": d["title"], "status": d["status"], "touches": d["touches"],

@@ -13,7 +13,7 @@ transcribed), `difficulty` (the bold bracket of the heading, absent on an ingenu
 `workspace-priority` marker's values), and a `## Item` section with the entry's body verbatim. The render is:
 the preamble; for each section, its heading, its intro and its items in `maintainer_order`, each as the heading
 line rebuilt from the fields, the marker line rebuilt from the fields, one line naming the formal results that answer the
-item (ruling F2, 2026-10-23: every formal result built from a registry entry points at the item its `answers_item` names,
+item (ruling F2, 2026-10-23: every formal result built from a registry entry points at the item its `answers_item` names; ruling G3 the same day: the line says *bearing on*, since a result closes no item,
 and the render inverts the pointer; absent when nothing answers the item), a blank line, and the body.
 
 This module reads node files with the checker's own parser and validates only what the render needs: every item
@@ -62,8 +62,9 @@ def item_nodes(root: pathlib.Path) -> list[dict]:
 
 
 def answers(root: pathlib.Path) -> dict[str, list[str]]:
-    """{item: [formal results answering it]}: every `and` with a record child and a `priorities` pointer (ruling F2). A result
-    whose record carries a registry id other than the node's id prints both, `node (registry id)`."""
+    """{item: [formal results bearing on it]}: every `and` with a record child and a `priorities` pointer (ruling F2). A result
+    whose record carries a registry id other than the node's id prints both, `node (registry id)`. A result bears on an item
+    and closes nothing: `item_status` is a maintainer's word (ruling G3, 2026-10-23)."""
     nodes = {}
     for p in sorted((root / "graph" / "nodes").glob("*.md")):
         nodes[p.stem] = g.parse_node_text(p.read_text(), str(p.relative_to(root)))
@@ -83,7 +84,7 @@ def answers(root: pathlib.Path) -> dict[str, list[str]]:
 
 
 def answers_line(ids: list[str]) -> str:
-    return "*Registered answers in the map:* " + ", ".join(ids) + "."
+    return "*Registered results bearing on this item:* " + ", ".join(ids) + "."
 
 
 def sections(root: pathlib.Path) -> tuple[str, list[tuple[str, str]]]:

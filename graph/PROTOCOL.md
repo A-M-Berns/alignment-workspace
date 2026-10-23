@@ -364,7 +364,11 @@ word is refused. A record built from a registry entry carries `registry_id`
 (the entry's id, which the index resolves to the node whatever the node's id)
 and its `and` carries a `priorities` pointer to the item the entry's
 `answers_item` names (ruling F2): the registry join is an edge, and the index
-inverts it (`items[].answered_by`, `formal_result.answers`). **Default**,
+inverts it (`items[].bearing`, `formal_result.bears_on`). A registered result
+*bears on* an item and closes nothing: an item's `item_status` is unchanged by
+any registered result, and closing is a maintainer's act with a statement of
+record (ruling G3, 2026-10-23); the render of `PRIORITIES.md` prints
+*Registered results bearing on this item* under the heading. **Default**,
 following the repository's standard that a theorem ships as its statement,
 its proof, its registry line and its bridge.
 

@@ -1384,7 +1384,7 @@ class Validity(Base):
         idx = json.loads((self.root / "graph" / "index.json").read_text())
         self.assertEqual(idx["schema"], "graph-index/3")
         self.assertEqual(idx["nodes"]["res.record"]["hypotheses"], "unread")
-        self.assertEqual(idx["nodes"]["res"]["formal_result"], {"record": "res.record", "hypotheses": "unread", "registry_id": "toy.result", "answers": []})
+        self.assertEqual(idx["nodes"]["res"]["formal_result"], {"record": "res.record", "hypotheses": "unread", "registry_id": "toy.result", "bears_on": []})
         self.assertEqual(idx["claims"], {"toy.result": "res"})
         self.assertIn("hypotheses unread", (self.root / "graph" / "view.md").read_text())
         self.edit("graph/nodes/res.record.md", "hypotheses: unread", "hypotheses: [res.bridge, unread]")
@@ -2854,22 +2854,25 @@ class Fixtures(unittest.TestCase):
         for n in g.GENERATED:
             self.assertEqual((self.root / "graph" / n).read_text(), snap[n], n)
 
-    def test_index_schema_two_on_the_fixture(self):
+    def test_index_schema_three_on_the_fixture(self):
         """ruling F2 (2026-10-23): the index inverts the registry join; every registry-built result points at its item, and
-        every record the round filed from a signature says its hypotheses are unread (ruling F1)."""
+        every record the round filed from a signature says its hypotheses are unread (ruling F1); ruling G3 (the second
+        follow-up): a result bears on an item (`items[].bearing`, `formal_result.bears_on`) and closes nothing."""
         idx = json.loads((self.root / "graph" / "index.json").read_text())
         self.assertEqual(idx["schema"], "graph-index/3")
         formal = {x: N["formal_result"] for x, N in idx["nodes"].items() if "formal_result" in N}
         self.assertGreater(len(formal), 200)
         for item, rec in idx["items"].items():
-            self.assertEqual(set(rec), {"node", "answered_by"})
-            for r in rec["answered_by"]:
-                self.assertIn(item, formal[r]["answers"])
+            self.assertEqual(set(rec), {"node", "bearing"})
+            for r in rec["bearing"]:
+                self.assertIn(item, formal[r]["bears_on"])
+            # bearing changes no status: the item node's item_status is the file's word, whatever bears on it
+            self.assertIn(idx["nodes"][rec["node"]]["fields"].get("item_status"), ("open", "closed"))
         for x, F in formal.items():
             if idx["nodes"][x]["fields"].get("superseded_by"):
-                continue                                                # a deprecated alias (F5) answers nothing twice
-            for a in F["answers"]:
-                self.assertIn(x, idx["items"][a]["answered_by"])
+                continue                                                # a deprecated alias (F5) bears on nothing twice
+            for a in F["bears_on"]:
+                self.assertIn(x, idx["items"][a]["bearing"])
             if F["registry_id"]:
                 self.assertEqual(idx["claims"][F["registry_id"]], x)
         unread = [x for x, F in formal.items() if F["hypotheses"] == "unread"]
@@ -2878,7 +2881,8 @@ class Fixtures(unittest.TestCase):
         self.assertIn("hypotheses unread", self.D["nodes"][unread[0]]["flags"])
         # the render shows the registered answers beside the item (one line under the heading)
         text = (self.root / "PRIORITIES.md").read_text()
-        self.assertIn("*Registered answers in the map:* ", text)
+        self.assertIn("*Registered results bearing on this item:* ", text)
+        self.assertNotIn("Registered answers", text)
         # ruling F4: the two pre-existing frames are retired aliases, their roots moved; ruling F5: a merged claim resolves its registry id
         self.assertNotIn("normativity-line", idx["nodes"]["normativity"]["children"])
         self.assertEqual(idx["nodes"]["normativity-line"]["fields"].get("superseded_by"), "normativity")
