@@ -790,6 +790,13 @@ non-maintainer, and no single class says that. The fields are defined once, in
   - `pin-bump-publish`, which force-pushes a verified pin bump to the branch
     `bot/pin-bump` and opens or updates the issue reporting it. It never opens a
     pull request and never touches `main`; the maintainer opens the pull request.
+  <!-- write-scope: job=site-deploy; workflow=.github/workflows/site.yml -->
+  - `site-deploy`, which deploys the site built at read scope by `site-build`
+    (`python3 site/build.py`, a render of the map and the repository) to GitHub
+    Pages on push to `main`, through the Pages deployment action with the run
+    token (`pages: write`, `id-token: write`; ruling S3, 2026-10-24). Nothing
+    adjudicates on the deployed site; the ci workflow keeps every build as an
+    artifact, which is a pull request's preview.
   <!-- write-scope: job=derived-publish; workflow=.github/workflows/derived.yml -->
   - `derived-publish`, which force-pushes the argument map's two uncommitted
     generated files (graph/derived.json and graph/index.json, written at read
@@ -1072,3 +1079,23 @@ question, the dialogue above, the placement of a quoted want, the
 attachment of a task as route or evidence, and the no-real-names rule are
 **not gated**, and private citations only warn; they are review matters and
 grounds for rejection on their own.
+
+## The site under `site/`
+
+`site/` holds a generator, standard library only like the checkers, that renders the map
+and the repository as a static site: `python3 site/build.py` reads graph/index.json
+(running the plain checker first when the file is absent), graph/derived.json for the one
+page about the ranking, `state/*.json`, the claims registries, the anchors of
+`DECISIONS.md`, the wiki source, `graph/policy.yaml` and the human ledgers, and writes
+`_site/` (gitignored). The site is a render and never a second source: nothing on it is
+typed by hand except `site/lede.md`, the front page's one paragraph, and the walks under
+`site/walks/`, and both are binding-checked against the state at every build. Every node,
+item, decision anchor, round, registry id, wiki page and handle has exactly one path,
+derived from its id (`site/README.md` is the contract); a build fails on a reference that
+does not resolve, two ids that map to one path, a walk step naming no node, or a binding
+that disagrees with the state, and `tests/site_build.py` runs that build as a gate under
+`tests/run.py`. The site shows structure and human events; an AI-drafted node (an AI
+author and no human event) renders in a lighter register with the label *drafted*, and the
+ranking's numbers appear only on `/ranking/` and in a collapsed section of a node page.
+Build it locally with `python3 -m checkers.graph --root .` then `python3 site/build.py`,
+and serve `_site/` with any static server (rulings S2–S4, 2026-10-24).

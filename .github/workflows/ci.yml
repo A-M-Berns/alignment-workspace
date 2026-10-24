@@ -102,6 +102,16 @@ jobs:
             graph/derived.json
             graph/index.json
           if-no-files-found: error
+      # The site is a render of the map and the repository (ruling S2, 2026-10-24): built
+      # here on every push and pull request at read scope and kept as an artifact, the
+      # preview of a pull request's build; the `site` workflow deploys main's to Pages.
+      - name: Build the site and keep it
+        run: python3 site/build.py --out _site
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: _site
+          if-no-files-found: error
 
   lean:
     name: lean — build, sorry-free, axiom audit

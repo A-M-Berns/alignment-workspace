@@ -43,6 +43,13 @@ content is not bent to fit.
 | graph/index.json | — | **new, generated**: the structure-only emission the checker writes on the plain run (§6); not committed since the follow-up of 2026-10-23 (ruling F3), published to the branch `derived` |
 | `graph/SURVEY.md`, this document | — | new hand-written documents under `graph/` |
 
+The worked example of how a registered result is connected to the informal claim it
+establishes, by reading (the claim as the `and` of its formal results and its own
+completeness leaf; hypotheses filed as leaves with their discharge tags; the bridge
+rewritten to name the gap; the improvement claim's routes as what remains) is
+`projects/enabling/rounds/2026-10-24-site-vertical-slice/CONNECTIONS.md`, five connections
+including the multi-record one.
+
 What stays hand-written and specification layer: `AGENTS.md`, `CONTRIBUTING.md`,
 `README.md`, `RESEARCH_STATE.md`, `PROVENANCE.md`, `DECISIONS.md`, the registries,
 the wiki, `graph/PROTOCOL.md`, `graph/README.md`, `graph/frame.yaml`,
@@ -141,28 +148,44 @@ response round, not the passage of time.
 
 ## 6. What the website renders from the index
 
-graph/index.json (schema in §6.1) is the contract. Page kinds, keyed by id:
+graph/index.json (schema in §6.1) is the contract, and since the site-vertical-slice round
+(2026-10-24; rulings S2–S4) the site exists: `site/build.py`, standard library only, reads
+the index, `graph/derived.json` for the ranking page alone, the state files, the
+registries, the decision anchors, the wiki source, the policy and the human ledgers, and
+writes `_site/`. One id, one URL: `/n/<node id>/`, `/items/<n>/`, `/decisions/<anchor>/`,
+`/rounds/<round id>/`, `/claims/<registry id>/` (a redirect to the node the record belongs
+to), `/wiki/<Page>/`, `/by/<handle>/`, `/walks/<slug>/`; two ids that map to one path fail
+the build, as does any reference that does not resolve (`site/README.md`). Pages, as built:
 
-- **frame** (`the-program`, each line, each programme): question, owners,
-  narrative, roots with roles, the nodes it holds, the frame chain above it.
-- **formal result** (the registry id): the `and`, its record (declaration,
-  registry class and status read from the registry), its hypotheses with their
-  `discharge`, its bridge with `attribution`, the decisions touching it, the
-  round that produced it.
-- **item** (`item-<n>`): the fields, the body, the goal it hangs under, the
-  decisions and rounds pointing at it.
-- **decision** (the anchor): date, title, status (settled or open), the nodes
-  that point at it.
-- **round** (the round id): its path, the nodes that point at it.
-- **narrative** (the wiki page): the frames and nodes it narrates.
+- **front page**: the top frame's question; `the-program` and its seven lines as cards
+  (question, owners with their GitHub accounts, the narrative's first paragraph, counts of
+  roots, held results, held items and open items); the lede from `site/lede.md`; the walks;
+  the feed's head.
+- **frame** (`/n/<frame>/`): question, owners, the narrative rendered, roots by role, what it
+  holds by kind (formal results, items, other), sub-frames, the path up to the top frame,
+  *no goal yet* where `roots` is empty.
+- **node** (`/n/<id>/`): Statement, Source, Notes, kind, author and the human events on it,
+  edges above and below (part, given, root-of, held-by), work pointers resolved, the frames
+  it is in; for a formal result the **bridge card**: the informal claim it is a conjunct of,
+  the declaration with its Lean file at the commit, the bridge's Statement and attribution,
+  the hypotheses with their tags or *unread*, the registry class and review status, and the
+  improvement claim's routes as *what remains*; a collapsed *ranking* section.
+- **item**, **decision**, **round**, **wiki** (references resolved to links carrying the
+  target's live class or status; the page's and its sources' last-changed dates), **handle**
+  (frames owned, wants with their priority state, events), the **feed**, the **theorem
+  spine** (connected formal results by the part edges between their claims, class-coloured;
+  held-only results listed as unconnected), the **ranking** page (the content of
+  `graph/tasks.md` with the digest, labelled as the lens it is), and **search** (a
+  client-side index over ids, Statements, titles and registry short names).
+- **walks** (`/walks/<slug>/`): hand-written documents whose every step names a node the
+  build resolves, rendered with the live node beside the prose and marked as the round's
+  draft.
 
-Three views: the frame tree (the goal hierarchy from the top frame down to the
-task leaves), the support of one node (its `children`, `given` parents, rows and
-the nodes that read it), and the feed of changes (the human events in every
-ledger, by date, with the nodes they target). The rule for every page: an
-AI-drafted structure (author an AI handle, no human event on it) renders
-visibly lighter than anything a human event has touched; the index carries the
-author handle and the human events, which is enough to decide it.
+The rule for every page holds as built: an AI-drafted node (an AI author, no human event on
+it) renders in a lighter register with the label *drafted*, and the ranking's numbers appear
+nowhere but the ranking page and the collapsed section. Not yet built: the intake verbs
+(filing a want, a challenge or an attribution from the page), the chatbot, and pages for the
+held results beyond what the bridge card shows them as.
 
 ### 6.1 Schema of graph/index.json
 
