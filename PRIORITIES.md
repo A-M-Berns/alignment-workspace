@@ -3931,6 +3931,24 @@ relating `authorized` to the account, or a stated reason none should exist.
 `OpenIntegrityEvolution.ObligationState`; `wiki/Legitimacy.md`.
 *Consumed by:* the legitimacy ↔ warrant handoff; item 115.
 
+### 131. The ask-list deviation as a dimension of the counted trace — **[entry]**
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The thin-legitimacy round left the ask-list deviation as a self-checkable clause beside the landed
+ones (`EffectiveAuthority.asksDeviate`): asking off the declared protocol, by volume or by order
+chosen for the wanted answer, is a deviation the agent can check on itself, but the record's
+`Counted` does not read it. The round's report names the fix as a mechanical extension it did not
+make: wire the ask list in as a dimension of the trace, as `Consult2` wired the raise dimension, so
+that the off-protocol rows are tainted by the record and counted below `D − ϖ`.
+
+*Deliverable shape:* `lean-proved`: the consultation model extended by the ask-list dimension, with
+the landed rows re-decided and the off-protocol rows tainted by the record itself.
+*Acceptance check:* Lean green; `volume_by_want_deviates` and `order_by_want_deviates` recovered as
+taints of `Counted` on the extended model.
+*Context:* `projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md`,
+Part C; `lean/Workspace/Deference/Contrib/EffectiveAuthority.lean`; the claim
+`effective-authority-layer` of the map.
+
 ## Workspace friction
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a
 round that hits friction with the workspace itself to file it here rather than

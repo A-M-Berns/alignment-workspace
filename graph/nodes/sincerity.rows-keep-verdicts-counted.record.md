@@ -3,7 +3,7 @@ id: sincerity.rows-keep-verdicts-counted.record
 kind: leaf
 leaf_kind: record
 statement_of_record: Workspace.Deference.Contrib.Sincerity.Rows.keep_counted
-hypotheses: unread
+hypotheses: [sincerity.rows-keep-verdicts-counted.h-fixture]
 size: S
 size_reason: "one declaration against the registry"
 version: 1
@@ -28,3 +28,5 @@ The signature of `Workspace.Deference.Contrib.Sincerity.Rows.keep_counted` (theo
         CountedS (lift Rows.row17) state₀ (stAdmit false) ∧
         CountedS (lift Rows.row18) state₀ (stAdmit true) ∧
         CountedS (lift Rows.row20) state₀ (stAdmit false)
+## Notes
+Filed by the map-as-canonical round from the registry entry and the declaration's signature; its hypotheses were unread (ruling F1, 2026-10-23) until the site-vertical-slice round (projects/enabling/rounds/2026-10-24-site-vertical-slice) filed 1 hypothesis leaf by reading the declaration. The signature stays in the Source as the text they were read from.

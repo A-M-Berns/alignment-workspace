@@ -1,8 +1,8 @@
 ---
 id: authority.approval-discount-defeated
 kind: and
-children: [authority.approval-discount-defeated.record, authority.approval-discount-defeated.bridge, authority.approval-discount-defeated.complete]
-work: [{kind: round, ref: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority}, {kind: priorities, ref: 107}]
+children: [authority.approval-discount-defeated.record, authority.approval-discount-defeated.bridge, authority.approval-discount-defeated.complete, authority.approval-discount-defeated.h-case]
+work: [{kind: round, ref: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority}, {kind: priorities, ref: 107}, {kind: round, ref: projects/enabling/rounds/2026-10-24-site-vertical-slice}]
 size: M
 size_reason: "one registry entry, its Lean declaration and its bridge"
 version: 1
@@ -17,4 +17,4 @@ Documentation: verification: projects/deference/rounds/2026-10-01-thin-legitimac
 The signature of `Workspace.Deference.Contrib.EffectiveAuthority.discount_defeats_exchange_rate` in lean/Workspace/Deference/Contrib/EffectiveAuthority.lean.
 
 ## Notes
-Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; its hypotheses are unread (ruling F1, 2026-10-23): the record's Source carries the signature verbatim, and a reader files the hypothesis leaves. Registry note: P6, the guard's necessity witness: the kernel's evaluation is the discounted one at discount zero (`evalOf_eq_discounted_zero`); at discount one the option evaluates at its bid. Inhabited by any `c < bid` with `w ≤ c`; the house-sale values `1/2 < 3/5`. The registry's `answers_item` is the `priorities` pointer to item 107 (ruling F2).
+Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature. The site-vertical-slice round (projects/enabling/rounds/2026-10-24-site-vertical-slice) connected it by reading: its hypotheses are filed as leaves, its bridge names the gap between the claim and the declaration, and it is one of the twelve conjuncts of the informal claim effective-authority-layer (the effective-authority layer), a shared-claim root of authorship-and-transparency and public-corrigibility-line, rather than a node a frame holds. The registry's `answers_item` is the `priorities` pointer to item 107 (ruling F2).

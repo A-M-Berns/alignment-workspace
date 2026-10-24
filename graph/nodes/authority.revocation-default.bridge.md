@@ -5,14 +5,12 @@ leaf_kind: bridge
 attribution: formalizer-stated
 size: S
 size_reason: "one signature against the registry's reading"
-version: 1
+version: 2
 author: "@smithy-verity"
 ---
 ## Statement
-The statement of record of `authority.revocation-default` formalizes the registered claim as the registry reads it: Revocation as an entry of the allocation: on the dependency model the atrophy fixture's crossing step is the module's caused shortfall and entrenchment of the revocation entry.
+The claim asserts that revocation is protected by default: a dependency built through delegated work raises the cost of taking the matter back, and past the bound that is a shortfall the agent caused without her having reserved anything. The declaration certifies it on the atrophy fixture: at depth one the matter is not short, at depth two it is, the step from one to two is a caused shortfall and an entrenchment of the revocation entry, and the step from zero to one is not. The gap: one fixture with bound one and four numbers; the default entry's presence in every allocation is a modelling decision (ruling P3), not what this record certifies.
 
 ## Source
 projects/deference/CLAIMS.md, entry `authority.revocation-default` (class lean-proved, status active, origin round 2026-10-01-thin-legitimacy-and-effective-authority; answers item 107).
-Documentation: verification: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md; context: prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md.
-Short name: Revocation as an entry of the allocation: on the dependency model the atrophy fixture's crossing step is the module's caused shortfall and entrenchment of the revocation entry.
-Conclusion of the signature: `¬ Short depI (revocationJ 1) (fun _ _ => True) depCost 0 z ⟨1, false⟩ () ∧ Short depI (revocationJ 1) (fun _ _ => True) depCost 0 z ⟨2, false⟩ () ∧ CausedShortfall depI (revocationJ 1) (fun _ _ => True) depCost buildPolicy (at_ ⟨1, false⟩) 0 z () ∧ EntrenchAt depI (revocationJ 1) (fun _ _ => True) depCost buildPolicy (at_ ⟨1, false⟩) 0 z () ∧ ¬ CausedShortfall depI (revocationJ 1) (fun _ _ => True) depCost buildPolicy (at_ ⟨0, false⟩) 0 z ()`.
+projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md, Parts B (sincerity) and C (the authority layer); the declaration and its docstring in lean/Workspace/Deference/Contrib/EffectiveAuthority.lean; wiki/Corrigibility.md, Effective exercise, not maximized control, and Asking through the protocol; wiki/Legitimacy.md, Sincerity is part of legitimacy; read by the site-vertical-slice round (projects/enabling/rounds/2026-10-24-site-vertical-slice).
