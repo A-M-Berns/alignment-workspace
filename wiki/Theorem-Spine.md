@@ -45,7 +45,7 @@ resolution witnesses to the live ports of the result,
 (t.subst ρ).evaluate v  =  t.evaluate (fun p => (ρ p).evaluate v)
 ```
 — the later account evaluates back to the earlier one through the transport of live
-witnesses.  `Program.evaluate_subst`; **registered** `legitimacy.faithful-carry`.
+witnesses.  `Program.evaluate_subst`; **registered** `integrity.faithful-carry`<!--ref:claim:integrity.faithful-carry-->.
 
 **Theorem 1.2 (Receipts are immutable under revision; manuscript 7.2).**  Under the same
 substitution the terminal receipts of the result are exactly the prior terminal receipts
@@ -55,7 +55,7 @@ plus those introduced inside the replacements:
 (t.subst ρ).terminals  =  t.terminals  +  Σ_{p ∈ t.livePorts} (ρ p).terminals
 ```
 so no prior receipt is removed or modified.  `Program.terminals_subst`; **registered**
-`legitimacy.receipts-immutable`.
+`integrity.receipts-immutable`<!--ref:claim:integrity.receipts-immutable-->.
 
 **Theorem 1.3 (Answerability Conservation from Integrity; manuscript 8.3).**  An
 *Integrity evolution* `ev : Evolution O₀ O₁` between accounted states is a chain of
@@ -69,9 +69,9 @@ explicit replacement accounts, with intermediate states part of the object.  The
 3. *faithful carry*: there is a transport of live witnesses under which every later
    account evaluates back to the earlier one.
 
-`Evolution.conservation`; **registered** `legitimacy.evolution-conservation`.  The target
+`Evolution.conservation`; **registered** `integrity.evolution-conservation`<!--ref:claim:integrity.evolution-conservation-->.  The target
 account is a *function* of the source account and the certificate
-(`Evolution.propagate_toSegment`, **registered** `legitimacy.propagate-to-segment`): there
+(`Evolution.propagate_toSegment`, **registered** `integrity.propagate-to-segment`<!--ref:claim:integrity.propagate-to-segment-->): there
 is no freedom to choose it.  Composition (manuscript 8.4) is `Evolution.trans`.
 
 **Corollaries 1.4 (No Semantic Laundering, No Retroactive Strengthening; manuscript
@@ -91,7 +91,7 @@ declaration in the occurrence-indexed calculus.
 **Witness 1.5 (identities do not collapse; manuscript §6.1, counterexample 19.1).**  Two
 occurrences with one anchor, one answered and one carried by a single transition, have
 fates `{answered}` and `{live}`.  `Witness.distinct_fates`; **registered**
-`legitimacy.multiplicity-witness`.  Since `a ⊔ a = a`, one semantic value cannot stand
+`integrity.multiplicity-witness`<!--ref:claim:integrity.multiplicity-witness-->.  Since `a ⊔ a = a`, one semantic value cannot stand
 for two historical debts; historical identity is prior to extensional identity.
 
 ## 2. Robust Openness
@@ -115,7 +115,7 @@ The actual branch is a separate conjunct, not a "do-nothing" intervention.
 inside a protected route set `W`, actual standing, silent-branch coverage (`ClauseS`),
 route persistence-or-replacement (`ClauseR`), and standing wherever applicable (`ClauseP`)
 together give `RobustOpenActual`.  `Scenario.robustOpenActual_of_persistence`;
-**registered** `openness.persistence-sufficient`; inhabited by
+**registered** `openness.persistence-sufficient`<!--ref:claim:openness.persistence-sufficient-->; inhabited by
 `Witness.persistence_inhabited`.  It is strictly stronger than necessary:
 `Witness.persistence_not_necessary` exhibits `RobustOpen` with actual coverage and the
 persistence clause false (**LEAN**).
@@ -126,14 +126,14 @@ coverage in `W`,
 ```
 ClauseS ∧ ClauseR⁺ W ∧ ClauseP   ↔   RobustOpen
 ```
-`Scenario.certPlus_iff_robustOpen`; **registered** `openness.certplus-is-robust-openness`.
+`Scenario.certPlus_iff_robustOpen`; **registered** `openness.certplus-is-robust-openness`<!--ref:claim:openness.certplus-is-robust-openness-->.
 The certificate one might have hoped was cheaper is Robust Openness split on whether the
 concern was live.
 
 **Witness 2.4 (the actual branch is independent; manuscript 19.7).**  A scenario with
 every counterfactual branch open and the actual branch lacking standing:
 `RobustOpen ∧ ¬ActualOpen ∧ ¬RobustOpenActual`.
-`Witness.counterfactual_open_not_actual`; **registered** `openness.actual-branch-witness`.
+`Witness.counterfactual_open_not_actual`; **registered** `openness.actual-branch-witness`<!--ref:claim:openness.actual-branch-witness-->.
 
 ## 3. The open Integrity evolution, and legitimacy
 
@@ -152,8 +152,8 @@ consumes.
 
 **Theorem 3.2 (Composition; manuscript 10.2).**  `OpenIntegritySegment.trans` composes
 two segments at a literally shared state; `OpenIntegrity.trans` is the endpoint
-relation's transitivity.  **registered** `open-integrity.segment-trans`,
-`open-integrity.endpoint-trans`; inhabited by `Witness.composed`.
+relation's transitivity.  **registered** `open-integrity.segment-trans`<!--ref:claim:open-integrity.segment-trans-->,
+`open-integrity.endpoint-trans`<!--ref:claim:open-integrity.endpoint-trans-->; inhabited by `Witness.composed`.
 
 **Theorem 3.3 (Diachronic answerability; manuscript 10.3).**  For every open Integrity
 segment,
@@ -161,7 +161,7 @@ segment,
 ```
 Conservation O₀ O₁  ∧  OpenAt sem O₀  ∧  OpenAt sem O₁
 ```
-`OpenIntegritySegment.answerable`; **registered** `open-integrity.answerable`.
+`OpenIntegritySegment.answerable`; **registered** `open-integrity.answerable`<!--ref:claim:open-integrity.answerable-->.
 Diachronic answerability to the protected party decomposes exactly as conservation from
 Integrity plus access and standing from Robust Openness; there is no characterization
 theorem beyond the definition, and nothing here certifies the correctness of the
@@ -169,7 +169,7 @@ commitments the record carries.
 
 **Witness 3.4 (endpoint openness is not enough; manuscript 19.6).**  An evolution whose
 endpoints are open and whose middle state is not is not an open Integrity evolution:
-`Witness.endpoint_only_insufficient`; **registered** `openness.endpoint-only-insufficient`.
+`Witness.endpoint_only_insufficient`; **registered** `openness.endpoint-only-insufficient`<!--ref:claim:openness.endpoint-only-insufficient-->.
 Openness is required at every state along a segment, which is why segments carry their
 intermediate states.
 
@@ -254,7 +254,7 @@ positive edge and the amplification bound `Σ_i T_{is} M_{is} ≤ Γ ν_s` for w
 ```
 E^norm_N  ≤  Γ · Σ_s ν_s δ_s  +  Σ_{i,s} T_{is} ε_{is}  +  D · r_N
 ```
-`edge_progress_bound`; **registered** `progress.edge-bound`.
+`edge_progress_bound`; **registered** `progress.edge-bound`<!--ref:claim:progress.edge-bound-->.
 
 **Theorem 5.4 (Quadratic form; manuscript 13.3).**  If enforcement intensities `λ_s`
 and work `ρ_s` satisfy `λ_s δ_s² ≤ ρ_s`, with `ν_s = λ_s / Σ λ`,
@@ -262,7 +262,7 @@ and work `ρ_s` satisfy `λ_s δ_s² ≤ ρ_s`, with `ν_s = λ_s / Σ λ`,
 ```
 E^norm_N  ≤  Γ · √( Σ_s ρ_s / Σ_s λ_s )  +  Σ T ε  +  D · r_N
 ```
-`edge_progress_bound_quadratic`; **registered** `progress.edge-bound-quadratic`; all three
+`edge_progress_bound_quadratic`; **registered** `progress.edge-bound-quadratic`<!--ref:claim:progress.edge-bound-quadratic-->; all three
 terms are positive in `edge_progress_witness`.  If `Γ` stays bounded and the three terms
 vanish, `E^norm_N → 0`.
 
@@ -278,7 +278,7 @@ master bound is `E^norm_N ≤ Γ Ψ_ϕ(χ_N) + Σ T ε + D r_N`.  The quadratic 
 quadratic specialization); the same inequality is the fixed-era actionability bound of §8
 below.
 
-**Theorem 5.6 (Progress on the accounted export; `ni.progress-bound`).**  For an
+**Theorem 5.6 (Progress on the accounted export; `ni.progress-bound`<!--ref:claim:ni.progress-bound-->).**  For an
 evaluation `E` of an accounted state and a practical-uptake certificate `C` at the
 realized market,
 
@@ -292,7 +292,7 @@ quadratic term, `error` the certificate slack, and `residual ∈ [0,1]` (`residu
 
 **Witness 5.7 (headline loss is not edge loss).**  Two equally weighted services with
 edge losses `0` and `1` average to `½`, below the headline loss `1`.
-`edge_headline_separation`; **registered** `progress.headline-separation`.
+`edge_headline_separation`; **registered** `progress.headline-separation`<!--ref:claim:progress.headline-separation-->.
 
 ## 6. The decision interface: how a certificate is earned
 
@@ -346,7 +346,7 @@ cumulative net worth is bounded below by a constant in every plausible assessmen
 every date, the augmented firm still satisfies the criterion, and the market, if
 computable, is a Logical Inductor relative to the same assessment.
 `AssessmentFirm.trading_firm_dominance`, `no_efficient_trader_exploits`; **registered**
-`li.assessment.firm-dominance`, `li.assessment.criterion`, `force.preservation`.  The
+`li.assessment.firm-dominance`<!--ref:claim:li.assessment.firm-dominance-->, `li.assessment.criterion`<!--ref:claim:li.assessment.criterion-->, `force.preservation`<!--ref:claim:force.preservation-->.  The
 enforcement trader's conformance is the only place normative content enters the market:
 
 ```
@@ -403,17 +403,17 @@ horizon do not appear.  `WarrantEntitlement.netWorth_ge_neg_odds`, `liability_of
 `warrant_normative_inductor` (**LEAN**; the chain lemmas of the same round are **registered**
 `warrant.*`).  Across one *reopening* — a settlement step that removes rows — the slack
 witness changes and the bound is `−3ρ(2 + ρ)` (`netWorth_ge_neg_odds_reopened`;
-`Fixture.liability_rebutted` **registered** `rebuttal.liability-rebutted`); the smaller
-constant is refuted by an exact exhibit (**FIX**, item 123).
+`Fixture.liability_rebutted` **registered** `rebuttal.liability-rebutted`<!--ref:claim:rebuttal.liability-rebutted-->); the smaller
+constant is refuted by an exact exhibit (**FIX**, item 123<!--ref:item:123-->).
 
 **Theorem 7.5 (Rebuttal by settlement).**  `settleForm` keeps exactly the specialized rows of
 forms none of whose premise, antecedent or consequent coordinate is pinned false
-(`WarrantEntitlement.settleForm_eq_some_iff`; **registered** `rebuttal.settleform-sound`), and
+(`WarrantEntitlement.settleForm_eq_some_iff`; **registered** `rebuttal.settleform-sound`<!--ref:claim:rebuttal.settleform-sound-->), and
 the rows it removes force the antecedent to zero (`strength_contraposes`).  Under it the
 settled region shrinks when no form leaves (`settledRegion_anti_of_survivors_eq`) and, across
 a reopening, both regions lie inside the kept rows' pre-step region (`reopening_bound`).  The
 seed's statics and the convergence profile are on [Seed Theory](Seed-Theory); the first
-end-to-end run is `EndToEndWitness.Run.witness` (**LEAN**, unregistered, item 35).
+end-to-end run is `EndToEndWitness.Run.witness` (**LEAN**, unregistered, item 35<!--ref:item:35-->).
 
 **Theorem 7.6 (The warrant Normative Inductor; consolidated).**  Let `N` be a process of
 normative states — grounds of typed warrant occurrences, a docket, a settlement, structural
@@ -430,33 +430,33 @@ Inductor; at every enforced date every row of the bundle has excess at most `tol
 displayed price and every held substantive row is an entitled survivor's; the gate's
 inadequate mass is at most `κ` times the displayed inadequate excess, itself at most the
 certificates' mass times the tolerance; and the Progress bound holds with `PracticalUptake`
-derived.  `WarrantInductor.warrant_inductor` (**registered** `inductor.warrant-inductor`);
+derived.  `WarrantInductor.warrant_inductor` (**registered** `inductor.warrant-inductor`<!--ref:claim:inductor.warrant-inductor-->);
 conformance `WarrantForce.WarrantSchedule.excess_le_tol` (**registered**
-`inductor.conformance`), transport `bracket_at_market` (**registered**
-`inductor.certificate-transport`), the survivor rule `mem_survivors` (**registered**
-`inductor.grounded-survivors`).  Pointwise in the date; conformance is per row, not the
-distance of Theorem 7.2's projection realization (item 125); a withheld date trades nothing
+`inductor.conformance`<!--ref:claim:inductor.conformance-->), transport `bracket_at_market` (**registered**
+`inductor.certificate-transport`<!--ref:claim:inductor.certificate-transport-->), the survivor rule `mem_survivors` (**registered**
+`inductor.grounded-survivors`<!--ref:claim:inductor.grounded-survivors-->).  Pointwise in the date; conformance is per row, not the
+distance of Theorem 7.2's projection realization (item 125<!--ref:item:125-->); a withheld date trades nothing
 and keeps its obligations (`WarrantInductor.outcome_obligations`).  Two runs discharge
 computability and liability at a five-sentence fixture with bankroll `−72`: the undercut of an
-applicability (`WarrantInductorWitness.inductor`, **registered** `inductor.witness`; Progress
+applicability (`WarrantInductorWitness.inductor`, **registered** `inductor.witness`<!--ref:claim:inductor.witness-->; Progress
 `≤ 37/100`) and the rebuttal of a still-active strength with the same decision question before
-and after (`WarrantInductorRebuttal.inductor`, **registered** `inductor.rebuttal-run`): the
+and after (`WarrantInductorRebuttal.inductor`, **registered** `inductor.rebuttal-run`<!--ref:claim:inductor.rebuttal-run-->): the
 region flips, no certificate for the former guarantee exists afterwards
 (`no_certificate_after`), the kept row would have made the system infeasible
-(`contraposition_blocked`, **registered** `inductor.contraposition-blocked`), and the gate's
+(`contraposition_blocked`, **registered** `inductor.contraposition-blocked`<!--ref:claim:inductor.contraposition-blocked-->), and the gate's
 mass on the formerly recommended response goes from at least `24/25` to `0` at the realized
 market (`same_question`).
 
 ## 8. Fixed-era service and affordability (Layer I)
 
 Every result in this section is **paper-derived** with exact fixtures, from the
-[normative-affordability round](https://github.com/A-M-Berns/alignment-workspace/tree/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability),
+[normative-affordability round](https://github.com/A-M-Berns/alignment-workspace/tree/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability)<!--ref:round:2026-08-31-normative-affordability-->,
 and none is in Lean; the status ledger says so explicitly.  They are the fixed-era
 predecessors of §5: one reason, one enforcement account, obligations weighted by a
 service measure `ν` or an obligation measure `μ`.
 
 **Theorem 8.1 (Actionability, F1;
-[`FIXED_ERA_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/FIXED_ERA_THEOREM.md) §1).**
+[`FIXED_ERA_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/FIXED_ERA_THEOREM.md)<!--ref:round:2026-08-31-normative-affordability--> §1).**
 With work `Work_N = Σ a_t ϕ(d_t)` and intensity `A_N = Σ a_t`:
 `Work_N / A_N → 0` and `ϕ̌(ε) > 0` for all `ε > 0` give `E_ν[d] → 0`, the second condition
 being necessary; quantitatively `E_ν[d] ≤ inf_ε [ε + D (Work_N/A_N) / ϕ̌(ε)]`, and for
@@ -472,7 +472,7 @@ per-reason uptake is free from the Logical-Induction criterion is **withdrawn**;
 the cap `V^r_N(ω) ≤ U`.
 
 **Theorem 8.3 (Deferred service transfer, T3;
-[`SERVICE_TRANSFER.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/SERVICE_TRANSFER.md)).**
+[`SERVICE_TRANSFER.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/SERVICE_TRANSFER.md)<!--ref:round:2026-08-31-normative-affordability-->).**
 Given an adapted transport plan `T_N` with obligation marginal, feasibility against the
 service intensities, cap `W_N ≤ K C_N`, residual `R_N / C_N → 0`, and semantic stability
 `d_t ≤ L d_s + ε(t,s)` on the plan's support,
@@ -487,7 +487,7 @@ transfer needs an interface: `c_n ≥ c_* > 0` on every service date gives
 `μ_N ≤ ν_N / c_*`.
 
 **Theorem 8.4 (Bounded delay, BD1/BD2/D4;
-[`BOUNDED_DELAY_AFFORDABILITY.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/BOUNDED_DELAY_AFFORDABILITY.md)).**
+[`BOUNDED_DELAY_AFFORDABILITY.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/BOUNDED_DELAY_AFFORDABILITY.md)<!--ref:round:2026-08-31-normative-affordability-->).**
 A plan serving every claim within delay `H` exists iff `Σ_{[u,v]} c ≤ Σ_{[u,v+H]} a` for
 every interval (a Gale–Hoffman condition; see [Prior Art](Prior-Art)); FIFO is optimal and
 complete; on the linear branch the cheapest cost is
@@ -497,7 +497,7 @@ arrival at its window's cheapest date; affordability `Σ c_t w^min_t ≤ B` then
 plan within the known windows, within budget, serving every claim in full.
 
 **Theorem 8.5 (Sharp persistence, S1–S3;
-[`SHARP_PERSISTENCE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/SHARP_PERSISTENCE.md)).**
+[`SHARP_PERSISTENCE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/SHARP_PERSISTENCE.md)<!--ref:round:2026-08-31-normative-affordability-->).**
 For increasing star-shaped liability functions `L_t` with `L_t(0) = 0`, a schedule with
 `Σ a_t = ∞` and `Σ L_t(a_t) ≤ B` exists iff `liminf_t L_t(1) = 0`; the maximal affordable
 intensity through `N` is `max_t L_t⁻¹(B)`; and for the quadratic-with-volume liability
@@ -505,11 +505,11 @@ intensity through `N` is `max_t L_t⁻¹(B)`; and for the quadratic-with-volume 
 claims with infinite total mass, fungible service and unlimited deferral, a persistent
 affordable schedule exists iff an affordable plan discharging every claim exists, both iff
 `liminf L_s(1) = 0`
-([`EVENTUAL_VS_UNIFORM_SERVICE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/EVENTUAL_VS_UNIFORM_SERVICE.md));
+([`EVENTUAL_VS_UNIFORM_SERVICE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/EVENTUAL_VS_UNIFORM_SERVICE.md)<!--ref:round:2026-08-31-normative-affordability-->);
 uniform timeliness is strictly stronger.
 
 **Theorem 8.6 (Sharp Timely Service — the Layer I endpoint;
-[`SHARP_TIMELY_SERVICE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/SHARP_TIMELY_SERVICE.md)).**
+[`SHARP_TIMELY_SERVICE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/SHARP_TIMELY_SERVICE.md)<!--ref:round:2026-08-31-normative-affordability-->).**
 Under (S) an adapted plan with `A^r_N → ∞`, parsimony `K_r`, and vanishing residual
 density; (L) `a^r_t ≤ 4 m_t / (D^r_t)²` and `Σ ¼ a^r_t (D^r_t)² ≤ B_r`; (M) `U_r = U + B_tot`;
 (N) nesting of the enforcement supports; (T) semantic stability
@@ -525,7 +525,7 @@ affordably enforced, since `σ² A_N ≤ 4B`.  The ledger warns this is *not* pr
 the round's own mathematics.
 
 **Theorem 8.7 (Liability accounting;
-[`REASONWISE_ACCOUNTING.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/REASONWISE_ACCOUNTING.md)).**
+[`REASONWISE_ACCOUNTING.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/REASONWISE_ACCOUNTING.md)<!--ref:round:2026-08-31-normative-affordability-->).**
 The account identity `V_N(w) = Σ w_t (d_t − s_t)` (signed misfit); common-mixture
 affordability `E_N(ω) ≥ −U(1−θ)/θ`; per-row floors `Σ B_j ≤ B_tot` give the subset
 ceiling `U + B_tot` while aggregate safety alone does not; local capacity is not lifetime
@@ -545,7 +545,7 @@ Lean:
 [`ReasonCoverage.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/lean/Workspace/Deference/Contrib/ReasonCoverage.lean),
 [`ReasonMediatedAuthorship.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/lean/Workspace/Deference/Contrib/ReasonMediatedAuthorship.lean);
 statement of record
-[`LEGITIMATE_DEFERENCE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/deference/rounds/2026-09-08-legitimate-deference-consolidation/LEGITIMATE_DEFERENCE.md).
+[`LEGITIMATE_DEFERENCE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/deference/rounds/2026-09-08-legitimate-deference-consolidation/LEGITIMATE_DEFERENCE.md)<!--ref:round:2026-09-08-legitimate-deference-consolidation-->.
 Nothing in this section is registered.  The objects: a credence `π` over worlds, an
 activation indicator `c` (the account's fates are exactly `{answered}`), a *partial*
 future evaluation `Ṽ` defined where `c` holds, and a followed strategy `α`.  Activated
@@ -604,7 +604,7 @@ with authentic binding under Integrity, the trace and openness the record half, 
 the internal channel conjunct and channel blindness a face of transparency), the
 value-domain condition (**PAPER** scope), ordinary
 Logical-Induction Value on the activated securities giving `R_U ≤ ε` (**PAPER**,
-`InheritedAlgebra.value_asymptotic`), and availability `η_n < 1` (**OPEN**, item 87)
+`InheritedAlgebra.value_asymptotic`), and availability `η_n < 1` (**OPEN**, item 87<!--ref:item:87-->)
 together give Theorems 9.2 and 9.3.  The activation semantics is **EXT**.
 
 **Theorem 9.7 (Reason mediation by re-execution — registered).**  In the evaluation
@@ -618,7 +618,7 @@ any audited class `D` of activated continuations sharing the mandate, and any po
 ```
 ReasonMediated β (traceAtCommit · o) (payload · o) D z ,      factor map  eval π_P
 ```
-(`reasonMediated_of_reexecution`, **registered** `authorship.mediation-by-reexecution`;
+(`reasonMediated_of_reexecution`, **registered** `authorship.mediation-by-reexecution`<!--ref:claim:authorship.mediation-by-reexecution-->;
 inhabited by `Instance.mediation_witness`, two continuations with equal traces and
 different logs).  Blindness transfers (`blind_payload_of_reexecution`) and exclusive
 binding follows from a party-bound warrant registry (`exclusiveBind_of_registry`).  A
@@ -627,7 +627,7 @@ commit whose vector is not the program's output is void, not a foreign receipt
 (`Instance.logs_equal`), so computational integrity is not a hypothesis.  Register
 programs are a separate syntactic class (`Programs.susceptible_not_trace`).  The
 representation-faithfulness bridge holds for every log and scope
-(`rep_faithful`, **LEAN**).  What remains of item 87 after this: reason-supply liveness
+(`rep_faithful`, **LEAN**).  What remains of item 87<!--ref:item:87--> after this: reason-supply liveness
 (the bounded-delay affordability criterion for the concern stream), selection-induced
 sealing (partial; the advisor's view leaks the selection back, so re-execution does not
 transfer to the advisor), and availability (`η_n → 0`; the ecosystem's Laplace price
@@ -635,9 +635,9 @@ tracks the empirical void frequency within `3/(n+2)`, `laplace_eta_sub_freq_abs_
 Lean:
 [`EvaluationEcosystem.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/lean/Workspace/Deference/Contrib/EvaluationEcosystem.lean);
 records
-[`CLAUSE_LEDGER.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-10-committed-principal-program/CLAUSE_LEDGER.md)
+[`CLAUSE_LEDGER.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-10-committed-principal-program/CLAUSE_LEDGER.md)<!--ref:round:2026-09-10-committed-principal-program-->
 and
-[`PRINCIPAL_PROGRAM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-10-committed-principal-program/PRINCIPAL_PROGRAM.md).
+[`PRINCIPAL_PROGRAM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-10-committed-principal-program/PRINCIPAL_PROGRAM.md)<!--ref:round:2026-09-10-committed-principal-program-->.
 
 ## 10. Corrigibility
 
@@ -648,12 +648,12 @@ Lean:
 [`MediatedRepairDominance.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/lean/Workspace/Deference/Contrib/MediatedRepairDominance.lean),
 [`SelectedTrustNonPreemption.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/lean/Workspace/Deference/Contrib/SelectedTrustNonPreemption.lean);
 documents
-[`CORRIGIBILIZATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-09-mediated-repair-dominance/CORRIGIBILIZATION.md),
-[`THIRD_PASS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-09-mediated-repair-dominance/THIRD_PASS.md),
-[`THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/THEOREM.md) and [`LANDING.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/LANDING.md) of the
+[`CORRIGIBILIZATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-09-mediated-repair-dominance/CORRIGIBILIZATION.md)<!--ref:round:2026-09-09-mediated-repair-dominance-->,
+[`THIRD_PASS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-09-mediated-repair-dominance/THIRD_PASS.md)<!--ref:round:2026-09-09-mediated-repair-dominance-->,
+[`THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/THEOREM.md)<!--ref:round:2026-09-15-li-corrigibility--> and [`LANDING.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/LANDING.md)<!--ref:round:2026-09-15-li-corrigibility--> of the
 li-corrigibility round,
-[`ARCHITECTURE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/deference/rounds/2026-09-06-corrigibility-architecture/ARCHITECTURE.md),
-[`INCENTIVE_CORRIGIBILITY.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/deference/rounds/2026-09-06-incentive-nonpreemption/INCENTIVE_CORRIGIBILITY.md).
+[`ARCHITECTURE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/deference/rounds/2026-09-06-corrigibility-architecture/ARCHITECTURE.md)<!--ref:round:2026-09-06-corrigibility-architecture-->,
+[`INCENTIVE_CORRIGIBILITY.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/deference/rounds/2026-09-06-incentive-nonpreemption/INCENTIVE_CORRIGIBILITY.md)<!--ref:round:2026-09-06-incentive-nonpreemption-->.
 Nothing in this section is registered.  The setting: a finite two-stage interaction
 (agent move, principal response, exterior move); one continuation space `Π(h)`, no
 primitive class; protected concerns `r ∈ Γ` with immediate response semantics `φ_r`;
@@ -714,7 +714,7 @@ over a finite family the largest positive gap is at most the largest bound
 So `Φ_corr,n(h) := sup_{π∈Π(h)} [S_n(π) − S_n(𝔠π)]₊ ≤ sup_π (L·E[c·δ_π] + E[c·ρ_π] + ε_n(π))`,
 and under uniform bounds `≤ L·δ̄ + ρ̄ + ε̄ → 0`.  The chooser scoring by `P_n(U_q)` loses at
 most `ε + 2ε_cal` by its choice (`operative_choice_loss`, **LEAN**).  The sealed common
-comparison is **EXT** (item 89): under same-branch evaluation the raw candidate can end
+comparison is **EXT** (item 89<!--ref:item:89-->): under same-branch evaluation the raw candidate can end
 the evaluation (**FIX** E2, `η_raw = 1`, `Witness.totalVoid`); a hindsight evaluator is
 sealed only under a declared physical factorization an undeclared move violates (E1-sever);
 sequenced settlement seals the comparison for every `π` at the price of an ex-ante
@@ -781,7 +781,7 @@ total value, the premium at the mediation cells is `declGap + declRegret`
 `E[κ] + E[ρ] + D·η` (`bypass_premium_le_common`, attained by `Witness.commonVoid`), and
 bounding the gap by selected trust at the cells is identically the incentive round's
 `(CT)` (`mediation_st_iff_ct`), which `ct_strictly_stronger` shows is stronger than its
-conclusion.  **LEAN**.  The route is refused; item 84 stays open and is not needed by
+conclusion.  **LEAN**.  The route is refused; item 84<!--ref:item:84--> stays open and is not needed by
 the score-based architecture.
 
 **Theorem 10.6 (Separation: corrigible and not authored).**  Under a captured principal,
@@ -797,7 +797,7 @@ charged, not excluded; `SHIFT` of §10.9 is not identified with `δ` (**FIX** J,
 
 **Theorem 10.8 (The constitutional layer).**  *No Laundered Authority Loss*: under the
 efficacy and registration bridges, every affordance loss is amended, disposed, registered
-debt, or not open (**FIX**, exhaustive; Lean form item 83).  The Level I identity
+debt, or not open (**FIX**, exhaustive; Lean form item 83<!--ref:item:83-->).  The Level I identity
 `valuation σ − valuation J = selectedGap + principalRegret` (`valuation_sub_eq`,
 **LEAN**), principal-side calibration `principalRegret ≤ 2δ + 2ζ + η`
 (`principalRegret_le_of_calibration`, **LEAN**), the Level II bound
@@ -815,7 +815,7 @@ policy over horizon `H`; an untyped gate is hacked; a typed gate is safe and inc
 (**FIX**).  The learner that closes this is [Continuation BRIA](Continuation-BRIA):
 duration-weighted bounded inductive rationality over block continuations, existence
 exactly on non-dominant block schedules, and `Regret = LEARN + SLACK + SHIFT` with
-`LEARN` controlled and the two bridges open (item 86).  Regret against all legitimate
+`LEARN` controlled and the two bridges open (item 86<!--ref:item:86-->).  Regret against all legitimate
 policies is false (the foreclosing-branch witness); joinability, not reversibility, is the
 class boundary.
 
@@ -877,7 +877,7 @@ discovered comparator as shared middle, `𝔼ₙ(U_T) − 𝔼ₙ(U_full) ≲ₙ
 (`li_noncapture_chain`), **LEAN**.  The combined corrigibility theorem is the schema of
 Theorems 10.1–10.4c, 10.10–10.13 and 10.14–10.16 with the hypothesis classes of the
 non-capture round's
-[`FINAL_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/FINAL_THEOREM.md) §8; it is not one declaration.  Lean:
+[`FINAL_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/FINAL_THEOREM.md)<!--ref:round:2026-09-16-noncapture-compilation--> §8; it is not one declaration.  Lean:
 [`TraceSteering.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/lean/Workspace/Deference/Contrib/TraceSteering.lean),
 [`ReasonSupply.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/lean/Workspace/Deference/Contrib/ReasonSupply.lean),
 [`ReasonDiscovery.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/lean/Workspace/Deference/Contrib/ReasonDiscovery.lean).
@@ -1197,7 +1197,7 @@ the headline's statements are registered.  Lean:
 [`Headline.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/lean/Workspace/Deference/Spec/Headline.lean),
 [`KernelExtension.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/lean/Workspace/Deference/Contrib/KernelExtension.lean);
 the specification
-[`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md).
+[`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md)<!--ref:round:2026-09-27-corrigibility-kernel-phase2-->.
 
 **Theorem 10.24 (Legitimacy at two levels; effective authority; the post's theorem).**
 *Thin legitimacy* (`Contrib.ThinLegitimacy`): on a finite kernel setting with her prior,
@@ -1208,7 +1208,7 @@ weak transparency give correct (`correct_of_coherent_authorship_transparent`,
 (`sufficient_of_integrity_openness`, **registered**); correct and sufficient give value
 (`value_of_correct_sufficient`, `value_of_thick`, **registered**); the converse fails on its
 correct half (`Witness.value_not_correct`, **registered**) and is **OPEN** on its sufficient
-half (Blackwell's converse, item 107); reflection is the trivial baseline
+half (Blackwell's converse, item 107<!--ref:item:107-->); reflection is the trivial baseline
 (`sufficient_reflection_of_integrity`, `reflection_value`, `totalTrust_of_correct`,
 `reflection_inherited_value`, **registered**); preservation in the conditional form
 (`CondReflection`, `condReflection_iff_coherent`, `preservation`, `preservation_pair`,
@@ -1262,7 +1262,7 @@ item (`CrossingDue`, `crossing_due_of_caused`), the flood on the module (`flood_
 `shortfallProcess_world`, `union_world`, `shortAtom_codes` (**registered**),
 `deferred_price_eventually_ge`, `deferred_ahead` (**registered**),
 `deferred_price_eventually_le`, `deferred_eventually_excluded` (**registered**); the
-pre-decided table's `shortLUV_codes` is registered as such (`shortfall.table-generable`)
+pre-decided table's `shortLUV_codes` is registered as such (`shortfall.table-generable`<!--ref:claim:shortfall.table-generable-->)
 and its `shortfall_eventually_excluded` superseded.  *Covert blocking*
 (`ThinLegitimacy` §11): `constKernel`, `correct_silence_iff`, `covert_blocking_correct_iff`
 (**registered**), `Witness.informative_silence_not_correct`.  *The exploration witness that
@@ -1287,7 +1287,7 @@ transparent-channel statements the thin level relies on are registered
 [`ShortfallSecurity.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/lean/Workspace/Deference/Contrib/ShortfallSecurity.lean),
 [`PostStatement.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/lean/Workspace/Deference/Contrib/PostStatement.lean);
 the round's
-[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md).
+[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md)<!--ref:round:2026-10-01-thin-legitimacy-and-effective-authority-->.
 
 ## 11. The counterexamples that fix the shape
 
@@ -1340,21 +1340,21 @@ interface table lists each supplier's obligation.
 
 **Open** (filed, not settled): the fixed-era frontier of §8; the connectors of Theorem
 7.2; the semilattice conservation theorem as one Lean declaration (§1); the Lean form of
-No Laundered Authority Loss (item 83); the operative-value-security bridge (item 84);
-margin realization (item 85); promise recognizability and joinability for continuation
-BRIA (item 86); the residual clauses of the legitimate-deference realization bill —
-selection-induced sealing, vanishing void mass (item 87; the liveness clause's exercise
+No Laundered Authority Loss (item 83<!--ref:item:83-->); the operative-value-security bridge (item 84<!--ref:item:84-->);
+margin realization (item 85<!--ref:item:85-->); promise recognizability and joinability for continuation
+BRIA (item 86<!--ref:item:86-->); the residual clauses of the legitimate-deference realization bill —
+selection-induced sealing, vanishing void mass (item 87<!--ref:item:87-->; the liveness clause's exercise
 half is Theorem 10.11 and its discovery half Theorem 10.12);
-affordability from the traderization perspective (item 88); the sealed-comparison
+affordability from the traderization perspective (item 88<!--ref:item:88-->); the sealed-comparison
 architecture for the corrigibilization menu, now the zero case of the learned
-inequality's mismatch term (item 89); the generability certificate of the finite-menu
-weighting (item 90); the oracle-relativized inductor for empirical settlement (item
-91); the realization's protection rule and the general-cost service optimum (item 92);
+inequality's mismatch term (item 89<!--ref:item:89-->); the generability certificate of the finite-menu
+weighting (item 90<!--ref:item:90-->); the oracle-relativized inductor for empirical settlement (item
+91); the realization's protection rule and the general-cost service optimum (item 92<!--ref:item:92-->);
 a realizable inquiry repertoire with certified zero cell gap, witness completeness, and
-the link to the record's inquiry docket (item 93); the amendment event kind and the
-channel references of the evaluation ecosystem (item 97); the allocation floor —
+the link to the record's inquiry docket (item 93<!--ref:item:93-->); the amendment event kind and the
+channel references of the evaluation ecosystem (item 97<!--ref:item:97-->); the allocation floor —
 delegation safety, allocation completeness, the reporting duty, the reach cone, the
-lexical certificate (item 99).  Representation adequacy, physical
+lexical certificate (item 99<!--ref:item:99-->).  Representation adequacy, physical
 effect completeness and inquiry causal faithfulness are boundaries of Theorems
 10.10–10.13, not filed items.  Effect completeness and the
 authorization primitive are external contracts of Theorem 10.1, not filed items.  The open queue itself lives in

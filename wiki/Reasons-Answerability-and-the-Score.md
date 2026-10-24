@@ -23,7 +23,7 @@ content, with rebuttal derived from a contradiction floor plus learnable
 incompatibility claims, and with the substrate confined to reporting enabled
 reasons and dependencies rather than resolving conflicts. See
 [Normative Record and Inquiry](Normative-Record-and-Inquiry) and
-[the reason-representation round](https://github.com/A-M-Berns/alignment-workspace/blob/11b4d47f4e97130b78f644964652e6db4169f42c/projects/normativity/legitimacy/rounds/2026-08-23-reason-representation/MEMO.md).
+[the reason-representation round](https://github.com/A-M-Berns/alignment-workspace/blob/11b4d47f4e97130b78f644964652e6db4169f42c/projects/normativity/legitimacy/rounds/2026-08-23-reason-representation/MEMO.md)<!--ref:round:2026-08-23-reason-representation-->.
 
 ## A perspectival score
 
@@ -78,7 +78,7 @@ positive core persists along an unbounded evolving trajectory.
 
 ## Evidence and verification
 
-- [Legitimacy bridge — `Shared-representation-positive / corrigibility-interface-positive / learning-replay-blocked`](https://github.com/A-M-Berns/alignment-workspace/tree/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge)
-- [Bridge theorem map](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge/THEOREM_MAP.md)
+- [Legitimacy bridge — `Shared-representation-positive / corrigibility-interface-positive / learning-replay-blocked`](https://github.com/A-M-Berns/alignment-workspace/tree/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge)<!--ref:round:2026-08-13-relational-scorekeeping-bridge-->
+- [Bridge theorem map](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge/THEOREM_MAP.md)<!--ref:round:2026-08-13-relational-scorekeeping-bridge-->
 - [Quantitative foundation ledger](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/consolidation-aug9/LEDGER.md)
-- [Fencing stress test](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/rounds/2026-08-11-phi-regret-prep/COUNTERFACTUAL_CHARGE_INFLUENCE.md)
+- [Fencing stress test](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/rounds/2026-08-11-phi-regret-prep/COUNTERFACTUAL_CHARGE_INFLUENCE.md)<!--ref:round:2026-08-11-phi-regret-prep-->

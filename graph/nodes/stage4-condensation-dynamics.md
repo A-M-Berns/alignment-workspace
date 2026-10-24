@@ -3,7 +3,7 @@ id: stage4-condensation-dynamics
 kind: frame
 children: [condensation-correspondence-theorem, condensation-correspondence-theorem.improvable, condensation-equivalence-ae, condensation-morphism-notion, observables-carry-correspondence, interpreting-a-belief-haver, dynamics-of-theories, superconditioning-calibration, superconditioning-calibration.improvable, oq-ontology-mismatch, implementation-relations, abstraction-theories-integration, what-abstraction-buys, condensation-scores-explained, condensation-algorithmic-version, condensation-storage-retrieval-tradeoff, notebooks-that-call-each-other, condensation-for-interpretability, permissive-morphisms-needed]
 question: "Which notions of function and isomorphism, which role for the observables, and which dynamics of theories carry the same concept between agents and across ontological shifts?"
-owner: "@maintainer"
+owner: "@abram"
 roots:
   - {id: condensation-correspondence-theorem, role: shared-claim, preset: worst-case}
   - {id: condensation-correspondence-theorem.improvable, role: shared-claim, preset: worst-case}

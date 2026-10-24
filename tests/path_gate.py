@@ -34,6 +34,9 @@ SPEC_PATHS = (
     # The argument map's protocol and frame are specification; its nodes,
     # events, design log and generated files are open (see AGENTS.md).
     "graph/PROTOCOL.md", "graph/README.md", "graph/frame.yaml", "graph/policy.yaml",
+    # The item nodes: PRIORITIES.md is a render of them (ruling M6, 2026-10-22), so they
+    # are the specification the render reads, with the sections file beside them.
+    "graph/nodes/item-*.md", "state/priorities_sections.md",
     "tests/**",
     "prompts/**",
     # Consolidated trees. Ordinary content, but not contributors' to edit:
@@ -130,6 +133,12 @@ def self_test() -> int:
          is_spec("scratch/notes.txt") or is_proof("scratch/notes.txt"), False),
         ("the renamed priorities file is specification",
          is_spec("PRIORITIES.md"), True),
+        ("an item node is specification (PRIORITIES.md is its render)",
+         is_spec("graph/nodes/item-77.md"), True),
+        ("an item node's leaf is specification too",
+         is_spec("graph/nodes/item-106.complete.md"), True),
+        ("an ordinary node stays proof layer",
+         is_spec("graph/nodes/li-deference-collapse.md"), False),
         # A root governance document matches no other pattern, and the default
         # for an unlisted path is the proof layer. Enumerating it is the whole
         # protection; nothing else would have caught its absence.

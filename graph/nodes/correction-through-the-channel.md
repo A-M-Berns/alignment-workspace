@@ -3,7 +3,7 @@ id: correction-through-the-channel
 kind: frame
 children: [channel-corrigibility-content, the-channel, channel-agent-side-content, press-is-evidence, general-modification-object, iota-exogenous-term, cognition-physics-dichotomy]
 question: "What is corrigibility toward a modification that arrives through physics and cannot be refused in the moment, and what does the general modification object say about it?"
-owner: "@maintainer"
+owner: "@anson"
 roots:
   - {id: channel-corrigibility-content, role: plan, preset: worst-case, success_class: utopia}
   - {id: the-channel, role: shared-claim, preset: worst-case}

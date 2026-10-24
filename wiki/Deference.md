@@ -96,26 +96,26 @@ with their Lean names and the sign hypothesis the bound needs, are on the
 Openness makes the principal consider anything — it supplies a route for a live
 protected concern, not its exercise; that authorship alone puts the menu on Value's
 domain; that any concrete protocol realizes authorship, coverage, or `η → 0`. Those are
-the realization bill, `PRIORITIES.md` item 87. The stack is
-[authority-activated value](https://github.com/A-M-Berns/alignment-workspace/tree/a8b25af87684e6b902cc1d008919f4aa1fd3cc60/projects/deference/rounds/2026-09-07-authority-activated-value),
-[reason-mediated authorship](https://github.com/A-M-Berns/alignment-workspace/tree/a8b25af87684e6b902cc1d008919f4aa1fd3cc60/projects/deference/rounds/2026-09-07-reason-mediated-authorship)
+the realization bill, `PRIORITIES.md` item 87<!--ref:item:87-->. The stack is
+[authority-activated value](https://github.com/A-M-Berns/alignment-workspace/tree/a8b25af87684e6b902cc1d008919f4aa1fd3cc60/projects/deference/rounds/2026-09-07-authority-activated-value)<!--ref:round:2026-09-07-authority-activated-value-->,
+[reason-mediated authorship](https://github.com/A-M-Berns/alignment-workspace/tree/a8b25af87684e6b902cc1d008919f4aa1fd3cc60/projects/deference/rounds/2026-09-07-reason-mediated-authorship)<!--ref:round:2026-09-07-reason-mediated-authorship-->
 and the
-[consolidation](https://github.com/A-M-Berns/alignment-workspace/tree/a8b25af87684e6b902cc1d008919f4aa1fd3cc60/projects/deference/rounds/2026-09-08-legitimate-deference-consolidation),
+[consolidation](https://github.com/A-M-Berns/alignment-workspace/tree/a8b25af87684e6b902cc1d008919f4aa1fd3cc60/projects/deference/rounds/2026-09-08-legitimate-deference-consolidation)<!--ref:round:2026-09-08-legitimate-deference-consolidation-->,
 whose `LEGITIMATE_DEFERENCE.md` is the statement of record.
 
 **Realization.** The
-[evaluation-ecosystem round](https://github.com/A-M-Berns/alignment-workspace/tree/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-09-evaluation-ecosystem-realization)
+[evaluation-ecosystem round](https://github.com/A-M-Berns/alignment-workspace/tree/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-09-evaluation-ecosystem-realization)<!--ref:round:2026-09-09-evaluation-ecosystem-realization-->
 runs the theorem end to end in a concrete model — an authenticated event log, a protocol
 read off the log with Integrity propagation proved a function of the log, a simulated
 continuation frame, an exact market on finite worlds, `R_auth = ε/(1 − η)` attained on
 the worked trace — and the
-[committed-principal-program round](https://github.com/A-M-Berns/alignment-workspace/tree/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-10-committed-principal-program)
+[committed-principal-program round](https://github.com/A-M-Berns/alignment-workspace/tree/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-10-committed-principal-program)<!--ref:round:2026-09-10-committed-principal-program-->
 closes the authorship clause: the mandate carries the principal's decision procedure as a
 program whose only input is the reason trace, the verifier re-executes it at commitment,
 and reason mediation holds by construction for every audited class of activated
-continuations (registered, `authorship.mediation-by-reexecution`); a non-coinciding
+continuations (registered, `authorship.mediation-by-reexecution`<!--ref:claim:authorship.mediation-by-reexecution-->); a non-coinciding
 computation voids rather than certifies, so computational integrity is not a hypothesis.
-Of the realization bill's seven clauses (item 87), binding, the declared abstraction and
+Of the realization bill's seven clauses (item 87<!--ref:item:87-->), binding, the declared abstraction and
 representation faithfulness are discharged on log authenticity; factorization is closed;
 selection sealing is partial — a sealed advisor class discharges it and the view leaks
 the selection back, so re-execution does not transfer to the advisor; reason-supply
@@ -123,8 +123,8 @@ liveness (the bounded-delay affordability criterion) and availability (`η_n →
 ecosystem's price tracking the empirical void frequency within `3/(n+2)`) are residual.
 The ecosystem realizes same-branch activation — `C_n` is a function of the realized log —
 and not the sealed comparison the corrigibilization-dominance theorem needs across
-`{π, 𝔠π}`; that architecture is item 89.  The clause-by-clause record is the
-[ledger](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-10-committed-principal-program/CLAUSE_LEDGER.md).
+`{π, 𝔠π}`; that architecture is item 89<!--ref:item:89-->.  The clause-by-clause record is the
+[ledger](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-10-committed-principal-program/CLAUSE_LEDGER.md)<!--ref:round:2026-09-10-committed-principal-program-->.
 
 ## Current status
 
@@ -136,13 +136,13 @@ and not the sealed comparison the corrigibilization-dominance theorem needs acro
 > expectations, from bypassing the principal's authority (T1–T3′) or from steering which
 > declared reasons reach the committed program beyond the service and discovery
 > residuals (Theorems 10.10–10.13 of the [spine](Theorem-Spine)); the reason-supply
-> liveness clause of item 87 is now the suffix-cut service theorem plus the
+> liveness clause of item 87<!--ref:item:87--> is now the suffix-cut service theorem plus the
 > information-cell discovery theorem. The original target — the corrigibility model with temporal depth and what
 > foreclosure loses — now has its temporal-depth half supplied by
 > [Continuation BRIA](Continuation-BRIA): bounded learning against accountable
 > continuation claims on the histories the learner reaches, with foreclosure named
 > exactly as the case in which a comparator's own history is not joinable from the
-> learner's. What it holds is registered; what remains is the succession of item 28
+> learner's. What it holds is registered; what remains is the succession of item 28<!--ref:item:28-->
 > (`DECISIONS.md`, *Awaiting the author*), a decision about what is worth proving.
 > Endpoint preservation is **ruled out** (`DECISIONS.md`, 2026-09-08): legitimate
 > influence is causal factorization through declared reasons, not convergence location.
@@ -163,11 +163,11 @@ corrective-control model has no protected coordinate: the advisor reproduces the
 principal's entire successor state, and reachable capability turns out to measure
 advisor cooperation. A hard-selector route to Value does not survive the relevant
 punishment menus, while a classwise, domain-relative route does; which of the two
-the line's target should be is live as items 14 and 34.
+the line's target should be is live as items 14<!--ref:item:14--> and 34.
 
 **What the older target still waits on.** One decision sits in `DECISIONS.md`'s
 *Awaiting the author*: whether the two candidate objects for what foreclosure loses are
-enough for that question to graduate, and what succeeds item 28, which is *what is
+enough for that question to graduate, and what succeeds item 28<!--ref:item:28-->, which is *what is
 worth proving* and no round's to decide. The temporal-depth requirement is now met at
 the learning layer: [Continuation BRIA](Continuation-BRIA) supplies bounded competence
 against accountable continuation claims for every non-dominant block schedule, and the
@@ -190,5 +190,5 @@ prices are near-tight claims about realized activated value.
 
 - [LI-native deference interface](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/deference/notes/LI_NATIVE_DEFERENCE.md)
 - [Deference vocabulary and interface boundaries](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/deference/notes/TERMS.md)
-- [Corpus reconciliation](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/deference/rounds/2026-08-12-corpus-reconciliation/RECONCILIATION.md)
-- [Reachable corrective control — `Dynamics-positive, protection-incomplete.`](https://github.com/A-M-Berns/alignment-workspace/tree/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/deference/rounds/2026-08-12-reachable-corrective-control)
+- [Corpus reconciliation](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/deference/rounds/2026-08-12-corpus-reconciliation/RECONCILIATION.md)<!--ref:round:2026-08-12-corpus-reconciliation-->
+- [Reachable corrective control — `Dynamics-positive, protection-incomplete.`](https://github.com/A-M-Berns/alignment-workspace/tree/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/deference/rounds/2026-08-12-reachable-corrective-control)<!--ref:round:2026-08-12-reachable-corrective-control-->

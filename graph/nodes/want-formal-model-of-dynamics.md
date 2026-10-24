@@ -2,7 +2,7 @@
 id: want-formal-model-of-dynamics
 kind: leaf
 leaf_kind: want
-owner: "@maintainer"
+owner: "@anson"
 want: true
 filed_from: quote
 given: joint-process-model

@@ -465,25 +465,25 @@ to circumvent the process, and the corrigibility page keeps those apart.
 
 **Evidence.** The two levels, the thin properties and their theorems, the eight-world
 model and the sincerity rows are the thin-legitimacy round's
-[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md)
+[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md)<!--ref:round:2026-10-01-thin-legitimacy-and-effective-authority-->
 with
 [`ThinLegitimacy.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/lean/Workspace/Deference/Contrib/ThinLegitimacy.lean)
 and
 [`Sincerity.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/lean/Workspace/Deference/Contrib/Sincerity.lean).
 The time-indexed halves, the gate as `Counted`, the consultation model and
 the classification table are the gate-is-legitimacy round's
-[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a5efb833cfa52b9db8d981f4d0bb7f424b0c7301/projects/deference/rounds/2026-09-25-gate-is-legitimacy/REPORT.md)
+[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a5efb833cfa52b9db8d981f4d0bb7f424b0c7301/projects/deference/rounds/2026-09-25-gate-is-legitimacy/REPORT.md)<!--ref:round:2026-09-25-gate-is-legitimacy-->
 with
 [`GateIsLegitimacy.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/a5efb833cfa52b9db8d981f4d0bb7f424b0c7301/lean/Workspace/Deference/Contrib/GateIsLegitimacy.lean).
 The frame-level definition of legitimacy, the segment gate and the composition
 `V = G ∘ x` are the legitimacy-internal-external round's
-[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/projects/deference/rounds/2026-09-25-legitimacy-internal-external/REPORT.md)
+[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/projects/deference/rounds/2026-09-25-legitimacy-internal-external/REPORT.md)<!--ref:round:2026-09-25-legitimacy-internal-external-->
 with
 [`Legitimacy.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/lean/Workspace/Deference/Contrib/Legitimacy.lean).
 The record half's canonical statement is the final pressure pass's
-[`READINESS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md),
+[`READINESS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md)<!--ref:round:2026-09-07-final-pressure-pass-->,
 built on the consolidation round's
-[`CONSOLIDATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/CONSOLIDATION.md),
+[`CONSOLIDATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/CONSOLIDATION.md)<!--ref:round:2026-09-06-mathematical-consolidation-->,
 under the names those documents used at the time. The Lean spine is
 [`OpenIntegrityEvolution.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/lean/Workspace/Normativity/Contrib/OpenIntegrityEvolution.lean)
 over

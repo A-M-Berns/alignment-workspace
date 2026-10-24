@@ -790,6 +790,13 @@ non-maintainer, and no single class says that. The fields are defined once, in
   - `pin-bump-publish`, which force-pushes a verified pin bump to the branch
     `bot/pin-bump` and opens or updates the issue reporting it. It never opens a
     pull request and never touches `main`; the maintainer opens the pull request.
+  <!-- write-scope: job=derived-publish; workflow=.github/workflows/derived.yml -->
+  - `derived-publish`, which force-pushes the argument map's two uncommitted
+    generated files (graph/derived.json and graph/index.json, written at read
+    scope by `derived-build` and handed over as an artifact) to the orphan
+    branch `derived`, one commit per push to `main` naming the `main` commit
+    (ruling F3, 2026-10-23). Nothing adjudicates on that branch; a site
+    generator reads it.
 
   `tests/workflow_scope.py` reads that list from this section and enforces
   conditions 1, 3 and 4 over every workflow, along with both of the
@@ -866,14 +873,23 @@ and AI systems might go: claims as nodes, failure stories as rows of
 every number derived from those events by `checkers/graph.py`.
 `graph/PROTOCOL.md` is the protocol; this section is what binds an agent
 working against it. Where the two disagree, the protocol is wrong and the
-disagreement is filed.
+disagreement is filed. The map is the program's canonical index
+(`graph/MAP-AS-CANONICAL.md`, rulings M1–M8 of 2026-10-22): every registered
+claim, priority item, decision, round and narrative page has exactly one node
+or attachment in it, and the structure-only index graph/index.json, written on
+every plain run and published to the branch `derived`, is what a site renders.
 
 **What an agent does alone.** File sources. Create node files at level 0
 (a new leaf under an `and` cannot raise any root): claims, frames for
 lines and programmes, improvement claims with their routes and residual
 route, task leaves and actioned claims from the repository's own activity
 (claims registries, `PRIORITIES.md`, rounds, recent commits), `work`
-pointers, `given` edges and refinements. File pictures, rows and
+pointers (`priorities`, `open`, `round`, `decision`, `foundation`),
+`given` edges, refinements and `narrative` attachments; file a new
+registered claim as its formal result, a new `PRIORITIES.md` item as its item
+node (`PRIORITIES.md` is rendered from them; edit the node, never the
+render), and a new `DECISIONS.md` entry's anchor line with its `touches`,
+rewording no ruling. File pictures, rows and
 responses as drafts. Draft the checked list a map-read needs, the
 sub-goals and tasks a `spell-out` asks for, and the edges a `connect`
 offers. Sharpen a vague Statement, bumping `version`. Compute a proposal's
@@ -932,7 +948,11 @@ steps (a research line whose parts are lines of work in their own right),
 the agent files it as a node of kind `frame` whose children are its roots,
 not as a long conjunction; the parent values it as its best step and ranks
 the steps' tasks; a frame whose roots nobody has spelled out yet is filed
-with `roots: []`, and the list asks for the spelling-out. A user's want is
+with `roots: []`, and the list asks for the spelling-out. A frame's roots
+are its goals; what it is about without being a goal, a registered result
+filed under its programme or a work order whose goal nobody has identified,
+goes in the frame's `holds` and is listed, not ranked (ruling G2,
+2026-10-23). A user's want is
 a claim with `want: true` under their handle, a root of role `want`,
 connected to nothing until the user or anyone connects it; the agent files
 it where the user's words place it and otherwise at the top frame, and asks
@@ -956,12 +976,19 @@ is conceded, the agent poses the ranked `revive` task as what it is:
 arguing the conceding conditional back above the bar, in the user's words,
 never by deleting the row.
 
-**Commit only what the plain run writes.** The four generated files are
-the same whatever flags the checker ran with; a personal render (`--why`,
-`--as`, `--scope`, an extra `--registry`) goes to stdout or to a path
-outside `graph/` and is never committed. The claims registries the
-derivation reads are listed in `policy.yaml` (`registries`), not passed as
-flags.
+**Commit only what the plain run writes, and of that only the three
+committed files.** The five generated files are the same whatever flags the
+checker ran with; a personal render (`--why`, `--as`, `--scope`, an extra
+`--registry`) goes to stdout or to a path outside `graph/` and is never
+committed. Of the five, `graph/versions.json`, `graph/tasks.md` and
+`graph/view.md` are committed; graph/derived.json and graph/index.json are
+not (ruling F3, 2026-10-23: `.gitignore` excludes them, CI keeps them as
+artifacts and the `derived` workflow publishes `main`'s to the branch
+`derived`), and `versions.json` records each one's derivation hash so a
+stale or hand-edited derivation shows against the commit. An agent neither
+force-adds the two nor cites them as repository paths. The claims registries
+the derivation reads are listed in `policy.yaml` (`registries`), not passed
+as flags.
 
 **Nothing waits for a second person.** A contributor's own filings count at
 once, and a draft an AI session produced counts once any human, the
@@ -1035,8 +1062,10 @@ an unmapped handle, an AI handle's level-minting event, acceptance, tag,
 AI handle's number on a want; a priority word by anyone but the want's
 owner; a withdrawal of someone else's event; a regenerated file edited by
 hand; a proposal applied without a counted `approve`; a frame without a
-human owner; a node attached to nothing; a formula whose cutset exceeds the
-cap; a missing design log. Said-versus-approved honesty, the presentation
+human owner (one handle or a list); a node attached to nothing; a want in two
+frames; a `narrative` naming no wiki page; a `decision` or `priorities`
+pointer resolving to no anchor or item node; an item node without its
+fields; a formula whose cutset exceeds the cap; a missing design log. Said-versus-approved honesty, the presentation
 question, the dialogue above, the placement of a quoted want, the
 attachment of a task as route or evidence, and the no-real-names rule are
 **not gated**, and private citations only warn; they are review matters and

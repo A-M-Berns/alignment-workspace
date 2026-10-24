@@ -3,7 +3,7 @@ id: value-change-base-layer
 kind: frame
 children: [value-change-kernel-checked, value-change-is-belief-change, gandhi-argument-assumes-flat-utility, value-change-three-terms, no-net-update-insufficient, value-change-is-belief-change.improvable, want-sigma-algebra-changes]
 question: "Does the representation of value change as belief change hold, and how far does it carry toward systems corrected through training?"
-owner: "@maintainer"
+owner: "@anson"
 roots:
   - {id: value-change-kernel-checked, role: plan, preset: worst-case, success_class: utopia}
   - {id: value-change-is-belief-change, role: shared-claim, preset: worst-case}

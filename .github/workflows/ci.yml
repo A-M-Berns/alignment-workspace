@@ -89,6 +89,19 @@ jobs:
       - run: python3 tests/untracked_pointers.py --self-test
       - run: python3 tests/untracked_pointers.py
       - run: python3 tests/run.py
+      # The argument map's two large generated files are not committed (ruling
+      # F3, 2026-10-23): the plain run writes them here and they ride along as
+      # artifacts of every run; the `derived` workflow publishes main's to the
+      # branch `derived`.
+      - name: Derive the argument map (the plain run) and keep the derived files
+        run: python3 -m checkers.graph --root .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: graph-derived
+          path: |
+            graph/derived.json
+            graph/index.json
+          if-no-files-found: error
 
   lean:
     name: lean — build, sorry-free, axiom audit

@@ -73,9 +73,9 @@ The left input of the compiler now has a page of its own: [Seed Theory](Seed-The
 seed's forced region and intervals are computed on the force layer's own compiler, settlement
 nests them and defeat widens them, and since the rebuttal round a form whose consequent is
 settled false is **rebutted** rather than contraposed — the repair to the orphan pin the
-[warrant round](https://github.com/A-M-Berns/alignment-workspace/blob/2f6e5e5ca9bf96fdb6dd5d467e0c3fff558c36b3/projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/REPORT.md)
+[warrant round](https://github.com/A-M-Berns/alignment-workspace/blob/2f6e5e5ca9bf96fdb6dd5d467e0c3fff558c36b3/projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/REPORT.md)<!--ref:round:2026-10-20-warrant-enforcement-semantics-->
 exhibited. The first end-to-end run of the pipeline on one fixture is the
-[witness](https://github.com/A-M-Berns/alignment-workspace/blob/2f6e5e5ca9bf96fdb6dd5d467e0c3fff558c36b3/projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/WITNESS.md).
+[witness](https://github.com/A-M-Berns/alignment-workspace/blob/2f6e5e5ca9bf96fdb6dd5d467e0c3fff558c36b3/projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/WITNESS.md)<!--ref:round:2026-10-21-rebuttal-and-end-to-end-->.
 
 ## A current research direction: operative force
 
@@ -274,7 +274,7 @@ affordable indefinitely, though not from every kind of demand: a constraint on a
 single sentence holds its distance and then closes it in one step, while a graded
 demand sitting at the value the record approaches can be enforced forever.
 
-Evidence: [the traderized-enforcement round](https://github.com/A-M-Berns/alignment-workspace/tree/46032abe26be325218cec51f857b86be377108ab/projects/normativity/rounds/2026-08-16-traderized-enforcement).
+Evidence: [the traderized-enforcement round](https://github.com/A-M-Berns/alignment-workspace/tree/46032abe26be325218cec51f857b86be377108ab/projects/normativity/rounds/2026-08-16-traderized-enforcement)<!--ref:round:2026-08-16-traderized-enforcement-->.
 
 ## Evidence and deeper reading
 

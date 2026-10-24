@@ -3,7 +3,7 @@ id: cooperative-equilibria-as-agents
 kind: frame
 children: [aggregate-logical-inductor, aggregate-logical-inductor.improvable, mixture-of-inductors-not-inductor, aggregate-decision-layer-missing, dynamic-weight-law-for-learning-members, self-enforcing-coalition-conditions, deference-protects-from-outprediction-not-deception, acts-of-war-as-re-bargains, secrecy-not-forbidden-by-criterion, hundred-percent-split-is-li-deference, coalition-detects-ai-values, coalition-object-static-or-dynamic, informational-coup-is-act-of-war, coalition-steering-advice, aggregate-inductor-is-merging-inductors]
 question: "Which characterization of approximate cooperative equilibria among learning agents as agents, with enforcement against an AI leaving the coalition, yields advice for steering toward them?"
-owner: "@maintainer"
+owner: "@abram"
 roots:
   - {id: aggregate-logical-inductor, role: shared-claim, preset: worst-case}
   - {id: aggregate-logical-inductor.improvable, role: shared-claim, preset: worst-case}

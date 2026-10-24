@@ -100,10 +100,15 @@ chats/        chat transcripts the map's events cite, committed once
 `PROVENANCE.md` who generated what, and whether anyone read it ·
 `CONTRIBUTING.md` how to submit.
 
-Two research lines. **Normativity** is where the work is, and its traderized
-enforcement results are registered. **Deference** is **paused** on two maintainer
-decisions; its finite results are registered and the wiki says what it is waiting
-on.
+Three research lines. **Normativity** holds the registered traderization arc, the
+legitimacy spine, the warrant licence chain and the seed statics, with the
+Normative Inductor as its end-to-end object. **Deference** is active: its finite
+results are registered, the corrigibility nucleus and the legitimate-deference
+stack landed in September and October 2026, and what its older target still waits
+on is one queued decision (`DECISIONS.md`, *Awaiting the author*: the succession
+of item 28). **Decision theory** is the updateless programme and the LI+BRIA
+synthesis specification. The argument map under `graph/` is the one index of the
+program (`graph/MAP-AS-CANONICAL.md`).
 
 ## License
 

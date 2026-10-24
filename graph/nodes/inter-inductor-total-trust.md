@@ -3,7 +3,7 @@ id: inter-inductor-total-trust
 kind: frame
 children: [inter-inductor-characterized, future-self-maximal-expert, trust-composes, theorem-b-robust-self-trust]
 question: "Which pairs of a novice inductor and a distinct inductor expert satisfy Total Trust, and on what minimal conditions?"
-owner: "@maintainer"
+owner: "@abram"
 roots:
   - {id: inter-inductor-characterized, role: plan, preset: worst-case, success_class: utopia}
   - {id: future-self-maximal-expert, role: shared-claim, preset: worst-case}

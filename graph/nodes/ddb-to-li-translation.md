@@ -3,7 +3,7 @@ id: ddb-to-li-translation
 kind: frame
 children: [li-trust-principles-enumerated, ddb-reading-translation-loop, accuracy-material-to-li, tt-vs-reflection-geometry-li, per-sentence-vs-whole-belief, five-notions-implication-diagram, ladder-chain-as-written, ladder-chain-as-written.improvable, gated-average-translation-reading, hard-total-trust-refuted, ddb-finite-frames-formalized, weatherson-infinite-frames-formalized, immodest-enough-collapse, immodest-enough-collapse.improvable, li-paper-412-one-sided, crux-li-total-trust-reading]
 question: "What does each result of Deference Done Better become when the novice and the expert are logical inductors?"
-owner: "@maintainer"
+owner: "@abram"
 roots:
   - {id: li-trust-principles-enumerated, role: plan, preset: worst-case, success_class: utopia}
   - {id: ddb-reading-translation-loop, role: plan, preset: worst-case, success_class: utopia}
@@ -21,6 +21,7 @@ roots:
   - {id: immodest-enough-collapse.improvable, role: shared-claim, preset: worst-case}
   - {id: li-paper-412-one-sided, role: shared-claim, preset: worst-case}
   - {id: crux-li-total-trust-reading, role: shared-claim, preset: worst-case}
+narrative: wiki/Logical-Induction-and-Deference.md
 author: "@smithy-verity-opus55"
 size: L
 size_reason: "five sub-goals and the translation's literal results"

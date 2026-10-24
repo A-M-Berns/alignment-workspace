@@ -2,7 +2,7 @@
 id: want-uea-review
 kind: leaf
 leaf_kind: want
-owner: "@maintainer"
+owner: "@abram"
 want: true
 filed_from: quote
 given: uea-review-writeup

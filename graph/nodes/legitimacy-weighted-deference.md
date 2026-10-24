@@ -3,7 +3,7 @@ id: legitimacy-weighted-deference
 kind: frame
 children: [legitimacy-rule-characterization, graded-legitimacy-constraint, value-on-agency, cdot-floor-proposal, legit-branch-evaluators-defense, conditioning-manages-news, selection-collapse--corrigibility-risk, inferability-and-positivity, void-branch-deterrence-floor--corrigibility-risk, anticipation-branchwise-dominance--corrigibility-risk, crux-illegitimate-ordering, crux-updatelessness-needed, rules-certified-or-learned, whose-prior-defines-standard]
 question: "Which legitimacy-weighted deference rule survives the negative results, and what do the surviving failures say about the rules' defenses?"
-owner: "@maintainer"
+owner: "@anson"
 roots:
   - {id: legitimacy-rule-characterization, role: shared-claim, preset: worst-case}
   - {id: graded-legitimacy-constraint, role: plan, preset: worst-case, success_class: utopia}

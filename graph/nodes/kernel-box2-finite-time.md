@@ -1,11 +1,12 @@
 ---
 id: kernel-box2-finite-time
-kind: leaf
-leaf_kind: step
+kind: and
 author: "@smithy-verity"
-size: S
-size_reason: "one registered claim"
+size: M
+size_reason: "a claim and the record, bridge and completeness leaf of its formal version"
 version: 1
+children: [kernel.box2-finite-time.record, kernel.box2-finite-time.bridge, kernel.box2-finite-time.complete]
+work: [{kind: round, ref: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2}, {kind: priorities, ref: 104}]
 ---
 ## Statement
 In the corrigibility kernel's second box, for a logical inductor the ranking of
@@ -25,3 +26,5 @@ A public, registered finite-day statement about a price-level quantity;
 evidence for the strengthened-criterion picture of the finite-time crux.
 Whether the collapse's carries admit the same is the finite-time statement
 task's question.
+
+The formal version of this claim is the registered result `kernel.box2-finite-time` (ruling F5, 2026-10-23, matched by id): its record, bridge and completeness leaf are this node's conjuncts, the registry id stays on the record leaf (registry_id) and in the index, and the node kernel.box2-finite-time is a deprecated alias superseded by this one.

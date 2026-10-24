@@ -123,7 +123,7 @@ neighbourhoods) and the least miss is the cut excess, and a *budget* resource, w
 the criterion is this page's sliding-window sum D4 taken over the release window and
 budgets add across reasons (M1).  A supplier is affordable when both hold
 ([Corrigibility](Corrigibility) §5; the non-capture round's
-[`AFFORDABILITY_REFINEMENT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/AFFORDABILITY_REFINEMENT.md)).
+[`AFFORDABILITY_REFINEMENT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/AFFORDABILITY_REFINEMENT.md)<!--ref:round:2026-09-16-noncapture-compilation-->).
 
 ## What is open
 
@@ -146,4 +146,4 @@ settled away.
 the liability theory is
 [`2026-08-30-liability-theory`](https://github.com/A-M-Berns/alignment-workspace/tree/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/legitimacy/rounds/2026-08-30-liability-theory);
 the affordability characterization is in
-[`SHARP_PERSISTENCE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/SHARP_PERSISTENCE.md).
+[`SHARP_PERSISTENCE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/SHARP_PERSISTENCE.md)<!--ref:round:2026-08-31-normative-affordability-->.

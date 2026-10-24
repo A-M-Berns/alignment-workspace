@@ -2059,6 +2059,17 @@
         "inductor.warrant-inductor",
         "inductor.witness"
       ]
+    },
+    {
+      "id": "2026-10-22-map-as-canonical",
+      "date": "2026-10-22",
+      "project": null,
+      "path": "prompts/2026-10-22-map-as-canonical",
+      "verdict": null,
+      "depends_on": [],
+      "registered_classes": [],
+      "prompt": "prompts/2026-10-22-map-as-canonical/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

@@ -1,7 +1,7 @@
 ---
 id: public-legitimacy-improvable
 kind: or
-children: [thin-preservation-li-principal, thin-baseline-definition, thin-spec-for-evaluations, task-items-53-59, task-items-61-66, task-items-67-73, task-reconcile-canonical-pointer, public-legitimacy-improvable.residual]
+children: [item-109, item-110, item-108, task-items-53-59, task-items-61-66, task-items-67-73, task-reconcile-canonical-pointer, public-legitimacy-improvable.residual]
 improves: public-legitimacy-theory
 reality: "legitimacy between a human principal and an AI over real channels"
 author: "@smithy-verity"

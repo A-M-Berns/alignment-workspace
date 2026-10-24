@@ -72,13 +72,13 @@ obligation, which no participant's challenge, verdict or quote can manufacture.
 **Evidence.** The protocol's settlement fields, the closure receipt and its
 immutability under substitution are
 [`OccurrenceIntegrity.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/lean/Workspace/Normativity/Contrib/OccurrenceIntegrity.lean),
-registered as `integrity.receipts-immutable`; the six-way separation is §3 of the
+registered as `integrity.receipts-immutable`<!--ref:claim:integrity.receipts-immutable-->; the six-way separation is §3 of the
 consolidation round's
-[`CONSOLIDATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/CONSOLIDATION.md).
+[`CONSOLIDATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/CONSOLIDATION.md)<!--ref:round:2026-09-06-mathematical-consolidation-->.
 The attacks that forced the item/judgment distinction — genuine settlement with
 unrelated closure, rule revision and reinterpretation flipping a historical closure —
 are the integrity adversary round's
-[`ATTACKS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-05-integrity-adversary/ATTACKS.md).
+[`ATTACKS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-05-integrity-adversary/ATTACKS.md)<!--ref:round:2026-09-05-integrity-adversary-->.
 The structural settlement specification that preceded this account is the
 normative-continuity settlement round's
-[`SETTLEMENT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/198a86ae3e8a45737c3229e95718fa5882d06216/projects/normativity/legitimacy/rounds/2026-08-30-normative-continuity-settlement/SETTLEMENT.md).
+[`SETTLEMENT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/198a86ae3e8a45737c3229e95718fa5882d06216/projects/normativity/legitimacy/rounds/2026-08-30-normative-continuity-settlement/SETTLEMENT.md)<!--ref:round:2026-08-30-normative-continuity-settlement-->.

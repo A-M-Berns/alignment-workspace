@@ -1,0 +1,20 @@
+---
+id: post.theorem-li
+kind: and
+children: [post.theorem-li.record, post.theorem-li.bridge, post.theorem-li.complete]
+work: [{kind: round, ref: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority}, {kind: priorities, ref: 107}]
+size: M
+size_reason: "one registry entry, its Lean declaration and its bridge"
+version: 1
+author: "@smithy-verity"
+---
+## Statement
+Uses only `IsLogicalInductor.price_mem_Icc`. Inhabited by the house-sale data with any inductor and the constant-zero security for the queue.
+
+## Source
+projects/deference/CLAIMS.md, entry `post.theorem-li` (class lean-proved, status active, origin round 2026-10-01-thin-legitimacy-and-effective-authority; answers item 107).
+Documentation: verification: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md; context: prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md.
+The signature of `Workspace.Deference.Contrib.PostStatement.post_theorem_li` in lean/Workspace/Deference/Contrib/PostStatement.lean.
+
+## Notes
+Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; its hypotheses are unread (ruling F1, 2026-10-23): the record's Source carries the signature verbatim, and a reader files the hypothesis leaves. Registry note: Uses only `IsLogicalInductor.price_mem_Icc`. Inhabited by the house-sale data with any inductor and the constant-zero security for the queue. Follow-up (Part 3): takes the protocol data `pool`, `pr`, `asks`, the off-protocol clause and the queue's conformance as arguments; re-verified. The registry's `answers_item` is the `priorities` pointer to item 107 (ruling F2).

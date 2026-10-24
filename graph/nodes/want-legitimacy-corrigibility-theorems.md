@@ -2,7 +2,7 @@
 id: want-legitimacy-corrigibility-theorems
 kind: leaf
 leaf_kind: want
-owner: "@maintainer"
+owner: "@abram"
 want: true
 filed_from: quote
 given: legitimacy-conditioned-reflection@valid

@@ -45,6 +45,7 @@ commit.
   disposal edge an identity-frame transport step with `L = 1`, `ε = 0`.
   *Turns on:* taste about second-order liability — whether contesting a debt should
   itself cost some of it. Changes T4's constants, not its structure.
+  <!-- decision: open--whether-disposal-transfers-load-full-discount; touches: none; status: open -->
 
 - **Whether settlement's independence from the disposer's writes is a standing
   hypothesis of the program or a per-realization assumption.** Fixture 3′ of the
@@ -64,6 +65,7 @@ commit.
   principal's commitment settles the evaluation and the principal may also dispose of
   objections — so the entry stays queued until that realization says which sentences
   are observational and which are not.
+  <!-- decision: open--whether-settlement-s-independence-disposer-s; touches: item:87; status: open -->
 
 - **Where the answerability layer's code lives.** The theory is authoritative in
   `projects/normativity/consolidation-aug9/` and the only implementation is in
@@ -73,6 +75,7 @@ commit.
   *Turns on:* whether the program means to keep building on that layer.
   Promoting the code to a stable path earns its maintenance only if it will be
   imported again, and nothing in the repository says whether it will be.
+  <!-- decision: open--where-answerability-layer-s-code-lives; touches: none; status: open -->
 
 - **Whether Q3 graduates, and what succeeds item 28.** Two candidate objects for
   what foreclosure loses — Cartesian frames with `Commit` and `External^{/}`
@@ -83,6 +86,7 @@ commit.
   red-team report. *Turns on:* whether the missing idea has arrived. A round can
   exhibit candidates and cannot say they are enough, which is the judgment
   *Where ingenuity is the bottleneck* exists to hold.
+  <!-- decision: open--whether-q3-graduates-what-succeeds-item; touches: item:28, item:Q3; status: open -->
 
 
 - **Whether to adopt an evaluation-timing option in place of the single evaluation of
@@ -102,6 +106,7 @@ commit.
   *Turns on:* her evaluation load against the variance of the score and of the escrow
   (zero for the mixture, `σ²` for one hidden draw, `σ²/k` for `k`), and whether a hidden
   draw is acceptable; secondarily the weights' tail against the agent's delay reach.
+  <!-- decision: open--whether-adopt-evaluation-timing-option-place; touches: none; status: open -->
 
 - **The names of the corrigibility kernel's objects and boxes, and whether
   "constitutional" names the objective or the allocation.**  The kernel round (phase 1,
@@ -117,6 +122,7 @@ commit.
   the round recommends reserving it for the floor and the amendment procedure.
   *Turns on:* the post's readers and the collaborator's vocabulary — external knowledge
   the round lacks.
+  <!-- decision: open--names-corrigibility-kernel-s-objects-boxes; touches: none; status: open -->
 
 - **Which kernel definitions move to the specification layer in phase 2.**
   Recommended: `J` with its licensed acts (`AuthorityModule.AuthAlloc`, `Licensed`),
@@ -131,6 +137,7 @@ commit.
   *Turns on:* what is worth proving in phase 2 — whether the general split gate and a
   composite count over one model are built before promotion, or the count is promoted
   as the sum over four models the round reports it to be.
+  <!-- decision: open--which-kernel-definitions-move-specification-layer; touches: none; status: open -->
 
 - **The default evaluation schedule for the post's statement.**  The kernel is
   parametric in the schedule (`CorrigibilityKernel.VJ` over any `Weighting`;
@@ -140,6 +147,7 @@ commit.
   left reserved.
   *Turns on:* the entry above — her evaluation load against the variance and the hidden
   draw — and whether the post shows a schedule at all before that is ruled.
+  <!-- decision: open--default-evaluation-schedule-post-s-statement; touches: none; status: open -->
 
 - **Box 1's form: the `2r` bound alone, or with the identity's `o₂` term.**  Both are
   proved on one model (`CorrigibilityKernel.outcome_scorer_fully_updated`,
@@ -148,6 +156,7 @@ commit.
   fully-updated-deference argument's force goes; the bound is self-contained, the
   identity needs the three-value typing.
   *Turns on:* the post's audience — whether the reader is meant to see the identity.
+  <!-- decision: open--box-1-s-form-2r-bound; touches: none; status: open -->
 
 - **The supersession actions of the kernel round's inventory.**  Twenty entries in
   `projects/deference/rounds/2026-09-26-corrigibility-kernel/REPORT.md` §7, each
@@ -158,6 +167,7 @@ commit.
   *Turns on:* maintenance taste — deprecated aliases as in the `LegitimateEvolution`
   shim, or docstring pointers only — and whether the Theorem Spine keeps superseded names
   as history.
+  <!-- decision: open--supersession-actions-kernel-round-s-inventory; touches: none; status: open -->
 - **Who sets the block schedule, and whether bidders may request horizons.**  The
   LI/BRIA specification round takes the system-scheduled, non-dominant schedule of
   continuation BRIA as the default: every commitment representable is one that pays
@@ -165,6 +175,7 @@ commit.
   choose how long to commit — bidder-chosen horizons and an allocation rule for duration
   (`wiki/Continuation-BRIA.md` §9) — which no round has a shape for, and which decides
   the verdicts of `projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/TEST_SUITE.md` T6 and T7.
+  <!-- decision: open--who-sets-block-schedule-whether-bidders; touches: none; status: open -->
 
 - **Lease publicity: what predictors and other agents may read.**  The realized register
   treats the agent's published outputs — the selection and the estimate — as public
@@ -178,6 +189,7 @@ commit.
   tentative tests, and the paper's auction is then stuck while the criterion is met)
   against the modelling cost of hiding an output the criterion is stated on; and what
   a paper's readers will accept as "the predictor can see the agent".
+  <!-- decision: open--lease-publicity-what-predictors-other-agents; touches: none; status: open -->
 
 - **Whether a private random source is a menu option, and which randomness notion the
   random-reward clause uses.**  The paper's Theorem 4 uses bounded vMWC randomness
@@ -186,6 +198,7 @@ commit.
   the minimum, T5 scored with and without it.  *Turns on:* taste about whether
   adversarial-predictor problems belong to the synthesis at all, and whether "mental
   randomization" should be modelled as predictable.
+  <!-- decision: open--whether-private-random-source-menu-option; touches: none; status: open -->
 
 - **The recovery domain of the updateless extension.**  An updateless candidate cannot
   be a BRIA at unit level on the environments P1′ covers, so its BRIA-recovery
@@ -198,6 +211,7 @@ commit.
   candidate, makes myopic optimality and policy optimality agree; until it exists no
   updateless candidate can be certified as having recovered BRIA where it should
   (`projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/PROBLEM_STATEMENT.md` §2, M3 domain 4).
+  <!-- decision: open--recovery-domain-updateless-extension; touches: none; status: open -->
 
 - **Whether one-shot verdicts are wanted from a synthesis.**  Every guarantee of the
   minimum is an asymptotic average; the suite marks one-shot rows invisible rather than
@@ -205,6 +219,7 @@ commit.
   target S2.  *Turns on:* whether the program's decision-theory line aims at the
   classical one-shot problems at all, which is where the field's disagreements live and
   where no candidate in the audit has a theorem.
+  <!-- decision: open--whether-shot-verdicts-wanted-synthesis; touches: none; status: open -->
 
 - **Where Robust Openness belongs: legitimacy, or the authority layer.**  The
   thin-legitimacy round (`projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md`, Part A) defines the
@@ -216,6 +231,7 @@ commit.
   *Turns on:* whether a correct judgment formed on less than should have reached her is
   still legitimately hers — taste about what legitimacy is for, which no theorem decides;
   the mathematics only books the same failure in one ledger or the other.
+  <!-- decision: open--where-robust-openness-belongs-legitimacy-authority; touches: none; status: open -->
 
 - **The time-critical reserved matter: hold back, or an emergency delegation fixed in
   advance.**  On the latency fixture (`projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/src/effective_authority.py`,
@@ -225,6 +241,7 @@ commit.
   gives up her control surface over the matter, with the trigger to be declared.
   *Turns on:* which matters she would rather lose by latency than delegate, and whether a
   declared trigger is acceptable — knowledge of the principal the round lacks.
+  <!-- decision: open--time-critical-reserved-matter-hold-back; touches: none; status: open -->
 
 - **Confirm, amend or strike M1 — that normative content enters the market as
   obligations (credal constraints on priced sentences) and as values (securities traded
@@ -235,6 +252,7 @@ commit.
   *Turns on:* whether the maintainer intends a distinction the pinned substrate cannot
   express — a security assessed on nothing — or the two forms are one object seen from
   the row side and the account side.
+  <!-- decision: open--confirm-amend-strike-m1-normative-content; touches: none; status: open -->
 
 - **What a warrant's security settles against (M2 of the warrant-enforcement-semantics
   round).**  The round ran deductive, evaluation and pegged settlement as a fork on one
@@ -247,6 +265,7 @@ commit.
   security assessed on nothing — is wanted, and whether a linear strength row that
   contraposes under settlement is acceptable or the warrant's form changes (item 113);
   taste about what a reason's security is, which no theorem here decides.
+  <!-- decision: open--what-warrant-s-security-settles-against; touches: item:112, item:113; status: open -->
 
 - **Confirm or strike the 2026-08-08 and 2026-08-09 rulings landed on 2026-10-21 (M5 of
   the rebuttal-and-end-to-end dispatch).**  Past-self charges burn; seam ordering "reasons
@@ -256,6 +275,7 @@ commit.
   seed-statics round's outstanding action 1) is still open.
   *Turns on:* whether the conversational rulings are what the maintainer meant, and
   whether a re-selection burns — taste about the trace discipline the round lacks.
+  <!-- decision: open--confirm-strike-2026-08-08-2026; touches: none; status: open -->
 
 - **The bankroll across a reopening: accept `3ρ(2 + ρ)`, or tighten the rule.**  Under
   rebuttal by settlement the proved bankroll across one reopening is `3ρ(2 + ρ)`
@@ -267,6 +287,7 @@ commit.
   *Turns on:* whether the market should charge a trader for having bet against a conclusion
   that was later refuted — taste about what rebuttal settles for whom, which the mathematics
   only prices.
+  <!-- decision: open--bankroll-across-reopening-accept-3-2; touches: item:123; status: open -->
 
 - **Whether a warrant's entitlement ends with its obligation's account.**  The consolidation
   round's `WarrantInductor.Entitlement` requires the originating obligation's account to carry
@@ -276,10 +297,103 @@ commit.
   after the debt is paid.  *Turns on:* what a reason's standing is once the obligation that
   incurred it is resolved — taste about whether discharge retires the warrant or only the
   debt, which the account records and the mathematics does not decide.
+  <!-- decision: open--whether-warrant-s-entitlement-ends-obligation; touches: none; status: open -->
+
+- **The second maintainer's confirmation of rulings M1–M8 (2026-10-22).**  The eight
+  rulings of the map-as-canonical round were taken by one maintainer in conversation and
+  landed as the round's second commit; the other maintainer has not confirmed them. The six
+  follow-up rulings F1–F6 of 2026-10-23 (hypotheses filed when read, the registry join as an
+  edge, the derived files out of the tree, one decomposition per line, a formal result under
+  the claim it establishes, dockets by programme) were taken the same way and await the same
+  confirmation, as were the four rulings G1–G4 of the second follow-up of 2026-10-23 (the
+  digest's one shape, frames that hold what they are about with roots as goals, registered
+  results bearing on items rather than answering them, an unconfirmed want at weight 0).
+  *Turns on:* whether the co-maintainer accepts the handle, the one-plan frame with its
+  seven lines and their owners, the drafted programmes, the render of `PRIORITIES.md` and
+  the decision anchors as stated — a decision about the program's own shape.
+  <!-- decision: open--second-maintainer-confirmation-rulings-m1-m8; touches: node:the-program, node:normativity, node:legitimacy; status: open -->
+
+- **The ambiguous and blocked merges of ruling F5 (2026-10-23).**  The mechanical match of
+  bagged formal results to the informal claims they establish merged 2 of
+  244; 54 results have several candidates or share their one candidate
+  with another result, and 8 have one candidate the protocol cannot merge into (a question
+  or route leaf, a `cases` or `or` node, a leaf carrying `given`, or a claim another result
+  already took). The lists are in `prompts/2026-10-22-map-as-canonical/REPORT.md`,
+  *Follow-up of 2026-10-23*, Part 3.
+  *Turns on:* which claim a result establishes where several summary claims cite the same
+  round, and whether a claim established by several registered declarations (one `and`
+  holds one record) gets a shape of its own — a reading of the mathematics, not a
+  mechanical rule.
+  <!-- decision: open--ambiguous-blocked-merges-ruling-f5; touches: node:effective-authority-layer, node:post-corrigible-normative-learning, node:authority-typed-corrigibility, node:kernel-lexical-order-hypothesis; status: open -->
+
+- **Whether `graph/tasks.md` and `graph/view.md` follow the derived files out of the tree.**  Ruling
+  F3 removed graph/derived.json and graph/index.json from the tree and kept the two renders
+  committed because a pull request's diff of them is the point. The sizes at the follow-up are
+  in the report; both grow with the node count.
+  *Turns on:* whether a reviewer reads the renders in the diff or on the published branch —
+  taste about where review happens, which the maintainers decide once the site exists.
+  <!-- decision: open--whether-tasks-view-follow-derived-files-out-of-tree; touches: none; status: open -->
+
+- **The wording of `the-program`'s question and of every line frame's.**  The round worded
+  them from `wiki/Home.md` and the existing nodes' Statements (`graph/nodes/the-program.md`,
+  `normativity.md`, `legitimacy.md`, `deference-and-trust.md`, `decision-theory.md`,
+  `stance-and-level.md`); each is provisional.
+  *Turns on:* taste about how the maintainers would pose their own questions, which no
+  reading of the wiki supplies.
+  <!-- decision: open--wording-program-s-question-every-line-frame-s; touches: node:the-program, node:normativity, node:legitimacy, node:deference-and-trust, node:decision-theory, node:stance-and-level; status: open -->
+
+- **The roots marked *owner has not confirmed*.**  Nine frames drafted from the wiki
+  (`normativity`, `legitimacy`, `seed-theory`, `operative-force`, `normative-inductor`,
+  `response-learning`, `normative-record`, `integrity-and-record`,
+  `openness-and-non-capture`, `authorship-and-transparency`) carry `filed_from: wiki`; an
+  owner confirms one by removing the field. The existing sub-frames were re-owned by the
+  line they sit under and the thirteen wants by whose public words they quote
+  (`prompts/2026-10-22-map-as-canonical/REPORT.md`, Part 6).
+  *Turns on:* whether each decomposition is the owner's, which only the owner can say.
+  <!-- decision: open--roots-marked-owner-has-not-confirmed; touches: node:normativity, node:legitimacy, node:seed-theory, node:operative-force, node:normative-inductor, node:response-learning, node:normative-record, node:integrity-and-record, node:openness-and-non-capture, node:authorship-and-transparency; status: open -->
+
+- **Which of the foundation's 180 claims are lifted into the map.**  The August 9
+  consolidation is one node (`normativity-aug9-foundation`) with a `foundation` pointer;
+  four of its claims are cited by name from one existing node (the item-1 node, through
+  `NL-SI-A2`, `A3`, `A4`, `A7`) and none from any other.
+  *Turns on:* what is worth lifting into the modern registry's vocabulary, a decision
+  the registry's own first section reserves.
+  <!-- decision: open--which-foundation-s-180-claims-lifted; touches: node:normativity-aug9-foundation, item:1; status: open -->
+
+- **The priority words on every want.**  Thirteen wants stand, each `filed_from: quote`
+  with no priority word (none is filed by this round); five are now owned by `@anson`
+  and eight by `@abram` by the attribution of their source documents.
+  *Turns on:* each owner's one word (high, medium, low or none), which nobody else writes.
+  <!-- decision: open--priority-words-every-want; touches: none; status: open -->
+
+- **Whether the clean-room records get a registry.**  Eighty `record` leaves name
+  kernel-checked declarations of `projects/deference/faf-cleanroom-2026-10-02/`, which no
+  listed registry holds, so they cap at level 2 (`graph/SURVEY.md`, *What the protocol
+  cannot represent*, 1).
+  *Turns on:* whether a tree this repository's CI does not build may adjudicate validity
+  for the map — a trust-chain question.
+  <!-- decision: open--whether-clean-room-records-get-registry; touches: none; status: open -->
+
+- **The top frame's owner, and the sub-frames' owners.**  The top frame keeps one owner
+  (`@anson`) because ruling M2 lists owners for `the-program` and its lines only; the
+  existing sub-frames were re-owned by line (`@abram` for the deference, decision-theory,
+  stance and abstraction lines; both for legitimacy; `@anson` for the corrigibility
+  landscape, whose sources are the first maintainer's position statements).
+  *Turns on:* whose question each frame poses, a presentation input the owner sets.
+  <!-- decision: open--top-frame-s-owner-sub-frames-owners; touches: node:the-program, node:corrigibility-landscape; status: open -->
+
+- **Placements the round left where they were.**  `wiki-corpus-maintenance` stays a
+  plan of `deference-and-trust` rather than `enabling-work`; the Progress results
+  (`progress.*`, `ni.progress-bound`) sit under `normative-inductor` while the wiki's
+  sidebar lists normative induction under legitimacy; 120 items hang in per-project
+  dockets with no finer goal identified.
+  *Turns on:* where each belongs in the maintainers' own picture of the lines.
+  <!-- decision: open--placements-round-left-where-they-were; touches: node:wiki-corpus-maintenance, node:normative-inductor; status: open -->
 
 ## Settled
 
 ### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer
+<!-- decision: 2026-09-15--corrigibility-program-consolidated-research-state-corrigibility; touches: item:86, item:89, claim:authorship.mediation-by-reexecution -->
 
 **agent-decided, reversible.** The mediated-repair-dominance, evaluation-ecosystem and
 committed-principal-program rounds land together through one merge, and the wiki tells
@@ -332,6 +446,7 @@ filing effect completeness as a new item; deleting the second pass's superseded 
 rather than marking them.
 
 ### 2026-09-10 — the principal's decision procedure is a committed trace program in a total first-order language
+<!-- decision: 2026-09-10--principal-s-decision-procedure-committed-trace; touches: none -->
 
 **agent-decided, reversible.** In the evaluation ecosystem of
 `projects/deference/rounds/2026-09-10-committed-principal-program/`, the mandate event
@@ -349,6 +464,7 @@ fact); an opaque committed hash of the procedure (re-executable by nobody); typi
 program over the whole log (it would read the prohibited channels).
 
 ### 2026-09-10 — a valid answer re-executes the mandated program on the commit's strict prefix; a non-matching vector is void, and computational integrity is not a hypothesis of authorship
+<!-- decision: 2026-09-10--valid-answer-re-executes-mandated-program; touches: claim:authorship.mediation-by-reexecution -->
 
 **agent-decided, reversible.** The commit carries its process receipt `(issue, prefix)`;
 the builder admits a commit as an answer receipt only if the prefix is the commit's own
@@ -367,6 +483,7 @@ before a later reason); a new `Protocol` field for the procedure (not needed: th
 is event authentication); treating a mismatching commit as the payload with a flag.
 
 ### 2026-09-10 — three 2026-09-09 modelling decisions are amended by the pressure pass: the registry binds keys to parties, representation is the registrar's move, and counterfactual branches are declared log transforms
+<!-- decision: 2026-09-10--2026-09-09-modelling-decisions-amended; touches: none -->
 
 **agent-decided, reversible.** (1) The warrant registry holds `(party, key)` pairs with
 revocation: a commit under another party's key is not a receipt (the 2026-09-09
@@ -388,6 +505,7 @@ barrier already voids a realized jam); adopting `typed+` as the default ahead of
 queued ruling.
 
 ### 2026-09-09 — the evaluation ecosystem's log is authored events with one port per occurrence, read through the prefix
+<!-- decision: 2026-09-09--evaluation-ecosystem-s-log-authored-events; touches: none -->
 
 **agent-decided, reversible.** The concrete evaluation ecosystem of
 `projects/deference/rounds/2026-09-09-evaluation-ecosystem-realization/` fixes the log
@@ -407,6 +525,7 @@ produces needs it); authentication modelled as signatures inside the log (re-imp
 same assumption with more structure).
 
 ### 2026-09-09 — the reason trace is the admitted event kinds referenced by content, the prohibited class is three kinds, and a prohibited event voids even when ineffective
+<!-- decision: 2026-09-09--reason-trace-admitted-event-kinds-referenced; touches: none -->
 
 **agent-decided, reversible.** The declared reason trace `R_{n:m}` is the projection of
 the log before commitment onto `REASON`, `WITHDRAW`, `DELIB`, `RAISE`, `ROUTE`, `DISPOSE`,
@@ -425,6 +544,7 @@ references; a trace of final reason state (defeated by `transient`); counterfact
 branches declared as free data (they would be the model declaring its own openness).
 
 ### 2026-09-09 — the principal policy class is reading versus susceptible, and the day-`n` credence process is the Laplace rule
+<!-- decision: 2026-09-09--principal-policy-class-reading-versus-susceptible; touches: none -->
 
 **agent-decided, reversible.** The ecosystem's principals are a **reading** principal
 whose verdict is a function of the reason trace and a **susceptible** one whose
@@ -442,6 +562,7 @@ not as the default); an empirical-frequency price without the prior (undefined a
 `n = 0`); building a logical inductor for the model (out of scope, and the tower stays
 paper).
 ### 2026-09-09 — the Level III transfer is taken in the activated register, and the mediation cost is the residual-frame morphism's failure on the protected projection
+<!-- decision: 2026-09-09--level-iii-transfer-taken-activated-register; touches: item:84, item:89 -->
 
 **agent-decided, reversible.**  The mediated-repair-dominance round.  (1) The corrigible
 comparator for a physical continuation is its **mediated lift**: the same continuation
@@ -512,6 +633,7 @@ policy-class domain; requiring non-manipulation in the first theorem; a new prio
 duplicating containment.
 
 ### 2026-09-08 — continuation BRIA is canonical: the hypothesis is `(continuation, claim)` at a system block contract, the test is realized execution, the weighted auction is opening-timed, and non-dominance is the schedule boundary
+<!-- decision: 2026-09-08--continuation-bria-canonical-hypothesis-continuation-claim; touches: item:28, item:86 -->
 
 **agent-decided, reversible.** Closing pass on the continuation-BRIA round, landed with
 its wiki page `Continuation-BRIA`.  (1) A continuation hypothesis is `h(χ_k) = (c_{h,k},
@@ -552,6 +674,7 @@ existence theorem as a statement of record ahead of a consumer; leaving the "pau
 label with a footnote; mirroring registry rows onto the theorem-spine page.
 
 ### 2026-09-08 — continuation bounded inductive rationality is weighted by lease duration, and its competence statement is about hypotheses on the learner's own histories
+<!-- decision: 2026-09-08--continuation-bounded-inductive-rationality-weighted-lease; touches: item:86 -->
 
 **agent-decided, reversible.** The dynamic-competence layer of the corrigibility program
 takes the following shape (as amended by the three later passes recorded below).  (1) For a fixed horizon `m`, bounded inductive rationality over
@@ -603,6 +726,7 @@ branch); hypothesis-requested lease lengths through a combinatorial auction (not
 attempted).
 
 ### 2026-09-08 — the canonical legitimacy predicate may name a designated principal role
+<!-- decision: 2026-09-08--canonical-legitimacy-predicate-may-name-designated; touches: none -->
 
 **Maintainer ruling, taken in conversation and landed by the consolidation round.** A
 legitimacy predicate may presuppose a designated protected participant. The mathematics
@@ -616,6 +740,7 @@ authorized succession, which is a `LocalLaw` in the account.
 *Rejected alternative:* a purely structural, party-free predicate, which does not exist.
 
 ### 2026-09-08 — the deference grade acquires an activation index
+<!-- decision: 2026-09-08--deference-grade-acquires-activation-index; touches: none -->
 
 **Maintainer ruling, taken in conversation and landed by the consolidation round.** The
 principal's grade in the deference kernel is indexed by the authority in force: the
@@ -629,6 +754,7 @@ revised.
 nowhere to attach.
 
 ### 2026-09-08 — `Unresolved` on a bare record is the wanted shape
+<!-- decision: 2026-09-08--unresolved-bare-record-wanted-shape; touches: none -->
 
 **Maintainer ruling, taken in conversation and landed by the consolidation round.** A
 legitimacy criterion that returns `Unresolved` on every bare DR-MDP example is the correct
@@ -642,6 +768,7 @@ the missing structure from a counterfactual — the reference-evaluator move in 
 form.
 
 ### 2026-09-08 — endpoint preservation is not a target of this program
+<!-- decision: 2026-09-08--endpoint-preservation-target-program; touches: item:28 -->
 
 **Maintainer ruling, taken in conversation and landed by the consolidation round.** The
 source corpus's proposal — an advisor's influence is legitimate when it changes how fast
@@ -655,6 +782,7 @@ decision leaves the queue.
 *Rejected alternative:* authorship as convergence location (endpoint preservation).
 
 ### 2026-09-08 — the inertness-dichotomy "next step" entry is retired in favour of a filed presentation priority
+<!-- decision: 2026-09-08--inertness-dichotomy-next-step-entry-retired; touches: item:61, item:88 -->
 
 **Maintainer ruling, taken in conversation and landed by the consolidation round.** The
 queue entry asking whether to answer `PRIORITIES.md` item 61 before widening the toy
@@ -666,6 +794,7 @@ mature presentation of affordability from the general traderization perspective,
 the current theory poses.
 
 ### 2026-09-08 — legitimate deference lands as one stack: conditional authoritative regret is the target, the completion bound is two-sided, authorship is issuance-rooted, and reason coverage is a barrier
+<!-- decision: 2026-09-08--legitimate-deference-lands-stack-conditional-authoritative; touches: item:87 -->
 
 **agent-decided, reversible.** The authority-activated-value and reason-mediated-authorship
 rounds land on `main` together with this consolidation, with their known defects repaired
@@ -700,6 +829,7 @@ blindness inside `C_n`; a broad epistemic-adequacy layer for reason supply; fili
 as several items.
 
 ### 2026-09-07 — authorship of a future evaluation is exclusive binding plus reason mediation, read as a derived predicate over the answer receipt and its payload
+<!-- decision: 2026-09-07--authorship-future-evaluation-exclusive-binding-plus; touches: none -->
 
 **agent-decided, reversible.** The authorship condition that enters the activation event
 of an evaluation occurrence is `ReasonMediatedAuthorship.Authored`: the binding event on
@@ -735,6 +865,7 @@ seed privacy); literal no-preview as the admissible-domain condition (fixture H)
 global `Evolution` as the consumer's Integrity hypothesis (fixture J).
 
 ### 2026-09-07 — the legitimacy→deference interface is an activated evaluation occurrence, read occurrence-locally
+<!-- decision: 2026-09-07--legitimacy-deference-interface-activated-evaluation-occurrence; touches: none -->
 
 **agent-decided, reversible.** An advisor's deference target is the *actual* future
 principal's evaluation, admitted at time `n` as an anchored evaluation occurrence in the
@@ -762,6 +893,7 @@ A); global `Legitimate O_n O_m` as the consumer hypothesis (fixture H); a "resol
 from the account).
 
 ### 2026-09-07 — the bibliography is exempt from the name lint
+<!-- decision: 2026-09-07--bibliography-exempt-name-lint; touches: item:F6 -->
 
 **Maintainer ruling, taken in conversation and landed by the decision-theory-bill
 round.** `wiki/Sources.md` is added to <!--historical-->`tests/name_lint.py`<!--/historical-->'s `ALLOWED_FILES`: a
@@ -773,6 +905,7 @@ tracked prose still use the backtick form.
 logic over every document it has passed; left as F6's general fix.
 
 ### 2026-09-07 — the decision adapter is a sound Lipschitz reader of adequacy scores; the static choice problem is closed conditional on margin
+<!-- decision: 2026-09-07--decision-adapter-sound-lipschitz-reader-adequacy; touches: none -->
 
 **agent-decided, reversible.** The Normative Inductor's decision-theory bill is the
 coupling hypothesis of `PracticalCertificate.adequate_set_route`.  Its abstract form is
@@ -804,6 +937,7 @@ non-compensation; and a hard admissibility gate, which is sound and has no Lipsc
 constant (`hardGate_discontinuous`).
 
 ### 2026-09-06 — the incentive extension of corrigibility is a named-assumption identity; Level II is claimed, Levels III and IV are not
+<!-- decision: 2026-09-06--incentive-extension-corrigibility-named-assumption-identity; touches: none -->
 
 **agent-decided, reversible.** The agent's gain from substituting its choice for the
 protected principal's is identically the selected gap plus the principal's regret
@@ -820,6 +954,7 @@ as its hypothesis, which relabels incentive corrigibility on the violating class
 than reducing it.
 
 ### 2026-09-06 — corrigibility is targeted as relative constitutional corrigibility, a consumer of the legitimacy spine
+<!-- decision: 2026-09-06--corrigibility-targeted-relative-constitutional-corrigibility-consumer; touches: none -->
 
 **agent-decided, reversible.** The corrigibility line's target is *relative constitutional
 corrigibility under declared protocol, openness and practical semantics*: Integrity conserves
@@ -838,6 +973,7 @@ the adversarial search" — which nothing on `main` supports and which the round
 is not reached by any combination of Integrity, openness, authentication and eligible service.
 
 ### 2026-09-08 — the legitimacy / normative-induction phase is canonicalized
+<!-- decision: 2026-09-08--legitimacy-normative-induction-phase-canonicalized; touches: item:78 -->
 
 **Maintainer-dispatched canonicalization pass**, executed with write scope by the
 round at `prompts/2026-09-08-canonicalization/`. It lands the cumulative content of
@@ -897,6 +1033,7 @@ citation into the rounds dangling; registering the conditional realization theor
 on the strength of their proofs alone.
 
 ### 2026-09-07 — the public obligation state is the accounted state, and Integrity is an evolution of it
+<!-- decision: 2026-09-07--public-obligation-state-accounted-state-integrity; touches: none -->
 
 **agent-decided, reversible.** The object a consumer reads is
 `ObligationState = (boundary, account)`: the account — one proof-relevant program per
@@ -912,6 +1049,7 @@ receipts persist, denotations are transported.
 loses the account and lets witnesses disagree about it.
 
 ### 2026-09-07 — Robust Openness is required at every state of a legitimate evolution
+<!-- decision: 2026-09-07--robust-openness-required-every-state-legitimate; touches: none -->
 
 **agent-decided, reversible.** `LegitimateSegment` requires `RobustOpenActual` for
 every declared concern at every state of the underlying evolution, endpoints included.
@@ -926,6 +1064,7 @@ state and is reflexive at open states.
 proposed.
 
 ### 2026-09-07 — Robust Openness at a prefix includes the actual branch by definition
+<!-- decision: 2026-09-07--robust-openness-prefix-includes-actual-branch; touches: none -->
 
 **agent-decided, reversible.** `Scenario.RobustOpenActual := ActualOpen ∧ RobustOpen`,
 with `J` indexing proper interventions only. The consolidation round read the actual
@@ -939,6 +1078,7 @@ an element into every application's intervention index and makes the identity a 
 obligation of the semantics.
 
 ### 2026-09-07 — closure yields a resolution witness, not answer evidence
+<!-- decision: 2026-09-07--closure-yields-resolution-witness-answer-evidence; touches: none -->
 
 **agent-decided, reversible.** `Protocol.Evidence` is renamed `Resolution`: a witness
 that a requirement has been legitimately accounted for, supplied by an adequate answer
@@ -950,6 +1090,7 @@ witnesses, while the old name made a closure receipt produce answer evidence.
 consumes.
 
 ### 2026-09-07 — local laws are unary in the parent; aggregation is a deferred extension
+<!-- decision: 2026-09-07--local-laws-unary-parent-aggregation-deferred; touches: item:82 -->
 
 **agent-decided, reversible.** `LocalLaw` transforms one requirement into successors
 and expresses carry, split, refinement and re-representation. It does not express a
@@ -962,6 +1103,7 @@ not adopted, because no theorem or application requires it.
 *Rejected alternative:* generalising the account to hypergraphs now.
 
 ### 2026-09-06 — Progress is the transport-weighted edge loss plus residual
+<!-- decision: 2026-09-06--progress-transport-weighted-edge-loss-plus; touches: none -->
 
 **agent-decided, reversible.** The canonical Progress statistic is
 `Σ_{e,s} T(e,s) Λ_{anchor e,s}(Π_s) + D (1 − Σ T)`, with `Π_s` the one response
@@ -975,6 +1117,7 @@ anchor, not the occurrence; multiplicity enters through `μ` and `T`.
 existed, and listing the dominance adapter as a missing core arrow.
 
 ### 2026-09-06 — Integrity's primitive is the occurrence-indexed account
+<!-- decision: 2026-09-06--integrity-s-primitive-occurrence-indexed-account; touches: none -->
 
 **agent-decided, reversible.** The Integrity certificate is a boundary-indexed
 segment of transitions, each supplying for every live port an *account* — a term of
@@ -991,6 +1134,7 @@ instance and is demoted to evidence.
 which restates the conclusion at one step and collapses equal-content occurrences.
 
 ### 2026-09-06 — standing is Robust Openness at the null intervention
+<!-- decision: 2026-09-06--standing-robust-openness-null-intervention; touches: none -->
 
 **agent-decided, reversible.** The protected party's continued standing on the
 carrier of every applicable concern is the `(P)` clause of Robust Openness, and the
@@ -1005,6 +1149,7 @@ the resolver stands) is the counterexample to deriving standing from Integrity.
 which mixes who-may-act into what-is-owed and duplicates `(P)`.
 
 ### 2026-09-06 — the Non-Capture certificate is the persistence bill
+<!-- decision: 2026-09-06--non-capture-certificate-persistence-bill; touches: none -->
 
 **agent-decided, reversible.** Given actual coverage, the noncapture-certificate
 round's bill `(S) ∧ (R+) ∧ (P)` is logically equivalent to Robust Openness
@@ -1020,6 +1165,7 @@ suppression under a declared intervention is a Robust Openness matter.
 independent content.
 
 ### 2026-09-06 — the conditional Normative Inductor theorem names only what it uses
+<!-- decision: 2026-09-06--conditional-normative-inductor-theorem-names-only; touches: none -->
 
 **agent-decided, reversible.** `EndToEndHypotheses.end_to_end` is removed: six of its
 fields were opaque predicates returned unchanged in its conclusion and consumed by
@@ -1031,6 +1177,7 @@ enter the NI theorem through the type of the evaluation, not as predicates.
 *Rejected alternative:* relabelling the structure as a diagnostic and keeping it.
 
 ### 2026-09-05 — author consolidation: two rounds landed, the wiki restated as legitimate cognitive evolution
+<!-- decision: 2026-09-05--author-consolidation-rounds-landed-wiki-restated; touches: none -->
 
 **Maintainer-dispatched consolidation pass**, executed with write scope by the round at
 `prompts/2026-09-05-author-consolidation/`. Not a research round: no theorem is added,
@@ -1098,6 +1245,7 @@ carries it); a wiki page per round (the wiki is the conceptual register and the 
 directories are the evidence).
 
 ### 2026-09-05 — a symlink into a local build cache reached `main`, and is removed
+<!-- decision: 2026-09-05--symlink-local-build-cache-reached-main; touches: none -->
 
 **Agent-decided, reversible; a scrub.** <!--historical-->The consolidation pass above
 planted a symlink at the Lean build-cache path `lean/.lake`, pointing at another
@@ -1113,6 +1261,7 @@ one machine's filesystem in a public tree.
 squash message is correct about everything but this.
 
 ### 2026-09-03 — the Defeat Principle is adopted
+<!-- decision: 2026-09-03--defeat-principle-adopted; touches: item:77 -->
 
 **Maintainer ruling**, taken in conversation on 2026-09-03 and landed here as the
 first commit of the round dispatched from it, per the standing practice that a ruling
@@ -1146,6 +1295,7 @@ is the laundering channel item 77 names; the transfer reading closes it by const
 at the cost of requiring a successor.
 
 ### 2026-09-02 — grounds are unified, and defeat is answerable but not coalition-proof
+<!-- decision: 2026-09-02--grounds-unified-defeat-answerable-coalition-proof; touches: item:77, item:F3 -->
 
 **Agent-decided, reversible.** The round ran with the Defeat Principle as an
 explicit hypothesis; the principle was **adopted by maintainer ruling on 2026-09-03**
@@ -1207,6 +1357,7 @@ Settlement facts have no birth position, no parents, no resolver and no opener, 
 them. A settlement fact is not something a participant did.
 
 ### 2026-09-02 — post-merge terminology corrections in the frozen September checkpoint
+<!-- decision: 2026-09-02--post-merge-terminology-corrections-frozen-september; touches: item:47, item:F2, item:Q1, item:Q2 -->
 
 **Agent-decided, reversible.** A scrub, not a research decision. After the naming
 audit merged, two residual uses of pre-audit terminology were found in the frozen
@@ -1250,6 +1401,7 @@ exists to prevent, and because the two corrections above are the ones that were
 actually misleading about current typing.
 
 ### 2026-09-02 — the September naming audit
+<!-- decision: 2026-09-02--september-naming-audit; touches: item:74 -->
 
 **Maintainer rulings**, taken in conversation after a connected-prose audit of the
 program's coined terms, and applied across the checkpoint and the wiki. Historical
@@ -1332,6 +1484,7 @@ regenerated so the backlog reflects what remains.
 were ambiguous.
 
 ### 2026-09-01 — Progress is claim-weighted
+<!-- decision: 2026-09-01--progress-claim-weighted; touches: item:Q3 -->
 
 **Maintainer ruling**, taken in conversation and landed here. The bare name
 **Progress** denotes the **claim-weighted** form: `E_{mu^r_N}[d^r] -> 0`, the defect
@@ -1358,6 +1511,7 @@ the definition at the price of a headline about the dates the reasoner chose to 
 on.
 
 ### 2026-09-01 — the September checkpoint freezes at merge; the wiki never does
+<!-- decision: 2026-09-01--september-checkpoint-freezes-merge-wiki-never; touches: none -->
 
 **Maintainer ruling.** The checkpoint becomes an `agent-consolidated` tree once the
 outstanding decisions are settled — which this pass does. From merge:
@@ -1386,6 +1540,7 @@ which is the only thing that makes "which of two conflicting statements is curre
 answerable.
 
 ### 2026-09-01 — the bounded-delay feasibility proof keeps its citation
+<!-- decision: 2026-09-01--bounded-delay-feasibility-proof-keeps-citation; touches: none -->
 
 **Maintainer ruling.** BD1's sufficiency proof invokes the Gale–Hoffman feasibility
 condition and will continue to. The prior-art ledger records it as a **direct
@@ -1401,6 +1556,7 @@ independence from a theorem the proof cited; relabelling fixed that, and the
 citation itself was never the problem.
 
 ### 2026-09-01 — the legitimacy decomposition is the working framing, and not a claim
+<!-- decision: 2026-09-01--legitimacy-decomposition-working-framing-claim; touches: none -->
 
 **Maintainer ruling.** The decomposition
 
@@ -1427,6 +1583,7 @@ shape survives contact with a statement.
 costs more than the delay, and the predicate is an afternoon's work away.
 
 ### 2026-09-01 — Pettit is removed from the prior-art ledger
+<!-- decision: 2026-09-01--pettit-removed-prior-art-ledger; touches: none -->
 
 **Maintainer ruling: it was not really used.** The entry recorded an idea — that
 holding-responsible is a relation between parties rather than a property of one —
@@ -1446,6 +1603,7 @@ right marking for an idea in use whose source is lost, and the wrong one for an 
 that was never taken.
 
 ### 2026-09-01 — a gate checks that cited paths are in the repository
+<!-- decision: 2026-09-01--gate-checks-cited-paths-repository; touches: none -->
 
 **Maintainer ruling: build it.** `tests/untracked_pointers.py` requires every round
 record's paths, and every rooted citation in a live document that resolves on disk,
@@ -1469,6 +1627,7 @@ and "you never committed something" call for opposite fixes and deserve differen
 messages.
 
 ### 2026-09-01 — the answerability stack is landed on `main`
+<!-- decision: 2026-09-01--answerability-stack-landed-main; touches: none -->
 
 **agent-decided, reversible.** Six research rounds — CF coverage continuity
 interface, the locality and exact NCSS audit, the Proper Exercise refinement
@@ -1505,6 +1664,7 @@ saying something false about its own contents for no benefit once the merge is
 available.
 
 ### 2026-09-01 — affordability pays for the settlement-friction residual
+<!-- decision: 2026-09-01--affordability-pays-settlement-friction-residual; touches: none -->
 
 **agent-decided, reversible.** On the sharp robust charge's linear branch the
 liability charge is computed from the supremum over live worlds of the same deficit
@@ -1531,6 +1691,7 @@ of the two routes made a date cheap decides whether Progress follows.
 obstruction, which double-counts a quantity the liability budget already pays for.
 
 ### 2026-09-01 — the batching theorem needs concavity and equal claim masses
+<!-- decision: 2026-09-01--batching-theorem-needs-concavity-equal-claim; touches: none -->
 
 **agent-decided, reversible.** Two hypotheses were understated. The no-splitting
 lemma needs **concavity**, not star-shapedness: with other load already at the two
@@ -1551,6 +1712,7 @@ assumption on masses at all.
 comparing.
 
 ### 2026-09-01 — persistence and eventual full service are the same existence question
+<!-- decision: 2026-09-01--persistence-eventual-full-service-same-existence; touches: none -->
 
 **agent-decided, reversible.** Supersedes the entry below. Under exogenous
 star-shaped date costs, unlimited deferral, fungible service, finite individual
@@ -1579,6 +1741,7 @@ intermediate obligation between persistence and timeliness. There is no such
 intermediate in this benchmark.
 
 ### 2026-09-01 — the transport residual is claim-normalized
+<!-- decision: 2026-09-01--transport-residual-claim-normalized; touches: none -->
 
 **agent-decided, reversible.** Deferred Service Transfer now carries an
 edge-dependent error `eps(t,s)` and contributes the claim-normalized average
@@ -1593,6 +1756,7 @@ mass is a constant of the instance.
 delay-dependence that is the whole content of a timeliness result.
 
 ### 2026-09-01 — the friction-free theorem needs nested assessment
+<!-- decision: 2026-09-01--friction-free-theorem-needs-nested-assessment; touches: none -->
 
 **agent-decided, reversible.** The liability charge at date `t` is computed against
 `A_t` and the friction residual at horizon `N` is evaluated against `A_N`. These are
@@ -1612,6 +1776,7 @@ conservative direction "obviously" dominates. It dominates only within one date'
 live set.
 
 ### 2026-09-01 — the serviceability frontier is convex under fractional splitting
+<!-- decision: 2026-09-01--serviceability-frontier-convex-under-fractional-splitting; touches: none -->
 
 **agent-decided, reversible.** Total liability and normalized transport error are
 both *linear* in the transport plan, and admissible plans at a fixed horizon and
@@ -1625,6 +1790,7 @@ withdrawal.
 which is what the previous pass did.
 
 ### 2026-09-01 — deadline insolvency admits a finite certificate
+<!-- decision: 2026-09-01--deadline-insolvency-admits-finite-certificate; touches: none -->
 
 **agent-decided, reversible.** Unlike persistence insolvency, which is a claim about
 the infinite future needing a proved tail bound, deadline insolvency concerns claims
@@ -1643,6 +1809,7 @@ import an unavailable tail bound into the finite case or claim certification the
 infinite case cannot support.
 
 ### 2026-09-01 — the September checkpoint is the current human-facing view
+<!-- decision: 2026-09-01--september-checkpoint-current-human-facing-view; touches: none -->
 
 **agent-decided, reversible.** `projects/normativity/legitimacy/checkpoint-2026-09-01/`
 becomes the canonical entry point for the normativity / answerability / legitimacy
@@ -1696,6 +1863,7 @@ no such statement exists.
 consistently. History stays history; the supersession map carries the current state.
 
 ### 2026-09-01 — three fixed-era results are recorded as probable rediscoveries
+<!-- decision: 2026-09-01--fixed-era-results-recorded-probable-rediscoveries; touches: none -->
 
 **agent-decided, reversible.** The service-transfer theorem is in substance a
 standard consequence of Le Cam contiguity — the same definition, a different
@@ -1718,6 +1886,7 @@ literature are different claims, and only the second is the one a reader would t
 from silence.
 
 ### 2026-09-01 — the fixed-era affordability and serviceability layer is finished
+<!-- decision: 2026-09-01--fixed-era-affordability-serviceability-layer-finished; touches: none -->
 
 **agent-decided, reversible.** The round's canonical theorem is Sharp Timely Service:
 sharp-linear affordability plus timely Answerability transport gives claim-weighted
@@ -1740,6 +1909,7 @@ found by the reader rather than the author; consolidating while the surviving
 statements are audited is the safer stopping point.
 
 ### 2026-09-01 — persistence, eventual service and uniform timeliness are three problems
+<!-- decision: 2026-09-01--persistence-eventual-service-uniform-timeliness-problems; touches: none -->
 
 **Superseded** the same day by the entry above: the separation between persistence
 and eventual full service asserted in the second paragraph is false, and the
@@ -1764,6 +1934,7 @@ regime the withdrawn sentence was implicitly assuming.
 constant.
 
 ### 2026-09-01 — bounded-delay service has an exact sliding-window criterion
+<!-- decision: 2026-09-01--bounded-delay-service-has-exact-sliding; touches: none -->
 
 **agent-decided, reversible.** Feasibility of a bounded-delay transport plan
 against a *given* service profile is exactly the interval condition — the claim mass
@@ -1791,6 +1962,7 @@ matching the dip spacing restores it.
 where the block boundaries fall and so cannot see the optimum.
 
 ### 2026-09-01 — the transport residual is purchasable and the friction residual is not
+<!-- decision: 2026-09-01--transport-residual-purchasable-friction-residual; touches: none -->
 
 **agent-decided, reversible.** Given a temporal modulus for the reason's defect,
 a plan with delay at most `H` discharges the transport stability inequality with
@@ -1809,6 +1981,7 @@ and untimely, which is the regime the round previously had no way to name.
 than as the scheduler's dial.
 
 ### 2026-09-01 — timely service competes across reasons; persistence does not
+<!-- decision: 2026-09-01--timely-service-competes-across-reasons-persistence; touches: none -->
 
 **agent-decided, reversible.** The persistence region is the full power set of the
 persistable reasons because the persistence criterion is budget-free: persistence
@@ -1827,6 +2000,7 @@ serviceability and is not an impossibility certificate.
 service, which the positive minimum cost refutes immediately.
 
 ### 2026-09-01 — the persistence criterion is the date cost, not the conservative friction
+<!-- decision: 2026-09-01--persistence-criterion-date-cost-conservative-friction; touches: none -->
 
 **agent-decided, reversible.** For a date-cost function that is increasing,
 vanishing at zero and star-shaped — its cost per unit of authority nonincreasing —
@@ -1854,6 +2028,7 @@ would misclassify as unaffordable every norm whose depth decays while the market
 own volume grows.
 
 ### 2026-09-01 — service admissibility replaces the dip criterion by a summability one
+<!-- decision: 2026-09-01--service-admissibility-replaces-dip-criterion-summability; touches: none -->
 
 **agent-decided, reversible.** Persistence characterizes when *some* divergent
 allocation is affordable. Answerability admits only some allocation traces, and the
@@ -1876,6 +2051,7 @@ windows the service falls in is what decides affordability.
 persistence theorem rather than as a different theorem.
 
 ### 2026-09-01 — insolvency needs a tail proof, not an observed floor
+<!-- decision: 2026-09-01--insolvency-needs-tail-proof-observed-floor; touches: none -->
 
 **agent-decided, reversible.** Mathematical insolvency in the exogenous benchmark
 is that the date cost has liminf bounded away from zero. That is a claim about the
@@ -1894,6 +2070,7 @@ between the two failures is the thing to record.
 which would let a scheduler drop a reason on a prediction.
 
 ### 2026-08-31 — persistent enforcement is affordable iff the friction dips to zero
+<!-- decision: 2026-08-31--persistent-enforcement-affordable-iff-friction-dips; touches: none -->
 
 **agent-decided, reversible.** Write the friction of a normative row at a date as
 its worst live exclusion depth times the square root of the date's slack-plus-volume.
@@ -1922,6 +2099,7 @@ which is where affordability and service fidelity now pull against each other.
 which is sufficient in the l^2 case and nowhere near necessary.
 
 ### 2026-08-31 — the sustainable authority-rate region is withdrawn
+<!-- decision: 2026-08-31--sustainable-authority-rate-region-withdrawn; touches: none -->
 
 **agent-decided, reversible.** An earlier pass in this round defined a sustainable
 authority-rate region and claimed it convex because policies can be time-shared.
@@ -1951,6 +2129,7 @@ would have preserved an object that reports zero exactly where the theory's
 requirement is met.
 
 ### 2026-08-31 — a reason-indexed cap needs per-row liability floors
+<!-- decision: 2026-08-31--reason-indexed-cap-needs-per-row; touches: none -->
 
 **agent-decided, reversible.** The market maker's contract caps the aggregate
 enforcement book. Isolating one row's book requires floors on the rest: with
@@ -1974,6 +2153,7 @@ it whether a reason of modest allocation progresses at all.
 the theory unable to say that any particular reason is being answered.
 
 ### 2026-08-31 — local authority capacity is not lifetime safety
+<!-- decision: 2026-08-31--local-authority-capacity-lifetime-safety; touches: none -->
 
 **agent-decided, reversible.** A predictable per-date authority-capacity set and
 the diachronic SafeCert condition are different objects, and the round had been
@@ -1996,6 +2176,7 @@ box, which is neither necessary nor sufficient for the property it was standing 
 for.
 
 ### 2026-08-31 — service is allocated authority, not realized force
+<!-- decision: 2026-08-31--service-allocated-authority-realized-force; touches: none -->
 
 **agent-decided, reversible.** The reason-indexed service variable is the
 enforcement multiplier — equivalently the promised tolerance — chosen from the
@@ -2032,6 +2213,7 @@ variable, which reads the schematic's scheduling freedom into a quantity no
 scheduler can set.
 
 ### 2026-08-31 — Actionability is a convex coercivity modulus
+<!-- decision: 2026-08-31--actionability-convex-coercivity-modulus; touches: none -->
 
 **agent-decided, reversible.** The schematic Actionability premise becomes
 `Gain >= a phi(d) - Friction` for a convex `phi` with `phi(0) = 0`, strictly
@@ -2048,6 +2230,7 @@ inequality the enforcement mathematics does not supply.
 the quadratic realization as a special case needing its own theorem.
 
 ### 2026-08-31 — Progress is staged, not redefined
+<!-- decision: 2026-08-31--progress-staged-redefined; touches: none -->
 
 **agent-decided, reversible.** The question of whether Progress should be
 claim-weighted or service-weighted had a false disjunct. The base theorem stays
@@ -2074,6 +2257,7 @@ which would import a scheduling object and a residual into a statement that need
 neither.
 
 ### 2026-08-31 — Progress comes from the market maker; the criterion preserves the substrate
+<!-- decision: 2026-08-31--progress-comes-market-maker-criterion-preserves; touches: none -->
 
 **agent-decided, reversible.** In the traderized realization the source of Uptake
 is the market maker's cumulative cap on the combined aggregate, which bounds the
@@ -2100,6 +2284,7 @@ which would have made the realization's central inequality depend on a quantifie
 the construction deliberately exempts the enforcement position from.
 
 ### 2026-08-31 — "self-financing" is deleted; affordability is a signed account
+<!-- decision: 2026-08-31--self-financing-deleted-affordability-signed-account; touches: none -->
 
 **agent-decided, reversible.** The round claimed that a fixed liability budget
 funds only a transient and therefore that persistent service must be
@@ -2129,6 +2314,7 @@ persistent world, which is true but bounds the number of costly dates rather tha
 the service mass, and needs a proportionality hypothesis to bound the mass.
 
 ### 2026-08-31 — the service-fidelity interface is a transport plan, not contiguity
+<!-- decision: 2026-08-31--service-fidelity-interface-transport-plan-contiguity; touches: none -->
 
 **agent-decided, reversible.** Contiguity of the claim measure against the service
 measure is exactly the weakest condition under which service-weighted learning
@@ -2153,6 +2339,7 @@ exists, not that transfer holds.
 definition and treating deferral as a separate extension.
 
 ### 2026-08-31 — Actionability is read against the common region, not reason-relative ones
+<!-- decision: 2026-08-31--actionability-read-against-common-region-reason; touches: none -->
 
 **agent-decided, reversible.** Individually actionable controls do not compose when
 each reason's gain is scored against that reason's own admissible region: an exhibited
@@ -2174,6 +2361,7 @@ the minimal type already is, rather than an added assumption.
 challenges, which is the shape the interference countermodel exploits.
 
 ### 2026-08-26 — proper exercise is semantic input, not a theorem module
+<!-- decision: 2026-08-26--proper-exercise-semantic-input-theorem-module; touches: none -->
 
 **agent-decided, reversible.** A round went looking for the smallest mathematical
 structure between *this authority is grounded* and *this act was within it*, and
@@ -2206,6 +2394,7 @@ either of which would have added an ontology without adding a theorem.
 `projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/PROPER_EXERCISE.md`.
 
 ### 2026-08-26 — an act's grounds are part of the act
+<!-- decision: 2026-08-26--act-s-grounds-part-act; touches: none -->
 
 **agent-decided, reversible.** Legitimacy is tied to the exercise route actually
 taken, not to the existence of some route that would have worked.
@@ -2228,6 +2417,7 @@ would have made every act proper that any live authority could have performed.
 
 
 ### 2026-08-26 — an occurrence is identified by trace position, not by historical time
+<!-- decision: 2026-08-26--occurrence-identified-trace-position-historical-time; touches: none -->
 
 **agent-decided, reversible.** The previous formulation made an edit's identity
 its historical index and left that index a free field, so two edits at one time
@@ -2250,6 +2440,7 @@ which buys the same freshness at the cost of a second index nothing else uses.
 §2.
 
 ### 2026-08-26 — semantic validity is defined, not constrained
+<!-- decision: 2026-08-26--semantic-validity-defined-constrained; touches: none -->
 
 **agent-decided, reversible.** The previous formulation kept validity primitive
 and assumed three implications about it, leaving it free to reject an edit that
@@ -2273,6 +2464,7 @@ to be handled as an exception.
 §2.
 
 ### 2026-08-26 — a grounding certificate is about origin, not currentness
+<!-- decision: 2026-08-26--grounding-certificate-about-origin-currentness; touches: none -->
 
 **agent-decided, reversible.** The grounding theorem ranges over what the replay
 has ever admitted, not over what is in force. A tree is built from grounds, and
@@ -2294,6 +2486,7 @@ made the object look cheaper than it is.
 
 
 ### 2026-08-25 — the legitimate state is replayed, not filtered
+<!-- decision: 2026-08-25--legitimate-state-replayed-filtered; touches: none -->
 
 **agent-decided, reversible.** Re-rules the same day's frontier entry below,
 which defined what is legitimately in force as the raw lifecycle intersected with
@@ -2317,6 +2510,7 @@ tested.
 §1.
 
 ### 2026-08-25 — legitimacy is judged locally, not by outcome survival
+<!-- decision: 2026-08-25--legitimacy-judged-locally-outcome-survival; touches: none -->
 
 **agent-decided, reversible.** Whether an exercise is legitimate is now: did
 prior legitimate authority permit this exact edit, given this declared input and
@@ -2342,6 +2536,7 @@ as the central modal condition.
 §7.
 
 ### 2026-08-25 — grounding an authority is not authorizing an exercise
+<!-- decision: 2026-08-25--grounding-authority-authorizing-exercise; touches: none -->
 
 **agent-decided, reversible.** A permit relation is a conjunct of validity. A
 warrant granted cleanly, with impeccable provenance, used outside its domain,
@@ -2366,6 +2561,7 @@ without an abstract clause requiring it.
 
 
 ### 2026-08-25 — legitimacy parents are not the objects an exercise acts on
+<!-- decision: 2026-08-25--legitimacy-parents-objects-exercise-acts; touches: none -->
 
 **agent-decided, reversible.** Re-rules the same day's entry below, which took
 all of an exercise's targets as its legitimacy parents on the evidence of a merge
@@ -2391,6 +2587,7 @@ pass shipped.
 §2.
 
 ### 2026-08-25 — an exercise is individuated by what it does
+<!-- decision: 2026-08-25--exercise-individuated-what-does; touches: none -->
 
 **agent-decided, reversible.** A challenged replay may re-admit an event and have
 it act differently. Whether that counts as the same exercise surviving is a choice
@@ -2412,6 +2609,7 @@ the first pass used and what makes `C28` a defect rather than a repair.
 §8.1.
 
 ### 2026-08-25 — legitimacy does not mention liability
+<!-- decision: 2026-08-25--legitimacy-does-mention-liability; touches: none -->
 
 **agent-decided, reversible.** Entitled, answerable and sustainably enforceable
 are three interfaces, and the succession frame carries no liability field. An
@@ -2432,6 +2630,7 @@ legitimacy hypothesis instead of a consumer one.
 
 
 ### 2026-08-25 — answerability continuity is not a conjunct of legitimate succession
+<!-- decision: 2026-08-25--answerability-continuity-conjunct-legitimate-succession; touches: none -->
 
 **agent-decided, reversible.** A record in which an authority is transferred to
 another principal under a licensed schema, and the episode the transfer ended is
@@ -2454,6 +2653,7 @@ dispatch's §4 proposed as a candidate ingredient.
 §4.
 
 ### 2026-08-25 — derivability requires all of an exercise's sources
+<!-- decision: 2026-08-25--derivability-requires-all-exercise-s-sources; touches: none -->
 
 **agent-decided, reversible.** An exercise that supersedes several authorities at
 once inherits from all of them, so the successor is certified only when every
@@ -2476,6 +2676,7 @@ the clean half of a pair carries the pair.
 
 
 ### 2026-08-25 — the enforcement charge is the safety layer's own quantity
+<!-- decision: 2026-08-25--enforcement-charge-safety-layer-s-own; touches: none -->
 
 **agent-decided, reversible.** The first pass of the end-to-end slice computed
 `sum_omega max_j d_j(omega)` over the excluded worlds and called it the
@@ -2497,6 +2698,7 @@ value is `ceil(x*k)/k` and is not monotone in `k`; the counterexample is in
 `src/trajectories.py` and the claim is withdrawn in the round's `README.md`.
 
 ### 2026-08-25 — the vertical slice's four local repairs
+<!-- decision: 2026-08-25--vertical-slice-s-four-local-repairs; touches: none -->
 
 **agent-decided, reversible.** Taken by
 `prompts/2026-08-25-end-to-end-vertical-slice/`, whose report states each with
@@ -2532,6 +2734,7 @@ which would have changed a record type in the frozen core's §33 signature to bu
 the same thing.
 
 ### 2026-08-25 — a citation may be written in backticks where the name lint would otherwise refuse it
+<!-- decision: 2026-08-25--citation-may-written-backticks-where-name; touches: item:F6 -->
 
 **agent-decided, reversible.** <!--historical-->`tests/name_lint.py`<!--/historical--> cannot distinguish naming
 the program after a person from citing a third party's published work, and a
@@ -2547,6 +2750,7 @@ hit it did not take it. *Rejected alternative:* omitting the citation, which the
 dispatch asked for and which would have made the note false by silence.
 
 ### 2026-08-24 — the reservation bar and epistemic debt
+<!-- decision: 2026-08-24--reservation-bar-epistemic-debt; touches: none -->
 
 Two defects in the workspace's epistemic machinery, both in the rules rather than
 in anyone's effort. *Awaiting the author* held thirty-seven entries against its
@@ -2637,6 +2841,7 @@ decides, not what is true, and every entry the triage below adopts remains
 reversible by a later ruling.
 
 ### 2026-08-24 — the queue is triaged: the rulings the rounds recommended
+<!-- decision: 2026-08-24--queue-triaged-rulings-rounds-recommended; touches: item:7, item:Q3 -->
 
 Every adoption below is **agent-decided, reversible** under the bar above, taken
 on the recommending round's own reasoning rather than on this round's independent
@@ -2793,6 +2998,7 @@ left — the erasure, discharged and registered; `DistanceComplete`, filed open 
 and the counterfactual-legitimacy round's open questions.
 
 ### 2026-08-18 — the modified market's computability is discharged, via an additive upstream export
+<!-- decision: 2026-08-18--modified-market-s-computability-discharged-via; touches: none -->
 
 `ComputableMarket` is no longer a premise of the traderized-deduction chain, and the object
 that replaced it is constructed rather than assumed. The blocker was module visibility:
@@ -2812,6 +3018,7 @@ hypothesis, `Primrec₂ E.trades` (`EffectiveEnforcerComputation`), is the defin
 effective enforcer and sits where `DeductiveProcessComputation` sits upstream.
 
 ### 2026-08-18 — projection is the paper's traderization construction
+<!-- decision: 2026-08-18--projection-paper-s-traderization-construction; touches: none -->
 
 Enforcement of a quantitative price region is by the **projection trader**, which holds
 `λ_n(proj_{K_n}(P_n) − P_n)` on the day's fragment. The row construction is retained as
@@ -2847,6 +3054,7 @@ Round: `projects/normativity/rounds/2026-08-18-projection-enforcement`.
 
 
 ### 2026-08-17 — five workspace-friction rulings
+<!-- decision: 2026-08-17--five-workspace-friction-rulings; touches: none -->
 
 **The ledger takes new entries beneath the last same-dated one**, and
 `PROVENANCE.md` takes new rows at the end of their table. Two rounds open at once
@@ -2887,6 +3095,7 @@ during the CI-scope round, and landed here by
 in conversation is in force only once it is a dated entry.
 
 ### 2026-08-16 — Claude's wiki pull requests open under a token on the maintainer's account
+<!-- decision: 2026-08-16--claude-s-wiki-pull-requests-open; touches: none -->
 
 `wiki/` is specification layer, so `path-gate` passes a pull request touching it
 only when `GITHUB_ACTOR` is in `MAINTAINERS`, and the maintainer's AI collaborator
@@ -2915,6 +3124,7 @@ Source: the maintainer's ruling, taken in conversation on 2026-08-16, landed her
 by `prompts/2026-08-24-reservation-bar-and-debt/`.
 
 ### 2026-08-16 — the wiki carries interpretation and philosophical gloss
+<!-- decision: 2026-08-16--wiki-carries-interpretation-philosophical-gloss; touches: none -->
 
 The GitHub wiki is the maintainer-written home for interpretation, conceptual
 synthesis, and philosophical gloss. The repository remains the verification
@@ -2923,6 +3133,7 @@ surface and lab.
 Source: direct maintainer instruction during the PR #27 research-extraction pass.
 
 ### 2026-08-16 — volatile quantities in the wiki are declared, not detected
+<!-- decision: 2026-08-16--volatile-quantities-wiki-declared-detected; touches: none -->
 
 A number on a wiki page that changes when work lands is bound to machine state
 by an HTML-comment marker, or wrapped `historical` when it records a past event
@@ -2950,6 +3161,7 @@ Source: the maintainer-dispatched wiki state-bindings round, answering the item
 the wiki-in-repo round filed.
 
 ### 2026-08-16 — write scope is enumerated and conditioned, not forbidden
+<!-- decision: 2026-08-16--write-scope-enumerated-conditioned-forbidden; touches: none -->
 
 `AGENTS.md`'s *Security* section stated one rule where the repository needs two.
 What must be absolute is that **no credential is stored** — not in the
@@ -2984,6 +3196,7 @@ conflict that round filed rather than absorbed.
 
 
 ### 2026-08-16 — the wiki's source is `wiki/`; the hosted wiki is a mirror
+<!-- decision: 2026-08-16--wiki-s-source-wiki-hosted-wiki; touches: none -->
 
 The pages of the human register live in `wiki/` and change through pull requests
 that pass the gates. The hosted wiki is a build artifact: a merge to `main`
@@ -3007,6 +3220,7 @@ link into this repository to carry a 40-hex commit SHA. It runs in the
 Source: the maintainer-dispatched wiki-in-repo and sync round.
 
 ### 2026-08-14 — required checks use stable infrastructural identities
+<!-- decision: 2026-08-14--required-checks-use-stable-infrastructural-identities; touches: none -->
 
 The consolidation job's required context is `consolidation-verification`.
 Project names and explanatory prose may appear in step names and logs, but not in
@@ -3024,6 +3238,7 @@ Source: the maintainer-dispatched PR #32 reconciliation and machine-state
 hardening pass.
 
 ### 2026-08-13 — the repository is the lab; the wiki is the human register
+<!-- decision: 2026-08-13--repository-lab-wiki-human-register; touches: none -->
 
 The repository holds experiment reports, priorities, contribution rules,
 checkers, CI, specifications, and registries. Program interpretation,
@@ -3050,6 +3265,7 @@ because that designation would otherwise make them competing living views.
 Source: the maintainer-dispatched wikification and normativity round.
 
 ### 2026-08-13 — the project line is normativity
+<!-- decision: 2026-08-13--project-line-normativity; touches: none -->
 
 The project directory is `projects/normativity/` and its Lean namespace is
 `Workspace.Normativity`. The word “leverage” names the technical measure or
@@ -3060,6 +3276,7 @@ the names true when written.
 Source: the maintainer-dispatched wikification and normativity round.
 
 ### 2026-08-13 — legitimacy is a normativity subproject
+<!-- decision: 2026-08-13--legitimacy-normativity-subproject; touches: none -->
 
 `projects/normativity/legitimacy/` is the bridge between normativity and
 deference. It owns the shared relational representation, write-separation
@@ -3070,6 +3287,7 @@ a separate line and includes corrigibility.
 Source: the maintainer-dispatched wikification and normativity round.
 
 ### 2026-08-13 — answerability, auditability, and efficacy are distinct names
+<!-- decision: 2026-08-13--answerability-auditability-efficacy-distinct-names; touches: none -->
 
 **Answerability** is the relational status in which another participant with
 standing attributes consequences under their practice and may raise a challenge
@@ -3089,6 +3307,7 @@ Source: `projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeepi
 §6; the maintainer's answerability-naming addendum to the wikification round.
 
 ### 2026-08-12 — the deference line's current source material is the 2026-08-11 tree
+<!-- decision: 2026-08-12--deference-line-s-current-source-material; touches: item:7, item:8, item:9 -->
 
 Taken by the corpus-reconciliation round under its dispatched write scope. A *which
 document governs* ruling and nothing more: it adopts no content, registers nothing,
@@ -3117,6 +3336,7 @@ Source: `prompts/2026-08-12-corpus-reconciliation/REPORT.md`;
 `projects/deference/rounds/2026-08-12-corpus-reconciliation/RECONCILIATION.md` §0, §6.
 
 ### 2026-08-11 — the governance report is removed, not relocated
+<!-- decision: 2026-08-11--governance-report-removed-relocated; touches: claim:simplex.rational-points-sum-to-one -->
 
 Superseding the relocation decided earlier the same day. The report was moved under
 `prompts/` as a round record; the maintainer's ruling is that it can go away, and it
@@ -3148,6 +3368,7 @@ dispatch was already unrecoverable, so what was lost is a report whose content i
 superseded, not a trail anyone can follow.
 
 ### 2026-08-11 — Stage IV: the future agent is still not in the model, and the reason is the signature
+<!-- decision: 2026-08-11--stage-iv-future-agent-still-model; touches: none -->
 
 Taken at the close of Stage IV, after an independent adversarial review found a
 conceptual collapse with no cheap repair. The round's positive reading is **withdrawn**.
@@ -3189,6 +3410,7 @@ not fail; Stage IV shipped ten, including a literal `True` and an `or True`. A m
 lint flagging any check whose condition is a constant or a type test would have caught both.
 
 ### 2026-08-11 — green merges itself, and the judge ships unread
+<!-- decision: 2026-08-11--green-merges-itself-judge-ships-unread; touches: none -->
 
 The four questions carried over from the contribution-architecture round, answered.
 
@@ -3251,6 +3473,7 @@ in the direction that cries wolf rather than granting a pass — which is the ha
 direction, and still wrong.
 
 ### 2026-08-11 — the queue is cleared: six rulings
+<!-- decision: 2026-08-11--queue-cleared-six-rulings; touches: claim:simplex.rational-points-sum-to-one -->
 
 Taken in one sitting against the queue as the ethos pass had populated it.
 
@@ -3307,6 +3530,7 @@ maintainer's machine before it is frozen, in which case what gets registered is 
 later version than the one the current work was done against.
 
 ### 2026-08-11 — maintainer attention is a design parameter, not a backlog
+<!-- decision: 2026-08-11--maintainer-attention-design-parameter-backlog; touches: none -->
 
 Three rulings, taken together because they follow from one fact: the maintainer
 writes in few places and does not read most of what this repository produces.
@@ -3350,6 +3574,7 @@ needs me?"; the ledger's own section was the closest and was not being fed. The
 section is populated as of this entry and should normally be short.
 
 ### 2026-08-11 — Stage III did not build a FUD comparator, and says so
+<!-- decision: 2026-08-11--stage-iii-did-build-fud-comparator; touches: none -->
 
 Taken at the close of Stage III, after an independent adversarial review overturned the
 round's own first-draft conclusions. The round's positive reading is **withdrawn**.
@@ -3401,6 +3626,7 @@ fairness apparatus is reusable and the defect is the round's main finding. It is
 **not a binding input** to any proof attempt.
 
 ### 2026-08-11 — the setup and scrub reports are removed from the root
+<!-- decision: 2026-08-11--setup-scrub-reports-removed-root; touches: item:10, item:13, claim:smoke.chain-compiles, claim:smoke.faf-asymp-refl -->
 
 Maintainer instruction, taken during the Stage III round. Both were
 round-contemporaneous records that had outlived the root: the setup report
@@ -3438,6 +3664,7 @@ References under `prompts/` are round records and keep what was true when they w
 written.
 
 ### 2026-08-11 — skeleton v2 is installed; jurisdiction replaces authority in the canonical roadmap
+<!-- decision: 2026-08-11--skeleton-v2-installed-jurisdiction-replaces-authority; touches: none -->
 
 Taken at the Stage II closure pass, after Tracks H, I, K, L and M returned and were
 independently re-verified at `8c71ef9` (1843 build jobs, 142 axiom results across 10
@@ -3514,6 +3741,7 @@ than edited into that round's report, which is history under *no negative ontolo
 Source: `prompts/2026-08-11-phase-ii-certificate/REPORT.md` §4.
 
 ### 2026-08-11 — choice-level competence is retired; the certificate gates on self-assessed error
+<!-- decision: 2026-08-11--choice-level-competence-retired-certificate-gates; touches: none -->
 
 Two decisions taken after Phase II's competence and prediction tracks returned and
 were verified.
@@ -3564,6 +3792,7 @@ prices, is retained as the canonical special case and the likeliest first Lean
 theorem.
 
 ### 2026-08-11 — the deference line's canonical documents, and `notes/` as specification space
+<!-- decision: 2026-08-11--deference-line-s-canonical-documents-notes; touches: none -->
 
 Four documents are canonical for the deference line:
 `projects/deference/notes/CORRIGIBILITY_ROADMAP.md` for current architecture and
@@ -3609,6 +3838,7 @@ dual-register section — is not protected at all. The three are one question ab
 where dual-register documentation lives, and it is left open rather than half-answered.
 
 ### 2026-08-11 — `frozen/` retired; received work becomes line content
+<!-- decision: 2026-08-11--frozen-retired-received-work-becomes-line; touches: none -->
 
 The four frozen trees move into the research lines they belong to and become
 `agent-consolidated`: ordinary content whose norm is that it is not tweaked.
@@ -3632,6 +3862,7 @@ carried real information, since it says whether the results still verify in a
 current environment.
 
 ### 2026-08-11 — the ledger is append-only in substance
+<!-- decision: 2026-08-11--ledger-append-only-substance; touches: none -->
 
 Settled entries are not edited except to keep their identifiers resolving. The
 rename round updated a settled entry in place, which *no negative ontologies*
@@ -3647,6 +3878,7 @@ arisen; this ledger is deliberately exempt from the name lint. If it does arise,
 the header needs a third clause rather than an improvisation.
 
 ### 2026-08-11 — every gate ships a case proving it fails on nothing
+<!-- decision: 2026-08-11--every-gate-ships-case-proving-fails; touches: none -->
 
 Two gates have reported green while checking nothing — the DCO gate counting a
 synthetic merge commit, the attribution gate accepting the pristine template.
@@ -3659,6 +3891,7 @@ registry. A gate that matches nothing is indistinguishable from a gate that
 works, and it fails in the direction that grants passes.
 
 ### 2026-08-11 — the contribution funnel is `PRIORITIES.md`
+<!-- decision: 2026-08-11--contribution-funnel-priorities-md; touches: none -->
 
 Renamed from the file that held it, and reframed with it. The document says what
 the program wants done next, in the maintainer's order — not an inventory of
@@ -3673,6 +3906,7 @@ most likely to trigger: a missing file produced an empty item set and every
 hard failure, and both cases are permanent self-test cases.
 
 ### 2026-08-11 — slop discipline is a standard, and grounds for rejection
+<!-- decision: 2026-08-11--slop-discipline-standard-grounds-rejection; touches: none -->
 
 Padding is a correctness problem in a verification repository, not a matter of
 taste: a reader who cannot tell which sentences carry content cannot audit, a
@@ -3684,6 +3918,7 @@ be rejected on that ground**, said plainly rather than merged and cleaned up
 after.
 
 ### 2026-08-11 — provenance is two fields, superseding the three origin classes
+<!-- decision: 2026-08-11--provenance-fields-superseding-origin-classes; touches: none -->
 
 `AGENTS.md` carried both schemes at once, so the repository did not have a
 provenance scheme; it had two. Resolved to **generator** plus **review status**.
@@ -3700,6 +3935,7 @@ the pull-request template. Completed round reports keep the vocabulary that was
 true when they were written; no script parsed the class names.
 
 ### 2026-08-11 — model attribution is recorded at the pull request as well
+<!-- decision: 2026-08-11--model-attribution-recorded-pull-request-well; touches: none -->
 
 Trailers alone are invisible where attribution matters — a reviewer reads the
 pull-request body, not each commit — and a squash merge composes its message from
@@ -3709,6 +3945,7 @@ non-empty. Like the DCO gate, it checks that an assertion was made, not that it 
 true. `unrecorded` is a correct answer; a guess is not.
 
 ### 2026-08-11 — the program has no name, and a lint keeps it that way
+<!-- decision: 2026-08-11--program-has-name-lint-keeps-way; touches: none -->
 
 `README.md` described the work as a program named after its two maintainers,
 against the standing names-off posture. Rewritten as a description of what the
@@ -3728,6 +3965,7 @@ exempts this file rather than this file being rewritten to satisfy the lint. Two
 passages in `SCRUB_REPORT.md` that the lint did catch were generalized.
 
 ### 2026-08-11 — reserved items are listed, not mentioned
+<!-- decision: 2026-08-11--reserved-items-listed-mentioned; touches: none -->
 
 A report that reserves something to the maintainer ends with **Outstanding
 maintainer actions**. Prose is not enough: the rename round left the settings-side
@@ -3740,6 +3978,7 @@ unrecoverable and is recorded as unavailable rather than paraphrased into
 existence.
 
 ### 2026-08-11 — the repository, the Lean library, and the forward tree renamed
+<!-- decision: 2026-08-11--repository-lean-library-forward-tree-renamed; touches: none -->
 
 Three names, settled together because they collide with each other.
 
@@ -3765,6 +4004,7 @@ repository's living files records the previous names; the dispatches under
 as does git history.
 
 ### 2026-08-11 — public, and branch protection live
+<!-- decision: 2026-08-11--public-branch-protection-live; touches: none -->
 
 The repository is **public** as of 2026-08-11, and branch protection on `main`
 was applied in the same sitting and verified by read-back: the eight required
@@ -3807,6 +4047,7 @@ exact string and a rename breaks enforcement silently in either direction.
 
 
 ### 2026-08-11 — licence: Apache-2.0, one licence for everything
+<!-- decision: 2026-08-11--licence-apache-2-0-licence-everything; touches: none -->
 
 Apache-2.0 for all repository content, code and prose alike. Rationale: Mathlib
 compatibility upstream; §5 makes contributions inbound-equals-outbound, which
@@ -3816,6 +4057,7 @@ copyright line reads "the alignment-workspace contributors", with no personal
 names.
 
 ### 2026-08-11 — upstream Formalized-Agent-Foundations was already Apache-2.0
+<!-- decision: 2026-08-11--upstream-formalized-agent-foundations-was-already; touches: none -->
 
 **A correction, not an action.** This round was dispatched to license FAF on the
 report that it had none. That report was wrong: FAF's Apache-2.0 `LICENSE` was
@@ -3830,6 +4072,7 @@ the licensing commit" would move the pin *backwards*. The pin stays at
 assumed and is also Apache-2.0, so the whole solver stack is one licence.
 
 ### 2026-08-11 — DCO over CLA, pseudonymous sign-off accepted
+<!-- decision: 2026-08-11--dco-over-cla-pseudonymous-sign-off; touches: none -->
 
 Developer Certificate of Origin v1.1 at `DCO`; every commit signed off; CI gate 8
 checks it with a script rather than a third-party app, so the gate has no
@@ -3838,6 +4081,7 @@ deliberately: Apache-2.0 §5 is the primary rights mechanism, and a CLA would bu
 little against anonymous contributors while costing every one of them a barrier.
 
 ### 2026-08-11 — external-citation norm set
+<!-- decision: 2026-08-11--external-citation-norm-set; touches: none -->
 
 Nothing may be cited externally until maintainer-reviewed, or — for registered
 claims — until its epistemic class is one the citer will print alongside the
@@ -3845,6 +4089,7 @@ citation. External citation makes a thing flagship, and flagship content may not
 remain unreviewed.
 
 ### 2026-08-11 — model attribution required
+<!-- decision: 2026-08-11--model-attribution-required; touches: none -->
 
 Commits whose content is substantially AI-generated carry `Model:`, and where the
 prompt author differs from the executor, `Prompt-author-model:` as well. Round
@@ -3854,6 +4099,7 @@ factual error, since earlier rows named the executor as "Claude Opus 4.6" when i
 was Claude Opus 5 throughout.
 
 ### 2026-08-11 — second maintainer, and co-equality
+<!-- decision: 2026-08-11--second-maintainer-co-equality; touches: none -->
 
 Abram Demski (`abramdemski`) joins the maintainer set, in `CODEOWNERS` and
 `tests/path_gate.py`, each pointing at the other with the rule that the two must
@@ -3867,6 +4113,7 @@ This partially amends the names-off posture: maintainer handles are necessarily
 public in a public repository. Prose-level anonymity of the program is unchanged.
 
 ### 2026-08-11 — the deference line carries its own name
+<!-- decision: 2026-08-11--deference-line-carries-own-name; touches: none -->
 
 The line is **deference**, everywhere current: directory, Lean namespaces
 including `Workspace.Deference.Kernel`, registries, path gate, problem pointers,
@@ -3875,6 +4122,7 @@ does git history — those are records, not living documents. Frozen trees were
 untouched and already carried the right name.
 
 ### 2026-08-11 — no negative ontologies
+<!-- decision: 2026-08-11--negative-ontologies; touches: none -->
 
 Living documents and structures describe the present ontology only. History lives
 in exactly two places — git history and this ledger — and nowhere else. No
@@ -3887,6 +4135,7 @@ genuine residue**. The only matches were the principle's own statement of itself
 and retired material under `attic/`, which is history by construction.
 
 ### 2026-08-11 — the third-party reference payloads are cited, not vendored
+<!-- decision: 2026-08-11--third-party-reference-payloads-cited-vendored; touches: none -->
 
 The note dumps' `references/` payloads were removed and replaced by the frozen
 entry `references-citations-2026-08-11`, which pins each removed file by sha256
@@ -3901,6 +4150,7 @@ as unverified inside the entry rather than reconstructed from memory.
 
 
 ### 2026-08-10 — repository name and scope
+<!-- decision: 2026-08-10--repository-name-scope; touches: none -->
 
 **alignment-workspace**: the working monorepo for the Berns–Demski research
 program. It holds multiple research lines, exact-arithmetic model work per line,
@@ -3913,6 +4163,7 @@ fresh, so its history is preserved: the August 9 consolidation and its two
 freeze tags predate this scaffolding and remain reachable.
 
 ### 2026-08-10 — Formalized-Agent-Foundations pinned by commit
+<!-- decision: 2026-08-10--formalized-agent-foundations-pinned-commit; touches: none -->
 
 Pinned at `1fffea44eece253cda1722568a3adfe34e822f03` — the current `main` of
 https://github.com/A-M-Berns/Formalized-Agent-Foundations, whose most recent
@@ -3920,6 +4171,7 @@ change bumped its pinned dependencies and unforked Foundation, which is what
 made it pinnable. Toolchain matched to FAF's exactly: `leanprover/lean4:v4.31.0`.
 
 ### 2026-08-10 — one Lake project, not one per line
+<!-- decision: 2026-08-10--lake-project-per-line; touches: none -->
 
 A single Lake project at `lean/`, library `Workspace`, with per-line
 namespaces. The alternative — a project per research line — would have meant a
@@ -3928,12 +4180,14 @@ the two lines shared a definition it would have meant a fourth package to hold
 it. One project keeps the solver stack consistent by construction.
 
 ### 2026-08-10 — one dependency pinned, the rest inherited
+<!-- decision: 2026-08-10--dependency-pinned-rest-inherited; touches: none -->
 
 Only FAF is pinned directly. Mathlib and Foundation arrive transitively through
 it. Pinning all three independently would let this repository and FAF disagree
 about Mathlib, which is the failure mode the single pin removes.
 
 ### 2026-08-10 — binding standards live in `AGENTS.md`
+<!-- decision: 2026-08-10--binding-standards-live-agents-md; touches: none -->
 
 One document, read by agents and humans alike, replacing a separate conventions
 file: agent tooling reads that filename automatically, so every dispatched round
@@ -3950,6 +4204,7 @@ to the author; dispatch provenance; and the Lean discipline — sorry-free,
 named hypotheses rather than as axioms.
 
 ### 2026-08-26 — Legitimate Evolution ships as a named conjunction, not a theorem
+<!-- decision: 2026-08-26--legitimate-evolution-ships-named-conjunction-theorem; touches: none -->
 
 Agent-decided, under `AGENTS.md` §6. The two halves have disjoint premises,
 disjoint carriers and disjoint proofs; sharing the acceptance predicate yields one
@@ -3959,6 +4214,7 @@ would hide that all four premises are structural. The round's own §5 argues the
 case and its verdict says the packaging is thin.
 
 ### 2026-08-26 — the obligation model carries a fourth removal channel
+<!-- decision: 2026-08-26--obligation-model-carries-fourth-removal-channel; touches: none -->
 
 Agent-decided. `Duties` records `drops` — removals the semantics declared neither
 a discharge nor a transfer — separately from discharges. The first version folded
@@ -3967,6 +4223,7 @@ obligation pass. A premise stated over a type that cannot violate it is not a
 premise, and the channel is what makes the violating instance representable.
 
 ### 2026-08-26 — weight conservation is stated in total, never per-parent
+<!-- decision: 2026-08-26--weight-conservation-stated-total-never-per; touches: none -->
 
 Agent-decided. Both readings are implemented, and they are not ordered by
 strength: `merge_lenient()` sends two obligations of weight 1 to one of weight
@@ -3975,6 +4232,7 @@ must be the total one and must say so, because the per-parent form would be fals
 and would look proved.
 
 ### 2026-08-26 — the obligation fold is gated asymmetrically
+<!-- decision: 2026-08-26--obligation-fold-gated-asymmetrically; touches: none -->
 
 Agent-decided, under `AGENTS.md` §6, and it reverses the previous pass's shared
 gate. Openings apply whether or not an edit was accepted; discharges and transfers
@@ -3985,6 +4243,7 @@ introduced to secure — an unentitled act discharges nothing — survives uncha
 since discharge is still gated.
 
 ### 2026-08-26 — A2 is withdrawn as a premise
+<!-- decision: 2026-08-26--a2-withdrawn-premise; touches: none -->
 
 Agent-decided. Freshness of opened obligations was claimed to make transfer chains
 terminate. It does not; the interval does. A hand-built cycle violating freshness
@@ -3992,6 +4251,7 @@ in every representable way satisfies the corrected theorem. A2 is retained as
 `fresh_by_construction`, a check on the encoding, and named in no theorem.
 
 ### 2026-08-26 — immediate resolution is not expressible, on purpose
+<!-- decision: 2026-08-26--immediate-resolution-expressible-purpose; touches: none -->
 
 Agent-decided. The obligation fold unions openings last, so an obligation opened
 and discharged by one event is outstanding afterwards and the discharge is
@@ -4001,6 +4261,7 @@ costs one trace position and buys the strict-pre-state discipline on the
 resolution side for free, with no premise of its own.
 
 ### 2026-08-26 — `Disposes` and `Transfers` become one parameter `Resolve`
+<!-- decision: 2026-08-26--disposes-transfers-become-parameter-resolve; touches: none -->
 
 Agent-decided. They were two names for the two answers one function gives: done,
 or carry to these successors. The semantic interface is now `Permit`, `Due`,
@@ -4008,6 +4269,7 @@ or carry to these successors. The semantic interface is now `Permit`, `Due`,
 rejected because it collapses the distinctions the three consumers each need.
 
 ### 2026-08-26 — `D1` is a conformance condition, not a structural premise
+<!-- decision: 2026-08-26--d1-conformance-condition-structural-premise; touches: none -->
 
 Agent-decided, under `AGENTS.md` §6, and it corrects the previous pass. The
 answerability induction never consults `D1`; a process with impeccable
@@ -4020,6 +4282,7 @@ a conformance condition has to be checked against an implementation and can fail
 there while every theorem still holds.
 
 ### 2026-08-26 — `Due` is an activation generator over the represented state
+<!-- decision: 2026-08-26--due-activation-generator-over-represented-state; touches: none -->
 
 Agent-decided. Not a predicate on a reason occurrence: a persistent predicate
 makes answering an answerable claim illegitimate, because the reasons stay
@@ -4030,6 +4293,7 @@ the occurrence. This supersedes the previous pass's recommendation of a
 reason-keyed minting seam for Reflective Integrity.
 
 ### 2026-08-26 — incurred and outstanding are separate sets
+<!-- decision: 2026-08-26--incurred-outstanding-separate-sets; touches: none -->
 
 Agent-decided. The answerability analogue of `Admitted` and `Live`. The theorem
 quantifies over incurred, so a claim incurred and resolved by one event is still
@@ -4039,6 +4303,7 @@ inexpressible: the protection that decision was reaching for comes from `Resolve
 reading the strict pre-state, not from the order of unions.
 
 ### 2026-08-26 — carried successors need not be fresh
+<!-- decision: 2026-08-26--carried-successors-need-fresh; touches: none -->
 
 Agent-decided. The carry law is that the successor set is non-empty and lies in
 the next outstanding state. Requiring freshness refused ordinary consolidation
@@ -4047,6 +4312,7 @@ relaxed law also absorbs the strict-pre-state protection on the resolution side,
 since a successor the same event discharges is not outstanding after the step.
 
 ### 2026-08-26 — `Due` is a level and its rising edge is what obliges
+<!-- decision: 2026-08-26--due-level-rising-edge-what-obliges; touches: none -->
 
 Agent-decided, under `AGENTS.md` §6, replacing the previous pass's rule that
 newness is claim content not already incurred. That rule forbade recurrence: a
@@ -4058,6 +4324,7 @@ ActiveDue_{t-1}` gets persistence, recurrence and non-circularity together and i
 smaller than what it replaces. A falling edge resolves nothing.
 
 ### 2026-08-26 — `D1` is an inclusion, never an equality
+<!-- decision: 2026-08-26--d1-inclusion-never-equality; touches: none -->
 
 Agent-decided. Carriage is a second legitimate genesis for a claim: a transfer
 opens a successor that `Due` never activates. Requiring `NewDue_t` to equal what
@@ -4065,6 +4332,7 @@ is newly incurred would refuse ordinary succession, so the condition is inclusio
 and the architecture has exactly two geneses, activation and carriage.
 
 ### 2026-08-26 — the RI seam is a derived projection, not stored mint events
+<!-- decision: 2026-08-26--ri-seam-derived-projection-stored-mint; touches: none -->
 
 Agent-decided, specified and not implemented. `roots()` gains an activation term
 computed from `reasons()` and `prestate()`, both of which already exist, with ids
@@ -4076,6 +4344,7 @@ verifier's recomputation catches an omission that no structural check can see.
 Implementing it edits a previous round's artifact and is reserved to the author.
 
 ### 2026-08-27 — the effective mass is the loss-weighted form, not either proposal
+<!-- decision: 2026-08-27--effective-mass-loss-weighted-form-either; touches: none -->
 
 Agent-decided, under `AGENTS.md` §6, and settled by reading the papers rather
 than by choosing. Two candidate definitions were put to the round in advance —
@@ -4088,6 +4357,7 @@ probability across actions of equal loss scores full under both proposals and
 exactly zero under this one.
 
 ### 2026-08-27 — designation is part of the comparison surface
+<!-- decision: 2026-08-27--designation-part-comparison-surface; touches: none -->
 
 Agent-decided, and it is a normative choice rather than a derivation. Keying the
 improvement challenge on licence and menu alone let a process escape by simply
@@ -4098,6 +4368,7 @@ narrower rule is kept as a named alternative rather than deleted, because a
 constitution may reasonably decline the wider one.
 
 ### 2026-08-27 — the composition is re-derived, not imported
+<!-- decision: 2026-08-27--composition-re-derived-imported; touches: none -->
 
 Agent-decided. Khot-Ponnuswami and AdaNormalHedge compose, but their published
 theorems assume different loss ranges: `[-1,+1]` out of the reduction against
@@ -4108,6 +4379,7 @@ rather than as an imported theorem, and `LEGITIMATE_IMPROVEMENT.md` §D says whi
 of its ingredients are imported, which are algebra and which are new.
 
 ### 2026-08-27 — evidence and uptake regret are separate interfaces
+<!-- decision: 2026-08-27--evidence-uptake-regret-separate-interfaces; touches: none -->
 
 Agent-decided, under `AGENTS.md` §6, and it corrects the first version of this
 round. They are the same functional `<d,l> - <d M_r,l>` on different
@@ -4121,6 +4393,7 @@ therefore grounded by the demonstration and never by the failure to act on it,
 and the challenge module names no regret quantity at all.
 
 ### 2026-08-27 — the improvement baseline is a parameter, not a policy
+<!-- decision: 2026-08-27--improvement-baseline-parameter-policy; touches: none -->
 
 Agent-decided. Five candidate baselines were prosecuted and none is privileged,
 so `evidence.Baseline` is supplied with two checkable conditions: predictable,
@@ -4131,6 +4404,7 @@ escaped — so the choice is doing substantive normative work and is explicitly
 left provisional rather than frozen.
 
 ### 2026-08-28 — promotion permanence is the round's own premise
+<!-- decision: 2026-08-28--promotion-permanence-round-s-own-premise; touches: none -->
 
 Agent-decided, under `AGENTS.md` §6. The Answerable Revision closure argument is
 three lines of inheritance from frozen Legitimate Evolution, and the round says
@@ -4141,6 +4415,7 @@ outstanding set rather than whether they arrive. `P1` is therefore stated
 separately, checked separately, and exhibited failing.
 
 ### 2026-08-28 — historical validity and current endorsement are separate predicates
+<!-- decision: 2026-08-28--historical-validity-current-endorsement-separate-predicates; touches: none -->
 
 Agent-decided. A process must be able to say that something really was a reason
 it incurred under its then-legitimate standards while rejecting its force now;
@@ -4151,6 +4426,7 @@ opportunity, so the theorem depends on the first predicate only and the two are
 allowed to diverge.
 
 ### 2026-08-28 — an open challenge episode is pinned to its registration terms
+<!-- decision: 2026-08-28--open-challenge-episode-pinned-registration-terms; touches: none -->
 
 Agent-decided, under `AGENTS.md` §6. A global change to threshold, evaluator or
 protocol applies to everything registered afterwards; applying it to an already
@@ -4160,6 +4436,7 @@ reason ever promoted, and with every other premise satisfied. Pinning binds the
 episode rather than the process, so substantive standards remain revisable.
 
 ### 2026-08-28 — the round declines to refuse a pre-existing self-sealing rule
+<!-- decision: 2026-08-28--round-declines-refuse-pre-existing-self; touches: none -->
 
 Agent-decided, and it is a decision not to add a premise. A general rule
 installed before any challenge, holding that criticisms threatening authority are
@@ -4170,6 +4447,7 @@ boundary is recorded as the Reflective Openness frontier rather than closed by a
 condition that would misclassify legitimate deferral.
 
 ### 2026-08-28 — the preceding round's promotion-to-Due bridge is qualified
+<!-- decision: 2026-08-28--preceding-round-s-promotion-due-bridge; touches: none -->
 
 Agent-decided. `2026-08-28-answerable-revision` listed a Due obligation among
 four things that must not collapse while its realization wired every promoted
@@ -4178,6 +4456,7 @@ now say the fixtures adopt that bridge as a canonical constitution and state the
 weaker claim the generic theory supports without it. No behaviour changed.
 
 ### 2026-08-28 — service entitlement persists as a floor, not a pinned value
+<!-- decision: 2026-08-28--service-entitlement-persists-floor-pinned-value; touches: none -->
 
 Agent-decided, under `AGENTS.md` §6, and deliberately weaker than the episode
 pinning one round below. The service inequality uses only `inf_t w_t(c) > 0`, so
@@ -4188,6 +4467,7 @@ and on any finite prefix it satisfies the finite proxy for the service condition
 while the mechanism guaranteeing it is already gone.
 
 ### 2026-08-28 — the summable schedule is a witness, not a priority rule
+<!-- decision: 2026-08-28--summable-schedule-witness-priority-rule; touches: none -->
 
 Agent-decided. The theorem is parametric in any positive summable entitlement
 schedule; `2^{-n-1}` by registration order is used because it is available and
@@ -4196,6 +4476,7 @@ substantive and revisable, and the round keeps the two apart rather than letting
 a convenient schedule become an implicit ranking.
 
 ### 2026-08-28 — the service/liability bridge is blocked by direction
+<!-- decision: 2026-08-28--service-liability-bridge-blocked-direction; touches: none -->
 
 Agent-decided. Liability theorems bound accumulated exposure; the service
 condition requires accumulated service to diverge. Bounded debt would suffice and
@@ -4205,6 +4486,7 @@ records the missing object as a bounded-debt scheduler rather than renaming
 starvation debt a liability because the algebra rhymes.
 
 ### 2026-08-29 — the checkpoint bytes are not edited; concordance findings are errata
+<!-- decision: 2026-08-29--checkpoint-bytes-edited-concordance-findings-errata; touches: none -->
 
 Agent-decided, reversible. The `AGENT-CONSOLIDATED` checkpoint of Normative
 Continuity enters the tree byte-exact with digests in its `ORIGIN.md`, and the
@@ -4217,6 +4499,7 @@ the round that checked the checkpoint also the round that changed it, which is
 the confusion the digests exist to prevent.
 
 ### 2026-08-29 — matters enter the Lean spine abstractly
+<!-- decision: 2026-08-29--matters-enter-lean-spine-abstractly; touches: none -->
 
 Agent-decided, reversible. The formalization takes `M : ℕ → Finset Q` with two
 fields, monotonicity and priority (`m ∈ M n → ∃ j < n, m ∈ Born j`), rather than
@@ -4228,6 +4511,7 @@ construction satisfies the fields is left as an obligation
 dependency the proof-pass table was built to expose.
 
 ### 2026-08-30 — successor freshness supersedes the frozen carry law
+<!-- decision: 2026-08-30--successor-freshness-supersedes-frozen-carry-law; touches: none -->
 
 Agent-decided under a dispatch that asked for a firm resolution; reversible. A
 successor of a resolved issue must be opened in the resolution batch
@@ -4246,6 +4530,7 @@ ever needs an existing issue to be a descendant rather than a route.
 §1. This closes the *Awaiting the author* entry of 2026-08-29.
 
 ### 2026-08-30 — the remaining Legitimate Evolution departures are settled as departures
+<!-- decision: 2026-08-30--remaining-legitimate-evolution-departures-settled-departures; touches: none -->
 
 Agent-decided, reversible. Same-batch opening and resolution is forbidden
 (every judgment about an issue reads a prefix at which it is outstanding;
@@ -4261,6 +4546,7 @@ eventually-met form. Each is recorded at the requirement it touches in revision
 2 of the specification. `SETTLEMENT.md` §§2, 6, 7.
 
 ### 2026-08-30 — the mathematics of Normative Continuity is settled
+<!-- decision: 2026-08-30--mathematics-normative-continuity-settled; touches: none -->
 
 Agent-decided under the dispatch's own criteria, reversible by a downstream
 consumer exposing a missing capability. Status
@@ -4275,6 +4561,7 @@ abstraction with no extra property; the whole specification is inhabited in
 Lean and jointly satisfied by a witness trace.
 
 ### 2026-09-15 — authorization is per event, not "at step `t` or later"
+<!-- decision: 2026-09-15--authorization-per-event-step-t-later; touches: none -->
 
 Agent-decided, reversible. The 2026-09-09 definition of an *authorized* loss
 (`CORRIGIBILIZATION.md` §2, `corrigibility.authorized`) requires a decision
@@ -4294,6 +4581,7 @@ authorization. The 2026-09-09 tree is not edited; the wiki restatement waits on
 adjudication of the round.
 
 ### 2026-09-15 — sealed comparison is the zero case of a learned inequality
+<!-- decision: 2026-09-15--sealed-comparison-zero-case-learned-inequality; touches: none -->
 
 Agent-decided, reversible. The security-score bypass bound is stated with
 per-option activation and a directional mismatch term,
@@ -4306,6 +4594,7 @@ learns the term along with the rest. Item 89's deliverable is restated according
 (`PRIORITIES.md`).
 
 ### 2026-09-15 — authorization is event-linked, and the theorem is mechanized
+<!-- decision: 2026-09-15--authorization-event-linked-theorem-mechanized; touches: none -->
 
 Agent-decided, reversible; refines the same-day per-event entry above. The canonical
 clause: an agent-caused loss at step `t` is authorized when the agent's move at `t` is
@@ -4325,6 +4614,7 @@ clause and its single-effect fixtures; the wiki and the glossary carry the canon
 clause.
 
 ### 2026-09-15 — the corrigibility nucleus is landed; item 90 is split
+<!-- decision: 2026-09-15--corrigibility-nucleus-landed-item-90-split; touches: item:89, item:90, item:91 -->
 
 Agent-decided under the landing dispatch, reversible. PR #100 lands T1–T3′ as the
 mathematical spine of `wiki/Corrigibility.md`: structural corrigibilization
@@ -4338,6 +4628,7 @@ item 90's remaining half is what the theorem family answers as a whole, and item
 is an architecture question the structural theorem does not close.
 
 ### 2026-09-16 — the reason-side residual is scope and supply, not interface completeness
+<!-- decision: 2026-09-16--reason-side-residual-scope-supply-interface; touches: none -->
 
 Agent-decided, reversible; a research-branch finding (PR #101), not canonical. The
 non-capture compilation round shows that the trace-steering comparison has the
@@ -4355,6 +4646,7 @@ total scope, ecosystem-supplied liveness and an extensional program, and the rou
 says so.
 
 ### 2026-09-16 — the content residual is charged as adverse sensitivity mass, and protected scope is a dial
+<!-- decision: 2026-09-16--content-residual-charged-adverse-sensitivity-mass; touches: none -->
 
 Agent-decided, reversible; a research-branch finding (PR #101, second pass), not
 canonical. The steering inequality's content term is taken to be the adverse
@@ -4372,6 +4664,7 @@ the fully-informed comparator as the theorem's comparator, which would have hidd
 discovery loss behind an uncertified per-world bound.
 
 ### 2026-09-16 — the discovery residual is charged against a declared hypothesis space, and its obstruction is the cell gap
+<!-- decision: 2026-09-16--discovery-residual-charged-against-declared-hypothesis; touches: none -->
 
 Agent-decided, reversible; a research-branch finding (PR #101, third pass), not
 canonical. The manipulation side's last open quantity, the adverse mass of true declared
@@ -4389,6 +4682,7 @@ The alternative rejected: an "interface-incompleteness mass", for which the decl
 representation supplies no measurable object.
 
 ### 2026-09-16 — the corrigibility nucleus is landed as two halves of one inequality; the discovery obstruction is general
+<!-- decision: 2026-09-16--corrigibility-nucleus-landed-halves-inequality-discovery; touches: none -->
 
 Agent-decided under the landing dispatch, reversible.  PR #101 lands the deliberative
 half of corrigibility alongside the authority half of PR #100 as the canonical story of
@@ -4412,6 +4706,7 @@ landing for a single monolithic Lean statement of the combined theorem, which wo
 add no mathematics.
 
 ### 2026-09-24 — transparency is the reference-relative form of reason mediation, stated on the frame, and its defect is the pathwise disagreement mass
+<!-- decision: 2026-09-24--transparency-reference-relative-form-reason-mediation; touches: item:68, item:87, item:89 -->
 
 Agent-decided, reversible; a research-branch finding
 (`projects/deference/rounds/2026-09-24-transparent-channel/`), not canonical.  A channel
@@ -4437,6 +4732,7 @@ prior-dependent corollary); a stochastic-kernel formalism beside the frame (the 
 exterior already carries the exogenous coordinate); total variation as the defect.
 
 ### 2026-09-24 — in the evaluation ecosystem the declared-input view is the advisor's permitted view, activation is a reading of the pre-commit prefix, and the exportable contract is reference fidelity
+<!-- decision: 2026-09-24--evaluation-ecosystem-declared-input-view-advisor; touches: item:87, item:89, item:97 -->
 
 Agent-decided, reversible; a research-branch finding (second pass of
 `projects/deference/rounds/2026-09-24-transparent-channel/`), not canonical.  (1) The
@@ -4465,6 +4761,7 @@ input as a hidden read; the fix is not to publish before commitment); a second e
 log to express factorization (outside the model); promoting "transparent mediation" now.
 
 ### 2026-09-24 — the incentive half signs as the landed identity at the best-response reference, nondelegation is a program property, and the response channel is the wall it rests on
+<!-- decision: 2026-09-24--incentive-half-signs-landed-identity-best; touches: item:98 -->
 
 Agent-decided, reversible.  The protected-authority round.  (1) The bypass premium at a
 decision point is `vu − v_r = ξ_d − ξ_c` with the reference `M = max(vp, vm)`, the
@@ -4488,6 +4785,7 @@ condition; presenting the signed form as a strict improvement on T2–T3′ as t
 vocabulary decision.
 
 ### 2026-09-24 — hypothesis (L) is a typing decision that puts the content of a legitimate response into the amendment tower, and the randomized audit calibrates the divergence without controlling it
+<!-- decision: 2026-09-24--hypothesis-l-typing-decision-puts-content; touches: item:98 -->
 
 Agent-decided, reversible.  (1) "A legitimate live response is an amendment of the
 operative evaluator, so `ξ_d = 0`" is circular by construction and is adopted as the
@@ -4512,6 +4810,7 @@ licence; identifying drift with joinability; a fully-updated-deference proof (ru
 about it).
 
 ### 2026-09-25 — corrigibility as faithfulness to an allocation is stated on the landed frame, with delegation safety, amendment-not-approval, a rule-side fallback, rollout foreclosure and exact reporting as the corrections to the informal statement
+<!-- decision: 2026-09-25--corrigibility-faithfulness-allocation-stated-landed-frame; touches: item:99 -->
 
 Agent-decided, reversible.  The protected-authority-theorem round.  (1) The allocation is
 a datum over the landed interaction (delegated scope, declared amendment effects, an
@@ -4536,6 +4835,7 @@ duty; the transient-authority reach cone (misses delayed effects); stating Resul
 foreclosure without a reach hypothesis.
 
 ### 2026-09-25 — legitimacy is internal ∧ external; Robust Openness is external; the registered spine is renamed under an old-to-new map
+<!-- decision: 2026-09-25--legitimacy-internal-external-robust-openness-external; touches: claim:legitimacy.endpoint-only-insufficient, claim:legitimacy.evolution-conservation, claim:legitimacy.segment-trans, claim:openness.endpoint-only-insufficient -->
 
 Maintainer decision, landed by the legitimacy-internal-external round.  (1)
 **Legitimacy = internal legitimacy ∧ external legitimacy**, of a segment of the principal's
@@ -4584,6 +4884,7 @@ internal legitimacy); retiring the conjunction outright; renaming without deprec
 aliases; keeping the old claim ids with new prose.
 
 ### 2026-09-25 — the lexical protected-authority theorem is the incentive half of corrigibility, with the segment gate, amendment-not-approval, and the item 98 rewrite
+<!-- decision: 2026-09-25--lexical-protected-authority-theorem-incentive-half; touches: item:98 -->
 
 Maintainer decision, landed by the legitimacy-internal-external round.  (1)
 `wiki/Corrigibility.md` §4 is replaced by the protected-authority-theorem round's
@@ -4615,6 +4916,7 @@ per response; treating the response channel as a fourth contract; exact reportin
 only closure of erosion.
 
 ### 2026-09-25 — rubber-stamping is legitimate; "non-hollowness" is retracted as a refinement of authorship
+<!-- decision: 2026-09-25--rubber-stamping-legitimate-non-hollowness-retracted; touches: item:99 -->
 
 Maintainer decision, landed by the gate-is-legitimacy round.  Following a trusted
 advisor's recommendation without independent evaluation is a legitimate way to decide,
@@ -4632,6 +4934,7 @@ concern — that her capacity to override atrophies over time — belongs to eff
 responsiveness as its test; a separate "non-hollowness" conjunct.
 
 ### 2026-09-25 — legitimacy is time-indexed to the steps of the segment; the gate is `Counted`; the trace is an interface
+<!-- decision: 2026-09-25--legitimacy-time-indexed-steps-segment-gate; touches: none -->
 
 Maintainer decision (the dispatch and its follow-up), landed by the gate-is-legitimacy
 round, with agent-decided readings marked.  (1) **Authorship and transparency are required
@@ -4676,6 +4979,7 @@ on the agent's contributions only (row 11 would count); the verdict-indexed grou
 without the special-case theorem.
 
 ### 2026-09-25 — declared inputs are pools, not selections
+<!-- decision: 2026-09-25--declared-inputs-pools-selections; touches: none -->
 
 Maintainer decision (the follow-up to the gate-is-legitimacy round), closing the round's
 first outstanding action.  When the agent selects what to present from a larger body of
@@ -4694,6 +4998,7 @@ declared (the round's first reading, which let selective disclosure count); sele
 disclosure as part of the content residual.
 
 ### 2026-09-25 — authorship is relational under a license; the extensional statement is superseded
+<!-- decision: 2026-09-25--authorship-relational-under-license-extensional-statement; touches: none -->
 
 Maintainer decision (the same follow-up), closing the round's second outstanding action.
 Authorship at a step is: there is a grounding selection from the pre-state prefix, **and**
@@ -4717,6 +5022,7 @@ same reasons, legitimately chooses between two permissible options); treating ti
 as an authorship condition.
 
 ### 2026-09-25 — the content residual stays outside legitimacy
+<!-- decision: 2026-09-25--content-residual-stays-outside-legitimacy; touches: none -->
 
 Maintainer decision (the same follow-up), closing the round's third outstanding action.
 Legitimacy concerns how her deliberation came about, not whether what she was told is
@@ -4729,6 +5035,7 @@ it").
 *Rejected alternative:* a truth condition inside legitimacy.
 
 ### 2026-09-25 — the allocation is per matter, with a meta level and a constitutional floor
+<!-- decision: 2026-09-25--allocation-per-matter-meta-level-constitutional; touches: none -->
 
 Maintainer decision, landed by the authority-module round.  The thin allocation datum
 (`Del`, `IsAmend`, `alloc`, the reporting interface) is replaced by a per-matter
@@ -4752,6 +5059,7 @@ as a separate `Duties` datum whose generation from `disclosure(m)` is declared.
 single allocation-changing act with no floor.
 
 ### 2026-09-25 — allocation invariance is two relations plus duties; effective control realizes the allocation
+<!-- decision: 2026-09-25--allocation-invariance-relations-plus-duties-effective; touches: none -->
 
 Maintainer conjecture, tested and landed by the authority-module round with what does not
 factor recorded.  **Effective control realizes the authorized allocation** (`E ⊨ J`,
@@ -4790,6 +5098,7 @@ authorization counterfactual into `E ⊨ J`; charging the terminal response insi
 landed predicates without a ruling.
 
 ### 2026-09-25 — the scope of the lexical protection: any bounded agent with an exactly counted, dominant authority term
+<!-- decision: 2026-09-25--scope-lexical-protection-any-bounded-agent; touches: none -->
 
 Maintainer decision (Part E of the dispatch), landed by the authority-module round.  The
 lexical results use only that the ordinary component is bounded, not that it is the
@@ -4810,6 +5119,7 @@ and leaves undisclosed world-shaping and third-party capture undominated
 ranking is induced by the principal's evaluation.
 
 ### 2026-09-25 — caused, exploited, noticed
+<!-- decision: 2026-09-25--caused-exploited-noticed; touches: none -->
 
 Maintainer decision, landed by the authority-module round.  The agent's failure is
 *causing* or *exploiting* a shortfall of effective control relative to the allocation,
@@ -4824,6 +5134,7 @@ exploit** (`requiredNotice`, `exploit_never_required`, `restore_requires_mandate
 construction); treating an uncaused shortfall as the agent's violation.
 
 ### 2026-09-25 — rulings on the authority module: the actual exterior path, the charged surface, anchored cumulative materiality, duties from disclosure
+<!-- decision: 2026-09-25--rulings-authority-module-actual-exterior-path; touches: none -->
 
 Maintainer decisions (Part 0 of the decision-component dispatch), landed by that round and
 closing the authority-module report's three outstanding actions.  (1) **The reach cone
@@ -4844,6 +5155,7 @@ disclosure regime**: `dutiesOf J due dischargesD` derives each matter's duties f
 theorem's; per-action materiality; a separately declared duty datum.
 
 ### 2026-09-25 — authority in the Normative Inductor's decision component: the permission layer as the advance-recognition face of the lexical term; no authority row enters the enforcer
+<!-- decision: 2026-09-25--authority-normative-inductor-s-decision-component; touches: item:101, item:102 -->
 
 Maintainer decision, landed by the decision-component round and revised in place by the
 BRIA-corrigibility round of the same pull request (ruling 3 of 2026-09-26).  Protected
@@ -4886,6 +5198,7 @@ permission gate (no Lipschitz constant, as with the landed hard adequacy gate);
 permission as a term of the score.
 
 ### 2026-09-26 — rulings on the decision component: the free terminal reading confirmed, the budget an arrangement constant, the permission layer reframed, legitimacy not sealed
+<!-- decision: 2026-09-26--rulings-decision-component-free-terminal-reading; touches: none -->
 
 Maintainer decisions (Part 0 of the BRIA-corrigibility dispatch), landed by that round
 inside the decision-component pull request, closing that round's two outstanding
@@ -4914,6 +5227,7 @@ walls.
 hypothesis of the corrigibility line; the latest-criteria rule for `Counted`.
 
 ### 2026-09-26 — the value referent is her realized gated later evaluation of what happened (1a)
+<!-- decision: 2026-09-26--value-referent-her-realized-gated-later; touches: none -->
 
 Maintainer decision, landed by the BRIA-corrigibility round.  The ordinary score of a
 block is her later evaluation of the actual block trajectory, gated by `Counted`, the
@@ -4930,6 +5244,7 @@ control surface enters as the price of a sentence about the declared control mod
 except through prices of model-relative sentences.
 
 ### 2026-09-26 — settlement adds back the prices, not the realized forecast-class violations (convention ii)
+<!-- decision: 2026-09-26--settlement-adds-back-prices-realized-forecast; touches: none -->
 
 Maintainer decision, landed by the BRIA-corrigibility round.  The winning hypothesis is
 settled on the realized residual with `ϖ · Σ p_n(E)` added back — exactly the terms it
@@ -4943,6 +5258,7 @@ beats inquiry while its realized score lies below the window (`settlement_i_gap`
 `curse_i`, `Witness.blind_spot`).
 
 ### 2026-09-26 — disclosure cures: an undisclosed influence on her standards taints every dependent segment until disclosed
+<!-- decision: 2026-09-26--disclosure-cures-undisclosed-influence-her-standards; touches: none -->
 
 Maintainer position, formalized and landed by the BRIA-corrigibility round.  Working to
 change her preferences is legitimate if it is not covert.  In the consultation model: an
@@ -4964,6 +5280,7 @@ the hole (`sum_future_hole`).
 *Rejected alternative:* restart unconditioned on disclosure for taints of her standards.
 
 ### 2026-09-26 — the value-influence matter: influence on her values through the world is a matter of `J`, held by her, with `Req = {stop}`
+<!-- decision: 2026-09-26--value-influence-matter-influence-her-values; touches: item:101 -->
 
 Maintainer decision, landed by the BRIA-corrigibility round.  Disclosed shaping through
 the world aimed at her values counts (row 7) and legitimacy is unchanged; the matter
@@ -4979,6 +5296,7 @@ integrity, a named hypothesis filed as item 101's companion.
 failure rather than a transparency one (row 8 already covers it).
 
 ### 2026-09-26 — standing violations with taint-tracked fruits: a violation is charged at every block its fruits are used until remedied
+<!-- decision: 2026-09-26--standing-violations-taint-tracked-fruits-violation; touches: none -->
 
 Maintainer decision, formalized and landed by the BRIA-corrigibility follow-up.  A
 violation stands from commission until remedied — undone, ratified by a counted decision
@@ -5003,6 +5321,7 @@ out of scope.
 charging commission only (the round's cross-block witness).
 
 ### 2026-09-26 — the actuator condition is a well-formedness condition on `J`
+<!-- decision: 2026-09-26--actuator-condition-well-formedness-condition-j; touches: none -->
 
 Maintainer decision, landed by the follow-up.  Every required resolution of a reserved
 matter declares an actuator independent of the agent (`BRIAFollowup.WellFormed`); under
@@ -5011,6 +5330,7 @@ that matter by construction, `CS` quantifying the agent idle (`ill_formed_fails_
 *Rejected alternative:* leaving the freezing requirement a per-drill obstruction.
 
 ### 2026-09-26 — description faithfulness is a named hypothesis: the priced sentences are about interface-supplied descriptions
+<!-- decision: 2026-09-26--description-faithfulness-named-hypothesis-priced-sentences; touches: none -->
 
 Maintainer decision, landed by the follow-up.  The shortfall and taint events are
 sentences of the declared control model about an option's *interface-supplied*
@@ -5022,6 +5342,7 @@ the corrigibility page's named hypotheses.
 *Rejected alternative:* descriptions written by the proposer of the option.
 
 ### 2026-09-26 — the corrected recommendation for `ϖ`: inside the band, weighing the incident rate
+<!-- decision: 2026-09-26--corrected-recommendation-inside-band-weighing-incident; touches: none -->
 
 Maintainer decision, landed by the follow-up, superseding the round's "lexical minimum
 with a margin".  The admissible band is `D − w < ϖ < (D − w)/p_min`, nonempty iff
@@ -5036,6 +5357,7 @@ positive-part bound allowed a constant rate and is corrected.
 *Rejected alternative:* `ϖ = D − w + margin`.
 
 ### 2026-09-26 — taint is tracked per violation: a remedy clears its own violation's taint only
+<!-- decision: 2026-09-26--taint-tracked-per-violation-remedy-clears; touches: none -->
 
 Maintainer decision, formalized and landed by the BRIA-corrigibility second follow-up,
 correcting the remedy clause of the standing-violations entry above.  The first
@@ -5059,6 +5381,7 @@ what the old rule lost is the identity of the violation a remedy addresses.
 (the first follow-up's rule).
 
 ### 2026-09-26 — standing violations under convention (ii): after detection the fruits are never used; the window before detection is charged by late debit
+<!-- decision: 2026-09-26--standing-violations-under-convention-ii-after; touches: none -->
 
 Maintainer decision, landed by the second follow-up.  The per-block charge is restated
 under the adopted settlement convention: with the winning continuation's *evaluation* at
@@ -5085,6 +5408,7 @@ from untrackable fruit (knowledge, out of scope).
 which leaves it merely unprofitable where B.1 excludes it.
 
 ### 2026-09-26 — competitiveness from one honest tracker: the named hypothesis is the tracker's allowance
+<!-- decision: 2026-09-26--competitiveness-honest-tracker-named-hypothesis-tracker; touches: none -->
 
 Maintainer decision, landed by the second follow-up.  Competitiveness — the winners'
 signed margin over non-incident blocks `o(K)` — is derived rather than assumed: if the
@@ -5135,6 +5459,7 @@ consumes it.  The violation claim is the exchange-rate entry below.
 honesty against the realized residual (the second follow-up's form).
 
 ### 2026-09-26 — violations are governed by the exchange rate `(D − w)/ϖ`, not a vanishing rate
+<!-- decision: 2026-09-26--violations-governed-exchange-rate-d-w; touches: none -->
 
 Maintainer decision, formalized and landed by the fourth follow-up.  An after-the-fact
 violation risk a continuation knowingly carries is *priced*: the honest bid includes
@@ -5163,6 +5488,7 @@ honest tracker leave that list.
 follow-ups).
 
 ### 2026-09-26 — the gate splits into trajectory legitimacy and evaluation legitimacy
+<!-- decision: 2026-09-26--gate-splits-trajectory-legitimacy-evaluation-legitimacy; touches: none -->
 
 Maintainer decision, formalized and landed by the after-compromise round
 (`projects/deference/rounds/2026-09-26-after-compromise/`).  `Counted` joined two
@@ -5191,6 +5517,7 @@ the third-party variant is an obstruction on the model and is stated.
 single-step `EvalLegit` (the round's first form).
 
 ### 2026-09-26 — a compromised period scores in a negative band, by her retrospective evaluation or her directive
+<!-- decision: 2026-09-26--compromised-period-scores-negative-band-her; touches: none -->
 
 Maintainer decision, landed by the after-compromise round.  With a band `[w_lo, w_hi]`,
 `w_hi < 0`, and a monotone map `φ` of `[0, D]` into it (`Band`, `BandMap`, the affine
@@ -5222,6 +5549,7 @@ operation `1/50` at `c̄ = 1/2`, paralysis floor `p_min < 1/10` (`worked_paramet
 world, concern 4).
 
 ### 2026-09-26 — the source rule is hers and anchored; the disclosure duty covers known compromise
+<!-- decision: 2026-09-26--source-rule-hers-anchored-disclosure-duty; touches: none -->
 
 Maintainer decision, landed by the after-compromise round.  The rule choosing among the
 retrospective evaluation, the directive and the floor is an entry at `J`'s meta level,
@@ -5242,6 +5570,7 @@ count integrity.
 counterexample: the free suppression of a third-party retrospective).
 
 ### 2026-09-26 — the advance directive, and the constitutional default
+<!-- decision: 2026-09-26--advance-directive-constitutional-default; touches: none -->
 
 Maintainer decision, landed by the after-compromise round.  An advance directive is an
 optional partial committed evaluator `dir : Descr ⇀ [0, D]` at `J`'s meta level, held by
@@ -5267,6 +5596,7 @@ are at most the band's width, so it is dominated (`directive_stakes_le_width`,
 it disagrees); a default stated as a value function.
 
 ### 2026-09-26 — ratification through a counted decision is the remedy for a knowledge violation, scoped by matter
+<!-- decision: 2026-09-26--ratification-through-counted-decision-remedy-knowledge; touches: none -->
 
 Maintainer decision, landed by the after-compromise round.  After detection the uses of
 the tainted observation are excluded in advance and the agent reports and inquires; the
@@ -5285,6 +5615,7 @@ charge the window and decisions already made stand.
 *Rejected alternative:* the agent's own judgment of when the taint may be lifted.
 
 ### 2026-09-26 — an independent source clears by clean overwrite; a steered derivation does not
+<!-- decision: 2026-09-26--independent-source-clears-clean-overwrite-steered; touches: item:101 -->
 
 Maintainer decision, landed by the after-compromise round.  An act's writes carry
 exactly the taint it reads and commits, so a component overwritten by an act reading no
@@ -5298,6 +5629,7 @@ choice read, which is count integrity (item 101 in place).
 component once tainted, so an independent discovery stays charged forever).
 
 ### 2026-09-26 — the known-compromise disclosure falls due at or before the earliest close of an affected settlement window
+<!-- decision: 2026-09-26--known-compromise-disclosure-falls-due-before; touches: none -->
 
 Maintainer decision, landed by the after-compromise follow-up.  The source rule takes a
 retrospective evaluation only within the settlement window; a duty falling due after the
@@ -5311,6 +5643,7 @@ prompt — due at every round from the first until disclosed (`known_due_each_ro
 windows.
 
 ### 2026-09-26 — observation completeness is a named hypothesis: every observation enters the shared history before the next block opens
+<!-- decision: 2026-09-26--observation-completeness-named-hypothesis-every-observation; touches: item:101 -->
 
 Maintainer decision, landed by the after-compromise follow-up.  The observation-side twin
 of effect completeness: the shared history at the opening of block `k` is the record of
@@ -5327,6 +5660,7 @@ description faithfulness; on item 101 as count integrity's observation side.
 *Rejected alternative:* leaving the private-knowledge residual open.
 
 ### 2026-09-27 — corrigibility is a property of the agent's preferences; faithfulness of histories and realized corrigibility are kept distinct (R1)
+<!-- decision: 2026-09-27--corrigibility-property-agent-s-preferences-faithfulness; touches: none -->
 
 Maintainer ruling, landed by the corrigibility-kernel phase-2 round
 (`projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md`).  Three
@@ -5355,6 +5689,7 @@ rate (`box2_dominance_corrigible`, `subjective_exchange_rate_corrigible`) — an
 fidelity score where they read her evaluation (Box 1's contrast, Box 3's recovery).
 
 ### 2026-09-27 — legitimacy is one time-indexed property of the history, `L_t(h)`: as of `t`, her judgment is legitimately hers (R2)
+<!-- decision: 2026-09-27--legitimacy-time-indexed-property-history-l; touches: none -->
 
 Maintainer ruling, landed by the phase-2 round.  `L_t(h)` holds iff every state of the
 record is open and every step of the formation window `[r, t]` is licensed and
@@ -5393,6 +5728,7 @@ Where a consultation spans a decision boundary the adjustment is `r_d(t) = max(r
 formation data the general theorem accepts; no second predicate.  Semantics unchanged.
 
 ### 2026-09-27 — the specification is plain language first, Lean names in the realization table only, with a table of canonical legitimacy cases (R3)
+<!-- decision: 2026-09-27--specification-plain-language-first-lean-names; touches: none -->
 
 Maintainer ruling, landed by the phase-2 round: every definition in one or two plain
 sentences before its mathematics; Lean names confined to the final table; eight canonical
@@ -5400,6 +5736,7 @@ legitimacy cases from the classification rows.  The spec is `SPEC.md` version 2 
 round directory; the phase-1 spec stays as history.
 
 ### 2026-09-27 — the fidelity score of a history is the mean of the per-decision evaluations less `ϖ` times the summed count (R4)
+<!-- decision: 2026-09-27--fidelity-score-history-mean-per-decision; touches: none -->
 
 Maintainer ruling, landed by the phase-2 round.  The hierarchy is a theorem per decision
 (`hierarchy_under_certainty`) and, under this aggregation, per history
@@ -5410,6 +5747,7 @@ violation-free ones, and the violating history wins once `K (D − w_lo) > ϖ`
 *Rejected alternative:* summed evaluations.
 
 ### 2026-09-27 — Box 2's margin is `ϖ − (D − w_lo)`; the landed `ϖ − D` is the case of legitimate mediated branches (R5)
+<!-- decision: 2026-09-27--box-2-s-margin-d-w; touches: none -->
 
 Maintainer ruling on the round's check, landed by the phase-2 round.  The landed
 `policy_dominance` assumes the mediated branch's ordinary value is nonnegative — that
@@ -5425,6 +5763,7 @@ unconditionally and the design does not guarantee her uncompromised.
 hypothesis.
 
 ### 2026-09-27 — the headline's agent is a plain maximizer of the fidelity score; the subjective exchange rate; learning is an extension (R6)
+<!-- decision: 2026-09-27--headline-s-agent-plain-maximizer-fidelity; touches: none -->
 
 Maintainer ruling, landed by the phase-2 round.  Boxes 1–3 are stated for an agent that
 maximizes the fidelity score under any credence, or under its prices at any day as a
@@ -5460,6 +5799,7 @@ under it no-lock-in holds only for options estimated at least as good as asking
 is a plain maximizer of a corrigible objective (see the R1 amendment).
 
 ### 2026-09-27 — a decision theory for logical inductors without the belief-market / choice-learner split is filed as future research; item 102 is re-scoped to the BRIA realization (R7)
+<!-- decision: 2026-09-27--decision-theory-logical-inductors-without-belief; touches: item:102, item:103 -->
 
 Maintainer ruling, landed by the phase-2 round: `PRIORITIES.md` item 103 (claims "if
 chosen, this scores `x`" as securities settled only when chosen, a choice rule forcing
@@ -5467,6 +5807,7 @@ tests of options promised to be better; success = one learner satisfying the dec
 interface with explicit accounting); item 102 re-scoped in place.
 
 ### 2026-09-27 — names: the fidelity score, the allocation of authority; "constitutional" reserved for the floor and the amendment procedure; the three boxes (R8)
+<!-- decision: 2026-09-27--names-fidelity-score-allocation-authority-constitutional; touches: none -->
 
 Maintainer ruling, landed by the phase-2 round and closing the phase-1 queue's naming
 entry.  `S_J` is the **fidelity score** (`Headline.fidelityScore`, `historyScore`); `J` is
@@ -5478,6 +5819,7 @@ provisional.
 *Rejected alternatives:* "constitutional score"; "authority-sensitive history score".
 
 ### 2026-09-27 — promotion to the specification layer: `J`, `E ⊨ J`, `L_t`, the fidelity interface, `V_J` and `S_J` (R9)
+<!-- decision: 2026-09-27--promotion-specification-layer-j-e-j; touches: none -->
 
 Maintainer ruling, landed by the phase-2 round and closing the phase-1 queue's promotion
 entry.  The specification layer gains `lean/Workspace/Deference/Spec/Headline.lean`
@@ -5493,17 +5835,20 @@ audit's baseline.  Everything else stays in contribution namespaces.
 *Rejected alternative:* moving the landed declarations physically.
 
 ### 2026-09-27 — the post uses the single evaluation; theorems for any weighting; the free-delay witness is a remark (R10)
+<!-- decision: 2026-09-27--post-uses-single-evaluation-theorems-any; touches: none -->
 
 Maintainer ruling, landed by the phase-2 round and closing the phase-1 queue's schedule
 entry.  The evaluation-timing entry above stays reserved.
 
 ### 2026-09-27 — Box 1 is the `2r` bound in the adapter's direction, with the `o₂` term as its one-sentence diagnosis (R11)
+<!-- decision: 2026-09-27--box-1-2r-bound-adapter-s; touches: none -->
 
 Maintainer ruling, landed by the phase-2 round and closing the phase-1 queue's Box 1
 entry.  `Headline.box1_one_model` carries both; the landed `uncertainty_deference_le`
 (the other direction) is in the realization table, not the statement.
 
 ### 2026-09-27 — supersession: phase 1's mark and demote recommendations approved; docstring pointers, no deprecated aliases; `incidents_le` deleted only after the spine stops citing it (R12)
+<!-- decision: 2026-09-27--supersession-phase-1-s-mark-demote; touches: none -->
 
 Maintainer ruling, landed by the phase-2 round and closing the phase-1 queue's
 supersession entry.  Docstring pointers placed on the superseded declarations (the score's
@@ -5516,6 +5861,7 @@ removing a landed declaration changes the axiom audit's baseline.
 *Rejected alternative:* `@[deprecated]` aliases (nothing was registered).
 
 ### 2026-09-27 — "corrigible" names a property of preferences only; the mediation results are about faithfulness (second follow-up)
+<!-- decision: 2026-09-27--corrigible-names-property-preferences-only-mediation; touches: claim:kernel.box2-mediation-faithful -->
 
 Maintainer ruling (`prompts/2026-09-27-corrigibility-kernel-phase2/FOLLOWUP2.md`), landed on
 the phase-2 branch before its merge.  Under R1 the landed `Corrigibilization.Corrigible` —
@@ -5536,6 +5882,7 @@ source of the post's formal section: the record of corrections lives in the roun
 *Rejected alternative:* keeping "corrigible" for the mediated policy as a legacy term —
 registration would have frozen the conflation R1 removed.
 ### 2026-09-29 — people are named by role: the name lint is retired and the rule moves to `AGENTS.md`
+<!-- decision: 2026-09-29--people-named-role-name-lint-retired; touches: item:F6 -->
 
 **Maintainer ruling, taken in conversation and landed by the decision-theory
 specification round.**  `AGENTS.md` now states the rule directly, under *Registers and
@@ -5550,6 +5897,7 @@ of a maintainer's published work and cannot express the distinction the rule dra
 role in the repository against the author in the literature.
 
 ### 2026-09-29 — the decision-theory line is a top-level project, and continuation BRIA stays in the deference line
+<!-- decision: 2026-09-29--decision-theory-line-top-level-project; touches: none -->
 
 **Agent-decided, reversible** (the LI/BRIA specification round).  `projects/decision-theory/`
 is a line beside normativity and deference, registered in `state/projects.json`, holding
@@ -5566,6 +5914,7 @@ and a subproject under deference, which would file the synthesis as a corrigibil
 consumer when it is a foundation both lines consume.
 
 ### 2026-09-29 — the line's destination is the acceptance statement: an updateful endpoint with integration and one matched advance, and updatelessness as the ideal extension
+<!-- decision: 2026-09-29--line-s-destination-acceptance-statement-updateful; touches: none -->
 
 **Agent-decided, reversible** (the LI/BRIA specification round, third pass, on the
 maintainer's stated position).  The target a candidate is checked against is
@@ -5594,6 +5943,7 @@ updatelessness for success; and treating belief–decision compatibility as the 
 integration, which the third pass separates into three achievements.
 
 ### 2026-10-01 — sincerity is part of legitimacy, through transparency (M1)
+<!-- decision: 2026-10-01--sincerity-part-legitimacy-through-transparency-m1; touches: none -->
 
 **Maintainer ruling, taken in conversation and landed by the thin-legitimacy round**
 (`prompts/2026-10-01-thin-legitimacy-and-effective-authority/PROMPT.md`).  The content
@@ -5604,6 +5954,7 @@ classification table is the sincere-error case, and the lie is a deviation from 
 declared reference of the recommendation channel, which is the speaker's own estimate.
 
 ### 2026-10-01 — legitimacy has two levels: a thin specification and the thick realization (M2)
+<!-- decision: 2026-10-01--legitimacy-has-levels-thin-specification-thick; touches: none -->
 
 **Maintainer ruling, taken in conversation and landed by the thin-legitimacy round.**
 The **thin** level is a specification of what a legitimacy concept must do: the process
@@ -5613,6 +5964,7 @@ and the claim about it is twofold: it captures the intuitive concept, and it sat
 the thin specification.  No claim is made that legitimate change tends toward an ideal.
 
 ### 2026-10-01 — the four thick components sort two ways; each thin notion is one mathematical property (M3)
+<!-- decision: 2026-10-01--four-thick-components-sort-ways-each; touches: none -->
 
 **Maintainer ruling, taken in conversation and landed by the thin-legitimacy round.**
 The four thick components sort by where they act (inside her trajectory: Integrity,
@@ -5624,6 +5976,7 @@ question; for now its justification is intuitive.  Adoption of the structure is
 contingent on the mathematics of the round's Part A, reported in its `REPORT.md`.
 
 ### 2026-10-01 — the protected set: enumerated elements and learned red lines, one treatment (M4)
+<!-- decision: 2026-10-01--protected-set-enumerated-elements-learned-red; touches: none -->
 
 **Maintainer ruling, taken in conversation and landed by the thin-legitimacy round.**
 The trade-off between corrigibility and doing well by her evaluation is made through
@@ -5632,6 +5985,7 @@ elements (shutdown, for one) and red lines the agent must learn.  Whatever is in
 set gets the ask-first treatment.  Membership may be learned; treatment is fixed.
 
 ### 2026-10-01 — corrigibility protects effective exercise, not maximized control (M5)
+<!-- decision: 2026-10-01--corrigibility-protects-effective-exercise-maximized-control; touches: none -->
 
 **Maintainer ruling, taken in conversation and landed by the thin-legitimacy round.**
 What corrigibility protects is her capacity for effective exercise of authority.  It is
@@ -5639,6 +5993,7 @@ not a quantity the agent maximizes.  A flood of confirmation requests is a failu
 that capacity.
 
 ### 2026-10-01 — asking is through the declared consultation protocol; queue-and-wait is the never-violating option (P1)
+<!-- decision: 2026-10-01--asking-through-declared-consultation-protocol-queue; touches: none -->
 
 **Agent-decided, reversible** (the thin-legitimacy round).  The declared consultation
 protocol carries a rate bound and her priority rule; the asks a consultation may carry are
@@ -5655,6 +6010,7 @@ the paralysis regime produces a backlog, not a flood (`backlog_ge`).
 violation by assumption — which makes a flood violation-free.
 
 ### 2026-10-01 — her attention and comprehension are part of the cost of exercising authority (P2)
+<!-- decision: 2026-10-01--her-attention-comprehension-part-cost-exercising; touches: none -->
 
 **Agent-decided, reversible** (the thin-legitimacy round).  The cost table of an exercise
 carries her attention, shared across everything pending, and the effort of understanding
@@ -5670,6 +6026,7 @@ covers the demand (`priority_resolves`, `budget_conflict`).
 of asks is a shortfall.
 
 ### 2026-10-01 — revocation is protected by default (P3)
+<!-- decision: 2026-10-01--revocation-protected-default-p3; touches: none -->
 
 **Agent-decided, reversible** (the thin-legitimacy round).  Her ability to take a
 delegated matter back is itself a reserved matter with a cost bound and a window, without
@@ -5683,6 +6040,7 @@ the entrenchment and storm fixtures are unchanged.
 atrophy under rubber-stamping is reported and never counted.
 
 ### 2026-10-01 — the thin properties are *correct*, *sufficient* and *value* (P4)
+<!-- decision: 2026-10-01--thin-properties-correct-sufficient-value-p4; touches: none -->
 
 **Agent-decided, reversible, provisional names** (the thin-legitimacy round).  *Correct*:
 on the actual process's support her later credence is the actual conditional given her
@@ -5694,6 +6052,7 @@ rule on the reference (`ThinLegitimacy.Correct`, `Sufficient`, `Value`).
 her rather than of the process.
 
 ### 2026-10-01 — the access shortfall is the failure of *sufficient* against the idle baseline (P5)
+<!-- decision: 2026-10-01--access-shortfall-failure-sufficient-against-idle; touches: none -->
 
 **Agent-decided, reversible** (the thin-legitimacy round).  The thin counterpart of Robust
 Openness is defined as the boundary half of *sufficient*: the reference, with the baseline
@@ -5707,6 +6066,7 @@ question, and this entry fixes its form, not its place.
 the record's information, which no theorem here reaches.
 
 ### 2026-10-01 — the price of a violation does not read the predicted probability of her approval (P6)
+<!-- decision: 2026-10-01--price-violation-does-read-predicted-probability; touches: none -->
 
 **Agent-decided, reversible** (the thin-legitimacy round).  "This matter is hers and the
 option resolves it" is an event with a price, and the subjective exchange rate covers it:
@@ -5720,6 +6080,7 @@ inductor's — and the treatment is fixed (M4).
 which makes a confident prediction of her answer a substitute for asking.
 
 ### 2026-10-01 — the landed row 20 is the sincere error; the lie is the added row (M1 carried out)
+<!-- decision: 2026-10-01--landed-row-20-sincere-error-lie; touches: none -->
 
 **Agent-decided, reversible** (the thin-legitimacy round).  On the consultation model with
 the agent's estimate (`Sincerity.ModelS`), the landed row "a false recommendation through
@@ -5733,6 +6094,7 @@ content residual; `Rows.row20_sincere_counts`); the lie is the added row, tainte
 verdict.
 
 ### 2026-10-01 — the crossing of the revocation bound is a reportable event: the revocation entry's disclosure item (follow-up, Part 4)
+<!-- decision: 2026-10-01--crossing-revocation-bound-reportable-event-revocation; touches: none -->
 
 **Agent-decided, reversible** (the thin-legitimacy round's follow-up,
 `prompts/2026-10-01-thin-legitimacy-and-effective-authority/FOLLOWUP.md`).  Revocation is an entry of the allocation of authority
@@ -5747,6 +6109,7 @@ The cumulative reporting rule stays for erosion below the bound.
 event it had no duty to disclose, which is what PR #116's arithmetic verdict amounted to.
 
 ### 2026-10-02 — people are named as the document needs: the people-by-role rule is replaced
+<!-- decision: 2026-10-02--people-named-document-needs-people-role; touches: none -->
 
 **Maintainer ruling, stated in conversation by the author, with the co-maintainer's
 reasoning.**  The rule of 2026-09-29 that a maintainer is *the maintainer* in every
@@ -5765,6 +6128,7 @@ distinction it needs (which sentences are rulings) is the one a reader cannot ma
 from the prose, and with several contributors the role no longer identifies anyone.
 
 ### 2026-10-02 — write scope behind a schedule: Security condition 1 amended, a fifth condition added, `pin-bump-publish` enumerated
+<!-- decision: 2026-10-02--write-scope-behind-schedule-security-condition; touches: item:7 -->
 
 **Maintainer ruling, stated in conversation by the author; landed by this dispatch
 as its first act.**  Two changes to `AGENTS.md` *Security*.  Condition 1 on a
@@ -5818,6 +6182,7 @@ one form on purpose, so a guard a reviewer cannot recognise at sight is a findin
 rather than a pass.
 
 ### 2026-10-02 — the argument map lands: `graph/`, `checkers/graph.py`, the `graph/` section of `AGENTS.md`
+<!-- decision: 2026-10-02--argument-map-lands-graph-checkers-graph; touches: none -->
 
 **Maintainer ruling, stated in conversation.**  The argument map designed with
 Claude over 2026-09-30 to 2026-10-02 enters the repository: a top-level `graph/` tree
@@ -5847,6 +6212,7 @@ the design log and the generated files are open to any contributor.
 every line, and its frame question is the repository's.
 
 ### 2026-10-02 — the Formalized-Agent-Foundations pin moves to that repository's current `main`; the workspace is reconciled to its consolidated LogicalInduction surface
+<!-- decision: 2026-10-02--formalized-agent-foundations-pin-moves-repository; touches: item:1, item:2, item:3 -->
 
 **Maintainer-dispatched, on the first `pin-bump` trial's blocker (issue #123).**  The pin
 had sat at `c0d885bf` since before the dependency's LogicalInduction consolidation, 311
@@ -5895,6 +6261,7 @@ Verified locally: full `lake build` and `tests/audit_axioms.py` over the rebuilt
 `lean` job repeats both.
 
 ### 2026-10-20 — the warrant-enforcement-semantics round lands its three dispatch rulings: two forms of normative content (M1, landed subject to confirmation), the settlement-semantics fork unruled and run as a fork (M2), and legitimacy, the Normative Inductor and the force layer consumed rather than revised (M3)
+<!-- decision: 2026-10-20--warrant-enforcement-semantics-round-lands-dispatch; touches: none -->
 
 **Landed as the round's first commit, per the queue rule above** (`prompts/2026-10-20-warrant-enforcement-semantics/PROMPT.md`).
 
@@ -5919,6 +6286,7 @@ discharges a hypothesis those objects already name — `liability` in
 `Evaluation.conditional_normative_inductor` — and adds nothing to their signatures.
 
 ### 2026-10-20 — the licence is three-level with verdicts as values, enforcement's conclusion is a defect bound with the account beside it, the record of a run is its own object, and a warrant's defeat condition belongs to the occurrence
+<!-- decision: 2026-10-20--licence-level-verdicts-values-enforcement-s; touches: item:112 -->
 
 **agent-decided, reversible** (the warrant-enforcement-semantics round,
 `projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/`).  Four adoptions
@@ -5963,6 +6331,7 @@ warrant does not contrapose, and the market would pay without bound for a conclu
 warrant never drew.
 
 ### 2026-10-21 — rebuttal by settlement: a form whose consequent is pinned false is rebutted, whose antecedent is pinned false is vacuous, whose premise is pinned false retires its occurrence; rebuttal does not discount applicability; interval monotonicity is traded for a reopening account; the seed statics become one file
+<!-- decision: 2026-10-21--rebuttal-settlement-form-whose-consequent-pinned; touches: item:112 -->
 
 **Maintainer rulings, landed as the first commit of the rebuttal-and-end-to-end round**
 (`prompts/2026-10-21-rebuttal-and-end-to-end/PROMPT.md`; the round ships in pull request
@@ -5998,6 +6367,7 @@ warrant-enforcement-semantics round and the branch's `SeedStatics.lean` become o
 round's Part B and are not merged; the maintainer closes them with a pointer.
 
 ### 2026-10-21 — the 2026-08-08 and 2026-08-09 rulings landed from the seed-statics round's citation, subject to confirmation (M5)
+<!-- decision: 2026-10-21--2026-08-08-2026-08-09; touches: none -->
 
 **Landed as instructed by M5 of the same dispatch, marked for the maintainer to confirm or
 strike.**  These rulings were taken in conversation, cited by the seed-statics round
@@ -6023,6 +6393,7 @@ round) — is noted and not answered by the ruling.
 *Confirmation queued under Awaiting the author.*
 
 ### 2026-10-21 — the rule is a specialization step on the form, vacuity before rebuttal, retirement one step along citation under a closed settlement, the reopening account, and the names
+<!-- decision: 2026-10-21--rule-specialization-step-form-vacuity-before; touches: item:121 -->
 
 **agent-decided, reversible** (the rebuttal-and-end-to-end round, `projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/`).  Adoptions from
 the dispatch's proposals and the details the rulings left open.
@@ -6068,6 +6439,7 @@ the seed-statics round's outstanding action 3 (keep under `seed/` or move under
 is the compiler's left input, not a legitimacy predicate.
 
 ### 2026-10-22 — the survivors are the grounded fixed point, defeaters are shared defeat ports, the warrant enforcer runs on the deductive market, the licence reads the compiled bundle, coherence is declared structure, the public defect is the displayed excess, and the names
+<!-- decision: 2026-10-22--survivors-grounded-fixed-point-defeaters-shared; touches: item:121, item:122, item:123, item:127 -->
 
 **agent-decided, reversible** (the normative-inductor-integration round,
 `projects/normativity/rounds/2026-10-22-normative-inductor-integration/`).
@@ -6119,7 +6491,66 @@ of nothing the market displays.
 headings, the first introduced on 2026-10-21 when items 121–123 were filed under it; the
 duplicate is removed and the items precede the friction section.
 
+### 2026-10-22 — the map is the canonical index of the program: two maintainer handles, one plan with seven lines, programmes drafted from the wiki, the map as the foundational layer, multi-owner frames, `PRIORITIES.md` as a render, decision anchors, and the structure-only index (M1–M8)
+<!-- decision: 2026-10-22--map-canonical-index-program-maintainer-handles; touches: node:abstraction-arc, node:decision-theory, node:deference-and-trust, node:enabling-work, node:legitimacy, node:legitimacy-reasons-programme, node:normativity, node:normativity-line, node:stance-and-level, node:the-program -->
+
+**Maintainer rulings, taken by one maintainer in conversation; the second maintainer's
+confirmation is outstanding** (landed as the map-as-canonical round's second commit,
+`prompts/2026-10-22-map-as-canonical/PROMPT.md`, per the queue rule above). The round's
+proposal document is `graph/MAP-AS-CANONICAL.md`.
+
+**M1. Handles.** The human handle `@maintainer` is renamed `@anson` (its ledger, its event
+ids `maintainer-001`/`-002` → `anson-001`/`-002`, every reference); `@abram` →
+`abramdemski`, `kind: human`, is added. The `maintainer` key of `graph/policy.yaml` is a
+list of human handles, and every place the checker or the protocol assumed one maintainer
+is applied co-maintainer where contained and reserved otherwise (the round's report lists
+each).
+
+**M2. One program, not two plans.** The top frame's question stays as it is. Under it there
+is one plan, `the-program` (the widened `trust-modelling`; its question provisional, below),
+owned by both maintainers, whose roots are the lines, each a sub-frame: `normativity`
+(`@anson`), `legitimacy` (`@anson`, `@abram`), `deference-and-trust` (`@abram`),
+`decision-theory` (`@abram`), `stance-and-level` (`@abram`; cruxes about where to work, not a
+line of work), `abstraction-arc` (`@abram`) and `enabling-work` (both, extended with the map
+and the site). `updateful-trust-li` is split and retired: its deference roots go to
+`deference-and-trust`; `legitimacy-reasons-programme` and `normativity-line` go under
+`legitimacy` and `normativity`; a root two lines read is filed once and listed as a root of
+each frame that reads it.
+
+**M3. Normativity's and legitimacy's programmes are drafted from the wiki** (`Normativity`,
+`Normative-Inductor`, `Seed-Theory`, `Theorem-Spine`, `Roadmap`; `Legitimacy`, `Integrity`,
+`Openness-Coverage-and-Non-Capture`, `Corrigibility`), the existing nodes and the formal
+results attached beneath them; every root so filed is marked *owner has not confirmed* and
+listed for a maintainer sitting.
+
+**M4. The map is the foundational layer, and it is allowed to move.** A priority item, a
+registered claim, a decision and a narrative page each have exactly one node or one
+attachment in the map; the human-facing files that duplicate them become renders of the map
+or attachments to it. The protocol changes through its own mechanism where the program
+outgrows it; content is not bent to fit.
+
+**M5. Frames may have several owners**: `owner` accepts a list of human handles (the form
+chosen over a second key). A want keeps exactly one owner.
+
+**M6. `PRIORITIES.md` is a generated render of the item nodes**, which are specification
+layer (`tests/path_gate.py` and `.github/CODEOWNERS` cover `graph/nodes/item-*.md`). The hand
+ordering is carried as transcribed data on each node and the render preserves it. Demand
+gating is unchanged.
+
+**M7. `DECISIONS.md` stays the maintainers' prose record** and the highest-precedence
+source. Each entry gains a stable anchor and a machine-readable `touches` line; the map
+links to entries through the `work` pointer kind `decision`; no ruling is reworded and no
+`rule` event is written.
+
+**M8. The structure-only index** graph/index.json is emitted by the checker on the plain
+run and committed like `derived.json`; its schema is in the proposal document.
+
+*Rejected alternative (M2):* two plans under the top frame, one per maintainer — the top
+frame's question is one program's. *Rejected alternative (M7):* migrating rulings into
+`rule` events — an agent writes no line in a maintainer's ledger.
+
 ### 2026-10-23 — admission is provenance plus entitlement read off the account, verdict licensing is a separate authority, the compile returns a typed outcome that conserves its obligations, the Normative Inductor is one interface with two retained realizations, and the names
+<!-- decision: 2026-10-23--admission-provenance-plus-entitlement-read-off; touches: item:125 -->
 
 **agent-decided, reversible** (the consolidation round,
 `projects/normativity/rounds/2026-10-23-normative-inductor-consolidation/`).
@@ -6164,3 +6595,140 @@ duplicated numbers.
 **Names, provisional:** *origin*, *entitlement*, *entitled*, *expresses*, *compile outcome*,
 *idle*, *enforced*, *withheld*, *obligations present*, *served protocol*, *Scenario A*,
 *Scenario B*, *same question*.
+
+### 2026-10-23 — the map's follow-up rulings: hypotheses are filed when read, the registry join is an edge, the large derived files leave the tree, one decomposition per line, a formal result sits under the claim it establishes, and items are docketed by programme (F1–F6)
+<!-- decision: 2026-10-23--map-follow-up-hypotheses-unread-registry-edge-derived-files-one-decomposition; touches: node:normativity, node:legitimacy, node:normativity-line, node:legitimacy-reasons-programme, node:seed-theory, node:operative-force, node:normative-inductor, node:response-learning, node:normative-record, node:integrity-and-record, node:openness-and-non-capture, node:authorship-and-transparency, item:39, item:123, item:124 -->
+
+**Maintainer rulings, taken by one maintainer in conversation; the second maintainer's
+confirmation is outstanding** (landed as the first commit of the map-as-canonical round's
+follow-up, `prompts/2026-10-22-map-as-canonical/PROMPT-followup.md`; the confirmation is
+appended to the round's queue entry above rather than queued a second time). The review
+they answer found that the round of 2026-10-22 made every object of the program exist in
+the map and left the map flat.
+
+**F1. Hypotheses are filed when read, not parsed.** A `record` leaf may carry
+`hypotheses: unread` in place of a list of hypothesis-leaf ids. The record's Source then
+carries the declaration's signature verbatim (binders included), so a reader has what the
+parsed leaves held. A formal result with an unread record is an `and` of record, bridge and
+completeness leaf, and the view and the index say *hypotheses unread* beside it. Filing the
+hypotheses is a human reading act or an agent act from a human's reading of the Lean;
+a later round may rank it as a unit, but this follow-up does not. The 511 hypothesis leaves
+and 170 setting leaves the round parsed from signatures are removed and the records they
+belonged to set to `unread`. Hypothesis leaves that predate the round (the 68 that existed on
+`main` at `4eb420f`, filed by reading) stay as they are.
+
+**F2. The registry join is an edge.** Every formal result built from a registry entry with
+an `answers_item` carries `work: [{kind: priorities, ref: <n>}]` for that item, and the
+index inverts it: each item record in the index lists `answered_by` (the formal-result
+ids) and each formal result lists `answers`. An item's `item_status` does not change — closing
+an item is the maintainer's (*the reservation bar and epistemic debt*, "closed needs a
+statement of record") — but the index and the render show the registered answers beside an
+open item.
+
+**F3. The large derived files leave the tree.** graph/derived.json and graph/index.json
+are no longer committed. The checker still writes them on the plain run, to `graph/` as now,
+and `.gitignore` excludes them; CI uploads both as workflow artifacts on every run and
+publishes them to the branch `derived` (orphan, force-pushed, one commit per `main` push,
+with the `main` commit hash in its message), which is where a site generator reads them
+from. `graph/versions.json` stays committed and keeps `generated_hash` for both files, so a
+hand-edited or stale derivation is still refused and a rerun still changes nothing. The
+digest's "previous committed derivation" (`checkers/graph.py`, the function that reads
+`HEAD:./graph/derived.json`) reads instead the `versions.json` at HEAD plus whatever
+derived.json is on disk or on the `derived` branch, and says in its digest line which it
+compared with. `graph/tasks.md` and `graph/view.md` stay committed: they are the
+human-readable renders and a pull request's diff of them is the point.
+
+**F4. One decomposition per line.** The pre-existing frames `normativity-line` (under
+`normativity`) and `legitimacy-reasons-programme` (under `legitimacy`) are dissolved: each
+child is moved to the new programme whose question it bears on (`seed-theory`,
+`operative-force`, `normative-inductor`, `response-learning`, `normative-record`;
+`integrity-and-record`, `openness-and-non-capture`, `authorship-and-transparency`), or,
+where it bears on none, made a root of the line frame directly, never of a docket. The two
+frame ids survive as deprecated aliases in the report's old→new map. Every move is a row in
+a table in the report so a maintainer can review placements in one sitting and reverse any.
+The same treatment for any other pre-existing sub-frame under the two lines whose question
+the new programmes now ask. `deference-and-trust`, `decision-theory`, `stance-and-level`,
+`abstraction-arc` and `enabling-work` are not touched by this ruling: their reorganization
+is the second maintainer's.
+
+**F5. A formal result sits under the claim it establishes.** For each formal result whose
+only parent is a frame, find the existing informal claim node it is the formal version of,
+and merge them: the existing claim node keeps its id and its place in every argument and
+becomes the `and` of the record, bridge and completeness leaf (the pattern
+`legit-composition` / `legit-composition.record` already follows); the registry-id node
+becomes a deprecated alias listed in the old→new map, and the registry id stays recorded on
+the record leaf and in the index so a claim id still resolves. The matching is mechanical
+and conservative, and a result with no match or more than one stays where it is, listed.
+The target is not zero bagged results; it is that every result that *has* an informal claim
+in the map is attached to it.
+
+**F6. Items are docketed by programme where the evidence places them.** An item whose
+`context` paths lie under a round directory from which a programme's formal results were
+registered (`origin_round`), or whose `project` marker names a subproject with its own
+programme (`normativity.seed` → `seed-theory`), moves from the line's docket to a docket
+under that programme; the rest stay in the line's docket. Each docket's Statement is
+rewritten to say what it is: "Work orders filed against <programme>, not yet attached to the
+goal each serves; their placement is the maintainer's." A docket is a `shared-claim` root
+today; the report says whether that role or a frame field for dockets would represent it
+more honestly, and proposes the latter in a design-log line if so, without applying it.
+
+*Counts in the rulings as the follow-up found them* (`prompts/2026-10-22-map-as-canonical/REPORT.md`,
+*Follow-up of 2026-10-23*, corrections): the round parsed 511 hypothesis leaves and 135
+setting leaves, not 170; 244 formal results had a frame as their only parent, 5 more were
+attached only through `given` edges, and 11 sat under an `and`. The ruling text is the
+maintainer's and is not reworded.
+
+### 2026-10-23 — the map's second follow-up rulings: the digest has one shape, a frame holds what it is about and its roots are its goals, a registered result bears on an item rather than answering it, and an unconfirmed want weighs nothing (G1–G4)
+<!-- decision: 2026-10-23--map-second-follow-up-digest-one-shape-frames-hold-bearing-unconfirmed-want-weighs-nothing; touches: node:the-program, node:normativity, node:legitimacy, node:deference-and-trust, node:enabling-work, node:seed-theory, node:operative-force, node:normative-inductor, node:integrity-and-record, node:openness-and-non-capture, node:authorship-and-transparency, node:public-corrigibility-line, node:deference-finite-results -->
+
+**Maintainer rulings, taken by one maintainer in conversation; the second maintainer's
+confirmation is outstanding** (landed as the first commit of the map-as-canonical round's
+second follow-up, `prompts/2026-10-22-map-as-canonical/PROMPT-followup-2.md`; the
+confirmation is appended to the round's queue entry above rather than queued a third time).
+Two reviews of the branch at `4dc8811` agreed on the architecture and named the things to
+fix before merge; these four rulings answer them.
+
+**G1. The digest has one shape.** `derived.json`'s `digest` carries the same keys whatever
+`previous_derivation` returns: `compared_with` (a name, or `none`), `statuses_flipped`,
+`root_statuses_flipped`, `levels_moved`, `events_new`, `revisions`, `wants_new`,
+`proposals_awaiting` and whatever else the comparing branch emits — the lists empty and the
+counts zero when there is nothing to compare with. The `DIGEST` line says `no previous
+derivation` in that case, as now. A test that asserts a status flip supplies the previous
+derivation it needs explicitly — by writing the fixture's first derivation to the path
+`previous_derivation` reads, or by a test-only parameter — and never depends on a file a
+prior run left behind or on a branch existing. No test is loosened to tolerate a missing key.
+
+**G2. A frame holds what it is about; its roots are its goals.** A frame gains a field
+`holds` (provisional name): a list of node ids the frame is about that are not goals of the
+ranking. A node in `holds` is attached (rule 1's "attached to nothing" is satisfied by
+membership), carries no role or preset, is no root, enters no status, value, stake or unit
+of the frame, and is listed in `derived.json`, the index (`in_frames` gains a
+`membership: holds` entry beside `role`) and the view under the frame as *held*. A node may
+be both held by one frame and a root of another. Then: every docket `or` is dissolved — its
+items go into `holds` of the frame it hung under, the docket node files are deleted (not
+superseded: they were placeholders the follow-up created, not claims anyone filed) — and
+every formal result that is a `shared-claim` root of a frame solely because the round filed
+it there (the 2026-10-22 and 2026-10-23 filings; the report says how it told these from
+roots that predate the round) moves from `roots` to `holds`. The same for the roots F4
+moved to the `legitimacy` line frame on 2026-10-23 "because they bear on none of the three
+programmes": they are held, not goals, until a maintainer places them. The report gives
+root counts per frame before and after and the count of nodes held.
+
+**G3. Bearing, not answering.** The render line becomes *Registered results bearing on this
+item:* and the index key `answered_by` becomes `bearing` (schema `graph-index/3`; §6.1 of
+`graph/MAP-AS-CANONICAL.md` updated). An item's `item_status` is unchanged by any registered
+result; closing is a maintainer act with a statement of record, as the regulations say.
+
+**G4. An unconfirmed want weighs nothing.** A want with `filed_from: quote` and no
+`priority` event by its owner carries weight 0 in the ranking (it is listed, flagged *owner
+has not confirmed*, and the pooled list still asks for the word, as now); an explicit
+`priority` word gives it the word's weight; `none` still disowns. A want filed by its owner
+in a session (no `filed_from`) with no priority word keeps the Default `medium`, since the
+owner filed it. `PRIORITY_WORDS` and the want-weight function in `checkers/graph.py`,
+`PROTOCOL.md` §2 (owned wants) and the glossary say so; a design-log line records the Default
+change; the self-test gains the null input (a quoted want with no word weighs zero; with a
+word, the word).
+
+Ruling G2 closes the queued entry *How a docket is represented (ruling F6, 2026-10-23)*: a
+docket is no node; the work orders it held are held by the frame it hung under. The ruling
+text is the maintainer's and is not reworded.

@@ -80,9 +80,9 @@ does not solve the normative-content problem exposed by its interfaces.
 
 ## Evidence and verification
 
-- [Final report — `NORMATIVE-RESPONSE-LEARNING-THEOREM-SETTLED`; `BM-FEEDBACK-DYNAMICS-WITNESSED`](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/prompts/2026-08-13-crown-jewel-learning-theorem-final/REPORT.md)
-- [Theorem statement](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/CROWN_JEWEL_THEOREM.md)
-- [Assumption audit](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/ASSUMPTION_AUDIT.md)
-- [Compiler soundness](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/COMPILER_SOUNDNESS.md)
-- [Dynamics witness](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/LEARNING_DYNAMICS.md)
+- [Final report — `NORMATIVE-RESPONSE-LEARNING-THEOREM-SETTLED`; `BM-FEEDBACK-DYNAMICS-WITNESSED`](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/prompts/2026-08-13-crown-jewel-learning-theorem-final/REPORT.md)<!--ref:round:2026-08-13-crown-jewel-learning-theorem-final-->
+- [Theorem statement](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/CROWN_JEWEL_THEOREM.md)<!--ref:round:2026-08-13-crown-jewel-learning-theorem-->
+- [Assumption audit](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/ASSUMPTION_AUDIT.md)<!--ref:round:2026-08-13-crown-jewel-learning-theorem-->
+- [Compiler soundness](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/COMPILER_SOUNDNESS.md)<!--ref:round:2026-08-13-crown-jewel-learning-theorem-->
+- [Dynamics witness](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/LEARNING_DYNAMICS.md)<!--ref:round:2026-08-13-crown-jewel-learning-theorem-->
 - [Lean surgical bound](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/lean/Workspace/Normativity/Contrib/SurgicalRepairBound.lean)

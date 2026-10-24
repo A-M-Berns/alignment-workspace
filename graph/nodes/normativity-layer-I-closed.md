@@ -5,6 +5,7 @@ leaf_kind: step
 action: "Port Theorem F2 to Lean, the port the checkpoint ranks highest because everything downstream reduces to it; in the repository's Lean tree under the normativity namespace."
 who: agent
 files: [lean/, projects/normativity/legitimacy/checkpoint-2026-09-01/ROADMAP.md]
+narrative: [wiki/Liability-and-Affordability.md, wiki/Serviceability.md]
 author: "@smithy-verity"
 size: M
 size_reason: "one checkpoint section and one port"

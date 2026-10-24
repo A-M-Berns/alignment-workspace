@@ -11,7 +11,8 @@ permissions, challenges, and standards may themselves change. Being corrigible
 is harder than predicting or obeying a person because a system can preserve the
 appearance of consultation while removing the person's effective role.
 
-The program has two research lines and one bridge:
+The program has two research lines and one bridge, with a third line, decision
+theory, beside them in the repository:
 
 - **[Normativity](Normativity)** asks when a reasoner counts as responding
   appropriately to reasons and improving within a public practice.
@@ -25,7 +26,10 @@ The program has two research lines and one bridge:
   an internal half — an [Integrity](Integrity) evolution of the accounted obligation
   state, and authorship of its verdicts — and an external half — the trajectory
   [robustly open](Openness-Coverage-and-Non-Capture) at every state, and every channel
-  of influence transparent to its declared reference. [Diachronic
+  of influence transparent to its declared reference.
+- **Decision theory** specifies what a computable agent combining logical induction
+  with bounded inductive rationality must satisfy (`projects/decision-theory/`); it has
+  no wiki page of its own. [Diachronic
   Answerability](Diachronic-Answerability) is derived from the record half,
   [normative induction](Normative-Induction) is the quantitative half, and the
   [Normative Inductor](Normative-Inductor) is its conditional realization.
@@ -78,7 +82,7 @@ else discussed here is open, a living note, or unregistered research: its round
 verdicts and evidence strengths are preserved, and the wiki does not upgrade any of
 it to Established. The legitimacy theory is canonical and its remaining work is
 realization; the deference line's older target waits on one decision, the succession of
-item 28, and its temporal-depth half is supplied by continuation BRIA.
+item 28<!--ref:item:28-->, and its temporal-depth half is supplied by continuation BRIA.
 
 ## Wiki and lab
 

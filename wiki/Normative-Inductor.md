@@ -9,7 +9,7 @@ the general one's Logical-Induction hypotheses are not inhabited, and the deduct
 one has no single witness for its joint package. The name is provisional.
 
 **Status, 2026-10-23.** A consolidated conditional theorem on one market is registered
-(`inductor.warrant-inductor`, `WarrantInductor.warrant_inductor`): for a process of normative
+(`inductor.warrant-inductor`<!--ref:claim:inductor.warrant-inductor-->, `WarrantInductor.warrant_inductor`): for a process of normative
 states whose grounds are *entitled* in an accounted obligation state, the rowwise warrant
 enforcer of each date's compiled bundle on the augmented deductive market is a logical
 inductor; at every enforced date every row conforms at the displayed price within the
@@ -17,8 +17,8 @@ tolerance and every held substantive row is an entitled survivor's; a certificat
 mass carries that conformance to the bounds a licence or an adapter reads; and a soft-gate
 adapter on certified scores yields `PracticalCert` and the Progress bound with
 `PracticalUptake` derived. Two runs discharge computability and liability: the undercut of an
-applicability (`inductor.witness`) and the rebuttal of a still-active strength, with the same
-decision question posed before and after (`inductor.rebuttal-run`). The page below describes
+applicability (`inductor.witness`<!--ref:claim:inductor.witness-->) and the rebuttal of a still-active strength, with the same
+decision question posed before and after (`inductor.rebuttal-run`<!--ref:claim:inductor.rebuttal-run-->). The page below describes
 the Inductor as an *interface* with two realizations — the projection enforcer, whose
 guarantee is a distance to the region, and the rowwise enforcer, whose guarantee is per row —
 and says which guarantee each theorem proves.
@@ -122,7 +122,7 @@ mass times the tolerance. It needs only the rows and a feasibility witness.
 
 Neither guarantee implies the other without a constant: from rowwise excesses the distance to
 the region is bounded by a Hoffman constant of the row system, not computed here
-(`PRIORITIES.md` item 125); from a distance, a row's excess is bounded by its norm times the
+(`PRIORITIES.md` item 125<!--ref:item:125-->); from a distance, a row's excess is bounded by its norm times the
 distance. A reader comparing a projection theorem with a warrant theorem is comparing the two
 realizations' guarantees, not two statements of one.
 
@@ -165,7 +165,7 @@ compiler, the scheduler, the practical semantics and the market's computability 
 how a realization *produces* the named hypotheses, and none is produced here.
 
 **The warrant realization, consolidated** (`WarrantInductor.warrant_inductor`; registered
-`inductor.warrant-inductor`). For an externally supplied process of normative states — the
+`inductor.warrant-inductor`<!--ref:claim:inductor.warrant-inductor-->). For an externally supplied process of normative states — the
 theorem is pointwise in the date — whose grounds are entitled and well formed, the compiler's
 results and tolerances, a computable deductive process, an effective enforcer and a liability
 bound, and an adapter protocol whose service dates are enforced and carry certified exclusion
@@ -180,7 +180,7 @@ warrants constrain the prices*: conformance, from an enforced outcome and the li
 with Logical Induction preserved. *The warrants produce warranted guidance about the adapter*:
 the adapter conclusion and Progress, which additionally need the declared adequate set, the
 anchored losses and the certificates tying the set to the bundle. Neither says the warrants
-are correct. The two runs (`inductor.witness`, `inductor.rebuttal-run`) exhibit an undercut
+are correct. The two runs (`inductor.witness`<!--ref:claim:inductor.witness-->, `inductor.rebuttal-run`<!--ref:claim:inductor.rebuttal-run-->) exhibit an undercut
 and a rebuttal; in the second the same decision question is posed before and after the
 revision, its region flips, no certificate for the former guarantee exists afterwards, and the
 gate's mass on the formerly recommended response goes from at least `24/25` to `0` at the
@@ -255,9 +255,9 @@ Progress algebra are
 the padding analysis, the value counterexample and the projection-work domination are
 [`NormativeInductor.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/caa3ad083e2d6d8120fbb54120219e907502ad28/lean/Workspace/Normativity/Contrib/NormativeInductor.lean)
 with the realization round's
-[`NORMATIVE_INDUCTOR_REALIZATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/caa3ad083e2d6d8120fbb54120219e907502ad28/projects/normativity/legitimacy/rounds/2026-09-04-normative-inductor-realization/NORMATIVE_INDUCTOR_REALIZATION.md).
+[`NORMATIVE_INDUCTOR_REALIZATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/caa3ad083e2d6d8120fbb54120219e907502ad28/projects/normativity/legitimacy/rounds/2026-09-04-normative-inductor-realization/NORMATIVE_INDUCTOR_REALIZATION.md)<!--ref:round:2026-09-04-normative-inductor-realization-->.
 The connector classification is §7 of the consolidation round's
-[`CONSOLIDATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/CONSOLIDATION.md).
+[`CONSOLIDATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/CONSOLIDATION.md)<!--ref:round:2026-09-06-mathematical-consolidation-->.
 The substrate's registered claims are in the
 [normativity claims registry](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/CLAIMS.md)
 and the enforcement construction is summarized on
