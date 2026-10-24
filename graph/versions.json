@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "67d1a19630474f4a1afedd87",
-  "index.json": "f156743029ce92ef7a574a27"
+  "derived.json": "a804ba874dce2eb3c27c80f6",
+  "index.json": "adb0c8ecca5506e4bc5993e5"
  },
- "generated_hash": "9c9cfd578b480e7e7e3e609e",
+ "generated_hash": "6d033f1e812771e137cd19fa",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -2990,6 +2990,11 @@
     "date": "2026-10-22",
     "normalized": "the statement of record of compiler deductive end to end formalizes the registered claim as the registry reads it finite date coherence with the original criterion deductively",
     "version": 1
+   },
+   {
+    "date": "2026-10-23",
+    "normalized": "the claim asserts that a constraint on prices compiles to a legal trading strategy inside the market recursion giving per date conformance within a schedule while preserving the logical induction criterion the declaration certifies this for a deductive process the market compiled from the deductive projection schedule is a logical inductor over the process and at every date its distance from the days representation on the fragment is within that dates tolerance the gaps the claim speaks of constraints on prices in general and the declaration of the deductive region alone the constraint schedule forms are the companion declarations end_to_end_effective and end_to_end_of_constraints_effective which this record does not certify the claim leaves the schedules free and the declaration fixes the fragment and tolerance schedules as primitive recursive data preserving the criterion means the pinned sources own islogicalinductor over the deductive process under the sources certificate not an absolute criterion and the construction is computable not efficient the generator being doubly exponential in the fragment dimension which the claim does not say",
+    "version": 2
    }
   ],
   "compiler.deductive-end-to-end.complete": [
@@ -3002,6 +3007,39 @@
     "date": "2026-10-23",
     "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
     "version": 2
+   },
+   {
+    "date": "2026-10-23",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record the four hypothesis leaves filed by reading the fragment schedule the tolerance schedule the pinned sources computability certificate on the process and the satisfiability of every stage the bridge and this leaf the premise list is the signatures grouped as a reader states it",
+    "version": 3
+   }
+  ],
+  "compiler.deductive-end-to-end.h-fragment-schedule": [
+   {
+    "date": "2026-10-23",
+    "normalized": "the fragment schedule assigns each date a duplicate free list of sentences and is primitive recursive",
+    "version": 1
+   }
+  ],
+  "compiler.deductive-end-to-end.h-process-certificate": [
+   {
+    "date": "2026-10-23",
+    "normalized": "the deductive process carries the pinned sources own computability certificate a program that eventually emits each stage",
+    "version": 1
+   }
+  ],
+  "compiler.deductive-end-to-end.h-stages-satisfiable": [
+   {
+    "date": "2026-10-23",
+    "normalized": "every stage of the deductive process is propositionally satisfiable some propositionally consistent world agrees with the stage",
+    "version": 1
+   }
+  ],
+  "compiler.deductive-end-to-end.h-tolerance-schedule": [
+   {
+    "date": "2026-10-23",
+    "normalized": "the tolerance schedule assigns each date a strictly positive rational and is primitive recursive",
+    "version": 1
    }
   ],
   "compiler.deductive-end-to-end.h1": [
@@ -8369,6 +8407,13 @@
    {
     "date": "2026-10-22",
     "normalized": "item 128 admission from the accounted state is delivered as its entry specifies the entry is transcribed below",
+    "version": 1
+   }
+  ],
+  "item-129": [
+   {
+    "date": "2026-10-23",
+    "normalized": "the compiled enforcers per day gap bets are bounded below by a schedule while the criterion is preserved so that the conformance the compiler gives is a trust bound the deference line can read",
     "version": 1
    }
   ],
@@ -17548,6 +17593,27 @@
     "version": 1
    }
   ],
+  "route-conformance-credal-constraint": [
+   {
+    "date": "2026-10-23",
+    "normalized": "normative statics produce a credal constraint on prices rather than only a price demand so that what the compiler enforces is the seeds own constraint",
+    "version": 1
+   }
+  ],
+  "route-conformance-efficient-rows": [
+   {
+    "date": "2026-10-23",
+    "normalized": "an efficiently presentable sufficient row family for coherence replaces the doubly exponential generator the declarations construction uses",
+    "version": 1
+   }
+  ],
+  "route-conformance-exact-and-safe": [
+   {
+    "date": "2026-10-23",
+    "normalized": "a compiler that is both exact and conformance preserving exists or a proof says there is none so that conformance within a schedule is not bought by inexactness",
+    "version": 1
+   }
+  ],
   "route-declared-commitment-source": [
    {
     "date": "2026-10-20",
@@ -20713,6 +20779,27 @@
    {
     "date": "2026-10-20",
     "normalized": "a constraint on prices compiles to a legal trading strategy inside the market recursion giving per date conformance within a schedule while preserving the logical induction criterion",
+    "version": 1
+   }
+  ],
+  "traderized-finite-date-conformance.complete": [
+   {
+    "date": "2026-10-23",
+    "normalized": "the one conjunct is the registered deductive end to end theorem for a deductive process with a computable fragment schedule a computable positive tolerance schedule and satisfiable stages the compiled market is a logical inductor over the process and conforms to the days deductive region within the tolerance at every date that establishes the claim for deduction the case the claims source names it does not establish the claim for an assessment process in general any trust or gap bet bound read from the conformance or an efficient compiler",
+    "version": 1
+   }
+  ],
+  "traderized-finite-date-conformance.improvable": [
+   {
+    "date": "2026-10-23",
+    "normalized": "the compiled per date conformance in which a constraint on prices compiles to a legal trading strategy that conforms within a schedule while preserving the criterion can be improved until it reflects a logical inductor whose prices answer a normative seeds constraints under a finite liability account well",
+    "version": 1
+   }
+  ],
+  "traderized-finite-date-conformance.residual": [
+   {
+    "date": "2026-10-23",
+    "normalized": "a refinement of the compiled conformance that none of the other routes describes reflects a logical inductor whose prices answer a normative seeds constraints under a finite liability account",
     "version": 1
    }
   ],

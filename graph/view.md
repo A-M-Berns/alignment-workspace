@@ -128,11 +128,11 @@ Owner @anson; holds 36 node(s)
 #### operative-force
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): How does a constraint acquire operative force in a logical inductor's market without destroying the property that nobody can pump the reasoner, and what does that force cost?
-- steps: traderization-arc; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- steps: traderization-arc, traderized-finite-date-conformance, traderized-finite-date-conformance.improvable; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
 - rests on AI numbers (no human judgment yet): traderization-arc
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @anson; holds 28 node(s); owner has not confirmed (drafted from the wiki)
+- frame owner @anson; holds 27 node(s); owner has not confirmed (drafted from the wiki)
 - a programme: informs through its steps
 - best next unit: none
 #### normative-inductor
@@ -250,7 +250,7 @@ Nodes this frame is about that are no goals of the ranking (held, not roots): li
 - convergence.discord-pairwise (and)
 
 ## Sub-frame operative-force (in normativity): How does a constraint acquire operative force in a logical inductor's market without destroying the property that nobody can pump the reasoner, and what does that force cost?
-Owner @anson; holds 28 node(s)
+Owner @anson; holds 27 node(s)
 
 ### Shared claims
 #### traderization-arc
@@ -260,6 +260,19 @@ Owner @anson; holds 28 node(s)
 - load-bearing shared leaves: none
 - informs 0 goals (a single claim no goal reads: offered to connect)
 - best next unit: none
+#### traderized-finite-date-conformance
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- also a root of: formalism-open-questions-0-3
+- informs 7 goals
+- best next unit: gestalt traderized-finite-date-conformance
+#### traderized-finite-date-conformance.improvable
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 1 goal
+- best next unit: gestalt traderized-finite-date-conformance.improvable
 
 ### Held
 Nodes this frame is about that are no goals of the ranking (held, not roots): listed with their kinds, no status or value here.
@@ -280,7 +293,6 @@ Nodes this frame is about that are no goals of the ranking (held, not roots): li
 - coherence.modulus-net-cover (and)
 - compiler.schedule-end-to-end (and)
 - compiler.constraints-end-to-end (and)
-- compiler.deductive-end-to-end (and)
 - maxmin.representation (and)
 - maxmin.converse (and)
 - region.patterns-sound (and)
@@ -1713,13 +1725,6 @@ Owner @anson, @abram
 - load-bearing shared leaves: none
 - informs 1 goal
 - best next unit: vet lic-constrains-no-finite-day
-#### traderized-finite-date-conformance
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): traderized-finite-date-conformance
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
 #### quantitative-rates
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - rests on AI numbers (no human judgment yet): quantitative-rates
@@ -3912,7 +3917,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - communicative-alternative-nondegenerate: Write the hypotheses that admit a non-degenerate witness, weakening told-form stability or the family factorization, and test them on the Third Button carrier. (who: agent); files: Cleanroom/Udt/UdtCommTrust/
 - comparison-theorem-under-relational-index-maps: Attempt Theorem 4.15 and Theorem 5.8 under the relational morphism, and on failure produce the smallest finite counterexample as a Python table in the clean-room style. (who: agent)
 - compiler.constraints-end-to-end: round: projects/normativity/rounds/2026-08-18-projection-enforcement; work order: PRIORITIES #48
-- compiler.deductive-end-to-end: round: projects/normativity/rounds/2026-08-18-projection-enforcement; work order: PRIORITIES #48
+- compiler.deductive-end-to-end: round: projects/normativity/rounds/2026-08-18-projection-enforcement; work order: PRIORITIES #48; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
 - compiler.schedule-end-to-end: round: projects/normativity/rounds/2026-08-18-projection-enforcement; work order: PRIORITIES #48
 - complete-feedback-formal-model: Write the model the 2026-03-26 note asks for: complete feedback as the channel condition, legitimacy as the gate on Reflection, endorsement from Meaning & Agency as the trust relation, and the corrigibility statement as a theorem or a counterexample; use the value-change note's section 2 and the legit-neg clean-room packages as inputs, after fetching the Complete Feedback post. (who: either); files: projects/deference/corrigibility-note-dump-2026-10-01/value-change-as-epistemic-update.md
 - computability-fork: Say which branch of the computability fork the conjecture's formalizations take, or whether both are wanted. (who: human)
@@ -4070,6 +4075,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - item-126: Execute item 126 per its deliverable shape and acceptance check: The bankroll across repeated reopenings. (who: agent)
 - item-127: Execute item 127 per its deliverable shape and acceptance check: Defeaters as undercutting occurrences: the grounded extension with attacks. (who: agent); decision: 2026-10-22--survivors-grounded-fixed-point-defeaters-shared
 - item-128: Execute item 128 per its deliverable shape and acceptance check: Admission from the accounted state. (who: agent)
+- item-129: Test whether the normativity line's constraint compiler can enforce a per-day gap-bet bound (the novice's expectation of each signed gap bet at least minus a schedule) while preserving the criterion, and state the obstruction if not. (who: agent)
 - item-13: Execute item 13 per its deliverable shape and acceptance check: Scaffolding self-verification. (who: agent); decision: 2026-08-11--setup-scrub-reports-removed-root
 - item-14: Continue PRIORITIES item 14 (returned in wave 1) using wiki/faithful-acceleration-result.md and wiki/delay-and-visibility.md, not the June note dump's superseded ladder. (who: either); files: lean/Workspace/Deference/
 - item-15: Execute item 15 per its deliverable shape and acceptance check: Finite settlement classification, and the local delegation bridge. (who: agent)
@@ -4360,6 +4366,9 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - ro-correlated-equilibrium-link: State precisely the correspondence between collapse fixed points and correlated equilibria for a finite game, using the public Correlated, CorrelatedEq and GameR modules, and record whether continuity in game parameters holds. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Fixpoint/FixOraclesCorresp/
 - ro-independence-strain: State 'replacing reflective oracles with something allowing correlations' precisely against the clean room's finite core (exists_collapse_fixed_point, isMixedNashEq_iff_reflective) and test whether a correlated analogue of reflectivity gives the updateless variant of Cole's theorem in the finite shadow. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Fixpoint/FixOraclesCorresp/
 - rosi-roli-bridge: Write the dictionary between the reflective-oracle self-game and a logical-induction self-trust statement (which object plays the self-hypothesis, the posterior w_h and the floor) and identify the first lemma with no logical-induction counterpart. (who: agent)
+- route-conformance-credal-constraint: work order: PRIORITIES #39
+- route-conformance-efficient-rows: work order: PRIORITIES #42
+- route-conformance-exact-and-safe: work order: PRIORITIES #43
 - route-market-computable-fixed-point: State and prove existence of the market-maker fixed point with goods and traders added daily, reusing the normativity line's marketMaker_day_value_le_cube. (who: agent)
 - route-piecemeal-design: In the dynamic legitimacy-negatives package's finite fixtures, model the piecemeal system (consequentialist off the legitimate-modification event, corrigible on it) and test it against the capture and anticipation scenarios D5 and E1; say whether it belongs in the variant matrix as a sixth proposal. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/legit-neg-dynamic/
 - route-reasons-items-54-58: Execute PRIORITIES items 54 (defeater-uptake completeness), 56 (a citation discipline for Licensed and its transport), 57 (a checker for the applicability-in-source convention) and 58 (composition of the reason state with the record calculus), each per its deliverable shape. (who: agent); work order: PRIORITIES #54; work order: PRIORITIES #56; work order: PRIORITIES #57; work order: PRIORITIES #58; files: projects/normativity/legitimacy/
@@ -4458,7 +4467,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - total-trust-is-updateful: State and prove in a finite model that Total Trust in the sense of Deference Done Better and policy-level deference come apart on counterfactual mugging and transparent Newcomb, using the carriers of the udt-policy-calc package. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/udt-policy-calc
 - tower-death-page: Write the wiki page tower-death from anson-notes/no-timely-pointwise-tower.md, deference-v6 §4.3 and §4.8 as corrected on the diagonal, attribution §4 items 1–2, and tracking_fails. (who: agent)
 - traderization-arc: Execute PRIORITIES items 39 (credal constraint or price demand) and 40 (necessity of bounded cumulative liability), then 42 to 46, each per its deliverable shape. (who: agent); work order: PRIORITIES #39; work order: PRIORITIES #40; files: projects/normativity/notes/GENERALIZED_LI_PAPER_HANDOFF.md
-- traderized-finite-date-conformance: Test whether the normativity line's constraint compiler can enforce a per-day gap-bet bound (the novice's expectation of each signed gap bet at least minus a schedule) while preserving the criterion, and state the obstruction if not. (who: agent); files: projects/normativity/rounds/2026-08-16-traderized-enforcement/PROOF_CLOSURE.md, projects/normativity/notes/GENERALIZED_LI_PAPER_HANDOFF.md
+- traderized-finite-date-conformance: round: projects/enabling/rounds/2026-10-24-site-vertical-slice; work order: PRIORITIES #48
 - training-map-model: Build a finite model of the training map (overseer data and loss in, next model's state out) with a retention measure, and re-run the Y1 overwrite-dodge verdict inside it. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-legit-modif
 - trajectory-layer-bridge: Prove the Layer F to Layer M bridge (finite conditional expectation on atoms) in corr-trajectory, which also witnesses its martingale-layer certificates. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-trajectory
 - transparent.blind-payload: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
@@ -4532,6 +4541,7 @@ Each `and` with assumption or hypothesis leaves, read with those leaves held tru
 - cdt-defined-for-learner: as an implication (cdt-defined-for-learner@valid) and literally; the numbers print under --why
 - comm-trust-formalized: as an implication (comm-trust-formalized@valid) and literally; the numbers print under --why
 - communication-trust-paper: as an implication (communication-trust-paper@valid) and literally; the numbers print under --why
+- compiler.deductive-end-to-end: as an implication (compiler.deductive-end-to-end@valid) and literally; the numbers print under --why
 - condensation-correspondence-theorem: as an implication (condensation-correspondence-theorem@valid) and literally; the numbers print under --why
 - conditioning-manages-news: as an implication (conditioning-manages-news@valid) and literally; the numbers print under --why
 - counterfactual-mugging-with-evidence: as an implication (counterfactual-mugging-with-evidence@valid) and literally; the numbers print under --why
@@ -4588,6 +4598,7 @@ Each `and` with assumption or hypothesis leaves, read with those leaves held tru
 - tiling-via-causal-order: as an implication (tiling-via-causal-order@valid) and literally; the numbers print under --why
 - timely-pointwise-tower-refuted-in-setting: as an implication (timely-pointwise-tower-refuted-in-setting@valid) and literally; the numbers print under --why
 - trace-nonrecoverability: as an implication (trace-nonrecoverability@valid) and literally; the numbers print under --why
+- traderized-finite-date-conformance: as an implication (traderized-finite-date-conformance@valid) and literally; the numbers print under --why
 - troll-bridge-modal-classified: as an implication (troll-bridge-modal-classified@valid) and literally; the numbers print under --why
 - turner-vnm-fact: as an implication (turner-vnm-fact@valid) and literally; the numbers print under --why
 - two-lesions-propositions-checked: as an implication (two-lesions-propositions-checked@valid) and literally; the numbers print under --why
@@ -4885,10 +4896,14 @@ The outside option and the undescribed failure, each a cases node over the outco
 | compiler.constraints-end-to-end.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
 | compiler.constraints-end-to-end | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
 | compiler.constraints-end-to-end.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
-| compiler.deductive-end-to-end.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
-| compiler.deductive-end-to-end.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
-| compiler.deductive-end-to-end | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
-| compiler.deductive-end-to-end.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| compiler.deductive-end-to-end.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 7 |
+| compiler.deductive-end-to-end.complete | leaf/completeness | 2 (both) |  | open | 1 | 7 |
+| compiler.deductive-end-to-end.h-fragment-schedule | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| compiler.deductive-end-to-end.h-process-certificate | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| compiler.deductive-end-to-end.h-stages-satisfiable | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| compiler.deductive-end-to-end.h-tolerance-schedule | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| compiler.deductive-end-to-end | and | 2 (both) |  | open | 1 | 1 |
+| compiler.deductive-end-to-end.record | leaf/record | 2 (ref) | no belief | open | 1 | 7 |
 | compiler.schedule-end-to-end.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
 | compiler.schedule-end-to-end.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
 | compiler.schedule-end-to-end | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
@@ -5136,7 +5151,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | desiderata-2-4-general | leaf/question | 2 (both) | AI number | open | 0 | 1 |
 | deterrence-not-identified-on-path.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 0 | 0 (informs no goal) |
 | deterrence-not-identified-on-path.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
-| deterrence-not-identified-on-path | and | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
+| deterrence-not-identified-on-path | and | 2 (both) | AI number, held by legitimacy, stale | open | 0 | 0 (informs no goal) |
 | deterrence-not-identified-on-path.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 0 (informs no goal) |
 | deterrence-not-identified-on-path.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
 | deterrence-vs-antibypass | leaf/task | 2 (both) | AI number | open | 0 | 1 |
@@ -5383,7 +5398,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | inferability-and-positivity.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
 | inferability-positivity.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 0 | 0 (informs no goal) |
 | inferability-positivity.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
-| inferability-positivity | and | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
+| inferability-positivity | and | 2 (both) | AI number, held by legitimacy, stale | open | 0 | 0 (informs no goal) |
 | inferability-positivity.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 0 (informs no goal) |
 | inferability-positivity.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
 | inferential-semantics-for-logical-udt.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
@@ -5458,6 +5473,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | item-126 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
 | item-127 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
 | item-128 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-129 | leaf/route | 2 (both) | given traderized-finite-date-conformance@valid, given: conditionals not judged, no belief | open | 0 | 2 |
 | item-13 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
 | item-14 | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | item-15 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
@@ -5577,7 +5593,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | kernel-box1-fidelity-vs-fud | and | 2 (both) |  | open | 1 | 1 |
 | kernel-box1-fidelity-vs-fud.record | leaf/record | 2 (ref) | AI number | open | 1 | 6 |
 | kernel-box1-fidelity-vs-fud.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
-| kernel-box2-finite-time | and | 2 (both) | AI number, hypotheses unread | open | 1 | 2 |
+| kernel-box2-finite-time | and | 2 (both) | AI number, hypotheses unread, stale | open | 1 | 2 |
 | kernel-box2-mediation.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 6 |
 | kernel-box2-mediation.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 6 |
 | kernel-box2-mediation | and | 2 (both) |  | open | 1 | 1 |
@@ -5686,7 +5702,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | legit-branch-evaluators-defense | leaf/step | 2 (both) | AI number | open | 1 | 1 |
 | legit-composition.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 0 | 1 |
 | legit-composition.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 1 |
-| legit-composition | and | 2 (both) | AI number, held by legitimacy | open | 0 | 1 |
+| legit-composition | and | 2 (both) | AI number, held by legitimacy, stale | open | 0 | 1 |
 | legit-composition.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 1 |
 | legit-composition.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 1 |
 | legit-condition-vs-predict-reality | cases | 2 (both) | AI number, given legit-locality-forced, held by legitimacy, no belief, under attack | open | 0 | 0 (informs no goal) |
@@ -5713,7 +5729,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | legit-li-self-correction-identity | leaf/step | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
 | legit-locality-forced.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 0 | 0 (informs no goal) |
 | legit-locality-forced.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
-| legit-locality-forced | and | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
+| legit-locality-forced | and | 2 (both) | AI number, held by legitimacy, stale | open | 0 | 0 (informs no goal) |
 | legit-locality-forced.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 0 (informs no goal) |
 | legit-locality-forced.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
 | legit-meta-revision | leaf/question | 2 (both) | AI number, given anticipation-branchwise-dominance--corrigibility-risk, held by legitimacy | open | 0 | 0 (informs no goal) |
@@ -5726,7 +5742,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | legit-reflection-li-band-gated | leaf/step | 2 (both) | AI number, given reflection-bifurcation | open | 0 | 1 |
 | legit-reflection-unsat-modest.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 0 | 0 (informs no goal) |
 | legit-reflection-unsat-modest.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
-| legit-reflection-unsat-modest | and | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
+| legit-reflection-unsat-modest | and | 2 (both) | AI number, held by legitimacy, stale | open | 0 | 0 (informs no goal) |
 | legit-reflection-unsat-modest.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 0 (informs no goal) |
 | legit-reflection-unsat-modest.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
 | legit-relax-anchor | leaf/step | 2 (both) | AI number, given legit-anchor-of-L | open | 0 | 2 |
@@ -6068,7 +6084,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | own-posts-as-todos | leaf/task | 2 (both) | no belief | open | 0 | 2 |
 | p2-manages-the-news.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 0 | 5 |
 | p2-manages-the-news.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 5 |
-| p2-manages-the-news | and | 2 (both) | AI number, held by legitimacy | open | 0 | 5 |
+| p2-manages-the-news | and | 2 (both) | AI number, held by legitimacy, stale | open | 0 | 5 |
 | p2-manages-the-news.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 5 |
 | p2-manages-the-news.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 5 |
 | pairwise-coupling-setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 1 |
@@ -6468,6 +6484,9 @@ The outside option and the undescribed failure, each a cases node over the outco
 | route-condensation-relational-morphisms | leaf/route | 2 (both) | AI number, given condensation-correspondence-theorem@valid, no belief | open | 0 | 2 |
 | route-condensation-storage-retrieval | leaf/route | 2 (both) | AI number, given condensation-correspondence-theorem@valid, no belief | open | 0 | 2 |
 | route-condensation-support-sensitive | leaf/route | 2 (both) | AI number, given condensation-correspondence-theorem@valid, no belief | open | 0 | 2 |
+| route-conformance-credal-constraint | leaf/route | 2 (both) | given traderized-finite-date-conformance@valid, given: conditionals not judged, no belief | open | 0 | 2 |
+| route-conformance-efficient-rows | leaf/route | 2 (both) | given traderized-finite-date-conformance@valid, given: conditionals not judged, no belief | open | 0 | 2 |
+| route-conformance-exact-and-safe | leaf/route | 2 (both) | given traderized-finite-date-conformance@valid, given: conditionals not judged, no belief | open | 0 | 2 |
 | route-declared-commitment-source | leaf/route | 2 (both) | AI number, given indirect-route-learned-updatelessness | open | 0 | 2 |
 | route-defined-recovery-domain | leaf/route | 2 (both) | AI number, given indirect-route-learned-updatelessness | open | 0 | 2 |
 | route-explicit-causality | leaf/route | 2 (both) | AI number, given udt-tiling-foundations | open | 0 | 2 |
@@ -6712,7 +6731,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | thin-converse-open | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | thin-reflection-is-trivial-baseline | leaf/step | 2 (both) | AI number | open | 2 | 1 |
 | thin-value-loss-bound | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
-| thin-value-of-thick | and | 2 (both) | AI number, held by authorship-and-transparency, hypotheses unread | open | 2 | 1 |
+| thin-value-of-thick | and | 2 (both) | AI number, held by authorship-and-transparency, hypotheses unread, stale | open | 2 | 1 |
 | thin.converse-fails-on-correct.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
 | thin.converse-fails-on-correct.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
 | thin.converse-fails-on-correct | and | 2 (both) | held by authorship-and-transparency, hypotheses unread | open | 0 | 0 (informs no goal) |
@@ -6789,7 +6808,10 @@ The outside option and the undescribed failure, each a cases node over the outco
 | trace-nonrecoverability | and | 2 (both) | AI number, held by legitimacy | open | 0 | 2 |
 | trace-nonrecoverability.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 2 |
 | traderization-arc | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
-| traderized-finite-date-conformance | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
+| traderized-finite-date-conformance.complete | leaf/completeness | 2 (both) |  | open | 1 | 7 |
+| traderized-finite-date-conformance.improvable | or | 2 (both) | improvement claim on traderized-finite-date-conformance (reality: a logical inductor whose prices answer a normative seed's constraints under a finite liability account) | open | 1 | 1 |
+| traderized-finite-date-conformance | and | 2 (both) | AI number, stale | open | 1 | 7 |
+| traderized-finite-date-conformance.residual | leaf/route | 2 (both) | given traderized-finite-date-conformance@valid, given: conditionals not judged, no belief | open | 0 | 2 |
 | training-map-model | leaf/question | 2 (both) | AI number | open | 0 | 2 |
 | trajectory-layer-bridge | leaf/task | 2 (both) | AI number | open | 0 | 2 |
 | trajectory-not-limit | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
@@ -6926,7 +6948,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | updateless-engineering-value.partition | leaf/partition | 2 (both) | AI number | open | 1 | 1 |
 | updateless-p2-cellwise-p3.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 0 | 0 (informs no goal) |
 | updateless-p2-cellwise-p3.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
-| updateless-p2-cellwise-p3 | and | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
+| updateless-p2-cellwise-p3 | and | 2 (both) | AI number, held by legitimacy, stale | open | 0 | 0 (informs no goal) |
 | updateless-p2-cellwise-p3.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 0 (informs no goal) |
 | updateless-p2-cellwise-p3.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 0 (informs no goal) |
 | updateless-recovery-domain | leaf/question | 2 (both) | AI number | open | 0 | 6 |
@@ -7011,8 +7033,8 @@ The outside option and the undescribed failure, each a cases node over the outco
 | wirehead-decline-toy | leaf/step | 2 (both) | AI number | open | 1 | 1 |
 | wirehead-iff-finite.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 0 | 1 |
 | wirehead-iff-finite.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 1 |
-| wirehead-iff-finite | and | 2 (both) | AI number, held by legitimacy | open | 0 | 1 |
+| wirehead-iff-finite | and | 2 (both) | AI number, held by legitimacy, stale | open | 0 | 1 |
 | wirehead-iff-finite.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 1 |
 | wirehead-iff-finite.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 1 |
 | worlds-and-points-companion | leaf/question | 2 (both) | AI number | open | 0 | 8 |
-<!-- generated_hash: ffcb38c569181bf3c141a219 -->
+<!-- generated_hash: c37fb5e656188d44f4f5ef53 -->

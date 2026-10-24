@@ -1570,6 +1570,12 @@ def resolve_events(C):
             # a leaf range given before the leaf became a table: kept as a suggestion, never used (§2)
             e["_status"] = "stale"
             C.stale_reason[e["id"]] = STALE_TABLE
+        elif (tk[0] == "node" and e["kind"] == "estimate" and not (e.get("target") or {}).get("field")
+              and t.nodes[node].get("kind") in ("and", "or")):
+            # a leaf range given before the leaf became an and or an or (a claim made the conjunction of its formal results,
+            # or spelled out): the node's probability is now derived from its children, so the range fits nothing (2026-10-24)
+            e["_status"] = "stale"
+            C.stale_reason[e["id"]] = f"leaf became an {t.nodes[node]['kind']}"
         else:
             e["_status"] = "counted"
     C.counted = [e for e in sorted(t.events, key=lambda e: str(e["date"])) if e["_status"] != "withdrawn"]

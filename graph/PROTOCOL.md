@@ -346,7 +346,11 @@ whose Statement names the rows, so adding a row changes it and bumps its
 leaf becomes a table, a range judgment given on the leaf no longer fits (a
 table's probability is Σ w·p): it is marked *stale: leaf became a table*,
 enters no number, and is offered under the residual row's conditional as a
-suggestion. A kernel-checked record has p = 1 in every picture, so stories
+suggestion. When a leaf becomes an `and` or an `or` (a claim made the
+conjunction of its formal results, or a want spelled out), a range judgment
+given on the leaf no longer fits either, since the node's probability is now
+derived from its children: it is marked *stale: leaf became an and* (or *an
+or*) and enters no number (2026-10-24). A kernel-checked record has p = 1 in every picture, so stories
 about a theorem land on its hypotheses or bridge. **Decided**, except the
 partition leaf, `refines`, `observable` and the
 stale-range rule, which are **Default**.
@@ -653,7 +657,7 @@ weaker dimension named. Flags beside it, none changing it: *under attack*
 still counts as a judgment, with the floor of the current level, where a
 level-minting event at an older version counts for no level and shows as
 *read at vk*); *revised since read (vk → vn)* and *human-revised (@h, vn)*
-(above); *stale: leaf became a table* (§2); *attribution unvetted*, on a
+(above); *stale: leaf became a table* and *stale: leaf became an and* or *an or* (§2); *attribution unvetted*, on a
 bridge or any leaf with `attribution: reconstructed`, cleared by one thing
 only: an `attribution` event on the node (§5) from a human other than the
 author, who read the source the node cites and says `vouched` or

@@ -763,6 +763,25 @@ untouched.
 
 ---
 
+### 129. A per-day gap-bet bound from the constraint compiler — **[substantial]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The traderization arc compiles a constraint on prices into a legal trading strategy and, for
+deduction, gives per-date conformance within a tolerance schedule while preserving the
+criterion (`compiler.deductive-end-to-end`). The deference line reads conformance as a
+trust bound only if it bounds the novice's gap bets day by day. Wanted: whether the
+constraint compiler can enforce a per-day gap-bet bound, the novice's expectation of each
+signed gap bet at least minus a schedule, while preserving the criterion; and, if not, the
+obstruction stated against the conformance clause.
+
+*Deliverable shape:* a theorem that the compiled enforcer's per-day gap bets are bounded
+below by a schedule while the criterion is preserved, or the stated obstruction.
+*Acceptance check:* Lean green; the bound or the obstruction stated against the conformance
+clause of `deductive_end_to_end`.
+*Context:* `projects/normativity/notes/GENERALIZED_LI_PAPER_HANDOFF.md`;
+`projects/normativity/rounds/2026-08-16-traderized-enforcement/PROOF_CLOSURE.md`; the step
+`traderized-finite-date-conformance` of the map, whose action this item was.
+
 ## Normativity line — legitimacy
 Items 53–59 are the residual blockers the legitimacy prosecutions of 2026-08-21
 through 2026-08-23 left behind, filed by
