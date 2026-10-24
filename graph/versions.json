@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "f77b7161f2d16a56716a6e3a",
-  "index.json": "8e2019153e510fd57f8429b7"
+  "derived.json": "5fa1177c8105c033597144dc",
+  "index.json": "775d48a20bff389df2f069ad"
  },
- "generated_hash": "6452d819c2cedb5300ba937c",
+ "generated_hash": "874691f0a436be826f375efb",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -8424,6 +8424,13 @@
     "version": 1
    }
   ],
+  "item-130": [
+   {
+    "date": "2026-10-23",
+    "normalized": "an intervention semantics indexed by the accounted state produces for each state and concern the actual coverage data and the coverage data under each declared intervention so that the scenario the certificate theorems quantify over is read off the record rather than supplied by hand",
+    "version": 1
+   }
+  ],
   "item-14": [
    {
     "date": "2026-10-22",
@@ -14005,6 +14012,11 @@
     "date": "2026-10-22",
     "normalized": "the statement of record of openness certplus is robust openness formalizes the registered claim as the registry reads it the split bill is robust openness itself",
     "version": 1
+   },
+   {
+    "date": "2026-10-23",
+    "normalized": "the claim asserts that the earlier split bill for robust openness a silent prefix clause route persistence allowing a named replacement and standing is given actual coverage robust openness itself factored by a case split on whether the concern is live at the actual prefix and not an independent sufficient condition the declaration certifies exactly that equivalence over an abstract finite scenario with actual coverage inside the protected routes the conjunction of the three clauses is logically equivalent to coverage and standing in every declared counterfactual the gaps the declarations robustopen quantifies over the declared counterfactuals only while the wikis robust openness at a state conjoins the actual branch the files robustopenactual adds it and its counterfactual_open_not_actual shows the two differ so the equivalence is with the counterfactual half the scenario abstracts coverage to booleans and does not model how a counterfactual state is produced so nothing here is a causal non capture theorem as the file says of itself and the claims force as a correction the bill is no certificate rests on the companion results that the componentwise persistence bill is strictly stronger which this record does not certify",
+    "version": 2
    }
   ],
   "openness.certplus-is-robust-openness.complete": [
@@ -14017,6 +14029,32 @@
     "date": "2026-10-23",
     "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
     "version": 2
+   },
+   {
+    "date": "2026-10-23",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record the three hypothesis leaves filed by reading the scenario the protected route set actual coverage inside it the bridge and this leaf",
+    "version": 3
+   }
+  ],
+  "openness.certplus-is-robust-openness.h-actual-coverage": [
+   {
+    "date": "2026-10-23",
+    "normalized": "where the concern is live on the actual prefix some protected route is adequate there coverage on the actual branch witnessed inside the protected set",
+    "version": 1
+   }
+  ],
+  "openness.certplus-is-robust-openness.h-protected-routes": [
+   {
+    "date": "2026-10-23",
+    "normalized": "a protected route set is declared a predicate on routes",
+    "version": 1
+   }
+  ],
+  "openness.certplus-is-robust-openness.h-scenario": [
+   {
+    "date": "2026-10-23",
+    "normalized": "a scenario pairs the coverage state of one concern on the actual prefix with one coverage state per declared intervention each state a finite record of applicability disposition representation the per route components and the principals standing",
+    "version": 1
    }
   ],
   "openness.certplus-is-robust-openness.h1": [
@@ -19255,6 +19293,34 @@
    {
     "date": "2026-10-20",
     "normalized": "for every flower shaped self referential sentence a logical inductors prices satisfy the liminf bound without a supplied quotation portfolio",
+    "version": 1
+   }
+  ],
+  "split-bill-is-robust-openness": [
+   {
+    "date": "2026-10-23",
+    "normalized": "given actual coverage the earlier bill for robust openness that allowed a route to be replaced rather than preserved is robust openness itself split on whether the concern was live at the actual prefix and is recorded as such rather than presented as a certificate",
+    "version": 1
+   }
+  ],
+  "split-bill-is-robust-openness.complete": [
+   {
+    "date": "2026-10-23",
+    "normalized": "the one conjunct is the registered compression theorem over a finite scenario with actual coverage inside the protected routes the split bill is equivalent to coverage and standing under every declared intervention that establishes the claim for the counterfactual half of robust openness over the abstracted scenario it does not establish the actual branch conjunct any statement about how counterfactuals are produced or that the componentwise persistence bill is the right external certificate which the companion results carry",
+    "version": 1
+   }
+  ],
+  "split-bill-is-robust-openness.improvable": [
+   {
+    "date": "2026-10-23",
+    "normalized": "the compression of the split bill into robust openness in which the earlier bill is the definition factored by a case split can be improved until it reflects a trajectory whose robust openness is certified under an intervention semantics read off its accounted state well",
+    "version": 1
+   }
+  ],
+  "split-bill-is-robust-openness.residual": [
+   {
+    "date": "2026-10-23",
+    "normalized": "a refinement of the compression theorem that none of the other routes describes reflects a trajectory whose robust openness is certified under an intervention semantics read off its accounted state",
     "version": 1
    }
   ],

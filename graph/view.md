@@ -376,12 +376,12 @@ Owner @anson, @abram; holds 82 node(s)
 - a programme: informs through its steps
 - best next unit: none
 #### openness-and-non-capture
-- preset worst-case; status **open**; weakest proof-set leaf at V 0
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): Can concerns reach a process at all, and can the party they matter to still act on them, on the actual branch and under every declared intervention?
-- steps: ; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- steps: split-bill-is-robust-openness, split-bill-is-robust-openness.improvable; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @anson, @abram; holds 4 node(s); spelled, nothing yet a goal; owner has not confirmed (drafted from the wiki)
+- frame owner @anson, @abram; holds 3 node(s); owner has not confirmed (drafted from the wiki)
 - a programme: informs through its steps
 - best next unit: none
 #### authorship-and-transparency
@@ -583,13 +583,26 @@ Nodes this frame is about that are no goals of the ranking (held, not roots): li
 - open-integrity.answerable (and)
 
 ## Sub-frame openness-and-non-capture (in legitimacy): Can concerns reach a process at all, and can the party they matter to still act on them, on the actual branch and under every declared intervention?
-Owner @anson, @abram; holds 4 node(s); spelled, nothing yet a goal (no roots)
+Owner @anson, @abram; holds 3 node(s)
+
+### Shared claims
+#### split-bill-is-robust-openness
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 4 goals
+- best next unit: gestalt split-bill-is-robust-openness
+#### split-bill-is-robust-openness.improvable
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 1 goal
+- best next unit: gestalt split-bill-is-robust-openness.improvable
 
 ### Held
 Nodes this frame is about that are no goals of the ranking (held, not roots): listed with their kinds, no status or value here.
 - openness.endpoint-only-insufficient (and)
 - openness.persistence-sufficient (and)
-- openness.certplus-is-robust-openness (and)
 - openness.actual-branch-witness (and)
 
 ## Sub-frame authorship-and-transparency (in legitimacy): When is a verdict the principal's own program's and a channel's influence the declared reference on the declared inputs, and does the thick definition of legitimacy satisfy the thin specification?
@@ -4088,6 +4101,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - item-128: Execute item 128 per its deliverable shape and acceptance check: Admission from the accounted state. (who: agent)
 - item-129: Test whether the normativity line's constraint compiler can enforce a per-day gap-bet bound (the novice's expectation of each signed gap bet at least minus a schedule) while preserving the criterion, and state the obstruction if not. (who: agent)
 - item-13: Execute item 13 per its deliverable shape and acceptance check: Scaffolding self-verification. (who: agent); decision: 2026-08-11--setup-scrub-reports-removed-root
+- item-130: State an intervention semantics for Robust Openness indexed by the accounted state (the docket, the ports and the accounts), producing for each state and concern the actual coverage data and the data under each declared intervention, and check the non-capture certificate against it. (who: agent)
 - item-14: Continue PRIORITIES item 14 (returned in wave 1) using wiki/faithful-acceleration-result.md and wiki/delay-and-visibility.md, not the June note dump's superseded ladder. (who: either); files: lean/Workspace/Deference/
 - item-15: Execute item 15 per its deliverable shape and acceptance check: Finite settlement classification, and the local delegation bridge. (who: agent)
 - item-16: Execute item 16 per its deliverable shape and acceptance check: The certificate inequality, derived. (who: agent)
@@ -4308,7 +4322,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - open-problems-cleanroom-update: Update the open-problem ledger's items 1 and 3 with concentrates_self, concentrates_of_folds and WorldOnlyRefuted. (who: agent); files: projects/deference/note-dump-2026-08-11/wiki/open-problems.md
 - open-problems-import: Import deference-v6 Appendix B's open rows and the forcing-question items into the open-problem ledger. (who: agent); files: projects/deference/note-dump-2026-08-11/wiki/open-problems.md
 - openness.actual-branch-witness: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: PRIORITIES #78
-- openness.certplus-is-robust-openness: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: PRIORITIES #78
+- openness.certplus-is-robust-openness: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: PRIORITIES #78; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
 - openness.endpoint-only-insufficient: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; decision: 2026-09-25--legitimacy-internal-external-robust-openness-external; work order: PRIORITIES #78
 - openness.persistence-sufficient: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: PRIORITIES #78
 - oq-anti-wireheading: State the report-layer wirehead iff and the stop-gradient identity at the LI register, as a clean-room package. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/legit-finite-defect/legit-finite-defect-report.md, projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Trust/LegitFiniteDefect/
@@ -4418,6 +4432,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - smoke.chain-compiles: round: prompts/2026-08-10-repo-scaffolding; decision: 2026-08-11--setup-scrub-reports-removed-root; work order: PRIORITIES #13
 - smoke.faf-asymp-refl: round: prompts/2026-08-10-repo-scaffolding; decision: 2026-08-11--setup-scrub-reports-removed-root; work order: PRIORITIES #13
 - soto-flower-obstruction: Prove flower_liminf_open via FAF's completedGatedComplementQuote. (who: agent); open statement: `flower_liminf_open`; files: Cleanroom/Decision/DpTrollBridge/
+- split-bill-is-robust-openness: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; round: projects/enabling/rounds/2026-10-24-site-vertical-slice; work order: PRIORITIES #78
 - ss-value-without-scope: Write out the F1-for-lookahead near-identity and stress-test scheduled weighted-average Value against total-trust-implies-value's selection-punishing menu. (who: agent)
 - stance-and-level: decision: 2026-10-22--map-canonical-index-program-maintainer-handles
 - step-asymptotic-to-finite-time: Catalogue the carries the collapse uses (expectation provability induction, the tower, the fold) and record for each whether FAF's proof yields an explicit day bound, in a note. (who: agent)
@@ -4599,6 +4614,7 @@ Each `and` with assumption or hypothesis leaves, read with those leaves held tru
 - logical-counterfactuals-troll-bridge: as an implication (logical-counterfactuals-troll-bridge@valid) and literally; the numbers print under --why
 - mart-implies-value-kernel: as an implication (mart-implies-value-kernel@valid) and literally; the numbers print under --why
 - mart-implies-value-refuted-unconditional: as an implication (mart-implies-value-refuted-unconditional@valid) and literally; the numbers print under --why
+- openness.certplus-is-robust-openness: as an implication (openness.certplus-is-robust-openness@valid) and literally; the numbers print under --why
 - osg-theorem1-corollary: as an implication (osg-theorem1-corollary@valid) and literally; the numbers print under --why
 - p2-manages-the-news: as an implication (p2-manages-the-news@valid) and literally; the numbers print under --why
 - paper-tiling-formalized: as an implication (paper-tiling-formalized@valid) and literally; the numbers print under --why
@@ -4607,6 +4623,7 @@ Each `and` with assumption or hypothesis leaves, read with those leaves held tru
 - ps-trained-systems-seek-power: as an implication (ps-trained-systems-seek-power@valid) and literally; the numbers print under --why
 - selection-collapse--corrigibility-risk: as an implication (selection-collapse--corrigibility-risk@valid) and literally; the numbers print under --why
 - shutdown-button-toy: as an implication (shutdown-button-toy@valid) and literally; the numbers print under --why
+- split-bill-is-robust-openness: as an implication (split-bill-is-robust-openness@valid) and literally; the numbers print under --why
 - thm-power-seeking-optimal: as an implication (thm-power-seeking-optimal@valid) and literally; the numbers print under --why
 - thornley-three-theorems: as an implication (thornley-three-theorems@valid) and literally; the numbers print under --why
 - tiling-via-causal-order: as an implication (tiling-via-causal-order@valid) and literally; the numbers print under --why
@@ -5491,6 +5508,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | item-128 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
 | item-129 | leaf/route | 2 (both) | given traderized-finite-date-conformance@valid, given: conditionals not judged, no belief | open | 0 | 2 |
 | item-13 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
+| item-130 | leaf/route | 2 (both) | given split-bill-is-robust-openness@valid, given: conditionals not judged, no belief | open | 0 | 2 |
 | item-14 | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | item-15 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
 | item-16 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
@@ -6063,15 +6081,18 @@ The outside option and the undescribed failure, each a cases node over the outco
 | open-problem-ledger-current | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | open-problems-cleanroom-update | leaf/task | 2 (both) | AI number | open | 1 | 1 |
 | open-problems-import | leaf/task | 2 (both) | AI number | open | 1 | 1 |
-| openness-and-non-capture | frame | 2 (both) | owner has not confirmed (drafted from wiki/Openness-Coverage-and-Non-Capture.md), spelled; nothing yet a goal (4 held) | open | 1 | 0 (informs no goal) |
+| openness-and-non-capture | frame | 2 (both) | owner has not confirmed (drafted from wiki/Openness-Coverage-and-Non-Capture.md) | open | 1 | 0 (informs no goal) |
 | openness.actual-branch-witness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
 | openness.actual-branch-witness.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
 | openness.actual-branch-witness | and | 2 (both) | held by openness-and-non-capture, hypotheses unread | open | 0 | 0 (informs no goal) |
 | openness.actual-branch-witness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
-| openness.certplus-is-robust-openness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
-| openness.certplus-is-robust-openness.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
-| openness.certplus-is-robust-openness | and | 2 (both) | held by openness-and-non-capture, hypotheses unread | open | 0 | 0 (informs no goal) |
-| openness.certplus-is-robust-openness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| openness.certplus-is-robust-openness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 4 |
+| openness.certplus-is-robust-openness.complete | leaf/completeness | 2 (both) |  | open | 1 | 4 |
+| openness.certplus-is-robust-openness.h-actual-coverage | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| openness.certplus-is-robust-openness.h-protected-routes | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| openness.certplus-is-robust-openness.h-scenario | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| openness.certplus-is-robust-openness | and | 2 (both) |  | open | 1 | 1 |
+| openness.certplus-is-robust-openness.record | leaf/record | 2 (ref) | no belief | open | 1 | 4 |
 | openness.endpoint-only-insufficient.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
 | openness.endpoint-only-insufficient.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
 | openness.endpoint-only-insufficient | and | 2 (both) | held by openness-and-non-capture, hypotheses unread | open | 0 | 0 (informs no goal) |
@@ -6675,6 +6696,10 @@ The outside option and the undescribed failure, each a cases node over the outco
 | smoke.faf-asymp-refl | and | 2 (both) | held by operative-force, hypotheses unread | open | 0 | 0 (informs no goal) |
 | smoke.faf-asymp-refl.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | soto-flower-obstruction | leaf/step | 2 (both) | AI number | open | 1 | 1 |
+| split-bill-is-robust-openness.complete | leaf/completeness | 2 (both) |  | open | 1 | 4 |
+| split-bill-is-robust-openness.improvable | or | 2 (both) | improvement claim on split-bill-is-robust-openness (reality: a trajectory whose Robust Openness is certified under an intervention semantics read off its accounted state) | open | 1 | 1 |
+| split-bill-is-robust-openness | and | 2 (both) |  | open | 1 | 4 |
+| split-bill-is-robust-openness.residual | leaf/route | 2 (both) | given split-bill-is-robust-openness@valid, given: conditionals not judged, no belief | open | 0 | 2 |
 | ss-value-without-scope | leaf/question | 2 (both) | AI number, given fa-trust-half-weak-grades@valid, refinement of li-deference-collapse | open | 0 | 3 |
 | st-guides-via-analogy | leaf/step | 2 (both) | AI number, given crux-unbounded-represents-phenomena | open | 0 | 2 |
 | st-guides-via-bridge | leaf/step | 2 (both) | AI number, given rosi-roli-bridge | open | 0 | 2 |
@@ -7063,4 +7088,4 @@ The outside option and the undescribed failure, each a cases node over the outco
 | wirehead-iff-finite.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 1 |
 | wirehead-iff-finite.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 1 |
 | worlds-and-points-companion | leaf/question | 2 (both) | AI number | open | 0 | 8 |
-<!-- generated_hash: fd425b4f1a7e7a53868a0624 -->
+<!-- generated_hash: e27f8323108c865a5f948465 -->
