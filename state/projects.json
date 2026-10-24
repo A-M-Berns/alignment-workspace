@@ -70,6 +70,16 @@
       "parent": null,
       "replacement_project": "normativity",
       "entry_points": []
+    },
+    {
+      "id": "enabling",
+      "name": "Enabling work",
+      "path": "projects/enabling",
+      "status": "active",
+      "parent": null,
+      "entry_points": [
+        "projects/enabling/README.md"
+      ]
     }
   ]
 }

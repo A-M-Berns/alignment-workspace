@@ -10,6 +10,7 @@ Generated from `state/projects.json` by `python3 -m checkers.workspace_state --w
 | deference | Deference | active | — | projects/deference | `projects/deference/README.md`<br>`projects/deference/notes/LI_NATIVE_DEFERENCE.md`<br>`projects/deference/notes/FINITE_MODEL_SKELETON.md` |
 | decision-theory | Decision theory | active | — | projects/decision-theory | `projects/decision-theory/README.md`<br>`projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/PROBLEM_STATEMENT.md`<br>`projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/TEST_SUITE.md`<br>`projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/AUDIT.md` |
 | leverage | Leverage | deprecated | — | — | — |
+| enabling | Enabling work | active | — | projects/enabling | `projects/enabling/README.md` |
 
 ## Foundation claim sources
 

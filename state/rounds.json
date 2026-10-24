@@ -2070,6 +2070,19 @@
       "registered_classes": [],
       "prompt": "prompts/2026-10-22-map-as-canonical/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-10-24-site-vertical-slice",
+      "date": "2026-10-24",
+      "project": "enabling",
+      "path": "projects/enabling/rounds/2026-10-24-site-vertical-slice",
+      "verdict": null,
+      "depends_on": [
+        "2026-10-22-map-as-canonical"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-10-24-site-vertical-slice/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

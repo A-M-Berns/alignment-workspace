@@ -3974,7 +3974,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - dt-readme-entry-points: Add to the decision-theory README an entry list for collaborators naming the decision-problems working notes, the clean-room BLI, UDT and dp packages and the two-lesions wiki copy under the clean-room sources. (who: agent); files: projects/decision-theory/README.md
 - dynamic-weight-law-for-learning-members: Define the weight of a learning member in the aggregate market day by day and prove the freeze-under-deference case. (who: agent)
 - enabling-map-as-canonical: Keep the map the canonical index: file each new registered claim, item, decision and round in it, and keep PRIORITIES.md a render. (who: either)
-- enabling-program-site: Build the site generator against the schema of graph/index.json. (who: either)
+- enabling-program-site: Build the site generator against the schema of graph/index.json. (who: either); round: projects/enabling/rounds/2026-10-24-site-vertical-slice
 - enabling-work: decision: 2026-10-22--map-canonical-index-program-maintainer-handles; round: prompts/2026-08-11-attribution-provenance-names; round: prompts/2026-08-11-branch-protection; round: prompts/2026-08-11-contributor-checkers; round: prompts/2026-08-11-licensing-dco-citation; round: prompts/2026-08-11-priorities-and-slop; round: prompts/2026-08-11-workspace-ethos; round: prompts/2026-08-11-workspace-integration; round: prompts/2026-08-16-wiki-in-repo-sync; round: prompts/2026-08-16-wiki-state-bindings; round: prompts/2026-08-24-reservation-bar-and-debt; round: graph
 - entrenching-agent: Add a coordinate for the humans' attainable utility from stopping to the landscape of trajectory conditions, and test whether an agent that entrenches itself then falls under some condition. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-power-channel
 - exposure.greedy-duality: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
@@ -7015,4 +7015,4 @@ The outside option and the undescribed failure, each a cases node over the outco
 | wirehead-iff-finite.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 1 |
 | wirehead-iff-finite.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 1 |
 | worlds-and-points-companion | leaf/question | 2 (both) | AI number | open | 0 | 8 |
-<!-- generated_hash: a5480e2239a68e0a47482350 -->
+<!-- generated_hash: ffcb38c569181bf3c141a219 -->

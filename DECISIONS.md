@@ -6768,7 +6768,7 @@ repository and are binding-checked.
 pull request (read scope; uploads it as an artifact so a reviewer can open a pull request's
 build) and, on `push` to `main` only, deploys it to GitHub Pages through a write-scope job
 enumerated in `AGENTS.md` *Security* like `derived-publish`. No custom domain in this round:
-`site/CNAME` is added only when the maintainer supplies one [MAINTAINER: domain, or
+site/CNAME is added only when the maintainer supplies one [MAINTAINER: domain, or
 "none yet"]. The Pages deploy will not run until #131 and this merge; the artifact is the
 preview until then.
 
