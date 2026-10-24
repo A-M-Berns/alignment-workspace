@@ -17,3 +17,7 @@ lean/.lake
 # branch `derived`; graph/versions.json records their derivation hashes.
 graph/derived.json
 graph/index.json
+
+# The site's build output (ruling S2, 2026-10-24): `python3 site/build.py` writes
+# it; CI keeps it as an artifact and the site workflow deploys main's to Pages.
+_site/

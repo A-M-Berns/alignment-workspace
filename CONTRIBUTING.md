@@ -190,7 +190,11 @@ is a counterexample" is not a witness; the counterexample is.
 `PRIORITIES.md`. It is the source of truth and it tags difficulty: **[entry]**
 items need no new mathematics, **[substantial]** items are scoped results,
 **[open]** items may be impossible. GitHub issues mirror that file, not the
-reverse — if the two disagree, the file is right.
+reverse — if the two disagree, the file is right. The site under `site/`
+renders the same items beside the claims they bear on and the frames that hold
+them (`python3 site/build.py`, or the `site` artifact of any CI run; the
+deployed site once the maintainers merge): a walk there goes from a research
+question down to an item to execute, a bridge to judge and a want to file.
 
 ## The two hard rules
 

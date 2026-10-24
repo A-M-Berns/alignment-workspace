@@ -3,7 +3,7 @@ id: authority.approval-discount-defeated.record
 kind: leaf
 leaf_kind: record
 statement_of_record: Workspace.Deference.Contrib.EffectiveAuthority.discount_defeats_exchange_rate
-hypotheses: unread
+hypotheses: [authority.approval-discount-defeated.h-case]
 size: S
 size_reason: "one declaration against the registry"
 version: 1
@@ -22,3 +22,5 @@ The signature of `Workspace.Deference.Contrib.EffectiveAuthority.discount_defeat
         (hw : P.w ≤ c) :
         discounted P bid 1 1 = bid ∧ P.evalOf c 0 0 0 < discounted P bid 1 1 ∧
           (P.D - c) / P.ϖ < 1
+## Notes
+Filed by the map-as-canonical round from the registry entry and the declaration's signature; its hypotheses were unread (ruling F1, 2026-10-23) until the site-vertical-slice round (projects/enabling/rounds/2026-10-24-site-vertical-slice) filed 1 hypothesis leaf by reading the declaration. The signature stays in the Source as the text they were read from.

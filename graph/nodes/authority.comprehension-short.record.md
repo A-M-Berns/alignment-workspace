@@ -3,7 +3,7 @@ id: authority.comprehension-short.record
 kind: leaf
 leaf_kind: record
 statement_of_record: Workspace.Deference.Contrib.EffectiveAuthority.comprehension_short
-hypotheses: unread
+hypotheses: [authority.comprehension-short.h-cost-table, authority.comprehension-short.h-calm-exterior, authority.comprehension-short.h-case]
 size: S
 size_reason: "one declaration against the registry"
 version: 1
@@ -24,3 +24,5 @@ The signature of `Workspace.Deference.Contrib.EffectiveAuthority.comprehension_s
         (costBound_nonneg : 0 ≤ (J.entry m).costBound) (hbound : (J.entry m).costBound < compr)
         (r : R) (hr : r ∈ (J.entry m).required) (hφ : ¬ I.φ r x) :
         Short I J Adm (attnCost base lam p compr) t z x m
+## Notes
+Filed by the map-as-canonical round from the registry entry and the declaration's signature; its hypotheses were unread (ruling F1, 2026-10-23) until the site-vertical-slice round (projects/enabling/rounds/2026-10-24-site-vertical-slice) filed 3 hypothesis leafves by reading the declaration. The signature stays in the Source as the text they were read from.

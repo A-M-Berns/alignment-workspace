@@ -111,7 +111,14 @@ refused under rule 10.
 required, since `rule` and `survey` events are refused unless a maintainer
 signs them, and anchor 18 reads any of them. `handles`: each
 `{kind: human, github}` or `{kind: ai, model}`; every handle is a real
-contributor, and every number in the graph comes from one of them. `users`:
+contributor, and every number in the graph comes from one of them. **An AI
+handle is derived from its model** (2026-10-24): `@` followed by the model
+string's slug (lowercased, a trailing parenthesised vendor dropped, every run
+of characters other than letters and digits one hyphen), so `Claude Fable 5.1
+(Anthropic)` is `@claude-fable-5-1`; one model is one contributor across
+sessions, and no session picks a name. A handle minted before the rule keeps
+the name its ledger already carries under `legacy: true`, which the index
+shows; rule 5 refuses an AI handle that is neither. **Default**. `users`:
 per handle `{audits, show_numbers, alternative_calculations,
 presentation_asked}`, the last an ISO date, the day the agent asked; read by
 `--as`. `reask_days` (90) and `time_tested_years` (3): reserved for the
@@ -346,7 +353,11 @@ whose Statement names the rows, so adding a row changes it and bumps its
 leaf becomes a table, a range judgment given on the leaf no longer fits (a
 table's probability is Σ w·p): it is marked *stale: leaf became a table*,
 enters no number, and is offered under the residual row's conditional as a
-suggestion. A kernel-checked record has p = 1 in every picture, so stories
+suggestion. When a leaf becomes an `and` or an `or` (a claim made the
+conjunction of its formal results, or a want spelled out), a range judgment
+given on the leaf no longer fits either, since the node's probability is now
+derived from its children: it is marked *stale: leaf became an and* (or *an
+or*) and enters no number (2026-10-24). A kernel-checked record has p = 1 in every picture, so stories
 about a theorem land on its hypotheses or bridge. **Decided**, except the
 partition leaf, `refines`, `observable` and the
 stale-range rule, which are **Default**.
@@ -577,7 +588,8 @@ verified and did not. Every check and judgment is an *event*: one JSON line
 in the acting person's *ledger*, `graph/events/<handle>.jsonl` (the handle
 without its `@`), append-only, written by the agent from the person's words
 (§5). A *handle* is the name a contributor goes by; `policy.yaml` maps it to
-a GitHub account and marks it `human` or `ai`; an AI handle writes
+a GitHub account and marks it `human` or `ai` (an AI handle is its model's
+slug, §1 of the policy, unless marked `legacy`); an AI handle writes
 estimates and gestalts, which count at J 0 (below), and mints no level. A
 node's *vettedness* is which checks have been performed on it,
 by whom and how thoroughly, as a *level* V from 0 to 20, read beside its
@@ -653,7 +665,7 @@ weaker dimension named. Flags beside it, none changing it: *under attack*
 still counts as a judgment, with the floor of the current level, where a
 level-minting event at an older version counts for no level and shows as
 *read at vk*); *revised since read (vk → vn)* and *human-revised (@h, vn)*
-(above); *stale: leaf became a table* (§2); *attribution unvetted*, on a
+(above); *stale: leaf became a table* and *stale: leaf became an and* or *an or* (§2); *attribution unvetted*, on a
 bridge or any leaf with `attribution: reconstructed`, cleared by one thing
 only: an `attribution` event on the node (§5) from a human other than the
 author, who read the source the node cites and says `vouched` or
@@ -1665,6 +1677,9 @@ commit; a handle is created by a pull request adding its line to
   or scope, printed and never committed.
 - **Handle prefix.** Every event id begins with its ledger's handle
   (`anson-001`), so ids never collide across contributors.
+- **AI handle, model slug, legacy.** An AI handle is `@` plus the slug of the
+  model string it names (`@claude-fable-5-1`); a handle that predates the rule
+  keeps its name under `legacy: true` (2026-10-24).
 - **Weakest proof-set leaf, bears on, load.** The least-vetted element of a
   root's proof set; the roots whose proof set holds a unit's target; the
   roots whose status depends on a node (conceded once it is conceded, not
@@ -1683,7 +1698,7 @@ every clause below.
 | 2 | a kind, `leaf_kind`, role, preset, event kind, `how`, `via`, `dimension`, `who`, `filed_from` value, `work` kind or class id is unknown; a kind's required fields are missing (a leaf's `leaf_kind`, an `and`'s one completeness child, a `cases` node's one partition child and matching rows, a `choose`'s `decided_at`, a hypothesis's `discharge`, a record's `statement_of_record` (its `hypotheses` a list of ids or the word `unread`, never both), a formal result's one bridge with `attribution`, a `frame`'s `question`, human `owner` and `roots` naming exactly its children, the top frame's human `owner`, a task leaf's `action` and `who`, an improvement leaf's `improves`); a `choose` lies outside every plan root's support; a choice point (an uncommitted `choose` or a `choose-one` `or`) lies in the support of two plan roots that are not programmes (each plan is refined by its own pick, and a shared one would be evaluated under one plan's pick; refused until shared choices have a ruled meaning); a frame node is not a plan root of some frame, or is a root in another role (a retired frame, one carrying `superseded_by`, is exempt and holds no roots, no children and no held nodes: they moved to the frame that supersedes it, ruling F4 of 2026-10-23); a frame has `opened: false` and a plan root, or `roots: []` and children; a frame's `holds` is not a list of node ids, lists a node twice, lists a node that is a root of the same frame, or lists a frame, a valuation node or a want (ruling G2, 2026-10-23); `given` sits on a leaf kind other than assumption, hypothesis, bridge, step, question, route, improvement, task or want, or names a frame, a `choose`, a valuation node or a picture, partition or completeness leaf; `@valid` names anything but an `and` (in a `given` or in `--scope`); `class_given` appears without `given` or is not a map of `holds` and `fails`; a `rule`'s row carries `given`; `improves` appears without `reality` (or with an empty one) or `reality` without `improves`, or `improves` sits on a frame or on anything but an improvement leaf, an `or` or a `cases` node; an improvement `or` lacks exactly one `residual: true` route child; `residual: true` sits on anything but a route child of an improvement `or`; a route leaf lies in no improvement claim's support; a node with `want: true` lacks a human owner, has an id not beginning `want-`, is a leaf of a kind other than `want`, or is not a root of role `want`; a want leaf lacks `want: true`; a root of role `want` lacks `want: true` or carries `preset`, `success_class` or `budget`; `action` or `who` sits on a leaf kind other than task, question, step, hypothesis, route or improvement; a `priorities` work ref is no integer; a frame's `owner` (the top frame's included) is not a human handle or a list of human handles; `narrative` names a page that is not under `wiki/` or does not exist; `filed_from` is neither `quote` nor `wiki`, or `filed_from: wiki` sits on anything but a frame; an item node lacks `item` (the number as a string), `title`, `section`, an integer `maintainer_order`, `dispatchable` or `item_status`, or a node whose id begins `item-` carries no `item` |
 | 3 | a Statement has no sentence or uses a word from `evaluative_words`; an improvement claim's normalized Statement omits its normalized `reality` phrase |
 | 4 | a node file or row carries a level, credence, status, weight, conditional, value, utility, load or cost; a Statement's normalized text changed without a `version` bump, or `version` was bumped with the text unchanged |
-| 5 | an event lacks a required field; its `by` is not a mapped handle or the ledger is not named for it; its id does not begin with the ledger's handle; its `rule` is not of the form `YYYY-MM-DD.n`; its `version` is above its node's; a level-minting event lacks a said `checked` item or `not_checked`; a `withdraw` names another handle's event; a `rule` or `survey` is not a maintainer's; a `rule` with `rows` targets no `cases` node, names a non-row, or sets `p` on a row with a given parent; an AI handle writes a level-minting event, an `external`, an `attribution`, an `admit`, `approve`, `classify`, `identify`, `revise` or `priority`, an `estimate` or `gestalt` without a `gloss`, or an `estimate` or `gestalt` on a want, a row of one or a field of one; a gestalt lacks `derived: false` or targets a node that is no goal (§6) and is held by no frame (a held node ranks under `--scope` naming it, and a gestalt on it stands for then; ruling G2, 2026-10-23); an `external` lacks `ref`; an `audit` lacks a `verdict` or names no event; an `attribution` is not by a human other than the node's author, or lacks `verdict` (`vouched` or `disputed`) or `ref`; a `revise` targets no node, lacks `from`, has `from.version` not below its `version`, names in `from.node` a node the target does not supersede, or names a `version` known to neither `versions.json` nor the node file; a `priority` is written by anyone but the want's owner, targets a node without `want: true`, or carries an `estimate` outside `high`, `medium`, `low`, `none`; a ledger is empty; dates in a ledger decrease; `policy.yaml` names no human `maintainer`, or its list holds a handle that is not a human's |
+| 5 | an event lacks a required field; its `by` is not a mapped handle or the ledger is not named for it; its id does not begin with the ledger's handle; its `rule` is not of the form `YYYY-MM-DD.n`; its `version` is above its node's; a level-minting event lacks a said `checked` item or `not_checked`; a `withdraw` names another handle's event; a `rule` or `survey` is not a maintainer's; a `rule` with `rows` targets no `cases` node, names a non-row, or sets `p` on a row with a given parent; an AI handle writes a level-minting event, an `external`, an `attribution`, an `admit`, `approve`, `classify`, `identify`, `revise` or `priority`, an `estimate` or `gestalt` without a `gloss`, or an `estimate` or `gestalt` on a want, a row of one or a field of one; a gestalt lacks `derived: false` or targets a node that is no goal (§6) and is held by no frame (a held node ranks under `--scope` naming it, and a gestalt on it stands for then; ruling G2, 2026-10-23); an `external` lacks `ref`; an `audit` lacks a `verdict` or names no event; an `attribution` is not by a human other than the node's author, or lacks `verdict` (`vouched` or `disputed`) or `ref`; a `revise` targets no node, lacks `from`, has `from.version` not below its `version`, names in `from.node` a node the target does not supersede, or names a `version` known to neither `versions.json` nor the node file; a `priority` is written by anyone but the want's owner, targets a node without `want: true`, or carries an `estimate` outside `high`, `medium`, `low`, `none`; a ledger is empty; dates in a ledger decrease; `policy.yaml` names no human `maintainer`, or its list holds a handle that is not a human's; an AI handle names no model, is not its model's slug without `legacy: true`, or carries `legacy: true` while being the slug already |
 | 6 | `question` or `answer` is present without the other, resolves to no turn of one chat file, or `verbatim` does not occur in the answer turn |
 | 7 | a committed file's `generated_hash` is missing or does not match its content (edited by hand; deleting the file lets the checker regenerate it); a proposal's `## Delta` differs from the checker's recomputation |
 | 8 | a class lacks a utility or a human `placed_by`; `outside_option` or `undescribed_failure` names no valuation node, or a valuation node is not a `cases` node whose rows all name placed classes; a `success_class` names no class; a plan root lacks `success_class`, or a programme root carries one; a sub-frame's `outside_option` names no valuation node; a `probabilistic` or `expected-utility` root lacks `budget` |

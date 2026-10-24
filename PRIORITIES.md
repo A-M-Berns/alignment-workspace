@@ -763,6 +763,25 @@ untouched.
 
 ---
 
+### 129. A per-day gap-bet bound from the constraint compiler — **[substantial]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The traderization arc compiles a constraint on prices into a legal trading strategy and, for
+deduction, gives per-date conformance within a tolerance schedule while preserving the
+criterion (`compiler.deductive-end-to-end`). The deference line reads conformance as a
+trust bound only if it bounds the novice's gap bets day by day. Wanted: whether the
+constraint compiler can enforce a per-day gap-bet bound, the novice's expectation of each
+signed gap bet at least minus a schedule, while preserving the criterion; and, if not, the
+obstruction stated against the conformance clause.
+
+*Deliverable shape:* a theorem that the compiled enforcer's per-day gap bets are bounded
+below by a schedule while the criterion is preserved, or the stated obstruction.
+*Acceptance check:* Lean green; the bound or the obstruction stated against the conformance
+clause of `deductive_end_to_end`.
+*Context:* `projects/normativity/notes/GENERALIZED_LI_PAPER_HANDOFF.md`;
+`projects/normativity/rounds/2026-08-16-traderized-enforcement/PROOF_CLOSURE.md`; the step
+`traderized-finite-date-conformance` of the map, whose action this item was.
+
 ## Normativity line — legitimacy
 Items 53–59 are the residual blockers the legitimacy prosecutions of 2026-08-21
 through 2026-08-23 left behind, filed by
@@ -1358,6 +1377,27 @@ reconciled or the divergence shown to be the correct answer.
 *Consumed by:* item 72, whose exposure premise is stated relative to a baseline.
 
 ---
+
+### 130. An intervention semantics for Robust Openness, read off the accounted state — **[substantial]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The non-capture certificate theorems (`NonCaptureCertificate.lean`) quantify over a scenario: the
+coverage state of a concern on the actual prefix and one state per declared intervention. How a
+counterfactual state is produced is the external semantics, and the Lean does not model it; the wiki
+says the semantics is indexed by the accounted state, so that it can read the docket, the ports and
+the accounts. Wanted: a declared intervention class and a semantics over the accounted state that
+produces the scenario, with the certificate theorems (`certPlus_iff_robustOpen`,
+`robustOpen_of_persistence`) instantiated on at least one accounted fixture; or a stated reason the
+semantics belongs to the application and not to the theory.
+
+*Deliverable shape:* a declared intervention class and semantics over the accounted state, with the
+certificate theorems instantiated on it, or a stated reason the semantics belongs to the application
+alone.
+*Acceptance check:* Lean green; `Scenario.cf` produced by the semantics on at least one accounted
+fixture, with `certPlus_iff_robustOpen` and `robustOpen_of_persistence` instantiated there.
+*Context:* `wiki/Openness-Coverage-and-Non-Capture.md`;
+`lean/Workspace/Normativity/Contrib/NonCaptureCertificate.lean`; the claim
+`split-bill-is-robust-openness` of the map.
 
 ## Deference line
 Context for all three: `projects/deference/note-dump-2026-08-11/`, in particular
@@ -3890,6 +3930,45 @@ relating `authorized` to the account, or a stated reason none should exist.
 *Context:* `.../2026-10-22-normative-inductor-integration/HANDOFFS.md` (the first arrow);
 `OpenIntegrityEvolution.ObligationState`; `wiki/Legitimacy.md`.
 *Consumed by:* the legitimacy ↔ warrant handoff; item 115.
+
+### 131. The ask-list deviation as a dimension of the counted trace — **[entry]**
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The thin-legitimacy round left the ask-list deviation as a self-checkable clause beside the landed
+ones (`EffectiveAuthority.asksDeviate`): asking off the declared protocol, by volume or by order
+chosen for the wanted answer, is a deviation the agent can check on itself, but the record's
+`Counted` does not read it. The round's report names the fix as a mechanical extension it did not
+make: wire the ask list in as a dimension of the trace, as `Consult2` wired the raise dimension, so
+that the off-protocol rows are tainted by the record and counted below `D − ϖ`.
+
+*Deliverable shape:* `lean-proved`: the consultation model extended by the ask-list dimension, with
+the landed rows re-decided and the off-protocol rows tainted by the record itself.
+*Acceptance check:* Lean green; `volume_by_want_deviates` and `order_by_want_deviates` recovered as
+taints of `Counted` on the extended model.
+*Context:* `projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md`,
+Part C; `lean/Workspace/Deference/Contrib/EffectiveAuthority.lean`; the claim
+`effective-authority-layer` of the map.
+
+### 132. A settlement that produces grade trust, or the proof none does — **[open]**
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The local delegation bridge (`delegation.bridge`) holds under grade trust at level η: on every
+cell and for every intervention the conditional expectation of the quantity is within η of the
+principal's grade. The finite-kernel report imports that hypothesis and argues (§1.1, §4) that no
+settlement instantiation in the skeleton produces it; the Lean asserts nothing to produce it.
+Wanted: a settlement instantiation under which grade trust holds at a stated level, with the bridge
+applied to it; or the proof that none in the skeleton does, naming the quantity a grade would have
+to track and cannot.
+
+*Deliverable shape:* `lean-proved`: an instantiation of the kernel's settlement under which
+`GradeTrust` holds at a stated level, with the bridge applied; or a stated obstruction naming the
+quantity a grade cannot track.
+*Acceptance check:* Lean green; `DelegationBridge.GradeTrust` discharged on the instantiation and
+`delegation_bridge` applied to it, or the obstruction stated against the four settlement sources of
+the finite kernel.
+*Context:* `prompts/2026-08-11-deference-finite-kernel/REPORT.md`;
+`lean/Workspace/Deference/Contrib/DelegationBridge.lean`; the claim `local-delegation-bridge` of the
+map.
 
 ## Workspace friction
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a

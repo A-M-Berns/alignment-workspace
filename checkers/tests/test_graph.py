@@ -2812,11 +2812,12 @@ class Fixtures(unittest.TestCase):
         self.assertEqual([e for e in D["events"]["counted"] if not e.startswith("smithy-verity-")],
                          ["anson-001", "anson-002"])
         self.assertTrue([e for e in D["events"]["counted"] if e.startswith("smithy-verity-")])
-        # nothing is withdrawn; an AI number goes stale only where the 2026-10-05b round revised a node (a new version, or a
-        # leaf that became a table), never for another reason
+        # nothing is withdrawn; an AI number goes stale only where a round revised a node (a new version, a leaf that became
+        # a table, or a leaf that became an and or an or: a claim made the conjunction of its formal results, 2026-10-24),
+        # never for another reason
         self.assertEqual(D["events"]["withdrawn"], [])
         for e, why in D["events"]["stale_reasons"].items():
-            self.assertTrue(why == "leaf became a table" or why.startswith("given against version"), (e, why))
+            self.assertTrue(why in ("leaf became a table", "leaf became an and", "leaf became an or") or why.startswith("given against version"), (e, why))
         pol = g.parse_flat_yaml((self.root / "graph" / "policy.yaml").read_text())
         self.assertEqual(set(pol["handles"]), {"@anson", "@abram", "@smithy-verity", "@smithy-verity-opus55"})
         self.assertNotIn("illustrative", (self.root / "graph" / "policy.yaml").read_text())
@@ -2834,8 +2835,10 @@ class Fixtures(unittest.TestCase):
         # after the AI fill a gestalt unit is ranked only on a goal left without numbers: a goal whose readings are a
         # person's choice (Decided 2026-10-20), or a root the map-as-canonical round filed as structure alone (2026-10-22:
         # every formal result and docket is at level 0 with no judgment until someone gives one)
+        counted = set(D["events"]["counted"])                                    # a stale range (a leaf that became a table or an and) judges nothing
         judged = {e["target"].get("node") for e in (json.loads(l) for p in (self.root / "graph" / "events").glob("*.jsonl")
-                                                   for l in p.read_text().splitlines() if l.strip()) if e["kind"] in ("estimate", "gestalt")}
+                                                   for l in p.read_text().splitlines() if l.strip())
+                  if e["kind"] in ("estimate", "gestalt") and e["id"] in counted}
         unjudged = {g for g in D["ranking"]["goals"] if g not in judged} | UNJUDGED_BY_POLICY
         # a formal result whose hypotheses are unread is structure alone too (2026-10-23), the claims merged under F5 included
         unjudged |= {x for x, N in D["nodes"].items() if "hypotheses unread" in N["flags"]}

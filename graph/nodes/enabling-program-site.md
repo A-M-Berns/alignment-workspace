@@ -4,6 +4,7 @@ kind: leaf
 leaf_kind: task
 action: "Build the site generator against the schema of graph/index.json."
 who: either
+work: [{kind: round, ref: projects/enabling/rounds/2026-10-24-site-vertical-slice}]
 author: "@smithy-verity"
 size: S
 size_reason: "one deliverable of the enabling work"
