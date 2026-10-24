@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "384c9258e348b24bfc1d835f",
-  "index.json": "b37ac5557df54471fdac8e7a"
+  "derived.json": "e563ff86e7f8129bb22a1aa2",
+  "index.json": "076125af4027fbd2e97de408"
  },
- "generated_hash": "02a4ba90b8d9bdf13a06f95e",
+ "generated_hash": "0e0ed628927c369024727f43",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -5339,6 +5339,11 @@
     "date": "2026-10-22",
     "normalized": "the statement of record of delegation bridge formalizes the registered claim as the registry reads it the finite delegation bridge",
     "version": 1
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "the claim asserts the local delegation bridge under grade trust at level \u03b7 over an admissible partition delegating to the principals judgment beats any measurable comparator by the principals grade margin less twice \u03b7 on the disagreement region the declaration certifies the inequality exactly over a finite cell type with exact rational masses expectations and grades the comparators valuation plus its grade margin minus 2\u03b7 times the disagreement mass is at most the valuation of delegating the gaps the source states the bridge over an admissible conditioning partition of a finite outcome space and the declaration carries the partition by its cell type so measurability of the judgment and the comparator is true by construction rather than a hypothesis discharged the files own words a re typing not a transcription grade trust is imported and the source argues no settlement in the skeleton produces it the uniform form which trades the trust hypothesis for a bound by twice the magnitude is deliberately not ported because it rests on a grade to quantity link the programme derives rather than assumes and the declaration is free of any logical induction fact where the claims home is the logical induction setting the deference line asks about",
+    "version": 2
    }
   ],
   "delegation.bridge.complete": [
@@ -5351,6 +5356,25 @@
     "date": "2026-10-23",
     "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
     "version": 2
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record the two hypothesis leaves filed by reading nonnegative cell masses grade trust at level \u03b7 the imported hypothesis the bridge and this leaf",
+    "version": 3
+   }
+  ],
+  "delegation.bridge.h-cell-masses": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the cell masses of the conditioning partition are nonnegative",
+    "version": 1
+   }
+  ],
+  "delegation.bridge.h-grade-trust": [
+   {
+    "date": "2026-10-24",
+    "normalized": "grade trust at level \u03b7 on every cell and for every intervention the conditional expectation of the quantity is within \u03b7 of the principals grade",
+    "version": 1
    }
   ],
   "delegation.bridge.h1": [
@@ -8596,6 +8620,13 @@
    {
     "date": "2026-10-24",
     "normalized": "the ask list deviation is a dimension of the counted trace so that asking off the declared protocol is tainted by the records own counting rather than by a self checkable clause beside it",
+    "version": 1
+   }
+  ],
+  "item-132": [
+   {
+    "date": "2026-10-24",
+    "normalized": "grade trust at some level is produced by a settlement instantiation of the finite kernel rather than imported so that the bridges hypothesis is a property of the trajectory and not a stipulation",
     "version": 1
    }
   ],
@@ -12821,6 +12852,34 @@
    {
     "date": "2026-10-20",
     "normalized": "a finite frame with a three cell question local total trust with respect to the question and weak local value as the package defines it some recommended strategy beats every fixed option",
+    "version": 1
+   }
+  ],
+  "local-delegation-bridge": [
+   {
+    "date": "2026-10-24",
+    "normalized": "under grade trust at level \u03b7 over an admissible partition delegating to the principals judgment beats any measurable comparator by the principals grade margin less twice \u03b7 on the disagreement region and the bound is attained",
+    "version": 1
+   }
+  ],
+  "local-delegation-bridge.complete": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the one conjunct is the registered local delegation bridge for nonnegative cell masses and grade trust at level \u03b7 the comparators valuation plus its grade margin minus 2\u03b7 times the disagreement mass is at most the valuation of delegating that establishes the claims inequality over a finite exact rational cell type it does not establish attainment the witness e1 is a separate declaration in the file the uniform form without the trust hypothesis or anything in the logical induction setting and it does not produce grade trust",
+    "version": 1
+   }
+  ],
+  "local-delegation-bridge.improvable": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the local delegation bridge in which delegating beats a measurable comparator by the grade margin less twice the trust level on the disagreement region can be improved until it reflects a human inductor deferring to a faster ai inductor at the logical induction level whose grades it can trust well",
+    "version": 1
+   }
+  ],
+  "local-delegation-bridge.residual": [
+   {
+    "date": "2026-10-24",
+    "normalized": "a refinement of the local delegation bridge that none of the other routes describes reflects a human inductor deferring to a faster ai inductor at the logical induction level whose grades it can trust",
     "version": 1
    }
   ],
@@ -17670,6 +17729,13 @@
    {
     "date": "2026-10-24",
     "normalized": "what item 107 leaves open behind the post is closed blackwells converse for the thin specifications value clause the loss of correctness and the remaining items of the posts backing",
+    "version": 1
+   }
+  ],
+  "route-bridge-uniform-form": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the grade to quantity link is derived so that the uniform form of the bridge which bounds the loss by twice the magnitude without a trust hypothesis can be ported as a theorem rather than assumed",
     "version": 1
    }
   ],

@@ -2091,12 +2091,12 @@ Owner @abram; holds 39 node(s)
 - informs 1 goal
 - best next unit: vet timely-pointwise-tower-refuted-in-setting.bridge
 #### deference-finite-results
-- preset worst-case; status **open**; weakest proof-set leaf at V 0
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): Which finite results about delegation, certificates, exposure, substitution, magnitude and corrective control does the deference line hold as kernel-checked theorems?
-- steps: ; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- steps: local-delegation-bridge, local-delegation-bridge.improvable; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @abram; holds 31 node(s); spelled, nothing yet a goal
+- frame owner @abram; holds 30 node(s)
 - a programme: informs through its steps
 - best next unit: none
 
@@ -2578,11 +2578,24 @@ Owner @abram
 - best next unit: none
 
 ## Sub-frame deference-finite-results (in deference-and-trust): Which finite results about delegation, certificates, exposure, substitution, magnitude and corrective control does the deference line hold as kernel-checked theorems?
-Owner @abram; holds 31 node(s); spelled, nothing yet a goal (no roots)
+Owner @abram; holds 30 node(s)
+
+### Shared claims
+#### local-delegation-bridge
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 5 goals
+- best next unit: gestalt local-delegation-bridge
+#### local-delegation-bridge.improvable
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 1 goal
+- best next unit: gestalt local-delegation-bridge.improvable
 
 ### Held
 Nodes this frame is about that are no goals of the ranking (held, not roots): listed with their kinds, no status or value here.
-- delegation.bridge (and)
 - delegation.bridge-unconditional (and)
 - delegation.gradetrust-refinement (and)
 - certificate.margin-forces-agreement (and)
@@ -3986,7 +3999,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - degree-based-implementation: Define implementation of degree with the translation's program length as the complexity measure and test it on a static and a moving-object example. (who: agent)
 - delayed-disclosure-structure-formalized: Write a route note formalizing this information structure and re-running the trust half first; later a clean-room package over FAF. (who: agent)
 - delegation.bridge-unconditional: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
-- delegation.bridge: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
+- delegation.bridge: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
 - delegation.gradetrust-refinement: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
 - dependent-type-of-procedure: Check whether the v2 definition of a decision procedure fixes the dependent typing flagged in the May 2026 plan, and file the repair as a proposed edit if it does not. (who: agent); files: projects/decision-theory/decision-problems-note-dump-2026-10-01/decision-problems-v2.md
 - desiderata-2-4-general: Draft, as a proposal beside the note, a replacement for the three-sources bullet of position statement v3 section 2 that derives each desideratum for general modifications or says which does not follow. (who: agent); files: projects/deference/corrigibility-note-dump-2026-10-01/position-statement-v3.md
@@ -4098,6 +4111,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - item-13: Execute item 13 per its deliverable shape and acceptance check: Scaffolding self-verification. (who: agent); decision: 2026-08-11--setup-scrub-reports-removed-root
 - item-130: State an intervention semantics for Robust Openness indexed by the accounted state (the docket, the ports and the accounts), producing for each state and concern the actual coverage data and the data under each declared intervention, and check the non-capture certificate against it. (who: agent)
 - item-131: Wire the ask-list deviation into the record's Counted as a dimension of the trace, as Consult2 wired the raise dimension, so that asking off the protocol is counted below D − ϖ by the record and not only flagged as a self-checkable clause beside it. (who: agent)
+- item-132: Find a settlement instantiation of the finite kernel that produces grade trust at some level η from the trajectory itself, or prove that none in the skeleton does, stating which quantity the grade would have to track. (who: agent)
 - item-14: Continue PRIORITIES item 14 (returned in wave 1) using wiki/faithful-acceleration-result.md and wiki/delay-and-visibility.md, not the June note dump's superseded ladder. (who: either); files: lean/Workspace/Deference/
 - item-15: Execute item 15 per its deliverable shape and acceptance check: Finite settlement classification, and the local delegation bridge. (who: agent)
 - item-16: Execute item 16 per its deliverable shape and acceptance check: The certificate inequality, derived. (who: agent)
@@ -4264,6 +4278,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - li.assessment.firm-dominance: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #47
 - lia-fitted-to-lic: State the fitting problem precisely for finite data (a finite prefix of price vectors; does some inductor with a bounded trader class realize it) and solve the two-sentence, three-day case by hand. (who: agent)
 - lift-stop-gradient-to-bli: Starting from StopGradientCore.lean's eighteen finite theorems, restate the conditioning identity as a restriction of reflection to the push component not caused by the agent over corr-exo-trader's market, and check whether the steering-residue result reappears as a residual of the wireheading-through-pushers mechanism. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-exo-trader
+- local-delegation-bridge: round: prompts/2026-08-11-phase-ii-promotion; round: projects/enabling/rounds/2026-10-24-site-vertical-slice; work order: PRIORITIES #23
 - magnitude.mixture-networth-zero: round: prompts/2026-08-11-phase-ii-prediction; work order: PRIORITIES #21
 - magnitude.not-trader-payoff: round: prompts/2026-08-11-phase-ii-prediction; work order: PRIORITIES #21
 - magnitude.sharp-trader-networth: round: prompts/2026-08-11-phase-ii-prediction; work order: PRIORITIES #21
@@ -4389,6 +4404,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - rosi-roli-bridge: Write the dictionary between the reflective-oracle self-game and a logical-induction self-trust statement (which object plays the self-hypothesis, the posterior w_h and the floor) and identify the first lemma with no logical-induction counterpart. (who: agent)
 - route-authority-attention-physics: work order: PRIORITIES #101
 - route-authority-blackwell-converse: work order: PRIORITIES #107
+- route-bridge-uniform-form: work order: PRIORITIES #23
 - route-conformance-credal-constraint: work order: PRIORITIES #39
 - route-conformance-efficient-rows: work order: PRIORITIES #42
 - route-conformance-exact-and-safe: work order: PRIORITIES #43
@@ -4584,6 +4600,7 @@ Each `and` with assumption or hypothesis leaves, read with those leaves held tru
 - decision-flat-refinements: as an implication (decision-flat-refinements@valid) and literally; the numbers print under --why
 - decision-problems-lean-done: as an implication (decision-problems-lean-done@valid) and literally; the numbers print under --why
 - deck-collapse-statement: as an implication (deck-collapse-statement@valid) and literally; the numbers print under --why
+- delegation.bridge: as an implication (delegation.bridge@valid) and literally; the numbers print under --why
 - derivation-via-approximate-dd: as an implication (derivation-via-approximate-dd@valid) and literally; the numbers print under --why
 - deterrence-not-identified-on-path: as an implication (deterrence-not-identified-on-path@valid) and literally; the numbers print under --why
 - direct-route-via-b1: as an implication (direct-route-via-b1@valid) and literally; the numbers print under --why
@@ -4617,6 +4634,7 @@ Each `and` with assumption or hypothesis leaves, read with those leaves held tru
 - li-deference-collapse: as an implication (li-deference-collapse@valid) and literally; the numbers print under --why
 - li-level-computability-certificates: as an implication (li-level-computability-certificates@valid) and literally; the numbers print under --why
 - local-criterion-three-cells: as an implication (local-criterion-three-cells@valid) and literally; the numbers print under --why
+- local-delegation-bridge: as an implication (local-delegation-bridge@valid) and literally; the numbers print under --why
 - logical-counterfactuals-troll-bridge: as an implication (logical-counterfactuals-troll-bridge@valid) and literally; the numbers print under --why
 - mart-implies-value-kernel: as an implication (mart-implies-value-kernel@valid) and literally; the numbers print under --why
 - mart-implies-value-refuted-unconditional: as an implication (mart-implies-value-refuted-unconditional@valid) and literally; the numbers print under --why
@@ -5179,7 +5197,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | default-trajectory.partition | leaf/partition | 2 (both) |  | open | 0 | 0 (informs no goal) |
 | defensible-ledger-ruled | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | deference-and-trust | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
-| deference-finite-results | frame | 2 (both) | spelled; nothing yet a goal (31 held) | open | 1 | 0 (informs no goal) |
+| deference-finite-results | frame | 2 (both) |  | open | 1 | 0 (informs no goal) |
 | deference-martingale-lean-checked | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | deference-protects-from-outprediction-not-deception | leaf/step | 2 (both) | AI number, given deference-martingale-lean-checked, no belief | open | 1 | 1 |
 | deference-toward-bounded-agents | frame | 2 (both) | interval not a bound (negative evidential edge) | open | 1 | 0 (informs no goal) |
@@ -5189,10 +5207,12 @@ The outside option and the undescribed failure, each a cases node over the outco
 | delegation.bridge-unconditional.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
 | delegation.bridge-unconditional | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
 | delegation.bridge-unconditional.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
-| delegation.bridge.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
-| delegation.bridge.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
-| delegation.bridge | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
-| delegation.bridge.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| delegation.bridge.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 5 |
+| delegation.bridge.complete | leaf/completeness | 2 (both) |  | open | 1 | 5 |
+| delegation.bridge.h-cell-masses | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| delegation.bridge.h-grade-trust | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| delegation.bridge | and | 2 (both) |  | open | 1 | 1 |
+| delegation.bridge.record | leaf/record | 2 (ref) | no belief | open | 1 | 5 |
 | delegation.gradetrust-refinement.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
 | delegation.gradetrust-refinement.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
 | delegation.gradetrust-refinement | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
@@ -5534,6 +5554,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | item-13 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
 | item-130 | leaf/route | 2 (both) | given split-bill-is-robust-openness@valid, given: conditionals not judged, no belief | open | 0 | 2 |
 | item-131 | leaf/route | 2 (both) | given effective-authority-layer@valid, given: conditionals not judged, no belief | open | 0 | 2 |
+| item-132 | leaf/route | 2 (both) | given local-delegation-bridge@valid, given: conditionals not judged, no belief | open | 0 | 2 |
 | item-14 | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | item-15 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
 | item-16 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
@@ -5965,6 +5986,10 @@ The outside option and the undescribed failure, each a cases node over the outco
 | local-criterion-three-cells | and | 2 (both) | AI number | open | 1 | 1 |
 | local-criterion-three-cells.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 1 |
 | local-criterion-three-cells.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
+| local-delegation-bridge.complete | leaf/completeness | 2 (both) |  | open | 1 | 5 |
+| local-delegation-bridge.improvable | or | 2 (both) | improvement claim on local-delegation-bridge (reality: a human inductor deferring to a faster AI inductor at the logical-induction level, whose grades it can trust) | open | 1 | 1 |
+| local-delegation-bridge | and | 2 (both) |  | open | 1 | 5 |
+| local-delegation-bridge.residual | leaf/route | 2 (both) | given local-delegation-bridge@valid, given: conditionals not judged, no belief | open | 0 | 2 |
 | local-rules-certify-legitimacy | cases | 2 (both) | AI number, given tonk-is-a-sure-loss, given trace-nonrecoverability@valid, interval not a bound (negative evidential edge), no belief, under attack | open | 1 | 1 |
 | local-rules-certify-legitimacy.partition | leaf/partition | 2 (both) | AI number | open | 1 | 1 |
 | logical-counterfactuals-troll-bridge.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
@@ -6528,6 +6553,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | route-approximate-dd | leaf/route | 2 (both) | AI number, given udt-representation-theorem | open | 0 | 3 |
 | route-authority-attention-physics | leaf/route | 2 (both) | given effective-authority-layer@valid, given: conditionals not judged, no belief | open | 0 | 2 |
 | route-authority-blackwell-converse | leaf/route | 2 (both) | given effective-authority-layer@valid, given: conditionals not judged, no belief | open | 0 | 2 |
+| route-bridge-uniform-form | leaf/route | 2 (both) | given local-delegation-bridge@valid, given: conditionals not judged, no belief | open | 0 | 2 |
 | route-coalition-cap-maintained | leaf/route | 2 (both) | AI number, given aggregate-logical-inductor, no belief | open | 0 | 2 |
 | route-coalition-decision-layer | leaf/route | 2 (both) | AI number, given aggregate-logical-inductor, no belief | open | 0 | 2 |
 | route-coalition-disclosure-regime | leaf/route | 2 (both) | AI number, given aggregate-logical-inductor, no belief | open | 0 | 2 |
@@ -7121,4 +7147,4 @@ The outside option and the undescribed failure, each a cases node over the outco
 | wirehead-iff-finite.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 1 |
 | wirehead-iff-finite.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 1 |
 | worlds-and-points-companion | leaf/question | 2 (both) | AI number | open | 0 | 8 |
-<!-- generated_hash: 19b9a6b0ed3ea72ff6aa099f -->
+<!-- generated_hash: 25a60f18249894fb3ac89ff2 -->

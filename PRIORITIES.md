@@ -3949,6 +3949,27 @@ taints of `Counted` on the extended model.
 Part C; `lean/Workspace/Deference/Contrib/EffectiveAuthority.lean`; the claim
 `effective-authority-layer` of the map.
 
+### 132. A settlement that produces grade trust, or the proof none does — **[open]**
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The local delegation bridge (`delegation.bridge`) holds under grade trust at level η: on every
+cell and for every intervention the conditional expectation of the quantity is within η of the
+principal's grade. The finite-kernel report imports that hypothesis and argues (§1.1, §4) that no
+settlement instantiation in the skeleton produces it; the Lean asserts nothing to produce it.
+Wanted: a settlement instantiation under which grade trust holds at a stated level, with the bridge
+applied to it; or the proof that none in the skeleton does, naming the quantity a grade would have
+to track and cannot.
+
+*Deliverable shape:* `lean-proved`: an instantiation of the kernel's settlement under which
+`GradeTrust` holds at a stated level, with the bridge applied; or a stated obstruction naming the
+quantity a grade cannot track.
+*Acceptance check:* Lean green; `DelegationBridge.GradeTrust` discharged on the instantiation and
+`delegation_bridge` applied to it, or the obstruction stated against the four settlement sources of
+the finite kernel.
+*Context:* `prompts/2026-08-11-deference-finite-kernel/REPORT.md`;
+`lean/Workspace/Deference/Contrib/DelegationBridge.lean`; the claim `local-delegation-bridge` of the
+map.
+
 ## Workspace friction
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a
 round that hits friction with the workspace itself to file it here rather than
