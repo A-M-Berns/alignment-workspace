@@ -573,6 +573,14 @@ def is_handle(t, handle):
     return handle in (t.policy.get("handles") or {})
 
 
+def model_slug(model):
+    """The handle an AI model's name determines (2026-10-24): the model string lowercased, a trailing parenthesised vendor
+    dropped, every run of characters other than letters and digits one hyphen, so `Claude Fable 5.1 (Anthropic)` is
+    `claude-fable-5-1`. One model is one contributor across sessions, and no session picks a name."""
+    s = re.sub(r"\s*\([^()]*\)\s*$", "", str(model or "")).lower()
+    return re.sub(r"[^a-z0-9]+", "-", s).strip("-")
+
+
 def owners_of(x):
     """A frame's owners: `owner` is one human handle or a list of them (ruling M5, 2026-10-22); a want's is one."""
     o = (x or {}).get("owner")
@@ -765,6 +773,20 @@ def lint(t):
     fr, po, nodes = t.frame, t.policy, t.nodes
     cls = classes(t)
     handles = po.get("handles") or {}
+    # an AI handle is derived from its model (2026-10-24): `@` + the model's slug; a handle minted before the rule keeps its
+    # name under legacy: true. Rule 5, since a handle is what an event's `by` and a node's `author` name.
+    for h, spec in handles.items():
+        spec = spec or {}
+        if spec.get("kind") != "ai":
+            continue
+        if not isinstance(spec.get("model"), str) or not spec["model"].strip():
+            raise Refuse(5, "graph/policy.yaml", f"AI handle {h!r} names no model")
+        want = "@" + model_slug(spec["model"])
+        if h != want and spec.get("legacy") is not True:
+            raise Refuse(5, "graph/policy.yaml", f"AI handle {h!r} is not its model's slug {want!r}; an AI handle is derived from the "
+                                                 "model it names, and only a handle minted before 2026-10-24 keeps another name, under legacy: true")
+        if spec.get("legacy") is True and h == want:
+            raise Refuse(5, "graph/policy.yaml", f"AI handle {h!r} is its model's slug already; legacy: true marks nothing here")
     # rule 10: policy values in range (rate rows are minutes; each new key is checked where it is read)
     for kind, row in (po.get("rate_table") or {}).items():
         if not isinstance(row, dict):
@@ -4970,7 +4992,7 @@ maintainer: "@h1"
 handles:
   "@h1": {kind: human, github: "h1-example"}
   "@h2": {kind: human, github: "h2-example"}
-  "@ai": {kind: ai, model: "Claude Fable 5.1 (Anthropic)"}
+  "@ai": {kind: ai, model: "Claude Fable 5.1 (Anthropic)", legacy: true}
 users:
   "@h1": {audits: true, show_numbers: true, alternative_calculations: true, presentation_asked: "2026-09-20"}
   "@h2": {audits: true, show_numbers: false, alternative_calculations: false, presentation_asked: "2026-09-20"}
@@ -5283,6 +5305,13 @@ NULL_INPUTS = [
                                                                      ("nodes/prog.md", "  - {id: sc-1, role: shared-claim, preset: worst-case}", "  - {id: sc-1, role: shared-claim, preset: worst-case}\n  - {id: plan-b, role: shared-claim, preset: worst-case}")]}),
     ("a frame owner list holding an AI handle", 2, {"programme": True, "edits": [("nodes/prog.md", 'owner: "@h1"', 'owner: ["@h1", "@ai"]')]}),
     ("a maintainer list holding an AI handle", 5, {"edits": [("policy.yaml", 'maintainer: "@h1"', 'maintainer: ["@h1", "@ai"]')]}),
+    # an AI handle is its model's slug (2026-10-24)
+    ("an AI handle that is not its model's slug", 5, {"edits": [("policy.yaml", '  "@ai": {kind: ai, model: "Claude Fable 5.1 (Anthropic)", legacy: true}',
+                                                                  '  "@ai": {kind: ai, model: "Claude Fable 5.1 (Anthropic)", legacy: true}\n  "@helper": {kind: ai, model: "Claude Fable 5.1 (Anthropic)"}')]}),
+    ("an AI handle without a model", 5, {"edits": [("policy.yaml", '  "@ai": {kind: ai, model: "Claude Fable 5.1 (Anthropic)", legacy: true}',
+                                                     '  "@ai": {kind: ai, model: "Claude Fable 5.1 (Anthropic)", legacy: true}\n  "@claude-fable-5-1": {kind: ai}')]}),
+    ("legacy: true on a handle that is already its model's slug", 5, {"edits": [("policy.yaml", '  "@ai": {kind: ai, model: "Claude Fable 5.1 (Anthropic)", legacy: true}',
+                                                                                 '  "@ai": {kind: ai, model: "Claude Fable 5.1 (Anthropic)", legacy: true}\n  "@claude-fable-5-1": {kind: ai, model: "Claude Fable 5.1 (Anthropic)", legacy: true}')]}),
     ("filed_from: wiki on a leaf", 2, {"edits": [_alt2("filed_from: wiki\n")]}),
     ("an item node without its fields", 2, {"edits": [_alt2('item: "7"\n')]}),
     ("a node id beginning item- without item", 2, {"edits": [("nodes/alt-2.md", "id: alt-2\n", "id: item-2\n"), ("nodes/choose-c.md", "[alt-1, alt-2]", "[alt-1, item-2]")]}),
@@ -5376,6 +5405,13 @@ def self_test():
             _with_want(nodes)
             k, s, extra, st = nodes["want-x"]
             nodes["want-x"] = (k, s, {a: b for a, b in extra.items() if a != "filed_from"}, st)
+        # an AI handle that is its model's slug passes (2026-10-24)
+        synthetic_tree(d / "slug")
+        pf = d / "slug" / "graph" / "policy.yaml"
+        pf.write_text(pf.read_text().replace('  "@ai": {kind: ai, model: "Claude Fable 5.1 (Anthropic)", legacy: true}',
+                                             '  "@ai": {kind: ai, model: "Claude Fable 5.1 (Anthropic)", legacy: true}\n  "@claude-opus-5-5": {kind: ai, model: "Claude Opus 5.5 (Anthropic)"}'))
+        checks += [("an AI handle that is its model's slug is accepted", run_quiet(["--root", str(d / "slug"), "--today", "2026-10-02"])[0] == 0),
+                   ("the slug of a model string", model_slug("Claude Fable 5.1 (Anthropic)") == "claude-fable-5-1" and model_slug("GPT-7 Pro") == "gpt-7-pro")]
         checks += [("a quoted want with no priority word weighs zero (G4)", want_weight("want-quoted") == "0/1"),
                    ("a quoted want with the word low weighs 1/4", want_weight("want-worded", extra={"h1": [_priority("@h1", "want-x", "low", 1)]}) == "1/4"),
                    ("a want its owner filed with no word weighs medium", want_weight("want-owner", tweak=_owner_filed) == "1/2")]

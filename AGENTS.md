@@ -1057,7 +1057,9 @@ decision reads.
 
 **Gates.** The checker runs on every commit and pull request that touches
 `graph/` or `chats/` and refuses: a number, level or status in a node file;
-an unmapped handle, an AI handle's level-minting event, acceptance, tag,
+an unmapped handle, an AI handle that is not its model's slug (an AI's handle
+is derived from the model string, never chosen; the two minted before
+2026-10-24 are marked `legacy`), an AI handle's level-minting event, acceptance, tag,
 `revise` or `priority`, an AI handle's number without its reasoning, or an
 AI handle's number on a want; a priority word by anyone but the want's
 owner; a withdrawal of someone else's event; a regenerated file edited by

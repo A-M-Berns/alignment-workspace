@@ -37,6 +37,6 @@ maintainer: ["@anson", "@abram"]
 handles:
   "@anson": {kind: human, github: "A-M-Berns"}
   "@abram": {kind: human, github: "abramdemski"}
-  "@smithy-verity": {kind: ai, model: "Claude Fable 5.1 (Anthropic)"}
-  "@smithy-verity-opus55": {kind: ai, model: "Claude Opus 5.5 (Anthropic)"}
+  "@smithy-verity": {kind: ai, model: "Claude Fable 5.1 (Anthropic)", legacy: true}          # minted before the slug rule; its ledger keeps the name
+  "@smithy-verity-opus55": {kind: ai, model: "Claude Opus 5.5 (Anthropic)", legacy: true}   # an AI handle is otherwise @<model slug> (PROTOCOL §5)
 users: {}                      # ruling 26: presentation preferences per user; none asked yet
