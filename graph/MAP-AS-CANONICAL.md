@@ -63,6 +63,22 @@ agenda both maintainers own. Nothing in this round writes an `estimate`,
 `gestalt`, judgment, acceptance or `priority`, and the lens is not recomputed
 by hand anywhere.
 
+The map is a representation of the research program, only part of which is an
+argument (ruling G2 of the second follow-up, 2026-10-23; `DECISIONS.md` anchor
+`2026-10-23--map-second-follow-up-digest-one-shape-frames-hold-bearing-unconfirmed-want-weighs-nothing`).
+A frame's roots are its goals and enter the ranking; what a frame holds is what
+it is about and does not. Three readings run over the one structure and do not
+share inference semantics: the argument view (support, formal results,
+conditions, objections), where a node's probability and status are derived from
+what it rests on; the research map (lines, programmes, their questions, and what
+each holds), where a programme's registered results and work orders sit under it
+without being its goals; and the contribution view (work orders, challenges,
+wants), where an item is a thing to do and a want its owner's word, neither a
+claim the ranking forecasts. A number computed in one reading is not a number in
+another: a held result's level says how far it has been checked, not how likely
+its programme is to succeed, and a work order's presence under a frame says
+nothing about any status.
+
 ## 3. Governance of contribution
 
 - **Per-contributor ledgers, owned by their handle.** `graph/events/<handle>.jsonl`

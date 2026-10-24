@@ -65,11 +65,11 @@ Owner @anson, @abram
 #### deference-and-trust
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): Which research on trust between a human inductor and an AI inductor, at the logical-induction level, reaches a formal account of trust that guides AI safety engineering work?
-- steps: ddb-to-li-translation, deck-collapse-statement, li-deference-collapse-scoped, hedged-value-unconditional, mart-implies-value-refuted-unconditional, li-deference-collapse.improvable, regularity-is-h3, crux-first-published-statement, crux-instrumental-notion, crux-self-feedback-dependence, managing-misalignment-to-li, li-deference-machine-checked, sams-conjecture-li, inter-inductor-total-trust, wiki-corpus-maintenance, li-deference-collapse, deference-toward-bounded-agents, corrigibility-landscape, li-models-human-progress, li-above-poly-time, li-no-selection-theorem-objection, li-level-computability-certificates, item-91, coherence-without-ground-truth, publication-form, published-statement-holds, note-corrections-beside-li-deference, deference-finite-results; leading step: inter-inductor-total-trust; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- steps: ddb-to-li-translation, deck-collapse-statement, li-deference-collapse-scoped, hedged-value-unconditional, mart-implies-value-refuted-unconditional, li-deference-collapse.improvable, regularity-is-h3, crux-first-published-statement, crux-instrumental-notion, crux-self-feedback-dependence, managing-misalignment-to-li, li-deference-machine-checked, sams-conjecture-li, inter-inductor-total-trust, wiki-corpus-maintenance, li-deference-collapse, deference-toward-bounded-agents, corrigibility-landscape, li-models-human-progress, li-above-poly-time, li-no-selection-theorem-objection, li-level-computability-certificates, coherence-without-ground-truth, publication-form, published-statement-holds, note-corrections-beside-li-deference, deference-finite-results; leading step: inter-inductor-total-trust; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
 - rests on AI numbers (no human judgment yet): alignment-faking-ahead-of-time
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @abram; holds 38 node(s)
+- frame owner @abram; holds 39 node(s)
 - a programme: informs through its steps
 - best next unit: re-examine inter-inductor-characterized
 #### decision-theory
@@ -364,11 +364,11 @@ Owner @anson, @abram; holds 82 node(s)
 #### authorship-and-transparency
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): When is a verdict the principal's own program's and a channel's influence the declared reference on the declared inputs, and does the thick definition of legitimacy satisfy the thin specification?
-- steps: public-legitimacy-theory, thin-converse-open, thin-value-loss-bound, item-109, item-110, item-108, effective-authority-layer, cnl-post, public-legitimacy-improvable, public-internal-legitimacy-is-reasons, reason-mediated-authorship; leading step: public-legitimacy-theory; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- steps: public-legitimacy-theory, thin-converse-open, thin-value-loss-bound, effective-authority-layer, cnl-post, public-legitimacy-improvable, public-internal-legitimacy-is-reasons, reason-mediated-authorship; leading step: public-legitimacy-theory; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
 - rests on AI numbers (no human judgment yet): public-legitimacy-theory.complete, record-half-integrity, thin-reflection-is-trivial-baseline
 - safety margin: no established leaves
 - load-bearing shared leaves: public-legitimacy-theory.complete, record-half-integrity, thin-reflection-is-trivial-baseline, thin.value-of-thick.bridge, thin.value-of-thick.complete, thin.value-of-thick.record
-- frame owner @anson, @abram; holds 20 node(s); owner has not confirmed (drafted from the wiki)
+- frame owner @anson, @abram; holds 23 node(s); owner has not confirmed (drafted from the wiki)
 - a programme: informs through its steps
 - best next unit: vet thin.value-of-thick.bridge
 #### corrigibility-landscape
@@ -570,7 +570,7 @@ Nodes this frame is about that are no goals of the ranking (held, not roots): li
 - openness.actual-branch-witness (and)
 
 ## Sub-frame authorship-and-transparency (in legitimacy): When is a verdict the principal's own program's and a channel's influence the declared reference on the declared inputs, and does the thick definition of legitimacy satisfy the thin specification?
-Owner @anson, @abram; holds 20 node(s)
+Owner @anson, @abram; holds 23 node(s)
 
 ### Plans
 #### public-legitimacy-theory
@@ -596,27 +596,6 @@ Owner @anson, @abram; holds 20 node(s)
 - load-bearing shared leaves: none
 - informs 0 goals (a single claim no goal reads: offered to connect)
 - best next unit: none
-#### item-109
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): item-109
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 2 goals
-- best next unit: vet li-corrigibility-inequality-public
-#### item-110
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): item-110
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: do item-110
-#### item-108
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): item-108
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 1 goal
-- best next unit: do item-108
 #### effective-authority-layer
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - rests on AI numbers (no human judgment yet): effective-authority-layer
@@ -674,6 +653,9 @@ Nodes this frame is about that are no goals of the ranking (held, not roots): li
 - transparent.blind-payload (and)
 - legitimacy.payload-of-view (and)
 - thin-value-of-thick (and)
+- item-109 (leaf/question)
+- item-110 (leaf/question)
+- item-108 (leaf/question)
 
 ## Sub-frame corrigibility-landscape (in legitimacy): Which correction relationships between humans and AI systems does the picture of corrigibility as eagerness to learn reach, and which failure stories does it leave standing?
 Owner @anson
@@ -2025,7 +2007,7 @@ Owner @anson, @abram
 - best next unit: re-examine legitimacy-as-local-rules
 
 ## Sub-frame deference-and-trust (in the-program): Which research on trust between a human inductor and an AI inductor, at the logical-induction level, reaches a formal account of trust that guides AI safety engineering work?
-Owner @abram; holds 38 node(s)
+Owner @abram; holds 39 node(s)
 
 ### Plans
 #### ddb-to-li-translation
@@ -2194,13 +2176,6 @@ Owner @abram; holds 38 node(s)
 - load-bearing shared leaves: none
 - informs 1 goal
 - best next unit: vet li-level-computability-certificates.complete
-#### item-91
-- preset worst-case; status **open**; weakest proof-set leaf at V 2
-- rests on AI numbers (no human judgment yet): item-91
-- safety margin: no established leaves
-- load-bearing shared leaves: none
-- informs 0 goals (a single claim no goal reads: offered to connect)
-- best next unit: none
 #### coherence-without-ground-truth
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - rests on AI numbers (no human judgment yet): coherence-without-ground-truth
@@ -2270,6 +2245,7 @@ Nodes this frame is about that are no goals of the ranking (held, not roots): li
 - item-107 (leaf/task)
 - item-111 (leaf/task)
 - item-28 (leaf/task)
+- item-91 (leaf/question)
 
 ## Sub-frame ddb-to-li-translation (in deference-and-trust): What does each result of Deference Done Better become when the novice and the expert are logical inductors?
 Owner @abram
@@ -5459,10 +5435,10 @@ The outside option and the undescribed failure, each a cases node over the outco
 | item-106.complete | leaf/completeness | 2 (both) | AI number | open | 0 | 6 |
 | item-106 | and | 2 (both) |  | open | 0 | 6 |
 | item-107 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
-| item-108 | leaf/question | 2 (both) | AI number | open | 1 | 1 |
-| item-109 | leaf/question | 2 (both) | AI number, given li-corrigibility-inequality-public | open | 1 | 2 |
+| item-108 | leaf/question | 2 (both) | AI number, held by authorship-and-transparency | open | 0 | 2 |
+| item-109 | leaf/question | 2 (both) | AI number, given li-corrigibility-inequality-public, held by authorship-and-transparency | open | 0 | 2 |
 | item-11 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
-| item-110 | leaf/question | 2 (both) | AI number | open | 1 | 1 |
+| item-110 | leaf/question | 2 (both) | AI number, held by authorship-and-transparency | open | 0 | 2 |
 | item-111 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
 | item-112 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
 | item-113 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
@@ -5568,7 +5544,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | item-89 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
 | item-9 | leaf/task | 2 (both) | AI number | open | 1 | 1 |
 | item-90 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
-| item-91 | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
+| item-91 | leaf/question | 2 (both) | AI number, held by deference-and-trust | open | 0 | 0 (informs no goal) |
 | item-92 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
 | item-93 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
 | item-97 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
@@ -7039,4 +7015,4 @@ The outside option and the undescribed failure, each a cases node over the outco
 | wirehead-iff-finite.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 1 |
 | wirehead-iff-finite.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 1 |
 | worlds-and-points-companion | leaf/question | 2 (both) | AI number | open | 0 | 8 |
-<!-- generated_hash: d7ec0813246c3e5d19da66a1 -->
+<!-- generated_hash: a5480e2239a68e0a47482350 -->

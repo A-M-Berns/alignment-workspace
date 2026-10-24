@@ -603,7 +603,7 @@ OK
 
 Not done:
 
-- The item nodes that are shared-claim roots directly (`item-91` under `deference-and-trust`; `item-108`, `item-109`, `item-110` under `authorship-and-transparency`) and the two enabling-work claims (`enabling-map-as-canonical`, `enabling-program-site`) stay roots: the ruling's three moves do not name them. They are goals of the ranking as the dockets were. *Turns on:* whether a single work order filed under the goal it serves is a route of that goal (a child) or a thing the frame holds — the same question G2 answered for the dockets, asked of five nodes.
+- The item nodes that are shared-claim roots directly (`item-91` under `deference-and-trust`; `item-108`, `item-109`, `item-110` under `authorship-and-transparency`) and the two enabling-work claims (`enabling-map-as-canonical`, `enabling-program-site`) stay roots: the ruling's three moves do not name them. They are goals of the ranking as the dockets were. *Since the closing pass of 2026-10-24 the four item roots are held by their frames (agent-decided, reversible; the design log of that date) and the two enabling-work claims remain roots as goals of the enabling line.* *Turns on:* whether a single work order filed under the goal it serves is a route of that goal (a child) or a thing the frame holds — the same question G2 answered for the dockets, asked of five nodes.
 - The 4 frames with `roots: []` and held nodes have no goal; the ranking values each programme as unspelled did (no option value). Naming their goals is a maintainer's spelling-out.
 - Part 4 is not verified on a second platform.
 

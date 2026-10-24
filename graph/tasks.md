@@ -7,7 +7,7 @@
 
 ## Lines
 - commit line: research first: the decision term (printed, not applied) favours vet hull-condition-total-trust (ranked unit 16), D 0.00016
-- regime: the decision term would reorder 1261 units (largest D 0.00017); shown, not applied
+- regime: the decision term would reorder 1263 units (largest D 0.00017); shown, not applied
 - act: the act's leading option is inter-inductor-total-trust → inter-inductor-characterized at value 1.000; resting on AI numbers only; derived P 1.000 against its gestalt 0.53
 - audit (36 min of this session): re-perform estimate anson-002 by @anson on {"row": ["undescribed-failure", "uf-disutility-max"], "field": "w"}; cross-audit preferred (the session's audit share, listed first and never ranked; the list's top task is ranked unit 1, the commit line is about which plan to commit to)
 
@@ -161,42 +161,42 @@ Work an agent can do without a human; the map's ordering, not `PRIORITIES.md`'s.
 8. do self-aixi-eps-exploration-route (M) — vet this AI number; promise rests on AI judgment
    path: top → the-program → stance-and-level → level-super-turing → uea-theorem-1.improvable → self-aixi-eps-exploration-route
    Read Kim and Lee and write a one-page comparison of the hypotheses of their exploration route, Wyeth's oracle route and the floor of Theorem C.
-9. do uea-current-node-floor-repair (M) — vet this AI number; promise rests on AI judgment
+9. do item-110 (M) — vet this AI number; promise rests on AI judgment
+   path: top → the-program → legitimacy → authorship-and-transparency → public-legitimacy-improvable → item-110
+   Execute PRIORITIES item 110: define the baseline (candidate: the idle-agent rollout read as a process on her record), re-derive the eight-world model's seven cases from it, and include the sealed sibling of the endpoint-preservation model as a second candidate for comparison.
+10. do uea-current-node-floor-repair (M) — vet this AI number; promise rests on AI judgment
    path: top → the-program → stance-and-level → level-super-turing → uea-theorem-1.improvable → uea-current-node-floor-repair
    Restate Theorem 1 for the current-node-floored agent as a theorem over every reflective oracle in rOSI, with the finite Theorem C as its shadow.
-10. do hull-condition-total-trust (M) — vet this AI number; promise rests on AI judgment
+11. do hull-condition-total-trust (M) — vet this AI number; promise rests on AI judgment
    path: top → the-program → legitimacy → corrigibility-landscape → legitimacy-detection → hull-condition-total-trust
    Prove finite-dimensional Minkowski-Weyl (or finitely generated Farkas) in Lean once and close Hull.hullCondition_of_defers. (open statement: `Hull.hullCondition_of_defers`)
-11. do ss-value-without-scope (M) — vet this AI number; promise rests on AI judgment
+12. do ss-value-without-scope (M) — vet this AI number; promise rests on AI judgment
    path: top → the-program → deference-and-trust → li-deference-collapse.improvable → route-collapse-scheduled-grade ⇢ ss-value-without-scope
    Write out the F1-for-lookahead near-identity and stress-test scheduled weighted-average Value against total-trust-implies-value's selection-punishing menu.
-12. do uea-rosi-lift (M) — vet this AI number; promise rests on AI judgment
+13. do uea-rosi-lift (M) — vet this AI number; promise rests on AI judgment
    path: top → the-program → stance-and-level → level-super-turing → uea-floored-agent-theorem.improvable → uea-rosi-lift
    Type the rOSI statements of Theorem 1 and of Theorems B and C with discounting explicit, and mark which finite-shadow steps use finiteness.
-13. do value-symmetric-comparator (M) — vet this AI number; promise rests on AI judgment
+14. do value-symmetric-comparator (M) — vet this AI number; promise rests on AI judgment
    path: top → the-program → stance-and-level → level-above-quantifiable → ddb-value-iff-total-trust.improvable → value-symmetric-comparator
    Define symmetric Value on finite frames and test DDB's Fact 2.1 frame and the anti-expert frame against it. (work order: PRIORITIES #27)
-14. do uea-updateless-variant (M) — vet this AI number; promise rests on AI judgment
+15. do uea-updateless-variant (M) — vet this AI number; promise rests on AI judgment
    path: top → the-program → stance-and-level → level-super-turing → uea-theorem-1.improvable → uea-updateless-variant
    Reconcile notes/01-interleaving-sketch.md with sink-or-swim findings F-6 to F-9 and state which updateless optimality notion the repaired theorem of the updateless self-game uses.
-15. do value-on-agency (M) — vet this AI number; promise rests on AI judgment
+16. do value-on-agency (M) — vet this AI number; promise rests on AI judgment
    path: top → the-program → legitimacy → corrigibility-landscape → legitimacy-weighted-deference → value-on-agency
    Write a first formal sketch: a value variable for human control over a decision class, learned early, compared with the kernel's lexical authority term on Box 1's house-sale instance.
-16. do support-sensitive-equivalence (S) — for condensation-morphism-notion — vet this AI number; promise rests on AI judgment
+17. do support-sensitive-equivalence (S) — for condensation-morphism-notion — vet this AI number; promise rests on AI judgment
    path: top → the-program → abstraction-arc → stage4-condensation-dynamics → condensation-morphism-notion → support-sensitive-equivalence
    Collect the three places the almost-everywhere slack bites (the paper's component maps, Gap 1's off-support obstruction, the clean room's sufficiency-is-a.e. lemma) and state one support-sensitive variant of equivalence with its first test.
-17. do kernel-route-foreclosure-expressibility (M) — also for authority-typed-corrigibility.improvable — vet this AI number; promise rests on AI judgment
+18. do kernel-route-foreclosure-expressibility (M) — also for authority-typed-corrigibility.improvable — vet this AI number; promise rests on AI judgment
    path: top → the-program → legitimacy → corrigibility-landscape → public-corrigibility-line → authority-typed-corrigibility.improvable → kernel-route-foreclosure-expressibility
    Test whether the corrigibility line's general object (pushes along a trajectory) supplies the later-index authorization operation that Q3 says every candidate lacked, giving either a fourth candidate with what kills it or a lead.
-18. do gap1-condensation-to-dd (M) — for udt-representation-theorem — vet this AI number; promise rests on AI judgment
+19. do gap1-condensation-to-dd (M) — for udt-representation-theorem — vet this AI number; promise rests on AI judgment
    path: top → the-program → decision-theory → updateless-dt-programme → udt-representation-theorem → gap1-condensation-to-dd
    State the minimality premise under which the agency correspondence theorem is true and prove it, taking the perfectly-condenses conditional as its form.
-19. do two-scores-as-explanation-length (S) — for condensation-scores-explained — vet this AI number; promise rests on AI judgment
+20. do two-scores-as-explanation-length (S) — for condensation-scores-explained — vet this AI number; promise rests on AI judgment
    path: top → the-program → abstraction-arc → stage4-condensation-dynamics → condensation-scores-explained → two-scores-as-explanation-length
    Write the explanation-length reading as a definition (retrieval convention to expected code length) and check that the simple and conditioned scores are its two instances.
-20. do basin-formal-object.setting (S) — for basin-formal-object — vet this AI number; promise rests on AI judgment
-   path: top → the-program → legitimacy → corrigibility-landscape → dynamic-conditions-for-going-well → basin-formal-object → basin-formal-object.setting
-   Close Horizon.phiW_supermartStep (the prefix-atom factorization of the product law) in corr-landscape, giving the general-horizon basin certificate. (open statement: `Horizon.phiW_supermartStep`)
 
 ## By goal
 The goals in the frame tree's order (the agenda's outline): kind and role, the best ranked unit and its rank, the count of units, and the Statement's first clause. A rank past the printed list is in `derived.json` (each unit's `rank`), and `--all` prints every ranked unit.
@@ -211,10 +211,12 @@ The goals in the frame tree's order (the agenda's outline): kind and role, the b
   - legitimacy (frame, owner @anson, @abram; holds 82; owner has not confirmed): What must stay true of a trajectory's record, verdicts and channels of influence, inside it and at its boundary, for a later judgment to count as the principal's own, and what does corrigibility consume from that?
     - integrity-and-record (frame, owner @anson, @abram; holds 17; owner has not confirmed): Can a cognitive trajectory falsify or silently rewrite its own normative history, and what does an Integrity evolution of the accounted obligation state conserve?
     - openness-and-non-capture (frame, owner @anson, @abram; holds 4; owner has not confirmed): Can concerns reach a process at all, and can the party they matter to still act on them, on the actual branch and under every declared intervention?
-    - authorship-and-transparency (frame, owner @anson, @abram; holds 20; owner has not confirmed): When is a verdict the principal's own program's and a channel's influence the declared reference on the declared inputs, and does the thick definition of legitimacy satisfy the thin specification?
+    - authorship-and-transparency (frame, owner @anson, @abram; holds 23; owner has not confirmed): When is a verdict the principal's own program's and a channel's influence the declared reference on the declared inputs, and does the thick definition of legitimacy satisfy the thin specification?
       - public-legitimacy-theory (plan of authorship-and-transparency) — best unit: 122. vet thin.value-of-thick.bridge; 15 unit(s); The public repository defines legitimacy at two levels
-      - item-109 (route under public-legitimacy-improvable) — best unit: 917. vet li-corrigibility-inequality-public; 4 unit(s); The thin preservation theorem holds in asymptotic form for a logical-inductor principal whose self-trust is asymptotic and whose program is not a posterior: with the inductor's conditional self-trust as the…
       - public-legitimacy-improvable (improvement claim on public-legitimacy-theory, shared claim of authorship-and-transparency) — best unit: 324. re-examine public-legitimacy-improvable; 12 unit(s); The thick and thin legitimacy theory
+        - item-108 (route under public-legitimacy-improvable) — best unit: none ranked; 1 unit(s); The thin properties have a form for valuations with no outside fact to be correct about
+        - item-109 (route under public-legitimacy-improvable) — best unit: 917. vet li-corrigibility-inequality-public; 4 unit(s); The thin preservation theorem holds in asymptotic form for a logical-inductor principal whose self-trust is asymptotic and whose program is not a posterior: with the inductor's conditional self-trust as the…
+        - item-110 (route under public-legitimacy-improvable) — best unit: none ranked; 1 unit(s); The baseline, what would have reached her without anyone's interested interference, has a definition from which the eight-world model's cases are derived rather than declared.
         - public-legitimacy-improvable.residual (route under public-legitimacy-improvable) — best unit: 1008. improve public-legitimacy-improvable.residual; 1 unit(s); The public legitimacy theory improves toward real channels by a route none of the named ones describes.
     - corrigibility-landscape (frame, owner @anson): Which correction relationships between humans and AI systems does the picture of corrigibility as eagerness to learn reach, and which failure stories does it leave standing?
       - value-change-base-layer (frame, owner @anson): Does the representation of value change as belief change hold, and how far does it carry toward systems corrected through training?
@@ -346,7 +348,7 @@ The goals in the frame tree's order (the agenda's outline): kind and role, the b
       - legit-relax-to-li-register (route under legit-trust-improvable) — best unit: 919. vet legit-ddb-transfer.bridge; 7 unit(s); The finite-frame L-conditioned Total Trust theory
     - want-corrigibility-theorems-via-legitimacy (want of @abram) — best unit: 1635. spell-out want-corrigibility-theorems-via-legitimacy; 2 unit(s); The legitimacy notion of corrigibility is formalized and theorems state what it can and cannot accomplish.
     - want-legitimacy-anti-meme-post (want of @abram) — best unit: 1623. do task-anti-meme-post-draft; 2 unit(s); The argument that unconditional Reflection is the wrong trust principle for an embedded agent
-  - deference-and-trust (frame, owner @abram; holds 38): Which research on trust between a human inductor and an AI inductor, at the logical-induction level, reaches a formal account of trust that guides AI safety engineering work?
+  - deference-and-trust (frame, owner @abram; holds 39): Which research on trust between a human inductor and an AI inductor, at the logical-induction level, reaches a formal account of trust that guides AI safety engineering work?
     - ddb-to-li-translation (frame, owner @abram): What does each result of Deference Done Better become when the novice and the expert are logical inductors?
       - li-trust-principles-enumerated (plan of ddb-to-li-translation) — best unit: 340. re-examine li-trust-principles-enumerated; 8 unit(s); The trust principles expressible in logical induction are enumerated along their design axes
       - ddb-reading-translation-loop (plan of ddb-to-li-translation) — best unit: 286. re-examine ddb-reading-translation-loop; 3 unit(s); DDB is read to its end with each result's logical-induction translation decided as it is encountered and filed in the wiki.
@@ -669,5 +671,5 @@ In order: the owners' priority words, gestalts that set a goal's promise, estima
 - gestalt hedged-value-unconditional — informs 3 goals; the derived number multiplies 5 unread guesses; your holistic number for hedged-value-unconditional (about two minutes) sets its promise — under hedged-value-unconditional
 - gestalt agency-correspondence-refuted — informs 1 goal; the derived number multiplies 3 unread guesses; your holistic number for agency-correspondence-refuted (about two minutes) sets its promise — under agency-correspondence-refuted
 - gestalt ro-generalized-kakutani-refuted — informs 1 goal; the derived number multiplies 3 unread guesses; your holistic number for ro-generalized-kakutani-refuted (about two minutes) sets its promise — under ro-generalized-kakutani-refuted
-- … 241 more unranked units in `derived.json` (`--all` prints them)
-<!-- generated_hash: 029c433a8d987adf67065e4e -->
+- … 242 more unranked units in `derived.json` (`--all` prints them)
+<!-- generated_hash: 123124a57beb67264a794393 -->

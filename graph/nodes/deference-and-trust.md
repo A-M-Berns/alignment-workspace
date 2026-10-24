@@ -1,7 +1,7 @@
 ---
 id: deference-and-trust
 kind: frame
-children: [ddb-to-li-translation, deck-collapse-statement, li-deference-collapse-scoped, hedged-value-unconditional, mart-implies-value-refuted-unconditional, li-deference-collapse.improvable, regularity-is-h3, crux-first-published-statement, crux-instrumental-notion, crux-self-feedback-dependence, managing-misalignment-to-li, li-deference-machine-checked, sams-conjecture-li, inter-inductor-total-trust, wiki-corpus-maintenance, li-deference-collapse, deference-toward-bounded-agents, corrigibility-landscape, li-models-human-progress, li-above-poly-time, li-no-selection-theorem-objection, li-level-computability-certificates, item-91, coherence-without-ground-truth, publication-form, published-statement-holds, note-corrections-beside-li-deference, deference-finite-results]
+children: [ddb-to-li-translation, deck-collapse-statement, li-deference-collapse-scoped, hedged-value-unconditional, mart-implies-value-refuted-unconditional, li-deference-collapse.improvable, regularity-is-h3, crux-first-published-statement, crux-instrumental-notion, crux-self-feedback-dependence, managing-misalignment-to-li, li-deference-machine-checked, sams-conjecture-li, inter-inductor-total-trust, wiki-corpus-maintenance, li-deference-collapse, deference-toward-bounded-agents, corrigibility-landscape, li-models-human-progress, li-above-poly-time, li-no-selection-theorem-objection, li-level-computability-certificates, coherence-without-ground-truth, publication-form, published-statement-holds, note-corrections-beside-li-deference, deference-finite-results]
 question: "Which research on trust between a human inductor and an AI inductor, at the logical-induction level, reaches a formal account of trust that guides AI safety engineering work?"
 owner: "@abram"
 narrative: wiki/Deference.md
@@ -28,13 +28,12 @@ roots:
   - {id: li-above-poly-time, role: shared-claim, preset: worst-case}
   - {id: li-no-selection-theorem-objection, role: shared-claim, preset: worst-case}
   - {id: li-level-computability-certificates, role: shared-claim, preset: worst-case}
-  - {id: item-91, role: shared-claim, preset: worst-case}
   - {id: coherence-without-ground-truth, role: shared-claim, preset: worst-case}
   - {id: publication-form, role: shared-claim, preset: worst-case}
   - {id: published-statement-holds, role: shared-claim, preset: worst-case}
   - {id: note-corrections-beside-li-deference, role: shared-claim, preset: worst-case}
   - {id: deference-finite-results, role: plan, preset: worst-case}
-holds: [item-q1, item-q2, item-q3, item-q4, item-52, item-15, item-16, item-17, item-18, item-19, item-20, item-21, item-22, item-23, item-24, item-25, item-26, item-27, item-60, item-83, item-84, item-86, item-87, item-89, item-90, item-92, item-93, item-97, item-98, item-99, item-100, item-101, item-102, item-103, item-104, item-107, item-111, item-28]
+holds: [item-q1, item-q2, item-q3, item-q4, item-52, item-15, item-16, item-17, item-18, item-19, item-20, item-21, item-22, item-23, item-24, item-25, item-26, item-27, item-60, item-83, item-84, item-86, item-87, item-89, item-90, item-92, item-93, item-97, item-98, item-99, item-100, item-101, item-102, item-103, item-104, item-107, item-111, item-28, item-91]
 work:
   - {kind: decision, ref: 2026-10-22--map-canonical-index-program-maintainer-handles}
   - {kind: round, ref: prompts/2026-08-11-deference-admissibility}
