@@ -614,6 +614,50 @@ Notes for the maintainers:
 
 Reserved additions to `DECISIONS.md`, *Awaiting the author*: none new; the M1–M8 entry now carries G1–G4's confirmation.
 
+## Closing pass of 2026-10-24
+
+Prompt: `prompts/2026-10-22-map-as-canonical/PROMPT-closing.md`, verbatim. Two commits on the branch above `43468d7d`: `cee33492` (Parts 1 and 2, the prompt) and the report commit (`PR-BODY.md`, this section). No ruling is taken; the two agent-decided choices are in the design log and reversible. Auto-merge stays off. The body posted to pull request #131 is committed as `prompts/2026-10-22-map-as-canonical/PR-BODY.md`.
+
+### 1. Verification
+
+- The checker after the first commit and after the second: `OK 2408 nodes, 2411 events, 1886 ranked units; research first: the decision term (printed, not applied) favours vet hull-condition-total-trust (ranked unit 16), D 0.00016`; one WARN (`244 of 295` decision anchors unpointed); `DIGEST compared with graph/derived.json on disk (the derivation versions.json at HEAD records): 0 status(es) flipped, 0 root status(es) flipped, 0 level(s) moved, 0 event(s) counted since, 0 revision(s), 0 want(s) filed since, 0 proposal(s) awaiting`.
+- `tests/run.py` before each commit: `ALL GREEN (80 project(s))` (`Ran 146 tests in 109.499s, OK` on the first commit's tree; `the same suite, run before the commit; the second commit changes two documents and the run is green` on the second's).
+- The unit tests the way CI runs them, in a detached checkout of the first commit with no `graph/derived.json` on disk and no `derived` branch (the second commit changes documents only): ``Ran 146 tests in 110.614s`, `OK``.
+
+Node count unchanged at 2,408; ranked units unchanged at 1,886 (the OK line before and after the move). Held nodes 357 → 361.
+
+### 2. Part 1 — the residual roots
+
+| frame | roots before | roots after | held before | held after |
+|---|---|---|---|---|
+| `deference-and-trust` | 28 | 27 | 38 | 39 |
+| `authorship-and-transparency` | 11 | 8 | 20 | 23 |
+
+`item-91`, `item-108`, `item-109`, `item-110` moved from `roots` to `holds` of the frame each was a root of; `enabling-map-as-canonical` and `enabling-program-site` stay shared-claim roots of `enabling-work`. The Notes of `authorship-and-transparency` say where its three items went. The second follow-up's §10 "not done" bullet now says the item roots are held.
+
+Design-log lines (both 2026-10-24, both marked agent-decided and reversible): the four item roots held, for the reason G2 gave for the 120 docketed items; the two enabling-work claims kept as roots, goals of the enabling line by their Statements.
+
+### 3. Part 2 — the proposal document's principle
+
+`graph/MAP-AS-CANONICAL.md` §2 gains one paragraph after the existing text: the map is a representation of the research program, only part of which is an argument; a frame's roots are its goals and enter the ranking, what a frame holds is what it is about and does not; the argument view, the research map and the contribution view are three readings of one structure that do not share inference semantics. It cites G2's anchor. Nothing else in the section changed.
+
+### 4. Part 3 — the pull request body
+
+Posted with `gh pr edit 131 --body-file`, committed as `prompts/2026-10-22-map-as-canonical/PR-BODY.md`. The title stays "The map as the canonical index of the program (2026-10-22 round)": it is the description, not a proposal. Every number in the body names its report section. The repository's pull-request template sections (the layer touched, the claim class, the model attribution and the rest) follow the six sections the prompt asked for, because `tests/attribution.py` reads the body from the event payload and requires a `Model:` line; a body without them would fail CI.
+
+### 5. Corrections to this prompt
+
+- "rounds pointed at (120 of 126)": 119 of 126. The round report §6 lists six unpointed of 125; the 126th is this round's own record, which no node points at either.
+- "the re-owning by source attribution, follow-up report §2": the re-owning is a deviation of the round report (§2), not of the follow-up; and the queue line says five wants are `@anson`'s and eight `@abram`'s, while the tree holds four and nine (`want-legitimacy-corrigibility-theorems` is `@abram`'s).
+- "78 kernel-checked declarations": the round report §2 says 78; its §4 item 1 and the queue line `open--whether-clean-room-records-get-registry` say 80; the index finds 75 record leaves whose Source names the clean-room directory. The body uses 78 and names the discrepancy.
+- "the ten frames marked `filed_from: wiki`": ten in the tree; the queue line `open--roots-marked-owner-has-not-confirmed` says "nine" and lists ten.
+- "verified on the second platform on 2026-10-23: a plain run on Linux / Python 3.13 leaves `versions.json` clean": no report section records this; the body attributes it to the first maintainer's closing prompt.
+- "178 registry-built, all with hypotheses unread": 178 registry entries have a formal result; the index carries 180 nodes with a `registry_id` because the two results F5 merged keep a deprecated alias node each, and all 180 records say `hypotheses: unread`.
+- "held nodes (357 in 12 frames)": 357 before this pass, 361 after it.
+- "Replace the body": replaced in substance; the template sections are kept for the reason in §4.
+
+Nothing is reserved beyond what the body's §4 and its sub-heading list.
+
 ## Provenance
 
 Generator: Claude Fable 5.1 (Anthropic), executing the maintainer's prompt; review status `ci-only`. The scripts that produced the mechanical parts (the signature parser, the item transcription, the anchor writer, the survey counts) ran from the session's scratch directory and are not committed; `graph/SURVEY.md`'s appendix gives the one-liners that reproduce every count. Model attribution trailer on every commit.
