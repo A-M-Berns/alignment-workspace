@@ -6732,3 +6732,54 @@ word, the word).
 Ruling G2 closes the queued entry *How a docket is represented (ruling F6, 2026-10-23)*: a
 docket is no node; the work orders it held are held by the frame it hung under. The ruling
 text is the maintainer's and is not reworded.
+
+### 2026-10-24 — the site as one vertical slice: five reference results connected by reading, a generated stdlib-only site that is never a second source, deployment to Pages behind an enumerated write-scope job, and one id, one URL (S1–S4)
+<!-- decision: 2026-10-24--site-vertical-slice-five-reference-results-generated-site-one-id-one-url; touches: node:enabling-work, node:enabling-program-site, node:effective-authority-layer, node:traderized-finite-date-conformance, node:operative-force, node:normative-inductor, node:openness-and-non-capture, node:deference-finite-results, node:public-corrigibility-line, node:authorship-and-transparency, claim:compiler.deductive-end-to-end, claim:warrant.licence-chain, claim:openness.certplus-is-robust-openness, claim:delegation.bridge -->
+
+**Maintainer rulings, taken by one maintainer in conversation; the second maintainer's
+confirmation is outstanding** (landed as the first commit of the site-vertical-slice round,
+`prompts/2026-10-24-site-vertical-slice/PROMPT.md`, stacked on the map-as-canonical round's
+pull request #131). The two bracketed choices the prompt leaves to the maintainer (keep or
+swap any of the five; the custom domain) stand as written until the maintainer says
+otherwise: the five are kept and no domain is set.
+
+**S1. The five reference results.** [MAINTAINER: keep or swap any.]
+`compiler.deductive-end-to-end` (the traderization headline, `deductive_end_to_end`);
+`warrant.licence-chain` (Licensed ⇒ Supported ⇒ Admissible); `openness.certplus-is-robust-openness`
+(`certPlus_iff_robustOpen`, the legitimacy spine's equivalence); the `effective-authority-layer`
+cluster (the seven `authority.*` and five `sincerity.*` claims of
+`projects/deference/CLAIMS.md`, one informal claim established by twelve declarations — the
+multi-record precedent); `delegation.bridge` (the finite delegation bridge, so the walk
+crosses into the deference line). Each is connected per Part 1 and nothing else is: the
+precedent is the deliverable, not coverage.
+
+**S2. The site is generated, stdlib-only, and never a second source.** `site/` holds a
+Python generator (standard library only, like the checkers; a few hundred lines of
+hand-written CSS and vanilla JavaScript for navigation and client-side search; no framework,
+no build step beyond `python3 -m site.build`). It reads graph/index.json (running the plain
+checker first if the file is absent), `state/*.json`, the two registries, `DECISIONS.md`'s
+anchors, the wiki source and `graph/events/*.jsonl`, and writes `_site/` (gitignored). A
+build fails on any reference that does not resolve, exactly as the checker refuses one: the
+build is a gate, run by `tests/run.py`. Nothing on the site is typed by hand except the walk
+documents of Part 2 and the front page's one lede paragraph, both of which live in the
+repository and are binding-checked.
+
+**S3. Deployment.** A workflow `.github/workflows/site.yml` builds `_site/` on every push and
+pull request (read scope; uploads it as an artifact so a reviewer can open a pull request's
+build) and, on `push` to `main` only, deploys it to GitHub Pages through a write-scope job
+enumerated in `AGENTS.md` *Security* like `derived-publish`. No custom domain in this round:
+`site/CNAME` is added only when the maintainer supplies one [MAINTAINER: domain, or
+"none yet"]. The Pages deploy will not run until #131 and this merge; the artifact is the
+preview until then.
+
+**S4. One id, one URL.** Every node, item, decision anchor, round, registry id, wiki page and
+handle has exactly one path on the site, derived from its id: `/n/<node id>/`,
+`/items/<n>/`, `/decisions/<anchor>/`, `/rounds/<round id>/`, `/claims/<registry id>/`
+(redirecting to its record's node), `/wiki/<Page>/`, `/by/<handle>/`. The generator refuses
+two ids that map to one path. These paths are the contract the chatbot and the intake round
+will build on; document them in `site/README.md`.
+
+*As the round found them* (the round's report under prompts/2026-10-24-site-vertical-slice/, corrections):
+the build on pull requests runs in `ci.yml`, because the repository's own gate forbids a
+write-scoped job in any workflow that lists `pull_request`; `site.yml` is the push-to-`main`
+deploy alone. The ruling text is the maintainer's and is not reworded.
