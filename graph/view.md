@@ -138,11 +138,11 @@ Owner @anson; holds 36 node(s)
 #### normative-inductor
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - a programme (sub-frame): Does a logical inductor made to answer to legitimately incurred obligations, through an enforcer on the compiled region of the entitled record, remain a logical inductor and deliver the Progress bound, and what remains conditional in that theorem?
-- steps: normativity-layer-I-closed; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
+- steps: normativity-layer-I-closed, verdict-licence-chain, verdict-licence-chain.improvable; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
 - rests on AI numbers (no human judgment yet): normativity-layer-I-closed
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @anson; holds 17 node(s); owner has not confirmed (drafted from the wiki)
+- frame owner @anson; holds 16 node(s); owner has not confirmed (drafted from the wiki)
 - a programme: informs through its steps
 - best next unit: none
 #### response-learning
@@ -305,7 +305,7 @@ Nodes this frame is about that are no goals of the ranking (held, not roots): li
 - item-39 (leaf/task)
 
 ## Sub-frame normative-inductor (in normativity): Does a logical inductor made to answer to legitimately incurred obligations, through an enforcer on the compiled region of the entitled record, remain a logical inductor and deliver the Progress bound, and what remains conditional in that theorem?
-Owner @anson; holds 17 node(s)
+Owner @anson; holds 16 node(s)
 
 ### Shared claims
 #### normativity-layer-I-closed
@@ -315,6 +315,18 @@ Owner @anson; holds 17 node(s)
 - load-bearing shared leaves: none
 - informs 0 goals (a single claim no goal reads: offered to connect)
 - best next unit: none
+#### verdict-licence-chain
+- preset worst-case; status **open**; weakest proof-set leaf at V 0
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 5 goals
+- best next unit: gestalt verdict-licence-chain
+#### verdict-licence-chain.improvable
+- preset worst-case; status **open**; weakest proof-set leaf at V 2
+- safety margin: no established leaves
+- load-bearing shared leaves: none
+- informs 1 goal
+- best next unit: gestalt verdict-licence-chain.improvable
 
 ### Held
 Nodes this frame is about that are no goals of the ranking (held, not roots): listed with their kinds, no status or value here.
@@ -322,7 +334,6 @@ Nodes this frame is about that are no goals of the ranking (held, not roots): li
 - progress.edge-bound-quadratic (and)
 - progress.headline-separation (and)
 - ni.progress-bound (and)
-- warrant.licence-chain (and)
 - warrant.supported-admissible (and)
 - warrant.admissible-not-supported (and)
 - warrant.supported-not-licensed (and)
@@ -4369,6 +4380,8 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - route-conformance-credal-constraint: work order: PRIORITIES #39
 - route-conformance-efficient-rows: work order: PRIORITIES #42
 - route-conformance-exact-and-safe: work order: PRIORITIES #43
+- route-licence-authorization-from-account: work order: PRIORITIES #56
+- route-licence-transport: work order: PRIORITIES #115
 - route-market-computable-fixed-point: State and prove existence of the market-maker fixed point with goods and traders added daily, reusing the normativity line's marketMaker_day_value_le_cube. (who: agent)
 - route-piecemeal-design: In the dynamic legitimacy-negatives package's finite fixtures, model the piecemeal system (consequentialist off the legitimate-modification event, corrigible on it) and test it against the capture and anticipation scenarios D5 and E1; say whether it belongs in the variant matrix as a sixth proposal. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/legit-neg-dynamic/
 - route-reasons-items-54-58: Execute PRIORITIES items 54 (defeater-uptake completeness), 56 (a citation discipline for Licensed and its transport), 57 (a checker for the applicability-in-source convention) and 58 (composition of the reason state with the record calculus), each per its deliverable shape. (who: agent); work order: PRIORITIES #54; work order: PRIORITIES #56; work order: PRIORITIES #57; work order: PRIORITIES #58; files: projects/normativity/legitimacy/
@@ -4507,13 +4520,14 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - vc-route-modest-source: Write the exact relation between Total Trust without the martingale condition and the LI principle that no simple modification of the update is predictably better, as a theorem or a counterexample on a finite frame. (who: agent); files: projects/deference/corrigibility-note-dump-2026-10-01/value-change-as-epistemic-update.md
 - vc-route-modification-space: Attempt the clean-room's open statement universalSelfRefSpace_exists_open (the universal type space) or reduce it to a named gap in the mathematics library. (who: agent); open statement: `universalSelfRefSpace_exists_open`; files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-reflect-frames
 - vc-route-outside-support: State the convex-hull richness condition and the non-dogmatism assumption as one hypothesis, and show on the opiates-and-stimulants example of Soares et al. 2015 section 1 that it excludes the impoverished-space oscillation. (who: agent); files: projects/deference/corrigibility-note-dump-2026-10-01/value-change-as-epistemic-update.md
+- verdict-licence-chain: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics; round: projects/enabling/rounds/2026-10-24-site-vertical-slice; work order: PRIORITIES #56
 - vingean-abstraction-candidate-definition: Build the chess-engine toy (a strong and a weak player as mechanisms, an outcome variable, a latent mediating behaviour's effect on the outcome) and compute whether the candidate condition holds there and fails for a thermostat across menus. (who: agent)
 - vingean-canonical-page: Write a canonical-statement page for Vingean uncertainty from the summer plan, and link step-asymptotic-to-finite-time's malign-hypothesis concern as its logical-induction-level appearance. (who: agent)
 - vingean-definitions-reconciled: Write one page reconciling the three definitions of Vingean agency and say which one Stage 5 should target and why. (who: agent)
 - vingean-tiling-content: Build a Theorem 3 witness in which the twin is not the best non-modifying action, so the chain's inequality is visibly strict, under the computation-output model. (who: agent); files: Cleanroom/Udt/UdtPaperTiling/
 - vingean-voi-finite-lemma: Attempt the C4 finite lemma in Lean in the clean-room style, one file, with the non-transitive near-miss and the pre-registered fakes checked against. (who: agent)
 - warrant.admissible-not-supported: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics; work order: PRIORITIES #56
-- warrant.licence-chain: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics; work order: PRIORITIES #56
+- warrant.licence-chain: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics; work order: PRIORITIES #56; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
 - warrant.selection-not-transparent: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics; work order: PRIORITIES #56
 - warrant.supported-admissible: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics; work order: PRIORITIES #56
 - warrant.supported-not-licensed: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics; work order: PRIORITIES #56
@@ -4605,7 +4619,9 @@ Each `and` with assumption or hypothesis leaves, read with those leaves held tru
 - udt101-influence-calculus: as an implication (udt101-influence-calculus@valid) and literally; the numbers print under --why
 - updateful-when-appropriate: as an implication (updateful-when-appropriate@valid) and literally; the numbers print under --why
 - updateless-p2-cellwise-p3: as an implication (updateless-p2-cellwise-p3@valid) and literally; the numbers print under --why
+- verdict-licence-chain: as an implication (verdict-licence-chain@valid) and literally; the numbers print under --why
 - void-branch-deterrence-floor--corrigibility-risk: as an implication (void-branch-deterrence-floor--corrigibility-risk@valid) and literally; the numbers print under --why
+- warrant.licence-chain: as an implication (warrant.licence-chain@valid) and literally; the numbers print under --why
 - wirehead-iff-finite: as an implication (wirehead-iff-finite@valid) and literally; the numbers print under --why
 
 ## Valuation nodes
@@ -6502,6 +6518,8 @@ The outside option and the undescribed failure, each a cases node over the outco
 | route-li-rep-generalized-criterion | leaf/route | 2 (both) | AI number, given li-representation-theorem@valid, no belief | open | 0 | 2 |
 | route-li-rep-via-endorsement | leaf/route | 2 (both) | AI number, given li-representation-theorem@valid, no belief | open | 0 | 2 |
 | route-li-rep-via-vingean | leaf/route | 2 (both) | AI number, given li-representation-theorem@valid, no belief | open | 0 | 2 |
+| route-licence-authorization-from-account | leaf/route | 2 (both) | given verdict-licence-chain@valid, given: conditionals not judged, no belief | open | 0 | 2 |
+| route-licence-transport | leaf/route | 2 (both) | given verdict-licence-chain@valid, given: conditionals not judged, no belief | open | 0 | 2 |
 | route-linkage-choice | leaf/route | 2 (both) | AI number, given computational-updatelessness-direct | open | 0 | 2 |
 | route-market-classical-goods | leaf/route | 2 (both) | AI number, given market-maker-is-li-maker-over-goods, no belief | open | 0 | 2 |
 | route-market-computable-fixed-point | leaf/route | 2 (both) | AI number, given market-maker-is-li-maker-over-goods, no belief | open | 0 | 2 |
@@ -6971,6 +6989,10 @@ The outside option and the undescribed failure, each a cases node over the outco
 | vc-route-modification-space | leaf/route | 2 (both) | AI number, given value-change-is-belief-change | open | 0 | 2 |
 | vc-route-outside-support | leaf/route | 2 (both) | AI number, given value-change-is-belief-change | open | 0 | 3 |
 | vc-route-residual | leaf/route | 2 (both) | AI number, given value-change-is-belief-change | open | 0 | 2 |
+| verdict-licence-chain.complete | leaf/completeness | 2 (both) |  | open | 1 | 5 |
+| verdict-licence-chain.improvable | or | 2 (both) | improvement claim on verdict-licence-chain (reality: a Normative Inductor whose announced verdicts are licensed end to end by its accounted record) | open | 1 | 1 |
+| verdict-licence-chain | and | 2 (both) |  | open | 1 | 5 |
+| verdict-licence-chain.residual | leaf/route | 2 (both) | given verdict-licence-chain@valid, given: conditionals not judged, no belief | open | 0 | 2 |
 | vingean-abstraction-candidate-definition | leaf/question | 2 (both) | AI number, given vingean-definitions-reconciled | open | 0 | 1 |
 | vingean-agency-via-abstraction | or | 2 (both) | AI number | open | 1 | 1 |
 | vingean-as-blackwell-dominance.improvable | or | 2 (both) | AI number, improvement claim on vingean-as-blackwell-dominance (reality: the epistemic position of humans overseeing stronger AI systems) | open | 1 | 1 |
@@ -7007,10 +7029,14 @@ The outside option and the undescribed failure, each a cases node over the outco
 | warrant.admissible-not-supported.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
 | warrant.admissible-not-supported | and | 2 (both) | held by normative-inductor, hypotheses unread | open | 0 | 0 (informs no goal) |
 | warrant.admissible-not-supported.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
-| warrant.licence-chain.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
-| warrant.licence-chain.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
-| warrant.licence-chain | and | 2 (both) | held by normative-inductor, hypotheses unread | open | 0 | 0 (informs no goal) |
-| warrant.licence-chain.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| warrant.licence-chain.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 1 | 5 |
+| warrant.licence-chain.complete | leaf/completeness | 2 (both) |  | open | 1 | 5 |
+| warrant.licence-chain.h-authorized-event | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| warrant.licence-chain.h-record-state | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| warrant.licence-chain.h-supported | leaf/hypothesis | 0 (both) | no belief | open | 1 | 1 |
+| warrant.licence-chain.h-verdict-certificate | leaf/hypothesis | 2 (both) | no belief | open | 1 | 1 |
+| warrant.licence-chain | and | 2 (both) |  | open | 1 | 1 |
+| warrant.licence-chain.record | leaf/record | 2 (ref) | no belief | open | 1 | 5 |
 | warrant.selection-not-transparent.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
 | warrant.selection-not-transparent.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
 | warrant.selection-not-transparent | and | 2 (both) | held by normative-inductor, hypotheses unread | open | 0 | 0 (informs no goal) |
@@ -7037,4 +7063,4 @@ The outside option and the undescribed failure, each a cases node over the outco
 | wirehead-iff-finite.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 1 |
 | wirehead-iff-finite.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 1 |
 | worlds-and-points-companion | leaf/question | 2 (both) | AI number | open | 0 | 8 |
-<!-- generated_hash: c37fb5e656188d44f4f5ef53 -->
+<!-- generated_hash: fd425b4f1a7e7a53868a0624 -->

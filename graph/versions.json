@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "a804ba874dce2eb3c27c80f6",
-  "index.json": "adb0c8ecca5506e4bc5993e5"
+  "derived.json": "f77b7161f2d16a56716a6e3a",
+  "index.json": "f348b27aa2bcfc574e0d46ca"
  },
- "generated_hash": "6d033f1e812771e137cd19fa",
+ "generated_hash": "5a017512110853b575160e33",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -17719,6 +17719,20 @@
     "version": 1
    }
   ],
+  "route-licence-authorization-from-account": [
+   {
+    "date": "2026-10-23",
+    "normalized": "what authorizes a record event is read off the accounted obligation state so that the authorized event clause of a licence is derived from the record rather than declared beside it",
+    "version": 1
+   }
+  ],
+  "route-licence-transport": [
+   {
+    "date": "2026-10-23",
+    "normalized": "a licence whose cited occurrences survive a record transition with the issuing event still authorized and the settlement extended compatibly is a licence after it and a licence whose cited occurrence is defeated is not",
+    "version": 1
+   }
+  ],
   "route-linkage-choice": [
    {
     "date": "2026-10-20",
@@ -22052,6 +22066,34 @@
     "version": 1
    }
   ],
+  "verdict-licence-chain": [
+   {
+    "date": "2026-10-23",
+    "normalized": "a verdict licence is a certificate supported on the compiled bundle together with an authorized record event and a licensed verdict is supported on the records grounds and admissible in their settled region the step from supported to admissible holding by rational convexity of the region rather than by projection",
+    "version": 1
+   }
+  ],
+  "verdict-licence-chain.complete": [
+   {
+    "date": "2026-10-23",
+    "normalized": "the one conjunct is the registered licence chain at a record state a licensed verdict is supported on the records grounds and admissible in their settled region that establishes the claims chain for a record state at one step with its first arrow definitional and its second by convexity it does not establish that a licence survives a record transition that the authorized event clause does any work or either converse which the rounds countermodels refute",
+    "version": 1
+   }
+  ],
+  "verdict-licence-chain.improvable": [
+   {
+    "date": "2026-10-23",
+    "normalized": "the licence chain in which a licensed verdict is supported on the records grounds and admissible in their settled region can be improved until it reflects a normative inductor whose announced verdicts are licensed end to end by its accounted record well",
+    "version": 1
+   }
+  ],
+  "verdict-licence-chain.residual": [
+   {
+    "date": "2026-10-23",
+    "normalized": "a refinement of the licence chain that none of the other routes describes reflects a normative inductor whose announced verdicts are licensed end to end by its accounted record",
+    "version": 1
+   }
+  ],
   "vingean-abstraction-candidate-definition": [
    {
     "date": "2026-10-20",
@@ -22321,6 +22363,11 @@
     "date": "2026-10-22",
     "normalized": "the statement of record of warrant licence chain formalizes the registered claim as the registry reads it licensed supported admissible",
     "version": 1
+   },
+   {
+    "date": "2026-10-23",
+    "normalized": "the claim asserts a chain of three standings for an announced verdict licensed implies supported implies admissible the declaration certifies for a record state at one step that a verdict licensed there supported on the records survivors by a certificate whose cited rows are live and issued by an authorized event is supported on the records grounds under its docket and settlement and admissible that is attained by some point of the settled region the gaps the first arrow is the definition of licensed read back licensed is supported plus authorization so the content of the chain is the second arrow alone supported admissible by rational convexity of the settled region region_convex through supportedon_admissibleon not by any projection the chain holds at one record state and says nothing about transport across a record transition item 115 the authorization clause is carried and not used and the two converses fail as the rounds countermodels admissible_not_supported and supported_not_licensed show which the claims wording does not state",
+    "version": 2
    }
   ],
   "warrant.licence-chain.complete": [
@@ -22333,6 +22380,39 @@
     "date": "2026-10-23",
     "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
     "version": 2
+   },
+   {
+    "date": "2026-10-23",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record the four hypothesis leaves filed by reading the record state the verdict certificate the supported clause of licensed which restates the conclusions first conjunct and the authorized event clause which the conclusion does not read the bridge and this leaf",
+    "version": 3
+   }
+  ],
+  "warrant.licence-chain.h-authorized-event": [
+   {
+    "date": "2026-10-23",
+    "normalized": "the event that issued and selected the certificate is one the record authorizes",
+    "version": 1
+   }
+  ],
+  "warrant.licence-chain.h-record-state": [
+   {
+    "date": "2026-10-23",
+    "normalized": "a record state at a step consists of admitted grounds a docket a settlement and the set of record events the record authorizes",
+    "version": 1
+   }
+  ],
+  "warrant.licence-chain.h-supported": [
+   {
+    "date": "2026-10-23",
+    "normalized": "the certificates positively weighted rows are cited into the settled bundle its endpoints bracket the verdict and both endpoints are attained in the bundles region the verdict is supported",
+    "version": 1
+   }
+  ],
+  "warrant.licence-chain.h-verdict-certificate": [
+   {
+    "date": "2026-10-23",
+    "normalized": "a verdict certificate is a lower and an upper bound certificate each row cited by occurrence a pin or a cube face with the two endpoints and the region points that attain them",
+    "version": 1
    }
   ],
   "warrant.licence-chain.h1": [
