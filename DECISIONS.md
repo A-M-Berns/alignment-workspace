@@ -390,6 +390,57 @@ commit.
   *Turns on:* where each belongs in the maintainers' own picture of the lines.
   <!-- decision: open--placements-round-left-where-they-were; touches: node:wiki-corpus-maintenance, node:normative-inductor; status: open -->
 
+- **The walk's prose, and whether its structure is right (2026-10-24).**  The walk
+  `site/walks/normative-inductor-corrigible.md` goes from one research question down through
+  `the-program`, `normativity` and `legitimacy` to the five claims the site-vertical-slice
+  round connected, their bridges and gaps, and three things a visitor could do; the prose is
+  the round's draft, marked as such on the page, and the order of the steps is the round's
+  reading of where the two halves of the question meet.
+  *Turns on:* whether the maintainers read the question the way the walk does, which only
+  the people whose program it is can say; the prose is theirs to rewrite in place.
+  <!-- decision: open--walk-s-prose-whether-structure-right; touches: node:the-program, node:normativity, node:legitimacy, node:legitimacy-meets-syntax; status: open -->
+
+- **The five bridges' rewritten Statements and the hypotheses' tags (2026-10-24).**  The round
+  rewrote sixteen bridges by reading (one per connected result, twelve of them in the
+  effective-authority cluster) and filed the hypothesis leaves with `discharge` tags by one
+  stated reading rule (`projects/enabling/rounds/2026-10-24-site-vertical-slice/CONNECTIONS.md`),
+  including one tag of *restates the conclusion* on the licence chain's Supported clause. A
+  human reading of each is the `attribution` event on the bridge and the vetting the
+  protocol asks for; none was written.
+  *Turns on:* whether the formalizer's reading of each gap and each tag stands — a reading
+  of the mathematics that only a human event can turn from drafted to vetted.
+  <!-- decision: open--five-bridges-rewritten-statements-hypotheses-tags; touches: node:compiler.deductive-end-to-end, node:warrant.licence-chain, node:openness.certplus-is-robust-openness, node:effective-authority-layer, node:delegation.bridge; status: open -->
+
+- **The informal claims the round filed where none existed (2026-10-24).**  Three of the
+  five connections found no node stating the claim the result establishes, so the round
+  filed one each from the wiki page and the round report that state it:
+  `verdict-licence-chain`, `split-bill-is-robust-openness`, `local-delegation-bridge`; the
+  other two use existing nodes (`traderized-finite-date-conformance`,
+  `effective-authority-layer`). Each new claim is the first goal of a programme that had
+  none (`openness-and-non-capture`, `deference-finite-results`) or a new goal of one.
+  *Turns on:* whether each sentence is the claim its owner would state, and whether a
+  programme's first goal should be the claim a theorem happens to establish — a
+  maintainer's placement.
+  <!-- decision: open--informal-claims-round-filed-where-none-existed; touches: node:verdict-licence-chain, node:split-bill-is-robust-openness, node:local-delegation-bridge; status: open -->
+
+- **The site's custom domain (ruling S3, 2026-10-24).**  No domain is set; site/CNAME is
+  added only when the maintainer supplies one, and until then the site is at the
+  repository's Pages address once the maintainers merge.
+  *Turns on:* a name the maintainers own.
+  <!-- decision: open--site-s-custom-domain-ruling-s3; touches: none; status: open -->
+
+- **What the walk found the map lacked (2026-10-24).**  Listed in the round's report under
+  the walk's findings: no edge runs from the normativity line's compiled conformance to a
+  trust bound the deference line reads (the walk crosses lines through `the-program` and
+  item 129 is the route that would supply the edge); the authority results were held by two
+  frames and their claim is now a shared root of both; nothing connects the inductor's
+  licence to the legitimacy line's syntax frame, where the question's two halves meet; and
+  the walk's last step names a frame, not a want, because a want a visitor would file does
+  not exist until filed.
+  *Turns on:* whether these are edges to file or gaps the program means to leave — a reading
+  of the lines by their owners.
+  <!-- decision: open--what-walk-found-map-lacked; touches: node:traderized-finite-date-conformance, node:effective-authority-layer, node:verdict-licence-chain, node:legitimacy-meets-syntax; status: open -->
+
 ## Settled
 
 ### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer
