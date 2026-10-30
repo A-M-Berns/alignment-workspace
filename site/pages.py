@@ -478,6 +478,8 @@ def concept_side(site: Site, cid: str) -> str:
                or (refs & set((P.get("topics") or {}).get("frames") or []))]
     if related:
         out.append("<section class=\"side-group\"><h2>Merged work</h2>" + "".join(pr_digest_details(site, num) for num, _ in related) + "</section>")
+    elif r.prs:
+        out.append('<section class="side-group"><h2>Merged work</h2><p class="muted">None tagged to this concept yet; <a href="/prs/">all merged work</a>.</p></section>')
     return "\n".join(out)
 
 
