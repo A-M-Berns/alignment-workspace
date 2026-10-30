@@ -143,9 +143,8 @@
       bandSpan[b] = [ycur, ycur + st.bandH];
       Object.keys(st.byCol).forEach(function (c) {
         var col = st.byCol[c];
-        var hh = col.reduce(function (s, id) { return s + geo[id].h; }, 0) + gap * (col.length - 1);
-        var yc = ycur + (st.bandH - hh) / 2;
-        col.forEach(function (id) { y[id] = yc + geo[id].h / 2; yc += geo[id].h + gap; });
+        var step = st.bandH / col.length;
+        col.forEach(function (id, i2) { y[id] = ycur + (i2 + 0.5) * step; });
       });
       ycur += st.bandH + bandGap;
     });
@@ -163,14 +162,25 @@
             var mb = (nbAll[bb] || []).reduce(function (s, n) { return s + (y[n] || 0); }, 0) / Math.max((nbAll[bb] || []).length, 1);
             return (ma || 0) - (mb || 0) || a.localeCompare(bb);
           });
-          var hh = col.reduce(function (s, id) { return s + geo[id].h; }, 0) + gap * (col.length - 1);
-          var yc = bandSpan[b][0] + (bandSpan[b][1] - bandSpan[b][0] - hh) / 2;
-          col.forEach(function (id) { y[id] = yc + geo[id].h / 2; yc += geo[id].h + gap; });
+          var step = (bandSpan[b][1] - bandSpan[b][0]) / col.length;
+          col.forEach(function (id, i2) { y[id] = bandSpan[b][0] + (i2 + 0.5) * step; });
         });
       });
     }
+    // interleave: members of a stack step alternately left and right of their column line
+    var stackIndex = {};
+    bandOrder.forEach(function (b) {
+      if (!bandSpan[b]) return;
+      var st = stackBand(b);
+      Object.keys(st.byCol).forEach(function (c) {
+        st.byCol[c].slice().sort(function (a, bb) { return y[a] - y[bb]; }).forEach(function (id, i2) { stackIndex[id] = i2; });
+      });
+    });
     var pos = {};
-    items.forEach(function (id) { pos[id] = { x: colX[colOf[id]], y: y[id] }; });
+    items.forEach(function (id) {
+      var sx = (((stackIndex[id] || 0) % 2) * 2 - 1) * Math.min((colW[colOf[id]] || 120) * 0.2 + 14, 46);
+      pos[id] = { x: colX[colOf[id]] + (id === "the-program" ? 0 : sx), y: y[id] };
+    });
     if (pos["the-program"]) pos["the-program"].y = h / 2;
     var bands = bandOrder.filter(function (b) { return rows[b] && rows[b].length && b !== "context"; })
       .map(function (b) { return { label: ((meta[b] || {}).t || b), y0: bandSpan[b][0], y1: bandSpan[b][1] }; });
@@ -283,7 +293,7 @@
     card.innerHTML = '<p class="card-head">' + esc(m.t || id) + ' <span class="kind">' + esc(kindLabel(m.k)) + "</span></p>"
       + (m.s ? "<p class=\"card-blurb\">" + esc(m.s) + "</p>" : "")
       + '<p class="card-meta muted">' + (m.prs ? m.prs + " merged PR(s) · " : "") + (m.w ? "wiki page" : "registry entry") + "</p>"
-      + '<p class="card-actions"><button data-act="more">Read more</button></p>';
+      + '<p class="card-actions"><button data-act="more">Read more</button><a class="comment-link" href="' + commentUrl(id) + '">Comment</a></p>';
     card.querySelector("[data-act=more]").addEventListener("click", function () { hideCard(); openFull(id); });
     placeCard(ev);
   }
@@ -299,6 +309,12 @@
     placeCard(ev);
   }
 
+  function commentUrl(id) {
+    var m = DATA.concepts[id] || {};
+    var title = encodeURIComponent("[concept] " + id + ": comment");
+    var body = encodeURIComponent("concept: " + id + "\nmap: /#c=" + seg(id) + "\n\n## What you want to say\n\n");
+    return "https://github.com/A-M-Berns/alignment-workspace/issues/new?title=" + title + "&body=" + body;
+  }
   function base(id) {
     var w = (DATA.concepts[id] || {}).w;
     return w ? "/wiki/" + seg(w) + "/" : "/concepts/" + seg(id) + "/";
@@ -308,7 +324,7 @@
     var m = DATA.concepts[id] || {};
     panelBody.innerHTML = '<p class="muted">Loading ' + esc(m.t || id) + "…</p>";
     fetch(base(id) + "frag.html").then(function (r) { if (!r.ok) throw 0; return r.text(); }).then(function (h) {
-      panelBody.innerHTML = h + '<p class="muted popup-foot"><a href="' + base(id) + '">Open the full page →</a></p>';
+      panelBody.innerHTML = h + '<p class="muted popup-foot"><a href="' + base(id) + '">Open the full page →</a> · <a href="' + commentUrl(id) + '">Comment on this concept</a></p>';
     }).catch(function () { panelBody.innerHTML = '<p>Could not load; <a href="' + base(id) + '">open the page</a>.</p>'; });
     if (history.replaceState) history.replaceState(null, "", "/#c=" + seg(id));
   }

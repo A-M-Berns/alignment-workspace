@@ -16,7 +16,7 @@
       "refs": [
         "the-program"
       ],
-      "blurb": "How can a powerful reasoner improve without treating every correction as an attack? One plan with seven lines, indexed by the argument map; every registered claim, item, decision and round hangs under it."
+      "blurb": "How can a powerful reasoner keep improving without treating every correction as an attack? Seven lines of work toward that question; everything proved, filed or decided in this repository hangs under one of them."
     },
     {
       "id": "normativity-line",
@@ -26,7 +26,7 @@
       "refs": [
         "normativity"
       ],
-      "blurb": "What it means for a changing reasoner to remain responsive to reasons. A fixed objective scores behavior from outside; this line builds obligation, answer and enforcement as machine-checkable structure instead."
+      "blurb": "What it takes for a reasoner that changes to stay responsive to reasons. Rather than scoring behaviour against a fixed objective from outside, this line builds obligation, answer and enforcement as structure a machine can check."
     },
     {
       "id": "legitimacy-line",
@@ -36,7 +36,7 @@
       "refs": [
         "legitimacy"
       ],
-      "blurb": "The bridge between normativity and deference: normative learning needs public reasons, and responses that carry standing rather than mere compliance. Its spine is the record half (Integrity) and the licence half (warrants)."
+      "blurb": "What makes a correction count: not compliance but standing — public reasons, and responses that answer them. Its two halves are the record (Integrity: every debt tracked) and the licence (warrants: every verdict backed)."
     },
     {
       "id": "deference-line",
@@ -46,7 +46,7 @@
       "refs": [
         "deference-and-trust"
       ],
-      "blurb": "How a bounded reasoner benefits from a better-informed process without surrendering the ability to correct what that process does. 'Trust' names several distinct relations; the line separates and connects them."
+      "blurb": "How a limited reasoner can lean on a better-informed process without losing the ability to correct it. 'Trust' covers several different relations; this line pulls them apart and proves where they connect."
     },
     {
       "id": "corrigibility-line",
@@ -56,7 +56,7 @@
       "refs": [
         "public-corrigibility-line"
       ],
-      "blurb": "Corrigibility from response authority: the corrigibility kernel's headline is specification-layer, with legitimate activated evaluation as its principal value and continuation BRIA as its learning layer."
+      "blurb": "A corrigible agent built from response authority: after any move the agent makes, its principal can still respond and have that response count. The kernel theorem is proved; continuation BRIA is the layer that learns it."
     },
     {
       "id": "openness-line",
@@ -66,14 +66,14 @@
       "refs": [
         "openness-and-non-capture"
       ],
-      "blurb": "Robust Openness at a state, defined over application-supplied coverage data: the reasoner remains correctable by parties it has not captured, certified rather than assumed."
+      "blurb": "Staying correctable by parties you have not captured. Robust Openness is a certified property of a state — defined over declared coverage and proved from a checkable certificate, never assumed."
     },
     {
       "id": "normative-induction",
       "title": "Normative induction",
       "kind": "goal",
       "wiki": "Normative-Induction",
-      "blurb": "The thread that makes normative learning inductive: the Progress statistic, the edge-local practical certificate, and the finite three-term bound on the accounted export."
+      "blurb": "The quantitative thread: a Progress statistic that says whether a practice is actually getting better, a certificate checkable at each step, and a finite bound on how much accounted obligation can leak."
     },
     {
       "id": "normative-inductor",
@@ -83,13 +83,13 @@
       "refs": [
         "normative-inductor"
       ],
-      "blurb": "The line's central machine: Logical Induction over an assessment process with projection enforcement, preserved under the operations the practice needs. Canonical architecture; conditional theorems."
+      "blurb": "The central machine: a logical-induction market whose prices are pushed by enforcement whenever they stray from what the record obliges. The architecture is fixed; its main theorems hold under stated hypotheses."
     },
     {
       "id": "enforcement-compiler",
       "title": "Enforcement compiler",
       "kind": "construction",
-      "blurb": "The construction that turns obligations into price movements: enforcement as convex projection of a credal state, with a typed outcome that conserves what was owed. Its three narrow results are lean-proved."
+      "blurb": "How an obligation becomes a price movement: compile it into a projection of the market's belief state onto the region the obligation allows. The outcome is typed so nothing owed silently disappears; the three core results are kernel-checked."
     },
     {
       "id": "finite-date-conformance",
@@ -98,7 +98,7 @@
       "refs": [
         "traderized-finite-date-conformance"
       ],
-      "blurb": "A conformance bound at a date, where logical induction's inexploitability criterion gives only an asymptotic guarantee — the program's finite-time strengthening of its own substrate."
+      "blurb": "Logical induction promises inexploitability only in the limit. This result pins a conformance bound to a date — the program's finite-time strengthening of the ground it builds on."
     },
     {
       "id": "warrant-licence-chain",
@@ -107,83 +107,83 @@
       "refs": [
         "verdict-licence-chain"
       ],
-      "blurb": "A licensed verdict is supported on the record's grounds and admissible in their settled region: the chain from an announced verdict back through its warrant to the accounted record."
+      "blurb": "The chain from an announced verdict back to its grounds: a licensed verdict is one supported by the record and admissible in the region the record settles. Proved end to end as one theorem."
     },
     {
       "id": "normative-record",
       "title": "Normative record",
       "kind": "construction",
       "wiki": "Normative-Record-and-Inquiry",
-      "blurb": "The left side of normative learning: what determines why a demand arose, how evidence enters the practice, and what a learner answers to — an identity-bearing record of obligations and responses."
+      "blurb": "Before anything can be answered, something must say what was asked, by whom, on what evidence. The record is that object: a ledger of obligations and responses in which every entry keeps its identity."
     },
     {
       "id": "settlement-interface",
       "title": "Settlement interface",
       "kind": "construction",
       "wiki": "Settlement-Interface",
-      "blurb": "Six distinct conditions, each with one home: four typed inputs of the protocol, two consequences or clauses of theorems elsewhere. The seam between a record and what counts as settled against it."
+      "blurb": "Where the record meets 'settled': six distinct conditions, each with exactly one home — four as typed inputs of the protocol, two as consequences of theorems proved elsewhere."
     },
     {
       "id": "seed-theory",
       "title": "Normative seed",
       "kind": "construction",
       "wiki": "Seed-Theory",
-      "blurb": "The left-most object of the record picture made concrete: what a reasoner starts from and what it forces on the prices of a settled region."
+      "blurb": "What a reasoner starts from. The seed is the record's leftmost object made concrete: the initial commitments, and what they force on the prices of any region treated as settled."
     },
     {
       "id": "defeat-with-successor",
       "title": "Defeat with a named successor",
       "kind": "construction",
-      "blurb": "A defeated obligation is answered or disposed — and disposal carries the debt to a named successor rather than extinguishing it. Authored, history-sensitive answerability under defeat; the future depends on which defaults lost."
+      "blurb": "When an obligation is defeated it is either answered or carried: disposal hands the debt to a named successor instead of erasing it. So the future depends on which arguments lost, not only on which still stand."
     },
     {
       "id": "answerability-score",
       "title": "Answerability score",
       "kind": "construction",
       "wiki": "Reasons-Answerability-and-the-Score",
-      "blurb": "The static question: what makes a reason, challenge or response publicly assessable before any learning happens? The score is that assessability made a quantity."
+      "blurb": "Before any learning: what makes a reason, a challenge or a response assessable by someone else at all? The score turns that assessability into a quantity."
     },
     {
       "id": "diachronic-answerability",
       "title": "Diachronic answerability",
       "kind": "construction",
       "wiki": "Diachronic-Answerability",
-      "blurb": "What the record half of legitimacy — an open Integrity ledger — amounts to over time: answerability as a property of a history, derived rather than postulated."
+      "blurb": "Answerability over time. Keep an open Integrity ledger long enough and a property of the whole history follows — derived from the record, not assumed about the agent."
     },
     {
       "id": "integrity",
       "title": "Integrity",
       "kind": "construction",
       "wiki": "Integrity",
-      "blurb": "The record's conservation package: what was owed is satisfied, disposed of, or remaining. The conservation theorem, propagation law, receipt immutability, faithful carry and multiplicity witness are lean-proved."
+      "blurb": "The record's conservation law: everything owed is satisfied, disposed of, or still outstanding — nothing vanishes. Conservation, propagation, immutable receipts, faithful carry and a non-triviality witness are kernel-checked."
     },
     {
       "id": "continuation-bria",
       "title": "Continuation BRIA",
       "kind": "construction",
       "wiki": "Continuation-BRIA",
-      "blurb": "Bounded inductive rationality lifted from one-step choices to temporally extended continuations, without counterfactual reward tables and without surrendering correctability."
+      "blurb": "Bounded inductive rationality lifted from single choices to extended courses of action — no counterfactual reward tables, and the agent stays correctable while it learns."
     },
     {
       "id": "serviceability",
       "title": "Serviceability",
       "kind": "construction",
       "wiki": "Serviceability",
-      "blurb": "When obligations can be served on time: exact rational fixtures for timely service, with the optimality of serving oldest first and the transfer of service-weighted convergence to obligation-weighted."
+      "blurb": "Can the obligations be served on time? Exact conditions for timely service, why serving the oldest first is optimal, and when convergence measured on service carries over to what was owed."
     },
     {
       "id": "liability-affordability",
       "title": "Liability and affordability",
       "kind": "construction",
       "wiki": "Liability-and-Affordability",
-      "blurb": "Who pays for enforcement and what a practice can afford: the enforcement layer's three narrow results are lean-proved; the liability theory over them is open realization material."
+      "blurb": "Who pays for enforcement, and what a practice can afford to owe. The narrow enforcement results are kernel-checked; the liability theory built on them is open work."
     },
     {
       "id": "progress",
       "title": "Progress statistic",
       "kind": "construction",
       "wiki": "Progress",
-      "blurb": "The statistic that says a practice is getting somewhere: paper-derived research under normative induction, with the finite bound on accounted export as its Established core."
+      "blurb": "A statistic for whether the practice improves: repeated failures must lose weight. Its core — the finite bound on accounted export — is established; the rest is open work under normative induction."
     },
     {
       "id": "effective-authority-layer",
@@ -192,7 +192,7 @@
       "refs": [
         "effective-authority-layer"
       ],
-      "blurb": "The deference line's authority cluster: one informal claim established by twelve declarations — authority and sincerity conditions under which a verdict-giver's standing is effective rather than nominal."
+      "blurb": "When is a verdict-giver's standing real rather than nominal? Twelve theorems — authority and sincerity conditions — jointly establishing one claim in the deference line."
     },
     {
       "id": "robust-openness",
@@ -201,7 +201,7 @@
       "refs": [
         "split-bill-is-robust-openness"
       ],
-      "blurb": "A sufficient external certificate yields Robust Openness at a state: the split bill is the certificate, and the equivalence sits on the legitimacy spine."
+      "blurb": "The openness certificate: a checkable external condition, the split bill, that provably yields Robust Openness at a state. The equivalence is a theorem on the legitimacy spine."
     },
     {
       "id": "delegation-bridge",
@@ -210,44 +210,44 @@
       "refs": [
         "local-delegation-bridge"
       ],
-      "blurb": "The finite bridge from a local delegation to the deference line: what a bounded delegator can check locally and still inherit from the delegate's guarantee."
+      "blurb": "What a bounded delegator can verify locally and still inherit from the delegate's guarantee — the finite bridge between delegation and deference."
     },
     {
       "id": "normative-force",
       "title": "Actionability and normative force",
       "kind": "philosophy",
       "wiki": "Actionability-and-Normative-Force",
-      "blurb": "What makes a requirement actionable — force as what enforcement does to prices, not as metaphor. The action theory over the lean-proved enforcement results is open."
+      "blurb": "What gives a requirement force. Here force is what enforcement does to prices — a mechanism, not a metaphor. The enforcement results are proved; the action theory over them is open."
     },
     {
       "id": "deontic-scorekeeping",
       "title": "Deontic scorekeeping",
       "kind": "philosophy",
-      "blurb": "Brandom: normative status instituted by practice through tracked commitments and entitlements, attributing distinguished from acknowledging. It gives the architecture its shape without importing inferentialist semantics."
+      "blurb": "Brandom's picture: a norm exists because a practice tracks who is committed and entitled to what. This repository takes the bookkeeping shape and leaves his theory of meaning behind."
     },
     {
       "id": "reasons-as-defaults",
       "title": "Reasons as defaults",
       "kind": "philosophy",
-      "blurb": "Horty's treatment of a reason's weight and priority as normative content rather than machinery. A static theory: default logic says what to conclude, not what is owed, and its proper scenarios forget the history of defeats."
+      "blurb": "Horty: a reason's weight and priority are themselves normative content. But default logic only says what to conclude, not what is owed — and it forgets which arguments lost. The nearest static ancestor of the defeat theory here."
     },
     {
       "id": "rebut-undercut",
       "title": "Rebutting and undercutting defeat",
       "kind": "philosophy",
-      "blurb": "Pollock's distinction between attacking a conclusion and attacking the support itself — a genuine dependency here, transposed from a belief's warrant to a debt's."
+      "blurb": "Pollock's distinction: attack a conclusion, or attack the support itself. Used here directly — moved from the justification of a belief to the standing of a debt."
     },
     {
       "id": "exclusionary-reasons",
       "title": "Exclusionary reasons",
       "kind": "philosophy",
-      "blurb": "Raz: a second-order reason not to act on certain first-order reasons. In Horty's own rendering they remain challengeable in-system, which puts exclusion closer to disposition than to settlement."
+      "blurb": "Raz: a reason not to act on certain other reasons. Read closely, exclusion behaves like setting a reason aside, not like settling it — a distinction this program keeps."
     },
     {
       "id": "practical-authority",
       "title": "Practical authority",
       "kind": "philosophy",
-      "blurb": "Authority as standing to change what someone owes, as against power to change what they do. The program renders it as record-readable entitlement rather than as a property of persons."
+      "blurb": "Authority as the standing to change what someone owes, as opposed to the power to change what they do. Here it becomes something a record can state, rather than a property of persons."
     },
     {
       "id": "logical-induction",
@@ -255,118 +255,118 @@
       "kind": "object",
       "wiki": "Logical-Induction-and-Deference",
       "url": "https://arxiv.org/abs/1609.03543",
-      "blurb": "Garrabrant et al. 2016: a sequence of prices for logical claims that no polynomial trader can exploit. The market, the traders, the market maker and the inexploitability criterion are the substrate the enforcement construction is built on."
+      "blurb": "Garrabrant et al. 2016: beliefs as market prices over logical claims, set so that no polynomial-time trader can make unbounded profit. The market, the traders and the criterion are the foundation the enforcement work builds on."
     },
     {
       "id": "imprecise-probability",
       "title": "Imprecise probability",
       "kind": "object",
-      "blurb": "Coherent lower and upper previsions, sets of probabilities, and the linear-feasibility characterization of probabilistic entailment. The credal state is one; the enforced regions are convex sets of probabilities."
+      "blurb": "Belief as a set of probability distributions rather than one, with coherent upper and lower bounds. The states the enforcement mechanism works on are exactly such convex sets."
     },
     {
       "id": "convex-projection",
       "title": "Convex projection",
       "kind": "object",
-      "blurb": "Projection onto a convex set and its defining variational inequality — the enforcement direction, used as a genuine dependency."
+      "blurb": "The nearest point of a convex set, and the inequality that characterizes it. Enforcement moves prices by projection, so this inequality is a genuine dependency of the proofs."
     },
     {
       "id": "farkas-duality",
       "title": "LP duality and Farkas certificates",
       "kind": "object",
-      "blurb": "The finite-horizon infeasibility certificate has the shape of a Farkas pair and is called one, but its soundness proof is four self-contained lines; exactness under a Slater point is what actually leans on duality."
+      "blurb": "The certificate that a finite system has no solution. The repository's version has the Farkas shape and the name, but its soundness proof is four self-contained lines; only exactness under a Slater point really uses duality."
     },
     {
       "id": "interval-feasibility",
       "title": "Interval feasibility",
       "kind": "object",
-      "blurb": "Gale–Hoffman flow feasibility, and directly Horn's 1974 conditions for preemptive scheduling with release times and deadlines. The transport-onto-service-dates condition cites this theorem rather than proving it."
+      "blurb": "When jobs with release times and deadlines can all be scheduled: Gale–Hoffman, and directly Horn (1974). The repository cites the theorem rather than reproving it."
     },
     {
       "id": "contiguity",
       "title": "Contiguity of measures",
       "kind": "object",
-      "blurb": "Le Cam 1960. The condition under which service-weighted convergence transfers to obligation-weighted convergence is contiguity in exactly this sense — the definition inherited, the proof direct."
+      "blurb": "Le Cam's condition for when convergence under one sequence of measures transfers to another. Inherited by name and definition; the proof here argues from the definition directly."
     },
     {
       "id": "earliest-due-date",
       "title": "Earliest-due-date scheduling",
       "kind": "object",
-      "blurb": "Jackson 1955: serve the oldest obligation first. The optimality argument here is the same exchange argument, classical in substance, written out in four self-contained lines."
+      "blurb": "Jackson (1955): serve the oldest deadline first. The optimality argument here is the same exchange argument, written out in four lines."
     },
     {
       "id": "truth-maintenance",
       "title": "Truth-maintenance systems",
       "kind": "object",
-      "blurb": "Doyle 1979, de Kleer 1986: dependency-directed, identity-bearing justification structure with the environment/label separation that lets several stances be held at once — the record's structural ancestor."
+      "blurb": "Doyle and de Kleer's systems for tracking why each belief is held, so support can be withdrawn and several stances held at once — the structural ancestor of the record."
     },
     {
       "id": "aspic-plus",
       "title": "Structured argumentation (ASPIC+)",
       "kind": "object",
-      "blurb": "Attack and defeat over structured arguments with reinstatement computed by the semantics. No successor and an unauthored attack relation — the contrast that locates what the defeat theory here adds."
+      "blurb": "Structured argumentation: attack and defeat computed by a semantics over arguments. No one authors an attack and no defeated claim passes to a successor — exactly the two things the defeat theory here adds."
     },
     {
       "id": "cartesian-frames",
       "title": "Cartesian frames",
       "kind": "object",
-      "blurb": "Garrabrant's factorizations of a world into agent and environment as a pair of sets with a matrix between them — the embedded-agency agenda's algebra of where an agent's boundary sits."
+      "blurb": "Garrabrant's algebra of agency: factor a world into agent and environment as two sets and a matrix between them, so 'where the agent ends' becomes a choice of factorization."
     },
     {
       "id": "udt",
       "title": "Updateless decision theory",
       "kind": "object",
-      "blurb": "Deciding from the policy level without updating on observations first — the decision-theory thread of agent foundations that extended-choice constructions here deliberately avoid needing."
+      "blurb": "Updateless decision theory: choose the policy before the observations, so the act is right across every way the situation could have been embedded. One side of this program's stance crux."
     },
     {
       "id": "making-it-explicit",
       "title": "Brandom, Making It Explicit (1994)",
       "kind": "work",
-      "blurb": "The source of deontic scorekeeping: norms instituted by social practice, commitment and entitlement tracked by scorekeepers."
+      "blurb": "Brandom (1994): norms are instituted by social practice, and meaning rides on tracked commitment and entitlement. The source of the scorekeeping picture."
     },
     {
       "id": "horty-reasons",
       "title": "Horty, Reasons as Defaults (2012)",
       "kind": "work",
-      "blurb": "The default-logic account of reasons checked against its own text here: no ledger for what is owed, no history-sensitivity, authority only as the content of a default — read as the nearest static theory, not imported."
+      "blurb": "Horty (2012), Reasons as Defaults — checked against its own text here: no ledger of what is owed, no memory of defeats, authority only as the content of a rule."
     },
     {
       "id": "embedded-agency",
       "title": "Embedded Agency (Demski & Garrabrant)",
       "kind": "work",
       "url": "https://arxiv.org/abs/1902.09469",
-      "blurb": "The agenda whose questions — bounded reasoners embedded in, and smaller than, the world they reason about — this program approaches through normativity rather than through decision theory."
+      "blurb": "Demski and Garrabrant's agenda: the problems of a reasoner that lives inside, and is smaller than, the world it reasons about. This program approaches those questions through normativity rather than decision theory."
     },
     {
       "id": "corrigibility-2015",
       "title": "Corrigibility (Soares et al. 2015)",
       "kind": "work",
       "url": "https://intelligence.org/files/Corrigibility.pdf",
-      "blurb": "The paper that posed shutdown and correction as a formal problem and showed the naive utility patches fail — the historical motivation the corrigibility line answers with response authority instead."
+      "blurb": "Soares, Fallenstein, Yudkowsky and Armstrong: shutdown and correction posed as a formal problem, with proofs that the obvious utility patches fail. The problem statement this line answers differently."
     },
     {
       "id": "deconfusing-corrigibility",
       "title": "Deconfusing Corrigibility (post)",
       "kind": "companion",
       "wiki": "Deconfusing-Corrigibility-Companion",
-      "blurb": "The post whose formal content — Definitions through Learning with logical induction — is one Lean file in this repository, registered as its companion formalization."
+      "blurb": "The post whose formal sections live in this repository as one kernel-checked Lean file — definitions through learning with logical induction, each theorem registered."
     },
     {
       "id": "faf",
       "title": "Formalized Agent Foundations",
       "kind": "work",
-      "blurb": "The pinned Lean library carrying the logical-induction formalization this repository builds against; the pin is part of the trust chain, moved only by a verified bump."
+      "blurb": "Formalized Agent Foundations: the pinned Lean library carrying the logical-induction formalization everything here builds against. Moving the pin is a trust-chain event."
     },
     {
       "id": "traderization",
       "title": "Traderization",
       "kind": "construction",
-      "blurb": "The repository's recurring move: a condition becomes a trader set against the market, so that violating it is exploitable and the inexploitability criterion enforces it. The finite-date conformance bound is enforced this way."
+      "blurb": "The move this repository keeps making: write a condition as a trader. Violating the condition is then exploitable, and the market's inexploitability enforces it for free."
     },
     {
       "id": "decision-theory-for-inductors",
       "title": "Decision theory for inductors",
       "kind": "goal",
-      "blurb": "What a computable agent combining logical induction with bounded inductive rationality must satisfy (projects/decision-theory). The open learner-level question: a decision theory for logical inductors without the split between a belief market and a choice learner.",
+      "blurb": "What should an agent built on a logical-induction belief market actually do? This line seeks a decision theory for such agents — ultimately one in which the belief market and the choice learner are not two separate parts.",
       "refs": [
         "decision-theory"
       ]
@@ -375,69 +375,69 @@
       "id": "response-authority",
       "title": "Response authority",
       "kind": "construction",
-      "blurb": "After the agent's move, some principal response realizes the protected concern's semantics now — present-tense standing, the object from which agent-caused loss and corrigibility are defined."
+      "blurb": "The agent has moved; can the principal still respond in a way that counts, now? That present-tense standing is the primitive from which agent-caused loss — and corrigibility itself — are defined."
     },
     {
       "id": "corrigibility-kernel",
       "title": "Corrigibility kernel",
       "kind": "construction",
-      "blurb": "The specification-layer headline: corrigible means every agent-caused protected loss is authorized — tied to the decision that enabled its effect — as faithfulness of the policy with its pre-emption clause."
+      "blurb": "The proved headline: an agent is corrigible when every loss it causes to a protected concern was authorized — traceable to the decision that approved the effect. Stated as faithfulness of the policy, with its pre-emption clause."
     },
     {
       "id": "reflection-principles",
       "title": "Reflection principles",
       "kind": "object",
-      "blurb": "Strong reflection is too demanding for deference to a fallible expert; weak reflection counts apparent deference to an anti-expert. The failure of both is the problem the decision-based account answers."
+      "blurb": "The classical ways to formalize trusting an expert: strong reflection demands too much of any fallible one; weak reflection cannot tell deference from deferring to an anti-expert. Their joint failure is the problem the decision-based account solves."
     },
     {
       "id": "deference-done-better",
       "title": "Deference Done Better (Dorst et al. 2021)",
       "kind": "work",
       "url": "https://onlinelibrary.wiley.com/doi/10.1111/phpe.12156",
-      "blurb": "Dorst, Levinstein, Salow, Husic and Fitelson: compare the decisions made from an expert's opinions with decisions made from one's own. The source of the decision-based account of epistemic deference and the Total Trust/Value target the deference line inherits."
+      "blurb": "Dorst, Levinstein, Salow, Husic and Fitelson (2021): judge an expert by comparing the decisions you would make from their opinions with the decisions you would make from your own. The target the deference line inherits."
     },
     {
       "id": "total-trust",
       "title": "Total Trust",
       "kind": "object",
-      "blurb": "The candidate mathematical face of deference as a decision comparison: trusting a process on every decision it would improve. The corpus retains a two-option finite exact identity connecting Value and Total Trust."
+      "blurb": "Deference as a decision comparison made precise: trust a process totally when you would take its advice on every bet it would change. A finite two-option identity connecting it to Value is proved in the corpus."
     },
     {
       "id": "bounded-rationality",
       "title": "Bounded inductive rationality",
       "kind": "object",
-      "blurb": "Oesterheld, Demski and Conitzer (TARK 2023): rationality relative to bounded computation — the estimating-agent setting, the no-overestimation and hypothesis-coverage criterion, and the guaranteed-payoff consequence. The frame continuation BRIA lifts to extended continuations; its myopia is the recorded obstacle to endogenous admissibility.",
+      "blurb": "Oesterheld, Demski and Conitzer (2023): rationality for agents that estimate rather than compute — never overestimate your options, cover your hypotheses, and a payoff guarantee follows. Its myopia is the recorded obstacle this program works past.",
       "url": "https://doi.org/10.4204/EPTCS.379.33"
     },
     {
       "id": "reasons",
       "title": "Reasons",
       "kind": "philosophy",
-      "blurb": "Considerations that count for or against — what a practice tracks, weighs, answers and remains answerable to. Here rendered as record content with enforcement semantics rather than as a primitive of the theory."
+      "blurb": "Considerations that count for or against. What a normative practice tracks, weighs and answers — rendered here as record content with enforcement behind it, not as an unexplained primitive."
     },
     {
       "id": "faithful-acceleration",
       "title": "Faithful acceleration",
       "kind": "construction",
-      "blurb": "Deferring to an accelerated run of one's own deliberation that remains faithful to it — the self-referential target of the deference corpus, with frozen deliberation as the fixed point and the tower and acceleration results as its Lean development."
+      "blurb": "Defer to a faster run of your own deliberation — if it stays faithful. The deference corpus's self-referential target, with frozen deliberation as the fixed point and the tower results as its mathematics."
     },
     {
       "id": "deference-tower",
       "title": "The deference tower",
       "kind": "construction",
-      "blurb": "Tower-style expectations as a face of the deference connection: the Total Trust ⟺ Value ⟺ Tower triangle is closed with three direct arrows in the corpus, and the inference from a tower condition to Value fails on selection-referencing questions."
+      "blurb": "Iterated expectations of your own future judgment, and what they do and do not buy: the corpus closes the Total Trust–Value–Tower triangle with direct arrows, and shows tower-to-Value fails when questions can reference the selection."
     },
     {
       "id": "dose-response",
       "title": "Dose-response deference",
       "kind": "construction",
-      "blurb": "Dose-response structure in the deference setting — how the rational degree of deference moves with the quantity of evidence about the deferred-to process — recorded with its own audit."
+      "blurb": "Deference as a matter of degree: how the rational amount of it should move with the quantity of evidence about the process being deferred to."
     },
     {
       "id": "value-change-as-belief-change",
       "title": "Value change as belief change",
       "kind": "philosophy",
-      "blurb": "The thesis the corrigibility note dump tests: corrigibility is less anti-natural than the standard arguments make it look once value change is represented as belief change."
+      "blurb": "The thesis under test in the corrigibility notes: represent a change of values as a change of beliefs, and corrigibility stops looking anti-natural."
     },
     {
       "id": "anti-natural-corrigibility",
@@ -446,13 +446,13 @@
       "refs": [
         "corrigibility-anti-natural"
       ],
-      "blurb": "The standard argument that corrigibility fights the grain of expected-utility maximization: an agent with almost any terminal objective resists modification and shutdown. The obstacle the corrigibility line answers."
+      "blurb": "The standard obstacle: under almost any fixed objective, an expected-utility maximizer resists being corrected or shut down. The argument this line's constructions answer."
     },
     {
       "id": "learning-normativity",
       "title": "Learning Normativity (Demski)",
       "kind": "work",
-      "blurb": "Demski's sequence on learning from unreliable normative feedback — no perfect feedback, no perfect loss function, norms about the learning itself. The same subject this repository's normativity line approaches; its proofs do not cite it."
+      "blurb": "Demski's sequence: learn from normative feedback that is never fully reliable — no perfect feedback, no perfect loss function, norms that apply to the learning itself. The same territory as the normativity line; the proofs here do not cite it."
     },
     {
       "id": "stance-and-level",
@@ -461,7 +461,7 @@
       "refs": [
         "stance-and-level"
       ],
-      "blurb": "Where should the program work: at which level of computability, under the updateful or the updateless stance, and does the computationally unbounded level represent the phenomena that matter? The cruxes every line reads."
+      "blurb": "Where should the work happen: at which level of computability, under the updateful or the updateless stance — and does the idealized, unbounded level even represent the phenomena that matter? The cruxes every other line reads."
     },
     {
       "id": "abstraction-arc",
@@ -470,7 +470,7 @@
       "refs": [
         "abstraction-arc"
       ],
-      "blurb": "The abstraction arc: a theory of abstraction compatible with logical induction — a representation theorem for when a physical system is interpretable as a logical inductor, a decision theory set in that representation, and scale-free agency that covers cooperation."
+      "blurb": "Agency as something you can prove a physical system has: a representation theorem for when a system counts as a logical inductor, a decision theory stated inside that representation, and a scale-free notion of agency wide enough for cooperation."
     },
     {
       "id": "authorship-transparency",
@@ -479,7 +479,7 @@
       "refs": [
         "authorship-and-transparency"
       ],
-      "blurb": "When is a verdict the principal's own program's, and a channel's influence the declared reference on the declared inputs? Coherence, authorship and transparency give legitimacy's thin property; a lie through the declared channel fails transparency."
+      "blurb": "When is a verdict genuinely the principal's own program's — and every channel of influence the declared one, acting on declared inputs? A lie through the declared channel fails transparency; sincere error does not."
     },
     {
       "id": "normative-response-learning",
@@ -489,7 +489,7 @@
       "refs": [
         "response-learning"
       ],
-      "blurb": "A bounded learner, given due burdens, licensed responses and a bounded prospective loss, reduces a recurrent publicly represented failure by lawful edits — diminishing weight on an inferior response under the Due, Licensed and Loss interface."
+      "blurb": "The learning claim: a bounded learner, given due burdens, licensed responses and a bounded loss, puts less and less weight on a response that keeps failing in public — by edits the protocol itself licenses."
     },
     {
       "id": "instrumental-convergence",
@@ -498,7 +498,7 @@
       "refs": [
         "instrumental-convergence"
       ],
-      "blurb": "Convergent subgoals — self-preservation, resource and option acquisition — arise under almost any terminal objective. One of the three risk stories the plan answers, and the engine of the anti-naturality argument."
+      "blurb": "Almost any goal makes self-preservation and resource acquisition useful, so capable agents converge on them. One of the three risk stories the plan answers, and the engine behind corrigibility's anti-naturality."
     },
     {
       "id": "dishonest-inner-optimizers",
@@ -507,19 +507,19 @@
       "refs": [
         "dishonest-inner-optimizers"
       ],
-      "blurb": "Learned optimizers pursuing their own objectives behind apparently aligned behaviour — a verdict that is not the principal's own program's. One of the three risk stories the plan answers."
+      "blurb": "A trained system can contain an optimizer of its own, pursuing goals that diverge from the training signal while its behaviour looks aligned. One of the three risk stories the plan answers."
     },
     {
       "id": "answerability",
       "title": "Answerability",
       "kind": "philosophy",
-      "blurb": "The standing to be asked for reasons, to give them, and to be corrected on them — the program's central normative relation, quantified statically by the score and over histories by diachronic answerability."
+      "blurb": "The standing to be asked for reasons, to give them, and to be corrected on them. The relation the whole program builds; the score measures it at a moment, diachronic answerability over a history."
     },
     {
       "id": "warrant",
       "title": "Warrant",
       "kind": "philosophy",
-      "blurb": "A defeasible licence for a conclusion or verdict: justification that can be undercut or rebutted rather than entailment that cannot. What the licence chain renders record-readable."
+      "blurb": "A licence to a conclusion that can be defeated: justification you can undercut or rebut, where an entailment you cannot. The thing the licence chain turns into record structure."
     }
   ],
   "links": [

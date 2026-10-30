@@ -187,8 +187,11 @@ nowhere but the ranking page and the collapsed section. The intake verbs on ever
 — comment, challenge, estimate, want — are prefilled GitHub issues carrying the node id and
 a protocol-shaped body; the site accepts no write, and a maintainer round sweeps what lands
 into ledger events. The map is the site's one tab; the planned additions are a chat tab
-(a bring-your-own-key bot over the map and the record) and a stats/status page (a time
-graph with an activity digest), and nothing else. Not yet built: those two tabs, in-page
+(a bring-your-own-key bot over the map and the record), a stats/status page (a time
+graph with an activity digest), and a comment system based on the map — comments keyed
+by concept id, collected through the prefilled-issue verbs the concept cards and full
+views already carry, rendered from a `state/comments.json` a maintainer round curates —
+and nothing else. Not yet built: those two tabs, in-page
 filing without the GitHub detour, and pages for the held results beyond what the bridge
 card shows them as.
 

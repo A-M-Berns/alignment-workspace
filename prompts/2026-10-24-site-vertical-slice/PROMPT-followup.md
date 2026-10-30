@@ -153,3 +153,11 @@ Further directives of the same conversation, verbatim:
 > Yeah what youre calling abstraction arc is like naturalized agency right
 
 > the title should just be research map not "the map of the program"
+
+> i think a bit more left to right interleaving would be good and like uniform spread of
+> the nodes. the suggesiton of pure column layers prob not great
+> go through every node description and rewrite for clarity, word by word value,
+> desloppification, human-facing jargon-free explanation, but not dumbed down or
+> oversimplified
+> what were the other tabs beyond map that i was saying? also we should try to get ready
+> for a comment system based on the map

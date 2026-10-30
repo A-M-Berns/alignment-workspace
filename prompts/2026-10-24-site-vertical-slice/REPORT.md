@@ -492,3 +492,14 @@ mentions) and **warrant** (16), each now feeding its formalizations. 71 entries,
 links. Considered and left out at this grain: Vingean reflection and tiling (no
 repository footprint), radical probabilism (same), and the Glossary's finer vocabulary
 (margin, region, control surface), which belongs a level below this map.
+
+## Seventeenth follow-up of 2026-10-30 — interleaving, the blurb rewrite, comment groundwork
+
+Stacks now spread uniformly across their band's full height and alternate members step
+left and right of the column line, so the layout interleaves instead of reading as
+pillars. All 71 blurbs were rewritten for a reader outside the repository — each opens
+with what the thing is in plain words, keeps the precise claim, and drops the internal
+register (no "realization material", no "canonical; conditional theorems"). Comment
+groundwork: concept cards and full views carry a Comment action — a prefilled issue
+keyed `[concept] <id>` — and the roadmap in `graph/MAP-AS-CANONICAL.md` §6 records the
+planned system: comments in a curated `state/comments.json`, rendered per concept.

@@ -249,3 +249,5 @@ svg#map .goalwash { display: none; }
 svg#map g.scene.focus g.cap:not(.nb) { opacity: 0.16; }
 .search-chip { font-size: 0.72rem; color: var(--muted); margin-left: 0.5em; text-transform: uppercase; letter-spacing: 0.05em; }
 svg#map .axis .bandlabel { fill: #6a6964; font-weight: 600; }
+#map-card .comment-link { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; text-decoration: none; border: 1px solid var(--rule); border-radius: 5px; padding: 0.22em 0.7em; }
+#map-card .comment-link:hover { color: var(--accent); border-color: var(--accent); }
