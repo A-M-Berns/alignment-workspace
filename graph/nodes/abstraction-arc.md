@@ -2,8 +2,8 @@
 id: abstraction-arc
 kind: frame
 children: [want-intentional-stance-math, stage4-condensation-dynamics, stage5-li-representation-theorem, stage6-dt-and-scale-free-agency, ledger-logic-market-logic-synthesis, oq-embedded-agency, stage5-right-setting-for-dt, mastery-gates-stage5]
-question: "Which work on abstraction, logical induction and agency gives the trust-modelling plan a representation theorem for logical inductors, a decision theory set in that representation, and a notion of scale-free agency that covers cooperative equilibria?"
-owner: "@maintainer"
+question: "Which work on abstraction, logical induction and agency gives the program a representation theorem for logical inductors, a decision theory set in that representation, and a notion of scale-free agency that covers cooperative equilibria?"
+owner: "@abram"
 roots:
   - {id: want-intentional-stance-math, role: want}
   - {id: stage4-condensation-dynamics, role: plan, preset: worst-case}
@@ -13,6 +13,8 @@ roots:
   - {id: oq-embedded-agency, role: shared-claim, preset: worst-case}
   - {id: stage5-right-setting-for-dt, role: shared-claim, preset: worst-case}
   - {id: mastery-gates-stage5, role: shared-claim, preset: worst-case}
+work:
+  - {kind: decision, ref: 2026-10-22--map-canonical-index-program-maintainer-handles}
 author: "@smithy-verity-opus55"
 size: L
 size_reason: "three roadmap stages and their sub-frames"
@@ -35,7 +37,7 @@ cooperative equilibria as agents, with meaningful advice about how to steer
 towards such equilibria".
 
 ## Notes
-A programme filed as a sub-frame of trust-modelling, as the roadmap's later
+A programme filed as a sub-frame of the-program, as the roadmap's later
 stages. Its roots are the roadmap's Stages 4, 5 and 6 as sub-frames, the
 ledger-logic line as a sub-frame (Stage 3 material by content, assigned to this
 programme by the round), the want for a mathematics of the intentional stance,

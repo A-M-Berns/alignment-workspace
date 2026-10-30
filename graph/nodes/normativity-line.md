@@ -1,20 +1,18 @@
 ---
 id: normativity-line
 kind: frame
-children: [normativity-aug9-foundation, normativity-layer-I-closed, traderization-arc, normativity-learning-track, normativity-consolidation-open-1-6, normativity-paper-candidates]
+children: []
 question: "Does the public normativity line reach a legitimacy theorem useful for corrigibility and the learning theorem its layers aim at?"
-owner: "@maintainer"
-roots:
-  - {id: normativity-aug9-foundation, role: shared-claim, preset: worst-case}
-  - {id: normativity-layer-I-closed, role: shared-claim, preset: worst-case}
-  - {id: traderization-arc, role: shared-claim, preset: worst-case}
-  - {id: normativity-learning-track, role: shared-claim, preset: worst-case}
-  - {id: normativity-consolidation-open-1-6, role: shared-claim, preset: worst-case}
-  - {id: normativity-paper-candidates, role: shared-claim, preset: worst-case}
+owner: "@anson"
+roots: []
+work:
+  - {kind: decision, ref: 2026-10-22--map-canonical-index-program-maintainer-handles}
+  - {kind: round, ref: prompts/2026-08-13-relational-scorekeeping-refinement}
 author: "@smithy-verity"
 size: L
 size_reason: "a line of about one hundred and eighty frozen claims, a registry and a checkpoint"
 version: 1
+superseded_by: normativity
 ---
 ## Statement
 The public normativity line, reasons-and-warrant statics, relational
@@ -41,3 +39,5 @@ legitimacy with the structural core consolidated; counterfactual non-capture
 open; the corrigibility and deference consumer downstream. The legitimacy half
 of the line is filed under the programme frame as public-legitimacy-theory and
 public-layer-II.
+
+Retired by ruling F4 (2026-10-23, one decomposition per line): every root moved to the programme of normativity whose question it bears on, or to the line frame; the table of moves is in prompts/2026-10-22-map-as-canonical/REPORT.md, *Follow-up of 2026-10-23*. The id survives as a deprecated alias of normativity.

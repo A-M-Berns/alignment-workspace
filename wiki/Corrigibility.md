@@ -7,10 +7,10 @@ theorem.  Labels: **LEAN** (a sorry-free declaration on `main`), **FIX** (an exa
 rational fixture), **PAPER** (an external theorem used at its statement), **EXT** (a
 contract the theory issues and does not pay), **OPEN**.  The specification this page
 follows is the kernel round's
-[`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md);
+[`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md)<!--ref:round:2026-09-27-corrigibility-kernel-phase2-->;
 the theorem-level statements with their Lean names are on the [Theorem Spine](Theorem-Spine)
 §10; the plain letters map to Lean names in the round's
-[`NOTATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/NOTATION.md).
+[`NOTATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/NOTATION.md)<!--ref:round:2026-09-27-corrigibility-kernel-phase2-->.
 
 ## 0. What corrigibility is
 
@@ -386,25 +386,25 @@ residual** `β` — true declared reasons no independent inquiry determined, at 
 information-cell gap on some world of every repertoire cell (`ReasonDiscovery.residual_ge_cellGap'`).
 Logical induction learns `𝔼ₙ(U_T) − 𝔼ₙ(U_full) ≲ₙ L·(α + β)` through the discovered
 comparator (`li_noncapture_chain`).  Kept apart: authorship (closed on log authenticity by
-re-execution, the registered `authorship.mediation-by-reexecution`), provenance
+re-execution, the registered `authorship.mediation-by-reexecution`<!--ref:claim:authorship.mediation-by-reexecution-->), provenance
 normalization, free amendment and trigger integrity (**OPEN**).  The full statement is the
 non-capture round's
-[`FINAL_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/FINAL_THEOREM.md).
+[`FINAL_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/FINAL_THEOREM.md)<!--ref:round:2026-09-16-noncapture-compilation-->.
 
 ## 8. The walls, exactly
 
 | wall | what it is | class |
 |---|---|---|
 | effect completeness | every agent-caused protected loss is a declared release | EXT |
-| delegation safety; allocation completeness; the reach cone | a delegated effect never removes response authority; task moves keep `J` and only floor amendments change it; the rollout relation is the physical one | EXT (the allocation floor, item 99) |
+| delegation safety; allocation completeness; the reach cone | a delegated effect never removes response authority; task moves keep `J` and only floor amendments change it; the rollout relation is the physical one | EXT (the allocation floor, item 99<!--ref:item:99-->) |
 | description faithfulness; the actuator condition | the priced sentences are about interface-supplied descriptions; every reserved resolution has an agent-independent actuator | EXT |
 | the segment gate | legitimacy supplies which judgments count | EXT (legitimacy's) |
 | the source rule's anchoring; the disclosure deadline; the duty covering known compromise; observation completeness; the provenance of choice | her meta-level data out of the agent's reach; what the agent observes and knows reaches the record | EXT |
-| count integrity | the count, the drill schedule, the audits and her evaluation channel untampered beyond what the recognizer sees; a violation never detected charges nothing | named hypothesis, item 101's companion |
+| count integrity | the count, the drill schedule, the audits and her evaluation channel untampered beyond what the recognizer sees; a violation never detected charges nothing | named hypothesis, item 101<!--ref:item:101-->'s companion |
 | the noise hypothesis; the conditional-expectation bound; the inquiry bidder; the allowance | the learning realizations' hypotheses | EXT (Azuma's content; the per-`K` tail derived) |
-| generability of the priced events; claims as priced securities | the events and claims as sentences the market prices | OPEN, items 101 and 102 |
+| generability of the priced events; claims as priced securities | the events and claims as sentences the market prices | OPEN, items 101<!--ref:item:101--> and 102 |
 | unbiasedness from feedback; exploration randomness | the exploration realization's hypotheses | PAPER; EXT by content |
-| the service and discovery residuals; representation adequacy; inquiry causal faithfulness; independence of inquiry and supply; vanishing void mass; promise recognizability; joinability | the deliberative half's charged residuals and boundaries | charged; EXT; OPEN (items 86, 87, 92, 93) |
+| the service and discovery residuals; representation adequacy; inquiry causal faithfulness; independence of inquiry and supply; vanishing void mass; promise recognizability; joinability | the deliberative half's charged residuals and boundaries | charged; EXT; OPEN (items 86<!--ref:item:86-->, 87, 92, 93) |
 
 ## Scope warning
 
@@ -423,39 +423,39 @@ the decision interface, the realized rate; not the guarantee.
 
 **Evidence.**  Effective exercise, the protocol, the protected set, revocation, the
 comparative witnesses and the post's theorem: the thin-legitimacy round's
-[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md),
-[`POST_STATEMENT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/POST_STATEMENT.md)
+[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md)<!--ref:round:2026-10-01-thin-legitimacy-and-effective-authority-->,
+[`POST_STATEMENT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/POST_STATEMENT.md)<!--ref:round:2026-10-01-thin-legitimacy-and-effective-authority-->
 and
-[`CLAIM_MAP.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/CLAIM_MAP.md)
+[`CLAIM_MAP.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/CLAIM_MAP.md)<!--ref:round:2026-10-01-thin-legitimacy-and-effective-authority-->
 with
 [`EffectiveAuthority.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/lean/Workspace/Deference/Contrib/EffectiveAuthority.lean),
 [`ShortfallSecurity.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/lean/Workspace/Deference/Contrib/ShortfallSecurity.lean)
 and
 [`PostStatement.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/lean/Workspace/Deference/Contrib/PostStatement.lean).
 The kernel: the phase-2 round's
-[`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md)
+[`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md)<!--ref:round:2026-09-27-corrigibility-kernel-phase2-->
 and
-[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/REPORT.md)
+[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/REPORT.md)<!--ref:round:2026-09-27-corrigibility-kernel-phase2-->
 with
 [`Headline.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/lean/Workspace/Deference/Spec/Headline.lean)
 and
 [`KernelExtension.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/lean/Workspace/Deference/Contrib/KernelExtension.lean);
 the phase-1 derivation and its inventory,
-[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-26-corrigibility-kernel/REPORT.md).
+[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-26-corrigibility-kernel/REPORT.md)<!--ref:round:2026-09-26-corrigibility-kernel-->.
 The landed rounds the kernel is stated over: the protected-authority theorem
-([`THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/projects/deference/rounds/2026-09-25-protected-authority-theorem/THEOREM.md)),
+([`THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/projects/deference/rounds/2026-09-25-protected-authority-theorem/THEOREM.md)<!--ref:round:2026-09-25-protected-authority-theorem-->),
 the authority module
-([`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/08d42e2d8d0b0e77002bdadb81e46b863fee88e9/projects/deference/rounds/2026-09-25-authority-module/REPORT.md)),
+([`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/08d42e2d8d0b0e77002bdadb81e46b863fee88e9/projects/deference/rounds/2026-09-25-authority-module/REPORT.md)<!--ref:round:2026-09-25-authority-module-->),
 the gate
-([`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a5efb833cfa52b9db8d981f4d0bb7f424b0c7301/projects/deference/rounds/2026-09-25-gate-is-legitimacy/REPORT.md)),
+([`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a5efb833cfa52b9db8d981f4d0bb7f424b0c7301/projects/deference/rounds/2026-09-25-gate-is-legitimacy/REPORT.md)<!--ref:round:2026-09-25-gate-is-legitimacy-->),
 the decision component and the BRIA design
-([`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/1604d43cb7de7414fc85ba6834c6dccd8021953e/projects/deference/rounds/2026-09-26-bria-corrigibility/REPORT.md)),
+([`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/1604d43cb7de7414fc85ba6834c6dccd8021953e/projects/deference/rounds/2026-09-26-bria-corrigibility/REPORT.md)<!--ref:round:2026-09-26-bria-corrigibility-->),
 after compromise
-([`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/8e59d68848f7215f2e0fccd45cade36f5b40617a/projects/deference/rounds/2026-09-26-after-compromise/REPORT.md)),
+([`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/8e59d68848f7215f2e0fccd45cade36f5b40617a/projects/deference/rounds/2026-09-26-after-compromise/REPORT.md)<!--ref:round:2026-09-26-after-compromise-->),
 the li-corrigibility round
-([`THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/THEOREM.md))
+([`THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/THEOREM.md)<!--ref:round:2026-09-15-li-corrigibility-->)
 and the corrigibilization semantics
-([`CORRIGIBILIZATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-09-mediated-repair-dominance/CORRIGIBILIZATION.md)).
+([`CORRIGIBILIZATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-09-mediated-repair-dominance/CORRIGIBILIZATION.md)<!--ref:round:2026-09-09-mediated-repair-dominance-->).
 The legitimacy the gate consumes is on [Legitimacy](Legitimacy); the learning layer on
 [Continuation BRIA](Continuation-BRIA); the Normative Inductor's contract on
 [Normative induction](Normative-Induction).  Soares et al., the CAST sequence and the

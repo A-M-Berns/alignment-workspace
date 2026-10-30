@@ -3,7 +3,7 @@ id: stage5-li-representation-theorem
 kind: frame
 children: [li-representation-theorem, li-representation-theorem.improvable, li-compatible-abstraction-theory, inferential-semantics-for-logical-udt, agency-correspondence-refuted, dd-is-conditional-independence, vingean-agency-via-abstraction, vingean-as-blackwell-dominance.improvable, intentional-stance-characterized, agency-via-endorsement-route, cartesian-frames-of-li, unify-abstraction-with-tiling, li-abstraction-tractable, vingean-or-representation-start]
 question: "Which abstraction of a logically uncertain belief state, and which simplicity argument, make it natural to interpret an observed system as a logical inductor?"
-owner: "@maintainer"
+owner: "@abram"
 roots:
   - {id: li-representation-theorem, role: plan, preset: worst-case, success_class: utopia}
   - {id: li-representation-theorem.improvable, role: shared-claim, preset: worst-case}

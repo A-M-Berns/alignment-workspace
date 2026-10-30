@@ -1,7 +1,7 @@
 ---
 id: lean-deference-audit-closed
 kind: and
-children: [market-and-traders-modeled, forcing-headlines-not-squeezes, doubly-soft-weight-class, punishing-menu-vs-public-port, lean-deference-audit-closed.complete]
+children: [item-7, item-9, item-8, item-34, lean-deference-audit-closed.complete]
 author: "@smithy-verity-opus55"
 size: M
 size_reason: "four public priority items"

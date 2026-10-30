@@ -1,0 +1,20 @@
+---
+id: deconfusing.theorem3b
+kind: and
+children: [deconfusing.theorem3b.record, deconfusing.theorem3b.bridge, deconfusing.theorem3b.complete]
+work: [{kind: round, ref: prompts/2026-10-17-post-companion-formalization}, {kind: priorities, ref: 107}]
+size: M
+size_reason: "one registry entry, its Lean declaration and its bridge"
+version: 1
+author: "@smithy-verity"
+---
+## Statement
+Inhabited by `Witness.theorem3_instance`.
+
+## Source
+projects/deference/CLAIMS.md, entry `deconfusing.theorem3b` (class lean-proved, status active, origin round 2026-10-17-post-companion-formalization; answers item 107).
+Documentation: verification: prompts/2026-10-17-post-companion-formalization/REPORT.md; context: prompts/2026-10-17-post-companion-formalization/PROMPT.md; companion: wiki/Deconfusing-Corrigibility-Companion.md.
+The signature of `Workspace.Deference.Contrib.DeconfusingCorrigibility.Sequential.theorem3b` in lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean.
+
+## Notes
+Filed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical) from the registry entry and the declaration's signature; its hypotheses are unread (ruling F1, 2026-10-23): the record's Source carries the signature verbatim, and a reader files the hypothesis leaves. Registry note: Inhabited by `Witness.theorem3_instance`. The registry's `answers_item` is the `priorities` pointer to item 107 (ruling F2).

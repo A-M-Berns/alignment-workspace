@@ -3,7 +3,7 @@ id: bli-corrigibility-thesis
 kind: frame
 children: [bli-formulation, bli-utility-undecidable-luv, pressure-as-external-trader, front-running-anticipated-pushes, generalized-lic, exact-self-trust-refuted, stop-gradient-steering-residue]
 question: "Does the corrigibility thesis have finite-time statements inside logical induction, with training pressure as an external trader?"
-owner: "@maintainer"
+owner: "@anson"
 roots:
   - {id: bli-formulation, role: plan, preset: worst-case, success_class: utopia}
   - {id: bli-utility-undecidable-luv, role: shared-claim, preset: worst-case}

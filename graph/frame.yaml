@@ -1,12 +1,13 @@
 # Frame of the argument map: the top frame's question, outcome classes, valuation nodes, settings and roots.
 question: How does the relationship between humans and AI systems go, and what can we do about it?
-owner: "@maintainer"                       # the person whose question this frame poses; a presentation input, never a permission
+narrative: wiki/Home.md                     # the page that narrates the top frame (2026-10-22)
+owner: "@anson"                       # the person whose question this frame poses; a presentation input, never a permission
 classes:                      # ruling 25, placed by the maintainer as provisional; utility null = the whole scale
-  - {id: disutility-max, utility: -1, severity: 1, placed_by: "@maintainer", provisional: true}
-  - {id: high-conflict, utility: -0.5, severity: 2, placed_by: "@maintainer", provisional: true}
-  - {id: no-interesting-life, utility: 0, severity: 3, placed_by: "@maintainer", provisional: true}
-  - {id: earth-gone-aliens-remain, utility: 0.5, severity: 4, placed_by: "@maintainer", provisional: true}
-  - {id: utopia, utility: 1, severity: 5, placed_by: "@maintainer", provisional: true}
+  - {id: disutility-max, utility: -1, severity: 1, placed_by: "@anson", provisional: true}
+  - {id: high-conflict, utility: -0.5, severity: 2, placed_by: "@anson", provisional: true}
+  - {id: no-interesting-life, utility: 0, severity: 3, placed_by: "@anson", provisional: true}
+  - {id: earth-gone-aliens-remain, utility: 0.5, severity: 4, placed_by: "@anson", provisional: true}
+  - {id: utopia, utility: 1, severity: 5, placed_by: "@anson", provisional: true}
 outside_option: default-trajectory         # a valuation node: the default trajectory (committing to no plan), ruling 27/32
 undescribed_failure: undescribed-failure    # a valuation node: where a failure nobody has described lands (every residual row)
 valuations: [default-trajectory, undescribed-failure]   # cases nodes read as distributions over the classes above
@@ -18,7 +19,7 @@ commitment: [{minutes: 12000, mass: 1, forced_by: placeholder}]
 audit_share: 0.1
 dependence: independent
 roots:
-  - {id: trust-modelling, role: plan, preset: worst-case}   # the agenda's trust-modelling plan (merge, 2026-10-05b)
+  - {id: the-program, role: plan, preset: worst-case}   # the program: one plan, seven lines (ruling M2, 2026-10-22)
   - {id: instrumental-convergence, role: risk-story, preset: probabilistic, budget: 0.5}
   - {id: corrigibility-anti-natural, role: risk-story, preset: worst-case}
   - {id: dishonest-inner-optimizers, role: risk-story, preset: worst-case}

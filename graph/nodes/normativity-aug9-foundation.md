@@ -2,6 +2,9 @@
 id: normativity-aug9-foundation
 kind: leaf
 leaf_kind: step
+narrative: wiki/Reasons-Answerability-and-the-Score.md
+work:
+  - {kind: foundation, ref: normativity.consolidation-aug9}
 author: "@smithy-verity"
 size: S
 size_reason: "one registry section"
@@ -20,4 +23,8 @@ classes of the frozen work).
 
 ## Notes
 Recorded; migrating selected claims as Lean ports is filed as open in the
-registry.
+registry. The one node standing for the foundation (Part 1 of the
+map-as-canonical round): its `foundation` pointer names the entry of
+state/foundations.json whose ledger is
+projects/normativity/consolidation-aug9/LEDGER.md; none of the 180 claims is
+filed, and which are lifted is reserved to the maintainers.

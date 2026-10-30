@@ -395,7 +395,7 @@ change, and the count of those is the size of the free choice remaining.
 | `World` | structure | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.World` |
 | `agentSetoid` | def | 2026-08-12-cartesian-frames | Lean only | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.agentSetoid` |
 | `collapse` | def | 2026-08-12-cartesian-frames | Lean only | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.collapse` |
-| `commit` | def | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.commit` |
+| `commit` | def | 2026-08-12-cartesian-frames | note, prose | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.commit` |
 | `constSection` | def | 2026-08-12-cartesian-frames | Lean only | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.constSection` |
 | `delegated` | abbrev | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.delegated` |
 | `envSetoid` | def | 2026-08-12-cartesian-frames | Lean only | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.envSetoid` |
@@ -670,7 +670,7 @@ change, and the count of those is the size of the free choice remaining.
 | `holdEF` | def | 2026-08-11-faithful-acceleration | Lean only | `Workspace.Deference.Contrib.FaithfulAcceleration.holdEF` |
 | `softInd` | def | 2026-08-11-faithful-acceleration | Lean only | `Workspace.Deference.Contrib.FaithfulAcceleration.softInd` |
 | `tradeEF` | def | 2026-08-11-faithful-acceleration | Lean only | `Workspace.Deference.Contrib.FaithfulAcceleration.tradeEF` |
-| `weight` | def | 2026-08-11-faithful-acceleration | wiki | `Workspace.Deference.Contrib.FaithfulAcceleration.weight` |
+| `weight` | def | 2026-08-11-faithful-acceleration | wiki, prose | `Workspace.Deference.Contrib.FaithfulAcceleration.weight` |
 | `weightEF` | def | 2026-08-11-faithful-acceleration | Lean only | `Workspace.Deference.Contrib.FaithfulAcceleration.weightEF` |
 | `Answer` | abbrev | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Answer` |
 | `Counted` | def | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Counted` |
@@ -746,7 +746,7 @@ change, and the count of those is the size of the free choice remaining.
 | `one` | def | 2026-09-25-gate-is-legitimacy | wiki, note, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.one` |
 | `parts` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.TraceInterface.parts` |
 | `presAt` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.presAt` |
-| `ref` | def | 2026-09-25-gate-is-legitimacy | prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.ref` |
+| `ref` | def | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.ref` |
 | `refProj` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.refProj` |
 | `refValues` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.refValues` |
 | `row1` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.row1` |
@@ -1253,7 +1253,7 @@ change, and the count of those is the size of the free choice remaining.
 | `componentTrader` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.AssessmentFirm.componentTrader` |
 | `firmTrader` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.AssessmentFirm.firmTrader` |
 | `history` | def | 2026-08-16-traderized-enforcement | wiki, prose | `Workspace.Normativity.Contrib.AssessmentFirm.history` |
-| `quote` | def | 2026-08-16-traderized-enforcement | note | `Workspace.Normativity.Contrib.AssessmentFirm.quote` |
+| `quote` | def | 2026-08-16-traderized-enforcement | note, prose | `Workspace.Normativity.Contrib.AssessmentFirm.quote` |
 | `states` | def | 2026-08-16-traderized-enforcement | wiki, note, prose | `Workspace.Normativity.Contrib.AssessmentFirm.states` |
 | `tradingFirmTrader` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.AssessmentFirm.tradingFirmTrader` |
 | `Assessment` | structure | 2026-08-16-traderized-enforcement | note | `Workspace.Normativity.Contrib.AssessmentProcess.Assessment` |
@@ -1347,7 +1347,7 @@ change, and the count of those is the size of the free choice remaining.
 | `deductiveScheduleComputation` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.DeductiveEffective.deductiveScheduleComputation` |
 | `aggregateAt` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.DeductiveEnforcement.aggregateAt` |
 | `history` | def | 2026-08-16-traderized-enforcement | wiki, prose | `Workspace.Normativity.Contrib.DeductiveEnforcement.history` |
-| `quote` | def | 2026-08-16-traderized-enforcement | note | `Workspace.Normativity.Contrib.DeductiveEnforcement.quote` |
+| `quote` | def | 2026-08-16-traderized-enforcement | note, prose | `Workspace.Normativity.Contrib.DeductiveEnforcement.quote` |
 | `realizedAggregate` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.DeductiveEnforcement.realizedAggregate` |
 | `realizedEnforcer` | def | 2026-08-16-traderized-enforcement | prose | `Workspace.Normativity.Contrib.DeductiveEnforcement.realizedEnforcer` |
 | `realizedFirm` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.DeductiveEnforcement.realizedFirm` |
@@ -1480,7 +1480,7 @@ change, and the count of those is the size of the free choice remaining.
 | `enfStatePrefix` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.EnforcedComputation.enfStatePrefix` |
 | `aggregateAt` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementPreservation.aggregateAt` |
 | `history` | def | 2026-08-16-traderized-enforcement | wiki, prose | `Workspace.Normativity.Contrib.EnforcementPreservation.history` |
-| `quote` | def | 2026-08-16-traderized-enforcement | note | `Workspace.Normativity.Contrib.EnforcementPreservation.quote` |
+| `quote` | def | 2026-08-16-traderized-enforcement | note, prose | `Workspace.Normativity.Contrib.EnforcementPreservation.quote` |
 | `realizedAggregate` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementPreservation.realizedAggregate` |
 | `realizedEnforcer` | def | 2026-08-16-traderized-enforcement | prose | `Workspace.Normativity.Contrib.EnforcementPreservation.realizedEnforcer` |
 | `realizedFirm` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementPreservation.realizedFirm` |
@@ -1538,7 +1538,7 @@ change, and the count of those is the size of the free choice remaining.
 | `softGate` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.GatedChoice.softGate` |
 | `total` | def | unrecorded | note, prose | `Workspace.Normativity.Contrib.GatedChoice.total` |
 | `u` | def | unrecorded | wiki, note, prose | `Workspace.Normativity.Contrib.GatedChoice.Witness.u` |
-| `weight` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.GatedChoice.weight` |
+| `weight` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.GatedChoice.weight` |
 | `Integrity` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.Integrity` |
 | `Local` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.Local` |
 | `LocalConservation` | structure | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.LocalConservation` |
@@ -1711,7 +1711,7 @@ change, and the count of those is the size of the free choice remaining.
 | `evaluation` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.NormativeInductionInterface.Witness.evaluation` |
 | `market` | def | unrecorded | wiki, note, prose | `Workspace.Normativity.Contrib.NormativeInductionInterface.Witness.market` |
 | `modulus` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.NormativeInductionInterface.Evaluation.modulus` |
-| `progress` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.NormativeInductionInterface.Evaluation.progress` |
+| `progress` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.NormativeInductionInterface.Evaluation.progress` |
 | `residual` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.NormativeInductionInterface.Evaluation.residual` |
 | `Affordable` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.Workload.Affordable` |
 | `Bundle` | abbrev | unrecorded | prose | `Workspace.Normativity.Contrib.NormativeInductorComposition.Bundle` |
@@ -1987,7 +1987,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Pinned` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Settlement.Pinned` |
 | `Pins` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Pins` |
 | `Refuted` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Refuted` |
-| `Seed` | structure | 2026-10-20-warrant-enforcement-semantics | wiki | `Workspace.Normativity.Contrib.SeedStatics.Seed` |
+| `Seed` | structure | 2026-10-20-warrant-enforcement-semantics | wiki, prose | `Workspace.Normativity.Contrib.SeedStatics.Seed` |
 | `Seed.HumbleItems` | def | 2026-10-20-warrant-enforcement-semantics | wiki | `Workspace.Normativity.Contrib.SeedStatics.Seed.HumbleItems` |
 | `Seed.liveStr` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Seed.liveStr` |
 | `Seed.liveSub` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Seed.liveSub` |

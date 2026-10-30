@@ -3,7 +3,7 @@ id: ledger-logic-market-logic-synthesis
 kind: frame
 children: [one-criterion, market-maker-is-li-maker-over-goods, market-maker-is-li-maker-over-goods.improvable, turnstile-is-degree-preserving-lukasiewicz, coherent-prices-are-convex-hull-of-resolutions, ledger-versus-market-differences, never-settled-standard]
 question: "Which results of a ledger formulation and of Market Logic hold as one body of mathematics, and where do the two frameworks part?"
-owner: "@maintainer"
+owner: "@abram"
 roots:
   - {id: one-criterion, role: shared-claim, preset: worst-case}
   - {id: market-maker-is-li-maker-over-goods, role: shared-claim, preset: worst-case}

@@ -167,7 +167,7 @@ by defeasible schemas rather than granted by the substrate.
 The reason state is `𝓡_n` and the normative record is `N_{≤n}`; the two are
 different objects and the ledger settled the split so that one letter cannot name
 both.
-Evidence: [the reason-representation round](https://github.com/A-M-Berns/alignment-workspace/tree/11b4d47f4e97130b78f644964652e6db4169f42c/projects/normativity/legitimacy/rounds/2026-08-23-reason-representation).
+Evidence: [the reason-representation round](https://github.com/A-M-Berns/alignment-workspace/tree/11b4d47f4e97130b78f644964652e6db4169f42c/projects/normativity/legitimacy/rounds/2026-08-23-reason-representation)<!--ref:round:2026-08-23-reason-representation-->.
 
 A successor round derives the boundary above the substrate: a normative
 transition carries a certificate citing its grounds — particular reason
@@ -210,12 +210,12 @@ arbitrary stance may be queried, but only a diary-bound stance is a
 candidate for force. And the three books do not substitute for one another:
 a reason can support an endorsement, but only the diary can establish that
 the endorsement actually occurred. Evidence:
-[the transition-certificates round](https://github.com/A-M-Berns/alignment-workspace/tree/245e4b22e30d54a8a3918452de141694fd7573ef/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates),
-its [frozen interface](https://github.com/A-M-Berns/alignment-workspace/blob/245e4b22e30d54a8a3918452de141694fd7573ef/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates/REASON_STATE_INTERFACE.md),
+[the transition-certificates round](https://github.com/A-M-Berns/alignment-workspace/tree/245e4b22e30d54a8a3918452de141694fd7573ef/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates)<!--ref:round:2026-08-23-transition-certificates-->,
+its [frozen interface](https://github.com/A-M-Berns/alignment-workspace/blob/245e4b22e30d54a8a3918452de141694fd7573ef/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates/REASON_STATE_INTERFACE.md)<!--ref:round:2026-08-23-transition-certificates-->,
 and its consumer contracts for
-[inquiry](https://github.com/A-M-Berns/alignment-workspace/blob/245e4b22e30d54a8a3918452de141694fd7573ef/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates/INQUIRY_HANDOFF.md)
+[inquiry](https://github.com/A-M-Berns/alignment-workspace/blob/245e4b22e30d54a8a3918452de141694fd7573ef/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates/INQUIRY_HANDOFF.md)<!--ref:round:2026-08-23-transition-certificates-->
 and the
-[frontier](https://github.com/A-M-Berns/alignment-workspace/blob/245e4b22e30d54a8a3918452de141694fd7573ef/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates/FRONTIER_HANDOFF.md).
+[frontier](https://github.com/A-M-Berns/alignment-workspace/blob/245e4b22e30d54a8a3918452de141694fd7573ef/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates/FRONTIER_HANDOFF.md)<!--ref:round:2026-08-23-transition-certificates-->.
 
 ## Grounds, license, and account lineage
 
@@ -332,10 +332,10 @@ evidence whose conditional adverse sensitivity above the docket is positive; an 
 frontier forces the discovery residual to zero, and the least worst-case residual any
 inquiry policy achieves is the information-cell gap of the declared repertoire
 ([Corrigibility](Corrigibility) §5; the non-capture round's
-[`DISCOVERY_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/DISCOVERY_THEOREM.md)).  Whether that frontier and
+[`DISCOVERY_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/DISCOVERY_THEOREM.md)<!--ref:round:2026-09-16-noncapture-compilation-->).  Whether that frontier and
 the record's `Do(investigate …)` obligations are one object, and which repertoires are
-witness-complete so that inquiry makes geometric progress, is `PRIORITIES.md` item 93;
-the defeater-uptake and inquiry-interface questions (items 54, 64) are the record-side
+witness-complete so that inquiry makes geometric progress, is `PRIORITIES.md` item 93<!--ref:item:93-->;
+the defeater-uptake and inquiry-interface questions (items 54<!--ref:item:54-->, 64) are the record-side
 halves of the same interface.
 
 ## External evaluation and counterfactual legitimacy
@@ -389,9 +389,9 @@ hypotheses. It does not validate the record.
 
 ## Evidence and sources
 
-- [Afoundational inquiry round and status map](https://github.com/A-M-Berns/alignment-workspace/tree/226de9c690f7879cfb17ab07f13277773757de22/projects/normativity/legitimacy/rounds/2026-08-23-afoundational-inquiry)
-- [Internal-answerability kernel](https://github.com/A-M-Berns/alignment-workspace/blob/e5de4b9c03730961154eec555153a59ec3e7462a/projects/normativity/legitimacy/rounds/2026-08-21-internal-answerability/MEMO.md)
-- [Role-parametric answerability wrapper](https://github.com/A-M-Berns/alignment-workspace/blob/e5de4b9c03730961154eec555153a59ec3e7462a/projects/normativity/legitimacy/rounds/2026-08-22-role-parametric-answerability/MEMO.md)
+- [Afoundational inquiry round and status map](https://github.com/A-M-Berns/alignment-workspace/tree/226de9c690f7879cfb17ab07f13277773757de22/projects/normativity/legitimacy/rounds/2026-08-23-afoundational-inquiry)<!--ref:round:2026-08-23-afoundational-inquiry-->
+- [Internal-answerability kernel](https://github.com/A-M-Berns/alignment-workspace/blob/e5de4b9c03730961154eec555153a59ec3e7462a/projects/normativity/legitimacy/rounds/2026-08-21-internal-answerability/MEMO.md)<!--ref:round:2026-08-21-internal-answerability-->
+- [Role-parametric answerability wrapper](https://github.com/A-M-Berns/alignment-workspace/blob/e5de4b9c03730961154eec555153a59ec3e7462a/projects/normativity/legitimacy/rounds/2026-08-22-role-parametric-answerability/MEMO.md)<!--ref:round:2026-08-22-role-parametric-answerability-->
 - [Set Cover with Delay](https://doi.org/10.4230/LIPIcs.ESA.2020.8)
 - [Adaptive Submodularity](https://arxiv.org/abs/1003.3967)
 - [Minimum Latency Submodular Cover](https://doi.org/10.1145/2987751)

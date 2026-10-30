@@ -2,7 +2,7 @@
 id: want-legitimacy-anti-meme-post
 kind: or
 children: [task-anti-meme-post-draft]
-owner: "@maintainer"
+owner: "@abram"
 want: true
 filed_from: quote
 author: "@smithy-verity"

@@ -1,7 +1,7 @@
 ---
 id: public-port-of-deference-results
 kind: or
-children: [faf-pin-bump-and-public-port, fa-public-port]
+children: [faf-pin-bump-and-public-port, item-14]
 tag: either-suffices
 author: "@smithy-verity-opus55"
 size: M

@@ -23,7 +23,7 @@ projects/deference/faf-cleanroom-2026-10-02/sources/unbounded-embedded/03-journa
 projects/deference/corrigibility-note-dump-2026-10-01/value-change-as-epistemic-update.md.
 
 ## Notes
-A shared claim of trust-modelling (the filing session's reading: picture (a) of
+A shared claim of the-program (the filing session's reading: picture (a) of
 the representability crux; the reading also ties it to the corrigibility line's
 account of detecting legitimacy). The value-change note models value
 uncertainty as event uncertainty, picture (c)'s representation. Conditioned on

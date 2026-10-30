@@ -12,3 +12,13 @@
 # The wiki's source. The hosted wiki is force-pushed from it, so a merge here
 # publishes; ownership is stated rather than inherited from the rule above.
 /wiki/ @A-M-Berns @abramdemski
+
+# The argument map's item nodes are the source PRIORITIES.md is rendered from (ruling
+# M6, 2026-10-22); the sections file beside them holds the preamble and section intros.
+# Both lists in tests/path_gate.py SPEC_PATHS and here must agree.
+/graph/nodes/item-*.md @A-M-Berns @abramdemski
+/state/priorities_sections.md @A-M-Berns @abramdemski
+
+# Per-contributor ledgers: one line per human ledger, owned by the handle's account,
+# so a pull request touching a ledger is reviewed by its owner (graph/MAP-AS-CANONICAL.md §3).
+/graph/events/anson.jsonl @A-M-Berns

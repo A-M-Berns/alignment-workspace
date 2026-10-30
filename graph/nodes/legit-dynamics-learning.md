@@ -3,7 +3,7 @@ id: legit-dynamics-learning
 kind: frame
 children: [legit-learning-theorems, legit-accumulated-odds, legit-repairable, legit-learned-from-others, legit-partial-vs-total-corruption, self-fulfilling-prophecy-as-corruption, legit-corruption-negation, counterfactual-oracle-not-special-case, legitimate-deliberation-definition, legit-endorsement-good-utility, deliberation-tracking-assumption, basin-of-attraction-legitimacy, basin-failure-modes, deliberation-fixed-points, complete-feedback-formal-model]
 question: "Under what conditions does an AI learning the humans' concept of legitimacy learn enough of it to avoid wireheading and manipulation, and can legitimacy, once lost, be repaired?"
-owner: "@maintainer"
+owner: ["@anson", "@abram"]
 roots:
   - {id: legit-learning-theorems, role: shared-claim, preset: worst-case}
   - {id: legit-accumulated-odds, role: shared-claim, preset: worst-case}

@@ -3,7 +3,7 @@ id: dynamic-conditions-for-going-well
 kind: frame
 children: [joint-process-model, trajectory-not-limit, base-rate-working-picture, erosion-under-silence, capability-beyond-oversight, values-ahead-of-capability, caution-outpaces-capability, power-bounded-by-wisdom, basin-formal-object, basin-four-questions, crux-oversight-keeps-pace, want-formal-model-of-dynamics]
 question: "Which conditions on the joint agent-and-oversight trajectory bring it to an outcome that counts as going well, and in which model are they established?"
-owner: "@maintainer"
+owner: "@anson"
 roots:
   - {id: joint-process-model, role: plan, preset: worst-case, success_class: utopia}
   - {id: trajectory-not-limit, role: shared-claim, preset: worst-case}

@@ -3,7 +3,7 @@ id: deference-toward-bounded-agents
 kind: frame
 children: [tt-mart-repair-via-bounds-transfer, step-asymptotic-to-finite-time, policy-level-total-trust, step-legitimacy-conditioned-trust]
 question: "Does the deference collapse, or an analogue of it, hold for a bounded trained agent deferring to human teachers?"
-owner: "@maintainer"
+owner: "@abram"
 roots:
   - {id: tt-mart-repair-via-bounds-transfer, role: shared-claim, preset: worst-case}
   - {id: step-asymptotic-to-finite-time, role: plan, preset: worst-case, success_class: utopia}

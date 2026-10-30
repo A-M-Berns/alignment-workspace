@@ -3,7 +3,7 @@ id: managing-misalignment-to-li
 kind: frame
 children: [mm-results-in-li, mm-theorem-3-4-li, margins-of-misalignment]
 question: "What do the results of the Managing Misalignment paper become when the novice and the expert are logical inductors?"
-owner: "@maintainer"
+owner: "@abram"
 roots:
   - {id: mm-results-in-li, role: plan, preset: worst-case, success_class: utopia}
   - {id: mm-theorem-3-4-li, role: shared-claim, preset: worst-case}

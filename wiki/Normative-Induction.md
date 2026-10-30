@@ -84,7 +84,7 @@ gets the bound.
 **Status: the static interface is Lean-proved and unregistered; the margin is a typed
 input with two routes; the dynamic case is open.  One realization now derives the whole
 uptake package rather than assuming it: the rowwise warrant realization of the
-[Normative Inductor](Normative-Inductor) (`inductor.warrant-inductor`) produces the defect
+[Normative Inductor](Normative-Inductor) (`inductor.warrant-inductor`<!--ref:claim:inductor.warrant-inductor-->) produces the defect
 as the displayed inadequate excess, the practical certificate from certified exclusion and
 margins at the realized market through the soft gate, and the work relation from the
 certificates' mass times the tolerance; its adequacy semantics — the adequate set and the
@@ -157,7 +157,7 @@ maximization.**
   Lipschitz, so the practical certificate — and Progress — hold with the composed
   constants `M = D·κ`, `ε = ε_ad + D·(θ_inq + θ_perm)` (**LEAN** `DecisionComponent`) —
   the general theorem.  Generability of the two priced events is a named hypothesis
-  (items 101 and 90), not a component of the bound.
+  (items 101<!--ref:item:101--> and 90), not a component of the bound.
 - **The dynamic layer.**  Progress is agnostic about how responses are selected.  When
   an admissible act changes the next admissible set, a myopic gated learner is safe and
   not competent against legitimate continuation policies; the learner that supplies
@@ -181,21 +181,21 @@ market conformance.
 **Evidence.** The evaluation on the accounted state, `PracticalCert`, the uptake
 package and the bound are
 [`NormativeInductionInterface.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/lean/Workspace/Normativity/Contrib/NormativeInductionInterface.lean),
-registered as `ni.progress-bound`; the finite algebra and the endpoint separation are
+registered as `ni.progress-bound`<!--ref:claim:ni.progress-bound-->; the finite algebra and the endpoint separation are
 [`NormativeInductorComposition.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/lean/Workspace/Normativity/Contrib/NormativeInductorComposition.lean),
-registered as `progress.edge-bound`, `progress.edge-bound-quadratic` and
-`progress.headline-separation`. The minimal certificate and the joint-compatibility
+registered as `progress.edge-bound`<!--ref:claim:progress.edge-bound-->, `progress.edge-bound-quadratic`<!--ref:claim:progress.edge-bound-quadratic--> and
+`progress.headline-separation`<!--ref:claim:progress.headline-separation-->. The minimal certificate and the joint-compatibility
 analysis are the practical certificate round's
-[`CERTIFICATE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-05-practical-certificate/CERTIFICATE.md)
+[`CERTIFICATE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-05-practical-certificate/CERTIFICATE.md)<!--ref:round:2026-09-05-practical-certificate-->
 and
-[`JOINT_COMPATIBILITY.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-05-practical-certificate/JOINT_COMPATIBILITY.md).
+[`JOINT_COMPATIBILITY.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-05-practical-certificate/JOINT_COMPATIBILITY.md)<!--ref:round:2026-09-05-practical-certificate-->.
 The decision interface — the adapter abstraction, the soft gate with its sharp constant,
 the hard-gate witness, the two margin routes and the inquiry wrapper — is
 [`GatedChoice.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/ab260c0eade2f39de7c06a5ac58649945d66c9ab/lean/Workspace/Normativity/Contrib/GatedChoice.lean),
 with the register in the decision-theory-bill round's
-[`DECISION_THEORY_BILL.md`](https://github.com/A-M-Berns/alignment-workspace/blob/ab260c0eade2f39de7c06a5ac58649945d66c9ab/projects/deference/rounds/2026-09-06-decision-theory-bill/DECISION_THEORY_BILL.md)
+[`DECISION_THEORY_BILL.md`](https://github.com/A-M-Berns/alignment-workspace/blob/ab260c0eade2f39de7c06a5ac58649945d66c9ab/projects/deference/rounds/2026-09-06-decision-theory-bill/DECISION_THEORY_BILL.md)<!--ref:round:2026-09-06-decision-theory-bill-->
 and
-[`NORMATIVE_CHOICE_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/ab260c0eade2f39de7c06a5ac58649945d66c9ab/projects/deference/rounds/2026-09-06-decision-theory-bill/NORMATIVE_CHOICE_THEOREM.md);
+[`NORMATIVE_CHOICE_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/ab260c0eade2f39de7c06a5ac58649945d66c9ab/projects/deference/rounds/2026-09-06-decision-theory-bill/NORMATIVE_CHOICE_THEOREM.md)<!--ref:round:2026-09-06-decision-theory-bill-->;
 its declarations are unregistered.
 The fixed-era instances — one era, one settled semantics — are on
 [Progress](Progress), [Serviceability](Serviceability) and

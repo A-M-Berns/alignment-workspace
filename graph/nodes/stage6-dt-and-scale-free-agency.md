@@ -3,7 +3,7 @@ id: stage6-dt-and-scale-free-agency
 kind: frame
 children: [decision-theory-in-stage5-setting, scale-free-agency, cooperative-equilibria-as-agents]
 question: "Which decision theory, set in the Stage 5 object, and which notion of scale-free agency characterize approximate cooperative equilibria as agents, with advice for steering toward them?"
-owner: "@maintainer"
+owner: "@abram"
 roots:
   - {id: decision-theory-in-stage5-setting, role: plan, preset: worst-case, success_class: utopia}
   - {id: scale-free-agency, role: plan, preset: worst-case, success_class: utopia}

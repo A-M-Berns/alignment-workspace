@@ -11,3 +11,9 @@ lean/.lake
 # as an embedded repository, which git reports in a hint rather than an error
 # and which every gate here passes.
 .claude/
+
+# The two large generated files of the argument map (ruling F3, 2026-10-23):
+# written by the plain checker run, kept by CI as artifacts and published to the
+# branch `derived`; graph/versions.json records their derivation hashes.
+graph/derived.json
+graph/index.json

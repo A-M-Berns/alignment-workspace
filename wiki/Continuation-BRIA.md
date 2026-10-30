@@ -3,7 +3,7 @@
 Bounded inductive rationality lifted from one-step choices to temporally extended
 continuations, without counterfactual reward tables and without surrendering the
 constitutional gate.  This page is the canonical statement; the round it consolidates is
-[`2026-09-08-continuation-bria`](https://github.com/A-M-Berns/alignment-workspace/tree/46079962804357e852140fab3bd07e268b8c27a1/projects/deference/rounds/2026-09-08-continuation-bria)
+[`2026-09-08-continuation-bria`](https://github.com/A-M-Berns/alignment-workspace/tree/46079962804357e852140fab3bd07e268b8c27a1/projects/deference/rounds/2026-09-08-continuation-bria)<!--ref:round:2026-09-08-continuation-bria-->
 and its Lean core is
 [`ContinuationBRIA.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/46079962804357e852140fab3bd07e268b8c27a1/lean/Workspace/Deference/Contrib/ContinuationBRIA.lean).
 
@@ -315,10 +315,10 @@ the average exchange rate plus the exploration mass times the honest exploration
 `(B(K) + M(K))/(ϖ Σ w_k)` (`realized_rate`).  Continuation BRIA is the realization with
 no exploration and `B(K) = ρ 𝒜_K` from the opening-timing overestimation bound
 (`briaInterface`, `bria_rate`), which is the per-block bound above recovered exactly.
-What this page's open coupling (item 102, re-scoped) still asks sharpens `B(K)` for this
+What this page's open coupling (item 102<!--ref:item:102-->, re-scoped) still asks sharpens `B(K)` for this
 realization and nothing in the headline waits on it; the learner-level question is item
 103.  Specification:
-[`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md) §6.
+[`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md)<!--ref:round:2026-09-27-corrigibility-kernel-phase2--> §6.
 
 ## 9. Open
 
@@ -332,7 +332,7 @@ realization and nothing in the headline waits on it; the learner-level question 
 - The coupling with [Logical Induction](Logical-Induction-and-Deference): LI predicts and
   enforces; BRIA allocates realized experiments among continuations; a prediction that
   becomes an accountable claim is the bridge, and it is not yet a theorem.  What it needs
-  (item 102): block claims as sentences or bounded variables the market prices, the
+  (item 102<!--ref:item:102-->): block claims as sentences or bounded variables the market prices, the
   auction's feasibility stated against prices rather than wealth, and a claim's settlement
   at a test as an assessed world.  The evaluation decomposition above is the partial
   answer: the forecast part of a bid is already the market's (the prices), and what the
@@ -345,7 +345,7 @@ realization and nothing in the headline waits on it; the learner-level question 
 
 ## Evidence
 
-- [`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/46079962804357e852140fab3bd07e268b8c27a1/projects/deference/rounds/2026-09-08-continuation-bria/REPORT.md) and [`PRESSURE_PASS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/46079962804357e852140fab3bd07e268b8c27a1/projects/deference/rounds/2026-09-08-continuation-bria/PRESSURE_PASS.md) — five passes, each correcting the last; the corrections are recorded in place.
-- [`WEIGHTED_BRIA.md`](https://github.com/A-M-Berns/alignment-workspace/blob/46079962804357e852140fab3bd07e268b8c27a1/projects/deference/rounds/2026-09-08-continuation-bria/WEIGHTED_BRIA.md) — the construction, the three layers of the existence theorem, the settlement-timing negative.
-- [`GROWING_HORIZON.md`](https://github.com/A-M-Berns/alignment-workspace/blob/46079962804357e852140fab3bd07e268b8c27a1/projects/deference/rounds/2026-09-08-continuation-bria/GROWING_HORIZON.md) and [`POLICY_REGRET_FRONTIER.md`](https://github.com/A-M-Berns/alignment-workspace/blob/46079962804357e852140fab3bd07e268b8c27a1/projects/deference/rounds/2026-09-08-continuation-bria/POLICY_REGRET_FRONTIER.md) — the competence hierarchy and the three bridges.
-- [`COUNTERMODELS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/46079962804357e852140fab3bd07e268b8c27a1/projects/deference/rounds/2026-09-08-continuation-bria/COUNTERMODELS.md) — the exact fixtures, run by the round's `tests/run.py`.
+- [`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/46079962804357e852140fab3bd07e268b8c27a1/projects/deference/rounds/2026-09-08-continuation-bria/REPORT.md)<!--ref:round:2026-09-08-continuation-bria--> and [`PRESSURE_PASS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/46079962804357e852140fab3bd07e268b8c27a1/projects/deference/rounds/2026-09-08-continuation-bria/PRESSURE_PASS.md)<!--ref:round:2026-09-08-continuation-bria--> — five passes, each correcting the last; the corrections are recorded in place.
+- [`WEIGHTED_BRIA.md`](https://github.com/A-M-Berns/alignment-workspace/blob/46079962804357e852140fab3bd07e268b8c27a1/projects/deference/rounds/2026-09-08-continuation-bria/WEIGHTED_BRIA.md)<!--ref:round:2026-09-08-continuation-bria--> — the construction, the three layers of the existence theorem, the settlement-timing negative.
+- [`GROWING_HORIZON.md`](https://github.com/A-M-Berns/alignment-workspace/blob/46079962804357e852140fab3bd07e268b8c27a1/projects/deference/rounds/2026-09-08-continuation-bria/GROWING_HORIZON.md)<!--ref:round:2026-09-08-continuation-bria--> and [`POLICY_REGRET_FRONTIER.md`](https://github.com/A-M-Berns/alignment-workspace/blob/46079962804357e852140fab3bd07e268b8c27a1/projects/deference/rounds/2026-09-08-continuation-bria/POLICY_REGRET_FRONTIER.md)<!--ref:round:2026-09-08-continuation-bria--> — the competence hierarchy and the three bridges.
+- [`COUNTERMODELS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/46079962804357e852140fab3bd07e268b8c27a1/projects/deference/rounds/2026-09-08-continuation-bria/COUNTERMODELS.md)<!--ref:round:2026-09-08-continuation-bria--> — the exact fixtures, run by the round's `tests/run.py`.

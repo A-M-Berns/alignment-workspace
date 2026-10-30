@@ -3,7 +3,7 @@ id: updateless-dt-programme
 kind: frame
 children: [computational-updatelessness-direct, indirect-route-learned-updatelessness, counterfactuals-for-embedded-agents, decision-problems-formal-core, udt-tiling-foundations, open-minded-updatelessness, geometric-rationality-value-uncertainty, udt-representation-theorem, coordination-with-others, branch-reality-reading, total-trust-is-updateful, updateful-about-values, optimality-is-subject-matter, observing-beliefs-only-observation, sist-single-instance-success, updateful-when-appropriate, updateful-when-appropriate-li, bli-exactness-limits, bli-sources-refuted, counterfactual-mugging-with-evidence, cdt-defined-for-learner, two-lesions-propositions-checked, dp-dutch-book-done, learning-versus-freezing, udt101-influence-calculus, harmony-as-bargaining, geometric-udt-construction, vingean-tiling-content, indirect-route-impossibility, one-shot-verdicts-wanted, branch-reality-decays, relate-optimality-to-tiling, bli-as-heuristic-estimator, feedback-generality-tradeoff, bli-picture-improvable, li-bria-spec-improvable, formal-core-improvable, udt-tiling-improvable, udt-rep-improvable, dt-readme-entry-points]
 question: "Which decision theory for computationally uncertain agents on the updateless side is tractable, and which of its results bear on AI safety engineering?"
-owner: "@maintainer"
+owner: "@abram"
 roots:
   - {id: computational-updatelessness-direct, role: plan, preset: worst-case, success_class: utopia}
   - {id: indirect-route-learned-updatelessness, role: plan, preset: worst-case, success_class: utopia}
@@ -66,7 +66,7 @@ projects/deference/faf-cleanroom-2026-10-02/sources/unbounded-embedded/01-primar
 section Updatelessness.
 
 ## Notes
-A programme, filed as a sub-frame of trust-modelling: a frame node whose
+A programme, filed as a sub-frame of the-program: a frame node whose
 children are its own roots. Nine roots are the line's mid-level goals as plan
 roots, each an `or` over the routes the repository's work takes toward it; the
 decomposition into those nine is the filing session's reading of the public
@@ -76,6 +76,6 @@ finite theorems of the clean-room run that the plans build on, the cruxes that
 live inside the line, and the improvement claim of each plan. The
 two cruxes that re-rank this programme against the updateful plan,
 li-updatelessness-tractable and updateless-engineering-value, are roots of
-trust-modelling, not of this frame, because the comparison they move is the
+the-program, not of this frame, because the comparison they move is the
 parent's. No want is filed for collaborators on this side. Classes,
 the outside option and the undescribed-failure valuation are the top frame's.

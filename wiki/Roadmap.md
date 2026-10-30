@@ -10,30 +10,30 @@ market-maker route, and it is stated over the infinite market at every date rath
 than over a finite model.
 
 - Compile a normative record into a region a market can be made to respect, with
-  the liability its exclusions induce — item 39. This is the one arrow between the
+  the liability its exclusions induce — item 39<!--ref:item:39-->. This is the one arrow between the
   force layer and the rest of the line, and without it traderized force is a
   result about deduction wearing a general name.
-- Settle whether bounded cumulative enforcement liability is necessary — item 40 —
-  and whether either sufficient route to it is — item 45.
-- Close the exactness half of intrinsic conformance in the kernel — item 49.
+- Settle whether bounded cumulative enforcement liability is necessary — item 40<!--ref:item:40--> —
+  and whether either sufficient route to it is — item 45<!--ref:item:45-->.
+- Close the exactness half of intrinsic conformance in the kernel — item 49<!--ref:item:49-->.
 - Find a row family for coherence that is efficiently presentable, or show none is
-  — item 42; and settle whether force cost can be made presentation-independent —
-  item 46.
-- Extract the clearest abstract theorems from the finite models — items 4 and 5.
+  — item 42<!--ref:item:42-->; and settle whether force cost can be made presentation-independent —
+  item 46<!--ref:item:46-->.
+- Extract the clearest abstract theorems from the finite models — items 4<!--ref:item:4--> and 5.
 - Run an end-to-end pipeline round: instantiate the module representation,
   discharge each module's hypotheses separately, include negative controls —
-  item 35, which the maintainer will specify.
-- Supply a substantive relational instantiation of `Due` — item 55 — and prove
+  item 35<!--ref:item:35-->, which the maintainer will specify.
+- Supply a substantive relational instantiation of `Due` — item 55<!--ref:item:55--> — and prove
   substantive soundness for a useful `Licensed` relation without deriving licence
-  from performance — item 56.
+  from performance — item 56<!--ref:item:56-->.
 - Finish the reason-state freeze: a checker for the applicability-in-source
-  convention — item 57 — an account of which applicabilities persist, and the
-  composition with the record calculus — item 58.
+  convention — item 57<!--ref:item:57--> — an account of which applicabilities persist, and the
+  composition with the record calculus — item 58<!--ref:item:58-->.
 - Develop a repair-language coverage account rich enough to support the
   interpretation of immanent self-correction, a general bounded performance
-  interface, and a separate coverage argument — items 32 and 33.
+  interface, and a separate coverage argument — items 32<!--ref:item:32--> and 33.
 - Supply an auditability transport object for burdens stated across vocabulary
-  change, and record and budget learner computation and policy state — item 30's
+  change, and record and budget learner computation and policy state — item 30<!--ref:item:30-->'s
   residue.
 
 ## Legitimacy
@@ -47,23 +47,23 @@ the generic theory, and nothing in the second is a conceptual gap.
 
 **Genuine research** — unsolved mathematics.
 
-1. **Convex representability and compiler completeness** — item 79. Which anchored
+1. **Convex representability and compiler completeness** — item 79<!--ref:item:79-->. Which anchored
    requirements admit a sound finite rational-row realization over a security
    fragment, and a compiler complete for a declared class. Soundness and conflict
    certification are landed; representability of any nontrivial class is not.
-2. **Affordable service on an adaptive docket** — item 80. The predictable-window
+2. **Affordable service on an adaptive docket** — item 80<!--ref:item:80-->. The predictable-window
    scheduler is proved; closed-loop, adversarial, or growing dockets have no theorem.
-3. **Quantitative semantic transport** — item 76. A local law fixes what must be
+3. **Quantitative semantic transport** — item 76<!--ref:item:76-->. A local law fixes what must be
    transported through a representation change; the constants that enter the error
    term are not generated from it.
-4. **A jointly compatible practical-response ecology** — item 81. An adapter
+4. **A jointly compatible practical-response ecology** — item 81<!--ref:item:81-->. An adapter
    certifying every edge into a service occurrence against one realized response,
    for a declared obligation class.
 5. **Liveness under endogenous contest.** Summability of contest durations is shown
    only for exogenous durations.
-6. **Aggregation laws with several parents** — item 82 — only if an application
+6. **Aggregation laws with several parents** — item 82<!--ref:item:82--> — only if an application
    needs them; filed as a boundary, not a problem.
-7. **Margin realization** — item 85. The decision adapter needs a positive adequacy
+7. **Margin realization** — item 85<!--ref:item:85-->. The decision adapter needs a positive adequacy
    margin at the occasion, compiled at the region point or displayed by the market;
    neither route is established at a realized market, and adequacy known only through
    later settlement has no averaged bridge.
@@ -72,7 +72,7 @@ the generic theory, and nothing in the second is a conceptual gap.
 
 - a `Protocol` implemented over an event log, and the builder that turns a real
   history into an Integrity evolution with its accounts — **built** by the
-  [evaluation-ecosystem round](https://github.com/A-M-Berns/alignment-workspace/tree/57b373bfe542d0c7b1ee78ba7e170fade4cc9003/projects/deference/rounds/2026-09-09-evaluation-ecosystem-realization)
+  [evaluation-ecosystem round](https://github.com/A-M-Berns/alignment-workspace/tree/57b373bfe542d0c7b1ee78ba7e170fade4cc9003/projects/deference/rounds/2026-09-09-evaluation-ecosystem-realization)<!--ref:round:2026-09-09-evaluation-ecosystem-realization-->
   (`EvaluationEcosystem.lean`: propagation proved a function of the log, activation
   a reading of it, `LocalLegit` by projection on a real trace);
 - the compiler for the declared schema, and effective rows-to-vertices for the
@@ -88,7 +88,7 @@ the generic theory, and nothing in the second is a conceptual gap.
 - settlement: interface authenticity and source trust, two separate inputs;
 - the declared coverage scope, intervention class, coupling, and protected
   principal or relation, and a certified Robust Openness at each state under them —
-  item 59 is its oldest form;
+  item 59<!--ref:item:59--> is its oldest form;
 - semantic authentication of the protocol's predicates and of every local law's two
   maps;
 - the practical semantics: `PracticalCert` for each served edge against the one
@@ -114,13 +114,13 @@ repair recorded in the decision ledger.
 
 The standing legitimacy items from before the canonicalization:
 
-- Compile versioned `May` rules into certificate-checkable scopes — item 53 —
+- Compile versioned `May` rules into certificate-checkable scopes — item 53<!--ref:item:53--> —
   which is where substantive authorization content lives, now supplied through the
   protocol's warrants.
 - State what a practice owes by way of taking up defeaters, so that basis loss is
-  detectable rather than merely defined — item 54.
-- Exhibit a practice producing a burden an advisor cannot select within — item 59.
-- What licenses authorized disposition — item 77 — whose coalition limit is what the
+  detectable rather than merely defined — item 54<!--ref:item:54-->.
+- Exhibit a practice producing a burden an advisor cannot select within — item 59<!--ref:item:59-->.
+- What licenses authorized disposition — item 77<!--ref:item:77--> — whose coalition limit is what the
   protected-principal ruling decides.
 
 ## Deference
@@ -141,47 +141,47 @@ adequacy, physical effect completeness, causal faithfulness of declared inquiry 
 transforms, dynamic competence — not another corrigibility mechanism.  The
 legitimate-deference stack is its principal evaluation, realized in the evaluation
 ecosystem with the authorship clause closed on log authenticity
-(`authorship.mediation-by-reexecution`, registered); what remains of item 87 is
+(`authorship.mediation-by-reexecution`<!--ref:claim:authorship.mediation-by-reexecution-->, registered); what remains of item 87<!--ref:item:87--> is
 selection-induced sealing and vanishing void mass.  The items below are what the two
 targets still need.
 
-- Sealed comparison — item 89: an architecture under which the directional mismatch
+- Sealed comparison — item 89<!--ref:item:89-->: an architecture under which the directional mismatch
   mass `E[c_raw ∧ ¬c_corr]` of the constitutional comparison of `{π, 𝔠π}` is small for
   every continuation in `Π(h)`; sequenced settlement gives zero at the price of an
   ex-ante judgment, a hindsight evaluator under a physical factorization another; the
   ecosystem realizes neither yet.
-- The generability certificate of the finite-menu weighting — item 90 — so that T3′ is
+- The generability certificate of the finite-menu weighting — item 90<!--ref:item:90--> — so that T3′ is
   mechanized end to end as T3 is.
 - An oracle-relativized inductor for empirical settlement of activated securities —
-  item 91 — the feedback boundary's missing ingredient, not a hypothesis of the nucleus.
-- The residual clauses of the realization bill — item 87: sealing of the advisor's
+  item 91<!--ref:item:91--> — the feedback boundary's missing ingredient, not a hypothesis of the nucleus.
+- The residual clauses of the realization bill — item 87<!--ref:item:87-->: sealing of the advisor's
   whole selection-conditioned continuation, and `η_n → 0`; the liveness clause's
   exercise half is the suffix-cut service theorem and its discovery half the
   information-cell theorem.
 - The realization's protection rule (which declared reasons to protect: a servable set
-  of largest adverse mass) and the general-cost service optimum — item 92.
+  of largest adverse mass) and the general-cost service optimum — item 92<!--ref:item:92-->.
 - A realizable inquiry repertoire with certified zero information-cell gap, witness
   completeness for geometric progress, and the identification of the inquiry frontier
-  with the record's docketed inquiry obligations — item 93.
+  with the record's docketed inquiry obligations — item 93<!--ref:item:93-->.
 - Promise recognizability, joinability certificates for the slow lane, and their
-  composition into corrigible policy competence — item 86.
-- The Lean form of eligible liveness and the laundered-loss case split — item 83.
-- The latent-value bridge behind selected trust — item 84 — open as a theorem about
+  composition into corrigible policy competence — item 86<!--ref:item:86-->.
+- The Lean form of eligible liveness and the laundered-loss case split — item 83<!--ref:item:83-->.
+- The latent-value bridge behind selected trust — item 84<!--ref:item:84--> — open as a theorem about
   independently specified operative values and not needed by the score-based chooser.
 - Decide whether the candidate objects for what foreclosure loses are enough for
-  that question to graduate, and what succeeds item 28.
+  that question to graduate, and what succeeds item 28<!--ref:item:28-->.
 - Endpoint preservation is ruled out (`DECISIONS.md`, 2026-09-08); the older target's
-  one remaining decision is what succeeds item 28.
+  one remaining decision is what succeeds item 28<!--ref:item:28-->.
 - Build a corrigibility model with temporal depth, a principal-exclusive effect,
-  and protection across the declared class of advisor policies — item 27, with
-  the two exact requirements item 60 established as currently unmet.
+  and protection across the declared class of advisor policies — item 27<!--ref:item:27-->, with
+  the two exact requirements item 60<!--ref:item:60--> established as currently unmet.
 - Find a representation that protects corrective authority without allowing
-  self-awarded grants to launder a theorem-facing loss — item 22.
+  self-awarded grants to launder a theorem-facing loss — item 22<!--ref:item:22-->.
 - Add the resource-indexed process and authorization/capability structure needed
-  to connect Logical-Induction-native deference to corrigibility — items 24
+  to connect Logical-Induction-native deference to corrigibility — items 24<!--ref:item:24-->
   and 25.
 - Settle which route to Value the line's target should be, given that the
-  hard-selector route does not survive the punishment menus — items 14 and 34.
+  hard-selector route does not survive the punishment menus — items 14<!--ref:item:14--> and 34.
 
 Effect completeness and the authorization primitive are external contracts of the
 corrigibilization theorem, restated from the architecture round's containment wall,

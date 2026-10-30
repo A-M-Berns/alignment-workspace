@@ -179,10 +179,10 @@ real practice produces.
 ---
 
 **Evidence.** The round is
-[`2026-08-31-normative-affordability`](https://github.com/A-M-Berns/alignment-workspace/tree/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability),
+[`2026-08-31-normative-affordability`](https://github.com/A-M-Berns/alignment-workspace/tree/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability)<!--ref:round:2026-08-31-normative-affordability-->,
 with the endpoint theorem in
-[`SHARP_TIMELY_SERVICE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/SHARP_TIMELY_SERVICE.md)
+[`SHARP_TIMELY_SERVICE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/SHARP_TIMELY_SERVICE.md)<!--ref:round:2026-08-31-normative-affordability-->
 and a list of everything the round withdrew in
-[`CONSISTENCY_AUDIT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/CONSISTENCY_AUDIT.md).
+[`CONSISTENCY_AUDIT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/CONSISTENCY_AUDIT.md)<!--ref:round:2026-08-31-normative-affordability-->.
 The dry canonical statement is the
 [September checkpoint](https://github.com/A-M-Berns/alignment-workspace/tree/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/legitimacy/checkpoint-2026-09-01).

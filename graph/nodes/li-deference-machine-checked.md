@@ -3,7 +3,7 @@ id: li-deference-machine-checked
 kind: frame
 children: [lean-deference-audit-closed, cleanroom-deference-followups, public-port-of-deference-results, lean-deference-audit-findings, cleanroom-deference-headlines, registry-policy-for-ported-results, crux-cleanroom-citable]
 question: "Which machine-checked statements over a formalized logical induction criterion establish the li-deference results as the prose states them?"
-owner: "@maintainer"
+owner: "@abram"
 roots:
   - {id: lean-deference-audit-closed, role: plan, preset: worst-case, success_class: utopia}
   - {id: cleanroom-deference-followups, role: plan, preset: worst-case, success_class: utopia}

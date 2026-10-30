@@ -1,7 +1,7 @@
 ---
 id: public-layer-II
 kind: and
-children: [semantic-transport-modulus, authorized-disposition, counterfactual-non-capture, legitimacy-deference-instantiation, public-layer-II.complete]
+children: [item-76, item-77, counterfactual-non-capture, legitimacy-deference-instantiation, public-layer-II.complete]
 author: "@smithy-verity"
 size: L
 size_reason: "the checkpoint's shortest path, five steps"

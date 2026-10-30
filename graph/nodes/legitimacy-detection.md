@@ -3,7 +3,7 @@ id: legitimacy-detection
 kind: frame
 children: [hull-condition-total-trust, legitimacy-detection-load, legitimacy-conditioned-reflection, local-criterion-three-cells, crux-legitimacy-anchor, crux-ahead-of-time-resistance-label, crux-legitimacy-detection-attainable, unlearnable-legitimacy-constraint, binary-shutdown-reading-tie-consistent, legitimate-versus-legitimizing, no-forced-other-trust, li-deference-corrigibility-expectation, legitimacy-blocks-wireheading, wirehead-decline-toy, corrigibility-derived-definition-v1, fn65-corpus-corrections, want-legitimacy-corrigibility-theorems]
 question: "What anchors legitimacy, and can an agent's beliefs about which modifications are legitimate be made accurate enough at high capability?"
-owner: "@maintainer"
+owner: "@anson"
 roots:
   - {id: hull-condition-total-trust, role: plan, preset: worst-case, success_class: utopia}
   - {id: legitimacy-detection-load, role: shared-claim, preset: worst-case}
