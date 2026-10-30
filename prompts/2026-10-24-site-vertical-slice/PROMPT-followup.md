@@ -105,3 +105,12 @@ Further directives of the same conversation, verbatim:
 
 > remove "of the research" from goal/thread and reconsider once more the basic visual
 > layout to just push it to the next level in ui/ux visually
+
+> i feel like placements are random clusters rn which is not very helpful. and the node
+> should encompass the label text and be larger size, and more space locally between
+> nodes. make the flow edges the only kind of edge maybe? or other ones should be sparser
+> and dashes lines maybe
+> the read more popup page for each should be a combination like maybe multi pane view of
+> a collection of PRs along with the fundamental wiki concepts, also perhaps with a
+> clearly distinguished section on every page between core theoretical concepts and core
+> mathematical formalism concepts

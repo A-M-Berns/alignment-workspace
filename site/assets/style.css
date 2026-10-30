@@ -208,3 +208,25 @@ svg#map g.dot.program text { font-size: 13px; fill: var(--accent); }
 #map-card { animation: cardin 0.16s ease; border-radius: 12px; }
 @keyframes cardin { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 #map-panel .frag, #map-panel .pr-summary { max-width: 46rem; }
+/* capsule nodes in columnar flow */
+svg#map g.cap { cursor: pointer; transition: opacity 0.22s ease; }
+svg#map g.cap .pill { fill: color-mix(in srgb, currentColor 9%, #141417); stroke: color-mix(in srgb, currentColor 50%, transparent); stroke-width: 1px; transition: stroke 0.16s ease, fill 0.16s ease; }
+svg#map g.cap:hover .pill { fill: color-mix(in srgb, currentColor 16%, #16161a); stroke: currentColor; }
+svg#map g.cap .cap-title { fill: #e4e4df; font-family: var(--sans); font-weight: 520; pointer-events: none; }
+svg#map g.cap.program .pill { stroke: var(--accent); stroke-width: 1.5px; fill: color-mix(in srgb, var(--accent) 13%, #16161a); }
+svg#map g.cap.program .cap-title { fill: var(--accent); font-weight: 650; }
+svg#map g.cap .nsub { display: none; fill: #74746d; font-family: var(--sans); font-weight: 400; pointer-events: none; paint-order: stroke; stroke: #0e0e10; stroke-width: 3px; stroke-linejoin: round; }
+svg#map.zoomed g.cap .nsub, svg#map g.cap:hover .nsub, svg#map g.cap.nb .nsub { display: block; }
+svg#map g.scene.focus g.cap:not(.nb) { opacity: 0.2; }
+svg#map .net-edge.undirected .wire { stroke-dasharray: 3 5; opacity: 0.1; }
+svg#map .net-edge.undirected:hover .wire, svg#map .net-edge.undirected.lit .wire { opacity: 0.45; }
+/* the two-pane full view */
+.pane2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(16rem, 23rem); gap: 2.2em; align-items: start; }
+.pane-side { border-left: 1px solid var(--rule); padding-left: 1.4em; font-size: 0.9rem; }
+.pane-side .side-group { margin-bottom: 1.3em; }
+.pane-side h2 { margin-top: 0.4em; }
+.pane-side .whyline { font-size: 0.78rem; }
+.pane-side .dirmark { color: var(--accent); opacity: 0.7; }
+.pane-side details.pr-digest summary { font-size: 0.84rem; }
+@media (max-width: 52rem) { .pane2 { grid-template-columns: 1fr; } .pane-side { border-left: none; padding-left: 0; } }
+#map-panel .frag { max-width: none; }

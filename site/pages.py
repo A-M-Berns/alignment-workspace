@@ -449,28 +449,49 @@ def wiki_page(site: Site, name: str) -> str:
     return layout(site, name.replace("-", " "), "\n".join(body), [("wiki", "/wiki/")])
 
 
+def concept_side(site: Site, cid: str) -> str:
+    """The side pane every concept's full view carries: its connections split between core theory
+    (goals and philosophical concepts), core formalism (constructions and mathematical objects) and
+    sources (prior work), each with the link's why; then the merged work tagged to it, newest first."""
+    r = site.repo
+    e = r.concepts[cid]
+    groups: dict[str, list[str]] = {"Core theory": [], "Core formalism": [], "Sources": []}
+    bucket = {"goal": "Core theory", "philosophy": "Core theory", "construction": "Core formalism",
+              "object": "Core formalism", "work": "Sources"}
+    for L in r.concept_links:
+        other = L["to"] if L["from"] == cid else L["from"] if L["to"] == cid else None
+        if not other or other not in r.concepts:
+            continue
+        o = r.concepts[other]
+        target = site.url("wiki", o["wiki"]) if o.get("wiki") else site.url("concepts", other)
+        arrow = "↔" if L.get("undirected") else ("←" if L["to"] == cid else "→")
+        groups[bucket.get(o.get("kind", ""), "Core theory")].append(
+            f'<li><span class="dirmark">{arrow}</span> <a href="{target}">{esc(o.get("title", other))}</a>'
+            f'<br><span class="muted whyline">{esc(str(L.get("why") or ""))}</span></li>')
+    out = []
+    for gname in ("Core theory", "Core formalism", "Sources"):
+        if groups[gname]:
+            out.append(f"<section class=\"side-group\"><h2>{gname}</h2><ul class=\"listing\">" + "".join(groups[gname]) + "</ul></section>")
+    related = [(num, P) for num, P in sorted(r.prs.items(), key=lambda kv: (str(kv[1].get("merged") or ""), int(kv[0])), reverse=True)
+               if e.get("wiki") and e["wiki"] in ((P.get("topics") or {}).get("wiki") or [])]
+    if related:
+        out.append("<section class=\"side-group\"><h2>Merged work</h2>" + "".join(pr_digest_details(site, num) for num, _ in related) + "</section>")
+    return "\n".join(out)
+
+
 def concept_body(site: Site, cid: str) -> str:
-    """A registry concept's detail: its blurb, kind, source, typed links onward, and the map nodes it cites.
-    Entries backed by a wiki page use that page's fragment instead; this is for the rest of the network."""
+    """A registry concept's full view: the content pane (blurb, source, map refs — or the wiki page where
+    one backs it) beside the connections-and-merged-work pane of concept_side."""
     r = site.repo
     e = r.concepts[cid]
     kind_label_ = r.concept_kinds.get(e.get("kind", ""), e.get("kind", ""))
-    body = [f'<p class="subtitle">{esc(kind_label_)}</p>', f'<div class="pr-summary"><p>{esc(str(e.get("blurb") or ""))}</p></div>']
+    main = [f'<p class="subtitle">{esc(kind_label_)}</p>', f'<div class="pr-summary"><p>{esc(str(e.get("blurb") or ""))}</p></div>']
     if e.get("url"):
-        body.append(f'<p><a href="{esc(e["url"])}">{esc(e["url"])}</a></p>')
-    rels = []
-    for L in r.concept_links:
-        other = L["to"] if L["from"] == cid else L["from"] if L["to"] == cid else None
-        if other and other in r.concepts:
-            o = r.concepts[other]
-            target = site.url("wiki", o["wiki"]) if o.get("wiki") else site.url("concepts", other)
-            rels.append(f'<li><a href="{target}">{esc(o.get("title", other))}</a> <span class="muted">— {esc(str(L.get("why") or ""))}</span></li>')
-    if rels:
-        body.append("<section><h2>Connected to</h2><ul class=\"listing\">" + "".join(rels) + "</ul></section>")
+        main.append(f'<p><a href="{esc(e["url"])}">{esc(e["url"])}</a></p>')
     refs = [x for x in e.get("refs") or [] if x in r.nodes]
     if refs:
-        body.append("<section><h2>On the map</h2><ul class=\"listing\">" + "".join(f"<li>{site.link('n', x)}: {esc(r.nodes[x]['statement'].strip()[:160])}</li>" for x in refs) + "</ul></section>")
-    return "\n".join(body)
+        main.append("<section><h2>On the map</h2><ul class=\"listing\">" + "".join(f"<li>{site.link('n', x)}: {esc(r.nodes[x]['statement'].strip()[:160])}</li>" for x in refs) + "</ul></section>")
+    return f'<div class="pane2"><div class="pane-main">{"".join(main)}</div><aside class="pane-side">{concept_side(site, cid)}</aside></div>'
 
 
 def concept_page(site: Site, cid: str) -> str:
@@ -483,15 +504,18 @@ def concept_frag(site: Site, cid: str) -> str:
 
 
 def wiki_frag(site: Site, name: str) -> str:
-    """The wiki page's rendered body for the map's panel, with the merged work tagged to this concept beneath it."""
+    """The wiki page's full view for the map: the rendered page beside the concept's side pane —
+    connections split into core theory, core formalism and sources, then the tagged merged work."""
     r = site.repo
-    body = [f'<p class="frag-head">{site.link("wiki", name, name.replace("-", " "))} <span class="kind">concept</span></p>',
-            f"<div class=\"wiki\">{render_wiki(site, name)}</div>"]
+    cid = next((c for c, e in r.concepts.items() if e.get("wiki") == name), None)
+    head = f'<p class="frag-head">{site.link("wiki", name, name.replace("-", " "))} <span class="kind">concept</span></p>'
+    main = f"<div class=\"wiki\">{render_wiki(site, name)}</div>"
+    if cid:
+        return f'{head}<div class="pane2"><div class="pane-main">{main}</div><aside class="pane-side">{concept_side(site, cid)}</aside></div>'
     related = [(num, P) for num, P in sorted(r.prs.items(), key=lambda kv: (str(kv[1].get("merged") or ""), int(kv[0])), reverse=True)
                if name in ((P.get("topics") or {}).get("wiki") or [])]
-    if related:
-        body.append("<section><h2>Merged work on this concept</h2>" + "".join(pr_digest_details(site, num) for num, _ in related) + "</section>")
-    return "\n".join(body)
+    tail = ("<section><h2>Merged work on this concept</h2>" + "".join(pr_digest_details(site, num) for num, _ in related) + "</section>") if related else ""
+    return head + main + tail
 
 
 def pr_digest_details(site: Site, num: str) -> str:

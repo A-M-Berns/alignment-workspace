@@ -388,3 +388,19 @@ annotation along the bottom — *foundations and prior art → constructions →
 a hairline arrow — names the organization; a faint bone radial wash warms the goal end;
 the program node is larger, ringed in bone, and titled at 13 px. Cards enter with a
 160 ms rise.
+
+## Eleventh follow-up of 2026-10-30 — capsules in columns; the two-pane full view
+
+The force layout gave way to a columnar flow: capsules (rounded rects that encompass
+their title, kind-tinted fill and stroke, up to two title lines) placed in columns by
+goal distance and barycenter-ordered within each column over six passes, evenly slotted
+at a 96 px pitch — deterministic places instead of cluster accident. Directed flow curves
+are the primary edge; the eight undirected relations render dashed at 10% opacity. The
+initial transform fits the whole flow to the stage width. The full view became two
+panes: the content (the wiki page or the blurb with its map refs) beside a side pane of
+the concept's connections split between **Core theory** (goals, philosophical concepts),
+**Core formalism** (constructions, mathematical objects) and **Sources** (prior work),
+each with its direction mark and why, then the tagged merged work as expandable digests.
+The theory/formalism split is kind-derived, which is one reading of "core theoretical
+versus core mathematical formalism"; a per-link classification would be finer and is not
+done.
