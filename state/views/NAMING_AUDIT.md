@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 1152 names, 619 of them Lean only
+## deference — 1152 names, 618 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -447,7 +447,7 @@ change, and the count of those is the size of the free choice remaining.
 | `VJ` | def | 2026-09-26-corrigibility-kernel | prose | `Workspace.Deference.Contrib.CorrigibilityKernel.VJ` |
 | `band` | def | 2026-09-26-corrigibility-kernel | wiki, prose | `Workspace.Deference.Contrib.CorrigibilityKernel.Witness.band` |
 | `kernelEval` | def | 2026-09-26-corrigibility-kernel | Lean only | `Workspace.Deference.Contrib.CorrigibilityKernel.kernelEval` |
-| `once` | def | 2026-09-26-corrigibility-kernel | Lean only | `Workspace.Deference.Contrib.CorrigibilityKernel.Witness.once` |
+| `once` | def | 2026-09-26-corrigibility-kernel | prose | `Workspace.Deference.Contrib.CorrigibilityKernel.Witness.once` |
 | `AMove` | abbrev | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.Corrigibilization.AMove` |
 | `Authorized` | def | 2026-09-15-li-corrigibility | wiki, prose | `Workspace.Deference.Contrib.Corrigibilization.Authorized` |
 | `Corrigible` | def | 2026-09-15-li-corrigibility | wiki, prose | `Workspace.Deference.Contrib.Corrigibilization.Corrigible` |
