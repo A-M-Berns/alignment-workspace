@@ -361,9 +361,6 @@
     if (modal.classList.contains("open")) closeFull();
     else hideCard();
   });
-  document.getElementById("map-edges").addEventListener("change", function () {
-    svg.classList.toggle("no-edges", !document.getElementById("map-edges").checked);
-  });
   window.addEventListener("resize", render);
 
   // map search: the header box jumps the canvas to matches; enter cycles when there are several

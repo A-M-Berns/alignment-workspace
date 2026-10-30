@@ -528,11 +528,10 @@ def pr_digest_details(site: Site, num: str) -> str:
     P = r.prs[num]
     head = (f'<span class="date">{esc(str(P.get("merged") or ""))}</span> #{esc(num)} {esc(str(P.get("title", "")))}'
             + (' <span class="tag">superseded in part</span>' if P.get("superseded") else ""))
-    inner = []
+    inner = [f'<p class="muted">{site.link("prs", num, "Full detail →")}</p>']
     if P.get("superseded"):
         inner.append(f'<p class="superseded"><strong>Superseded in part:</strong> {md.inline(str(P["superseded"]))}</p>')
     inner.append("".join(f"<p>{md.inline(para.strip())}</p>" for para in str(P.get("summary") or "").split("\n\n") if para.strip()))
-    inner.append(f'<p class="muted">{site.link("prs", num, "Full detail →")}</p>')
     return f'<details class="pr-digest"><summary>{head}</summary><div class="pr-digest-body">{"".join(inner)}</div></details>'
 
 
@@ -599,15 +598,13 @@ def front_page(site: Site, lede_html: str, feed_rows: list[str]) -> str:
         + "</ul></section></noscript>")
     body = ['<div class="map-full"><div class="map-stage">'
             '<svg id="map" role="application" aria-label="the argument map"></svg>'
-            '<div class="map-side overlay">'
-            '<span id="map-legend"></span>'
-            '<label class="edges-toggle"><input type="checkbox" id="map-edges" checked> edges</label></div>'
-            f'<details class="map-about overlay"><summary>about this map</summary><p class="question">{esc(top["question"])}</p>{lede_html}</details>'
+            '<div class="map-side overlay"><span id="map-legend"></span></div>'
             '<span class="map-hint overlay muted">drag to pan · scroll to zoom · click a node · esc backs out</span>'
             '<div id="map-card" hidden></div>'
             '<div id="map-modal"><div id="map-panel"><button id="map-panel-close" aria-label="close">×</button><div id="map-panel-body"></div></div></div>'
             '</div></div>',
             noscript,
+            f'<div class="below-map"><p class="question">{esc(top["question"])}</p>{lede_html}</div>',
             "<div class=\"below-map\"><details class=\"front-feed\"><summary>Recent in the feed</summary><ul class=\"feed\">" + "".join(feed_rows[:12]) + "</ul><p><a href=\"/feed/\">The whole feed</a>.</p></details></div>"]
     return layout(site, "The map of the program", "\n".join(body)).replace("</head>", '<script defer src="/assets/map.js"></script></head>')
 

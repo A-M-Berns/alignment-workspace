@@ -147,3 +147,7 @@ Further directives of the same conversation, verbatim:
 > do a conceptual deep dive on our chats and the repo and make sure you're including all
 > the relevant concepts for a real top level map of all the research threads the work is
 > touching on at the right level of conceptual grain
+
+> get rid of "about this map" and the edges toggle
+> in PRs, move full detail to the top
+> Yeah what youre calling abstraction arc is like naturalized agency right

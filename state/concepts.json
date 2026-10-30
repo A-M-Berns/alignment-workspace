@@ -465,12 +465,12 @@
     },
     {
       "id": "abstraction-arc",
-      "title": "Abstraction arc",
+      "title": "Naturalized agency",
       "kind": "goal",
       "refs": [
         "abstraction-arc"
       ],
-      "blurb": "A theory of abstraction compatible with logical induction: a representation theorem for when a system is interpretable as a logical inductor, a decision theory set in that representation, and a notion of scale-free agency that covers cooperation."
+      "blurb": "The abstraction arc: a theory of abstraction compatible with logical induction — a representation theorem for when a physical system is interpretable as a logical inductor, a decision theory set in that representation, and scale-free agency that covers cooperation."
     },
     {
       "id": "authorship-transparency",
