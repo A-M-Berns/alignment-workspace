@@ -25,6 +25,23 @@ def build_check() -> tuple[bool, str]:
     return r.returncode == 0, (r.stdout + r.stderr).strip()
 
 
+def dom_check() -> tuple[bool, str]:
+    """Build into a scratch directory and run the behaviour gate (tests/site_dom.js) against it:
+    the app boots, every concept renders, clicks open cards, fragments exist, nothing overlaps.
+    Node is required; its absence is a failure, not a skip — a gate that silently skips is no gate."""
+    import shutil as _sh
+    import tempfile
+    node = _sh.which("node")
+    if not node:
+        return False, "node is not on PATH; the site's behaviour gate cannot run"
+    with tempfile.TemporaryDirectory() as d:
+        r = subprocess.run([sys.executable, str(SITE / "build.py"), "--out", d], cwd=ROOT, capture_output=True, text=True)
+        if r.returncode != 0:
+            return False, (r.stdout + r.stderr).strip()
+        r2 = subprocess.run([node, str(ROOT / "tests" / "site_dom.js"), d], capture_output=True, text=True)
+        return r2.returncode == 0, (r2.stdout + r2.stderr).strip()
+
+
 def self_test() -> int:
     import build as B
     import load as L
@@ -73,8 +90,46 @@ def self_test() -> int:
     finally:
         if aside.exists():
             aside.rename(lede)
+    # the registry validations refuse bad content rather than rendering it wrong
+    class FakeRepo2:
+        nodes = {"n1": {"statement": "s", "fields": {}}}
+        items = {}
+        decisions = {}
+        rounds = {"r1": {}}
+        registry = {}
+        wiki = {"Page": "text"}
+        handles = {}
+        concept_kinds = {"goal": "goal"}
+        concepts = {
+            "a": {"id": "a", "kind": "goal", "title": "A", "blurb": "fine"},
+            "b": {"id": "b", "kind": "nonsense", "title": "B", "blurb": ""},
+        }
+        concept_links = [
+            {"from": "a", "to": "a", "rel": ["part"], "why": "self"},
+            {"from": "a", "to": "b", "rel": ["madeup"], "why": "x"},
+            {"from": "a", "to": "b", "rel": ["part"], "why": "dup"},
+        ]
+        prs = {"9": {"number": 9, "title": "t", "merged": "2026-01-01", "rounds": ["no-such-round"],
+                     "topics": {"wiki": ["No-Page"], "frames": ["no-node"]}, "summary": "", "superseded": ""}}
+        narratives = {}
+    s3 = P.Site(FakeRepo2())
+    P.map_data(s3)
+    bad = "\n".join(s3.unresolved)
+    for token, label in (("kind:nonsense", "an unknown concept kind is refused"),
+                         ("self-link", "a self-link is refused"),
+                         ("rel:madeup", "an unknown relation category is refused"),
+                         ("duplicate-link", "a duplicate link is refused"),
+                         ("prs:9:round:no-such-round", "a digest naming no round is refused"),
+                         ("prs:9:wiki:No-Page", "a digest topic naming no wiki page is refused"),
+                         ("prs:9:frame:no-node", "a digest topic naming no node is refused"),
+                         ("empty summary", "an empty digest summary is refused")):
+        cases.append((label, token in bad, True))
     ok, msg = build_check()
     cases.append(("the live tree builds", ok, True))
+    ok2, msg2 = dom_check()
+    cases.append(("the map behaves: boots, renders all concepts, cards open, no overlaps", ok2, True))
+    if not ok2:
+        print("  the dom gate said:", msg2[-600:])
     failures = 0
     print("SITE BUILD SELF-TEST:")
     for label, got, want in cases:
@@ -89,11 +144,16 @@ def main(argv: list[str]) -> int:
     if "--self-test" in argv:
         return self_test()
     ok, msg = build_check()
-    if ok:
-        print(msg.splitlines()[-1] if msg else "SITE BUILD: ok")
-        return 0
-    print("SITE BUILD FAILED:\n" + msg, file=sys.stderr)
-    return 1
+    if not ok:
+        print("SITE BUILD FAILED:\n" + msg, file=sys.stderr)
+        return 1
+    print(msg.splitlines()[-1] if msg else "SITE BUILD: ok")
+    ok2, msg2 = dom_check()
+    if not ok2:
+        print("SITE DOM GATE FAILED:\n" + msg2, file=sys.stderr)
+        return 1
+    print(msg2.splitlines()[-1] if msg2 else "SITE DOM GATE: ok")
+    return 0
 
 
 if __name__ == "__main__":

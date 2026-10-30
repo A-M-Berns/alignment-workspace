@@ -628,6 +628,41 @@ def map_data(site: Site) -> dict:
            "defines": "sets out", "adjacent": "is adjacent to", "contrast": "is contrasted with", "formalizes": "is formalized by"}
     links: list[list] = []
     succ: dict[str, list[str]] = {}
+    # the registry is validated here, so a bad entry fails the build instead of rendering wrong
+    seen_ids: set[str] = set()
+    for cid, e in r.concepts.items():
+        if cid in seen_ids:
+            site.unresolved.append(f"concepts:duplicate:{cid}")
+        seen_ids.add(cid)
+        if e.get("kind") not in r.concept_kinds:
+            site.unresolved.append(f"concepts:{cid}:kind:{e.get('kind')}")
+        if not str(e.get("title") or "").strip() or not str(e.get("blurb") or "").strip():
+            site.unresolved.append(f"concepts:{cid}:empty title or blurb")
+    seen_pairs: set[tuple] = set()
+    KNOWN_REL = {"part", "substrate", "uses", "shapes", "defines", "adjacent", "contrast", "formalizes"}
+    for L in r.concept_links:
+        pair = (L.get("from"), L.get("to"))
+        if pair[0] == pair[1]:
+            site.unresolved.append(f"concepts:self-link:{pair[0]}")
+        key = tuple(sorted(str(x) for x in pair))
+        if key in seen_pairs:
+            site.unresolved.append(f"concepts:duplicate-link:{pair[0]}--{pair[1]}")
+        seen_pairs.add(key)
+        for rel in L.get("rel") or []:
+            if rel not in KNOWN_REL:
+                site.unresolved.append(f"concepts:link:{pair[0]}--{pair[1]}:rel:{rel}")
+    for num, P in r.prs.items():
+        for rid in P.get("rounds") or []:
+            if rid not in r.rounds:
+                site.unresolved.append(f"prs:{num}:round:{rid}")
+        for w in (P.get("topics") or {}).get("wiki") or []:
+            if w not in r.wiki:
+                site.unresolved.append(f"prs:{num}:wiki:{w}")
+        for f in (P.get("topics") or {}).get("frames") or []:
+            if f not in r.nodes:
+                site.unresolved.append(f"prs:{num}:frame:{f}")
+        if not str(P.get("summary") or "").strip():
+            site.unresolved.append(f"prs:{num}:empty summary")
     for L in r.concept_links:
         a, b = L.get("from"), L.get("to")
         if a not in r.concepts or b not in r.concepts:

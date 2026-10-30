@@ -530,3 +530,20 @@ design log carries the change, and the regenerated files moved with it. What thi
 not establish: the second maintainer has not confirmed the restructure; the 2026-10-22
 drafting note that the owners had not confirmed the previous decomposition applies
 equally to this one.
+
+## Twentieth follow-up of 2026-10-30 — the guards
+
+What was only informally true is now gated. The build refuses a registry entry with an
+unknown kind, an empty title or blurb, a self-link, a duplicate link, an unknown relation
+category, and a digest naming a round, wiki page or frame that does not resolve or
+carrying an empty summary — eight new null-input cases in the self-test prove each
+refusal fires. The behaviour harness moved into the repository as `tests/site_dom.js`,
+run by `tests/site_build.py` against a scratch build on every gate run: the app must
+boot without falling into its error fallback, render one capsule per concept and one
+group per link, open a card on node and edge clicks, find a sampled fragment, and
+overlap nothing; node's absence fails the gate rather than skipping it. Already-standing
+sync machinery is unchanged and is what keeps the rest current: the lede's bindings are
+replaced from the state at build, map.json is regenerated on every build, and
+workspace_state compares the generated views byte-for-byte. The one thing no offline
+gate can see is digest coverage against GitHub; the README now says so and names it a
+review matter.

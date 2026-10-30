@@ -31,7 +31,12 @@ the front page lists the lines as links, and every object remains a full page.
 rounds, topic tags (wiki pages and frames), a one-or-two-paragraph summary of key points,
 and a supersession note with references where later work displaced a result. The site
 renders them at `/prs/<n>/`; the file is a round deliverable, provenance-marked where it
-lands, and the build runs without it.
+lands, and the build runs without it. The build validates every digest's rounds and topic
+ids and every registry entry's kind, links and references, and `tests/site_build.py` also
+runs `tests/site_dom.js` against a scratch build — the app must boot, render every
+concept, open cards on click, and overlap nothing. What no gate can see offline is
+coverage: a round that merges pull requests extends `state/prs.json`, and whether it did
+is a review matter.
 
 Every node page and fragment ends with the intake verbs — comment, challenge, estimate,
 want — each a prefilled GitHub issue carrying the node id and a protocol-shaped body. The
