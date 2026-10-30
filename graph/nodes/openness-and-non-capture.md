@@ -1,13 +1,15 @@
 ---
 id: openness-and-non-capture
 kind: frame
-children: []
+children: [split-bill-is-robust-openness, split-bill-is-robust-openness.improvable]
 question: "Can concerns reach a process at all, and can the party they matter to still act on them, on the actual branch and under every declared intervention?"
 owner: ["@anson", "@abram"]
 filed_from: wiki
 narrative: wiki/Openness-Coverage-and-Non-Capture.md
-roots: []
-holds: [openness.endpoint-only-insufficient, openness.persistence-sufficient, openness.certplus-is-robust-openness, openness.actual-branch-witness]
+roots:
+  - {id: split-bill-is-robust-openness, role: shared-claim, preset: worst-case}
+  - {id: split-bill-is-robust-openness.improvable, role: shared-claim, preset: worst-case}
+holds: [openness.endpoint-only-insufficient, openness.persistence-sufficient, openness.actual-branch-witness]
 author: "@smithy-verity"
 size: M
 size_reason: "Robust Openness, its certificate and four registered results"

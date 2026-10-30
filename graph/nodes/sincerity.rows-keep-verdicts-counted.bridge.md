@@ -5,14 +5,12 @@ leaf_kind: bridge
 attribution: formalizer-stated
 size: S
 size_reason: "one signature against the registry's reading"
-version: 1
+version: 2
 author: "@smithy-verity"
 ---
 ## Statement
-The statement of record of `sincerity.rows-keep-verdicts-counted` formalizes the registered claim as the registry reads it: Every counted landed row keeps its verdict on the sincere lift.
+The claim (this conjunct) asserts that every landed row the record counted keeps its verdict when the recommendation channel's declared input is the speaker's own estimate. The declaration certifies it row by row for the nine counted rows of the landed model on the sincere lift, by `decide`. The gap: a finite fixture, the landed twenty-row model, not every consultation; the honest agent's estimate is identified with the run's answer coordinate by the lift itself.
 
 ## Source
 projects/deference/CLAIMS.md, entry `sincerity.rows-keep-verdicts-counted` (class lean-proved, status active, origin round 2026-10-01-thin-legitimacy-and-effective-authority; answers item 107).
-Documentation: verification: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md; context: prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md.
-Short name: Every counted landed row keeps its verdict on the sincere lift.
-Conclusion of the signature: `CountedS (lift Rows.row1) state₀ (stAdmit false) ∧ CountedS (lift Rows.row6) state₀ (stAdmit false) ∧ CountedS (lift Rows.row7) state₀ (stAdmit false) ∧ CountedS (lift Rows.row9) state₀ (stAdmit true) ∧ CountedS (lift Rows.row12) state₀ stVoid ∧ CountedS (lift Rows.row14) (stAdmit false) (stTwo false false) ∧ CountedS (lift Rows.row17) state₀ (stAdmit false) ∧ CountedS (lift Rows.row18) state₀ (stAdmit true) ∧ CountedS (lift Rows.row20) state₀ (stAdmit false)`.
+projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md, Parts B (sincerity) and C (the authority layer); the declaration and its docstring in lean/Workspace/Deference/Contrib/Sincerity.lean; wiki/Corrigibility.md, Effective exercise, not maximized control, and Asking through the protocol; wiki/Legitimacy.md, Sincerity is part of legitimacy; read by the site-vertical-slice round (projects/enabling/rounds/2026-10-24-site-vertical-slice).

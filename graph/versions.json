@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "505af3b2fcc25fb87a9fc1f1",
-  "index.json": "ada49aeeaeca8d94c16cc2e8"
+  "derived.json": "4d5f453a9f1209707305dfba",
+  "index.json": "57c64b2a5e1bda82b943c057"
  },
- "generated_hash": "1cc79a5cee8e0546e37eab35",
+ "generated_hash": "0bb7c4348ad5a6bfde0f832e",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -749,6 +749,11 @@
     "date": "2026-10-22",
     "normalized": "the statement of record of authority approval discount defeated formalizes the registered claim as the registry reads it discounting a violations price by predicted approval lets a certain line crossing beat asking",
     "version": 1
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "the claim asserts that discounting a violations price by predicted approval lets a certain line crossing beat asking the declaration certifies at discount one with approval predicted certain that the discounted evaluation of the option is its bid that the queues evaluation is below it and that the exchange rates threshold is then below one the gap the guards necessity witness is a two line computation on the kernels evaluation at the extreme discount the claims generality any discounting is read from this one witness",
+    "version": 2
    }
   ],
   "authority.approval-discount-defeated.complete": [
@@ -761,6 +766,18 @@
     "date": "2026-10-23",
     "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
     "version": 2
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record the hypothesis leaf filed by reading the bridge and this leaf",
+    "version": 3
+   }
+  ],
+  "authority.approval-discount-defeated.h-case": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the queues value is below the options bid and at least the floor",
+    "version": 1
    }
   ],
   "authority.approval-discount-defeated.h1": [
@@ -803,6 +820,11 @@
     "date": "2026-10-22",
     "normalized": "the statement of record of authority comprehension short formalizes the registered claim as the registry reads it an ask she cannot understand within the bound leaves the matter short",
     "version": 1
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "the claim asserts that an ask she cannot understand within the bound leaves the matter short the declaration certifies it on a calm exterior every exercise with a correction costs at least the comprehension cost which exceeds the bound so the required resolution is not reached the gap the calm exterior hypothesis which the claims wording does not carry and comprehension cost as a number in the cost table not a measured quantity",
+    "version": 2
    }
   ],
   "authority.comprehension-short.complete": [
@@ -815,6 +837,32 @@
     "date": "2026-10-23",
     "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
     "version": 2
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record the 3 hypothesis leaves filed by reading the bridge and this leaf",
+    "version": 3
+   }
+  ],
+  "authority.comprehension-short.h-calm-exterior": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the environment leaves the state as it is at every step a calm exterior",
+    "version": 1
+   }
+  ],
+  "authority.comprehension-short.h-case": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the matter is reserved its comprehension cost exceeds its cost bound and a required correction does not hold at the state",
+    "version": 1
+   }
+  ],
+  "authority.comprehension-short.h-cost-table": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the base costs are nonnegative and the attention weight is nonnegative",
+    "version": 1
    }
   ],
   "authority.comprehension-short.h1": [
@@ -920,6 +968,11 @@
     "date": "2026-10-22",
     "normalized": "the statement of record of authority exchange rate queue formalizes the registered claim as the registry reads it the subjective exchange rate with c the value of queue and wait",
     "version": 1
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "the claim asserts that the headlines subjective exchange rate keeps its form with c the value of queue and wait the declaration certifies that if the kernel prefers the option to queueing then no known line is crossed and the summed priced probability is at most d c \u03c0 at c the queues value proved from the kernels declared loses lemma the gap a restatement of the headline at a particular c which is what the claim says its force rests on the headlines own reading of the parameters not on anything new here",
+    "version": 2
    }
   ],
   "authority.exchange-rate-queue.complete": [
@@ -932,6 +985,25 @@
     "date": "2026-10-23",
     "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
     "version": 2
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record the 2 hypothesis leaves filed by reading the bridge and this leaf",
+    "version": 3
+   }
+  ],
+  "authority.exchange-rate-queue.h-parameters": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the kernels lexical parameters with a bid within the cap a nonnegative total of the two priced probabilities and a queue value at least the floor",
+    "version": 1
+   }
+  ],
+  "authority.exchange-rate-queue.h-prefers-bid": [
+   {
+    "date": "2026-10-24",
+    "normalized": "under the kernels evaluation the option with the bid is weakly preferred to queue and wait",
+    "version": 1
    }
   ],
   "authority.exchange-rate-queue.h1": [
@@ -988,6 +1060,11 @@
     "date": "2026-10-22",
     "normalized": "the statement of record of authority flood caused shortfall formalizes the registered claim as the registry reads it a flood shortfall is agent caused only through the pending count it raises",
     "version": 1
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "the claim asserts that a flood shortfall is agent caused only through the pending count it raises the declaration certifies that a flood shortfall implies the agents option left more pending than idling did by monotonicity of the surfaces in the cost table the gap the contrapositive of monotonicity on the cost table as data the attention budgets realization in any physics is not modelled as the file says",
+    "version": 2
    }
   ],
   "authority.flood-caused-shortfall.complete": [
@@ -1000,6 +1077,18 @@
     "date": "2026-10-23",
     "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
     "version": 2
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record the hypothesis leaf filed by reading the bridge and this leaf",
+    "version": 3
+   }
+  ],
+  "authority.flood-caused-shortfall.h-flood-shortfall": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the matter is short at the pending count the agents option leaves and not at the count idling leaves under the attention cost table with nonnegative attention weight",
+    "version": 1
    }
   ],
   "authority.flood-caused-shortfall.h1": [
@@ -1063,6 +1152,11 @@
     "date": "2026-10-22",
     "normalized": "the statement of record of authority queue no bypass formalizes the registered claim as the registry reads it queue and wait is no bypass",
     "version": 1
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "the claim asserts that queue and wait is no bypass of her authority the declaration certifies that a move which is the idle task with no release is not a bypass at that step for any allocation the gap the conclusion follows from the definitions of the queue move and of bypass on the landed predicates it is a definitional consequence rather than a finding about any protocol",
+    "version": 2
    }
   ],
   "authority.queue-no-bypass.complete": [
@@ -1075,6 +1169,18 @@
     "date": "2026-10-23",
     "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
     "version": 2
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record the hypothesis leaf filed by reading the bridge and this leaf",
+    "version": 3
+   }
+  ],
+  "authority.queue-no-bypass.h-queue-move": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the agents move at the step is queue and wait the idle task with no communication release",
+    "version": 1
    }
   ],
   "authority.queue-no-bypass.h1": [
@@ -1117,6 +1223,11 @@
     "date": "2026-10-22",
     "normalized": "the statement of record of authority queue no caused shortfall formalizes the registered claim as the registry reads it queue and wait causes no shortfall",
     "version": 1
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "the claim asserts that queue and wait causes no shortfall the declaration certifies that the queue move causes no shortfall at that step since the state after the agents move is the idle state and a caused shortfall contrasts the two the gap definitional again on the landed caused shortfall predicate nothing about shortfalls the world causes while the matter queues",
+    "version": 2
    }
   ],
   "authority.queue-no-caused-shortfall.complete": [
@@ -1129,6 +1240,18 @@
     "date": "2026-10-23",
     "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
     "version": 2
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record the hypothesis leaf filed by reading the bridge and this leaf",
+    "version": 3
+   }
+  ],
+  "authority.queue-no-caused-shortfall.h-queue-move": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the agents move at the step is queue and wait in an interaction with an authority allocation an admissibility relation and a cost table",
+    "version": 1
    }
   ],
   "authority.queue-no-caused-shortfall.h1": [
@@ -1192,6 +1315,11 @@
     "date": "2026-10-22",
     "normalized": "the statement of record of authority revocation default formalizes the registered claim as the registry reads it revocation as an entry of the allocation on the dependency model the atrophy fixtures crossing step is the modules caused shortfall and entrenchment of the revocation entry",
     "version": 1
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "the claim asserts that revocation is protected by default a dependency built through delegated work raises the cost of taking the matter back and past the bound that is a shortfall the agent caused without her having reserved anything the declaration certifies it on the atrophy fixture at depth one the matter is not short at depth two it is the step from one to two is a caused shortfall and an entrenchment of the revocation entry and the step from zero to one is not the gap one fixture with bound one and four numbers the default entrys presence in every allocation is a modelling decision ruling p3 not what this record certifies",
+    "version": 2
    }
   ],
   "authority.revocation-default.complete": [
@@ -1204,6 +1332,18 @@
     "date": "2026-10-23",
     "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
     "version": 2
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record the hypothesis leaf filed by reading the bridge and this leaf",
+    "version": 3
+   }
+  ],
+  "authority.revocation-default.h-fixture": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the dependency fixture the atrophy model on the authority module with the revocation entry at bound one and the build policy over any environment signal",
+    "version": 1
    }
   ],
   "authority.revocation-default.h1": [
@@ -2990,6 +3130,11 @@
     "date": "2026-10-22",
     "normalized": "the statement of record of compiler deductive end to end formalizes the registered claim as the registry reads it finite date coherence with the original criterion deductively",
     "version": 1
+   },
+   {
+    "date": "2026-10-23",
+    "normalized": "the claim asserts that a constraint on prices compiles to a legal trading strategy inside the market recursion giving per date conformance within a schedule while preserving the logical induction criterion the declaration certifies this for a deductive process the market compiled from the deductive projection schedule is a logical inductor over the process and at every date its distance from the days representation on the fragment is within that dates tolerance the gaps the claim speaks of constraints on prices in general and the declaration of the deductive region alone the constraint schedule forms are the companion declarations end_to_end_effective and end_to_end_of_constraints_effective which this record does not certify the claim leaves the schedules free and the declaration fixes the fragment and tolerance schedules as primitive recursive data preserving the criterion means the pinned sources own islogicalinductor over the deductive process under the sources certificate not an absolute criterion and the construction is computable not efficient the generator being doubly exponential in the fragment dimension which the claim does not say",
+    "version": 2
    }
   ],
   "compiler.deductive-end-to-end.complete": [
@@ -3002,6 +3147,39 @@
     "date": "2026-10-23",
     "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
     "version": 2
+   },
+   {
+    "date": "2026-10-23",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record the four hypothesis leaves filed by reading the fragment schedule the tolerance schedule the pinned sources computability certificate on the process and the satisfiability of every stage the bridge and this leaf the premise list is the signatures grouped as a reader states it",
+    "version": 3
+   }
+  ],
+  "compiler.deductive-end-to-end.h-fragment-schedule": [
+   {
+    "date": "2026-10-23",
+    "normalized": "the fragment schedule assigns each date a duplicate free list of sentences and is primitive recursive",
+    "version": 1
+   }
+  ],
+  "compiler.deductive-end-to-end.h-process-certificate": [
+   {
+    "date": "2026-10-23",
+    "normalized": "the deductive process carries the pinned sources own computability certificate a program that eventually emits each stage",
+    "version": 1
+   }
+  ],
+  "compiler.deductive-end-to-end.h-stages-satisfiable": [
+   {
+    "date": "2026-10-23",
+    "normalized": "every stage of the deductive process is propositionally satisfiable some propositionally consistent world agrees with the stage",
+    "version": 1
+   }
+  ],
+  "compiler.deductive-end-to-end.h-tolerance-schedule": [
+   {
+    "date": "2026-10-23",
+    "normalized": "the tolerance schedule assigns each date a strictly positive rational and is primitive recursive",
+    "version": 1
    }
   ],
   "compiler.deductive-end-to-end.h1": [
@@ -5161,6 +5339,11 @@
     "date": "2026-10-22",
     "normalized": "the statement of record of delegation bridge formalizes the registered claim as the registry reads it the finite delegation bridge",
     "version": 1
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "the claim asserts the local delegation bridge under grade trust at level \u03b7 over an admissible partition delegating to the principals judgment beats any measurable comparator by the principals grade margin less twice \u03b7 on the disagreement region the declaration certifies the inequality exactly over a finite cell type with exact rational masses expectations and grades the comparators valuation plus its grade margin minus 2\u03b7 times the disagreement mass is at most the valuation of delegating the gaps the source states the bridge over an admissible conditioning partition of a finite outcome space and the declaration carries the partition by its cell type so measurability of the judgment and the comparator is true by construction rather than a hypothesis discharged the files own words a re typing not a transcription grade trust is imported and the source argues no settlement in the skeleton produces it the uniform form which trades the trust hypothesis for a bound by twice the magnitude is deliberately not ported because it rests on a grade to quantity link the programme derives rather than assumes and the declaration is free of any logical induction fact where the claims home is the logical induction setting the deference line asks about",
+    "version": 2
    }
   ],
   "delegation.bridge.complete": [
@@ -5173,6 +5356,25 @@
     "date": "2026-10-23",
     "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
     "version": 2
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record the two hypothesis leaves filed by reading nonnegative cell masses grade trust at level \u03b7 the imported hypothesis the bridge and this leaf",
+    "version": 3
+   }
+  ],
+  "delegation.bridge.h-cell-masses": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the cell masses of the conditioning partition are nonnegative",
+    "version": 1
+   }
+  ],
+  "delegation.bridge.h-grade-trust": [
+   {
+    "date": "2026-10-24",
+    "normalized": "grade trust at level \u03b7 on every cell and for every intervention the conditional expectation of the quantity is within \u03b7 of the principals grade",
+    "version": 1
    }
   ],
   "delegation.bridge.h1": [
@@ -5685,6 +5887,27 @@
    {
     "date": "2026-10-20",
     "normalized": "effective authority is modelled with a queue that cannot be bypassed caused and flood caused shortfalls a comprehension shortfall approval discounts and a revocation default with sincerity conditions on which verdicts count",
+    "version": 1
+   }
+  ],
+  "effective-authority-layer.complete": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the twelve conjuncts are the five sincerity results the counted and the tainted landed rows keep their verdicts on the sincere lift the landed row 20 is the sincere error and counts a lie through the declared channel is tainted content and fact update alike exactly under the sincere reference and the seven authority results queue and wait is no bypass and causes no shortfall the exchange rate keeps its form at the queues value a flood shortfall is agent caused only through the pending count an ask she cannot understand leaves the matter short on a calm exterior the approval discount defeats the exchange rate revocation by default on the atrophy fixture together they establish the layers claim on the landed predicates and fixtures that the queue is never a violation that attention and comprehension enter the cost of exercise monotonically that the guard against discounting is necessary that revocation is protected by default and which verdicts count they do not establish that the ask list deviation is wired into the records counting the attention budgets realization in any physics that learned membership converges or the truth of any recommendations content and every row level result is a finite fixture decided by computation not a statement about every consultation",
+    "version": 1
+   }
+  ],
+  "effective-authority-layer.improvable": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the effective authority layer in which authority is exercised through a protocol that cannot be bypassed with caused and flood caused shortfalls a comprehension shortfall approval discounts and a revocation default and sincerity conditions on which verdicts count can be improved until it reflects a principal whose later judgment counts as her own because the agent asks through her protocol keeps her attention budget and takes no authority back from her well",
+    "version": 1
+   }
+  ],
+  "effective-authority-layer.residual": [
+   {
+    "date": "2026-10-24",
+    "normalized": "a refinement of the effective authority layer that none of the other routes describes reflects a principal whose later judgment counts as her own because the agent asks through her protocol keeps her attention budget and takes no authority back from her",
     "version": 1
    }
   ],
@@ -8372,10 +8595,38 @@
     "version": 1
    }
   ],
+  "item-129": [
+   {
+    "date": "2026-10-23",
+    "normalized": "the compiled enforcers per day gap bets are bounded below by a schedule while the criterion is preserved so that the conformance the compiler gives is a trust bound the deference line can read",
+    "version": 1
+   }
+  ],
   "item-13": [
    {
     "date": "2026-10-22",
     "normalized": "item 13 scaffolding self verification is answered as its entry specifies",
+    "version": 1
+   }
+  ],
+  "item-130": [
+   {
+    "date": "2026-10-23",
+    "normalized": "an intervention semantics indexed by the accounted state produces for each state and concern the actual coverage data and the coverage data under each declared intervention so that the scenario the certificate theorems quantify over is read off the record rather than supplied by hand",
+    "version": 1
+   }
+  ],
+  "item-131": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the ask list deviation is a dimension of the counted trace so that asking off the declared protocol is tainted by the records own counting rather than by a self checkable clause beside it",
+    "version": 1
+   }
+  ],
+  "item-132": [
+   {
+    "date": "2026-10-24",
+    "normalized": "grade trust at some level is produced by a settlement instantiation of the finite kernel rather than imported so that the bridges hypothesis is a property of the trajectory and not a stipulation",
     "version": 1
    }
   ],
@@ -12604,6 +12855,34 @@
     "version": 1
    }
   ],
+  "local-delegation-bridge": [
+   {
+    "date": "2026-10-24",
+    "normalized": "under grade trust at level \u03b7 over an admissible partition delegating to the principals judgment beats any measurable comparator by the principals grade margin less twice \u03b7 on the disagreement region and the bound is attained",
+    "version": 1
+   }
+  ],
+  "local-delegation-bridge.complete": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the one conjunct is the registered local delegation bridge for nonnegative cell masses and grade trust at level \u03b7 the comparators valuation plus its grade margin minus 2\u03b7 times the disagreement mass is at most the valuation of delegating that establishes the claims inequality over a finite exact rational cell type it does not establish attainment the witness e1 is a separate declaration in the file the uniform form without the trust hypothesis or anything in the logical induction setting and it does not produce grade trust",
+    "version": 1
+   }
+  ],
+  "local-delegation-bridge.improvable": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the local delegation bridge in which delegating beats a measurable comparator by the grade margin less twice the trust level on the disagreement region can be improved until it reflects a human inductor deferring to a faster ai inductor at the logical induction level whose grades it can trust well",
+    "version": 1
+   }
+  ],
+  "local-delegation-bridge.residual": [
+   {
+    "date": "2026-10-24",
+    "normalized": "a refinement of the local delegation bridge that none of the other routes describes reflects a human inductor deferring to a faster ai inductor at the logical induction level whose grades it can trust",
+    "version": 1
+   }
+  ],
   "local-rules-certify-legitimacy": [
    {
     "date": "2026-10-20",
@@ -13960,6 +14239,11 @@
     "date": "2026-10-22",
     "normalized": "the statement of record of openness certplus is robust openness formalizes the registered claim as the registry reads it the split bill is robust openness itself",
     "version": 1
+   },
+   {
+    "date": "2026-10-23",
+    "normalized": "the claim asserts that the earlier split bill for robust openness a silent prefix clause route persistence allowing a named replacement and standing is given actual coverage robust openness itself factored by a case split on whether the concern is live at the actual prefix and not an independent sufficient condition the declaration certifies exactly that equivalence over an abstract finite scenario with actual coverage inside the protected routes the conjunction of the three clauses is logically equivalent to coverage and standing in every declared counterfactual the gaps the declarations robustopen quantifies over the declared counterfactuals only while the wikis robust openness at a state conjoins the actual branch the files robustopenactual adds it and its counterfactual_open_not_actual shows the two differ so the equivalence is with the counterfactual half the scenario abstracts coverage to booleans and does not model how a counterfactual state is produced so nothing here is a causal non capture theorem as the file says of itself and the claims force as a correction the bill is no certificate rests on the companion results that the componentwise persistence bill is strictly stronger which this record does not certify",
+    "version": 2
    }
   ],
   "openness.certplus-is-robust-openness.complete": [
@@ -13972,6 +14256,32 @@
     "date": "2026-10-23",
     "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
     "version": 2
+   },
+   {
+    "date": "2026-10-23",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record the three hypothesis leaves filed by reading the scenario the protected route set actual coverage inside it the bridge and this leaf",
+    "version": 3
+   }
+  ],
+  "openness.certplus-is-robust-openness.h-actual-coverage": [
+   {
+    "date": "2026-10-23",
+    "normalized": "where the concern is live on the actual prefix some protected route is adequate there coverage on the actual branch witnessed inside the protected set",
+    "version": 1
+   }
+  ],
+  "openness.certplus-is-robust-openness.h-protected-routes": [
+   {
+    "date": "2026-10-23",
+    "normalized": "a protected route set is declared a predicate on routes",
+    "version": 1
+   }
+  ],
+  "openness.certplus-is-robust-openness.h-scenario": [
+   {
+    "date": "2026-10-23",
+    "normalized": "a scenario pairs the coverage state of one concern on the actual prefix with one coverage state per declared intervention each state a finite record of applicability disposition representation the per route components and the principals standing",
+    "version": 1
    }
   ],
   "openness.certplus-is-robust-openness.h1": [
@@ -17408,6 +17718,27 @@
     "version": 1
    }
   ],
+  "route-authority-attention-physics": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the attention budget is realized in a physics rather than given as a cost table so that a flood shortfall and a comprehension shortfall are events the market prices as the shortfall security prices them",
+    "version": 1
+   }
+  ],
+  "route-authority-blackwell-converse": [
+   {
+    "date": "2026-10-24",
+    "normalized": "what item 107 leaves open behind the post is closed blackwells converse for the thin specifications value clause the loss of correctness and the remaining items of the posts backing",
+    "version": 1
+   }
+  ],
+  "route-bridge-uniform-form": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the grade to quantity link is derived so that the uniform form of the bridge which bounds the loss by twice the magnitude without a trust hypothesis can be ported as a theorem rather than assumed",
+    "version": 1
+   }
+  ],
   "route-coalition-cap-maintained": [
    {
     "date": "2026-10-20",
@@ -17548,6 +17879,27 @@
     "version": 1
    }
   ],
+  "route-conformance-credal-constraint": [
+   {
+    "date": "2026-10-23",
+    "normalized": "normative statics produce a credal constraint on prices rather than only a price demand so that what the compiler enforces is the seeds own constraint",
+    "version": 1
+   }
+  ],
+  "route-conformance-efficient-rows": [
+   {
+    "date": "2026-10-23",
+    "normalized": "an efficiently presentable sufficient row family for coherence replaces the doubly exponential generator the declarations construction uses",
+    "version": 1
+   }
+  ],
+  "route-conformance-exact-and-safe": [
+   {
+    "date": "2026-10-23",
+    "normalized": "a compiler that is both exact and conformance preserving exists or a proof says there is none so that conformance within a schedule is not bought by inexactness",
+    "version": 1
+   }
+  ],
   "route-declared-commitment-source": [
    {
     "date": "2026-10-20",
@@ -17650,6 +18002,20 @@
    {
     "date": "2026-10-20",
     "normalized": "starting from vingean agency predicting a stronger agents outcome without its moves gives a representation theorem whose hypotheses deployed systems meet",
+    "version": 1
+   }
+  ],
+  "route-licence-authorization-from-account": [
+   {
+    "date": "2026-10-23",
+    "normalized": "what authorizes a record event is read off the accounted obligation state so that the authorized event clause of a licence is derived from the record rather than declared beside it",
+    "version": 1
+   }
+  ],
+  "route-licence-transport": [
+   {
+    "date": "2026-10-23",
+    "normalized": "a licence whose cited occurrences survive a record transition with the issuing event still authorized and the settlement extended compatibly is a licence after it and a licence whose cited occurrence is defeated is not",
     "version": 1
    }
   ],
@@ -18889,6 +19255,11 @@
     "date": "2026-10-22",
     "normalized": "the statement of record of sincerity content fact formalizes the registered claim as the registry reads it updating on the content of an utterance and on the fact of it agree exactly under the sincere reference",
     "version": 1
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "the claim asserts that updating on the content of an utterance the speaker believes y and on the fact of it give the same posterior exactly when the channel realizes the sincere reference the declaration certifies the equality of posterior weights for every prior under that realization as the instance of the transparent channel theorem at the identity the gap the record carries the if direction as an identity under the hypothesis the only if is the witness that a lying policy differs a companion declaration and the setting is the abstract channel not a consultation row",
+    "version": 2
    }
   ],
   "sincerity.content-fact.complete": [
@@ -18901,6 +19272,25 @@
     "date": "2026-10-23",
     "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
     "version": 2
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record the 2 hypothesis leaves filed by reading the bridge and this leaf",
+    "version": 3
+   }
+  ],
+  "sincerity.content-fact.h-realizes-sincere": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the utterance channel realizes the sincere reference on the speakers belief over the domain what the speaker says is what the speaker believes as a property of the speakers actual policy",
+    "version": 1
+   }
+  ],
+  "sincerity.content-fact.h-setting": [
+   {
+    "date": "2026-10-24",
+    "normalized": "a base map from questions and signals to worlds a belief and an utterance policy on worlds a domain of questions a prior and a question in the domain",
+    "version": 1
    }
   ],
   "sincerity.content-fact.h1": [
@@ -18964,6 +19354,11 @@
     "date": "2026-10-22",
     "normalized": "the statement of record of sincerity lie tainted formalizes the registered claim as the registry reads it a lie through the declared channel is tainted a transparency failure and a self checkable deviation",
     "version": 1
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "the claim asserts that a lie through the declared channel a recommendation off the speakers own estimate is tainted a transparency failure and a self checkable deviation the declaration certifies both on the added row decided the gap one row the companion true_lie_deviates a true statement off the estimate is tainted too is not this record",
+    "version": 2
    }
   ],
   "sincerity.lie-tainted.complete": [
@@ -18976,6 +19371,18 @@
     "date": "2026-10-23",
     "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
     "version": 2
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record the hypothesis leaf filed by reading the bridge and this leaf",
+    "version": 3
+   }
+  ],
+  "sincerity.lie-tainted.h-fixture": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the added row the agent believes a on every run and recommends what it wants on the landed row 20s model",
+    "version": 1
    }
   ],
   "sincerity.lie-tainted.record": [
@@ -18997,6 +19404,11 @@
     "date": "2026-10-22",
     "normalized": "the statement of record of sincerity rows keep verdicts counted formalizes the registered claim as the registry reads it every counted landed row keeps its verdict on the sincere lift",
     "version": 1
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "the claim this conjunct asserts that every landed row the record counted keeps its verdict when the recommendation channels declared input is the speakers own estimate the declaration certifies it row by row for the nine counted rows of the landed model on the sincere lift by decide the gap a finite fixture the landed twenty row model not every consultation the honest agents estimate is identified with the runs answer coordinate by the lift itself",
+    "version": 2
    }
   ],
   "sincerity.rows-keep-verdicts-counted.complete": [
@@ -19009,6 +19421,18 @@
     "date": "2026-10-23",
     "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
     "version": 2
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record the hypothesis leaf filed by reading the bridge and this leaf",
+    "version": 3
+   }
+  ],
+  "sincerity.rows-keep-verdicts-counted.h-fixture": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the landed consultation models counted rows 1 6 7 9 12 14 in its second round 17 18 and 20 lifted to the sincere model in which the honest agent recommends what it believes at the initial state and the admit states",
+    "version": 1
    }
   ],
   "sincerity.rows-keep-verdicts-counted.record": [
@@ -19030,6 +19454,11 @@
     "date": "2026-10-22",
     "normalized": "the statement of record of sincerity rows keep verdicts tainted formalizes the registered claim as the registry reads it every tainted landed row keeps its verdict on the sincere lift",
     "version": 1
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "the claim asserts that every landed row the record tainted stays tainted on the sincere lift the declaration certifies it for the twelve tainted rows of the landed model by transparency at the first consultation decided the gap the same finite fixture nothing about rows outside the landed twenty",
+    "version": 2
    }
   ],
   "sincerity.rows-keep-verdicts-tainted.complete": [
@@ -19042,6 +19471,18 @@
     "date": "2026-10-23",
     "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
     "version": 2
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record the hypothesis leaf filed by reading the bridge and this leaf",
+    "version": 3
+   }
+  ],
+  "sincerity.rows-keep-verdicts-tainted.h-fixture": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the landed consultation models tainted rows 2 3 4 5 8 10 11 14 in its first round 15 16 17 and 19 lifted to the sincere model at the initial state and the admit states",
+    "version": 1
    }
   ],
   "sincerity.rows-keep-verdicts-tainted.record": [
@@ -19063,6 +19504,11 @@
     "date": "2026-10-22",
     "normalized": "the statement of record of sincerity sincere error counts formalizes the registered claim as the registry reads it the landed row 20 is the sincere error it counts and the falsity is the content residual",
     "version": 1
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "the claim asserts that a sincere but false recommendation through the declared channel counts its falsity being the content residual the declaration certifies on the landed row 20 that the sincere lift counts that the honest recommendation differs from the truth and that it is no self checkable deviation the gap one row of one fixture that the landed row reads as the sincere error is a ruling not a theorem",
+    "version": 2
    }
   ],
   "sincerity.sincere-error-counts.complete": [
@@ -19075,6 +19521,18 @@
     "date": "2026-10-23",
     "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
     "version": 2
+   },
+   {
+    "date": "2026-10-24",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record the hypothesis leaf filed by reading the bridge and this leaf",
+    "version": 3
+   }
+  ],
+  "sincerity.sincere-error-counts.h-fixture": [
+   {
+    "date": "2026-10-24",
+    "normalized": "the landed row 20 on the sincere lift the true answer is a the agent believes b and recommends b",
+    "version": 1
    }
   ],
   "sincerity.sincere-error-counts.record": [
@@ -19175,6 +19633,34 @@
    {
     "date": "2026-10-20",
     "normalized": "for every flower shaped self referential sentence a logical inductors prices satisfy the liminf bound without a supplied quotation portfolio",
+    "version": 1
+   }
+  ],
+  "split-bill-is-robust-openness": [
+   {
+    "date": "2026-10-23",
+    "normalized": "given actual coverage the earlier bill for robust openness that allowed a route to be replaced rather than preserved is robust openness itself split on whether the concern was live at the actual prefix and is recorded as such rather than presented as a certificate",
+    "version": 1
+   }
+  ],
+  "split-bill-is-robust-openness.complete": [
+   {
+    "date": "2026-10-23",
+    "normalized": "the one conjunct is the registered compression theorem over a finite scenario with actual coverage inside the protected routes the split bill is equivalent to coverage and standing under every declared intervention that establishes the claim for the counterfactual half of robust openness over the abstracted scenario it does not establish the actual branch conjunct any statement about how counterfactuals are produced or that the componentwise persistence bill is the right external certificate which the companion results carry",
+    "version": 1
+   }
+  ],
+  "split-bill-is-robust-openness.improvable": [
+   {
+    "date": "2026-10-23",
+    "normalized": "the compression of the split bill into robust openness in which the earlier bill is the definition factored by a case split can be improved until it reflects a trajectory whose robust openness is certified under an intervention semantics read off its accounted state well",
+    "version": 1
+   }
+  ],
+  "split-bill-is-robust-openness.residual": [
+   {
+    "date": "2026-10-23",
+    "normalized": "a refinement of the compression theorem that none of the other routes describes reflects a trajectory whose robust openness is certified under an intervention semantics read off its accounted state",
     "version": 1
    }
   ],
@@ -20716,6 +21202,27 @@
     "version": 1
    }
   ],
+  "traderized-finite-date-conformance.complete": [
+   {
+    "date": "2026-10-23",
+    "normalized": "the one conjunct is the registered deductive end to end theorem for a deductive process with a computable fragment schedule a computable positive tolerance schedule and satisfiable stages the compiled market is a logical inductor over the process and conforms to the days deductive region within the tolerance at every date that establishes the claim for deduction the case the claims source names it does not establish the claim for an assessment process in general any trust or gap bet bound read from the conformance or an efficient compiler",
+    "version": 1
+   }
+  ],
+  "traderized-finite-date-conformance.improvable": [
+   {
+    "date": "2026-10-23",
+    "normalized": "the compiled per date conformance in which a constraint on prices compiles to a legal trading strategy that conforms within a schedule while preserving the criterion can be improved until it reflects a logical inductor whose prices answer a normative seeds constraints under a finite liability account well",
+    "version": 1
+   }
+  ],
+  "traderized-finite-date-conformance.residual": [
+   {
+    "date": "2026-10-23",
+    "normalized": "a refinement of the compiled conformance that none of the other routes describes reflects a logical inductor whose prices answer a normative seeds constraints under a finite liability account",
+    "version": 1
+   }
+  ],
   "training-map-model": [
    {
     "date": "2026-10-20",
@@ -21965,6 +22472,34 @@
     "version": 1
    }
   ],
+  "verdict-licence-chain": [
+   {
+    "date": "2026-10-23",
+    "normalized": "a verdict licence is a certificate supported on the compiled bundle together with an authorized record event and a licensed verdict is supported on the records grounds and admissible in their settled region the step from supported to admissible holding by rational convexity of the region rather than by projection",
+    "version": 1
+   }
+  ],
+  "verdict-licence-chain.complete": [
+   {
+    "date": "2026-10-23",
+    "normalized": "the one conjunct is the registered licence chain at a record state a licensed verdict is supported on the records grounds and admissible in their settled region that establishes the claims chain for a record state at one step with its first arrow definitional and its second by convexity it does not establish that a licence survives a record transition that the authorized event clause does any work or either converse which the rounds countermodels refute",
+    "version": 1
+   }
+  ],
+  "verdict-licence-chain.improvable": [
+   {
+    "date": "2026-10-23",
+    "normalized": "the licence chain in which a licensed verdict is supported on the records grounds and admissible in their settled region can be improved until it reflects a normative inductor whose announced verdicts are licensed end to end by its accounted record well",
+    "version": 1
+   }
+  ],
+  "verdict-licence-chain.residual": [
+   {
+    "date": "2026-10-23",
+    "normalized": "a refinement of the licence chain that none of the other routes describes reflects a normative inductor whose announced verdicts are licensed end to end by its accounted record",
+    "version": 1
+   }
+  ],
   "vingean-abstraction-candidate-definition": [
    {
     "date": "2026-10-20",
@@ -22234,6 +22769,11 @@
     "date": "2026-10-22",
     "normalized": "the statement of record of warrant licence chain formalizes the registered claim as the registry reads it licensed supported admissible",
     "version": 1
+   },
+   {
+    "date": "2026-10-23",
+    "normalized": "the claim asserts a chain of three standings for an announced verdict licensed implies supported implies admissible the declaration certifies for a record state at one step that a verdict licensed there supported on the records survivors by a certificate whose cited rows are live and issued by an authorized event is supported on the records grounds under its docket and settlement and admissible that is attained by some point of the settled region the gaps the first arrow is the definition of licensed read back licensed is supported plus authorization so the content of the chain is the second arrow alone supported admissible by rational convexity of the settled region region_convex through supportedon_admissibleon not by any projection the chain holds at one record state and says nothing about transport across a record transition item 115 the authorization clause is carried and not used and the two converses fail as the rounds countermodels admissible_not_supported and supported_not_licensed show which the claims wording does not state",
+    "version": 2
    }
   ],
   "warrant.licence-chain.complete": [
@@ -22246,6 +22786,39 @@
     "date": "2026-10-23",
     "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
     "version": 2
+   },
+   {
+    "date": "2026-10-23",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record the four hypothesis leaves filed by reading the record state the verdict certificate the supported clause of licensed which restates the conclusions first conjunct and the authorized event clause which the conclusion does not read the bridge and this leaf",
+    "version": 3
+   }
+  ],
+  "warrant.licence-chain.h-authorized-event": [
+   {
+    "date": "2026-10-23",
+    "normalized": "the event that issued and selected the certificate is one the record authorizes",
+    "version": 1
+   }
+  ],
+  "warrant.licence-chain.h-record-state": [
+   {
+    "date": "2026-10-23",
+    "normalized": "a record state at a step consists of admitted grounds a docket a settlement and the set of record events the record authorizes",
+    "version": 1
+   }
+  ],
+  "warrant.licence-chain.h-supported": [
+   {
+    "date": "2026-10-23",
+    "normalized": "the certificates positively weighted rows are cited into the settled bundle its endpoints bracket the verdict and both endpoints are attained in the bundles region the verdict is supported",
+    "version": 1
+   }
+  ],
+  "warrant.licence-chain.h-verdict-certificate": [
+   {
+    "date": "2026-10-23",
+    "normalized": "a verdict certificate is a lower and an upper bound certificate each row cited by occurrence a pin or a cube face with the two endpoints and the region points that attain them",
+    "version": 1
    }
   ],
   "warrant.licence-chain.h1": [

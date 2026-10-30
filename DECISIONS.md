@@ -40,6 +40,15 @@ maintainer's.
 below.** The next round dispatched from that conversation lands it as its first
 commit.
 
+- **How epistemic status is represented per concept node on the map (2026-10-30).**
+  The maintainer holds that per-node epistemic status will be very important on the
+  research map and defers the representation choice. The data exists (registry classes
+  behind each concept's results, the digests' supersession notes); candidates include a
+  visual mark per capsule, a status line on the card, or both.
+  *Turns on:* taste about the map's visual vocabulary — what a reader should see before
+  clicking.
+  <!-- decision: open--epistemic-status-representation-on-map; touches: node:enabling-program-site; status: open -->
+
 - **Whether disposal transfers load in full or at a discount.** The round transfers
   in full: the successor inherits exactly the disposed issue's load, which makes the
   disposal edge an identity-frame transport step with `L = 1`, `ε = 0`.
@@ -389,6 +398,41 @@ commit.
   dockets with no finer goal identified.
   *Turns on:* where each belongs in the maintainers' own picture of the lines.
   <!-- decision: open--placements-round-left-where-they-were; touches: node:wiki-corpus-maintenance, node:normative-inductor; status: open -->
+
+- **The five bridges' rewritten Statements and the hypotheses' tags (2026-10-24).**  The round
+  rewrote sixteen bridges by reading (one per connected result, twelve of them in the
+  effective-authority cluster) and filed the hypothesis leaves with `discharge` tags by one
+  stated reading rule (`projects/enabling/rounds/2026-10-24-site-vertical-slice/CONNECTIONS.md`),
+  including one tag of *restates the conclusion* on the licence chain's Supported clause. A
+  human reading of each is the `attribution` event on the bridge and the vetting the
+  protocol asks for; none was written.
+  *Turns on:* whether the formalizer's reading of each gap and each tag stands — a reading
+  of the mathematics that only a human event can turn from drafted to vetted.
+  <!-- decision: open--five-bridges-rewritten-statements-hypotheses-tags; touches: node:compiler.deductive-end-to-end, node:warrant.licence-chain, node:openness.certplus-is-robust-openness, node:effective-authority-layer, node:delegation.bridge; status: open -->
+
+- **The informal claims the round filed where none existed (2026-10-24).**  Three of the
+  five connections found no node stating the claim the result establishes, so the round
+  filed one each from the wiki page and the round report that state it:
+  `verdict-licence-chain`, `split-bill-is-robust-openness`, `local-delegation-bridge`; the
+  other two use existing nodes (`traderized-finite-date-conformance`,
+  `effective-authority-layer`). Each new claim is the first goal of a programme that had
+  none (`openness-and-non-capture`, `deference-finite-results`) or a new goal of one.
+  *Turns on:* whether each sentence is the claim its owner would state, and whether a
+  programme's first goal should be the claim a theorem happens to establish — a
+  maintainer's placement.
+  <!-- decision: open--informal-claims-round-filed-where-none-existed; touches: node:verdict-licence-chain, node:split-bill-is-robust-openness, node:local-delegation-bridge; status: open -->
+
+- **What the walk found the map lacked (2026-10-24).**  Listed in the round's report under
+  the walk's findings: no edge runs from the normativity line's compiled conformance to a
+  trust bound the deference line reads (the walk crosses lines through `the-program` and
+  item 129 is the route that would supply the edge); the authority results were held by two
+  frames and their claim is now a shared root of both; nothing connects the inductor's
+  licence to the legitimacy line's syntax frame, where the question's two halves meet; and
+  the walk's last step names a frame, not a want, because a want a visitor would file does
+  not exist until filed.
+  *Turns on:* whether these are edges to file or gaps the program means to leave — a reading
+  of the lines by their owners.
+  <!-- decision: open--what-walk-found-map-lacked; touches: node:traderized-finite-date-conformance, node:effective-authority-layer, node:verdict-licence-chain, node:legitimacy-meets-syntax; status: open -->
 
 ## Settled
 
@@ -6732,3 +6776,136 @@ word, the word).
 Ruling G2 closes the queued entry *How a docket is represented (ruling F6, 2026-10-23)*: a
 docket is no node; the work orders it held are held by the frame it hung under. The ruling
 text is the maintainer's and is not reworded.
+
+### 2026-10-24 — the site as one vertical slice: five reference results connected by reading, a generated stdlib-only site that is never a second source, deployment to Pages behind an enumerated write-scope job, and one id, one URL (S1–S4)
+<!-- decision: 2026-10-24--site-vertical-slice-five-reference-results-generated-site-one-id-one-url; touches: node:enabling-work, node:enabling-program-site, node:effective-authority-layer, node:traderized-finite-date-conformance, node:operative-force, node:normative-inductor, node:openness-and-non-capture, node:deference-finite-results, node:public-corrigibility-line, node:authorship-and-transparency, claim:compiler.deductive-end-to-end, claim:warrant.licence-chain, claim:openness.certplus-is-robust-openness, claim:delegation.bridge -->
+
+**Maintainer rulings, taken by one maintainer in conversation; the second maintainer's
+confirmation is outstanding** (landed as the first commit of the site-vertical-slice round,
+`prompts/2026-10-24-site-vertical-slice/PROMPT.md`, stacked on the map-as-canonical round's
+pull request #131). The two bracketed choices the prompt leaves to the maintainer (keep or
+swap any of the five; the custom domain) stand as written until the maintainer says
+otherwise: the five are kept and no domain is set.
+
+**S1. The five reference results.** [MAINTAINER: keep or swap any.]
+`compiler.deductive-end-to-end` (the traderization headline, `deductive_end_to_end`);
+`warrant.licence-chain` (Licensed ⇒ Supported ⇒ Admissible); `openness.certplus-is-robust-openness`
+(`certPlus_iff_robustOpen`, the legitimacy spine's equivalence); the `effective-authority-layer`
+cluster (the seven `authority.*` and five `sincerity.*` claims of
+`projects/deference/CLAIMS.md`, one informal claim established by twelve declarations — the
+multi-record precedent); `delegation.bridge` (the finite delegation bridge, so the walk
+crosses into the deference line). Each is connected per Part 1 and nothing else is: the
+precedent is the deliverable, not coverage.
+
+**S2. The site is generated, stdlib-only, and never a second source.** `site/` holds a
+Python generator (standard library only, like the checkers; a few hundred lines of
+hand-written CSS and vanilla JavaScript for navigation and client-side search; no framework,
+no build step beyond `python3 -m site.build`). It reads graph/index.json (running the plain
+checker first if the file is absent), `state/*.json`, the two registries, `DECISIONS.md`'s
+anchors, the wiki source and `graph/events/*.jsonl`, and writes `_site/` (gitignored). A
+build fails on any reference that does not resolve, exactly as the checker refuses one: the
+build is a gate, run by `tests/run.py`. Nothing on the site is typed by hand except the walk
+documents of Part 2 and the front page's one lede paragraph, both of which live in the
+repository and are binding-checked.
+
+**S3. Deployment.** A workflow `.github/workflows/site.yml` builds `_site/` on every push and
+pull request (read scope; uploads it as an artifact so a reviewer can open a pull request's
+build) and, on `push` to `main` only, deploys it to GitHub Pages through a write-scope job
+enumerated in `AGENTS.md` *Security* like `derived-publish`. No custom domain in this round:
+site/CNAME is added only when the maintainer supplies one [MAINTAINER: domain, or
+"none yet"]. The Pages deploy will not run until #131 and this merge; the artifact is the
+preview until then.
+
+**S4. One id, one URL.** Every node, item, decision anchor, round, registry id, wiki page and
+handle has exactly one path on the site, derived from its id: `/n/<node id>/`,
+`/items/<n>/`, `/decisions/<anchor>/`, `/rounds/<round id>/`, `/claims/<registry id>/`
+(redirecting to its record's node), `/wiki/<Page>/`, `/by/<handle>/`. The generator refuses
+two ids that map to one path. These paths are the contract the chatbot and the intake round
+will build on; document them in `site/README.md`.
+
+*As the round found them* (the round's report under prompts/2026-10-24-site-vertical-slice/, corrections):
+the build on pull requests runs in `ci.yml`, because the repository's own gate forbids a
+write-scoped job in any workflow that lists `pull_request`; `site.yml` is the push-to-`main`
+deploy alone. The ruling text is the maintainer's and is not reworded.
+
+### 2026-10-30 — the site is one zoomable map: nested regions with semantic zoom, three views over one node set, fragments in a panel, and intake as prefilled issues (S5)
+<!-- decision: 2026-10-30--site-one-zoomable-map-three-views-intake-prefilled-issues; touches: node:enabling-program-site -->
+
+**Maintainer ruling, taken in conversation on 2026-10-30; executed by the
+site-vertical-slice round's follow-up on its open pull request.**
+
+**S5. The site's one UI is the map: one full-viewport network graph.** The front page
+fills the viewport with a single pannable, zoomable network laid out from
+`/assets/map.json` by vanilla JavaScript (`site/assets/map.js`): the curated network of
+`state/concepts.json`, a wiki of the agent-foundations theory relevant here whose
+members span five kinds — goal/thread of the research, new construction, mathematical
+object, prior work, philosophical concept — encompassing the repository wiki's terms
+and going beyond them. Small circles colour-coded by kind with a legend, force-laid and
+free of walls, each carrying its name and a two-line summary; the question and lede sit
+in an about panel over the canvas, and a reader is not shown more text until they click
+in for it. The links are hand-chosen by a pass over the candidate pairs, never a
+near-complete graph, each carrying one or more relation categories and a one-line why
+shown on edge hover. Every click opens a centred popup — the entry's wiki page fragment
+where one exists, else its `/concepts/<id>/` fragment, each ending in a
+reverse-chronological expandable list of its tagged merged work — and `/#c=<id>`
+deep-links a concept. The frame tree, the rounds and the digested pull requests are
+pages and popups, not canvases; every per-id URL of S4 stands, each object remaining a
+full page, so the contract is unchanged. Walks are
+not part of the site; the one shipped walk leaves with this ruling, and its open review
+entry leaves the queue. Intake is verbs on every node page and fragment — comment,
+challenge, estimate, want — each a prefilled GitHub issue carrying the node id and a
+protocol-shaped body; the site accepts no write, and a maintainer round sweeps what
+lands into ledger events under `graph/PROTOCOL.md`'s authorship rules.
+
+**The pull-request digests.** Every merged pull request gets a key-points digest in
+`state/prs.json`: number, title, merged date, its rounds, topic tags drawn from the wiki
+pages and frames, one or two paragraphs of results in plain register, and — where a
+result was later displaced — a supersession note with references. The digests are
+AI-generated against the round reports and registries, provenance-marked, and read by
+the site alone; nothing adjudicates on them. The site's palette and type are
+amberns.com's (paper `#0e0e10`, ink `#ececec`, bone accent `#c8c4ba`, Lexend
+self-hosted), dark only.
+
+*Rejected alternatives:* a page-per-object site with hand-written walks as the guided
+layer (the maintainer judged the walk unnecessary once the map itself is the guide); a
+continuously-zooming canvas (the maintainer ruled levels discrete, entered and left as
+levels); nested-region treemap levels with previews of their contents (the maintainer
+ruled for plain network graphs, nothing marking a node composite); a write path from the
+page (a backend is its own decision, not taken here).
+
+### 2026-10-30 — corrigibility is a line of the program; deference-and-trust moves under it
+<!-- decision: 2026-10-30--corrigibility-line-deference-under-it; touches: node:the-program, node:corrigibility-landscape, node:deference-and-trust, node:legitimacy -->
+
+**Maintainer ruling, taken in conversation on 2026-10-30; filed by the
+site-vertical-slice round's follow-up.** The corrigibility landscape is a root of the
+program — corrigibility is an end the plan answers for, not a programme inside another
+line — and deference-and-trust is a root of the corrigibility landscape: deference is how
+a correction reaches an agent that may know more, corrigibility is what it buys. The
+landscape's attachments under legitimacy and deference-and-trust leave; legitimacy still
+reaches corrigibility through deference. The site's concept registry reads the same way.
+
+*Rejected alternative:* keeping deference-and-trust as the program line with the
+landscape shared under it and legitimacy — the shape the 2026-10-22 drafting chose, which
+the owners had not confirmed.
+
+### 2026-10-30 — the site's domain is alignmentworkspace.com
+<!-- decision: 2026-10-30--site-domain-alignmentworkspace-com; touches: none -->
+
+**Maintainer ruling, taken in conversation on 2026-10-30.** The maintainer supplied the
+name reserved by ruling S3: the site's domain is `alignmentworkspace.com`, registered at
+Cloudflare. `site/CNAME` carries it and the build copies it into every deploy; the Pages
+custom-domain setting and the Cloudflare DNS records point the name at the repository's
+Pages host. The queue entry awaiting the name leaves with this ruling.
+
+### 2026-10-30 — the weekly freshness audit, and its reporter's write scope
+<!-- decision: 2026-10-30--weekly-freshness-audit; touches: none -->
+
+**Maintainer ruling, taken in conversation on 2026-10-30.** A scheduled workflow audits
+the derived layer against the research structure weekly: every merged pull request has a
+digest, every round is carried by one or allowlisted, the concept registry's terminal
+goals and the program frame's roots match both ways, every substantive wiki page backs a
+concept, and every line is referenced by the registry (`tests/freshness.py`, with its
+null-input self-test). Findings are filed on the standing issue *Freshness audit* by a
+job holding `issues: write` under the Security section's five conditions, on the
+pin-bump pattern; the audit gates no merge. A finding is a request for a round — the
+answer to drift is dispatched curation, never silent automation of content.

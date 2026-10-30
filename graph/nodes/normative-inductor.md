@@ -1,14 +1,16 @@
 ---
 id: normative-inductor
 kind: frame
-children: [normativity-layer-I-closed]
+children: [normativity-layer-I-closed, verdict-licence-chain, verdict-licence-chain.improvable]
 question: "Does a logical inductor made to answer to legitimately incurred obligations, through an enforcer on the compiled region of the entitled record, remain a logical inductor and deliver the Progress bound, and what remains conditional in that theorem?"
 owner: "@anson"
 filed_from: wiki
 narrative: wiki/Normative-Inductor.md
 roots:
   - {id: normativity-layer-I-closed, role: shared-claim, preset: worst-case}
-holds: [progress.edge-bound, progress.edge-bound-quadratic, progress.headline-separation, ni.progress-bound, warrant.licence-chain, warrant.supported-admissible, warrant.admissible-not-supported, warrant.supported-not-licensed, warrant.selection-not-transparent, inductor.grounded-survivors, inductor.conformance, inductor.certificate-transport, inductor.warrant-inductor, inductor.witness, inductor.rebuttal-run, inductor.contraposition-blocked, item-124]
+  - {id: verdict-licence-chain, role: shared-claim, preset: worst-case}
+  - {id: verdict-licence-chain.improvable, role: shared-claim, preset: worst-case}
+holds: [progress.edge-bound, progress.edge-bound-quadratic, progress.headline-separation, ni.progress-bound, warrant.supported-admissible, warrant.admissible-not-supported, warrant.supported-not-licensed, warrant.selection-not-transparent, inductor.grounded-survivors, inductor.conformance, inductor.certificate-transport, inductor.warrant-inductor, inductor.witness, inductor.rebuttal-run, inductor.contraposition-blocked, item-124]
 author: "@smithy-verity"
 size: L
 size_reason: "the inductor, warrant and progress results and the end-to-end work orders"

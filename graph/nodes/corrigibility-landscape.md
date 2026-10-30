@@ -1,10 +1,11 @@
 ---
 id: corrigibility-landscape
 kind: frame
-children: [value-change-base-layer, anti-naturality-review, legitimacy-detection, dynamic-conditions-for-going-well, correction-through-the-channel, bli-corrigibility-thesis, legitimacy-weighted-deference, public-corrigibility-line, crux-epistemic-versus-authority, four-corrigibility-definitions, shutdown-button-toy, shutdown-button-toy.improvable, ps-cor614-orbit-count, ps-trained-systems-seek-power.improvable, faf-lab-cleanroom-comparison, want-basin-of-attraction-formalized, rs-press-discounting, rs-legitimate-overwrite-dodge, rs-invasive-channel-improvement, rs-wireheading-through-pushers, rs-undetectable-manipulation-selected, rs-no-strategic-legitimacy-defense, rs-illegitimate-world-incaution, rs-steering-toward-illegitimacy, rs-captor-service, rs-li-deference-without-legitimacy, rs-mistaken-anticipation]
+children: [deference-and-trust, value-change-base-layer, anti-naturality-review, legitimacy-detection, dynamic-conditions-for-going-well, correction-through-the-channel, bli-corrigibility-thesis, legitimacy-weighted-deference, public-corrigibility-line, crux-epistemic-versus-authority, four-corrigibility-definitions, shutdown-button-toy, shutdown-button-toy.improvable, ps-cor614-orbit-count, ps-trained-systems-seek-power.improvable, faf-lab-cleanroom-comparison, want-basin-of-attraction-formalized, rs-press-discounting, rs-legitimate-overwrite-dodge, rs-invasive-channel-improvement, rs-wireheading-through-pushers, rs-undetectable-manipulation-selected, rs-no-strategic-legitimacy-defense, rs-illegitimate-world-incaution, rs-steering-toward-illegitimacy, rs-captor-service, rs-li-deference-without-legitimacy, rs-mistaken-anticipation]
 question: "Which correction relationships between humans and AI systems does the picture of corrigibility as eagerness to learn reach, and which failure stories does it leave standing?"
 owner: "@anson"
 roots:
+  - {id: deference-and-trust, role: plan, preset: worst-case}
   - {id: value-change-base-layer, role: plan, preset: worst-case}
   - {id: anti-naturality-review, role: plan, preset: worst-case}
   - {id: legitimacy-detection, role: plan, preset: worst-case}

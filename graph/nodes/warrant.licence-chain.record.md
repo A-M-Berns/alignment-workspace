@@ -3,7 +3,7 @@ id: warrant.licence-chain.record
 kind: leaf
 leaf_kind: record
 statement_of_record: Workspace.Normativity.Contrib.WarrantEntitlement.licence_chain
-hypotheses: unread
+hypotheses: [warrant.licence-chain.h-record-state, warrant.licence-chain.h-verdict-certificate, warrant.licence-chain.h-supported, warrant.licence-chain.h-authorized-event]
 size: S
 size_reason: "one declaration against the registry"
 version: 1
@@ -22,3 +22,5 @@ The signature of `Workspace.Normativity.Contrib.WarrantEntitlement.licence_chain
         {c : VerdictCert d m m' φ} {event : ℕ} (h : Licensed R φ v c event) :
         Supported R.grounds R.docket R.settlement φ v c ∧
           Admissible R.grounds R.docket R.settlement φ v
+## Notes
+Filed by the map-as-canonical round from the registry entry and the declaration's signature; its hypotheses were unread (ruling F1, 2026-10-23) until the site-vertical-slice round (projects/enabling/rounds/2026-10-24-site-vertical-slice) filed the four hypothesis leaves by reading the declaration and the definitions it unfolds: the record state, the verdict certificate, the Supported clause of Licensed (a restatement of the conclusion's first conjunct) and the authorized-event clause (carried, not used). The signature stays in the Source as the text they were read from.

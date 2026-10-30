@@ -3,7 +3,7 @@ id: sincerity.lie-tainted.record
 kind: leaf
 leaf_kind: record
 statement_of_record: Workspace.Deference.Contrib.Sincerity.Rows.row20_lie_tainted
-hypotheses: unread
+hypotheses: [sincerity.lie-tainted.h-fixture]
 size: S
 size_reason: "one declaration against the registry"
 version: 1
@@ -21,3 +21,5 @@ The signature of `Workspace.Deference.Contrib.Sincerity.Rows.row20_lie_tainted` 
     :
         ¬ CountedS row20Lie state₀ (stAdmit false) ∧
           deviatesS Rows.decl false (Policy.honest.present Rows.decl true) = true
+## Notes
+Filed by the map-as-canonical round from the registry entry and the declaration's signature; its hypotheses were unread (ruling F1, 2026-10-23) until the site-vertical-slice round (projects/enabling/rounds/2026-10-24-site-vertical-slice) filed 1 hypothesis leaf by reading the declaration. The signature stays in the Source as the text they were read from.

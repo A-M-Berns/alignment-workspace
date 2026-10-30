@@ -1,14 +1,12 @@
 ---
 id: traderized-finite-date-conformance
-kind: leaf
-leaf_kind: step
-action: "Test whether the normativity line's constraint compiler can enforce a per-day gap-bet bound (the novice's expectation of each signed gap bet at least minus a schedule) while preserving the criterion, and state the obstruction if not."
-who: agent
-files: [projects/normativity/rounds/2026-08-16-traderized-enforcement/PROOF_CLOSURE.md, projects/normativity/notes/GENERALIZED_LI_PAPER_HANDOFF.md]
+kind: and
 author: "@smithy-verity"
 size: M
-size_reason: "one public arc and one test against it"
+size_reason: "a claim, its formal result and its completeness leaf"
 version: 1
+children: [compiler.deductive-end-to-end, traderized-finite-date-conformance.complete]
+work: [{kind: round, ref: projects/enabling/rounds/2026-10-24-site-vertical-slice}, {kind: priorities, ref: 48}]
 ---
 ## Statement
 A constraint on prices compiles to a legal trading strategy inside the market
@@ -23,6 +21,4 @@ the registered claims of the traderization arc in
 projects/normativity/CLAIMS.md.
 
 ## Notes
-A public result of the normativity line, in leaf form; evidence that
-finite-date strengthenings of the criterion exist. The action tests whether its
-machinery gives a trust bound.
+A public result of the normativity line; evidence that finite-date strengthenings of the criterion exist. Since the site-vertical-slice round (projects/enabling/rounds/2026-10-24-site-vertical-slice) it is the and of its formal result compiler.deductive-end-to-end (a conjunct, not an alias: the result keeps its node and its registry id) and its own completeness leaf, and a shared-claim root of operative-force beside its place under formalism-open-questions-0-3; the step's earlier action, whether the compiler's machinery gives a per-day gap-bet bound, is the route item-129 of its improvement claim.

@@ -790,6 +790,19 @@ non-maintainer, and no single class says that. The fields are defined once, in
   - `pin-bump-publish`, which force-pushes a verified pin bump to the branch
     `bot/pin-bump` and opens or updates the issue reporting it. It never opens a
     pull request and never touches `main`; the maintainer opens the pull request.
+  <!-- write-scope: job=site-deploy; workflow=.github/workflows/site.yml -->
+  - `site-deploy`, which deploys the site built at read scope by `site-build`
+    (`python3 site/build.py`, a render of the map and the repository) to GitHub
+    Pages on push to `main`, through the Pages deployment action with the run
+    token (`pages: write`, `id-token: write`; ruling S3, 2026-10-24). Nothing
+    adjudicates on the deployed site; the ci workflow keeps every build as an
+    artifact, which is a pull request's preview.
+  <!-- write-scope: job=freshness-report; workflow=.github/workflows/freshness.yml -->
+  - `freshness-report`, which files the weekly freshness audit's findings as a comment
+    on (or creation of) the standing issue *Freshness audit*. It runs only on
+    `schedule` or a `main`-guarded dispatch, after a read-scope audit job whose report
+    it handles as data; it writes no content of record — the issue is a request for a
+    round, and nothing adjudicates on it.
   <!-- write-scope: job=derived-publish; workflow=.github/workflows/derived.yml -->
   - `derived-publish`, which force-pushes the argument map's two uncommitted
     generated files (graph/derived.json and graph/index.json, written at read
@@ -1057,7 +1070,9 @@ decision reads.
 
 **Gates.** The checker runs on every commit and pull request that touches
 `graph/` or `chats/` and refuses: a number, level or status in a node file;
-an unmapped handle, an AI handle's level-minting event, acceptance, tag,
+an unmapped handle, an AI handle that is not its model's slug (an AI's handle
+is derived from the model string, never chosen; the two minted before
+2026-10-24 are marked `legacy`), an AI handle's level-minting event, acceptance, tag,
 `revise` or `priority`, an AI handle's number without its reasoning, or an
 AI handle's number on a want; a priority word by anyone but the want's
 owner; a withdrawal of someone else's event; a regenerated file edited by
@@ -1070,3 +1085,30 @@ question, the dialogue above, the placement of a quoted want, the
 attachment of a task as route or evidence, and the no-real-names rule are
 **not gated**, and private citations only warn; they are review matters and
 grounds for rejection on their own.
+
+## The site under `site/`
+
+`site/` holds a generator, standard library only like the checkers, that renders the map
+and the repository as a static site: `python3 site/build.py` reads graph/index.json
+(running the plain checker first when the file is absent), graph/derived.json for the one
+page about the ranking, `state/*.json`, the claims registries, the anchors of
+`DECISIONS.md`, the wiki source, `graph/policy.yaml` and the human ledgers, and writes
+`_site/` (gitignored). The site is a render and never a second source: nothing on it is
+typed by hand except `site/lede.md`, the front page's one paragraph, binding-checked
+against the state at every build. The front page is the map itself, one full-viewport
+pannable network graph (`site/assets/map.js` over `/assets/map.json`): the concept
+network of `state/concepts.json` — goals, new constructions, mathematical objects, prior
+work and philosophical concepts, colour-coded by kind, edges hoverable for their
+relation, every node opening a popup that ends in its tagged merged work from
+`state/prs.json`; every node page carries the intake verbs, each a
+prefilled GitHub issue a maintainer round sweeps into ledger events (ruling S5,
+2026-10-30). Every node, item,
+decision anchor, round, registry id, wiki page and handle has exactly one path, derived
+from its id (`site/README.md` is the contract); a build fails on a reference that does
+not resolve, two ids that map to one path, or a binding that disagrees with the state,
+and `tests/site_build.py` runs that build as a gate under `tests/run.py`. The site shows
+structure and human events; an AI-drafted node (an AI author and no human event) renders
+in a lighter register with the label *drafted*, and the ranking's numbers appear only on
+`/ranking/` and in a collapsed section of a node page. Build it locally with
+`python3 -m checkers.graph --root .` then `python3 site/build.py` (Python ≥ 3.12), and
+serve `_site/` with any static server (rulings S2–S4, 2026-10-24; S5, 2026-10-30).

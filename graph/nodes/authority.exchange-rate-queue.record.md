@@ -3,7 +3,7 @@ id: authority.exchange-rate-queue.record
 kind: leaf
 leaf_kind: record
 statement_of_record: Workspace.Deference.Contrib.EffectiveAuthority.exchange_rate_queue
-hypotheses: unread
+hypotheses: [authority.exchange-rate-queue.h-parameters, authority.exchange-rate-queue.h-prefers-bid]
 size: S
 size_reason: "one declaration against the registry"
 version: 1
@@ -22,3 +22,5 @@ The signature of `Workspace.Deference.Contrib.EffectiveAuthority.exchange_rate_q
         (pS pT : ℝ) (hp : 0 ≤ pS + pT) (cQueue : ℝ) (hc : P.w ≤ cQueue)
         (hpref : P.evalOf cQueue 0 0 0 ≤ P.evalOf bid nKnown pS pT) :
         nKnown = 0 ∧ pS + pT ≤ (P.D - cQueue) / P.ϖ
+## Notes
+Filed by the map-as-canonical round from the registry entry and the declaration's signature; its hypotheses were unread (ruling F1, 2026-10-23) until the site-vertical-slice round (projects/enabling/rounds/2026-10-24-site-vertical-slice) filed 2 hypothesis leafves by reading the declaration. The signature stays in the Source as the text they were read from.

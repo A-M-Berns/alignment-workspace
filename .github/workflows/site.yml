@@ -1,0 +1,58 @@
+name: site
+
+# The site is a render of the map and the repository (ruling S2, 2026-10-24):
+# `python3 site/build.py` writes `_site/` from graph/index.json, the state
+# files, the registries, DECISIONS.md, the wiki and the ledgers. The ci
+# workflow builds it on every push and pull request and keeps `_site/` as an
+# artifact (the preview of a pull request's build); this workflow deploys the
+# build of `main` to GitHub Pages (ruling S3).
+#
+# Never on pull_request: `site-deploy` holds write scope (pages and id-token),
+# and AGENTS.md's Security section (conditions 1–5 and the `write-scope`
+# enumeration) is where that grant is justified. The build runs at read scope
+# in `site-build`; the deploying job builds nothing and executes nothing from
+# the proof layer or a dependency: it hands the artifact to Pages.
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site
+  cancel-in-progress: false
+
+jobs:
+  site-build:
+    name: site-build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: The plain checker run writes the index the site reads
+        run: python3 -m checkers.graph --root .
+      - name: Build the site
+        run: python3 site/build.py --out _site
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  site-deploy:
+    name: site-deploy
+    needs: site-build
+    runs-on: ubuntu-latest
+    # Write scope, enumerated by name in AGENTS.md's Security section: push-only
+    # trigger on a protected branch, publishes rather than adjudicates (no
+    # required check reads the deployed site), the run token, the grant on the
+    # job, and no build or dependency code executed here.
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

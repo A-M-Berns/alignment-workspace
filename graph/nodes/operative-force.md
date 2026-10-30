@@ -1,14 +1,16 @@
 ---
 id: operative-force
 kind: frame
-children: [traderization-arc]
+children: [traderization-arc, traderized-finite-date-conformance, traderized-finite-date-conformance.improvable]
 question: "How does a constraint acquire operative force in a logical inductor's market without destroying the property that nobody can pump the reasoner, and what does that force cost?"
 owner: "@anson"
 filed_from: wiki
 narrative: wiki/Actionability-and-Normative-Force.md
 roots:
   - {id: traderization-arc, role: shared-claim, preset: worst-case}
-holds: [li.assessment.budgeter-value, li.assessment.budgeter-floor, li.assessment.budgeter-exploits, li.assessment.firm-dominance, li.assessment.criterion, force.strategy-value, force.row-tolerance, force.preservation, force.deductive-day-nonneg, force.deductive-cumulative-nonneg, force.deductive-criterion, force.deductive-inductor, force.deductive-witness, coherence.modulus-soundness, coherence.modulus-net-cover, compiler.schedule-end-to-end, compiler.constraints-end-to-end, compiler.deductive-end-to-end, maxmin.representation, maxmin.converse, region.patterns-sound, region.patterns-complete, region.patterns-nonempty-iff, region.hull, smoke.faf-asymp-refl, smoke.chain-compiles, simplex.rational-points-sum-to-one, item-39]
+  - {id: traderized-finite-date-conformance, role: shared-claim, preset: worst-case}
+  - {id: traderized-finite-date-conformance.improvable, role: shared-claim, preset: worst-case}
+holds: [li.assessment.budgeter-value, li.assessment.budgeter-floor, li.assessment.budgeter-exploits, li.assessment.firm-dominance, li.assessment.criterion, force.strategy-value, force.row-tolerance, force.preservation, force.deductive-day-nonneg, force.deductive-cumulative-nonneg, force.deductive-criterion, force.deductive-inductor, force.deductive-witness, coherence.modulus-soundness, coherence.modulus-net-cover, compiler.schedule-end-to-end, compiler.constraints-end-to-end, maxmin.representation, maxmin.converse, region.patterns-sound, region.patterns-complete, region.patterns-nonempty-iff, region.hull, smoke.faf-asymp-refl, smoke.chain-compiles, simplex.rational-points-sum-to-one, item-39]
 author: "@smithy-verity"
 size: L
 size_reason: "the traderization arc's twenty-seven registered results and the enforcement work orders"

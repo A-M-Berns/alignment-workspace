@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 1152 names, 620 of them Lean only
+## deference — 1152 names, 619 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -515,7 +515,7 @@ change, and the count of those is the size of the free choice remaining.
 | `t` | def | 2026-10-17-post-companion-formalization | wiki, note, prose | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Sequential.t` |
 | `v` | def | 2026-10-17-post-companion-formalization | wiki, note, prose | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Decision.v` |
 | `EX` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.DelegationBridge.E1.EX` |
-| `GradeTrust` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.DelegationBridge.GradeTrust` |
+| `GradeTrust` | def | 2026-08-11-phase-ii-promotion | prose | `Workspace.Deference.Contrib.DelegationBridge.GradeTrust` |
 | `J` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.DelegationBridge.E1.J` |
 | `W` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.DelegationBridge.E1.W` |
 | `c` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.DelegationBridge.E1.c` |
@@ -1190,7 +1190,7 @@ change, and the count of those is the size of the free choice remaining.
 | `contraposition_blocked` | theorem | 2026-10-23-normative-inductor-consolidation | registry, wiki | `Workspace.Normativity.Contrib.WarrantInductorRebuttal.contraposition_blocked` |
 | `counterfactual_open_not_actual` | theorem | 2026-09-07-final-pressure-pass | registry, wiki, prose | `Workspace.Normativity.Contrib.NonCapture.Witness.counterfactual_open_not_actual` |
 | `deductiveRegion_eq_convexHull` | theorem | 2026-08-19-deductive-region | registry | `Workspace.Normativity.Contrib.DeductiveRegion.deductiveRegion_eq_convexHull` |
-| `deductive_end_to_end` | theorem | 2026-08-18-projection-enforcement | registry, note | `Workspace.Normativity.Contrib.DeductiveEffective.deductive_end_to_end` |
+| `deductive_end_to_end` | theorem | 2026-08-18-projection-enforcement | registry, note, prose | `Workspace.Normativity.Contrib.DeductiveEffective.deductive_end_to_end` |
 | `discord_iff_pair` | theorem | 2026-10-21-rebuttal-and-end-to-end | registry, wiki, prose | `Workspace.Normativity.Contrib.ConvergenceMeasure.discord_iff_pair` |
 | `discord_persists` | theorem | 2026-10-21-rebuttal-and-end-to-end | registry, wiki, prose | `Workspace.Normativity.Contrib.ConvergenceMeasure.discord_persists` |
 | `distinct_fates` | theorem | 2026-09-06-mathematical-consolidation | registry, wiki | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.distinct_fates` |
