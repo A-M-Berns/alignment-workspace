@@ -715,10 +715,14 @@ def map_data(site: Site) -> dict:
     for cid, e in r.concepts.items():
         if e.get("kind") == "goal" and "the-program" in succ.get(cid, []):
             ds[cid] = 1
+    # the same match concept_side uses for "Merged work", so a capsule's size and its card's
+    # count agree with the list the popup shows
     prs_of: dict[str, int] = {}
-    for num, P in r.prs.items():
-        for w in (P.get("topics") or {}).get("wiki") or []:
-            prs_of[w] = prs_of.get(w, 0) + 1
+    for cid, e in r.concepts.items():
+        refs = set(e.get("refs") or [])
+        prs_of[cid] = sum(1 for P in r.prs.values()
+                          if (e.get("wiki") and e["wiki"] in ((P.get("topics") or {}).get("wiki") or []))
+                          or (refs & set((P.get("topics") or {}).get("frames") or [])))
     meta = {}
     for cid, e in r.concepts.items():
         if e.get("wiki") and e["wiki"] not in r.wiki:
@@ -727,7 +731,7 @@ def map_data(site: Site) -> dict:
             if x not in r.nodes:
                 site.unresolved.append(f"concepts:{cid}:ref:{x}")
         meta[cid] = {"k": e.get("kind", ""), "w": e.get("wiki") or "", "t": e.get("title", cid),
-                     "s": str(e.get("blurb") or ""), "prs": prs_of.get(e.get("wiki") or "", 0), "d": ds[cid]}
+                     "s": str(e.get("blurb") or ""), "prs": prs_of.get(cid, 0), "d": ds[cid]}
     return {"items": list(r.concepts), "concepts": meta, "kinds": r.concept_kinds, "links": links}
 
 

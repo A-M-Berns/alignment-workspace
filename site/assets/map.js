@@ -96,16 +96,20 @@
       });
     }
     items.forEach(function (id) { if (!band[id] && id !== "the-program") band[id] = "context"; });
-    // capsule geometry
+    // capsule geometry; size grows with the merged work tagged to the concept, so the map
+    // shows where the repository's effort has gone (sqrt-damped, capped, zero work = base size)
     var geo = {};
     items.forEach(function (id) {
-      var tt = (meta[id] || {}).t || id;
+      var m = meta[id] || {};
+      var tt = m.t || id;
       var lines = titleLines(tt, 20);
       var wch = Math.max.apply(null, lines.map(function (L) { return L.length; }));
-      var cw = Math.max(Math.min(wch * 7.2 + 30, 196), 96);
-      var chh = lines.length > 1 ? 48 : 34;
-      if (id === "the-program") { cw += 14; chh += 6; }
-      geo[id] = { w: cw, h: chh, lines: lines };
+      var grow = Math.min(Math.sqrt(m.prs || 0) * 3.4, 22);
+      var fs = 11.5 + Math.min(grow / 9, 2);
+      var cw = Math.max(Math.min(wch * fs * 0.626 + 30 + grow, 240), 96);
+      var chh = (lines.length > 1 ? 48 : 34) + Math.round(grow * 0.6);
+      if (id === "the-program") { cw += 14; chh += 6; fs = Math.max(fs, 13); }
+      geo[id] = { w: cw, h: chh, lines: lines, fs: fs };
     });
     // columns: rank by goal distance, pitch from the widest capsule per rank
     var dmax = 1;
@@ -274,9 +278,10 @@
       dotEl[id] = cg;
       capEl[id] = cg;
       el("rect", { x: p.x - ge.w / 2, y: p.y - ge.h / 2, width: ge.w, height: ge.h, rx: 10, "class": "pill" }, cg);
-      var t = el("text", { x: p.x, y: p.y + (ge.lines.length > 1 ? -2.5 : 4), "text-anchor": "middle", "font-size": id === "the-program" ? 13 : 11.5, "class": "cap-title" }, cg);
+      var fs = ge.fs || 11.5;
+      var t = el("text", { x: p.x, y: p.y + (ge.lines.length > 1 ? 4 - (fs + 2) / 2 : 4), "text-anchor": "middle", "font-size": fs, "class": "cap-title" }, cg);
       ge.lines.forEach(function (ln, li) {
-        el("tspan", { x: p.x, dy: li ? 13.5 : 0 }, t).textContent = ln;
+        el("tspan", { x: p.x, dy: li ? fs + 2 : 0 }, t).textContent = ln;
       });
       if (m.s) {
         var st = el("text", { x: p.x, y: p.y + ge.h / 2 + 14, "text-anchor": "middle", "font-size": 10.5, "class": "nsub" }, cg);
@@ -394,7 +399,8 @@
     if (!lg) return;
     var K = DATA.kinds || {};
     var rows = [["bone", K.goal || "goal"], ["emerald", K.construction || "construction"], ["sapphire", K.object || "object"], ["amber", K.work || "work"], ["amethyst", K.philosophy || "philosophy"], ["garnet", K.companion || "companion"]];
-    lg.innerHTML = rows.map(function (r) { return '<span class="lg tone-' + r[0] + '"><span class="dotc"></span>' + esc(r[1]) + "</span>"; }).join("");
+    lg.innerHTML = rows.map(function (r) { return '<span class="lg tone-' + r[0] + '"><span class="dotc"></span>' + esc(r[1]) + "</span>"; }).join("")
+      + '<span class="lg">size · merged work</span>';
   }
 
   // pan and zoom; capture the pointer only once a drag has started, or clicks retarget to the svg

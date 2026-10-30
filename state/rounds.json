@@ -2083,6 +2083,19 @@
       "registered_classes": [],
       "prompt": "prompts/2026-10-24-site-vertical-slice/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-10-30-site-work-weighting",
+      "date": "2026-10-30",
+      "project": "enabling",
+      "path": "projects/enabling/rounds/2026-10-30-site-work-weighting",
+      "verdict": null,
+      "depends_on": [
+        "2026-10-24-site-vertical-slice"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-10-30-site-work-weighting/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
