@@ -343,3 +343,21 @@ digests remain reachable as pages and inside popups. `/#c=<id>` deep-links a con
 `/#n=` form leaves with the node canvas it pointed into. A GPT Astra (OpenAI) run is
 dispatched for a second-opinion aesthetic critique; its accepted and rejected suggestions
 land as a further commit.
+
+## Eighth follow-up of 2026-10-30 — directed toward the goals; cards, then fullscreen
+
+Every registry link now carries a direction meaning *feeds / is necessary for*, oriented
+toward the goals by a pass over all 67 (8 stay undirected: the contrasts and
+adjacencies). The canvas organizes by that structure: nodes sit in layers by longest
+directed path to the program — prior work and mathematical objects left, constructions
+mid, the lines right, the program rightmost — with y settled by forces, so what is
+necessary for the goals reads as left-to-right flow; small bone arrowheads mark each
+directed edge. Hover tooltips are gone: clicking a node opens a small anchored card
+(title, kind, blurb, merged-work count, *Read more*, *Open page*); *Read more* opens the
+fullscreen view with an ×; clicking an edge opens a card stating the relation as a
+sentence — endpoints, direction, categories as tags, the why — with buttons to either
+endpoint's card. Text selection is disabled on the canvas, which was the stray-highlight
+annoyance.
+
+Not shown: the orientation of each of the 67 links is the drafting model's reading of
+"what feeds what"; the layering inherits any error in it.

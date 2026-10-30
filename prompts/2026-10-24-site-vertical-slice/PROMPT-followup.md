@@ -91,3 +91,14 @@ Further directives of the same conversation, verbatim:
 > nicer. run a gpt astra subagent for secodn opinion brainstorming
 
 > goals shouldn't be a separate view. in fact those options should be only the grqph
+
+> meaning just one concept map view. also i think the highlighted relationshp things
+> aren't that helpful. also it should be like click on a node to create a popup summary
+> of the PR that's not fullscreen, and then you can click to create a fullscreen popup
+> view with an x-out. everything should be elegant and in service of looking good and
+> presenting exactly the relevant information. also clicking anywhere often highlights a
+> bunch of text. the popups for the connecting edges should be more useful and the
+> overall map organization should be reconsidered for maximal information conveyance.
+> there should in some way be an overarching goal view that shows what's necessary for
+> overall goals. We should probably reorient the edges perhaps as directed relationships
+> related to the goals

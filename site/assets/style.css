@@ -167,3 +167,19 @@ main:has(.map-full) > h1, main:has(.map-full) > .subtitle { display: none; }
   .map-full .map-bar.overlay { left: 0.6rem; right: 0.6rem; max-width: none; }
 }
 svg#map.no-edges .net-edges { display: none; }
+/* calm interactions: no text selection on the canvas; arrows; the small card; the fullscreen view */
+.map-stage, .map-stage svg text { -webkit-user-select: none; user-select: none; }
+svg#map .arrowhead { fill: #c8c4ba; opacity: 0.55; }
+svg#map .net-edge { cursor: pointer; }
+#map-card { position: absolute; z-index: 5; width: min(21rem, 86vw); background: #141417f5; border: 1px solid #2c2c31; border-radius: 10px; box-shadow: 0 10px 36px rgba(0,0,0,0.6); padding: 0.7em 1em 0.8em; font-size: 0.86rem; line-height: 1.45; }
+#map-card .card-head { margin: 0 0 0.3em; font-weight: 650; font-size: 0.95rem; }
+#map-card .card-blurb { margin: 0.3em 0; color: #c7c7c0; }
+#map-card .card-rels { margin: 0.2em 0; }
+#map-card .card-meta { margin: 0.3em 0 0; font-size: 0.76rem; }
+#map-card .card-actions { margin: 0.6em 0 0; display: flex; gap: 0.6em; flex-wrap: wrap; align-items: center; }
+#map-card .card-actions button { font: inherit; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; background: var(--accent); color: var(--bg); border: none; border-radius: 5px; padding: 0.25em 0.8em; cursor: pointer; }
+#map-card .card-actions a { font-size: 0.8rem; color: var(--muted); }
+#map-card .card-actions a:hover { color: var(--accent); }
+#map-modal.open { padding: 0; align-items: stretch; justify-content: stretch; }
+#map-modal.open #map-panel { width: 100%; max-height: none; height: 100%; border: none; border-radius: 0; padding: 1.2em clamp(1.2em, 12vw, 10em) 2em; }
+#map-panel-close { font-size: 1.3rem; padding: 0.05em 0.5em; }

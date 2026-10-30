@@ -460,7 +460,7 @@ def concept_body(site: Site, cid: str) -> str:
         body.append(f'<p><a href="{esc(e["url"])}">{esc(e["url"])}</a></p>')
     rels = []
     for L in r.concept_links:
-        other = L["b"] if L["a"] == cid else L["a"] if L["b"] == cid else None
+        other = L["to"] if L["from"] == cid else L["from"] if L["to"] == cid else None
         if other and other in r.concepts:
             o = r.concepts[other]
             target = site.url("wiki", o["wiki"]) if o.get("wiki") else site.url("concepts", other)
@@ -576,7 +576,7 @@ def front_page(site: Site, lede_html: str, feed_rows: list[str]) -> str:
             '<label class="edges-toggle"><input type="checkbox" id="map-edges" checked> edges</label></div>'
             f'<details class="map-about overlay"><summary>about this map</summary><p class="question">{esc(top["question"])}</p>{lede_html}</details>'
             '<span class="map-hint overlay muted">drag to pan · scroll to zoom · click a node · esc backs out</span>'
-            '<div id="map-tip" hidden></div>'
+            '<div id="map-card" hidden></div>'
             '<div id="map-modal"><div id="map-panel"><button id="map-panel-close" aria-label="close">×</button><div id="map-panel-body"></div></div></div>'
             '</div></div>',
             noscript,
@@ -585,20 +585,50 @@ def front_page(site: Site, lede_html: str, feed_rows: list[str]) -> str:
 
 
 def map_data(site: Site) -> dict:
-    """What the canvas draws: the concept network of state/concepts.json, and nothing else — ids in
-    registry order, per-concept metadata (kind, wiki page, title, blurb head, tagged merged work),
-    and the hand-chosen links, each carrying its relation labels and why as the edge hover's text."""
+    """What the canvas draws: the concept network of state/concepts.json — ids, per-concept metadata
+    (kind, wiki page, title, blurb, tagged merged work, and the goal-distance layer that orders the
+    canvas left to right), and the directed links, each with its relation labels and why."""
     r = site.repo
-    REL = {"part": "part of", "substrate": "built on", "uses": "uses", "shapes": "shaped the vocabulary of",
-           "defines": "set out in", "adjacent": "adjacent to", "contrast": "contrasted with", "formalizes": "formalized by"}
+    REL = {"part": "is part of", "substrate": "is the substrate of", "uses": "is used by", "shapes": "shaped",
+           "defines": "sets out", "adjacent": "is adjacent to", "contrast": "is contrasted with", "formalizes": "is formalized by"}
     links: list[list] = []
+    succ: dict[str, list[str]] = {}
     for L in r.concept_links:
-        a, b = L.get("a"), L.get("b")
+        a, b = L.get("from"), L.get("to")
         if a not in r.concepts or b not in r.concepts:
             site.unresolved.append(f"concepts:link:{a}--{b}")
             continue
         rels = [REL.get(x, x) for x in L.get("rel") or []]
-        links.append([a, b, 2 + len(rels), (", ".join(rels) + " — " if rels else "") + str(L.get("why") or "")])
+        und = 1 if L.get("undirected") else 0
+        links.append([a, b, 2 + len(rels), rels, str(L.get("why") or ""), und])
+        if not und:
+            succ.setdefault(a, []).append(b)
+    # the goal-distance layer: longest directed path toward the-program (goals as sinks on the right)
+    memo: dict[str, int | None] = {}
+    seen: set[str] = set()
+
+    def depth(x: str) -> int | None:
+        if x in memo:
+            return memo[x]
+        if x == "the-program":
+            memo[x] = 0
+            return 0
+        if x in seen:
+            return None
+        seen.add(x)
+        outs = [d for d in (depth(y) for y in succ.get(x, [])) if d is not None]
+        seen.discard(x)
+        memo[x] = 1 + max(outs) if outs else None
+        return memo[x]
+    ds = {cid: depth(cid) for cid in r.concepts}
+    dmax = max([v for v in ds.values() if v is not None] or [1])
+    # a node with no directed path to the program sits deep left; what feeds only such nodes sits deeper
+    for _ in range(3):
+        for cid in r.concepts:
+            if ds[cid] is None:
+                outs = [ds[y] for y in succ.get(cid, []) if ds.get(y) is not None]
+                ds[cid] = 1 + max(outs) if outs else dmax
+    ds = {cid: (v if v is not None else dmax) for cid, v in ds.items()}
     prs_of: dict[str, int] = {}
     for num, P in r.prs.items():
         for w in (P.get("topics") or {}).get("wiki") or []:
@@ -611,7 +641,7 @@ def map_data(site: Site) -> dict:
             if x not in r.nodes:
                 site.unresolved.append(f"concepts:{cid}:ref:{x}")
         meta[cid] = {"k": e.get("kind", ""), "w": e.get("wiki") or "", "t": e.get("title", cid),
-                     "s": str(e.get("blurb") or "")[:180], "prs": prs_of.get(e.get("wiki") or "", 0)}
+                     "s": str(e.get("blurb") or ""), "prs": prs_of.get(e.get("wiki") or "", 0), "d": ds[cid]}
     return {"items": list(r.concepts), "concepts": meta, "kinds": r.concept_kinds, "links": links}
 
 

@@ -7,177 +7,901 @@
     "philosophy": "philosophical concept"
   },
   "concepts": [
-    {"id": "the-program", "title": "The program", "kind": "goal", "wiki": "Home", "refs": ["the-program"],
-     "blurb": "How can a powerful reasoner improve without treating every correction as an attack? One plan with seven lines, indexed by the argument map; every registered claim, item, decision and round hangs under it."},
-    {"id": "normativity-line", "title": "Normativity", "kind": "goal", "wiki": "Normativity", "refs": ["normativity"],
-     "blurb": "What it means for a changing reasoner to remain responsive to reasons. A fixed objective scores behavior from outside; this line builds obligation, answer and enforcement as machine-checkable structure instead."},
-    {"id": "legitimacy-line", "title": "Legitimacy", "kind": "goal", "wiki": "Legitimacy", "refs": ["legitimacy"],
-     "blurb": "The bridge between normativity and deference: normative learning needs public reasons, and responses that carry standing rather than mere compliance. Its spine is the record half (Integrity) and the licence half (warrants)."},
-    {"id": "deference-line", "title": "Deference and trust", "kind": "goal", "wiki": "Deference", "refs": ["deference-and-trust"],
-     "blurb": "How a bounded reasoner benefits from a better-informed process without surrendering the ability to correct what that process does. 'Trust' names several distinct relations; the line separates and connects them."},
-    {"id": "corrigibility-line", "title": "Corrigibility", "kind": "goal", "wiki": "Corrigibility", "refs": ["public-corrigibility-line"],
-     "blurb": "Corrigibility from response authority: the corrigibility kernel's headline is specification-layer, with legitimate activated evaluation as its principal value and continuation BRIA as its learning layer."},
-    {"id": "openness-line", "title": "Openness and non-capture", "kind": "goal", "wiki": "Openness-Coverage-and-Non-Capture", "refs": ["openness-and-non-capture"],
-     "blurb": "Robust Openness at a state, defined over application-supplied coverage data: the reasoner remains correctable by parties it has not captured, certified rather than assumed."},
-    {"id": "normative-induction", "title": "Normative induction", "kind": "goal", "wiki": "Normative-Induction",
-     "blurb": "The thread that makes normative learning inductive: the Progress statistic, the edge-local practical certificate, and the finite three-term bound on the accounted export."},
-
-    {"id": "normative-inductor", "title": "Normative Inductor", "kind": "construction", "wiki": "Normative-Inductor", "refs": ["normative-inductor"],
-     "blurb": "The line's central machine: Logical Induction over an assessment process with projection enforcement, preserved under the operations the practice needs. Canonical architecture; conditional theorems."},
-    {"id": "enforcement-compiler", "title": "Enforcement compiler", "kind": "construction",
-     "blurb": "The construction that turns obligations into price movements: enforcement as convex projection of a credal state, with a typed outcome that conserves what was owed. Its three narrow results are lean-proved."},
-    {"id": "finite-date-conformance", "title": "Finite-date conformance", "kind": "construction", "refs": ["traderized-finite-date-conformance"],
-     "blurb": "A conformance bound at a date, where logical induction's inexploitability criterion gives only an asymptotic guarantee — the program's finite-time strengthening of its own substrate."},
-    {"id": "warrant-licence-chain", "title": "Warrant licence chain", "kind": "construction", "refs": ["verdict-licence-chain"],
-     "blurb": "A licensed verdict is supported on the record's grounds and admissible in their settled region: the chain from an announced verdict back through its warrant to the accounted record."},
-    {"id": "normative-record", "title": "Normative record", "kind": "construction", "wiki": "Normative-Record-and-Inquiry",
-     "blurb": "The left side of normative learning: what determines why a demand arose, how evidence enters the practice, and what a learner answers to — an identity-bearing record of obligations and responses."},
-    {"id": "settlement-interface", "title": "Settlement interface", "kind": "construction", "wiki": "Settlement-Interface",
-     "blurb": "Six distinct conditions, each with one home: four typed inputs of the protocol, two consequences or clauses of theorems elsewhere. The seam between a record and what counts as settled against it."},
-    {"id": "seed-theory", "title": "Normative seed", "kind": "construction", "wiki": "Seed-Theory",
-     "blurb": "The left-most object of the record picture made concrete: what a reasoner starts from and what it forces on the prices of a settled region."},
-    {"id": "defeat-with-successor", "title": "Defeat with a named successor", "kind": "construction",
-     "blurb": "A defeated obligation is answered or disposed — and disposal carries the debt to a named successor rather than extinguishing it. Authored, history-sensitive answerability under defeat; the future depends on which defaults lost."},
-    {"id": "answerability-score", "title": "Answerability score", "kind": "construction", "wiki": "Reasons-Answerability-and-the-Score",
-     "blurb": "The static question: what makes a reason, challenge or response publicly assessable before any learning happens? The score is that assessability made a quantity."},
-    {"id": "diachronic-answerability", "title": "Diachronic answerability", "kind": "construction", "wiki": "Diachronic-Answerability",
-     "blurb": "What the record half of legitimacy — an open Integrity ledger — amounts to over time: answerability as a property of a history, derived rather than postulated."},
-    {"id": "integrity", "title": "Integrity", "kind": "construction", "wiki": "Integrity",
-     "blurb": "The record's conservation package: what was owed is satisfied, disposed of, or remaining. The conservation theorem, propagation law, receipt immutability, faithful carry and multiplicity witness are lean-proved."},
-    {"id": "continuation-bria", "title": "Continuation BRIA", "kind": "construction", "wiki": "Continuation-BRIA",
-     "blurb": "Bounded inductive rationality lifted from one-step choices to temporally extended continuations, without counterfactual reward tables and without surrendering correctability."},
-    {"id": "serviceability", "title": "Serviceability", "kind": "construction", "wiki": "Serviceability",
-     "blurb": "When obligations can be served on time: exact rational fixtures for timely service, with the optimality of serving oldest first and the transfer of service-weighted convergence to obligation-weighted."},
-    {"id": "liability-affordability", "title": "Liability and affordability", "kind": "construction", "wiki": "Liability-and-Affordability",
-     "blurb": "Who pays for enforcement and what a practice can afford: the enforcement layer's three narrow results are lean-proved; the liability theory over them is open realization material."},
-    {"id": "progress", "title": "Progress statistic", "kind": "construction", "wiki": "Progress",
-     "blurb": "The statistic that says a practice is getting somewhere: paper-derived research under normative induction, with the finite bound on accounted export as its Established core."},
-    {"id": "effective-authority-layer", "title": "Effective authority layer", "kind": "construction", "refs": ["effective-authority-layer"],
-     "blurb": "The deference line's authority cluster: one informal claim established by twelve declarations — authority and sincerity conditions under which a verdict-giver's standing is effective rather than nominal."},
-    {"id": "robust-openness", "title": "Robust openness certificate", "kind": "construction", "refs": ["split-bill-is-robust-openness"],
-     "blurb": "A sufficient external certificate yields Robust Openness at a state: the split bill is the certificate, and the equivalence sits on the legitimacy spine."},
-    {"id": "delegation-bridge", "title": "Finite delegation bridge", "kind": "construction", "refs": ["local-delegation-bridge"],
-     "blurb": "The finite bridge from a local delegation to the deference line: what a bounded delegator can check locally and still inherit from the delegate's guarantee."},
-    {"id": "normative-force", "title": "Actionability and normative force", "kind": "philosophy", "wiki": "Actionability-and-Normative-Force",
-     "blurb": "What makes a requirement actionable — force as what enforcement does to prices, not as metaphor. The action theory over the lean-proved enforcement results is open."},
-
-    {"id": "deontic-scorekeeping", "title": "Deontic scorekeeping", "kind": "philosophy",
-     "blurb": "Brandom: normative status instituted by practice through tracked commitments and entitlements, attributing distinguished from acknowledging. It gives the architecture its shape without importing inferentialist semantics."},
-    {"id": "reasons-as-defaults", "title": "Reasons as defaults", "kind": "philosophy",
-     "blurb": "Horty's treatment of a reason's weight and priority as normative content rather than machinery. A static theory: default logic says what to conclude, not what is owed, and its proper scenarios forget the history of defeats."},
-    {"id": "rebut-undercut", "title": "Rebutting and undercutting defeat", "kind": "philosophy",
-     "blurb": "Pollock's distinction between attacking a conclusion and attacking the support itself — a genuine dependency here, transposed from a belief's warrant to a debt's."},
-    {"id": "exclusionary-reasons", "title": "Exclusionary reasons", "kind": "philosophy",
-     "blurb": "Raz: a second-order reason not to act on certain first-order reasons. In Horty's own rendering they remain challengeable in-system, which puts exclusion closer to disposition than to settlement."},
-    {"id": "practical-authority", "title": "Practical authority", "kind": "philosophy",
-     "blurb": "Authority as standing to change what someone owes, as against power to change what they do. The program renders it as record-readable entitlement rather than as a property of persons."},
-
-    {"id": "logical-induction", "title": "Logical induction", "kind": "object", "wiki": "Logical-Induction-and-Deference", "url": "https://arxiv.org/abs/1609.03543",
-     "blurb": "Garrabrant et al. 2016: a sequence of prices for logical claims that no polynomial trader can exploit. The market, the traders, the market maker and the inexploitability criterion are the substrate the enforcement construction is built on."},
-    {"id": "imprecise-probability", "title": "Imprecise probability", "kind": "object",
-     "blurb": "Coherent lower and upper previsions, sets of probabilities, and the linear-feasibility characterization of probabilistic entailment. The credal state is one; the enforced regions are convex sets of probabilities."},
-    {"id": "convex-projection", "title": "Convex projection", "kind": "object",
-     "blurb": "Projection onto a convex set and its defining variational inequality — the enforcement direction, used as a genuine dependency."},
-    {"id": "farkas-duality", "title": "LP duality and Farkas certificates", "kind": "object",
-     "blurb": "The finite-horizon infeasibility certificate has the shape of a Farkas pair and is called one, but its soundness proof is four self-contained lines; exactness under a Slater point is what actually leans on duality."},
-    {"id": "interval-feasibility", "title": "Interval feasibility", "kind": "object",
-     "blurb": "Gale–Hoffman flow feasibility, and directly Horn's 1974 conditions for preemptive scheduling with release times and deadlines. The transport-onto-service-dates condition cites this theorem rather than proving it."},
-    {"id": "contiguity", "title": "Contiguity of measures", "kind": "object",
-     "blurb": "Le Cam 1960. The condition under which service-weighted convergence transfers to obligation-weighted convergence is contiguity in exactly this sense — the definition inherited, the proof direct."},
-    {"id": "earliest-due-date", "title": "Earliest-due-date scheduling", "kind": "object",
-     "blurb": "Jackson 1955: serve the oldest obligation first. The optimality argument here is the same exchange argument, classical in substance, written out in four self-contained lines."},
-    {"id": "truth-maintenance", "title": "Truth-maintenance systems", "kind": "object",
-     "blurb": "Doyle 1979, de Kleer 1986: dependency-directed, identity-bearing justification structure with the environment/label separation that lets several stances be held at once — the record's structural ancestor."},
-    {"id": "aspic-plus", "title": "Structured argumentation (ASPIC+)", "kind": "object",
-     "blurb": "Attack and defeat over structured arguments with reinstatement computed by the semantics. No successor and an unauthored attack relation — the contrast that locates what the defeat theory here adds."},
-    {"id": "cartesian-frames", "title": "Cartesian frames", "kind": "object",
-     "blurb": "Garrabrant's factorizations of a world into agent and environment as a pair of sets with a matrix between them — the embedded-agency agenda's algebra of where an agent's boundary sits."},
-    {"id": "udt", "title": "Updateless decision theory", "kind": "object",
-     "blurb": "Deciding from the policy level without updating on observations first — the decision-theory thread of agent foundations that extended-choice constructions here deliberately avoid needing."},
-
-    {"id": "making-it-explicit", "title": "Brandom, Making It Explicit (1994)", "kind": "work",
-     "blurb": "The source of deontic scorekeeping: norms instituted by social practice, commitment and entitlement tracked by scorekeepers."},
-    {"id": "horty-reasons", "title": "Horty, Reasons as Defaults (2012)", "kind": "work",
-     "blurb": "The default-logic account of reasons checked against its own text here: no ledger for what is owed, no history-sensitivity, authority only as the content of a default — read as the nearest static theory, not imported."},
-    {"id": "embedded-agency", "title": "Embedded Agency (Demski & Garrabrant)", "kind": "work", "url": "https://arxiv.org/abs/1902.09469",
-     "blurb": "The agenda whose questions — bounded reasoners embedded in, and smaller than, the world they reason about — this program approaches through normativity rather than through decision theory."},
-    {"id": "corrigibility-2015", "title": "Corrigibility (Soares et al. 2015)", "kind": "work", "url": "https://intelligence.org/files/Corrigibility.pdf",
-     "blurb": "The paper that posed shutdown and correction as a formal problem and showed the naive utility patches fail — the historical motivation the corrigibility line answers with response authority instead."},
-    {"id": "deconfusing-corrigibility", "title": "Deconfusing Corrigibility (post)", "kind": "work", "wiki": "Deconfusing-Corrigibility-Companion",
-     "blurb": "The post whose formal content — Definitions through Learning with logical induction — is one Lean file in this repository, registered as its companion formalization."},
-    {"id": "faf", "title": "Formalized Agent Foundations", "kind": "work",
-     "blurb": "The pinned Lean library carrying the logical-induction formalization this repository builds against; the pin is part of the trust chain, moved only by a verified bump."}
+    {
+      "id": "the-program",
+      "title": "The program",
+      "kind": "goal",
+      "wiki": "Home",
+      "refs": [
+        "the-program"
+      ],
+      "blurb": "How can a powerful reasoner improve without treating every correction as an attack? One plan with seven lines, indexed by the argument map; every registered claim, item, decision and round hangs under it."
+    },
+    {
+      "id": "normativity-line",
+      "title": "Normativity",
+      "kind": "goal",
+      "wiki": "Normativity",
+      "refs": [
+        "normativity"
+      ],
+      "blurb": "What it means for a changing reasoner to remain responsive to reasons. A fixed objective scores behavior from outside; this line builds obligation, answer and enforcement as machine-checkable structure instead."
+    },
+    {
+      "id": "legitimacy-line",
+      "title": "Legitimacy",
+      "kind": "goal",
+      "wiki": "Legitimacy",
+      "refs": [
+        "legitimacy"
+      ],
+      "blurb": "The bridge between normativity and deference: normative learning needs public reasons, and responses that carry standing rather than mere compliance. Its spine is the record half (Integrity) and the licence half (warrants)."
+    },
+    {
+      "id": "deference-line",
+      "title": "Deference and trust",
+      "kind": "goal",
+      "wiki": "Deference",
+      "refs": [
+        "deference-and-trust"
+      ],
+      "blurb": "How a bounded reasoner benefits from a better-informed process without surrendering the ability to correct what that process does. 'Trust' names several distinct relations; the line separates and connects them."
+    },
+    {
+      "id": "corrigibility-line",
+      "title": "Corrigibility",
+      "kind": "goal",
+      "wiki": "Corrigibility",
+      "refs": [
+        "public-corrigibility-line"
+      ],
+      "blurb": "Corrigibility from response authority: the corrigibility kernel's headline is specification-layer, with legitimate activated evaluation as its principal value and continuation BRIA as its learning layer."
+    },
+    {
+      "id": "openness-line",
+      "title": "Openness and non-capture",
+      "kind": "goal",
+      "wiki": "Openness-Coverage-and-Non-Capture",
+      "refs": [
+        "openness-and-non-capture"
+      ],
+      "blurb": "Robust Openness at a state, defined over application-supplied coverage data: the reasoner remains correctable by parties it has not captured, certified rather than assumed."
+    },
+    {
+      "id": "normative-induction",
+      "title": "Normative induction",
+      "kind": "goal",
+      "wiki": "Normative-Induction",
+      "blurb": "The thread that makes normative learning inductive: the Progress statistic, the edge-local practical certificate, and the finite three-term bound on the accounted export."
+    },
+    {
+      "id": "normative-inductor",
+      "title": "Normative Inductor",
+      "kind": "construction",
+      "wiki": "Normative-Inductor",
+      "refs": [
+        "normative-inductor"
+      ],
+      "blurb": "The line's central machine: Logical Induction over an assessment process with projection enforcement, preserved under the operations the practice needs. Canonical architecture; conditional theorems."
+    },
+    {
+      "id": "enforcement-compiler",
+      "title": "Enforcement compiler",
+      "kind": "construction",
+      "blurb": "The construction that turns obligations into price movements: enforcement as convex projection of a credal state, with a typed outcome that conserves what was owed. Its three narrow results are lean-proved."
+    },
+    {
+      "id": "finite-date-conformance",
+      "title": "Finite-date conformance",
+      "kind": "construction",
+      "refs": [
+        "traderized-finite-date-conformance"
+      ],
+      "blurb": "A conformance bound at a date, where logical induction's inexploitability criterion gives only an asymptotic guarantee — the program's finite-time strengthening of its own substrate."
+    },
+    {
+      "id": "warrant-licence-chain",
+      "title": "Warrant licence chain",
+      "kind": "construction",
+      "refs": [
+        "verdict-licence-chain"
+      ],
+      "blurb": "A licensed verdict is supported on the record's grounds and admissible in their settled region: the chain from an announced verdict back through its warrant to the accounted record."
+    },
+    {
+      "id": "normative-record",
+      "title": "Normative record",
+      "kind": "construction",
+      "wiki": "Normative-Record-and-Inquiry",
+      "blurb": "The left side of normative learning: what determines why a demand arose, how evidence enters the practice, and what a learner answers to — an identity-bearing record of obligations and responses."
+    },
+    {
+      "id": "settlement-interface",
+      "title": "Settlement interface",
+      "kind": "construction",
+      "wiki": "Settlement-Interface",
+      "blurb": "Six distinct conditions, each with one home: four typed inputs of the protocol, two consequences or clauses of theorems elsewhere. The seam between a record and what counts as settled against it."
+    },
+    {
+      "id": "seed-theory",
+      "title": "Normative seed",
+      "kind": "construction",
+      "wiki": "Seed-Theory",
+      "blurb": "The left-most object of the record picture made concrete: what a reasoner starts from and what it forces on the prices of a settled region."
+    },
+    {
+      "id": "defeat-with-successor",
+      "title": "Defeat with a named successor",
+      "kind": "construction",
+      "blurb": "A defeated obligation is answered or disposed — and disposal carries the debt to a named successor rather than extinguishing it. Authored, history-sensitive answerability under defeat; the future depends on which defaults lost."
+    },
+    {
+      "id": "answerability-score",
+      "title": "Answerability score",
+      "kind": "construction",
+      "wiki": "Reasons-Answerability-and-the-Score",
+      "blurb": "The static question: what makes a reason, challenge or response publicly assessable before any learning happens? The score is that assessability made a quantity."
+    },
+    {
+      "id": "diachronic-answerability",
+      "title": "Diachronic answerability",
+      "kind": "construction",
+      "wiki": "Diachronic-Answerability",
+      "blurb": "What the record half of legitimacy — an open Integrity ledger — amounts to over time: answerability as a property of a history, derived rather than postulated."
+    },
+    {
+      "id": "integrity",
+      "title": "Integrity",
+      "kind": "construction",
+      "wiki": "Integrity",
+      "blurb": "The record's conservation package: what was owed is satisfied, disposed of, or remaining. The conservation theorem, propagation law, receipt immutability, faithful carry and multiplicity witness are lean-proved."
+    },
+    {
+      "id": "continuation-bria",
+      "title": "Continuation BRIA",
+      "kind": "construction",
+      "wiki": "Continuation-BRIA",
+      "blurb": "Bounded inductive rationality lifted from one-step choices to temporally extended continuations, without counterfactual reward tables and without surrendering correctability."
+    },
+    {
+      "id": "serviceability",
+      "title": "Serviceability",
+      "kind": "construction",
+      "wiki": "Serviceability",
+      "blurb": "When obligations can be served on time: exact rational fixtures for timely service, with the optimality of serving oldest first and the transfer of service-weighted convergence to obligation-weighted."
+    },
+    {
+      "id": "liability-affordability",
+      "title": "Liability and affordability",
+      "kind": "construction",
+      "wiki": "Liability-and-Affordability",
+      "blurb": "Who pays for enforcement and what a practice can afford: the enforcement layer's three narrow results are lean-proved; the liability theory over them is open realization material."
+    },
+    {
+      "id": "progress",
+      "title": "Progress statistic",
+      "kind": "construction",
+      "wiki": "Progress",
+      "blurb": "The statistic that says a practice is getting somewhere: paper-derived research under normative induction, with the finite bound on accounted export as its Established core."
+    },
+    {
+      "id": "effective-authority-layer",
+      "title": "Effective authority layer",
+      "kind": "construction",
+      "refs": [
+        "effective-authority-layer"
+      ],
+      "blurb": "The deference line's authority cluster: one informal claim established by twelve declarations — authority and sincerity conditions under which a verdict-giver's standing is effective rather than nominal."
+    },
+    {
+      "id": "robust-openness",
+      "title": "Robust openness certificate",
+      "kind": "construction",
+      "refs": [
+        "split-bill-is-robust-openness"
+      ],
+      "blurb": "A sufficient external certificate yields Robust Openness at a state: the split bill is the certificate, and the equivalence sits on the legitimacy spine."
+    },
+    {
+      "id": "delegation-bridge",
+      "title": "Finite delegation bridge",
+      "kind": "construction",
+      "refs": [
+        "local-delegation-bridge"
+      ],
+      "blurb": "The finite bridge from a local delegation to the deference line: what a bounded delegator can check locally and still inherit from the delegate's guarantee."
+    },
+    {
+      "id": "normative-force",
+      "title": "Actionability and normative force",
+      "kind": "philosophy",
+      "wiki": "Actionability-and-Normative-Force",
+      "blurb": "What makes a requirement actionable — force as what enforcement does to prices, not as metaphor. The action theory over the lean-proved enforcement results is open."
+    },
+    {
+      "id": "deontic-scorekeeping",
+      "title": "Deontic scorekeeping",
+      "kind": "philosophy",
+      "blurb": "Brandom: normative status instituted by practice through tracked commitments and entitlements, attributing distinguished from acknowledging. It gives the architecture its shape without importing inferentialist semantics."
+    },
+    {
+      "id": "reasons-as-defaults",
+      "title": "Reasons as defaults",
+      "kind": "philosophy",
+      "blurb": "Horty's treatment of a reason's weight and priority as normative content rather than machinery. A static theory: default logic says what to conclude, not what is owed, and its proper scenarios forget the history of defeats."
+    },
+    {
+      "id": "rebut-undercut",
+      "title": "Rebutting and undercutting defeat",
+      "kind": "philosophy",
+      "blurb": "Pollock's distinction between attacking a conclusion and attacking the support itself — a genuine dependency here, transposed from a belief's warrant to a debt's."
+    },
+    {
+      "id": "exclusionary-reasons",
+      "title": "Exclusionary reasons",
+      "kind": "philosophy",
+      "blurb": "Raz: a second-order reason not to act on certain first-order reasons. In Horty's own rendering they remain challengeable in-system, which puts exclusion closer to disposition than to settlement."
+    },
+    {
+      "id": "practical-authority",
+      "title": "Practical authority",
+      "kind": "philosophy",
+      "blurb": "Authority as standing to change what someone owes, as against power to change what they do. The program renders it as record-readable entitlement rather than as a property of persons."
+    },
+    {
+      "id": "logical-induction",
+      "title": "Logical induction",
+      "kind": "object",
+      "wiki": "Logical-Induction-and-Deference",
+      "url": "https://arxiv.org/abs/1609.03543",
+      "blurb": "Garrabrant et al. 2016: a sequence of prices for logical claims that no polynomial trader can exploit. The market, the traders, the market maker and the inexploitability criterion are the substrate the enforcement construction is built on."
+    },
+    {
+      "id": "imprecise-probability",
+      "title": "Imprecise probability",
+      "kind": "object",
+      "blurb": "Coherent lower and upper previsions, sets of probabilities, and the linear-feasibility characterization of probabilistic entailment. The credal state is one; the enforced regions are convex sets of probabilities."
+    },
+    {
+      "id": "convex-projection",
+      "title": "Convex projection",
+      "kind": "object",
+      "blurb": "Projection onto a convex set and its defining variational inequality — the enforcement direction, used as a genuine dependency."
+    },
+    {
+      "id": "farkas-duality",
+      "title": "LP duality and Farkas certificates",
+      "kind": "object",
+      "blurb": "The finite-horizon infeasibility certificate has the shape of a Farkas pair and is called one, but its soundness proof is four self-contained lines; exactness under a Slater point is what actually leans on duality."
+    },
+    {
+      "id": "interval-feasibility",
+      "title": "Interval feasibility",
+      "kind": "object",
+      "blurb": "Gale–Hoffman flow feasibility, and directly Horn's 1974 conditions for preemptive scheduling with release times and deadlines. The transport-onto-service-dates condition cites this theorem rather than proving it."
+    },
+    {
+      "id": "contiguity",
+      "title": "Contiguity of measures",
+      "kind": "object",
+      "blurb": "Le Cam 1960. The condition under which service-weighted convergence transfers to obligation-weighted convergence is contiguity in exactly this sense — the definition inherited, the proof direct."
+    },
+    {
+      "id": "earliest-due-date",
+      "title": "Earliest-due-date scheduling",
+      "kind": "object",
+      "blurb": "Jackson 1955: serve the oldest obligation first. The optimality argument here is the same exchange argument, classical in substance, written out in four self-contained lines."
+    },
+    {
+      "id": "truth-maintenance",
+      "title": "Truth-maintenance systems",
+      "kind": "object",
+      "blurb": "Doyle 1979, de Kleer 1986: dependency-directed, identity-bearing justification structure with the environment/label separation that lets several stances be held at once — the record's structural ancestor."
+    },
+    {
+      "id": "aspic-plus",
+      "title": "Structured argumentation (ASPIC+)",
+      "kind": "object",
+      "blurb": "Attack and defeat over structured arguments with reinstatement computed by the semantics. No successor and an unauthored attack relation — the contrast that locates what the defeat theory here adds."
+    },
+    {
+      "id": "cartesian-frames",
+      "title": "Cartesian frames",
+      "kind": "object",
+      "blurb": "Garrabrant's factorizations of a world into agent and environment as a pair of sets with a matrix between them — the embedded-agency agenda's algebra of where an agent's boundary sits."
+    },
+    {
+      "id": "udt",
+      "title": "Updateless decision theory",
+      "kind": "object",
+      "blurb": "Deciding from the policy level without updating on observations first — the decision-theory thread of agent foundations that extended-choice constructions here deliberately avoid needing."
+    },
+    {
+      "id": "making-it-explicit",
+      "title": "Brandom, Making It Explicit (1994)",
+      "kind": "work",
+      "blurb": "The source of deontic scorekeeping: norms instituted by social practice, commitment and entitlement tracked by scorekeepers."
+    },
+    {
+      "id": "horty-reasons",
+      "title": "Horty, Reasons as Defaults (2012)",
+      "kind": "work",
+      "blurb": "The default-logic account of reasons checked against its own text here: no ledger for what is owed, no history-sensitivity, authority only as the content of a default — read as the nearest static theory, not imported."
+    },
+    {
+      "id": "embedded-agency",
+      "title": "Embedded Agency (Demski & Garrabrant)",
+      "kind": "work",
+      "url": "https://arxiv.org/abs/1902.09469",
+      "blurb": "The agenda whose questions — bounded reasoners embedded in, and smaller than, the world they reason about — this program approaches through normativity rather than through decision theory."
+    },
+    {
+      "id": "corrigibility-2015",
+      "title": "Corrigibility (Soares et al. 2015)",
+      "kind": "work",
+      "url": "https://intelligence.org/files/Corrigibility.pdf",
+      "blurb": "The paper that posed shutdown and correction as a formal problem and showed the naive utility patches fail — the historical motivation the corrigibility line answers with response authority instead."
+    },
+    {
+      "id": "deconfusing-corrigibility",
+      "title": "Deconfusing Corrigibility (post)",
+      "kind": "work",
+      "wiki": "Deconfusing-Corrigibility-Companion",
+      "blurb": "The post whose formal content — Definitions through Learning with logical induction — is one Lean file in this repository, registered as its companion formalization."
+    },
+    {
+      "id": "faf",
+      "title": "Formalized Agent Foundations",
+      "kind": "work",
+      "blurb": "The pinned Lean library carrying the logical-induction formalization this repository builds against; the pin is part of the trust chain, moved only by a verified bump."
+    }
   ],
   "links": [
-    {"a": "the-program", "b": "normativity-line", "rel": ["part"], "why": "one of the plan's lines"},
-    {"a": "the-program", "b": "legitimacy-line", "rel": ["part"], "why": "one of the plan's lines"},
-    {"a": "the-program", "b": "deference-line", "rel": ["part"], "why": "one of the plan's lines"},
-    {"a": "the-program", "b": "corrigibility-line", "rel": ["part"], "why": "one of the plan's lines"},
-    {"a": "the-program", "b": "openness-line", "rel": ["part"], "why": "one of the plan's lines"},
-    {"a": "the-program", "b": "normative-induction", "rel": ["part"], "why": "the thread that makes the learning inductive"},
-    {"a": "legitimacy-line", "b": "normativity-line", "rel": ["part"], "why": "legitimacy is the bridge out of normativity: public reasons with standing"},
-    {"a": "legitimacy-line", "b": "deference-line", "rel": ["part"], "why": "the bridge's far side: deference to a process one can still correct"},
-    {"a": "openness-line", "b": "legitimacy-line", "rel": ["uses"], "why": "the openness certificate equivalence sits on the legitimacy spine"},
-
-    {"a": "normative-inductor", "b": "normativity-line", "rel": ["part"], "why": "the line's central machine"},
-    {"a": "normative-inductor", "b": "normative-induction", "rel": ["part"], "why": "the inductor is what the thread's statistics run on"},
-    {"a": "normative-inductor", "b": "logical-induction", "rel": ["substrate"], "why": "the market, the traders, the market maker and the criterion are inherited"},
-    {"a": "normative-inductor", "b": "warrant-licence-chain", "rel": ["part"], "why": "its announced verdicts are licensed end to end by the accounted record"},
-    {"a": "enforcement-compiler", "b": "normativity-line", "rel": ["part"], "why": "enforcement is how obligation reaches prices"},
-    {"a": "enforcement-compiler", "b": "normative-inductor", "rel": ["part"], "why": "projection enforcement is the inductor's normative half"},
-    {"a": "enforcement-compiler", "b": "convex-projection", "rel": ["uses"], "why": "the defining variational inequality is a genuine dependency"},
-    {"a": "enforcement-compiler", "b": "imprecise-probability", "rel": ["substrate"], "why": "the credal state it projects is a coherent set of probabilities"},
-    {"a": "enforcement-compiler", "b": "farkas-duality", "rel": ["adjacent"], "why": "the infeasibility certificate has the Farkas shape; its soundness is four self-contained lines"},
-    {"a": "enforcement-compiler", "b": "normative-force", "rel": ["part"], "why": "the action theory is built on the compiler's three lean-proved results"},
-    {"a": "finite-date-conformance", "b": "logical-induction", "rel": ["substrate", "contrast"], "why": "a bound at a date where the inherited criterion is asymptotic"},
-    {"a": "finite-date-conformance", "b": "normativity-line", "rel": ["part"], "why": "compiled conformance is the line's finite deliverable"},
-    {"a": "warrant-licence-chain", "b": "legitimacy-line", "rel": ["part"], "why": "the licence half of legitimacy"},
-    {"a": "warrant-licence-chain", "b": "normative-record", "rel": ["uses"], "why": "a licence is read off the accounted record"},
-    {"a": "normative-record", "b": "normativity-line", "rel": ["part"], "why": "normative learning's left side"},
-    {"a": "normative-record", "b": "truth-maintenance", "rel": ["shapes"], "why": "dependency-directed, identity-bearing justification with the environment/label separation"},
-    {"a": "normative-record", "b": "settlement-interface", "rel": ["part"], "why": "settlement is the seam between the record and what counts as settled"},
-    {"a": "settlement-interface", "b": "seed-theory", "rel": ["part"], "why": "the seed forces prices on a settled region through this interface"},
-    {"a": "defeat-with-successor", "b": "normativity-line", "rel": ["part"], "why": "the defeat theory of the obligation ledger"},
-    {"a": "defeat-with-successor", "b": "rebut-undercut", "rel": ["uses"], "why": "the answer/dispose split is Pollock's distinction transposed from a belief's warrant to a debt's"},
-    {"a": "defeat-with-successor", "b": "reasons-as-defaults", "rel": ["contrast"], "why": "Horty's proper scenarios forget which defaults lost; the successor makes that history load-bearing"},
-    {"a": "defeat-with-successor", "b": "aspic-plus", "rel": ["contrast"], "why": "ASPIC+ has an unauthored attack relation and no successor; reinstatement is computed, not licensed"},
-    {"a": "defeat-with-successor", "b": "exclusionary-reasons", "rel": ["contrast"], "why": "Razian exclusion is closer to disposition than to settlement, and the two do not collapse"},
-    {"a": "answerability-score", "b": "legitimacy-line", "rel": ["part"], "why": "what makes a reason publicly assessable is legitimacy's static precondition"},
-    {"a": "answerability-score", "b": "deontic-scorekeeping", "rel": ["shapes"], "why": "the score quantifies tracked commitment and entitlement"},
-    {"a": "diachronic-answerability", "b": "legitimacy-line", "rel": ["part"], "why": "what the record half of legitimacy amounts to over time"},
-    {"a": "diachronic-answerability", "b": "integrity", "rel": ["uses"], "why": "derived from an open Integrity ledger, not postulated"},
-    {"a": "integrity", "b": "normative-record", "rel": ["part"], "why": "the record's conservation package"},
-    {"a": "integrity", "b": "deontic-scorekeeping", "rel": ["shapes"], "why": "the conservation law — satisfied, disposed, or remaining — is a scorekeeping identity in Brandom's sense"},
-    {"a": "continuation-bria", "b": "corrigibility-line", "rel": ["part"], "why": "the corrigibility program's learning layer"},
-    {"a": "continuation-bria", "b": "udt", "rel": ["contrast"], "why": "extended continuations without counterfactual reward tables, against policy-level decision theory"},
-    {"a": "serviceability", "b": "liability-affordability", "rel": ["part"], "why": "what a practice can afford begins with what it can serve on time"},
-    {"a": "serviceability", "b": "contiguity", "rel": ["uses"], "why": "the convergence-transfer condition is Le Cam's definition, inherited by name"},
-    {"a": "serviceability", "b": "earliest-due-date", "rel": ["adjacent"], "why": "serve-oldest-first optimality is Jackson's exchange argument in substance"},
-    {"a": "liability-affordability", "b": "interval-feasibility", "rel": ["uses"], "why": "the transport-onto-service-dates condition cites Horn's theorem rather than proving it"},
-    {"a": "liability-affordability", "b": "normativity-line", "rel": ["part"], "why": "who pays for enforcement is part of what obligation means here"},
-    {"a": "progress", "b": "normative-induction", "rel": ["part"], "why": "the thread's statistic and its Established finite bound"},
-    {"a": "effective-authority-layer", "b": "deference-line", "rel": ["part"], "why": "the deference line's authority cluster, twelve declarations under one claim"},
-    {"a": "effective-authority-layer", "b": "practical-authority", "rel": ["shapes"], "why": "standing to change what is owed, rendered record-readable"},
-    {"a": "robust-openness", "b": "openness-line", "rel": ["part"], "why": "the line's certificate: a sufficient external certificate yields Robust Openness"},
-    {"a": "delegation-bridge", "b": "deference-line", "rel": ["part"], "why": "the finite bridge into the deference line"},
-    {"a": "normative-force", "b": "normativity-line", "rel": ["part"], "why": "what force is, on this account"},
-
-    {"a": "deontic-scorekeeping", "b": "normativity-line", "rel": ["shapes"], "why": "gives the whole architecture its shape, without importing inferentialist semantics"},
-    {"a": "deontic-scorekeeping", "b": "making-it-explicit", "rel": ["defines"], "why": "where scorekeeping is set out"},
-    {"a": "reasons-as-defaults", "b": "horty-reasons", "rel": ["defines"], "why": "the book that works the account out"},
-    {"a": "rebut-undercut", "b": "aspic-plus", "rel": ["part"], "why": "structured argumentation builds its attack typology on Pollock's distinction"},
-    {"a": "exclusionary-reasons", "b": "reasons-as-defaults", "rel": ["part"], "why": "Horty's rendering is the text the comparison here was checked against"},
-    {"a": "exclusionary-reasons", "b": "practical-authority", "rel": ["part"], "why": "Raz's authority issues exclusionary reasons"},
-    {"a": "practical-authority", "b": "legitimacy-line", "rel": ["shapes"], "why": "legitimacy is what makes authority's standing more than power"},
-
-    {"a": "logical-induction", "b": "deference-line", "rel": ["shapes"], "why": "prices for an unfinished computation are the line's model of deferring to a process"},
-    {"a": "logical-induction", "b": "faf", "rel": ["formalizes"], "why": "the pinned library carries its Lean formalization"},
-    {"a": "cartesian-frames", "b": "embedded-agency", "rel": ["part"], "why": "the agenda's algebra of agent/environment factorization"},
-    {"a": "udt", "b": "embedded-agency", "rel": ["part"], "why": "the agenda's decision-theory thread"},
-    {"a": "embedded-agency", "b": "the-program", "rel": ["adjacent"], "why": "the same questions, approached through normativity rather than decision theory"},
-    {"a": "corrigibility-2015", "b": "corrigibility-line", "rel": ["shapes", "contrast"], "why": "posed the formal problem; the line answers with response authority instead of utility patches"},
-    {"a": "deconfusing-corrigibility", "b": "corrigibility-line", "rel": ["part"], "why": "its formal content is the line's companion Lean file"},
-    {"a": "deconfusing-corrigibility", "b": "logical-induction", "rel": ["uses"], "why": "its learning section runs on logical induction"},
-    {"a": "faf", "b": "the-program", "rel": ["substrate"], "why": "the trust chain's pinned Lean substrate"}
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "one of the plan's lines",
+      "from": "normativity-line",
+      "to": "the-program"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "one of the plan's lines",
+      "from": "legitimacy-line",
+      "to": "the-program"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "one of the plan's lines",
+      "from": "deference-line",
+      "to": "the-program"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "one of the plan's lines",
+      "from": "corrigibility-line",
+      "to": "the-program"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "one of the plan's lines",
+      "from": "openness-line",
+      "to": "the-program"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "the thread that makes the learning inductive",
+      "from": "normative-induction",
+      "to": "the-program"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "legitimacy is the bridge out of normativity: public reasons with standing",
+      "from": "normativity-line",
+      "to": "legitimacy-line"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "the bridge's far side: deference to a process one can still correct",
+      "from": "legitimacy-line",
+      "to": "deference-line"
+    },
+    {
+      "rel": [
+        "uses"
+      ],
+      "why": "the openness certificate equivalence sits on the legitimacy spine",
+      "from": "legitimacy-line",
+      "to": "openness-line"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "the line's central machine",
+      "from": "normative-inductor",
+      "to": "normativity-line"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "the inductor is what the thread's statistics run on",
+      "from": "normative-inductor",
+      "to": "normative-induction"
+    },
+    {
+      "rel": [
+        "substrate"
+      ],
+      "why": "the market, the traders, the market maker and the criterion are inherited",
+      "from": "logical-induction",
+      "to": "normative-inductor"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "its announced verdicts are licensed end to end by the accounted record",
+      "from": "warrant-licence-chain",
+      "to": "normative-inductor"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "enforcement is how obligation reaches prices",
+      "from": "enforcement-compiler",
+      "to": "normativity-line"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "projection enforcement is the inductor's normative half",
+      "from": "enforcement-compiler",
+      "to": "normative-inductor"
+    },
+    {
+      "rel": [
+        "uses"
+      ],
+      "why": "the defining variational inequality is a genuine dependency",
+      "from": "convex-projection",
+      "to": "enforcement-compiler"
+    },
+    {
+      "rel": [
+        "substrate"
+      ],
+      "why": "the credal state it projects is a coherent set of probabilities",
+      "from": "imprecise-probability",
+      "to": "enforcement-compiler"
+    },
+    {
+      "rel": [
+        "adjacent"
+      ],
+      "why": "the infeasibility certificate has the Farkas shape; its soundness is four self-contained lines",
+      "from": "enforcement-compiler",
+      "to": "farkas-duality",
+      "undirected": true
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "the action theory is built on the compiler's three lean-proved results",
+      "from": "enforcement-compiler",
+      "to": "normative-force"
+    },
+    {
+      "rel": [
+        "substrate",
+        "contrast"
+      ],
+      "why": "a bound at a date where the inherited criterion is asymptotic",
+      "from": "logical-induction",
+      "to": "finite-date-conformance"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "compiled conformance is the line's finite deliverable",
+      "from": "finite-date-conformance",
+      "to": "normativity-line"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "the licence half of legitimacy",
+      "from": "warrant-licence-chain",
+      "to": "legitimacy-line"
+    },
+    {
+      "rel": [
+        "uses"
+      ],
+      "why": "a licence is read off the accounted record",
+      "from": "normative-record",
+      "to": "warrant-licence-chain"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "normative learning's left side",
+      "from": "normative-record",
+      "to": "normativity-line"
+    },
+    {
+      "rel": [
+        "shapes"
+      ],
+      "why": "dependency-directed, identity-bearing justification with the environment/label separation",
+      "from": "truth-maintenance",
+      "to": "normative-record"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "settlement is the seam between the record and what counts as settled",
+      "from": "settlement-interface",
+      "to": "normative-record"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "the seed forces prices on a settled region through this interface",
+      "from": "seed-theory",
+      "to": "settlement-interface"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "the defeat theory of the obligation ledger",
+      "from": "defeat-with-successor",
+      "to": "normativity-line"
+    },
+    {
+      "rel": [
+        "uses"
+      ],
+      "why": "the answer/dispose split is Pollock's distinction transposed from a belief's warrant to a debt's",
+      "from": "rebut-undercut",
+      "to": "defeat-with-successor"
+    },
+    {
+      "rel": [
+        "contrast"
+      ],
+      "why": "Horty's proper scenarios forget which defaults lost; the successor makes that history load-bearing",
+      "from": "defeat-with-successor",
+      "to": "reasons-as-defaults",
+      "undirected": true
+    },
+    {
+      "rel": [
+        "contrast"
+      ],
+      "why": "ASPIC+ has an unauthored attack relation and no successor; reinstatement is computed, not licensed",
+      "from": "defeat-with-successor",
+      "to": "aspic-plus",
+      "undirected": true
+    },
+    {
+      "rel": [
+        "contrast"
+      ],
+      "why": "Razian exclusion is closer to disposition than to settlement, and the two do not collapse",
+      "from": "defeat-with-successor",
+      "to": "exclusionary-reasons",
+      "undirected": true
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "what makes a reason publicly assessable is legitimacy's static precondition",
+      "from": "answerability-score",
+      "to": "legitimacy-line"
+    },
+    {
+      "rel": [
+        "shapes"
+      ],
+      "why": "the score quantifies tracked commitment and entitlement",
+      "from": "deontic-scorekeeping",
+      "to": "answerability-score"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "what the record half of legitimacy amounts to over time",
+      "from": "diachronic-answerability",
+      "to": "legitimacy-line"
+    },
+    {
+      "rel": [
+        "uses"
+      ],
+      "why": "derived from an open Integrity ledger, not postulated",
+      "from": "integrity",
+      "to": "diachronic-answerability"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "the record's conservation package",
+      "from": "integrity",
+      "to": "normative-record"
+    },
+    {
+      "rel": [
+        "shapes"
+      ],
+      "why": "the conservation law — satisfied, disposed, or remaining — is a scorekeeping identity in Brandom's sense",
+      "from": "deontic-scorekeeping",
+      "to": "integrity"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "the corrigibility program's learning layer",
+      "from": "continuation-bria",
+      "to": "corrigibility-line"
+    },
+    {
+      "rel": [
+        "contrast"
+      ],
+      "why": "extended continuations without counterfactual reward tables, against policy-level decision theory",
+      "from": "continuation-bria",
+      "to": "udt",
+      "undirected": true
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "what a practice can afford begins with what it can serve on time",
+      "from": "serviceability",
+      "to": "liability-affordability"
+    },
+    {
+      "rel": [
+        "uses"
+      ],
+      "why": "the convergence-transfer condition is Le Cam's definition, inherited by name",
+      "from": "contiguity",
+      "to": "serviceability"
+    },
+    {
+      "rel": [
+        "adjacent"
+      ],
+      "why": "serve-oldest-first optimality is Jackson's exchange argument in substance",
+      "from": "serviceability",
+      "to": "earliest-due-date",
+      "undirected": true
+    },
+    {
+      "rel": [
+        "uses"
+      ],
+      "why": "the transport-onto-service-dates condition cites Horn's theorem rather than proving it",
+      "from": "interval-feasibility",
+      "to": "liability-affordability"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "who pays for enforcement is part of what obligation means here",
+      "from": "liability-affordability",
+      "to": "normativity-line"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "the thread's statistic and its Established finite bound",
+      "from": "progress",
+      "to": "normative-induction"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "the deference line's authority cluster, twelve declarations under one claim",
+      "from": "effective-authority-layer",
+      "to": "deference-line"
+    },
+    {
+      "rel": [
+        "shapes"
+      ],
+      "why": "standing to change what is owed, rendered record-readable",
+      "from": "practical-authority",
+      "to": "effective-authority-layer"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "the line's certificate: a sufficient external certificate yields Robust Openness",
+      "from": "robust-openness",
+      "to": "openness-line"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "the finite bridge into the deference line",
+      "from": "delegation-bridge",
+      "to": "deference-line"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "what force is, on this account",
+      "from": "normative-force",
+      "to": "normativity-line"
+    },
+    {
+      "rel": [
+        "shapes"
+      ],
+      "why": "gives the whole architecture its shape, without importing inferentialist semantics",
+      "from": "deontic-scorekeeping",
+      "to": "normativity-line"
+    },
+    {
+      "rel": [
+        "defines"
+      ],
+      "why": "where scorekeeping is set out",
+      "from": "making-it-explicit",
+      "to": "deontic-scorekeeping"
+    },
+    {
+      "rel": [
+        "defines"
+      ],
+      "why": "the book that works the account out",
+      "from": "horty-reasons",
+      "to": "reasons-as-defaults"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "structured argumentation builds its attack typology on Pollock's distinction",
+      "from": "rebut-undercut",
+      "to": "aspic-plus"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "Horty's rendering is the text the comparison here was checked against",
+      "from": "exclusionary-reasons",
+      "to": "reasons-as-defaults",
+      "undirected": true
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "Raz's authority issues exclusionary reasons",
+      "from": "exclusionary-reasons",
+      "to": "practical-authority"
+    },
+    {
+      "rel": [
+        "shapes"
+      ],
+      "why": "legitimacy is what makes authority's standing more than power",
+      "from": "practical-authority",
+      "to": "legitimacy-line"
+    },
+    {
+      "rel": [
+        "shapes"
+      ],
+      "why": "prices for an unfinished computation are the line's model of deferring to a process",
+      "from": "logical-induction",
+      "to": "deference-line"
+    },
+    {
+      "rel": [
+        "formalizes"
+      ],
+      "why": "the pinned library carries its Lean formalization",
+      "from": "logical-induction",
+      "to": "faf"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "the agenda's algebra of agent/environment factorization",
+      "from": "cartesian-frames",
+      "to": "embedded-agency"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "the agenda's decision-theory thread",
+      "from": "udt",
+      "to": "embedded-agency"
+    },
+    {
+      "rel": [
+        "adjacent"
+      ],
+      "why": "the same questions, approached through normativity rather than decision theory",
+      "from": "embedded-agency",
+      "to": "the-program",
+      "undirected": true
+    },
+    {
+      "rel": [
+        "shapes",
+        "contrast"
+      ],
+      "why": "posed the formal problem; the line answers with response authority instead of utility patches",
+      "from": "corrigibility-2015",
+      "to": "corrigibility-line"
+    },
+    {
+      "rel": [
+        "part"
+      ],
+      "why": "its formal content is the line's companion Lean file",
+      "from": "deconfusing-corrigibility",
+      "to": "corrigibility-line"
+    },
+    {
+      "rel": [
+        "uses"
+      ],
+      "why": "its learning section runs on logical induction",
+      "from": "logical-induction",
+      "to": "deconfusing-corrigibility"
+    },
+    {
+      "rel": [
+        "substrate"
+      ],
+      "why": "the trust chain's pinned Lean substrate",
+      "from": "faf",
+      "to": "the-program"
+    }
   ]
 }
