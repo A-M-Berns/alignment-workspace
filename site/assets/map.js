@@ -30,6 +30,19 @@
   function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
   function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
   function box() { var b = svg.getBoundingClientRect(); return { w: b.width, h: b.height, left: b.left, top: b.top }; }
+  function wrap(text, x, y, width, size, lines, anchor) {
+    var t = el("text", { x: x, y: y, "font-size": size, "text-anchor": anchor || "start" });
+    var per = Math.max(Math.floor(width / (size * 0.56)), 4), words = String(text).split(/\s+/), line = "", used = 0;
+    for (var i = 0; i < words.length && used < lines; i++) {
+      var cand = line ? line + " " + words[i] : words[i];
+      if (cand.length > per && line) {
+        el("tspan", { x: x, dy: used ? size * 1.15 : 0 }, t).textContent = used + 1 === lines ? line + "…" : line;
+        used++; line = words[i];
+      } else line = cand;
+    }
+    if (used < lines && line) el("tspan", { x: x, dy: used ? size * 1.15 : 0 }, t).textContent = line.length > per ? line.slice(0, per - 1) + "…" : line;
+    return t;
+  }
   function applyTf() { cam.setAttribute("transform", "translate(" + tf.x + "," + tf.y + ") scale(" + tf.k + ")"); }
 
   function build(viewName) {
