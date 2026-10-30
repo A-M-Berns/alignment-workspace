@@ -154,6 +154,11 @@ class Repo:
         self.narratives = self.index.get("narratives") or {}
         ppath = ROOT / "state" / "prs.json"
         self.prs = {str(p["number"]): p for p in json.loads(ppath.read_text())["prs"]} if ppath.is_file() else {}
+        cpath = ROOT / "state" / "concepts.json"
+        creg = json.loads(cpath.read_text()) if cpath.is_file() else {}
+        self.concepts = {e["id"]: e for e in creg.get("concepts") or []}
+        self.concept_kinds = creg.get("kinds") or {}
+        self.concept_links = creg.get("links") or []
         # parents by edge kind
         self.parents: dict[str, list[tuple[str, str]]] = {}
         for x, N in self.nodes.items():

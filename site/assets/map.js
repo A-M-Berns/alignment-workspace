@@ -12,7 +12,8 @@
   var modal = document.getElementById("map-modal"), panelBody = document.getElementById("map-panel-body");
   var tip = document.getElementById("map-tip");
   var crumbsEl = document.getElementById("map-crumbs"), viewsEl = document.getElementById("map-views");
-  var VIEW_LABEL = { concepts: "concepts", concept: "goals", rounds: "rounds", class: "class", prs: "merged work" };
+  var VIEW_LABEL = { concepts: "concepts", concept: "goals", rounds: "rounds", prs: "merged work" };
+  var KIND_TONE = { goal: "bone", construction: "emerald", object: "sapphire", work: "amber", philosophy: "amethyst" };
 
   var DATA = null, view = "concepts", root = null, path = [], animating = false;
   var cam = document.createElementNS(NS, "g");
@@ -36,14 +37,15 @@
   }
   function label(t) {
     if (t.kind === "pr") { var m = DATA.prmeta[t.id.slice(1)] || {}; return "#" + t.id.slice(1) + " " + (m.t || ""); }
-    if (t.kind === "concept" || t.kind === "topic") return t.id.replace(/-/g, " ");
+    if (t.kind === "concept") return (DATA.concepts[t.id] || {}).t || t.id;
+    if (t.kind === "topic") return t.id.replace(/-/g, " ");
     return t.id;
   }
   function tone(t) {
     var n = DATA.nodes[t.id];
-    if (t.kind === "concept") return "concept";
+    if (t.kind === "concept") return KIND_TONE[(DATA.concepts[t.id] || {}).k] || "amethyst";
     if (t.kind === "pr") return "pr";
-    if (t.kind === "topic") return "topic";
+    if (t.kind === "topic") return "amethyst";
     if (!n) return "group";
     if (n.c === "lean-proved") return "emerald";
     if (n.c === "enumeration-verified" || n.c === "witness-checked") return "sapphire";
@@ -105,13 +107,7 @@
 
   function levelLinks(focus) {
     if (focus === root && view === "concepts") {
-      return (DATA.clinks || []).map(function (L) {
-        var bits = [];
-        if (L[3]) bits.push("the pages link");
-        if (L[5]) bits.push(L[5] + " shared reference(s)" + (L[4].length ? ": " + L[4].join(", ") + (L[5] > L[4].length ? ", …" : "") : ""));
-        if (L[6] && L[6].length) bits.push("shared frame(s): " + L[6].join(", "));
-        return { a: L[0], b: L[1], w: L[2], tip: bits.join(" · ") };
-      });
+      return (DATA.clinks || []).map(function (L) { return { a: L[0], b: L[1], w: L[2], tip: L[3] }; });
     }
     var pairs = {}, i;
     for (i = 0; i < DATA.edges.length; i++) {
@@ -182,8 +178,10 @@
       }
       cg.addEventListener("mousemove", function (ev) {
         var n = DATA.nodes[c.id] || {};
-        var sub = c.kind === "pr" ? ((DATA.prmeta[c.id.slice(1)] || {}).d || "") : (n.q || n.s || "");
-        showTip("<b>" + esc(label(c)) + "</b>" + (sub ? "<br>" + esc(sub.slice(0, 180)) : "") + (c.ch.length ? "<br><i>click to enter · " + (c.wt - 1) + " inside</i>" : ""), ev);
+        var cm = DATA.concepts[c.id] || {};
+        var sub = c.kind === "pr" ? ((DATA.prmeta[c.id.slice(1)] || {}).d || "") : c.kind === "concept" ? (cm.s || "") : (n.q || n.s || "");
+        var kindLine = c.kind === "concept" ? ((DATA.kinds || {})[cm.k] || cm.k || "") : "";
+        showTip("<b>" + esc(label(c)) + "</b>" + (kindLine ? ' <span class="muted">· ' + esc(kindLine) + "</span>" : "") + (sub ? "<br>" + esc(sub.slice(0, 180)) : "") + (view !== "concepts" && c.ch.length ? "<br><i>click to enter · " + (c.wt - 1) + " inside</i>" : ""), ev);
       });
       cg.addEventListener("mouseleave", hideTip);
       cg.addEventListener("click", function (ev) {
@@ -255,15 +253,19 @@
     animate({ k: 0.9, x: 0.05 * box().w, y: 0.05 * box().h, o: 0 }, { k: 1, x: 0, y: 0, o: 1 }, 220);
   }
 
+  function conceptBase(t) {
+    var w = (DATA.concepts[t.id] || {}).w;
+    return w ? "/wiki/" + seg(w) + "/" : "/concepts/" + seg(t.id) + "/";
+  }
   function fragUrl(t) {
     if (t.kind === "pr") return "/prs/" + t.id.slice(1) + "/frag.html";
-    if (t.kind === "concept") return "/wiki/" + seg(t.id) + "/frag.html";
+    if (t.kind === "concept") return conceptBase(t) + "frag.html";
     if (t.kind === "topic") return t.tref && t.tref.slice(0, 2) === "n:" ? "/n/" + seg(t.tref.slice(2)) + "/frag.html" : "/wiki/" + seg(t.id) + "/frag.html";
     return "/n/" + seg(t.id) + "/frag.html";
   }
   function pageUrl(t) {
     if (t.kind === "pr") return "/prs/" + t.id.slice(1) + "/";
-    if (t.kind === "concept") return "/wiki/" + seg(t.id) + "/";
+    if (t.kind === "concept") return conceptBase(t);
     return "/n/" + seg(t.id) + "/";
   }
 
@@ -283,10 +285,21 @@
   document.getElementById("map-panel-close").addEventListener("click", closePanel);
   modal.addEventListener("click", function (ev) { if (ev.target === modal) closePanel(); });
 
+  function legend(v) {
+    var lg = document.getElementById("map-legend");
+    if (!lg) return;
+    var K = DATA.kinds || {};
+    var rows = v === "concepts"
+      ? [["bone", K.goal || "goal"], ["emerald", K.construction || "construction"], ["sapphire", K.object || "object"], ["amber", K.work || "work"], ["amethyst", K.philosophy || "philosophy"]]
+      : [["emerald", "lean-proved"], ["sapphire", "enumeration / witness"], ["amber", "test / contributor"], ["garnet", "item"], ["bone", "frame"], ["pr", "merged PR"], ["slate", "other"]];
+    lg.innerHTML = rows.map(function (r) { return '<span class="lg tone-' + r[0] + '"><span class="dotc"></span>' + esc(r[1]) + "</span>"; }).join("");
+  }
+
   function show(v) {
     view = v;
     path = [];
     build(v);
+    legend(v);
     render(root);
     cam.style.opacity = 0;
     animate({ k: 0.92, x: 0.04 * box().w, y: 0.04 * box().h, o: 0 }, { k: 1, x: 0, y: 0, o: 1 }, 240);
@@ -339,7 +352,7 @@
 
   fetch("/assets/map.json").then(function (r) { return r.json(); }).then(function (d) {
     DATA = d;
-    var order = ["concepts", "concept", "prs", "rounds", "class"];
+    var order = ["concepts", "concept", "prs", "rounds"];
     order.forEach(function (v) {
       if (!d.views[v]) return;
       var btn = document.createElement("button");

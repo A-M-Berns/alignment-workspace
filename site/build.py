@@ -101,6 +101,11 @@ def build(out: pathlib.Path, verbose: bool = True) -> dict:
         put(site.url("wiki", name), pages.wiki_page(site, name), "wiki")
         put(site.url("wiki", name) + "frag.html", pages.wiki_frag(site, name), "wiki-frag")
     put("/wiki/", pages.index_list_page(site, "Wiki", [f"<li>{site.link('wiki', n, n.replace('-', ' '))}</li>" for n in repo.wiki]), "listing")
+    # concept registry entries without a wiki page: the page and the fragment the map's popup loads
+    for cid, e in repo.concepts.items():
+        if not e.get("wiki"):
+            put(site.url("concepts", cid), pages.concept_page(site, cid), "concept")
+            put(site.url("concepts", cid) + "frag.html", pages.concept_frag(site, cid), "concept-frag")
     # merged pull requests: the digests of state/prs.json, where the file exists
     for num in repo.prs:
         put(site.url("prs", num), pages.pr_page(site, num), "pr")

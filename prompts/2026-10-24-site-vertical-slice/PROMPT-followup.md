@@ -62,3 +62,21 @@ Further directives of the same conversation, verbatim:
 > a chat tab for a byo api key bot, and then maybe also like some kind of stats/status
 > page with a time graph plus an activity digest or something but i dont think really
 > anything else
+
+> also basically just get rid of all the tabs except map. eventually i'd also like to add
+> a chat tab for a byo api key bot, and then maybe also like some kind of stats/status
+> page with a time graph plus an activity digest or something but i dont think really
+> anything else. take away "class" view. also i want to expand the wiki level of
+> granularity, it can go past the actual repo wiki which should probably be mostly
+> retired. members of that overall network can include important prior art papers or
+> ideas, specific mathematical objects (logical inductor, cartesian frames, udt) like
+> this should become roughly a wiki of the kinds of agent foundations theory relevant
+> here encompassing the wiki's own terms but going beyond them. and then nodes can also
+> be color coded by kind
+
+> right so some of the kinds could include philosophical concept, new construction,
+> existing mathematical object, existing piece of work, goal/thread of the research
+
+> also, it shouldn't be a close to complete graph for every link. Go through all n
+> choose 2 connections and only include relevant ones. these connections can also have
+> multiple categories iff that's helpful

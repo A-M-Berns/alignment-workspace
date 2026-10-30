@@ -30,7 +30,8 @@ class Site:
     def url(self, kind: str, ident: str, must_exist: bool = True) -> str:
         r = self.repo
         ok = {"n": ident in r.nodes, "items": ident in r.items, "decisions": ident in r.decisions, "rounds": ident in r.rounds,
-              "claims": ident in r.registry, "wiki": ident in r.wiki, "by": ("@" + ident) in r.handles, "prs": ident in r.prs}[kind]
+              "claims": ident in r.registry, "wiki": ident in r.wiki, "by": ("@" + ident) in r.handles, "prs": ident in r.prs,
+              "concepts": ident in r.concepts}[kind]
         if not ok and must_exist:
             self.unresolved.append(f"{kind}:{ident}")
         path = f"/{kind}/{self.seg(ident)}/"
@@ -449,6 +450,39 @@ def wiki_page(site: Site, name: str) -> str:
     return layout(site, name.replace("-", " "), "\n".join(body), [("wiki", "/wiki/")])
 
 
+def concept_body(site: Site, cid: str) -> str:
+    """A registry concept's detail: its blurb, kind, source, typed links onward, and the map nodes it cites.
+    Entries backed by a wiki page use that page's fragment instead; this is for the rest of the network."""
+    r = site.repo
+    e = r.concepts[cid]
+    kind_label_ = r.concept_kinds.get(e.get("kind", ""), e.get("kind", ""))
+    body = [f'<p class="subtitle">{esc(kind_label_)}</p>', f'<div class="pr-summary"><p>{esc(str(e.get("blurb") or ""))}</p></div>']
+    if e.get("url"):
+        body.append(f'<p><a href="{esc(e["url"])}">{esc(e["url"])}</a></p>')
+    rels = []
+    for L in r.concept_links:
+        other = L["b"] if L["a"] == cid else L["a"] if L["b"] == cid else None
+        if other and other in r.concepts:
+            o = r.concepts[other]
+            target = site.url("wiki", o["wiki"]) if o.get("wiki") else site.url("concepts", other)
+            rels.append(f'<li><a href="{target}">{esc(o.get("title", other))}</a> <span class="muted">— {esc(str(L.get("why") or ""))}</span></li>')
+    if rels:
+        body.append("<section><h2>Connected to</h2><ul class=\"listing\">" + "".join(rels) + "</ul></section>")
+    refs = [x for x in e.get("refs") or [] if x in r.nodes]
+    if refs:
+        body.append("<section><h2>On the map</h2><ul class=\"listing\">" + "".join(f"<li>{site.link('n', x)}: {esc(r.nodes[x]['statement'].strip()[:160])}</li>" for x in refs) + "</ul></section>")
+    return "\n".join(body)
+
+
+def concept_page(site: Site, cid: str) -> str:
+    return layout(site, site.repo.concepts[cid].get("title", cid), concept_body(site, cid), [("map", "/")])
+
+
+def concept_frag(site: Site, cid: str) -> str:
+    e = site.repo.concepts[cid]
+    return f'<div class="frag"><p class="frag-head">{site.link("concepts", cid, e.get("title", cid))} <span class="kind">concept</span></p>{concept_body(site, cid)}</div>'
+
+
 def wiki_frag(site: Site, name: str) -> str:
     """The wiki page's rendered body for the map's panel, with the merged work tagged to this concept beneath it."""
     r = site.repo
@@ -529,6 +563,7 @@ def front_page(site: Site, lede_html: str, feed_rows: list[str]) -> str:
             '<div class="map-ui"><div class="map-bar">'
             '<span class="views" id="map-views">view </span>'
             '<label class="edges-toggle"><input type="checkbox" id="map-edges" checked> edges</label>'
+            '<span id="map-legend"></span>'
             '<span class="map-hint muted">drag to pan · scroll to zoom · click a node to open it · esc to back out</span></div>'
             '<nav class="map-crumbs" id="map-crumbs"></nav>'
             '<div class="map-stage"><svg id="map" role="application" aria-label="the argument map"></svg>'
@@ -616,37 +651,24 @@ def map_data(site: Site) -> dict:
             by_round.setdefault(rid, []).append(x)
     rounds_view = {"id": "rounds", "ch": [{"id": rid, "q": str(r.rounds[rid].get("date") or ""), "ch": [{"id": x, "ch": []} for x in xs]}
                                           for rid, xs in sorted(by_round.items(), key=lambda kv: str(r.rounds[kv[0]].get("date") or ""), reverse=True)]}
-    by_class: dict[str, list[str]] = {}
-    for x, N in r.nodes.items():
-        if N.get("formal_result") and not N["fields"].get("superseded_by"):
-            by_class.setdefault(nodes[x].get("c") or "unregistered", []).append(x)
-    order = ["lean-proved", "enumeration-verified", "witness-checked", "contributor-checked", "test-supported", "conjectured", "unregistered"]
-    class_view = {"id": "class", "ch": [{"id": c, "ch": [{"id": x, "ch": []} for x in sorted(xs)]}
-                                        for c, xs in sorted(by_class.items(), key=lambda kv: order.index(kv[0]) if kv[0] in order else 99)]}
-    # the concept constellation: wiki pages as overlapping concepts, linked by page links, shared references and shared frames
-    concepts: dict[str, dict] = {}
-    for name, text in r.wiki.items():
-        refs: set[str] = set()
-        for kind, ident in REF.findall(text):
-            if kind == "claim" and ident in r.claims:
-                refs.add(r.claims[ident])
-            elif kind in ("item", "item-open") and ident in r.items:
-                refs.add(r.items[ident]["node"])
-            elif kind == "node" and ident in r.nodes:
-                refs.add(ident)
-        links = sorted({m for m in WIKI_MD_LINK.findall(text) if m in r.wiki and m != name})
-        frames = [f for f in r.narratives.get(f"wiki/{name}.md", []) if f == "top" or f in r.nodes]
-        concepts[name] = {"refs": sorted(refs), "links": links, "frames": frames}
+    # the concept network: the curated registry of state/concepts.json — goals, constructions,
+    # objects, prior work and philosophical concepts, with hand-chosen typed links
+    REL = {"part": "part of", "substrate": "built on", "uses": "uses", "shapes": "shaped the vocabulary of",
+           "defines": "set out in", "adjacent": "adjacent to", "contrast": "contrasted with", "formalizes": "formalized by"}
     clinks: list[list] = []
-    names = sorted(concepts)
-    for i, a in enumerate(names):
-        for b in names[i + 1:]:
-            shared = sorted(set(concepts[a]["refs"]) & set(concepts[b]["refs"]))
-            linked = b in concepts[a]["links"] or a in concepts[b]["links"]
-            shared_frames = sorted(set(concepts[a]["frames"]) & set(concepts[b]["frames"]))
-            w = len(shared) + (3 if linked else 0) + (1 if shared_frames else 0)
-            if w:
-                clinks.append([a, b, w, 1 if linked else 0, shared[:6], len(shared), shared_frames[:3]])
+    for L in r.concept_links:
+        a, b = L.get("a"), L.get("b")
+        if a not in r.concepts or b not in r.concepts:
+            site.unresolved.append(f"concepts:link:{a}--{b}")
+            continue
+        rels = [REL.get(x, x) for x in L.get("rel") or []]
+        clinks.append([a, b, 2 + len(rels), (", ".join(rels) + " — " if rels else "") + str(L.get("why") or "")])
+    for cid, e in r.concepts.items():
+        if e.get("wiki") and e["wiki"] not in r.wiki:
+            site.unresolved.append(f"concepts:{cid}:wiki:{e['wiki']}")
+        for x in e.get("refs") or []:
+            if x not in r.nodes:
+                site.unresolved.append(f"concepts:{cid}:ref:{x}")
     prs_by_topic: dict[str, list[str]] = {}
     pr_meta = {}
     for num, P in sorted(r.prs.items(), key=lambda kv: int(kv[0]), reverse=True):
@@ -657,20 +679,19 @@ def map_data(site: Site) -> dict:
         for f in (P.get("topics") or {}).get("frames") or []:
             if f in r.nodes:
                 prs_by_topic.setdefault("n:" + f, []).append(num)
-    concept_view = {"id": "concepts", "layout": "constellation",
-                    "ch": [{"id": name, "kind": "concept",
-                            "ch": [{"id": "#" + n, "kind": "pr", "ch": []} for n in prs_by_topic.get("wiki:" + name, [])]
-                                  + [{"id": x, "ch": []} for x in concepts[name]["refs"]]}
-                           for name in names]}
+    concept_view = {"id": "concepts", "ch": [{"id": cid, "kind": "concept", "ch": []} for cid in r.concepts]} if r.concepts else None
     prs_view = {"id": "prs", "ch": [{"id": topic.split(":", 1)[1], "kind": "topic", "tref": topic,
                                      "ch": [{"id": "#" + n, "kind": "pr", "ch": []} for n in nums]}
                                     for topic, nums in sorted(prs_by_topic.items(), key=lambda kv: -len(kv[1]))]} if prs_by_topic else None
-    views = {"concept": concept, "concepts": concept_view, "rounds": rounds_view, "class": class_view}
+    views = {"concept": concept, "rounds": rounds_view}
+    if concept_view:
+        views["concepts"] = concept_view
     if prs_view:
         views["prs"] = prs_view
+    cmeta = {cid: {"k": e.get("kind", ""), "w": e.get("wiki") or "", "t": e.get("title", cid), "s": str(e.get("blurb") or "")[:180],
+                   "prs": len(prs_by_topic.get("wiki:" + (e.get("wiki") or ""), []))} for cid, e in r.concepts.items()}
     return {"nodes": nodes, "views": views, "edges": edges, "clinks": clinks,
-            "concepts": {n: {"n": len(c["refs"]), "prs": len(prs_by_topic.get("wiki:" + n, []))} for n, c in concepts.items()},
-            "prmeta": pr_meta}
+            "concepts": cmeta, "kinds": r.concept_kinds, "prmeta": pr_meta}
 
 
 def feed_rows(site: Site) -> list[str]:

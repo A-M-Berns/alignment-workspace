@@ -52,6 +52,7 @@ def self_test() -> int:
         wiki = {}
         handles = {}
         prs = {}
+        concepts = {}
     s = P.Site(FakeRepo())
     s.url("n", "a/b")
     try:

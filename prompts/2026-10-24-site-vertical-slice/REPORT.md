@@ -294,3 +294,29 @@ a deep link — the per-id contract of S4 and the feed/spine/ranking lenses stan
 nothing navigates to them from the chrome. The planned additions, recorded in
 `graph/MAP-AS-CANONICAL.md` §6: a chat tab (bring-your-own-key bot) and a stats/status
 page (a time graph with an activity digest), and nothing else.
+
+## Fifth follow-up of 2026-10-30 — the concept registry; the class view leaves
+
+- **`state/concepts.json`** is the concept network's source: 48 entries over the five
+  kinds the maintainer named — goal/thread (7, the lines), new construction (18),
+  mathematical object (11), prior work (6), philosophical concept (6) — each with a
+  blurb in plain register, a wiki page where one exists (21 entries; the popup is then
+  that page's fragment), a verified map ref where one exists, and a URL where one is
+  certain. The 27 entries without a wiki page get `/concepts/<id>/` pages and fragments
+  (blurb, typed connections, map refs). The registry's prior-art entries and their
+  relations follow `wiki/Prior-Art.md`'s own classifications (substrate, dependency,
+  vocabulary, adjacent); nothing is claimed beyond what that ledger states.
+- **67 hand-chosen links**, each with one or more relation categories (part of, built
+  on, uses, shaped the vocabulary of, set out in, adjacent to, contrasted with,
+  formalized by) and a one-line why — the edge hover's text. Chosen by a pass over the
+  candidate pairs rather than generated from co-reference; average degree ≈ 2.8.
+- Nodes are colour-coded by kind (bone goals, emerald constructions, sapphire objects,
+  amber prior work, amethyst philosophy) with a legend in the toolbar per view; the
+  class view is removed; the build fails on a registry link, wiki name or ref that does
+  not resolve.
+
+**What this does not establish.** The registry is one sitting's reading of the wiki and
+the prior-art ledger by its drafting model: entry selection, kind assignments, blurb
+accuracy and the 67 links are all unreviewed judgment, ci-only until a maintainer reads
+them; the n-choose-2 pass was a drafting discipline, not an enumeration artifact a
+reader can audit.

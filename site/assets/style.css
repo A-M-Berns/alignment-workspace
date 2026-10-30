@@ -133,3 +133,14 @@ details.front-feed summary { cursor: pointer; color: var(--muted); text-transfor
 .intake .verb:hover { border-color: var(--accent); }
 .superseded { border: 1px solid var(--lens); background: var(--lens-bg); color: var(--lens); border-radius: 6px; padding: 0.5em 0.9em; }
 .pr-summary p { max-width: 46rem; }
+.tone-emerald { color: var(--emerald); } .tone-sapphire { color: var(--sapphire); } .tone-amber { color: var(--amber); }
+.tone-amethyst { color: var(--amethyst); } .tone-garnet { color: var(--garnet); } .tone-slate { color: var(--slate); }
+.tone-bone { color: var(--accent); } .tone-pr { color: var(--teal); }
+#map-legend { display: inline-flex; flex-wrap: wrap; gap: 0.3em 0.9em; font-size: 0.74rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+#map-legend .dotc { display: inline-block; width: 0.6em; height: 0.6em; border-radius: 50%; background: currentColor; margin-right: 0.35em; vertical-align: 1px; }
+#map-legend .lg { color: var(--muted); }
+#map-legend .lg .dotc { color: inherit; }
+#map-legend .lg.tone-emerald .dotc { background: var(--emerald); } #map-legend .lg.tone-sapphire .dotc { background: var(--sapphire); }
+#map-legend .lg.tone-amber .dotc { background: var(--amber); } #map-legend .lg.tone-amethyst .dotc { background: var(--amethyst); }
+#map-legend .lg.tone-garnet .dotc { background: var(--garnet); } #map-legend .lg.tone-slate .dotc { background: var(--slate); }
+#map-legend .lg.tone-bone .dotc { background: var(--accent); } #map-legend .lg.tone-pr .dotc { background: var(--teal); }
