@@ -1089,11 +1089,14 @@ page about the ranking, `state/*.json`, the claims registries, the anchors of
 `DECISIONS.md`, the wiki source, `graph/policy.yaml` and the human ledgers, and writes
 `_site/` (gitignored). The site is a render and never a second source: nothing on it is
 typed by hand except `site/lede.md`, the front page's one paragraph, binding-checked
-against the state at every build. The front page is the map itself, a zoomable canvas of
-nested regions (`site/assets/map.js` over `/assets/map.json`) with three views — the frame
-tree, the rounds, the epistemic classes — and a panel that loads a node's fragment in
-place; every node page carries the intake verbs, each a prefilled GitHub issue a
-maintainer round sweeps into ledger events (ruling S5, 2026-10-30). Every node, item,
+against the state at every build. The front page is the map itself, a canvas of nested
+regions rendered one level at a time and entered by click with an animated zoom
+(`site/assets/map.js` over `/assets/map.json`), with views over the same objects — the
+frame tree, the wiki concepts as a linked constellation, the rounds, the epistemic
+classes, and the merged pull requests digested in `state/prs.json` — and a panel that
+loads a clicked object's fragment in place; every node page carries the intake verbs,
+each a prefilled GitHub issue a maintainer round sweeps into ledger events (ruling S5,
+2026-10-30). Every node, item,
 decision anchor, round, registry id, wiki page and handle has exactly one path, derived
 from its id (`site/README.md` is the contract); a build fails on a reference that does
 not resolve, two ids that map to one path, or a binding that disagrees with the state,

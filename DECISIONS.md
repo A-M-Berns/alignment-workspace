@@ -6831,25 +6831,41 @@ deploy alone. The ruling text is the maintainer's and is not reworded.
 **Maintainer ruling, taken in conversation on 2026-10-30; executed by the
 site-vertical-slice round's follow-up on its open pull request.**
 
-**S5. The site's one UI is the map, zoomed.** The front page is a canvas of nested
-regions laid out from `/assets/map.json` by vanilla JavaScript (`site/assets/map.js`):
-the top question opens into the lines, a line into its frame's goals and holds, a claim
-into its conjuncts, under semantic zoom — a region shows its contents once it is wide
-enough on screen. Three containments over the same node set are the views, switched on
-the canvas: the frame tree (**concept**, the default), the originating rounds
-(**rounds** — a round is the unit a pull request lands, so this is the provenance
-grain), and the epistemic classes (**class**). Cross-edges (`part`, `given`, `held`)
-draw between visible nodes on request. A clicked node's detail — the node page's body,
-built once as `/n/<id>/frag.html` — loads into a panel beside the canvas, and `/#n=<id>`
-deep-links it; every per-id URL of S4 stands, each node remaining a full page, so the
-contract is unchanged. Walks are not part of the site; the one shipped walk leaves with
-this ruling, and its open review entry leaves the queue. Intake is verbs on every node
-page and fragment — comment, challenge, estimate, want — each a prefilled GitHub issue
-carrying the node id and a protocol-shaped body; the site accepts no write, and a
-maintainer round sweeps what lands into ledger events under `graph/PROTOCOL.md`'s
-authorship rules.
+**S5. The site's one UI is the map, in discrete levels.** The front page is a canvas of
+nested regions laid out from `/assets/map.json` by vanilla JavaScript
+(`site/assets/map.js`), one level rendered at a time: the focus's contents as regions,
+each with a faint preview grid of what it holds, entered by click with an animated zoom
+and left by esc, ctrl-click, wheel-out or the breadcrumb — the top question into the
+lines, a line into its frame's goals and holds, a claim into its conjuncts. A reader is
+not shown text until they click in for it. The views over the same objects, switched on
+the canvas: the frame tree (**goals**, the default); the wiki pages as a **concepts**
+constellation — circles linked by page links, shared references and shared frames, each
+opening into its referenced nodes and the merged work tagged to it; the originating
+**rounds**; the epistemic **class**es; and **merged work** — topics containing the
+digested pull requests of `state/prs.json`, where that file exists. Cross-edges (`part`,
+`given`, `held`) are aggregated to the visible regions. A clicked leaf's detail — built
+once as `/n/<id>/frag.html`, `/wiki/<Page>/frag.html` or `/prs/<n>/frag.html` — loads
+into a panel beside the canvas, and `/#n=<id>` deep-links a map node; every per-id URL
+of S4 stands, each object remaining a full page, so the contract is unchanged. Walks are
+not part of the site; the one shipped walk leaves with this ruling, and its open review
+entry leaves the queue. Intake is verbs on every node page and fragment — comment,
+challenge, estimate, want — each a prefilled GitHub issue carrying the node id and a
+protocol-shaped body; the site accepts no write, and a maintainer round sweeps what
+lands into ledger events under `graph/PROTOCOL.md`'s authorship rules.
+
+**The pull-request digests.** Every merged pull request gets a key-points digest in
+`state/prs.json`: number, title, merged date, its rounds, topic tags drawn from the wiki
+pages and frames, one or two paragraphs of results in plain register, and — where a
+result was later displaced — a supersession note with references. The digests are
+AI-generated against the round reports and registries, provenance-marked, and read by
+the site alone; nothing adjudicates on them. The site's palette and type are
+amberns.com's (paper `#0e0e10`, ink `#ececec`, bone accent `#c8c4ba`, Lexend
+self-hosted), dark only.
 
 *Rejected alternatives:* a page-per-object site with hand-written walks as the guided
 layer (the maintainer judged the walk unnecessary once the map itself is the guide); a
-force-directed node-link canvas (containment reads the hierarchy better at this size); a
-write path from the page (a backend is its own decision, not taken here).
+continuously-zooming canvas (the maintainer ruled levels discrete, entered and left as
+levels); a force-directed layout for the containment views (containment reads the
+hierarchy better at this size; force layout is kept for the concepts constellation,
+where overlap is the content); a write path from the page (a backend is its own
+decision, not taken here).

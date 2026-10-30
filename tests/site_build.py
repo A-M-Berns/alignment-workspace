@@ -51,6 +51,7 @@ def self_test() -> int:
         registry = {}
         wiki = {}
         handles = {}
+        prs = {}
     s = P.Site(FakeRepo())
     s.url("n", "a/b")
     try:

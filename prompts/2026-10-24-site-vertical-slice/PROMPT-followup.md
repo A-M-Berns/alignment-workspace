@@ -20,3 +20,30 @@ round's open pull request rather than after its merge.
 Scope: the site under `site/`, its gate, and the governance text that describes the site
 (`AGENTS.md` *The site under `site/`*, `graph/MAP-AS-CANONICAL.md` §6, `DECISIONS.md` —
 the S5 entry and the walk-review queue entry it retires).
+
+Further directives of the same conversation, verbatim:
+
+> you should also match the base aesthetic style and color palette of amberns.com, the
+> current popup behavior is that in cloudcli the content of the window disappears but it
+> doesn't pop back down to the post-minus-press state as desired
+
+> ok so the whole graph shouldn't be rendering from the beginning. It should be like at
+> first you just see a top level graphical representation. then if you click into
+> something it zooms in, revealing the internal relationships, with the ability to zoom
+> back out. in other words, levels are discrete and not continuous. Also, try to make the
+> graphical representation more visually appealing with smooth transitions. Also, i think
+> an important step is to go through and for every PR generate a key points summary of
+> results because the PRs are long and dense. So dispatch an agent to go through and do
+> that. If a PR's results are superceded, that should be clear with references. Clear,
+> human readable, appropriately but not necessarily absolutely self-contained in
+> information, a paragraph or two per PR. And then every PR should be tagged with any
+> relevant subtopic nodes at a certain level, so you can see like a zooming-in concept
+> type view and also for each topic a different view shows each PR with like a
+> description you can click into and a list of rounds associated with it as well. In
+> general, the user shouldn't be flooded with text unless they "ask for it" by clicking
+> in far enough. Outer conceptual/mathematical level is like at the goal level, then
+> maybe like one level in is like a "concept consellation" of overlapping concepts, that
+> could be a mathematical object from prior art or a term of art we coined ourselves, and
+> its like a wiki structure, and for each one you can click in and see related work in
+> PRs, and it's again potentially overlapping and just also demonstrating visually the
+> interrelated structure of wiki concepts at different levels or with other relationships

@@ -30,7 +30,7 @@ class Site:
     def url(self, kind: str, ident: str, must_exist: bool = True) -> str:
         r = self.repo
         ok = {"n": ident in r.nodes, "items": ident in r.items, "decisions": ident in r.decisions, "rounds": ident in r.rounds,
-              "claims": ident in r.registry, "wiki": ident in r.wiki, "by": ("@" + ident) in r.handles}[kind]
+              "claims": ident in r.registry, "wiki": ident in r.wiki, "by": ("@" + ident) in r.handles, "prs": ident in r.prs}[kind]
         if not ok and must_exist:
             self.unresolved.append(f"{kind}:{ident}")
         path = f"/{kind}/{self.seg(ident)}/"
@@ -451,6 +451,51 @@ def wiki_page(site: Site, name: str) -> str:
     return layout(site, name.replace("-", " "), "\n".join(body), [("wiki", "/wiki/")])
 
 
+def wiki_frag(site: Site, name: str) -> str:
+    """The wiki page's rendered body for the map's panel, with the merged work tagged to this concept beneath it."""
+    r = site.repo
+    body = [f'<p class="frag-head">{site.link("wiki", name, name.replace("-", " "))} <span class="kind">concept</span></p>',
+            f"<div class=\"wiki\">{render_wiki(site, name)}</div>"]
+    related = [(num, P) for num, P in sorted(r.prs.items(), key=lambda kv: int(kv[0]), reverse=True)
+               if name in ((P.get("topics") or {}).get("wiki") or [])]
+    if related:
+        body.append("<section><h2>Merged work on this concept</h2><ul class=\"listing\">"
+                    + "".join(f"<li>{site.link('prs', num, f'#{num} ' + str(P.get('title', '')))} <span class=\"date\">{esc(str(P.get('merged') or ''))}</span>"
+                              + (" <span class=\"tag\">superseded in part</span>" if P.get("superseded") else "") + "</li>" for num, P in related)
+                    + "</ul></section>")
+    return "\n".join(body)
+
+
+def pr_body(site: Site, num: str) -> str:
+    """A merged pull request's digest: the key points, its supersessions with references, its rounds and topics.
+    The digests are a round deliverable in state/prs.json, provenance-marked there; the site renders them."""
+    r = site.repo
+    P = r.prs[num]
+    gh = f"https://github.com/A-M-Berns/alignment-workspace/pull/{esc(num)}"
+    body = [f'<p class="subtitle">merged {esc(str(P.get("merged") or "—"))} · <a href="{gh}">pull request #{esc(num)} on GitHub</a></p>']
+    if P.get("superseded"):
+        body.append(f'<p class="superseded"><strong>Superseded in part:</strong> {md.inline(str(P["superseded"]))}</p>')
+    body.append("<div class=\"pr-summary\">" + "".join(f"<p>{md.inline(para.strip())}</p>" for para in str(P.get("summary") or "").split("\n\n") if para.strip()) + "</div>")
+    rds = [rid for rid in P.get("rounds") or [] if rid in r.rounds]
+    if rds:
+        body.append("<p><strong>Rounds:</strong> " + ", ".join(site.link("rounds", rid) for rid in rds) + "</p>")
+    topics = P.get("topics") or {}
+    tlinks = [site.link("wiki", w, w.replace("-", " ")) for w in topics.get("wiki") or [] if w in r.wiki] \
+        + [site.link("n", f) for f in topics.get("frames") or [] if f in r.nodes]
+    if tlinks:
+        body.append("<p><strong>Topics:</strong> " + ", ".join(tlinks) + "</p>")
+    return "\n".join(body)
+
+
+def pr_page(site: Site, num: str) -> str:
+    return layout(site, f"#{num} {site.repo.prs[num].get('title', '')}", pr_body(site, num), [("merged work", "/prs/")])
+
+
+def pr_frag(site: Site, num: str) -> str:
+    P = site.repo.prs[num]
+    return f'<div class="frag"><p class="frag-head">{site.link("prs", num, f"#{num} " + str(P.get("title", "")))} <span class="kind">merged pull request</span></p>{pr_body(site, num)}</div>'
+
+
 def handle_page(site: Site, handle: str) -> str:
     r = site.repo
     h = "@" + handle
@@ -484,9 +529,10 @@ def front_page(site: Site, lede_html: str, feed_rows: list[str]) -> str:
         + "</ul></section></noscript>")
     body = [f"<p class=\"question top-question\">{esc(top['question'])}</p>", lede_html,
             '<div class="map-ui"><div class="map-bar">'
-            '<span class="views">view <button data-view="concept" class="on">concept</button><button data-view="rounds">rounds</button><button data-view="class">class</button></span>'
-            '<label class="edges-toggle"><input type="checkbox" id="map-edges"> edges</label>'
-            '<span class="map-hint muted">scroll to zoom · drag to pan · click a region to enter it · click a node to read it</span></div>'
+            '<span class="views" id="map-views">view </span>'
+            '<label class="edges-toggle"><input type="checkbox" id="map-edges" checked> edges</label>'
+            '<span class="map-hint muted">click to enter · esc or ⌃-click to back out · click a leaf to read it</span></div>'
+            '<nav class="map-crumbs" id="map-crumbs"></nav>'
             '<div class="map-stage"><svg id="map" role="application" aria-label="the argument map"></svg>'
             '<aside id="map-panel"><button id="map-panel-close" aria-label="close">×</button><div id="map-panel-body"></div></aside></div></div>',
             noscript,
@@ -578,7 +624,55 @@ def map_data(site: Site) -> dict:
     order = ["lean-proved", "enumeration-verified", "witness-checked", "contributor-checked", "test-supported", "conjectured", "unregistered"]
     class_view = {"id": "class", "ch": [{"id": c, "ch": [{"id": x, "ch": []} for x in sorted(xs)]}
                                         for c, xs in sorted(by_class.items(), key=lambda kv: order.index(kv[0]) if kv[0] in order else 99)]}
-    return {"nodes": nodes, "views": {"concept": concept, "rounds": rounds_view, "class": class_view}, "edges": edges}
+    # the concept constellation: wiki pages as overlapping concepts, linked by page links, shared references and shared frames
+    concepts: dict[str, dict] = {}
+    for name, text in r.wiki.items():
+        refs: set[str] = set()
+        for kind, ident in REF.findall(text):
+            if kind == "claim" and ident in r.claims:
+                refs.add(r.claims[ident])
+            elif kind in ("item", "item-open") and ident in r.items:
+                refs.add(r.items[ident]["node"])
+            elif kind == "node" and ident in r.nodes:
+                refs.add(ident)
+        links = sorted({m for m in WIKI_MD_LINK.findall(text) if m in r.wiki and m != name})
+        frames = [f for f in r.narratives.get(f"wiki/{name}.md", []) if f == "top" or f in r.nodes]
+        concepts[name] = {"refs": sorted(refs), "links": links, "frames": frames}
+    clinks: list[list] = []
+    names = sorted(concepts)
+    for i, a in enumerate(names):
+        for b in names[i + 1:]:
+            w = len(set(concepts[a]["refs"]) & set(concepts[b]["refs"]))
+            if b in concepts[a]["links"] or a in concepts[b]["links"]:
+                w += 3
+            if set(concepts[a]["frames"]) & set(concepts[b]["frames"]):
+                w += 1
+            if w:
+                clinks.append([a, b, w])
+    prs_by_topic: dict[str, list[str]] = {}
+    pr_meta = {}
+    for num, P in sorted(r.prs.items(), key=lambda kv: int(kv[0]), reverse=True):
+        pr_meta[num] = {"t": P.get("title", "")[:120], "d": str(P.get("merged") or ""), "sup": bool(P.get("superseded"))}
+        for w in (P.get("topics") or {}).get("wiki") or []:
+            if w in r.wiki:
+                prs_by_topic.setdefault("wiki:" + w, []).append(num)
+        for f in (P.get("topics") or {}).get("frames") or []:
+            if f in r.nodes:
+                prs_by_topic.setdefault("n:" + f, []).append(num)
+    concept_view = {"id": "concepts", "layout": "constellation",
+                    "ch": [{"id": name, "kind": "concept",
+                            "ch": [{"id": "#" + n, "kind": "pr", "ch": []} for n in prs_by_topic.get("wiki:" + name, [])]
+                                  + [{"id": x, "ch": []} for x in concepts[name]["refs"]]}
+                           for name in names]}
+    prs_view = {"id": "prs", "ch": [{"id": topic.split(":", 1)[1], "kind": "topic", "tref": topic,
+                                     "ch": [{"id": "#" + n, "kind": "pr", "ch": []} for n in nums]}
+                                    for topic, nums in sorted(prs_by_topic.items(), key=lambda kv: -len(kv[1]))]} if prs_by_topic else None
+    views = {"concept": concept, "concepts": concept_view, "rounds": rounds_view, "class": class_view}
+    if prs_view:
+        views["prs"] = prs_view
+    return {"nodes": nodes, "views": views, "edges": edges, "clinks": clinks,
+            "concepts": {n: {"n": len(c["refs"]), "prs": len(prs_by_topic.get("wiki:" + n, []))} for n, c in concepts.items()},
+            "prmeta": pr_meta}
 
 
 def feed_rows(site: Site) -> list[str]:

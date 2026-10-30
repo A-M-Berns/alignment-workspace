@@ -96,10 +96,21 @@ def build(out: pathlib.Path, verbose: bool = True) -> dict:
         put(site.url("rounds", rid), pages.round_page(site, rid), "round")
     put("/rounds/", pages.index_list_page(site, "Rounds", [f"<li><span class=\"date\">{pages.esc(str(R.get('date')))}</span> {site.link('rounds', rid)} <span class=\"muted\">{pages.esc(str(R.get('project') or 'workspace'))}</span></li>"
                                                          for rid, R in sorted(repo.rounds.items(), key=lambda kv: str(kv[1].get('date')), reverse=True)]), "listing")
-    # wiki
+    # wiki: the page, and the fragment the map's concept view loads
     for name in repo.wiki:
         put(site.url("wiki", name), pages.wiki_page(site, name), "wiki")
+        put(site.url("wiki", name) + "frag.html", pages.wiki_frag(site, name), "wiki-frag")
     put("/wiki/", pages.index_list_page(site, "Wiki", [f"<li>{site.link('wiki', n, n.replace('-', ' '))}</li>" for n in repo.wiki]), "listing")
+    # merged pull requests: the digests of state/prs.json, where the file exists
+    for num in repo.prs:
+        put(site.url("prs", num), pages.pr_page(site, num), "pr")
+        put(site.url("prs", num) + "frag.html", pages.pr_frag(site, num), "pr-frag")
+    if repo.prs:
+        put("/prs/", pages.index_list_page(site, "Merged work", [
+            f"<li><span class=\"date\">{pages.esc(str(P.get('merged') or ''))}</span> {site.link('prs', num, f'#{num} ' + str(P.get('title', '')))}"
+            + (" <span class=\"tag\">superseded in part</span>" if P.get("superseded") else "") + "</li>"
+            for num, P in sorted(repo.prs.items(), key=lambda kv: int(kv[0]), reverse=True)],
+            "Every merged pull request, digested to its key points; supersessions are marked on the entry."), "listing")
     # handles
     for h in repo.handles:
         put(site.url("by", h.lstrip("@")), pages.handle_page(site, h.lstrip("@")), "handle")

@@ -152,6 +152,8 @@ class Repo:
         self.commit = git("rev-parse", "HEAD") or "uncommitted"
         self.commit_date = git("log", "-1", "--format=%cs") or _dt.date.today().isoformat()
         self.narratives = self.index.get("narratives") or {}
+        ppath = ROOT / "state" / "prs.json"
+        self.prs = {str(p["number"]): p for p in json.loads(ppath.read_text())["prs"]} if ppath.is_file() else {}
         # parents by edge kind
         self.parents: dict[str, list[tuple[str, str]]] = {}
         for x, N in self.nodes.items():

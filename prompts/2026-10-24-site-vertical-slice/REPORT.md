@@ -231,3 +231,38 @@ places only the 33 rounds a node names; the other 94 rounds render as pages, not
 
 **Attribution.** Prompt author: the maintainer, in conversation. Executor:
 Claude Fable 5 (Anthropic), 2026-10-30.
+
+## Second follow-up of 2026-10-30 — discrete levels, the concepts constellation, and the pull-request digests
+
+Dispatch: the further directives in `PROMPT-followup.md`, verbatim; the S5 entry in
+`DECISIONS.md` carries the amended ruling.
+
+- **Discrete levels.** The canvas renders one level at a time — the focus's children as
+  rounded regions, each with a faint preview grid of its own contents and a count badge —
+  entered by click with a 300 ms animated zoom, left by esc, ctrl-click, wheel-out, the
+  breadcrumb or the up button. Cross-edges are aggregated to the visible regions
+  (stroke width by count). The node smoke run renders 556 elements at the top level
+  against 2,467 nodes in the data.
+- **Concepts view.** The 34 wiki pages as a constellation: a small force layout over
+  links scored from page-to-page links (+3), shared node references (+1 each) and shared
+  narrated frames (+1); circle size by reference count, an accent ring where merged work
+  is tagged. Entering a concept shows its referenced nodes and tagged pull requests;
+  clicking it loads `/wiki/<Page>/frag.html` — the rendered page with its merged work
+  beneath.
+- **Merged-work view and `/prs/<n>/`.** `state/prs.json` (when present) renders as topic
+  regions containing pull-request leaves, each leaf a digest page and fragment with the
+  key points, a highlighted supersession note, rounds and topics. The digests are being
+  produced by a dispatched agent against the round reports and registries; this follow-up
+  ships the schema, the renderer and the view, which the build omits while the file is
+  absent.
+- **Palette.** amberns.com's: paper `#0e0e10`, ink `#ececec`, muted `#8e8e88`, bone
+  accent `#c8c4ba`, Lexend Variable self-hosted, dark only; uppercase micro-labels. The
+  panel collapses by an explicit `.open` class rather than the `hidden` attribute, which
+  a host stylesheet can override.
+
+**What this does not establish.** The constellation's link scoring (3/1/1) is a first
+guess at what "related concepts" means here; the digests' accuracy is the dispatched
+agent's reading, unreviewed until the maintainer reads one; the canvas remains untested
+by a browser harness; the top level of the goals view is dominated by `the-program`
+beside three loose claims and the unplaced bin, which is the map's real shape but may
+not be the right first screen.

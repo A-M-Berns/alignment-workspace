@@ -16,15 +16,25 @@ refuses one; `tests/site_build.py` runs the build as a gate under `tests/run.py`
 
 ## The map is the front page (ruling S5, 2026-10-30)
 
-`/` is a zoomable canvas: `/assets/map.js` (vanilla JavaScript, SVG) lays `/assets/map.json`
-out as nested regions and zooms — the top question opens into the lines, a line into its
-frame's goals and holds, a claim into its conjuncts; cross-edges (`part`, `given`, `held`)
-draw between visible nodes on request. Three containments over the same node set are the
-views: **concept** (the frame tree continued into the part edges), **rounds** (nodes under
-the round that produced them), **class** (formal results by epistemic class). Clicking a
-node loads its `/n/<id>/frag.html` — the node page's body without the layout — into a
-panel; `/#n=<id>` (ids with `/` as `--`) deep-links it. Without JavaScript the front page
-lists the lines as links, and every node remains a full page.
+`/` is a canvas in discrete levels: `/assets/map.js` (vanilla JavaScript, SVG) renders one
+level of `/assets/map.json` at a time — the focus's contents as rounded regions, each with
+a faint preview grid of what it contains — entered by click with an animated zoom and left
+by esc, ctrl-click, wheel-out or the breadcrumb. Cross-edges (`part`, `given`, `held`) are
+aggregated to the visible regions. The views over the same objects: **goals** (the frame
+tree continued into the part edges), **concepts** (the wiki pages as a constellation —
+circles linked by page links and shared references; entering one shows its referenced
+nodes and the merged work tagged to it), **rounds** (nodes under the round that produced
+them), **class** (formal results by epistemic class), and — when `state/prs.json` exists —
+**merged work** (topics containing the digested pull requests). Clicking a leaf loads its
+fragment into a panel: `/n/<id>/frag.html`, `/wiki/<Page>/frag.html`, or
+`/prs/<n>/frag.html`; `/#n=<id>` (ids with `/` as `--`) deep-links a map node. Without
+JavaScript the front page lists the lines as links, and every object remains a full page.
+
+`state/prs.json` holds the digests of merged pull requests — number, title, merged date,
+rounds, topic tags (wiki pages and frames), a one-or-two-paragraph summary of key points,
+and a supersession note with references where later work displaced a result. The site
+renders them at `/prs/<n>/`; the file is a round deliverable, provenance-marked where it
+lands, and the build runs without it.
 
 Every node page and fragment ends with the intake verbs — comment, challenge, estimate,
 want — each a prefilled GitHub issue carrying the node id and a protocol-shaped body. The
@@ -44,8 +54,9 @@ build on.
 | a decision entry | `/decisions/<anchor>/` | the `<!-- decision: … -->` lines of `DECISIONS.md` |
 | a round | `/rounds/<round id>/` | `state/rounds.json` |
 | a registered claim | `/claims/<registry id>/` | the registries; redirects to the node its record belongs to |
-| a wiki page | `/wiki/<Page>/` | `wiki/<Page>.md` |
+| a wiki page | `/wiki/<Page>/`, its fragment `/wiki/<Page>/frag.html` | `wiki/<Page>.md` |
 | a handle | `/by/<handle without @>/` | `graph/policy.yaml` |
+| a merged pull request | `/prs/<n>/`, its fragment `/prs/<n>/frag.html` | `state/prs.json` |
 | the map data | `/assets/map.json` | the containments and edges above |
 | the feed, the theorem spine, the ranking, search | `/feed/`, `/spine/`, `/ranking/`, `/search/` | — |
 

@@ -158,11 +158,14 @@ to), `/wiki/<Page>/`, `/by/<handle>/`; two ids that map to one path fail
 the build, as does any reference that does not resolve (`site/README.md`). Pages, as built:
 
 - **front page**: the top frame's question, the lede from `site/lede.md`, and the map as a
-  zoomable canvas of nested regions (ruling S5, 2026-10-30): the top question opens into
-  the lines, a line into its frame's goals and holds, a claim into its conjuncts, with
-  three views over the same nodes (the frame tree, the rounds, the epistemic classes),
-  cross-edges on request, and a panel loading a clicked node's fragment
-  (`/n/<id>/frag.html`) in place; the feed's head collapsed below.
+  canvas of nested regions in discrete levels (ruling S5, 2026-10-30): one level renders
+  at a time with a preview of each region's contents, entered by click with an animated
+  zoom and left by esc or the breadcrumb — the top question into the lines, a line into
+  its frame's goals and holds, a claim into its conjuncts — with views over the same
+  objects (the frame tree; the wiki concepts as a linked constellation; the rounds; the
+  epistemic classes; the merged pull requests digested in `state/prs.json`, where that
+  file exists), cross-edges aggregated to the visible regions, and a panel loading a
+  clicked object's fragment in place; the feed's head collapsed below.
 - **frame** (`/n/<frame>/`): question, owners, the narrative rendered, roots by role, what it
   holds by kind (formal results, items, other), sub-frames, the path up to the top frame,
   *no goal yet* where `roots` is empty.
