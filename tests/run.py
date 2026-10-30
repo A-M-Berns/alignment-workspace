@@ -48,7 +48,10 @@ def run_projects() -> list[tuple[str, bool]]:
 GATE_SELF_TESTS = ("path_gate", "dco", "attribution",
                    "contrib_hygiene", "conservativity", "audit_axioms",
                    "workflow_scope", "lean_scope", "round_records",
-                   "dead_pointers", "untracked_pointers", "site_build")
+                   "dead_pointers", "untracked_pointers", "site_build",
+                   # live form is the scheduled audit (freshness.yml); it reads
+                   # GitHub's merged-PR list, which a gate run cannot assume
+                   "freshness")
 
 
 # Gates whose real form needs a pull request: they read the event payload or a
