@@ -570,18 +570,20 @@ def front_page(site: Site, lede_html: str, feed_rows: list[str]) -> str:
     noscript = ("<noscript><section><h2>The lines</h2><ul>" + "".join(
         f"<li>{site.link('n', line)}: {esc(r.nodes[line]['frame']['question'] or '')}</li>" for line in lines)
         + "</ul></section></noscript>")
-    body = [f"<p class=\"question top-question\">{esc(top['question'])}</p>", lede_html,
-            '<div class="map-ui"><div class="map-bar">'
-            '<span class="views" id="map-views">view </span>'
+    body = ['<div class="map-full"><div class="map-stage">'
+            '<svg id="map" role="application" aria-label="the argument map"></svg>'
+            '<div class="map-bar overlay">'
+            '<span class="views" id="map-views"></span>'
             '<label class="edges-toggle"><input type="checkbox" id="map-edges" checked> edges</label>'
-            '<span id="map-legend"></span>'
-            '<span class="map-hint muted">drag to pan · scroll to zoom · click a node to open it · esc to back out</span></div>'
-            '<nav class="map-crumbs" id="map-crumbs"></nav>'
-            '<div class="map-stage"><svg id="map" role="application" aria-label="the argument map"></svg>'
+            '<span id="map-legend"></span></div>'
+            '<nav class="map-crumbs overlay" id="map-crumbs"></nav>'
+            f'<details class="map-about overlay"><summary>about this map</summary><p class="question">{esc(top["question"])}</p>{lede_html}</details>'
+            '<span class="map-hint overlay muted">drag to pan · scroll to zoom · click a node · esc backs out</span>'
             '<div id="map-tip" hidden></div>'
-            '<div id="map-modal"><div id="map-panel"><button id="map-panel-close" aria-label="close">×</button><div id="map-panel-body"></div></div></div></div></div>',
+            '<div id="map-modal"><div id="map-panel"><button id="map-panel-close" aria-label="close">×</button><div id="map-panel-body"></div></div></div>'
+            '</div></div>',
             noscript,
-            "<details class=\"front-feed\"><summary>Recent in the feed</summary><ul class=\"feed\">" + "".join(feed_rows[:12]) + "</ul><p><a href=\"/feed/\">The whole feed</a>.</p></details>"]
+            "<div class=\"below-map\"><details class=\"front-feed\"><summary>Recent in the feed</summary><ul class=\"feed\">" + "".join(feed_rows[:12]) + "</ul><p><a href=\"/feed/\">The whole feed</a>.</p></details></div>"]
     return layout(site, "The map of the program", "\n".join(body)).replace("</head>", '<script defer src="/assets/map.js"></script></head>')
 
 

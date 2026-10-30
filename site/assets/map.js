@@ -70,10 +70,12 @@
     return "plain";
   }
 
-  // deterministic force layout; the world grows with the node count, so a level needn't fit the stage
+  // deterministic force layout; the world grows with the node count, so a level needn't fit the stage.
+  // No walls: the sim runs free and the finished layout is normalized into the world box, so nothing piles
+  // at a border.
   function network(items, links, w0, h0) {
     var n = items.length, pos = [], i, j;
-    var spread = Math.max(1, Math.min(Math.sqrt(n) / 3.2, 2.6));
+    var spread = Math.max(1, Math.min(Math.sqrt(n) / 4.6, 1.6));
     var w = w0 * spread, h = h0 * spread;
     var R = Math.min(w, h) * (n > 20 ? 0.4 : 0.3);
     for (i = 0; i < n; i++) {
@@ -100,11 +102,21 @@
         p.vx += (q.x - p.x) * k; p.vy += (q.y - p.y) * k; q.vx += (p.x - q.x) * k; q.vy += (p.y - q.y) * k;
       }
       for (i = 0; i < n; i++) {
-        pos[i].vx += (w / 2 - pos[i].x) * 0.0016; pos[i].vy += (h / 2 - pos[i].y) * 0.0016;
+        pos[i].vx += (w / 2 - pos[i].x) * 0.0022; pos[i].vy += (h / 2 - pos[i].y) * 0.0022;
         pos[i].x += Math.max(-10, Math.min(10, pos[i].vx)); pos[i].y += Math.max(-10, Math.min(10, pos[i].vy));
         pos[i].vx *= 0.8; pos[i].vy *= 0.8;
-        pos[i].x = Math.max(36, Math.min(w - 36, pos[i].x)); pos[i].y = Math.max(30, Math.min(h - 40, pos[i].y));
       }
+    }
+    // normalize: uniform-scale the finished layout into the world box, centred, margins clear of the chrome
+    var mx = 90, my = 80, minx = 1e9, miny = 1e9, maxx = -1e9, maxy = -1e9;
+    for (i = 0; i < n; i++) {
+      minx = Math.min(minx, pos[i].x); maxx = Math.max(maxx, pos[i].x);
+      miny = Math.min(miny, pos[i].y); maxy = Math.max(maxy, pos[i].y);
+    }
+    var s = Math.min((w - 2 * mx) / Math.max(maxx - minx, 1), (h - 2 * my) / Math.max(maxy - miny, 1), 1.8);
+    for (i = 0; i < n; i++) {
+      pos[i].x = w / 2 + (pos[i].x - (minx + maxx) / 2) * s;
+      pos[i].y = h / 2 + (pos[i].y - (miny + maxy) / 2) * s;
     }
     return { pos: pos, w: w, h: h };
   }

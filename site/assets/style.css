@@ -149,3 +149,20 @@ details.pr-digest { border-bottom: 1px solid var(--rule); padding: 0.35em 0; }
 details.pr-digest summary { cursor: pointer; }
 details.pr-digest summary:hover { color: var(--accent); }
 .pr-digest-body { padding: 0.4em 0 0.6em 1.2em; max-width: 44rem; }
+/* the full-viewport map */
+main:has(.map-full) { max-width: none; padding: 0; }
+main:has(.map-full) > h1, main:has(.map-full) > .subtitle { display: none; }
+.map-full .map-stage { height: calc(100vh - 3.6rem); min-height: 28rem; border: none; border-radius: 0; border-bottom: 1px solid var(--rule); }
+.map-full .overlay { position: absolute; z-index: 4; }
+.map-full .map-bar.overlay { top: 0.9rem; left: 1.1rem; background: #0e0e10cc; backdrop-filter: blur(10px); border: 1px solid #26262a; border-radius: 9px; padding: 0.4em 0.9em; max-width: min(46rem, 72vw); }
+.map-full .map-crumbs.overlay { top: 3.6rem; left: 1.2rem; padding: 0.15em 0; }
+.map-full .map-about { top: 0.9rem; right: 1.1rem; width: min(26rem, 72vw); background: #0e0e10cc; backdrop-filter: blur(10px); border: 1px solid #26262a; border-radius: 9px; padding: 0.4em 0.9em; font-size: 0.9rem; }
+.map-full .map-about summary { cursor: pointer; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.74rem; }
+.map-full .map-about .question { font-size: 0.98rem; margin: 0.6em 0 0.4em; }
+.map-full .map-about p { color: #b3b3ac; }
+.map-full .map-hint { bottom: 0.7rem; right: 1.1rem; font-size: 0.74rem; z-index: 3; }
+.below-map { max-width: 56rem; margin: 0 auto; padding: 0.8em 1em 2em; }
+@media (max-width: 40rem) {
+  .map-full .map-about { top: auto; bottom: 2.4rem; right: 0.6rem; }
+  .map-full .map-bar.overlay { left: 0.6rem; right: 0.6rem; max-width: none; }
+}
