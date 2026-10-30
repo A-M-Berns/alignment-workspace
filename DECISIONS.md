@@ -422,12 +422,6 @@ commit.
   maintainer's placement.
   <!-- decision: open--informal-claims-round-filed-where-none-existed; touches: node:verdict-licence-chain, node:split-bill-is-robust-openness, node:local-delegation-bridge; status: open -->
 
-- **The site's custom domain (ruling S3, 2026-10-24).**  No domain is set; site/CNAME is
-  added only when the maintainer supplies one, and until then the site is at the
-  repository's Pages address once the maintainers merge.
-  *Turns on:* a name the maintainers own.
-  <!-- decision: open--site-s-custom-domain-ruling-s3; touches: none; status: open -->
-
 - **What the walk found the map lacked (2026-10-24).**  Listed in the round's report under
   the walk's findings: no edge runs from the normativity line's compiled conformance to a
   trust bound the deference line reads (the walk crosses lines through `the-program` and
@@ -6893,3 +6887,12 @@ reaches corrigibility through deference. The site's concept registry reads the s
 *Rejected alternative:* keeping deference-and-trust as the program line with the
 landscape shared under it and legitimacy — the shape the 2026-10-22 drafting chose, which
 the owners had not confirmed.
+
+### 2026-10-30 — the site's domain is alignmentworkspace.com
+<!-- decision: 2026-10-30--site-domain-alignmentworkspace-com; touches: none -->
+
+**Maintainer ruling, taken in conversation on 2026-10-30.** The maintainer supplied the
+name reserved by ruling S3: the site's domain is `alignmentworkspace.com`, registered at
+Cloudflare. `site/CNAME` carries it and the build copies it into every deploy; the Pages
+custom-domain setting and the Cloudflare DNS records point the name at the repository's
+Pages host. The queue entry awaiting the name leaves with this ruling.

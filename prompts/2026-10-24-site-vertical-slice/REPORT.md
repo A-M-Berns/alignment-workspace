@@ -547,3 +547,11 @@ replaced from the state at build, map.json is regenerated on every build, and
 workspace_state compares the generated views byte-for-byte. The one thing no offline
 gate can see is digest coverage against GitHub; the README now says so and names it a
 review matter.
+
+## Twenty-first follow-up of 2026-10-30 — the domain
+
+The maintainer supplied the name ruling S3 reserved: `alignmentworkspace.com`,
+registered at Cloudflare. `site/CNAME` carries it (the build already copies it into
+every deploy), the Pages custom-domain setting names it, and the dated ruling retires
+the queue entry. The DNS records live at Cloudflare and are the maintainer's step;
+until they exist and a deploy lands, the name resolves to nothing.
