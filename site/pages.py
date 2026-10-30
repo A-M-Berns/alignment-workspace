@@ -647,12 +647,24 @@ def map_data(site: Site) -> dict:
         return memo[x]
     ds = {cid: depth(cid) for cid in r.concepts}
     dmax = max([v for v in ds.values() if v is not None] or [1])
-    # a node with no directed path to the program sits deep left; what feeds only such nodes sits deeper
+    # a node with no directed path to the program sits at its neighbours' average depth,
+    # so an adjacent agenda lands beside its relatives rather than at the far edge
+    nb_of: dict[str, list[str]] = {}
+    for L in r.concept_links:
+        a, b = L.get("from"), L.get("to")
+        if a in r.concepts and b in r.concepts:
+            nb_of.setdefault(a, []).append(b)
+            nb_of.setdefault(b, []).append(a)
     for _ in range(3):
         for cid in r.concepts:
             if ds[cid] is None:
                 outs = [ds[y] for y in succ.get(cid, []) if ds.get(y) is not None]
-                ds[cid] = 1 + max(outs) if outs else dmax
+                if outs:
+                    ds[cid] = 1 + max(outs)
+                    continue
+                near = [ds[y] for y in nb_of.get(cid, []) if ds.get(y) is not None]
+                if near:
+                    ds[cid] = max(round(sum(near) / len(near)), 2)
     ds = {cid: (v if v is not None else dmax) for cid, v in ds.items()}
     prs_of: dict[str, int] = {}
     for num, P in r.prs.items():

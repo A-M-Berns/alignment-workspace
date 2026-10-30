@@ -2,7 +2,7 @@
 id: the-program
 kind: frame
 children: [normativity, legitimacy, deference-and-trust, decision-theory, stance-and-level, abstraction-arc, enabling-work]
-question: "Which formal account of how humans and AI systems learn from, correct and rely on each other guides AI safety engineering work?"
+question: "How can a powerful AI develop in line with humanity's interests without relying on control — and how can we get mathematical guarantees that it does?"
 owner: ["@anson", "@abram"]
 narrative: wiki/Architecture.md
 roots:

@@ -7,7 +7,7 @@ How to read a root's block: the *weakest proof-set leaf* is the least-vetted ele
 ## Plans
 ### the-program
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
-- a programme (sub-frame): Which formal account of how humans and AI systems learn from, correct and rely on each other guides AI safety engineering work?
+- a programme (sub-frame): How can a powerful AI develop in line with humanity's interests without relying on control — and how can we get mathematical guarantees that it does?
 - steps: normativity, legitimacy, deference-and-trust, decision-theory, stance-and-level, abstraction-arc, enabling-work; leading step: deference-and-trust; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
 - rests on AI numbers (no human judgment yet): kernel-no-laundering
 - safety margin: no established leaves
@@ -38,7 +38,7 @@ How to read a root's block: the *weakest proof-set leaf* is the least-vetted ele
 - informs 2 goals
 - best next unit: vet misreport-induces-action
 
-## Sub-frame the-program (in the top frame): Which formal account of how humans and AI systems learn from, correct and rely on each other guides AI safety engineering work?
+## Sub-frame the-program (in the top frame): How can a powerful AI develop in line with humanity's interests without relying on control — and how can we get mathematical guarantees that it does?
 Owner @anson, @abram
 
 ### Plans
@@ -7147,4 +7147,4 @@ The outside option and the undescribed failure, each a cases node over the outco
 | wirehead-iff-finite.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 1 |
 | wirehead-iff-finite.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 1 |
 | worlds-and-points-companion | leaf/question | 2 (both) | AI number | open | 0 | 8 |
-<!-- generated_hash: 3982f6718743479f283a38f2 -->
+<!-- generated_hash: 1552a8ab4193f657accd53b4 -->

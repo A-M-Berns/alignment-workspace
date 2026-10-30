@@ -200,7 +200,7 @@ Work an agent can do without a human; the map's ordering, not `PRIORITIES.md`'s.
 
 ## By goal
 The goals in the frame tree's order (the agenda's outline): kind and role, the best ranked unit and its rank, the count of units, and the Statement's first clause. A rank past the printed list is in `derived.json` (each unit's `rank`), and `--all` prints every ranked unit.
-- the-program (frame, owner @anson, @abram): Which formal account of how humans and AI systems learn from, correct and rely on each other guides AI safety engineering work?
+- the-program (frame, owner @anson, @abram): How can a powerful AI develop in line with humanity's interests without relying on control — and how can we get mathematical guarantees that it does?
   - normativity (frame, owner @anson; holds 36; owner has not confirmed): What does learning from reasons require of a reasoner: which statics a normative seed forces, how a constraint acquires operative force in a market, and what the Normative Inductor, from seed through reasons, compile, enforcement and revision, establishes end to end?
     - seed-theory (frame, owner @anson; holds 16; owner has not confirmed): What does a normative seed force on the prices of a settled fragment, how does that change under settlement, defeat and rebuttal, and do reasoners starting from different seeds end up anywhere together?
     - operative-force (frame, owner @anson; holds 27; owner has not confirmed): How does a constraint acquire operative force in a logical inductor's market without destroying the property that nobody can pump the reasoner, and what does that force cost?
@@ -699,4 +699,4 @@ In order: the owners' priority words, gestalts that set a goal's promise, estima
 - gestalt agency-correspondence-refuted — informs 1 goal; the derived number multiplies 3 unread guesses; your holistic number for agency-correspondence-refuted (about two minutes) sets its promise — under agency-correspondence-refuted
 - gestalt ro-generalized-kakutani-refuted — informs 1 goal; the derived number multiplies 3 unread guesses; your holistic number for ro-generalized-kakutani-refuted (about two minutes) sets its promise — under ro-generalized-kakutani-refuted
 - … 240 more unranked units in `derived.json` (`--all` prints them)
-<!-- generated_hash: 8a4895a6a1be82511082a144 -->
+<!-- generated_hash: 9d1a626d3fbe70a414469c91 -->

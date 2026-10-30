@@ -1,7 +1,9 @@
 # Alignment Workspace
 
-How can a powerful reasoner improve without treating every correction as one
-more signal to optimize around? And how can a person use a more capable future
+How can a powerful AI develop in line with humanity's interests without
+relying on control — and how can we get mathematical guarantees that it does?
+Concretely: how can a reasoner improve without treating every correction as one
+more signal to optimize around, and how can a person use a more capable future
 process without giving that process the power to decide what counts as a valid
 correction?
 
