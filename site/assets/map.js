@@ -269,7 +269,7 @@
     card.innerHTML = '<p class="card-head">' + esc(m.t || id) + ' <span class="kind">' + esc(kindLabel(m.k)) + "</span></p>"
       + (m.s ? "<p class=\"card-blurb\">" + esc(m.s) + "</p>" : "")
       + '<p class="card-meta muted">' + (m.prs ? m.prs + " merged PR(s) · " : "") + (m.w ? "wiki page" : "registry entry") + "</p>"
-      + '<p class="card-actions"><button data-act="more">Read more</button><a href="' + base(id) + '">Open page →</a></p>';
+      + '<p class="card-actions"><button data-act="more">Read more</button></p>';
     card.querySelector("[data-act=more]").addEventListener("click", function () { hideCard(); openFull(id); });
     placeCard(ev);
   }

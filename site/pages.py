@@ -472,8 +472,10 @@ def concept_side(site: Site, cid: str) -> str:
     for gname in ("Core theory", "Core formalism", "Sources"):
         if groups[gname]:
             out.append(f"<section class=\"side-group\"><h2>{gname}</h2><ul class=\"listing\">" + "".join(groups[gname]) + "</ul></section>")
+    refs = set(e.get("refs") or [])
     related = [(num, P) for num, P in sorted(r.prs.items(), key=lambda kv: (str(kv[1].get("merged") or ""), int(kv[0])), reverse=True)
-               if e.get("wiki") and e["wiki"] in ((P.get("topics") or {}).get("wiki") or [])]
+               if (e.get("wiki") and e["wiki"] in ((P.get("topics") or {}).get("wiki") or []))
+               or (refs & set((P.get("topics") or {}).get("frames") or []))]
     if related:
         out.append("<section class=\"side-group\"><h2>Merged work</h2>" + "".join(pr_digest_details(site, num) for num, _ in related) + "</section>")
     return "\n".join(out)

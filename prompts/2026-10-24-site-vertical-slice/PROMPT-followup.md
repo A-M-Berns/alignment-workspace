@@ -122,3 +122,7 @@ Further directives of the same conversation, verbatim:
 > rationality, reasons, look through for other organizing concepts at this level
 
 > this doesn't seem like the best layout still. ask gpt for help
+
+> a few things: read more and open page should just be one read more. The read more page
+> should be x-out able. and it should also list relevant PRs in an expandable-summary
+> options plus click onto its page for full details of content
