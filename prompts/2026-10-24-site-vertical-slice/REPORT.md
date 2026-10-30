@@ -442,3 +442,18 @@ crossing-minimization over them (a full Sugiyama router — real work for margin
 closing point stands and is not solvable by layout: a nine-edge dependency chain cannot
 be fully readable across 1200 px, so the initial fit is an overview and reading happens
 zoomed.
+
+## Fourteenth follow-up of 2026-10-30 — search, aspect, the bold pass
+
+The header box is the map's search: typing counts matches over titles and blurbs, enter
+jumps the canvas to one (360 ms tween, the capsule outlined in ink for a moment),
+enter again cycles, shift-enter cycles back, a chip shows *n / m*. The tall aspect came
+from every band stacking all its members in one column; now only same-column capsules
+stack and columns share a band's vertical extent, so a band is as tall as its tallest
+column. Column pitch has a 216 px floor so a revealed summary never crosses a
+neighbouring capsule, and same-column gaps are 30 px. The bold pass: capsules are solid
+jewel fills at one value (#2fa57a, #5a8bdc, #c99b3f, #9a84dd; goals bone) with
+near-black 640-weight titles, 10 px corners, no stroke at rest and an ink stroke on
+hover; the goal-ward wash, the x-axis caption and every gradient are gone; edges are
+solid muted gray lifting to ink. Band labels stay — they are the y-axis that means
+something.

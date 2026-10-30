@@ -232,3 +232,20 @@ svg#map .net-edge.undirected:hover .wire, svg#map .net-edge.undirected.lit .wire
 #map-panel .frag { max-width: none; }
 svg#map .axis .bandlabel { fill: #504f4b; letter-spacing: 0.12em; text-transform: uppercase; }
 svg#map .axis .bandline { stroke: #232327; stroke-width: 2px; }
+/* the bold pass: solid jewel capsules at one value, dark bold type, strong shapes, nothing glowing */
+:root { --emerald: #2fa57a; --sapphire: #5a8bdc; --amber: #c99b3f; --amethyst: #9a84dd; --teal: #46b0a0; --garnet: #c06a77; --slate: #6e6e76; }
+svg#map g.cap .pill { fill: currentColor; stroke: none; transition: none; }
+svg#map g.cap:hover .pill { fill: currentColor; stroke: #ececec; stroke-width: 1.5px; }
+svg#map g.cap .cap-title { fill: #101013; font-weight: 640; }
+svg#map g.cap.tone-bone .pill { fill: var(--accent); }
+svg#map g.cap.program .pill { fill: var(--accent); stroke: none; }
+svg#map g.cap.program .cap-title { fill: #101013; font-weight: 720; }
+svg#map g.cap.hit-mark .pill { stroke: #ececec; stroke-width: 2.5px; }
+svg#map .net-edge .wire { stroke: #8e8e88; opacity: 0.38; }
+svg#map .net-edge.lit .wire { stroke: #ececec; opacity: 0.8; }
+svg#map .net-edge:hover .wire { stroke: #ececec; opacity: 1; }
+svg#map .arrowhead { fill: #8e8e88; opacity: 0.8; }
+svg#map .goalwash { display: none; }
+svg#map g.scene.focus g.cap:not(.nb) { opacity: 0.16; }
+.search-chip { font-size: 0.72rem; color: var(--muted); margin-left: 0.5em; text-transform: uppercase; letter-spacing: 0.05em; }
+svg#map .axis .bandlabel { fill: #6a6964; font-weight: 600; }

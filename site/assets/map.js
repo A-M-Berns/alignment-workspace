@@ -29,15 +29,6 @@
   mkp.setAttribute("class", "arrowhead");
   mk.appendChild(mkp);
   defs.appendChild(mk);
-  var gl = document.createElementNS(NS, "radialGradient");
-  gl.setAttribute("id", "goalglow");
-  gl.setAttribute("cx", "0.75"); gl.setAttribute("cy", "0.5"); gl.setAttribute("r", "0.6");
-  var s1 = document.createElementNS(NS, "stop");
-  s1.setAttribute("offset", "0"); s1.setAttribute("stop-color", "#c8c4ba"); s1.setAttribute("stop-opacity", "0.045");
-  var s2 = document.createElementNS(NS, "stop");
-  s2.setAttribute("offset", "1"); s2.setAttribute("stop-color", "#c8c4ba"); s2.setAttribute("stop-opacity", "0");
-  gl.appendChild(s1); gl.appendChild(s2);
-  defs.appendChild(gl);
 
   function el(tag, attrs, parent) {
     var e = document.createElementNS(NS, tag);
@@ -127,35 +118,55 @@
     for (i = 0; i <= dmax; i++) {
       var cwid = colW[i] || 0;
       colX[i] = xcur + cwid / 2;
-      xcur += cwid + (cwid ? 64 : 0);
+      xcur += cwid ? Math.max(cwid + 70, 216) : 0;
     }
     var w = xcur + 150;
-    // rows: the bands, staircase order, variable height, median-ordered within
+    // rows: the bands in staircase order. Within a band, only capsules in the same column stack;
+    // different columns share the band's vertical extent, so the map stays wide, not tall.
     var bandOrder = GOALS.concat(["context"]);
     var rows = {};
     items.forEach(function (id) { if (id !== "the-program") (rows[band[id]] = rows[band[id]] || []).push(id); });
-    var y = {}, gap = 24, bandGap = 72, ycur = 90, bandSpan = {};
+    var y = {}, gap = 30, bandGap = 84, ycur = 90, bandSpan = {};
+    function stackBand(b) {
+      var byCol = {};
+      (rows[b] || []).forEach(function (id) { (byCol[colOf[id]] = byCol[colOf[id]] || []).push(id); });
+      var bandH = 0;
+      Object.keys(byCol).forEach(function (c) {
+        var hh = byCol[c].reduce(function (s, id) { return s + geo[id].h; }, 0) + gap * (byCol[c].length - 1);
+        bandH = Math.max(bandH, hh);
+      });
+      return { byCol: byCol, bandH: bandH };
+    }
     bandOrder.forEach(function (b) {
-      var col = rows[b] || [];
-      if (!col.length) return;
-      var y0 = ycur;
-      col.forEach(function (id) { y[id] = ycur + geo[id].h / 2; ycur += geo[id].h + gap; });
-      bandSpan[b] = [y0, ycur - gap];
-      ycur += bandGap;
+      if (!(rows[b] || []).length) return;
+      var st = stackBand(b);
+      bandSpan[b] = [ycur, ycur + st.bandH];
+      Object.keys(st.byCol).forEach(function (c) {
+        var col = st.byCol[c];
+        var hh = col.reduce(function (s, id) { return s + geo[id].h; }, 0) + gap * (col.length - 1);
+        var yc = ycur + (st.bandH - hh) / 2;
+        col.forEach(function (id) { y[id] = yc + geo[id].h / 2; yc += geo[id].h + gap; });
+      });
+      ycur += st.bandH + bandGap;
     });
-    var h = Math.max(ycur + 60, 700);
-    // median-order sweeps within each band, then restack
+    var h = Math.max(ycur + 40, 640);
+    // median sweeps: reorder each band-column stack toward its neighbours, keeping the stack centred
     for (var sweep = 0; sweep < 6; sweep++) {
       bandOrder.forEach(function (b) {
-        var col = rows[b] || [];
-        if (col.length < 2) return;
-        col.sort(function (a, bb) {
-          var ma = (nbAll[a] || []).reduce(function (s, n) { return s + (y[n] || 0); }, 0) / Math.max((nbAll[a] || []).length, 1);
-          var mb = (nbAll[bb] || []).reduce(function (s, n) { return s + (y[n] || 0); }, 0) / Math.max((nbAll[bb] || []).length, 1);
-          return (ma || 0) - (mb || 0) || colOf[a] - colOf[bb] || a.localeCompare(bb);
+        if (!bandSpan[b]) return;
+        var st = stackBand(b);
+        Object.keys(st.byCol).forEach(function (c) {
+          var col = st.byCol[c];
+          if (col.length < 2) return;
+          col.sort(function (a, bb) {
+            var ma = (nbAll[a] || []).reduce(function (s, n) { return s + (y[n] || 0); }, 0) / Math.max((nbAll[a] || []).length, 1);
+            var mb = (nbAll[bb] || []).reduce(function (s, n) { return s + (y[n] || 0); }, 0) / Math.max((nbAll[bb] || []).length, 1);
+            return (ma || 0) - (mb || 0) || a.localeCompare(bb);
+          });
+          var hh = col.reduce(function (s, id) { return s + geo[id].h; }, 0) + gap * (col.length - 1);
+          var yc = bandSpan[b][0] + (bandSpan[b][1] - bandSpan[b][0] - hh) / 2;
+          col.forEach(function (id) { y[id] = yc + geo[id].h / 2; yc += geo[id].h + gap; });
         });
-        var yc = bandSpan[b][0];
-        col.forEach(function (id) { y[id] = yc + geo[id].h / 2; yc += geo[id].h + gap; });
       });
     }
     var pos = {};
@@ -167,7 +178,7 @@
     return { pos: pos, geo: geo, w: w, h: h, bands: bands };
   }
 
-  var at = {}, geo = {};
+  var at = {}, geo = {}, capEl = {};
   function render() {
     cam.textContent = "";
     hideCard();
@@ -177,13 +188,7 @@
     var items = DATA.items, links = DATA.links;
     var lay = layout(items, links);
     at = lay.pos; geo = lay.geo;
-    el("rect", { x: lay.w * 0.62, y: -lay.h, width: lay.w, height: 3 * lay.h, "class": "goalwash" }, g);
     var ax = el("g", { "class": "axis" }, g);
-    [["foundations and prior art", 0.13], ["constructions", 0.5], ["goals", 0.9]].forEach(function (s) {
-      el("text", { x: lay.w * s[1], y: lay.h - 18, "text-anchor": "middle", "font-size": 10 }, ax).textContent = s[0];
-    });
-    var axl = el("line", { x1: lay.w * 0.2, y1: lay.h - 32, x2: lay.w * 0.86, y2: lay.h - 32, "class": "axline" }, ax);
-    axl.setAttribute("marker-end", "url(#arrow)");
     (lay.bands || []).forEach(function (bd) {
       el("line", { x1: 24, y1: bd.y0 - 10, x2: 24, y2: bd.y1 + 10, "class": "bandline" }, ax);
       var bt = el("text", { x: 34, y: bd.y0 + 2, "font-size": 10, "class": "bandlabel" }, ax);
@@ -195,6 +200,7 @@
     tf = { k: home.k, x: home.x, y: home.y };
     applyTf();
     var incident = {}, neighbors = {}, dotEl = {};
+    capEl = {};
     var eg = el("g", { "class": "net-edges" }, g);
     links.forEach(function (L) {
       var a = at[L[0]], c = at[L[1]];
@@ -219,7 +225,8 @@
       var m = DATA.concepts[id] || {}, p = at[id], ge = geo[id];
       var cg = el("g", { "class": "cap tone-" + (KIND_TONE[m.k] || "amethyst") + (id === "the-program" ? " program" : "") }, g);
       dotEl[id] = cg;
-      el("rect", { x: p.x - ge.w / 2, y: p.y - ge.h / 2, width: ge.w, height: ge.h, rx: ge.h / 2, "class": "pill" }, cg);
+      capEl[id] = cg;
+      el("rect", { x: p.x - ge.w / 2, y: p.y - ge.h / 2, width: ge.w, height: ge.h, rx: 10, "class": "pill" }, cg);
       var t = el("text", { x: p.x, y: p.y + (ge.lines.length > 1 ? -2.5 : 4), "text-anchor": "middle", "font-size": id === "the-program" ? 13 : 11.5, "class": "cap-title" }, cg);
       ge.lines.forEach(function (ln, li) {
         el("tspan", { x: p.x, dy: li ? 13.5 : 0 }, t).textContent = ln;
@@ -351,6 +358,64 @@
     svg.classList.toggle("no-edges", !document.getElementById("map-edges").checked);
   });
   window.addEventListener("resize", render);
+
+  // map search: the header box jumps the canvas to matches; enter cycles when there are several
+  (function () {
+    var input = document.querySelector("header.top input[type=search]");
+    var form = input && input.closest("form");
+    if (!input) return;
+    input.setAttribute("placeholder", "search the map");
+    var chip = document.createElement("span");
+    chip.className = "search-chip";
+    input.insertAdjacentElement("afterend", chip);
+    var matches = [], idx = -1, lastQ = "";
+    function find(q) {
+      q = q.trim().toLowerCase();
+      matches = [];
+      if (q.length < 2) return;
+      DATA.items.forEach(function (id) {
+        var m = DATA.concepts[id] || {};
+        if ((m.t || id).toLowerCase().indexOf(q) >= 0 || (m.s || "").toLowerCase().indexOf(q) >= 0) matches.push(id);
+      });
+    }
+    var tween = null;
+    function jumpTo(id) {
+      var p = at[id];
+      if (!p) return;
+      var b = box(), kT = Math.max(tf.k, 1.5), from = { k: tf.k, x: tf.x, y: tf.y };
+      var to = { k: kT, x: b.w / 2 - p.x * kT, y: b.h / 2 - p.y * kT };
+      var t0 = null;
+      if (tween) cancelAnimationFrame(tween);
+      (function step(ts) {
+        if (!t0) t0 = ts;
+        var u = Math.min((ts - t0) / 360, 1), e2 = u < 0.5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2;
+        tf = { k: from.k + (to.k - from.k) * e2, x: from.x + (to.x - from.x) * e2, y: from.y + (to.y - from.y) * e2 };
+        applyTf();
+        if (u < 1) tween = requestAnimationFrame(step);
+      })(performance.now());
+      svg.querySelectorAll("g.cap.hit-mark").forEach(function (e2) { e2.classList.remove("hit-mark"); });
+      var cg = capEl[id];
+      if (cg) {
+        cg.classList.add("hit-mark");
+        setTimeout(function () { cg.classList.remove("hit-mark"); }, 1600);
+      }
+    }
+    function go(step) {
+      if (input.value !== lastQ) { lastQ = input.value; find(lastQ); idx = -1; }
+      if (!matches.length) { chip.textContent = input.value.trim().length >= 2 ? "no match" : ""; return; }
+      idx = (idx + step + matches.length) % matches.length;
+      chip.textContent = (idx + 1) + " / " + matches.length;
+      jumpTo(matches[idx]);
+    }
+    input.addEventListener("input", function () {
+      lastQ = input.value;
+      find(lastQ);
+      idx = -1;
+      chip.textContent = matches.length ? matches.length + " match" + (matches.length === 1 ? "" : "es") : (lastQ.trim().length >= 2 ? "no match" : "");
+    });
+    if (form) form.addEventListener("submit", function (ev) { ev.preventDefault(); go(1); });
+    input.addEventListener("keydown", function (ev) { if (ev.key === "Enter") { ev.preventDefault(); go(ev.shiftKey ? -1 : 1); } });
+  })();
 
   fetch("/assets/map.json").then(function (r) { return r.json(); }).then(function (d) {
     DATA = d;

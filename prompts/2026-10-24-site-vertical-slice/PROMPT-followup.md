@@ -126,3 +126,12 @@ Further directives of the same conversation, verbatim:
 > a few things: read more and open page should just be one read more. The read more page
 > should be x-out able. and it should also list relevant PRs in an expandable-summary
 > options plus click onto its page for full details of content
+
+> there should be a search bar that takes to to the part of the map that matches your
+> query and you can jump around if multiple matches. also right now it's very tall in the
+> y-axis and relatively short in x-axis, that should probably be fixed. also lean into
+> the bold style of the amberns site type design. Stay away from classic AI site design
+> tics like glow. bold colors, rich darks, strong shapes for the nodes. no labeled
+> x-axis. different node colors boldly solid color jewel tone similar bold gray level
+> with different hues by category. make sure nodes aren't ever so close to have
+> overlapping text
