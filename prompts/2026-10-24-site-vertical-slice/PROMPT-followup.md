@@ -168,3 +168,9 @@ Further directives of the same conversation, verbatim:
 > I think "the program" blurb should be rewritten. the true overall focus is like how can
 > a powerful AI develop in line with humanity's interests without relying on control,
 > and how can we get mathematical guarantees about that happening
+
+> also nodes are clustering to the point of overlap again fix that and ensure it doesn't
+> keep happening, personal space for each node. all the terminal goals feeding the
+> program goal should be roughly same x-coord. also there could or should be maybe more
+> hierarchy in terms of the goal/thread category, things can be non-terminal goals in
+> that sense

@@ -126,7 +126,7 @@
     var bandOrder = GOALS.concat(["context"]);
     var rows = {};
     items.forEach(function (id) { if (id !== "the-program") (rows[band[id]] = rows[band[id]] || []).push(id); });
-    var y = {}, gap = 30, bandGap = 84, ycur = 90, bandSpan = {};
+    var y = {}, gap = 56, bandGap = 96, ycur = 90, bandSpan = {};
     function stackBand(b) {
       var byCol = {};
       (rows[b] || []).forEach(function (id) { (byCol[colOf[id]] = byCol[colOf[id]] || []).push(id); });
@@ -178,9 +178,29 @@
     });
     var pos = {};
     items.forEach(function (id) {
-      var sx = (((stackIndex[id] || 0) % 2) * 2 - 1) * Math.min((colW[colOf[id]] || 120) * 0.2 + 14, 46);
-      pos[id] = { x: colX[colOf[id]] + (id === "the-program" ? 0 : sx), y: y[id] };
+      var ci = colOf[id];
+      var near = 1e9;
+      if (colX[ci - 1] !== undefined) near = Math.min(near, colX[ci] - colX[ci - 1]);
+      if (colX[ci + 1] !== undefined) near = Math.min(near, colX[ci + 1] - colX[ci]);
+      var amp = Math.max(0, Math.min(44, (near - (colW[ci] || 120)) / 2 - 16));
+      var sx = (((stackIndex[id] || 0) % 2) * 2 - 1) * amp;
+      pos[id] = { x: colX[ci] + (id === "the-program" ? 0 : sx), y: y[id] };
     });
+    // personal space, guaranteed: push apart any residual overlapping capsules
+    for (var iter = 0; iter < 40; iter++) {
+      var moved = false;
+      for (var ii = 0; ii < items.length; ii++) for (var jj = ii + 1; jj < items.length; jj++) {
+        var A = pos[items[ii]], Bq = pos[items[jj]], ga = geo[items[ii]], gb = geo[items[jj]];
+        var ox = (ga.w + gb.w) / 2 + 18 - Math.abs(A.x - Bq.x);
+        var oy = (ga.h + gb.h) / 2 + 22 - Math.abs(A.y - Bq.y);
+        if (ox > 0 && oy > 0) {
+          var push = oy / 2 + 1;
+          if (A.y <= Bq.y) { A.y -= push; Bq.y += push; } else { A.y += push; Bq.y -= push; }
+          moved = true;
+        }
+      }
+      if (!moved) break;
+    }
     if (pos["the-program"]) pos["the-program"].y = h / 2;
     var bands = bandOrder.filter(function (b) { return rows[b] && rows[b].length && b !== "context"; })
       .map(function (b) { return { label: ((meta[b] || {}).t || b), y0: bandSpan[b][0], y1: bandSpan[b][1] }; });
@@ -199,6 +219,7 @@
     var items = DATA.items, links = DATA.links;
     var lay = layout(items, links);
     at = lay.pos; geo = lay.geo;
+    svg.__layout = { at: at, geo: geo };
     var ax = el("g", { "class": "axis" }, g);
 
     home = { k: Math.min(b.w / lay.w, 1), x: 0, y: 0 };

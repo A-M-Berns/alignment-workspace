@@ -551,30 +551,6 @@
       "rel": [
         "part"
       ],
-      "why": "one of the plan's lines",
-      "from": "corrigibility-line",
-      "to": "the-program"
-    },
-    {
-      "rel": [
-        "part"
-      ],
-      "why": "one of the plan's lines",
-      "from": "openness-line",
-      "to": "the-program"
-    },
-    {
-      "rel": [
-        "part"
-      ],
-      "why": "the thread that makes the learning inductive",
-      "from": "normative-induction",
-      "to": "the-program"
-    },
-    {
-      "rel": [
-        "part"
-      ],
       "why": "legitimacy is the bridge out of normativity: public reasons with standing",
       "from": "normativity-line",
       "to": "legitimacy-line"
@@ -586,14 +562,6 @@
       "why": "the bridge's far side: deference to a process one can still correct",
       "from": "legitimacy-line",
       "to": "deference-line"
-    },
-    {
-      "rel": [
-        "uses"
-      ],
-      "why": "the openness certificate equivalence sits on the legitimacy spine",
-      "from": "legitimacy-line",
-      "to": "openness-line"
     },
     {
       "rel": [
@@ -1442,6 +1410,38 @@
         "part"
       ],
       "why": "the two ways a warrant is attacked"
+    },
+    {
+      "from": "corrigibility-line",
+      "to": "deference-line",
+      "rel": [
+        "part"
+      ],
+      "why": "the corrigibility landscape hangs in the deference line"
+    },
+    {
+      "from": "corrigibility-line",
+      "to": "legitimacy-line",
+      "rel": [
+        "part"
+      ],
+      "why": "and in the legitimacy line: a correction must carry standing, not just land"
+    },
+    {
+      "from": "openness-line",
+      "to": "legitimacy-line",
+      "rel": [
+        "part"
+      ],
+      "why": "the openness programme sits in the legitimacy line; its certificate equivalence is on that spine"
+    },
+    {
+      "from": "normative-induction",
+      "to": "normativity-line",
+      "rel": [
+        "part"
+      ],
+      "why": "the normativity line's quantitative programme"
     }
   ]
 }

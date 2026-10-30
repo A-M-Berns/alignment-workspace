@@ -503,3 +503,16 @@ register (no "realization material", no "canonical; conditional theorems"). Comm
 groundwork: concept cards and full views carry a Comment action — a prefilled issue
 keyed `[concept] <id>` — and the roadmap in `graph/MAP-AS-CANONICAL.md` §6 records the
 planned system: comments in a curated `state/comments.json`, rendered per concept.
+
+## Eighteenth follow-up of 2026-10-30 — personal space, the terminal column, non-terminal goals
+
+Overlap is now prevented twice over: the x-stagger is capped to stay inside its column's
+channel and vertical slots widened, and a resolution pass after layout pushes apart any
+residual pair until every capsule has an 18×22 px margin — with the node harness
+asserting zero overlaps, so a regression fails the check instead of shipping. The six
+terminal goals — the lines that feed the program directly (normativity, legitimacy,
+deference, decision theory, stance and level, naturalized agency) — are pinned to one
+column beside it. The goal tier now has hierarchy matching the map's own frames:
+corrigibility hangs in the deference and legitimacy lines, openness and authorship in
+legitimacy, normative induction in normativity — non-terminal goals sitting left of the
+terminal column, their program edges replaced by edges to their parent lines.

@@ -666,6 +666,10 @@ def map_data(site: Site) -> dict:
                 if near:
                     ds[cid] = max(round(sum(near) / len(near)), 2)
     ds = {cid: (v if v is not None else dmax) for cid, v in ds.items()}
+    # terminal goals — the lines that feed the program directly — share one column
+    for cid, e in r.concepts.items():
+        if e.get("kind") == "goal" and "the-program" in succ.get(cid, []):
+            ds[cid] = 1
     prs_of: dict[str, int] = {}
     for num, P in r.prs.items():
         for w in (P.get("topics") or {}).get("wiki") or []:
