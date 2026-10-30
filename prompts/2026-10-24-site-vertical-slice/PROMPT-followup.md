@@ -47,3 +47,13 @@ Further directives of the same conversation, verbatim:
 > its like a wiki structure, and for each one you can click in and see related work in
 > PRs, and it's again potentially overlapping and just also demonstrating visually the
 > interrelated structure of wiki concepts at different levels or with other relationships
+
+> this visualization is still ugly. we don't need to see that a node is composite at all
+> before clicking into it. It should be a relatively small node, it should also generally
+> be like light on dark or dark on light with jewel tone colors from the palette
+> incorporated. each layer should be like pannable around with a like somewhat typical
+> "graph theory" type network graph and maybe like edges can be hovered over with summary
+> of the relationship/overlap and you can like click into individual nodes for a
+> different view with links to elsewhere on the wiki map. I'm starting to think that
+> there should basically one wiki level which is a big pannable network, and each node
+> clicks into a different popup type view

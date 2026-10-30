@@ -266,3 +266,23 @@ agent's reading, unreviewed until the maintainer reads one; the canvas remains u
 by a browser harness; the top level of the goals view is dominated by `the-program`
 beside three loose claims and the unplaced bin, which is the map's real shape but may
 not be the right first screen.
+
+## Third follow-up of 2026-10-30 — every level a network graph; the wiki network is the front
+
+- Each level renders as a pannable, zoomable force-laid network: small circular nodes
+  (radius by degree, 6–13 px), jewel tones on the dark paper (emerald `lean-proved`,
+  sapphire `enumeration-verified`/`witness-checked`, amber `test-supported`/
+  `contributor-checked`, amethyst concepts, teal pull requests, garnet items, bone
+  frames), labels only on levels of ≤ 90 nodes, nothing marking a node composite.
+- Edges carry their meaning on hover: a tooltip summarizes the relationship — for the
+  concepts network, whether the pages link, the shared references by name, the shared
+  frames; for containment levels, the aggregated part/given/held counts with examples.
+- The **concepts** view is the default and is one level: the wiki as a single network,
+  every node opening a centred popup (the rendered page, its tagged merged work, its
+  links onward). Containment views keep click-to-descend with the animated zoom;
+  free pan and zoom work within any level, and wheeling out past minimum zoom ascends.
+- The side panel became a centred modal popup; esc or a click outside closes it.
+
+Not shown: the force layout is deterministic but untuned — on the densest class level
+(166 nodes) it runs fewer iterations and labels are hover-only; the edge-summary
+phrasing and the jewel assignment are first choices for the maintainer's eye.

@@ -17,18 +17,21 @@ refuses one; `tests/site_build.py` runs the build as a gate under `tests/run.py`
 ## The map is the front page (ruling S5, 2026-10-30)
 
 `/` is a canvas in discrete levels: `/assets/map.js` (vanilla JavaScript, SVG) renders one
-level of `/assets/map.json` at a time — the focus's contents as rounded regions, each with
-a faint preview grid of what it contains — entered by click with an animated zoom and left
-by esc, ctrl-click, wheel-out or the breadcrumb. Cross-edges (`part`, `given`, `held`) are
-aggregated to the visible regions. The views over the same objects: **goals** (the frame
-tree continued into the part edges), **concepts** (the wiki pages as a constellation —
-circles linked by page links and shared references; entering one shows its referenced
-nodes and the merged work tagged to it), **rounds** (nodes under the round that produced
-them), **class** (formal results by epistemic class), and — when `state/prs.json` exists —
-**merged work** (topics containing the digested pull requests). Clicking a leaf loads its
-fragment into a panel: `/n/<id>/frag.html`, `/wiki/<Page>/frag.html`, or
-`/prs/<n>/frag.html`; `/#n=<id>` (ids with `/` as `--`) deep-links a map node. Without
-JavaScript the front page lists the lines as links, and every object remains a full page.
+level of `/assets/map.json` at a time as a pannable, zoomable network graph — small
+circular nodes, jewel-toned by what they are, force-laid, with edges a reader can hover
+for a summary of the relationship (which pages link, how many shared references, which
+connections run between two regions of the map). Nothing marks a node as composite;
+clicking it either opens its popup or, in the containment views, descends one level with
+an animated zoom, backed out by esc, ctrl-click, wheel-out or the breadcrumb. The default
+view is **concepts**: the wiki as one network — pages linked by page links, shared
+references and shared frames — where every click is a popup (the rendered page with the
+merged work tagged to it, and its links into the rest of the map). The containment views
+over the same objects: **goals** (the frame tree continued into the part edges),
+**rounds**, **class**, and — when `state/prs.json` has entries — **merged work** (topics
+containing the digested pull requests). Popups load fragments: `/n/<id>/frag.html`,
+`/wiki/<Page>/frag.html`, or `/prs/<n>/frag.html`; `/#n=<id>` (ids with `/` as `--`)
+deep-links a map node. Without JavaScript the front page lists the lines as links, and
+every object remains a full page.
 
 `state/prs.json` holds the digests of merged pull requests — number, title, merged date,
 rounds, topic tags (wiki pages and frames), a one-or-two-paragraph summary of key points,

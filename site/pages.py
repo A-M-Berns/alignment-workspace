@@ -531,10 +531,11 @@ def front_page(site: Site, lede_html: str, feed_rows: list[str]) -> str:
             '<div class="map-ui"><div class="map-bar">'
             '<span class="views" id="map-views">view </span>'
             '<label class="edges-toggle"><input type="checkbox" id="map-edges" checked> edges</label>'
-            '<span class="map-hint muted">click to enter · esc or ⌃-click to back out · click a leaf to read it</span></div>'
+            '<span class="map-hint muted">drag to pan · scroll to zoom · click a node to open it · esc to back out</span></div>'
             '<nav class="map-crumbs" id="map-crumbs"></nav>'
             '<div class="map-stage"><svg id="map" role="application" aria-label="the argument map"></svg>'
-            '<aside id="map-panel"><button id="map-panel-close" aria-label="close">×</button><div id="map-panel-body"></div></aside></div></div>',
+            '<div id="map-tip" hidden></div>'
+            '<div id="map-modal"><div id="map-panel"><button id="map-panel-close" aria-label="close">×</button><div id="map-panel-body"></div></div></div></div></div>',
             noscript,
             "<details class=\"front-feed\"><summary>Recent in the feed</summary><ul class=\"feed\">" + "".join(feed_rows[:12]) + "</ul><p><a href=\"/feed/\">The whole feed</a>.</p></details>"]
     return layout(site, "The map of the program", "\n".join(body)).replace("</head>", '<script defer src="/assets/map.js"></script></head>')
@@ -642,13 +643,12 @@ def map_data(site: Site) -> dict:
     names = sorted(concepts)
     for i, a in enumerate(names):
         for b in names[i + 1:]:
-            w = len(set(concepts[a]["refs"]) & set(concepts[b]["refs"]))
-            if b in concepts[a]["links"] or a in concepts[b]["links"]:
-                w += 3
-            if set(concepts[a]["frames"]) & set(concepts[b]["frames"]):
-                w += 1
+            shared = sorted(set(concepts[a]["refs"]) & set(concepts[b]["refs"]))
+            linked = b in concepts[a]["links"] or a in concepts[b]["links"]
+            shared_frames = sorted(set(concepts[a]["frames"]) & set(concepts[b]["frames"]))
+            w = len(shared) + (3 if linked else 0) + (1 if shared_frames else 0)
             if w:
-                clinks.append([a, b, w])
+                clinks.append([a, b, w, 1 if linked else 0, shared[:6], len(shared), shared_frames[:3]])
     prs_by_topic: dict[str, list[str]] = {}
     pr_meta = {}
     for num, P in sorted(r.prs.items(), key=lambda kv: int(kv[0]), reverse=True):

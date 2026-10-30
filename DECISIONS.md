@@ -6831,22 +6831,25 @@ deploy alone. The ruling text is the maintainer's and is not reworded.
 **Maintainer ruling, taken in conversation on 2026-10-30; executed by the
 site-vertical-slice round's follow-up on its open pull request.**
 
-**S5. The site's one UI is the map, in discrete levels.** The front page is a canvas of
-nested regions laid out from `/assets/map.json` by vanilla JavaScript
-(`site/assets/map.js`), one level rendered at a time: the focus's contents as regions,
-each with a faint preview grid of what it holds, entered by click with an animated zoom
-and left by esc, ctrl-click, wheel-out or the breadcrumb — the top question into the
-lines, a line into its frame's goals and holds, a claim into its conjuncts. A reader is
-not shown text until they click in for it. The views over the same objects, switched on
-the canvas: the frame tree (**goals**, the default); the wiki pages as a **concepts**
-constellation — circles linked by page links, shared references and shared frames, each
-opening into its referenced nodes and the merged work tagged to it; the originating
+**S5. The site's one UI is the map, in discrete levels, each level a network graph.**
+The front page is a canvas laid out from `/assets/map.json` by vanilla JavaScript
+(`site/assets/map.js`), one level rendered at a time as a pannable, zoomable network:
+small circular nodes, force-laid, jewel-toned by what they are, nothing marking a node
+composite before it is entered; edges hoverable for a summary of the relationship they
+aggregate (which pages link, the shared references, the part/given connections between
+two regions of the map). In the containment views a click on a node with contents
+descends one level with an animated zoom, backed out by esc, ctrl-click, wheel-out or
+the breadcrumb — the top question into the lines, a line into its frame's goals and
+holds, a claim into its conjuncts. A reader is not shown text until they click in for
+it. The default level is the wiki as one network: the **concepts** view, pages linked by
+page links, shared references and shared frames, where every click opens a popup — the
+rendered page with the merged work tagged to it and its links into the rest of the map.
+The containment views over the same objects: the frame tree (**goals**); the originating
 **rounds**; the epistemic **class**es; and **merged work** — topics containing the
-digested pull requests of `state/prs.json`, where that file exists. Cross-edges (`part`,
-`given`, `held`) are aggregated to the visible regions. A clicked leaf's detail — built
-once as `/n/<id>/frag.html`, `/wiki/<Page>/frag.html` or `/prs/<n>/frag.html` — loads
-into a panel beside the canvas, and `/#n=<id>` deep-links a map node; every per-id URL
-of S4 stands, each object remaining a full page, so the contract is unchanged. Walks are
+digested pull requests of `state/prs.json`. A clicked node's detail — built once as
+`/n/<id>/frag.html`, `/wiki/<Page>/frag.html` or `/prs/<n>/frag.html` — opens as a
+centred popup over the canvas, and `/#n=<id>` deep-links a map node; every per-id URL of
+S4 stands, each object remaining a full page, so the contract is unchanged. Walks are
 not part of the site; the one shipped walk leaves with this ruling, and its open review
 entry leaves the queue. Intake is verbs on every node page and fragment — comment,
 challenge, estimate, want — each a prefilled GitHub issue carrying the node id and a
@@ -6865,7 +6868,6 @@ self-hosted), dark only.
 *Rejected alternatives:* a page-per-object site with hand-written walks as the guided
 layer (the maintainer judged the walk unnecessary once the map itself is the guide); a
 continuously-zooming canvas (the maintainer ruled levels discrete, entered and left as
-levels); a force-directed layout for the containment views (containment reads the
-hierarchy better at this size; force layout is kept for the concepts constellation,
-where overlap is the content); a write path from the page (a backend is its own
-decision, not taken here).
+levels); nested-region treemap levels with previews of their contents (the maintainer
+ruled for plain network graphs, nothing marking a node composite); a write path from the
+page (a backend is its own decision, not taken here).
