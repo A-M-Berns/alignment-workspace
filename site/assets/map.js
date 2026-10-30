@@ -179,6 +179,7 @@
   }
 
   var at = {}, geo = {}, capEl = {};
+  var pinned = null, focusOn = null, focusOff = null;
   function render() {
     cam.textContent = "";
     hideCard();
@@ -221,6 +222,18 @@
       (neighbors[L[0]] = neighbors[L[0]] || []).push(L[1]);
       (neighbors[L[1]] = neighbors[L[1]] || []).push(L[0]);
     });
+    focusOn = function (id) {
+      g.classList.add("focus");
+      if (dotEl[id]) dotEl[id].classList.add("nb");
+      (incident[id] || []).forEach(function (e2) { e2.classList.add("lit"); });
+      (neighbors[id] || []).forEach(function (nid) { var ng = dotEl[nid]; if (ng) ng.classList.add("nb"); });
+    };
+    focusOff = function (id) {
+      g.classList.remove("focus");
+      if (dotEl[id]) dotEl[id].classList.remove("nb");
+      (incident[id] || []).forEach(function (e2) { e2.classList.remove("lit"); });
+      (neighbors[id] || []).forEach(function (nid) { var ng = dotEl[nid]; if (ng) ng.classList.remove("nb"); });
+    };
     items.forEach(function (id) {
       var m = DATA.concepts[id] || {}, p = at[id], ge = geo[id];
       var cg = el("g", { "class": "cap tone-" + (KIND_TONE[m.k] || "amethyst") + (id === "the-program" ? " program" : "") }, g);
@@ -243,18 +256,8 @@
         }
         if (used < 2 && line) el("tspan", { x: p.x, dy: used ? 12 : 0 }, st).textContent = line;
       }
-      cg.addEventListener("mouseenter", function () {
-        g.classList.add("focus");
-        cg.classList.add("nb");
-        (incident[id] || []).forEach(function (e2) { e2.classList.add("lit"); });
-        (neighbors[id] || []).forEach(function (nid) { var ng = dotEl[nid]; if (ng) ng.classList.add("nb"); });
-      });
-      cg.addEventListener("mouseleave", function () {
-        g.classList.remove("focus");
-        cg.classList.remove("nb");
-        (incident[id] || []).forEach(function (e2) { e2.classList.remove("lit"); });
-        (neighbors[id] || []).forEach(function (nid) { var ng = dotEl[nid]; if (ng) ng.classList.remove("nb"); });
-      });
+      cg.addEventListener("mouseenter", function () { if (!pinned) focusOn(id); });
+      cg.addEventListener("mouseleave", function () { if (!pinned) focusOff(id); });
       cg.addEventListener("click", function (ev) { ev.stopPropagation(); nodeCard(id, ev); });
     });
   }
@@ -269,9 +272,17 @@
     card.style.left = x + "px";
     card.style.top = y + "px";
   }
-  function hideCard() { card.hidden = true; card.innerHTML = ""; }
+  function hideCard() {
+    card.hidden = true;
+    card.innerHTML = "";
+    if (pinned && focusOff) focusOff(pinned);
+    pinned = null;
+  }
   function kindLabel(k) { return (DATA.kinds || {})[k] || k || ""; }
   function nodeCard(id, ev) {
+    if (pinned && focusOff) focusOff(pinned);
+    pinned = id;
+    if (focusOn) focusOn(id);
     var m = DATA.concepts[id] || {};
     card.innerHTML = '<p class="card-head">' + esc(m.t || id) + ' <span class="kind">' + esc(kindLabel(m.k)) + "</span></p>"
       + (m.s ? "<p class=\"card-blurb\">" + esc(m.s) + "</p>" : "")
