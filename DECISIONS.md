@@ -6841,13 +6841,18 @@ two regions of the map). In the containment views a click on a node with content
 descends one level with an animated zoom, backed out by esc, ctrl-click, wheel-out or
 the breadcrumb — the top question into the lines, a line into its frame's goals and
 holds, a claim into its conjuncts. A reader is not shown text until they click in for
-it. The default level is the wiki as one network: the **concepts** view, pages linked by
-page links, shared references and shared frames, where every click opens a popup — the
-rendered page with the merged work tagged to it and its links into the rest of the map.
-The containment views over the same objects: the frame tree (**goals**); the originating
-**rounds**; the epistemic **class**es; and **merged work** — topics containing the
-digested pull requests of `state/prs.json`. A clicked node's detail — built once as
-`/n/<id>/frag.html`, `/wiki/<Page>/frag.html` or `/prs/<n>/frag.html` — opens as a
+it. The default level is the **concepts** view: the curated network of
+`state/concepts.json`, a wiki of the agent-foundations theory relevant here whose
+members span five kinds — goal/thread of the research, new construction, mathematical
+object, prior work, philosophical concept — encompassing the repository wiki's terms
+and going beyond them, colour-coded by kind with a legend. Its links are hand-chosen by
+a pass over the candidate pairs, never a near-complete graph, each carrying one or more
+relation categories and a one-line why shown on edge hover; every click opens a popup
+(the entry's wiki page where one exists, else its `/concepts/<id>/` fragment). The
+containment views over the map's objects: the frame tree (**goals**); the originating
+**rounds**; and **merged work** — topics containing the digested pull requests of
+`state/prs.json`. A clicked node's detail — built once as `/n/<id>/frag.html`,
+`/wiki/<Page>/frag.html`, `/concepts/<id>/frag.html` or `/prs/<n>/frag.html` — opens as a
 centred popup over the canvas, and `/#n=<id>` deep-links a map node; every per-id URL of
 S4 stands, each object remaining a full page, so the contract is unchanged. Walks are
 not part of the site; the one shipped walk leaves with this ruling, and its open review

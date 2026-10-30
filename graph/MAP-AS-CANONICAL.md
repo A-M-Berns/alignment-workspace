@@ -161,11 +161,13 @@ the build, as does any reference that does not resolve (`site/README.md`). Pages
   a canvas in discrete levels (ruling S5, 2026-10-30): one level renders at a time as a
   pannable network graph — small jewel-toned nodes, force-laid, edges hoverable for a
   summary of the relationship — entered by click with an animated zoom and left by esc
-  or the breadcrumb. The default level is the wiki as one network of concepts, every
-  node a popup (the rendered page with its tagged merged work); the containment views
-  over the same objects are the frame tree, the rounds, the epistemic classes, and the
-  merged pull requests digested in `state/prs.json`, where that file has entries; the
-  feed's head collapsed below.
+  or the breadcrumb. The default level is the concept network of `state/concepts.json`
+  — goals and threads, new constructions, mathematical objects, prior work and
+  philosophical concepts, the repository wiki's terms among them and beyond them,
+  colour-coded by kind, every node a popup, every link hand-chosen with its relation
+  categories and a one-line why; the containment views over the map's objects are the
+  frame tree, the rounds, and the merged pull requests digested in `state/prs.json`,
+  where that file has entries; the feed's head collapsed below.
 - **frame** (`/n/<frame>/`): question, owners, the narrative rendered, roots by role, what it
   holds by kind (formal results, items, other), sub-frames, the path up to the top frame,
   *no goal yet* where `roots` is empty.

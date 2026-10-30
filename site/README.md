@@ -23,13 +23,15 @@ for a summary of the relationship (which pages link, how many shared references,
 connections run between two regions of the map). Nothing marks a node as composite;
 clicking it either opens its popup or, in the containment views, descends one level with
 an animated zoom, backed out by esc, ctrl-click, wheel-out or the breadcrumb. The default
-view is **concepts**: the wiki as one network — pages linked by page links, shared
-references and shared frames — where every click is a popup (the rendered page with the
-merged work tagged to it, and its links into the rest of the map). The containment views
-over the same objects: **goals** (the frame tree continued into the part edges),
-**rounds**, **class**, and — when `state/prs.json` has entries — **merged work** (topics
-containing the digested pull requests). Popups load fragments: `/n/<id>/frag.html`,
-`/wiki/<Page>/frag.html`, or `/prs/<n>/frag.html`; `/#n=<id>` (ids with `/` as `--`)
+view is **concepts**: the curated network of `state/concepts.json` — goals and threads,
+new constructions, mathematical objects, prior work and philosophical concepts,
+colour-coded by kind with a legend — where every click is a popup (the entry's wiki page
+where one exists, else its `/concepts/<id>/` fragment) and every hand-chosen link carries
+its relation categories and a one-line why on the edge hover. The containment views over
+the map's objects: **goals** (the frame tree continued into the part edges), **rounds**,
+and — when `state/prs.json` has entries — **merged work** (topics containing the digested
+pull requests). Popups load fragments: `/n/<id>/frag.html`, `/wiki/<Page>/frag.html`,
+`/concepts/<id>/frag.html`, or `/prs/<n>/frag.html`; `/#n=<id>` (ids with `/` as `--`)
 deep-links a map node. Without JavaScript the front page lists the lines as links, and
 every object remains a full page.
 
@@ -60,6 +62,7 @@ build on.
 | a wiki page | `/wiki/<Page>/`, its fragment `/wiki/<Page>/frag.html` | `wiki/<Page>.md` |
 | a handle | `/by/<handle without @>/` | `graph/policy.yaml` |
 | a merged pull request | `/prs/<n>/`, its fragment `/prs/<n>/frag.html` | `state/prs.json` |
+| a registry concept without a wiki page | `/concepts/<id>/`, its fragment `/concepts/<id>/frag.html` | `state/concepts.json` |
 | the map data | `/assets/map.json` | the containments and edges above |
 | the feed, the theorem spine, the ranking, search | `/feed/`, `/spine/`, `/ranking/`, `/search/` | — |
 

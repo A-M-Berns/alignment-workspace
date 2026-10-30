@@ -1091,10 +1091,11 @@ page about the ranking, `state/*.json`, the claims registries, the anchors of
 typed by hand except `site/lede.md`, the front page's one paragraph, binding-checked
 against the state at every build. The front page is the map itself, rendered one level
 at a time as a pannable network graph with hoverable edges and an animated zoom between
-levels (`site/assets/map.js` over `/assets/map.json`); the default level is the wiki as
-one network of concepts, every node opening a popup, with containment views over the
-same objects — the frame tree, the rounds, the epistemic classes, and the merged pull
-requests digested in `state/prs.json`; every node page carries the intake verbs, each a
+levels (`site/assets/map.js` over `/assets/map.json`); the default level is the concept
+network of `state/concepts.json` — goals, new constructions, mathematical objects, prior
+work and philosophical concepts, colour-coded by kind, every node opening a popup — with
+containment views over the map's objects: the frame tree, the rounds, and the merged
+pull requests digested in `state/prs.json`; every node page carries the intake verbs, each a
 prefilled GitHub issue a maintainer round sweeps into ledger events (ruling S5,
 2026-10-30). Every node, item,
 decision anchor, round, registry id, wiki page and handle has exactly one path, derived
