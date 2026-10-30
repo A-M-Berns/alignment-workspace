@@ -543,14 +543,6 @@
       "rel": [
         "part"
       ],
-      "why": "one of the plan's lines",
-      "from": "deference-line",
-      "to": "the-program"
-    },
-    {
-      "rel": [
-        "part"
-      ],
       "why": "legitimacy is the bridge out of normativity: public reasons with standing",
       "from": "normativity-line",
       "to": "legitimacy-line"
@@ -1412,22 +1404,6 @@
       "why": "the two ways a warrant is attacked"
     },
     {
-      "from": "corrigibility-line",
-      "to": "deference-line",
-      "rel": [
-        "part"
-      ],
-      "why": "the corrigibility landscape hangs in the deference line"
-    },
-    {
-      "from": "corrigibility-line",
-      "to": "legitimacy-line",
-      "rel": [
-        "part"
-      ],
-      "why": "and in the legitimacy line: a correction must carry standing, not just land"
-    },
-    {
       "from": "openness-line",
       "to": "legitimacy-line",
       "rel": [
@@ -1442,6 +1418,22 @@
         "part"
       ],
       "why": "the normativity line's quantitative programme"
+    },
+    {
+      "from": "corrigibility-line",
+      "to": "the-program",
+      "rel": [
+        "part"
+      ],
+      "why": "one of the plan's ends: an agent that stays correctable"
+    },
+    {
+      "from": "deference-line",
+      "to": "corrigibility-line",
+      "rel": [
+        "part"
+      ],
+      "why": "deference is how a correction reaches an agent that may know more; corrigibility is what it buys"
     }
   ]
 }

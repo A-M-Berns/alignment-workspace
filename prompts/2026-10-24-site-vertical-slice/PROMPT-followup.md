@@ -178,3 +178,5 @@ Further directives of the same conversation, verbatim:
 > epistemic status per node is gonna be very important, deciding exactly how that's
 > represented we can defer for a moment
 > some of the "read more" pages are different from others so let's standardize it more
+
+> i think corrigibility should be terminal probably, and deference should feed that
