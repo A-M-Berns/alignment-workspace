@@ -193,3 +193,18 @@ svg#map g.dot text.nsub { display: none; font-size: 10.5px; }
 svg#map.zoomed g.dot text.nsub, svg#map g.dot:hover text.nsub { display: block; }
 svg#map g.dot .ring { fill: none; stroke: var(--accent); stroke-width: 1px; opacity: 0.6; }
 svg#map g.dot .hitc { fill: transparent; }
+/* the polish pass: focus recession, flow curves, the axis, the program node, card entrance */
+svg#map .net-edge .wire { fill: none; }
+svg#map .net-edge .hit { fill: none; stroke: transparent; }
+svg#map g.dot, svg#map .net-edge { transition: opacity 0.22s ease; }
+svg#map g.scene.focus g.dot:not(.nb) { opacity: 0.22; }
+svg#map g.scene.focus .net-edge:not(.lit) { opacity: 0.25; }
+svg#map g.dot.nb text.nsub { display: block; }
+svg#map .goalwash { fill: url(#goalglow); pointer-events: none; }
+svg#map .axis text { fill: #5c5c57; text-transform: uppercase; letter-spacing: 0.14em; font-size: 10px; }
+svg#map .axis .axline { stroke: #2c2c31; stroke-width: 1px; }
+svg#map g.dot.program .core { stroke: var(--accent); stroke-width: 1.5px; }
+svg#map g.dot.program text { font-size: 13px; fill: var(--accent); }
+#map-card { animation: cardin 0.16s ease; border-radius: 12px; }
+@keyframes cardin { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+#map-panel .frag, #map-panel .pr-summary { max-width: 46rem; }

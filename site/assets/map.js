@@ -29,6 +29,15 @@
   mkp.setAttribute("class", "arrowhead");
   mk.appendChild(mkp);
   defs.appendChild(mk);
+  var gl = document.createElementNS(NS, "radialGradient");
+  gl.setAttribute("id", "goalglow");
+  gl.setAttribute("cx", "0.75"); gl.setAttribute("cy", "0.5"); gl.setAttribute("r", "0.6");
+  var s1 = document.createElementNS(NS, "stop");
+  s1.setAttribute("offset", "0"); s1.setAttribute("stop-color", "#c8c4ba"); s1.setAttribute("stop-opacity", "0.045");
+  var s2 = document.createElementNS(NS, "stop");
+  s2.setAttribute("offset", "1"); s2.setAttribute("stop-color", "#c8c4ba"); s2.setAttribute("stop-opacity", "0");
+  gl.appendChild(s1); gl.appendChild(s2);
+  defs.appendChild(gl);
 
   function el(tag, attrs, parent) {
     var e = document.createElementNS(NS, tag);
@@ -110,6 +119,13 @@
     el("rect", { x: -4 * b.w, y: -4 * b.h, width: 9 * b.w, height: 9 * b.h, "class": "backdrop" }, g);
     var items = DATA.items, links = DATA.links;
     var lay = layout(items, links, b.w, b.h);
+    el("rect", { x: lay.w * 0.6, y: -lay.h, width: lay.w, height: 3 * lay.h, "class": "goalwash" }, g);
+    var ax = el("g", { "class": "axis" }, g);
+    [["foundations and prior art", 0.14], ["constructions", 0.5], ["goals", 0.9]].forEach(function (s) {
+      el("text", { x: lay.w * s[1], y: lay.h - 26, "text-anchor": "middle", "font-size": 10 }, ax).textContent = s[0];
+    });
+    var axl = el("line", { x1: lay.w * 0.2, y1: lay.h - 40, x2: lay.w * 0.86, y2: lay.h - 40, "class": "axline" }, ax);
+    axl.setAttribute("marker-end", "url(#arrow)");
     home = { k: 1, x: (b.w - lay.w) / 2, y: (b.h - lay.h) / 2 };
     tf = { k: home.k, x: home.x, y: home.y };
     applyTf();
@@ -121,7 +137,7 @@
       radius[items[i]] = Math.min(6 + Math.sqrt((deg[items[i]] || 0) + 1) * 1.6, 13);
     }
     var eg = el("g", { "class": "net-edges" }, g);
-    var incident = {};
+    var incident = {}, neighbors = {}, dotEl = {};
     links.forEach(function (L) {
       var a = at[L[0]], c = at[L[1]];
       if (!a || !c) return;
@@ -129,17 +145,22 @@
       var ra = radius[L[0]] + 3, rc = radius[L[1]] + (L[5] ? 3 : 8);
       var x1 = a.x + dx / len * ra, y1 = a.y + dy / len * ra;
       var x2 = c.x - dx / len * rc, y2 = c.y - dy / len * rc;
+      var bow = Math.min(Math.abs(x2 - x1) * 0.38, 90);
+      var d = "M" + x1 + "," + y1 + " C" + (x1 + bow) + "," + y1 + " " + (x2 - bow) + "," + y2 + " " + x2 + "," + y2;
       var grp = el("g", { "class": "net-edge" }, eg);
-      var wire = el("line", { x1: x1, y1: y1, x2: x2, y2: y2, "class": "wire", "stroke-width": Math.min(0.75 + L[2] * 0.08, 1.3) }, grp);
+      var wire = el("path", { d: d, "class": "wire", "stroke-width": Math.min(0.75 + L[2] * 0.08, 1.3) }, grp);
       if (!L[5]) wire.setAttribute("marker-end", "url(#arrow)");
-      el("line", { x1: a.x, y1: a.y, x2: c.x, y2: c.y, "class": "hit", "stroke-width": 12 }, grp);
+      el("path", { d: d, "class": "hit", "stroke-width": 13 }, grp);
       grp.addEventListener("click", function (ev) { ev.stopPropagation(); edgeCard(L, ev); });
       (incident[L[0]] = incident[L[0]] || []).push(grp);
       (incident[L[1]] = incident[L[1]] || []).push(grp);
+      (neighbors[L[0]] = neighbors[L[0]] || []).push(L[1]);
+      (neighbors[L[1]] = neighbors[L[1]] || []).push(L[0]);
     });
     items.forEach(function (id) {
-      var m = DATA.concepts[id] || {}, p = at[id], r = radius[id];
-      var cg = el("g", { "class": "dot tone-" + (KIND_TONE[m.k] || "amethyst") }, g);
+      var m = DATA.concepts[id] || {}, p = at[id], r = radius[id] + (id === "the-program" ? 3 : 0);
+      var cg = el("g", { "class": "dot tone-" + (KIND_TONE[m.k] || "amethyst") + (id === "the-program" ? " program" : "") }, g);
+      dotEl[id] = cg;
       el("circle", { cx: p.x, cy: p.y, r: Math.max(r * 1.8, 16), "class": "hitc" }, cg);
       el("circle", { cx: p.x, cy: p.y, r: r * 1.8, "class": "halo" }, cg);
       el("circle", { cx: p.x, cy: p.y, r: r, "class": "core" }, cg);
@@ -151,8 +172,18 @@
         st.setAttribute("class", "nsub");
         cg.appendChild(st);
       }
-      cg.addEventListener("mouseenter", function () { (incident[id] || []).forEach(function (e2) { e2.classList.add("lit"); }); });
-      cg.addEventListener("mouseleave", function () { (incident[id] || []).forEach(function (e2) { e2.classList.remove("lit"); }); });
+      cg.addEventListener("mouseenter", function () {
+        g.classList.add("focus");
+        cg.classList.add("nb");
+        (incident[id] || []).forEach(function (e2) { e2.classList.add("lit"); });
+        (neighbors[id] || []).forEach(function (nid) { var ng = dotEl[nid]; if (ng) ng.classList.add("nb"); });
+      });
+      cg.addEventListener("mouseleave", function () {
+        g.classList.remove("focus");
+        cg.classList.remove("nb");
+        (incident[id] || []).forEach(function (e2) { e2.classList.remove("lit"); });
+        (neighbors[id] || []).forEach(function (nid) { var ng = dotEl[nid]; if (ng) ng.classList.remove("nb"); });
+      });
       cg.addEventListener("click", function (ev) { ev.stopPropagation(); nodeCard(id, ev); });
     });
   }

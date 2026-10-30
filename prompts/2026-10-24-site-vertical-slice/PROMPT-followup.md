@@ -102,3 +102,6 @@ Further directives of the same conversation, verbatim:
 > there should in some way be an overarching goal view that shows what's necessary for
 > overall goals. We should probably reorient the edges perhaps as directed relationships
 > related to the goals
+
+> remove "of the research" from goal/thread and reconsider once more the basic visual
+> layout to just push it to the next level in ui/ux visually

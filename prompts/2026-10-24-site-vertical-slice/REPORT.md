@@ -377,3 +377,14 @@ per-frame text rescaling; the zoom range here is small); collision-aware label
 suppression (worth doing if the registry grows past ~80 nodes, not at 48); a curated
 "start here" reading path (deferred — it is content, and the walk it resembles was cut
 by S5; the maintainer may ask for it as a popup-side affordance).
+
+## Tenth follow-up of 2026-10-30 — the flow reads
+
+The goal kind label is *goal / thread*. Edges became flow curves — cubics bowed along the
+goal axis, arrowheads on the tangent — so convergence on the program reads as confluence
+rather than spokes. Hovering a node recedes everything outside its neighbourhood (nodes
+to 22%, edges to 25%, 220 ms) and reveals the neighbours' summaries. A quiet axis
+annotation along the bottom — *foundations and prior art → constructions → goals*, with
+a hairline arrow — names the organization; a faint bone radial wash warms the goal end;
+the program node is larger, ringed in bone, and titled at 13 px. Cards enter with a
+160 ms rise.
