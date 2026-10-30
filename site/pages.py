@@ -488,7 +488,7 @@ def front_page(site: Site, lede_html: str, feed_rows: list[str]) -> str:
             '<label class="edges-toggle"><input type="checkbox" id="map-edges"> edges</label>'
             '<span class="map-hint muted">scroll to zoom · drag to pan · click a region to enter it · click a node to read it</span></div>'
             '<div class="map-stage"><svg id="map" role="application" aria-label="the argument map"></svg>'
-            '<aside id="map-panel" hidden><button id="map-panel-close" aria-label="close">×</button><div id="map-panel-body"></div></aside></div></div>',
+            '<aside id="map-panel"><button id="map-panel-close" aria-label="close">×</button><div id="map-panel-body"></div></aside></div></div>',
             noscript,
             "<details class=\"front-feed\"><summary>Recent in the feed</summary><ul class=\"feed\">" + "".join(feed_rows[:12]) + "</ul><p><a href=\"/feed/\">The whole feed</a>.</p></details>"]
     return layout(site, "The map of the program", "\n".join(body)).replace("</head>", '<script defer src="/assets/map.js"></script></head>')

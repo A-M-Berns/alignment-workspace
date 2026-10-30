@@ -186,7 +186,7 @@
   }
 
   function openPanel(id) {
-    panel.hidden = false;
+    panel.classList.add("open");
     panelBody.innerHTML = '<p class="muted">Loading ' + id + "…</p>";
     fetch("/n/" + seg(id) + "/frag.html").then(function (r) { return r.text(); }).then(function (h) {
       panelBody.innerHTML = h;
@@ -194,7 +194,8 @@
     if (history.replaceState) history.replaceState(null, "", "/#n=" + seg(id));
   }
   document.getElementById("map-panel-close").addEventListener("click", function () {
-    panel.hidden = true;
+    panel.classList.remove("open");
+    panelBody.innerHTML = "";
     if (history.replaceState) history.replaceState(null, "", "/");
   });
 
