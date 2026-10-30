@@ -54,7 +54,7 @@
       "kind": "goal",
       "wiki": "Corrigibility",
       "refs": [
-        "public-corrigibility-line"
+        "corrigibility-landscape"
       ],
       "blurb": "A corrigible agent built from response authority: after any move the agent makes, its principal can still respond and have that response count. The kernel theorem is proved; continuation BRIA is the layer that learns it."
     },

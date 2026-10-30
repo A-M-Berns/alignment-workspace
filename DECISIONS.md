@@ -6878,3 +6878,18 @@ continuously-zooming canvas (the maintainer ruled levels discrete, entered and l
 levels); nested-region treemap levels with previews of their contents (the maintainer
 ruled for plain network graphs, nothing marking a node composite); a write path from the
 page (a backend is its own decision, not taken here).
+
+### 2026-10-30 — corrigibility is a line of the program; deference-and-trust moves under it
+<!-- decision: 2026-10-30--corrigibility-line-deference-under-it; touches: node:the-program, node:corrigibility-landscape, node:deference-and-trust, node:legitimacy -->
+
+**Maintainer ruling, taken in conversation on 2026-10-30; filed by the
+site-vertical-slice round's follow-up.** The corrigibility landscape is a root of the
+program — corrigibility is an end the plan answers for, not a programme inside another
+line — and deference-and-trust is a root of the corrigibility landscape: deference is how
+a correction reaches an agent that may know more, corrigibility is what it buys. The
+landscape's attachments under legitimacy and deference-and-trust leave; legitimacy still
+reaches corrigibility through deference. The site's concept registry reads the same way.
+
+*Rejected alternative:* keeping deference-and-trust as the program line with the
+landscape shared under it and legitimacy — the shape the 2026-10-22 drafting chose, which
+the owners had not confirmed.

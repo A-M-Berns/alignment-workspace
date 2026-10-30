@@ -1,7 +1,7 @@
 ---
 id: deference-and-trust
 kind: frame
-children: [ddb-to-li-translation, deck-collapse-statement, li-deference-collapse-scoped, hedged-value-unconditional, mart-implies-value-refuted-unconditional, li-deference-collapse.improvable, regularity-is-h3, crux-first-published-statement, crux-instrumental-notion, crux-self-feedback-dependence, managing-misalignment-to-li, li-deference-machine-checked, sams-conjecture-li, inter-inductor-total-trust, wiki-corpus-maintenance, li-deference-collapse, deference-toward-bounded-agents, corrigibility-landscape, li-models-human-progress, li-above-poly-time, li-no-selection-theorem-objection, li-level-computability-certificates, coherence-without-ground-truth, publication-form, published-statement-holds, note-corrections-beside-li-deference, deference-finite-results]
+children: [ddb-to-li-translation, deck-collapse-statement, li-deference-collapse-scoped, hedged-value-unconditional, mart-implies-value-refuted-unconditional, li-deference-collapse.improvable, regularity-is-h3, crux-first-published-statement, crux-instrumental-notion, crux-self-feedback-dependence, managing-misalignment-to-li, li-deference-machine-checked, sams-conjecture-li, inter-inductor-total-trust, wiki-corpus-maintenance, li-deference-collapse, deference-toward-bounded-agents, li-models-human-progress, li-above-poly-time, li-no-selection-theorem-objection, li-level-computability-certificates, coherence-without-ground-truth, publication-form, published-statement-holds, note-corrections-beside-li-deference, deference-finite-results]
 question: "Which research on trust between a human inductor and an AI inductor, at the logical-induction level, reaches a formal account of trust that guides AI safety engineering work?"
 owner: "@abram"
 narrative: wiki/Deference.md
@@ -23,7 +23,6 @@ roots:
   - {id: wiki-corpus-maintenance, role: plan, preset: worst-case, success_class: utopia}
   - {id: li-deference-collapse, role: shared-claim, preset: worst-case}
   - {id: deference-toward-bounded-agents, role: plan, preset: worst-case}
-  - {id: corrigibility-landscape, role: plan, preset: worst-case}
   - {id: li-models-human-progress, role: shared-claim, preset: worst-case}
   - {id: li-above-poly-time, role: shared-claim, preset: worst-case}
   - {id: li-no-selection-theorem-objection, role: shared-claim, preset: worst-case}

@@ -180,3 +180,8 @@ Further directives of the same conversation, verbatim:
 > some of the "read more" pages are different from others so let's standardize it more
 
 > i think corrigibility should be terminal probably, and deference should feed that
+
+> let's not separately host and link to the wiki mirrors themselves. that info should be
+> in the one kind of read more page. the frame tree should also be updated in line with
+> the concept map here, as long as we're not doing violence to the real research. the
+> concept map should be in line with the way the repo structurally presents itself

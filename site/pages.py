@@ -463,7 +463,7 @@ def concept_side(site: Site, cid: str) -> str:
         if not other or other not in r.concepts:
             continue
         o = r.concepts[other]
-        target = site.url("wiki", o["wiki"]) if o.get("wiki") else site.url("concepts", other)
+        target = site.url("concepts", other)
         arrow = "↔" if L.get("undirected") else ("←" if L["to"] == cid else "→")
         groups[bucket.get(o.get("kind", ""), "Core theory")].append(
             f'<li><span class="dirmark">{arrow}</span> <a href="{target}">{esc(o.get("title", other))}</a>'
@@ -490,8 +490,7 @@ def concept_full(site: Site, cid: str) -> str:
     r = site.repo
     e = r.concepts[cid]
     kind_label_ = r.concept_kinds.get(e.get("kind", ""), e.get("kind", ""))
-    head = (f'<p class="frag-head">{site.link("concepts", cid, e.get("title", cid)) if not e.get("wiki") else site.link("wiki", e["wiki"], e.get("title", cid))}'
-            f' <span class="kind">{esc(kind_label_)}</span></p>')
+    head = f'<p class="frag-head">{site.link("concepts", cid, e.get("title", cid))} <span class="kind">{esc(kind_label_)}</span></p>'
     lede = f'<p class="concept-lede">{esc(str(e.get("blurb") or ""))}</p>'
     src = f'<p class="muted"><a href="{esc(e["url"])}">{esc(e["url"])}</a></p>' if e.get("url") else ""
     if e.get("wiki"):

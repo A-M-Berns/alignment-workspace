@@ -516,3 +516,17 @@ column beside it. The goal tier now has hierarchy matching the map's own frames:
 corrigibility hangs in the deference and legitimacy lines, openness and authorship in
 legitimacy, normative induction in normativity — non-terminal goals sitting left of the
 terminal column, their program edges replaced by edges to their parent lines.
+
+## Nineteenth follow-up of 2026-10-30 — one canonical page per concept; the frame tree follows the ruling
+
+Every concept now has one canonical page, `/concepts/<id>/`, rendering the single
+Read-more template with the wiki content embedded in its main pane; the map, the cards
+and the connections all link there, and the `/wiki/<Page>/` mirrors stay only as
+unlinked deep-link URLs. The frame tree now matches the concept map by the maintainer's
+ruling (the dated entry of 2026-10-30): the corrigibility landscape is a root of the
+program, deference-and-trust is a root of the landscape, and the landscape's
+attachments under legitimacy and deference leave — the checker accepts the shape, the
+design log carries the change, and the regenerated files moved with it. What this does
+not establish: the second maintainer has not confirmed the restructure; the 2026-10-22
+drafting note that the owners had not confirmed the previous decomposition applies
+equally to this one.

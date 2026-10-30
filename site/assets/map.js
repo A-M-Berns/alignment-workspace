@@ -337,8 +337,7 @@
     return "https://github.com/A-M-Berns/alignment-workspace/issues/new?title=" + title + "&body=" + body;
   }
   function base(id) {
-    var w = (DATA.concepts[id] || {}).w;
-    return w ? "/wiki/" + seg(w) + "/" : "/concepts/" + seg(id) + "/";
+    return "/concepts/" + seg(id) + "/";
   }
   function openFull(id) {
     modal.classList.add("open");
