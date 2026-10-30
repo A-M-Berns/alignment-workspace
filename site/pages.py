@@ -60,7 +60,7 @@ def layout(site: Site, title: str, body: str, crumbs: list[tuple[str, str]] | No
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)}</title><link rel="stylesheet" href="/assets/style.css"><script defer src="/assets/app.js"></script></head>
-<body><header class="top"><a class="home" href="/">alignment-workspace</a><nav class="main">{nav}</nav>
+<body><header class="top"><a class="home" href="/">Alignment Workspace</a><nav class="main">{nav}</nav>
 <form class="search" action="/search/" method="get"><input type="search" name="q" placeholder="search ids, statements, titles" aria-label="search"></form></header>
 <main>{crumb_html}<h1>{esc(title)}</h1>{f'<p class="subtitle">{subtitle}</p>' if subtitle else ''}
 {body}

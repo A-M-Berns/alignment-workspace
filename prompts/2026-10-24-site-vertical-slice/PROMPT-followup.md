@@ -163,3 +163,8 @@ Further directives of the same conversation, verbatim:
 > for a comment system based on the map
 
 > can we make cmd(or ctrl)-f default to using the built in search bar
+
+> "alignment-workspace" should be Alignment Workspace in its own nice title font.
+> I think "the program" blurb should be rewritten. the true overall focus is like how can
+> a powerful AI develop in line with humanity's interests without relying on control,
+> and how can we get mathematical guarantees about that happening
