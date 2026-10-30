@@ -66,54 +66,105 @@
     return lines;
   }
 
-  // columnar flow layout: columns by goal distance, barycenter-ordered, evenly spaced
+  // layered flow with goal bands (GPT Astra consult, 2026-10-30): ranks from goal distance with
+  // variable column pitch from real capsule widths; rows are bands by the first goal a node reaches,
+  // staircase-ordered; within a band, median-ordered. The program sits alone at the far right, centred.
+  var GOALS = ["corrigibility-line", "normative-induction", "normativity-line", "legitimacy-line", "deference-line", "openness-line"];
   function layout(items, links) {
     var meta = DATA.concepts, i;
-    var layers = {};
-    items.forEach(function (id) { var d = (meta[id] || {}).d || 0; (layers[d] = layers[d] || []).push(id); });
-    var ds = Object.keys(layers).map(Number).sort(function (a, b) { return b - a; });   // far left first
-    var pitch = 252, xm = 150;
-    var w = xm * 2 + pitch * Math.max(ds.length - 1, 1);
-    var colOf = {}, colX = {};
-    ds.forEach(function (d, ci) { colX[d] = xm + ci * pitch; layers[d].forEach(function (id) { colOf[id] = d; }); });
+    var succ = {}, nbAll = {};
+    links.forEach(function (L) {
+      if (!L[5]) (succ[L[0]] = succ[L[0]] || []).push(L[1]);
+      (nbAll[L[0]] = nbAll[L[0]] || []).push(L[1]);
+      (nbAll[L[1]] = nbAll[L[1]] || []).push(L[0]);
+    });
+    // band: the first goal reached along directed edges (breadth first, ties by the staircase order)
+    var band = {};
+    GOALS.forEach(function (gid) { band[gid] = gid; });
+    items.forEach(function (id) {
+      if (band[id] || id === "the-program") return;
+      var seen = {}, q = [id];
+      seen[id] = 1;
+      while (q.length) {
+        var nxt = [], found = null;
+        for (var qi = 0; qi < q.length; qi++) {
+          (succ[q[qi]] || []).forEach(function (s) {
+            if (GOALS.indexOf(s) >= 0 && (found === null || GOALS.indexOf(s) < GOALS.indexOf(found))) found = s;
+            if (!seen[s]) { seen[s] = 1; nxt.push(s); }
+          });
+        }
+        if (found) { band[id] = found; break; }
+        q = nxt;
+      }
+    });
+    for (var pass = 0; pass < 4; pass++) {
+      items.forEach(function (id) {
+        if (band[id] || id === "the-program") return;
+        var nb = (nbAll[id] || []).filter(function (n) { return band[n]; });
+        if (nb.length) band[id] = band[nb[0]];
+      });
+    }
+    items.forEach(function (id) { if (!band[id] && id !== "the-program") band[id] = "context"; });
     // capsule geometry
     var geo = {};
     items.forEach(function (id) {
-      var t = (meta[id] || {}).t || id;
-      var per = 20;
-      var lines = titleLines(t, per);
+      var tt = (meta[id] || {}).t || id;
+      var lines = titleLines(tt, 20);
       var wch = Math.max.apply(null, lines.map(function (L) { return L.length; }));
       var cw = Math.max(Math.min(wch * 7.2 + 30, 196), 96);
       var chh = lines.length > 1 ? 48 : 34;
       if (id === "the-program") { cw += 14; chh += 6; }
       geo[id] = { w: cw, h: chh, lines: lines };
     });
-    var maxCol = Math.max.apply(null, ds.map(function (d) { return layers[d].length; }));
-    var slot = 96;
-    var h = Math.max(maxCol * slot + 180, 760);
-    // neighbour map for barycenter ordering
-    var nb = {};
-    links.forEach(function (L) {
-      (nb[L[0]] = nb[L[0]] || []).push(L[1]);
-      (nb[L[1]] = nb[L[1]] || []).push(L[0]);
+    // columns: rank by goal distance, pitch from the widest capsule per rank
+    var dmax = 1;
+    items.forEach(function (id) { dmax = Math.max(dmax, (meta[id] || {}).d || 0); });
+    var colOf = {};
+    items.forEach(function (id) { colOf[id] = id === "the-program" ? dmax : dmax - ((meta[id] || {}).d || 0); });
+    var colW = [];
+    items.forEach(function (id) { var c = colOf[id]; colW[c] = Math.max(colW[c] || 0, geo[id].w); });
+    var colX = [], xcur = 150;
+    for (i = 0; i <= dmax; i++) {
+      var cwid = colW[i] || 0;
+      colX[i] = xcur + cwid / 2;
+      xcur += cwid + (cwid ? 64 : 0);
+    }
+    var w = xcur + 150;
+    // rows: the bands, staircase order, variable height, median-ordered within
+    var bandOrder = GOALS.concat(["context"]);
+    var rows = {};
+    items.forEach(function (id) { if (id !== "the-program") (rows[band[id]] = rows[band[id]] || []).push(id); });
+    var y = {}, gap = 24, bandGap = 72, ycur = 90, bandSpan = {};
+    bandOrder.forEach(function (b) {
+      var col = rows[b] || [];
+      if (!col.length) return;
+      var y0 = ycur;
+      col.forEach(function (id) { y[id] = ycur + geo[id].h / 2; ycur += geo[id].h + gap; });
+      bandSpan[b] = [y0, ycur - gap];
+      ycur += bandGap;
     });
-    var y = {};
-    ds.forEach(function (d) { layers[d].forEach(function (id, i2) { y[id] = (i2 + 1) * slot; }); });
-    for (var pass = 0; pass < 6; pass++) {
-      ds.forEach(function (d) {
-        var col = layers[d];
-        col.sort(function (a, b) {
-          var ba = (nb[a] || []).reduce(function (s, n) { return s + (y[n] || 0); }, 0) / Math.max((nb[a] || []).length, 1);
-          var bb = (nb[b] || []).reduce(function (s, n) { return s + (y[n] || 0); }, 0) / Math.max((nb[b] || []).length, 1);
-          return (ba || 0) - (bb || 0) || a.localeCompare(b);
+    var h = Math.max(ycur + 60, 700);
+    // median-order sweeps within each band, then restack
+    for (var sweep = 0; sweep < 6; sweep++) {
+      bandOrder.forEach(function (b) {
+        var col = rows[b] || [];
+        if (col.length < 2) return;
+        col.sort(function (a, bb) {
+          var ma = (nbAll[a] || []).reduce(function (s, n) { return s + (y[n] || 0); }, 0) / Math.max((nbAll[a] || []).length, 1);
+          var mb = (nbAll[bb] || []).reduce(function (s, n) { return s + (y[n] || 0); }, 0) / Math.max((nbAll[bb] || []).length, 1);
+          return (ma || 0) - (mb || 0) || colOf[a] - colOf[bb] || a.localeCompare(bb);
         });
-        var total = col.length, start = (h - (total - 1) * slot) / 2;
-        col.forEach(function (id, i2) { y[id] = start + i2 * slot; });
+        var yc = bandSpan[b][0];
+        col.forEach(function (id) { y[id] = yc + geo[id].h / 2; yc += geo[id].h + gap; });
       });
     }
     var pos = {};
     items.forEach(function (id) { pos[id] = { x: colX[colOf[id]], y: y[id] }; });
-    return { pos: pos, geo: geo, w: w, h: h };
+    if (pos["the-program"]) pos["the-program"].y = h / 2;
+    var bands = bandOrder.filter(function (b) { return rows[b] && rows[b].length && b !== "context"; })
+      .map(function (b) { return { label: ((meta[b] || {}).t || b), y0: bandSpan[b][0], y1: bandSpan[b][1] }; });
+    if (rows.context && rows.context.length) bands.push({ label: "context", y0: bandSpan.context[0], y1: bandSpan.context[1] });
+    return { pos: pos, geo: geo, w: w, h: h, bands: bands };
   }
 
   var at = {}, geo = {};
@@ -133,6 +184,11 @@
     });
     var axl = el("line", { x1: lay.w * 0.2, y1: lay.h - 32, x2: lay.w * 0.86, y2: lay.h - 32, "class": "axline" }, ax);
     axl.setAttribute("marker-end", "url(#arrow)");
+    (lay.bands || []).forEach(function (bd) {
+      el("line", { x1: 24, y1: bd.y0 - 10, x2: 24, y2: bd.y1 + 10, "class": "bandline" }, ax);
+      var bt = el("text", { x: 34, y: bd.y0 + 2, "font-size": 10, "class": "bandlabel" }, ax);
+      bt.textContent = bd.label;
+    });
     home = { k: Math.min(b.w / lay.w, 1), x: 0, y: 0 };
     home.x = (b.w - lay.w * home.k) / 2;
     home.y = (b.h - lay.h * home.k) / 2;

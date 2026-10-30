@@ -230,3 +230,5 @@ svg#map .net-edge.undirected:hover .wire, svg#map .net-edge.undirected.lit .wire
 .pane-side details.pr-digest summary { font-size: 0.84rem; }
 @media (max-width: 52rem) { .pane2 { grid-template-columns: 1fr; } .pane-side { border-left: none; padding-left: 0; } }
 #map-panel .frag { max-width: none; }
+svg#map .axis .bandlabel { fill: #504f4b; letter-spacing: 0.12em; text-transform: uppercase; }
+svg#map .axis .bandline { stroke: #232327; stroke-width: 2px; }

@@ -423,3 +423,22 @@ links total. The scan for further organizing concepts kept the registry at this 
 warrant, settlement, credal state and scorekeeping are already entries or subsumed by
 one; the corrigibility kernel and Total Trust were the two the scan added beyond the
 named seven.
+
+## Thirteenth follow-up of 2026-10-30 — goal bands (the second GPT consult)
+
+A second GPT Astra consult ran against the real node and edge data; its recommendation —
+a compact layered DAG with soft goal bands, against strict swimlanes (shared foundations
+would be misrepresented) and radial placement (long capsules read badly on arcs) — is
+taken in subset. Each node's row band is the first goal its directed edges reach
+(breadth-first, ties by the staircase order corrigibility → induction → normativity →
+legitimacy → deference → openness); nodes reaching no goal join a neighbour's band or a
+context band. Columns keep goal-distance ranks but the pitch is now the widest capsule
+in each rank plus 64 px, replacing the uniform grid; within a band, six median-order
+sweeps place nodes near their neighbours; the program sits alone at the far right,
+vertically centred; each band carries a hairline and an uppercase label at the left.
+Not taken from the consult: dummy routing vertices with reserved edge channels and
+crossing-minimization over them (a full Sugiyama router — real work for marginal gain at
+85 edges), and one-click branch zoom (the hover focus covers most of it). The consult's
+closing point stands and is not solvable by layout: a nine-edge dependency chain cannot
+be fully readable across 1200 px, so the initial fit is an overview and reading happens
+zoomed.
