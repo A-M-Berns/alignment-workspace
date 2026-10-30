@@ -474,3 +474,21 @@ Conitzer with the Sources.md DOI. A sixth kind, **companion** — human work wit
 companion — colours garnet; Deconfusing Corrigibility moves to it. The band annotations
 at the left edge are removed. Radical probabilism was considered and left out: nothing
 in the repository touches it, and an entry would have been a label without a footprint.
+
+## Sixteenth follow-up of 2026-10-30 — the deep-dive completion pass
+
+The sweep read the program frame, the top frame's risk stories, the wiki list, the
+Glossary, the prior-art ledger and the 109 digests' term frequencies against the
+registry. What it found missing and added: the program's two unrepresented **lines** —
+*stance and level* (computability level, updateful versus updateless stance) and the
+*abstraction arc* (the representation theorem for logical inductors, a decision theory in
+that representation, scale-free agency) — with the decision-theory entry's ref corrected
+to its real line frame; *authorship and transparency* as legitimacy's thick half;
+*normative response learning* (its wiki page had no entry); the top frame's two
+unrepresented **risk stories** — instrumental convergence and dishonest inner optimizers
+— each ref'd to its map node and tied to what it motivates; and two concept-layer terms
+the digests use constantly but the registry lacked — **answerability** (36 digest
+mentions) and **warrant** (16), each now feeding its formalizations. 71 entries, 113
+links. Considered and left out at this grain: Vingean reflection and tiling (no
+repository footprint), radical probabilism (same), and the Glossary's finer vocabulary
+(margin, region, control surface), which belongs a level below this map.

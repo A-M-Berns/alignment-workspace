@@ -143,3 +143,7 @@ Further directives of the same conversation, verbatim:
 > annotations at left are unnecessary.
 > also like deconfusing corrigibility should be a different category for anything that's
 > like human written stuff with companion work in the repo
+
+> do a conceptual deep dive on our chats and the repo and make sure you're including all
+> the relevant concepts for a real top level map of all the research threads the work is
+> touching on at the right level of conceptual grain

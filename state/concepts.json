@@ -366,7 +366,10 @@
       "id": "decision-theory-for-inductors",
       "title": "Decision theory for inductors",
       "kind": "goal",
-      "blurb": "What a computable agent combining logical induction with bounded inductive rationality must satisfy (projects/decision-theory). The open learner-level question: a decision theory for logical inductors without the split between a belief market and a choice learner."
+      "blurb": "What a computable agent combining logical induction with bounded inductive rationality must satisfy (projects/decision-theory). The open learner-level question: a decision theory for logical inductors without the split between a belief market and a choice learner.",
+      "refs": [
+        "decision-theory"
+      ]
     },
     {
       "id": "response-authority",
@@ -450,6 +453,73 @@
       "title": "Learning Normativity (Demski)",
       "kind": "work",
       "blurb": "Demski's sequence on learning from unreliable normative feedback — no perfect feedback, no perfect loss function, norms about the learning itself. The same subject this repository's normativity line approaches; its proofs do not cite it."
+    },
+    {
+      "id": "stance-and-level",
+      "title": "Stance and level",
+      "kind": "goal",
+      "refs": [
+        "stance-and-level"
+      ],
+      "blurb": "Where should the program work: at which level of computability, under the updateful or the updateless stance, and does the computationally unbounded level represent the phenomena that matter? The cruxes every line reads."
+    },
+    {
+      "id": "abstraction-arc",
+      "title": "Abstraction arc",
+      "kind": "goal",
+      "refs": [
+        "abstraction-arc"
+      ],
+      "blurb": "A theory of abstraction compatible with logical induction: a representation theorem for when a system is interpretable as a logical inductor, a decision theory set in that representation, and a notion of scale-free agency that covers cooperation."
+    },
+    {
+      "id": "authorship-transparency",
+      "title": "Authorship and transparency",
+      "kind": "goal",
+      "refs": [
+        "authorship-and-transparency"
+      ],
+      "blurb": "When is a verdict the principal's own program's, and a channel's influence the declared reference on the declared inputs? Coherence, authorship and transparency give legitimacy's thin property; a lie through the declared channel fails transparency."
+    },
+    {
+      "id": "normative-response-learning",
+      "title": "Normative response learning",
+      "kind": "construction",
+      "wiki": "Normative-Response-Learning",
+      "refs": [
+        "response-learning"
+      ],
+      "blurb": "A bounded learner, given due burdens, licensed responses and a bounded prospective loss, reduces a recurrent publicly represented failure by lawful edits — diminishing weight on an inferior response under the Due, Licensed and Loss interface."
+    },
+    {
+      "id": "instrumental-convergence",
+      "title": "Instrumental convergence",
+      "kind": "philosophy",
+      "refs": [
+        "instrumental-convergence"
+      ],
+      "blurb": "Convergent subgoals — self-preservation, resource and option acquisition — arise under almost any terminal objective. One of the three risk stories the plan answers, and the engine of the anti-naturality argument."
+    },
+    {
+      "id": "dishonest-inner-optimizers",
+      "title": "Dishonest inner optimizers",
+      "kind": "philosophy",
+      "refs": [
+        "dishonest-inner-optimizers"
+      ],
+      "blurb": "Learned optimizers pursuing their own objectives behind apparently aligned behaviour — a verdict that is not the principal's own program's. One of the three risk stories the plan answers."
+    },
+    {
+      "id": "answerability",
+      "title": "Answerability",
+      "kind": "philosophy",
+      "blurb": "The standing to be asked for reasons, to give them, and to be corrected on them — the program's central normative relation, quantified statically by the score and over histories by diachronic answerability."
+    },
+    {
+      "id": "warrant",
+      "title": "Warrant",
+      "kind": "philosophy",
+      "blurb": "A defeasible licence for a conclusion or verdict: justification that can be undercut or rebutted rather than entailment that cannot. What the licence chain renders record-readable."
     }
   ],
   "links": [
@@ -1227,6 +1297,151 @@
       ],
       "why": "the same subject approached as learning from unreliable norm feedback",
       "undirected": true
+    },
+    {
+      "from": "stance-and-level",
+      "to": "the-program",
+      "rel": [
+        "part"
+      ],
+      "why": "one of the plan's lines: the cruxes every other line reads"
+    },
+    {
+      "from": "udt",
+      "to": "stance-and-level",
+      "rel": [
+        "shapes"
+      ],
+      "why": "the updateless stance is one side of the line's crux"
+    },
+    {
+      "from": "abstraction-arc",
+      "to": "the-program",
+      "rel": [
+        "part"
+      ],
+      "why": "one of the plan's lines"
+    },
+    {
+      "from": "logical-induction",
+      "to": "abstraction-arc",
+      "rel": [
+        "substrate"
+      ],
+      "why": "the representation theorem says when a system is interpretable as a logical inductor"
+    },
+    {
+      "from": "cartesian-frames",
+      "to": "abstraction-arc",
+      "rel": [
+        "shapes"
+      ],
+      "why": "a candidate algebra for where an agent's boundary sits"
+    },
+    {
+      "from": "decision-theory-for-inductors",
+      "to": "abstraction-arc",
+      "rel": [
+        "adjacent"
+      ],
+      "why": "the arc restates the decision theory inside its representation",
+      "undirected": true
+    },
+    {
+      "from": "authorship-transparency",
+      "to": "legitimacy-line",
+      "rel": [
+        "part"
+      ],
+      "why": "the thick definition answering legitimacy's thin specification"
+    },
+    {
+      "from": "dishonest-inner-optimizers",
+      "to": "authorship-transparency",
+      "rel": [
+        "shapes"
+      ],
+      "why": "the failure the authorship question names: a verdict not the principal's own program's"
+    },
+    {
+      "from": "dishonest-inner-optimizers",
+      "to": "the-program",
+      "rel": [
+        "shapes"
+      ],
+      "why": "a risk story the plan answers"
+    },
+    {
+      "from": "instrumental-convergence",
+      "to": "the-program",
+      "rel": [
+        "shapes"
+      ],
+      "why": "a risk story the plan answers"
+    },
+    {
+      "from": "instrumental-convergence",
+      "to": "anti-natural-corrigibility",
+      "rel": [
+        "part"
+      ],
+      "why": "the engine of the argument: convergent subgoals resist correction"
+    },
+    {
+      "from": "normative-response-learning",
+      "to": "normativity-line",
+      "rel": [
+        "part"
+      ],
+      "why": "the learning half: lawful edits against publicly represented failures"
+    },
+    {
+      "from": "answerability",
+      "to": "normativity-line",
+      "rel": [
+        "part"
+      ],
+      "why": "the central normative relation the line builds"
+    },
+    {
+      "from": "answerability",
+      "to": "answerability-score",
+      "rel": [
+        "formalizes"
+      ],
+      "why": "the score is its static quantification"
+    },
+    {
+      "from": "answerability",
+      "to": "diachronic-answerability",
+      "rel": [
+        "formalizes"
+      ],
+      "why": "the concept taken over a history"
+    },
+    {
+      "from": "reasons",
+      "to": "answerability",
+      "rel": [
+        "part"
+      ],
+      "why": "being answerable is answering with reasons"
+    },
+    {
+      "from": "warrant",
+      "to": "warrant-licence-chain",
+      "rel": [
+        "formalizes"
+      ],
+      "why": "the licence chain renders a warrant record-readable"
+    },
+    {
+      "from": "rebut-undercut",
+      "to": "warrant",
+      "rel": [
+        "part"
+      ],
+      "why": "the two ways a warrant is attacked"
     }
   ]
 }
