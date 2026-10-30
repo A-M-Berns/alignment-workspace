@@ -157,17 +157,14 @@ writes `_site/`. One id, one URL: `/n/<node id>/`, `/items/<n>/`, `/decisions/<a
 to), `/wiki/<Page>/`, `/by/<handle>/`; two ids that map to one path fail
 the build, as does any reference that does not resolve (`site/README.md`). Pages, as built:
 
-- **front page**: the top frame's question, the lede from `site/lede.md`, and the map as
-  a canvas in discrete levels (ruling S5, 2026-10-30): one level renders at a time as a
-  pannable network graph — small jewel-toned nodes, force-laid, edges hoverable for a
-  summary of the relationship — entered by click with an animated zoom and left by esc
-  or the breadcrumb. The default level is the concept network of `state/concepts.json`
-  — goals and threads, new constructions, mathematical objects, prior work and
-  philosophical concepts, the repository wiki's terms among them and beyond them,
-  colour-coded by kind, every node a popup, every link hand-chosen with its relation
-  categories and a one-line why; the containment views over the map's objects are the
-  frame tree, the rounds, and the merged pull requests digested in `state/prs.json`,
-  where that file has entries; the feed's head collapsed below.
+- **front page**: the map, filling the viewport (ruling S5, 2026-10-30): one pannable,
+  zoomable network graph — the concept network of `state/concepts.json`, whose members
+  are goals and threads, new constructions, mathematical objects, prior work and
+  philosophical concepts, the repository wiki's terms among them and beyond them — small
+  jewel-toned nodes colour-coded by kind, force-laid, every link hand-chosen with its
+  relation categories and a one-line why on edge hover, every node a popup ending in its
+  tagged merged work from `state/prs.json`; the question and lede in an about panel over
+  the canvas, the feed's head collapsed below.
 - **frame** (`/n/<frame>/`): question, owners, the narrative rendered, roots by role, what it
   holds by kind (formal results, items, other), sub-frames, the path up to the top frame,
   *no goal yet* where `roots` is empty.

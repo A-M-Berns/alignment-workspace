@@ -166,3 +166,4 @@ main:has(.map-full) > h1, main:has(.map-full) > .subtitle { display: none; }
   .map-full .map-about { top: auto; bottom: 2.4rem; right: 0.6rem; }
   .map-full .map-bar.overlay { left: 0.6rem; right: 0.6rem; max-width: none; }
 }
+svg#map.no-edges .net-edges { display: none; }

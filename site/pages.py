@@ -337,8 +337,7 @@ def node_body(site: Site, x: str) -> tuple[str, list[tuple[str, str]], str]:
 
 def node_page(site: Site, x: str) -> str:
     body, crumbs, sub = node_body(site, x)
-    on_map = f'<p class="muted"><a href="/#n={esc(Site.seg(x))}">See it on the map</a>.</p>'
-    return layout(site, x, on_map + body, crumbs, sub)
+    return layout(site, x, body, crumbs, sub)
 
 
 def node_frag(site: Site, x: str) -> str:
@@ -573,10 +572,8 @@ def front_page(site: Site, lede_html: str, feed_rows: list[str]) -> str:
     body = ['<div class="map-full"><div class="map-stage">'
             '<svg id="map" role="application" aria-label="the argument map"></svg>'
             '<div class="map-bar overlay">'
-            '<span class="views" id="map-views"></span>'
-            '<label class="edges-toggle"><input type="checkbox" id="map-edges" checked> edges</label>'
-            '<span id="map-legend"></span></div>'
-            '<nav class="map-crumbs overlay" id="map-crumbs"></nav>'
+            '<span id="map-legend"></span>'
+            '<label class="edges-toggle"><input type="checkbox" id="map-edges" checked> edges</label></div>'
             f'<details class="map-about overlay"><summary>about this map</summary><p class="question">{esc(top["question"])}</p>{lede_html}</details>'
             '<span class="map-hint overlay muted">drag to pan · scroll to zoom · click a node · esc backs out</span>'
             '<div id="map-tip" hidden></div>'
@@ -588,123 +585,34 @@ def front_page(site: Site, lede_html: str, feed_rows: list[str]) -> str:
 
 
 def map_data(site: Site) -> dict:
-    """What the canvas lays out: every node once, three containments over the same ids. `concept` is the frame tree
-    continued into the part edges below each goal; `rounds` groups by origin round; `class` by epistemic class.
-    A node reachable twice is placed at its first encounter and the other arrivals become edges."""
+    """What the canvas draws: the concept network of state/concepts.json, and nothing else — ids in
+    registry order, per-concept metadata (kind, wiki page, title, blurb head, tagged merged work),
+    and the hand-chosen links, each carrying its relation labels and why as the edge hover's text."""
     r = site.repo
-    nodes = {}
-    for x, N in r.nodes.items():
-        e = r.record_entry(x) if N.get("formal_result") else None
-        nodes[x] = {"k": kind_label(N), "s": N["statement"].strip().replace("\n", " ")[:160],
-                    **({"d": 1} if r.drafted(x) else {}),
-                    **({"f": 1} if N.get("frame") else {}),
-                    **({"q": (N["frame"].get("question") or "")[:160]} if N.get("frame") else {}),
-                    **({"c": e.get("class")} if e else ({"c": "unregistered"} if N.get("formal_result") else {})),
-                    **({"i": N["fields"].get("item_status", "open")} if x in r.item_of_node else {})}
-    placed: set[str] = set()
-    edges: list[list] = []
-
-    def tree(x: str) -> dict:
-        placed.add(x)
-        N = r.nodes[x]
-        kids = []
-        for rt in (N["frame"].get("roots") or []) if N.get("frame") else []:
-            kids.append((rt["id"], str(rt.get("role") or "")))
-        for h in (N["frame"].get("holds") or []) if N.get("frame") else []:
-            kids.append((h, "held"))
-        for c in N["children"]:
-            kids.append((c, "part"))
-        out = []
-        for kid, role in kids:
-            if kid not in r.nodes:
-                site.unresolved.append(f"map:{x}:{kid}")
-                continue
-            if kid in placed:
-                edges.append([x, kid, role])
-            else:
-                out.append(tree_entry(kid, role))
-        return {"id": x, "ch": out}
-
-    def tree_entry(kid: str, role: str) -> dict:
-        t = tree(kid)
-        if role and role != "part":
-            t["r"] = role
-        return t
-
-    top = r.index["frame"]
-    roots = []
-    for rt in top.get("roots") or []:
-        if rt["id"] in r.nodes and rt["id"] not in placed:
-            roots.append(tree_entry(rt["id"], str(rt.get("role") or "")))
-    for h in top.get("holds") or []:
-        if h in r.nodes and h not in placed:
-            roots.append(tree_entry(h, "held"))
-    stray = [{"id": x, "ch": []} for x in r.nodes if x not in placed]
-    concept = {"id": "top", "q": (top.get("question") or "")[:200], "ch": roots + ([{"id": "(unplaced)", "ch": stray}] if stray else [])}
-    for x, N in r.nodes.items():
-        if N.get("given"):
-            g = str(N["given"]).split("@")[0]
-            if g in r.nodes:
-                edges.append([g, x, "given"])
-    # rounds view: a node sits under the round its registry entry or work pointer names
-    by_round: dict[str, list[str]] = {}
-    for x, N in r.nodes.items():
-        rid = None
-        e = r.record_entry(x) if N.get("formal_result") else None
-        if e and e.get("origin_round") in r.rounds:
-            rid = e["origin_round"]
-        else:
-            for w in N.get("work") or []:
-                if w.get("kind") == "round":
-                    tail = str(w.get("ref")).rstrip("/").split("/")[-1]
-                    if tail in r.rounds:
-                        rid = tail
-                        break
-        if rid:
-            by_round.setdefault(rid, []).append(x)
-    rounds_view = {"id": "rounds", "ch": [{"id": rid, "q": str(r.rounds[rid].get("date") or ""), "ch": [{"id": x, "ch": []} for x in xs]}
-                                          for rid, xs in sorted(by_round.items(), key=lambda kv: str(r.rounds[kv[0]].get("date") or ""), reverse=True)]}
-    # the concept network: the curated registry of state/concepts.json — goals, constructions,
-    # objects, prior work and philosophical concepts, with hand-chosen typed links
     REL = {"part": "part of", "substrate": "built on", "uses": "uses", "shapes": "shaped the vocabulary of",
            "defines": "set out in", "adjacent": "adjacent to", "contrast": "contrasted with", "formalizes": "formalized by"}
-    clinks: list[list] = []
+    links: list[list] = []
     for L in r.concept_links:
         a, b = L.get("a"), L.get("b")
         if a not in r.concepts or b not in r.concepts:
             site.unresolved.append(f"concepts:link:{a}--{b}")
             continue
         rels = [REL.get(x, x) for x in L.get("rel") or []]
-        clinks.append([a, b, 2 + len(rels), (", ".join(rels) + " — " if rels else "") + str(L.get("why") or "")])
+        links.append([a, b, 2 + len(rels), (", ".join(rels) + " — " if rels else "") + str(L.get("why") or "")])
+    prs_of: dict[str, int] = {}
+    for num, P in r.prs.items():
+        for w in (P.get("topics") or {}).get("wiki") or []:
+            prs_of[w] = prs_of.get(w, 0) + 1
+    meta = {}
     for cid, e in r.concepts.items():
         if e.get("wiki") and e["wiki"] not in r.wiki:
             site.unresolved.append(f"concepts:{cid}:wiki:{e['wiki']}")
         for x in e.get("refs") or []:
             if x not in r.nodes:
                 site.unresolved.append(f"concepts:{cid}:ref:{x}")
-    prs_by_topic: dict[str, list[str]] = {}
-    pr_meta = {}
-    for num, P in sorted(r.prs.items(), key=lambda kv: int(kv[0]), reverse=True):
-        pr_meta[num] = {"t": P.get("title", "")[:120], "d": str(P.get("merged") or ""), "sup": bool(P.get("superseded"))}
-        for w in (P.get("topics") or {}).get("wiki") or []:
-            if w in r.wiki:
-                prs_by_topic.setdefault("wiki:" + w, []).append(num)
-        for f in (P.get("topics") or {}).get("frames") or []:
-            if f in r.nodes:
-                prs_by_topic.setdefault("n:" + f, []).append(num)
-    concept_view = {"id": "concepts", "ch": [{"id": cid, "kind": "concept", "ch": []} for cid in r.concepts]} if r.concepts else None
-    prs_view = {"id": "prs", "ch": [{"id": topic.split(":", 1)[1], "kind": "topic", "tref": topic,
-                                     "ch": [{"id": "#" + n, "kind": "pr", "ch": []} for n in nums]}
-                                    for topic, nums in sorted(prs_by_topic.items(), key=lambda kv: -len(kv[1]))]} if prs_by_topic else None
-    views = {"concept": concept, "rounds": rounds_view}
-    if concept_view:
-        views["concepts"] = concept_view
-    if prs_view:
-        views["prs"] = prs_view
-    cmeta = {cid: {"k": e.get("kind", ""), "w": e.get("wiki") or "", "t": e.get("title", cid), "s": str(e.get("blurb") or "")[:180],
-                   "prs": len(prs_by_topic.get("wiki:" + (e.get("wiki") or ""), []))} for cid, e in r.concepts.items()}
-    return {"nodes": nodes, "views": views, "edges": edges, "clinks": clinks,
-            "concepts": cmeta, "kinds": r.concept_kinds, "prmeta": pr_meta}
+        meta[cid] = {"k": e.get("kind", ""), "w": e.get("wiki") or "", "t": e.get("title", cid),
+                     "s": str(e.get("blurb") or "")[:180], "prs": prs_of.get(e.get("wiki") or "", 0)}
+    return {"items": list(r.concepts), "concepts": meta, "kinds": r.concept_kinds, "links": links}
 
 
 def feed_rows(site: Site) -> list[str]:

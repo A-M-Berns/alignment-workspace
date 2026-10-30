@@ -6831,30 +6831,23 @@ deploy alone. The ruling text is the maintainer's and is not reworded.
 **Maintainer ruling, taken in conversation on 2026-10-30; executed by the
 site-vertical-slice round's follow-up on its open pull request.**
 
-**S5. The site's one UI is the map, in discrete levels, each level a network graph.**
-The front page is a canvas laid out from `/assets/map.json` by vanilla JavaScript
-(`site/assets/map.js`), one level rendered at a time as a pannable, zoomable network:
-small circular nodes, force-laid, jewel-toned by what they are, nothing marking a node
-composite before it is entered; edges hoverable for a summary of the relationship they
-aggregate (which pages link, the shared references, the part/given connections between
-two regions of the map). In the containment views a click on a node with contents
-descends one level with an animated zoom, backed out by esc, ctrl-click, wheel-out or
-the breadcrumb — the top question into the lines, a line into its frame's goals and
-holds, a claim into its conjuncts. A reader is not shown text until they click in for
-it. The default level is the **concepts** view: the curated network of
+**S5. The site's one UI is the map: one full-viewport network graph.** The front page
+fills the viewport with a single pannable, zoomable network laid out from
+`/assets/map.json` by vanilla JavaScript (`site/assets/map.js`): the curated network of
 `state/concepts.json`, a wiki of the agent-foundations theory relevant here whose
 members span five kinds — goal/thread of the research, new construction, mathematical
 object, prior work, philosophical concept — encompassing the repository wiki's terms
-and going beyond them, colour-coded by kind with a legend. Its links are hand-chosen by
-a pass over the candidate pairs, never a near-complete graph, each carrying one or more
-relation categories and a one-line why shown on edge hover; every click opens a popup
-(the entry's wiki page where one exists, else its `/concepts/<id>/` fragment). The
-containment views over the map's objects: the frame tree (**goals**); the originating
-**rounds**; and **merged work** — topics containing the digested pull requests of
-`state/prs.json`. A clicked node's detail — built once as `/n/<id>/frag.html`,
-`/wiki/<Page>/frag.html`, `/concepts/<id>/frag.html` or `/prs/<n>/frag.html` — opens as a
-centred popup over the canvas, and `/#n=<id>` deep-links a map node; every per-id URL of
-S4 stands, each object remaining a full page, so the contract is unchanged. Walks are
+and going beyond them. Small circles colour-coded by kind with a legend, force-laid and
+free of walls, each carrying its name and a two-line summary; the question and lede sit
+in an about panel over the canvas, and a reader is not shown more text until they click
+in for it. The links are hand-chosen by a pass over the candidate pairs, never a
+near-complete graph, each carrying one or more relation categories and a one-line why
+shown on edge hover. Every click opens a centred popup — the entry's wiki page fragment
+where one exists, else its `/concepts/<id>/` fragment, each ending in a
+reverse-chronological expandable list of its tagged merged work — and `/#c=<id>`
+deep-links a concept. The frame tree, the rounds and the digested pull requests are
+pages and popups, not canvases; every per-id URL of S4 stands, each object remaining a
+full page, so the contract is unchanged. Walks are
 not part of the site; the one shipped walk leaves with this ruling, and its open review
 entry leaves the queue. Intake is verbs on every node page and fragment — comment,
 challenge, estimate, want — each a prefilled GitHub issue carrying the node id and a

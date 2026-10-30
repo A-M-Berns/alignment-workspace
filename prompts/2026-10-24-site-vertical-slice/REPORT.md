@@ -330,3 +330,16 @@ a two-line summary in its body (a concept's blurb, a frame's question, a node's
 Statement head). The merged-work lists — a concept's tagged pull requests and `/prs/` —
 are reverse-chronological expandable digests: the summary and any supersession note open
 in place, the full page is one more click.
+
+## Seventh follow-up of 2026-10-30 — one graph, full viewport
+
+The view switcher is gone: the canvas draws the concept network and nothing else, filling
+the viewport under the slim header, with the legend and edges toggle floating top-left,
+the question and lede in an about panel top-right, and the hint bottom-right. The force
+layout runs without walls and the finished positions are uniform-scaled into the world
+box, which removes the border piling the wall-clamp caused. `/assets/map.json` carries
+only the concept network (21 KB, from 716 KB); the frame tree, rounds and pull-request
+digests remain reachable as pages and inside popups. `/#c=<id>` deep-links a concept; the
+`/#n=` form leaves with the node canvas it pointed into. A GPT Astra (OpenAI) run is
+dispatched for a second-opinion aesthetic critique; its accepted and rejected suggestions
+land as a further commit.

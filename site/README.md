@@ -16,24 +16,16 @@ refuses one; `tests/site_build.py` runs the build as a gate under `tests/run.py`
 
 ## The map is the front page (ruling S5, 2026-10-30)
 
-`/` is a canvas in discrete levels: `/assets/map.js` (vanilla JavaScript, SVG) renders one
-level of `/assets/map.json` at a time as a pannable, zoomable network graph — small
-circular nodes, jewel-toned by what they are, force-laid, with edges a reader can hover
-for a summary of the relationship (which pages link, how many shared references, which
-connections run between two regions of the map). Nothing marks a node as composite;
-clicking it either opens its popup or, in the containment views, descends one level with
-an animated zoom, backed out by esc, ctrl-click, wheel-out or the breadcrumb. The default
-view is **concepts**: the curated network of `state/concepts.json` — goals and threads,
-new constructions, mathematical objects, prior work and philosophical concepts,
-colour-coded by kind with a legend — where every click is a popup (the entry's wiki page
-where one exists, else its `/concepts/<id>/` fragment) and every hand-chosen link carries
-its relation categories and a one-line why on the edge hover. The containment views over
-the map's objects: **goals** (the frame tree continued into the part edges), **rounds**,
-and — when `state/prs.json` has entries — **merged work** (topics containing the digested
-pull requests). Popups load fragments: `/n/<id>/frag.html`, `/wiki/<Page>/frag.html`,
-`/concepts/<id>/frag.html`, or `/prs/<n>/frag.html`; `/#n=<id>` (ids with `/` as `--`)
-deep-links a map node. Without JavaScript the front page lists the lines as links, and
-every object remains a full page.
+`/` is the map: `/assets/map.js` (vanilla JavaScript, SVG) fills the viewport with one
+pannable, zoomable network graph of `/assets/map.json` — the curated concept network of
+`state/concepts.json`, whose members are goals and threads, new constructions,
+mathematical objects, prior work and philosophical concepts, small circles colour-coded
+by kind with a legend, force-laid. Every hand-chosen link carries its relation categories
+and a one-line why on the edge hover. Every click is a popup — the entry's wiki page
+fragment where one exists, else its `/concepts/<id>/` fragment, each ending in a
+reverse-chronological expandable list of its tagged merged work — and `/#c=<id>` deep-links
+a concept. The question and lede sit in an about panel over the canvas. Without JavaScript
+the front page lists the lines as links, and every object remains a full page.
 
 `state/prs.json` holds the digests of merged pull requests — number, title, merged date,
 rounds, topic tags (wiki pages and frames), a one-or-two-paragraph summary of key points,

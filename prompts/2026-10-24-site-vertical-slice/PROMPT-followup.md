@@ -85,3 +85,9 @@ Further directives of the same conversation, verbatim:
 > relatively spread out. and each one can have a small summary as part of its body. in
 > the click-in PR view the PRs should be listed reverse chronologically with like you
 > expandable digest sof each one or click in further for full detail
+
+> the nodes are so far apart now on the border. and honestly this should be basically
+> full screen not a little window. and better aesthetics/color scheme please make it look
+> nicer. run a gpt astra subagent for secodn opinion brainstorming
+
+> goals shouldn't be a separate view. in fact those options should be only the grqph
