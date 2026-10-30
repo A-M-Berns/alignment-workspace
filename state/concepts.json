@@ -1434,6 +1434,56 @@
         "part"
       ],
       "why": "deference is how a correction reaches an agent that may know more; corrigibility is what it buys"
+    },
+    {
+      "from": "corrigibility-kernel",
+      "to": "deconfusing-corrigibility",
+      "rel": [
+        "substrate"
+      ],
+      "why": "the companion's lexicographic theorem is stated over the kernel's objects"
+    },
+    {
+      "from": "traderization",
+      "to": "enforcement-compiler",
+      "rel": [
+        "adjacent"
+      ],
+      "undirected": true,
+      "why": "two routes from an obligation to the market: compile a projection, or set a trader against it"
+    },
+    {
+      "from": "logical-induction",
+      "to": "embedded-agency",
+      "rel": [
+        "part"
+      ],
+      "why": "the agenda's treatment of logical uncertainty"
+    },
+    {
+      "from": "reflection-principles",
+      "to": "faithful-acceleration",
+      "rel": [
+        "adjacent"
+      ],
+      "undirected": true,
+      "why": "self-trust made tractable: where strong reflection demands too much, faithfulness is the condition actually met"
+    },
+    {
+      "from": "normative-response-learning",
+      "to": "normative-induction",
+      "rel": [
+        "part"
+      ],
+      "why": "the learning claim the Progress statistic quantifies"
+    },
+    {
+      "from": "value-change-as-belief-change",
+      "to": "continuation-bria",
+      "rel": [
+        "shapes"
+      ],
+      "why": "the BLI corrigibility thesis the learning layer carries"
     }
   ]
 }

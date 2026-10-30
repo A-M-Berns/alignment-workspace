@@ -555,3 +555,22 @@ registered at Cloudflare. `site/CNAME` carries it (the build already copies it i
 every deploy), the Pages custom-domain setting names it, and the dated ruling retires
 the queue entry. The DNS records live at Cloudflare and are the maintainer's step;
 until they exist and a deploy lands, the name resolves to nothing.
+
+## Twenty-second follow-up of 2026-10-30 — the second structural sweep; arcs; on-site comments
+
+Six links the second sweep found wanting: the corrigibility kernel feeds the companion
+formalization (its lexicographic theorem is stated over the kernel's objects);
+traderization and the enforcement compiler are the two routes from an obligation to the
+market; logical induction is the embedded-agency agenda's treatment of logical
+uncertainty; reflection principles sit beside faithful acceleration (self-trust's demand,
+met by faithfulness); normative response learning is the claim the Progress statistic
+quantifies; and the belief-change thesis shapes continuation BRIA. 118 links. Edges
+spanning two or more columns now arc above or below the rows instead of cutting through
+unrelated capsules. Comments became an on-site act: the concept card's Comment button
+opens a form in place, the send POSTs to the intake worker under `infra/comment-worker/`
+(a Cloudflare Worker that files the GitHub issue in parallel — its one credential a
+fine-grained issues:write token held as a Worker secret, outside the repository and its
+CI), and the status links the filed record; if the worker is unreachable the form offers
+the direct issue as a fallback. Not deployed: the worker needs a Cloudflare Workers
+token and the GitHub token, which are the maintainer's to mint; until then the fallback
+path carries comments.

@@ -205,7 +205,7 @@
     var bands = bandOrder.filter(function (b) { return rows[b] && rows[b].length && b !== "context"; })
       .map(function (b) { return { label: ((meta[b] || {}).t || b), y0: bandSpan[b][0], y1: bandSpan[b][1] }; });
     if (rows.context && rows.context.length) bands.push({ label: "context", y0: bandSpan.context[0], y1: bandSpan.context[1] });
-    return { pos: pos, geo: geo, w: w, h: h, bands: bands };
+    return { pos: pos, geo: geo, w: w, h: h, bands: bands, colOf: colOf };
   }
 
   var at = {}, geo = {}, capEl = {};
@@ -219,6 +219,7 @@
     var items = DATA.items, links = DATA.links;
     var lay = layout(items, links);
     at = lay.pos; geo = lay.geo;
+    var colOf = lay.colOf;
     svg.__layout = { at: at, geo: geo };
     var ax = el("g", { "class": "axis" }, g);
 
@@ -238,7 +239,13 @@
       var x1 = a.x + (leftToRight ? ga.w / 2 + 2 : -ga.w / 2 - 2), y1 = a.y;
       var x2 = c.x + (leftToRight ? -gc.w / 2 - (L[5] ? 2 : 7) : gc.w / 2 + (L[5] ? 2 : 7)), y2 = c.y;
       var bow = Math.max(Math.abs(x2 - x1) * 0.45, 40) * (leftToRight ? 1 : -1);
-      var d = "M" + x1 + "," + y1 + " C" + (x1 + bow) + "," + y1 + " " + (x2 - bow) + "," + y2 + " " + x2 + "," + y2;
+      var span = Math.abs((colOf[L[1]] || 0) - (colOf[L[0]] || 0));
+      var arc = 0;
+      if (span >= 2) {
+        arc = Math.min(50 + 34 * span, 190) * (((y1 + y2) / 2 < lay.h / 2) ? -1 : 1);
+        bow = bow * 0.6;
+      }
+      var d = "M" + x1 + "," + y1 + " C" + (x1 + bow) + "," + (y1 + arc) + " " + (x2 - bow) + "," + (y2 + arc) + " " + x2 + "," + y2;
       var grp = el("g", { "class": "net-edge" + (L[5] ? " undirected" : "") }, eg);
       var wire = el("path", { d: d, "class": "wire", "stroke-width": Math.min(0.75 + L[2] * 0.08, 1.3) }, grp);
       if (!L[5]) wire.setAttribute("marker-end", "url(#arrow)");
@@ -314,8 +321,9 @@
     card.innerHTML = '<p class="card-head">' + esc(m.t || id) + ' <span class="kind">' + esc(kindLabel(m.k)) + "</span></p>"
       + (m.s ? "<p class=\"card-blurb\">" + esc(m.s) + "</p>" : "")
       + '<p class="card-meta muted">' + (m.prs ? m.prs + " merged PR(s) · " : "") + (m.w ? "wiki page" : "registry entry") + "</p>"
-      + '<p class="card-actions"><button data-act="more">Read more</button><a class="comment-link" href="' + commentUrl(id) + '">Comment</a></p>';
+      + '<p class="card-actions"><button data-act="more">Read more</button><button data-act="cmt" class="quiet">Comment</button></p>';
     card.querySelector("[data-act=more]").addEventListener("click", function () { hideCard(); openFull(id); });
+    card.querySelector("[data-act=cmt]").addEventListener("click", function (e2) { commentForm(id); placeCard(e2); });
     placeCard(ev);
   }
   function edgeCard(L, ev) {
@@ -330,11 +338,34 @@
     placeCard(ev);
   }
 
-  function commentUrl(id) {
+  var COMMENT_API = "https://comments.alignmentworkspace.com";
+  function commentForm(id) {
     var m = DATA.concepts[id] || {};
-    var title = encodeURIComponent("[concept] " + id + ": comment");
-    var body = encodeURIComponent("concept: " + id + "\nmap: /#c=" + seg(id) + "\n\n## What you want to say\n\n");
-    return "https://github.com/A-M-Berns/alignment-workspace/issues/new?title=" + title + "&body=" + body;
+    card.innerHTML = '<p class="card-head">Comment on ' + esc(m.t || id) + "</p>"
+      + '<input class="cmt-name" type="text" maxlength="80" placeholder="name (optional)">'
+      + '<textarea class="cmt-body" maxlength="5000" rows="5" placeholder="What you want to say. It appears after review; it is filed publicly the moment you send it."></textarea>'
+      + '<p class="card-actions"><button data-act="send">Send</button><button data-act="back" class="quiet">Back</button></p>'
+      + '<p class="cmt-status muted"></p>';
+    card.querySelector("[data-act=back]").addEventListener("click", function (e2) { nodeCard(id, e2); });
+    card.querySelector("[data-act=send]").addEventListener("click", function () {
+      var body = card.querySelector(".cmt-body").value.trim();
+      var name = card.querySelector(".cmt-name").value.trim();
+      var st = card.querySelector(".cmt-status");
+      if (body.length < 3) { st.textContent = "Write something first."; return; }
+      st.textContent = "Sending…";
+      fetch(COMMENT_API, { method: "POST", headers: { "content-type": "application/json" },
+        body: JSON.stringify({ concept: id, name: name, body: body }) })
+        .then(function (r) { return r.json(); })
+        .then(function (d2) {
+          if (d2.ok) { st.innerHTML = 'Sent — it appears after review. <a href="' + d2.url + '">Filed record</a>.'; }
+          else { throw new Error(d2.error || "failed"); }
+        })
+        .catch(function () {
+          st.innerHTML = 'Could not send. <a href="https://github.com/A-M-Berns/alignment-workspace/issues/new?title='
+            + encodeURIComponent("[comment] " + id) + "&body=" + encodeURIComponent(body)
+            + '">File it directly</a> instead.';
+        });
+    });
   }
   function base(id) {
     return "/concepts/" + seg(id) + "/";
@@ -344,7 +375,9 @@
     var m = DATA.concepts[id] || {};
     panelBody.innerHTML = '<p class="muted">Loading ' + esc(m.t || id) + "…</p>";
     fetch(base(id) + "frag.html").then(function (r) { if (!r.ok) throw 0; return r.text(); }).then(function (h) {
-      panelBody.innerHTML = h + '<p class="muted popup-foot"><a href="' + base(id) + '">Open the full page →</a> · <a href="' + commentUrl(id) + '">Comment on this concept</a></p>';
+      panelBody.innerHTML = h + '<p class="muted popup-foot"><a href="' + base(id) + '">Open the full page →</a> · <a href="#" data-cmt>Comment on this concept</a></p>';
+      var cl = panelBody.querySelector("[data-cmt]");
+      if (cl) cl.addEventListener("click", function (e2) { e2.preventDefault(); closeFull(); commentForm(id); placeCard(e2); });
     }).catch(function () { panelBody.innerHTML = '<p>Could not load; <a href="' + base(id) + '">open the page</a>.</p>'; });
     if (history.replaceState) history.replaceState(null, "", "/#c=" + seg(id));
   }

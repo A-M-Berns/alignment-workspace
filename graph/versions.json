@@ -1,9 +1,9 @@
 {
  "generated": {
   "derived.json": "4d5f453a9f1209707305dfba",
-  "index.json": "d63d947b4722c57b3520f913"
+  "index.json": "57c64b2a5e1bda82b943c057"
  },
- "generated_hash": "683716aedd6c5d8b6a9df735",
+ "generated_hash": "0bb7c4348ad5a6bfde0f832e",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
