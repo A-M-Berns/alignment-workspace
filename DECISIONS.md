@@ -390,16 +390,6 @@ commit.
   *Turns on:* where each belongs in the maintainers' own picture of the lines.
   <!-- decision: open--placements-round-left-where-they-were; touches: node:wiki-corpus-maintenance, node:normative-inductor; status: open -->
 
-- **The walk's prose, and whether its structure is right (2026-10-24).**  The walk
-  `site/walks/normative-inductor-corrigible.md` goes from one research question down through
-  `the-program`, `normativity` and `legitimacy` to the five claims the site-vertical-slice
-  round connected, their bridges and gaps, and three things a visitor could do; the prose is
-  the round's draft, marked as such on the page, and the order of the steps is the round's
-  reading of where the two halves of the question meet.
-  *Turns on:* whether the maintainers read the question the way the walk does, which only
-  the people whose program it is can say; the prose is theirs to rewrite in place.
-  <!-- decision: open--walk-s-prose-whether-structure-right; touches: node:the-program, node:normativity, node:legitimacy, node:legitimacy-meets-syntax; status: open -->
-
 - **The five bridges' rewritten Statements and the hypotheses' tags (2026-10-24).**  The round
   rewrote sixteen bridges by reading (one per connected result, twelve of them in the
   effective-authority cluster) and filed the hypothesis leaves with `discharge` tags by one
@@ -6834,3 +6824,32 @@ will build on; document them in `site/README.md`.
 the build on pull requests runs in `ci.yml`, because the repository's own gate forbids a
 write-scoped job in any workflow that lists `pull_request`; `site.yml` is the push-to-`main`
 deploy alone. The ruling text is the maintainer's and is not reworded.
+
+### 2026-10-30 — the site is one zoomable map: nested regions with semantic zoom, three views over one node set, fragments in a panel, and intake as prefilled issues (S5)
+<!-- decision: 2026-10-30--site-one-zoomable-map-three-views-intake-prefilled-issues; touches: node:enabling-program-site -->
+
+**Maintainer ruling, taken in conversation on 2026-10-30; executed by the
+site-vertical-slice round's follow-up on its open pull request.**
+
+**S5. The site's one UI is the map, zoomed.** The front page is a canvas of nested
+regions laid out from `/assets/map.json` by vanilla JavaScript (`site/assets/map.js`):
+the top question opens into the lines, a line into its frame's goals and holds, a claim
+into its conjuncts, under semantic zoom — a region shows its contents once it is wide
+enough on screen. Three containments over the same node set are the views, switched on
+the canvas: the frame tree (**concept**, the default), the originating rounds
+(**rounds** — a round is the unit a pull request lands, so this is the provenance
+grain), and the epistemic classes (**class**). Cross-edges (`part`, `given`, `held`)
+draw between visible nodes on request. A clicked node's detail — the node page's body,
+built once as `/n/<id>/frag.html` — loads into a panel beside the canvas, and `/#n=<id>`
+deep-links it; every per-id URL of S4 stands, each node remaining a full page, so the
+contract is unchanged. Walks are not part of the site; the one shipped walk leaves with
+this ruling, and its open review entry leaves the queue. Intake is verbs on every node
+page and fragment — comment, challenge, estimate, want — each a prefilled GitHub issue
+carrying the node id and a protocol-shaped body; the site accepts no write, and a
+maintainer round sweeps what lands into ledger events under `graph/PROTOCOL.md`'s
+authorship rules.
+
+*Rejected alternatives:* a page-per-object site with hand-written walks as the guided
+layer (the maintainer judged the walk unnecessary once the map itself is the guide); a
+force-directed node-link canvas (containment reads the hierarchy better at this size); a
+write path from the page (a backend is its own decision, not taken here).
