@@ -404,3 +404,22 @@ each with its direction mark and why, then the tagged merged work as expandable 
 The theory/formalism split is kind-derived, which is one reading of "core theoretical
 versus core mathematical formalism"; a per-link classification would be finer and is not
 done.
+
+## Twelfth follow-up of 2026-10-30 — nine more concepts
+
+Added to the registry, grounded in the wiki and Sources.md: **traderization**
+(construction — a condition compiled into a trader, enforcing the finite-date bound),
+**decision theory for inductors** (goal — Home.md's component line, projects/decision-theory,
+the open learner-level question), **response authority** (construction — the Glossary's
+K_r, from which agent-caused loss and corrigibility are defined; the "authority" ask read
+as this, since practical authority was already present), **corrigibility kernel**
+(construction — the specification-layer headline), **reflection principles** (object —
+the too-strong/too-weak pair the decision comparison replaces), **Deference Done Better**
+(work — Dorst et al. 2021, with the Sources.md DOI), **Total Trust** (object — the
+inherited target, the retained two-option identity), **bounded inductive rationality**
+(object — what continuation BRIA lifts), **reasons** (philosophy — the category itself,
+distinct from Horty's treatment). Eighteen directed links tie them in; 57 entries and 85
+links total. The scan for further organizing concepts kept the registry at this grain —
+warrant, settlement, credal state and scorekeeping are already entries or subsumed by
+one; the corrigibility kernel and Total Trust were the two the scan added beyond the
+named seven.

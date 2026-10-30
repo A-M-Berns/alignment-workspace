@@ -114,3 +114,9 @@ Further directives of the same conversation, verbatim:
 > a collection of PRs along with the fundamental wiki concepts, also perhaps with a
 > clearly distinguished section on every page between core theoretical concepts and core
 > mathematical formalism concepts
+
+> this doesn't seem like the best layout still. ask gpt for help
+
+> some other concepts that should be included in the map: traderization, decision theory
+> for inductors, authority, reflection principles, deference done better, bounded
+> rationality, reasons, look through for other organizing concepts at this level
