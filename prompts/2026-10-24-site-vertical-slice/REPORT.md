@@ -361,3 +361,19 @@ annoyance.
 
 Not shown: the orientation of each of the 67 links is the drafting model's reading of
 "what feeds what"; the layering inherits any error in it.
+
+## Ninth follow-up of 2026-10-30 — the second-opinion aesthetic pass
+
+A GPT Astra (gpt-6-astra, OpenAI) critique was taken on the canvas design; its text is
+the dispatched run's output. Taken: the softened jewel palette (#69a58b, #7d9fc6,
+#bda16c, #a294bd; goals stay bone with a fine outer ring at +3 px); flat barely-luminous
+dots (single halo at 1.8× radius, 5% opacity, 10% on hover, 160 ms transitions, ≥32 px
+pointer targets); names only at overview with summaries revealed past 1.5× zoom (with
+hysteresis) or on hover, at 10.5 px; edges at 0.14 opacity and ≤1.3 px, incident edges
+lifted to 0.4 on node hover, the hovered edge to 0.75, no endpoint-colour inheritance;
+flat paper backplates instead of glass blur; the about panel top-left at ≤290 px and a
+vertical legend bottom-left. Rejected: constant screen-size labels under zoom (needs
+per-frame text rescaling; the zoom range here is small); collision-aware label
+suppression (worth doing if the registry grows past ~80 nodes, not at 48); a curated
+"start here" reading path (deferred — it is content, and the walk it resembles was cut
+by S5; the maintainer may ask for it as a popup-side affordance).

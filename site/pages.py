@@ -571,7 +571,7 @@ def front_page(site: Site, lede_html: str, feed_rows: list[str]) -> str:
         + "</ul></section></noscript>")
     body = ['<div class="map-full"><div class="map-stage">'
             '<svg id="map" role="application" aria-label="the argument map"></svg>'
-            '<div class="map-bar overlay">'
+            '<div class="map-side overlay">'
             '<span id="map-legend"></span>'
             '<label class="edges-toggle"><input type="checkbox" id="map-edges" checked> edges</label></div>'
             f'<details class="map-about overlay"><summary>about this map</summary><p class="question">{esc(top["question"])}</p>{lede_html}</details>'

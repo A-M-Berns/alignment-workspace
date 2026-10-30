@@ -96,12 +96,12 @@ svg#map { width: 100%; height: 100%; display: block; cursor: grab; }
 svg#map:active { cursor: grabbing; }
 svg#map .backdrop { fill: transparent; }
 /* jewel tones on the dark paper */
-:root { --emerald: #3fae7e; --sapphire: #5a8fde; --amber: #d9a441; --amethyst: #9d85e3; --teal: #4bb8a9; --garnet: #c56270; --slate: #6e6e76; }
+:root { --emerald: #69a58b; --sapphire: #7d9fc6; --amber: #bda16c; --amethyst: #a294bd; --teal: #6aaea3; --garnet: #b57a84; --slate: #6e6e76; }
 svg#map g.dot { cursor: pointer; }
-svg#map g.dot .halo { fill: currentColor; opacity: 0.13; transition: opacity 0.15s ease; }
-svg#map g.dot .core { fill: currentColor; stroke: #0e0e10; stroke-width: 1.5px; transition: filter 0.15s ease; }
-svg#map g.dot:hover .halo { opacity: 0.32; }
-svg#map g.dot:hover .core { filter: brightness(1.25); }
+svg#map g.dot .halo { fill: currentColor; opacity: 0.05; transition: opacity 0.16s ease; }
+svg#map g.dot .core { fill: currentColor; stroke: #0e0e10; stroke-width: 1px; transition: filter 0.16s ease; }
+svg#map g.dot:hover .halo { opacity: 0.1; }
+svg#map g.dot:hover .core { filter: brightness(1.12); }
 svg#map g.dot text { fill: #b9b9b2; font-family: var(--sans); font-weight: 450; pointer-events: none; paint-order: stroke; stroke: #0e0e10; stroke-width: 3px; stroke-linejoin: round; }
 svg#map g.dot.drafted text { fill: #77776f; }
 svg#map g.tone-concept { color: var(--amethyst); }
@@ -114,13 +114,14 @@ svg#map g.tone-garnet { color: var(--garnet); }
 svg#map g.tone-slate, svg#map g.tone-plain { color: var(--slate); }
 svg#map g.tone-bone, svg#map g.tone-group { color: var(--accent); }
 svg#map g.dot.drafted .core { opacity: 0.6; }
-svg#map .net-edge .wire { stroke: #c8c4ba; opacity: 0.16; transition: opacity 0.12s ease, stroke 0.12s ease; }
+svg#map .net-edge .wire { stroke: #c8c4ba; opacity: 0.14; transition: opacity 0.16s ease; }
 svg#map .net-edge .hit { stroke: transparent; }
-svg#map .net-edge:hover .wire { stroke: var(--accent); opacity: 0.75; }
+svg#map .net-edge:hover .wire { opacity: 0.75; }
+svg#map .net-edge.lit .wire { opacity: 0.4; }
 #map-tip { position: absolute; max-width: 300px; background: #0e0e10f2; border: 1px solid var(--rule); border-radius: 6px; padding: 0.45em 0.7em; font-size: 0.8rem; line-height: 1.4; color: var(--fg); pointer-events: none; z-index: 5; box-shadow: 0 4px 16px rgba(0,0,0,0.6); }
 #map-tip b { color: var(--accent); }
 #map-tip i { color: var(--muted); }
-#map-modal { position: absolute; inset: 0; display: none; background: rgba(8, 8, 10, 0.62); backdrop-filter: blur(2px); z-index: 6; }
+#map-modal { position: absolute; inset: 0; display: none; background: rgba(10, 10, 12, 0.72); z-index: 6; }
 #map-modal.open { display: flex; align-items: center; justify-content: center; padding: 3vh 3vw; }
 #map-panel { width: min(42rem, 94%); max-height: 88%; overflow-y: auto; background: #141417; border: 1px solid #2c2c31; border-radius: 10px; box-shadow: 0 18px 60px rgba(0, 0, 0, 0.75); padding: 1em 1.4em 1.2em; }
 #map-panel-close { position: sticky; top: 0; float: right; font: 1.05rem var(--sans); background: var(--tag-bg); color: var(--fg); border: 1px solid var(--rule); border-radius: 4px; cursor: pointer; }
@@ -154,9 +155,9 @@ main:has(.map-full) { max-width: none; padding: 0; }
 main:has(.map-full) > h1, main:has(.map-full) > .subtitle { display: none; }
 .map-full .map-stage { height: calc(100vh - 3.6rem); min-height: 28rem; border: none; border-radius: 0; border-bottom: 1px solid var(--rule); }
 .map-full .overlay { position: absolute; z-index: 4; }
-.map-full .map-bar.overlay { top: 0.9rem; left: 1.1rem; background: #0e0e10cc; backdrop-filter: blur(10px); border: 1px solid #26262a; border-radius: 9px; padding: 0.4em 0.9em; max-width: min(46rem, 72vw); }
+.map-full .map-bar.overlay { top: 0.9rem; left: 1.1rem; background: #0e0e10; border: 1px solid #26262a; border-radius: 9px; padding: 0.4em 0.9em; max-width: min(46rem, 72vw); }
 .map-full .map-crumbs.overlay { top: 3.6rem; left: 1.2rem; padding: 0.15em 0; }
-.map-full .map-about { top: 0.9rem; right: 1.1rem; width: min(26rem, 72vw); background: #0e0e10cc; backdrop-filter: blur(10px); border: 1px solid #26262a; border-radius: 9px; padding: 0.4em 0.9em; font-size: 0.9rem; }
+.map-full .map-about { top: 0.9rem; right: 1.1rem; width: min(26rem, 72vw); background: #0e0e10; border: 1px solid #26262a; border-radius: 9px; padding: 0.4em 0.9em; font-size: 0.9rem; }
 .map-full .map-about summary { cursor: pointer; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.74rem; }
 .map-full .map-about .question { font-size: 0.98rem; margin: 0.6em 0 0.4em; }
 .map-full .map-about p { color: #b3b3ac; }
@@ -169,7 +170,7 @@ main:has(.map-full) > h1, main:has(.map-full) > .subtitle { display: none; }
 svg#map.no-edges .net-edges { display: none; }
 /* calm interactions: no text selection on the canvas; arrows; the small card; the fullscreen view */
 .map-stage, .map-stage svg text { -webkit-user-select: none; user-select: none; }
-svg#map .arrowhead { fill: #c8c4ba; opacity: 0.55; }
+svg#map .arrowhead { fill: #c8c4ba; opacity: 0.45; }
 svg#map .net-edge { cursor: pointer; }
 #map-card { position: absolute; z-index: 5; width: min(21rem, 86vw); background: #141417f5; border: 1px solid #2c2c31; border-radius: 10px; box-shadow: 0 10px 36px rgba(0,0,0,0.6); padding: 0.7em 1em 0.8em; font-size: 0.86rem; line-height: 1.45; }
 #map-card .card-head { margin: 0 0 0.3em; font-weight: 650; font-size: 0.95rem; }
@@ -183,3 +184,12 @@ svg#map .net-edge { cursor: pointer; }
 #map-modal.open { padding: 0; align-items: stretch; justify-content: stretch; }
 #map-modal.open #map-panel { width: 100%; max-height: none; height: 100%; border: none; border-radius: 0; padding: 1.2em clamp(1.2em, 12vw, 10em) 2em; }
 #map-panel-close { font-size: 1.3rem; padding: 0.05em 0.5em; }
+/* atlas composition (GPT Astra pass): about top-left, vertical legend bottom-left; summaries on zoom or hover */
+.map-full .map-about { right: auto; left: 1.4rem; top: 1.2rem; max-width: 290px; }
+.map-side { position: absolute; z-index: 4; left: 1.4rem; bottom: 1.2rem; background: #0e0e10; border: 1px solid var(--rule); border-radius: 9px; padding: 0.55em 0.9em; }
+.map-side #map-legend { display: flex; flex-direction: column; gap: 0.3em; }
+.map-side .edges-toggle { display: block; margin-top: 0.5em; font-size: 0.74rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+svg#map g.dot text.nsub { display: none; font-size: 10.5px; }
+svg#map.zoomed g.dot text.nsub, svg#map g.dot:hover text.nsub { display: block; }
+svg#map g.dot .ring { fill: none; stroke: var(--accent); stroke-width: 1px; opacity: 0.6; }
+svg#map g.dot .hitc { fill: transparent; }

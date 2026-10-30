@@ -38,7 +38,12 @@
   }
   function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
   function box() { var b = svg.getBoundingClientRect(); return { w: b.width, h: b.height, left: b.left, top: b.top }; }
-  function applyTf() { cam.setAttribute("transform", "translate(" + tf.x + "," + tf.y + ") scale(" + tf.k + ")"); }
+  var zoomed = false;
+  function applyTf() {
+    cam.setAttribute("transform", "translate(" + tf.x + "," + tf.y + ") scale(" + tf.k + ")");
+    if (!zoomed && tf.k >= 1.5) { zoomed = true; svg.classList.add("zoomed"); }
+    else if (zoomed && tf.k <= 1.35) { zoomed = false; svg.classList.remove("zoomed"); }
+  }
   function wrap(text, x, y, width, size, lines, anchor) {
     var t = el("text", { x: x, y: y, "font-size": size, "text-anchor": anchor || "start" });
     var per = Math.max(Math.floor(width / (size * 0.56)), 4), words = String(text).split(/\s+/), line = "", used = 0;
@@ -116,6 +121,7 @@
       radius[items[i]] = Math.min(6 + Math.sqrt((deg[items[i]] || 0) + 1) * 1.6, 13);
     }
     var eg = el("g", { "class": "net-edges" }, g);
+    var incident = {};
     links.forEach(function (L) {
       var a = at[L[0]], c = at[L[1]];
       if (!a || !c) return;
@@ -124,23 +130,29 @@
       var x1 = a.x + dx / len * ra, y1 = a.y + dy / len * ra;
       var x2 = c.x - dx / len * rc, y2 = c.y - dy / len * rc;
       var grp = el("g", { "class": "net-edge" }, eg);
-      var wire = el("line", { x1: x1, y1: y1, x2: x2, y2: y2, "class": "wire", "stroke-width": Math.min(0.7 + L[2] * 0.2, 2.2) }, grp);
+      var wire = el("line", { x1: x1, y1: y1, x2: x2, y2: y2, "class": "wire", "stroke-width": Math.min(0.75 + L[2] * 0.08, 1.3) }, grp);
       if (!L[5]) wire.setAttribute("marker-end", "url(#arrow)");
       el("line", { x1: a.x, y1: a.y, x2: c.x, y2: c.y, "class": "hit", "stroke-width": 12 }, grp);
       grp.addEventListener("click", function (ev) { ev.stopPropagation(); edgeCard(L, ev); });
+      (incident[L[0]] = incident[L[0]] || []).push(grp);
+      (incident[L[1]] = incident[L[1]] || []).push(grp);
     });
     items.forEach(function (id) {
       var m = DATA.concepts[id] || {}, p = at[id], r = radius[id];
       var cg = el("g", { "class": "dot tone-" + (KIND_TONE[m.k] || "amethyst") }, g);
-      el("circle", { cx: p.x, cy: p.y, r: r + 5, "class": "halo" }, cg);
+      el("circle", { cx: p.x, cy: p.y, r: Math.max(r * 1.8, 16), "class": "hitc" }, cg);
+      el("circle", { cx: p.x, cy: p.y, r: r * 1.8, "class": "halo" }, cg);
       el("circle", { cx: p.x, cy: p.y, r: r, "class": "core" }, cg);
-      var t = el("text", { x: p.x, y: p.y + r + 13, "text-anchor": "middle", "font-size": 11 }, cg);
+      if (m.k === "goal") el("circle", { cx: p.x, cy: p.y, r: r + 3, "class": "ring" }, cg);
+      var t = el("text", { x: p.x, y: p.y + r + 14, "text-anchor": "middle", "font-size": 11 }, cg);
       t.textContent = (m.t || id).length > 34 ? (m.t || id).slice(0, 33) + "…" : (m.t || id);
       if (m.s) {
-        var st = wrap(m.s, p.x, p.y + r + 25, 165, 8.5, 2, "middle");
+        var st = wrap(m.s, p.x, p.y + r + 27, 190, 10.5, 2, "middle");
         st.setAttribute("class", "nsub");
         cg.appendChild(st);
       }
+      cg.addEventListener("mouseenter", function () { (incident[id] || []).forEach(function (e2) { e2.classList.add("lit"); }); });
+      cg.addEventListener("mouseleave", function () { (incident[id] || []).forEach(function (e2) { e2.classList.remove("lit"); }); });
       cg.addEventListener("click", function (ev) { ev.stopPropagation(); nodeCard(id, ev); });
     });
   }
