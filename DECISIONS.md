@@ -6896,3 +6896,16 @@ name reserved by ruling S3: the site's domain is `alignmentworkspace.com`, regis
 Cloudflare. `site/CNAME` carries it and the build copies it into every deploy; the Pages
 custom-domain setting and the Cloudflare DNS records point the name at the repository's
 Pages host. The queue entry awaiting the name leaves with this ruling.
+
+### 2026-10-30 — the weekly freshness audit, and its reporter's write scope
+<!-- decision: 2026-10-30--weekly-freshness-audit; touches: none -->
+
+**Maintainer ruling, taken in conversation on 2026-10-30.** A scheduled workflow audits
+the derived layer against the research structure weekly: every merged pull request has a
+digest, every round is carried by one or allowlisted, the concept registry's terminal
+goals and the program frame's roots match both ways, every substantive wiki page backs a
+concept, and every line is referenced by the registry (`tests/freshness.py`, with its
+null-input self-test). Findings are filed on the standing issue *Freshness audit* by a
+job holding `issues: write` under the Security section's five conditions, on the
+pin-bump pattern; the audit gates no merge. A finding is a request for a round — the
+answer to drift is dispatched curation, never silent automation of content.

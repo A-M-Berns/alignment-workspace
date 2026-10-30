@@ -797,6 +797,12 @@ non-maintainer, and no single class says that. The fields are defined once, in
     token (`pages: write`, `id-token: write`; ruling S3, 2026-10-24). Nothing
     adjudicates on the deployed site; the ci workflow keeps every build as an
     artifact, which is a pull request's preview.
+  <!-- write-scope: job=freshness-report; workflow=.github/workflows/freshness.yml -->
+  - `freshness-report`, which files the weekly freshness audit's findings as a comment
+    on (or creation of) the standing issue *Freshness audit*. It runs only on
+    `schedule` or a `main`-guarded dispatch, after a read-scope audit job whose report
+    it handles as data; it writes no content of record — the issue is a request for a
+    round, and nothing adjudicates on it.
   <!-- write-scope: job=derived-publish; workflow=.github/workflows/derived.yml -->
   - `derived-publish`, which force-pushes the argument map's two uncommitted
     generated files (graph/derived.json and graph/index.json, written at read

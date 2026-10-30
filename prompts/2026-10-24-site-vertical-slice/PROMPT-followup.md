@@ -198,3 +198,8 @@ Further directives of the same conversation, verbatim:
 > through issues, then it has to be like that just 100% autohappens in parallel to the
 > comment being left on the actual site. the comment process should be totally through
 > the site
+
+> also, i want to add as much like regression-proofing, staleness-proofing, and
+> auto-updating as possible. there should be things that automatically run on the whole
+> repo every so often making sure that things are updated, that the structure matches the
+> true research structure of the repo etc.

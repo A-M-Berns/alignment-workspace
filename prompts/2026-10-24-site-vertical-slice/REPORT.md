@@ -574,3 +574,18 @@ CI), and the status links the filed record; if the worker is unreachable the for
 the direct issue as a fallback. Not deployed: the worker needs a Cloudflare Workers
 token and the GitHub token, which are the maintainer's to mint; until then the fallback
 path carries comments.
+
+## Twenty-third follow-up of 2026-10-30 — the weekly freshness audit
+
+`tests/freshness.py` audits the derived layer against the research structure: merged
+pull requests against the digests (read live through gh), rounds against the digests'
+carry lists (with a stated allowlist for pre-protection direct pushes), the registry's
+terminal goals against the program frame's roots both ways, wiki pages against concept
+entries, and every line against the registry's references. Eight null-input self-test
+cases; its first live run caught three real gaps, and two were data fixes made here —
+a digest for #131 and the two 2026-08-11 direct-push rounds allowlisted with the reason
+stated. `.github/workflows/freshness.yml` runs it every Monday on the pin-bump pattern:
+a read-scope audit job, then a reporter holding issues: write under the Security
+section's conditions that comments on or creates the standing issue *Freshness audit*.
+The dated ruling records the design choice: a finding is a request for a round;
+drift is answered by dispatched curation, never by silent automation of content.
