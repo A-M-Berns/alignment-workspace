@@ -457,7 +457,7 @@ def concept_side(site: Site, cid: str) -> str:
     e = r.concepts[cid]
     groups: dict[str, list[str]] = {"Core theory": [], "Core formalism": [], "Sources": []}
     bucket = {"goal": "Core theory", "philosophy": "Core theory", "construction": "Core formalism",
-              "object": "Core formalism", "work": "Sources"}
+              "object": "Core formalism", "work": "Sources", "companion": "Sources"}
     for L in r.concept_links:
         other = L["to"] if L["from"] == cid else L["from"] if L["to"] == cid else None
         if not other or other not in r.concepts:

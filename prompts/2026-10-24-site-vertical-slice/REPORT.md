@@ -457,3 +457,20 @@ near-black 640-weight titles, 10 px corners, no stroke at rest and an ink stroke
 hover; the goal-ward wash, the x-axis caption and every gradient are gone; edges are
 solid muted gray lifting to ink. Band labels stay — they are the y-axis that means
 something.
+
+## Fifteenth follow-up of 2026-10-30 — the second maintainer's threads; the companion kind
+
+Six entries from the second maintainer's note dumps and contributions under
+`projects/deference/`: **faithful acceleration** (the corpus's self-referential target,
+with frozen deliberation and the tower/acceleration Lean development),
+**the deference tower** (the closed Total Trust ⟺ Value ⟺ Tower triangle, and the
+recorded failure of tower → Value on selection-referencing questions),
+**dose-response deference** (its own dump and audit), **value change as belief change**
+(the corrigibility note dump's thesis), **anti-naturality of corrigibility** (the
+standard argument, as the obstacle both answer; refs the map's own node), and
+**Learning Normativity** (the sequence; the entry says plainly that the repository's
+proofs do not cite it). The bounded-rationality entry now names Oesterheld, Demski and
+Conitzer with the Sources.md DOI. A sixth kind, **companion** — human work with a repo
+companion — colours garnet; Deconfusing Corrigibility moves to it. The band annotations
+at the left edge are removed. Radical probabilism was considered and left out: nothing
+in the repository touches it, and an entry would have been a label without a footprint.

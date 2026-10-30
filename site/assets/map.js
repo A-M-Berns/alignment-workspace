@@ -11,7 +11,7 @@
   var seg = function (id) { return String(id).replace(/\//g, "--"); };
   var modal = document.getElementById("map-modal"), panelBody = document.getElementById("map-panel-body");
   var card = document.getElementById("map-card");
-  var KIND_TONE = { goal: "bone", construction: "emerald", object: "sapphire", work: "amber", philosophy: "amethyst" };
+  var KIND_TONE = { goal: "bone", construction: "emerald", object: "sapphire", work: "amber", philosophy: "amethyst", companion: "garnet" };
 
   var DATA = null, tf = { k: 1, x: 0, y: 0 }, home = { k: 1, x: 0, y: 0 };
   var defs = document.createElementNS(NS, "defs");
@@ -190,11 +190,7 @@
     var lay = layout(items, links);
     at = lay.pos; geo = lay.geo;
     var ax = el("g", { "class": "axis" }, g);
-    (lay.bands || []).forEach(function (bd) {
-      el("line", { x1: 24, y1: bd.y0 - 10, x2: 24, y2: bd.y1 + 10, "class": "bandline" }, ax);
-      var bt = el("text", { x: 34, y: bd.y0 + 2, "font-size": 10, "class": "bandlabel" }, ax);
-      bt.textContent = bd.label;
-    });
+
     home = { k: Math.min(b.w / lay.w, 1), x: 0, y: 0 };
     home.x = (b.w - lay.w * home.k) / 2;
     home.y = (b.h - lay.h * home.k) / 2;
@@ -328,7 +324,7 @@
     var lg = document.getElementById("map-legend");
     if (!lg) return;
     var K = DATA.kinds || {};
-    var rows = [["bone", K.goal || "goal"], ["emerald", K.construction || "construction"], ["sapphire", K.object || "object"], ["amber", K.work || "work"], ["amethyst", K.philosophy || "philosophy"]];
+    var rows = [["bone", K.goal || "goal"], ["emerald", K.construction || "construction"], ["sapphire", K.object || "object"], ["amber", K.work || "work"], ["amethyst", K.philosophy || "philosophy"], ["garnet", K.companion || "companion"]];
     lg.innerHTML = rows.map(function (r) { return '<span class="lg tone-' + r[0] + '"><span class="dotc"></span>' + esc(r[1]) + "</span>"; }).join("");
   }
 

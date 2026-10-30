@@ -135,3 +135,11 @@ Further directives of the same conversation, verbatim:
 > x-axis. different node colors boldly solid color jewel tone similar bold gray level
 > with different hues by category. make sure nodes aren't ever so close to have
 > overlapping text
+
+> clicking on a node to get popup should hold the mouseover highight state until click away
+
+> do we have enough of abram's concepts on here? look through his notes and contributions
+> and make sure his threads of research are also conceptually represented in nodes. the
+> annotations at left are unnecessary.
+> also like deconfusing corrigibility should be a different category for anything that's
+> like human written stuff with companion work in the repo

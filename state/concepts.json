@@ -4,7 +4,8 @@
     "construction": "new construction",
     "object": "mathematical object",
     "work": "prior work",
-    "philosophy": "philosophical concept"
+    "philosophy": "philosophical concept",
+    "companion": "human work with a repo companion"
   },
   "concepts": [
     {
@@ -345,7 +346,7 @@
     {
       "id": "deconfusing-corrigibility",
       "title": "Deconfusing Corrigibility (post)",
-      "kind": "work",
+      "kind": "companion",
       "wiki": "Deconfusing-Corrigibility-Companion",
       "blurb": "The post whose formal content — Definitions through Learning with logical induction — is one Lean file in this repository, registered as its companion formalization."
     },
@@ -402,13 +403,53 @@
       "id": "bounded-rationality",
       "title": "Bounded inductive rationality",
       "kind": "object",
-      "blurb": "Rationality relative to bounded computation: an agent is assessed against the alternatives it could actually compute. The frame continuation BRIA lifts from one-step choices to extended continuations."
+      "blurb": "Oesterheld, Demski and Conitzer (TARK 2023): rationality relative to bounded computation — the estimating-agent setting, the no-overestimation and hypothesis-coverage criterion, and the guaranteed-payoff consequence. The frame continuation BRIA lifts to extended continuations; its myopia is the recorded obstacle to endogenous admissibility.",
+      "url": "https://doi.org/10.4204/EPTCS.379.33"
     },
     {
       "id": "reasons",
       "title": "Reasons",
       "kind": "philosophy",
       "blurb": "Considerations that count for or against — what a practice tracks, weighs, answers and remains answerable to. Here rendered as record content with enforcement semantics rather than as a primitive of the theory."
+    },
+    {
+      "id": "faithful-acceleration",
+      "title": "Faithful acceleration",
+      "kind": "construction",
+      "blurb": "Deferring to an accelerated run of one's own deliberation that remains faithful to it — the self-referential target of the deference corpus, with frozen deliberation as the fixed point and the tower and acceleration results as its Lean development."
+    },
+    {
+      "id": "deference-tower",
+      "title": "The deference tower",
+      "kind": "construction",
+      "blurb": "Tower-style expectations as a face of the deference connection: the Total Trust ⟺ Value ⟺ Tower triangle is closed with three direct arrows in the corpus, and the inference from a tower condition to Value fails on selection-referencing questions."
+    },
+    {
+      "id": "dose-response",
+      "title": "Dose-response deference",
+      "kind": "construction",
+      "blurb": "Dose-response structure in the deference setting — how the rational degree of deference moves with the quantity of evidence about the deferred-to process — recorded with its own audit."
+    },
+    {
+      "id": "value-change-as-belief-change",
+      "title": "Value change as belief change",
+      "kind": "philosophy",
+      "blurb": "The thesis the corrigibility note dump tests: corrigibility is less anti-natural than the standard arguments make it look once value change is represented as belief change."
+    },
+    {
+      "id": "anti-natural-corrigibility",
+      "title": "Anti-naturality of corrigibility",
+      "kind": "philosophy",
+      "refs": [
+        "corrigibility-anti-natural"
+      ],
+      "blurb": "The standard argument that corrigibility fights the grain of expected-utility maximization: an agent with almost any terminal objective resists modification and shutdown. The obstacle the corrigibility line answers."
+    },
+    {
+      "id": "learning-normativity",
+      "title": "Learning Normativity (Demski)",
+      "kind": "work",
+      "blurb": "Demski's sequence on learning from unreliable normative feedback — no perfect feedback, no perfect loss function, norms about the learning itself. The same subject this repository's normativity line approaches; its proofs do not cite it."
     }
   ],
   "links": [
@@ -1103,6 +1144,89 @@
         "part"
       ],
       "why": "one formal treatment of the category"
+    },
+    {
+      "from": "faithful-acceleration",
+      "to": "deference-line",
+      "rel": [
+        "part"
+      ],
+      "why": "the corpus's self-referential target: defer to your own deliberation, accelerated and kept faithful"
+    },
+    {
+      "from": "logical-induction",
+      "to": "faithful-acceleration",
+      "rel": [
+        "substrate"
+      ],
+      "why": "the acceleration results are developed over the inductor"
+    },
+    {
+      "from": "deference-tower",
+      "to": "deference-line",
+      "rel": [
+        "part"
+      ],
+      "why": "tower-style expectations as a candidate face of the connection"
+    },
+    {
+      "from": "deference-tower",
+      "to": "total-trust",
+      "rel": [
+        "adjacent"
+      ],
+      "why": "the Total Trust ⟺ Value ⟺ Tower triangle is closed with three direct arrows",
+      "undirected": true
+    },
+    {
+      "from": "dose-response",
+      "to": "deference-line",
+      "rel": [
+        "part"
+      ],
+      "why": "dose-response structure in the deference setting"
+    },
+    {
+      "from": "value-change-as-belief-change",
+      "to": "corrigibility-line",
+      "rel": [
+        "shapes"
+      ],
+      "why": "the thesis under test: representing value change as belief change softens anti-naturality"
+    },
+    {
+      "from": "anti-natural-corrigibility",
+      "to": "value-change-as-belief-change",
+      "rel": [
+        "contrast"
+      ],
+      "why": "the thesis answers the anti-naturality argument",
+      "undirected": true
+    },
+    {
+      "from": "corrigibility-2015",
+      "to": "anti-natural-corrigibility",
+      "rel": [
+        "part"
+      ],
+      "why": "the paper's failed utility patches are the argument's evidence"
+    },
+    {
+      "from": "anti-natural-corrigibility",
+      "to": "corrigibility-line",
+      "rel": [
+        "shapes"
+      ],
+      "why": "the obstacle the line answers"
+    },
+    {
+      "from": "learning-normativity",
+      "to": "normativity-line",
+      "rel": [
+        "adjacent"
+      ],
+      "why": "the same subject approached as learning from unreliable norm feedback",
+      "undirected": true
     }
   ]
 }
