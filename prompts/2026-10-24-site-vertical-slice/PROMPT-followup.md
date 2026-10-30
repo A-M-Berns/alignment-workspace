@@ -57,3 +57,8 @@ Further directives of the same conversation, verbatim:
 > different view with links to elsewhere on the wiki map. I'm starting to think that
 > there should basically one wiki level which is a big pannable network, and each node
 > clicks into a different popup type view
+
+> also basically just get rid of all the tabs except map. eventually i'd also like to add
+> a chat tab for a byo api key bot, and then maybe also like some kind of stats/status
+> page with a time graph plus an activity digest or something but i dont think really
+> anything else

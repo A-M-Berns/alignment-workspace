@@ -187,8 +187,11 @@ it) renders in a lighter register with the label *drafted*, and the ranking's nu
 nowhere but the ranking page and the collapsed section. The intake verbs on every node page
 — comment, challenge, estimate, want — are prefilled GitHub issues carrying the node id and
 a protocol-shaped body; the site accepts no write, and a maintainer round sweeps what lands
-into ledger events. Not yet built: in-page filing without the GitHub detour, the chatbot,
-and pages for the held results beyond what the bridge card shows them as.
+into ledger events. The map is the site's one tab; the planned additions are a chat tab
+(a bring-your-own-key bot over the map and the record) and a stats/status page (a time
+graph with an activity digest), and nothing else. Not yet built: those two tabs, in-page
+filing without the GitHub detour, and pages for the held results beyond what the bridge
+card shows them as.
 
 ### 6.1 Schema of graph/index.json
 

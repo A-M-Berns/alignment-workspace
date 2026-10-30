@@ -286,3 +286,11 @@ not be the right first screen.
 Not shown: the force layout is deterministic but untuned — on the densest class level
 (166 nodes) it runs fewer iterations and labels are hover-only; the edge-summary
 phrasing and the jewel assignment are first choices for the maintainer's eye.
+
+## Fourth follow-up of 2026-10-30 — the map is the only tab
+
+The header is the wordmark, one link (map) and search. Every other page keeps its URL as
+a deep link — the per-id contract of S4 and the feed/spine/ranking lenses stand — but
+nothing navigates to them from the chrome. The planned additions, recorded in
+`graph/MAP-AS-CANONICAL.md` §6: a chat tab (bring-your-own-key bot) and a stats/status
+page (a time graph with an activity digest), and nothing else.

@@ -52,9 +52,7 @@ class Site:
 
 def layout(site: Site, title: str, body: str, crumbs: list[tuple[str, str]] | None = None, subtitle: str = "") -> str:
     r = site.repo
-    nav = " · ".join(f'<a href="{u}">{t}</a>' for t, u in (("map", "/"), ("spine", "/spine/"),
-                                                            ("feed", "/feed/"), ("items", "/items/"), ("decisions", "/decisions/"),
-                                                            ("rounds", "/rounds/"), ("wiki", "/wiki/"), ("ranking", "/ranking/"), ("search", "/search/")))
+    nav = '<a href="/">map</a>'
     crumb_html = ""
     if crumbs:
         crumb_html = '<nav class="crumbs">' + " › ".join(f'<a href="{u}">{esc(t)}</a>' for t, u in crumbs) + "</nav>"
