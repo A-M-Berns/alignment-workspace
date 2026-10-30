@@ -151,3 +151,5 @@ Further directives of the same conversation, verbatim:
 > get rid of "about this map" and the edges toggle
 > in PRs, move full detail to the top
 > Yeah what youre calling abstraction arc is like naturalized agency right
+
+> the title should just be research map not "the map of the program"

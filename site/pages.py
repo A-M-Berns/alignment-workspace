@@ -606,7 +606,7 @@ def front_page(site: Site, lede_html: str, feed_rows: list[str]) -> str:
             noscript,
             f'<div class="below-map"><p class="question">{esc(top["question"])}</p>{lede_html}</div>',
             "<div class=\"below-map\"><details class=\"front-feed\"><summary>Recent in the feed</summary><ul class=\"feed\">" + "".join(feed_rows[:12]) + "</ul><p><a href=\"/feed/\">The whole feed</a>.</p></details></div>"]
-    return layout(site, "The map of the program", "\n".join(body)).replace("</head>", '<script defer src="/assets/map.js"></script></head>')
+    return layout(site, "Research map", "\n".join(body)).replace("</head>", '<script defer src="/assets/map.js"></script></head>')
 
 
 def map_data(site: Site) -> dict:
