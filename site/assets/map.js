@@ -373,6 +373,11 @@
     applyTf();
   }, { passive: false });
   document.addEventListener("keydown", function (ev) {
+    if ((ev.metaKey || ev.ctrlKey) && ev.key.toLowerCase() === "f" && !ev.shiftKey && !ev.altKey) {
+      var inp = document.querySelector("header.top input[type=search]");
+      if (inp) { ev.preventDefault(); inp.focus(); inp.select(); }
+      return;
+    }
     if (ev.key !== "Escape") return;
     if (modal.classList.contains("open")) closeFull();
     else hideCard();

@@ -161,3 +161,5 @@ Further directives of the same conversation, verbatim:
 > oversimplified
 > what were the other tabs beyond map that i was saying? also we should try to get ready
 > for a comment system based on the map
+
+> can we make cmd(or ctrl)-f default to using the built in search bar
