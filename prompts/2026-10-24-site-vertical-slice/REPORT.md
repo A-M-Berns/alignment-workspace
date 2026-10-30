@@ -320,3 +320,13 @@ the prior-art ledger by its drafting model: entry selection, kind assignments, b
 accuracy and the 67 links are all unreviewed judgment, ci-only until a maintainer reads
 them; the n-choose-2 pass was a drafting discipline, not an enumeration artifact a
 reader can audit.
+
+## Sixth follow-up of 2026-10-30 — the layout spreads, nodes carry their summary, digests expand
+
+The force layout's world grows with the node count (up to 2.6× the stage), so a level
+needn't fit the viewport; pan reaches the rest, the minimum zoom shows the whole, and
+the enter/leave animations aim at the centred home transform. Each labelled node carries
+a two-line summary in its body (a concept's blurb, a frame's question, a node's
+Statement head). The merged-work lists — a concept's tagged pull requests and `/prs/` —
+are reverse-chronological expandable digests: the summary and any supersession note open
+in place, the full page is one more click.

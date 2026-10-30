@@ -111,11 +111,10 @@ def build(out: pathlib.Path, verbose: bool = True) -> dict:
         put(site.url("prs", num), pages.pr_page(site, num), "pr")
         put(site.url("prs", num) + "frag.html", pages.pr_frag(site, num), "pr-frag")
     if repo.prs:
-        put("/prs/", pages.index_list_page(site, "Merged work", [
-            f"<li><span class=\"date\">{pages.esc(str(P.get('merged') or ''))}</span> {site.link('prs', num, f'#{num} ' + str(P.get('title', '')))}"
-            + (" <span class=\"tag\">superseded in part</span>" if P.get("superseded") else "") + "</li>"
-            for num, P in sorted(repo.prs.items(), key=lambda kv: int(kv[0]), reverse=True)],
-            "Every merged pull request, digested to its key points; supersessions are marked on the entry."), "listing")
+        rows = [pages.pr_digest_details(site, num) for num, P in
+                sorted(repo.prs.items(), key=lambda kv: (str(kv[1].get("merged") or ""), int(kv[0])), reverse=True)]
+        put("/prs/", pages.layout(site, "Merged work",
+                                  "<p class=\"muted\">Every merged pull request, newest first; expand for the digest, click through for full detail.</p>" + "".join(rows)), "listing")
     # handles
     for h in repo.handles:
         put(site.url("by", h.lstrip("@")), pages.handle_page(site, h.lstrip("@")), "handle")

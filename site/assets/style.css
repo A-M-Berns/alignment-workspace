@@ -144,3 +144,8 @@ details.front-feed summary { cursor: pointer; color: var(--muted); text-transfor
 #map-legend .lg.tone-amber .dotc { background: var(--amber); } #map-legend .lg.tone-amethyst .dotc { background: var(--amethyst); }
 #map-legend .lg.tone-garnet .dotc { background: var(--garnet); } #map-legend .lg.tone-slate .dotc { background: var(--slate); }
 #map-legend .lg.tone-bone .dotc { background: var(--accent); } #map-legend .lg.tone-pr .dotc { background: var(--teal); }
+svg#map g.dot text.nsub { fill: #6f6f6a; font-weight: 400; stroke-width: 2.5px; }
+details.pr-digest { border-bottom: 1px solid var(--rule); padding: 0.35em 0; }
+details.pr-digest summary { cursor: pointer; }
+details.pr-digest summary:hover { color: var(--accent); }
+.pr-digest-body { padding: 0.4em 0 0.6em 1.2em; max-width: 44rem; }

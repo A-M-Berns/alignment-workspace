@@ -80,3 +80,8 @@ Further directives of the same conversation, verbatim:
 > also, it shouldn't be a close to complete graph for every link. Go through all n
 > choose 2 connections and only include relevant ones. these connections can also have
 > multiple categories iff that's helpful
+
+> also it's ok for the whole graph to not fully fit by default, the nodes should be
+> relatively spread out. and each one can have a small summary as part of its body. in
+> the click-in PR view the PRs should be listed reverse chronologically with like you
+> expandable digest sof each one or click in further for full detail

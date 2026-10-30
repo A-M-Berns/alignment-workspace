@@ -488,14 +488,25 @@ def wiki_frag(site: Site, name: str) -> str:
     r = site.repo
     body = [f'<p class="frag-head">{site.link("wiki", name, name.replace("-", " "))} <span class="kind">concept</span></p>',
             f"<div class=\"wiki\">{render_wiki(site, name)}</div>"]
-    related = [(num, P) for num, P in sorted(r.prs.items(), key=lambda kv: int(kv[0]), reverse=True)
+    related = [(num, P) for num, P in sorted(r.prs.items(), key=lambda kv: (str(kv[1].get("merged") or ""), int(kv[0])), reverse=True)
                if name in ((P.get("topics") or {}).get("wiki") or [])]
     if related:
-        body.append("<section><h2>Merged work on this concept</h2><ul class=\"listing\">"
-                    + "".join(f"<li>{site.link('prs', num, f'#{num} ' + str(P.get('title', '')))} <span class=\"date\">{esc(str(P.get('merged') or ''))}</span>"
-                              + (" <span class=\"tag\">superseded in part</span>" if P.get("superseded") else "") + "</li>" for num, P in related)
-                    + "</ul></section>")
+        body.append("<section><h2>Merged work on this concept</h2>" + "".join(pr_digest_details(site, num) for num, _ in related) + "</section>")
     return "\n".join(body)
+
+
+def pr_digest_details(site: Site, num: str) -> str:
+    """One merged pull request as an expandable row: the digest inside, the full page a click further."""
+    r = site.repo
+    P = r.prs[num]
+    head = (f'<span class="date">{esc(str(P.get("merged") or ""))}</span> #{esc(num)} {esc(str(P.get("title", "")))}'
+            + (' <span class="tag">superseded in part</span>' if P.get("superseded") else ""))
+    inner = []
+    if P.get("superseded"):
+        inner.append(f'<p class="superseded"><strong>Superseded in part:</strong> {md.inline(str(P["superseded"]))}</p>')
+    inner.append("".join(f"<p>{md.inline(para.strip())}</p>" for para in str(P.get("summary") or "").split("\n\n") if para.strip()))
+    inner.append(f'<p class="muted">{site.link("prs", num, "Full detail →")}</p>')
+    return f'<details class="pr-digest"><summary>{head}</summary><div class="pr-digest-body">{"".join(inner)}</div></details>'
 
 
 def pr_body(site: Site, num: str) -> str:

@@ -16,6 +16,7 @@
   var KIND_TONE = { goal: "bone", construction: "emerald", object: "sapphire", work: "amber", philosophy: "amethyst" };
 
   var DATA = null, view = "concepts", root = null, path = [], animating = false;
+  var home = { k: 1, x: 0, y: 0, o: 1 };
   var cam = document.createElementNS(NS, "g");
   svg.appendChild(cam);
   var tf = { k: 1, x: 0, y: 0 };
@@ -56,9 +57,11 @@
     return "plain";
   }
 
-  // deterministic force layout
-  function network(items, links, w, h) {
+  // deterministic force layout; the world grows with the node count, so a level needn't fit the stage
+  function network(items, links, w0, h0) {
     var n = items.length, pos = [], i, j;
+    var spread = Math.max(1, Math.min(Math.sqrt(n) / 3.2, 2.6));
+    var w = w0 * spread, h = h0 * spread;
     var R = Math.min(w, h) * (n > 20 ? 0.4 : 0.3);
     for (i = 0; i < n; i++) {
       var a = (i / n) * 2 * Math.PI + (i % 2) * 0.35;
@@ -71,7 +74,7 @@
       var ia = idx[links[i].a], ib = idx[links[i].b];
       if (ia !== undefined && ib !== undefined && ia !== ib) ls.push([ia, ib, Math.min(links[i].w || 1, 8)]);
     }
-    var rep = (w * h) / Math.max(n, 1) * 0.9;
+    var rep = (w * h) / Math.max(n, 1) * 1.25;
     var iters = n > 160 ? 120 : 260;
     for (var it = 0; it < iters; it++) {
       for (i = 0; i < n; i++) for (j = i + 1; j < n; j++) {
@@ -84,13 +87,13 @@
         p.vx += (q.x - p.x) * k; p.vy += (q.y - p.y) * k; q.vx += (p.x - q.x) * k; q.vy += (p.y - q.y) * k;
       }
       for (i = 0; i < n; i++) {
-        pos[i].vx += (w / 2 - pos[i].x) * 0.0028; pos[i].vy += (h / 2 - pos[i].y) * 0.0028;
+        pos[i].vx += (w / 2 - pos[i].x) * 0.0016; pos[i].vy += (h / 2 - pos[i].y) * 0.0016;
         pos[i].x += Math.max(-10, Math.min(10, pos[i].vx)); pos[i].y += Math.max(-10, Math.min(10, pos[i].vy));
         pos[i].vx *= 0.8; pos[i].vy *= 0.8;
         pos[i].x = Math.max(36, Math.min(w - 36, pos[i].x)); pos[i].y = Math.max(30, Math.min(h - 40, pos[i].y));
       }
     }
-    return pos;
+    return { pos: pos, w: w, h: h };
   }
 
   // ancestor of `id` among focus.ch
@@ -142,13 +145,15 @@
 
   function render(focus) {
     cam.textContent = "";
-    tf = { k: 1, x: 0, y: 0 };
-    applyTf();
     var b = box();
     var g = el("g", { "class": "scene" }, cam);
-    el("rect", { x: -3 * b.w, y: -3 * b.h, width: 7 * b.w, height: 7 * b.h, "class": "backdrop" }, g);
+    el("rect", { x: -4 * b.w, y: -4 * b.h, width: 9 * b.w, height: 9 * b.h, "class": "backdrop" }, g);
     var items = focus.ch, links = levelLinks(focus);
-    var pos = network(items, links, b.w, b.h);
+    var lay = network(items, links, b.w, b.h);
+    var pos = lay.pos;
+    home = { k: 1, x: (b.w - lay.w) / 2, y: (b.h - lay.h) / 2, o: 1 };
+    tf = { k: home.k, x: home.x, y: home.y };
+    applyTf();
     var at = {};
     for (var i = 0; i < items.length; i++) { items[i].x = pos[i].x; items[i].y = pos[i].y; at[items[i].id] = pos[i]; }
     var eg = el("g", { "class": "net-edges" }, g);
@@ -175,6 +180,13 @@
         var t = el("text", { x: c.x, y: c.y + r + 13, "text-anchor": "middle", "font-size": 11 }, cg);
         var s = label(c);
         t.textContent = s.length > 34 ? s.slice(0, 33) + "…" : s;
+        var n2 = DATA.nodes[c.id] || {}, cm2 = DATA.concepts[c.id] || {};
+        var sum = c.kind === "concept" ? (cm2.s || "") : c.kind === "pr" ? ((DATA.prmeta[c.id.slice(1)] || {}).d || "") : (n2.q || n2.s || "");
+        if (sum) {
+          var st = wrap(sum, c.x, c.y + r + 25, 165, 8.5, 2, "middle");
+          st.setAttribute("class", "nsub");
+          cg.appendChild(st);
+        }
       }
       cg.addEventListener("mousemove", function (ev) {
         var n = DATA.nodes[c.id] || {};
@@ -230,7 +242,7 @@
     animate({ k: tf.k, x: tf.x, y: tf.y, o: 1 }, { k: k, x: b.w / 2 - c.x * k, y: b.h / 2 - c.y * k, o: 0.05 }, 320, function () {
       path.push(c);
       render(c);
-      animate({ k: 0.8, x: 0.1 * b.w, y: 0.1 * b.h, o: 0 }, { k: 1, x: 0, y: 0, o: 1 }, 260);
+      animate({ k: 0.8, x: home.x + 0.1 * b.w, y: home.y + 0.1 * b.h, o: 0 }, home, 260);
     });
   }
 
@@ -242,7 +254,7 @@
     animate({ k: tf.k, x: tf.x, y: tf.y, o: 1 }, { k: 0.55, x: 0.22 * b.w, y: 0.22 * b.h, o: 0 }, 220, function () {
       render(focusNode());
       var c = child, k = 5;
-      animate({ k: k, x: b.w / 2 - (c.x || b.w / 2) * k, y: b.h / 2 - (c.y || b.h / 2) * k, o: 0.1 }, { k: 1, x: 0, y: 0, o: 1 }, 320);
+      animate({ k: k, x: b.w / 2 - (c.x || b.w / 2) * k, y: b.h / 2 - (c.y || b.h / 2) * k, o: 0.1 }, home, 320);
     });
   }
 
@@ -250,7 +262,7 @@
     if (animating) return;
     path = i < 0 ? [] : path.slice(0, i + 1);
     render(focusNode());
-    animate({ k: 0.9, x: 0.05 * box().w, y: 0.05 * box().h, o: 0 }, { k: 1, x: 0, y: 0, o: 1 }, 220);
+    animate({ k: 0.9, x: home.x + 0.05 * box().w, y: home.y + 0.05 * box().h, o: 0 }, home, 220);
   }
 
   function conceptBase(t) {
@@ -302,7 +314,7 @@
     legend(v);
     render(root);
     cam.style.opacity = 0;
-    animate({ k: 0.92, x: 0.04 * box().w, y: 0.04 * box().h, o: 0 }, { k: 1, x: 0, y: 0, o: 1 }, 240);
+    animate({ k: 0.92, x: home.x + 0.04 * box().w, y: home.y + 0.04 * box().h, o: 0 }, home, 240);
     var btns = viewsEl.querySelectorAll("button");
     for (var b = 0; b < btns.length; b++) btns[b].classList.toggle("on", btns[b].getAttribute("data-view") === v);
   }
@@ -330,7 +342,7 @@
       var now = Date.now();
       if (now > outLock) { outAcc += ev.deltaY; if (outAcc > 120) { outAcc = 0; outLock = now + 500; ascend(); return; } }
     } else outAcc = 0;
-    kNew = Math.max(0.55, Math.min(kNew, 9));
+    kNew = Math.max(0.3, Math.min(kNew, 9));
     tf.x = mx - (mx - tf.x) * (kNew / tf.k);
     tf.y = my - (my - tf.y) * (kNew / tf.k);
     tf.k = kNew;
