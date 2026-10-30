@@ -221,11 +221,17 @@
   }
 
   // pan and zoom; a plain click on the backdrop closes the card
+  // capture the pointer only once a drag has actually started: a captured pointer retargets the
+  // click to the svg itself, which would swallow every node and edge click
   var drag = null;
-  svg.addEventListener("pointerdown", function (ev) { ev.preventDefault(); drag = { x: ev.clientX, y: ev.clientY, tx: tf.x, ty: tf.y, moved: false }; svg.setPointerCapture(ev.pointerId); });
+  svg.addEventListener("pointerdown", function (ev) { drag = { id: ev.pointerId, x: ev.clientX, y: ev.clientY, tx: tf.x, ty: tf.y, moved: false }; });
   svg.addEventListener("pointermove", function (ev) {
     if (!drag) return;
-    if (Math.abs(ev.clientX - drag.x) + Math.abs(ev.clientY - drag.y) > 3) drag.moved = true;
+    if (!drag.moved && Math.abs(ev.clientX - drag.x) + Math.abs(ev.clientY - drag.y) > 4) {
+      drag.moved = true;
+      try { svg.setPointerCapture(drag.id); } catch (e) { }
+    }
+    if (!drag.moved) return;
     tf.x = drag.tx + ev.clientX - drag.x;
     tf.y = drag.ty + ev.clientY - drag.y;
     applyTf();
