@@ -483,19 +483,31 @@ def concept_side(site: Site, cid: str) -> str:
     return "\n".join(out)
 
 
-def concept_body(site: Site, cid: str) -> str:
-    """A registry concept's full view: the content pane (blurb, source, map refs — or the wiki page where
-    one backs it) beside the connections-and-merged-work pane of concept_side."""
+def concept_full(site: Site, cid: str) -> str:
+    """Every concept's full view, one template: title and kind, the registry blurb as the lede, the
+    source where one exists, then two panes — the long-form content (the wiki page, or the map
+    references) beside the connections and merged work."""
     r = site.repo
     e = r.concepts[cid]
     kind_label_ = r.concept_kinds.get(e.get("kind", ""), e.get("kind", ""))
-    main = [f'<p class="subtitle">{esc(kind_label_)}</p>', f'<div class="pr-summary"><p>{esc(str(e.get("blurb") or ""))}</p></div>']
-    if e.get("url"):
-        main.append(f'<p><a href="{esc(e["url"])}">{esc(e["url"])}</a></p>')
-    refs = [x for x in e.get("refs") or [] if x in r.nodes]
-    if refs:
-        main.append("<section><h2>On the map</h2><ul class=\"listing\">" + "".join(f"<li>{site.link('n', x)}: {esc(r.nodes[x]['statement'].strip()[:160])}</li>" for x in refs) + "</ul></section>")
-    return f'<div class="pane2"><div class="pane-main">{"".join(main)}</div><aside class="pane-side">{concept_side(site, cid)}</aside></div>'
+    head = (f'<p class="frag-head">{site.link("concepts", cid, e.get("title", cid)) if not e.get("wiki") else site.link("wiki", e["wiki"], e.get("title", cid))}'
+            f' <span class="kind">{esc(kind_label_)}</span></p>')
+    lede = f'<p class="concept-lede">{esc(str(e.get("blurb") or ""))}</p>'
+    src = f'<p class="muted"><a href="{esc(e["url"])}">{esc(e["url"])}</a></p>' if e.get("url") else ""
+    if e.get("wiki"):
+        main = f"<div class=\"wiki\">{render_wiki(site, e['wiki'])}</div>"
+    else:
+        refs = [x for x in e.get("refs") or [] if x in r.nodes]
+        if refs:
+            main = "<section><h2>On the map</h2><ul class=\"listing\">" + "".join(
+                f"<li>{site.link('n', x)}: {esc(r.nodes[x]['statement'].strip()[:160])}</li>" for x in refs) + "</ul></section>"
+        else:
+            main = '<p class="muted">No longer-form page yet; the connections and merged work at right are the record.</p>'
+    return f'{head}{lede}{src}<div class="pane2"><div class="pane-main">{main}</div><aside class="pane-side">{concept_side(site, cid)}</aside></div>'
+
+
+def concept_body(site: Site, cid: str) -> str:
+    return concept_full(site, cid)
 
 
 def concept_page(site: Site, cid: str) -> str:
@@ -503,19 +515,18 @@ def concept_page(site: Site, cid: str) -> str:
 
 
 def concept_frag(site: Site, cid: str) -> str:
-    e = site.repo.concepts[cid]
-    return f'<div class="frag"><p class="frag-head">{site.link("concepts", cid, e.get("title", cid))} <span class="kind">concept</span></p>{concept_body(site, cid)}</div>'
+    return f'<div class="frag">{concept_full(site, cid)}</div>'
 
 
 def wiki_frag(site: Site, name: str) -> str:
-    """The wiki page's full view for the map: the rendered page beside the concept's side pane —
-    connections split into core theory, core formalism and sources, then the tagged merged work."""
+    """A wiki page's fragment: the concept template when an entry is backed by this page, else the
+    rendered page with its tagged merged work."""
     r = site.repo
     cid = next((c for c, e in r.concepts.items() if e.get("wiki") == name), None)
-    head = f'<p class="frag-head">{site.link("wiki", name, name.replace("-", " "))} <span class="kind">concept</span></p>'
-    main = f"<div class=\"wiki\">{render_wiki(site, name)}</div>"
     if cid:
-        return f'{head}<div class="pane2"><div class="pane-main">{main}</div><aside class="pane-side">{concept_side(site, cid)}</aside></div>'
+        return f'<div class="frag">{concept_full(site, cid)}</div>'
+    head = f'<p class="frag-head">{site.link("wiki", name, name.replace("-", " "))} <span class="kind">wiki page</span></p>'
+    main = f"<div class=\"wiki\">{render_wiki(site, name)}</div>"
     related = [(num, P) for num, P in sorted(r.prs.items(), key=lambda kv: (str(kv[1].get("merged") or ""), int(kv[0])), reverse=True)
                if name in ((P.get("topics") or {}).get("wiki") or [])]
     tail = ("<section><h2>Merged work on this concept</h2>" + "".join(pr_digest_details(site, num) for num, _ in related) + "</section>") if related else ""

@@ -40,6 +40,15 @@ maintainer's.
 below.** The next round dispatched from that conversation lands it as its first
 commit.
 
+- **How epistemic status is represented per concept node on the map (2026-10-30).**
+  The maintainer holds that per-node epistemic status will be very important on the
+  research map and defers the representation choice. The data exists (registry classes
+  behind each concept's results, the digests' supersession notes); candidates include a
+  visual mark per capsule, a status line on the card, or both.
+  *Turns on:* taste about the map's visual vocabulary — what a reader should see before
+  clicking.
+  <!-- decision: open--epistemic-status-representation-on-map; touches: node:enabling-program-site; status: open -->
+
 - **Whether disposal transfers load in full or at a discount.** The round transfers
   in full: the successor inherits exactly the disposed issue's load, which makes the
   disposal edge an identity-frame transport step with `L = 1`, `ε = 0`.

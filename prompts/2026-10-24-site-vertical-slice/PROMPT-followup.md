@@ -174,3 +174,7 @@ Further directives of the same conversation, verbatim:
 > program goal should be roughly same x-coord. also there could or should be maybe more
 > hierarchy in terms of the goal/thread category, things can be non-terminal goals in
 > that sense
+
+> epistemic status per node is gonna be very important, deciding exactly how that's
+> represented we can defer for a moment
+> some of the "read more" pages are different from others so let's standardize it more

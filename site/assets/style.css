@@ -253,3 +253,4 @@ svg#map .axis .bandlabel { fill: #6a6964; font-weight: 600; }
 #map-card .comment-link:hover { color: var(--accent); border-color: var(--accent); }
 header.top .home { font-size: 1.08rem; font-weight: 700; letter-spacing: 0; color: var(--fg); }
 header.top .home:hover { color: var(--accent); }
+.concept-lede { font-size: 1.02rem; color: #d6d6d0; max-width: 46rem; margin: 0.2em 0 0.8em; }
