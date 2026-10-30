@@ -177,3 +177,57 @@ Appended to `DECISIONS.md` *Awaiting the author*, each with its *turns on* line:
 ## 12. Merge order
 
 #131 first (`round/2026-10-22-map-as-canonical`, a squash is recommended there), then this pull request, whose base is that branch; after both, the `derived` and `site` workflows run for the first time on `main`.
+
+## Follow-up of 2026-10-30 — the site is one zoomable map (S5)
+
+Dispatch: `PROMPT-followup.md` in this directory, the maintainer's conversational
+directives verbatim. Ruling S5 landed as the dated `DECISIONS.md` entry
+(anchor `2026-10-30--site-one-zoomable-map-three-views-intake-prefilled-issues`).
+
+What changed, in one pass over `site/`:
+
+- **The front page is the map.** `site/assets/map.js` (vanilla JavaScript, SVG, ~260
+  lines) lays `/assets/map.json` out as nested regions under semantic zoom: squarified
+  treemap per container, a region opens once wider than 150 screen pixels, leaf labels
+  above 70. Three views over the same node set — `concept` (the frame tree continued into
+  the part edges, every node placed once, 137 strays binned under *(unplaced)*), `rounds`
+  (33 rounds that a registry entry or work pointer names; rounds.json carries no pull
+  request number, so the round is the provenance grain — on this repository a round and a
+  pull request are nearly one-to-one), `class` (249 live formal results by epistemic
+  class). Cross-edges (`part` arrivals at an already-placed node, `given`, `held`) draw
+  between visible nodes on request, capped at 500. `/#n=<id>` deep-links; without
+  JavaScript the lines render as links and every node stays a full page.
+- **Fragments.** Every node's detail is built once as `/n/<id>/frag.html` (the node
+  page's body without the layout) and loads into a panel beside the canvas.
+- **Intake verbs.** Every node page and fragment ends with comment, challenge, estimate
+  and want, each a prefilled GitHub issue carrying the node id, URL and verb; the site
+  accepts no write, and a round sweeps what lands into ledger events.
+- **Walks leave** with ruling S5: `site/walks/`, the parser, the page type, the gate's
+  walk cases, and the queue entry *The walk's prose, and whether its structure is right*
+  (retired by the ruling, which is the decision that entry awaited). The gate's
+  `--self-test` gains the missing-lede case in place of the walk cases. §4 of this report
+  and the walk pointers in the round's results README are history and stand as written.
+- **Governance text** describing the site now describes this shape: `site/README.md`,
+  `AGENTS.md` *The site under `site/`*, `graph/MAP-AS-CANONICAL.md` §6.
+
+Build after: 5,731 files written (2,467 fragments and `/assets/map.json` in; the walk
+page and its listing out), 3,252 registered id-paths, 0 unresolved, 4.2 s;
+`tests/site_build.py --self-test` passes its seven cases; `tests/dead_pointers.py` clean
+over 58 live documents.
+
+**Deviations and corrections.** The directive's "PR as a natural unit" is rendered as the
+rounds view: `state/rounds.json` records no pull-request number, so the round is the unit
+the data can carry; filing the number per round would be a `state/` schema change this
+follow-up did not take. Comments and epistemic-status marks are intake verbs composing
+GitHub issues, the mechanism the maintainer chose from the options put to them; selecting
+a status on the page without the GitHub detour needs a write path and remains unbuilt.
+
+**What this does not establish.** The canvas's legibility is untested by any eye but its
+author's: the layout ran end-to-end in a DOM-stubbed Node smoke run (7,872 elements, no
+hang), not in a browser harness, and zoom thresholds, label sizing and the treemap's
+aspect ratios at depth 7 are untuned judgment calls. The `map.json` shape (`nodes`,
+`views`, `edges`; the view names; the `frag.html` suffix) is provisional. The rounds view
+places only the 33 rounds a node names; the other 94 rounds render as pages, not regions.
+
+**Attribution.** Prompt author: the maintainer, in conversation. Executor:
+Claude Fable 5 (Anthropic), 2026-10-30.

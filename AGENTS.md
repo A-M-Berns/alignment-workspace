@@ -1088,14 +1088,18 @@ and the repository as a static site: `python3 site/build.py` reads graph/index.j
 page about the ranking, `state/*.json`, the claims registries, the anchors of
 `DECISIONS.md`, the wiki source, `graph/policy.yaml` and the human ledgers, and writes
 `_site/` (gitignored). The site is a render and never a second source: nothing on it is
-typed by hand except `site/lede.md`, the front page's one paragraph, and the walks under
-`site/walks/`, and both are binding-checked against the state at every build. Every node,
-item, decision anchor, round, registry id, wiki page and handle has exactly one path,
-derived from its id (`site/README.md` is the contract); a build fails on a reference that
-does not resolve, two ids that map to one path, a walk step naming no node, or a binding
-that disagrees with the state, and `tests/site_build.py` runs that build as a gate under
-`tests/run.py`. The site shows structure and human events; an AI-drafted node (an AI
-author and no human event) renders in a lighter register with the label *drafted*, and the
-ranking's numbers appear only on `/ranking/` and in a collapsed section of a node page.
-Build it locally with `python3 -m checkers.graph --root .` then `python3 site/build.py`,
-and serve `_site/` with any static server (rulings S2–S4, 2026-10-24).
+typed by hand except `site/lede.md`, the front page's one paragraph, binding-checked
+against the state at every build. The front page is the map itself, a zoomable canvas of
+nested regions (`site/assets/map.js` over `/assets/map.json`) with three views — the frame
+tree, the rounds, the epistemic classes — and a panel that loads a node's fragment in
+place; every node page carries the intake verbs, each a prefilled GitHub issue a
+maintainer round sweeps into ledger events (ruling S5, 2026-10-30). Every node, item,
+decision anchor, round, registry id, wiki page and handle has exactly one path, derived
+from its id (`site/README.md` is the contract); a build fails on a reference that does
+not resolve, two ids that map to one path, or a binding that disagrees with the state,
+and `tests/site_build.py` runs that build as a gate under `tests/run.py`. The site shows
+structure and human events; an AI-drafted node (an AI author and no human event) renders
+in a lighter register with the label *drafted*, and the ranking's numbers appear only on
+`/ranking/` and in a collapsed section of a node page. Build it locally with
+`python3 -m checkers.graph --root .` then `python3 site/build.py` (Python ≥ 3.12), and
+serve `_site/` with any static server (rulings S2–S4, 2026-10-24; S5, 2026-10-30).

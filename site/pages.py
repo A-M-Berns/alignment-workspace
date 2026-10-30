@@ -30,7 +30,7 @@ class Site:
     def url(self, kind: str, ident: str, must_exist: bool = True) -> str:
         r = self.repo
         ok = {"n": ident in r.nodes, "items": ident in r.items, "decisions": ident in r.decisions, "rounds": ident in r.rounds,
-              "claims": ident in r.registry, "wiki": ident in r.wiki, "by": ("@" + ident) in r.handles, "walks": True}[kind]
+              "claims": ident in r.registry, "wiki": ident in r.wiki, "by": ("@" + ident) in r.handles}[kind]
         if not ok and must_exist:
             self.unresolved.append(f"{kind}:{ident}")
         path = f"/{kind}/{self.seg(ident)}/"
@@ -52,7 +52,7 @@ class Site:
 
 def layout(site: Site, title: str, body: str, crumbs: list[tuple[str, str]] | None = None, subtitle: str = "") -> str:
     r = site.repo
-    nav = " · ".join(f'<a href="{u}">{t}</a>' for t, u in (("the program", "/n/the-program/"), ("walks", "/walks/"), ("spine", "/spine/"),
+    nav = " · ".join(f'<a href="{u}">{t}</a>' for t, u in (("map", "/"), ("spine", "/spine/"),
                                                             ("feed", "/feed/"), ("items", "/items/"), ("decisions", "/decisions/"),
                                                             ("rounds", "/rounds/"), ("wiki", "/wiki/"), ("ranking", "/ranking/"), ("search", "/search/")))
     crumb_html = ""
@@ -235,11 +235,28 @@ def bridge_card(site: Site, x: str) -> str:
     return "\n".join(parts)
 
 
-def node_page(site: Site, x: str) -> str:
+INTAKE = (("comment", "What you want to say about this node. A maintainer round files what lands as the event it is."),
+          ("challenge", "The picture: what you believe is wrong with this node's Statement, and what would settle it."),
+          ("estimate", "Your number on this node and the reasoning it rests on; it enters a ledger as your event."),
+          ("want", "What you want, in research terms; it is filed as a want under your handle where your words place it."))
+
+
+def intake_html(site: Site, x: str) -> str:
+    """The intake verbs: each opens a prefilled GitHub issue carrying the node id and a protocol-shaped body; a
+    maintainer round sweeps issues into ledger events (`graph/PROTOCOL.md`). The site itself accepts no write."""
+    from urllib.parse import quote
+    links = []
+    for verb, hint in INTAKE:
+        title = quote(f"[node] {x}: {verb}")
+        body = quote(f"node: {x}\nurl: /n/{Site.seg(x)}/\nverb: {verb}\n\n## {hint}\n\n")
+        links.append(f'<a class="verb" href="https://github.com/A-M-Berns/alignment-workspace/issues/new?title={title}&amp;body={body}">{verb}</a>')
+    return '<section class="intake"><h2>Say something about it</h2><p class="muted">Each verb opens a prefilled issue; a round files what lands as the ledger event it is.</p><p>' + " · ".join(links) + "</p></section>"
+
+
+def node_body(site: Site, x: str) -> tuple[str, list[tuple[str, str]], str]:
     r = site.repo
     N = r.nodes[x]
     is_frame = bool(N.get("frame"))
-    title = x
     sub = esc(kind_label(N)) + (" · <span class=\"tag\">drafted</span>" if r.drafted(x) else " · <span class=\"tag human\">human-touched</span>")
     chain = r.frame_chain(x) if is_frame else []
     crumbs = [("top", "/")] + [(f, site.url("n", f)) for f in chain[:-1]]
@@ -315,7 +332,20 @@ def node_page(site: Site, x: str) -> str:
             R = r.derived["roots"][x]
             lens["root"] = {k: R.get(k) for k in ("status", "Pr", "value", "cost", "margin")}
         body.append(f"<details class=\"ranking\"><summary>Ranking (the lens, not the structure)</summary><pre>{esc(json.dumps(lens, indent=1, ensure_ascii=False))}</pre></details>")
-    return layout(site, title, "\n".join(body), crumbs, sub)
+    body.append(intake_html(site, x))
+    return "\n".join(body), crumbs, sub
+
+
+def node_page(site: Site, x: str) -> str:
+    body, crumbs, sub = node_body(site, x)
+    on_map = f'<p class="muted"><a href="/#n={esc(Site.seg(x))}">See it on the map</a>.</p>'
+    return layout(site, x, on_map + body, crumbs, sub)
+
+
+def node_frag(site: Site, x: str) -> str:
+    """The node's detail without the layout: what the map's panel shows when a node is opened in place."""
+    body, _, sub = node_body(site, x)
+    return f'<div class="frag"><p class="frag-head">{site.link("n", x)} <span class="kind">{sub}</span></p>{body}</div>'
 
 
 def item_page(site: Site, num: str) -> str:
@@ -442,30 +472,113 @@ def handle_page(site: Site, handle: str) -> str:
     return layout(site, h, "\n".join(body), [("by", "/by/")])
 
 
-def front_page(site: Site, lede_html: str, walks: list[tuple[str, str]], feed_rows: list[str]) -> str:
+def front_page(site: Site, lede_html: str, feed_rows: list[str]) -> str:
+    """The map, zoomed out: /assets/map.js lays /assets/map.json out as nested regions and zooms; a node opened on the
+    canvas shows its /n/<id>/frag.html in the panel. Without JavaScript the lines render as links below the lede."""
     r = site.repo
     top = r.index["frame"]
-    body = [f"<p class=\"question top-question\">{esc(top['question'])}</p>", f"<p>Owner {owners_html(site, top.get('owners') or [])}.</p>", lede_html]
     prog = r.nodes.get("the-program")
-    if prog:
-        body.append(f"<section><h2>{site.link('n', 'the-program', 'The program')}</h2><p class=\"question\">{esc(prog['frame']['question'] or '')}</p><p>Owners {owners_html(site, prog['frame'].get('owners') or [])}.</p><div class=\"cards\">")
-        for rt in prog["frame"]["roots"]:
-            line = rt["id"]
-            L = r.nodes[line]
-            Fr = L["frame"]
-            held = Fr.get("holds") or []
-            held_results = sum(1 for h in held if r.nodes[h].get("formal_result"))
-            held_items = sum(1 for h in held if h in r.item_of_node)
-            open_items = sum(1 for h in held if h in r.item_of_node and r.nodes[h]["fields"].get("item_status") == "open")
-            narr = Fr and L.get("narrative")
-            first = md.first_paragraph(r.wiki[narr[0].split("/")[-1][:-3]]) if narr and narr[0].split("/")[-1][:-3] in r.wiki else ""
-            body.append(f"<div class=\"card line\"><h3>{site.link('n', line)}</h3><p class=\"question\">{esc(Fr['question'] or '')}</p><p class=\"muted\">Owners {owners_html(site, Fr.get('owners') or [])}</p>"
-                        + (f"<p>{esc(first)}</p>" if first else "") +
-                        f"<p class=\"counts\">roots <b>{len(Fr.get('roots') or [])}</b> · held results <b>{held_results}</b> · held items <b>{held_items}</b> · open items <b>{open_items}</b></p></div>")
-        body.append("</div></section>")
-    body.append("<section><h2>Walks</h2><ul>" + "".join(f"<li><a href=\"/walks/{esc(s)}/\">{esc(t)}</a></li>" for s, t in walks) + "</ul></section>")
-    body.append("<section><h2>Recent in the feed</h2><ul class=\"feed\">" + "".join(feed_rows[:12]) + f"</ul><p><a href=\"/feed/\">The whole feed</a>.</p></section>")
-    return layout(site, "The map of the program", "\n".join(body))
+    lines = [rt["id"] for rt in (prog["frame"]["roots"] if prog else [])]
+    noscript = ("<noscript><section><h2>The lines</h2><ul>" + "".join(
+        f"<li>{site.link('n', line)}: {esc(r.nodes[line]['frame']['question'] or '')}</li>" for line in lines)
+        + "</ul></section></noscript>")
+    body = [f"<p class=\"question top-question\">{esc(top['question'])}</p>", lede_html,
+            '<div class="map-ui"><div class="map-bar">'
+            '<span class="views">view <button data-view="concept" class="on">concept</button><button data-view="rounds">rounds</button><button data-view="class">class</button></span>'
+            '<label class="edges-toggle"><input type="checkbox" id="map-edges"> edges</label>'
+            '<span class="map-hint muted">scroll to zoom · drag to pan · click a region to enter it · click a node to read it</span></div>'
+            '<div class="map-stage"><svg id="map" role="application" aria-label="the argument map"></svg>'
+            '<aside id="map-panel" hidden><button id="map-panel-close" aria-label="close">×</button><div id="map-panel-body"></div></aside></div></div>',
+            noscript,
+            "<details class=\"front-feed\"><summary>Recent in the feed</summary><ul class=\"feed\">" + "".join(feed_rows[:12]) + "</ul><p><a href=\"/feed/\">The whole feed</a>.</p></details>"]
+    return layout(site, "The map of the program", "\n".join(body)).replace("</head>", '<script defer src="/assets/map.js"></script></head>')
+
+
+def map_data(site: Site) -> dict:
+    """What the canvas lays out: every node once, three containments over the same ids. `concept` is the frame tree
+    continued into the part edges below each goal; `rounds` groups by origin round; `class` by epistemic class.
+    A node reachable twice is placed at its first encounter and the other arrivals become edges."""
+    r = site.repo
+    nodes = {}
+    for x, N in r.nodes.items():
+        e = r.record_entry(x) if N.get("formal_result") else None
+        nodes[x] = {"k": kind_label(N), "s": N["statement"].strip().replace("\n", " ")[:160],
+                    **({"d": 1} if r.drafted(x) else {}),
+                    **({"f": 1} if N.get("frame") else {}),
+                    **({"q": (N["frame"].get("question") or "")[:160]} if N.get("frame") else {}),
+                    **({"c": e.get("class")} if e else ({"c": "unregistered"} if N.get("formal_result") else {})),
+                    **({"i": N["fields"].get("item_status", "open")} if x in r.item_of_node else {})}
+    placed: set[str] = set()
+    edges: list[list] = []
+
+    def tree(x: str) -> dict:
+        placed.add(x)
+        N = r.nodes[x]
+        kids = []
+        for rt in (N["frame"].get("roots") or []) if N.get("frame") else []:
+            kids.append((rt["id"], str(rt.get("role") or "")))
+        for h in (N["frame"].get("holds") or []) if N.get("frame") else []:
+            kids.append((h, "held"))
+        for c in N["children"]:
+            kids.append((c, "part"))
+        out = []
+        for kid, role in kids:
+            if kid not in r.nodes:
+                site.unresolved.append(f"map:{x}:{kid}")
+                continue
+            if kid in placed:
+                edges.append([x, kid, role])
+            else:
+                out.append(tree_entry(kid, role))
+        return {"id": x, "ch": out}
+
+    def tree_entry(kid: str, role: str) -> dict:
+        t = tree(kid)
+        if role and role != "part":
+            t["r"] = role
+        return t
+
+    top = r.index["frame"]
+    roots = []
+    for rt in top.get("roots") or []:
+        if rt["id"] in r.nodes and rt["id"] not in placed:
+            roots.append(tree_entry(rt["id"], str(rt.get("role") or "")))
+    for h in top.get("holds") or []:
+        if h in r.nodes and h not in placed:
+            roots.append(tree_entry(h, "held"))
+    stray = [{"id": x, "ch": []} for x in r.nodes if x not in placed]
+    concept = {"id": "top", "q": (top.get("question") or "")[:200], "ch": roots + ([{"id": "(unplaced)", "ch": stray}] if stray else [])}
+    for x, N in r.nodes.items():
+        if N.get("given"):
+            g = str(N["given"]).split("@")[0]
+            if g in r.nodes:
+                edges.append([g, x, "given"])
+    # rounds view: a node sits under the round its registry entry or work pointer names
+    by_round: dict[str, list[str]] = {}
+    for x, N in r.nodes.items():
+        rid = None
+        e = r.record_entry(x) if N.get("formal_result") else None
+        if e and e.get("origin_round") in r.rounds:
+            rid = e["origin_round"]
+        else:
+            for w in N.get("work") or []:
+                if w.get("kind") == "round":
+                    tail = str(w.get("ref")).rstrip("/").split("/")[-1]
+                    if tail in r.rounds:
+                        rid = tail
+                        break
+        if rid:
+            by_round.setdefault(rid, []).append(x)
+    rounds_view = {"id": "rounds", "ch": [{"id": rid, "q": str(r.rounds[rid].get("date") or ""), "ch": [{"id": x, "ch": []} for x in xs]}
+                                          for rid, xs in sorted(by_round.items(), key=lambda kv: str(r.rounds[kv[0]].get("date") or ""), reverse=True)]}
+    by_class: dict[str, list[str]] = {}
+    for x, N in r.nodes.items():
+        if N.get("formal_result") and not N["fields"].get("superseded_by"):
+            by_class.setdefault(nodes[x].get("c") or "unregistered", []).append(x)
+    order = ["lean-proved", "enumeration-verified", "witness-checked", "contributor-checked", "test-supported", "conjectured", "unregistered"]
+    class_view = {"id": "class", "ch": [{"id": c, "ch": [{"id": x, "ch": []} for x in sorted(xs)]}
+                                        for c, xs in sorted(by_class.items(), key=lambda kv: order.index(kv[0]) if kv[0] in order else 99)]}
+    return {"nodes": nodes, "views": {"concept": concept, "rounds": rounds_view, "class": class_view}, "edges": edges}
 
 
 def feed_rows(site: Site) -> list[str]:

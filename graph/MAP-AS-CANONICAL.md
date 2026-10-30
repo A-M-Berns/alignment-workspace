@@ -154,13 +154,15 @@ the index, `graph/derived.json` for the ranking page alone, the state files, the
 registries, the decision anchors, the wiki source, the policy and the human ledgers, and
 writes `_site/`. One id, one URL: `/n/<node id>/`, `/items/<n>/`, `/decisions/<anchor>/`,
 `/rounds/<round id>/`, `/claims/<registry id>/` (a redirect to the node the record belongs
-to), `/wiki/<Page>/`, `/by/<handle>/`, `/walks/<slug>/`; two ids that map to one path fail
+to), `/wiki/<Page>/`, `/by/<handle>/`; two ids that map to one path fail
 the build, as does any reference that does not resolve (`site/README.md`). Pages, as built:
 
-- **front page**: the top frame's question; `the-program` and its seven lines as cards
-  (question, owners with their GitHub accounts, the narrative's first paragraph, counts of
-  roots, held results, held items and open items); the lede from `site/lede.md`; the walks;
-  the feed's head.
+- **front page**: the top frame's question, the lede from `site/lede.md`, and the map as a
+  zoomable canvas of nested regions (ruling S5, 2026-10-30): the top question opens into
+  the lines, a line into its frame's goals and holds, a claim into its conjuncts, with
+  three views over the same nodes (the frame tree, the rounds, the epistemic classes),
+  cross-edges on request, and a panel loading a clicked node's fragment
+  (`/n/<id>/frag.html`) in place; the feed's head collapsed below.
 - **frame** (`/n/<frame>/`): question, owners, the narrative rendered, roots by role, what it
   holds by kind (formal results, items, other), sub-frames, the path up to the top frame,
   *no goal yet* where `roots` is empty.
@@ -177,15 +179,13 @@ the build, as does any reference that does not resolve (`site/README.md`). Pages
   held-only results listed as unconnected), the **ranking** page (the content of
   `graph/tasks.md` with the digest, labelled as the lens it is), and **search** (a
   client-side index over ids, Statements, titles and registry short names).
-- **walks** (`/walks/<slug>/`): hand-written documents whose every step names a node the
-  build resolves, rendered with the live node beside the prose and marked as the round's
-  draft.
-
 The rule for every page holds as built: an AI-drafted node (an AI author, no human event on
 it) renders in a lighter register with the label *drafted*, and the ranking's numbers appear
-nowhere but the ranking page and the collapsed section. Not yet built: the intake verbs
-(filing a want, a challenge or an attribution from the page), the chatbot, and pages for the
-held results beyond what the bridge card shows them as.
+nowhere but the ranking page and the collapsed section. The intake verbs on every node page
+— comment, challenge, estimate, want — are prefilled GitHub issues carrying the node id and
+a protocol-shaped body; the site accepts no write, and a maintainer round sweeps what lands
+into ledger events. Not yet built: in-page filing without the GitHub detour, the chatbot,
+and pages for the held results beyond what the bridge card shows them as.
 
 ### 6.1 Schema of graph/index.json
 

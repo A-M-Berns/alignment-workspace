@@ -3,11 +3,11 @@
 
 `site/build.py --check` builds the whole site into a temporary directory from graph/index.json (written by the plain
 checker run when absent), the state files, the registries, DECISIONS.md, the wiki and the ledgers, and fails on an
-unresolved reference, two ids that map to one path, a walk step naming no id, or a binding in site/lede.md or a walk
-that disagrees with the state. This gate runs that build and fails with it.
+unresolved reference, two ids that map to one path, or a binding in site/lede.md that disagrees with the state. This
+gate runs that build and fails with it.
 
-Null inputs (`--self-test`): a walk step naming no node, a lede binding that disagrees with the state, two ids that
-collapse to one path, and a lede that is missing. Each must fail, and a build of the live tree must pass.
+Null inputs (`--self-test`): a lede binding that disagrees with the state, two ids that collapse to one path, and a
+lede that is missing. Each must fail, and a build of the live tree must pass.
 """
 from __future__ import annotations
 
@@ -43,14 +43,6 @@ def self_test() -> int:
         cases.append(("a lede binding naming no count is refused", True, True))
     cases.append(("a binding that agrees passes and is replaced by the state's value",
                   B.check_bindings("n <!--bind:nodes-->2<!--/bind-->", {"nodes": 2}, "lede") == "n 2", True))
-    try:
-        B.parse_walk("# A walk\n\nprose only, no step\n")
-        cases.append(("a walk with no step is refused", False, True))
-    except L.BuildError:
-        cases.append(("a walk with no step is refused", True, True))
-    w = B.parse_walk("# A walk\n\nintro\n\n## some-node\n\nprose\n")
-    cases.append(("a walk parses into title, intro and steps", (w["title"], w["intro"], w["steps"]) == ("A walk", "intro", [("some-node", "prose")]), True))
-
     class FakeRepo:
         nodes = {"a/b": {}, "a--b": {}}
         items = {}
@@ -69,17 +61,16 @@ def self_test() -> int:
     s2 = P.Site(FakeRepo())
     s2.url("n", "missing")
     cases.append(("an id that resolves to nothing is recorded as unresolved", s2.unresolved == ["n:missing"], True))
-    # a walk step naming no node fails the real build: run the build with a scratch walk beside the real ones
-    import tempfile, shutil
-    with tempfile.TemporaryDirectory() as d:
-        scratch = SITE / "walks" / "zz-selftest-missing-step.md"
-        try:
-            scratch.write_text("# Self-test\n\nintro\n\n## no-such-node-selftest\n\nprose\n")
-            r = subprocess.run([sys.executable, str(SITE / "build.py"), "--out", d], cwd=ROOT, capture_output=True, text=True)
-            cases.append(("a walk step naming no node fails the build", r.returncode != 0 and "names no node" in r.stderr, True))
-        finally:
-            if scratch.exists():
-                scratch.unlink()
+    # a missing lede fails the real build: run the check with site/lede.md set aside
+    lede = SITE / "lede.md"
+    aside = SITE / "lede.md.selftest-aside"
+    try:
+        lede.rename(aside)
+        r = subprocess.run([sys.executable, str(SITE / "build.py"), "--check"], cwd=ROOT, capture_output=True, text=True)
+        cases.append(("a missing lede fails the build", r.returncode != 0 and "lede.md is missing" in r.stderr, True))
+    finally:
+        if aside.exists():
+            aside.rename(lede)
     ok, msg = build_check()
     cases.append(("the live tree builds", ok, True))
     failures = 0

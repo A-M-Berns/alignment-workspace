@@ -156,8 +156,8 @@ if __name__ == "__main__":
     subprocess.run([sys.executable, "-m", "unittest", "discover", "-s", "checkers/tests",
                     "-t", "."], cwd=ROOT, check=True)
     # The site builds from the tree, or the tree is wrong (ruling S2, 2026-10-24): every
-    # reference resolves, no two ids share a path, every walk step names a node, and the
-    # lede's and the walks' bindings agree with the state.
+    # reference resolves, no two ids share a path, and the lede's bindings agree with
+    # the state.
     subprocess.run([sys.executable, "tests/site_build.py"], cwd=ROOT, check=True)
     print(f"LEAN SORRY GATE: clean over {lean_sorry_gate()} files")
     print(f"LEAN AXIOM DISCIPLINE: every file carries `#print axioms`")

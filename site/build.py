@@ -4,9 +4,9 @@
 startup, so a package of that name is shadowed; the generator is a script in the `site/` directory instead.)
 
 Reads graph/index.json (writing it with the plain checker run if absent), graph/derived.json, state/*.json, the registries,
-DECISIONS.md, wiki/, graph/policy.yaml, graph/events/*.jsonl, site/lede.md and site/walks/*.md; writes `_site/`. Fails on
-an unresolved reference, two ids mapping to one path, a walk step naming no id, or a binding in the lede or a walk that
-disagrees with the state. `--check` builds into a temporary directory and prints the counts; it is what the gate runs.
+DECISIONS.md, wiki/, graph/policy.yaml, graph/events/*.jsonl and site/lede.md; writes `_site/`. Fails on an unresolved
+reference, two ids mapping to one path, or a binding in the lede that disagrees with the state. `--check` builds into a
+temporary directory and prints the counts; it is what the gate runs.
 """
 from __future__ import annotations
 
@@ -25,7 +25,6 @@ from load import ROOT, BuildError, Repo
 
 SITE = ROOT / "site"
 BIND = re.compile(r"<!--bind:([a-z_]+)-->(.*?)<!--/bind-->", re.S)
-STEP = re.compile(r"^## (\S+)\s*$", re.M)
 
 
 def counts(repo: Repo) -> dict:
@@ -56,49 +55,6 @@ def check_bindings(text: str, C: dict, where: str) -> str:
     return out
 
 
-def parse_walk(text: str) -> dict:
-    """A walk: a `# Title` line, an intro up to the first `## <id>` heading, then steps, each `## <id>` with its prose."""
-    m = re.search(r"^# (.+)$", text, re.M)
-    if not m:
-        raise BuildError("a walk begins with a `# Title` line")
-    title = m.group(1).strip()
-    parts = STEP.split(text)
-    intro = parts[0][m.end():].strip()
-    steps = [(parts[i].strip(), parts[i + 1].strip()) for i in range(1, len(parts), 2)]
-    if not steps:
-        raise BuildError(f"walk {title!r} has no `## <id>` step")
-    return {"title": title, "intro": intro, "steps": steps}
-
-
-def walk_page(site: pages.Site, slug: str, walk: dict) -> str:
-    r = site.repo
-    body = [f"<p class=\"draft-note\">The prose of this walk is the round's draft, marked as such for the maintainers to rewrite; each step shows the live node beside it.</p>",
-            f"<div class=\"walk-intro\">{md.render(walk['intro'], pages.wiki_link_resolver(site))}</div>"]
-    for i, (ident, prose) in enumerate(walk["steps"], 1):
-        if ident not in r.nodes:
-            raise BuildError(f"walk {slug!r}, step {i}: {ident!r} names no node")
-        N = r.nodes[ident]
-        meta = [pages.kind_label(N), "drafted" if r.drafted(ident) else f"{len(r.human_events(ident))} human event(s)"]
-        held = r.held_by.get(ident, [])
-        roots = r.root_of.get(ident, [])
-        side = [f"<p class=\"statement\">{pages.esc(N['statement'].strip())}</p>", f"<p class=\"muted\">{' · '.join(pages.esc(m) for m in meta)}</p>"]
-        if roots:
-            side.append("<p class=\"muted\">root of " + ", ".join((site.link("n", f) if f != "top" else "the top frame") + f" ({pages.esc(str(role))})" for f, role in roots) + "</p>")
-        if held:
-            side.append("<p class=\"muted\">held by " + ", ".join(site.link("n", f) for f in held) + "</p>")
-        if N.get("frame"):
-            Fr = N["frame"]
-            side.append(f"<p class=\"muted\">holds {len(Fr.get('holds') or [])} node(s); {len(Fr.get('roots') or [])} root(s)</p>")
-        if N.get("formal_result"):
-            F = N["formal_result"]
-            side.append(f"<p class=\"muted\">formal result; hypotheses {'unread' if F.get('hypotheses') == 'unread' else str(len(F.get('hypotheses') or [])) + ' read'}; registry id <code>{pages.esc(str(F.get('registry_id')))}</code></p>")
-        if ident in r.item_of_node:
-            side.append(f"<p class=\"muted\">item {site.link('items', r.item_of_node[ident])}, {pages.esc(str(N['fields'].get('item_status', 'open')))}</p>")
-        body.append(f"<section class=\"step\"><div class=\"step-prose\"><span class=\"step-no\">{i}</span>{md.render(prose, pages.wiki_link_resolver(site))}</div>"
-                    f"<aside class=\"step-node{' drafted' if r.drafted(ident) else ''}\"><h3>{site.link('n', ident)}</h3>{''.join(side)}</aside></section>")
-    return pages.layout(site, walk["title"], "\n".join(body), [("walks", "/walks/")], "a guided walk")
-
-
 def build(out: pathlib.Path, verbose: bool = True) -> dict:
     t0 = time.perf_counter()
     repo = Repo()
@@ -114,23 +70,15 @@ def build(out: pathlib.Path, verbose: bool = True) -> dict:
         p.write_text(content)
         written[kind] = written.get(kind, 0) + 1
 
-    # the lede and the walks (the only hand-written prose), binding-checked
+    # the lede (the only hand-written prose), binding-checked
     lede_src = (SITE / "lede.md").read_text() if (SITE / "lede.md").is_file() else ""
     if not lede_src.strip():
         raise BuildError("site/lede.md is missing or empty: the front page's one paragraph is required")
     lede_html = md.render(check_bindings(lede_src, C, "site/lede.md"), pages.wiki_link_resolver(site))
-    walks = []
-    for wp in sorted((SITE / "walks").glob("*.md")):
-        w = parse_walk(check_bindings(wp.read_text(), C, wp.name))
-        walks.append((wp.stem, w))
-    if not walks:
-        raise BuildError("site/walks/ holds no walk; the build needs at least one")
-    for slug, w in walks:
-        put(site.url("walks", slug, must_exist=False), walk_page(site, slug, w), "walk")
-    put("/walks/", pages.index_list_page(site, "Walks", [f"<li><a href=\"/walks/{pages.esc(s)}/\">{pages.esc(w['title'])}</a></li>" for s, w in walks]), "listing")
-    # nodes
+    # nodes: the page, and the fragment the map's panel loads in place
     for x in repo.nodes:
         put(site.url("n", x), pages.node_page(site, x), "node")
+        put(site.url("n", x) + "frag.html", pages.node_frag(site, x), "node-frag")
     # items
     for num in sorted(repo.items, key=lambda s: (not s.isdigit(), int(s) if s.isdigit() else 0, s)):
         put(site.url("items", num), pages.item_page(site, num), "item")
@@ -175,7 +123,8 @@ def build(out: pathlib.Path, verbose: bool = True) -> dict:
     put("/ranking/", pages.ranking_page(site), "ranking")
     put("/search/", pages.search_page(site), "search")
     put("/search/index.json", json.dumps(pages.search_index(site), ensure_ascii=False), "search-index")
-    put("/", pages.front_page(site, lede_html, [(s, w["title"]) for s, w in walks], rows), "front")
+    put("/assets/map.json", json.dumps(pages.map_data(site), ensure_ascii=False, separators=(",", ":")), "map-data")
+    put("/", pages.front_page(site, lede_html, rows), "front")
     # assets
     (out / "assets").mkdir(parents=True, exist_ok=True)
     for asset in (SITE / "assets").glob("*"):
