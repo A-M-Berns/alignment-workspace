@@ -60,7 +60,7 @@ def layout(site: Site, title: str, body: str, crumbs: list[tuple[str, str]] | No
         crumb_html = '<nav class="crumbs">' + " › ".join(f'<a href="{u}">{esc(t)}</a>' for t, u in crumbs) + "</nav>"
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{esc(title)}</title><link rel="stylesheet" href="/assets/style.css"><script defer src="/assets/app.js"></script></head>
+<title>{esc(title)}</title><link rel="stylesheet" href="/assets/style.css?v={esc(r.commit[:12])}"><script defer src="/assets/app.js?v={esc(r.commit[:12])}"></script></head>
 <body><header class="top"><a class="home" href="/">Alignment Workspace</a><nav class="main">{nav}</nav>
 <form class="search" action="/search/" method="get"><input type="search" name="q" placeholder="search ids, statements, titles" aria-label="search"></form></header>
 <main>{crumb_html}<h1>{esc(title)}</h1>{f'<p class="subtitle">{subtitle}</p>' if subtitle else ''}
@@ -617,7 +617,7 @@ def front_page(site: Site, lede_html: str, feed_rows: list[str]) -> str:
             noscript,
             f'<div class="below-map"><p class="question">{esc(top["question"])}</p>{lede_html}</div>',
             "<div class=\"below-map\"><details class=\"front-feed\"><summary>Recent in the feed</summary><ul class=\"feed\">" + "".join(feed_rows[:12]) + "</ul><p><a href=\"/feed/\">The whole feed</a>.</p></details></div>"]
-    return layout(site, "Research map", "\n".join(body)).replace("</head>", '<script defer src="/assets/map.js"></script></head>')
+    return layout(site, "Research map", "\n".join(body)).replace("</head>", f'<script defer src="/assets/map.js?v={esc(site.repo.commit[:12])}"></script></head>')
 
 
 def map_data(site: Site) -> dict:

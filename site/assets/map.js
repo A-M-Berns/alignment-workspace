@@ -561,7 +561,7 @@
     input.addEventListener("keydown", function (ev) { if (ev.key === "Enter") { ev.preventDefault(); go(ev.shiftKey ? -1 : 1); } });
   })();
 
-  fetch("/assets/map.json").then(function (r) { return r.json(); }).then(function (d) {
+  fetch("/assets/map.json", { cache: "no-cache" }).then(function (r) { return r.json(); }).then(function (d) {
     DATA = d;
     legend();
     var fitBtn = document.getElementById("map-fit");
