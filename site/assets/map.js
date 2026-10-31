@@ -13,7 +13,7 @@
   var card = document.getElementById("map-card");
   var KIND_TONE = { goal: "bone", construction: "emerald", object: "sapphire", work: "amber", philosophy: "amethyst", companion: "garnet" };
 
-  var DATA = null, tf = { k: 1, x: 0, y: 0 }, home = { k: 1, x: 0, y: 0 }, fitAll = null;
+  var DATA = null, tf = { k: 1, x: 0, y: 0 }, home = { k: 1, x: 0, y: 0 }, fitAll = null, far = false;
   var defs = document.createElementNS(NS, "defs");
   svg.appendChild(defs);
   var cam = document.createElementNS(NS, "g");
@@ -22,7 +22,7 @@
   mk.setAttribute("id", "arrow");
   mk.setAttribute("viewBox", "0 0 8 8");
   mk.setAttribute("refX", "7"); mk.setAttribute("refY", "4");
-  mk.setAttribute("markerWidth", "6.5"); mk.setAttribute("markerHeight", "6.5");
+  mk.setAttribute("markerWidth", "7.5"); mk.setAttribute("markerHeight", "7.5");
   mk.setAttribute("orient", "auto-start-reverse");
   var mkp = document.createElementNS(NS, "path");
   mkp.setAttribute("d", "M0,0.6 L7.4,4 L0,7.4 z");
@@ -43,6 +43,8 @@
     cam.setAttribute("transform", "translate(" + tf.x + "," + tf.y + ") scale(" + tf.k + ")");
     if (!zoomed && tf.k >= 1.4) { zoomed = true; svg.classList.add("zoomed"); }
     else if (zoomed && tf.k <= 1.25) { zoomed = false; svg.classList.remove("zoomed"); }
+    if (!far && tf.k <= 0.7) { far = true; svg.classList.add("far"); }
+    else if (far && tf.k >= 0.8) { far = false; svg.classList.remove("far"); }
   }
 
   // split a title into at most two capsule lines
@@ -360,7 +362,7 @@
     };
     items.forEach(function (id) {
       var m = DATA.concepts[id] || {}, p = at[id], ge = geo[id];
-      var cg = el("g", { "class": "cap tone-" + (KIND_TONE[m.k] || "amethyst") + (id === "the-program" ? " program" : "") }, g);
+      var cg = el("g", { "class": "cap tone-" + (KIND_TONE[m.k] || "amethyst") + (id === "the-program" ? " program" : "") + ((m.imp || 0) < 0.3 && m.k !== "goal" ? " minor" : "") }, g);
       dotEl[id] = cg;
       capEl[id] = cg;
       el("rect", { x: p.x - ge.w / 2, y: p.y - ge.h / 2, width: ge.w, height: ge.h, rx: 10, "class": "pill" }, cg);
@@ -547,7 +549,7 @@
         if ((m.t || id).toLowerCase().indexOf(q) >= 0 || (m.s || "").toLowerCase().indexOf(q) >= 0) matches.push(id);
       });
     }
-    var tween = null;
+    var tween = null, searchLit = null;
     function jumpTo(id) {
       var p = at[id];
       if (!p) return;
@@ -566,7 +568,13 @@
       var cg = capEl[id];
       if (cg) {
         cg.classList.add("hit-mark");
-        setTimeout(function () { cg.classList.remove("hit-mark"); }, 1600);
+        if (searchLit && focusOff && pinned !== searchLit) focusOff(searchLit);
+        searchLit = id;
+        if (!pinned && focusOn) focusOn(id);
+        setTimeout(function () {
+          cg.classList.remove("hit-mark");
+          if (!pinned && focusOff && searchLit === id) { focusOff(id); searchLit = null; }
+        }, 1600);
       }
     }
     function go(step) {
