@@ -461,7 +461,7 @@
       "refs": [
         "stance-and-level"
       ],
-      "blurb": "Where should the work happen: at which level of computability, under the updateful or the updateless stance — and does the idealized, unbounded level even represent the phenomena that matter? The cruxes every other line reads."
+      "blurb": "Choices every line makes before it starts: how much computing power the idealized reasoner gets — fully unbounded, logical-inductor level, or polynomial time — and whether it acts on everything it has learned or keeps to commitments made before learning, the updateful versus updateless stance. Behind both sits the sharpest crux: whether results proved for unbounded idealizations say anything about the systems that matter. One live conjecture from the research notes: an aligned agent should be largely updateful about human values and updateless about much else."
     },
     {
       "id": "abstraction-arc",
