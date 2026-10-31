@@ -723,6 +723,15 @@ def map_data(site: Site) -> dict:
         prs_of[cid] = sum(1 for P in r.prs.values()
                           if (e.get("wiki") and e["wiki"] in ((P.get("topics") or {}).get("wiki") or []))
                           or (refs & set((P.get("topics") or {}).get("frames") or [])))
+    # a rough importance per concept — tagged merged work plus its connections in the map,
+    # sqrt-damped and normalized to [0, 1]; the canvas scales capsule and type from it
+    deg: dict[str, int] = {}
+    for L in r.concept_links:
+        for x in (L.get("from"), L.get("to")):
+            if x in r.concepts:
+                deg[x] = deg.get(x, 0) + 1
+    raw = {cid: (prs_of.get(cid, 0) + deg.get(cid, 0)) ** 0.5 for cid in r.concepts}
+    top = max(raw.values()) or 1.0
     meta = {}
     for cid, e in r.concepts.items():
         if e.get("wiki") and e["wiki"] not in r.wiki:
@@ -731,7 +740,8 @@ def map_data(site: Site) -> dict:
             if x not in r.nodes:
                 site.unresolved.append(f"concepts:{cid}:ref:{x}")
         meta[cid] = {"k": e.get("kind", ""), "w": e.get("wiki") or "", "t": e.get("title", cid),
-                     "s": str(e.get("blurb") or ""), "prs": prs_of.get(cid, 0), "d": ds[cid]}
+                     "s": str(e.get("blurb") or ""), "prs": prs_of.get(cid, 0), "d": ds[cid],
+                     "imp": round(raw[cid] / top, 3)}
     return {"items": list(r.concepts), "concepts": meta, "kinds": r.concept_kinds, "links": links}
 
 

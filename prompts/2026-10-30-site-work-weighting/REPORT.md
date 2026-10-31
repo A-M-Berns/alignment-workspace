@@ -1,28 +1,32 @@
-# Report — capsule size tracks merged work
+# Report — capsule size tracks importance
 
-A capsule on the research map now grows with the merged work tagged to its concept, so
-the map shows where the repository's effort has gone. The measure is the count of merged
-pull requests the concept's popup already lists — the digests of `state/prs.json` matched
-by wiki tag or by the concept's frame references — so the size, the card's count and the
-popup's list are the same number. `site/pages.py` computes the per-concept count with
-that one match (`map_data`); before this round the card's count matched only the wiki
-tag, so a concept tagged through its frames showed fewer PRs on the card than in its
+A capsule on the research map scales with a rough importance: the merged work tagged to
+its concept plus its connections in the map, sqrt-damped and normalized (`map_data` in
+`site/pages.py` ships it as `imp`). The type scales with it — about 11px on a leaf
+concept up to 15.5px on `legitimacy-line` — because capsule width alone varies with title
+length and hides the signal; the first cut of this round scaled width by raw merged-PR
+count and was not visible on the preview, which is what the follow-up directive
+corrected. The legend carries `size · work & connections`.
+
+The per-concept merged-work count is computed once, with the same match the popup's
+"Merged work" section uses (wiki tag or frame refs), so the capsule's size, the card's
+count and the popup's list agree; before this round the card counted wiki-tag matches
+only, so a concept tagged through its frames showed fewer PRs on the card than in its
 popup.
 
-Growth is sqrt-damped and capped (`site/assets/map.js`): a concept with no tagged work
-stays at base size, the heaviest (`legitimacy-line`, 40 PRs) is about half again as
-large, with the title font up at most 2px. The legend carries `size · merged work`. The
-collision pass reads the same geometry, so node spacing adapts; the DOM gate's no-overlap
-assertion passes on the built site.
+The collision pass reads the same geometry, so node spacing adapts; the DOM gate's
+no-overlap assertion passes on the built site.
 
-Agent-decided, reversible: sqrt damping with a cap, against linear scaling — linear would
-make `legitimacy-line` dominate the canvas and flatten every distinction below ten PRs.
+Agent-decided, reversible: importance as merged work plus link degree, sqrt-damped —
+against raw PR count (drowned by the goal frames and invisible below ten PRs) and against
+degree alone (blind to where the work went).
 
-Not shown: the count measures tagged merged PRs only. Work that landed by direct push,
-rounds not yet digested, and Lean volume inside a PR all weigh the same as any other PR
-or not at all, so the size is a proxy for attention, not a measure of content.
+Not shown: the measure is a proxy for attention, not content. It counts tagged merged
+PRs and hand-audited links; work landed by direct push, rounds not yet digested, Lean
+volume inside a PR, and a concept's importance to the program's argument (as against its
+activity) are all outside it.
 
 ## Attribution
 
-Prompt-author: the maintainer, in conversation, kept verbatim. Executor: Claude Fable 5
-(Anthropic). 2026-10-30.
+Prompt-author: the maintainer, in conversation, kept verbatim (`PROMPT.md`, and the
+follow-up in `PROMPT-followup.md`). Executor: Claude Fable 5 (Anthropic). 2026-10-30.

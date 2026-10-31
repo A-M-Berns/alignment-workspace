@@ -96,19 +96,20 @@
       });
     }
     items.forEach(function (id) { if (!band[id] && id !== "the-program") band[id] = "context"; });
-    // capsule geometry; size grows with the merged work tagged to the concept, so the map
-    // shows where the repository's effort has gone (sqrt-damped, capped, zero work = base size)
+    // capsule geometry; capsule and type scale with the concept's importance — merged work
+    // plus connections, computed in map_data — so the map shows where the effort has gone.
+    // The font carries the signal: width alone varies with title length and would hide it.
     var geo = {};
     items.forEach(function (id) {
       var m = meta[id] || {};
       var tt = m.t || id;
+      var imp = m.imp || 0;
+      var fs = 10 + 5.5 * imp;
       var lines = titleLines(tt, 20);
       var wch = Math.max.apply(null, lines.map(function (L) { return L.length; }));
-      var grow = Math.min(Math.sqrt(m.prs || 0) * 3.4, 22);
-      var fs = 11.5 + Math.min(grow / 9, 2);
-      var cw = Math.max(Math.min(wch * fs * 0.626 + 30 + grow, 240), 96);
-      var chh = (lines.length > 1 ? 48 : 34) + Math.round(grow * 0.6);
-      if (id === "the-program") { cw += 14; chh += 6; fs = Math.max(fs, 13); }
+      var cw = Math.max(Math.min(wch * fs * 0.626 + 24 + 22 * imp, 260), 88);
+      var chh = Math.round((lines.length > 1 ? 2 * (fs + 2) + 16 : fs + 20) + 8 * imp);
+      if (id === "the-program") { cw += 14; chh += 6; fs = Math.max(fs, 14); }
       geo[id] = { w: cw, h: chh, lines: lines, fs: fs };
     });
     // columns: rank by goal distance, pitch from the widest capsule per rank
@@ -400,7 +401,7 @@
     var K = DATA.kinds || {};
     var rows = [["bone", K.goal || "goal"], ["emerald", K.construction || "construction"], ["sapphire", K.object || "object"], ["amber", K.work || "work"], ["amethyst", K.philosophy || "philosophy"], ["garnet", K.companion || "companion"]];
     lg.innerHTML = rows.map(function (r) { return '<span class="lg tone-' + r[0] + '"><span class="dotc"></span>' + esc(r[1]) + "</span>"; }).join("")
-      + '<span class="lg">size · merged work</span>';
+      + '<span class="lg">size · work &amp; connections</span>';
   }
 
   // pan and zoom; capture the pointer only once a drag has started, or clicks retarget to the svg
