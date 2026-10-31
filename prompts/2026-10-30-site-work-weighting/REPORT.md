@@ -1,12 +1,15 @@
 # Report — capsule size tracks importance
 
 A capsule on the research map scales with a rough importance: the merged work tagged to
-its concept plus its connections in the map, sqrt-damped and normalized (`map_data` in
-`site/pages.py` ships it as `imp`). The type scales with it — about 11px on a leaf
-concept up to 15.5px on `legitimacy-line` — because capsule width alone varies with title
-length and hides the signal; the first cut of this round scaled width by raw merged-PR
-count and was not visible on the preview, which is what the follow-up directive
-corrected. The legend carries `size · work & connections`.
+its concept plus its connections in the map, sqrt-damped, blended with its rank
+percentile (0.45 magnitude / 0.55 percentile — the magnitudes clump near zero, so
+percentile is what spreads the middle visibly; equal scores stay equal), and normalized
+(`map_data` in `site/pages.py` ships it as `imp`). The type carries the signal — 10px on
+a leaf concept to 28px on `legitimacy-line`, convex (`imp^1.35`) so the top tier
+separates — because capsule width alone varies with title length and hides it; the first
+cut of this round scaled width by raw merged-PR count and was not visible on the preview,
+which is what the follow-up directive corrected. The legend carries
+`size · work & connections`.
 
 The per-concept merged-work count is computed once, with the same match the popup's
 "Merged work" section uses (wiki tag or frame refs), so the capsule's size, the card's

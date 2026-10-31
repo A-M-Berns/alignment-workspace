@@ -2,6 +2,7 @@
 appear on `/ranking/` and in a collapsed section of a node page, nowhere else."""
 from __future__ import annotations
 
+import bisect
 import html
 import json
 import re
@@ -732,6 +733,14 @@ def map_data(site: Site) -> dict:
                 deg[x] = deg.get(x, 0) + 1
     raw = {cid: (prs_of.get(cid, 0) + deg.get(cid, 0)) ** 0.5 for cid in r.concepts}
     top = max(raw.values()) or 1.0
+    # blend magnitude with rank percentile: the magnitudes clump (most concepts carry
+    # little tagged work), so percentile is what spreads the middle visibly; ties tie
+    vals = sorted(raw.values())
+    n = len(vals) or 1
+
+    def pct(v: float) -> float:
+        lo, hi = bisect.bisect_left(vals, v), bisect.bisect_right(vals, v)
+        return (lo + (hi - lo) / 2) / n
     meta = {}
     for cid, e in r.concepts.items():
         if e.get("wiki") and e["wiki"] not in r.wiki:
@@ -741,7 +750,7 @@ def map_data(site: Site) -> dict:
                 site.unresolved.append(f"concepts:{cid}:ref:{x}")
         meta[cid] = {"k": e.get("kind", ""), "w": e.get("wiki") or "", "t": e.get("title", cid),
                      "s": str(e.get("blurb") or ""), "prs": prs_of.get(cid, 0), "d": ds[cid],
-                     "imp": round(raw[cid] / top, 3)}
+                     "imp": round(0.45 * raw[cid] / top + 0.55 * pct(raw[cid]), 3)}
     return {"items": list(r.concepts), "concepts": meta, "kinds": r.concept_kinds, "links": links}
 
 
