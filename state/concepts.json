@@ -1,11 +1,11 @@
 {
   "kinds": {
-    "goal": "goal / thread",
+    "goal": "research thread",
     "construction": "new construction",
     "object": "mathematical object",
     "work": "prior work",
     "philosophy": "philosophical concept",
-    "companion": "human work with a repo companion"
+    "companion": "human writeup"
   },
   "concepts": [
     {
