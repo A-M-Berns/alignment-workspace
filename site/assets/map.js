@@ -229,7 +229,9 @@
     svg.__layout = { at: at, geo: geo };
     var ax = el("g", { "class": "axis" }, g);
 
-    home = { k: Math.min(b.w / lay.w, 1), x: 0, y: 0 };
+    // boot at twice the fit-to-width zoom, centred, so capsules open at reading size;
+    // the map overflows the viewport and the user pans
+    home = { k: Math.min((b.w / lay.w) * 2, 1.2), x: 0, y: 0 };
     home.x = (b.w - lay.w * home.k) / 2;
     home.y = (b.h - lay.h * home.k) / 2;
     tf = { k: home.k, x: home.x, y: home.y };
