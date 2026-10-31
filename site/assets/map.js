@@ -104,12 +104,12 @@
       var m = meta[id] || {};
       var tt = m.t || id;
       var imp = m.imp || 0;
-      var fs = 10 + 9 * imp;
+      var fs = 9.5 + 14.5 * imp;
       var lines = titleLines(tt, 20);
       var wch = Math.max.apply(null, lines.map(function (L) { return L.length; }));
-      var cw = Math.max(Math.min(wch * fs * 0.626 + 24 + 34 * imp, 320), 88);
-      var chh = Math.round((lines.length > 1 ? 2 * (fs + 2) + 16 : fs + 20) + 14 * imp);
-      if (id === "the-program") { cw += 14; chh += 6; fs = Math.max(fs, 15); }
+      var cw = Math.max(Math.min(wch * fs * 0.626 + 22 + 52 * imp, 420), 84);
+      var chh = Math.round((lines.length > 1 ? 2 * (fs + 2) + 15 : fs + 18) + 22 * imp);
+      if (id === "the-program") { cw += 14; chh += 6; fs = Math.max(fs, 17); }
       geo[id] = { w: cw, h: chh, lines: lines, fs: fs };
     });
     // columns: rank by goal distance, pitch from the widest capsule per rank
