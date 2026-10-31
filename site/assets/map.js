@@ -23,7 +23,7 @@
   mk.setAttribute("viewBox", "0 0 8 8");
   mk.setAttribute("refX", "7.4"); mk.setAttribute("refY", "4");
   mk.setAttribute("markerUnits", "userSpaceOnUse");
-  mk.setAttribute("markerWidth", "9"); mk.setAttribute("markerHeight", "9");
+  mk.setAttribute("markerWidth", "11"); mk.setAttribute("markerHeight", "11");
   mk.setAttribute("orient", "auto");
   var mkp = document.createElementNS(NS, "path");
   mkp.setAttribute("d", "M0,0.6 L7.4,4 L0,7.4 z");
@@ -160,7 +160,7 @@
     var free = items.filter(function (id) { return id !== "the-program"; });
     free.sort();
     var N = free.length;
-    var PADG = 34;
+    var PADG = 48;
     var areaOf = {}, totalArea = 0;
     free.forEach(function (id) { areaOf[id] = (geo[id].w + PADG) * (geo[id].h + PADG); totalArea += areaOf[id]; });
     // depth as an area quantile: each depth's preferred radial interval holds exactly the
@@ -248,8 +248,8 @@
     // realise at a fixed target density (~55% of the disc covered by padded capsules),
     // then deterministic descent separates size-aware: wide capsules claim wide berths
     // around their sites instead of one global inflation to the worst pair
-    var EX = 1.3, SEPG = 30;
-    var t0 = Math.sqrt(totalArea / (0.55 * Math.PI));
+    var EX = 1.3, SEPG = 48;
+    var t0 = Math.sqrt(totalArea / (0.40 * Math.PI));
     var P = { "the-program": { x: 0, y: 0 } };
     var anchor = {};
     free.forEach(function (id) {
@@ -355,7 +355,7 @@
       var a = at[L[0]], c = at[L[1]];
       if (!a || !c) return;
       var p1 = boundaryPoint(L[0], c.x, c.y, 2);
-      var p2 = boundaryPoint(L[1], a.x, a.y, L[5] ? 2 : 4);
+      var p2 = boundaryPoint(L[1], a.x, a.y, L[5] ? 1 : 1.5);
       var d = "M" + p1[0] + "," + p1[1] + " L" + p2[0] + "," + p2[1];
       var grp = el("g", { "class": "net-edge" + (L[5] ? " undirected" : "") }, eg);
       var wire = el("path", { d: d, "class": "wire", "stroke-width": Math.min(0.75 + L[2] * 0.08, 1.3) }, grp);

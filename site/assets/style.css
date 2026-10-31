@@ -242,11 +242,11 @@ svg#map g.cap.tone-bone .cap-title { font-weight: 700; }
 svg#map g.cap.program .pill { fill: var(--accent); stroke: none; }
 svg#map g.cap.program .cap-title { fill: #101013; font-weight: 720; }
 svg#map g.cap.hit-mark .pill { stroke: #ececec; stroke-width: 2.5px; }
-svg#map .net-edge .wire { stroke: #92928c; opacity: 0.25; }
-svg#map .net-edge.undirected .wire { opacity: 0.12; }
-svg#map .net-edge.lit .wire { stroke: #ececec; opacity: 0.75; }
-svg#map .net-edge:hover .wire { stroke: #ececec; opacity: 1; }
-svg#map .arrowhead { fill: context-stroke; }
+svg#map .net-edge .wire { stroke: #92928c; opacity: 1; stroke-opacity: 0.25; }
+svg#map .net-edge.undirected .wire { stroke-opacity: 0.12; }
+svg#map .net-edge.lit .wire { stroke: #ececec; stroke-opacity: 0.75; }
+svg#map .net-edge:hover .wire { stroke: #ececec; stroke-opacity: 1; }
+svg#map .arrowhead { fill: context-stroke; fill-opacity: 0.6; }
 svg#map .goalwash { display: none; }
 svg#map g.scene.focus g.cap:not(.nb) { opacity: 0.16; }
 svg#map g.scene.focus .net-edge:not(.lit) { opacity: 0.05; }
