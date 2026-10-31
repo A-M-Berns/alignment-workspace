@@ -252,10 +252,7 @@ svg#map g.scene.focus g.cap:not(.nb) { opacity: 0.16; }
 svg#map g.scene.focus .net-edge:not(.lit) { opacity: 0.05; }
 #map-fit { background: none; border: 1px solid var(--rule); color: var(--muted); font: inherit; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.2em 0.7em; border-radius: 6px; cursor: pointer; margin-left: 0.9em; }
 #map-fit:hover { color: #ececec; border-color: #ececec; }
-/* at overview scale, secondary labels step back; the capsules still carry kind and weight */
-svg#map.far g.cap.minor .cap-title { opacity: 0; }
-svg#map.far g.cap.minor:hover .cap-title, svg#map.far g.cap.minor.nb .cap-title { opacity: 1; }
-svg#map g.cap .cap-title { transition: opacity 0.18s ease; }
+
 .search-chip { font-size: 0.72rem; color: var(--muted); margin-left: 0.5em; text-transform: uppercase; letter-spacing: 0.05em; }
 svg#map .axis .bandlabel { fill: #6a6964; font-weight: 600; }
 #map-card .comment-link { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; text-decoration: none; border: 1px solid var(--rule); border-radius: 5px; padding: 0.22em 0.7em; }

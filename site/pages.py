@@ -610,7 +610,7 @@ def front_page(site: Site, lede_html: str, feed_rows: list[str]) -> str:
     body = ['<div class="map-full"><div class="map-stage">'
             '<svg id="map" role="application" aria-label="the argument map"></svg>'
             '<div class="map-side overlay"><span id="map-legend"></span><button id="map-fit" type="button">fit map</button></div>'
-            '<span class="map-hint overlay muted">foundations feed goals, left → right · drag to pan · scroll to zoom · click a node · esc backs out</span>'
+            '<span class="map-hint overlay muted">everything feeds the program at the centre · drag to pan · scroll to zoom · click a node · esc backs out</span>'
             '<div id="map-card" hidden></div>'
             '<div id="map-modal"><div id="map-panel"><button id="map-panel-close" aria-label="close">×</button><div id="map-panel-body"></div></div></div>'
             '</div></div>',

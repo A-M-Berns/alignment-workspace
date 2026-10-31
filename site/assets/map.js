@@ -22,8 +22,9 @@
   mk.setAttribute("id", "arrow");
   mk.setAttribute("viewBox", "0 0 8 8");
   mk.setAttribute("refX", "7.4"); mk.setAttribute("refY", "4");
-  mk.setAttribute("markerWidth", "7.5"); mk.setAttribute("markerHeight", "7.5");
-  mk.setAttribute("orient", "auto-start-reverse");
+  mk.setAttribute("markerUnits", "userSpaceOnUse");
+  mk.setAttribute("markerWidth", "9"); mk.setAttribute("markerHeight", "9");
+  mk.setAttribute("orient", "auto");
   var mkp = document.createElementNS(NS, "path");
   mkp.setAttribute("d", "M0,0.6 L7.4,4 L0,7.4 z");
   mkp.setAttribute("class", "arrowhead");
@@ -59,12 +60,12 @@
     return lines;
   }
 
-  // compact layered graph with soft goal affinity (GPT Astra consult, 2026-10-31): x is
-  // dependency rank with measured column widths and clean 80px gaps; y places each node at
-  // the weighted middle of the goals it feeds, refined by neighbour sweeps and a constrained
-  // compaction, so shared foundations sit between the lines they support. Importance shows
-  // mostly as capsule area over a readable type floor. Long edges route through free slots
-  // in the columns they cross rather than arcing over the map.
+  // radial (maintainer directive, 2026-10-31): the overall program is the one node at the
+  // centre; the six lines take angular sectors around it, ordered so lines with shared
+  // upstream support sit adjacent; every other concept sits at the circular mean of the
+  // lines it feeds, at a radius given by its dependency depth, so shared foundations fall
+  // between the sectors they serve. Rings are elliptical (wide) because capsules are
+  // horizontal text. Importance shows as capsule area over a readable type floor.
   var GOALS = ["corrigibility-line", "normative-induction", "normativity-line", "legitimacy-line", "deference-line", "openness-line"];
   function layout(items, links) {
     var meta = DATA.concepts, i;
@@ -89,20 +90,12 @@
       if (id === "the-program") { cw += 12; chh += 6; fs = Math.max(fs, 16); }
       geo[id] = { w: cw, h: chh, lines: lines, fs: fs };
     });
-    // x: rank by goal distance; column centres from measured widths with a constant clear gap
+    // rings: dependency depth, the program at zero
     var dmax = 1;
     items.forEach(function (id) { dmax = Math.max(dmax, (meta[id] || {}).d || 0); });
-    var colOf = {};
-    items.forEach(function (id) { colOf[id] = id === "the-program" ? dmax : dmax - ((meta[id] || {}).d || 0); });
-    var colW = [];
-    items.forEach(function (id) { var c = colOf[id]; colW[c] = Math.max(colW[c] || 0, geo[id].w); });
-    var colX = [], xcur = 150;
-    for (i = 0; i <= dmax; i++) {
-      colX[i] = xcur + (colW[i] || 0) / 2;
-      xcur += colW[i] ? colW[i] + 80 : 0;
-    }
-    var w = xcur + 70;
-    // the set of goals each node feeds, along directed edges
+    var ring = {};
+    items.forEach(function (id) { ring[id] = id === "the-program" ? 0 : ((meta[id] || {}).d || dmax); });
+    // the set of lines each node feeds
     var reach = {};
     function goalsOf(id, trail) {
       if (reach[id]) return reach[id];
@@ -116,7 +109,7 @@
       return reach[id];
     }
     items.forEach(function (id) { goalsOf(id, {}); });
-    // goal order: the permutation keeping goals with shared upstream support adjacent
+    // order the lines around the circle so pairs with shared support sit adjacent
     var shared = {};
     items.forEach(function (id) {
       if (GOALS.indexOf(id) >= 0 || id === "the-program") return;
@@ -127,13 +120,14 @@
         shared[key] = (shared[key] || 0) + aw * aw;
       }
     });
+    function ringDist(p2, q2, n2) { var d2 = Math.abs(p2 - q2); return Math.min(d2, n2 - d2); }
     function permCost(order) {
       var at2 = {};
       order.forEach(function (gid, idx) { at2[gid] = idx; });
       var cost = 0;
       Object.keys(shared).forEach(function (key) {
         var pq = key.split("|");
-        cost += shared[key] * Math.abs(at2[pq[0]] - at2[pq[1]]);
+        cost += shared[key] * ringDist(at2[pq[0]], at2[pq[1]], order.length);
       });
       return cost;
     }
@@ -152,111 +146,107 @@
         t = arr[k]; arr[k] = arr[j]; arr[j] = t;
       }
     })(GOALS.slice(), 0);
-    // anchors, and each node's preferred y: the mean anchor of the goals it feeds
-    var PITCH = 300;
-    var anchor = {};
-    goalOrder.forEach(function (gid, idx) { anchor[gid] = 90 + idx * PITCH; });
-    var mid = 90 + (goalOrder.length - 1) * PITCH / 2;
-    var pref = {};
+    var gAngle = {};
+    goalOrder.forEach(function (gid, idx) { gAngle[gid] = -Math.PI / 2 + idx * (2 * Math.PI / goalOrder.length); });
+    // each node's angle: the circular mean of the lines it feeds; those feeding nothing
+    // named take the mean of their neighbours, settled over a few passes
+    var ang = {};
     items.forEach(function (id) {
+      if (id === "the-program") { ang[id] = 0; return; }
       var gs = reach[id] || [];
-      pref[id] = gs.length ? gs.reduce(function (s, gg) { return s + anchor[gg]; }, 0) / gs.length : mid;
+      if (gs.length) {
+        var vx = 0, vy = 0;
+        gs.forEach(function (gg) { vx += Math.cos(gAngle[gg]); vy += Math.sin(gAngle[gg]); });
+        ang[id] = Math.atan2(vy, vx);
+      }
     });
-    var y = {};
-    items.forEach(function (id) { y[id] = pref[id]; });
-    var cols = [];
-    items.forEach(function (id) { (cols[colOf[id]] = cols[colOf[id]] || []).push(id); });
-    function lam(id) { return GOALS.indexOf(id) >= 0 ? 8 : (id === "the-program" ? 0 : 0.5); }
-    function orderCol(col) {
-      col.sort(function (a, bb) {
-        var ga2 = GOALS.indexOf(a), gb2 = GOALS.indexOf(bb);
-        if (ga2 >= 0 && gb2 >= 0) return goalOrder.indexOf(a) - goalOrder.indexOf(bb);
-        return (y[a] - y[bb]) || a.localeCompare(bb);
+    for (var pass = 0; pass < 4; pass++) {
+      items.forEach(function (id) {
+        if (ang[id] !== undefined) return;
+        var vx = 0, vy = 0, n2 = 0;
+        (nbAll[id] || []).forEach(function (nb) {
+          if (ang[nb] !== undefined && nb !== "the-program") { vx += Math.cos(ang[nb]); vy += Math.sin(ang[nb]); n2++; }
+        });
+        if (n2) ang[id] = Math.atan2(vy, vx);
       });
     }
-    // sweeps plus compaction: target y from neighbours and the affinity anchor, then a
-    // weighted no-overlap projection (pool adjacent violators) within each column
-    var SEP = 80;
-    for (var pass = 0; pass < 24; pass++) {
-      cols.forEach(function (col) {
-        if (!col || !col.length) return;
-        var target = {}, wgt = {};
-        col.forEach(function (id) {
-          var nb = nbAll[id] || [];
-          var s = 0;
-          nb.forEach(function (n2) { s += y[n2]; });
-          var l2 = lam(id);
-          target[id] = (nb.length + l2) > 0 ? (s + l2 * pref[id]) / (nb.length + l2) : pref[id];
-          wgt[id] = nb.length + l2 + 0.01;
-        });
-        var hold = {};
-        col.forEach(function (id) { hold[id] = target[id]; });
-        var keep = y; y = target; orderCol(col); y = keep;
-        // cumulative required separations, then PAV on the shifted targets
-        var sep = [0];
-        for (var i2 = 1; i2 < col.length; i2++) {
-          sep[i2] = sep[i2 - 1] + (geo[col[i2 - 1]].h + geo[col[i2]].h) / 2 + SEP;
-        }
-        var blocks = [];
-        for (var i3 = 0; i3 < col.length; i3++) {
-          var b2 = { v: hold[col[i3]] - sep[i3], w: wgt[col[i3]], n: 1 };
-          while (blocks.length && blocks[blocks.length - 1].v >= b2.v) {
-            var pb = blocks.pop();
-            b2 = { v: (pb.v * pb.w + b2.v * b2.w) / (pb.w + b2.w), w: pb.w + b2.w, n: pb.n + b2.n };
+    var spare = 0;
+    items.forEach(function (id) { if (ang[id] === undefined) { ang[id] = spare * 2.399963; spare++; } });
+    // balance occupancy: blend each angle toward its rank's even share of the circle, so
+    // the disc fills all the way round and the programme sits at the visual centre, while
+    // the affinity ordering (who is near whom) is preserved
+    function norm2(a2) { while (a2 > Math.PI) a2 -= 2 * Math.PI; while (a2 < -Math.PI) a2 += 2 * Math.PI; return a2; }
+    var ordered = items.filter(function (id) { return id !== "the-program"; })
+      .sort(function (a2, b2) { return ang[a2] - ang[b2] || a2.localeCompare(b2); });
+    ordered.forEach(function (id, idx) {
+      var even = -Math.PI + (idx + 0.5) * 2 * Math.PI / ordered.length;
+      ang[id] = norm2(ang[id] + norm2(even - ang[id]) * 0.6);
+    });
+    // elliptical rings: radius from depth, wide axis horizontal for horizontal capsules
+    var EX = 1.5, PITCH = 260, R0 = 330;
+    function radius(d2) { return d2 === 0 ? 0 : R0 + Math.sqrt(d2 - 1) * PITCH; }
+    // angular personal space per ring: sort by angle, relax the gaps as arcs, keeping each
+    // community (same reachable-line set) packed closer than its neighbours
+    var byRing = {};
+    items.forEach(function (id) { if (id !== "the-program") (byRing[ring[id]] = byRing[ring[id]] || []).push(id); });
+    function norm(a2) { while (a2 > Math.PI) a2 -= 2 * Math.PI; while (a2 < -Math.PI) a2 += 2 * Math.PI; return a2; }
+    Object.keys(byRing).forEach(function (rk) {
+      var ids = byRing[rk];
+      var r2 = radius(+rk) * ((EX + 1) / 2);
+      ids.sort(function (a2, b2) { return ang[a2] - ang[b2] || a2.localeCompare(b2); });
+      for (var it = 0; it < 60; it++) {
+        var moved = false;
+        for (var i2 = 0; i2 < ids.length; i2++) {
+          var a3 = ids[i2], b3 = ids[(i2 + 1) % ids.length];
+          if (a3 === b3) continue;
+          var sameSet = (reach[a3] || []).join() === (reach[b3] || []).join();
+          var need = ((geo[a3].w + geo[b3].w) / 2 + (sameSet ? 34 : 80)) / r2;
+          var gapNow = norm(ang[b3] - ang[a3]);
+          if (gapNow < 0) gapNow += 2 * Math.PI;
+          if (gapNow < need) {
+            var push = (need - gapNow) / 2;
+            ang[a3] = norm(ang[a3] - push);
+            ang[b3] = norm(ang[b3] + push);
+            moved = true;
           }
-          blocks.push(b2);
         }
-        var k2 = 0;
-        blocks.forEach(function (bl) {
-          for (var i4 = 0; i4 < bl.n; i4++) { y[col[k2]] = bl.v + sep[k2]; k2++; }
-        });
-      });
-    }
-    // normalise to the frame and take final positions
-    var yMin = 1e9, yMax = -1e9;
-    items.forEach(function (id) {
-      yMin = Math.min(yMin, y[id] - geo[id].h / 2);
-      yMax = Math.max(yMax, y[id] + geo[id].h / 2);
+        if (!moved) break;
+      }
     });
+    // positions on the ellipse, then a plain push-apart guarantee along the join line
     var pos = {};
-    items.forEach(function (id) { pos[id] = { x: colX[colOf[id]], y: y[id] - yMin + 90 }; });
-    var h = yMax - yMin + 180;
-    // personal space, guaranteed: push apart any residual overlapping capsules
-    for (var iter = 0; iter < 40; iter++) {
-      var moved = false;
+    items.forEach(function (id) {
+      var r2 = radius(ring[id]);
+      pos[id] = { x: r2 * EX * Math.cos(ang[id]), y: r2 * Math.sin(ang[id]) };
+    });
+    for (var iter = 0; iter < 60; iter++) {
+      var bumped = false;
       for (var ii = 0; ii < items.length; ii++) for (var jj = ii + 1; jj < items.length; jj++) {
         var A = pos[items[ii]], Bq = pos[items[jj]], ga = geo[items[ii]], gb = geo[items[jj]];
-        var ox = (ga.w + gb.w) / 2 + 18 - Math.abs(A.x - Bq.x);
-        var oy = (ga.h + gb.h) / 2 + 76 - Math.abs(A.y - Bq.y);
+        var ox = (ga.w + gb.w) / 2 + 20 - Math.abs(A.x - Bq.x);
+        var oy = (ga.h + gb.h) / 2 + 20 - Math.abs(A.y - Bq.y);
         if (ox > 0 && oy > 0) {
-          var push = oy / 2 + 1;
-          if (A.y <= Bq.y) { A.y -= push; Bq.y += push; } else { A.y += push; Bq.y -= push; }
-          moved = true;
+          var dx = A.x - Bq.x, dy = A.y - Bq.y;
+          var len = Math.sqrt(dx * dx + dy * dy) || 1;
+          var push = (Math.min(ox, oy) / 2 + 1);
+          A.x += (dx / len) * push; A.y += (dy / len) * push;
+          Bq.x -= (dx / len) * push; Bq.y -= (dy / len) * push;
+          bumped = true;
         }
       }
-      if (!moved) break;
+      if (!bumped) break;
     }
-    // free vertical slots per column, for routing long edges around capsules
-    var occupied = [];
+    pos["the-program"] = { x: 0, y: 0 };
+    // frame: shift to positive coordinates
+    var xMin = 1e9, xMax = -1e9, yMin = 1e9, yMax = -1e9;
     items.forEach(function (id) {
-      var c = colOf[id];
-      (occupied[c] = occupied[c] || []).push([pos[id].y - geo[id].h / 2 - 10, pos[id].y + geo[id].h / 2 + 10]);
+      xMin = Math.min(xMin, pos[id].x - geo[id].w / 2); xMax = Math.max(xMax, pos[id].x + geo[id].w / 2);
+      yMin = Math.min(yMin, pos[id].y - geo[id].h / 2); yMax = Math.max(yMax, pos[id].y + geo[id].h / 2);
     });
-    (occupied || []).forEach(function (iv) { if (iv) iv.sort(function (a, bb) { return a[0] - bb[0]; }); });
-    function freeYNear(c, want) {
-      var iv = occupied[c];
-      if (!iv || !iv.length) return want;
-      var inside = null;
-      for (var i5 = 0; i5 < iv.length; i5++) if (want > iv[i5][0] && want < iv[i5][1]) { inside = iv[i5]; break; }
-      if (!inside) return want;
-      var up = inside[0], down = inside[1];
-      for (var i6 = 0; i6 < iv.length; i6++) {
-        if (iv[i6][1] <= up && Math.abs(iv[i6][1] - up) < 1) up = iv[i6][0];
-        if (iv[i6][0] >= down && Math.abs(iv[i6][0] - down) < 1) down = iv[i6][1];
-      }
-      return (want - up) <= (down - want) ? up : down;
-    }
-    return { pos: pos, geo: geo, w: w, h: h, colOf: colOf, colX: colX, freeYNear: freeYNear };
+    var pad = 110;
+    items.forEach(function (id) { pos[id].x += pad - xMin; pos[id].y += pad - yMin; });
+    return { pos: pos, geo: geo, w: xMax - xMin + 2 * pad, h: yMax - yMin + 2 * pad,
+             cx: pad - xMin, cy: pad - yMin, ring: ring };
   }
 
   var at = {}, geo = {}, capEl = {};
@@ -270,15 +260,15 @@
     var items = DATA.items, links = DATA.links;
     var lay = layout(items, links);
     at = lay.pos; geo = lay.geo;
-    var colOf = lay.colOf;
+
     svg.__layout = { at: at, geo: geo };
     var ax = el("g", { "class": "axis" }, g);
 
-    // boot at twice the fit-to-width zoom, centred, so capsules open at reading size;
-    // the map overflows the viewport and the user pans
-    home = { k: Math.min((b.w / lay.w) * 2, 1.2), x: 0, y: 0 };
-    home.x = (b.w - lay.w * home.k) / 2;
-    home.y = (b.h - lay.h * home.k) / 2;
+    // boot at twice the whole-map fit, centred on the program, so capsules open at
+    // reading size; the map overflows the viewport and the user pans
+    home = { k: Math.min(Math.min(b.w / lay.w, (b.h - 40) / lay.h) * 2, 1.1), x: 0, y: 0 };
+    home.x = b.w / 2 - lay.cx * home.k;
+    home.y = b.h / 2 - lay.cy * home.k;
     fitAll = { k: Math.min(b.w / lay.w, (b.h - 40) / lay.h) };
     fitAll.x = (b.w - lay.w * fitAll.k) / 2;
     fitAll.y = (b.h - lay.h * fitAll.k) / 2;
@@ -287,57 +277,24 @@
     var incident = {}, neighbors = {}, dotEl = {};
     capEl = {};
     var eg = el("g", { "class": "net-edges" }, g);
-    // ports: each capsule's edges leave and enter spread along the middle 70% of its side,
-    // ordered by the other endpoint's y, so parallel relations stay separately traceable
-    var outPort = {}, inPort = {};
-    (function assignPorts() {
-      var outs = {}, ins = {};
-      links.forEach(function (L, li) {
-        if (!at[L[0]] || !at[L[1]]) return;
-        (outs[L[0]] = outs[L[0]] || []).push(li);
-        (ins[L[1]] = ins[L[1]] || []).push(li);
-      });
-      function spread(byNode, port, otherOf) {
-        Object.keys(byNode).forEach(function (id) {
-          var es = byNode[id];
-          es.sort(function (p2, q2) { return (at[otherOf(p2)].y - at[otherOf(q2)].y) || (p2 - q2); });
-          var span2 = geo[id].h * 0.7;
-          es.forEach(function (li, idx) {
-            port[li] = at[id].y + (es.length < 2 ? 0 : (idx / (es.length - 1) - 0.5) * span2);
-          });
-        });
-      }
-      spread(outs, outPort, function (li) { return links[li][1]; });
-      spread(ins, inPort, function (li) { return links[li][0]; });
-    })();
-    links.forEach(function (L, li) {
+    // edges attach where the capsule faces the other endpoint, and bow gently toward the
+    // centre, so the flow reads as an inward spiral to the program
+    function boundaryPoint(id, tx, ty, inset) {
+      var p = at[id], g2 = geo[id];
+      var dx = tx - p.x, dy = ty - p.y;
+      var sx = dx !== 0 ? (g2.w / 2 + inset) / Math.abs(dx) : 1e9;
+      var sy = dy !== 0 ? (g2.h / 2 + inset) / Math.abs(dy) : 1e9;
+      var s = Math.min(sx, sy);
+      return [p.x + dx * s, p.y + dy * s];
+    }
+    links.forEach(function (L) {
       var a = at[L[0]], c = at[L[1]];
       if (!a || !c) return;
-      var ga = geo[L[0]], gc = geo[L[1]];
-      var leftToRight = a.x <= c.x;
-      var y1 = outPort[li] !== undefined ? outPort[li] : a.y;
-      var y2 = inPort[li] !== undefined ? inPort[li] : c.y;
-      var x1 = a.x + (leftToRight ? ga.w / 2 + 2 : -ga.w / 2 - 2);
-      var x2 = c.x + (leftToRight ? -gc.w / 2 - (L[5] ? 2 : 7) : gc.w / 2 + (L[5] ? 2 : 7));
-      var span = Math.abs((colOf[L[1]] || 0) - (colOf[L[0]] || 0));
-      var d;
-      if (!L[5] && span >= 2 && leftToRight) {
-        // thread through a free slot in each column crossed, instead of arcing over the map
-        var pts = [[x1, y1]];
-        for (var cc = colOf[L[0]] + 1; cc < colOf[L[1]]; cc++) {
-          var yw = y1 + (y2 - y1) * ((lay.colX[cc] - x1) / Math.max(x2 - x1, 1));
-          pts.push([lay.colX[cc], lay.freeYNear(cc, yw)]);
-        }
-        pts.push([x2, y2]);
-        d = "M" + pts[0][0] + "," + pts[0][1];
-        for (var pi = 1; pi < pts.length; pi++) {
-          var dx = (pts[pi][0] - pts[pi - 1][0]) * 0.5;
-          d += " C" + (pts[pi - 1][0] + dx) + "," + pts[pi - 1][1] + " " + (pts[pi][0] - dx) + "," + pts[pi][1] + " " + pts[pi][0] + "," + pts[pi][1];
-        }
-      } else {
-        var bow = Math.max(Math.abs(x2 - x1) * 0.45, 40) * (leftToRight ? 1 : -1);
-        d = "M" + x1 + "," + y1 + " C" + (x1 + bow) + "," + y1 + " " + (x2 - bow) + "," + y2 + " " + x2 + "," + y2;
-      }
+      var p1 = boundaryPoint(L[0], c.x, c.y, 2);
+      var p2 = boundaryPoint(L[1], a.x, a.y, L[5] ? 2 : 4);
+      var mx = (p1[0] + p2[0]) / 2, my = (p1[1] + p2[1]) / 2;
+      var qx = mx + (lay.cx - mx) * 0.16, qy = my + (lay.cy - my) * 0.16;
+      var d = "M" + p1[0] + "," + p1[1] + " Q" + qx + "," + qy + " " + p2[0] + "," + p2[1];
       var grp = el("g", { "class": "net-edge" + (L[5] ? " undirected" : "") }, eg);
       var wire = el("path", { d: d, "class": "wire", "stroke-width": Math.min(0.75 + L[2] * 0.08, 1.3) }, grp);
       if (!L[5]) wire.setAttribute("marker-end", "url(#arrow)");
@@ -362,7 +319,7 @@
     };
     items.forEach(function (id) {
       var m = DATA.concepts[id] || {}, p = at[id], ge = geo[id];
-      var cg = el("g", { "class": "cap tone-" + (KIND_TONE[m.k] || "amethyst") + (id === "the-program" ? " program" : "") + ((m.imp || 0) < 0.3 && m.k !== "goal" ? " minor" : "") }, g);
+      var cg = el("g", { "class": "cap tone-" + (KIND_TONE[m.k] || "amethyst") + (id === "the-program" ? " program" : "") }, g);
       dotEl[id] = cg;
       capEl[id] = cg;
       el("rect", { x: p.x - ge.w / 2, y: p.y - ge.h / 2, width: ge.w, height: ge.h, rx: 10, "class": "pill" }, cg);

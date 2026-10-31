@@ -21,3 +21,27 @@ Maintainer directives, in conversation on the preview, verbatim:
 
 > i agree that size should mostly be area not font size. start trying to incorporate its
 > suggestions in the best possible way
+
+> hmm this is probably better yeah. but can we space things out more especially
+> vertically? roughly the same space as between "horizontal columns" should be between
+> everything vertically
+
+> also keep implementing the polish suggestions for the visuals
+
+> the arrowheads are like a different transparency from the arrow bodies and not fully
+> aligned to the tip so it looks kind of weird especially on hover can you fix that
+
+> the overall shape of the geometric layout is perhaps better this way but i feel like
+> now there's no sense of like "clusters" of related concepts, and it makes it look more
+> like a strict left to right funnel. Can you brainstorm more on what the true best
+> layout is
+
+> also some of the nodes are like the text is blank until mouseover (e.g. normative seed)
+> can you fix that
+> the arrows still seem to not be quite right
+> try out ribbons by goal set, and actually i like the idea of radial/orbital a lot bc
+> really there's a single node at the center (overall program) so i think actually that
+> would be the best but if and only if we can still make it look visually elegant
+
+> also related to both arrows and radial layout, the arrowheads should just point in
+> whatever direction they point, not always to the right
