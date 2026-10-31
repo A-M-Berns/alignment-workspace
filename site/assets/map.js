@@ -21,7 +21,7 @@
   var mk = document.createElementNS(NS, "marker");
   mk.setAttribute("id", "arrow");
   mk.setAttribute("viewBox", "0 0 8 8");
-  mk.setAttribute("refX", "7"); mk.setAttribute("refY", "4");
+  mk.setAttribute("refX", "7.4"); mk.setAttribute("refY", "4");
   mk.setAttribute("markerWidth", "7.5"); mk.setAttribute("markerHeight", "7.5");
   mk.setAttribute("orient", "auto-start-reverse");
   var mkp = document.createElementNS(NS, "path");
