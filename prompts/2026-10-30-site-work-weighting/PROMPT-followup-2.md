@@ -51,3 +51,6 @@ Maintainer directives, in conversation on the preview, verbatim:
 > close together, and in general the nodes should be spaced out roughly homogeneously.
 > it's fine for some sectors to be sparser than others based on research but the overall
 > thing should be roughly homogeneous density
+
+> ok so yeah this is still weirdly bunched. get a second opinion from astra on the best
+> way to do a radial layout that's roughly overall homogenous that doesn't look too weird

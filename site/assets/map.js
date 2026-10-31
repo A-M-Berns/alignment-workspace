@@ -146,117 +146,171 @@
         t = arr[k]; arr[k] = arr[j]; arr[j] = t;
       }
     })(GOALS.slice(), 0);
+    // placement (GPT Astra consult 2, 2026-10-31): allocate the disc first, then let the
+    // graph choose positions within the allocation. Phyllotaxis sites cover the unit disc
+    // evenly by construction; each concept takes the site that best matches its depth —
+    // expressed as an area quantile, so a deep thin chain gets a sliver, not a ring — and
+    // the bearings of the lines it feeds, weighted by how specific its affiliation is (a
+    // concept feeding every line has no preferred bearing and is not pulled to one).
+    // A greedy assignment refined by swap passes approximates the consult's
+    // capacity-constrained transport; one uniform scale at the end guarantees personal
+    // space without the local pushes that scar the silhouette.
     var gAngle = {};
     goalOrder.forEach(function (gid, idx) { gAngle[gid] = -Math.PI / 2 + idx * (2 * Math.PI / goalOrder.length); });
-    // each node's angle: the circular mean of the lines it feeds; those feeding nothing
-    // named take the mean of their neighbours, settled over a few passes
-    var ang = {};
-    items.forEach(function (id) {
-      if (id === "the-program") { ang[id] = 0; return; }
+    var free = items.filter(function (id) { return id !== "the-program"; });
+    free.sort();
+    var N = free.length;
+    var PADG = 34;
+    var areaOf = {}, totalArea = 0;
+    free.forEach(function (id) { areaOf[id] = (geo[id].w + PADG) * (geo[id].h + PADG); totalArea += areaOf[id]; });
+    // depth as an area quantile: each depth's preferred radial interval holds exactly the
+    // share of the disc its members' padded area needs
+    var depths = [];
+    free.forEach(function (id) { if (depths.indexOf(ring[id]) < 0) depths.push(ring[id]); });
+    depths.sort(function (a2, b2) { return a2 - b2; });
+    var interval = {}, acc2 = 0;
+    var delta = 0.5 * Math.sqrt(Math.PI / N) / 2;
+    depths.forEach(function (d2) {
+      var slice = 0;
+      free.forEach(function (id) { if (ring[id] === d2) slice += areaOf[id]; });
+      var lo = Math.sqrt(acc2 / totalArea), hi = Math.sqrt((acc2 + slice) / totalArea);
+      interval[d2] = [Math.max(0, lo - delta), Math.min(1, hi + delta)];
+      acc2 += slice;
+    });
+    // affiliation vector over the six lines, and its specificity
+    var prof = {}, spec = {};
+    free.forEach(function (id) {
       var gs = reach[id] || [];
-      if (gs.length) {
-        var vx = 0, vy = 0;
-        gs.forEach(function (gg) { vx += Math.cos(gAngle[gg]); vy += Math.sin(gAngle[gg]); });
-        ang[id] = Math.atan2(vy, vx);
-      }
+      var p2 = {};
+      if (gs.length) gs.forEach(function (gg) { p2[gg] = 1 / gs.length; });
+      prof[id] = p2;
+      if (!gs.length) { spec[id] = 0; return; }
+      var H = 0;
+      gs.forEach(function (gg) { H -= p2[gg] * Math.log(p2[gg]); });
+      spec[id] = 1 - H / Math.log(GOALS.length);
     });
-    for (var pass = 0; pass < 4; pass++) {
-      items.forEach(function (id) {
-        if (ang[id] !== undefined) return;
-        var vx = 0, vy = 0, n2 = 0;
-        (nbAll[id] || []).forEach(function (nb) {
-          if (ang[nb] !== undefined && nb !== "the-program") { vx += Math.cos(ang[nb]); vy += Math.sin(ang[nb]); n2++; }
-        });
-        if (n2) ang[id] = Math.atan2(vy, vx);
-      });
+    // phyllotaxis sites over the unit disc, four deterministic starts
+    var GOLD = Math.PI * (3 - Math.sqrt(5));
+    var ell2 = Math.PI / N;
+    function siteSet(rot) {
+      var ss = [];
+      for (var j2 = 0; j2 < N; j2++) {
+        var r3 = Math.sqrt((j2 + 0.5) / N);
+        var th3 = j2 * GOLD + rot;
+        ss.push({ x: r3 * Math.cos(th3), y: r3 * Math.sin(th3), r: r3, th: th3 });
+      }
+      return ss;
     }
-    var spare = 0;
-    items.forEach(function (id) { if (ang[id] === undefined) { ang[id] = spare * 2.399963; spare++; } });
-    // homogeneous density (maintainer directive, 2026-10-31): rings are filled to their
-    // capacity — each holds as many capsules as its circumference carries at one constant
-    // gap — taken in dependency-depth order, so depth still reads outward but no ring is
-    // crowded or bare. Within a ring, capsules sit around the whole circle in affinity
-    // order with width-proportional arcs, rotated to best match where their lines live.
-    function norm2(a2) { while (a2 > Math.PI) a2 -= 2 * Math.PI; while (a2 < -Math.PI) a2 += 2 * Math.PI; return a2; }
-    // a mild blend toward even occupancy rounds the disc without smearing the sectors
-    var evened = items.filter(function (id) { return id !== "the-program"; })
-      .sort(function (a2, b2) { return ang[a2] - ang[b2] || a2.localeCompare(b2); });
-    evened.forEach(function (id, idx) {
-      var even = -Math.PI + (idx + 0.5) * 2 * Math.PI / evened.length;
-      ang[id] = norm2(ang[id] + norm2(even - ang[id]) * 0.45);
-    });
-    var EX = 1.22, PITCH = 265, R0 = 330, GAP = 78;
-    var order = items.filter(function (id) { return id !== "the-program"; })
-      .sort(function (a2, b2) { return (ring[a2] - ring[b2]) || (ang[a2] - ang[b2]) || a2.localeCompare(b2); });
-    var pos = { "the-program": { x: 0, y: 0 } };
-    var rk = 0, cursor = 0;
-    while (cursor < order.length) {
-      var r2 = R0 + rk * PITCH;
-      var a4 = EX * r2, b4 = r2;
-      var circ = Math.PI * (3 * (a4 + b4) - Math.sqrt((3 * a4 + b4) * (a4 + 3 * b4)));
-      var members = [], used = 0;
-      while (cursor < order.length) {
-        var nid = order[cursor];
-        var need = geo[nid].w + GAP;
-        if (members.length && used + need > circ) break;
-        members.push(nid); used += need; cursor++;
+    function cost(id, sk) {
+      var iv = interval[ring[id]];
+      var dr = sk.r < iv[0] ? iv[0] - sk.r : (sk.r > iv[1] ? sk.r - iv[1] : 0);
+      var c2 = dr * dr / ell2;
+      var sc = spec[id];
+      if (sc > 0) {
+        var p2 = prof[id];
+        Object.keys(p2).forEach(function (gg) { c2 += 0.25 * sc * p2[gg] * (1 - Math.cos(sk.th - gAngle[gg])); });
       }
-      members.sort(function (a2, b2) { return ang[a2] - ang[b2] || a2.localeCompare(b2); });
-      // each capsule starts at its affinity angle and moves only as far as the constant
-      // gap demands, so sectors stay where their lines live and sparse arcs stay sparse
-      var theta = {};
-      members.forEach(function (id) { theta[id] = ang[id]; });
-      var rMean = (a4 + b4) / 2;
-      for (var it2 = 0; it2 < 80; it2++) {
-        var moved2 = false;
-        for (var i2 = 0; i2 < members.length; i2++) {
-          var m1 = members[i2], m2 = members[(i2 + 1) % members.length];
-          if (m1 === m2) continue;
-          var need2 = ((geo[m1].w + geo[m2].w) / 2 + GAP) / rMean;
-          var gap2 = norm2(theta[m2] - theta[m1]);
-          if (gap2 < 0) gap2 += 2 * Math.PI;
-          if (gap2 < need2) {
-            var push2 = (need2 - gap2) / 2;
-            theta[m1] = norm2(theta[m1] - push2);
-            theta[m2] = norm2(theta[m2] + push2);
-            moved2 = true;
+      return c2;
+    }
+    function assign(sites) {
+      var pairs = [];
+      free.forEach(function (id, i2) { sites.forEach(function (sk, k2) { pairs.push([cost(id, sk), i2, k2]); }); });
+      pairs.sort(function (a2, b2) { return a2[0] - b2[0] || a2[1] - b2[1] || a2[2] - b2[2]; });
+      var siteOf = {}, taken = {}, placed = 0;
+      for (var q2 = 0; q2 < pairs.length && placed < N; q2++) {
+        var pr = pairs[q2];
+        if (siteOf[free[pr[1]]] !== undefined || taken[pr[2]]) continue;
+        siteOf[free[pr[1]]] = pr[2]; taken[pr[2]] = 1; placed++;
+      }
+      for (var sweep2 = 0; sweep2 < 4; sweep2++) {
+        var improved = false;
+        for (var i3 = 0; i3 < N; i3++) for (var j3 = i3 + 1; j3 < N; j3++) {
+          var a3 = free[i3], b3 = free[j3];
+          var sa = sites[siteOf[a3]], sb = sites[siteOf[b3]];
+          var now = cost(a3, sa) + cost(b3, sb);
+          var swapped = cost(a3, sb) + cost(b3, sa);
+          if (swapped < now - 1e-12) {
+            var t2 = siteOf[a3]; siteOf[a3] = siteOf[b3]; siteOf[b3] = t2;
+            improved = true;
           }
         }
-        if (!moved2) break;
+        if (!improved) break;
       }
-      members.forEach(function (id) {
-        pos[id] = { x: a4 * Math.cos(theta[id]), y: b4 * Math.sin(theta[id]) };
-      });
-      rk++;
+      var tot = 0;
+      free.forEach(function (id) { tot += cost(id, sites[siteOf[id]]); });
+      return { siteOf: siteOf, sites: sites, total: tot };
     }
-    for (var iter = 0; iter < 60; iter++) {
-      var bumped = false;
-      for (var ii = 0; ii < items.length; ii++) for (var jj = ii + 1; jj < items.length; jj++) {
-        var A = pos[items[ii]], Bq = pos[items[jj]], ga = geo[items[ii]], gb = geo[items[jj]];
-        var ox = (ga.w + gb.w) / 2 + 20 - Math.abs(A.x - Bq.x);
-        var oy = (ga.h + gb.h) / 2 + 20 - Math.abs(A.y - Bq.y);
-        if (ox > 0 && oy > 0) {
-          var dx = A.x - Bq.x, dy = A.y - Bq.y;
-          var len = Math.sqrt(dx * dx + dy * dy) || 1;
-          var push = (Math.min(ox, oy) / 2 + 1);
-          A.x += (dx / len) * push; A.y += (dy / len) * push;
-          Bq.x -= (dx / len) * push; Bq.y -= (dy / len) * push;
-          bumped = true;
-        }
-      }
-      if (!bumped) break;
-    }
-    pos["the-program"] = { x: 0, y: 0 };
-    // frame: shift to positive coordinates
-    var xMin = 1e9, xMax = -1e9, yMin = 1e9, yMax = -1e9;
-    items.forEach(function (id) {
-      xMin = Math.min(xMin, pos[id].x - geo[id].w / 2); xMax = Math.max(xMax, pos[id].x + geo[id].w / 2);
-      yMin = Math.min(yMin, pos[id].y - geo[id].h / 2); yMax = Math.max(yMax, pos[id].y + geo[id].h / 2);
+    var best = null;
+    [0, Math.PI / 8, Math.PI / 4, 3 * Math.PI / 8].forEach(function (rot) {
+      var cand = assign(siteSet(rot));
+      if (!best || cand.total < best.total - 1e-12) best = cand;
     });
-    var pad = 110;
-    items.forEach(function (id) { pos[id].x += pad - xMin; pos[id].y += pad - yMin; });
-    return { pos: pos, geo: geo, w: xMax - xMin + 2 * pad, h: yMax - yMin + 2 * pad,
-             cx: pad - xMin, cy: pad - yMin, ring: ring };
+    // realise at a fixed target density (~55% of the disc covered by padded capsules),
+    // then deterministic descent separates size-aware: wide capsules claim wide berths
+    // around their sites instead of one global inflation to the worst pair
+    var EX = 1.3, SEPG = 30;
+    var t0 = Math.sqrt(totalArea / (0.55 * Math.PI));
+    var P = { "the-program": { x: 0, y: 0 } };
+    var anchor = {};
+    free.forEach(function (id) {
+      var sk = best.sites[best.siteOf[id]];
+      anchor[id] = { x: EX * sk.x * t0, y: sk.y * t0 };
+      P[id] = { x: anchor[id].x, y: anchor[id].y };
+    });
+    function halfExtents(a2, b2) {
+      return [(geo[a2].w + geo[b2].w) / 2 + SEPG, (geo[a2].h + geo[b2].h) / 2 + SEPG];
+    }
+    function energyOf(id, px, py) {
+      var e2 = 0.06 * ((px - anchor[id].x) * (px - anchor[id].x) + (py - anchor[id].y) * (py - anchor[id].y)) / (t0 * t0 / N);
+      var rr = Math.sqrt((px / EX) * (px / EX) + py * py);
+      if (rr > t0 * 1.04) e2 += 40 * (rr / (t0 * 1.04) - 1) * (rr / (t0 * 1.04) - 1);
+      for (var k3 = 0; k3 < items.length; k3++) {
+        var oid = items[k3];
+        if (oid === id) continue;
+        var he = halfExtents(id, oid);
+        var ox2 = he[0] - Math.abs(px - P[oid].x);
+        var oy2 = he[1] - Math.abs(py - P[oid].y);
+        if (ox2 > 0 && oy2 > 0) e2 += (ox2 * oy2) / (t0 * t0 / N) * 3;
+      }
+      return e2;
+    }
+    [t0 * 0.08, t0 * 0.04, t0 * 0.02, t0 * 0.01].forEach(function (step) {
+      for (var sweep3 = 0; sweep3 < 6; sweep3++) {
+        var changed = false;
+        free.forEach(function (id) {
+          var bestE = energyOf(id, P[id].x, P[id].y), bx = P[id].x, by = P[id].y;
+          for (var dir = 0; dir < 8; dir++) {
+            var cx2 = P[id].x + step * Math.cos(dir * Math.PI / 4);
+            var cy2 = P[id].y + step * Math.sin(dir * Math.PI / 4);
+            var e3 = energyOf(id, cx2, cy2);
+            if (e3 < bestE - 1e-9) { bestE = e3; bx = cx2; by = cy2; }
+          }
+          if (bx !== P[id].x || by !== P[id].y) { P[id].x = bx; P[id].y = by; changed = true; }
+        });
+        if (!changed) break;
+      }
+    });
+    // one uniform scale settles whatever separation the descent left unfinished
+    var tScale = 0;
+    for (var ii = 0; ii < items.length; ii++) for (var jj = ii + 1; jj < items.length; jj++) {
+      var A2 = P[items[ii]], B2 = P[items[jj]];
+      var he2 = halfExtents(items[ii], items[jj]);
+      var dx2 = Math.abs(A2.x - B2.x), dy2 = Math.abs(A2.y - B2.y);
+      var tt = Math.min(dx2 > 1e-9 ? he2[0] / dx2 : 1e9, dy2 > 1e-9 ? he2[1] / dy2 : 1e9);
+      if (tt > tScale) tScale = tt;
+    }
+    tScale = Math.max(tScale * 1.002, 1);
+    var pos = {};
+    items.forEach(function (id) { pos[id] = { x: P[id].x * tScale, y: P[id].y * tScale }; });
+    // frame: centred on the program, which is the origin by construction
+    var RX = 0, RY = 0;
+    items.forEach(function (id) {
+      RX = Math.max(RX, Math.abs(pos[id].x) + geo[id].w / 2);
+      RY = Math.max(RY, Math.abs(pos[id].y) + geo[id].h / 2);
+    });
+    RX += 110; RY += 110;
+    items.forEach(function (id) { pos[id].x += RX; pos[id].y += RY; });
+    return { pos: pos, geo: geo, w: 2 * RX, h: 2 * RY, cx: RX, cy: RY, ring: ring };
   }
 
   var at = {}, geo = {}, capEl = {};
@@ -302,9 +356,7 @@
       if (!a || !c) return;
       var p1 = boundaryPoint(L[0], c.x, c.y, 2);
       var p2 = boundaryPoint(L[1], a.x, a.y, L[5] ? 2 : 4);
-      var mx = (p1[0] + p2[0]) / 2, my = (p1[1] + p2[1]) / 2;
-      var qx = mx + (lay.cx - mx) * 0.16, qy = my + (lay.cy - my) * 0.16;
-      var d = "M" + p1[0] + "," + p1[1] + " Q" + qx + "," + qy + " " + p2[0] + "," + p2[1];
+      var d = "M" + p1[0] + "," + p1[1] + " L" + p2[0] + "," + p2[1];
       var grp = el("g", { "class": "net-edge" + (L[5] ? " undirected" : "") }, eg);
       var wire = el("path", { d: d, "class": "wire", "stroke-width": Math.min(0.75 + L[2] * 0.08, 1.3) }, grp);
       if (!L[5]) wire.setAttribute("marker-end", "url(#arrow)");
