@@ -13,7 +13,7 @@
   var card = document.getElementById("map-card");
   var KIND_TONE = { goal: "bone", construction: "emerald", object: "sapphire", work: "amber", philosophy: "amethyst", companion: "garnet" };
 
-  var DATA = null, tf = { k: 1, x: 0, y: 0 }, home = { k: 1, x: 0, y: 0 };
+  var DATA = null, tf = { k: 1, x: 0, y: 0 }, home = { k: 1, x: 0, y: 0 }, fitAll = null, far = false;
   var defs = document.createElementNS(NS, "defs");
   svg.appendChild(defs);
   var cam = document.createElementNS(NS, "g");
@@ -21,9 +21,10 @@
   var mk = document.createElementNS(NS, "marker");
   mk.setAttribute("id", "arrow");
   mk.setAttribute("viewBox", "0 0 8 8");
-  mk.setAttribute("refX", "7"); mk.setAttribute("refY", "4");
-  mk.setAttribute("markerWidth", "6.5"); mk.setAttribute("markerHeight", "6.5");
-  mk.setAttribute("orient", "auto-start-reverse");
+  mk.setAttribute("refX", "7.4"); mk.setAttribute("refY", "4");
+  mk.setAttribute("markerUnits", "userSpaceOnUse");
+  mk.setAttribute("markerWidth", "11"); mk.setAttribute("markerHeight", "11");
+  mk.setAttribute("orient", "auto");
   var mkp = document.createElementNS(NS, "path");
   mkp.setAttribute("d", "M0,0.6 L7.4,4 L0,7.4 z");
   mkp.setAttribute("class", "arrowhead");
@@ -43,6 +44,8 @@
     cam.setAttribute("transform", "translate(" + tf.x + "," + tf.y + ") scale(" + tf.k + ")");
     if (!zoomed && tf.k >= 1.4) { zoomed = true; svg.classList.add("zoomed"); }
     else if (zoomed && tf.k <= 1.25) { zoomed = false; svg.classList.remove("zoomed"); }
+    if (!far && tf.k <= 0.7) { far = true; svg.classList.add("far"); }
+    else if (far && tf.k >= 0.8) { far = false; svg.classList.remove("far"); }
   }
 
   // split a title into at most two capsule lines
@@ -57,9 +60,12 @@
     return lines;
   }
 
-  // layered flow with goal bands (GPT Astra consult, 2026-10-30): ranks from goal distance with
-  // variable column pitch from real capsule widths; rows are bands by the first goal a node reaches,
-  // staircase-ordered; within a band, median-ordered. The program sits alone at the far right, centred.
+  // radial (maintainer directive, 2026-10-31): the overall program is the one node at the
+  // centre; the six lines take angular sectors around it, ordered so lines with shared
+  // upstream support sit adjacent; every other concept sits at the circular mean of the
+  // lines it feeds, at a radius given by its dependency depth, so shared foundations fall
+  // between the sectors they serve. Rings are elliptical (wide) because capsules are
+  // horizontal text. Importance shows as capsule area over a readable type floor.
   var GOALS = ["corrigibility-line", "normative-induction", "normativity-line", "legitimacy-line", "deference-line", "openness-line"];
   function layout(items, links) {
     var meta = DATA.concepts, i;
@@ -69,143 +75,242 @@
       (nbAll[L[0]] = nbAll[L[0]] || []).push(L[1]);
       (nbAll[L[1]] = nbAll[L[1]] || []).push(L[0]);
     });
-    // band: the first goal reached along directed edges (breadth first, ties by the staircase order)
-    var band = {};
-    GOALS.forEach(function (gid) { band[gid] = gid; });
-    items.forEach(function (id) {
-      if (band[id] || id === "the-program") return;
-      var seen = {}, q = [id];
-      seen[id] = 1;
-      while (q.length) {
-        var nxt = [], found = null;
-        for (var qi = 0; qi < q.length; qi++) {
-          (succ[q[qi]] || []).forEach(function (s) {
-            if (GOALS.indexOf(s) >= 0 && (found === null || GOALS.indexOf(s) < GOALS.indexOf(found))) found = s;
-            if (!seen[s]) { seen[s] = 1; nxt.push(s); }
-          });
-        }
-        if (found) { band[id] = found; break; }
-        q = nxt;
-      }
-    });
-    for (var pass = 0; pass < 4; pass++) {
-      items.forEach(function (id) {
-        if (band[id] || id === "the-program") return;
-        var nb = (nbAll[id] || []).filter(function (n) { return band[n]; });
-        if (nb.length) band[id] = band[nb[0]];
-      });
-    }
-    items.forEach(function (id) { if (!band[id] && id !== "the-program") band[id] = "context"; });
-    // capsule geometry
+    // geometry: type sits near a floor (12-16px); importance is carried by capsule area
     var geo = {};
     items.forEach(function (id) {
-      var tt = (meta[id] || {}).t || id;
-      var lines = titleLines(tt, 20);
+      var m = meta[id] || {};
+      var imp = m.imp || 0;
+      var curve = Math.pow(imp, 1.35);
+      var fs = 12 + 4 * curve;
+      var disp = String(m.t || id).replace(/\s*\([^)]*\)$/, "") || String(m.t || id);
+      var lines = titleLines(disp, 18);
       var wch = Math.max.apply(null, lines.map(function (L) { return L.length; }));
-      var cw = Math.max(Math.min(wch * 7.2 + 30, 196), 96);
-      var chh = lines.length > 1 ? 48 : 34;
-      if (id === "the-program") { cw += 14; chh += 6; }
-      geo[id] = { w: cw, h: chh, lines: lines };
+      var cw = wch * fs * 0.626 + 26 + 96 * curve;
+      var chh = Math.round((lines.length > 1 ? 2 * (fs + 3) + 12 : fs + 16) + 42 * curve);
+      if (id === "the-program") { cw += 12; chh += 6; fs = Math.max(fs, 16); }
+      geo[id] = { w: cw, h: chh, lines: lines, fs: fs };
     });
-    // columns: rank by goal distance, pitch from the widest capsule per rank
+    // rings: dependency depth, the program at zero
     var dmax = 1;
     items.forEach(function (id) { dmax = Math.max(dmax, (meta[id] || {}).d || 0); });
-    var colOf = {};
-    items.forEach(function (id) { colOf[id] = id === "the-program" ? dmax : dmax - ((meta[id] || {}).d || 0); });
-    var colW = [];
-    items.forEach(function (id) { var c = colOf[id]; colW[c] = Math.max(colW[c] || 0, geo[id].w); });
-    var colX = [], xcur = 150;
-    for (i = 0; i <= dmax; i++) {
-      var cwid = colW[i] || 0;
-      colX[i] = xcur + cwid / 2;
-      xcur += cwid ? Math.max(cwid + 70, 216) : 0;
+    var ring = {};
+    items.forEach(function (id) { ring[id] = id === "the-program" ? 0 : ((meta[id] || {}).d || dmax); });
+    // the set of lines each node feeds
+    var reach = {};
+    function goalsOf(id, trail) {
+      if (reach[id]) return reach[id];
+      if (trail[id]) return [];
+      trail[id] = 1;
+      var out = {};
+      if (GOALS.indexOf(id) >= 0) out[id] = 1;
+      (succ[id] || []).forEach(function (s) { goalsOf(s, trail).forEach(function (gg) { out[gg] = 1; }); });
+      delete trail[id];
+      reach[id] = Object.keys(out).sort();
+      return reach[id];
     }
-    var w = xcur + 150;
-    // rows: the bands in staircase order. Within a band, only capsules in the same column stack;
-    // different columns share the band's vertical extent, so the map stays wide, not tall.
-    var bandOrder = GOALS.concat(["context"]);
-    var rows = {};
-    items.forEach(function (id) { if (id !== "the-program") (rows[band[id]] = rows[band[id]] || []).push(id); });
-    var y = {}, gap = 56, bandGap = 96, ycur = 90, bandSpan = {};
-    function stackBand(b) {
-      var byCol = {};
-      (rows[b] || []).forEach(function (id) { (byCol[colOf[id]] = byCol[colOf[id]] || []).push(id); });
-      var bandH = 0;
-      Object.keys(byCol).forEach(function (c) {
-        var hh = byCol[c].reduce(function (s, id) { return s + geo[id].h; }, 0) + gap * (byCol[c].length - 1);
-        bandH = Math.max(bandH, hh);
-      });
-      return { byCol: byCol, bandH: bandH };
-    }
-    bandOrder.forEach(function (b) {
-      if (!(rows[b] || []).length) return;
-      var st = stackBand(b);
-      bandSpan[b] = [ycur, ycur + st.bandH];
-      Object.keys(st.byCol).forEach(function (c) {
-        var col = st.byCol[c];
-        var step = st.bandH / col.length;
-        col.forEach(function (id, i2) { y[id] = ycur + (i2 + 0.5) * step; });
-      });
-      ycur += st.bandH + bandGap;
-    });
-    var h = Math.max(ycur + 40, 640);
-    // median sweeps: reorder each band-column stack toward its neighbours, keeping the stack centred
-    for (var sweep = 0; sweep < 6; sweep++) {
-      bandOrder.forEach(function (b) {
-        if (!bandSpan[b]) return;
-        var st = stackBand(b);
-        Object.keys(st.byCol).forEach(function (c) {
-          var col = st.byCol[c];
-          if (col.length < 2) return;
-          col.sort(function (a, bb) {
-            var ma = (nbAll[a] || []).reduce(function (s, n) { return s + (y[n] || 0); }, 0) / Math.max((nbAll[a] || []).length, 1);
-            var mb = (nbAll[bb] || []).reduce(function (s, n) { return s + (y[n] || 0); }, 0) / Math.max((nbAll[bb] || []).length, 1);
-            return (ma || 0) - (mb || 0) || a.localeCompare(bb);
-          });
-          var step = (bandSpan[b][1] - bandSpan[b][0]) / col.length;
-          col.forEach(function (id, i2) { y[id] = bandSpan[b][0] + (i2 + 0.5) * step; });
-        });
-      });
-    }
-    // interleave: members of a stack step alternately left and right of their column line
-    var stackIndex = {};
-    bandOrder.forEach(function (b) {
-      if (!bandSpan[b]) return;
-      var st = stackBand(b);
-      Object.keys(st.byCol).forEach(function (c) {
-        st.byCol[c].slice().sort(function (a, bb) { return y[a] - y[bb]; }).forEach(function (id, i2) { stackIndex[id] = i2; });
-      });
-    });
-    var pos = {};
+    items.forEach(function (id) { goalsOf(id, {}); });
+    // order the lines around the circle so pairs with shared support sit adjacent
+    var shared = {};
     items.forEach(function (id) {
-      var ci = colOf[id];
-      var near = 1e9;
-      if (colX[ci - 1] !== undefined) near = Math.min(near, colX[ci] - colX[ci - 1]);
-      if (colX[ci + 1] !== undefined) near = Math.min(near, colX[ci + 1] - colX[ci]);
-      var amp = Math.max(0, Math.min(44, (near - (colW[ci] || 120)) / 2 - 16));
-      var sx = (((stackIndex[id] || 0) % 2) * 2 - 1) * amp;
-      pos[id] = { x: colX[ci] + (id === "the-program" ? 0 : sx), y: y[id] };
-    });
-    // personal space, guaranteed: push apart any residual overlapping capsules
-    for (var iter = 0; iter < 40; iter++) {
-      var moved = false;
-      for (var ii = 0; ii < items.length; ii++) for (var jj = ii + 1; jj < items.length; jj++) {
-        var A = pos[items[ii]], Bq = pos[items[jj]], ga = geo[items[ii]], gb = geo[items[jj]];
-        var ox = (ga.w + gb.w) / 2 + 18 - Math.abs(A.x - Bq.x);
-        var oy = (ga.h + gb.h) / 2 + 22 - Math.abs(A.y - Bq.y);
-        if (ox > 0 && oy > 0) {
-          var push = oy / 2 + 1;
-          if (A.y <= Bq.y) { A.y -= push; Bq.y += push; } else { A.y += push; Bq.y -= push; }
-          moved = true;
-        }
+      if (GOALS.indexOf(id) >= 0 || id === "the-program") return;
+      var gs = reach[id] || [];
+      var aw = gs.length ? 1 / gs.length : 0;
+      for (var a2 = 0; a2 < gs.length; a2++) for (var b2 = a2 + 1; b2 < gs.length; b2++) {
+        var key = gs[a2] + "|" + gs[b2];
+        shared[key] = (shared[key] || 0) + aw * aw;
       }
-      if (!moved) break;
+    });
+    function ringDist(p2, q2, n2) { var d2 = Math.abs(p2 - q2); return Math.min(d2, n2 - d2); }
+    function permCost(order) {
+      var at2 = {};
+      order.forEach(function (gid, idx) { at2[gid] = idx; });
+      var cost = 0;
+      Object.keys(shared).forEach(function (key) {
+        var pq = key.split("|");
+        cost += shared[key] * ringDist(at2[pq[0]], at2[pq[1]], order.length);
+      });
+      return cost;
     }
-    if (pos["the-program"]) pos["the-program"].y = h / 2;
-    var bands = bandOrder.filter(function (b) { return rows[b] && rows[b].length && b !== "context"; })
-      .map(function (b) { return { label: ((meta[b] || {}).t || b), y0: bandSpan[b][0], y1: bandSpan[b][1] }; });
-    if (rows.context && rows.context.length) bands.push({ label: "context", y0: bandSpan.context[0], y1: bandSpan.context[1] });
-    return { pos: pos, geo: geo, w: w, h: h, bands: bands, colOf: colOf };
+    var goalOrder = GOALS.slice(), bestCost = permCost(goalOrder);
+    (function permute(arr, k) {
+      if (k === arr.length) {
+        var c2 = permCost(arr);
+        if (c2 < bestCost - 1e-9 || (Math.abs(c2 - bestCost) < 1e-9 && arr.join() < goalOrder.join())) {
+          bestCost = c2; goalOrder = arr.slice();
+        }
+        return;
+      }
+      for (var j = k; j < arr.length; j++) {
+        var t = arr[k]; arr[k] = arr[j]; arr[j] = t;
+        permute(arr, k + 1);
+        t = arr[k]; arr[k] = arr[j]; arr[j] = t;
+      }
+    })(GOALS.slice(), 0);
+    // placement (GPT Astra consult 2, 2026-10-31): allocate the disc first, then let the
+    // graph choose positions within the allocation. Phyllotaxis sites cover the unit disc
+    // evenly by construction; each concept takes the site that best matches its depth —
+    // expressed as an area quantile, so a deep thin chain gets a sliver, not a ring — and
+    // the bearings of the lines it feeds, weighted by how specific its affiliation is (a
+    // concept feeding every line has no preferred bearing and is not pulled to one).
+    // A greedy assignment refined by swap passes approximates the consult's
+    // capacity-constrained transport; one uniform scale at the end guarantees personal
+    // space without the local pushes that scar the silhouette.
+    var gAngle = {};
+    goalOrder.forEach(function (gid, idx) { gAngle[gid] = -Math.PI / 2 + idx * (2 * Math.PI / goalOrder.length); });
+    var free = items.filter(function (id) { return id !== "the-program"; });
+    free.sort();
+    var N = free.length;
+    var PADG = 48;
+    var areaOf = {}, totalArea = 0;
+    free.forEach(function (id) { areaOf[id] = (geo[id].w + PADG) * (geo[id].h + PADG); totalArea += areaOf[id]; });
+    // depth as an area quantile: each depth's preferred radial interval holds exactly the
+    // share of the disc its members' padded area needs
+    var depths = [];
+    free.forEach(function (id) { if (depths.indexOf(ring[id]) < 0) depths.push(ring[id]); });
+    depths.sort(function (a2, b2) { return a2 - b2; });
+    var interval = {}, acc2 = 0;
+    var delta = 0.5 * Math.sqrt(Math.PI / N) / 2;
+    depths.forEach(function (d2) {
+      var slice = 0;
+      free.forEach(function (id) { if (ring[id] === d2) slice += areaOf[id]; });
+      var lo = Math.sqrt(acc2 / totalArea), hi = Math.sqrt((acc2 + slice) / totalArea);
+      interval[d2] = [Math.max(0, lo - delta), Math.min(1, hi + delta)];
+      acc2 += slice;
+    });
+    // affiliation vector over the six lines, and its specificity
+    var prof = {}, spec = {};
+    free.forEach(function (id) {
+      var gs = reach[id] || [];
+      var p2 = {};
+      if (gs.length) gs.forEach(function (gg) { p2[gg] = 1 / gs.length; });
+      prof[id] = p2;
+      if (!gs.length) { spec[id] = 0; return; }
+      var H = 0;
+      gs.forEach(function (gg) { H -= p2[gg] * Math.log(p2[gg]); });
+      spec[id] = 1 - H / Math.log(GOALS.length);
+    });
+    // phyllotaxis sites over the unit disc, four deterministic starts
+    var GOLD = Math.PI * (3 - Math.sqrt(5));
+    var ell2 = Math.PI / N;
+    function siteSet(rot) {
+      var ss = [];
+      for (var j2 = 0; j2 < N; j2++) {
+        var r3 = Math.sqrt((j2 + 0.5) / N);
+        var th3 = j2 * GOLD + rot;
+        ss.push({ x: r3 * Math.cos(th3), y: r3 * Math.sin(th3), r: r3, th: th3 });
+      }
+      return ss;
+    }
+    function cost(id, sk) {
+      var iv = interval[ring[id]];
+      var dr = sk.r < iv[0] ? iv[0] - sk.r : (sk.r > iv[1] ? sk.r - iv[1] : 0);
+      var c2 = dr * dr / ell2;
+      var sc = spec[id];
+      if (sc > 0) {
+        var p2 = prof[id];
+        Object.keys(p2).forEach(function (gg) { c2 += 0.25 * sc * p2[gg] * (1 - Math.cos(sk.th - gAngle[gg])); });
+      }
+      return c2;
+    }
+    function assign(sites) {
+      var pairs = [];
+      free.forEach(function (id, i2) { sites.forEach(function (sk, k2) { pairs.push([cost(id, sk), i2, k2]); }); });
+      pairs.sort(function (a2, b2) { return a2[0] - b2[0] || a2[1] - b2[1] || a2[2] - b2[2]; });
+      var siteOf = {}, taken = {}, placed = 0;
+      for (var q2 = 0; q2 < pairs.length && placed < N; q2++) {
+        var pr = pairs[q2];
+        if (siteOf[free[pr[1]]] !== undefined || taken[pr[2]]) continue;
+        siteOf[free[pr[1]]] = pr[2]; taken[pr[2]] = 1; placed++;
+      }
+      for (var sweep2 = 0; sweep2 < 4; sweep2++) {
+        var improved = false;
+        for (var i3 = 0; i3 < N; i3++) for (var j3 = i3 + 1; j3 < N; j3++) {
+          var a3 = free[i3], b3 = free[j3];
+          var sa = sites[siteOf[a3]], sb = sites[siteOf[b3]];
+          var now = cost(a3, sa) + cost(b3, sb);
+          var swapped = cost(a3, sb) + cost(b3, sa);
+          if (swapped < now - 1e-12) {
+            var t2 = siteOf[a3]; siteOf[a3] = siteOf[b3]; siteOf[b3] = t2;
+            improved = true;
+          }
+        }
+        if (!improved) break;
+      }
+      var tot = 0;
+      free.forEach(function (id) { tot += cost(id, sites[siteOf[id]]); });
+      return { siteOf: siteOf, sites: sites, total: tot };
+    }
+    var best = null;
+    [0, Math.PI / 8, Math.PI / 4, 3 * Math.PI / 8].forEach(function (rot) {
+      var cand = assign(siteSet(rot));
+      if (!best || cand.total < best.total - 1e-12) best = cand;
+    });
+    // realise at a fixed target density (~55% of the disc covered by padded capsules),
+    // then deterministic descent separates size-aware: wide capsules claim wide berths
+    // around their sites instead of one global inflation to the worst pair
+    var EX = 1.3, SEPG = 48;
+    var t0 = Math.sqrt(totalArea / (0.40 * Math.PI));
+    var P = { "the-program": { x: 0, y: 0 } };
+    var anchor = {};
+    free.forEach(function (id) {
+      var sk = best.sites[best.siteOf[id]];
+      anchor[id] = { x: EX * sk.x * t0, y: sk.y * t0 };
+      P[id] = { x: anchor[id].x, y: anchor[id].y };
+    });
+    function halfExtents(a2, b2) {
+      return [(geo[a2].w + geo[b2].w) / 2 + SEPG, (geo[a2].h + geo[b2].h) / 2 + SEPG];
+    }
+    function energyOf(id, px, py) {
+      var e2 = 0.06 * ((px - anchor[id].x) * (px - anchor[id].x) + (py - anchor[id].y) * (py - anchor[id].y)) / (t0 * t0 / N);
+      var rr = Math.sqrt((px / EX) * (px / EX) + py * py);
+      if (rr > t0 * 1.04) e2 += 40 * (rr / (t0 * 1.04) - 1) * (rr / (t0 * 1.04) - 1);
+      for (var k3 = 0; k3 < items.length; k3++) {
+        var oid = items[k3];
+        if (oid === id) continue;
+        var he = halfExtents(id, oid);
+        var ox2 = he[0] - Math.abs(px - P[oid].x);
+        var oy2 = he[1] - Math.abs(py - P[oid].y);
+        if (ox2 > 0 && oy2 > 0) e2 += (ox2 * oy2) / (t0 * t0 / N) * 3;
+      }
+      return e2;
+    }
+    [t0 * 0.08, t0 * 0.04, t0 * 0.02, t0 * 0.01].forEach(function (step) {
+      for (var sweep3 = 0; sweep3 < 6; sweep3++) {
+        var changed = false;
+        free.forEach(function (id) {
+          var bestE = energyOf(id, P[id].x, P[id].y), bx = P[id].x, by = P[id].y;
+          for (var dir = 0; dir < 8; dir++) {
+            var cx2 = P[id].x + step * Math.cos(dir * Math.PI / 4);
+            var cy2 = P[id].y + step * Math.sin(dir * Math.PI / 4);
+            var e3 = energyOf(id, cx2, cy2);
+            if (e3 < bestE - 1e-9) { bestE = e3; bx = cx2; by = cy2; }
+          }
+          if (bx !== P[id].x || by !== P[id].y) { P[id].x = bx; P[id].y = by; changed = true; }
+        });
+        if (!changed) break;
+      }
+    });
+    // one uniform scale settles whatever separation the descent left unfinished
+    var tScale = 0;
+    for (var ii = 0; ii < items.length; ii++) for (var jj = ii + 1; jj < items.length; jj++) {
+      var A2 = P[items[ii]], B2 = P[items[jj]];
+      var he2 = halfExtents(items[ii], items[jj]);
+      var dx2 = Math.abs(A2.x - B2.x), dy2 = Math.abs(A2.y - B2.y);
+      var tt = Math.min(dx2 > 1e-9 ? he2[0] / dx2 : 1e9, dy2 > 1e-9 ? he2[1] / dy2 : 1e9);
+      if (tt > tScale) tScale = tt;
+    }
+    tScale = Math.max(tScale * 1.002, 1);
+    var pos = {};
+    items.forEach(function (id) { pos[id] = { x: P[id].x * tScale, y: P[id].y * tScale }; });
+    // frame: centred on the program, which is the origin by construction
+    var RX = 0, RY = 0;
+    items.forEach(function (id) {
+      RX = Math.max(RX, Math.abs(pos[id].x) + geo[id].w / 2);
+      RY = Math.max(RY, Math.abs(pos[id].y) + geo[id].h / 2);
+    });
+    RX += 110; RY += 110;
+    items.forEach(function (id) { pos[id].x += RX; pos[id].y += RY; });
+    return { pos: pos, geo: geo, w: 2 * RX, h: 2 * RY, cx: RX, cy: RY, ring: ring };
   }
 
   var at = {}, geo = {}, capEl = {};
@@ -219,33 +324,39 @@
     var items = DATA.items, links = DATA.links;
     var lay = layout(items, links);
     at = lay.pos; geo = lay.geo;
-    var colOf = lay.colOf;
+
     svg.__layout = { at: at, geo: geo };
     var ax = el("g", { "class": "axis" }, g);
 
-    home = { k: Math.min(b.w / lay.w, 1), x: 0, y: 0 };
-    home.x = (b.w - lay.w * home.k) / 2;
-    home.y = (b.h - lay.h * home.k) / 2;
+    // boot at twice the whole-map fit, centred on the program, so capsules open at
+    // reading size; the map overflows the viewport and the user pans
+    home = { k: Math.min(Math.min(b.w / lay.w, (b.h - 40) / lay.h) * 2, 1.1), x: 0, y: 0 };
+    home.x = b.w / 2 - lay.cx * home.k;
+    home.y = b.h / 2 - lay.cy * home.k;
+    fitAll = { k: Math.min(b.w / lay.w, (b.h - 40) / lay.h) };
+    fitAll.x = (b.w - lay.w * fitAll.k) / 2;
+    fitAll.y = (b.h - lay.h * fitAll.k) / 2;
     tf = { k: home.k, x: home.x, y: home.y };
     applyTf();
     var incident = {}, neighbors = {}, dotEl = {};
     capEl = {};
     var eg = el("g", { "class": "net-edges" }, g);
+    // edges attach where the capsule faces the other endpoint, and bow gently toward the
+    // centre, so the flow reads as an inward spiral to the program
+    function boundaryPoint(id, tx, ty, inset) {
+      var p = at[id], g2 = geo[id];
+      var dx = tx - p.x, dy = ty - p.y;
+      var sx = dx !== 0 ? (g2.w / 2 + inset) / Math.abs(dx) : 1e9;
+      var sy = dy !== 0 ? (g2.h / 2 + inset) / Math.abs(dy) : 1e9;
+      var s = Math.min(sx, sy);
+      return [p.x + dx * s, p.y + dy * s];
+    }
     links.forEach(function (L) {
       var a = at[L[0]], c = at[L[1]];
       if (!a || !c) return;
-      var ga = geo[L[0]], gc = geo[L[1]];
-      var leftToRight = a.x <= c.x;
-      var x1 = a.x + (leftToRight ? ga.w / 2 + 2 : -ga.w / 2 - 2), y1 = a.y;
-      var x2 = c.x + (leftToRight ? -gc.w / 2 - (L[5] ? 2 : 7) : gc.w / 2 + (L[5] ? 2 : 7)), y2 = c.y;
-      var bow = Math.max(Math.abs(x2 - x1) * 0.45, 40) * (leftToRight ? 1 : -1);
-      var span = Math.abs((colOf[L[1]] || 0) - (colOf[L[0]] || 0));
-      var arc = 0;
-      if (span >= 2) {
-        arc = Math.min(50 + 34 * span, 190) * (((y1 + y2) / 2 < lay.h / 2) ? -1 : 1);
-        bow = bow * 0.6;
-      }
-      var d = "M" + x1 + "," + y1 + " C" + (x1 + bow) + "," + (y1 + arc) + " " + (x2 - bow) + "," + (y2 + arc) + " " + x2 + "," + y2;
+      var p1 = boundaryPoint(L[0], c.x, c.y, 2);
+      var p2 = boundaryPoint(L[1], a.x, a.y, L[5] ? 1 : 1.5);
+      var d = "M" + p1[0] + "," + p1[1] + " L" + p2[0] + "," + p2[1];
       var grp = el("g", { "class": "net-edge" + (L[5] ? " undirected" : "") }, eg);
       var wire = el("path", { d: d, "class": "wire", "stroke-width": Math.min(0.75 + L[2] * 0.08, 1.3) }, grp);
       if (!L[5]) wire.setAttribute("marker-end", "url(#arrow)");
@@ -274,9 +385,10 @@
       dotEl[id] = cg;
       capEl[id] = cg;
       el("rect", { x: p.x - ge.w / 2, y: p.y - ge.h / 2, width: ge.w, height: ge.h, rx: 10, "class": "pill" }, cg);
-      var t = el("text", { x: p.x, y: p.y + (ge.lines.length > 1 ? -2.5 : 4), "text-anchor": "middle", "font-size": id === "the-program" ? 13 : 11.5, "class": "cap-title" }, cg);
+      var fs = ge.fs || 11.5;
+      var t = el("text", { x: p.x, y: p.y + (ge.lines.length > 1 ? 4 - (fs + 2) / 2 : 4), "text-anchor": "middle", "font-size": fs, "class": "cap-title" }, cg);
       ge.lines.forEach(function (ln, li) {
-        el("tspan", { x: p.x, dy: li ? 13.5 : 0 }, t).textContent = ln;
+        el("tspan", { x: p.x, dy: li ? fs + 2 : 0 }, t).textContent = ln;
       });
       if (m.s) {
         var st = el("text", { x: p.x, y: p.y + ge.h / 2 + 14, "text-anchor": "middle", "font-size": 10.5, "class": "nsub" }, cg);
@@ -456,7 +568,7 @@
         if ((m.t || id).toLowerCase().indexOf(q) >= 0 || (m.s || "").toLowerCase().indexOf(q) >= 0) matches.push(id);
       });
     }
-    var tween = null;
+    var tween = null, searchLit = null;
     function jumpTo(id) {
       var p = at[id];
       if (!p) return;
@@ -475,7 +587,13 @@
       var cg = capEl[id];
       if (cg) {
         cg.classList.add("hit-mark");
-        setTimeout(function () { cg.classList.remove("hit-mark"); }, 1600);
+        if (searchLit && focusOff && pinned !== searchLit) focusOff(searchLit);
+        searchLit = id;
+        if (!pinned && focusOn) focusOn(id);
+        setTimeout(function () {
+          cg.classList.remove("hit-mark");
+          if (!pinned && focusOff && searchLit === id) { focusOff(id); searchLit = null; }
+        }, 1600);
       }
     }
     function go(step) {
@@ -495,9 +613,11 @@
     input.addEventListener("keydown", function (ev) { if (ev.key === "Enter") { ev.preventDefault(); go(ev.shiftKey ? -1 : 1); } });
   })();
 
-  fetch("/assets/map.json").then(function (r) { return r.json(); }).then(function (d) {
+  fetch("/assets/map.json", { cache: "no-cache" }).then(function (r) { return r.json(); }).then(function (d) {
     DATA = d;
     legend();
+    var fitBtn = document.getElementById("map-fit");
+    if (fitBtn) fitBtn.addEventListener("click", function () { var t2 = fitAll || home; tf = { k: t2.k, x: t2.x, y: t2.y }; applyTf(); });
     render();
     cam.style.opacity = 0;
     var t0 = null;

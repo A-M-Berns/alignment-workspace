@@ -2,6 +2,7 @@
 appear on `/ranking/` and in a collapsed section of a node page, nowhere else."""
 from __future__ import annotations
 
+import bisect
 import html
 import json
 import re
@@ -59,7 +60,7 @@ def layout(site: Site, title: str, body: str, crumbs: list[tuple[str, str]] | No
         crumb_html = '<nav class="crumbs">' + " › ".join(f'<a href="{u}">{esc(t)}</a>' for t, u in crumbs) + "</nav>"
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{esc(title)}</title><link rel="stylesheet" href="/assets/style.css"><script defer src="/assets/app.js"></script></head>
+<title>{esc(title)}</title><link rel="stylesheet" href="/assets/style.css?v={esc(r.commit[:12])}"><script defer src="/assets/app.js?v={esc(r.commit[:12])}"></script></head>
 <body><header class="top"><a class="home" href="/">Alignment Workspace</a><nav class="main">{nav}</nav>
 <form class="search" action="/search/" method="get"><input type="search" name="q" placeholder="search ids, statements, titles" aria-label="search"></form></header>
 <main>{crumb_html}<h1>{esc(title)}</h1>{f'<p class="subtitle">{subtitle}</p>' if subtitle else ''}
@@ -608,15 +609,15 @@ def front_page(site: Site, lede_html: str, feed_rows: list[str]) -> str:
         + "</ul></section></noscript>")
     body = ['<div class="map-full"><div class="map-stage">'
             '<svg id="map" role="application" aria-label="the argument map"></svg>'
-            '<div class="map-side overlay"><span id="map-legend"></span></div>'
-            '<span class="map-hint overlay muted">drag to pan · scroll to zoom · click a node · esc backs out</span>'
+            '<div class="map-side overlay"><span id="map-legend"></span><button id="map-fit" type="button">fit map</button></div>'
+            '<span class="map-hint overlay muted">everything feeds the program at the centre · drag to pan · scroll to zoom · click a node · esc backs out</span>'
             '<div id="map-card" hidden></div>'
             '<div id="map-modal"><div id="map-panel"><button id="map-panel-close" aria-label="close">×</button><div id="map-panel-body"></div></div></div>'
             '</div></div>',
             noscript,
             f'<div class="below-map"><p class="question">{esc(top["question"])}</p>{lede_html}</div>',
             "<div class=\"below-map\"><details class=\"front-feed\"><summary>Recent in the feed</summary><ul class=\"feed\">" + "".join(feed_rows[:12]) + "</ul><p><a href=\"/feed/\">The whole feed</a>.</p></details></div>"]
-    return layout(site, "Research map", "\n".join(body)).replace("</head>", '<script defer src="/assets/map.js"></script></head>')
+    return layout(site, "Research map", "\n".join(body)).replace("</head>", f'<script defer src="/assets/map.js?v={esc(site.repo.commit[:12])}"></script></head>')
 
 
 def map_data(site: Site) -> dict:
@@ -715,10 +716,31 @@ def map_data(site: Site) -> dict:
     for cid, e in r.concepts.items():
         if e.get("kind") == "goal" and "the-program" in succ.get(cid, []):
             ds[cid] = 1
+    # the same match concept_side uses for "Merged work", so a capsule's size and its card's
+    # count agree with the list the popup shows
     prs_of: dict[str, int] = {}
-    for num, P in r.prs.items():
-        for w in (P.get("topics") or {}).get("wiki") or []:
-            prs_of[w] = prs_of.get(w, 0) + 1
+    for cid, e in r.concepts.items():
+        refs = set(e.get("refs") or [])
+        prs_of[cid] = sum(1 for P in r.prs.values()
+                          if (e.get("wiki") and e["wiki"] in ((P.get("topics") or {}).get("wiki") or []))
+                          or (refs & set((P.get("topics") or {}).get("frames") or [])))
+    # a rough importance per concept — tagged merged work plus its connections in the map,
+    # sqrt-damped and normalized to [0, 1]; the canvas scales capsule and type from it
+    deg: dict[str, int] = {}
+    for L in r.concept_links:
+        for x in (L.get("from"), L.get("to")):
+            if x in r.concepts:
+                deg[x] = deg.get(x, 0) + 1
+    raw = {cid: (prs_of.get(cid, 0) + deg.get(cid, 0)) ** 0.5 for cid in r.concepts}
+    top = max(raw.values()) or 1.0
+    # blend magnitude with rank percentile: the magnitudes clump (most concepts carry
+    # little tagged work), so percentile is what spreads the middle visibly; ties tie
+    vals = sorted(raw.values())
+    n = len(vals) or 1
+
+    def pct(v: float) -> float:
+        lo, hi = bisect.bisect_left(vals, v), bisect.bisect_right(vals, v)
+        return (lo + (hi - lo) / 2) / n
     meta = {}
     for cid, e in r.concepts.items():
         if e.get("wiki") and e["wiki"] not in r.wiki:
@@ -727,7 +749,8 @@ def map_data(site: Site) -> dict:
             if x not in r.nodes:
                 site.unresolved.append(f"concepts:{cid}:ref:{x}")
         meta[cid] = {"k": e.get("kind", ""), "w": e.get("wiki") or "", "t": e.get("title", cid),
-                     "s": str(e.get("blurb") or ""), "prs": prs_of.get(e.get("wiki") or "", 0), "d": ds[cid]}
+                     "s": str(e.get("blurb") or ""), "prs": prs_of.get(cid, 0), "d": ds[cid],
+                     "imp": 1.0 if cid == "the-program" else round(0.45 * raw[cid] / top + 0.55 * pct(raw[cid]), 3)}
     return {"items": list(r.concepts), "concepts": meta, "kinds": r.concept_kinds, "links": links}
 
 
