@@ -151,7 +151,7 @@
       }
     })(GOALS.slice(), 0);
     // anchors, and each node's preferred y: the mean anchor of the goals it feeds
-    var PITCH = 190;
+    var PITCH = 300;
     var anchor = {};
     goalOrder.forEach(function (gid, idx) { anchor[gid] = 90 + idx * PITCH; });
     var mid = 90 + (goalOrder.length - 1) * PITCH / 2;
@@ -174,7 +174,7 @@
     }
     // sweeps plus compaction: target y from neighbours and the affinity anchor, then a
     // weighted no-overlap projection (pool adjacent violators) within each column
-    var SEP = 26;
+    var SEP = 80;
     for (var pass = 0; pass < 24; pass++) {
       cols.forEach(function (col) {
         if (!col || !col.length) return;
@@ -225,7 +225,7 @@
       for (var ii = 0; ii < items.length; ii++) for (var jj = ii + 1; jj < items.length; jj++) {
         var A = pos[items[ii]], Bq = pos[items[jj]], ga = geo[items[ii]], gb = geo[items[jj]];
         var ox = (ga.w + gb.w) / 2 + 18 - Math.abs(A.x - Bq.x);
-        var oy = (ga.h + gb.h) / 2 + 24 - Math.abs(A.y - Bq.y);
+        var oy = (ga.h + gb.h) / 2 + 76 - Math.abs(A.y - Bq.y);
         if (ox > 0 && oy > 0) {
           var push = oy / 2 + 1;
           if (A.y <= Bq.y) { A.y -= push; Bq.y += push; } else { A.y += push; Bq.y -= push; }
