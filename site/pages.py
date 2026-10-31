@@ -750,7 +750,7 @@ def map_data(site: Site) -> dict:
                 site.unresolved.append(f"concepts:{cid}:ref:{x}")
         meta[cid] = {"k": e.get("kind", ""), "w": e.get("wiki") or "", "t": e.get("title", cid),
                      "s": str(e.get("blurb") or ""), "prs": prs_of.get(cid, 0), "d": ds[cid],
-                     "imp": round(0.45 * raw[cid] / top + 0.55 * pct(raw[cid]), 3)}
+                     "imp": 1.0 if cid == "the-program" else round(0.45 * raw[cid] / top + 0.55 * pct(raw[cid]), 3)}
     return {"items": list(r.concepts), "concepts": meta, "kinds": r.concept_kinds, "links": links}
 
 

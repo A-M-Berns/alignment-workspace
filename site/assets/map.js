@@ -401,8 +401,7 @@
     if (!lg) return;
     var K = DATA.kinds || {};
     var rows = [["bone", K.goal || "goal"], ["emerald", K.construction || "construction"], ["sapphire", K.object || "object"], ["amber", K.work || "work"], ["amethyst", K.philosophy || "philosophy"], ["garnet", K.companion || "companion"]];
-    lg.innerHTML = rows.map(function (r) { return '<span class="lg tone-' + r[0] + '"><span class="dotc"></span>' + esc(r[1]) + "</span>"; }).join("")
-      + '<span class="lg">size · work &amp; connections</span>';
+    lg.innerHTML = rows.map(function (r) { return '<span class="lg tone-' + r[0] + '"><span class="dotc"></span>' + esc(r[1]) + "</span>"; }).join("");
   }
 
   // pan and zoom; capture the pointer only once a drag has started, or clicks retarget to the svg
