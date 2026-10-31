@@ -236,17 +236,22 @@ svg#map .axis .bandline { stroke: #232327; stroke-width: 2px; }
 :root { --emerald: #2fa57a; --sapphire: #5a8bdc; --amber: #c99b3f; --amethyst: #9a84dd; --teal: #46b0a0; --garnet: #c06a77; --slate: #6e6e76; }
 svg#map g.cap .pill { fill: currentColor; stroke: none; transition: none; }
 svg#map g.cap:hover .pill { fill: currentColor; stroke: #ececec; stroke-width: 1.5px; }
-svg#map g.cap .cap-title { fill: #101013; font-weight: 640; }
+svg#map g.cap .cap-title { fill: #101013; font-weight: 520; }
 svg#map g.cap.tone-bone .pill { fill: var(--accent); }
+svg#map g.cap.tone-bone .cap-title { font-weight: 700; }
 svg#map g.cap.program .pill { fill: var(--accent); stroke: none; }
 svg#map g.cap.program .cap-title { fill: #101013; font-weight: 720; }
 svg#map g.cap.hit-mark .pill { stroke: #ececec; stroke-width: 2.5px; }
-svg#map .net-edge .wire { stroke: #8e8e88; opacity: 0.38; }
-svg#map .net-edge.lit .wire { stroke: #ececec; opacity: 0.8; }
+svg#map .net-edge .wire { stroke: #92928c; opacity: 0.25; }
+svg#map .net-edge.undirected .wire { opacity: 0.12; }
+svg#map .net-edge.lit .wire { stroke: #ececec; opacity: 0.75; }
 svg#map .net-edge:hover .wire { stroke: #ececec; opacity: 1; }
-svg#map .arrowhead { fill: #8e8e88; opacity: 0.8; }
+svg#map .arrowhead { fill: #92928c; opacity: 0.85; }
 svg#map .goalwash { display: none; }
 svg#map g.scene.focus g.cap:not(.nb) { opacity: 0.16; }
+svg#map g.scene.focus .net-edge:not(.lit) { opacity: 0.05; }
+#map-fit { background: none; border: 1px solid var(--rule); color: var(--muted); font: inherit; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.2em 0.7em; border-radius: 6px; cursor: pointer; margin-left: 0.9em; }
+#map-fit:hover { color: #ececec; border-color: #ececec; }
 .search-chip { font-size: 0.72rem; color: var(--muted); margin-left: 0.5em; text-transform: uppercase; letter-spacing: 0.05em; }
 svg#map .axis .bandlabel { fill: #6a6964; font-weight: 600; }
 #map-card .comment-link { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; text-decoration: none; border: 1px solid var(--rule); border-radius: 5px; padding: 0.22em 0.7em; }

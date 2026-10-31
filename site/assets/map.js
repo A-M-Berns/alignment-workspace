@@ -13,7 +13,7 @@
   var card = document.getElementById("map-card");
   var KIND_TONE = { goal: "bone", construction: "emerald", object: "sapphire", work: "amber", philosophy: "amethyst", companion: "garnet" };
 
-  var DATA = null, tf = { k: 1, x: 0, y: 0 }, home = { k: 1, x: 0, y: 0 };
+  var DATA = null, tf = { k: 1, x: 0, y: 0 }, home = { k: 1, x: 0, y: 0 }, fitAll = null;
   var defs = document.createElementNS(NS, "defs");
   svg.appendChild(defs);
   var cam = document.createElementNS(NS, "g");
@@ -57,9 +57,12 @@
     return lines;
   }
 
-  // layered flow with goal bands (GPT Astra consult, 2026-10-30): ranks from goal distance with
-  // variable column pitch from real capsule widths; rows are bands by the first goal a node reaches,
-  // staircase-ordered; within a band, median-ordered. The program sits alone at the far right, centred.
+  // compact layered graph with soft goal affinity (GPT Astra consult, 2026-10-31): x is
+  // dependency rank with measured column widths and clean 80px gaps; y places each node at
+  // the weighted middle of the goals it feeds, refined by neighbour sweeps and a constrained
+  // compaction, so shared foundations sit between the lines they support. Importance shows
+  // mostly as capsule area over a readable type floor. Long edges route through free slots
+  // in the columns they cross rather than arcing over the map.
   var GOALS = ["corrigibility-line", "normative-induction", "normativity-line", "legitimacy-line", "deference-line", "openness-line"];
   function layout(items, links) {
     var meta = DATA.concepts, i;
@@ -69,51 +72,22 @@
       (nbAll[L[0]] = nbAll[L[0]] || []).push(L[1]);
       (nbAll[L[1]] = nbAll[L[1]] || []).push(L[0]);
     });
-    // band: the first goal reached along directed edges (breadth first, ties by the staircase order)
-    var band = {};
-    GOALS.forEach(function (gid) { band[gid] = gid; });
-    items.forEach(function (id) {
-      if (band[id] || id === "the-program") return;
-      var seen = {}, q = [id];
-      seen[id] = 1;
-      while (q.length) {
-        var nxt = [], found = null;
-        for (var qi = 0; qi < q.length; qi++) {
-          (succ[q[qi]] || []).forEach(function (s) {
-            if (GOALS.indexOf(s) >= 0 && (found === null || GOALS.indexOf(s) < GOALS.indexOf(found))) found = s;
-            if (!seen[s]) { seen[s] = 1; nxt.push(s); }
-          });
-        }
-        if (found) { band[id] = found; break; }
-        q = nxt;
-      }
-    });
-    for (var pass = 0; pass < 4; pass++) {
-      items.forEach(function (id) {
-        if (band[id] || id === "the-program") return;
-        var nb = (nbAll[id] || []).filter(function (n) { return band[n]; });
-        if (nb.length) band[id] = band[nb[0]];
-      });
-    }
-    items.forEach(function (id) { if (!band[id] && id !== "the-program") band[id] = "context"; });
-    // capsule geometry; capsule and type scale with the concept's importance — merged work
-    // plus connections, computed in map_data — so the map shows where the effort has gone.
-    // The font carries the signal: width alone varies with title length and would hide it.
+    // geometry: type sits near a floor (12-16px); importance is carried by capsule area
     var geo = {};
     items.forEach(function (id) {
       var m = meta[id] || {};
-      var tt = m.t || id;
       var imp = m.imp || 0;
       var curve = Math.pow(imp, 1.35);
-      var fs = 9 + 19 * curve;
-      var lines = titleLines(tt, 20);
+      var fs = 12 + 4 * curve;
+      var disp = String(m.t || id).replace(/\s*\([^)]*\)$/, "") || String(m.t || id);
+      var lines = titleLines(disp, 18);
       var wch = Math.max.apply(null, lines.map(function (L) { return L.length; }));
-      var cw = Math.max(Math.min(wch * fs * 0.626 + 20 + 70 * curve, 480), 80);
-      var chh = Math.round((lines.length > 1 ? 2 * (fs + 2) + 14 : fs + 16) + 30 * curve);
-      if (id === "the-program") { cw += 16; chh += 8; fs = Math.max(fs, 19); }
+      var cw = wch * fs * 0.626 + 26 + 96 * curve;
+      var chh = Math.round((lines.length > 1 ? 2 * (fs + 3) + 12 : fs + 16) + 42 * curve);
+      if (id === "the-program") { cw += 12; chh += 6; fs = Math.max(fs, 16); }
       geo[id] = { w: cw, h: chh, lines: lines, fs: fs };
     });
-    // columns: rank by goal distance, pitch from the widest capsule per rank
+    // x: rank by goal distance; column centres from measured widths with a constant clear gap
     var dmax = 1;
     items.forEach(function (id) { dmax = Math.max(dmax, (meta[id] || {}).d || 0); });
     var colOf = {};
@@ -122,83 +96,136 @@
     items.forEach(function (id) { var c = colOf[id]; colW[c] = Math.max(colW[c] || 0, geo[id].w); });
     var colX = [], xcur = 150;
     for (i = 0; i <= dmax; i++) {
-      var cwid = colW[i] || 0;
-      colX[i] = xcur + cwid / 2;
-      xcur += cwid ? Math.max(cwid + 70, 216) : 0;
+      colX[i] = xcur + (colW[i] || 0) / 2;
+      xcur += colW[i] ? colW[i] + 80 : 0;
     }
-    var w = xcur + 150;
-    // rows: the bands in staircase order. Within a band, only capsules in the same column stack;
-    // different columns share the band's vertical extent, so the map stays wide, not tall.
-    var bandOrder = GOALS.concat(["context"]);
-    var rows = {};
-    items.forEach(function (id) { if (id !== "the-program") (rows[band[id]] = rows[band[id]] || []).push(id); });
-    var y = {}, gap = 56, bandGap = 96, ycur = 90, bandSpan = {};
-    function stackBand(b) {
-      var byCol = {};
-      (rows[b] || []).forEach(function (id) { (byCol[colOf[id]] = byCol[colOf[id]] || []).push(id); });
-      var bandH = 0;
-      Object.keys(byCol).forEach(function (c) {
-        var hh = byCol[c].reduce(function (s, id) { return s + geo[id].h; }, 0) + gap * (byCol[c].length - 1);
-        bandH = Math.max(bandH, hh);
-      });
-      return { byCol: byCol, bandH: bandH };
+    var w = xcur + 70;
+    // the set of goals each node feeds, along directed edges
+    var reach = {};
+    function goalsOf(id, trail) {
+      if (reach[id]) return reach[id];
+      if (trail[id]) return [];
+      trail[id] = 1;
+      var out = {};
+      if (GOALS.indexOf(id) >= 0) out[id] = 1;
+      (succ[id] || []).forEach(function (s) { goalsOf(s, trail).forEach(function (gg) { out[gg] = 1; }); });
+      delete trail[id];
+      reach[id] = Object.keys(out).sort();
+      return reach[id];
     }
-    bandOrder.forEach(function (b) {
-      if (!(rows[b] || []).length) return;
-      var st = stackBand(b);
-      bandSpan[b] = [ycur, ycur + st.bandH];
-      Object.keys(st.byCol).forEach(function (c) {
-        var col = st.byCol[c];
-        var step = st.bandH / col.length;
-        col.forEach(function (id, i2) { y[id] = ycur + (i2 + 0.5) * step; });
-      });
-      ycur += st.bandH + bandGap;
+    items.forEach(function (id) { goalsOf(id, {}); });
+    // goal order: the permutation keeping goals with shared upstream support adjacent
+    var shared = {};
+    items.forEach(function (id) {
+      if (GOALS.indexOf(id) >= 0 || id === "the-program") return;
+      var gs = reach[id] || [];
+      var aw = gs.length ? 1 / gs.length : 0;
+      for (var a2 = 0; a2 < gs.length; a2++) for (var b2 = a2 + 1; b2 < gs.length; b2++) {
+        var key = gs[a2] + "|" + gs[b2];
+        shared[key] = (shared[key] || 0) + aw * aw;
+      }
     });
-    var h = Math.max(ycur + 40, 640);
-    // median sweeps: reorder each band-column stack toward its neighbours, keeping the stack centred
-    for (var sweep = 0; sweep < 6; sweep++) {
-      bandOrder.forEach(function (b) {
-        if (!bandSpan[b]) return;
-        var st = stackBand(b);
-        Object.keys(st.byCol).forEach(function (c) {
-          var col = st.byCol[c];
-          if (col.length < 2) return;
-          col.sort(function (a, bb) {
-            var ma = (nbAll[a] || []).reduce(function (s, n) { return s + (y[n] || 0); }, 0) / Math.max((nbAll[a] || []).length, 1);
-            var mb = (nbAll[bb] || []).reduce(function (s, n) { return s + (y[n] || 0); }, 0) / Math.max((nbAll[bb] || []).length, 1);
-            return (ma || 0) - (mb || 0) || a.localeCompare(bb);
-          });
-          var step = (bandSpan[b][1] - bandSpan[b][0]) / col.length;
-          col.forEach(function (id, i2) { y[id] = bandSpan[b][0] + (i2 + 0.5) * step; });
+    function permCost(order) {
+      var at2 = {};
+      order.forEach(function (gid, idx) { at2[gid] = idx; });
+      var cost = 0;
+      Object.keys(shared).forEach(function (key) {
+        var pq = key.split("|");
+        cost += shared[key] * Math.abs(at2[pq[0]] - at2[pq[1]]);
+      });
+      return cost;
+    }
+    var goalOrder = GOALS.slice(), bestCost = permCost(goalOrder);
+    (function permute(arr, k) {
+      if (k === arr.length) {
+        var c2 = permCost(arr);
+        if (c2 < bestCost - 1e-9 || (Math.abs(c2 - bestCost) < 1e-9 && arr.join() < goalOrder.join())) {
+          bestCost = c2; goalOrder = arr.slice();
+        }
+        return;
+      }
+      for (var j = k; j < arr.length; j++) {
+        var t = arr[k]; arr[k] = arr[j]; arr[j] = t;
+        permute(arr, k + 1);
+        t = arr[k]; arr[k] = arr[j]; arr[j] = t;
+      }
+    })(GOALS.slice(), 0);
+    // anchors, and each node's preferred y: the mean anchor of the goals it feeds
+    var PITCH = 190;
+    var anchor = {};
+    goalOrder.forEach(function (gid, idx) { anchor[gid] = 90 + idx * PITCH; });
+    var mid = 90 + (goalOrder.length - 1) * PITCH / 2;
+    var pref = {};
+    items.forEach(function (id) {
+      var gs = reach[id] || [];
+      pref[id] = gs.length ? gs.reduce(function (s, gg) { return s + anchor[gg]; }, 0) / gs.length : mid;
+    });
+    var y = {};
+    items.forEach(function (id) { y[id] = pref[id]; });
+    var cols = [];
+    items.forEach(function (id) { (cols[colOf[id]] = cols[colOf[id]] || []).push(id); });
+    function lam(id) { return GOALS.indexOf(id) >= 0 ? 8 : (id === "the-program" ? 0 : 0.5); }
+    function orderCol(col) {
+      col.sort(function (a, bb) {
+        var ga2 = GOALS.indexOf(a), gb2 = GOALS.indexOf(bb);
+        if (ga2 >= 0 && gb2 >= 0) return goalOrder.indexOf(a) - goalOrder.indexOf(bb);
+        return (y[a] - y[bb]) || a.localeCompare(bb);
+      });
+    }
+    // sweeps plus compaction: target y from neighbours and the affinity anchor, then a
+    // weighted no-overlap projection (pool adjacent violators) within each column
+    var SEP = 26;
+    for (var pass = 0; pass < 24; pass++) {
+      cols.forEach(function (col) {
+        if (!col || !col.length) return;
+        var target = {}, wgt = {};
+        col.forEach(function (id) {
+          var nb = nbAll[id] || [];
+          var s = 0;
+          nb.forEach(function (n2) { s += y[n2]; });
+          var l2 = lam(id);
+          target[id] = (nb.length + l2) > 0 ? (s + l2 * pref[id]) / (nb.length + l2) : pref[id];
+          wgt[id] = nb.length + l2 + 0.01;
+        });
+        var hold = {};
+        col.forEach(function (id) { hold[id] = target[id]; });
+        var keep = y; y = target; orderCol(col); y = keep;
+        // cumulative required separations, then PAV on the shifted targets
+        var sep = [0];
+        for (var i2 = 1; i2 < col.length; i2++) {
+          sep[i2] = sep[i2 - 1] + (geo[col[i2 - 1]].h + geo[col[i2]].h) / 2 + SEP;
+        }
+        var blocks = [];
+        for (var i3 = 0; i3 < col.length; i3++) {
+          var b2 = { v: hold[col[i3]] - sep[i3], w: wgt[col[i3]], n: 1 };
+          while (blocks.length && blocks[blocks.length - 1].v >= b2.v) {
+            var pb = blocks.pop();
+            b2 = { v: (pb.v * pb.w + b2.v * b2.w) / (pb.w + b2.w), w: pb.w + b2.w, n: pb.n + b2.n };
+          }
+          blocks.push(b2);
+        }
+        var k2 = 0;
+        blocks.forEach(function (bl) {
+          for (var i4 = 0; i4 < bl.n; i4++) { y[col[k2]] = bl.v + sep[k2]; k2++; }
         });
       });
     }
-    // interleave: members of a stack step alternately left and right of their column line
-    var stackIndex = {};
-    bandOrder.forEach(function (b) {
-      if (!bandSpan[b]) return;
-      var st = stackBand(b);
-      Object.keys(st.byCol).forEach(function (c) {
-        st.byCol[c].slice().sort(function (a, bb) { return y[a] - y[bb]; }).forEach(function (id, i2) { stackIndex[id] = i2; });
-      });
+    // normalise to the frame and take final positions
+    var yMin = 1e9, yMax = -1e9;
+    items.forEach(function (id) {
+      yMin = Math.min(yMin, y[id] - geo[id].h / 2);
+      yMax = Math.max(yMax, y[id] + geo[id].h / 2);
     });
     var pos = {};
-    items.forEach(function (id) {
-      var ci = colOf[id];
-      var near = 1e9;
-      if (colX[ci - 1] !== undefined) near = Math.min(near, colX[ci] - colX[ci - 1]);
-      if (colX[ci + 1] !== undefined) near = Math.min(near, colX[ci + 1] - colX[ci]);
-      var amp = Math.max(0, Math.min(44, (near - (colW[ci] || 120)) / 2 - 16));
-      var sx = (((stackIndex[id] || 0) % 2) * 2 - 1) * amp;
-      pos[id] = { x: colX[ci] + (id === "the-program" ? 0 : sx), y: y[id] };
-    });
+    items.forEach(function (id) { pos[id] = { x: colX[colOf[id]], y: y[id] - yMin + 90 }; });
+    var h = yMax - yMin + 180;
     // personal space, guaranteed: push apart any residual overlapping capsules
     for (var iter = 0; iter < 40; iter++) {
       var moved = false;
       for (var ii = 0; ii < items.length; ii++) for (var jj = ii + 1; jj < items.length; jj++) {
         var A = pos[items[ii]], Bq = pos[items[jj]], ga = geo[items[ii]], gb = geo[items[jj]];
         var ox = (ga.w + gb.w) / 2 + 18 - Math.abs(A.x - Bq.x);
-        var oy = (ga.h + gb.h) / 2 + 22 - Math.abs(A.y - Bq.y);
+        var oy = (ga.h + gb.h) / 2 + 24 - Math.abs(A.y - Bq.y);
         if (ox > 0 && oy > 0) {
           var push = oy / 2 + 1;
           if (A.y <= Bq.y) { A.y -= push; Bq.y += push; } else { A.y += push; Bq.y -= push; }
@@ -207,11 +234,27 @@
       }
       if (!moved) break;
     }
-    if (pos["the-program"]) pos["the-program"].y = h / 2;
-    var bands = bandOrder.filter(function (b) { return rows[b] && rows[b].length && b !== "context"; })
-      .map(function (b) { return { label: ((meta[b] || {}).t || b), y0: bandSpan[b][0], y1: bandSpan[b][1] }; });
-    if (rows.context && rows.context.length) bands.push({ label: "context", y0: bandSpan.context[0], y1: bandSpan.context[1] });
-    return { pos: pos, geo: geo, w: w, h: h, bands: bands, colOf: colOf };
+    // free vertical slots per column, for routing long edges around capsules
+    var occupied = [];
+    items.forEach(function (id) {
+      var c = colOf[id];
+      (occupied[c] = occupied[c] || []).push([pos[id].y - geo[id].h / 2 - 10, pos[id].y + geo[id].h / 2 + 10]);
+    });
+    (occupied || []).forEach(function (iv) { if (iv) iv.sort(function (a, bb) { return a[0] - bb[0]; }); });
+    function freeYNear(c, want) {
+      var iv = occupied[c];
+      if (!iv || !iv.length) return want;
+      var inside = null;
+      for (var i5 = 0; i5 < iv.length; i5++) if (want > iv[i5][0] && want < iv[i5][1]) { inside = iv[i5]; break; }
+      if (!inside) return want;
+      var up = inside[0], down = inside[1];
+      for (var i6 = 0; i6 < iv.length; i6++) {
+        if (iv[i6][1] <= up && Math.abs(iv[i6][1] - up) < 1) up = iv[i6][0];
+        if (iv[i6][0] >= down && Math.abs(iv[i6][0] - down) < 1) down = iv[i6][1];
+      }
+      return (want - up) <= (down - want) ? up : down;
+    }
+    return { pos: pos, geo: geo, w: w, h: h, colOf: colOf, colX: colX, freeYNear: freeYNear };
   }
 
   var at = {}, geo = {}, capEl = {};
@@ -234,26 +277,65 @@
     home = { k: Math.min((b.w / lay.w) * 2, 1.2), x: 0, y: 0 };
     home.x = (b.w - lay.w * home.k) / 2;
     home.y = (b.h - lay.h * home.k) / 2;
+    fitAll = { k: Math.min(b.w / lay.w, (b.h - 40) / lay.h) };
+    fitAll.x = (b.w - lay.w * fitAll.k) / 2;
+    fitAll.y = (b.h - lay.h * fitAll.k) / 2;
     tf = { k: home.k, x: home.x, y: home.y };
     applyTf();
     var incident = {}, neighbors = {}, dotEl = {};
     capEl = {};
     var eg = el("g", { "class": "net-edges" }, g);
-    links.forEach(function (L) {
+    // ports: each capsule's edges leave and enter spread along the middle 70% of its side,
+    // ordered by the other endpoint's y, so parallel relations stay separately traceable
+    var outPort = {}, inPort = {};
+    (function assignPorts() {
+      var outs = {}, ins = {};
+      links.forEach(function (L, li) {
+        if (!at[L[0]] || !at[L[1]]) return;
+        (outs[L[0]] = outs[L[0]] || []).push(li);
+        (ins[L[1]] = ins[L[1]] || []).push(li);
+      });
+      function spread(byNode, port, otherOf) {
+        Object.keys(byNode).forEach(function (id) {
+          var es = byNode[id];
+          es.sort(function (p2, q2) { return (at[otherOf(p2)].y - at[otherOf(q2)].y) || (p2 - q2); });
+          var span2 = geo[id].h * 0.7;
+          es.forEach(function (li, idx) {
+            port[li] = at[id].y + (es.length < 2 ? 0 : (idx / (es.length - 1) - 0.5) * span2);
+          });
+        });
+      }
+      spread(outs, outPort, function (li) { return links[li][1]; });
+      spread(ins, inPort, function (li) { return links[li][0]; });
+    })();
+    links.forEach(function (L, li) {
       var a = at[L[0]], c = at[L[1]];
       if (!a || !c) return;
       var ga = geo[L[0]], gc = geo[L[1]];
       var leftToRight = a.x <= c.x;
-      var x1 = a.x + (leftToRight ? ga.w / 2 + 2 : -ga.w / 2 - 2), y1 = a.y;
-      var x2 = c.x + (leftToRight ? -gc.w / 2 - (L[5] ? 2 : 7) : gc.w / 2 + (L[5] ? 2 : 7)), y2 = c.y;
-      var bow = Math.max(Math.abs(x2 - x1) * 0.45, 40) * (leftToRight ? 1 : -1);
+      var y1 = outPort[li] !== undefined ? outPort[li] : a.y;
+      var y2 = inPort[li] !== undefined ? inPort[li] : c.y;
+      var x1 = a.x + (leftToRight ? ga.w / 2 + 2 : -ga.w / 2 - 2);
+      var x2 = c.x + (leftToRight ? -gc.w / 2 - (L[5] ? 2 : 7) : gc.w / 2 + (L[5] ? 2 : 7));
       var span = Math.abs((colOf[L[1]] || 0) - (colOf[L[0]] || 0));
-      var arc = 0;
-      if (span >= 2) {
-        arc = Math.min(50 + 34 * span, 190) * (((y1 + y2) / 2 < lay.h / 2) ? -1 : 1);
-        bow = bow * 0.6;
+      var d;
+      if (!L[5] && span >= 2 && leftToRight) {
+        // thread through a free slot in each column crossed, instead of arcing over the map
+        var pts = [[x1, y1]];
+        for (var cc = colOf[L[0]] + 1; cc < colOf[L[1]]; cc++) {
+          var yw = y1 + (y2 - y1) * ((lay.colX[cc] - x1) / Math.max(x2 - x1, 1));
+          pts.push([lay.colX[cc], lay.freeYNear(cc, yw)]);
+        }
+        pts.push([x2, y2]);
+        d = "M" + pts[0][0] + "," + pts[0][1];
+        for (var pi = 1; pi < pts.length; pi++) {
+          var dx = (pts[pi][0] - pts[pi - 1][0]) * 0.5;
+          d += " C" + (pts[pi - 1][0] + dx) + "," + pts[pi - 1][1] + " " + (pts[pi][0] - dx) + "," + pts[pi][1] + " " + pts[pi][0] + "," + pts[pi][1];
+        }
+      } else {
+        var bow = Math.max(Math.abs(x2 - x1) * 0.45, 40) * (leftToRight ? 1 : -1);
+        d = "M" + x1 + "," + y1 + " C" + (x1 + bow) + "," + y1 + " " + (x2 - bow) + "," + y2 + " " + x2 + "," + y2;
       }
-      var d = "M" + x1 + "," + y1 + " C" + (x1 + bow) + "," + (y1 + arc) + " " + (x2 - bow) + "," + (y2 + arc) + " " + x2 + "," + y2;
       var grp = el("g", { "class": "net-edge" + (L[5] ? " undirected" : "") }, eg);
       var wire = el("path", { d: d, "class": "wire", "stroke-width": Math.min(0.75 + L[2] * 0.08, 1.3) }, grp);
       if (!L[5]) wire.setAttribute("marker-end", "url(#arrow)");
@@ -507,6 +589,8 @@
   fetch("/assets/map.json").then(function (r) { return r.json(); }).then(function (d) {
     DATA = d;
     legend();
+    var fitBtn = document.getElementById("map-fit");
+    if (fitBtn) fitBtn.addEventListener("click", function () { var t2 = fitAll || home; tf = { k: t2.k, x: t2.x, y: t2.y }; applyTf(); });
     render();
     cam.style.opacity = 0;
     var t0 = null;
