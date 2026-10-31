@@ -172,53 +172,63 @@
     }
     var spare = 0;
     items.forEach(function (id) { if (ang[id] === undefined) { ang[id] = spare * 2.399963; spare++; } });
-    // balance occupancy: blend each angle toward its rank's even share of the circle, so
-    // the disc fills all the way round and the programme sits at the visual centre, while
-    // the affinity ordering (who is near whom) is preserved
+    // homogeneous density (maintainer directive, 2026-10-31): rings are filled to their
+    // capacity — each holds as many capsules as its circumference carries at one constant
+    // gap — taken in dependency-depth order, so depth still reads outward but no ring is
+    // crowded or bare. Within a ring, capsules sit around the whole circle in affinity
+    // order with width-proportional arcs, rotated to best match where their lines live.
     function norm2(a2) { while (a2 > Math.PI) a2 -= 2 * Math.PI; while (a2 < -Math.PI) a2 += 2 * Math.PI; return a2; }
-    var ordered = items.filter(function (id) { return id !== "the-program"; })
+    // a mild blend toward even occupancy rounds the disc without smearing the sectors
+    var evened = items.filter(function (id) { return id !== "the-program"; })
       .sort(function (a2, b2) { return ang[a2] - ang[b2] || a2.localeCompare(b2); });
-    ordered.forEach(function (id, idx) {
-      var even = -Math.PI + (idx + 0.5) * 2 * Math.PI / ordered.length;
-      ang[id] = norm2(ang[id] + norm2(even - ang[id]) * 0.6);
+    evened.forEach(function (id, idx) {
+      var even = -Math.PI + (idx + 0.5) * 2 * Math.PI / evened.length;
+      ang[id] = norm2(ang[id] + norm2(even - ang[id]) * 0.45);
     });
-    // elliptical rings: radius from depth, wide axis horizontal for horizontal capsules
-    var EX = 1.5, PITCH = 260, R0 = 330;
-    function radius(d2) { return d2 === 0 ? 0 : R0 + Math.sqrt(d2 - 1) * PITCH; }
-    // angular personal space per ring: sort by angle, relax the gaps as arcs, keeping each
-    // community (same reachable-line set) packed closer than its neighbours
-    var byRing = {};
-    items.forEach(function (id) { if (id !== "the-program") (byRing[ring[id]] = byRing[ring[id]] || []).push(id); });
-    function norm(a2) { while (a2 > Math.PI) a2 -= 2 * Math.PI; while (a2 < -Math.PI) a2 += 2 * Math.PI; return a2; }
-    Object.keys(byRing).forEach(function (rk) {
-      var ids = byRing[rk];
-      var r2 = radius(+rk) * ((EX + 1) / 2);
-      ids.sort(function (a2, b2) { return ang[a2] - ang[b2] || a2.localeCompare(b2); });
-      for (var it = 0; it < 60; it++) {
-        var moved = false;
-        for (var i2 = 0; i2 < ids.length; i2++) {
-          var a3 = ids[i2], b3 = ids[(i2 + 1) % ids.length];
-          if (a3 === b3) continue;
-          var sameSet = (reach[a3] || []).join() === (reach[b3] || []).join();
-          var need = ((geo[a3].w + geo[b3].w) / 2 + (sameSet ? 34 : 80)) / r2;
-          var gapNow = norm(ang[b3] - ang[a3]);
-          if (gapNow < 0) gapNow += 2 * Math.PI;
-          if (gapNow < need) {
-            var push = (need - gapNow) / 2;
-            ang[a3] = norm(ang[a3] - push);
-            ang[b3] = norm(ang[b3] + push);
-            moved = true;
+    var EX = 1.22, PITCH = 265, R0 = 330, GAP = 78;
+    var order = items.filter(function (id) { return id !== "the-program"; })
+      .sort(function (a2, b2) { return (ring[a2] - ring[b2]) || (ang[a2] - ang[b2]) || a2.localeCompare(b2); });
+    var pos = { "the-program": { x: 0, y: 0 } };
+    var rk = 0, cursor = 0;
+    while (cursor < order.length) {
+      var r2 = R0 + rk * PITCH;
+      var a4 = EX * r2, b4 = r2;
+      var circ = Math.PI * (3 * (a4 + b4) - Math.sqrt((3 * a4 + b4) * (a4 + 3 * b4)));
+      var members = [], used = 0;
+      while (cursor < order.length) {
+        var nid = order[cursor];
+        var need = geo[nid].w + GAP;
+        if (members.length && used + need > circ) break;
+        members.push(nid); used += need; cursor++;
+      }
+      members.sort(function (a2, b2) { return ang[a2] - ang[b2] || a2.localeCompare(b2); });
+      // each capsule starts at its affinity angle and moves only as far as the constant
+      // gap demands, so sectors stay where their lines live and sparse arcs stay sparse
+      var theta = {};
+      members.forEach(function (id) { theta[id] = ang[id]; });
+      var rMean = (a4 + b4) / 2;
+      for (var it2 = 0; it2 < 80; it2++) {
+        var moved2 = false;
+        for (var i2 = 0; i2 < members.length; i2++) {
+          var m1 = members[i2], m2 = members[(i2 + 1) % members.length];
+          if (m1 === m2) continue;
+          var need2 = ((geo[m1].w + geo[m2].w) / 2 + GAP) / rMean;
+          var gap2 = norm2(theta[m2] - theta[m1]);
+          if (gap2 < 0) gap2 += 2 * Math.PI;
+          if (gap2 < need2) {
+            var push2 = (need2 - gap2) / 2;
+            theta[m1] = norm2(theta[m1] - push2);
+            theta[m2] = norm2(theta[m2] + push2);
+            moved2 = true;
           }
         }
-        if (!moved) break;
+        if (!moved2) break;
       }
-    });
-    // positions on the ellipse, then a plain push-apart guarantee along the join line
-    var pos = {};
-    items.forEach(function (id) {
-      var r2 = radius(ring[id]);
-      pos[id] = { x: r2 * EX * Math.cos(ang[id]), y: r2 * Math.sin(ang[id]) };
-    });
+      members.forEach(function (id) {
+        pos[id] = { x: a4 * Math.cos(theta[id]), y: b4 * Math.sin(theta[id]) };
+      });
+      rk++;
+    }
     for (var iter = 0; iter < 60; iter++) {
       var bumped = false;
       for (var ii = 0; ii < items.length; ii++) for (var jj = ii + 1; jj < items.length; jj++) {

@@ -45,3 +45,9 @@ Maintainer directives, in conversation on the preview, verbatim:
 
 > also related to both arrows and radial layout, the arrowheads should just point in
 > whatever direction they point, not always to the right
+
+> i like this as an overall organizing geometry better, but it's still not quite there.
+> For example, it looks like a weird spiral now bc of the spacing. nodes should not be
+> close together, and in general the nodes should be spaced out roughly homogeneously.
+> it's fine for some sectors to be sparser than others based on research but the overall
+> thing should be roughly homogeneous density

@@ -12,19 +12,26 @@ ramp costs first-read legibility. The first cut of this round scaled width by ra
 merged-PR count and was not visible on the preview, which the first follow-up corrected;
 the second follow-up adopted the consult's layout.
 
-The layout (`site/assets/map.js`): x stays dependency rank with measured column widths
-and constant 80px gaps, stagger removed; y places each node at the mean anchor of the
-goals it feeds — goals ordered so pairs with the most shared upstream support are
-adjacent (exact permutation search over the six lines) — refined by 24 sweeps of
-neighbour-target ordering and a weighted no-overlap projection (pool adjacent violators)
-per column, so shared foundations sit between the lines they support and the staircase's
-dead regions close. Long directed edges thread through free vertical slots in the columns
-they cross instead of arcing over the map; every capsule's edges leave and enter through
-ports spread along its side, ordered by the far endpoint. Edge opacity drops to 0.25
-base (0.12 undirected) with strong focus contrast; capsule titles render without a
-trailing parenthetical citation (the card keeps the full title); a fit-map control and a
-one-line reading instruction join the overlays. The map boots at twice the fit-to-width
-zoom so capsules open at reading size.
+The layout (`site/assets/map.js`) is radial: the program is the one node at the centre,
+and every concept sits at the circular mean of the angular anchors of the lines it feeds
+— the six lines ordered around the circle so pairs with the most shared upstream support
+are adjacent (exact permutation search) — blended 0.45 toward even occupancy so the disc
+fills roundly. Radius is dependency depth, realised as capacity-balanced elliptical
+rings: each ring takes, in depth order, as many capsules as its circumference carries at
+one constant gap, so density is roughly homogeneous by construction; within a ring each
+capsule starts at its affinity angle and moves only as far as the gap demands, so
+sectors stay where their lines live and arcs the research leaves sparse stay sparse. A
+2D push-apart guarantees personal space and the DOM gate asserts no overlaps. Edges
+attach where capsules face each other and bow gently toward the centre; arrowheads are
+fixed-size, fill from their wire's stroke (context-stroke), orient with the path, and
+sit on the drawn tip. Edge opacity is 0.25 base (0.12 undirected) with strong focus
+contrast; capsule titles render without a trailing parenthetical citation (the card
+keeps the full title); a fit-map control and a one-line reading instruction join the
+overlays; a search hit lights its incident relations while its mark lasts. The map boots
+centred on the program at twice the whole-map fit. The intermediate layered layout, its
+staircase predecessor, and a global rank-uniformisation that read as a spiral were each
+superseded by maintainer direction on renders; the directives are verbatim in
+`PROMPT-followup-2.md`.
 
 The per-concept merged-work count is computed once, with the same match the popup's
 "Merged work" section uses (wiki tag or frame refs), so the capsule's size, the card's
