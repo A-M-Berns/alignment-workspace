@@ -222,16 +222,30 @@
         if (siteOf[free[pr[1]]] !== undefined || taken[pr[2]]) continue;
         siteOf[free[pr[1]]] = pr[2]; taken[pr[2]] = 1; placed++;
       }
-      for (var sweep2 = 0; sweep2 < 4; sweep2++) {
+      // swap refinement also pulls toward actual neighbours' sites, so a concept lands
+      // near what it links to, not only on its depth-and-bearing preference
+      function nbCost(id, sk) {
+        var nbs = (nbAll[id] || []).filter(function (nb) { return siteOf[nb] !== undefined; });
+        if (!nbs.length) return 0;
+        var es = 0;
+        nbs.forEach(function (nb) {
+          var so = sites[siteOf[nb]];
+          es += (sk.x - so.x) * (sk.x - so.x) + (sk.y - so.y) * (sk.y - so.y);
+        });
+        return 0.5 * (es / nbs.length) / ell2;
+      }
+      for (var sweep2 = 0; sweep2 < 6; sweep2++) {
         var improved = false;
         for (var i3 = 0; i3 < N; i3++) for (var j3 = i3 + 1; j3 < N; j3++) {
           var a3 = free[i3], b3 = free[j3];
           var sa = sites[siteOf[a3]], sb = sites[siteOf[b3]];
-          var now = cost(a3, sa) + cost(b3, sb);
-          var swapped = cost(a3, sb) + cost(b3, sa);
+          var now = cost(a3, sa) + nbCost(a3, sa) + cost(b3, sb) + nbCost(b3, sb);
+          var t2 = siteOf[a3]; siteOf[a3] = siteOf[b3]; siteOf[b3] = t2;
+          var swapped = cost(a3, sb) + nbCost(a3, sb) + cost(b3, sa) + nbCost(b3, sa);
           if (swapped < now - 1e-12) {
-            var t2 = siteOf[a3]; siteOf[a3] = siteOf[b3]; siteOf[b3] = t2;
             improved = true;
+          } else {
+            t2 = siteOf[a3]; siteOf[a3] = siteOf[b3]; siteOf[b3] = t2;
           }
         }
         if (!improved) break;
@@ -262,6 +276,17 @@
     }
     function energyOf(id, px, py) {
       var e2 = 0.06 * ((px - anchor[id].x) * (px - anchor[id].x) + (py - anchor[id].y) * (py - anchor[id].y)) / (t0 * t0 / N);
+      // the consult's edge-length term: a gentle pull toward actual graph neighbours,
+      // mean over them so hubs are not over-pulled
+      var nbs = nbAll[id] || [];
+      if (nbs.length) {
+        var es = 0;
+        nbs.forEach(function (nb) {
+          if (!P[nb]) return;
+          es += ((px - P[nb].x) * (px - P[nb].x) + (py - P[nb].y) * (py - P[nb].y));
+        });
+        e2 += 0.10 * (es / nbs.length) / (t0 * t0);
+      }
       var rr = Math.sqrt((px / EX) * (px / EX) + py * py);
       if (rr > t0 * 1.04) e2 += 40 * (rr / (t0 * 1.04) - 1) * (rr / (t0 * 1.04) - 1);
       for (var k3 = 0; k3 < items.length; k3++) {
