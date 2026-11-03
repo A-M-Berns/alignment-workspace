@@ -18,19 +18,6 @@
   svg.appendChild(defs);
   var cam = document.createElementNS(NS, "g");
   svg.appendChild(cam);
-  var mk = document.createElementNS(NS, "marker");
-  mk.setAttribute("id", "arrow");
-  mk.setAttribute("viewBox", "0 0 8 8");
-  mk.setAttribute("refX", "7.4"); mk.setAttribute("refY", "4");
-  mk.setAttribute("markerUnits", "userSpaceOnUse");
-  mk.setAttribute("markerWidth", "11"); mk.setAttribute("markerHeight", "11");
-  mk.setAttribute("orient", "auto");
-  var mkp = document.createElementNS(NS, "path");
-  mkp.setAttribute("d", "M0,0.6 L7.4,4 L0,7.4 z");
-  mkp.setAttribute("class", "arrowhead");
-  mk.appendChild(mkp);
-  defs.appendChild(mk);
-
   function el(tag, attrs, parent) {
     var e = document.createElementNS(NS, tag);
     for (var k in attrs) e.setAttribute(k, attrs[k]);
@@ -222,16 +209,30 @@
         if (siteOf[free[pr[1]]] !== undefined || taken[pr[2]]) continue;
         siteOf[free[pr[1]]] = pr[2]; taken[pr[2]] = 1; placed++;
       }
-      for (var sweep2 = 0; sweep2 < 4; sweep2++) {
+      // swap refinement also pulls toward actual neighbours' sites, so a concept lands
+      // near what it links to, not only on its depth-and-bearing preference
+      function nbCost(id, sk) {
+        var nbs = (nbAll[id] || []).filter(function (nb) { return siteOf[nb] !== undefined; });
+        if (!nbs.length) return 0;
+        var es = 0;
+        nbs.forEach(function (nb) {
+          var so = sites[siteOf[nb]];
+          es += (sk.x - so.x) * (sk.x - so.x) + (sk.y - so.y) * (sk.y - so.y);
+        });
+        return 0.5 * (es / nbs.length) / ell2;
+      }
+      for (var sweep2 = 0; sweep2 < 6; sweep2++) {
         var improved = false;
         for (var i3 = 0; i3 < N; i3++) for (var j3 = i3 + 1; j3 < N; j3++) {
           var a3 = free[i3], b3 = free[j3];
           var sa = sites[siteOf[a3]], sb = sites[siteOf[b3]];
-          var now = cost(a3, sa) + cost(b3, sb);
-          var swapped = cost(a3, sb) + cost(b3, sa);
+          var now = cost(a3, sa) + nbCost(a3, sa) + cost(b3, sb) + nbCost(b3, sb);
+          var t2 = siteOf[a3]; siteOf[a3] = siteOf[b3]; siteOf[b3] = t2;
+          var swapped = cost(a3, sb) + nbCost(a3, sb) + cost(b3, sa) + nbCost(b3, sa);
           if (swapped < now - 1e-12) {
-            var t2 = siteOf[a3]; siteOf[a3] = siteOf[b3]; siteOf[b3] = t2;
             improved = true;
+          } else {
+            t2 = siteOf[a3]; siteOf[a3] = siteOf[b3]; siteOf[b3] = t2;
           }
         }
         if (!improved) break;
@@ -262,6 +263,17 @@
     }
     function energyOf(id, px, py) {
       var e2 = 0.06 * ((px - anchor[id].x) * (px - anchor[id].x) + (py - anchor[id].y) * (py - anchor[id].y)) / (t0 * t0 / N);
+      // the consult's edge-length term: a gentle pull toward actual graph neighbours,
+      // mean over them so hubs are not over-pulled
+      var nbs = nbAll[id] || [];
+      if (nbs.length) {
+        var es = 0;
+        nbs.forEach(function (nb) {
+          if (!P[nb]) return;
+          es += ((px - P[nb].x) * (px - P[nb].x) + (py - P[nb].y) * (py - P[nb].y));
+        });
+        e2 += 0.10 * (es / nbs.length) / (t0 * t0);
+      }
       var rr = Math.sqrt((px / EX) * (px / EX) + py * py);
       if (rr > t0 * 1.04) e2 += 40 * (rr / (t0 * 1.04) - 1) * (rr / (t0 * 1.04) - 1);
       for (var k3 = 0; k3 < items.length; k3++) {
@@ -355,11 +367,21 @@
       var a = at[L[0]], c = at[L[1]];
       if (!a || !c) return;
       var p1 = boundaryPoint(L[0], c.x, c.y, 2);
-      var p2 = boundaryPoint(L[1], a.x, a.y, L[5] ? 1 : 1.5);
+      var p2 = boundaryPoint(L[1], a.x, a.y, L[5] ? 0.5 : 0.5);
       var d = "M" + p1[0] + "," + p1[1] + " L" + p2[0] + "," + p2[1];
+      if (!L[5]) {
+        var ux = p2[0] - p1[0], uy = p2[1] - p1[1];
+        var ul = Math.sqrt(ux * ux + uy * uy) || 1;
+        ux /= ul; uy /= ul;
+        var AL = 9, AW = 0.42;
+        var b1x = p2[0] - AL * (ux * Math.cos(AW) - uy * Math.sin(AW));
+        var b1y = p2[1] - AL * (uy * Math.cos(AW) + ux * Math.sin(AW));
+        var b2x = p2[0] - AL * (ux * Math.cos(AW) + uy * Math.sin(AW));
+        var b2y = p2[1] - AL * (uy * Math.cos(AW) - ux * Math.sin(AW));
+        d += " M" + b1x + "," + b1y + " L" + p2[0] + "," + p2[1] + " L" + b2x + "," + b2y;
+      }
       var grp = el("g", { "class": "net-edge" + (L[5] ? " undirected" : "") }, eg);
-      var wire = el("path", { d: d, "class": "wire", "stroke-width": Math.min(0.75 + L[2] * 0.08, 1.3) }, grp);
-      if (!L[5]) wire.setAttribute("marker-end", "url(#arrow)");
+      var wire = el("path", { d: d, "class": "wire", "stroke-width": Math.min(1.0 + L[2] * 0.08, 1.6) }, grp);
       el("path", { d: d, "class": "hit", "stroke-width": 13 }, grp);
       grp.addEventListener("click", function (ev) { ev.stopPropagation(); edgeCard(L, ev); });
       (incident[L[0]] = incident[L[0]] || []).push(grp);
@@ -433,9 +455,8 @@
     card.innerHTML = '<p class="card-head">' + esc(m.t || id) + ' <span class="kind">' + esc(kindLabel(m.k)) + "</span></p>"
       + (m.s ? "<p class=\"card-blurb\">" + esc(m.s) + "</p>" : "")
       + '<p class="card-meta muted">' + (m.prs ? m.prs + " merged PR(s) · " : "") + (m.w ? "wiki page" : "registry entry") + "</p>"
-      + '<p class="card-actions"><button data-act="more">Read more</button><button data-act="cmt" class="quiet">Comment</button></p>';
+      + '<p class="card-actions"><button data-act="more">Read more</button></p>';
     card.querySelector("[data-act=more]").addEventListener("click", function () { hideCard(); openFull(id); });
-    card.querySelector("[data-act=cmt]").addEventListener("click", function (e2) { commentForm(id); placeCard(e2); });
     placeCard(ev);
   }
   function edgeCard(L, ev) {
@@ -450,35 +471,6 @@
     placeCard(ev);
   }
 
-  var COMMENT_API = "https://comments.alignmentworkspace.com";
-  function commentForm(id) {
-    var m = DATA.concepts[id] || {};
-    card.innerHTML = '<p class="card-head">Comment on ' + esc(m.t || id) + "</p>"
-      + '<input class="cmt-name" type="text" maxlength="80" placeholder="name (optional)">'
-      + '<textarea class="cmt-body" maxlength="5000" rows="5" placeholder="What you want to say. It appears after review; it is filed publicly the moment you send it."></textarea>'
-      + '<p class="card-actions"><button data-act="send">Send</button><button data-act="back" class="quiet">Back</button></p>'
-      + '<p class="cmt-status muted"></p>';
-    card.querySelector("[data-act=back]").addEventListener("click", function (e2) { nodeCard(id, e2); });
-    card.querySelector("[data-act=send]").addEventListener("click", function () {
-      var body = card.querySelector(".cmt-body").value.trim();
-      var name = card.querySelector(".cmt-name").value.trim();
-      var st = card.querySelector(".cmt-status");
-      if (body.length < 3) { st.textContent = "Write something first."; return; }
-      st.textContent = "Sending…";
-      fetch(COMMENT_API, { method: "POST", headers: { "content-type": "application/json" },
-        body: JSON.stringify({ concept: id, name: name, body: body }) })
-        .then(function (r) { return r.json(); })
-        .then(function (d2) {
-          if (d2.ok) { st.innerHTML = 'Sent — it appears after review. <a href="' + d2.url + '">Filed record</a>.'; }
-          else { throw new Error(d2.error || "failed"); }
-        })
-        .catch(function () {
-          st.innerHTML = 'Could not send. <a href="https://github.com/A-M-Berns/alignment-workspace/issues/new?title='
-            + encodeURIComponent("[comment] " + id) + "&body=" + encodeURIComponent(body)
-            + '">File it directly</a> instead.';
-        });
-    });
-  }
   function base(id) {
     return "/concepts/" + seg(id) + "/";
   }
@@ -487,9 +479,7 @@
     var m = DATA.concepts[id] || {};
     panelBody.innerHTML = '<p class="muted">Loading ' + esc(m.t || id) + "…</p>";
     fetch(base(id) + "frag.html").then(function (r) { if (!r.ok) throw 0; return r.text(); }).then(function (h) {
-      panelBody.innerHTML = h + '<p class="muted popup-foot"><a href="' + base(id) + '">Open the full page →</a> · <a href="#" data-cmt>Comment on this concept</a></p>';
-      var cl = panelBody.querySelector("[data-cmt]");
-      if (cl) cl.addEventListener("click", function (e2) { e2.preventDefault(); closeFull(); commentForm(id); placeCard(e2); });
+      panelBody.innerHTML = h + '<p class="muted popup-foot"><a href="' + base(id) + '">Open the full page →</a></p>';
     }).catch(function () { panelBody.innerHTML = '<p>Could not load; <a href="' + base(id) + '">open the page</a>.</p>'; });
     if (history.replaceState) history.replaceState(null, "", "/#c=" + seg(id));
   }

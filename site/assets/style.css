@@ -24,7 +24,7 @@ pre { background: var(--code-bg); padding: 0.8em 1em; overflow-x: auto; border-r
 pre code { background: none; padding: 0; }
 header.top { display: flex; flex-wrap: wrap; gap: 0.6em 1.2em; align-items: baseline; padding: 0.8em 1em; border-bottom: 1px solid var(--rule); font-size: 0.9rem; }
 header.top .home { font-weight: 700; color: var(--fg); text-decoration: none; }
-header.top nav.main a { margin-right: 0.2em; color: var(--muted); text-decoration: none; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.78rem; }
+header.top nav.main a { margin-right: 1.6em; color: var(--muted); text-decoration: none; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.78rem; }
 header.top nav.main a:hover { color: var(--fg); }
 header.top form.search { margin-left: auto; }
 header.top input[type=search] { font: inherit; padding: 0.25em 0.5em; border: 1px solid var(--rule); border-radius: 4px; background: var(--bg); color: var(--fg); min-width: 14em; }
@@ -115,7 +115,7 @@ svg#map g.tone-slate, svg#map g.tone-plain { color: var(--slate); }
 svg#map g.tone-bone, svg#map g.tone-group { color: var(--accent); }
 svg#map g.dot.drafted .core { opacity: 0.6; }
 svg#map .net-edge .wire { stroke: #c8c4ba; opacity: 0.14; transition: opacity 0.16s ease; }
-svg#map .net-edge .hit { stroke: transparent; }
+svg#map .net-edge .hit { stroke: transparent; vector-effect: non-scaling-stroke; }
 svg#map .net-edge:hover .wire { opacity: 0.75; }
 svg#map .net-edge.lit .wire { opacity: 0.4; }
 #map-tip { position: absolute; max-width: 300px; background: #0e0e10f2; border: 1px solid var(--rule); border-radius: 6px; padding: 0.45em 0.7em; font-size: 0.8rem; line-height: 1.4; color: var(--fg); pointer-events: none; z-index: 5; box-shadow: 0 4px 16px rgba(0,0,0,0.6); }
@@ -242,15 +242,16 @@ svg#map g.cap.tone-bone .cap-title { font-weight: 700; }
 svg#map g.cap.program .pill { fill: var(--accent); stroke: none; }
 svg#map g.cap.program .cap-title { fill: #101013; font-weight: 720; }
 svg#map g.cap.hit-mark .pill { stroke: #ececec; stroke-width: 2.5px; }
-svg#map .net-edge .wire { stroke: #92928c; opacity: 1; stroke-opacity: 0.25; }
-svg#map .net-edge.undirected .wire { stroke-opacity: 0.12; }
-svg#map .net-edge.lit .wire { stroke: #ececec; stroke-opacity: 0.75; }
-svg#map .net-edge:hover .wire { stroke: #ececec; stroke-opacity: 1; }
-svg#map .arrowhead { fill: context-stroke; fill-opacity: 0.6; }
+svg#map .net-edge .wire { stroke: #92928c; opacity: 0.25; vector-effect: non-scaling-stroke; }
+svg#map .net-edge.undirected .wire { opacity: 0.12; }
+svg#map .net-edge.lit .wire { stroke: #ececec; opacity: 0.75; }
+svg#map .net-edge:hover .wire { stroke: #ececec; opacity: 1; }
+svg#map .net-edge .wire { fill: none; stroke-linecap: round; stroke-linejoin: round; }
 svg#map .goalwash { display: none; }
 svg#map g.scene.focus g.cap:not(.nb) { opacity: 0.16; }
 svg#map g.scene.focus .net-edge:not(.lit) { opacity: 0.05; }
-#map-fit { background: none; border: 1px solid var(--rule); color: var(--muted); font: inherit; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.2em 0.7em; border-radius: 6px; cursor: pointer; margin-left: 0.9em; }
+#map-fit { background: none; border: 1px solid var(--rule); color: var(--muted); font: inherit; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.3em 0.8em; border-radius: 6px; cursor: pointer; margin-left: auto; align-self: center; }
+header.top #map-fit + form.search { margin-left: 0; }
 #map-fit:hover { color: #ececec; border-color: #ececec; }
 
 .search-chip { font-size: 0.72rem; color: var(--muted); margin-left: 0.5em; text-transform: uppercase; letter-spacing: 0.05em; }
@@ -260,8 +261,4 @@ svg#map .axis .bandlabel { fill: #6a6964; font-weight: 600; }
 header.top .home { font-size: 1.08rem; font-weight: 700; letter-spacing: 0; color: var(--fg); }
 header.top .home:hover { color: var(--accent); }
 .concept-lede { font-size: 1.02rem; color: #d6d6d0; max-width: 46rem; margin: 0.2em 0 0.8em; }
-#map-card .cmt-name, #map-card .cmt-body { width: 100%; font: inherit; font-size: 0.86rem; background: #0e0e10; color: var(--fg); border: 1px solid var(--rule); border-radius: 6px; padding: 0.45em 0.6em; margin: 0.3em 0; }
-#map-card .cmt-body { resize: vertical; }
-#map-card .cmt-name:focus, #map-card .cmt-body:focus { outline: none; border-color: var(--accent); }
 #map-card button.quiet { background: var(--tag-bg); color: var(--fg); }
-#map-card .cmt-status { font-size: 0.8rem; margin: 0.4em 0 0; }

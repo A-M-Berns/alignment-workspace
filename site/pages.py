@@ -54,7 +54,7 @@ class Site:
 
 def layout(site: Site, title: str, body: str, crumbs: list[tuple[str, str]] | None = None, subtitle: str = "") -> str:
     r = site.repo
-    nav = '<a href="/">map</a>'
+    nav = '<a href="/">map</a><a href="https://github.com/A-M-Berns/alignment-workspace">repo</a>'
     crumb_html = ""
     if crumbs:
         crumb_html = '<nav class="crumbs">' + " › ".join(f'<a href="{u}">{esc(t)}</a>' for t, u in crumbs) + "</nav>"
@@ -131,10 +131,18 @@ def render_wiki(site: Site, name: str) -> str:
                 return ""
             return f' <a class="ref node" href="{site.url("n", ident)}">[node]</a>'
         return ""
-    text = REF.sub(ref, text)
+    # resolve references to tokens, render, then expand: an anchor substituted before
+    # rendering is escaped by the renderer like any other inline HTML
+    anchors: list[str] = []
+
+    def hold(m):
+        anchors.append(ref(m))
+        return f"\x01{len(anchors) - 1}\x01"
+    text = REF.sub(hold, text)
     # relative wiki links `[Text](Page)` become site links where the page exists
     text = WIKI_MD_LINK.sub(lambda m: f"]({site.url('wiki', m.group(1))})" if m.group(1) in r.wiki else m.group(0), text)
-    return md.render(text, wiki_link_resolver(site), heading_shift=1)
+    out = md.render(text, wiki_link_resolver(site), heading_shift=1)
+    return re.sub("\x01(\\d+)\x01", lambda m: anchors[int(m.group(1))], out)
 
 
 def events_html(site: Site, events: list) -> str:
@@ -235,8 +243,7 @@ def bridge_card(site: Site, x: str) -> str:
     return "\n".join(parts)
 
 
-INTAKE = (("comment", "What you want to say about this node. A maintainer round files what lands as the event it is."),
-          ("challenge", "The picture: what you believe is wrong with this node's Statement, and what would settle it."),
+INTAKE = (("challenge", "The picture: what you believe is wrong with this node's Statement, and what would settle it."),
           ("estimate", "Your number on this node and the reasoning it rests on; it enters a ledger as your event."),
           ("want", "What you want, in research terms; it is filed as a want under your handle where your words place it."))
 
@@ -609,7 +616,7 @@ def front_page(site: Site, lede_html: str, feed_rows: list[str]) -> str:
         + "</ul></section></noscript>")
     body = ['<div class="map-full"><div class="map-stage">'
             '<svg id="map" role="application" aria-label="the argument map"></svg>'
-            '<div class="map-side overlay"><span id="map-legend"></span><button id="map-fit" type="button">fit map</button></div>'
+            '<div class="map-side overlay"><span id="map-legend"></span></div>'
             '<span class="map-hint overlay muted">everything feeds the program at the centre · drag to pan · scroll to zoom · click a node · esc backs out</span>'
             '<div id="map-card" hidden></div>'
             '<div id="map-modal"><div id="map-panel"><button id="map-panel-close" aria-label="close">×</button><div id="map-panel-body"></div></div></div>'
@@ -617,7 +624,7 @@ def front_page(site: Site, lede_html: str, feed_rows: list[str]) -> str:
             noscript,
             f'<div class="below-map"><p class="question">{esc(top["question"])}</p>{lede_html}</div>',
             "<div class=\"below-map\"><details class=\"front-feed\"><summary>Recent in the feed</summary><ul class=\"feed\">" + "".join(feed_rows[:12]) + "</ul><p><a href=\"/feed/\">The whole feed</a>.</p></details></div>"]
-    return layout(site, "Research map", "\n".join(body)).replace("</head>", f'<script defer src="/assets/map.js?v={esc(site.repo.commit[:12])}"></script></head>')
+    return layout(site, "Research map", "\n".join(body)).replace("</head>", f'<script defer src="/assets/map.js?v={esc(site.repo.commit[:12])}"></script></head>').replace('<form class="search"', '<button id="map-fit" type="button">fit map</button><form class="search"')
 
 
 def map_data(site: Site) -> dict:
