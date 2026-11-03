@@ -455,9 +455,8 @@
     card.innerHTML = '<p class="card-head">' + esc(m.t || id) + ' <span class="kind">' + esc(kindLabel(m.k)) + "</span></p>"
       + (m.s ? "<p class=\"card-blurb\">" + esc(m.s) + "</p>" : "")
       + '<p class="card-meta muted">' + (m.prs ? m.prs + " merged PR(s) · " : "") + (m.w ? "wiki page" : "registry entry") + "</p>"
-      + '<p class="card-actions"><button data-act="more">Read more</button><button data-act="cmt" class="quiet">Comment</button></p>';
+      + '<p class="card-actions"><button data-act="more">Read more</button></p>';
     card.querySelector("[data-act=more]").addEventListener("click", function () { hideCard(); openFull(id); });
-    card.querySelector("[data-act=cmt]").addEventListener("click", function (e2) { commentForm(id); placeCard(e2); });
     placeCard(ev);
   }
   function edgeCard(L, ev) {
@@ -472,35 +471,6 @@
     placeCard(ev);
   }
 
-  var COMMENT_API = "https://comments.alignmentworkspace.com";
-  function commentForm(id) {
-    var m = DATA.concepts[id] || {};
-    card.innerHTML = '<p class="card-head">Comment on ' + esc(m.t || id) + "</p>"
-      + '<input class="cmt-name" type="text" maxlength="80" placeholder="name (optional)">'
-      + '<textarea class="cmt-body" maxlength="5000" rows="5" placeholder="What you want to say. It appears after review; it is filed publicly the moment you send it."></textarea>'
-      + '<p class="card-actions"><button data-act="send">Send</button><button data-act="back" class="quiet">Back</button></p>'
-      + '<p class="cmt-status muted"></p>';
-    card.querySelector("[data-act=back]").addEventListener("click", function (e2) { nodeCard(id, e2); });
-    card.querySelector("[data-act=send]").addEventListener("click", function () {
-      var body = card.querySelector(".cmt-body").value.trim();
-      var name = card.querySelector(".cmt-name").value.trim();
-      var st = card.querySelector(".cmt-status");
-      if (body.length < 3) { st.textContent = "Write something first."; return; }
-      st.textContent = "Sending…";
-      fetch(COMMENT_API, { method: "POST", headers: { "content-type": "application/json" },
-        body: JSON.stringify({ concept: id, name: name, body: body }) })
-        .then(function (r) { return r.json(); })
-        .then(function (d2) {
-          if (d2.ok) { st.innerHTML = 'Sent — it appears after review. <a href="' + d2.url + '">Filed record</a>.'; }
-          else { throw new Error(d2.error || "failed"); }
-        })
-        .catch(function () {
-          st.innerHTML = 'Could not send. <a href="https://github.com/A-M-Berns/alignment-workspace/issues/new?title='
-            + encodeURIComponent("[comment] " + id) + "&body=" + encodeURIComponent(body)
-            + '">File it directly</a> instead.';
-        });
-    });
-  }
   function base(id) {
     return "/concepts/" + seg(id) + "/";
   }
@@ -509,9 +479,7 @@
     var m = DATA.concepts[id] || {};
     panelBody.innerHTML = '<p class="muted">Loading ' + esc(m.t || id) + "…</p>";
     fetch(base(id) + "frag.html").then(function (r) { if (!r.ok) throw 0; return r.text(); }).then(function (h) {
-      panelBody.innerHTML = h + '<p class="muted popup-foot"><a href="' + base(id) + '">Open the full page →</a> · <a href="#" data-cmt>Comment on this concept</a></p>';
-      var cl = panelBody.querySelector("[data-cmt]");
-      if (cl) cl.addEventListener("click", function (e2) { e2.preventDefault(); closeFull(); commentForm(id); placeCard(e2); });
+      panelBody.innerHTML = h + '<p class="muted popup-foot"><a href="' + base(id) + '">Open the full page →</a></p>';
     }).catch(function () { panelBody.innerHTML = '<p>Could not load; <a href="' + base(id) + '">open the page</a>.</p>'; });
     if (history.replaceState) history.replaceState(null, "", "/#c=" + seg(id));
   }

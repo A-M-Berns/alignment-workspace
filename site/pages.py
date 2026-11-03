@@ -243,8 +243,7 @@ def bridge_card(site: Site, x: str) -> str:
     return "\n".join(parts)
 
 
-INTAKE = (("comment", "What you want to say about this node. A maintainer round files what lands as the event it is."),
-          ("challenge", "The picture: what you believe is wrong with this node's Statement, and what would settle it."),
+INTAKE = (("challenge", "The picture: what you believe is wrong with this node's Statement, and what would settle it."),
           ("estimate", "Your number on this node and the reasoning it rests on; it enters a ledger as your event."),
           ("want", "What you want, in research terms; it is filed as a want under your handle where your words place it."))
 
