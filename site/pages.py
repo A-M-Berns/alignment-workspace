@@ -145,8 +145,8 @@ def render_wiki(site: Site, name: str) -> str:
     return re.sub("\x01(\\d+)\x01", lambda m: anchors[int(m.group(1))], out)
 
 
-STANCES = ("support", "dispute", "uncertain", "abstain")
-ASPECTS = ("correctness", "applicability", "framing", "usefulness")
+AXES = ("reliability", "importance", "clarity")
+SCORES = (1, 2, 3, 4, 5)
 
 
 def epistemic_html(site: Site, x: str) -> str:
@@ -174,15 +174,26 @@ def epistemic_html(site: Site, x: str) -> str:
         parts.append('<p class="muted"><strong>Contest</strong> no failure-story table attacks this node yet.</p>')
     acts = r.assessments(x)
     if acts:
-        lis = []
+        by_axis: dict = {}
         for e in acts:
-            stale = f' <span class="tag">on an earlier revision (v{esc(str(e.get("version")))})</span>' if e.get("_stale") else ""
-            lis.append(f'<li><span class="stance stance-{esc(str(e.get("stance")))}">{esc(str(e.get("stance")))}</span> '
-                       f'<span class="kind">{esc(str(e.get("aspect")))}</span> — {site.link("by", str(e.get("by")).lstrip("@"))}, {esc(str(e.get("date")))}{stale}'
-                       f'<br><em>{esc(str(e.get("verbatim") or ""))}</em></li>')
-        parts.append('<p><strong>Assessments</strong></p><ul class="assessments">' + "".join(lis) + "</ul>")
+            by_axis.setdefault(str(e.get("axis")), []).append(e)
+        lis = []
+        for axis in AXES:
+            evs = by_axis.get(axis)
+            if not evs:
+                lis.append(f'<li><span class="axis">{axis}</span> <span class="muted">unscored</span></li>')
+                continue
+            bits = []
+            for e in evs:
+                stale = f' <span class="tag">on an earlier revision (v{esc(str(e.get("version")))})</span>' if e.get("_stale") else ""
+                bits.append(f'<span class="score score-{esc(str(e.get("score")))}">{esc(str(e.get("score")))}</span> '
+                            f'{site.link("by", str(e.get("by")).lstrip("@"))}, {esc(str(e.get("date")))}{stale}'
+                            f'<br><em>{esc(str(e.get("verbatim") or ""))}</em>')
+            lis.append(f'<li><span class="axis">{axis}</span> ' + " · ".join(bits) + "</li>")
+        parts.append('<p><strong>Assessments</strong> <span class="muted">1–5 per axis; vouch by matching a score, challenge by differing</span></p>'
+                     '<ul class="assessments">' + "".join(lis) + "</ul>")
     else:
-        parts.append('<p class="muted"><strong>Assessments</strong> none recorded.</p>')
+        parts.append('<p class="muted"><strong>Assessments</strong> none recorded (axes: reliability, importance, clarity; 1–5).</p>')
     parts.append("</section>")
     return "".join(parts)
 
@@ -198,19 +209,19 @@ def assess_html(site: Site, x: str) -> str:
     N = r.nodes[x]
     active = {}
     for e in r.assessments(x):
-        active[str(e.get("by"))] = str(e.get("id"))
+        active[str(e.get("by")) + "|" + str(e.get("axis"))] = str(e.get("id"))
     cfg = {"node": x, "version": N.get("version"), "rule": str(r.policy.get("anchor_rules") or ""),
-           "active": active, "handles": sorted(r.human), "stances": list(STANCES), "aspects": list(ASPECTS)}
+           "active": active, "handles": sorted(r.human), "axes": list(AXES), "scores": list(SCORES)}
     issue_title = quote(f"[node] {x}: assessment")
     issue_body = quote(f"node: {x}\nurl: /n/{Site.seg(x)}/\nverb: assessment\n\n"
-                       "## Your stance (support | dispute | uncertain | abstain), the aspect, and your rationale\n\n")
+                       "## Your score (1-5) on reliability, importance or clarity, and your rationale\n\n")
     return (f'<section class="assess" data-assess="{esc(_json.dumps(cfg, separators=(",", ":")))}">'
             '<h2>Record my assessment</h2>'
             '<p class="muted">Composes the exact ledger event; you submit it on GitHub under your own account, and it renders here once merged.</p>'
             '<div class="assess-form">'
             '<label>handle <select class="as-handle"></select></label> '
-            '<label>stance <select class="as-stance"></select></label> '
-            '<label>aspect <select class="as-aspect"></select></label>'
+            '<label>axis <select class="as-axis"></select></label> '
+            '<label>score <select class="as-score"></select></label>'
             '<textarea class="as-verbatim" rows="3" maxlength="2000" placeholder="your rationale, in your own words"></textarea>'
             '<p><button type="button" class="as-make">Compose the event</button></p>'
             '<pre class="as-out" hidden></pre>'
@@ -709,11 +720,10 @@ def handle_page(site: Site, handle: str) -> str:
     return layout(site, h, "\n".join(body), [("by", "/by/")])
 
 
-def front_page(site: Site, lede_html: str, feed_rows: list[str]) -> str:
+def front_page(site: Site, feed_rows: list[str]) -> str:
     """The map, zoomed out: /assets/map.js lays /assets/map.json out as nested regions and zooms; a node opened on the
-    canvas shows its /n/<id>/frag.html in the panel. Without JavaScript the lines render as links below the lede."""
+    canvas shows its /n/<id>/frag.html in the panel. Without JavaScript the lines render as links below the map."""
     r = site.repo
-    top = r.index["frame"]
     prog = r.nodes.get("the-program")
     lines = [rt["id"] for rt in (prog["frame"]["roots"] if prog else [])]
     noscript = ("<noscript><section><h2>The lines</h2><ul>" + "".join(
@@ -722,12 +732,11 @@ def front_page(site: Site, lede_html: str, feed_rows: list[str]) -> str:
     body = ['<div class="map-full"><div class="map-stage">'
             '<svg id="map" role="application" aria-label="the argument map"></svg>'
             '<div class="map-side overlay"><span id="map-legend"></span></div>'
-            '<span class="map-hint overlay muted">everything feeds the program at the centre · drag to pan · scroll to zoom · click a node · esc backs out</span>'
+            '<span class="map-hint overlay muted">drag to pan · scroll to zoom · click a node · esc backs out</span>'
             '<div id="map-card" hidden></div>'
             '<div id="map-modal"><div id="map-panel"><button id="map-panel-close" aria-label="close">×</button><div id="map-panel-body"></div></div></div>'
             '</div></div>',
             noscript,
-            f'<div class="below-map"><p class="question">{esc(top["question"])}</p>{lede_html}</div>',
             "<div class=\"below-map\"><details class=\"front-feed\"><summary>Recent in the feed</summary><ul class=\"feed\">" + "".join(feed_rows[:12]) + "</ul><p><a href=\"/feed/\">The whole feed</a>.</p></details></div>"]
     return layout(site, "Research map", "\n".join(body)).replace("</head>", f'<script defer src="/assets/map.js?v={esc(site.repo.commit[:12])}"></script></head>').replace('<form class="search"', '<button id="map-fit" type="button">fit map</button><form class="search"')
 

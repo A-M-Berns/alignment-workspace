@@ -58,20 +58,21 @@
     var cfg = JSON.parse(as2.getAttribute("data-assess"));
     var fill = function (sel, opts) { opts.forEach(function (o) { var e = document.createElement("option"); e.value = o; e.textContent = o; sel.appendChild(e); }); };
     fill(q(".as-handle", as2), cfg.handles);
-    fill(q(".as-stance", as2), cfg.stances);
-    fill(q(".as-aspect", as2), cfg.aspects);
+    fill(q(".as-axis", as2), cfg.axes);
+    fill(q(".as-score", as2), cfg.scores.map(String));
     q(".as-make", as2).addEventListener("click", function () {
-      var handle = q(".as-handle", as2).value, stance = q(".as-stance", as2).value, aspect = q(".as-aspect", as2).value;
+      var handle = q(".as-handle", as2).value, axis = q(".as-axis", as2).value;
+      var score = parseInt(q(".as-score", as2).value, 10);
       var verbatim = q(".as-verbatim", as2).value.trim();
       var out = q(".as-out", as2), links = q(".as-links", as2);
       if (!verbatim) { out.hidden = false; out.textContent = "The rationale is required: the event carries your own words in verbatim."; return; }
       var today = new Date().toISOString().slice(0, 10);
       var ev = {
-        id: handle.slice(1) + "-a-" + today.replace(/-/g, "") + "-" + cfg.node,
+        id: handle.slice(1) + "-a-" + today.replace(/-/g, "") + "-" + axis + "-" + cfg.node,
         by: handle, date: today, rule: cfg.rule, via: "site", version: cfg.version,
-        kind: "assessment", target: { node: cfg.node }, stance: stance, aspect: aspect, verbatim: verbatim
+        kind: "assessment", target: { node: cfg.node }, axis: axis, score: score, verbatim: verbatim
       };
-      if (cfg.active[handle]) ev.supersedes = cfg.active[handle];
+      if (cfg.active[handle + "|" + axis]) ev.supersedes = cfg.active[handle + "|" + axis];
       var line = JSON.stringify(ev);
       out.hidden = false; out.textContent = line;
       links.hidden = false;

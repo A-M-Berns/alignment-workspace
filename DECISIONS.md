@@ -40,13 +40,13 @@ maintainer's.
 below.** The next round dispatched from that conversation lands it as its first
 commit.
 
-- **Abram's read of the `assessment` event kind (2026-11-02).** The protocol gains a
-  human stance event (`support | dispute | uncertain | abstain`, aspect, verbatim
-  rationale, own-ledger supersession), marked **Default** in `graph/PROTOCOL.md` §5 and
-  adopted on the dispatching maintainer's ruling above.
+- **Abram's read of the `assessment` event kind (2026-11-03).** The protocol gains a
+  human scoring event — `axis: reliability | importance | clarity`, `score` 1 to 5,
+  verbatim rationale, own-ledger supersession per node and axis — marked **Default** in
+  `graph/PROTOCOL.md` §5 and adopted on the dispatching maintainer's rulings above.
   *Turns on:* external knowledge — the other maintainer owns several frames and works the
-  ledger protocol; whether the stance and aspect vocabulary fits his workflow is his to
-  say, and a word that ships wrong is hard to retire.
+  ledger protocol; whether the axes and the 1-5 scale fit his workflow is his to say, and
+  a vocabulary that ships wrong is hard to retire.
   <!-- decision: open--abram-read-assessment-event; touches: none; status: open -->
 
 - **How epistemic status is represented per concept node on the map (2026-10-30).**
@@ -6939,3 +6939,17 @@ supersession is explicit and own-ledger only, against latest-by-timestamp (a rac
 would resolve disagreement between humans that should stay visible); assessments live in
 the graph ledgers, against a separate statuses file (a parallel ontology). Revision
 binding comes from the event's existing `version` field and staleness derivation.
+
+### 2026-11-03 — assessments are three scored axes; the front page is the map alone
+<!-- decision: 2026-11-03--assessment-three-axes-front-page-map-alone; touches: none -->
+
+**Maintainer ruling, taken in conversation on 2026-11-03.** The assessment simplifies to
+three axes — `reliability`, `importance`, `clarity` — each a score from 1 to 5 with the
+rationale in `verbatim`, revision-bound, superseding only the author's own earlier score
+on the same node and axis. Vouching for a standing score is posting the same number;
+challenging it is posting a different one; every human's active score renders beside the
+others. The stance-and-aspect vocabulary of the 2026-11-02 entry is replaced before any
+event used it. The front page is the map alone: the question line and the hand-written
+lede leave it, `site/lede.md` and its binding check leave the tree, and the map hint
+drops its opening clause.
+

@@ -111,8 +111,8 @@ PRESETS = {"worst-case", "probabilistic", "expected-utility"}
 EVENT_KINDS = {"map-read", "trace", "pass", "estimate", "gestalt", "admit", "classify",
                "identify", "approve", "audit", "withdraw", "external", "retrospective",
                "survey", "rule", "attribution", "revise", "priority", "assessment"}
-STANCES = {"support", "dispute", "uncertain", "abstain"}          # an assessment's stance (2026-11-02)
-ASPECTS = {"correctness", "applicability", "framing", "usefulness"}   # what the stance is about
+AXES = {"reliability", "importance", "clarity"}   # an assessment's axis (2026-11-03)
+SCORES = {1, 2, 3, 4, 5}                                   # its score; vouch by matching it, challenge by differing
 ATTRIBUTION_VERDICTS = {"vouched", "disputed"}
 HOWS = {"said", "approved"}
 VIAS = {"chat", "obsidian", "voice", "site"}   # site: an event composed on the research site and submitted over GitHub (2026-11-02)
@@ -1374,23 +1374,26 @@ def lint(t):
             if not e.get("ref"):
                 raise Refuse(5, path, "an attribution event carries ref, what the attribution was checked against")
         if e["kind"] == "assessment":
-            # a human's current stance on a node, revision-bound through the event's version:
-            # support, dispute, uncertain or abstain, on a named aspect, with the rationale in
-            # the human's own words. It mints no level and moves no number; it supersedes only
-            # its author's own earlier assessment, so disagreement between humans stays visible
+            # a human's current score on one dimension of a node — reliability, importance or
+            # clarity, 1 to 5 — revision-bound through the event's version, with the rationale
+            # in the human's own words. It mints no level and moves no number; it supersedes
+            # only its author's own earlier assessment of the same node and axis, so
+            # vouching is posting the same score, challenging a different one, and
+            # disagreement between humans stays visible
             if tk[0] != "node" or not is_human(t, e["by"]):
-                raise Refuse(5, path, "an assessment is a human handle's stance and targets a node")
-            if e.get("stance") not in STANCES:
-                raise Refuse(5, path, f"an assessment carries stance: {' | '.join(sorted(STANCES))}")
-            if e.get("aspect") not in ASPECTS:
-                raise Refuse(5, path, f"an assessment carries aspect: {' | '.join(sorted(ASPECTS))}")
+                raise Refuse(5, path, "an assessment is a human handle's score and targets a node")
+            if e.get("axis") not in AXES:
+                raise Refuse(5, path, f"an assessment carries axis: {' | '.join(sorted(AXES))}")
+            if not (isinstance(e.get("score"), int) and not isinstance(e.get("score"), bool) and e["score"] in SCORES):
+                raise Refuse(5, path, "an assessment carries score: an integer 1 to 5")
             if not str(e.get("verbatim") or "").strip():
                 raise Refuse(5, path, "an assessment carries the human's rationale in verbatim")
             sup = e.get("supersedes")
             if sup is not None:
                 prev = eids.get(sup)
-                if not prev or prev["by"] != e["by"] or prev.get("kind") != "assessment" or target_key(prev["target"]) != tk:
-                    raise Refuse(5, path, "supersedes names the author's own earlier assessment of the same node")
+                if (not prev or prev["by"] != e["by"] or prev.get("kind") != "assessment"
+                        or target_key(prev["target"]) != tk or prev.get("axis") != e.get("axis")):
+                    raise Refuse(5, path, "supersedes names the author's own earlier assessment of the same node and axis")
         if e["kind"] == "rule" and "rows" in e:
             # a ruling on a table's weights and conditionals: the maintainer's J 8 judgments, one event for every row
             cnode = nodes.get(tk[1]) if tk[0] == "node" else None
@@ -5263,23 +5266,23 @@ NULL_INPUTS = [
     ("an event whose version is above its node's", 5, {"extra": {"h1": [
         f'{{"id": "h1-n5", "by": "@h1", "date": "2026-09-20", "rule": "2026-10-02.1", "via": "chat", "version": 2, "kind": "estimate", '
         '"target": {"node": "alt-2"}, "estimate": [0.5, 0.5], "reason": "x"}']}}),
-    # assessments (2026-11-02)
+    # assessments (2026-11-03)
     ("an assessment by an AI handle", 5, {"extra": {"ai": [
-        f'{{"id": "ai-n2", "by": "@ai", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "stance": "support", "aspect": "correctness", "verbatim": "x", "gloss": "x"}}']}}),
-    ("an assessment with a stance outside the four", 5, {"extra": {"h1": [
-        f'{{"id": "h1-n12", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "stance": "proved", "aspect": "correctness", "verbatim": "x"}}']}}),
-    ("an assessment with an unknown aspect", 5, {"extra": {"h1": [
-        f'{{"id": "h1-n13", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "stance": "support", "aspect": "vibes", "verbatim": "x"}}']}}),
+        f'{{"id": "ai-n2", "by": "@ai", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "axis": "reliability", "score": 4, "verbatim": "x", "gloss": "x"}}']}}),
+    ("an assessment with an unknown axis", 5, {"extra": {"h1": [
+        f'{{"id": "h1-n12", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "axis": "vibes", "score": 4, "verbatim": "x"}}']}}),
+    ("an assessment with a score outside 1 to 5", 5, {"extra": {"h1": [
+        f'{{"id": "h1-n13", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "axis": "clarity", "score": 6, "verbatim": "x"}}']}}),
     ("an assessment without its rationale", 5, {"extra": {"h1": [
-        f'{{"id": "h1-n14", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "stance": "support", "aspect": "correctness"}}']}}),
+        f'{{"id": "h1-n14", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "axis": "importance", "score": 3}}']}}),
     ("an assessment on a row", 5, {"extra": {"h1": [
-        f'{{"id": "h1-n15", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"row": ["cases-x", "pic-h"]}}, "stance": "support", "aspect": "correctness", "verbatim": "x"}}']}}),
+        f'{{"id": "h1-n15", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"row": ["cases-x", "pic-h"]}}, "axis": "reliability", "score": 3, "verbatim": "x"}}']}}),
     ("an assessment superseding another handle's event", 5, {"extra": {
-        "h1": [f'{{"id": "h1-n16", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "stance": "support", "aspect": "correctness", "verbatim": "x"}}'],
-        "h2": [f'{{"id": "h2-n1", "by": "@h2", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "stance": "dispute", "aspect": "correctness", "verbatim": "x", "supersedes": "h1-n16"}}']}}),
-    ("an assessment superseding an assessment of a different node", 5, {"extra": {"h1": [
-        f'{{"id": "h1-n17", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "stance": "support", "aspect": "correctness", "verbatim": "x"}}',
-        f'{{"id": "h1-n18", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "shared-leaf"}}, "stance": "support", "aspect": "correctness", "verbatim": "x", "supersedes": "h1-n17"}}']}}),
+        "h1": [f'{{"id": "h1-n16", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "axis": "reliability", "score": 4, "verbatim": "x"}}'],
+        "h2": [f'{{"id": "h2-n1", "by": "@h2", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "axis": "reliability", "score": 2, "verbatim": "x", "supersedes": "h1-n16"}}']}}),
+    ("an assessment superseding an assessment of a different axis", 5, {"extra": {"h1": [
+        f'{{"id": "h1-n17", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "axis": "reliability", "score": 4, "verbatim": "x"}}',
+        f'{{"id": "h1-n18", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "axis": "clarity", "score": 4, "verbatim": "x", "supersedes": "h1-n17"}}']}}),
     ("a rate row below zero minutes", 10, {"edits": [("policy.yaml", "reread:   {S: 4", "reread:   {S: -1")]}),
     # owners, frames, wants, priorities, tasks
     ("a frame owned by an AI handle", 2, {"programme": True, "edits": [("nodes/prog.md", 'owner: "@h1"', 'owner: "@ai"')]}),

@@ -937,7 +937,7 @@ answer), every acceptance of a draft, every vetting event (map-read, trace,
 pass), every `attribution` verdict (the user, not the node's author, read
 the cited source and says the attribution is honest or disputes it), every
 withdrawal, every `revise` (the user revised a node's Statement by hand), every
-`assessment` (the user's stance on a node, their rationale in `verbatim`),
+`assessment` (the user's score on an axis of a node, their rationale in `verbatim`),
 every `priority` word on a want, and every want: a want is filed under its
 user's handle as owner, from what the user said in the session or, with
 `filed_from: quote`, from words the user wrote in a public document, and it
@@ -1095,8 +1095,7 @@ and the repository as a static site: `python3 site/build.py` reads graph/index.j
 page about the ranking, `state/*.json`, the claims registries, the anchors of
 `DECISIONS.md`, the wiki source, `graph/policy.yaml` and the human ledgers, and writes
 `_site/` (gitignored). The site is a render and never a second source: nothing on it is
-typed by hand except `site/lede.md`, the front page's one paragraph, binding-checked
-against the state at every build. The front page is the map itself, one full-viewport
+typed by hand. The front page is the map itself, one full-viewport
 pannable network graph (`site/assets/map.js` over `/assets/map.json`): the concept
 network of `state/concepts.json` — goals, new constructions, mathematical objects, prior
 work and philosophical concepts, colour-coded by kind, edges hoverable for their

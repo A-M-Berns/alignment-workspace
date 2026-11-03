@@ -381,15 +381,15 @@ class Refusals(Base):
         self.assertEqual(run(self.root)[0], 0)
 
     def test_assessment_shape_and_supersession(self):
-        # a valid assessment is accepted; superseding the author's own earlier one is too;
-        # and it mints no level and moves no number
+        # a valid assessment is accepted; superseding the author's own earlier one on the
+        # same axis is too; and it mints no level and moves no number
         self.tree()
         base = self.derived()
         self.tree(extra={"h2": [
             f'{{"id": "h2-70", "by": "@h2", {BASE}, "kind": "assessment", "target": {{"node": "shared-leaf"}}, '
-            '"stance": "dispute", "aspect": "applicability", "verbatim": "the deployment story needs A7"}',
+            '"axis": "reliability", "score": 2, "verbatim": "the deployment story needs A7"}',
             f'{{"id": "h2-71", "by": "@h2", {BASE}, "kind": "assessment", "target": {{"node": "shared-leaf"}}, '
-            '"stance": "uncertain", "aspect": "applicability", "verbatim": "A7 may be dischargeable", "supersedes": "h2-70"}']})
+            '"axis": "reliability", "score": 3, "verbatim": "A7 may be dischargeable", "supersedes": "h2-70"}']})
         with_a = self.derived()
         self.assertEqual(base["nodes"]["shared-leaf"].get("V"), with_a["nodes"]["shared-leaf"].get("V"))
         self.assertEqual(base["nodes"]["shared-leaf"].get("J"), with_a["nodes"]["shared-leaf"].get("J"))

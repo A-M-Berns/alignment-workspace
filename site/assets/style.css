@@ -263,9 +263,10 @@ header.top .home:hover { color: var(--accent); }
 .concept-lede { font-size: 1.02rem; color: #d6d6d0; max-width: 46rem; margin: 0.2em 0 0.8em; }
 #map-card button.quiet { background: var(--tag-bg); color: var(--fg); }
 /* the epistemic panel and the assessment composer */
-section.epistemic .stance { display: inline-block; padding: 0.05em 0.55em; border-radius: 5px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: #101013; font-weight: 640; }
-.stance-support { background: var(--emerald); } .stance-dispute { background: var(--garnet); }
-.stance-uncertain { background: var(--amber); } .stance-abstain { background: var(--slate); color: #ececec; }
+section.epistemic .axis { display: inline-block; min-width: 6.5em; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+section.epistemic .score { display: inline-block; min-width: 1.5em; text-align: center; padding: 0.05em 0.3em; border-radius: 5px; color: #101013; font-weight: 640; }
+.score-1, .score-2 { background: var(--garnet); } .score-3 { background: var(--amber); }
+.score-4, .score-5 { background: var(--emerald); }
 ul.assessments { list-style: none; padding-left: 0; } ul.assessments li { margin: 0.5em 0; }
 section.assess .assess-form label { margin-right: 1em; font-size: 0.86rem; color: var(--muted); }
 section.assess select { font: inherit; font-size: 0.86rem; background: #0e0e10; color: var(--fg); border: 1px solid var(--rule); border-radius: 5px; padding: 0.2em 0.4em; }

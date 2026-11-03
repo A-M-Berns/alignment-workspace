@@ -78,3 +78,4 @@
 - 2026-10-30 change @anson — corrigibility-landscape promoted to a program line; deference-and-trust moves under it; its legitimacy attachment leaves
 - 2026-11-02 change @anson — assessment event kind: a human's revision-bound stance (support/dispute/uncertain/abstain) on a named aspect, rationale in verbatim, superseding only its author's own earlier assessment
 - 2026-11-02 change @anson — via: site, for events composed on the research site and submitted over GitHub
+- 2026-11-03 change @anson — assessment simplified to three scored axes: reliability, importance, clarity, each 1-5 with rationale; vouch by matching, challenge by differing

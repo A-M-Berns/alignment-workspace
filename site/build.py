@@ -4,8 +4,8 @@
 startup, so a package of that name is shadowed; the generator is a script in the `site/` directory instead.)
 
 Reads graph/index.json (writing it with the plain checker run if absent), graph/derived.json, state/*.json, the registries,
-DECISIONS.md, wiki/, graph/policy.yaml, graph/events/*.jsonl and site/lede.md; writes `_site/`. Fails on an unresolved
-reference, two ids mapping to one path, or a binding in the lede that disagrees with the state. `--check` builds into a
+DECISIONS.md, wiki/, graph/policy.yaml and graph/events/*.jsonl; writes `_site/`. Fails on an unresolved
+reference or two ids mapping to one path. `--check` builds into a
 temporary directory and prints the counts; it is what the gate runs.
 """
 from __future__ import annotations
@@ -37,24 +37,6 @@ def counts(repo: Repo) -> dict:
             "registered": len(repo.registry)}
 
 
-def check_bindings(text: str, C: dict, where: str) -> str:
-    """Every `<!--bind:key-->value<!--/bind-->` must agree with the computed count; returns the text with the markers removed."""
-    problems = []
-
-    def sub(m):
-        key, val = m.group(1), m.group(2).strip()
-        if key not in C:
-            problems.append(f"{where}: binding {key!r} names no count the build knows ({', '.join(sorted(C))})")
-            return val
-        if str(C[key]) != val:
-            problems.append(f"{where}: binding {key!r} says {val!r}; the state says {C[key]!r}")
-        return str(C[key])
-    out = BIND.sub(sub, text)
-    if problems:
-        raise BuildError("\n".join(problems))
-    return out
-
-
 def build(out: pathlib.Path, verbose: bool = True) -> dict:
     t0 = time.perf_counter()
     repo = Repo()
@@ -70,11 +52,6 @@ def build(out: pathlib.Path, verbose: bool = True) -> dict:
         p.write_text(content)
         written[kind] = written.get(kind, 0) + 1
 
-    # the lede (the only hand-written prose), binding-checked
-    lede_src = (SITE / "lede.md").read_text() if (SITE / "lede.md").is_file() else ""
-    if not lede_src.strip():
-        raise BuildError("site/lede.md is missing or empty: the front page's one paragraph is required")
-    lede_html = md.render(check_bindings(lede_src, C, "site/lede.md"), pages.wiki_link_resolver(site))
     # nodes: the page, and the fragment the map's panel loads in place
     for x in repo.nodes:
         put(site.url("n", x), pages.node_page(site, x), "node")
@@ -138,7 +115,7 @@ def build(out: pathlib.Path, verbose: bool = True) -> dict:
     put("/search/", pages.search_page(site), "search")
     put("/search/index.json", json.dumps(pages.search_index(site), ensure_ascii=False), "search-index")
     put("/assets/map.json", json.dumps(pages.map_data(site), ensure_ascii=False, separators=(",", ":")), "map-data")
-    put("/", pages.front_page(site, lede_html, rows), "front")
+    put("/", pages.front_page(site, rows), "front")
     # assets
     (out / "assets").mkdir(parents=True, exist_ok=True)
     for asset in (SITE / "assets").glob("*"):
