@@ -6950,6 +6950,6 @@ on the same node and axis. Vouching for a standing score is posting the same num
 challenging it is posting a different one; every human's active score renders beside the
 others. The stance-and-aspect vocabulary of the 2026-11-02 entry is replaced before any
 event used it. The front page is the map alone: the question line and the hand-written
-lede leave it, `site/lede.md` and its binding check leave the tree, and the map hint
+lede leave it, <!--historical-->`site/lede.md`<!--/historical--> and its binding check leave the tree, and the map hint
 drops its opening clause.
 
