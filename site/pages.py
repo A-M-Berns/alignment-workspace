@@ -568,6 +568,33 @@ def concept_side(site: Site, cid: str) -> str:
     return "\n".join(out)
 
 
+def concept_epistemic(site: Site, cid: str) -> str:
+    """The concept's epistemic view, through the graph nodes that back it (refs): the full
+    panel and composer when one node backs it, a compact per-node summary linking through
+    when several do, and an honest absence when none does — assessments live on graph
+    nodes, so a concept no node backs has nothing to assess yet."""
+    r = site.repo
+    e = r.concepts[cid]
+    refs = [x for x in e.get("refs") or [] if x in r.nodes]
+    if not refs:
+        return ('<section class="epistemic"><h2>Epistemic status</h2><p class="muted">No map node backs this '
+                'concept yet, so there is nothing to assess; the connections and merged work are the record.</p></section>')
+    if len(refs) == 1:
+        return epistemic_html(site, refs[0]) + assess_html(site, refs[0])
+    bits = []
+    for x in refs:
+        N = r.nodes[x]
+        entry = r.record_entry(x) if N.get("formal_result") else None
+        ver = f'class <code>{esc(entry.get("class", ""))}</code>' if entry else '<span class="muted">no registered claim</span>'
+        tables = [x] if N.get("kind") == "cases" else [c for c in N["children"] if r.nodes[c].get("kind") == "cases"]
+        acts = r.assessments(x)
+        stances = ", ".join(f'{e2.get("stance")} ({str(e2.get("by")).lstrip("@")})' for e2 in acts) or "none"
+        bits.append(f'<li>{site.link("n", x)} — {ver}; {len(tables)} failure-story table(s); assessments: {esc(stances)}. '
+                    f'{site.link("n", x, "Assess it on its node page →")}</li>')
+    return ('<section class="epistemic"><h2>Epistemic status</h2><p class="muted">Through the map nodes that back '
+            'this concept:</p><ul class="listing">' + "".join(bits) + "</ul></section>")
+
+
 def concept_full(site: Site, cid: str) -> str:
     """Every concept's full view, one template: title and kind, the registry blurb as the lede, the
     source where one exists, then two panes — the long-form content (the wiki page, or the map
@@ -587,7 +614,8 @@ def concept_full(site: Site, cid: str) -> str:
                 f"<li>{site.link('n', x)}: {esc(r.nodes[x]['statement'].strip()[:160])}</li>" for x in refs) + "</ul></section>"
         else:
             main = '<p class="muted">No longer-form page yet; the connections and merged work at right are the record.</p>'
-    return f'{head}{lede}{src}<div class="pane2"><div class="pane-main">{main}</div><aside class="pane-side">{concept_side(site, cid)}</aside></div>'
+    return (f'{head}{lede}{src}<div class="pane2"><div class="pane-main">{main}{concept_epistemic(site, cid)}</div>'
+            f'<aside class="pane-side">{concept_side(site, cid)}</aside></div>')
 
 
 def concept_body(site: Site, cid: str) -> str:

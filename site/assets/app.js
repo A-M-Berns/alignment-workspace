@@ -47,4 +47,39 @@
       if (b) { ev.preventDefault(); b.focus(); }
     }
   });
+
+  // Record my assessment: compose the exact ledger event and hand it to GitHub's editor
+  // on the author's own ledger. The site accepts no write. Exposed so the map can wire a
+  // composer it injects into the read-more modal.
+  window.wireAssess = function (root) {
+    var as2 = q("section.assess", root);
+    if (!as2 || as2.getAttribute("data-wired")) return;
+    as2.setAttribute("data-wired", "1");
+    var cfg = JSON.parse(as2.getAttribute("data-assess"));
+    var fill = function (sel, opts) { opts.forEach(function (o) { var e = document.createElement("option"); e.value = o; e.textContent = o; sel.appendChild(e); }); };
+    fill(q(".as-handle", as2), cfg.handles);
+    fill(q(".as-stance", as2), cfg.stances);
+    fill(q(".as-aspect", as2), cfg.aspects);
+    q(".as-make", as2).addEventListener("click", function () {
+      var handle = q(".as-handle", as2).value, stance = q(".as-stance", as2).value, aspect = q(".as-aspect", as2).value;
+      var verbatim = q(".as-verbatim", as2).value.trim();
+      var out = q(".as-out", as2), links = q(".as-links", as2);
+      if (!verbatim) { out.hidden = false; out.textContent = "The rationale is required: the event carries your own words in verbatim."; return; }
+      var today = new Date().toISOString().slice(0, 10);
+      var ev = {
+        id: handle.slice(1) + "-a-" + today.replace(/-/g, "") + "-" + cfg.node,
+        by: handle, date: today, rule: cfg.rule, via: "site", version: cfg.version,
+        kind: "assessment", target: { node: cfg.node }, stance: stance, aspect: aspect, verbatim: verbatim
+      };
+      if (cfg.active[handle]) ev.supersedes = cfg.active[handle];
+      var line = JSON.stringify(ev);
+      out.hidden = false; out.textContent = line;
+      links.hidden = false;
+      q(".as-edit", as2).href = "https://github.com/A-M-Berns/alignment-workspace/edit/main/graph/events/" + handle.slice(1) + ".jsonl";
+      q(".as-copy", as2).onclick = function () {
+        navigator.clipboard.writeText(line).then(function () { q(".as-copy", as2).textContent = "Copied"; });
+      };
+    });
+  };
+  window.wireAssess(document);
 })();

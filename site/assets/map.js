@@ -480,6 +480,7 @@
     panelBody.innerHTML = '<p class="muted">Loading ' + esc(m.t || id) + "…</p>";
     fetch(base(id) + "frag.html").then(function (r) { if (!r.ok) throw 0; return r.text(); }).then(function (h) {
       panelBody.innerHTML = h + '<p class="muted popup-foot"><a href="' + base(id) + '">Open the full page →</a></p>';
+      if (window.wireAssess) window.wireAssess(panelBody);
     }).catch(function () { panelBody.innerHTML = '<p>Could not load; <a href="' + base(id) + '">open the page</a>.</p>'; });
     if (history.replaceState) history.replaceState(null, "", "/#c=" + seg(id));
   }

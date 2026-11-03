@@ -29,7 +29,14 @@ human assessments, superseded ones filtered, withdrawn ones dropped, stale ones 
 aspect, verbatim, the node's current version pinned, `via: site`, supersession of the
 author's own active assessment filled from the build) for the reader to copy into their
 own ledger through GitHub's editor, with a prefilled-issue path for readers without a
-handle. `via: site` enters the protocol and the checker for events composed this way.
+handle. The concept pages — the map's read-more, the front door — carry the same view
+through the graph nodes that back them (refs): the full panel and composer embedded when
+one node backs the concept, a per-node summary linking through when several do, an honest
+absence when none does. The composer's wiring is shared between static pages and the
+map's injected modal. `via: site` enters the protocol and the checker for events
+composed this way. The first push of the site side shipped the composer's markup without
+its script (an apply step was dropped); caught when the maintainer looked for the panel,
+fixed in the following commit.
 Rendering is verified by an injected-event test (supersession filtered, staleness marked,
 disagreement preserved) run in development; the standing gates cover the build and the
 map page, and a standing render gate for the panel is a candidate, not shipped.
