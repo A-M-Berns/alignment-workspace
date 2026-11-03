@@ -66,7 +66,7 @@ def layout(site: Site, title: str, body: str, crumbs: list[tuple[str, str]] | No
 <form class="search" action="/search/" method="get"><input type="search" name="q" placeholder="search ids, statements, titles" aria-label="search"></form></header>
 <main>{crumb_html}<h1>{esc(title)}</h1>{f'<p class="subtitle">{subtitle}</p>' if subtitle else ''}
 {body}
-</main><footer>Built from commit <code>{esc(r.commit[:12])}</code> ({esc(r.commit_date)}) by <code>python3 -m site.build</code>; a render of the repository, never a second source. Structure and human events only; the ranking is a lens, shown on <a href="/ranking/">/ranking/</a>.</footer>
+</main>
 </body></html>"""
 
 
@@ -738,13 +738,13 @@ def landing_page(site: Site) -> str:
     the site. The animation is the maintainer's own, vendored from their personal site;
     its controls exist hidden because the engine looks them up."""
     v = esc(site.repo.commit[:12])
-    tiles = (('map', '/map/', 'The research map', 'every concept, scored and connected'),
-             ('repo', 'https://github.com/A-M-Berns/alignment-workspace', 'The repository', 'the record itself, checks and all'),
-             ('chatbot', '/chat/', 'The chatbot', 'ask the workspace, bring your own key'),
-             ('stats', '/stats/', 'The stats', 'activity and standing, over time'))
+    tiles = (('map', '/map/'),
+             ('chatbot', '/chat/'),
+             ('stats', '/stats/'),
+             ('repo', 'https://github.com/A-M-Berns/alignment-workspace'))
     cards = "".join(
-        f'<a class="tile" href="{esc(u)}"><span class="tile-name">{esc(n)}</span><span class="tile-sub">{esc(sub)}</span></a>'
-        for n, u, _t, sub in tiles)
+        f'<a class="tile" href="{esc(u)}"><span class="tile-name">{esc(n)}</span></a>'
+        for n, u in tiles)
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Alignment Workspace</title><link rel="stylesheet" href="/assets/style.css?v={v}">
@@ -760,7 +760,6 @@ def landing_page(site: Site) -> str:
 </div>
 <main class="landing-main">
 <h1 class="landing-word">Alignment Workspace</h1>
-<p class="landing-sub">a research program on how humans and AI systems learn from, correct and rely on each other</p>
 <nav class="tiles">{cards}</nav>
 </main>
 </body></html>"""

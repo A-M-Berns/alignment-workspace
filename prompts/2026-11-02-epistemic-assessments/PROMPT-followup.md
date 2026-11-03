@@ -49,3 +49,11 @@ Maintainer directives, in conversation on the preview, verbatim:
 
 > start on the hero panels
 
+> take away all the homepage text except alignment workspace and map, repo, chatbot,
+> stats and switch the order to map, chatbot, stats, repo (and then resize the buttons
+> obviously based on the fact that the description text is gone)
+>
+> also get rid of "Built from commit 531eb2863186 (2026-11-03) by python3 -m site.build;
+> a render of the repository, never a second source. Structure and human events only; the
+> ranking is a lens, shown on /ranking/." everywhere
+

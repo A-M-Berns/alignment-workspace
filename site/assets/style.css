@@ -33,7 +33,7 @@ main { max-width: 56rem; margin: 0 auto; padding: 1.2em 1em 3em; }
 h1 { font-size: 1.6rem; font-weight: 650; line-height: 1.25; margin: 0.4em 0 0.3em; word-break: break-word; letter-spacing: 0; }
 h2 { font-size: 1.05rem; font-weight: 600; margin: 1.6em 0 0.5em; border-bottom: 1px solid var(--rule); padding-bottom: 0.25em; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); }
 h3 { font-size: 1rem; font-weight: 600; margin: 1.1em 0 0.4em; }
-.subtitle, .muted, footer { color: var(--muted); }
+.subtitle, .muted { color: var(--muted); }
 .subtitle { margin-top: 0; font-size: 0.95rem; }
 nav.crumbs { font-size: 0.85rem; color: var(--muted); }
 nav.crumbs a { color: var(--muted); text-decoration: none; }
@@ -70,7 +70,6 @@ details.ranking summary, .lens { color: var(--lens); }
 table { border-collapse: collapse; margin: 0.8em 0; font-size: 0.95rem; max-width: 100%; display: block; overflow-x: auto; }
 th, td { border: 1px solid var(--rule); padding: 0.3em 0.6em; text-align: left; vertical-align: top; }
 blockquote { margin: 0.8em 0; padding: 0.2em 1em; border-left: 3px solid var(--rule); color: var(--muted); }
-footer { border-top: 1px solid var(--rule); margin-top: 2em; padding: 1em; font-size: 0.82rem; max-width: 56rem; margin-left: auto; margin-right: auto; }
 .dead-link { color: var(--muted); border-bottom: 1px dotted var(--muted); }
 #results .hit { margin: 0.5em 0; }
 #results .hit .k { color: var(--muted); font-size: 0.78rem; margin-left: 0.4em; text-transform: uppercase; letter-spacing: 0.04em; }
@@ -281,13 +280,10 @@ section.assess button:hover { border-color: var(--accent); }
 body.landing { min-height: 100vh; margin: 0; display: grid; place-items: center; background: #101013; }
 .landing-main { position: relative; z-index: 1; text-align: center; padding: 2rem; }
 .landing-word { font-size: clamp(2.2rem, 6vw, 4.2rem); font-weight: 760; letter-spacing: -0.02em; margin: 0 0 0.4em; color: #ececec; text-shadow: 0 2px 18px rgba(0,0,0,0.55); }
-.landing-sub { color: #c8c4ba; max-width: 34em; margin: 0 auto 2.2em; text-shadow: 0 1px 10px rgba(0,0,0,0.6); }
-nav.tiles { display: grid; grid-template-columns: repeat(2, minmax(14em, 18em)); gap: 1rem; justify-content: center; }
-@media (max-width: 40rem) { nav.tiles { grid-template-columns: 1fr; } }
-a.tile { display: flex; flex-direction: column; gap: 0.3em; padding: 1.3em 1.5em; border-radius: 12px; background: rgba(16, 16, 19, 0.82); border: 1px solid var(--rule); text-decoration: none; text-align: left; transition: transform 0.14s ease, border-color 0.14s ease; }
+nav.tiles { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.6em; }
+a.tile { display: block; padding: 0.85em 1.7em; border-radius: 12px; background: rgba(16, 16, 19, 0.82); border: 1px solid var(--rule); text-decoration: none; text-align: center; transition: transform 0.14s ease, border-color 0.14s ease; }
 a.tile:hover { transform: translateY(-3px); border-color: var(--accent); }
-a.tile .tile-name { font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #ececec; }
-a.tile .tile-sub { color: var(--muted); font-size: 0.9rem; }
+a.tile .tile-name { font-size: 1.05rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #ececec; }
 /* the hero: three axes, colour by hue, lightness by score; grey is an untouched AI seed */
 section.hero { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 0.4em 0 1.2em; padding: 1.1em 1em; border: 1px solid var(--rule); border-radius: 12px; background: #141417; }
 section.hero .hx { text-align: center; }

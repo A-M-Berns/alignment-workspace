@@ -76,8 +76,10 @@ their own words, through the composer.
 
 The landing (follow-up of 2026-11-03): `/` is a full-viewport landing — the maintainer's
 own Wang-tiling generator, vendored verbatim from their personal site (two files under
-`site/assets/landing/`, one import path rewritten), behind the wordmark and four tiles:
-map, repo, chatbot, stats. The map moves to `/map/`; `/chat/` and `/stats/` hold one-line
+`site/assets/landing/`, one import path rewritten), behind the wordmark and four
+name-only buttons: map, chatbot, stats, repo (the maintainer's follow-up cut the subtitle
+and the tiles' description lines). The same follow-up removed the build-commit footer
+from every page. The map moves to `/map/`; `/chat/` and `/stats/` hold one-line
 pages until their parts arrive; the nav carries all four. The engine sets the page's
 accent from each tiling's palette, so the landing recolours itself cycle by cycle.
 
