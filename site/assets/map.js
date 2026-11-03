@@ -20,13 +20,13 @@
   svg.appendChild(cam);
   var mk = document.createElementNS(NS, "marker");
   mk.setAttribute("id", "arrow");
-  mk.setAttribute("viewBox", "0 0 12 8");
-  mk.setAttribute("refX", "11.5"); mk.setAttribute("refY", "4");
+  mk.setAttribute("viewBox", "0 0 8 8");
+  mk.setAttribute("refX", "7.4"); mk.setAttribute("refY", "4");
   mk.setAttribute("markerUnits", "userSpaceOnUse");
-  mk.setAttribute("markerWidth", "14"); mk.setAttribute("markerHeight", "9.33");
+  mk.setAttribute("markerWidth", "11"); mk.setAttribute("markerHeight", "11");
   mk.setAttribute("orient", "auto");
   var mkp = document.createElementNS(NS, "path");
-  mkp.setAttribute("d", "M0,1.3 L11.5,4 L0,6.7 z");
+  mkp.setAttribute("d", "M0,0.6 L7.4,4 L0,7.4 z");
   mkp.setAttribute("class", "arrowhead");
   mk.appendChild(mkp);
   defs.appendChild(mk);
