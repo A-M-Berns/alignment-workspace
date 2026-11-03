@@ -54,7 +54,8 @@ class Site:
 
 def layout(site: Site, title: str, body: str, crumbs: list[tuple[str, str]] | None = None, subtitle: str = "") -> str:
     r = site.repo
-    nav = '<a href="/">map</a><a href="https://github.com/A-M-Berns/alignment-workspace">repo</a>'
+    nav = ('<a href="/map/">map</a><a href="https://github.com/A-M-Berns/alignment-workspace">repo</a>'
+           '<a href="/chat/">chatbot</a><a href="/stats/">stats</a>')
     crumb_html = ""
     if crumbs:
         crumb_html = '<nav class="crumbs">' + " › ".join(f'<a href="{u}">{esc(t)}</a>' for t, u in crumbs) + "</nav>"
@@ -634,7 +635,7 @@ def concept_body(site: Site, cid: str) -> str:
 
 
 def concept_page(site: Site, cid: str) -> str:
-    return layout(site, site.repo.concepts[cid].get("title", cid), concept_body(site, cid), [("map", "/")])
+    return layout(site, site.repo.concepts[cid].get("title", cid), concept_body(site, cid), [("map", "/map/")])
 
 
 def concept_frag(site: Site, cid: str) -> str:
@@ -718,6 +719,43 @@ def handle_page(site: Site, handle: str) -> str:
     body.append("<section><h2>Wants</h2>" + ("<ul>" + "".join(wl) + "</ul>" if wl else "<p class=\"muted\">None.</p>") + "</section>")
     body.append("<section><h2>Events</h2>" + events_html(site, evs) + "</section>")
     return layout(site, h, "\n".join(body), [("by", "/by/")])
+
+
+def landing_page(site: Site) -> str:
+    """The landing: the Wang-tiling generator behind the wordmark and one tile per part of
+    the site. The animation is the maintainer's own, vendored from their personal site;
+    its controls exist hidden because the engine looks them up."""
+    v = esc(site.repo.commit[:12])
+    tiles = (('map', '/map/', 'The research map', 'every concept, scored and connected'),
+             ('repo', 'https://github.com/A-M-Berns/alignment-workspace', 'The repository', 'the record itself, checks and all'),
+             ('chatbot', '/chat/', 'The chatbot', 'ask the workspace, bring your own key'),
+             ('stats', '/stats/', 'The stats', 'activity and standing, over time'))
+    cards = "".join(
+        f'<a class="tile" href="{esc(u)}"><span class="tile-name">{esc(n)}</span><span class="tile-sub">{esc(sub)}</span></a>'
+        for n, u, _t, sub in tiles)
+    return f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alignment Workspace</title><link rel="stylesheet" href="/assets/style.css?v={v}">
+<script type="module" src="/assets/landing/wang.js?v={v}"></script></head>
+<body class="landing"><canvas id="wang-tiles" class="wang-tiles" aria-hidden="true"></canvas>
+<div id="wang-boost" class="wang-boost" aria-hidden="true"><span></span><span></span></div>
+<div class="wang-stubs" hidden>
+<input id="wang-fp" type="text"><button id="wang-fp-copy" type="button"></button>
+<select id="wang-shape"></select><select id="wang-skin"></select>
+<input id="wang-auto-reset" type="checkbox" checked>
+<button id="wang-info" type="button"></button><button id="wang-reset" type="button"></button>
+<span id="wang-label"></span><dialog id="wang-about"></dialog>
+</div>
+<main class="landing-main">
+<h1 class="landing-word">Alignment Workspace</h1>
+<p class="landing-sub">a research program on how humans and AI systems learn from, correct and rely on each other</p>
+<nav class="tiles">{cards}</nav>
+</main>
+</body></html>"""
+
+
+def holding_page(site: Site, title: str, line: str) -> str:
+    return layout(site, title, f'<p class="muted">{esc(line)}</p>')
 
 
 def front_page(site: Site, feed_rows: list[str]) -> str:

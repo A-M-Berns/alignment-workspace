@@ -482,7 +482,7 @@
       panelBody.innerHTML = h + '<p class="muted popup-foot"><a href="' + base(id) + '">Open the full page →</a></p>';
       if (window.wireAssess) window.wireAssess(panelBody);
     }).catch(function () { panelBody.innerHTML = '<p>Could not load; <a href="' + base(id) + '">open the page</a>.</p>'; });
-    if (history.replaceState) history.replaceState(null, "", "/#c=" + seg(id));
+    if (history.replaceState) history.replaceState(null, "", "/map/#c=" + seg(id));
   }
   function closeFull() {
     modal.classList.remove("open");

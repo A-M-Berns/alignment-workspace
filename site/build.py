@@ -115,11 +115,17 @@ def build(out: pathlib.Path, verbose: bool = True) -> dict:
     put("/search/", pages.search_page(site), "search")
     put("/search/index.json", json.dumps(pages.search_index(site), ensure_ascii=False), "search-index")
     put("/assets/map.json", json.dumps(pages.map_data(site), ensure_ascii=False, separators=(",", ":")), "map-data")
-    put("/", pages.front_page(site, rows), "front")
+    put("/", pages.landing_page(site), "landing")
+    put("/map/", pages.front_page(site, rows), "front")
+    put("/chat/", pages.holding_page(site, "Chatbot", "Arrives soon: a bring-your-own-key assistant that speaks from the workspace — what the program holds, what the priorities are, how to contribute."), "holding")
+    put("/stats/", pages.holding_page(site, "Stats", "Arrives soon: activity and standing over time, from the same state the map renders."), "holding")
     # assets
     (out / "assets").mkdir(parents=True, exist_ok=True)
     for asset in (SITE / "assets").glob("*"):
-        shutil.copy(asset, out / "assets" / asset.name)
+        if asset.is_dir():
+            shutil.copytree(asset, out / "assets" / asset.name, dirs_exist_ok=True)
+        else:
+            shutil.copy(asset, out / "assets" / asset.name)
     if (SITE / "CNAME").is_file():
         shutil.copy(SITE / "CNAME", out / "CNAME")
     (out / ".nojekyll").write_text("")
