@@ -1101,9 +1101,12 @@ pannable network graph (`site/assets/map.js` over `/assets/map.json`): the conce
 network of `state/concepts.json` — goals, new constructions, mathematical objects, prior
 work and philosophical concepts, colour-coded by kind, edges hoverable for their
 relation, every node opening a popup that ends in its tagged merged work from
-`state/prs.json`; every node page carries the intake verbs, each a
-prefilled GitHub issue a maintainer round sweeps into ledger events (ruling S5,
-2026-10-30). Every node, item,
+`state/prs.json`; every node page carries an epistemic-status
+panel — the registry's class, the contest surface, the active human assessments with
+stale ones marked — and a composer that generates an exact `assessment` ledger event for
+the reader to submit over GitHub on their own account (the site accepts no write; ruling
+of 2026-11-02), beside the intake verbs, each a prefilled GitHub issue a maintainer round
+sweeps into ledger events (ruling S5, 2026-10-30). Every node, item,
 decision anchor, round, registry id, wiki page and handle has exactly one path, derived
 from its id (`site/README.md` is the contract); a build fails on a reference that does
 not resolve, two ids that map to one path, or a binding that disagrees with the state,

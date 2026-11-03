@@ -185,6 +185,24 @@ class Repo:
                 self.frame_parent[x] = roots[0] if roots else None
 
     # ---- helpers the pages use
+    def assessments(self, x: str) -> list:
+        """The active human assessments of node x: not withdrawn, not superseded by their
+        author's later one, each marked _stale when given against an earlier Statement
+        version. Sorted by (date, id)."""
+        evs = [e for e in self.events_by_node.get(x, []) if e.get("kind") == "assessment" and e.get("by") in self.human]
+        withdrawn = {(e.get("target") or {}).get("event") for e in self.events if e.get("kind") == "withdraw"}
+        superseded = {e.get("supersedes") for e in evs if e.get("supersedes")}
+        cur = (self.nodes.get(x) or {}).get("version")
+        out = []
+        for e in evs:
+            if e.get("id") in withdrawn or e.get("id") in superseded:
+                continue
+            e = dict(e)
+            e["_stale"] = isinstance(e.get("version"), int) and isinstance(cur, int) and e["version"] < cur
+            out.append(e)
+        out.sort(key=lambda e: (str(e.get("date")), str(e.get("id"))))
+        return out
+
     def human_events(self, x: str) -> list:
         return [e for e in self.events_by_node.get(x, []) if e.get("by") in self.human]
 

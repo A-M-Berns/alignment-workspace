@@ -77,3 +77,4 @@
 - 2026-10-22 change @smithy-verity — the oracle regression on the shipped graph skips roots with more than twelve proof-set variables (the warrant Normative Inductor result has twenty-five, and the enumerator took forty minutes on it); the recursion is checked against the oracle on every smaller root and on the synthetic trees
 - 2026-10-30 change @anson — corrigibility-landscape promoted to a program line; deference-and-trust moves under it; its legitimacy attachment leaves
 - 2026-11-02 change @anson — assessment event kind: a human's revision-bound stance (support/dispute/uncertain/abstain) on a named aspect, rationale in verbatim, superseding only its author's own earlier assessment
+- 2026-11-02 change @anson — via: site, for events composed on the research site and submitted over GitHub

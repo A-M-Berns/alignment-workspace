@@ -947,7 +947,7 @@ stores for people and later tooling:
 | `by` | the handle; the ledger file is named for it | checked |
 | `date` | ISO date; never decreases within a ledger | checked |
 | `rule` | the anchor-rules version the event was logged under, `YYYY-MM-DD.n`, as `anchor_rules` in `policy.yaml` | checked (form) |
-| `via` | `chat`, `obsidian` or `voice` | checked |
+| `via` | `chat`, `obsidian`, `voice` or `site` (composed on the research site, submitted over GitHub) | checked |
 | `kind` | an event kind (below) | checked |
 | `target` | `{"node": id}`, with `"field": "if-holds" \| "if-fails"` on a node with a given parent; `{"row": [cases id, picture id], "field": "w" \| "p" \| "class"}`, or `"p-if-holds" \| "p-if-fails"` on a row with a given parent, `"class-if-holds" \| "class-if-fails"` for a `classify`; `{"pair": [id, id]}`; `{"proposal": "P-n"}`; `{"event": id}` | checked |
 | `version` | the Statement version the act was given against; older than the node's makes a judgment *stale* and a level-minting event count for no level (§3); above the node's is refused | checked |

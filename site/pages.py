@@ -145,6 +145,81 @@ def render_wiki(site: Site, name: str) -> str:
     return re.sub("\x01(\\d+)\x01", lambda m: anchors[int(m.group(1))], out)
 
 
+STANCES = ("support", "dispute", "uncertain", "abstain")
+ASPECTS = ("correctness", "applicability", "framing", "usefulness")
+
+
+def epistemic_html(site: Site, x: str) -> str:
+    """The three views, kept visually apart: the registry's mechanical class (never editable
+    here), the contest surface (the failure-story tables that attack the node), and the
+    active human assessments, stale ones marked with the revision they judged."""
+    r = site.repo
+    N = r.nodes[x]
+    parts = ['<section class="epistemic"><h2>Epistemic status</h2>']
+    entry = r.record_entry(x) if N.get("formal_result") else None
+    if entry:
+        parts.append(f'<p><strong>Verification</strong> {site.link("claims", entry["id"])}: class <code>{esc(entry.get("class", ""))}</code>, '
+                     f'status <code>{esc(entry.get("status", ""))}</code> — mechanical, from the registry; the bridge card below has the full record.</p>')
+    else:
+        parts.append('<p class="muted"><strong>Verification</strong> no registered claim stands for this node directly.</p>')
+    tables = [x] if N.get("kind") == "cases" else [c for c in N["children"] if r.nodes[c].get("kind") == "cases"]
+    if tables:
+        bits = []
+        for cid in tables:
+            nres = sum(1 for rw in r.nodes[cid].get("rows") or [] if not rw.get("residual"))
+            bits.append(f'{site.link("n", cid)} ({nres} attack row{"s" if nres != 1 else ""})')
+        parts.append('<p><strong>Contest</strong> failure-story tables: ' + "; ".join(bits)
+                     + ". A row's standing is its judged weight and conditional.</p>")
+    else:
+        parts.append('<p class="muted"><strong>Contest</strong> no failure-story table attacks this node yet.</p>')
+    acts = r.assessments(x)
+    if acts:
+        lis = []
+        for e in acts:
+            stale = f' <span class="tag">on an earlier revision (v{esc(str(e.get("version")))})</span>' if e.get("_stale") else ""
+            lis.append(f'<li><span class="stance stance-{esc(str(e.get("stance")))}">{esc(str(e.get("stance")))}</span> '
+                       f'<span class="kind">{esc(str(e.get("aspect")))}</span> — {site.link("by", str(e.get("by")).lstrip("@"))}, {esc(str(e.get("date")))}{stale}'
+                       f'<br><em>{esc(str(e.get("verbatim") or ""))}</em></li>')
+        parts.append('<p><strong>Assessments</strong></p><ul class="assessments">' + "".join(lis) + "</ul>")
+    else:
+        parts.append('<p class="muted"><strong>Assessments</strong> none recorded.</p>')
+    parts.append("</section>")
+    return "".join(parts)
+
+
+def assess_html(site: Site, x: str) -> str:
+    """Record my assessment: the site composes the exact ledger event — stance, aspect, the
+    rationale verbatim, the node's current Statement version, supersession of the author's
+    own active assessment — and hands it to GitHub's editor on the author's own ledger.
+    The site accepts no write; GitHub authenticates and the checker adjudicates."""
+    import json as _json
+    from urllib.parse import quote
+    r = site.repo
+    N = r.nodes[x]
+    active = {}
+    for e in r.assessments(x):
+        active[str(e.get("by"))] = str(e.get("id"))
+    cfg = {"node": x, "version": N.get("version"), "rule": str(r.policy.get("anchor_rules") or ""),
+           "active": active, "handles": sorted(r.human), "stances": list(STANCES), "aspects": list(ASPECTS)}
+    issue_title = quote(f"[node] {x}: assessment")
+    issue_body = quote(f"node: {x}\nurl: /n/{Site.seg(x)}/\nverb: assessment\n\n"
+                       "## Your stance (support | dispute | uncertain | abstain), the aspect, and your rationale\n\n")
+    return (f'<section class="assess" data-assess="{esc(_json.dumps(cfg, separators=(",", ":")))}">'
+            '<h2>Record my assessment</h2>'
+            '<p class="muted">Composes the exact ledger event; you submit it on GitHub under your own account, and it renders here once merged.</p>'
+            '<div class="assess-form">'
+            '<label>handle <select class="as-handle"></select></label> '
+            '<label>stance <select class="as-stance"></select></label> '
+            '<label>aspect <select class="as-aspect"></select></label>'
+            '<textarea class="as-verbatim" rows="3" maxlength="2000" placeholder="your rationale, in your own words"></textarea>'
+            '<p><button type="button" class="as-make">Compose the event</button></p>'
+            '<pre class="as-out" hidden></pre>'
+            '<p class="as-links" hidden><button type="button" class="as-copy">Copy the line</button> '
+            '<a class="as-edit" target="_blank" rel="noopener">append it to your ledger on GitHub</a> · '
+            f'<a href="https://github.com/A-M-Berns/alignment-workspace/issues/new?title={issue_title}&amp;body={issue_body}">no handle? propose it as an issue</a></p>'
+            '</div></section>')
+
+
 def events_html(site: Site, events: list) -> str:
     if not events:
         return "<p class=\"muted\">No human event has touched this node.</p>"
@@ -315,6 +390,7 @@ def node_body(site: Site, x: str) -> tuple[str, list[tuple[str, str]], str]:
         body.append(bridge_card(site, x))
     if x in r.item_of_node:
         body.append(f"<p>This node is item {site.link('items', r.item_of_node[x])}.</p>")
+    body.append(epistemic_html(site, x))
     # author, events
     body.append(f"<section><h2>Author and human events</h2><p>Author {esc(str(N.get('author')))}; version {esc(str(N.get('version')))}; size {esc(str(N.get('size')))}.</p>{events_html(site, r.human_events(x))}</section>")
     # edges
@@ -339,6 +415,7 @@ def node_body(site: Site, x: str) -> tuple[str, list[tuple[str, str]], str]:
             R = r.derived["roots"][x]
             lens["root"] = {k: R.get(k) for k in ("status", "Pr", "value", "cost", "margin")}
         body.append(f"<details class=\"ranking\"><summary>Ranking (the lens, not the structure)</summary><pre>{esc(json.dumps(lens, indent=1, ensure_ascii=False))}</pre></details>")
+    body.append(assess_html(site, x))
     body.append(intake_html(site, x))
     return "\n".join(body), crumbs, sub
 
