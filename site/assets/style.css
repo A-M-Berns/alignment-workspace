@@ -24,7 +24,7 @@ pre { background: var(--code-bg); padding: 0.8em 1em; overflow-x: auto; border-r
 pre code { background: none; padding: 0; }
 header.top { display: flex; flex-wrap: wrap; gap: 0.6em 1.2em; align-items: baseline; padding: 0.8em 1em; border-bottom: 1px solid var(--rule); font-size: 0.9rem; }
 header.top .home { font-weight: 700; color: var(--fg); text-decoration: none; }
-header.top nav.main a { margin-right: 0.2em; color: var(--muted); text-decoration: none; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.78rem; }
+header.top nav.main a { margin-right: 1.6em; color: var(--muted); text-decoration: none; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.78rem; }
 header.top nav.main a:hover { color: var(--fg); }
 header.top form.search { margin-left: auto; }
 header.top input[type=search] { font: inherit; padding: 0.25em 0.5em; border: 1px solid var(--rule); border-radius: 4px; background: var(--bg); color: var(--fg); min-width: 14em; }
