@@ -54,7 +54,7 @@ class Site:
 
 def layout(site: Site, title: str, body: str, crumbs: list[tuple[str, str]] | None = None, subtitle: str = "") -> str:
     r = site.repo
-    nav = '<a href="/">map</a>'
+    nav = '<a href="/">map</a><a href="https://github.com/A-M-Berns/alignment-workspace">repo</a>'
     crumb_html = ""
     if crumbs:
         crumb_html = '<nav class="crumbs">' + " › ".join(f'<a href="{u}">{esc(t)}</a>' for t, u in crumbs) + "</nav>"
