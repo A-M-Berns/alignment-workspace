@@ -131,10 +131,18 @@ def render_wiki(site: Site, name: str) -> str:
                 return ""
             return f' <a class="ref node" href="{site.url("n", ident)}">[node]</a>'
         return ""
-    text = REF.sub(ref, text)
+    # resolve references to tokens, render, then expand: an anchor substituted before
+    # rendering is escaped by the renderer like any other inline HTML
+    anchors: list[str] = []
+
+    def hold(m):
+        anchors.append(ref(m))
+        return f"\x01{len(anchors) - 1}\x01"
+    text = REF.sub(hold, text)
     # relative wiki links `[Text](Page)` become site links where the page exists
     text = WIKI_MD_LINK.sub(lambda m: f"]({site.url('wiki', m.group(1))})" if m.group(1) in r.wiki else m.group(0), text)
-    return md.render(text, wiki_link_resolver(site), heading_shift=1)
+    out = md.render(text, wiki_link_resolver(site), heading_shift=1)
+    return re.sub("\x01(\\d+)\x01", lambda m: anchors[int(m.group(1))], out)
 
 
 def events_html(site: Site, events: list) -> str:

@@ -30,26 +30,26 @@ def esc(s: str) -> str:
 def inline(text: str, link_wiki=None) -> str:
     """Inline markup to HTML. `link_wiki(page) -> url or None` resolves `[[Page]]` links."""
     text = COMMENT.sub("", text)
-    out, pos = [], 0
-    # protect code spans first: split on them, render the rest
-    parts = INLINE_CODE.split(text)
-    for i, part in enumerate(parts):
-        if i % 2 == 1:
-            out.append(f"<code>{esc(part)}</code>")
-            continue
-        s = esc(part)
+    # protect code spans as tokens, keeping the text contiguous: a link label may
+    # contain a code span, and splitting on spans severed `[label](url)` in two
+    codes: list[str] = []
 
-        def wl(m):
-            page, label = m.group(1).strip(), (m.group(2) or m.group(1)).strip()
-            url = link_wiki(page) if link_wiki else None
-            return f'<a href="{esc(url)}">{esc(label)}</a>' if url else f"<span class=\"dead-link\">{esc(label)}</span>"
-        s = WIKILINK.sub(wl, s)
-        s = LINK.sub(lambda m: f'<a href="{m.group(2)}">{m.group(1) or m.group(2)}</a>', s)
-        s = AUTOLINK.sub(lambda m: f'<a href="{m.group(1)}">{m.group(1)}</a>', s)
-        s = STRONG.sub(r"<strong>\1</strong>", s)
-        s = EM.sub(lambda m: f"<em>{m.group(1) or m.group(2)}</em>", s)
-        out.append(s)
-    return "".join(out)
+    def grab(m):
+        codes.append(m.group(1))
+        return f"\x00{len(codes) - 1}\x00"
+    s = INLINE_CODE.sub(grab, text)
+    s = esc(s)
+
+    def wl(m):
+        page, label = m.group(1).strip(), (m.group(2) or m.group(1)).strip()
+        url = link_wiki(page) if link_wiki else None
+        return f'<a href="{esc(url)}">{esc(label)}</a>' if url else f"<span class=\"dead-link\">{esc(label)}</span>"
+    s = WIKILINK.sub(wl, s)
+    s = LINK.sub(lambda m: f'<a href="{m.group(2)}">{m.group(1) or m.group(2)}</a>', s)
+    s = AUTOLINK.sub(lambda m: f'<a href="{m.group(1)}">{m.group(1)}</a>', s)
+    s = STRONG.sub(r"<strong>\1</strong>", s)
+    s = EM.sub(lambda m: f"<em>{m.group(1) or m.group(2)}</em>", s)
+    return re.sub("\x00(\\d+)\x00", lambda m: f"<code>{esc(codes[int(m.group(1))])}</code>", s)
 
 
 def render(text: str, link_wiki=None, heading_shift: int = 0) -> str:
