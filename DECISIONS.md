@@ -6953,3 +6953,15 @@ event used it. The front page is the map alone: the question line and the hand-w
 lede leave it, <!--historical-->`site/lede.md`<!--/historical--> and its binding check leave the tree, and the map hint
 drops its opening clause.
 
+### 2026-11-03 — AI handles may seed assessments
+<!-- decision: 2026-11-03--ai-seeds-assessments; touches: checkers/graph.py, graph/PROTOCOL.md -->
+
+**Agent-decided, reversible.** An AI handle may write an `assessment` with its reasoning
+in `gloss` — the estimate pattern, extended to the three axes: the map needs numbers to
+start from, and a grey AI seed a human can overwrite is cheaper than seventy bare
+dashes. The seed is marked as an AI number in every display until a human scores the
+axis, and the maintainer's color directive asked for exactly that state. Rejected
+alternative: the human-only form of the 2026-11-02/03 entries, which left every axis
+blank until a maintainer typed each score by hand. No AI seed mints a level, and a
+human's score displaces the seed in every derived view.
+

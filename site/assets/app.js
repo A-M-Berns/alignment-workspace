@@ -52,9 +52,19 @@
   // on the author's own ledger. The site accepts no write. Exposed so the map can wire a
   // composer it injects into the read-more modal.
   window.wireAssess = function (root) {
-    var as2 = q("section.assess", root);
+    var as2 = q("[data-assess]", root);
     if (!as2 || as2.getAttribute("data-wired")) return;
     as2.setAttribute("data-wired", "1");
+    var scope = as2.closest("section.context") || root || document;
+    (scope.querySelectorAll ? scope : document).querySelectorAll(".as-vouch, .as-challenge").forEach(function (b) {
+      b.addEventListener("click", function () {
+        as2.hidden = false;
+        q(".as-axis", as2).value = b.getAttribute("data-axis");
+        if (b.getAttribute("data-score")) q(".as-score", as2).value = b.getAttribute("data-score");
+        q(".as-verbatim", as2).focus();
+        as2.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      });
+    });
     var cfg = JSON.parse(as2.getAttribute("data-assess"));
     var fill = function (sel, opts) { opts.forEach(function (o) { var e = document.createElement("option"); e.value = o; e.textContent = o; sel.appendChild(e); }); };
     fill(q(".as-handle", as2), cfg.handles);

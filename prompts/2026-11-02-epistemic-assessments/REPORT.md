@@ -9,7 +9,11 @@ and axis. Vouching for a standing score is posting the same number; challenging 
 posting a different one; every human's active score renders beside the others. The
 stance-and-aspect form this round first landed was replaced by the maintainer's follow-up
 directive before any event used it (`PROMPT-followup.md`; the 2026-11-03 ruling). It
-mints no vettedness level and moves no number; AI handles write none. The checker
+mints no vettedness level and moves no number. An AI handle may seed one with its
+reasoning in `gloss` — the estimate pattern, reversing this round's earlier human-only
+form before any event used it; the seed is marked as an AI number in every display until
+a human scores the axis, and a human's event supersedes nothing of the AI's (the AI
+number simply stops rendering once a human one stands). The checker
 (`checkers/graph.py`) validates all of it, seven refusal directions each with a
 null-input case in `--self-test`, and a unit test confirms a valid assessment is
 accepted and leaves a node's V and J untouched. `graph/PROTOCOL.md` documents the fields,
@@ -23,12 +27,22 @@ The design is the conversation's three-view ruling (dated entry in `DECISIONS.md
 human assessment are views of one event graph, and only the third is human-writable from
 the site. The agent-decided details and their rejected alternatives are in the entry.
 
-The site side, landed after #136 merged: every node page carries an epistemic-status
-panel with the three views kept apart — the registry's class where a formal result backs
-the node (mechanical, with the bridge card for the record), the contest surface (the
-failure-story tables attacking the node, with their attack-row counts), and the active
-human assessments, superseded ones filtered, withdrawn ones dropped, stale ones marked
-"on an earlier revision" — and a composer that generates the exact ledger event (axis,
+The site side, landed after #136 merged: every node page opens with a full-width **hero
+panel** — the three axes as large numbers, reliability red, importance indigo, clarity
+olive (the maintainer's colour mock), lightness tracking the score 1–5, grey for an AI
+seed no human has touched, a dash for an unscored axis, and a wavy underline with the
+range (min–max) where active human scores disagree; disagreement is displayed, never
+averaged. Below it a **context panel** holds the non-challengeable repo facts — the
+registry's class with a kernel badge where a formal result backs the node, the
+failure-story tables attacking it with their row counts, author, draft state and
+Statement version — and the per-axis controls: *vouch N* where an uncontested human
+score stands, *challenge* beside it, *score* where the axis is bare. Either button opens
+the composer with the axis (and, for a vouch, the score) prefilled; the rationale is
+required always. The attributed score list under each axis keeps superseded ones
+filtered, withdrawn ones dropped, stale ones marked "on an earlier revision". The map's
+hover card carries a mini-hero of the same three numbers above the one-paragraph
+summary, fed per concept through the map data. The composer generates the exact ledger
+event (axis,
 score, verbatim, the node's current version pinned, `via: site`, supersession of the
 author's own active score on that axis filled from the build) for the reader to copy into their
 own ledger through GitHub's editor, with a prefilled-issue path for readers without a
@@ -45,8 +59,12 @@ disagreement preserved) run in development; the standing gates cover the build a
 map page, and a standing render gate for the panel is a candidate, not shipped.
 
 Not in this increment, deliberately: the derived contest state (response and resolution
-artifacts beyond what `cases` tables already carry) and the work queues — deeper `cases`
-semantics for a later round.
+artifacts beyond what `cases` tables already carry), the work queues (the
+importance-exceeding-reliability prioritization the maintainer named as the eventual
+use), and the deeper builder-breaker mechanics — the maintainer is still deciding that
+part and parked it in so many words; nothing here forecloses it. Also not done: the AI
+seeding itself — the protocol now admits AI seed events, but no seed is filed; that is a
+dispatch of its own.
 
 Also in the follow-up: the front page is the map alone — the question line and the
 hand-written lede leave it, `site/lede.md` and its binding check leave the tree (with

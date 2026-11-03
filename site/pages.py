@@ -150,86 +150,96 @@ AXES = ("reliability", "importance", "clarity")
 SCORES = (1, 2, 3, 4, 5)
 
 
-def epistemic_html(site: Site, x: str) -> str:
-    """The three views, kept visually apart: the registry's mechanical class (never editable
-    here), the contest surface (the failure-story tables that attack the node), and the
-    active human assessments, stale ones marked with the revision they judged."""
-    r = site.repo
-    N = r.nodes[x]
-    parts = ['<section class="epistemic"><h2>Epistemic status</h2>']
-    entry = r.record_entry(x) if N.get("formal_result") else None
-    if entry:
-        parts.append(f'<p><strong>Verification</strong> {site.link("claims", entry["id"])}: class <code>{esc(entry.get("class", ""))}</code>, '
-                     f'status <code>{esc(entry.get("status", ""))}</code> — mechanical, from the registry; the bridge card below has the full record.</p>')
-    else:
-        parts.append('<p class="muted"><strong>Verification</strong> no registered claim stands for this node directly.</p>')
-    tables = [x] if N.get("kind") == "cases" else [c for c in N["children"] if r.nodes[c].get("kind") == "cases"]
-    if tables:
-        bits = []
-        for cid in tables:
-            nres = sum(1 for rw in r.nodes[cid].get("rows") or [] if not rw.get("residual"))
-            bits.append(f'{site.link("n", cid)} ({nres} attack row{"s" if nres != 1 else ""})')
-        parts.append('<p><strong>Contest</strong> failure-story tables: ' + "; ".join(bits)
-                     + ". A row's standing is its judged weight and conditional.</p>")
-    else:
-        parts.append('<p class="muted"><strong>Contest</strong> no failure-story table attacks this node yet.</p>')
-    acts = r.assessments(x)
-    if acts:
-        by_axis: dict = {}
-        for e in acts:
-            by_axis.setdefault(str(e.get("axis")), []).append(e)
-        lis = []
-        for axis in AXES:
-            evs = by_axis.get(axis)
-            if not evs:
-                lis.append(f'<li><span class="axis">{axis}</span> <span class="muted">unscored</span></li>')
-                continue
-            bits = []
-            for e in evs:
-                stale = f' <span class="tag">on an earlier revision (v{esc(str(e.get("version")))})</span>' if e.get("_stale") else ""
-                bits.append(f'<span class="score score-{esc(str(e.get("score")))}">{esc(str(e.get("score")))}</span> '
-                            f'{site.link("by", str(e.get("by")).lstrip("@"))}, {esc(str(e.get("date")))}{stale}'
-                            f'<br><em>{esc(str(e.get("verbatim") or ""))}</em>')
-            lis.append(f'<li><span class="axis">{axis}</span> ' + " · ".join(bits) + "</li>")
-        parts.append('<p><strong>Assessments</strong> <span class="muted">1–5 per axis; vouch by matching a score, challenge by differing</span></p>'
-                     '<ul class="assessments">' + "".join(lis) + "</ul>")
-    else:
-        parts.append('<p class="muted"><strong>Assessments</strong> none recorded (axes: reliability, importance, clarity; 1–5).</p>')
-    parts.append("</section>")
-    return "".join(parts)
+def hero_html(site: Site, x: str) -> str:
+    """The hero: the three axes as large numbers, full width, before any text. Colour is the
+    axis hue, lightness the score; grey is an AI seed no human has touched; a range is two
+    humans disagreeing, which is the state the page invites the reader to resolve."""
+    h = site.repo.hero(x)
+    cells = []
+    for axis in AXES:
+        c = h[axis]
+        tags = ""
+        if c["ai"]:
+            tags += '<span class="hx-tag">AI</span>'
+        if c["contested"]:
+            tags += '<span class="hx-tag">contested</span>'
+        if c["stale"]:
+            tags += '<span class="hx-tag">earlier revision</span>'
+        cells.append(f'<div class="hx hx-{axis} {c["cls"]}"><span class="hx-num">{esc(c["d"])}</span>'
+                     f'<span class="hx-label">{axis}</span>{tags}</div>')
+    return '<section class="hero">' + "".join(cells) + "</section>"
 
 
-def assess_html(site: Site, x: str) -> str:
-    """Record my assessment: the site composes the exact ledger event — stance, aspect, the
-    rationale verbatim, the node's current Statement version, supersession of the author's
-    own active assessment — and hands it to GitHub's editor on the author's own ledger.
-    The site accepts no write; GitHub authenticates and the checker adjudicates."""
+def context_html(site: Site, x: str) -> str:
+    """The context panel beneath the hero: the facts that are not challengeable — the kernel
+    badge and registry class where a formal result backs the node, author, version, the
+    deep-work links — and the per-axis vouch and challenge buttons with every active score
+    and its rationale. The buttons drive one mini-form that generates the exact ledger
+    event for GitHub; the site accepts no write."""
     import json as _json
     from urllib.parse import quote
     r = site.repo
     N = r.nodes[x]
+    parts = ['<section class="context"><h2>Context</h2><ul class="ctx-facts">']
+    entry = r.record_entry(x) if N.get("formal_result") else None
+    if entry:
+        parts.append(f'<li><span class="kernel-badge">kernel-checked</span> {site.link("claims", entry["id"])}: '
+                     f'class <code>{esc(entry.get("class", ""))}</code>, status <code>{esc(entry.get("status", ""))}</code> — the bridge card below holds the record</li>')
+    tables = [x] if N.get("kind") == "cases" else [c for c in N["children"] if r.nodes[c].get("kind") == "cases"]
+    if tables:
+        parts.append("<li>failure-story tables: " + "; ".join(
+            f'{site.link("n", cid)} ({sum(1 for rw in r.nodes[cid].get("rows") or [] if not rw.get("residual"))} rows)' for cid in tables) + "</li>")
+    parts.append(f'<li>author {esc(str(N.get("author")))}'
+                 + (", drafted" if r.drafted(x) else "")
+                 + f'; Statement version {esc(str(N.get("version")))}</li>')
+    parts.append("</ul>")
+    acts = r.assessments(x)
+    by_axis: dict = {}
+    for e in acts:
+        by_axis.setdefault(str(e.get("axis")), []).append(e)
     active = {}
-    for e in r.assessments(x):
-        active[str(e.get("by")) + "|" + str(e.get("axis"))] = str(e.get("id"))
+    for e in acts:
+        if not e["_ai"]:
+            active[str(e.get("by")) + "|" + str(e.get("axis"))] = str(e.get("id"))
+    h = r.hero(x)
+    parts.append('<div class="ctx-axes">')
+    for axis in AXES:
+        std = h[axis]
+        vouch = ""
+        if std["d"] != "\u2013" and not std["contested"]:
+            vouch = f'<button type="button" class="as-vouch" data-axis="{axis}" data-score="{esc(std["d"])}">vouch {esc(std["d"])}</button> '
+        verb = "challenge" if std["d"] != "\u2013" else "score"
+        parts.append(f'<div class="ctx-axis"><span class="axis">{axis}</span> {vouch}'
+                     f'<button type="button" class="as-challenge" data-axis="{axis}">{verb}</button>')
+        evs = by_axis.get(axis) or []
+        if evs:
+            rows = []
+            for e in evs:
+                who = site.link("by", str(e.get("by")).lstrip("@")) if not e["_ai"] else f'<span class="muted">{esc(str(e.get("by")))} (AI)</span>'
+                stale = ' <span class="tag">on an earlier revision</span>' if e.get("_stale") else ""
+                why = esc(str(e.get("verbatim") or e.get("gloss") or ""))
+                rows.append(f'<li><span class="score score-{esc(str(e.get("score")))}">{esc(str(e.get("score")))}</span> {who}, {esc(str(e.get("date")))}{stale}<br><em>{why}</em></li>')
+            parts.append('<ul class="assessments">' + "".join(rows) + "</ul>")
+        parts.append("</div>")
+    parts.append("</div>")
     cfg = {"node": x, "version": N.get("version"), "rule": str(r.policy.get("anchor_rules") or ""),
            "active": active, "handles": sorted(r.human), "axes": list(AXES), "scores": list(SCORES)}
     issue_title = quote(f"[node] {x}: assessment")
     issue_body = quote(f"node: {x}\nurl: /n/{Site.seg(x)}/\nverb: assessment\n\n"
                        "## Your score (1-5) on reliability, importance or clarity, and your rationale\n\n")
-    return (f'<section class="assess" data-assess="{esc(_json.dumps(cfg, separators=(",", ":")))}">'
-            '<h2>Record my assessment</h2>'
-            '<p class="muted">Composes the exact ledger event; you submit it on GitHub under your own account, and it renders here once merged.</p>'
-            '<div class="assess-form">'
-            '<label>handle <select class="as-handle"></select></label> '
-            '<label>axis <select class="as-axis"></select></label> '
-            '<label>score <select class="as-score"></select></label>'
-            '<textarea class="as-verbatim" rows="3" maxlength="2000" placeholder="your rationale, in your own words"></textarea>'
-            '<p><button type="button" class="as-make">Compose the event</button></p>'
-            '<pre class="as-out" hidden></pre>'
-            '<p class="as-links" hidden><button type="button" class="as-copy">Copy the line</button> '
-            '<a class="as-edit" target="_blank" rel="noopener">append it to your ledger on GitHub</a> · '
-            f'<a href="https://github.com/A-M-Berns/alignment-workspace/issues/new?title={issue_title}&amp;body={issue_body}">no handle? propose it as an issue</a></p>'
-            '</div></section>')
+    parts.append(
+        f'<div class="assess-form" data-assess="{esc(_json.dumps(cfg, separators=(",", ":")))}" hidden>'
+        '<label>handle <select class="as-handle"></select></label> '
+        '<label>axis <select class="as-axis"></select></label> '
+        '<label>score <select class="as-score"></select></label>'
+        '<textarea class="as-verbatim" rows="3" maxlength="2000" placeholder="your rationale, in your own words — a challenge says what would move you"></textarea>'
+        '<p><button type="button" class="as-make">Compose the event</button></p>'
+        '<pre class="as-out" hidden></pre>'
+        '<p class="as-links" hidden><button type="button" class="as-copy">Copy the line</button> '
+        '<a class="as-edit" target="_blank" rel="noopener">append it to your ledger on GitHub</a> · '
+        f'<a href="https://github.com/A-M-Berns/alignment-workspace/issues/new?title={issue_title}&amp;body={issue_body}">no handle? propose it as an issue</a></p>'
+        '</div></section>')
+    return "".join(parts)
 
 
 def events_html(site: Site, events: list) -> str:
@@ -393,6 +403,8 @@ def node_body(site: Site, x: str) -> tuple[str, list[tuple[str, str]], str]:
             name = page.split("/")[-1][:-3]
             if name in r.wiki:
                 body.append(f"<section><h2>Narrative: {site.link('wiki', name)}</h2><div class=\"wiki\">{render_wiki(site, name)}</div></section>")
+    body.insert(0, context_html(site, x))
+    body.insert(0, hero_html(site, x))
     body.append(f"<section><h2>Statement</h2><p class=\"statement\">{esc(N['statement'].strip())}</p></section>")
     if N.get("source"):
         body.append(f"<section><h2>Source</h2>{md.render(N['source'], wiki_link_resolver(site))}</section>")
@@ -402,7 +414,6 @@ def node_body(site: Site, x: str) -> tuple[str, list[tuple[str, str]], str]:
         body.append(bridge_card(site, x))
     if x in r.item_of_node:
         body.append(f"<p>This node is item {site.link('items', r.item_of_node[x])}.</p>")
-    body.append(epistemic_html(site, x))
     # author, events
     body.append(f"<section><h2>Author and human events</h2><p>Author {esc(str(N.get('author')))}; version {esc(str(N.get('version')))}; size {esc(str(N.get('size')))}.</p>{events_html(site, r.human_events(x))}</section>")
     # edges
@@ -427,7 +438,6 @@ def node_body(site: Site, x: str) -> tuple[str, list[tuple[str, str]], str]:
             R = r.derived["roots"][x]
             lens["root"] = {k: R.get(k) for k in ("status", "Pr", "value", "cost", "margin")}
         body.append(f"<details class=\"ranking\"><summary>Ranking (the lens, not the structure)</summary><pre>{esc(json.dumps(lens, indent=1, ensure_ascii=False))}</pre></details>")
-    body.append(assess_html(site, x))
     body.append(intake_html(site, x))
     return "\n".join(body), crumbs, sub
 
@@ -589,19 +599,19 @@ def concept_epistemic(site: Site, cid: str) -> str:
     e = r.concepts[cid]
     refs = [x for x in e.get("refs") or [] if x in r.nodes]
     if not refs:
-        return ('<section class="epistemic"><h2>Epistemic status</h2><p class="muted">No map node backs this '
+        return ('<section class="context"><h2>Epistemic status</h2><p class="muted">No map node backs this '
                 'concept yet, so there is nothing to assess; the connections and merged work are the record.</p></section>')
     if len(refs) == 1:
-        return epistemic_html(site, refs[0]) + assess_html(site, refs[0])
+        return context_html(site, refs[0])
     bits = []
     for x in refs:
         N = r.nodes[x]
         entry = r.record_entry(x) if N.get("formal_result") else None
         ver = f'class <code>{esc(entry.get("class", ""))}</code>' if entry else '<span class="muted">no registered claim</span>'
         tables = [x] if N.get("kind") == "cases" else [c for c in N["children"] if r.nodes[c].get("kind") == "cases"]
-        acts = r.assessments(x)
-        stances = ", ".join(f'{e2.get("stance")} ({str(e2.get("by")).lstrip("@")})' for e2 in acts) or "none"
-        bits.append(f'<li>{site.link("n", x)} — {ver}; {len(tables)} failure-story table(s); assessments: {esc(stances)}. '
+        hh = r.hero(x)
+        summary = " · ".join(f'{a[:3]} {hh[a]["d"]}' for a in ("reliability", "importance", "clarity"))
+        bits.append(f'<li>{site.link("n", x)} — {ver}; {len(tables)} failure-story table(s); {esc(summary)}. '
                     f'{site.link("n", x, "Assess it on its node page →")}</li>')
     return ('<section class="epistemic"><h2>Epistemic status</h2><p class="muted">Through the map nodes that back '
             'this concept:</p><ul class="listing">' + "".join(bits) + "</ul></section>")
@@ -626,7 +636,9 @@ def concept_full(site: Site, cid: str) -> str:
                 f"<li>{site.link('n', x)}: {esc(r.nodes[x]['statement'].strip()[:160])}</li>" for x in refs) + "</ul></section>"
         else:
             main = '<p class="muted">No longer-form page yet; the connections and merged work at right are the record.</p>'
-    return (f'{head}{lede}{src}<div class="pane2"><div class="pane-main">{main}{concept_epistemic(site, cid)}</div>'
+    refs1 = [x for x in e.get("refs") or [] if x in r.nodes]
+    hero = hero_html(site, refs1[0]) if len(refs1) == 1 else ""
+    return (f'{head}{hero}{lede}{src}<div class="pane2"><div class="pane-main">{main}{concept_epistemic(site, cid)}</div>'
             f'<aside class="pane-side">{concept_side(site, cid)}</aside></div>')
 
 
@@ -907,8 +919,13 @@ def map_data(site: Site) -> dict:
         for x in e.get("refs") or []:
             if x not in r.nodes:
                 site.unresolved.append(f"concepts:{cid}:ref:{x}")
+        refs1 = [x for x in e.get("refs") or [] if x in r.nodes]
+        hx = None
+        if len(refs1) == 1:
+            hh = r.hero(refs1[0])
+            hx = {a[0]: [hh[a]["d"], hh[a]["cls"]] for a in ("reliability", "importance", "clarity")}
         meta[cid] = {"k": e.get("kind", ""), "w": e.get("wiki") or "", "t": e.get("title", cid),
-                     "s": str(e.get("blurb") or ""), "prs": prs_of.get(cid, 0), "d": ds[cid],
+                     "s": str(e.get("blurb") or ""), "prs": prs_of.get(cid, 0), "d": ds[cid], "ax": hx,
                      "imp": 1.0 if cid == "the-program" else round(0.45 * raw[cid] / top + 0.55 * pct(raw[cid]), 3)}
     return {"items": list(r.concepts), "concepts": meta, "kinds": r.concept_kinds, "links": links}
 

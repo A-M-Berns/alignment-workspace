@@ -1374,20 +1374,23 @@ def lint(t):
             if not e.get("ref"):
                 raise Refuse(5, path, "an attribution event carries ref, what the attribution was checked against")
         if e["kind"] == "assessment":
-            # a human's current score on one dimension of a node — reliability, importance or
-            # clarity, 1 to 5 — revision-bound through the event's version, with the rationale
-            # in the human's own words. It mints no level and moves no number; it supersedes
-            # only its author's own earlier assessment of the same node and axis, so
-            # vouching is posting the same score, challenging a different one, and
-            # disagreement between humans stays visible
-            if tk[0] != "node" or not is_human(t, e["by"]):
-                raise Refuse(5, path, "an assessment is a human handle's score and targets a node")
+            # a score on one axis of a node — reliability, importance or clarity, 1 to 5 —
+            # revision-bound through the event's version. A human's carries the rationale in
+            # verbatim; an AI handle may seed one with its reasoning in gloss, marked as an
+            # AI number in every display until a human scores the axis. It mints no level and
+            # moves no number; it supersedes only its author's own earlier assessment of the
+            # same node and axis, so vouching is posting the same score, challenging a
+            # different one, and disagreement between humans stays visible
+            if tk[0] != "node":
+                raise Refuse(5, path, "an assessment targets a node")
             if e.get("axis") not in AXES:
                 raise Refuse(5, path, f"an assessment carries axis: {' | '.join(sorted(AXES))}")
             if not (isinstance(e.get("score"), int) and not isinstance(e.get("score"), bool) and e["score"] in SCORES):
                 raise Refuse(5, path, "an assessment carries score: an integer 1 to 5")
-            if not str(e.get("verbatim") or "").strip():
-                raise Refuse(5, path, "an assessment carries the human's rationale in verbatim")
+            if is_human(t, e["by"]) and not str(e.get("verbatim") or "").strip():
+                raise Refuse(5, path, "a human's assessment carries the rationale in verbatim")
+            if not is_human(t, e["by"]) and not str(e.get("gloss") or "").strip():
+                raise Refuse(5, path, "an AI handle's assessment carries its reasoning in gloss")
             sup = e.get("supersedes")
             if sup is not None:
                 prev = eids.get(sup)
@@ -5267,8 +5270,8 @@ NULL_INPUTS = [
         f'{{"id": "h1-n5", "by": "@h1", "date": "2026-09-20", "rule": "2026-10-02.1", "via": "chat", "version": 2, "kind": "estimate", '
         '"target": {"node": "alt-2"}, "estimate": [0.5, 0.5], "reason": "x"}']}}),
     # assessments (2026-11-03)
-    ("an assessment by an AI handle", 5, {"extra": {"ai": [
-        f'{{"id": "ai-n2", "by": "@ai", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "axis": "reliability", "score": 4, "verbatim": "x", "gloss": "x"}}']}}),
+    ("an AI assessment without its reasoning in gloss", 5, {"extra": {"ai": [
+        f'{{"id": "ai-n2", "by": "@ai", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "axis": "reliability", "score": 4}}']}}),
     ("an assessment with an unknown axis", 5, {"extra": {"h1": [
         f'{{"id": "h1-n12", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "axis": "vibes", "score": 4, "verbatim": "x"}}']}}),
     ("an assessment with a score outside 1 to 5", 5, {"extra": {"h1": [

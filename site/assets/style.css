@@ -288,4 +288,31 @@ a.tile { display: flex; flex-direction: column; gap: 0.3em; padding: 1.3em 1.5em
 a.tile:hover { transform: translateY(-3px); border-color: var(--accent); }
 a.tile .tile-name { font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #ececec; }
 a.tile .tile-sub { color: var(--muted); font-size: 0.9rem; }
+/* the hero: three axes, colour by hue, lightness by score; grey is an untouched AI seed */
+section.hero { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 0.4em 0 1.2em; padding: 1.1em 1em; border: 1px solid var(--rule); border-radius: 12px; background: #141417; }
+section.hero .hx { text-align: center; }
+.hx .hx-num { display: block; font-size: 2.6rem; font-weight: 760; line-height: 1.1; }
+.hx .hx-label { display: block; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.15em; }
+.hx .hx-tag { display: inline-block; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); border: 1px solid var(--rule); border-radius: 4px; padding: 0 0.4em; margin: 0.3em 0.15em 0; }
+.hx-reliability .hx-label { color: #c44a55; } .hx-importance .hx-label { color: #665cc8; } .hx-clarity .hx-label { color: #8f9242; }
+.hx-reliability.s1 .hx-num { color: #4a2328; } .hx-reliability.s2 .hx-num { color: #6e2e36; } .hx-reliability.s3 .hx-num { color: #953a44; } .hx-reliability.s4 .hx-num { color: #c44a55; } .hx-reliability.s5 .hx-num { color: #f25b66; }
+.hx-importance.s1 .hx-num { color: #2b2850; } .hx-importance.s2 .hx-num { color: #3c3775; } .hx-importance.s3 .hx-num { color: #50489e; } .hx-importance.s4 .hx-num { color: #665cc8; } .hx-importance.s5 .hx-num { color: #7f6ff2; }
+.hx-clarity.s1 .hx-num { color: #3a3a1e; } .hx-clarity.s2 .hx-num { color: #52522a; } .hx-clarity.s3 .hx-num { color: #6d6d35; } .hx-clarity.s4 .hx-num { color: #8f9242; } .hx-clarity.s5 .hx-num { color: #b7bd52; }
+.hx.ai .hx-num { color: #8e8e88; }
+.hx.none .hx-num { color: #3c3c40; }
+.hx.contested .hx-num { text-decoration: underline wavy 1.5px; text-underline-offset: 0.12em; }
+/* the context panel and its per-axis controls */
+section.context ul.ctx-facts { list-style: none; padding-left: 0; }
+section.context ul.ctx-facts li { margin: 0.35em 0; }
+.kernel-badge { display: inline-block; background: var(--accent); color: #101013; font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.12em 0.55em; border-radius: 5px; }
+.ctx-axes { margin-top: 0.8em; }
+.ctx-axis { margin: 0.7em 0; padding-top: 0.5em; border-top: 1px solid var(--rule); }
+.ctx-axis .axis { display: inline-block; min-width: 6.5em; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+.ctx-axis button, .assess-form button { font: inherit; font-size: 0.8rem; background: none; border: 1px solid var(--rule); color: var(--fg); border-radius: 6px; padding: 0.2em 0.75em; cursor: pointer; margin-right: 0.4em; }
+.ctx-axis button:hover, .assess-form button:hover { border-color: var(--accent); }
+/* the mini-hero on the map's node card */
+.mini-hero { display: flex; gap: 1.1em; margin: 0.35em 0 0.45em; }
+.mini-hero .hx { text-align: center; }
+.mini-hero .hx-num { font-size: 1.25rem; font-weight: 740; display: block; line-height: 1; }
+.mini-hero .hx-label { font-size: 0.56rem; }
 
