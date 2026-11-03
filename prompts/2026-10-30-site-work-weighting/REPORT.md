@@ -24,7 +24,9 @@ come from the same shared-support permutation search as before. Greedy assignmen
 swap passes approximates the consult's capacity-constrained transport; a deterministic
 descent at a fixed target density (padded capsules cover ~55% of the disc) separates
 size-aware; one uniform scale settles the remainder, in place of the local push-apart the
-consult identified as the source of the ragged silhouette. Edges are straight, attach
+consult identified as the source of the ragged silhouette. The consult's edge-length
+term is in both stages — the assignment's swap passes and the descent — after a concept
+(traderization) landed across the disc from everything it links to without it. Edges are straight, attach
 where capsules face each other, and render beneath the capsules; arrowheads are
 fixed-size, fill from their wire's stroke, orient with the path, and sit on the drawn
 tip. Edge opacity is 0.25 base (0.12 undirected) with strong focus contrast; capsule
