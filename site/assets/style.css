@@ -246,7 +246,9 @@ svg#map .net-edge .wire { stroke: #92928c; opacity: 0.25; }
 svg#map .net-edge.undirected .wire { opacity: 0.12; }
 svg#map .net-edge.lit .wire { stroke: #ececec; opacity: 0.75; }
 svg#map .net-edge:hover .wire { stroke: #ececec; opacity: 1; }
-svg#map .arrowhead { fill: context-stroke; }
+svg#map .arrowhead { fill: #92928c; }
+svg#map .arrowhead-lit { fill: #ececec; }
+svg#map .net-edge:not(.undirected).lit .wire, svg#map .net-edge:not(.undirected):hover .wire { marker-end: url("#arrow-lit"); }
 svg#map .goalwash { display: none; }
 svg#map g.scene.focus g.cap:not(.nb) { opacity: 0.16; }
 svg#map g.scene.focus .net-edge:not(.lit) { opacity: 0.05; }

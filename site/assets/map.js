@@ -18,18 +18,27 @@
   svg.appendChild(defs);
   var cam = document.createElementNS(NS, "g");
   svg.appendChild(cam);
-  var mk = document.createElementNS(NS, "marker");
-  mk.setAttribute("id", "arrow");
-  mk.setAttribute("viewBox", "0 0 8 8");
-  mk.setAttribute("refX", "7.4"); mk.setAttribute("refY", "4");
-  mk.setAttribute("markerUnits", "userSpaceOnUse");
-  mk.setAttribute("markerWidth", "11"); mk.setAttribute("markerHeight", "11");
-  mk.setAttribute("orient", "auto");
-  var mkp = document.createElementNS(NS, "path");
-  mkp.setAttribute("d", "M0,0.6 L7.4,4 L0,7.4 z");
-  mkp.setAttribute("class", "arrowhead");
-  mk.appendChild(mkp);
+  // two markers with explicit fills, swapped by CSS per state: context-stroke is not
+  // supported everywhere, and an unsupported fill falls back to black
+  function mkArrow(id2, cls) {
+    var mk2 = document.createElementNS(NS, "marker");
+    mk2.setAttribute("id", id2);
+    mk2.setAttribute("viewBox", "0 0 8 8");
+    mk2.setAttribute("refX", "7.4"); mk2.setAttribute("refY", "4");
+    mk2.setAttribute("markerUnits", "userSpaceOnUse");
+    mk2.setAttribute("markerWidth", "11"); mk2.setAttribute("markerHeight", "11");
+    mk2.setAttribute("orient", "auto");
+    var mp = document.createElementNS(NS, "path");
+    mp.setAttribute("d", "M0,0.6 L7.4,4 L0,7.4 z");
+    mp.setAttribute("class", cls);
+    mk2.appendChild(mp);
+    return mk2;
+  }
+  var mk = mkArrow("arrow", "arrowhead");
+  var mkLit = mkArrow("arrow-lit", "arrowhead-lit");
+  
   defs.appendChild(mk);
+  defs.appendChild(mkLit);
 
   function el(tag, attrs, parent) {
     var e = document.createElementNS(NS, tag);
