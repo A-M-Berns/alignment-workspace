@@ -250,7 +250,8 @@ svg#map .net-edge .wire { fill: none; stroke-linecap: round; stroke-linejoin: ro
 svg#map .goalwash { display: none; }
 svg#map g.scene.focus g.cap:not(.nb) { opacity: 0.16; }
 svg#map g.scene.focus .net-edge:not(.lit) { opacity: 0.05; }
-#map-fit { background: none; border: 1px solid var(--rule); color: var(--muted); font: inherit; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.2em 0.7em; border-radius: 6px; cursor: pointer; margin-left: 0.9em; }
+#map-fit { background: none; border: 1px solid var(--rule); color: var(--muted); font: inherit; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.3em 0.8em; border-radius: 6px; cursor: pointer; margin-left: auto; align-self: center; }
+header.top #map-fit + form.search { margin-left: 0; }
 #map-fit:hover { color: #ececec; border-color: #ececec; }
 
 .search-chip { font-size: 0.72rem; color: var(--muted); margin-left: 0.5em; text-transform: uppercase; letter-spacing: 0.05em; }

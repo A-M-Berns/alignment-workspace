@@ -609,7 +609,7 @@ def front_page(site: Site, lede_html: str, feed_rows: list[str]) -> str:
         + "</ul></section></noscript>")
     body = ['<div class="map-full"><div class="map-stage">'
             '<svg id="map" role="application" aria-label="the argument map"></svg>'
-            '<div class="map-side overlay"><span id="map-legend"></span><button id="map-fit" type="button">fit map</button></div>'
+            '<div class="map-side overlay"><span id="map-legend"></span></div>'
             '<span class="map-hint overlay muted">everything feeds the program at the centre · drag to pan · scroll to zoom · click a node · esc backs out</span>'
             '<div id="map-card" hidden></div>'
             '<div id="map-modal"><div id="map-panel"><button id="map-panel-close" aria-label="close">×</button><div id="map-panel-body"></div></div></div>'
@@ -617,7 +617,7 @@ def front_page(site: Site, lede_html: str, feed_rows: list[str]) -> str:
             noscript,
             f'<div class="below-map"><p class="question">{esc(top["question"])}</p>{lede_html}</div>',
             "<div class=\"below-map\"><details class=\"front-feed\"><summary>Recent in the feed</summary><ul class=\"feed\">" + "".join(feed_rows[:12]) + "</ul><p><a href=\"/feed/\">The whole feed</a>.</p></details></div>"]
-    return layout(site, "Research map", "\n".join(body)).replace("</head>", f'<script defer src="/assets/map.js?v={esc(site.repo.commit[:12])}"></script></head>')
+    return layout(site, "Research map", "\n".join(body)).replace("</head>", f'<script defer src="/assets/map.js?v={esc(site.repo.commit[:12])}"></script></head>').replace('<form class="search"', '<button id="map-fit" type="button">fit map</button><form class="search"')
 
 
 def map_data(site: Site) -> dict:
