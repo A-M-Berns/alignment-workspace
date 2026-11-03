@@ -115,7 +115,7 @@ svg#map g.tone-slate, svg#map g.tone-plain { color: var(--slate); }
 svg#map g.tone-bone, svg#map g.tone-group { color: var(--accent); }
 svg#map g.dot.drafted .core { opacity: 0.6; }
 svg#map .net-edge .wire { stroke: #c8c4ba; opacity: 0.14; transition: opacity 0.16s ease; }
-svg#map .net-edge .hit { stroke: transparent; }
+svg#map .net-edge .hit { stroke: transparent; vector-effect: non-scaling-stroke; }
 svg#map .net-edge:hover .wire { opacity: 0.75; }
 svg#map .net-edge.lit .wire { opacity: 0.4; }
 #map-tip { position: absolute; max-width: 300px; background: #0e0e10f2; border: 1px solid var(--rule); border-radius: 6px; padding: 0.45em 0.7em; font-size: 0.8rem; line-height: 1.4; color: var(--fg); pointer-events: none; z-index: 5; box-shadow: 0 4px 16px rgba(0,0,0,0.6); }
@@ -242,13 +242,11 @@ svg#map g.cap.tone-bone .cap-title { font-weight: 700; }
 svg#map g.cap.program .pill { fill: var(--accent); stroke: none; }
 svg#map g.cap.program .cap-title { fill: #101013; font-weight: 720; }
 svg#map g.cap.hit-mark .pill { stroke: #ececec; stroke-width: 2.5px; }
-svg#map .net-edge .wire { stroke: #92928c; opacity: 0.25; }
+svg#map .net-edge .wire { stroke: #92928c; opacity: 0.25; vector-effect: non-scaling-stroke; }
 svg#map .net-edge.undirected .wire { opacity: 0.12; }
 svg#map .net-edge.lit .wire { stroke: #ececec; opacity: 0.75; }
 svg#map .net-edge:hover .wire { stroke: #ececec; opacity: 1; }
-svg#map .arrowhead { fill: #92928c; }
-svg#map .arrowhead-lit { fill: #ececec; }
-svg#map .net-edge:not(.undirected).lit .wire, svg#map .net-edge:not(.undirected):hover .wire { marker-end: url("#arrow-lit"); }
+svg#map .net-edge .wire { fill: none; stroke-linecap: round; stroke-linejoin: round; }
 svg#map .goalwash { display: none; }
 svg#map g.scene.focus g.cap:not(.nb) { opacity: 0.16; }
 svg#map g.scene.focus .net-edge:not(.lit) { opacity: 0.05; }

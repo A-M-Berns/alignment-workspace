@@ -18,28 +18,6 @@
   svg.appendChild(defs);
   var cam = document.createElementNS(NS, "g");
   svg.appendChild(cam);
-  // two markers with explicit fills, swapped by CSS per state: context-stroke is not
-  // supported everywhere, and an unsupported fill falls back to black
-  function mkArrow(id2, cls) {
-    var mk2 = document.createElementNS(NS, "marker");
-    mk2.setAttribute("id", id2);
-    mk2.setAttribute("viewBox", "0 0 8 8");
-    mk2.setAttribute("refX", "7.4"); mk2.setAttribute("refY", "4");
-    mk2.setAttribute("markerUnits", "userSpaceOnUse");
-    mk2.setAttribute("markerWidth", "11"); mk2.setAttribute("markerHeight", "11");
-    mk2.setAttribute("orient", "auto");
-    var mp = document.createElementNS(NS, "path");
-    mp.setAttribute("d", "M0,0.6 L7.4,4 L0,7.4 z");
-    mp.setAttribute("class", cls);
-    mk2.appendChild(mp);
-    return mk2;
-  }
-  var mk = mkArrow("arrow", "arrowhead");
-  var mkLit = mkArrow("arrow-lit", "arrowhead-lit");
-  
-  defs.appendChild(mk);
-  defs.appendChild(mkLit);
-
   function el(tag, attrs, parent) {
     var e = document.createElementNS(NS, tag);
     for (var k in attrs) e.setAttribute(k, attrs[k]);
@@ -391,9 +369,19 @@
       var p1 = boundaryPoint(L[0], c.x, c.y, 2);
       var p2 = boundaryPoint(L[1], a.x, a.y, L[5] ? 0.5 : 0.5);
       var d = "M" + p1[0] + "," + p1[1] + " L" + p2[0] + "," + p2[1];
+      if (!L[5]) {
+        var ux = p2[0] - p1[0], uy = p2[1] - p1[1];
+        var ul = Math.sqrt(ux * ux + uy * uy) || 1;
+        ux /= ul; uy /= ul;
+        var AL = 9, AW = 0.42;
+        var b1x = p2[0] - AL * (ux * Math.cos(AW) - uy * Math.sin(AW));
+        var b1y = p2[1] - AL * (uy * Math.cos(AW) + ux * Math.sin(AW));
+        var b2x = p2[0] - AL * (ux * Math.cos(AW) + uy * Math.sin(AW));
+        var b2y = p2[1] - AL * (uy * Math.cos(AW) - ux * Math.sin(AW));
+        d += " M" + b1x + "," + b1y + " L" + p2[0] + "," + p2[1] + " L" + b2x + "," + b2y;
+      }
       var grp = el("g", { "class": "net-edge" + (L[5] ? " undirected" : "") }, eg);
       var wire = el("path", { d: d, "class": "wire", "stroke-width": Math.min(1.0 + L[2] * 0.08, 1.6) }, grp);
-      if (!L[5]) wire.setAttribute("marker-end", "url(#arrow)");
       el("path", { d: d, "class": "hit", "stroke-width": 13 }, grp);
       grp.addEventListener("click", function (ev) { ev.stopPropagation(); edgeCard(L, ev); });
       (incident[L[0]] = incident[L[0]] || []).push(grp);
