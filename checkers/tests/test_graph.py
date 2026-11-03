@@ -380,6 +380,20 @@ class Refusals(Base):
         self.tree(extra={"h1": [f'{{"id": "h1-42", "by": "@h1", {BASE}, "kind": "gestalt", "target": {{"node": "plan-a"}}, "estimate": [0.1, 0.3], "reason": "x", "derived": false}}']})
         self.assertEqual(run(self.root)[0], 0)
 
+    def test_assessment_shape_and_supersession(self):
+        # a valid assessment is accepted; superseding the author's own earlier one is too;
+        # and it mints no level and moves no number
+        self.tree()
+        base = self.derived()
+        self.tree(extra={"h2": [
+            f'{{"id": "h2-70", "by": "@h2", {BASE}, "kind": "assessment", "target": {{"node": "shared-leaf"}}, '
+            '"stance": "dispute", "aspect": "applicability", "verbatim": "the deployment story needs A7"}',
+            f'{{"id": "h2-71", "by": "@h2", {BASE}, "kind": "assessment", "target": {{"node": "shared-leaf"}}, '
+            '"stance": "uncertain", "aspect": "applicability", "verbatim": "A7 may be dischargeable", "supersedes": "h2-70"}']})
+        with_a = self.derived()
+        self.assertEqual(base["nodes"]["shared-leaf"].get("V"), with_a["nodes"]["shared-leaf"].get("V"))
+        self.assertEqual(base["nodes"]["shared-leaf"].get("J"), with_a["nodes"]["shared-leaf"].get("J"))
+
     def test_rule5_external_carries_ref(self):
         self.tree(extra={"h2": [f'{{"id": "h2-43", "by": "@h2", {BASE}, "kind": "external", "target": {{"node": "shared-leaf"}}}}']})
         self.assertIn("carries ref", self.refused(5))

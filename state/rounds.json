@@ -2096,6 +2096,19 @@
       "registered_classes": [],
       "prompt": "prompts/2026-10-30-site-work-weighting/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-11-02-epistemic-assessments",
+      "date": "2026-11-02",
+      "project": "enabling",
+      "path": "projects/enabling/rounds/2026-11-02-epistemic-assessments",
+      "verdict": null,
+      "depends_on": [
+        "2026-10-30-site-work-weighting"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-11-02-epistemic-assessments/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

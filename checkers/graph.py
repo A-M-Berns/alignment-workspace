@@ -110,7 +110,9 @@ _DECISION_LINE = re.compile(r"<!-- decision: ([^;\s]+); touches: ([^;]*?)(; stat
 PRESETS = {"worst-case", "probabilistic", "expected-utility"}
 EVENT_KINDS = {"map-read", "trace", "pass", "estimate", "gestalt", "admit", "classify",
                "identify", "approve", "audit", "withdraw", "external", "retrospective",
-               "survey", "rule", "attribution", "revise", "priority"}
+               "survey", "rule", "attribution", "revise", "priority", "assessment"}
+STANCES = {"support", "dispute", "uncertain", "abstain"}          # an assessment's stance (2026-11-02)
+ASPECTS = {"correctness", "applicability", "framing", "usefulness"}   # what the stance is about
 ATTRIBUTION_VERDICTS = {"vouched", "disputed"}
 HOWS = {"said", "approved"}
 VIAS = {"chat", "obsidian", "voice"}
@@ -1371,6 +1373,24 @@ def lint(t):
                 raise Refuse(5, path, "an attribution event carries verdict: vouched | disputed")
             if not e.get("ref"):
                 raise Refuse(5, path, "an attribution event carries ref, what the attribution was checked against")
+        if e["kind"] == "assessment":
+            # a human's current stance on a node, revision-bound through the event's version:
+            # support, dispute, uncertain or abstain, on a named aspect, with the rationale in
+            # the human's own words. It mints no level and moves no number; it supersedes only
+            # its author's own earlier assessment, so disagreement between humans stays visible
+            if tk[0] != "node" or not is_human(t, e["by"]):
+                raise Refuse(5, path, "an assessment is a human handle's stance and targets a node")
+            if e.get("stance") not in STANCES:
+                raise Refuse(5, path, f"an assessment carries stance: {' | '.join(sorted(STANCES))}")
+            if e.get("aspect") not in ASPECTS:
+                raise Refuse(5, path, f"an assessment carries aspect: {' | '.join(sorted(ASPECTS))}")
+            if not str(e.get("verbatim") or "").strip():
+                raise Refuse(5, path, "an assessment carries the human's rationale in verbatim")
+            sup = e.get("supersedes")
+            if sup is not None:
+                prev = eids.get(sup)
+                if not prev or prev["by"] != e["by"] or prev.get("kind") != "assessment" or target_key(prev["target"]) != tk:
+                    raise Refuse(5, path, "supersedes names the author's own earlier assessment of the same node")
         if e["kind"] == "rule" and "rows" in e:
             # a ruling on a table's weights and conditionals: the maintainer's J 8 judgments, one event for every row
             cnode = nodes.get(tk[1]) if tk[0] == "node" else None
@@ -5243,6 +5263,23 @@ NULL_INPUTS = [
     ("an event whose version is above its node's", 5, {"extra": {"h1": [
         f'{{"id": "h1-n5", "by": "@h1", "date": "2026-09-20", "rule": "2026-10-02.1", "via": "chat", "version": 2, "kind": "estimate", '
         '"target": {"node": "alt-2"}, "estimate": [0.5, 0.5], "reason": "x"}']}}),
+    # assessments (2026-11-02)
+    ("an assessment by an AI handle", 5, {"extra": {"ai": [
+        f'{{"id": "ai-n2", "by": "@ai", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "stance": "support", "aspect": "correctness", "verbatim": "x", "gloss": "x"}}']}}),
+    ("an assessment with a stance outside the four", 5, {"extra": {"h1": [
+        f'{{"id": "h1-n12", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "stance": "proved", "aspect": "correctness", "verbatim": "x"}}']}}),
+    ("an assessment with an unknown aspect", 5, {"extra": {"h1": [
+        f'{{"id": "h1-n13", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "stance": "support", "aspect": "vibes", "verbatim": "x"}}']}}),
+    ("an assessment without its rationale", 5, {"extra": {"h1": [
+        f'{{"id": "h1-n14", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "stance": "support", "aspect": "correctness"}}']}}),
+    ("an assessment on a row", 5, {"extra": {"h1": [
+        f'{{"id": "h1-n15", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"row": ["cases-x", "pic-h"]}}, "stance": "support", "aspect": "correctness", "verbatim": "x"}}']}}),
+    ("an assessment superseding another handle's event", 5, {"extra": {
+        "h1": [f'{{"id": "h1-n16", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "stance": "support", "aspect": "correctness", "verbatim": "x"}}'],
+        "h2": [f'{{"id": "h2-n1", "by": "@h2", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "stance": "dispute", "aspect": "correctness", "verbatim": "x", "supersedes": "h1-n16"}}']}}),
+    ("an assessment superseding an assessment of a different node", 5, {"extra": {"h1": [
+        f'{{"id": "h1-n17", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "stance": "support", "aspect": "correctness", "verbatim": "x"}}',
+        f'{{"id": "h1-n18", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "shared-leaf"}}, "stance": "support", "aspect": "correctness", "verbatim": "x", "supersedes": "h1-n17"}}']}}),
     ("a rate row below zero minutes", 10, {"edits": [("policy.yaml", "reread:   {S: 4", "reread:   {S: -1")]}),
     # owners, frames, wants, priorities, tasks
     ("a frame owned by an AI handle", 2, {"programme": True, "edits": [("nodes/prog.md", 'owner: "@h1"', 'owner: "@ai"')]}),

@@ -936,7 +936,8 @@ says what a person has or has not read, done, drafted, started or settled
 answer), every acceptance of a draft, every vetting event (map-read, trace,
 pass), every `attribution` verdict (the user, not the node's author, read
 the cited source and says the attribution is honest or disputes it), every
-withdrawal, every `revise` (the user revised a node's Statement by hand),
+withdrawal, every `revise` (the user revised a node's Statement by hand), every
+`assessment` (the user's stance on a node, their rationale in `verbatim`),
 every `priority` word on a want, and every want: a want is filed under its
 user's handle as owner, from what the user said in the session or, with
 `filed_from: quote`, from words the user wrote in a public document, and it
@@ -1073,7 +1074,7 @@ decision reads.
 an unmapped handle, an AI handle that is not its model's slug (an AI's handle
 is derived from the model string, never chosen; the two minted before
 2026-10-24 are marked `legacy`), an AI handle's level-minting event, acceptance, tag,
-`revise` or `priority`, an AI handle's number without its reasoning, or an
+`revise`, `priority` or `assessment`, an AI handle's number without its reasoning, or an
 AI handle's number on a want; a priority word by anyone but the want's
 owner; a withdrawal of someone else's event; a regenerated file edited by
 hand; a proposal applied without a counted `approve`; a frame without a

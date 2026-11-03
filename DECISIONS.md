@@ -40,6 +40,15 @@ maintainer's.
 below.** The next round dispatched from that conversation lands it as its first
 commit.
 
+- **Abram's read of the `assessment` event kind (2026-11-02).** The protocol gains a
+  human stance event (`support | dispute | uncertain | abstain`, aspect, verbatim
+  rationale, own-ledger supersession), marked **Default** in `graph/PROTOCOL.md` §5 and
+  adopted on the dispatching maintainer's ruling above.
+  *Turns on:* external knowledge — the other maintainer owns several frames and works the
+  ledger protocol; whether the stance and aspect vocabulary fits his workflow is his to
+  say, and a word that ships wrong is hard to retire.
+  <!-- decision: open--abram-read-assessment-event; touches: none; status: open -->
+
 - **How epistemic status is represented per concept node on the map (2026-10-30).**
   The maintainer holds that per-node epistemic status will be very important on the
   research map and defers the representation choice. The data exists (registry classes
@@ -6909,3 +6918,24 @@ null-input self-test). Findings are filed on the standing issue *Freshness audit
 job holding `issues: write` under the Security section's five conditions, on the
 pin-bump pattern; the audit gates no merge. A finding is a request for a round — the
 answer to drift is dispatched curation, never silent automation of content.
+
+### 2026-11-02 — the assessment event: epistemic status as three derived views
+<!-- decision: 2026-11-02--assessment-event-three-views; touches: none -->
+
+**Maintainer ruling, taken in conversation on 2026-11-02.** Epistemic status on the site
+is three views of repository state, never one editable field: the registry's mechanical
+class (untouchable from any interface), contest state (derived from case, response and
+resolution artifacts — a response never resolves a case by existing), and human
+assessment — the new ledger event kind `assessment`, the one view a human changes from
+the site, through a generated event submitted over GitHub. Freeform comments are not part
+of the site; unstructured contact becomes a chatbot tool that files an issue.
+
+**Agent-decided, reversible** (adopted on the dispatch; the rejected alternatives in one
+line each): the stance vocabulary is `support | dispute | uncertain | abstain` with a
+required `verbatim` rationale, against free text with a head word (harder to validate and
+to render); aspects are `correctness | applicability | framing | usefulness`, against no
+aspect field (a dispute of a theorem's relevance would read as a dispute of the theorem);
+supersession is explicit and own-ledger only, against latest-by-timestamp (a race, and it
+would resolve disagreement between humans that should stay visible); assessments live in
+the graph ledgers, against a separate statuses file (a parallel ontology). Revision
+binding comes from the event's existing `version` field and staleness derivation.

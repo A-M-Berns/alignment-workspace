@@ -134,3 +134,4 @@ Registered classes are classes actually promoted by the round; an empty cell mea
 | 2026-10-22-map-as-canonical | 2026-10-22 | workspace | `prompts/2026-10-22-map-as-canonical` | — | — | `prompts/2026-10-22-map-as-canonical/PROMPT.md` | — |
 | 2026-10-24-site-vertical-slice | 2026-10-24 | enabling | `projects/enabling/rounds/2026-10-24-site-vertical-slice` | — | — | `prompts/2026-10-24-site-vertical-slice/PROMPT.md` | — |
 | 2026-10-30-site-work-weighting | 2026-10-30 | enabling | `projects/enabling/rounds/2026-10-30-site-work-weighting` | — | — | `prompts/2026-10-30-site-work-weighting/PROMPT.md` | — |
+| 2026-11-02-epistemic-assessments | 2026-11-02 | enabling | `projects/enabling/rounds/2026-11-02-epistemic-assessments` | — | — | `prompts/2026-11-02-epistemic-assessments/PROMPT.md` | — |
