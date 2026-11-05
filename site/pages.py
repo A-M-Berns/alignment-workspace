@@ -54,7 +54,7 @@ class Site:
 
 def layout(site: Site, title: str, body: str, crumbs: list[tuple[str, str]] | None = None, subtitle: str = "") -> str:
     r = site.repo
-    nav = ('<a href="/map/">map</a><a href="/chat/">chatbot</a><a href="/stats/">stats</a>'
+    nav = ('<a href="/map/">map</a><a href="/chat/">chatbot</a><a href="/activity/">activity</a>'
            '<a href="https://github.com/A-M-Berns/alignment-workspace">repo</a>')
     crumb_html = ""
     if crumbs:
@@ -641,6 +641,12 @@ def concept_context(site: Site, cid: str) -> str:
     return "".join(parts)
 
 
+def scoreable(e: dict) -> bool:
+    """A research thread is navigated, not scored; prior work is cited, not scored
+    (ruling of 2026-11-05). The concrete content takes the three axes."""
+    return e.get("kind") not in ("goal", "work")
+
+
 def concept_version(site: Site, cid: str) -> int:
     r = site.repo
     refs = [x for x in (r.concepts[cid].get("refs") or []) if x in r.nodes]
@@ -659,7 +665,7 @@ def concept_full(site: Site, cid: str, with_head: bool = True) -> str:
     head = (f'<p class="frag-head">{site.link("concepts", cid, e.get("title", cid))} <span class="kind">{esc(kind_label_)}</span></p>'
             if with_head else "")
     lede = f'<p class="concept-lede">{esc(str(e.get("blurb") or ""))}</p>'
-    assessed = e.get("kind") != "work"
+    assessed = scoreable(e)
     hero = assess_block(site, r.concept_assessments(cid), r.concept_hero(cid),
                         {"concept": cid}, concept_version(site, cid), site.url("concepts", cid)) if assessed else ""
     ctx = concept_context(site, cid) if assessed else ""
@@ -775,7 +781,7 @@ def landing_page(site: Site) -> str:
     v = esc(site.repo.commit[:12])
     tiles = (('map', '/map/'),
              ('chatbot', '/chat/'),
-             ('stats', '/stats/'),
+             ('activity', '/activity/'),
              ('repo', 'https://github.com/A-M-Berns/alignment-workspace'))
     cards = "".join(
         f'<a class="tile" href="{esc(u)}"><span class="tile-name">{esc(n)}</span></a>'
@@ -955,7 +961,7 @@ def map_data(site: Site) -> dict:
             if x not in r.nodes:
                 site.unresolved.append(f"concepts:{cid}:ref:{x}")
         hx = None
-        if e.get("kind") != "work":
+        if scoreable(e):
             hh = r.concept_hero(cid)
             hx = {a[0]: [hh[a]["d"], hh[a]["cls"]] for a in ("reliability", "importance", "clarity")}
         meta[cid] = {"k": e.get("kind", ""), "w": e.get("wiki") or "", "t": e.get("title", cid),
@@ -981,6 +987,46 @@ def feed_rows(site: Site) -> list[str]:
 
 def feed_page(site: Site, rows: list[str]) -> str:
     return layout(site, "Feed", "<p class=\"muted\">Rounds, claims registered and decisions landed, by date, from state/rounds.json, the registries' origin rounds and the decision anchors.</p><ul class=\"feed\">" + "".join(rows) + "</ul>")
+
+
+def activity_page(site: Site, rows: list[str]) -> str:
+    """Where to look, then what just happened. The pointers are derived from the standing
+    scores — contested axes first, then concepts scored important whose reliability has
+    not caught up, then the unscored — and they are invitations, not an ordering: the map
+    is the whole record, and attention brought from outside it is the point."""
+    r = site.repo
+    contested, behind, unscored = [], [], []
+    for cid, e in r.concepts.items():
+        if not scoreable(e):
+            continue
+        h = r.concept_hero(cid)
+        link = site.link("concepts", cid, e.get("title", cid))
+        axes_c = [a for a in ("reliability", "importance", "clarity") if h[a]["contested"]]
+        if axes_c:
+            contested.append(f'<li>{link} — {", ".join(axes_c)} contested</li>')
+        imp, rel = h["importance"], h["reliability"]
+        if imp["d"].isdigit() and int(imp["d"]) >= 4 and (not rel["d"].isdigit() or int(rel["d"]) < int(imp["d"])):
+            who = " (AI seed)" if imp["ai"] else ""
+            behind.append(f'<li>{link} — importance {esc(imp["d"])}{who}, reliability {esc(rel["d"])}</li>')
+        if all(h[a]["d"] == "–" for a in ("reliability", "importance", "clarity")):
+            unscored.append(link)
+    body = ["<section><h2>Where to look</h2>"]
+    body.append("<h3>Disagreements to read</h3>")
+    body.append("<ul class=\"listing\">" + "".join(contested) + "</ul>" if contested
+                else '<p class="muted">No axis is contested right now.</p>')
+    body.append("<h3>Scored important, reliability behind</h3>")
+    body.append("<ul class=\"listing\">" + "".join(behind) + "</ul>" if behind
+                else '<p class="muted">Nothing currently sits in this gap.</p>')
+    body.append("<h3>Unscored</h3>")
+    if unscored:
+        body.append(f'<p>{len(unscored)} concepts carry no score on any axis yet — among them '
+                    + ", ".join(unscored[:6]) + ".</p>")
+    else:
+        body.append('<p class="muted">Every scoreable concept carries at least one score.</p>')
+    body.append('<p class="muted">These are invitations, not an ordering — the <a href="/map/">map</a> is the whole record, and your own read of it is the contribution.</p></section>')
+    body.append("<section><h2>Recent</h2><ul class=\"feed\">" + "".join(rows[:25])
+                + '</ul><p><a href="/feed/">The whole feed</a>.</p></section>')
+    return layout(site, "Activity", "".join(body))
 
 
 def spine_page(site: Site) -> str:

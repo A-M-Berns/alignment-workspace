@@ -6978,3 +6978,17 @@ those on any graph node that backs it. Prior-work concepts carry no hero: they a
 not assessed. Rejected alternative: filing a graph node for every concept, which would
 put 51 unargued nodes into the argument map to serve a display.
 
+### 2026-11-05 — research threads and prior work are not scored; /activity/
+<!-- decision: 2026-11-05--threads-unscored-activity-page; touches: checkers/graph.py, graph/PROTOCOL.md, site/ -->
+
+**Maintainer ruling, taken in conversation on 2026-11-05:** concepts like the overall
+research program are not scored, and the site points at where to look while leaving a
+reader free to bring their own attention; the stats page is the place recent activity
+shows, under a better name. The round's reading, agent-decided and reversible: the
+unscoreable class is the concept kinds `goal` (research threads — navigated) and `work`
+(prior work — cited), refused by the checker; the rejected alternative was excluding only
+the program node itself. `/activity/` replaces the stats holding page: contested axes,
+concepts scored important whose reliability has not caught up (a filter over named
+scores, never arithmetic on them), the unscored count, then the recent feed — each
+labelled an invitation, not an ordering.
+

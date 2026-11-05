@@ -396,7 +396,7 @@ class Tree:
         self.decisions = {}       # DECISIONS.md anchors: {anchor: {date, title, status, touches}}
         self.rounds = {}          # state/rounds.json: {id or path: record}
         self.foundations = set()  # state/foundations.json ids
-        self.concepts = set()     # state/concepts.json ids, assessment targets
+        self.concepts = {}        # state/concepts.json id -> kind, assessment targets
 
     def rel(self, p):
         try:
@@ -495,7 +495,7 @@ def load_tree(root, registry=None):
     cpath = t.root / "state" / "concepts.json"
     if cpath.is_file():
         try:
-            t.concepts = {c["id"] for c in json.loads(cpath.read_text()).get("concepts") or []}
+            t.concepts = {c["id"]: str(c.get("kind") or "") for c in json.loads(cpath.read_text()).get("concepts") or []}
         except (json.JSONDecodeError, KeyError, TypeError):
             t.warnings.append("state/concepts.json: not readable; concept targets resolve to nothing")
     # the claims registries every derivation reads (`registries:` in policy.yaml, paths from the repository root), plus one a
@@ -1313,11 +1313,15 @@ def lint(t):
         if tk[0] == "event" and tk[1] not in eids:
             raise Refuse(1, path, f"target event {tk[1]!r} resolves to no event")
         if tk[0] == "concept":
-            # the site map's concepts (state/concepts.json) take assessments and nothing else
+            # the site map's concepts (state/concepts.json) take assessments and nothing
+            # else; a research thread is navigated, not scored, and prior work is cited,
+            # not scored (ruling of 2026-11-05)
             if e["kind"] != "assessment":
                 raise Refuse(2, path, "a concept target carries only an assessment")
             if tk[1] not in t.concepts:
                 raise Refuse(1, path, f"target concept {tk[1]!r} resolves to no concept")
+            if t.concepts[tk[1]] in ("goal", "work"):
+                raise Refuse(5, path, f"concept {tk[1]!r} is a {'research thread' if t.concepts[tk[1]] == 'goal' else 'prior work'}: navigated or cited, not scored")
         vnode = tk[1] if tk[0] == "node" else tk[2] if tk[0] == "row" else None
         if vnode and isinstance(e.get("version"), int) and e["version"] > nodes[vnode]["version"]:
             raise Refuse(5, path, f"version {e['version']} is above {vnode}'s current version {nodes[vnode]['version']}")
@@ -5150,6 +5154,10 @@ users:
     (g / "frame.yaml").write_text(frame)
     (g / "policy.yaml").write_text(policy)
     (g / "DESIGN-LOG.md").write_text("# Design log\n\n- 2026-10-02 change @ai — synthetic graph written for the checker's tests\n")
+    for rel, text in (kw.get("files") or {}).items():
+        p = root / rel
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(text)
     return root
 
 
@@ -5306,6 +5314,10 @@ NULL_INPUTS = [
         f'{{"id": "h1-n19", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"concept": "no-such-concept"}}, "axis": "reliability", "score": 4, "verbatim": "x"}}']}}),
     ("a non-assessment event on a concept", 2, {"extra": {"h1": [
         f'{{"id": "h1-n20", "by": "@h1", {_NB}, "kind": "estimate", "target": {{"concept": "no-such-concept"}}, "estimate": 0.5, "gloss": "x"}}']}}),
+    ("an assessment on a research-thread concept", 5, {
+        "files": {"state/concepts.json": '{"concepts": [{"id": "prog", "kind": "goal", "title": "P", "blurb": "x"}]}'},
+        "extra": {"h1": [
+            f'{{"id": "h1-n21", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"concept": "prog"}}, "axis": "importance", "score": 4, "verbatim": "x"}}']}}),
     ("a rate row below zero minutes", 10, {"edits": [("policy.yaml", "reread:   {S: 4", "reread:   {S: -1")]}),
     # owners, frames, wants, priorities, tasks
     ("a frame owned by an AI handle", 2, {"programme": True, "edits": [("nodes/prog.md", 'owner: "@h1"', 'owner: "@ai"')]}),

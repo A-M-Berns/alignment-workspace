@@ -402,11 +402,14 @@ class Refusals(Base):
             '"axis": "importance", "score": 4, "verbatim": "the relation the program builds"}']})
         (self.root / "state").mkdir(exist_ok=True)
         (self.root / "state" / "concepts.json").write_text(
-            '{"concepts": [{"id": "answerability", "kind": "philosophy", "title": "Answerability", "blurb": "x"}]}')
+            '{"concepts": [{"id": "answerability", "kind": "philosophy", "title": "Answerability", "blurb": "x"},'
+            ' {"id": "the-program", "kind": "goal", "title": "Program", "blurb": "x"}]}')
         self.derived()
         self.edit("graph/events/h2.jsonl", '"concept": "answerability"', '"concept": "no-such"')
         self.assertIn("resolves to no concept", self.refused(1))
-        self.edit("graph/events/h2.jsonl", '"concept": "no-such"', '"concept": "answerability"')
+        self.edit("graph/events/h2.jsonl", '"concept": "no-such"', '"concept": "the-program"')
+        self.assertIn("navigated or cited, not scored", self.refused(5))
+        self.edit("graph/events/h2.jsonl", '"concept": "the-program"', '"concept": "answerability"')
         self.edit("graph/events/h2.jsonl", '"kind": "assessment", "target": {"concept": "answerability"}, "axis": "importance", "score": 4, ',
                   '"kind": "estimate", "target": {"concept": "answerability"}, "estimate": 0.5, ')
         self.assertIn("a concept target carries only an assessment", self.refused(2))

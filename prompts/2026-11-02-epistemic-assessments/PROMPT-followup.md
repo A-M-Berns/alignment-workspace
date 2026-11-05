@@ -61,6 +61,12 @@ Maintainer directives, in conversation on the preview, verbatim:
 > gamify (you can use an astra consult, and also use an astra consult on the general flow
 > and site and everything)
 
+> i agree that stuff like "overall research program" shouldn't be scored. i also agree
+> that the site itself should in some sense tell you where to look, but it should also
+> leave things open for you to bring your own attention and energy. I agree that /stats/
+> can be used this way in some sense (and maybe should have a better name, i was
+> envisioning that as the place where like recent activity is shown etc)
+
 > Ok so a few things. First of all, each node on the map should have this hero panel
 > thing whereas i think most of them currently don't. At least, the ones where there is
 > enough content on the page where this can be evaluated that way (and maybe with the

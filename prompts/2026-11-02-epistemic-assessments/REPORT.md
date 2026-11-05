@@ -91,7 +91,17 @@ score tints, and node size as work-volume is questioned; /stats/ should be a rev
 queue ("ready for outside review" first); the chatbot's best role is contribution
 assistant (explain the claim, draft the challenge) entering after the plain flow works;
 and "importance minus reliability" should stay a filter over named assessments, never an
-arithmetic score — ordinal scales do not subtract. The first push of the site side shipped the composer's markup without
+arithmetic score — ordinal scales do not subtract.
+
+Of those, the maintainer ruled on three (2026-11-05 entry): research-thread and
+prior-work concepts take no assessment — the checker refuses one, with its null-input
+case and a `files` hook the synthetic tree gained for it — so the scored surface is the
+53 concrete concepts; `/activity/` replaces the stats holding page, leading with where to
+look (contested axes, important-with-reliability-behind as a filter over named scores,
+the unscored count) and ending with the recent feed, each labelled an invitation rather
+than an ordering; and the site keeps the reader free to ignore all of it. The other
+consult items — the proposition-first panel order, issue-first submission, map workflow
+badges, the chatbot's role — stay recorded, not built. The first push of the site side shipped the composer's markup without
 its script (an apply step was dropped); caught when the maintainer looked for the panel,
 fixed in the following commit.
 Rendering is verified by an injected-event test (supersession filtered, staleness marked,
