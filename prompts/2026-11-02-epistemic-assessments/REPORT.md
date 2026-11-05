@@ -60,7 +60,38 @@ beneath it, the context panel with the per-axis controls and composer, on its on
 More page: title and kind, hero, context, the registry blurb, then the wiki page or the
 backing claim's Statement beside the connections and merged work. A concept's displayed
 scores merge those on the concept with those on any backing node, and the map data feeds
-the mini-hero for all assessed concepts. The first push of the site side shipped the composer's markup without
+the mini-hero for all assessed concepts.
+
+The panel's form (follow-up of 2026-11-05, shaped by a fourth GPT-6 Astra consult): the
+hero is the scoring control. Each axis card carries the standing number (a vouch button
+when an uncontested human score stands), a status line (no human score yet / an AI seed /
+N contributors / human disagreement), and a 1-5 picker in the axis ramp; standing human
+values are underlined in the picker. Picking a number opens the one shared editor
+beneath the hero — its headline derives the move from the pick against the standing
+score ("The first reliability score: 4", "Support reliability 4", "Challenge reliability
+4 with 2"), so vouch and challenge are never asked — with the handle (remembered
+locally), one required sentence, and "Sign the move". Signing swaps the editor for a
+receipt: the move in words, the exact event line, Copy event, the ledger link, and the
+honest status ("Prepared locally — not yet submitted" → "Copied — paste and commit; it
+publishes on the next build"). A contested axis adds a one-line callout naming it. The
+context panel keeps only the facts and the standing scores with their rationales. The
+flow is verified end-to-end in headless Chrome: pick opens the editor with the right
+headline, a whitespace rationale is refused, and the signed event parses with the right
+target, axis, score, via and id shape. Astra's remaining panel suggestions — a rubric
+disclosure for what the numbers mean, a published/awaiting state read back from the
+build, drafts preserved per axis — are noted, not built.
+
+The same consult pass took a second opinion on the whole flow (landing → map → read-more
+→ assess). Its headline findings, recorded for the maintainer rather than built: the
+hand-off that loses a visitor is "what exactly should I assess" (it wants the
+proposition and its support before any scores); a prefilled GitHub issue may be a
+gentler primary submit than the JSON copy for strangers; the map should carry workflow
+badges (unassessed / conflicting / open challenge) and a "find work" filter rather than
+score tints, and node size as work-volume is questioned; /stats/ should be a review
+queue ("ready for outside review" first); the chatbot's best role is contribution
+assistant (explain the claim, draft the challenge) entering after the plain flow works;
+and "importance minus reliability" should stay a filter over named assessments, never an
+arithmetic score — ordinal scales do not subtract. The first push of the site side shipped the composer's markup without
 its script (an apply step was dropped); caught when the maintainer looked for the panel,
 fixed in the following commit.
 Rendering is verified by an injected-event test (supersession filtered, staleness marked,

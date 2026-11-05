@@ -48,48 +48,75 @@
     }
   });
 
-  // Record my assessment: compose the exact ledger event and hand it to GitHub's editor
-  // on the author's own ledger. The site accepts no write. Exposed so the map can wire a
-  // composer it injects into the read-more modal.
+  // Scoring is a move: pick a number in the hero, give one sentence, sign and copy the
+  // exact ledger event into your own GitHub ledger. Vouch or challenge is derived from
+  // the picked number against the standing score. The site accepts no write. Exposed so
+  // the map can wire the block it injects into the read-more modal.
   window.wireAssess = function (root) {
-    var as2 = q("[data-assess]", root);
-    if (!as2 || as2.getAttribute("data-wired")) return;
-    as2.setAttribute("data-wired", "1");
-    var scope = as2.closest("section.context") || root || document;
-    (scope.querySelectorAll ? scope : document).querySelectorAll(".as-vouch, .as-challenge").forEach(function (b) {
+    var ed = q(".assess-editor[data-assess]", root);
+    if (!ed || ed.getAttribute("data-wired")) return;
+    ed.setAttribute("data-wired", "1");
+    var cfg = JSON.parse(ed.getAttribute("data-assess"));
+    var scope = root && root.querySelectorAll ? root : document;
+    var rc = ed.nextElementSibling; // .assess-receipt
+    var handleSel = q(".as-handle", ed);
+    cfg.handles.forEach(function (o) { var e = document.createElement("option"); e.value = o; e.textContent = o; handleSel.appendChild(e); });
+    try {
+      var saved = localStorage.getItem("aw-handle");
+      if (saved && cfg.handles.indexOf(saved) >= 0) handleSel.value = saved;
+      handleSel.addEventListener("change", function () { localStorage.setItem("aw-handle", handleSel.value); });
+    } catch (e) { /* storage may be unavailable */ }
+    var picked = null; // {axis, score}
+    function headline(axis, n) {
+      var st = cfg.standing[axis];
+      if (st.contested) return "Your " + axis + " score: " + n;
+      if (st.d === "–") return "The first " + axis + " score: " + n;
+      if (st.ai) return "The first human " + axis + " score: " + n + " (an AI seed stands at " + st.d + ")";
+      if (String(n) === st.d) return "Support " + axis + " " + st.d;
+      return "Challenge " + axis + " " + st.d + " with " + n;
+    }
+    function openEditor(axis, score) {
+      picked = { axis: axis, score: score };
+      scope.querySelectorAll(".seg.sel").forEach(function (s) { s.classList.remove("sel"); });
+      var seg = scope.querySelector('.seg[data-axis="' + axis + '"][data-score="' + score + '"]');
+      if (seg) seg.classList.add("sel");
+      q(".ed-head", ed).textContent = headline(axis, score);
+      var prev = cfg.active[handleSel.value + "|" + axis];
+      q(".ed-note", ed).textContent = prev ? "This replaces your earlier " + axis + " score; everyone else's stays." : "";
+      ed.hidden = false; rc.hidden = true;
+      q(".as-verbatim", ed).focus();
+      ed.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }
+    scope.querySelectorAll(".seg, button.hx-num").forEach(function (b) {
       b.addEventListener("click", function () {
-        as2.hidden = false;
-        q(".as-axis", as2).value = b.getAttribute("data-axis");
-        if (b.getAttribute("data-score")) q(".as-score", as2).value = b.getAttribute("data-score");
-        q(".as-verbatim", as2).focus();
-        as2.scrollIntoView({ block: "nearest", behavior: "smooth" });
+        openEditor(b.getAttribute("data-axis"), parseInt(b.getAttribute("data-score"), 10));
       });
     });
-    var cfg = JSON.parse(as2.getAttribute("data-assess"));
-    var fill = function (sel, opts) { opts.forEach(function (o) { var e = document.createElement("option"); e.value = o; e.textContent = o; sel.appendChild(e); }); };
-    fill(q(".as-handle", as2), cfg.handles);
-    fill(q(".as-axis", as2), cfg.axes);
-    fill(q(".as-score", as2), cfg.scores.map(String));
-    q(".as-make", as2).addEventListener("click", function () {
-      var handle = q(".as-handle", as2).value, axis = q(".as-axis", as2).value;
-      var score = parseInt(q(".as-score", as2).value, 10);
-      var verbatim = q(".as-verbatim", as2).value.trim();
-      var out = q(".as-out", as2), links = q(".as-links", as2);
-      if (!verbatim) { out.hidden = false; out.textContent = "The rationale is required: the event carries your own words in verbatim."; return; }
+    q(".as-make", ed).addEventListener("click", function () {
+      if (!picked) return;
+      var handle = handleSel.value;
+      var verbatim = q(".as-verbatim", ed).value.trim();
+      if (!verbatim) { q(".ed-note", ed).textContent = "The rationale is required: the event carries your own words. One clear sentence is enough."; return; }
       var today = new Date().toISOString().slice(0, 10);
       var tid = cfg.target.node || cfg.target.concept;
       var ev = {
-        id: handle.slice(1) + "-a-" + today.replace(/-/g, "") + "-" + axis + "-" + tid,
+        id: handle.slice(1) + "-a-" + today.replace(/-/g, "") + "-" + picked.axis + "-" + tid,
         by: handle, date: today, rule: cfg.rule, via: "site", version: cfg.version,
-        kind: "assessment", target: cfg.target, axis: axis, score: score, verbatim: verbatim
+        kind: "assessment", target: cfg.target, axis: picked.axis, score: picked.score, verbatim: verbatim
       };
-      if (cfg.active[handle + "|" + axis]) ev.supersedes = cfg.active[handle + "|" + axis];
+      if (cfg.active[handle + "|" + picked.axis]) ev.supersedes = cfg.active[handle + "|" + picked.axis];
       var line = JSON.stringify(ev);
-      out.hidden = false; out.textContent = line;
-      links.hidden = false;
-      q(".as-edit", as2).href = "https://github.com/A-M-Berns/alignment-workspace/edit/main/graph/events/" + handle.slice(1) + ".jsonl";
-      q(".as-copy", as2).onclick = function () {
-        navigator.clipboard.writeText(line).then(function () { q(".as-copy", as2).textContent = "Copied"; });
+      q(".rc-line", rc).textContent = handle + " · " + picked.axis + " " + picked.score + " — “" + verbatim + "”";
+      q(".as-out", rc).textContent = line;
+      q(".as-edit", rc).href = "https://github.com/A-M-Berns/alignment-workspace/edit/main/graph/events/" + handle.slice(1) + ".jsonl";
+      q(".rc-status", rc).textContent = "Prepared locally — not yet submitted.";
+      q(".as-copy", rc).textContent = "Copy event";
+      ed.hidden = true; rc.hidden = false;
+      q(".as-copy", rc).onclick = function () {
+        navigator.clipboard.writeText(line).then(function () {
+          q(".as-copy", rc).textContent = "Copied ✓";
+          q(".rc-status", rc).textContent = "Copied — paste the line at the end of your ledger on GitHub and commit; it publishes on the next build.";
+        });
       };
     });
   };

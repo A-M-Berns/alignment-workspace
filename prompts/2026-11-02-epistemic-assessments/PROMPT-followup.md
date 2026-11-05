@@ -57,6 +57,10 @@ Maintainer directives, in conversation on the preview, verbatim:
 > a render of the repository, never a second source. Structure and human events only; the
 > ranking is a lens, shown on /ranking/." everywhere
 
+> The interaction panel below the numbers and how it works is ugly, can we streamline and
+> gamify (you can use an astra consult, and also use an astra consult on the general flow
+> and site and everything)
+
 > Ok so a few things. First of all, each node on the map should have this hero panel
 > thing whereas i think most of them currently don't. At least, the ones where there is
 > enough content on the page where this can be evaluated that way (and maybe with the

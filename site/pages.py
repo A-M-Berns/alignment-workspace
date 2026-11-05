@@ -150,31 +150,100 @@ AXES = ("reliability", "importance", "clarity")
 SCORES = (1, 2, 3, 4, 5)
 
 
-def hero_html(h: dict) -> str:
-    """The hero: the three axes as large numbers, full width, before any text. Colour is the
-    axis hue, lightness the score; grey is an AI seed no human has touched; a range is two
-    humans disagreeing, which is the state the page invites the reader to resolve."""
-    cells = []
+def assess_block(site: Site, acts: list, h: dict, target: dict, version, url: str) -> str:
+    """The hero is the scoring control: per axis the standing number (a vouch button when
+    one stands), a status line, and a 1-5 picker in the axis ramp. Picking a number opens
+    the one shared editor beneath — vouch or challenge is derived from the number against
+    the standing score, never asked — and signing produces a receipt the reader copies
+    into their own ledger over GitHub. The site accepts no write."""
+    import json as _json
+    from urllib.parse import quote
+    r = site.repo
+    by_axis: dict = {}
+    active = {}
+    for e in acts:
+        by_axis.setdefault(str(e.get("axis")), []).append(e)
+        if not e["_ai"]:
+            active[str(e.get("by")) + "|" + str(e.get("axis"))] = str(e.get("id"))
+    cells, contested, standing = [], [], {}
     for axis in AXES:
         c = h[axis]
-        tags = ""
-        if c["ai"]:
-            tags += '<span class="hx-tag">AI</span>'
+        hums = [e for e in (by_axis.get(axis) or []) if not e["_ai"]]
+        standing[axis] = {"d": c["d"], "ai": c["ai"], "contested": c["contested"]}
         if c["contested"]:
-            tags += '<span class="hx-tag">contested</span>'
+            status, contested = "human disagreement", contested + [axis]
+        elif hums:
+            status = f'{len(hums)} contributor{"s" if len(hums) != 1 else ""}'
+        elif c["ai"]:
+            status = "an AI seed — add the first human score"
+        else:
+            status = "no human score yet"
         if c["stale"]:
-            tags += '<span class="hx-tag">earlier revision</span>'
-        cells.append(f'<div class="hx hx-{axis} {c["cls"]}"><span class="hx-num">{esc(c["d"])}</span>'
-                     f'<span class="hx-label">{axis}</span>{tags}</div>')
-    return '<section class="hero">' + "".join(cells) + "</section>"
+            status += " · on an earlier revision"
+        cur = {int(e["score"]) for e in hums}
+        segs = "".join(
+            f'<button type="button" class="seg{" cur" if n in cur else ""}" data-axis="{axis}" data-score="{n}">{n}</button>'
+            for n in SCORES)
+        num = (f'<button type="button" class="hx-num" data-axis="{axis}" data-score="{esc(c["d"])}" '
+               f'title="vouch {esc(c["d"])}">{esc(c["d"])}</button>'
+               if c["d"].isdigit() and not c["ai"] else f'<span class="hx-num">{esc(c["d"])}</span>')
+        cells.append(f'<div class="hx hx-{axis} {c["cls"]}">{num}<span class="hx-label">{axis}</span>'
+                     f'<span class="hx-status">{status}</span><div class="seg-row">{segs}</div></div>')
+    note = ""
+    if contested:
+        note = ('<p class="contested-note">' + " and ".join(contested).capitalize()
+                + (" carry different human scores" if len(contested) > 1 else " carries two different human scores")
+                + " — read the reasons below, then add or revise yours.</p>")
+    tkind, tid = next(iter(target.items()))
+    cfg = {"target": target, "version": version, "rule": str(r.policy.get("anchor_rules") or ""),
+           "active": active, "handles": sorted(r.human), "standing": standing}
+    issue_title = quote(f"[{tkind}] {tid}: assessment")
+    issue_body = quote(f"{tkind}: {tid}\nurl: {url}\nverb: assessment\n\n"
+                       "## Your score (1-5) on reliability, importance or clarity, and your rationale\n\n")
+    editor = (
+        f'<form class="assess-editor" data-assess="{esc(_json.dumps(cfg, separators=(",", ":")))}" hidden>'
+        '<p class="ed-head"></p>'
+        '<label>as <select class="as-handle"></select></label>'
+        '<textarea class="as-verbatim" rows="2" maxlength="2000" placeholder="one clear sentence: what makes this score fit?"></textarea>'
+        '<p class="ed-note muted"></p>'
+        '<p><button type="button" class="as-make">Sign the move</button></p>'
+        '</form>'
+        '<div class="assess-receipt" hidden>'
+        '<p class="rc-line"></p>'
+        '<pre class="as-out"></pre>'
+        '<p><button type="button" class="as-copy">Copy event</button> '
+        '<a class="as-edit" target="_blank" rel="noopener">open your ledger on GitHub ↗</a> · '
+        f'<a href="https://github.com/A-M-Berns/alignment-workspace/issues/new?title={issue_title}&amp;body={issue_body}">no handle? propose it as an issue</a></p>'
+        '<p class="rc-status muted">Prepared locally — not yet submitted.</p>'
+        '</div>')
+    return '<section class="hero">' + "".join(cells) + "</section>" + note + editor
+
+
+def scores_html(site: Site, acts: list) -> str:
+    """The standing scores and their rationales, per axis — the argument so far. AI seeds
+    render subdued; a stale score says so."""
+    by_axis: dict = {}
+    for e in acts:
+        by_axis.setdefault(str(e.get("axis")), []).append(e)
+    parts = []
+    for axis in AXES:
+        evs = by_axis.get(axis) or []
+        if not evs:
+            continue
+        rows = []
+        for e in evs:
+            who = site.link("by", str(e.get("by")).lstrip("@")) if not e["_ai"] else f'<span class="muted">{esc(str(e.get("by")))} (AI)</span>'
+            stale = ' <span class="tag">on an earlier revision</span>' if e.get("_stale") else ""
+            why = esc(str(e.get("verbatim") or e.get("gloss") or ""))
+            rows.append(f'<li><span class="score score-{esc(str(e.get("score")))}">{esc(str(e.get("score")))}</span> {who}, {esc(str(e.get("date")))}{stale}<br><em>{why}</em></li>')
+        parts.append(f'<div class="ax-scores"><span class="axis">{axis}</span><ul class="assessments">' + "".join(rows) + "</ul></div>")
+    return "".join(parts)
 
 
 def context_html(site: Site, x: str) -> str:
     """The context panel beneath the hero: the facts that are not challengeable — the kernel
     badge and registry class where a formal result backs the node, author, version, the
-    deep-work links — and the per-axis vouch and challenge buttons with every active score
-    and its rationale. The buttons drive one mini-form that generates the exact ledger
-    event for GitHub; the site accepts no write."""
+    failure-story tables — and the standing scores with their rationales."""
     r = site.repo
     N = r.nodes[x]
     parts = ['<section class="context"><h2>Context</h2><ul class="ctx-facts">']
@@ -190,63 +259,8 @@ def context_html(site: Site, x: str) -> str:
                  + (", drafted" if r.drafted(x) else "")
                  + f'; Statement version {esc(str(N.get("version")))}</li>')
     parts.append("</ul>")
-    parts.append(_assess_panel(site, r.assessments(x), r.hero(x),
-                               {"node": x}, N.get("version"), f"/n/{Site.seg(x)}/"))
+    parts.append(scores_html(site, r.assessments(x)))
     parts.append("</section>")
-    return "".join(parts)
-
-
-def _assess_panel(site: Site, acts: list, h: dict, target: dict, version, url: str) -> str:
-    """The per-axis vouch/challenge/score buttons, every active score with its rationale,
-    and the hidden composer. Shared between the node and concept context panels; the
-    target dict is the ledger event's, {"node": x} or {"concept": cid}."""
-    import json as _json
-    from urllib.parse import quote
-    r = site.repo
-    by_axis: dict = {}
-    active = {}
-    for e in acts:
-        by_axis.setdefault(str(e.get("axis")), []).append(e)
-        if not e["_ai"]:
-            active[str(e.get("by")) + "|" + str(e.get("axis"))] = str(e.get("id"))
-    parts = ['<div class="ctx-axes">']
-    for axis in AXES:
-        std = h[axis]
-        vouch = ""
-        if std["d"] != "\u2013" and not std["contested"]:
-            vouch = f'<button type="button" class="as-vouch" data-axis="{axis}" data-score="{esc(std["d"])}">vouch {esc(std["d"])}</button> '
-        verb = "challenge" if std["d"] != "\u2013" else "score"
-        parts.append(f'<div class="ctx-axis"><span class="axis">{axis}</span> {vouch}'
-                     f'<button type="button" class="as-challenge" data-axis="{axis}">{verb}</button>')
-        evs = by_axis.get(axis) or []
-        if evs:
-            rows = []
-            for e in evs:
-                who = site.link("by", str(e.get("by")).lstrip("@")) if not e["_ai"] else f'<span class="muted">{esc(str(e.get("by")))} (AI)</span>'
-                stale = ' <span class="tag">on an earlier revision</span>' if e.get("_stale") else ""
-                why = esc(str(e.get("verbatim") or e.get("gloss") or ""))
-                rows.append(f'<li><span class="score score-{esc(str(e.get("score")))}">{esc(str(e.get("score")))}</span> {who}, {esc(str(e.get("date")))}{stale}<br><em>{why}</em></li>')
-            parts.append('<ul class="assessments">' + "".join(rows) + "</ul>")
-        parts.append("</div>")
-    parts.append("</div>")
-    tkind, tid = next(iter(target.items()))
-    cfg = {"target": target, "version": version, "rule": str(r.policy.get("anchor_rules") or ""),
-           "active": active, "handles": sorted(r.human), "axes": list(AXES), "scores": list(SCORES)}
-    issue_title = quote(f"[{tkind}] {tid}: assessment")
-    issue_body = quote(f"{tkind}: {tid}\nurl: {url}\nverb: assessment\n\n"
-                       "## Your score (1-5) on reliability, importance or clarity, and your rationale\n\n")
-    parts.append(
-        f'<div class="assess-form" data-assess="{esc(_json.dumps(cfg, separators=(",", ":")))}" hidden>'
-        '<label>handle <select class="as-handle"></select></label> '
-        '<label>axis <select class="as-axis"></select></label> '
-        '<label>score <select class="as-score"></select></label>'
-        '<textarea class="as-verbatim" rows="3" maxlength="2000" placeholder="your rationale, in your own words — a challenge says what would move you"></textarea>'
-        '<p><button type="button" class="as-make">Compose the event</button></p>'
-        '<pre class="as-out" hidden></pre>'
-        '<p class="as-links" hidden><button type="button" class="as-copy">Copy the line</button> '
-        '<a class="as-edit" target="_blank" rel="noopener">append it to your ledger on GitHub</a> · '
-        f'<a href="https://github.com/A-M-Berns/alignment-workspace/issues/new?title={issue_title}&amp;body={issue_body}">no handle? propose it as an issue</a></p>'
-        '</div>')
     return "".join(parts)
 
 
@@ -412,7 +426,8 @@ def node_body(site: Site, x: str) -> tuple[str, list[tuple[str, str]], str]:
             if name in r.wiki:
                 body.append(f"<section><h2>Narrative: {site.link('wiki', name)}</h2><div class=\"wiki\">{render_wiki(site, name)}</div></section>")
     body.insert(0, context_html(site, x))
-    body.insert(0, hero_html(site.repo.hero(x)))
+    body.insert(0, assess_block(site, r.assessments(x), r.hero(x),
+                                {"node": x}, N.get("version"), f"/n/{Site.seg(x)}/"))
     body.append(f"<section><h2>Statement</h2><p class=\"statement\">{esc(N['statement'].strip())}</p></section>")
     if N.get("source"):
         body.append(f"<section><h2>Source</h2>{md.render(N['source'], wiki_link_resolver(site))}</section>")
@@ -599,19 +614,16 @@ def concept_side(site: Site, cid: str) -> str:
 
 
 def concept_context(site: Site, cid: str) -> str:
-    """The concept's context panel, directly under its hero: the non-challengeable facts —
-    the kernel badge and registry class where a formal claim backs it, the claim on the
-    map with its failure-story tables, the longer page where one exists — and the per-axis
-    controls and composer. Assessments target the concept itself; scores on a backing
-    graph node count too."""
+    """The concept's context panel, directly under its hero and editor: the
+    non-challengeable facts — the kernel badge and registry class where a formal claim
+    backs it, the claim on the map with its failure-story tables — and the standing
+    scores with their rationales."""
     r = site.repo
     e = r.concepts[cid]
     refs = [x for x in e.get("refs") or [] if x in r.nodes]
     parts = ['<section class="context"><h2>Context</h2><ul class="ctx-facts">']
-    version = 1
     for x in refs:
         N = r.nodes[x]
-        version = N.get("version") or 1
         entry = r.record_entry(x) if N.get("formal_result") else None
         if entry:
             parts.append(f'<li><span class="kernel-badge">kernel-checked</span> {site.link("claims", entry["id"])}: '
@@ -624,10 +636,15 @@ def concept_context(site: Site, cid: str) -> str:
     if not refs:
         parts.append('<li class="muted">no formal claim backs this concept yet; a score here is a reading of the writeup and the merged work</li>')
     parts.append("</ul>")
-    parts.append(_assess_panel(site, r.concept_assessments(cid), r.concept_hero(cid),
-                               {"concept": cid}, version, site.url("concepts", cid)))
+    parts.append(scores_html(site, r.concept_assessments(cid)))
     parts.append("</section>")
     return "".join(parts)
+
+
+def concept_version(site: Site, cid: str) -> int:
+    r = site.repo
+    refs = [x for x in (r.concepts[cid].get("refs") or []) if x in r.nodes]
+    return (r.nodes[refs[-1]].get("version") or 1) if refs else 1
 
 
 def concept_full(site: Site, cid: str, with_head: bool = True) -> str:
@@ -643,7 +660,8 @@ def concept_full(site: Site, cid: str, with_head: bool = True) -> str:
             if with_head else "")
     lede = f'<p class="concept-lede">{esc(str(e.get("blurb") or ""))}</p>'
     assessed = e.get("kind") != "work"
-    hero = hero_html(r.concept_hero(cid)) if assessed else ""
+    hero = assess_block(site, r.concept_assessments(cid), r.concept_hero(cid),
+                        {"concept": cid}, concept_version(site, cid), site.url("concepts", cid)) if assessed else ""
     ctx = concept_context(site, cid) if assessed else ""
     refs = [x for x in e.get("refs") or [] if x in r.nodes]
     if e.get("wiki"):
