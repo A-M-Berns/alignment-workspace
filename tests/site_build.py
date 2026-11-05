@@ -90,6 +90,10 @@ def self_test() -> int:
         prs = {"9": {"number": 9, "title": "t", "merged": "2026-01-01", "rounds": ["no-such-round"],
                      "topics": {"wiki": ["No-Page"], "frames": ["no-node"]}, "summary": "", "superseded": ""}}
         narratives = {}
+
+        def concept_hero(self, cid):
+            return {a: {"d": "–", "cls": "none", "contested": False, "ai": False, "stale": False}
+                    for a in ("reliability", "importance", "clarity")}
     s3 = P.Site(FakeRepo2())
     P.map_data(s3)
     bad = "\n".join(s3.unresolved)
