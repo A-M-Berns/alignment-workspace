@@ -279,9 +279,9 @@ section.assess button:hover { border-color: var(--accent); }
 .wang-boost { display: none; }
 body.landing { min-height: 100vh; margin: 0; display: grid; place-items: center; background: #101013; }
 .landing-main { position: relative; z-index: 1; text-align: center; padding: 2rem; }
-.landing-word { font-size: clamp(2.2rem, 6vw, 4.2rem); font-weight: 760; letter-spacing: -0.02em; margin: 0 0 0.4em; color: #ececec; text-shadow: 0 2px 18px rgba(0,0,0,0.55); }
+.landing-word { font-size: clamp(2.2rem, 6vw, 4.2rem); font-weight: 760; letter-spacing: -0.02em; margin: 0 0 0.4em; color: #ececec; }
 nav.tiles { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.6em; }
-a.tile { display: block; padding: 0.85em 1.7em; border-radius: 12px; background: rgba(16, 16, 19, 0.82); border: 1px solid var(--rule); text-decoration: none; text-align: center; transition: transform 0.14s ease, border-color 0.14s ease; }
+a.tile { display: block; padding: 0.85em 1.7em; border-radius: 12px; background: #101013; border: 1px solid var(--rule); text-decoration: none; text-align: center; transition: transform 0.14s ease, border-color 0.14s ease; }
 a.tile:hover { transform: translateY(-3px); border-color: var(--accent); }
 a.tile .tile-name { font-size: 1.05rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #ececec; }
 /* the hero: three axes, colour by hue, lightness by score; grey is an untouched AI seed */

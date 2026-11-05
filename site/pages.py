@@ -54,8 +54,8 @@ class Site:
 
 def layout(site: Site, title: str, body: str, crumbs: list[tuple[str, str]] | None = None, subtitle: str = "") -> str:
     r = site.repo
-    nav = ('<a href="/map/">map</a><a href="https://github.com/A-M-Berns/alignment-workspace">repo</a>'
-           '<a href="/chat/">chatbot</a><a href="/stats/">stats</a>')
+    nav = ('<a href="/map/">map</a><a href="/chat/">chatbot</a><a href="/stats/">stats</a>'
+           '<a href="https://github.com/A-M-Berns/alignment-workspace">repo</a>')
     crumb_html = ""
     if crumbs:
         crumb_html = '<nav class="crumbs">' + " › ".join(f'<a href="{u}">{esc(t)}</a>' for t, u in crumbs) + "</nav>"
@@ -765,7 +765,8 @@ def landing_page(site: Site) -> str:
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Alignment Workspace</title><link rel="stylesheet" href="/assets/style.css?v={v}">
-<script type="module" src="/assets/landing/wang.js?v={v}"></script></head>
+<script type="module" src="/assets/landing/wang.js?v={v}"></script>
+<script defer src="/assets/landing/dominant.js?v={v}"></script></head>
 <body class="landing"><canvas id="wang-tiles" class="wang-tiles" aria-hidden="true"></canvas>
 <div id="wang-boost" class="wang-boost" aria-hidden="true"><span></span><span></span></div>
 <div class="wang-stubs" hidden>

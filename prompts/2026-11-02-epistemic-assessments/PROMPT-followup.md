@@ -66,3 +66,8 @@ Maintainer directives, in conversation on the preview, verbatim:
 > understandable helpful non-slop etc. And then also I don't see the like interaction
 > panel below the three numbers panel
 
+> after you're done with that, also please edit the homepage by making the 4 buttons
+> opaque not translucent, making the highlight color sync up with the dominant color of
+> the current displayed tile pattern, remove the drop shadow on the "Alignment Workspace"
+> and then on each page make the order of the 4 things match the order on the homepage
+
