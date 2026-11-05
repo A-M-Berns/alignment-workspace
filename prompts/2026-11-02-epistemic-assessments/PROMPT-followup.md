@@ -67,6 +67,8 @@ Maintainer directives, in conversation on the preview, verbatim:
 > can be used this way in some sense (and maybe should have a better name, i was
 > envisioning that as the place where like recent activity is shown etc)
 
+> ok do the ai seeding next
+
 > Ok so a few things. First of all, each node on the map should have this hero panel
 > thing whereas i think most of them currently don't. At least, the ones where there is
 > enough content on the page where this can be evaluated that way (and maybe with the

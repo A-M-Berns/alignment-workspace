@@ -2764,7 +2764,8 @@ class Fixtures(unittest.TestCase):
         # state, and the item nodes render PRIORITIES.md from the sections file (2026-10-22)
         if (ROOT / "wiki").is_dir():
             shutil.copytree(ROOT / "wiki", root / "wiki")
-        for rel in ("DECISIONS.md", "state/rounds.json", "state/foundations.json", "state/priorities_sections.md"):
+        for rel in ("DECISIONS.md", "state/rounds.json", "state/foundations.json", "state/priorities_sections.md",
+                    "state/concepts.json"):
             if (ROOT / rel).is_file():
                 (root / rel).parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy(ROOT / rel, root / rel)
@@ -2843,7 +2844,7 @@ class Fixtures(unittest.TestCase):
     def test_starting_graph_carries_structure_and_the_two_rulings_only(self):
         D = self.D
         # human events: the maintainer's two rulings only; every other counted event is the AI fill
-        self.assertEqual([e for e in D["events"]["counted"] if not e.startswith("smithy-verity-")],
+        self.assertEqual([e for e in D["events"]["counted"] if not e.startswith(("smithy-verity-", "claude-fable-5-"))],
                          ["anson-001", "anson-002"])
         self.assertTrue([e for e in D["events"]["counted"] if e.startswith("smithy-verity-")])
         # nothing is withdrawn; an AI number goes stale only where a round revised a node (a new version, a leaf that became
@@ -2853,7 +2854,7 @@ class Fixtures(unittest.TestCase):
         for e, why in D["events"]["stale_reasons"].items():
             self.assertTrue(why in ("leaf became a table", "leaf became an and", "leaf became an or") or why.startswith("given against version"), (e, why))
         pol = g.parse_flat_yaml((self.root / "graph" / "policy.yaml").read_text())
-        self.assertEqual(set(pol["handles"]), {"@anson", "@abram", "@smithy-verity", "@smithy-verity-opus55"})
+        self.assertEqual(set(pol["handles"]), {"@anson", "@abram", "@smithy-verity", "@smithy-verity-opus55", "@claude-fable-5"})
         self.assertNotIn("illustrative", (self.root / "graph" / "policy.yaml").read_text())
         for r, R in D["roots"].items():
             self.assertEqual(R["status"], "open", r)                           # no human judgment yet, so nothing concedes

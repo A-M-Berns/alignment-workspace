@@ -101,7 +101,25 @@ look (contested axes, important-with-reliability-behind as a filter over named s
 the unscored count) and ending with the recent feed, each labelled an invitation rather
 than an ordering; and the site keeps the reader free to ignore all of it. The other
 consult items — the proposition-first panel order, issue-first submission, map workflow
-badges, the chatbot's role — stay recorded, not built. The first push of the site side shipped the composer's markup without
+badges, the chatbot's role — stay recorded, not built.
+
+The seeding (follow-up of 2026-11-05): the handle `@claude-fable-5` enters
+`graph/policy.yaml` under the slug rule, and its ledger opens with 159 assessment events
+— the 53 scoreable concepts, three axes each, every score with its reasoning in `gloss`
+resting on the named public artifact: the wiki page's own status line, the backing
+claim's statement and registry class, or the published source. The rubric is stated once
+at the head of the generating script and implicitly in the glosses: reliability 5 is
+kernel-checked-registered or standard mathematics down to 2 for a framing or thesis;
+importance 5 is what the program stands on down to 2 for a tool or ancestor; clarity 5 is
+one canonical crisp statement down to 3 for blurb-level. The checker accepts all 159 and
+the digest confirms they move no level and no number. On the site every number renders
+grey with the AI tag until a human scores the axis, and `/activity/` now lists nineteen
+concepts whose seeded importance exceeds their seeded reliability.
+
+Not shown by the seeding: the scores are one model's readings of the repository's own
+status lines and sources — they establish nothing, they are the starting numbers the
+protocol says humans vet and supersede as they go, and any one of them may be wrong in
+either direction. The first push of the site side shipped the composer's markup without
 its script (an apply step was dropped); caught when the maintainer looked for the panel,
 fixed in the following commit.
 Rendering is verified by an injected-event test (supersession filtered, staleness marked,
