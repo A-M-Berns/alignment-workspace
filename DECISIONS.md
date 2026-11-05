@@ -6965,3 +6965,16 @@ alternative: the human-only form of the 2026-11-02/03 entries, which left every 
 blank until a maintainer typed each score by hand. No AI seed mints a level, and a
 human's score displaces the seed in every derived view.
 
+### 2026-11-04 — assessments may target map concepts
+<!-- decision: 2026-11-04--assessments-target-concepts; touches: checkers/graph.py, graph/PROTOCOL.md, state/concepts.json -->
+
+**Agent-decided, reversible, on the maintainer's directive that every map node carry the
+hero and its interaction panel.** The map the site renders is the concept network of
+`state/concepts.json`, and 51 of its 71 concepts have no backing graph node, so a
+node-only assessment left most of the map unassessable. The `assessment` event now also
+takes `target: {concept: <id>}`, validated against the concept registry; no other event
+kind takes a concept target. A concept's displayed scores merge those on the concept with
+those on any graph node that backs it. Prior-work concepts carry no hero: they are cited,
+not assessed. Rejected alternative: filing a graph node for every concept, which would
+put 51 unargued nodes into the argument map to serve a display.
+

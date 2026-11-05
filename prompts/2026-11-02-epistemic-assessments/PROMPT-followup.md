@@ -57,3 +57,12 @@ Maintainer directives, in conversation on the preview, verbatim:
 > a render of the repository, never a second source. Structure and human events only; the
 > ranking is a lens, shown on /ranking/." everywhere
 
+> Ok so a few things. First of all, each node on the map should have this hero panel
+> thing whereas i think most of them currently don't. At least, the ones where there is
+> enough content on the page where this can be evaluated that way (and maybe with the
+> exception of like the prior art pages.) Also for every node, there should be a single
+> Read More page that represents the summary of that node, not multiple pages. Can you
+> also go through carefully and structure the content of those pages so that they are
+> understandable helpful non-slop etc. And then also I don't see the like interaction
+> panel below the three numbers panel
+

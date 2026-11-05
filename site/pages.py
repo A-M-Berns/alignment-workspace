@@ -150,11 +150,10 @@ AXES = ("reliability", "importance", "clarity")
 SCORES = (1, 2, 3, 4, 5)
 
 
-def hero_html(site: Site, x: str) -> str:
+def hero_html(h: dict) -> str:
     """The hero: the three axes as large numbers, full width, before any text. Colour is the
     axis hue, lightness the score; grey is an AI seed no human has touched; a range is two
     humans disagreeing, which is the state the page invites the reader to resolve."""
-    h = site.repo.hero(x)
     cells = []
     for axis in AXES:
         c = h[axis]
@@ -176,8 +175,6 @@ def context_html(site: Site, x: str) -> str:
     deep-work links — and the per-axis vouch and challenge buttons with every active score
     and its rationale. The buttons drive one mini-form that generates the exact ledger
     event for GitHub; the site accepts no write."""
-    import json as _json
-    from urllib.parse import quote
     r = site.repo
     N = r.nodes[x]
     parts = ['<section class="context"><h2>Context</h2><ul class="ctx-facts">']
@@ -193,16 +190,26 @@ def context_html(site: Site, x: str) -> str:
                  + (", drafted" if r.drafted(x) else "")
                  + f'; Statement version {esc(str(N.get("version")))}</li>')
     parts.append("</ul>")
-    acts = r.assessments(x)
+    parts.append(_assess_panel(site, r.assessments(x), r.hero(x),
+                               {"node": x}, N.get("version"), f"/n/{Site.seg(x)}/"))
+    parts.append("</section>")
+    return "".join(parts)
+
+
+def _assess_panel(site: Site, acts: list, h: dict, target: dict, version, url: str) -> str:
+    """The per-axis vouch/challenge/score buttons, every active score with its rationale,
+    and the hidden composer. Shared between the node and concept context panels; the
+    target dict is the ledger event's, {"node": x} or {"concept": cid}."""
+    import json as _json
+    from urllib.parse import quote
+    r = site.repo
     by_axis: dict = {}
-    for e in acts:
-        by_axis.setdefault(str(e.get("axis")), []).append(e)
     active = {}
     for e in acts:
+        by_axis.setdefault(str(e.get("axis")), []).append(e)
         if not e["_ai"]:
             active[str(e.get("by")) + "|" + str(e.get("axis"))] = str(e.get("id"))
-    h = r.hero(x)
-    parts.append('<div class="ctx-axes">')
+    parts = ['<div class="ctx-axes">']
     for axis in AXES:
         std = h[axis]
         vouch = ""
@@ -222,10 +229,11 @@ def context_html(site: Site, x: str) -> str:
             parts.append('<ul class="assessments">' + "".join(rows) + "</ul>")
         parts.append("</div>")
     parts.append("</div>")
-    cfg = {"node": x, "version": N.get("version"), "rule": str(r.policy.get("anchor_rules") or ""),
+    tkind, tid = next(iter(target.items()))
+    cfg = {"target": target, "version": version, "rule": str(r.policy.get("anchor_rules") or ""),
            "active": active, "handles": sorted(r.human), "axes": list(AXES), "scores": list(SCORES)}
-    issue_title = quote(f"[node] {x}: assessment")
-    issue_body = quote(f"node: {x}\nurl: /n/{Site.seg(x)}/\nverb: assessment\n\n"
+    issue_title = quote(f"[{tkind}] {tid}: assessment")
+    issue_body = quote(f"{tkind}: {tid}\nurl: {url}\nverb: assessment\n\n"
                        "## Your score (1-5) on reliability, importance or clarity, and your rationale\n\n")
     parts.append(
         f'<div class="assess-form" data-assess="{esc(_json.dumps(cfg, separators=(",", ":")))}" hidden>'
@@ -238,7 +246,7 @@ def context_html(site: Site, x: str) -> str:
         '<p class="as-links" hidden><button type="button" class="as-copy">Copy the line</button> '
         '<a class="as-edit" target="_blank" rel="noopener">append it to your ledger on GitHub</a> · '
         f'<a href="https://github.com/A-M-Berns/alignment-workspace/issues/new?title={issue_title}&amp;body={issue_body}">no handle? propose it as an issue</a></p>'
-        '</div></section>')
+        '</div>')
     return "".join(parts)
 
 
@@ -404,7 +412,7 @@ def node_body(site: Site, x: str) -> tuple[str, list[tuple[str, str]], str]:
             if name in r.wiki:
                 body.append(f"<section><h2>Narrative: {site.link('wiki', name)}</h2><div class=\"wiki\">{render_wiki(site, name)}</div></section>")
     body.insert(0, context_html(site, x))
-    body.insert(0, hero_html(site, x))
+    body.insert(0, hero_html(site.repo.hero(x)))
     body.append(f"<section><h2>Statement</h2><p class=\"statement\">{esc(N['statement'].strip())}</p></section>")
     if N.get("source"):
         body.append(f"<section><h2>Source</h2>{md.render(N['source'], wiki_link_resolver(site))}</section>")
@@ -590,64 +598,73 @@ def concept_side(site: Site, cid: str) -> str:
     return "\n".join(out)
 
 
-def concept_epistemic(site: Site, cid: str) -> str:
-    """The concept's epistemic view, through the graph nodes that back it (refs): the full
-    panel and composer when one node backs it, a compact per-node summary linking through
-    when several do, and an honest absence when none does — assessments live on graph
-    nodes, so a concept no node backs has nothing to assess yet."""
+def concept_context(site: Site, cid: str) -> str:
+    """The concept's context panel, directly under its hero: the non-challengeable facts —
+    the kernel badge and registry class where a formal claim backs it, the claim on the
+    map with its failure-story tables, the longer page where one exists — and the per-axis
+    controls and composer. Assessments target the concept itself; scores on a backing
+    graph node count too."""
     r = site.repo
     e = r.concepts[cid]
     refs = [x for x in e.get("refs") or [] if x in r.nodes]
-    if not refs:
-        return ('<section class="context"><h2>Epistemic status</h2><p class="muted">No map node backs this '
-                'concept yet, so there is nothing to assess; the connections and merged work are the record.</p></section>')
-    if len(refs) == 1:
-        return context_html(site, refs[0])
-    bits = []
+    parts = ['<section class="context"><h2>Context</h2><ul class="ctx-facts">']
+    version = 1
     for x in refs:
         N = r.nodes[x]
+        version = N.get("version") or 1
         entry = r.record_entry(x) if N.get("formal_result") else None
-        ver = f'class <code>{esc(entry.get("class", ""))}</code>' if entry else '<span class="muted">no registered claim</span>'
+        if entry:
+            parts.append(f'<li><span class="kernel-badge">kernel-checked</span> {site.link("claims", entry["id"])}: '
+                         f'class <code>{esc(entry.get("class", ""))}</code>, status <code>{esc(entry.get("status", ""))}</code></li>')
         tables = [x] if N.get("kind") == "cases" else [c for c in N["children"] if r.nodes[c].get("kind") == "cases"]
-        hh = r.hero(x)
-        summary = " · ".join(f'{a[:3]} {hh[a]["d"]}' for a in ("reliability", "importance", "clarity"))
-        bits.append(f'<li>{site.link("n", x)} — {ver}; {len(tables)} failure-story table(s); {esc(summary)}. '
-                    f'{site.link("n", x, "Assess it on its node page →")}</li>')
-    return ('<section class="epistemic"><h2>Epistemic status</h2><p class="muted">Through the map nodes that back '
-            'this concept:</p><ul class="listing">' + "".join(bits) + "</ul></section>")
+        tbl = ("; failure-story tables: " + ", ".join(
+            f'{site.link("n", cid2)} ({sum(1 for rw in r.nodes[cid2].get("rows") or [] if not rw.get("residual"))} rows)'
+            for cid2 in tables)) if tables else ""
+        parts.append(f'<li>the claim on the map: {site.link("n", x)}, Statement version {esc(str(N.get("version")))}{tbl}</li>')
+    if not refs:
+        parts.append('<li class="muted">no formal claim backs this concept yet; a score here is a reading of the writeup and the merged work</li>')
+    parts.append("</ul>")
+    parts.append(_assess_panel(site, r.concept_assessments(cid), r.concept_hero(cid),
+                               {"concept": cid}, version, site.url("concepts", cid)))
+    parts.append("</section>")
+    return "".join(parts)
 
 
-def concept_full(site: Site, cid: str) -> str:
-    """Every concept's full view, one template: title and kind, the registry blurb as the lede, the
-    source where one exists, then two panes — the long-form content (the wiki page, or the map
-    references) beside the connections and merged work."""
+def concept_full(site: Site, cid: str, with_head: bool = True) -> str:
+    """Every concept's one Read More page: title and kind, the hero, the context panel with
+    the controls, the registry blurb as the lede, then the long-form content (the wiki
+    page, or the backing claim's Statement) beside the connections and merged work. Prior
+    work carries no hero: it is someone else's published result, cited rather than
+    assessed here."""
     r = site.repo
     e = r.concepts[cid]
     kind_label_ = r.concept_kinds.get(e.get("kind", ""), e.get("kind", ""))
-    head = f'<p class="frag-head">{site.link("concepts", cid, e.get("title", cid))} <span class="kind">{esc(kind_label_)}</span></p>'
+    head = (f'<p class="frag-head">{site.link("concepts", cid, e.get("title", cid))} <span class="kind">{esc(kind_label_)}</span></p>'
+            if with_head else "")
     lede = f'<p class="concept-lede">{esc(str(e.get("blurb") or ""))}</p>'
-    src = f'<p class="muted"><a href="{esc(e["url"])}">{esc(e["url"])}</a></p>' if e.get("url") else ""
+    assessed = e.get("kind") != "work"
+    hero = hero_html(r.concept_hero(cid)) if assessed else ""
+    ctx = concept_context(site, cid) if assessed else ""
+    refs = [x for x in e.get("refs") or [] if x in r.nodes]
     if e.get("wiki"):
         main = f"<div class=\"wiki\">{render_wiki(site, e['wiki'])}</div>"
+    elif refs:
+        main = "<section><h2>The statement</h2>" + "".join(
+            f"<blockquote>{esc(r.nodes[x]['statement'].strip())}</blockquote>" for x in refs) + "</section>"
     else:
-        refs = [x for x in e.get("refs") or [] if x in r.nodes]
-        if refs:
-            main = "<section><h2>On the map</h2><ul class=\"listing\">" + "".join(
-                f"<li>{site.link('n', x)}: {esc(r.nodes[x]['statement'].strip()[:160])}</li>" for x in refs) + "</ul></section>"
-        else:
-            main = '<p class="muted">No longer-form page yet; the connections and merged work at right are the record.</p>'
-    refs1 = [x for x in e.get("refs") or [] if x in r.nodes]
-    hero = hero_html(site, refs1[0]) if len(refs1) == 1 else ""
-    return (f'{head}{hero}{lede}{src}<div class="pane2"><div class="pane-main">{main}{concept_epistemic(site, cid)}</div>'
+        main = '<p class="muted">No longer-form page yet; the connections and merged work at right are the record.</p>'
+    return (f'{head}{hero}{ctx}{lede}<div class="pane2"><div class="pane-main">{main}</div>'
             f'<aside class="pane-side">{concept_side(site, cid)}</aside></div>')
 
 
 def concept_body(site: Site, cid: str) -> str:
-    return concept_full(site, cid)
+    return concept_full(site, cid, with_head=False)
 
 
 def concept_page(site: Site, cid: str) -> str:
-    return layout(site, site.repo.concepts[cid].get("title", cid), concept_body(site, cid), [("map", "/map/")])
+    e = site.repo.concepts[cid]
+    kl = site.repo.concept_kinds.get(e.get("kind", ""), e.get("kind", ""))
+    return layout(site, e.get("title", cid), concept_body(site, cid), [("map", "/map/")], subtitle=esc(kl))
 
 
 def concept_frag(site: Site, cid: str) -> str:
@@ -918,10 +935,9 @@ def map_data(site: Site) -> dict:
         for x in e.get("refs") or []:
             if x not in r.nodes:
                 site.unresolved.append(f"concepts:{cid}:ref:{x}")
-        refs1 = [x for x in e.get("refs") or [] if x in r.nodes]
         hx = None
-        if len(refs1) == 1:
-            hh = r.hero(refs1[0])
+        if e.get("kind") != "work":
+            hh = r.concept_hero(cid)
             hx = {a[0]: [hh[a]["d"], hh[a]["cls"]] for a in ("reliability", "importance", "clarity")}
         meta[cid] = {"k": e.get("kind", ""), "w": e.get("wiki") or "", "t": e.get("title", cid),
                      "s": str(e.get("blurb") or ""), "prs": prs_of.get(cid, 0), "d": ds[cid], "ax": hx,

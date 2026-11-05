@@ -77,10 +77,11 @@
       var out = q(".as-out", as2), links = q(".as-links", as2);
       if (!verbatim) { out.hidden = false; out.textContent = "The rationale is required: the event carries your own words in verbatim."; return; }
       var today = new Date().toISOString().slice(0, 10);
+      var tid = cfg.target.node || cfg.target.concept;
       var ev = {
-        id: handle.slice(1) + "-a-" + today.replace(/-/g, "") + "-" + axis + "-" + cfg.node,
+        id: handle.slice(1) + "-a-" + today.replace(/-/g, "") + "-" + axis + "-" + tid,
         by: handle, date: today, rule: cfg.rule, via: "site", version: cfg.version,
-        kind: "assessment", target: { node: cfg.node }, axis: axis, score: score, verbatim: verbatim
+        kind: "assessment", target: cfg.target, axis: axis, score: score, verbatim: verbatim
       };
       if (cfg.active[handle + "|" + axis]) ev.supersedes = cfg.active[handle + "|" + axis];
       var line = JSON.stringify(ev);

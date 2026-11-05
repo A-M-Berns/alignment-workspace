@@ -937,7 +937,7 @@ answer), every acceptance of a draft, every vetting event (map-read, trace,
 pass), every `attribution` verdict (the user, not the node's author, read
 the cited source and says the attribution is honest or disputes it), every
 withdrawal, every `revise` (the user revised a node's Statement by hand), every
-`assessment` (the user's score on an axis of a node, their rationale in `verbatim`),
+`assessment` (the user's score on an axis of a node or map concept, their rationale in `verbatim`),
 every `priority` word on a want, and every want: a want is filed under its
 user's handle as owner, from what the user said in the session or, with
 `filed_from: quote`, from words the user wrote in a public document, and it

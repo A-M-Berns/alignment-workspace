@@ -43,15 +43,24 @@ filtered, withdrawn ones dropped, stale ones marked "on an earlier revision". Th
 hover card carries a mini-hero of the same three numbers above the one-paragraph
 summary, fed per concept through the map data. The composer generates the exact ledger
 event (axis,
-score, verbatim, the node's current version pinned, `via: site`, supersession of the
+score, verbatim, the target's current version pinned, `via: site`, supersession of the
 author's own active score on that axis filled from the build) for the reader to copy into their
 own ledger through GitHub's editor, with a prefilled-issue path for readers without a
-handle. The concept pages — the map's read-more, the front door — carry the same view
-through the graph nodes that back them (refs): the full panel and composer embedded when
-one node backs the concept, a per-node summary linking through when several do, an honest
-absence when none does. The composer's wiring is shared between static pages and the
+handle. The composer's wiring is shared between static pages and the
 map's injected modal. `via: site` enters the protocol and the checker for events
-composed this way. The first push of the site side shipped the composer's markup without
+composed this way.
+
+The map's unit got the same treatment (follow-up of 2026-11-04). Most concepts have no
+backing graph node, so the node-only event left most of the map unassessable; the
+`assessment` now also takes `target: {concept: <id>}`, validated against
+`state/concepts.json` and carried by no other event kind (agent-decided, dated entry;
+checker, protocol and null-input cases alongside). Every concept except prior work —
+someone else's published result, cited rather than assessed — carries the hero and, right
+beneath it, the context panel with the per-axis controls and composer, on its one Read
+More page: title and kind, hero, context, the registry blurb, then the wiki page or the
+backing claim's Statement beside the connections and merged work. A concept's displayed
+scores merge those on the concept with those on any backing node, and the map data feeds
+the mini-hero for all assessed concepts. The first push of the site side shipped the composer's markup without
 its script (an apply step was dropped); caught when the maintainer looked for the panel,
 fixed in the following commit.
 Rendering is verified by an injected-event test (supersession filtered, staleness marked,

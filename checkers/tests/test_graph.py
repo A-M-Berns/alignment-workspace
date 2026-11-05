@@ -394,6 +394,23 @@ class Refusals(Base):
         self.assertEqual(base["nodes"]["shared-leaf"].get("V"), with_a["nodes"]["shared-leaf"].get("V"))
         self.assertEqual(base["nodes"]["shared-leaf"].get("J"), with_a["nodes"]["shared-leaf"].get("J"))
 
+    def test_assessment_on_a_concept(self):
+        # a registered site-map concept takes an assessment; an unregistered one, or any
+        # other kind on a concept, is refused
+        self.tree(extra={"h2": [
+            f'{{"id": "h2-72", "by": "@h2", {BASE}, "kind": "assessment", "target": {{"concept": "answerability"}}, '
+            '"axis": "importance", "score": 4, "verbatim": "the relation the program builds"}']})
+        (self.root / "state").mkdir(exist_ok=True)
+        (self.root / "state" / "concepts.json").write_text(
+            '{"concepts": [{"id": "answerability", "kind": "philosophy", "title": "Answerability", "blurb": "x"}]}')
+        self.derived()
+        self.edit("graph/events/h2.jsonl", '"concept": "answerability"', '"concept": "no-such"')
+        self.assertIn("resolves to no concept", self.refused(1))
+        self.edit("graph/events/h2.jsonl", '"concept": "no-such"', '"concept": "answerability"')
+        self.edit("graph/events/h2.jsonl", '"kind": "assessment", "target": {"concept": "answerability"}, "axis": "importance", "score": 4, ',
+                  '"kind": "estimate", "target": {"concept": "answerability"}, "estimate": 0.5, ')
+        self.assertIn("a concept target carries only an assessment", self.refused(2))
+
     def test_rule5_external_carries_ref(self):
         self.tree(extra={"h2": [f'{{"id": "h2-43", "by": "@h2", {BASE}, "kind": "external", "target": {{"node": "shared-leaf"}}}}']})
         self.assertIn("carries ref", self.refused(5))

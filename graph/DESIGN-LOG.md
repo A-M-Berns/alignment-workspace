@@ -80,3 +80,4 @@
 - 2026-11-02 change @anson — via: site, for events composed on the research site and submitted over GitHub
 - 2026-11-03 change @anson — assessment simplified to three scored axes: reliability, importance, clarity, each 1-5 with rationale; vouch by matching, challenge by differing
 - 2026-11-03 change @anson — AI handles may seed assessments with reasoning in gloss, marked AI until a human scores the axis (the estimate pattern)
+- 2026-11-04 change @anson — assessments may target a site-map concept ({concept: id} against state/concepts.json); no other kind takes a concept target

@@ -143,6 +143,9 @@ class Repo:
         self.events_by_node: dict[str, list] = {}
         for e in self.events:
             t = e.get("target") or {}
+            if t.get("concept"):
+                self.events_by_node.setdefault("concept:" + t["concept"], []).append(e)
+                continue
             x = t.get("node") or (t.get("row") or [None])[0]
             if x:
                 self.events_by_node.setdefault(x, []).append(e)
@@ -204,12 +207,29 @@ class Repo:
         out.sort(key=lambda e: (str(e.get("date")), str(e.get("id"))))
         return out
 
+    def concept_assessments(self, cid: str) -> list:
+        """The active assessments a concept carries: those targeting the concept itself,
+        plus those on the graph nodes that back it (refs)."""
+        e = self.concepts.get(cid) or {}
+        evs = self.assessments("concept:" + cid)
+        for x in e.get("refs") or []:
+            if x in self.nodes:
+                evs += self.assessments(x)
+        evs.sort(key=lambda e: (str(e.get("date")), str(e.get("id"))))
+        return evs
+
+    def concept_hero(self, cid: str) -> dict:
+        return self._hero_from(self.concept_assessments(cid))
+
     def hero(self, x: str) -> dict:
+        return self._hero_from(self.assessments(x))
+
+    def _hero_from(self, evs: list) -> dict:
         """Per axis, what the hero shows: the humans' number when they agree, their range when
         they differ (contested), the AI seed greyed when no human has scored, a dash when no
         one has. cls carries the score step for the colour ramp."""
         by_axis: dict = {}
-        for e in self.assessments(x):
+        for e in evs:
             by_axis.setdefault(str(e.get("axis")), []).append(e)
         out = {}
         for axis in ("reliability", "importance", "clarity"):

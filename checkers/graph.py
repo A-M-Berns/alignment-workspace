@@ -396,6 +396,7 @@ class Tree:
         self.decisions = {}       # DECISIONS.md anchors: {anchor: {date, title, status, touches}}
         self.rounds = {}          # state/rounds.json: {id or path: record}
         self.foundations = set()  # state/foundations.json ids
+        self.concepts = set()     # state/concepts.json ids, assessment targets
 
     def rel(self, p):
         try:
@@ -491,6 +492,12 @@ def load_tree(root, registry=None):
             t.foundations = {f["id"] for f in json.loads(fpath.read_text()).get("foundations") or []}
         except (json.JSONDecodeError, KeyError, TypeError):
             t.warnings.append("state/foundations.json: not readable; foundation pointers resolve to nothing")
+    cpath = t.root / "state" / "concepts.json"
+    if cpath.is_file():
+        try:
+            t.concepts = {c["id"] for c in json.loads(cpath.read_text()).get("concepts") or []}
+        except (json.JSONDecodeError, KeyError, TypeError):
+            t.warnings.append("state/concepts.json: not readable; concept targets resolve to nothing")
     # the claims registries every derivation reads (`registries:` in policy.yaml, paths from the repository root), plus one a
     # personal run names with --registry; a listed registry that is no file is refused (rule 10), never skipped
     regs = t.policy.get("registries")
@@ -701,6 +708,8 @@ def target_key(target):
         return ("proposal", target["proposal"])
     if "event" in target:
         return ("event", target["event"])
+    if "concept" in target:
+        return ("concept", target["concept"])
     return None
 
 
@@ -1303,6 +1312,12 @@ def lint(t):
             raise Refuse(1, path, f"target proposal {tk[1]!r} resolves to no proposal")
         if tk[0] == "event" and tk[1] not in eids:
             raise Refuse(1, path, f"target event {tk[1]!r} resolves to no event")
+        if tk[0] == "concept":
+            # the site map's concepts (state/concepts.json) take assessments and nothing else
+            if e["kind"] != "assessment":
+                raise Refuse(2, path, "a concept target carries only an assessment")
+            if tk[1] not in t.concepts:
+                raise Refuse(1, path, f"target concept {tk[1]!r} resolves to no concept")
         vnode = tk[1] if tk[0] == "node" else tk[2] if tk[0] == "row" else None
         if vnode and isinstance(e.get("version"), int) and e["version"] > nodes[vnode]["version"]:
             raise Refuse(5, path, f"version {e['version']} is above {vnode}'s current version {nodes[vnode]['version']}")
@@ -1374,15 +1389,16 @@ def lint(t):
             if not e.get("ref"):
                 raise Refuse(5, path, "an attribution event carries ref, what the attribution was checked against")
         if e["kind"] == "assessment":
-            # a score on one axis of a node — reliability, importance or clarity, 1 to 5 —
-            # revision-bound through the event's version. A human's carries the rationale in
-            # verbatim; an AI handle may seed one with its reasoning in gloss, marked as an
-            # AI number in every display until a human scores the axis. It mints no level and
-            # moves no number; it supersedes only its author's own earlier assessment of the
-            # same node and axis, so vouching is posting the same score, challenging a
-            # different one, and disagreement between humans stays visible
-            if tk[0] != "node":
-                raise Refuse(5, path, "an assessment targets a node")
+            # a score on one axis of a node or a map concept — reliability, importance or
+            # clarity, 1 to 5 — revision-bound through the event's version where the target
+            # has one. A human's carries the rationale in verbatim; an AI handle may seed
+            # one with its reasoning in gloss, marked as an AI number in every display
+            # until a human scores the axis. It mints no level and moves no number; it
+            # supersedes only its author's own earlier assessment of the same target and
+            # axis, so vouching is posting the same score, challenging a different one,
+            # and disagreement between humans stays visible
+            if tk[0] not in ("node", "concept"):
+                raise Refuse(5, path, "an assessment targets a node or a map concept")
             if e.get("axis") not in AXES:
                 raise Refuse(5, path, f"an assessment carries axis: {' | '.join(sorted(AXES))}")
             if not (isinstance(e.get("score"), int) and not isinstance(e.get("score"), bool) and e["score"] in SCORES):
@@ -1396,7 +1412,7 @@ def lint(t):
                 prev = eids.get(sup)
                 if (not prev or prev["by"] != e["by"] or prev.get("kind") != "assessment"
                         or target_key(prev["target"]) != tk or prev.get("axis") != e.get("axis")):
-                    raise Refuse(5, path, "supersedes names the author's own earlier assessment of the same node and axis")
+                    raise Refuse(5, path, "supersedes names the author's own earlier assessment of the same target and axis")
         if e["kind"] == "rule" and "rows" in e:
             # a ruling on a table's weights and conditionals: the maintainer's J 8 judgments, one event for every row
             cnode = nodes.get(tk[1]) if tk[0] == "node" else None
@@ -5286,6 +5302,10 @@ NULL_INPUTS = [
     ("an assessment superseding an assessment of a different axis", 5, {"extra": {"h1": [
         f'{{"id": "h1-n17", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "axis": "reliability", "score": 4, "verbatim": "x"}}',
         f'{{"id": "h1-n18", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "axis": "clarity", "score": 4, "verbatim": "x", "supersedes": "h1-n17"}}']}}),
+    ("an assessment targeting a concept no registry lists", 1, {"extra": {"h1": [
+        f'{{"id": "h1-n19", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"concept": "no-such-concept"}}, "axis": "reliability", "score": 4, "verbatim": "x"}}']}}),
+    ("a non-assessment event on a concept", 2, {"extra": {"h1": [
+        f'{{"id": "h1-n20", "by": "@h1", {_NB}, "kind": "estimate", "target": {{"concept": "no-such-concept"}}, "estimate": 0.5, "gloss": "x"}}']}}),
     ("a rate row below zero minutes", 10, {"edits": [("policy.yaml", "reread:   {S: 4", "reread:   {S: -1")]}),
     # owners, frames, wants, priorities, tasks
     ("a frame owned by an AI handle", 2, {"programme": True, "edits": [("nodes/prog.md", 'owner: "@h1"', 'owner: "@ai"')]}),
