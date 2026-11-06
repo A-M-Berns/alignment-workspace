@@ -25,10 +25,10 @@ version: 1
 A solution to item 103 ships the learner with its accounting, or the obstruction.
 
 ## Source
-PRIORITIES.md, item 103 (A decision theory for logical inductors without the split between a belief market and a choice learner); its context: the phase-2 round's `SPEC.md` §6 and `REPORT.md`; `KernelExtension.lean`; `Continuation-BRIA.md` §9 (the LI coupling); items 86, 90, 102.
+ATTENTION.md, item 103 (A decision theory for logical inductors without the split between a belief market and a choice learner); its context: the phase-2 round's `SPEC.md` §6 and `REPORT.md`; `KernelExtension.lean`; `Continuation-BRIA.md` §9 (the LI coupling); items 86, 90, 102.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The kernel's extension (`projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md`

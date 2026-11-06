@@ -28,10 +28,10 @@ version: 1
 Item 112, Occurrence-level defeat: the orphan pin, is delivered in the shape its entry states: the rule as a `def` on `Grounds` replacing `Grounds.region`'s port-only filter, the no-orphan theorem on the fixture and in general for chains, and the fixture of this round re-run under it.
 
 ## Source
-PRIORITIES.md, item 112 (Occurrence-level defeat: the orphan pin); its context: `.../2026-10-20-warrant-enforcement-semantics/SETTLEMENT_FORK.md` (iv), `COUNTERMODELS.md` §3, `LICENCE_CHAIN.md` A1.
+ATTENTION.md, item 112 (Occurrence-level defeat: the orphan pin); its context: `.../2026-10-20-warrant-enforcement-semantics/SETTLEMENT_FORK.md` (iv), `COUNTERMODELS.md` §3, `LICENCE_CHAIN.md` A1.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The warrant-enforcement-semantics round (`projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/`)

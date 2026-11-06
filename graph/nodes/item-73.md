@@ -24,10 +24,10 @@ version: 1
 Item 73, What is the baseline for a demonstrated improvement, is delivered in the shape its entry states: either a condition that selects the baseline from the process's own structure, or the finding that the baseline is irreducibly consumer-supplied together with what a consumer must state when it supplies one.
 
 ## Source
-PRIORITIES.md, item 73 (What is the baseline for a demonstrated improvement); its context: `projects/normativity/legitimacy/rounds/2026-08-27-legitimate-improvement/LEGITIMATE_IMPROVEMENT.md` §8; `src/evidence.py`.
+ATTENTION.md, item 73 (What is the baseline for a demonstrated improvement); its context: `projects/normativity/legitimacy/rounds/2026-08-27-legitimate-improvement/LEGITIMATE_IMPROVEMENT.md` §8; `src/evidence.py`.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The improvement theorem's verdict turns on a baseline the round supplies rather

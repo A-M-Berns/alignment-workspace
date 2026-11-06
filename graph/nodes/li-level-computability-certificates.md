@@ -13,7 +13,7 @@ normativity line's modified market, a coherence modulus, the deductive process
 Σ_n and the Bayesian-logical-induction markets each have a computable version.
 
 ## Source
-PRIORITIES.md: "A computable coherence modulus, or a proof there is none";
+ATTENTION.md: "A computable coherence modulus, or a proof there is none";
 "`Sigma_n` as a computable deductive process"; "The modified market as a
 computable belief sequence"
 

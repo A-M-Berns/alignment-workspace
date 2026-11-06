@@ -136,7 +136,7 @@ Each unit: `n. kind target (size)[ — for <the goal carrying the largest share 
 - … 1812 more ranked units in `derived.json` (`--all` prints them)
 
 ## Agent work
-Work an agent can do without a human; the map's ordering, not `PRIORITIES.md`'s.
+Work an agent can do without a human; the map's ordering, not `ATTENTION.md`'s.
 1. do item-130 (S) — also for split-bill-is-robust-openness.improvable
    path: top → the-program → legitimacy → openness-and-non-capture → split-bill-is-robust-openness.improvable → item-130
    State an intervention semantics for Robust Openness indexed by the accounted state (the docket, the ports and the accounts), producing for each state and concern the actual coverage data and the data under each declared intervention, and check the non-capture certificate against it.
@@ -175,7 +175,7 @@ Work an agent can do without a human; the map's ordering, not `PRIORITIES.md`'s.
    Read Kim and Lee and write a one-page comparison of the hypotheses of their exploration route, Wyeth's oracle route and the floor of Theorem C.
 13. do item-110 (M) — vet this AI number; promise rests on AI judgment
    path: top → the-program → legitimacy → authorship-and-transparency → public-legitimacy-improvable → item-110
-   Execute PRIORITIES item 110: define the baseline (candidate: the idle-agent rollout read as a process on her record), re-derive the eight-world model's seven cases from it, and include the sealed sibling of the endpoint-preservation model as a second candidate for comparison.
+   Execute ATTENTION item 110: define the baseline (candidate: the idle-agent rollout read as a process on her record), re-derive the eight-world model's seven cases from it, and include the sealed sibling of the endpoint-preservation model as a second candidate for comparison.
 14. do uea-current-node-floor-repair (M) — vet this AI number; promise rests on AI judgment
    path: top → the-program → stance-and-level → level-super-turing → uea-theorem-1.improvable → uea-current-node-floor-repair
    Restate Theorem 1 for the current-node-floored agent as a theorem over every reflective oracle in rOSI, with the finite Theorem C as its shadow.
@@ -190,7 +190,7 @@ Work an agent can do without a human; the map's ordering, not `PRIORITIES.md`'s.
    Type the rOSI statements of Theorem 1 and of Theorems B and C with discounting explicit, and mark which finite-shadow steps use finiteness.
 18. do value-symmetric-comparator (M) — vet this AI number; promise rests on AI judgment
    path: top → the-program → stance-and-level → level-above-quantifiable → ddb-value-iff-total-trust.improvable → value-symmetric-comparator
-   Define symmetric Value on finite frames and test DDB's Fact 2.1 frame and the anti-expert frame against it. (work order: PRIORITIES #27)
+   Define symmetric Value on finite frames and test DDB's Fact 2.1 frame and the anti-expert frame against it. (work order: ATTENTION #27)
 19. do uea-updateless-variant (M) — vet this AI number; promise rests on AI judgment
    path: top → the-program → stance-and-level → level-super-turing → uea-theorem-1.improvable → uea-updateless-variant
    Reconcile notes/01-interleaving-sketch.md with sink-or-swim findings F-6 to F-9 and state which updateless optimality notion the repaired theorem of the updateless self-game uses.
@@ -626,7 +626,7 @@ The goals in the frame tree's order (the agenda's outline): kind and role, the b
       - never-settled-standard (shared claim of ledger-logic-market-logic-synthesis) — best unit: none ranked; 2 unit(s); The standard governing prices on never-settled questions comes from a legitimacy-modified version of the logical-induction trust principles (Total Trust, the tower or Reflection)
     - stage5-right-setting-for-dt (shared claim of abstraction-arc) — best unit: 186. vet stage5-right-setting-for-dt; 4 unit(s); Decision theory formulated over the Stage 5 object
     - mastery-gates-stage5 (shared claim of abstraction-arc) — best unit: 85. vet mastery-gates-stage5; 4 unit(s); Formal work on the Stage 5 representation theorem proceeds in parallel with the mastery program rather than after it.
-  - enabling-work (frame, owner @anson, @abram; holds 15): Which repository infrastructure makes the trust research vettable and publishable?
+  - enabling-work (frame, owner @anson, @abram; holds 16): Which repository infrastructure makes the trust research vettable and publishable?
     - enabling-vetting-and-prioritization-system (shared claim of enabling-work) — best unit: 605. vet ranking-matches-stated-priorities; 16 unit(s); The argument map under graph/ files the research agenda from deep goals down to concrete tasks
     - enabling-machine-checked-corpus (shared claim of enabling-work) — best unit: 873. vet cleanroom-results-in-public-ci; 13 unit(s); The research corpus's claims are formalized in Lean 4 over FAF and adversarially audited in a run independent of the first
     - enabling-publication-pipeline (shared claim of enabling-work) — best unit: 271. vet enabling-publication-pipeline.complete; 6 unit(s); Each candidate for release to this repository is listed with its state
@@ -699,4 +699,4 @@ In order: the owners' priority words, gestalts that set a goal's promise, estima
 - gestalt agency-correspondence-refuted — informs 1 goal; the derived number multiplies 3 unread guesses; your holistic number for agency-correspondence-refuted (about two minutes) sets its promise — under agency-correspondence-refuted
 - gestalt ro-generalized-kakutani-refuted — informs 1 goal; the derived number multiplies 3 unread guesses; your holistic number for ro-generalized-kakutani-refuted (about two minutes) sets its promise — under ro-generalized-kakutani-refuted
 - … 240 more unranked units in `derived.json` (`--all` prints them)
-<!-- generated_hash: 46b53acd397c8949f059ba4f -->
+<!-- generated_hash: e23ad29a6f6da88f28e69b88 -->

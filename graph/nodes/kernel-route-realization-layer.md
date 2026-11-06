@@ -15,4 +15,4 @@ enters the guarantee as a bound.
 
 ## Source
 wiki/Corrigibility.md, section 6 (the learning-realizations extension) and the
-scope warning; PRIORITIES.md, items 101 and 102.
+scope warning; ATTENTION.md, items 101 and 102.

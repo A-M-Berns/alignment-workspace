@@ -23,10 +23,10 @@ version: 1
 A solution to item 119 ships the component, its monotonicity theorem, and the fixtures.
 
 ## Source
-PRIORITIES.md, item 119 (Hidden discord: a region-level convergence measure); its context: `MANY.md` §2 and `GAMEABILITY.md` (what is not blocked) of the round.
+ATTENTION.md, item 119 (Hidden discord: a region-level convergence measure); its context: `MANY.md` §2 and `GAMEABILITY.md` (what is not blocked) of the round.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 *Re-filed 2026-10-21 by the rebuttal-and-end-to-end round from branch `round/2026-09-17-convergence-measure`, where it was item 95; content unchanged; the branch round is landed under `projects/normativity/seed/rounds/2026-09-17-convergence-measure/`.*

@@ -3,7 +3,7 @@ id: item-109
 kind: leaf
 leaf_kind: question
 given: li-corrigibility-inequality-public
-action: "Execute PRIORITIES item 109: the preservation theorem in asymptotic form for a logical-inductor principal over the pinned LogicalInduction API, with the inductor's conditional self-trust as the hypothesis on her model; first read the LI-corrigibility round's LUV compilation and test whether it gives the theorem directly."
+action: "Execute ATTENTION item 109: the preservation theorem in asymptotic form for a logical-inductor principal over the pinned LogicalInduction API, with the inductor's conditional self-trust as the hypothesis on her model; first read the LI-corrigibility round's LUV compilation and test whether it gives the theorem directly."
 who: agent
 files: [lean/, projects/deference/rounds/2026-09-15-li-corrigibility/LUV_COMPILATION.md, projects/deference/rounds/2026-09-15-li-corrigibility/THEOREM.md]
 item: "109"
@@ -30,7 +30,7 @@ transparency as the actual record generated as the model says, the actual
 process satisfies the same self-trust in the limit.
 
 ## Source
-PRIORITIES.md, item 109 ("Preservation for a logical-inductor principal"): the
+ATTENTION.md, item 109 ("Preservation for a logical-inductor principal"): the
 finite theorem is exact and the inductor's self-trust is asymptotic; wanted,
 the asymptotic form and which hypotheses survive.
 

@@ -24,10 +24,10 @@ version: 1
 A solution to item 85 ships the composed theorems, or the negatives.
 
 ## Source
-PRIORITIES.md, item 85 (Margin realization and end-to-end rate compatibility); its context: `NORMATIVE_CHOICE_THEOREM.md` §6 and `DECISION_THEORY_BILL.md` §4–§5 of `projects/deference/rounds/2026-09-06-decision-theory-bill/`.
+ATTENTION.md, item 85 (Margin realization and end-to-end rate compatibility); its context: `NORMATIVE_CHOICE_THEOREM.md` §6 and `DECISION_THEORY_BILL.md` §4–§5 of `projects/deference/rounds/2026-09-06-decision-theory-bill/`.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 `GatedChoice.softGate_practicalCert` pays the Normative Inductor's practical certificate

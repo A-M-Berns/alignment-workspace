@@ -24,10 +24,10 @@ version: 1
 Item 65, Whether `L_min(V)` is needed in its strong form, is delivered in the shape its entry states: either such a case, with what it forces `L_min(V)` to contain, or an argument that the weak relationship is closed under the architecture's operations.
 
 ## Source
-PRIORITIES.md, item 65 (Whether `L_min(V)` is needed in its strong form); its context: `projects/normativity/legitimacy/rounds/2026-08-25-end-to-end-vertical-slice/FINDINGS.md` §3.
+ATTENTION.md, item 65 (Whether `L_min(V)` is needed in its strong form); its context: `projects/normativity/legitimacy/rounds/2026-08-25-end-to-end-vertical-slice/FINDINGS.md` §3.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The slice never required an LI sentence whose meaning is a reason: reasons are

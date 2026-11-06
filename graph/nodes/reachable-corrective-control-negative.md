@@ -15,7 +15,7 @@ reachable capability measures advisor cooperation rather than principal
 control.
 
 ## Source
-PRIORITIES.md, item 60 (answered negatively by the reachable-corrective-control
+ATTENTION.md, item 60 (answered negatively by the reachable-corrective-control
 round); the corrective.* claims in projects/deference/CLAIMS.md.
 
 ## Notes

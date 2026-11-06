@@ -13,9 +13,9 @@ BLI markets needs a computability certificate for the logical-induction line's
 results to be results at the logical-induction level.
 
 ## Source
-PRIORITIES.md.
+ATTENTION.md.
 
 ## Notes
 The four are the work orders and digest items found by grep for computability
-in PRIORITIES.md and the digest; FAF's inductor itself is computable by its
+in ATTENTION.md and the digest; FAF's inductor itself is computable by its
 construction.

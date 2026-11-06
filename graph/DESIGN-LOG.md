@@ -83,3 +83,4 @@
 - 2026-11-04 change @anson — assessments may target a site-map concept ({concept: id} against state/concepts.json); no other kind takes a concept target
 - 2026-11-05 change @anson — research-thread (goal) and prior-work concepts take no assessment: navigated or cited, not scored
 - 2026-11-05 change @anson — re-ruled: a research thread takes importance and clarity, only reliability stays off it; the eleven threads seeded on both
+- 2026-11-05 change @anson — the item ledger renamed to ATTENTION.md; the scores ordering at /priorities/ is the priority system (the pointer kind priorities and the priority event keep their names)

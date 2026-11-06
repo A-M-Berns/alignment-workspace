@@ -25,10 +25,10 @@ version: 1
 Item 124, Certified bounds at the displayed price: the licence–force bridge, is delivered in the shape its entry states: `lean-proved`, landed.
 
 ## Source
-PRIORITIES.md, item 124 (Certified bounds at the displayed price: the licence–force bridge); its context: `projects/normativity/rounds/2026-10-22-normative-inductor-integration/THEOREM_STORY.md` §C.
+ATTENTION.md, item 124 (Certified bounds at the displayed price: the licence–force bridge); its context: `projects/normativity/rounds/2026-10-22-normative-inductor-integration/THEOREM_STORY.md` §C.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 A licence certifies a bracket on a coordinate by rows of the compiled bundle; the enforcer

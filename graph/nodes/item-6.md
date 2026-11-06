@@ -24,10 +24,10 @@ version: 1
 Item 6, Schema-level demand rates, is delivered in the shape its entry states: `enumeration-verified` over a declared finite schema family, or `conjectured` with the statement made precise.
 
 ## Source
-PRIORITIES.md, item 6 (Schema-level demand rates); its context: `projects/normativity/consolidation-aug9/THEORY_9_PRACTICAL_DEMAND.md`.
+ATTENTION.md, item 6 (Schema-level demand rates); its context: `projects/normativity/consolidation-aug9/THEORY_9_PRACTICAL_DEMAND.md`.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 How demand scales with the schema set rather than with the arrival stream. The

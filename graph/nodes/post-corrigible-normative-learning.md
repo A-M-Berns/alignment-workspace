@@ -18,7 +18,7 @@ sufficient, value), sincerity through transparency, asking through the declared
 protocol, and the post's theorem as one statement.
 
 ## Source
-PRIORITIES.md, item 107 (the thin-legitimacy round puts behind the post
+ATTENTION.md, item 107 (the thin-legitimacy round puts behind the post
 "Corrigible Normative Learning" the theorems its informal claims rely on; the
 registrations thin.*, sincerity.*, authority.*, shortfall.* and post.* answer
 the item; four open pieces listed);

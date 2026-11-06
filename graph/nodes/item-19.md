@@ -25,10 +25,10 @@ version: 1
 A solution to item 19 ships the matrix, and for every `conditionally compatible` row the exact condition.
 
 ## Source
-PRIORITIES.md, item 19 (Triangle compatibility audit); its context: `prompts/2026-08-11-deference-triangle/REPORT.md`; `projects/deference/note-dump-2026-08-11/lean-deference/AUDIT.md`.
+ATTENTION.md, item 19 (Triangle compatibility audit); its context: `prompts/2026-08-11-deference-triangle/REPORT.md`; `projects/deference/note-dump-2026-08-11/lean-deference/AUDIT.md`.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 Whether the requirements the forward arrow imposes and the requirements the reverse

@@ -12,7 +12,7 @@ roots:
   - {id: crux-vetting-or-generation, role: shared-claim, preset: worst-case}
   - {id: enabling-map-as-canonical, role: shared-claim, preset: worst-case}
   - {id: enabling-program-site, role: shared-claim, preset: worst-case}
-holds: [item-f1, item-f2, item-f3, item-f4, item-f5, item-f6, item-f7, item-f8, item-10, item-11, item-12, item-13, item-36, item-37, item-38]
+holds: [item-f1, item-f2, item-f3, item-f4, item-f5, item-f6, item-f7, item-f8, item-f9, item-10, item-11, item-12, item-13, item-36, item-37, item-38]
 work:
   - {kind: decision, ref: 2026-10-22--map-canonical-index-program-maintainer-handles}
   - {kind: round, ref: prompts/2026-08-11-attribution-provenance-names}
@@ -40,7 +40,7 @@ research be vetted and published.
 ## Source
 The repository's own activity as the activity sweep read it: graph/README.md
 and graph/PROTOCOL.md (the map), projects/deference/faf-cleanroom-2026-10-02/README.md
-(the clean room), PRIORITIES.md and RESEARCH_STATE.md (the publication queue);
+(the clean room), ATTENTION.md and RESEARCH_STATE.md (the publication queue);
 the claims and cruxes below cite their sources in their own files.
 
 ## Notes

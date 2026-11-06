@@ -30,7 +30,7 @@ prompts/2026-08-11-deference-finite-kernel/REPORT.md, §1.1 and §4 (no settleme
 A route of the improvement claim on local-delegation-bridge, filed by reading by the site-vertical-slice round (projects/enabling/rounds/2026-10-24-site-vertical-slice); the item is this round's.
 
 ## Notes
-Filed by the site-vertical-slice round as a route of the improvement claim on the connected delegation bridge; the entry's text is the Item section below, rendered into PRIORITIES.md by checkers/priorities_render.py.
+Filed by the site-vertical-slice round as a route of the improvement claim on the connected delegation bridge; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py.
 
 ## Item
 The local delegation bridge (`delegation.bridge`) holds under grade trust at level η: on every

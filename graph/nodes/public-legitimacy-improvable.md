@@ -16,7 +16,7 @@ human principal and an AI over real channels well.
 
 ## Source
 Ruling 35's construction applied to public-legitimacy-theory; the directions
-are PRIORITIES.md items 107 to 110 and the twenty work orders of items 53 to 73
+are ATTENTION.md items 107 to 110 and the twenty work orders of items 53 to 73
 (the normativity line's legitimacy section). The routes are the filing
 session's reading.
 

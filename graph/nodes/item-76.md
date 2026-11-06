@@ -2,7 +2,7 @@
 id: item-76
 kind: leaf
 leaf_kind: question
-action: "Execute PRIORITIES item 76 on the deductive channel: a modulus as a property of the defect's dependence on the settled record, certifying the constant that ends the Sharp Timely Service bound."
+action: "Execute ATTENTION item 76 on the deductive channel: a modulus as a property of the defect's dependence on the settled record, certifying the constant that ends the Sharp Timely Service bound."
 who: agent
 item: "76"
 title: "Certify a reason's temporal modulus"
@@ -25,7 +25,7 @@ A certificate fixes a reason's temporal modulus, the constant that ends the
 Sharp Timely Service bound.
 
 ## Source
-PRIORITIES.md, item 76 ("Certify a reason's temporal modulus");
+ATTENTION.md, item 76 ("Certify a reason's temporal modulus");
 projects/normativity/legitimacy/checkpoint-2026-09-01/ROADMAP.md, which calls
 it "The single highest-value open problem."
 

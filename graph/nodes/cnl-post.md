@@ -12,7 +12,7 @@ The informal argument of Corrigible Normative Learning, as the thin-legitimacy
 round states it, is backed by that round's theorem.
 
 ## Source
-PRIORITIES.md, item 107 ("The post's backing");
+ATTENTION.md, item 107 ("The post's backing");
 projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md,
 Part F ("the post's theorem").
 

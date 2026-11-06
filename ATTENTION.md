@@ -1,11 +1,14 @@
-# Priorities
+# Attention
 
-**What the program wants done next, in its own order.** This is not an inventory
-of everything unsolved — it is the maintainer's ranking of what would move the
-work, and an item's absence means nobody has asked for it, not that it is easy.
-GitHub issues mirror this file; this file does not mirror them. Each item states
-the problem precisely, points at the context, says what a solution must ship, and
-carries a difficulty tag.
+**The filed requests for work** — what the program asks of a round or a
+contributor, item by item. This is not an inventory of everything unsolved, and
+an item's absence means nobody has asked for it, not that it is easy. What
+matters most right now is the site's priorities ordering, derived from the
+standing scores; the maintainer files items here informed by it, and each entry
+on that ordering links the open items filed against its concept. GitHub issues
+mirror this file; this file does not mirror them. Each item states the problem
+precisely, points at the context, says what a solution must ship, and carries a
+difficulty tag.
 
 What a solution must ship is set by `CONTRIBUTING.md` and is the same for
 everyone: a theorem ships as statement + implementation + test + a necessity
@@ -4157,6 +4160,20 @@ static view agrees. Whether that is enough for Q3 to graduate is in
 *Record:* `prompts/2026-08-11-stage-v-li-native/REPORT.md`.
 
 ---
+
+### F9 — wiki_links accepts a commit pin that does not resolve
+<!-- workspace-priority: project=none; dispatchable=yes -->
+
+`checkers/wiki_links.py` reports a commit-pinned repository link clean without checking
+that the named commit exists or that the path exists in that commit's tree. The
+site-priorities round pinned `wiki/Theorem-Spine.md`'s ledger link to a fabricated
+40-character hash sharing only its 8-character prefix with the real commit, and the gate
+passed it; the defect surfaced only because the site build printed the true hash moments
+later. A pin the gate cannot resolve is exactly the unverified identifier the citation
+rule exists to refuse, and a fabricated-but-well-formed pin is the shape an agent error
+takes. The fix is contained: resolve each pin against local git objects
+(`git cat-file`-grade checks, no network), and ship the null case — a well-formed pin
+naming a commit or path git does not have must fail.
 
 ## Infrastructure
 

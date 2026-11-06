@@ -13,7 +13,7 @@ point and the public decision queue to reach the maintainers.
 
 ## Source
 graph/PROTOCOL.md, the Open marks (section 6: how the map term and the
-decision term combine; whether agent work feeds PRIORITIES.md); DECISIONS.md,
+decision term combine; whether agent work feeds ATTENTION.md); DECISIONS.md,
 Awaiting the author.
 
 ## Notes

@@ -2,7 +2,7 @@
 id: item-108
 kind: leaf
 leaf_kind: question
-action: "Execute PRIORITIES item 108: state correct, sufficient and value for valuations with no outside fact, prove that the thick conditions deliver them or state the obstruction, and write the note linking the item to the inferentialist (no-territory) case of Stage 3."
+action: "Execute ATTENTION item 108: state correct, sufficient and value for valuations with no outside fact, prove that the thick conditions deliver them or state the obstruction, and write the note linking the item to the inferentialist (no-territory) case of Stage 3."
 who: agent
 files: [lean/, projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/]
 item: "108"
@@ -26,7 +26,7 @@ The thin properties have a form for valuations with no outside fact to be
 correct about, and the thick conditions deliver them.
 
 ## Source
-PRIORITIES.md, item 108 ("The thin specification for evaluations, where no
+ATTENTION.md, item 108 ("The thin specification for evaluations, where no
 outside fact plays the world's role"): candidates for correct, sufficient and
 value for a valuation, and the theorem that the thick conditions deliver them.
 

@@ -26,10 +26,10 @@ version: 1
 A solution to item 90 ships the certificate, or the exact combinator the pinned suite lacks.
 
 ## Source
-PRIORITIES.md, item 90 (The generability certificate of the soft-weighted finite-menu constraint); its context: `LUV_COMPILATION.md` §2 and §4, `LI_CORRIGIBILITY.md` §3 of the round; the pinned formalization's `Construction/Witnesses/LUVSyntax.lean` for the certificate shape and its own `triangularSoftmaxPoly` for a fold of the same kind.
+ATTENTION.md, item 90 (The generability certificate of the soft-weighted finite-menu constraint); its context: `LUV_COMPILATION.md` §2 and §4, `LI_CORRIGIBILITY.md` §3 of the round; the pinned formalization's `Construction/Witnesses/LUVSyntax.lean` for the certificate shape and its own `triangularSoftmaxPoly` for a fold of the same kind.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The li-corrigibility round (`projects/deference/rounds/2026-09-15-li-corrigibility/`)

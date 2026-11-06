@@ -2,7 +2,7 @@
 id: item-9
 kind: leaf
 leaf_kind: task
-action: "Restate each squeeze headline per PRIORITIES item 9 with strictly weaker hypotheses and a typechecking witness term."
+action: "Restate each squeeze headline per ATTENTION item 9 with strictly weaker hypotheses and a typechecking witness term."
 who: either
 files: ["lean/Workspace/Deference/Contrib/"]
 item: "9"
@@ -29,7 +29,7 @@ hypotheses strictly weaker than its conclusion and an inhabitation witness, or
 the squeeze is shown unavoidable.
 
 ## Source
-PRIORITIES.md item 9, "Forcing headlines that are squeezes": "A squeeze is a
+ATTENTION.md item 9, "Forcing headlines that are squeezes": "A squeeze is a
 theorem whose hypothesis already contains its conclusion; it is not false, it
 is empty."
 

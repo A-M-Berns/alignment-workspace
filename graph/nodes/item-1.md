@@ -26,10 +26,10 @@ version: 1
 A solution to item 1 ships either a proof that a positive minimum persists under stated conditions, with necessity witnesses for those conditions; or a displayed trajectory driving it to zero under conditions the interface permits.
 
 ## Source
-PRIORITIES.md, item 1 (Persistence of the certified core minimum); its context: `projects/normativity/consolidation-aug9/THEORY_11_SETTLEMENT_INTERFACE.md` §5.
+ATTENTION.md, item 1 (Persistence of the certified core minimum); its context: `projects/normativity/consolidation-aug9/THEORY_11_SETTLEMENT_INTERFACE.md` §5.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 Containment of the core homothet is linear in the reference at fixed

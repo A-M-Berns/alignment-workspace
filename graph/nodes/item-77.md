@@ -2,7 +2,7 @@
 id: item-77
 kind: leaf
 leaf_kind: question
-action: "Execute PRIORITIES item 77: a theory of what licenses MayDispose, the route by which incurred content legitimately ceases to be owed without being answered."
+action: "Execute ATTENTION item 77: a theory of what licenses MayDispose, the route by which incurred content legitimately ceases to be owed without being answered."
 who: agent
 item: "77"
 title: "What licenses authorized disposition?"
@@ -28,7 +28,7 @@ A theory of authorized disposition says what licenses incurred content to cease
 being owed without being answered.
 
 ## Source
-PRIORITIES.md, item 77 ("What licenses authorized disposition?"), which the
+ATTENTION.md, item 77 ("What licenses authorized disposition?"), which the
 item calls the highest-value unfiled question in the line because it is three
 questions at once;
 projects/normativity/legitimacy/checkpoint-2026-09-01/OPEN_PROBLEMS.md, section

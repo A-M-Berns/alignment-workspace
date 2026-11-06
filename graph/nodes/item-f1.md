@@ -20,10 +20,10 @@ version: 1
 Item F1, Job names in prose, and root documents that classify into no layer, is answered as its entry specifies.
 
 ## Source
-PRIORITIES.md, item F1 (Job names in prose, and root documents that classify into no layer).
+ATTENTION.md, item F1 (Job names in prose, and root documents that classify into no layer).
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The residue of a merged entry whose first half is now a gate. A count or a job

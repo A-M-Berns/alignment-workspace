@@ -27,10 +27,10 @@ version: 1
 A solution to item 74 ships the theorem or the separating instance, and in either case a statement of what a certificate can and cannot be fed back into Answerability as.
 
 ## Source
-PRIORITIES.md, item 74 (Is the finite-horizon infeasibility certificate complete for the causal problem?); its context: `projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/EXISTENCE_AND_DUALITY.md` §4 for the certificate and the soundness proof, §1–§3 for the causal problem it is a relaxation of, that round's `FOLLOWUP_REPORT.md` for why the account is signed and what that does to the dual, and its `src/overload.py` and `src/li_account.py` with the matching modules under `tests/` for the exact instances; `projects/normativity/legitimacy/rounds/2026-08-30-liability-theory/DUALITY.md` for the synchronic certificate the horizon version extends.
+ATTENTION.md, item 74 (Is the finite-horizon infeasibility certificate complete for the causal problem?); its context: `projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/EXISTENCE_AND_DUALITY.md` §4 for the certificate and the soundness proof, §1–§3 for the causal problem it is a relaxation of, that round's `FOLLOWUP_REPORT.md` for why the account is signed and what that does to the dual, and its `src/overload.py` and `src/li_account.py` with the matching modules under `tests/` for the exact instances; `projects/normativity/legitimacy/rounds/2026-08-30-liability-theory/DUALITY.md` for the synchronic certificate the horizon version extends.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 A Farkas pair `(y, z)` with positive deficit refutes finite-horizon affordability on

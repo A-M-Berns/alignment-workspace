@@ -25,10 +25,10 @@ version: 1
 Item 18, Bounded densification study, is delivered in the shape its entry states: whichever stopping object is reached — a construction (`lean-proved` or `witness-checked`), a lower bound, or a stated controlling lemma as `conjectured`. A clean obstruction is a success.
 
 ## Source
-PRIORITIES.md, item 18 (Bounded densification study); its context: `prompts/2026-08-11-deference-densification/REPORT.md`.
+ATTENTION.md, item 18 (Bounded densification study); its context: `prompts/2026-08-11-deference-densification/REPORT.md`.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 Whether exposure weights can be chosen so that outstanding delayed exposure stays

@@ -24,10 +24,10 @@ version: 1
 Item 33, Separate causal transformation structure from normative certification, is delivered in the shape its entry states: a typed or executable split between compiled transformations and normative compilation evidence, with adapters for all nine current declarative programs.
 
 ## Source
-PRIORITIES.md, item 33 (Separate causal transformation structure from normative certification); its context: `projects/normativity/notes/NORMATIVE_LEARNING_INTERFACE.md`, Levels A and B.
+ATTENTION.md, item 33 (Separate causal transformation structure from normative certification); its context: `projects/normativity/notes/NORMATIVE_LEARNING_INTERFACE.md`, Levels A and B.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 Extract the minimal transformation API required by the online-learning theorem:

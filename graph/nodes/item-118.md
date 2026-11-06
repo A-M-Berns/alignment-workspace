@@ -24,10 +24,10 @@ version: 1
 A solution to item 118 ships the two theorems.
 
 ## Source
-PRIORITIES.md, item 118 (Rational attainment and certificate completeness for the computed forced interval); its context: `STATICS.md` §§2, 5 of the seed-statics round; `FourierMotzkin.lean`'s header on why satisfaction lives in `ℝ`.
+ATTENTION.md, item 118 (Rational attainment and certificate completeness for the computed forced interval); its context: `STATICS.md` §§2, 5 of the seed-statics round; `FourierMotzkin.lean`'s header on why satisfaction lives in `ℝ`.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 *Re-filed 2026-10-21 by the rebuttal-and-end-to-end round from branch `round/2026-09-16-seed-statics`, where it was item 94; content unchanged; the branch round is landed under `projects/normativity/seed/rounds/2026-09-16-seed-statics/`.*

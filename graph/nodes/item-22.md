@@ -24,10 +24,10 @@ version: 1
 Item 22, The weakest protected-authority interface, is delivered in the shape its entry states: a **report plus a proposed skeleton clause**, not a theorem of record and **not** a canonical definition — naming is reserved.
 
 ## Source
-PRIORITIES.md, item 22 (The weakest protected-authority interface); its context: `prompts/2026-08-11-deference-channel/REPORT.md` §9.2 and §1.3.
+ATTENTION.md, item 22 (The weakest protected-authority interface); its context: `prompts/2026-08-11-deference-channel/REPORT.md` §9.2 and §1.3.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 Determine the weakest abstract interface on which *prediction of authorization does

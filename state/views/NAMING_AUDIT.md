@@ -10,7 +10,7 @@ spread. It carries no recommendation, and no round rules on any of it.
 *Propagates* is where a name is spelled outside the file defining it.
 `registry` means it is a statement of record, so renaming it is a registry
 diff; `wiki` means it has reached the human register; `note` a living note;
-`prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
+`prose` `ATTENTION.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
 ## deference — 1152 names, 619 of them Lean only

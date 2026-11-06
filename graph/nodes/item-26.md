@@ -24,10 +24,10 @@ version: 1
 A solution to item 26 ships the per-family verdicts, and an explicit statement of which previously proposed admissibility conditions are now reclassified as architectural.
 
 ## Source
-PRIORITIES.md, item 26 (Admissibility red team, rerun under skeleton v2); its context: `projects/deference/notes/FINITE_MODEL_SKELETON.md` §4a and §8.2; `prompts/2026-08-11-phase-ii-authority/REPORT.md` §9.2; the wave-1 red-team round.
+ATTENTION.md, item 26 (Admissibility red team, rerun under skeleton v2); its context: `projects/deference/notes/FINITE_MODEL_SKELETON.md` §4a and §8.2; `prompts/2026-08-11-phase-ii-authority/REPORT.md` §9.2; the wave-1 red-team round.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The admissibility work bound to skeleton v1 and v2 changes what it is about. A restriction

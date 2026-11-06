@@ -14,7 +14,7 @@ The governing standard for the companion artifact:
 One obligation stands between today's tree and that standard, and it is named in §C.
 
 Every declaration named below is registered in `projects/normativity/CLAIMS.md` as
-`lean-proved`, against the `PRIORITIES.md` item each answers. The registry is what
+`lean-proved`, against the `ATTENTION.md` item each answers. The registry is what
 a claim is; this note states the theorems in the form the paper would.
 
 ---
@@ -261,7 +261,7 @@ trajectories that are affordable forever and trajectories that are not.
 
 **What must not be claimed.** That the normative record has been shown to canonically
 generate the intended `C_t` or `L_t`. That bridge is upstream, separate, and open
-(`PRIORITIES.md` item 39). Traderized enforcement supplies **force**, not legitimacy,
+(`ATTENTION.md` item 39). Traderized enforcement supplies **force**, not legitimacy,
 authorization, or corrigibility.
 
 ---
@@ -287,7 +287,7 @@ paper's own phrasing, with no auxiliary hypotheses hidden in a namespace. Everyt
 today lives in `lean/Workspace/Normativity/Contrib/`, which is the research surface;
 extraction is mostly mechanical, and the one thing that is not is below.
 
-### Debt 1 — `DistanceComplete`, `PRIORITIES.md` item 49
+### Debt 1 — `DistanceComplete`, `ATTENTION.md` item 49
 
 The exactness half of Theorem 3(b): from conformance on the exact family, produce an
 admissible mixture within `δ`. This is convex duality for a finite rational polytope —
@@ -331,7 +331,7 @@ formalized here.
 ### Everything else
 
 Debt 1 is the only obligation standing between the current declarations and the spine
-above, and it is filed as `PRIORITIES.md` item 49. The remaining `open` items —
+above, and it is filed as `ATTENTION.md` item 49. The remaining `open` items —
 safety necessity, the normative-record bridge, presentation-cost canonicality, a
 tight size bound, the universal-semimeasure property family — are discussion-section
 material, not debts against a stated theorem.

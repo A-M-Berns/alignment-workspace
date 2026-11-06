@@ -18,7 +18,7 @@ acceptance: "`python3 tests/run.py` green; Lean audits clean if any."
 context: ["projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/tests/test_cm.py"]
 author: "@smithy-verity"
 size: L
-size_reason: "one PRIORITIES item and a round section"
+size_reason: "one ATTENTION item and a round section"
 version: 1
 ---
 ## Statement
@@ -27,7 +27,7 @@ implication from M2(c) and M3 to the strong compatibility form is proved under
 added hypotheses or refuted by a countermodel.
 
 ## Source
-PRIORITIES.md, item 105 (belief–decision compatibility: W1 as a theorem of
+ATTENTION.md, item 105 (belief–decision compatibility: W1 as a theorem of
 record, and the unresolved implication);
 projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/REPORT.md,
 section 7.

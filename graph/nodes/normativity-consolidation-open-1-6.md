@@ -2,7 +2,7 @@
 id: normativity-consolidation-open-1-6
 kind: leaf
 leaf_kind: question
-action: "Take up PRIORITIES items 1 and 2 (open), then 3 (entry) and 4 to 6 (substantial), each per its deliverable shape."
+action: "Take up ATTENTION items 1 and 2 (open), then 3 (entry) and 4 to 6 (substantial), each per its deliverable shape."
 who: agent
 work:
   - {kind: priorities, ref: 1}
@@ -20,4 +20,4 @@ sharpness for the movement cap, construction of the audited pair, and
 schema-level demand rates.
 
 ## Source
-PRIORITIES.md, items 1 to 6 (context: the consolidation's open-problems file).
+ATTENTION.md, items 1 to 6 (context: the consolidation's open-problems file).

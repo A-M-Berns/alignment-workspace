@@ -21,10 +21,10 @@ version: 1
 Item 23, Lean promotion of the finite wave-1 results, is answered as its entry specifies.
 
 ## Source
-PRIORITIES.md, item 23 (Lean promotion of the finite wave-1 results).
+ATTENTION.md, item 23 (Lean promotion of the finite wave-1 results).
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 Answered, and registered: sixteen entries in `projects/deference/CLAIMS.md`

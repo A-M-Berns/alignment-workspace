@@ -23,10 +23,10 @@ version: 1
 A solution to item 117 ships the rule, the lock, the theorem, and the fixtures.
 
 ## Source
-PRIORITIES.md, item 117 (The selection lock: a canonical joint rule for warrant strengths, and a selection the docket may seal); its context: `STABILIZATION.md` §4 and `FIXTURES.md` §4 of the round; the queued *Awaiting the author* entry on re-selection and the burn ruling.
+ATTENTION.md, item 117 (The selection lock: a canonical joint rule for warrant strengths, and a selection the docket may seal); its context: `STABILIZATION.md` §4 and `FIXTURES.md` §4 of the round; the queued *Awaiting the author* entry on re-selection and the burn ruling.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 *Re-filed 2026-10-21 by the rebuttal-and-end-to-end round from branch `round/2026-09-16-seed-statics`, where it was item 93; content unchanged; the branch round is landed under `projects/normativity/seed/rounds/2026-09-16-seed-statics/`.*

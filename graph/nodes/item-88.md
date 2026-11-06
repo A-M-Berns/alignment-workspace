@@ -26,10 +26,10 @@ version: 1
 A solution to item 88 ships the presentation, or the exact obstruction.
 
 ## Source
-PRIORITIES.md, item 88 (Affordability from the traderization perspective: a canonical presentation); its context: `projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/`, `projects/normativity/rounds/2026-08-16-traderized-enforcement/`, item 61.
+ATTENTION.md, item 88 (Affordability from the traderization perspective: a canonical presentation); its context: `projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/`, `projects/normativity/rounds/2026-08-16-traderized-enforcement/`, item 61.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The affordability line (the 2026-08-31 normative-affordability round and its nine

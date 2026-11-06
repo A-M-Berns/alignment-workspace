@@ -14,7 +14,7 @@ version: 1
 The local delegation bridge, in which delegating beats a measurable comparator by the grade margin less twice the trust level on the disagreement region, can be improved until it reflects a human inductor deferring to a faster AI inductor at the logical-induction level, whose grades it can trust well.
 
 ## Source
-graph/PROTOCOL.md, section 2, Improvement claims; the reality phrase follows the deference-and-trust line's question (trust between a human inductor and an AI inductor at the logical-induction level); the routes are this round's item 132 and PRIORITIES item 23.
+graph/PROTOCOL.md, section 2, Improvement claims; the reality phrase follows the deference-and-trust line's question (trust between a human inductor and an AI inductor at the logical-induction level); the routes are this round's item 132 and ATTENTION item 23.
 
 ## Notes
 The improvement claim on the connected delegation bridge, filed by the site-vertical-slice round (projects/enabling/rounds/2026-10-24-site-vertical-slice): what remains between the finite bridge and the line's question.

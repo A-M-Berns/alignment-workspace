@@ -54,7 +54,7 @@ class Site:
 
 def layout(site: Site, title: str, body: str, crumbs: list[tuple[str, str]] | None = None, subtitle: str = "") -> str:
     r = site.repo
-    nav = ('<a href="/map/">map</a><a href="/chat/">chatbot</a><a href="/activity/">activity</a>'
+    nav = ('<a href="/map/">map</a><a href="/priorities/">priorities</a><a href="/chat/">chatbot</a><a href="/activity/">activity</a>'
            '<a href="https://github.com/A-M-Berns/alignment-workspace">repo</a>')
     crumb_html = ""
     if crumbs:
@@ -786,6 +786,7 @@ def landing_page(site: Site) -> str:
     its controls exist hidden because the engine looks them up."""
     v = esc(site.repo.commit[:12])
     tiles = (('map', '/map/'),
+             ('priorities', '/priorities/'),
              ('chatbot', '/chat/'),
              ('activity', '/activity/'),
              ('repo', 'https://github.com/A-M-Berns/alignment-workspace'))
@@ -809,42 +810,7 @@ def landing_page(site: Site) -> str:
 <main class="landing-main">
 <h1 class="landing-word">Alignment Workspace</h1>
 <nav class="tiles">{cards}</nav>
-<div class="type-sampler">
-<span class="ts-label">type</span>
-<button type="button" data-font="">Lexend</button>
-<button type="button" data-font="Inter">Inter</button>
-<button type="button" data-font="Source Sans 3">Source Sans 3</button>
-<button type="button" data-font="IBM Plex Sans">IBM Plex Sans</button>
-<button type="button" data-font="Space Grotesk">Space Grotesk</button>
-<button type="button" data-font="Manrope">Manrope</button>
-<button type="button" data-font="Figtree">Figtree</button>
-<button type="button" data-font="Public Sans">Public Sans</button>
-<button type="button" data-font="Albert Sans">Albert Sans</button>
-</div>
 </main>
-<link rel="stylesheet" href="/assets/fonts/candidates.css?v={v}">
-<script>
-(function () {{
-  "use strict";
-  function apply(f) {{
-    document.documentElement.style.setProperty("--sans", (f ? '"' + f + '", ' : '"Lexend Variable", ') + "-apple-system, BlinkMacSystemFont, sans-serif");
-    document.querySelectorAll(".type-sampler button").forEach(function (b) {{
-      b.classList.toggle("on", b.getAttribute("data-font") === f);
-      b.style.fontFamily = b.getAttribute("data-font") ? '"' + b.getAttribute("data-font") + '"' : '"Lexend Variable"';
-    }});
-  }}
-  var saved = "";
-  try {{ saved = localStorage.getItem("aw-font") || ""; }} catch (e) {{}}
-  apply(saved);
-  document.querySelectorAll(".type-sampler button").forEach(function (b) {{
-    b.addEventListener("click", function () {{
-      var f = b.getAttribute("data-font");
-      try {{ f ? localStorage.setItem("aw-font", f) : localStorage.removeItem("aw-font"); }} catch (e) {{}}
-      apply(f);
-    }});
-  }});
-}})();
-</script>
 </body></html>"""
 
 
@@ -1033,35 +999,27 @@ def feed_page(site: Site, rows: list[str]) -> str:
 
 def activity_page(site: Site, rows: list[str]) -> str:
     """Where to look, then what just happened. The pointers are derived from the standing
-    scores — contested axes first, then concepts scored important whose reliability has
-    not caught up, then the unscored — and they are invitations, not an ordering: the map
-    is the whole record, and attention brought from outside it is the point."""
+    scores — contested axes first, then the unscored — and they are invitations, not an
+    ordering: the ordering lives on /priorities/, the map is the whole record, and
+    attention brought from outside it is the point."""
     r = site.repo
-    contested, behind, unscored = [], [], []
+    contested, unscored = [], []
     for cid, e in r.concepts.items():
         axes = concept_axes(e)
         if not axes:
             continue
         h = r.concept_hero(cid)
         link = site.link("concepts", cid, e.get("title", cid))
-        star = lambda c: "*" if c["ai"] else ""
         axes_c = [a for a in axes if h[a]["contested"]]
         if axes_c:
             contested.append(f'<li>{link} — {", ".join(axes_c)} contested</li>')
-        if "reliability" in axes:
-            imp, rel = h["importance"], h["reliability"]
-            if imp["d"].isdigit() and int(imp["d"]) >= 4 and (not rel["d"].isdigit() or int(rel["d"]) < int(imp["d"])):
-                behind.append(f'<li>{link} — importance {esc(imp["d"])}{star(imp)}, reliability {esc(rel["d"])}{star(rel)}</li>')
         if all(h[a]["d"] == "–" for a in axes):
             unscored.append(link)
     body = ["<section><h2>Where to look</h2>"]
     body.append("<h3>Disagreements to read</h3>")
     body.append("<ul class=\"listing\">" + "".join(contested) + "</ul>" if contested
                 else '<p class="muted">No axis is contested right now.</p>')
-    body.append("<h3>Scored important, reliability behind</h3>")
-    body.append("<ul class=\"listing\">" + "".join(behind)
-                + '</ul><p class="muted">* an AI-generated score no human has rated yet.</p>' if behind
-                else '<p class="muted">Nothing currently sits in this gap.</p>')
+    body.append('<p>What the standing scores say to work on first is ordered on <a href="/priorities/">priorities</a>.</p>')
     body.append("<h3>Unscored</h3>")
     if unscored:
         body.append(f'<p>{len(unscored)} concepts carry no score on any axis yet — among them '
@@ -1072,6 +1030,120 @@ def activity_page(site: Site, rows: list[str]) -> str:
     body.append("<section><h2>Recent</h2><ul class=\"feed\">" + "".join(rows[:25])
                 + '</ul><p><a href="/feed/">The whole feed</a>.</p></section>')
     return layout(site, "Activity", "".join(body))
+
+
+def mini_hero(h: dict, axes: tuple = AXES) -> str:
+    return '<div class="mini-hero">' + "".join(
+        f'<span class="hx hx-{a} {h[a]["cls"]}"><span class="hx-num">{esc(h[a]["d"])}</span><span class="hx-label">{a}</span></span>'
+        for a in axes) + "</div>"
+
+
+def _axis_value(c: dict) -> int | None:
+    """A standing axis as twice its score — a contested range counts as its midpoint, which
+    the doubling keeps an integer — or None where no one has scored it."""
+    d = c["d"]
+    if d.isdigit():
+        return 2 * int(d)
+    if d and d[0].isdigit() and "–" in d:
+        lo, hi = d.split("–")
+        return int(lo) + int(hi)
+    return None
+
+
+def priority_order(site: Site) -> tuple[list[dict], list[str]]:
+    """The ordering of the scoreable concepts by their standing scores, over each
+    concept's own axes. A concept's rank is led by its importance and raised by what has
+    not caught up with it: the reliability gap in full where the concept takes that axis
+    (an unscored reliability counts as 1 — nothing vouches for it; a research thread
+    carries none) and the clarity gap where clarity is scored. Human scores and AI seeds
+    rank alike; a seed is marked. Returns (ranked rows, the concepts no one has scored
+    for importance)."""
+    r = site.repo
+    ranked, unranked = [], []
+    for cid, e in r.concepts.items():
+        axes = concept_axes(e)
+        if "importance" not in axes:
+            continue
+        h = r.concept_hero(cid)
+        imp = _axis_value(h["importance"])
+        if imp is None:
+            unranked.append(cid)
+            continue
+        rel_gap = 0
+        if "reliability" in axes:
+            rel = _axis_value(h["reliability"])
+            rel_gap = max(0, imp - (rel if rel is not None else 2))
+        cla = _axis_value(h["clarity"]) if "clarity" in axes else None
+        cla_gap = max(0, imp - cla) if cla is not None else 0
+        ranked.append({"cid": cid, "hero": h, "axes": axes, "p": 2 * imp + 2 * rel_gap + cla_gap,
+                       "ai": h["importance"]["ai"]})
+    ranked.sort(key=lambda row: (-row["p"], row["ai"], str(r.concepts[row["cid"]].get("title") or row["cid"]).lower()))
+    return ranked, unranked
+
+
+def concept_peek(site: Site, cid: str) -> str:
+    """The opening stretch of the concept's own page — its wiki page where one exists,
+    else its backing claim's Statement — as plain text for the hover preview."""
+    r = site.repo
+    e = r.concepts[cid]
+    text = ""
+    if e.get("wiki") and e["wiki"] in r.wiki:
+        text = re.sub(r"<!--.*?-->", " ", r.wiki[e["wiki"]], flags=re.S)
+        text = " ".join(l for l in text.splitlines() if not l.startswith("#") and not l.startswith("|"))
+        text = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", text)
+        text = text.replace("**", "").replace("`", "")
+    else:
+        refs = [x for x in e.get("refs") or [] if x in r.nodes]
+        if refs:
+            text = r.nodes[refs[-1]]["statement"]
+    text = " ".join(text.split())
+    return text[:420] + "…" if len(text) > 420 else text
+
+
+def priorities_page(site: Site) -> str:
+    """The highest-priority concepts first, each with its standing scores, its one-paragraph
+    blurb, the click-through the map gives and a hover preview of its page. The ordering is
+    derived from the ledgers' scores and moves when they do; scoring an axis is how a
+    reader moves it."""
+    r = site.repo
+    ranked, unranked = priority_order(site)
+    # the open ATTENTION items filed against a concept: an item whose node sits under a
+    # concept ref (part/given, two steps) or in a frame the concept refs directly. Sparse
+    # where refs are sparse; the connection grows as refs are curated.
+    open_items = {num: rec for num, rec in r.items.items()
+                  if r.nodes[rec["node"]]["fields"].get("item_status", "open") == "open"}
+    near_item = {num: {rec["node"]}
+                 | {p for p, _ in r.parents.get(rec["node"], [])}
+                 | {g for p, _ in r.parents.get(rec["node"], []) for g, _ in r.parents.get(p, [])}
+                 for num, rec in open_items.items()}
+    frames_of_item = {num: {f["frame"] for f in r.nodes[rec["node"]].get("in_frames") or []}
+                      for num, rec in open_items.items()}
+    rows = []
+    for row in ranked:
+        cid, e, h = row["cid"], r.concepts[row["cid"]], row["hero"]
+        refs = {x for x in (e.get("refs") or []) if x in r.nodes}
+        nums = sorted({num for num in open_items
+                       if (near_item[num] & refs) or (frames_of_item[num] & refs)},
+                      key=lambda s: (not s.isdigit(), int(s) if s.isdigit() else 0, s))
+        links = ", ".join(site.link("items", num, f'{num}. {r.nodes[r.items[num]["node"]]["fields"].get("title", "")}')
+                          for num in nums)
+        peek = concept_peek(site, cid)
+        rows.append(
+            '<li class="prio"><div class="prio-head">'
+            f'{site.link("concepts", cid, e.get("title", cid))} <span class="kind">{esc(str(e.get("kind") or ""))}</span></div>'
+            + mini_hero(h, row["axes"])
+            + f'<p class="prio-blurb">{esc(str(e.get("blurb") or ""))}</p>'
+            + (f'<p class="prio-items">open items: {links}</p>' if nums else "")
+            + (f'<div class="prio-peek">{esc(peek)}</div>' if peek else "")
+            + '</li>')
+    body = ['<ul class="prio-list">' + "".join(rows) + "</ul>" if rows
+            else '<p class="muted">No concept carries an importance score yet.</p>']
+    if unranked:
+        body.append("<section><h2>Not yet rankable</h2><p>"
+                    + f"{len(unranked)} concepts carry no importance score — among them "
+                    + ", ".join(site.link("concepts", cid, r.concepts[cid].get("title", cid)) for cid in unranked[:6])
+                    + ". Prior work is cited, not scored.</p></section>")
+    return layout(site, "Priorities", "\n".join(body))
 
 
 def spine_page(site: Site) -> str:

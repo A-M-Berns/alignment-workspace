@@ -2,7 +2,7 @@
 id: item-91
 kind: leaf
 leaf_kind: question
-action: "Work PRIORITIES item 91: define the oracle-relativized inductor and check that its parts are computable relative to the stream."
+action: "Work ATTENTION item 91: define the oracle-relativized inductor and check that its parts are computable relative to the stream."
 who: agent
 item: "91"
 title: "Empirical settlement of activated securities: an oracle-relativized inductor"
@@ -26,12 +26,12 @@ Logical induction relativized to an observation stream has its inductor,
 traders and deductive process computable relative to the stream.
 
 ## Source
-PRIORITIES.md: "Empirical settlement of activated securities: an
+ATTENTION.md: "Empirical settlement of activated securities: an
 oracle-relativized inductor"
 
 ## Notes
 How the logical-induction level meets real logs: computable relative to a
-non-computable stream, between levels (AI reading). PRIORITIES #91, open.
+non-computable stream, between levels (AI reading). ATTENTION #91, open.
 
 ## Item
 The li-corrigibility round states its feedback extension by `thm:wubexp` for

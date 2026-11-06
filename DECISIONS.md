@@ -40,6 +40,12 @@ maintainer's.
 below.** The next round dispatched from that conversation lands it as its first
 commit.
 
+- **The maintenance sweep's cadence (2026-11-05).** The standing dispatch
+  (`prompts/2026-11-05-standing-maintenance/PROMPT.md`) is adopted; nothing schedules it
+  yet. *Turns on:* external knowledge — how often the maintainer wants a sweep PR landing
+  on their review queue; weekly beside the freshness audit is the round's suggestion.
+  <!-- decision: open--maintenance-sweep-cadence; touches: none; status: open -->
+
 - **Abram's read of the `assessment` event kind (2026-11-03).** The protocol gains a
   human scoring event — `axis: reliability | importance | clarity`, `score` 1 to 5,
   verbatim rationale, own-ledger supersession per node and axis — marked **Default** in
@@ -7006,4 +7012,73 @@ an earlier version of its backing claim are findings. The front page carries a t
 sampler of nine vendored candidate body faces (choice persisted locally, applied
 site-wide) for the maintainer's font decision; the chosen face replaces Lexend and the
 rest leave.
+
+### 2026-11-05 — the priorities page: the standing scores become an ordering
+<!-- decision: 2026-11-05--priorities-page-ordering; touches: site/ -->
+
+**Maintainer ruling, taken in conversation on 2026-11-05:** the site gains a Priorities
+page — the highest-priority things first, each with a brief overview and the click-through
+the map gives — and the priority system is rehauled on the assessment scores. The round's
+reading, agent-decided and reversible: `/priorities/` ranks the scoreable concepts by
+twice the importance plus twice the reliability gap below it (unscored reliability
+counting as 1) plus the clarity gap where clarity is scored, contested axes at their
+range's midpoint, all integer; AI seeds rank and stay marked. This supersedes the
+2026-11-05 activity-page reading that score-derived pointers are filters and never
+arithmetic — the directive asks for an ordering, so the arithmetic lives on
+`/priorities/`, labelled a lens, while `/activity/` keeps its filters (contested, unscored)
+and points there. Rejected alternatives: importance alone (blind to what reliability has
+already settled), and the threshold filter (names a set, not an order).
+
+### 2026-11-05 — the scores are the priority system; the item ledger is ATTENTION.md
+<!-- decision: 2026-11-05--attention-ledger-rename; touches: ATTENTION.md, state/attention_sections.md, checkers/attention_render.py, AGENTS.md, site/ -->
+
+**Maintainer ruling, taken in conversation on 2026-11-05:** the ratings are the priority
+system, at least for now; the filed-items ledger is renamed from `PRIORITIES.md` to
+`ATTENTION.md` — the filed requests for work — and the two are connected: each entry on
+`/priorities/` lists the open items filed against its concept, and the maintainer files
+items informed by the ordering. Demand-gating is unchanged — the ordering authorizes
+nothing; filing stays maintainer-owned. The round's reading, agent-decided and
+reversible: machine identifiers stay stable under the display rename, per the trust
+chain's own rule for required-check names — the graph `work` pointer kind `priorities`,
+the `priority` event kind on wants, `workspace_state`'s `priorities` key and the
+`/items/` paths keep their names; and node Statements keep the old file name until each
+is revised with its own version bump, since a mechanical rename inside versioned
+Statements would either forge versions or mark every standing score stale. Rejected
+alternative: renaming the identifiers and bumping ~200 Statement versions in one sweep.
+The wiki still says `PRIORITIES.md` in five pages; updating it is the maintainer's
+surface.
+
+### 2026-11-05 — the site's type: Space Grotesk on the landing, Inter everywhere else
+<!-- decision: 2026-11-05--site-type-grotesk-inter; touches: site/assets/style.css -->
+
+**Maintainer ruling, taken in conversation on 2026-11-05:** the home page sets in Space
+Grotesk and all other text on the site in Inter. Both vendored as Fontsource latin
+variable woff2 beside the stylesheet, self-hosted like all site assets; the landing takes
+`--display`, every other page `--sans`; code stays in the monospace stack. This replaces
+the type half of the 2026-10-30 palette-and-type ruling; the palette half stands.
+
+### 2026-11-05 — the untracked-pointers gate exempts gitignored citations
+<!-- decision: 2026-11-05--untracked-gate-gitignore-exemption; touches: tests/untracked_pointers.py -->
+
+**Agent-decided, reversible** (the site-priorities round, which hit it: a local
+`_site/` build made the full suite fail on `AGENTS.md`'s and `DECISIONS.md`'s citations
+of the documented build output). A cited path that `.gitignore` deliberately excludes
+resolves locally by design and on no clone — the opposite of the dangling citation the
+gate exists for — so the citation check skips it; round-record paths stay strict, and
+the self-test carries both directions. Rejected alternative: never building into the
+documented output path, which makes the documentation a trap.
+
+### 2026-11-05 — the standing maintenance dispatch
+<!-- decision: 2026-11-05--standing-maintenance-dispatch; touches: AGENTS.md, prompts/2026-11-05-standing-maintenance/PROMPT.md -->
+
+**Maintainer ruling, taken in conversation on 2026-11-05:** filed workspace friction is
+swept by a standing maintenance dispatch with minimal human input, asking directly when
+input is required. The dispatch's `PROMPT.md` under `prompts/` is the standing
+authorization; each sweep is a round against it. A sweep takes any *Workspace friction*
+item whose fix is contained in §14's sense, recorded agent-decided reversible; an item
+whose fix would change a spec-layer rule becomes a direct question to the maintainer —
+one line stating what the decision turns on — with the *Awaiting the author* entry as
+the record. The merge is the human input point: no auto-merge on a maintenance pull
+request touching `checkers/` or `.github/workflows/`. Rejected alternative: per-item
+maintainer dispatch, which left friction accumulating faster than it was retired.
 

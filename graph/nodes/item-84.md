@@ -26,10 +26,10 @@ version: 1
 A solution to item 84 ships the interface with its theorem, or a statement of why the bridge is a design choice and not a theorem.
 
 ## Source
-PRIORITIES.md, item 84 (The operative-value-security bridge); its context: `INCENTIVE_CORRIGIBILITY.md` §5 and `OPEN_PROBLEMS.md` of `projects/deference/rounds/2026-09-06-incentive-nonpreemption/`.
+ATTENTION.md, item 84 (The operative-value-security bridge); its context: `INCENTIVE_CORRIGIBILITY.md` §5 and `OPEN_PROBLEMS.md` of `projects/deference/rounds/2026-09-06-incentive-nonpreemption/`.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The incentive-nonpreemption round shows that every incentive-level statement the

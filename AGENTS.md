@@ -173,7 +173,7 @@ resolves, a status a document cannot express, a gate that cannot see what it is
 meant to check, a convention that would force a false statement — files it.
 Routing around it silently is how a defect becomes permanent: the round succeeds,
 nothing records what it cost, and the next round pays it again. Defects land in
-`PRIORITIES.md` under *Workspace friction*, and the round that found one names it
+`ATTENTION.md` under *Workspace friction*, and the round that found one names it
 in its report.
 
 **A contained fix belongs to the round that hits it.** Contained means
@@ -183,6 +183,19 @@ largest. The round takes it and records it as agent-decided. Friction whose fix
 would change a spec-layer rule is reported and left to the maintainer under §10's
 bar; a round that rewrites a rule it was not dispatched to rewrite has taken a
 decision that was not its to take.
+
+**The standing maintenance dispatch** (ruling of 2026-11-05) sweeps the filed
+friction. Its `PROMPT.md` under `prompts/` is the standing authorization; each
+sweep is a round against it. The sweep may take any *Workspace friction* item
+whose fix is contained in the sense above, recording each as agent-decided,
+reversible; an item whose fix would change a spec-layer rule it converts into a
+**direct question to the maintainer** — one line stating what the decision turns
+on, pushed to them, with the *Awaiting the author* entry as the record. A sweep
+that finds nothing contained to take says so. The merge is the human input
+point: a maintenance pull request touching `checkers/` or `.github/workflows/`
+is never auto-merged — most friction fixes are gate fixes, which sit on the
+trust chain, and a scheduled agent editing the judge under auto-merge would
+retire *never let contributors touch the judge* from the inside.
 
 ### 15. Epistemic promotion is explicit
 
@@ -197,11 +210,11 @@ than infer current status from completed-round prose. They inspect a historical
 round when a task requires its evidence or development history. The wiki may
 label a result Established only after registration. Failed, superseded, and
 unregistered material cannot silently re-enter current state. A round changing a
-registered claim, project status, vocabulary item, priority, or theorem-facing
+registered claim, project status, vocabulary item, attention item, or theorem-facing
 interface updates the corresponding structured state in the same pull request.
 
 **A residual blocker is filed, not narrated.** Where a round leaves something a
-later round must answer before the work composes, it files a `PRIORITIES.md` item
+later round must answer before the work composes, it files an `ATTENTION.md` item
 naming the round that would consume it. A blocker carried only in report prose is
 one the next report restates, and the list grows round over round with nothing
 that can retire an entry.
@@ -212,7 +225,7 @@ that can retire an entry.
 
 1. Read this file.
 2. Run or read `python3 -m checkers.workspace_state --json`.
-3. Inspect the relevant registered claim, interface object, or priority.
+3. Inspect the relevant registered claim, interface object, or attention item.
 4. Read the statement of record needed for the task.
 5. Inspect historical rounds only when their evidence or development history is
    needed.
@@ -493,7 +506,7 @@ Every file belongs to exactly one layer.
 that means actually reading. It holds: definitions, statements of record,
 notation and typeclass instances on core types; the checker harness; CI
 workflows, toolchain files, the axiom allowance and the resource budgets; and
-the governance documents — this file, `CONTRIBUTING.md`, `PRIORITIES.md`,
+the governance documents — this file, `CONTRIBUTING.md`, `ATTENTION.md`,
 `DECISIONS.md`, `prompts/`, `wiki/`, and the consolidated trees.
 
 **Proof layer — open.** Anyone, or anyone's agent. It holds: Lean proofs of
@@ -673,7 +686,7 @@ claim is.**
 presents as its result files the entry — `kind: lean`, class `lean-proved` — in
 the same pull request, and the maintainer's merge is the registration. Whether a
 kernel-checked headline is worth registering is not a decision; *what is worth
-proving* is, and it is exercised through the priority items a dispatch grants
+proving* is, and it is exercised through the attention items a dispatch grants
 scope to file.
 
 **`test-supported` is the ceiling for finite-model work.** A finite Python model
@@ -713,9 +726,16 @@ now — visible and reviewable rather than hash-enforced.
 
 ## Demand-gating
 
-**Nothing enters the registry except in answer to a filed `PRIORITIES.md`
+**Nothing enters the registry except in answer to a filed `ATTENTION.md`
 item.** The ledger is maintainer-owned. Contributors may *propose* items via
 issues; filing is not theirs.
+
+**The priority system is the standing scores** (ruling of 2026-11-05): what
+matters most is the site's `/priorities/` ordering, derived from the assessment
+ledgers. `ATTENTION.md` is the filed requests for work — what has actually been
+asked for, item by item. The ordering informs what the maintainer files and the
+site links each ranked concept to the open items filed against it; it authorizes
+nothing by itself, and filing stays maintainer-owned as above.
 
 **A maintainer-dispatched round may file items within its own scope**, with its
 `PROMPT.md` under `prompts/` as the authorization record and the filing named in
@@ -867,7 +887,7 @@ which are required.
 | 8, 9, deviations and not-shown | **not gated** — review |
 | 10, reserved items listed | **not gated** — review |
 | 11, write scope | **not gated** — the round's dispatch says |
-| dual register | **not gated** — review; a heuristic presence check is a candidate, see `PRIORITIES.md` |
+| dual register | **not gated** — review; a heuristic presence check is a candidate, see `ATTENTION.md` |
 | every gate fails on its null input | each gate's own `--self-test`, in the same job; and `tests/run.py` locally |
 | slop discipline | **not gated** — review, and grounds for rejection on its own |
 | provenance | **not gated** — review; the PR template asks |
@@ -888,7 +908,7 @@ every number derived from those events by `checkers/graph.py`.
 working against it. Where the two disagree, the protocol is wrong and the
 disagreement is filed. The map is the program's canonical index
 (`graph/MAP-AS-CANONICAL.md`, rulings M1–M8 of 2026-10-22): every registered
-claim, priority item, decision, round and narrative page has exactly one node
+claim, attention item, decision, round and narrative page has exactly one node
 or attachment in it, and the structure-only index graph/index.json, written on
 every plain run and published to the branch `derived`, is what a site renders.
 
@@ -896,11 +916,11 @@ every plain run and published to the branch `derived`, is what a site renders.
 (a new leaf under an `and` cannot raise any root): claims, frames for
 lines and programmes, improvement claims with their routes and residual
 route, task leaves and actioned claims from the repository's own activity
-(claims registries, `PRIORITIES.md`, rounds, recent commits), `work`
-pointers (`priorities`, `open`, `round`, `decision`, `foundation`),
+(claims registries, `ATTENTION.md`, rounds, recent commits), `work`
+pointers (`priorities` — the kind naming an `ATTENTION.md` work order — `open`, `round`, `decision`, `foundation`),
 `given` edges, refinements and `narrative` attachments; file a new
-registered claim as its formal result, a new `PRIORITIES.md` item as its item
-node (`PRIORITIES.md` is rendered from them; edit the node, never the
+registered claim as its formal result, a new `ATTENTION.md` item as its item
+node (`ATTENTION.md` is rendered from them; edit the node, never the
 render), and a new `DECISIONS.md` entry's anchor line with its `touches`,
 rewording no ruling. File pictures, rows and
 responses as drafts. Draft the checked list a map-read needs, the
@@ -1109,9 +1129,14 @@ sweeps into ledger events (ruling S5, 2026-10-30). Every node, item,
 decision anchor, round, registry id, wiki page and handle has exactly one path, derived
 from its id (`site/README.md` is the contract); a build fails on a reference that does
 not resolve, two ids that map to one path, or a binding that disagrees with the state,
-and `tests/site_build.py` runs that build as a gate under `tests/run.py`. The site shows
+and `tests/site_build.py` runs that build as a gate under `tests/run.py`. `/priorities/`
+is the priority system (ruling of 2026-11-05): the scoreable concepts ordered from the
+standing assessment scores — importance first, raised by how far reliability and clarity
+sit behind it — each with its scores, its blurb, its concept-page link and the open
+`ATTENTION.md` items filed against it; `/activity/` points at contested and unscored
+axes and the recent feed. The site shows
 structure and human events; an AI-drafted node (an AI author and no human event) renders
-in a lighter register with the label *drafted*, and the ranking's numbers appear only on
-`/ranking/` and in a collapsed section of a node page. Build it locally with
+in a lighter register with the label *drafted*, and the information-rate lens's numbers
+appear only on `/ranking/` and in a collapsed section of a node page. Build it locally with
 `python3 -m checkers.graph --root .` then `python3 site/build.py` (Python ≥ 3.12), and
 serve `_site/` with any static server (rulings S2–S4, 2026-10-24; S5, 2026-10-30).

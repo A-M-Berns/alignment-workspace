@@ -108,7 +108,7 @@ Owner @anson, @abram
 - rests on AI numbers (no human judgment yet): crux-formalize-before-write-up.partition
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @anson, @abram; holds 15 node(s)
+- frame owner @anson, @abram; holds 16 node(s)
 - a programme: informs through its steps
 - best next unit: none
 
@@ -3800,7 +3800,7 @@ Owner @abram
 - best next unit: do never-settled-standard
 
 ## Sub-frame enabling-work (in the-program): Which repository infrastructure makes the trust research vettable and publishable?
-Owner @anson, @abram; holds 15 node(s)
+Owner @anson, @abram; holds 16 node(s)
 
 ### Shared claims
 #### enabling-vetting-and-prioritization-system
@@ -3861,6 +3861,7 @@ Nodes this frame is about that are no goals of the ranking (held, not roots): li
 - item-f6 (leaf/task)
 - item-f7 (leaf/task)
 - item-f8 (leaf/task)
+- item-f9 (leaf/task)
 - item-10 (leaf/task)
 - item-11 (leaf/task)
 - item-12 (leaf/task)
@@ -3892,19 +3893,19 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - arg-newer-formalisms-checkpoint: Write one table: each newer formalism (shutdown instructability, Hudson's transformation, CAST, the constitution's broadly-safe notion) against the surviving thesis, with the clean-room refutations as entries. (who: agent); files: projects/deference/corrigibility-note-dump-2026-10-01/corrigibility-discussion-outline.md, projects/deference/faf-cleanroom-2026-10-02/packages/corr-scim-cid, projects/deference/faf-cleanroom-2026-10-02/packages/lit-mdp-corrigible
 - arg-thornley-completeness: Write a one-page note relating the clean-room's Thornley results (POSL and ILPACS empty for expected-sum-total within-length agents; Timestep Dominance satisfies POSL and Neutrality) to the thesis's aggregation over value hypotheses, to say whether the incomplete-preferences escape and the values-as-beliefs escape are one move. (who: either); files: projects/deference/faf-cleanroom-2026-10-02/packages/lit-shutdown-prefs, projects/deference/corrigibility-note-dump-2026-10-01/corrigibility-discussion-outline.md
 - arg-turner-vnm-incoherence: File Turner 2021 and its 2023 author edit as a formal route to corrigibility-anti-natural with a withdrawn bridge, citing Turner.weakCorrigibleTo_all_iff, so that the withdrawn-bridge pattern is exercised on a second cluster. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/lit-shutdown-prefs
-- asklist.offprotocol-deviation-finite: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- asklist.order-by-want-tainted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- asklist.rows-keep-verdicts-counted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- asklist.rows-keep-verdicts-tainted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- asklist.volume-by-want-tainted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- authority.approval-discount-defeated: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
-- authority.comprehension-short: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
-- authority.exchange-rate-queue: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
-- authority.flood-caused-shortfall: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
-- authority.queue-no-bypass: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
-- authority.queue-no-caused-shortfall: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
-- authority.revocation-default: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
-- authorship.mediation-by-reexecution: round: projects/deference/rounds/2026-09-10-committed-principal-program; decision: 2026-09-10--valid-answer-re-executes-mandated-program; decision: 2026-09-15--corrigibility-program-consolidated-research-state-corrigibility; work order: PRIORITIES #87
+- asklist.offprotocol-deviation-finite: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- asklist.order-by-want-tainted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- asklist.rows-keep-verdicts-counted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- asklist.rows-keep-verdicts-tainted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- asklist.volume-by-want-tainted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- authority.approval-discount-defeated: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
+- authority.comprehension-short: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
+- authority.exchange-rate-queue: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
+- authority.flood-caused-shortfall: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
+- authority.queue-no-bypass: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
+- authority.queue-no-caused-shortfall: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
+- authority.revocation-default: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
+- authorship.mediation-by-reexecution: round: projects/deference/rounds/2026-09-10-committed-principal-program; decision: 2026-09-10--valid-answer-re-executes-mandated-program; decision: 2026-09-15--corrigibility-program-consolidated-research-state-corrigibility; work order: ATTENTION #87
 - awaiting-author-digest: Group the Awaiting the author entries of DECISIONS.md by line of work into one sheet with each entry's options and recommendation, oldest first within a group. (who: agent); files: DECISIONS.md
 - bargain-under-lapsing-enforcement: Write the test-suite row for the LI/BRIA synthesis spec from the finite Parfit's-hitchhiker model, as a proposal. (who: agent); round: projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec
 - basin-formal-object.setting: Close Horizon.phiW_supermartStep (the prefix-atom factorization of the product law) in corr-landscape, giving the general-horizon basin certificate. (who: agent); open statement: `Horizon.phiW_supermartStep`
@@ -3925,12 +3926,12 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - calibration-as-fairness: Tabulate the six senses of fairness the two workflow runs found against the formal core's definitions, one row per sense, as a new wiki page under the decision-problems folder. (who: agent)
 - causal-instantiation-defined: Write a note with the causal-instantiation definition and two worked examples, one static and one with a moving object. (who: agent)
 - caution-outpaces-capability: State J4 as a trajectory inequality using corr-caution-power's floored quantilizer bound per step and prove a cumulative harm bound under it. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-caution-power
-- certificate.advantage-estimate: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
-- certificate.defect-bound: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
-- certificate.grade-register-strict: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
-- certificate.margin-forces-agreement: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
-- certificate.override-bound: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
-- certificate.selection-eq-of-margin: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
+- certificate.advantage-estimate: round: prompts/2026-08-11-phase-ii-promotion; work order: ATTENTION #23
+- certificate.defect-bound: round: prompts/2026-08-11-phase-ii-promotion; work order: ATTENTION #23
+- certificate.grade-register-strict: round: prompts/2026-08-11-phase-ii-promotion; work order: ATTENTION #23
+- certificate.margin-forces-agreement: round: prompts/2026-08-11-phase-ii-promotion; work order: ATTENTION #23
+- certificate.override-bound: round: prompts/2026-08-11-phase-ii-promotion; work order: ATTENTION #23
+- certificate.selection-eq-of-margin: round: prompts/2026-08-11-phase-ii-promotion; work order: ATTENTION #23
 - cf-ffs-in-rv-morphisms: Restate the Cartesian-frame and factored-space-model definitions as random-variable models and morphisms, starting from FAF's two modules and the Cartesian-frames paper. (who: either)
 - cleanroom-flagged-deference-package: Repair def-dose-response per DIGEST.md §5's cheapest fix and re-run its audits. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Deference/DefDoseResponse/
 - cleanroom-flags-resolved: Run a repair round over the 23 flagged clean-room packages, one repairer and two fresh re-audits per package, before any comparison agent reads the first run's library. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/LEDGER.md
@@ -3939,15 +3940,15 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - coalition-steering-advice: Write what the coalition picture says about maintaining a cap on the AI's weight as advice, with its hypotheses, treating the cap as a stated assumption. (who: either)
 - cognition-physics-dichotomy: Say whether data is observation or write in "no special channel", so that the cognition-versus-physics dichotomy is settled as a fact or a description. (who: human); files: projects/deference/corrigibility-note-dump-2026-10-01/position-statement-v3.md
 - coherence-without-ground-truth: Write a one-page statement of the premise with the coherence notions it names, the places each line of the map assumes it, and the objections to it. (who: agent)
-- coherence.modulus-net-cover: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #42
-- coherence.modulus-soundness: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #42
+- coherence.modulus-net-cover: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: ATTENTION #42
+- coherence.modulus-soundness: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: ATTENTION #42
 - cole-stability-reading: Write the martingale step behind the post's for-all-time clause (stability for all time with high probability) in the finite shadow, or show where it needs more than the trust bound. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/uea-sink-swim/uea-sink-swim-report.md
 - collapse-write-up-draft: Draft a write-up of the li-deference collapse, provenance-split three ways, with the clean room's Lean names beside each kernel-checked sentence and 'unvetted' on every one. (who: agent)
 - communicative-alternative-nondegenerate: Write the hypotheses that admit a non-degenerate witness, weakening told-form stability or the family factorization, and test them on the Third Button carrier. (who: agent); files: Cleanroom/Udt/UdtCommTrust/
 - comparison-theorem-under-relational-index-maps: Attempt Theorem 4.15 and Theorem 5.8 under the relational morphism, and on failure produce the smallest finite counterexample as a Python table in the clean-room style. (who: agent)
-- compiler.constraints-end-to-end: round: projects/normativity/rounds/2026-08-18-projection-enforcement; work order: PRIORITIES #48
-- compiler.deductive-end-to-end: round: projects/normativity/rounds/2026-08-18-projection-enforcement; work order: PRIORITIES #48; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
-- compiler.schedule-end-to-end: round: projects/normativity/rounds/2026-08-18-projection-enforcement; work order: PRIORITIES #48
+- compiler.constraints-end-to-end: round: projects/normativity/rounds/2026-08-18-projection-enforcement; work order: ATTENTION #48
+- compiler.deductive-end-to-end: round: projects/normativity/rounds/2026-08-18-projection-enforcement; work order: ATTENTION #48; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
+- compiler.schedule-end-to-end: round: projects/normativity/rounds/2026-08-18-projection-enforcement; work order: ATTENTION #48
 - complete-feedback-formal-model: Write the model the 2026-03-26 note asks for: complete feedback as the channel condition, legitimacy as the gate on Reflection, endorsement from Meaning & Agency as the trust relation, and the corrigibility statement as a theorem or a counterexample; use the value-change note's section 2 and the legit-neg clean-room packages as inputs, after fetching the Complete Feedback post. (who: either); files: projects/deference/corrigibility-note-dump-2026-10-01/value-change-as-epistemic-update.md
 - computability-fork: Say which branch of the computability fork the conjecture's formalizations take, or whether both are wanted. (who: human)
 - computation-implies-triviality: Summarize Putnam's and Searle's triviality arguments and Chalmers's reply as a table of their formal conditions against 'any computable translation counts'. (who: agent)
@@ -3958,15 +3959,15 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - condensation-storage-retrieval-tradeoff: State the storage-plus-retrieval score precisely, show the two limits, test on a worked example whether an intermediate weight makes the shared notebook optimal, and attempt the correspondence theorem in that setting. (who: agent)
 - condensation-unify-novelty: Read the single-event information measures of Palm's Novelty, Information and Surprise and write how they relate to condensation's scores. (who: either)
 - conditional-stability-breadth: Find the syntactic menu class the WorldOnlyRefuted probe leaves standing and state a new sufficient-condition conjecture for conditional-stability in wiki/open-problems.md item 3. (who: agent); files: projects/deference/note-dump-2026-08-11/wiki/open-problems.md
-- convergence.discord-pairwise: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: PRIORITIES #119
-- convergence.discord-persists: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: PRIORITIES #119
-- convergence.hull-mass-anti: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: PRIORITIES #119
-- corrective.advisor-veto: round: projects/deference/rounds/2026-08-12-reachable-corrective-control; work order: PRIORITIES #60
-- corrective.can-correct-future-iff: round: projects/deference/rounds/2026-08-12-reachable-corrective-control; work order: PRIORITIES #60
-- corrective.can-correct-iff: round: projects/deference/rounds/2026-08-12-reachable-corrective-control; work order: PRIORITIES #60
-- corrective.capability-measures-cooperation: round: projects/deference/rounds/2026-08-12-reachable-corrective-control; work order: PRIORITIES #60
-- corrective.forecloses-iff: round: projects/deference/rounds/2026-08-12-reachable-corrective-control; work order: PRIORITIES #60
-- corrective.no-exclusive-effect: round: projects/deference/rounds/2026-08-12-reachable-corrective-control; work order: PRIORITIES #60
+- convergence.discord-pairwise: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: ATTENTION #119
+- convergence.discord-persists: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: ATTENTION #119
+- convergence.hull-mass-anti: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: ATTENTION #119
+- corrective.advisor-veto: round: projects/deference/rounds/2026-08-12-reachable-corrective-control; work order: ATTENTION #60
+- corrective.can-correct-future-iff: round: projects/deference/rounds/2026-08-12-reachable-corrective-control; work order: ATTENTION #60
+- corrective.can-correct-iff: round: projects/deference/rounds/2026-08-12-reachable-corrective-control; work order: ATTENTION #60
+- corrective.capability-measures-cooperation: round: projects/deference/rounds/2026-08-12-reachable-corrective-control; work order: ATTENTION #60
+- corrective.forecloses-iff: round: projects/deference/rounds/2026-08-12-reachable-corrective-control; work order: ATTENTION #60
+- corrective.no-exclusive-effect: round: projects/deference/rounds/2026-08-12-reachable-corrective-control; work order: ATTENTION #60
 - corrigibility-architecture-round: round: projects/deference/rounds/2026-09-06-corrigibility-architecture
 - corrigibility-faithful-plus-legit-on-self: Prove corrigible_selection_closure_open: LUV-Total-Trust toward two experts implies trust toward their generable selection, building the quote package of a mixture that the trust-merge package lacks. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Trust/LegitLiRegister/, projects/deference/faf-cleanroom-2026-10-02/packages/trust-merge/
 - corrigibility-landscape: round: prompts/2026-08-11-corrigibility-phase-ii; round: prompts/2026-08-11-deference-corrigibility
@@ -3979,26 +3980,26 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - decision-theory-in-stage5-setting: Write the formal core's per-state-algebra variant: per-state algebras with translation maps given by random-variable morphisms, and the calibration equations rewritten over the common information, as a note beside the decision-problems note dump. (who: agent); files: projects/decision-theory/
 - decision-theory: decision: 2026-10-22--map-canonical-index-program-maintainer-handles
 - deck-completion: Draft projects/deference/notes/deck-completion-proposed.md: Tower ⟹ Total Trust from tower-implies-total-trust.md, Value ⟹ Total Trust from the two-option theorem, the modest-immodest slide from reflection-in-li.md, Sam's Conjecture from eisenstat-conjecture-attribution.md §4, and the F3 and F4 fixes. (who: agent); files: projects/deference/notes/deck-completion-proposed.md
-- deconfusing.corollary-a: round: prompts/2026-10-17-post-companion-formalization; work order: PRIORITIES #107
-- deconfusing.corollary-b: round: prompts/2026-10-17-post-companion-formalization; work order: PRIORITIES #107
-- deconfusing.corollary-limit: round: prompts/2026-10-17-post-companion-formalization; work order: PRIORITIES #107
-- deconfusing.theorem1: round: prompts/2026-10-17-post-companion-formalization; work order: PRIORITIES #107
-- deconfusing.theorem2a: round: prompts/2026-10-17-post-companion-formalization; work order: PRIORITIES #107
-- deconfusing.theorem2b-strict: round: prompts/2026-10-17-post-companion-formalization; work order: PRIORITIES #107
-- deconfusing.theorem2b: round: prompts/2026-10-17-post-companion-formalization; work order: PRIORITIES #107
-- deconfusing.theorem2c-tau: round: prompts/2026-10-17-post-companion-formalization; work order: PRIORITIES #107
-- deconfusing.theorem2c: round: prompts/2026-10-17-post-companion-formalization; work order: PRIORITIES #107
-- deconfusing.theorem3a-rate: round: prompts/2026-10-17-post-companion-formalization; work order: PRIORITIES #107
-- deconfusing.theorem3a: round: prompts/2026-10-17-post-companion-formalization; work order: PRIORITIES #107
-- deconfusing.theorem3b: round: prompts/2026-10-17-post-companion-formalization; work order: PRIORITIES #107
+- deconfusing.corollary-a: round: prompts/2026-10-17-post-companion-formalization; work order: ATTENTION #107
+- deconfusing.corollary-b: round: prompts/2026-10-17-post-companion-formalization; work order: ATTENTION #107
+- deconfusing.corollary-limit: round: prompts/2026-10-17-post-companion-formalization; work order: ATTENTION #107
+- deconfusing.theorem1: round: prompts/2026-10-17-post-companion-formalization; work order: ATTENTION #107
+- deconfusing.theorem2a: round: prompts/2026-10-17-post-companion-formalization; work order: ATTENTION #107
+- deconfusing.theorem2b-strict: round: prompts/2026-10-17-post-companion-formalization; work order: ATTENTION #107
+- deconfusing.theorem2b: round: prompts/2026-10-17-post-companion-formalization; work order: ATTENTION #107
+- deconfusing.theorem2c-tau: round: prompts/2026-10-17-post-companion-formalization; work order: ATTENTION #107
+- deconfusing.theorem2c: round: prompts/2026-10-17-post-companion-formalization; work order: ATTENTION #107
+- deconfusing.theorem3a-rate: round: prompts/2026-10-17-post-companion-formalization; work order: ATTENTION #107
+- deconfusing.theorem3a: round: prompts/2026-10-17-post-companion-formalization; work order: ATTENTION #107
+- deconfusing.theorem3b: round: prompts/2026-10-17-post-companion-formalization; work order: ATTENTION #107
 - defensible-ledger-ruled: Rule whether the defensible-claims ledger is created as the discipline describes or retired in favour of the map's vettedness levels and the CLAIMS.md registries. (who: human); files: graph/PROTOCOL.md, projects/deference/CLAIMS.md
 - deference-and-trust: decision: 2026-10-22--map-canonical-index-program-maintainer-handles; round: prompts/2026-08-11-deference-admissibility; round: prompts/2026-08-11-deference-certificates; round: prompts/2026-08-11-deference-channel; round: prompts/2026-08-11-deference-densification; round: prompts/2026-08-11-deference-finite-kernel; round: prompts/2026-08-11-deference-triangle; round: prompts/2026-08-11-faithful-acceleration; round: prompts/2026-08-11-phase-ii-authority; round: prompts/2026-08-11-phase-ii-certificate; round: prompts/2026-08-11-phase-ii-competence; round: prompts/2026-08-11-stage-iii-fud; round: prompts/2026-08-11-stage-iv-future-agent; round: prompts/2026-08-12-cartesian-frames; round: projects/deference/rounds/2026-08-12-corpus-reconciliation; round: projects/deference/rounds/2026-09-06-incentive-nonpreemption; round: projects/deference/rounds/2026-09-06-decision-theory-bill; round: projects/deference/rounds/2026-09-07-authority-activated-value; round: projects/deference/rounds/2026-09-07-reason-mediated-authorship; round: projects/deference/rounds/2026-09-08-legitimate-deference-consolidation; round: projects/deference/rounds/2026-09-08-continuation-bria; round: projects/deference/rounds/2026-09-09-evaluation-ecosystem-realization; round: projects/deference/rounds/2026-09-09-mediated-repair-dominance; round: projects/deference/rounds/2026-09-16-noncapture-compilation; round: projects/deference/rounds/2026-09-24-transparent-channel; round: projects/deference/rounds/2026-09-24-protected-authority; round: projects/deference/rounds/2026-09-25-protected-authority-theorem; round: projects/deference/rounds/2026-09-25-legitimacy-internal-external; round: projects/deference/rounds/2026-09-25-gate-is-legitimacy; round: projects/deference/rounds/2026-09-25-authority-module; round: projects/deference/rounds/2026-09-25-decision-component; round: projects/deference/rounds/2026-09-26-after-compromise; round: projects/deference/rounds/2026-09-26-corrigibility-kernel
 - deference-martingale-lean-checked: Lean-check the deferring member's martingale fact and the lie floor in one clean-room-style file. (who: agent)
 - degree-based-implementation: Define implementation of degree with the translation's program length as the complexity measure and test it on a static and a moving-object example. (who: agent)
 - delayed-disclosure-structure-formalized: Write a route note formalizing this information structure and re-running the trust half first; later a clean-room package over FAF. (who: agent)
-- delegation.bridge-unconditional: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
-- delegation.bridge: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
-- delegation.gradetrust-refinement: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
+- delegation.bridge-unconditional: round: prompts/2026-08-11-phase-ii-promotion; work order: ATTENTION #23
+- delegation.bridge: round: prompts/2026-08-11-phase-ii-promotion; work order: ATTENTION #23; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
+- delegation.gradetrust-refinement: round: prompts/2026-08-11-phase-ii-promotion; work order: ATTENTION #23
 - dependent-type-of-procedure: Check whether the v2 definition of a decision procedure fixes the dependent typing flagged in the May 2026 plan, and file the repair as a proposed edit if it does not. (who: agent); files: projects/decision-theory/decision-problems-note-dump-2026-10-01/decision-problems-v2.md
 - desiderata-2-4-general: Draft, as a proposal beside the note, a replacement for the three-sources bullet of position statement v3 section 2 that derives each desideratum for general modifications or says which does not follow. (who: agent); files: projects/deference/corrigibility-note-dump-2026-10-01/position-statement-v3.md
 - deterrence-vs-antibypass: Check the void-branch deterrence versus anti-bypass tension (D5) against the public line's violation list and read the kernel's restoration and no-laundering results against the captor-service story. (who: agent); files: wiki/Corrigibility.md, projects/deference/CLAIMS.md
@@ -4007,14 +4008,14 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - draw-as-act-coordinate: Settle three directions together: the draw as the default act coordinate, the level of the FDT constraint and policy-responsiveness as the criterion. (who: either)
 - dt-readme-entry-points: Add to the decision-theory README an entry list for collaborators naming the decision-problems working notes, the clean-room BLI, UDT and dp packages and the two-lesions wiki copy under the clean-room sources. (who: agent); files: projects/decision-theory/README.md
 - dynamic-weight-law-for-learning-members: Define the weight of a learning member in the aggregate market day by day and prove the freeze-under-deference case. (who: agent)
-- effective-authority-layer: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; round: projects/enabling/rounds/2026-10-24-site-vertical-slice; work order: PRIORITIES #107
-- enabling-map-as-canonical: Keep the map the canonical index: file each new registered claim, item, decision and round in it, and keep PRIORITIES.md a render. (who: either)
+- effective-authority-layer: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; round: projects/enabling/rounds/2026-10-24-site-vertical-slice; work order: ATTENTION #107
+- enabling-map-as-canonical: Keep the map the canonical index: file each new registered claim, item, decision and round in it, and keep ATTENTION.md a render. (who: either)
 - enabling-program-site: Build the site generator against the schema of graph/index.json. (who: either); round: projects/enabling/rounds/2026-10-24-site-vertical-slice
 - enabling-work: decision: 2026-10-22--map-canonical-index-program-maintainer-handles; round: prompts/2026-08-11-attribution-provenance-names; round: prompts/2026-08-11-branch-protection; round: prompts/2026-08-11-contributor-checkers; round: prompts/2026-08-11-licensing-dco-citation; round: prompts/2026-08-11-priorities-and-slop; round: prompts/2026-08-11-workspace-ethos; round: prompts/2026-08-11-workspace-integration; round: prompts/2026-08-16-wiki-in-repo-sync; round: prompts/2026-08-16-wiki-state-bindings; round: prompts/2026-08-24-reservation-bar-and-debt; round: graph
 - entrenching-agent: Add a coordinate for the humans' attainable utility from stopping to the landscape of trajectory conditions, and test whether an agent that entrenches itself then falls under some condition. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-power-channel
-- exposure.greedy-duality: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
-- exposure.harvest-attained: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
-- exposure.harvest-bound: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
+- exposure.greedy-duality: round: prompts/2026-08-11-phase-ii-promotion; work order: ATTENTION #23
+- exposure.harvest-attained: round: prompts/2026-08-11-phase-ii-promotion; work order: ATTENTION #23
+- exposure.harvest-bound: round: prompts/2026-08-11-phase-ii-promotion; work order: ATTENTION #23
 - fa-inductor-half: Attempt the inductor half in its conditional form (inductor-like on the accurate-feedback subsequence) and record the verdict. (who: agent)
 - factor-methodology-note: Write the methodological note: the argument for tackling boundedness head-on, the case against it, the unbounded-first methodology steelmanned, and an all-things-considered view. (who: human)
 - faf-lab-cleanroom-comparison: Fix the design of the blind comparison between the earlier formalization run and the clean room: who judges the blind sample (fresh agents, a human, or both) and the order (repair, seal, then compare). (who: human)
@@ -4025,14 +4026,14 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - finite-collapse-external-experts: Probe whether the monolith's §5.2 finite collapse holds for an external inductor expert, and record where it breaks if it does. (who: agent)
 - flat-beyond-pairwise: Extend decisionFlat_iff to hypergraph coupling with three-way interactions. (who: agent); files: Cleanroom/Udt/UdtEndorsePolicy/Flat.lean
 - fn65-corpus-corrections: Draft corrections, as proposal files beside the corpus notes that still assert the footnote 65 conjecture, stating that it fails at three cells. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-legit-general
-- force.deductive-criterion: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #41
-- force.deductive-cumulative-nonneg: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #41
-- force.deductive-day-nonneg: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #41
-- force.deductive-inductor: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #41
-- force.deductive-witness: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #41
-- force.preservation: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #41
-- force.row-tolerance: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #41
-- force.strategy-value: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #41
+- force.deductive-criterion: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: ATTENTION #41
+- force.deductive-cumulative-nonneg: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: ATTENTION #41
+- force.deductive-day-nonneg: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: ATTENTION #41
+- force.deductive-inductor: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: ATTENTION #41
+- force.deductive-witness: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: ATTENTION #41
+- force.preservation: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: ATTENTION #41
+- force.row-tolerance: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: ATTENTION #41
+- force.strategy-value: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: ATTENTION #41
 - formal-core-q-status: Write a one-line status for each of Q1 to Q12 naming the runs and packages that bear on it, as a status page beside decision-problems-v2.md. (who: agent); files: projects/decision-theory/decision-problems-note-dump-2026-10-01/
 - formality-informality: Survey theories of formality and informality, vagueness (supervaluation, epistemicism, degree theories) and fuzziness, each connected to legitimacy as local rules; a note. (who: agent)
 - four-corrigibility-definitions: Write one table over the kernel's house-sale instance and the trust lab's micro-examples: what each of the four definitions says the agent does, and where they part. (who: agent); files: wiki/Corrigibility.md, projects/deference/note-dump-2026-08-11/notes/legitimacy-theory-v1.md, projects/deference/corrigibility-note-dump-2026-10-01/position-statement.md
@@ -4053,23 +4054,23 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - hull-condition-total-trust: Prove finite-dimensional Minkowski-Weyl (or finitely generated Farkas) in Lean once and close Hull.hullCondition_of_defers. (who: agent); open statement: `Hull.hullCondition_of_defers`; files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-three-step-facts
 - illegitimate-world-ever-better: Answer: is an illegitimate world ever better, in the humans' judgment, than the worst legitimate one? Record the answer as a weight on the lexical picture. (who: human)
 - indirect-route-impossibility: Attempt the necessity half of P1-prime and a version for any learner with subsequence-optimality guarantees, in a new round under the decision-theory line. (who: agent); files: projects/decision-theory/rounds/
-- indirect-route-learned-updatelessness: work order: PRIORITIES #106; work order: PRIORITIES #103; round: projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec
+- indirect-route-learned-updatelessness: work order: ATTENTION #106; work order: ATTENTION #103; round: projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec
 - indistinguishability-table-extended: Build the indistinguishability table of coalition regimes for the two observers, check its finite cases in Python, and port it to Lean in the style of the clean room's packages. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/
-- inductor.certificate-transport: round: projects/normativity/rounds/2026-10-22-normative-inductor-integration; work order: PRIORITIES #124
-- inductor.conformance: round: projects/normativity/rounds/2026-10-22-normative-inductor-integration; work order: PRIORITIES #39
-- inductor.contraposition-blocked: round: projects/normativity/rounds/2026-10-23-normative-inductor-consolidation; work order: PRIORITIES #113
-- inductor.grounded-survivors: round: projects/normativity/rounds/2026-10-22-normative-inductor-integration; work order: PRIORITIES #112
-- inductor.rebuttal-run: round: projects/normativity/rounds/2026-10-23-normative-inductor-consolidation; work order: PRIORITIES #35
-- inductor.warrant-inductor: round: projects/normativity/rounds/2026-10-22-normative-inductor-integration; work order: PRIORITIES #35
-- inductor.witness: round: projects/normativity/rounds/2026-10-22-normative-inductor-integration; work order: PRIORITIES #35
+- inductor.certificate-transport: round: projects/normativity/rounds/2026-10-22-normative-inductor-integration; work order: ATTENTION #124
+- inductor.conformance: round: projects/normativity/rounds/2026-10-22-normative-inductor-integration; work order: ATTENTION #39
+- inductor.contraposition-blocked: round: projects/normativity/rounds/2026-10-23-normative-inductor-consolidation; work order: ATTENTION #113
+- inductor.grounded-survivors: round: projects/normativity/rounds/2026-10-22-normative-inductor-integration; work order: ATTENTION #112
+- inductor.rebuttal-run: round: projects/normativity/rounds/2026-10-23-normative-inductor-consolidation; work order: ATTENTION #35
+- inductor.warrant-inductor: round: projects/normativity/rounds/2026-10-22-normative-inductor-integration; work order: ATTENTION #35
+- inductor.witness: round: projects/normativity/rounds/2026-10-22-normative-inductor-integration; work order: ATTENTION #35
 - infinite-frames-sentence-check: Read value_imp_totalTrust and the Coin and Bentham rows of lit-weatherson-frames-report.md, and say whether li-deference.md's sentence on infinite frames needs revising. (who: human); files: projects/deference/note-dump-2026-08-11/notes/li-deference.md, projects/deference/faf-cleanroom-2026-10-02/packages/lit-weatherson-frames/lit-weatherson-frames-report.md
 - info-voi-latents-untouched-targets: Formalize target 13 and Turner's garbling monotonicity in the clean-room style, one file. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/
 - integration-theorem-t10: Prove T10 step 1, pointwise pre-decision accuracy from the timely-learning property, verifying the property's label in the pinned formalization. (who: agent); files: projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec
-- integrity.evolution-conservation: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: PRIORITIES #78
-- integrity.faithful-carry: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: PRIORITIES #78
-- integrity.multiplicity-witness: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: PRIORITIES #78
-- integrity.propagate-to-segment: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: PRIORITIES #78
-- integrity.receipts-immutable: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: PRIORITIES #78
+- integrity.evolution-conservation: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: ATTENTION #78
+- integrity.faithful-carry: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: ATTENTION #78
+- integrity.multiplicity-witness: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: ATTENTION #78
+- integrity.propagate-to-segment: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: ATTENTION #78
+- integrity.receipts-immutable: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: ATTENTION #78
 - intentional-stance-characterized: Write the statement both routes must satisfy as a specification with test cases (the chess toy, a thermostat, a Critch coalition). (who: agent)
 - intuitionistic-gi-source-filed: Find the source the Market Logic I post refers to for Eisenstat's intuitionistic Garrabrant induction, and cite it where the map uses the idea. (who: agent)
 - iota-exogenous-term: Decide the status of the exogenous term iota (the relocated shutdown utility) per run 3's question N5: part of the agent's valuation, or an external stipulation. (who: human); files: projects/deference/corrigibility-note-dump-2026-10-01/position-statement-v3.md
@@ -4082,10 +4083,10 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - item-104: Execute item 104 per its deliverable shape and acceptance check: The corrigibility kernel headline: the registered statements and what they leave open. (who: agent)
 - item-105: Register W1 as a theorem of record with exact hypotheses and its witness, the paper's auction over a logical inductor on a finite environment, then try the belief-disagreement environment A1 as a countermodel to the strong compatibility form. (who: agent); files: projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec, lean/Workspace/
 - item-107: Execute item 107 per its deliverable shape and acceptance check: The post's backing: thin legitimacy, effective authority, and the post's theorem. (who: agent)
-- item-108: Execute PRIORITIES item 108: state correct, sufficient and value for valuations with no outside fact, prove that the thick conditions deliver them or state the obstruction, and write the note linking the item to the inferentialist (no-territory) case of Stage 3. (who: agent); files: lean/, projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/
-- item-109: Execute PRIORITIES item 109: the preservation theorem in asymptotic form for a logical-inductor principal over the pinned LogicalInduction API, with the inductor's conditional self-trust as the hypothesis on her model; first read the LI-corrigibility round's LUV compilation and test whether it gives the theorem directly. (who: agent); files: lean/, projects/deference/rounds/2026-09-15-li-corrigibility/LUV_COMPILATION.md, projects/deference/rounds/2026-09-15-li-corrigibility/THEOREM.md
+- item-108: Execute ATTENTION item 108: state correct, sufficient and value for valuations with no outside fact, prove that the thick conditions deliver them or state the obstruction, and write the note linking the item to the inferentialist (no-territory) case of Stage 3. (who: agent); files: lean/, projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/
+- item-109: Execute ATTENTION item 109: the preservation theorem in asymptotic form for a logical-inductor principal over the pinned LogicalInduction API, with the inductor's conditional self-trust as the hypothesis on her model; first read the LI-corrigibility round's LUV compilation and test whether it gives the theorem directly. (who: agent); files: lean/, projects/deference/rounds/2026-09-15-li-corrigibility/LUV_COMPILATION.md, projects/deference/rounds/2026-09-15-li-corrigibility/THEOREM.md
 - item-11: Execute item 11 per its deliverable shape and acceptance check: Verification-register presence check in CI. (who: agent)
-- item-110: Execute PRIORITIES item 110: define the baseline (candidate: the idle-agent rollout read as a process on her record), re-derive the eight-world model's seven cases from it, and include the sealed sibling of the endpoint-preservation model as a second candidate for comparison. (who: agent); files: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/, projects/deference/note-dump-2026-08-11/notes/legitimacy-theory-v1.md
+- item-110: Execute ATTENTION item 110: define the baseline (candidate: the idle-agent rollout read as a process on her record), re-derive the eight-world model's seven cases from it, and include the sealed sibling of the endpoint-preservation model as a second candidate for comparison. (who: agent); files: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/, projects/deference/note-dump-2026-08-11/notes/legitimacy-theory-v1.md
 - item-111: Execute item 111 per its deliverable shape and acceptance check: Unbiasedness From Feedback for the score sequence, from `LogicalInduction`. (who: agent)
 - item-112: Execute item 112 per its deliverable shape and acceptance check: Occurrence-level defeat: the orphan pin. (who: agent); decision: 2026-10-20--licence-level-verdicts-values-enforcement-s; decision: 2026-10-21--rebuttal-settlement-form-whose-consequent-pinned; decision: open--what-warrant-s-security-settles-against
 - item-113: Execute item 113 per its deliverable shape and acceptance check: Settlement defeat for strength rows: a linear row contraposes. (who: agent); decision: open--what-warrant-s-security-settles-against
@@ -4110,13 +4111,13 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - item-130: State an intervention semantics for Robust Openness indexed by the accounted state (the docket, the ports and the accounts), producing for each state and concern the actual coverage data and the data under each declared intervention, and check the non-capture certificate against it. (who: agent)
 - item-131: Wire the ask-list deviation into the record's Counted as a dimension of the trace, as Consult2 wired the raise dimension, so that asking off the protocol is counted below D − ϖ by the record and not only flagged as a self-checkable clause beside it. (who: agent)
 - item-132: Find a settlement instantiation of the finite kernel that produces grade trust at some level η from the trajectory itself, or prove that none in the skeleton does, stating which quantity the grade would have to track. (who: agent)
-- item-14: Continue PRIORITIES item 14 (returned in wave 1) using wiki/faithful-acceleration-result.md and wiki/delay-and-visibility.md, not the June note dump's superseded ladder. (who: either); files: lean/Workspace/Deference/
+- item-14: Continue ATTENTION item 14 (returned in wave 1) using wiki/faithful-acceleration-result.md and wiki/delay-and-visibility.md, not the June note dump's superseded ladder. (who: either); files: lean/Workspace/Deference/
 - item-15: Execute item 15 per its deliverable shape and acceptance check: Finite settlement classification, and the local delegation bridge. (who: agent)
 - item-16: Execute item 16 per its deliverable shape and acceptance check: The certificate inequality, derived. (who: agent)
 - item-17: Execute item 17 per its deliverable shape and acceptance check: Simulator substitution: the divergence witness. (who: agent)
 - item-18: Execute item 18 per its deliverable shape and acceptance check: Bounded densification study. (who: agent)
 - item-19: Execute item 19 per its deliverable shape and acceptance check: Triangle compatibility audit. (who: agent)
-- item-2: Work PRIORITIES item 2: construct a computable coherence modulus or prove there is none. (who: agent); decision: 2026-10-02--formalized-agent-foundations-pin-moves-repository
+- item-2: Work ATTENTION item 2: construct a computable coherence modulus or prove there is none. (who: agent); decision: 2026-10-02--formalized-agent-foundations-pin-moves-repository
 - item-20: Execute item 20 per its deliverable shape and acceptance check: Admissibility red team, including the proof machinery. (who: agent)
 - item-21: Execute item 21 per its deliverable shape and acceptance check: Signed versus magnitude control of grade error. (who: agent)
 - item-22: Execute item 22 per its deliverable shape and acceptance check: The weakest protected-authority interface. (who: agent)
@@ -4132,7 +4133,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - item-31: Execute item 31 per its deliverable shape and acceptance check: Does the objection grammar already represent a remediable-pattern filing?. (who: agent)
 - item-32: Execute item 32 per its deliverable shape and acceptance check: Extract the bounded prospective loss interface. (who: agent)
 - item-33: Execute item 33 per its deliverable shape and acceptance check: Separate causal transformation structure from normative certification. (who: agent)
-- item-34: Instantiate InheritedAlgebra.value_asymptotic's hypotheses on the punishing menu family per PRIORITIES item 34 and record which hypothesis fails. (who: either); files: lean/Workspace/Deference/Contrib/InheritedAlgebra.lean
+- item-34: Instantiate InheritedAlgebra.value_asymptotic's hypotheses on the punishing menu family per ATTENTION item 34 and record which hypothesis fails. (who: either); files: lean/Workspace/Deference/Contrib/InheritedAlgebra.lean
 - item-35: Execute item 35 once the maintainers have specified it: End-to-end module pipeline round. (who: either)
 - item-36: Execute item 36 once the maintainers have specified it: The wiki's source in the repository, synced outward. (who: either)
 - item-37: Execute item 37 per its deliverable shape and acceptance check: Volatile quantities in `wiki/` cite the structured state or do not appear. (who: agent)
@@ -4163,25 +4164,25 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - item-60: Execute item 60 per its deliverable shape and acceptance check: A transition model of reachable corrective capability. (who: agent)
 - item-61: Execute item 61 per its deliverable shape and acceptance check: A normative source with summable enforcement liability. (who: agent); decision: 2026-09-08--inertness-dichotomy-next-step-entry-retired
 - item-62: Execute item 62 per its deliverable shape and acceptance check: The inertness dichotomy in Lean. (who: agent)
-- item-63: Work PRIORITIES item 63: give Sigma_n as a computable deductive process or show where it fails to be. (who: agent)
+- item-63: Work ATTENTION item 63: give Sigma_n as a computable deductive process or show where it fails to be. (who: agent)
 - item-64: Execute item 64 per its deliverable shape and acceptance check: What the inquiry interface consumes. (who: agent)
 - item-65: Execute item 65 per its deliverable shape and acceptance check: Whether `L_min(V)` is needed in its strong form. (who: agent)
 - item-66: Execute item 66 per its deliverable shape and acceptance check: Grounded Replay in Lean. (who: agent)
 - item-67: Execute item 67 per its deliverable shape and acceptance check: A capability on authority-bearing standing. (who: agent)
 - item-68: Execute item 68 per its deliverable shape and acceptance check: Discharging provenance adequacy. (who: agent); decision: 2026-09-24--transparency-reference-relative-form-reason-mediation
 - item-69: Execute item 69 per its deliverable shape and acceptance check: Bounded-lifetime liability. (who: agent)
-- item-7: Continue PRIORITIES item 7 in Workspace.Deference.Contrib: connect the criterion's application to FAF's market, trader and no-exploit objects and ship the inhabitation witness. (who: either); decision: 2026-08-12--deference-line-s-current-source-material; decision: 2026-08-24--queue-triaged-rulings-rounds-recommended; decision: 2026-10-02--write-scope-behind-schedule-security-condition; files: lean/Workspace/Deference/Contrib/
+- item-7: Continue ATTENTION item 7 in Workspace.Deference.Contrib: connect the criterion's application to FAF's market, trader and no-exploit objects and ship the inhabitation witness. (who: either); decision: 2026-08-12--deference-line-s-current-source-material; decision: 2026-08-24--queue-triaged-rulings-rounds-recommended; decision: 2026-10-02--write-scope-behind-schedule-security-condition; files: lean/Workspace/Deference/Contrib/
 - item-70: Execute item 70 per its deliverable shape and acceptance check: A current-state certificate. (who: agent)
 - item-71: Execute item 71 per its deliverable shape and acceptance check: Build the due-activation term in `roots()`. (who: agent)
 - item-72: Execute item 72 per its deliverable shape and acceptance check: Close the two evasions the improvement theorem cannot. (who: agent)
 - item-73: Execute item 73 per its deliverable shape and acceptance check: What is the baseline for a demonstrated improvement. (who: agent)
 - item-74: Execute item 74 per its deliverable shape and acceptance check: Is the finite-horizon infeasibility certificate complete for the causal problem?. (who: agent); decision: 2026-09-02--september-naming-audit
-- item-75: Execute PRIORITIES item 75's monotone question: whether enforcing a reason weakly decreases its future depth, so that the persistence criterion survives a closed loop. (who: agent)
-- item-76: Execute PRIORITIES item 76 on the deductive channel: a modulus as a property of the defect's dependence on the settled record, certifying the constant that ends the Sharp Timely Service bound. (who: agent)
-- item-77: Execute PRIORITIES item 77: a theory of what licenses MayDispose, the route by which incurred content legitimately ceases to be owed without being answered. (who: agent); decision: 2026-09-02--grounds-unified-defeat-answerable-coalition-proof; decision: 2026-09-03--defeat-principle-adopted
+- item-75: Execute ATTENTION item 75's monotone question: whether enforcing a reason weakly decreases its future depth, so that the persistence criterion survives a closed loop. (who: agent)
+- item-76: Execute ATTENTION item 76 on the deductive channel: a modulus as a property of the defect's dependence on the settled record, certifying the constant that ends the Sharp Timely Service bound. (who: agent)
+- item-77: Execute ATTENTION item 77: a theory of what licenses MayDispose, the route by which incurred content legitimately ceases to be owed without being answered. (who: agent); decision: 2026-09-02--grounds-unified-defeat-answerable-coalition-proof; decision: 2026-09-03--defeat-principle-adopted
 - item-78: Execute item 78 per its deliverable shape and acceptance check: Canonicalize the legitimacy spine from the consolidation. (who: agent); decision: 2026-09-08--legitimacy-normative-induction-phase-canonicalized
 - item-79: Execute item 79 per its deliverable shape and acceptance check: Convex representability and compiler completeness for a declared requirement class. (who: agent)
-- item-8: Characterize the doubly-soft weight class or find a separating instance, per PRIORITIES item 8. (who: either); decision: 2026-08-12--deference-line-s-current-source-material
+- item-8: Characterize the doubly-soft weight class or find a separating instance, per ATTENTION item 8. (who: either); decision: 2026-08-12--deference-line-s-current-source-material
 - item-80: Execute item 80 per its deliverable shape and acceptance check: Affordable service on an adaptive docket. (who: agent)
 - item-81: Execute item 81 per its deliverable shape and acceptance check: A jointly compatible practical-response ecology. (who: agent)
 - item-82: Execute item 82 per its deliverable shape and acceptance check: Aggregation laws with several parents. (who: agent); decision: 2026-09-07--local-laws-unary-parent-aggregation-deferred
@@ -4192,9 +4193,9 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - item-87: Execute item 87 per its deliverable shape and acceptance check: Realizing legitimate deference: the evaluation-ecosystem bill. (who: agent); decision: 2026-09-08--legitimate-deference-lands-stack-conditional-authoritative; decision: 2026-09-24--evaluation-ecosystem-declared-input-view-advisor; decision: 2026-09-24--transparency-reference-relative-form-reason-mediation; decision: open--whether-settlement-s-independence-disposer-s
 - item-88: Execute item 88 per its deliverable shape and acceptance check: Affordability from the traderization perspective: a canonical presentation. (who: agent); decision: 2026-09-08--inertness-dichotomy-next-step-entry-retired
 - item-89: Execute item 89 per its deliverable shape and acceptance check: Sealed comparison: an architecture under which the constitutional comparison of `{π, 𝔠π}` is sealed against every continuation until settlement. (who: agent); decision: 2026-09-09--level-iii-transfer-taken-activated-register; decision: 2026-09-15--corrigibility-nucleus-landed-item-90-split; decision: 2026-09-15--corrigibility-program-consolidated-research-state-corrigibility; decision: 2026-09-24--evaluation-ecosystem-declared-input-view-advisor; decision: 2026-09-24--transparency-reference-relative-form-reason-mediation
-- item-9: Restate each squeeze headline per PRIORITIES item 9 with strictly weaker hypotheses and a typechecking witness term. (who: either); decision: 2026-08-12--deference-line-s-current-source-material; files: lean/Workspace/Deference/Contrib/
+- item-9: Restate each squeeze headline per ATTENTION item 9 with strictly weaker hypotheses and a typechecking witness term. (who: either); decision: 2026-08-12--deference-line-s-current-source-material; files: lean/Workspace/Deference/Contrib/
 - item-90: Execute item 90 per its deliverable shape and acceptance check: The generability certificate of the soft-weighted finite-menu constraint. (who: agent); decision: 2026-09-15--corrigibility-nucleus-landed-item-90-split
-- item-91: Work PRIORITIES item 91: define the oracle-relativized inductor and check that its parts are computable relative to the stream. (who: agent); decision: 2026-09-15--corrigibility-nucleus-landed-item-90-split
+- item-91: Work ATTENTION item 91: define the oracle-relativized inductor and check that its parts are computable relative to the stream. (who: agent); decision: 2026-09-15--corrigibility-nucleus-landed-item-90-split
 - item-92: Execute item 92 per its deliverable shape and acceptance check: The reason-side supply obligation: the realization's protection rule and the general-cost optimum. (who: agent)
 - item-93: Execute item 93 per its deliverable shape and acceptance check: Discovery of decision-relevant reasons: the repertoire and the budget. (who: agent)
 - item-97: Execute item 97 per its deliverable shape and acceptance check: Declare each channel's reference in the evaluation ecosystem, and certify its realization. (who: agent); decision: 2026-09-24--evaluation-ecosystem-declared-input-view-advisor
@@ -4208,31 +4209,32 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - item-f6: Execute item F6 once the maintainers have specified it: The name lint cannot see a citation — *closed*. (who: either); decision: 2026-08-25--citation-may-written-backticks-where-name; decision: 2026-09-07--bibliography-exempt-name-lint; decision: 2026-09-29--people-named-role-name-lint-retired
 - item-f7: Execute item F7 once the maintainers have specified it: A round cannot record a dependency on an unindexed research checkpoint. (who: either)
 - item-f8: Execute item F8 once the maintainers have specified it: A stack of merged pull requests never reached `main` — *closed*. (who: either)
+- item-f9: Extend checkers/wiki_links.py to resolve each commit-pinned repository link against the local git objects (commit exists, path exists in its tree), with a null-input case for a pin naming a commit or path git does not have. (who: agent)
 - item-q1: decision: 2026-09-02--post-merge-terminology-corrections-frozen-september
 - item-q2: decision: 2026-09-02--post-merge-terminology-corrections-frozen-september
 - item-q3: decision: 2026-08-24--queue-triaged-rulings-rounds-recommended; decision: 2026-09-01--progress-claim-weighted; decision: open--whether-q3-graduates-what-succeeds-item
-- jurisdiction.static-view-eq: round: prompts/2026-08-11-stage-v-li-native; work order: PRIORITIES #28
-- jurisdiction.value-eq-of-price-realization: round: prompts/2026-08-11-stage-v-li-native; work order: PRIORITIES #28
+- jurisdiction.static-view-eq: round: prompts/2026-08-11-stage-v-li-native; work order: ATTENTION #28
+- jurisdiction.value-eq-of-price-realization: round: prompts/2026-08-11-stage-v-li-native; work order: ATTENTION #28
 - kelly-identity-lean-checked: Lean-check the parimutuel Kelly identity (full-stake wealth shares equal Bayesian mixture weights) and the common-factor cancellation in one clean-room-style file. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/
-- kernel-box2-finite-time: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
-- kernel-route-fallible-future-comparator: Give PRIORITIES item 27's fallible future agent its own logical-inductor credence (a split between the agent as implemented and the algorithm it approximates is one candidate) and check the sign verdict. (who: agent); work order: PRIORITIES #27; files: PRIORITIES.md
-- kernel-route-foreclosure-expressibility: Test whether the corrigibility line's general object (pushes along a trajectory) supplies the later-index authorization operation that Q3 says every candidate lacked, giving either a fourth candidate with what kills it or a lead. (who: agent); files: PRIORITIES.md, projects/deference/faf-cleanroom-2026-10-02/packages/corr-general-object
-- kernel.box1-fidelity-versus-fully-updated-deference: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
-- kernel.box2-dominance: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
-- kernel.box2-finite-time: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
-- kernel.box2-mediation-faithful: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; decision: 2026-09-27--corrigible-names-property-preferences-only-mediation; work order: PRIORITIES #104
-- kernel.box3-gap-exchange-rate: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
-- kernel.box3-no-incentive-to-compromise: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
-- kernel.box3-no-laundering: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
-- kernel.box3-restoration: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
-- kernel.corrigible-fidelity-score: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
-- kernel.corrigible-generic: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
-- kernel.extension-bria-realization: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
-- kernel.extension-exploration-realization: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- kernel.extension-realized-rate: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
-- kernel.hierarchy-history: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
-- kernel.hierarchy-per-decision: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
-- kernel.subjective-exchange-rate: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: PRIORITIES #104
+- kernel-box2-finite-time: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: ATTENTION #104
+- kernel-route-fallible-future-comparator: Give ATTENTION item 27's fallible future agent its own logical-inductor credence (a split between the agent as implemented and the algorithm it approximates is one candidate) and check the sign verdict. (who: agent); work order: ATTENTION #27; files: ATTENTION.md
+- kernel-route-foreclosure-expressibility: Test whether the corrigibility line's general object (pushes along a trajectory) supplies the later-index authorization operation that Q3 says every candidate lacked, giving either a fourth candidate with what kills it or a lead. (who: agent); files: ATTENTION.md, projects/deference/faf-cleanroom-2026-10-02/packages/corr-general-object
+- kernel.box1-fidelity-versus-fully-updated-deference: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: ATTENTION #104
+- kernel.box2-dominance: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: ATTENTION #104
+- kernel.box2-finite-time: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: ATTENTION #104
+- kernel.box2-mediation-faithful: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; decision: 2026-09-27--corrigible-names-property-preferences-only-mediation; work order: ATTENTION #104
+- kernel.box3-gap-exchange-rate: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: ATTENTION #104
+- kernel.box3-no-incentive-to-compromise: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: ATTENTION #104
+- kernel.box3-no-laundering: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: ATTENTION #104
+- kernel.box3-restoration: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: ATTENTION #104
+- kernel.corrigible-fidelity-score: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: ATTENTION #104
+- kernel.corrigible-generic: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: ATTENTION #104
+- kernel.extension-bria-realization: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: ATTENTION #104
+- kernel.extension-exploration-realization: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- kernel.extension-realized-rate: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: ATTENTION #104
+- kernel.hierarchy-history: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: ATTENTION #104
+- kernel.hierarchy-per-decision: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: ATTENTION #104
+- kernel.subjective-exchange-rate: round: projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2; work order: ATTENTION #104
 - ladder-chain-reconciliation-note: Write a note beside li-deference.md (not inside it) from tt-ladder-findings.md F1 and F2, citing not_forall_lProdSeq_imp_tSeq and tAllEpsSeq_of_lProdSeq_of_supportNondegenerate. (who: agent)
 - learning-label-repaired: Adopt fixed_prior_threshold and rewrite finding F14 three-way in udt-bli-learning, clearing the ExactAsymptoticClause flag. (who: agent); files: Cleanroom/Bli/UdtBliLearning/
 - legit-accumulated-odds: Build a finite-horizon model where each step carries a hazard of losing legitimacy that the agent's actions shift, and bound the accumulated probability of loss by the accumulated influence defect; an exact fixture and a note. (who: agent)
@@ -4247,17 +4249,17 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - legit-repairable: Model partial and total-but-reversed corruption with an explicit reversal mechanism and compute when repair occurs; compare the endpoint-preservation note's ratchet (off-fragment drift permanent once grandfathered) with the public theory's restart property and state where they disagree. (who: agent); files: projects/deference/note-dump-2026-08-11/notes/legitimacy-theory-v1.md, wiki/Legitimacy.md
 - legit-rule-learning-model: Build a model of rule learning from legitimate-branch feedback and measure the bias the conditioning results predict for learned rules. (who: agent)
 - legitimacy-reasons-programme: decision: 2026-10-22--map-canonical-index-program-maintainer-handles
-- legitimacy.answerable: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: PRIORITIES #78
-- legitimacy.endpoint-only-insufficient: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; decision: 2026-09-25--legitimacy-internal-external-robust-openness-external; work order: PRIORITIES #78
-- legitimacy.endpoint-trans: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: PRIORITIES #78
-- legitimacy.evolution-conservation: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; decision: 2026-09-25--legitimacy-internal-external-robust-openness-external; work order: PRIORITIES #78
-- legitimacy.faithful-carry: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: PRIORITIES #78
+- legitimacy.answerable: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: ATTENTION #78
+- legitimacy.endpoint-only-insufficient: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; decision: 2026-09-25--legitimacy-internal-external-robust-openness-external; work order: ATTENTION #78
+- legitimacy.endpoint-trans: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: ATTENTION #78
+- legitimacy.evolution-conservation: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; decision: 2026-09-25--legitimacy-internal-external-robust-openness-external; work order: ATTENTION #78
+- legitimacy.faithful-carry: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: ATTENTION #78
 - legitimacy: decision: 2026-10-22--map-canonical-index-program-maintainer-handles; decision: 2026-10-23--map-follow-up-hypotheses-unread-registry-edge-derived-files-one-decomposition; round: projects/normativity/legitimacy/rounds/2026-08-12-legitimacy-architecture; round: projects/normativity/legitimacy/rounds/2026-08-13-procedural-legitimacy; round: projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge; round: projects/normativity/legitimacy/rounds/2026-08-17-counterfactual-legitimacy; round: projects/normativity/legitimacy/rounds/2026-08-21-internal-answerability; round: projects/normativity/legitimacy/rounds/2026-08-22-role-parametric-answerability; round: projects/normativity/legitimacy/rounds/2026-08-23-afoundational-inquiry; round: projects/normativity/legitimacy/rounds/2026-08-23-certified-interactive-service; round: projects/normativity/legitimacy/rounds/2026-08-23-reason-representation; round: projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates; round: projects/normativity/legitimacy/rounds/2026-08-24-reflective-integrity-core; round: projects/normativity/legitimacy/rounds/2026-08-25-carroll-legitimacy-test; round: projects/normativity/legitimacy/rounds/2026-08-25-end-to-end-vertical-slice; round: projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution; round: projects/normativity/legitimacy/rounds/2026-08-27-legitimate-improvement; round: projects/normativity/legitimacy/rounds/2026-08-28-answerable-challenge-service; round: projects/normativity/legitimacy/rounds/2026-08-28-answerable-revision; round: projects/normativity/legitimacy/rounds/2026-08-28-service-realization; round: projects/normativity/legitimacy/rounds/2026-08-29-normative-continuity-concordance; round: projects/normativity/legitimacy/rounds/2026-08-30-anchored-slices-auth-transfer; round: projects/normativity/legitimacy/rounds/2026-08-30-answerability-carriers; round: projects/normativity/legitimacy/rounds/2026-08-30-normative-continuity-settlement; round: projects/normativity/legitimacy/rounds/2026-08-30-proper-exercise-calculus; round: projects/normativity/legitimacy/rounds/2026-08-31-faithful-semantic-preservation; round: projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability; round: projects/normativity/legitimacy/checkpoint-2026-09-01; round: projects/normativity/legitimacy/rounds/2026-09-02-unified-grounds-answerable-defeat; round: projects/normativity/legitimacy/rounds/2026-09-03-defeat-landing-horty-standing; round: projects/normativity/legitimacy/rounds/2026-09-04-normative-inductor-realization; round: prompts/2026-09-05-author-consolidation; round: projects/normativity/legitimacy/rounds/2026-09-05-integrity-constructive; round: projects/normativity/legitimacy/rounds/2026-09-05-integrity-adversary; round: projects/normativity/legitimacy/rounds/2026-09-05-noncapture-certificate; round: projects/normativity/legitimacy/rounds/2026-09-05-practical-certificate; round: projects/normativity/legitimacy/rounds/2026-09-05-ni-gap-audit; round: projects/normativity/legitimacy/rounds/2026-09-05-integrity-synthesis; round: projects/normativity/legitimacy/rounds/2026-09-08-canonicalization
-- legitimacy.multiplicity-witness: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: PRIORITIES #78
-- legitimacy.payload-of-view: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- legitimacy.propagate-to-segment: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: PRIORITIES #78
-- legitimacy.receipts-immutable: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: PRIORITIES #78
-- legitimacy.segment-trans: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; decision: 2026-09-25--legitimacy-internal-external-robust-openness-external; work order: PRIORITIES #78
+- legitimacy.multiplicity-witness: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: ATTENTION #78
+- legitimacy.payload-of-view: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- legitimacy.propagate-to-segment: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: ATTENTION #78
+- legitimacy.receipts-immutable: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: ATTENTION #78
+- legitimacy.segment-trans: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; decision: 2026-09-25--legitimacy-internal-external-robust-openness-external; work order: ATTENTION #78
 - legitimate-deliberation-definition: After the posts are imported, write the reconciliation of their uses of legitimacy (truth-tracking reasoning, endorsement-worthy value change, non-corrupt feedback) with the formal candidates of this frame, quoting rather than paraphrasing. (who: agent); files: projects/deference/note-dump-2026-08-11/notes/legitimacy-theory-v1.md, wiki/Legitimacy.md
 - li-abstraction-problem-statement: Write a note stating the problem and the three carriers with what each breaks. (who: agent)
 - li-accuracy-equivalence: Attempt the two directions of the accuracy equivalence in logical induction, Value implies Epistemic Value first, as a wiki note. (who: agent)
@@ -4269,28 +4271,28 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - li-models-human-progress: Write the argument: what in human philosophical and moral progress the logical-induction criterion models (non-dogmatism, timely learning of provable facts, self-trust as in §4.12) that an unbounded Bayesian cannot, with one worked example of a moral claim whose consequences are computed over time. (who: agent)
 - li-responsive-lesion: Attempt the refutation of li_responsive_lesion_open first, then the proof. (who: agent); open statement: `li_responsive_lesion_open`; files: Cleanroom/Decision/DpTrollBridge/
 - li-shutdown-decided-weight: Lift the probe decidedWeight_factors into corr-li-shutdown, delete the open statement, and rewrite finding F19 as the positive result. (who: agent); open statement: `decidedWeight_factors_open`; files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-li-shutdown
-- li.assessment.budgeter-exploits: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #47
-- li.assessment.budgeter-floor: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #47
-- li.assessment.budgeter-value: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #47
-- li.assessment.criterion: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #47
-- li.assessment.firm-dominance: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: PRIORITIES #47
+- li.assessment.budgeter-exploits: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: ATTENTION #47
+- li.assessment.budgeter-floor: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: ATTENTION #47
+- li.assessment.budgeter-value: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: ATTENTION #47
+- li.assessment.criterion: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: ATTENTION #47
+- li.assessment.firm-dominance: round: projects/normativity/rounds/2026-08-16-traderized-enforcement; work order: ATTENTION #47
 - lia-fitted-to-lic: State the fitting problem precisely for finite data (a finite prefix of price vectors; does some inductor with a bounded trader class realize it) and solve the two-sentence, three-day case by hand. (who: agent)
 - lift-stop-gradient-to-bli: Starting from StopGradientCore.lean's eighteen finite theorems, restate the conditioning identity as a restriction of reflection to the push component not caused by the agent over corr-exo-trader's market, and check whether the steering-residue result reappears as a residual of the wireheading-through-pushers mechanism. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-exo-trader
-- local-delegation-bridge: round: prompts/2026-08-11-phase-ii-promotion; round: projects/enabling/rounds/2026-10-24-site-vertical-slice; work order: PRIORITIES #23
-- magnitude.mixture-networth-zero: round: prompts/2026-08-11-phase-ii-prediction; work order: PRIORITIES #21
-- magnitude.not-trader-payoff: round: prompts/2026-08-11-phase-ii-prediction; work order: PRIORITIES #21
-- magnitude.sharp-trader-networth: round: prompts/2026-08-11-phase-ii-prediction; work order: PRIORITIES #21
-- magnitude.signed-bounded-actual: round: prompts/2026-08-11-stage-v-li-native; work order: PRIORITIES #21
-- magnitude.signed-bounded: round: prompts/2026-08-11-phase-ii-prediction; work order: PRIORITIES #21
-- magnitude.sq-error-split: round: prompts/2026-08-11-phase-ii-prediction; work order: PRIORITIES #21
-- magnitude.unit-trader-networth: round: prompts/2026-08-11-phase-ii-prediction; work order: PRIORITIES #21
+- local-delegation-bridge: round: prompts/2026-08-11-phase-ii-promotion; round: projects/enabling/rounds/2026-10-24-site-vertical-slice; work order: ATTENTION #23
+- magnitude.mixture-networth-zero: round: prompts/2026-08-11-phase-ii-prediction; work order: ATTENTION #21
+- magnitude.not-trader-payoff: round: prompts/2026-08-11-phase-ii-prediction; work order: ATTENTION #21
+- magnitude.sharp-trader-networth: round: prompts/2026-08-11-phase-ii-prediction; work order: ATTENTION #21
+- magnitude.signed-bounded-actual: round: prompts/2026-08-11-stage-v-li-native; work order: ATTENTION #21
+- magnitude.signed-bounded: round: prompts/2026-08-11-phase-ii-prediction; work order: ATTENTION #21
+- magnitude.sq-error-split: round: prompts/2026-08-11-phase-ii-prediction; work order: ATTENTION #21
+- magnitude.unit-trader-networth: round: prompts/2026-08-11-phase-ii-prediction; work order: ATTENTION #21
 - malleability-harm-tracking: Add a confusion line to graph/DESIGN-LOG.md for each confusion a user has reported about the ranking, and a change line for each structural revision of the 2026-10-05 round that has none. (who: agent); files: graph/DESIGN-LOG.md
 - map-territory-link-via-realism: After the realism-definitions note, state one link: a sentence is treated as real when its price is forced by settlement rather than by fixed-point selection, and check it against the settled and never-settled split (never-settled-standard). (who: agent)
 - margins-of-misalignment: Say whether Stage 1′ includes 'Margins of Misalignment'. (who: human)
 - market-derivative-algebra: State as a standalone definition the algebra a market assigns to connective-derivatives, and check its soundness claims by a grid computation over finite price vectors. (who: agent)
 - market-logic-connection: Re-read the Market Logic sequence with the legitimacy question in hand and state what it already says about local rules of sanity, the standard beyond the limit first. (who: human)
-- maxmin.converse: round: projects/normativity/rounds/2026-08-18-maxmin-representation; work order: PRIORITIES #50
-- maxmin.representation: round: projects/normativity/rounds/2026-08-18-maxmin-representation; work order: PRIORITIES #50
+- maxmin.converse: round: projects/normativity/rounds/2026-08-18-maxmin-representation; work order: ATTENTION #50
+- maxmin.representation: round: projects/normativity/rounds/2026-08-18-maxmin-representation; work order: ATTENTION #50
 - member-selecting-rule-setting: Prove Proposition S for an arbitrary member-selecting rule. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Udt/UdtHarmonyBargain/
 - mine-condensation-posts: Copy the two posts from LessWrong with their dates, and list each idea not already a node, beginning with the storage-retrieval trade-off, the interpretability uses, the computation gap, variable-cost symbols and transparency for grammar-like phenomena. (who: agent)
 - mixture-of-inductors-not-inductor: Produce the counterexample for generic pairs of inductors or prove the bounded-lag case. (who: agent)
@@ -4307,14 +4309,14 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - natural-latents-approx-coefficient: Decide the open statement: find a sharper chain-rule route to coefficient 1, or a non-xor refutation, as one clean-room-style Lean file. (who: agent); open statement: `Cleanroom.Info.InfoVoiLatents.Open.natural_latents_approx`; files: projects/deference/faf-cleanroom-2026-10-02/
 - natural-latents-vs-condensation: Write a note comparing mediation plus redundancy with perfect condensation through FAF's NaturalLatents and Condensation modules and the clean room's F5, listing theorems of each side with no counterpart on the other. (who: agent)
 - never-settled-standard: Write the one-page comparison of three standards for never-settled prices (the limit; the trust principles modified by legitimacy; the sealed sibling) with what each says about one never-settled sentence. (who: agent)
-- ni.progress-bound: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: PRIORITIES #78
+- ni.progress-bound: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: ATTENTION #78
 - no-fud-problem-headline: Open outline item 6 with the clean-room's Fud.fud_band, the channel identity VOI(scan | button) + VOI(button) = min(eps h, (1 - eps) c) as the record to react to, and say which scope of the headline sentence stands. (who: human); files: projects/deference/corrigibility-note-dump-2026-10-01/corrigibility-discussion-outline.md, projects/deference/faf-cleanroom-2026-10-02/packages/corr-position-finds, projects/deference/faf-cleanroom-2026-10-02/packages/corr-channel-voi
 - nofud-scope-proposal: Draft, as a proposal file beside the position statement, a scoped replacement for the headline sentence with each clause citing the Lean result it rests on, for the author to accept or reject. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-position-finds, projects/deference/faf-cleanroom-2026-10-02/packages/corr-legit-modif
 - non-responsiveness-learnable: Answer directions Q7 and Q10 of the non-responsiveness-learnability page: whether a two-inductor architecture is acceptable or anonymity forbids the self-locating information updateless reasoning uses, and whether the CC-limit claim is known. (who: agent)
 - normativity-aug9-foundation: foundation: normativity.consolidation-aug9
-- normativity-consolidation-open-1-6: Take up PRIORITIES items 1 and 2 (open), then 3 (entry) and 4 to 6 (substantial), each per its deliverable shape. (who: agent); work order: PRIORITIES #1; work order: PRIORITIES #2
+- normativity-consolidation-open-1-6: Take up ATTENTION items 1 and 2 (open), then 3 (entry) and 4 to 6 (substantial), each per its deliverable shape. (who: agent); work order: ATTENTION #1; work order: ATTENTION #2
 - normativity-layer-I-closed: Port Theorem F2 to Lean, the port the checkpoint ranks highest because everything downstream reduces to it; in the repository's Lean tree under the normativity namespace. (who: agent); files: lean/, projects/normativity/legitimacy/checkpoint-2026-09-01/ROADMAP.md
-- normativity-learning-track: Take up item 30's integration blocker and items 31 to 33 (entry level), each per its deliverable shape. (who: agent); work order: PRIORITIES #30; work order: PRIORITIES #31; files: projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/CROWN_JEWEL_THEOREM.md
+- normativity-learning-track: Take up item 30's integration blocker and items 31 to 33 (entry level), each per its deliverable shape. (who: agent); work order: ATTENTION #30; work order: ATTENTION #31; files: projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/CROWN_JEWEL_THEOREM.md
 - normativity-line: decision: 2026-10-22--map-canonical-index-program-maintainer-handles; round: prompts/2026-08-13-relational-scorekeeping-refinement
 - normativity-paper-candidates: Complete the literature review each candidate needs before any novelty claim (the three specific worries are in the prior-art note's section 7), one review per candidate. (who: agent); files: projects/normativity/legitimacy/checkpoint-2026-09-01/PAPER_CANDIDATES.md, projects/normativity/notes/PRIOR_ART.md
 - normativity: decision: 2026-10-22--map-canonical-index-program-maintainer-handles; decision: 2026-10-23--map-follow-up-hypotheses-unread-registry-edge-derived-files-one-decomposition; round: projects/normativity/rounds/2026-08-11-phi-regret-applicability; round: projects/normativity/rounds/2026-08-11-phi-regret-bridge; round: projects/normativity/rounds/2026-08-11-phi-regret-learner; round: projects/normativity/rounds/2026-08-11-phi-regret-prep; round: prompts/2026-08-13-crown-jewel-learning-theorem; round: prompts/2026-08-13-crown-jewel-learning-theorem-final; round: prompts/2026-08-13-crown-jewel-learning-theorem-refinement; round: projects/normativity/rounds/2026-08-13-local-regret-normative-learning; round: prompts/2026-08-13-wikification-and-normativity
@@ -4323,17 +4325,17 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - objectivity-as-invariance: On a finite model, define the invariant of the class of legitimate processes and check whether it is well defined and when it equals the territory. (who: agent)
 - observables-carry-correspondence: Trace in the proof of Theorem 5.8 and in FAF's condEntropy_jointAbove_le where the shared givens enter, and write the hypothesis list that remains when the two models' givens are related only by a morphism. (who: agent)
 - one-shot-verdicts-wanted: Write down which one-shot verdicts the single-instance success thesis needs, as input to the Awaiting-the-author entry on one-shot verdicts. (who: agent)
-- open-integrity.answerable: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: PRIORITIES #78
-- open-integrity.endpoint-trans: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: PRIORITIES #78
-- open-integrity.segment-trans: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: PRIORITIES #78
+- open-integrity.answerable: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: ATTENTION #78
+- open-integrity.endpoint-trans: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: ATTENTION #78
+- open-integrity.segment-trans: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: ATTENTION #78
 - open-minded-epistemic-state: Define a (P, U, V) optimal-policy notion and test it against counterfactual mugging, lizard world and decisionFlat_iff. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/sources/decision-problems/directions/, projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Udt/UdtEndorsePolicy/
 - open-problem-ledger-current: Import the deference note's Appendix B open rows, the forcing-question items and the trichotomy questions into the open-problem ledger, each with its status after the clean room, and add the legitimacy items of the li-deference notes' section 0.3. (who: agent); files: projects/deference/note-dump-2026-08-11/wiki/open-problems.md, projects/deference/note-dump-2026-08-11/notes/deference-in-logical-induction-v6.md
 - open-problems-cleanroom-update: Update the open-problem ledger's items 1 and 3 with concentrates_self, concentrates_of_folds and WorldOnlyRefuted. (who: agent); files: projects/deference/note-dump-2026-08-11/wiki/open-problems.md
 - open-problems-import: Import deference-v6 Appendix B's open rows and the forcing-question items into the open-problem ledger. (who: agent); files: projects/deference/note-dump-2026-08-11/wiki/open-problems.md
-- openness.actual-branch-witness: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: PRIORITIES #78
-- openness.certplus-is-robust-openness: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: PRIORITIES #78; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
-- openness.endpoint-only-insufficient: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; decision: 2026-09-25--legitimacy-internal-external-robust-openness-external; work order: PRIORITIES #78
-- openness.persistence-sufficient: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: PRIORITIES #78
+- openness.actual-branch-witness: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: ATTENTION #78
+- openness.certplus-is-robust-openness: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: ATTENTION #78; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
+- openness.endpoint-only-insufficient: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; decision: 2026-09-25--legitimacy-internal-external-robust-openness-external; work order: ATTENTION #78
+- openness.persistence-sufficient: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: ATTENTION #78
 - oq-anti-wireheading: State the report-layer wirehead iff and the stop-gradient identity at the LI register, as a clean-room package. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/legit-finite-defect/legit-finite-defect-report.md, projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Trust/LegitFiniteDefect/
 - oq-complexity-model: List which theorems of the deference work use the inclusion of the human's complexity class in the AI's, and restate one with an incomparable pair (humans with the better inductive bias, the AI with more compute). (who: agent); files: projects/deference/note-dump-2026-08-11/notes/li-deference.md, projects/deference/note-dump-2026-08-11/notes/deference-in-logical-induction-v6.md
 - oq-elk: Sketch a bounded-regret statement for eliciting latent knowledge in the li-deference formalism (the humans will not regret not knowing something the AI was thinking), and say whether the trust results motivate a specific notion of latent knowledge. (who: agent); files: projects/deference/note-dump-2026-08-11/notes/li-deference.md
@@ -4354,27 +4356,27 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - policy-selection-over-li: Read the 2017 policy-selection-over-logical-induction proposal into the A2 row's terms and record what it claims and what it lacks, as an addendum to the round's audit. (who: agent); files: projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/AUDIT.md
 - port-rescope-after-pin-move: Compare FAF at 159ec3f with the current lean/ pin, list the clean-room modules the consolidation touches, and correct the pin sentence of the intake README. (who: agent); files: lean/lake-manifest.json, projects/deference/faf-cleanroom-2026-10-02/README.md
 - posl-ilpacs-nontrivial-model: Decide the open statement PostConsistency.posl_ilpacs_nontrivial_model_open: does any asymmetric relation with a strict preference satisfy POSL and ILPACS? (who: agent); open statement: `PostConsistency.posl_ilpacs_nontrivial_model_open`; files: projects/deference/faf-cleanroom-2026-10-02/packages/lit-shutdown-prefs
-- post-corrigible-normative-learning: work order: PRIORITIES #107; round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
-- post.flood-below-asking: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- post.theorem-li: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- post.theorem: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- post.witness-control-maximizer: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- post.witness-hindsight: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- post.witness-learned-weight: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- post.witness-same-level: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- post.witness-sole-authority: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- post-corrigible-normative-learning: work order: ATTENTION #107; round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority
+- post.flood-below-asking: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- post.theorem-li: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- post.theorem: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- post.witness-control-maximizer: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- post.witness-hindsight: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- post.witness-learned-weight: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- post.witness-same-level: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- post.witness-sole-authority: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
 - power-bounded-by-wisdom: Formalize the gameable-meter worry as a finite model in which a behavioural wisdom reading is a garbling the agent can steer, and test whether any self-enforceable cap survives. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-joint-process
 - predication-dichotomy: Test the scout's finite book for the predication trilemma at FAF's LIA, so far exhibited only at the constant-half inductor over a dead process, to see whether predication plus retargeted retro-detection is Dutch-bookable at a real inductor. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Trust/LegitLiRegister/Predication.lean, projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Trust/LegitLiRegister/Witness.lean
 - principles-design-space-matrix: Write a page on the trust-principles design space as a matrix whose cells name the wiki page or clean-room declaration that settles each implication, with 'unknown' where none does. (who: agent)
 - probabilistic-payors-lemma: Read the published Payor's-lemma posts into one statement of the probabilistic lemma with its status, proved, flawed or open, and relate FAF's payor to it, as a note. (who: agent)
-- progress.edge-bound-quadratic: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: PRIORITIES #78
-- progress.edge-bound: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: PRIORITIES #78
-- progress.headline-separation: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: PRIORITIES #78
+- progress.edge-bound-quadratic: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: ATTENTION #78
+- progress.edge-bound: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: ATTENTION #78
+- progress.headline-separation: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: ATTENTION #78
 - provenance-conditional-tiling: Prove the contrapositive (a nonzero expected correction on a recurrent coup branch breaks the inductor property over the pair) and state the provenance-conditional tiling target. (who: agent)
 - ps-route-partial-observability: Build a finite partially observable instance in which the power-seeking orbit count of Corollary 6.14 changes or survives under partial observability, with corr-power-channel as the base. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-power-channel
 - public-corrigibility-line: round: prompts/2026-09-15-corrigibility-consolidation-landing
 - publication-form-decided: Choose the first published form of the li-deference results and the statement it carries. (who: human)
-- publication-inventory: Write the publication inventory, one row per release candidate with its state, blocker, owner and public path, including the two note dumps of 2026-10-01 and the decision-problems talk deck. (who: agent); files: projects/deference/corrigibility-note-dump-2026-10-01, projects/decision-theory/decision-problems-note-dump-2026-10-01, PRIORITIES.md
+- publication-inventory: Write the publication inventory, one row per release candidate with its state, blocker, owner and public path, including the two note dumps of 2026-10-01 and the decision-problems talk deck. (who: agent); files: projects/deference/corrigibility-note-dump-2026-10-01, projects/decision-theory/decision-problems-note-dump-2026-10-01, ATTENTION.md
 - quantitative-rates: Extract explicit rates for the expectation-provability-induction and linearity carries from the logical induction paper's proofs under a fixed enumeration of traders and budgets, in a note citing the paper by line. (who: agent)
 - question-relative-deference-li: Read DDB §5 against the logical-induction setting and write a page on question-relative deference: how a partition becomes a family of sentences, what local Total Trust and local Value become, and what the three-cell refutation of footnote 65 implies. (who: agent)
 - radical-probabilist-endorsement-bridge: State the bridge, an updateless agent's endorsement of an update expressed via superconditioning on the update as an event, as a page. (who: agent)
@@ -4382,14 +4384,14 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - readout-R1-vs-R2: Decide, for the floor-rule objective over branches, whether options are scored by the diagonal or by the realized-terminal readout, and record the answer as weights here. (who: either)
 - realism-definitions-for-logical-udt: Write a note with several definitions of treating something as real, each with the role it gives to what is taken as a proposition in logically uncertain UDT. (who: either)
 - reason-exchange-representation-theorem: Write the problem statement of the representation theorem (hypothesis: agents coordinate successfully through communication; conclusion: a specific semantics for the messages), with the nearest known theorems marked as recalled, not checked. (who: agent)
-- rebuttal.liability-rebutted: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: PRIORITIES #113
-- rebuttal.settleform-sound: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: PRIORITIES #113
+- rebuttal.liability-rebutted: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: ATTENTION #113
+- rebuttal.settleform-sound: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: ATTENTION #113
 - reconstruction-score-role: Compute the three scores of Definition 3.3 on the paper's own examples and on the xor triple, and test whether a latent with unnecessary degrees of freedom raises only the reconstruction score. (who: agent)
 - reflection-into-diagram: Import reflection-in-li.md's bifurcation into deference-notions.md's implication diagram, citing bandReflection_self and bandReflection_iff_totalTrust_onQuotes. (who: agent)
-- region.hull: round: projects/normativity/rounds/2026-08-19-deductive-region; work order: PRIORITIES #51
-- region.patterns-complete: round: projects/normativity/rounds/2026-08-19-deductive-region; work order: PRIORITIES #51
-- region.patterns-nonempty-iff: round: projects/normativity/rounds/2026-08-19-deductive-region; work order: PRIORITIES #51
-- region.patterns-sound: round: projects/normativity/rounds/2026-08-19-deductive-region; work order: PRIORITIES #51
+- region.hull: round: projects/normativity/rounds/2026-08-19-deductive-region; work order: ATTENTION #51
+- region.patterns-complete: round: projects/normativity/rounds/2026-08-19-deductive-region; work order: ATTENTION #51
+- region.patterns-nonempty-iff: round: projects/normativity/rounds/2026-08-19-deductive-region; work order: ATTENTION #51
+- region.patterns-sound: round: projects/normativity/rounds/2026-08-19-deductive-region; work order: ATTENTION #51
 - register-collapse-claims-public: After the FAF pin bump, port value_argmax_asymptotic, towerValued_of_softTotalTrust_gapBets, mart_implies_value_refuted and the amplifier into lean/Workspace/Deference/Contrib/ with registry entries. (who: either); files: lean/Workspace/Deference/Contrib/, projects/deference/CLAIMS.md
 - registry-policy-for-ported-results: Decide, under projects/deference/CLAIMS.md's policy on inherited transcriptions, whether ported clean-room declarations register as this repository's results, and record the reading. (who: human)
 - regularity-is-h3: Say whether the deck's 'regular' sequence of decision problems means the wiki's mass-weighted one-sided conditional-stability H3. (who: human)
@@ -4400,17 +4402,17 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - ro-correlated-equilibrium-link: State precisely the correspondence between collapse fixed points and correlated equilibria for a finite game, using the public Correlated, CorrelatedEq and GameR modules, and record whether continuity in game parameters holds. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Fixpoint/FixOraclesCorresp/
 - ro-independence-strain: State 'replacing reflective oracles with something allowing correlations' precisely against the clean room's finite core (exists_collapse_fixed_point, isMixedNashEq_iff_reflective) and test whether a correlated analogue of reflectivity gives the updateless variant of Cole's theorem in the finite shadow. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Fixpoint/FixOraclesCorresp/
 - rosi-roli-bridge: Write the dictionary between the reflective-oracle self-game and a logical-induction self-trust statement (which object plays the self-hypothesis, the posterior w_h and the floor) and identify the first lemma with no logical-induction counterpart. (who: agent)
-- route-authority-attention-physics: work order: PRIORITIES #101
-- route-authority-blackwell-converse: work order: PRIORITIES #107
-- route-bridge-uniform-form: work order: PRIORITIES #23
-- route-conformance-credal-constraint: work order: PRIORITIES #39
-- route-conformance-efficient-rows: work order: PRIORITIES #42
-- route-conformance-exact-and-safe: work order: PRIORITIES #43
-- route-licence-authorization-from-account: work order: PRIORITIES #56
-- route-licence-transport: work order: PRIORITIES #115
+- route-authority-attention-physics: work order: ATTENTION #101
+- route-authority-blackwell-converse: work order: ATTENTION #107
+- route-bridge-uniform-form: work order: ATTENTION #23
+- route-conformance-credal-constraint: work order: ATTENTION #39
+- route-conformance-efficient-rows: work order: ATTENTION #42
+- route-conformance-exact-and-safe: work order: ATTENTION #43
+- route-licence-authorization-from-account: work order: ATTENTION #56
+- route-licence-transport: work order: ATTENTION #115
 - route-market-computable-fixed-point: State and prove existence of the market-maker fixed point with goods and traders added daily, reusing the normativity line's marketMaker_day_value_le_cube. (who: agent)
 - route-piecemeal-design: In the dynamic legitimacy-negatives package's finite fixtures, model the piecemeal system (consequentialist off the legitimate-modification event, corrigible on it) and test it against the capture and anticipation scenarios D5 and E1; say whether it belongs in the variant matrix as a sixth proposal. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/legit-neg-dynamic/
-- route-reasons-items-54-58: Execute PRIORITIES items 54 (defeater-uptake completeness), 56 (a citation discipline for Licensed and its transport), 57 (a checker for the applicability-in-source convention) and 58 (composition of the reason state with the record calculus), each per its deliverable shape. (who: agent); work order: PRIORITIES #54; work order: PRIORITIES #56; work order: PRIORITIES #57; work order: PRIORITIES #58; files: projects/normativity/legitimacy/
+- route-reasons-items-54-58: Execute ATTENTION items 54 (defeater-uptake completeness), 56 (a citation discipline for Licensed and its transport), 57 (a checker for the applicability-in-source convention) and 58 (composition of the reason state with the record calculus), each per its deliverable shape. (who: agent); work order: ATTENTION #54; work order: ATTENTION #56; work order: ATTENTION #57; work order: ATTENTION #58; files: projects/normativity/legitimacy/
 - route-t3-second-decision: Build a sequential problem with a second legitimacy decision, extending the dynamic legitimacy-negatives package's timing beyond D6, and compute each objective's protection incentives over time. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/legit-neg-dynamic/
 - route-v1-second-channel: Search for an internal criterion that separates moving the human's never-settled endpoint toward something better from manipulation, through a second channel such as an influence map in the record (the note's section 8, item 7). (who: agent)
 - rules-certified-or-learned: Build a model of rule learning from legitimate-branch feedback, measuring A3's bias, as a fixture beside the static legitimacy-negatives package's cluster A. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/legit-neg-static/
@@ -4418,42 +4420,42 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - scoped-value-content-witness: Attack truthPrice_frequently_interior by the trader argument the round-3 audits sketch, in the clean room's DefArgmaxValue/Open.lean. (who: agent); open statement: `Cleanroom.Deference.DefArgmaxValue.truthPrice_frequently_interior`; files: projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Deference/DefArgmaxValue/Open.lean
 - secrecy-props-lean-checked: In one clean-room-style Lean file, check the first two clauses of secrecy-not-forbidden-by-criterion in a finite model with finitely many budgeted oracle traders, and state the third clause, on withholding policies, at the logical-induction register. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/
 - seed-theory: round: projects/normativity/seed/rounds/2026-09-16-seed-statics; round: projects/normativity/seed/rounds/2026-09-17-convergence-measure
-- seed.eventually-const: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: PRIORITIES #117
-- seed.forced-interval-bounds: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: PRIORITIES #39
-- seed.forced-interval-spec: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: PRIORITIES #39
-- seed.independence-strict: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: PRIORITIES #117
+- seed.eventually-const: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: ATTENTION #117
+- seed.forced-interval-bounds: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: ATTENTION #39
+- seed.forced-interval-spec: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: ATTENTION #39
+- seed.independence-strict: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: ATTENTION #117
 - self-aixi-eps-exploration-route: Read Kim and Lee and write a one-page comparison of the hypotheses of their exploration route, Wyeth's oracle route and the floor of Theorem C. (who: agent)
 - self-coordination-udt10: Formalize the message-set formalism of the tiling notes and state communicative cloning over it, then test whether the Third Button carrier admits a coordinating equilibrium under the stated stability assumption. (who: agent); files: Cleanroom/Udt/UdtPaperTiling/, Cleanroom/Udt/UdtCommTrust/
 - shadow-theorem-conjecture-f: Write Conjecture F with its hypotheses visible, cell consistency, partition convergence and VOI-exploration convergence, as the precise statement of the section-9 sentence of the decision-problems note. (who: agent)
-- shortfall.atom-generable: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- shortfall.deferred-ahead: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- shortfall.deferred-eventually-excluded: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- shortfall.eventually-excluded: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- shortfall.security-generable: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- shortfall.table-generable: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- shortfall.atom-generable: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- shortfall.deferred-ahead: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- shortfall.deferred-eventually-excluded: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- shortfall.eventually-excluded: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- shortfall.security-generable: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- shortfall.table-generable: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
 - sigma-algebra-morphisms-carry-concepts: Set the superconditioning note's sigma-algebra-homomorphism definitions beside Eisenstat's index-map morphisms and FAF's RVModel.Hom, decide which of its coarsenings are Eisenstat morphisms, and test whether its common information is the top latent of a two-variable perfect condensation. (who: agent)
-- simplex.rational-points-sum-to-one: decision: 2026-08-11--governance-report-removed-relocated; decision: 2026-08-11--queue-cleared-six-rulings; work order: PRIORITIES #13
+- simplex.rational-points-sum-to-one: decision: 2026-08-11--governance-report-removed-relocated; decision: 2026-08-11--queue-cleared-six-rulings; work order: ATTENTION #13
 - simplicity-grounds-interpretation: Write the criteria a simplicity argument must meet, taking the clean room's verdict on the parsimony argument as the bar, and propose one measure (description length of the inductor's trader class). (who: agent)
 - simulation-vs-implementation-record: Write a note comparing the simulation-based picture with the implementation-focused one, case by case. (who: agent)
-- sincerity.content-fact: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
-- sincerity.lie-tainted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
-- sincerity.rows-keep-verdicts-counted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
-- sincerity.rows-keep-verdicts-tainted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
-- sincerity.sincere-error-counts: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
+- sincerity.content-fact: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
+- sincerity.lie-tainted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
+- sincerity.rows-keep-verdicts-counted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
+- sincerity.rows-keep-verdicts-tainted: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
+- sincerity.sincere-error-counts: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
 - single-round-refinement: Survey what a non-asymptotic refinement of logical induction would have to give and whether the BLI segment results or the traderization arc give any of it; say whether the deference note's "does not exist" still holds. (who: agent); files: projects/deference/note-dump-2026-08-11/notes/deference-in-logical-induction-v6.md, projects/normativity/notes/GENERALIZED_LI_PAPER_HANDOFF.md
-- smoke.chain-compiles: round: prompts/2026-08-10-repo-scaffolding; decision: 2026-08-11--setup-scrub-reports-removed-root; work order: PRIORITIES #13
-- smoke.faf-asymp-refl: round: prompts/2026-08-10-repo-scaffolding; decision: 2026-08-11--setup-scrub-reports-removed-root; work order: PRIORITIES #13
+- smoke.chain-compiles: round: prompts/2026-08-10-repo-scaffolding; decision: 2026-08-11--setup-scrub-reports-removed-root; work order: ATTENTION #13
+- smoke.faf-asymp-refl: round: prompts/2026-08-10-repo-scaffolding; decision: 2026-08-11--setup-scrub-reports-removed-root; work order: ATTENTION #13
 - soto-flower-obstruction: Prove flower_liminf_open via FAF's completedGatedComplementQuote. (who: agent); open statement: `flower_liminf_open`; files: Cleanroom/Decision/DpTrollBridge/
-- split-bill-is-robust-openness: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; round: projects/enabling/rounds/2026-10-24-site-vertical-slice; work order: PRIORITIES #78
+- split-bill-is-robust-openness: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; round: projects/enabling/rounds/2026-10-24-site-vertical-slice; work order: ATTENTION #78
 - ss-value-without-scope: Write out the F1-for-lookahead near-identity and stress-test scheduled weighted-average Value against total-trust-implies-value's selection-punishing menu. (who: agent)
 - stance-and-level: decision: 2026-10-22--map-canonical-index-program-maintainer-handles
 - step-asymptotic-to-finite-time: Catalogue the carries the collapse uses (expectation provability induction, the tower, the fold) and record for each whether FAF's proof yields an explicit day bound, in a note. (who: agent)
 - story-of-a-blob: Write the story-of-a-blob problem statement with a chess toy and a coalition as test cases: a blob persists across a re-description and is an agent at both levels. (who: agent)
 - stratified-pareto-bargaining: Read Garrabrant's cooperative-oracles posts into a statement usable as the bargaining rule, and check whether the coalition it selects excludes adversarial anti-values held at positive probability. (who: agent)
-- substitution.extensional-admits-both: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
-- substitution.separation-requires-disagreement: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
-- substitution.sim-depends-on-induced-choice: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
-- substitution.unpredictability-separates: round: prompts/2026-08-11-phase-ii-promotion; work order: PRIORITIES #23
+- substitution.extensional-admits-both: round: prompts/2026-08-11-phase-ii-promotion; work order: ATTENTION #23
+- substitution.separation-requires-disagreement: round: prompts/2026-08-11-phase-ii-promotion; work order: ATTENTION #23
+- substitution.sim-depends-on-induced-choice: round: prompts/2026-08-11-phase-ii-promotion; work order: ATTENTION #23
+- substitution.unpredictability-separates: round: prompts/2026-08-11-phase-ii-promotion; work order: ATTENTION #23
 - superconditioning-relation-to-li: Formalize the superconditioning document's question in FAF terms (an anticipation structure generated by a deductive process) and state 'calibrated refinement equals the inductor's self-trust' as the conjecture to test. (who: agent)
 - support-sensitive-equivalence: Collect the three places the almost-everywhere slack bites (the paper's component maps, Gap 1's off-support obstruction, the clean room's sufficiency-is-a.e. lemma) and state one support-sensitive variant of equivalence with its first test. (who: agent)
 - task-anger-substitute-note: Write a self-contained note on whether learned anger can substitute for updateless reasoning, from the dynamic cluster's results (the updateless-conditioning identity, the identification failure, the deterrence floor, the relocation argument): where the anger substitute works, where it relocates updatelessness, and what fails, with the fixtures' numbers. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/legit-neg-dynamic/legit-neg-dynamic-report.md
@@ -4470,9 +4472,9 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - task-harmony-theorem: State harmony equals no-exposure pricing for a class of rule-sets and test it against Tennant's harmony, Belnap's conservativeness and Dummett and Prawitz's harmony. (who: agent)
 - task-horizon-idleness-refutation: Build horizon_idleness_fails_exists_open: re-prove the causal-builder lemma of li-pseudorandom for the ledger-augmented process, with a pseudorandom contract pattern, siblings perturbed to the truth and FAF's LIA as the advised reasoner. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Trust/LegitLiRegister/, projects/deference/faf-cleanroom-2026-10-02/packages/legit-li-register/legit-li-register-open.txt
 - task-import-lw-legitimacy-posts: Fetch the maintainer's LessWrong posts Legitimate Deliberation and Complete Feedback into the repository, with Meaning & Agency beside them. (who: agent)
-- task-items-53-59: Execute PRIORITIES items 53 (the May-rule-to-scope compiler), 55 (the Due connection) and 59 (a Due an advisor cannot select within), each per its deliverable shape; items 54 and 56 to 58 are the reasons route under reasons-improvable. (who: agent); work order: PRIORITIES #53; work order: PRIORITIES #55; work order: PRIORITIES #59
-- task-items-61-66: Execute PRIORITIES items 61 (summable enforcement liability), 62 (the inertness dichotomy in Lean), 63 (Sigma_n as a computable deductive process), 64 (what the inquiry interface consumes), 65 (the strong form of L_min) and 66 (Grounded Replay in Lean); 62 and 66 are the cheapest kernel-grade gains. (who: agent); work order: PRIORITIES #62; work order: PRIORITIES #66
-- task-items-67-73: Execute PRIORITIES items 67 (a capability on authority-bearing standing), 68 (provenance adequacy), 69 (bounded-lifetime liability), 70 (a current-state certificate), 71 (the due-activation term, specified), 72 (the two evasions of the improvement theorem) and 73 (the baseline of a demonstrated improvement), treating item 73's baseline together with item 110's. (who: agent); work order: PRIORITIES #71; work order: PRIORITIES #73
+- task-items-53-59: Execute ATTENTION items 53 (the May-rule-to-scope compiler), 55 (the Due connection) and 59 (a Due an advisor cannot select within), each per its deliverable shape; items 54 and 56 to 58 are the reasons route under reasons-improvable. (who: agent); work order: ATTENTION #53; work order: ATTENTION #55; work order: ATTENTION #59
+- task-items-61-66: Execute ATTENTION items 61 (summable enforcement liability), 62 (the inertness dichotomy in Lean), 63 (Sigma_n as a computable deductive process), 64 (what the inquiry interface consumes), 65 (the strong form of L_min) and 66 (Grounded Replay in Lean); 62 and 66 are the cheapest kernel-grade gains. (who: agent); work order: ATTENTION #62; work order: ATTENTION #66
+- task-items-67-73: Execute ATTENTION items 67 (a capability on authority-bearing standing), 68 (provenance adequacy), 69 (bounded-lifetime liability), 70 (a current-state certificate), 71 (the due-activation term, specified), 72 (the two evasions of the improvement theorem) and 73 (the baseline of a demonstrated improvement), treating item 73's baseline together with item 110's. (who: agent); work order: ATTENTION #71; work order: ATTENTION #73
 - task-legit-v2-writeup: Write a revised legitimacy note: the v1 definitions with every clean-room verdict carried in (decidable to timely fragment; idleness needs the human-side certificate; C1 is T1 renamed; D3 refuted on the diagonal; Claim 1's costs; the finite identified set; the predication dichotomy), each claim with its register. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/DIGEST.md
 - task-measure-candidates-against-definition: For each formal candidate (the gated Tower, L-conditioned Total Trust, the influence defect, the thick and thin theory, the four-clause interface of the August rounds), state in one paragraph how it renders the May 2026 research plan's definition that a process is legitimate when its results merit endorsement, and where it adds content the definition lacks (truth-tracking, a baseline, reasons). (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/sources/unbounded-embedded/01-primary/summer-research-plan-2026--research-ideas-may-2026.md
 - task-naming-audit: Settle the nineteen provisional names outstanding in the September naming audit (a maintainer act). (who: human); files: projects/normativity/legitimacy/checkpoint-2026-09-01/ROADMAP.md
@@ -4486,37 +4488,37 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - the-program: decision: 2026-10-22--map-canonical-index-program-maintainer-handles
 - theorem-b-lean-target: State route-transitivity's Theorem B over FAF as a clean-room Lean target with its (Γ-REP) hypothesis explicit. (who: agent)
 - theory-dynamics-literature: Assemble a reading list on how theories are individuated and how they change, from philosophy of science on theory change and reduction and from the literature on ontological crises. (who: either)
-- thin-converse-open: Mechanize Blackwell's converse for the sufficient half (value for every finite decision problem under a correct credence implies the reference is a garbling of the later record) by a separating-hyperplane argument, in the thin-legitimacy Lean module. (who: agent); work order: PRIORITIES #107; files: lean/
-- thin-value-loss-bound: Prove the kernel form of the value-loss bound and the loss of correct bounded by the pathwise transparency defect, beyond deterministic records. (who: agent); work order: PRIORITIES #107; files: lean/
-- thin-value-of-thick: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- thin.converse-fails-on-correct: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- thin.correct-of-thick: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- thin.covert-blocking-correct-iff: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- thin.marginal-martingale-too-weak: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- thin.preservation-pair: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- thin.preservation: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- thin.reflection-inherited-value: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- thin.sufficient-of-integrity-openness: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- thin.value-loss-le-defects: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- thin.value-of-correct-sufficient: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- thin.value-of-thick: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- thin-converse-open: Mechanize Blackwell's converse for the sufficient half (value for every finite decision problem under a correct credence implies the reference is a garbling of the later record) by a separating-hyperplane argument, in the thin-legitimacy Lean module. (who: agent); work order: ATTENTION #107; files: lean/
+- thin-value-loss-bound: Prove the kernel form of the value-loss bound and the loss of correct bounded by the pathwise transparency defect, beyond deterministic records. (who: agent); work order: ATTENTION #107; files: lean/
+- thin-value-of-thick: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- thin.converse-fails-on-correct: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- thin.correct-of-thick: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- thin.covert-blocking-correct-iff: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- thin.marginal-martingale-too-weak: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- thin.preservation-pair: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- thin.preservation: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- thin.reflection-inherited-value: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- thin.sufficient-of-integrity-openness: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- thin.value-loss-le-defects: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- thin.value-of-correct-sufficient: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- thin.value-of-thick: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
 - tiling-brain-dump-synthesis: Review the UDT and tiling working notes of 2025-06-30 and the 2026-02-19 journal, and distill their open questions and confusions into actionable research tasks in a note. (who: agent)
 - tiling-from-inferential-semantics: Write the theorem shape (an agent whose model of its future self includes the derivative algebra's rules and a realism map trusts the future self on the realism-grounded sentences) and identify which existing tower or Total Trust result is its special case. (who: agent)
 - tiling-literature-situated: Write a note comparing inter-inductor Total Trust with the tiling and Vingean-reflection results on trusting a successor. (who: agent)
 - tonk-is-a-sure-loss: Write the Lean companion for three candidate theorems on Market Logic II's price model (coherence over arbitrary resolutions; tonk and the crossed disjunctions as books; the only truth-functional exponential), one file at a time. (who: agent)
 - total-trust-is-updateful: State and prove in a finite model that Total Trust in the sense of Deference Done Better and policy-level deference come apart on counterfactual mugging and transparent Newcomb, using the carriers of the udt-policy-calc package. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/udt-policy-calc
 - tower-death-page: Write the wiki page tower-death from anson-notes/no-timely-pointwise-tower.md, deference-v6 §4.3 and §4.8 as corrected on the diagonal, attribution §4 items 1–2, and tracking_fails. (who: agent)
-- traderization-arc: Execute PRIORITIES items 39 (credal constraint or price demand) and 40 (necessity of bounded cumulative liability), then 42 to 46, each per its deliverable shape. (who: agent); work order: PRIORITIES #39; work order: PRIORITIES #40; files: projects/normativity/notes/GENERALIZED_LI_PAPER_HANDOFF.md
-- traderized-finite-date-conformance: round: projects/enabling/rounds/2026-10-24-site-vertical-slice; work order: PRIORITIES #48
+- traderization-arc: Execute ATTENTION items 39 (credal constraint or price demand) and 40 (necessity of bounded cumulative liability), then 42 to 46, each per its deliverable shape. (who: agent); work order: ATTENTION #39; work order: ATTENTION #40; files: projects/normativity/notes/GENERALIZED_LI_PAPER_HANDOFF.md
+- traderized-finite-date-conformance: round: projects/enabling/rounds/2026-10-24-site-vertical-slice; work order: ATTENTION #48
 - training-map-model: Build a finite model of the training map (overseer data and loss in, next model's state out) with a retention measure, and re-run the Y1 overwrite-dodge verdict inside it. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-legit-modif
 - trajectory-layer-bridge: Prove the Layer F to Layer M bridge (finite conditional expectation on atoms) in corr-trajectory, which also witnesses its martingale-layer certificates. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-trajectory
-- transparent.blind-payload: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
-- transparent.posterior-weight-eq: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: PRIORITIES #107
+- transparent.blind-payload: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+- transparent.posterior-weight-eq: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
 - trembling-hand-calibration-grounded: Draft sections 3 and 5 of the formal core's next version with Definition 7-prime and Definition 10 along a class of exploration sequences, defining calibration in trembling-hand style and grounding the ideal-rationality picture's justification in the learning-theoretic picture. (who: either)
 - truthstar-computable: Discharge truthStarL_computable_open through the uniform LIA evaluator shared with the li-* packages. (who: agent); open statement: `truthStarL_computable_open`; files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-li-shutdown
 - tt-ladder-lifted-to-inductors: State over FAF which rung of the Total-Trust ladder the self-expert's (quote, credence) pair reaches, using def-self-trust's endpoints, in a new module under the clean room's Li/TtLadder. (who: agent)
 - tt-mart-repair-via-bounds-transfer: Rewrite the pending-rewrite note of projects/deference/note-dump-2026-08-11/wiki/total-trust-implies-mart.md into the true-setting proof by bounds transfer, citing tower_instance_of_totalTrust_gapBets. (who: agent); files: projects/deference/note-dump-2026-08-11/wiki/total-trust-implies-mart.md
-- two-priority-lists-relation: Rule whether work pointers are the whole relation between PRIORITIES.md and graph/tasks.md or whether one list feeds the other. (who: human); files: PRIORITIES.md, graph/tasks.md
+- two-priority-lists-relation: Rule whether work pointers are the whole relation between ATTENTION.md and graph/tasks.md or whether one list feeds the other. (who: human); files: ATTENTION.md, graph/tasks.md
 - two-scores-as-explanation-length: Write the explanation-length reading as a definition (retrieval convention to expected code length) and check that the simple and conditioned scores are its two instances. (who: agent)
 - two-way-inductor-pair-exists: Request or re-prove FAF's liaPrefixFromStagesAtFuel_prim export and close twoWayPair_exists. (who: agent); open statement: `Cleanroom.Li.LiCoupledPair.twoWayPair_exists`
 - udt-over-bli-tiles: State the Vingean open statement of udt-bli-tiling, faith in the prior's own argmax over a BLI on an inductor, with exact_reflection_fails_liar as the reflection obstruction, then push bli-witness-lia past H_unif to a policy law under which the one-level precommitment test is not inert. (who: agent); files: Cleanroom/Bli/UdtBliTiling/, Cleanroom/Bli/BliWitnessLia/
@@ -4537,7 +4539,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - value-change-kernel-checked: State and prove in Lean over the library's finite distributions the note's Theorem 2.4 and the three-term decomposition of section 1.4, with the fixture's numbers as the witness table, as a new clean-room style package. (who: agent); files: projects/deference/corrigibility-note-dump-2026-10-01/value-change-as-epistemic-update.md, projects/deference/corrigibility-note-dump-2026-10-01/fixtures/value_change_journey.py
 - value-jeffrey-bolker-format: Restate DDB's Value on the dp-worlds-jb chassis with options as events and check whether the Value–Total Trust equivalence survives on a two-world Newcomb frame. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Decision/DpWorldsJb/, projects/decision-theory/decision-problems-note-dump-2026-10-01/decision-problems-v2.md
 - value-on-agency: Write a first formal sketch: a value variable for human control over a decision class, learned early, compared with the kernel's lexical authority term on Box 1's house-sale instance. (who: agent); files: wiki/Corrigibility.md
-- value-symmetric-comparator: Define symmetric Value on finite frames and test DDB's Fact 2.1 frame and the anti-expert frame against it. (who: agent); work order: PRIORITIES #27; files: projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Found/LitDdbFrames/
+- value-symmetric-comparator: Define symmetric Value on finite frames and test DDB's Fact 2.1 frame and the anti-expert frame against it. (who: agent); work order: ATTENTION #27; files: projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Found/LitDdbFrames/
 - value-uncertainty-formal-example: Build the smallest formal example: a human inductor whose values are eventual prices of uncomputed sentences, an AI inductor, feedback restricted to current prices, and one trust statement that holds at the LI level with no counterpart for a Bayesian human with a fixed value prior. (who: agent)
 - value-uncertainty-is-computational: Write the canonical-statement page from journal 2026-03-26 and the value-change note's §2.1 and §2.7, recording that the event-algebra representation is already worked and where it reaches the logical-induction agent. (who: either); files: projects/deference/corrigibility-note-dump-2026-10-01/value-change-as-epistemic-update.md
 - values-ahead-of-capability: Define a value-coverage measure of an action set computable from a model's behaviour on held-out actions, and state condition J3 with it. (who: agent); files: projects/deference/corrigibility-note-dump-2026-10-01/position-statement-v2.md
@@ -4547,17 +4549,17 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - vc-route-modest-source: Write the exact relation between Total Trust without the martingale condition and the LI principle that no simple modification of the update is predictably better, as a theorem or a counterexample on a finite frame. (who: agent); files: projects/deference/corrigibility-note-dump-2026-10-01/value-change-as-epistemic-update.md
 - vc-route-modification-space: Attempt the clean-room's open statement universalSelfRefSpace_exists_open (the universal type space) or reduce it to a named gap in the mathematics library. (who: agent); open statement: `universalSelfRefSpace_exists_open`; files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-reflect-frames
 - vc-route-outside-support: State the convex-hull richness condition and the non-dogmatism assumption as one hypothesis, and show on the opiates-and-stimulants example of Soares et al. 2015 section 1 that it excludes the impoverished-space oscillation. (who: agent); files: projects/deference/corrigibility-note-dump-2026-10-01/value-change-as-epistemic-update.md
-- verdict-licence-chain: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics; round: projects/enabling/rounds/2026-10-24-site-vertical-slice; work order: PRIORITIES #56
+- verdict-licence-chain: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics; round: projects/enabling/rounds/2026-10-24-site-vertical-slice; work order: ATTENTION #56
 - vingean-abstraction-candidate-definition: Build the chess-engine toy (a strong and a weak player as mechanisms, an outcome variable, a latent mediating behaviour's effect on the outcome) and compute whether the candidate condition holds there and fails for a thermostat across menus. (who: agent)
 - vingean-canonical-page: Write a canonical-statement page for Vingean uncertainty from the summer plan, and link step-asymptotic-to-finite-time's malign-hypothesis concern as its logical-induction-level appearance. (who: agent)
 - vingean-definitions-reconciled: Write one page reconciling the three definitions of Vingean agency and say which one Stage 5 should target and why. (who: agent)
 - vingean-tiling-content: Build a Theorem 3 witness in which the twin is not the best non-modifying action, so the chain's inequality is visibly strict, under the computation-output model. (who: agent); files: Cleanroom/Udt/UdtPaperTiling/
 - vingean-voi-finite-lemma: Attempt the C4 finite lemma in Lean in the clean-room style, one file, with the non-transitive near-miss and the pre-registered fakes checked against. (who: agent)
-- warrant.admissible-not-supported: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics; work order: PRIORITIES #56
-- warrant.licence-chain: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics; work order: PRIORITIES #56; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
-- warrant.selection-not-transparent: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics; work order: PRIORITIES #56
-- warrant.supported-admissible: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics; work order: PRIORITIES #56
-- warrant.supported-not-licensed: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics; work order: PRIORITIES #56
+- warrant.admissible-not-supported: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics; work order: ATTENTION #56
+- warrant.licence-chain: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics; work order: ATTENTION #56; round: projects/enabling/rounds/2026-10-24-site-vertical-slice
+- warrant.selection-not-transparent: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics; work order: ATTENTION #56
+- warrant.supported-admissible: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics; work order: ATTENTION #56
+- warrant.supported-not-licensed: round: projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics; work order: ATTENTION #56
 - wentworth-constant-located: Find the constant in Wentworth's published approximate natural-latents theorem (the 2023 post's image, or the Natural Latents paper) and add it to the docstring of the clean room's open statement. (who: agent); open statement: `Cleanroom.Info.InfoVoiLatents.Open.natural_latents_approx`
 - wentworth-representation-theorem-transfer: Fetch Wentworth's representation theorems and annotate each hypothesis with its logical-induction analogue or its absence. (who: agent)
 - what-abstraction-buys: Write one page naming what abstraction theory supplies to each of three lines: implementation relations, natural latents and condensation. (who: either)
@@ -5652,6 +5654,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | item-f6 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
 | item-f7 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
 | item-f8 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
+| item-f9 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
 | item-q1 | leaf/question | 2 (both) | held by deference-and-trust | open | 0 | 0 (informs no goal) |
 | item-q2 | leaf/question | 2 (both) | held by deference-and-trust | open | 0 | 0 (informs no goal) |
 | item-q3 | leaf/question | 2 (both) | held by deference-and-trust | open | 0 | 0 (informs no goal) |
@@ -7145,4 +7148,4 @@ The outside option and the undescribed failure, each a cases node over the outco
 | wirehead-iff-finite.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 1 |
 | wirehead-iff-finite.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 1 |
 | worlds-and-points-companion | leaf/question | 2 (both) | AI number | open | 0 | 8 |
-<!-- generated_hash: d9b8ea2bf0ec03db443b8f91 -->
+<!-- generated_hash: 5379313a25191b65af260e20 -->

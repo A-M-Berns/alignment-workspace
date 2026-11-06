@@ -37,5 +37,5 @@ The second mid-level goal, the indirect route of the 2023 notes, which the
 public LI/BRIA specification round of 2026-09-29 made concrete. The
 dispatch's 'absolutely ideal outcome would be updateless' is a criterion for
 one round's acceptable outcome and is filed here as the plan's target.
-PRIORITIES.md items
+ATTENTION.md items
 103, 105 and 106 are the line's work orders.

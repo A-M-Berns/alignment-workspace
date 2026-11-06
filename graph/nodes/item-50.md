@@ -22,10 +22,10 @@ version: 1
 Item 50, The piecewise-affine facts the projection compiler cites, is answered as its entry specifies.
 
 ## Source
-PRIORITIES.md, item 50 (The piecewise-affine facts the projection compiler cites).
+ATTENTION.md, item 50 (The piecewise-affine facts the projection compiler cites).
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 Answered for the max–min half by the max–min round and registered as

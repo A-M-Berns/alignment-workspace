@@ -24,10 +24,10 @@ version: 1
 Item 13, Scaffolding self-verification, is answered as its entry specifies.
 
 ## Source
-PRIORITIES.md, item 13 (Scaffolding self-verification).
+ATTENTION.md, item 13 (Scaffolding self-verification).
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 Satisfied by the scaffolding rounds and kept open. The Lean chain compiles

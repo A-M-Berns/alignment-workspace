@@ -24,10 +24,10 @@ version: 1
 Item 56, A citation discipline for `Licensed`, and its transport, is delivered in the shape its entry states: a stated citation discipline plus a transport statement, with the counterexample showing a weaker discipline fails.
 
 ## Source
-PRIORITIES.md, item 56 (A citation discipline for `Licensed`, and its transport); its context: `.../2026-08-23-reason-representation/MEMO.md` §13–14; `.../2026-08-21-internal-answerability/MEMO.md`, blocker 1.
+ATTENTION.md, item 56 (A citation discipline for `Licensed`, and its transport); its context: `.../2026-08-23-reason-representation/MEMO.md` §13–14; `.../2026-08-21-internal-answerability/MEMO.md`, blocker 1.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The reason state narrows the internal-answerability kernel's `Licensed` blocker to

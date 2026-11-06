@@ -23,10 +23,10 @@ version: 1
 Item 45, Is either liability bridge necessary, is delivered in the shape its entry states: `witness-checked` for a trajectory violating both bridges whose market is nonetheless inexploitable; or a proof that one implies liability control in a stated class.
 
 ## Source
-PRIORITIES.md, item 45 (Is either liability bridge necessary?); its context: `.../2026-08-16-traderized-enforcement/FUNDING_AND_SAFETY.md` §4a.
+ATTENTION.md, item 45 (Is either liability bridge necessary?); its context: `.../2026-08-16-traderized-enforcement/FUNDING_AND_SAFETY.md` §4a.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The safety theorem consumes bounded cumulative enforcement liability over the

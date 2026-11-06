@@ -13,5 +13,5 @@ version: 1
 An efficiently presentable sufficient row family for coherence replaces the doubly exponential generator the declaration's construction uses.
 
 ## Source
-PRIORITIES.md, item 42 (an efficiently presentable sufficient row family for coherence); the registry note on `compiler.deductive-end-to-end` (computable, not efficient).
+ATTENTION.md, item 42 (an efficiently presentable sufficient row family for coherence); the registry note on `compiler.deductive-end-to-end` (computable, not efficient).
 A route of the improvement claim on traderized-finite-date-conformance, filed by reading by the site-vertical-slice round (projects/enabling/rounds/2026-10-24-site-vertical-slice).

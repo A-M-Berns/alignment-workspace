@@ -3,7 +3,7 @@
 
 The Lean build is the one check with a wall time in minutes, and most pull
 requests here change no Lean at all. Skipping the work on those is what
-`PRIORITIES.md` item 10 asks for — **restructuring the gate, not disabling it.**
+`ATTENTION.md` item 10 asks for — **restructuring the gate, not disabling it.**
 
 Two things make that safe rather than a hole.
 
@@ -106,7 +106,7 @@ def self_test() -> int:
         ("a wiki-only change does not reach the gate",
          must_build(["wiki/Home.md", "wiki/CONVENTIONS.md"])[0], False),
         ("a documentation change does not reach the gate",
-         must_build(["README.md", "DECISIONS.md", "PRIORITIES.md"])[0], False),
+         must_build(["README.md", "DECISIONS.md", "ATTENTION.md"])[0], False),
         ("a checker change does not reach the gate",
          must_build(["checkers/wiki_links.py"])[0], False),
         ("the sync workflow does not reach the gate",

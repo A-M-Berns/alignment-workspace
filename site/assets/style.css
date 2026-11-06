@@ -1,17 +1,26 @@
-/* The palette and type of amberns.com (ruling of 2026-10-30): near-black paper, bone accent, Lexend. */
+/* The palette of amberns.com (ruling of 2026-10-30): near-black paper, bone accent.
+   Type (ruling of 2026-11-05): Space Grotesk on the landing, Inter everywhere else. */
 @font-face {
-  font-family: "Lexend Variable";
+  font-family: "Inter Variable";
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("/assets/lexend-latin-wght-normal.woff2") format("woff2-variations");
+  src: url("/assets/inter-latin-wght-normal.woff2") format("woff2-variations");
+}
+@font-face {
+  font-family: "Space Grotesk Variable";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/assets/space-grotesk-latin-wght-normal.woff2") format("woff2-variations");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 :root {
   --bg: #0e0e10; --fg: #ececec; --muted: #8e8e88; --rule: #26262a; --accent: #c8c4ba; --card: #1a1a1d;
   --drafted-fg: #85857e; --drafted-bg: #131315; --human: #9ac89a; --tag-bg: #222226; --code-bg: #1a1a1d;
   --lens: #d9b36a; --lens-bg: #1f1a10;
-  --sans: "Lexend Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --sans: "Inter Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --display: "Space Grotesk Variable", "Inter Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 * { box-sizing: border-box; }
 html { font-size: 16px; }
@@ -277,15 +286,10 @@ section.assess button:hover { border-color: var(--accent); }
 /* the landing: the Wang tiling behind the wordmark and the four tiles */
 .wang-tiles { position: fixed; inset: 0; z-index: 0; width: 100vw; height: 100vh; pointer-events: none; opacity: 0.8; image-rendering: pixelated; }
 .wang-boost { display: none; }
-body.landing { min-height: 100vh; margin: 0; display: grid; place-items: center; background: #101013; }
+body.landing { min-height: 100vh; margin: 0; display: grid; place-items: center; background: #101013; font-family: var(--display); }
 .landing-main { position: relative; z-index: 1; text-align: center; padding: 2rem; }
-.landing-word { font-size: clamp(2.2rem, 6vw, 4.2rem); font-weight: 760; letter-spacing: -0.02em; margin: 0 0 0.4em; color: #ececec; }
+.landing-word { font-size: clamp(2.2rem, 6vw, 4.2rem); font-weight: 700; letter-spacing: -0.02em; margin: 0 0 0.4em; color: #ececec; }
 nav.tiles { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.6em; }
-.type-sampler { margin-top: 3.2em; display: flex; gap: 0.45em; justify-content: center; flex-wrap: wrap; align-items: center; }
-.type-sampler .ts-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-right: 0.4em; }
-.type-sampler button { font-size: 0.82rem; background: #101013; color: #c9c9c4; border: 1px solid var(--rule); border-radius: 7px; padding: 0.25em 0.8em; cursor: pointer; }
-.type-sampler button:hover { border-color: var(--accent); }
-.type-sampler button.on { border-color: var(--accent); color: #ececec; }
 a.tile { display: block; padding: 0.85em 1.7em; border-radius: 12px; background: #101013; border: 1px solid var(--rule); text-decoration: none; text-align: center; transition: transform 0.14s ease, border-color 0.14s ease; }
 a.tile:hover { transform: translateY(-3px); border-color: var(--accent); }
 a.tile .tile-name { font-size: 1.05rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #ececec; }
@@ -336,6 +340,18 @@ section.context ul.ctx-facts li { margin: 0.35em 0; }
 .kernel-badge { display: inline-block; background: var(--accent); color: #101013; font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.12em 0.55em; border-radius: 5px; }
 .ax-scores { margin: 0.7em 0; padding-top: 0.5em; border-top: 1px solid var(--rule); }
 .ax-scores .axis { display: inline-block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+/* the priorities list */
+ul.prio-list { list-style: none; padding-left: 0; }
+ul.prio-list li.prio { position: relative; border: 1px solid var(--rule); border-radius: 10px; padding: 0.7em 1em; margin: 0.6em 0; }
+li.prio:hover { border-color: var(--accent); }
+.prio-head { display: flex; align-items: baseline; gap: 0.6em; }
+.prio-blurb { margin: 0.35em 0 0.2em; }
+.prio-items { font-size: 0.82rem; margin: 0.3em 0 0; }
+.prio-peek { display: none; position: absolute; left: 0.8em; right: 0.8em; top: calc(100% - 0.3em); z-index: 6;
+  background: var(--card); border: 1px solid var(--accent); border-radius: 10px; padding: 0.7em 1em;
+  font-size: 0.85rem; line-height: 1.5; box-shadow: 0 8px 28px #000a; }
+li.prio:hover .prio-peek { display: block; }
+
 /* the mini-hero on the map's node card */
 .mini-hero { display: flex; gap: 1.1em; margin: 0.35em 0 0.45em; }
 .mini-hero .hx { text-align: center; }

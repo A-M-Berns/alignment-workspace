@@ -24,10 +24,10 @@ version: 1
 A solution to item 4 ships the multi-coordinate instances with exact witnesses, and either a sharpness proof or a witness that the predicate is not weakest.
 
 ## Source
-PRIORITIES.md, item 4 (Higher-dimensional sharpness for the movement cap); its context: `projects/normativity/consolidation-aug9/THEORY_10_JOINT_COMPOSITION.md` §3, §6.
+ATTENTION.md, item 4 (Higher-dimensional sharpness for the movement cap); its context: `projects/normativity/consolidation-aug9/THEORY_10_JOINT_COMPOSITION.md` §3, §6.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 Everything verified numerically in the joint layer is the one-coordinate fixture.

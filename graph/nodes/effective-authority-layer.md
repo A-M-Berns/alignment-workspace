@@ -17,7 +17,7 @@ a revocation default, with sincerity conditions on which verdicts count.
 projects/deference/CLAIMS.md, the authority.* (seven) and sincerity.* (five)
 claims;
 projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md,
-Parts B (sincerity) and C (the authority layer); PRIORITIES.md, item 101 (the
+Parts B (sincerity) and C (the authority layer); ATTENTION.md, item 101 (the
 shortfall event as a security).
 
 ## Notes

@@ -25,10 +25,10 @@ version: 1
 A solution to item 17 ships the witness, the candidate criteria, which collapse, the weakest one excluding the witness, and whether private information is necessary, sufficient, or neither.
 
 ## Source
-PRIORITIES.md, item 17 (Simulator substitution: the divergence witness); its context: `projects/deference/notes/FINITE_MODEL_SKELETON.md` §3, §4.
+ATTENTION.md, item 17 (Simulator substitution: the divergence witness); its context: `projects/deference/notes/FINITE_MODEL_SKELETON.md` §3, §4.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 Construct the smallest model in which `A`'s model of the principal agrees with the

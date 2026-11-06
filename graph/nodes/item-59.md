@@ -24,10 +24,10 @@ version: 1
 Item 59, A `Due` an advisor cannot select within, is delivered in the shape its entry states: a practice with the non-selection property and its witness, or an argument that no practice with the round's other properties has it.
 
 ## Source
-PRIORITIES.md, item 59 (A `Due` an advisor cannot select within); its context: `projects/normativity/legitimacy/rounds/2026-08-17-counterfactual-legitimacy/THEOREM_MAP.md` §6.
+ATTENTION.md, item 59 (A `Due` an advisor cannot select within); its context: `projects/normativity/legitimacy/rounds/2026-08-17-counterfactual-legitimacy/THEOREM_MAP.md` §6.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The counterfactual-legitimacy round's second clause needs a scorekeeping practice

@@ -13,7 +13,7 @@ relate has a dated ruling, and the public decision queue reaches the
 maintainers as one sheet with the options and a recommendation per entry.
 
 ## Source
-graph/PROTOCOL.md, Task leaves and work pointers ("Open how PRIORITIES.md and
+graph/PROTOCOL.md, Task leaves and work pointers ("Open how ATTENTION.md and
 the task list should relate beyond pointers"). DECISIONS.md, Awaiting the
 author: "Everything reserved to the maintainer, anywhere in the repository, is
 listed here".

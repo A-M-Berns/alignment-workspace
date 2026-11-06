@@ -17,5 +17,5 @@ projects/deference/note-dump-2026-08-11/lean-deference/AUDIT.md §5 (severity
 table, findings 1–3 High).
 
 ## Notes
-The audit's central finding; its three High findings became PRIORITIES items
+The audit's central finding; its three High findings became ATTENTION items
 7, 8 and 9.

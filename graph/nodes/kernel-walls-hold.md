@@ -17,7 +17,7 @@ under which a violation never detected charges nothing.
 ## Source
 wiki/Corrigibility.md, section 8 (the walls table) and the scope warning ("not
 a claim that any real evaluator carries ϖ > D or any real interface is
-effect-complete"); PRIORITIES.md, items 101 and 102 for the open walls.
+effect-complete"); ATTENTION.md, items 101 and 102 for the open walls.
 
 ## Notes
 The kernel's EXT contracts, which the theory issues and does not pay, filed as

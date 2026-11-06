@@ -28,10 +28,10 @@ version: 1
 A solution to item 98 ships the certificate and the event kind with their witnesses, or the negative with its fixture.
 
 ## Source
-PRIORITIES.md, item 98 (The nondelegation certificate and the amendment event kind); its context: `REPORT.md` §§3 (T-A6, T-A9), 7, 8 of the protected-authority round; `ProtectedAuthority.lean` §§1, 6; `Legitimacy.lean` §2; item 97's residual paragraph; item 99.
+ATTENTION.md, item 98 (The nondelegation certificate and the amendment event kind); its context: `REPORT.md` §§3 (T-A6, T-A9), 7, 8 of the protected-authority round; `ProtectedAuthority.lean` §§1, 6; `Legitimacy.lean` §2; item 97's residual paragraph; item 99.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The protected-authority round (`projects/deference/rounds/2026-09-24-protected-authority/`)

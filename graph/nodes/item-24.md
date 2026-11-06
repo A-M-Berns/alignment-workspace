@@ -24,10 +24,10 @@ version: 1
 A solution to item 24 ships the gated theorem with its exact strength named, the five verifications above each answered, and a comparison against the simpler gate on the agent's own indecision — which the squared-error decomposition supplies directly from its prices and which may already suffice.
 
 ## Source
-PRIORITIES.md, item 24 (Selective validity of low-error self-assessment); its context: `prompts/2026-08-11-phase-ii-prediction/REPORT.md` §1 and §9; `prompts/2026-08-11-deference-certificates/REPORT.md` §1.2; `prompts/2026-08-11-corrigibility-phase-ii/PROMPT-decisions.md`.
+ATTENTION.md, item 24 (Selective validity of low-error self-assessment); its context: `prompts/2026-08-11-phase-ii-prediction/REPORT.md` §1 and §9; `prompts/2026-08-11-deference-certificates/REPORT.md` §1.2; `prompts/2026-08-11-corrigibility-phase-ii/PROMPT-decisions.md`.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The controlling next theorem, replacing the retired magnitude-control target. The

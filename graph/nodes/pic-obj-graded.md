@@ -14,5 +14,5 @@ uniformly the worst.
 
 ## Source
 AI reading: a graded alternative to the activated security's floor
-(PRIORITIES.md, the activated security); the proposal P3 of
+(ATTENTION.md, the activated security); the proposal P3 of
 projects/deference/faf-cleanroom-2026-10-02/packages/legit-neg-static.

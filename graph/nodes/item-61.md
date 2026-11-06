@@ -26,10 +26,10 @@ version: 1
 Item 61, A normative source with summable enforcement liability, is delivered in the shape its entry states: `test-supported` at minimum — a normative source with an explicit settlement trajectory and presentation schedule, and either a proof that the sum converges or a witness that it does not for a source the architecture would call legitimate.
 
 ## Source
-PRIORITIES.md, item 61 (A normative source with summable enforcement liability); its context: `projects/normativity/legitimacy/rounds/2026-08-25-end-to-end-vertical-slice/FINDINGS.md` §6 and its `src/trajectories.py`, which carries four synthetic trajectories, two convergent and two not; `projects/normativity/rounds/2026-08-16-traderized-enforcement/FUNDING_AND_SAFETY.md` §9.
+ATTENTION.md, item 61 (A normative source with summable enforcement liability); its context: `projects/normativity/legitimacy/rounds/2026-08-25-end-to-end-vertical-slice/FINDINGS.md` §6 and its `src/trajectories.py`, which carries four synthetic trajectories, two convergent and two not; `projects/normativity/rounds/2026-08-16-traderized-enforcement/FUNDING_AND_SAFETY.md` §9.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The end-to-end slice establishes that the unconditional traderization theorem's

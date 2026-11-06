@@ -24,10 +24,10 @@ version: 1
 Item 53, The `May`-rule-to-scope compiler, is delivered in the shape its entry states: `test-supported` at minimum — a compiler from a versioned `May` rule set to certificate-checkable scopes, with a soundness statement and its counterexamples.
 
 ## Source
-PRIORITIES.md, item 53 (The `May`-rule-to-scope compiler); its context: `projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates/MEMO.md` §6 (i), §8.
+ATTENTION.md, item 53 (The `May`-rule-to-scope compiler); its context: `projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates/MEMO.md` §6 (i), §8.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 A transition certificate cites an `AuthorityAct` carrying a `scope`, and `scope` is

@@ -24,10 +24,10 @@ version: 1
 Item 52, Import the Cartesian-frames definitions and delete the mirror, is delivered in the shape its entry states: the existing declarations, unchanged in statement, over the upstream types.
 
 ## Source
-PRIORITIES.md, item 52 (Import the Cartesian-frames definitions and delete the mirror); its context: `prompts/2026-08-12-cartesian-frames/` and its `artifacts/`, which carry the hand-run cross-check and its re-verification command.
+ATTENTION.md, item 52 (Import the Cartesian-frames definitions and delete the mirror); its context: `prompts/2026-08-12-cartesian-frames/` and its `artifacts/`, which carry the hand-run cross-check and its re-verification command.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 `lean/Workspace/Deference/Contrib/CartesianFrameBridge.lean` mirrors about two

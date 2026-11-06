@@ -122,7 +122,7 @@ mass times the tolerance. It needs only the rows and a feasibility witness.
 
 Neither guarantee implies the other without a constant: from rowwise excesses the distance to
 the region is bounded by a Hoffman constant of the row system, not computed here
-(`PRIORITIES.md` item 125<!--ref:item:125-->); from a distance, a row's excess is bounded by its norm times the
+(`ATTENTION.md` item 125<!--ref:item:125-->); from a distance, a row's excess is bounded by its norm times the
 distance. A reader comparing a projection theorem with a warrant theorem is comparing the two
 realizations' guarantees, not two statements of one.
 

@@ -32,7 +32,7 @@ corrigibility's learning layer, consumes the deference line's gate, and is cited
 pinned path from the wiki, the round index, the decision ledger and the priority items.
 This line consumes its block contract and weighted criterion as the temporally
 extended form of BRIA and does not restate them.  The coupling of BRIA's claims with
-the market is `PRIORITIES.md` item 102; this line's specification says what that
+the market is `ATTENTION.md` item 102; this line's specification says what that
 coupling must deliver.
 
 - Completed rounds: `rounds/`

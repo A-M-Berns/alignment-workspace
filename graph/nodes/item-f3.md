@@ -22,10 +22,10 @@ version: 1
 Item F3, A layer's theory is authoritative and its only code is in a disposable tree, is answered as its entry specifies.
 
 ## Source
-PRIORITIES.md, item F3 (A layer's theory is authoritative and its only code is in a disposable tree).
+ATTENTION.md, item F3 (A layer's theory is authoritative and its only code is in a disposable tree).
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 `projects/normativity/consolidation-aug9/` states the answerability ledger and the

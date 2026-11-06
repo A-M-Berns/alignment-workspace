@@ -18,7 +18,7 @@ the reference is a garbling of the later record, so sufficient is necessary for
 value.
 
 ## Source
-PRIORITIES.md, item 107, "What it leaves open": Blackwell's converse (a
+ATTENTION.md, item 107, "What it leaves open": Blackwell's converse (a
 separating-hyperplane argument; the round refuted the converse's correct half
 and did not mechanize this half); projects/deference/CLAIMS.md,
 thin.converse-fails-on-correct.

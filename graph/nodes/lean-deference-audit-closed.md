@@ -17,7 +17,7 @@ projects/deference/note-dump-2026-08-11/lean-deference/AUDIT.md §1: "The Lean
 proves the *implications* of the deference theory. It does not prove the
 *antecedents*."
 
-PRIORITIES.md items 7, 8, 9 and 34.
+ATTENTION.md items 7, 8, 9 and 34.
 
 ## Notes
 The audit's findings became public priority items; the Statement names each

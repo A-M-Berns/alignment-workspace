@@ -21,7 +21,7 @@ projects/deference/faf-cleanroom-2026-10-02/sources/corrigibility/workflow-2026-
 Open problem 3, the existence core; the finite theory it relaxes is
 projects/deference/faf-cleanroom-2026-10-02/packages/corr-legit-general/corr-legit-general-report.md,
 section "State of the package" (the criterion of record LegitTotalTrustWrt and
-the transfer theorems at grade (a)). PRIORITIES.md, item 109, is the public
+the transfer theorems at grade (a)). ATTENTION.md, item 109, is the public
 line's analogue for the thin level.
 
 ## Notes

@@ -23,10 +23,10 @@ version: 1
 A solution to item 79 ships the class, the compiler, and the two theorems.
 
 ## Source
-PRIORITIES.md, item 79 (Convex representability and compiler completeness for a declared requirement class); its context: `CONSOLIDATION.md` §9.1 of the mathematical-consolidation round; `NORMATIVE_INDUCTOR_REALIZATION.md` §4 of the realization round for the five properties.
+ATTENTION.md, item 79 (Convex representability and compiler completeness for a declared requirement class); its context: `CONSOLIDATION.md` §9.1 of the mathematical-consolidation round; `NORMATIVE_INDUCTOR_REALIZATION.md` §4 of the realization round for the five properties.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 Compiler soundness, Farkas conflict certification, and conservation on failure are

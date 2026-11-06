@@ -24,10 +24,10 @@ version: 1
 Item 115, Transport of `Licensed` across record transitions, is delivered in the shape its entry states: `lean-proved` transport; `test-supported` suite.
 
 ## Source
-PRIORITIES.md, item 115 (Transport of `Licensed` across record transitions); its context: `.../2026-10-20-warrant-enforcement-semantics/LICENCE_CHAIN.md`; item 56.
+ATTENTION.md, item 115 (Transport of `Licensed` across record transitions); its context: `.../2026-10-20-warrant-enforcement-semantics/LICENCE_CHAIN.md`; item 56.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 With the citation discipline in place (`WarrantEntitlement.Supported`, `Licensed`), the

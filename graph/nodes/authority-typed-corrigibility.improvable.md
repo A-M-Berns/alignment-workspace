@@ -17,7 +17,7 @@ training and deployment interfaces well.
 Ruling 35 (every literal claim a plan builds on carries its improvement
 claim); wiki/Corrigibility.md, scope warning ("For
 systems that are not maximizers of the fidelity score, what carries over is the
-target ... not the guarantee"); PRIORITIES.md, Q3 and items 27, 101 and 102.
+target ... not the guarantee"); ATTENTION.md, Q3 and items 27, 101 and 102.
 
 ## Notes
 Improvement claim on the kernel plan (improves: authority-typed-corrigibility;

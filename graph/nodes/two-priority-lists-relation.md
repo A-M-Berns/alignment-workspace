@@ -2,9 +2,9 @@
 id: two-priority-lists-relation
 kind: leaf
 leaf_kind: task
-action: "Rule whether work pointers are the whole relation between PRIORITIES.md and graph/tasks.md or whether one list feeds the other."
+action: "Rule whether work pointers are the whole relation between ATTENTION.md and graph/tasks.md or whether one list feeds the other."
 who: human
-files: ["PRIORITIES.md", "graph/tasks.md"]
+files: ["ATTENTION.md", "graph/tasks.md"]
 author: "@smithy-verity-opus55"
 size: S
 size_reason: "one Open mark and the two lists' headers"
@@ -17,12 +17,12 @@ merged order.
 
 ## Source
 graph/PROTOCOL.md, Task leaves and work pointers: "neither list reorders the
-other and nothing is written into PRIORITIES.md" (Default), and "Open how
-PRIORITIES.md and the task list should relate beyond pointers". PRIORITIES.md
+other and nothing is written into ATTENTION.md" (Default), and "Open how
+ATTENTION.md and the task list should relate beyond pointers". ATTENTION.md
 holds 107 numbered items, a Q-section and a friction section.
 
 ## Notes
-In the filing session's reading, PRIORITIES.md's items map onto the map's lines
+In the filing session's reading, ATTENTION.md's items map onto the map's lines
 by heading: the normativity items onto the legitimacy line; the deference items
 onto the trust, corrigibility and legitimacy lines; items 102, 103 and 106 onto
 the decision-theory line; the infrastructure items and the friction entries

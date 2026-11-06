@@ -2,7 +2,7 @@
 id: item-2
 kind: leaf
 leaf_kind: question
-action: "Work PRIORITIES item 2: construct a computable coherence modulus or prove there is none."
+action: "Work ATTENTION item 2: construct a computable coherence modulus or prove there is none."
 who: agent
 item: "2"
 title: "A computable coherence modulus, or a proof there is none"
@@ -27,10 +27,10 @@ A computable coherence modulus exists for the repository's logical-induction
 construction.
 
 ## Source
-PRIORITIES.md: "A computable coherence modulus, or a proof there is none"
+ATTENTION.md: "A computable coherence modulus, or a proof there is none"
 
 ## Notes
-PRIORITIES #2, open in both directions; the action is the work order.
+ATTENTION #2, open in both directions; the action is the work order.
 
 ## Item
 Does a given engine admit a computable tolerance schedule tending to zero, with

@@ -211,4 +211,4 @@ followed world diverges.
 
 The missing arrow — from a normative record to a semantic credal constraint or a
 price-visible region, **together with its liability certificate** — is
-`PRIORITIES.md` item 39 and is deliberately absent here.
+`ATTENTION.md` item 39 and is deliberately absent here.

@@ -18,7 +18,7 @@ A learner with sublinear law-regret exists on the frozen substrate, and the
 conditional learning theorem it would support holds.
 
 ## Source
-PRIORITIES.md, items 29 to 35 (item 29 closed-positive; item 30 partially
+ATTENTION.md, items 29 to 35 (item 29 closed-positive; item 30 partially
 closed, learning-positive and integration-blocked; items 31 to 33 entry level;
 item 35 maintainer-specified-later);
 projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/CROWN_JEWEL_THEOREM.md.

@@ -1738,15 +1738,15 @@ class Goals(Base):
                             "A document lists the trust principles by axis.")
         read = [f'{{"id": "h1-6{i}", "by": "@h1", {BASE}, "kind": "{k}", "target": {{"node": "t-1"}}, {CHK}}}' for i, k in ((5, "map-read"), (6, "trace"))]
         self.tree(tweak=tw, extra={"h1": read})
-        (self.root / "PRIORITIES.md").write_text("# Priorities\n\n### 1. Something — **[open]**\n")
+        (self.root / "ATTENTION.md").write_text("# Priorities\n\n### 1. Something — **[open]**\n")
         code, out, err = run(self.root)
         self.assertEqual(code, 0, err)
-        self.assertIn("work order PRIORITIES #9999 has no '### 9999.' heading", err)
+        self.assertIn("work order ATTENTION #9999 has no '### 9999.' heading", err)
         D = json.loads((self.root / "graph" / "derived.json").read_text())
         self.assertEqual((D["nodes"]["t-1"]["V"]["headline"], D["nodes"]["t-1"]["status"]), (8, "open"))
         self.assertEqual(D["nodes"]["t-1"]["action"], "Write the list of trust principles by axis.")
         view = (self.root / "graph" / "view.md").read_text()
-        self.assertIn("- t-1: Write the list of trust principles by axis. (who: agent); work order: PRIORITIES #9999; open statement: `Workspace.Deference.trust_axis`; files: docs/x.md", view)
+        self.assertIn("- t-1: Write the list of trust principles by axis. (who: agent); work order: ATTENTION #9999; open statement: `Workspace.Deference.trust_axis`; files: docs/x.md", view)
         self.append("graph/events/h1.jsonl", f'{{"id": "h1-67", "by": "@h1", {BASE}, "kind": "external", "target": {{"node": "t-1"}}, "ref": "commit abc123"}}\n')
         self.assertEqual(self.derived()["nodes"]["t-1"]["status"], "established")
 
@@ -2757,17 +2757,17 @@ class Fixtures(unittest.TestCase):
         shutil.copytree(ROOT / "graph", root / "graph")
         if (ROOT / "chats").is_dir():
             shutil.copytree(ROOT / "chats", root / "chats")
-        # work pointers name PRIORITIES.md items and round directories: the copy carries the file and stubs of the rounds
-        if (ROOT / "PRIORITIES.md").is_file():
-            shutil.copy(ROOT / "PRIORITIES.md", root / "PRIORITIES.md")
+        # work pointers name ATTENTION.md items and round directories: the copy carries the file and stubs of the rounds
+        if (ROOT / "ATTENTION.md").is_file():
+            shutil.copy(ROOT / "ATTENTION.md", root / "ATTENTION.md")
         for reg in ROOT.glob("projects/*/CLAIMS.md"):                  # the claims registries policy.yaml lists
             (root / reg.relative_to(ROOT)).parent.mkdir(parents=True, exist_ok=True)
             shutil.copy(reg, root / reg.relative_to(ROOT))
         # narratives name wiki pages, decision pointers name DECISIONS.md anchors, round and foundation pointers read the
-        # state, and the item nodes render PRIORITIES.md from the sections file (2026-10-22)
+        # state, and the item nodes render ATTENTION.md from the sections file (2026-10-22)
         if (ROOT / "wiki").is_dir():
             shutil.copytree(ROOT / "wiki", root / "wiki")
-        for rel in ("DECISIONS.md", "state/rounds.json", "state/foundations.json", "state/priorities_sections.md",
+        for rel in ("DECISIONS.md", "state/rounds.json", "state/foundations.json", "state/attention_sections.md",
                     "state/concepts.json"):
             if (ROOT / rel).is_file():
                 (root / rel).parent.mkdir(parents=True, exist_ok=True)
@@ -2969,7 +2969,7 @@ class Fixtures(unittest.TestCase):
         self.assertTrue(all(len(idx["nodes"][x]["children"]) == 3 for x in unread), "an unread result is record, bridge and completeness")
         self.assertIn("hypotheses unread", self.D["nodes"][unread[0]]["flags"])
         # the render shows the registered answers beside the item (one line under the heading)
-        text = (self.root / "PRIORITIES.md").read_text()
+        text = (self.root / "ATTENTION.md").read_text()
         self.assertIn("*Registered results bearing on this item:* ", text)
         self.assertNotIn("Registered answers", text)
         # ruling F4: the two pre-existing frames are retired aliases, their roots moved; ruling F5: a merged claim resolves its registry id

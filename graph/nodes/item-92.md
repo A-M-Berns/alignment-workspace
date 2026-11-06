@@ -25,10 +25,10 @@ version: 1
 A solution to item 92 ships the clause and its fixture, or the negative — that no affordable supply obligation exists under the deadline for the declared interface — with its witness.
 
 ## Source
-PRIORITIES.md, item 92 (The reason-side supply obligation: the realization's protection rule and the general-cost optimum); its context: `REASON_INTERFACE.md` §3 and `AFFORDABILITY_INTERFACE.md` §§1–3 of the round; `wiki/Openness-Coverage-and-Non-Capture.md` (route availability is not exercise); item 87 clause 5 (protected reason-supply liveness) for the protected half of the same obligation.
+ATTENTION.md, item 92 (The reason-side supply obligation: the realization's protection rule and the general-cost optimum); its context: `REASON_INTERFACE.md` §3 and `AFFORDABILITY_INTERFACE.md` §§1–3 of the round; `wiki/Openness-Coverage-and-Non-Capture.md` (route availability is not exercise); item 87 clause 5 (protected reason-supply liveness) for the protected half of the same obligation.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The non-capture compilation round (`projects/deference/rounds/2026-09-16-noncapture-compilation/`)

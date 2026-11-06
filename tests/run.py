@@ -73,7 +73,7 @@ def self_tests() -> None:
                    cwd=ROOT, check=True)
     subprocess.run([sys.executable, "-m", "checkers.wiki_state_bindings",
                     "--self-test"], cwd=ROOT, check=True)
-    subprocess.run([sys.executable, "-m", "checkers.priorities_render", "--self-test"],
+    subprocess.run([sys.executable, "-m", "checkers.attention_render", "--self-test"],
                    cwd=ROOT, check=True)
     subprocess.run([sys.executable, "-m", "checkers.wiki_refs", "--self-test"],
                    cwd=ROOT, check=True)
@@ -148,9 +148,9 @@ if __name__ == "__main__":
                    cwd=ROOT, check=True)
     # The wiki's references to claims, items, rounds and nodes resolve (2026-10-22).
     subprocess.run([sys.executable, "-m", "checkers.wiki_refs"], cwd=ROOT, check=True)
-    # PRIORITIES.md is a render of the map's item nodes (ruling M6, 2026-10-22): the committed
+    # ATTENTION.md is a render of the map's item nodes (ruling M6, 2026-10-22): the committed
     # file equals the render, or the gate fails.
-    subprocess.run([sys.executable, "-m", "checkers.priorities_render", "--check"],
+    subprocess.run([sys.executable, "-m", "checkers.attention_render", "--check"],
                    cwd=ROOT, check=True)
     # The argument map: the plain derivation must pass on the committed tree
     # (writing nothing), and the checker's unit tests must pass.
