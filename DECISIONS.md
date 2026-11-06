@@ -7033,6 +7033,15 @@ alternative: renaming the identifiers and bumping ~200 Statement versions in one
 The wiki still says `PRIORITIES.md` in five pages; updating it is the maintainer's
 surface.
 
+### 2026-11-05 — the site's type: Space Grotesk on the landing, Inter everywhere else
+<!-- decision: 2026-11-05--site-type-grotesk-inter; touches: site/assets/style.css -->
+
+**Maintainer ruling, taken in conversation on 2026-11-05:** the home page sets in Space
+Grotesk and all other text on the site in Inter. Both vendored as Fontsource latin
+variable woff2 beside the stylesheet, self-hosted like all site assets; the landing takes
+`--display`, every other page `--sans`; code stays in the monospace stack. This replaces
+the type half of the 2026-10-30 palette-and-type ruling; the palette half stands.
+
 ### 2026-11-05 — the standing maintenance dispatch
 <!-- decision: 2026-11-05--standing-maintenance-dispatch; touches: AGENTS.md, prompts/2026-11-05-standing-maintenance/PROMPT.md -->
 

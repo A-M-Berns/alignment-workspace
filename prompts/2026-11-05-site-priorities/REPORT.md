@@ -75,6 +75,14 @@ Friction found and filed: `checkers/wiki_links.py` passed a commit pin whose has
 round had fabricated (right 8-character prefix, invented tail) — the gate does not
 resolve pins against git objects. Filed as item F9, *Workspace friction*.
 
+## The third follow-up of 2026-11-05 (`PROMPT-followup-3.md`)
+
+The landing sets in Space Grotesk and every other page in Inter, both vendored as
+Fontsource latin variable woff2 beside the stylesheet (`--display` and `--sans`); code
+keeps the monospace stack, and the wordmark's weight drops to Space Grotesk's 700
+ceiling. The ruling is the dated `DECISIONS.md` entry, replacing the type half of the
+2026-10-30 palette-and-type ruling.
+
 ## Outstanding maintainer actions
 
 1. Wire the maintenance sweep's schedule (cadence is yours; weekly beside the freshness
