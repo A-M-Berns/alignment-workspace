@@ -218,11 +218,18 @@ errors. Checker, build, DOM and wiki-link gates green; the map renders 147 edges
 it rendered 118.
 
 Not shown by the interrogation: the agents' not-established lists (about twenty items —
-open joints, unproved rescues, design questions such as a dedicated legitimate-deference
-node and a Carroll prior-work node) are recorded in the round's working notes and
-surfaced to the maintainer in conversation, not filed as edits; and the enriched
-why-lines are readings of the materials by one model's pass — each cites its ground, and
-a human contesting one contests it by the ordinary route.
+open joints, unproved rescues, design questions) are recorded in the round's
+`interrogation/` files and surfaced to the maintainer in conversation, not filed as
+edits; and the enriched why-lines are readings of the materials by one model's pass —
+each cites its ground, and a human contesting one contests it by the ordinary route.
+
+On the maintainer's word the two design-question nodes landed: `legitimate-deference`
+(construction — the activation stack's own node, taking the three cross-line edges that
+had to target the whole line, seeded on three axes) and `carroll-2024` (prior work,
+Carroll et al. ICML 2024, edged to the openness line as the externally stated failure
+and to the value-change thesis as the same concern from the other direction). The one
+remaining structural gap the audit itself names is the digest backlog: merged PRs 133,
+134 and 136 carry no digest, and this round's digest lands when its pull request merges.
 
 ## Attribution
 

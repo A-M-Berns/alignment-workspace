@@ -521,6 +521,19 @@
       "title": "Warrant",
       "kind": "philosophy",
       "blurb": "A licence to a conclusion that can be defeated: justification you can undercut or rebut, where an entailment you cannot. The thing the licence chain turns into record structure."
+    },
+    {
+      "id": "legitimate-deference",
+      "title": "Legitimate deference",
+      "kind": "construction",
+      "blurb": "The active consumer: the advisor admits an evaluation occurrence as an ordinary obligation, and a common event says whether the actual future principal's answer validly inherits the mandate's authority — one authenticated receipt, robust openness at every snapshot, reason-mediated authorship. On the activated worlds, ordinary Value yields conditional authoritative regret; no counterfactual evaluator is invented."
+    },
+    {
+      "id": "carroll-2024",
+      "title": "Influenceable reward functions (Carroll et al. 2024)",
+      "kind": "work",
+      "url": "https://arxiv.org/abs/2405.17713",
+      "blurb": "Carroll, Foote, Siththaranjan, Russell and Dragan: in dynamic reward MDPs, the static-preference assumption can implicitly reward influencing the user's preferences. The clearest external statement of the failure this program is trying to prevent, and a standing verification target."
     }
   ],
   "links": [
@@ -1635,7 +1648,7 @@
     },
     {
       "from": "normative-record",
-      "to": "deference-line",
+      "to": "legitimate-deference",
       "rel": [
         "uses"
       ],
@@ -1643,7 +1656,7 @@
     },
     {
       "from": "robust-openness",
-      "to": "deference-line",
+      "to": "legitimate-deference",
       "rel": [
         "uses"
       ],
@@ -1683,7 +1696,7 @@
     },
     {
       "from": "authorship-transparency",
-      "to": "deference-line",
+      "to": "legitimate-deference",
       "rel": [
         "part"
       ],
@@ -1722,6 +1735,40 @@
         "shapes"
       ],
       "why": "the answerability slice's admission witness — cited evidence plus licensing rule — is a justification in Doyle's sense with a historical identity attached"
+    },
+    {
+      "from": "legitimate-deference",
+      "to": "deference-line",
+      "rel": [
+        "part"
+      ],
+      "why": "the line's active consumer: where deference stops being a trust relation and becomes an exercised, authority-inheriting event"
+    },
+    {
+      "from": "total-trust",
+      "to": "legitimate-deference",
+      "rel": [
+        "uses"
+      ],
+      "why": "ordinary Value runs unchanged on the activated securities, so the trust mathematics is consumed, not re-proved"
+    },
+    {
+      "from": "carroll-2024",
+      "to": "openness-line",
+      "rel": [
+        "shapes",
+        "contrast"
+      ],
+      "why": "the failure stated externally: a system rewarded for satisfying preferences is rewarded for changing them; the repository reproduces its examples, and the criterion should eventually explain rather than merely match them"
+    },
+    {
+      "from": "carroll-2024",
+      "to": "value-change-as-belief-change",
+      "rel": [
+        "adjacent"
+      ],
+      "why": "the formal statement of why value revision must not be something the system is rewarded for causing — the same concern the thesis's legitimacy conditioning addresses from the other direction",
+      "undirected": true
     }
   ]
 }
