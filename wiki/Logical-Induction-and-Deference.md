@@ -35,6 +35,14 @@ process may rationally use a later or better-informed process. Total Trust,
 Value, and tower-style expectations are candidate mathematical faces of the
 connection.
 
+The corpus departs from the source in one load-bearing way: Dorst-style
+deference is first-person — the agent expects the expert to be more accurate and
+therefore defers — while the enforced results here are third-person, with
+settlement arbitrage moving the weaker reasoner to the stronger one's estimate
+whether or not it judges the expert superior. On the uplift fragment that
+judgment is provably unavailable to it, so deference that depended on
+recognizing superiority would fail exactly where the expert is superior.
+
 ## What the audits retain
 
 The current corpus audit retains a two-option finite exact identity connecting
@@ -47,6 +55,27 @@ inference from a tower condition to Value fails on selection-referencing
 punishment menus. That does not refute the soft construction. Conversely, the
 workspace's vanishing-gap mixture and the source's fixed-margin hedge have not
 been shown to carry the same hypothesis package.
+
+## What the deference corpus settled
+
+Across two processes the timely, pointwise tower is unattainable: on families
+that may reference the stronger reasoner's quotes, a diagonal contract settling
+against the quote leaves every quote off by at least half; on quote-free
+families, timely tracking of the coupled target would require the stronger class
+to contain its own simulation cost composed with the lookahead. The two cases
+exhaust all contract families. What survives is exact: gated, class-averaged
+Total Trust — hence classwise Value — is forced over all sentences with no
+appeal to the prior, because the forecaster's calibration is settled after the
+fact against the weaker reasoner's credences, which exist for every sentence;
+and the per-question tower is forced on precisely the timely-checkable fragment
+of a target sealed against the current quote. Forcing is co-extensive with
+settlement: the exploiting trader earns by buy–wait–settle–rebuy, so on a
+question that never settles it acts once, never recovers budget, and freezes.
+The corpus record is
+[the 2026-06-27 note dump](https://github.com/A-M-Berns/alignment-workspace/tree/2a00dafc6c898c52b4c44bf54a41393026cdeb14/projects/deference/note-dump-2026-06-27)
+(`no-timely-pointwise-tower.md`, `faithful-acceleration.md`,
+`frozen-deliberation-deference-v6.md`), with the obstruction and trader cores
+kernel-checked in its `lean/`.
 
 ## Current status
 

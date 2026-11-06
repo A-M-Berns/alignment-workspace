@@ -6998,6 +6998,21 @@ concepts scored important whose reliability has not caught up (a filter over nam
 scores, never arithmetic on them), the unscored count, then the recent feed — each
 labelled an invitation, not an ordering.
 
+### 2026-11-05 — research threads take importance and clarity; AI numbers are starred; seed refresh is maintenance
+<!-- decision: 2026-11-05--threads-two-axes-ai-stars-seed-maintenance; touches: checkers/graph.py, graph/PROTOCOL.md, tests/freshness.py, site/ -->
+
+**Maintainer rulings, taken in conversation on 2026-11-05.** A research thread takes
+importance and clarity but no reliability — a thread is a question, not a claim that
+holds up; the checker refuses a reliability score on one, and the eleven threads are
+seeded on their two axes. An AI-generated number is starred in every display, with
+"*AI-generated score / add the first human rating" beneath the hero numbers, and the
+editor's note of a standing AI score renders muted. Refreshing the AI seeds joins the
+weekly freshness audit: an unscored axis of a scoreable concept and a seed given against
+an earlier version of its backing claim are findings. The front page carries a type
+sampler of nine vendored candidate body faces (choice persisted locally, applied
+site-wide) for the maintainer's font decision; the chosen face replaces Lexend and the
+rest leave.
+
 ### 2026-11-05 — the priorities page: the standing scores become an ordering
 <!-- decision: 2026-11-05--priorities-page-ordering; touches: site/ -->
 

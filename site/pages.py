@@ -150,7 +150,7 @@ AXES = ("reliability", "importance", "clarity")
 SCORES = (1, 2, 3, 4, 5)
 
 
-def assess_block(site: Site, acts: list, h: dict, target: dict, version, url: str) -> str:
+def assess_block(site: Site, acts: list, h: dict, target: dict, version, url: str, axes: tuple = AXES) -> str:
     """The hero is the scoring control: per axis the standing number (a vouch button when
     one stands), a status line, and a 1-5 picker in the axis ramp. Picking a number opens
     the one shared editor beneath — vouch or challenge is derived from the number against
@@ -166,7 +166,7 @@ def assess_block(site: Site, acts: list, h: dict, target: dict, version, url: st
         if not e["_ai"]:
             active[str(e.get("by")) + "|" + str(e.get("axis"))] = str(e.get("id"))
     cells, contested, standing = [], [], {}
-    for axis in AXES:
+    for axis in axes:
         c = h[axis]
         hums = [e for e in (by_axis.get(axis) or []) if not e["_ai"]]
         standing[axis] = {"d": c["d"], "ai": c["ai"], "contested": c["contested"]}
@@ -175,7 +175,7 @@ def assess_block(site: Site, acts: list, h: dict, target: dict, version, url: st
         elif hums:
             status = f'{len(hums)} contributor{"s" if len(hums) != 1 else ""}'
         elif c["ai"]:
-            status = "an AI seed — add the first human score"
+            status = '<span class="ai-note">*AI-generated score<br>add the first human rating</span>'
         else:
             status = "no human score yet"
         if c["stale"]:
@@ -184,9 +184,10 @@ def assess_block(site: Site, acts: list, h: dict, target: dict, version, url: st
         segs = "".join(
             f'<button type="button" class="seg{" cur" if n in cur else ""}" data-axis="{axis}" data-score="{n}">{n}</button>'
             for n in SCORES)
+        star = '<span class="ai-star">*</span>' if c["ai"] else ""
         num = (f'<button type="button" class="hx-num" data-axis="{axis}" data-score="{esc(c["d"])}" '
                f'title="vouch {esc(c["d"])}">{esc(c["d"])}</button>'
-               if c["d"].isdigit() and not c["ai"] else f'<span class="hx-num">{esc(c["d"])}</span>')
+               if c["d"].isdigit() and not c["ai"] else f'<span class="hx-num">{esc(c["d"])}{star}</span>')
         cells.append(f'<div class="hx hx-{axis} {c["cls"]}">{num}<span class="hx-label">{axis}</span>'
                      f'<span class="hx-status">{status}</span><div class="seg-row">{segs}</div></div>')
     note = ""
@@ -216,7 +217,7 @@ def assess_block(site: Site, acts: list, h: dict, target: dict, version, url: st
         f'<a href="https://github.com/A-M-Berns/alignment-workspace/issues/new?title={issue_title}&amp;body={issue_body}">no handle? propose it as an issue</a></p>'
         '<p class="rc-status muted">Prepared locally — not yet submitted.</p>'
         '</div>')
-    return '<section class="hero">' + "".join(cells) + "</section>" + note + editor
+    return f'<section class="hero cols-{len(axes)}">' + "".join(cells) + "</section>" + note + editor
 
 
 def scores_html(site: Site, acts: list) -> str:
@@ -641,10 +642,15 @@ def concept_context(site: Site, cid: str) -> str:
     return "".join(parts)
 
 
-def scoreable(e: dict) -> bool:
-    """A research thread is navigated, not scored; prior work is cited, not scored
-    (ruling of 2026-11-05). The concrete content takes the three axes."""
-    return e.get("kind") not in ("goal", "work")
+def concept_axes(e: dict) -> tuple:
+    """Prior work is cited, not scored; a research thread takes importance and clarity but
+    no reliability — a thread is a question, not a claim that holds up (rulings of
+    2026-11-05). The concrete content takes all three axes."""
+    if e.get("kind") == "work":
+        return ()
+    if e.get("kind") == "goal":
+        return ("importance", "clarity")
+    return AXES
 
 
 def concept_version(site: Site, cid: str) -> int:
@@ -665,10 +671,10 @@ def concept_full(site: Site, cid: str, with_head: bool = True) -> str:
     head = (f'<p class="frag-head">{site.link("concepts", cid, e.get("title", cid))} <span class="kind">{esc(kind_label_)}</span></p>'
             if with_head else "")
     lede = f'<p class="concept-lede">{esc(str(e.get("blurb") or ""))}</p>'
-    assessed = scoreable(e)
+    axes = concept_axes(e)
     hero = assess_block(site, r.concept_assessments(cid), r.concept_hero(cid),
-                        {"concept": cid}, concept_version(site, cid), site.url("concepts", cid)) if assessed else ""
-    ctx = concept_context(site, cid) if assessed else ""
+                        {"concept": cid}, concept_version(site, cid), site.url("concepts", cid), axes) if axes else ""
+    ctx = concept_context(site, cid) if axes else ""
     refs = [x for x in e.get("refs") or [] if x in r.nodes]
     if e.get("wiki"):
         main = f"<div class=\"wiki\">{render_wiki(site, e['wiki'])}</div>"
@@ -962,9 +968,10 @@ def map_data(site: Site) -> dict:
             if x not in r.nodes:
                 site.unresolved.append(f"concepts:{cid}:ref:{x}")
         hx = None
-        if scoreable(e):
+        axes = concept_axes(e)
+        if axes:
             hh = r.concept_hero(cid)
-            hx = {a[0]: [hh[a]["d"], hh[a]["cls"]] for a in ("reliability", "importance", "clarity")}
+            hx = {a[0]: [hh[a]["d"], hh[a]["cls"]] for a in axes}
         meta[cid] = {"k": e.get("kind", ""), "w": e.get("wiki") or "", "t": e.get("title", cid),
                      "s": str(e.get("blurb") or ""), "prs": prs_of.get(cid, 0), "d": ds[cid], "ax": hx,
                      "imp": 1.0 if cid == "the-program" else round(0.45 * raw[cid] / top + 0.55 * pct(raw[cid]), 3)}
@@ -998,14 +1005,15 @@ def activity_page(site: Site, rows: list[str]) -> str:
     r = site.repo
     contested, unscored = [], []
     for cid, e in r.concepts.items():
-        if not scoreable(e):
+        axes = concept_axes(e)
+        if not axes:
             continue
         h = r.concept_hero(cid)
         link = site.link("concepts", cid, e.get("title", cid))
-        axes_c = [a for a in ("reliability", "importance", "clarity") if h[a]["contested"]]
+        axes_c = [a for a in axes if h[a]["contested"]]
         if axes_c:
             contested.append(f'<li>{link} — {", ".join(axes_c)} contested</li>')
-        if all(h[a]["d"] == "–" for a in ("reliability", "importance", "clarity")):
+        if all(h[a]["d"] == "–" for a in axes):
             unscored.append(link)
     body = ["<section><h2>Where to look</h2>"]
     body.append("<h3>Disagreements to read</h3>")
@@ -1024,10 +1032,10 @@ def activity_page(site: Site, rows: list[str]) -> str:
     return layout(site, "Activity", "".join(body))
 
 
-def mini_hero(h: dict) -> str:
+def mini_hero(h: dict, axes: tuple = AXES) -> str:
     return '<div class="mini-hero">' + "".join(
         f'<span class="hx hx-{a} {h[a]["cls"]}"><span class="hx-num">{esc(h[a]["d"])}</span><span class="hx-label">{a}</span></span>'
-        for a in AXES) + "</div>"
+        for a in axes) + "</div>"
 
 
 def _axis_value(c: dict) -> int | None:
@@ -1043,33 +1051,38 @@ def _axis_value(c: dict) -> int | None:
 
 
 def priority_order(site: Site) -> tuple[list[dict], list[str]]:
-    """The ordering of the scoreable concepts by their standing scores. A concept's rank is
-    led by its importance and raised by what has not caught up with it: the reliability
-    gap in full (an unscored reliability counts as 1 — nothing vouches for it) and the
-    clarity gap where clarity is scored. Human scores and AI seeds rank alike; a seed is
-    marked. Returns (ranked rows, the concepts no one has scored for importance)."""
+    """The ordering of the scoreable concepts by their standing scores, over each
+    concept's own axes. A concept's rank is led by its importance and raised by what has
+    not caught up with it: the reliability gap in full where the concept takes that axis
+    (an unscored reliability counts as 1 — nothing vouches for it; a research thread
+    carries none) and the clarity gap where clarity is scored. Human scores and AI seeds
+    rank alike; a seed is marked. Returns (ranked rows, the concepts no one has scored
+    for importance)."""
     r = site.repo
     ranked, unranked = [], []
     for cid, e in r.concepts.items():
-        if not scoreable(e):
+        axes = concept_axes(e)
+        if "importance" not in axes:
             continue
         h = r.concept_hero(cid)
         imp = _axis_value(h["importance"])
         if imp is None:
             unranked.append(cid)
             continue
-        rel = _axis_value(h["reliability"])
-        cla = _axis_value(h["clarity"])
-        rel_gap = max(0, imp - (rel if rel is not None else 2))
-        cla_gap = max(0, imp - cla) if cla is not None else 0
         why = [f'importance {h["importance"]["d"]}' + (" (AI seed)" if h["importance"]["ai"] else "")]
-        if rel is None:
-            why.append("reliability unscored" + (f" — {rel_gap / 2:g} behind" if rel_gap else ""))
-        elif rel_gap:
-            why.append(f'reliability {h["reliability"]["d"]} — {rel_gap / 2:g} behind')
+        rel_gap = 0
+        if "reliability" in axes:
+            rel = _axis_value(h["reliability"])
+            rel_gap = max(0, imp - (rel if rel is not None else 2))
+            if rel is None:
+                why.append("reliability unscored" + (f" — {rel_gap / 2:g} behind" if rel_gap else ""))
+            elif rel_gap:
+                why.append(f'reliability {h["reliability"]["d"]} — {rel_gap / 2:g} behind')
+        cla = _axis_value(h["clarity"]) if "clarity" in axes else None
+        cla_gap = max(0, imp - cla) if cla is not None else 0
         if cla_gap:
             why.append(f'clarity {h["clarity"]["d"]} — {cla_gap / 2:g} behind')
-        ranked.append({"cid": cid, "hero": h, "p": 2 * imp + 2 * rel_gap + cla_gap,
+        ranked.append({"cid": cid, "hero": h, "axes": axes, "p": 2 * imp + 2 * rel_gap + cla_gap,
                        "why": " · ".join(why), "ai": h["importance"]["ai"]})
     ranked.sort(key=lambda row: (-row["p"], row["ai"], str(r.concepts[row["cid"]].get("title") or row["cid"]).lower()))
     return ranked, unranked
@@ -1104,13 +1117,14 @@ def priorities_page(site: Site) -> str:
         rows.append(
             f'<li class="prio"><div class="prio-head"><span class="prio-rank">{i}</span>'
             f'{site.link("concepts", cid, e.get("title", cid))} <span class="kind">{esc(str(e.get("kind") or ""))}</span></div>'
-            + mini_hero(h)
+            + mini_hero(h, row["axes"])
             + f'<p class="prio-blurb">{esc(str(e.get("blurb") or ""))}</p>'
             + f'<p class="prio-why muted">{esc(row["why"])}</p>'
             + (f'<p class="prio-items">open items: {links}</p>' if nums else "")
             + '</li>')
     body = ['<p class="lens"><strong>This page is a lens, not the structure.</strong> The ordering is derived from the '
-            'standing scores — importance first, raised by how far reliability and clarity sit behind it — and it moves '
+            'standing scores — importance first, raised by how far reliability and clarity sit behind it, over each '
+            'concept\'s own axes (a research thread carries importance and clarity only) — and it moves '
             'when someone scores an axis. A grey number is an AI seed no human has confirmed; '
             'the <a href="/map/">map</a> is the whole record. Where open <a href="/items/">items</a> '
             'are filed against a concept, they are the asked-for work on it.</p>',
@@ -1120,7 +1134,7 @@ def priorities_page(site: Site) -> str:
         body.append("<section><h2>Not yet rankable</h2><p>"
                     + f"{len(unranked)} concepts carry no importance score — among them "
                     + ", ".join(site.link("concepts", cid, r.concepts[cid].get("title", cid)) for cid in unranked[:6])
-                    + ". Research threads and prior work are navigated and cited, not scored.</p></section>")
+                    + ". Prior work is cited, not scored.</p></section>")
     return layout(site, "Priorities", "\n".join(body))
 
 

@@ -83,6 +83,17 @@ keeps the monospace stack, and the wordmark's weight drops to Space Grotesk's 70
 ceiling. The ruling is the dated `DECISIONS.md` entry, replacing the type half of the
 2026-10-30 palette-and-type ruling.
 
+## The merge of 2026-11-05 (the base round's later work)
+
+The base branch (#137) advanced after this branch forked — threads take importance and
+clarity, AI numbers are starred, the interrogation's concepts and links, the type
+sampler — and is merged in. The ordering adapts: a concept ranks over its own axes
+(`concept_axes`), so research threads rank on importance and clarity with no reliability
+gap, and the ranked list grows from 53 to 65. The type sampler leaves, which is its own
+ruling's disposal clause ("the chosen face replaces Lexend and the rest leave") executed
+by the type ruling of the third follow-up; the two chosen faces stay vendored beside the
+stylesheet and the nine candidates go.
+
 ## Outstanding maintainer actions
 
 1. Wire the maintenance sweep's schedule (cadence is yours; weekly beside the freshness

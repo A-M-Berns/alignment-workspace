@@ -69,6 +69,33 @@ Maintainer directives, in conversation on the preview, verbatim:
 
 > ok do the ai seeding next
 
+> add asterisks to seeded scores and more the phrase now written "*AI generated score
+> [linebreak] Add the first human rating" to below the numbers. change the parenthesized
+> (score stands at) to a different render maybe greyer or more transparent"
+>
+> Can we change the overall site font to something better, give me a bunch of options on
+> the front page
+>
+> For anything like "value change as belief change" that basically has nothing, can you
+> write a writeup? Also i'm kind of skeptical of your framing of that in general... seems
+> like that's like abram's move to some extent but not necessarily the "central bet of the
+> corrigibility line"?
+>
+> Can you add updating AI score generations to the recurring maintenance
+>
+> I think research threads should maybe just have importance and clarity ratings
+
+> Doesn't the settlement interface connect to logical induction as well since it's a
+> direct generalization of that? In general, I think this format is exposing that the
+> repo descriptions aren't necessarily as deeply reflective of the interconnected
+> understanding of the research program as they could be. Can you (using subagents)
+> thoroughly re-interrogate all the explanations currently present to incorproate as
+> much of this understanding and clarity as possible? For example, you have all the
+> chats I had on claude.ai about these topics right? Look at those deeply and then do a
+> deep dive on the connections and all explanatory pages
+
+> add the two other nodes. is there any other structural updating to do?
+
 > Ok so a few things. First of all, each node on the map should have this hero panel
 > thing whereas i think most of them currently don't. At least, the ones where there is
 > enough content on the page where this can be evaluated that way (and maybe with the

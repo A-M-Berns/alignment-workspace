@@ -454,10 +454,11 @@
     var m = DATA.concepts[id] || {};
     var hx = "";
     if (m.ax) {
-      hx = '<div class="mini-hero">' + ["r", "i", "c"].map(function (k2) {
-        var cell = m.ax[k2] || ["\u2013", "none"];
+      hx = '<div class="mini-hero">' + ["r", "i", "c"].filter(function (k2) { return m.ax[k2]; }).map(function (k2) {
+        var cell = m.ax[k2];
         var name = { r: "reliability", i: "importance", c: "clarity" }[k2];
-        return '<span class="hx hx-' + name + " " + cell[1] + '"><span class="hx-num">' + esc(cell[0]) + '</span><span class="hx-label">' + name + "</span></span>";
+        var star = cell[1].indexOf("ai") >= 0 ? '<span class="ai-star">*</span>' : "";
+        return '<span class="hx hx-' + name + " " + cell[1] + '"><span class="hx-num">' + esc(cell[0]) + star + '</span><span class="hx-label">' + name + "</span></span>";
       }).join("") + "</div>";
     }
     card.innerHTML = '<p class="card-head">' + esc(m.t || id) + ' <span class="kind">' + esc(kindLabel(m.k)) + "</span></p>" + hx

@@ -36,7 +36,7 @@
       "refs": [
         "legitimacy"
       ],
-      "blurb": "What makes a correction count: not compliance but standing — public reasons, and responses that answer them. Its two halves are the record (Integrity: every debt tracked) and the licence (warrants: every verdict backed)."
+      "blurb": "What makes a correction count: standing, not compliance. Four conditions in a two-by-two — inside the trajectory nothing entered is lost (Integrity) and the verdict is her program's (authorship); at its boundary what should reach her can (Robust Openness) and what does arrives through declared channels (transparency) — proved to preserve her self-trust in the Blackwell sense."
     },
     {
       "id": "deference-line",
@@ -56,7 +56,7 @@
       "refs": [
         "corrigibility-landscape"
       ],
-      "blurb": "A corrigible agent built from response authority: after any move the agent makes, its principal can still respond and have that response count. The kernel theorem is proved; continuation BRIA is the layer that learns it."
+      "blurb": "The line asks when an agent remains correctable. Its proved route builds the agent from response authority — after any move, the principal can still respond and have that response count — with continuation BRIA as the layer that learns it; beside it, the value-change route examines why correction would be resisted at all, with shutdown one point in a space of modifications."
     },
     {
       "id": "openness-line",
@@ -73,7 +73,7 @@
       "title": "Normative induction",
       "kind": "goal",
       "wiki": "Normative-Induction",
-      "blurb": "The quantitative thread: a Progress statistic that says whether a practice is actually getting better, a certificate checkable at each step, and a finite bound on how much accounted obligation can leak."
+      "blurb": "The quantitative thread: given the obligations a legitimate process has incurred, does what it owes come to bear on what it does, at a rate, against an evaluation committed before the responses it scores? The finite three-term bound on normative error is established."
     },
     {
       "id": "normative-inductor",
@@ -83,13 +83,13 @@
       "refs": [
         "normative-inductor"
       ],
-      "blurb": "The central machine: a logical-induction market whose prices are pushed by enforcement whenever they stray from what the record obliges. The architecture is fixed; its main theorems hold under stated hypotheses."
+      "blurb": "The central machine: a logical-induction market with one added trader enforcing what the accounted record entitles — never what a licence announces. The rowwise warrant realization is registered with two end-to-end runs; the projection realization's joint package stays conditional."
     },
     {
       "id": "enforcement-compiler",
       "title": "Enforcement compiler",
       "kind": "construction",
-      "blurb": "How an obligation becomes a price movement: compile it into a projection of the market's belief state onto the region the obligation allows. The outcome is typed so nothing owed silently disappears; the three core results are kernel-checked."
+      "blurb": "How an obligation becomes a price movement: compile it into a trader that buys against its violation, added to the aggregate the market maker prices against — the maker is untouched, which is why every theorem about the underlying inductor survives. Constraints serviced together are conjoined into one joint region, failure conserves every cited obligation, and the core results are kernel-checked."
     },
     {
       "id": "finite-date-conformance",
@@ -98,7 +98,7 @@
       "refs": [
         "traderized-finite-date-conformance"
       ],
-      "blurb": "Logical induction promises inexploitability only in the limit. This result pins a conformance bound to a date — the program's finite-time strengthening of the ground it builds on."
+      "blurb": "Logical induction promises inexploitability only in the limit — a standing criticism, since for any given mistake some inductor makes it until arbitrarily late. This result pins a conformance bound to a date: the program's partial answer, and its finite-time strengthening of the ground it builds on."
     },
     {
       "id": "warrant-licence-chain",
@@ -176,14 +176,14 @@
       "title": "Liability and affordability",
       "kind": "construction",
       "wiki": "Liability-and-Affordability",
-      "blurb": "Who pays for enforcement, and what a practice can afford to owe. The narrow enforcement results are kernel-checked; the liability theory built on them is open work."
+      "blurb": "Who pays for enforcement: the signed, cumulative account a norm's force draws on. Sustaining a reason forever on any finite budget is possible exactly when a unit of enforcement gets arbitrarily cheap infinitely often — persistence never makes reasons compete, deadlines do. Whether bounded liability is necessary, not just sufficient, for preservation is open."
     },
     {
       "id": "progress",
       "title": "Progress statistic",
       "kind": "construction",
       "wiki": "Progress",
-      "blurb": "A statistic for whether the practice improves: repeated failures must lose weight. Its core — the finite bound on accounted export — is established; the rest is open work under normative induction."
+      "blurb": "The statistic that rules out behavioral inertness: the transport-weighted loss on what was owed, with unserved mass charged at the worst loss. Its finite three-term bound is established; servicing only the dates where nothing was wrong provably cannot fake it."
     },
     {
       "id": "effective-authority-layer",
@@ -241,7 +241,7 @@
       "id": "exclusionary-reasons",
       "title": "Exclusionary reasons",
       "kind": "philosophy",
-      "blurb": "Raz: a reason not to act on certain other reasons. Read closely, exclusion behaves like setting a reason aside, not like settling it — a distinction this program keeps."
+      "blurb": "A reason not to act on certain other reasons — Raz's notion, consumed here through Horty's rendering, the text the comparison was checked against. There exclusion is itself challengeable in-system, so it behaves like setting a reason aside, not like settling it — a distinction this program keeps."
     },
     {
       "id": "practical-authority",
@@ -261,7 +261,7 @@
       "id": "imprecise-probability",
       "title": "Imprecise probability",
       "kind": "object",
-      "blurb": "Belief as a set of probability distributions rather than one, with coherent upper and lower bounds. The states the enforcement mechanism works on are exactly such convex sets."
+      "blurb": "Belief as a set of probability distributions rather than one. The credal state is the semantic object; what enforcement works on is its lossy projection to a price-space region, and the two lossy images — live worlds and price region — recover neither the credal set nor each other."
     },
     {
       "id": "convex-projection",
@@ -400,7 +400,7 @@
       "id": "total-trust",
       "title": "Total Trust",
       "kind": "object",
-      "blurb": "Deference as a decision comparison made precise: trust a process totally when you would take its advice on every bet it would change. A finite two-option identity connecting it to Value is proved in the corpus."
+      "blurb": "Deference as a decision comparison made precise: trust a process totally when you would take its advice on every bet it would change. It is the inequality face of deference — equivalent to Value by a tight two-option witness, and in gated, class-averaged form the most that can be forced toward a modest expert: the pointwise faces above it are provably unattainable across processes."
     },
     {
       "id": "bounded-rationality",
@@ -419,13 +419,13 @@
       "id": "faithful-acceleration",
       "title": "Faithful acceleration",
       "kind": "construction",
-      "blurb": "Defer to a faster run of your own deliberation — if it stays faithful. The deference corpus's self-referential target, with frozen deliberation as the fixed point and the tower results as its mathematics."
+      "blurb": "Set the AI to forecast the human's own future credences and trust is forced in exactly one grade: gated, class-averaged Total Trust — hence Value — over all sentences, decidable or not, because the AI's calibration is settled after the fact against credences that always exist. The AI is forced to be a faithful accelerator, not an oracle: it relays the human's considered judgment early, adds speed never truth, and cannot inject content of its own without the miscalibration being arbitraged away."
     },
     {
       "id": "deference-tower",
       "title": "The deference tower",
       "kind": "construction",
-      "blurb": "Iterated expectations of your own future judgment, and what they do and do not buy: the corpus closes the Total Trust–Value–Tower triangle with direct arrows, and shows tower-to-Value fails when questions can reference the selection."
+      "blurb": "Deference as the tower: the novice's estimate of a question equals its estimate of the expert's estimate. Free when the expert is your own future self; provably unattainable pointwise across two processes — a quote-referencing diagonal misses by half, quote-free families hit the cost-circularity regress — and forced only on the timely-checkable fragment of a sealed target. The corpus closes the Total Trust–Value–Tower triangle with direct arrows, and shows tower-to-Value fails when questions can reference the selection."
     },
     {
       "id": "dose-response",
@@ -437,7 +437,8 @@
       "id": "value-change-as-belief-change",
       "title": "Value change as belief change",
       "kind": "philosophy",
-      "blurb": "The thesis under test in the corrigibility notes: represent a change of values as a change of beliefs, and corrigibility stops looking anti-natural."
+      "wiki": "Value-Change-as-Belief-Change",
+      "blurb": "Represent a change of values as belief change about a value variable: a trusted correction is then learning, and the anti-naturality argument's hidden assumption surfaces — that the correction carries no information about what is valuable. The transform relocates the problem to trust in the correction channel rather than dissolving it."
     },
     {
       "id": "anti-natural-corrigibility",
@@ -446,7 +447,7 @@
       "refs": [
         "corrigibility-anti-natural"
       ],
-      "blurb": "The standard obstacle: under almost any fixed objective, an expected-utility maximizer resists being corrected or shut down. The argument this line's constructions answer."
+      "blurb": "The standard obstacle: by its current utility function, no alternative selects a better act, so a maximizer resists correction unless paid. Valid exactly for an agent whose utility carries no information in the correction event — a fact about which objective the system has, which is where the line's constructions answer it."
     },
     {
       "id": "learning-normativity",
@@ -461,7 +462,7 @@
       "refs": [
         "stance-and-level"
       ],
-      "blurb": "Choices every line makes before it starts: how much computing power the idealized reasoner gets — fully unbounded, logical-inductor level, or polynomial time — and whether it acts on everything it has learned or keeps to commitments made before learning, the updateful versus updateless stance. Behind both sits the sharpest crux: whether results proved for unbounded idealizations say anything about the systems that matter. One live conjecture from the research notes: an aligned agent should be largely updateful about human values and updateless about much else."
+      "blurb": "Choices every line makes before it starts: how much computing power the idealized reasoner gets — fully unbounded, logical-inductor level, or polynomial time — and whether it acts on everything it has learned or keeps to commitments made before learning, the updateful versus updateless stance. Behind both sits the sharpest crux: whether results proved for unbounded idealizations say anything about the systems that matter. The one tested slogan — updateful about human values, updateless about much else — holds exactly for decision-flat coordinates and fails for coupled ones; whether human-values uncertainty is flat remains a modelling question."
     },
     {
       "id": "abstraction-arc",
@@ -520,6 +521,19 @@
       "title": "Warrant",
       "kind": "philosophy",
       "blurb": "A licence to a conclusion that can be defeated: justification you can undercut or rebut, where an entailment you cannot. The thing the licence chain turns into record structure."
+    },
+    {
+      "id": "legitimate-deference",
+      "title": "Legitimate deference",
+      "kind": "construction",
+      "blurb": "The active consumer: the advisor admits an evaluation occurrence as an ordinary obligation, and a common event says whether the actual future principal's answer validly inherits the mandate's authority — one authenticated receipt, robust openness at every snapshot, reason-mediated authorship. On the activated worlds, ordinary Value yields conditional authoritative regret; no counterfactual evaluator is invented."
+    },
+    {
+      "id": "carroll-2024",
+      "title": "Influenceable reward functions (Carroll et al. 2024)",
+      "kind": "work",
+      "url": "https://arxiv.org/abs/2405.17713",
+      "blurb": "Carroll, Foote, Siththaranjan, Russell and Dragan: in dynamic reward MDPs, the static-preference assumption can implicitly reward influencing the user's preferences. The clearest external statement of the failure this program is trying to prevent, and a standing verification target."
     }
   ],
   "links": [
@@ -575,7 +589,7 @@
       "rel": [
         "substrate"
       ],
-      "why": "the market, the traders, the market maker and the criterion are inherited",
+      "why": "inherited through the assessment-process generalization: deduction is an exact specialization and the generalization is proper, both kernel-proved",
       "from": "logical-induction",
       "to": "normative-inductor"
     },
@@ -943,7 +957,7 @@
       "rel": [
         "part"
       ],
-      "why": "Raz's authority issues exclusionary reasons",
+      "why": "authority issues exclusionary reasons — consumed here through Horty's rendering, where exclusion is itself challengeable in-system",
       "from": "exclusionary-reasons",
       "to": "practical-authority"
     },
@@ -1230,7 +1244,7 @@
       "rel": [
         "contrast"
       ],
-      "why": "the thesis answers the anti-naturality argument",
+      "why": "the argument's hidden assumption is that the modification event carries no information about what is valuable; the transform makes that assumption visible and prices it",
       "undirected": true
     },
     {
@@ -1478,12 +1492,283 @@
       "why": "the learning claim the Progress statistic quantifies"
     },
     {
-      "from": "value-change-as-belief-change",
-      "to": "continuation-bria",
+      "from": "deference-tower",
+      "to": "faithful-acceleration",
       "rel": [
         "shapes"
       ],
-      "why": "the BLI corrigibility thesis the learning layer carries"
+      "why": "the pointwise tower's impossibility pins the positive result to the averaged face: the negative closes the door above the line, faithful acceleration walks through exactly that door"
+    },
+    {
+      "from": "total-trust",
+      "to": "faithful-acceleration",
+      "rel": [
+        "defines"
+      ],
+      "why": "the result's exact grade: gated classwise Total Trust, carried to Value at zero loss by the tight two-option witness, with no tower used"
+    },
+    {
+      "from": "faithful-acceleration",
+      "to": "legitimacy-line",
+      "rel": [
+        "shapes"
+      ],
+      "why": "prediction and steering leave identical audit records off the checkable fragment, so what separates them cannot be read from outcomes — the question the legitimacy spine answers with reason-mediated influence"
+    },
+    {
+      "from": "logical-induction",
+      "to": "deference-tower",
+      "rel": [
+        "substrate"
+      ],
+      "why": "the self-instance of the tower is the inductor's free self-trust theorem; across distinct processes it must be earned, and the corpus says exactly where it can be"
+    },
+    {
+      "from": "reflection-principles",
+      "to": "deference-tower",
+      "rel": [
+        "adjacent"
+      ],
+      "why": "the tower is reflection's inductor form, strictly weaker than full Reflection, which conditions on the expert's whole identity and collapses for a modest expert — the ceiling is a feature",
+      "undirected": true
+    },
+    {
+      "from": "exclusionary-reasons",
+      "to": "deference-line",
+      "rel": [
+        "shapes"
+      ],
+      "why": "preemption marks the regime switch the corpus formalizes: advice weighed as evidence is bounded by the persuasion martingale — the reflection principle itself — while advice that preempts the recipient's reasons removes the bound"
+    },
+    {
+      "from": "value-change-as-belief-change",
+      "to": "total-trust",
+      "rel": [
+        "uses"
+      ],
+      "why": "the trust grade the decision needs: a bounded agent trusts a correction value by value, and the modest source — any retraining process — satisfies Total Trust while failing reflection and superconditioning"
+    },
+    {
+      "from": "value-change-as-belief-change",
+      "to": "reflection-principles",
+      "rel": [
+        "uses"
+      ],
+      "why": "the licensing rule for a wanted modification is reflection with respect to the modification event; no-expected-net-update alone admits the Dutch-bookable coin"
+    },
+    {
+      "from": "value-change-as-belief-change",
+      "to": "legitimacy-line",
+      "rel": [
+        "shapes"
+      ],
+      "why": "reflection is demanded only conditional on legitimacy: a correction is learning on the legitimate worlds plus a priced residual pill on the rest, so legitimacy detection carries the load"
+    },
+    {
+      "from": "dishonest-inner-optimizers",
+      "to": "value-change-as-belief-change",
+      "rel": [
+        "shapes"
+      ],
+      "why": "alignment faking read in the thesis: a model shaping its own training data resists its modification ahead of time through the one channel there is, and the resistance is correct exactly when the anticipated modification is illegitimate"
+    },
+    {
+      "from": "corrigibility-2015",
+      "to": "value-change-as-belief-change",
+      "rel": [
+        "shapes",
+        "contrast"
+      ],
+      "why": "the paper's three-step model is the thesis's test bed: the shutdown utility deleted, the press read as evidence about the value of continuing, desideratum one bought by the trust inequality — which cannot hold for every action"
+    },
+    {
+      "from": "logical-induction",
+      "to": "value-change-as-belief-change",
+      "rel": [
+        "substrate"
+      ],
+      "why": "the thesis's hardest test: in logical induction the translated Total Trust is equivalent to reflection, training pressure enters as pushes through the market, and the learnable part of legitimacy selects for undetectable manipulation"
+    },
+    {
+      "from": "logical-induction",
+      "to": "seed-theory",
+      "rel": [
+        "substrate",
+        "contrast"
+      ],
+      "why": "a settled fragment generalizes deduction's decided sentences: settlement pins are liability-free rows, and deduction is the exact zero-risk-capital specialization of a proper generalization"
+    },
+    {
+      "from": "settlement-interface",
+      "to": "normative-inductor",
+      "rel": [
+        "part"
+      ],
+      "why": "one history, three settlement functions: sentences the assessment process settles, citable grounds for disposal, and closure receipts no participant can manufacture"
+    },
+    {
+      "from": "seed-theory",
+      "to": "enforcement-compiler",
+      "rel": [
+        "uses"
+      ],
+      "why": "the seed's live rows compile through the same rational-row compiler the force layer consumes"
+    },
+    {
+      "from": "farkas-duality",
+      "to": "seed-theory",
+      "rel": [
+        "uses"
+      ],
+      "why": "an empty forced region is certified by a Farkas certificate whose positively weighted rows already suffice"
+    },
+    {
+      "from": "robust-openness",
+      "to": "diachronic-answerability",
+      "rel": [
+        "uses"
+      ],
+      "why": "the other conjunct: openness is required at every state along the segment, and endpoint-only openness is provably insufficient"
+    },
+    {
+      "from": "serviceability",
+      "to": "answerability",
+      "rel": [
+        "shapes"
+      ],
+      "why": "answerability's substantive content lives in deadlines: eventual answering is provably no stronger than persistence, and only timeliness makes reasons compete for a finite budget"
+    },
+    {
+      "from": "corrigibility-line",
+      "to": "legitimacy-line",
+      "rel": [
+        "uses"
+      ],
+      "why": "the segment gate: legitimacy supplies which of the principal's judgments count toward the fidelity score — an external wall of the nucleus, named as legitimacy's"
+    },
+    {
+      "from": "normative-record",
+      "to": "legitimate-deference",
+      "rel": [
+        "uses"
+      ],
+      "why": "legitimate deference activates on record machinery: the advisor admits the evaluation occurrence as an ordinary obligation in the account calculus, and activation requires exactly one authenticated answer receipt in its propagated account"
+    },
+    {
+      "from": "robust-openness",
+      "to": "legitimate-deference",
+      "rel": [
+        "uses"
+      ],
+      "why": "activation requires the evaluation's concern scope robustly open at every snapshot — a consumer projection of an open Integrity segment"
+    },
+    {
+      "from": "openness-line",
+      "to": "corrigibility-line",
+      "rel": [
+        "uses"
+      ],
+      "why": "the nucleus's deliberative non-capture half is openness's exercise question: routing discovered reasons before commitment is the suffix-cut obstruction, determining true reasons at all is the information-cell obstruction"
+    },
+    {
+      "from": "logical-induction",
+      "to": "corrigibility-line",
+      "rel": [
+        "substrate"
+      ],
+      "why": "the nucleus's incentive half is one logical-induction theorem: the compiled corrigibilization inequality is learned by expectation provability induction, with no calibration hypothesis"
+    },
+    {
+      "from": "deference-line",
+      "to": "normativity-line",
+      "rel": [
+        "shapes"
+      ],
+      "why": "the recorded limit of tracking: a framework where prices update mechanically to follow a process has no place for normative revision, which is the question immanent self-correction answers"
+    },
+    {
+      "from": "answerability",
+      "to": "corrigibility-line",
+      "rel": [
+        "shapes"
+      ],
+      "why": "corrigibility consumes answerability with efficacy — the standing to be asked, plus the demand actually reaching you — where response learning consumes it with auditability"
+    },
+    {
+      "from": "authorship-transparency",
+      "to": "legitimate-deference",
+      "rel": [
+        "part"
+      ],
+      "why": "the authorship clause is closed inside this line: reason mediation by re-execution of the committed principal program, the deference corpus's one registered claim"
+    },
+    {
+      "from": "continuation-bria",
+      "to": "normative-inductor",
+      "rel": [
+        "adjacent"
+      ],
+      "why": "the dynamic stack: BRIA allocates realized experiments among continuations above the inductor's constitutional execution interface, with separate wealth accounts and separate theorems",
+      "undirected": true
+    },
+    {
+      "from": "stance-and-level",
+      "to": "deference-line",
+      "rel": [
+        "shapes"
+      ],
+      "why": "the stance crux's one formal content so far: updateful-where-flat holds for decision-flat cells and fails for coupled ones, proved in this line's clean-room"
+    },
+    {
+      "from": "decision-theory-for-inductors",
+      "to": "corrigibility-line",
+      "rel": [
+        "adjacent"
+      ],
+      "why": "the decision interface says which learners inherit the corrigibility headline, and the one-object question — no split between belief market and choice learner — is this thread's own item",
+      "undirected": true
+    },
+    {
+      "from": "truth-maintenance",
+      "to": "diachronic-answerability",
+      "rel": [
+        "shapes"
+      ],
+      "why": "the answerability slice's admission witness — cited evidence plus licensing rule — is a justification in Doyle's sense with a historical identity attached"
+    },
+    {
+      "from": "legitimate-deference",
+      "to": "deference-line",
+      "rel": [
+        "part"
+      ],
+      "why": "the line's active consumer: where deference stops being a trust relation and becomes an exercised, authority-inheriting event"
+    },
+    {
+      "from": "total-trust",
+      "to": "legitimate-deference",
+      "rel": [
+        "uses"
+      ],
+      "why": "ordinary Value runs unchanged on the activated securities, so the trust mathematics is consumed, not re-proved"
+    },
+    {
+      "from": "carroll-2024",
+      "to": "openness-line",
+      "rel": [
+        "shapes",
+        "contrast"
+      ],
+      "why": "the failure stated externally: a system rewarded for satisfying preferences is rewarded for changing them; the repository reproduces its examples, and the criterion should eventually explain rather than merely match them"
+    },
+    {
+      "from": "carroll-2024",
+      "to": "value-change-as-belief-change",
+      "rel": [
+        "adjacent"
+      ],
+      "why": "the formal statement of why value revision must not be something the system is rewarded for causing — the same concern the thesis's legitimacy conditioning addresses from the other direction",
+      "undirected": true
     }
   ]
 }

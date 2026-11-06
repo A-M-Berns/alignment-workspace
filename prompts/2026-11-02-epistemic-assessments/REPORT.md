@@ -119,7 +119,30 @@ concepts whose seeded importance exceeds their seeded reliability.
 Not shown by the seeding: the scores are one model's readings of the repository's own
 status lines and sources — they establish nothing, they are the starting numbers the
 protocol says humans vet and supersede as they go, and any one of them may be wrong in
-either direction. The first push of the site side shipped the composer's markup without
+either direction.
+
+The 2026-11-05 follow-up (five directives, recorded in `PROMPT-followup.md` and the
+dated ruling): research threads re-enter scoring on importance and clarity only, the
+checker refusing reliability on one, and the eleven threads are seeded on both axes (the
+hero renders two columns there). Every AI number is starred, in the hero, the map's
+mini-hero and the activity lists, with "*AI-generated score / add the first human
+rating" beneath the hero number and the editor's standing-AI-score note rendered muted.
+Seed refresh joins the weekly freshness audit: an unscored scoreable axis and a seed
+behind its backing claim's version are findings, each with self-test cases. The landing
+carries a type sampler — nine vendored latin subsets (OFL, Google Fonts), persisted
+locally and applied site-wide — for the font decision; the choice is the maintainer's
+and the losers leave afterwards. And the first thin-concept writeup landed:
+`wiki/Value-Change-as-Belief-Change.md`, written from the note dump's
+value-change-as-epistemic-update note, its clean-room Lean package and the position
+statement, backing the concept entry. Reading the source corrected this round's own
+seed: the three value-change scores were superseded in the ledger (reliability 2→3 — the
+finite core is machine-checked; importance 4→3 — the base of one programme in the
+corrigibility landscape, beside a kernel route that does not rest on it, correcting the
+earlier gloss's "the line's wager"; clarity 3→4). The maintainer's skepticism of that
+framing prompted the re-read; the correction is the supersession's gloss. Writeups for
+the remaining thin concepts (about ten program-own constructions and philosophy entries
+with neither wiki page nor backing claim) are the natural next dispatch and are not
+done here. The first push of the site side shipped the composer's markup without
 its script (an apply step was dropped); caught when the maintainer looked for the panel,
 fixed in the following commit.
 Rendering is verified by an injected-event test (supersession filtered, staleness marked,
@@ -154,6 +177,59 @@ luminance, and sets it as `--accent`. The same follow-up removed the build-commi
 from every page. The map moves to `/map/`; `/chat/` and `/stats/` hold one-line
 pages until their parts arrive; the nav carries all four. The engine sets the page's
 accent from each tiling's palette, so the landing recolours itself cycle by cycle.
+
+The interrogation (follow-up of 2026-11-05). The maintainer judged the concept network
+and explanatory pages shallower than the program's actual interconnected understanding,
+offered one named hypothesis (the settlement interface generalizes logical induction),
+and dispatched a subagent re-interrogation of all explanations against the primary
+materials — which, for chats, means the dumped transcripts in the repository (the eleven
+trust-between-inductors chats, the corrigibility note dump, the email threads), not the
+maintainer's live account. Four parallel agents read the deference dump, the
+corrigibility dump with its clean-room packages, the normativity project, and the
+philosophy layer with the full links array; every finding carried the repo path that
+grounds it, and ungroundable hunches were quarantined as not-established rather than
+written. Spot-checks of the five riskiest citations were re-verified by hand before
+application.
+
+The hypothesis verdict: grounded, in a two-layer form. At the force layer it is a
+kernel-proved theorem — logical induction generalized from the deductive process to
+assessment processes, a proper generalization with deduction the exact zero-risk-capital
+specialization, so LI's decided sentences are the liability-free case of the
+settled-region machinery. At the record layer the settlement interface connects to the
+market only through the realization's three settlement functions, and deliberately
+refuses LI's conflation of availability, judgment and truth; the record-to-region bridge
+is the program's named open item. Both layers entered the network as separate edges, and
+`wiki/Settlement-Interface.md` now carries the two senses side by side.
+
+Applied: thirty new concept links (the cross-line consumption the network lacked — the
+four lines previously touched only through one chain; now the segment gate, the
+activation stack, the openness obstructions, the value-change/Total-Trust identification
+and the deference-to-normativity genealogy are edges), sixteen blurb rewrites (the
+sharpest: faithful-acceleration had conflated three distinct corpus objects;
+legitimacy-line compressed a two-by-two into two halves; imprecise-probability asserted
+an identification the materials refuse; exclusionary-reasons claimed a reading of Raz
+the record does not license — the reading is of Horty's rendering, and the ledger's own
+Pettit precedent condemns the pattern), four why-line corrections, one misgrounded edge
+dropped (value-change to continuation-BRIA conflated BLI with BRIA), and seven wiki
+insertions (the deference corpus's settled mathematics was entirely absent from the
+wiki; the corrigibility page gained its reciprocal pointer to the value-change route).
+Five of this ledger's own seeds were superseded where their glosses repeated the blurbs'
+errors. Checker, build, DOM and wiki-link gates green; the map renders 147 edges where
+it rendered 118.
+
+Not shown by the interrogation: the agents' not-established lists (about twenty items —
+open joints, unproved rescues, design questions) are recorded in the round's
+`interrogation/` files and surfaced to the maintainer in conversation, not filed as
+edits; and the enriched why-lines are readings of the materials by one model's pass —
+each cites its ground, and a human contesting one contests it by the ordinary route.
+
+On the maintainer's word the two design-question nodes landed: `legitimate-deference`
+(construction — the activation stack's own node, taking the three cross-line edges that
+had to target the whole line, seeded on three axes) and `carroll-2024` (prior work,
+Carroll et al. ICML 2024, edged to the openness line as the externally stated failure
+and to the value-change thesis as the same concern from the other direction). The one
+remaining structural gap the audit itself names is the digest backlog: merged PRs 133,
+134 and 136 carry no digest, and this round's digest lands when its pull request merges.
 
 ## Attribution
 

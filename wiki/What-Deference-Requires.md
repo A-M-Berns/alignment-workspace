@@ -39,6 +39,13 @@ and weighting class. **Epistemic deference** determines when another process's
 opinions should guide belief or choice. None supplies authorization or corrective
 capability on its own.
 
+Calibration itself splits: calibration to the principal's own future credence and
+calibration to truth come apart exactly on questions that never settle, where
+every self-fulfilling equilibrium is perfectly calibrated to the realized
+credence. An advisor can earn its record where truth is checkable and spend the
+authority where it is not; no calibration check on the record separates that from
+legitimate authority.
+
 The current competence target is credence-free: it is not awarded by the
 principal's or advisor's confidence in competence. Logical-Induction-native
 calibration also depends on admissibility; a settlement may be computable without

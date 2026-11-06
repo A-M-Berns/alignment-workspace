@@ -76,7 +76,10 @@ securities `C_n · Ṽ_n(a)`, which are bounded securities independent of how th
 evaluation is completed. Its scope condition — the menu must not reference the
 advisor's selection — is selection-induced channel blindness of the reason trace
 across the advisor's whole continuation, a theorem-domain condition kept apart from
-`C_n`; a sealed commitment is one implementation and is not sufficient alone.
+`C_n`; a sealed commitment is one implementation and is not sufficient alone. The
+structure is load-bearing because the record alone cannot be: off the checkable
+fragment a captured advisor and a faithful one are indistinguishable from inside, so
+protection has to be a pre-committed policy rather than an in-the-moment judgment.
 
 **The conclusion is conditional authoritative regret.** Activated regret equals the
 activation mass times the regret *by the actual authoritative future principal,
@@ -144,7 +147,9 @@ and not the sealed comparison the corrigibilization-dominance theorem needs acro
 > exactly as the case in which a comparator's own history is not joinable from the
 > learner's. What it holds is registered; what remains is the succession of item 28<!--ref:item:28-->
 > (`DECISIONS.md`, *Awaiting the author*), a decision about what is worth proving.
-> Endpoint preservation is **ruled out** (`DECISIONS.md`, 2026-09-08): legitimate
+> Endpoint preservation is **ruled out** (`DECISIONS.md`, 2026-09-08): on questions
+> that never settle, the advised reasoner's limit is provably underdetermined and the
+> record cannot distinguish a preserved endpoint from a steered one, so legitimate
 > influence is causal factorization through declared reasons, not convergence location.
 
 > **Established — `lean-proved`.** The

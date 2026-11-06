@@ -40,6 +40,17 @@
     }).catch(function () { results.textContent = "The search index could not be loaded."; });
   }
 
+  // the landing's type sampler persists a candidate body face; apply it site-wide
+  try {
+    var awFont = localStorage.getItem("aw-font");
+    if (awFont) {
+      var l = document.createElement("link");
+      l.rel = "stylesheet"; l.href = "/assets/fonts/candidates.css";
+      document.head.appendChild(l);
+      document.documentElement.style.setProperty("--sans", '"' + awFont + '", -apple-system, BlinkMacSystemFont, sans-serif');
+    }
+  } catch (e) { /* storage may be unavailable */ }
+
   // keyboard: "/" focuses the search box
   document.addEventListener("keydown", function (ev) {
     if (ev.key === "/" && !/input|textarea/i.test(document.activeElement && document.activeElement.tagName)) {
@@ -71,7 +82,7 @@
       var st = cfg.standing[axis];
       if (st.contested) return "Your " + axis + " score: " + n;
       if (st.d === "–") return "The first " + axis + " score: " + n;
-      if (st.ai) return "The first human " + axis + " score: " + n + " (an AI seed stands at " + st.d + ")";
+      if (st.ai) return "The first human " + axis + " score: " + n + ' <span class="stands-at">AI score stands at ' + st.d + "*</span>";
       if (String(n) === st.d) return "Support " + axis + " " + st.d;
       return "Challenge " + axis + " " + st.d + " with " + n;
     }
@@ -80,7 +91,7 @@
       scope.querySelectorAll(".seg.sel").forEach(function (s) { s.classList.remove("sel"); });
       var seg = scope.querySelector('.seg[data-axis="' + axis + '"][data-score="' + score + '"]');
       if (seg) seg.classList.add("sel");
-      q(".ed-head", ed).textContent = headline(axis, score);
+      q(".ed-head", ed).innerHTML = headline(axis, score); // built from fixed strings and the build's own numbers
       var prev = cfg.active[handleSel.value + "|" + axis];
       q(".ed-note", ed).textContent = prev ? "This replaces your earlier " + axis + " score; everyone else's stays." : "";
       ed.hidden = false; rc.hidden = true;

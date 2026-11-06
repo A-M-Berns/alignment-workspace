@@ -307,6 +307,10 @@ section.hero .hx { text-align: center; }
 .hx.none .hx-num { color: #3c3c40; }
 .hx.contested .hx-num { text-decoration: underline wavy 1.5px; text-underline-offset: 0.12em; }
 /* the hero as the scoring control */
+section.hero.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.ai-star { font-size: 0.55em; vertical-align: super; opacity: 0.75; }
+.hx-status .ai-note { font-style: italic; }
+.stands-at { color: var(--muted); opacity: 0.75; font-weight: 400; font-size: 0.85em; }
 button.hx-num { font: inherit; background: none; border: none; cursor: pointer; width: 100%; padding: 0; }
 button.hx-num:hover { filter: brightness(1.25); }
 .hx .hx-status { display: block; font-size: 0.68rem; color: var(--muted); margin-top: 0.3em; }
