@@ -75,6 +75,12 @@ Friction found and filed: `checkers/wiki_links.py` passed a commit pin whose has
 round had fabricated (right 8-character prefix, invented tail) — the gate does not
 resolve pins against git objects. Filed as item F9, *Workspace friction*.
 
+Friction found and fixed (contained, §14): a local `_site/` build failed
+`tests/untracked_pointers.py` on the governance documents' citations of the documented
+build output. The gate now exempts citations to gitignored paths, round-record paths
+staying strict, with both directions in its self-test; the dated `DECISIONS.md` entry
+records it agent-decided.
+
 ## The third follow-up of 2026-11-05 (`PROMPT-followup-3.md`)
 
 The landing sets in Space Grotesk and every other page in Inter, both vendored as

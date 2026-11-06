@@ -107,6 +107,14 @@ def round_record_paths() -> list[tuple[str, str]]:
     return out
 
 
+def ignored(path: str) -> bool:
+    """A cited path .gitignore deliberately excludes — `_site`, a documented build
+    output — resolves locally by design and on no clone, which is the opposite of the
+    dangling citation this gate exists for."""
+    return subprocess.run(["git", "-C", str(ROOT), "check-ignore", "-q", path],
+                          capture_output=True).returncode == 0
+
+
 def audit() -> tuple[list[str], dict[str, int]]:
     tracked = tracked_paths()
     problems: list[str] = []
@@ -127,7 +135,7 @@ def audit() -> tuple[list[str], dict[str, int]]:
             if not (ROOT / path).exists():
                 continue  # dead_pointers.py's business, not this gate's
             counts["citations"] += 1
-            if path not in tracked:
+            if path not in tracked and not ignored(path):
                 problems.append(
                     f"{name}: `{path}` exists here but is not in the repository")
     return problems, counts
@@ -156,6 +164,10 @@ def self_test() -> int:
         ("the live documents exist", len(live_documents()) > 10, True),
         ("round records are found", len(round_record_paths()) > 10, True),
         ("git reports a populated tree", len(tracked) > 100, True),
+        # the ignore exemption, both directions: the documented build output is
+        # exempt, and an ordinary path is not
+        ("a gitignored citation is exempt", ignored("_site"), True),
+        ("a tracked path is not ignored", ignored("tests/run.py"), False),
     ]
     failures = 0
     print("UNTRACKED POINTERS SELF-TEST:")

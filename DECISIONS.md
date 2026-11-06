@@ -7057,6 +7057,17 @@ variable woff2 beside the stylesheet, self-hosted like all site assets; the land
 `--display`, every other page `--sans`; code stays in the monospace stack. This replaces
 the type half of the 2026-10-30 palette-and-type ruling; the palette half stands.
 
+### 2026-11-05 — the untracked-pointers gate exempts gitignored citations
+<!-- decision: 2026-11-05--untracked-gate-gitignore-exemption; touches: tests/untracked_pointers.py -->
+
+**Agent-decided, reversible** (the site-priorities round, which hit it: a local
+`_site/` build made the full suite fail on `AGENTS.md`'s and `DECISIONS.md`'s citations
+of the documented build output). A cited path that `.gitignore` deliberately excludes
+resolves locally by design and on no clone — the opposite of the dangling citation the
+gate exists for — so the citation check skips it; round-record paths stay strict, and
+the self-test carries both directions. Rejected alternative: never building into the
+documented output path, which makes the documentation a trap.
+
 ### 2026-11-05 — the standing maintenance dispatch
 <!-- decision: 2026-11-05--standing-maintenance-dispatch; touches: AGENTS.md, prompts/2026-11-05-standing-maintenance/PROMPT.md -->
 
