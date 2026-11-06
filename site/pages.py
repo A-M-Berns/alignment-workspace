@@ -1082,8 +1082,9 @@ def priority_order(site: Site) -> tuple[list[dict], list[str]]:
 
 
 def concept_peek(site: Site, cid: str) -> str:
-    """The opening stretch of the concept's own page — its wiki page where one exists,
-    else its backing claim's Statement — as plain text for the hover preview."""
+    """The opening stretch of the concept's own page, as plain text for the hover
+    preview: its wiki page where one exists, else its backing claim's Statement, else its
+    connections — the map's edges with their why lines, which is what that page shows."""
     r = site.repo
     e = r.concepts[cid]
     text = ""
@@ -1096,6 +1097,17 @@ def concept_peek(site: Site, cid: str) -> str:
         refs = [x for x in e.get("refs") or [] if x in r.nodes]
         if refs:
             text = r.nodes[refs[-1]]["statement"]
+        else:
+            parts = []
+            for L in r.concept_links:
+                a, b = L.get("from"), L.get("to")
+                if cid not in (a, b):
+                    continue
+                other = b if a == cid else a
+                title = (r.concepts.get(other) or {}).get("title", other)
+                why = str(L.get("why") or "").rstrip(".")
+                parts.append(f"{title}: {why}." if why else title)
+            text = " ".join(parts)
     text = " ".join(text.split())
     return text[:420] + "…" if len(text) > 420 else text
 

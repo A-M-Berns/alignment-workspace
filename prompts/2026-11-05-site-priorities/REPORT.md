@@ -112,6 +112,13 @@ untracked-pointers exemption also learned that a directory pattern like `_site/`
 the bare name only while the directory exists, so `ignored()` checks both forms — the
 first form passed locally and failed on a clean CI checkout.
 
+## The fifth follow-up of 2026-11-06 (`PROMPT-followup-5.md`)
+
+The hover had content only where a concept carried a wiki page (16) or a backing claim
+(8); the other 30 ranked concepts have neither, and their own page is the blurb plus
+connections and merged work. The preview falls back to the connections — each linked
+concept's title with the edge's why line — so every entry hovers.
+
 ## Outstanding maintainer actions
 
 1. Wire the maintenance sweep's schedule (cadence is yours; weekly beside the freshness
