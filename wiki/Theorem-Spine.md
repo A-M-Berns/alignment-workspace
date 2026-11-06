@@ -1358,5 +1358,5 @@ lexical certificate (item 99<!--ref:item:99-->).  Representation adequacy, physi
 effect completeness and inquiry causal faithfulness are boundaries of Theorems
 10.10–10.13, not filed items.  Effect completeness and the
 authorization primitive are external contracts of Theorem 10.1, not filed items.  The open queue itself lives in
-[`PRIORITIES.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/PRIORITIES.md);
+[`ATTENTION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/07ce131b8a57eae90d273af641372dd9b7c7b2d7/ATTENTION.md);
 this page names items, it does not maintain them.

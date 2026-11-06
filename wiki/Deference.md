@@ -96,7 +96,7 @@ with their Lean names and the sign hypothesis the bound needs, are on the
 Openness makes the principal consider anything — it supplies a route for a live
 protected concern, not its exercise; that authorship alone puts the menu on Value's
 domain; that any concrete protocol realizes authorship, coverage, or `η → 0`. Those are
-the realization bill, `PRIORITIES.md` item 87<!--ref:item:87-->. The stack is
+the realization bill, `ATTENTION.md` item 87<!--ref:item:87-->. The stack is
 [authority-activated value](https://github.com/A-M-Berns/alignment-workspace/tree/a8b25af87684e6b902cc1d008919f4aa1fd3cc60/projects/deference/rounds/2026-09-07-authority-activated-value)<!--ref:round:2026-09-07-authority-activated-value-->,
 [reason-mediated authorship](https://github.com/A-M-Berns/alignment-workspace/tree/a8b25af87684e6b902cc1d008919f4aa1fd3cc60/projects/deference/rounds/2026-09-07-reason-mediated-authorship)<!--ref:round:2026-09-07-reason-mediated-authorship-->
 and the

@@ -108,7 +108,7 @@ Owner @anson, @abram
 - rests on AI numbers (no human judgment yet): crux-formalize-before-write-up.partition
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @anson, @abram; holds 15 node(s)
+- frame owner @anson, @abram; holds 16 node(s)
 - a programme: informs through its steps
 - best next unit: none
 
@@ -3800,7 +3800,7 @@ Owner @abram
 - best next unit: do never-settled-standard
 
 ## Sub-frame enabling-work (in the-program): Which repository infrastructure makes the trust research vettable and publishable?
-Owner @anson, @abram; holds 15 node(s)
+Owner @anson, @abram; holds 16 node(s)
 
 ### Shared claims
 #### enabling-vetting-and-prioritization-system
@@ -3861,6 +3861,7 @@ Nodes this frame is about that are no goals of the ranking (held, not roots): li
 - item-f6 (leaf/task)
 - item-f7 (leaf/task)
 - item-f8 (leaf/task)
+- item-f9 (leaf/task)
 - item-10 (leaf/task)
 - item-11 (leaf/task)
 - item-12 (leaf/task)
@@ -4208,6 +4209,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - item-f6: Execute item F6 once the maintainers have specified it: The name lint cannot see a citation — *closed*. (who: either); decision: 2026-08-25--citation-may-written-backticks-where-name; decision: 2026-09-07--bibliography-exempt-name-lint; decision: 2026-09-29--people-named-role-name-lint-retired
 - item-f7: Execute item F7 once the maintainers have specified it: A round cannot record a dependency on an unindexed research checkpoint. (who: either)
 - item-f8: Execute item F8 once the maintainers have specified it: A stack of merged pull requests never reached `main` — *closed*. (who: either)
+- item-f9: Extend checkers/wiki_links.py to resolve each commit-pinned repository link against the local git objects (commit exists, path exists in its tree), with a null-input case for a pin naming a commit or path git does not have. (who: agent)
 - item-q1: decision: 2026-09-02--post-merge-terminology-corrections-frozen-september
 - item-q2: decision: 2026-09-02--post-merge-terminology-corrections-frozen-september
 - item-q3: decision: 2026-08-24--queue-triaged-rulings-rounds-recommended; decision: 2026-09-01--progress-claim-weighted; decision: open--whether-q3-graduates-what-succeeds-item
@@ -5652,6 +5654,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | item-f6 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
 | item-f7 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
 | item-f8 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
+| item-f9 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
 | item-q1 | leaf/question | 2 (both) | held by deference-and-trust | open | 0 | 0 (informs no goal) |
 | item-q2 | leaf/question | 2 (both) | held by deference-and-trust | open | 0 | 0 (informs no goal) |
 | item-q3 | leaf/question | 2 (both) | held by deference-and-trust | open | 0 | 0 (informs no goal) |
@@ -7145,4 +7148,4 @@ The outside option and the undescribed failure, each a cases node over the outco
 | wirehead-iff-finite.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 1 |
 | wirehead-iff-finite.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 1 |
 | worlds-and-points-companion | leaf/question | 2 (both) | AI number | open | 0 | 8 |
-<!-- generated_hash: 4bf6773b4520286a41470e8e -->
+<!-- generated_hash: 5379313a25191b65af260e20 -->

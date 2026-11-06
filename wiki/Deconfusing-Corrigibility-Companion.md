@@ -122,7 +122,7 @@ assumed; it is not derived in this file. The post derives it from Theorem 4.8.16
 Logical Induction paper. In this workspace that theorem is pinned as `thm:wubexp` /
 `LogicalInduction.lic_not_frequently_positive_feedback_return` in the def-lattice ledger,
 [`def-lattice-report.md`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/projects/deference/faf-cleanroom-2026-10-02/packages/def-lattice/def-lattice-report.md), row 4.8.16; the derivation for the score
-sequence is `PRIORITIES.md` item 111<!--ref:item:111-->. The workspace's weighted, absolute-value form of the
+sequence is `ATTENTION.md` item 111<!--ref:item:111-->. The workspace's weighted, absolute-value form of the
 same fact, `BRIAFollowup.UnbiasedFromFeedback`, at the uniform weighting and for every
 `γ > 0`, implies the post's form:
 [`Sequential.unbiased_of_weighted`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L457).

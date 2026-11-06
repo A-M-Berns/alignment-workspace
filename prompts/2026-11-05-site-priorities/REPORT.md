@@ -62,12 +62,22 @@ Not shown, in addition: nothing migrates GitHub-side references to the old file 
 items — an item whose node sits in no concept-ref frame lists under no concept, which is
 a map fact, not a defect of the page.
 
+## The second follow-up of 2026-11-05 (`PROMPT-followup-2.md`)
+
+The wiki edit was dispatched directly: the four `ATTENTION.md` item references and
+Theorem-Spine's ledger link, re-pinned to this branch's commit (a later freshness pass
+re-pins to a `main` commit). The three normativity notes under `projects/normativity/notes/`
+take the rename too. The wiki queue entry is retired by the dispatch. Still stale by
+choice: `state/prs.json` digests, round records, checkpoints, `ORIGIN.md` receipts and
+`DECISIONS.md` entries, which are history; and node Statements, per the first follow-up.
+
+Friction found and filed: `checkers/wiki_links.py` passed a commit pin whose hash this
+round had fabricated (right 8-character prefix, invented tail) — the gate does not
+resolve pins against git objects. Filed as item F9, *Workspace friction*.
+
 ## Outstanding maintainer actions
 
-1. The wiki names `PRIORITIES.md` in five pages (`Normative-Record-and-Inquiry`,
-   `Deconfusing-Corrigibility-Companion`, `Deference`, `Normative-Inductor`,
-   `Theorem-Spine`); the wiki is the maintainer's surface — edit, or dispatch a round to.
-2. Wire the maintenance sweep's schedule (cadence is yours; weekly beside the freshness
+1. Wire the maintenance sweep's schedule (cadence is yours; weekly beside the freshness
    audit is the natural choice), e.g.:
    `claude -p --name '⚙ maintenance-sweep' "Run the standing maintenance sweep per prompts/2026-11-05-standing-maintenance/PROMPT.md in a worktree of ~/hub/repos/alignment-workspace; open one PR." --permission-mode auto`
 

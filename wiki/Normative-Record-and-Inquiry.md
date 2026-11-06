@@ -334,7 +334,7 @@ inquiry policy achieves is the information-cell gap of the declared repertoire
 ([Corrigibility](Corrigibility) §5; the non-capture round's
 [`DISCOVERY_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/DISCOVERY_THEOREM.md)<!--ref:round:2026-09-16-noncapture-compilation-->).  Whether that frontier and
 the record's `Do(investigate …)` obligations are one object, and which repertoires are
-witness-complete so that inquiry makes geometric progress, is `PRIORITIES.md` item 93<!--ref:item:93-->;
+witness-complete so that inquiry makes geometric progress, is `ATTENTION.md` item 93<!--ref:item:93-->;
 the defeater-uptake and inquiry-interface questions (items 54<!--ref:item:54-->, 64) are the record-side
 halves of the same interface.
 

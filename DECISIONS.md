@@ -40,13 +40,6 @@ maintainer's.
 below.** The next round dispatched from that conversation lands it as its first
 commit.
 
-- **The wiki's five mentions of the renamed item ledger (2026-11-05).** The pages
-  `Normative-Record-and-Inquiry`, `Deconfusing-Corrigibility-Companion`, `Deference`,
-  `Normative-Inductor` and `Theorem-Spine` still say `PRIORITIES.md`; the ledger is now
-  `ATTENTION.md`. *Turns on:* the wiki is maintainer-written synthesis a dispatched round
-  does not edit unsaid — edit directly, or dispatch a round to.
-  <!-- decision: open--wiki-attention-rename; touches: wiki/; status: open -->
-
 - **The maintenance sweep's cadence (2026-11-05).** The standing dispatch
   (`prompts/2026-11-05-standing-maintenance/PROMPT.md`) is adopted; nothing schedules it
   yet. *Turns on:* external knowledge — how often the maintainer wants a sweep PR landing

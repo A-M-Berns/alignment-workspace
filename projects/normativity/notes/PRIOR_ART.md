@@ -438,7 +438,7 @@ of the section.
   is known **for the causal problem**: a program feasible on every settlement path
   separately may admit no causal policy, because the per-path relaxation hands the
   controller the path in advance. That gap is genuinely ours and is filed as
-  `PRIORITIES.md` item 74.
+  `ATTENTION.md` item 74.
 
 ### 6.5 Online algorithms and competitive analysis
 
