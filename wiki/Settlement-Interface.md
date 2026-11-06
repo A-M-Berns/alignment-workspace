@@ -67,6 +67,14 @@ process settles; settlement items as citable grounds for a disposal, whose relev
 stays a history question; and closure receipts that terminally discharge an anchored
 obligation, which no participant's challenge, verdict or quote can manufacture.
 
+On the price side, what a settled sentence forces is liability-free: a settlement
+pin's right-hand side is a minimum over the assessed worlds, so enforcing it consumes
+no risk capital — deduction, where every plausible world satisfies every pin, is the
+exact zero-risk-capital case ([Seed Theory](Seed-Theory); the traderized-enforcement
+handoff). That is the market's sense of settlement; the interface above is the
+record's, and the two are kept apart deliberately — availability does not establish
+the closure judgment, and the judgment does not establish the item's truth.
+
 ---
 
 **Evidence.** The protocol's settlement fields, the closure receipt and its

@@ -178,6 +178,52 @@ from every page. The map moves to `/map/`; `/chat/` and `/stats/` hold one-line
 pages until their parts arrive; the nav carries all four. The engine sets the page's
 accent from each tiling's palette, so the landing recolours itself cycle by cycle.
 
+The interrogation (follow-up of 2026-11-05). The maintainer judged the concept network
+and explanatory pages shallower than the program's actual interconnected understanding,
+offered one named hypothesis (the settlement interface generalizes logical induction),
+and dispatched a subagent re-interrogation of all explanations against the primary
+materials — which, for chats, means the dumped transcripts in the repository (the eleven
+trust-between-inductors chats, the corrigibility note dump, the email threads), not the
+maintainer's live account. Four parallel agents read the deference dump, the
+corrigibility dump with its clean-room packages, the normativity project, and the
+philosophy layer with the full links array; every finding carried the repo path that
+grounds it, and ungroundable hunches were quarantined as not-established rather than
+written. Spot-checks of the five riskiest citations were re-verified by hand before
+application.
+
+The hypothesis verdict: grounded, in a two-layer form. At the force layer it is a
+kernel-proved theorem — logical induction generalized from the deductive process to
+assessment processes, a proper generalization with deduction the exact zero-risk-capital
+specialization, so LI's decided sentences are the liability-free case of the
+settled-region machinery. At the record layer the settlement interface connects to the
+market only through the realization's three settlement functions, and deliberately
+refuses LI's conflation of availability, judgment and truth; the record-to-region bridge
+is the program's named open item. Both layers entered the network as separate edges, and
+`wiki/Settlement-Interface.md` now carries the two senses side by side.
+
+Applied: thirty new concept links (the cross-line consumption the network lacked — the
+four lines previously touched only through one chain; now the segment gate, the
+activation stack, the openness obstructions, the value-change/Total-Trust identification
+and the deference-to-normativity genealogy are edges), sixteen blurb rewrites (the
+sharpest: faithful-acceleration had conflated three distinct corpus objects;
+legitimacy-line compressed a two-by-two into two halves; imprecise-probability asserted
+an identification the materials refuse; exclusionary-reasons claimed a reading of Raz
+the record does not license — the reading is of Horty's rendering, and the ledger's own
+Pettit precedent condemns the pattern), four why-line corrections, one misgrounded edge
+dropped (value-change to continuation-BRIA conflated BLI with BRIA), and seven wiki
+insertions (the deference corpus's settled mathematics was entirely absent from the
+wiki; the corrigibility page gained its reciprocal pointer to the value-change route).
+Five of this ledger's own seeds were superseded where their glosses repeated the blurbs'
+errors. Checker, build, DOM and wiki-link gates green; the map renders 147 edges where
+it rendered 118.
+
+Not shown by the interrogation: the agents' not-established lists (about twenty items —
+open joints, unproved rescues, design questions such as a dedicated legitimate-deference
+node and a Carroll prior-work node) are recorded in the round's working notes and
+surfaced to the maintainer in conversation, not filed as edits; and the enriched
+why-lines are readings of the materials by one model's pass — each cites its ground, and
+a human contesting one contests it by the ordinary route.
+
 ## Attribution
 
 Prompt-author: the maintainer, in conversation, kept verbatim (`PROMPT.md`). Executor:

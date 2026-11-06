@@ -67,5 +67,16 @@ If the thesis holds in the trained-system setting, the anti-naturality obstacle 
 reframed for agents whose corrections are information: corrigibility stops being a fight
 against instrumental convergence and becomes a question about trust in the correction
 channel — which is where [legitimacy](Legitimacy) and the deference corpus's trust
-relations take over. If it does not carry, the kernel route through response authority
-stands independently.
+relations take over. The criterion is formalism-relative by the author's ruling: Total
+Trust in the decision-theoretic setting, equivalent to reflection in the
+logical-induction setting
+([position-statement-v2 §1.5](https://github.com/A-M-Berns/alignment-workspace/blob/2a00dafc6c898c52b4c44bf54a41393026cdeb14/projects/deference/corrigibility-note-dump-2026-10-01/position-statement-v2.md)).
+
+The transform also locates fully updated deference exactly: the information term
+vanishes as the agent comes to know what its correctors know, and under reflection a
+predicted correction is already adopted — the residual, corrections predicted and not
+adopted, are precisely the ones the agent judges illegitimate (the note's §7(iii)).
+What persists once nothing is left to learn is the payment term: a fact about which
+utility the agent has, not a consequence of its rationality (§1.5). If the thesis does
+not carry to trained systems, the kernel route through response authority stands
+independently.

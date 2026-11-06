@@ -49,6 +49,11 @@ definition.  Corrigibility is not an epistemic response to uncertainty about a h
 utility: her authority is part of what makes one history better than another, so fully
 updated deference is dissolved by the typing, not repaired (§5, Box 1).
 
+This page is the response-authority route. The examination of the anti-naturality
+argument itself — value change as belief change, with shutdown one point in a space of
+modifications — is on [Value change as belief change](Value-Change-as-Belief-Change)
+and does not rest on the kernel.
+
 ## 1. The objects
 
 **Histories.**  What happened: at each step the agent moves (a task component and a

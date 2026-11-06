@@ -85,6 +85,15 @@ Maintainer directives, in conversation on the preview, verbatim:
 >
 > I think research threads should maybe just have importance and clarity ratings
 
+> Doesn't the settlement interface connect to logical induction as well since it's a
+> direct generalization of that? In general, I think this format is exposing that the
+> repo descriptions aren't necessarily as deeply reflective of the interconnected
+> understanding of the research program as they could be. Can you (using subagents)
+> thoroughly re-interrogate all the explanations currently present to incorproate as
+> much of this understanding and clarity as possible? For example, you have all the
+> chats I had on claude.ai about these topics right? Look at those deeply and then do a
+> deep dive on the connections and all explanatory pages
+
 > Ok so a few things. First of all, each node on the map should have this hero panel
 > thing whereas i think most of them currently don't. At least, the ones where there is
 > enough content on the page where this can be evaluated that way (and maybe with the
