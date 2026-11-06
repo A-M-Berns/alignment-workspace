@@ -110,10 +110,12 @@ _DECISION_LINE = re.compile(r"<!-- decision: ([^;\s]+); touches: ([^;]*?)(; stat
 PRESETS = {"worst-case", "probabilistic", "expected-utility"}
 EVENT_KINDS = {"map-read", "trace", "pass", "estimate", "gestalt", "admit", "classify",
                "identify", "approve", "audit", "withdraw", "external", "retrospective",
-               "survey", "rule", "attribution", "revise", "priority"}
+               "survey", "rule", "attribution", "revise", "priority", "assessment"}
+AXES = {"reliability", "importance", "clarity"}   # an assessment's axis (2026-11-03)
+SCORES = {1, 2, 3, 4, 5}                                   # its score; vouch by matching it, challenge by differing
 ATTRIBUTION_VERDICTS = {"vouched", "disputed"}
 HOWS = {"said", "approved"}
-VIAS = {"chat", "obsidian", "voice"}
+VIAS = {"chat", "obsidian", "voice", "site"}   # site: an event composed on the research site and submitted over GitHub (2026-11-02)
 DIMENSIONS = {"valid", "ref", "both"}
 DISCHARGES = {"definitional", "proved-in-model", "restates-conclusion", "open"}
 ATTRIBUTIONS = {"author-stated", "formalizer-stated", "reconstructed"}
@@ -394,6 +396,7 @@ class Tree:
         self.decisions = {}       # DECISIONS.md anchors: {anchor: {date, title, status, touches}}
         self.rounds = {}          # state/rounds.json: {id or path: record}
         self.foundations = set()  # state/foundations.json ids
+        self.concepts = {}        # state/concepts.json id -> kind, assessment targets
 
     def rel(self, p):
         try:
@@ -489,6 +492,12 @@ def load_tree(root, registry=None):
             t.foundations = {f["id"] for f in json.loads(fpath.read_text()).get("foundations") or []}
         except (json.JSONDecodeError, KeyError, TypeError):
             t.warnings.append("state/foundations.json: not readable; foundation pointers resolve to nothing")
+    cpath = t.root / "state" / "concepts.json"
+    if cpath.is_file():
+        try:
+            t.concepts = {c["id"]: str(c.get("kind") or "") for c in json.loads(cpath.read_text()).get("concepts") or []}
+        except (json.JSONDecodeError, KeyError, TypeError):
+            t.warnings.append("state/concepts.json: not readable; concept targets resolve to nothing")
     # the claims registries every derivation reads (`registries:` in policy.yaml, paths from the repository root), plus one a
     # personal run names with --registry; a listed registry that is no file is refused (rule 10), never skipped
     regs = t.policy.get("registries")
@@ -699,6 +708,8 @@ def target_key(target):
         return ("proposal", target["proposal"])
     if "event" in target:
         return ("event", target["event"])
+    if "concept" in target:
+        return ("concept", target["concept"])
     return None
 
 
@@ -1301,6 +1312,19 @@ def lint(t):
             raise Refuse(1, path, f"target proposal {tk[1]!r} resolves to no proposal")
         if tk[0] == "event" and tk[1] not in eids:
             raise Refuse(1, path, f"target event {tk[1]!r} resolves to no event")
+        if tk[0] == "concept":
+            # the site map's concepts (state/concepts.json) take assessments and nothing
+            # else; prior work is cited, not scored, and a research thread takes
+            # importance and clarity but no reliability — a thread is a question, not a
+            # claim that holds up (rulings of 2026-11-05)
+            if e["kind"] != "assessment":
+                raise Refuse(2, path, "a concept target carries only an assessment")
+            if tk[1] not in t.concepts:
+                raise Refuse(1, path, f"target concept {tk[1]!r} resolves to no concept")
+            if t.concepts[tk[1]] == "work":
+                raise Refuse(5, path, f"concept {tk[1]!r} is prior work: cited, not scored")
+            if t.concepts[tk[1]] == "goal" and e.get("axis") == "reliability":
+                raise Refuse(5, path, f"concept {tk[1]!r} is a research thread: it takes importance and clarity, not reliability")
         vnode = tk[1] if tk[0] == "node" else tk[2] if tk[0] == "row" else None
         if vnode and isinstance(e.get("version"), int) and e["version"] > nodes[vnode]["version"]:
             raise Refuse(5, path, f"version {e['version']} is above {vnode}'s current version {nodes[vnode]['version']}")
@@ -1371,6 +1395,31 @@ def lint(t):
                 raise Refuse(5, path, "an attribution event carries verdict: vouched | disputed")
             if not e.get("ref"):
                 raise Refuse(5, path, "an attribution event carries ref, what the attribution was checked against")
+        if e["kind"] == "assessment":
+            # a score on one axis of a node or a map concept — reliability, importance or
+            # clarity, 1 to 5 — revision-bound through the event's version where the target
+            # has one. A human's carries the rationale in verbatim; an AI handle may seed
+            # one with its reasoning in gloss, marked as an AI number in every display
+            # until a human scores the axis. It mints no level and moves no number; it
+            # supersedes only its author's own earlier assessment of the same target and
+            # axis, so vouching is posting the same score, challenging a different one,
+            # and disagreement between humans stays visible
+            if tk[0] not in ("node", "concept"):
+                raise Refuse(5, path, "an assessment targets a node or a map concept")
+            if e.get("axis") not in AXES:
+                raise Refuse(5, path, f"an assessment carries axis: {' | '.join(sorted(AXES))}")
+            if not (isinstance(e.get("score"), int) and not isinstance(e.get("score"), bool) and e["score"] in SCORES):
+                raise Refuse(5, path, "an assessment carries score: an integer 1 to 5")
+            if is_human(t, e["by"]) and not str(e.get("verbatim") or "").strip():
+                raise Refuse(5, path, "a human's assessment carries the rationale in verbatim")
+            if not is_human(t, e["by"]) and not str(e.get("gloss") or "").strip():
+                raise Refuse(5, path, "an AI handle's assessment carries its reasoning in gloss")
+            sup = e.get("supersedes")
+            if sup is not None:
+                prev = eids.get(sup)
+                if (not prev or prev["by"] != e["by"] or prev.get("kind") != "assessment"
+                        or target_key(prev["target"]) != tk or prev.get("axis") != e.get("axis")):
+                    raise Refuse(5, path, "supersedes names the author's own earlier assessment of the same target and axis")
         if e["kind"] == "rule" and "rows" in e:
             # a ruling on a table's weights and conditionals: the maintainer's J 8 judgments, one event for every row
             cnode = nodes.get(tk[1]) if tk[0] == "node" else None
@@ -5108,6 +5157,10 @@ users:
     (g / "frame.yaml").write_text(frame)
     (g / "policy.yaml").write_text(policy)
     (g / "DESIGN-LOG.md").write_text("# Design log\n\n- 2026-10-02 change @ai — synthetic graph written for the checker's tests\n")
+    for rel, text in (kw.get("files") or {}).items():
+        p = root / rel
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(text)
     return root
 
 
@@ -5243,6 +5296,35 @@ NULL_INPUTS = [
     ("an event whose version is above its node's", 5, {"extra": {"h1": [
         f'{{"id": "h1-n5", "by": "@h1", "date": "2026-09-20", "rule": "2026-10-02.1", "via": "chat", "version": 2, "kind": "estimate", '
         '"target": {"node": "alt-2"}, "estimate": [0.5, 0.5], "reason": "x"}']}}),
+    # assessments (2026-11-03)
+    ("an AI assessment without its reasoning in gloss", 5, {"extra": {"ai": [
+        f'{{"id": "ai-n2", "by": "@ai", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "axis": "reliability", "score": 4}}']}}),
+    ("an assessment with an unknown axis", 5, {"extra": {"h1": [
+        f'{{"id": "h1-n12", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "axis": "vibes", "score": 4, "verbatim": "x"}}']}}),
+    ("an assessment with a score outside 1 to 5", 5, {"extra": {"h1": [
+        f'{{"id": "h1-n13", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "axis": "clarity", "score": 6, "verbatim": "x"}}']}}),
+    ("an assessment without its rationale", 5, {"extra": {"h1": [
+        f'{{"id": "h1-n14", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "axis": "importance", "score": 3}}']}}),
+    ("an assessment on a row", 5, {"extra": {"h1": [
+        f'{{"id": "h1-n15", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"row": ["cases-x", "pic-h"]}}, "axis": "reliability", "score": 3, "verbatim": "x"}}']}}),
+    ("an assessment superseding another handle's event", 5, {"extra": {
+        "h1": [f'{{"id": "h1-n16", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "axis": "reliability", "score": 4, "verbatim": "x"}}'],
+        "h2": [f'{{"id": "h2-n1", "by": "@h2", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "axis": "reliability", "score": 2, "verbatim": "x", "supersedes": "h1-n16"}}']}}),
+    ("an assessment superseding an assessment of a different axis", 5, {"extra": {"h1": [
+        f'{{"id": "h1-n17", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "axis": "reliability", "score": 4, "verbatim": "x"}}',
+        f'{{"id": "h1-n18", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"node": "alt-2"}}, "axis": "clarity", "score": 4, "verbatim": "x", "supersedes": "h1-n17"}}']}}),
+    ("an assessment targeting a concept no registry lists", 1, {"extra": {"h1": [
+        f'{{"id": "h1-n19", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"concept": "no-such-concept"}}, "axis": "reliability", "score": 4, "verbatim": "x"}}']}}),
+    ("a non-assessment event on a concept", 2, {"extra": {"h1": [
+        f'{{"id": "h1-n20", "by": "@h1", {_NB}, "kind": "estimate", "target": {{"concept": "no-such-concept"}}, "estimate": 0.5, "gloss": "x"}}']}}),
+    ("a reliability score on a research-thread concept", 5, {
+        "files": {"state/concepts.json": '{"concepts": [{"id": "prog", "kind": "goal", "title": "P", "blurb": "x"}]}'},
+        "extra": {"h1": [
+            f'{{"id": "h1-n21", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"concept": "prog"}}, "axis": "reliability", "score": 4, "verbatim": "x"}}']}}),
+    ("an assessment on a prior-work concept", 5, {
+        "files": {"state/concepts.json": '{"concepts": [{"id": "pw", "kind": "work", "title": "W", "blurb": "x"}]}'},
+        "extra": {"h1": [
+            f'{{"id": "h1-n22", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"concept": "pw"}}, "axis": "clarity", "score": 4, "verbatim": "x"}}']}}),
     ("a rate row below zero minutes", 10, {"edits": [("policy.yaml", "reread:   {S: 4", "reread:   {S: -1")]}),
     # owners, frames, wants, priorities, tasks
     ("a frame owned by an AI handle", 2, {"programme": True, "edits": [("nodes/prog.md", 'owner: "@h1"', 'owner: "@ai"')]}),

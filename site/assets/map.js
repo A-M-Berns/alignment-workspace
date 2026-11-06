@@ -452,7 +452,16 @@
     pinned = id;
     if (focusOn) focusOn(id);
     var m = DATA.concepts[id] || {};
-    card.innerHTML = '<p class="card-head">' + esc(m.t || id) + ' <span class="kind">' + esc(kindLabel(m.k)) + "</span></p>"
+    var hx = "";
+    if (m.ax) {
+      hx = '<div class="mini-hero">' + ["r", "i", "c"].filter(function (k2) { return m.ax[k2]; }).map(function (k2) {
+        var cell = m.ax[k2];
+        var name = { r: "reliability", i: "importance", c: "clarity" }[k2];
+        var star = cell[1].indexOf("ai") >= 0 ? '<span class="ai-star">*</span>' : "";
+        return '<span class="hx hx-' + name + " " + cell[1] + '"><span class="hx-num">' + esc(cell[0]) + star + '</span><span class="hx-label">' + name + "</span></span>";
+      }).join("") + "</div>";
+    }
+    card.innerHTML = '<p class="card-head">' + esc(m.t || id) + ' <span class="kind">' + esc(kindLabel(m.k)) + "</span></p>" + hx
       + (m.s ? "<p class=\"card-blurb\">" + esc(m.s) + "</p>" : "")
       + '<p class="card-meta muted">' + (m.prs ? m.prs + " merged PR(s) · " : "") + (m.w ? "wiki page" : "registry entry") + "</p>"
       + '<p class="card-actions"><button data-act="more">Read more</button></p>';
@@ -480,8 +489,9 @@
     panelBody.innerHTML = '<p class="muted">Loading ' + esc(m.t || id) + "…</p>";
     fetch(base(id) + "frag.html").then(function (r) { if (!r.ok) throw 0; return r.text(); }).then(function (h) {
       panelBody.innerHTML = h + '<p class="muted popup-foot"><a href="' + base(id) + '">Open the full page →</a></p>';
+      if (window.wireAssess) window.wireAssess(panelBody);
     }).catch(function () { panelBody.innerHTML = '<p>Could not load; <a href="' + base(id) + '">open the page</a>.</p>'; });
-    if (history.replaceState) history.replaceState(null, "", "/#c=" + seg(id));
+    if (history.replaceState) history.replaceState(null, "", "/map/#c=" + seg(id));
   }
   function closeFull() {
     modal.classList.remove("open");

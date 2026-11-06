@@ -40,6 +40,15 @@ maintainer's.
 below.** The next round dispatched from that conversation lands it as its first
 commit.
 
+- **Abram's read of the `assessment` event kind (2026-11-03).** The protocol gains a
+  human scoring event — `axis: reliability | importance | clarity`, `score` 1 to 5,
+  verbatim rationale, own-ledger supersession per node and axis — marked **Default** in
+  `graph/PROTOCOL.md` §5 and adopted on the dispatching maintainer's rulings above.
+  *Turns on:* external knowledge — the other maintainer owns several frames and works the
+  ledger protocol; whether the axes and the 1-5 scale fit his workflow is his to say, and
+  a vocabulary that ships wrong is hard to retire.
+  <!-- decision: open--abram-read-assessment-event; touches: none; status: open -->
+
 - **How epistemic status is represented per concept node on the map (2026-10-30).**
   The maintainer holds that per-node epistemic status will be very important on the
   research map and defers the representation choice. The data exists (registry classes
@@ -6909,3 +6918,92 @@ null-input self-test). Findings are filed on the standing issue *Freshness audit
 job holding `issues: write` under the Security section's five conditions, on the
 pin-bump pattern; the audit gates no merge. A finding is a request for a round — the
 answer to drift is dispatched curation, never silent automation of content.
+
+### 2026-11-02 — the assessment event: epistemic status as three derived views
+<!-- decision: 2026-11-02--assessment-event-three-views; touches: none -->
+
+**Maintainer ruling, taken in conversation on 2026-11-02.** Epistemic status on the site
+is three views of repository state, never one editable field: the registry's mechanical
+class (untouchable from any interface), contest state (derived from case, response and
+resolution artifacts — a response never resolves a case by existing), and human
+assessment — the new ledger event kind `assessment`, the one view a human changes from
+the site, through a generated event submitted over GitHub. Freeform comments are not part
+of the site; unstructured contact becomes a chatbot tool that files an issue.
+
+**Agent-decided, reversible** (adopted on the dispatch; the rejected alternatives in one
+line each): the stance vocabulary is `support | dispute | uncertain | abstain` with a
+required `verbatim` rationale, against free text with a head word (harder to validate and
+to render); aspects are `correctness | applicability | framing | usefulness`, against no
+aspect field (a dispute of a theorem's relevance would read as a dispute of the theorem);
+supersession is explicit and own-ledger only, against latest-by-timestamp (a race, and it
+would resolve disagreement between humans that should stay visible); assessments live in
+the graph ledgers, against a separate statuses file (a parallel ontology). Revision
+binding comes from the event's existing `version` field and staleness derivation.
+
+### 2026-11-03 — assessments are three scored axes; the front page is the map alone
+<!-- decision: 2026-11-03--assessment-three-axes-front-page-map-alone; touches: none -->
+
+**Maintainer ruling, taken in conversation on 2026-11-03.** The assessment simplifies to
+three axes — `reliability`, `importance`, `clarity` — each a score from 1 to 5 with the
+rationale in `verbatim`, revision-bound, superseding only the author's own earlier score
+on the same node and axis. Vouching for a standing score is posting the same number;
+challenging it is posting a different one; every human's active score renders beside the
+others. The stance-and-aspect vocabulary of the 2026-11-02 entry is replaced before any
+event used it. The front page is the map alone: the question line and the hand-written
+lede leave it, <!--historical-->`site/lede.md`<!--/historical--> and its binding check leave the tree, and the map hint
+drops its opening clause.
+
+### 2026-11-03 — AI handles may seed assessments
+<!-- decision: 2026-11-03--ai-seeds-assessments; touches: checkers/graph.py, graph/PROTOCOL.md -->
+
+**Agent-decided, reversible.** An AI handle may write an `assessment` with its reasoning
+in `gloss` — the estimate pattern, extended to the three axes: the map needs numbers to
+start from, and a grey AI seed a human can overwrite is cheaper than seventy bare
+dashes. The seed is marked as an AI number in every display until a human scores the
+axis, and the maintainer's color directive asked for exactly that state. Rejected
+alternative: the human-only form of the 2026-11-02/03 entries, which left every axis
+blank until a maintainer typed each score by hand. No AI seed mints a level, and a
+human's score displaces the seed in every derived view.
+
+### 2026-11-04 — assessments may target map concepts
+<!-- decision: 2026-11-04--assessments-target-concepts; touches: checkers/graph.py, graph/PROTOCOL.md, state/concepts.json -->
+
+**Agent-decided, reversible, on the maintainer's directive that every map node carry the
+hero and its interaction panel.** The map the site renders is the concept network of
+`state/concepts.json`, and 51 of its 71 concepts have no backing graph node, so a
+node-only assessment left most of the map unassessable. The `assessment` event now also
+takes `target: {concept: <id>}`, validated against the concept registry; no other event
+kind takes a concept target. A concept's displayed scores merge those on the concept with
+those on any graph node that backs it. Prior-work concepts carry no hero: they are cited,
+not assessed. Rejected alternative: filing a graph node for every concept, which would
+put 51 unargued nodes into the argument map to serve a display.
+
+### 2026-11-05 — research threads and prior work are not scored; /activity/
+<!-- decision: 2026-11-05--threads-unscored-activity-page; touches: checkers/graph.py, graph/PROTOCOL.md, site/ -->
+
+**Maintainer ruling, taken in conversation on 2026-11-05:** concepts like the overall
+research program are not scored, and the site points at where to look while leaving a
+reader free to bring their own attention; the stats page is the place recent activity
+shows, under a better name. The round's reading, agent-decided and reversible: the
+unscoreable class is the concept kinds `goal` (research threads — navigated) and `work`
+(prior work — cited), refused by the checker; the rejected alternative was excluding only
+the program node itself. `/activity/` replaces the stats holding page: contested axes,
+concepts scored important whose reliability has not caught up (a filter over named
+scores, never arithmetic on them), the unscored count, then the recent feed — each
+labelled an invitation, not an ordering.
+
+### 2026-11-05 — research threads take importance and clarity; AI numbers are starred; seed refresh is maintenance
+<!-- decision: 2026-11-05--threads-two-axes-ai-stars-seed-maintenance; touches: checkers/graph.py, graph/PROTOCOL.md, tests/freshness.py, site/ -->
+
+**Maintainer rulings, taken in conversation on 2026-11-05.** A research thread takes
+importance and clarity but no reliability — a thread is a question, not a claim that
+holds up; the checker refuses a reliability score on one, and the eleven threads are
+seeded on their two axes. An AI-generated number is starred in every display, with
+"*AI-generated score / add the first human rating" beneath the hero numbers, and the
+editor's note of a standing AI score renders muted. Refreshing the AI seeds joins the
+weekly freshness audit: an unscored axis of a scoreable concept and a seed given against
+an earlier version of its backing claim are findings. The front page carries a type
+sampler of nine vendored candidate body faces (choice persisted locally, applied
+site-wide) for the maintainer's font decision; the chosen face replaces Lexend and the
+rest leave.
+

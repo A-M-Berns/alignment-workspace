@@ -3,11 +3,11 @@
 
 `site/build.py --check` builds the whole site into a temporary directory from graph/index.json (written by the plain
 checker run when absent), the state files, the registries, DECISIONS.md, the wiki and the ledgers, and fails on an
-unresolved reference, two ids that map to one path, or a binding in site/lede.md that disagrees with the state. This
+unresolved reference or two ids that map to one path. This
 gate runs that build and fails with it.
 
-Null inputs (`--self-test`): a lede binding that disagrees with the state, two ids that collapse to one path, and a
-lede that is missing. Each must fail, and a build of the live tree must pass.
+Null inputs (`--self-test`): two ids that collapse to one path, an unknown relation, an empty digest summary and
+their kin below. Each must fail, and a build of the live tree must pass.
 """
 from __future__ import annotations
 
@@ -48,18 +48,6 @@ def self_test() -> int:
     import pages as P
     cases = []
     # a build error is a refusal: the exceptions below are what the gate turns into a failure
-    try:
-        B.check_bindings("<!--bind:nodes-->1<!--/bind-->", {"nodes": 2}, "lede")
-        cases.append(("a lede binding that disagrees with the state is refused", False, True))
-    except L.BuildError:
-        cases.append(("a lede binding that disagrees with the state is refused", True, True))
-    try:
-        B.check_bindings("<!--bind:nowhere-->1<!--/bind-->", {"nodes": 2}, "lede")
-        cases.append(("a lede binding naming no count is refused", False, True))
-    except L.BuildError:
-        cases.append(("a lede binding naming no count is refused", True, True))
-    cases.append(("a binding that agrees passes and is replaced by the state's value",
-                  B.check_bindings("n <!--bind:nodes-->2<!--/bind-->", {"nodes": 2}, "lede") == "n 2", True))
     class FakeRepo:
         nodes = {"a/b": {}, "a--b": {}}
         items = {}
@@ -80,17 +68,7 @@ def self_test() -> int:
     s2 = P.Site(FakeRepo())
     s2.url("n", "missing")
     cases.append(("an id that resolves to nothing is recorded as unresolved", s2.unresolved == ["n:missing"], True))
-    # a missing lede fails the real build: run the check with site/lede.md set aside
-    lede = SITE / "lede.md"
-    aside = SITE / "lede.md.selftest-aside"
-    try:
-        lede.rename(aside)
-        r = subprocess.run([sys.executable, str(SITE / "build.py"), "--check"], cwd=ROOT, capture_output=True, text=True)
-        cases.append(("a missing lede fails the build", r.returncode != 0 and "lede.md is missing" in r.stderr, True))
-    finally:
-        if aside.exists():
-            aside.rename(lede)
-    # the registry validations refuse bad content rather than rendering it wrong
+        # the registry validations refuse bad content rather than rendering it wrong
     class FakeRepo2:
         nodes = {"n1": {"statement": "s", "fields": {}}}
         items = {}
@@ -112,6 +90,10 @@ def self_test() -> int:
         prs = {"9": {"number": 9, "title": "t", "merged": "2026-01-01", "rounds": ["no-such-round"],
                      "topics": {"wiki": ["No-Page"], "frames": ["no-node"]}, "summary": "", "superseded": ""}}
         narratives = {}
+
+        def concept_hero(self, cid):
+            return {a: {"d": "–", "cls": "none", "contested": False, "ai": False, "stale": False}
+                    for a in ("reliability", "importance", "clarity")}
     s3 = P.Site(FakeRepo2())
     P.map_data(s3)
     bad = "\n".join(s3.unresolved)

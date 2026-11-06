@@ -54,7 +54,8 @@ class Site:
 
 def layout(site: Site, title: str, body: str, crumbs: list[tuple[str, str]] | None = None, subtitle: str = "") -> str:
     r = site.repo
-    nav = '<a href="/">map</a><a href="https://github.com/A-M-Berns/alignment-workspace">repo</a>'
+    nav = ('<a href="/map/">map</a><a href="/chat/">chatbot</a><a href="/activity/">activity</a>'
+           '<a href="https://github.com/A-M-Berns/alignment-workspace">repo</a>')
     crumb_html = ""
     if crumbs:
         crumb_html = '<nav class="crumbs">' + " › ".join(f'<a href="{u}">{esc(t)}</a>' for t, u in crumbs) + "</nav>"
@@ -65,7 +66,7 @@ def layout(site: Site, title: str, body: str, crumbs: list[tuple[str, str]] | No
 <form class="search" action="/search/" method="get"><input type="search" name="q" placeholder="search ids, statements, titles" aria-label="search"></form></header>
 <main>{crumb_html}<h1>{esc(title)}</h1>{f'<p class="subtitle">{subtitle}</p>' if subtitle else ''}
 {body}
-</main><footer>Built from commit <code>{esc(r.commit[:12])}</code> ({esc(r.commit_date)}) by <code>python3 -m site.build</code>; a render of the repository, never a second source. Structure and human events only; the ranking is a lens, shown on <a href="/ranking/">/ranking/</a>.</footer>
+</main>
 </body></html>"""
 
 
@@ -143,6 +144,125 @@ def render_wiki(site: Site, name: str) -> str:
     text = WIKI_MD_LINK.sub(lambda m: f"]({site.url('wiki', m.group(1))})" if m.group(1) in r.wiki else m.group(0), text)
     out = md.render(text, wiki_link_resolver(site), heading_shift=1)
     return re.sub("\x01(\\d+)\x01", lambda m: anchors[int(m.group(1))], out)
+
+
+AXES = ("reliability", "importance", "clarity")
+SCORES = (1, 2, 3, 4, 5)
+
+
+def assess_block(site: Site, acts: list, h: dict, target: dict, version, url: str, axes: tuple = AXES) -> str:
+    """The hero is the scoring control: per axis the standing number (a vouch button when
+    one stands), a status line, and a 1-5 picker in the axis ramp. Picking a number opens
+    the one shared editor beneath — vouch or challenge is derived from the number against
+    the standing score, never asked — and signing produces a receipt the reader copies
+    into their own ledger over GitHub. The site accepts no write."""
+    import json as _json
+    from urllib.parse import quote
+    r = site.repo
+    by_axis: dict = {}
+    active = {}
+    for e in acts:
+        by_axis.setdefault(str(e.get("axis")), []).append(e)
+        if not e["_ai"]:
+            active[str(e.get("by")) + "|" + str(e.get("axis"))] = str(e.get("id"))
+    cells, contested, standing = [], [], {}
+    for axis in axes:
+        c = h[axis]
+        hums = [e for e in (by_axis.get(axis) or []) if not e["_ai"]]
+        standing[axis] = {"d": c["d"], "ai": c["ai"], "contested": c["contested"]}
+        if c["contested"]:
+            status, contested = "human disagreement", contested + [axis]
+        elif hums:
+            status = f'{len(hums)} contributor{"s" if len(hums) != 1 else ""}'
+        elif c["ai"]:
+            status = '<span class="ai-note">*AI-generated score<br>add the first human rating</span>'
+        else:
+            status = "no human score yet"
+        if c["stale"]:
+            status += " · on an earlier revision"
+        cur = {int(e["score"]) for e in hums}
+        segs = "".join(
+            f'<button type="button" class="seg{" cur" if n in cur else ""}" data-axis="{axis}" data-score="{n}">{n}</button>'
+            for n in SCORES)
+        star = '<span class="ai-star">*</span>' if c["ai"] else ""
+        num = (f'<button type="button" class="hx-num" data-axis="{axis}" data-score="{esc(c["d"])}" '
+               f'title="vouch {esc(c["d"])}">{esc(c["d"])}</button>'
+               if c["d"].isdigit() and not c["ai"] else f'<span class="hx-num">{esc(c["d"])}{star}</span>')
+        cells.append(f'<div class="hx hx-{axis} {c["cls"]}">{num}<span class="hx-label">{axis}</span>'
+                     f'<span class="hx-status">{status}</span><div class="seg-row">{segs}</div></div>')
+    note = ""
+    if contested:
+        note = ('<p class="contested-note">' + " and ".join(contested).capitalize()
+                + (" carry different human scores" if len(contested) > 1 else " carries two different human scores")
+                + " — read the reasons below, then add or revise yours.</p>")
+    tkind, tid = next(iter(target.items()))
+    cfg = {"target": target, "version": version, "rule": str(r.policy.get("anchor_rules") or ""),
+           "active": active, "handles": sorted(r.human), "standing": standing}
+    issue_title = quote(f"[{tkind}] {tid}: assessment")
+    issue_body = quote(f"{tkind}: {tid}\nurl: {url}\nverb: assessment\n\n"
+                       "## Your score (1-5) on reliability, importance or clarity, and your rationale\n\n")
+    editor = (
+        f'<form class="assess-editor" data-assess="{esc(_json.dumps(cfg, separators=(",", ":")))}" hidden>'
+        '<p class="ed-head"></p>'
+        '<label>as <select class="as-handle"></select></label>'
+        '<textarea class="as-verbatim" rows="2" maxlength="2000" placeholder="one clear sentence: what makes this score fit?"></textarea>'
+        '<p class="ed-note muted"></p>'
+        '<p><button type="button" class="as-make">Sign the move</button></p>'
+        '</form>'
+        '<div class="assess-receipt" hidden>'
+        '<p class="rc-line"></p>'
+        '<pre class="as-out"></pre>'
+        '<p><button type="button" class="as-copy">Copy event</button> '
+        '<a class="as-edit" target="_blank" rel="noopener">open your ledger on GitHub ↗</a> · '
+        f'<a href="https://github.com/A-M-Berns/alignment-workspace/issues/new?title={issue_title}&amp;body={issue_body}">no handle? propose it as an issue</a></p>'
+        '<p class="rc-status muted">Prepared locally — not yet submitted.</p>'
+        '</div>')
+    return f'<section class="hero cols-{len(axes)}">' + "".join(cells) + "</section>" + note + editor
+
+
+def scores_html(site: Site, acts: list) -> str:
+    """The standing scores and their rationales, per axis — the argument so far. AI seeds
+    render subdued; a stale score says so."""
+    by_axis: dict = {}
+    for e in acts:
+        by_axis.setdefault(str(e.get("axis")), []).append(e)
+    parts = []
+    for axis in AXES:
+        evs = by_axis.get(axis) or []
+        if not evs:
+            continue
+        rows = []
+        for e in evs:
+            who = site.link("by", str(e.get("by")).lstrip("@")) if not e["_ai"] else f'<span class="muted">{esc(str(e.get("by")))} (AI)</span>'
+            stale = ' <span class="tag">on an earlier revision</span>' if e.get("_stale") else ""
+            why = esc(str(e.get("verbatim") or e.get("gloss") or ""))
+            rows.append(f'<li><span class="score score-{esc(str(e.get("score")))}">{esc(str(e.get("score")))}</span> {who}, {esc(str(e.get("date")))}{stale}<br><em>{why}</em></li>')
+        parts.append(f'<div class="ax-scores"><span class="axis">{axis}</span><ul class="assessments">' + "".join(rows) + "</ul></div>")
+    return "".join(parts)
+
+
+def context_html(site: Site, x: str) -> str:
+    """The context panel beneath the hero: the facts that are not challengeable — the kernel
+    badge and registry class where a formal result backs the node, author, version, the
+    failure-story tables — and the standing scores with their rationales."""
+    r = site.repo
+    N = r.nodes[x]
+    parts = ['<section class="context"><h2>Context</h2><ul class="ctx-facts">']
+    entry = r.record_entry(x) if N.get("formal_result") else None
+    if entry:
+        parts.append(f'<li><span class="kernel-badge">kernel-checked</span> {site.link("claims", entry["id"])}: '
+                     f'class <code>{esc(entry.get("class", ""))}</code>, status <code>{esc(entry.get("status", ""))}</code> — the bridge card below holds the record</li>')
+    tables = [x] if N.get("kind") == "cases" else [c for c in N["children"] if r.nodes[c].get("kind") == "cases"]
+    if tables:
+        parts.append("<li>failure-story tables: " + "; ".join(
+            f'{site.link("n", cid)} ({sum(1 for rw in r.nodes[cid].get("rows") or [] if not rw.get("residual"))} rows)' for cid in tables) + "</li>")
+    parts.append(f'<li>author {esc(str(N.get("author")))}'
+                 + (", drafted" if r.drafted(x) else "")
+                 + f'; Statement version {esc(str(N.get("version")))}</li>')
+    parts.append("</ul>")
+    parts.append(scores_html(site, r.assessments(x)))
+    parts.append("</section>")
+    return "".join(parts)
 
 
 def events_html(site: Site, events: list) -> str:
@@ -306,6 +426,9 @@ def node_body(site: Site, x: str) -> tuple[str, list[tuple[str, str]], str]:
             name = page.split("/")[-1][:-3]
             if name in r.wiki:
                 body.append(f"<section><h2>Narrative: {site.link('wiki', name)}</h2><div class=\"wiki\">{render_wiki(site, name)}</div></section>")
+    body.insert(0, context_html(site, x))
+    body.insert(0, assess_block(site, r.assessments(x), r.hero(x),
+                                {"node": x}, N.get("version"), f"/n/{Site.seg(x)}/"))
     body.append(f"<section><h2>Statement</h2><p class=\"statement\">{esc(N['statement'].strip())}</p></section>")
     if N.get("source"):
         body.append(f"<section><h2>Source</h2>{md.render(N['source'], wiki_link_resolver(site))}</section>")
@@ -491,34 +614,87 @@ def concept_side(site: Site, cid: str) -> str:
     return "\n".join(out)
 
 
-def concept_full(site: Site, cid: str) -> str:
-    """Every concept's full view, one template: title and kind, the registry blurb as the lede, the
-    source where one exists, then two panes — the long-form content (the wiki page, or the map
-    references) beside the connections and merged work."""
+def concept_context(site: Site, cid: str) -> str:
+    """The concept's context panel, directly under its hero and editor: the
+    non-challengeable facts — the kernel badge and registry class where a formal claim
+    backs it, the claim on the map with its failure-story tables — and the standing
+    scores with their rationales."""
+    r = site.repo
+    e = r.concepts[cid]
+    refs = [x for x in e.get("refs") or [] if x in r.nodes]
+    parts = ['<section class="context"><h2>Context</h2><ul class="ctx-facts">']
+    for x in refs:
+        N = r.nodes[x]
+        entry = r.record_entry(x) if N.get("formal_result") else None
+        if entry:
+            parts.append(f'<li><span class="kernel-badge">kernel-checked</span> {site.link("claims", entry["id"])}: '
+                         f'class <code>{esc(entry.get("class", ""))}</code>, status <code>{esc(entry.get("status", ""))}</code></li>')
+        tables = [x] if N.get("kind") == "cases" else [c for c in N["children"] if r.nodes[c].get("kind") == "cases"]
+        tbl = ("; failure-story tables: " + ", ".join(
+            f'{site.link("n", cid2)} ({sum(1 for rw in r.nodes[cid2].get("rows") or [] if not rw.get("residual"))} rows)'
+            for cid2 in tables)) if tables else ""
+        parts.append(f'<li>the claim on the map: {site.link("n", x)}, Statement version {esc(str(N.get("version")))}{tbl}</li>')
+    if not refs:
+        parts.append('<li class="muted">no formal claim backs this concept yet; a score here is a reading of the writeup and the merged work</li>')
+    parts.append("</ul>")
+    parts.append(scores_html(site, r.concept_assessments(cid)))
+    parts.append("</section>")
+    return "".join(parts)
+
+
+def concept_axes(e: dict) -> tuple:
+    """Prior work is cited, not scored; a research thread takes importance and clarity but
+    no reliability — a thread is a question, not a claim that holds up (rulings of
+    2026-11-05). The concrete content takes all three axes."""
+    if e.get("kind") == "work":
+        return ()
+    if e.get("kind") == "goal":
+        return ("importance", "clarity")
+    return AXES
+
+
+def concept_version(site: Site, cid: str) -> int:
+    r = site.repo
+    refs = [x for x in (r.concepts[cid].get("refs") or []) if x in r.nodes]
+    return (r.nodes[refs[-1]].get("version") or 1) if refs else 1
+
+
+def concept_full(site: Site, cid: str, with_head: bool = True) -> str:
+    """Every concept's one Read More page: title and kind, the hero, the context panel with
+    the controls, the registry blurb as the lede, then the long-form content (the wiki
+    page, or the backing claim's Statement) beside the connections and merged work. Prior
+    work carries no hero: it is someone else's published result, cited rather than
+    assessed here."""
     r = site.repo
     e = r.concepts[cid]
     kind_label_ = r.concept_kinds.get(e.get("kind", ""), e.get("kind", ""))
-    head = f'<p class="frag-head">{site.link("concepts", cid, e.get("title", cid))} <span class="kind">{esc(kind_label_)}</span></p>'
+    head = (f'<p class="frag-head">{site.link("concepts", cid, e.get("title", cid))} <span class="kind">{esc(kind_label_)}</span></p>'
+            if with_head else "")
     lede = f'<p class="concept-lede">{esc(str(e.get("blurb") or ""))}</p>'
-    src = f'<p class="muted"><a href="{esc(e["url"])}">{esc(e["url"])}</a></p>' if e.get("url") else ""
+    axes = concept_axes(e)
+    hero = assess_block(site, r.concept_assessments(cid), r.concept_hero(cid),
+                        {"concept": cid}, concept_version(site, cid), site.url("concepts", cid), axes) if axes else ""
+    ctx = concept_context(site, cid) if axes else ""
+    refs = [x for x in e.get("refs") or [] if x in r.nodes]
     if e.get("wiki"):
         main = f"<div class=\"wiki\">{render_wiki(site, e['wiki'])}</div>"
+    elif refs:
+        main = "<section><h2>The statement</h2>" + "".join(
+            f"<blockquote>{esc(r.nodes[x]['statement'].strip())}</blockquote>" for x in refs) + "</section>"
     else:
-        refs = [x for x in e.get("refs") or [] if x in r.nodes]
-        if refs:
-            main = "<section><h2>On the map</h2><ul class=\"listing\">" + "".join(
-                f"<li>{site.link('n', x)}: {esc(r.nodes[x]['statement'].strip()[:160])}</li>" for x in refs) + "</ul></section>"
-        else:
-            main = '<p class="muted">No longer-form page yet; the connections and merged work at right are the record.</p>'
-    return f'{head}{lede}{src}<div class="pane2"><div class="pane-main">{main}</div><aside class="pane-side">{concept_side(site, cid)}</aside></div>'
+        main = '<p class="muted">No longer-form page yet; the connections and merged work at right are the record.</p>'
+    return (f'{head}{hero}{ctx}{lede}<div class="pane2"><div class="pane-main">{main}</div>'
+            f'<aside class="pane-side">{concept_side(site, cid)}</aside></div>')
 
 
 def concept_body(site: Site, cid: str) -> str:
-    return concept_full(site, cid)
+    return concept_full(site, cid, with_head=False)
 
 
 def concept_page(site: Site, cid: str) -> str:
-    return layout(site, site.repo.concepts[cid].get("title", cid), concept_body(site, cid), [("map", "/")])
+    e = site.repo.concepts[cid]
+    kl = site.repo.concept_kinds.get(e.get("kind", ""), e.get("kind", ""))
+    return layout(site, e.get("title", cid), concept_body(site, cid), [("map", "/map/")], subtitle=esc(kl))
 
 
 def concept_frag(site: Site, cid: str) -> str:
@@ -604,11 +780,82 @@ def handle_page(site: Site, handle: str) -> str:
     return layout(site, h, "\n".join(body), [("by", "/by/")])
 
 
-def front_page(site: Site, lede_html: str, feed_rows: list[str]) -> str:
+def landing_page(site: Site) -> str:
+    """The landing: the Wang-tiling generator behind the wordmark and one tile per part of
+    the site. The animation is the maintainer's own, vendored from their personal site;
+    its controls exist hidden because the engine looks them up."""
+    v = esc(site.repo.commit[:12])
+    tiles = (('map', '/map/'),
+             ('chatbot', '/chat/'),
+             ('activity', '/activity/'),
+             ('repo', 'https://github.com/A-M-Berns/alignment-workspace'))
+    cards = "".join(
+        f'<a class="tile" href="{esc(u)}"><span class="tile-name">{esc(n)}</span></a>'
+        for n, u in tiles)
+    return f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alignment Workspace</title><link rel="stylesheet" href="/assets/style.css?v={v}">
+<script type="module" src="/assets/landing/wang.js?v={v}"></script>
+<script defer src="/assets/landing/dominant.js?v={v}"></script></head>
+<body class="landing"><canvas id="wang-tiles" class="wang-tiles" aria-hidden="true"></canvas>
+<div id="wang-boost" class="wang-boost" aria-hidden="true"><span></span><span></span></div>
+<div class="wang-stubs" hidden>
+<input id="wang-fp" type="text"><button id="wang-fp-copy" type="button"></button>
+<select id="wang-shape"></select><select id="wang-skin"></select>
+<input id="wang-auto-reset" type="checkbox" checked>
+<button id="wang-info" type="button"></button><button id="wang-reset" type="button"></button>
+<span id="wang-label"></span><dialog id="wang-about"></dialog>
+</div>
+<main class="landing-main">
+<h1 class="landing-word">Alignment Workspace</h1>
+<nav class="tiles">{cards}</nav>
+<div class="type-sampler">
+<span class="ts-label">type</span>
+<button type="button" data-font="">Lexend</button>
+<button type="button" data-font="Inter">Inter</button>
+<button type="button" data-font="Source Sans 3">Source Sans 3</button>
+<button type="button" data-font="IBM Plex Sans">IBM Plex Sans</button>
+<button type="button" data-font="Space Grotesk">Space Grotesk</button>
+<button type="button" data-font="Manrope">Manrope</button>
+<button type="button" data-font="Figtree">Figtree</button>
+<button type="button" data-font="Public Sans">Public Sans</button>
+<button type="button" data-font="Albert Sans">Albert Sans</button>
+</div>
+</main>
+<link rel="stylesheet" href="/assets/fonts/candidates.css?v={v}">
+<script>
+(function () {{
+  "use strict";
+  function apply(f) {{
+    document.documentElement.style.setProperty("--sans", (f ? '"' + f + '", ' : '"Lexend Variable", ') + "-apple-system, BlinkMacSystemFont, sans-serif");
+    document.querySelectorAll(".type-sampler button").forEach(function (b) {{
+      b.classList.toggle("on", b.getAttribute("data-font") === f);
+      b.style.fontFamily = b.getAttribute("data-font") ? '"' + b.getAttribute("data-font") + '"' : '"Lexend Variable"';
+    }});
+  }}
+  var saved = "";
+  try {{ saved = localStorage.getItem("aw-font") || ""; }} catch (e) {{}}
+  apply(saved);
+  document.querySelectorAll(".type-sampler button").forEach(function (b) {{
+    b.addEventListener("click", function () {{
+      var f = b.getAttribute("data-font");
+      try {{ f ? localStorage.setItem("aw-font", f) : localStorage.removeItem("aw-font"); }} catch (e) {{}}
+      apply(f);
+    }});
+  }});
+}})();
+</script>
+</body></html>"""
+
+
+def holding_page(site: Site, title: str, line: str) -> str:
+    return layout(site, title, f'<p class="muted">{esc(line)}</p>')
+
+
+def front_page(site: Site, feed_rows: list[str]) -> str:
     """The map, zoomed out: /assets/map.js lays /assets/map.json out as nested regions and zooms; a node opened on the
-    canvas shows its /n/<id>/frag.html in the panel. Without JavaScript the lines render as links below the lede."""
+    canvas shows its /n/<id>/frag.html in the panel. Without JavaScript the lines render as links below the map."""
     r = site.repo
-    top = r.index["frame"]
     prog = r.nodes.get("the-program")
     lines = [rt["id"] for rt in (prog["frame"]["roots"] if prog else [])]
     noscript = ("<noscript><section><h2>The lines</h2><ul>" + "".join(
@@ -617,12 +864,11 @@ def front_page(site: Site, lede_html: str, feed_rows: list[str]) -> str:
     body = ['<div class="map-full"><div class="map-stage">'
             '<svg id="map" role="application" aria-label="the argument map"></svg>'
             '<div class="map-side overlay"><span id="map-legend"></span></div>'
-            '<span class="map-hint overlay muted">everything feeds the program at the centre · drag to pan · scroll to zoom · click a node · esc backs out</span>'
+            '<span class="map-hint overlay muted">drag to pan · scroll to zoom · click a node · esc backs out</span>'
             '<div id="map-card" hidden></div>'
             '<div id="map-modal"><div id="map-panel"><button id="map-panel-close" aria-label="close">×</button><div id="map-panel-body"></div></div></div>'
             '</div></div>',
             noscript,
-            f'<div class="below-map"><p class="question">{esc(top["question"])}</p>{lede_html}</div>',
             "<div class=\"below-map\"><details class=\"front-feed\"><summary>Recent in the feed</summary><ul class=\"feed\">" + "".join(feed_rows[:12]) + "</ul><p><a href=\"/feed/\">The whole feed</a>.</p></details></div>"]
     return layout(site, "Research map", "\n".join(body)).replace("</head>", f'<script defer src="/assets/map.js?v={esc(site.repo.commit[:12])}"></script></head>').replace('<form class="search"', '<button id="map-fit" type="button">fit map</button><form class="search"')
 
@@ -755,8 +1001,13 @@ def map_data(site: Site) -> dict:
         for x in e.get("refs") or []:
             if x not in r.nodes:
                 site.unresolved.append(f"concepts:{cid}:ref:{x}")
+        hx = None
+        axes = concept_axes(e)
+        if axes:
+            hh = r.concept_hero(cid)
+            hx = {a[0]: [hh[a]["d"], hh[a]["cls"]] for a in axes}
         meta[cid] = {"k": e.get("kind", ""), "w": e.get("wiki") or "", "t": e.get("title", cid),
-                     "s": str(e.get("blurb") or ""), "prs": prs_of.get(cid, 0), "d": ds[cid],
+                     "s": str(e.get("blurb") or ""), "prs": prs_of.get(cid, 0), "d": ds[cid], "ax": hx,
                      "imp": 1.0 if cid == "the-program" else round(0.45 * raw[cid] / top + 0.55 * pct(raw[cid]), 3)}
     return {"items": list(r.concepts), "concepts": meta, "kinds": r.concept_kinds, "links": links}
 
@@ -778,6 +1029,49 @@ def feed_rows(site: Site) -> list[str]:
 
 def feed_page(site: Site, rows: list[str]) -> str:
     return layout(site, "Feed", "<p class=\"muted\">Rounds, claims registered and decisions landed, by date, from state/rounds.json, the registries' origin rounds and the decision anchors.</p><ul class=\"feed\">" + "".join(rows) + "</ul>")
+
+
+def activity_page(site: Site, rows: list[str]) -> str:
+    """Where to look, then what just happened. The pointers are derived from the standing
+    scores — contested axes first, then concepts scored important whose reliability has
+    not caught up, then the unscored — and they are invitations, not an ordering: the map
+    is the whole record, and attention brought from outside it is the point."""
+    r = site.repo
+    contested, behind, unscored = [], [], []
+    for cid, e in r.concepts.items():
+        axes = concept_axes(e)
+        if not axes:
+            continue
+        h = r.concept_hero(cid)
+        link = site.link("concepts", cid, e.get("title", cid))
+        star = lambda c: "*" if c["ai"] else ""
+        axes_c = [a for a in axes if h[a]["contested"]]
+        if axes_c:
+            contested.append(f'<li>{link} — {", ".join(axes_c)} contested</li>')
+        if "reliability" in axes:
+            imp, rel = h["importance"], h["reliability"]
+            if imp["d"].isdigit() and int(imp["d"]) >= 4 and (not rel["d"].isdigit() or int(rel["d"]) < int(imp["d"])):
+                behind.append(f'<li>{link} — importance {esc(imp["d"])}{star(imp)}, reliability {esc(rel["d"])}{star(rel)}</li>')
+        if all(h[a]["d"] == "–" for a in axes):
+            unscored.append(link)
+    body = ["<section><h2>Where to look</h2>"]
+    body.append("<h3>Disagreements to read</h3>")
+    body.append("<ul class=\"listing\">" + "".join(contested) + "</ul>" if contested
+                else '<p class="muted">No axis is contested right now.</p>')
+    body.append("<h3>Scored important, reliability behind</h3>")
+    body.append("<ul class=\"listing\">" + "".join(behind)
+                + '</ul><p class="muted">* an AI-generated score no human has rated yet.</p>' if behind
+                else '<p class="muted">Nothing currently sits in this gap.</p>')
+    body.append("<h3>Unscored</h3>")
+    if unscored:
+        body.append(f'<p>{len(unscored)} concepts carry no score on any axis yet — among them '
+                    + ", ".join(unscored[:6]) + ".</p>")
+    else:
+        body.append('<p class="muted">Every scoreable concept carries at least one score.</p>')
+    body.append('<p class="muted">These are invitations, not an ordering — the <a href="/map/">map</a> is the whole record, and your own read of it is the contribution.</p></section>')
+    body.append("<section><h2>Recent</h2><ul class=\"feed\">" + "".join(rows[:25])
+                + '</ul><p><a href="/feed/">The whole feed</a>.</p></section>')
+    return layout(site, "Activity", "".join(body))
 
 
 def spine_page(site: Site) -> str:

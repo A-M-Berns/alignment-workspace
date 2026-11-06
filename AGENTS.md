@@ -936,7 +936,8 @@ says what a person has or has not read, done, drafted, started or settled
 answer), every acceptance of a draft, every vetting event (map-read, trace,
 pass), every `attribution` verdict (the user, not the node's author, read
 the cited source and says the attribution is honest or disputes it), every
-withdrawal, every `revise` (the user revised a node's Statement by hand),
+withdrawal, every `revise` (the user revised a node's Statement by hand), every
+`assessment` (the user's score on an axis of a node or map concept, their rationale in `verbatim`),
 every `priority` word on a want, and every want: a want is filed under its
 user's handle as owner, from what the user said in the session or, with
 `filed_from: quote`, from words the user wrote in a public document, and it
@@ -1073,7 +1074,7 @@ decision reads.
 an unmapped handle, an AI handle that is not its model's slug (an AI's handle
 is derived from the model string, never chosen; the two minted before
 2026-10-24 are marked `legacy`), an AI handle's level-minting event, acceptance, tag,
-`revise` or `priority`, an AI handle's number without its reasoning, or an
+`revise` or `priority`, an AI handle's number or assessment without its reasoning, or an
 AI handle's number on a want; a priority word by anyone but the want's
 owner; a withdrawal of someone else's event; a regenerated file edited by
 hand; a proposal applied without a counted `approve`; a frame without a
@@ -1094,15 +1095,17 @@ and the repository as a static site: `python3 site/build.py` reads graph/index.j
 page about the ranking, `state/*.json`, the claims registries, the anchors of
 `DECISIONS.md`, the wiki source, `graph/policy.yaml` and the human ledgers, and writes
 `_site/` (gitignored). The site is a render and never a second source: nothing on it is
-typed by hand except `site/lede.md`, the front page's one paragraph, binding-checked
-against the state at every build. The front page is the map itself, one full-viewport
+typed by hand. The front page is the map itself, one full-viewport
 pannable network graph (`site/assets/map.js` over `/assets/map.json`): the concept
 network of `state/concepts.json` — goals, new constructions, mathematical objects, prior
 work and philosophical concepts, colour-coded by kind, edges hoverable for their
 relation, every node opening a popup that ends in its tagged merged work from
-`state/prs.json`; every node page carries the intake verbs, each a
-prefilled GitHub issue a maintainer round sweeps into ledger events (ruling S5,
-2026-10-30). Every node, item,
+`state/prs.json`; every node page carries an epistemic-status
+panel — the registry's class, the contest surface, the active human assessments with
+stale ones marked — and a composer that generates an exact `assessment` ledger event for
+the reader to submit over GitHub on their own account (the site accepts no write; ruling
+of 2026-11-02), beside the intake verbs, each a prefilled GitHub issue a maintainer round
+sweeps into ledger events (ruling S5, 2026-10-30). Every node, item,
 decision anchor, round, registry id, wiki page and handle has exactly one path, derived
 from its id (`site/README.md` is the contract); a build fails on a reference that does
 not resolve, two ids that map to one path, or a binding that disagrees with the state,

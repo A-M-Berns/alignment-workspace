@@ -143,6 +143,9 @@ class Repo:
         self.events_by_node: dict[str, list] = {}
         for e in self.events:
             t = e.get("target") or {}
+            if t.get("concept"):
+                self.events_by_node.setdefault("concept:" + t["concept"], []).append(e)
+                continue
             x = t.get("node") or (t.get("row") or [None])[0]
             if x:
                 self.events_by_node.setdefault(x, []).append(e)
@@ -185,6 +188,68 @@ class Repo:
                 self.frame_parent[x] = roots[0] if roots else None
 
     # ---- helpers the pages use
+    def assessments(self, x: str) -> list:
+        """The active human assessments of node x: not withdrawn, not superseded by their
+        author's later one, each marked _stale when given against an earlier Statement
+        version. Sorted by (date, id)."""
+        evs = [e for e in self.events_by_node.get(x, []) if e.get("kind") == "assessment" and e.get("by") in self.handles]
+        withdrawn = {(e.get("target") or {}).get("event") for e in self.events if e.get("kind") == "withdraw"}
+        superseded = {e.get("supersedes") for e in evs if e.get("supersedes")}
+        cur = (self.nodes.get(x) or {}).get("version")
+        out = []
+        for e in evs:
+            if e.get("id") in withdrawn or e.get("id") in superseded:
+                continue
+            e = dict(e)
+            e["_stale"] = isinstance(e.get("version"), int) and isinstance(cur, int) and e["version"] < cur
+            e["_ai"] = e.get("by") not in self.human
+            out.append(e)
+        out.sort(key=lambda e: (str(e.get("date")), str(e.get("id"))))
+        return out
+
+    def concept_assessments(self, cid: str) -> list:
+        """The active assessments a concept carries: those targeting the concept itself,
+        plus those on the graph nodes that back it (refs)."""
+        e = self.concepts.get(cid) or {}
+        evs = self.assessments("concept:" + cid)
+        for x in e.get("refs") or []:
+            if x in self.nodes:
+                evs += self.assessments(x)
+        evs.sort(key=lambda e: (str(e.get("date")), str(e.get("id"))))
+        return evs
+
+    def concept_hero(self, cid: str) -> dict:
+        return self._hero_from(self.concept_assessments(cid))
+
+    def hero(self, x: str) -> dict:
+        return self._hero_from(self.assessments(x))
+
+    def _hero_from(self, evs: list) -> dict:
+        """Per axis, what the hero shows: the humans' number when they agree, their range when
+        they differ (contested), the AI seed greyed when no human has scored, a dash when no
+        one has. cls carries the score step for the colour ramp."""
+        by_axis: dict = {}
+        for e in evs:
+            by_axis.setdefault(str(e.get("axis")), []).append(e)
+        out = {}
+        for axis in ("reliability", "importance", "clarity"):
+            evs = by_axis.get(axis) or []
+            hums = [e for e in evs if not e["_ai"]]
+            ais = [e for e in evs if e["_ai"]]
+            if hums:
+                ss = sorted({int(e["score"]) for e in hums})
+                stale = all(e.get("_stale") for e in hums)
+                if len(ss) == 1:
+                    out[axis] = {"d": str(ss[0]), "cls": f"s{ss[0]}", "contested": False, "ai": False, "stale": stale}
+                else:
+                    out[axis] = {"d": f"{ss[0]}\u2013{ss[-1]}", "cls": f"s{ss[0]} contested", "contested": True, "ai": False, "stale": stale}
+            elif ais:
+                sc = int(ais[-1]["score"])
+                out[axis] = {"d": str(sc), "cls": "ai", "contested": False, "ai": True, "stale": all(e.get("_stale") for e in ais)}
+            else:
+                out[axis] = {"d": "\u2013", "cls": "none", "contested": False, "ai": False, "stale": False}
+        return out
+
     def human_events(self, x: str) -> list:
         return [e for e in self.events_by_node.get(x, []) if e.get("by") in self.human]
 

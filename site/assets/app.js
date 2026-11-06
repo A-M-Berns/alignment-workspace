@@ -40,6 +40,17 @@
     }).catch(function () { results.textContent = "The search index could not be loaded."; });
   }
 
+  // the landing's type sampler persists a candidate body face; apply it site-wide
+  try {
+    var awFont = localStorage.getItem("aw-font");
+    if (awFont) {
+      var l = document.createElement("link");
+      l.rel = "stylesheet"; l.href = "/assets/fonts/candidates.css";
+      document.head.appendChild(l);
+      document.documentElement.style.setProperty("--sans", '"' + awFont + '", -apple-system, BlinkMacSystemFont, sans-serif');
+    }
+  } catch (e) { /* storage may be unavailable */ }
+
   // keyboard: "/" focuses the search box
   document.addEventListener("keydown", function (ev) {
     if (ev.key === "/" && !/input|textarea/i.test(document.activeElement && document.activeElement.tagName)) {
@@ -47,4 +58,78 @@
       if (b) { ev.preventDefault(); b.focus(); }
     }
   });
+
+  // Scoring is a move: pick a number in the hero, give one sentence, sign and copy the
+  // exact ledger event into your own GitHub ledger. Vouch or challenge is derived from
+  // the picked number against the standing score. The site accepts no write. Exposed so
+  // the map can wire the block it injects into the read-more modal.
+  window.wireAssess = function (root) {
+    var ed = q(".assess-editor[data-assess]", root);
+    if (!ed || ed.getAttribute("data-wired")) return;
+    ed.setAttribute("data-wired", "1");
+    var cfg = JSON.parse(ed.getAttribute("data-assess"));
+    var scope = root && root.querySelectorAll ? root : document;
+    var rc = ed.nextElementSibling; // .assess-receipt
+    var handleSel = q(".as-handle", ed);
+    cfg.handles.forEach(function (o) { var e = document.createElement("option"); e.value = o; e.textContent = o; handleSel.appendChild(e); });
+    try {
+      var saved = localStorage.getItem("aw-handle");
+      if (saved && cfg.handles.indexOf(saved) >= 0) handleSel.value = saved;
+      handleSel.addEventListener("change", function () { localStorage.setItem("aw-handle", handleSel.value); });
+    } catch (e) { /* storage may be unavailable */ }
+    var picked = null; // {axis, score}
+    function headline(axis, n) {
+      var st = cfg.standing[axis];
+      if (st.contested) return "Your " + axis + " score: " + n;
+      if (st.d === "–") return "The first " + axis + " score: " + n;
+      if (st.ai) return "The first human " + axis + " score: " + n + ' <span class="stands-at">AI score stands at ' + st.d + "*</span>";
+      if (String(n) === st.d) return "Support " + axis + " " + st.d;
+      return "Challenge " + axis + " " + st.d + " with " + n;
+    }
+    function openEditor(axis, score) {
+      picked = { axis: axis, score: score };
+      scope.querySelectorAll(".seg.sel").forEach(function (s) { s.classList.remove("sel"); });
+      var seg = scope.querySelector('.seg[data-axis="' + axis + '"][data-score="' + score + '"]');
+      if (seg) seg.classList.add("sel");
+      q(".ed-head", ed).innerHTML = headline(axis, score); // built from fixed strings and the build's own numbers
+      var prev = cfg.active[handleSel.value + "|" + axis];
+      q(".ed-note", ed).textContent = prev ? "This replaces your earlier " + axis + " score; everyone else's stays." : "";
+      ed.hidden = false; rc.hidden = true;
+      q(".as-verbatim", ed).focus();
+      ed.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }
+    scope.querySelectorAll(".seg, button.hx-num").forEach(function (b) {
+      b.addEventListener("click", function () {
+        openEditor(b.getAttribute("data-axis"), parseInt(b.getAttribute("data-score"), 10));
+      });
+    });
+    q(".as-make", ed).addEventListener("click", function () {
+      if (!picked) return;
+      var handle = handleSel.value;
+      var verbatim = q(".as-verbatim", ed).value.trim();
+      if (!verbatim) { q(".ed-note", ed).textContent = "The rationale is required: the event carries your own words. One clear sentence is enough."; return; }
+      var today = new Date().toISOString().slice(0, 10);
+      var tid = cfg.target.node || cfg.target.concept;
+      var ev = {
+        id: handle.slice(1) + "-a-" + today.replace(/-/g, "") + "-" + picked.axis + "-" + tid,
+        by: handle, date: today, rule: cfg.rule, via: "site", version: cfg.version,
+        kind: "assessment", target: cfg.target, axis: picked.axis, score: picked.score, verbatim: verbatim
+      };
+      if (cfg.active[handle + "|" + picked.axis]) ev.supersedes = cfg.active[handle + "|" + picked.axis];
+      var line = JSON.stringify(ev);
+      q(".rc-line", rc).textContent = handle + " · " + picked.axis + " " + picked.score + " — “" + verbatim + "”";
+      q(".as-out", rc).textContent = line;
+      q(".as-edit", rc).href = "https://github.com/A-M-Berns/alignment-workspace/edit/main/graph/events/" + handle.slice(1) + ".jsonl";
+      q(".rc-status", rc).textContent = "Prepared locally — not yet submitted.";
+      q(".as-copy", rc).textContent = "Copy event";
+      ed.hidden = true; rc.hidden = false;
+      q(".as-copy", rc).onclick = function () {
+        navigator.clipboard.writeText(line).then(function () {
+          q(".as-copy", rc).textContent = "Copied ✓";
+          q(".rc-status", rc).textContent = "Copied — paste the line at the end of your ledger on GitHub and commit; it publishes on the next build.";
+        });
+      };
+    });
+  };
+  window.wireAssess(document);
 })();

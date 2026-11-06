@@ -380,6 +380,43 @@ class Refusals(Base):
         self.tree(extra={"h1": [f'{{"id": "h1-42", "by": "@h1", {BASE}, "kind": "gestalt", "target": {{"node": "plan-a"}}, "estimate": [0.1, 0.3], "reason": "x", "derived": false}}']})
         self.assertEqual(run(self.root)[0], 0)
 
+    def test_assessment_shape_and_supersession(self):
+        # a valid assessment is accepted; superseding the author's own earlier one on the
+        # same axis is too; and it mints no level and moves no number
+        self.tree()
+        base = self.derived()
+        self.tree(extra={"h2": [
+            f'{{"id": "h2-70", "by": "@h2", {BASE}, "kind": "assessment", "target": {{"node": "shared-leaf"}}, '
+            '"axis": "reliability", "score": 2, "verbatim": "the deployment story needs A7"}',
+            f'{{"id": "h2-71", "by": "@h2", {BASE}, "kind": "assessment", "target": {{"node": "shared-leaf"}}, '
+            '"axis": "reliability", "score": 3, "verbatim": "A7 may be dischargeable", "supersedes": "h2-70"}']})
+        with_a = self.derived()
+        self.assertEqual(base["nodes"]["shared-leaf"].get("V"), with_a["nodes"]["shared-leaf"].get("V"))
+        self.assertEqual(base["nodes"]["shared-leaf"].get("J"), with_a["nodes"]["shared-leaf"].get("J"))
+
+    def test_assessment_on_a_concept(self):
+        # a registered site-map concept takes an assessment; an unregistered one, or any
+        # other kind on a concept, is refused
+        self.tree(extra={"h2": [
+            f'{{"id": "h2-72", "by": "@h2", {BASE}, "kind": "assessment", "target": {{"concept": "answerability"}}, '
+            '"axis": "importance", "score": 4, "verbatim": "the relation the program builds"}']})
+        (self.root / "state").mkdir(exist_ok=True)
+        (self.root / "state" / "concepts.json").write_text(
+            '{"concepts": [{"id": "answerability", "kind": "philosophy", "title": "Answerability", "blurb": "x"},'
+            ' {"id": "the-program", "kind": "goal", "title": "Program", "blurb": "x"}]}')
+        self.derived()
+        self.edit("graph/events/h2.jsonl", '"concept": "answerability"', '"concept": "no-such"')
+        self.assertIn("resolves to no concept", self.refused(1))
+        self.edit("graph/events/h2.jsonl", '"concept": "no-such"', '"concept": "the-program"')
+        self.derived()  # importance on a research thread is fine
+        self.edit("graph/events/h2.jsonl", '"axis": "importance"', '"axis": "reliability"')
+        self.assertIn("importance and clarity, not reliability", self.refused(5))
+        self.edit("graph/events/h2.jsonl", '"axis": "reliability"', '"axis": "importance"')
+        self.edit("graph/events/h2.jsonl", '"concept": "the-program"', '"concept": "answerability"')
+        self.edit("graph/events/h2.jsonl", '"kind": "assessment", "target": {"concept": "answerability"}, "axis": "importance", "score": 4, ',
+                  '"kind": "estimate", "target": {"concept": "answerability"}, "estimate": 0.5, ')
+        self.assertIn("a concept target carries only an assessment", self.refused(2))
+
     def test_rule5_external_carries_ref(self):
         self.tree(extra={"h2": [f'{{"id": "h2-43", "by": "@h2", {BASE}, "kind": "external", "target": {{"node": "shared-leaf"}}}}']})
         self.assertIn("carries ref", self.refused(5))
@@ -2730,7 +2767,8 @@ class Fixtures(unittest.TestCase):
         # state, and the item nodes render PRIORITIES.md from the sections file (2026-10-22)
         if (ROOT / "wiki").is_dir():
             shutil.copytree(ROOT / "wiki", root / "wiki")
-        for rel in ("DECISIONS.md", "state/rounds.json", "state/foundations.json", "state/priorities_sections.md"):
+        for rel in ("DECISIONS.md", "state/rounds.json", "state/foundations.json", "state/priorities_sections.md",
+                    "state/concepts.json"):
             if (ROOT / rel).is_file():
                 (root / rel).parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy(ROOT / rel, root / rel)
@@ -2809,7 +2847,7 @@ class Fixtures(unittest.TestCase):
     def test_starting_graph_carries_structure_and_the_two_rulings_only(self):
         D = self.D
         # human events: the maintainer's two rulings only; every other counted event is the AI fill
-        self.assertEqual([e for e in D["events"]["counted"] if not e.startswith("smithy-verity-")],
+        self.assertEqual([e for e in D["events"]["counted"] if not e.startswith(("smithy-verity-", "claude-fable-5-"))],
                          ["anson-001", "anson-002"])
         self.assertTrue([e for e in D["events"]["counted"] if e.startswith("smithy-verity-")])
         # nothing is withdrawn; an AI number goes stale only where a round revised a node (a new version, a leaf that became
@@ -2819,7 +2857,7 @@ class Fixtures(unittest.TestCase):
         for e, why in D["events"]["stale_reasons"].items():
             self.assertTrue(why in ("leaf became a table", "leaf became an and", "leaf became an or") or why.startswith("given against version"), (e, why))
         pol = g.parse_flat_yaml((self.root / "graph" / "policy.yaml").read_text())
-        self.assertEqual(set(pol["handles"]), {"@anson", "@abram", "@smithy-verity", "@smithy-verity-opus55"})
+        self.assertEqual(set(pol["handles"]), {"@anson", "@abram", "@smithy-verity", "@smithy-verity-opus55", "@claude-fable-5"})
         self.assertNotIn("illustrative", (self.root / "graph" / "policy.yaml").read_text())
         for r, R in D["roots"].items():
             self.assertEqual(R["status"], "open", r)                           # no human judgment yet, so nothing concedes
