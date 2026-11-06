@@ -100,6 +100,18 @@ ruling's disposal clause ("the chosen face replaces Lexend and the rest leave") 
 by the type ruling of the third follow-up; the two chosen faces stay vendored beside the
 stylesheet and the nine candidates go.
 
+## The fourth follow-up of 2026-11-06 (`PROMPT-followup-4.md`)
+
+The priorities page drops its lens paragraph, the rank numerals and the per-entry
+derivation line; each entry is the title, kind, mini-hero, blurb and open items, and
+hovering an entry shows the opening stretch of its own page (the wiki page's text where
+one exists, else the backing claim's Statement — `concept_peek`, server-rendered, CSS
+hover, no script). The ordering itself is unchanged, and its derivation stays stated in
+`site/README.md` and the `DECISIONS.md` entry rather than on the page. The
+untracked-pointers exemption also learned that a directory pattern like `_site/` matches
+the bare name only while the directory exists, so `ignored()` checks both forms — the
+first form passed locally and failed on a clean CI checkout.
+
 ## Outstanding maintainer actions
 
 1. Wire the maintenance sweep's schedule (cadence is yours; weekly beside the freshness

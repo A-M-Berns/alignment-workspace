@@ -1069,29 +1069,42 @@ def priority_order(site: Site) -> tuple[list[dict], list[str]]:
         if imp is None:
             unranked.append(cid)
             continue
-        why = [f'importance {h["importance"]["d"]}' + (" (AI seed)" if h["importance"]["ai"] else "")]
         rel_gap = 0
         if "reliability" in axes:
             rel = _axis_value(h["reliability"])
             rel_gap = max(0, imp - (rel if rel is not None else 2))
-            if rel is None:
-                why.append("reliability unscored" + (f" — {rel_gap / 2:g} behind" if rel_gap else ""))
-            elif rel_gap:
-                why.append(f'reliability {h["reliability"]["d"]} — {rel_gap / 2:g} behind')
         cla = _axis_value(h["clarity"]) if "clarity" in axes else None
         cla_gap = max(0, imp - cla) if cla is not None else 0
-        if cla_gap:
-            why.append(f'clarity {h["clarity"]["d"]} — {cla_gap / 2:g} behind')
         ranked.append({"cid": cid, "hero": h, "axes": axes, "p": 2 * imp + 2 * rel_gap + cla_gap,
-                       "why": " · ".join(why), "ai": h["importance"]["ai"]})
+                       "ai": h["importance"]["ai"]})
     ranked.sort(key=lambda row: (-row["p"], row["ai"], str(r.concepts[row["cid"]].get("title") or row["cid"]).lower()))
     return ranked, unranked
 
 
+def concept_peek(site: Site, cid: str) -> str:
+    """The opening stretch of the concept's own page — its wiki page where one exists,
+    else its backing claim's Statement — as plain text for the hover preview."""
+    r = site.repo
+    e = r.concepts[cid]
+    text = ""
+    if e.get("wiki") and e["wiki"] in r.wiki:
+        text = re.sub(r"<!--.*?-->", " ", r.wiki[e["wiki"]], flags=re.S)
+        text = " ".join(l for l in text.splitlines() if not l.startswith("#") and not l.startswith("|"))
+        text = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", text)
+        text = text.replace("**", "").replace("`", "")
+    else:
+        refs = [x for x in e.get("refs") or [] if x in r.nodes]
+        if refs:
+            text = r.nodes[refs[-1]]["statement"]
+    text = " ".join(text.split())
+    return text[:420] + "…" if len(text) > 420 else text
+
+
 def priorities_page(site: Site) -> str:
     """The highest-priority concepts first, each with its standing scores, its one-paragraph
-    blurb and the click-through the map gives. The ordering is derived from the ledgers'
-    scores and moves when they do; scoring an axis is how a reader moves it."""
+    blurb, the click-through the map gives and a hover preview of its page. The ordering is
+    derived from the ledgers' scores and moves when they do; scoring an axis is how a
+    reader moves it."""
     r = site.repo
     ranked, unranked = priority_order(site)
     # the open ATTENTION items filed against a concept: an item whose node sits under a
@@ -1106,7 +1119,7 @@ def priorities_page(site: Site) -> str:
     frames_of_item = {num: {f["frame"] for f in r.nodes[rec["node"]].get("in_frames") or []}
                       for num, rec in open_items.items()}
     rows = []
-    for i, row in enumerate(ranked, 1):
+    for row in ranked:
         cid, e, h = row["cid"], r.concepts[row["cid"]], row["hero"]
         refs = {x for x in (e.get("refs") or []) if x in r.nodes}
         nums = sorted({num for num in open_items
@@ -1114,21 +1127,16 @@ def priorities_page(site: Site) -> str:
                       key=lambda s: (not s.isdigit(), int(s) if s.isdigit() else 0, s))
         links = ", ".join(site.link("items", num, f'{num}. {r.nodes[r.items[num]["node"]]["fields"].get("title", "")}')
                           for num in nums)
+        peek = concept_peek(site, cid)
         rows.append(
-            f'<li class="prio"><div class="prio-head"><span class="prio-rank">{i}</span>'
+            '<li class="prio"><div class="prio-head">'
             f'{site.link("concepts", cid, e.get("title", cid))} <span class="kind">{esc(str(e.get("kind") or ""))}</span></div>'
             + mini_hero(h, row["axes"])
             + f'<p class="prio-blurb">{esc(str(e.get("blurb") or ""))}</p>'
-            + f'<p class="prio-why muted">{esc(row["why"])}</p>'
             + (f'<p class="prio-items">open items: {links}</p>' if nums else "")
+            + (f'<div class="prio-peek">{esc(peek)}</div>' if peek else "")
             + '</li>')
-    body = ['<p class="lens"><strong>This page is a lens, not the structure.</strong> The ordering is derived from the '
-            'standing scores — importance first, raised by how far reliability and clarity sit behind it, over each '
-            'concept\'s own axes (a research thread carries importance and clarity only) — and it moves '
-            'when someone scores an axis. A grey number is an AI seed no human has confirmed; '
-            'the <a href="/map/">map</a> is the whole record. Where open <a href="/items/">items</a> '
-            'are filed against a concept, they are the asked-for work on it.</p>',
-            '<ol class="prio-list">' + "".join(rows) + "</ol>" if rows
+    body = ['<ul class="prio-list">' + "".join(rows) + "</ul>" if rows
             else '<p class="muted">No concept carries an importance score yet.</p>']
     if unranked:
         body.append("<section><h2>Not yet rankable</h2><p>"

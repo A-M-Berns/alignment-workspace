@@ -341,13 +341,16 @@ section.context ul.ctx-facts li { margin: 0.35em 0; }
 .ax-scores { margin: 0.7em 0; padding-top: 0.5em; border-top: 1px solid var(--rule); }
 .ax-scores .axis { display: inline-block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
 /* the priorities list */
-ol.prio-list { list-style: none; padding-left: 0; }
-ol.prio-list li.prio { border: 1px solid var(--rule); border-radius: 10px; padding: 0.7em 1em; margin: 0.6em 0; }
+ul.prio-list { list-style: none; padding-left: 0; }
+ul.prio-list li.prio { position: relative; border: 1px solid var(--rule); border-radius: 10px; padding: 0.7em 1em; margin: 0.6em 0; }
+li.prio:hover { border-color: var(--accent); }
 .prio-head { display: flex; align-items: baseline; gap: 0.6em; }
-.prio-rank { font-weight: 760; color: var(--muted); min-width: 1.6em; text-align: right; }
 .prio-blurb { margin: 0.35em 0 0.2em; }
-.prio-why { font-size: 0.8rem; margin: 0; }
 .prio-items { font-size: 0.82rem; margin: 0.3em 0 0; }
+.prio-peek { display: none; position: absolute; left: 0.8em; right: 0.8em; top: calc(100% - 0.3em); z-index: 6;
+  background: var(--card); border: 1px solid var(--accent); border-radius: 10px; padding: 0.7em 1em;
+  font-size: 0.85rem; line-height: 1.5; box-shadow: 0 8px 28px #000a; }
+li.prio:hover .prio-peek { display: block; }
 
 /* the mini-hero on the map's node card */
 .mini-hero { display: flex; gap: 1.1em; margin: 0.35em 0 0.45em; }

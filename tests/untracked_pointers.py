@@ -110,9 +110,12 @@ def round_record_paths() -> list[tuple[str, str]]:
 def ignored(path: str) -> bool:
     """A cited path .gitignore deliberately excludes — `_site`, a documented build
     output — resolves locally by design and on no clone, which is the opposite of the
-    dangling citation this gate exists for."""
-    return subprocess.run(["git", "-C", str(ROOT), "check-ignore", "-q", path],
-                          capture_output=True).returncode == 0
+    dangling citation this gate exists for. Checked with and without a trailing slash:
+    a directory pattern like `_site/` matches the bare name only while the directory
+    exists on disk, and this answer must not depend on that."""
+    return any(subprocess.run(["git", "-C", str(ROOT), "check-ignore", "-q", p],
+                              capture_output=True).returncode == 0
+               for p in (path, path.rstrip("/") + "/"))
 
 
 def audit() -> tuple[list[str], dict[str, int]]:
