@@ -118,7 +118,7 @@ def build(out: pathlib.Path, verbose: bool = True) -> dict:
     put("/", pages.landing_page(site), "landing")
     put("/map/", pages.front_page(site, rows), "front")
     put("/chat/", pages.holding_page(site, "Chatbot", "Arrives soon: a bring-your-own-key assistant that speaks from the workspace — what the program holds, what the priorities are, how to contribute."), "holding")
-    put("/activity/", pages.activity_page(site, rows), "activity")
+    put("/activity/", pages.activity_page(site), "activity")
     put("/priorities/", pages.priorities_page(site), "priorities")
     # assets
     (out / "assets").mkdir(parents=True, exist_ok=True)
