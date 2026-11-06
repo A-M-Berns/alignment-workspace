@@ -54,7 +54,7 @@ class Site:
 
 def layout(site: Site, title: str, body: str, crumbs: list[tuple[str, str]] | None = None, subtitle: str = "") -> str:
     r = site.repo
-    nav = ('<a href="/map/">map</a><a href="/chat/">chatbot</a><a href="/activity/">activity</a>'
+    nav = ('<a href="/map/">map</a><a href="/priorities/">priorities</a><a href="/chat/">chatbot</a><a href="/activity/">activity</a>'
            '<a href="https://github.com/A-M-Berns/alignment-workspace">repo</a>')
     crumb_html = ""
     if crumbs:
@@ -780,6 +780,7 @@ def landing_page(site: Site) -> str:
     its controls exist hidden because the engine looks them up."""
     v = esc(site.repo.commit[:12])
     tiles = (('map', '/map/'),
+             ('priorities', '/priorities/'),
              ('chatbot', '/chat/'),
              ('activity', '/activity/'),
              ('repo', 'https://github.com/A-M-Berns/alignment-workspace'))
@@ -991,11 +992,11 @@ def feed_page(site: Site, rows: list[str]) -> str:
 
 def activity_page(site: Site, rows: list[str]) -> str:
     """Where to look, then what just happened. The pointers are derived from the standing
-    scores — contested axes first, then concepts scored important whose reliability has
-    not caught up, then the unscored — and they are invitations, not an ordering: the map
-    is the whole record, and attention brought from outside it is the point."""
+    scores — contested axes first, then the unscored — and they are invitations, not an
+    ordering: the ordering lives on /priorities/, the map is the whole record, and
+    attention brought from outside it is the point."""
     r = site.repo
-    contested, behind, unscored = [], [], []
+    contested, unscored = [], []
     for cid, e in r.concepts.items():
         if not scoreable(e):
             continue
@@ -1004,19 +1005,13 @@ def activity_page(site: Site, rows: list[str]) -> str:
         axes_c = [a for a in ("reliability", "importance", "clarity") if h[a]["contested"]]
         if axes_c:
             contested.append(f'<li>{link} — {", ".join(axes_c)} contested</li>')
-        imp, rel = h["importance"], h["reliability"]
-        if imp["d"].isdigit() and int(imp["d"]) >= 4 and (not rel["d"].isdigit() or int(rel["d"]) < int(imp["d"])):
-            who = " (AI seed)" if imp["ai"] else ""
-            behind.append(f'<li>{link} — importance {esc(imp["d"])}{who}, reliability {esc(rel["d"])}</li>')
         if all(h[a]["d"] == "–" for a in ("reliability", "importance", "clarity")):
             unscored.append(link)
     body = ["<section><h2>Where to look</h2>"]
     body.append("<h3>Disagreements to read</h3>")
     body.append("<ul class=\"listing\">" + "".join(contested) + "</ul>" if contested
                 else '<p class="muted">No axis is contested right now.</p>')
-    body.append("<h3>Scored important, reliability behind</h3>")
-    body.append("<ul class=\"listing\">" + "".join(behind) + "</ul>" if behind
-                else '<p class="muted">Nothing currently sits in this gap.</p>')
+    body.append('<p>What the standing scores say to work on first is ordered on <a href="/priorities/">priorities</a>.</p>')
     body.append("<h3>Unscored</h3>")
     if unscored:
         body.append(f'<p>{len(unscored)} concepts carry no score on any axis yet — among them '
@@ -1027,6 +1022,86 @@ def activity_page(site: Site, rows: list[str]) -> str:
     body.append("<section><h2>Recent</h2><ul class=\"feed\">" + "".join(rows[:25])
                 + '</ul><p><a href="/feed/">The whole feed</a>.</p></section>')
     return layout(site, "Activity", "".join(body))
+
+
+def mini_hero(h: dict) -> str:
+    return '<div class="mini-hero">' + "".join(
+        f'<span class="hx hx-{a} {h[a]["cls"]}"><span class="hx-num">{esc(h[a]["d"])}</span><span class="hx-label">{a}</span></span>'
+        for a in AXES) + "</div>"
+
+
+def _axis_value(c: dict) -> int | None:
+    """A standing axis as twice its score — a contested range counts as its midpoint, which
+    the doubling keeps an integer — or None where no one has scored it."""
+    d = c["d"]
+    if d.isdigit():
+        return 2 * int(d)
+    if d and d[0].isdigit() and "–" in d:
+        lo, hi = d.split("–")
+        return int(lo) + int(hi)
+    return None
+
+
+def priority_order(site: Site) -> tuple[list[dict], list[str]]:
+    """The ordering of the scoreable concepts by their standing scores. A concept's rank is
+    led by its importance and raised by what has not caught up with it: the reliability
+    gap in full (an unscored reliability counts as 1 — nothing vouches for it) and the
+    clarity gap where clarity is scored. Human scores and AI seeds rank alike; a seed is
+    marked. Returns (ranked rows, the concepts no one has scored for importance)."""
+    r = site.repo
+    ranked, unranked = [], []
+    for cid, e in r.concepts.items():
+        if not scoreable(e):
+            continue
+        h = r.concept_hero(cid)
+        imp = _axis_value(h["importance"])
+        if imp is None:
+            unranked.append(cid)
+            continue
+        rel = _axis_value(h["reliability"])
+        cla = _axis_value(h["clarity"])
+        rel_gap = max(0, imp - (rel if rel is not None else 2))
+        cla_gap = max(0, imp - cla) if cla is not None else 0
+        why = [f'importance {h["importance"]["d"]}' + (" (AI seed)" if h["importance"]["ai"] else "")]
+        if rel is None:
+            why.append("reliability unscored" + (f" — {rel_gap / 2:g} behind" if rel_gap else ""))
+        elif rel_gap:
+            why.append(f'reliability {h["reliability"]["d"]} — {rel_gap / 2:g} behind')
+        if cla_gap:
+            why.append(f'clarity {h["clarity"]["d"]} — {cla_gap / 2:g} behind')
+        ranked.append({"cid": cid, "hero": h, "p": 2 * imp + 2 * rel_gap + cla_gap,
+                       "why": " · ".join(why), "ai": h["importance"]["ai"]})
+    ranked.sort(key=lambda row: (-row["p"], row["ai"], str(r.concepts[row["cid"]].get("title") or row["cid"]).lower()))
+    return ranked, unranked
+
+
+def priorities_page(site: Site) -> str:
+    """The highest-priority concepts first, each with its standing scores, its one-paragraph
+    blurb and the click-through the map gives. The ordering is derived from the ledgers'
+    scores and moves when they do; scoring an axis is how a reader moves it."""
+    r = site.repo
+    ranked, unranked = priority_order(site)
+    rows = []
+    for i, row in enumerate(ranked, 1):
+        cid, e, h = row["cid"], r.concepts[row["cid"]], row["hero"]
+        rows.append(
+            f'<li class="prio"><div class="prio-head"><span class="prio-rank">{i}</span>'
+            f'{site.link("concepts", cid, e.get("title", cid))} <span class="kind">{esc(str(e.get("kind") or ""))}</span></div>'
+            + mini_hero(h)
+            + f'<p class="prio-blurb">{esc(str(e.get("blurb") or ""))}</p>'
+            + f'<p class="prio-why muted">{esc(row["why"])}</p></li>')
+    body = ['<p class="lens"><strong>This page is a lens, not the structure.</strong> The ordering is derived from the '
+            'standing scores — importance first, raised by how far reliability and clarity sit behind it — and it moves '
+            'when someone scores an axis. A grey number is an AI seed no human has confirmed; '
+            'the <a href="/map/">map</a> is the whole record.</p>',
+            '<ol class="prio-list">' + "".join(rows) + "</ol>" if rows
+            else '<p class="muted">No concept carries an importance score yet.</p>']
+    if unranked:
+        body.append("<section><h2>Not yet rankable</h2><p>"
+                    + f"{len(unranked)} concepts carry no importance score — among them "
+                    + ", ".join(site.link("concepts", cid, r.concepts[cid].get("title", cid)) for cid in unranked[:6])
+                    + ". Research threads and prior work are navigated and cited, not scored.</p></section>")
+    return layout(site, "Priorities", "\n".join(body))
 
 
 def spine_page(site: Site) -> str:

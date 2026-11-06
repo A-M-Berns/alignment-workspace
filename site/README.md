@@ -62,6 +62,7 @@ build on.
 | a registry concept without a wiki page | `/concepts/<id>/`, its fragment `/concepts/<id>/frag.html` | `state/concepts.json` |
 | the map data | `/assets/map.json` | the containments and edges above |
 | the feed, the theorem spine, the ranking, search | `/feed/`, `/spine/`, `/ranking/`, `/search/` | — |
+| the priorities | `/priorities/` | the standing assessment scores |
 
 A path segment is the id with `/` replaced by `--`; ids contain no other character a URL
 cannot carry. Two ids that collapse to one segment are a build failure.
@@ -82,6 +83,10 @@ cannot carry. Two ids that collapse to one segment are a build failure.
   **ranking** page (the content of `graph/tasks.md` with the digest, labelled as the lens
   it is) and **search** (a client-side index over ids, Statements, titles and registry
   short names).
+- **Priorities** (`/priorities/`): the scoreable concepts ordered by their standing scores
+  — importance first, raised by how far reliability and clarity sit behind it — each with
+  its blurb and its concept-page link; AI seeds rank and are marked. A lens over the
+  ledgers' scores, moved by scoring an axis, never typed by hand.
 
 AI-drafted nodes (an AI author and no human event) render in a lighter register with the
 label *drafted*, on the canvas and on the pages. Every page shows the commit it was built

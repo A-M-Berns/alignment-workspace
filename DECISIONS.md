@@ -6992,3 +6992,19 @@ concepts scored important whose reliability has not caught up (a filter over nam
 scores, never arithmetic on them), the unscored count, then the recent feed — each
 labelled an invitation, not an ordering.
 
+### 2026-11-05 — the priorities page: the standing scores become an ordering
+<!-- decision: 2026-11-05--priorities-page-ordering; touches: site/ -->
+
+**Maintainer ruling, taken in conversation on 2026-11-05:** the site gains a Priorities
+page — the highest-priority things first, each with a brief overview and the click-through
+the map gives — and the priority system is rehauled on the assessment scores. The round's
+reading, agent-decided and reversible: `/priorities/` ranks the scoreable concepts by
+twice the importance plus twice the reliability gap below it (unscored reliability
+counting as 1) plus the clarity gap where clarity is scored, contested axes at their
+range's midpoint, all integer; AI seeds rank and stay marked. This supersedes the
+2026-11-05 activity-page reading that score-derived pointers are filters and never
+arithmetic — the directive asks for an ordering, so the arithmetic lives on
+`/priorities/`, labelled a lens, while `/activity/` keeps its filters (contested, unscored)
+and points there. Rejected alternatives: importance alone (blind to what reliability has
+already settled), and the threshold filter (names a set, not an order).
+

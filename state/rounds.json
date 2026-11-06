@@ -2109,6 +2109,19 @@
       "registered_classes": [],
       "prompt": "prompts/2026-11-02-epistemic-assessments/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-11-05-site-priorities",
+      "date": "2026-11-05",
+      "project": "enabling",
+      "path": "projects/enabling/rounds/2026-11-05-site-priorities",
+      "verdict": null,
+      "depends_on": [
+        "2026-11-02-epistemic-assessments"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-11-05-site-priorities/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
