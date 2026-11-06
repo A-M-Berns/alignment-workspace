@@ -3,7 +3,7 @@ id: route-reasons-items-54-58
 kind: leaf
 leaf_kind: route
 given: reasons-statics-public
-action: "Execute PRIORITIES items 54 (defeater-uptake completeness), 56 (a citation discipline for Licensed and its transport), 57 (a checker for the applicability-in-source convention) and 58 (composition of the reason state with the record calculus), each per its deliverable shape."
+action: "Execute ATTENTION items 54 (defeater-uptake completeness), 56 (a citation discipline for Licensed and its transport), 57 (a checker for the applicability-in-source convention) and 58 (composition of the reason state with the record calculus), each per its deliverable shape."
 who: agent
 files: [projects/normativity/legitimacy/]
 work:
@@ -23,5 +23,5 @@ applicability checker, and composition of the reason state with the record
 calculus.
 
 ## Source
-PRIORITIES.md, items 54, 56, 57 and 58 (the normativity line's legitimacy
+ATTENTION.md, items 54, 56, 57 and 58 (the normativity line's legitimacy
 section).

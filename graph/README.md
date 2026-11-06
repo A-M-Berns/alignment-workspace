@@ -27,7 +27,7 @@ sit one plan and a set of risk stories:
   cruxes), `abstraction-arc` and `enabling-work`. Each line is in turn a
   frame over programmes, steps and shared claims, down to the formal results
   (one per registered claim, its id the registry id), the item nodes (one per
-  `PRIORITIES.md` entry, `item-<n>`; the file is rendered from them) and the
+  `ATTENTION.md` entry, `item-<n>`; the file is rendered from them) and the
   task leaves that name concrete work. A frame's `roots` are its goals;
   what it is merely about, the registered results filed under a programme
   and the work orders no goal was identified for, it *holds* (`holds`:
@@ -80,7 +80,7 @@ graph/index.json, written on every plain run and published to the branch
    `graph/view.md`, the uncommitted graph/derived.json (the full derivation)
    and graph/index.json (the structure-only index), which `.gitignore`
    excludes and CI publishes to the branch `derived` (ruling F3,
-   2026-10-23), and `PRIORITIES.md` from the item nodes. Those files are
+   2026-10-23), and `ATTENTION.md` from the item nodes. Those files are
    rendered the same way whatever flags you add, so a run never leaves
    personal noise in a pull request, and rerunning changes nothing. A
    `DIGEST` line says what moved since the previous derivation and which

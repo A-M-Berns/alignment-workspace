@@ -24,10 +24,10 @@ version: 1
 A solution to item 93 ships the certified repertoire, or the negative — that no affordable repertoire separates the interface's value classes — with its cell.
 
 ## Source
-PRIORITIES.md, item 93 (Discovery of decision-relevant reasons: the repertoire and the budget); its context: `DISCOVERY_THEOREM.md`, `INQUIRY_MODEL.md` §5, `DISCOVERY_COMPOSITION.md` §3 of the round; item 92 for the service half; items 54 and 64 for the record side.
+ATTENTION.md, item 93 (Discovery of decision-relevant reasons: the repertoire and the budget); its context: `DISCOVERY_THEOREM.md`, `INQUIRY_MODEL.md` §5, `DISCOVERY_COMPOSITION.md` §3 of the round; item 92 for the service half; items 54 and 64 for the record side.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The third pass of the non-capture compilation round

@@ -24,10 +24,10 @@ version: 1
 A solution to item 111 ships the derivation, or the obstruction — in particular whether the support clause (PE2) can be discharged for the score family.
 
 ## Source
-PRIORITIES.md, item 111 (Unbiasedness From Feedback for the score sequence, from `LogicalInduction`); its context: the round's `REPORT.md` and the wiki page `wiki/Deconfusing-Corrigibility-Companion.md`; the existing weighted predicate `BRIAFollowup.UnbiasedFromFeedback` and its consumer `KernelExtension.exploration_rate`, which take the same fact by content for the kernel's decision interface.
+ATTENTION.md, item 111 (Unbiasedness From Feedback for the score sequence, from `LogicalInduction`); its context: the round's `REPORT.md` and the wiki page `wiki/Deconfusing-Corrigibility-Companion.md`; the existing weighted predicate `BRIAFollowup.UnbiasedFromFeedback` and its consumer `KernelExtension.exploration_rate`, which take the same fact by content for the kernel's decision interface.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The companion formalization of "Deconfusing Corrigibility"

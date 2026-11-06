@@ -40,6 +40,19 @@ maintainer's.
 below.** The next round dispatched from that conversation lands it as its first
 commit.
 
+- **The wiki's five mentions of the renamed item ledger (2026-11-05).** The pages
+  `Normative-Record-and-Inquiry`, `Deconfusing-Corrigibility-Companion`, `Deference`,
+  `Normative-Inductor` and `Theorem-Spine` still say `PRIORITIES.md`; the ledger is now
+  `ATTENTION.md`. *Turns on:* the wiki is maintainer-written synthesis a dispatched round
+  does not edit unsaid — edit directly, or dispatch a round to.
+  <!-- decision: open--wiki-attention-rename; touches: wiki/; status: open -->
+
+- **The maintenance sweep's cadence (2026-11-05).** The standing dispatch
+  (`prompts/2026-11-05-standing-maintenance/PROMPT.md`) is adopted; nothing schedules it
+  yet. *Turns on:* external knowledge — how often the maintainer wants a sweep PR landing
+  on their review queue; weekly beside the freshness audit is the round's suggestion.
+  <!-- decision: open--maintenance-sweep-cadence; touches: none; status: open -->
+
 - **Abram's read of the `assessment` event kind (2026-11-03).** The protocol gains a
   human scoring event — `axis: reliability | importance | clarity`, `score` 1 to 5,
   verbatim rationale, own-ledger supersession per node and axis — marked **Default** in
@@ -7007,4 +7020,37 @@ arithmetic — the directive asks for an ordering, so the arithmetic lives on
 `/priorities/`, labelled a lens, while `/activity/` keeps its filters (contested, unscored)
 and points there. Rejected alternatives: importance alone (blind to what reliability has
 already settled), and the threshold filter (names a set, not an order).
+
+### 2026-11-05 — the scores are the priority system; the item ledger is ATTENTION.md
+<!-- decision: 2026-11-05--attention-ledger-rename; touches: ATTENTION.md, state/attention_sections.md, checkers/attention_render.py, AGENTS.md, site/ -->
+
+**Maintainer ruling, taken in conversation on 2026-11-05:** the ratings are the priority
+system, at least for now; the filed-items ledger is renamed from `PRIORITIES.md` to
+`ATTENTION.md` — the filed requests for work — and the two are connected: each entry on
+`/priorities/` lists the open items filed against its concept, and the maintainer files
+items informed by the ordering. Demand-gating is unchanged — the ordering authorizes
+nothing; filing stays maintainer-owned. The round's reading, agent-decided and
+reversible: machine identifiers stay stable under the display rename, per the trust
+chain's own rule for required-check names — the graph `work` pointer kind `priorities`,
+the `priority` event kind on wants, `workspace_state`'s `priorities` key and the
+`/items/` paths keep their names; and node Statements keep the old file name until each
+is revised with its own version bump, since a mechanical rename inside versioned
+Statements would either forge versions or mark every standing score stale. Rejected
+alternative: renaming the identifiers and bumping ~200 Statement versions in one sweep.
+The wiki still says `PRIORITIES.md` in five pages; updating it is the maintainer's
+surface.
+
+### 2026-11-05 — the standing maintenance dispatch
+<!-- decision: 2026-11-05--standing-maintenance-dispatch; touches: AGENTS.md, prompts/2026-11-05-standing-maintenance/PROMPT.md -->
+
+**Maintainer ruling, taken in conversation on 2026-11-05:** filed workspace friction is
+swept by a standing maintenance dispatch with minimal human input, asking directly when
+input is required. The dispatch's `PROMPT.md` under `prompts/` is the standing
+authorization; each sweep is a round against it. A sweep takes any *Workspace friction*
+item whose fix is contained in §14's sense, recorded agent-decided reversible; an item
+whose fix would change a spec-layer rule becomes a direct question to the maintainer —
+one line stating what the decision turns on — with the *Awaiting the author* entry as
+the record. The merge is the human input point: no auto-merge on a maintenance pull
+request touching `checkers/` or `.github/workflows/`. Rejected alternative: per-item
+maintainer dispatch, which left friction accumulating faster than it was retired.
 

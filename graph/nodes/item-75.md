@@ -2,7 +2,7 @@
 id: item-75
 kind: leaf
 leaf_kind: question
-action: "Execute PRIORITIES item 75's monotone question: whether enforcing a reason weakly decreases its future depth, so that the persistence criterion survives a closed loop."
+action: "Execute ATTENTION item 75's monotone question: whether enforcing a reason weakly decreases its future depth, so that the persistence criterion survives a closed loop."
 who: agent
 item: "75"
 title: "Close the loop: policy-dependent date costs"
@@ -26,7 +26,7 @@ The persistence criterion survives when enforcing a reason changes its future
 depth.
 
 ## Source
-PRIORITIES.md, item 75 ("Close the loop: policy-dependent date costs");
+ATTENTION.md, item 75 ("Close the loop: policy-dependent date costs");
 projects/normativity/legitimacy/checkpoint-2026-09-01/ROADMAP.md, section 4,
 which ranks it as robustness work that runs in parallel and "blocks nothing".
 

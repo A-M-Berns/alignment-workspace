@@ -24,10 +24,10 @@ version: 1
 Item 32, Extract the bounded prospective loss interface, is delivered in the shape its entry states: a typed or executable loss-generator interface exposing a bounded full-information vector on the fixed semantic response space, with the existing docket generator factored through it.
 
 ## Source
-PRIORITIES.md, item 32 (Extract the bounded prospective loss interface); its context: `projects/normativity/notes/NORMATIVE_LEARNING_INTERFACE.md`, Level A.
+ATTENTION.md, item 32 (Extract the bounded prospective loss interface); its context: `projects/normativity/notes/NORMATIVE_LEARNING_INTERFACE.md`, Level A.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 Parameterize the item-29 bridge and item-30 learner over the smallest public

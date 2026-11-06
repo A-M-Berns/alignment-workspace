@@ -24,10 +24,10 @@ version: 1
 Item 114, The pinned-region divergence against the pinned market maker, is delivered in the shape its entry states: `derived` or better: a Lean statement over `history L E` with the trader exhibited, or the obstruction in the maker's fixed point.
 
 ## Source
-PRIORITIES.md, item 114 (The pinned-region divergence against the pinned market maker); its context: `.../2026-10-20-warrant-enforcement-semantics/COUNTERMODELS.md` §3; `src/fixture.py::harmonic_buyer_run`; item 40.
+ATTENTION.md, item 114 (The pinned-region divergence against the pinned market maker); its context: `.../2026-10-20-warrant-enforcement-semantics/COUNTERMODELS.md` §3; `src/fixture.py::harmonic_buyer_run`; item 40.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The odds bankroll (`WarrantEntitlement.netWorth_ge_neg_odds`) is the sufficient half: a

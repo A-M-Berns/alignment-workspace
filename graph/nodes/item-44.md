@@ -23,10 +23,10 @@ version: 1
 Item 44, What governs removing a world from support altogether, is delivered in the shape its entry states: a stated condition, with the round's `p(A) = 0` fixture failing it and its deductive-recovery fixtures passing; or an argument that the settlement interface's existing clauses already bind the act.
 
 ## Source
-PRIORITIES.md, item 44 (What governs removing a world from support altogether?); its context: `.../2026-08-16-traderized-enforcement/PAPER_RECONCILIATION.md` §7, question 3; `consolidation-aug9/THEORY_11_SETTLEMENT_INTERFACE.md` §§1, 4.
+ATTENTION.md, item 44 (What governs removing a world from support altogether?); its context: `.../2026-08-16-traderized-enforcement/PAPER_RECONCILIATION.md` §7, question 3; `consolidation-aug9/THEORY_11_SETTLEMENT_INTERFACE.md` §§1, 4.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 Under the support reading of live worlds — a world is live when some credence the

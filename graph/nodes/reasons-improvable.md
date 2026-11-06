@@ -15,7 +15,7 @@ human reasons function in legitimate deliberation well.
 
 ## Source
 Ruling 35's construction applied to reasons-statics-public; the directions are
-PRIORITIES items 54 to 58 (the reason-state blockers) and the semantics the
+ATTENTION items 54 to 58 (the reason-state blockers) and the semantics the
 public line sets aside (projects/normativity/notes/PRIOR_ART.md, section 3).
 The routes are the filing session's reading.
 

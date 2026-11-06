@@ -23,10 +23,10 @@ version: 1
 A solution to item 104 ships the registrations, and later the open pieces or their obstructions.
 
 ## Source
-PRIORITIES.md, item 104 (The corrigibility kernel headline: the registered statements and what they leave open); its context: the phase-2 round's `SPEC.md` §8 and `REPORT.md`; the phase-1 round's `REPORT.md` §6 (what did not compress).
+ATTENTION.md, item 104 (The corrigibility kernel headline: the registered statements and what they leave open); its context: the phase-2 round's `SPEC.md` §8 and `REPORT.md`; the phase-1 round's `REPORT.md` §6 (what did not compress).
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The kernel's headline (`lean/Workspace/Deference/Spec/Headline.lean`, the phase-2 round's

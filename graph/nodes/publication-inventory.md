@@ -4,7 +4,7 @@ kind: leaf
 leaf_kind: task
 action: "Write the publication inventory, one row per release candidate with its state, blocker, owner and public path, including the two note dumps of 2026-10-01 and the decision-problems talk deck."
 who: agent
-files: ["projects/deference/corrigibility-note-dump-2026-10-01", "projects/decision-theory/decision-problems-note-dump-2026-10-01", "PRIORITIES.md"]
+files: ["projects/deference/corrigibility-note-dump-2026-10-01", "projects/decision-theory/decision-problems-note-dump-2026-10-01", "ATTENTION.md"]
 author: "@smithy-verity-opus55"
 size: S
 size_reason: "about eight candidates to locate"
@@ -17,4 +17,4 @@ blocker, its owner and its public path where it is already out.
 ## Source
 projects/deference/corrigibility-note-dump-2026-10-01/ and
 projects/decision-theory/decision-problems-note-dump-2026-10-01/ (released
-2026-10-01); PRIORITIES.md item 107.
+2026-10-01); ATTENTION.md item 107.

@@ -2,7 +2,7 @@
 id: traderization-arc
 kind: leaf
 leaf_kind: step
-action: "Execute PRIORITIES items 39 (credal constraint or price demand) and 40 (necessity of bounded cumulative liability), then 42 to 46, each per its deliverable shape."
+action: "Execute ATTENTION items 39 (credal constraint or price demand) and 40 (necessity of bounded cumulative liability), then 42 to 46, each per its deliverable shape."
 who: agent
 files: [projects/normativity/notes/GENERALIZED_LI_PAPER_HANDOFF.md]
 work:
@@ -25,5 +25,5 @@ force.*, coherence.*, compiler.*, maxmin.*, region.*; all lean-proved);
 projects/normativity/notes/GENERALIZED_LI_PAPER_HANDOFF.md.
 
 ## Notes
-Registered; the open pieces are PRIORITIES items 39 to 46 and the handoff's
+Registered; the open pieces are ATTENTION items 39 to 46 and the handoff's
 section C obligation.

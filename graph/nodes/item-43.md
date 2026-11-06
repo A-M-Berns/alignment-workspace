@@ -23,10 +23,10 @@ version: 1
 Item 43 is delivered as its entry specifies; the entry is transcribed below.
 
 ## Source
-PRIORITIES.md, item 43 (A compiler that is both exact and safe, or a proof there is none); its context: `.../2026-08-16-traderized-enforcement/ENFORCEMENT.md` §5, Theorems 7 through 9; `src/exactness.py`.
+ATTENTION.md, item 43 (A compiler that is both exact and safe, or a proof there is none); its context: `.../2026-08-16-traderized-enforcement/ENFORCEMENT.md` §5, Theorems 7 through 9; `src/exactness.py`.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 Two compilers, and they are not ordered. The violation-proportional position

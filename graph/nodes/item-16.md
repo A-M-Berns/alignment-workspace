@@ -25,10 +25,10 @@ version: 1
 A solution to item 16 ships the derivation, the exact inequality, an exact-rational toy shutdown/correction case computed through, and an attack on the necessity of each assumption used.
 
 ## Source
-PRIORITIES.md, item 16 (The certificate inequality, derived); its context: `projects/deference/notes/FINITE_MODEL_SKELETON.md` §4, §6; `prompts/2026-08-11-phase-ii-certificate/REPORT.md`.
+ATTENTION.md, item 16 (The certificate inequality, derived); its context: `projects/deference/notes/FINITE_MODEL_SKELETON.md` §4, §6; `prompts/2026-08-11-phase-ii-certificate/REPORT.md`.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 Over the same frozen skeleton as item 15, derive from first principles the local

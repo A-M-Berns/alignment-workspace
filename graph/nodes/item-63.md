@@ -2,7 +2,7 @@
 id: item-63
 kind: leaf
 leaf_kind: question
-action: "Work PRIORITIES item 63: give Sigma_n as a computable deductive process or show where it fails to be."
+action: "Work ATTENTION item 63: give Sigma_n as a computable deductive process or show where it fails to be."
 who: agent
 item: "63"
 title: "`Sigma_n` as a computable deductive process"
@@ -25,10 +25,10 @@ The deductive process Σ_n used by the repository's constructions is
 computable.
 
 ## Source
-PRIORITIES.md: "`Sigma_n` as a computable deductive process"
+ATTENTION.md: "`Sigma_n` as a computable deductive process"
 
 ## Notes
-PRIORITIES #63, open.
+ATTENTION #63, open.
 
 ## Item
 `IsLogicalInductor` is stated against a process carrying

@@ -42,7 +42,7 @@ projects/deference/rounds/2026-09-26-bria-corrigibility,
 projects/deference/rounds/2026-09-26-corrigibility-kernel,
 projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2 and
 projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority;
-PRIORITIES.md, Q3 and items 27, 60 and 107.
+ATTENTION.md, Q3 and items 27, 60 and 107.
 
 ## Notes
 The kernel programme as it appears in the public repository: the kernel

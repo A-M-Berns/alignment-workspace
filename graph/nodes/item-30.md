@@ -24,10 +24,10 @@ version: 1
 A solution to item 30 ships the bound or its absence, at each horizon, against the declared class; and an honest statement of whether the successful learner is still answerable and inside its declared service work, which the spec calls S4 and expects to be where the round spends its time.
 
 ## Source
-PRIORITIES.md, item 30 (A learner with sublinear Φ_law-regret, and what it retires); its context: `PHI_REGRET_TEST_SPEC.md` §§1–6 fixes the environment, the three baselines, the measured quantities and the order of work; `projects/normativity/rounds/2026-08-11-phi-regret-learner/` is the controlling item-30 result.
+ATTENTION.md, item 30 (A learner with sublinear Φ_law-regret, and what it retires); its context: `PHI_REGRET_TEST_SPEC.md` §§1–6 fixes the environment, the three baselines, the measured quantities and the order of work; `projects/normativity/rounds/2026-08-11-phi-regret-learner/` is the controlling item-30 result.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The controlling question of the track.

@@ -13,5 +13,5 @@ version: 1
 Normative statics produce a credal constraint on prices rather than only a price demand, so that what the compiler enforces is the seed's own constraint.
 
 ## Source
-PRIORITIES.md, item 39 (does normative statics produce a credal constraint, or only a price demand?).
+ATTENTION.md, item 39 (does normative statics produce a credal constraint, or only a price demand?).
 A route of the improvement claim on traderized-finite-date-conformance, filed by reading by the site-vertical-slice round (projects/enabling/rounds/2026-10-24-site-vertical-slice).

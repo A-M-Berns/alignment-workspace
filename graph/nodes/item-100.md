@@ -23,10 +23,10 @@ version: 1
 A solution to item 100 ships the instance, or the negative with its fixture.
 
 ## Source
-PRIORITIES.md, item 100 (The normativity-side instance of the trace interface); its context: the round's `REPORT.md` §7 and finding 5; `GateIsLegitimacy.lean` §§1–2, 4; the normative-continuity concordance's `DefeatTrace.Grounded` for the notebook side.
+ATTENTION.md, item 100 (The normativity-side instance of the trace interface); its context: the round's `REPORT.md` §7 and finding 5; `GateIsLegitimacy.lean` §§1–2, 4; the normative-continuity concordance's `DefeatTrace.Grounded` for the notebook side.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The gate-is-legitimacy round (`projects/deference/rounds/2026-09-25-gate-is-legitimacy/`)

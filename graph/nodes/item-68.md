@@ -26,10 +26,10 @@ version: 1
 Item 68, Discharging provenance adequacy, is delivered in the shape its entry states: either an adequacy property that is non-circular, compatible with permitted persuasion, and falsified by the hidden-dependency fixtures, or an argument that none exists without a world counterfactual, with the counterexample.
 
 ## Source
-PRIORITIES.md, item 68 (Discharging provenance adequacy); its context: `projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/COUNTERMODELS.md` §8; `.../2026-08-25-carroll-legitimacy-test/CRITERION.md` §6.
+ATTENTION.md, item 68 (Discharging provenance adequacy); its context: `projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/COUNTERMODELS.md` §8; `.../2026-08-25-carroll-legitimacy-test/CRITERION.md` §6.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The descriptive provenance view of an act must expose every dependency of the

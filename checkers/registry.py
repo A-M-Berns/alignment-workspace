@@ -4,7 +4,7 @@
 fixed schema; every identifier is unique; every epistemic class is one of the
 five; every statement of record resolves — a checker invocation names a
 registered checker, a Lean entry names a declaration that exists in the library
-source; and every entry cites a `PRIORITIES.md` item that exists.
+source; and every entry cites an `ATTENTION.md` item that exists.
 
 **What it does not mean.** Nothing about whether any claim is true. This checker
 audits the bookkeeping, not the mathematics; the per-claim verdict comes from the
@@ -55,13 +55,13 @@ def check(registry: pathlib.Path, root: pathlib.Path) -> tuple[bool, list[str]]:
     # `if items and ...`, so renaming or breaking the file turned the
     # answers-a-filed-item check off silently while the gate stayed green — the
     # one failure mode indistinguishable from a pass.
-    priorities = root / "PRIORITIES.md"
+    priorities = root / "ATTENTION.md"
     if not priorities.is_file():
-        return False, [f"PRIORITIES.md not found at {priorities}; "
+        return False, [f"ATTENTION.md not found at {priorities}; "
                        "the answers-a-filed-item check cannot run"]
     items = set(re.findall(r"^###\s+(\d+)\.", priorities.read_text(), re.M))
     if not items:
-        return False, ["PRIORITIES.md has no `### <n>.` items; "
+        return False, ["ATTENTION.md has no `### <n>.` items; "
                        "the answers-a-filed-item check would pass vacuously"]
 
     lean_source = ""
@@ -115,7 +115,7 @@ def check(registry: pathlib.Path, root: pathlib.Path) -> tuple[bool, list[str]]:
                             "never prose")
         item = str(e.get("answers_item", ""))
         if item and item not in items:
-            problems.append(f"{cid}: answers_item {item!r} is not a filed PRIORITIES item")
+            problems.append(f"{cid}: answers_item {item!r} is not a filed ATTENTION item")
         for field in ("generator", "review_status"):
             if field not in e.get("provenance", {}):
                 problems.append(f"{cid}: provenance is missing {field}")

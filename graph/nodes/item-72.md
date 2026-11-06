@@ -24,10 +24,10 @@ version: 1
 Item 72, Close the two evasions the improvement theorem cannot, is delivered in the shape its entry states: the weakest independence or counterfactual-integrity premise under which either escape is caught, or the finding that the escape is ineliminable at this layer and belongs to Coverage.
 
 ## Source
-PRIORITIES.md, item 72 (Close the two evasions the improvement theorem cannot); its context: `projects/normativity/legitimacy/rounds/2026-08-27-legitimate-improvement/LEGITIMATE_IMPROVEMENT.md` §§A, E, I.
+ATTENTION.md, item 72 (Close the two evasions the improvement theorem cannot); its context: `projects/normativity/legitimacy/rounds/2026-08-27-legitimate-improvement/LEGITIMATE_IMPROVEMENT.md` §§A, E, I.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 `NO-FREE-EVASION-SURVIVES` holds for a **demonstrated** repair. Two ways of

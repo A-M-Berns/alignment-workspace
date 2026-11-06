@@ -23,10 +23,10 @@ version: 1
 A solution to item 107 ships the registrations, and later the open pieces or their obstructions.
 
 ## Source
-PRIORITIES.md, item 107 (The post's backing: thin legitimacy, effective authority, and the post's theorem); its context: the round's `REPORT.md`, `POST_STATEMENT.md` and `CLAIM_MAP.md`; items 104 and 101.
+ATTENTION.md, item 107 (The post's backing: thin legitimacy, effective authority, and the post's theorem); its context: the round's `REPORT.md`, `POST_STATEMENT.md` and `CLAIM_MAP.md`; items 104 and 101.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The thin-legitimacy round (`projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/`) puts behind the post

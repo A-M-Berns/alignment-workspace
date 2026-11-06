@@ -24,10 +24,10 @@ version: 1
 Item 69, Bounded-lifetime liability, is delivered in the shape its entry states: the per-norm bound with its local laws, or the witness showing it cannot hold at presentation level.
 
 ## Source
-PRIORITIES.md, item 69 (Bounded-lifetime liability); its context: `projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/TRADERIZATION_CONSUMER.md` §4; `.../2026-08-25-end-to-end-vertical-slice/ANSWERABILITY_SCOUT.md` §§4, 8; `.../2026-08-25-legitimate-evolution/ANSWERABILITY.md` §4.
+ATTENTION.md, item 69 (Bounded-lifetime liability); its context: `projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/TRADERIZATION_CONSUMER.md` §4; `.../2026-08-25-end-to-end-vertical-slice/ANSWERABILITY_SCOUT.md` §§4, 8; `.../2026-08-25-legitimate-evolution/ANSWERABILITY.md` §4.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The enforcement consumer wants: a norm that is legitimately live over an interval

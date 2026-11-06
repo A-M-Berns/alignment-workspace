@@ -70,7 +70,7 @@ def rooted_names() -> set[str]:
 
 def live_documents() -> list[pathlib.Path]:
     docs = [ROOT / name for name in
-            ("README.md", "AGENTS.md", "CONTRIBUTING.md", "PRIORITIES.md",
+            ("README.md", "AGENTS.md", "CONTRIBUTING.md", "ATTENTION.md",
              "DECISIONS.md", "PROVENANCE.md", "RESEARCH_STATE.md")]
     docs += sorted(ROOT.glob("wiki/*.md"))
     docs += sorted(ROOT.glob("projects/*/CLAIMS.md"))

@@ -1,11 +1,14 @@
-# Priorities
+# Attention
 
-**What the program wants done next, in its own order.** This is not an inventory
-of everything unsolved — it is the maintainer's ranking of what would move the
-work, and an item's absence means nobody has asked for it, not that it is easy.
-GitHub issues mirror this file; this file does not mirror them. Each item states
-the problem precisely, points at the context, says what a solution must ship, and
-carries a difficulty tag.
+**The filed requests for work** — what the program asks of a round or a
+contributor, item by item. This is not an inventory of everything unsolved, and
+an item's absence means nobody has asked for it, not that it is easy. What
+matters most right now is the site's priorities ordering, derived from the
+standing scores; the maintainer files items here informed by it, and each entry
+on that ordering links the open items filed against its concept. GitHub issues
+mirror this file; this file does not mirror them. Each item states the problem
+precisely, points at the context, says what a solution must ship, and carries a
+difficulty tag.
 
 What a solution must ship is set by `CONTRIBUTING.md` and is the same for
 everyone: a theorem ships as statement + implementation + test + a necessity

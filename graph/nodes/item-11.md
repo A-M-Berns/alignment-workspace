@@ -24,10 +24,10 @@ version: 1
 A solution to item 11 ships the check, a passing case, and a failing case proving it bites.
 
 ## Source
-PRIORITIES.md, item 11 (Verification-register presence check in CI); its context: `AGENTS.md`, register statement; `.github/workflows/ci.yml`.
+ATTENTION.md, item 11 (Verification-register presence check in CI); its context: `AGENTS.md`, register statement; `.github/workflows/ci.yml`.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 `AGENTS.md` requires every substantive deliverable to ship a verification

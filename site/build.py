@@ -61,7 +61,7 @@ def build(out: pathlib.Path, verbose: bool = True) -> dict:
         put(site.url("items", num), pages.item_page(site, num), "item")
     put("/items/", pages.index_list_page(site, "Items", [f"<li>{site.link('items', n, f'{n}. ' + str(repo.nodes[rec['node']]['fields'].get('title', '')))} <span class=\"muted\">{pages.esc(str(repo.nodes[rec['node']]['fields'].get('item_status', '')))}</span></li>"
                                                         for n, rec in sorted(repo.items.items(), key=lambda kv: (not kv[0].isdigit(), int(kv[0]) if kv[0].isdigit() else 0, kv[0]))],
-                                           "The priority items, each a node of the map; PRIORITIES.md is rendered from them."), "listing")
+                                           "The attention items, each a node of the map: the filed requests for work; ATTENTION.md is rendered from them."), "listing")
     # decisions
     for a in repo.decisions:
         put(site.url("decisions", a), pages.decision_page(site, a), "decision")

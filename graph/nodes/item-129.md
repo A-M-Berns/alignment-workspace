@@ -30,7 +30,7 @@ projects/normativity/rounds/2026-08-16-traderized-enforcement/PROOF_CLOSURE.md; 
 A route of the improvement claim on traderized-finite-date-conformance, filed by reading by the site-vertical-slice round (projects/enabling/rounds/2026-10-24-site-vertical-slice).
 
 ## Notes
-Filed by the site-vertical-slice round as the route of the improvement claim that the step's earlier action asked for; the entry's text is the Item section below, rendered into PRIORITIES.md by checkers/priorities_render.py.
+Filed by the site-vertical-slice round as the route of the improvement claim that the step's earlier action asked for; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py.
 
 ## Item
 The traderization arc compiles a constraint on prices into a legal trading strategy and, for

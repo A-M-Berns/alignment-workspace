@@ -15,7 +15,7 @@ something about a real teacher.
 
 ## Source
 projects/deference/faf-cleanroom-2026-10-02/sources/corrigibility/workflow-2026-09-14b/develop/legitimacy-general-final.md,
-Question Q2; PRIORITIES.md, item 110 (the baseline as the idle-agent rollout)
+Question Q2; ATTENTION.md, item 110 (the baseline as the idle-agent rollout)
 for the default-process anchor on the public side.
 
 ## Notes

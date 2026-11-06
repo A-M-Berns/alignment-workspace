@@ -22,10 +22,10 @@ version: 1
 Item 37, Volatile quantities in `wiki/` cite the structured state or do not appear, is answered as its entry specifies.
 
 ## Source
-PRIORITIES.md, item 37 (Volatile quantities in `wiki/` cite the structured state or do not appear).
+ATTENTION.md, item 37 (Volatile quantities in `wiki/` cite the structured state or do not appear).
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 Answered by the wiki state-bindings round. A volatile quantity in `wiki/`

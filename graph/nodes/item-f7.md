@@ -20,10 +20,10 @@ version: 1
 Item F7, A round cannot record a dependency on an unindexed research checkpoint, is answered as its entry specifies.
 
 ## Source
-PRIORITIES.md, item F7 (A round cannot record a dependency on an unindexed research checkpoint).
+ATTENTION.md, item F7 (A round cannot record a dependency on an unindexed research checkpoint).
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 `state/rounds.json` requires every `depends_on` id to resolve, and

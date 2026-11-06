@@ -24,10 +24,10 @@ version: 1
 Item 116, The record as reason trace: what it mediates, the defect, and the port's duplicate, is delivered in the shape its entry states: (a) and (b) as filed positions with fixtures; (c) a deletion.
 
 ## Source
-PRIORITIES.md, item 116 (The record as reason trace: what it mediates, the defect, and the port's duplicate); its context: `.../2026-10-20-warrant-enforcement-semantics/RECORD.md`.
+ATTENTION.md, item 116 (The record as reason trace: what it mediates, the defect, and the port's duplicate); its context: `.../2026-10-20-warrant-enforcement-semantics/RECORD.md`.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 Three things Part C of the warrant-enforcement-semantics round made visible and did not

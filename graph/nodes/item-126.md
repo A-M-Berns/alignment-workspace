@@ -24,10 +24,10 @@ version: 1
 Item 126, The bankroll across repeated reopenings, is delivered in the shape its entry states: `lean-proved` on `OddsBankroll.Account`.
 
 ## Source
-PRIORITIES.md, item 126 (The bankroll across repeated reopenings); its context: `lean/Workspace/Normativity/Contrib/OddsBankroll.lean`; item 123.
+ATTENTION.md, item 126 (The bankroll across repeated reopenings); its context: `lean/Workspace/Normativity/Contrib/OddsBankroll.lean`; item 123.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 `OddsBankroll.Account.netWorth_ge_neg_odds_reopened` gives `−cap·ρ(2 + ρ)` across one

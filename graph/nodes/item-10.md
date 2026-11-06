@@ -26,10 +26,10 @@ version: 1
 Item 10, Build the Lean in CI, is delivered in the shape its entry states: A change to `.github/workflows/ci.yml` — **specification layer**, so a maintainer act; contributors propose via issue.
 
 ## Source
-PRIORITIES.md, item 10 (Build the Lean in CI); its context: `.github/workflows/ci.yml`; the measured times are recorded in `prompts/2026-08-10-repo-scaffolding/REPORT.md`.
+ATTENTION.md, item 10 (Build the Lean in CI); its context: `.github/workflows/ci.yml`; the measured times are recorded in `prompts/2026-08-10-repo-scaffolding/REPORT.md`.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The Lean gate compiles in CI with a cached `.lake/`; if that cache proves too

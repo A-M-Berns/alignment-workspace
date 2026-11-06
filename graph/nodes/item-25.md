@@ -24,10 +24,10 @@ version: 1
 A solution to item 25 ships the verdict, plus an explicit statement of whether the competence candidate survives it, plus — if the bound exists — whether the bounding hypothesis is itself credence-free or is a joint competence–credence hypothesis under skeleton v2 §2a.
 
 ## Source
-PRIORITIES.md, item 25 (Bound the near-indifference leakage, or show it cannot be bounded); its context: `prompts/2026-08-11-phase-ii-competence/REPORT.md` §1.6, §4.3 and §10; `prompts/2026-08-11-corrigibility-phase-ii/REPORT.md` §9.
+ATTENTION.md, item 25 (Bound the near-indifference leakage, or show it cannot be bounded); its context: `prompts/2026-08-11-phase-ii-competence/REPORT.md` §1.6, §4.3 and §10; `prompts/2026-08-11-corrigibility-phase-ii/REPORT.md` §9.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The controlling competence question after Stage II, and the one item that decides whether

@@ -33,8 +33,8 @@ content is not bent to fit.
 | `graph/policy.yaml` | parameters, handles, registries | `maintainer` is a list of human handles; `handles` maps `@anson` and `@abram` |
 | `projects/*/CLAIMS.md` (two registries, 178 entries) | registered claims with a statement of record | each entry has exactly one formal result in the map: an `and` whose id is the registry id, of a `record` leaf (statement of record = the declaration), one hypothesis leaf per hypothesis read from the Lean signature, one `bridge` with `attribution`, one completeness leaf; the registry stays the statement of record and the map cites it |
 | the 82 landed `record` leaves whose declarations are not registry entries | clean-room and package declarations | kept as they are (they cap at level 2, *not in a claims registry*); the gap is filed in §7 |
-| `PRIORITIES.md`, numbered items | work orders (125, plus 4 ingenuity entries and 8 friction entries) | one node per entry, id `item-<n>` (`item-q<n>` for *Where ingenuity is the bottleneck*, `item-f<n>` for *Workspace friction*), a `task` leaf for a work order and a `question` leaf for an ingenuity entry, or the node that already stood for the item (17 merged, renamed into the scheme); the item's fields (number, title, difficulty tag, heading annotations, project, dispatchable, deliverable shape, acceptance check, context paths, open/closed status, position, section) on the node; the item's body verbatim in a `## Item` section of the node file |
-| `PRIORITIES.md`, the file | the maintainers' ordered list | **a render** of the item nodes in the transcribed order, written by `checkers/priorities_render.py` on the plain checker run from `state/priorities_sections.md` (the standing preamble and each section's intro) and the item nodes; `tests/run.py` gates that the committed file equals the render |
+| `ATTENTION.md`, numbered items | work orders (125, plus 4 ingenuity entries and 8 friction entries) | one node per entry, id `item-<n>` (`item-q<n>` for *Where ingenuity is the bottleneck*, `item-f<n>` for *Workspace friction*), a `task` leaf for a work order and a `question` leaf for an ingenuity entry, or the node that already stood for the item (17 merged, renamed into the scheme); the item's fields (number, title, difficulty tag, heading annotations, project, dispatchable, deliverable shape, acceptance check, context paths, open/closed status, position, section) on the node; the item's body verbatim in a `## Item` section of the node file |
+| `ATTENTION.md`, the file | the maintainers' ordered list | **a render** of the item nodes in the transcribed order, written by `checkers/attention_render.py` on the plain checker run from `state/attention_sections.md` (the standing preamble and each section's intro) and the item nodes; `tests/run.py` gates that the committed file equals the render |
 | `DECISIONS.md` | the maintainers' prose rulings (261 settled, 22 queued before this round's additions) | stays the highest-precedence prose record; each entry gains one machine line (an anchor and a `touches` list: 283 anchors, 49 with touches read from the entries' explicit mentions); 61 nodes point at 50 entries through the `work` pointer kind `decision`; no ruling is reworded and no event is written |
 | `wiki/*.md` | narrative pages (32 pages, 2 repo-only files) | 24 pages attached to frames and nodes through the `narrative` field (a page or a list of pages); 304 claims, items and rounds named in prose carry a resolvable reference (`checkers/wiki_refs.py`), which found six superseded ids to correct |
 | `state/rounds.json` (125 rounds, 126 with this one) | the round index | 119 rounds pointed at by `work: {kind: round}` from 194 nodes (the formal results by `origin_round`, the line and programme frames by project, the enabling work by the infrastructure rounds); 6 administrative rounds unpointed, listed in the report |
@@ -53,7 +53,7 @@ including the multi-record one.
 What stays hand-written and specification layer: `AGENTS.md`, `CONTRIBUTING.md`,
 `README.md`, `RESEARCH_STATE.md`, `PROVENANCE.md`, `DECISIONS.md`, the registries,
 the wiki, `graph/PROTOCOL.md`, `graph/README.md`, `graph/frame.yaml`,
-`graph/policy.yaml`, and now `state/priorities_sections.md` and the item nodes
+`graph/policy.yaml`, and now `state/attention_sections.md` and the item nodes
 `graph/nodes/item-*.md` (`tests/path_gate.py` and `.github/CODEOWNERS` both list them).
 
 ## 2. Structure and numbers
@@ -108,7 +108,7 @@ ledger is self-attribution checked for form, not trust: the events in it mint
 levels on nodes only as the protocol's anchors say (a level of 10 and above
 needs a second human), they are public under the handle, and nothing a
 verdict depends on reads them. The specification layer stays maintainer-owned;
-the item nodes join it because `PRIORITIES.md` is now their render.
+the item nodes join it because `ATTENTION.md` is now their render.
 
 ## 4. The three contribution verbs (event schemas for a later round)
 

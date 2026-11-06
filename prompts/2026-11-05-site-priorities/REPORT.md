@@ -37,7 +37,41 @@ choice, not a measurement; nothing calibrates them. The ranking does not read th
 / `priority` ledger events or `graph/tasks.md`'s information-rate lens — `/ranking/`
 still carries that view unchanged, and whether the two lenses should merge is left open.
 
+## The follow-up of 2026-11-05 (`PROMPT-followup.md`)
+
+The maintainer ruled on the four points the first increment raised. The item ledger is
+renamed `PRIORITIES.md` → `ATTENTION.md` (the render, its sections file
+`state/attention_sections.md`, the module `checkers/attention_render.py`, and every
+living reference: governance documents, checkers, tests, graph documents, item nodes'
+non-Statement prose, the pull-request template, the site). `/priorities/` and the items
+are connected: each ranked concept lists the open items filed against it, matched
+through the frames its refs name, and the ledger's preamble points back. The ratings are
+the priority system, recorded in `AGENTS.md`'s demand-gating and site sections. The
+standing maintenance dispatch is adopted as a ruling, with its authorization at
+`prompts/2026-11-05-standing-maintenance/PROMPT.md`.
+
+Machine identifiers stayed under the display rename (the pointer kind `priorities`, the
+`priority` event on wants, `workspace_state`'s `priorities` key, the `/items/` paths),
+and node Statements keep the old file name until each is revised with a version bump —
+the checker refuses a Statement edit without one, and a forged bump would mark every
+standing score stale; seven nodes' Statement sections were reverted to the old spelling
+on exactly that refusal. Both choices are in the dated `DECISIONS.md` entry.
+
+Not shown, in addition: nothing migrates GitHub-side references to the old file name
+(issue templates, external links), and the item→concept match covers 87 of 116 open
+items — an item whose node sits in no concept-ref frame lists under no concept, which is
+a map fact, not a defect of the page.
+
+## Outstanding maintainer actions
+
+1. The wiki names `PRIORITIES.md` in five pages (`Normative-Record-and-Inquiry`,
+   `Deconfusing-Corrigibility-Companion`, `Deference`, `Normative-Inductor`,
+   `Theorem-Spine`); the wiki is the maintainer's surface — edit, or dispatch a round to.
+2. Wire the maintenance sweep's schedule (cadence is yours; weekly beside the freshness
+   audit is the natural choice), e.g.:
+   `claude -p --name '⚙ maintenance-sweep' "Run the standing maintenance sweep per prompts/2026-11-05-standing-maintenance/PROMPT.md in a worktree of ~/hub/repos/alignment-workspace; open one PR." --permission-mode auto`
+
 ## Attribution
 
-Prompt-author: the maintainer, in conversation, kept verbatim (`PROMPT.md`). Executor:
-Claude Fable 5 (Anthropic). 2026-11-05.
+Prompt-author: the maintainer, in conversation, kept verbatim (`PROMPT.md`, and the
+follow-up in `PROMPT-followup.md`). Executor: Claude Fable 5 (Anthropic). 2026-11-05.

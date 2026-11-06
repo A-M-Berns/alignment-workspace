@@ -45,7 +45,7 @@ the next run. `derived.json` and `index.json` are not committed (ruling F3,
 2026-10-23): `.gitignore` excludes them, CI keeps them as artifacts and publishes
 the derivation of `main` to the branch `derived`; `versions.json` records each
 one's derivation hash so a stale or foreign derivation shows against the commit. Where the tree holds item nodes, the plain run also renders
-`PRIORITIES.md` from them (`checkers/priorities_render.py`).
+`ATTENTION.md` from them (`checkers/attention_render.py`).
 
 Numbers that are compared with a threshold or summed into a status or value
 are exact `fractions.Fraction`; the information estimates (bits) are floats,
@@ -376,7 +376,7 @@ def parse_node_text(text, path):
     node = dict(fm)
     node["_path"], node["_statement"], node["_source"] = path, sec["Statement"], sec["Source"]
     node["_notes"] = sec.get("Notes", "")
-    node["_item"] = sec.get("Item")          # an item node's transcribed entry (PRIORITIES.md is rendered from it)
+    node["_item"] = sec.get("Item")          # an item node's transcribed entry (ATTENTION.md is rendered from it)
     node.setdefault("children", [])
     node.setdefault("rows", [])
     if node["children"] is None:
@@ -1003,7 +1003,7 @@ def lint(t):
             if t.nodes.get(r["id"], {}).get("kind") != "frame":
                 step_supports.append((r["id"], sp))
     words = [str(w).casefold() for w in (po.get("evaluative_words") or [])]
-    prio_path = t.root / "PRIORITIES.md"
+    prio_path = t.root / "ATTENTION.md"
     prio_items = set(re.findall(r"^### (\d+)\.", prio_path.read_text(), re.M)) if prio_path.is_file() else set()
     item_nodes = {}
     for x, n in nodes.items():
@@ -1090,7 +1090,7 @@ def lint(t):
             raise Refuse(2, path, "filed_from: wiki marks a frame drafted from a wiki page; a want is filed_from: quote")
         _check_narrative(t, path, n)
         if "item" in n:
-            # an item node (ruling M6, 2026-10-22): the transcription of one PRIORITIES.md entry, rendered back by checkers/priorities_render.py
+            # an item node (ruling M6, 2026-10-22): the transcription of one ATTENTION.md entry, rendered back by checkers/attention_render.py
             if not isinstance(n["item"], str) or not _ITEM_ID.match(n["item"]):
                 raise Refuse(2, path, f"item is the entry's number as a string (\"77\", \"Q1\", \"F3\"), not {n['item']!r}")
             if not x.startswith("item-"):
@@ -1121,12 +1121,12 @@ def lint(t):
                 raise Refuse(2, path, f"work is a list of {{kind, ref}} with kind one of {', '.join(sorted(WORK_KINDS))}")
             for w in n["work"]:
                 if w["kind"] == "priorities" and not (isinstance(w["ref"], int) and not isinstance(w["ref"], bool)):
-                    raise Refuse(2, path, f"work kind priorities refs an integer item number of PRIORITIES.md, not {w['ref']!r}")
+                    raise Refuse(2, path, f"work kind priorities refs an integer item number of ATTENTION.md, not {w['ref']!r}")
                 if w["kind"] == "priorities":
                     if item_nodes and str(w["ref"]) not in item_nodes:
-                        raise Refuse(1, path, f"work order PRIORITIES #{w['ref']} names no item node (a node carrying item: \"{w['ref']}\")")
+                        raise Refuse(1, path, f"work order ATTENTION #{w['ref']} names no item node (a node carrying item: \"{w['ref']}\")")
                     if not item_nodes and str(w["ref"]) not in prio_items:
-                        t.warnings.append(f"{path}: work order PRIORITIES #{w['ref']} has no '### {w['ref']}.' heading in PRIORITIES.md")
+                        t.warnings.append(f"{path}: work order ATTENTION #{w['ref']} has no '### {w['ref']}.' heading in ATTENTION.md")
                     if "item" in n and str(w["ref"]) == n["item"]:
                         t.warnings.append(f"{path}: an item node's work pointer to its own item is redundant with its item field")
                 if w["kind"] == "round" and not (t.root / str(w["ref"])).is_dir() and str(w["ref"]).rstrip("/") not in t.rounds:
@@ -4319,7 +4319,7 @@ def render_tasks(t, D, pf, today):
         L += line(i, u)
     if len(main) > len(printed):
         L.append(f"- … {len(main) - len(printed)} more ranked units in `derived.json` (`--all` prints them)")
-    L += ["", "## Agent work", "Work an agent can do without a human; the map's ordering, not `PRIORITIES.md`'s."]
+    L += ["", "## Agent work", "Work an agent can do without a human; the map's ordering, not `ATTENTION.md`'s."]
     L += sum((line(i, u) for i, u in enumerate(agent[:20], 1)), []) or ["- none"]
     L += ["", "## By goal", "The goals in the frame tree's order (the agenda's outline): kind and role, the best ranked unit and its rank, "
           "the count of units, and the Statement's first clause. A rank past the printed list is in `derived.json` (each unit's "
@@ -4627,7 +4627,7 @@ def render_view(t, D, pf, today):
 
 def work_text(w):
     """How a work pointer prints."""
-    return {"priorities": f"work order: PRIORITIES #{w['ref']}", "open": f"open statement: `{w['ref']}`",
+    return {"priorities": f"work order: ATTENTION #{w['ref']}", "open": f"open statement: `{w['ref']}`",
             "round": f"round: {w['ref']}", "private": f"private source: {w['ref']}",
             "decision": f"decision: {w['ref']}", "foundation": f"foundation: {w['ref']}"}[w["kind"]]
 
@@ -4870,10 +4870,10 @@ def structure_index(t, today):
 def write_outputs(t, files):
     for name, content in files.items():
         (t.graph / name).write_text(content)
-    # PRIORITIES.md is a render of the item nodes (ruling M6): written on the plain run beside the committed files
-    if any("item" in n for n in t.nodes.values()) and (t.root / "state" / "priorities_sections.md").is_file():
-        from checkers import priorities_render
-        (t.root / "PRIORITIES.md").write_text(priorities_render.render(t.root))
+    # ATTENTION.md is a render of the item nodes (ruling M6): written on the plain run beside the committed files
+    if any("item" in n for n in t.nodes.values()) and (t.root / "state" / "attention_sections.md").is_file():
+        from checkers import attention_render
+        (t.root / "ATTENTION.md").write_text(attention_render.render(t.root))
 
 
 def write_deltas(t, D):

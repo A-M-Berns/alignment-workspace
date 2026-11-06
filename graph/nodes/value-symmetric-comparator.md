@@ -24,5 +24,5 @@ the world while the novice's is not."
 
 ## Notes
 A route of ddb-value-iff-total-trust.improvable. Not started as such;
-PRIORITIES #27 (a fully-updated comparator with a fallible future agent) is
+ATTENTION #27 (a fully-updated comparator with a fallible future agent) is
 the nearest public work order (AI reading of the relation).

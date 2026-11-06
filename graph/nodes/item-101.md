@@ -28,10 +28,10 @@ version: 1
 A solution to item 101 ships the certificate and the priced event, or the negative with its fixture.
 
 ## Source
-PRIORITIES.md, item 101 (The shortfall event as a security: generability and pricing of `Short`); its context: the round's `REPORT.md` §2 and the "Interface for the later rounds" note; `AuthorityModule.lean` §§2–3; item 90 for the generability shape; item 100 for the normativity-side instance.
+ATTENTION.md, item 101 (The shortfall event as a security: generability and pricing of `Short`); its context: the round's `REPORT.md` §2 and the "Interface for the later rounds" note; `AuthorityModule.lean` §§2–3; item 90 for the generability shape; item 100 for the normativity-side instance.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The authority-module round (`projects/deference/rounds/2026-09-25-authority-module/`)

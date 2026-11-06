@@ -13,5 +13,5 @@ version: 1
 A compiler that is both exact and conformance-preserving exists, or a proof says there is none, so that conformance within a schedule is not bought by inexactness.
 
 ## Source
-PRIORITIES.md, item 43 (a compiler that is both exact and safe, or a proof there is none).
+ATTENTION.md, item 43 (a compiler that is both exact and safe, or a proof there is none).
 A route of the improvement claim on traderized-finite-date-conformance, filed by reading by the site-vertical-slice round (projects/enabling/rounds/2026-10-24-site-vertical-slice).

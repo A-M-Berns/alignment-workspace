@@ -334,6 +334,7 @@ ol.prio-list li.prio { border: 1px solid var(--rule); border-radius: 10px; paddi
 .prio-rank { font-weight: 760; color: var(--muted); min-width: 1.6em; text-align: right; }
 .prio-blurb { margin: 0.35em 0 0.2em; }
 .prio-why { font-size: 0.8rem; margin: 0; }
+.prio-items { font-size: 0.82rem; margin: 0.3em 0 0; }
 
 /* the mini-hero on the map's node card */
 .mini-hero { display: flex; gap: 1.1em; margin: 0.35em 0 0.45em; }

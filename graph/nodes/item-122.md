@@ -26,10 +26,10 @@ version: 1
 Item 122, The transport's negated-form drop, is delivered in the shape its entry states: the fix, the landed section, green fixtures.
 
 ## Source
-PRIORITIES.md, item 122 (The transport's negated-form drop); its context: `projects/normativity/seed/rounds/2026-09-17-convergence-measure/REPORT.md`; `projects/normativity/seed/rounds/2026-09-16-seed-statics/src/seed.py`.
+ATTENTION.md, item 122 (The transport's negated-form drop); its context: `projects/normativity/seed/rounds/2026-09-17-convergence-measure/REPORT.md`; `projects/normativity/seed/rounds/2026-09-16-seed-statics/src/seed.py`.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The seed-statics branch's `transport_seed` (its `src/seed.py`, cited by the convergence

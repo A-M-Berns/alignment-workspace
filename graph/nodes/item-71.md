@@ -25,10 +25,10 @@ version: 1
 Item 71, Build the due-activation term in `roots()`, is delivered in the shape its entry states: the activation term, plus a verifier that recomputes rising edges from a shipped record and compares them against its roots.
 
 ## Source
-PRIORITIES.md, item 71 (Build the due-activation term in `roots()`); its context: `projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/ANSWERABILITY.md`, *RI REALIZATION OF D1*; `COUNTERMODELS.md` §19.
+ATTENTION.md, item 71 (Build the due-activation term in `roots()`); its context: `projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/ANSWERABILITY.md`, *RI REALIZATION OF D1*; `COUNTERMODELS.md` §19.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 **Narrowed from a gap to an implementation task.** Legitimate Evolution needs the

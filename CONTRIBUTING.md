@@ -95,7 +95,7 @@ reason to reject a contribution even when its local gloss is accurate.
 
 ### Nothing enters the record unasked
 
-**Every registered claim answers a filed `PRIORITIES.md` item.** Propose new
+**Every registered claim answers a filed `ATTENTION.md` item.** Propose new
 items as issues; filing is not a contributor's. An unsolicited-but-correct
 contribution is not merged into the record — but the maintainer may file a
 matching item and then accept it, so good work is not wasted, only sequenced.
@@ -187,7 +187,7 @@ is a counterexample" is not a witness; the counterexample is.
 
 ## Where to find work
 
-`PRIORITIES.md`. It is the source of truth and it tags difficulty: **[entry]**
+`ATTENTION.md`. It is the source of truth and it tags difficulty: **[entry]**
 items need no new mathematics, **[substantial]** items are scoped results,
 **[open]** items may be impossible. GitHub issues mirror that file, not the
 reverse — if the two disagree, the file is right. The site under `site/`

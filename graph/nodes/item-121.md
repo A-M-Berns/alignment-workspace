@@ -28,10 +28,10 @@ version: 1
 Item 121, Transitive retirement, and the closure a settlement must carry, is delivered in the shape its entry states: the chosen rule as a `def`, the re-proved monotonicity lemmas, and the chain-of-three fixture under it.
 
 ## Source
-PRIORITIES.md, item 121 (Transitive retirement, and the closure a settlement must carry); its context: `projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md` A1; `DECISIONS.md` 2026-10-21 (M2).
+ATTENTION.md, item 121 (Transitive retirement, and the closure a settlement must carry); its context: `projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md` A1; `DECISIONS.md` 2026-10-21 (M2).
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The rule `settleForm` (`lean/Workspace/Normativity/Contrib/WarrantEntitlement.lean`,

@@ -30,7 +30,7 @@ wiki/Openness-Coverage-and-Non-Capture.md, Robust Openness ("The semantics is in
 A route of the improvement claim on split-bill-is-robust-openness, filed by reading by the site-vertical-slice round (projects/enabling/rounds/2026-10-24-site-vertical-slice); the item is this round's.
 
 ## Notes
-Filed by the site-vertical-slice round as a route of the improvement claim on the connected openness claim; the entry's text is the Item section below, rendered into PRIORITIES.md by checkers/priorities_render.py.
+Filed by the site-vertical-slice round as a route of the improvement claim on the connected openness claim; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py.
 
 ## Item
 The non-capture certificate theorems (`NonCaptureCertificate.lean`) quantify over a scenario: the

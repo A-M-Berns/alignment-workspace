@@ -2,7 +2,7 @@
 id: enabling-map-as-canonical
 kind: leaf
 leaf_kind: task
-action: "Keep the map the canonical index: file each new registered claim, item, decision and round in it, and keep PRIORITIES.md a render."
+action: "Keep the map the canonical index: file each new registered claim, item, decision and round in it, and keep ATTENTION.md a render."
 who: either
 author: "@smithy-verity"
 size: S

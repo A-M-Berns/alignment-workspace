@@ -25,10 +25,10 @@ version: 1
 A solution to item 82 ships the extension, or a statement that no application needs it.
 
 ## Source
-PRIORITIES.md, item 82 (Aggregation laws with several parents); its context: `READINESS.md` §1 of the final pressure pass; `OccurrenceIntegrity.lean`, the `LocalLaw` docstring.
+ATTENTION.md, item 82 (Aggregation laws with several parents); its context: `READINESS.md` §1 of the final pressure pass; `OccurrenceIntegrity.lean`, the `LocalLaw` docstring.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 `OccurrenceIntegrity.LocalLaw` transforms one requirement into successors with maps

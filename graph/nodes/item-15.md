@@ -25,10 +25,10 @@ version: 1
 A solution to item 15 ships the three instantiations, what each yields, the derived inequality with its constants, and necessity or sharpness witnesses where feasible.
 
 ## Source
-PRIORITIES.md, item 15 (Finite settlement classification, and the local delegation bridge); its context: `projects/deference/notes/FINITE_MODEL_SKELETON.md` §5, §6.
+ATTENTION.md, item 15 (Finite settlement classification, and the local delegation bridge); its context: `projects/deference/notes/FINITE_MODEL_SKELETON.md` §5, §6.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 Over the frozen finite skeleton, formalize grade/report settlement, world/outcome

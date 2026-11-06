@@ -40,7 +40,7 @@ research be vetted and published.
 ## Source
 The repository's own activity as the activity sweep read it: graph/README.md
 and graph/PROTOCOL.md (the map), projects/deference/faf-cleanroom-2026-10-02/README.md
-(the clean room), PRIORITIES.md and RESEARCH_STATE.md (the publication queue);
+(the clean room), ATTENTION.md and RESEARCH_STATE.md (the publication queue);
 the claims and cruxes below cite their sources in their own files.
 
 ## Notes

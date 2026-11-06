@@ -2,7 +2,7 @@
 id: task-items-53-59
 kind: leaf
 leaf_kind: task
-action: "Execute PRIORITIES items 53 (the May-rule-to-scope compiler), 55 (the Due connection) and 59 (a Due an advisor cannot select within), each per its deliverable shape; items 54 and 56 to 58 are the reasons route under reasons-improvable."
+action: "Execute ATTENTION items 53 (the May-rule-to-scope compiler), 55 (the Due connection) and 59 (a Due an advisor cannot select within), each per its deliverable shape; items 54 and 56 to 58 are the reasons route under reasons-improvable."
 who: agent
 work:
   - {kind: priorities, ref: 53}
@@ -17,4 +17,4 @@ version: 1
 The reason-state blockers of PRIORITIES items 53, 55 and 59 are closed.
 
 ## Source
-PRIORITIES.md, items 53, 55 and 59 (the normativity line's legitimacy section).
+ATTENTION.md, items 53, 55 and 59 (the normativity line's legitimacy section).

@@ -30,10 +30,10 @@ version: 1
 A solution to item 87 ships the ecosystem model, or the exact obstruction.
 
 ## Source
-PRIORITIES.md, item 87 (Realizing legitimate deference: the evaluation-ecosystem bill); its context: `projects/deference/rounds/2026-09-08-legitimate-deference-consolidation/` (`LEGITIMATE_DEFERENCE.md`, `REASON_SUPPLY.md` §4, `DIACHRONIC_AUTHORSHIP.md` §5), on the two rounds it consolidates.
+ATTENTION.md, item 87 (Realizing legitimate deference: the evaluation-ecosystem bill); its context: `projects/deference/rounds/2026-09-08-legitimate-deference-consolidation/` (`LEGITIMATE_DEFERENCE.md`, `REASON_SUPPLY.md` §4, `DIACHRONIC_AUTHORSHIP.md` §5), on the two rounds it consolidates.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The legitimate-deference stack (authority-activated value, reason-mediated authorship,

@@ -16,7 +16,7 @@ poly-time boundary of the computability axis.
 Garrabrant et al. 2016, Logical Induction, §5 (the construction is computable;
 its running time is not polynomial).
 
-PRIORITIES.md: "The modified market as a computable belief sequence"
+ATTENTION.md: "The modified market as a computable belief sequence"
 
 ## Notes
 A property of the published construction. It places work at the

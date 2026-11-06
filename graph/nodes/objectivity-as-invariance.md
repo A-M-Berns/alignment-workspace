@@ -19,7 +19,7 @@ projects/deference/note-dump-2026-08-11/related-chats/2026-07-05__theory-of-legi
 turn 8, the AI's reasoning (truth as the fixed point that legitimate processes
 converge to; procedural objectivity for values and territory-anchored
 objectivity for beliefs); an AI proposal. The related public question is
-PRIORITIES.md, item 108 (no outside fact).
+ATTENTION.md, item 108 (no outside fact).
 
 ## Notes
 An AI-proposed question, marked as such; filed because it is the one proposal

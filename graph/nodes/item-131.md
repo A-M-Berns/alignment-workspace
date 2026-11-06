@@ -30,7 +30,7 @@ projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REP
 A route of the improvement claim on effective-authority-layer, filed by reading by the site-vertical-slice round (projects/enabling/rounds/2026-10-24-site-vertical-slice); the item is this round's.
 
 ## Notes
-Filed by the site-vertical-slice round as a route of the improvement claim on the effective-authority layer; the entry's text is the Item section below, rendered into PRIORITIES.md by checkers/priorities_render.py.
+Filed by the site-vertical-slice round as a route of the improvement claim on the effective-authority layer; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py.
 
 ## Item
 The thin-legitimacy round left the ask-list deviation as a self-checkable clause beside the landed

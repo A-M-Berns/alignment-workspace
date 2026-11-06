@@ -24,10 +24,10 @@ version: 1
 Item 31, Does the objection grammar already represent a remediable-pattern filing, is delivered in the shape its entry states: `enumeration-verified` — grounds instantiating the filing against the thirteen-table registry, with the footprint ablation run over it; or a documented negative naming the missing structure.
 
 ## Source
-PRIORITIES.md, item 31 (Does the objection grammar already represent a remediable-pattern filing?); its context: `REMEDIABLE_FAILURES.md`, last section; `projects/normativity/consolidation-aug9/THEORY_7_OBJECTION_GRAMMAR.md`.
+ATTENTION.md, item 31 (Does the objection grammar already represent a remediable-pattern filing?); its context: `REMEDIABLE_FAILURES.md`, last section; `projects/normativity/consolidation-aug9/THEORY_7_OBJECTION_GRAMMAR.md`.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 A lawful-edit certificate, a recurrence count and a positive charge differential

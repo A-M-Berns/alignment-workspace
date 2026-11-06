@@ -23,10 +23,10 @@ version: 1
 A solution to item 80 ships the class, the theorem, and what it does to the residual term.
 
 ## Source
-PRIORITIES.md, item 80 (Affordable service on an adaptive docket); its context: `CONSOLIDATION.md` §9.2 of the mathematical-consolidation round; the normative-affordability round's `CLOSED_LOOP_EXISTENCE.md`.
+ATTENTION.md, item 80 (Affordable service on an adaptive docket); its context: `CONSOLIDATION.md` §9.2 of the mathematical-consolidation round; the normative-affordability round's `CLOSED_LOOP_EXISTENCE.md`.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The predictable-window cheapest-date scheduler is Lean-proved for a declared finite

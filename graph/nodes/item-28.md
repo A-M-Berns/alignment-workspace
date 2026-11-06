@@ -26,10 +26,10 @@ version: 1
 Item 28, Can any valuation price a jurisdiction assignment, is answered as its entry specifies.
 
 ## Source
-PRIORITIES.md, item 28 (Can any valuation price a jurisdiction assignment?).
+ATTENTION.md, item 28 (Can any valuation price a jurisdiction assignment?).
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 Answered in Lean by Stage V and registered as `jurisdiction.*` in

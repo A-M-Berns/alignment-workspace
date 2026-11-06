@@ -24,10 +24,10 @@ version: 1
 Item 66, Grounded Replay in Lean, is delivered in the shape its entry states: `Occ`, `Edit`, `replay`, `S1` and `S2` as explicit hypotheses; the grounding theorem and its three corollaries proved; an inhabitation witness for the full hypothesis package, per `AGENTS.md` standard 3.
 
 ## Source
-PRIORITIES.md, item 66 (Grounded Replay in Lean); its context: `projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/LEGITIMATE_EVOLUTION.md`, the `MINIMAL MATHEMATICAL STATEMENT` section; `src/replay.py`.
+ATTENTION.md, item 66 (Grounded Replay in Lean); its context: `projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/LEGITIMATE_EVOLUTION.md`, the `MINIMAL MATHEMATICAL STATEMENT` section; `src/replay.py`.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 Two types, one fold, two premises, one induction and three corollaries. No

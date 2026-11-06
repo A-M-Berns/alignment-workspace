@@ -30,7 +30,7 @@ are the rounds' own:
 - **`CartesianFrameBridge.lean`** states its results over a mirrored fragment of an
   upstream library at a commit this repository does not pin, under an `Iso` weaker
   than the authoritative one. Registering it would register statements about the
-  copy. `PRIORITIES.md` item 52 is to import the real definitions and delete the
+  copy. `ATTENTION.md` item 52 is to import the real definitions and delete the
   mirror; registration belongs after that.
 
 The refutations in `ReachableCorrectiveControl` **are** registered. A theorem that
@@ -2646,7 +2646,7 @@ round produced.
     "context": "prompts/2026-10-17-post-companion-formalization/PROMPT.md",
     "companion": "wiki/Deconfusing-Corrigibility-Companion.md"
   },
-  "note": "Unbiasedness From Feedback is the named hypothesis `Sequential.UnbiasedFromFeedback`, assumed rather than derived (PRIORITIES item 111). limsup in the eventual form `LimsupLE`. Inhabited by `Witness.theorem3_instance` on `Witness.sequential` (estimates equal to realized scores)."
+  "note": "Unbiasedness From Feedback is the named hypothesis `Sequential.UnbiasedFromFeedback`, assumed rather than derived (ATTENTION item 111). limsup in the eventual form `LimsupLE`. Inhabited by `Witness.theorem3_instance` on `Witness.sequential` (estimates equal to realized scores)."
 }
 ```
 

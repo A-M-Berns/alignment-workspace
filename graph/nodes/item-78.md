@@ -27,10 +27,10 @@ version: 1
 A solution to item 78 ships the rewritten pages and the registry entries; register also `LegitimateEvolution.Evolution.conservation`, `LegitimateSegment.answerable`, and `NonCapture.Scenario.robustOpenActual_of_persistence`.
 
 ## Source
-PRIORITIES.md, item 78 (Canonicalize the legitimacy spine from the consolidation); its context: the consolidation round's `CONSOLIDATION.md` and `THEOREMS.md`, as amended by the final pressure pass's `projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md` (accounted state, evolution relation, per-state openness, `RobustOpenActual`, `Resolution`, unary local laws); the two `DECISIONS.md` queue entries the consolidation names (protected principal; settlement independence).
+ATTENTION.md, item 78 (Canonicalize the legitimacy spine from the consolidation); its context: the consolidation round's `CONSOLIDATION.md` and `THEOREMS.md`, as amended by the final pressure pass's `projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md` (accounted state, evolution relation, per-state openness, `RobustOpenActual`, `Resolution`, unary local laws); the two `DECISIONS.md` queue entries the consolidation names (protected principal; settlement independence).
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The mathematical-consolidation round states, in

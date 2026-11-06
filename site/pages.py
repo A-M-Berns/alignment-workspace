@@ -1081,19 +1081,39 @@ def priorities_page(site: Site) -> str:
     scores and moves when they do; scoring an axis is how a reader moves it."""
     r = site.repo
     ranked, unranked = priority_order(site)
+    # the open ATTENTION items filed against a concept: an item whose node sits under a
+    # concept ref (part/given, two steps) or in a frame the concept refs directly. Sparse
+    # where refs are sparse; the connection grows as refs are curated.
+    open_items = {num: rec for num, rec in r.items.items()
+                  if r.nodes[rec["node"]]["fields"].get("item_status", "open") == "open"}
+    near_item = {num: {rec["node"]}
+                 | {p for p, _ in r.parents.get(rec["node"], [])}
+                 | {g for p, _ in r.parents.get(rec["node"], []) for g, _ in r.parents.get(p, [])}
+                 for num, rec in open_items.items()}
+    frames_of_item = {num: {f["frame"] for f in r.nodes[rec["node"]].get("in_frames") or []}
+                      for num, rec in open_items.items()}
     rows = []
     for i, row in enumerate(ranked, 1):
         cid, e, h = row["cid"], r.concepts[row["cid"]], row["hero"]
+        refs = {x for x in (e.get("refs") or []) if x in r.nodes}
+        nums = sorted({num for num in open_items
+                       if (near_item[num] & refs) or (frames_of_item[num] & refs)},
+                      key=lambda s: (not s.isdigit(), int(s) if s.isdigit() else 0, s))
+        links = ", ".join(site.link("items", num, f'{num}. {r.nodes[r.items[num]["node"]]["fields"].get("title", "")}')
+                          for num in nums)
         rows.append(
             f'<li class="prio"><div class="prio-head"><span class="prio-rank">{i}</span>'
             f'{site.link("concepts", cid, e.get("title", cid))} <span class="kind">{esc(str(e.get("kind") or ""))}</span></div>'
             + mini_hero(h)
             + f'<p class="prio-blurb">{esc(str(e.get("blurb") or ""))}</p>'
-            + f'<p class="prio-why muted">{esc(row["why"])}</p></li>')
+            + f'<p class="prio-why muted">{esc(row["why"])}</p>'
+            + (f'<p class="prio-items">open items: {links}</p>' if nums else "")
+            + '</li>')
     body = ['<p class="lens"><strong>This page is a lens, not the structure.</strong> The ordering is derived from the '
             'standing scores — importance first, raised by how far reliability and clarity sit behind it — and it moves '
             'when someone scores an axis. A grey number is an AI seed no human has confirmed; '
-            'the <a href="/map/">map</a> is the whole record.</p>',
+            'the <a href="/map/">map</a> is the whole record. Where open <a href="/items/">items</a> '
+            'are filed against a concept, they are the asked-for work on it.</p>',
             '<ol class="prio-list">' + "".join(rows) + "</ol>" if rows
             else '<p class="muted">No concept carries an importance score yet.</p>']
     if unranked:

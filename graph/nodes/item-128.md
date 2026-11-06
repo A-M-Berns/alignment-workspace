@@ -25,10 +25,10 @@ version: 1
 Item 128 (Admission from the accounted state) is delivered as its entry specifies; the entry is transcribed below.
 
 ## Source
-PRIORITIES.md, item 128 (Admission from the accounted state); its context: `.../2026-10-22-normative-inductor-integration/HANDOFFS.md` (the first arrow); `OpenIntegrityEvolution.ObligationState`; `wiki/Legitimacy.md`.
+ATTENTION.md, item 128 (Admission from the accounted state); its context: `.../2026-10-22-normative-inductor-integration/HANDOFFS.md` (the first arrow); `OpenIntegrityEvolution.ObligationState`; `wiki/Legitimacy.md`.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 `WarrantInductor.Entitlement O G Expresses` types the admission of a warrant occurrence to the

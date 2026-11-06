@@ -24,10 +24,10 @@ version: 1
 Item 64, What the inquiry interface consumes, is delivered in the shape its entry states: an interface note plus a `test-supported` model — what an inquiry step consumes, what it emits, and a witness that emitting a `ReasonOcc` and nothing else suffices to keep `pressure != reason != normative revision`.
 
 ## Source
-PRIORITIES.md, item 64 (What the inquiry interface consumes); its context: `projects/normativity/legitimacy/rounds/2026-08-25-end-to-end-vertical-slice/FINDINGS.md` §8.
+ATTENTION.md, item 64 (What the inquiry interface consumes); its context: `projects/normativity/legitimacy/rounds/2026-08-25-end-to-end-vertical-slice/FINDINGS.md` §8.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The forward slice computes five candidate pressure conditions and, for each, a

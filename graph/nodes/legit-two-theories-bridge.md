@@ -23,7 +23,7 @@ The maintainer's licence for a correspondence rather than an identity,
 projects/deference/corrigibility-note-dump-2026-10-01/position-statement-v2.md,
 section 1.5: "There is a clear family resemblance here, but the exact statement
 can differ from formalism to formalism."; the public line's own pointer to the
-maintainer's register, PRIORITIES.md, item 109; the two theories as filed under
+maintainer's register, ATTENTION.md, item 109; the two theories as filed under
 this frame.
 
 ## Notes

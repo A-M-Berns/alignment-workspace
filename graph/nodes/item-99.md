@@ -26,10 +26,10 @@ version: 1
 A solution to item 99 ships the clauses with their witnesses, or the negative with its fixture.
 
 ## Source
-PRIORITIES.md, item 99 (The allocation floor: delegation safety, allocation completeness, exact shortfall reporting, and the reach cone); its context: `REPORT.md` §§2, 4 (Q1, Q7, Q8), 7 and `THEOREM.md` of the round; `ProtectedAuthorityTheorem.lean` §§1, 2, 5; `ReachableCorrectiveControl.lean` §12; item 98.
+ATTENTION.md, item 99 (The allocation floor: delegation safety, allocation completeness, exact shortfall reporting, and the reach cone); its context: `REPORT.md` §§2, 4 (Q1, Q7, Q8), 7 and `THEOREM.md` of the round; `ProtectedAuthorityTheorem.lean` §§1, 2, 5; `ReachableCorrectiveControl.lean` §12; item 98.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The protected-authority-theorem round (`projects/deference/rounds/2026-09-25-protected-authority-theorem/`)

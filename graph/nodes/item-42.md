@@ -24,10 +24,10 @@ version: 1
 Item 42, An efficiently presentable sufficient row family for coherence, is delivered in the shape its entry states: `enumeration-verified` over a stated fragment family for a positive answer; `witness-checked` for a negative one.
 
 ## Source
-PRIORITIES.md, item 42 (An efficiently presentable sufficient row family for coherence); its context: `.../2026-08-16-traderized-enforcement/DEDUCTION_SPECIAL_CASE.md` §§3–4, and its `src/deduction.py`.
+ATTENTION.md, item 42 (An efficiently presentable sufficient row family for coherence); its context: `.../2026-08-16-traderized-enforcement/DEDUCTION_SPECIAL_CASE.md` §§3–4, and its `src/deduction.py`.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 Enforcing the coherence polytope of a deductive stage needs its facet system,

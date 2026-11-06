@@ -1,11 +1,11 @@
-"""`PRIORITIES.md` is a render of the map's item nodes (ruling M6 of 2026-10-22).
+"""`ATTENTION.md` is a render of the map's item nodes (ruling M6 of 2026-10-22).
 
 Usage:
-    python3 -m checkers.priorities_render --check      # the committed file equals the render (the gate)
-    python3 -m checkers.priorities_render --write      # write the render (what the plain checker run does)
-    python3 -m checkers.priorities_render --self-test  # the null inputs and a round trip
+    python3 -m checkers.attention_render --check      # the committed file equals the render (the gate)
+    python3 -m checkers.attention_render --write      # write the render (what the plain checker run does)
+    python3 -m checkers.attention_render --self-test  # the null inputs and a round trip
 
-The source of the file is two things. `state/priorities_sections.md` holds the standing preamble and, under each
+The source of the file is two things. `state/attention_sections.md` holds the standing preamble and, under each
 `## <section>` heading, that section's intro text, in the file's order. Each item is a node under `graph/nodes/`
 carrying `item` (its number, or `Q<n>` / `F<n>`), `title`, `section`, `maintainer_order` (the hand ordering,
 transcribed), `difficulty` (the bold bracket of the heading, absent on an ingenuity or friction entry),
@@ -88,10 +88,10 @@ def answers_line(ids: list[str]) -> str:
 
 
 def sections(root: pathlib.Path) -> tuple[str, list[tuple[str, str]]]:
-    text = (root / "state" / "priorities_sections.md").read_text()
+    text = (root / "state" / "attention_sections.md").read_text()
     ms = list(SECTION.finditer(text))
     if not ms:
-        raise RenderError("state/priorities_sections.md names no `## ` section")
+        raise RenderError("state/attention_sections.md names no `## ` section")
     pre = text[:ms[0].start()]
     out = []
     for i, m in enumerate(ms):
@@ -131,7 +131,7 @@ def render(root: pathlib.Path) -> str:
             raise RenderError(f"{n['_path']}: item {n['item']} is also {seen[n['item']]}")
         seen[n["item"]] = n["_path"]
         if n["section"] not in names:
-            raise RenderError(f"{n['_path']}: section {n['section']!r} is not a section of state/priorities_sections.md")
+            raise RenderError(f"{n['_path']}: section {n['section']!r} is not a section of state/attention_sections.md")
         if not isinstance(n["maintainer_order"], int):
             raise RenderError(f"{n['_path']}: maintainer_order is an integer")
         if re.search(r"^#{1,3} ", n["_item_body"], re.M):
@@ -156,12 +156,12 @@ def check(root: pathlib.Path) -> tuple[bool, str]:
         want = render(root)
     except RenderError as e:
         return False, f"render refused: {e}"
-    have = (root / "PRIORITIES.md").read_text()
+    have = (root / "ATTENTION.md").read_text()
     if have != want:
         import difflib
-        d = list(difflib.unified_diff(have.splitlines(), want.splitlines(), "PRIORITIES.md", "render", lineterm="", n=1))
-        return False, "PRIORITIES.md differs from the render of the item nodes (edit the item nodes or the sections file, then run the checker):\n" + "\n".join(d[:40])
-    return True, f"PRIORITIES RENDER: the committed file equals the render ({len(item_nodes(root))} items)"
+        d = list(difflib.unified_diff(have.splitlines(), want.splitlines(), "ATTENTION.md", "render", lineterm="", n=1))
+        return False, "ATTENTION.md differs from the render of the item nodes (edit the item nodes or the sections file, then run the checker):\n" + "\n".join(d[:40])
+    return True, f"ATTENTION RENDER: the committed file equals the render ({len(item_nodes(root))} items)"
 
 
 def self_test() -> int:
@@ -172,28 +172,28 @@ def self_test() -> int:
     try:
         # the live tree renders and matches
         ok, msg = check(ROOT)
-        cases.append(("the committed PRIORITIES.md equals the render", ok, True))
+        cases.append(("the committed ATTENTION.md equals the render", ok, True))
         # null input 1: no item node
         empty = tmp / "empty"
         (empty / "graph" / "nodes").mkdir(parents=True)
         (empty / "state").mkdir()
-        (empty / "state" / "priorities_sections.md").write_text("# P\n\n## S\nintro\n")
-        (empty / "PRIORITIES.md").write_text("")
+        (empty / "state" / "attention_sections.md").write_text("# P\n\n## S\nintro\n")
+        (empty / "ATTENTION.md").write_text("")
         cases.append(("no item node is refused", check(empty)[0], False))
         # null input 2: a sections file without a section
         one = tmp / "one"
         shutil.copytree(ROOT / "graph" / "nodes", one / "graph" / "nodes", ignore=lambda d, fs: [f for f in fs if not f.startswith("item-")])
         (one / "state").mkdir(parents=True)
-        (one / "state" / "priorities_sections.md").write_text("# P\n")
-        (one / "PRIORITIES.md").write_text("")
+        (one / "state" / "attention_sections.md").write_text("# P\n")
+        (one / "ATTENTION.md").write_text("")
         cases.append(("a sections file with no section is refused", check(one)[0], False))
         # a hand edit of the committed file is caught
         edited = tmp / "edited"
         shutil.copytree(ROOT / "graph" / "nodes", edited / "graph" / "nodes", ignore=lambda d, fs: [f for f in fs if not f.startswith("item-")])
         (edited / "state").mkdir(parents=True)
-        shutil.copy(ROOT / "state" / "priorities_sections.md", edited / "state" / "priorities_sections.md")
-        (edited / "PRIORITIES.md").write_text(render(edited) + "\nan extra line\n")
-        cases.append(("a hand edit of PRIORITIES.md is caught", check(edited)[0], False))
+        shutil.copy(ROOT / "state" / "attention_sections.md", edited / "state" / "attention_sections.md")
+        (edited / "ATTENTION.md").write_text(render(edited) + "\nan extra line\n")
+        cases.append(("a hand edit of ATTENTION.md is caught", check(edited)[0], False))
         # a duplicate item number is refused
         dup = tmp / "dup"
         shutil.copytree(edited, dup)
@@ -203,7 +203,7 @@ def self_test() -> int:
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
     failures = 0
-    print("PRIORITIES RENDER SELF-TEST:")
+    print("ATTENTION RENDER SELF-TEST:")
     for label, got, want in cases:
         failures += got != want
         print(f"  {'ok' if got == want else 'FAIL'}: {label}")
@@ -214,11 +214,11 @@ def main(argv: list[str]) -> int:
     if "--self-test" in argv:
         return self_test()
     if "--write" in argv:
-        (ROOT / "PRIORITIES.md").write_text(render(ROOT))
-        print("PRIORITIES.md written")
+        (ROOT / "ATTENTION.md").write_text(render(ROOT))
+        print("ATTENTION.md written")
         return 0
     ok, msg = check(ROOT)
-    print(msg if ok else "PRIORITIES RENDER FAILED: " + msg, file=sys.stdout if ok else sys.stderr)
+    print(msg if ok else "ATTENTION RENDER FAILED: " + msg, file=sys.stdout if ok else sys.stderr)
     return 0 if ok else 1
 
 

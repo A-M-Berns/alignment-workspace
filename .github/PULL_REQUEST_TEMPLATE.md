@@ -22,14 +22,14 @@
      declaration name. Never prose: prose documents the record, it is not the
      record. Write "none" if this PR registers no claim. -->
 
-## PRIORITIES item answered
+## ATTENTION item answered
 
 <!-- The item number. Nothing enters the registry except in answer to a filed
      item; if none fits, propose one as an issue first. -->
 
 ## What this addresses
 
-<!-- The PRIORITIES.md item, ledger claim identifier, or issue. If none, say
+<!-- The ATTENTION.md item, ledger claim identifier, or issue. If none, say
      what problem this solves and why it belongs in the program. -->
 
 ## What covers it

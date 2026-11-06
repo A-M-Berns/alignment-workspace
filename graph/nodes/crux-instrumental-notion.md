@@ -26,4 +26,4 @@ environments".
 ## Notes
 A crux of the line: it re-ranks the scoped refinement's tasks against the
 policy-level statement attempt and against the updateless programme
-(PRIORITIES.md item 103).
+(ATTENTION.md item 103).

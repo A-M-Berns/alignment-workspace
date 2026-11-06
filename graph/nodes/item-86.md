@@ -28,10 +28,10 @@ version: 1
 A solution to item 86 ships the three objects with the composed corollary, or the negative.
 
 ## Source
-PRIORITIES.md, item 86 (Bounded competence against legitimate continuation policies under endogenous admissibility); its context: `PRESSURE_PASS.md`, `CORRIGIBILITY_COMPOSITION.md` §6 and `POLICY_REGRET_FRONTIER.md` §3–4 of `projects/deference/rounds/2026-09-08-continuation-bria/`; `NORMATIVE_CHOICE_THEOREM.md` §5 and `CANDIDATE_DECISION_THEORIES.md` §2.8 of `projects/deference/rounds/2026-09-06-decision-theory-bill/`.
+ATTENTION.md, item 86 (Bounded competence against legitimate continuation policies under endogenous admissibility); its context: `PRESSURE_PASS.md`, `CORRIGIBILITY_COMPOSITION.md` §6 and `POLICY_REGRET_FRONTIER.md` §3–4 of `projects/deference/rounds/2026-09-08-continuation-bria/`; `NORMATIVE_CHOICE_THEOREM.md` §5 and `CANDIDATE_DECISION_THEORIES.md` §2.8 of `projects/deference/rounds/2026-09-06-decision-theory-bill/`.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 *Refined by the continuation-BRIA round and its four later passes (2026-09-08); the

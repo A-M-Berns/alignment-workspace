@@ -25,10 +25,10 @@ version: 1
 A solution to item 97 ships the declarations with their witnesses, or the negative with its channel.
 
 ## Source
-PRIORITIES.md, item 97 (Declare each channel's reference in the evaluation ecosystem, and certify its realization); its context: `REPORT.md` §§4, 7, 8 of the round; `TransparentChannel.lean`; item 87's residual paragraph (clause 6); item 89's 2026-09-15 note; item 68's acceptance check.
+ATTENTION.md, item 97 (Declare each channel's reference in the evaluation ecosystem, and certify its realization); its context: `REPORT.md` §§4, 7, 8 of the round; `TransparentChannel.lean`; item 87's residual paragraph (clause 6); item 89's 2026-09-15 note; item 68's acceptance check.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The transparent-channel round (`projects/deference/rounds/2026-09-24-transparent-channel/`)

@@ -45,7 +45,7 @@ def parse_priorities(text: str) -> list[dict[str, Any]]:
             "title": title,
             "state": marks[0] if marks else "unclassified",
             "dependencies": [],
-            "origin": "PRIORITIES.md",
+            "origin": "ATTENTION.md",
             "specified_enough_to_dispatch": bool(metadata and metadata.group(2) == "yes"),
             "metadata_present": metadata is not None,
         })
@@ -53,7 +53,7 @@ def parse_priorities(text: str) -> list[dict[str, Any]]:
 
 
 def priorities() -> list[dict[str, Any]]:
-    return parse_priorities((ROOT / "PRIORITIES.md").read_text())
+    return parse_priorities((ROOT / "ATTENTION.md").read_text())
 
 
 def foundation_claim_count(path: pathlib.Path) -> int | None:
@@ -566,7 +566,7 @@ def render_naming_audit(data: dict[str, Any], command: str) -> str:
         "wiki": " ".join(p.read_text() for p in sorted(ROOT.glob("wiki/*.md"))),
         "note": " ".join(p.read_text()
                          for p in sorted(ROOT.glob("projects/*/notes/*.md"))),
-        "prose": (ROOT / "PRIORITIES.md").read_text()
+        "prose": (ROOT / "ATTENTION.md").read_text()
                  + (ROOT / "DECISIONS.md").read_text(),
     }
     origin = naming_rounds()
@@ -582,7 +582,7 @@ def render_naming_audit(data: dict[str, Any], command: str) -> str:
              "*Propagates* is where a name is spelled outside the file defining it.",
              "`registry` means it is a statement of record, so renaming it is a registry",
              "diff; `wiki` means it has reached the human register; `note` a living note;",
-             "`prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to",
+             "`prose` `ATTENTION.md` or `DECISIONS.md`. `Lean only` is the cheapest to",
              "change, and the count of those is the size of the free choice remaining.",
              ""]
 

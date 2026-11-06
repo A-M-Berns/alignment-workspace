@@ -10,11 +10,11 @@ branch.*
 
 | surface | holds (count) | ids | joins to | written | in the map at `4eb420f` | in the map after this round |
 |---|---|---|---|---|---|---|
-| `README.md` | prose: layout, precedence, status of the lines (120 lines) | none | names `AGENTS.md`, `RESEARCH_STATE.md`, `PRIORITIES.md`, `DECISIONS.md`, the lines by name | hand-written | none | none; its status prose corrected (below) |
+| `README.md` | prose: layout, precedence, status of the lines (120 lines) | none | names `AGENTS.md`, `RESEARCH_STATE.md`, `ATTENTION.md`, `DECISIONS.md`, the lines by name | hand-written | none | none; its status prose corrected (below) |
 | `RESEARCH_STATE.md` | prose: the one adjudicator command, the canonical checkpoint path (23 lines) | none | `python3 -m checkers.workspace_state --json`; `projects/normativity/legitimacy/checkpoint-2026-09-01/` | hand-written | none | none |
-| `PRIORITIES.md`, numbered items | 125 work orders in 9 sections, each a `### n.` heading with a `workspace-priority` marker | item numbers 1–128 (three numbers unused) | registries' `answers_item`; nodes' `work: {kind: priorities}`; `DECISIONS.md` item mentions; wiki item mentions | hand-written | 41 pointers from 36 nodes to 36 distinct items; no node per item | one node per item (`item-<n>`, 125); the file is a render |
-| `PRIORITIES.md`, *Where ingenuity is the bottleneck* | 4 entries (`Q1`–`Q4`), one section | `Q<n>` | `DECISIONS.md` (the Q3 queue entry) | hand-written | none | one `question` leaf per entry (`item-q<n>`) |
-| `PRIORITIES.md`, *Workspace friction* | 8 entries (`F1`–`F8`) and item 28 | `F<n>` | `DECISIONS.md` (F6, F8 entries) | hand-written | none | one `task` leaf per entry (`item-f<n>`) |
+| `ATTENTION.md`, numbered items | 125 work orders in 9 sections, each a `### n.` heading with a `workspace-priority` marker | item numbers 1–128 (three numbers unused) | registries' `answers_item`; nodes' `work: {kind: priorities}`; `DECISIONS.md` item mentions; wiki item mentions | hand-written | 41 pointers from 36 nodes to 36 distinct items; no node per item | one node per item (`item-<n>`, 125); the file is a render |
+| `ATTENTION.md`, *Where ingenuity is the bottleneck* | 4 entries (`Q1`–`Q4`), one section | `Q<n>` | `DECISIONS.md` (the Q3 queue entry) | hand-written | none | one `question` leaf per entry (`item-q<n>`) |
+| `ATTENTION.md`, *Workspace friction* | 8 entries (`F1`–`F8`) and item 28 | `F<n>` | `DECISIONS.md` (F6, F8 entries) | hand-written | none | one `task` leaf per entry (`item-f<n>`) |
 | `DECISIONS.md`, *Awaiting the author* | 22 queued entries, bullets `- **Title.** … *Turns on:* …` | none | items by mention (6 entries), rounds by path | hand-written | none | each bullet carries an anchor `open--<slug>` and a `touches` list; 22 anchors, 6 with touches |
 | `DECISIONS.md`, *Settled* | 260 dated entries (261 after this round's ruling) | none | items by mention (35 entries), registry ids by mention (7), node ids (0) | hand-written | 16 nodes cite the file in prose, none by anchor | every entry carries an anchor `<date>--<slug>` and `touches`; 49 entries touch a node, item or claim; 61 nodes point at 50 entries |
 | `PROVENANCE.md` | 196 table rows over files and globs; 82 distinct round citations | file paths, round directories | `prompts/<round>/` | hand-written | none (provenance is not a map object) | none; the round adds its own rows |
@@ -44,7 +44,7 @@ Each with the two locations that disagree.
 4. **Wiki prose versus the registry's renames.** Six registry ids named on `wiki/Theorem-Spine.md` (5) and `wiki/Openness-Coverage-and-Non-Capture.md` (1) are superseded entries (`legitimacy.evolution-conservation` → `integrity.evolution-conservation`, `legitimacy.propagate-to-segment` → `integrity.propagate-to-segment`, `legitimacy.receipts-immutable` → `integrity.receipts-immutable`, `legitimacy.faithful-carry` → `integrity.faithful-carry`, `legitimacy.multiplicity-witness` → `integrity.multiplicity-witness`, `legitimacy.endpoint-only-insufficient` → `openness.endpoint-only-insufficient`). Found by `checkers/wiki_refs.py` once the references were declared; corrected to the current ids.
 5. **Records versus registries.** 82 `record` leaves at `4eb420f`; 178 registry entries. Only 4 records name a registry entry (`li-deference-collapse-scoped.record` and three siblings); 78 name declarations of the clean room `projects/deference/faf-cleanroom-2026-10-02/`, which no registry lists, so they read *not in a claims registry* and cap at level 2; 174 entries had no record. The prompt's "about 80 entries" was 178. After the round: 260 records, 180 matching an entry, 80 clean-room records (78 landed plus the two new ones the round did not file, see the report), 0 entries without a formal result.
 6. **`state/rounds.json` versus `prompts/`.** The index lists 125 rounds; `prompts/` holds 127 directories (the two extra are `README.md`'s directory and this round's, created on this branch) and `projects/*/rounds/` holds 87 directories against 80 indexed under `projects/` (the seven others are the legitimacy rounds indexed under `prompts/` paths). No dangling index entry; `--check` passes.
-7. **`PRIORITIES.md` marker placement.** Items 1–73 carry the `workspace-priority` marker on the line after the heading; items 74–128 and `F7`–`F8` after a blank line. `checkers/workspace_state.py` reads both; the render normalizes to the first form (the only byte change the render makes to the file beyond none).
+7. **`ATTENTION.md` marker placement.** Items 1–73 carry the `workspace-priority` marker on the line after the heading; items 74–128 and `F7`–`F8` after a blank line. `checkers/workspace_state.py` reads both; the render normalizes to the first form (the only byte change the render makes to the file beyond none).
 8. **`DECISIONS.md` ordering.** The *Settled* section runs newest-first from 2026-09-15 down to 2026-08-11 and then oldest-first from 2026-08-26 to 2026-10-23: two conventions in one file (the ledger's own rule, "a new entry goes beneath the last entry sharing its date", produces the second). Not changed; the anchors do not depend on order.
 9. **`checkers/tests/test_graph.py` on macOS.** `test_scale` read `ru_maxrss` as kilobytes; macOS reports bytes, so the test failed on every Mac and never in CI. Fixed in the round's first commit.
 
@@ -52,9 +52,9 @@ Checks that found nothing: every `<!--state:…-->` binding matches the emission
 
 ## What is represented twice
 
-- **A priority item**: `PRIORITIES.md` (the entry), the registry's `answers_item`, the nodes' `priorities` pointers, and now its item node. After the round the node is the source and the file is its render; the pointers and `answers_item` join by number.
+- **A priority item**: `ATTENTION.md` (the entry), the registry's `answers_item`, the nodes' `priorities` pointers, and now its item node. After the round the node is the source and the file is its render; the pointers and `answers_item` join by number.
 - **A registered claim**: the registry entry, its Lean declaration, the wiki's prose statement (Theorem Spine and the component pages), and now its formal result in the map. The registry stays the statement of record; the map cites it by id.
-- **A maintainer ruling**: `DECISIONS.md` (the entry), the round report that proposed it, the `PRIORITIES.md` annotation that records its effect on an item (`*narrowed 2026-10-21: …*`), and the wiki's "ruled (`DECISIONS.md`, 2026-09-08)" mentions. The entry is the record; the map points at it by anchor.
+- **A maintainer ruling**: `DECISIONS.md` (the entry), the round report that proposed it, the `ATTENTION.md` annotation that records its effect on an item (`*narrowed 2026-10-21: …*`), and the wiki's "ruled (`DECISIONS.md`, 2026-09-08)" mentions. The entry is the record; the map points at it by anchor.
 - **The status of a line**: `README.md`, `wiki/Home.md`, each line's wiki page (*Current status*), `RESEARCH_STATE.md` and the frames' Statements. The numbers are bound to the state; the prose is corrected where it disagreed.
 - **A round**: its directory, `state/rounds.json`, `PROVENANCE.md`'s rows, the registry's `origin_round`, the wiki's pinned links, and now the `round` pointers. The index is the record; the map points at it by path.
 - **The foundation's 180 claims**: `projects/normativity/consolidation-aug9/LEDGER.md` (the ledger), `state/foundations.json` (the count), the wiki's bound count, items 1–6 (which cite claims by id). One node stands for the foundation.
@@ -71,7 +71,7 @@ Listed with the smallest extension that would hold each; none is forced.
 5. **A frame's owner confirming a drafted decomposition.** No event kind exists for "the owner read this frame and keeps it"; the round uses `filed_from: wiki` and its removal by the owner. Extension (reserved): a `confirm` event on a frame, if the maintainers prefer an event to an edit.
 6. **The second maintainer's ledger.** `@abram` is mapped and has no ledger until he writes an event; `CODEOWNERS` gets his ledger line then. Nothing lacking.
 7. **A round the map honestly cannot point at.** Six administrative rounds (scrubs, renames, cleanups) serve no node; the report lists them. The index carries every round with an empty `pointed_by`. Nothing lacking.
-8. **The hand ordering of items as a lens.** `maintainer_order` is transcribed data, as ruled; the ranking does not read it. Whether it should is the one *Open* question the protocol kept about `PRIORITIES.md` and the task list, and it stays open.
+8. **The hand ordering of items as a lens.** `maintainer_order` is transcribed data, as ruled; the ranking does not read it. Whether it should is the one *Open* question the protocol kept about `ATTENTION.md` and the task list, and it stays open.
 
 ## Appendix: the commands
 
@@ -83,7 +83,7 @@ grep -h '^kind:' graph/nodes/*.md | sort | uniq -c        # nodes by kind
 grep -h '^leaf_kind:' graph/nodes/*.md | sort | uniq -c   # leaves by kind
 grep -ho 'kind: [a-z]*, ref' graph/nodes/*.md | sort | uniq -c   # work pointers by kind
 grep -c '' graph/events/*.jsonl                           # events by handle
-grep -c '^### [0-9]*\.' PRIORITIES.md; grep -c '^### Q' PRIORITIES.md; grep -c '^### F' PRIORITIES.md
+grep -c '^### [0-9]*\.' ATTENTION.md; grep -c '^### Q' ATTENTION.md; grep -c '^### F' ATTENTION.md
 grep -c '^### 20' DECISIONS.md; grep -c '^- \*\*' <(sed -n '/## Awaiting the author/,/## Settled/p' DECISIONS.md)
 python3 -m checkers.workspace_state --json | python3 -c 'import json,sys; d=json.load(sys.stdin); print(len(d["claims"]), len(d["rounds"]), len(d["priorities"]))'
 python3 -m checkers.wiki_links; python3 -m checkers.wiki_state_bindings; python3 -m checkers.wiki_refs

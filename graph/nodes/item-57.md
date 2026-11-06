@@ -23,10 +23,10 @@ version: 1
 Item 57, A checker for the applicability-in-source convention, is delivered in the shape its entry states: a checker plus the claim it certifies, registered `contributor-checked`, or a house checker if the maintainer reads it.
 
 ## Source
-PRIORITIES.md, item 57 (A checker for the applicability-in-source convention); its context: `.../2026-08-23-reason-representation/MEMO.md`, Convention 1; `.../2026-08-23-transition-certificates/README.md`.
+ATTENTION.md, item 57 (A checker for the applicability-in-source convention); its context: `.../2026-08-23-reason-representation/MEMO.md`, Convention 1; `.../2026-08-23-transition-certificates/README.md`.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 An occurrence applying a schema to a case view must carry the applicability claim

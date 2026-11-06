@@ -30,10 +30,10 @@ version: 1
 A solution to item 89 ships the clause with its sealing theorem, or the negative with its witness.
 
 ## Source
-PRIORITIES.md, item 89 (Sealed comparison: an architecture under which the constitutional comparison of `{π, 𝔠π}` is sealed against every continuation until settlement); its context: `INCENTIVE_COMPOSITION.md` §3–§7 and `COUNTERMODELS.md` §5 of the round; item 84 (the latent-total-value bridge, which the intended architecture does not need); item 87 (availability as a realization, of which this is the incentive-facing instance).
+ATTENTION.md, item 89 (Sealed comparison: an architecture under which the constitutional comparison of `{π, 𝔠π}` is sealed against every continuation until settlement); its context: `INCENTIVE_COMPOSITION.md` §3–§7 and `COUNTERMODELS.md` §5 of the round; item 84 (the latent-total-value bridge, which the intended architecture does not need); item 87 (availability as a realization, of which this is the incentive-facing instance).
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The mediated-repair-dominance round (`projects/deference/rounds/2026-09-09-mediated-repair-dominance/`,

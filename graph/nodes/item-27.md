@@ -24,10 +24,10 @@ version: 1
 A solution to item 27 ships the successor spec, the sign verdict under a fallible future agent, and an explicit statement of which confounds remain scoped out rather than excluded.
 
 ## Source
-PRIORITIES.md, item 27 (A fully-updated comparator with a fallible future agent); its context: `prompts/2026-08-11-stage-iii-fud/REPORT.md` §1 and §4; `prompts/2026-08-11-stage-iii-fud/REPORT-track-F.md`; `projects/deference/notes/FINITE_MODEL_SKELETON.md` §4a and §8.1.
+ATTENTION.md, item 27 (A fully-updated comparator with a fallible future agent); its context: `prompts/2026-08-11-stage-iii-fud/REPORT.md` §1 and §4; `prompts/2026-08-11-stage-iii-fud/REPORT-track-F.md`; `projects/deference/notes/FINITE_MODEL_SKELETON.md` §4a and §8.1.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 Stage III attempted this comparator and produced something else. Its transferred arm's

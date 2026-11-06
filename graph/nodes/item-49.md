@@ -24,10 +24,10 @@ version: 1
 Item 49, A kernel proof of `DistanceComplete` for the exact dual-distance family, is delivered in the shape its entry states: `lean-proved`, discharging the `DistanceComplete` hypothesis of `exists_credence_of_contract` at the exact dual-distance family.
 
 ## Source
-PRIORITIES.md, item 49 (A kernel proof of `DistanceComplete` for the exact dual-distance family); its context: `projects/normativity/notes/GENERALIZED_LI_PAPER_HANDOFF.md` §C, debt 1; `.../2026-08-16-traderized-enforcement/PROOF_CLOSURE.md` §V.
+ATTENTION.md, item 49 (A kernel proof of `DistanceComplete` for the exact dual-distance family); its context: `projects/normativity/notes/GENERALIZED_LI_PAPER_HANDOFF.md` §C, debt 1; `.../2026-08-16-traderized-enforcement/PROOF_CLOSURE.md` §V.
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 The exactness half of intrinsic conformance: from conformance on the exact

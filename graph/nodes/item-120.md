@@ -23,10 +23,10 @@ version: 1
 A solution to item 120 ships the predicate and the two theorems.
 
 ## Source
-PRIORITIES.md, item 120 (Exhaustive sharing on trace-constitutive dockets: what exchange equalizes live sets); its context: `DYNAMICS.md` §3 of the round; the seed round's `CONFINEMENT.md` §2 (the calculus computes no extension).
+ATTENTION.md, item 120 (Exhaustive sharing on trace-constitutive dockets: what exchange equalizes live sets); its context: `DYNAMICS.md` §3 of the round; the seed round's `CONFINEMENT.md` §2 (the calculus computes no extension).
 
 ## Notes
-Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into PRIORITIES.md by checkers/priorities_render.py. The Statement is drawn from the entry's own deliverable line.
+Transcribed by the map-as-canonical round (prompts/2026-10-22-map-as-canonical); the entry's text is the Item section below, rendered back into ATTENTION.md by checkers/attention_render.py. The Statement is drawn from the entry's own deliverable line.
 
 ## Item
 *Re-filed 2026-10-21 by the rebuttal-and-end-to-end round from branch `round/2026-09-17-convergence-measure`, where it was item 96; content unchanged; the branch round is landed under `projects/normativity/seed/rounds/2026-09-17-convergence-measure/`.*
