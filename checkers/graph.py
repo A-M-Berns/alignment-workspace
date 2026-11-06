@@ -1314,14 +1314,17 @@ def lint(t):
             raise Refuse(1, path, f"target event {tk[1]!r} resolves to no event")
         if tk[0] == "concept":
             # the site map's concepts (state/concepts.json) take assessments and nothing
-            # else; a research thread is navigated, not scored, and prior work is cited,
-            # not scored (ruling of 2026-11-05)
+            # else; prior work is cited, not scored, and a research thread takes
+            # importance and clarity but no reliability — a thread is a question, not a
+            # claim that holds up (rulings of 2026-11-05)
             if e["kind"] != "assessment":
                 raise Refuse(2, path, "a concept target carries only an assessment")
             if tk[1] not in t.concepts:
                 raise Refuse(1, path, f"target concept {tk[1]!r} resolves to no concept")
-            if t.concepts[tk[1]] in ("goal", "work"):
-                raise Refuse(5, path, f"concept {tk[1]!r} is a {'research thread' if t.concepts[tk[1]] == 'goal' else 'prior work'}: navigated or cited, not scored")
+            if t.concepts[tk[1]] == "work":
+                raise Refuse(5, path, f"concept {tk[1]!r} is prior work: cited, not scored")
+            if t.concepts[tk[1]] == "goal" and e.get("axis") == "reliability":
+                raise Refuse(5, path, f"concept {tk[1]!r} is a research thread: it takes importance and clarity, not reliability")
         vnode = tk[1] if tk[0] == "node" else tk[2] if tk[0] == "row" else None
         if vnode and isinstance(e.get("version"), int) and e["version"] > nodes[vnode]["version"]:
             raise Refuse(5, path, f"version {e['version']} is above {vnode}'s current version {nodes[vnode]['version']}")
@@ -5314,10 +5317,14 @@ NULL_INPUTS = [
         f'{{"id": "h1-n19", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"concept": "no-such-concept"}}, "axis": "reliability", "score": 4, "verbatim": "x"}}']}}),
     ("a non-assessment event on a concept", 2, {"extra": {"h1": [
         f'{{"id": "h1-n20", "by": "@h1", {_NB}, "kind": "estimate", "target": {{"concept": "no-such-concept"}}, "estimate": 0.5, "gloss": "x"}}']}}),
-    ("an assessment on a research-thread concept", 5, {
+    ("a reliability score on a research-thread concept", 5, {
         "files": {"state/concepts.json": '{"concepts": [{"id": "prog", "kind": "goal", "title": "P", "blurb": "x"}]}'},
         "extra": {"h1": [
-            f'{{"id": "h1-n21", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"concept": "prog"}}, "axis": "importance", "score": 4, "verbatim": "x"}}']}}),
+            f'{{"id": "h1-n21", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"concept": "prog"}}, "axis": "reliability", "score": 4, "verbatim": "x"}}']}}),
+    ("an assessment on a prior-work concept", 5, {
+        "files": {"state/concepts.json": '{"concepts": [{"id": "pw", "kind": "work", "title": "W", "blurb": "x"}]}'},
+        "extra": {"h1": [
+            f'{{"id": "h1-n22", "by": "@h1", {_NB}, "kind": "assessment", "target": {{"concept": "pw"}}, "axis": "clarity", "score": 4, "verbatim": "x"}}']}}),
     ("a rate row below zero minutes", 10, {"edits": [("policy.yaml", "reread:   {S: 4", "reread:   {S: -1")]}),
     # owners, frames, wants, priorities, tasks
     ("a frame owned by an AI handle", 2, {"programme": True, "edits": [("nodes/prog.md", 'owner: "@h1"', 'owner: "@ai"')]}),

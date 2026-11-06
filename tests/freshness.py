@@ -81,6 +81,21 @@ def check_frame_coverage(nodes: dict, program_roots: set[str], concepts: list[di
     return out
 
 
+def check_seed_coverage(cid_axes: dict, heroes: dict) -> list[str]:
+    """A scoreable concept axis nobody has scored: the AI seeding is due on it."""
+    return [f"concept `{cid}` axis `{a}` carries no score from anyone — an AI seeding pass should score it"
+            for cid, axes in sorted(cid_axes.items()) for a in axes
+            if heroes.get(cid, {}).get(a, {}).get("d") == "–"]
+
+
+def check_seed_staleness(seeds: list) -> list[str]:
+    """An AI seed given against an earlier version of the backing claim: re-estimate.
+    seeds: (cid, axis, seed_version, current_version)."""
+    return [f"the AI seed on `{cid}`/`{a}` was given against version {sv}; the backing claim is at version {cv} — re-estimate"
+            for cid, a, sv, cv in seeds
+            if isinstance(sv, int) and isinstance(cv, int) and sv < cv]
+
+
 def live_audit() -> list[str]:
     findings: list[str] = []
     digests = {str(p["number"]): p for p in json.loads((ROOT / "state" / "prs.json").read_text())["prs"]}
@@ -105,6 +120,18 @@ def live_audit() -> list[str]:
     findings += check_terminal_goals(program_roots, concepts, links)
     findings += check_wiki_coverage(set(repo.wiki), concepts)
     findings += check_frame_coverage(repo.nodes, program_roots, concepts)
+    from pages import concept_axes
+    cid_axes = {e["id"]: list(concept_axes(e)) for e in concepts if concept_axes(e)}
+    heroes = {cid: repo.concept_hero(cid) for cid in cid_axes}
+    findings += check_seed_coverage(cid_axes, heroes)
+    seeds = []
+    for cid in cid_axes:
+        refs = [x for x in (repo.concepts[cid].get("refs") or []) if x in repo.nodes]
+        cur = max((repo.nodes[x].get("version") or 1) for x in refs) if refs else 1
+        for ev in repo.concept_assessments(cid):
+            if ev["_ai"] and (ev.get("target") or {}).get("concept") == cid:
+                seeds.append((cid, str(ev.get("axis")), ev.get("version"), cur))
+    findings += check_seed_staleness(seeds)
     return findings
 
 
@@ -128,6 +155,15 @@ def self_test() -> int:
                   check_terminal_goals({"lineA"}, goals, links) == [], True))
     cases.append(("an unbacked substantive wiki page is a finding",
                   bool(check_wiki_coverage({"New-Thing"}, [])), True))
+    dash = {"d": "–"}
+    cases.append(("an unscored concept axis is a finding",
+                  bool(check_seed_coverage({"c1": ["importance"]}, {"c1": {"importance": dash}})), True))
+    cases.append(("a scored axis is clean",
+                  check_seed_coverage({"c1": ["importance"]}, {"c1": {"importance": {"d": "4"}}}) == [], True))
+    cases.append(("an AI seed behind the claim's version is a finding",
+                  bool(check_seed_staleness([("c1", "clarity", 1, 2)])), True))
+    cases.append(("a current seed is clean",
+                  check_seed_staleness([("c1", "clarity", 2, 2)]) == [], True))
     failures = 0
     print("FRESHNESS SELF-TEST:")
     for label, got, want in cases:

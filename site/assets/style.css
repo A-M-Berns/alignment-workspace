@@ -281,6 +281,11 @@ body.landing { min-height: 100vh; margin: 0; display: grid; place-items: center;
 .landing-main { position: relative; z-index: 1; text-align: center; padding: 2rem; }
 .landing-word { font-size: clamp(2.2rem, 6vw, 4.2rem); font-weight: 760; letter-spacing: -0.02em; margin: 0 0 0.4em; color: #ececec; }
 nav.tiles { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.6em; }
+.type-sampler { margin-top: 3.2em; display: flex; gap: 0.45em; justify-content: center; flex-wrap: wrap; align-items: center; }
+.type-sampler .ts-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-right: 0.4em; }
+.type-sampler button { font-size: 0.82rem; background: #101013; color: #c9c9c4; border: 1px solid var(--rule); border-radius: 7px; padding: 0.25em 0.8em; cursor: pointer; }
+.type-sampler button:hover { border-color: var(--accent); }
+.type-sampler button.on { border-color: var(--accent); color: #ececec; }
 a.tile { display: block; padding: 0.85em 1.7em; border-radius: 12px; background: #101013; border: 1px solid var(--rule); text-decoration: none; text-align: center; transition: transform 0.14s ease, border-color 0.14s ease; }
 a.tile:hover { transform: translateY(-3px); border-color: var(--accent); }
 a.tile .tile-name { font-size: 1.05rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #ececec; }
@@ -298,6 +303,10 @@ section.hero .hx { text-align: center; }
 .hx.none .hx-num { color: #3c3c40; }
 .hx.contested .hx-num { text-decoration: underline wavy 1.5px; text-underline-offset: 0.12em; }
 /* the hero as the scoring control */
+section.hero.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.ai-star { font-size: 0.55em; vertical-align: super; opacity: 0.75; }
+.hx-status .ai-note { font-style: italic; }
+.stands-at { color: var(--muted); opacity: 0.75; font-weight: 400; font-size: 0.85em; }
 button.hx-num { font: inherit; background: none; border: none; cursor: pointer; width: 100%; padding: 0; }
 button.hx-num:hover { filter: brightness(1.25); }
 .hx .hx-status { display: block; font-size: 0.68rem; color: var(--muted); margin-top: 0.3em; }

@@ -119,7 +119,30 @@ concepts whose seeded importance exceeds their seeded reliability.
 Not shown by the seeding: the scores are one model's readings of the repository's own
 status lines and sources — they establish nothing, they are the starting numbers the
 protocol says humans vet and supersede as they go, and any one of them may be wrong in
-either direction. The first push of the site side shipped the composer's markup without
+either direction.
+
+The 2026-11-05 follow-up (five directives, recorded in `PROMPT-followup.md` and the
+dated ruling): research threads re-enter scoring on importance and clarity only, the
+checker refusing reliability on one, and the eleven threads are seeded on both axes (the
+hero renders two columns there). Every AI number is starred, in the hero, the map's
+mini-hero and the activity lists, with "*AI-generated score / add the first human
+rating" beneath the hero number and the editor's standing-AI-score note rendered muted.
+Seed refresh joins the weekly freshness audit: an unscored scoreable axis and a seed
+behind its backing claim's version are findings, each with self-test cases. The landing
+carries a type sampler — nine vendored latin subsets (OFL, Google Fonts), persisted
+locally and applied site-wide — for the font decision; the choice is the maintainer's
+and the losers leave afterwards. And the first thin-concept writeup landed:
+`wiki/Value-Change-as-Belief-Change.md`, written from the note dump's
+value-change-as-epistemic-update note, its clean-room Lean package and the position
+statement, backing the concept entry. Reading the source corrected this round's own
+seed: the three value-change scores were superseded in the ledger (reliability 2→3 — the
+finite core is machine-checked; importance 4→3 — the base of one programme in the
+corrigibility landscape, beside a kernel route that does not rest on it, correcting the
+earlier gloss's "the line's wager"; clarity 3→4). The maintainer's skepticism of that
+framing prompted the re-read; the correction is the supersession's gloss. Writeups for
+the remaining thin concepts (about ten program-own constructions and philosophy entries
+with neither wiki page nor backing claim) are the natural next dispatch and are not
+done here. The first push of the site side shipped the composer's markup without
 its script (an apply step was dropped); caught when the maintainer looked for the panel,
 fixed in the following commit.
 Rendering is verified by an injected-event test (supersession filtered, staleness marked,

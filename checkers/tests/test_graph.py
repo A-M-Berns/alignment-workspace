@@ -408,7 +408,10 @@ class Refusals(Base):
         self.edit("graph/events/h2.jsonl", '"concept": "answerability"', '"concept": "no-such"')
         self.assertIn("resolves to no concept", self.refused(1))
         self.edit("graph/events/h2.jsonl", '"concept": "no-such"', '"concept": "the-program"')
-        self.assertIn("navigated or cited, not scored", self.refused(5))
+        self.derived()  # importance on a research thread is fine
+        self.edit("graph/events/h2.jsonl", '"axis": "importance"', '"axis": "reliability"')
+        self.assertIn("importance and clarity, not reliability", self.refused(5))
+        self.edit("graph/events/h2.jsonl", '"axis": "reliability"', '"axis": "importance"')
         self.edit("graph/events/h2.jsonl", '"concept": "the-program"', '"concept": "answerability"')
         self.edit("graph/events/h2.jsonl", '"kind": "assessment", "target": {"concept": "answerability"}, "axis": "importance", "score": 4, ',
                   '"kind": "estimate", "target": {"concept": "answerability"}, "estimate": 0.5, ')

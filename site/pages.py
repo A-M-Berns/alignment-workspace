@@ -150,7 +150,7 @@ AXES = ("reliability", "importance", "clarity")
 SCORES = (1, 2, 3, 4, 5)
 
 
-def assess_block(site: Site, acts: list, h: dict, target: dict, version, url: str) -> str:
+def assess_block(site: Site, acts: list, h: dict, target: dict, version, url: str, axes: tuple = AXES) -> str:
     """The hero is the scoring control: per axis the standing number (a vouch button when
     one stands), a status line, and a 1-5 picker in the axis ramp. Picking a number opens
     the one shared editor beneath — vouch or challenge is derived from the number against
@@ -166,7 +166,7 @@ def assess_block(site: Site, acts: list, h: dict, target: dict, version, url: st
         if not e["_ai"]:
             active[str(e.get("by")) + "|" + str(e.get("axis"))] = str(e.get("id"))
     cells, contested, standing = [], [], {}
-    for axis in AXES:
+    for axis in axes:
         c = h[axis]
         hums = [e for e in (by_axis.get(axis) or []) if not e["_ai"]]
         standing[axis] = {"d": c["d"], "ai": c["ai"], "contested": c["contested"]}
@@ -175,7 +175,7 @@ def assess_block(site: Site, acts: list, h: dict, target: dict, version, url: st
         elif hums:
             status = f'{len(hums)} contributor{"s" if len(hums) != 1 else ""}'
         elif c["ai"]:
-            status = "an AI seed — add the first human score"
+            status = '<span class="ai-note">*AI-generated score<br>add the first human rating</span>'
         else:
             status = "no human score yet"
         if c["stale"]:
@@ -184,9 +184,10 @@ def assess_block(site: Site, acts: list, h: dict, target: dict, version, url: st
         segs = "".join(
             f'<button type="button" class="seg{" cur" if n in cur else ""}" data-axis="{axis}" data-score="{n}">{n}</button>'
             for n in SCORES)
+        star = '<span class="ai-star">*</span>' if c["ai"] else ""
         num = (f'<button type="button" class="hx-num" data-axis="{axis}" data-score="{esc(c["d"])}" '
                f'title="vouch {esc(c["d"])}">{esc(c["d"])}</button>'
-               if c["d"].isdigit() and not c["ai"] else f'<span class="hx-num">{esc(c["d"])}</span>')
+               if c["d"].isdigit() and not c["ai"] else f'<span class="hx-num">{esc(c["d"])}{star}</span>')
         cells.append(f'<div class="hx hx-{axis} {c["cls"]}">{num}<span class="hx-label">{axis}</span>'
                      f'<span class="hx-status">{status}</span><div class="seg-row">{segs}</div></div>')
     note = ""
@@ -216,7 +217,7 @@ def assess_block(site: Site, acts: list, h: dict, target: dict, version, url: st
         f'<a href="https://github.com/A-M-Berns/alignment-workspace/issues/new?title={issue_title}&amp;body={issue_body}">no handle? propose it as an issue</a></p>'
         '<p class="rc-status muted">Prepared locally — not yet submitted.</p>'
         '</div>')
-    return '<section class="hero">' + "".join(cells) + "</section>" + note + editor
+    return f'<section class="hero cols-{len(axes)}">' + "".join(cells) + "</section>" + note + editor
 
 
 def scores_html(site: Site, acts: list) -> str:
@@ -641,10 +642,15 @@ def concept_context(site: Site, cid: str) -> str:
     return "".join(parts)
 
 
-def scoreable(e: dict) -> bool:
-    """A research thread is navigated, not scored; prior work is cited, not scored
-    (ruling of 2026-11-05). The concrete content takes the three axes."""
-    return e.get("kind") not in ("goal", "work")
+def concept_axes(e: dict) -> tuple:
+    """Prior work is cited, not scored; a research thread takes importance and clarity but
+    no reliability — a thread is a question, not a claim that holds up (rulings of
+    2026-11-05). The concrete content takes all three axes."""
+    if e.get("kind") == "work":
+        return ()
+    if e.get("kind") == "goal":
+        return ("importance", "clarity")
+    return AXES
 
 
 def concept_version(site: Site, cid: str) -> int:
@@ -665,10 +671,10 @@ def concept_full(site: Site, cid: str, with_head: bool = True) -> str:
     head = (f'<p class="frag-head">{site.link("concepts", cid, e.get("title", cid))} <span class="kind">{esc(kind_label_)}</span></p>'
             if with_head else "")
     lede = f'<p class="concept-lede">{esc(str(e.get("blurb") or ""))}</p>'
-    assessed = scoreable(e)
+    axes = concept_axes(e)
     hero = assess_block(site, r.concept_assessments(cid), r.concept_hero(cid),
-                        {"concept": cid}, concept_version(site, cid), site.url("concepts", cid)) if assessed else ""
-    ctx = concept_context(site, cid) if assessed else ""
+                        {"concept": cid}, concept_version(site, cid), site.url("concepts", cid), axes) if axes else ""
+    ctx = concept_context(site, cid) if axes else ""
     refs = [x for x in e.get("refs") or [] if x in r.nodes]
     if e.get("wiki"):
         main = f"<div class=\"wiki\">{render_wiki(site, e['wiki'])}</div>"
@@ -803,7 +809,42 @@ def landing_page(site: Site) -> str:
 <main class="landing-main">
 <h1 class="landing-word">Alignment Workspace</h1>
 <nav class="tiles">{cards}</nav>
+<div class="type-sampler">
+<span class="ts-label">type</span>
+<button type="button" data-font="">Lexend</button>
+<button type="button" data-font="Inter">Inter</button>
+<button type="button" data-font="Source Sans 3">Source Sans 3</button>
+<button type="button" data-font="IBM Plex Sans">IBM Plex Sans</button>
+<button type="button" data-font="Space Grotesk">Space Grotesk</button>
+<button type="button" data-font="Manrope">Manrope</button>
+<button type="button" data-font="Figtree">Figtree</button>
+<button type="button" data-font="Public Sans">Public Sans</button>
+<button type="button" data-font="Albert Sans">Albert Sans</button>
+</div>
 </main>
+<link rel="stylesheet" href="/assets/fonts/candidates.css?v={v}">
+<script>
+(function () {{
+  "use strict";
+  function apply(f) {{
+    document.documentElement.style.setProperty("--sans", (f ? '"' + f + '", ' : '"Lexend Variable", ') + "-apple-system, BlinkMacSystemFont, sans-serif");
+    document.querySelectorAll(".type-sampler button").forEach(function (b) {{
+      b.classList.toggle("on", b.getAttribute("data-font") === f);
+      b.style.fontFamily = b.getAttribute("data-font") ? '"' + b.getAttribute("data-font") + '"' : '"Lexend Variable"';
+    }});
+  }}
+  var saved = "";
+  try {{ saved = localStorage.getItem("aw-font") || ""; }} catch (e) {{}}
+  apply(saved);
+  document.querySelectorAll(".type-sampler button").forEach(function (b) {{
+    b.addEventListener("click", function () {{
+      var f = b.getAttribute("data-font");
+      try {{ f ? localStorage.setItem("aw-font", f) : localStorage.removeItem("aw-font"); }} catch (e) {{}}
+      apply(f);
+    }});
+  }});
+}})();
+</script>
 </body></html>"""
 
 
@@ -961,9 +1002,10 @@ def map_data(site: Site) -> dict:
             if x not in r.nodes:
                 site.unresolved.append(f"concepts:{cid}:ref:{x}")
         hx = None
-        if scoreable(e):
+        axes = concept_axes(e)
+        if axes:
             hh = r.concept_hero(cid)
-            hx = {a[0]: [hh[a]["d"], hh[a]["cls"]] for a in ("reliability", "importance", "clarity")}
+            hx = {a[0]: [hh[a]["d"], hh[a]["cls"]] for a in axes}
         meta[cid] = {"k": e.get("kind", ""), "w": e.get("wiki") or "", "t": e.get("title", cid),
                      "s": str(e.get("blurb") or ""), "prs": prs_of.get(cid, 0), "d": ds[cid], "ax": hx,
                      "imp": 1.0 if cid == "the-program" else round(0.45 * raw[cid] / top + 0.55 * pct(raw[cid]), 3)}
@@ -997,25 +1039,28 @@ def activity_page(site: Site, rows: list[str]) -> str:
     r = site.repo
     contested, behind, unscored = [], [], []
     for cid, e in r.concepts.items():
-        if not scoreable(e):
+        axes = concept_axes(e)
+        if not axes:
             continue
         h = r.concept_hero(cid)
         link = site.link("concepts", cid, e.get("title", cid))
-        axes_c = [a for a in ("reliability", "importance", "clarity") if h[a]["contested"]]
+        star = lambda c: "*" if c["ai"] else ""
+        axes_c = [a for a in axes if h[a]["contested"]]
         if axes_c:
             contested.append(f'<li>{link} — {", ".join(axes_c)} contested</li>')
-        imp, rel = h["importance"], h["reliability"]
-        if imp["d"].isdigit() and int(imp["d"]) >= 4 and (not rel["d"].isdigit() or int(rel["d"]) < int(imp["d"])):
-            who = " (AI seed)" if imp["ai"] else ""
-            behind.append(f'<li>{link} — importance {esc(imp["d"])}{who}, reliability {esc(rel["d"])}</li>')
-        if all(h[a]["d"] == "–" for a in ("reliability", "importance", "clarity")):
+        if "reliability" in axes:
+            imp, rel = h["importance"], h["reliability"]
+            if imp["d"].isdigit() and int(imp["d"]) >= 4 and (not rel["d"].isdigit() or int(rel["d"]) < int(imp["d"])):
+                behind.append(f'<li>{link} — importance {esc(imp["d"])}{star(imp)}, reliability {esc(rel["d"])}{star(rel)}</li>')
+        if all(h[a]["d"] == "–" for a in axes):
             unscored.append(link)
     body = ["<section><h2>Where to look</h2>"]
     body.append("<h3>Disagreements to read</h3>")
     body.append("<ul class=\"listing\">" + "".join(contested) + "</ul>" if contested
                 else '<p class="muted">No axis is contested right now.</p>')
     body.append("<h3>Scored important, reliability behind</h3>")
-    body.append("<ul class=\"listing\">" + "".join(behind) + "</ul>" if behind
+    body.append("<ul class=\"listing\">" + "".join(behind)
+                + '</ul><p class="muted">* an AI-generated score no human has rated yet.</p>' if behind
                 else '<p class="muted">Nothing currently sits in this gap.</p>')
     body.append("<h3>Unscored</h3>")
     if unscored:

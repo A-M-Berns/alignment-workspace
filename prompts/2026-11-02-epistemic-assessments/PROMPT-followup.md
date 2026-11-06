@@ -69,6 +69,22 @@ Maintainer directives, in conversation on the preview, verbatim:
 
 > ok do the ai seeding next
 
+> add asterisks to seeded scores and more the phrase now written "*AI generated score
+> [linebreak] Add the first human rating" to below the numbers. change the parenthesized
+> (score stands at) to a different render maybe greyer or more transparent"
+>
+> Can we change the overall site font to something better, give me a bunch of options on
+> the front page
+>
+> For anything like "value change as belief change" that basically has nothing, can you
+> write a writeup? Also i'm kind of skeptical of your framing of that in general... seems
+> like that's like abram's move to some extent but not necessarily the "central bet of the
+> corrigibility line"?
+>
+> Can you add updating AI score generations to the recurring maintenance
+>
+> I think research threads should maybe just have importance and clarity ratings
+
 > Ok so a few things. First of all, each node on the map should have this hero panel
 > thing whereas i think most of them currently don't. At least, the ones where there is
 > enough content on the page where this can be evaluated that way (and maybe with the
