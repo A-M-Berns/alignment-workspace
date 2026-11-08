@@ -290,7 +290,11 @@ Second run, 2026-11-08, after the follow-up:
 - `python3.12 -m checkers.attention_render --check`: `ATTENTION RENDER: the committed file equals the render (144 items)`.
 - `python3.12 -m checkers.graph`: `OK 2494 nodes, 2603 events, 2094 ranked units; research first: the decision term (printed, not applied) favours vet hull-condition-total-trust (ranked unit 43), D 0.00016`; the same two warnings as the first run, neither this round's. Five result nodes whose Statement changed carry `version: 2`.
 
-CI on pull request #140 after the follow-up: CI-SECOND-RUN
+CI on pull request #140 at `65d19667`: all seven required checks pass (`checkers`,
+`conservativity`, `consolidation-verification`, `dco`, `lean`, `path-gate`, `python`). The
+`lean` job's first attempt at that commit failed on a `504` downloading the toolchain and
+passed on re-run; the two failures at `49fd21ad` were the stale handoff views, regenerated in
+`a2c1d9d3`.
 
 Claims whose status changed: none. Six claims registered, all `lean-proved`; the statement of
 record of `robust.eight-world-strengths` is `robustStrength_both`.
