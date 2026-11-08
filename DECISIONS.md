@@ -40,6 +40,15 @@ maintainer's.
 below.** The next round dispatched from that conversation lands it as its first
 commit.
 
+- **The exposure rule (2026-11-07).**  The score-side-binding round states, as a proposal on
+  `wiki/Normativity.md`, that a constraint is enforceable only if some settlement or assessment
+  could show it wrong, or the reasoner authored it; its fixtures sort the October rows as
+  deductively settled and place the one obligation on conduct on the score.  *Turns on:* taste
+  about what a reasoner may be bound by with no check at all — first-person commitments are
+  the exception the maintainer named, and whether any other unexposed source belongs in the
+  enforcer is their call, not a theorem's.
+  <!-- decision: open--exposure-rule-proposal; touches: item:133, claim:scoreside.same-question-two-realizations; status: open -->
+
 - **The maintenance sweep's cadence (2026-11-05).** The standing dispatch
   (`prompts/2026-11-05-standing-maintenance/PROMPT.md`) is adopted; nothing schedules it
   yet. *Turns on:* external knowledge — how often the maintainer wants a sweep PR landing
@@ -276,6 +285,10 @@ commit.
   *Turns on:* whether the maintainer intends a distinction the pinned substrate cannot
   express — a security assessed on nothing — or the two forms are one object seen from
   the row side and the account side.
+  *The score-side-binding round (2026-11-07) bears on this and does not reopen it:* on the
+  eight-world fixture (`RobustWarrant`) a strength row read at the record's posterior is false
+  while nothing withdraws it, and the robust reading over undefeated extensions is the candidate
+  repair (item 133).
   <!-- decision: open--confirm-amend-strike-m1-normative-content; touches: none; status: open -->
 
 - **What a warrant's security settles against (M2 of the warrant-enforcement-semantics
@@ -289,6 +302,11 @@ commit.
   security assessed on nothing — is wanted, and whether a linear strength row that
   contraposes under settlement is acceptable or the warrant's form changes (item 113);
   taste about what a reason's security is, which no theorem here decides.
+  *The score-side-binding round (2026-11-07) bears on the item-113 clause and does not reopen
+  it:* after a contrary challenge the linear strength row fails not by contraposition but because
+  the record's posterior no longer supports the strength (`RobustWarrant.invalid_at_contrary`),
+  and `settleOutcome` and `undercut` both keep it; the non-linear form the clause names is the
+  robust reading, filed as item 133.
   <!-- decision: open--what-warrant-s-security-settles-against; touches: item:112, item:113; status: open -->
 
 - **Confirm or strike the 2026-08-08 and 2026-08-09 rulings landed on 2026-10-21 (M5 of
@@ -7082,3 +7100,36 @@ the record. The merge is the human input point: no auto-merge on a maintenance p
 request touching `checkers/` or `.github/workflows/`. Rejected alternative: per-item
 maintainer dispatch, which left friction accumulating faster than it was retired.
 
+### 2026-11-07 — obligations on conduct bind on the score; epistemic warrants bind on prices under solvency, and their robust reading is the repair candidate
+<!-- decision: 2026-11-07--conduct-binds-on-score-warrants-on-prices; touches: item:35, item:61, item:113, item:127, item:133, claim:scoreside.same-question-two-realizations, claim:scoreside.conduct-on-prices-conflicts, claim:solvency.bounded-iff-frequency, claim:solvency.conflict-names-suspects, claim:robust.eight-world-strengths -->
+
+**Agent-decided, reversible** (the score-side-binding round).  (1) An obligation on
+conduct reaches the decision as a charge `ϖ` times the market's price of its assessed
+shortfall, subtracted from the option's score; it does not compile into a row on prices.
+At the rebuttal run's fixture the row it would compile to conflicts with the strength and
+applicability rows at date 4 and is implied by the pin at date 9
+(`WarrantInductorScoreSide.conduct_on_prices_conflicts`, `conduct_on_prices_idle`), while the
+charged gate recovers the run's reversal on the same market with the bundle unchanged
+(`same_question_two_realizations`).  Rejected alternative: compiling every obligation into
+rows, which at this fixture either withholds the date or does nothing.  (2) Solvency is the
+discipline on epistemic warrants: a schema's enforcer liability is bounded iff the
+consequent's frequency on undefeated instances is not systematically below the strength
+(`WarrantSolvency.Schema.bounded_iff_frequency`), under the named unit-position hypothesis;
+this is the deference identity renamed, and the round says so.  (3) The robust reading of a
+warrant — a constraint on her model over the undefeated extensions of its anchor
+(`RobustWarrant.Robust`) — is adopted as the candidate repair for a strength row that the
+record's posterior stops supporting while neither rebuttal nor undercut fires, and filed as
+item 133 for its `Form`-level rule.  Rejected alternative: a general defeat semantics now,
+which the dispatch excluded.  M1, M2 and the entitlement liveness reading are not reopened.
+
+### 2026-11-07 — admission by standing instantiates the protocol's admission predicate from the authority allocation
+<!-- decision: 2026-11-07--admission-by-standing-from-allocation; touches: item:128, claim:standing.reallocated-entitles-nothing -->
+
+**Agent-decided, reversible** (the score-side-binding round).  `Protocol.Admitted` is
+instantiated by `AdmissionByStanding.admittedByStanding`: an obligation occurrence is admitted
+at a history when its issuer holds its matter under the allocation current there, a first-person
+commitment being a matter the reasoner holds itself.  The witness's `state₀` rebuilt over that
+protocol inhabits `Entitlement` with admission carrying content, and a reallocated obligation
+entitles nothing (`reallocated_entitles_nothing`).  Rejected alternative: admission read off the
+account's receipts (item 128's clause (b)), which stays open; the allocation is what the
+authority module already supplies.  `Expresses` remains typed.

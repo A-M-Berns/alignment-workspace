@@ -447,6 +447,65 @@ region flips, no certificate for the former guarantee exists afterwards
 mass on the formerly recommended response goes from at least `24/25` to `0` at the realized
 market (`same_question`).
 
+**Theorem 7.7 (Where obligations bind; the score-side test).**  On the rebuttal run's market
+add the obligation on conduct *refrain while the originating obligation's account is live*,
+assessed by that account's fate, charged at `ϖ` times the market's price of its shortfall
+sentence and subtracted from the acting score.  The enforcer's bundle and the market are the
+run's at every date and no held row is the conduct row; the charged gate refrains with
+certainty at date `9` for every `ϖ ≥ 0` and acts with mass at least `24/25` at date `4`
+while the charge is at most `19/240`, the room the enforced rows leave above `τ + δ`; when the
+charge reaches the acting score's room above `τ` the act's weight is `0` and no price has
+moved.  Compiled onto prices instead, the conduct row `P(X∧A∧Y) ≤ 1/3` conflicts with the
+strength and applicability rows at date `4` by a three-row Farkas certificate and is implied
+by the pin at date `9`.  `WarrantInductorScoreSide.same_question_two_realizations`
+(**registered** `scoreside.same-question-two-realizations`<!--ref:claim:scoreside.same-question-two-realizations-->),
+`conduct_on_prices_conflicts` (**registered**
+`scoreside.conduct-on-prices-conflicts`<!--ref:claim:scoreside.conduct-on-prices-conflicts-->); `bundle_unchanged`,
+`market_unchanged`, `no_conduct_row`, `before`, `after`, `override`, `conduct_on_prices_idle`
+(**LEAN**).  The shortfall sentence and its generability are typed.
+
+**Theorem 7.8 (Solvency as soundness; the conflict audit).**  For a warrant schema with
+timely-settling instances, under the unit-position hypothesis on the enforcer's per-instance
+value, the cumulative liability is bounded below by `−B` at every date iff
+`c · U_n − T_n ≤ B` at every date — the consequent's frequency on undefeated instances is not
+systematically below the strength; the deference identity
+`DecisionComponent.bounded_iff_not_outperformed` instantiated, not new mathematics.  For any
+Farkas certificate, at every price vector some positively weighted row is violated; against a
+bundle at a cube point the violated row is the bundle's own, so if every held row is valid at
+a point no valid conflict certificate exists and a conflict names a mis-admission among its
+suspects.  `WarrantSolvency.Schema.bounded_iff_frequency` (**registered**
+`solvency.bounded-iff-frequency`<!--ref:claim:solvency.bounded-iff-frequency-->), `suspect_in_bundle` (**registered**
+`solvency.conflict-names-suspects`<!--ref:claim:solvency.conflict-names-suspects-->); `solvent_iff`,
+`exists_violated_suspect`, `no_conflict_of_sound`, `unique_suspect`,
+`Witness.always_true_bounded`, `Witness.always_false_unbounded` (**LEAN**).
+
+**Theorem 7.9 (The robust reading, on the eight-world model).**  Eight worlds — a binary
+quantity with a uniform prior, a signal of accuracy `3/4`, a challenge of accuracy `2/3`,
+independent given the quantity — stated with exact rationals.  The strength row at `3/4` is
+valid at the record with the signal alone (`Pr(Y | A) = 3/4`) and invalid after a contrary
+challenge (`Pr(Y | A ∧ C) = 3/5`); on the three-coordinate embedding `settleOutcome` keeps the
+form, the quiet docket undercuts nothing, and the contributed row is violated by her
+posterior; the opposing warrant at `2/3` makes the rows infeasible.  The robust reading —
+`Pr(Y | A ∧ E) ≥ c` for every undefeated extension `E` — is sound at every undefeated record,
+and its strength is `3/5` over the three extensions, `3/4` with the contrary challenge a
+defeater; the opposing warrant's is `2/5`, and the two robust rows meet at `3/5`.
+`RobustWarrant.robustStrength_all` (**registered**
+`robust.eight-world-strengths`<!--ref:claim:robust.eight-world-strengths-->); `robust_sound`, `valid_at_signal`,
+`invalid_at_contrary`, `kept_under_challenge`, `not_undercut`, `contributed_row_invalid`,
+`naive_conflict`, `robustStrength_defeated`, `against_robust_iff`, `robust_meet` (**LEAN**).
+No `Form`-level rule is built (item 133<!--ref:item:133-->).
+
+**Theorem 7.10 (Admission by standing).**  With `Protocol.Admitted` read off the authority
+allocation — an obligation is admitted at a history when its issuer holds its matter under the
+allocation current there, a first-person commitment being a matter the reasoner holds itself —
+the witness's `state₀` rebuilt over that protocol inhabits `Entitlement` at every date with the
+admission clause carrying content, and over any obligation state of the protocol under the
+allocation that moves the first matter to the agent no entitlement traces an occurrence to the
+first obligation.  `AdmissionByStanding.reallocated_entitles_nothing` (**registered**
+`standing.reallocated-entitles-nothing`<!--ref:claim:standing.reallocated-entitles-nothing-->); `entitlementS`,
+`admitted_by_allocation`, `first_person_admitted`, `reallocated_not_admitted` (**LEAN**).
+`Expresses` remains typed.
+
 ## 8. Fixed-era service and affordability (Layer I)
 
 Every result in this section is **paper-derived** with exact fixtures, from the

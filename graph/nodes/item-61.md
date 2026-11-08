@@ -9,6 +9,7 @@ title: "A normative source with summable enforcement liability"
 section: "Normativity line — legitimacy"
 maintainer_order: 37
 difficulty: "substantial"
+heading_notes: "— *narrowed 2026-11-07: for a warrant schema with timely-settling instances under the named unit-position hypothesis, bounded enforcer liability iff the consequent's frequency on undefeated instances is not systematically below the strength (`WarrantSolvency.Schema.bounded_iff_frequency`, registered `solvency.bounded-iff-frequency`), a renaming of `DecisionComponent.bounded_iff_not_outperformed`; the summability condition over the compiled force request and the live-world deficit `D_t` is untouched*"
 project: normativity.legitimacy
 dispatchable: true
 item_status: open

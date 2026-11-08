@@ -2122,6 +2122,34 @@
       "registered_classes": [],
       "prompt": "prompts/2026-11-05-site-priorities/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-11-07-score-side-binding",
+      "date": "2026-11-07",
+      "project": "normativity",
+      "path": "projects/normativity/rounds/2026-11-07-score-side-binding",
+      "verdict": "SCORE-SIDE-BINDING — the rebuttal run's reversal obtains on the same market with no row on conduct enforced and needs the epistemic strength row; the obligation on conduct binds on the score as a charge on the priced assessment and, compiled onto prices, conflicts with the epistemic rows at date 4 and idles at date 9; a warrant schema's enforcer liability is bounded iff the consequent's frequency on undefeated instances is not systematically below the strength, a renaming of the deference identity under a named unit-position hypothesis; a valid conflict certificate names a violated bundle row at every cube point, so sound rows cannot conflict; on the eight-world model the strength row at 3/4 is exact at the signal and false after a contrary challenge while rebuttal and undercut both stay silent, and the robust reading over undefeated extensions gives 3/5, or 3/4 with the challenge a defeater, the rows for and against meeting at 3/5; admission by standing instantiates Protocol.Admitted from the authority allocation, the entitlement is inhabited with admission carrying content, and a reallocated obligation entitles nothing.",
+      "verdict_source": "projects/normativity/rounds/2026-11-07-score-side-binding/README.md",
+      "depends_on": [
+        "2026-10-23-normative-inductor-consolidation",
+        "2026-10-22-normative-inductor-integration",
+        "2026-10-21-rebuttal-and-end-to-end",
+        "2026-09-25-decision-component",
+        "2026-09-25-authority-module"
+      ],
+      "depends_on_source": "report",
+      "registered_classes": [
+        "lean-proved"
+      ],
+      "prompt": "prompts/2026-11-07-score-side-binding/PROMPT.md",
+      "claim_changes": [
+        "scoreside.same-question-two-realizations",
+        "scoreside.conduct-on-prices-conflicts",
+        "solvency.bounded-iff-frequency",
+        "solvency.conflict-names-suspects",
+        "robust.eight-world-strengths",
+        "standing.reallocated-entitles-nothing"
+      ]
     }
   ]
 }
