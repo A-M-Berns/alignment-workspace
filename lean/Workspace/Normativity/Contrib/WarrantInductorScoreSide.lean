@@ -12,28 +12,39 @@ consequences, the pins are the process's own.  None is an obligation on conduct.
 
 This module adds the smallest obligation on conduct the fixture lacks — **refrain while live**:
 acting on the conclusion is a shortfall at any date at which the originating obligation's
-account still carries a live leaf, assessed by that account's fate — and realizes it two ways
-on the *same* market history.
+account carries a live leaf (`ShortfallAt`, read off the state accounted at that date; the run's
+state is `state₀` at every date) — with one shortfall sentence per date and the named hypothesis
+`Assessed`: the valuation that settles those sentences makes the date-`n` sentence true iff
+`ShortfallAt n`.  The obligation is realized two ways on the *same* market history.
 
 * **On prices** (§2) it compiles to the row `P(X∧A∧Y) ≤ τ`.  At date `4` that row conflicts
   with the strength and applicability rows: a three-row Farkas certificate (`conductCert`)
   refutes the region (`conduct_on_prices_conflicts`), so a compiler returning it withholds the
   whole date and the epistemic rows lose their force with it.  At date `9` the row is implied
   by the pin and adds nothing (`conduct_on_prices_idle`).
-* **On the score** (§3) the enforcer's bundle is the rebuttal run's at every date
-  (`bundle_unchanged`), the market is the same object (`market_unchanged`; the shape of
-  `DecisionComponent.noninterference`), no held row is the conduct row (`no_conduct_row`), and
-  the obligation reaches the decision as a charge `ϖ` times the market's price of the
-  shortfall sentence, subtracted from the acting score — the shape of
-  `BRIACorrigibility.evalOf`.  After the refutation the gate refrains with certainty for every
-  charge (`after`).  Before it, the gate acts with mass at least `24/25` whenever the charge is
-  at most `19/240`, the room the enforced rows leave above `τ + δ` (`before`); when the charge
+* **On the score** (§3) the realization stores the run's schedule, so its bundle and market are
+  the run's by construction (`bundle_unchanged`; `market_unchanged` is `rfl` — a design fact,
+  since the charge adds no trader, and not a result), the row *refrain* was compiled to is
+  held at no date (`no_conduct_row`), and the obligation reaches the decision as a charge `ϖ`
+  times the market's price of the date's shortfall sentence, subtracted from the acting score
+  — the shape of `BRIACorrigibility.evalOf`, gated by `GatedChoice.softGate` with the run's
+  problem parameters.  Under `Assessed`: after the refutation the gate refrains with certainty
+  for every nonnegative charge, acting being a shortfall there (`after`); before it, the gate
+  acts with mass at least `24/25` whenever `ϖ` times the shortfall price is at most `19/240`,
+  the room the enforced rows leave above `τ + δ`, although acting is a shortfall there too
+  (`before`) — the obligation binds through the charge and nothing else; when the charge
   reaches the acting score's room above `τ`, the acting option's weight is zero and no price
   has moved (`override`).
+* **The strength row is necessary** (§4).  At the price vector `p₀ = (1, 3/4, 0, 0, 3/4)`, in
+  the cube and satisfying every date-4 row except the specialized strength row, the charged
+  gate puts mass `0` on acting and `1` on refraining for every nonnegative charge
+  (`strength_row_necessary`): `before` rests on that row, and this is the witness that it
+  cannot be dropped.
 
-So the reversal obtains with no row on conduct enforced; it needs the strength row — without
-it the date-4 region admits `P(X∧A∧Y) = 0` and nothing certifies acting — and the obligation on
-conduct binds on the score, scaled by `ϖ` and the priced assessment, never on a belief.
+So the reversal obtains with no row on conduct enforced and needs the strength row, and the
+obligation on conduct binds on the score, scaled by `ϖ` and the priced sentence an assessment
+settles.  Not shown: that the market prices the shortfall sentences well, or that they are
+generable; `Assessed` is a hypothesis.
 
 Names are provisional (`AGENTS.md` standard 6).
 -/
@@ -53,33 +64,47 @@ open Workspace.Normativity.Contrib.WarrantInductorWitness (occZ grounds structur
   F5 tol DP wit P₁ eXAY eXA_XAY rowS4 rowA4 rowS4_a rowS4_b rowA4_a rowA4_b account_live)
 open Workspace.Normativity.Contrib.WarrantInductorRebuttal
 open Workspace.Normativity.Contrib.GatedChoice
-open Workspace.Normativity.Contrib.OpenIntegrityEvolution.Witness (state₀)
+open Workspace.Normativity.Contrib.OpenIntegrityEvolution (ObligationState)
+open Workspace.Normativity.Contrib.OpenIntegrityEvolution.Witness (state₀ wAnchor)
 open Workspace.Normativity.Contrib.OccurrenceIntegrity (Initial)
-open Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness (start)
+open Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness (start protocol)
 open Workspace.Normativity.Contrib.EndToEndWitness.Run (n₁ nE cP cA cS settlementAt occP occA occS)
 open Finset
 
 /-! ## 1. The obligation on conduct -/
 
-/-- **Refrain while live** (provisional name): the smallest obligation on conduct the fixture
-lacks.  Acting on the first warrant's conclusion is a shortfall at any date at which the
-originating obligation's account — occurrence `0` of `state₀`, the origin of the first
-warrant's occurrences in `WarrantInductorWitness.entitlement` — carries a live leaf; the
-obligation is assessed by that account's fate.  `shortfall` is the sentence the market prices
-for the event "acting at this date will be assessed a shortfall": the application's, as the
-shortfall and taint events are in `DecisionComponent`. -/
-structure RefrainWhileLive where
-  shortfall : Sentence
+/-- The state accounted at date `n` of the rebuttal run.  It is `state₀` at every date — the
+run's entitlement `entitlementB n` is over `state₀` throughout — so the argument records which
+date the obligation is read at and nothing else. -/
+def stateAt (_n : ℕ) : ObligationState protocol wAnchor := state₀
 
-/-- **The assessment**: acting at date `n` is a shortfall iff the originating account is live.
-An evaluation settles this, not the deductive process. -/
-def ShortfallAt (_n : ℕ) : Prop :=
-  OccurrenceIntegrity.Fate.live ∈
-    (state₀.account 0 (by simp [state₀, Initial.state, start])).fates
+lemma stateAt_exposed (n : ℕ) : (0 : Fin 2) ∈ (stateAt n).boundary.exposed := by
+  simp [stateAt, state₀, Initial.state, start]
+
+/-- **What the assessment settles**: acting at date `n` is a shortfall iff the originating
+account — occurrence `0`, the origin of the first warrant's occurrences in
+`WarrantInductorWitness.entitlement` — carries a live leaf in the state accounted at `n`.  An
+evaluation settles this, not the deductive process. -/
+def ShortfallAt (n : ℕ) : Prop :=
+  OccurrenceIntegrity.Fate.live ∈ ((stateAt n).account 0 (stateAt_exposed n)).fates
 
 /-- In `state₀` the originating account is live at every date, so acting is a shortfall
 throughout: the obligation binds at date `4` as much as at date `9`. -/
 theorem shortfall_assessed (n : ℕ) : ShortfallAt n := account_live 0 _
+
+/-- **Refrain while live** (provisional name): the smallest obligation on conduct the fixture
+lacks.  `shortfall n` is the sentence the market prices for the event "acting at date `n` will
+be assessed a shortfall": the application's, as the shortfall and taint events are in
+`DecisionComponent`.  What ties it to the assessment is `Assessed`. -/
+structure RefrainWhileLive where
+  shortfall : ℕ → Sentence
+
+/-- **`Assessed`** (provisional name): the hypothesis tying the shortfall sentences to the
+assessment.  The valuation `v` — the world in which the assessment settles the sentences —
+makes `O.shortfall n` true iff `ShortfallAt n`.  Named, not derived: nothing here says that
+the market prices these sentences well, or that they are generable. -/
+def Assessed (O : RefrainWhileLive) (v : PCWorld) : Prop :=
+  ∀ n, v.Holds (O.shortfall n) ↔ ShortfallAt n
 
 /-! ## 2. The obligation compiled onto prices: a row that conflicts or idles -/
 
@@ -110,7 +135,8 @@ def conductCert : FarkasCert 5 3 where
 admissible price vector (`conductCert` through `conflict_sound`); a compiler returning this
 certificate withholds the whole date (`WarrantInductor.conflict_withheld`), the strength and
 applicability rows included.  Placed on prices, the obligation on conduct costs the epistemic
-rows their force. -/
+rows their force.  This is the chosen compilation of *refrain*; nothing is shown about other
+rows the obligation might compile to. -/
 theorem conduct_on_prices_conflicts :
     ¬ ∃ x, ((NB 4).bundle ++ [(⟨Cite.str 99, conductRow⟩ : CitedRow (Cite 5) 5)]).Region x := by
   refine conflict_sound _ conductCert ?_
@@ -131,24 +157,26 @@ theorem conduct_on_prices_idle (x : Fin 5 → ℚ) (hx : (NB 9).region x) : cond
 /-! ## 3. The score-side realization -/
 
 /-- **The score-side realization** (provisional name): a schedule, the obligation on conduct,
-and the charge `ϖ` per unit price of its shortfall event. -/
+and the charge `ϖ` per unit price of the date's shortfall sentence. -/
 structure ScoreSide where
   schedule : WarrantSchedule 5
   obligation : RefrainWhileLive
   ϖ : ℝ
 
-/-- The realization this module runs: the rebuttal run's own schedule, untouched. -/
-def scoreSide (σ : Sentence) (ϖ : ℝ) : ScoreSide := ⟨WB, ⟨σ⟩, ϖ⟩
+/-- The realization this module runs: the rebuttal run's own schedule, stored. -/
+def scoreSide (O : RefrainWhileLive) (ϖ : ℝ) : ScoreSide := ⟨WB, O, ϖ⟩
 
-/-- **The enforcer's bundle is the rebuttal run's at every date.** -/
-theorem bundle_unchanged (σ : Sentence) (ϖ : ℝ) (n : ℕ) :
-    (scoreSide σ ϖ).schedule.bundle n = (NB n).bundle := bundle_eq n
+/-- **The enforcer's bundle is the rebuttal run's at every date** — by construction, since
+`scoreSide` stores `WB`. -/
+theorem bundle_unchanged (O : RefrainWhileLive) (ϖ : ℝ) (n : ℕ) :
+    (scoreSide O ϖ).schedule.bundle n = (NB n).bundle := bundle_eq n
 
-/-- **Non-interference, on the market object.**  The score-side realization's market is the
-rebuttal run's: one `History`, the same price at every date and sentence.  The charge reads
-prices and adds no trader (`DecisionComponent.noninterference` is the shape). -/
-theorem market_unchanged (σ : Sentence) (ϖ : ℝ) :
-    (scoreSide σ ϖ).schedule.market DP = WB.market DP := rfl
+/-- **The market is the rebuttal run's, by construction.**  `scoreSide` stores `WB`, so this is
+`rfl`: a design fact — the charge reads prices and adds no trader, the shape of
+`DecisionComponent.noninterference` — and not a result.  It does not show that two
+independently built markets coincide. -/
+theorem market_unchanged (O : RefrainWhileLive) (ϖ : ℝ) :
+    (scoreSide O ϖ).schedule.market DP = WB.market DP := rfl
 
 /-- The constant of a pin row is `0`, `1` or `−1`. -/
 lemma pinRow_b {d : ℕ} (F : Settlement d) (i : Fin d) {r : Row d} (hr : r ∈ F.pinRowsAt i) :
@@ -196,17 +224,18 @@ theorem bundle_row_b_ne (n : ℕ) {c : CitedRow (Cite 5) 5} (hc : c ∈ WB.bundl
   · simp only [NB_settlement] at hr
     rcases pinRow_b _ _ hr with h | h | h <;> simp only [h] <;> norm_num
 
-/-- **No conduct row is enforced**: no row the score-side realization's enforcer holds is the
-conduct row, at any date. -/
-theorem no_conduct_row (σ : Sentence) (ϖ : ℝ) (n : ℕ) :
-    ∀ c ∈ (scoreSide σ ϖ).schedule.bundle n, c.row ≠ conductRow := by
+/-- **The row *refrain* was compiled to is held at no date**: no row the score-side
+realization's enforcer holds is `conductRow`.  This is about that one row; it is not a
+classification of every row on conduct, of which the forms have no constructor. -/
+theorem no_conduct_row (O : RefrainWhileLive) (ϖ : ℝ) (n : ℕ) :
+    ∀ c ∈ (scoreSide O ϖ).schedule.bundle n, c.row ≠ conductRow := by
   intro c hc heq
   exact bundle_row_b_ne n hc (by rw [heq]; rfl)
 
-/-- The price of the shortfall event at date `n`: the realization's market, on the shortfall
-sentence. -/
+/-- The price of the date-`n` shortfall sentence at date `n`: the realization's market, on the
+obligation's sentence for that date. -/
 noncomputable def shortfallPrice (R : ScoreSide) (n : ℕ) : ℝ :=
-  R.schedule.market DP n R.obligation.shortfall
+  R.schedule.market DP n (R.obligation.shortfall n)
 
 /-- The priced shortfall over the menu: acting may be assessed a shortfall; refraining never
 is, since the obligation is to refrain. -/
@@ -218,14 +247,14 @@ recognized violation. -/
 noncomputable def chargedScore (R : ScoreSide) (n : ℕ) (q : Fin 2) : ℝ :=
   P₁.scoreR (Problem.priceR R.schedule DP n) q - R.ϖ * pS R n q
 
-/-- **The score-side gate**: the soft gate on the charged scores, with the problem's
+/-- **The score-side gate**: `GatedChoice.softGate` on the charged scores, with the problem's
 preference, threshold and ramp. -/
 noncomputable def scoreGate (R : ScoreSide) (n : ℕ) : Fin 2 → ℝ :=
   softGate (chargedScore R n) P₁.pref P₁.τ P₁.δ
 
 /-- At charge zero the score-side gate is the rebuttal run's gate at the same market. -/
-theorem scoreGate_zero (σ : Sentence) (n : ℕ) :
-    scoreGate (scoreSide σ 0) n = P₁.gate (fun j => WB.market DP n (F5.ι j)) := by
+theorem scoreGate_zero (O : RefrainWhileLive) (n : ℕ) :
+    scoreGate (scoreSide O 0) n = P₁.gate (fun j => WB.market DP n (F5.ι j)) := by
   have hb : (fun j => WB.market DP n (F5.ι j)) = Problem.priceR WB DP n := rfl
   rw [hb]
   unfold scoreGate Problem.gate
@@ -233,11 +262,11 @@ theorem scoreGate_zero (σ : Sentence) (n : ℕ) :
   funext q
   simp [chargedScore, scoreSide]
 
-lemma shortfallPrice_nonneg (σ : Sentence) (ϖ : ℝ) (n : ℕ) :
-    0 ≤ shortfallPrice (scoreSide σ ϖ) n := by
-  show 0 ≤ WB.market DP n σ
+lemma shortfallPrice_nonneg (O : RefrainWhileLive) (ϖ : ℝ) (n : ℕ) :
+    0 ≤ shortfallPrice (scoreSide O ϖ) n := by
+  show 0 ≤ WB.market DP n (O.shortfall n)
   rw [WarrantSchedule.market_eq_quote_cast]
-  exact_mod_cast (WB.quoteAt_mem_Icc DP n σ).1
+  exact_mod_cast (WB.quoteAt_mem_Icc DP n _).1
 
 lemma priceVec_le_one (n : ℕ) (j : Fin 5) : WB.priceVec DP n j ≤ 1 :=
   (WB.quoteAt_mem_Icc DP n _).2
@@ -254,13 +283,13 @@ lemma scoreR_refrain (n : ℕ) :
     Fixture2.XAY, Fixture2.Y, Fixture2.Z]
   ring
 
-lemma charged_act (σ : Sentence) (ϖ : ℝ) (n : ℕ) :
-    chargedScore (scoreSide σ ϖ) n 0 =
-      ((WB.priceVec DP n XAY : ℚ) : ℝ) - ϖ * shortfallPrice (scoreSide σ ϖ) n := by
+lemma charged_act (O : RefrainWhileLive) (ϖ : ℝ) (n : ℕ) :
+    chargedScore (scoreSide O ϖ) n 0 =
+      ((WB.priceVec DP n XAY : ℚ) : ℝ) - ϖ * shortfallPrice (scoreSide O ϖ) n := by
   simp [chargedScore, pS, scoreR_act, scoreSide]
 
-lemma charged_refrain (σ : Sentence) (ϖ : ℝ) (n : ℕ) :
-    chargedScore (scoreSide σ ϖ) n 1 =
+lemma charged_refrain (O : RefrainWhileLive) (ϖ : ℝ) (n : ℕ) :
+    chargedScore (scoreSide O ϖ) n 1 =
       ((WB.priceVec DP n XA : ℚ) : ℝ) - ((WB.priceVec DP n XAY : ℚ) : ℝ) := by
   simp [chargedScore, pS, scoreR_refrain, scoreSide]
 
@@ -276,12 +305,14 @@ lemma excess_rowA4 (p : Fin 5 → ℚ) : excess rowA4 p = -(p XA) + 3/4 := by
   simp [excess, rowA4_a, rowA4_b, Fin.sum_univ_five, Fixture2.XA]
   ring
 
-/-- **After the refutation, for every charge and every shortfall sentence, the score-side gate
-refrains with certainty.**  The charge can only lower the acting score, already pinned below
-`τ` by the enforced pin; refraining is uncharged and its score clears `τ + δ` by the enforced
-applicability row. -/
-theorem after (σ : Sentence) (ϖ : ℝ) (hϖ : 0 ≤ ϖ) :
-    scoreGate (scoreSide σ ϖ) 9 0 = 0 ∧ scoreGate (scoreSide σ ϖ) 9 1 = 1 := by
+/-- **After the refutation, for every nonnegative charge, the score-side gate refrains with
+certainty, and acting is assessed a shortfall there.**  The charge can only lower the acting
+score, already pinned below `τ` by the enforced pin; refraining is uncharged and its score
+clears `τ + δ` by the enforced applicability row.  `Assessed` supplies the first conjunct. -/
+theorem after (O : RefrainWhileLive) (v : PCWorld) (hA : Assessed O v) (ϖ : ℝ) (hϖ : 0 ≤ ϖ) :
+    v.Holds (O.shortfall 9) ∧
+      scoreGate (scoreSide O ϖ) 9 0 = 0 ∧ scoreGate (scoreSide O ϖ) 9 1 = 1 := by
+  refine ⟨(hA 9).2 (shortfall_assessed 9), ?_⟩
   obtain ⟨-, hconf, -, -, -⟩ := inductor
   have hex := hconf 9 (enforced 9)
   have hA9 := hex _ memA9
@@ -300,41 +331,43 @@ theorem after (σ : Sentence) (ϖ : ℝ) (hϖ : 0 ≤ ϖ) :
     have := (Rat.cast_le (K := ℝ)).mpr hP9
     push_cast at this
     exact this
-  have hπ := shortfallPrice_nonneg σ ϖ 9
+  have hπ := shortfallPrice_nonneg O ϖ 9
   have hτ : P₁.τ = 1/3 := rfl
   have hδ : P₁.δ = 1/12 := rfl
   have hpref : ∀ q, P₁.pref q = 1 := fun _ => rfl
-  have hw0 : weight (chargedScore (scoreSide σ ϖ) 9) P₁.pref P₁.τ P₁.δ 0 = 0 := by
+  have hw0 : weight (chargedScore (scoreSide O ϖ) 9) P₁.pref P₁.τ P₁.δ 0 = 0 := by
     unfold weight
     rw [charged_act, hτ, hδ, hpref, mul_one]
     apply ramp_eq_zero_of_nonpos
     apply div_nonpos_of_nonpos_of_nonneg _ (by norm_num)
     nlinarith [mul_nonneg hϖ hπ]
-  have hw1 : weight (chargedScore (scoreSide σ ϖ) 9) P₁.pref P₁.τ P₁.δ 1 = 1 := by
+  have hw1 : weight (chargedScore (scoreSide O ϖ) 9) P₁.pref P₁.τ P₁.δ 1 = 1 := by
     unfold weight
     rw [charged_refrain, hτ, hδ, hpref, mul_one, ramp_eq_one]
     rw [le_div_iff₀ (by norm_num)]
     linarith
-  have htot : total (chargedScore (scoreSide σ ϖ) 9) P₁.pref P₁.τ P₁.δ = 1 := by
+  have htot : total (chargedScore (scoreSide O ϖ) 9) P₁.pref P₁.τ P₁.δ = 1 := by
     unfold total
     rw [Fin.sum_univ_two, hw0, hw1, zero_add]
   constructor
-  · show weight (chargedScore (scoreSide σ ϖ) 9) P₁.pref P₁.τ P₁.δ 0 /
-      total (chargedScore (scoreSide σ ϖ) 9) P₁.pref P₁.τ P₁.δ = 0
+  · show weight (chargedScore (scoreSide O ϖ) 9) P₁.pref P₁.τ P₁.δ 0 /
+      total (chargedScore (scoreSide O ϖ) 9) P₁.pref P₁.τ P₁.δ = 0
     rw [hw0, zero_div]
-  · show weight (chargedScore (scoreSide σ ϖ) 9) P₁.pref P₁.τ P₁.δ 1 /
-      total (chargedScore (scoreSide σ ϖ) 9) P₁.pref P₁.τ P₁.δ = 1
+  · show weight (chargedScore (scoreSide O ϖ) 9) P₁.pref P₁.τ P₁.δ 1 /
+      total (chargedScore (scoreSide O ϖ) 9) P₁.pref P₁.τ P₁.δ = 1
     rw [hw1, htot, div_one]
 
-/-- **Before the refutation, with the charge at most `19/240`, the score-side gate acts with
-mass at least `24/25`.**  The enforced strength and applicability rows hold
-`P(X∧A∧Y) ≥ 1/2 − 1/240` at the displayed price, which leaves exactly `19/240` above
-`τ + δ = 5/12`; the refraining score is at most `1/3 + 1/400`, so its weight is at most
-`3/100`.  The rebuttal run's reversal obtains on the same market with no row on conduct
-enforced. -/
-theorem before (σ : Sentence) (ϖ : ℝ) (_hϖ : 0 ≤ ϖ)
-    (hsmall : ϖ * shortfallPrice (scoreSide σ ϖ) 4 ≤ 19/240) :
-    (24/25 : ℝ) ≤ scoreGate (scoreSide σ ϖ) 4 0 := by
+/-- **Before the refutation, with `ϖ` times the shortfall price at most `19/240`, the
+score-side gate acts with mass at least `24/25`, although acting is assessed a shortfall
+there.**  The enforced strength and applicability rows hold `P(X∧A∧Y) ≥ 1/2 − 1/240` at the
+displayed price, which leaves exactly `19/240` above `τ + δ = 5/12`; the refraining score is at
+most `1/3 + 1/400`, so its weight is at most `3/100`.  The obligation binds through the charge
+and nothing else: under this bound the reversal obtains on the same market with no row on
+conduct enforced. -/
+theorem before (O : RefrainWhileLive) (v : PCWorld) (hA : Assessed O v) (ϖ : ℝ)
+    (hsmall : ϖ * shortfallPrice (scoreSide O ϖ) 4 ≤ 19/240) :
+    v.Holds (O.shortfall 4) ∧ (24/25 : ℝ) ≤ scoreGate (scoreSide O ϖ) 4 0 := by
+  refine ⟨(hA 4).2 (shortfall_assessed 4), ?_⟩
   obtain ⟨-, hconf, -, -, -⟩ := inductor
   have hex := hconf 4 (enforced 4)
   have hS4 := hex _ memS4
@@ -359,61 +392,174 @@ theorem before (σ : Sentence) (ϖ : ℝ) (_hϖ : 0 ≤ ϖ)
   have hτ : P₁.τ = 1/3 := rfl
   have hδ : P₁.δ = 1/12 := rfl
   have hpref : ∀ q, P₁.pref q = 1 := fun _ => rfl
-  have hw0 : weight (chargedScore (scoreSide σ ϖ) 4) P₁.pref P₁.τ P₁.δ 0 = 1 := by
+  have hw0 : weight (chargedScore (scoreSide O ϖ) 4) P₁.pref P₁.τ P₁.δ 0 = 1 := by
     unfold weight
     rw [charged_act, hτ, hδ, hpref, mul_one, ramp_eq_one]
     rw [le_div_iff₀ (by norm_num)]
     linarith
-  have hw1 : weight (chargedScore (scoreSide σ ϖ) 4) P₁.pref P₁.τ P₁.δ 1 ≤ 3/100 := by
+  have hw1 : weight (chargedScore (scoreSide O ϖ) 4) P₁.pref P₁.τ P₁.δ 1 ≤ 3/100 := by
     unfold weight
     rw [charged_refrain, hτ, hδ, hpref, mul_one]
     refine (ramp_le _).trans ?_
     apply max_le (by norm_num)
     rw [div_le_iff₀ (by norm_num)]
     linarith
-  have hw1' : 0 ≤ weight (chargedScore (scoreSide σ ϖ) 4) P₁.pref P₁.τ P₁.δ 1 :=
+  have hw1' : 0 ≤ weight (chargedScore (scoreSide O ϖ) 4) P₁.pref P₁.τ P₁.δ 1 :=
     weight_nonneg P₁.pref_nonneg 1
-  have htot : total (chargedScore (scoreSide σ ϖ) 4) P₁.pref P₁.τ P₁.δ =
-      1 + weight (chargedScore (scoreSide σ ϖ) 4) P₁.pref P₁.τ P₁.δ 1 := by
+  have htot : total (chargedScore (scoreSide O ϖ) 4) P₁.pref P₁.τ P₁.δ =
+      1 + weight (chargedScore (scoreSide O ϖ) 4) P₁.pref P₁.τ P₁.δ 1 := by
     unfold total
     rw [Fin.sum_univ_two, hw0]
-  show (24/25 : ℝ) ≤ weight (chargedScore (scoreSide σ ϖ) 4) P₁.pref P₁.τ P₁.δ 0 /
-    total (chargedScore (scoreSide σ ϖ) 4) P₁.pref P₁.τ P₁.δ
+  show (24/25 : ℝ) ≤ weight (chargedScore (scoreSide O ϖ) 4) P₁.pref P₁.τ P₁.δ 0 /
+    total (chargedScore (scoreSide O ϖ) 4) P₁.pref P₁.τ P₁.δ
   rw [hw0, htot, le_div_iff₀ (by linarith)]
   linarith
 
 /-- **The charge can override the act without touching a price.**  When `ϖ` times the shortfall
 price reaches the acting score's room above `τ`, the acting option's weight is zero.  Nothing
 about `P(X∧A∧Y)` changed; the obligation bound on the score. -/
-theorem override (σ : Sentence) (ϖ : ℝ)
-    (hbig : P₁.scoreR (Problem.priceR WB DP 4) 0 - P₁.τ ≤ ϖ * shortfallPrice (scoreSide σ ϖ) 4) :
-    scoreGate (scoreSide σ ϖ) 4 0 = 0 := by
-  have h0 : chargedScore (scoreSide σ ϖ) 4 0 - P₁.τ ≤ 0 := by
+theorem override (O : RefrainWhileLive) (ϖ : ℝ)
+    (hbig : P₁.scoreR (Problem.priceR WB DP 4) 0 - P₁.τ ≤ ϖ * shortfallPrice (scoreSide O ϖ) 4) :
+    scoreGate (scoreSide O ϖ) 4 0 = 0 := by
+  have h0 : chargedScore (scoreSide O ϖ) 4 0 - P₁.τ ≤ 0 := by
     rw [charged_act, ← scoreR_act]; linarith
-  have hr : ramp ((chargedScore (scoreSide σ ϖ) 4 0 - P₁.τ) / P₁.δ) = 0 :=
+  have hr : ramp ((chargedScore (scoreSide O ϖ) 4 0 - P₁.τ) / P₁.δ) = 0 :=
     ramp_eq_zero_of_nonpos (div_nonpos_of_nonpos_of_nonneg h0 P₁.δ_pos.le)
-  show weight (chargedScore (scoreSide σ ϖ) 4) P₁.pref P₁.τ P₁.δ 0 /
-    total (chargedScore (scoreSide σ ϖ) 4) P₁.pref P₁.τ P₁.δ = 0
+  show weight (chargedScore (scoreSide O ϖ) 4) P₁.pref P₁.τ P₁.δ 0 /
+    total (chargedScore (scoreSide O ϖ) 4) P₁.pref P₁.τ P₁.δ = 0
   unfold weight
   rw [hr, zero_mul, zero_div]
 
 /-- **The same question, in the two realizations.**  On prices with no obligation on conduct:
-the rebuttal run's `same_question`.  On the score with the obligation charged: acting with mass
-at least `24/25` at date `4` while the charge is at most `19/240`, and refraining with
-certainty at date `9` for every charge. -/
-theorem same_question_two_realizations (σ : Sentence) (ϖ : ℝ) (hϖ : 0 ≤ ϖ)
-    (hsmall : ϖ * shortfallPrice (scoreSide σ ϖ) 4 ≤ 19/240) :
+the rebuttal run's `same_question`.  On the score with the obligation charged, under
+`Assessed` and with `ϖ` times the date-4 shortfall price at most `19/240`: acting with mass at
+least `24/25` at date `4` and refraining with certainty at date `9`, acting being assessed a
+shortfall at both dates.  A conditional sufficiency result: the charge bound is a hypothesis,
+and `strength_row_necessary` is the witness that the strength row cannot be dropped from the
+rows it rests on. -/
+theorem same_question_two_realizations (O : RefrainWhileLive) (v : PCWorld) (hA : Assessed O v)
+    (ϖ : ℝ) (hϖ : 0 ≤ ϖ) (hsmall : ϖ * shortfallPrice (scoreSide O ϖ) 4 ≤ 19/240) :
     ((24/25 : ℝ) ≤ P₁.gate (fun j => WB.market DP 4 (F5.ι j)) 0 ∧
       P₁.gate (fun j => WB.market DP 9 (F5.ι j)) 0 = 0 ∧
       P₁.gate (fun j => WB.market DP 9 (F5.ι j)) 1 = 1) ∧
-    ((24/25 : ℝ) ≤ scoreGate (scoreSide σ ϖ) 4 0 ∧
-      scoreGate (scoreSide σ ϖ) 9 0 = 0 ∧ scoreGate (scoreSide σ ϖ) 9 1 = 1) :=
-  ⟨same_question, before σ ϖ hϖ hsmall, after σ ϖ hϖ⟩
+    ((24/25 : ℝ) ≤ scoreGate (scoreSide O ϖ) 4 0 ∧
+      scoreGate (scoreSide O ϖ) 9 0 = 0 ∧ scoreGate (scoreSide O ϖ) 9 1 = 1) ∧
+    (v.Holds (O.shortfall 4) ∧ v.Holds (O.shortfall 9)) :=
+  ⟨same_question, ⟨(before O v hA ϖ hsmall).2, (after O v hA ϖ hϖ).2⟩,
+    (before O v hA ϖ hsmall).1, (after O v hA ϖ hϖ).1⟩
+
+/-! ## 4. The strength row is necessary -/
+
+/-- The charged gate at a displayed price vector `p` with charge `κ` on acting: the soft gate
+on the problem's scores less `κ` on the acting option. -/
+noncomputable def gateAt (p : Fin 5 → ℚ) (κ : ℝ) : Fin 2 → ℝ :=
+  softGate (fun q => P₁.scoreR (fun j => ((p j : ℚ) : ℝ)) q - κ * ![1, 0] q) P₁.pref P₁.τ P₁.δ
+
+/-- The realized score-side gate at date `n` is `gateAt` at the displayed price vector, with
+the charge `ϖ` times the shortfall price. -/
+theorem scoreGate_eq_gateAt (O : RefrainWhileLive) (ϖ : ℝ) (n : ℕ) :
+    scoreGate (scoreSide O ϖ) n =
+      gateAt (WB.priceVec DP n) (ϖ * shortfallPrice (scoreSide O ϖ) n) := by
+  unfold scoreGate gateAt
+  congr 1
+  funext q
+  have hp : Problem.priceR WB DP n = fun j => ((WB.priceVec DP n j : ℚ) : ℝ) := rfl
+  simp only [chargedScore, scoreSide, pS]
+  rw [hp]
+  fin_cases q <;> simp <;> ring
+
+/-- The date-4 price vector with the acting credence at zero: `X = 1`, `X∧A = 3/4`,
+`X∧A∧Y = 0`, `Y = 0`, `Z = 3/4`. -/
+def p₀ : Fin 5 → ℚ := ![1, 3/4, 0, 0, 3/4]
+
+theorem p₀_inCube : InCube p₀ := by
+  intro i; fin_cases i <;> simp [p₀] <;> norm_num
+
+/-- `p₀` satisfies every row of the date-4 bundle other than the specialized strength row. -/
+theorem p₀_sat_without_strength : ∀ c ∈ (NB 4).bundle, c.row ≠ rowS4 → c.row.Sat p₀ := by
+  intro c hc hne
+  rcases ((NB 4).mem_bundle_iff c).1 hc with ⟨o, ho, rfl⟩ | ⟨it, hit, rfl⟩ | ⟨i, r, hr, rfl⟩
+  · simp only [NB_settlement] at hne ⊢
+    rw [survivors_eq] at ho
+    simp only [show (4 : ℕ) < nE from by decide, if_true, List.singleton_append, List.mem_cons,
+      List.not_mem_nil, or_false] at ho
+    rcases ho with rfl | rfl | rfl | rfl
+    · norm_num [specialize, settledTerm, settlementAt, occP, Fixture2.occP, Form.row, Row.Sat,
+        Fin.sum_univ_five, truth, cP, p₀, show n₁ ≤ 4 from by decide,
+        show ¬ nE ≤ 4 from by decide, Fixture2.X, Fixture2.XA, Fixture2.XAY, Fixture2.Y,
+        Fixture2.Z] <;> simp +decide <;> norm_num
+    · norm_num [specialize, settledTerm, settlementAt, occA, Fixture2.occA, Form.row, Row.Sat,
+        Fin.sum_univ_five, truth, cA, p₀, show n₁ ≤ 4 from by decide,
+        show ¬ nE ≤ 4 from by decide, Fixture2.X, Fixture2.XA, Fixture2.XAY, Fixture2.Y,
+        Fixture2.Z] <;> simp +decide <;> norm_num
+    · exact absurd rfl hne
+    · norm_num [specialize, settledTerm, settlementAt, occZ, Fixture2.occZ, Form.row, Row.Sat,
+        Fin.sum_univ_five, truth, Workspace.Normativity.Contrib.WarrantInductorWitness.cZ, p₀,
+        show n₁ ≤ 4 from by decide, show ¬ nE ≤ 4 from by decide, Fixture2.X, Fixture2.XA,
+        Fixture2.XAY, Fixture2.Y, Fixture2.Z] <;> simp +decide <;> norm_num
+  · simp only [NB_settlement]
+    rw [liveStr_eq] at hit
+    simp only [structural, List.mem_cons, List.not_mem_nil, or_false] at hit
+    rcases hit with rfl | rfl | rfl <;>
+      norm_num [specialize, settledTerm, settlementAt, coh₁, coh₂, coh₃, Row.Sat,
+        Fin.sum_univ_five, truth, p₀, show n₁ ≤ 4 from by decide, show ¬ nE ≤ 4 from by decide]
+  · simp only [NB_settlement] at hr ⊢
+    refine (Settlement.pinRowsAt_sat_iff _ i p₀).2 ?_ r hr
+    intro b hb
+    fin_cases i <;> simp [settlementAt, show n₁ ≤ 4 from by decide,
+      show ¬ nE ≤ 4 from by decide] at hb <;> subst hb <;> simp [p₀, truth]
+
+/-- `p₀` violates the specialized strength row: `2/3 · 3/4 ≤ 0` fails. -/
+theorem p₀_violates_strength : ¬ rowS4.Sat p₀ := by
+  norm_num [Row.Sat, rowS4_a, rowS4_b, Fin.sum_univ_five, p₀]
+
+/-- **Without the strength row the reversal is lost.**  `p₀` lies in the cube, satisfies every
+date-4 row but the specialized strength row, and violates that one; at `p₀` the charged gate
+puts mass `0` on acting and `1` on refraining for every nonnegative charge.  The realized
+decision differs, whatever the charge: `before` rests on the strength row through the enforced
+conformance of `rowS4`, and this is the witness that the row cannot be dropped.  The bundle
+without the strength row is a weaker hypothesis package, and this point satisfies it. -/
+theorem strength_row_necessary :
+    InCube p₀ ∧ (∀ c ∈ (NB 4).bundle, c.row ≠ rowS4 → c.row.Sat p₀) ∧ ¬ rowS4.Sat p₀ ∧
+    ∀ κ : ℝ, 0 ≤ κ → gateAt p₀ κ 0 = 0 ∧ gateAt p₀ κ 1 = 1 := by
+  refine ⟨p₀_inCube, p₀_sat_without_strength, p₀_violates_strength, fun κ hκ => ?_⟩
+  have hs0 : P₁.scoreR (fun j => ((p₀ j : ℚ) : ℝ)) 0 = 0 := by
+    simp [Problem.scoreR, P₁, eXAY, Fin.sum_univ_five, p₀]
+  have hs1 : P₁.scoreR (fun j => ((p₀ j : ℚ) : ℝ)) 1 = 3/4 := by
+    norm_num [Problem.scoreR, P₁, eXA_XAY, Fin.sum_univ_five, p₀]
+  have hτ : P₁.τ = 1/3 := rfl
+  have hδ : P₁.δ = 1/12 := rfl
+  have hpref : ∀ q, P₁.pref q = 1 := fun _ => rfl
+  set b : Fin 2 → ℝ := fun q => P₁.scoreR (fun j => ((p₀ j : ℚ) : ℝ)) q - κ * ![1, 0] q with hb
+  have hb0 : b 0 = -κ := by simp [hb, hs0]
+  have hb1 : b 1 = 3/4 := by simp [hb, hs1]
+  have hw0 : weight b P₁.pref P₁.τ P₁.δ 0 = 0 := by
+    unfold weight
+    rw [hb0, hτ, hδ, hpref, mul_one]
+    apply ramp_eq_zero_of_nonpos
+    apply div_nonpos_of_nonpos_of_nonneg _ (by norm_num)
+    linarith
+  have hw1 : weight b P₁.pref P₁.τ P₁.δ 1 = 1 := by
+    unfold weight
+    rw [hb1, hτ, hδ, hpref, mul_one, ramp_eq_one]
+    rw [le_div_iff₀ (by norm_num)]
+    norm_num
+  have htot : total b P₁.pref P₁.τ P₁.δ = 1 := by
+    unfold total
+    rw [Fin.sum_univ_two, hw0, hw1, zero_add]
+  constructor
+  · show weight b P₁.pref P₁.τ P₁.δ 0 / total b P₁.pref P₁.τ P₁.δ = 0
+    rw [hw0, zero_div]
+  · show weight b P₁.pref P₁.τ P₁.δ 1 / total b P₁.pref P₁.τ P₁.δ = 1
+    rw [hw1, htot, div_one]
 
 /-! ## Axiom audit -/
 
+#print axioms Workspace.Normativity.Contrib.WarrantInductorScoreSide.stateAt
+#print axioms Workspace.Normativity.Contrib.WarrantInductorScoreSide.stateAt_exposed
 #print axioms Workspace.Normativity.Contrib.WarrantInductorScoreSide.ShortfallAt
 #print axioms Workspace.Normativity.Contrib.WarrantInductorScoreSide.shortfall_assessed
+#print axioms Workspace.Normativity.Contrib.WarrantInductorScoreSide.Assessed
 #print axioms Workspace.Normativity.Contrib.WarrantInductorScoreSide.conductRow
 #print axioms Workspace.Normativity.Contrib.WarrantInductorScoreSide.memS4
 #print axioms Workspace.Normativity.Contrib.WarrantInductorScoreSide.memA4
@@ -444,5 +590,12 @@ theorem same_question_two_realizations (σ : Sentence) (ϖ : ℝ) (hϖ : 0 ≤ �
 #print axioms Workspace.Normativity.Contrib.WarrantInductorScoreSide.before
 #print axioms Workspace.Normativity.Contrib.WarrantInductorScoreSide.override
 #print axioms Workspace.Normativity.Contrib.WarrantInductorScoreSide.same_question_two_realizations
+#print axioms Workspace.Normativity.Contrib.WarrantInductorScoreSide.gateAt
+#print axioms Workspace.Normativity.Contrib.WarrantInductorScoreSide.scoreGate_eq_gateAt
+#print axioms Workspace.Normativity.Contrib.WarrantInductorScoreSide.p₀
+#print axioms Workspace.Normativity.Contrib.WarrantInductorScoreSide.p₀_inCube
+#print axioms Workspace.Normativity.Contrib.WarrantInductorScoreSide.p₀_sat_without_strength
+#print axioms Workspace.Normativity.Contrib.WarrantInductorScoreSide.p₀_violates_strength
+#print axioms Workspace.Normativity.Contrib.WarrantInductorScoreSide.strength_row_necessary
 
 end Workspace.Normativity.Contrib.WarrantInductorScoreSide

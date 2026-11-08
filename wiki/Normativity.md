@@ -75,10 +75,11 @@ settling matters: a row binds at the dates its sentence can still move and is se
 withdrawn after, so a demand the process will settle costs the enforcer only what the
 still-possible worlds disagree about.  An obligation on conduct is assessed, not deduced,
 and binds on what the chooser is scored on: the rebuttal run's reversal is recovered on the
-same market with the obligation charged at `ϖ` times the price of its assessed shortfall and
-no row on conduct enforced (**registered**
-`scoreside.same-question-two-realizations`<!--ref:claim:scoreside.same-question-two-realizations-->), while the row it would
-compile to conflicts with the epistemic rows or does nothing (**registered**
+same market with the obligation charged at `ϖ` times the price of its shortfall sentence —
+the charge at most `19/240` at date 4, the sentence tied to the assessment by a named
+hypothesis — and the row it would compile to held at no date (**registered**
+`scoreside.same-question-two-realizations`<!--ref:claim:scoreside.same-question-two-realizations-->), while that row, compiled,
+conflicts with the epistemic rows or does nothing (**registered**
 `scoreside.conduct-on-prices-conflicts`<!--ref:claim:scoreside.conduct-on-prices-conflicts-->).  Solvency is the discipline on
 epistemic warrants: a schema's enforcer liability is bounded iff the consequent's frequency
 on undefeated instances is not systematically below the strength (**registered**

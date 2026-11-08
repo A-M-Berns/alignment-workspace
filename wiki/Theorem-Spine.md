@@ -449,20 +449,27 @@ market (`same_question`).
 
 **Theorem 7.7 (Where obligations bind; the score-side test).**  On the rebuttal run's market
 add the obligation on conduct *refrain while the originating obligation's account is live*,
-assessed by that account's fate, charged at `ϖ` times the market's price of its shortfall
-sentence and subtracted from the acting score.  The enforcer's bundle and the market are the
-run's at every date and no held row is the conduct row; the charged gate refrains with
-certainty at date `9` for every `ϖ ≥ 0` and acts with mass at least `24/25` at date `4`
-while the charge is at most `19/240`, the room the enforced rows leave above `τ + δ`; when the
-charge reaches the acting score's room above `τ` the act's weight is `0` and no price has
-moved.  Compiled onto prices instead, the conduct row `P(X∧A∧Y) ≤ 1/3` conflicts with the
-strength and applicability rows at date `4` by a three-row Farkas certificate and is implied
-by the pin at date `9`.  `WarrantInductorScoreSide.same_question_two_realizations`
+with one shortfall sentence per date and the hypothesis `Assessed` — the valuation settling
+those sentences makes the date-`n` sentence true iff acting at `n` is a shortfall, read off
+the state accounted at `n` — charged at `ϖ` times the market's price of the date's sentence
+and subtracted from the acting score.  The realization stores the run's schedule, so its
+bundle and market are the run's by construction (`market_unchanged` is `rfl`, a design fact,
+not a result) and the row *refrain* was compiled to is held at no date; under `Assessed` the
+charged gate refrains with certainty at date `9` for every `ϖ ≥ 0` and acts with mass at least
+`24/25` at date `4` while `ϖ` times the date-4 shortfall price is at most `19/240`, the room
+the enforced rows leave above `τ + δ`, acting being assessed a shortfall at both dates; when
+the charge reaches the acting score's room above `τ` the act's weight is `0` and no price has
+moved.  The strength row is necessary: at `p₀ = (1, 3/4, 0, 0, 3/4)`, which satisfies every
+date-4 row but the specialized strength row, the charged gate refrains with certainty for every
+nonnegative charge.  Compiled onto prices instead, the conduct row `P(X∧A∧Y) ≤ 1/3` conflicts
+with the strength and applicability rows at date `4` by a three-row Farkas certificate and is
+implied by the pin at date `9`.  `WarrantInductorScoreSide.same_question_two_realizations`
 (**registered** `scoreside.same-question-two-realizations`<!--ref:claim:scoreside.same-question-two-realizations-->),
 `conduct_on_prices_conflicts` (**registered**
 `scoreside.conduct-on-prices-conflicts`<!--ref:claim:scoreside.conduct-on-prices-conflicts-->); `bundle_unchanged`,
-`market_unchanged`, `no_conduct_row`, `before`, `after`, `override`, `conduct_on_prices_idle`
-(**LEAN**).  The shortfall sentence and its generability are typed.
+`market_unchanged`, `no_conduct_row`, `before`, `after`, `override`, `strength_row_necessary`,
+`scoreGate_eq_gateAt`, `conduct_on_prices_idle` (**LEAN**).  Not shown: that the market prices
+the shortfall sentences well, or that they are generable; `Assessed` is a hypothesis.
 
 **Theorem 7.8 (Solvency as soundness; the conflict audit).**  For a warrant schema with
 timely-settling instances, under the unit-position hypothesis on the enforcer's per-instance

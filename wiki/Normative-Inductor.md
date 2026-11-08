@@ -77,16 +77,22 @@ cannot conflict, so a valid conflict certificate names a mis-admitted row at eve
 (`WarrantSolvency.suspect_in_bundle`, **registered**
 `solvency.conflict-names-suspects`<!--ref:claim:solvency.conflict-names-suspects-->).  An obligation on *conduct* is settled by
 an assessment, not by the process, and binds on the score: the rebuttal run's decision rebuilt
-with the obligation *refrain while the originating obligation's account is live* charged at
-`ϖ` times the market's price of its shortfall sentence recovers the same reversal on the same
-market, the enforcer's bundle unchanged and no row on conduct held
-(`WarrantInductorScoreSide.same_question_two_realizations`, **registered**
+with the obligation *refrain while the originating obligation's account is live* — one
+shortfall sentence per date, tied to the assessment by the named hypothesis `Assessed` —
+charged at `ϖ` times the market's price of the date's shortfall sentence recovers the same
+reversal on the same market whenever that charge is at most `19/240` at date 4: acting with
+mass at least `24/25` there and refraining with certainty at date 9, the row the obligation
+was compiled to held at no date, and the market the run's own because the realization stores
+the run's schedule (`WarrantInductorScoreSide.same_question_two_realizations`, **registered**
 `scoreside.same-question-two-realizations`<!--ref:claim:scoreside.same-question-two-realizations-->); compiled onto prices
-instead, the obligation's row conflicts with the strength and applicability rows at date 4 and
-is implied by the pin at date 9 (`conduct_on_prices_conflicts`, **registered**
+instead, that row conflicts with the strength and applicability rows at date 4 and is implied
+by the pin at date 9 (`conduct_on_prices_conflicts`, **registered**
 `scoreside.conduct-on-prices-conflicts`<!--ref:claim:scoreside.conduct-on-prices-conflicts-->; `conduct_on_prices_idle`).  The
-reversal needs the strength row, an epistemic warrant on prices; the practical part is on the
-score.  None of this says the warrants are correct: *warrants constrain the prices* is the
+reversal needs the strength row — at a price vector satisfying every other date-4 row the
+charged gate refrains with certainty for every charge (`strength_row_necessary`) — so the
+belief part is an epistemic warrant on prices and the practical part is on the score.  Whether
+the market prices the shortfall sentences well is not shown; `Assessed` is a hypothesis.  None
+of this says the warrants are correct: *warrants constrain the prices* is the
 conformance clause, and *warrants produce warranted guidance* stays conditional on the
 adequacy semantics and the certificates, as before.
 

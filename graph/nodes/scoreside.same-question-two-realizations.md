@@ -9,7 +9,7 @@ version: 1
 author: "@smithy-verity"
 ---
 ## Statement
-On the rebuttal run's market, with the obligation on conduct 'refrain while the originating obligation's account is live' charged at ϖ times the market's price of its shortfall sentence and subtracted from the acting score: the gate acts with mass at least 24/25 at date 4 while the charge is at most 19/240 and refrains with certainty at date 9 for every nonnegative charge, beside the run's own gate doing the same with no charge; the enforcer's bundle and the market are the run's at every date.
+On the rebuttal run's market, with the obligation on conduct 'refrain while the originating obligation's account is live' — one shortfall sentence per date, tied to the assessment by the hypothesis Assessed — charged at ϖ times the market's price of the date's shortfall sentence and subtracted from the acting score: under Assessed, the gate acts with mass at least 24/25 at date 4 while ϖ times the date-4 shortfall price is at most 19/240 and refrains with certainty at date 9 for every nonnegative charge, acting being assessed a shortfall at both dates, beside the run's own gate doing the same with no charge; the realization stores the run's schedule, so its bundle and market are the run's.
 
 ## Source
 projects/normativity/CLAIMS.md, entry `scoreside.same-question-two-realizations` (class lean-proved, status active, origin round 2026-11-07-score-side-binding; answers item 35).
