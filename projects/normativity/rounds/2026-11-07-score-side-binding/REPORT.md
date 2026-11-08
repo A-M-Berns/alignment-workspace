@@ -214,18 +214,20 @@ the allocation.
 
 ## Verification
 
-- `~/.claude/scripts/safe-lake.sh build Workspace`: VERIFICATION-BUILD
-- `python3 tests/audit_axioms.py` (run as `python3.12`): VERIFICATION-AUDIT
-- `python3 tests/run.py`: VERIFICATION-TESTS
-- `python3 -m checkers.run`: VERIFICATION-CHECKERS
-- `python3 -m checkers.workspace_state --check`: VERIFICATION-STATE
-- `python3 -m checkers.wiki_state_bindings`: VERIFICATION-BINDINGS
-- `python3 -m checkers.wiki_links`: VERIFICATION-LINKS
-- `python3 -m checkers.wiki_refs`: VERIFICATION-REFS
-- `python3 -m checkers.attention_render --check`: VERIFICATION-ATTENTION
-- `python3 -m checkers.graph`: VERIFICATION-GRAPH
+- `~/.claude/scripts/safe-lake.sh build Workspace`: `Build completed successfully (4099 jobs)`; the four new modules compile with no `sorry` and only unused-simp-argument lints.
+- `python3 tests/audit_axioms.py` (run as `python3.12`): `AXIOM AUDIT: 3492 results across 112 files, all within ['Classical.choice', 'Quot.sound', 'propext']`.
+- `python3 tests/run.py`: `ALL GREEN (80 project(s))` (the sweep's own Lean step skipped as documented; the build above is the Lean verification).
+- `python3 -m checkers.run`: `  79 entries, 1 adjudicated here`; the six new entries are `lean-proved`, adjudicated by the Lean gate.
+- `python3 -m checkers.workspace_state --check`: `WORKSPACE STATE: valid — 7 projects, 184 modern claims, 1 foundations, 180 foundation claims, 131 rounds, 52 terms, 144 priorities, 10 interface objects`.
+- `python3 -m checkers.wiki_state_bindings`: `WIKI STATE BINDINGS: clean over 35 page(s); 3 binding(s) verified against the state emission`.
+- `python3 -m checkers.wiki_links`: `WIKI LINKS: clean over 33 page(s) (links resolve; repository links are commit-pinned)`.
+- `python3 -m checkers.wiki_refs`: `WIKI REFS: clean over 35 page(s); 327 reference(s) resolve`.
+- `python3 -m checkers.attention_render --check`: `ATTENTION RENDER: the committed file equals the render (144 items)`.
+- `python3 -m checkers.graph`: `OK 2494 nodes, 2603 events, 2094 ranked units; research first: the decision term (printed, not applied) favours vet hull-condition-total-trust (ranked unit 43), D 0.00016`; two warnings (decision anchors with no node pointing at them, and the digest), neither this round's.
 
 Claims whose status changed: none. Six claims added, all `lean-proved`.
+
+CI on pull request #140 at `2733e03b`: all seven required checks pass (`checkers`, `conservativity`, `consolidation-verification`, `dco`, `lean`, `path-gate`, `python`). The first run failed `checkers` and `python` on a stale generated handoff view, regenerated in that commit.
 
 ## Items
 
