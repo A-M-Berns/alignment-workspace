@@ -511,10 +511,13 @@ allocation current there, a first-person commitment being a matter the reasoner 
 the witness's `state₀` rebuilt over that protocol inhabits `Entitlement` at every date with the
 admission clause carrying content, and over any obligation state of the protocol under the
 allocation that moves the first matter to the agent no entitlement traces an occurrence to the
-first obligation.  `AdmissionByStanding.reallocated_entitles_nothing` (**registered**
+first obligation; under that allocation an initial exposure can expose only the reasoner's own
+obligation, and the entitlement tracing every occurrence to it inhabits the theorem's hypothesis
+package.  `AdmissionByStanding.reallocated_entitles_nothing` (**registered**
 `standing.reallocated-entitles-nothing`<!--ref:claim:standing.reallocated-entitles-nothing-->); `entitlementS`,
-`admitted_by_allocation`, `first_person_admitted`, `reallocated_not_admitted` (**LEAN**).
-`Expresses` remains typed.
+`admitted_by_allocation`, `first_person_admitted`, `reallocated_not_admitted`, `entitlementS₁`,
+`witness_origin` (**LEAN**).  `Expresses` remains typed; of item 128's clause (a), the
+admission half landed and the expression half did not.
 
 ## 8. Fixed-era service and affordability (Layer I)
 

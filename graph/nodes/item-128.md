@@ -9,10 +9,10 @@ title: "Admission from the accounted state"
 section: "Deference line — second wave"
 maintainer_order: 121
 difficulty: "open"
-heading_notes: " — *narrowed 2026-10-23: `WarrantInductor.Entitlement` reads three conditions off the accounted state — the origin exposed, `Protocol.Admitted` at the boundary's history, a live leaf in the origin's account — and takes a declared `Expresses : Req → Form → Prop`; `warrant_inductor` enforces only entitled survivors; `WarrantInductorWitness.answered_not_entitled` shows an answered obligation entitles nothing. What remains is below.* — *narrowed 2026-11-07: clause (a) landed as admission by standing — `Protocol.Admitted` read off the authority allocation (`AdmissionByStanding.admittedByStanding`), the entitlement inhabited on `state₀` rebuilt over it with admission carrying content, and a reallocated obligation entitling nothing (`reallocated_entitles_nothing`, registered `standing.reallocated-entitles-nothing`); `Expresses` remains typed; clauses (b) and (c) remain*"
+heading_notes: " — *narrowed 2026-10-23: `WarrantInductor.Entitlement` reads three conditions off the accounted state — the origin exposed, `Protocol.Admitted` at the boundary's history, a live leaf in the origin's account — and takes a declared `Expresses : Req → Form → Prop`; `warrant_inductor` enforces only entitled survivors; `WarrantInductorWitness.answered_not_entitled` shows an answered obligation entitles nothing. What remains is below.* — *narrowed 2026-11-07: the admission half of clause (a) landed as admission by standing — `Protocol.Admitted` read off the authority allocation (`AdmissionByStanding.admittedByStanding`), the entitlement inhabited on `state₀` rebuilt over it with admission carrying content, and a reallocated obligation entitling nothing (`reallocated_entitles_nothing`, registered `standing.reallocated-entitles-nothing`, its hypothesis package inhabited by `entitlementS₁` over the state exposing the reasoner's own obligation alone); the `Expresses` half of clause (a) remains typed, and clauses (b) and (c) remain*"
 project: normativity.legitimacy
 dispatchable: true
-item_status: closed
+item_status: open
 deliverable: "`lean-proved`; the protocol and its entitlement as a fixture; a theorem relating `authorized` to the account, or a stated reason none should exist."
 acceptance: "the Lean audit clean; `WarrantInductorWitness.entitlement` and `answered_not_entitled` recovered."
 context: ["wiki/Legitimacy.md"]

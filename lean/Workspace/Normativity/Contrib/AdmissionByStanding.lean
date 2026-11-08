@@ -19,8 +19,10 @@ witness's grounds at every date, with the admission clause discharged by the all
 matter to the agent, the first obligation is not admitted (`reallocated_not_admitted`), and no
 entitlement over any obligation state of that protocol may trace an occurrence to it
 (`reallocated_entitles_nothing`), the counterpart of the witness's `answered_not_entitled`.
-Of entitlement's four conditions, exposure is content-free at the fixture (everything is
-exposed), admission and liveness carry content, and `Expresses` remains typed.
+Its hypothesis package is inhabited (§3): over `protocolS₁` an `Initial` can expose only the
+reasoner's own obligation, and `entitlementS₁` traces every occurrence to it.  Of entitlement's
+four conditions, exposure is content-free at the fixture (everything is exposed), admission
+and liveness carry content, and `Expresses` remains typed.
 
 Names are provisional (`AGENTS.md` standard 6).
 -/
@@ -146,6 +148,49 @@ theorem reallocated_entitles_nothing (O : ObligationState protocolS₁ wAnchor)
   rw [h] at this
   exact reallocated_not_admitted _ this
 
+/-! ## 3. The hypothesis package of `reallocated_entitles_nothing`, inhabited -/
+
+/-- The boundary exposing the reasoner's own obligation alone, on one port.  Under `J₁` the
+principal's obligation is admitted at no history, and `Initial` admits every exposed
+occurrence, so no initial exposure of `protocolS₁` exposes it: a boundary carrying an `Initial`
+over `protocolS₁` exposes obligation `1` alone. -/
+def start₁ : Boundary (Fin 2) Unit := ⟨[0], {1}, 1, fun _ => ()⟩
+
+/-- Initial exposure over `protocolS₁`: obligation `1` admitted by the allocation — the agent
+holds the matter it committed itself on, which the reallocation of matter `0` leaves
+untouched. -/
+noncomputable def initialS₁ : Initial protocolS₁ anchor start₁ where
+  admitted o ho := by
+    have h1 : o = 1 := by simpa [start₁] using ho
+    subst h1
+    show (J₁.entry 1).holder = issuer 1
+    simp [J₁, AuthAlloc.withHolder, J₀, issuer]
+  port _ _ := ⟨0, by decide⟩
+  anchored _ _ := rfl
+  credential _ _ := trivial
+
+/-- The obligation state over `protocolS₁`. -/
+noncomputable def stateS₁ : ObligationState protocolS₁ wAnchor := initialS₁.state
+
+theorem account_live₁ (e : Fin 2) (h : e ∈ stateS₁.boundary.exposed) :
+    Fate.live ∈ (stateS₁.account e h).fates := by
+  simp [stateS₁, Initial.state, Initial.accounted, initialS₁, Program.fates]
+
+/-- **The witness for `reallocated_entitles_nothing`**: an entitlement of the witness's grounds
+over `stateS₁` with every origin at obligation `1` — admitted under `J₁`, its account live,
+`Expresses` total.  It inhabits the theorem's hypothesis package; the conclusion at it reads
+`1 ≠ 0` (`witness_origin`). -/
+noncomputable def entitlementS₁ : Entitlement stateS₁ grounds (fun _ _ => True) where
+  origin _ := 1
+  origin_exposed _ _ := by simp [stateS₁, Initial.state, start₁]
+  admitted _ _ := initialS₁.admitted 1 (by simp [start₁])
+  live _ _ := account_live₁ _ _
+  faithful _ _ := trivial
+
+theorem witness_origin (o : WarrantEntitlement.Occurrence 5) (ho : o ∈ grounds) :
+    entitlementS₁.origin o ≠ 0 :=
+  reallocated_entitles_nothing stateS₁ _ entitlementS₁ o ho
+
 /-! ## Axiom audit -/
 
 #print axioms Workspace.Normativity.Contrib.AdmissionByStanding.admittedByStanding
@@ -165,5 +210,11 @@ theorem reallocated_entitles_nothing (O : ObligationState protocolS₁ wAnchor)
 #print axioms Workspace.Normativity.Contrib.AdmissionByStanding.protocolS₁
 #print axioms Workspace.Normativity.Contrib.AdmissionByStanding.reallocated_not_admitted
 #print axioms Workspace.Normativity.Contrib.AdmissionByStanding.reallocated_entitles_nothing
+#print axioms Workspace.Normativity.Contrib.AdmissionByStanding.start₁
+#print axioms Workspace.Normativity.Contrib.AdmissionByStanding.initialS₁
+#print axioms Workspace.Normativity.Contrib.AdmissionByStanding.stateS₁
+#print axioms Workspace.Normativity.Contrib.AdmissionByStanding.account_live₁
+#print axioms Workspace.Normativity.Contrib.AdmissionByStanding.entitlementS₁
+#print axioms Workspace.Normativity.Contrib.AdmissionByStanding.witness_origin
 
 end Workspace.Normativity.Contrib.AdmissionByStanding

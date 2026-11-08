@@ -135,10 +135,11 @@ issuer holds its matter under the authority allocation current there, a first-pe
 commitment being a matter the reasoner holds itself.  On the witness's state rebuilt over that
 protocol the entitlement is inhabited at every date with the admission clause carrying
 content, and a reallocated obligation entitles nothing (`reallocated_entitles_nothing`,
-**registered** `standing.reallocated-entitles-nothing`<!--ref:claim:standing.reallocated-entitles-nothing-->), the counterpart of
-the answered obligation entitling nothing.  Of the four conditions, exposure is content-free
-at the fixture, admission and liveness carry content, and the expression relation remains
-typed.
+**registered** `standing.reallocated-entitles-nothing`<!--ref:claim:standing.reallocated-entitles-nothing-->; its hypothesis
+package inhabited over the state that exposes the reasoner's own obligation alone), the
+counterpart of the answered obligation entitling nothing.  Of the four conditions, exposure is
+content-free at the fixture, admission and liveness carry content, and the expression relation
+remains typed.
 
 ## The interface: a public defect and certified bounds
 
