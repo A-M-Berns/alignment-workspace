@@ -3988,9 +3988,10 @@ the rows infeasible although the answer `3/5` is determinate. The repair the rou
 the **robust reading** (`RobustWarrant.Robust`): the warrant constrains her model over the
 undefeated extensions of its anchor, `Pr(Y | A ∧ E) ≥ c` for every undefeated `E`; its
 strength is the least such conditional (`3/5` here, `3/4` with the contrary challenge a
-defeater), it is sound at every undefeated record (`robust_sound`), and sound rows cannot
-conflict (`WarrantSolvency.suspect_in_bundle`), so a valid conflict certificate under it proves a
-mis-admission. Wanted: the reading as a rule on `Form` with its compile to rows; the theorem
+defeater), it is sound at every undefeated record (`robust_sound`), and a valid conflict
+certificate shows at every cube point some positively weighted bundle row violated there
+(`WarrantSolvency.suspect_in_bundle`), so where admission demands validity at that point a
+conflict shows a mis-admission. Wanted: the reading as a rule on `Form` with its compile to rows; the theorem
 that it agrees with `settleForm` when the extension set is the one the settlement generates;
 and the fixture recovered under the rule. What is settled is the fixture and the definition;
 no general defeat semantics is built here.

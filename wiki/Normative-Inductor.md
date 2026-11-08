@@ -72,10 +72,12 @@ pins are the process's own.  Such a row binds on prices, and solvency is its dis
 warrant schema with timely-settling instances the enforcer's liability is bounded iff the
 consequent's frequency on undefeated instances is not systematically below the strength
 (`WarrantSolvency.Schema.bounded_iff_frequency`, **registered**
-`solvency.bounded-iff-frequency`<!--ref:claim:solvency.bounded-iff-frequency-->; the deference identity renamed), and sound rows
-cannot conflict, so a valid conflict certificate names a mis-admitted row at every cube point
-(`WarrantSolvency.suspect_in_bundle`, **registered**
-`solvency.conflict-names-suspects`<!--ref:claim:solvency.conflict-names-suspects-->).  An obligation on *conduct* is settled by
+`solvency.bounded-iff-frequency`<!--ref:claim:solvency.bounded-iff-frequency-->; the deference identity renamed), and a valid
+conflict certificate shows at every cube point that some positively weighted bundle row is
+violated there (`WarrantSolvency.suspect_in_bundle`, **registered**
+`solvency.conflict-names-suspects`<!--ref:claim:solvency.conflict-names-suspects-->): rows all valid at one point admit no
+such certificate, and where admission demands validity at that point the violated row was
+mis-admitted.  An obligation on *conduct* is settled by
 an assessment, not by the process, and binds on the score: the rebuttal run's decision rebuilt
 with the obligation *refrain while the originating obligation's account is live* — one
 shortfall sentence per date, tied to the assessment by the named hypothesis `Assessed` —
@@ -285,7 +287,7 @@ false while nothing withdraws it: on the eight-world model the row at `3/4` is e
 signal and false after a contrary challenge, with rebuttal and undercut both silent, and the
 **robust reading** — the warrant as a constraint on her model over the undefeated extensions
 of its anchor, strength `3/5` there or `3/4` with the challenge a defeater — is the repair
-candidate (`RobustWarrant.robustStrength_all`, **registered**
+candidate (`RobustWarrant.robustStrength_both`, **registered**
 `robust.eight-world-strengths`<!--ref:claim:robust.eight-world-strengths-->).  Its `Form`-level rule and compile are
 item 133<!--ref:item:133-->.  The generability of the shortfall sentence the score-side charge
 prices is the decision component's standing hypothesis (items 90<!--ref:item:90-->, 101<!--ref:item:101-->).

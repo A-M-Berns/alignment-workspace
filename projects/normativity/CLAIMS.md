@@ -2086,7 +2086,7 @@ Round `2026-10-21-rebuttal-and-end-to-end`; the dispatch's registration list, ag
 ```json
 {
   "project": "normativity",
-  "short_name": "a valid conflict certificate names a violated bundle row at every cube point, so sound rows cannot conflict",
+  "short_name": "a valid conflict certificate shows at every cube point some positively weighted bundle row violated there, so rows all valid at one point cannot conflict",
   "origin_round": "2026-11-07-score-side-binding",
   "status": "active",
   "class": "lean-proved",
@@ -2103,7 +2103,7 @@ Round `2026-10-21-rebuttal-and-end-to-end`; the dispatch's registration list, ag
     "verification": "projects/normativity/rounds/2026-11-07-score-side-binding/THEOREM.md",
     "context": "projects/normativity/rounds/2026-11-07-score-side-binding/REPORT.md"
   },
-  "note": "In the generality of NormativeInductorComposition.FarkasCert: at every price vector some positively weighted row is violated (exists_violated_suspect); against a bundle whose rows the certificate may weight, at every cube point the violated row is one of the bundle's own (the cube rows hold in the cube); hence if every held row is valid at a point no valid conflict certificate exists (no_conflict_of_sound), and when all suspects but one hold the remaining one is violated (unique_suspect). Also stated on a NormState (suspect_in_normState)."
+  "note": "In the generality of NormativeInductorComposition.FarkasCert: at every price vector some positively weighted row is violated (exists_violated_suspect); against a bundle whose rows the certificate may weight, at every cube point some positively weighted row of the bundle itself is violated there (the cube rows hold in the cube) — the violated row may differ from point to point; no single row is shown violated everywhere. Hence if every weighted row is valid at a point no valid conflict certificate exists (no_conflict_of_sound), and when all suspects but one hold at a point the remaining one is violated there (unique_suspect). Reading a conflict as a mis-admission needs the further premise that admission demands validity at the point in question; the theorem does not supply it. Also stated on a NormState (suspect_in_normState)."
 }
 ```
 
@@ -2118,7 +2118,7 @@ Round `2026-10-21-rebuttal-and-end-to-end`; the dispatch's registration list, ag
   "class": "lean-proved",
   "statement_of_record": {
     "kind": "lean",
-    "declaration": "Workspace.Normativity.Contrib.RobustWarrant.robustStrength_all"
+    "declaration": "Workspace.Normativity.Contrib.RobustWarrant.robustStrength_both"
   },
   "answers_item": "133",
   "provenance": {
@@ -2129,7 +2129,7 @@ Round `2026-10-21-rebuttal-and-end-to-end`; the dispatch's registration list, ag
     "verification": "projects/normativity/rounds/2026-11-07-score-side-binding/THEOREM.md",
     "context": "projects/normativity/rounds/2026-11-07-score-side-binding/REPORT.md"
   },
-  "note": "The model (a binary quantity, a signal of accuracy 3/4, a challenge of accuracy 2/3, independent given the quantity) is stated locally with exact rationals. The strength row at 3/4 is valid at the record with the signal alone (valid_at_signal, Pr(Y | A) = 3/4) and invalid at the record with the contrary challenge (invalid_at_contrary, Pr(Y | A ∧ C) = 3/5); embedded in a three-coordinate fragment, settleOutcome keeps the form and the quiet docket undercuts nothing while the contributed row is violated by her posterior (kept_under_challenge, not_undercut, contributed_row_invalid); the opposing warrant at 2/3 makes the rows infeasible (naive_conflict). The robust reading Robust (a constraint over undefeated extensions) is sound (robust_sound); its strength is 3/5 over the three extensions, 3/4 with the contrary challenge a defeater (robustStrength_defeated); the opposing warrant's is 2/5 and the robust rows meet at 3/5 (against_robust_iff, robust_meet)."
+  "note": "The model (a binary quantity, a signal of accuracy 3/4, a challenge of accuracy 2/3, independent given the quantity) is stated locally with exact rationals. The strength row at 3/4 is valid at the record with the signal alone (valid_at_signal, Pr(Y | A) = 3/4) and invalid at the record with the contrary challenge (invalid_at_contrary, Pr(Y | A ∧ C) = 3/5); embedded in a three-coordinate fragment, settleOutcome keeps the form, the quiet docket undercuts nothing, and the repository's grounded survivor rule Grounds.survivors applied to the warrant's grounds at that record keeps it (kept_under_challenge, not_undercut, survives_challenge), while the contributed row is violated by her posterior (contributed_row_invalid); the opposing warrant at 2/3 makes the rows infeasible (naive_conflict). The robust reading Robust (a constraint over a declared set of undefeated extensions) is sound (robust_sound); the statement of record robustStrength_both conjoins robustStrength_all (3/5 over the three extensions) and robustStrength_defeated (3/4 with the contrary challenge a defeater); the extension sets Uall and Udef are declared inputs, not derived from any defeat mechanism. The opposing warrant's strength is 2/5 and the robust rows meet at 3/5 (against_robust_iff, robust_meet)."
 }
 ```
 

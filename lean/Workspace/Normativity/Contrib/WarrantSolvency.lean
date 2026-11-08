@@ -22,8 +22,10 @@ at every price vector some row with positive multiplier is violated
 (`exists_violated_suspect`); hence if every weighted row holds at a point no valid certificate
 exists (`no_conflict_of_sound`), against a bundle a violated suspect is a *bundle* row at any
 cube point (`suspect_in_bundle`, also on a `NormState`), and when all suspects but one hold the
-remaining one is violated (`unique_suspect`).  Read at the true posterior: sound rows cannot
-conflict, so a valid conflict certificate proves a mis-admission among the rows it weights.
+remaining one is violated (`unique_suspect`).  The violated row may differ from point to
+point; no single row is shown violated everywhere.  Rows all valid at one point admit no valid
+certificate; reading a conflict as a mis-admission needs the further premise that admission
+demands validity at the point in question, which nothing here supplies.
 
 Names are provisional (`AGENTS.md` standard 6).
 -/
@@ -190,9 +192,10 @@ theorem exists_violated_suspect (c : FarkasCert d m) (x : Fin d → ℚ) :
   have := c.const_sum
   linarith
 
-/-- **Sound rows cannot conflict**: if every row a certificate weights positively holds at a
-point, there is no such certificate.  Read at the true posterior, this is the contrapositive
-of `conflict_sound`. -/
+/-- **Rows all valid at one point cannot conflict**: if every row a certificate weights
+positively holds at a point, there is no such certificate.  Validity at one point, not
+solvency, is what excludes a certificate: two contradictory rows each enforced on one instance
+have bounded cumulative liability. -/
 theorem no_conflict_of_sound (c : FarkasCert d m) (x : Fin d → ℚ)
     (hs : ∀ i, 0 < c.mult i → (c.row i).Sat x) : False :=
   let ⟨i, hi, hv⟩ := exists_violated_suspect c x

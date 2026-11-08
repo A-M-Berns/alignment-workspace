@@ -9,7 +9,7 @@ version: 1
 author: "@smithy-verity"
 ---
 ## Statement
-Against a bundle, a Farkas certificate over the bundle's allowed rows has, at every point of the cube, a positively weighted row of the bundle itself that is violated there; so if every held row is valid at a point no such certificate exists, and a conflict names a mis-admission among the rows it weights.
+Against a bundle, a Farkas certificate over the bundle's allowed rows has, at every point of the cube, some positively weighted row of the bundle itself that is violated there — the row may differ from point to point; so if every held row is valid at a point no such certificate exists, and where admission demands validity at that point a conflict shows a mis-admission among the rows it weights.
 
 ## Source
 projects/normativity/CLAIMS.md, entry `solvency.conflict-names-suspects` (class lean-proved, status active, origin round 2026-11-07-score-side-binding; answers item 133).

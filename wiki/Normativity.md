@@ -223,9 +223,12 @@ with the source the strength and the alternative the settled consequent — a re
 the point: the same accounting disciplines a warrant that outruns the record and an
 enforcer that holds prices to a principal.  Solvency is a soundness condition read on the
 account: a warrant that stays solvent is one the record has not refuted at the rate it
-promised, and a conflict among solvent rows cannot occur — a valid conflict certificate names
-a violated row at every price vector (`WarrantSolvency.suspect_in_bundle`, **registered**
-`solvency.conflict-names-suspects`<!--ref:claim:solvency.conflict-names-suspects-->), so it proves a mis-admission.
+promised.  It does not exclude a conflict — two contradictory rows each enforced on one
+instance have bounded cumulative liability; what excludes a valid conflict certificate is
+validity of all its rows at one point.  A valid certificate shows, at every cube point, that
+some positively weighted bundle row is violated there (`WarrantSolvency.suspect_in_bundle`,
+**registered** `solvency.conflict-names-suspects`<!--ref:claim:solvency.conflict-names-suspects-->), and where
+admission demands validity at that point, that row was mis-admitted.
 
 ### Force, and what force costs
 

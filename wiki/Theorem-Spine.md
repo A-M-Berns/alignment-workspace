@@ -478,9 +478,10 @@ value, the cumulative liability is bounded below by `−B` at every date iff
 systematically below the strength; the deference identity
 `DecisionComponent.bounded_iff_not_outperformed` instantiated, not new mathematics.  For any
 Farkas certificate, at every price vector some positively weighted row is violated; against a
-bundle at a cube point the violated row is the bundle's own, so if every held row is valid at
-a point no valid conflict certificate exists and a conflict names a mis-admission among its
-suspects.  `WarrantSolvency.Schema.bounded_iff_frequency` (**registered**
+bundle, at every cube point some positively weighted row of the bundle is violated there — not
+one row violated everywhere — so if every held row is valid at a point no valid conflict
+certificate exists, and where admission demands validity at that point a conflict shows a
+mis-admission among its suspects.  `WarrantSolvency.Schema.bounded_iff_frequency` (**registered**
 `solvency.bounded-iff-frequency`<!--ref:claim:solvency.bounded-iff-frequency-->), `suspect_in_bundle` (**registered**
 `solvency.conflict-names-suspects`<!--ref:claim:solvency.conflict-names-suspects-->); `solvent_iff`,
 `exists_violated_suspect`, `no_conflict_of_sound`, `unique_suspect`,
@@ -491,15 +492,17 @@ quantity with a uniform prior, a signal of accuracy `3/4`, a challenge of accura
 independent given the quantity — stated with exact rationals.  The strength row at `3/4` is
 valid at the record with the signal alone (`Pr(Y | A) = 3/4`) and invalid after a contrary
 challenge (`Pr(Y | A ∧ C) = 3/5`); on the three-coordinate embedding `settleOutcome` keeps the
-form, the quiet docket undercuts nothing, and the contributed row is violated by her
-posterior; the opposing warrant at `2/3` makes the rows infeasible.  The robust reading —
-`Pr(Y | A ∧ E) ≥ c` for every undefeated extension `E` — is sound at every undefeated record,
-and its strength is `3/5` over the three extensions, `3/4` with the contrary challenge a
-defeater; the opposing warrant's is `2/5`, and the two robust rows meet at `3/5`.
-`RobustWarrant.robustStrength_all` (**registered**
-`robust.eight-world-strengths`<!--ref:claim:robust.eight-world-strengths-->); `robust_sound`, `valid_at_signal`,
-`invalid_at_contrary`, `kept_under_challenge`, `not_undercut`, `contributed_row_invalid`,
-`naive_conflict`, `robustStrength_defeated`, `against_robust_iff`, `robust_meet` (**LEAN**).
+form, the quiet docket undercuts nothing, the grounded survivor rule `Grounds.survivors`
+keeps the warrant at that record, and the contributed row is violated by her posterior; the
+opposing warrant at `2/3` makes the rows infeasible.  The robust reading — `Pr(Y | A ∧ E) ≥ c`
+for every undefeated extension `E` — is sound at every undefeated record, and its strength is
+`3/5` over the three extensions, `3/4` with the contrary challenge a defeater, the extension
+sets being declared inputs and not derived from any defeat mechanism; the opposing warrant's
+is `2/5`, and the two robust rows meet at `3/5`.  `RobustWarrant.robustStrength_both`
+(**registered** `robust.eight-world-strengths`<!--ref:claim:robust.eight-world-strengths-->);
+`robustStrength_all`, `robustStrength_defeated`, `robust_sound`, `valid_at_signal`,
+`invalid_at_contrary`, `kept_under_challenge`, `not_undercut`, `survives_challenge`,
+`contributed_row_invalid`, `naive_conflict`, `against_robust_iff`, `robust_meet` (**LEAN**).
 No `Form`-level rule is built (item 133<!--ref:item:133-->).
 
 **Theorem 7.10 (Admission by standing).**  With `Protocol.Admitted` read off the authority

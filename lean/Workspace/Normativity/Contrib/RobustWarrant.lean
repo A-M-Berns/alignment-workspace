@@ -17,8 +17,9 @@ is `3/5` and the row fails (`invalid_at_contrary`).  Neither mechanism the rows 
 there: embedded in a three-coordinate fragment, the settlement that records the challenge pins
 neither the antecedent nor the consequent, so `settleOutcome` keeps the form and `settleForm`
 contributes the specialized row, and the quiet docket undercuts nothing
-(`kept_under_challenge`, `not_undercut`); the contributed row is violated by her posterior
-(`contributed_row_invalid`).  Registering the challenge as an opposing warrant at `2/3` makes
+(`kept_under_challenge`, `not_undercut`), and the repository's grounded survivor rule applied
+to the warrant's grounds at that record keeps it (`survives_challenge`); the contributed row is
+violated by her posterior (`contributed_row_invalid`).  Registering the challenge as an opposing warrant at `2/3` makes
 the two rows jointly infeasible (`naiveCert`, `naive_conflict`), although the answer `3/5` is
 determinate.
 
@@ -28,7 +29,9 @@ constraint on her model over the undefeated extensions `U` of its anchor,
 valid at every undefeated record (`robust_sound`).  The **robust strength** is the least
 conditional over the undefeated extensions (`robustStrength`, `robust_iff_le_robustStrength`):
 `3/5` over the three extensions of the fixture (`robustStrength_all`), `3/4` with the contrary
-challenge declared a defeater (`robustStrength_defeated`).  The opposing warrant's robust
+challenge declared a defeater (`robustStrength_defeated`; both together `robustStrength_both`,
+the statement of record).  The extension sets `Uall` and `Udef` are declared, not derived from
+any defeat mechanism.  The opposing warrant's robust
 strength is `2/5` (`against_robust_iff`), and the two robust rows meet at the single point
 `3/5` (`robust_meet`).  No general defeat semantics is built; the definition and the fixture
 are the deliverable.
@@ -215,6 +218,20 @@ theorem kept_under_challenge :
 theorem not_undercut : ¬ undercut DocketState.quiet occ := by
   simp [undercut, occ, DocketState.quiet]
 
+/-- The grounds of the embedding: the warrant alone. -/
+def groundsCh : Grounds 3 := [occ]
+
+/-- **The grounded survivor rule keeps the warrant.**  `Grounds.survivors` — the repository's
+rule composing undercut, rebuttal by settlement and grounded citation — applied to the grounds
+`[occ]` at the contrary-challenge record on the quiet docket returns `[occ]`: neither
+mechanism removes it, and its specialized row is contributed there. -/
+theorem survives_challenge : groundsCh.survivors DocketState.quiet Fch = [occ] := by
+  have hk : settleOutcome Fch (Form.strength a ay (3/4)) = .kept := kept_under_challenge.1
+  have hu := not_undercut
+  unfold Grounds.survivors
+  simp only [groundsCh, occ] at hu ⊢
+  simp [liveGiven, hk, hu, citesIn]
+
 /-- The contributed row holds at her posterior at the record `⊤`. -/
 theorem contributed_row_valid_at_signal : occ.form.row.Sat ![1/2, 3/8, 1/2] := by
   simp [occ, Form.row, Row.Sat, Fin.sum_univ_three, a, ay]
@@ -326,6 +343,13 @@ theorem robustStrength_defeated : robustStrength μ Aev Yev Udef Udef_nonempty =
     rw [mass_AYunion, mass_Aunion]; norm_num
   · rw [← robust_iff_le_robustStrength, robust_defeated_iff]
 
+/-- **Both robust strengths**: `3/5` over the three extensions and `3/4` with the contrary
+challenge declared a defeater.  The statement of record for `robust.eight-world-strengths`. -/
+theorem robustStrength_both :
+    robustStrength μ Aev Yev Uall Uall_nonempty = 3/5 ∧
+      robustStrength μ Aev Yev Udef Udef_nonempty = 3/4 :=
+  ⟨robustStrength_all, robustStrength_defeated⟩
+
 /-- The opposing warrant's extensions: nothing more, the signal, no signal. -/
 def Uagainst : Finset (Finset World) := {univ, Aev, univ \ Aev}
 
@@ -383,6 +407,8 @@ theorem robust_meet (y : ℚ) : (3/5 ≤ y ∧ 2/5 ≤ 1 - y) ↔ y = 3/5 := by
 #print axioms Workspace.Normativity.Contrib.RobustWarrant.postC_eq
 #print axioms Workspace.Normativity.Contrib.RobustWarrant.kept_under_challenge
 #print axioms Workspace.Normativity.Contrib.RobustWarrant.not_undercut
+#print axioms Workspace.Normativity.Contrib.RobustWarrant.groundsCh
+#print axioms Workspace.Normativity.Contrib.RobustWarrant.survives_challenge
 #print axioms Workspace.Normativity.Contrib.RobustWarrant.contributed_row_valid_at_signal
 #print axioms Workspace.Normativity.Contrib.RobustWarrant.contributed_row_invalid
 #print axioms Workspace.Normativity.Contrib.RobustWarrant.naiveCert
@@ -391,6 +417,7 @@ theorem robust_meet (y : ℚ) : (3/5 ≤ y ∧ 2/5 ≤ 1 - y) ↔ y = 3/5 := by
 #print axioms Workspace.Normativity.Contrib.RobustWarrant.robust_defeated_iff
 #print axioms Workspace.Normativity.Contrib.RobustWarrant.robustStrength_all
 #print axioms Workspace.Normativity.Contrib.RobustWarrant.robustStrength_defeated
+#print axioms Workspace.Normativity.Contrib.RobustWarrant.robustStrength_both
 #print axioms Workspace.Normativity.Contrib.RobustWarrant.against_robust_iff
 #print axioms Workspace.Normativity.Contrib.RobustWarrant.robust_meet
 

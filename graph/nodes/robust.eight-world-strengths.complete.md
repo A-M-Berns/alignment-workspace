@@ -11,4 +11,4 @@ author: "@smithy-verity"
 No premise beyond the signature's binders enters the declaration; the kernel checks it as stated. The result is the record, this leaf and the bridge, and its hypotheses are unread: the record's Source carries the signature verbatim and no hypothesis leaf is filed until a reader files one.
 
 ## Source
-The signature of `Workspace.Normativity.Contrib.RobustWarrant.robustStrength_all` in lean/Workspace/Normativity/Contrib/RobustWarrant.lean.
+The signature of `Workspace.Normativity.Contrib.RobustWarrant.robustStrength_both` in lean/Workspace/Normativity/Contrib/RobustWarrant.lean.
