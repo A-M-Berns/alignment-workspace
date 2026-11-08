@@ -1170,7 +1170,7 @@ change, and the count of those is the size of the free choice remaining.
 | `point` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Headline.FormationData.point` |
 | `restoration2` | def | unrecorded | Lean only | `Workspace.Deference.Headline.restoration2` |
 
-## normativity — 1124 names, 765 of them Lean only
+## normativity — 1124 names, 764 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -2289,13 +2289,13 @@ change, and the count of those is the size of the free choice remaining.
 | `upS` | def | 2026-10-22-normative-inductor-integration | Lean only | `Workspace.Normativity.Contrib.WarrantInductorWitness.upS` |
 | `upZ1` | def | 2026-10-22-normative-inductor-integration | Lean only | `Workspace.Normativity.Contrib.WarrantInductorWitness.upZ1` |
 | `wit` | def | 2026-10-22-normative-inductor-integration | Lean only | `Workspace.Normativity.Contrib.WarrantInductorWitness.wit` |
-| `FarkasCert.suspects` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.WarrantSolvency.FarkasCert.suspects` |
 | `Schema` | structure | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.WarrantSolvency.Schema` |
 | `UnitPosition` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.WarrantSolvency.Schema.UnitPosition` |
 | `alwaysFalse` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.WarrantSolvency.Witness.alwaysFalse` |
 | `alwaysTrue` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.WarrantSolvency.Witness.alwaysTrue` |
 | `held` | def | unrecorded | prose | `Workspace.Normativity.Contrib.WarrantSolvency.Schema.held` |
 | `realized` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.WarrantSolvency.Schema.realized` |
+| `suspects` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.WarrantSolvency.suspects` |
 | `trueCount` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.WarrantSolvency.Schema.trueCount` |
 | `undefeatedCount` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.WarrantSolvency.Schema.undefeatedCount` |
 
