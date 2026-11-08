@@ -5,7 +5,7 @@ children: [scoreside.same-question-two-realizations.record, scoreside.same-quest
 work: [{kind: round, ref: projects/normativity/rounds/2026-11-07-score-side-binding}, {kind: priorities, ref: 35}, {kind: decision, ref: 2026-11-07--conduct-binds-on-score-warrants-on-prices}]
 size: M
 size_reason: "one registry entry, its Lean declaration and its bridge"
-version: 1
+version: 2
 author: "@smithy-verity"
 ---
 ## Statement

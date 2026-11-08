@@ -5,7 +5,7 @@ leaf_kind: bridge
 attribution: formalizer-stated
 size: S
 size_reason: "one signature against the registry's reading"
-version: 1
+version: 2
 author: "@smithy-verity"
 ---
 ## Statement

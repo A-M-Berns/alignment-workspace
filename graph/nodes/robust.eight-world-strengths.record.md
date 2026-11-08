@@ -6,7 +6,7 @@ statement_of_record: Workspace.Normativity.Contrib.RobustWarrant.robustStrength_
 hypotheses: unread
 size: S
 size_reason: "one declaration against the registry"
-version: 1
+version: 2
 author: "@smithy-verity"
 registry_id: robust.eight-world-strengths
 ---

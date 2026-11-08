@@ -5,7 +5,7 @@ children: [robust.eight-world-strengths.record, robust.eight-world-strengths.bri
 work: [{kind: round, ref: projects/normativity/rounds/2026-11-07-score-side-binding}, {kind: priorities, ref: 133}, {kind: decision, ref: 2026-11-07--conduct-binds-on-score-warrants-on-prices}]
 size: M
 size_reason: "one registry entry, its Lean declaration and its bridge"
-version: 1
+version: 2
 author: "@smithy-verity"
 ---
 ## Statement
