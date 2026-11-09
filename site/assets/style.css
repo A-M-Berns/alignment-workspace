@@ -358,8 +358,8 @@ section.context ul.ctx-facts li { margin: 0.35em 0; }
 .stat:hover { border-color: var(--accent); }
 .stat-n { display: block; font-size: 1.7rem; font-weight: 700; line-height: 1.15; color: var(--fg); }
 .stat-l { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
-.panel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 0.8em; align-items: start; }
-.panel { border: 1px solid var(--rule); border-radius: 10px; padding: 0.3em 1em 0.7em; background: var(--card); }
+.panel-grid { columns: 2 330px; column-gap: 0.8em; }
+.panel { break-inside: avoid; margin: 0 0 0.8em; border: 1px solid var(--rule); border-radius: 10px; padding: 0.3em 1em 0.7em; background: var(--card); }
 .panel h2 { margin-top: 0.7em; border-bottom: none; }
 .panel ul.dense { list-style: none; padding-left: 0; margin: 0.2em 0; font-size: 0.84rem; }
 .panel ul.dense li { margin: 0.28em 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
