@@ -9,6 +9,7 @@ title: "Defeaters as undercutting occurrences: the grounded extension with attac
 section: "Deference line — second wave"
 maintainer_order: 120
 difficulty: "open"
+heading_notes: "— *bears on it 2026-11-07: the robust strength moves from 3/5 to 3/4 when the contrary challenge is declared a defeater (`RobustWarrant.robustStrength_defeated`), the fixture's instance of an undercutter changing the extension set; the attack reading itself is untouched*"
 project: normativity
 dispatchable: true
 item_status: open

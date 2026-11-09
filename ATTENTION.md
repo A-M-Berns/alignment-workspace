@@ -406,9 +406,9 @@ item. The present candidate is a distortion term comparing local fixed-loss
 evaluation with full replay, potentially requiring `B_T(g) = o(T)`, but no
 accepted sufficient statement yet supplies an executable completion criterion.
 
-### 35. End-to-end module pipeline round — **[maintainer-specified-later]** — *first instance landed 2026-10-21: `EndToEndWitness.Run.witness` (`projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/WITNESS.md`), one fixture, every stage; not registered; the next instance's needs are in that round's `LANDING.md`* — *second instance landed 2026-10-22: `WarrantInductorWitness.inductor`, `warrant_inductor` at a fixture with computability and liability discharged; the general theorem `WarrantInductor.warrant_inductor` registered `inductor.warrant-inductor`* — *third instance landed 2026-10-23: `WarrantInductorRebuttal.inductor`, the strength rebutted while active with the same decision question before and after, registered `inductor.rebuttal-run`; the theorem's admission is now an `Entitlement` and its compile a typed `Outcome`*
+### 35. End-to-end module pipeline round — **[maintainer-specified-later]** — *first instance landed 2026-10-21: `EndToEndWitness.Run.witness` (`projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/WITNESS.md`), one fixture, every stage; not registered; the next instance's needs are in that round's `LANDING.md`* — *second instance landed 2026-10-22: `WarrantInductorWitness.inductor`, `warrant_inductor` at a fixture with computability and liability discharged; the general theorem `WarrantInductor.warrant_inductor` registered `inductor.warrant-inductor`* — *third instance landed 2026-10-23: `WarrantInductorRebuttal.inductor`, the strength rebutted while active with the same decision question before and after, registered `inductor.rebuttal-run`; the theorem's admission is now an `Entitlement` and its compile a typed `Outcome`* — *fourth instance landed 2026-11-07: `WarrantInductorScoreSide.same_question_two_realizations`, the rebuttal run's decision on the score with an obligation on conduct charged and no row on conduct enforced, registered `scoreside.same-question-two-realizations`; the conduct row's conflict on prices registered `scoreside.conduct-on-prices-conflicts`*
 <!-- workspace-priority: project=normativity; dispatchable=no -->
-*Registered results bearing on this item:* inductor.rebuttal-run, inductor.warrant-inductor, inductor.witness.
+*Registered results bearing on this item:* inductor.rebuttal-run, inductor.warrant-inductor, inductor.witness, scoreside.conduct-on-prices-conflicts, scoreside.same-question-two-realizations.
 
 ---
 
@@ -959,8 +959,9 @@ condition rather than by inspection.
 non-capture, which is the composition the legitimacy line's status block names as
 open.
 
-### 61. A normative source with summable enforcement liability — **[substantial]**
+### 61. A normative source with summable enforcement liability — **[substantial]**— *narrowed 2026-11-07: for a warrant schema with timely-settling instances under the named unit-position hypothesis, bounded enforcer liability iff the consequent's frequency on undefeated instances is not systematically below the strength (`WarrantSolvency.Schema.bounded_iff_frequency`, registered `solvency.bounded-iff-frequency`), a renaming of `DecisionComponent.bounded_iff_not_outperformed`; the summability condition over the compiled force request and the live-world deficit `D_t` is untouched*
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+*Registered results bearing on this item:* solvency.bounded-iff-frequency.
 
 The end-to-end slice establishes that the unconditional traderization theorem's
 admissibility hypothesis holds exactly for injunctions that change nothing about
@@ -3610,7 +3611,7 @@ extended with the rule and green.
 *Context:* `.../2026-10-20-warrant-enforcement-semantics/SETTLEMENT_FORK.md` (iv),
 `COUNTERMODELS.md` §3, `LICENCE_CHAIN.md` A1.
 
-### 113. Settlement defeat for strength rows: a linear row contraposes — **[open]** — *answered 2026-10-21 by the rule `settleForm` (`projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md`): rebuttal, vacuity, retirement; registered `rebuttal.settleform-sound`, `rebuttal.liability-rebutted`; the monotonicity it loses is restated as `settledRegion_anti_of_survivors_eq` and `reopening_bound`; what remains is the sharp bankroll across a reopening, item 123*
+### 113. Settlement defeat for strength rows: a linear row contraposes — **[open]** — *answered 2026-10-21 by the rule `settleForm` (`projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md`): rebuttal, vacuity, retirement; registered `rebuttal.settleform-sound`, `rebuttal.liability-rebutted`; the monotonicity it loses is restated as `settledRegion_anti_of_survivors_eq` and `reopening_bound`; what remains is the sharp bankroll across a reopening, item 123* — *bears on it 2026-11-07: on the eight-world model the linear row fails after a contrary challenge with neither rebuttal nor undercut firing (`RobustWarrant.invalid_at_contrary`, `kept_under_challenge`, `not_undercut`); the non-linear form the entry names is the robust reading, item 133*
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 *Registered results bearing on this item:* inductor.contraposition-blocked, rebuttal.liability-rebutted, rebuttal.settleform-sound.
 
@@ -3894,7 +3895,7 @@ whether a settlement-time accounting of the reopened mass (item 123) makes it li
 *Consumed by:* any run with more than one rebuttal; the asymptotic corollary of
 `.../THEOREM_STORY.md` §F beyond one revision.
 
-### 127. Defeaters as undercutting occurrences: the grounded extension with attacks — **[open]**
+### 127. Defeaters as undercutting occurrences: the grounded extension with attacks — **[open]**— *bears on it 2026-11-07: the robust strength moves from 3/5 to 3/4 when the contrary challenge is declared a defeater (`RobustWarrant.robustStrength_defeated`), the fixture's instance of an undercutter changing the extension set; the attack reading itself is untouched*
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 `Occurrence.defeaters` is read as the ports whose defeat also undercuts the occurrence
@@ -3912,8 +3913,9 @@ an undercutter is itself defeasible.
 *Context:* `DECISIONS.md` 2026-10-22; `WarrantEntitlement.liveGiven`.
 *Consumed by:* fixtures with undercutting defeaters that are themselves warrants.
 
-### 128. Admission from the accounted state — **[open]** — *narrowed 2026-10-23: `WarrantInductor.Entitlement` reads three conditions off the accounted state — the origin exposed, `Protocol.Admitted` at the boundary's history, a live leaf in the origin's account — and takes a declared `Expresses : Req → Form → Prop`; `warrant_inductor` enforces only entitled survivors; `WarrantInductorWitness.answered_not_entitled` shows an answered obligation entitles nothing. What remains is below.*
+### 128. Admission from the accounted state — **[open]** — *narrowed 2026-10-23: `WarrantInductor.Entitlement` reads three conditions off the accounted state — the origin exposed, `Protocol.Admitted` at the boundary's history, a live leaf in the origin's account — and takes a declared `Expresses : Req → Form → Prop`; `warrant_inductor` enforces only entitled survivors; `WarrantInductorWitness.answered_not_entitled` shows an answered obligation entitles nothing. What remains is below.* — *narrowed 2026-11-07: the admission half of clause (a) landed as admission by standing — `Protocol.Admitted` read off the authority allocation (`AdmissionByStanding.admittedByStanding`), the entitlement inhabited on `state₀` rebuilt over it with admission carrying content, and a reallocated obligation entitling nothing (`reallocated_entitles_nothing`, registered `standing.reallocated-entitles-nothing`, its hypothesis package inhabited by `entitlementS₁` over the state exposing the reasoner's own obligation alone); the `Expresses` half of clause (a) remains typed, and clauses (b) and (c) remain*
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+*Registered results bearing on this item:* standing.reallocated-entitles-nothing.
 
 `WarrantInductor.Entitlement O G Expresses` types the admission of a warrant occurrence to the
 market as four conditions on its origin in the accounted obligation state. Two of them are the
@@ -3972,6 +3974,39 @@ the finite kernel.
 *Context:* `prompts/2026-08-11-deference-finite-kernel/REPORT.md`;
 `lean/Workspace/Deference/Contrib/DelegationBridge.lean`; the claim `local-delegation-bridge` of the
 map.
+
+### 133. The robust reading of a warrant as a Form-level rule — **[open]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+*Registered results bearing on this item:* robust.eight-world-strengths, solvency.conflict-names-suspects.
+
+A strength row `P(X∧A∧Y) ≥ c · P(X∧A)` read at the posterior of whatever record the warrant is
+undefeated at can be false while nothing withdraws it: on the eight-world model
+(`RobustWarrant`) the row at `3/4` is exact at the signal and false after a contrary challenge,
+`settleOutcome` keeps the form because the challenge pins neither antecedent nor consequent,
+the quiet docket undercuts nothing, and registering the challenge as an opposing warrant makes
+the rows infeasible although the answer `3/5` is determinate. The repair the round defines is
+the **robust reading** (`RobustWarrant.Robust`): the warrant constrains her model over the
+undefeated extensions of its anchor, `Pr(Y | A ∧ E) ≥ c` for every undefeated `E`; its
+strength is the least such conditional (`3/5` here, `3/4` with the contrary challenge a
+defeater), it is sound at every undefeated record (`robust_sound`), and a valid conflict
+certificate shows at every cube point some positively weighted bundle row violated there
+(`WarrantSolvency.suspect_in_bundle`), so where admission demands validity at that point a
+conflict shows a mis-admission. Wanted: the reading as a rule on `Form` with its compile to rows; the theorem
+that it agrees with `settleForm` when the extension set is the one the settlement generates;
+and the fixture recovered under the rule. What is settled is the fixture and the definition;
+no general defeat semantics is built here.
+
+*Deliverable shape:* `lean-proved`; the rule on `Form`, its compile, the agreement theorem with
+`settleForm` on settlement-generated extensions, and the eight-world fixture recovered under
+the rule.
+*Acceptance check:* the Lean audit clean; `RobustWarrant.robustStrength_all`, `robust_sound`
+and `WarrantSolvency.suspect_in_bundle` recovered as instances;
+`WarrantInductorWitness.survivors_eq` unchanged.
+*Context:* `lean/Workspace/Normativity/Contrib/RobustWarrant.lean`;
+`lean/Workspace/Normativity/Contrib/WarrantSolvency.lean`;
+`projects/normativity/rounds/2026-11-07-score-side-binding/REPORT.md`.
+*Consumed by:* item 127 (an undercutter that is itself defeasible is an extension this reading
+prices); the queue entries on M1 and M2.
 
 ## Workspace friction
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a
@@ -4174,6 +4209,24 @@ rule exists to refuse, and a fabricated-but-well-formed pin is the shape an agen
 takes. The fix is contained: resolve each pin against local git objects
 (`git cat-file`-grade checks, no network), and ship the null case — a well-formed pin
 naming a commit or path git does not have must fail.
+
+### F10 — A research round has no node of its own on the map
+<!-- workspace-priority: project=none; dispatchable=yes -->
+
+A dispatch asks a research round to "file the round's node", and `graph/PROTOCOL.md` has no
+node kind for a round: a round appears only as a `work` pointer of kind `round` on the nodes
+that stand for its results, items and decisions (§2, *Task leaves and work pointers*), and the
+two research rounds landed since the map became canonical filed no node for themselves. The
+score-side-binding round did the minimum the checker requires — a formal result per registered
+claim with the round pointer, the item nodes it narrowed or filed, and the anchor lines of its
+decisions — and improvised no structure. Wanted: the protocol to say which shape a research
+round takes on the map, so that the next dispatch and the next round read the same rule.
+
+*Deliverable shape:* one protocol paragraph naming the shape, and either a `round` node kind the
+checker accepts or a sentence saying the pointers are the record.
+*Acceptance check:* `python3 -m checkers.graph` passes on a round filed the stated way; the two
+research rounds filed since 2026-10-22 conform or are listed as not conforming.
+*Context:* `graph/PROTOCOL.md` §2; `AGENTS.md`, *The argument map under `graph/`*.
 
 ## Infrastructure
 

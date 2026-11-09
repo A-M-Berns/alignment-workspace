@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "3c3805569d68a07eff22a7ab",
-  "index.json": "bb1387877616035a573dbcac"
+  "derived.json": "7ad5a4f98eee0ed329843d43",
+  "index.json": "a8e9276eba361e44f58bf0a3"
  },
- "generated_hash": "92bb8a91b3734d2b2405bad9",
+ "generated_hash": "7f8a74fa6a960d6cdb814e41",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -8630,6 +8630,13 @@
     "version": 1
    }
   ],
+  "item-133": [
+   {
+    "date": "2026-11-07",
+    "normalized": "item 133 the robust reading of a warrant as a form level rule is delivered in the shape its entry states lean proved the rule on form its compile the agreement theorem with settleform on settlement generated extensions and the eight world fixture recovered under the rule",
+    "version": 1
+   }
+  ],
   "item-14": [
    {
     "date": "2026-10-22",
@@ -9271,6 +9278,13 @@
    {
     "date": "2026-10-22",
     "normalized": "item f1 job names in prose and root documents that classify into no layer is answered as its entry specifies",
+    "version": 1
+   }
+  ],
+  "item-f10": [
+   {
+    "date": "2026-11-07",
+    "normalized": "item f10 a research round has no node of its own on the map is answered as its entry specifies",
     "version": 1
    }
   ],
@@ -17711,6 +17725,44 @@
     "version": 1
    }
   ],
+  "robust.eight-world-strengths": [
+   {
+    "date": "2026-11-07",
+    "normalized": "on the eight world model a binary quantity with a uniform prior a signal of accuracy 3 4 a challenge of accuracy 2 3 independent given the quantity the least conditional probability of the quantity given the signal over the three undefeated extensions nothing more a contrary challenge a concurring challenge is 3 5",
+    "version": 1
+   },
+   {
+    "date": "2026-11-08",
+    "normalized": "on the eight world model a binary quantity with a uniform prior a signal of accuracy 3 4 a challenge of accuracy 2 3 independent given the quantity the least conditional probability of the quantity given the signal over the three undefeated extensions nothing more a contrary challenge a concurring challenge is 3 5 and over the two extensions with the contrary challenge declared a defeater nothing more a concurring challenge it is 3 4 the extension sets are declared inputs",
+    "version": 2
+   }
+  ],
+  "robust.eight-world-strengths.bridge": [
+   {
+    "date": "2026-11-07",
+    "normalized": "the statement of record of robust eight world strengths formalizes the registered claim as the registry reads it on the eight world model the robust strength of the signals warrant is 3 5 over the undefeated extensions and 3 4 with the contrary challenge a defeater",
+    "version": 1
+   }
+  ],
+  "robust.eight-world-strengths.complete": [
+   {
+    "date": "2026-11-07",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "robust.eight-world-strengths.record": [
+   {
+    "date": "2026-11-07",
+    "normalized": "the declaration workspace normativity contrib robustwarrant robuststrength_all is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   },
+   {
+    "date": "2026-11-08",
+    "normalized": "the declaration workspace normativity contrib robustwarrant robuststrength_both is accepted by the lean kernel in the repositorys lean library",
+    "version": 2
+   }
+  ],
   "rosi-roli-bridge": [
    {
     "date": "2026-10-20",
@@ -18373,6 +18425,67 @@
    {
     "date": "2026-10-20",
     "normalized": "fafs logical inductor keeps the truth tellers price frequently interior so a content bearing instance of the scoped theorems conditional stability hypothesis exists",
+    "version": 1
+   }
+  ],
+  "scoreside.conduct-on-prices-conflicts": [
+   {
+    "date": "2026-11-07",
+    "normalized": "the rebuttal runs date 4 bundle with the conduct row p x a y 1 3 appended has no admissible price vector the specialized strength row two thirds of the specialized applicability row and the conduct row form a farkas certificate summing to 0 1 6",
+    "version": 1
+   }
+  ],
+  "scoreside.conduct-on-prices-conflicts.bridge": [
+   {
+    "date": "2026-11-07",
+    "normalized": "the statement of record of scoreside conduct on prices conflicts formalizes the registered claim as the registry reads it the obligation on conduct compiled onto prices conflicts with the epistemic rows at date 4",
+    "version": 1
+   }
+  ],
+  "scoreside.conduct-on-prices-conflicts.complete": [
+   {
+    "date": "2026-11-07",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "scoreside.conduct-on-prices-conflicts.record": [
+   {
+    "date": "2026-11-07",
+    "normalized": "the declaration workspace normativity contrib warrantinductorscoreside conduct_on_prices_conflicts is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "scoreside.same-question-two-realizations": [
+   {
+    "date": "2026-11-07",
+    "normalized": "on the rebuttal runs market with the obligation on conduct refrain while the originating obligations account is live charged at \u03c0 times the markets price of its shortfall sentence and subtracted from the acting score the gate acts with mass at least 24 25 at date 4 while the charge is at most 19 240 and refrains with certainty at date 9 for every nonnegative charge beside the runs own gate doing the same with no charge the enforcers bundle and the market are the runs at every date",
+    "version": 1
+   },
+   {
+    "date": "2026-11-08",
+    "normalized": "on the rebuttal runs market with the obligation on conduct refrain while the originating obligations account is live one shortfall sentence per date tied to the assessment by the hypothesis assessed charged at \u03c0 times the markets price of the dates shortfall sentence and subtracted from the acting score under assessed the gate acts with mass at least 24 25 at date 4 while \u03c0 times the date 4 shortfall price is at most 19 240 and refrains with certainty at date 9 for every nonnegative charge acting being assessed a shortfall at both dates beside the runs own gate doing the same with no charge the realization stores the runs schedule so its bundle and market are the runs",
+    "version": 2
+   }
+  ],
+  "scoreside.same-question-two-realizations.bridge": [
+   {
+    "date": "2026-11-07",
+    "normalized": "the statement of record of scoreside same question two realizations formalizes the registered claim as the registry reads it the rebuttal runs decision in two realizations on prices with no obligation on conduct and on the score with the obligation charged",
+    "version": 1
+   }
+  ],
+  "scoreside.same-question-two-realizations.complete": [
+   {
+    "date": "2026-11-07",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "scoreside.same-question-two-realizations.record": [
+   {
+    "date": "2026-11-07",
+    "normalized": "the declaration workspace normativity contrib warrantinductorscoreside same_question_two_realizations is accepted by the lean kernel in the repositorys lean library",
     "version": 1
    }
   ],
@@ -19636,6 +19749,72 @@
     "version": 1
    }
   ],
+  "solvency.bounded-iff-frequency": [
+   {
+    "date": "2026-11-07",
+    "normalized": "for a warrant schema with timely settling instances the enforcers cumulative liability the settled consequent against the held strength one unit per undefeated instance is bounded below by b at every date iff c u_n t_n b at every date u_n the undefeated count and t_n the true consequents among them an instance of the deference identity bounded_iff_not_outperformed",
+    "version": 1
+   }
+  ],
+  "solvency.bounded-iff-frequency.bridge": [
+   {
+    "date": "2026-11-07",
+    "normalized": "the statement of record of solvency bounded iff frequency formalizes the registered claim as the registry reads it solvency as soundness a warrant schemas enforcer liability is bounded iff the consequents frequency on undefeated instances is not systematically below the strength",
+    "version": 1
+   }
+  ],
+  "solvency.bounded-iff-frequency.complete": [
+   {
+    "date": "2026-11-07",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "solvency.bounded-iff-frequency.record": [
+   {
+    "date": "2026-11-07",
+    "normalized": "the declaration workspace normativity contrib warrantsolvency schema bounded_iff_frequency is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "solvency.conflict-names-suspects": [
+   {
+    "date": "2026-11-07",
+    "normalized": "against a bundle a farkas certificate over the bundles allowed rows has at every point of the cube a positively weighted row of the bundle itself that is violated there so if every held row is valid at a point no such certificate exists and a conflict names a mis admission among the rows it weights",
+    "version": 1
+   },
+   {
+    "date": "2026-11-08",
+    "normalized": "against a bundle a farkas certificate over the bundles allowed rows has at every point of the cube some positively weighted row of the bundle itself that is violated there the row may differ from point to point so if every held row is valid at a point no such certificate exists and where admission demands validity at that point a conflict shows a mis admission among the rows it weights",
+    "version": 2
+   }
+  ],
+  "solvency.conflict-names-suspects.bridge": [
+   {
+    "date": "2026-11-07",
+    "normalized": "the statement of record of solvency conflict names suspects formalizes the registered claim as the registry reads it a valid conflict certificate names a violated bundle row at every cube point so sound rows cannot conflict",
+    "version": 1
+   },
+   {
+    "date": "2026-11-08",
+    "normalized": "the statement of record of solvency conflict names suspects formalizes the registered claim as the registry reads it a valid conflict certificate shows at every cube point some positively weighted bundle row violated there so rows all valid at one point cannot conflict",
+    "version": 2
+   }
+  ],
+  "solvency.conflict-names-suspects.complete": [
+   {
+    "date": "2026-11-07",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "solvency.conflict-names-suspects.record": [
+   {
+    "date": "2026-11-07",
+    "normalized": "the declaration workspace normativity contrib warrantsolvency suspect_in_bundle is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
   "soto-flower-obstruction": [
    {
     "date": "2026-10-20",
@@ -19738,6 +19917,34 @@
    {
     "date": "2026-10-22",
     "normalized": "the cruxes every line reads the computability levels the updateful versus updateless stance and whether the unbounded level represents the important phenomena are settled well enough to say where the programs work pays",
+    "version": 1
+   }
+  ],
+  "standing.reallocated-entitles-nothing": [
+   {
+    "date": "2026-11-07",
+    "normalized": "over any obligation state of the protocol whose admission predicate is admission by standing under the allocation that moves the first matter to the agent no entitlement of the witnesss grounds under any expression relation traces an occurrence to the first obligation",
+    "version": 1
+   }
+  ],
+  "standing.reallocated-entitles-nothing.bridge": [
+   {
+    "date": "2026-11-07",
+    "normalized": "the statement of record of standing reallocated entitles nothing formalizes the registered claim as the registry reads it admission by standing with protocol admitted read off the authority allocation a reallocated obligation entitles nothing",
+    "version": 1
+   }
+  ],
+  "standing.reallocated-entitles-nothing.complete": [
+   {
+    "date": "2026-11-07",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "standing.reallocated-entitles-nothing.record": [
+   {
+    "date": "2026-11-07",
+    "normalized": "the declaration workspace normativity contrib admissionbystanding reallocated_entitles_nothing is accepted by the lean kernel in the repositorys lean library",
     "version": 1
    }
   ],

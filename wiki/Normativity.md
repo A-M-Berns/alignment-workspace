@@ -48,7 +48,7 @@ coverage for the relevant burdens to recur.
 > for deduction — the original criterion together with finite-date coherence, from
 > a compiled market that assumes nothing about the deductive process beyond the
 > pinned source's own certificate. The
-> <!--state:workspace:counts.registered_claims_by_project.normativity-->64<!--/state-->
+> <!--state:workspace:counts.registered_claims_by_project.normativity-->70<!--/state-->
 > entries in this line's registry each name a Lean declaration and the priority
 > item it answers.
 
@@ -66,6 +66,27 @@ object for liabilities stated across vocabulary change is also absent. What the
 registered results establish is force, not legitimacy: the map from a normative record
 to a region a market can be made to respect is specified by the
 [Normative Inductor](Normative-Inductor)'s compiler contract and not yet proved.
+
+**Where obligations bind (status 2026-11-07).**  Three kinds of settlement sort the rows a
+record compiles: *deductive* — the deductive process pins the sentence, which is every row the
+October runs enforce; *assessed* — an evaluation settles it, an account answered or closed, a
+declared violation, her later evaluation; and *none*.  Force is finite-time binding on
+settling matters: a row binds at the dates its sentence can still move and is settled or
+withdrawn after, so a demand the process will settle costs the enforcer only what the
+still-possible worlds disagree about.  An obligation on conduct is assessed, not deduced,
+and binds on what the chooser is scored on: the rebuttal run's reversal is recovered on the
+same market with the obligation charged at `ϖ` times the price of its shortfall sentence —
+the charge at most `19/240` at date 4, the sentence tied to the assessment by a named
+hypothesis — and the row it would compile to held at no date (**registered**
+`scoreside.same-question-two-realizations`<!--ref:claim:scoreside.same-question-two-realizations-->), while that row, compiled,
+conflicts with the epistemic rows or does nothing (**registered**
+`scoreside.conduct-on-prices-conflicts`<!--ref:claim:scoreside.conduct-on-prices-conflicts-->).  Solvency is the discipline on
+epistemic warrants: a schema's enforcer liability is bounded iff the consequent's frequency
+on undefeated instances is not systematically below the strength (**registered**
+`solvency.bounded-iff-frequency`<!--ref:claim:solvency.bounded-iff-frequency-->), the deference identity renamed.
+**Proposal, not a ruling:** the *exposure rule* — a constraint is enforceable only if some
+settlement or assessment could show it wrong, or the reasoner authored it — is stated here as
+a proposal and queued for the maintainer.
 
 ## The seed, and rebuttal by settlement
 
@@ -192,6 +213,23 @@ for its losses.
 So the shape is: one clause says what force a norm gets, and another says how much
 damage granting it may do.
 
+For a warrant schema whose instances settle in a timely way the second clause has a
+statement of record: the enforcer's cumulative liability is bounded iff the consequent's
+frequency on undefeated instances is not systematically below the strength
+(`WarrantSolvency.Schema.bounded_iff_frequency`, **registered**
+`solvency.bounded-iff-frequency`<!--ref:claim:solvency.bounded-iff-frequency-->), under a named hypothesis reducing the
+calibrated trade to one unit per instance.  It is the deference line's liability identity
+with the source the strength and the alternative the settled consequent — a renaming, which is
+the point: the same accounting disciplines a warrant that outruns the record and an
+enforcer that holds prices to a principal.  Solvency is a soundness condition read on the
+account: a warrant that stays solvent is one the record has not refuted at the rate it
+promised.  It does not exclude a conflict — two contradictory rows each enforced on one
+instance have bounded cumulative liability; what excludes a valid conflict certificate is
+validity of all its rows at one point.  A valid certificate shows, at every cube point, that
+some positively weighted bundle row is violated there (`WarrantSolvency.suspect_in_bundle`,
+**registered** `solvency.conflict-names-suspects`<!--ref:claim:solvency.conflict-names-suspects-->), and where
+admission demands validity at that point, that row was mis-admitted.
+
 ### Force, and what force costs
 
 Two things about this mechanism are worth separating from the idea that motivated
@@ -221,6 +259,18 @@ between sentences produces, where the participant must change direction as the
 price crosses it and continuity leaves a band it cannot hold. The general
 characterisation is not settled, and tolerance is what the surrounding machinery
 was built to consume anyway.
+
+Force is also only cheap at finite dates on matters that settle.  A row whose sentence the
+process will pin is settled or withdrawn by a date; what it costs in between is bounded by
+the disagreement of the still-possible worlds, and the rebuttal rule withdraws a strength the
+record refutes.  A row whose sentence nothing settles is a different object: on the
+eight-world model a strength row read at the record's posterior is exact at the signal and
+false after a contrary challenge while rebuttal and undercut both stay silent, and the robust
+reading of the warrant — a constraint on her model over the undefeated extensions of its
+anchor, strength `3/5` there — is the repair candidate (`RobustWarrant`, **registered**
+`robust.eight-world-strengths`<!--ref:claim:robust.eight-world-strengths-->; item 133<!--ref:item:133-->).  An obligation
+on conduct is settled by an assessment and binds on the score, not on a price (the
+[Normative Inductor](Normative-Inductor) page, *Where each kind of obligation binds*).
 
 ### Where it sits
 
