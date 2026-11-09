@@ -31,8 +31,8 @@ branch.*
 | rounds under `prompts/` (127 directories; 44 indexed with `prompts/` paths) and `projects/*/rounds/` (87 directories; 80 indexed rounds under `projects/`) | prompts, reports, artifacts | round ids (`YYYY-MM-DD-slug`) | `state/rounds.json`, registries' `origin_round`, `PROVENANCE.md` | hand-written, verbatim | 8 round pointers | 194 round pointers |
 | `graph/frame.yaml` | the top question, 5 classes, 2 valuation nodes, 4 roots | root ids | nodes | hand-written | — | `owner` a handle, `narrative: wiki/Home.md`; the plan root is `the-program` |
 | `graph/nodes/` | 1561 nodes: 125 `and`, 47 `cases`, 33 `frame`, 1291 `leaf`, 65 `or`; leaves: 32 assumption, 85 bridge, 125 completeness, 68 hypothesis, 47 partition, 202 picture, 188 question, 82 record, 123 route, 211 step, 116 task, 12 want | node ids | `work` pointers (41 priorities, 19 open, 8 round), `statement_of_record` → registries | AI-drafted, human-reviewed by events | — | 3059 nodes: 303 `and`, 47 `cases`, 46 `frame`, 2593 `leaf`, 70 `or`; leaves: 263 bridge, 303 completeness, 714 hypothesis, 260 record, 234 task; pointers: 42 priorities, 19 open, 194 round, decision on 61 nodes, 1 foundation |
-| `graph/events/` | 2411 events: `@maintainer` 2, `@smithy-verity` 1396, `@smithy-verity-opus55` 1013 | event ids `<handle>-<n>` | node ids, row ids | written from users' words | — | the human ledger is `anson.jsonl` (`anson-001`, `-002`); no event added |
-| `graph/policy.yaml` | parameters, 3 handles, 2 registries | handles | registries → `projects/*/CLAIMS.md` | hand-written | — | 4 handles (`@anson`, `@abram`, two AI); `maintainer` a list |
+| `graph/events/` | 2411 events: `@maintainer` 2, `@smithy-verity` 1396, `@smithy-verity-opus55` 1013 | event ids `<handle>-<n>` | node ids, row ids | written from users' words | — | the human ledger is `anson.jsonl` (`A-M-Berns-001`, `-002`); no event added |
+| `graph/policy.yaml` | parameters, 3 handles, 2 registries | handles | registries → `projects/*/CLAIMS.md` | hand-written | — | 4 handles (`@A-M-Berns`, `@abramdemski`, two AI); `maintainer` a list |
 
 ## Inconsistencies found
 
@@ -69,7 +69,7 @@ Listed with the smallest extension that would hold each; none is forced.
 3. **A ruling's effect.** A ruling touches items, claims and nodes; the `touches` list records the explicit mentions only. A ruling that amends an earlier ruling is not linked to it (the ledger says so in prose). Extension: a `supersedes` field in the anchor line, when the maintainers want it.
 4. **Two wiki pages for one node, or one page for several.** Represented: `narrative` accepts a list, and the index inverts it. Nothing lacking.
 5. **A frame's owner confirming a drafted decomposition.** No event kind exists for "the owner read this frame and keeps it"; the round uses `filed_from: wiki` and its removal by the owner. Extension (reserved): a `confirm` event on a frame, if the maintainers prefer an event to an edit.
-6. **The second maintainer's ledger.** `@abram` is mapped and has no ledger until he writes an event; `CODEOWNERS` gets his ledger line then. Nothing lacking.
+6. **The second maintainer's ledger.** `@abramdemski` is mapped and has no ledger until he writes an event; `CODEOWNERS` gets his ledger line then. Nothing lacking.
 7. **A round the map honestly cannot point at.** Six administrative rounds (scrubs, renames, cleanups) serve no node; the report lists them. The index carries every round with an empty `pointed_by`. Nothing lacking.
 8. **The hand ordering of items as a lens.** `maintainer_order` is transcribed data, as ruled; the ranking does not read it. Whether it should is the one *Open* question the protocol kept about `ATTENTION.md` and the task list, and it stays open.
 

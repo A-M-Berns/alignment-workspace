@@ -3,7 +3,7 @@ id: openness-and-non-capture
 kind: frame
 children: [split-bill-is-robust-openness, split-bill-is-robust-openness.improvable]
 question: "Can concerns reach a process at all, and can the party they matter to still act on them, on the actual branch and under every declared intervention?"
-owner: ["@anson", "@abram"]
+owner: ["@A-M-Berns", "@abramdemski"]
 filed_from: wiki
 narrative: wiki/Openness-Coverage-and-Non-Capture.md
 roots:

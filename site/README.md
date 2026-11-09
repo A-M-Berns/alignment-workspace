@@ -93,6 +93,17 @@ AI-drafted nodes (an AI author and no human event) render in a lighter register 
 label *drafted*, on the canvas and on the pages. Every page shows the commit it was built
 from.
 
+## Sign-in
+
+A reader may sign in with GitHub: the device flow through the secretless relay in
+`infra/github-login-relay/` (URL in `state/site_auth.json`; with it empty the dialog
+says sign-in is unconfigured). The token stays in the reader's browser; identity is
+their GitHub login — a human handle *is* `@<login>` (ruling of 2026-11-09) — mapped
+through `graph/policy.yaml` and shipped as `/assets/account.json`. Signed in as a mapped
+handle, a score's receipt opens the
+pull request itself — fork, ledger line, branch, PR, all from the browser against
+api.github.com. The site accepts no write; the copy flow remains the fallback.
+
 ## Building locally
 
 ```

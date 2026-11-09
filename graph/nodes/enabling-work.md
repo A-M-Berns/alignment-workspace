@@ -3,7 +3,7 @@ id: enabling-work
 kind: frame
 children: [enabling-vetting-and-prioritization-system, enabling-machine-checked-corpus, enabling-publication-pipeline, crux-formalize-before-write-up, crux-vetting-or-generation, enabling-map-as-canonical, enabling-program-site]
 question: "Which repository infrastructure makes the trust research vettable and publishable?"
-owner: ["@anson", "@abram"]
+owner: ["@A-M-Berns", "@abramdemski"]
 roots:
   - {id: enabling-vetting-and-prioritization-system, role: shared-claim, preset: worst-case}
   - {id: enabling-machine-checked-corpus, role: shared-claim, preset: worst-case}

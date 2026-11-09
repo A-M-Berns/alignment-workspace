@@ -3,7 +3,7 @@ id: level-super-turing
 kind: frame
 children: [factor-unbounded-then-relate, reflective-oracles-correlated, vingean-principle-excludes-ro-models, vingean-uncertainty-is-computational, uea-theorem-1, uea-theorem-1.improvable, uea-floored-agent-theorem, uea-floored-agent-theorem.improvable, uea-t1-key-lemma-refuted-finite, uea-post-usc-backwards, uea-sink-or-swim-trap, uea-printed-2025-refuted, uea-horizon-quantifiers, udt10-believes-udt11, udt-trust-existence-and-tightness, udt-trust-relation-to-dt-lab, ro-generalized-kakutani-refuted, ro-ftc-finite-core-from-brouwer, mupi-relation, uea-improbable-actions, bro-boi-bridge, cole-stability-reading, want-uea-review, want-methodology-note]
 question: "Which work at the limit-computable level of AIXI and reflective oracles advances a formal theory of trust that guides AI safety engineering work?"
-owner: "@abram"
+owner: "@abramdemski"
 roots:
   - {id: factor-unbounded-then-relate, role: plan, preset: worst-case, success_class: utopia}
   - {id: reflective-oracles-correlated, role: plan, preset: worst-case, success_class: utopia}

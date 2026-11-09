@@ -3,7 +3,7 @@ id: level-poly-time
 kind: frame
 children: [bria-near-the-line]
 question: "Which whole-mind models of rationality at polynomial time or below would advance a formal theory of trust?"
-owner: "@abram"
+owner: "@abramdemski"
 opened: false
 roots:
   - {id: bria-near-the-line, role: shared-claim, preset: worst-case}

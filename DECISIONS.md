@@ -7128,6 +7128,36 @@ entitles nothing (`reallocated_entitles_nothing`).  Rejected alternative: admiss
 account's receipts (item 128's clause (b)), which stays open; the allocation is what the
 authority module already supplies.  `Expresses` remains typed.
 
+<<<<<<< HEAD
+### 2026-11-09 — the site signs readers in with GitHub
+<!-- decision: 2026-11-09--github-sign-in; touches: site/, infra/github-login-relay/, state/site_auth.json -->
+
+**Maintainer ruling, taken in conversation on 2026-11-09:** the site gets secure accounts
+and logins, toward distinct per-person views, by GitHub flow. Identity is the reader's
+GitHub account matched to a `graph/policy.yaml` handle; sign-in is the device flow
+through `infra/github-login-relay/`, a worker that forwards GitHub's two CORS-less login
+endpoints and holds no secret (device flow has none; the client id is public and
+pinned); the token lands only in the reader's own browser, and a signed-in reader's
+score receipt forks, writes their own ledger line and opens the pull request from the
+browser — the site still accepts no write, and the checker adjudicates the event like
+any other. The round's reading, agent-decided and reversible: device flow over the OAuth
+web flow, whose token exchange needs a client secret a worker would have to hold;
+`public_repo` scope, the narrowest the classic-app device flow offers. A handleless
+GitHub account signs in but cannot submit; proposing a handle stays an issue.
+
+### 2026-11-09 — a human handle is the GitHub login
+<!-- decision: 2026-11-09--handles-are-github-logins; touches: graph/policy.yaml, graph/events/, graph/nodes/, graph/PROTOCOL.md, AGENTS.md -->
+
+**Maintainer ruling, taken in conversation on 2026-11-09:** the `@` matches the GitHub
+username rather than being a separate handle. A human handle is `@<login>` — the two
+standing handles become `@A-M-Berns` and `@abramdemski` across the policy, the frames,
+the node files and the maintainer's own ledger (`graph/events/A-M-Berns.jsonl`, its two
+events' `by` and ids rewritten at the maintainer's direction) — and a new contributor's
+handle needs no minting, only admission to `policy.yaml`. Design-log lines and completed
+round records keep the spelling they were written with, as history. AI handles stay the
+model's slug. The sign-in dialog is the device flow alone, its code shown large as
+GitHub expects it typed.
+=======
 ### 2026-11-08 — digests are maintenance; the sweep and the freshness audit run daily
 <!-- decision: 2026-11-08--digests-are-maintenance-sweep-and-audit-daily; touches: AGENTS.md, prompts/2026-11-05-standing-maintenance/PROMPT.md, .github/workflows/freshness.yml, tests/freshness.py, site/README.md, state/prs.json -->
 
@@ -7154,3 +7184,4 @@ against leaving it to the next sweep, which would make every sweep the cause of 
 **The daily trigger is a job on the maintainer's machine**, not a workflow — CI holds no
 credential and cannot run an agent, and the job starts one only after a check with `gh`
 and `git` finds a missing digest or a changed *Workspace friction* section.
+>>>>>>> origin/main

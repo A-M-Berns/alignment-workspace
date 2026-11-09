@@ -3,7 +3,7 @@ id: deference-finite-results
 kind: frame
 children: [local-delegation-bridge, local-delegation-bridge.improvable]
 question: "Which finite results about delegation, certificates, exposure, substitution, magnitude and corrective control does the deference line hold as kernel-checked theorems?"
-owner: "@abram"
+owner: "@abramdemski"
 narrative: wiki/What-Deference-Requires.md
 roots:
   - {id: local-delegation-bridge, role: shared-claim, preset: worst-case}

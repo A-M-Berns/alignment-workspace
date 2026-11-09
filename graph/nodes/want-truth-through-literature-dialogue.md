@@ -2,7 +2,7 @@
 id: want-truth-through-literature-dialogue
 kind: leaf
 leaf_kind: want
-owner: "@anson"
+owner: "@A-M-Berns"
 want: true
 filed_from: quote
 given: anti-naturality-walk

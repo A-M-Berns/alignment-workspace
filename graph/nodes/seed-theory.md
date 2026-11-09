@@ -3,7 +3,7 @@ id: seed-theory
 kind: frame
 children: []
 question: "What does a normative seed force on the prices of a settled fragment, how does that change under settlement, defeat and rebuttal, and do reasoners starting from different seeds end up anywhere together?"
-owner: "@anson"
+owner: "@A-M-Berns"
 filed_from: wiki
 narrative: wiki/Seed-Theory.md
 roots: []

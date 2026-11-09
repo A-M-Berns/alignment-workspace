@@ -1,0 +1,11 @@
+name = "alignmentworkspace-login"
+main = "worker.js"
+compatibility_date = "2026-10-01"
+
+routes = [
+  { pattern = "login.alignmentworkspace.com", custom_domain = true }
+]
+
+# the OAuth app's public client id (no secret exists in device flow):
+#   wrangler deploy --var CLIENT_ID:<the app's client id>
+# or set CLIENT_ID as a plain (non-secret) variable in the dashboard.

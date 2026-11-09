@@ -112,6 +112,22 @@ untracked-pointers exemption also learned that a directory pattern like `_site/`
 the bare name only while the directory exists, so `ignored()` checks both forms — the
 first form passed locally and failed on a clean CI checkout.
 
+## The fifth follow-up of 2026-11-06 (`PROMPT-followup-5.md`)
+
+The hover had content only where a concept carried a wiki page (16) or a backing claim
+(8); the other 30 ranked concepts have neither, and their own page is the blurb plus
+connections and merged work. The preview falls back to the connections — each linked
+concept's title with the edge's why line — so every entry hovers.
+
+## The sixth follow-up of 2026-11-06 (`PROMPT-followup-6.md`)
+
+`/activity/` becomes the control panel: seven stat tiles (open items, pending decisions,
+contested axes, human-scored concepts against AI-seeds-only, merged pull requests,
+rounds, registered claims), then dense panels — human ledger events, merged pull
+requests, the full *Awaiting the author* queue, dated rulings, rounds, claims by origin
+date, contested scores. Every number derived, each tile a link. The ledger panel shows
+the two human events that exist and says so when empty; the feed page stands unchanged.
+
 ## Outstanding maintainer actions
 
 1. Wire the maintenance sweep's schedule (cadence is yours; weekly beside the freshness
