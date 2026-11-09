@@ -37,13 +37,14 @@ on the origin; the site ships no third-party script, and the scope is public-rep
 write on the reader's own account. Nothing here authenticates the *site* to anyone: the
 pull request's authorship is GitHub's assertion, as it always was.
 
+The maintainer created the OAuth app and authorized the deploy on 2026-11-09; the relay
+runs at `login.alignmentworkspace.com`, `state/site_auth.json` carries it, and the
+device-code endpoint round-trips against GitHub. The queue entry is retired. The first
+real submission remains the end-to-end test of the fork-and-pull-request path.
+
 ## Outstanding maintainer actions
 
-1. Create the OAuth app (Settings → Developer settings → OAuth Apps, enable **Device
-   Flow**), then deploy the relay and commit the URL:
-   `cd infra/github-login-relay && wrangler deploy --var CLIENT_ID:<client id>`,
-   then set `"relay"` in `state/site_auth.json` — the sign-in button appears on the
-   next build. Queued in *Awaiting the author*.
+None.
 
 ## Attribution
 

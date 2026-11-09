@@ -49,14 +49,6 @@ commit.
   enforcer is their call, not a theorem's.
   <!-- decision: open--exposure-rule-proposal; touches: item:133, claim:scoreside.same-question-two-realizations; status: open -->
 
-- **The sign-in relay's deployment (2026-11-09).** The site's GitHub sign-in waits on
-  two maintainer-account acts: create the OAuth app with Device Flow enabled, then
-  `cd infra/github-login-relay && wrangler deploy --var CLIENT_ID:<client id>` and set
-  `"relay"` in `state/site_auth.json`. *Turns on:* external knowledge — the OAuth app and
-  the worker live on the maintainer's GitHub and Cloudflare accounts, which no round can
-  touch. Until then the paste-a-token path works and the copy flow is unchanged.
-  <!-- decision: open--sign-in-relay-deployment; touches: state/site_auth.json, infra/github-login-relay/; status: open -->
-
 - **The maintenance sweep's cadence (2026-11-05).** The standing dispatch
   (`prompts/2026-11-05-standing-maintenance/PROMPT.md`) is adopted; nothing schedules it
   yet. *Turns on:* external knowledge — how often the maintainer wants a sweep PR landing
