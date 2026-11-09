@@ -32,9 +32,12 @@ workflow change and four agent-decided details with their rejected alternatives.
 - The reporter's deduplication was not asked for. A daily audit without it would repeat
   an unchanged finding every day until a merge; it is a change to a write-scope job's
   script, recorded in the dated entry.
-- The daily trigger is not in this pull request. It is a `launchd` job and a launcher
-  script on the maintainer's machine, because CI holds no credential and cannot run an
-  agent. Nothing in the repository depends on it.
+- The daily trigger is not in this pull request, and it is not yet switched on. CI holds
+  no credential and cannot run an agent, so the trigger is a launcher script on the
+  maintainer's machine (`~/.claude/scripts/maintenance-sweep.sh`, checked in dry-run
+  against `main`: it found exactly the six missing digests) and a `launchd` job to run it
+  daily. Installing a recurring job was left to the maintainer; until it is installed the
+  sweep runs when dispatched by hand. Nothing in the repository depends on it.
 - The full `tests/run.py` sweep was not run locally; the gates this change can reach
   were run one by one (below), and CI runs the sweep.
 
@@ -68,7 +71,8 @@ Run on 2026-11-08 in the worktree, Python 3.12:
 
 1. **Merge or decline this pull request.** It edits a workflow, so by the ruling of
    2026-11-05 it is not auto-merged.
-2. **The daily job on your machine**, `com.anson.alignment-maintenance-sweep`, is
-   installed and can be stopped with
-   `launchctl bootout gui/$(id -u)/com.anson.alignment-maintenance-sweep`. It starts no
-   sweep while this pull request is open.
+2. **Switch on the daily job**, if you want it: install the staged `launchd` property
+   list `com.anson.alignment-maintenance-sweep` (the copy-and-bootstrap command was given
+   in conversation). It runs the launcher at 05:15, starts no sweep while a sweep's pull
+   request is open, and stops with
+   `launchctl bootout gui/$(id -u)/com.anson.alignment-maintenance-sweep`.
