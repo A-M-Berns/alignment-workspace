@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """The freshness audit: does the site's derived layer still match the repository's research structure?
 
-Run weekly by .github/workflows/freshness.yml (and by hand: `python3 tests/freshness.py`). It checks:
+Run daily by .github/workflows/freshness.yml (and by hand: `python3 tests/freshness.py`). It checks:
 
   1. every merged pull request has a digest in state/prs.json (the GitHub list read with `gh`);
   2. every round in state/rounds.json is carried by some digest, or is on the stated allowlist;
