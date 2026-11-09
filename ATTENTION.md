@@ -2228,7 +2228,7 @@ above. **Not registered, deliberately:** the two conditional Normative Inductor
 theorems, until a witness inhabits their joint hypothesis packages — a realization
 item, not a theory item.
 
-### 79. Convex representability and compiler completeness for a declared requirement class — **[open]** — *bears on it 2026-11-08: on the rational row schema conflict certificates and entailment certificates are complete relative to the cube (`IncompatibilitySemantics.incompatible_iff_not_feasible`, `certEntails_iff_sem`), so on that schema an infeasible bundle always has a conflict certificate (existence; no procedure here finds it); the existence of an adapter's `Excludes`/`Margins` certificates (`WarrantInductor.Problem`) whenever the region excludes or marks is not derived from it, and the class of anchored requirements is as open as before*
+### 79. Convex representability and compiler completeness for a declared requirement class — **[open]** — *bears on it 2026-11-08: on the rational row schema conflict certificates and entailment certificates are complete relative to the cube (`IncompatibilitySemantics.incompatible_iff_not_feasible`, `certEntails_iff_sem`), so on that schema an infeasible bundle always has a conflict certificate (existence; no procedure here finds it); an adapter's `Excludes` certificates (`WarrantInductor.Problem`) exist where the region excludes below a rational threshold and its `Margins` certificates at tolerance `0` where it marks (`AdapterCertificates.excludes_of_region`, `margins_of_region`, 2026-11-09), and the class of anchored requirements is as open as before*
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 Compiler soundness, Farkas conflict certification, and conservation on failure are
@@ -3686,9 +3686,9 @@ twice, and one copy must be removed with the other's names retargeted.
 *Acceptance check:* Lean green after (c).
 *Context:* `.../2026-10-20-warrant-enforcement-semantics/RECORD.md`.
 
-### 117. The selection lock: a canonical joint rule for warrant strengths, and a selection the docket may seal — **[open]** — *narrowed 2026-11-08: a constraint in place of a lock — cases read off the record (survivors prevailed, undercut occurrences were outweighed; `PrecedentConstraint.caseOf`), a case base rationalized by one strict order on reasons iff the graph on its cases has no cycle (`rationalizable_iff_acyclic`, registered `precedent.rationalizable-iff-acyclic`; the pairwise check `consistent_iff_pairwise` is necessary and not sufficient, `cycle_not_rationalizable`), a continuation permitted iff the base stays rationalizable, with a forbidden continuation and two permitted by distinguishing; the constraint allows and does not rank (`both_permitted`). What the docket lacks for it: a decision occurrence naming the grounds weighed and the ground that prevailed — `DocketState.defeated` is a set of ports, so every undercut is read as an outweighing and the grounds present but neither prevailing nor undercut are dropped. The canonical joint rule and the lock remain*
+### 117. The selection lock: a canonical joint rule for warrant strengths, and a selection the docket may seal — **[open]** — *narrowed 2026-11-08: a constraint in place of a lock — cases read off the record (survivors prevailed, undercut occurrences were outweighed; `PrecedentConstraint.caseOf`), a case base rationalized by one strict order on reasons iff the graph on its cases has no cycle (`rationalizable_iff_acyclic`, registered `precedent.rationalizable-iff-acyclic`; the pairwise check `consistent_iff_pairwise` is necessary and not sufficient, `cycle_not_rationalizable`), a continuation permitted iff the base stays rationalizable, with a forbidden continuation and two permitted by distinguishing; the constraint allows and does not rank (`both_permitted`). What the docket lacks for it: a decision occurrence naming the grounds weighed and the ground that prevailed — `DocketState.defeated` is a set of ports, so every undercut is read as an outweighing and the grounds present but neither prevailing nor undercut are dropped. The canonical joint rule and the lock remain* — *bears on it 2026-11-09: the holding — the transitive closure of the cases' decisions (`PrecedentHolding.Holding`) — is what permission reads: a continuation is permitted iff the base is rationalizable and its reach does not put the losers at or above the winners (`permitted_iff`, registered `precedent.permitted-iff-reach`), so the cases may be forgotten and the holding kept (`permitted_append_congr`); over a finite universe of reason sets it is eventually constant (`reachSet_eventually_const`), and over one pair of kinds with unboundedly many strengths every case of a staircase is needed (`staircase_irredundant`, registered `precedent.staircase-irredundant`). The decision object is supplied beside the docket as an assessed act — grounds, surviving grounds against, the assessor's verdict fixing which side won (`AssessedConduct.AssessedAct`, the adapter `ofCertificate` from `DecisionComponent.ActCertificate`; `assessor_sets_precedent`, registered `precedent.assessor-sets-precedent`) — and is not a field of `DocketState`; with it the constraint still allows and does not rank (`permitted_both_silent`)*
 <!-- workspace-priority: project=normativity.seed; dispatchable=yes -->
-*Registered results bearing on this item:* precedent.rationalizable-iff-acyclic, seed.eventually-const, seed.independence-strict.
+*Registered results bearing on this item:* precedent.assessor-sets-precedent, precedent.permitted-iff-reach, precedent.rationalizable-iff-acyclic, precedent.staircase-irredundant, seed.eventually-const, seed.independence-strict.
 
 *Re-filed 2026-10-21 by the rebuttal-and-end-to-end round from branch `round/2026-09-16-seed-statics`, where it was item 93; content unchanged; the branch round is landed under `projects/normativity/seed/rounds/2026-09-16-seed-statics/`.*
 
@@ -3714,9 +3714,9 @@ locked precedent) run through one model.
 reading of the seed type.
 *A solution ships:* the rule, the lock, the theorem, and the fixtures.
 
-### 118. Rational attainment and certificate completeness for the computed forced interval — **[open]** — *narrowed 2026-10-22: completeness is also what decides whether an adapter's `Excludes`/`Margins` certificates exist whenever the region excludes or marks (`WarrantInductor.Problem`)* — *bears on it 2026-11-08: both theorems are proved and registered — every valid bound on a forced region has a bound certificate over the forced bundle's allowed rows (`IncompatibilitySemantics.lowerBound_certified`, `upperBound_certified`, registered `seed.bound-certified`), and the computed interval inhabits `IsForcedInterval` at rational points (`forcedInterval_isForcedInterval`, registered `seed.forced-interval-rational`), by the rational alternative read in from the pinned `EconCSLib` (`RowAlternative.alternative`, `entails_iff`, `exists_rat_of_real`); incompatibility entailment coincides with certificate entailment (`rows.incompatibility-entailment`). Not derived: the existence of an adapter's `Excludes`/`Margins` certificates, noted on item 79. The item's status is the maintainer's word*
+### 118. Rational attainment and certificate completeness for the computed forced interval — **[open]** — *narrowed 2026-10-22: completeness is also what decides whether an adapter's `Excludes`/`Margins` certificates exist whenever the region excludes or marks (`WarrantInductor.Problem`)* — *bears on it 2026-11-08: both theorems are proved and registered — every valid bound on a forced region has a bound certificate over the forced bundle's allowed rows (`IncompatibilitySemantics.lowerBound_certified`, `upperBound_certified`, registered `seed.bound-certified`), and the computed interval inhabits `IsForcedInterval` at rational points (`forcedInterval_isForcedInterval`, registered `seed.forced-interval-rational`), by the rational alternative read in from the pinned `EconCSLib` (`RowAlternative.alternative`, `entails_iff`, `exists_rat_of_real`); incompatibility entailment coincides with certificate entailment (`rows.incompatibility-entailment`). The item's status is the maintainer's word* — *bears on it 2026-11-09: the adapter's certificates — every valid upper bound on a rational functional over a bundle's region has a cited functional certificate (`AdapterCertificates.exists_citedFunctional`, registered `seed.adapter-certificates-exist`), so `Excludes` certificates exist where every inadequate response scores at most a rational `t ≤ τ` on the region, and `Margins` certificates at tolerance `0` where every margin witness scores at least a rational `t ≥ τ + δ` (`excludes_of_region`, `margins_of_region`); not derived: a threshold with no rational between it and the region's supremum, and `Margins` at a positive tolerance*
 <!-- workspace-priority: project=normativity.seed; dispatchable=yes -->
-*Registered results bearing on this item:* rows.incompatibility-entailment, seed.bound-certified, seed.forced-interval-rational.
+*Registered results bearing on this item:* rows.incompatibility-entailment, seed.adapter-certificates-exist, seed.bound-certified, seed.forced-interval-rational.
 
 *Re-filed 2026-10-21 by the rebuttal-and-end-to-end round from branch `round/2026-09-16-seed-statics`, where it was item 94; content unchanged; the branch round is landed under `projects/normativity/seed/rounds/2026-09-16-seed-statics/`.*
 
@@ -3739,7 +3739,7 @@ header on why satisfaction lives in `ℝ`.
 *Consumed by:* item 79; any registration of `forcedInterval_spec`.
 *A solution ships:* the two theorems.
 
-### 119. Hidden discord: a region-level convergence measure — **[open]**
+### 119. Hidden discord: a region-level convergence measure — **[open]** — *bears on it 2026-11-09: the same shape on another carrier — two rationalizable case bases whose union is not, one pair of them with every two cases compatible (`PrecedentHolding.merged_discord`, `merged_discord_hidden`), the union rationalizable iff the union of the two holdings has no cycle (`rationalizable_append_iff`); what is merged there is an order on reason sets and not a region, and no region-level measure is defined by it*
 <!-- workspace-priority: project=normativity.seed; dispatchable=yes -->
 *Registered results bearing on this item:* convergence.discord-pairwise, convergence.discord-persists, convergence.hull-mass-anti.
 
@@ -4009,9 +4009,9 @@ and `WarrantSolvency.suspect_in_bundle` recovered as instances;
 *Consumed by:* item 127 (an undercutter that is itself defeasible is an extension this reading
 prices); the queue entries on M1 and M2.
 
-### 134. Content across a vocabulary change, on the accounted state — **[open]**
+### 134. Content across a vocabulary change, on the accounted state — **[open]** — *narrowed 2026-11-09: clause (d) for one coordinate — `Forgetting.forget` computes the projection of a bundle's region by one Fourier–Motzkin step (`forget_region`, registered `content.forget-region-is-projection`), and adding nothing along a one-coordinate extension is a finite family of entailment certificates (`VocabularyAct.addsNothing_certified`); a settled coordinate may be forgotten (`forget_settled`, registered `content.forget-settled`); the change as an occurrence with a licence and a challenge is defined on rows (`VocabularyAct.VocabularyChange`, `licensed_no_challenge`, registered `content.licensed-no-challenge`) and is not a step of `OpenIntegrityEvolution`; clauses (a), (b), (c) remain*
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
-*Registered results bearing on this item:* content.conservative-iff-image.
+*Registered results bearing on this item:* content.conservative-iff-image, content.forget-region-is-projection, content.forget-settled, content.licensed-no-challenge.
 
 A vocabulary change is a translation of rows (`Conservativity.Translation`): each old coordinate
 is a rational linear form in the new ones, an old row pulls back to a new row, and the change
@@ -4035,9 +4035,15 @@ interpretation needs — a stochastic pullback of an event is a `[0,1]`-valued f
 and not an event, so `Fin d → Finset W` does not compose with it — and the statement of (a) on
 that carrier, or the reason there is none; (c) a defeasible form for a pulled-back row — the
 port of the form it came from — with the theorem that defeat commutes with pullback, or the
-fixture showing it cannot; (d) a procedure computing the image of a forced region under a
-coordinate map from the elimination of `SeedStatics.project`, so that conservativity is decided
-and not only characterized.
+fixture showing it cannot; (d) a decision procedure for conservativity along a coordinate
+map: `Forgetting.forget` computes the image of a bundle's region for one dropped coordinate
+(`forget_region`) and `VocabularyAct.addsNothing_certified` reduces adding nothing along a
+one-coordinate extension to one entailment certificate per eliminated row; wanted are the
+procedure that finds or refutes each certificate (`FourierMotzkin.feasible` decides the
+feasibility it turns on, over the reals) and the iteration over several coordinates
+(`Forgetting.projection_comp`); (e) the occurrence `VocabularyAct.VocabularyChange` — owner,
+translation, protected fragment, licence, challenge — as a step of the accounted state, with
+its owner checked against the authority allocation, which names no matter for vocabulary.
 
 *Deliverable shape:* `lean-proved`; the transition, the transport theorem for `Entitlement` with its
 hypotheses or the counterexample, and the split fixture (`Recollection.split`) run through it
@@ -4050,6 +4056,59 @@ with one kept and one broken commitment.
 `projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md`.
 *Consumed by:* item 115 (transport of `Licensed` across record transitions is the case with the
 vocabulary fixed); item 128, clause (c); the queue entry on broken commitments.
+
+### 135. Bounded memory: the state a forgetting reasoner retains — **[open]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+*Registered results bearing on this item:* memory.live-forget-cost, memory.schedule-slack, memory.selective-forgetting.
+
+Integrity keeps everything entered, and thin legitimacy's sufficiency needs the later record to
+contain the earlier. A reasoner with bounded memory keeps less. The pieces are proved
+separately: a settled coordinate may be dropped, the rows specialized at its settlement and
+restricted to the other coordinates giving the projection of the forced region under every
+later docket state and settlement (`Forgetting.forget_settled`, registered
+`content.forget-settled`); a case base may be replaced by its holding, which permission reads
+through its reach and which is eventually constant over a finite universe of reason sets
+(`PrecedentHolding.permitted_append_congr`, `reachSet_eventually_const`, registered
+`precedent.permitted-iff-reach`); an account with no live port keeps its receipts and its
+denotation under every later substitution (`OccurrenceIntegrity.Program.closed_subst`); loss
+composes as slack along a schedule (`Forgetting.schedule_slack`, registered
+`memory.schedule-slack`). Two things are not safe: dropping an unsettled coordinate is exact at
+the time and costs the later forced interval, `[3/4, 1]` against `[0, 1]`
+(`Forgetting.live_forget_cost`, registered `memory.live-forget-cost`), and a reasoner choosing
+what to drop after seeing the record obtains `[0, 1]` where each choice fixed in advance leaves
+`[3/4, 1]` on one record (`selective_forgetting`, registered `memory.selective-forgetting`).
+No object holds the retained state. Wanted: (a) the retained state as a type over
+`WarrantInductor.NormState` or `OpenIntegrityEvolution.ObligationState` — the docket state, the
+specialized and restricted rows with their ports and ids, the settlement on the unsettled
+coordinates, the reach on a declared finite set of reason sets, and for each closed account its
+terminals and the resolution it denotes — with the forgetting step that produces it; (b) the
+theorem that every forced interval on a retained coordinate and every permission over the
+declared reason sets computed from the retained state equals the full record's, under every
+later docket state, settlement and continuation; (c) a space bound in the numbers of unsettled
+coordinates, live items and declared reason sets, or the fixture showing none — one
+elimination step can square the number of rows, a staircase of cases is irredundant
+(`precedent.staircase-irredundant`), and a receipt stores the history prefix it was issued at
+(`OccurrenceIntegrity.Authority.atHistory`); (d) the rule for an unsettled coordinate — when it
+may be dropped and what is charged for it — stated against the three readings of
+`VocabularyAct` (`Bars`, `Accounted`, `Split`), none of which registers the shedding of a live
+obligation by a retelling under which its antecedent cannot occur (`zero_admitted`); (e) the
+choice of what to forget as an owned occurrence (`VocabularyAct.VocabularyChange`) with a
+challenge that stays open as the record grows, so that the choice `selective_forgetting`
+exhibits is answerable.
+
+*Deliverable shape:* `lean-proved`; the retained state as a type, the forgetting step on it, the
+exactness theorem against the full record, and either a space bound in the live coordinates,
+live items and reason sets or the fixture showing none.
+*Acceptance check:* the Lean audit clean; `Forgetting.forget_settled`,
+`Forgetting.live_forget_cost` and `PrecedentHolding.permitted_append_congr` recovered as
+instances of the exactness theorem and its failure.
+*Context:* `lean/Workspace/Normativity/Contrib/Forgetting.lean`;
+`lean/Workspace/Normativity/Contrib/PrecedentHolding.lean`;
+`lean/Workspace/Normativity/Contrib/VocabularyAct.lean`;
+`projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md`.
+*Consumed by:* item 134 (a vocabulary change that drops coordinates is a forgetting step);
+item 117 (a sealed selection is a holding that may not be forgotten); the queue entry on broken
+commitments.
 
 ## Workspace friction
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a

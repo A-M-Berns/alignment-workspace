@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "43f8b2e0477d6a4793777b09",
-  "index.json": "103696073157e1a6ef1be35b"
+  "derived.json": "d70f9d99ec14af356c31dbe0",
+  "index.json": "29171421f2293992ae5e3bfe"
  },
- "generated_hash": "287f1c2fb1783ff0de258a67",
+ "generated_hash": "e09a1b4a78bba0ae113e52d6",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -3611,6 +3611,90 @@
    {
     "date": "2026-11-09",
     "normalized": "the declaration workspace normativity contrib conservativity conservative_iff is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "content.forget-region-is-projection": [
+   {
+    "date": "2026-11-09",
+    "normalized": "forgetting a coordinate of a bundle by one fourier motzkin step computes a projection the rational points of the eliminated bundles region are exactly the restrictions of the rational points of the bundles region to the other coordinates",
+    "version": 1
+   }
+  ],
+  "content.forget-region-is-projection.bridge": [
+   {
+    "date": "2026-11-09",
+    "normalized": "the statement of record of content forget region is projection formalizes the registered claim as the registry reads it fourier motzkin elimination of a coordinate computes the projection of a bundles region along the coordinate map that drops it at rational points",
+    "version": 1
+   }
+  ],
+  "content.forget-region-is-projection.complete": [
+   {
+    "date": "2026-11-09",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "content.forget-region-is-projection.record": [
+   {
+    "date": "2026-11-09",
+    "normalized": "the declaration workspace normativity contrib forgetting forget_region is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "content.forget-settled": [
+   {
+    "date": "2026-11-09",
+    "normalized": "once a coordinate is settled it may be forgotten at no cost the seeds rows specialized at that settlement and restricted to the other coordinates determine the projection of the forced region onto those coordinates under every docket state and every later settlement",
+    "version": 1
+   }
+  ],
+  "content.forget-settled.bridge": [
+   {
+    "date": "2026-11-09",
+    "normalized": "the statement of record of content forget settled formalizes the registered claim as the registry reads it a settled coordinate may be forgotten the rows specialized at its settlement and restricted to the other coordinates give the projection of the forced region under every docket state and every later settlement",
+    "version": 1
+   }
+  ],
+  "content.forget-settled.complete": [
+   {
+    "date": "2026-11-09",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "content.forget-settled.record": [
+   {
+    "date": "2026-11-09",
+    "normalized": "the declaration workspace normativity contrib forgetting forget_settled is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "content.licensed-no-challenge": [
+   {
+    "date": "2026-11-09",
+    "normalized": "a vocabulary change filed as an occurrence an owner a translation the old and new commitments and a declared protected fragment that holds a licence an entailment certificate of the pullback of every protected row and old cube row against the new commitments admits no valid challenge on the protected fragment",
+    "version": 1
+   }
+  ],
+  "content.licensed-no-challenge.bridge": [
+   {
+    "date": "2026-11-09",
+    "normalized": "the statement of record of content licensed no challenge formalizes the registered claim as the registry reads it a vocabulary change licensed by a refinement certificate on its declared protected fragment admits no valid challenge on that fragment",
+    "version": 1
+   }
+  ],
+  "content.licensed-no-challenge.complete": [
+   {
+    "date": "2026-11-09",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "content.licensed-no-challenge.record": [
+   {
+    "date": "2026-11-09",
+    "normalized": "the declaration workspace normativity contrib vocabularyact licensed_no_challenge is accepted by the lean kernel in the repositorys lean library",
     "version": 1
    }
   ],
@@ -8756,6 +8840,13 @@
     "version": 2
    }
   ],
+  "item-135": [
+   {
+    "date": "2026-11-09",
+    "normalized": "item 135 bounded memory the state a forgetting reasoner retains is delivered in the shape its entry states lean proved the retained state as a type the forgetting step on it the exactness theorem against the full record and either a space bound in the live coordinates live items and reason sets or the fixture showing none",
+    "version": 1
+   }
+  ],
   "item-14": [
    {
     "date": "2026-10-22",
@@ -13726,6 +13817,90 @@
     "version": 1
    }
   ],
+  "memory.live-forget-cost": [
+   {
+    "date": "2026-11-09",
+    "normalized": "forgetting a coordinate that is still unsettled costs the response to its later settlement over the one commitment p y 3 4 p x forgetting x before it settles leaves no constraint on p y while the full record forces p y into 3 4 1 once x settles true and forgetting x after it has settled keeps p y 3 4",
+    "version": 1
+   }
+  ],
+  "memory.live-forget-cost.bridge": [
+   {
+    "date": "2026-11-09",
+    "normalized": "the statement of record of memory live forget cost formalizes the registered claim as the registry reads it forgetting an unsettled coordinate costs the later forced interval over p y 3 4 p x forgetting x before it settles leaves p y the whole of 0 1 where the full record forces 3 4 1 once x settles true and forgetting x after it settles keeps p y 3 4",
+    "version": 1
+   }
+  ],
+  "memory.live-forget-cost.complete": [
+   {
+    "date": "2026-11-09",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "memory.live-forget-cost.record": [
+   {
+    "date": "2026-11-09",
+    "normalized": "the declaration workspace normativity contrib forgetting live_forget_cost is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "memory.schedule-slack": [
+   {
+    "date": "2026-11-09",
+    "normalized": "forgetting with loss composes as slack along a schedule of forgetting steps each agreeing with an exact step except on a set of worlds the excess of a row at the credence held at any stage is at most its excess under the exact schedule plus the rows oscillation times the sum over the earlier stages of the mass the held credence placed on that stages set",
+    "version": 1
+   }
+  ],
+  "memory.schedule-slack.bridge": [
+   {
+    "date": "2026-11-09",
+    "normalized": "the statement of record of memory schedule slack formalizes the registered claim as the registry reads it along a schedule of forgetting steps each agreeing with an exact step off a set of worlds a rows excess exceeds its excess under the exact schedule by at most its oscillation times the accumulated mass on those sets",
+    "version": 1
+   }
+  ],
+  "memory.schedule-slack.complete": [
+   {
+    "date": "2026-11-09",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "memory.schedule-slack.record": [
+   {
+    "date": "2026-11-09",
+    "normalized": "the declaration workspace normativity contrib forgetting schedule_slack is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "memory.selective-forgetting": [
+   {
+    "date": "2026-11-09",
+    "normalized": "choosing what to forget after seeing the record obtains what no choice fixed in advance does over two records whose one obligation on \u03c6 runs through a in the first and through b in the second dropping the coordinate the obligation runs through leaves \u03c6 the interval 0 1 on both once a and b settle true each coordinate fixed in advance leaves 3 4 1 on one of them and the full record forces 3 4 1 on both",
+    "version": 1
+   }
+  ],
+  "memory.selective-forgetting.bridge": [
+   {
+    "date": "2026-11-09",
+    "normalized": "the statement of record of memory selective forgetting formalizes the registered claim as the registry reads it choosing which coordinate to drop after seeing the record obtains the interval 0 1 on both of two records where each coordinate fixed in advance leaves 3 4 1 on one of them and the full record forces 3 4 1 on both",
+    "version": 1
+   }
+  ],
+  "memory.selective-forgetting.complete": [
+   {
+    "date": "2026-11-09",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "memory.selective-forgetting.record": [
+   {
+    "date": "2026-11-09",
+    "normalized": "the declaration workspace normativity contrib forgetting selective_forgetting is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
   "mine-condensation-posts": [
    {
     "date": "2026-10-20",
@@ -16742,6 +16917,62 @@
     "version": 1
    }
   ],
+  "precedent.assessor-sets-precedent": [
+   {
+    "date": "2026-11-09",
+    "normalized": "when the case an act leaves on the record is set by its assessment an act assessed a shortfall making its own grounds the losers a later choice on similar grounds is forbidden by the assessed past although it would be permitted had the acts own proposal been the precedent",
+    "version": 1
+   }
+  ],
+  "precedent.assessor-sets-precedent.bridge": [
+   {
+    "date": "2026-11-09",
+    "normalized": "the statement of record of precedent assessor sets precedent formalizes the registered claim as the registry reads it with the case of an assessed act set by the assessors verdict a later choice is forbidden by an act assessed a shortfall and would be permitted had the act itself set the precedent",
+    "version": 1
+   }
+  ],
+  "precedent.assessor-sets-precedent.complete": [
+   {
+    "date": "2026-11-09",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "precedent.assessor-sets-precedent.record": [
+   {
+    "date": "2026-11-09",
+    "normalized": "the declaration workspace normativity contrib assessedconduct assessor_sets_precedent is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "precedent.permitted-iff-reach": [
+   {
+    "date": "2026-11-09",
+    "normalized": "a continuation is permitted by a base of decided cases exactly when the base is rationalizable and its reach one reason set covering another or standing above it in the transitive closure of the cases decisions does not put the reasons the continuation outweighs at or above the reasons it lets prevail",
+    "version": 1
+   }
+  ],
+  "precedent.permitted-iff-reach.bridge": [
+   {
+    "date": "2026-11-09",
+    "normalized": "the statement of record of precedent permitted iff reach formalizes the registered claim as the registry reads it a continuation is permitted by a case base iff the base is rationalizable and the reach of its holding does not put the continuations losers at or above its winners",
+    "version": 1
+   }
+  ],
+  "precedent.permitted-iff-reach.complete": [
+   {
+    "date": "2026-11-09",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "precedent.permitted-iff-reach.record": [
+   {
+    "date": "2026-11-09",
+    "normalized": "the declaration workspace normativity contrib precedentholding permitted_iff is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
   "precedent.rationalizable-iff-acyclic": [
    {
     "date": "2026-11-09",
@@ -16767,6 +16998,34 @@
    {
     "date": "2026-11-09",
     "normalized": "the declaration workspace normativity contrib precedentconstraint rationalizable_iff_acyclic is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "precedent.staircase-irredundant": [
+   {
+    "date": "2026-11-09",
+    "normalized": "over one pair of kinds of reason a base of n cases at n strictly increasing strengths the reason for at each strength prevailing over the reason against at that strength has no redundant case the reverse decision at the i th strength is forbidden by the base and permitted by the base without its i th case",
+    "version": 1
+   }
+  ],
+  "precedent.staircase-irredundant.bridge": [
+   {
+    "date": "2026-11-09",
+    "normalized": "the statement of record of precedent staircase irredundant formalizes the registered claim as the registry reads it over one pair of kinds every case of a staircase of n cases at strictly increasing strengths is needed so the kinds of reasons alone do not bound the holding",
+    "version": 1
+   }
+  ],
+  "precedent.staircase-irredundant.complete": [
+   {
+    "date": "2026-11-09",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "precedent.staircase-irredundant.record": [
+   {
+    "date": "2026-11-09",
+    "normalized": "the declaration workspace normativity contrib precedentholding staircase_irredundant is accepted by the lean kernel in the repositorys lean library",
     "version": 1
    }
   ],
@@ -18682,6 +18941,34 @@
    {
     "date": "2026-10-22",
     "normalized": "a seeds forced region and intervals are computed by the force layers compiler and fourier motzkin elimination settlement nests them and defeat widens them a form whose consequent is settled false is rebutted rather than contraposed strict humility makes the pinned fragment seed independent and finitely many reasoners intervals carry a convergence profile whose discord persists under nesting",
+    "version": 1
+   }
+  ],
+  "seed.adapter-certificates-exist": [
+   {
+    "date": "2026-11-09",
+    "normalized": "every valid upper bound on a rational linear functional over a bundles region is certified some functional certificate whose positively weighted rows are admitted into the bundle under their citations has value at most the bound",
+    "version": 1
+   }
+  ],
+  "seed.adapter-certificates-exist.bridge": [
+   {
+    "date": "2026-11-09",
+    "normalized": "the statement of record of seed adapter certificates exist formalizes the registered claim as the registry reads it every valid upper bound on a rational functional over a bundles region has a cited functional certificate of at most that value",
+    "version": 1
+   }
+  ],
+  "seed.adapter-certificates-exist.complete": [
+   {
+    "date": "2026-11-09",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "seed.adapter-certificates-exist.record": [
+   {
+    "date": "2026-11-09",
+    "normalized": "the declaration workspace normativity contrib adaptercertificates exists_citedfunctional is accepted by the lean kernel in the repositorys lean library",
     "version": 1
    }
   ],

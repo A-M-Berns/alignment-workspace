@@ -9,7 +9,7 @@ title: "Convex representability and compiler completeness for a declared require
 section: "Deference line — second wave"
 maintainer_order: 75
 difficulty: "open"
-heading_notes: " — *bears on it 2026-11-08: on the rational row schema conflict certificates and entailment certificates are complete relative to the cube (`IncompatibilitySemantics.incompatible_iff_not_feasible`, `certEntails_iff_sem`), so on that schema an infeasible bundle always has a conflict certificate (existence; no procedure here finds it); the existence of an adapter's `Excludes`/`Margins` certificates (`WarrantInductor.Problem`) whenever the region excludes or marks is not derived from it, and the class of anchored requirements is as open as before*"
+heading_notes: " — *bears on it 2026-11-08: on the rational row schema conflict certificates and entailment certificates are complete relative to the cube (`IncompatibilitySemantics.incompatible_iff_not_feasible`, `certEntails_iff_sem`), so on that schema an infeasible bundle always has a conflict certificate (existence; no procedure here finds it); an adapter's `Excludes` certificates (`WarrantInductor.Problem`) exist where the region excludes below a rational threshold and its `Margins` certificates at tolerance `0` where it marks (`AdapterCertificates.excludes_of_region`, `margins_of_region`, 2026-11-09), and the class of anchored requirements is as open as before*"
 project: normativity
 dispatchable: true
 item_status: open

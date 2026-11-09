@@ -40,19 +40,34 @@ maintainer's.
 below.** The next round dispatched from that conversation lands it as its first
 commit.
 
-- **Does a broken commitment bar a change, or is it accounted? (2026-11-08).**  The
-  content-recollection round defines a broken commitment — an old row the old region forced
-  whose pullback the new region does not (`Recollection.Broken`) — and proves that none is
-  broken iff the new region pushes forward into the old (`no_broken_iff`).  It does not say
-  what the program does with one.  Two readings: *no broken commitment* is a condition a
-  legitimate change must meet (refinement, beside Integrity's conservation), or a change may
-  break a commitment provided the break is recorded and answerable, as a rebuttal is.  The
-  round leans to the second, without confidence: under the first, a commitment the map
-  cannot carry — `P(S) ≥ 9/10` in the abandonment fixture — bars every change along that map,
-  whatever the new view holds.  *Turns on:* the reading
-  under test — whether a later stage that drops an earlier commitment and says so has
-  recollected it — and what the program's account of error is to be; neither is a theorem's.
-  <!-- decision: open--broken-commitment-bars-or-accounts; touches: item:134; status: open -->
+- **Does a broken commitment bar a change, or is it accounted? (2026-11-08).**  A broken
+  commitment is an old row the old region forced whose pullback the new region does not
+  (`Recollection.Broken`); none is broken iff the new region pushes forward into the old
+  (`no_broken_iff`).  What the program does with one is not said.  Three readings are
+  implemented as predicates (`VocabularyAct.Bars`, `Accounted`, `Split`) and none is adopted:
+  *bars* — a legitimate change breaks nothing (refinement, beside Integrity's conservation);
+  *accounted* — a change may break a commitment provided the break is recorded and its loss
+  charged as slack; *the split* — a commitment whose obligation is live bars, any other is
+  accounted.  Each reading's verdict on one commitment is a function of its charge, the largest
+  excess of its pullback over the new region (`readings_of_charge`):
+
+  | fixture | charge | bars | accounted | split, obligation live | split, not live |
+  |---|---|---|---|---|---|
+  | split: `P(S) ≥ 1/2` against `P(S₁) ≥ 1/5`, `P(S₂) ≥ 1/5` | `1/10` | refuses | admits, charges `1/10` | refuses | admits, charges `1/10` |
+  | abandonment: `P(S) ≥ 9/10` along the mixing map | `13/20`, and at least `3/20` at every credence | refuses every change along the map | admits, charges `13/20` | refuses | admits, charges `13/20` |
+  | `P(X∧Y) ≥ 3/4 · P(X)` with `X` unsettled; `X` dropped, retold as a fair coin | `3/8` | refuses | admits, charges `3/8` | refuses | admits, charges `3/8` |
+  | the same; `X` dropped, retold as false | `0` | admits | admits, no charge | admits | admits |
+
+  In the last row nothing is broken, and all three readings admit the change at no charge
+  (`zero_admitted`), though the obligation is shed: once `X` settles true the full record forces
+  `P(Y) ≥ 3/4` (`Forgetting.live_forget_cost`) and the pin `P(X) ≥ 1` is broken at every new
+  credence, charged `1` (`zero_pin_charge`; `1/2` under the fair coin, `half_pin_charge`).  A
+  reading applied once, when the change is made, does not see this; a challenge that stays open
+  as the record grows does (`VocabularyAct.challenge_complete`).  *Turns on:* the reading under
+  test — whether a later stage that drops an earlier commitment and says so has recollected it —
+  and what the program's account of error is to be; and, for the split, what makes an obligation
+  live across a change of vocabulary, which the docket does not record.  None is a theorem's.
+  <!-- decision: open--broken-commitment-bars-or-accounts; touches: item:134, item:135; status: open -->
 
 - **The exposure rule (2026-11-07).**  The score-side-binding round states, as a proposal on
   `wiki/Normativity.md`, that a constraint is enforceable only if some settlement or assessment
@@ -7170,7 +7185,7 @@ credential and cannot run an agent, and the job starts one only after a check wi
 and `git` finds a missing digest or a changed *Workspace friction* section.
 
 ### 2026-11-08 — content is role among rational rows: incompatibility is a valid conflict, entailment is certificate entailment, and `Expresses` is *demands no more* against the robust reading
-<!-- decision: 2026-11-08--content-is-role-among-rows-expresses-demands-no-more; touches: item:118, item:128, item:113, item:133, item:79, claim:rows.incompatibility-entailment, claim:seed.bound-certified, claim:seed.forced-interval-rational, claim:expresses.kept-row-demands-no-more, claim:expresses.entitlement-discriminates, claim:expresses.plain-row-demands-more -->
+<!-- decision: 2026-11-08--content-is-role-among-rows-expresses-demands-no-more; touches: item:118, item:128, item:113, item:133, item:79, claim:rows.incompatibility-entailment, claim:seed.bound-certified, claim:seed.forced-interval-rational, claim:expresses.kept-row-demands-no-more, claim:expresses.entitlement-discriminates, claim:expresses.plain-row-demands-more, claim:seed.adapter-certificates-exist -->
 
 **Agent-decided, reversible** (the content-recollection round).  (1) The content of a row is
 its incompatibility role: what it rules out, as valid conflicts of the compiler
@@ -7220,3 +7235,59 @@ precedent object on the docket, which the dispatch's candidate list did not name
 alternative: a new item for the missing decision occurrence; item 117 already asks for the
 docket object, and the gap is recorded there.  The reading of every undercut as an
 outweighing is the model's and is not adopted as the program's.
+
+### 2026-11-09 — the holding of a case base is the transitive closure of its decisions; permission reads its reach; the case of an assessed act is set by the assessor
+<!-- decision: 2026-11-09--holding-is-what-permission-reads-assessor-sets-case; touches: item:117, item:119, claim:precedent.permitted-iff-reach, claim:precedent.staircase-irredundant, claim:precedent.assessor-sets-precedent -->
+
+**Agent-decided, reversible** (the content-recollection round's follow-up).  The holding of a
+case base is the transitive closure of `PrecedentConstraint.Dominates` on reason sets
+(`PrecedentHolding.Holding`), and its reach adds covering (`Reach`).  A continuation is
+permitted iff the base is rationalizable and the reach does not put its losers at or above its
+winners (`permitted_iff`); the holding after a continuation is computed from the holding before
+it and the case (`holding_cons`), so a reasoner may keep the holding and forget the cases.  The
+bound on its size is adopted with a finite universe of reason sets as a hypothesis
+(`reachSet_eventually_const`); the reading on which the kinds of reasons alone bound it is
+refuted (`staircase_irredundant`).  The decision object the first pass found missing is an
+assessed act — grounds, surviving grounds against, the assessor's verdict fixing which side won
+(`AssessedConduct.AssessedAct`) — defined beside the docket, with `ofCertificate` the adapter
+from `DecisionComponent.ActCertificate` at `Ent := Form d`.  Rejected alternatives: `Dominates`
+itself as the holding, which is sufficient as well and is not closed under composition, so
+continuation and merging would each have to close it again; registering merged discord against
+item 119, which asks for a measure on regions where this result is on orders.  The entry type
+`Form d` and the reading of an adequate verdict as *the grounds prevailed* are the model's and
+are not adopted as the program's.
+
+### 2026-11-09 — forgetting a coordinate is projection, computed by elimination; a settled coordinate is safe to forget and an unsettled one is not; item 135 is filed
+<!-- decision: 2026-11-09--forgetting-is-projection-settled-safe-live-not; touches: item:134, item:135, claim:content.forget-region-is-projection, claim:content.forget-settled, claim:memory.live-forget-cost, claim:memory.schedule-slack, claim:memory.selective-forgetting -->
+
+**Agent-decided, reversible** (the content-recollection round's follow-up).  Forgetting a
+coordinate of a bundle is the projection of its region along the coordinate map that drops it,
+computed by one step of `FourierMotzkin.elim` — the step `SeedStatics.project` iterates — with
+the coordinate moved last (`Forgetting.forget`, `forget_region`).  It is exact and conservative
+on the retained fragment.  A settled coordinate may be forgotten (`forget_settled`); an
+unsettled one may not without the cost of its later settlement (`live_forget_cost`); loss that
+is a difference from an exact step on a set of worlds composes as slack (`schedule_slack`); and
+the choice of what to drop is a means of steering (`selective_forgetting`).  Item 135 is filed
+for the retained state as an object, which no filed item asks for; the five forgetting
+registrations divide between it and item 134, clause (d).  Rejected alternatives: an
+elimination on rows proved afresh over `ℚ`, which would not have connected the step
+`SeedStatics.project` uses; registering every forgetting result against item 134, whose
+subject is a vocabulary change on the accounted state and not what a reasoner retains.
+
+### 2026-11-09 — a vocabulary change is a docket occurrence with a refinement licence on a declared fragment and a decidable challenge
+<!-- decision: 2026-11-09--vocabulary-change-is-docket-occurrence-licence-and-challenge; touches: item:134, claim:content.licensed-no-challenge -->
+
+**Agent-decided, reversible** (the content-recollection round's follow-up).  A vocabulary
+change is filed as an occurrence carrying its owner, the translation, the old and new
+commitments and a declared protected fragment (`VocabularyAct.VocabularyChange`).  Its licence
+is a refinement certificate on the fragment — an entailment certificate of the pullback of each
+protected row and old cube row (`Licensed`, `licensed_iff_refines`) — and its challenge a
+broken-commitment witness as data with decidable validity (`Challenge`, `Challenge.Valid`); a
+licensed change admits no valid challenge on the fragment and an unlicensed one admits one
+(`licensed_no_challenge`, `unlicensed_has_challenge`).  Rejected alternatives: a licence
+carrying a conservativity certificate for every translation — adding nothing has a finite
+certificate only where the image is computed, which is proved for one added coordinate
+(`addsNothing_certified`); an owner typed by the authority module's holders — that module
+allocates matters and names none for vocabulary, so who may issue a change is recorded as not
+determined.  What a broken commitment does to a change stays queued: the three readings are
+predicates beside the occurrence and none is its admission rule.

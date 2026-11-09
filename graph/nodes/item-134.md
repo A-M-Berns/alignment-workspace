@@ -9,7 +9,7 @@ title: "Content across a vocabulary change, on the accounted state"
 section: "Deference line — second wave"
 maintainer_order: 145
 difficulty: "open"
-heading_notes: ""
+heading_notes: " — *narrowed 2026-11-09: clause (d) for one coordinate — `Forgetting.forget` computes the projection of a bundle's region by one Fourier–Motzkin step (`forget_region`, registered `content.forget-region-is-projection`), and adding nothing along a one-coordinate extension is a finite family of entailment certificates (`VocabularyAct.addsNothing_certified`); a settled coordinate may be forgotten (`forget_settled`, registered `content.forget-settled`); the change as an occurrence with a licence and a challenge is defined on rows (`VocabularyAct.VocabularyChange`, `licensed_no_challenge`, registered `content.licensed-no-challenge`) and is not a step of `OpenIntegrityEvolution`; clauses (a), (b), (c) remain*"
 project: normativity
 dispatchable: true
 item_status: open
@@ -19,6 +19,8 @@ work:
   - {kind: round, ref: projects/normativity/rounds/2026-11-08-content-recollection}
   - {kind: decision, ref: 2026-11-08--vocabulary-change-is-translation-conservativity-criterion}
   - {kind: decision, ref: open--broken-commitment-bars-or-accounts}
+  - {kind: decision, ref: 2026-11-09--forgetting-is-projection-settled-safe-live-not}
+  - {kind: decision, ref: 2026-11-09--vocabulary-change-is-docket-occurrence-licence-and-challenge}
 context: ["lean/Workspace/Normativity/Contrib/Conservativity.lean", "lean/Workspace/Normativity/Contrib/Recollection.lean", "lean/Workspace/Normativity/Contrib/ExpressesByRole.lean", "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"]
 author: "@smithy-verity"
 size: M
@@ -57,9 +59,15 @@ interpretation needs — a stochastic pullback of an event is a `[0,1]`-valued f
 and not an event, so `Fin d → Finset W` does not compose with it — and the statement of (a) on
 that carrier, or the reason there is none; (c) a defeasible form for a pulled-back row — the
 port of the form it came from — with the theorem that defeat commutes with pullback, or the
-fixture showing it cannot; (d) a procedure computing the image of a forced region under a
-coordinate map from the elimination of `SeedStatics.project`, so that conservativity is decided
-and not only characterized.
+fixture showing it cannot; (d) a decision procedure for conservativity along a coordinate
+map: `Forgetting.forget` computes the image of a bundle's region for one dropped coordinate
+(`forget_region`) and `VocabularyAct.addsNothing_certified` reduces adding nothing along a
+one-coordinate extension to one entailment certificate per eliminated row; wanted are the
+procedure that finds or refutes each certificate (`FourierMotzkin.feasible` decides the
+feasibility it turns on, over the reals) and the iteration over several coordinates
+(`Forgetting.projection_comp`); (e) the occurrence `VocabularyAct.VocabularyChange` — owner,
+translation, protected fragment, licence, challenge — as a step of the accounted state, with
+its owner checked against the authority allocation, which names no matter for vocabulary.
 
 *Deliverable shape:* `lean-proved`; the transition, the transport theorem for `Entitlement` with its
 hypotheses or the counterexample, and the split fixture (`Recollection.split`) run through it
