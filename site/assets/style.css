@@ -352,6 +352,21 @@ section.context ul.ctx-facts li { margin: 0.35em 0; }
 #acct-dialog button:hover { border-color: var(--accent); }
 .assess-receipt .as-pr { font: inherit; font-size: 0.85rem; font-weight: 700; background: var(--accent); color: #101013; border: none; border-radius: 7px; padding: 0.35em 1em; cursor: pointer; margin-right: 0.6em; }
 
+/* the personal lens */
+.profile-head { display: flex; gap: 0.8em; align-items: center; }
+.profile-head .avatar { border-radius: 50%; }
+.profile-cols { display: grid; grid-template-columns: 2fr 1fr; gap: 1.2em; align-items: start; }
+@media (max-width: 760px) { .profile-cols { grid-template-columns: 1fr; } }
+.pf-target { border-top: 1px solid var(--rule); padding-top: 0.5em; margin-top: 0.6em; }
+.hx-you { font-size: 0.72rem; color: var(--muted); margin-top: 0.3em; }
+.hx-you.pending { font-style: italic; }
+span.new { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.06em; border: 1px solid var(--rule); border-radius: 4px; padding: 0 0.35em; margin-right: 0.4em; }
+#workbench .panel { margin: 0.8em 0; }
+.prio-filter button { font: inherit; font-size: 0.82rem; background: var(--card); color: var(--muted); border: 1px solid var(--rule); border-radius: 7px; padding: 0.2em 0.8em; cursor: pointer; }
+.prio-filter button.on { border-color: var(--accent); color: var(--fg); }
+.prio-filter .prio-mine-note { margin-left: 0.6em; font-size: 0.82rem; }
+.prio-unscored { font-size: 0.8rem; margin: 0.3em 0 0; }
+
 /* the activity control panel */
 .stat-row { display: flex; flex-wrap: wrap; gap: 0.6em; margin: 0.4em 0 1.1em; }
 .stat { flex: 1 1 8.5em; min-width: 8.5em; border: 1px solid var(--rule); border-radius: 10px; padding: 0.55em 0.8em; text-decoration: none; background: var(--card); }

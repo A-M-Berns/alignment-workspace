@@ -1134,7 +1134,12 @@ of 2026-11-02), beside the intake verbs, each a prefilled GitHub issue a maintai
 sweeps into ledger events (ruling S5, 2026-10-30). A reader may sign in with GitHub
 (device flow through `infra/github-login-relay/`, a worker holding no secret; the token
 stays in the reader's browser; ruling of 2026-11-09), and a signed-in reader's receipt
-forks, writes their own ledger line and opens the pull request from the browser. Every node, item,
+forks, writes their own ledger line and opens the pull request from the browser. The
+personal lens is client-side over public JSON: each handle's page is their current
+position (scores with rationales, wants, owned frames, history) with an owner-only
+workbench, every hero carries the signed-in reader's own score or pending proposal
+beneath the standing number, and `/priorities/` filters to what they have not scored —
+every page renders identically signed out. Every node, item,
 decision anchor, round, registry id, wiki page and handle has exactly one path, derived
 from its id (`site/README.md` is the contract); a build fails on a reference that does
 not resolve, two ids that map to one path, or a binding that disagrees with the state,

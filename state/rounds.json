@@ -2176,6 +2176,19 @@
       "registered_classes": [],
       "prompt": "prompts/2026-11-09-github-sign-in/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-11-09-personal-lens",
+      "date": "2026-11-09",
+      "project": "enabling",
+      "path": "projects/enabling/rounds/2026-11-09-personal-lens",
+      "verdict": null,
+      "depends_on": [
+        "2026-11-09-github-sign-in"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-11-09-personal-lens/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

@@ -118,6 +118,14 @@ def citations(text: str, rooted: set[str]) -> list[tuple[str, str]]:
     return found
 
 
+def merge_markers(text: str) -> list[int]:
+    """1-indexed lines where a git conflict marker survived a merge. A marker in a live
+    document is merge garbage every other gate reads straight through — DECISIONS.md
+    shipped one on 2026-11-09 and stayed green."""
+    return [i for i, line in enumerate(text.split("\n"), 1)
+            if line.startswith("<<<<<<< ") or line.startswith(">>>>>>> ")]
+
+
 def declared_tree(path: str) -> tuple[str, str] | None:
     for tree, status in DECLARED.items():
         if path == tree or path.startswith(tree + "/"):
@@ -134,6 +142,8 @@ def audit() -> tuple[list[str], list[str], dict[str, int]]:
     for doc in live_documents():
         text = doc.read_text()
         name = doc.relative_to(ROOT).as_posix()
+        for ln in merge_markers(text):
+            problems.append(f"{name}: a git conflict marker survived a merge at line {ln}")
         counts["historical"] += len(HISTORICAL.findall(text))
         for match in TICK.finditer(HISTORICAL.sub(" ", text)):
             raw = match.group(1).strip().rstrip(".,;:")
@@ -186,6 +196,10 @@ def self_test() -> int:
          declared_tree("projects/normativity/notes/X.md"), None),
         ("a path is not confused with a longer sibling",
          declared_tree("projects/normativity/forwarding/x.md"), None),
+        ("a surviving conflict marker is caught",
+         merge_markers("a\n<<<<<<< HEAD\nb\n>>>>>>> main\n"), [2, 4]),
+        ("prose mentioning merges is not a marker",
+         merge_markers("the merge of #141; a <<< quote; ======= underline\n"), []),
         # The live tree, so the patterns cannot pass by matching nothing.
         ("the live documents exist", len(live_documents()) > 10, True),
         ("every declared tree is really there",

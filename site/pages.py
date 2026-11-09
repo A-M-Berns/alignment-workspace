@@ -61,7 +61,7 @@ def layout(site: Site, title: str, body: str, crumbs: list[tuple[str, str]] | No
         crumb_html = '<nav class="crumbs">' + " › ".join(f'<a href="{u}">{esc(t)}</a>' for t, u in crumbs) + "</nav>"
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{esc(title)}</title><link rel="stylesheet" href="/assets/style.css?v={esc(r.commit[:12])}"><script defer src="/assets/account.js?v={esc(r.commit[:12])}"></script><script defer src="/assets/app.js?v={esc(r.commit[:12])}"></script></head>
+<title>{esc(title)}</title><link rel="stylesheet" href="/assets/style.css?v={esc(r.commit[:12])}"><script defer src="/assets/account.js?v={esc(r.commit[:12])}"></script><script defer src="/assets/app.js?v={esc(r.commit[:12])}"></script><script defer src="/assets/personal.js?v={esc(r.commit[:12])}"></script></head>
 <body><header class="top"><a class="home" href="/">Alignment Workspace</a><nav class="main">{nav}</nav>
 <form class="search" action="/search/" method="get"><input type="search" name="q" placeholder="search ids, statements, titles" aria-label="search"></form><span id="account"></span></header>
 <main>{crumb_html}<h1>{esc(title)}</h1>{f'<p class="subtitle">{subtitle}</p>' if subtitle else ''}
@@ -165,10 +165,11 @@ def assess_block(site: Site, acts: list, h: dict, target: dict, version, url: st
         by_axis.setdefault(str(e.get("axis")), []).append(e)
         if not e["_ai"]:
             active[str(e.get("by")) + "|" + str(e.get("axis"))] = str(e.get("id"))
-    cells, contested, standing = [], [], {}
+    cells, contested, standing, by_handle = [], [], {}, {}
     for axis in axes:
         c = h[axis]
         hums = [e for e in (by_axis.get(axis) or []) if not e["_ai"]]
+        by_handle[axis] = {str(e.get("by")): int(e["score"]) for e in hums}
         standing[axis] = {"d": c["d"], "ai": c["ai"], "contested": c["contested"]}
         if c["contested"]:
             status, contested = "human disagreement", contested + [axis]
@@ -197,7 +198,7 @@ def assess_block(site: Site, acts: list, h: dict, target: dict, version, url: st
                 + " — read the reasons below, then add or revise yours.</p>")
     tkind, tid = next(iter(target.items()))
     cfg = {"target": target, "version": version, "rule": str(r.policy.get("anchor_rules") or ""),
-           "active": active, "handles": sorted(r.human), "standing": standing}
+           "active": active, "handles": sorted(r.human), "standing": standing, "scores": by_handle}
     issue_title = quote(f"[{tkind}] {tid}: assessment")
     issue_body = quote(f"{tkind}: {tid}\nurl: {url}\nverb: assessment\n\n"
                        "## Your score (1-5) on reliability, importance or clarity, and your rationale\n\n")
@@ -759,16 +760,68 @@ def pr_frag(site: Site, num: str) -> str:
     return f'<div class="frag"><p class="frag-head">{site.link("prs", num, f"#{num} " + str(P.get("title", "")))} <span class="kind">merged pull request</span></p>{pr_body(site, num)}</div>'
 
 
+def handle_scores(site: Site, h: str) -> list:
+    """The handle's active assessments, grouped by target:
+    [(kind, id, title, [(axis, score, verbatim, date, stale)])], newest target first."""
+    r = site.repo
+    targets, seen = [], set()
+    for e in r.events:
+        if e.get("kind") != "assessment" or e.get("by") != h:
+            continue
+        t = e.get("target") or {}
+        key = ("concepts", t["concept"]) if t.get("concept") else ("n", str(t.get("node") or "").split("@")[0])
+        if key[1] and key not in seen:
+            seen.add(key)
+            targets.append(key)
+    out = []
+    for kind, tid in targets:
+        evs = r.assessments("concept:" + tid) if kind == "concepts" else r.assessments(tid)
+        mine = [e for e in evs if e.get("by") == h]
+        if mine:
+            title = (r.concepts.get(tid) or {}).get("title", tid) if kind == "concepts" else tid
+            out.append((kind, tid, title,
+                        [(str(e.get("axis")), e.get("score"), str(e.get("verbatim") or ""),
+                          str(e.get("date")), bool(e.get("_stale"))) for e in mine]))
+    out.sort(key=lambda t: max(d for _, _, _, d, _ in t[3]), reverse=True)
+    return out
+
+
 def handle_page(site: Site, handle: str) -> str:
+    """A person's current position, history underneath: avatar and counts, their active
+    scores with rationales beside their wants and owned frames, then their events. The
+    owner's workbench — pending submissions, what to score next — renders client-side on
+    their own page and touches nothing public."""
     r = site.repo
     h = "@" + handle
     spec = r.handles.get(h) or {}
+    human = spec.get("kind") == "human"
     frames = [x for x, N in r.nodes.items() if N.get("frame") and h in (N["frame"].get("owners") or [])]
     wants = [x for x, N in r.nodes.items() if N["fields"].get("want") and N["fields"].get("owner") == h]
     evs = [e for e in r.events if e.get("by") == h]
-    body = [f"<p class=\"subtitle\">{esc(spec.get('kind', '?'))}" + (f" · GitHub <a href=\"https://github.com/{esc(spec['github'])}\">{esc(spec['github'])}</a>" if spec.get("github") else "") + (f" · model {esc(spec['model'])}" if spec.get("model") else "")
-            + (" · <em>a legacy name, minted before an AI handle was its model's slug</em>" if spec.get("legacy") else "") + "</p>"]
-    body.append("<section><h2>Frames owned</h2>" + ("<ul>" + "".join(f"<li>{site.link('n', x)}: {esc(r.nodes[x]['frame']['question'] or '')}</li>" for x in frames) + "</ul>" if frames else "<p class=\"muted\">None.</p>") + "</section>")
+    scored = handle_scores(site, h)
+    naxes = sum(len(rows) for _, _, _, rows in scored)
+    last = max((str(e.get("date")) for e in evs), default="")
+    avatar = (f'<img class="avatar" src="https://github.com/{esc(spec["github"])}.png?size=96" width="48" height="48" alt="">'
+              if human and spec.get("github") else "")
+    head = (f'<p class="subtitle profile-head">{avatar}<span>'
+            + esc(spec.get("kind", "?"))
+            + (f' · GitHub <a href="https://github.com/{esc(spec["github"])}">{esc(spec["github"])}</a>' if spec.get("github") else "")
+            + (f' · model {esc(spec["model"])}' if spec.get("model") else "")
+            + (" · <em>a legacy name, minted before an AI handle was its model's slug</em>" if spec.get("legacy") else "")
+            + (f'<br>{len(scored)} concept{"s" if len(scored) != 1 else ""} scored · {naxes} active axis score{"s" if naxes != 1 else ""}'
+               + (f' · updated {esc(last)}' if last else "") if human else "")
+            + "</span></p>")
+    body = [head, f'<div id="workbench" data-handle="{esc(h)}" hidden></div>', '<div class="profile-cols"><div class="profile-main">']
+    rows = []
+    for kind, tid, title, axes in scored:
+        ax = "".join(f'<li><span class="axis">{esc(a)}</span> <span class="score score-{esc(str(s))}">{esc(str(s))}</span> / 5'
+                     + (' <span class="tag">on an earlier revision</span>' if stale else "")
+                     + f'<br><em>{esc(v)}</em> <span class="date">{esc(d)}</span></li>'
+                     for a, s, v, d, stale in axes)
+        rows.append(f'<div class="pf-target">{site.link(kind, tid, title)}<ul class="assessments">{ax}</ul></div>')
+    body.append("<section><h2>Current scores</h2>" + ("".join(rows) if rows else '<p class="muted">No published scores yet.</p>') + "</section>")
+    body.append("<section><h2>Contribution history</h2>" + events_html(site, evs) + "</section>")
+    body.append('</div><div class="profile-side">')
     wl = []
     for x in wants:
         pri = [e for e in r.events_by_node.get(x, []) if e.get("kind") == "priority" and e.get("by") == h]
@@ -776,7 +829,8 @@ def handle_page(site: Site, handle: str) -> str:
         state = f"priority {esc(str(word))}" if word else ("no word yet: filed from quoted words, weighs nothing until the owner speaks" if r.nodes[x]["fields"].get("filed_from") == "quote" else "no word yet (reads as medium)")
         wl.append(f"<li>{site.link('n', x)}: {esc(r.nodes[x]['statement'].strip())} — <em>{state}</em></li>")
     body.append("<section><h2>Wants</h2>" + ("<ul>" + "".join(wl) + "</ul>" if wl else "<p class=\"muted\">None.</p>") + "</section>")
-    body.append("<section><h2>Events</h2>" + events_html(site, evs) + "</section>")
+    body.append("<section><h2>Owned frames</h2>" + ("<ul>" + "".join(f"<li>{site.link('n', x)}: {esc(r.nodes[x]['frame']['question'] or '')}</li>" for x in frames) + "</ul>" if frames else "<p class=\"muted\">None.</p>") + "</section>")
+    body.append("</div></div>")
     return layout(site, h, "\n".join(body), [("by", "/by/")])
 
 
@@ -1196,14 +1250,16 @@ def priorities_page(site: Site) -> str:
                           for num in nums)
         peek = concept_peek(site, cid)
         rows.append(
-            '<li class="prio"><div class="prio-head">'
+            f'<li class="prio" data-cid="{esc(cid)}" data-axes="{esc(",".join(row["axes"]))}"><div class="prio-head">'
             f'{site.link("concepts", cid, e.get("title", cid))} <span class="kind">{esc(str(e.get("kind") or ""))}</span></div>'
             + mini_hero(h, row["axes"])
             + f'<p class="prio-blurb">{esc(str(e.get("blurb") or ""))}</p>'
             + (f'<p class="prio-items">open items: {links}</p>' if nums else "")
             + (f'<div class="prio-peek">{esc(peek)}</div>' if peek else "")
             + '</li>')
-    body = ['<ul class="prio-list">' + "".join(rows) + "</ul>" if rows
+    body = ['<p class="prio-filter"><button type="button" id="prio-mine" hidden>Unscored by you</button>'
+            '<span class="prio-mine-note muted"></span></p>',
+            '<ul class="prio-list">' + "".join(rows) + "</ul>" if rows
             else '<p class="muted">No concept carries an importance score yet.</p>']
     if unranked:
         body.append("<section><h2>Not yet rankable</h2><p>"
