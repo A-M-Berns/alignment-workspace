@@ -10,7 +10,7 @@ roots:
   - {id: normativity-layer-I-closed, role: shared-claim, preset: worst-case}
   - {id: verdict-licence-chain, role: shared-claim, preset: worst-case}
   - {id: verdict-licence-chain.improvable, role: shared-claim, preset: worst-case}
-holds: [progress.edge-bound, progress.edge-bound-quadratic, progress.headline-separation, ni.progress-bound, warrant.supported-admissible, warrant.admissible-not-supported, warrant.supported-not-licensed, warrant.selection-not-transparent, inductor.grounded-survivors, inductor.conformance, inductor.certificate-transport, inductor.warrant-inductor, inductor.witness, inductor.rebuttal-run, inductor.contraposition-blocked, item-124]
+holds: [progress.edge-bound, progress.edge-bound-quadratic, progress.headline-separation, ni.progress-bound, warrant.supported-admissible, warrant.admissible-not-supported, warrant.supported-not-licensed, warrant.selection-not-transparent, inductor.grounded-survivors, inductor.conformance, inductor.certificate-transport, inductor.warrant-inductor, inductor.witness, inductor.rebuttal-run, inductor.contraposition-blocked, item-124, scoreside.same-question-two-realizations, scoreside.conduct-on-prices-conflicts, solvency.bounded-iff-frequency, solvency.conflict-names-suspects, robust.eight-world-strengths, standing.reallocated-entitles-nothing, item-133]
 author: "@smithy-verity"
 size: L
 size_reason: "the inductor, warrant and progress results and the end-to-end work orders"

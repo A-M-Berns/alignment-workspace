@@ -30,7 +30,11 @@ legitimately incurred obligations without ceasing to be a Logical Inductor.
 ## The architecture
 
     NI = MarketMaker( TradingFirm^L + Enforcer[ Compile(Entitled(O_P)) ] )
-         + DecisionAdapter
+         + DecisionAdapter[ − ϖ · price(assessed shortfall) ]
+
+The enforcer compiles obligations on *credence*; an obligation on *conduct* enters the
+adapter as a charge on the market's price of its assessed shortfall and never as a row
+(the score-side test below).
 
 The ordinary trading firm over the language `L` is the substrate and is left alone.
 One additional trader — the enforcer — is added to the aggregate the market maker
@@ -60,6 +64,39 @@ bounded preference (`cgate_zero_of_viol`) is the general theorem beneath the des
 Compiling authority into the enforcer instead would make its liability the realized cost
 of deferring to her, bounded only while she is not systematically outperformed
 ([Corrigibility](Corrigibility) §4) — which is why no authority row enters the enforcer.
+
+**Where each kind of obligation binds (status 2026-11-07).**  Every row the October runs
+enforce is settled by the deductive process: the premise, applicability and strength forms
+constrain credences in sentences the process pins, the coherence rows are consequences, the
+pins are the process's own.  Such a row binds on prices, and solvency is its discipline — for a
+warrant schema with timely-settling instances the enforcer's liability is bounded iff the
+consequent's frequency on undefeated instances is not systematically below the strength
+(`WarrantSolvency.Schema.bounded_iff_frequency`, **registered**
+`solvency.bounded-iff-frequency`<!--ref:claim:solvency.bounded-iff-frequency-->; the deference identity renamed), and a valid
+conflict certificate shows at every cube point that some positively weighted bundle row is
+violated there (`WarrantSolvency.suspect_in_bundle`, **registered**
+`solvency.conflict-names-suspects`<!--ref:claim:solvency.conflict-names-suspects-->): rows all valid at one point admit no
+such certificate, and where admission demands validity at that point the violated row was
+mis-admitted.  An obligation on *conduct* is settled by
+an assessment, not by the process, and binds on the score: the rebuttal run's decision rebuilt
+with the obligation *refrain while the originating obligation's account is live* — one
+shortfall sentence per date, tied to the assessment by the named hypothesis `Assessed` —
+charged at `ϖ` times the market's price of the date's shortfall sentence recovers the same
+reversal on the same market whenever that charge is at most `19/240` at date 4: acting with
+mass at least `24/25` there and refraining with certainty at date 9, the row the obligation
+was compiled to held at no date, and the market the run's own because the realization stores
+the run's schedule (`WarrantInductorScoreSide.same_question_two_realizations`, **registered**
+`scoreside.same-question-two-realizations`<!--ref:claim:scoreside.same-question-two-realizations-->); compiled onto prices
+instead, that row conflicts with the strength and applicability rows at date 4 and is implied
+by the pin at date 9 (`conduct_on_prices_conflicts`, **registered**
+`scoreside.conduct-on-prices-conflicts`<!--ref:claim:scoreside.conduct-on-prices-conflicts-->; `conduct_on_prices_idle`).  The
+reversal needs the strength row — at a price vector satisfying every other date-4 row the
+charged gate refrains with certainty for every charge (`strength_row_necessary`) — so the
+belief part is an epistemic warrant on prices and the practical part is on the score.  Whether
+the market prices the shortfall sentences well is not shown; `Assessed` is a hypothesis.  None
+of this says the warrants are correct: *warrants constrain the prices* is the
+conformance clause, and *warrants produce warranted guidance* stays conditional on the
+adequacy semantics and the certificates, as before.
 
 ## From the accounted state to a region
 
@@ -91,6 +128,18 @@ expression relation are typed inputs; the liveness condition is read off the acc
 together with an authorized record event; the enforcer consumes no licence, and a licence
 introduces no constraint. The consolidated theorem's provenance conclusion joins the two sides
 that matter: every substantive row the enforcer holds is an entitled survivor's.
+
+The admission predicate has an instantiation **by standing**
+(`AdmissionByStanding.admittedByStanding`): an obligation is admitted at a history when its
+issuer holds its matter under the authority allocation current there, a first-person
+commitment being a matter the reasoner holds itself.  On the witness's state rebuilt over that
+protocol the entitlement is inhabited at every date with the admission clause carrying
+content, and a reallocated obligation entitles nothing (`reallocated_entitles_nothing`,
+**registered** `standing.reallocated-entitles-nothing`<!--ref:claim:standing.reallocated-entitles-nothing-->; its hypothesis
+package inhabited over the state that exposes the reasoner's own obligation alone), the
+counterpart of the answered obligation entitling nothing.  Of the four conditions, exposure is
+content-free at the fixture, admission and liveness carry content, and the expression relation
+remains typed.
 
 ## The interface: a public defect and certified bounds
 
@@ -233,6 +282,16 @@ temporally extended continuations.  Nothing about the concrete Inductor realizat
 thereby complete, and the coupling of LI predictions to BRIA claims is an open interface.
 
 ## What remains
+
+A strength row read at the posterior of whatever record the warrant is undefeated at can be
+false while nothing withdraws it: on the eight-world model the row at `3/4` is exact at the
+signal and false after a contrary challenge, with rebuttal and undercut both silent, and the
+**robust reading** — the warrant as a constraint on her model over the undefeated extensions
+of its anchor, strength `3/5` there or `3/4` with the challenge a defeater — is the repair
+candidate (`RobustWarrant.robustStrength_both`, **registered**
+`robust.eight-world-strengths`<!--ref:claim:robust.eight-world-strengths-->).  Its `Form`-level rule and compile are
+item 133<!--ref:item:133-->.  The generability of the shortfall sentence the score-side charge
+prices is the decision component's standing hypothesis (items 90<!--ref:item:90-->, 101<!--ref:item:101-->).
 
 Realization and integration, not conceptual theory: a `Protocol` implemented over an
 event log with its evolution builder; the connector from the predictable-window

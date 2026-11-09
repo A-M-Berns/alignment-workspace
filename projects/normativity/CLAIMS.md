@@ -2002,3 +2002,159 @@ Round `2026-10-21-rebuttal-and-end-to-end`; the dispatch's registration list, ag
   "note": "At date 9 of Scenario B the specialized strength row reads 2/3·P(X∧A) ≤ 0 while the enforced applicability row with X settled true forces P(X∧A) ≥ 3/4 (antecedent_open): the date-9 bundle with the strength row appended has empty region. Rebuttal by settlement removes the row, so the antecedent's credence stays where the applicability puts it rather than being suppressed by contraposition."
 }
 ```
+
+### scoreside.same-question-two-realizations
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the rebuttal run's decision in two realizations: on prices with no obligation on conduct, and on the score with the obligation charged",
+  "origin_round": "2026-11-07-score-side-binding",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantInductorScoreSide.same_question_two_realizations"
+  },
+  "answers_item": "35",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-07-score-side-binding",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-07-score-side-binding/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-07-score-side-binding/REPORT.md"
+  },
+  "note": "The rebuttal run's market and bundle, with the obligation on conduct 'refrain while the originating obligation's account is live' — one shortfall sentence per date, and the named hypothesis Assessed: the valuation settling the sentences makes the date-n sentence true iff ShortfallAt n, read off the state accounted at n (state₀ at every date) — charged at ϖ times the market's price of the date's shortfall sentence and subtracted from the acting score. On prices with no obligation on conduct: the rebuttal run's same_question. On the score, under Assessed: acting with mass at least 24/25 at date 4 while ϖ times the date-4 shortfall price is at most 19/240 (the hypothesis hsmall), refraining with certainty at date 9 for every nonnegative charge, acting assessed a shortfall at both dates (before, after). The realization stores the run's schedule, so bundle_unchanged and market_unchanged (rfl) are design facts, not results, and no_conduct_row says the one row refrain was compiled to is held at no date. A charge reaching the acting score's room above τ zeroes the act's weight with no price moved (override). The strength row is necessary: at p₀ = (1, 3/4, 0, 0, 3/4), in the cube and satisfying every date-4 row but the specialized strength row, the charged gate refrains with certainty for every nonnegative charge (strength_row_necessary; scoreGate_eq_gateAt ties that gate to the realized one). Not shown: that the market prices the shortfall sentences well, or that they are generable."
+}
+```
+
+### scoreside.conduct-on-prices-conflicts
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the obligation on conduct compiled onto prices conflicts with the epistemic rows at date 4",
+  "origin_round": "2026-11-07-score-side-binding",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantInductorScoreSide.conduct_on_prices_conflicts"
+  },
+  "answers_item": "35",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-07-score-side-binding",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-07-score-side-binding/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-07-score-side-binding/REPORT.md"
+  },
+  "note": "The date-4 bundle of the rebuttal run with the conduct row P(X∧A∧Y) ≤ 1/3 appended has no admissible price vector: the three-row Farkas certificate conductCert (the specialized strength row, two thirds of the specialized applicability row, the conduct row) sums to 0 ≤ −1/6, through conflict_sound. A compiler returning it withholds the date. At date 9 the conduct row is implied by the pin and adds nothing (conduct_on_prices_idle)."
+}
+```
+
+### solvency.bounded-iff-frequency
+
+```json
+{
+  "project": "normativity",
+  "short_name": "solvency as soundness: a warrant schema's enforcer liability is bounded iff the consequent's frequency on undefeated instances is not systematically below the strength",
+  "origin_round": "2026-11-07-score-side-binding",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantSolvency.Schema.bounded_iff_frequency"
+  },
+  "answers_item": "61",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-07-score-side-binding",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-07-score-side-binding/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-07-score-side-binding/REPORT.md"
+  },
+  "note": "For a Schema (strength c; per instance, undefeated and the settled consequent), the liability DecisionComponent.liability realized held is bounded below by −B at every date iff c·U_n − T_n ≤ B at every date, U_n the undefeated count and T_n the true consequents among them (outperformance_eq). An instance of bounded_iff_not_outperformed; the reduction of WarrantForce's calibrated trade to a unit position per instance is the named hypothesis UnitPosition (solvent_iff). Witnesses: always_true_bounded, always_false_unbounded."
+}
+```
+
+### solvency.conflict-names-suspects
+
+```json
+{
+  "project": "normativity",
+  "short_name": "a valid conflict certificate shows at every cube point some positively weighted bundle row violated there, so rows all valid at one point cannot conflict",
+  "origin_round": "2026-11-07-score-side-binding",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantSolvency.suspect_in_bundle"
+  },
+  "answers_item": "133",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-07-score-side-binding",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-07-score-side-binding/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-07-score-side-binding/REPORT.md"
+  },
+  "note": "In the generality of NormativeInductorComposition.FarkasCert: at every price vector some positively weighted row is violated (exists_violated_suspect); against a bundle whose rows the certificate may weight, at every cube point some positively weighted row of the bundle itself is violated there (the cube rows hold in the cube) — the violated row may differ from point to point; no single row is shown violated everywhere. Hence if every weighted row is valid at a point no valid conflict certificate exists (no_conflict_of_sound), and when all suspects but one hold at a point the remaining one is violated there (unique_suspect). Reading a conflict as a mis-admission needs the further premise that admission demands validity at the point in question; the theorem does not supply it. Also stated on a NormState (suspect_in_normState)."
+}
+```
+
+### robust.eight-world-strengths
+
+```json
+{
+  "project": "normativity",
+  "short_name": "on the eight-world model the robust strength of the signal's warrant is 3/5 over the undefeated extensions, and 3/4 with the contrary challenge a defeater",
+  "origin_round": "2026-11-07-score-side-binding",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.RobustWarrant.robustStrength_both"
+  },
+  "answers_item": "133",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-07-score-side-binding",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-07-score-side-binding/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-07-score-side-binding/REPORT.md"
+  },
+  "note": "The model (a binary quantity, a signal of accuracy 3/4, a challenge of accuracy 2/3, independent given the quantity) is stated locally with exact rationals. The strength row at 3/4 is valid at the record with the signal alone (valid_at_signal, Pr(Y | A) = 3/4) and invalid at the record with the contrary challenge (invalid_at_contrary, Pr(Y | A ∧ C) = 3/5); embedded in a three-coordinate fragment, settleOutcome keeps the form, the quiet docket undercuts nothing, and the repository's grounded survivor rule Grounds.survivors applied to the warrant's grounds at that record keeps it (kept_under_challenge, not_undercut, survives_challenge), while the contributed row is violated by her posterior (contributed_row_invalid); the opposing warrant at 2/3 makes the rows infeasible (naive_conflict). The robust reading Robust (a constraint over a declared set of undefeated extensions) is sound (robust_sound); the statement of record robustStrength_both conjoins robustStrength_all (3/5 over the three extensions) and robustStrength_defeated (3/4 with the contrary challenge a defeater); the extension sets Uall and Udef are declared inputs, not derived from any defeat mechanism. The opposing warrant's strength is 2/5 and the robust rows meet at 3/5 (against_robust_iff, robust_meet)."
+}
+```
+
+### standing.reallocated-entitles-nothing
+
+```json
+{
+  "project": "normativity",
+  "short_name": "admission by standing: with Protocol.Admitted read off the authority allocation, a reallocated obligation entitles nothing",
+  "origin_round": "2026-11-07-score-side-binding",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.AdmissionByStanding.reallocated_entitles_nothing"
+  },
+  "answers_item": "128",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-07-score-side-binding",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-07-score-side-binding/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-07-score-side-binding/REPORT.md"
+  },
+  "note": "admittedByStanding: an obligation occurrence is admitted at history h when its issuer holds its matter under the allocation current at h; first-person commitments are matters the reasoner holds itself. The witness's state₀ rebuilt over the protocol with standing under J₀ (the first obligation the principal's, the second the reasoner's own) inhabits Entitlement for the witness's grounds at every date with admission carrying content (entitlementS, admitted_by_allocation, first_person_admitted). Under J₁, the allocation moving the first matter to the agent, the first obligation is not admitted at any history (reallocated_not_admitted) and no entitlement over any obligation state of that protocol may trace an occurrence to it — the counterpart of answered_not_entitled with the account replaced by the allocation. The hypothesis package is inhabited: over protocolS₁ an Initial can expose only obligation 1 (Initial admits every exposed occurrence, and obligation 0 is admitted at no history), and entitlementS₁ over stateS₁ — every origin at obligation 1, admitted under J₁, account live, Expresses total — is the witness (witness_origin: its conclusion there reads 1 ≠ 0). Expresses remains typed."
+}
+```

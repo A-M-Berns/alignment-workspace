@@ -9,7 +9,7 @@ title: "Settlement defeat for strength rows: a linear row contraposes"
 section: "Deference line — second wave"
 maintainer_order: 106
 difficulty: "open"
-heading_notes: " — *answered 2026-10-21 by the rule `settleForm` (`projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md`): rebuttal, vacuity, retirement; registered `rebuttal.settleform-sound`, `rebuttal.liability-rebutted`; the monotonicity it loses is restated as `settledRegion_anti_of_survivors_eq` and `reopening_bound`; what remains is the sharp bankroll across a reopening, item 123*"
+heading_notes: " — *answered 2026-10-21 by the rule `settleForm` (`projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md`): rebuttal, vacuity, retirement; registered `rebuttal.settleform-sound`, `rebuttal.liability-rebutted`; the monotonicity it loses is restated as `settledRegion_anti_of_survivors_eq` and `reopening_bound`; what remains is the sharp bankroll across a reopening, item 123* — *bears on it 2026-11-07: on the eight-world model the linear row fails after a contrary challenge with neither rebuttal nor undercut firing (`RobustWarrant.invalid_at_contrary`, `kept_under_challenge`, `not_undercut`); the non-linear form the entry names is the robust reading, item 133*"
 project: normativity
 dispatchable: true
 item_status: closed
