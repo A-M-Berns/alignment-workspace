@@ -1077,9 +1077,9 @@ def activity_page(site: Site) -> str:
                   '<a href="/priorities/">priorities</a>, and scoring an axis on any page moves it.</p>')
     panels = [
         panel("Human ledger events", ev_rows, "No human has signed a ledger event yet — the hero on any page takes the first score."),
-        panel("Merged pull requests", pr_rows, "None digested yet.", more='<p class="muted"><a href="/prs/">All merged work</a>.</p>'),
-        panel("Pending decisions — awaiting the author", queue_rows, "The queue is empty.", anchor="queue"),
         panel("Rulings", ruling_rows, "None dated yet.", more='<p class="muted"><a href="/decisions/">All decisions</a>.</p>'),
+        panel("Pending decisions — awaiting the author", queue_rows, "The queue is empty.", anchor="queue"),
+        panel("Merged pull requests", pr_rows, "None digested yet.", more='<p class="muted"><a href="/prs/">All merged work</a>.</p>'),
         panel("Rounds", round_rows, "None yet.", more='<p class="muted"><a href="/feed/">The whole feed</a>.</p>'),
         panel("Claims registered", claim_rows, "None yet."),
         panel("Contested scores", contested, "No axis is contested right now.", anchor="scores", more=score_more),
