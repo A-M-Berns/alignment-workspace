@@ -40,17 +40,6 @@
     }).catch(function () { results.textContent = "The search index could not be loaded."; });
   }
 
-  // the landing's type sampler persists a candidate body face; apply it site-wide
-  try {
-    var awFont = localStorage.getItem("aw-font");
-    if (awFont) {
-      var l = document.createElement("link");
-      l.rel = "stylesheet"; l.href = "/assets/fonts/candidates.css";
-      document.head.appendChild(l);
-      document.documentElement.style.setProperty("--sans", '"' + awFont + '", -apple-system, BlinkMacSystemFont, sans-serif');
-    }
-  } catch (e) { /* storage may be unavailable */ }
-
   // keyboard: "/" focuses the search box
   document.addEventListener("keydown", function (ev) {
     if (ev.key === "/" && !/input|textarea/i.test(document.activeElement && document.activeElement.tagName)) {
@@ -77,6 +66,13 @@
       if (saved && cfg.handles.indexOf(saved) >= 0) handleSel.value = saved;
       handleSel.addEventListener("change", function () { localStorage.setItem("aw-handle", handleSel.value); });
     } catch (e) { /* storage may be unavailable */ }
+    // a signed-in reader's handle takes the select
+    function adoptAccount() {
+      var a = window.AWAccount && window.AWAccount.get();
+      if (a && a.handle && cfg.handles.indexOf(a.handle) >= 0) handleSel.value = a.handle;
+    }
+    adoptAccount();
+    document.addEventListener("aw-account-ready", adoptAccount);
     var picked = null; // {axis, score}
     function headline(axis, n) {
       var st = cfg.standing[axis];
@@ -122,6 +118,26 @@
       q(".as-edit", rc).href = "https://github.com/A-M-Berns/alignment-workspace/edit/main/graph/events/" + handle.slice(1) + ".jsonl";
       q(".rc-status", rc).textContent = "Prepared locally — not yet submitted.";
       q(".as-copy", rc).textContent = "Copy event";
+      // signed in as this handle: the receipt submits itself as a pull request
+      var old = q(".as-pr", rc);
+      if (old) old.remove();
+      var a = window.AWAccount && window.AWAccount.get();
+      if (a && a.token && a.handle === handle) {
+        var pr = document.createElement("button");
+        pr.type = "button"; pr.className = "as-pr"; pr.textContent = "Open the pull request";
+        q(".as-copy", rc).parentNode.insertBefore(pr, q(".as-copy", rc));
+        pr.onclick = function () {
+          pr.disabled = true;
+          window.AWAccount.submit(line, handle, function (t) { q(".rc-status", rc).textContent = t; })
+            .then(function (url) {
+              q(".rc-status", rc).innerHTML = 'Submitted — <a href="' + esc(url) + '" target="_blank" rel="noopener">the pull request</a> publishes on merge.';
+            })
+            .catch(function (e) {
+              pr.disabled = false;
+              q(".rc-status", rc).textContent = "Submission failed (" + String(e.message || e) + ") — the copy flow below still works.";
+            });
+        };
+      }
       ed.hidden = true; rc.hidden = false;
       q(".as-copy", rc).onclick = function () {
         navigator.clipboard.writeText(line).then(function () {

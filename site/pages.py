@@ -61,9 +61,9 @@ def layout(site: Site, title: str, body: str, crumbs: list[tuple[str, str]] | No
         crumb_html = '<nav class="crumbs">' + " › ".join(f'<a href="{u}">{esc(t)}</a>' for t, u in crumbs) + "</nav>"
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{esc(title)}</title><link rel="stylesheet" href="/assets/style.css?v={esc(r.commit[:12])}"><script defer src="/assets/app.js?v={esc(r.commit[:12])}"></script></head>
+<title>{esc(title)}</title><link rel="stylesheet" href="/assets/style.css?v={esc(r.commit[:12])}"><script defer src="/assets/account.js?v={esc(r.commit[:12])}"></script><script defer src="/assets/app.js?v={esc(r.commit[:12])}"></script></head>
 <body><header class="top"><a class="home" href="/">Alignment Workspace</a><nav class="main">{nav}</nav>
-<form class="search" action="/search/" method="get"><input type="search" name="q" placeholder="search ids, statements, titles" aria-label="search"></form></header>
+<form class="search" action="/search/" method="get"><input type="search" name="q" placeholder="search ids, statements, titles" aria-label="search"></form><span id="account"></span></header>
 <main>{crumb_html}<h1>{esc(title)}</h1>{f'<p class="subtitle">{subtitle}</p>' if subtitle else ''}
 {body}
 </main>

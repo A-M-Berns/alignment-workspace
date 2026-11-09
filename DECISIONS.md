@@ -49,6 +49,14 @@ commit.
   enforcer is their call, not a theorem's.
   <!-- decision: open--exposure-rule-proposal; touches: item:133, claim:scoreside.same-question-two-realizations; status: open -->
 
+- **The sign-in relay's deployment (2026-11-09).** The site's GitHub sign-in waits on
+  two maintainer-account acts: create the OAuth app with Device Flow enabled, then
+  `cd infra/github-login-relay && wrangler deploy --var CLIENT_ID:<client id>` and set
+  `"relay"` in `state/site_auth.json`. *Turns on:* external knowledge — the OAuth app and
+  the worker live on the maintainer's GitHub and Cloudflare accounts, which no round can
+  touch. Until then the paste-a-token path works and the copy flow is unchanged.
+  <!-- decision: open--sign-in-relay-deployment; touches: state/site_auth.json, infra/github-login-relay/; status: open -->
+
 - **The maintenance sweep's cadence (2026-11-05).** The standing dispatch
   (`prompts/2026-11-05-standing-maintenance/PROMPT.md`) is adopted; nothing schedules it
   yet. *Turns on:* external knowledge — how often the maintainer wants a sweep PR landing
@@ -7133,3 +7141,19 @@ protocol inhabits `Entitlement` with admission carrying content, and a reallocat
 entitles nothing (`reallocated_entitles_nothing`).  Rejected alternative: admission read off the
 account's receipts (item 128's clause (b)), which stays open; the allocation is what the
 authority module already supplies.  `Expresses` remains typed.
+
+### 2026-11-09 — the site signs readers in with GitHub
+<!-- decision: 2026-11-09--github-sign-in; touches: site/, infra/github-login-relay/, state/site_auth.json -->
+
+**Maintainer ruling, taken in conversation on 2026-11-09:** the site gets secure accounts
+and logins, toward distinct per-person views, by GitHub flow. Identity is the reader's
+GitHub account matched to a `graph/policy.yaml` handle; sign-in is the device flow
+through `infra/github-login-relay/`, a worker that forwards GitHub's two CORS-less login
+endpoints and holds no secret (device flow has none; the client id is public and
+pinned); the token lands only in the reader's own browser, and a signed-in reader's
+score receipt forks, writes their own ledger line and opens the pull request from the
+browser — the site still accepts no write, and the checker adjudicates the event like
+any other. The round's reading, agent-decided and reversible: device flow over the OAuth
+web flow, whose token exchange needs a client secret a worker would have to hold;
+`public_repo` scope, the narrowest the classic-app device flow offers. A handleless
+GitHub account signs in but cannot submit; proposing a handle stays an issue.

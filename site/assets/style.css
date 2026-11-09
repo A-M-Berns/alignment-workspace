@@ -340,6 +340,18 @@ section.context ul.ctx-facts li { margin: 0.35em 0; }
 .kernel-badge { display: inline-block; background: var(--accent); color: #101013; font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.12em 0.55em; border-radius: 5px; }
 .ax-scores { margin: 0.7em 0; padding-top: 0.5em; border-top: 1px solid var(--rule); }
 .ax-scores .axis { display: inline-block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+/* the account chip and sign-in dialog */
+#account { font-size: 0.82rem; }
+#account .acct-in, #account .acct-out { font: inherit; font-size: 0.78rem; background: none; border: 1px solid var(--rule); border-radius: 6px; color: var(--muted); padding: 0.15em 0.7em; cursor: pointer; }
+#account .acct-in:hover, #account .acct-out:hover { border-color: var(--accent); color: var(--fg); }
+#acct-dialog { background: var(--card); color: var(--fg); border: 1px solid var(--rule); border-radius: 12px; padding: 1em 1.4em; max-width: 26em; }
+#acct-dialog::backdrop { background: #000a; }
+#acct-dialog h3 { margin-top: 0.2em; }
+#acct-dialog input.pat { font: inherit; background: var(--bg); color: var(--fg); border: 1px solid var(--rule); border-radius: 6px; padding: 0.25em 0.5em; }
+#acct-dialog button { font: inherit; font-size: 0.85rem; background: var(--tag-bg); color: var(--fg); border: 1px solid var(--rule); border-radius: 7px; padding: 0.25em 0.9em; cursor: pointer; }
+#acct-dialog button:hover { border-color: var(--accent); }
+.assess-receipt .as-pr { font: inherit; font-size: 0.85rem; font-weight: 700; background: var(--accent); color: #101013; border: none; border-radius: 7px; padding: 0.35em 1em; cursor: pointer; margin-right: 0.6em; }
+
 /* the activity control panel */
 .stat-row { display: flex; flex-wrap: wrap; gap: 0.6em; margin: 0.4em 0 1.1em; }
 .stat { flex: 1 1 8.5em; min-width: 8.5em; border: 1px solid var(--rule); border-radius: 10px; padding: 0.55em 0.8em; text-decoration: none; background: var(--card); }
