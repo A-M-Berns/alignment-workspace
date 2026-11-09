@@ -54,7 +54,7 @@ commit.
   | fixture | charge | bars | accounted | split, obligation live | split, not live |
   |---|---|---|---|---|---|
   | split: `P(S) ≥ 1/2` against `P(S₁) ≥ 1/5`, `P(S₂) ≥ 1/5` | `1/10` | refuses | admits, charges `1/10` | refuses | admits, charges `1/10` |
-  | abandonment: `P(S) ≥ 9/10` along the mixing map | `13/20`, and at least `3/20` at every credence | refuses every change along the map | admits, charges `13/20` | refuses | admits, charges `13/20` |
+  | abandonment: `P(S) ≥ 9/10` along the mixing map | `13/20`, and at least `3/20` at every credence | refuses, whatever the new credences | admits, charges `13/20` | refuses | admits, charges `13/20` |
   | `P(X∧Y) ≥ 3/4 · P(X)` with `X` unsettled; `X` dropped, retold as a fair coin | `3/8` | refuses | admits, charges `3/8` | refuses | admits, charges `3/8` |
   | the same; `X` dropped, retold as false | `0` | admits | admits, no charge | admits | admits |
 
@@ -7273,10 +7273,13 @@ case base is the transitive closure of `PrecedentConstraint.Dominates` on reason
 (`PrecedentHolding.Holding`), and its reach adds covering (`Reach`).  A continuation is
 permitted iff the base is rationalizable and the reach does not put its losers at or above its
 winners (`permitted_iff`); the holding after a continuation is computed from the holding before
-it and the case (`holding_cons`), so a reasoner may keep the holding and forget the cases.  The
-bound on its size is adopted with a finite universe of reason sets as a hypothesis
-(`reachSet_eventually_const`); the reading on which the kinds of reasons alone bound it is
-refuted (`staircase_irredundant`).  The decision object the first pass found missing is an
+it and the case (`holding_cons`), so a reasoner may keep the holding and forget the cases.  Its
+finiteness is adopted with a finite set of forms as the hypothesis: over the canonical reason
+sets drawn from it, at most `2 ^ |Φ|`, the holding and permission are eventually constant
+(`holding_eventually_const_of_finite_forms`, `permission_eventually_const_of_finite_forms`),
+with no bound on the stage or on a representation's size; the reading on which the kinds of
+reasons alone give a finite representation is refuted (`stairs_holding_injective`: `n`
+strengths over one pair of kinds carry a different holding for each set of steps).  The decision object the first pass found missing is an
 assessed act — grounds, surviving grounds against, the assessor's verdict fixing which side won
 (`AssessedConduct.AssessedAct`) — defined beside the docket, with `ofCertificate` the adapter
 from `DecisionComponent.ActCertificate` at `Ent := Form d`.  Rejected alternatives: `Dominates`
@@ -7293,9 +7296,10 @@ are not adopted as the program's.
 coordinate of a bundle is the projection of its region along the coordinate map that drops it,
 computed by one step of `FourierMotzkin.elim` — the step `SeedStatics.project` iterates — with
 the coordinate moved last (`Forgetting.forget`, `forget_region`).  It is exact and conservative
-on the retained fragment.  A settled coordinate may be forgotten (`forget_settled`); an
-unsettled one may not without the cost of its later settlement (`live_forget_cost`); loss that
-is a difference from an exact step on a set of worlds composes as slack (`schedule_slack`); and
+on the retained fragment.  A settled coordinate may be forgotten (`forget_settled`); forgetting an
+unsettled one can cost the response to its later settlement (`live_forget_cost`); loss relative
+to a reference schedule, a difference on a set of worlds at each step, composes as slack
+(`schedule_slack`); and
 the choice of what to drop is a means of steering (`selective_forgetting`).  Item 135 is filed
 for the retained state as an object, which no filed item asks for; the five forgetting
 registrations divide between it and item 134, clause (d).  Rejected alternatives: an
@@ -7310,7 +7314,9 @@ subject is a vocabulary change on the accounted state and not what a reasoner re
 change is filed as an occurrence carrying its owner, the translation, the old and new
 commitments and a declared protected fragment (`VocabularyAct.VocabularyChange`).  Its licence
 is a refinement certificate on the fragment — an entailment certificate of the pullback of each
-protected row and old cube row (`Licensed`, `licensed_iff_refines`) — and its challenge a
+protected row and old cube row (`Licensed`, `licensed_iff_refines`), which reads neither the old
+commitments nor the owner; `FragmentOfOld` ties the fragment to the old commitments — and its
+challenge a
 broken-commitment witness as data with decidable validity (`Challenge`, `Challenge.Valid`); a
 licensed change admits no valid challenge on the fragment and an unlicensed one admits one
 (`licensed_no_challenge`, `unlicensed_has_challenge`).  Rejected alternatives: a licence

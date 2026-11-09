@@ -442,7 +442,10 @@ existing module was changed.
   check green. The merge here keeps every entry, in date order, without the three lines. No
   gate reads for them; filed as friction item F11.
 - **Two items are filed where the dispatch allows one**: item 135, and the friction item F11
-  just named.
+  just named. F11 is filed rather than fixed here, though a new gate is within the contained
+  fixes a round may take: a gate under `tests/` sits on the trust chain, and the maintainer is
+  asked to merge this pull request on its research; a gate added to it would be merged on those
+  grounds, not read on its own.
 - **The first pass's text is changed in four places**: the header table (dates, the follow-up
   dispatch); the deviation on the digest's `merged` field; the lines *Computing the image* and
   *The adapter's certificates* of *What this round does not establish*; and *Outstanding
@@ -489,11 +492,22 @@ winners and losers of every continuation, the reach on `R × R` together with wh
 is rationalizable is closed under continuation (`agreeOn_cons`). For finite `R` it is a subset
 of `R × R`, it only grows (`reach_mono`), and along any sequence of continuations it is
 eventually constant (`reachSet_eventually_const`, by `SeedStatics.eventually_const_of_finite`),
-after which permission over `R` is constant (`permission_eventually_const`). The finiteness of
-`R` is the hypothesis; it holds where kinds and strengths are both finitely many. Without
-finitely many strengths there is no bound: over one pair of kinds, a staircase of `n` cases at
-`n` increasing strengths has no redundant case (`staircase_irredundant`), at strengths inside
-`(0,1)` (`humbleScale_spec`). `|R|` is not counted in terms of kinds and strengths.
+after which permission over `R` is constant (`permission_eventually_const`). A finite set `Φ`
+of forms — finitely many kinds at finitely many strengths — supplies such an `R`: a reason set
+drawn from `Φ` covers and is covered by its list of distinct forms (`normal`, `covers_normal`),
+of which there are at most `2 ^ |Φ|` (`reasonSets`, `card_reasonSets_le`); the holding does not
+distinguish reason sets that cover each other (`holding_congr_covers`); so along any sequence
+of continuations — drawn from `Φ` or not — the holding on all reason sets drawn from `Φ` is
+eventually constant (`holding_eventually_const_of_finite_forms`), and so is permission for
+every continuation drawn from `Φ` (`permission_eventually_const_of_finite_forms`). The theorems
+bound what the holding can say on `Φ` and when it stops changing; they do not bound the stage
+at which it stops, nor the size of any representation of it. Without finitely many strengths
+there is no finite representation: over one pair of kinds, no case of a staircase of `n` cases
+at `n` increasing strengths is redundant (`staircase_irredundant`), and two staircases over
+one scale with the same holding have the same steps (`stairs_holding_injective`), so `n`
+strengths carry a different holding for each of the `2 ^ n` sets of steps, at strengths inside
+`(0,1)` (`humbleScale_spec`). The count `2 ^ n` is read off the injectivity and is not itself
+formalized.
 
 **Merging.** The union of two case bases is rationalizable iff the union of their holdings has
 no cycle (`rationalizable_append_iff`): merging reads the holdings. Two rationalizable bases
@@ -540,11 +554,13 @@ the ground `P(X) ≥ 9/10 · P(D)` beside it (`distinguished_consistent`).
 **Better, or only allowed?** Still only allowed. A choice the holding backs has its reverse
 forbidden (`backed_reverse_forbidden`), and making it sets no new precedent
 (`reach_cons_of_backed`). Where a choice and its reverse are both permitted, the reach relates
-their reason sets in neither direction (`permitted_both_silent`): the assessed past never ranks
-two permitted alternatives. What the assessor's verdicts add is the order after the fact, and a
-bound on the assessor: a shortfall verdict on a choice the reach backs leaves the assessed case
-base unrationalizable, after which nothing is permitted (`shortfall_of_backed_not_rationalizable`,
-`assessor_bound`). An order among reasons does accumulate — the holding grows and is a strict
+their reason sets in neither direction (`permitted_both_silent`): between a permitted choice
+and its permitted reverse the assessed past is silent. (Two permitted choices against a common
+opponent may still have their grounds compared by the holding; nothing here reads that as a
+ranking.) What the assessor's verdicts add is the order after the fact, and a price on the
+assessor's side: a shortfall verdict on a choice the reach backs leaves the assessed case base
+unrationalizable, after which nothing is permitted (`shortfall_of_backed_not_rationalizable`,
+`assessor_bound`) — a consequence of the verdict, not a mechanism that prevents it. An order among reasons does accumulate — the holding grows and is a strict
 order while the base is rationalizable — and it sorts continuations into permitted and
 forbidden, with no degree between.
 
@@ -580,17 +596,19 @@ reads of it are the occurrence's identity, its multiset of receipts, and one res
 limits: `ObligationState` stores the whole account, so no state type holds less; and a receipt's
 `Authority` stores the history prefix it was issued at.
 
-*A live coordinate.* Over `(X, Y)` with the one item `P(Y) ≥ 3/4 · P(X)`: forgetting `X`
-before it settles leaves the whole cube on `Y`, exactly, by (a). Once `X` settles true the full
+*A live coordinate.* It is not safe in general: over `(X, Y)` with the one item
+`P(Y) ≥ 3/4 · P(X)`, forgetting `X` before it settles leaves the whole cube on `Y`, exactly, by
+(a). Once `X` settles true the full
 record forces `P(Y) ∈ [3/4, 1]`; the reasoner that forgot holds `[0, 1]`. Forgetting `X` after
 it has settled keeps `P(Y) ≥ 3/4` (`live_forget_cost`). The cost is `3/4` at the lower endpoint
 and is no slack at the time of forgetting.
 
-**(c) Loss as slack.** For forgetting steps `K t` that agree with exact steps `K₀ t` off sets
-`B t` of worlds, a row with coefficients in `[lo, hi]` has, at every stage `T`, excess at the
-held credence at most its excess under the exact schedule plus `(hi − lo)` times the sum over
-`t < T` of the mass the credence held at stage `t` places on `B t` (`schedule_slack`, by
-induction from `approx_step`). Where those masses are bounded by a sequence with bounded
+**(c) Loss as slack.** For forgetting steps `K t` that agree with reference steps `K₀ t` off
+sets `B t` of worlds, a row with coefficients in `[lo, hi]` has, at every stage `T`, excess at
+the held credence at most its excess under the reference schedule plus `(hi − lo)` times the
+sum over `t < T` of the mass the credence held at stage `t` places on `B t` (`schedule_slack`,
+by induction from `approx_step`). The reference is exact forgetting when its steps are maps of
+worlds; the theorem compares two stochastic schedules and asks nothing of the reference. Where those masses are bounded by a sequence with bounded
 partial sums, or a summable one, the bound is uniform in `T` (`schedule_bounded`,
 `schedule_summable`).
 
@@ -611,14 +629,18 @@ coordinate by their combinations, which is not an omission from a set of rows; a
 bound holds whoever chose the omission, so it does not separate a fixed from an adaptive
 choice, which is what the fixture exhibits. The instantiation is not made in Lean.
 
-**What a bounded reasoner must retain, on these results.** The docket state, since defeat and
-withdrawal act through ports and ids. For each live item, its row specialized at the current
-settlement and restricted to the unsettled coordinates; settled coordinates and their pin rows
-may go. Every unsettled coordinate a retained row mentions. The holding of its case base on the
-reason sets it may meet, in place of the cases. For each account with no live port, its
-receipts and the resolution it denotes; for each live account, the account. Not known: a space
-bound — one elimination step can square the number of rows, a staircase of cases is
-irredundant, and a receipt carries a history prefix; whether these pieces compose into one
+**What a bounded reasoner may retain, on these results.** A sufficient retained state, piece
+by piece, each piece exact by one theorem above and the composition unproved: the docket state,
+since defeat and withdrawal act through ports and ids; for every item of the seed and every
+warrant — not only those live now, since `forget_settled` selects the live rows at the docket
+state queried — its row specialized at the current settlement and restricted to the unsettled
+coordinates, with its port or id, the settled coordinates and their pin rows going; every
+unsettled coordinate; the holding of its case base on the reason sets it may meet, in place of
+the cases; for each account with no live port, its receipts and the resolution it denotes; for
+each live account, the account. Nothing here shows any of this necessary, and dropping an
+unsettled coordinate is not always a loss — one fixture shows it can be. Not known: a space
+bound — one elimination step can square the number of rows, `n` strengths carry `2 ^ n`
+holdings, and a receipt carries a history prefix; whether these pieces compose into one
 retained state (item 135); and what the market or the inductor must retain, which is out of
 scope.
 
@@ -640,6 +662,12 @@ rows.
   and every broken commitment has one (`Challenge.sound`, `challenge_complete`).
 - **A licensed change admits no valid challenge on the protected fragment**
   (`licensed_no_challenge`); an unlicensed one admits one (`unlicensed_has_challenge`).
+- Neither the licence nor that theorem reads the old commitments. `FragmentOfOld` — every
+  protected row has an entailment certificate against the old commitments — is the relation
+  that ties the fragment to them; under it a valid challenge on the fragment is a broken
+  commitment of the old (`challenge_on_fragment_breaks_old`), and the split fixture satisfies
+  it (`split_fragmentOfOld`). The occurrence is data on rows; nothing makes it a step of
+  `OpenIntegrityEvolution`, and its licence is a statement about the old commitments at issue.
 - For a change that adds one coordinate, adding nothing is one entailment certificate per row
   that elimination leaves (`addsNothing_certified`). For other translations a conservativity
   licence has no finite form here.
@@ -676,8 +704,8 @@ the pin `P(X) ≥ 1` is broken at every new credence, charged `1`, and `1/2` und
 not see the shedding; a challenge raised later does. The queue entry
 `open--broken-commitment-bars-or-accounts` carries this comparison and stays queued.
 
-**Verdict: fits in part.** The licence and the challenge fit; the issuer is not determined and
-no reading of a broken commitment registers the fourth row.
+**Verdict: fits in part.** The licence and the challenge fit, as data beside the record; the
+issuer is not determined and no reading of a broken commitment registers the fourth row.
 
 ### F5. Refinements
 
@@ -692,32 +720,44 @@ no reading of a broken commitment registers the fourth row.
   certificate's mass, which validity on the region does not bound.
 - **The row logic** is stated once in `THEOREM.md`.
 - **The digest.** `state/prs.json`, entry 142: `merged` is `2026-11-09`; the summary and
-  `state_after` cover both passes.
+  `state_after` cover both passes, the latter stating the separate results and their limits.
+
+**Verdict: fits in part.** The adapter's certificates exist below a rational threshold and at
+tolerance `0`; the other two refinements are done as stated.
 
 ### The conjectures
 
 | | conjecture | outcome | by |
 |---|---|---|---|
-| C1 | a holding is a sufficient statistic, bounded by the vocabulary of reasons | **narrowed**: sufficiency proved; the bound proved over a finite set of reason sets and refuted for the kinds of reasons alone | `permitted_append_congr`, `reachSet_eventually_const`, `staircase_irredundant` |
+| C1 | a holding is a sufficient statistic, bounded by the vocabulary of reasons | **narrowed**: sufficiency proved; over a finite set of forms the holding is eventually constant and permission with it, with no bound on the stage or on a representation's size; over the kinds of reasons alone there is no finite representation | `permitted_append_congr`, `holding_eventually_const_of_finite_forms`, `stairs_holding_injective` |
 | C2 | forgetting is projection, exact on the retained fragment; settled sentences and closed accounts are safe, a live obligation is not | **proved**, the closed account as far as `Conservation` reads it | `forget_exact`, `forget_settled`, `closed_subst`, `live_forget_cost` |
-| C3 | loss composes as slack; summable slack loses a bounded amount | **proved**, for loss that is a difference from an exact step on a set of worlds | `schedule_slack`, `schedule_summable` |
-| C4 | choosing what to forget is steering | **proved**, at one fixture | `selective_forgetting` |
+| C3 | loss composes as slack; summable slack loses a bounded amount | **proved**, as a comparison of two stochastic schedules differing on sets of worlds | `schedule_slack`, `schedule_summable` |
+| C4 | choosing what to forget is steering | **proved**, at one fixture, against choices of a fixed coordinate | `selective_forgetting` |
 | C5 | a vocabulary change should be an owned, licensed, challengeable act | **narrowed**: the occurrence, licence and challenge are defined and the two theorems proved; the owner is not determined, and a licence at issue does not cover what the record gains later | `licensed_no_challenge`, `challenge_complete`, `zero_pin_charge` |
 | C6 | decisions belong on the record; conduct held to its assessed past; an order among reasons accumulates | **narrowed**: all three hold at the fixtures; the order sorts continuations into permitted and forbidden and ranks none | `assessor_sets_precedent`, `permitted_both_silent`, `holding_mono` |
 
 ### What the follow-up does not establish
 
 - **No retained state.** The pieces of F3's closing paragraph are separate theorems. Item 135.
-- **No space bound**, and no count of the reason sets a finite grid of kinds and strengths
-  gives.
+- **No space bound.** The canonical reason sets over a finite set `Φ` of forms number at most
+  `2 ^ |Φ|`; nothing bounds the stage at which the holding stops changing, and no theorem
+  gives a least set of generators of a holding — the staircase's `2 ^ n` is an injectivity read
+  as a count.
+- **No necessary retention rule.** The retained state of F3's closing paragraph is sufficient
+  piece by piece; nothing shows any piece necessary, and `live_forget_cost` shows that dropping
+  an unsettled coordinate can lose, not that it must.
+- **The fragment and the old commitments** are related only by `FragmentOfOld`, a declared
+  relation the licence does not read.
 - **The recollection.** Forgetting by projection is a retelling that is computed. For an
   unsettled coordinate the retelling is still chosen — as a fair coin or as false — and nothing
   here chooses. No stage is shown to recollect an earlier one.
 - **C2's cost is not C3's slack.** `schedule_slack` bounds a schedule against the exact
-  schedule, which already forgets. The loss of `live_forget_cost` occurs under an exact step
+  schedule, which may itself forget. The loss of `live_forget_cost` occurs under an exact step
   and is not bounded by it.
-- **C4 is one fixture**: two records, one obligation. No theorem compares classes of policies,
-  and nothing connects it to the Logical Induction non-capture chain.
+- **C4 is one fixture**: two records, one obligation, and the fixed choices are choices of a
+  coordinate. A rule fixed in advance that names the coordinate by its role — drop the one the
+  obligation runs through — reproduces the adaptive result; no theorem compares classes of
+  policies, and nothing connects the fixture to the Logical Induction non-capture chain.
 - **The assessed act is beside the docket.** `DocketState` is unchanged, `caseOf` is not
   replaced, the grounds against an act are not computed from `Grounds.survivors`, and the
   verdict is not tied to `Assessed`.
@@ -734,13 +774,43 @@ no reading of a broken commitment registers the fourth row.
 - **The literature.** Le Cam's deficiency, the reason model of precedent, and Hegel's and
   Brandom's recollection are named in the dispatches and were not consulted. Nothing is cited.
 
+### External review
+
+GPT-6 Astra (OpenAI), via `codex`, reviewed the follow-up on pull request #142 at `8a5b591f` on
+2026-11-09, read-only; its text is `prompts/2026-11-08-content-recollection/REVIEW-astra-followup.md`,
+verbatim. Its merge word: **fix-then-merge**. It found the theorem statements supporting the
+restricted results and the registry and digest promoting stronger ones. One review pass and one
+fix pass; the fixes are in the commits that add this section.
+
+| finding | disposition |
+|---|---|
+| **Blocking.** The size claims overreach: a finite set of kinds and strengths does not make `R` finite without canonical representatives and an invariance theorem; the staircase proves deletion-irredundance, not a representation-size bound; the registry's "number of cases a holding needs" exceeds its statement | fixed: `holding_congr_covers`, `normal`, `reasonSets` (at most `2 ^ |Φ|`), `holding_eventually_const_of_finite_forms`, `permission_eventually_const_of_finite_forms`; `stairs_permitted_iff`, `stairs_holding_injective` (two staircases with the same holding have the same steps, so `n` strengths carry `2 ^ n` holdings); §F1, the registry notes of `precedent.permitted-iff-reach` and `precedent.staircase-irredundant`, `THEOREM.md`, item 117, the 2026-11-09 holding entry, the README and the digest reworded; that neither the stage nor a representation's size is bounded is stated |
+| **Blocking.** The digest's `state_after` claims a combined bounded-memory result the report leaves open, and reads a closed account as receipts alone | fixed: rewritten as the four separate results and their limits, the closed account as receipts and the resolution it denotes |
+| "The assessed past never ranks two permitted alternatives" overgeneralizes `permitted_both_silent`, which concerns a choice and its reverse | fixed: §F2 says so, and names the case it does not cover |
+| `shortfall_of_backed_not_rationalizable` is a consequence of a verdict, not a mechanism enforcing compliance | fixed: §F2 and the README |
+| The retention paragraph should be a sufficient proposal, not a necessity rule; retaining only rows live now is not justified, since `forget_settled` selects live rows at the queried docket state | fixed: §F3's closing paragraph says what is sufficient, piece by piece, that nothing is shown necessary, and that every item's row is retained; the registry note of `content.forget-settled` and `THEOREM.md` say what the theorem reads |
+| `live_forget_cost` shows that forgetting an unsettled coordinate can lose, not that it must | fixed: §F3, the README, the digest and the 2026-11-09 forgetting entry say *can* |
+| `K₀` is a reference schedule; nothing certifies it as exact forgetting | fixed: *reference* throughout — the Lean header and docstrings of `Forgetting.lean`, `THEOREM.md`, the registry entry, §F3 and the conjecture table |
+| Nothing relates `fragment` to `old`; the licence never reads `old` | fixed: `FragmentOfOld`, `challenge_on_fragment_breaks_old`, `split_fragmentOfOld`; §F4, the registry note, `THEOREM.md`, the 2026-11-09 vocabulary entry and *What the follow-up does not establish* say the relation is declared |
+| The occurrence is data, not a docket occurrence checked by the account system | fixed: §F4, item 134 and the registry note say so |
+| Abandonment's "every change" holds for nonempty regions of credences | fixed: the queue table says *whatever the new credences* |
+| F11 is filed where the contained-fix rule would let the round take it; the deferral is unexplained | fixed: the deviation states the reason |
+| F5 has no fit verdict | fixed: *fits in part* |
+| Living-document residue: item 79's "as open as before", the README's "the case the docket lacked" | fixed |
+| Item 118's body still says rational attainment is absent | **disputed**: the Item section is the request as filed, its heading note states what is proved, and its status is the maintainer's word (ruling G3; outstanding action 3) |
+| The README repeats the report at length and mixes present and past | **disputed in part**: the verdict line is the round record's verdict, which `state/rounds.json` carries by `verdict_source`; its follow-up sentences are reworded where the review found the residue |
+| C4 should keep its fixed-coordinate qualification | fixed: §F3, the conjecture table, the registry note, *What the follow-up does not establish* |
+| *What the follow-up does not establish* should name normalization and minimum-generator bounds, the fragment relation, and the absence of a necessary retention rule | fixed: three entries added |
+| The PR description and auto-merge setting could not be read (GitHub's API was unavailable to the reviewer) | the description is updated with this pass and carries the attribution section; auto-merge is off |
+
 ### Verification
 
-Local, Python 3.12, on the tree with `main` merged in at `eb98367e`.
+Local, Python 3.12, on the tree with `main` merged in at `eb98367e`, each long gate run once
+before the external review and once after the fix pass.
 
 - `~/.claude/scripts/safe-lake.sh build Workspace`: `Build completed successfully (4113 jobs)`.
-- `python3.12 tests/audit_axioms.py`, one run: `AXIOM AUDIT: 3945 results across 123 files, all
-  within ['Classical.choice', 'Quot.sound', 'propext']`.
+- `python3.12 tests/audit_axioms.py`, one run after the fix pass: `AXIOM AUDIT: 3963 results
+  across 123 files, all within ['Classical.choice', 'Quot.sound', 'propext']` (3945 before it).
 - `python3.12 tests/run.py`, one run: `ALL GREEN (80 project(s))`; `LEAN SORRY GATE: clean over
   123 files`; `SITE DOM GATE: app boots, 73 capsules, 151 edges, cards open, fragments present,
   no overlaps`; `LEAN BUILD SKIPPED`, the build above being the Lean verification.

@@ -1170,7 +1170,7 @@ change, and the count of those is the size of the free choice remaining.
 | `point` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Headline.FormationData.point` |
 | `restoration2` | def | unrecorded | Lean only | `Workspace.Deference.Headline.restoration2` |
 
-## normativity — 1314 names, 876 of them Lean only
+## normativity — 1319 names, 880 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -2028,9 +2028,13 @@ change, and the count of those is the size of the free choice remaining.
 | `against` | def | unrecorded | wiki, note, prose | `Workspace.Normativity.Contrib.PrecedentHolding.against` |
 | `cycleHead` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentHolding.cycleHead` |
 | `cycleLast` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentHolding.cycleLast` |
+| `holdingSet` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentHolding.holdingSet` |
 | `humbleScale` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentHolding.humbleScale` |
+| `normal` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentHolding.normal` |
 | `reachSet` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentHolding.reachSet` |
+| `reasonSets` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentHolding.reasonSets` |
 | `staircase` | def | unrecorded | prose | `Workspace.Normativity.Contrib.PrecedentHolding.staircase` |
+| `stairs` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentHolding.stairs` |
 | `step` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.PrecedentHolding.step` |
 | `vacuous` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentHolding.vacuous` |
 | `groupOf` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ProjectionBridge.groupOf` |
@@ -2242,6 +2246,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Challenge` | structure | unrecorded | prose | `Workspace.Normativity.Contrib.VocabularyAct.Challenge` |
 | `Challenge.Valid` | def | unrecorded | prose | `Workspace.Normativity.Contrib.VocabularyAct.Challenge.Valid` |
 | `Charge` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.VocabularyAct.Charge` |
+| `FragmentOfOld` | def | unrecorded | prose | `Workspace.Normativity.Contrib.VocabularyAct.FragmentOfOld` |
 | `Licensed` | def | unrecorded | wiki, note, prose | `Workspace.Normativity.Contrib.VocabularyAct.Licensed` |
 | `Split` | def | unrecorded | prose | `Workspace.Normativity.Contrib.VocabularyAct.Split` |
 | `VocabularyChange` | structure | unrecorded | prose | `Workspace.Normativity.Contrib.VocabularyAct.VocabularyChange` |
@@ -2357,7 +2362,7 @@ change, and the count of those is the size of the free choice remaining.
 | `stage` | def | 2026-10-20-warrant-enforcement-semantics | wiki, note, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.stage` |
 | `strItem` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Witness.strItem` |
 | `strengthRow` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.strengthRow` |
-| `strengths` | def | 2026-10-20-warrant-enforcement-semantics | wiki, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Witness.strengths` |
+| `strengths` | def | 2026-10-20-warrant-enforcement-semantics | wiki | `Workspace.Normativity.Contrib.WarrantEntitlement.Witness.strengths` |
 | `subItem` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Witness.subItem` |
 | `toForceRow` | def | 2026-10-20-warrant-enforcement-semantics | wiki | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.toForceRow` |
 | `trace` | def | 2026-10-20-warrant-enforcement-semantics | wiki, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.trace` |

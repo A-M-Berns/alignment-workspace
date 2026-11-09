@@ -28,10 +28,11 @@ full record forces `P(Y) ∈ [3/4, 1]`; forgetting `X` after it settles keeps th
 later resolution of the ports, and every later substitution leaves its receipts and its
 denotation unchanged (`closed_evaluate_const`, `closed_subst`).
 
-§4.  **Loss as slack.**  Along a schedule of forgetting steps each differing from an exact step
-on a set of worlds, the excess of a row at the final stage exceeds its excess under the exact
-schedule by at most the row's oscillation times the sum over stages of the held credence's mass
-on that stage's set (`schedule_slack`); where those masses are bounded by a summable sequence
+§4.  **Loss as slack.**  Along a schedule of forgetting steps each differing from a reference
+step on a set of worlds, the excess of a row at the final stage exceeds its excess under the
+reference schedule by at most the row's oscillation times the sum over stages of the held
+credence's mass on that stage's set (`schedule_slack`); the reference is exact forgetting when
+its steps are maps of worlds, which the theorem does not require; where those masses are bounded by a summable sequence
 the total is bounded uniformly in the number of stages (`schedule_bounded`,
 `schedule_summable`).
 
@@ -434,10 +435,10 @@ def scheduleLoss (K : ∀ t, Recollection (n (t + 1)) (n t)) (B : ∀ t, Finset 
   | 0 => 0
   | T + 1 => scheduleLoss K B q T + ∑ w ∈ B T, (chain K T).push q w
 
-/-- **Forgetting with loss composes as slack.**  If each step `K t` agrees with an exact step
-`K₀ t` off the set `B t`, then at every stage a row with coefficients in `[lo, hi]` has excess
-at the held credence at most its excess under the exact schedule plus `(hi − lo)` times the
-accumulated mass. -/
+/-- **Forgetting with loss composes as slack.**  If each step `K t` agrees with a reference
+step `K₀ t` off the set `B t`, then at every stage a row with coefficients in `[lo, hi]` has
+excess at the held credence at most its excess under the reference schedule plus `(hi − lo)`
+times the accumulated mass. -/
 theorem schedule_slack (K K₀ : ∀ t, Recollection (n (t + 1)) (n t))
     (B : ∀ t, Finset (Fin (n t))) (hB : ∀ t w, w ∉ B t → (K t).k w = (K₀ t).k w) (lo hi : ℚ)
     (q : Fin (n 0) → ℚ) (hq : ∀ w, 0 ≤ q w) :
@@ -514,7 +515,7 @@ theorem schedule_summable (K K₀ : ∀ t, Recollection (n (t + 1)) (n t))
   linarith
 
 /-- The hypotheses of `schedule_slack` inhabited: two worlds at every stage, each step
-retelling both worlds as the first where the exact step is the identity, so that the steps
+retelling both worlds as the first where the reference step is the identity, so that the steps
 differ on the second world; the row `P(S) ≥ 1/2`; two stages from the credence `(1/2, 1/2)`. -/
 theorem schedule_slack_witness :
     excess (atLeast (1/2))

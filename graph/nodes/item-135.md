@@ -60,8 +60,9 @@ theorem that every forced interval on a retained coordinate and every permission
 declared reason sets computed from the retained state equals the full record's, under every
 later docket state, settlement and continuation; (c) a space bound in the numbers of unsettled
 coordinates, live items and declared reason sets, or the fixture showing none — one
-elimination step can square the number of rows, a staircase of cases is irredundant
-(`precedent.staircase-irredundant`), and a receipt stores the history prefix it was issued at
+elimination step can square the number of rows, `n` strengths over one pair of kinds carry a
+different holding for each set of steps (`PrecedentHolding.stairs_holding_injective`), and a
+receipt stores the history prefix it was issued at
 (`OccurrenceIntegrity.Authority.atHistory`); (d) the rule for an unsettled coordinate — when it
 may be dropped and what is charged for it — stated against the three readings of
 `VocabularyAct` (`Bars`, `Accounted`, `Split`), none of which registers the shedding of a live

@@ -155,7 +155,10 @@ For a list of cases `Γ` and a case `c`:
 of `Γ` and `c`. *With it:* `permitted_append_congr` (same holding, same permissions after any
 continuations); `permission_eq_iff_reach_eq` (among rationalizable bases, same permissions iff
 same reach; its hypotheses inhabited by `holding_not_minimal`); `reachSet_eventually_const`
-(over a finite set of reason sets). *Typed:* the reading of a record as a case.
+(over a finite set of reason sets); `holding_eventually_const_of_finite_forms` and
+`permission_eventually_const_of_finite_forms` (over all reason sets drawn from a finite set of
+forms, through the canonical representatives `normal` and `reasonSets`, at most `2 ^ |Φ|` of
+them). *Typed:* the reading of a record as a case.
 
 ## `precedent.staircase-irredundant` — `PrecedentHolding.staircase_irredundant`
 
@@ -165,7 +168,12 @@ For `s : ℕ → ℚ` strictly increasing and `i < n`: `¬ Permitted (staircase 
 the steps for `j < n`.
 
 *Hypotheses:* `StrictMono s`, `i < n`. *Inhabited by:* `staircase_witness` (`humbleScale`,
-`n = 3`, `i = 1`); `humbleScale_spec` puts the scale inside `(0,1)`.
+`n = 3`, `i = 1`); `humbleScale_spec` puts the scale inside `(0,1)`. *Beside it:*
+`stairs_permitted_iff` — the reverse decision at `s i` is permitted by the staircase at the
+steps `l` iff `i ∉ l` — and `stairs_holding_injective`: two staircases over one scale with the
+same holding have the same steps. The statement says that each case is needed; the number of
+distinct holdings over `n` strengths, `2 ^ n`, is read off the injectivity and not counted in
+Lean.
 
 ## `precedent.assessor-sets-precedent` — `AssessedConduct.assessor_sets_precedent`
 
@@ -195,7 +203,9 @@ For a seed `S` over `d + 1` coordinates, warrants `W`, docket state `st`, settle
 row `r` of every item of `S.liveSub st ++ W` and of `S.liveStr st`.
 
 *Hypotheses:* `F.val k = some b`, `F.le F'`. *Inhabited by:* `forget_settled_witness`
-(`liveSeed`, `X` settled true, `F' = F`). *Necessity of the first:* `live_forget_cost` — with
+(`liveSeed`, `X` settled true, `F' = F`). *Reads:* the seed's and the warrants' rows, selected
+by the docket state queried, so the retained rows are every item's and not only the items live
+at the time of forgetting. *Necessity of the first:* `live_forget_cost` — with
 `k` unsettled the projection taken before the settlement does not give the forced region after
 it.
 
@@ -208,7 +218,10 @@ For a vocabulary change `V` with `Licensed V` and any challenge `c`:
 `P(S₁) ≥ 1/5`, `P(S₂) ≥ 1/5`, protecting the two credence rows), consumed in
 `splitChallenge_valid`. *The converse:* `unlicensed_has_challenge`. *Outside the fragment:*
 `splitChallenge_valid` — `P(S) ≥ 1/2` is validly challenged against the old commitments.
-*Typed:* the protected fragment; the owner, which nothing reads.
+*Not read:* `V.old`; `FragmentOfOld V` ties the fragment to it, and under it a valid challenge
+on the fragment is a broken commitment of the old (`challenge_on_fragment_breaks_old`,
+inhabited by `split_fragmentOfOld`). *Typed:* the protected fragment; the owner, which nothing
+reads.
 
 ## `memory.live-forget-cost` — `Forgetting.live_forget_cost`
 
@@ -221,8 +234,9 @@ forced region under `settledX` is `{x | InCube x ∧ 3/4 ≤ x 0}`.
 
 ## `memory.schedule-slack` — `Forgetting.schedule_slack`
 
-For `K K₀ : ∀ t, Recollection (n (t + 1)) (n t)` and sets `B t` of stage-`t` worlds with `K t`
-and `K₀ t` agreeing off `B t`, a nonnegative `q` on the first worlds, and bounds `lo`, `hi`: for
+For `K K₀ : ∀ t, Recollection (n (t + 1)) (n t)` — the schedule and a reference schedule, of
+which nothing is assumed — and sets `B t` of stage-`t` worlds with `K t` and `K₀ t` agreeing
+off `B t`, a nonnegative `q` on the first worlds, and bounds `lo`, `hi`: for
 every `T` and every row `r` over the stage-`T` worlds with coefficients in `[lo, hi]`,
 `excess r ((chain K T).push q) ≤ excess r ((chain K₀ T).push q) + (hi − lo) · scheduleLoss K B q T`,
 where `scheduleLoss K B q T = Σ_{t < T} Σ_{w ∈ B t} (chain K t).push q w`.

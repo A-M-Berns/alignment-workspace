@@ -7,6 +7,7 @@
 | `prompts/2026-11-08-content-recollection/REVIEW-astra-2026-11-08.md` (verbatim) | GPT-6 Astra (OpenAI), via `codex`, an independent review of this round's pull request | `ci-only` | 2026-11-08 | `prompts/2026-11-08-content-recollection/` |
 | the *Follow-up of 2026-11-09* of `REPORT.md`; *The row logic* and the ten statements after it in `THEOREM.md`; the follow-up sentences of `README.md` | Claude Fable 5.1 (Anthropic); the dispatch `PROMPT-followup.md` kept verbatim, its author model unrecorded | `ci-only` | 2026-11-09 | `prompts/2026-11-08-content-recollection/` |
 | `lean/Workspace/Normativity/Contrib/PrecedentHolding.lean`, `AssessedConduct.lean`, `Forgetting.lean`, `VocabularyAct.lean`, `AdapterCertificates.lean` (new) | Claude Fable 5.1 (Anthropic) | `ci-only` | 2026-11-09 | `prompts/2026-11-08-content-recollection/` |
+| `prompts/2026-11-08-content-recollection/REVIEW-astra-followup.md` (verbatim) | GPT-6 Astra (OpenAI), via `codex`, an independent review of the follow-up on this round's pull request | `ci-only` | 2026-11-09 | `prompts/2026-11-08-content-recollection/` |
 
 Lean is adjudicated by the kernel and the axiom audit. `RowAlternative.lean` imports
 `EconCSLib.Math.LinearAlgebra.Farkas` from the pinned dependency set; its two theorems audit to

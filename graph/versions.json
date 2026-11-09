@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "1706b0911732481378cf896f",
-  "index.json": "fd077c3018e610ad73d86485"
+  "derived.json": "57e0e00849cd96180eac78ef",
+  "index.json": "97a4ab04bdb4c756cf724bdc"
  },
- "generated_hash": "9c839f58009cf0a3119ddaeb",
+ "generated_hash": "2d66fbbd68c70e0a69b16a27",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -13857,6 +13857,11 @@
     "date": "2026-11-09",
     "normalized": "forgetting with loss composes as slack along a schedule of forgetting steps each agreeing with an exact step except on a set of worlds the excess of a row at the credence held at any stage is at most its excess under the exact schedule plus the rows oscillation times the sum over the earlier stages of the mass the held credence placed on that stages set",
     "version": 1
+   },
+   {
+    "date": "2026-11-09",
+    "normalized": "forgetting with loss composes as slack along a schedule of forgetting steps each agreeing with a reference step except on a set of worlds the excess of a row at the credence held at any stage is at most its excess under the reference schedule plus the rows oscillation times the sum over the earlier stages of the mass the held credence placed on that stages set",
+    "version": 2
    }
   ],
   "memory.schedule-slack.bridge": [
@@ -13864,6 +13869,11 @@
     "date": "2026-11-09",
     "normalized": "the statement of record of memory schedule slack formalizes the registered claim as the registry reads it along a schedule of forgetting steps each agreeing with an exact step off a set of worlds a rows excess exceeds its excess under the exact schedule by at most its oscillation times the accumulated mass on those sets",
     "version": 1
+   },
+   {
+    "date": "2026-11-09",
+    "normalized": "the statement of record of memory schedule slack formalizes the registered claim as the registry reads it along a schedule of forgetting steps each agreeing with a reference step off a set of worlds a rows excess exceeds its excess under the reference schedule by at most its oscillation times the accumulated mass on those sets",
+    "version": 2
    }
   ],
   "memory.schedule-slack.complete": [
@@ -17020,6 +17030,11 @@
     "date": "2026-11-09",
     "normalized": "the statement of record of precedent staircase irredundant formalizes the registered claim as the registry reads it over one pair of kinds every case of a staircase of n cases at strictly increasing strengths is needed so the kinds of reasons alone do not bound the holding",
     "version": 1
+   },
+   {
+    "date": "2026-11-09",
+    "normalized": "the statement of record of precedent staircase irredundant formalizes the registered claim as the registry reads it over one pair of kinds no case of a staircase of n cases at strictly increasing strengths is redundant the reverse decision at the i th strength is forbidden by the staircase and permitted without its i th case",
+    "version": 2
    }
   ],
   "precedent.staircase-irredundant.complete": [

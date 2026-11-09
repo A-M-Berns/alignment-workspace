@@ -23,9 +23,17 @@ continuation, the reach on `R × R` with the rationalizability bit is closed und
 continuation (`agreeOn_cons`).  For finite `R` it is a subset of `R × R`, it only grows
 (`reach_mono`), and along any sequence of continuations it is eventually constant
 (`reachSet_eventually_const`, by `SeedStatics.eventually_const_of_finite`), after which
-permission over `R` is constant (`permission_eventually_const`).  Without a finite set of
-strengths no such bound holds: over one pair of kinds, `n` cases at `n` strengths are each
-needed (`staircase_irredundant`), at strengths inside `(0,1)` (`humbleScale`).
+permission over `R` is constant (`permission_eventually_const`).  A finite set `Φ` of forms —
+finitely many kinds at finitely many strengths — gives such an `R`: every reason set drawn
+from `Φ` covers and is covered by one of at most `2 ^ |Φ|` canonical lists (`normal`,
+`reasonSets`, `card_reasonSets_le`), the holding does not distinguish reason sets that cover
+each other (`holding_congr_covers`), and so the holding and permission over all reason sets
+drawn from `Φ` are eventually constant (`holding_eventually_const_of_finite_forms`,
+`permission_eventually_const_of_finite_forms`).  Without a finite set of strengths there is no
+bound: over one pair of kinds no case of a staircase of `n` cases at `n` strengths is redundant
+(`staircase_irredundant`), and two staircases with the same holding have the same steps
+(`stairs_holding_injective`), so `n` strengths carry a different holding for each set of steps;
+at strengths inside `(0,1)` (`humbleScale`).
 
 §3.  Merging.  The union of two case bases is rationalizable iff the union of their holdings
 has no cycle (`rationalizable_append_iff`).  Two rationalizable bases whose union is not:
@@ -305,6 +313,93 @@ theorem permission_eventually_const (R : Finset (List (Form d))) (Γ : ℕ → L
   rw [permitted_iff, permitted_iff]
   simp only [hrat, true_and, key]
 
+theorem covers_of_subset {V W : List (Form d)} (h : ∀ w ∈ W, w ∈ V) : Covers V W :=
+  fun w hw => ⟨w, h w hw, rfl, le_rfl⟩
+
+/-- The holding does not distinguish reason sets that cover each other. -/
+theorem holding_congr_covers {Γ : List (Case d)} {V V' U U' : List (Form d)} (hV : Covers V V')
+    (hV' : Covers V' V) (hU : Covers U U') (hU' : Covers U' U) :
+    Holding Γ V U ↔ Holding Γ V' U' :=
+  ⟨fun h => (h.covers_left hV').covers_right hU, fun h => (h.covers_left hV).covers_right hU'⟩
+
+/-- A canonical representative of a reason set: its forms without repetition, in one order. -/
+noncomputable def normal (V : List (Form d)) : List (Form d) := V.toFinset.toList
+
+theorem covers_normal (V : List (Form d)) : Covers (normal V) V ∧ Covers V (normal V) :=
+  ⟨covers_of_subset fun w hw => by simpa [normal] using hw,
+    covers_of_subset fun w hw => by simpa [normal] using hw⟩
+
+/-- **The canonical reason sets over a finite set of forms**: one list for each subset. -/
+noncomputable def reasonSets (Φ : Finset (Form d)) : Finset (List (Form d)) :=
+  Φ.powerset.image Finset.toList
+
+theorem card_reasonSets_le (Φ : Finset (Form d)) : (reasonSets Φ).card ≤ 2 ^ Φ.card :=
+  Finset.card_image_le.trans_eq (Finset.card_powerset Φ)
+
+theorem normal_mem_reasonSets {Φ : Finset (Form d)} {V : List (Form d)} (h : ∀ v ∈ V, v ∈ Φ) :
+    normal V ∈ reasonSets Φ :=
+  Finset.mem_image.2
+    ⟨V.toFinset, Finset.mem_powerset.2 fun v hv => h v (List.mem_toFinset.1 hv), rfl⟩
+
+open Classical in
+/-- The holding restricted to a finite universe `R` of reason sets, as a subset of `R × R`. -/
+noncomputable def holdingSet (R : Finset (List (Form d))) (Γ : List (Case d)) :
+    Finset {p : List (Form d) × List (Form d) // p ∈ R ×ˢ R} :=
+  Finset.univ.filter fun p => Holding Γ p.1.1 p.1.2
+
+theorem mem_holdingSet {R : Finset (List (Form d))} {Γ : List (Case d)}
+    (p : {p : List (Form d) × List (Form d) // p ∈ R ×ˢ R}) :
+    p ∈ holdingSet R Γ ↔ Holding Γ p.1.1 p.1.2 := by
+  simp [holdingSet]
+
+theorem holdingSet_eventually_const (R : Finset (List (Form d))) (Γ : ℕ → List (Case d))
+    (c : ℕ → Case d) (hstep : ∀ n, Γ (n + 1) = c n :: Γ n) :
+    ∃ N, ∀ n, N ≤ n → holdingSet R (Γ n) = holdingSet R (Γ N) := by
+  have hmono : Monotone fun n => holdingSet R (Γ n) := by
+    refine monotone_nat_of_le_succ fun n p hp => ?_
+    rw [mem_holdingSet] at hp ⊢
+    rw [hstep]
+    exact holding_mono (fun c' hc' => List.mem_cons_of_mem _ hc') hp
+  exact eventually_const_of_finite (d := 0) (fun n => holdingSet R (Γ n)) hmono (fun _ => ∅)
+    monotone_const fun A _ => A
+
+/-- **Over a finite set of forms the holding is eventually constant**: along any sequence of
+continuations, from some stage on the holding relates the same reason sets drawn from `Φ`.
+The continuations themselves need not be drawn from `Φ`. -/
+theorem holding_eventually_const_of_finite_forms (Φ : Finset (Form d)) (Γ : ℕ → List (Case d))
+    (c : ℕ → Case d) (hstep : ∀ n, Γ (n + 1) = c n :: Γ n) :
+    ∃ N, ∀ n, N ≤ n → ∀ V U : List (Form d), (∀ v ∈ V, v ∈ Φ) → (∀ u ∈ U, u ∈ Φ) →
+      (Holding (Γ n) V U ↔ Holding (Γ N) V U) := by
+  obtain ⟨N, hN⟩ := holdingSet_eventually_const (reasonSets Φ) Γ c hstep
+  refine ⟨N, fun n hn V U hV hU => ?_⟩
+  have hmem : (normal V, normal U) ∈ reasonSets Φ ×ˢ reasonSets Φ :=
+    Finset.mem_product.2 ⟨normal_mem_reasonSets hV, normal_mem_reasonSets hU⟩
+  have key := Finset.ext_iff.1 (hN n hn) ⟨_, hmem⟩
+  rw [mem_holdingSet, mem_holdingSet] at key
+  have hc : ∀ Γ' : List (Case d), Holding Γ' V U ↔ Holding Γ' (normal V) (normal U) := fun _ =>
+    holding_congr_covers (covers_normal V).2 (covers_normal V).1 (covers_normal U).2
+      (covers_normal U).1
+  rw [hc, hc]
+  exact key
+
+/-- **Over a finite set of forms permission is eventually constant** along any sequence of
+permitted continuations of a rationalizable base. -/
+theorem permission_eventually_const_of_finite_forms (Φ : Finset (Form d))
+    (Γ : ℕ → List (Case d)) (c : ℕ → Case d) (hstep : ∀ n, Γ (n + 1) = c n :: Γ n)
+    (h0 : Rationalizable (Γ 0)) (hperm : ∀ n, Permitted (Γ n) (c n)) :
+    ∃ N, ∀ n, N ≤ n → ∀ c' : Case d, (∀ v ∈ c'.winners, v ∈ Φ) → (∀ v ∈ c'.losers, v ∈ Φ) →
+      (Permitted (Γ n) c' ↔ Permitted (Γ N) c') := by
+  have hrat : ∀ n, Rationalizable (Γ n) := by
+    intro n
+    cases n with
+    | zero => exact h0
+    | succ n => rw [hstep]; exact hperm n
+  obtain ⟨N, hN⟩ := holding_eventually_const_of_finite_forms Φ Γ c hstep
+  refine ⟨N, fun n hn c' hw hl => ?_⟩
+  rw [permitted_iff, permitted_iff]
+  unfold Reach
+  simp only [hrat, true_and, hN n hn _ _ hl hw]
+
 theorem covers_singleton (v w : Form d) : Covers [v] [w] ↔ kind v = kind w ∧ w.c ≤ v.c := by
   simp [Covers]
 
@@ -366,6 +461,63 @@ theorem staircase_irredundant (s : ℕ → ℚ) (hs : StrictMono s) (n i : ℕ) 
       rw [if_pos hlt]
       norm_num
     · simp [step, covers_singleton, kind] at hcov
+
+/-- The cases of a staircase at the listed steps. -/
+def stairs (s : ℕ → ℚ) (l : List ℕ) : List (Case 2) := l.map (step s)
+
+/-- With strictly increasing strengths, the reverse decision at the `i`-th strength is
+permitted by the staircase at the steps `l` iff `i` is not among them. -/
+theorem stairs_permitted_iff (s : ℕ → ℚ) (hs : StrictMono s) (l : List ℕ) (i : ℕ) :
+    Permitted (stairs s l) (against s i) ↔ i ∉ l := by
+  constructor
+  · intro h hi
+    exact (consistent_iff_pairwise _).1 h.consistent (against s i) List.mem_cons_self (step s i)
+      (List.mem_cons_of_mem _ (List.mem_map.2 ⟨i, hi, rfl⟩)) ⟨Covers.refl _, Covers.refl _⟩
+  · intro hi
+    have hne : ∀ j, step s j ≠ against s i := by
+      intro j h
+      have := congrArg Case.winners h
+      simp [step, against] at this
+    have mem : ∀ x ∈ against s i :: stairs s l,
+        x = against s i ∨ ∃ j, j ≠ i ∧ x = step s j := by
+      intro x hx
+      rcases List.mem_cons.1 hx with rfl | hx
+      · exact Or.inl rfl
+      · obtain ⟨j, hj, rfl⟩ := List.mem_map.1 hx
+        exact Or.inr ⟨j, fun h => hi (h ▸ hj), rfl⟩
+    refine rationalizable_of_rank
+      (fun c => if c = against s i then 1 else if s i < (c.winners.map Form.c).sum then 0 else 2) ?_
+    have rank_step : ∀ j, (if step s j = against s i then 1
+        else if s i < ((step s j).winners.map Form.c).sum then 0 else 2) =
+          if s i < s j then 0 else (2 : ℕ) := by
+      intro j
+      rw [if_neg (hne j)]
+      simp [step, Form.c]
+    intro x hx y hy hcov
+    rcases mem x hx with rfl | ⟨j, hj, rfl⟩ <;> rcases mem y hy with rfl | ⟨k, hk, rfl⟩
+    · simp [against, covers_singleton, kind] at hcov
+    · have hle : s k ≤ s i := by
+        simpa [against, step, covers_singleton, kind, Form.c] using hcov
+      simp only [rank_step, if_true]
+      rw [if_neg (not_lt.2 hle)]
+      norm_num
+    · have hle : s i ≤ s j := by
+        simpa [against, step, covers_singleton, kind, Form.c] using hcov
+      have hlt : s i < s j := lt_of_le_of_ne hle fun h => hj (hs.injective h).symm
+      simp only [rank_step, if_true]
+      rw [if_pos hlt]
+      norm_num
+    · simp [step, covers_singleton, kind] at hcov
+
+/-- **The holding of a staircase determines its steps**: two staircases over one scale with
+the same holding have the same steps.  So over one pair of kinds, the staircases drawn from
+`n` strengths have pairwise different holdings, one for each set of steps. -/
+theorem stairs_holding_injective (s : ℕ → ℚ) (hs : StrictMono s) (l l' : List ℕ)
+    (h : ∀ V U, Holding (stairs s l) V U ↔ Holding (stairs s l') V U) (i : ℕ) :
+    i ∈ l ↔ i ∈ l' := by
+  have := permitted_congr h (against s i)
+  rw [stairs_permitted_iff s hs, stairs_permitted_iff s hs] at this
+  exact not_iff_not.1 this
 
 /-- A strictly increasing scale of strengths inside `(0,1)`. -/
 def humbleScale (j : ℕ) : ℚ := 1 - 1 / ((j : ℚ) + 2)
@@ -482,11 +634,26 @@ theorem merged_discord_hidden :
 #print axioms Workspace.Normativity.Contrib.PrecedentHolding.mem_reachSet
 #print axioms Workspace.Normativity.Contrib.PrecedentHolding.reachSet_eventually_const
 #print axioms Workspace.Normativity.Contrib.PrecedentHolding.permission_eventually_const
+#print axioms Workspace.Normativity.Contrib.PrecedentHolding.covers_of_subset
+#print axioms Workspace.Normativity.Contrib.PrecedentHolding.holding_congr_covers
+#print axioms Workspace.Normativity.Contrib.PrecedentHolding.normal
+#print axioms Workspace.Normativity.Contrib.PrecedentHolding.covers_normal
+#print axioms Workspace.Normativity.Contrib.PrecedentHolding.reasonSets
+#print axioms Workspace.Normativity.Contrib.PrecedentHolding.card_reasonSets_le
+#print axioms Workspace.Normativity.Contrib.PrecedentHolding.normal_mem_reasonSets
+#print axioms Workspace.Normativity.Contrib.PrecedentHolding.holdingSet
+#print axioms Workspace.Normativity.Contrib.PrecedentHolding.mem_holdingSet
+#print axioms Workspace.Normativity.Contrib.PrecedentHolding.holdingSet_eventually_const
+#print axioms Workspace.Normativity.Contrib.PrecedentHolding.holding_eventually_const_of_finite_forms
+#print axioms Workspace.Normativity.Contrib.PrecedentHolding.permission_eventually_const_of_finite_forms
 #print axioms Workspace.Normativity.Contrib.PrecedentHolding.covers_singleton
 #print axioms Workspace.Normativity.Contrib.PrecedentHolding.step
 #print axioms Workspace.Normativity.Contrib.PrecedentHolding.against
 #print axioms Workspace.Normativity.Contrib.PrecedentHolding.staircase
 #print axioms Workspace.Normativity.Contrib.PrecedentHolding.staircase_irredundant
+#print axioms Workspace.Normativity.Contrib.PrecedentHolding.stairs
+#print axioms Workspace.Normativity.Contrib.PrecedentHolding.stairs_permitted_iff
+#print axioms Workspace.Normativity.Contrib.PrecedentHolding.stairs_holding_injective
 #print axioms Workspace.Normativity.Contrib.PrecedentHolding.humbleScale
 #print axioms Workspace.Normativity.Contrib.PrecedentHolding.humbleScale_spec
 #print axioms Workspace.Normativity.Contrib.PrecedentHolding.staircase_witness

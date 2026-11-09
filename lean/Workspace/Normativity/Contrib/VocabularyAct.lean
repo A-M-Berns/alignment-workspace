@@ -14,7 +14,11 @@ its pullback fails; its validity is decidable (`Challenge.Valid`).  A valid chal
 broken commitment and every broken commitment has one (`Challenge.sound`, `challenge_complete`);
 a licence exists iff the change refines the fragment (`licensed_iff_refines`); **a licensed
 change admits no valid challenge on the protected fragment** (`licensed_no_challenge`) and an
-unlicensed one admits one (`unlicensed_has_challenge`).  For a change that adds one coordinate,
+unlicensed one admits one (`unlicensed_has_challenge`).  The licence does not read the old
+commitments: `FragmentOfOld` is the relation tying the fragment to them, under which a valid
+challenge on the fragment is a broken commitment of the old
+(`challenge_on_fragment_breaks_old`).  The occurrence is data on rows; it is not a step of the
+accounted state.  For a change that adds one coordinate,
 adding nothing is a finite family of certificates as well: one for each row Fourier–Motzkin
 elimination leaves (`addsNothing_certified`).  On the split fixture a change protecting the
 credence rows alone is licensed and the commitment `P(S) ≥ 1/2` outside the fragment is
@@ -165,6 +169,21 @@ theorem unlicensed_has_challenge (V : VocabularyChange A d d') (h : ¬ Licensed 
   obtain ⟨c, hc, -⟩ := challenge_complete V V.fragment r ⟨hr, hno⟩
   exact ⟨c, hc⟩
 
+/-- **The protected fragment is part of the old commitments**: every protected row has an
+entailment certificate against them.  Neither `Licensed` nor `licensed_no_challenge` reads
+`old`; this is the relation that ties the fragment to it. -/
+def FragmentOfOld (V : VocabularyChange A d d') : Prop :=
+  ∀ p ∈ V.fragment, CertEntails V.old p
+
+/-- Where the fragment is part of the old commitments, a valid challenge on the fragment is a
+broken commitment of the old commitments. -/
+theorem challenge_on_fragment_breaks_old (V : VocabularyChange A d d') (hV : FragmentOfOld V)
+    {c : Challenge d d'} (hc : c.Valid V V.fragment) :
+    BrokenAlong V.T (regionOf V.old) (regionOf V.new) c.row := by
+  obtain ⟨hf, hno⟩ := Challenge.sound hc
+  refine ⟨fun x hx => hf x ⟨hx.1, fun p hp => ?_⟩, hno⟩
+  exact (semEntails_iff_forces_regionOf _ _).1 ((certEntails_iff_sem _ _).1 (hV p hp)) x hx
+
 /-- **Adding nothing, certified**, for a change that adds the one coordinate `k`: the new
 bundle commits to nothing new on the old coordinates iff every row its elimination leaves has
 an entailment certificate against the old commitments. -/
@@ -206,6 +225,13 @@ theorem split_licensed : Licensed (splitChange normRows) := by
     rcases hp with rfl | rfl
     · simp [Row.Sat, Fin.sum_univ_two]; linarith
     · simp [Row.Sat, Fin.sum_univ_two]; linarith
+
+/-- The credence rows are among the split change's old commitments. -/
+theorem split_fragmentOfOld : FragmentOfOld (splitChange normRows) := by
+  intro p hp
+  refine (certEntails_iff_sem _ _).2 fun x _ hx => hx p ?_
+  simp only [splitChange, normRows, List.mem_cons, List.not_mem_nil, or_false] at hp
+  rcases hp with rfl | rfl <;> decide +kernel
 
 /-- The challenge to the split change on `P(S) ≥ 1/2`: the row itself as its certificate, and
 the new credence `(1/5, 1/5, 3/5)`. -/
@@ -461,10 +487,13 @@ theorem zero_pin_charge :
 #print axioms Workspace.Normativity.Contrib.VocabularyAct.challenge_complete
 #print axioms Workspace.Normativity.Contrib.VocabularyAct.licensed_no_challenge
 #print axioms Workspace.Normativity.Contrib.VocabularyAct.unlicensed_has_challenge
+#print axioms Workspace.Normativity.Contrib.VocabularyAct.FragmentOfOld
+#print axioms Workspace.Normativity.Contrib.VocabularyAct.challenge_on_fragment_breaks_old
 #print axioms Workspace.Normativity.Contrib.VocabularyAct.addsNothing_certified
 #print axioms Workspace.Normativity.Contrib.VocabularyAct.normRows
 #print axioms Workspace.Normativity.Contrib.VocabularyAct.splitChange
 #print axioms Workspace.Normativity.Contrib.VocabularyAct.split_licensed
+#print axioms Workspace.Normativity.Contrib.VocabularyAct.split_fragmentOfOld
 #print axioms Workspace.Normativity.Contrib.VocabularyAct.splitChallenge
 #print axioms Workspace.Normativity.Contrib.VocabularyAct.splitChallenge_valid
 #print axioms Workspace.Normativity.Contrib.VocabularyAct.relax
