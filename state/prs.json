@@ -2174,6 +2174,136 @@
       },
       "summary": "The argument map under graph/ becomes the program's canonical index (rulings M1–M8): every registered claim, priority item, decision and round has exactly one node or attachment; one plan with seven lines as frames under the-program, each with a human owner; PRIORITIES.md becomes a render of item nodes; DECISIONS.md entries carry machine-readable anchors. Two follow-ups landed on the same branch: registry-built records carry their Lean signatures verbatim with hypotheses marked unread until a reader files them (F1–F6, with the large derived files leaving the tree for CI artifacts and the derived branch), and the digest takes one shape, a frame's holds are listed but not ranked, a registered result bears on an item rather than answering it, and an unconfirmed want weighs nothing (G1–G4).\n\nSquash-merged on 2026-10-30 as the base of the site round that followed it.",
       "superseded": ""
+    },
+    {
+      "number": 133,
+      "title": "The site, as one vertical slice: the research map (2026-10-24 round and its 2026-10-30 follow-ups)",
+      "merged": "2026-10-30",
+      "rounds": [
+        "2026-10-24-site-vertical-slice"
+      ],
+      "topics": {
+        "wiki": [
+          "Home"
+        ],
+        "frames": [
+          "enabling-program-site",
+          "the-program"
+        ]
+      },
+      "summary": "The repository gains a static site that is a render of the map and the repository and never a second source: `python3 site/build.py` reads the map's index, the state files, the claims registries, the anchors of DECISIONS.md and the wiki, and `site.yml` deploys `main`'s build to GitHub Pages on every push (rulings S1–S5). The front page is the research map, one full-viewport pannable network graph over a curated concept registry, `state/concepts.json`: 71 concepts in six kinds (goal, new construction, mathematical object, prior work, philosophical concept, human work with a repository companion) joined by 112 hand-chosen directed links, each with a relation category and a one-line reason shown on hover. Every node, item, decision anchor, round, registry id, wiki page and handle has exactly one path derived from its id, and the build fails on a reference that does not resolve; `tests/site_build.py` runs the build as a gate under `tests/run.py`.\n\nThe record behind the map lands with it: digests of all 109 pull requests merged to that date in `state/prs.json`, with topic tags and supersession notes; five registered results connected by reading; the program's question canonicalized in the top frame and the wiki's Home page; and, by dated ruling, corrigibility promoted to a program line with deference and trust under it. The concept registry and the digests are AI-written and `ci-only`. The round ran as nineteen recorded follow-ups, stacked on #131; #132 was closed unmerged and its content landed here.",
+      "superseded": "",
+      "state_after": "The program has a public site built from the repository on every merge. Its front page is a map of 71 concepts and the links between them; every claim, item, decision, round and wiki page has its own page; and each of the 109 pull requests merged so far has a short digest. The concept map and the digests were written by a model and have not been reviewed by a maintainer."
+    },
+    {
+      "number": 134,
+      "title": "The map's capsules scale with merged work (2026-10-30 round)",
+      "merged": "2026-11-02",
+      "rounds": [
+        "2026-10-30-site-work-weighting"
+      ],
+      "topics": {
+        "wiki": [],
+        "frames": [
+          "enabling-program-site"
+        ]
+      },
+      "summary": "A capsule on the research map now grows with how much merged work its concept carries, so the map shows where the repository's effort has gone. One per-concept count of merged pull requests is computed with the same match the popup's merged-work list uses (a digest's wiki tag or its frame references), so the capsule's size, the card's count and the popup's list agree; the card had counted wiki-tag matches only. Width and height grow with the square root of the count and are capped, the collision pass reads the same geometry, and the legend says what size means. No claim, registry or theorem-bearing code is touched.",
+      "superseded": "",
+      "state_after": "On the research map a concept's capsule is larger the more merged pull requests are tagged to it, and the count on its card matches the list in its popup."
+    },
+    {
+      "number": 136,
+      "title": "The map pulls linked concepts together (site follow-up)",
+      "merged": "2026-11-03",
+      "rounds": [
+        "2026-10-30-site-work-weighting"
+      ],
+      "topics": {
+        "wiki": [],
+        "frames": [
+          "enabling-program-site"
+        ]
+      },
+      "summary": "The map's radial placement had used only a concept's depth from the goals and the line it bears on, so a concept could land across the disc from everything it links to. An edge-length term now acts in both placement stages — the swap passes that assign sites and the descent that follows — and pulls each concept toward its actual graph neighbours; traderization, the case the maintainer raised, now sits beside logical induction, finite-date conformance and the enforcement compiler. The non-overlap guarantee and the DOM gate are unchanged. A follow-up of the 2026-10-30 round; site render only.",
+      "superseded": "",
+      "state_after": "Concepts on the research map sit near the concepts they are linked to, with no capsule overlapping another."
+    },
+    {
+      "number": 137,
+      "title": "The assessment event: epistemic status as three derived views (2026-11-02 round)",
+      "merged": "2026-11-06",
+      "rounds": [
+        "2026-11-02-epistemic-assessments"
+      ],
+      "topics": {
+        "wiki": [],
+        "frames": [
+          "enabling-program-site",
+          "enabling-vetting-and-prioritization-system"
+        ]
+      },
+      "summary": "By the ruling of 2026-11-02, epistemic status on the site is three views of one event graph — the registry's mechanical class, the derived contest state, and human assessment — and only the third is writable by a reader. The ledger protocol gains the `assessment` event: a human's current score, an integer from 1 to 5, on one axis (reliability, importance or clarity) of a map node or a registry concept, with the rationale required in the author's words and the score bound to the Statement version it was made against, so an assessment of an older revision shows as stale. It supersedes only its author's own earlier score on that node and axis, so disagreement between people is displayed as a range and never averaged; it mints no vettedness level and moves no derived number. An AI handle may seed a score with its reasoning, marked as an AI number until a human scores the axis. `checkers/graph.py` validates all of it, with seven refusal directions each carrying a null-input case.\n\nOn the site every node page and every concept page except prior work opens with a panel of the three axes, beneath it the repository facts no reader can challenge (registry class, attacking failure-story tables, author, draft state, Statement version) and a composer that generates the exact ledger event for the reader to submit through GitHub on their own account; the site itself accepts no write. The stance-and-aspect form the round first landed was replaced by the score-on-an-axis form before any event used it.",
+      "superseded": "",
+      "state_after": "Readers can record how reliable, important and clear they judge a result or concept to be, on a scale of 1 to 5 with a required reason, by submitting a generated ledger line through GitHub. The site shows each person's standing score beside the others, shows disagreement as a range, marks scores made against an older wording as stale, and marks model-written scores as such until a person scores the same axis."
+    },
+    {
+      "number": 138,
+      "title": "The priorities page, the ATTENTION ledger, and the standing maintenance dispatch (2026-11-05 round; stacked on #137)",
+      "merged": "2026-11-06",
+      "rounds": [
+        "2026-11-05-site-priorities"
+      ],
+      "topics": {
+        "wiki": [],
+        "frames": [
+          "enabling-program-site",
+          "enabling-vetting-and-prioritization-system"
+        ]
+      },
+      "summary": "`/priorities/` orders the scoreable concepts from the standing assessment scores: twice the importance, plus twice the gap by which reliability sits below it (an unscored reliability counts as 1), plus the clarity gap where clarity is scored, a contested axis counted at the midpoint of its range and all arithmetic in integers. Each entry carries its three scores, its blurb, its concept page and the open items filed against it. By the follow-up's rulings the ratings are the priority system; the ledger of filed work requests is renamed `PRIORITIES.md` → `ATTENTION.md` with its render, sections file and checker, machine identifiers kept stable; and the standing maintenance dispatch is adopted (`prompts/2026-11-05-standing-maintenance/PROMPT.md`): contained workspace-friction fixes are swept with minimal human input, a fix that would change a spec-layer rule becomes a direct question to the maintainer, and the merge is the human input point, with no auto-merge on a sweep touching `checkers/` or the workflows.\n\nThe ordering formula's weights are an agent-decided choice, not a measurement, and at merge the standing scores were almost entirely one model's seeds of 2026-11-05, so the page ranked what a model asserted until people score the axes.",
+      "superseded": "",
+      "state_after": "The site has a priorities page that ranks concepts by how important they are scored and how far their reliability and clarity lag behind that, and lists the open work requests filed against each. The list of work requests is now called ATTENTION. A standing maintenance sweep is authorized to fix contained workspace friction and to put rule-changing questions to the maintainer directly; a maintainer merges each sweep."
+    },
+    {
+      "number": 140,
+      "title": "Where obligations bind: the score-side test, solvency as soundness, admission by standing (2026-11-07 round)",
+      "merged": "2026-11-09",
+      "rounds": [
+        "2026-11-07-score-side-binding"
+      ],
+      "topics": {
+        "wiki": [
+          "Normative-Inductor",
+          "Normativity",
+          "Theorem-Spine"
+        ],
+        "frames": [
+          "normative-inductor",
+          "operative-force"
+        ]
+      },
+      "summary": "Six `lean-proved` registrations in projects/normativity/CLAIMS.md against items 35, 61, 128 and the new item 133. **The score-side test.** Every row the October runs enforce is deductively settled and about credence. An obligation on conduct — refrain while the originating account is live — is added and binds on the score as a charge on a priced assessment event, with no row on conduct enforced and the market's prices those of the rebuttal run by construction: under the named hypothesis `Assessed`, the charged gate acts with mass at least 24/25 at date 4 while the charge times the price is at most 19/240, and refrains at date 9 for every nonnegative charge (`scoreside.same-question-two-realizations`). The reversal needs the epistemic strength row: a price vector satisfying every other date-4 row reverses the decision (`strength_row_necessary`, necessity at the level of price vectors). Compiled onto prices instead, the chosen conduct row conflicts with the strength and applicability rows (`scoreside.conduct-on-prices-conflicts`).\n\n**Solvency.** For a warrant schema, the enforcer's cumulative liability is bounded iff the consequent's frequency on undefeated instances is not systematically below the strength (`solvency.bounded-iff-frequency`): the deference line's liability identity under another name, with a unit-position hypothesis standing between it and the calibrated enforcer. At every cube point a valid conflict certificate has a positively weighted bundle row that is violated (`solvency.conflict-names-suspects`). **The robust reading.** On an eight-world model a strength row at 3/4 is exact at the signal and false after a contrary challenge while rebuttal, undercut and the grounded survivor rule all keep it; read as a bound over undefeated extensions its strength is 3/5, or 3/4 with the challenge declared a defeater (`robust.eight-world-strengths`). **Admission by standing.** The protocol's admission predicate is instantiated from the authority allocation, and an obligation whose matter is reallocated entitles nothing (`standing.reallocated-entitles-nothing`, its hypothesis package inhabited). An independent GPT-6 Astra review found three blocking defects in the first version; all were fixed before merge, and the review is committed with its dispositions. Not shown: that the assessment sentences are generable or well priced, any defeat semantics for the robust reading, and the exposure rule, which is a queued proposal.",
+      "superseded": "",
+      "state_after": "The program now says where each kind of obligation binds. A constraint on what to believe, about a matter that eventually settles, binds on the market's prices, and an enforcer holding it stays solvent exactly when the constraint is not systematically falsified. An obligation on what to do binds on the score the chooser is evaluated against, as a charge, and leaves beliefs untouched; one worked example shows the same decision reversal either way and a conflict when the obligation is forced onto prices. Who may place an obligation is answered by the authority allocation. A plain strength constraint is shown to be false after contrary evidence on a small exact model, and a repaired reading is defined there but has no general defeat rule yet."
+    },
+    {
+      "number": 141,
+      "title": "Maintenance: digests #133–#140; digests become maintenance; the sweep and the audit run daily (2026-11-08 round)",
+      "merged": "2026-11-09",
+      "rounds": [
+        "2026-11-08-digests-and-daily-maintenance"
+      ],
+      "topics": {
+        "wiki": [],
+        "frames": [
+          "enabling-program-site",
+          "enabling-vetting-and-prioritization-system"
+        ]
+      },
+      "summary": "The six merged pull requests without a digest (#133, #134, #136, #137, #138, #140) get one, and writing digests becomes maintenance by the ruling of 2026-11-08: the standing maintenance sweep first runs the freshness audit and writes every digest it reports missing, and a sweep's or a round's pull request carries its own digest once its number is known, dated the day it opens, so no sweep is the cause of another. The sweep runs daily from the maintainer's machine, behind a check that starts an agent only when a digest is missing or the workspace-friction section changed; an empty day opens no pull request, and no sweep starts while a sweep's pull request is open. The freshness audit runs daily in CI instead of weekly, and its reporter comments on the standing issue only when the findings differ from its last report. The cadence entry queued on 2026-11-05 is retired. The digests are model-written from each pull request's description and report, and unread by a maintainer.",
+      "superseded": "",
+      "state_after": "Every merged pull request has a digest on the site again. From here the daily maintenance sweep writes any that go missing, each pull request carries its own, and the audit that checks for gaps runs every day and reports a gap once."
     }
   ]
 }

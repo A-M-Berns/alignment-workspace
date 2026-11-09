@@ -190,8 +190,13 @@ sweep is a round against it. The sweep may take any *Workspace friction* item
 whose fix is contained in the sense above, recording each as agent-decided,
 reversible; an item whose fix would change a spec-layer rule it converts into a
 **direct question to the maintainer** — one line stating what the decision turns
-on, pushed to them, with the *Awaiting the author* entry as the record. A sweep
-that finds nothing contained to take says so. The merge is the human input
+on, pushed to them, with the *Awaiting the author* entry as the record. The sweep
+also writes what the freshness audit reports missing from the site's derived
+layer — first the digest in `state/prs.json` of every merged pull request without
+one — and its own pull request carries its own digest, so a sweep leaves nothing
+for the next to describe (ruling of 2026-11-08). It runs daily, from the
+maintainer's machine; a day with nothing to take opens no pull request and makes
+no round. The merge is the human input
 point: a maintenance pull request touching `checkers/` or `.github/workflows/`
 is never auto-merged — most friction fixes are gate fixes, which sit on the
 trust chain, and a scheduled agent editing the judge under auto-merge would
@@ -818,8 +823,9 @@ non-maintainer, and no single class says that. The fields are defined once, in
     adjudicates on the deployed site; the ci workflow keeps every build as an
     artifact, which is a pull request's preview.
   <!-- write-scope: job=freshness-report; workflow=.github/workflows/freshness.yml -->
-  - `freshness-report`, which files the weekly freshness audit's findings as a comment
-    on (or creation of) the standing issue *Freshness audit*. It runs only on
+  - `freshness-report`, which files the daily freshness audit's findings as a comment
+    on (or creation of) the standing issue *Freshness audit*, commenting only when the
+    findings differ from its last report there. It runs only on
     `schedule` or a `main`-guarded dispatch, after a read-scope audit job whose report
     it handles as data; it writes no content of record — the issue is a request for a
     round, and nothing adjudicates on it.

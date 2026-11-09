@@ -34,9 +34,10 @@ renders them at `/prs/<n>/`; the file is a round deliverable, provenance-marked 
 lands, and the build runs without it. The build validates every digest's rounds and topic
 ids and every registry entry's kind, links and references, and `tests/site_build.py` also
 runs `tests/site_dom.js` against a scratch build — the app must boot, render every
-concept, open cards on click, and overlap nothing. What no gate can see offline is
-coverage: a round that merges pull requests extends `state/prs.json`, and whether it did
-is a review matter.
+concept, open cards on click, and overlap nothing. Coverage is audited, not
+gated: `tests/freshness.py` reports every merged pull request without a digest. A round's
+pull request carries its own digest, written once its number is known, and the standing
+maintenance sweep writes any the audit reports missing (ruling of 2026-11-08).
 
 Every node page and fragment ends with the intake verbs — comment, challenge, estimate,
 want — each a prefilled GitHub issue carrying the node id and a protocol-shaped body. The

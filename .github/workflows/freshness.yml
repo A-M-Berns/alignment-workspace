@@ -1,11 +1,13 @@
-# The weekly freshness audit: does the derived layer still match the research structure?
+# The daily freshness audit: does the derived layer still match the research structure?
 # Two jobs on the pin-bump pattern: the audit runs at read scope and produces a report;
 # the reporter alone holds issues: write, triggers only on schedule or a main-guarded
-# dispatch, and handles the report as data. Neither is a required check.
+# dispatch, and handles the report as data. Neither is a required check. The reporter
+# comments only when the findings differ from the last report on the standing issue, so
+# a finding that waits on a merge is filed once.
 name: freshness
 on:
   schedule:
-    - cron: "0 9 * * 1"
+    - cron: "0 9 * * *"
   workflow_dispatch:
 
 permissions:
@@ -57,7 +59,12 @@ jobs:
         run: |
           n=$(gh issue list --repo "$GITHUB_REPOSITORY" --search "Freshness audit in:title" --state open --json number --jq '.[0].number // empty')
           if [ -n "$n" ]; then
-            gh issue comment "$n" --repo "$GITHUB_REPOSITORY" --body-file freshness-report.md
+            last=$(gh issue view "$n" --repo "$GITHUB_REPOSITORY" --json body,comments --jq '(.comments | last | .body) // .body' | tr -d '\r')
+            if [ "$last" = "$(tr -d '\r' < freshness-report.md)" ]; then
+              echo "findings unchanged since the last report on #$n; no comment"
+            else
+              gh issue comment "$n" --repo "$GITHUB_REPOSITORY" --body-file freshness-report.md
+            fi
           else
             gh issue create --repo "$GITHUB_REPOSITORY" --title "Freshness audit" --body-file freshness-report.md
           fi
