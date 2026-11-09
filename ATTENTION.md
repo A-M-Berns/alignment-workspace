@@ -4330,6 +4330,24 @@ checker accepts or a sentence saying the pointers are the record.
 research rounds filed since 2026-10-22 conform or are listed as not conforming.
 *Context:* `graph/PROTOCOL.md` §2; `AGENTS.md`, *The argument map under `graph/`*.
 
+### F11 — No gate refuses committed conflict markers
+<!-- workspace-priority: project=none; dispatchable=yes -->
+
+`main` at `eb98367e` (pull request #139) carried three merge-conflict marker lines in
+`DECISIONS.md`, around two entries of 2026-11-09 and one of 2026-11-08, with every required
+check green: no gate reads a living document for marker lines, and the decision anchors on both
+sides of the markers resolve, so `checkers.graph` and the site build saw nothing. The
+content-recollection follow-up removed the three lines in its merge of `main`, keeping every
+entry. Wanted: a gate that refuses a marker line in a tracked text file outside completed round
+records, which may quote one.
+
+*Deliverable shape:* a check under `tests/` run by `tests/run.py`, scanning tracked text files
+outside completed round records for lines beginning with seven `<` or seven `>` followed by a
+space, with a `--self-test` that fails on a planted marker.
+*Acceptance check:* `python3 tests/run.py` green on a clean tree and failing on a tree with a
+marker line planted in `DECISIONS.md`.
+*Context:* `DECISIONS.md`; `tests/run.py`; `tests/dead_pointers.py` (a gate of the same shape).
+
 ## Infrastructure
 
 ### 10. Build the Lean in CI — **[entry]**

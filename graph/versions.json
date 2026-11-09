@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "24623084735329b538324a52",
-  "index.json": "32d43c6f9d2fbf242f082029"
+  "derived.json": "1706b0911732481378cf896f",
+  "index.json": "fd077c3018e610ad73d86485"
  },
- "generated_hash": "8d519e660b1b0e716e680d81",
+ "generated_hash": "9c839f58009cf0a3119ddaeb",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -9495,6 +9495,13 @@
    {
     "date": "2026-11-07",
     "normalized": "item f10 a research round has no node of its own on the map is answered as its entry specifies",
+    "version": 1
+   }
+  ],
+  "item-f11": [
+   {
+    "date": "2026-11-09",
+    "normalized": "item f11 no gate refuses committed conflict markers is answered as its entry specifies",
     "version": 1
    }
   ],

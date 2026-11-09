@@ -626,7 +626,7 @@ The goals in the frame tree's order (the agenda's outline): kind and role, the b
       - never-settled-standard (shared claim of ledger-logic-market-logic-synthesis) — best unit: none ranked; 2 unit(s); The standard governing prices on never-settled questions comes from a legitimacy-modified version of the logical-induction trust principles (Total Trust, the tower or Reflection)
     - stage5-right-setting-for-dt (shared claim of abstraction-arc) — best unit: 186. vet stage5-right-setting-for-dt; 4 unit(s); Decision theory formulated over the Stage 5 object
     - mastery-gates-stage5 (shared claim of abstraction-arc) — best unit: 85. vet mastery-gates-stage5; 4 unit(s); Formal work on the Stage 5 representation theorem proceeds in parallel with the mastery program rather than after it.
-  - enabling-work (frame, owner @A-M-Berns, @abramdemski; holds 17): Which repository infrastructure makes the trust research vettable and publishable?
+  - enabling-work (frame, owner @A-M-Berns, @abramdemski; holds 18): Which repository infrastructure makes the trust research vettable and publishable?
     - enabling-vetting-and-prioritization-system (shared claim of enabling-work) — best unit: 605. vet ranking-matches-stated-priorities; 16 unit(s); The argument map under graph/ files the research agenda from deep goals down to concrete tasks
     - enabling-machine-checked-corpus (shared claim of enabling-work) — best unit: 873. vet cleanroom-results-in-public-ci; 13 unit(s); The research corpus's claims are formalized in Lean 4 over FAF and adversarially audited in a run independent of the first
     - enabling-publication-pipeline (shared claim of enabling-work) — best unit: 271. vet enabling-publication-pipeline.complete; 6 unit(s); Each candidate for release to this repository is listed with its state
@@ -699,4 +699,4 @@ In order: the owners' priority words, gestalts that set a goal's promise, estima
 - gestalt agency-correspondence-refuted — informs 1 goal; the derived number multiplies 3 unread guesses; your holistic number for agency-correspondence-refuted (about two minutes) sets its promise — under agency-correspondence-refuted
 - gestalt ro-generalized-kakutani-refuted — informs 1 goal; the derived number multiplies 3 unread guesses; your holistic number for ro-generalized-kakutani-refuted (about two minutes) sets its promise — under ro-generalized-kakutani-refuted
 - … 240 more unranked units in `derived.json` (`--all` prints them)
-<!-- generated_hash: 15d3f40c3f02d3ac44989658 -->
+<!-- generated_hash: 3b7f5ab48f641842d6d74798 -->

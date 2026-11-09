@@ -2,10 +2,10 @@
 
 | | |
 |---|---|
-| Prompt author | Claude Fable 5.1 (Anthropic), drafted in conversation with the maintainer on 2026-11-08 (`prompts/2026-11-08-content-recollection/PROMPT.md`, verbatim) |
-| Executor | Claude Fable 5.1 (Anthropic), in Claude Code |
-| Base | `origin/main` at `fca35075` |
-| Date | 2026-11-08 |
+| Prompt author | Claude Fable 5.1 (Anthropic), drafted in conversation with the maintainer on 2026-11-08 (`prompts/2026-11-08-content-recollection/PROMPT.md`, verbatim); the follow-up dispatch of 2026-11-09 (`PROMPT-followup.md`, verbatim) names no author model: unrecorded |
+| Executor | Claude Fable 5.1 (Anthropic), in Claude Code; both passes |
+| Base | `origin/main` at `fca35075`; the follow-up on the pull request's branch, `main` merged in at `e20498c3` and `eb98367e` |
+| Dates | 2026-11-08; follow-up 2026-11-09 |
 
 Lean, all under `lean/Workspace/Normativity/Contrib/`: `RowAlternative.lean` (the shared
 duality), `Conservativity.lean` (matter 1), `IncompatibilitySemantics.lean` and
@@ -45,9 +45,8 @@ Python in this round is theorem-bearing.
   117 as a note, because that item already asks for the object.
 - **The site.** `state/prs.json` gains this pull request's digest and no digest for #140:
   pull request #141 wrote #140's and merged on 2026-11-09 while this round ran, and `main` at
-  `e20498c3` is merged into this branch with both. The digest's `merged` field is empty: the
-  pull request is unmerged, and the contract says a round's pull request carries its own digest
-  once its number is known without saying what the field holds before the merge.
+  `e20498c3` is merged into this branch with both. The digest's `merged` field is `2026-11-09`,
+  the day the pull request opened (the ruling of 2026-11-08 on digests; set by the follow-up).
   `state/concepts.json` is untouched: the contract does not call for an entry for anything
   here.
 - **The system `python3`** is 3.9; every checker was run with `python3.12`.
@@ -316,11 +315,11 @@ inputs: the docket states, and the reading of undercut as outweighed.
   whether the attributed model orders reasons transitively was not checked against any text.
 - **Models over one world type.** `DemandsNoMore` quantifies over nonnegative measures on a
   fixed finite world type with a fixed interpretation.
-- **Computing the image.** `conservative_iff` characterizes conservativity; no procedure here
-  computes the image of a region, and `SeedStatics.project` is not connected to it.
-- **The adapter's certificates.** That `Excludes` and `Margins` certificates of
-  `WarrantInductor.Problem` exist whenever the region excludes or marks is not derived from
-  `certEntails_iff_sem`.
+- **Computing the image.** `conservative_iff` characterizes conservativity. The image is
+  computed for one dropped coordinate (`Forgetting.forget_region`, follow-up §F3) and for no
+  other translation.
+- **The adapter's certificates.** Derived below a rational threshold and at tolerance `0`
+  (`AdapterCertificates`, follow-up §F5); not at a positive tolerance.
 - **The fixtures are small**: at most three coordinates, eight worlds, three cases.
 - **Matter 3 beyond fixtures.** No theory at the level of sentence prices; no recollection
   attached to an accounted state.
@@ -427,12 +426,339 @@ Against 118: `rows.incompatibility-entailment`, `seed.bound-certified`,
 *broken commitment*; *kind* (of a reason), *covers*, *case*, *beats*, *dominates*, *rationalizable*, *consistent* (the pairwise
 condition), *permitted*.
 
+## Follow-up of 2026-11-09 — finite memory, decisions on the record, change as an answerable act
+
+Dispatch: `prompts/2026-11-08-content-recollection/PROMPT-followup.md`, verbatim. Lean, under
+`lean/Workspace/Normativity/Contrib/`: `PrecedentHolding.lean` (F1), `AssessedConduct.lean`
+(F2), `Forgetting.lean` (F3), `VocabularyAct.lean` (F4), `AdapterCertificates.lean` (F5). No
+existing module was changed.
+
+### Corrections and deviations
+
+- **`main` was merged into the branch at `eb98367e`** (pull request #139), which conflicted
+  with it. The dispatch says to add commits without rebase or squash; the merge is a commit.
+- **`main` carried conflict markers.** At `eb98367e`, `DECISIONS.md` has three merge-conflict
+  marker lines around two entries of 2026-11-09 and one of 2026-11-08, with every required
+  check green. The merge here keeps every entry, in date order, without the three lines. No
+  gate reads for them; filed as friction item F11.
+- **Two items are filed where the dispatch allows one**: item 135, and the friction item F11
+  just named.
+- **The first pass's text is changed in four places**: the header table (dates, the follow-up
+  dispatch); the deviation on the digest's `merged` field; the lines *Computing the image* and
+  *The adapter's certificates* of *What this round does not establish*; and *Outstanding
+  maintainer actions*, where setting the digest's date is no longer an action.
+- **The first pass's notes on items 79 and 118** said the adapter's certificates were not
+  derived; they now state what is derived. Item 134's clause (d) is rewritten around what is
+  proved and a clause (e) added.
+- **F1's normal form is not the one the dispatch suggests.** It suggests a threshold per kind
+  or an antichain of minimal winners and maximal losers. What is proved is the reach restricted
+  to a finite set of reason sets. The antichain is not built: `staircase_irredundant` is an
+  antichain of `n` cases over one pair of kinds, so over `ℚ` it is not finitely bounded either.
+- **F2's adapter is slight.** `ActCertificate` is generic in its entry type, so at
+  `Ent := Form d` its grounds are a reason set with no conversion.
+- **F3(a) connects through the step, and then through `project`.** The theorem is proved for
+  one step of `FourierMotzkin.elim`, the step `SeedStatics.project` iterates;
+  `project_iff_projection` is the statement for `project` itself.
+- **F4's readings take liveness as a declared predicate** on rows. Nothing reads it off the
+  docket.
+- **Nothing registers against item 119.** The merged-discord fixtures are noted there.
+- **One wiki edit**: the bound count of registered claims on `wiki/Normativity.md`, 78 to 88,
+  which `checkers.wiki_state_bindings` requires.
+- **The follow-up dispatch names no author model.** The attribution block records it as
+  unrecorded.
+
+### F1. The holding (C1)
+
+The **holding** of a case base is the transitive closure of `Dominates` on reason sets
+(`Holding`). Its **reach** adds covering: `Reach Γ V U` is `Covers V U ∨ Holding Γ V U`, a
+preorder.
+
+- `holding_cons`: the holding of `c :: Γ` relates `V` to `U` iff the holding of `Γ` does, or
+  the reach of `Γ` puts `V` at or above `c`'s winners and `c`'s losers at or above `U`.
+- `permitted_iff`: `Permitted Γ c` iff `Γ` is rationalizable and the reach of `Γ` does not put
+  `c.losers` at or above `c.winners`. Permission reads the reach at one pair.
+- `permitted_congr`, `permitted_append_congr`: two case bases with the same holding permit the
+  same continuations, and still do after any further continuations. **The cases may be
+  forgotten and the holding kept.**
+- `permission_eq_iff_reach_eq`: among rationalizable bases, same permissions iff same reach.
+  The holding is finer than that: a case whose winners cover its losers enters the holding and
+  changes no permission (`holding_not_minimal`).
+
+**Size.** The holding relates all reason sets. Restricted to a set `R` that contains the
+winners and losers of every continuation, the reach on `R × R` together with whether the base
+is rationalizable is closed under continuation (`agreeOn_cons`). For finite `R` it is a subset
+of `R × R`, it only grows (`reach_mono`), and along any sequence of continuations it is
+eventually constant (`reachSet_eventually_const`, by `SeedStatics.eventually_const_of_finite`),
+after which permission over `R` is constant (`permission_eventually_const`). The finiteness of
+`R` is the hypothesis; it holds where kinds and strengths are both finitely many. Without
+finitely many strengths there is no bound: over one pair of kinds, a staircase of `n` cases at
+`n` increasing strengths has no redundant case (`staircase_irredundant`), at strengths inside
+`(0,1)` (`humbleScale_spec`). `|R|` is not counted in terms of kinds and strengths.
+
+**Merging.** The union of two case bases is rationalizable iff the union of their holdings has
+no cycle (`rationalizable_append_iff`): merging reads the holdings. Two rationalizable bases
+whose union is not: the precedent and its reverse (`merged_discord`); and the first two cases
+of the three-cycle against the third, where every pair of cases is compatible
+(`merged_discord_hidden`).
+
+**Against item 119's hidden discord: it resembles it.** There, bundles of rows are each
+feasible, pass a coordinate-wise check and are jointly infeasible. Here, case bases are each
+rationalizable, pass the pairwise check and are jointly unrationalizable. Both are merges whose
+failure no pairwise test sees. They are not shown to be one phenomenon: what is merged here is
+an order on reason sets and its failure is a cycle, not an empty region of a declared fragment.
+A reduction would be that a base is rationalizable iff ranks on its cases satisfy a system of
+difference constraints, a cycle being that system's Farkas certificate; only one direction is
+proved (`rationalizable_of_rank`), and its coordinates would be the cases, not sentences.
+
+**Verdict: fits in part.** The holding is a sufficient statistic; it is finitely bounded only
+over a finite set of reason sets.
+
+### F2. Decisions on the record (C6)
+
+An **assessed act** (`AssessedAct`) carries the grounds the act was taken on, the surviving
+grounds against it, and a verdict, `adequate` or `shortfall`. Its **proposal** is the case the
+chooser acted on, its grounds over the grounds against. Its **case** is set by the verdict: the
+proposal if adequate, the reverse if a shortfall. The precedent is the assessor's.
+
+**The adapter.** `ofCertificate cert against v` builds one from a
+`DecisionComponent.ActCertificate (Form d) M Ob`. The certificate supplies the grounds. It has
+no field for the grounds against the act or for an assessment; both are supplied beside it. Its
+licence and lineage are not read. `WarrantInductorScoreSide.ShortfallAt` is a proposition of
+the kind that would supply the verdict, and nothing here connects them.
+
+**Consistency of conduct** (`ConsistentConduct`): each choice is permitted by the case base of
+the assessed acts before it. By `permitted_iff` that is: the assessed past is rationalizable
+and its reach does not put the grounds against the act at or above its grounds
+(`consistentConduct_cons_iff`).
+
+Fixtures on `(X, ¬X, D)`. The first act, on `P(X) ≥ 3/4` against `P(¬X) ≥ 1/2`, is assessed a
+shortfall. *Forbidden*: a later choice on `P(X) ≥ 7/10` against `P(¬X) ≥ 3/5`
+(`repeat_forbidden`); it would be permitted had the act's own proposal been the precedent
+(`assessor_sets_precedent`). *Permitted by distinguishing*: a later choice on `P(X) ≥ 3/4` with
+the ground `P(X) ≥ 9/10 · P(D)` beside it (`distinguished_consistent`).
+
+**Better, or only allowed?** Still only allowed. A choice the holding backs has its reverse
+forbidden (`backed_reverse_forbidden`), and making it sets no new precedent
+(`reach_cons_of_backed`). Where a choice and its reverse are both permitted, the reach relates
+their reason sets in neither direction (`permitted_both_silent`): the assessed past never ranks
+two permitted alternatives. What the assessor's verdicts add is the order after the fact, and a
+bound on the assessor: a shortfall verdict on a choice the reach backs leaves the assessed case
+base unrationalizable, after which nothing is permitted (`shortfall_of_backed_not_rationalizable`,
+`assessor_bound`). An order among reasons does accumulate — the holding grows and is a strict
+order while the base is rationalizable — and it sorts continuations into permitted and
+forbidden, with no degree between.
+
+**Verdict: fits in part.**
+
+### F3. Forgetting (C2, C3, C4)
+
+**(a) Projection is computed.** `eliminate k L` is one Fourier–Motzkin step on the rows of `L`
+with coordinate `k` moved last. Its rational solutions are exactly the restrictions of the
+rational solutions of `L` to the other coordinates (`eliminate_sat_iff`); the rational witness
+is by `RowAlternative.exists_rat_of_real`. For a bundle, `forget k B` has as its region the
+projection of `B`'s region along the coordinate map that drops `k` (`forget_region`), and
+`SeedStatics.project` on a bundle's system is the projection onto one coordinate
+(`project_iff_projection`). **Exactness**: a row over the retained coordinates is forced by the
+full bundle iff by the forgotten one (`forget_exact`); it has an entailment certificate against
+one iff against the other (`forget_certified`); the change is conservative
+(`forget_conservative`). The rows are computed. The certificates are shown to exist.
+
+**(b) What may be forgotten.**
+
+*A settled coordinate.* With `k` settled at `F`, the rows specialized at `F` and restricted to
+the other coordinates give the projection of the forced region under every docket state and
+every later settlement (`forget_settled`). What is read afterwards: those rows with their ports
+and ids, the docket state, and the later settlement on the retained coordinates.
+
+*A closed account.* `OpenIntegrityEvolution.Conservation` asks three things of an exposed
+occurrence: that it stay exposed, that its receipts (`terminals`) not shrink, and that its
+later account evaluate to what its earlier account evaluates to under a transport of
+resolutions. An account with no live port evaluates to one resolution whatever the ports
+resolve to (`closed_evaluate_const`), and every later substitution leaves its receipts, its
+having no live port and that resolution unchanged (`closed_subst`). So the data `Conservation`
+reads of it are the occurrence's identity, its multiset of receipts, and one resolution. Two
+limits: `ObligationState` stores the whole account, so no state type holds less; and a receipt's
+`Authority` stores the history prefix it was issued at.
+
+*A live coordinate.* Over `(X, Y)` with the one item `P(Y) ≥ 3/4 · P(X)`: forgetting `X`
+before it settles leaves the whole cube on `Y`, exactly, by (a). Once `X` settles true the full
+record forces `P(Y) ∈ [3/4, 1]`; the reasoner that forgot holds `[0, 1]`. Forgetting `X` after
+it has settled keeps `P(Y) ≥ 3/4` (`live_forget_cost`). The cost is `3/4` at the lower endpoint
+and is no slack at the time of forgetting.
+
+**(c) Loss as slack.** For forgetting steps `K t` that agree with exact steps `K₀ t` off sets
+`B t` of worlds, a row with coefficients in `[lo, hi]` has, at every stage `T`, excess at the
+held credence at most its excess under the exact schedule plus `(hi − lo)` times the sum over
+`t < T` of the mass the credence held at stage `t` places on `B t` (`schedule_slack`, by
+induction from `approx_step`). Where those masses are bounded by a sequence with bounded
+partial sums, or a summable one, the bound is uniform in `T` (`schedule_bounded`,
+`schedule_summable`).
+
+**(d) Selective forgetting.** Two records over `(φ, A, B)`: the one obligation on `φ`,
+`P(φ) ≥ 3/4 · P(a)`, runs through `A` in the first and `B` in the second. One of `A`, `B` must
+be dropped; both then settle true. The choice made after seeing the record — drop the
+coordinate the obligation runs through — leaves `φ ∈ [0, 1]` on both records. Dropping `A`
+whatever the record leaves `[3/4, 1]` on the second, and dropping `B` leaves `[3/4, 1]` on the
+first. The full record forces `[3/4, 1]` on both (`selective_forgetting`).
+
+*The omission result.* It is `ReasonSupply.adverse_union`, restated as
+`TransparentChain.omission_le_adverse`: for an extensional program `F` on sets of reasons with
+adverse sensitivity `A`, the gain from omitting the reasons `s` is at most `Σ_{r ∈ s} A r`. The
+fixture has that form — forgetting the coordinate removes exactly one row's effect, and the
+gain, `3/4` at the lower endpoint, equals that row's adverse sensitivity. It is not shown to be
+an instance, and in general it is not one: elimination replaces the rows through the dropped
+coordinate by their combinations, which is not an omission from a set of rows; and the omission
+bound holds whoever chose the omission, so it does not separate a fixed from an adaptive
+choice, which is what the fixture exhibits. The instantiation is not made in Lean.
+
+**What a bounded reasoner must retain, on these results.** The docket state, since defeat and
+withdrawal act through ports and ids. For each live item, its row specialized at the current
+settlement and restricted to the unsettled coordinates; settled coordinates and their pin rows
+may go. Every unsettled coordinate a retained row mentions. The holding of its case base on the
+reason sets it may meet, in place of the cases. For each account with no live port, its
+receipts and the resolution it denotes; for each live account, the account. Not known: a space
+bound — one elimination step can square the number of rows, a staircase of cases is
+irredundant, and a receipt carries a history prefix; whether these pieces compose into one
+retained state (item 135); and what the market or the inductor must retain, which is out of
+scope.
+
+**Verdict: fits.**
+
+### F4. A vocabulary change as an act (C5)
+
+A **vocabulary change** (`VocabularyAct.VocabularyChange`) is an occurrence: its owner, the
+translation, the old and new commitments as rows, and a declared protected fragment of old
+rows.
+
+- **Licence** (`Licensed`): for each protected row and each old cube row, an entailment
+  certificate of its pullback against the new commitments. It exists iff the change refines the
+  fragment (`licensed_iff_refines`).
+- **Challenge** (`Challenge`): a row, an entailment certificate of it against a list of old
+  rows, and a point of the new vocabulary. It is valid when the certificate weights only
+  allowed rows, the point is a cube point of the new commitments, and the row's pullback fails
+  there; validity is decidable (`Challenge.Valid`). A valid challenge is a broken commitment
+  and every broken commitment has one (`Challenge.sound`, `challenge_complete`).
+- **A licensed change admits no valid challenge on the protected fragment**
+  (`licensed_no_challenge`); an unlicensed one admits one (`unlicensed_has_challenge`).
+- For a change that adds one coordinate, adding nothing is one entailment certificate per row
+  that elimination leaves (`addsNothing_certified`). For other translations a conservativity
+  licence has no finite form here.
+
+On the split fixture, the change protecting the two credence rows is licensed
+(`split_licensed`), and the commitment `P(S) ≥ 1/2`, outside the fragment, is validly
+challenged by the row itself and the credence `(1/5, 1/5, 3/5)` (`splitChallenge_valid`).
+
+**Who may issue one is not determined.** `AuthorityModule.AuthAlloc` allocates matters to the
+principal or the agent, and an act is licensed by a reference to a matter the agent holds
+(`DecisionComponent.LicenseRef.Valid`; none on a reserved matter, `no_license_on_reserved`).
+The module names no matter for vocabulary, and `Seed.con.protectedClass` is declared data that
+nothing computes from. The `owner` field is carried and read by nothing.
+
+**Three readings of a broken commitment**, as predicates on a recollection, a list of old
+commitments and a new region; none is adopted. `Bars`: every commitment is kept. `Accounted`:
+each is relaxed by a nonnegative charge. `Split`: a live commitment must be kept, any other is
+relaxed by its charge. A commitment's **charge** is the largest excess of its pullback over the
+new region (`Charge`), and each reading's verdict on one commitment is a function of it
+(`readings_of_charge`).
+
+| fixture | charge | bars | accounted | split, live | split, not live |
+|---|---|---|---|---|---|
+| split: `P(S) ≥ 1/2` against `P(S₁), P(S₂) ≥ 1/5` | `1/10` | refuses | admits, `1/10` | refuses | admits, `1/10` |
+| abandonment: `P(S) ≥ 9/10` | `13/20`; at least `3/20` everywhere | refuses | admits, `13/20` | refuses | admits, `13/20` |
+| `P(X∧Y) ≥ 3/4 · P(X)`, `X` unsettled, dropped and retold as a fair coin | `3/8` | refuses | admits, `3/8` | refuses | admits, `3/8` |
+| the same, `X` retold as false | `0` | admits | admits, `0` | admits | admits |
+
+(`split_charge`, `abandon_charge`, `half_charge`, `zero_charge`, with `readings_of_pos_charge`
+and `readings_of_zero_charge`.) In the last row nothing is broken and all three readings admit
+the change at no charge (`zero_admitted`), though the obligation is shed. Once `X` settles true
+the pin `P(X) ≥ 1` is broken at every new credence, charged `1`, and `1/2` under the fair coin
+(`zero_pin_charge`, `half_pin_charge`). A reading applied once, when the change is made, does
+not see the shedding; a challenge raised later does. The queue entry
+`open--broken-commitment-bars-or-accounts` carries this comparison and stays queued.
+
+**Verdict: fits in part.** The licence and the challenge fit; the issuer is not determined and
+no reading of a broken commitment registers the fourth row.
+
+### F5. Refinements
+
+- **The adapter's certificates.** Every valid upper bound on a rational functional over a
+  bundle's region has a cited functional certificate (`exists_citedFunctional`, from
+  `certEntails_iff_sem`). So `Excludes` certificates exist where every inadequate response
+  scores at most a rational `t ≤ τ` on the region (`excludes_of_region`), and `Margins`
+  certificates at tolerance `0` where every margin witness scores at least a rational
+  `t ≥ τ + δ` (`margins_of_region`). In the way of the rest: `τ` is real, and a threshold with
+  no rational between it and the region's supremum needs that supremum rational and attained,
+  which is not proved; and at a positive tolerance `Margins` multiplies the tolerance by the
+  certificate's mass, which validity on the region does not bound.
+- **The row logic** is stated once in `THEOREM.md`.
+- **The digest.** `state/prs.json`, entry 142: `merged` is `2026-11-09`; the summary and
+  `state_after` cover both passes.
+
+### The conjectures
+
+| | conjecture | outcome | by |
+|---|---|---|---|
+| C1 | a holding is a sufficient statistic, bounded by the vocabulary of reasons | **narrowed**: sufficiency proved; the bound proved over a finite set of reason sets and refuted for the kinds of reasons alone | `permitted_append_congr`, `reachSet_eventually_const`, `staircase_irredundant` |
+| C2 | forgetting is projection, exact on the retained fragment; settled sentences and closed accounts are safe, a live obligation is not | **proved**, the closed account as far as `Conservation` reads it | `forget_exact`, `forget_settled`, `closed_subst`, `live_forget_cost` |
+| C3 | loss composes as slack; summable slack loses a bounded amount | **proved**, for loss that is a difference from an exact step on a set of worlds | `schedule_slack`, `schedule_summable` |
+| C4 | choosing what to forget is steering | **proved**, at one fixture | `selective_forgetting` |
+| C5 | a vocabulary change should be an owned, licensed, challengeable act | **narrowed**: the occurrence, licence and challenge are defined and the two theorems proved; the owner is not determined, and a licence at issue does not cover what the record gains later | `licensed_no_challenge`, `challenge_complete`, `zero_pin_charge` |
+| C6 | decisions belong on the record; conduct held to its assessed past; an order among reasons accumulates | **narrowed**: all three hold at the fixtures; the order sorts continuations into permitted and forbidden and ranks none | `assessor_sets_precedent`, `permitted_both_silent`, `holding_mono` |
+
+### What the follow-up does not establish
+
+- **No retained state.** The pieces of F3's closing paragraph are separate theorems. Item 135.
+- **No space bound**, and no count of the reason sets a finite grid of kinds and strengths
+  gives.
+- **The recollection.** Forgetting by projection is a retelling that is computed. For an
+  unsettled coordinate the retelling is still chosen — as a fair coin or as false — and nothing
+  here chooses. No stage is shown to recollect an earlier one.
+- **C2's cost is not C3's slack.** `schedule_slack` bounds a schedule against the exact
+  schedule, which already forgets. The loss of `live_forget_cost` occurs under an exact step
+  and is not bounded by it.
+- **C4 is one fixture**: two records, one obligation. No theorem compares classes of policies,
+  and nothing connects it to the Logical Induction non-capture chain.
+- **The assessed act is beside the docket.** `DocketState` is unchanged, `caseOf` is not
+  replaced, the grounds against an act are not computed from `Grounds.survivors`, and the
+  verdict is not tied to `Assessed`.
+- **A rank characterization.** That a rationalizable base has a rank on its cases is not
+  proved, nor that cycles of every length are minimal.
+- **Several coordinates at once.** `forget_settled` and `forget_region` drop one coordinate;
+  iteration is by `projection_comp`, with no theorem for a set.
+- **Ports after forgetting.** The retained rows keep their ports and ids. Nothing shows when a
+  port may be forgotten.
+- **A licence over time.** `Licensed` is a statement about the old commitments at issue.
+- **Charges.** One commitment at a time; no total, no budget. Liveness is declared.
+- **Who may issue a vocabulary change.**
+- **The adapter** at an irrational threshold or a positive tolerance.
+- **The literature.** Le Cam's deficiency, the reason model of precedent, and Hegel's and
+  Brandom's recollection are named in the dispatches and were not consulted. Nothing is cited.
+
+### Registrations, items, names
+
+Against 117: `precedent.permitted-iff-reach`, `precedent.staircase-irredundant`,
+`precedent.assessor-sets-precedent`. Against 134: `content.forget-region-is-projection`,
+`content.forget-settled`, `content.licensed-no-challenge`. Against 135:
+`memory.live-forget-cost`, `memory.schedule-slack`, `memory.selective-forgetting`. Against 118:
+`seed.adapter-certificates-exist`. All `lean-proved`. Listed and not registered: every other
+declaration of the five modules.
+
+Filed: 135 (the retained state of a forgetting reasoner); F11 (no gate refuses committed
+conflict markers). Narrowed: 134 (clause (d) for one coordinate; the occurrence on rows).
+Noted: 117, 118, 119, 79.
+
+Names, provisional: *holding*, *reach*, *agree on*, *staircase*, *step*, *against*, *humble
+scale*, *merged discord*; *assessed act*, *verdict*, *proposal*, *case* (of an assessed act),
+*consistent conduct*, *backed*; *eliminate*, *forget*, *drop coordinate*, *drop settlement*,
+*chain*, *schedule loss*, *interval* (of a region), *after forget*; *vocabulary change* (the
+occurrence), *licensed*, *challenge*, *broken along*, *region of*, *relax*, *bars*,
+*accounted*, *split* (the reading), *charge*.
+
 ## Outstanding maintainer actions
 
 1. **Merge or decline the pull request.** Auto-merge is off.
-2. **Set this pull request's `merged` date** in `state/prs.json`, in the entry numbered 142,
-   when it merges.
-3. **Rule on whether a broken commitment bars a change or is accounted** — `DECISIONS.md`,
-   *Awaiting the author*, the 2026-11-08 entry (`open--broken-commitment-bars-or-accounts`).
-4. **Close item 118, or name what remains**: set `item_status` in
+2. **Rule on whether a broken commitment bars a change or is accounted** — `DECISIONS.md`,
+   *Awaiting the author*, the 2026-11-08 entry (`open--broken-commitment-bars-or-accounts`),
+   which now carries the three readings compared on four fixtures.
+3. **Close item 118, or name what remains**: set `item_status` in
    `graph/nodes/item-118.md` and run `python3.12 -m checkers.attention_render --write`.
