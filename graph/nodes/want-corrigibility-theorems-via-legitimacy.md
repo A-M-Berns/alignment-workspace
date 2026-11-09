@@ -3,7 +3,7 @@ id: want-corrigibility-theorems-via-legitimacy
 kind: leaf
 leaf_kind: want
 given: corrigibility-faithful-plus-legit-on-self
-owner: "@abram"
+owner: "@abramdemski"
 want: true
 filed_from: quote
 author: "@smithy-verity"

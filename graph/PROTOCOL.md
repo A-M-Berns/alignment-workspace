@@ -943,7 +943,7 @@ stores for people and later tooling:
 
 | field | holds | |
 |---|---|---|
-| `id` | `<handle>-<suffix>`, the handle of the ledger without its `@`, then a suffix of the contributor's choosing (`anson-001`); unique across every ledger, so two contributors' pull requests never collide | checked |
+| `id` | `<handle>-<suffix>`, the handle of the ledger without its `@`, then a suffix of the contributor's choosing (`A-M-Berns-001`); unique across every ledger, so two contributors' pull requests never collide | checked |
 | `by` | the handle; the ledger file is named for it | checked |
 | `date` | ISO date; never decreases within a ledger | checked |
 | `rule` | the anchor-rules version the event was logged under, `YYYY-MM-DD.n`, as `anchor_rules` in `policy.yaml` | checked (form) |
@@ -1695,7 +1695,7 @@ commit; a handle is created by a pull request adding its line to
   them where the tree holds item nodes); a task list and view for one user
   or scope, printed and never committed.
 - **Handle prefix.** Every event id begins with its ledger's handle
-  (`anson-001`), so ids never collide across contributors.
+  (`A-M-Berns-001`), so ids never collide across contributors.
 - **AI handle, model slug, legacy.** An AI handle is `@` plus the slug of the
   model string it names (`@claude-fable-5-1`); a handle that predates the rule
   keeps its name under `legacy: true` (2026-10-24).

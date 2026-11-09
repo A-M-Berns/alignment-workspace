@@ -3,7 +3,7 @@ id: legitimacy-reasons-programme
 kind: frame
 children: []
 question: "What makes a teaching or feedback channel legitimate, how does legitimacy enter the trust principles between a human process and an AI, and what does it owe to reasons and to inference?"
-owner: ["@anson", "@abram"]
+owner: ["@A-M-Berns", "@abramdemski"]
 roots: []
 work:
   - {kind: decision, ref: 2026-10-22--map-canonical-index-program-maintainer-handles}

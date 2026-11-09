@@ -3,7 +3,7 @@ id: the-program
 kind: frame
 children: [normativity, legitimacy, corrigibility-landscape, decision-theory, stance-and-level, abstraction-arc, enabling-work]
 question: "How can a powerful AI develop in line with humanity's interests without relying on control — and how can we get mathematical guarantees that it does?"
-owner: ["@anson", "@abram"]
+owner: ["@A-M-Berns", "@abramdemski"]
 narrative: wiki/Architecture.md
 roots:
   - {id: normativity, role: plan, preset: worst-case}

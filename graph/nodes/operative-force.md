@@ -3,7 +3,7 @@ id: operative-force
 kind: frame
 children: [traderization-arc, traderized-finite-date-conformance, traderized-finite-date-conformance.improvable]
 question: "How does a constraint acquire operative force in a logical inductor's market without destroying the property that nobody can pump the reasoner, and what does that force cost?"
-owner: "@anson"
+owner: "@A-M-Berns"
 filed_from: wiki
 narrative: wiki/Actionability-and-Normative-Force.md
 roots:

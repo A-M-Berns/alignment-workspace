@@ -17,4 +17,4 @@ Deploy (maintainer, once):
        wrangler deploy --var CLIENT_ID:<client id>
 3. Put the relay URL in `state/site_auth.json` (`"relay": "https://login.alignmentworkspace.com"`)
    and commit; the build embeds it and the sign-in button appears. With the field empty
-   the site offers only the paste-a-token path.
+   the dialog says sign-in is unconfigured.

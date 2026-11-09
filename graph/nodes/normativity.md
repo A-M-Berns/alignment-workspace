@@ -3,7 +3,7 @@ id: normativity
 kind: frame
 children: [seed-theory, operative-force, normative-inductor, response-learning, normative-record, normativity-aug9-foundation, normativity-consolidation-open-1-6, normativity-paper-candidates]
 question: "What does learning from reasons require of a reasoner: which statics a normative seed forces, how a constraint acquires operative force in a market, and what the Normative Inductor, from seed through reasons, compile, enforcement and revision, establishes end to end?"
-owner: "@anson"
+owner: "@A-M-Berns"
 filed_from: wiki
 narrative: wiki/Normativity.md
 roots:

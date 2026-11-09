@@ -2,7 +2,7 @@
 id: want-address-anti-naturality
 kind: leaf
 leaf_kind: want
-owner: "@anson"
+owner: "@A-M-Berns"
 want: true
 filed_from: quote
 given: anti-naturality-arguments-as-stated

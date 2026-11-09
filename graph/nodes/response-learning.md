@@ -3,7 +3,7 @@ id: response-learning
 kind: frame
 children: [normativity-learning-track]
 question: "Does a bounded learner, given due burdens, licensed responses and a bounded prospective loss, reduce a recurrent publicly represented failure by lawful edits, and with which coverage does that bear the interpretation of a lesson?"
-owner: "@anson"
+owner: "@A-M-Berns"
 filed_from: wiki
 narrative: wiki/Normative-Response-Learning.md
 roots:

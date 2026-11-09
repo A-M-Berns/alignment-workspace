@@ -3,7 +3,7 @@ id: abstraction-arc
 kind: frame
 children: [want-intentional-stance-math, stage4-condensation-dynamics, stage5-li-representation-theorem, stage6-dt-and-scale-free-agency, ledger-logic-market-logic-synthesis, oq-embedded-agency, stage5-right-setting-for-dt, mastery-gates-stage5]
 question: "Which work on abstraction, logical induction and agency gives the program a representation theorem for logical inductors, a decision theory set in that representation, and a notion of scale-free agency that covers cooperative equilibria?"
-owner: "@abram"
+owner: "@abramdemski"
 roots:
   - {id: want-intentional-stance-math, role: want}
   - {id: stage4-condensation-dynamics, role: plan, preset: worst-case}

@@ -3,7 +3,7 @@ id: deference-and-trust
 kind: frame
 children: [ddb-to-li-translation, deck-collapse-statement, li-deference-collapse-scoped, hedged-value-unconditional, mart-implies-value-refuted-unconditional, li-deference-collapse.improvable, regularity-is-h3, crux-first-published-statement, crux-instrumental-notion, crux-self-feedback-dependence, managing-misalignment-to-li, li-deference-machine-checked, sams-conjecture-li, inter-inductor-total-trust, wiki-corpus-maintenance, li-deference-collapse, deference-toward-bounded-agents, li-models-human-progress, li-above-poly-time, li-no-selection-theorem-objection, li-level-computability-certificates, coherence-without-ground-truth, publication-form, published-statement-holds, note-corrections-beside-li-deference, deference-finite-results]
 question: "Which research on trust between a human inductor and an AI inductor, at the logical-induction level, reaches a formal account of trust that guides AI safety engineering work?"
-owner: "@abram"
+owner: "@abramdemski"
 narrative: wiki/Deference.md
 roots:
   - {id: ddb-to-li-translation, role: plan, preset: worst-case}

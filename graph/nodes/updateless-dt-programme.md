@@ -3,7 +3,7 @@ id: updateless-dt-programme
 kind: frame
 children: [computational-updatelessness-direct, indirect-route-learned-updatelessness, counterfactuals-for-embedded-agents, decision-problems-formal-core, udt-tiling-foundations, open-minded-updatelessness, geometric-rationality-value-uncertainty, udt-representation-theorem, coordination-with-others, branch-reality-reading, total-trust-is-updateful, updateful-about-values, optimality-is-subject-matter, observing-beliefs-only-observation, sist-single-instance-success, updateful-when-appropriate, updateful-when-appropriate-li, bli-exactness-limits, bli-sources-refuted, counterfactual-mugging-with-evidence, cdt-defined-for-learner, two-lesions-propositions-checked, dp-dutch-book-done, learning-versus-freezing, udt101-influence-calculus, harmony-as-bargaining, geometric-udt-construction, vingean-tiling-content, indirect-route-impossibility, one-shot-verdicts-wanted, branch-reality-decays, relate-optimality-to-tiling, bli-as-heuristic-estimator, feedback-generality-tradeoff, bli-picture-improvable, li-bria-spec-improvable, formal-core-improvable, udt-tiling-improvable, udt-rep-improvable, dt-readme-entry-points]
 question: "Which decision theory for computationally uncertain agents on the updateless side is tractable, and which of its results bear on AI safety engineering?"
-owner: "@abram"
+owner: "@abramdemski"
 roots:
   - {id: computational-updatelessness-direct, role: plan, preset: worst-case, success_class: utopia}
   - {id: indirect-route-learned-updatelessness, role: plan, preset: worst-case, success_class: utopia}

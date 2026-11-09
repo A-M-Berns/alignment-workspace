@@ -3,7 +3,7 @@ id: stance-and-level
 kind: frame
 children: [level-super-turing, level-above-quantifiable, level-poly-time, crux-unbounded-represents-phenomena, super-turing-guides-engineering, li-guides-engineering, poly-time-guides-engineering, above-quantifiable-guides-engineering, value-uncertainty-is-computational, li-updatelessness-tractable, updateless-engineering-value-exists, updateless-engineering-value]
 question: "Where should the program work: at which level of computability, under which decision-theoretic stance, and does the computationally unbounded level represent the phenomena that matter?"
-owner: "@abram"
+owner: "@abramdemski"
 roots:
   - {id: level-super-turing, role: plan, preset: worst-case}
   - {id: level-above-quantifiable, role: plan, preset: worst-case}

@@ -3,7 +3,7 @@ id: normativity-line
 kind: frame
 children: []
 question: "Does the public normativity line reach a legitimacy theorem useful for corrigibility and the learning theorem its layers aim at?"
-owner: "@anson"
+owner: "@A-M-Berns"
 roots: []
 work:
   - {kind: decision, ref: 2026-10-22--map-canonical-index-program-maintainer-handles}

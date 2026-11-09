@@ -96,9 +96,10 @@ from.
 
 A reader may sign in with GitHub: the device flow through the secretless relay in
 `infra/github-login-relay/` (URL in `state/site_auth.json`; with it empty the dialog
-offers only a pasted fine-grained token). The token stays in the reader's browser;
-identity is their GitHub login matched to a handle through `graph/policy.yaml`, shipped
-as `/assets/account.json`. Signed in as a mapped handle, a score's receipt opens the
+says sign-in is unconfigured). The token stays in the reader's browser; identity is
+their GitHub login — a human handle *is* `@<login>` (ruling of 2026-11-09) — mapped
+through `graph/policy.yaml` and shipped as `/assets/account.json`. Signed in as a mapped
+handle, a score's receipt opens the
 pull request itself — fork, ledger line, branch, PR, all from the browser against
 api.github.com. The site accepts no write; the copy flow remains the fallback.
 

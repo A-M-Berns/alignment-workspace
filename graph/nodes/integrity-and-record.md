@@ -3,7 +3,7 @@ id: integrity-and-record
 kind: frame
 children: []
 question: "Can a cognitive trajectory falsify or silently rewrite its own normative history, and what does an Integrity evolution of the accounted obligation state conserve?"
-owner: ["@anson", "@abram"]
+owner: ["@A-M-Berns", "@abramdemski"]
 filed_from: wiki
 narrative: [wiki/Integrity.md, wiki/Settlement-Interface.md]
 roots: []

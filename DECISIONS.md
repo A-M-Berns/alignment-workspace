@@ -7149,3 +7149,16 @@ any other. The round's reading, agent-decided and reversible: device flow over t
 web flow, whose token exchange needs a client secret a worker would have to hold;
 `public_repo` scope, the narrowest the classic-app device flow offers. A handleless
 GitHub account signs in but cannot submit; proposing a handle stays an issue.
+
+### 2026-11-09 — a human handle is the GitHub login
+<!-- decision: 2026-11-09--handles-are-github-logins; touches: graph/policy.yaml, graph/events/, graph/nodes/, graph/PROTOCOL.md, AGENTS.md -->
+
+**Maintainer ruling, taken in conversation on 2026-11-09:** the `@` matches the GitHub
+username rather than being a separate handle. A human handle is `@<login>` — the two
+standing handles become `@A-M-Berns` and `@abramdemski` across the policy, the frames,
+the node files and the maintainer's own ledger (`graph/events/A-M-Berns.jsonl`, its two
+events' `by` and ids rewritten at the maintainer's direction) — and a new contributor's
+handle needs no minting, only admission to `policy.yaml`. Design-log lines and completed
+round records keep the spelling they were written with, as history. AI handles stay the
+model's slug. The sign-in dialog is the device flow alone, its code shown large as
+GitHub expects it typed.

@@ -65,22 +65,14 @@
     d.innerHTML =
       '<h3>Sign in with GitHub</h3>' +
       (cfg.relay
-        ? '<p><button type="button" class="dev-start">Get a device code</button></p><p class="dev-note muted"></p>'
-        : '<p class="muted">The device-flow relay is not configured on this deployment.</p>') +
-      '<p class="muted">Or paste a fine-grained token (public repositories, contents read/write on your fork):</p>' +
-      '<p><input type="password" class="pat" placeholder="github_pat_…" size="28"> ' +
-      '<button type="button" class="pat-go">Use it</button></p>' +
+        ? '<p><button type="button" class="dev-start">Get a device code</button></p><div class="dev-note"></div>'
+        : '<p class="muted">Sign-in is not configured on this deployment.</p>') +
       '<p class="acct-status muted"></p>' +
       '<p><button type="button" class="acct-close">Close</button></p>';
     document.body.appendChild(d);
     d.showModal();
     var status = function (t) { d.querySelector(".acct-status").textContent = t; };
     d.querySelector(".acct-close").onclick = function () { d.close(); d.remove(); };
-    d.querySelector(".pat-go").onclick = function () {
-      var t = d.querySelector(".pat").value.trim();
-      if (!t) return;
-      finishLogin(t, status).catch(function (e) { auth = null; status(String(e.message || e)); });
-    };
     var dev = d.querySelector(".dev-start");
     if (dev) dev.onclick = function () {
       dev.disabled = true;
@@ -88,8 +80,9 @@
         .then(function (r) { return r.json(); })
         .then(function (c) {
           d.querySelector(".dev-note").innerHTML =
-            'Enter <strong>' + c.user_code + '</strong> at <a href="' + c.verification_uri + '" target="_blank" rel="noopener">' +
-            c.verification_uri + "</a> — waiting…";
+            '<div class="dev-code">' + c.user_code + '</div>' +
+            '<p class="muted">Enter it at <a href="' + c.verification_uri + '" target="_blank" rel="noopener">' +
+            c.verification_uri + "</a> — waiting…</p>";
           var every = Math.max(c.interval || 5, 5) * 1000;
           var until = Date.now() + (c.expires_in || 900) * 1000;
           (function poll() {

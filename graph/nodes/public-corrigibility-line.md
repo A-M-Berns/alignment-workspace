@@ -3,7 +3,7 @@ id: public-corrigibility-line
 kind: frame
 children: [authority-typed-corrigibility, post-corrigible-normative-learning, authority-typed-corrigibility.improvable, kernel-lexical-order-hypothesis, kernel-conditioning-fails-witness, kernel-restoration, reachable-corrective-control-negative, corrigibility-as-recoverability, corrigibility-architecture-round, li-corrigibilization-theorem, bria-corrigibility-round, kernel-box2-finite-time, effective-authority-layer]
 question: "Does the authority-typed corrigibility kernel of the public deference line deliver guarantees for a real system, and how does it relate to the epistemic picture?"
-owner: "@anson"
+owner: "@A-M-Berns"
 roots:
   - {id: authority-typed-corrigibility, role: plan, preset: worst-case, success_class: utopia}
   - {id: post-corrigible-normative-learning, role: plan, preset: worst-case, success_class: utopia}

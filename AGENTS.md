@@ -970,7 +970,7 @@ event, a level-minting event, a priority word, an acceptance or a tag under
 its own handle, or a line in another contributor's ledger, and never edits
 `derived.json`, `tasks.md`, `view.md` or `versions.json` by hand. Every
 event the agent writes for its user carries an id beginning with that
-user's handle (`anson-001`), in that user's own ledger. `graph.py` refuses
+user's handle (`A-M-Berns-001`), in that user's own ledger. `graph.py` refuses
 every one of these it can see; the rest is a review matter.
 
 **Goals are frames and wants.** The frame tree is the goal hierarchy: the

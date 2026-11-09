@@ -3,7 +3,7 @@ id: authorship-and-transparency
 kind: frame
 children: [public-legitimacy-theory, thin-converse-open, thin-value-loss-bound, effective-authority-layer, cnl-post, public-legitimacy-improvable, public-internal-legitimacy-is-reasons, reason-mediated-authorship, effective-authority-layer.improvable]
 question: "When is a verdict the principal's own program's and a channel's influence the declared reference on the declared inputs, and does the thick definition of legitimacy satisfy the thin specification?"
-owner: ["@anson", "@abram"]
+owner: ["@A-M-Berns", "@abramdemski"]
 filed_from: wiki
 roots:
   - {id: public-legitimacy-theory, role: plan, preset: worst-case, success_class: utopia}

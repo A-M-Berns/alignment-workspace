@@ -46,6 +46,19 @@ real submission remains the end-to-end test of the fork-and-pull-request path.
 
 None.
 
+## The follow-up of 2026-11-09 (`PROMPT-followup.md`)
+
+The sign-in dialog is the device flow alone — the pasted-token path leaves — and the
+device code renders large, bold and monospaced, selectable in one tap. A human handle is
+now the GitHub login: `@anson` and `@abram` become `@A-M-Berns` and `@abramdemski`
+across `graph/policy.yaml`, the frame owners, 59 node files' authors and owners, the
+protocol's and `AGENTS.md`'s examples, and the ledger `graph/events/A-M-Berns.jsonl`
+(its two events' `by` and ids included) — the ledger rename rewrites the maintainer's
+own two events at the maintainer's direction, and the checker adjudicates the renamed
+tree green. `graph/DESIGN-LOG.md` and completed round records keep the old spelling as
+history. New contributors need no minted name: their handle is `@<login>`, and
+admission to `policy.yaml` stays the maintainer's act.
+
 ## Attribution
 
 Prompt-author: the maintainer, in conversation, kept verbatim (`PROMPT.md`). Executor:

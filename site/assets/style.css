@@ -347,7 +347,7 @@ section.context ul.ctx-facts li { margin: 0.35em 0; }
 #acct-dialog { background: var(--card); color: var(--fg); border: 1px solid var(--rule); border-radius: 12px; padding: 1em 1.4em; max-width: 26em; }
 #acct-dialog::backdrop { background: #000a; }
 #acct-dialog h3 { margin-top: 0.2em; }
-#acct-dialog input.pat { font: inherit; background: var(--bg); color: var(--fg); border: 1px solid var(--rule); border-radius: 6px; padding: 0.25em 0.5em; }
+#acct-dialog .dev-code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 2.1rem; font-weight: 700; letter-spacing: 0.14em; text-align: center; margin: 0.5em 0 0.2em; user-select: all; }
 #acct-dialog button { font: inherit; font-size: 0.85rem; background: var(--tag-bg); color: var(--fg); border: 1px solid var(--rule); border-radius: 7px; padding: 0.25em 0.9em; cursor: pointer; }
 #acct-dialog button:hover { border-color: var(--accent); }
 .assess-receipt .as-pr { font: inherit; font-size: 0.85rem; font-weight: 700; background: var(--accent); color: #101013; border: none; border-radius: 7px; padding: 0.35em 1em; cursor: pointer; margin-right: 0.6em; }

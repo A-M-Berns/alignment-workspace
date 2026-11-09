@@ -2,7 +2,7 @@
 id: want-intentional-stance-math
 kind: leaf
 leaf_kind: want
-owner: "@abram"
+owner: "@abramdemski"
 want: true
 filed_from: quote
 given: intentional-stance-characterized

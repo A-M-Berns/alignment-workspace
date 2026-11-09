@@ -3,7 +3,7 @@ id: normative-inductor
 kind: frame
 children: [normativity-layer-I-closed, verdict-licence-chain, verdict-licence-chain.improvable]
 question: "Does a logical inductor made to answer to legitimately incurred obligations, through an enforcer on the compiled region of the entitled record, remain a logical inductor and deliver the Progress bound, and what remains conditional in that theorem?"
-owner: "@anson"
+owner: "@A-M-Berns"
 filed_from: wiki
 narrative: wiki/Normative-Inductor.md
 roots:
