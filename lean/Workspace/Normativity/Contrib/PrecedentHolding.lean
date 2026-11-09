@@ -387,6 +387,14 @@ theorem humbleScale_spec : StrictMono humbleScale ∧ ∀ j, 0 < humbleScale j �
     have h2 : 0 < 1 / ((j : ℚ) + 2) := by positivity
     exact ⟨by linarith, by linarith⟩
 
+/-- The hypotheses of `staircase_irredundant` inhabited: on the humble scale, the second of
+three cases is needed. -/
+theorem staircase_witness :
+    ¬ Permitted (staircase humbleScale 3) (against humbleScale 1) ∧
+      Permitted ((staircase humbleScale 3).filter fun c => c ≠ step humbleScale 1)
+        (against humbleScale 1) :=
+  staircase_irredundant humbleScale humbleScale_spec.1 3 1 (by norm_num)
+
 /-! ## 3. Merging two case bases -/
 
 /-- **The union of two case bases is rationalizable iff the union of their holdings has no
@@ -481,6 +489,7 @@ theorem merged_discord_hidden :
 #print axioms Workspace.Normativity.Contrib.PrecedentHolding.staircase_irredundant
 #print axioms Workspace.Normativity.Contrib.PrecedentHolding.humbleScale
 #print axioms Workspace.Normativity.Contrib.PrecedentHolding.humbleScale_spec
+#print axioms Workspace.Normativity.Contrib.PrecedentHolding.staircase_witness
 #print axioms Workspace.Normativity.Contrib.PrecedentHolding.rationalizable_append_iff
 #print axioms Workspace.Normativity.Contrib.PrecedentHolding.merged_discord
 #print axioms Workspace.Normativity.Contrib.PrecedentHolding.cycleHead

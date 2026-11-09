@@ -333,6 +333,16 @@ lemma liveSeed_region (F : Settlement 2) (y : Fin 2 → ℚ) :
   rw [forcedRegion_iff]
   simp [liveSeed, Seed.liveSub, Seed.liveStr, DocketState.quiet, Form.strength_sat_iff]
 
+/-- The hypotheses of `forget_settled` inhabited: `X` settled true in `liveSeed`. -/
+theorem forget_settled_witness (x : Fin 1 → ℚ) :
+    projection (0 : Fin 2).succAbove (forcedRegion liveSeed [] DocketState.quiet settledX) x ↔
+      InCube x ∧ (dropSettlement 0 settledX).Pinned x ∧
+      (∀ it ∈ liveSeed.liveSub DocketState.quiet ++ [],
+        (dropCoord 0 (specialize settledX it.form.row)).Sat x) ∧
+      (∀ it ∈ liveSeed.liveStr DocketState.quiet,
+        (dropCoord 0 (specialize settledX it.row)).Sat x) :=
+  forget_settled liveSeed [] DocketState.quiet 0 (b := true) rfl (Settlement.le_refl _) x
+
 lemma succAbove_zero_two : ((0 : Fin 2).succAbove : Fin 1 → Fin 2) = fun _ => 1 := by
   funext j; fin_cases j; rfl
 
@@ -502,6 +512,25 @@ theorem schedule_summable (K K₀ : ∀ t, Recollection (n (t + 1)) (n t))
   have hnn : (0 : ℝ) ≤ ((hi - lo : ℚ) : ℝ) := by exact_mod_cast sub_nonneg.2 hlohi
   have := mul_le_mul_of_nonneg_left h1 hnn
   linarith
+
+/-- The hypotheses of `schedule_slack` inhabited: two worlds at every stage, each step
+retelling both worlds as the first where the exact step is the identity, so that the steps
+differ on the second world; the row `P(S) ≥ 1/2`; two stages from the credence `(1/2, 1/2)`. -/
+theorem schedule_slack_witness :
+    excess (atLeast (1/2))
+        ((chain (n := fun _ => 2) (fun _ => Recollection.ofMap ![0, 0]) 2).push ![1/2, 1/2]) ≤
+      excess (atLeast (1/2))
+        ((chain (n := fun _ => 2) (fun _ => Recollection.ofMap fun w => w) 2).push ![1/2, 1/2]) +
+        (0 - (-1)) * scheduleLoss (n := fun _ => 2) (fun _ => Recollection.ofMap ![0, 0])
+          (fun _ => {1}) ![1/2, 1/2] 2 :=
+  schedule_slack (n := fun _ => 2) (fun _ => Recollection.ofMap ![0, 0])
+    (fun _ => Recollection.ofMap fun w => w) (fun _ => {1})
+    (fun _ w hw => by
+      fin_cases w
+      · rfl
+      · exact absurd (Finset.mem_singleton_self _) hw)
+    (-1) 0 ![1/2, 1/2] (fun w => by fin_cases w <;> norm_num) 2 (atLeast (1/2))
+    (fun i => by fin_cases i <;> simp [atLeast])
 
 end Schedule
 
@@ -778,6 +807,7 @@ end Workspace.Normativity.Contrib.OccurrenceIntegrity.Program
 #print axioms Workspace.Normativity.Contrib.Forgetting.liveSeed
 #print axioms Workspace.Normativity.Contrib.Forgetting.settledX
 #print axioms Workspace.Normativity.Contrib.Forgetting.liveSeed_region
+#print axioms Workspace.Normativity.Contrib.Forgetting.forget_settled_witness
 #print axioms Workspace.Normativity.Contrib.Forgetting.succAbove_zero_two
 #print axioms Workspace.Normativity.Contrib.Forgetting.live_forget_cost
 #print axioms Workspace.Normativity.Contrib.Forgetting.push_ofMap_id
@@ -788,6 +818,7 @@ end Workspace.Normativity.Contrib.OccurrenceIntegrity.Program
 #print axioms Workspace.Normativity.Contrib.Forgetting.scheduleLoss_le
 #print axioms Workspace.Normativity.Contrib.Forgetting.schedule_bounded
 #print axioms Workspace.Normativity.Contrib.Forgetting.schedule_summable
+#print axioms Workspace.Normativity.Contrib.Forgetting.schedule_slack_witness
 #print axioms Workspace.Normativity.Contrib.Forgetting.IsInterval
 #print axioms Workspace.Normativity.Contrib.Forgetting.recOn
 #print axioms Workspace.Normativity.Contrib.Forgetting.recOn_region
