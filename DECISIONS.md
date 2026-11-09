@@ -40,6 +40,19 @@ maintainer's.
 below.** The next round dispatched from that conversation lands it as its first
 commit.
 
+- **Does a broken commitment bar a change, or is it accounted? (2026-11-08).**  The
+  content-recollection round defines a broken commitment — an old row the old region forced
+  whose pullback the new region does not (`Recollection.Broken`) — and proves that none is
+  broken iff the new region pushes forward into the old (`no_broken_iff`).  It does not say
+  what the program does with one.  Two readings: *no broken commitment* is a condition a
+  legitimate change must meet (refinement, beside Integrity's conservation), or a change may
+  break a commitment provided the break is recorded and answerable, as a rebuttal is.  The
+  round leans to the second, without confidence: under the first, the abandonment fixture
+  bars every change away from a concept that has no exact image.  *Turns on:* the reading
+  under test — whether a later stage that drops an earlier commitment and says so has
+  recollected it — and what the program's account of error is to be; neither is a theorem's.
+  <!-- decision: open--broken-commitment-bars-or-accounts; touches: item:134; status: open -->
+
 - **The exposure rule (2026-11-07).**  The score-side-binding round states, as a proposal on
   `wiki/Normativity.md`, that a constraint is enforceable only if some settlement or assessment
   could show it wrong, or the reasoner authored it; its fixtures sort the October rows as
@@ -7133,3 +7146,53 @@ protocol inhabits `Entitlement` with admission carrying content, and a reallocat
 entitles nothing (`reallocated_entitles_nothing`).  Rejected alternative: admission read off the
 account's receipts (item 128's clause (b)), which stays open; the allocation is what the
 authority module already supplies.  `Expresses` remains typed.
+
+### 2026-11-08 — content is role among rational rows: incompatibility is a valid conflict, entailment is certificate entailment, and `Expresses` is *demands no more* against the robust reading
+<!-- decision: 2026-11-08--content-is-role-among-rows-expresses-demands-no-more; touches: item:118, item:128, item:113, item:133, item:79, claim:rows.incompatibility-entailment, claim:seed.bound-certified, claim:seed.forced-interval-rational, claim:expresses.kept-row-demands-no-more, claim:expresses.entitlement-discriminates, claim:expresses.plain-row-demands-more -->
+
+**Agent-decided, reversible** (the content-recollection round).  (1) The content of a row is
+its incompatibility role: what it rules out, as valid conflicts of the compiler
+(`IncompatibilitySemantics.Incompatible`), which is exactly infeasibility in the cube; the
+entailment this induces is certificate entailment (`incEntails_iff_certEntails`).  A leverage
+form has a role only among rows: restricted to form contexts the relation is total
+(`formIncEntails_total`).  (2) The duality is read in from the pinned `EconCSLib`
+(`theorem_of_alternative`, `farkas_lemma`) by `RowAlternative.lean`, the first `Workspace`
+import of that dependency; no pin changes.  Rejected alternative: tracking multipliers
+through the repository's own `FourierMotzkin`, which states satisfaction over the reals and
+would still need the descent to the rationals.  (3) Both theorems item 118 asks for are
+registered (`seed.bound-certified`, `seed.forced-interval-rational`); the item's status stays
+the maintainer's word.  (4) `Expresses` is taken in the weaker of two strengths: the form's
+content, read under the rebuttal rule, *demands no more* than the anchored requirement, a
+defeasible warrant denoting the models of `RobustWarrant.Robust`
+(`ExpressesByRole.ExpressesNoMore ι settled`).  Rejected alternative: the same-role strength
+(`ExpressesSame`), which is defined, fails for a weaker row and is not proved for the exact
+row.  The interpretation of coordinates as events and the undefeated extensions stay declared
+inputs; M1, M2 and the entitlement liveness reading are not reopened.
+
+### 2026-11-08 — a vocabulary change is a translation of rows, and conservativity on the old fragment is its criterion
+<!-- decision: 2026-11-08--vocabulary-change-is-translation-conservativity-criterion; touches: item:134, item:122, claim:content.conservative-iff-image -->
+
+**Agent-decided, reversible** (the content-recollection round).  A vocabulary change is given
+by a translation — each old coordinate a rational linear form in the new ones
+(`Conservativity.Translation`) — of which a coordinate map is the `0/1` case and a stochastic
+map between world spaces the case on world-distribution coordinates (`Recollection`).  Old
+rows pull back; the change *refines* when the image of the new region lies in the old, *adds
+nothing* when the old lies in the image, and is *conservative* when they are equal
+(`conservative_iff`).  Rejected alternative: stating the criterion for coordinate embeddings
+only, as the dispatch worded it, which would have needed a second theorem for the stochastic
+map.  Item 134 is filed for what is missing: the translation attached to the accounted state.
+Matter 3's declarations are listed and not registered.  What a broken commitment does to a
+change is queued, not decided.
+
+### 2026-11-08 — precedent is read off the record as cases and constrains the docket; it is registered against item 117
+<!-- decision: 2026-11-08--precedent-read-off-record-constrains-docket; touches: item:117, claim:precedent.consistent-iff-pairwise -->
+
+**Agent-decided, reversible** (the content-recollection round).  The precedent constraint is
+modelled on the record's own objects: a case is what `Grounds.survivors` and `undercut`
+return under a docket (`PrecedentConstraint.caseOf`), reasons are leverage forms compared by
+kind and strength, and a continuation is permitted when the case base stays consistent
+(`consistent_iff_pairwise`).  It is registered against item 117, the filed request for a
+precedent object on the docket, which the dispatch's candidate list did not name.  Rejected
+alternative: a new item for the missing decision occurrence; item 117 already asks for the
+docket object, and the gap is recorded there.  The reading of every undercut as an
+outweighing is the model's and is not adopted as the program's.

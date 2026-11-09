@@ -9,7 +9,7 @@ title: "The robust reading of a warrant as a Form-level rule"
 section: "Deference line — second wave"
 maintainer_order: 143
 difficulty: "open"
-heading_notes: ""
+heading_notes: " — *narrowed 2026-11-08: the row `settleForm` keeps demands no more than the robust requirement whenever the records at which the rule keeps it are among the requirement's undefeated extensions (`ExpressesByRole.settled_demandsNoMore` with `keptExtensions`), and demands more against the requirement at `3/4` with the contrary challenge a declared defeater, at the challenge record (`defeater_not_expressed`); what remains is the rule on `Form` whose kept records are the undefeated extensions, and the converse direction (same role)*"
 project: normativity
 dispatchable: true
 item_status: open
@@ -18,6 +18,8 @@ acceptance: "the Lean audit clean; `RobustWarrant.robustStrength_all`, `robust_s
 work:
   - {kind: decision, ref: open--exposure-rule-proposal}
   - {kind: decision, ref: 2026-11-07--conduct-binds-on-score-warrants-on-prices}
+  - {kind: round, ref: projects/normativity/rounds/2026-11-08-content-recollection}
+  - {kind: decision, ref: 2026-11-08--content-is-role-among-rows-expresses-demands-no-more}
 context: ["lean/Workspace/Normativity/Contrib/RobustWarrant.lean", "lean/Workspace/Normativity/Contrib/WarrantSolvency.lean", "projects/normativity/rounds/2026-11-07-score-side-binding/REPORT.md"]
 author: "@smithy-verity"
 size: M

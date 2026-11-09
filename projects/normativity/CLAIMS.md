@@ -2158,3 +2158,211 @@ Round `2026-10-21-rebuttal-and-end-to-end`; the dispatch's registration list, ag
   "note": "admittedByStanding: an obligation occurrence is admitted at history h when its issuer holds its matter under the allocation current at h; first-person commitments are matters the reasoner holds itself. The witness's state₀ rebuilt over the protocol with standing under J₀ (the first obligation the principal's, the second the reasoner's own) inhabits Entitlement for the witness's grounds at every date with admission carrying content (entitlementS, admitted_by_allocation, first_person_admitted). Under J₁, the allocation moving the first matter to the agent, the first obligation is not admitted at any history (reallocated_not_admitted) and no entitlement over any obligation state of that protocol may trace an occurrence to it — the counterpart of answered_not_entitled with the account replaced by the allocation. The hypothesis package is inhabited: over protocolS₁ an Initial can expose only obligation 1 (Initial admits every exposed occurrence, and obligation 0 is admitted at no history), and entitlementS₁ over stateS₁ — every origin at obligation 1, admitted under J₁, account live, Expresses total — is the witness (witness_origin: its conclusion there reads 1 ≠ 0). Expresses remains typed."
 }
 ```
+
+### rows.incompatibility-entailment
+
+```json
+{
+  "project": "normativity",
+  "short_name": "on the rational row language incompatibility entailment coincides with certificate entailment, relative to the cube and with no nonemptiness hypothesis",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.IncompatibilitySemantics.incEntails_iff_certEntails"
+  },
+  "answers_item": "118",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "Incompatible L is a FarkasCert over L's rows and the cube rows, a valid conflict result of the compiler (incompatible_iff_conflict), and holds iff L has no cube point (incompatible_iff_not_feasible: soundness farkas_sound, completeness the rational alternative RowAlternative.alternative, read in from the pinned EconCSLib theorem_of_alternative). CertEntails is an EntailCert over allowed rows; a BoundCert is the case of a row s·x φ ≤ v (ofBoundCert, toBoundCert). Both notions equal validity on the cube points of the list (incEntails_iff_sem, certEntails_iff_sem); against an infeasible list a scaled conflict certificate added to a cube certificate derives every row (certEntails_of_incompatible), so no nonemptiness hypothesis is needed. Restricted to contexts of leverage forms of strength at most one the relation is total, because the all-ones point satisfies every such form (humble_forms_feasible, formIncEntails_total, form_role_needs_rows)."
+}
+```
+
+### seed.bound-certified
+
+```json
+{
+  "project": "normativity",
+  "short_name": "every valid lower bound on a forced region has a bound certificate over the forced bundle's allowed rows",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.IncompatibilitySemantics.lowerBound_certified"
+  },
+  "answers_item": "118",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "For LowerBound S W st F φ c there are m and cert : BoundCert d m φ (-1) with every row allowed against forcedBundle S W st F and c ≤ −cert.value; the upper-bound form is upperBound_certified. Through certEntails_iff_sem. No nonemptiness of the region is assumed: against an empty region every bound is certified. The hypothesis is inhabited by lowerBound_witness (the bound 1/2 on SeedStatics.widenSeed). Item 118's second theorem."
+}
+```
+
+### seed.forced-interval-rational
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the forced interval computed by elimination inhabits the rational predicate: its endpoints are valid bounds attained at rational points",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.IncompatibilitySemantics.forcedInterval_isForcedInterval"
+  },
+  "answers_item": "118",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "IsForcedInterval S W st F φ (forcedInterval S W st F φ).1 (forcedInterval S W st F φ).2 under ∃ x, forcedRegionR S W st F x. From SeedStatics.forcedInterval_spec (attainment at real points) and exists_rat_point_at, which rests on RowAlternative.exists_rat_of_real: a rational system feasible over ℝ is feasible over ℚ. The hypothesis is inhabited by forcedInterval_witness (widenSeed). Item 118's first theorem."
+}
+```
+
+### expresses.kept-row-demands-no-more
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the strength row the rebuttal rule keeps demands no more than a robust warrant of at least its strength whose undefeated extensions include every record the rule keeps it at",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.ExpressesByRole.settled_demandsNoMore"
+  },
+  "answers_item": "128",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "A Requirement (events A, Y, strength c, undefeated extensions U) denotes its models, the nonnegative measures satisfying RobustWarrant.Robust. A form is a content — rows per record — under the plain rule or the settled rule (settleOutcome). DemandsNoMore: every list of rows incompatible with the content at a record is incompatible with the requirement there, equivalently every model satisfies the content's rows at every record of positive mass (demandsNoMore_iff, by completeness of conflicts). Hypotheses: c' ≤ w.c, ι XA = w.A, ι XAY = w.A ∩ w.Y, and every kept record's event in w.U; inhabited by settled_expresses on the eight-world fragment (A, A∧Y, C) with U the kept extensions. Necessity: stronger_not_expresses (the strength), defeater_not_expressed (the extensions). The interpretation ι and U are declared. The same-role strength (SameRole) is defined, refuted for a weaker row (weaker_noMore_not_same), and not proved for the exact row."
+}
+```
+
+### expresses.entitlement-discriminates
+
+```json
+{
+  "project": "normativity",
+  "short_name": "an entitlement whose Expresses carries content: over one accounted state the kept row at 3/5 is entitled, the plain row is not, and the row at 3/4 is not",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.ExpressesByRole.entitlement_discriminates"
+  },
+  "answers_item": "128",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "stateW is two obligations over the protocol with admission by standing under J₀, anchored at the requirement at 3/5 over the kept extensions and at the requirement at 3/4 with the contrary challenge a declared defeater. entitlementW inhabits Entitlement stateW [occ35] (ExpressesNoMore ι settled). The plain row demands more at the record settling the consequent false, where it reads 3/5·P(A) ≤ 0 and the eight-world measure, a model of the requirement, prices A at 1/5 (plain_not_expresses; the conflict contraCert in contraposition_as_expression). The row at 3/4 is too strong for the first anchor and, against the second, is kept by the rebuttal rule at the contrary-challenge record where the measure violates it (defeater_not_expressed). The first fixture in which entitlement fails for a reason other than a dead account or a reallocated matter. Item 128, clause (a), the Expresses half; clauses (b) and (c) are untouched."
+}
+```
+
+### expresses.plain-row-demands-more
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the plain linear strength row demands more than a robust warrant wherever a model gives the antecedent positive posterior at a record settling the consequent false",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.ExpressesByRole.plain_demandsMore"
+  },
+  "answers_item": "113",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "Item 113's phenomenon as a statement about expression: at a record pinning the consequent false the specialized strength row forces the antecedent to zero (WarrantEntitlement.strength_contraposes), while a model of the requirement may price it positively. Hypotheses: 0 < c, a model μ, a settlement pinning XAY false, positive record mass, positive antecedent mass on the record; inhabited by plain_not_expresses (record mass 5/8, antecedent mass 1/8). Beside it models_null_at_rebuttal: a model of a requirement of positive strength gives the antecedent mass zero on any undefeated extension on which the consequent is false."
+}
+```
+
+### content.conservative-iff-image
+
+```json
+{
+  "project": "normativity",
+  "short_name": "a vocabulary change is conservative on the old fragment iff the image of the new region equals the old region",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.Conservativity.conservative_iff"
+  },
+  "answers_item": "134",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "Refines: the pullback of every row the old region forces is forced by the new; AddsNothing: every old row whose pullback the new region forces was forced by the old; Conservative: both. refines_iff: refinement iff the image lies in the old region. addsNothing_iff: adding nothing iff the old region lies in the image, by separating_row and the rational alternative (RowAlternative.alternative_family). A coordinate map is the 0/1 translation, its image the projection; injectivity is unused. The extension of a seed along a coordinate map by new items always refines (extend_refines). Fixtures: ext₁ conservative; ext₂, a new term whose introduction row P(T) ≥ 4/5·P(X) and elimination row P(Y) ≥ 3/4·P(T) force P(Y) ≥ 3/10 over P(X) ≥ 1/2, with the certificate badCert, refines and is not conservative (bad_not_conservative), and is conservative with the elimination port defeated. SeedStatics.seed_independence_strict is conservativity on pins only (strict_layer_adds_no_pin, strict_layer_adds_rows)."
+}
+```
+
+### precedent.consistent-iff-pairwise
+
+```json
+{
+  "project": "normativity",
+  "short_name": "consistency of a case base read off the record is a pairwise check: no two cases each of whose winners are covered by the other's losers",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.PrecedentConstraint.consistent_iff_pairwise"
+  },
+  "answers_item": "117",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "A reason is a leverage form, its kind the form with the strength erased; V covers W when each form of W has a form of V of its kind and at least its strength. A Case is read off the record by caseOf: survivors' forms prevailed, undercut occurrences' forms were outweighed, and an occurrence removed by rebuttal is on neither side. Consistent: no two reason sets beat each other; equivalently some asymmetric relation contains every case's decision (consistent_iff_order). Permitted Γ c is Consistent (c :: Γ), antitone in Γ. Fixtures on (X, ¬X, D): a forbidden continuation, two permitted by distinguishing (a ground of a new kind; a greater opposing strength), and a situation in which both decisions are permitted (both_permitted) — the constraint allows and does not rank. The reading of undercut as outweighed is the model's; the record carries no decision object. The attribution of the reason model to its author is unverified."
+}
+```

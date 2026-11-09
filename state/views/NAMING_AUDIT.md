@@ -658,7 +658,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Pierces` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.ExposureGeometry.Pierces` |
 | `WindowsDisjoint` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.ExposureGeometry.WindowsDisjoint` |
 | `a` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.ExposureGeometry.Greedy.a` |
-| `exposure` | def | 2026-08-11-phase-ii-promotion | wiki | `Workspace.Deference.Contrib.ExposureGeometry.exposure` |
+| `exposure` | def | 2026-08-11-phase-ii-promotion | wiki, prose | `Workspace.Deference.Contrib.ExposureGeometry.exposure` |
 | `orbit` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.ExposureGeometry.Greedy.orbit` |
 | `points` | def | 2026-08-11-phase-ii-promotion | prose | `Workspace.Deference.Contrib.ExposureGeometry.Greedy.points` |
 | `accelTrader` | def | 2026-08-11-faithful-acceleration | note | `Workspace.Deference.Contrib.FaithfulAcceleration.accelTrader` |
@@ -1170,7 +1170,7 @@ change, and the count of those is the size of the free choice remaining.
 | `point` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Headline.FormationData.point` |
 | `restoration2` | def | unrecorded | Lean only | `Workspace.Deference.Headline.restoration2` |
 
-## normativity — 1133 names, 770 of them Lean only
+## normativity — 1241 names, 839 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -1189,6 +1189,8 @@ change, and the count of those is the size of the free choice remaining.
 | `conduct_on_prices_conflicts` | theorem | 2026-11-07-score-side-binding | registry, wiki, prose | `Workspace.Normativity.Contrib.WarrantInductorScoreSide.conduct_on_prices_conflicts` |
 | `conservation` | theorem | 2026-09-07-final-pressure-pass | registry, wiki, prose | `Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.conservation` |
 | `conservation` | theorem | 2026-09-07-final-pressure-pass | registry, wiki, prose | `Workspace.Normativity.Contrib.LegitimateEvolution.Evolution.conservation` |
+| `conservative_iff` | theorem | 2026-11-08-content-recollection | registry, prose | `Workspace.Normativity.Contrib.Conservativity.conservative_iff` |
+| `consistent_iff_pairwise` | theorem | 2026-11-08-content-recollection | registry, prose | `Workspace.Normativity.Contrib.PrecedentConstraint.consistent_iff_pairwise` |
 | `contraposition_blocked` | theorem | 2026-10-23-normative-inductor-consolidation | registry, wiki | `Workspace.Normativity.Contrib.WarrantInductorRebuttal.contraposition_blocked` |
 | `counterfactual_open_not_actual` | theorem | 2026-09-07-final-pressure-pass | registry, wiki, prose | `Workspace.Normativity.Contrib.NonCapture.Witness.counterfactual_open_not_actual` |
 | `deductiveRegion_eq_convexHull` | theorem | 2026-08-19-deductive-region | registry | `Workspace.Normativity.Contrib.DeductiveRegion.deductiveRegion_eq_convexHull` |
@@ -1206,6 +1208,7 @@ change, and the count of those is the size of the free choice remaining.
 | `endpoint_only_insufficient` | theorem | 2026-09-07-final-pressure-pass | registry, wiki, prose | `Workspace.Normativity.Contrib.LegitimateEvolution.Witness.endpoint_only_insufficient` |
 | `enforcement_day_value_nonneg` | theorem | 2026-08-16-traderized-enforcement | registry, note | `Workspace.Normativity.Contrib.DeductiveEnforcement.enforcement_day_value_nonneg` |
 | `enforcement_netWorth_nonneg` | theorem | 2026-08-16-traderized-enforcement | registry, note | `Workspace.Normativity.Contrib.DeductiveEnforcement.enforcement_netWorth_nonneg` |
+| `entitlement_discriminates` | theorem | 2026-11-08-content-recollection | registry, prose | `Workspace.Normativity.Contrib.ExpressesByRole.entitlement_discriminates` |
 | `evaluate_subst` | theorem | 2026-09-06-mathematical-consolidation | registry, wiki, prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.evaluate_subst` |
 | `evaluate_subst` | theorem | 2026-09-06-mathematical-consolidation | registry, wiki, prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.evaluate_subst` |
 | `eventually_const_of_finite` | theorem | 2026-10-21-rebuttal-and-end-to-end | registry, wiki, prose | `Workspace.Normativity.Contrib.SeedStatics.eventually_const_of_finite` |
@@ -1214,21 +1217,25 @@ change, and the count of those is the size of the free choice remaining.
 | `exists_maxMin_representation` | theorem | 2026-08-18-maxmin-representation | registry | `Workspace.Normativity.Contrib.MaxMinRepresentation.exists_maxMin_representation` |
 | `faf_asympEq_refl` | theorem | 2026-08-10-repo-scaffolding | registry | `Workspace.Smoke.faf_asympEq_refl` |
 | `forcedInterval_bounds` | theorem | 2026-10-21-rebuttal-and-end-to-end | registry, wiki | `Workspace.Normativity.Contrib.SeedStatics.forcedInterval_bounds` |
+| `forcedInterval_isForcedInterval` | theorem | 2026-11-08-content-recollection | registry, prose | `Workspace.Normativity.Contrib.IncompatibilitySemantics.forcedInterval_isForcedInterval` |
 | `forcedInterval_spec` | theorem | 2026-10-21-rebuttal-and-end-to-end | registry, wiki, prose | `Workspace.Normativity.Contrib.SeedStatics.forcedInterval_spec` |
 | `gap_le_of_mixture` | theorem | 2026-08-16-traderized-enforcement | registry, note | `Workspace.Normativity.Contrib.CoherenceModulus.gap_le_of_mixture` |
 | `gap_le_of_net_cover` | theorem | 2026-08-16-traderized-enforcement | registry, note | `Workspace.Normativity.Contrib.CoherenceModulus.gap_le_of_net_cover` |
 | `hullMass_anti` | theorem | 2026-10-21-rebuttal-and-end-to-end | registry, wiki, prose | `Workspace.Normativity.Contrib.ConvergenceMeasure.hullMass_anti` |
+| `incEntails_iff_certEntails` | theorem | 2026-11-08-content-recollection | registry, prose | `Workspace.Normativity.Contrib.IncompatibilitySemantics.incEntails_iff_certEntails` |
 | `inductor` | theorem | 2026-10-22-normative-inductor-integration | registry, wiki, prose | `Workspace.Normativity.Contrib.WarrantInductorWitness.inductor` |
 | `inductor` | theorem | 2026-10-23-normative-inductor-consolidation | registry, wiki, prose | `Workspace.Normativity.Contrib.WarrantInductorRebuttal.inductor` |
 | `isLogicalInductor_of_computableMarket` | theorem | 2026-08-16-traderized-enforcement | registry, note | `Workspace.Normativity.Contrib.DeductiveEnforcement.isLogicalInductor_of_computableMarket` |
 | `isPiecewiseAffineOn_maxMin` | theorem | 2026-08-18-maxmin-representation | registry | `Workspace.Normativity.Contrib.MaxMinRepresentation.isPiecewiseAffineOn_maxMin` |
 | `liability_rebutted` | theorem | 2026-10-21-rebuttal-and-end-to-end | registry, wiki, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.liability_rebutted` |
 | `licence_chain` | theorem | 2026-10-20-warrant-enforcement-semantics | registry, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.licence_chain` |
+| `lowerBound_certified` | theorem | 2026-11-08-content-recollection | registry, prose | `Workspace.Normativity.Contrib.IncompatibilitySemantics.lowerBound_certified` |
 | `marketValueRat_enforcementStrategy` | theorem | 2026-08-16-traderized-enforcement | registry, note | `Workspace.Normativity.Contrib.EnforcementStrategy.marketValueRat_enforcementStrategy` |
 | `mem_survivors` | theorem | 2026-10-22-normative-inductor-integration | registry, wiki, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.mem_survivors` |
 | `no_efficient_trader_exploits` | theorem | 2026-08-16-traderized-enforcement | registry, wiki, note | `Workspace.Normativity.Contrib.AssessmentFirm.no_efficient_trader_exploits` |
 | `no_efficient_trader_exploits` | theorem | 2026-08-16-traderized-enforcement | registry, wiki, note | `Workspace.Normativity.Contrib.EnforcementPreservation.no_efficient_trader_exploits` |
 | `no_efficient_trader_exploits_of_worldInclusive` | theorem | 2026-08-16-traderized-enforcement | registry, note | `Workspace.Normativity.Contrib.DeductiveEnforcement.no_efficient_trader_exploits_of_worldInclusive` |
+| `plain_demandsMore` | theorem | 2026-11-08-content-recollection | registry, prose | `Workspace.Normativity.Contrib.ExpressesByRole.plain_demandsMore` |
 | `progress_bound` | theorem | 2026-09-07-final-pressure-pass | registry, wiki, prose | `Workspace.Normativity.Contrib.NormativeInductionInterface.Evaluation.progress_bound` |
 | `propagate_toSegment` | theorem | 2026-09-07-final-pressure-pass | registry, wiki | `Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.propagate_toSegment` |
 | `propagate_toSegment` | theorem | 2026-09-07-final-pressure-pass | registry, wiki | `Workspace.Normativity.Contrib.LegitimateEvolution.Evolution.propagate_toSegment` |
@@ -1240,6 +1247,7 @@ change, and the count of those is the size of the free choice remaining.
 | `seed_independence_strict` | theorem | 2026-10-21-rebuttal-and-end-to-end | registry, wiki | `Workspace.Normativity.Contrib.SeedStatics.seed_independence_strict` |
 | `selection_not_transparent` | theorem | 2026-10-20-warrant-enforcement-semantics | registry | `Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.selection_not_transparent` |
 | `settleForm_eq_some_iff` | theorem | 2026-10-21-rebuttal-and-end-to-end | registry, wiki, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.settleForm_eq_some_iff` |
+| `settled_demandsNoMore` | theorem | 2026-11-08-content-recollection | registry, prose | `Workspace.Normativity.Contrib.ExpressesByRole.settled_demandsNoMore` |
 | `supported_admissible` | theorem | 2026-10-20-warrant-enforcement-semantics | registry | `Workspace.Normativity.Contrib.WarrantEntitlement.supported_admissible` |
 | `supported_not_licensed` | theorem | 2026-10-20-warrant-enforcement-semantics | registry, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.supported_not_licensed` |
 | `suspect_in_bundle` | theorem | 2026-11-07-score-side-binding | registry, wiki, prose | `Workspace.Normativity.Contrib.WarrantSolvency.suspect_in_bundle` |
@@ -1317,6 +1325,31 @@ change, and the count of those is the size of the free choice remaining.
 | `gap` | def | 2026-08-16-traderized-enforcement | wiki, note, prose | `Workspace.Normativity.Contrib.CoherenceModulus.gap` |
 | `l1` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.CoherenceModulus.l1` |
 | `mixture` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.CoherenceModulus.mixture` |
+| `AddsNothing` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Conservativity.AddsNothing` |
+| `Conservative` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Conservativity.Conservative` |
+| `Forces` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Conservativity.Forces` |
+| `Refines` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Conservativity.Refines` |
+| `SettlementExtends` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Conservativity.SettlementExtends` |
+| `Translation` | abbrev | unrecorded | prose | `Workspace.Normativity.Contrib.Conservativity.Translation` |
+| `Translation.apply` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Conservativity.Translation.apply` |
+| `Translation.ofMap` | def | unrecorded | prose | `Workspace.Normativity.Contrib.Conservativity.Translation.ofMap` |
+| `badCert` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Conservativity.badCert` |
+| `elim` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Conservativity.elim` |
+| `extend` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Conservativity.extend` |
+| `ext₁` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Conservativity.ext₁` |
+| `ext₂` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Conservativity.ext₂` |
+| `e₁` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Conservativity.e₁` |
+| `e₂` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Conservativity.e₂` |
+| `image` | def | unrecorded | note, prose | `Workspace.Normativity.Contrib.Conservativity.image` |
+| `intro` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Conservativity.intro` |
+| `liftRows` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Conservativity.liftRows` |
+| `mapForm` | def | unrecorded | prose | `Workspace.Normativity.Contrib.Conservativity.mapForm` |
+| `mapStr` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Conservativity.mapStr` |
+| `mapSub` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Conservativity.mapSub` |
+| `projection` | def | unrecorded | prose | `Workspace.Normativity.Contrib.Conservativity.projection` |
+| `pull` | def | unrecorded | prose | `Workspace.Normativity.Contrib.Conservativity.pull` |
+| `seed₁` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Conservativity.seed₁` |
+| `seed₂` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Conservativity.seed₂` |
 | `Computation` | structure | unrecorded | prose | `Workspace.Normativity.Contrib.ConstraintSchedule.RationalConstraintSchedule.Computation` |
 | `RationalConstraintSchedule` | structure | unrecorded | prose | `Workspace.Normativity.Contrib.ConstraintSchedule.RationalConstraintSchedule` |
 | `RationalConstraintSchedule.canonicalRepresentation` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ConstraintSchedule.RationalConstraintSchedule.canonicalRepresentation` |
@@ -1520,6 +1553,34 @@ change, and the count of those is the size of the free choice remaining.
 | `rowViolation` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementStrategy.Presentation.rowViolation` |
 | `violationFeature` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementStrategy.violationFeature` |
 | `witnessPresentation` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementStrategy.witnessPresentation` |
+| `Content` | abbrev | unrecorded | Lean only | `Workspace.Normativity.Contrib.ExpressesByRole.Content` |
+| `DemandsNoMore` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ExpressesByRole.DemandsNoMore` |
+| `ExpressesNoMore` | def | unrecorded | prose | `Workspace.Normativity.Contrib.ExpressesByRole.ExpressesNoMore` |
+| `ExpressesSame` | def | unrecorded | prose | `Workspace.Normativity.Contrib.ExpressesByRole.ExpressesSame` |
+| `Frb` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ExpressesByRole.Frb` |
+| `Holds` | def | unrecorded | prose | `Workspace.Normativity.Contrib.ExpressesByRole.Holds` |
+| `ReqIncompatible` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ExpressesByRole.ReqIncompatible` |
+| `Requirement` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.ExpressesByRole.Requirement` |
+| `Requirement.Models` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ExpressesByRole.Requirement.Models` |
+| `SameRole` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ExpressesByRole.SameRole` |
+| `anchorW` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ExpressesByRole.anchorW` |
+| `bg` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ExpressesByRole.bg` |
+| `contraCert` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ExpressesByRole.contraCert` |
+| `entitlementW` | def | unrecorded | prose | `Workspace.Normativity.Contrib.ExpressesByRole.entitlementW` |
+| `initialW` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ExpressesByRole.initialW` |
+| `keptExtensions` | def | unrecorded | prose | `Workspace.Normativity.Contrib.ExpressesByRole.keptExtensions` |
+| `occ35` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ExpressesByRole.occ35` |
+| `plain` | def | unrecorded | prose | `Workspace.Normativity.Contrib.ExpressesByRole.plain` |
+| `pointRows` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ExpressesByRole.pointRows` |
+| `prices` | def | unrecorded | wiki, note, prose | `Workspace.Normativity.Contrib.ExpressesByRole.prices` |
+| `protocolW` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ExpressesByRole.protocolW` |
+| `protocolWS` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ExpressesByRole.protocolWS` |
+| `recEvent` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ExpressesByRole.recEvent` |
+| `reqDef` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ExpressesByRole.reqDef` |
+| `reqKept` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ExpressesByRole.reqKept` |
+| `settled` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.ExpressesByRole.settled` |
+| `startW` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ExpressesByRole.startW` |
+| `stateW` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ExpressesByRole.stateW` |
 | `LinCon` | abbrev | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.LinCon` |
 | `Sat` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.LinCon.Sat` |
 | `Sat` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.Sat` |
@@ -1570,6 +1631,17 @@ change, and the count of those is the size of the free choice remaining.
 | `isAnswer` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.HistoryIntegrity.isAnswer` |
 | `isDispose` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.HistoryIntegrity.isDispose` |
 | `isSettle` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.HistoryIntegrity.isSettle` |
+| `Allowed` | def | unrecorded | prose | `Workspace.Normativity.Contrib.IncompatibilitySemantics.Allowed` |
+| `CertEntails` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IncompatibilitySemantics.CertEntails` |
+| `EntailCert` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.IncompatibilitySemantics.EntailCert` |
+| `Feasible` | def | unrecorded | prose | `Workspace.Normativity.Contrib.IncompatibilitySemantics.Feasible` |
+| `FormIncEntails` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IncompatibilitySemantics.FormIncEntails` |
+| `IncEntails` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IncompatibilitySemantics.IncEntails` |
+| `Incompatible` | def | unrecorded | prose | `Workspace.Normativity.Contrib.IncompatibilitySemantics.Incompatible` |
+| `SemEntails` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IncompatibilitySemantics.SemEntails` |
+| `boundRow` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IncompatibilitySemantics.boundRow` |
+| `ofBoundCert` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IncompatibilitySemantics.ofBoundCert` |
+| `toBoundCert` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IncompatibilitySemantics.toBoundCert` |
 | `EA` | abbrev | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Evasive.EA` |
 | `ED` | abbrev | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Evasive.ED` |
 | `EQ` | inductive | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Evasive.EQ` |
@@ -1892,6 +1964,21 @@ change, and the count of those is the size of the free choice remaining.
 | `witnessLam₂` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PracticalCertificate.witnessLam₂` |
 | `witnessMenu` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PracticalCertificate.witnessMenu` |
 | `witnessP` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PracticalCertificate.witnessP` |
+| `Beats` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentConstraint.Beats` |
+| `Case` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentConstraint.Case` |
+| `Consistent` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentConstraint.Consistent` |
+| `Covers` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentConstraint.Covers` |
+| `Permitted` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentConstraint.Permitted` |
+| `caseOf` | def | unrecorded | prose | `Workspace.Normativity.Contrib.PrecedentConstraint.caseOf` |
+| `con` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentConstraint.con` |
+| `conD` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentConstraint.conD` |
+| `distinguished` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentConstraint.distinguished` |
+| `distinguishedPro` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentConstraint.distinguishedPro` |
+| `forbidden` | def | unrecorded | prose | `Workspace.Normativity.Contrib.PrecedentConstraint.forbidden` |
+| `kind` | def | unrecorded | prose | `Workspace.Normativity.Contrib.PrecedentConstraint.kind` |
+| `precedent` | def | unrecorded | prose | `Workspace.Normativity.Contrib.PrecedentConstraint.precedent` |
+| `pro` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentConstraint.pro` |
+| `stronger` | def | unrecorded | prose | `Workspace.Normativity.Contrib.PrecedentConstraint.stronger` |
 | `groupOf` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ProjectionBridge.groupOf` |
 | `ofGeom` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ProjectionBridge.ofGeom` |
 | `repOf` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ProjectionBridge.repOf` |
@@ -1993,6 +2080,23 @@ change, and the count of those is the size of the free choice remaining.
 | `proj` | def | unrecorded | wiki | `RationalPolytope.proj` |
 | `toPt` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.RationalPolytope.toPt` |
 | `vertexSet` | def | unrecorded | Lean only | `RationalPolytope.vertexSet` |
+| `Broken` | def | unrecorded | prose | `Workspace.Normativity.Contrib.Recollection.Broken` |
+| `Recollection` | structure | unrecorded | prose | `Workspace.Normativity.Contrib.Recollection.Recollection` |
+| `abandon` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Recollection.abandon` |
+| `atLeast` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Recollection.atLeast` |
+| `comp` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Recollection.Recollection.comp` |
+| `compKernel` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Recollection.compKernel` |
+| `const` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.Recollection.const` |
+| `excess` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.Recollection.excess` |
+| `newB` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Recollection.newB` |
+| `ofMap` | def | unrecorded | prose | `Workspace.Normativity.Contrib.Recollection.Recollection.ofMap` |
+| `oldB` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Recollection.oldB` |
+| `partial₀` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Recollection.partial₀` |
+| `partial₁` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Recollection.partial₁` |
+| `pull` | def | unrecorded | prose | `Workspace.Normativity.Contrib.Recollection.Recollection.pull` |
+| `push` | def | unrecorded | prose | `Workspace.Normativity.Contrib.Recollection.Recollection.push` |
+| `split` | def | unrecorded | prose | `Workspace.Normativity.Contrib.Recollection.split` |
+| `toTranslation` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.Recollection.Recollection.toTranslation` |
 | `Aev` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.RobustWarrant.Aev` |
 | `Ccev` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.RobustWarrant.Ccev` |
 | `Cev` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.RobustWarrant.Cev` |
@@ -2014,6 +2118,10 @@ change, and the count of those is the size of the free choice remaining.
 | `post` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.RobustWarrant.post` |
 | `postC` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.RobustWarrant.postC` |
 | `robustStrength` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.RobustWarrant.robustStrength` |
+| `SatAll` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.RowAlternative.SatAll` |
+| `Weights` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.RowAlternative.Weights` |
+| `coeff` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.RowAlternative.Weights.coeff` |
+| `const` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.RowAlternative.Weights.const` |
 | `BoundCert` | structure | 2026-10-20-warrant-enforcement-semantics | wiki, prose | `Workspace.Normativity.Contrib.SeedStatics.BoundCert` |
 | `BoundCert.value` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.BoundCert.value` |
 | `Cite` | inductive | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Cite` |
@@ -2216,7 +2324,7 @@ change, and the count of those is the size of the free choice remaining.
 | `FragmentMap` | structure | 2026-10-22-normative-inductor-integration | Lean only | `Workspace.Normativity.Contrib.WarrantInductor.FragmentMap` |
 | `Licensed` | def | 2026-10-22-normative-inductor-integration | wiki, note, prose | `Workspace.Normativity.Contrib.WarrantInductor.NormState.Licensed` |
 | `Margins` | def | 2026-10-22-normative-inductor-integration | prose | `Workspace.Normativity.Contrib.WarrantInductor.Problem.Margins` |
-| `NormState` | structure | 2026-10-22-normative-inductor-integration | wiki | `Workspace.Normativity.Contrib.WarrantInductor.NormState` |
+| `NormState` | structure | 2026-10-22-normative-inductor-integration | wiki, prose | `Workspace.Normativity.Contrib.WarrantInductor.NormState` |
 | `Origin` | structure | 2026-10-22-normative-inductor-integration | prose | `Workspace.Normativity.Contrib.WarrantInductor.Origin` |
 | `Outcome` | inductive | 2026-10-22-normative-inductor-integration | prose | `Workspace.Normativity.Contrib.WarrantInductor.Outcome` |
 | `Problem` | structure | 2026-10-22-normative-inductor-integration | prose | `Workspace.Normativity.Contrib.WarrantInductor.Problem` |

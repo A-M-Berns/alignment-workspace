@@ -9,7 +9,7 @@ title: "Settlement defeat for strength rows: a linear row contraposes"
 section: "Deference line — second wave"
 maintainer_order: 106
 difficulty: "open"
-heading_notes: " — *answered 2026-10-21 by the rule `settleForm` (`projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md`): rebuttal, vacuity, retirement; registered `rebuttal.settleform-sound`, `rebuttal.liability-rebutted`; the monotonicity it loses is restated as `settledRegion_anti_of_survivors_eq` and `reopening_bound`; what remains is the sharp bankroll across a reopening, item 123* — *bears on it 2026-11-07: on the eight-world model the linear row fails after a contrary challenge with neither rebuttal nor undercut firing (`RobustWarrant.invalid_at_contrary`, `kept_under_challenge`, `not_undercut`); the non-linear form the entry names is the robust reading, item 133*"
+heading_notes: " — *answered 2026-10-21 by the rule `settleForm` (`projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md`): rebuttal, vacuity, retirement; registered `rebuttal.settleform-sound`, `rebuttal.liability-rebutted`; the monotonicity it loses is restated as `settledRegion_anti_of_survivors_eq` and `reopening_bound`; what remains is the sharp bankroll across a reopening, item 123* — *bears on it 2026-11-07: on the eight-world model the linear row fails after a contrary challenge with neither rebuttal nor undercut firing (`RobustWarrant.invalid_at_contrary`, `kept_under_challenge`, `not_undercut`); the non-linear form the entry names is the robust reading, item 133* — *bears on it 2026-11-08: the contraposition as a statement about expression — the plain strength row demands more than a robust warrant wherever a model gives the antecedent positive posterior at a record settling the consequent false (`ExpressesByRole.plain_demandsMore`, registered `expresses.plain-row-demands-more`), and the kept row does not (`settled_demandsNoMore`)*"
 project: normativity
 dispatchable: true
 item_status: closed
@@ -17,6 +17,8 @@ deliverable: "the chosen condition as a `Form`-level rule, the monotonicity stat
 acceptance: "Lean green; the round's harmonic-buyer exhibit no longer applies."
 work:
   - {kind: decision, ref: open--what-warrant-s-security-settles-against}
+  - {kind: round, ref: projects/normativity/rounds/2026-11-08-content-recollection}
+  - {kind: decision, ref: 2026-11-08--content-is-role-among-rows-expresses-demands-no-more}
 author: "@smithy-verity"
 size: M
 size_reason: "one item entry of 169 words"

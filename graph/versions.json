@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "7ad5a4f98eee0ed329843d43",
-  "index.json": "a8e9276eba361e44f58bf0a3"
+  "derived.json": "0fb5abd77c53cea79632b9f0",
+  "index.json": "d1892a9559281daa3ae6beb9"
  },
- "generated_hash": "7f8a74fa6a960d6cdb814e41",
+ "generated_hash": "6e7d3e4a53261eefa23d53b4",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -3586,6 +3586,34 @@
     "version": 1
    }
   ],
+  "content.conservative-iff-image": [
+   {
+    "date": "2026-11-08",
+    "normalized": "a vocabulary change given as a translation of each old coordinate into a rational linear form in the new ones is conservative on the old fragment it keeps every row the old region forces and forces the pullback of no old row the old region did not exactly when the image of the new region equals the old region",
+    "version": 1
+   }
+  ],
+  "content.conservative-iff-image.bridge": [
+   {
+    "date": "2026-11-08",
+    "normalized": "the statement of record of content conservative iff image formalizes the registered claim as the registry reads it a vocabulary change is conservative on the old fragment iff the image of the new region equals the old region",
+    "version": 1
+   }
+  ],
+  "content.conservative-iff-image.complete": [
+   {
+    "date": "2026-11-08",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "content.conservative-iff-image.record": [
+   {
+    "date": "2026-11-08",
+    "normalized": "the declaration workspace normativity contrib conservativity conservative_iff is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
   "convergence.discord-pairwise": [
    {
     "date": "2026-10-22",
@@ -6248,6 +6276,90 @@
     "version": 1
    }
   ],
+  "expresses.entitlement-discriminates": [
+   {
+    "date": "2026-11-08",
+    "normalized": "over one accounted state with both obligations exposed admitted by the allocation and live entitlement is decided by expression the strength row at 3 5 read under the rebuttal rule has an entitlement the same row read plainly has none and the row at 3 4 read under the rebuttal rule has none",
+    "version": 1
+   }
+  ],
+  "expresses.entitlement-discriminates.bridge": [
+   {
+    "date": "2026-11-08",
+    "normalized": "the statement of record of expresses entitlement discriminates formalizes the registered claim as the registry reads it an entitlement whose expresses carries content over one accounted state the kept row at 3 5 is entitled the plain row is not and the row at 3 4 is not",
+    "version": 1
+   }
+  ],
+  "expresses.entitlement-discriminates.complete": [
+   {
+    "date": "2026-11-08",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "expresses.entitlement-discriminates.record": [
+   {
+    "date": "2026-11-08",
+    "normalized": "the declaration workspace normativity contrib expressesbyrole entitlement_discriminates is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "expresses.kept-row-demands-no-more": [
+   {
+    "date": "2026-11-08",
+    "normalized": "read under the rebuttal rule a strength row demands no more than a defeasible warrant of at least its strength in the robust reading whenever every record at which the rule keeps the row is among the warrants undefeated extensions everything incompatible with the row at a record is incompatible with the warrant there",
+    "version": 1
+   }
+  ],
+  "expresses.kept-row-demands-no-more.bridge": [
+   {
+    "date": "2026-11-08",
+    "normalized": "the statement of record of expresses kept row demands no more formalizes the registered claim as the registry reads it the strength row the rebuttal rule keeps demands no more than a robust warrant of at least its strength whose undefeated extensions include every record the rule keeps it at",
+    "version": 1
+   }
+  ],
+  "expresses.kept-row-demands-no-more.complete": [
+   {
+    "date": "2026-11-08",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "expresses.kept-row-demands-no-more.record": [
+   {
+    "date": "2026-11-08",
+    "normalized": "the declaration workspace normativity contrib expressesbyrole settled_demandsnomore is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "expresses.plain-row-demands-more": [
+   {
+    "date": "2026-11-08",
+    "normalized": "read plainly a strength row of positive strength demands more than a defeasible warrant in the robust reading whenever some model of the warrant gives the antecedent positive posterior at a record that settles the consequent false there the row contraposes and the warrant does not",
+    "version": 1
+   }
+  ],
+  "expresses.plain-row-demands-more.bridge": [
+   {
+    "date": "2026-11-08",
+    "normalized": "the statement of record of expresses plain row demands more formalizes the registered claim as the registry reads it the plain linear strength row demands more than a robust warrant wherever a model gives the antecedent positive posterior at a record settling the consequent false",
+    "version": 1
+   }
+  ],
+  "expresses.plain-row-demands-more.complete": [
+   {
+    "date": "2026-11-08",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "expresses.plain-row-demands-more.record": [
+   {
+    "date": "2026-11-08",
+    "normalized": "the declaration workspace normativity contrib expressesbyrole plain_demandsmore is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
   "fa-inductor-half": [
    {
     "date": "2026-10-20",
@@ -8634,6 +8746,13 @@
    {
     "date": "2026-11-07",
     "normalized": "item 133 the robust reading of a warrant as a form level rule is delivered in the shape its entry states lean proved the rule on form its compile the agreement theorem with settleform on settlement generated extensions and the eight world fixture recovered under the rule",
+    "version": 1
+   }
+  ],
+  "item-134": [
+   {
+    "date": "2026-11-08",
+    "normalized": "item 134 content across a vocabulary change on the accounted state is delivered in the shape its entry states lean proved the transition the transport theorem for entitlement and the split fixture run through it with one kept and one broken commitment",
     "version": 1
    }
   ],
@@ -16623,6 +16742,34 @@
     "version": 1
    }
   ],
+  "precedent.consistent-iff-pairwise": [
+   {
+    "date": "2026-11-08",
+    "normalized": "a base of decided cases each the reasons that prevailed and the reasons that were outweighed is rationalized by one consistent priority among reasons exactly when no two of its cases are such that each ones prevailing reasons are covered by the others outweighed reasons",
+    "version": 1
+   }
+  ],
+  "precedent.consistent-iff-pairwise.bridge": [
+   {
+    "date": "2026-11-08",
+    "normalized": "the statement of record of precedent consistent iff pairwise formalizes the registered claim as the registry reads it consistency of a case base read off the record is a pairwise check no two cases each of whose winners are covered by the others losers",
+    "version": 1
+   }
+  ],
+  "precedent.consistent-iff-pairwise.complete": [
+   {
+    "date": "2026-11-08",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "precedent.consistent-iff-pairwise.record": [
+   {
+    "date": "2026-11-08",
+    "normalized": "the declaration workspace normativity contrib precedentconstraint consistent_iff_pairwise is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
   "predication-dichotomy": [
    {
     "date": "2026-10-20",
@@ -18295,6 +18442,34 @@
     "version": 1
    }
   ],
+  "rows.incompatibility-entailment": [
+   {
+    "date": "2026-11-08",
+    "normalized": "for every list of rational rows and every row the list incompatibility entails the row every list incompatible with the row is incompatible with the list exactly when the row is a nonnegative combination with slack of the lists rows and the cube rows",
+    "version": 1
+   }
+  ],
+  "rows.incompatibility-entailment.bridge": [
+   {
+    "date": "2026-11-08",
+    "normalized": "the statement of record of rows incompatibility entailment formalizes the registered claim as the registry reads it on the rational row language incompatibility entailment coincides with certificate entailment relative to the cube and with no nonemptiness hypothesis",
+    "version": 1
+   }
+  ],
+  "rows.incompatibility-entailment.complete": [
+   {
+    "date": "2026-11-08",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "rows.incompatibility-entailment.record": [
+   {
+    "date": "2026-11-08",
+    "normalized": "the declaration workspace normativity contrib incompatibilitysemantics incentails_iff_certentails is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
   "rs-captor-service": [
    {
     "date": "2026-10-20",
@@ -18510,6 +18685,34 @@
     "version": 1
    }
   ],
+  "seed.bound-certified": [
+   {
+    "date": "2026-11-08",
+    "normalized": "every valid lower bound on a coordinate over a seeds forced region is certified some bound certificate over the forced bundles allowed rows has value at least the bound",
+    "version": 1
+   }
+  ],
+  "seed.bound-certified.bridge": [
+   {
+    "date": "2026-11-08",
+    "normalized": "the statement of record of seed bound certified formalizes the registered claim as the registry reads it every valid lower bound on a forced region has a bound certificate over the forced bundles allowed rows",
+    "version": 1
+   }
+  ],
+  "seed.bound-certified.complete": [
+   {
+    "date": "2026-11-08",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "seed.bound-certified.record": [
+   {
+    "date": "2026-11-08",
+    "normalized": "the declaration workspace normativity contrib incompatibilitysemantics lowerbound_certified is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
   "seed.eventually-const": [
    {
     "date": "2026-10-22",
@@ -18615,6 +18818,34 @@
    {
     "date": "2026-10-22",
     "normalized": "the declaration is stated over the data its signature fixes a type s seed m 1 a w list subitem m 1 st docketstate f settlement m 1 \u03c6 fin m 1",
+    "version": 1
+   }
+  ],
+  "seed.forced-interval-rational": [
+   {
+    "date": "2026-11-08",
+    "normalized": "where a seeds real forced region is nonempty the interval computed by elimination is the forced interval at rational points both endpoints are valid bounds and both are attained at rational points of the forced region",
+    "version": 1
+   }
+  ],
+  "seed.forced-interval-rational.bridge": [
+   {
+    "date": "2026-11-08",
+    "normalized": "the statement of record of seed forced interval rational formalizes the registered claim as the registry reads it the forced interval computed by elimination inhabits the rational predicate its endpoints are valid bounds attained at rational points",
+    "version": 1
+   }
+  ],
+  "seed.forced-interval-rational.complete": [
+   {
+    "date": "2026-11-08",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "seed.forced-interval-rational.record": [
+   {
+    "date": "2026-11-08",
+    "normalized": "the declaration workspace normativity contrib incompatibilitysemantics forcedinterval_isforcedinterval is accepted by the lean kernel in the repositorys lean library",
     "version": 1
    }
   ],

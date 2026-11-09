@@ -23,7 +23,8 @@ a cube certificate derives every row (`certEntails_of_incompatible`).
 certificate over the forced bundle's allowed rows (`lowerBound_certified`,
 `upperBound_certified`); and the interval `SeedStatics.forcedInterval` computes inhabits the
 rational predicate `IsForcedInterval`, its endpoints attained at rational points
-(`forcedInterval_isForcedInterval`).
+(`forcedInterval_isForcedInterval`).  Both hypothesis packages are inhabited on
+`SeedStatics.widenSeed` (`lowerBound_witness`, `forcedInterval_witness`).
 
 **The Form language alone is degenerate** (§4).  The all-ones point satisfies every form of
 strength at most one, so no list of such forms is incompatible (`humble_forms_feasible`) and
@@ -348,6 +349,24 @@ theorem forcedInterval_isForcedInterval {m : ℕ} (S : Seed (m + 1) A)
   exact ⟨hlo, hhi, exists_rat_point_at (forcedBundle S W st F) φ _ hlo_mem,
     exists_rat_point_at (forcedBundle S W st F) φ _ hhi_mem⟩
 
+/-- The hypothesis of `lowerBound_certified` inhabited: on `SeedStatics.widenSeed` the valid
+lower bound `1/2` has a certificate. -/
+theorem lowerBound_witness :
+    ∃ m, ∃ cert : BoundCert 1 m 0 (-1),
+      (∀ i, (forcedBundle widenSeed [] DocketState.quiet (Settlement.empty 1)).Allowed
+        (cert.row i)) ∧ (1/2 : ℚ) ≤ -cert.value :=
+  lowerBound_certified widenSeed [] DocketState.quiet (Settlement.empty 1) 0 (1/2) defeat_widens.1
+
+/-- The hypothesis of `forcedInterval_isForcedInterval` inhabited: `widenSeed`'s real forced
+region contains `1/2`, so its computed interval is a forced interval at rational points. -/
+theorem forcedInterval_witness :
+    IsForcedInterval widenSeed [] DocketState.quiet (Settlement.empty 1) 0
+      (forcedInterval widenSeed [] DocketState.quiet (Settlement.empty 1) 0).1
+      (forcedInterval widenSeed [] DocketState.quiet (Settlement.empty 1) 0).2 :=
+  forcedInterval_isForcedInterval _ _ _ _ _
+    ⟨fun _ => ((1/2 : ℚ) : ℝ), forcedRegionR_of_forcedRegion widenSeed [] DocketState.quiet
+      (Settlement.empty 1) (x := fun _ => 1/2) (by decide +kernel)⟩
+
 end Item118
 
 /-! ## 4. The Form language alone is degenerate -/
@@ -431,6 +450,8 @@ theorem form_role_needs_rows :
 #print axioms Workspace.Normativity.Contrib.IncompatibilitySemantics.upperBound_certified
 #print axioms Workspace.Normativity.Contrib.IncompatibilitySemantics.exists_rat_point_at
 #print axioms Workspace.Normativity.Contrib.IncompatibilitySemantics.forcedInterval_isForcedInterval
+#print axioms Workspace.Normativity.Contrib.IncompatibilitySemantics.lowerBound_witness
+#print axioms Workspace.Normativity.Contrib.IncompatibilitySemantics.forcedInterval_witness
 #print axioms Workspace.Normativity.Contrib.IncompatibilitySemantics.humble_forms_feasible
 #print axioms Workspace.Normativity.Contrib.IncompatibilitySemantics.FormIncEntails
 #print axioms Workspace.Normativity.Contrib.IncompatibilitySemantics.formIncEntails_total

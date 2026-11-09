@@ -38,7 +38,8 @@ entitlement exists under the plain rule (`no_entitlement_plain`); the row at `3/
 under neither anchored requirement, so the grounds of `RobustWarrant` have no entitlement
 (`no_entitlement_at_three_quarters`) — against the requirement at `3/4` with the contrary
 challenge a declared defeater the kept row demands more at the challenge record
-(`defeater_not_expressed`).  The row at `1/2` demands no more and does not have the same role
+(`defeater_not_expressed`); the three together are `entitlement_discriminates`.  The row at
+`1/2` demands no more and does not have the same role
 (`weaker_noMore_not_same`).  That the row at `3/5` has the same role is not proved.
 
 Names are provisional (`AGENTS.md` standard 6).
@@ -493,6 +494,16 @@ theorem no_entitlement_at_three_quarters
     · exact defeater_not_expressed
   exact hno _ hf
 
+/-- **Entitlement discriminates by expression**: over one accounted state, with both
+obligations exposed, admitted by the allocation and live, the row at `3/5` under the rebuttal
+rule has an entitlement, the same row under the plain rule has none, and the row at `3/4` under
+the rebuttal rule has none. -/
+theorem entitlement_discriminates :
+    Nonempty (Entitlement stateW [occ35] (ExpressesNoMore ι settled)) ∧
+      IsEmpty (Entitlement stateW [occ35] (ExpressesNoMore ι plain)) ∧
+      IsEmpty (Entitlement stateW groundsCh (ExpressesNoMore ι settled)) :=
+  ⟨⟨entitlementW⟩, ⟨no_entitlement_plain⟩, ⟨no_entitlement_at_three_quarters⟩⟩
+
 /-! ### The two strengths differ -/
 
 /-- The background at a record: its pins and the coherence row `P(A∧Y) ≤ P(A)`. -/
@@ -592,6 +603,7 @@ theorem weaker_noMore_not_same :
 #print axioms Workspace.Normativity.Contrib.ExpressesByRole.entitlementW
 #print axioms Workspace.Normativity.Contrib.ExpressesByRole.no_entitlement_plain
 #print axioms Workspace.Normativity.Contrib.ExpressesByRole.no_entitlement_at_three_quarters
+#print axioms Workspace.Normativity.Contrib.ExpressesByRole.entitlement_discriminates
 #print axioms Workspace.Normativity.Contrib.ExpressesByRole.bg
 #print axioms Workspace.Normativity.Contrib.ExpressesByRole.recEvent_empty
 #print axioms Workspace.Normativity.Contrib.ExpressesByRole.weaker_noMore_not_same

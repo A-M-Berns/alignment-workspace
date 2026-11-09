@@ -7,7 +7,8 @@ A **translation** (§1) gives each old coordinate as a rational linear form in t
 coordinates; a coordinate map `e : Fin d → Fin d'` is the `0/1` case (`Translation.ofMap`).
 An old row pulls back to a new row (`pull`, `pull_sat_iff`), and a new region has an image on
 the old coordinates (`image`); for a coordinate map the image is the projection `y ∘ e`
-(`projection`).
+(`projection`) and the pullback is the row transport of the seed-statics branch's unlanded §9
+(`pull_ofMap_sat_iff`; item 122).
 
 Against an old region `R` and a new region `R'`, the new **refines** the old when the pullback
 of every row the old region forces is forced by the new, and **adds nothing** when every old
@@ -78,6 +79,12 @@ theorem pull_sat_iff (T : Translation d d') (r : Row d) (y : Fin d' → ℚ) :
     exact Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => by ring
   unfold Row.Sat pull Translation.apply
   simp only [h]
+
+/-- The pullback along a coordinate map holds at a new point iff the row holds at the point's
+restriction to the old coordinates. -/
+theorem pull_ofMap_sat_iff (e : Fin d → Fin d') (r : Row d) (y : Fin d' → ℚ) :
+    (pull (Translation.ofMap e) r).Sat y ↔ r.Sat (y ∘ e) := by
+  rw [pull_sat_iff, Translation.ofMap_apply]
 
 /-- A region **forces** a row: the row holds at every point of it. -/
 def Forces (R : (Fin d → ℚ) → Prop) (r : Row d) : Prop := ∀ x, R x → r.Sat x
@@ -535,6 +542,7 @@ theorem strict_layer_adds_rows :
 #print axioms Workspace.Normativity.Contrib.Conservativity.Translation.ofMap_apply
 #print axioms Workspace.Normativity.Contrib.Conservativity.pull
 #print axioms Workspace.Normativity.Contrib.Conservativity.pull_sat_iff
+#print axioms Workspace.Normativity.Contrib.Conservativity.pull_ofMap_sat_iff
 #print axioms Workspace.Normativity.Contrib.Conservativity.Forces
 #print axioms Workspace.Normativity.Contrib.Conservativity.image
 #print axioms Workspace.Normativity.Contrib.Conservativity.projection

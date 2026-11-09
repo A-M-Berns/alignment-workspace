@@ -9,12 +9,15 @@ title: "Rational attainment and certificate completeness for the computed forced
 section: "Deference line — second wave"
 maintainer_order: 111
 difficulty: "open"
-heading_notes: " — *narrowed 2026-10-22: completeness is also what decides whether an adapter's `Excludes`/`Margins` certificates exist whenever the region excludes or marks (`WarrantInductor.Problem`)*"
+heading_notes: " — *narrowed 2026-10-22: completeness is also what decides whether an adapter's `Excludes`/`Margins` certificates exist whenever the region excludes or marks (`WarrantInductor.Problem`)* — *bears on it 2026-11-08: both theorems are proved and registered — every valid bound on a forced region has a bound certificate over the forced bundle's allowed rows (`IncompatibilitySemantics.lowerBound_certified`, `upperBound_certified`, registered `seed.bound-certified`), and the computed interval inhabits `IsForcedInterval` at rational points (`forcedInterval_isForcedInterval`, registered `seed.forced-interval-rational`), by the rational alternative read in from the pinned `EconCSLib` (`RowAlternative.alternative`, `entails_iff`, `exists_rat_of_real`); incompatibility entailment coincides with certificate entailment (`rows.incompatibility-entailment`). Not derived: the existence of an adapter's `Excludes`/`Margins` certificates, noted on item 79. The item's status is the maintainer's word*"
 project: normativity.seed
 dispatchable: true
 item_status: open
 deliverable: "`IsForcedInterval S W st F φ lo hi` inhabited by `forcedInterval`, and `∀ c, LowerBound … c → ∃ cert, −cert.value ≥ c` (or the statement that fails, with its witness)."
 acceptance: "the Lean audits clean."
+work:
+  - {kind: round, ref: projects/normativity/rounds/2026-11-08-content-recollection}
+  - {kind: decision, ref: 2026-11-08--content-is-role-among-rows-expresses-demands-no-more}
 author: "@smithy-verity"
 size: M
 size_reason: "one item entry of 189 words"

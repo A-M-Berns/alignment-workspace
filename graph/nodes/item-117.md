@@ -9,11 +9,15 @@ title: "The selection lock: a canonical joint rule for warrant strengths, and a 
 section: "Deference line — second wave"
 maintainer_order: 110
 difficulty: "open"
+heading_notes: " — *narrowed 2026-11-08: a constraint in place of a lock — cases read off the record (survivors prevailed, undercut occurrences were outweighed; `PrecedentConstraint.caseOf`), a case base consistent iff no two cases each have their winners covered by the other's losers (`consistent_iff_pairwise`, registered `precedent.consistent-iff-pairwise`), a continuation permitted iff the base stays consistent, with a forbidden continuation and two permitted by distinguishing; the constraint allows and does not rank (`both_permitted`). What the docket lacks for it: a decision occurrence naming the grounds weighed and the ground that prevailed — `DocketState.defeated` is a set of ports, so every undercut is read as an outweighing and the grounds present but neither prevailing nor undercut are dropped. The canonical joint rule and the lock remain*"
 project: normativity.seed
 dispatchable: true
 item_status: open
 deliverable: "the rule and the lock as definitions on `DocketState`, an order-independence theorem for the rule, and the two fixtures (moral: no lock; legal: locked precedent) run through one model."
 acceptance: "`python3 tests/run.py` green; the Lean audits clean."
+work:
+  - {kind: round, ref: projects/normativity/rounds/2026-11-08-content-recollection}
+  - {kind: decision, ref: 2026-11-08--precedent-read-off-record-constrains-docket}
 author: "@smithy-verity"
 size: M
 size_reason: "one item entry of 249 words"

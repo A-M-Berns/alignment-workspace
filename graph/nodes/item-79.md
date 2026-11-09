@@ -9,11 +9,15 @@ title: "Convex representability and compiler completeness for a declared require
 section: "Deference line — second wave"
 maintainer_order: 75
 difficulty: "open"
+heading_notes: " — *bears on it 2026-11-08: on the rational row schema conflict certificates and entailment certificates are complete relative to the cube (`IncompatibilitySemantics.incompatible_iff_not_feasible`, `certEntails_iff_sem`), so a compiler over that schema never needs `unknown` for want of a certificate; the existence of an adapter's `Excludes`/`Margins` certificates (`WarrantInductor.Problem`) whenever the region excludes or marks is not derived from it, and the class of anchored requirements is as open as before*"
 project: normativity
 dispatchable: true
 item_status: open
 deliverable: "a Lean definition of the class, a compiler for it, and soundness and completeness theorems with a nonvacuity witness and a requirement outside the class that no row realizes."
 acceptance: "the module audits clean and `python3 tests/run.py` is green."
+work:
+  - {kind: round, ref: projects/normativity/rounds/2026-11-08-content-recollection}
+  - {kind: decision, ref: 2026-11-08--content-is-role-among-rows-expresses-demands-no-more}
 author: "@smithy-verity"
 size: M
 size_reason: "one item entry of 150 words"

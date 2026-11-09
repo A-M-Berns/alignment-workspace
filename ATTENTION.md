@@ -2228,7 +2228,7 @@ above. **Not registered, deliberately:** the two conditional Normative Inductor
 theorems, until a witness inhabits their joint hypothesis packages — a realization
 item, not a theory item.
 
-### 79. Convex representability and compiler completeness for a declared requirement class — **[open]**
+### 79. Convex representability and compiler completeness for a declared requirement class — **[open]** — *bears on it 2026-11-08: on the rational row schema conflict certificates and entailment certificates are complete relative to the cube (`IncompatibilitySemantics.incompatible_iff_not_feasible`, `certEntails_iff_sem`), so a compiler over that schema never needs `unknown` for want of a certificate; the existence of an adapter's `Excludes`/`Margins` certificates (`WarrantInductor.Problem`) whenever the region excludes or marks is not derived from it, and the class of anchored requirements is as open as before*
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 Compiler soundness, Farkas conflict certification, and conservation on failure are
@@ -3611,9 +3611,9 @@ extended with the rule and green.
 *Context:* `.../2026-10-20-warrant-enforcement-semantics/SETTLEMENT_FORK.md` (iv),
 `COUNTERMODELS.md` §3, `LICENCE_CHAIN.md` A1.
 
-### 113. Settlement defeat for strength rows: a linear row contraposes — **[open]** — *answered 2026-10-21 by the rule `settleForm` (`projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md`): rebuttal, vacuity, retirement; registered `rebuttal.settleform-sound`, `rebuttal.liability-rebutted`; the monotonicity it loses is restated as `settledRegion_anti_of_survivors_eq` and `reopening_bound`; what remains is the sharp bankroll across a reopening, item 123* — *bears on it 2026-11-07: on the eight-world model the linear row fails after a contrary challenge with neither rebuttal nor undercut firing (`RobustWarrant.invalid_at_contrary`, `kept_under_challenge`, `not_undercut`); the non-linear form the entry names is the robust reading, item 133*
+### 113. Settlement defeat for strength rows: a linear row contraposes — **[open]** — *answered 2026-10-21 by the rule `settleForm` (`projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md`): rebuttal, vacuity, retirement; registered `rebuttal.settleform-sound`, `rebuttal.liability-rebutted`; the monotonicity it loses is restated as `settledRegion_anti_of_survivors_eq` and `reopening_bound`; what remains is the sharp bankroll across a reopening, item 123* — *bears on it 2026-11-07: on the eight-world model the linear row fails after a contrary challenge with neither rebuttal nor undercut firing (`RobustWarrant.invalid_at_contrary`, `kept_under_challenge`, `not_undercut`); the non-linear form the entry names is the robust reading, item 133* — *bears on it 2026-11-08: the contraposition as a statement about expression — the plain strength row demands more than a robust warrant wherever a model gives the antecedent positive posterior at a record settling the consequent false (`ExpressesByRole.plain_demandsMore`, registered `expresses.plain-row-demands-more`), and the kept row does not (`settled_demandsNoMore`)*
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
-*Registered results bearing on this item:* inductor.contraposition-blocked, rebuttal.liability-rebutted, rebuttal.settleform-sound.
+*Registered results bearing on this item:* expresses.plain-row-demands-more, inductor.contraposition-blocked, rebuttal.liability-rebutted, rebuttal.settleform-sound.
 
 A strength row `P(X∧A∧Y) ≥ c_S P(X∧A)` is a linear constraint and so contraposes: once its
 consequent is settled false it forces its antecedent to `0`. A defeasible warrant does not
@@ -3686,9 +3686,9 @@ twice, and one copy must be removed with the other's names retargeted.
 *Acceptance check:* Lean green after (c).
 *Context:* `.../2026-10-20-warrant-enforcement-semantics/RECORD.md`.
 
-### 117. The selection lock: a canonical joint rule for warrant strengths, and a selection the docket may seal — **[open]**
+### 117. The selection lock: a canonical joint rule for warrant strengths, and a selection the docket may seal — **[open]** — *narrowed 2026-11-08: a constraint in place of a lock — cases read off the record (survivors prevailed, undercut occurrences were outweighed; `PrecedentConstraint.caseOf`), a case base consistent iff no two cases each have their winners covered by the other's losers (`consistent_iff_pairwise`, registered `precedent.consistent-iff-pairwise`), a continuation permitted iff the base stays consistent, with a forbidden continuation and two permitted by distinguishing; the constraint allows and does not rank (`both_permitted`). What the docket lacks for it: a decision occurrence naming the grounds weighed and the ground that prevailed — `DocketState.defeated` is a set of ports, so every undercut is read as an outweighing and the grounds present but neither prevailing nor undercut are dropped. The canonical joint rule and the lock remain*
 <!-- workspace-priority: project=normativity.seed; dispatchable=yes -->
-*Registered results bearing on this item:* seed.eventually-const, seed.independence-strict.
+*Registered results bearing on this item:* precedent.consistent-iff-pairwise, seed.eventually-const, seed.independence-strict.
 
 *Re-filed 2026-10-21 by the rebuttal-and-end-to-end round from branch `round/2026-09-16-seed-statics`, where it was item 93; content unchanged; the branch round is landed under `projects/normativity/seed/rounds/2026-09-16-seed-statics/`.*
 
@@ -3714,8 +3714,9 @@ locked precedent) run through one model.
 reading of the seed type.
 *A solution ships:* the rule, the lock, the theorem, and the fixtures.
 
-### 118. Rational attainment and certificate completeness for the computed forced interval — **[open]** — *narrowed 2026-10-22: completeness is also what decides whether an adapter's `Excludes`/`Margins` certificates exist whenever the region excludes or marks (`WarrantInductor.Problem`)*
+### 118. Rational attainment and certificate completeness for the computed forced interval — **[open]** — *narrowed 2026-10-22: completeness is also what decides whether an adapter's `Excludes`/`Margins` certificates exist whenever the region excludes or marks (`WarrantInductor.Problem`)* — *bears on it 2026-11-08: both theorems are proved and registered — every valid bound on a forced region has a bound certificate over the forced bundle's allowed rows (`IncompatibilitySemantics.lowerBound_certified`, `upperBound_certified`, registered `seed.bound-certified`), and the computed interval inhabits `IsForcedInterval` at rational points (`forcedInterval_isForcedInterval`, registered `seed.forced-interval-rational`), by the rational alternative read in from the pinned `EconCSLib` (`RowAlternative.alternative`, `entails_iff`, `exists_rat_of_real`); incompatibility entailment coincides with certificate entailment (`rows.incompatibility-entailment`). Not derived: the existence of an adapter's `Excludes`/`Margins` certificates, noted on item 79. The item's status is the maintainer's word*
 <!-- workspace-priority: project=normativity.seed; dispatchable=yes -->
+*Registered results bearing on this item:* rows.incompatibility-entailment, seed.bound-certified, seed.forced-interval-rational.
 
 *Re-filed 2026-10-21 by the rebuttal-and-end-to-end round from branch `round/2026-09-16-seed-statics`, where it was item 94; content unchanged; the branch round is landed under `projects/normativity/seed/rounds/2026-09-16-seed-statics/`.*
 
@@ -3806,7 +3807,7 @@ chain-of-three fixture under it.
 *Acceptance check:* Lean green; the round's `tests/run.py` extended and green.
 *Context:* `projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md` A1; `DECISIONS.md` 2026-10-21 (M2).
 
-### 122. The transport's negated-form drop — **[entry]**
+### 122. The transport's negated-form drop — **[entry]** — *narrowed 2026-11-08: the Lean half is landed in a general form — `Conservativity.pull` along `Translation.ofMap ρ` is the branch's `transport ρ`, exact on rows (`pull_ofMap_sat_iff`), and `mapForm` relabels the three leverage forms; the fixture code's negated-form drop and the convergence round's pull-back fixtures remain*
 <!-- workspace-priority: project=normativity.seed; dispatchable=yes -->
 
 The seed-statics branch's `transport_seed` (its `src/seed.py`, cited by the convergence
@@ -3913,9 +3914,9 @@ an undercutter is itself defeasible.
 *Context:* `DECISIONS.md` 2026-10-22; `WarrantEntitlement.liveGiven`.
 *Consumed by:* fixtures with undercutting defeaters that are themselves warrants.
 
-### 128. Admission from the accounted state — **[open]** — *narrowed 2026-10-23: `WarrantInductor.Entitlement` reads three conditions off the accounted state — the origin exposed, `Protocol.Admitted` at the boundary's history, a live leaf in the origin's account — and takes a declared `Expresses : Req → Form → Prop`; `warrant_inductor` enforces only entitled survivors; `WarrantInductorWitness.answered_not_entitled` shows an answered obligation entitles nothing. What remains is below.* — *narrowed 2026-11-07: the admission half of clause (a) landed as admission by standing — `Protocol.Admitted` read off the authority allocation (`AdmissionByStanding.admittedByStanding`), the entitlement inhabited on `state₀` rebuilt over it with admission carrying content, and a reallocated obligation entitling nothing (`reallocated_entitles_nothing`, registered `standing.reallocated-entitles-nothing`, its hypothesis package inhabited by `entitlementS₁` over the state exposing the reasoner's own obligation alone); the `Expresses` half of clause (a) remains typed, and clauses (b) and (c) remain*
+### 128. Admission from the accounted state — **[open]** — *narrowed 2026-10-23: `WarrantInductor.Entitlement` reads three conditions off the accounted state — the origin exposed, `Protocol.Admitted` at the boundary's history, a live leaf in the origin's account — and takes a declared `Expresses : Req → Form → Prop`; `warrant_inductor` enforces only entitled survivors; `WarrantInductorWitness.answered_not_entitled` shows an answered obligation entitles nothing. What remains is below.* — *narrowed 2026-11-07: the admission half of clause (a) landed as admission by standing — `Protocol.Admitted` read off the authority allocation (`AdmissionByStanding.admittedByStanding`), the entitlement inhabited on `state₀` rebuilt over it with admission carrying content, and a reallocated obligation entitling nothing (`reallocated_entitles_nothing`, registered `standing.reallocated-entitles-nothing`, its hypothesis package inhabited by `entitlementS₁` over the state exposing the reasoner's own obligation alone); the `Expresses` half of clause (a) remains typed, and clauses (b) and (c) remain* — *narrowed 2026-11-08: the `Expresses` half of clause (a) landed as expression by incompatibility role — the anchored requirement a defeasible warrant denoting its robust models, the form read under the rebuttal rule, `ExpressesByRole.ExpressesNoMore`; `entitlementW` inhabits `Entitlement` with exposure, admission by standing, liveness and `Expresses` all read, and entitlement fails by expression for the plain row and for the row at `3/4` (`entitlement_discriminates`, registered `expresses.entitlement-discriminates`; `settled_demandsNoMore`, registered `expresses.kept-row-demands-no-more`); the same-role strength is not proved for the exact row; clauses (b) and (c) remain, (c) now also item 134*
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
-*Registered results bearing on this item:* standing.reallocated-entitles-nothing.
+*Registered results bearing on this item:* expresses.entitlement-discriminates, expresses.kept-row-demands-no-more, standing.reallocated-entitles-nothing.
 
 `WarrantInductor.Entitlement O G Expresses` types the admission of a warrant occurrence to the
 market as four conditions on its origin in the accounted obligation state. Two of them are the
@@ -3975,7 +3976,7 @@ the finite kernel.
 `lean/Workspace/Deference/Contrib/DelegationBridge.lean`; the claim `local-delegation-bridge` of the
 map.
 
-### 133. The robust reading of a warrant as a Form-level rule — **[open]**
+### 133. The robust reading of a warrant as a Form-level rule — **[open]** — *narrowed 2026-11-08: the row `settleForm` keeps demands no more than the robust requirement whenever the records at which the rule keeps it are among the requirement's undefeated extensions (`ExpressesByRole.settled_demandsNoMore` with `keptExtensions`), and demands more against the requirement at `3/4` with the contrary challenge a declared defeater, at the challenge record (`defeater_not_expressed`); what remains is the rule on `Form` whose kept records are the undefeated extensions, and the converse direction (same role)*
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 *Registered results bearing on this item:* robust.eight-world-strengths, solvency.conflict-names-suspects.
 
@@ -4007,6 +4008,41 @@ and `WarrantSolvency.suspect_in_bundle` recovered as instances;
 `projects/normativity/rounds/2026-11-07-score-side-binding/REPORT.md`.
 *Consumed by:* item 127 (an undercutter that is itself defeasible is an extension this reading
 prices); the queue entries on M1 and M2.
+
+### 134. Content across a vocabulary change, on the accounted state — **[open]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+*Registered results bearing on this item:* content.conservative-iff-image.
+
+A vocabulary change is a translation of rows (`Conservativity.Translation`): each old coordinate
+is a rational linear form in the new ones, an old row pulls back to a new row, and the change
+refines, adds nothing or is conservative according to how the image of the new region sits
+against the old (`refines_iff`, `addsNothing_iff`, `conservative_iff`, registered
+`content.conservative-iff-image`). A stochastic map between world spaces is the case on
+world-distribution coordinates (`Recollection`), its broken commitments the old rows whose
+pullback the new region does not force (`no_broken_iff`). None of this is attached to the
+accounted state. `OpenIntegrityEvolution.Step` changes a boundary and its accounts and carries
+no translation; `WarrantInductor.Entitlement` is stated at one state over one fragment; and the
+pullback of a leverage form along a translation that is not a coordinate map is a row, so a
+recollected commitment enters the new seed as a structural row with no docket port. Wanted:
+(a) a transition of the normative state (`WarrantInductor.NormState`) carrying a translation,
+with the theorem that an entitlement before it and no broken commitment give an entitlement
+after it, `Expresses` read as `ExpressesByRole.ExpressesNoMore` against the interpretation
+composed with the translation; (b) a defeasible form for a pulled-back row — the port of the
+form it came from — with the theorem that defeat commutes with pullback, or the fixture showing
+it cannot; (c) a procedure computing the image of a forced region under a coordinate map from
+the elimination of `SeedStatics.project`, so that conservativity is decided and not only
+characterized.
+
+*Deliverable shape:* `lean-proved`; the transition, the transport theorem for `Entitlement`, and
+the split fixture (`Recollection.split`) run through it with one kept and one broken commitment.
+*Acceptance check:* the Lean audit clean; `Conservativity.bad_not_conservative` and
+`Recollection.split_broken` recovered as instances of the transition's verdict.
+*Context:* `lean/Workspace/Normativity/Contrib/Conservativity.lean`;
+`lean/Workspace/Normativity/Contrib/Recollection.lean`;
+`lean/Workspace/Normativity/Contrib/ExpressesByRole.lean`;
+`projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md`.
+*Consumed by:* item 115 (transport of `Licensed` across record transitions is the case with the
+vocabulary fixed); item 128, clause (c); the queue entry on broken commitments.
 
 ## Workspace friction
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a
