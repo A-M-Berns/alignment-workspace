@@ -35,8 +35,12 @@ Python in this round is theorem-bearing.
   is the coordinate map, and injectivity of `e` is used nowhere. Reason: matter 3's stochastic
   map is a translation on world-distribution coordinates, so one theorem serves both.
 - **Matter 4 registers against item 117**, which the dispatch's candidate list (118, 128, 113,
-  133, 115) does not name. Item 117 is the filed request for a precedent object on the docket.
-  Nothing registers against item 115.
+  133, 115) does not name. Item 117 is the filed request for a precedent object on the docket;
+  the result bears on it and delivers neither its canonical joint rule nor its lock. Nothing
+  registers against item 115.
+- **Matter 1 registers against a new item**, 134, where the dispatch asks for an existing one.
+  No filed item asks for a criterion on vocabulary change; item 122 asks only for the row
+  transport, which is a lemma here.
 - **One new item is filed, not two**: item 134. What matter 4 found missing is added to item
   117 as a note, because that item already asks for the object.
 - **The site.** `state/prs.json` gains this pull request's digest and no digest for #140. Open
@@ -69,8 +73,9 @@ Proved, for bundle regions:
 - `conservative_iff`: conservative iff the image equals the old region.
 
 For seeds, `extend e S sub' str'` relabels every old item along the coordinate map and adds the
-new items; the projection of the new forced region is `y ∘ e`. An extension always refines
-(`extend_refines`), so it is conservative iff every old forced point lifts
+new items; the projection of the new forced region is `y ∘ e`. Under the same docket, the old
+warrants relabelled, and a new settlement agreeing with the old on the old coordinates, an
+extension refines (`extend_refines`), so it is conservative iff every old forced point lifts
 (`extend_conservative_iff`).
 
 **`seed_independence_strict` is not an instance.** With the identity map it says that a
@@ -98,7 +103,8 @@ coordinates.
 
 **Incompatibility** of a list of rows is a Farkas certificate over the list's rows and the cube
 rows — a valid `conflict` result of the compiler (`incompatible_iff_conflict`). It holds
-exactly when the rows have no common cube point (`incompatible_iff_not_feasible`).
+exactly when the rows have no common cube point (`incompatible_iff_not_feasible`); this is
+existence of a certificate, and no procedure here finds one.
 **Incompatibility entailment**: `Γ` entails `g` when every list incompatible with `g` is
 incompatible with `Γ`. **Certificate entailment**: `g` is a nonnegative combination of rows
 allowed against `Γ`, with slack (`EntailCert`); a `BoundCert` is the case `s · x φ ≤ v`. The
@@ -132,18 +138,21 @@ incompatible with the requirement at a record when no model's posterior there sa
 
 General results. A model of a requirement of positive strength gives the antecedent mass zero
 on an undefeated extension where the consequent is false (`models_null_at_rebuttal`): a
-satisfiable defeasible warrant cannot count its own rebuttal as undefeated. The kept row
+warrant that counts its own rebuttal as undefeated is satisfied only by measures on which the
+antecedent cannot occur there. The kept row
 demands no more than a requirement of at least its strength whose undefeated extensions
 include every record the rule keeps it at (`settled_demandsNoMore`). The plain row demands more
 wherever a model gives the antecedent positive posterior at a record settling the consequent
-false (`plain_demandsMore`).
+false (`plain_demandsMore`). The condition on the extensions in `settled_demandsNoMore` is
+sufficient; no converse is proved, and its necessity is shown only at the fixture.
 
 On the eight-world model with the fragment `(A, A∧Y, C)`:
 
 1. `entitlementW` inhabits `Entitlement` under `ExpressesNoMore ι settled`, for the strength
-   row at `3/5` against the requirement at `3/5` over the kept extensions, with admission by
-   standing and a live account. The eight-world measure is a model of that requirement
-   (`μ_models_kept`).
+   row at `3/5` against the requirement at `3/5` over the kept extensions. The eight-world
+   measure is a model of that requirement (`μ_models_kept`). Exposure, admission by standing
+   and liveness hold for both obligations by construction — the protocol's other predicates
+   are `True` — so at this fixture expression is the one condition that discriminates.
 2. The plain row is not expressed (`plain_not_expresses`). At the record settling `A∧Y` false
    the row reads `3/5 · P(A) ≤ 0`; the eight-world measure prices `A` at `1/5` there. So
    `P(A) ≥ 1/5` is incompatible with the row, by the certificate `contraCert`, and compatible
@@ -180,10 +189,13 @@ world coordinates and a new sentence only when `0/1`-valued.
   (`excess_pull`).
 - **Composition**: `comp`, `push_comp`, `pull_comp`. A recollection is a transport step with
   constant `1` and slack `0` (`recollection_step`); two compose through
-  `affine_transport_compose` to `(1 · 1, 0 + 1 · 0)` (`recollection_chain`).
+  `affine_transport_compose` to `(1 · 1, 0 + 1 · 0)` (`recollection_chain`). Both are the
+  equality `excess_pull` written as an inequality: the transported quantity is a row's excess,
+  and no defect measure of the program's is involved.
 - **Approximate version**: two recollections that agree off a set `B` of new worlds move a
   row's excess by at most the row's oscillation times the new credence's mass on `B`
-  (`approx_step`) — the slack is the mass on which the map fails, attained in `partial_slack`.
+  (`approx_step`). For a row of oscillation one the slack is the mass on which the map fails,
+  attained in `partial_slack`.
 - **`ThinLegitimacy`**: a process to the new worlds followed by a recollection is a garbling of
   that process in the file's own terms, the recollection cast to the reals being the stochastic
   matrix (`garbling_of_recollection`). The mismatch: `ThinLegitimacy`'s kernels are real-valued
@@ -239,11 +251,15 @@ erased, its weight is the strength. A **case** is read off the record: the forms
 occurrences that survive under a docket and a settlement prevailed, and the forms of the
 occurrences the docket undercuts were outweighed (`caseOf`). `V` covers `W` when each form of
 `W` has a form of `V` of its kind and at least its strength. A case says that anything
-covering its winners beats anything its losers cover. A case base is **consistent** when no
-two reason sets beat each other, which is the existence of an asymmetric relation containing
-every case's decision (`consistent_iff_order`) and a pairwise check on cases
-(`consistent_iff_pairwise`). A continuation is **permitted** when the base stays consistent
-with it; permission only shrinks (`permitted_antitone`).
+covering its winners beats anything its losers cover. A case base is **rationalizable** when
+one strict order on reason sets, irreflexive and transitive, contains every case's decision.
+That holds iff the graph on cases — an edge from a case to each case whose winners its losers
+cover — has no cycle (`rationalizable_iff_acyclic`). The pairwise check, that no two reason
+sets beat each other (`consistent_iff_pairwise`), is necessary and not sufficient: three cases
+in a cycle pass it and have no order (`cycle_not_rationalizable`). A continuation is
+**permitted** when the base stays rationalizable with it; permission only shrinks
+(`permitted_antitone`). The model has no sides: any reason set may be compared with any
+other.
 
 Fixtures on `(X, ¬X, D)`. The precedent: `P(X) ≥ 3/4` prevailed over `P(¬X) ≥ 1/2`.
 *Forbidden*: `P(¬X) ≥ 2/5` prevailing over `P(X) ≥ 4/5` (`forbidden_not_permitted`).
@@ -256,9 +272,10 @@ permitted and they are not jointly permitted (`both_permitted`); the model has n
 orders them.
 
 **The survivor rule.** The constraint sits beside it, upstream. It reads the rule's output to
-form a case and constrains the docket, which is the rule's input; the rule is unchanged. An
-occurrence removed by rebuttal is on neither side of a case
-(`rebuttal_sets_no_precedent`).
+form a case and constrains the docket, which is the rule's input; the rule is unchanged. On
+the quiet docket an occurrence removed by rebuttal is on neither side of a case
+(`rebuttal_sets_no_precedent`); `caseOf` counts every undercut occurrence a loser, whatever
+the settlement.
 
 **What does not fit.** The record carries no decision. `DocketState.defeated` is a set of
 ports; nothing says which conflict a defeat resolved or what prevailed, so `caseOf` reads every
@@ -282,8 +299,21 @@ inputs: the docket states, and the reading of undercut as outweighed.
   the row at the requirement's own strength it needs every cube point of the kept row's region
   to be the posterior of some model, which is not built.
 - **The undefeated extensions.** `U` is declared. `keptExtensions` is the set under which the
-  rebuttal rule is sound, not a derivation of defeat; the item-133 rule on `Form` is not
-  written.
+  rebuttal rule is sound: choosing it builds the rule's compatibility into the requirement and
+  validates no defeat semantics. No converse says which `U` a kept row needs. The item-133 rule
+  on `Form` is not written.
+- **The entitlement's other three conditions.** At `stateW` exposure, admission and liveness
+  hold by construction; the fixture shows expression deciding entitlement, not four conditions
+  each deciding it.
+- **Certificates exist; none is computed.** Completeness is existence of a conflict or
+  entailment certificate. No procedure here produces one.
+- **Transport.** `recollection_step` restates an equality; no defect, loss or distance of the
+  program's is transported.
+- **The interpretation across a translation.** An interpretation `Fin d → Finset W` composes
+  with a coordinate map and not with a stochastic translation, whose pullback of an event is a
+  `[0,1]`-valued function. Item 134 carries this.
+- **The precedent model has no sides.** Reasons are not sorted by the verdict they favour, and
+  whether the attributed model orders reasons transitively was not checked against any text.
 - **Models over one world type.** `DemandsNoMore` quantifies over nonnegative measures on a
   fixed finite world type with a fixed interpretation.
 - **Computing the image.** `conservative_iff` characterizes conservativity; no procedure here
@@ -301,11 +331,65 @@ inputs: the docket states, and the reading of undercut as outweighed.
 
 ## External review
 
-*Filled after the review.*
+GPT-6 Astra (OpenAI), via `codex`, reviewed pull request #142 at `5a421912` on 2026-11-08,
+read-only; its text is `prompts/2026-11-08-content-recollection/REVIEW-astra-2026-11-08.md`,
+verbatim. Its merge word: **fix-then-merge**. It found no mathematical defect in matters 1 and
+2. One review pass and one fix pass; the fixes are in the commit that adds this section.
+
+| finding | disposition |
+|---|---|
+| **Blocking.** `Consistent` requires asymmetry only; three cases in a cycle pass the pairwise check and no order rationalizes them, so "one consistent priority" was overstated | fixed: `Rationalizable` (an irreflexive transitive relation containing every case's decision), `rationalizable_iff_acyclic`, `rationalizable_of_rank`; `Permitted` is now rationalizability; the reviewer's three-cycle is `cycle_not_rationalizable`; the registered statement is `precedent.rationalizable-iff-acyclic` |
+| The pull request says the kept row expresses the warrant "exactly when" kept records equal undefeated extensions; the theorem gives a sufficient condition | fixed: the description says *whenever*; §2 and the limitations say no converse is proved |
+| Item 134 is not type-correct: a stochastic translation does not compose with an event-valued interpretation, and no broken row does not preserve admission or liveness | fixed: the item asks for the coordinate-map case with its hypotheses stated or a counterexample, and separately for the carrier a general translation needs |
+| "A satisfiable warrant cannot count its rebuttal as undefeated" overstates `models_null_at_rebuttal` | fixed: §2 states the conclusion, zero antecedent mass |
+| The queue entry says refinement bars every change away from a concept with no exact image; `abandon_half` shows otherwise | fixed: the entry names the commitment `P(S) ≥ 9/10` along that map |
+| "A rebutted occurrence is on neither side" holds on the quiet docket only; `caseOf` counts every undercut occurrence a loser | fixed: §4, the Lean header and the registry note |
+| Slack equals the failing mass only for a row of oscillation one | fixed: §3, the verdict line, the digest and the Lean header keep the factor |
+| The verification and review sections were placeholders | fixed: filled below and above |
+| The report calls item 113 closed although its status is open | **disputed**: `graph/nodes/item-113.md` carries `item_status: closed`; the `[open]` in the rendered heading is the difficulty tag. *Items* now says so |
+| Registering conservativity against the new item 134 is an undeclared deviation | fixed: declared above |
+| `entitlementW`'s exposure, admission and liveness hold by construction | fixed: §2 and the limitations say expression is the one condition that discriminates there |
+| `recollection_step` repackages an equality | fixed: §3 and the limitations say so |
+| "An extension always refines" needs its qualifications | fixed: §1 states them |
+| The description's "the all-ones point satisfies them all" drops the strength restriction | fixed in the description |
+| `incompatible_iff_conflict` is existence of a valid result, not a compiler's execution | fixed: §2 and the limitations |
+| The digest's empty `merged` field must be resolved before publication | reserved: outstanding action 2; the date is not known before the merge |
 
 ## Verification
 
-*Filled after the runs.*
+Local, Python 3.12, on the tree after the fix pass.
+
+- `~/.claude/scripts/safe-lake.sh build Workspace`: `Build completed successfully (4108 jobs)`;
+  the build compiles two `EconCSLib` modules it did not compile before
+  (`Math.LinearAlgebra.FourierMotzkin`, `Math.LinearAlgebra.Farkas`).
+- `python3.12 tests/audit_axioms.py`: all within
+  `['Classical.choice', 'Quot.sound', 'propext']`, `3757 results across 118 files`. The script
+  outlasts this session's limit on one command, so its own `main` was run over the sorted
+  source list in four slices before the fix pass (633, 965, 966 and 1185 results; 3749) and
+  again over the six new modules after it (246 results, 238 before). No slice reported a
+  failure.
+- `python3.12 tests/run.py`, with `lean/.lake` set aside and the new files added:
+  `ALL GREEN (80 project(s))`, before and after the fix pass; `LEAN SORRY GATE: clean over 118
+  files`; `SITE DOM GATE: app boots, 73 capsules, 151 edges, cards open, fragments present, no
+  overlaps`; `LEAN BUILD SKIPPED`, the build above being the Lean verification.
+- `python3.12 -m checkers.run`: `87 entries, 1 adjudicated here`; the eight entries of this
+  round `lean-proved`, adjudicated by the Lean gate.
+- `python3.12 -m checkers.workspace_state --check`: `WORKSPACE STATE: valid — 7 projects, 192
+  modern claims, 1 foundations, 180 foundation claims, 132 rounds, 52 terms, 145 priorities, 10
+  interface objects`, after `--write-handoff`.
+- `python3.12 -m checkers.wiki_state_bindings`: `clean over 35 page(s); 3 binding(s) verified
+  against the state emission`, after the registered-claims count on `wiki/Normativity.md` moved
+  from 70 to 78 — the one wiki edit.
+- `python3.12 -m checkers.wiki_links`: `clean over 33 page(s)`. `python3.12 -m
+  checkers.wiki_refs`: `clean over 35 page(s); 327 reference(s) resolve`.
+- `python3.12 -m checkers.attention_render --check`: `the committed file equals the render (145
+  items)`.
+- `python3.12 -m checkers.graph`: `OK 2527 nodes, 2603 events, 2094 ranked units`, with the
+  standing warning on decision anchors without a node.
+
+CI on pull request #142 is recorded in the pull request; at `5a421912`, before the fix pass,
+`checkers`, `conservativity`, `consolidation-verification`, `dco` and `path-gate` had passed
+when the review returned.
 
 ## Items
 
@@ -315,14 +399,15 @@ kept row against a declared defeater; soundness of the kept row where the rule's
 are undefeated), 122 (its Lean half), 117 (a constraint in place of a lock; what the docket
 lacks). Noted: 113 (closed; the contraposition as a statement about expression), 79 (conflict
 and entailment certificates complete on the row schema). Filed: 134 (content across a
-vocabulary change, on the accounted state).
+vocabulary change, on the accounted state). Item 113's node carries `item_status: closed`;
+the bracket in its `ATTENTION.md` heading is the difficulty tag.
 
 ## Registrations
 
 Against 118: `rows.incompatibility-entailment`, `seed.bound-certified`,
 `seed.forced-interval-rational`. Against 128: `expresses.kept-row-demands-no-more`,
 `expresses.entitlement-discriminates`. Against 113: `expresses.plain-row-demands-more`. Against
-134: `content.conservative-iff-image`. Against 117: `precedent.consistent-iff-pairwise`. All
+134: `content.conservative-iff-image`. Against 117: `precedent.rationalizable-iff-acyclic`. All
 `lean-proved`. Listed and not registered: every other declaration of the six modules, matter
 3's among them.
 
@@ -333,8 +418,8 @@ Against 118: `rows.incompatibility-entailment`, `seed.bound-certified`,
 *incompatibility entailment*, *entailment certificate*, *certificate entailment*; *content*,
 *plain* and *settled* (readings of a form), *record event*, *posterior prices*, *requirement*,
 *models*, *demands no more*, *same role*, *kept extensions*; *recollection*, *push*, *excess*,
-*broken commitment*; *kind* (of a reason), *covers*, *case*, *beats*, *consistent* (case base),
-*permitted*.
+*broken commitment*; *kind* (of a reason), *covers*, *case*, *beats*, *dominates*, *rationalizable*, *consistent* (the pairwise
+condition), *permitted*.
 
 ## Outstanding maintainer actions
 

@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "0fb5abd77c53cea79632b9f0",
-  "index.json": "d1892a9559281daa3ae6beb9"
+  "derived.json": "43f8b2e0477d6a4793777b09",
+  "index.json": "9f536900a4ce7002dc647cae"
  },
- "generated_hash": "6e7d3e4a53261eefa23d53b4",
+ "generated_hash": "666e9c9a4a6abc5230357b10",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -8754,6 +8754,11 @@
     "date": "2026-11-08",
     "normalized": "item 134 content across a vocabulary change on the accounted state is delivered in the shape its entry states lean proved the transition the transport theorem for entitlement and the split fixture run through it with one kept and one broken commitment",
     "version": 1
+   },
+   {
+    "date": "2026-11-08",
+    "normalized": "item 134 content across a vocabulary change on the accounted state is delivered in the shape its entry states lean proved the transition the transport theorem for entitlement with its hypotheses or the counterexample and the split fixture run through it with one kept and one broken commitment",
+    "version": 2
    }
   ],
   "item-14": [
@@ -16767,6 +16772,34 @@
    {
     "date": "2026-11-08",
     "normalized": "the declaration workspace normativity contrib precedentconstraint consistent_iff_pairwise is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "precedent.rationalizable-iff-acyclic": [
+   {
+    "date": "2026-11-08",
+    "normalized": "a base of decided cases each the reasons that prevailed and the reasons that were outweighed is rationalized by one strict order among reason sets irreflexive and transitive exactly when the graph on its cases with an edge from a case to each case whose prevailing reasons its outweighed reasons cover has no cycle",
+    "version": 1
+   }
+  ],
+  "precedent.rationalizable-iff-acyclic.bridge": [
+   {
+    "date": "2026-11-08",
+    "normalized": "the statement of record of precedent rationalizable iff acyclic formalizes the registered claim as the registry reads it a case base read off the record is rationalized by one strict order on reasons iff the graph on its cases has no cycle",
+    "version": 1
+   }
+  ],
+  "precedent.rationalizable-iff-acyclic.complete": [
+   {
+    "date": "2026-11-08",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "precedent.rationalizable-iff-acyclic.record": [
+   {
+    "date": "2026-11-08",
+    "normalized": "the declaration workspace normativity contrib precedentconstraint rationalizable_iff_acyclic is accepted by the lean kernel in the repositorys lean library",
     "version": 1
    }
   ],

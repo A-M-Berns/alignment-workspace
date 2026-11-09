@@ -9,8 +9,8 @@ sum is negative (`alternative`); and where it has a solution, every row valid on
 set is a nonnegative combination of the list's rows with slack (`entails_iff`).  Both are the
 pinned `EconCSLib` results `EconCSLib.LinearAlgebra.theorem_of_alternative` and
 `farkas_lemma`, which hold over any linearly ordered field, read into the repository's `Row`.
-The pinned Mathlib has the closed-cone form over real inner product spaces only; `EconCSLib`
-arrives through the pinned Formalized-Agent-Foundations manifest.
+The pinned Mathlib has the geometric closed-cone form over real topological vector spaces
+only; `EconCSLib` arrives through the pinned Formalized-Agent-Foundations manifest.
 
 Consequences here: a rational system feasible over `ℝ` is feasible over `ℚ`
 (`exists_rat_of_real`); the cube rows as a list (`cubeRows_sat_iff`, `mem_cubeRows`); a

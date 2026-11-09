@@ -51,7 +51,7 @@ For an interpretation `ι : Fin d → Finset W`, a requirement `w` (events `A`, 
 `DemandsNoMore ι w (settled (strength XA XAY c'))`.
 
 *Inhabited by:* `settled_expresses` (the eight-world fragment, `c' = w.c = 3/5`,
-`U = keptExtensions`), consumed by `entitlementW`. *Necessity of `c' ≤ w.c`:*
+`U = keptExtensions`), consumed by `entitlementW`. *Sufficient, with no converse proved.* *Necessity of `c' ≤ w.c`:*
 `stronger_not_expresses`. *Necessity of the condition on `U`:* `defeater_not_expressed`.
 *Typed, not derived:* `ι`, `w.U`.
 
@@ -64,7 +64,8 @@ with the contrary challenge a defeater — an `Entitlement` exists for the row a
 for the row at `3/4` under `ExpressesNoMore ι settled`.
 
 *Hypotheses:* none; a closed statement about the fixture. *Typed:* `ι`, the two anchors, the
-contribution rule.
+contribution rule. Exposure, admission and liveness hold for both obligations by construction;
+expression is what separates the three cases.
 
 ## `expresses.plain-row-demands-more` — `ExpressesByRole.plain_demandsMore`
 
@@ -85,10 +86,14 @@ For a translation `T : Translation d d'` and bundles `B` over `d`, `B'` over `d'
 on:* `refines_iff`, `addsNothing_iff`, `separating_row`, and through the last
 `RowAlternative.alternative_family`.
 
-## `precedent.consistent-iff-pairwise` — `PrecedentConstraint.consistent_iff_pairwise`
+## `precedent.rationalizable-iff-acyclic` — `PrecedentConstraint.rationalizable_iff_acyclic`
 
-For a list of cases `Γ`: `Consistent Γ` iff for all `c, c' ∈ Γ` it is not the case that
-`c.losers` covers `c'.winners` and `c'.losers` covers `c.winners`.
+For a list of cases `Γ`: `Rationalizable Γ ↔ ∀ c, ¬ Relation.TransGen (Next Γ) c c`.
+`Rationalizable Γ` is an irreflexive, transitive relation on reason sets containing every
+case's decision (`V` beats `U` when `V` covers the case's winners and its losers cover `U`);
+`Next Γ c c'` holds when both are in `Γ` and `c.losers` covers `c'.winners`.
 
-*Hypotheses:* none. *Both sides occur:* `precedent_consistent`, `forbidden_not_permitted`.
-*Typed:* the reading of a record as a case (`caseOf`).
+*Hypotheses:* none. *Both sides occur:* `permitted_distinguished` (by `rationalizable_of_rank`),
+`forbidden_not_permitted`, `cycle_not_rationalizable`. *Weaker than it:* the pairwise condition
+`consistent_iff_pairwise`, by `cycle_not_rationalizable`. *Typed:* the reading of a record as a
+case (`caseOf`).

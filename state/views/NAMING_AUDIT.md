@@ -1170,7 +1170,7 @@ change, and the count of those is the size of the free choice remaining.
 | `point` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Headline.FormationData.point` |
 | `restoration2` | def | unrecorded | Lean only | `Workspace.Deference.Headline.restoration2` |
 
-## normativity — 1241 names, 839 of them Lean only
+## normativity — 1245 names, 841 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -1190,7 +1190,6 @@ change, and the count of those is the size of the free choice remaining.
 | `conservation` | theorem | 2026-09-07-final-pressure-pass | registry, wiki, prose | `Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.conservation` |
 | `conservation` | theorem | 2026-09-07-final-pressure-pass | registry, wiki, prose | `Workspace.Normativity.Contrib.LegitimateEvolution.Evolution.conservation` |
 | `conservative_iff` | theorem | 2026-11-08-content-recollection | registry, prose | `Workspace.Normativity.Contrib.Conservativity.conservative_iff` |
-| `consistent_iff_pairwise` | theorem | 2026-11-08-content-recollection | registry, prose | `Workspace.Normativity.Contrib.PrecedentConstraint.consistent_iff_pairwise` |
 | `contraposition_blocked` | theorem | 2026-10-23-normative-inductor-consolidation | registry, wiki | `Workspace.Normativity.Contrib.WarrantInductorRebuttal.contraposition_blocked` |
 | `counterfactual_open_not_actual` | theorem | 2026-09-07-final-pressure-pass | registry, wiki, prose | `Workspace.Normativity.Contrib.NonCapture.Witness.counterfactual_open_not_actual` |
 | `deductiveRegion_eq_convexHull` | theorem | 2026-08-19-deductive-region | registry | `Workspace.Normativity.Contrib.DeductiveRegion.deductiveRegion_eq_convexHull` |
@@ -1239,6 +1238,7 @@ change, and the count of those is the size of the free choice remaining.
 | `progress_bound` | theorem | 2026-09-07-final-pressure-pass | registry, wiki, prose | `Workspace.Normativity.Contrib.NormativeInductionInterface.Evaluation.progress_bound` |
 | `propagate_toSegment` | theorem | 2026-09-07-final-pressure-pass | registry, wiki | `Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.propagate_toSegment` |
 | `propagate_toSegment` | theorem | 2026-09-07-final-pressure-pass | registry, wiki | `Workspace.Normativity.Contrib.LegitimateEvolution.Evolution.propagate_toSegment` |
+| `rationalizable_iff_acyclic` | theorem | 2026-11-08-content-recollection | registry, prose | `Workspace.Normativity.Contrib.PrecedentConstraint.rationalizable_iff_acyclic` |
 | `reallocated_entitles_nothing` | theorem | 2026-11-07-score-side-binding | registry, wiki, prose | `Workspace.Normativity.Contrib.AdmissionByStanding.reallocated_entitles_nothing` |
 | `robustOpenActual_of_persistence` | theorem | 2026-09-07-final-pressure-pass | registry, wiki, prose | `Workspace.Normativity.Contrib.NonCapture.Scenario.robustOpenActual_of_persistence` |
 | `robustStrength_both` | theorem | 2026-11-07-score-side-binding | registry, wiki | `Workspace.Normativity.Contrib.RobustWarrant.robustStrength_both` |
@@ -1360,7 +1360,7 @@ change, and the count of those is the size of the free choice remaining.
 | `emptyComputation` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ConstraintSchedule.emptyComputation` |
 | `emptyEffective` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ConstraintSchedule.emptyEffective` |
 | `emptySchedule` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ConstraintSchedule.emptySchedule` |
-| `fragment` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ConstraintSchedule.RationalConstraintSchedule.fragment` |
+| `fragment` | def | unrecorded | prose | `Workspace.Normativity.Contrib.ConstraintSchedule.RationalConstraintSchedule.fragment` |
 | `intervalComputation` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ConstraintSchedule.intervalComputation` |
 | `intervalEffective` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ConstraintSchedule.intervalEffective` |
 | `intervalRepresentation` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ConstraintSchedule.intervalRepresentation` |
@@ -1595,7 +1595,7 @@ change, and the count of those is the size of the free choice remaining.
 | `feasible` | def | unrecorded | prose | `Workspace.Normativity.Contrib.FourierMotzkin.feasible` |
 | `lastCoeff` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.lastCoeff` |
 | `of` | def | unrecorded | wiki, note, prose | `Workspace.Normativity.Contrib.FourierMotzkin.LinCon.of` |
-| `strict` | abbrev | unrecorded | wiki, note | `Workspace.Normativity.Contrib.FourierMotzkin.LinCon.strict` |
+| `strict` | abbrev | unrecorded | wiki, note, prose | `Workspace.Normativity.Contrib.FourierMotzkin.LinCon.strict` |
 | `wClosed` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.wClosed` |
 | `wEqUnsat` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.wEqUnsat` |
 | `wFeasible` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.wFeasible` |
@@ -1968,10 +1968,14 @@ change, and the count of those is the size of the free choice remaining.
 | `Case` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentConstraint.Case` |
 | `Consistent` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentConstraint.Consistent` |
 | `Covers` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentConstraint.Covers` |
+| `Dominates` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentConstraint.Dominates` |
+| `Next` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentConstraint.Next` |
 | `Permitted` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentConstraint.Permitted` |
+| `Rationalizable` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentConstraint.Rationalizable` |
 | `caseOf` | def | unrecorded | prose | `Workspace.Normativity.Contrib.PrecedentConstraint.caseOf` |
 | `con` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentConstraint.con` |
 | `conD` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentConstraint.conD` |
+| `cycle` | def | unrecorded | prose | `Workspace.Normativity.Contrib.PrecedentConstraint.cycle` |
 | `distinguished` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentConstraint.distinguished` |
 | `distinguishedPro` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PrecedentConstraint.distinguishedPro` |
 | `forbidden` | def | unrecorded | prose | `Workspace.Normativity.Contrib.PrecedentConstraint.forbidden` |

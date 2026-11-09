@@ -47,8 +47,9 @@ commit.
   what the program does with one.  Two readings: *no broken commitment* is a condition a
   legitimate change must meet (refinement, beside Integrity's conservation), or a change may
   break a commitment provided the break is recorded and answerable, as a rebuttal is.  The
-  round leans to the second, without confidence: under the first, the abandonment fixture
-  bars every change away from a concept that has no exact image.  *Turns on:* the reading
+  round leans to the second, without confidence: under the first, a commitment the map
+  cannot carry — `P(S) ≥ 9/10` in the abandonment fixture — bars every change along that map,
+  whatever the new view holds.  *Turns on:* the reading
   under test — whether a later stage that drops an earlier commitment and says so has
   recollected it — and what the program's account of error is to be; neither is a theorem's.
   <!-- decision: open--broken-commitment-bars-or-accounts; touches: item:134; status: open -->
@@ -7185,13 +7186,15 @@ Matter 3's declarations are listed and not registered.  What a broken commitment
 change is queued, not decided.
 
 ### 2026-11-08 — precedent is read off the record as cases and constrains the docket; it is registered against item 117
-<!-- decision: 2026-11-08--precedent-read-off-record-constrains-docket; touches: item:117, claim:precedent.consistent-iff-pairwise -->
+<!-- decision: 2026-11-08--precedent-read-off-record-constrains-docket; touches: item:117, claim:precedent.rationalizable-iff-acyclic -->
 
 **Agent-decided, reversible** (the content-recollection round).  The precedent constraint is
 modelled on the record's own objects: a case is what `Grounds.survivors` and `undercut`
 return under a docket (`PrecedentConstraint.caseOf`), reasons are leverage forms compared by
-kind and strength, and a continuation is permitted when the case base stays consistent
-(`consistent_iff_pairwise`).  It is registered against item 117, the filed request for a
+kind and strength, and a continuation is permitted when one strict order on reasons still
+rationalizes the case base, which is that the graph on its cases has no cycle
+(`rationalizable_iff_acyclic`).  The pairwise check alone is weaker: three cases in a cycle
+pass it (`cycle_not_rationalizable`).  It is registered against item 117, the filed request for a
 precedent object on the docket, which the dispatch's candidate list did not name.  Rejected
 alternative: a new item for the missing decision occurrence; item 117 already asks for the
 docket object, and the gap is recorded there.  The reading of every undercut as an

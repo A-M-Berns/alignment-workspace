@@ -2341,18 +2341,18 @@ Round `2026-10-21-rebuttal-and-end-to-end`; the dispatch's registration list, ag
 }
 ```
 
-### precedent.consistent-iff-pairwise
+### precedent.rationalizable-iff-acyclic
 
 ```json
 {
   "project": "normativity",
-  "short_name": "consistency of a case base read off the record is a pairwise check: no two cases each of whose winners are covered by the other's losers",
+  "short_name": "a case base read off the record is rationalized by one strict order on reasons iff the graph on its cases has no cycle",
   "origin_round": "2026-11-08-content-recollection",
   "status": "active",
   "class": "lean-proved",
   "statement_of_record": {
     "kind": "lean",
-    "declaration": "Workspace.Normativity.Contrib.PrecedentConstraint.consistent_iff_pairwise"
+    "declaration": "Workspace.Normativity.Contrib.PrecedentConstraint.rationalizable_iff_acyclic"
   },
   "answers_item": "117",
   "provenance": {
@@ -2363,6 +2363,6 @@ Round `2026-10-21-rebuttal-and-end-to-end`; the dispatch's registration list, ag
     "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
     "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
   },
-  "note": "A reason is a leverage form, its kind the form with the strength erased; V covers W when each form of W has a form of V of its kind and at least its strength. A Case is read off the record by caseOf: survivors' forms prevailed, undercut occurrences' forms were outweighed, and an occurrence removed by rebuttal is on neither side. Consistent: no two reason sets beat each other; equivalently some asymmetric relation contains every case's decision (consistent_iff_order). Permitted Γ c is Consistent (c :: Γ), antitone in Γ. Fixtures on (X, ¬X, D): a forbidden continuation, two permitted by distinguishing (a ground of a new kind; a greater opposing strength), and a situation in which both decisions are permitted (both_permitted) — the constraint allows and does not rank. The reading of undercut as outweighed is the model's; the record carries no decision object. The attribution of the reason model to its author is unverified."
+  "note": "A reason is a leverage form, its kind the form with the strength erased; V covers W when each form of W has a form of V of its kind and at least its strength. A Case is read off the record by caseOf: survivors' forms prevailed and every undercut occurrence's form was outweighed, whatever the settlement. A case says that anything covering its winners beats anything its losers cover; Rationalizable Γ is the existence of an irreflexive transitive relation on reason sets containing every case's decision, equivalently no cycle of dominance (rationalizable_iff_no_dominance_cycle), equivalently no cycle in the graph Next on cases; a rank increasing along the edges suffices (rationalizable_of_rank). The pairwise condition Consistent (consistent_iff_pairwise) is necessary and not sufficient: three cases in a cycle pass it and have no order (cycle_not_rationalizable). Permitted Γ c is Rationalizable (c :: Γ), antitone in Γ. Fixtures on (X, ¬X, D): a forbidden continuation, two permitted by distinguishing (a ground of a new kind; a greater opposing strength), and a situation in which both decisions are permitted and not jointly (both_permitted) — the constraint allows and does not rank. The reading of undercut as outweighed is the model's; the record carries no decision object. The attribution of the reason model to its author is unverified, and the model has no sides: any reason set may be compared with any other."
 }
 ```

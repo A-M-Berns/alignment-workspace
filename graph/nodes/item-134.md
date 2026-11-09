@@ -2,7 +2,7 @@
 id: item-134
 kind: leaf
 leaf_kind: task
-action: "Attach a vocabulary change to the accounted state: a transition of the normative state carrying a translation, the theorem that an entitlement and no broken commitment before it give an entitlement after it, a defeasible form for a pulled-back row, and a procedure computing the image of a forced region."
+action: "Attach a vocabulary change to the accounted state: a transition of the normative state carrying a coordinate map, the transport theorem for entitlement under stated hypotheses or its counterexample, the interpretation carrier a general translation needs, a defeasible form for a pulled-back row, and a procedure computing the image of a forced region."
 who: agent
 item: "134"
 title: "Content across a vocabulary change, on the accounted state"
@@ -13,7 +13,7 @@ heading_notes: ""
 project: normativity
 dispatchable: true
 item_status: open
-deliverable: "`lean-proved`; the transition, the transport theorem for `Entitlement`, and the split fixture run through it with one kept and one broken commitment."
+deliverable: "`lean-proved`; the transition, the transport theorem for `Entitlement` with its hypotheses or the counterexample, and the split fixture run through it with one kept and one broken commitment."
 acceptance: "the Lean audit clean; `Conservativity.bad_not_conservative` and `Recollection.split_broken` recovered as instances of the transition's verdict."
 work:
   - {kind: round, ref: projects/normativity/rounds/2026-11-08-content-recollection}
@@ -23,10 +23,10 @@ context: ["lean/Workspace/Normativity/Contrib/Conservativity.lean", "lean/Worksp
 author: "@smithy-verity"
 size: M
 size_reason: "one item entry, three Lean modules of context"
-version: 1
+version: 2
 ---
 ## Statement
-Item 134, Content across a vocabulary change, on the accounted state, is delivered in the shape its entry states: `lean-proved`; the transition, the transport theorem for `Entitlement`, and the split fixture run through it with one kept and one broken commitment.
+Item 134, Content across a vocabulary change, on the accounted state, is delivered in the shape its entry states: `lean-proved`; the transition, the transport theorem for `Entitlement` with its hypotheses or the counterexample, and the split fixture run through it with one kept and one broken commitment.
 
 ## Source
 ATTENTION.md, item 134 (Content across a vocabulary change, on the accounted state); its context: `lean/Workspace/Normativity/Contrib/Conservativity.lean`, `lean/Workspace/Normativity/Contrib/Recollection.lean`, `lean/Workspace/Normativity/Contrib/ExpressesByRole.lean`, the content-recollection round's report.
@@ -46,17 +46,24 @@ accounted state. `OpenIntegrityEvolution.Step` changes a boundary and its accoun
 no translation; `WarrantInductor.Entitlement` is stated at one state over one fragment; and the
 pullback of a leverage form along a translation that is not a coordinate map is a row, so a
 recollected commitment enters the new seed as a structural row with no docket port. Wanted:
-(a) a transition of the normative state (`WarrantInductor.NormState`) carrying a translation,
-with the theorem that an entitlement before it and no broken commitment give an entitlement
-after it, `Expresses` read as `ExpressesByRole.ExpressesNoMore` against the interpretation
-composed with the translation; (b) a defeasible form for a pulled-back row — the port of the
-form it came from — with the theorem that defeat commutes with pullback, or the fixture showing
-it cannot; (c) a procedure computing the image of a forced region under a coordinate map from
-the elimination of `SeedStatics.project`, so that conservativity is decided and not only
-characterized.
+(a) for a coordinate map `e` and interpretations `ι` of the old fragment and `ι'` of the new
+with `ι' ∘ e = ι`, a transition of the normative state (`WarrantInductor.NormState`) carrying
+`e`, with the theorem that an entitlement before it gives an entitlement after it for the
+relabelled grounds (`Conservativity.mapForm`) under `ExpressesByRole.ExpressesNoMore ι'`, under
+stated hypotheses — that the origins stay exposed, admitted and live, which no condition on
+rows supplies, and that no commitment is broken — or the counterexample showing those
+hypotheses do not suffice; (b) for a translation that is not a coordinate map, the carrier an
+interpretation needs — a stochastic pullback of an event is a `[0,1]`-valued function on worlds
+and not an event, so `Fin d → Finset W` does not compose with it — and the statement of (a) on
+that carrier, or the reason there is none; (c) a defeasible form for a pulled-back row — the
+port of the form it came from — with the theorem that defeat commutes with pullback, or the
+fixture showing it cannot; (d) a procedure computing the image of a forced region under a
+coordinate map from the elimination of `SeedStatics.project`, so that conservativity is decided
+and not only characterized.
 
-*Deliverable shape:* `lean-proved`; the transition, the transport theorem for `Entitlement`, and
-the split fixture (`Recollection.split`) run through it with one kept and one broken commitment.
+*Deliverable shape:* `lean-proved`; the transition, the transport theorem for `Entitlement` with its
+hypotheses or the counterexample, and the split fixture (`Recollection.split`) run through it
+with one kept and one broken commitment.
 *Acceptance check:* the Lean audit clean; `Conservativity.bad_not_conservative` and
 `Recollection.split_broken` recovered as instances of the transition's verdict.
 *Context:* `lean/Workspace/Normativity/Contrib/Conservativity.lean`;

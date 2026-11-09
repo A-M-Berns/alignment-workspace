@@ -7,7 +7,7 @@ owner: "@anson"
 filed_from: wiki
 narrative: wiki/Seed-Theory.md
 roots: []
-holds: [item-117, item-118, item-119, item-120, item-121, item-122, item-123, rebuttal.settleform-sound, rebuttal.liability-rebutted, seed.forced-interval-spec, seed.forced-interval-bounds, seed.independence-strict, seed.eventually-const, convergence.hull-mass-anti, convergence.discord-persists, convergence.discord-pairwise, rows.incompatibility-entailment, seed.bound-certified, seed.forced-interval-rational, content.conservative-iff-image, precedent.consistent-iff-pairwise]
+holds: [item-117, item-118, item-119, item-120, item-121, item-122, item-123, rebuttal.settleform-sound, rebuttal.liability-rebutted, seed.forced-interval-spec, seed.forced-interval-bounds, seed.independence-strict, seed.eventually-const, convergence.hull-mass-anti, convergence.discord-persists, convergence.discord-pairwise, rows.incompatibility-entailment, seed.bound-certified, seed.forced-interval-rational, content.conservative-iff-image, precedent.rationalizable-iff-acyclic]
 work:
   - {kind: round, ref: projects/normativity/seed/rounds/2026-09-16-seed-statics}
   - {kind: round, ref: projects/normativity/seed/rounds/2026-09-17-convergence-measure}

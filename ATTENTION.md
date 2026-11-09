@@ -2228,7 +2228,7 @@ above. **Not registered, deliberately:** the two conditional Normative Inductor
 theorems, until a witness inhabits their joint hypothesis packages — a realization
 item, not a theory item.
 
-### 79. Convex representability and compiler completeness for a declared requirement class — **[open]** — *bears on it 2026-11-08: on the rational row schema conflict certificates and entailment certificates are complete relative to the cube (`IncompatibilitySemantics.incompatible_iff_not_feasible`, `certEntails_iff_sem`), so a compiler over that schema never needs `unknown` for want of a certificate; the existence of an adapter's `Excludes`/`Margins` certificates (`WarrantInductor.Problem`) whenever the region excludes or marks is not derived from it, and the class of anchored requirements is as open as before*
+### 79. Convex representability and compiler completeness for a declared requirement class — **[open]** — *bears on it 2026-11-08: on the rational row schema conflict certificates and entailment certificates are complete relative to the cube (`IncompatibilitySemantics.incompatible_iff_not_feasible`, `certEntails_iff_sem`), so on that schema an infeasible bundle always has a conflict certificate (existence; no procedure here finds it); the existence of an adapter's `Excludes`/`Margins` certificates (`WarrantInductor.Problem`) whenever the region excludes or marks is not derived from it, and the class of anchored requirements is as open as before*
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 Compiler soundness, Farkas conflict certification, and conservation on failure are
@@ -3686,9 +3686,9 @@ twice, and one copy must be removed with the other's names retargeted.
 *Acceptance check:* Lean green after (c).
 *Context:* `.../2026-10-20-warrant-enforcement-semantics/RECORD.md`.
 
-### 117. The selection lock: a canonical joint rule for warrant strengths, and a selection the docket may seal — **[open]** — *narrowed 2026-11-08: a constraint in place of a lock — cases read off the record (survivors prevailed, undercut occurrences were outweighed; `PrecedentConstraint.caseOf`), a case base consistent iff no two cases each have their winners covered by the other's losers (`consistent_iff_pairwise`, registered `precedent.consistent-iff-pairwise`), a continuation permitted iff the base stays consistent, with a forbidden continuation and two permitted by distinguishing; the constraint allows and does not rank (`both_permitted`). What the docket lacks for it: a decision occurrence naming the grounds weighed and the ground that prevailed — `DocketState.defeated` is a set of ports, so every undercut is read as an outweighing and the grounds present but neither prevailing nor undercut are dropped. The canonical joint rule and the lock remain*
+### 117. The selection lock: a canonical joint rule for warrant strengths, and a selection the docket may seal — **[open]** — *narrowed 2026-11-08: a constraint in place of a lock — cases read off the record (survivors prevailed, undercut occurrences were outweighed; `PrecedentConstraint.caseOf`), a case base rationalized by one strict order on reasons iff the graph on its cases has no cycle (`rationalizable_iff_acyclic`, registered `precedent.rationalizable-iff-acyclic`; the pairwise check `consistent_iff_pairwise` is necessary and not sufficient, `cycle_not_rationalizable`), a continuation permitted iff the base stays rationalizable, with a forbidden continuation and two permitted by distinguishing; the constraint allows and does not rank (`both_permitted`). What the docket lacks for it: a decision occurrence naming the grounds weighed and the ground that prevailed — `DocketState.defeated` is a set of ports, so every undercut is read as an outweighing and the grounds present but neither prevailing nor undercut are dropped. The canonical joint rule and the lock remain*
 <!-- workspace-priority: project=normativity.seed; dispatchable=yes -->
-*Registered results bearing on this item:* precedent.consistent-iff-pairwise, seed.eventually-const, seed.independence-strict.
+*Registered results bearing on this item:* precedent.rationalizable-iff-acyclic, seed.eventually-const, seed.independence-strict.
 
 *Re-filed 2026-10-21 by the rebuttal-and-end-to-end round from branch `round/2026-09-16-seed-statics`, where it was item 93; content unchanged; the branch round is landed under `projects/normativity/seed/rounds/2026-09-16-seed-statics/`.*
 
@@ -4024,17 +4024,24 @@ accounted state. `OpenIntegrityEvolution.Step` changes a boundary and its accoun
 no translation; `WarrantInductor.Entitlement` is stated at one state over one fragment; and the
 pullback of a leverage form along a translation that is not a coordinate map is a row, so a
 recollected commitment enters the new seed as a structural row with no docket port. Wanted:
-(a) a transition of the normative state (`WarrantInductor.NormState`) carrying a translation,
-with the theorem that an entitlement before it and no broken commitment give an entitlement
-after it, `Expresses` read as `ExpressesByRole.ExpressesNoMore` against the interpretation
-composed with the translation; (b) a defeasible form for a pulled-back row — the port of the
-form it came from — with the theorem that defeat commutes with pullback, or the fixture showing
-it cannot; (c) a procedure computing the image of a forced region under a coordinate map from
-the elimination of `SeedStatics.project`, so that conservativity is decided and not only
-characterized.
+(a) for a coordinate map `e` and interpretations `ι` of the old fragment and `ι'` of the new
+with `ι' ∘ e = ι`, a transition of the normative state (`WarrantInductor.NormState`) carrying
+`e`, with the theorem that an entitlement before it gives an entitlement after it for the
+relabelled grounds (`Conservativity.mapForm`) under `ExpressesByRole.ExpressesNoMore ι'`, under
+stated hypotheses — that the origins stay exposed, admitted and live, which no condition on
+rows supplies, and that no commitment is broken — or the counterexample showing those
+hypotheses do not suffice; (b) for a translation that is not a coordinate map, the carrier an
+interpretation needs — a stochastic pullback of an event is a `[0,1]`-valued function on worlds
+and not an event, so `Fin d → Finset W` does not compose with it — and the statement of (a) on
+that carrier, or the reason there is none; (c) a defeasible form for a pulled-back row — the
+port of the form it came from — with the theorem that defeat commutes with pullback, or the
+fixture showing it cannot; (d) a procedure computing the image of a forced region under a
+coordinate map from the elimination of `SeedStatics.project`, so that conservativity is decided
+and not only characterized.
 
-*Deliverable shape:* `lean-proved`; the transition, the transport theorem for `Entitlement`, and
-the split fixture (`Recollection.split`) run through it with one kept and one broken commitment.
+*Deliverable shape:* `lean-proved`; the transition, the transport theorem for `Entitlement` with its
+hypotheses or the counterexample, and the split fixture (`Recollection.split`) run through it
+with one kept and one broken commitment.
 *Acceptance check:* the Lean audit clean; `Conservativity.bad_not_conservative` and
 `Recollection.split_broken` recovered as instances of the transition's verdict.
 *Context:* `lean/Workspace/Normativity/Contrib/Conservativity.lean`;

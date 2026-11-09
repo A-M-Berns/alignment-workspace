@@ -16,7 +16,8 @@ when it is `0/1`-valued; `split_pull` and `abandon_no_sentence` are the two case
 
 §1: push, pull, the excess of a row (`excess_pull`), composition (`comp`, `push_comp`,
 `pull_comp`).  §2: a recollection is a transport step with constant `1` and slack `0`
-(`recollection_step`), two compose through `NormativeInductor.affine_transport_compose` to
+(`recollection_step`: the equality `excess_pull` written as an inequality, with no defect
+measure of its own), two compose through `NormativeInductor.affine_transport_compose` to
 `(1 · 1, 0 + 1 · 0)` (`recollection_chain`), and two recollections agreeing off a set of new
 worlds move a row's excess by at most the row's oscillation times the mass on that set
 (`approx_step`).  §3: composing a process with a recollection is a garbling of the process in
@@ -31,8 +32,8 @@ row on their sum; a new region refines the old and adds `P(S) ≥ 3/5`
 sentence has no exact image (`abandon_no_sentence`), the commitment `P(S) ≥ 9/10` is broken at
 every new credence (`abandon_broken_everywhere`), `P(S) ≥ 1/2` becomes a constraint on the new
 credence (`abandon_half`); under a constant recollection every old row is kept or broken at
-every credence alike (`const_pull_sat`); a map failing on one new world leaves a slack equal to
-that world's mass, attained (`partial_slack`).
+every credence alike (`const_pull_sat`); for a row of oscillation one, a map failing on one new
+world leaves a slack equal to that world's mass, attained (`partial_slack`).
 
 Names are provisional (`AGENTS.md` standard 6).
 -/

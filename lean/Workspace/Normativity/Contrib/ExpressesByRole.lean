@@ -32,7 +32,8 @@ antecedent positive posterior at a record that settles the consequent false
 **The fixture** (§4), on the eight-world model of `RobustWarrant` with the fragment
 `(A, A∧Y, C)`.  `entitlementW` inhabits `Entitlement` under `ExpressesNoMore ι settled` for the
 strength row at `3/5` against the requirement at `3/5` over the kept extensions, with admission
-by standing and a live account.  The relation discriminates: the plain row is not expressed
+by standing and a live account.  At the fixture exposure, admission and liveness hold for both
+obligations by construction; expression is the condition that discriminates: the plain row is not expressed
 (`plain_not_expresses`, with the conflict `contraCert` in `contraposition_as_expression`), so no
 entitlement exists under the plain rule (`no_entitlement_plain`); the row at `3/4` is expressed
 under neither anchored requirement, so the grounds of `RobustWarrant` have no entitlement

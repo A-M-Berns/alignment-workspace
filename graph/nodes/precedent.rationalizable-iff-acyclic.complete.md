@@ -1,5 +1,5 @@
 ---
-id: precedent.consistent-iff-pairwise.complete
+id: precedent.rationalizable-iff-acyclic.complete
 kind: leaf
 leaf_kind: completeness
 size: S
@@ -11,4 +11,4 @@ author: "@smithy-verity"
 No premise beyond the signature's binders enters the declaration; the kernel checks it as stated. The result is the record, this leaf and the bridge, and its hypotheses are unread: the record's Source carries the signature verbatim and no hypothesis leaf is filed until a reader files one.
 
 ## Source
-The signature of `Workspace.Normativity.Contrib.PrecedentConstraint.consistent_iff_pairwise` in lean/Workspace/Normativity/Contrib/PrecedentConstraint.lean.
+The signature of `Workspace.Normativity.Contrib.PrecedentConstraint.rationalizable_iff_acyclic` in lean/Workspace/Normativity/Contrib/PrecedentConstraint.lean.
