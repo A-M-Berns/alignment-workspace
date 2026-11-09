@@ -43,13 +43,13 @@ Python in this round is theorem-bearing.
   transport, which is a lemma here.
 - **One new item is filed, not two**: item 134. What matter 4 found missing is added to item
   117 as a note, because that item already asks for the object.
-- **The site.** `state/prs.json` gains this pull request's digest and no digest for #140. Open
-  pull request #141 already writes #140's; a second copy here would give one path two entries
-  once both land. The digest's `merged` field is empty: the pull request is unmerged and the
-  contract on `main` does not say what the field holds before a merge. Both edits append at
-  the end of the same list, so whichever of #141 and this pull request merges second needs that
-  hunk resolved by keeping both. `state/concepts.json` is untouched: the contract does not call
-  for an entry for anything here.
+- **The site.** `state/prs.json` gains this pull request's digest and no digest for #140:
+  pull request #141 wrote #140's and merged on 2026-11-09 while this round ran, and `main` at
+  `e20498c3` is merged into this branch with both. The digest's `merged` field is empty: the
+  pull request is unmerged, and the contract says a round's pull request carries its own digest
+  once its number is known without saying what the field holds before the merge.
+  `state/concepts.json` is untouched: the contract does not call for an entry for anything
+  here.
 - **The system `python3`** is 3.9; every checker was run with `python3.12`.
 
 ## 1. Conservativity
@@ -353,7 +353,7 @@ verbatim. Its merge word: **fix-then-merge**. It found no mathematical defect in
 | "An extension always refines" needs its qualifications | fixed: §1 states them |
 | The description's "the all-ones point satisfies them all" drops the strength restriction | fixed in the description |
 | `incompatible_iff_conflict` is existence of a valid result, not a compiler's execution | fixed: §2 and the limitations |
-| The digest's empty `merged` field must be resolved before publication | reserved: outstanding action 2; the date is not known before the merge |
+| The digest's empty `merged` field must be resolved before publication; preserve #141's digest of #140 when reconciling | #141 merged during the fix pass and `main` is merged into this branch with its digests intact; the date is reserved, outstanding action 2, since it is not known before the merge |
 
 ## Verification
 
@@ -375,8 +375,8 @@ Local, Python 3.12, on the tree after the fix pass.
 - `python3.12 -m checkers.run`: `87 entries, 1 adjudicated here`; the eight entries of this
   round `lean-proved`, adjudicated by the Lean gate.
 - `python3.12 -m checkers.workspace_state --check`: `WORKSPACE STATE: valid — 7 projects, 192
-  modern claims, 1 foundations, 180 foundation claims, 132 rounds, 52 terms, 145 priorities, 10
-  interface objects`, after `--write-handoff`.
+  modern claims, 1 foundations, 180 foundation claims, 133 rounds, 52 terms, 145 priorities, 10
+  interface objects`, after `--write-handoff` and with `main` merged in.
 - `python3.12 -m checkers.wiki_state_bindings`: `clean over 35 page(s); 3 binding(s) verified
   against the state emission`, after the registered-claims count on `wiki/Normativity.md` moved
   from 70 to 78 — the one wiki edit.
@@ -387,9 +387,15 @@ Local, Python 3.12, on the tree after the fix pass.
 - `python3.12 -m checkers.graph`: `OK 2527 nodes, 2603 events, 2094 ranked units`, with the
   standing warning on decision anchors without a node.
 
-CI on pull request #142 is recorded in the pull request; at `5a421912`, before the fix pass,
-`checkers`, `conservativity`, `consolidation-verification`, `dco` and `path-gate` had passed
-when the review returned.
+`main` at `e20498c3` (pull request #141: digests, a workflow schedule, governance text; no
+Lean) was merged into the branch after the runs above. On the merged tree the build was not
+repeated; `checkers.graph`, `checkers.workspace_state --check`, `checkers.run`,
+`checkers.attention_render --check`, `checkers.wiki_state_bindings`, `tests/site_build.py`,
+`tests/dead_pointers.py`, `tests/untracked_pointers.py` and `tests/freshness.py --self-test`
+were re-run and are clean, and the full `tests/run.py` sweep on the merged tree is CI's.
+
+CI on pull request #142: all seven required checks passed at `5a421912`, the head the review
+read. Later heads are recorded on the pull request.
 
 ## Items
 
@@ -424,8 +430,8 @@ condition), *permitted*.
 ## Outstanding maintainer actions
 
 1. **Merge or decline the pull request.** Auto-merge is off.
-2. **Resolve `state/prs.json` against pull request #141**, whichever merges second: keep both
-   appended hunks, and set this pull request's `merged` date.
+2. **Set this pull request's `merged` date** in `state/prs.json`, in the entry numbered 142,
+   when it merges.
 3. **Rule on whether a broken commitment bars a change or is accounted** — `DECISIONS.md`,
    *Awaiting the author*, the 2026-11-08 entry (`open--broken-commitment-bars-or-accounts`).
 4. **Close item 118, or name what remains**: set `item_status` in
