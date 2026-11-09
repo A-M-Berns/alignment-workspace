@@ -49,12 +49,6 @@ commit.
   enforcer is their call, not a theorem's.
   <!-- decision: open--exposure-rule-proposal; touches: item:133, claim:scoreside.same-question-two-realizations; status: open -->
 
-- **The maintenance sweep's cadence (2026-11-05).** The standing dispatch
-  (`prompts/2026-11-05-standing-maintenance/PROMPT.md`) is adopted; nothing schedules it
-  yet. *Turns on:* external knowledge — how often the maintainer wants a sweep PR landing
-  on their review queue; weekly beside the freshness audit is the round's suggestion.
-  <!-- decision: open--maintenance-sweep-cadence; touches: none; status: open -->
-
 - **Abram's read of the `assessment` event kind (2026-11-03).** The protocol gains a
   human scoring event — `axis: reliability | importance | clarity`, `score` 1 to 5,
   verbatim rationale, own-ledger supersession per node and axis — marked **Default** in
@@ -7133,3 +7127,30 @@ protocol inhabits `Entitlement` with admission carrying content, and a reallocat
 entitles nothing (`reallocated_entitles_nothing`).  Rejected alternative: admission read off the
 account's receipts (item 128's clause (b)), which stays open; the allocation is what the
 authority module already supplies.  `Expresses` remains typed.
+
+### 2026-11-08 — digests are maintenance; the sweep and the freshness audit run daily
+<!-- decision: 2026-11-08--digests-are-maintenance-sweep-and-audit-daily; touches: AGENTS.md, prompts/2026-11-05-standing-maintenance/PROMPT.md, .github/workflows/freshness.yml, tests/freshness.py, site/README.md, state/prs.json -->
+
+**Maintainer ruling, taken in conversation on 2026-11-08** ("can you do a separate pr to
+write digests 133-140 and also make that part of the automatic maintenance process? and
+maybe make automatic maintenance daily"): the digest of a merged pull request in
+`state/prs.json` is maintenance. The standing sweep writes every digest the freshness
+audit reports missing, and the sweep runs daily. This settles the cadence the 2026-11-05
+round queued; its suggestion of weekly is the rejected alternative, the site's merged-work
+lists having fallen six pull requests behind in ten days.
+
+A trust-chain change rides with it: `.github/workflows/freshness.yml` runs the audit daily
+instead of weekly, and its reporter comments on the standing issue only when the findings
+differ from its last report there, so a finding that waits on a merge is filed once and
+not once a day. The reporter's triggers, guard and scope are unchanged.
+
+Agent-decided, reversible, each with its rejected alternative. **An empty day makes no
+round and opens no pull request** — against a daily record of nothing, which would put a
+pull request on the review queue every day to say so. **No sweep starts while an earlier
+sweep's pull request is open** — against stacking, since the merge is the human input
+point and a second sweep would redo what the first is waiting to land. **A sweep's pull
+request carries its own digest, dated the day it opens**, and a round's does likewise —
+against leaving it to the next sweep, which would make every sweep the cause of another.
+**The daily trigger is a job on the maintainer's machine**, not a workflow — CI holds no
+credential and cannot run an agent, and the job starts one only after a check with `gh`
+and `git` finds a missing digest or a changed *Workspace friction* section.

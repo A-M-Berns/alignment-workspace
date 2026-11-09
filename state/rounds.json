@@ -2150,6 +2150,19 @@
         "robust.eight-world-strengths",
         "standing.reallocated-entitles-nothing"
       ]
+    },
+    {
+      "id": "2026-11-08-digests-and-daily-maintenance",
+      "date": "2026-11-08",
+      "project": "enabling",
+      "path": "projects/enabling/rounds/2026-11-08-digests-and-daily-maintenance",
+      "verdict": null,
+      "depends_on": [
+        "2026-11-05-site-priorities"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-11-08-digests-and-daily-maintenance/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
