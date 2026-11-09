@@ -3,7 +3,7 @@ id: legitimacy
 kind: frame
 children: [integrity-and-record, openness-and-non-capture, authorship-and-transparency, deference-toward-bounded-agents, formalism-open-questions-0-3, legit-dynamics-learning, legitimacy-meets-syntax, want-figure-out-legitimacy, want-corrigibility-theorems-via-legitimacy, want-legitimacy-anti-meme-post]
 question: "What must stay true of a trajectory's record, verdicts and channels of influence, inside it and at its boundary, for a later judgment to count as the principal's own, and what does corrigibility consume from that?"
-owner: ["@anson", "@abram"]
+owner: ["@A-M-Berns", "@abramdemski"]
 filed_from: wiki
 narrative: wiki/Legitimacy.md
 roots:

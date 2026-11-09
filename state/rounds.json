@@ -2205,6 +2205,19 @@
         "memory.selective-forgetting",
         "seed.adapter-certificates-exist"
       ]
+    },
+    {
+      "id": "2026-11-09-github-sign-in",
+      "date": "2026-11-09",
+      "project": "enabling",
+      "path": "projects/enabling/rounds/2026-11-09-github-sign-in",
+      "verdict": null,
+      "depends_on": [
+        "2026-11-05-site-priorities"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-11-09-github-sign-in/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

@@ -2,7 +2,7 @@
 id: want-basin-of-attraction-formalized
 kind: leaf
 leaf_kind: want
-owner: "@abram"
+owner: "@abramdemski"
 want: true
 filed_from: quote
 given: basin-formal-object@valid

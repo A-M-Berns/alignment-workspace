@@ -2848,7 +2848,7 @@ class Fixtures(unittest.TestCase):
         D = self.D
         # human events: the maintainer's two rulings only; every other counted event is the AI fill
         self.assertEqual([e for e in D["events"]["counted"] if not e.startswith(("smithy-verity-", "claude-fable-5-"))],
-                         ["anson-001", "anson-002"])
+                         ["A-M-Berns-001", "A-M-Berns-002"])
         self.assertTrue([e for e in D["events"]["counted"] if e.startswith("smithy-verity-")])
         # nothing is withdrawn; an AI number goes stale only where a round revised a node (a new version, a leaf that became
         # a table, or a leaf that became an and or an or: a claim made the conjunction of its formal results, 2026-10-24),
@@ -2857,7 +2857,7 @@ class Fixtures(unittest.TestCase):
         for e, why in D["events"]["stale_reasons"].items():
             self.assertTrue(why in ("leaf became a table", "leaf became an and", "leaf became an or") or why.startswith("given against version"), (e, why))
         pol = g.parse_flat_yaml((self.root / "graph" / "policy.yaml").read_text())
-        self.assertEqual(set(pol["handles"]), {"@anson", "@abram", "@smithy-verity", "@smithy-verity-opus55", "@claude-fable-5"})
+        self.assertEqual(set(pol["handles"]), {"@A-M-Berns", "@abramdemski", "@smithy-verity", "@smithy-verity-opus55", "@claude-fable-5"})
         self.assertNotIn("illustrative", (self.root / "graph" / "policy.yaml").read_text())
         for r, R in D["roots"].items():
             self.assertEqual(R["status"], "open", r)                           # no human judgment yet, so nothing concedes
@@ -2938,7 +2938,7 @@ class Fixtures(unittest.TestCase):
         self.assertTrue(any(l.startswith("DIGEST ") for l in lines), err)
         self.assertTrue(lines[-1].startswith("OK "))
         snap = {n: (self.root / "graph" / n).read_text() for n in g.GENERATED}
-        code, out, err = run(self.root, "--why", "--as", "@anson")
+        code, out, err = run(self.root, "--why", "--as", "@A-M-Berns")
         self.assertEqual(code, 0, err)
         for n in g.GENERATED:
             self.assertEqual((self.root / "graph" / n).read_text(), snap[n], n)
@@ -3049,7 +3049,7 @@ class Fixtures(unittest.TestCase):
         self.assertTrue(all(D["events"]["targets"][e] == "a2-monotone-in-resources" for e in stale) if "targets" in D["events"] else True)
         self.assertTrue(D["digest"]["compared_with"].startswith("graph/derived.json on disk"), D["digest"]["compared_with"])
         self.assertIn("a2-monotone-in-resources: open → conceded", D["digest"]["statuses_flipped"])
-        self.assertEqual(D["events"]["counted"][:2], ["anson-001", "anson-002"])
+        self.assertEqual(D["events"]["counted"][:2], ["A-M-Berns-001", "A-M-Berns-002"])
         type(self).notes += ["", "## The table case (a two-row table on a2, filed by a new contributor on a scratch copy)",
                              f"- passes in {elapsed:.2f} s; largest cutsets: " + ("; ".join(f"[{c['phi']}: {c['assignments']} assignments]" for c in comps) or "none"),
                              f"- a2: {D['nodes']['a2-monotone-in-resources']['status']} by {D['nodes']['a2-monotone-in-resources']['diagnosis']}; ic-informal: {D['nodes']['ic-informal']['status']}; "

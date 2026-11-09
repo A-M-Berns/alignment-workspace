@@ -3,7 +3,7 @@ id: normative-record
 kind: frame
 children: []
 question: "Before a learner can answer a demand, what determines why the demand arose, how evidence enters the practice, what authorizes a normative response, and what keeps an unanswered question from vanishing?"
-owner: "@anson"
+owner: "@A-M-Berns"
 filed_from: wiki
 narrative: wiki/Normative-Record-and-Inquiry.md
 roots: []

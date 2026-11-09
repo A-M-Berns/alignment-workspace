@@ -115,10 +115,19 @@ def build(out: pathlib.Path, verbose: bool = True) -> dict:
     put("/search/", pages.search_page(site), "search")
     put("/search/index.json", json.dumps(pages.search_index(site), ensure_ascii=False), "search-index")
     put("/assets/map.json", json.dumps(pages.map_data(site), ensure_ascii=False, separators=(",", ":")), "map-data")
+    # what sign-in needs: the repo, the relay (empty until deployed), and the
+    # GitHub-login → handle mapping from graph/policy.yaml's human handles
+    auth_path = ROOT / "state" / "site_auth.json"
+    relay = (json.loads(auth_path.read_text()).get("relay") or "") if auth_path.is_file() else ""
+    gh_handles = {spec["github"]: h for h, spec in repo.handles.items()
+                  if (spec or {}).get("kind") == "human" and (spec or {}).get("github")}
+    put("/assets/account.json", json.dumps(
+        {"repo": "A-M-Berns/alignment-workspace", "relay": relay, "handles": gh_handles},
+        ensure_ascii=False, separators=(",", ":")), "account-data")
     put("/", pages.landing_page(site), "landing")
     put("/map/", pages.front_page(site, rows), "front")
     put("/chat/", pages.holding_page(site, "Chatbot", "Arrives soon: a bring-your-own-key assistant that speaks from the workspace — what the program holds, what the priorities are, how to contribute."), "holding")
-    put("/activity/", pages.activity_page(site, rows), "activity")
+    put("/activity/", pages.activity_page(site), "activity")
     put("/priorities/", pages.priorities_page(site), "priorities")
     # assets
     (out / "assets").mkdir(parents=True, exist_ok=True)

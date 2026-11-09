@@ -101,7 +101,7 @@ graph/index.json, written on every plain run and published to the branch
 4. Pick a handle (`@<name>`) and have your agent add it to `handles:` in
    `graph/policy.yaml` with your GitHub account and `kind: human`. Your
    ledger is `graph/events/<name>.jsonl`, and every event id in it begins
-   with `<name>-` (so `@anson` writes `anson-001`, `anson-002`, …): ids are
+   with `<name>-` (so `@A-M-Berns` writes `A-M-Berns-001`, `A-M-Berns-002`, …): ids are
    unique across all ledgers, and the prefix keeps two contributors' pull
    requests from colliding.
 5. Tell your agent how you want things shown (numbers or only orderings,

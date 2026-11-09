@@ -976,7 +976,7 @@ event, a level-minting event, a priority word, an acceptance or a tag under
 its own handle, or a line in another contributor's ledger, and never edits
 `derived.json`, `tasks.md`, `view.md` or `versions.json` by hand. Every
 event the agent writes for its user carries an id beginning with that
-user's handle (`anson-001`), in that user's own ledger. `graph.py` refuses
+user's handle (`A-M-Berns-001`), in that user's own ledger. `graph.py` refuses
 every one of these it can see; the rest is a review matter.
 
 **Goals are frames and wants.** The frame tree is the goal hierarchy: the
@@ -1131,7 +1131,10 @@ panel — the registry's class, the contest surface, the active human assessment
 stale ones marked — and a composer that generates an exact `assessment` ledger event for
 the reader to submit over GitHub on their own account (the site accepts no write; ruling
 of 2026-11-02), beside the intake verbs, each a prefilled GitHub issue a maintainer round
-sweeps into ledger events (ruling S5, 2026-10-30). Every node, item,
+sweeps into ledger events (ruling S5, 2026-10-30). A reader may sign in with GitHub
+(device flow through `infra/github-login-relay/`, a worker holding no secret; the token
+stays in the reader's browser; ruling of 2026-11-09), and a signed-in reader's receipt
+forks, writes their own ledger line and opens the pull request from the browser. Every node, item,
 decision anchor, round, registry id, wiki page and handle has exactly one path, derived
 from its id (`site/README.md` is the contract); a build fails on a reference that does
 not resolve, two ids that map to one path, or a binding that disagrees with the state,

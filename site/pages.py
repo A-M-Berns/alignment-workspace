@@ -61,9 +61,9 @@ def layout(site: Site, title: str, body: str, crumbs: list[tuple[str, str]] | No
         crumb_html = '<nav class="crumbs">' + " › ".join(f'<a href="{u}">{esc(t)}</a>' for t, u in crumbs) + "</nav>"
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{esc(title)}</title><link rel="stylesheet" href="/assets/style.css?v={esc(r.commit[:12])}"><script defer src="/assets/app.js?v={esc(r.commit[:12])}"></script></head>
+<title>{esc(title)}</title><link rel="stylesheet" href="/assets/style.css?v={esc(r.commit[:12])}"><script defer src="/assets/account.js?v={esc(r.commit[:12])}"></script><script defer src="/assets/app.js?v={esc(r.commit[:12])}"></script></head>
 <body><header class="top"><a class="home" href="/">Alignment Workspace</a><nav class="main">{nav}</nav>
-<form class="search" action="/search/" method="get"><input type="search" name="q" placeholder="search ids, statements, titles" aria-label="search"></form></header>
+<form class="search" action="/search/" method="get"><input type="search" name="q" placeholder="search ids, statements, titles" aria-label="search"></form><span id="account"></span></header>
 <main>{crumb_html}<h1>{esc(title)}</h1>{f'<p class="subtitle">{subtitle}</p>' if subtitle else ''}
 {body}
 </main>
@@ -997,39 +997,94 @@ def feed_page(site: Site, rows: list[str]) -> str:
     return layout(site, "Feed", "<p class=\"muted\">Rounds, claims registered and decisions landed, by date, from state/rounds.json, the registries' origin rounds and the decision anchors.</p><ul class=\"feed\">" + "".join(rows) + "</ul>")
 
 
-def activity_page(site: Site, rows: list[str]) -> str:
-    """Where to look, then what just happened. The pointers are derived from the standing
-    scores — contested axes first, then the unscored — and they are invitations, not an
-    ordering: the ordering lives on /priorities/, the map is the whole record, and
-    attention brought from outside it is the point."""
+def _event_target_link(site: Site, e: dict) -> str:
+    t = e.get("target") or {}
     r = site.repo
-    contested, unscored = [], []
+    if t.get("concept") and t["concept"] in r.concepts:
+        return site.link("concepts", t["concept"], r.concepts[t["concept"]].get("title", t["concept"]))
+    x = t.get("node") or (t.get("row") or [None])[0]
+    if x and str(x).split("@")[0] in r.nodes:
+        return site.link("n", str(x).split("@")[0])
+    return esc(str(x or ""))
+
+
+def activity_page(site: Site) -> str:
+    """The control panel: the standing counts as tiles, then what happened, densest first —
+    human ledger events, merged pull requests, the decision queue, settled rulings,
+    rounds, registered claims, and the score signals. Every number is derived; nothing
+    here is typed by hand."""
+    r = site.repo
+    # score signals and tile counts
+    contested, unscored, human_scored, seeded = [], 0, 0, 0
     for cid, e in r.concepts.items():
         axes = concept_axes(e)
         if not axes:
             continue
         h = r.concept_hero(cid)
-        link = site.link("concepts", cid, e.get("title", cid))
         axes_c = [a for a in axes if h[a]["contested"]]
         if axes_c:
-            contested.append(f'<li>{link} — {", ".join(axes_c)} contested</li>')
+            contested.append(f'<li>{site.link("concepts", cid, e.get("title", cid))} — {", ".join(axes_c)} contested</li>')
         if all(h[a]["d"] == "–" for a in axes):
-            unscored.append(link)
-    body = ["<section><h2>Where to look</h2>"]
-    body.append("<h3>Disagreements to read</h3>")
-    body.append("<ul class=\"listing\">" + "".join(contested) + "</ul>" if contested
-                else '<p class="muted">No axis is contested right now.</p>')
-    body.append('<p>What the standing scores say to work on first is ordered on <a href="/priorities/">priorities</a>.</p>')
-    body.append("<h3>Unscored</h3>")
-    if unscored:
-        body.append(f'<p>{len(unscored)} concepts carry no score on any axis yet — among them '
-                    + ", ".join(unscored[:6]) + ".</p>")
-    else:
-        body.append('<p class="muted">Every scoreable concept carries at least one score.</p>')
-    body.append('<p class="muted">These are invitations, not an ordering — the <a href="/map/">map</a> is the whole record, and your own read of it is the contribution.</p></section>')
-    body.append("<section><h2>Recent</h2><ul class=\"feed\">" + "".join(rows[:25])
-                + '</ul><p><a href="/feed/">The whole feed</a>.</p></section>')
-    return layout(site, "Activity", "".join(body))
+            unscored += 1
+        if any(h[a]["d"] != "–" and not h[a]["ai"] for a in axes):
+            human_scored += 1
+        elif any(h[a]["ai"] for a in axes):
+            seeded += 1
+    open_items = sum(1 for rec in r.items.values()
+                     if r.nodes[rec["node"]]["fields"].get("item_status", "open") == "open")
+    queue = [(a, d) for a, d in r.decisions.items() if d["status"] == "open"]
+    settled = sorted(((a, d) for a, d in r.decisions.items() if d.get("date")),
+                     key=lambda ad: ad[1]["date"], reverse=True)
+    tiles = [
+        (str(open_items), "open items", "/items/"),
+        (str(len(queue)), "pending decisions", "#queue"),
+        (str(len(contested)), "contested axes", "#scores"),
+        (f"{human_scored}", f"human-scored concepts · {seeded} on AI seeds only", "/priorities/"),
+        (str(len(r.prs)), "merged pull requests", "/prs/"),
+        (str(len(r.rounds)), "rounds", "/rounds/"),
+        (str(len(r.registry)), "registered claims", "/spine/"),
+    ]
+    tile_html = '<div class="stat-row">' + "".join(
+        f'<a class="stat" href="{esc(u)}"><span class="stat-n">{esc(n)}</span><span class="stat-l">{esc(l)}</span></a>'
+        for n, l, u in tiles) + "</div>"
+
+    def panel(title: str, items: list[str], empty: str, anchor: str = "", more: str = "") -> str:
+        aid = f' id="{anchor}"' if anchor else ""
+        inner = ("<ul class=\"dense\">" + "".join(items) + "</ul>") if items else f'<p class="muted">{empty}</p>'
+        return f'<section class="panel"{aid}><h2>{esc(title)}</h2>{inner}{more}</section>'
+
+    human_evs = sorted((e for e in r.events if e.get("by") in r.human),
+                       key=lambda e: (str(e.get("date")), str(e.get("id"))), reverse=True)[:14]
+    ev_rows = [f'<li><span class="date">{esc(str(e.get("date")))}</span> '
+               f'{site.link("by", str(e.get("by")).lstrip("@"), str(e.get("by")))} '
+               f'<span class="kind">{esc(str(e.get("kind")))}'
+               + (f' · {esc(str(e.get("axis")))} {esc(str(e.get("score")))}' if e.get("kind") == "assessment" else "")
+               + f'</span> {_event_target_link(site, e)}</li>' for e in human_evs]
+    pr_rows = [f'<li><span class="date">{esc(str(P.get("merged") or ""))}</span> '
+               f'{site.link("prs", num, f"#{num}")} {esc(str(P.get("title") or ""))}</li>'
+               for num, P in sorted(r.prs.items(), key=lambda kv: (str(kv[1].get("merged") or ""), int(kv[0])), reverse=True)[:10]]
+    queue_rows = [f'<li>{site.link("decisions", a, d["title"])}</li>' for a, d in queue]
+    ruling_rows = [f'<li><span class="date">{esc(d["date"])}</span> {site.link("decisions", a, d["title"])}</li>'
+                   for a, d in settled[:10]]
+    round_rows = [f'<li><span class="date">{esc(str(R.get("date")))}</span> {site.link("rounds", rid)} '
+                  f'<span class="muted">{esc(str(R.get("project") or "workspace"))}</span></li>'
+                  for rid, R in sorted(r.rounds.items(), key=lambda kv: str(kv[1].get("date")), reverse=True)[:10]]
+    claim_dates = {cid: str((r.rounds.get(e.get("origin_round") or "") or {}).get("date") or "") for cid, e in r.registry.items()}
+    claim_rows = [f'<li><span class="date">{esc(claim_dates[cid])}</span> {site.link("claims", cid)} '
+                  f'<span class="kind">{esc(r.registry[cid].get("class", ""))}</span></li>'
+                  for cid in sorted(r.registry, key=lambda c: claim_dates[c], reverse=True)[:10]]
+    score_more = (f'<p class="muted">{unscored} scoreable concepts carry no score; the ordering is '
+                  '<a href="/priorities/">priorities</a>, and scoring an axis on any page moves it.</p>')
+    panels = [
+        panel("Human ledger events", ev_rows, "No human has signed a ledger event yet — the hero on any page takes the first score."),
+        panel("Rulings", ruling_rows, "None dated yet.", more='<p class="muted"><a href="/decisions/">All decisions</a>.</p>'),
+        panel("Pending decisions", queue_rows, "The queue is empty.", anchor="queue"),
+        panel("Merged pull requests", pr_rows, "None digested yet.", more='<p class="muted"><a href="/prs/">All merged work</a>.</p>'),
+        panel("Rounds", round_rows, "None yet.", more='<p class="muted"><a href="/feed/">The whole feed</a>.</p>'),
+        panel("Claims registered", claim_rows, "None yet."),
+        panel("Contested scores", contested, "No axis is contested right now.", anchor="scores", more=score_more),
+    ]
+    return layout(site, "Activity", tile_html + '<div class="panel-grid">' + "".join(panels) + "</div>")
 
 
 def mini_hero(h: dict, axes: tuple = AXES) -> str:
@@ -1082,8 +1137,9 @@ def priority_order(site: Site) -> tuple[list[dict], list[str]]:
 
 
 def concept_peek(site: Site, cid: str) -> str:
-    """The opening stretch of the concept's own page — its wiki page where one exists,
-    else its backing claim's Statement — as plain text for the hover preview."""
+    """The opening stretch of the concept's own page, as plain text for the hover
+    preview: its wiki page where one exists, else its backing claim's Statement, else its
+    connections — the map's edges with their why lines, which is what that page shows."""
     r = site.repo
     e = r.concepts[cid]
     text = ""
@@ -1096,6 +1152,17 @@ def concept_peek(site: Site, cid: str) -> str:
         refs = [x for x in e.get("refs") or [] if x in r.nodes]
         if refs:
             text = r.nodes[refs[-1]]["statement"]
+        else:
+            parts = []
+            for L in r.concept_links:
+                a, b = L.get("from"), L.get("to")
+                if cid not in (a, b):
+                    continue
+                other = b if a == cid else a
+                title = (r.concepts.get(other) or {}).get("title", other)
+                why = str(L.get("why") or "").rstrip(".")
+                parts.append(f"{title}: {why}." if why else title)
+            text = " ".join(parts)
     text = " ".join(text.split())
     return text[:420] + "…" if len(text) > 420 else text
 

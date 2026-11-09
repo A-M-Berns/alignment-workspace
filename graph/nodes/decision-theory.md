@@ -3,7 +3,7 @@ id: decision-theory
 kind: frame
 children: [updateless-dt-programme]
 question: "Which decision theory for computationally uncertain agents, on the updateless side and in the synthesis of logical induction with bounded inductive rationality, is tractable, and which of its results bear on AI safety engineering?"
-owner: "@abram"
+owner: "@abramdemski"
 roots:
   - {id: updateless-dt-programme, role: plan, preset: worst-case}
 work:

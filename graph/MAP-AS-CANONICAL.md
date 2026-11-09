@@ -29,8 +29,8 @@ content is not bent to fit.
 |---|---|---|
 | `graph/frame.yaml` | the top question, its owner, classes, valuations, four roots | unchanged in question and classes; `owner` may be a list; gains `narrative: wiki/Home.md`; the plan root `trust-modelling` is widened into `the-program` |
 | `graph/nodes/<id>.md` | one node per claim, frame, table, leaf | unchanged in kind; frames gain `narrative` and may have several owners; a node may be a root of several frames (shared roots); since the second follow-up of 2026-10-23 (ruling G2) a frame may `hold` nodes it is about without making them goals |
-| `graph/events/<handle>.jsonl` | one ledger per contributor | the only human ledger is renamed from `maintainer` to `anson` (ids `anson-001`, `-002`); a second human handle `@abram` is mapped and has no ledger until it writes an event |
-| `graph/policy.yaml` | parameters, handles, registries | `maintainer` is a list of human handles; `handles` maps `@anson` and `@abram` |
+| `graph/events/<handle>.jsonl` | one ledger per contributor | the only human ledger is renamed from `maintainer` to `anson` (ids `A-M-Berns-001`, `-002`); a second human handle `@abramdemski` is mapped and has no ledger until it writes an event |
+| `graph/policy.yaml` | parameters, handles, registries | `maintainer` is a list of human handles; `handles` maps `@A-M-Berns` and `@abramdemski` |
 | `projects/*/CLAIMS.md` (two registries, 178 entries) | registered claims with a statement of record | each entry has exactly one formal result in the map: an `and` whose id is the registry id, of a `record` leaf (statement of record = the declaration), one hypothesis leaf per hypothesis read from the Lean signature, one `bridge` with `attribution`, one completeness leaf; the registry stays the statement of record and the map cites it |
 | the 82 landed `record` leaves whose declarations are not registry entries | clean-room and package declarations | kept as they are (they cap at level 2, *not in a claims registry*); the gap is filed in §7 |
 | `ATTENTION.md`, numbered items | work orders (125, plus 4 ingenuity entries and 8 friction entries) | one node per entry, id `item-<n>` (`item-q<n>` for *Where ingenuity is the bottleneck*, `item-f<n>` for *Workspace friction*), a `task` leaf for a work order and a `question` leaf for an ingenuity entry, or the node that already stood for the item (17 merged, renamed into the scheme); the item's fields (number, title, difficulty tag, heading annotations, project, dispatchable, deliverable shape, acceptance check, context paths, open/closed status, position, section) on the node; the item's body verbatim in a `## Item` section of the node file |
@@ -312,16 +312,16 @@ Each **agent-decided** choice is reversible; the rejected alternative is named.
 - **`owner` accepts a list** on frames (the form chosen over a second key
   `owners`), and `maintainer` accepts a list in `policy.yaml`.
 - **Existing frames are re-owned by the line they sit under** (29 frames:
-  `@abram` for the deference, decision-theory, stance and abstraction lines,
-  both maintainers under legitimacy, `@anson` for the corrigibility landscape
+  `@abramdemski` for the deference, decision-theory, stance and abstraction lines,
+  both maintainers under legitimacy, `@A-M-Berns` for the corrigibility landscape
   and its sub-frames), and **the thirteen wants by the attribution of their
   source documents** (the deference note dump's `notes/`, lab and chats are
   the second maintainer's by its own README; the corrigibility position
   statements are the published post's material, the first maintainer's; the
   unbounded-embedded sources sit in the second maintainer's level line): eight
-  wants to `@abram`, five to `@anson`, every one still *owner has not
+  wants to `@abramdemski`, five to `@A-M-Berns`, every one still *owner has not
   confirmed*. *Rejected:* the blanket rename of every `@maintainer` to
-  `@anson`, which would have made the first maintainer the owner of wants
+  `@A-M-Berns`, which would have made the first maintainer the owner of wants
   quoted from the second's words.
 - **A `foundation` pointer kind** and **a `wiki` value of `filed_from`** are
   the two smallest extensions filed (§7 of the survey); **`narrative` accepts a
@@ -330,7 +330,7 @@ Each **agent-decided** choice is reversible; the rejected alternative is named.
   `CONVENTIONS.md`, `Glossary.md`, `Relation-to-the-Field.md`** are legitimately
   unattached: receipt, bibliography, navigation, conventions, a glossary and a
   field map narrate no one node.
-- **The top frame keeps its single owner `@anson`**, since M2 says the top
+- **The top frame keeps its single owner `@A-M-Berns`**, since M2 says the top
   frame stays as it is and lists owners for `the-program` and its lines only.
 
 **Reserved to the maintainers** (also in `DECISIONS.md`, *Awaiting the author*):

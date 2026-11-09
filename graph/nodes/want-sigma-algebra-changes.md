@@ -2,7 +2,7 @@
 id: want-sigma-algebra-changes
 kind: leaf
 leaf_kind: want
-owner: "@anson"
+owner: "@A-M-Berns"
 want: true
 filed_from: quote
 given: vc-route-outside-support

@@ -3,7 +3,7 @@ id: want-figure-out-legitimacy
 kind: leaf
 leaf_kind: want
 given: legit-gated-trust-li
-owner: "@abram"
+owner: "@abramdemski"
 want: true
 filed_from: quote
 author: "@smithy-verity"

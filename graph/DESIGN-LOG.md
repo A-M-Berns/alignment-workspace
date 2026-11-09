@@ -84,3 +84,4 @@
 - 2026-11-05 change @anson — research-thread (goal) and prior-work concepts take no assessment: navigated or cited, not scored
 - 2026-11-05 change @anson — re-ruled: a research thread takes importance and clarity, only reliability stays off it; the eleven threads seeded on both
 - 2026-11-05 change @anson — the item ledger renamed to ATTENTION.md; the scores ordering at /priorities/ is the priority system (the pointer kind priorities and the priority event keep their names)
+- 2026-11-09 change @A-M-Berns — a human handle is the GitHub login; @anson and @abram become @A-M-Berns and @abramdemski, the maintainer ledger renamed with its events' by and ids
