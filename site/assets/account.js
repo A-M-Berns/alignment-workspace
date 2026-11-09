@@ -29,6 +29,11 @@
   function unb64(s) { return decodeURIComponent(escape(atob(s.replace(/\n/g, "")))); }
   function save() { try { localStorage.setItem("aw-auth", JSON.stringify(auth)); } catch (e) { /* unavailable */ } }
 
+  // submission receipts: remembered on this browser; the pull requests are on GitHub
+  function receipts() { try { return JSON.parse(localStorage.getItem("aw-receipts") || "[]"); } catch (e) { return []; } }
+  function saveReceipts(rs) { try { localStorage.setItem("aw-receipts", JSON.stringify(rs)); } catch (e) { /* unavailable */ } }
+  function dropReceipt(id) { saveReceipts(receipts().filter(function (r) { return r.id !== id; })); }
+
   function chip() {
     var m = document.getElementById("account");
     if (!m || !cfg) return;
@@ -166,12 +171,22 @@
           body: "One `assessment` ledger event, composed on the site and submitted from the author's own account.\n\n```json\n" + line + "\n```",
         },
       });
-    }).then(function (pr) { return pr.html_url; });
+    }).then(function (pr) {
+      var ev = {};
+      try { ev = JSON.parse(line); } catch (e) { /* the receipt just loses detail */ }
+      var rs = receipts();
+      rs.push({ id: ev.id, target: ev.target, axis: ev.axis, score: ev.score,
+                verbatim: ev.verbatim, pr: pr.html_url, n: pr.number, date: ev.date });
+      saveReceipts(rs);
+      return pr.html_url;
+    });
   }
 
   window.AWAccount = {
     get: function () { return auth; },
     submit: submit,
+    receipts: receipts,
+    dropReceipt: dropReceipt,
   };
 
   fetch("/assets/account.json").then(function (r) { return r.json(); }).then(function (c) {

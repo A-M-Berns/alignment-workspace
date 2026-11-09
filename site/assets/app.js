@@ -73,6 +73,39 @@
     }
     adoptAccount();
     document.addEventListener("aw-account-ready", adoptAccount);
+    // the signed-in reader's own position under each axis: their published score, their
+    // pending proposal, or the invitation — an annotation beneath the standing number
+    function sameTarget(t) {
+      t = t || {};
+      return (t.node && t.node === cfg.target.node) || (t.concept && t.concept === cfg.target.concept);
+    }
+    function youLines() {
+      var a = window.AWAccount && window.AWAccount.get();
+      if (!a || !a.handle) return;
+      scope.querySelectorAll("section.hero .hx").forEach(function (cell) {
+        var m = (cell.className || "").match(/hx-(reliability|importance|clarity)/);
+        if (!m) return;
+        var axis = m[1];
+        var old = cell.querySelector(".hx-you");
+        if (old) old.remove();
+        var div = document.createElement("div");
+        div.className = "hx-you";
+        var rec = (window.AWAccount.receipts() || []).filter(function (r) { return sameTarget(r.target) && r.axis === axis; }).pop();
+        if (rec && cfg.active[a.handle + "|" + axis] === rec.id) { window.AWAccount.dropReceipt(rec.id); rec = null; }
+        var mine = cfg.scores && cfg.scores[axis] ? cfg.scores[axis][a.handle] : null;
+        if (rec) {
+          div.classList.add("pending");
+          div.innerHTML = 'Proposed ' + esc(String(rec.score)) + ' · <a href="' + esc(rec.pr) + '" target="_blank" rel="noopener">awaiting merge</a>';
+        } else if (mine != null) {
+          div.textContent = "You: " + mine + " / 5";
+        } else {
+          div.textContent = "you haven’t scored this";
+        }
+        cell.appendChild(div);
+      });
+    }
+    youLines();
+    document.addEventListener("aw-account-ready", youLines);
     var picked = null; // {axis, score}
     function headline(axis, n) {
       var st = cfg.standing[axis];
@@ -124,13 +157,15 @@
       var a = window.AWAccount && window.AWAccount.get();
       if (a && a.token && a.handle === handle) {
         var pr = document.createElement("button");
-        pr.type = "button"; pr.className = "as-pr"; pr.textContent = "Open the pull request";
+        pr.type = "button"; pr.className = "as-pr"; pr.textContent = "Open the score PR";
+        pr.title = "Public after maintainer merge and site rebuild";
         q(".as-copy", rc).parentNode.insertBefore(pr, q(".as-copy", rc));
         pr.onclick = function () {
           pr.disabled = true;
           window.AWAccount.submit(line, handle, function (t) { q(".rc-status", rc).textContent = t; })
             .then(function (url) {
-              q(".rc-status", rc).innerHTML = 'Submitted — <a href="' + esc(url) + '" target="_blank" rel="noopener">the pull request</a> publishes on merge.';
+              q(".rc-status", rc).innerHTML = 'Submitted — <a href="' + esc(url) + '" target="_blank" rel="noopener">the pull request</a>. Your score becomes public on this site after merge and rebuild.';
+              youLines();
             })
             .catch(function (e) {
               pr.disabled = false;

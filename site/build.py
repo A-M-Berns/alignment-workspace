@@ -124,6 +124,20 @@ def build(out: pathlib.Path, verbose: bool = True) -> dict:
     put("/assets/account.json", json.dumps(
         {"repo": "A-M-Berns/alignment-workspace", "relay": relay, "handles": gh_handles},
         ensure_ascii=False, separators=(",", ":")), "account-data")
+    # the personal lens's data: each human's active scores by target and axis, and the
+    # priorities ordering with each concept's axes, for "what to score next"
+    scores = {}
+    for h in sorted(repo.human):
+        mine = {}
+        for kind, tid, _, axes_rows in pages.handle_scores(site, h):
+            mine[f"{kind}:{tid}"] = {a: s for a, s, _, _, _ in axes_rows}
+        if mine:
+            scores[h] = mine
+    put("/assets/scores.json", json.dumps(scores, ensure_ascii=False, separators=(",", ":")), "scores-data")
+    ranked, _ = pages.priority_order(site)
+    put("/assets/next.json", json.dumps(
+        [{"id": row["cid"], "t": repo.concepts[row["cid"]].get("title", row["cid"]), "axes": list(row["axes"])}
+         for row in ranked], ensure_ascii=False, separators=(",", ":")), "next-data")
     put("/", pages.landing_page(site), "landing")
     put("/map/", pages.front_page(site, rows), "front")
     put("/chat/", pages.holding_page(site, "Chatbot", "Arrives soon: a bring-your-own-key assistant that speaks from the workspace — what the program holds, what the priorities are, how to contribute."), "holding")

@@ -104,6 +104,15 @@ handle, a score's receipt opens the
 pull request itself — fork, ledger line, branch, PR, all from the browser against
 api.github.com. The site accepts no write; the copy flow remains the fallback.
 
+The personal lens is client-side over public JSON (`/assets/scores.json`, each human's
+active scores by target and axis; `/assets/next.json`, the priorities ordering with each
+concept's axes): a handle's page shows their current position with an owner-only
+workbench (pending submissions remembered in the browser, what to score next), every
+hero annotates the signed-in reader's own score or pending proposal beneath the standing
+number, `/priorities/` takes an *Unscored by you* filter (`?mine=1`), and `/activity/`
+marks rows published since that browser's last visit. Signed out, every page is
+identical.
+
 ## Building locally
 
 ```

@@ -7128,7 +7128,6 @@ entitles nothing (`reallocated_entitles_nothing`).  Rejected alternative: admiss
 account's receipts (item 128's clause (b)), which stays open; the allocation is what the
 authority module already supplies.  `Expresses` remains typed.
 
-<<<<<<< HEAD
 ### 2026-11-09 — the site signs readers in with GitHub
 <!-- decision: 2026-11-09--github-sign-in; touches: site/, infra/github-login-relay/, state/site_auth.json -->
 
@@ -7157,7 +7156,6 @@ handle needs no minting, only admission to `policy.yaml`. Design-log lines and c
 round records keep the spelling they were written with, as history. AI handles stay the
 model's slug. The sign-in dialog is the device flow alone, its code shown large as
 GitHub expects it typed.
-=======
 ### 2026-11-08 — digests are maintenance; the sweep and the freshness audit run daily
 <!-- decision: 2026-11-08--digests-are-maintenance-sweep-and-audit-daily; touches: AGENTS.md, prompts/2026-11-05-standing-maintenance/PROMPT.md, .github/workflows/freshness.yml, tests/freshness.py, site/README.md, state/prs.json -->
 
@@ -7184,4 +7182,15 @@ against leaving it to the next sweep, which would make every sweep the cause of 
 **The daily trigger is a job on the maintainer's machine**, not a workflow — CI holds no
 credential and cannot run an agent, and the job starts one only after a check with `gh`
 and `git` finds a missing digest or a changed *Workspace friction* section.
->>>>>>> origin/main
+
+### 2026-11-09 — the dead-pointers gate catches surviving conflict markers
+<!-- decision: 2026-11-09--conflict-marker-scan; touches: tests/dead_pointers.py, DECISIONS.md -->
+
+**Agent-decided, reversible** (the personal-lens round, which hit it: a merge resolution
+staged this file with its conflict unresolved, and the markers reached `main` through two
+green CI runs — no gate reads for them). The gate that already walks every live document
+now fails on a line beginning `<<<<<<< ` or `>>>>>>> `, with both directions in its
+self-test; the bare `=======` divider is deliberately not scanned, since it is also a
+setext underline and never survives alone. The markers this round found in this file are
+resolved above, both sides kept. Rejected alternative: a separate gate, which would walk
+the same files twice.
