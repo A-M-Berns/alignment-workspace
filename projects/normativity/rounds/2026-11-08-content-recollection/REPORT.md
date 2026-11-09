@@ -831,6 +831,9 @@ before the external review and once after the fix pass.
   Neither is this pull request's to write; the audit calls each work for a round and not a
   merge blocker.
 
+CI on pull request #142: all seven required checks passed at `0ac5aaa1` (before the review) and
+at `d6df8a9b` (after the fix pass): `checkers` 5m, `lean` 13m, `python` 16m, the rest seconds.
+
 ### Registrations, items, names
 
 Against 117: `precedent.permitted-iff-reach`, `precedent.staircase-irredundant`,
