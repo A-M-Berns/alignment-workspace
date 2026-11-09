@@ -734,6 +734,33 @@ no reading of a broken commitment registers the fourth row.
 - **The literature.** Le Cam's deficiency, the reason model of precedent, and Hegel's and
   Brandom's recollection are named in the dispatches and were not consulted. Nothing is cited.
 
+### Verification
+
+Local, Python 3.12, on the tree with `main` merged in at `eb98367e`.
+
+- `~/.claude/scripts/safe-lake.sh build Workspace`: `Build completed successfully (4113 jobs)`.
+- `python3.12 tests/audit_axioms.py`, one run: `AXIOM AUDIT: 3945 results across 123 files, all
+  within ['Classical.choice', 'Quot.sound', 'propext']`.
+- `python3.12 tests/run.py`, one run: `ALL GREEN (80 project(s))`; `LEAN SORRY GATE: clean over
+  123 files`; `SITE DOM GATE: app boots, 73 capsules, 151 edges, cards open, fragments present,
+  no overlaps`; `LEAN BUILD SKIPPED`, the build above being the Lean verification.
+- `python3.12 -m checkers.run`: `97 entries, 1 adjudicated here`; the ten entries of the
+  follow-up `lean-proved`, adjudicated by the Lean gate.
+- `python3.12 -m checkers.workspace_state --check`: `WORKSPACE STATE: valid — 7 projects, 202
+  modern claims, 1 foundations, 180 foundation claims, 134 rounds, 52 terms, 147 priorities, 10
+  interface objects`, after `--write-handoff`.
+- `python3.12 -m checkers.wiki_state_bindings`: `clean over 35 page(s); 3 binding(s) verified
+  against the state emission`.
+- `python3.12 -m checkers.wiki_links`: `clean over 33 page(s)`.
+- `python3.12 -m checkers.attention_render --check`: `the committed file equals the render (147
+  items)`.
+- `python3.12 -m checkers.graph --root .`: `OK 2569 nodes, 2603 events, 2094 ranked units`, with
+  the standing warning on decision anchors without a node.
+- `python3.12 tests/freshness.py`: exit status 1 with two findings, both `main`'s: merged pull request #139 has no
+  digest in `state/prs.json`, and the round `2026-11-09-github-sign-in` appears in no digest.
+  Neither is this pull request's to write; the audit calls each work for a round and not a
+  merge blocker.
+
 ### Registrations, items, names
 
 Against 117: `precedent.permitted-iff-reach`, `precedent.staircase-irredundant`,
