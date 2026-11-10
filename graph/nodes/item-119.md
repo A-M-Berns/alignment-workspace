@@ -9,11 +9,15 @@ title: "Hidden discord: a region-level convergence measure"
 section: "Deference line — second wave"
 maintainer_order: 112
 difficulty: "open"
+heading_notes: " — *bears on it 2026-11-09: the same shape on another carrier — two rationalizable case bases whose union is not, one pair of them with every two cases compatible (`PrecedentHolding.merged_discord`, `merged_discord_hidden`), the union rationalizable iff the union of the two holdings has no cycle (`rationalizable_append_iff`); what is merged there is an order on reason sets and not a region, and no region-level measure is defined by it*"
 project: normativity.seed
 dispatchable: true
 item_status: open
 deliverable: "the definition on `IntervalData` or on regions, the analogue of `discord_persists`, and the two hidden-discord fixtures scored positive by it."
 acceptance: "`python3 tests/run.py` green; the Lean audits clean."
+work:
+  - {kind: round, ref: projects/normativity/rounds/2026-11-08-content-recollection}
+  - {kind: decision, ref: 2026-11-09--holding-is-what-permission-reads-assessor-sets-case}
 author: "@smithy-verity"
 size: M
 size_reason: "one item entry of 211 words"

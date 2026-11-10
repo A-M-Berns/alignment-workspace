@@ -2158,3 +2158,471 @@ Round `2026-10-21-rebuttal-and-end-to-end`; the dispatch's registration list, ag
   "note": "admittedByStanding: an obligation occurrence is admitted at history h when its issuer holds its matter under the allocation current at h; first-person commitments are matters the reasoner holds itself. The witness's state₀ rebuilt over the protocol with standing under J₀ (the first obligation the principal's, the second the reasoner's own) inhabits Entitlement for the witness's grounds at every date with admission carrying content (entitlementS, admitted_by_allocation, first_person_admitted). Under J₁, the allocation moving the first matter to the agent, the first obligation is not admitted at any history (reallocated_not_admitted) and no entitlement over any obligation state of that protocol may trace an occurrence to it — the counterpart of answered_not_entitled with the account replaced by the allocation. The hypothesis package is inhabited: over protocolS₁ an Initial can expose only obligation 1 (Initial admits every exposed occurrence, and obligation 0 is admitted at no history), and entitlementS₁ over stateS₁ — every origin at obligation 1, admitted under J₁, account live, Expresses total — is the witness (witness_origin: its conclusion there reads 1 ≠ 0). Expresses remains typed."
 }
 ```
+
+### rows.incompatibility-entailment
+
+```json
+{
+  "project": "normativity",
+  "short_name": "on the rational row language incompatibility entailment coincides with certificate entailment, relative to the cube and with no nonemptiness hypothesis",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.IncompatibilitySemantics.incEntails_iff_certEntails"
+  },
+  "answers_item": "118",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "Incompatible L is a FarkasCert over L's rows and the cube rows, a valid conflict result of the compiler (incompatible_iff_conflict), and holds iff L has no cube point (incompatible_iff_not_feasible: soundness farkas_sound, completeness the rational alternative RowAlternative.alternative, read in from the pinned EconCSLib theorem_of_alternative). CertEntails is an EntailCert over allowed rows; a BoundCert is the case of a row s·x φ ≤ v (ofBoundCert, toBoundCert). Both notions equal validity on the cube points of the list (incEntails_iff_sem, certEntails_iff_sem); against an infeasible list a scaled conflict certificate added to a cube certificate derives every row (certEntails_of_incompatible), so no nonemptiness hypothesis is needed. Restricted to contexts of leverage forms of strength at most one the relation is total, because the all-ones point satisfies every such form (humble_forms_feasible, formIncEntails_total, form_role_needs_rows)."
+}
+```
+
+### seed.bound-certified
+
+```json
+{
+  "project": "normativity",
+  "short_name": "every valid lower bound on a forced region has a bound certificate over the forced bundle's allowed rows",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.IncompatibilitySemantics.lowerBound_certified"
+  },
+  "answers_item": "118",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "For LowerBound S W st F φ c there are m and cert : BoundCert d m φ (-1) with every row allowed against forcedBundle S W st F and c ≤ −cert.value; the upper-bound form is upperBound_certified. Through certEntails_iff_sem. No nonemptiness of the region is assumed: against an empty region every bound is certified. The hypothesis is inhabited by lowerBound_witness (the bound 1/2 on SeedStatics.widenSeed). Item 118's second theorem."
+}
+```
+
+### seed.forced-interval-rational
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the forced interval computed by elimination inhabits the rational predicate: its endpoints are valid bounds attained at rational points",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.IncompatibilitySemantics.forcedInterval_isForcedInterval"
+  },
+  "answers_item": "118",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "IsForcedInterval S W st F φ (forcedInterval S W st F φ).1 (forcedInterval S W st F φ).2 under ∃ x, forcedRegionR S W st F x. From SeedStatics.forcedInterval_spec (attainment at real points) and exists_rat_point_at, which rests on RowAlternative.exists_rat_of_real: a rational system feasible over ℝ is feasible over ℚ. The hypothesis is inhabited by forcedInterval_witness (widenSeed). Item 118's first theorem."
+}
+```
+
+### expresses.kept-row-demands-no-more
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the strength row the rebuttal rule keeps demands no more than a robust warrant of at least its strength whose undefeated extensions include every record the rule keeps it at",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.ExpressesByRole.settled_demandsNoMore"
+  },
+  "answers_item": "128",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "A Requirement (events A, Y, strength c, undefeated extensions U) denotes its models, the nonnegative measures satisfying RobustWarrant.Robust. A form is a content — rows per record — under the plain rule or the settled rule (settleOutcome). DemandsNoMore: every list of rows incompatible with the content at a record is incompatible with the requirement there, equivalently every model satisfies the content's rows at every record of positive mass (demandsNoMore_iff, by completeness of conflicts). Hypotheses: c' ≤ w.c, ι XA = w.A, ι XAY = w.A ∩ w.Y, and every kept record's event in w.U; inhabited by settled_expresses on the eight-world fragment (A, A∧Y, C) with U the kept extensions. Necessity: stronger_not_expresses (the strength), defeater_not_expressed (the extensions). The interpretation ι and U are declared. The same-role strength (SameRole) is defined, refuted for a weaker row (weaker_noMore_not_same), and not proved for the exact row."
+}
+```
+
+### expresses.entitlement-discriminates
+
+```json
+{
+  "project": "normativity",
+  "short_name": "an entitlement whose Expresses carries content: over one accounted state the kept row at 3/5 is entitled, the plain row is not, and the row at 3/4 is not",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.ExpressesByRole.entitlement_discriminates"
+  },
+  "answers_item": "128",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "stateW is two obligations over the protocol with admission by standing under J₀, anchored at the requirement at 3/5 over the kept extensions and at the requirement at 3/4 with the contrary challenge a declared defeater. entitlementW inhabits Entitlement stateW [occ35] (ExpressesNoMore ι settled). The plain row demands more at the record settling the consequent false, where it reads 3/5·P(A) ≤ 0 and the eight-world measure, a model of the requirement, prices A at 1/5 (plain_not_expresses; the conflict contraCert in contraposition_as_expression). The row at 3/4 is too strong for the first anchor and, against the second, is kept by the rebuttal rule at the contrary-challenge record where the measure violates it (defeater_not_expressed). The first fixture in which entitlement fails for a reason other than a dead account or a reallocated matter. Item 128, clause (a), the Expresses half; clauses (b) and (c) are untouched."
+}
+```
+
+### expresses.plain-row-demands-more
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the plain linear strength row demands more than a robust warrant wherever a model gives the antecedent positive posterior at a record settling the consequent false",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.ExpressesByRole.plain_demandsMore"
+  },
+  "answers_item": "113",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "Item 113's phenomenon as a statement about expression: at a record pinning the consequent false the specialized strength row forces the antecedent to zero (WarrantEntitlement.strength_contraposes), while a model of the requirement may price it positively. Hypotheses: 0 < c, a model μ, a settlement pinning XAY false, positive record mass, positive antecedent mass on the record; inhabited by plain_not_expresses (record mass 5/8, antecedent mass 1/8). Beside it models_null_at_rebuttal: a model of a requirement of positive strength gives the antecedent mass zero on any undefeated extension on which the consequent is false."
+}
+```
+
+### content.conservative-iff-image
+
+```json
+{
+  "project": "normativity",
+  "short_name": "a vocabulary change is conservative on the old fragment iff the image of the new region equals the old region",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.Conservativity.conservative_iff"
+  },
+  "answers_item": "134",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "Refines: the pullback of every row the old region forces is forced by the new; AddsNothing: every old row whose pullback the new region forces was forced by the old; Conservative: both. refines_iff: refinement iff the image lies in the old region. addsNothing_iff: adding nothing iff the old region lies in the image, by separating_row and the rational alternative (RowAlternative.alternative_family). A coordinate map is the 0/1 translation, its image the projection; injectivity is unused. The extension of a seed along a coordinate map by new items always refines (extend_refines). Fixtures: ext₁ conservative; ext₂, a new term whose introduction row P(T) ≥ 4/5·P(X) and elimination row P(Y) ≥ 3/4·P(T) force P(Y) ≥ 3/10 over P(X) ≥ 1/2, with the certificate badCert, refines and is not conservative (bad_not_conservative), and is conservative with the elimination port defeated. SeedStatics.seed_independence_strict is conservativity on pins only (strict_layer_adds_no_pin, strict_layer_adds_rows)."
+}
+```
+
+### precedent.rationalizable-iff-acyclic
+
+```json
+{
+  "project": "normativity",
+  "short_name": "a case base read off the record is rationalized by one strict order on reasons iff the graph on its cases has no cycle",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.PrecedentConstraint.rationalizable_iff_acyclic"
+  },
+  "answers_item": "117",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "A reason is a leverage form, its kind the form with the strength erased; V covers W when each form of W has a form of V of its kind and at least its strength. A Case is read off the record by caseOf: survivors' forms prevailed and every undercut occurrence's form was outweighed, whatever the settlement. A case says that anything covering its winners beats anything its losers cover; Rationalizable Γ is the existence of an irreflexive transitive relation on reason sets containing every case's decision, equivalently no cycle of dominance (rationalizable_iff_no_dominance_cycle), equivalently no cycle in the graph Next on cases; a rank increasing along the edges suffices (rationalizable_of_rank). The pairwise condition Consistent (consistent_iff_pairwise) is necessary and not sufficient: three cases in a cycle pass it and have no order (cycle_not_rationalizable). Permitted Γ c is Rationalizable (c :: Γ), antitone in Γ. Fixtures on (X, ¬X, D): a forbidden continuation, two permitted by distinguishing (a ground of a new kind; a greater opposing strength), and a situation in which both decisions are permitted and not jointly (both_permitted) — the constraint allows and does not rank. The reading of undercut as outweighed is the model's; the record carries no decision object. The attribution of the reason model to its author is unverified, and the model has no sides: any reason set may be compared with any other."
+}
+```
+
+### precedent.permitted-iff-reach
+
+```json
+{
+  "project": "normativity",
+  "short_name": "a continuation is permitted by a case base iff the base is rationalizable and the reach of its holding does not put the continuation's losers at or above its winners",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.PrecedentHolding.permitted_iff"
+  },
+  "answers_item": "117",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "Holding Γ is the transitive closure of PrecedentConstraint.Dominates Γ on reason sets; Reach Γ V U is Covers V U ∨ Holding Γ V U, a preorder. The holding of c :: Γ is computed from the holding of Γ and c alone (holding_cons), so two case bases with the same holding permit the same continuations after any further continuations (permitted_congr, permitted_append_congr): the cases may be forgotten and the holding kept. Among rationalizable bases the reach is exactly what permission reads (permission_eq_iff_reach_eq); the holding is finer — a case whose winners cover its losers enters the holding and leaves the reach unchanged (holding_not_minimal). Restricted to a set R of reason sets containing every continuation's winners and losers, the reach on R × R with the rationalizability bit is closed under continuation (agreeOn_cons), and for finite R it is eventually constant along any sequence of continuations (reachSet_eventually_const, permission_eventually_const). A finite set Φ of forms supplies such an R: a reason set drawn from Φ covers and is covered by its list of distinct forms (normal, covers_normal), of which there are at most 2^|Φ| (reasonSets, card_reasonSets_le), and the holding does not distinguish reason sets that cover each other (holding_congr_covers), so the holding on all reason sets drawn from Φ and permission for every continuation drawn from Φ are eventually constant along any sequence of continuations (holding_eventually_const_of_finite_forms, permission_eventually_const_of_finite_forms); nothing bounds the stage at which they stop changing. The union of two case bases is rationalizable iff the union of their holdings has no cycle (rationalizable_append_iff), with two merged-discord fixtures. No hypotheses; both sides occur (PrecedentConstraint.permitted_distinguished, forbidden_not_permitted)."
+}
+```
+
+### precedent.staircase-irredundant
+
+```json
+{
+  "project": "normativity",
+  "short_name": "over one pair of kinds no case of a staircase of n cases at strictly increasing strengths is redundant: the reverse decision at the i-th strength is forbidden by the staircase and permitted without its i-th case",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.PrecedentHolding.staircase_irredundant"
+  },
+  "answers_item": "117",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "staircase s n is the cases ⟨[premise 0 (s j)], [premise 1 (s j)]⟩ for j < n. For strictly increasing s and i < n, ¬ Permitted (staircase s n) (against s i) and Permitted ((staircase s n).filter (· ≠ step s i)) (against s i), the second by a rank on cases. Beside it, stairs_permitted_iff (the reverse decision at s i is permitted by the staircase at the steps l iff i ∉ l) and stairs_holding_injective (two staircases over one scale with the same holding have the same steps): so n strengths over one pair of kinds carry a different holding for each set of steps, 2^n of them, and the kinds of reasons alone give no finite representation; the count is read off the injectivity and not formalized. The statement of record says each case is needed under deletion and nothing about other generators of the same holding. The hypotheses are inhabited within strengths in (0,1) by humbleScale (humbleScale_spec) and staircase_witness."
+}
+```
+
+### precedent.assessor-sets-precedent
+
+```json
+{
+  "project": "normativity",
+  "short_name": "with the case of an assessed act set by the assessor's verdict, a later choice is forbidden by an act assessed a shortfall and would be permitted had the act itself set the precedent",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.AssessedConduct.assessor_sets_precedent"
+  },
+  "answers_item": "117",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "An AssessedAct carries the grounds the act was taken on, the surviving grounds against it and a Verdict; its proposal is ⟨grounds, against⟩ and its case is the proposal if assessed adequate and the reverse if assessed a shortfall. ofCertificate is the adapter from DecisionComponent.ActCertificate at Ent := Form d: the grounds against and the verdict are further inputs, the licence and lineage are not read. ConsistentConduct: each choice permitted by the case base of the assessed acts before it, i.e. by the reach of the assessed past (consistentConduct_cons_iff). The fixture: the act on P(X) ≥ 3/4 against P(¬X) ≥ 1/2 assessed a shortfall; the later choice on P(X) ≥ 7/10 against P(¬X) ≥ 3/5 (repeat_forbidden); a later choice with a ground of a new kind is permitted (distinguished_consistent). Where a choice and its reverse are both permitted the reach relates their reason sets in neither direction (permitted_both_silent), and a shortfall verdict on a choice the reach backs leaves the assessed case base unrationalizable (shortfall_of_backed_not_rationalizable, assessor_bound). A closed statement about the fixture, for every verdict on the later choice. Nothing ties the verdict to WarrantInductorScoreSide.Assessed."
+}
+```
+
+### content.forget-region-is-projection
+
+```json
+{
+  "project": "normativity",
+  "short_name": "Fourier–Motzkin elimination of a coordinate computes the projection of a bundle's region along the coordinate map that drops it, at rational points",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.Forgetting.forget_region"
+  },
+  "answers_item": "134",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "eliminate k L is FourierMotzkin.elim — the step SeedStatics.project iterates — on the rows with coordinate k moved last, read back as rows; forget k B applies it to the bundle's rows and the cube rows. eliminate_sat_iff: the eliminated rows hold at a rational x iff x is the restriction along k.succAbove of a rational solution, the rational point by RowAlternative.exists_rat_of_real. Consequences: a row over the retained coordinates is forced by the full bundle iff by the forgotten one (forget_exact), certified against one iff against the other (forget_certified), and the change is conservative (forget_conservative); SeedStatics.project on a bundle's system is the projection onto one coordinate (project_iff_projection); projections compose (projection_comp). Adding nothing along a one-coordinate extension is then a finite family of entailment certificates (VocabularyAct.addsNothing_certified). No hypotheses. Item 134, clause (d), for one coordinate; the certificate search and several coordinates at once are not assembled into a decision procedure."
+}
+```
+
+### content.forget-settled
+
+```json
+{
+  "project": "normativity",
+  "short_name": "a settled coordinate may be forgotten: the rows specialized at its settlement and restricted to the other coordinates give the projection of the forced region under every docket state and every later settlement",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.Forgetting.forget_settled"
+  },
+  "answers_item": "134",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "For F.val k = some b and F.le F': projection k.succAbove (forcedRegion S W st F') x iff x is in the cube, pinned by F' restricted to the other coordinates, and satisfies dropCoord k (specialize F r) for the row r of every substantive item live at st and every warrant, and of every structural item live at st. The right side reads the seed's and the warrants' rows — selected by the docket state queried, so every item's row is retained and not only the items live when k is forgotten — with their ports and ids, and the later settlement on the retained coordinates. The hypotheses are inhabited by forget_settled_witness (X settled true in liveSeed). Its counterpart: an account with no live port denotes one resolution and every later substitution leaves its receipts and its denotation unchanged (OccurrenceIntegrity.Program.closed_evaluate_const, closed_subst), which is what OpenIntegrityEvolution.Conservation reads of it."
+}
+```
+
+### content.licensed-no-challenge
+
+```json
+{
+  "project": "normativity",
+  "short_name": "a vocabulary change licensed by a refinement certificate on its declared protected fragment admits no valid challenge on that fragment",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.VocabularyAct.licensed_no_challenge"
+  },
+  "answers_item": "134",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "VocabularyChange carries owner, T, old, new, fragment; it is data on rows and not a step of the accounted state. Licensed V: for every row allowed against the fragment, CertEntails V.new (pull V.T p); it holds iff the change refines the fragment (licensed_iff_refines), and reads neither old nor owner. A Challenge is a row, an EntailCert of it and a point; Challenge.Valid — the certificate's rows allowed against a list Γ of old rows, the point a cube point of the new commitments, the pullback failing there — is decidable. A valid challenge is a broken commitment and every broken commitment has one (Challenge.sound, challenge_complete); an unlicensed change admits a valid challenge on the fragment (unlicensed_has_challenge). FragmentOfOld V — every protected row has an entailment certificate against the old commitments — ties the fragment to them, and under it a valid challenge on the fragment is a broken commitment of the old (challenge_on_fragment_breaks_old). The hypothesis is inhabited by split_licensed (the split change protecting the credence rows, which satisfy FragmentOfOld by split_fragmentOfOld), and splitChallenge_valid shows a commitment outside the fragment validly challenged. Who may issue a change is not determined: the authority module allocates matters to holders and names none for vocabulary. Three readings of a broken commitment (Bars, Accounted, Split) are predicates beside it, each a function of the commitment's Charge (readings_of_charge); none is adopted."
+}
+```
+
+### memory.live-forget-cost
+
+```json
+{
+  "project": "normativity",
+  "short_name": "forgetting an unsettled coordinate costs the later forced interval: over P(Y) ≥ 3/4·P(X), forgetting X before it settles leaves P(Y) the whole of [0,1] where the full record forces [3/4,1] once X settles true, and forgetting X after it settles keeps P(Y) ≥ 3/4",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.Forgetting.live_forget_cost"
+  },
+  "answers_item": "135",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "liveSeed is the seed over (X, Y) with the one item Form.strength 0 1 (3/4). Three conjuncts: the projection of the forced region under the empty settlement along the map dropping X is the cube on Y — exact at the time, by content.forget-region-is-projection; IsForcedInterval liveSeed [] quiet settledX 1 (3/4) 1; and the projection of the forced region under settledX is {x | InCube x ∧ 3/4 ≤ x 0}. A closed statement about the fixture. The loss is 3/4 at the lower endpoint and is not visible as slack at the time of forgetting."
+}
+```
+
+### memory.schedule-slack
+
+```json
+{
+  "project": "normativity",
+  "short_name": "along a schedule of forgetting steps each agreeing with a reference step off a set of worlds, a row's excess exceeds its excess under the reference schedule by at most its oscillation times the accumulated mass on those sets",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.Forgetting.schedule_slack"
+  },
+  "answers_item": "135",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "K t, K₀ t : Recollection (n (t+1)) (n t) retell the stage-t worlds as the stage-(t+1) worlds, the schedule and a reference schedule of which nothing is assumed; the reference is exact forgetting when its steps are maps of worlds. chain K T composes them; scheduleLoss K B q T is the sum over t < T of the mass (chain K t).push q places on B t. Hypotheses: K t and K₀ t agree off B t, q nonnegative, the row's coefficients in [lo, hi]. By induction from Recollection.approx_step and retold_bounds. Where the stage masses are bounded by a sequence with bounded partial sums, or a summable one, the loss is bounded uniformly in the number of stages (schedule_bounded, schedule_summable). The hypotheses are inhabited by schedule_slack_witness. The loss measured is a row's excess at world-distribution level, compared between two stochastic schedules; no defect measure of the program's is transported, and the cost of forgetting an unsettled coordinate (memory.live-forget-cost) is not of this form."
+}
+```
+
+### memory.selective-forgetting
+
+```json
+{
+  "project": "normativity",
+  "short_name": "choosing which coordinate to drop after seeing the record obtains the interval [0,1] on both of two records where each coordinate fixed in advance leaves [3/4,1] on one of them and the full record forces [3/4,1] on both",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.Forgetting.selective_forgetting"
+  },
+  "answers_item": "135",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "recOn a is the seed over (φ, A, B) with the one item P(φ) ≥ 3/4 · P(a); afterForget a k F'' is the projection of its forced region along the map dropping k, pinned by the later settlement on the two retained coordinates (later, the restriction of bothTrue by later_eq). Six conjuncts: IsInterval for the choice made after seeing the record on both records (0, 1), for each fixed coordinate on the record it misses (3/4, 1), and IsForcedInterval for the full record on both (3/4, 1). A closed statement about the fixture. The choices fixed in advance are choices of a coordinate; a rule fixed in advance that names the coordinate by its role reproduces the adaptive result, and no theorem compares classes of policies. The gain, 3/4 at the lower endpoint, has the form of the non-capture rounds' omission bound (ReasonSupply.adverse_union) read with one omitted row's adverse sensitivity; the instantiation is not made in Lean, and that result does not separate a fixed from an adaptive choice."
+}
+```
+
+### seed.adapter-certificates-exist
+
+```json
+{
+  "project": "normativity",
+  "short_name": "every valid upper bound on a rational functional over a bundle's region has a cited functional certificate of at most that value",
+  "origin_round": "2026-11-08-content-recollection",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.AdapterCertificates.exists_citedFunctional"
+  },
+  "answers_item": "118",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-08-content-recollection",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-08-content-recollection/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-08-content-recollection/REPORT.md"
+  },
+  "note": "From IncompatibilitySemantics.certEntails_iff_sem, with a citation chosen for each weighted row. Consequences for WarrantInductor.Problem: where every inadequate response scores at most a rational t ≤ τ at every point of the region, upper certificates making Excludes hold exist (excludes_of_region); where every margin witness scores at least a rational t ≥ τ + δ, lower certificates making Margins hold at tolerance 0 exist (margins_of_region). Not derived: a threshold with no rational between it and the region's supremum, and Margins at a positive tolerance, where the tolerance multiplies the certificate's mass. The hypothesis is inhabited by citedFunctional_witness (SeedStatics.widenSeed)."
+}
+```

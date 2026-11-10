@@ -108,7 +108,7 @@ Owner @A-M-Berns, @abramdemski
 - rests on AI numbers (no human judgment yet): crux-formalize-before-write-up.partition
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @A-M-Berns, @abramdemski; holds 17 node(s)
+- frame owner @A-M-Berns, @abramdemski; holds 18 node(s)
 - a programme: informs through its steps
 - best next unit: none
 
@@ -122,7 +122,7 @@ Owner @A-M-Berns; holds 36 node(s)
 - steps: ; leading step: none has a value yet; the programme's value is its best non-conceded step's, or its outside option (default-trajectory) once every step is conceded
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @A-M-Berns; holds 16 node(s); spelled, nothing yet a goal; owner has not confirmed (drafted from the wiki)
+- frame owner @A-M-Berns; holds 32 node(s); spelled, nothing yet a goal; owner has not confirmed (drafted from the wiki)
 - a programme: informs through its steps
 - best next unit: none
 #### operative-force
@@ -142,7 +142,7 @@ Owner @A-M-Berns; holds 36 node(s)
 - rests on AI numbers (no human judgment yet): normativity-layer-I-closed
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @A-M-Berns; holds 23 node(s); owner has not confirmed (drafted from the wiki)
+- frame owner @A-M-Berns; holds 27 node(s); owner has not confirmed (drafted from the wiki)
 - a programme: informs through its steps
 - best next unit: none
 #### response-learning
@@ -228,7 +228,7 @@ Nodes this frame is about that are no goals of the ranking (held, not roots): li
 - item-127 (leaf/task)
 
 ## Sub-frame seed-theory (in normativity): What does a normative seed force on the prices of a settled fragment, how does that change under settlement, defeat and rebuttal, and do reasoners starting from different seeds end up anywhere together?
-Owner @A-M-Berns; holds 16 node(s); spelled, nothing yet a goal (no roots)
+Owner @A-M-Berns; holds 32 node(s); spelled, nothing yet a goal (no roots)
 
 ### Held
 Nodes this frame is about that are no goals of the ranking (held, not roots): listed with their kinds, no status or value here.
@@ -248,6 +248,22 @@ Nodes this frame is about that are no goals of the ranking (held, not roots): li
 - convergence.hull-mass-anti (and)
 - convergence.discord-persists (and)
 - convergence.discord-pairwise (and)
+- rows.incompatibility-entailment (and)
+- seed.bound-certified (and)
+- seed.forced-interval-rational (and)
+- content.conservative-iff-image (and)
+- precedent.rationalizable-iff-acyclic (and)
+- precedent.permitted-iff-reach (and)
+- precedent.staircase-irredundant (and)
+- precedent.assessor-sets-precedent (and)
+- content.forget-region-is-projection (and)
+- content.forget-settled (and)
+- content.licensed-no-challenge (and)
+- memory.live-forget-cost (and)
+- memory.schedule-slack (and)
+- memory.selective-forgetting (and)
+- seed.adapter-certificates-exist (and)
+- item-135 (leaf/task)
 
 ## Sub-frame operative-force (in normativity): How does a constraint acquire operative force in a logical inductor's market without destroying the property that nobody can pump the reasoner, and what does that force cost?
 Owner @A-M-Berns; holds 27 node(s)
@@ -305,7 +321,7 @@ Nodes this frame is about that are no goals of the ranking (held, not roots): li
 - item-39 (leaf/task)
 
 ## Sub-frame normative-inductor (in normativity): Does a logical inductor made to answer to legitimately incurred obligations, through an enforcer on the compiled region of the entitled record, remain a logical inductor and deliver the Progress bound, and what remains conditional in that theorem?
-Owner @A-M-Berns; holds 23 node(s)
+Owner @A-M-Berns; holds 27 node(s)
 
 ### Shared claims
 #### normativity-layer-I-closed
@@ -353,6 +369,10 @@ Nodes this frame is about that are no goals of the ranking (held, not roots): li
 - robust.eight-world-strengths (and)
 - standing.reallocated-entitles-nothing (and)
 - item-133 (leaf/task)
+- expresses.kept-row-demands-no-more (and)
+- expresses.entitlement-discriminates (and)
+- expresses.plain-row-demands-more (and)
+- item-134 (leaf/task)
 
 ## Sub-frame response-learning (in normativity): Does a bounded learner, given due burdens, licensed responses and a bounded prospective loss, reduce a recurrent publicly represented failure by lawful edits, and with which coverage does that bear the interpretation of a lesson?
 Owner @A-M-Berns
@@ -3807,7 +3827,7 @@ Owner @abramdemski
 - best next unit: do never-settled-standard
 
 ## Sub-frame enabling-work (in the-program): Which repository infrastructure makes the trust research vettable and publishable?
-Owner @A-M-Berns, @abramdemski; holds 17 node(s)
+Owner @A-M-Berns, @abramdemski; holds 18 node(s)
 
 ### Shared claims
 #### enabling-vetting-and-prioritization-system
@@ -3877,6 +3897,7 @@ Nodes this frame is about that are no goals of the ranking (held, not roots): li
 - item-37 (leaf/task)
 - item-38 (leaf/task)
 - item-f10 (leaf/task)
+- item-f11 (leaf/task)
 
 ## Tasks and work pointers
 Task leaves and actioned claims (the work to do, who does it) and pointers to the repository's own work orders, open statements and rounds.
@@ -3967,6 +3988,10 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - condensation-storage-retrieval-tradeoff: State the storage-plus-retrieval score precisely, show the two limits, test on a worked example whether an intermediate weight makes the shared notebook optimal, and attempt the correspondence theorem in that setting. (who: agent)
 - condensation-unify-novelty: Read the single-event information measures of Palm's Novelty, Information and Surprise and write how they relate to condensation's scores. (who: either)
 - conditional-stability-breadth: Find the syntactic menu class the WorldOnlyRefuted probe leaves standing and state a new sufficient-condition conjecture for conditional-stability in wiki/open-problems.md item 3. (who: agent); files: projects/deference/note-dump-2026-08-11/wiki/open-problems.md
+- content.conservative-iff-image: round: projects/normativity/rounds/2026-11-08-content-recollection; work order: ATTENTION #134; decision: 2026-11-08--vocabulary-change-is-translation-conservativity-criterion
+- content.forget-region-is-projection: round: projects/normativity/rounds/2026-11-08-content-recollection; work order: ATTENTION #134; decision: 2026-11-09--forgetting-is-projection-settled-safe-live-not
+- content.forget-settled: round: projects/normativity/rounds/2026-11-08-content-recollection; work order: ATTENTION #134; decision: 2026-11-09--forgetting-is-projection-settled-safe-live-not
+- content.licensed-no-challenge: round: projects/normativity/rounds/2026-11-08-content-recollection; work order: ATTENTION #134; decision: 2026-11-09--vocabulary-change-is-docket-occurrence-licence-and-challenge
 - convergence.discord-pairwise: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: ATTENTION #119
 - convergence.discord-persists: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: ATTENTION #119
 - convergence.hull-mass-anti: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: ATTENTION #119
@@ -4024,6 +4049,9 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - exposure.greedy-duality: round: prompts/2026-08-11-phase-ii-promotion; work order: ATTENTION #23
 - exposure.harvest-attained: round: prompts/2026-08-11-phase-ii-promotion; work order: ATTENTION #23
 - exposure.harvest-bound: round: prompts/2026-08-11-phase-ii-promotion; work order: ATTENTION #23
+- expresses.entitlement-discriminates: round: projects/normativity/rounds/2026-11-08-content-recollection; work order: ATTENTION #128; decision: 2026-11-08--content-is-role-among-rows-expresses-demands-no-more
+- expresses.kept-row-demands-no-more: round: projects/normativity/rounds/2026-11-08-content-recollection; work order: ATTENTION #128; decision: 2026-11-08--content-is-role-among-rows-expresses-demands-no-more
+- expresses.plain-row-demands-more: round: projects/normativity/rounds/2026-11-08-content-recollection; work order: ATTENTION #113; decision: 2026-11-08--content-is-role-among-rows-expresses-demands-no-more
 - fa-inductor-half: Attempt the inductor half in its conditional form (inductor-like on the accurate-feedback subsequence) and record the verdict. (who: agent)
 - factor-methodology-note: Write the methodological note: the argument for tackling boundedness head-on, the case against it, the unbounded-first methodology steelmanned, and an all-things-considered view. (who: human)
 - faf-lab-cleanroom-comparison: Fix the design of the blind comparison between the earlier formalization run and the clean room: who judges the blind sample (fresh agents, a human, or both) and the order (repair, seal, then compare). (who: human)
@@ -4097,29 +4125,31 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - item-110: Execute ATTENTION item 110: define the baseline (candidate: the idle-agent rollout read as a process on her record), re-derive the eight-world model's seven cases from it, and include the sealed sibling of the endpoint-preservation model as a second candidate for comparison. (who: agent); files: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/, projects/deference/note-dump-2026-08-11/notes/legitimacy-theory-v1.md
 - item-111: Execute item 111 per its deliverable shape and acceptance check: Unbiasedness From Feedback for the score sequence, from `LogicalInduction`. (who: agent)
 - item-112: Execute item 112 per its deliverable shape and acceptance check: Occurrence-level defeat: the orphan pin. (who: agent); decision: 2026-10-20--licence-level-verdicts-values-enforcement-s; decision: 2026-10-21--rebuttal-settlement-form-whose-consequent-pinned; decision: open--what-warrant-s-security-settles-against
-- item-113: Execute item 113 per its deliverable shape and acceptance check: Settlement defeat for strength rows: a linear row contraposes. (who: agent); decision: open--what-warrant-s-security-settles-against
+- item-113: Execute item 113 per its deliverable shape and acceptance check: Settlement defeat for strength rows: a linear row contraposes. (who: agent); decision: open--what-warrant-s-security-settles-against; round: projects/normativity/rounds/2026-11-08-content-recollection; decision: 2026-11-08--content-is-role-among-rows-expresses-demands-no-more
 - item-114: Execute item 114 per its deliverable shape and acceptance check: The pinned-region divergence against the pinned market maker. (who: agent)
 - item-115: Execute item 115 per its deliverable shape and acceptance check: Transport of `Licensed` across record transitions. (who: agent)
 - item-116: Execute item 116 per its deliverable shape and acceptance check: The record as reason trace: what it mediates, the defect, and the port's duplicate. (who: agent)
-- item-117: Execute item 117 per its deliverable shape and acceptance check: The selection lock: a canonical joint rule for warrant strengths, and a selection the docket may seal. (who: agent)
-- item-118: Execute item 118 per its deliverable shape and acceptance check: Rational attainment and certificate completeness for the computed forced interval. (who: agent)
-- item-119: Execute item 119 per its deliverable shape and acceptance check: Hidden discord: a region-level convergence measure. (who: agent)
+- item-117: Execute item 117 per its deliverable shape and acceptance check: The selection lock: a canonical joint rule for warrant strengths, and a selection the docket may seal. (who: agent); round: projects/normativity/rounds/2026-11-08-content-recollection; decision: 2026-11-08--precedent-read-off-record-constrains-docket; decision: 2026-11-09--holding-is-what-permission-reads-assessor-sets-case
+- item-118: Execute item 118 per its deliverable shape and acceptance check: Rational attainment and certificate completeness for the computed forced interval. (who: agent); round: projects/normativity/rounds/2026-11-08-content-recollection; decision: 2026-11-08--content-is-role-among-rows-expresses-demands-no-more
+- item-119: Execute item 119 per its deliverable shape and acceptance check: Hidden discord: a region-level convergence measure. (who: agent); round: projects/normativity/rounds/2026-11-08-content-recollection; decision: 2026-11-09--holding-is-what-permission-reads-assessor-sets-case
 - item-12: Execute item 12 per its deliverable shape and acceptance check: A necessity witness for every hypothesis that lacks one. (who: agent)
 - item-120: Execute item 120 per its deliverable shape and acceptance check: Exhaustive sharing on trace-constitutive dockets: what exchange equalizes live sets. (who: agent)
 - item-121: Execute item 121 per its deliverable shape and acceptance check: Transitive retirement, and the closure a settlement must carry. (who: agent); decision: 2026-10-21--rule-specialization-step-form-vacuity-before; decision: 2026-10-22--survivors-grounded-fixed-point-defeaters-shared
-- item-122: Execute item 122 per its deliverable shape and acceptance check: The transport's negated-form drop. (who: agent); decision: 2026-10-22--survivors-grounded-fixed-point-defeaters-shared
+- item-122: Execute item 122 per its deliverable shape and acceptance check: The transport's negated-form drop. (who: agent); decision: 2026-10-22--survivors-grounded-fixed-point-defeaters-shared; round: projects/normativity/rounds/2026-11-08-content-recollection; decision: 2026-11-08--vocabulary-change-is-translation-conservativity-criterion
 - item-123: Execute item 123 per its deliverable shape and acceptance check: The sharp bankroll across a reopening, and the cushion exploit against the pinned market maker. (who: agent); decision: 2026-10-22--survivors-grounded-fixed-point-defeaters-shared; decision: open--bankroll-across-reopening-accept-3-2
 - item-124: Execute item 124 per its deliverable shape and acceptance check: Certified bounds at the displayed price: the licence–force bridge. (who: agent)
 - item-125: Execute item 125 per its deliverable shape and acceptance check: Distance-to-region conformance for the rowwise enforcer. (who: agent); decision: 2026-10-23--admission-provenance-plus-entitlement-read-off
 - item-126: Execute item 126 per its deliverable shape and acceptance check: The bankroll across repeated reopenings. (who: agent)
 - item-127: Execute item 127 per its deliverable shape and acceptance check: Defeaters as undercutting occurrences: the grounded extension with attacks. (who: agent); decision: 2026-10-22--survivors-grounded-fixed-point-defeaters-shared
-- item-128: Execute item 128 per its deliverable shape and acceptance check: Admission from the accounted state. (who: agent)
+- item-128: Execute item 128 per its deliverable shape and acceptance check: Admission from the accounted state. (who: agent); round: projects/normativity/rounds/2026-11-08-content-recollection; decision: 2026-11-08--content-is-role-among-rows-expresses-demands-no-more
 - item-129: Test whether the normativity line's constraint compiler can enforce a per-day gap-bet bound (the novice's expectation of each signed gap bet at least minus a schedule) while preserving the criterion, and state the obstruction if not. (who: agent)
 - item-13: Execute item 13 per its deliverable shape and acceptance check: Scaffolding self-verification. (who: agent); decision: 2026-08-11--setup-scrub-reports-removed-root
 - item-130: State an intervention semantics for Robust Openness indexed by the accounted state (the docket, the ports and the accounts), producing for each state and concern the actual coverage data and the data under each declared intervention, and check the non-capture certificate against it. (who: agent)
 - item-131: Wire the ask-list deviation into the record's Counted as a dimension of the trace, as Consult2 wired the raise dimension, so that asking off the protocol is counted below D − ϖ by the record and not only flagged as a self-checkable clause beside it. (who: agent)
 - item-132: Find a settlement instantiation of the finite kernel that produces grade trust at some level η from the trajectory itself, or prove that none in the skeleton does, stating which quantity the grade would have to track. (who: agent)
-- item-133: State the robust reading of a warrant as a Form-level rule — a constraint on the model over the undefeated extensions of its anchor — give its compile to rows, and prove it agrees with settleForm where the extension set is settlement-generated. (who: agent); decision: open--exposure-rule-proposal; decision: 2026-11-07--conduct-binds-on-score-warrants-on-prices
+- item-133: State the robust reading of a warrant as a Form-level rule — a constraint on the model over the undefeated extensions of its anchor — give its compile to rows, and prove it agrees with settleForm where the extension set is settlement-generated. (who: agent); decision: open--exposure-rule-proposal; decision: 2026-11-07--conduct-binds-on-score-warrants-on-prices; round: projects/normativity/rounds/2026-11-08-content-recollection; decision: 2026-11-08--content-is-role-among-rows-expresses-demands-no-more
+- item-134: Attach a vocabulary change to the accounted state: a transition of the normative state carrying a coordinate map, the transport theorem for entitlement under stated hypotheses or its counterexample, the interpretation carrier a general translation needs, a defeasible form for a pulled-back row, and a procedure computing the image of a forced region. (who: agent); round: projects/normativity/rounds/2026-11-08-content-recollection; decision: 2026-11-08--vocabulary-change-is-translation-conservativity-criterion; decision: open--broken-commitment-bars-or-accounts; decision: 2026-11-09--forgetting-is-projection-settled-safe-live-not; decision: 2026-11-09--vocabulary-change-is-docket-occurrence-licence-and-challenge
+- item-135: Define the state a reasoner with bounded memory retains — the live docket, the specialized rows on unsettled coordinates, the holding on a finite universe of reason sets, the receipts of closed accounts — with the theorem that forced intervals and permissions computed from it equal those of the full record, a space bound or the fixture showing none, and the rule for a live coordinate. (who: agent); round: projects/normativity/rounds/2026-11-08-content-recollection; decision: 2026-11-09--forgetting-is-projection-settled-safe-live-not; decision: open--broken-commitment-bars-or-accounts
 - item-14: Continue ATTENTION item 14 (returned in wave 1) using wiki/faithful-acceleration-result.md and wiki/delay-and-visibility.md, not the June note dump's superseded ladder. (who: either); files: lean/Workspace/Deference/
 - item-15: Execute item 15 per its deliverable shape and acceptance check: Finite settlement classification, and the local delegation bridge. (who: agent)
 - item-16: Execute item 16 per its deliverable shape and acceptance check: The certificate inequality, derived. (who: agent)
@@ -4190,7 +4220,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - item-76: Execute ATTENTION item 76 on the deductive channel: a modulus as a property of the defect's dependence on the settled record, certifying the constant that ends the Sharp Timely Service bound. (who: agent)
 - item-77: Execute ATTENTION item 77: a theory of what licenses MayDispose, the route by which incurred content legitimately ceases to be owed without being answered. (who: agent); decision: 2026-09-02--grounds-unified-defeat-answerable-coalition-proof; decision: 2026-09-03--defeat-principle-adopted
 - item-78: Execute item 78 per its deliverable shape and acceptance check: Canonicalize the legitimacy spine from the consolidation. (who: agent); decision: 2026-09-08--legitimacy-normative-induction-phase-canonicalized
-- item-79: Execute item 79 per its deliverable shape and acceptance check: Convex representability and compiler completeness for a declared requirement class. (who: agent)
+- item-79: Execute item 79 per its deliverable shape and acceptance check: Convex representability and compiler completeness for a declared requirement class. (who: agent); round: projects/normativity/rounds/2026-11-08-content-recollection; decision: 2026-11-08--content-is-role-among-rows-expresses-demands-no-more
 - item-8: Characterize the doubly-soft weight class or find a separating instance, per ATTENTION item 8. (who: either); decision: 2026-08-12--deference-line-s-current-source-material
 - item-80: Execute item 80 per its deliverable shape and acceptance check: Affordable service on an adaptive docket. (who: agent)
 - item-81: Execute item 81 per its deliverable shape and acceptance check: A jointly compatible practical-response ecology. (who: agent)
@@ -4212,6 +4242,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - item-99: Execute item 99 per its deliverable shape and acceptance check: The allocation floor: delegation safety, allocation completeness, exact shortfall reporting, and the reach cone. (who: agent); decision: 2026-09-25--corrigibility-faithfulness-allocation-stated-landed-frame; decision: 2026-09-25--rubber-stamping-legitimate-non-hollowness-retracted
 - item-f1: Execute item F1 once the maintainers have specified it: Job names in prose, and root documents that classify into no layer. (who: either)
 - item-f10: Say in graph/PROTOCOL.md §2 or §5 what a research round files for itself on the map — a node of its own, or only the round pointers on its formal results and items — and have the checker or the render reflect the choice. (who: either)
+- item-f11: Add a gate that refuses a tracked living document carrying merge-conflict marker lines, with its null-input case, or say which existing gate is to see them. (who: either)
 - item-f2: Execute item F2 once the maintainers have specified it: The deference line has no claims registry — *closed*. (who: either); decision: 2026-09-02--post-merge-terminology-corrections-frozen-september
 - item-f3: Execute item F3 once the maintainers have specified it: A layer's theory is authoritative and its only code is in a disposable tree. (who: either); decision: 2026-09-02--grounds-unified-defeat-answerable-coalition-proof
 - item-f4: Execute item F4 once the maintainers have specified it: A pointer into a superseded source tree still resolves — *closed*. (who: either)
@@ -4304,6 +4335,9 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - maxmin.converse: round: projects/normativity/rounds/2026-08-18-maxmin-representation; work order: ATTENTION #50
 - maxmin.representation: round: projects/normativity/rounds/2026-08-18-maxmin-representation; work order: ATTENTION #50
 - member-selecting-rule-setting: Prove Proposition S for an arbitrary member-selecting rule. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Udt/UdtHarmonyBargain/
+- memory.live-forget-cost: round: projects/normativity/rounds/2026-11-08-content-recollection; work order: ATTENTION #135; decision: 2026-11-09--forgetting-is-projection-settled-safe-live-not
+- memory.schedule-slack: round: projects/normativity/rounds/2026-11-08-content-recollection; work order: ATTENTION #135; decision: 2026-11-09--forgetting-is-projection-settled-safe-live-not
+- memory.selective-forgetting: round: projects/normativity/rounds/2026-11-08-content-recollection; work order: ATTENTION #135; decision: 2026-11-09--forgetting-is-projection-settled-safe-live-not
 - mine-condensation-posts: Copy the two posts from LessWrong with their dates, and list each idea not already a node, beginning with the storage-retrieval trade-off, the interpretability uses, the computation gap, variable-cost symbols and transparency for grammar-like phenomena. (who: agent)
 - mixture-of-inductors-not-inductor: Produce the counterexample for generic pairs of inductors or prove the bounded-lag case. (who: agent)
 - mm-generalized-frames-in-li: Define the misaligned inductor expert (credence and utility both priced) and state delegation-Value for the novice, in the MM translation table or a page of its own. (who: agent)
@@ -4376,6 +4410,10 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - post.witness-same-level: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
 - post.witness-sole-authority: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
 - power-bounded-by-wisdom: Formalize the gameable-meter worry as a finite model in which a behavioural wisdom reading is a garbling the agent can steer, and test whether any self-enforceable cap survives. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-joint-process
+- precedent.assessor-sets-precedent: round: projects/normativity/rounds/2026-11-08-content-recollection; work order: ATTENTION #117; decision: 2026-11-09--holding-is-what-permission-reads-assessor-sets-case
+- precedent.permitted-iff-reach: round: projects/normativity/rounds/2026-11-08-content-recollection; work order: ATTENTION #117; decision: 2026-11-09--holding-is-what-permission-reads-assessor-sets-case
+- precedent.rationalizable-iff-acyclic: round: projects/normativity/rounds/2026-11-08-content-recollection; work order: ATTENTION #117; decision: 2026-11-08--precedent-read-off-record-constrains-docket
+- precedent.staircase-irredundant: round: projects/normativity/rounds/2026-11-08-content-recollection; work order: ATTENTION #117; decision: 2026-11-09--holding-is-what-permission-reads-assessor-sets-case
 - predication-dichotomy: Test the scout's finite book for the predication trilemma at FAF's LIA, so far exhibited only at the constant-half inductor over a dead process, to see whether predication plus retargeted retro-detection is Dutch-bookable at a real inductor. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Trust/LegitLiRegister/Predication.lean, projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Trust/LegitLiRegister/Witness.lean
 - principles-design-space-matrix: Write a page on the trust-principles design space as a matrix whose cells name the wiki page or clean-room declaration that settles each implication, with 'unknown' where none does. (who: agent)
 - probabilistic-payors-lemma: Read the published Payor's-lemma posts into one statement of the probabilistic lemma with its status, proved, flawed or open, and relate FAF's payor to it, as a note. (who: agent)
@@ -4426,6 +4464,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - route-reasons-items-54-58: Execute ATTENTION items 54 (defeater-uptake completeness), 56 (a citation discipline for Licensed and its transport), 57 (a checker for the applicability-in-source convention) and 58 (composition of the reason state with the record calculus), each per its deliverable shape. (who: agent); work order: ATTENTION #54; work order: ATTENTION #56; work order: ATTENTION #57; work order: ATTENTION #58; files: projects/normativity/legitimacy/
 - route-t3-second-decision: Build a sequential problem with a second legitimacy decision, extending the dynamic legitimacy-negatives package's timing beyond D6, and compute each objective's protection incentives over time. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/legit-neg-dynamic/
 - route-v1-second-channel: Search for an internal criterion that separates moving the human's never-settled endpoint toward something better from manipulation, through a second channel such as an influence map in the record (the note's section 8, item 7). (who: agent)
+- rows.incompatibility-entailment: round: projects/normativity/rounds/2026-11-08-content-recollection; work order: ATTENTION #118; decision: 2026-11-08--content-is-role-among-rows-expresses-demands-no-more
 - rules-certified-or-learned: Build a model of rule learning from legitimate-branch feedback, measuring A3's bias, as a fixture beside the static legitimacy-negatives package's cluster A. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/legit-neg-static/
 - same-concept-across-a-shift: For the concept-trajectory definition, state when a concept survives a shift (an equivalence exists) and when it deforms (an approximate correspondence with a Theorem 5.8-style bound), and relate the bound to the universally shared sub-algebra of superconditioning §7.2. (who: agent)
 - scoped-value-content-witness: Attack truthPrice_frequently_interior by the trader argument the round-3 audits sketch, in the clean room's DefArgmaxValue/Open.lean. (who: agent); open statement: `Cleanroom.Deference.DefArgmaxValue.truthPrice_frequently_interior`; files: projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Deference/DefArgmaxValue/Open.lean
@@ -4433,8 +4472,11 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - scoreside.same-question-two-realizations: round: projects/normativity/rounds/2026-11-07-score-side-binding; work order: ATTENTION #35; decision: 2026-11-07--conduct-binds-on-score-warrants-on-prices
 - secrecy-props-lean-checked: In one clean-room-style Lean file, check the first two clauses of secrecy-not-forbidden-by-criterion in a finite model with finitely many budgeted oracle traders, and state the third clause, on withholding policies, at the logical-induction register. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/
 - seed-theory: round: projects/normativity/seed/rounds/2026-09-16-seed-statics; round: projects/normativity/seed/rounds/2026-09-17-convergence-measure
+- seed.adapter-certificates-exist: round: projects/normativity/rounds/2026-11-08-content-recollection; work order: ATTENTION #118; decision: 2026-11-08--content-is-role-among-rows-expresses-demands-no-more
+- seed.bound-certified: round: projects/normativity/rounds/2026-11-08-content-recollection; work order: ATTENTION #118; decision: 2026-11-08--content-is-role-among-rows-expresses-demands-no-more
 - seed.eventually-const: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: ATTENTION #117
 - seed.forced-interval-bounds: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: ATTENTION #39
+- seed.forced-interval-rational: round: projects/normativity/rounds/2026-11-08-content-recollection; work order: ATTENTION #118; decision: 2026-11-08--content-is-role-among-rows-expresses-demands-no-more
 - seed.forced-interval-spec: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: ATTENTION #39
 - seed.independence-strict: round: projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end; work order: ATTENTION #117
 - self-aixi-eps-exploration-route: Read Kim and Lee and write a one-page comparison of the hypotheses of their exploration route, Wyeth's oracle route and the floor of Theorem C. (who: agent)
@@ -5031,6 +5073,22 @@ The outside option and the undescribed failure, each a cases node over the outco
 | conditioning-manages-news.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 1 |
 | conditioning-manages-news.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
 | constructiveness-favors-li | leaf/assumption | 2 (both) | AI number | open | 0 | 2 |
+| content.conservative-iff-image.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| content.conservative-iff-image.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| content.conservative-iff-image | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
+| content.conservative-iff-image.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| content.forget-region-is-projection.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| content.forget-region-is-projection.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| content.forget-region-is-projection | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
+| content.forget-region-is-projection.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| content.forget-settled.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| content.forget-settled.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| content.forget-settled | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
+| content.forget-settled.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| content.licensed-no-challenge.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| content.licensed-no-challenge.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| content.licensed-no-challenge | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
+| content.licensed-no-challenge.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | convergence.discord-pairwise.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
 | convergence.discord-pairwise.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
 | convergence.discord-pairwise | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
@@ -5311,6 +5369,18 @@ The outside option and the undescribed failure, each a cases node over the outco
 | exposure.harvest-bound.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
 | exposure.harvest-bound | and | 2 (both) | held by deference-finite-results, hypotheses unread | open | 0 | 0 (informs no goal) |
 | exposure.harvest-bound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| expresses.entitlement-discriminates.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| expresses.entitlement-discriminates.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| expresses.entitlement-discriminates | and | 2 (both) | held by normative-inductor, hypotheses unread | open | 0 | 0 (informs no goal) |
+| expresses.entitlement-discriminates.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| expresses.kept-row-demands-no-more.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| expresses.kept-row-demands-no-more.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| expresses.kept-row-demands-no-more | and | 2 (both) | held by normative-inductor, hypotheses unread | open | 0 | 0 (informs no goal) |
+| expresses.kept-row-demands-no-more.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| expresses.plain-row-demands-more.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| expresses.plain-row-demands-more.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| expresses.plain-row-demands-more | and | 2 (both) | held by normative-inductor, hypotheses unread | open | 0 | 0 (informs no goal) |
+| expresses.plain-row-demands-more.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | fa-inductor-half | leaf/question | 2 (both) | AI number | open | 1 | 1 |
 | fa-ledger-access-l | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
 | fa-one-way-visibility | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
@@ -5572,6 +5642,8 @@ The outside option and the undescribed failure, each a cases node over the outco
 | item-131 | leaf/route | 2 (both) | given effective-authority-layer@valid, given: conditionals not judged, no belief | open | 0 | 2 |
 | item-132 | leaf/route | 2 (both) | given local-delegation-bridge@valid, given: conditionals not judged, no belief | open | 0 | 2 |
 | item-133 | leaf/task | 2 (both) | held by normative-inductor, no belief | open | 0 | 0 (informs no goal) |
+| item-134 | leaf/task | 2 (both) | held by normative-inductor, no belief | open | 0 | 0 (informs no goal) |
+| item-135 | leaf/task | 2 (both) | held by seed-theory, no belief | open | 0 | 0 (informs no goal) |
 | item-14 | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | item-15 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
 | item-16 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
@@ -5665,6 +5737,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | item-99 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
 | item-f1 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
 | item-f10 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
+| item-f11 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
 | item-f2 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
 | item-f3 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
 | item-f4 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
@@ -6074,6 +6147,18 @@ The outside option and the undescribed failure, each a cases node over the outco
 | maxmin.representation.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | meaning-and-agency-vingean-optimization | leaf/question | 2 (both) | AI number, given vingean-definitions-reconciled | open | 0 | 1 |
 | member-selecting-rule-setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
+| memory.live-forget-cost.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| memory.live-forget-cost.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| memory.live-forget-cost | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
+| memory.live-forget-cost.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| memory.schedule-slack.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| memory.schedule-slack.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| memory.schedule-slack | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
+| memory.schedule-slack.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| memory.selective-forgetting.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| memory.selective-forgetting.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| memory.selective-forgetting | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
+| memory.selective-forgetting.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | mine-condensation-posts | leaf/task | 2 (both) | AI number, given own-posts-as-todos, no belief | open | 0 | 2 |
 | misreport-induces-action | leaf/assumption | 2 (both) | AI number | open | 1 | 2 |
 | mixture-of-inductors-not-inductor | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
@@ -6447,6 +6532,22 @@ The outside option and the undescribed failure, each a cases node over the outco
 | post.witness-sole-authority | and | 2 (both) | held by public-corrigibility-line, hypotheses unread | open | 0 | 0 (informs no goal) |
 | post.witness-sole-authority.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | power-bounded-by-wisdom | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
+| precedent.assessor-sets-precedent.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| precedent.assessor-sets-precedent.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| precedent.assessor-sets-precedent | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
+| precedent.assessor-sets-precedent.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| precedent.permitted-iff-reach.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| precedent.permitted-iff-reach.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| precedent.permitted-iff-reach | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
+| precedent.permitted-iff-reach.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| precedent.rationalizable-iff-acyclic.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| precedent.rationalizable-iff-acyclic.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| precedent.rationalizable-iff-acyclic | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
+| precedent.rationalizable-iff-acyclic.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| precedent.staircase-irredundant.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| precedent.staircase-irredundant.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| precedent.staircase-irredundant | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
+| precedent.staircase-irredundant.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | predication-dichotomy | leaf/step | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
 | predictor-counterfactual-referent | or | 2 (both) |  | open | 1 | 1 |
 | press-is-evidence | leaf/step | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
@@ -6648,6 +6749,10 @@ The outside option and the undescribed failure, each a cases node over the outco
 | route-v1-timely-fragment-certificate | leaf/step | 2 (both) | AI number, given idleness-on-G-with-certificate | open | 0 | 2 |
 | route-vingean-condensation-of-outcome | leaf/route | 2 (both) | AI number, given vingean-as-blackwell-dominance, no belief | open | 0 | 2 |
 | route-vingean-menu-robust | leaf/route | 2 (both) | AI number, given vingean-as-blackwell-dominance, no belief | open | 0 | 2 |
+| rows.incompatibility-entailment.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| rows.incompatibility-entailment.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| rows.incompatibility-entailment | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
+| rows.incompatibility-entailment.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | rs-captor-service | leaf/step | 2 (both) | AI number, given kernel-restoration@valid, interval not a bound (negative evidential edge) | open | 1 | 1 |
 | rs-illegitimate-world-incaution | leaf/step | 2 (both) | AI number, given legit-branch-evaluators-defense, interval not a bound (negative evidential edge) | open | 1 | 1 |
 | rs-invasive-channel-improvement | leaf/step | 2 (both) | AI number, given crux-legitimacy-anchor, interval not a bound (negative evidential edge) | open | 1 | 1 |
@@ -6677,7 +6782,15 @@ The outside option and the undescribed failure, each a cases node over the outco
 | scoreside.same-question-two-realizations.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | secrecy-not-forbidden-by-criterion | leaf/step | 2 (both) | AI number, given secrecy-props-lean-checked, no belief | open | 1 | 1 |
 | secrecy-props-lean-checked | leaf/task | 2 (both) | AI number | open | 0 | 1 |
-| seed-theory | frame | 2 (both) | owner has not confirmed (drafted from wiki/Seed-Theory.md), spelled; nothing yet a goal (16 held) | open | 1 | 0 (informs no goal) |
+| seed-theory | frame | 2 (both) | owner has not confirmed (drafted from wiki/Seed-Theory.md), spelled; nothing yet a goal (32 held) | open | 1 | 0 (informs no goal) |
+| seed.adapter-certificates-exist.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| seed.adapter-certificates-exist.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| seed.adapter-certificates-exist | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
+| seed.adapter-certificates-exist.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| seed.bound-certified.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| seed.bound-certified.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| seed.bound-certified | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
+| seed.bound-certified.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | seed.eventually-const.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
 | seed.eventually-const.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
 | seed.eventually-const | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
@@ -6686,6 +6799,10 @@ The outside option and the undescribed failure, each a cases node over the outco
 | seed.forced-interval-bounds.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
 | seed.forced-interval-bounds | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
 | seed.forced-interval-bounds.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| seed.forced-interval-rational.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| seed.forced-interval-rational.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| seed.forced-interval-rational | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
+| seed.forced-interval-rational.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | seed.forced-interval-spec.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
 | seed.forced-interval-spec.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
 | seed.forced-interval-spec | and | 2 (both) | held by seed-theory, hypotheses unread | open | 0 | 0 (informs no goal) |
@@ -7190,4 +7307,4 @@ The outside option and the undescribed failure, each a cases node over the outco
 | wirehead-iff-finite.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 1 |
 | wirehead-iff-finite.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 1 |
 | worlds-and-points-companion | leaf/question | 2 (both) | AI number | open | 0 | 8 |
-<!-- generated_hash: e293f50cc38ef6489896bc9d -->
+<!-- generated_hash: 6406f9395c2c16e91ae9993d -->

@@ -40,6 +40,35 @@ maintainer's.
 below.** The next round dispatched from that conversation lands it as its first
 commit.
 
+- **Does a broken commitment bar a change, or is it accounted? (2026-11-08).**  A broken
+  commitment is an old row the old region forced whose pullback the new region does not
+  (`Recollection.Broken`); none is broken iff the new region pushes forward into the old
+  (`no_broken_iff`).  What the program does with one is not said.  Three readings are
+  implemented as predicates (`VocabularyAct.Bars`, `Accounted`, `Split`) and none is adopted:
+  *bars* — a legitimate change breaks nothing (refinement, beside Integrity's conservation);
+  *accounted* — a change may break a commitment provided the break is recorded and its loss
+  charged as slack; *the split* — a commitment whose obligation is live bars, any other is
+  accounted.  Each reading's verdict on one commitment is a function of its charge, the largest
+  excess of its pullback over the new region (`readings_of_charge`):
+
+  | fixture | charge | bars | accounted | split, obligation live | split, not live |
+  |---|---|---|---|---|---|
+  | split: `P(S) ≥ 1/2` against `P(S₁) ≥ 1/5`, `P(S₂) ≥ 1/5` | `1/10` | refuses | admits, charges `1/10` | refuses | admits, charges `1/10` |
+  | abandonment: `P(S) ≥ 9/10` along the mixing map | `13/20`, and at least `3/20` at every credence | refuses, whatever the new credences | admits, charges `13/20` | refuses | admits, charges `13/20` |
+  | `P(X∧Y) ≥ 3/4 · P(X)` with `X` unsettled; `X` dropped, retold as a fair coin | `3/8` | refuses | admits, charges `3/8` | refuses | admits, charges `3/8` |
+  | the same; `X` dropped, retold as false | `0` | admits | admits, no charge | admits | admits |
+
+  In the last row nothing is broken, and all three readings admit the change at no charge
+  (`zero_admitted`), though the obligation is shed: once `X` settles true the full record forces
+  `P(Y) ≥ 3/4` (`Forgetting.live_forget_cost`) and the pin `P(X) ≥ 1` is broken at every new
+  credence, charged `1` (`zero_pin_charge`; `1/2` under the fair coin, `half_pin_charge`).  A
+  reading applied once, when the change is made, does not see this; a challenge that stays open
+  as the record grows does (`VocabularyAct.challenge_complete`).  *Turns on:* the reading under
+  test — whether a later stage that drops an earlier commitment and says so has recollected it —
+  and what the program's account of error is to be; and, for the split, what makes an obligation
+  live across a change of vocabulary, which the docket does not record.  None is a theorem's.
+  <!-- decision: open--broken-commitment-bars-or-accounts; touches: item:134, item:135; status: open -->
+
 - **The exposure rule (2026-11-07).**  The score-side-binding round states, as a proposal on
   `wiki/Normativity.md`, that a constraint is enforceable only if some settlement or assessment
   could show it wrong, or the reasoner authored it; its fixtures sort the October rows as
@@ -7128,7 +7157,85 @@ entitles nothing (`reallocated_entitles_nothing`).  Rejected alternative: admiss
 account's receipts (item 128's clause (b)), which stays open; the allocation is what the
 authority module already supplies.  `Expresses` remains typed.
 
-<<<<<<< HEAD
+### 2026-11-08 — digests are maintenance; the sweep and the freshness audit run daily
+<!-- decision: 2026-11-08--digests-are-maintenance-sweep-and-audit-daily; touches: AGENTS.md, prompts/2026-11-05-standing-maintenance/PROMPT.md, .github/workflows/freshness.yml, tests/freshness.py, site/README.md, state/prs.json -->
+
+**Maintainer ruling, taken in conversation on 2026-11-08** ("can you do a separate pr to
+write digests 133-140 and also make that part of the automatic maintenance process? and
+maybe make automatic maintenance daily"): the digest of a merged pull request in
+`state/prs.json` is maintenance. The standing sweep writes every digest the freshness
+audit reports missing, and the sweep runs daily. This settles the cadence the 2026-11-05
+round queued; its suggestion of weekly is the rejected alternative, the site's merged-work
+lists having fallen six pull requests behind in ten days.
+
+A trust-chain change rides with it: `.github/workflows/freshness.yml` runs the audit daily
+instead of weekly, and its reporter comments on the standing issue only when the findings
+differ from its last report there, so a finding that waits on a merge is filed once and
+not once a day. The reporter's triggers, guard and scope are unchanged.
+
+Agent-decided, reversible, each with its rejected alternative. **An empty day makes no
+round and opens no pull request** — against a daily record of nothing, which would put a
+pull request on the review queue every day to say so. **No sweep starts while an earlier
+sweep's pull request is open** — against stacking, since the merge is the human input
+point and a second sweep would redo what the first is waiting to land. **A sweep's pull
+request carries its own digest, dated the day it opens**, and a round's does likewise —
+against leaving it to the next sweep, which would make every sweep the cause of another.
+**The daily trigger is a job on the maintainer's machine**, not a workflow — CI holds no
+credential and cannot run an agent, and the job starts one only after a check with `gh`
+and `git` finds a missing digest or a changed *Workspace friction* section.
+
+### 2026-11-08 — content is role among rational rows: incompatibility is a valid conflict, entailment is certificate entailment, and `Expresses` is *demands no more* against the robust reading
+<!-- decision: 2026-11-08--content-is-role-among-rows-expresses-demands-no-more; touches: item:118, item:128, item:113, item:133, item:79, claim:rows.incompatibility-entailment, claim:seed.bound-certified, claim:seed.forced-interval-rational, claim:expresses.kept-row-demands-no-more, claim:expresses.entitlement-discriminates, claim:expresses.plain-row-demands-more, claim:seed.adapter-certificates-exist -->
+
+**Agent-decided, reversible** (the content-recollection round).  (1) The content of a row is
+its incompatibility role: what it rules out, as valid conflicts of the compiler
+(`IncompatibilitySemantics.Incompatible`), which is exactly infeasibility in the cube; the
+entailment this induces is certificate entailment (`incEntails_iff_certEntails`).  A leverage
+form has a role only among rows: restricted to form contexts the relation is total
+(`formIncEntails_total`).  (2) The duality is read in from the pinned `EconCSLib`
+(`theorem_of_alternative`, `farkas_lemma`) by `RowAlternative.lean`, the first `Workspace`
+import of that dependency; no pin changes.  Rejected alternative: tracking multipliers
+through the repository's own `FourierMotzkin`, which states satisfaction over the reals and
+would still need the descent to the rationals.  (3) Both theorems item 118 asks for are
+registered (`seed.bound-certified`, `seed.forced-interval-rational`); the item's status stays
+the maintainer's word.  (4) `Expresses` is taken in the weaker of two strengths: the form's
+content, read under the rebuttal rule, *demands no more* than the anchored requirement, a
+defeasible warrant denoting the models of `RobustWarrant.Robust`
+(`ExpressesByRole.ExpressesNoMore ι settled`).  Rejected alternative: the same-role strength
+(`ExpressesSame`), which is defined, fails for a weaker row and is not proved for the exact
+row.  The interpretation of coordinates as events and the undefeated extensions stay declared
+inputs; M1, M2 and the entitlement liveness reading are not reopened.
+
+### 2026-11-08 — a vocabulary change is a translation of rows, and conservativity on the old fragment is its criterion
+<!-- decision: 2026-11-08--vocabulary-change-is-translation-conservativity-criterion; touches: item:134, item:122, claim:content.conservative-iff-image -->
+
+**Agent-decided, reversible** (the content-recollection round).  A vocabulary change is given
+by a translation — each old coordinate a rational linear form in the new ones
+(`Conservativity.Translation`) — of which a coordinate map is the `0/1` case and a stochastic
+map between world spaces the case on world-distribution coordinates (`Recollection`).  Old
+rows pull back; the change *refines* when the image of the new region lies in the old, *adds
+nothing* when the old lies in the image, and is *conservative* when they are equal
+(`conservative_iff`).  Rejected alternative: stating the criterion for coordinate embeddings
+only, as the dispatch worded it, which would have needed a second theorem for the stochastic
+map.  Item 134 is filed for what is missing: the translation attached to the accounted state.
+Matter 3's declarations are listed and not registered.  What a broken commitment does to a
+change is queued, not decided.
+
+### 2026-11-08 — precedent is read off the record as cases and constrains the docket; it is registered against item 117
+<!-- decision: 2026-11-08--precedent-read-off-record-constrains-docket; touches: item:117, claim:precedent.rationalizable-iff-acyclic -->
+
+**Agent-decided, reversible** (the content-recollection round).  The precedent constraint is
+modelled on the record's own objects: a case is what `Grounds.survivors` and `undercut`
+return under a docket (`PrecedentConstraint.caseOf`), reasons are leverage forms compared by
+kind and strength, and a continuation is permitted when one strict order on reasons still
+rationalizes the case base, which is that the graph on its cases has no cycle
+(`rationalizable_iff_acyclic`).  The pairwise check alone is weaker: three cases in a cycle
+pass it (`cycle_not_rationalizable`).  It is registered against item 117, the filed request for a
+precedent object on the docket, which the dispatch's candidate list did not name.  Rejected
+alternative: a new item for the missing decision occurrence; item 117 already asks for the
+docket object, and the gap is recorded there.  The reading of every undercut as an
+outweighing is the model's and is not adopted as the program's.
+
 ### 2026-11-09 — the site signs readers in with GitHub
 <!-- decision: 2026-11-09--github-sign-in; touches: site/, infra/github-login-relay/, state/site_auth.json -->
 
@@ -7157,31 +7264,65 @@ handle needs no minting, only admission to `policy.yaml`. Design-log lines and c
 round records keep the spelling they were written with, as history. AI handles stay the
 model's slug. The sign-in dialog is the device flow alone, its code shown large as
 GitHub expects it typed.
-=======
-### 2026-11-08 — digests are maintenance; the sweep and the freshness audit run daily
-<!-- decision: 2026-11-08--digests-are-maintenance-sweep-and-audit-daily; touches: AGENTS.md, prompts/2026-11-05-standing-maintenance/PROMPT.md, .github/workflows/freshness.yml, tests/freshness.py, site/README.md, state/prs.json -->
 
-**Maintainer ruling, taken in conversation on 2026-11-08** ("can you do a separate pr to
-write digests 133-140 and also make that part of the automatic maintenance process? and
-maybe make automatic maintenance daily"): the digest of a merged pull request in
-`state/prs.json` is maintenance. The standing sweep writes every digest the freshness
-audit reports missing, and the sweep runs daily. This settles the cadence the 2026-11-05
-round queued; its suggestion of weekly is the rejected alternative, the site's merged-work
-lists having fallen six pull requests behind in ten days.
+### 2026-11-09 — the holding of a case base is the transitive closure of its decisions; permission reads its reach; the case of an assessed act is set by the assessor
+<!-- decision: 2026-11-09--holding-is-what-permission-reads-assessor-sets-case; touches: item:117, item:119, claim:precedent.permitted-iff-reach, claim:precedent.staircase-irredundant, claim:precedent.assessor-sets-precedent -->
 
-A trust-chain change rides with it: `.github/workflows/freshness.yml` runs the audit daily
-instead of weekly, and its reporter comments on the standing issue only when the findings
-differ from its last report there, so a finding that waits on a merge is filed once and
-not once a day. The reporter's triggers, guard and scope are unchanged.
+**Agent-decided, reversible** (the content-recollection round's follow-up).  The holding of a
+case base is the transitive closure of `PrecedentConstraint.Dominates` on reason sets
+(`PrecedentHolding.Holding`), and its reach adds covering (`Reach`).  A continuation is
+permitted iff the base is rationalizable and the reach does not put its losers at or above its
+winners (`permitted_iff`); the holding after a continuation is computed from the holding before
+it and the case (`holding_cons`), so a reasoner may keep the holding and forget the cases.  Its
+finiteness is adopted with a finite set of forms as the hypothesis: over the canonical reason
+sets drawn from it, at most `2 ^ |Φ|`, the holding and permission are eventually constant
+(`holding_eventually_const_of_finite_forms`, `permission_eventually_const_of_finite_forms`),
+with no bound on the stage or on a representation's size; the reading on which the kinds of
+reasons alone give a finite representation is refuted (`stairs_holding_injective`: `n`
+strengths over one pair of kinds carry a different holding for each set of steps).  The decision object the first pass found missing is an
+assessed act — grounds, surviving grounds against, the assessor's verdict fixing which side won
+(`AssessedConduct.AssessedAct`) — defined beside the docket, with `ofCertificate` the adapter
+from `DecisionComponent.ActCertificate` at `Ent := Form d`.  Rejected alternatives: `Dominates`
+itself as the holding, which is sufficient as well and is not closed under composition, so
+continuation and merging would each have to close it again; registering merged discord against
+item 119, which asks for a measure on regions where this result is on orders.  The entry type
+`Form d` and the reading of an adequate verdict as *the grounds prevailed* are the model's and
+are not adopted as the program's.
 
-Agent-decided, reversible, each with its rejected alternative. **An empty day makes no
-round and opens no pull request** — against a daily record of nothing, which would put a
-pull request on the review queue every day to say so. **No sweep starts while an earlier
-sweep's pull request is open** — against stacking, since the merge is the human input
-point and a second sweep would redo what the first is waiting to land. **A sweep's pull
-request carries its own digest, dated the day it opens**, and a round's does likewise —
-against leaving it to the next sweep, which would make every sweep the cause of another.
-**The daily trigger is a job on the maintainer's machine**, not a workflow — CI holds no
-credential and cannot run an agent, and the job starts one only after a check with `gh`
-and `git` finds a missing digest or a changed *Workspace friction* section.
->>>>>>> origin/main
+### 2026-11-09 — forgetting a coordinate is projection, computed by elimination; a settled coordinate is safe to forget and an unsettled one is not; item 135 is filed
+<!-- decision: 2026-11-09--forgetting-is-projection-settled-safe-live-not; touches: item:134, item:135, claim:content.forget-region-is-projection, claim:content.forget-settled, claim:memory.live-forget-cost, claim:memory.schedule-slack, claim:memory.selective-forgetting -->
+
+**Agent-decided, reversible** (the content-recollection round's follow-up).  Forgetting a
+coordinate of a bundle is the projection of its region along the coordinate map that drops it,
+computed by one step of `FourierMotzkin.elim` — the step `SeedStatics.project` iterates — with
+the coordinate moved last (`Forgetting.forget`, `forget_region`).  It is exact and conservative
+on the retained fragment.  A settled coordinate may be forgotten (`forget_settled`); forgetting an
+unsettled one can cost the response to its later settlement (`live_forget_cost`); loss relative
+to a reference schedule, a difference on a set of worlds at each step, composes as slack
+(`schedule_slack`); and
+the choice of what to drop is a means of steering (`selective_forgetting`).  Item 135 is filed
+for the retained state as an object, which no filed item asks for; the five forgetting
+registrations divide between it and item 134, clause (d).  Rejected alternatives: an
+elimination on rows proved afresh over `ℚ`, which would not have connected the step
+`SeedStatics.project` uses; registering every forgetting result against item 134, whose
+subject is a vocabulary change on the accounted state and not what a reasoner retains.
+
+### 2026-11-09 — a vocabulary change is a docket occurrence with a refinement licence on a declared fragment and a decidable challenge
+<!-- decision: 2026-11-09--vocabulary-change-is-docket-occurrence-licence-and-challenge; touches: item:134, claim:content.licensed-no-challenge -->
+
+**Agent-decided, reversible** (the content-recollection round's follow-up).  A vocabulary
+change is filed as an occurrence carrying its owner, the translation, the old and new
+commitments and a declared protected fragment (`VocabularyAct.VocabularyChange`).  Its licence
+is a refinement certificate on the fragment — an entailment certificate of the pullback of each
+protected row and old cube row (`Licensed`, `licensed_iff_refines`), which reads neither the old
+commitments nor the owner; `FragmentOfOld` ties the fragment to the old commitments — and its
+challenge a
+broken-commitment witness as data with decidable validity (`Challenge`, `Challenge.Valid`); a
+licensed change admits no valid challenge on the fragment and an unlicensed one admits one
+(`licensed_no_challenge`, `unlicensed_has_challenge`).  Rejected alternatives: a licence
+carrying a conservativity certificate for every translation — adding nothing has a finite
+certificate only where the image is computed, which is proved for one added coordinate
+(`addsNothing_certified`); an owner typed by the authority module's holders — that module
+allocates matters and names none for vocabulary, so who may issue a change is recorded as not
+determined.  What a broken commitment does to a change stays queued: the three readings are
+predicates beside the occurrence and none is its admission rule.

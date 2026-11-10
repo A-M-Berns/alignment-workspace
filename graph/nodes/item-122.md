@@ -9,6 +9,7 @@ title: "The transport's negated-form drop"
 section: "Deference line — second wave"
 maintainer_order: 115
 difficulty: "entry"
+heading_notes: " — *narrowed 2026-11-08: the Lean half is landed in a general form — `Conservativity.pull` along `Translation.ofMap ρ` is the branch's `transport ρ`, exact on rows (`pull_ofMap_sat_iff`), and `mapForm` relabels the three leverage forms; the fixture code's negated-form drop and the convergence round's pull-back fixtures remain*"
 project: normativity.seed
 dispatchable: true
 item_status: open
@@ -17,6 +18,8 @@ acceptance: "`python3 tests/run.py` green in both seed rounds; Lean green."
 context: ["projects/normativity/seed/rounds/2026-09-16-seed-statics/src/seed.py", "projects/normativity/seed/rounds/2026-09-17-convergence-measure/REPORT.md"]
 work:
   - {kind: decision, ref: 2026-10-22--survivors-grounded-fixed-point-defeaters-shared}
+  - {kind: round, ref: projects/normativity/rounds/2026-11-08-content-recollection}
+  - {kind: decision, ref: 2026-11-08--vocabulary-change-is-translation-conservativity-criterion}
 author: "@smithy-verity"
 size: S
 size_reason: "one item entry of 104 words"
