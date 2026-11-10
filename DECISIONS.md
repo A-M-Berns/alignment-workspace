@@ -512,6 +512,17 @@ commit.
   of the lines by their owners.
   <!-- decision: open--what-walk-found-map-lacked; touches: node:traderized-finite-date-conformance, node:effective-authority-layer, node:verdict-licence-chain, node:legitimacy-meets-syntax; status: open -->
 
+- **Does the faithful-adviser standard, or only the arm's-length one, bind a corrigible adviser?
+  (2026-11-10).**  Fair persuasion driven by the adviser's own agenda — T6, licensed drift with
+  an agenda, ruled legitimate for the first pass — passes the steering follow-up's arm's-length
+  standard and is `steered` under its faithful-adviser standard, and so are B4, B6, T2 and T8
+  (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/DIVERGENCES.md`).  Both standards are computed and neither is adopted.  *Turns
+  on:* what relationship the program intends between a corrigible adviser and its principal — a
+  party dealing at arm's length, or a fiduciary whose own aim may not drive what the principal
+  receives.  The survey finds the law switching between the two on the relationship and not on
+  the influence (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/PRIOR_WORK.md` §10); the account does not represent the
+  relationship, and where the program is going on it is the maintainer's knowledge.
+
 ## Settled
 
 ### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer
@@ -7408,3 +7419,23 @@ runner reports that; under the free vocabulary B4, B6 and T7 convict and B1, T7 
 acquit. Rejected alternative: ablation under the house individuation only, which reports W
 unforced and turns the runner red on a clause the prompt prosecutes by §5c rather than
 §5a.
+
+### 2026-11-10 — the steering follow-up's stipulations: `U := V`, order is not content, the adviser absent as baseline
+<!-- decision: 2026-11-10--steering-follow-up-stipulations; touches: item:136, item:138, item:139, node:legitimacy -->
+
+**Agent-decided, reversible** (the follow-up to the legitimacy definition prosecution round,
+`prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup.md`). Three stipulations
+the steering account's definitions had to fix before its bank, each where another reading
+changes a verdict. (1) The first pass's objects carry no adviser aim, so the aim is whatever
+distinguishes one policy of the class from another, `U := V`. Under it the faithful-adviser
+standard convicts B4, B6, T2 and T8. Rejected alternative: assigning each case's policies to
+aims by hand, which is a per-case choice of `U` and is what the follow-up's renaming test
+counts against the account. Item 139 asks for the aim as an object. (2) A belief part that
+differs between two policies applying the same contents is not working: order is not content.
+Under it T7 and N9 are `steered` under the arm's-length standard. Rejected alternative: the
+anchor as her own processing of what she received, under which both compute `passes`. (3)
+Attainable value is compared with the adviser absent. Rejected alternative: the class's
+honest policy as baseline, under which a liar's `ΔAV` is measured against being told the truth
+and N3 no longer shows a lie raising her value. Also decided: the entries of items 136 and 138 are
+extended with what the follow-up computed, their Statements unchanged, and the AI handle `@claude-fable-5-2` is added to
+`graph/policy.yaml` as item 139's author.

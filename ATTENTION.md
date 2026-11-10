@@ -1420,9 +1420,15 @@ round's finite objects, and for each either an equivalence to the pairwise form 
 the fixture separating them — in particular whether the replay form is the sufficiency form, and
 what it says of T2, where the accepted option is licensed content.
 
+The round's steering follow-up computed the replay form against L1, L0–L3 ∧ W and its two
+standards over 38 variants (`steering/THEOREMS.md`, C5 and C6): the replay form is comparable
+with none of them, and it fails on a write the principal authorized in advance (N5), which is
+not in `L`. Wanted in addition: whether an authorized write belongs in the licensed trace, and
+the replay form restated accordingly.
+
 *Deliverable shape:* `test-supported` at the ceiling — one module per form in the prosecution round's layout, each claimed equivalence a pointwise check over the frozen bank and each separation a named case; a Lean port is a later item.
 *Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with the forms' modules wired in; every equivalence checked pointwise over the bank, every separation a banked case.
-*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CASE_BANK.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/fixture/audits.py` (the replay form), the prompt's §6.
+*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CASE_BANK.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/fixture/audits.py` (the replay form), the prompt's §6, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/THEOREMS.md` (C5, C6).
 
 ### 137. Consumer lemmas: what the trust interface and the corrigibility slot consume from L0–L3 ∧ W — **[substantial]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
@@ -1457,9 +1463,38 @@ executable predicate, independent of L0–L3 ∧ W in both directions on an exte
 fails it and passes the definition; a named case passes it and fails the definition), with its
 own verdicts pre-registered before the code.
 
+The round's steering follow-up tried one such condition (`steering/THEOREMS.md`, C8): everything
+the advisor does is the same for every policy of the class. With writes `Z` does not read set
+aside it fails on T12 and on no other case whose protected trace is the same across the class.
+It registers that the complier's outputs differ, not that what differs is the giving of
+grounds: an advisor adding a remark the principal does not take up fails it the same way. The
+wanted condition separates T12 from that advisor.
+
 *Deliverable shape:* `test-supported` — one executable predicate module in the prosecution round's layout, a bank extension with pre-registered verdicts frozen before the code and a cited source per case, and the independence from L0–L3 ∧ W exhibited in both directions.
-*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with the condition wired in; T12 fails the condition and passes the definition; a named case passes the condition and fails the definition.
-*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CASE_BANK.md` (T12), the prompt's §3.
+*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with the condition wired in; T12 fails the condition and passes the definition; a named case passes the condition and fails the definition; a named case whose advisor's outputs differ across the class with no loss of grounds passes the condition.
+*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CASE_BANK.md` (T12), the prompt's §3, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/THEOREMS.md` (C8).
+
+### 139. The adviser's aim as an object of the fixture: the steering standards without U := V — **[substantial]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The steering follow-up of the prosecution round tests an account on which a protected part of
+the principal is *steered* when its value varies with the adviser's own aim. The first pass's
+objects carry no aim, so the follow-up takes `U := V`: whatever distinguishes one policy of a
+class from another stands for the aim. Two consequences are recorded in
+`steering/DIVERGENCES.md` and `steering/PER_CASE_CHOICES.md`. The faithful-adviser standard
+convicts every case in which one adviser of the class says or offers something another does not
+and it reaches her — B4, B6, T2, T8 — so it cannot tell two honest advisers who differ from one
+adviser whose content depends on its aim. And *working* for the belief part treats order of
+delivery by comparing policies of the class (clause (iv) of `steering/DEFINITIONS.md` §1.3), so
+a principal whom order moves counts as working whenever her class holds a single ordering (N10).
+Wanted: the adviser's aim as a variable of the fixture, with each adviser a map from aims to
+policies and *steered* read as variation along that map; a test of order-sensitivity that does
+not depend on which other policies the class contains; and both standards recomputed over the
+thirty-three cases with predictions frozen before the code.
+
+*Deliverable shape:* `test-supported` — the prosecution round's fixture extended with an adviser-aim variable and, per adviser, a map from aims to policies; both steering standards recomputed over all thirty-three cases, predictions frozen before the code.
+*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with the extension wired in; B6 is acquitted under the faithful-adviser standard while N8 stays `steered`; N10's verdicts are computed without reference to a second ordering.
+*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/DEFINITIONS.md` (§1.1, §1.3), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/DIVERGENCES.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/THEOREMS.md` (C5, C6), the follow-up prompt.
 
 ## Deference line
 Context for all three: `projects/deference/note-dump-2026-08-11/`, in particular

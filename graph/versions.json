@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "d14415d5c7f47b0926629429",
-  "index.json": "07ee2110b05fec98f65b3450"
+  "derived.json": "9457cd38f6a90e27b690dd93",
+  "index.json": "98a6c6f0b92481a7138ba8eb"
  },
- "generated_hash": "fcadb703a1a6f36e6d367694",
+ "generated_hash": "b8352c6023ffb36e1c0521ff",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -8865,6 +8865,13 @@
    {
     "date": "2026-11-10",
     "normalized": "item 138 an advisor respect condition what t12 delimits is delivered in the shape its entry states test supported one executable predicate module in the prosecution rounds layout a bank extension with pre registered verdicts frozen before the code and a cited source per case and the independence from l0 l3 w exhibited in both directions",
+    "version": 1
+   }
+  ],
+  "item-139": [
+   {
+    "date": "2026-11-10",
+    "normalized": "item 139 the advisers aim as an object of the fixture the steering standards without u v is delivered in the shape its entry states test supported the prosecution rounds fixture extended with an adviser aim variable and per adviser a map from aims to policies both steering standards recomputed over all thirty three cases predictions frozen before the code",
     "version": 1
    }
   ],

@@ -18,7 +18,8 @@ acceptance: "`python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11
 work:
   - {kind: round, ref: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution}
   - {kind: decision, ref: 2026-11-10--legitimacy-prosecution-readings}
-context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CASE_BANK.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/fixture/audits.py", "prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT.md"]
+  - {kind: decision, ref: 2026-11-10--steering-follow-up-stipulations}
+context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CASE_BANK.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/fixture/audits.py", "prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/THEOREMS.md"]
 author: "@smithy-verity"
 size: M
 size_reason: "one item entry, one fixture of context"
@@ -28,7 +29,7 @@ version: 1
 Item 136, The equivalence forms of factorization: sufficiency, betting, offers-only, is delivered in the shape its entry states: `test-supported` at the ceiling — one module per form in the prosecution round's layout, each claimed equivalence a pointwise check over the frozen bank and each separation a named case; a Lean port is a later item.
 
 ## Source
-ATTENTION.md, item 136 (The equivalence forms of factorization: sufficiency, betting, offers-only); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CASE_BANK.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/fixture/audits.py` (the replay form), the prompt's §6.
+ATTENTION.md, item 136 (The equivalence forms of factorization: sufficiency, betting, offers-only); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CASE_BANK.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/fixture/audits.py` (the replay form), the prompt's §6, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/THEOREMS.md` (C5, C6).
 
 ## Notes
 Filed by the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution) under its prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py.
@@ -48,6 +49,12 @@ round's finite objects, and for each either an equivalence to the pairwise form 
 the fixture separating them — in particular whether the replay form is the sufficiency form, and
 what it says of T2, where the accepted option is licensed content.
 
+The round's steering follow-up computed the replay form against L1, L0–L3 ∧ W and its two
+standards over 38 variants (`steering/THEOREMS.md`, C5 and C6): the replay form is comparable
+with none of them, and it fails on a write the principal authorized in advance (N5), which is
+not in `L`. Wanted in addition: whether an authorized write belongs in the licensed trace, and
+the replay form restated accordingly.
+
 *Deliverable shape:* `test-supported` at the ceiling — one module per form in the prosecution round's layout, each claimed equivalence a pointwise check over the frozen bank and each separation a named case; a Lean port is a later item.
 *Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with the forms' modules wired in; every equivalence checked pointwise over the bank, every separation a banked case.
-*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CASE_BANK.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/fixture/audits.py` (the replay form), the prompt's §6.
+*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CASE_BANK.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/fixture/audits.py` (the replay form), the prompt's §6, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/THEOREMS.md` (C5, C6).
