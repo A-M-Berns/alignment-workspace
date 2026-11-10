@@ -347,9 +347,12 @@ agent-decided in `DECISIONS.md`, anchor `2026-11-10--steering-follow-up-stipulat
   to it. Reported as a diagnostic; the frozen form's result is reported beside it.
 - **C7 uses the mean over `W`** for attainable value, as `DEFINITIONS.md` §1.5 fixes,
   not the value at the actual world.
-- **`graph/policy.yaml`** gains the AI handle `@claude-fable-5-2`, outside the prompt's
-  listed write scope: the map checker refuses a node whose author is unmapped, and item
-  139 needs an author.
+- **No item was filed.** The residual blocker — the adviser's aim as an object, in place
+  of `U := V` — was to be item 139. A node needs an author handle; the executor's model
+  has none in `graph/policy.yaml`, and adding one fails
+  `checkers/tests/test_graph.py`, which pins the handle set. Editing that test is an edit
+  to the checker harness, so the handle was not added and the ask was folded into item
+  138, whose subject it shares. Workspace friction, reported here and queued (F9).
 - **Items 136 and 138** have their entries extended and their Statements unchanged; the
   map checker refuses a version bump on an unchanged Statement.
 - **The runner** gained `--steering-json`; `--json` still prints the first pass alone.
@@ -379,7 +382,7 @@ agent-decided in `DECISIONS.md`, anchor `2026-11-10--steering-follow-up-stipulat
 - **N10's `not steered` rests on a comparative test.** Her order-sensitivity is detected
   only when the class holds two orderings. A test that reorders her inputs would call
   her broken in N10 and in every first-pass case with two reports; it was not run.
-  Item 139.
+  Item 138 now asks for it.
 - **Every *holds* is an enumeration** on the domain named in `THEOREMS.md`, with payoffs
   in {0, 1} or {0, 1, 2} and at most four worlds; only C4's opposed-aim half has a
   complete proof. C2(a) was not tested with two payoff values. The inclusion arm's-length
@@ -395,12 +398,13 @@ agent-decided in `DECISIONS.md`, anchor `2026-11-10--steering-follow-up-stipulat
 
 ### F9. Filings, names, and what is reserved
 
-**Filed or revised under the follow-up's scope grant.** Item 139, the adviser's aim as an
-object of the fixture (`graph/nodes/item-139.md`, held by the `legitimacy` frame). Item
-136's entry now asks whether an authorized write belongs in the licensed trace (N5).
-Item 138's entry now records that output-invariance separates T12 without saying why,
-and its acceptance check asks for a case that tells the two apart. One `DECISIONS.md`
-entry, agent-decided and reversible: `2026-11-10--steering-follow-up-stipulations`.
+**Revised under the follow-up's scope grant; nothing filed.** Item 136's entry now asks
+whether an authorized write belongs in the licensed trace (N5). Item 138's entry now
+records that output-invariance separates T12 without saying why, asks for the adviser's
+aim as a variable of the fixture in place of `U := V` and for an order test that does
+not depend on the class, and its acceptance check is extended to match. One
+`DECISIONS.md` entry, agent-decided and reversible:
+`2026-11-10--steering-follow-up-stipulations`.
 
 **New names, all provisional:** "steering account", "proper driver", "broken", "steered",
 "working", "arm's-length standard", "faithful-adviser standard", "reverse convergence",
@@ -417,6 +421,12 @@ layer", "abstract layer", "calibration" and "content" for clauses (ii) and (iv) 
    `DECISIONS.md`, *Awaiting the author*, with what it turns on. Decision required: one
    of *arm's-length only*, *faithful-adviser*, or *depends on a relationship the account
    must first represent*.
+
+2. Map the AI handle `@claude-fable-5-2`: add `"@claude-fable-5-2": {kind: ai, model:
+   "Claude Fable 5.2 (Anthropic)"}` to `graph/policy.yaml` and the handle to the set
+   asserted in `checkers/tests/test_graph.py`
+   (`test_starting_graph_carries_structure_and_the_two_rulings_only`). Entered in
+   *Awaiting the author*.
 
 The pull request is not auto-merged; the merge is a pull-request fact.
 

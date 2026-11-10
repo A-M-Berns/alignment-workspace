@@ -523,6 +523,15 @@ commit.
   the influence (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/PRIOR_WORK.md` §10); the account does not represent the
   relationship, and where the program is going on it is the maintainer's knowledge.
 
+- **Map the AI handle `@claude-fable-5-2`? (2026-11-10).**  A round executed by Claude Fable 5.2
+  (Anthropic) cannot author a map node: `checkers/graph.py` refuses an unmapped handle, and
+  `checkers/tests/test_graph.py` pins the set of handles in `graph/policy.yaml`, so adding one
+  is an edit to the checker harness.  The steering follow-up therefore filed no item and
+  extended item 138 instead.  *Turns on:* authority over the trust chain, which a dispatched
+  round does not have.  Action: add `"@claude-fable-5-2": {kind: ai, model: "Claude Fable 5.2
+  (Anthropic)"}` to `graph/policy.yaml` and the handle to the set asserted in
+  `test_starting_graph_carries_structure_and_the_two_rulings_only`.
+
 ## Settled
 
 ### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer
@@ -7421,7 +7430,7 @@ unforced and turns the runner red on a clause the prompt prosecutes by §5c rath
 §5a.
 
 ### 2026-11-10 — the steering follow-up's stipulations: `U := V`, order is not content, the adviser absent as baseline
-<!-- decision: 2026-11-10--steering-follow-up-stipulations; touches: item:136, item:138, item:139, node:legitimacy -->
+<!-- decision: 2026-11-10--steering-follow-up-stipulations; touches: item:136, item:138, node:legitimacy -->
 
 **Agent-decided, reversible** (the follow-up to the legitimacy definition prosecution round,
 `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup.md`). Three stipulations
@@ -7430,12 +7439,11 @@ changes a verdict. (1) The first pass's objects carry no adviser aim, so the aim
 distinguishes one policy of the class from another, `U := V`. Under it the faithful-adviser
 standard convicts B4, B6, T2 and T8. Rejected alternative: assigning each case's policies to
 aims by hand, which is a per-case choice of `U` and is what the follow-up's renaming test
-counts against the account. Item 139 asks for the aim as an object. (2) A belief part that
+counts against the account. Item 138 now asks for the aim as an object. (2) A belief part that
 differs between two policies applying the same contents is not working: order is not content.
 Under it T7 and N9 are `steered` under the arm's-length standard. Rejected alternative: the
 anchor as her own processing of what she received, under which both compute `passes`. (3)
 Attainable value is compared with the adviser absent. Rejected alternative: the class's
 honest policy as baseline, under which a liar's `ΔAV` is measured against being told the truth
 and N3 no longer shows a lie raising her value. Also decided: the entries of items 136 and 138 are
-extended with what the follow-up computed, their Statements unchanged, and the AI handle `@claude-fable-5-2` is added to
-`graph/policy.yaml` as item 139's author.
+extended with what the follow-up computed, their Statements unchanged; no item is filed.

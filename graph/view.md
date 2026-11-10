@@ -59,7 +59,7 @@ Owner @A-M-Berns, @abramdemski
 - rests on AI numbers (no human judgment yet): kernel-no-laundering
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @A-M-Berns, @abramdemski; holds 86 node(s); owner has not confirmed (drafted from the wiki)
+- frame owner @A-M-Berns, @abramdemski; holds 85 node(s); owner has not confirmed (drafted from the wiki)
 - a programme: informs through its steps
 - best next unit: re-examine legitimacy-as-local-rules
 #### corrigibility-landscape
@@ -390,7 +390,7 @@ Owner @A-M-Berns
 Owner @A-M-Berns; unspelled: no roots yet (its unit is spell-out)
 
 ## Sub-frame legitimacy (in the-program): What must stay true of a trajectory's record, verdicts and channels of influence, inside it and at its boundary, for a later judgment to count as the principal's own, and what does corrigibility consume from that?
-Owner @A-M-Berns, @abramdemski; holds 86 node(s)
+Owner @A-M-Berns, @abramdemski; holds 85 node(s)
 
 ### Plans
 #### integrity-and-record
@@ -517,7 +517,6 @@ Nodes this frame is about that are no goals of the ranking (held, not roots): li
 - item-136 (leaf/task)
 - item-137 (leaf/task)
 - item-138 (leaf/task)
-- item-139 (leaf/task)
 - legit-definition-endorsement (cases)
 - legit-corrects-trust-principles (leaf/step)
 - legit-per-formalism-family (leaf/step)
@@ -4157,7 +4156,6 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - item-136: Execute item 136 per its deliverable shape and acceptance check: The equivalence forms of factorization: sufficiency, betting, offers-only. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-10--legitimacy-prosecution-readings; decision: 2026-11-10--steering-follow-up-stipulations
 - item-137: Execute item 137 per its deliverable shape and acceptance check: Consumer lemmas: what the trust interface and the corrigibility slot consume from L0–L3 ∧ W. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-10--legitimacy-prosecution-readings
 - item-138: Execute item 138 per its deliverable shape and acceptance check: An advisor-respect condition: what T12 delimits. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-10--legitimacy-prosecution-readings; decision: 2026-11-10--steering-follow-up-stipulations
-- item-139: Execute item 139 per its deliverable shape and acceptance check: The adviser's aim as an object of the fixture: the steering standards without U := V. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-10--steering-follow-up-stipulations
 - item-14: Continue ATTENTION item 14 (returned in wave 1) using wiki/faithful-acceleration-result.md and wiki/delay-and-visibility.md, not the June note dump's superseded ladder. (who: either); files: lean/Workspace/Deference/
 - item-15: Execute item 15 per its deliverable shape and acceptance check: Finite settlement classification, and the local delegation bridge. (who: agent)
 - item-16: Execute item 16 per its deliverable shape and acceptance check: The certificate inequality, derived. (who: agent)
@@ -5655,7 +5653,6 @@ The outside option and the undescribed failure, each a cases node over the outco
 | item-136 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
 | item-137 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
 | item-138 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
-| item-139 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
 | item-14 | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | item-15 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
 | item-16 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
@@ -7319,4 +7316,4 @@ The outside option and the undescribed failure, each a cases node over the outco
 | wirehead-iff-finite.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 1 |
 | wirehead-iff-finite.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 1 |
 | worlds-and-points-companion | leaf/question | 2 (both) | AI number | open | 0 | 8 |
-<!-- generated_hash: a637834ed399edcbf01d5323 -->
+<!-- generated_hash: 666a5834e221a2a872073a81 -->
