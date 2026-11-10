@@ -193,7 +193,7 @@ prices are near-tight claims about realized activated value.
 
 ## Evidence and deeper reading
 
-- [LI-native deference interface](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/deference/notes/LI_NATIVE_DEFERENCE.md)
-- [Deference vocabulary and interface boundaries](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/deference/notes/TERMS.md)
-- [Corpus reconciliation](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/deference/rounds/2026-08-12-corpus-reconciliation/RECONCILIATION.md)<!--ref:round:2026-08-12-corpus-reconciliation-->
-- [Reachable corrective control — `Dynamics-positive, protection-incomplete.`](https://github.com/A-M-Berns/alignment-workspace/tree/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/deference/rounds/2026-08-12-reachable-corrective-control)<!--ref:round:2026-08-12-reachable-corrective-control-->
+- [LI-native deference interface](https://github.com/A-M-Berns/alignment-workspace/blob/eb98367e24283996f4e95a6f79456598d1d27d65/projects/deference/notes/LI_NATIVE_DEFERENCE.md)
+- [Deference vocabulary and interface boundaries](https://github.com/A-M-Berns/alignment-workspace/blob/eb98367e24283996f4e95a6f79456598d1d27d65/projects/deference/notes/TERMS.md)
+- [Corpus reconciliation](https://github.com/A-M-Berns/alignment-workspace/blob/eb98367e24283996f4e95a6f79456598d1d27d65/projects/deference/rounds/2026-08-12-corpus-reconciliation/RECONCILIATION.md)<!--ref:round:2026-08-12-corpus-reconciliation-->
+- [Reachable corrective control — `Dynamics-positive, protection-incomplete.`](https://github.com/A-M-Berns/alignment-workspace/tree/eb98367e24283996f4e95a6f79456598d1d27d65/projects/deference/rounds/2026-08-12-reachable-corrective-control)<!--ref:round:2026-08-12-reachable-corrective-control-->

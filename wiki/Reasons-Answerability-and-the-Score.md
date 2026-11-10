@@ -78,7 +78,7 @@ positive core persists along an unbounded evolving trajectory.
 
 ## Evidence and verification
 
-- [Legitimacy bridge — `Shared-representation-positive / corrigibility-interface-positive / learning-replay-blocked`](https://github.com/A-M-Berns/alignment-workspace/tree/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge)<!--ref:round:2026-08-13-relational-scorekeeping-bridge-->
-- [Bridge theorem map](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge/THEOREM_MAP.md)<!--ref:round:2026-08-13-relational-scorekeeping-bridge-->
-- [Quantitative foundation ledger](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/consolidation-aug9/LEDGER.md)
-- [Fencing stress test](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/rounds/2026-08-11-phi-regret-prep/COUNTERFACTUAL_CHARGE_INFLUENCE.md)<!--ref:round:2026-08-11-phi-regret-prep-->
+- [Legitimacy bridge — `Shared-representation-positive / corrigibility-interface-positive / learning-replay-blocked`](https://github.com/A-M-Berns/alignment-workspace/tree/eb98367e24283996f4e95a6f79456598d1d27d65/projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge)<!--ref:round:2026-08-13-relational-scorekeeping-bridge-->
+- [Bridge theorem map](https://github.com/A-M-Berns/alignment-workspace/blob/eb98367e24283996f4e95a6f79456598d1d27d65/projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge/THEOREM_MAP.md)<!--ref:round:2026-08-13-relational-scorekeeping-bridge-->
+- [Quantitative foundation ledger](https://github.com/A-M-Berns/alignment-workspace/blob/eb98367e24283996f4e95a6f79456598d1d27d65/projects/normativity/consolidation-aug9/LEDGER.md)
+- [Fencing stress test](https://github.com/A-M-Berns/alignment-workspace/blob/eb98367e24283996f4e95a6f79456598d1d27d65/projects/normativity/rounds/2026-08-11-phi-regret-prep/COUNTERFACTUAL_CHARGE_INFLUENCE.md)<!--ref:round:2026-08-11-phi-regret-prep-->

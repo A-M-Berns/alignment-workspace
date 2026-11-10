@@ -7376,5 +7376,14 @@ rebuttal round and one into the September checkpoint, each pinned to a commit ol
 the linked files, and three in `wiki/Value-Change-as-Belief-Change.md` pinned to a hash
 that differs from a real branch commit in its last four characters — the F9 shape, on a
 second page.  All eight are re-pinned to `eb98367e`, `main` at this sweep's base, which
-holds every path.  Rejected alternative: resolving pins against the forge over the
-network, which the checker is forbidden.
+holds every path.  **The pull request's first CI run then refused thirty-two more
+occurrences of twenty-two links**, in seven pages, pinned to two August commits
+(`76b65e5c…`, `46032abe…`) that no branch of the repository reaches: they survive as
+objects in older clones, where the sweep's local run had passed them, and nowhere CI can
+fetch.  The resolver therefore requires the commit to be reachable from some ref
+(`git rev-list --all`), with a dangling commit as the null case, and those thirty-two are
+re-pinned to `eb98367e` as well: twenty of the twenty-two paths are byte-identical there,
+one differs in a single line of register wording, and one — the traderized-enforcement
+round directory — was pinned to the round's first commit and now cites its completed tree.
+Rejected alternative: resolving pins against the forge over the network, which the checker
+is forbidden.

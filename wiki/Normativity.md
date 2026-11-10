@@ -324,11 +324,11 @@ affordable indefinitely, though not from every kind of demand: a constraint on a
 single sentence holds its distance and then closes it in one step, while a graded
 demand sitting at the value the record approaches can be enforced forever.
 
-Evidence: [the traderized-enforcement round](https://github.com/A-M-Berns/alignment-workspace/tree/46032abe26be325218cec51f857b86be377108ab/projects/normativity/rounds/2026-08-16-traderized-enforcement)<!--ref:round:2026-08-16-traderized-enforcement-->.
+Evidence: [the traderized-enforcement round](https://github.com/A-M-Berns/alignment-workspace/tree/eb98367e24283996f4e95a6f79456598d1d27d65/projects/normativity/rounds/2026-08-16-traderized-enforcement)<!--ref:round:2026-08-16-traderized-enforcement-->.
 
 ## Evidence and deeper reading
 
-- [Normativity foundation ledger](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/consolidation-aug9/LEDGER.md)
-- [Foundation verification classes](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/consolidation-aug9/VERIFICATION.md)
-- [Current interface note](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/normativity/notes/NORMATIVE_LEARNING_INTERFACE.md)
-- [Current structured state](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/state/theorem_interface.json)
+- [Normativity foundation ledger](https://github.com/A-M-Berns/alignment-workspace/blob/eb98367e24283996f4e95a6f79456598d1d27d65/projects/normativity/consolidation-aug9/LEDGER.md)
+- [Foundation verification classes](https://github.com/A-M-Berns/alignment-workspace/blob/eb98367e24283996f4e95a6f79456598d1d27d65/projects/normativity/consolidation-aug9/VERIFICATION.md)
+- [Current interface note](https://github.com/A-M-Berns/alignment-workspace/blob/eb98367e24283996f4e95a6f79456598d1d27d65/projects/normativity/notes/NORMATIVE_LEARNING_INTERFACE.md)
+- [Current structured state](https://github.com/A-M-Berns/alignment-workspace/blob/eb98367e24283996f4e95a6f79456598d1d27d65/state/theorem_interface.json)

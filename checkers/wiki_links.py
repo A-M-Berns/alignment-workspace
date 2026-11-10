@@ -14,13 +14,16 @@ Scope:
   space in a `[[…]]` title is read as a hyphen, which is how the hosted wiki
   maps a page title to its filename.
 - **Into this repository.** A link whose path has a `blob`, `tree` or `raw`
-  segment carries a ref, and that ref must be a 40-hex commit SHA that the local
-  git objects have, naming a tree in which the linked path exists. A well-formed
-  pin git cannot resolve is an unverified identifier — the shape an agent error
-  takes is a hash sharing a prefix with the real one — and fails. The check is
-  `git cat-file`, offline; a shallow clone fails it for every pin it lacks, so CI
-  runs it on the full history. A link to the repository root carries no ref and
-  is out of scope — there is nothing to pin.
+  segment carries a ref, and that ref must be a 40-hex commit SHA reachable from
+  some ref of the local repository, naming a tree in which the linked path
+  exists. A well-formed pin git cannot resolve is an unverified identifier — the
+  shape an agent error takes is a hash sharing a prefix with the real one — and
+  fails. Reachability, not mere presence: an object that survives only in one
+  clone's history, on no branch, resolves there and nowhere else, which is the
+  shape an old clone and a rewritten branch produce. The check is `git rev-list`
+  and `git cat-file`, offline; a shallow clone fails it for every pin it lacks,
+  so CI runs it on the full history. A link to the repository root carries no
+  ref and is out of scope — there is nothing to pin.
 - **External links are out of scope.** Whether some other host still serves a
   document is not a question this repository can answer offline, and a checker
   that reaches the network is a checker that fails on the runner's weather.
@@ -93,14 +96,30 @@ def repository_ref(target: str) -> tuple[str, str] | None:
 Resolver = Callable[[str, str], bool]
 
 
-def git_resolves(sha: str, path: str, root: pathlib.Path = ROOT) -> bool:
-    """Whether the local git objects hold commit `sha` with `path` in its tree.
+_REACHABLE: dict[pathlib.Path, set[str]] = {}
 
-    `git cat-file -e` on `<sha>:<path>` answers both at once and reaches no
-    network; an empty path asks for the commit itself.
+
+def reachable(root: pathlib.Path) -> set[str]:
+    """Every commit some ref of the repository at `root` reaches, computed once."""
+    if root not in _REACHABLE:
+        out = subprocess.run(["git", "rev-list", "--all"], cwd=root,
+                             capture_output=True, text=True)
+        _REACHABLE[root] = set(out.stdout.split()) if out.returncode == 0 else set()
+    return _REACHABLE[root]
+
+
+def git_resolves(sha: str, path: str, root: pathlib.Path = ROOT) -> bool:
+    """Whether commit `sha` is reachable from some ref at `root` and holds `path`.
+
+    `git rev-list --all` gives reachability; `git cat-file -e` on `<sha>:<path>`
+    gives the path, and reaches no network. An empty path asks for the commit
+    alone.
     """
-    spec = f"{sha}:{path}" if path else f"{sha}^{{commit}}"
-    return subprocess.run(["git", "cat-file", "-e", spec], cwd=root,
+    if sha not in reachable(root):
+        return False
+    if not path:
+        return True
+    return subprocess.run(["git", "cat-file", "-e", f"{sha}:{path}"], cwd=root,
                           capture_output=True).returncode == 0
 
 
@@ -162,6 +181,22 @@ def self_test() -> int:
     head = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True,
                           text=True).stdout.strip()
     near_miss = head[:-4] + ("0000" if head[-4:] != "0000" else "1111")
+    # A scratch repository with one commit on a branch and one dangling commit of
+    # the same tree: an object git has but no ref reaches.
+    scratch = tmp / "scratch"
+    scratch.mkdir()
+    git = lambda *a: subprocess.run(["git", *a], cwd=scratch, capture_output=True,
+                                    text=True, check=True).stdout.strip()
+    git("init", "-q")
+    git("-c", "user.name=t", "-c", "user.email=t@t", "commit", "-q", "--allow-empty",
+        "-m", "root")
+    (scratch / "a.md").write_text("a\n")
+    git("add", "a.md")
+    git("-c", "user.name=t", "-c", "user.email=t@t", "commit", "-q", "-m", "a")
+    on_branch = git("rev-parse", "HEAD")
+    tree = git("rev-parse", "HEAD^{tree}")
+    dangling = git("-c", "user.name=t", "-c", "user.email=t@t", "commit-tree", tree,
+                   "-m", "dangling")
     cases = [
         ("a dangling intra-wiki link is caught",
          len(over(Home="See [the glossary](Glossary).\n")), 1),
@@ -192,6 +227,10 @@ def self_test() -> int:
          git_resolves(near_miss, "AGENTS.md"), False),
         ("the git resolver refuses a path HEAD does not have",
          git_resolves(head, "no/such/file.md"), False),
+        ("the git resolver refuses a commit object that no ref reaches",
+         git_resolves(dangling, "a.md", scratch), False),
+        ("the git resolver accepts the same tree's commit once a ref reaches it",
+         git_resolves(on_branch, "a.md", scratch), True),
         ("a link to the repository root carries no ref and passes",
          len(over(Home=f"[repo](https://{REPOSITORY})\n")), 0),
         ("an external link is out of scope",

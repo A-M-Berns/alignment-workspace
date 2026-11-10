@@ -24,7 +24,14 @@ request carries its own.
   the 2026-10-21 rebuttal round and one into the September checkpoint, pinned to commits older
   than the linked files, and three in `wiki/Value-Change-as-Belief-Change.md` pinned to a hash
   differing from a real branch commit in its last four characters — the F9 shape on a second
-  page. All eight re-pinned to `eb98367e`. Agent-decided entry in `DECISIONS.md`.
+  page. All eight re-pinned to `eb98367e`. The pull request's first CI run then refused
+  thirty-two more occurrences of twenty-two links in seven pages, pinned to two August
+  commits no branch reaches — present as objects in older clones, where the local run had
+  passed them, and unfetchable in CI. The resolver now requires reachability from some ref
+  (`git rev-list --all`), with a dangling commit as its null case, and those thirty-two are
+  re-pinned likewise: twenty paths byte-identical at the new pin, one differing in a line of
+  register wording, one (the traderized-enforcement round directory) moving from the round's
+  first commit to its completed tree. Agent-decided entry in `DECISIONS.md`.
 - **F11, no gate refuses committed conflict markers — closed.** Filed by #142 while this sweep
   was running, for the defect this sweep had also found in `main` at its base (#139's merge
   of `DECISIONS.md`). `tests/conflict_markers.py` scans every tracked text file outside
@@ -65,8 +72,9 @@ request carries its own.
   sentences never cited a resolvable version; the three in
   `wiki/Value-Change-as-Belief-Change.md` cited a branch commit (`774eb891…6b6b`, not on
   `main`) by a wrong hash, and now cite `main`'s copy of the same paths, which may differ.
-- That the resolver's reading of "exists" is the right one: it accepts any commit in the local
-  objects, on `main` or not. Reachability from `main` is not checked.
+- That the resolver's reading of "exists" is the right one: it accepts any commit some ref
+  reaches, on `main` or not. Reachability from `main` is not checked, so a page may pin a
+  branch commit that is later rewritten; the gate catches that only once the branch is gone.
 - The conflict-marker gate does not see files git lists as binary, nor a marker inside a
   completed round record.
 
@@ -81,6 +89,14 @@ items)`; the site build and DOM gate pass; `GATE COVERAGE: 14 gate scripts, all 
 `checkers.wiki_links` run over `origin/main`'s `wiki/` before the re-pins reported the eight
 offending occurrences and nothing else. `tests/freshness.py`: one finding, this round not yet
 carried by a digest, which its pull request's digest retires.
+
+After the pull request opened, its `checkers` and `python` jobs failed on the thirty-two
+orphan-pinned links above; the local run had passed them because this clone holds the orphan
+objects. With the reachability rule and the re-pins, on 2026-11-10: `checkers.wiki_links
+--self-test` all `ok` including the dangling-commit case; `WIKI LINKS: clean over 33 page(s)`;
+`CONFLICT MARKERS: clean over 8214 tracked file(s)`; `tests/dead_pointers.py` and
+`tests/site_build.py` clean. The full `tests/run.py` was not rerun for this amendment — it
+touches the checker, `wiki/`, and records only — and CI runs it.
 
 ## Outstanding maintainer actions
 
