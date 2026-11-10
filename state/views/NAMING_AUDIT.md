@@ -2300,7 +2300,7 @@ change, and the count of those is the size of the free choice remaining.
 | `XAY` | abbrev | 2026-10-20-warrant-enforcement-semantics | wiki | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.XAY` |
 | `Y` | def | 2026-10-20-warrant-enforcement-semantics | wiki, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.Y` |
 | `Y` | abbrev | 2026-10-20-warrant-enforcement-semantics | wiki, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.Y` |
-| `Z` | abbrev | 2026-10-20-warrant-enforcement-semantics | wiki | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.Z` |
+| `Z` | abbrev | 2026-10-20-warrant-enforcement-semantics | wiki, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.Z` |
 | `activeStep` | def | 2026-10-20-warrant-enforcement-semantics | prose | `Workspace.Normativity.Contrib.WarrantEntitlement.activeStep` |
 | `applOcc` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.applOcc` |
 | `applRow` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.applRow` |

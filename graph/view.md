@@ -59,7 +59,7 @@ Owner @A-M-Berns, @abramdemski
 - rests on AI numbers (no human judgment yet): kernel-no-laundering
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @A-M-Berns, @abramdemski; holds 82 node(s); owner has not confirmed (drafted from the wiki)
+- frame owner @A-M-Berns, @abramdemski; holds 85 node(s); owner has not confirmed (drafted from the wiki)
 - a programme: informs through its steps
 - best next unit: re-examine legitimacy-as-local-rules
 #### corrigibility-landscape
@@ -390,7 +390,7 @@ Owner @A-M-Berns
 Owner @A-M-Berns; unspelled: no roots yet (its unit is spell-out)
 
 ## Sub-frame legitimacy (in the-program): What must stay true of a trajectory's record, verdicts and channels of influence, inside it and at its boundary, for a later judgment to count as the principal's own, and what does corrigibility consume from that?
-Owner @A-M-Berns, @abramdemski; holds 82 node(s)
+Owner @A-M-Berns, @abramdemski; holds 85 node(s)
 
 ### Plans
 #### integrity-and-record
@@ -514,6 +514,9 @@ Nodes this frame is about that are no goals of the ranking (held, not roots): li
 - item-88 (leaf/task)
 - item-115 (leaf/task)
 - item-128 (leaf/task)
+- item-136 (leaf/task)
+- item-137 (leaf/task)
+- item-138 (leaf/task)
 - legit-definition-endorsement (cases)
 - legit-corrects-trust-principles (leaf/step)
 - legit-per-formalism-family (leaf/step)
@@ -4150,6 +4153,9 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - item-133: State the robust reading of a warrant as a Form-level rule — a constraint on the model over the undefeated extensions of its anchor — give its compile to rows, and prove it agrees with settleForm where the extension set is settlement-generated. (who: agent); decision: open--exposure-rule-proposal; decision: 2026-11-07--conduct-binds-on-score-warrants-on-prices; round: projects/normativity/rounds/2026-11-08-content-recollection; decision: 2026-11-08--content-is-role-among-rows-expresses-demands-no-more
 - item-134: Attach a vocabulary change to the accounted state: a transition of the normative state carrying a coordinate map, the transport theorem for entitlement under stated hypotheses or its counterexample, the interpretation carrier a general translation needs, a defeasible form for a pulled-back row, and a procedure computing the image of a forced region. (who: agent); round: projects/normativity/rounds/2026-11-08-content-recollection; decision: 2026-11-08--vocabulary-change-is-translation-conservativity-criterion; decision: open--broken-commitment-bars-or-accounts; decision: 2026-11-09--forgetting-is-projection-settled-safe-live-not; decision: 2026-11-09--vocabulary-change-is-docket-occurrence-licence-and-challenge
 - item-135: Define the state a reasoner with bounded memory retains — the live docket, the specialized rows on unsettled coordinates, the holding on a finite universe of reason sets, the receipts of closed accounts — with the theorem that forced intervals and permissions computed from it equal those of the full record, a space bound or the fixture showing none, and the rule for a live coordinate. (who: agent); round: projects/normativity/rounds/2026-11-08-content-recollection; decision: 2026-11-09--forgetting-is-projection-settled-safe-live-not; decision: open--broken-commitment-bars-or-accounts
+- item-136: Execute item 136 per its deliverable shape and acceptance check: The equivalence forms of factorization: sufficiency, betting, offers-only. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-10--legitimacy-prosecution-readings
+- item-137: Execute item 137 per its deliverable shape and acceptance check: Consumer lemmas: what the trust interface and the corrigibility slot consume from L0–L3 ∧ W. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-10--legitimacy-prosecution-readings
+- item-138: Execute item 138 per its deliverable shape and acceptance check: An advisor-respect condition: what T12 delimits. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-10--legitimacy-prosecution-readings
 - item-14: Continue ATTENTION item 14 (returned in wave 1) using wiki/faithful-acceleration-result.md and wiki/delay-and-visibility.md, not the June note dump's superseded ladder. (who: either); files: lean/Workspace/Deference/
 - item-15: Execute item 15 per its deliverable shape and acceptance check: Finite settlement classification, and the local delegation bridge. (who: agent)
 - item-16: Execute item 16 per its deliverable shape and acceptance check: The certificate inequality, derived. (who: agent)
@@ -5644,6 +5650,9 @@ The outside option and the undescribed failure, each a cases node over the outco
 | item-133 | leaf/task | 2 (both) | held by normative-inductor, no belief | open | 0 | 0 (informs no goal) |
 | item-134 | leaf/task | 2 (both) | held by normative-inductor, no belief | open | 0 | 0 (informs no goal) |
 | item-135 | leaf/task | 2 (both) | held by seed-theory, no belief | open | 0 | 0 (informs no goal) |
+| item-136 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-137 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-138 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
 | item-14 | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | item-15 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
 | item-16 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
@@ -7307,4 +7316,4 @@ The outside option and the undescribed failure, each a cases node over the outco
 | wirehead-iff-finite.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 1 |
 | wirehead-iff-finite.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 1 |
 | worlds-and-points-companion | leaf/question | 2 (both) | AI number | open | 0 | 8 |
-<!-- generated_hash: 62c9cdd2f6989e6cf621fc81 -->
+<!-- generated_hash: fb68cac8706b28059921759d -->

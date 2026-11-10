@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "831bc9ff401675f8d5052a91",
-  "index.json": "e69b16b1236d9f1804001a24"
+  "derived.json": "d14415d5c7f47b0926629429",
+  "index.json": "07ee2110b05fec98f65b3450"
  },
- "generated_hash": "b2bec7f5f03b396b08c89bb5",
+ "generated_hash": "fcadb703a1a6f36e6d367694",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -8844,6 +8844,27 @@
    {
     "date": "2026-11-09",
     "normalized": "item 135 bounded memory the state a forgetting reasoner retains is delivered in the shape its entry states lean proved the retained state as a type the forgetting step on it the exactness theorem against the full record and either a space bound in the live coordinates live items and reason sets or the fixture showing none",
+    "version": 1
+   }
+  ],
+  "item-136": [
+   {
+    "date": "2026-11-10",
+    "normalized": "item 136 the equivalence forms of factorization sufficiency betting offers only is delivered in the shape its entry states test supported at the ceiling one module per form in the prosecution rounds layout each claimed equivalence a pointwise check over the frozen bank and each separation a named case a lean port is a later item",
+    "version": 1
+   }
+  ],
+  "item-137": [
+   {
+    "date": "2026-11-10",
+    "normalized": "item 137 consumer lemmas what the trust interface and the corrigibility slot consume from l0 l3 w is delivered in the shape its entry states test supported one module per consumer in the prosecution rounds layout each lemma a pointwise check over the fixture with its inhabitation witness and its named failure",
+    "version": 1
+   }
+  ],
+  "item-138": [
+   {
+    "date": "2026-11-10",
+    "normalized": "item 138 an advisor respect condition what t12 delimits is delivered in the shape its entry states test supported one executable predicate module in the prosecution rounds layout a bank extension with pre registered verdicts frozen before the code and a cited source per case and the independence from l0 l3 w exhibited in both directions",
     "version": 1
    }
   ],

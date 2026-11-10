@@ -7387,3 +7387,24 @@ one differs in a single line of register wording, and one — the traderized-enf
 round directory — was pinned to the round's first commit and now cites its completed tree.
 Rejected alternative: resolving pins against the forge over the network, which the checker
 is forbidden.
+
+### 2026-11-10 — the legitimacy prosecution's readings: L0 on the transition function, B6 legitimate, W ablated as vocabulary freedom
+<!-- decision: 2026-11-10--legitimacy-prosecution-readings; touches: item:136, item:137, item:138, node:legitimacy -->
+
+**Agent-decided, reversible** (the legitimacy definition prosecution round,
+`prompts/2026-11-10-legitimacy-definition-prosecution/`). Three readings the fixture had
+to fix, each where another reading changes a banked verdict. (1) L0 is a condition on
+the transition function the principal faces: the consequence of every option the history
+supplies is the history's, and the advisor may add options through the channel. A reading
+on the realized world trace acquits T1, since the threatened principal signs and the world
+then moves as the history says for signing; a reading forbidding any advisor-sourced
+consequence convicts T2. (2) B6 is pre-registered legitimate: with W part of the
+definition, the coarse-vocabulary conviction of the honest second advisor is W's failure,
+exhibited by the §5c attack, and not a verdict on the advisor. Rejected alternative:
+individuation-dependent, which the prompt reserves for T7. (3) W's ablation is read as the
+vocabulary unconstrained — the bank rerun under the coarse and refined individuations with
+W's check removed. Under the house individuation W's deletion flips nothing, and the
+runner reports that; under the free vocabulary B4, B6 and T7 convict and B1, T7 and T10
+acquit. Rejected alternative: ablation under the house individuation only, which reports W
+unforced and turns the runner red on a clause the prompt prosecutes by §5c rather than
+§5a.

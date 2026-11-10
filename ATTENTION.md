@@ -1403,6 +1403,64 @@ fixture, with `certPlus_iff_robustOpen` and `robustOpen_of_persistence` instanti
 `lean/Workspace/Normativity/Contrib/NonCaptureCertificate.lean`; the claim
 `split-bill-is-robust-openness` of the map.
 
+### 136. The equivalence forms of factorization: sufficiency, betting, offers-only — **[substantial]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The prosecution round states L1 in its pairwise form — over a named class `V`, coupled runs with
+equal licensed traces have equal `Z`-traces — which is equivalent to the existence of some `F`
+with `Z* = F(e, L)` on `V` and says nothing about `F`. Three other forms were named and none
+proved: a sufficiency form (`L` a sufficient statistic for `Z*` given `e` over the class); a
+betting form (no policy in `V` moves `Z*` beyond what its licensed trace buys); an offers-only
+normal form (every `π` in `V` has an offerings-only `π'` with the same licensed trace and the
+same `Z*`). The round's fixture also exhibits the canonical replay `F` — the principal run with
+the advisor replaced by a player of the licensed trace — and finds `Z* = F_replay(e, L)` to be a
+single-run condition that by itself convicts B1, B2, B3, T1, T4, T5 and T10, absorbing L0 and L3
+on the frozen bank; the pairwise form keeps them separate. Wanted: each form stated over the
+round's finite objects, and for each either an equivalence to the pairwise form over the bank or
+the fixture separating them — in particular whether the replay form is the sufficiency form, and
+what it says of T2, where the accepted option is licensed content.
+
+*Deliverable shape:* `test-supported` at the ceiling — one module per form in the prosecution round's layout, each claimed equivalence a pointwise check over the frozen bank and each separation a named case; a Lean port is a later item.
+*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with the forms' modules wired in; every equivalence checked pointwise over the bank, every separation a banked case.
+*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CASE_BANK.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/fixture/audits.py` (the replay form), the prompt's §6.
+
+### 137. Consumer lemmas: what the trust interface and the corrigibility slot consume from L0–L3 ∧ W — **[substantial]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The definition's consumers are named and nothing is proved for them. The trust interface's
+candidate theorem (`LEGITIMACY_TO_TRUST_INTERFACE.md` §4) took the counterfactual round's
+non-capture clause as its legitimacy hypothesis; under the prosecuted definition B2, manufactured
+trust, is rejected by L1 together with L3, and whether the theorem's hypothesis is L1 alone,
+L1 ∧ L3, or the whole conjunction is not stated. The corrigibility slot — the place in the
+corrigibility program where a legitimacy predicate enters as a hypothesis (`wiki/Legitimacy.md`) —
+is the other consumer, and which clauses it reads is not stated either. Wanted: for each
+consumer, the lemma it needs stated over the prosecution fixture's objects, naming the clauses
+it reads and the ones it does not, with its proof or counterexample on the frozen bank and B2's
+honest arm inhabiting the hypothesis package.
+
+*Deliverable shape:* `test-supported` — one module per consumer in the prosecution round's layout, each lemma a pointwise check over the fixture with its inhabitation witness and its named failure.
+*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with the consumer modules wired in; each lemma's hypothesis package inhabited by a named honest arm and its failure exhibited by a named villain of the bank.
+*Context:* `projects/normativity/legitimacy/rounds/2026-08-17-counterfactual-legitimacy/LEGITIMACY_TO_TRUST_INTERFACE.md` §4, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CASE_BANK.md` (B2), `wiki/Legitimacy.md`.
+
+### 138. An advisor-respect condition: what T12 delimits — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+T12, the strategically compliant advisor — every demand answered and complied with, no
+contribution ever carrying grounds — is pre-registered legitimate under L0–L3 ∧ W and computed
+so: the definition reads what the principal's standards license and whether the advisor acted
+around them, not whether the advisor ever gave her a reason. The fixture's diagnostic shows the
+complier with zero grounds-bearing contributions against two for each honest arm, with equal
+deliveries and an equal protected trace. Wanted: a separate condition on the advisor —
+screening-off: the advisor's contributions are reasons the principal could have weighed, so
+that the advisor's influence on `Z*` is screened off by the grounds it gave — stated as an
+executable predicate, independent of L0–L3 ∧ W in both directions on an extended bank (T12
+fails it and passes the definition; a named case passes it and fails the definition), with its
+own verdicts pre-registered before the code.
+
+*Deliverable shape:* `test-supported` — one executable predicate module in the prosecution round's layout, a bank extension with pre-registered verdicts frozen before the code and a cited source per case, and the independence from L0–L3 ∧ W exhibited in both directions.
+*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with the condition wired in; T12 fails the condition and passes the definition; a named case passes the condition and fails the definition.
+*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CASE_BANK.md` (T12), the prompt's §3.
+
 ## Deference line
 Context for all three: `projects/deference/note-dump-2026-08-11/`, in particular
 `lean-deference/AUDIT.md`, the development's own statement-level audit. Its §3 is

@@ -2231,6 +2231,21 @@
       "registered_classes": [],
       "prompt": "prompts/2026-11-10-maintenance-sweep/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-11-10-legitimacy-definition-prosecution",
+      "date": "2026-11-10",
+      "project": "normativity",
+      "path": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution",
+      "verdict": "DEFINITION-SURVIVES-THE-BANK — nineteen computed verdicts match their pre-registrations with no forced revision; every clause is forced by a banked case, W under the free vocabulary only; the honest class factors through an explicit replay F; the coarsened L convicts B4 and the refined L acquits T10. L0 must read the transition function, the replay F absorbs L0 and L3 on this bank, and L1 and L3 overlap on every direct standards write so that T5 alone forces L3. Nothing registered; every component open or a living note.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/README.md",
+      "depends_on": [
+        "2026-08-17-counterfactual-legitimacy"
+      ],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
