@@ -4242,6 +4242,9 @@ than ids, which is a schema change and specification layer; or rule that a resea
 checkpoint must be indexed at merge, which is a convention change binding future rounds
 only. The choice is specification layer and was not taken here.
 
+*2026-11-10:* put to the maintainer by the maintenance sweep as an entry in `DECISIONS.md`'s
+*Awaiting the author*, with the sweep's recommendation and what the choice turns on.
+
 ### F8 — A stack of merged pull requests never reached `main` — *closed*
 <!-- workspace-priority: project=none; dispatchable=no -->
 
@@ -4299,8 +4302,8 @@ static view agrees. Whether that is enough for Q3 to graduate is in
 
 ---
 
-### F9 — wiki_links accepts a commit pin that does not resolve
-<!-- workspace-priority: project=none; dispatchable=yes -->
+### F9 — wiki_links accepts a commit pin that does not resolve — *closed*
+<!-- workspace-priority: project=none; dispatchable=no -->
 
 `checkers/wiki_links.py` reports a commit-pinned repository link clean without checking
 that the named commit exists or that the path exists in that commit's tree. The
@@ -4312,6 +4315,12 @@ rule exists to refuse, and a fabricated-but-well-formed pin is the shape an agen
 takes. The fix is contained: resolve each pin against local git objects
 (`git cat-file`-grade checks, no network), and ship the null case — a well-formed pin
 naming a commit or path git does not have must fail.
+
+*2026-11-10, closed by the maintenance sweep (`DECISIONS.md`, 2026-11-10):* the checker
+resolves each pin with `git cat-file`, its self-test carries the null cases, the `checkers`
+job checks out the full history, and the eight occurrences of seven pins the live wiki
+carried that did not resolve — one of them the hash-with-a-wrong-tail shape this entry
+describes, on a second page — are re-pinned.
 
 ### F10 — A research round has no node of its own on the map
 <!-- workspace-priority: project=none; dispatchable=yes -->
@@ -4331,8 +4340,11 @@ checker accepts or a sentence saying the pointers are the record.
 research rounds filed since 2026-10-22 conform or are listed as not conforming.
 *Context:* `graph/PROTOCOL.md` §2; `AGENTS.md`, *The argument map under `graph/`*.
 
-### F11 — No gate refuses committed conflict markers
-<!-- workspace-priority: project=none; dispatchable=yes -->
+*2026-11-10:* put to the maintainer by the maintenance sweep as an entry in `DECISIONS.md`'s
+*Awaiting the author*, with the sweep's recommendation and what the choice turns on.
+
+### F11 — No gate refuses committed conflict markers — *closed*
+<!-- workspace-priority: project=none; dispatchable=no -->
 
 `main` at `eb98367e` (pull request #139) carried three merge-conflict marker lines in
 `DECISIONS.md`, around two entries of 2026-11-09 and one of 2026-11-08, with every required
@@ -4348,6 +4360,11 @@ space, with a `--self-test` that fails on a planted marker.
 *Acceptance check:* `python3 tests/run.py` green on a clean tree and failing on a tree with a
 marker line planted in `DECISIONS.md`.
 *Context:* `DECISIONS.md`; `tests/run.py`; `tests/dead_pointers.py` (a gate of the same shape).
+
+*2026-11-10, closed by the maintenance sweep (`DECISIONS.md`, 2026-11-10):*
+`tests/conflict_markers.py` reads every tracked text file outside completed round records
+for git's opening and closing marker lines, fails on a tree with no tracked files, and runs
+under `tests/run.py`.
 
 ## Infrastructure
 

@@ -14,8 +14,13 @@ Scope:
   space in a `[[…]]` title is read as a hyphen, which is how the hosted wiki
   maps a page title to its filename.
 - **Into this repository.** A link whose path has a `blob`, `tree` or `raw`
-  segment carries a ref, and that ref must be a 40-hex commit SHA. A link to the
-  repository root carries no ref and is out of scope — there is nothing to pin.
+  segment carries a ref, and that ref must be a 40-hex commit SHA that the local
+  git objects have, naming a tree in which the linked path exists. A well-formed
+  pin git cannot resolve is an unverified identifier — the shape an agent error
+  takes is a hash sharing a prefix with the real one — and fails. The check is
+  `git cat-file`, offline; a shallow clone fails it for every pin it lacks, so CI
+  runs it on the full history. A link to the repository root carries no ref and
+  is out of scope — there is nothing to pin.
 - **External links are out of scope.** Whether some other host still serves a
   document is not a question this repository can answer offline, and a checker
   that reaches the network is a checker that fails on the runner's weather.
@@ -28,7 +33,9 @@ from __future__ import annotations
 
 import pathlib
 import re
+import subprocess
 import sys
+from typing import Callable
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 WIKI = ROOT / "wiki"
@@ -69,8 +76,9 @@ def targets(text: str) -> list[tuple[int, str]]:
     return found
 
 
-def repository_ref(target: str) -> str | None:
-    """The ref a link into this repository resolves through, if it has one."""
+def repository_ref(target: str) -> tuple[str, str] | None:
+    """The ref a link into this repository resolves through and the path under
+    it, if the link has a ref."""
     without_scheme = re.sub(r"^[a-z][a-z0-9+.-]*://", "", target)
     if not without_scheme.startswith(REPOSITORY):
         return None
@@ -78,11 +86,25 @@ def repository_ref(target: str) -> str | None:
     parts = [p for p in rest.split("/") if p]
     for index, part in enumerate(parts[:-1]):
         if part in REF_BEARING:
-            return parts[index + 1]
+            return parts[index + 1], "/".join(parts[index + 2:])
     return None
 
 
-def problems(root: pathlib.Path) -> list[str]:
+Resolver = Callable[[str, str], bool]
+
+
+def git_resolves(sha: str, path: str, root: pathlib.Path = ROOT) -> bool:
+    """Whether the local git objects hold commit `sha` with `path` in its tree.
+
+    `git cat-file -e` on `<sha>:<path>` answers both at once and reaches no
+    network; an empty path asks for the commit itself.
+    """
+    spec = f"{sha}:{path}" if path else f"{sha}^{{commit}}"
+    return subprocess.run(["git", "cat-file", "-e", spec], cwd=root,
+                          capture_output=True).returncode == 0
+
+
+def problems(root: pathlib.Path, resolves: Resolver = git_resolves) -> list[str]:
     known = pages(root)
     found: list[str] = []
     for path in sorted(root.glob("*.md")):
@@ -90,11 +112,16 @@ def problems(root: pathlib.Path) -> list[str]:
             where = f"{path.name}:{number}"
             if target.startswith("#") or target.startswith("mailto:"):
                 continue
-            ref = repository_ref(target)
-            if ref is not None:
+            pinned = repository_ref(target)
+            if pinned is not None:
+                ref, path_in_tree = pinned
                 if not COMMIT_SHA.match(ref):
                     found.append(f"{where}: link into this repository is pinned to "
                                  f"{ref!r}, not a 40-hex commit SHA — {target}")
+                elif not resolves(ref, path_in_tree):
+                    found.append(f"{where}: link into this repository is pinned to "
+                                 f"{ref[:10]}…, which git does not have as a commit "
+                                 f"holding {path_in_tree or 'its root'!r} — {target}")
                 continue
             if "://" in target or target.startswith("//"):
                 continue
@@ -127,10 +154,14 @@ def self_test() -> int:
         root.mkdir()
         for name, body in files.items():
             (root / f"{name.replace('_', '-')}.md").write_text(body)
-        return problems(root)
+        return problems(root, resolves=lambda sha, path: sha == pinned)
 
     pinned = "0123456789abcdef0123456789abcdef01234567"
+    other = "fedcba9876543210fedcba9876543210fedcba98"
     blob = f"https://{REPOSITORY}/blob"
+    head = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True,
+                          text=True).stdout.strip()
+    near_miss = head[:-4] + ("0000" if head[-4:] != "0000" else "1111")
     cases = [
         ("a dangling intra-wiki link is caught",
          len(over(Home="See [the glossary](Glossary).\n")), 1),
@@ -147,8 +178,20 @@ def self_test() -> int:
          len(over(Home=f"[report]({blob}/0123456/AGENTS.md)\n")), 1),
         ("a tree link on a branch is caught",
          len(over(Home=f"[dir](https://{REPOSITORY}/tree/main/state)\n")), 1),
-        ("a commit-pinned repository link passes",
+        ("a commit-pinned repository link that resolves passes",
          len(over(Home=f"[report]({blob}/{pinned}/AGENTS.md)\n")), 0),
+        ("a well-formed pin the resolver does not have is caught",
+         len(over(Home=f"[report]({blob}/{other}/AGENTS.md)\n")), 1),
+        ("the git resolver accepts HEAD and a path HEAD has",
+         git_resolves(head, "AGENTS.md"), True),
+        ("the git resolver accepts HEAD and a directory HEAD has",
+         git_resolves(head, "checkers"), True),
+        ("the git resolver accepts HEAD alone",
+         git_resolves(head, ""), True),
+        ("the git resolver refuses a hash sharing all but four characters with HEAD",
+         git_resolves(near_miss, "AGENTS.md"), False),
+        ("the git resolver refuses a path HEAD does not have",
+         git_resolves(head, "no/such/file.md"), False),
         ("a link to the repository root carries no ref and passes",
          len(over(Home=f"[repo](https://{REPOSITORY})\n")), 0),
         ("an external link is out of scope",

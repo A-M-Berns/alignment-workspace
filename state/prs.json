@@ -2266,6 +2266,25 @@
       "state_after": "The site has a priorities page that ranks concepts by how important they are scored and how far their reliability and clarity lag behind that, and lists the open work requests filed against each. The list of work requests is now called ATTENTION. A standing maintenance sweep is authorized to fix contained workspace friction and to put rule-changing questions to the maintainer directly; a maintainer merges each sweep."
     },
     {
+      "number": 139,
+      "title": "Site follow-ups: priorities hovers, the activity control panel, GitHub sign-in",
+      "merged": "2026-11-09",
+      "rounds": [
+        "2026-11-09-github-sign-in",
+        "2026-11-05-site-priorities"
+      ],
+      "topics": {
+        "wiki": [],
+        "frames": [
+          "enabling-program-site",
+          "enabling-vetting-and-prioritization-system"
+        ]
+      },
+      "summary": "Three site changes. **Every priorities entry hovers.** The preview had content only where a concept carried a wiki page (16) or a backing claim (8); the other 30 ranked concepts fall back to their connections, each linked concept's title with the edge's why line. **`/activity/` is the control panel.** Seven derived stat tiles (open items, pending decisions, contested axes, human-scored concepts against AI seeds only, merged pull requests, rounds, registered claims), each a link, over dense panels: human ledger events, merged pull requests, the full *Awaiting the author* queue, dated rulings, rounds, claims by origin date, contested scores. The feed page is unchanged. **Sign in with GitHub** (the 2026-11-09 round; ruling of 2026-11-09). Identity is the reader's GitHub account matched to a `graph/policy.yaml` handle. Sign-in is GitHub's device flow through `infra/github-login-relay/`, a worker that forwards the two login endpoints github.com serves without CORS headers and holds no secret, because device flow has none; the token stays in the reader's own browser. Signed in as a mapped handle, a score's receipt forks the repository under the reader's account, appends the event line to their own ledger on a fresh branch and opens the pull request from the browser against api.github.com; the site still accepts no write and the checker adjudicates the event like any other, with the copy flow as the fallback. A GitHub account no handle maps to can sign in but not submit. The maintainer created the OAuth app and deployed the relay the same day; the device-code endpoint round-trips. By the follow-up's ruling a human handle is the GitHub login: `@A-M-Berns` and `@abramdemski` replace the two standing handles across the policy, the frames, 59 node files and the maintainer's own ledger, whose two events were rewritten at the maintainer's direction; a new contributor needs no minted name, only admission to `policy.yaml`. The sign-in dialog is the device flow alone, its code shown large. Agent-decided: device flow over the OAuth web flow, whose token exchange needs a client secret a worker would hold; the `public_repo` scope, the narrowest the classic-app device flow offers.\n\nNot shown: the fork-and-pull-request path has not run end to end — the first real submission is its test. A token in localStorage is readable by any script on the origin; the site ships no third-party script. The merge also left git's conflict markers around the 2026-11-08 and 2026-11-09 entries of `DECISIONS.md`, with every gate green; the maintenance sweep of 2026-11-10 removed them and added a gate.",
+      "superseded": "",
+      "state_after": "The site previews every entry on its priorities list, its activity page is a dense control panel of derived counts and recent human and merged activity, and a reader can sign in with GitHub and submit a score as their own pull request from the browser, with no server holding a secret. A human handle is a GitHub login."
+    },
+    {
       "number": 140,
       "title": "Where obligations bind: the score-side test, solvency as soundness, admission by standing (2026-11-07 round)",
       "merged": "2026-11-09",

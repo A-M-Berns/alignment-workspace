@@ -96,7 +96,7 @@ nests them and defeat widens them, and since the rebuttal round a form whose con
 settled false is **rebutted** rather than contraposed — the repair to the orphan pin the
 [warrant round](https://github.com/A-M-Berns/alignment-workspace/blob/2f6e5e5ca9bf96fdb6dd5d467e0c3fff558c36b3/projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/REPORT.md)<!--ref:round:2026-10-20-warrant-enforcement-semantics-->
 exhibited. The first end-to-end run of the pipeline on one fixture is the
-[witness](https://github.com/A-M-Berns/alignment-workspace/blob/2f6e5e5ca9bf96fdb6dd5d467e0c3fff558c36b3/projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/WITNESS.md)<!--ref:round:2026-10-21-rebuttal-and-end-to-end-->.
+[witness](https://github.com/A-M-Berns/alignment-workspace/blob/eb98367e24283996f4e95a6f79456598d1d27d65/projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/WITNESS.md)<!--ref:round:2026-10-21-rebuttal-and-end-to-end-->.
 
 ## A current research direction: operative force
 

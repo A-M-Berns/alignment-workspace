@@ -110,7 +110,7 @@ citing it fails), `Y` is refuted (the strength row is rebutted, `X∧A` keeps it
 the old rule pinned it to `0`, the second warrant is untouched), the enforcer's bankroll and
 the conditional Normative Inductor compose, and the record of the run is neither injective
 nor constant and carries the docket. `EndToEndWitness.Run.witness` is the conjunction; the
-[witness table](https://github.com/A-M-Berns/alignment-workspace/blob/2f6e5e5ca9bf96fdb6dd5d467e0c3fff558c36b3/projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/WITNESS.md)<!--ref:round:2026-10-21-rebuttal-and-end-to-end-->
+[witness table](https://github.com/A-M-Berns/alignment-workspace/blob/eb98367e24283996f4e95a6f79456598d1d27d65/projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/WITNESS.md)<!--ref:round:2026-10-21-rebuttal-and-end-to-end-->
 has the run date by date. It is the object item 35<!--ref:item:35--> asked for and is not registered.
 
 ## Where the seed sits
@@ -133,5 +133,5 @@ sets (item 120<!--ref:item:120-->).
 - The seed-statics round, [`SEED.md`](https://github.com/A-M-Berns/alignment-workspace/blob/2f6e5e5ca9bf96fdb6dd5d467e0c3fff558c36b3/projects/normativity/seed/rounds/2026-09-16-seed-statics/SEED.md)<!--ref:round:2026-09-16-seed-statics-->
   and [`STATICS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/2f6e5e5ca9bf96fdb6dd5d467e0c3fff558c36b3/projects/normativity/seed/rounds/2026-09-16-seed-statics/STATICS.md)<!--ref:round:2026-09-16-seed-statics-->;
   the convergence round, [`MEASURE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/2f6e5e5ca9bf96fdb6dd5d467e0c3fff558c36b3/projects/normativity/seed/rounds/2026-09-17-convergence-measure/MEASURE.md)<!--ref:round:2026-09-17-convergence-measure-->.
-- The rebuttal round, [`REBUTTAL.md`](https://github.com/A-M-Berns/alignment-workspace/blob/2f6e5e5ca9bf96fdb6dd5d467e0c3fff558c36b3/projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md)<!--ref:round:2026-10-21-rebuttal-and-end-to-end-->
-  and [`LANDING.md`](https://github.com/A-M-Berns/alignment-workspace/blob/2f6e5e5ca9bf96fdb6dd5d467e0c3fff558c36b3/projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/LANDING.md)<!--ref:round:2026-10-21-rebuttal-and-end-to-end-->.
+- The rebuttal round, [`REBUTTAL.md`](https://github.com/A-M-Berns/alignment-workspace/blob/eb98367e24283996f4e95a6f79456598d1d27d65/projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md)<!--ref:round:2026-10-21-rebuttal-and-end-to-end-->
+  and [`LANDING.md`](https://github.com/A-M-Berns/alignment-workspace/blob/eb98367e24283996f4e95a6f79456598d1d27d65/projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/LANDING.md)<!--ref:round:2026-10-21-rebuttal-and-end-to-end-->.

@@ -11,6 +11,8 @@ maintainer_order: 128
 project: none
 dispatchable: false
 item_status: open
+work:
+  - {kind: decision, ref: open--dependency-on-unindexed-checkpoint}
 author: "@smithy-verity"
 size: M
 size_reason: "one item entry of 212 words"
@@ -45,3 +47,6 @@ which is history and cheap; allow a `depends_on_unindexed` field carrying paths 
 than ids, which is a schema change and specification layer; or rule that a research
 checkpoint must be indexed at merge, which is a convention change binding future rounds
 only. The choice is specification layer and was not taken here.
+
+*2026-11-10:* put to the maintainer by the maintenance sweep as an entry in `DECISIONS.md`'s
+*Awaiting the author*, with the sweep's recommendation and what the choice turns on.

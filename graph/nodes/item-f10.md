@@ -14,6 +14,8 @@ item_status: open
 deliverable: "one protocol paragraph naming the shape, and either a `round` node kind the checker accepts or a sentence saying the pointers are the record."
 acceptance: "python3 -m checkers.graph passes on a round filed the stated way; the two research rounds filed since 2026-10-22 conform or are listed as not conforming."
 context: ["graph/PROTOCOL.md", "AGENTS.md"]
+work:
+  - {kind: decision, ref: open--research-round-node-on-map}
 author: "@smithy-verity"
 size: S
 size_reason: "one protocol paragraph and the checker's reading of it"
@@ -43,3 +45,6 @@ checker accepts or a sentence saying the pointers are the record.
 *Acceptance check:* `python3 -m checkers.graph` passes on a round filed the stated way; the two
 research rounds filed since 2026-10-22 conform or are listed as not conforming.
 *Context:* `graph/PROTOCOL.md` §2; `AGENTS.md`, *The argument map under `graph/`*.
+
+*2026-11-10:* put to the maintainer by the maintenance sweep as an entry in `DECISIONS.md`'s
+*Awaiting the author*, with the sweep's recommendation and what the choice turns on.

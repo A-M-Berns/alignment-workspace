@@ -2,10 +2,10 @@
 
 **Status: a thesis under examination, with a machine-checked finite core.** The
 transform and its worked consequences live in the note
-[value-change-as-epistemic-update](https://github.com/A-M-Berns/alignment-workspace/blob/774eb891ac8e7222a6030ac345e6e8b90c91eced/projects/deference/corrigibility-note-dump-2026-10-01/value-change-as-epistemic-update.md)
+[value-change-as-epistemic-update](https://github.com/A-M-Berns/alignment-workspace/blob/eb98367e24283996f4e95a6f79456598d1d27d65/projects/deference/corrigibility-note-dump-2026-10-01/value-change-as-epistemic-update.md)
 (2026-09-29, revised through 2026-10-07); its finite claims were checked in Lean 4 as the
 clean-room package
-[corr-value-change](https://github.com/A-M-Berns/alignment-workspace/blob/774eb891ac8e7222a6030ac345e6e8b90c91eced/projects/deference/faf-cleanroom-2026-10-07-corr-value-change/README.md)
+[corr-value-change](https://github.com/A-M-Berns/alignment-workspace/blob/eb98367e24283996f4e95a6f79456598d1d27d65/projects/deference/faf-cleanroom-2026-10-07-corr-value-change/README.md)
 (1,361 declarations, gate PASS, four audit rounds), and the worked example's numbers are
 asserted exactly by the note dump's fixtures. Nothing from it is registered; the
 thesis-level reading is open. This is one move inside the corrigibility landscape — the
@@ -41,7 +41,7 @@ maximization.
 
 The position statement's own framing is deliberately non-realist: the move is "just a
 transformation in how we represent the agent"
-([position-statement](https://github.com/A-M-Berns/alignment-workspace/blob/774eb891ac8e7222a6030ac345e6e8b90c91eced/projects/deference/corrigibility-note-dump-2026-10-01/position-statement.md)
+([position-statement](https://github.com/A-M-Berns/alignment-workspace/blob/eb98367e24283996f4e95a6f79456598d1d27d65/projects/deference/corrigibility-note-dump-2026-10-01/position-statement.md)
 §2.2). The same rational transition is a genuine change of utility function on the coarse
 algebra and conditioning with the utility held fixed on any algebra containing the
 modification event (§3 of the note).

@@ -185,4 +185,4 @@ with the endpoint theorem in
 and a list of everything the round withdrew in
 [`CONSISTENCY_AUDIT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/CONSISTENCY_AUDIT.md)<!--ref:round:2026-08-31-normative-affordability-->.
 The dry canonical statement is the
-[September checkpoint](https://github.com/A-M-Berns/alignment-workspace/tree/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/legitimacy/checkpoint-2026-09-01).
+[September checkpoint](https://github.com/A-M-Berns/alignment-workspace/tree/eb98367e24283996f4e95a6f79456598d1d27d65/projects/normativity/legitimacy/checkpoint-2026-09-01).

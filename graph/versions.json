@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "57e0e00849cd96180eac78ef",
-  "index.json": "97a4ab04bdb4c756cf724bdc"
+  "derived.json": "831bc9ff401675f8d5052a91",
+  "index.json": "e69b16b1236d9f1804001a24"
  },
- "generated_hash": "2d66fbbd68c70e0a69b16a27",
+ "generated_hash": "b2bec7f5f03b396b08c89bb5",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -9503,6 +9503,11 @@
     "date": "2026-11-09",
     "normalized": "item f11 no gate refuses committed conflict markers is answered as its entry specifies",
     "version": 1
+   },
+   {
+    "date": "2026-11-10",
+    "normalized": "item f11 no gate refuses committed conflict markers closed is answered as its entry specifies",
+    "version": 2
    }
   ],
   "item-f2": [
@@ -9559,6 +9564,11 @@
     "date": "2026-11-05",
     "normalized": "item f9 wiki_links accepts a commit pin that does not resolve is answered as its entry specifies",
     "version": 1
+   },
+   {
+    "date": "2026-11-10",
+    "normalized": "item f9 wiki_links accepts a commit pin that does not resolve closed is answered as its entry specifies",
+    "version": 2
    }
   ],
   "item-q1": [

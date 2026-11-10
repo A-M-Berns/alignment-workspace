@@ -5,25 +5,27 @@ leaf_kind: task
 action: "Add a gate that refuses a tracked living document carrying merge-conflict marker lines, with its null-input case, or say which existing gate is to see them."
 who: either
 item: "F11"
-title: "No gate refuses committed conflict markers"
+title: "No gate refuses committed conflict markers — *closed*"
 section: "Workspace friction"
 maintainer_order: 147
 project: none
-dispatchable: true
-item_status: open
+dispatchable: false
+item_status: closed
+work:
+  - {kind: decision, ref: 2026-11-10--conflict-markers-gate}
 deliverable: "a check under `tests/` run by `tests/run.py`, scanning tracked text files outside completed round records for lines beginning with seven `<` or seven `>` followed by a space, with a `--self-test` that fails on a planted marker."
 acceptance: "`python3 tests/run.py` green on a clean tree and failing on a tree with a marker line planted in `DECISIONS.md`."
 context: ["DECISIONS.md", "tests/run.py", "tests/dead_pointers.py"]
 author: "@smithy-verity"
 size: S
 size_reason: "one small gate and its self-test"
-version: 1
+version: 2
 ---
 ## Statement
-Item F11, No gate refuses committed conflict markers, is answered as its entry specifies.
+Item F11, No gate refuses committed conflict markers — *closed*, is answered as its entry specifies.
 
 ## Source
-ATTENTION.md, item F11 (No gate refuses committed conflict markers).
+ATTENTION.md, item F11 (No gate refuses committed conflict markers — *closed*).
 
 ## Notes
 Filed by the content-recollection round's follow-up (prompts/2026-11-08-content-recollection, PROMPT-followup.md), which met the markers when merging `main`; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py.
@@ -43,3 +45,8 @@ space, with a `--self-test` that fails on a planted marker.
 *Acceptance check:* `python3 tests/run.py` green on a clean tree and failing on a tree with a
 marker line planted in `DECISIONS.md`.
 *Context:* `DECISIONS.md`; `tests/run.py`; `tests/dead_pointers.py` (a gate of the same shape).
+
+*2026-11-10, closed by the maintenance sweep (`DECISIONS.md`, 2026-11-10):*
+`tests/conflict_markers.py` reads every tracked text file outside completed round records
+for git's opening and closing marker lines, fails on a tree with no tracked files, and runs
+under `tests/run.py`.
