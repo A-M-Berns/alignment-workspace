@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """The round's runner.  Exit nonzero on: a computed verdict diverging from its
 pre-registration without a FORCED-REVISION record in FORCING.md; an ablation
-that flips no banked case; an audit that fails; a bank that parses to nothing."""
+that flips no banked case; an audit that fails; a bank that parses to nothing.
+Then the steering follow-up (steering/run.py), with its own exit conditions."""
 from __future__ import annotations
 
 import json
@@ -147,5 +148,23 @@ def main(argv):
     return 0 if not failures else 1
 
 
+def steering(argv, quiet=False):
+    from steering import run as follow_up
+    code, report = follow_up.main(argv)
+    if "--steering-json" in argv:
+        print(follow_up.dumps(report))
+    elif not quiet:
+        print(follow_up.render(report))
+    return code
+
+
 if __name__ == "__main__":
-    sys.exit(main(sys.argv[1:]))
+    args = sys.argv[1:]
+    if "--steering-json" in args:
+        import contextlib
+        import io
+        with contextlib.redirect_stdout(io.StringIO()):
+            first = main([])
+    else:
+        first = main(args)
+    sys.exit(first or steering(args, quiet="--json" in args))
