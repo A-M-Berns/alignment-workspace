@@ -5,25 +5,27 @@ leaf_kind: task
 action: "Extend checkers/wiki_links.py to resolve each commit-pinned repository link against the local git objects (commit exists, path exists in its tree), with a null-input case for a pin naming a commit or path git does not have."
 who: agent
 item: "F9"
-title: "wiki_links accepts a commit pin that does not resolve"
+title: "wiki_links accepts a commit pin that does not resolve — *closed*"
 section: "Workspace friction"
 maintainer_order: 142
 project: none
-dispatchable: true
-item_status: open
+dispatchable: false
+item_status: closed
+work:
+  - {kind: decision, ref: 2026-11-10--wiki-links-resolve-pins}
 deliverable: "the extended house checker and its --self-test case; every existing wiki pin still passing."
 acceptance: "checkers/wiki_links.py --self-test fails a fabricated pin and passes the live wiki; the checkers job stays green."
 context: ["checkers/wiki_links.py", "wiki/Theorem-Spine.md"]
 author: "@claude-fable-5"
 size: S
 size_reason: "one check inside one gate, plus its null case"
-version: 1
+version: 2
 ---
 ## Statement
-Item F9, wiki_links accepts a commit pin that does not resolve, is answered as its entry specifies.
+Item F9, wiki_links accepts a commit pin that does not resolve — *closed*, is answered as its entry specifies.
 
 ## Source
-ATTENTION.md, item F9 (wiki_links accepts a commit pin that does not resolve).
+ATTENTION.md, item F9 (wiki_links accepts a commit pin that does not resolve — *closed*).
 
 ## Notes
 Filed by the site-priorities round (prompts/2026-11-05-site-priorities), which hit the defect; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py.
@@ -39,3 +41,9 @@ rule exists to refuse, and a fabricated-but-well-formed pin is the shape an agen
 takes. The fix is contained: resolve each pin against local git objects
 (`git cat-file`-grade checks, no network), and ship the null case — a well-formed pin
 naming a commit or path git does not have must fail.
+
+*2026-11-10, closed by the maintenance sweep (`DECISIONS.md`, 2026-11-10):* the checker
+resolves each pin with `git cat-file`, its self-test carries the null cases, the `checkers`
+job checks out the full history, and the eight occurrences of seven pins the live wiki
+carried that did not resolve — one of them the hash-with-a-wrong-tail shape this entry
+describes, on a second page — are re-pinned.

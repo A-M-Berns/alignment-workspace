@@ -134,6 +134,6 @@ certified as computations on the docket and the declared hypothesis space
 
 ## Evidence and verification
 
-- [LI-native deference note](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/deference/notes/LI_NATIVE_DEFERENCE.md)
-- [Corpus audit of retained and excluded routes](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/deference/rounds/2026-08-12-corpus-reconciliation/RECONCILIATION.md)<!--ref:round:2026-08-12-corpus-reconciliation-->
-- [Current deference terms](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/deference/notes/TERMS.md)
+- [LI-native deference note](https://github.com/A-M-Berns/alignment-workspace/blob/eb98367e24283996f4e95a6f79456598d1d27d65/projects/deference/notes/LI_NATIVE_DEFERENCE.md)
+- [Corpus audit of retained and excluded routes](https://github.com/A-M-Berns/alignment-workspace/blob/eb98367e24283996f4e95a6f79456598d1d27d65/projects/deference/rounds/2026-08-12-corpus-reconciliation/RECONCILIATION.md)<!--ref:round:2026-08-12-corpus-reconciliation-->
+- [Current deference terms](https://github.com/A-M-Berns/alignment-workspace/blob/eb98367e24283996f4e95a6f79456598d1d27d65/projects/deference/notes/TERMS.md)

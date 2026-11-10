@@ -2218,6 +2218,19 @@
       "registered_classes": [],
       "prompt": "prompts/2026-11-09-github-sign-in/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-11-10-maintenance-sweep",
+      "date": "2026-11-10",
+      "project": "enabling",
+      "path": "projects/enabling/rounds/2026-11-10-maintenance-sweep",
+      "verdict": null,
+      "depends_on": [
+        "2026-11-08-digests-and-daily-maintenance"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-11-10-maintenance-sweep/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

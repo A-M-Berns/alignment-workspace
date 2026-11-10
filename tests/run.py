@@ -49,6 +49,7 @@ GATE_SELF_TESTS = ("path_gate", "dco", "attribution",
                    "contrib_hygiene", "conservativity", "audit_axioms",
                    "workflow_scope", "lean_scope", "round_records",
                    "dead_pointers", "untracked_pointers", "site_build",
+                   "conflict_markers",
                    # live form is the scheduled audit (freshness.yml); it reads
                    # GitHub's merged-PR list, which a gate run cannot assume
                    "freshness")
@@ -141,6 +142,9 @@ if __name__ == "__main__":
     subprocess.run([sys.executable, "tests/dead_pointers.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "tests/untracked_pointers.py"], cwd=ROOT,
                    check=True)
+    # No tracked file carries git conflict markers (2026-11-10): one reached main
+    # inside DECISIONS.md with every other gate green.
+    subprocess.run([sys.executable, "tests/conflict_markers.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "-m", "checkers.workspace_state", "--check"],
                    cwd=ROOT, check=True)
     subprocess.run([sys.executable, "-m", "checkers.wiki_links"], cwd=ROOT, check=True)

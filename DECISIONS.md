@@ -69,6 +69,28 @@ commit.
   live across a change of vocabulary, which the docket does not record.  None is a theorem's.
   <!-- decision: open--broken-commitment-bars-or-accounts; touches: item:134, item:135; status: open -->
 
+- **What a research round files for itself on the map — F10 (2026-11-10).**  The protocol
+  has no node kind for a round: a round appears only as `round` work pointers on the nodes
+  for its results, items and decisions, and the two research rounds landed since the map
+  became canonical filed no node of their own.  The sweep's recommendation: the pointers
+  are the record, said in one sentence of `graph/PROTOCOL.md` §2, and no `round` node kind.
+  *Turns on:* taste about the map's vocabulary — whether a round is a thing a reader should
+  find on the canvas; a protocol sentence fixes it for every later round and dispatch.
+  <!-- decision: open--research-round-node-on-map; touches: item:F10; status: open -->
+
+- **Recording a dependency on an unindexed checkpoint — F7 (2026-11-10).**  Five
+  normativity checkpoints of 2026-08-30 under `projects/normativity/legitimacy/rounds/`
+  (`liability-theory`, `progress-consolidation`, `progress-liability-hard-pass`,
+  `progress-research`, `progress-witness-bridge`) have round directories and no
+  `state/rounds.json` record, so no later round can name one in `depends_on` without
+  failing `workspace_state --check`.  Three fixes, from the entry: index them
+  retroactively; a `depends_on_unindexed` field carrying paths; a rule that a checkpoint
+  is indexed at merge.  The sweep's recommendation: index them retroactively, `verdict:
+  null`, each `prompt` pointing at the directory's own record.  *Turns on:* external
+  knowledge — whether those checkpoints are results the program means to build on, or
+  history; an index record says the former to every later round.
+  <!-- decision: open--dependency-on-unindexed-checkpoint; touches: item:F7; status: open -->
+
 - **The exposure rule (2026-11-07).**  The score-side-binding round states, as a proposal on
   `wiki/Normativity.md`, that a constraint is enforceable only if some settlement or assessment
   could show it wrong, or the reasoner authored it; its fixtures sort the October rows as
@@ -7326,3 +7348,42 @@ certificate only where the image is computed, which is proved for one added coor
 allocates matters and names none for vocabulary, so who may issue a change is recorded as not
 determined.  What a broken commitment does to a change stays queued: the three readings are
 predicates beside the occurrence and none is its admission rule.
+
+### 2026-11-10 — conflict markers are a gate; F11 closed
+<!-- decision: 2026-11-10--conflict-markers-gate; touches: item:F11, tests/conflict_markers.py, tests/run.py -->
+
+**Agent-decided, reversible** (the maintenance sweep of 2026-11-10; friction F11).  Pull
+request #139 merged this file with git's conflict markers left around the 2026-11-08 and
+2026-11-09 entries, every gate green; the content-recollection follow-up (#142) removed
+them in its merge of `main` and filed F11.  `tests/conflict_markers.py` reads every
+tracked text file outside completed round records (`prompts/` and any `rounds/`
+directory, which may quote a marker) for git's opening and closing marker lines, fails on
+a tree with no tracked files, and runs under `tests/run.py`, so in the `python` job.
+Rejected alternative: a check confined to this file, which is where the defect bit and
+not the only place it can.
+
+### 2026-11-10 — wiki_links resolves every commit pin; F9 closed
+<!-- decision: 2026-11-10--wiki-links-resolve-pins; touches: item:F9, checkers/wiki_links.py, .github/workflows/ci.yml, wiki/ -->
+
+**Agent-decided, reversible** (the maintenance sweep of 2026-11-10; friction F9).
+`checkers/wiki_links.py` resolves each commit-pinned link into this repository with
+`git cat-file -e <sha>:<path>` — the commit must be in the local objects and the path in
+its tree — and its self-test carries the null cases: a hash differing from `HEAD` in its
+last four characters fails, as does a path `HEAD` lacks.  The `checkers` job checks out
+the full history, since a shallow clone lacks every pin but the newest.  The live wiki
+carried eight occurrences of seven pins the resolver refuses: four into the 2026-10-21
+rebuttal round and one into the September checkpoint, each pinned to a commit older than
+the linked files, and three in `wiki/Value-Change-as-Belief-Change.md` pinned to a hash
+that differs from a real branch commit in its last four characters — the F9 shape, on a
+second page.  All eight are re-pinned to `eb98367e`, `main` at this sweep's base, which
+holds every path.  **The pull request's first CI run then refused thirty-two more
+occurrences of twenty-two links**, in seven pages, pinned to two August commits
+(`76b65e5c…`, `46032abe…`) that no branch of the repository reaches: they survive as
+objects in older clones, where the sweep's local run had passed them, and nowhere CI can
+fetch.  The resolver therefore requires the commit to be reachable from some ref
+(`git rev-list --all`), with a dangling commit as the null case, and those thirty-two are
+re-pinned to `eb98367e` as well: twenty of the twenty-two paths are byte-identical there,
+one differs in a single line of register wording, and one — the traderized-enforcement
+round directory — was pinned to the round's first commit and now cites its completed tree.
+Rejected alternative: resolving pins against the forge over the network, which the checker
+is forbidden.
