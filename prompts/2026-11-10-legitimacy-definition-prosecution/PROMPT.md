@@ -155,7 +155,7 @@ survives, state its reopening condition as a checkable event: a concrete scenari
 classified legitimate by L0–L3∧W and illegitimate by the frozen bank's standards, or
 the converse — the artifact, not an intuition.
 
-Scope grant: the round may file `PRIORITIES.md` items for (i) the equivalence-forms
+Scope grant: the round may file `ATTENTION.md` items for (i) the equivalence-forms
 round, (ii) the consumer-lemma round, (iii) the advisor-respect (screening-off)
 definition that T12 delimits — this prompt is the authorization record; the filings
 are named in the report. Anything reserved to the maintainer lands in an Outstanding
