@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "831bc9ff401675f8d5052a91",
-  "index.json": "e69b16b1236d9f1804001a24"
+  "derived.json": "5fd3211e50edaccd313a9658",
+  "index.json": "6018e089346d7d50ed57de09"
  },
- "generated_hash": "b2bec7f5f03b396b08c89bb5",
+ "generated_hash": "b79c70b54ef50b9ca760dbdd",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -6163,6 +6163,230 @@
     "version": 1
    }
   ],
+  "exact.account-preserves-criterion": [
+   {
+    "date": "2026-11-10",
+    "normalized": "an account bounded below over live prefixes preserves the criterion no efficiently computable trader exploits a dual certified market",
+    "version": 1
+   }
+  ],
+  "exact.account-preserves-criterion.bridge": [
+   {
+    "date": "2026-11-10",
+    "normalized": "the statement of record of exact account preserves criterion formalizes the registered claim as the registry reads it an account bounded below over live prefixes preserves the criterion no efficiently computable trader exploits a dual certified market",
+    "version": 1
+   }
+  ],
+  "exact.account-preserves-criterion.complete": [
+   {
+    "date": "2026-11-10",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "exact.account-preserves-criterion.record": [
+   {
+    "date": "2026-11-10",
+    "normalized": "the declaration workspace normativity contrib exactconditions dualcertifiedmarket no_efficient_trader_exploits is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "exact.conditional-bridge": [
+   {
+    "date": "2026-11-10",
+    "normalized": "under the per day ceiling and the frequency hypothesis on the realized normalized stakes the stakes are summable and the account is bounded below",
+    "version": 1
+   }
+  ],
+  "exact.conditional-bridge.bridge": [
+   {
+    "date": "2026-11-10",
+    "normalized": "the statement of record of exact conditional bridge formalizes the registered claim as the registry reads it under the per day ceiling and the frequency hypothesis on the realized normalized stakes the stakes are summable and the account is bounded below",
+    "version": 1
+   }
+  ],
+  "exact.conditional-bridge.complete": [
+   {
+    "date": "2026-11-10",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "exact.conditional-bridge.record": [
+   {
+    "date": "2026-11-10",
+    "normalized": "the declaration workspace normativity contrib exactconditions bridge bridge is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "exact.entailed-conditions-free": [
+   {
+    "date": "2026-11-10",
+    "normalized": "a dual certified market whose day regions are the deductive regions of a scheduled fragment is unexploited and prices each fragment in the hull of the plausible truth assignments exactly",
+    "version": 1
+   }
+  ],
+  "exact.entailed-conditions-free.bridge": [
+   {
+    "date": "2026-11-10",
+    "normalized": "the statement of record of exact entailed conditions free formalizes the registered claim as the registry reads it a dual certified market whose day regions are the deductive regions of a scheduled fragment is unexploited and prices each fragment in the hull of the plausible truth assignments exactly",
+    "version": 1
+   }
+  ],
+  "exact.entailed-conditions-free.complete": [
+   {
+    "date": "2026-11-10",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "exact.entailed-conditions-free.record": [
+   {
+    "date": "2026-11-10",
+    "normalized": "the declaration workspace normativity contrib exactconditions dualcertifiedmarket deductive_exact is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "exact.floor-market": [
+   {
+    "date": "2026-11-10",
+    "normalized": "every assessment and every schedule of one floor per day has a dual certified market prices satisfying each floor exactly with ceiling 3",
+    "version": 1
+   }
+  ],
+  "exact.floor-market.bridge": [
+   {
+    "date": "2026-11-10",
+    "normalized": "the statement of record of exact floor market formalizes the registered claim as the registry reads it every assessment and every schedule of one floor per day has a dual certified market prices satisfying each floor exactly with ceiling 3",
+    "version": 1
+   }
+  ],
+  "exact.floor-market.complete": [
+   {
+    "date": "2026-11-10",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "exact.floor-market.record": [
+   {
+    "date": "2026-11-10",
+    "normalized": "the declaration workspace normativity contrib exactconditions floorschedule exists_market is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "exact.fresh-floor-exploited": [
+   {
+    "date": "2026-11-10",
+    "normalized": "floors 1 2 n 1 on a fresh atom each day each settled true the next day are exploited in every history satisfying them",
+    "version": 1
+   }
+  ],
+  "exact.fresh-floor-exploited.bridge": [
+   {
+    "date": "2026-11-10",
+    "normalized": "the statement of record of exact fresh floor exploited formalizes the registered claim as the registry reads it floors 1 2 n 1 on a fresh atom each day each settled true the next day are exploited in every history satisfying them",
+    "version": 1
+   }
+  ],
+  "exact.fresh-floor-exploited.complete": [
+   {
+    "date": "2026-11-10",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "exact.fresh-floor-exploited.record": [
+   {
+    "date": "2026-11-10",
+    "normalized": "the declaration workspace normativity contrib exactconditions freshfloor_seller_exploits is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "exact.prefix-reserve-bound": [
+   {
+    "date": "2026-11-10",
+    "normalized": "a prefix reserve bounds the account below by u 1 r r at every profile it retains mass r on",
+    "version": 1
+   }
+  ],
+  "exact.prefix-reserve-bound.bridge": [
+   {
+    "date": "2026-11-10",
+    "normalized": "the statement of record of exact prefix reserve bound formalizes the registered claim as the registry reads it a prefix reserve bounds the account below by u 1 r r at every profile it retains mass r on",
+    "version": 1
+   }
+  ],
+  "exact.prefix-reserve-bound.complete": [
+   {
+    "date": "2026-11-10",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "exact.prefix-reserve-bound.record": [
+   {
+    "date": "2026-11-10",
+    "normalized": "the declaration workspace normativity contrib exactconditions dualcertifiedmarket reserve_bound is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "exact.seller-obstruction": [
+   {
+    "date": "2026-11-10",
+    "normalized": "a staked account bounded above and unbounded below over live prefixes makes the seller of the demanded bets exploit every history satisfying the condition",
+    "version": 1
+   }
+  ],
+  "exact.seller-obstruction.bridge": [
+   {
+    "date": "2026-11-10",
+    "normalized": "the statement of record of exact seller obstruction formalizes the registered claim as the registry reads it a staked account bounded above and unbounded below over live prefixes makes the seller of the demanded bets exploit every history satisfying the condition",
+    "version": 1
+   }
+  ],
+  "exact.seller-obstruction.complete": [
+   {
+    "date": "2026-11-10",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "exact.seller-obstruction.record": [
+   {
+    "date": "2026-11-10",
+    "normalized": "the declaration workspace normativity contrib exactconditions condition seller_exploits is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "exact.tightening-floor-exploited": [
+   {
+    "date": "2026-11-10",
+    "normalized": "the floor 1 2 n 1 on a sentence a live world refutes on every day is exploited in every history satisfying it",
+    "version": 1
+   }
+  ],
+  "exact.tightening-floor-exploited.bridge": [
+   {
+    "date": "2026-11-10",
+    "normalized": "the statement of record of exact tightening floor exploited formalizes the registered claim as the registry reads it the floor 1 2 n 1 on a sentence a live world refutes on every day is exploited in every history satisfying it",
+    "version": 1
+   }
+  ],
+  "exact.tightening-floor-exploited.complete": [
+   {
+    "date": "2026-11-10",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "exact.tightening-floor-exploited.record": [
+   {
+    "date": "2026-11-10",
+    "normalized": "the declaration workspace normativity contrib exactconditions tighteningfloor_seller_exploits is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
   "expert-knows-own-estimates": [
    {
     "date": "2026-10-20",
@@ -8844,6 +9068,34 @@
    {
     "date": "2026-11-09",
     "normalized": "item 135 bounded memory the state a forgetting reasoner retains is delivered in the shape its entry states lean proved the retained state as a type the forgetting step on it the exactness theorem against the full record and either a space bound in the live coordinates live items and reason sets or the fixture showing none",
+    "version": 1
+   }
+  ],
+  "item-136": [
+   {
+    "date": "2026-11-10",
+    "normalized": "item 136 an exactly compliant market for a schedule of rational polytopes is delivered in the shape its entry states lean proved a dualcertifiedmarket for every schedule of finitely many floors and ceilings per day and for every schedule of nonempty rational polytopes given by rows or the lemma that is missing stated as a lean proposition with what was tried",
+    "version": 1
+   }
+  ],
+  "item-137": [
+   {
+    "date": "2026-11-10",
+    "normalized": "item 137 which conditions a logical inductor can honour exactly between the reserve and the obstruction is delivered in the shape its entry states lean proved efficientlycomputable for the two sellers and either the duality theorem for the prefix reserve bound on a finite profile space or a fixture with a gap",
+    "version": 1
+   }
+  ],
+  "item-138": [
+   {
+    "date": "2026-11-10",
+    "normalized": "item 138 the frequency hypothesis of the conditional bridge from pseudorandomness is delivered in the shape its entry states lean proved bridge frequency for a dual certified market with one fresh floor per day from a named frequency hypothesis over efficiently expressible weightings or the counterexample market",
+    "version": 1
+   }
+  ],
+  "item-139": [
+   {
+    "date": "2026-11-10",
+    "normalized": "item 139 extraction from an account unbounded below to an exploiting trader is delivered in the shape its entry states lean proved the seller with feature valued stakes and its value bound and either the extraction theorem under a stated efficiency hypothesis on the multipliers or the fixture separating an unbounded account from exploitation",
     "version": 1
    }
   ],

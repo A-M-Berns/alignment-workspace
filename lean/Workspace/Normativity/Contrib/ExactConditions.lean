@@ -604,16 +604,13 @@ lemma freshFloor_account (N : ℕ) (x : Sentence → ℝ) :
   push_cast
   ring
 
-/-- **A6(b), value form.**  Against every history satisfying the fresh floors, selling `n`
-shares of the day-`n` atom is worth at least `-1` in every world and at least `N - 1`
-after day `N` where the day-`N` atom is false. -/
-theorem freshFloor_seller_value (P : History) (hmem : ∀ n, freshFloor.Holds n (P n))
-    (v : PCWorld) (N : ℕ) :
-    -1 ≤ (freshFloor.seller dayStake).netWorth P v N ∧
-      (¬ v.Holds (.atom N) → (N : ℝ) - 1 ≤ (freshFloor.seller dayStake).netWorth P v N) := by
-  have hge := freshFloor.seller_netWorth_ge dayStake (fun n _ => Nat.cast_nonneg n)
-    P hmem v N
-  rw [freshFloor_account, Finset.sum_sub_distrib, sum_nat_mul_half_pow] at hge
+/-- The staked account of the fresh floors is at most `1` at every world, and at most
+`1 - N` through day `N` where the day-`N` atom is false. -/
+lemma freshFloor_account_le (v : PCWorld) (N : ℕ) :
+    freshFloor.account (fun n j => (dayStake n j : ℝ)) N v.payout ≤ 1 ∧
+      (¬ v.Holds (.atom N) →
+        freshFloor.account (fun n j => (dayStake n j : ℝ)) N v.payout ≤ 1 - (N : ℝ)) := by
+  rw [freshFloor_account, Finset.sum_sub_distrib, sum_nat_mul_half_pow]
   have hpow : (0 : ℝ) ≤ ((N : ℝ) + 2) * (1 / 2 : ℝ) ^ (N + 1) := by positivity
   have hterm : ∀ n ∈ Finset.range (N + 1),
       (0 : ℝ) ≤ (n : ℝ) * (1 - v.payout (.atom n)) := fun n _ =>
@@ -627,6 +624,21 @@ theorem freshFloor_seller_value (P : History) (hmem : ∀ n, freshFloor.Holds n 
       Finset.single_le_sum hterm (Finset.self_mem_range_succ N)
     rw [payout_of_not_holds hφ] at hlast
     linarith
+
+/-- **A6(b), value form.**  Against every history satisfying the fresh floors, selling `n`
+shares of the day-`n` atom is worth at least `-1` in every world and at least `N - 1`
+after day `N` where the day-`N` atom is false. -/
+theorem freshFloor_seller_value (P : History) (hmem : ∀ n, freshFloor.Holds n (P n))
+    (v : PCWorld) (N : ℕ) :
+    -1 ≤ (freshFloor.seller dayStake).netWorth P v N ∧
+      (¬ v.Holds (.atom N) → (N : ℝ) - 1 ≤ (freshFloor.seller dayStake).netWorth P v N) := by
+  have hge := freshFloor.seller_netWorth_ge dayStake (fun n _ => Nat.cast_nonneg n)
+    P hmem v N
+  have hle := freshFloor_account_le v N
+  constructor
+  · linarith [hle.1]
+  · intro hφ
+    linarith [hle.2 hφ]
 
 /-- **A6(b).**  If on every day a world refuting that day's atom is live, the seller
 exploits every history satisfying the fresh floors. -/
@@ -693,6 +705,23 @@ theorem freshFloor_witness :
     simp only [revealProcess, Finset.mem_image, Finset.mem_range]
     exact ⟨n, Nat.lt_succ_self n, rfl⟩)
 
+/-- **A5 is inhabited**: the hypothesis package of `Condition.seller_exploits` — an
+assessment, a condition, a nonnegative staking, a history satisfying the condition, and a
+staked account bounded above and unbounded below over live prefixes. -/
+theorem seller_exploits_witness :
+    (∀ n j, 0 ≤ dayStake n j) ∧ (∀ n, freshFloor.Holds n (oneHistory n)) ∧
+      (∀ N v, (ofDeductiveProcess revealProcess).Live N v →
+        freshFloor.account (fun n j => (dayStake n j : ℝ)) N v.payout ≤ 1) ∧
+      ∀ B : ℝ, ∃ N v, (ofDeductiveProcess revealProcess).Live N v ∧
+        freshFloor.account (fun n j => (dayStake n j : ℝ)) N v.payout < -B := by
+  refine ⟨fun n _ => Nat.cast_nonneg n, oneHistory_holds _ _ tighteningLevel_le_one,
+    fun N v _ => (freshFloor_account_le v N).1, fun B => ?_⟩
+  obtain ⟨N, hN⟩ := exists_nat_gt (B + 1)
+  refine ⟨N, prefixWorld N, prefixWorld_live N, ?_⟩
+  have h := (freshFloor_account_le (prefixWorld N) N).2
+    (fun h => lt_irrefl N ((prefixWorld_holds_atom N N).mp h))
+  linarith
+
 /-- The world refuting every atom. -/
 def allFalse : PCWorld := boolPCWorld fun _ => false
 
@@ -745,4 +774,5 @@ end Workspace.Normativity.Contrib.ExactConditions
 #print axioms Workspace.Normativity.Contrib.ExactConditions.freshFloor_seller_exploits
 #print axioms Workspace.Normativity.Contrib.ExactConditions.freshFloor_not_isLogicalInductor
 #print axioms Workspace.Normativity.Contrib.ExactConditions.freshFloor_witness
+#print axioms Workspace.Normativity.Contrib.ExactConditions.seller_exploits_witness
 #print axioms Workspace.Normativity.Contrib.ExactConditions.tighteningFloor_witness

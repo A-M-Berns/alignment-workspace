@@ -2231,6 +2231,33 @@
       "registered_classes": [],
       "prompt": "prompts/2026-11-10-maintenance-sweep/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-11-10-exact-conditions-capital",
+      "date": "2026-11-10",
+      "project": "normativity",
+      "path": "projects/normativity/rounds/2026-11-10-exact-conditions-capital",
+      "verdict": "EXACT-CONDITIONS — a condition the prices satisfy exactly (finitely many demanded bets per day) is carried by a dual-certified market, whose cost is one scalar account; the account is at most 2 + ε at live worlds, and if it is bounded below no efficiently computable trader exploits; conditions every live world satisfies cost nothing; a prefix reserve bounds the account below by −U(1 − r)/r at a profile retaining mass r; against any history satisfying a condition, a staking whose account is bounded above and unbounded below makes the seller of the demanded bets exploit, and two floor conditions have one; under a frequency hypothesis on the realized normalized stakes the account of one fresh floor per day is bounded; every schedule of one floor per day has a dual-certified market, built from the pinned market maker by reparametrizing the day's prices. Open: the general polytope, computability of the market, efficiency of the sellers, the frequency hypothesis, and the converse of preservation.",
+      "verdict_source": "projects/normativity/rounds/2026-11-10-exact-conditions-capital/README.md",
+      "depends_on": [
+        "2026-08-16-traderized-enforcement",
+        "2026-08-19-deductive-region"
+      ],
+      "depends_on_source": "report",
+      "registered_classes": [
+        "lean-proved"
+      ],
+      "prompt": "prompts/2026-11-10-exact-conditions-capital/PROMPT.md",
+      "claim_changes": [
+        "exact.account-preserves-criterion",
+        "exact.entailed-conditions-free",
+        "exact.prefix-reserve-bound",
+        "exact.seller-obstruction",
+        "exact.tightening-floor-exploited",
+        "exact.fresh-floor-exploited",
+        "exact.conditional-bridge",
+        "exact.floor-market"
+      ]
     }
   ]
 }

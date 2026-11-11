@@ -201,7 +201,7 @@ Work an agent can do without a human; the map's ordering, not `ATTENTION.md`'s.
 ## By goal
 The goals in the frame tree's order (the agenda's outline): kind and role, the best ranked unit and its rank, the count of units, and the Statement's first clause. A rank past the printed list is in `derived.json` (each unit's `rank`), and `--all` prints every ranked unit.
 - the-program (frame, owner @A-M-Berns, @abramdemski): How can a powerful AI develop in line with humanity's interests without relying on control — and how can we get mathematical guarantees that it does?
-  - normativity (frame, owner @A-M-Berns; holds 36; owner has not confirmed): What does learning from reasons require of a reasoner: which statics a normative seed forces, how a constraint acquires operative force in a market, and what the Normative Inductor, from seed through reasons, compile, enforcement and revision, establishes end to end?
+  - normativity (frame, owner @A-M-Berns; holds 48; owner has not confirmed): What does learning from reasons require of a reasoner: which statics a normative seed forces, how a constraint acquires operative force in a market, and what the Normative Inductor, from seed through reasons, compile, enforcement and revision, establishes end to end?
     - seed-theory (frame, owner @A-M-Berns; holds 32; owner has not confirmed): What does a normative seed force on the prices of a settled fragment, how does that change under settlement, defeat and rebuttal, and do reasoners starting from different seeds end up anywhere together?
     - operative-force (frame, owner @A-M-Berns; holds 27; owner has not confirmed): How does a constraint acquire operative force in a logical inductor's market without destroying the property that nobody can pump the reasoner, and what does that force cost?
       - traderized-finite-date-conformance (shared claim of operative-force) — best unit: 1330. vet compiler.deductive-end-to-end.bridge; 16 unit(s); A constraint on prices compiles to a legal trading strategy inside the market recursion
@@ -699,4 +699,4 @@ In order: the owners' priority words, gestalts that set a goal's promise, estima
 - gestalt agency-correspondence-refuted — informs 1 goal; the derived number multiplies 3 unread guesses; your holistic number for agency-correspondence-refuted (about two minutes) sets its promise — under agency-correspondence-refuted
 - gestalt ro-generalized-kakutani-refuted — informs 1 goal; the derived number multiplies 3 unread guesses; your holistic number for ro-generalized-kakutani-refuted (about two minutes) sets its promise — under ro-generalized-kakutani-refuted
 - … 240 more unranked units in `derived.json` (`--all` prints them)
-<!-- generated_hash: bc86d154903468df07094482 -->
+<!-- generated_hash: 30286c843d4aacff10fce662 -->

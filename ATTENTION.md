@@ -785,6 +785,131 @@ clause of `deductive_end_to_end`.
 `projects/normativity/rounds/2026-08-16-traderized-enforcement/PROOF_CLOSURE.md`; the step
 `traderized-finite-date-conformance` of the map, whose action this item was.
 
+### 136. An exactly compliant market for a schedule of rational polytopes — **[substantial]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+*Registered results bearing on this item:* exact.floor-market.
+
+A `DualCertifiedMarket` (`ExactConditions`) is a rational price history over an assessment, a
+condition — finitely many demanded bets per day — that the prices satisfy exactly, nonnegative
+multipliers, and the day inequality: at every cube valuation the realized trading firm's day
+value plus the multiplier-weighted bets is at most the day's tolerance. One exists for every
+assessment and every schedule of one floor per day (`ExactConditionsFloor.FloorSchedule.market`,
+registered `exact.floor-market`). The day's prices are reparametrized `x = lo + (1 - lo) y`, the
+pinned `MarketMaker` prices the firm's strategy with that substitution made in its day-`n` price
+features (`liftDay`), and the multiplier on the floor is the size of the firm's negative
+aggregate position on the floored sentence; no projection and no duality is used. The day
+inequality is proved for an arbitrary lower-bound function (`floor_day_le`), so what one floor
+per day restricts is the belief state and the condition's bookkeeping, not the estimate.
+Wanted: (a) finitely many floors and ceilings per day — the substitution `lo + (hi - lo) y`,
+with the multiplier on a ceiling the positive part of the position; (b) a nonempty rational
+polytope `K` per day given by rows: for the day's continuous firm trade `t(p)`, a rational
+`p ∈ K` with `t(p)·(y - p) < ε` for every `y ∈ K` — a fixed point of `p ↦ proj_K(p + t(p))` by
+the pinned `brouwer_fixed_point`, which is stated for any compact convex set, then a rational
+point of `K` near it — and multipliers `μ ≥ 0` with `t(p)·(w - p) + Σ_j μ_j g_j(w) < ε` at
+every cube `w`, from the rational alternative `RowAlternative.alternative`; (c) the assembly
+into a `DualCertifiedMarket`; (d) `ComputableMarket` for the result, which the floor market
+lacks as well: its day step is the pinned search run on a substituted strategy, and no
+partial-recursive presentation of the resulting quote table is proved.
+
+*Deliverable shape:* `lean-proved`; a `DualCertifiedMarket` for every schedule of finitely many floors and ceilings per day, and for every schedule of nonempty rational polytopes given by rows, or the lemma that is missing stated as a Lean proposition with what was tried.
+*Acceptance check:* the Lean audit clean; `ExactConditions.FloorSchedule.market`'s condition recovered as an instance of the schedule the construction accepts.
+*Context:* `lean/Workspace/Normativity/Contrib/ExactConditions.lean`; `lean/Workspace/Normativity/Contrib/ExactConditionsFloor.lean`; `lean/Workspace/Normativity/Contrib/RowAlternative.lean`; `projects/normativity/rounds/2026-11-10-exact-conditions-capital/REPORT.md`.
+*Consumed by:* item 137 (a compatibility theorem needs a compliant market to be about); item 139.
+
+### 137. Which conditions a logical inductor can honour exactly: between the reserve and the obstruction — **[open]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+*Registered results bearing on this item:* exact.account-preserves-criterion, exact.entailed-conditions-free, exact.fresh-floor-exploited, exact.prefix-reserve-bound, exact.seller-obstruction, exact.tightening-floor-exploited.
+
+What a condition costs a dual-certified market is one scalar, the account
+`Q_N(W) = Σ_{n ≤ N} Σ_j μ_{n,j} g_{n,j}(W)`. It is at most `2 + ε` at every live world
+(`DualCertifiedMarket.account_le`), and if it is bounded below over live prefixes no
+efficiently computable trader exploits the market (`no_efficient_trader_exploits`, registered
+`exact.account-preserves-criterion`). Two things are proved about when it is bounded. A
+**prefix reserve** — a mass on finitely many world profiles, shrinking day by day, each day's
+mass on worlds live that day and averaging each of that day's rows to a nonnegative value —
+bounds it below by `-U(1 - r)/r` at a profile retaining mass `r` (`reserve_bound`, registered
+`exact.prefix-reserve-bound`); rows every live world satisfies cost nothing
+(`exact.entailed-conditions-free`). Against any history satisfying a condition, with no
+certificate, a staking whose account is bounded above and unbounded below makes the seller of
+the demanded bets exploit (`Condition.seller_exploits`, registered `exact.seller-obstruction`),
+and two conditions have such a staking: a floor tightening to one on a sentence that stays
+undecided, and floors `1 - 2^-(n+1)` on fresh atoms each settled true the next day
+(`exact.tightening-floor-exploited`, `exact.fresh-floor-exploited`). At a constant level
+`c < 1` the fresh floors are honoured by an unexploited market (`constantFresh_unexploited`).
+Wanted: (a) `EfficientlyComputable` for `(tighteningFloor φ).seller unitStake` and
+`freshFloor.seller dayStake` against the pinned dependency's definition — one trade of a
+rational constant per day — which the two `not_isLogicalInductor` forms take as a hypothesis;
+(b) exactness of the reserve bound: for fixed `N` and a finite profile space, whether the
+infimum of `Q_N(ω)` over multiplier sequences satisfying the day-by-day ceilings
+`Q_n ≤ U` on profiles live at `n` equals the supremum over prefix reserves of
+`-U(1 - r_N(ω))/r_N(ω)`, by linear-programming duality, or a fixture with a gap; (c) the
+finite-model equivalence: for a condition constant in time on finitely many payoff profiles all
+live forever, a compliant constant pricing against which no staking has an account bounded
+above and unbounded below exists iff the region meets the relative interior of the hull of the
+profiles; (d) the relation of `account_ge_neg_odds` to
+`OddsBankroll.Account.netWorth_ge_neg_odds` as a reduction — the force layer's units are
+intensity times violation, and whether they are multipliers of some dual-certified market is
+not settled.
+
+*Deliverable shape:* `lean-proved`; `EfficientlyComputable` for the two sellers, and either the duality theorem for the prefix reserve bound on a finite profile space or a fixture with a gap.
+*Acceptance check:* the Lean audit clean; `tighteningFloor_not_isLogicalInductor` and `freshFloor_not_isLogicalInductor` restated with no efficiency hypothesis; `oneFloor_reserve_bound` recovered as an instance of the duality theorem or shown strict.
+*Context:* `lean/Workspace/Normativity/Contrib/ExactConditions.lean`; `lean/Workspace/Normativity/Contrib/ExactConditionsReserve.lean`; `lean/Workspace/Normativity/Contrib/OddsBankroll.lean`; `projects/normativity/rounds/2026-11-10-exact-conditions-capital/THEOREM.md`.
+*Consumed by:* item 139 (an extracted staking is a seller); item 126 (the bankroll across repeated reopenings is a reserve that releases mass at each reopening).
+
+### 138. The frequency hypothesis of the conditional bridge, from pseudorandomness — **[open]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+*Registered results bearing on this item:* exact.conditional-bridge.
+
+One floor `c ≤ price(φ_n)` per day on a fresh sentence settled the next day, with realized
+truth values `x_n`. `Bridge.bridge` (registered `exact.conditional-bridge`) bounds the account
+below and makes the multipliers summable under two hypotheses: the per-day ceiling, which
+`DualCertifiedMarket.account_le` supplies, and `Bridge.Frequency` — if the normalized stakes
+`ratio n = μ_n / (U + 1 - Q_{n-1})` are not summable, then eventually their `x`-weighted
+partial sums exceed the `c + γ` fraction of their partial sums. The weighting is the market's
+own: it is determined by the multipliers the market maker's fixed point produces, and nothing
+proved makes it efficiently expressible. The hypothesis is inhabited only where every realized
+value is one (`constantFresh_unexploited`), where it holds for any weighting.
+`WarrantSolvency.Schema.bounded_iff_frequency` is the same shape with unit stakes: there the
+count is unweighted and the bound is an equivalence. Wanted: (a) `Bridge.Frequency` for a
+dual-certified market with one fresh floor per day, from the hypothesis that the realized
+values have limiting frequency at least `c + γ` along every efficiently expressible weighting
+in the sense of the pinned dependency's pseudorandomness properties — which needs the
+normalized stakes to be such a weighting, or to be dominated by one; (b) failing that, a
+dual-certified market and a truth sequence with frequency above `c + γ` along every such
+weighting whose account is unbounded below; (c) the converse reading: whether a failure of
+`Bridge.Frequency` yields a staking for `Condition.seller_exploits`.
+
+*Deliverable shape:* `lean-proved`; `Bridge.Frequency` for a dual-certified market with one fresh floor per day from a named frequency hypothesis over efficiently expressible weightings, or the counterexample market.
+*Acceptance check:* the Lean audit clean; `DualCertifiedMarket.accountBounded_of_frequency` applied with the derived hypothesis to a schedule whose realized values are not all one.
+*Context:* `lean/Workspace/Normativity/Contrib/ExactConditionsReserve.lean`; `lean/Workspace/Normativity/Contrib/ExactConditionsFloor.lean`; `lean/Workspace/Normativity/Contrib/WarrantSolvency.lean`; `projects/normativity/rounds/2026-11-10-exact-conditions-capital/THEOREM.md`.
+*Consumed by:* item 61 (solvency of a warrant schema as a frequency statement); item 137.
+
+### 139. Extraction: from an account unbounded below to an exploiting trader — **[open]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+In a dual-certified market, an efficiently computable trader that exploits forces the
+account below every bound (`DualCertifiedMarket.account_unbounded_of_exploit`). The converse is
+not proved. The market's own multipliers are a staking whose account is bounded above, by
+`account_le`, so if the account is also unbounded below `Condition.seller_exploits` would make
+the seller staking them exploit — but that seller is defined for rational constants fixed in
+advance (`Condition.sellStrategy` trades `EF.const` coefficients), and the multipliers are
+functions of the day's prices: in the floor market, the negative part of the firm's aggregate
+position on the floored sentence at the posted prices (`FloorSchedule.mu`). Wanted: (a) the
+seller with stakes given by expressible features of rank at most the day, and the bound
+`seller_netWorth_ge` for it; (b) for the floor market, the multiplier as such a feature — the
+firm's position is a finite sum of the features of its day strategy — and what efficiency of
+the resulting trader would require, the firm's day strategy growing with the day; (c) the
+extraction theorem: an account unbounded below over live prefixes gives an efficiently
+computable trader exploiting the market, under whatever hypothesis on the multipliers (b)
+shows is needed; or a dual-certified market whose account is unbounded below and which no
+efficiently computable trader exploits, in which case boundedness of the account is sufficient
+for the criterion and not necessary.
+
+*Deliverable shape:* `lean-proved`; the seller with feature-valued stakes and its value bound, and either the extraction theorem under a stated efficiency hypothesis on the multipliers or the fixture separating an unbounded account from exploitation.
+*Acceptance check:* the Lean audit clean; `Condition.seller_netWorth_ge` recovered at constant features; the converse of `DualCertifiedMarket.account_unbounded_of_exploit` proved under the stated hypothesis or refuted by the fixture.
+*Context:* `lean/Workspace/Normativity/Contrib/ExactConditions.lean`; `lean/Workspace/Normativity/Contrib/ExactConditionsFloor.lean`; `lean/Workspace/Normativity/Contrib/AssessmentFirm.lean`; `projects/normativity/rounds/2026-11-10-exact-conditions-capital/REPORT.md`.
+*Consumed by:* item 137 (with extraction, an account bounded below is necessary as well as sufficient); item 40 (necessity of bounded cumulative liability).
+
 ## Normativity line — legitimacy
 Items 53–59 are the residual blockers the legitimacy prosecutions of 2026-08-21
 through 2026-08-23 left behind, filed by

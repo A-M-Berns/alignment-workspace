@@ -7387,3 +7387,27 @@ one differs in a single line of register wording, and one — the traderized-enf
 round directory — was pinned to the round's first commit and now cites its completed tree.
 Rejected alternative: resolving pins against the forge over the network, which the checker
 is forbidden.
+
+### 2026-11-10 — exact conditions enter as a dual-certified interface; the floor market inhabits it
+<!-- decision: 2026-11-10--exact-conditions-as-dual-certified-interface; touches: item:136, item:137, item:138, item:139, claim:exact.account-preserves-criterion, claim:exact.entailed-conditions-free, claim:exact.prefix-reserve-bound, claim:exact.seller-obstruction, claim:exact.tightening-floor-exploited, claim:exact.fresh-floor-exploited, claim:exact.conditional-bridge, claim:exact.floor-market -->
+
+**Agent-decided, reversible** (the exact-conditions round,
+`prompts/2026-11-10-exact-conditions-capital/`).  A condition the prices satisfy exactly is
+recorded as `ExactConditions.DualCertifiedMarket`: a rational history over an assessment, a
+`Condition` of finitely many demanded bets per day, nonnegative multipliers, and the day
+inequality at every cube valuation; the account is the multiplier-weighted sum of the bets.
+The theorems on it are stated over any such market.  Three choices are the round's.
+(1) The day inequality quantifies over cube valuations.  Rejected alternative: over worlds
+only, which every theorem of the round would accept and which is weaker to assume; the cube
+form is what the pinned market maker's fixed point and a duality certificate both produce, and
+the dispatch asked for it where the market-maker lemmas support it.  (2) A demanded bet is a
+new type `Bet` (a trade list and a constant) rather than `EnforcementStrategy.Row` or
+`NormativeInductorComposition.Row d`.  Rejected alternative: reusing either; the first carries
+an enforcement intensity and sums over a presentation's coordinate list, the second is over
+`Fin d` in `≤` form, and the seller of a bet is its trade list negated.  (3) The interface is
+inhabited by construction for schedules of one floor per day (`FloorSchedule.market`), by
+reparametrizing the day's prices and reusing the pinned `MarketMaker`, with the general
+polytope filed as item 136.  Rejected alternative: shipping the interface with the
+unconstrained market as its only inhabitant, which would have left every theorem with a
+nontrivial condition uninhabited.  Items 136–139 are filed under the dispatch's scope.
+
