@@ -13,6 +13,15 @@ Reopening condition: a concrete scenario, written as a case module in `fixture/c
 with a pre-registered verdict and a cited source, that L0–L3 ∧ W classifies legitimate
 and the bank's standards classify illegitimate, or the converse.
 
+## Standing
+
+Not developed further (`DECISIONS.md`, `2026-11-11--legitimacy-purpose-first-direction`):
+the fixtures and verdicts here are the record of what was computed, and the legitimacy
+line's working direction is a purpose-first account. The idea the steering follow-up
+tests, that manipulation is the distortion of an actor away from its purpose, is Sam
+Eisenstat's. Closely related work on the same problem: Nora Ammann, *The Value Change
+Problem* (<https://www.alignmentforum.org/s/3QXNgNKXoLrdXJwWE>).
+
 ## Run
 
     python3 run.py          # the table, the ablations, the audits, the diagnostics

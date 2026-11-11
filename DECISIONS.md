@@ -7447,3 +7447,33 @@ Attainable value is compared with the adviser absent. Rejected alternative: the 
 honest policy as baseline, under which a liar's `ΔAV` is measured against being told the truth
 and N3 no longer shows a lie raising her value. Also decided: the entries of items 136 and 138 are
 extended with what the follow-up computed, their Statements unchanged; no item is filed.
+
+### 2026-11-11 — the legitimacy line turns to a purpose-first account; the prosecution round's mathematics is not developed further
+<!-- decision: 2026-11-11--legitimacy-purpose-first-direction; touches: node:legitimacy, item:136, item:137, item:138 -->
+
+**Maintainer ruling** (A. M. Berns, 2026-11-11; recorded at his direction by Claude Fable 5.2).
+
+*Direction.* The mathematics of the legitimacy definition prosecution round — the first
+pass's L0–L3 ∧ W and the steering follow-up's arm's-length and faithful-adviser standards,
+under `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/` —
+is not developed further. Its fixtures and verdicts stand as the record of what was computed.
+The line's working direction is a purpose-first account: an agent's purpose is that its
+expectations and values be determined by its own cognition, and influence on them is
+manipulation where it does not pass through that cognition. Two questions are open under it:
+what separates cognition that is used from cognition that is exploited, and what makes a change
+of values the agent's own. Items 136, 137 and 138 were filed against the round's mathematics.
+Rejected alternative: taking the equivalence forms of factorization (item 136) next.
+
+*Credit.* The idea that manipulation is the distortion of an actor away from its purpose —
+purpose prior to legitimacy, a whole's purpose conferring purposes on its parts — is Sam
+Eisenstat's. `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup.md` refers to
+it as a framing the maintainer brought to the round.
+
+*Related work.* Nora Ammann's sequence *The Value Change Problem* (Alignment Forum, 2023,
+<https://www.alignmentforum.org/s/3QXNgNKXoLrdXJwWE>) poses the problem this line is working
+on: which changes to a person's values are legitimate. Its second post, "Premise two: Some
+cases of value change are (il)legitimate", takes legitimacy to be procedural — a property of
+how a change came about, not of what changed — and proposes as a starting criterion the extent
+to which the process was self-determined by the person and she remained able to course-correct
+it. The post says this is not a comprehensive account and leaves the recommender-system case
+undecided.
