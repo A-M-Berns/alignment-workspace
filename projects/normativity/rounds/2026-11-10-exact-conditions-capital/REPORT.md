@@ -91,7 +91,12 @@ Each change to a statement of the dispatch, and each instruction not followed as
     `state/concepts.json` would need a judgment on which concept this bears on; skipped.
 17. **Tooling.** `checkers/graph.py` was run with `python3.12`; the machine's `python3` cannot
     parse it. The handle `@claude-fable-5-2` is added to `graph/policy.yaml`, as the map's
-    protocol derives it from the model.
+    protocol derives it from the model, and to the handle set a unit test pins
+    (`checkers/tests/test_graph.py`, one literal). That file is under `checkers/`; the edit is
+    recorded in the round's `DECISIONS.md` entry and is the one change outside the dispatch's
+    stated surfaces.
+18. **Wiki.** `wiki/Normativity.md`'s bound count of registered normativity claims is moved
+    from 88 to 96, which `checkers/wiki_state_bindings.py` requires. No other wiki edit.
 
 ## What was found
 

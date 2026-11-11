@@ -7389,7 +7389,7 @@ Rejected alternative: resolving pins against the forge over the network, which t
 is forbidden.
 
 ### 2026-11-10 — exact conditions enter as a dual-certified interface; the floor market inhabits it
-<!-- decision: 2026-11-10--exact-conditions-as-dual-certified-interface; touches: item:136, item:137, item:138, item:139, claim:exact.account-preserves-criterion, claim:exact.entailed-conditions-free, claim:exact.prefix-reserve-bound, claim:exact.seller-obstruction, claim:exact.tightening-floor-exploited, claim:exact.fresh-floor-exploited, claim:exact.conditional-bridge, claim:exact.floor-market -->
+<!-- decision: 2026-11-10--exact-conditions-as-dual-certified-interface; touches: graph/policy.yaml, checkers/tests/test_graph.py, item:136, item:137, item:138, item:139, claim:exact.account-preserves-criterion, claim:exact.entailed-conditions-free, claim:exact.prefix-reserve-bound, claim:exact.seller-obstruction, claim:exact.tightening-floor-exploited, claim:exact.fresh-floor-exploited, claim:exact.conditional-bridge, claim:exact.floor-market -->
 
 **Agent-decided, reversible** (the exact-conditions round,
 `prompts/2026-11-10-exact-conditions-capital/`).  A condition the prices satisfy exactly is
@@ -7410,4 +7410,10 @@ reparametrizing the day's prices and reusing the pinned `MarketMaker`, with the 
 polytope filed as item 136.  Rejected alternative: shipping the interface with the
 unconstrained market as its only inhabitant, which would have left every theorem with a
 nontrivial condition uninhabited.  Items 136–139 are filed under the dispatch's scope.
+
+The round's map nodes are authored by `@claude-fable-5-2`, the handle the map's protocol
+derives from the executing model.  It is added to `graph/policy.yaml`, and to the handle set
+`checkers/tests/test_graph.py` pins for the starting graph — one literal in one test, the same
+edit that admitted `@claude-fable-5`.  Rejected alternative: authoring the nodes under an
+existing handle, which would name a model that did not write them.
 
