@@ -143,10 +143,19 @@ in the second the bridge applies because every realized value is one.
 
 - `~/.claude/scripts/safe-lake.sh build Workspace.Normativity.Contrib.ExactConditionsFloor`
   (which imports the other two modules): builds, no warning in the three modules.
-- `python3 tests/audit_axioms.py`: VERIFICATION_AXIOMS
-- `python3 tests/run.py`: VERIFICATION_RUN
-- `python3.12 -m checkers.graph --root .`, `python3 -m checkers.workspace_state --check`:
-  VERIFICATION_STATE
+- `~/.claude/scripts/safe-lake.sh build Workspace`: `Build completed successfully (4116 jobs)`.
+- `python3.12 tests/audit_axioms.py`: `AXIOM AUDIT: 4017 results across 126 files, all within
+  ['Classical.choice', 'Quot.sound', 'propext']`.
+- `python3.12 tests/run.py`, on the tree at `bef7285d` (before this section was filled in):
+  `ALL GREEN (80 project(s))`. It skips the Lean build unless `WORKSPACE_LEAN=1`; the build
+  above is the separate run. Two earlier runs failed and were fixed: the wiki's bound claim
+  count (deviation 18) and the pinned handle set (deviation 17).
+- `python3.12 -m checkers.graph --root .`: `OK 2605 nodes`. `python3 -m checkers.workspace_state
+  --check`: valid, 210 modern claims, 151 priorities. `python3.12 -m checkers.run`: 105 entries
+  in the normativity registry, schema ok.
+- A first run of the axiom audit failed on nine pre-existing modules with missing object
+  files: the worktree's build cache was cloned from an older worktree and the audit elaborates
+  against built imports. The full build above preceded the run reported.
 
 ## Items
 
