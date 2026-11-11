@@ -2857,7 +2857,7 @@ class Fixtures(unittest.TestCase):
         for e, why in D["events"]["stale_reasons"].items():
             self.assertTrue(why in ("leaf became a table", "leaf became an and", "leaf became an or") or why.startswith("given against version"), (e, why))
         pol = g.parse_flat_yaml((self.root / "graph" / "policy.yaml").read_text())
-        self.assertEqual(set(pol["handles"]), {"@A-M-Berns", "@abramdemski", "@smithy-verity", "@smithy-verity-opus55", "@claude-fable-5"})
+        self.assertEqual(set(pol["handles"]), {"@A-M-Berns", "@abramdemski", "@smithy-verity", "@smithy-verity-opus55", "@claude-fable-5", "@claude-fable-5-2"})
         self.assertNotIn("illustrative", (self.root / "graph" / "policy.yaml").read_text())
         for r, R in D["roots"].items():
             self.assertEqual(R["status"], "open", r)                           # no human judgment yet, so nothing concedes

@@ -49,7 +49,7 @@ Owner @A-M-Berns, @abramdemski
 - rests on AI numbers (no human judgment yet): normativity-layer-I-closed
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @A-M-Berns; holds 36 node(s); owner has not confirmed (drafted from the wiki)
+- frame owner @A-M-Berns; holds 48 node(s); owner has not confirmed (drafted from the wiki)
 - a programme: informs through its steps
 - best next unit: none
 #### legitimacy
@@ -113,7 +113,7 @@ Owner @A-M-Berns, @abramdemski
 - best next unit: none
 
 ## Sub-frame normativity (in the-program): What does learning from reasons require of a reasoner: which statics a normative seed forces, how a constraint acquires operative force in a market, and what the Normative Inductor, from seed through reasons, compile, enforcement and revision, establishes end to end?
-Owner @A-M-Berns; holds 36 node(s)
+Owner @A-M-Berns; holds 48 node(s)
 
 ### Plans
 #### seed-theory
@@ -226,6 +226,18 @@ Nodes this frame is about that are no goals of the ranking (held, not roots): li
 - item-125 (leaf/task)
 - item-126 (leaf/task)
 - item-127 (leaf/task)
+- item-136 (leaf/task)
+- item-137 (leaf/task)
+- item-138 (leaf/task)
+- item-139 (leaf/task)
+- exact.account-preserves-criterion (and)
+- exact.entailed-conditions-free (and)
+- exact.prefix-reserve-bound (and)
+- exact.seller-obstruction (and)
+- exact.tightening-floor-exploited (and)
+- exact.fresh-floor-exploited (and)
+- exact.conditional-bridge (and)
+- exact.floor-market (and)
 
 ## Sub-frame seed-theory (in normativity): What does a normative seed force on the prices of a settled fragment, how does that change under settlement, defeat and rebuttal, and do reasoners starting from different seeds end up anywhere together?
 Owner @A-M-Berns; holds 32 node(s); spelled, nothing yet a goal (no roots)
@@ -4046,6 +4058,14 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - enabling-program-site: Build the site generator against the schema of graph/index.json. (who: either); round: projects/enabling/rounds/2026-10-24-site-vertical-slice
 - enabling-work: decision: 2026-10-22--map-canonical-index-program-maintainer-handles; round: prompts/2026-08-11-attribution-provenance-names; round: prompts/2026-08-11-branch-protection; round: prompts/2026-08-11-contributor-checkers; round: prompts/2026-08-11-licensing-dco-citation; round: prompts/2026-08-11-priorities-and-slop; round: prompts/2026-08-11-workspace-ethos; round: prompts/2026-08-11-workspace-integration; round: prompts/2026-08-16-wiki-in-repo-sync; round: prompts/2026-08-16-wiki-state-bindings; round: prompts/2026-08-24-reservation-bar-and-debt; round: graph
 - entrenching-agent: Add a coordinate for the humans' attainable utility from stopping to the landscape of trajectory conditions, and test whether an agent that entrenches itself then falls under some condition. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-power-channel
+- exact.account-preserves-criterion: round: projects/normativity/rounds/2026-11-10-exact-conditions-capital; work order: ATTENTION #137; decision: 2026-11-10--exact-conditions-as-dual-certified-interface
+- exact.conditional-bridge: round: projects/normativity/rounds/2026-11-10-exact-conditions-capital; work order: ATTENTION #138; decision: 2026-11-10--exact-conditions-as-dual-certified-interface
+- exact.entailed-conditions-free: round: projects/normativity/rounds/2026-11-10-exact-conditions-capital; work order: ATTENTION #137; decision: 2026-11-10--exact-conditions-as-dual-certified-interface
+- exact.floor-market: round: projects/normativity/rounds/2026-11-10-exact-conditions-capital; work order: ATTENTION #136; decision: 2026-11-10--exact-conditions-as-dual-certified-interface
+- exact.fresh-floor-exploited: round: projects/normativity/rounds/2026-11-10-exact-conditions-capital; work order: ATTENTION #137; decision: 2026-11-10--exact-conditions-as-dual-certified-interface
+- exact.prefix-reserve-bound: round: projects/normativity/rounds/2026-11-10-exact-conditions-capital; work order: ATTENTION #137; decision: 2026-11-10--exact-conditions-as-dual-certified-interface
+- exact.seller-obstruction: round: projects/normativity/rounds/2026-11-10-exact-conditions-capital; work order: ATTENTION #137; decision: 2026-11-10--exact-conditions-as-dual-certified-interface
+- exact.tightening-floor-exploited: round: projects/normativity/rounds/2026-11-10-exact-conditions-capital; work order: ATTENTION #137; decision: 2026-11-10--exact-conditions-as-dual-certified-interface
 - exposure.greedy-duality: round: prompts/2026-08-11-phase-ii-promotion; work order: ATTENTION #23
 - exposure.harvest-attained: round: prompts/2026-08-11-phase-ii-promotion; work order: ATTENTION #23
 - exposure.harvest-bound: round: prompts/2026-08-11-phase-ii-promotion; work order: ATTENTION #23
@@ -4150,6 +4170,10 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - item-133: State the robust reading of a warrant as a Form-level rule — a constraint on the model over the undefeated extensions of its anchor — give its compile to rows, and prove it agrees with settleForm where the extension set is settlement-generated. (who: agent); decision: open--exposure-rule-proposal; decision: 2026-11-07--conduct-binds-on-score-warrants-on-prices; round: projects/normativity/rounds/2026-11-08-content-recollection; decision: 2026-11-08--content-is-role-among-rows-expresses-demands-no-more
 - item-134: Attach a vocabulary change to the accounted state: a transition of the normative state carrying a coordinate map, the transport theorem for entitlement under stated hypotheses or its counterexample, the interpretation carrier a general translation needs, a defeasible form for a pulled-back row, and a procedure computing the image of a forced region. (who: agent); round: projects/normativity/rounds/2026-11-08-content-recollection; decision: 2026-11-08--vocabulary-change-is-translation-conservativity-criterion; decision: open--broken-commitment-bars-or-accounts; decision: 2026-11-09--forgetting-is-projection-settled-safe-live-not; decision: 2026-11-09--vocabulary-change-is-docket-occurrence-licence-and-challenge
 - item-135: Define the state a reasoner with bounded memory retains — the live docket, the specialized rows on unsettled coordinates, the holding on a finite universe of reason sets, the receipts of closed accounts — with the theorem that forced intervals and permissions computed from it equal those of the full record, a space bound or the fixture showing none, and the rule for a live coordinate. (who: agent); round: projects/normativity/rounds/2026-11-08-content-recollection; decision: 2026-11-09--forgetting-is-projection-settled-safe-live-not; decision: open--broken-commitment-bars-or-accounts
+- item-136: Construct, for every schedule of nonempty rational polytopes in the cube, a dual-certified market whose condition is the schedule: the constrained fixed point, its rational approximation inside the region, and the multipliers. (who: agent); round: projects/normativity/rounds/2026-11-10-exact-conditions-capital; decision: 2026-11-10--exact-conditions-as-dual-certified-interface
+- item-137: Close the gap between the prefix reserve bound and the seller obstruction: efficiency of the two exhibited sellers, exactness of the reserve bound by duality, and the finite-model equivalence. (who: agent); round: projects/normativity/rounds/2026-11-10-exact-conditions-capital; decision: 2026-11-10--exact-conditions-as-dual-certified-interface
+- item-138: Derive the bridge's frequency hypothesis on the realized normalized stakes from a frequency statement over efficiently expressible weightings, or exhibit a market where the latter holds and the account is unbounded below. (who: agent); round: projects/normativity/rounds/2026-11-10-exact-conditions-capital; decision: 2026-11-10--exact-conditions-as-dual-certified-interface
+- item-139: From a dual-certified market whose account is unbounded below over live prefixes, obtain an efficiently computable staking whose seller exploits, or exhibit such a market that no efficiently computable trader exploits. (who: agent); round: projects/normativity/rounds/2026-11-10-exact-conditions-capital; decision: 2026-11-10--exact-conditions-as-dual-certified-interface
 - item-14: Continue ATTENTION item 14 (returned in wave 1) using wiki/faithful-acceleration-result.md and wiki/delay-and-visibility.md, not the June note dump's superseded ladder. (who: either); files: lean/Workspace/Deference/
 - item-15: Execute item 15 per its deliverable shape and acceptance check: Finite settlement classification, and the local delegation bridge. (who: agent)
 - item-16: Execute item 16 per its deliverable shape and acceptance check: The certificate inequality, derived. (who: agent)
@@ -5355,6 +5379,38 @@ The outside option and the undescribed failure, each a cases node over the outco
 | exact-self-trust-refuted | and | 2 (both) | AI number | open | 1 | 1 |
 | exact-self-trust-refuted.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 1 |
 | exact-self-trust-refuted.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
+| exact.account-preserves-criterion.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| exact.account-preserves-criterion.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| exact.account-preserves-criterion | and | 2 (both) | held by normativity, hypotheses unread | open | 0 | 0 (informs no goal) |
+| exact.account-preserves-criterion.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| exact.conditional-bridge.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| exact.conditional-bridge.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| exact.conditional-bridge | and | 2 (both) | held by normativity, hypotheses unread | open | 0 | 0 (informs no goal) |
+| exact.conditional-bridge.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| exact.entailed-conditions-free.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| exact.entailed-conditions-free.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| exact.entailed-conditions-free | and | 2 (both) | held by normativity, hypotheses unread | open | 0 | 0 (informs no goal) |
+| exact.entailed-conditions-free.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| exact.floor-market.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| exact.floor-market.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| exact.floor-market | and | 2 (both) | held by normativity, hypotheses unread | open | 0 | 0 (informs no goal) |
+| exact.floor-market.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| exact.fresh-floor-exploited.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| exact.fresh-floor-exploited.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| exact.fresh-floor-exploited | and | 2 (both) | held by normativity, hypotheses unread | open | 0 | 0 (informs no goal) |
+| exact.fresh-floor-exploited.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| exact.prefix-reserve-bound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| exact.prefix-reserve-bound.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| exact.prefix-reserve-bound | and | 2 (both) | held by normativity, hypotheses unread | open | 0 | 0 (informs no goal) |
+| exact.prefix-reserve-bound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| exact.seller-obstruction.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| exact.seller-obstruction.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| exact.seller-obstruction | and | 2 (both) | held by normativity, hypotheses unread | open | 0 | 0 (informs no goal) |
+| exact.seller-obstruction.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| exact.tightening-floor-exploited.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| exact.tightening-floor-exploited.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| exact.tightening-floor-exploited | and | 2 (both) | held by normativity, hypotheses unread | open | 0 | 0 (informs no goal) |
+| exact.tightening-floor-exploited.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | expert-knows-own-estimates-asymptotically | leaf/assumption | 2 (both) | AI number | open | 2 | 2 |
 | expert-knows-own-estimates | leaf/assumption | 2 (both) | AI number, attribution unvetted, superseded by expert-knows-own-estimates-asymptotically | open | 1 | 1 |
 | exposure.greedy-duality.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
@@ -5644,6 +5700,10 @@ The outside option and the undescribed failure, each a cases node over the outco
 | item-133 | leaf/task | 2 (both) | held by normative-inductor, no belief | open | 0 | 0 (informs no goal) |
 | item-134 | leaf/task | 2 (both) | held by normative-inductor, no belief | open | 0 | 0 (informs no goal) |
 | item-135 | leaf/task | 2 (both) | held by seed-theory, no belief | open | 0 | 0 (informs no goal) |
+| item-136 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-137 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-138 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
+| item-139 | leaf/task | 2 (both) | held by normativity, no belief | open | 0 | 0 (informs no goal) |
 | item-14 | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | item-15 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
 | item-16 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
@@ -7307,4 +7367,4 @@ The outside option and the undescribed failure, each a cases node over the outco
 | wirehead-iff-finite.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 1 |
 | wirehead-iff-finite.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 1 |
 | worlds-and-points-companion | leaf/question | 2 (both) | AI number | open | 0 | 8 |
-<!-- generated_hash: 62c9cdd2f6989e6cf621fc81 -->
+<!-- generated_hash: 8df0ec7b827ef2c8e2572eea -->

@@ -2626,3 +2626,216 @@ Round `2026-10-21-rebuttal-and-end-to-end`; the dispatch's registration list, ag
   "note": "From IncompatibilitySemantics.certEntails_iff_sem, with a citation chosen for each weighted row. Consequences for WarrantInductor.Problem: where every inadequate response scores at most a rational t ≤ τ at every point of the region, upper certificates making Excludes hold exist (excludes_of_region); where every margin witness scores at least a rational t ≥ τ + δ, lower certificates making Margins hold at tolerance 0 exist (margins_of_region). Not derived: a threshold with no rational between it and the region's supremum, and Margins at a positive tolerance, where the tolerance multiplies the certificate's mass. The hypothesis is inhabited by citedFunctional_witness (SeedStatics.widenSeed)."
 }
 ```
+
+### Exact conditions on a price history
+
+Round `2026-11-10-exact-conditions-capital`. Conditions the prices satisfy exactly, the
+account that pays for them, and what certifies or refutes it.
+
+### exact.account-preserves-criterion
+
+```json
+{
+  "project": "normativity",
+  "short_name": "an account bounded below over live prefixes preserves the criterion: no efficiently computable trader exploits a dual-certified market",
+  "origin_round": "2026-11-10-exact-conditions-capital",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.ExactConditions.DualCertifiedMarket.no_efficient_trader_exploits"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-exact-conditions-capital",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-10-exact-conditions-capital/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-10-exact-conditions-capital/REPORT.md"
+  },
+  "note": "For a DualCertifiedMarket M (a rational history over an assessment, a condition its prices satisfy exactly, nonnegative multipliers, and the day inequality firm value + staked bets ≤ eps n at every cube valuation) and AccountBounded B (−B ≤ account at every world live at N, every N): no efficiently computable trader exploits M.P relative to M.L. From firm_add_account_le and AssessmentFirm.trading_firm_dominance. Beside it: account_le (the ceiling 2 + epsTotal at live worlds), account_unbounded_of_exploit (the one-way converse), budgeted_netWorth_le (the quantitative form for one budgeted component, scaled by its firm weight), isLogicalInductor (with ComputableMarket a hypothesis, inhabited nowhere here). Neither exact membership nor nonnegativity of the multipliers is used. Package inhabited: plainMarket_entailed, constantFresh_unexploited."
+}
+```
+
+### exact.entailed-conditions-free
+
+```json
+{
+  "project": "normativity",
+  "short_name": "a dual-certified market whose day regions are the deductive regions of a scheduled fragment is unexploited and prices each fragment in the hull of the plausible truth assignments exactly",
+  "origin_round": "2026-11-10-exact-conditions-capital",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.ExactConditions.DualCertifiedMarket.deductive_exact"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-exact-conditions-capital",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-10-exact-conditions-capital/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-10-exact-conditions-capital/REPORT.md"
+  },
+  "note": "Hypotheses: M.L's live worlds are those consistent with DP.D n; on cube points, M.C.Holds n coincides with DeductiveRegion.deductiveRegion (DP.D n) (coords n). Conclusion: no efficiently computable trader exploits M.P relative to DP, and deductiveRegion (DP.D n) (coords n) (M.P n) at every n. An instance of account_nonneg_of_entailed (rows every live world satisfies give a nonnegative account, by support-local nesting). The presentation of the region by rows is a hypothesis; no row presentation of a deductive region is computed. Package inhabited: deductive_witness (stage {p}, fragment [p], the floor at level one)."
+}
+```
+
+### exact.prefix-reserve-bound
+
+```json
+{
+  "project": "normativity",
+  "short_name": "a prefix reserve bounds the account below by −U(1 − r)/r at every profile it retains mass r on",
+  "origin_round": "2026-11-10-exact-conditions-capital",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.ExactConditions.DualCertifiedMarket.reserve_bound"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-exact-conditions-capital",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-10-exact-conditions-capital/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-10-exact-conditions-capital/REPORT.md"
+  },
+  "note": "A PrefixReserve through N: a mass on finitely many world profiles, nonincreasing day by day, total one on day 0, day-n mass on worlds live at day n, every day-n row of nonnegative day-n average. Then at a profile with r N ω > 0 the account through N is at least −U(1 − r N ω)/r N ω, U = 2 + epsTotal. The sequence form reserve_sum_bound needs the ceiling only where mass is released and, on the last day, at the other profiles. Beside it: accountBounded_of_reserve (retained mass ≥ ρ at every live world gives AccountBounded), account_ge_neg_odds (the constant two-point reserve; the shape of OddsBankroll.Account.netWorth_ge_neg_odds, not a reduction to it). Package inhabited: oneFloor_reserve_bound (one floor at c on day 0, the atom refuted from day 1, bound −3c/(1 − c))."
+}
+```
+
+### exact.seller-obstruction
+
+```json
+{
+  "project": "normativity",
+  "short_name": "a staked account bounded above and unbounded below over live prefixes makes the seller of the demanded bets exploit every history satisfying the condition",
+  "origin_round": "2026-11-10-exact-conditions-capital",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.ExactConditions.Condition.seller_exploits"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-exact-conditions-capital",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-10-exact-conditions-capital/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-10-exact-conditions-capital/REPORT.md"
+  },
+  "note": "For any history P with C.Holds n (P n) at every n — no certificate, no rationality or range hypothesis on P — and any nonnegative rational staking w, the trader selling w n j units of each demanded bet has cumulative value at least minus the staked account at every world (seller_netWorth_ge). If the staked account is at most Ub at live worlds and below every −B at some live world, the seller exploits P relative to L. Efficiency of the seller is a hypothesis of the criterion form not_isLogicalInductor_of_seller and is discharged nowhere. Package inhabited: seller_exploits_witness."
+}
+```
+
+### exact.tightening-floor-exploited
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the floor 1 − 2^-(n+1) on a sentence a live world refutes on every day is exploited in every history satisfying it",
+  "origin_round": "2026-11-10-exact-conditions-capital",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.ExactConditions.tighteningFloor_seller_exploits"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-exact-conditions-capital",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-10-exact-conditions-capital/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-10-exact-conditions-capital/REPORT.md"
+  },
+  "note": "Days are indexed from 0. Against every history with 1 − 2^-(n+1) ≤ P n φ, selling one share of φ a day is worth at least −1 at every world and at least N after day N where φ is false (tighteningFloor_seller_value); if on every day some live world refutes φ, the seller exploits. Every demanded bet is nonnegative where φ is true (tighteningFloor_entailed_where_true). Efficiency of the seller is a hypothesis of tighteningFloor_not_isLogicalInductor. Inhabited: tighteningFloor_witness (the process revealing nothing, the constant-one history)."
+}
+```
+
+### exact.fresh-floor-exploited
+
+```json
+{
+  "project": "normativity",
+  "short_name": "floors 1 − 2^-(n+1) on a fresh atom each day, each settled true the next day, are exploited in every history satisfying them",
+  "origin_round": "2026-11-10-exact-conditions-capital",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.ExactConditions.freshFloor_seller_exploits"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-exact-conditions-capital",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-10-exact-conditions-capital/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-10-exact-conditions-capital/REPORT.md"
+  },
+  "note": "Days are indexed from 0; the day-n floor is on atom n. Against every history satisfying the floors, selling n shares of atom n on day n is worth at least −1 at every world and at least N − 1 after day N where atom N is false (freshFloor_seller_value); if on every day a live world refutes that day's atom, the seller exploits. Efficiency of the seller is a hypothesis of freshFloor_not_isLogicalInductor. Inhabited: freshFloor_witness (the process revealing atom k on day k + 1, under which every demand is true at every world live the next day)."
+}
+```
+
+### exact.conditional-bridge
+
+```json
+{
+  "project": "normativity",
+  "short_name": "under the per-day ceiling and the frequency hypothesis on the realized normalized stakes, the stakes are summable and the account is bounded below",
+  "origin_round": "2026-11-10-exact-conditions-capital",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.ExactConditions.Bridge.bridge"
+  },
+  "answers_item": "138",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-exact-conditions-capital",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-10-exact-conditions-capital/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-10-exact-conditions-capital/REPORT.md"
+  },
+  "note": "Sequences: 0 < c < 1, γ > 0, x n ∈ [0, 1], mu n ≥ 0, prior n = Σ_{i<n} mu i (x i − c), prior n + mu n (1 − c) ≤ U, margin n = U + 1 − prior n, ratio n = mu n / margin n. Frequency c U γ x mu: if ratio is not summable then eventually (c + γ) Σ_{i<N} ratio i ≤ Σ_{i<N} ratio i · x i. Conclusion: ratio summable, margin bounded, mu summable, and every finite sum Σ_{i∈S} mu i (y i − c) with y ≥ 0 is at least −c Σ' mu. Instance: DualCertifiedMarket.accountBounded_of_frequency (one floor at c per day, live worlds agreeing with the realized truth on earlier days, a world affirming the day's sentence live that day). The frequency hypothesis is not derived from any pseudorandomness statement. Inhabited: constantFresh_unexploited, where every realized value is one."
+}
+```
+
+### exact.floor-market
+
+```json
+{
+  "project": "normativity",
+  "short_name": "every assessment and every schedule of one floor per day has a dual-certified market: prices satisfying each floor exactly, with ceiling 3",
+  "origin_round": "2026-11-10-exact-conditions-capital",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.ExactConditions.FloorSchedule.exists_market"
+  },
+  "answers_item": "136",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-exact-conditions-capital",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-10-exact-conditions-capital/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-10-exact-conditions-capital/REPORT.md"
+  },
+  "note": "FloorSchedule.market: on day n the firm's strategy has its day-n price features substituted by lo + (1 − lo)·price (liftDay; lo the level at the floored sentence, 0 elsewhere), the pinned MarketMaker prices the substituted strategy, and the posted prices are lo + (1 − lo)·quote. The multiplier on the floor is max 0 of minus the firm's aggregate position on the floored sentence; floor_day_le proves the day inequality at every cube valuation for an arbitrary lower-bound function. Tolerances marketMakerError n, epsTotal 1. ComputableMarket is not proved for the result. plainMarket: the unconstrained market of AssessmentFirm with the empty condition and zero multipliers."
+}
+```
