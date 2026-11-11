@@ -181,7 +181,7 @@ Registry prefix `exact.`. Prose: *demanded bet*, *account*, *prefix reserve*, *f
 
 ## Outstanding maintainer actions
 
-1. Merge the pull request, or not: `gh pr merge <number> --squash`, carrying the Model
+1. Merge pull request #146, or not: `gh pr merge 146 --squash`, carrying the Model
    attribution section into the squashed message. Auto-merge is off by the dispatch.
 
 Nothing is reserved to `DECISIONS.md`'s queue. The round's choices are the dated entry
