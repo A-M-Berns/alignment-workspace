@@ -603,6 +603,15 @@ theorem gain_bddAbove {c γ : ℝ} {x w : ℕ → ℝ} (hc0 : 0 ≤ c) (hγ : 0 
 
 end Frequency
 
+/-- **The bridge's frequency hypothesis is summability of the normalized stakes.**  Under
+the hypotheses of `Bridge.bridge`, `Bridge.Frequency` holds exactly when the normalized
+stakes are summable: it is vacuous when they are, and the bridge makes them so. -/
+theorem bridge_frequency_iff_summable {c U γ : ℝ} {x mu : ℕ → ℝ} (hc0 : 0 < c) (hc1 : c < 1)
+    (hγ : 0 < γ) (hx : ∀ n, 0 ≤ x n ∧ x n ≤ 1) (hmu : ∀ n, 0 ≤ mu n)
+    (hceil : ∀ n, Bridge.prior c x mu n + mu n * (1 - c) ≤ U) :
+    Bridge.Frequency c U γ x mu ↔ Summable (Bridge.ratio c U x mu) :=
+  ⟨fun h => (Bridge.bridge hc0 hc1 hγ hx hmu hceil h).1, fun hs hns => absurd hs hns⟩
+
 /-! ## 4(b). A mixture of tables -/
 
 namespace TableMixture
@@ -1071,3 +1080,4 @@ end Workspace.Normativity.Contrib.StatisticalConditions
 #print axioms Workspace.Normativity.Contrib.StatisticalConditions.DualCertifiedMarket.bounded_or_buyer_exploits
 #print axioms Workspace.Normativity.Contrib.StatisticalConditions.DualCertifiedMarket.accountBounded_iff_unexploited
 #print axioms Workspace.Normativity.Contrib.StatisticalConditions.thresholdFrequency_witness
+#print axioms Workspace.Normativity.Contrib.StatisticalConditions.bridge_frequency_iff_summable
