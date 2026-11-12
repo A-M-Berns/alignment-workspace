@@ -1,9 +1,12 @@
 # The account: purpose as a goal pursued through parts
 
-Amended after the freeze, with `THEOREMS.md`: §2, the rule for whose gap, is applied view by
-view (the alternative mechanism differs from hers on the view at hand only); §4, the
-stronger alternative for *independent* does not count situations where the part is forced.
-No prediction was edited.
+Amended after the freeze, with `THEOREMS.md` and after the external review: §2, the rule for
+whose gap, is applied view by view (the alternative mechanism differs from hers on the view
+at hand only); §4, the stronger alternative for *independent* does not count situations
+where the part is forced, and the alternatives the review raised for *nothing left over*,
+*never opposed* and *independent* are named; §5, the contrapositive is stated for disjoint
+sets of best moves, where it first said differing rankings, which is false. No prediction
+was edited.
 
 The account of `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-3.md`
 §1, stated over a finite model. The idea that manipulation is the distortion of an actor
@@ -116,14 +119,21 @@ A candidate is **admissible** when it meets:
   it vacuously; the count of such situations is reported. (Alternative, *the equilibrium
   form*: every profile at which every gap is zero yields the maximum of `G`. It forbids a
   stuck point, which the dispatch requires a candidate to be able to describe; not
-  adopted.)
+  adopted. A third form, the adopted implication together with *the parts' maxima are
+  jointly attainable at every situation*, removes the vacuous case and keeps stuck points;
+  `THEOREMS.md`, statement 9, finds it the better form. The bank was computed with the
+  adopted one.)
 - **never opposed**, on the support of `ν`: for every part `p` and move `m′` with
   `g_p(s, m′) > g_p(s, μ_p's move)`, `G` of the outcome when `p` plays `m′` and the later
   parts' mechanisms respond is at least `G` of the actual outcome. "Normal circumstances"
-  is read as the support of `ν`.
+  is read as the support of `ν`. (Alternative, *pairwise*: whenever `g_p` ranks one move of
+  `p` above another, `G` with the later mechanisms responding does not rank it below. It
+  changes statement 1.)
 - **mostly serving**: each part serves on `ν`-measure at least `τ = 9/10`.
 - **independent** (first condition on being a part): `g_p` does not take `μ_p` as an
-  argument, and is not constant in `p`'s move at every situation of `S`. (Stronger
+  argument, and is not constant in `p`'s move at every situation of `S`. The condition is
+  intensional: a table of what `μ_p` does takes no mechanism and is the same function.
+  `THEOREMS.md`, statement 1, gives the result under both readings. (Stronger
   alternative, *strong independence*: also, `μ_p` is not `g_p`-optimal at every situation
   of `S` where `p` is not forced.)
 - **carriable** (second condition): some mechanism on `p`'s view serves on `ν`-measure at
@@ -138,9 +148,9 @@ weights; uniform unless said. A candidate has *real weight* when its weight is p
 Let `r` be a ranking of `p`'s moves that depends only on `see_p`, and suppose that at every
 situation `r` agrees with the ranking of `p`'s moves by `G` (the other moves fixed). Then
 `G`'s ranking of `p`'s moves depends only on `see_p`. Proof: two situations with the same
-view have the same `r`, hence the same `G`-ranking. ∎ Contrapositive: where `G`'s ranking
-of `p`'s moves differs between two situations `p` cannot tell apart, no mechanism of `p`
-serves a world-scored purpose at both.
+view have the same `r`, hence the same `G`-ranking. ∎ A consequence used in §2: where the sets of best
+moves at two situations `p` cannot tell apart are disjoint, no mechanism of `p` serves at
+both. (Differing rankings are not enough; two rankings can share their best move.)
 
 ## 6. Values
 

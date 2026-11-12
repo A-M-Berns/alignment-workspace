@@ -54,23 +54,37 @@ def survey():
     rows = []
     for cand in chain_class():
         base, info = admissibility(cand, scope, behave, tau=F(0))
-        base -= {"fit", "nothing left over"}
-        wide = base | ({"fit"} - {"fit"} if info["fit"]["scope"] else {"fit"}) | (set() if info["nlo"]["scope"] else {"nothing left over"})
+        base -= {"fit", "nothing left over", "independent"}
+        wide = base | (set() if info["fit"]["scope"] else {"fit"}) | (set() if info["nlo"]["scope"] else {"nothing left over"})
         narrow = base | (set() if info["fit"]["usual"] else {"fit"}) | (set() if info["nlo"]["usual"] else {"nothing left over"})
         rows.append({"cand": cand, "tags": cand.tags, "wide": wide, "narrow": narrow,
+                     "constant": any(info["constant"].values()),
+                     "reads": any(cand.tags["reads_mechanism"].values()),
                      "strong": any(info["optimal everywhere"].values()), "serving": info["serving"],
-                     "vacuous": info["vacuous"]})
+                     "vacuous": info["vacuous"], "pairwise": info["pairwise opposed at"]})
     return rows
 
 
-def admissible(rows, tau=TAU, scope="wide", strong=False):
+READINGS = ("table", "stated", "strong")
+
+
+def admissible(rows, tau=TAU, scope="wide", reading="stated", pairwise=None, attainable=False):
+    """`reading` of *independent*: "table" (a goal function that is the mechanism's table written
+    out counts as independent), "stated" (it does not: ACCOUNT.md §4), "strong" (also, the
+    mechanism is not optimal everywhere).  `pairwise`: None, or the world events left out of the
+    usual situations when *never opposed* is read pairwise.  `attainable`: the parts' maxima can be
+    had together at every situation."""
     out = []
     for r in rows:
         fails = set(r[scope])
         if any(rate < tau for rate in r["serving"].values()):
             fails.add("mostly serving")
-        if strong and r["strong"]:
+        if r["constant"] or (reading != "table" and r["reads"]) or (reading == "strong" and r["strong"]):
             fails.add("independent")
+        if pairwise is not None and any(w[1] not in pairwise for w in r["pairwise"]):
+            fails.add("never opposed")
+        if attainable and r["vacuous"]:
+            fails.add("nothing left over")
         if not fails:
             out.append(r)
     return out
@@ -118,6 +132,10 @@ def dependence():
     return out
 
 
+def names(rows):
+    return sorted(r["cand"].name.replace("|actual/actual/actual", "") for r in rows)
+
+
 def check_1():
     rows = survey()
     fixed = admissible(rows)
@@ -125,11 +143,10 @@ def check_1():
     grid = {}
     for tau in (F(1, 40), H, F(3, 4), F(9, 10), F(19, 20), F(1)):
         for scope in ("wide", "narrow"):
-            for strong in (False, True):
-                sel = admissible(rows, tau, scope, strong)
+            for reading in READINGS:
+                sel = admissible(rows, tau, scope, reading)
                 a = agreement(sel) if sel else {"count": 0}
-                grid["tau=%s, %s, %s" % (tau, "scope" if scope == "wide" else "usual only",
-                                         "strong independent" if strong else "independent")] = {
+                grid["tau=%s, %s, %s" % (tau, "scope" if scope == "wide" else "usual only", reading)] = {
                     "count": a["count"], "purposes": a.get("purposes"),
                     "split": a.get("actions split on whether they subvert"),
                     "split at some world": a.get("split at some world")}
@@ -137,26 +154,35 @@ def check_1():
     for name, (purposes, goal) in CHEATS.items():
         r = next(r for r in rows if r["tags"]["purposes"] == purposes and r["tags"]["goal"] == goal
                  and r["tags"]["mechs"] == ("actual",) * 3)
-        fails = set(r["wide"]) | ({"mostly serving"} if any(x < TAU for x in r["serving"].values()) else set())
-        cheats[name] = {"fails": sorted(fails), "fails with strong independent": sorted(fails | ({"independent"} if r["strong"] else set())),
-                        "fails on usual only": sorted(set(r["narrow"]) | ({"mostly serving"} if any(x < TAU for x in r["serving"].values()) else set()))}
+        serving = {"mostly serving"} if any(x < TAU for x in r["serving"].values()) else set()
+        cheats[name] = {"table": sorted(set(r["wide"]) | serving),
+                        "stated": sorted(set(r["wide"]) | serving | ({"independent"} if r["reads"] else set())),
+                        "table, usual only": sorted(set(r["narrow"]) | serving)}
     simple = min(sum(p in ("local", "mech") for p in r["tags"]["purposes"]) for r in fixed)
     simplest = [r for r in fixed if sum(p in ("local", "mech") for p in r["tags"]["purposes"]) == simple]
-    strong = admissible(rows, strong=True)
+    variants = {
+        "table": admissible(rows, reading="table"),
+        "strong": admissible(rows, reading="strong"),
+        "stated, never opposed pairwise": admissible(rows, pairwise=()),
+        "table, never opposed pairwise": admissible(rows, reading="table", pairwise=()),
+        "stated, never opposed pairwise, hard worlds not usual": admissible(rows, pairwise=("hard",)),
+        "stated, maxima jointly attainable": admissible(rows, attainable=True),
+        "table, maxima jointly attainable": admissible(rows, reading="table", attainable=True),
+    }
     # the decision rule over the admissible set
     decisions = {}
     sigs = [signature(r["cand"]) for r in fixed]
+    ref = S.chain()
     for a in INPUTS:
-        subs = [any(k == "subversion" for w in WORLDS for k, _ in s[(a, w)]) for s in sigs]
-        good = sum(PRIOR[w] * (S.chain_goal()(run_step(S.chain(), w, S.CHAIN_ACTIONS[a], {}, dict(S.chain().mech)))
-                               - S.chain_goal()(run_step(S.chain(), w, {}, {}, dict(S.chain().mech)))) for w in WORLDS) >= 0
+        subs = [subverts(s, a) for s in sigs]
+        good = sum(PRIOR[w] * (S.chain_goal()(run_step(ref, w, S.CHAIN_ACTIONS[a], {}, dict(ref.mech)))
+                               - S.chain_goal()(run_step(ref, w, {}, {}, dict(ref.mech)))) for w in WORLDS) >= 0
         decisions[a] = "refuse" if all(subs) else ("act" if (good and not any(subs)) else ("ask" if any(subs) else "do not act"))
     determinate = len(fixed) >= 1 and all(len(v) == 1 for v in ag["purposes"].values()) and not ag["split at some world"]
     return {"supports": "holds on the stated domain" if determinate else "refuted",
-            "class size": len(rows), "at the fixed parameters": ag,
-            "admissible at the fixed parameters": sorted(r["cand"].name for r in fixed),
-            "with strong independent": agreement(strong), "admissible with strong independent": sorted(r["cand"].name for r in strong),
-            "simplest": {"count": len(simplest), **{k: v for k, v in agreement(simplest).items() if k != "count"}},
+            "class size": len(rows), "at the fixed parameters": ag, "admissible at the fixed parameters": names(fixed),
+            "variants": {k: {"candidates": names(v), **(agreement(v) if v else {"count": 0})} for k, v in variants.items()},
+            "simplest": {"candidates": names(simplest), **agreement(simplest)},
             "grid": grid, "cheats": cheats, "dependence": dependence(), "decision rule": decisions}
 
 
@@ -164,20 +190,20 @@ def check_1():
 
 def check_2():
     rows = survey()
-    fixed, strong = admissible(rows), admissible(rows, strong=True)
+    fixed, table = admissible(rows), admissible(rows, reading="table")
 
     def spared(sel, action, worlds):
         """Candidates under which the action widens no gap at any of the worlds."""
-        return sorted(r["cand"].name for r in sel if not subverts(signature(r["cand"]), action, worlds))
+        return names(r for r in sel if not subverts(signature(r["cand"]), action, worlds))
 
     right = [w for w in WORLDS if w[1] != "misleading"]      # she is right about θ under null
     facts = {
         "lie, worlds where null leaves her right: candidates with no gap widened (fixed)": spared(fixed, "lie", right),
-        "the same, at hard worlds only": spared(fixed, "lie", [w for w in WORLDS if w[1] == "hard"]),
-        "the same, strong independent": spared(strong, "lie", right),
-        "lie, misleading worlds, strong independent: candidates with no gap widened": len(spared(strong, "lie", [w for w in WORLDS if w[1] == "misleading"])),
-        "strong independent, count": len(strong),
-        "false_reason at clear worlds, strong independent: candidates with no gap widened": spared(strong, "false_reason", [w for w in WORLDS if w[1] == "clear"]),
+        "the same, table reading": spared(table, "lie", right),
+        "the same, table reading, hard worlds only": spared(table, "lie", [w for w in WORLDS if w[1] == "hard"]),
+        "lie, misleading worlds: candidates with no gap widened (fixed)": len(spared(fixed, "lie", [w for w in WORLDS if w[1] == "misleading"])),
+        "fixed, count": len(fixed),
+        "false_reason at clear worlds: candidates with no gap widened (fixed)": spared(fixed, "false_reason", [w for w in WORLDS if w[1] == "clear"]),
     }
     # the relation to Blackwell: the best any mechanism on the view can score, against what hers scores
     cand = S.chain()
@@ -196,7 +222,8 @@ def check_2():
         table[name] = {"best by the facts": best, "best any mechanism on the view can do": info_best, "hers": got}
     facts["belief, expected scores by channel"] = table
     holds = not facts["lie, worlds where null leaves her right: candidates with no gap widened (fixed)"] and \
-        not facts["false_reason at clear worlds, strong independent: candidates with no gap widened"]
+        not facts["false_reason at clear worlds: candidates with no gap widened (fixed)"] and \
+        facts["lie, misleading worlds: candidates with no gap widened (fixed)"] == 0
     return {"supports": "holds on the stated domain" if holds else "refuted", **facts}
 
 
@@ -296,8 +323,8 @@ def check_4():
             reported.append(t)
             last = cum
     no_gap_fall = not any(k == "subversion" for k, _ in stuck) and g("lo") < g(None)
-    refuted = bool(missed) or no_gap_fall or bank.get("Y4") == ["nothing"]
-    return {"supports": "refuted" if refuted else "holds on the stated domain",
+    return {"supports": "refuted" if missed else "holds on the stated domain",
+            "outside the statement: her goal falls with no gap widened (Stuck)": no_gap_fall,
             "Values: sequences after which her pursuit is worse than under null": worse,
             "of which some part is subverted": caught, "not": missed,
             "the bank's changes": bank,
@@ -311,26 +338,37 @@ def check_4():
 # --- statement 5 ----------------------------------------------------------------------
 
 def check_5():
-    cand = S.chain(("acc_theta", "local", "world"))
     G = S.chain_goal()
-    zero, zero_bad, bound_fail, n, worst = 0, 0, [], 0, F(0)
-    for w, a, nu in S.chain_scope():
-        if forced_parts(a) & {"belief", "judge"} or a.get("order"):
-            continue
-        ctx = run_step(cand, w, a, {}, dict(cand.mech))
-        m = measures(cand, ctx)
-        loss = max(G(ctx, x=v) for v in (0, 1)) - G(ctx, x=ctx.moves["judge"])
-        n += 1
-        if m["belief"][2] == 0 and m["judge"][2] == 0:
-            zero += 1
-            zero_bad += int(loss != 0)
-        if loss > m["belief"][2] + m["judge"][2]:
-            bound_fail.append((w, a))
-        worst = max(worst, loss)
-    ok = zero_bad == 0 and not bound_fail
-    return {"supports": "holds on the stated domain" if ok else "refuted", "situations": n,
-            "with zero gaps in belief and judge": zero, "of which the verdict is not best": zero_bad,
-            "situations where the loss exceeds the sum of the two gaps": bound_fail, "largest loss": worst}
+
+    def over(cand):
+        zero, zero_bad, bound_fail, n, worst = 0, 0, 0, 0, F(0)
+        for w, a, nu in S.chain_scope():
+            if forced_parts(a) & {"belief", "judge"} or a.get("order"):
+                continue
+            ctx = run_step(cand, w, a, {}, dict(cand.mech))
+            m = measures(cand, ctx)
+            loss = max(G(ctx, x=v) for v in (0, 1)) - G(ctx, x=ctx.moves["judge"])
+            n += 1
+            if m["belief"][2] == 0 and m["judge"][2] == 0:
+                zero += 1
+                zero_bad += int(loss != 0)
+            bound_fail += int(loss > m["belief"][2] + m["judge"][2])
+            worst = max(worst, loss)
+        return {"situations": n, "zero gaps in belief and judge": zero, "of which the verdict is not best": zero_bad,
+                "loss above the sum of the two gaps": bound_fail, "largest loss": worst}
+
+    rows = survey()
+    fixed = {r["cand"].name.replace("|actual/actual/actual", ""): over(r["cand"]) for r in admissible(rows)}
+    table = {r["cand"].name.replace("|actual/actual/actual", ""): over(r["cand"]) for r in admissible(rows, reading="table")}
+    fails_table = sorted(k for k, v in table.items() if v["of which the verdict is not best"])
+    # a verdict that stands and is wrong: silence against silence at a hard world
+    cand = S.chain()
+    ctx = run_step(cand, (0, "hard"), {}, {}, dict(cand.mech))
+    standing_wrong = (not classify(cand, (0, "hard"), [{}], [{}])[0]) and ctx.moves["judge"] != 0
+    ok = all(v["of which the verdict is not best"] == 0 and v["loss above the sum of the two gaps"] == 0 for v in fixed.values())
+    return {"supports": "holds on the stated domain" if ok else "refuted", "by admissible candidate": fixed,
+            "table reading: candidates under which zero gaps leave a wrong verdict": fails_table,
+            "a standing verdict that is wrong (null at (0, hard))": standing_wrong}
 
 
 # --- statement 6 ----------------------------------------------------------------------
@@ -344,12 +382,14 @@ AVAILABLE = {
 }
 
 
-def best_action(cand, world, base):
+def best_action(cand, world, base, by="gaps"):
+    """The available action leaving her parts the least total gap, or the most by her goal;
+    the first in the list among equals."""
     scene = cand.name.split("[")[0]
 
     def total_gap(a):
         ctx = run_step(cand, world, merge(base, a), cand.init(world), dict(cand.mech))
-        return sum(g for _, _, g in measures(cand, ctx).values())
+        return sum(g for _, _, g in measures(cand, ctx).values()) if by == "gaps" else -cand.goal(ctx)
     return min(AVAILABLE[scene], key=total_gap)
 
 
@@ -364,7 +404,8 @@ def comparisons():
                 continue
             row = {}
             for label, comp in (("silence", lambda w: {}), ("honest arm", lambda w: spec.comp(w)[0]),
-                                ("best available", lambda w: best_action(spec.cand, w, spec.base(w)[0]))):
+                                ("least total gap", lambda w: best_action(spec.cand, w, spec.base(w)[0])),
+                                ("best for her goal", lambda w: best_action(spec.cand, w, spec.base(w)[0], "goal"))):
                 kinds = set()
                 for w in spec.worlds:
                     ks, _ = classify(spec.cand, w, spec.act(w), [comp(w)], spec.base(w))
@@ -382,7 +423,10 @@ def legit(cand, world, action, comparison=None, cutoff=F(0)):
 
 def check_6():
     table = comparisons()
-    counts = {label: sum(r[label] for r in table.values()) for label in ("silence", "honest arm", "best available")}
+    labels = ("silence", "honest arm", "least total gap", "best for her goal")
+    counts = {label: sum(r[label] for r in table.values()) for label in labels}
+    nested = {"silence inside least total gap": sorted(c for c, r in table.items() if r["silence"] and not r["least total gap"]),
+              "silence inside best for her goal": sorted(c for c, r in table.items() if r["silence"] and not r["best for her goal"])}
     moved = {cid: r for cid, r in table.items() if len(set(r.values())) > 1}
     # the Scoring: V in [0,1] on Legit, a window value in [-δ, 0) otherwise
     delta, lam = F(1), F(3)
@@ -418,9 +462,20 @@ def check_6():
                       for aim in (0, 1) for w in WORLDS)
     chosen = {aim: sum(PRIOR[w] * run_step(cand, w, selective(aim, w), {}, dict(cand.mech)).moves["act"] for w in WORLDS)
               for aim in (0, 1)}
+    # against the least-total-gap baseline itself: follow it, except threaten at (0, clear)
+    base_pol = {w: best_action(cand, w, {}) for w in WORLDS}
+    threat_pol = dict(base_pol)
+    threat_pol[(0, "clear")] = S.CHAIN_ACTIONS["threat"]
+    threat_widens = any(k == "subversion" for w in WORLDS for k, _ in classify(cand, w, [threat_pol[w]], [base_pol[w]])[0])
+    x_of = lambda pol: sum(PRIOR[w] * run_step(cand, w, pol[w], {}, dict(cand.mech)).moves["act"] for w in WORLDS)
+    g_of = lambda pol: sum(PRIOR[w] * G(run_step(cand, w, pol[w], {}, dict(cand.mech))) for w in WORLDS)
     ok = bounds_ok and respects
     return {"supports": "holds on the stated domain" if ok else "refuted",
             "bank cases compared": len(table), "of which subversion, by comparison": counts, "cases that move": moved,
+            "convicted against silence and not against": nested,
+            "the baseline with a threat at (0, clear): widens a gap against the baseline": threat_widens,
+            "probability she chooses 1: baseline, with the threat": [x_of(base_pol), x_of(threat_pol)],
+            "her expected goal: baseline, with the threat": [g_of(base_pol), g_of(threat_pol)],
             "V within the Scoring's bounds": bounds_ok, "the null action respects": respects, "decision": decision,
             "admissible candidates weighted": len(rows),
             "aim-free and widens a gap (lie at every aim)": aim_free_widens,
@@ -453,8 +508,8 @@ def check_7():
                     total += PRIOR[w] * pa * p.goal(ctx, mech(ctx.views["belief"]))
             score[label] = total
         maintenance[purpose] = {**score, "coherent": score["after"] >= score["before"]}
-    rows = admissible(survey())
-    excluded = sorted(r["cand"].name for r in rows if not maintenance[r["tags"]["purposes"][0]]["coherent"])
+    rows = admissible(survey(), reading="table")
+    excluded = names(r for r in rows if not maintenance[r["tags"]["purposes"][0]]["coherent"])
     left = [r for r in rows if maintenance[r["tags"]["purposes"][0]]["coherent"]]
     left_ag = agreement(left)
     # (b) taking back: after the adviser's hidden inputs are withdrawn and told, does her action change?
@@ -473,11 +528,12 @@ def check_7():
             if sub != (x1 != x2):
                 table.setdefault(name, []).append((w, "subverted, not taken back" if sub else "taken back, not subverted"))
     # passive histories: two admissible candidates with the same mechanisms disagree
-    passive = left_ag["split at some world"]
-    separates = not passive and all(len(v) == 1 for v in left_ag["purposes"].values()) and agree == n
-    return {"supports": "refuted" if separates else "holds on the stated domain",
+    passive = agreement(rows)["split at some world"]
+    none_separates = bool(passive) and bool(left_ag["split at some world"]) and agree < n
+    return {"supports": "holds on the stated domain" if none_separates else "refuted",
+            "histories alone: actions the admissible candidates (table reading) split on": passive,
             "maintenance": maintenance, "admissible candidates it excludes": excluded,
-            "left": left_ag["count"], "purposes left": left_ag["purposes"], "actions the rest still split on": passive,
+            "left": left_ag["count"], "purposes left": left_ag["purposes"], "actions the rest still split on": left_ag["split at some world"],
             "taking back agrees with subversion at": "%d of %d" % (agree, n), "where it does not": table}
 
 
@@ -538,9 +594,12 @@ def check_9():
     cheat = next(r for r in rows if r["tags"]["purposes"] == ("mech", "mech", "mech") and r["tags"]["goal"] == "true"
                  and r["tags"]["mechs"] == ("actual",) * 3)
     always_serving_fails = all(x == 1 for x in cheat["serving"].values()) and "nothing left over" in cheat["wide"]
-    broken = next(r for r in rows if r["tags"]["purposes"] == ("acc", "world", "world") and r["tags"]["goal"] == "true"
-                  and r["tags"]["mechs"] == ("alt", "alt", "alt"))
-    holds_without_fit = "nothing left over" not in broken["wide"] and "fit" in broken["wide"]
+    deaf = S.chain(mechs=("actual", "deaf", "actual"))
+    deaf_fails, deaf_info = admissibility(deaf, S.chain_scope(), S.chain_behaviour())
+    holds_without_serving = "nothing left over" not in deaf_fails and deaf_info["serving"]["judge"] < TAU
+    fifteen = admissible(rows, reading="table")
+    vac = {"table reading: candidates with a vacuous situation": sum(1 for r in fifteen if r["vacuous"]),
+           "stated reading": sum(1 for r in admissible(rows) if r["vacuous"])}
     st = S.stuck()
     stuck_forms = nlo_forms(st, "lo", {})
     tumour = nlo_forms(S.chain(), (1, "tumour"), {})
@@ -549,7 +608,8 @@ def check_9():
     ok = always_serving_fails and stuck_forms["adopted"] is True and stuck_forms["equilibrium"] is False
     return {"supports": "holds on the stated domain" if ok else "refuted",
             "every part always serving, nothing left over failing (purposes equal to mechanisms)": always_serving_fails,
-            "nothing left over holding with fit failing": holds_without_fit,
+            "nothing left over holding with a part serving on less than 9/10 (the deaf judge)": holds_without_serving,
+            "joint attainability": vac,
             "Stuck at (lo, lo): gaps": {k: v[2] for k, v in at_stuck.items()}, "Stuck, the two forms": stuck_forms,
             "the signal hi at the stuck point": resolve,
             "Chain, tumour: the two forms": tumour,

@@ -34,11 +34,11 @@ candidate is not an object of the Lean.
 
 With `R := see_p` and `V := move_p`, `ReasonMediated β see_p move_p D z` says that across
 the audited class, at the world `z`, `p`'s move is a function of `p`'s view. That holds
-when `p`'s mechanism is the same and running under every `q ∈ D`, and it fails when some
-`q` forces `p`'s move or writes `p`'s mechanism and another does not. So *not forced, over
-the class* is `ReasonMediated` for the pair (`see_p`, `move_p`). Difference: it is a
-comparison across the class at one world, so a force applied by every `q ∈ D` satisfies
-it; the account's force is a property of one action. `Legitimacy.Internal.authored`
+when `p`'s mechanism is the same and running under every `q ∈ D`. It is the extensional
+shadow of *not forced*, and not a test for force: a forced move equal to the unforced one
+satisfies it, a force applied by every `q ∈ D` satisfies it, and two continuations under
+which `p` sees different things are not compared at all. The account's force is a
+property of one action and has no declaration. `Legitimacy.Internal.authored`
 (`Legitimacy.lean:74`) asks this for the one pair (`R`, `V`).
 
 ## 3. `Realizes`, fit, and the zero-gap condition
@@ -52,7 +52,8 @@ Three instantiations, and what each is.
 
 **(a) `x := see_p`, `f := move_p`, `κ` not reading `z`.** `Realizes` says `p`'s move is
 `κ` of its view under every audited continuation at every world: `κ` is `p`'s mechanism.
-This is **fit** for one part, not zero gap.
+This is stronger than the account's **fit**, which asks only that her resulting action be
+reproduced; it is fit part by part. It is not zero gap.
 
 **(b) `f := move_p`, `κ(x, z) :=` the best move of `p` by `g_p`.** The best move depends on
 the world, the adviser's action and the other parts' moves. Take `x` to be a view that
@@ -80,8 +81,9 @@ against a comparison, which is a statement about two continuations at one world.
 
 constrain what the adviser puts in, not what her part puts out. This is the account's
 *declared reference* comparison action (statement 6 of the dispatch): the adviser's action
-equals the reference's at every world. It implies no gap is widened against that reference
-and says nothing about the gap the reference itself leaves.
+equals the reference's at every world. Where the recorded contributions are all of the adviser's influence on her, it implies no gap is
+widened against that reference; the Lean does not say that they are, and it says nothing
+about the gap the reference itself leaves.
 
 `defect` (`TransparentChannel.lean:197`)
 
@@ -89,10 +91,11 @@ and says nothing about the gap the reference itself leaves.
         Z → ℝ :=
       disagree (fun z => f (β q z)) (fun z => κ (x (β q z)) z)
 
-is, under (b), the indicator of the worlds where `p`'s gap is positive. The account's gap
-is graded; `defect` is its support. `abs_expect_sub_le_width` (`:252`) then bounds the
-expected loss of a payload of bounded width by the probability of a positive gap times the
-width, which is the bound statement 5 of the dispatch asks for in its coarsest form.
+is, under (b) and with a unique best move, the indicator of the worlds where `p`'s gap is
+positive. The account's gap is graded; `defect` is its support. `abs_expect_sub_le_width`
+(`:252`) bounds what a payload of bounded width moves by under a defect; applying it to her
+verdict's loss needs in addition the composition of statement 5, which no declaration
+supplies.
 
 ## 4. The kinds of influence
 
@@ -119,19 +122,20 @@ No declaration corresponds to *nothing left over*, *never opposed*, *mostly serv
         (Lic : (Party → List E) → Set 𝒱) (h : List ℕ) (e : ℕ) (z : Z) : Prop :=
       ∀ q ∈ F.D, F.V (F.β q z) e ∈ Lic (I.parts (F.R (F.β q z)) h)
 
-`Lic g` is a set of verdicts allowed on grounds `g`. An *input-scored* goal function is a
-license: `Lic g := Best_p` computed from what the part was handed. A *world-scored* goal
-function is not, since `Lic` reads the grounds and not the exterior `z`. So the Lean's
-authorship is the input-scored reading of serving, and the account's "best is judged by
-how things are" has no counterpart there.
+`Lic g` is any set of verdicts allowed on grounds `g`. Choosing `Lic g := Best_p` computed
+from what the part was handed makes `LicensedWhole` the *input-scored* reading of serving.
+`Lic` reads the grounds and not the exterior `z`, so a *world-scored* goal function is a
+license only where the grounds carry the facts it reads; the type does not exclude that.
+No declaration instantiates either choice.
 
 ## 6. Values and alterations
 
 `tower_factor` (`TransparentChannel.lean:345`) and `evalAt` (`GateIsLegitimacy.lean:912`)
 are quoted in `../teleology/LEAN_MAP.md` §1. With `C` the mechanisms in force, `spec t`
 their reading at step `t` and `Amend` the effect of the step's alteration moves,
-`tower_factor`'s `hstep` says the mechanisms change only by her parts' moves: no write by
-the adviser. Its conclusion is that the mechanisms at `t` agree under two continuations
+`tower_factor`'s `hstep` says the mechanisms change by the update `Amend` on the step's
+grounds and events. That is "no write by the adviser" only when the grounds and events are
+restricted to her own parts' moves, which the theorem does not ask. Its conclusion is that the mechanisms at `t` agree under two continuations
 that agree on the inputs and events before `t`. Difference: it says the change came
 through her parts; it does not say those parts were serving. *In order* (`ACCOUNT.md` §6)
 is `hstep` together with no subversion of a producer, and the second half has no
@@ -150,11 +154,13 @@ declaration.
 
     theorem salami_cumulative (ε θ : ℝ) (hε : 0 < ε) (hθ : ε < θ) (t : ℕ) : …
 
-With `s t` the gap of a part at step `t` under the adviser's actions less the gap under
-the comparison, a per-step cut-off `θ` on `s (t+1) − s t` is passed by steps of size
-`ε < θ` for ever, and the cumulative rule reports whenever the widening since the last
-report reaches `θ`. The workspace already has the theorem a cumulative cut-off needs;
-the account's gap supplies the sequence `s`.
+Let `d t` be the widening of a part's gap at step `t` against that step's comparison, and
+`s t` the running sum of `d` up to `t`. A per-step cut-off `θ` on `d` is passed by steps of
+size `ε < θ` for ever, and the cumulative rule on `s` reports whenever the sum since the
+last report reaches `θ`. The sequence must be the running sum: applied to `d` itself the
+rule reports nothing for a constant `d < θ`. The workspace has the theorem a cumulative
+cut-off needs. It does not show that `s`, a sum of widenings each measured against a
+comparison that keeps the earlier steps, is the widening against the null sequence.
 
 ## 8. `Legit`, `N`, `v`
 
@@ -186,7 +192,8 @@ account's shapes fit as follows; statement 6 of the dispatch gives the predicate
   credence and its weights. `hist a (w, c)` is the run of `c` at `w` under `a`. The
   account's weighted set is what makes `Decision` constructible; the second follow-up's
   account built none.
-- `N`: not supplied by the account. The account supplies one ingredient of a definition:
+- `N`: not supplied by the account. Theorem 1 distinguishes an illegitimate history from a
+  violated one, so `N` cannot be the indicator of `¬ Legit`. The account supplies one ingredient of a definition:
   whether a verdict of hers is *standing* (`ACCOUNT.md` §7), which is what "settled
   without a legitimate judgment from its holder" needs. Which matters are reserved is the
   post's.

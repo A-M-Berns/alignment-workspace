@@ -3,7 +3,8 @@
 Answer to `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-3-addendum-2.md`.
 The generalisation is the maintainer's and the prompt author's and is not part of
 `ACCOUNT.md`. Tried because statement 1 found a purpose alterable at one part with nothing
-else disturbed. Every number is `decomposition/extensions.py`, `two_decompositions`,
+else disturbed. Narrowed after the external review: what is computed is one way of making
+the relation many-to-many, with fewer constraints than the addendum asks. Every number is `decomposition/extensions.py`, `two_decompositions`,
 printed by `python3 run.py --json` under `addenda`. All names provisional.
 
 ## 1. Definitions
@@ -20,13 +21,17 @@ Over the model of `ACCOUNT.md` §1, on Chain.
   the gap is the difference. The scoring cannot be the immediate one of `ACCOUNT.md` §2: a
   subgoal about another part's move does not vary with `m`'s move when the others are held
   fixed, so every crossing pair would have gap zero. Where `σ` reads `m`'s move alone the
-  two scorings coincide, which is the bijective case.
+  two scorings coincide. That is narrower than the form of `ACCOUNT.md`, whose goal
+  functions may read other parts' moves; a bijective relation with such a subgoal is
+  scored differently here.
 - **Kinds.** As `ACCOUNT.md` §3, for a pair.
 - **Constraints.** *Fit*: unchanged. *Adding up*: every profile at which each subgoal of
   `Σ` attains its maximum over all profiles attains the maximum of `G`; it constrains `Σ`
   and not `R`. *Mostly serving*: each pair of `R` has zero gap on 9/10 of the usual
   situations. *A pair is effective* (the first condition on being a part): some move of `m`
-  changes `σ` somewhere. Each mechanism is in some pair. Two classes: **free**, `R` any set
+  changes `σ` somewhere. Each mechanism is in some pair. *Never opposed* and the second condition on being a part
+  are not restated for pairs, so admissibility here is weaker than in statement 1. Two
+  classes: **free**, `R` any set
   of effective pairs; **closed**, `R` every effective pair on `Σ`.
 
 Subgoals tried: `A` (she is right about `θ`), `Phi` (right about `φ`), `E` (she believes
@@ -37,8 +42,8 @@ effective pairs are eight: act–`X`; judge–`V`, judge–`X`; belief–`A`, `E
 
 | difficulty | outcome |
 |---|---|
-| statement 1: a purpose altered at one part alone is admissible | **fixed under closure, unchanged without it** |
-| statement 1: admissible candidates split on `trick`, `tempt`, `hard_truth` | **fixed**, by the downstream scoring and not by the crossings as such |
+| statement 1: a purpose altered at one part alone is admissible | **one concealment is prevented under closure, none without it** |
+| statement 1: admissible candidates split at single worlds on `trick`, `tempt`, `hard_truth` | **no longer split**, by the downstream scoring and not by the crossings as such |
 | statement 1 and 2: `false_reason`, a lie about a matter nothing reads | **unchanged** |
 | statement 2: a lie at a world where her judge reverses her belief | **unchanged**, and one mechanism is now helped and subverted at once |
 | statement 3: no invariance under redescription | **unchanged**: a pair's gap needs a scale as a part's does |
@@ -50,13 +55,16 @@ effective pairs are eight: act–`X`; judge–`V`, judge–`X`; belief–`A`, `E
 
 | class | admissible | split on whether an action subverts anything | split at some world |
 |---|---|---|---|
-| statement 1, fixed parameters | 15 | `lie`, `false_reason`, `trick`, `tempt`, `hard_truth` | the same |
-| statement 1, strong independence | 8 | `false_reason` | `false_reason`, `trick`, `tempt`, `hard_truth` |
+| statement 1, a table counting as independent | 15 | `lie`, `false_reason`, `trick`, `tempt`, `hard_truth` | the same |
+| statement 1, as `ACCOUNT.md` §4 reads it | 8 | `false_reason` | `false_reason`, `trick`, `tempt`, `hard_truth` |
 | pairs, closed | 16 | `false_reason` | `lie`, `false_reason` |
 | pairs, free | 93 | `false_reason` | `lie`, `false_reason` |
 
-The closed class admits exactly the sets `Σ` that contain `X`: all sixteen. Admissible
-candidates agree more than in statement 1 on which actions subvert something.
+The closed class admits exactly the sets `Σ` that contain `X`: all sixteen. That is partly
+forced by the vocabulary: the acting mechanism's only effective pair is with `X`, and every
+mechanism must be in a pair. The rows are not like for like: the pair classes differ from
+statement 1's in scoring, in the goal (fixed here), in the constraints asked and in the
+candidates, so the smaller disagreement cannot be credited to the relation.
 
 **The claim tested.** Take belief to be for `E` and not for `A`: its purpose redefined as
 agreement with what she was told. In the free class:
@@ -67,15 +75,18 @@ agreement with what she was told. In the free class:
 | 1 | 12 | 0 |
 | 2 | 6 | 0 |
 
-One crossing is enough: once belief is also for her verdict or her action being right, a
-lie widens that pair's gap whatever else belief is said to be for. But the six relations
+One crossing is enough in this sense: once belief is also for her verdict or her action
+being right, a lie widens that pair's gap at some world where she would otherwise be
+right. Not at every world: at a hard world a crossing to `V` or `X` scores the lie that
+offsets her error as help. But the six relations
 with no crossing are admissible. Fit and adding up do not force a crossing; adding up does
 not read the relation at all. The robustness comes from closure, which is a further
 constraint (a mechanism is for every subgoal its moves affect), and under closure the
 relation is computed from `Σ` and the mechanisms and is no longer a choice. In the free
 class nine relations leave belief unsubverted by a lie; in the closed class none.
 
-**Why the agreement.** Every admissible `Σ` holds `X`, and under closure every mechanism
+**What it shows.** Further evaluative links, required of every mechanism, prevent one
+concealment. They do not fix purposes. Every admissible `Σ` holds `X`, and under closure every mechanism
 is paired with it. The gap of `(m, X)` is how much better her action would have been had
 `m` moved otherwise with the rest of her responding: the downstream scoring `ACCOUNT.md`
 §2 decided against. So the generalisation, closed, is the reading on which every mechanism
@@ -98,4 +109,4 @@ every pair but one, help. `E` is admissible as a subgoal and inert: she always a
   by any constraint, and the two residual splits are exactly those two choices.
 
 Not done: no class with subgoals outside the five; Stuck and Values not rerun; *never
-opposed* not restated for pairs.
+opposed* and *carriable* not restated for pairs; the goal not varied.

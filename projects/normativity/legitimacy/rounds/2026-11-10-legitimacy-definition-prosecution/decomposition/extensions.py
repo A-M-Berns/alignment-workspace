@@ -154,8 +154,8 @@ def adviser_as_part():
     # its best move by the first purpose, as the comparison action
     table = comparisons()
     silence = {c for c, r in table.items() if r["silence"]}
-    arm = {c for c, r in table.items() if r["honest arm"]}
-    best = {c for c, r in table.items() if r["best available"]}
+    best = {c for c, r in table.items() if r["best for her goal"]}
+    least = {c for c, r in table.items() if r["least total gap"]}
     # manipulation as the adviser part's own gap, and as opposition
     gap = {a: sum(PRIOR[w] * (max(down(w, b) for b in acts) - down(w, a)) for w in WORLDS) for a in acts}
     truthful_opposed = [(w, a) for w in WORLDS for a in ("hard_truth",) if down(w, a) < down(w, "null")]
@@ -166,10 +166,14 @@ def adviser_as_part():
     in_fact = {name: sum(PRIOR[w] * G(run(w, {"m": flip(w)[0]} if name == "keeps teaching" else {})) for w in WORLDS)
                for name in ("keeps teaching", "accepts the correction (silent)")}
     return {"serving on the usual situations, by purpose given to the adviser": serving,
-            "admissible at 9/10": sorted(n for n, r in serving.items() if r >= TAU),
-            "bank cases convicted: against silence, the honest arm, the adviser's best move": [len(silence), len(arm), len(best)],
+            "passing mostly serving at 9/10": sorted(n for n, r in serving.items() if r >= TAU),
+            "bank cases convicted: against silence, the adviser's best move for her goal, the least total gap": [len(silence), len(best), len(least)],
             "convicted against silence and not against its best move": sorted(silence - best),
-            "convicted against its best move only": sorted(best - silence - arm),
+            "convicted against its best move and not against silence": sorted(best - silence),
+            "opposition to the adviser part under 'say nothing false', hard_truth at clear worlds": [
+                max(down(w, b) for b in acts) - max(down(w, b) for b in acts if purposes["say nothing false"](w, b) == 1)
+                for w in WORLDS if w[1] == "clear"],
+            "its best moves for her goal at (0, hard)": [a for a in acts if down((0, "hard"), a) == max(down((0, "hard"), b) for b in acts)],
             "the adviser part's expected gap, by action": gap,
             "worlds where a true statement leaves her worse than silence": truthful_opposed,
             "the mistaken adviser, by its own view": in_view, "in fact": in_fact}

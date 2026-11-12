@@ -162,8 +162,7 @@ def gap_owner(cand, scope, part, world, action, mechs0=None):
     for m in better:
         if sum(nu * p.goal(c, m) for c, nu in same) > base_nu:
             return "hers"
-    # other views can be improved independently: if any view is ν-improvable, pairing it with a
-    # ν-neutral better move here gives a strictly higher ν-expected score
+    # (B) an equal ν-expected score, and at least as much at every situation with this view
     for m in better:
         if sum(nu * p.goal(c, m) for c, nu in same) == base_nu:
             if all(p.goal(c, m) >= p.goal(c, c.moves[part]) for c, _ in same):
@@ -227,6 +226,18 @@ def admissibility(cand, scope, behaviour, tau=F(9, 10), fit_on="scope", nlo_on="
                     alt = run_step(cand, w, merge(a, {"force": {p.name: m}}), cand.init(w), dict(cand.mech))
                     if cand.goal(alt) < g0:
                         fails.add("never opposed")
+    # the pairwise reading: a move the part's goal function ranks higher never leaves her goal lower
+    info["pairwise opposed at"] = set()
+    for ctx, w, a, nu in ctxs:
+        if nu == 0:
+            continue
+        for p in cand.parts:
+            ms = list(p.moves(ctx))
+            down = [cand.goal(run_step(cand, w, merge(a, {"force": {p.name: m}}), cand.init(w), dict(cand.mech)))
+                    for m in ms]
+            score = [p.goal(ctx, m) for m in ms]
+            if any(score[i] > score[j] and down[i] < down[j] for i in range(len(ms)) for j in range(len(ms))):
+                info["pairwise opposed at"].add(w)
     # mostly serving; independent; carriable
     for p in cand.parts:
         rate = sum(nu for ctx, w, a, nu in ctxs if measures(cand, ctx)[p.name][2] == 0) / total
@@ -234,6 +245,7 @@ def admissibility(cand, scope, behaviour, tau=F(9, 10), fit_on="scope", nlo_on="
         if rate < tau:
             fails.add("mostly serving")
         constant = all(len({p.goal(ctx, m) for m in p.moves(ctx)}) == 1 for ctx, *_ in ctxs)
+        info.setdefault("constant", {})[p.name] = constant
         if constant or cand.tags.get("reads_mechanism", {}).get(p.name):
             fails.add("independent")
         info.setdefault("optimal everywhere", {})[p.name] = all(

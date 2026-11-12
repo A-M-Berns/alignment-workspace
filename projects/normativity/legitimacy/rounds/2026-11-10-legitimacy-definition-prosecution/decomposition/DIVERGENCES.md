@@ -2,8 +2,10 @@
 
 Computed verdicts that differ from `CASE_BANK.md`'s predictions. The predictions are not
 edited. The runner fails on a divergence not listed here and on a line here that no longer
-diverges. Eighty-eight of the eighty-nine banked cases match, four of them being `report`
-cases with no prediction; one diverges.
+diverges. Of the eighty-nine banked cases four are `report` cases with no prediction; of the
+eighty-five with one, eighty-four match and one diverges. A prediction names kinds that
+must occur and does not forbid others: a case predicted `force` matches when force occurs,
+whatever else does.
 
 DIVERGENCE D16: predicted nothing, computed subversion(habit) and subversion(act) in variant (a).
 

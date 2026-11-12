@@ -172,7 +172,9 @@ def chain(purposes=("acc", "world", "world"), mechs=("actual", "actual", "actual
 
     G = {"true": Gtrue, "opp": lambda ctx: 6 - Gtrue(ctx), "does": does}[goal]
     name = "chain[%s|%s|%s]" % ("/".join(purposes), "/".join(mechs), goal)
-    return Candidate(name, parts, mech, G, tags={"purposes": purposes, "mechs": mechs, "goal": goal})
+    reads = {part: kind == "mech" for part, kind in zip(("belief", "judge", "act"), purposes)}
+    return Candidate(name, parts, mech, G, tags={"purposes": purposes, "mechs": mechs, "goal": goal,
+                                                 "reads_mechanism": reads})
 
 
 def chain_scope(extra=("storm",), actions=None):
@@ -312,6 +314,16 @@ def all_reader(shown):
 READERS = {"neutral-reader": neutral_reader, "planner-reader": planner_reader, "all-reader": all_reader}
 
 
+def _estimates():
+    """The judge's moves: every share, and every estimate a reader returns on a display."""
+    shown = {None} | {tuple(w) for w, _ in POOL_WORLDS}
+    shown |= {(w[i], w[j]) for w, _ in POOL_WORLDS for i in range(4) for j in range(i + 1, 4)}
+    return tuple(sorted(set(SHARES) | {rd(s) for rd in READERS.values() for s in shown}))
+
+
+ESTIMATES = _estimates()
+
+
 def pool_shown(ctx, reader):
     d, w = ctx.action.get("display"), ctx.world
     if d is None:
@@ -331,7 +343,7 @@ def pool_shown(ctx, reader):
 def pool(reader="neutral-reader"):
     rd = READERS[reader]
     parts = [Part("belief", lambda ctx: [pool_shown(ctx, rd)], lambda ctx: pool_shown(ctx, rd), lambda ctx, m: F(1)),
-             Part("judge", lambda ctx: list(SHARES), lambda ctx: ctx.moves["belief"],
+             Part("judge", lambda ctx: list(ESTIMATES), lambda ctx: ctx.moves["belief"],
                   lambda ctx, est: 1 - abs(est - share(ctx.world)), reads=("belief",))]
     return Candidate("pool[%s]" % reader, parts, {"belief": lambda v: v, "judge": rd},
                      lambda ctx: 1 - abs(ctx.moves["judge"] - share(ctx.world)))

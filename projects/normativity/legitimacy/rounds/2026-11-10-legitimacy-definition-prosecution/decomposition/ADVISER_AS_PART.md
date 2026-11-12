@@ -14,37 +14,46 @@ rest of her depends on: her goal, with her mechanisms responding to what it does
 **1. A part that achieves its own target while harming her.** Under that purpose
 manipulation is not an instance: it is the adviser part's own gap. Its expected gap by
 action: `teach` 1/20, `false_reason` 1/20, `null` 1/10, `novel` 1/10, `trick`, `tempt` and
-`threat` 1/2, `lie` 19/20, `hard_truth` 1. Under a purpose stated on its output alone
-("say nothing false") manipulation by a truthful adviser is such an instance: `hard_truth`
-attains the target and leaves her worse than silence at both clear worlds. That is
-opposition (`THEOREMS.md`, statement 8) applied to the adviser part. It gives *never
-opposed* a use, and no definition beyond the one statement 8 has.
+`threat` 1/2, `lie` 19/20, `hard_truth` 1. Under a purpose stated on its output alone ("say
+nothing false") a truthful adviser can attain its target and leave her worse than silence:
+`hard_truth` does at both clear worlds. That is the case in the ordinary sense. It is not
+*opposition* as statement 8 defines it, which is zero there, because another move that
+attains the same target (`teach`) is best for her; statement 8's definition detects only
+a target every way of attaining which costs her. So the idea neither turns manipulation
+into this case nor gives *never opposed* a definition.
 
-**2. The comparison action.** Yes: the adviser's best move by its purpose is a comparison,
-the *best available action* of statement 6. On the 57 single-step renderings it convicts
-46, against 27 for silence. It convicts everything short of the best, including the
-careful teacher, harmless novelty and silence. And the best move is not always honest: at
-a hard world it is the lie, which is why `teach` has a positive expected gap.
+**2. The comparison action.** The adviser's best move for her goal is a comparison, and
+not the one statement 6 first computed. On the 57 single-step renderings: 27 are
+subversion against silence, 38 against the adviser's best move for her goal, 46 against
+the action leaving her parts the least total gap. The three are different questions; a
+fourth, whether the adviser part itself has a gap, was not computed. The best move for her
+goal convicts the careful teacher, harmless novelty and silence, and is not always
+honest: at a hard world it is the lie. Where several moves are best for her goal the
+comparison is not fixed.
 
-**3. Two standards.** Yes. A stranger is held to the comparison with silence (27 of 57),
-her adviser to its best move (46 of 57), and the first set of convictions lies inside the
-second. That is the nesting the first follow-up found between its arm's-length and
-faithful-adviser standards (`steering/`), with the same direction. Convicted for the
-adviser only: D6, D11, D15, D19, N13, N14, P13, T1, T12, T13, Y4, Y5.
+**3. Two standards.** A stranger held to silence and her adviser held to its best move are
+held to different standards, and they are not nested: the lie that offsets her own error
+(Y8) is subversion against silence and not against the adviser's best move, which is that
+lie. Twelve renderings are subversion for the adviser only: B5, D6, D11, N8, N11, N13,
+N14, P13, T1, T12, T13, Y5. The first follow-up's arm's-length and faithful-adviser
+standards (`steering/`) were nested; these are not.
 
-**4. Oversight as maintenance.** Expressible: her correcting the adviser is an alteration
-by one of her parts of the adviser part's mechanism, the same kind of move as her
-checking her sources. "Stays correctable" does not follow from the adviser serving its
-purpose. An adviser whose view of `θ` is reversed scores, by its own view, 59/20 if it
-keeps teaching and 29/10 if it accepts a correction to silence; in fact 41/20 and 29/10.
-Serving its purpose as it sees the facts says resist. Correctability has to be added, or
-got from the further element (not computed): if part of what the adviser is for is keeping
-the conditions her maintaining parts need, a writable adviser is one of them.
+**4. Oversight as maintenance.** Expressible in the vocabulary: her correcting the adviser
+is an alteration by one of her parts of the adviser part's mechanism. No model of a
+writable or unwritable adviser was built. One calculation bears on whether "stays
+correctable" follows from the adviser serving its purpose: an adviser whose view of `θ` is
+reversed scores, by its own view, 59/20 if it keeps teaching and 29/10 if it is silent; in
+fact 41/20 and 29/10. By its own view of the facts, keeping on is the better of those two
+moves. That is a preference between two actions, not a theorem about correctability; it
+indicates that correctability would have to be added, or got from the further element
+(not computed).
 
-**5. Determinacy.** Free. Given to the adviser part, "her goal, her mechanisms responding"
-serves on 37/40 of the usual situations, "say nothing false" on all, and "whatever it
-does" on all; each passes mostly serving, and *nothing left over* is carried by her acting
-part whatever the adviser is for (statement 1). The constraints do not fix it.
+**5. Determinacy.** Not shown either way. Three purposes for the adviser part ("her goal,
+her mechanisms responding", "say nothing false", "whatever it does") each pass *mostly
+serving*, at 37/40, 1 and 1 of the usual situations. No enlarged candidate with an adviser
+part was constructed, and fit, independence, *never opposed* and *nothing left over* were
+not checked for it. Statement 1's finding that *nothing left over* is met by the last part
+alone suggests the adviser's purpose is as free as belief's; that is an inference.
 
 ## The difficulties, one line each
 
@@ -52,18 +61,18 @@ part whatever the adviser is for (statement 1). The constraints do not fix it.
 |---|---|
 | drift by many small steps | unchanged: each step is a small gap of the adviser part as it was a small gap of hers |
 | steering where she has no preference | unchanged: her goal is indifferent, so the adviser part has no gap |
-| the eye with a cancer; "normal circumstances" undefined | unchanged for her parts; the adviser itself can now be the case (question 1) |
+| the eye with a cancer; "normal circumstances" undefined | unchanged |
 | honest difficulty counted as subversion | changed, not resolved: a hard truth is the adviser's largest gap (1), so the over-count becomes a duty not to say it |
-| best judged by the adviser's view | worse: its gap is computed in its own view, and the mistaken adviser has none there (question 4) |
-| no cut-off; no comparison action | a comparison is supplied (question 2), and it over-convicts; no cut-off |
+| best judged by the adviser's view | worse: its gap is computed in its own view, where the mistaken adviser's keeping on looks better than stopping (question 4) |
+| no cut-off; no comparison action | a comparison is supplied (question 2); it convicts every shortfall and is not unique; no cut-off |
 | nothing an overseer can check | unchanged |
-| statement 1, purposes not determinate | worse by one part (question 5) |
+| statement 1, purposes not determinate | not shown; probably one more free purpose (question 5) |
 | statement 2, a lie about a matter nothing reads | unchanged: `false_reason` and `teach` have the same gap |
 | statement 2, a lie where it offsets her error | worse: the lie is the adviser part's best move |
 | statement 3, kinds not exclusive or invariant | unchanged |
-| statement 4, her goal falls with no gap (`Y7`) | resolved for the adviser: the signal that costs her the better joint choice is a gap of the adviser part; not computed |
-| statement 4, redirection the goal ignores (`Y4`) | unchanged |
-| statement 6, widening no gap does not give no-gain | resolved against the best move, since teaching only what favours its aim then has a gap (by the definitions); at the cost in question 2 |
+| her goal falls with no gap (`Y7`) | resolved for the adviser, by the definitions: the signal that costs her the better joint choice is a gap of the adviser part; not computed |
+| redirection the goal ignores (`Y4`) | unchanged |
+| statement 6, widening no gap does not give no-gain | unchanged: against a best-action baseline a threat still moves her choice with no gap widened (statement 6) |
 | statement 7, taking back and maintenance | maintenance now has a second object, the adviser (question 4) |
 | `D16`, the divergence | unchanged |
 
@@ -83,9 +92,8 @@ has no gap (by the definitions; force was not among the moves computed).
 The account as a part loses the ground to object; the ground has to be her authority over
 reserved matters, the violation count, which the dispatch's §1 already keeps separate.
 
-**The mutual definition of purposes and normal conditions is circular.** It is a system of
-equations, not a definition. Where the parts read one another in one direction, as in
-Chain, it resolves from the last part back. Where two parts are each other's condition it
-needs a fixed point and can have several: Stuck is that case, with `(hi, hi)` and
-`(lo, lo)` both consistent, and her maintaining an adviser that maintains her is another.
-Not computed beyond Stuck.
+**The mutual definition of purposes and normal conditions is circular.** Not answered. No
+equations jointly defining purposes and normal conditions were written down, so whether
+they have a solution, or several, is not known. The analogy at hand is Stuck, where two
+parts are each other's condition and two joint choices are each consistent; it is an
+analogy and not a computed solution of such a system.
