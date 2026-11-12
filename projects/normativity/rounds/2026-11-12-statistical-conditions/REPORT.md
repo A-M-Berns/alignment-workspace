@@ -191,7 +191,18 @@ weighting). Registered against 138: `statistical.finite-losses-affordable`,
 
 ## Gates
 
-GATES_PLACEHOLDER
+Run on the tree at `b5399e2b`, before this section was filled in.
+
+- `~/.claude/scripts/safe-lake.sh build Workspace`, from `lean/`: `Build completed successfully`.
+- `python3.12 tests/audit_axioms.py`: `AXIOM AUDIT: 4051 results across 128 files, all within
+  ['Classical.choice', 'Quot.sound', 'propext']`.
+- `python3.12 tests/run.py`: `ALL GREEN (80 project(s))`. It skips the Lean build unless
+  `WORKSPACE_LEAN=1`; the build above is the separate run.
+- `python3.12 -m checkers.graph --root .`: `OK 2627 nodes`. `python3 -m checkers.workspace_state
+  --check`: valid, 215 modern claims, 153 priorities. `python3.12 -m checkers.run`: 110 entries
+  in the normativity registry, schema ok.
+- `python3 toy/floor_toy.py --check`: `check: ok`.
+- No file under `checkers/`, `tests/`, `.github/` or `graph/policy.yaml` is changed.
 
 ## Outstanding maintainer actions
 
