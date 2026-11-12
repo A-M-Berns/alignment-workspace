@@ -1187,6 +1187,10 @@ numbering:
   benefit are not separated (Y3).
 - **The Lean was read, not built**; proofs were not read.
 - **Blackwell's theorem is used from memory** of its statement; no source was opened.
+- **The repository-level `tests/run.py` sweep** was run once, under Python 3.13, on the tree as
+  committed apart from this line: all green over 81 projects, the Lean build skipped as that
+  runner does by default. The round's own runner was run under Python 3.9 and 3.13.
+  `tests/round_records.py` had no pull-request context locally and compared nothing; CI runs it.
 - **Nothing is registered.** Components: the account as stated — **open**; the Lean map —
   **living note**; statements 1–9 — **open**, their statuses being runner-checked facts
   about finite models with no registry entry; the two addendum files — **living notes**.
