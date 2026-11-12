@@ -684,7 +684,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Internal` | structure | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Internal` |
 | `LegitOn` | def | 2026-09-25-gate-is-legitimacy | prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.LegitOn` |
 | `LicensedAt` | def | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.LicensedAt` |
-| `LicensedWhole` | def | 2026-09-25-gate-is-legitimacy | prose | `Workspace.Deference.Contrib.GateIsLegitimacy.LicensedWhole` |
+| `LicensedWhole` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.LicensedWhole` |
 | `MediatedAt` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.MediatedAt` |
 | `Menu` | inductive | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Menu` |
 | `Model` | structure | 2026-09-25-gate-is-legitimacy | prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Model` |
@@ -828,7 +828,7 @@ change, and the count of those is the size of the free choice remaining.
 | `frame` | def | 2026-09-25-legitimacy-internal-external | note, prose | `Workspace.Deference.Contrib.Legitimacy.Witness.frame` |
 | `gateValue` | def | 2026-09-25-legitimacy-internal-external | wiki | `Workspace.Deference.Contrib.Legitimacy.gateValue` |
 | `handledValue` | def | 2026-09-25-legitimacy-internal-external | Lean only | `Workspace.Deference.Contrib.Legitimacy.handledValue` |
-| `lastReport` | def | 2026-09-25-legitimacy-internal-external | Lean only | `Workspace.Deference.Contrib.Legitimacy.lastReport` |
+| `lastReport` | def | 2026-09-25-legitimacy-internal-external | prose | `Workspace.Deference.Contrib.Legitimacy.lastReport` |
 | `segment` | def | 2026-09-25-legitimacy-internal-external | wiki, prose | `Workspace.Deference.Contrib.Legitimacy.Witness.segment` |
 | `toOpenIntegrity` | def | 2026-09-25-legitimacy-internal-external | wiki, prose | `Workspace.Deference.Contrib.Legitimacy.Segment.toOpenIntegrity` |
 | `trans` | def | 2026-09-25-legitimacy-internal-external | wiki, prose | `Workspace.Deference.Contrib.Legitimacy.Segment.trans` |
@@ -1981,7 +1981,7 @@ change, and the count of those is the size of the free choice remaining.
 | `AffineForm.eval` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.AffineForm.eval` |
 | `Face` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face` |
 | `Regular` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.Regular` |
-| `candidate` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.candidate` |
+| `candidate` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.candidate` |
 | `cell` | def | unrecorded | note, prose | `Workspace.Normativity.Contrib.PolyhedralProjection.cell` |
 | `coefQ` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.coefQ` |
 | `coord` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.coord` |

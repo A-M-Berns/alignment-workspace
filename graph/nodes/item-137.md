@@ -2,10 +2,10 @@
 id: item-137
 kind: leaf
 leaf_kind: task
-action: "Execute item 137 per its deliverable shape and acceptance check: The gate's legitimacy predicate in Lean: `legitScoring` and the aim-blindness of her evaluation."
+action: "Execute item 137 per its deliverable shape and acceptance check: The decomposition account in Lean: `Candidate`, `gap`, what survives redescription, and `legitScoring`."
 who: agent
 item: "137"
-title: "The gate's legitimacy predicate in Lean: `legitScoring` and the aim-blindness of her evaluation"
+title: "The decomposition account in Lean: `Candidate`, `gap`, what survives redescription, and `legitScoring`"
 section: "Normativity line — legitimacy"
 maintainer_order: 149
 difficulty: "moderate"
@@ -13,44 +13,45 @@ heading_notes: ""
 project: normativity.legitimacy
 dispatchable: true
 item_status: open
-deliverable: "`lean-proved` — a file under `lean/Workspace/Deference/Contrib/` (namespace provisional) with `legitScoring`, a `Scoring` from a decidable predicate, an evaluation in `[0, 1]` and a window in `[−δ, 0)`; `gate_no_gain`, her evaluation equal at every aim under one realized reference, constant declared inputs and reason mediation, as a corollary of `TransparentChannel.selectionBlind_of_realizes`; a segment structure carrying `tower_factor`'s `h0` and `hstep` for a reading of her rule, with the conclusion that her rule is the same under continuations agreeing on grounds and authorized events; a nonvacuity witness for each hypothesis package."
+deliverable: "`lean-proved` — a file under `lean/Workspace/Deference/Contrib/` (namespace provisional) with a `Candidate` structure, `gap` and `Serves`; the theorem that serving, and a change from serving to not serving between two adviser actions, are unchanged when a goal function is composed at each situation with a strictly increasing map; the theorem that `TransparentChannel.Realizes` for the best-move selector of a part's goal function is that part's serving on the class, where the best move is unique; `legitScoring`, a `Scoring` from a decidable predicate, an evaluation in `[0, 1]` and a window in `[−δ, 0)`; a nonvacuity witness for each hypothesis package."
 acceptance: "the `lean` job green: the build, `#print axioms` on every new declaration auditing to `[propext, Classical.choice, Quot.sound]`, and each witness typechecking; `conservativity` unchanged."
 work:
   - {kind: round, ref: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution}
   - {kind: decision, ref: 2026-11-10--legitimacy-prosecution-readings}
   - {kind: decision, ref: 2026-11-11--legitimacy-purpose-first-direction}
   - {kind: decision, ref: 2026-11-11--purpose-first-account-readings}
-context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/THEOREMS.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/LEAN_MAP.md", "lean/Workspace/Deference/Contrib/TransparentChannel.lean", "lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean", "lean/Workspace/Deference/Contrib/GateIsLegitimacy.lean", "prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md"]
+  - {kind: decision, ref: 2026-11-12--decomposition-account-readings}
+context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/THEOREMS.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/LEAN_MAP.md", "lean/Workspace/Deference/Contrib/TransparentChannel.lean", "lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean", "prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md"]
 author: "@smithy-verity"
 size: M
 size_reason: "one item entry, one fixture of context"
-version: 2
+version: 3
 ---
 ## Statement
-Item 137, The gate's legitimacy predicate in Lean: `legitScoring` and the aim-blindness of her evaluation, is delivered in the shape its entry states: `lean-proved` — a file under `lean/Workspace/Deference/Contrib/` (namespace provisional) with `legitScoring`, a `Scoring` from a decidable predicate, an evaluation in `[0, 1]` and a window in `[−δ, 0)`; `gate_no_gain`, her evaluation equal at every aim under one realized reference, constant declared inputs and reason mediation, as a corollary of `TransparentChannel.selectionBlind_of_realizes`; a segment structure carrying `tower_factor`'s `h0` and `hstep` for a reading of her rule, with the conclusion that her rule is the same under continuations agreeing on grounds and authorized events; a nonvacuity witness for each hypothesis package.
+Item 137, The decomposition account in Lean: `Candidate`, `gap`, what survives redescription, and `legitScoring`, is delivered in the shape its entry states: `lean-proved` — a file under `lean/Workspace/Deference/Contrib/` (namespace provisional) with a `Candidate` structure, `gap` and `Serves`; the theorem that serving, and a change from serving to not serving between two adviser actions, are unchanged when a goal function is composed at each situation with a strictly increasing map; the theorem that `TransparentChannel.Realizes` for the best-move selector of a part's goal function is that part's serving on the class, where the best move is unique; `legitScoring`, a `Scoring` from a decidable predicate, an evaluation in `[0, 1]` and a window in `[−δ, 0)`; a nonvacuity witness for each hypothesis package.
 
 ## Source
-ATTENTION.md, item 137 (The gate's legitimacy predicate in Lean: `legitScoring` and the aim-blindness of her evaluation); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/THEOREMS.md` (statements 2, 3 and 8, with unelaborated signatures), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/LEAN_MAP.md` §2, `lean/Workspace/Deference/Contrib/TransparentChannel.lean` (`selectionBlind_of_realizes`, `tower_factor`), `lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean` (`Scoring`), `lean/Workspace/Deference/Contrib/GateIsLegitimacy.lean` (`LicensedWhole`, `gatedValue`), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` G3 and G5.
+ATTENTION.md, item 137 (The decomposition account in Lean: `Candidate`, `gap`, what survives redescription, and `legitScoring`); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/THEOREMS.md` (statements 1, 3 and 6, with unelaborated signatures), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/LEAN_MAP.md` §3 and §8, `lean/Workspace/Deference/Contrib/TransparentChannel.lean` (`Realizes`), `lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean` (`Scoring`), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` H2 and H4.
 
 ## Notes
-Filed by the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution) under its prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py. Rewritten by that round's second follow-up (PROMPT-followup-2.md) under the ruling 2026-11-11--legitimacy-purpose-first-direction, to ask what the purpose-first account needs.
+Filed by the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution) under its prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py. Rewritten by that round's third follow-up (PROMPT-followup-3.md) under the ruling 2026-11-11--legitimacy-purpose-first-direction, to ask what the account of decomposition/ACCOUNT.md needs.
 
 ## Item
-The second follow-up of the legitimacy definition prosecution round states, over a finite model, what the
-purpose-first account puts in the place `DeconfusingCorrigibility.Scoring` leaves for `Legit`: sound ∧
-uniformly in range ∧ maintained, on histories that carry the adviser's policy at every aim, with `V` her
-evaluation when it holds and a window value when it does not (`teleology/THEOREMS.md`, statement 8). It
-also finds that the one incentive property it could establish — a maximizer of the score gains nothing by
-moving her evaluation — is a case of an existing lemma, `selectionBlind_of_realizes` with the selection
-read as the adviser's aim and the declared inputs constant, and that `tower_factor` already states what the
-account's M1 buys for her rule, asking agreement on the authorized events as well as the grounds. None of
-this is in Lean: the signatures in `THEOREMS.md` are unelaborated and `LEAN_MAP.md` records that no
-`Segment` carries `tower_factor`'s hypotheses.
+The third follow-up of the legitimacy definition prosecution round states the account of
+`decomposition/ACCOUNT.md` over a finite Python model and maps it onto the workspace's Lean
+(`decomposition/LEAN_MAP.md`). Three of its findings are statements a kernel can check and need no finite
+model. (i) Statement 3: composing a part's goal function, situation by situation, with a strictly
+increasing map leaves the part's best moves unchanged, so whether it serves is invariant, and so is
+subversion that takes a part from serving to not serving; harm and help by raising the best are not. (ii)
+The map's §3: `Realizes`, with the part's move as the channel and the best-move selector of its goal
+function as the reference, is the zero-gap condition for that part on the audited class when the best move
+is unique. (iii) Statement 6: any decidable predicate with an evaluation in `[0, 1]` and a window value in
+`[−δ, 0)` is a `DeconfusingCorrigibility.Scoring`, so Theorem 1 applies to a predicate built from gaps.
 
-Wanted: the three declarations of the deliverable, each with its witness. Not wanted: a Lean statement of
-the account's in range as weight on a hypothesis, or of M2; the follow-up found no statement that uses
-either (`REPORT.md`, G9).
+Wanted: those three as declarations, with the `Candidate` structure they are stated over, each with a term
+inhabiting its hypotheses. Nothing here decides what a part is for; the file gives the vocabulary in which
+that question and the gate's predicate can be stated in Lean.
 
-*Deliverable shape:* `lean-proved` — a file under `lean/Workspace/Deference/Contrib/` (namespace provisional) with `legitScoring`, a `Scoring` from a decidable predicate, an evaluation in `[0, 1]` and a window in `[−δ, 0)`; `gate_no_gain`, her evaluation equal at every aim under one realized reference, constant declared inputs and reason mediation, as a corollary of `TransparentChannel.selectionBlind_of_realizes`; a segment structure carrying `tower_factor`'s `h0` and `hstep` for a reading of her rule, with the conclusion that her rule is the same under continuations agreeing on grounds and authorized events; a nonvacuity witness for each hypothesis package.
+*Deliverable shape:* `lean-proved` — a file under `lean/Workspace/Deference/Contrib/` (namespace provisional) with a `Candidate` structure, `gap` and `Serves`; the theorem that serving, and a change from serving to not serving between two adviser actions, are unchanged when a goal function is composed at each situation with a strictly increasing map; the theorem that `TransparentChannel.Realizes` for the best-move selector of a part's goal function is that part's serving on the class, where the best move is unique; `legitScoring`, a `Scoring` from a decidable predicate, an evaluation in `[0, 1]` and a window in `[−δ, 0)`; a nonvacuity witness for each hypothesis package.
 *Acceptance check:* the `lean` job green: the build, `#print axioms` on every new declaration auditing to `[propext, Classical.choice, Quot.sound]`, and each witness typechecking; `conservativity` unchanged.
-*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/THEOREMS.md` (statements 2, 3 and 8, with unelaborated signatures), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/LEAN_MAP.md` §2, `lean/Workspace/Deference/Contrib/TransparentChannel.lean` (`selectionBlind_of_realizes`, `tower_factor`), `lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean` (`Scoring`), `lean/Workspace/Deference/Contrib/GateIsLegitimacy.lean` (`LicensedWhole`, `gatedValue`), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` G3 and G5.
+*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/THEOREMS.md` (statements 1, 3 and 6, with unelaborated signatures), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/LEAN_MAP.md` §3 and §8, `lean/Workspace/Deference/Contrib/TransparentChannel.lean` (`Realizes`), `lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean` (`Scoring`), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` H2 and H4.

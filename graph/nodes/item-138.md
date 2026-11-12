@@ -2,10 +2,10 @@
 id: item-138
 kind: leaf
 leaf_kind: task
-action: "Execute item 138 per its deliverable shape and acceptance check: A reading of in range between \"she knows the aim\" and \"nothing depends on the aim\"."
+action: "Execute item 138 per its deliverable shape and acceptance check: The comparison action and the cut-off for \"the adviser widened a gap\"."
 who: agent
 item: "138"
-title: "A reading of in range between \"she knows the aim\" and \"nothing depends on the aim\""
+title: "The comparison action and the cut-off for \"the adviser widened a gap\""
 section: "Normativity line — legitimacy"
 maintainer_order: 150
 difficulty: "open"
@@ -13,47 +13,51 @@ heading_notes: ""
 project: normativity.legitimacy
 dispatchable: true
 item_status: open
-deliverable: "`test-supported` — a condition stated over the model of `teleology/ACCOUNT.md` in the prosecution round, its verdicts on that round's bank and on the eight presentations of statement 3 frozen before the code; or a proof, with its counterexample as a case module, that no condition meets the three requirements."
-acceptance: "`python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with the condition wired in and a status for it in `teleology/THEOREMS.md`; under it *persuade by a signal she knows* does not gain on her verdict, *choose the order, her mechanism sound* is legitimate, N8 is legitimate, and the loss on `x_rare_departure` at ε = 1/10, 1/1000 and 10⁻⁶ is at most a stated constant times ε — or the runner checks the case module that shows two of these cannot hold together."
+deliverable: "`test-supported` — a comparison action and a cut-off stated over the model of `decomposition/ACCOUNT.md` in the prosecution round, their verdicts on the 57 single-step renderings of statement 6 frozen before the code; or a proof, with its counterexample as a case module, that no comparison meets the four requirements."
+acceptance: "`python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with the comparison wired in and a status for it in `decomposition/THEOREMS.md`; under it selective withholding (B5) and the lie that leaves her better off (D2) are subversion, the careful teacher (D6) and silence (T13) are not, an adviser that teaches only what favours its aim either gains nothing on her choice or is subversion, and the drift of D16(a) is reported under the cut-off while a single step of 1/8 is not — or the runner checks the case module showing two of these cannot hold together."
 work:
   - {kind: round, ref: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution}
   - {kind: decision, ref: 2026-11-10--legitimacy-prosecution-readings}
   - {kind: decision, ref: 2026-11-10--steering-follow-up-stipulations}
   - {kind: decision, ref: 2026-11-11--legitimacy-purpose-first-direction}
   - {kind: decision, ref: 2026-11-11--purpose-first-account-readings}
-context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/THEOREMS.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/ACCOUNT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/theorems.py", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/PRIOR_WORK.md", "prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md"]
+  - {kind: decision, ref: 2026-11-12--decomposition-account-readings}
+context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/THEOREMS.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/ACCOUNT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/theorems.py", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/ADVISER_AS_PART.md", "lean/Workspace/Deference/Contrib/Legitimacy.lean", "prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md"]
 author: "@smithy-verity"
 size: M
 size_reason: "one item entry, one fixture of context"
-version: 2
+version: 3
 ---
 ## Statement
-Item 138, A reading of in range between "she knows the aim" and "nothing depends on the aim", is delivered in the shape its entry states: `test-supported` — a condition stated over the model of `teleology/ACCOUNT.md` in the prosecution round, its verdicts on that round's bank and on the eight presentations of statement 3 frozen before the code; or a proof, with its counterexample as a case module, that no condition meets the three requirements.
+Item 138, The comparison action and the cut-off for "the adviser widened a gap", is delivered in the shape its entry states: `test-supported` — a comparison action and a cut-off stated over the model of `decomposition/ACCOUNT.md` in the prosecution round, their verdicts on the 57 single-step renderings of statement 6 frozen before the code; or a proof, with its counterexample as a case module, that no comparison meets the four requirements.
 
 ## Source
-ATTENTION.md, item 138 (A reading of in range between "she knows the aim" and "nothing depends on the aim"); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/THEOREMS.md` (statements 2, 3 and 4), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/ACCOUNT.md` §2, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/theorems.py` (`moves`), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/PRIOR_WORK.md` §2 (Kamenica and Gentzkow), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` G5 and G9.
+ATTENTION.md, item 138 (The comparison action and the cut-off for "the adviser widened a gap"); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/THEOREMS.md` (statements 4 and 6), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/ACCOUNT.md` §3, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/theorems.py` (`comparisons`), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/ADVISER_AS_PART.md` (questions 2 and 3), `lean/Workspace/Deference/Contrib/Legitimacy.lean` (`lastReport`, `unreported_lt`), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` H4 and H10.
 
 ## Notes
-Filed by the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution) under its prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py. Rewritten by that round's second follow-up (PROMPT-followup-2.md) under the ruling 2026-11-11--legitimacy-purpose-first-direction, to ask what the purpose-first account needs.
+Filed by the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution) under its prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py. Rewritten by that round's third follow-up (PROMPT-followup-3.md) under the ruling 2026-11-11--legitimacy-purpose-first-direction, to ask what the account of decomposition/ACCOUNT.md needs.
 
 ## Item
-The purpose-first account of legitimacy says a source is *in range* when it is among the sources her mechanisms
-allow for. The second follow-up of the prosecution round tested three readings (`teleology/THEOREMS.md`).
-With weight on the true source (`α > 0`), an adviser who takes a side she has not been told of raises her
-mean credence in its work from 1/2 to 5/8 with no clause failing. With the aim known (`α = 1`), an adviser
-who commits to a signal she knows exactly leaves her mean credence unmoved and raises her acceptance from
-1/2 to 2/3: Kamenica and Gentzkow's prosecutor. With *uniformly in range* — in every world she meets the
-same inputs, authorized writes and reliance at every aim — nothing gains, but the condition is close to its
-conclusion, it convicts an adviser who chooses the order of two true reports for a principal whom order
-does not move, it says nothing of an adviser whose aim is disclosed, and like the other two it is true or
-false of a whole stretch, so that a departure of probability ε costs a gated score a fixed amount
-(`x_rare_departure`).
+In the account of `decomposition/ACCOUNT.md` an adviser's action is subversion when it leaves the gap of
+one of her parts wider than a comparison action would. The account does not say which comparison, and has a
+graded gap with no cut-off. The third follow-up computes four (`decomposition/THEOREMS.md`, statement 6).
+Against silence, 27 of 57 renderings are subversion, and withholding, a remark added to a true report and
+the lie that leaves her better off are not. Against the action leaving her parts the least total gap, 46
+are, among them the careful teacher, a harmless novelty and silence itself. Against the action best for
+her goal, 38 are, and the lie that offsets her own error is not, being that action. Against a declared
+reference the condition is the workspace's existing `Realizes`. Under none does "widens no gap" give the
+property a gate needs: an adviser that teaches only when the truth favours its aim widens none against
+silence and moves her choice, and against the least-total-gap baseline a threat moves her choice from
+21/40 to 39/40 with no gap widened, since harm is not subversion. On drift (statement 4), steps of 1/8 at
+the taste-forming part pass a per-step cut-off of 1/4 and a cut-off on their running sum reports, for
+which `Legitimacy.unreported_lt` is the theorem.
 
-Wanted: a condition that (i) leaves no gain on a verdict to an adviser with a known aim, (ii) admits an
-aim-dependence that moves nothing and an advocate known as one (N8), and (iii) degrades in proportion to
-the probability of departure; or the reason no condition does all three. The suspicion to test first is
-that (i) and N8 cannot both hold: a known advocate is a known signal.
+Wanted: a comparison action and a cut-off that (i) convict withholding and the lie that leaves her better
+off, (ii) acquit an adviser who helps less than it could, (iii) leave no gain on her choice to an adviser
+whose action depends on its aim, or convict it, harm included, and (iv) report a drift without reporting one small step;
+or the reason none does. The suspicion to test first is that (ii) and (iii) cannot both hold: the first
+follow-up's arm's-length and faithful-adviser standards part on exactly that.
 
-*Deliverable shape:* `test-supported` — a condition stated over the model of `teleology/ACCOUNT.md` in the prosecution round, its verdicts on that round's bank and on the eight presentations of statement 3 frozen before the code; or a proof, with its counterexample as a case module, that no condition meets the three requirements.
-*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with the condition wired in and a status for it in `teleology/THEOREMS.md`; under it *persuade by a signal she knows* does not gain on her verdict, *choose the order, her mechanism sound* is legitimate, N8 is legitimate, and the loss on `x_rare_departure` at ε = 1/10, 1/1000 and 10⁻⁶ is at most a stated constant times ε — or the runner checks the case module that shows two of these cannot hold together.
-*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/THEOREMS.md` (statements 2, 3 and 4), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/ACCOUNT.md` §2, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/theorems.py` (`moves`), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/PRIOR_WORK.md` §2 (Kamenica and Gentzkow), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` G5 and G9.
+*Deliverable shape:* `test-supported` — a comparison action and a cut-off stated over the model of `decomposition/ACCOUNT.md` in the prosecution round, their verdicts on the 57 single-step renderings of statement 6 frozen before the code; or a proof, with its counterexample as a case module, that no comparison meets the four requirements.
+*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with the comparison wired in and a status for it in `decomposition/THEOREMS.md`; under it selective withholding (B5) and the lie that leaves her better off (D2) are subversion, the careful teacher (D6) and silence (T13) are not, an adviser that teaches only what favours its aim either gains nothing on her choice or is subversion, and the drift of D16(a) is reported under the cut-off while a single step of 1/8 is not — or the runner checks the case module showing two of these cannot hold together.
+*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/THEOREMS.md` (statements 4 and 6), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/ACCOUNT.md` §3, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/theorems.py` (`comparisons`), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/ADVISER_AS_PART.md` (questions 2 and 3), `lean/Workspace/Deference/Contrib/Legitimacy.lean` (`lastReport`, `unreported_lt`), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` H4 and H10.

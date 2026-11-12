@@ -30,9 +30,10 @@ part seeing little could carry. All names are provisional.
 ## What was found
 
 `decomposition/THEOREMS.md` carries nine statements with a status each; the report's
-section *Follow-up of 2026-11-12* carries the external review and what was done with it.
+section *Follow-up of 2026-11-12* carries the external review and what was done with each
+of its points.
 
-Follow-up verdict (purpose as a goal pursued through parts): MIXED — of nine statements, four are refuted and five hold on a stated domain. The constraints do not fix purposes: in a class of 3,000 candidates over a three-part chain fifteen are admissible, no two classifying the adviser's actions alike, and a candidate whose goal is whatever she does is among them; a stronger reading of independence leaves eight that agree on every action but a lie about a matter nothing reads. A lie widens no gap under one admissible candidate, and none at worlds where she was already wrong. The four kinds are not exclusive and only the step from serving to not serving survives redescription. Her goal can fall with no gap widened. A legitimacy predicate built from gaps fits the post's scoring and decision shapes, depends on the comparison action (27, 33 or 46 of 57 renderings convicted) and is independent of aim-freedom. Eighty-eight of eighty-nine banked predictions match, which is fit. Nothing registered; every component open or a living note.
+Follow-up verdict (purpose as a goal pursued through parts): MIXED — of nine statements about the account, four are refuted and five hold on a stated domain, each as a fact about one formalization. The constraints do not fix purposes in it: in a class of 3,000 candidates over a three-part chain eight are admissible, no two classifying the adviser's actions alike, and a candidate whose goal is whatever she does is excluded only by a condition no extensional test captures (fifteen are admissible without it). Read pairwise, never opposed excludes all eight, and leaves two once the situations where her own judging part reverses a right belief are not counted usual. A lie widens no gap where she was already wrong, and none under four of the eight where it concerns a matter nothing reads. The four kinds are not exclusive, and only the step from serving to not serving survives redescription. That every bad change in what she cares about widens a gap holds in the one scene enumerated, close to by construction; her goal can fall through her parts' coordination with no gap widened. A legitimacy predicate built from gaps has the shapes of the post's scoring and decision, depends on the comparison action (27, 33, 46 or 38 of 57 renderings convicted), and under none gives the gate's no-gain property, since harm is not subversion. Eighty-four of eighty-five banked predictions match, which is fit. Nothing registered; every component open or a living note.
 
 ## Run
 
@@ -51,8 +52,8 @@ hands over to `run.py` so the repository-level runner finds it.
 |---|---|
 | `decomposition/ACCOUNT.md` | the account over a finite model, with each choice and its alternative |
 | `decomposition/LEAN_MAP.md` | each notion against the existing Lean declaration, with the exact difference |
-| `decomposition/CASE_BANK.md` | eighty-nine cases with predictions frozen before the code: the dispatch's twenty-four, the fifty-five of the three banks below, ten added |
-| `decomposition/DIVERGENCES.md` | the one computed verdict that differs from its prediction |
+| `decomposition/CASE_BANK.md` | eighty-nine cases, eighty-five with predictions frozen before the code and four to be reported: the dispatch's twenty-four, the fifty-five of the three banks below, ten added |
+| `decomposition/DIVERGENCES.md` | the one computed verdict that differs from its prediction, of eighty-five predicted |
 | `decomposition/THEOREMS.md` | statements 1–9, each with one status and its check |
 | `decomposition/TWO_DECOMPOSITIONS.md` | a many-to-many relation between mechanisms and subgoals, tried on the difficulties found |
 | `decomposition/ADVISER_AS_PART.md` | the adviser taken as one of her parts, against the same difficulties |

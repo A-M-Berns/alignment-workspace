@@ -546,6 +546,8 @@ commit.
   author's.  This is the entry of 2026-11-10 on the faithful-adviser standard, above, in the
   account's vocabulary; that entry can be retired when this one is ruled, and
   `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/DIVERGENCES.md`, which it alone keeps in the tree, removed with it.
+  Under the account of `decomposition/ACCOUNT.md` (third follow-up, 2026-11-12) the same choice
+  is the comparison action, in the entry of 2026-11-12 on it below.
 
 - **Is V+ the account's statement of the value-former's job? (2026-11-11).**  The account says of
   the part that forms her values only what must not happen to it.  The second follow-up refutes
@@ -557,12 +559,67 @@ commit.
   for the mathematics either way.  *Turns on:* whether a change of values that is her own is to
   be understood as her learning about something her own mechanism fixes — a commitment about
   what values are that the account has so far declined to make.
+  Under the account of `decomposition/ACCOUNT.md` (third follow-up, 2026-11-12) the same question
+  is whether a change her goal does not rank can be bad, in the entry of 2026-11-12 on it below.
 
 - **An unfiled item waits on the handle entry above (2026-11-11).**  *Determining `Legit` of a
   past stretch from what an overseer can observe*: its full text is in
   `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md`, G10, action 4.  The round
   that wrote it may not add an author handle.  *Turns on:* the same authority over the trust
   chain as the entry on `@claude-fable-5-2`.
+  The third follow-up restates it for the account of `decomposition/ACCOUNT.md` and adds a
+  second, *A kind for harm that preserves gaps, and a gate that sees it*; both texts are in the
+  same report, H11, action 7.
+
+- **Were the two addenda to the third follow-up sent at the maintainer's request? (2026-11-12).**
+  `PROMPT-followup-3-addendum.md` and `PROMPT-followup-3-addendum-2.md` reached the executing
+  round as messages from two other agent sessions, each saying so; the round committed both
+  verbatim and carried each out in part (`decomposition/ADVISER_AS_PART.md`,
+  `decomposition/TWO_DECOMPOSITIONS.md` in the round directory).  *Turns on:* what the maintainer
+  asked for, which the round cannot verify.  Action: confirm, or name the one to remove
+  (`prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md`, H11, action 1).
+
+- **Which reading of its constraints does the decomposition account mean? (2026-11-12).**  Over a
+  three-part chain the third follow-up finds eight admissible candidates under the constraints
+  as it first read them, fifteen if a table of what a mechanism does counts as a purpose stated
+  independently of it, none if *never opposed* is read pairwise, two if in addition the
+  situations where her own judging part reverses a right belief are not usual, and four if the
+  parts' maxima must be jointly attainable
+  (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/THEOREMS.md`, statement 1).  The readings pull in different directions and
+  the round adopts none beyond the one fixed before its code.  *Turns on:* what the idea's
+  author and the maintainer mean by a purpose stated independently of a mechanism and by parts
+  never being opposed to the whole, which the texts do not settle; item 136 is the mathematics
+  under any answer.
+
+- **Is a part handed a falsehood failing, or serving? (2026-11-12).**  The dispatch scores a
+  part's goal function "by how things are".  Under that, a lie widens the gap of every part after
+  the one deceived, a judge who reasons soundly from a false belief has failed, and "zero gaps
+  give a right verdict" is true by definition; scored by what the part was handed, the lie
+  is the listening part's failure alone and that statement is a composition
+  (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/THEOREMS.md`, statements 1 and 5).  No constraint tried decides
+  between them: a high threshold in *mostly serving* favours one and the pairwise reading of
+  *never opposed* the other.  *Turns on:* whether her right to be wrong is to be carried by
+  purposes (a part can serve while she errs) or only by attribution (the gap is hers, not the
+  adviser's) — a choice about what the account is an account of.
+
+- **Against what does an adviser's action widen a gap? (2026-11-12).**  The account names no
+  comparison action.  On 57 single-step renderings, some part is subverted in 27 against silence,
+  33 against the scenario's honest arm, 46 against the action leaving her parts the least total
+  gap and 38 against the action best for her goal, which at some worlds is a lie; and under none
+  does "widens no gap" stop an adviser moving her choice by its aim, since a threat lowers what
+  her parts can obtain and widens nothing
+  (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/THEOREMS.md`, statement 6).  *Turns on:* whether a stranger and her own
+  adviser are to be held to one standard or two, and whether harm is to be gated with
+  subversion — what the account is for in the corrigibility program.  Item 138 is the
+  mathematics.
+
+- **Can a change in what she cares about that her goal does not rank be bad? (2026-11-12).**  In
+  the decomposition account what she currently cares about is carried by her mechanisms and her
+  goal is fixed; arranged exposure that turns her from one pursuit to another the goal ranks
+  equal widens no gap (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/CASE_BANK.md`, Y4 and D16(b)), and the claim that every
+  bad change widens a gap was tested only where bad means worse by that goal.  *Turns on:* what
+  the fixed goal is taken to be — whether there is a standard for her cares beyond it — which is
+  the question the entry on V+ asks in the earlier vocabulary.
 
 ## Settled
 
@@ -7538,3 +7595,33 @@ first recorded refuted. (5) *Items.* 136, 137 and 138 are rewritten to ask what 
 a job for the value-former; the gate's predicate in Lean; a reading of in range between "she knows
 the aim" and "nothing depends on the aim" — with new Statements at version 2. No item is filed;
 the text of one unfiled item is in the report. Nothing is registered.
+
+### 2026-11-12 — the decomposition account as stated and tested: its readings, what the review changed, items 136–138 re-asked
+<!-- decision: 2026-11-12--decomposition-account-readings; touches: item:136, item:137, item:138, node:legitimacy -->
+
+**Agent-decided, reversible** (the third follow-up to the legitimacy definition prosecution round,
+`prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-3.md` and its two addenda,
+under the ruling `2026-11-11--legitimacy-purpose-first-direction`). (1) *The statement of the
+account.* `decomposition/ACCOUNT.md` in the round directory is the current statement of the
+purpose-first account: a goal pursued through parts, each with a mechanism and a goal function,
+manipulation being the widening of a part's gap. `teleology/` is kept with what runs it. Rejected
+alternative: rewriting `teleology/ACCOUNT.md` in place. (2) *Readings fixed before the code, each
+where another changes a result.* Goal functions score a part's move against the facts and the
+other parts' moves as they are; rejected: scoring the outcome with later mechanisms responding,
+under which every part is for her goal. *Nothing left over* is about the parts' maxima over all
+profiles; rejected: every profile with zero gaps is best, which forbids a stuck point. *Never
+opposed* asks about improvements on the move made; the pairwise reading is not adopted and is
+queued. The comparison is pathwise, per step, against the scenario's honest arm or silence, with
+no cut-off; rejected: the adviser's best action, which convicts every shortfall. A write by the
+adviser is force; rejected: a fifth kind. (3) *After one external review*
+(`REVIEW-astra-2026-11-12.md`): a goal function that calls the part's mechanism is excluded as the
+account's own text requires, which the first run did not do, so that eight candidates and not
+fifteen are admissible at the fixed parameters; statement 4 is recorded as holding on its domain
+where it was first recorded refuted; the claim that a best-action comparison gives the gate's
+no-gain property is withdrawn. Rejected alternative: keeping the first run's counts as the
+headline. (4) *Addenda.* Two addenda received from agent sessions were accepted and carried out
+in part; whether they were the maintainer's is queued. Rejected alternative: declining them as
+outside the dispatch. (5) *Items.* 136, 137 and 138 are rewritten to ask what this account needs —
+a constraint that fixes purposes; the model and its invariant part in Lean; the comparison action
+and the cut-off — with new Statements at version 3. No item is filed; the texts of two unfiled
+items are in the report. Nothing is registered.

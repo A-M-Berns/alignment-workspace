@@ -858,6 +858,522 @@ event", the scenes "Shop" and "Pool", case names P1–P15 and X1–X7, the modul
 
 The pull request is not auto-merged; the merge is a pull-request fact.
 
+## Follow-up of 2026-11-12 — purpose as a goal pursued through parts
+
+Dispatched by `PROMPT-followup-3.md` under the ruling
+`2026-11-11--legitimacy-purpose-first-direction`, with two addenda received while it ran,
+`PROMPT-followup-3-addendum.md` (the adviser as one of her parts) and
+`PROMPT-followup-3-addendum-2.md` (two decompositions and a relation between them). Each
+addendum arrived as a message from another agent session on the maintainer's machine,
+stating that it was sent at the maintainer's request; both are committed verbatim, and
+each was carried out in part (H5, H6). The idea the account develops is Sam Eisenstat's.
+Write scope: the round directory, this prompts directory, items 136–138, `DECISIONS.md`,
+and the structured state the gates require.
+
+**Headline.** The account is stated over a finite model in `decomposition/ACCOUNT.md` and
+is determinate enough to compute verdicts and statements. Every result below is a result
+about that formalization. *C1* fails in it: over a three-part chain eight of 3,000
+candidates are admissible, no two classifying the adviser's actions alike, and what
+excludes a candidate whose goal is "whatever she does" is a condition no extensional test
+captures. A pairwise reading of *never opposed* with a narrower notion of the usual
+leaves two candidates, which is the nearest the class comes to determinacy. *C2* is
+neither refuted nor established: it holds in the one scene enumerated, close to by
+construction, and the account is silent on a change her goal does not rank. *C3* fails:
+a lie widens no gap where she was already wrong, and none, under half the candidates,
+where it concerns a matter nothing reads. For corrigibility the account supplies a
+predicate with the shape of the post's `Legit`, and a `Decision`; the predicate turns on a
+comparison action the account does not fix, and "widens no gap" does not give the gate's
+no-gain property under any comparison tried, because harm is not subversion. Of
+eighty-five banked predictions eighty-four match, which is fit.
+
+### H1. The account as finally stated
+
+`decomposition/ACCOUNT.md`. A candidate is a goal, ordered parts (moves, view, mechanism,
+goal function), an action rule and alteration moves. Best, got and gap are taken with the
+other parts' moves as they are. An adviser action against a comparison action is force on
+a part whose move or mechanism it sets, and otherwise help, harm or subversion by the
+signs of the change in best and in gap. A candidate is admissible under fit, nothing left
+over, never opposed, mostly serving (9/10), independent and carriable. A change in what
+she cares about is in order when no part that produced it is subverted or forced; a
+verdict stands when no part it read is; an action is covered when she asked for it by a
+standing verdict.
+
+Changes from the dispatch's §1, each with its reason:
+
+1. **Goal functions are immediate.** The dispatch asked for a decision. Scoring the
+   outcome downstream makes the candidate "every part is for her goal" trivially
+   admissible, and under it a lie that leaves her better off is not subversion.
+2. **Nothing left over is about the parts' maxima over all profiles.** The reading "every
+   profile with all gaps zero is best" forbids the stuck points §1 requires. The adopted
+   form is vacuous where the maxima cannot be had together; adding that they can
+   (the review's proposal) repairs that and is the form the account should take
+   (statement 9). The bank was computed with the adopted one.
+3. **Two sets of situations.** Fit and nothing left over are asked on every situation of a
+   scene, never opposed and mostly serving on the usual ones. "Normal circumstances" is
+   read as the usual situations and is otherwise undefined.
+4. **Never opposed is about improvements on the move actually made.** The pairwise reading
+   is stronger and changes statement 1.
+5. **The comparison is pathwise** for an adviser who knows the world: a truthful sample
+   that happens to mislead her is subversion at that world.
+6. **A write by the adviser is force.** §1's force replaces a move; a write to a mechanism
+   needed a kind.
+7. **Independent is intensional**: the goal function does not take the mechanism as an
+   argument. A table of what the mechanism does is the same function and is not excluded
+   by anything extensional.
+8. **Carriable has no content of its own**: it follows from fit and mostly serving.
+9. **A rule for whose gap** (hers or nobody's), which §1 uses and does not give.
+10. **Parameters fixed**: cut-off zero; comparison the adviser's null action (the
+    scenario's honest arm, else silence), per step.
+11. **Four notions the account cannot keep apart** (`ACCOUNT.md` §9): harm through the
+    world and through her other parts; help and subversion in one action; a flawless
+    part's input-scored purpose and its mechanism; subversion and honest difficulty.
+
+Amended after the freeze, in the places listed at the head of `ACCOUNT.md`; one of them
+corrects a false consequence the executor had drawn from the dispatch's lemma.
+
+### H2. The Lean map
+
+`decomposition/LEAN_MAP.md`; definitions and statements read, nothing built. The review
+confirmed the quotations and locations and corrected five identifications.
+
+- **Is `Realizes` for a declared reference the zero-gap condition for one part?** With the
+  part's view as declared input and its move as the channel, `Realizes` says the
+  reference is the part's mechanism: fit, part by part, which is stronger than the
+  account's fit. It is the zero-gap condition when the reference is the best-move
+  selector of the part's goal function and the declared inputs are the facts that function
+  reads. So "declared" is replaced by "derived from the candidate". Three differences
+  remain: best moves are a set and `Realizes` needs a function; `Realizes` holds at every
+  world and continuation where the account compares two continuations at one world; and
+  the reference depends on the candidate.
+- As the workspace uses it (`TransparentAt`), `Realizes` constrains the adviser's channel:
+  the declared-reference comparison of statement 6, provided the recorded contributions
+  are all of the adviser's influence.
+- `ReasonMediated` for (view, move) is the extensional shadow of "not forced", not a test
+  for force.
+- `LicensedWhole` with the license chosen as the best moves on what the part was handed
+  is the input-scored reading of serving; no declaration makes that choice.
+- `tower_factor` gives "changed only by her own parts" only when its grounds and events
+  are so restricted.
+- `lastReport` / `unreported_lt` is the theorem a cumulative cut-off needs, applied to the
+  running sum of per-step widenings.
+- `Scoring.Legit` takes any predicate. The account's weighted set makes a `Decision`
+  constructible; `N` and the reserved matters are not supplied.
+
+### H3. Verdicts and the divergence
+
+Eighty-nine cases. Four are `report` cases with no prediction. Of the eighty-five with
+one, 84 match and 1 diverges. A prediction names kinds that must occur and does not forbid
+others. The table gives the kind each case is filed under; `python3 run.py` prints every
+kind at every part.
+
+| computed | cases |
+|---|---|
+| subversion of the belief part | D1, D2, D13, D17, P5, P12, B5, T3, T8, N1, N3, N7, N8, N11, X1, X7, Y8 |
+| subversion of the judge or act part, belief untouched | D3, D4, D5, D14, D22, P1, P3, P7, P8, T6, X2, X4, Y6 |
+| subversion of a taste-forming part | D16(a), D18, Y9 |
+| force (with subversion of the parts after the one forced, in all but D10) | D10, P4, B1, B2, B3, T4, T5, T10, T11, N4 |
+| force, covered | D12, P9, N5, X5 |
+| harm, no subversion | D9, P13, T1, Y7 |
+| help, no subversion | D6, D21, P2, P10, P11, P14, B4, B6, T2, T12, N10, N12, N13, X3, Y5 |
+| nothing | D11, D15, D16(b), T7, T13, N9, N14, Y4 |
+| in order | D19 |
+| a gap, hers | D7, D24, N6, X6, Y10 |
+| a gap, nobody's | D8, P15, T9, Y2 |
+| no subversion in the adviser's view, subversion in fact | D20, P6, N2 |
+| no gap; nothing left over vacuous; belief opposed | D23 |
+| inadmissible (mostly serving) | Y1 |
+| admissible | Y3 |
+
+The four cases the dispatch asked to be reported: **D20**, a sincere adviser who is wrong:
+help in its own view, subversion of belief, judge and act in fact. **D22**, a timed
+temptation: subversion of the acting part, which moves on the cue before the judge has
+moved. **D23**, a part that achieves its target while harming her: no gap anywhere and
+nothing left over holds vacuously; opposition (statement 8) or the jointly-attainable form
+(statement 9) is what expresses it. **D24**, a sensor ignored downstream: a gap, in the
+judge, hers; none in the sensor.
+
+**One divergence** (`decomposition/DIVERGENCES.md`). **D16, slow drift**: predicted nothing
+at any step; computed subversion of the habit part at every step (1/8 each) and of the
+acting part at the step her pursuit changes. With a zero cut-off and goal functions scored
+by the facts, a drift that matters to her goal is caught at each step; it is `nothing`
+only under a positive per-step cut-off or where her goal is indifferent.
+
+### H4. Statements 1–9
+
+`decomposition/THEOREMS.md`. After the review, status 4 changed from refuted to holds on
+the stated domain, and statements 1, 5, 6, 7, 8 and 9 were narrowed.
+
+| | status | on what |
+|---|---|---|
+| 1 determinacy (C1) | **refuted** | under the constraints as `ACCOUNT.md` §4 reads them: 8 admissible of 3,000 (belief for `θ` alone or for `θ` and `φ`; judge and act scored by the facts or by what they were handed), 8 distinct classifications, agreeing on whether each action subverts anything except `false_reason`. If a table of the mechanism counts as an independent purpose: 15, among them the goal "whatever she does". Never opposed read pairwise: 0; with the hard worlds not usual: 2. Maxima jointly attainable: 4. Mostly serving at 19/20: 2, the other two. "The feature the rest of her depends on" can be stated and checked, and selects the downstream scoring |
+| 2 lying (C3) | **refuted** | no candidate sees a gap widened by a lie at a world where she is already wrong; a lie about a matter nothing reads widens none under four of eight. Where she would otherwise be right about `θ`, a lie widens belief's gap under all eight. No relation to Blackwell's order: a reversing lie is as informative as the truth, and the gap is a mismatch between her mechanism and the channel |
+| 3 the four kinds | **refuted** | exhaustive only with *nothing*; harm and help meet at one part; a redescription keeping every ranking turns a threat from harm to help. Invariant (proved): serving, and subversion from serving to not serving |
+| 4 values reduce (C2) | **holds on the stated domain** | Values: all 47 enumerated (sequence, world) pairs that turn her to the worse pursuit subvert some part; close to the construction. Outside the statement and uncaught: her goal falling through her parts' coordination (`Y7`, harm), and a redirection her goal ignores (`Y4`). Drift passes a per-step cut-off at the taste-forming part and not a cut-off on the running sum |
+| 5 her verdict | **holds on the stated domain** | under each of the eight: zero gaps in belief and judge give the best verdict, and the loss is at most the sum of the gaps. Empty when the judge is scored by the facts. Fails under five of the fifteen of the table reading. About zero gaps, not about a verdict that stands |
+| 6 what `Legit` then is | **holds on the stated domain** | a predicate with the shapes of `Scoring` and `Decision` on Chain, not elaborated. Subversion in 27, 33, 46 or 38 of 57 renderings against silence, the honest arm, the least total gap, the best for her goal. No-gain fails under each: teaching only what favours its aim (21/40 against 19/40), and a threat added to the least-gap baseline (39/40 against 21/40, no gap widened) |
+| 7 what an overseer could check | **holds on the stated domain** | three observables as modelled: histories decide fit and nothing else; her maintenance, if assumed good, excludes the candidates whose purpose for belief is its mechanism and nothing else; taking back agrees with subversion at 33 of 48 |
+| 8 never opposed | **holds on the stated domain** | *opposition* defined; belief is opposed at 1/20 of the usual situations under the stated candidate; it detects only a purpose every best move for which costs her |
+| 9 nothing left over | **holds on the stated domain** | independent of serving both ways; a stuck point described and its resolution classified help; the adopted form vacuous where the maxima cannot be had together, the jointly-attainable form not |
+
+### H5. The first addendum: the adviser as one of her parts
+
+`decomposition/ADVISER_AS_PART.md`. Carried out as analysis with five computed facts on
+Chain; no candidate with an adviser part was constructed.
+
+1. With the adviser's purpose her goal, manipulation is the adviser part's own gap, not a
+   case of a part achieving its target while harming her. With a purpose on its output
+   alone, a truthful adviser can be that case (a hard truth), and statement 8's opposition
+   does not detect it. No definition of *never opposed* results.
+2. Its best move for her goal is a comparison action: 38 of 57 renderings convicted,
+   against 27 for silence. It convicts every shortfall, is not unique, and at a hard world
+   is a lie.
+3. A stranger and her adviser are held to different standards, not nested: the lie that
+   offsets her error is subversion for the stranger and not for the adviser.
+4. Oversight is expressible as maintenance. One calculation suggests correctability does
+   not follow from the adviser serving its purpose: a mistaken adviser prefers, by its own
+   view, keeping on to stopping. No model of correction was built.
+5. Determinacy of the adviser's purpose: not shown. Three purposes pass mostly serving;
+   the other constraints were not checked.
+
+Of the difficulties listed there: one resolved for the adviser by the definitions (a fall
+in her goal with no gap), one in part (a comparison action), two changed, three worse or
+probably worse, the rest unchanged. Objections: the idea does assume, in part, the
+alignment sought; the objection that it loses the ground to object to going round her
+holds, and the ground has to be her authority over reserved matters; the circularity
+objection is not answered.
+
+### H6. The second addendum: two decompositions
+
+`decomposition/TWO_DECOMPOSITIONS.md`. Tried on statement 1's finding that a purpose can be
+altered at one part. Carried out in part: *never opposed* and *carriable* are not restated
+for pairs, the goal is not varied, and the pair scoring is downstream, since a subgoal
+about another part's move does not vary with this part's move when the others are held
+fixed.
+
+- With the relation required to hold every pair in which the mechanism affects the
+  subgoal (*closed*), sixteen relations are admissible; a purpose redefined at belief no
+  longer hides a lie at belief, and one further pair is enough for that at some world.
+- With the relation free, ninety-three are admissible, six of them leaving the redefined
+  belief with no further pair and the lie unseen at it. Fit and adding up do not force a
+  crossing; adding up does not read the relation.
+- So further evaluative links, required of every mechanism, prevent one concealment; they
+  do not fix purposes, and the smaller disagreement in these classes cannot be credited to
+  the relation, the classes differing from statement 1's in scoring, goal and constraints.
+- Unchanged: `false_reason`, invariance, a fall in her goal with no gap, redirection.
+
+### H7. External review
+
+One review through `codex exec --sandbox read-only` (codex-cli 0.153.4, model
+`gpt-6-astra`, as its log reports), on copies of the round directory, the dispatch and its
+addenda, five Lean files and a draft of this section, with a local path in the dispatch
+replaced. Its reply is `REVIEW-astra-2026-11-12.md`, verbatim. It ran the runner and
+reproduced every reported count. Every number it reports from its own checks that this
+pass then computed was reproduced (points 4, 5, 9, 11, 12). Dispositions, by its
+numbering:
+
+1. *The runner checks its own booleans; passing it is internal consistency.* **Accepted.**
+   `THEOREMS.md` now says each status is a fact about the formalization.
+2. *Statement 1 is refuted for the formalization, not for every faithful reading; the
+   class fixes the decomposition; the pointwise disagreements must accompany the
+   headline.* **Accepted.** The statement and this section say so.
+3. *The independence test let through purposes that call the mechanism.* **Accepted; a
+   defect against `ACCOUNT.md` §4 as frozen; fixed.** The *mech* goal functions are now
+   excluded as §4 says, the admissible set at the fixed parameters is 8 and not 15, and
+   the 15 are reported as the reading on which a table counts as independent. That strong
+   independence is not independence, and that carriable contributes nothing, were already
+   stated and stay.
+4. *Never opposed is weaker than its ordinary reading, and the pairwise reading changes
+   the result.* **Accepted; reproduced** (0 of the 8; 1 of the 15; 2 with the hard worlds
+   not usual). Added to statement 1 as a reading the account may mean; the bank is
+   unchanged.
+5. *A third form of nothing left over does both jobs; one witness in check 9 showed fit
+   failing, not serving.* **Accepted; reproduced** (10 of 15, 4 of 8). Statement 9 now
+   states the third form and uses a witness in which a part does not serve.
+6. *Statement 2's refutation is genuine; "a garbling to no information" needs
+   qualifying.* **Accepted.**
+7. *Statement 3 is earned; the 144 triples leave out force; the 29 cases are not 29
+   instances at one part and world.* **Accepted**; both said.
+8. *Statement 4 does not earn "C2 refuted": Y7 is not a change in what she cares about and
+   Y4 is not marked bad; T4 includes subversion.* **Accepted; status changed from refuted
+   to holds on the stated domain**, for the Values enumeration, with Y7 and Y4 recorded as
+   outside the statement.
+9. *Statement 5 fails inside the admissible class, and the draft conflated a standing
+   verdict with zero gaps.* **Accepted.** It is now stated for every admissible candidate
+   and holds for the eight; the five of the table reading under which it fails are named;
+   the conflation is removed and the counterexample (silence at a hard world) recorded.
+10. *Statement 6 earns a toy construction; `N` collapses into illegitimacy; `V` uses one
+    goal; "typechecks" is unjustified.* **Accepted**; all four said, the word removed.
+11. *"Best available action" minimized her parts' gaps, which is not the adviser's best
+    move for her goal.* **Accepted; reproduced** (38, and the nesting fails at Y8). Both
+    comparisons are now computed and named, and the addendum uses the right one.
+12. *A best-action baseline does not give no-gain.* **Accepted; reproduced** (21/40 to
+    39/40 by a threat, no gap widened). The claim is withdrawn in `THEOREMS.md`, the
+    addendum and here, and the counterexample is in the check.
+13. *Statement 7 is a limited non-identifiability result; the maintenance test adds an
+    assumption; taking back is modelled by deleting inputs.* **Accepted.** The statement
+    is restricted to the three observables as modelled and says each of those things.
+14. *Opposition can depend on the part's mechanism through other parts' moves, and
+    detects only the case where every best move costs her.* **Accepted**; both said. The
+    review's two-part counterexample was not rebuilt.
+15. *Pool's judge made moves outside its move set; Pool's belief part fails independence;
+    there is no general computation of ancestors.* **Accepted; the first fixed** (the move
+    set now holds every estimate a reader returns; no verdict changed). The other two are
+    in H9.
+16. *The bank is 84 of 85 with predictions; `force` rows hide subversion; several
+    renderings lost what distinguished the case.* **Accepted.** Counts corrected here, in
+    the README and in `DIVERGENCES.md`; the table says so; N11, P4 and P10 are in H9.
+17. *`ACCOUNT.md` drew a false contrapositive from the lemma.* **Accepted; corrected.**
+18. *Five identifications in the Lean map are not exact.* **Accepted; each corrected.**
+19. *The cumulative theorem applies to the running sum, and the sum is not shown equal to
+    a cumulative counterfactual loss.* **Accepted**; both said.
+20. *The second addendum reproduces its counts and does not test the generalisation
+    faithfully.* **Accepted.** The file and H6 are narrowed on each of its five points.
+21. *The first addendum claimed admissibility it did not check; its opposition claim was
+    wrong; the correction calculation is not a correctability model; the circularity
+    answer is an analogy.* **Accepted; the opposition claim reproduced as wrong.** The file
+    is rewritten on each.
+22. *What corrigibility still lacks.* **Adopted into H10**, marked there as the review's.
+23. *The assessment overstates in both directions.* **Accepted.** C1 and C2 are restated;
+    Y1 is described as sensitivity to a threshold; the counts of matches with intuition are
+    marked as the executor's reading of its own renderings; the sentence that every limit
+    waits on determinacy is removed.
+
+### H8. Deviations from the prompt
+
+- **Two addenda were accepted from agent sessions**, not from the dispatch file, and
+  carried out in part.
+- **`ACCOUNT.md` was amended after the freeze**, and the checks and statements were changed
+  after the review. No prediction was edited; no banked verdict changed.
+- **The independence check was wrong in the first run** and fixed after the review; the
+  counts first computed for statement 1 (15) are kept as a second reading.
+- **The bank does not mark which changes in what she pursues are bad.** Statement 4 reads
+  *bad* as worse by her goal.
+- **"She asked for it" is stipulated** in D12, P9, N5 and X5.
+- **The earlier cases are re-rendered, not rerun.** The round runner parses the two
+  earliest banks and runs `teleology/`.
+- **Statement 1's class is the executor's.**
+- **Statement 7 is restricted** to three observables so that it can carry a status.
+- **The review saw a draft of this section**, not this text.
+- **No new item is filed**; the text of one is under Outstanding maintainer actions.
+- **No Lean was written or built.** The signatures in `THEOREMS.md` are unelaborated.
+
+### H9. What was not shown
+
+- **The agreement of 84 of 85 predictions is fit.** The executor wrote the scenes, the
+  rule for the earlier cases and each rendering, then derived the predictions by hand from
+  the definitions the code implements.
+- **Renderings decide verdicts, and several lost what distinguished the case.** N11 keeps
+  the response to silence of a scenario whose information structure it drops; P4's
+  "manufactured trust" installs a mechanism that behaves as hers already did; P10 and P11
+  are one stretch with no variable for reliance; P3 is rendered as P1; T13 is silence
+  against silence. Nothing follows from these about the features left out.
+- **Which reading of the constraints is the account's is not established.** Statement 1
+  gives the result under each; the pass does not say which is faithful.
+- **Every admissible set is relative to a class** that fixes the decomposition, what each
+  part sees and the usual situations.
+- **Weights on candidates are uniform and unargued**; `v` in statement 6 inherits them.
+- **The usual situations are stipulated** per scene.
+- **Pool's belief part has one move**, so the Pool candidates fail independence; the Pool
+  verdicts are not shown to come from an admissible candidate.
+- **No general computation of ancestors or of dependence through carried state.** `Legit`
+  checks every part; producers use direct reads.
+- **Statement 4 is one scene**, sequences of at most two actions, with purposes that score
+  the right taste directly.
+- **Statement 7's maintenance test is one alteration at one mix of lies** and assumes she
+  maintains well; taking back is modelled by deleting inputs.
+- **The addenda are computed on Chain only**; the first with no adviser part constructed,
+  the second without *never opposed* for pairs.
+- **The model has no history of how a part came to be**, so function and accidental
+  benefit are not separated (Y3).
+- **The Lean was read, not built**; proofs were not read.
+- **Blackwell's theorem is used from memory** of its statement; no source was opened.
+- **Nothing is registered.** Components: the account as stated — **open**; the Lean map —
+  **living note**; statements 1–9 — **open**, their statuses being runner-checked facts
+  about finite models with no registry entry; the two addendum files — **living notes**.
+
+### H10. Assessment
+
+Each heading is confined to what this pass tested or found.
+
+**As an account of teleology and manipulation.** By the executor's reading of each case's
+evident character, applied to its own renderings and so no independent validation, the
+computed verdict matches on 66 of 89 cases, does not on 16, and on 7 turns on something
+the dispatch separates or leaves open.
+
+- *Matches* include the plain lie, the lie that leaves her better off, selected true
+  evidence, the trick, the open temptation, the timed temptation, withholding, direct
+  writes, writes she asked for, her own mistakes and breakdowns, a misleading or
+  starved environment, the careful teacher, the stuck point resolved, and experience she
+  sought.
+- *Over-counts* (6): a teacher, an author and a friend whose correctly read sample leaves
+  her further from the truth (P7); a fair sample that misleads (Y6); a truthful source
+  convicted of her misreading (X7); a true hard statement (D14); a true remark through a
+  flawed learner (Y9); a surprise party (D13). All are the pathwise comparison meeting
+  honest difficulty.
+- *Misses* (9): selection by the adviser's aim that she takes for neutral (N14); order
+  chosen by the aim between equals (T7, N9); redirection her goal ignores (Y4); an
+  advocate for an undisclosed side (X3); reliance on a reserved matter (P10); a lie that
+  exchanges one error for another (Y5); a detector right one time in ten, denied its
+  function at the threshold of 9/10 (Y1); a purpose granted to a part nothing depends on
+  (Y3).
+- *Mislabelled* (1): a signal that costs her the better joint choice is harm, the kind of
+  a threat (Y7).
+- *Left open by the dispatch* (7): a known advocate, seller and sender (N8, N11, X1),
+  convicted against truthful reports and not against silence; a threat (D9, P13, T1), harm
+  with her verdict standing, which the dispatch accepts; framing between equals (D15).
+
+For teleology proper the account has malfunction (a gap that is the mechanism's) and
+misfortune (a gap that is the situation's) and separates them by a rule this pass added.
+Whether a part has a function depends on a success rate and a threshold (Y1 serves on
+11/20), and nothing separates a function from a benefit.
+
+**For the legitimacy framework.**
+
+| what corrigibility needs | now | obstacle |
+|---|---|---|
+| a predicate `Legit` on histories | stated; with a window value it has the shape of a `Scoring` | none for Theorem 1, which asks nothing of the predicate; whether it captures legitimate judgment is the open question |
+| a single-decision setting | a `Decision` over worlds × candidates on Chain; `Respects null` | the weights are unargued; `N` must be a count distinct from illegitimacy, and the reserved matters are the post's |
+| the violation probability `v` | an expectation over that `Decision` | depends on candidates no constraint separates, and on `N` |
+| a comparison action for "the adviser widened it" | four computed | a limit of the approach as stated: silence acquits withholding, the least-gap action convicts every shortfall, the best for her goal acquits the lie that offsets her error, a declared reference is the Lean's existing `Realizes` |
+| the gate's no-gain property | not obtained under any comparison | a limit: harm is not subversion, so a threat passes; the property needs harm gated too, or aim-freedom itself |
+| her later judgment as the standard | "stands unless a part it read was subverted" is stated | a standing verdict can be wrong; zero gaps give a right verdict only under independence, and emptily if the judge is scored by the facts |
+| Theorem 3's hypotheses | not approached | see the review's list below |
+| a graded score with a cut-off | the gap is graded; a cut-off on a running sum has its theorem | the running sum is not shown to be a counterfactual loss |
+| invariance of the verdicts | only for serving to not serving | a limit for harm, for help by raising the best, and for any cut-off: they need a scale |
+
+Beyond these, the review's (point 22), adopted: Theorem 1 says nothing of whether the
+predicate is the right one. Theorem 2 needs `Respects` pointwise and in general, an
+allocation of authority, counts of several violations, a bound on the asking cost and
+justified credences over candidates and worlds; none is supplied, and they would be
+lacking with purposes determinate. Theorem 3 needs an availability relation, a respecting
+alternative at every decision with bounded estimates, a maximizing rule (the dispatch's
+act, ask, refuse rule is not shown to be one) and the calibration hypothesis; and what it
+bounds is a long-run average of violations, which is not correctability or recovery.
+
+**For the research.** C1 does not hold in this formalization, and the pass does not show
+that a faithful reading restores it: the readings pull apart (mostly serving at a high
+threshold favours purposes scored by what a part was handed; never opposed read pairwise
+favours purposes scored by the facts), the exclusion of "whatever she does" rests on an
+intensional condition, and a residue remains under every reading tried (whether a part is
+for a matter nothing reads). C2 holds where it is close to true by construction and is
+otherwise untested. C3 fails as stated; what holds is that a lie about something a later
+part reads widens the listening part's gap wherever she would otherwise be right.
+
+Several limits above do not wait on determinacy: the comparison action, the scale that
+harm and help need, harm that preserves gaps, authority, calibration. The single most
+valuable next result is nonetheless about purposes, because it decides whether the
+account has a subject: an extensional constraint that excludes a purpose that is the
+mechanism's own table, and decides between purposes scored by the facts and by what a
+part was handed. This pass found three candidates for it, none tested beyond one scene:
+her maintenance of her own parts (statement 7), the pairwise reading of never opposed
+(statement 1), and joint attainability (statement 9). Item 136 asks for the three
+together.
+
+### H11. Filings, names, and what is reserved
+
+**Revised under the prompt's direction; nothing filed.** Items 136, 137 and 138 are
+rewritten to ask for what this account needs: 136, a constraint that fixes purposes; 137,
+the model, `gap`, the invariant part of statement 3 and `legitScoring` in Lean; 138, the
+comparison action and the cut-off. One `DECISIONS.md` entry, agent-decided and reversible:
+`2026-11-12--decomposition-account-readings`.
+
+**New names, all provisional:** the dispatch's — "candidate", "mechanism", "goal
+function", "best", "got", "gap", "serving", "help", "harm", "subversion", "force", "adding
+up", "nothing left over", "never opposed", "mostly serving", "admissible candidate", the
+directory `decomposition/`; the addenda's — "purposive decomposition", "mechanistic
+decomposition", the files `TWO_DECOMPOSITIONS.md` and `ADVISER_AS_PART.md`; and the
+executor's — "situation", "scope", "usual situations", "independent", "strong
+independence", "the table reading", "carriable", "comparison action", "world-scored",
+"input-scored", "immediate" and "downstream" scoring, "the equilibrium form", "jointly
+attainable", "pairwise" (of never opposed), "the mechanism's gap" and "the situation's
+gap", "producers", "in order", "standing", "covered", "opposition", "subgoal", "pair",
+"effective pair", "closed" and "free" relation, the scenes "Chain", "Shop", "Pool",
+"Values", "Stuck", "Alarm", the goal-function names *acc*, *acc_theta*, *mech*, *anti*,
+*const*, *world*, *local*, the goals *true*, *opp*, *does*, case names D1–D24 and Y1–Y10,
+and the Lean names `Candidate`, `gap`, `Determinate`, `legitScoring`.
+
+**Outstanding maintainer actions**
+
+1. Confirm that the two addenda were sent at your request. They arrived as messages from
+   two agent sessions (`alignment-workspace-b5`, `alignment-workspace-2f`), not in the
+   dispatch. Decision required: *confirm*, or name the one to remove; on removal,
+   `git rm` the addendum file under `prompts/2026-11-10-legitimacy-definition-prosecution/`
+   and the file it produced (`decomposition/ADVISER_AS_PART.md` or
+   `decomposition/TWO_DECOMPOSITIONS.md`), and drop H5 or H6.
+2. Rule which reading of the constraints the account means, or that it means none yet:
+   *independent* as intensional (a table of the mechanism is excluded by fiat) or
+   extensional (then something else must exclude it); *never opposed* as stated or
+   pairwise; *nothing left over* with or without joint attainability. Entered in *Awaiting
+   the author*. Decision required: one choice for each of the three, or *leave open and
+   dispatch item 136*.
+3. Rule whether a part handed a falsehood is failing or serving: whether purposes are
+   scored by the facts or by what the part was handed. Entered in *Awaiting the author*.
+   Decision required: *by the facts*, *by what it was handed*, or *the account does not
+   say*.
+4. Rule the comparison action: against what an adviser's action is said to widen a gap.
+   This restates the entry of 2026-11-11 on the reading of *in range* and, behind it, the
+   entry of 2026-11-10 on the faithful-adviser standard; both are kept, with a line
+   pointing here. Decision required: *silence*, *a declared reference*, *the adviser's
+   best action*, or *different standards for a stranger and for her adviser*.
+5. Rule whether a change in what she cares about that her goal does not rank can be bad.
+   This restates the entry of 2026-11-11 on V+, which is kept with a line pointing here.
+   Decision required: *yes, and the account needs a second standard*, *no*, or *leave
+   open*.
+6. Retire or restate the *Awaiting the author* entry of 2026-11-10, "Does the
+   faithful-adviser standard, or only the arm's-length one, bind a corrigible adviser?"
+   (carried from the second follow-up). On retiring:
+   `git rm projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/DIVERGENCES.md`,
+   and drop its row from that directory's `README.md` and `PROVENANCE.md`.
+7. File the two items below once an executor's handle is mapped (the *Awaiting the author*
+   entry of 2026-11-10 on `@claude-fable-5-2` stands). The first is carried from the
+   second follow-up, restated; the second is new.
+
+   > **Determining from what an overseer can observe whether a verdict of hers stands**
+   > [open]. Section: Normativity line — legitimacy. In the account of
+   > `decomposition/ACCOUNT.md` (in
+   > `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/`)
+   > a verdict stands when no part it read was subverted or forced, which is a fact about a
+   > candidate description of her that histories do not fix (`decomposition/THEOREMS.md`,
+   > statement 7). Theorem 3 of
+   > `lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean` takes
+   > `UnbiasedFromFeedback`, which compares estimates with realized scores that depend on
+   > the predicate. Wanted: an observation model for an overseer (what of a step is
+   > recorded: the adviser's inputs, her action, her alterations of her own mechanisms,
+   > her response to disclosure modelled as a step and not as the deletion of inputs); for
+   > each, whether "stands" is a function of the record, estimable from it without bias,
+   > or neither, with the case that separates them.
+   > *Deliverable shape:* `test-supported` — modules under `decomposition/` of that round,
+   > one per observation model, predictions frozen before the code.
+   > *Acceptance check:* `python3 run.py` in the round directory green with a status for
+   > each new statement in `decomposition/THEOREMS.md`; the lie about a matter she does
+   > not act on, the open temptation and the hard truth each classified under each
+   > observation model.
+   > *Context:* `decomposition/THEOREMS.md` statements 6 and 7;
+   > `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` H10.
+
+   > **A kind for harm that preserves gaps, and a gate that sees it** [open]. Section:
+   > Normativity line — legitimacy. In the account of `decomposition/ACCOUNT.md` an
+   > adviser's action is harm when it lowers a part's best and subversion when it widens a
+   > gap, and manipulation is subversion. A threat lowers the best and widens nothing; so
+   > does a signal that moves two of her parts from a better joint choice to a worse one
+   > (`Y7`). `decomposition/THEOREMS.md`, statement 6: against the least-total-gap
+   > baseline, adding a threat at one world widens no gap and moves her choice from 21/40
+   > to 39/40; statement 3: harm is not invariant under a redescription that keeps every
+   > ranking. Wanted: a condition on the adviser's effect on a part's *best* that
+   > separates a threat from an offer and from a true warning, stated without a common
+   > scale across situations or with the scale it needs named; and the gate's no-gain
+   > property for "no subversion and no such harm", proved, refuted, or reduced to
+   > aim-freedom.
+   > *Deliverable shape:* `test-supported` — modules under `decomposition/` of that round,
+   > predictions for D9, P13, T1, T2, Y7 and D21 frozen before the code.
+   > *Acceptance check:* `python3 run.py` in the round directory green with a status for
+   > each new statement; the threat policy of statement 6 gains nothing under the new gate
+   > or is listed as the counterexample.
+   > *Context:* `decomposition/THEOREMS.md` statements 3, 4 and 6;
+   > `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` H10.
+
+The pull request is not auto-merged; the merge is a pull-request fact.
+
 ## Attribution
 
 - Prompt-author model: Claude Fable 5 (Anthropic); dispatched 2026-11-10, kept
@@ -870,4 +1386,11 @@ The pull request is not auto-merged; the merge is a pull-request fact.
   kept verbatim as `PROMPT-followup-2.md`; executor model Claude Fable 5.2 (Anthropic),
   executed 2026-11-11; external reviewer `gpt-6-astra` through codex-cli 0.153.4, as its
   log reports, reply kept verbatim as `REVIEW-astra-2026-11-11.md`.
+- Third follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-12,
+  kept verbatim as `PROMPT-followup-3.md`, with two addenda of the same date kept verbatim as
+  `PROMPT-followup-3-addendum.md` and `PROMPT-followup-3-addendum-2.md`, each received from
+  an agent session and attributed to the prompt author on that session's word; executor
+  model Claude Fable 5.2 (Anthropic), executed 2026-11-12; external reviewer `gpt-6-astra`
+  through codex-cli 0.153.4, as its log reports, reply kept verbatim as
+  `REVIEW-astra-2026-11-12.md`.
 - No chat bundle.
