@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "5fd3211e50edaccd313a9658",
-  "index.json": "6018e089346d7d50ed57de09"
+  "derived.json": "d74ed9315c87b6515a597bfd",
+  "index.json": "ac05a95f55091526b99d54c1"
  },
- "generated_hash": "b79c70b54ef50b9ca760dbdd",
+ "generated_hash": "6281381d0d1bd55d1ec21685",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -9090,6 +9090,11 @@
     "date": "2026-11-10",
     "normalized": "item 138 the frequency hypothesis of the conditional bridge from pseudorandomness is delivered in the shape its entry states lean proved bridge frequency for a dual certified market with one fresh floor per day from a named frequency hypothesis over efficiently expressible weightings or the counterexample market",
     "version": 1
+   },
+   {
+    "date": "2026-11-12",
+    "normalized": "item 138 a statistical floor with infinitely many losses bounded account or exploited market is delivered in the shape its entry states lean proved a hypothesis on the truth sequence and the assessment under which the floor markets threshold weights are summable with a witness having infinitely many false instances or the fixture where they are not",
+    "version": 2
    }
   ],
   "item-139": [
@@ -9097,12 +9102,31 @@
     "date": "2026-11-10",
     "normalized": "item 139 extraction from an account unbounded below to an exploiting trader is delivered in the shape its entry states lean proved the seller with feature valued stakes and its value bound and either the extraction theorem under a stated efficiency hypothesis on the multipliers or the fixture separating an unbounded account from exploitation",
     "version": 1
+   },
+   {
+    "date": "2026-11-12",
+    "normalized": "item 139 extraction from an account unbounded below to an exploiting trader is delivered in the shape its entry states lean proved efficientlycomputable of the buyer near the floor and either the converse of preservation without the frequency hypothesis or the fixture separating an unbounded account from exploitation",
+    "version": 2
    }
   ],
   "item-14": [
    {
     "date": "2026-10-22",
     "normalized": "the public line establishes exactly what the inherited development proves about faithful acceleration and ports what legitimately ports onto the pinned dependency",
+    "version": 1
+   }
+  ],
+  "item-140": [
+   {
+    "date": "2026-11-12",
+    "normalized": "item 140 a floor market driven by random observations the capital bound path by path is delivered in the shape its entry states lean proved the assessment over an observation space betting fair for the floor markets multipliers on it and an account bounded below along almost every path or the fixture where an unsettled instance breaks it",
+    "version": 1
+   }
+  ],
+  "item-141": [
+   {
+    "date": "2026-11-12",
+    "normalized": "item 141 one traders normalized floor selling as a generable weighting is delivered in the shape its entry states lean proved the normalized stake as a pgenerableweighting with the bound on the traders gain or the obstruction as a fixture",
     "version": 1
    }
   ],
@@ -20747,6 +20771,146 @@
    {
     "date": "2026-11-07",
     "normalized": "the declaration workspace normativity contrib admissionbystanding reallocated_entitles_nothing is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "statistical.bounded-or-buyer-exploits": [
+   {
+    "date": "2026-11-12",
+    "normalized": "under realized frequency at least c \u03b3 along the weighting that reads whether the price is within \u03b4 \u03b3 of the floor either the account is bounded below or the buyer near the floor exploits",
+    "version": 1
+   }
+  ],
+  "statistical.bounded-or-buyer-exploits.bridge": [
+   {
+    "date": "2026-11-12",
+    "normalized": "the statement of record of statistical bounded or buyer exploits formalizes the registered claim as the registry reads it under realized frequency at least c \u03b3 along the weighting that reads whether the price is within \u03b4 \u03b3 of the floor either the account is bounded below or the buyer near the floor exploits",
+    "version": 1
+   }
+  ],
+  "statistical.bounded-or-buyer-exploits.complete": [
+   {
+    "date": "2026-11-12",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "statistical.bounded-or-buyer-exploits.record": [
+   {
+    "date": "2026-11-12",
+    "normalized": "the declaration workspace normativity contrib statisticalconditions dualcertifiedmarket bounded_or_buyer_exploits is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "statistical.capital-bound-probability": [
+   {
+    "date": "2026-11-12",
+    "normalized": "with outcomes of conditional expectation at least c given the past and predictable stakes under the per day ceiling the settled account reaches k with probability at most u u k",
+    "version": 1
+   }
+  ],
+  "statistical.capital-bound-probability.bridge": [
+   {
+    "date": "2026-11-12",
+    "normalized": "the statement of record of statistical capital bound probability formalizes the registered claim as the registry reads it with outcomes of conditional expectation at least c given the past and predictable stakes under the per day ceiling the settled account reaches k with probability at most u u k",
+    "version": 1
+   }
+  ],
+  "statistical.capital-bound-probability.complete": [
+   {
+    "date": "2026-11-12",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "statistical.capital-bound-probability.record": [
+   {
+    "date": "2026-11-12",
+    "normalized": "the declaration workspace normativity contrib statisticalconditions betting fair account_bound is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "statistical.finite-losses-affordable": [
+   {
+    "date": "2026-11-12",
+    "normalized": "one floor per day at strength c settled by the next day with at most r false instances the account is bounded below by u 1 c r 1 1",
+    "version": 1
+   }
+  ],
+  "statistical.finite-losses-affordable.bridge": [
+   {
+    "date": "2026-11-12",
+    "normalized": "the statement of record of statistical finite losses affordable formalizes the registered claim as the registry reads it one floor per day at strength c settled by the next day with at most r false instances the account is bounded below by u 1 c r 1 1",
+    "version": 1
+   }
+  ],
+  "statistical.finite-losses-affordable.complete": [
+   {
+    "date": "2026-11-12",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "statistical.finite-losses-affordable.record": [
+   {
+    "date": "2026-11-12",
+    "normalized": "the declaration workspace normativity contrib statisticalconditions dualcertifiedmarket accountbounded_of_finite_losses is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "statistical.slack-floor-bounded": [
+   {
+    "date": "2026-11-12",
+    "normalized": "a floor whose prices clear it by a margin \u03b4 from some day on costs an account bounded below by c \u03b5 \u03b4 the multipliers of the earlier days",
+    "version": 1
+   }
+  ],
+  "statistical.slack-floor-bounded.bridge": [
+   {
+    "date": "2026-11-12",
+    "normalized": "the statement of record of statistical slack floor bounded formalizes the registered claim as the registry reads it a floor whose prices clear it by a margin \u03b4 from some day on costs an account bounded below by c \u03b5 \u03b4 the multipliers of the earlier days",
+    "version": 1
+   }
+  ],
+  "statistical.slack-floor-bounded.complete": [
+   {
+    "date": "2026-11-12",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "statistical.slack-floor-bounded.record": [
+   {
+    "date": "2026-11-12",
+    "normalized": "the declaration workspace normativity contrib statisticalconditions dualcertifiedmarket accountbounded_of_eventually_slack is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "statistical.table-mixture-unbounded": [
+   {
+    "date": "2026-11-12",
+    "normalized": "on sequences a mixture at weights \u03b8 r of stakers each staking on at most r lost instances meets the summed ceiling and its account is at most c 1 \u03b8 times the number of losses when \u03b8 1 c",
+    "version": 1
+   }
+  ],
+  "statistical.table-mixture-unbounded.bridge": [
+   {
+    "date": "2026-11-12",
+    "normalized": "the statement of record of statistical table mixture unbounded formalizes the registered claim as the registry reads it on sequences a mixture at weights \u03b8 r of stakers each staking on at most r lost instances meets the summed ceiling and its account is at most c 1 \u03b8 times the number of losses when \u03b8 1 c",
+    "version": 1
+   }
+  ],
+  "statistical.table-mixture-unbounded.complete": [
+   {
+    "date": "2026-11-12",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "statistical.table-mixture-unbounded.record": [
+   {
+    "date": "2026-11-12",
+    "normalized": "the declaration workspace normativity contrib statisticalconditions tablemixture prior_le is accepted by the lean kernel in the repositorys lean library",
     "version": 1
    }
   ],

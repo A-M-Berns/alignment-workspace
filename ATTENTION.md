@@ -856,59 +856,109 @@ not settled.
 *Context:* `lean/Workspace/Normativity/Contrib/ExactConditions.lean`; `lean/Workspace/Normativity/Contrib/ExactConditionsReserve.lean`; `lean/Workspace/Normativity/Contrib/OddsBankroll.lean`; `projects/normativity/rounds/2026-11-10-exact-conditions-capital/THEOREM.md`.
 *Consumed by:* item 139 (an extracted staking is a seller); item 126 (the bankroll across repeated reopenings is a reserve that releases mass at each reopening).
 
-### 138. The frequency hypothesis of the conditional bridge, from pseudorandomness — **[open]**
+### 138. A statistical floor with infinitely many losses: bounded account or exploited market — **[open]**
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
-*Registered results bearing on this item:* exact.conditional-bridge.
+*Registered results bearing on this item:* exact.conditional-bridge, statistical.finite-losses-affordable, statistical.slack-floor-bounded, statistical.table-mixture-unbounded.
 
-One floor `c ≤ price(φ_n)` per day on a fresh sentence settled the next day, with realized
-truth values `x_n`. `Bridge.bridge` (registered `exact.conditional-bridge`) bounds the account
-below and makes the multipliers summable under two hypotheses: the per-day ceiling, which
-`DualCertifiedMarket.account_le` supplies, and `Bridge.Frequency` — if the normalized stakes
-`ratio n = μ_n / (U + 1 - Q_{n-1})` are not summable, then eventually their `x`-weighted
-partial sums exceed the `c + γ` fraction of their partial sums. The weighting is the market's
-own: it is determined by the multipliers the market maker's fixed point produces, and nothing
-proved makes it efficiently expressible. The hypothesis is inhabited only where every realized
-value is one (`constantFresh_unexploited`), where it holds for any weighting.
-`WarrantSolvency.Schema.bounded_iff_frequency` is the same shape with unit stakes: there the
-count is unweighted and the bound is an equivalence. Wanted: (a) `Bridge.Frequency` for a
-dual-certified market with one fresh floor per day, from the hypothesis that the realized
-values have limiting frequency at least `c + γ` along every efficiently expressible weighting
-in the sense of the pinned dependency's pseudorandomness properties — which needs the
-normalized stakes to be such a weighting, or to be dominated by one; (b) failing that, a
-dual-certified market and a truth sequence with frequency above `c + γ` along every such
-weighting whose account is unbounded below; (c) the converse reading: whether a failure of
-`Bridge.Frequency` yields a staking for `Condition.seller_exploits`.
+One floor `c ≤ price(φ_n)` per day on a fresh sentence settled the next day, realized truth
+values `x_n`, in a dual-certified market. With at most `R` false instances the account is at
+least `−U((1 − c)^-(R+1) − 1)` (`statistical.finite-losses-affordable`), and on sequences a
+staker under the per-day ceiling attains that bound. If the prices clear the floor by a margin
+from some day on, the account is bounded (`statistical.slack-floor-bounded`). Under realized
+frequency at least `c + γ` along the threshold weighting — `thresholdWeight`, one feature of
+the day's price — either the account is bounded below or `thresholdBuyer` exploits
+(`statistical.bounded-or-buyer-exploits`). `Bridge.Frequency`, the hypothesis of
+`exact.conditional-bridge`, holds exactly when the market's normalized stakes are summable
+(`bridge_frequency_iff_summable`). On sequences, bounds on each of a family of stakers do not
+sum: a mixture of finitely supported tables at weights `θ^R` meets the summed ceiling and its
+account is unbounded exactly when `θ ≥ 1 − c` (`statistical.table-mixture-unbounded`). Which
+disjunct holds in `FloorSchedule.market` when infinitely many instances are false is not
+decided. Wanted: (a) a hypothesis on the truth sequence and the assessment, stated without
+reference to the market's prices and mentioning the firm's weights if it must, under which the
+threshold weights of `FloorSchedule.market` are summable — hence the account bounded and the
+market unexploited — with a witness having infinitely many false instances; or (b) an
+assessment, a floor schedule and a truth sequence of limiting frequency above `c + γ` for
+which the threshold weights of `FloorSchedule.market` are not summable; (c) in either case,
+whether the answer changes with the firm's enumeration `firmRawTrader`, whose weight for the
+trader of index `j` sums to `2^-j` over budgets.
 
-*Deliverable shape:* `lean-proved`; `Bridge.Frequency` for a dual-certified market with one fresh floor per day from a named frequency hypothesis over efficiently expressible weightings, or the counterexample market.
-*Acceptance check:* the Lean audit clean; `DualCertifiedMarket.accountBounded_of_frequency` applied with the derived hypothesis to a schedule whose realized values are not all one.
-*Context:* `lean/Workspace/Normativity/Contrib/ExactConditionsReserve.lean`; `lean/Workspace/Normativity/Contrib/ExactConditionsFloor.lean`; `lean/Workspace/Normativity/Contrib/WarrantSolvency.lean`; `projects/normativity/rounds/2026-11-10-exact-conditions-capital/THEOREM.md`.
+*Deliverable shape:* `lean-proved`; a hypothesis on the truth sequence and the assessment under which the floor market's threshold weights are summable, with a witness having infinitely many false instances, or the fixture where they are not.
+*Acceptance check:* the Lean audit clean; `DualCertifiedMarket.bounded_or_buyer_exploits` resolved to one disjunct for `FloorSchedule.market` on a truth sequence with infinitely many false instances.
+*Context:* `lean/Workspace/Normativity/Contrib/StatisticalConditions.lean`; `lean/Workspace/Normativity/Contrib/ExactConditionsFloor.lean`; `lean/Workspace/Normativity/Contrib/AssessmentFirm.lean`; `projects/normativity/rounds/2026-11-12-statistical-conditions/THEOREM.md`.
 *Consumed by:* item 61 (solvency of a warrant schema as a frequency statement); item 137.
 
 ### 139. Extraction: from an account unbounded below to an exploiting trader — **[open]**
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
+*Registered results bearing on this item:* statistical.bounded-or-buyer-exploits.
 
 In a dual-certified market, an efficiently computable trader that exploits forces the
-account below every bound (`DualCertifiedMarket.account_unbounded_of_exploit`). The converse is
-not proved. The market's own multipliers are a staking whose account is bounded above, by
-`account_le`, so if the account is also unbounded below `Condition.seller_exploits` would make
-the seller staking them exploit — but that seller is defined for rational constants fixed in
-advance (`Condition.sellStrategy` trades `EF.const` coefficients), and the multipliers are
-functions of the day's prices: in the floor market, the negative part of the firm's aggregate
-position on the floored sentence at the posted prices (`FloorSchedule.mu`). Wanted: (a) the
-seller with stakes given by expressible features of rank at most the day, and the bound
-`seller_netWorth_ge` for it; (b) for the floor market, the multiplier as such a feature — the
-firm's position is a finite sum of the features of its day strategy — and what efficiency of
-the resulting trader would require, the firm's day strategy growing with the day; (c) the
-extraction theorem: an account unbounded below over live prefixes gives an efficiently
-computable trader exploiting the market, under whatever hypothesis on the multipliers (b)
-shows is needed; or a dual-certified market whose account is unbounded below and which no
-efficiently computable trader exploits, in which case boundedness of the account is sufficient
-for the criterion and not necessary.
+account below every bound (`DualCertifiedMarket.account_unbounded_of_exploit`). For one floor
+per day settled by the next day the converse holds under a frequency hypothesis: if the
+realized frequency along the threshold weighting is at least `c + γ`, an account unbounded
+below makes `thresholdBuyer` exploit (registered `statistical.bounded-or-buyer-exploits`), and
+with that buyer efficiently computable the account is bounded below exactly when no
+efficiently computable trader exploits (`DualCertifiedMarket.accountBounded_iff_unexploited`).
+The exploiter buys at the floor; it is not the seller of the multipliers. Wanted:
+(a) `EfficientlyComputable (thresholdBuyer φ c δ)` for an efficiently generated sentence
+sequence `φ`, the buyer's day strategy being one trade whose coefficient is a feature of
+constant size; (b) the converse without the frequency hypothesis — where the realized
+frequency near the floor is below the strength the candidate exploiter is the seller of the
+multipliers, `Condition.seller` with stakes given by expressible features of rank at most the
+day, and in the floor market the multiplier is the negative part of the firm's aggregate
+position (`FloorSchedule.mu`), a feature of a day strategy that grows with the day — or a
+dual-certified market whose account is unbounded below and which no efficiently computable
+trader exploits; (c) the same for conditions beyond one floor per day.
 
-*Deliverable shape:* `lean-proved`; the seller with feature-valued stakes and its value bound, and either the extraction theorem under a stated efficiency hypothesis on the multipliers or the fixture separating an unbounded account from exploitation.
-*Acceptance check:* the Lean audit clean; `Condition.seller_netWorth_ge` recovered at constant features; the converse of `DualCertifiedMarket.account_unbounded_of_exploit` proved under the stated hypothesis or refuted by the fixture.
-*Context:* `lean/Workspace/Normativity/Contrib/ExactConditions.lean`; `lean/Workspace/Normativity/Contrib/ExactConditionsFloor.lean`; `lean/Workspace/Normativity/Contrib/AssessmentFirm.lean`; `projects/normativity/rounds/2026-11-10-exact-conditions-capital/REPORT.md`.
+*Deliverable shape:* `lean-proved`; `EfficientlyComputable` of the buyer near the floor, and either the converse of preservation without the frequency hypothesis or the fixture separating an unbounded account from exploitation.
+*Acceptance check:* the Lean audit clean; `DualCertifiedMarket.accountBounded_iff_unexploited` restated without its `EfficientlyComputable` hypothesis for an efficiently generated sentence sequence; the converse of `DualCertifiedMarket.account_unbounded_of_exploit` proved or refuted where `Frequency.Along` fails.
+*Context:* `lean/Workspace/Normativity/Contrib/ExactConditions.lean`; `lean/Workspace/Normativity/Contrib/StatisticalConditions.lean`; `lean/Workspace/Normativity/Contrib/ExactConditionsFloor.lean`; `lean/Workspace/Normativity/Contrib/AssessmentFirm.lean`.
 *Consumed by:* item 137 (with extraction, an account bounded below is necessary as well as sufficient); item 40 (necessity of bounded cumulative liability).
+
+### 140. A floor market driven by random observations: the capital bound path by path — **[open]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+*Registered results bearing on this item:* statistical.capital-bound-probability.
+
+`Betting.Fair.account_bound` (registered `statistical.capital-bound-probability`): outcomes
+`x n ∈ [0, 1]` with conditional expectation at least `c` given the past, predictable stakes
+`mu n ≥ 0` and the per-day ceiling give a settled account that reaches `−K` with probability
+at most `U/(U + K)` and is almost surely bounded below. No market is involved. Wanted: a
+probability space of observation sequences and an assessment whose worlds live at `N` are
+those agreeing with the observations through `N`, such that (a) the multiplier of
+`FloorSchedule.market` on day `n` is measurable in the observations before day `n`; (b) the
+settlement hypotheses of `DualCertifiedMarket.account_ge_of_losses` hold along each path;
+(c) the realized values have conditional expectation at least `c` given the earlier
+observations. Then `Betting.Fair` holds for the market's multipliers and realized values, and
+along almost every path the account is bounded below over live prefixes, the open instance
+costing a factor `(1 − c)⁻¹` over the settled account. To be decided on the way: an instance
+that is true and never settled stays open with both values in every later live world, and the
+supermartingale step does not occur for it — the settlement schedule under which the bound
+survives, or the fixture where it fails.
+
+*Deliverable shape:* `lean-proved`; the assessment over an observation space, `Betting.Fair` for the floor market's multipliers on it, and an account bounded below along almost every path; or the fixture where an unsettled instance breaks it.
+*Acceptance check:* the Lean audit clean; `Betting.Fair.ae_bounded_below` applied to `FloorSchedule.market` over the constructed assessment, with a witness whose outcomes are not almost surely one.
+*Context:* `lean/Workspace/Normativity/Contrib/StatisticalConditionsVille.lean`; `lean/Workspace/Normativity/Contrib/StatisticalConditions.lean`; `lean/Workspace/Normativity/Contrib/ExactConditionsFloor.lean`; `lean/Workspace/Normativity/Contrib/AssessmentProcess.lean`; `projects/normativity/rounds/2026-11-12-statistical-conditions/THEOREM.md`.
+*Consumed by:* item 138 (a probabilistic sufficient condition for its first disjunct); item 61 (solvency of a warrant schema as a frequency statement).
+
+### 141. One trader's normalized floor-selling as a generable weighting — **[substantial]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+`Bridge.bridge` bounds the account of one staker under `Bridge.Frequency` for its own
+normalized stake `mu n/(U + 1 − prior n)`, and `Frequency.gain_bddAbove` bounds the gain of
+selling at the strength along any weighting of frequency at least it. Neither is connected to
+the pinned dependency's `PGenerableWeighting`, `DivergentWeighting` and `PseudorandomAbove`.
+Wanted, for an efficiently computable trader whose day-`n` position on `φ n` is a feature of
+rank at most `n` and a truth sequence whose values through day `n − 1` are computable in time
+polynomial in `n`: (a) the trader's normalized short position as a progression of closed
+features satisfying `PGenerableWeighting` — the settled values entering as constants, the
+division by the margin through `EF.safeRecip`, which is exact because the margin is at least
+one; (b) `Frequency.Along` for it from `PseudorandomAbove` of the centred truth sequence,
+the patience clause `DeferralPatient` included; (c) the conclusion, that the trader's
+cumulative gain from selling at the floor is bounded. Or the operation that breaks (a).
+
+*Deliverable shape:* `lean-proved`; the normalized stake as a `PGenerableWeighting` with the bound on the trader's gain, or the obstruction as a fixture.
+*Acceptance check:* the Lean audit clean; `Frequency.gain_bddAbove` or `Bridge.bridge` applied with its frequency hypothesis discharged from the pinned `PseudorandomAbove`.
+*Context:* `lean/Workspace/Normativity/Contrib/StatisticalConditions.lean`; `lean/Workspace/Normativity/Contrib/ExactConditionsReserve.lean`; `projects/normativity/rounds/2026-11-12-statistical-conditions/THEOREM.md`.
+*Consumed by:* item 138 (the per-trader half of a bound on the firm's account).
 
 ## Normativity line — legitimacy
 Items 53–59 are the residual blockers the legitimacy prosecutions of 2026-08-21
