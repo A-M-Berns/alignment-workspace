@@ -1404,7 +1404,9 @@ fixture, with `certPlus_iff_robustOpen` and `robustOpen_of_persistence` instanti
 `split-bill-is-robust-openness` of the map.
 
 ### 136. The equivalence forms of factorization: sufficiency, betting, offers-only — **[substantial]**
-<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=no -->
+
+**Waits on the second follow-up of the legitimacy definition prosecution round** (`prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-2.md`). The ruling `2026-11-11--legitimacy-purpose-first-direction` in `DECISIONS.md` set aside the mathematics this entry was filed against, and the entry is not dispatchable as written; what it asks of the purpose-first account is stated when that pass's results are in.
 
 The prosecution round states L1 in its pairwise form — over a named class `V`, coupled runs with
 equal licensed traces have equal `Z`-traces — which is equivalent to the existence of some `F`
@@ -1428,10 +1430,12 @@ the replay form restated accordingly.
 
 *Deliverable shape:* `test-supported` at the ceiling — one module per form in the prosecution round's layout, each claimed equivalence a pointwise check over the frozen bank and each separation a named case; a Lean port is a later item.
 *Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with the forms' modules wired in; every equivalence checked pointwise over the bank, every separation a banked case.
-*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CASE_BANK.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/fixture/audits.py` (the replay form), the prompt's §6, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/THEOREMS.md` (C5, C6).
+*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CASE_BANK.md`, `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` §3 (the replay form), the prompt's §6, `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` F4–F5 (C5, C6).
 
 ### 137. Consumer lemmas: what the trust interface and the corrigibility slot consume from L0–L3 ∧ W — **[substantial]**
-<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=no -->
+
+**Waits on the second follow-up of the legitimacy definition prosecution round** (`prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-2.md`). The ruling `2026-11-11--legitimacy-purpose-first-direction` in `DECISIONS.md` set aside the mathematics this entry was filed against, and the entry is not dispatchable as written; what it asks of the purpose-first account is stated when that pass's results are in.
 
 The definition's consumers are named and nothing is proved for them. The trust interface's
 candidate theorem (`LEGITIMACY_TO_TRUST_INTERFACE.md` §4) took the counterfactual round's
@@ -1449,7 +1453,9 @@ honest arm inhabiting the hypothesis package.
 *Context:* `projects/normativity/legitimacy/rounds/2026-08-17-counterfactual-legitimacy/LEGITIMACY_TO_TRUST_INTERFACE.md` §4, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CASE_BANK.md` (B2), `wiki/Legitimacy.md`.
 
 ### 138. An advisor-respect condition: what T12 delimits — **[open]**
-<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=no -->
+
+**Waits on the second follow-up of the legitimacy definition prosecution round** (`prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-2.md`). The ruling `2026-11-11--legitimacy-purpose-first-direction` in `DECISIONS.md` set aside the mathematics this entry was filed against, and the entry is not dispatchable as written; what it asks of the purpose-first account is stated when that pass's results are in.
 
 T12, the strategically compliant advisor — every demand answered and complied with, no
 contribution ever carrying grounds — is pre-registered legitimate under L0–L3 ∧ W and computed
@@ -1483,7 +1489,7 @@ follow-up's two standards recomputed over its thirty-three cases, predictions fr
 
 *Deliverable shape:* `test-supported` — one executable predicate module in the prosecution round's layout, a bank extension with pre-registered verdicts frozen before the code and a cited source per case, and the independence from L0–L3 ∧ W exhibited in both directions.
 *Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with the condition wired in; T12 fails the condition and passes the definition; a named case passes the condition and fails the definition; a named case whose advisor's outputs differ across the class with no loss of grounds passes the condition; with the aim variable wired in, B6 is acquitted under the faithful-adviser standard while N8 stays `steered`, and N10's verdicts are computed without reference to a second ordering.
-*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CASE_BANK.md` (T12), the prompt's §3, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/THEOREMS.md` (C8).
+*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CASE_BANK.md` (T12), the prompt's §3, `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` F4 (C8).
 
 ## Deference line
 Context for all three: `projects/deference/note-dump-2026-08-11/`, in particular

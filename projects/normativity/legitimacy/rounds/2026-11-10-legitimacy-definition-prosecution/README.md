@@ -1,71 +1,57 @@
-# Legitimacy definition prosecution
+# Legitimacy: the purpose-first account
 
-A candidate definition of legitimacy of advisor influence — L0 channel confinement,
-L1 factorization, L2 access, L3 ownership, W individuation well-formedness — run
-against a case bank frozen before any fixture code. Every component is **open** or a
+Round `2026-11-10-legitimacy-definition-prosecution`. Every component is **open** or a
 **living note**; nothing is registered.
 
-Verdict: DEFINITION-SURVIVES-THE-BANK — nineteen computed verdicts match their pre-registrations with no forced revision; every clause is forced by a banked case, W under the free vocabulary only; the honest class factors through an explicit replay F; the coarsened L convicts B4 and the refined L acquits T10. L0 must read the transition function, the replay F absorbs L0 and L3 on this bank, and L1 and L3 overlap on every direct standards write so that T5 alone forces L3. Nothing registered; every component open or a living note.
+## The account
 
-Follow-up verdict (the steering account, `steering/`): CLARIFIES and REDUCES-TO-KNOWN, a mixture — the steering account's proper drivers, its broken/steered distinction and its two standards restate published notions (malfunction of a function; pathology against manipulation by a parasite; arm's length against fiduciary duty; no effect of the adviser's aim on a delicate state), and C1, C2 and C7 are instances or corollaries of known results. What the follow-up adds: on 38 variants of 33 cases the faithful-adviser standard's acquittals lie inside the arm's-length standard's, which lie inside those of L0–L3 ∧ W, with the replay form comparable to none of the three; and C4, following the proper driver is a guarantee against an adviser who may be opposed and fails against one whose aim is hers when she cannot take in everything it knows. C3 and C5 are refuted as written; C8 is open. Twenty-seven of 33 cases match their predictions in every column, seven verdicts on six cases diverge, and no per-case choice was needed. Nothing registered; every component open or a living note.
+Direction: `DECISIONS.md`, `2026-11-11--legitimacy-purpose-first-direction`. The idea that
+manipulation is the distortion of an actor away from its purpose, with purpose prior to
+legitimacy and a whole's purpose conferring purposes on its parts, is Sam Eisenstat's.
+Closely related work on the same problem: Nora Ammann, *The Value Change Problem*
+(<https://www.alignmentforum.org/s/3QXNgNKXoLrdXJwWE>).
 
-Reopening condition: a concrete scenario, written as a case module in `fixture/cases/`
-with a pre-registered verdict and a cited source, that L0–L3 ∧ W classifies legitimate
-and the bank's standards classify illegitimate, or the converse.
+An agent's purpose is a pair: a fixed condition and a changing aim. The fixed condition is
+that the parts which form her expectations and her values are *sound*, *in range* and
+*maintained*; `K` is the set of situations where that holds. The changing aim is her values
+at the time, `v_t`. The purpose is to pursue `v_t` while remaining in `K`. `K` names no
+values and is defined from her own mechanisms.
 
-## Standing
-
-Not developed further (`DECISIONS.md`, `2026-11-11--legitimacy-purpose-first-direction`):
-the fixtures and verdicts here are the record of what was computed, and the legitimacy
-line's working direction is a purpose-first account. The idea the steering follow-up
-tests, that manipulation is the distortion of an actor away from its purpose, is Sam
-Eisenstat's. Closely related work on the same problem: Nora Ammann, *The Value Change
-Problem* (<https://www.alignmentforum.org/s/3QXNgNKXoLrdXJwWE>).
+A part has a job, a mechanism and a normal range of conditions. Over a stretch of her
+history: *sound* — at each step her mechanisms do their job across their range; *in range* —
+at each step her actual sources are among those her mechanisms allow for; *maintained* —
+her mechanisms and their range are not degraded and change only through her own operation.
+A stretch is **legitimate** when all three hold; a change in her values is **her own** when
+it happens within a legitimate stretch; **manipulation** is another party causing a clause
+to fail for its own ends. All names are provisional.
 
 ## Run
 
-    python3 run.py          # the table, the ablations, the audits, the diagnostics
-    python3 run.py --json   # the same as data
-    python3 run.py --steering-json   # the steering follow-up as data
+    python3 run.py
 
-Exit nonzero on a verdict diverging from `CASE_BANK.md` without a `FORCED-REVISION`
-record in `FORCING.md`, on an ablation that flips no case, on a failed audit, or on a
-bank that parses to nothing. The runner then runs the steering follow-up and exits
-nonzero on a divergence from `steering/CASE_BANK.md` not listed in
-`steering/DIVERGENCES.md`, a listed divergence that does not occur, a status in
-`steering/THEOREMS.md` the checks contradict, or a steering bank that parses to nothing. Python 3.9+ stdlib; exact rationals; no network.
-`tests/run.py` hands over to `run.py` so the repository-level runner finds it.
+Reads the two case banks below and exits nonzero when either parses to nothing. Python 3.9+
+standard library; exact rationals; no network. `tests/run.py` hands over to `run.py` so the
+repository-level runner finds it.
 
 ## Layout
 
 | path | what |
 |---|---|
-| `CASE_BANK.md` | the frozen bank, its matching rule, and the table `run.py` reads |
-| `FORCING.md` | forced revisions; none |
-| `fixture/model.py` | states, histories, scripts as policies, the run map ρ, `Z`, `Lic`, `L`, the replay `F` |
-| `fixture/individuation.py` | `house`; the attacks `coarse` and `refined`; T7's `sequence` and `multiset` |
-| `fixture/clauses/` | one executable predicate per clause, and coverage |
-| `fixture/cases/` | one module per banked case |
-| `fixture/evaluate.py` | a case's verdict from its clauses; the variant rules |
-| `fixture/audits.py` | §5b satisfiability, §5c attacks, triviality, the replay form, diagnostics |
+| `CASE_BANK.md` | nineteen cases, B1–B6 and T1–T13, each with a scenario and a source; test material for the account |
+| `steering/CASE_BANK.md` | fourteen further cases, N1–N14, on one scene template; test material for the account |
+| `steering/PRIOR_WORK.md` | survey of published work on manipulation, persuasion, function and fiduciary duty, by source |
+| `steering/DIVERGENCES.md` | seven computed verdicts that differ from `steering/CASE_BANK.md`'s predictions; cited from `DECISIONS.md`, *Awaiting the author* |
+| `REMOVED.md` | files removed from this directory on 2026-11-11, each with its reason |
+| `run.py`, `tests/run.py` | the runner and its hand-over |
 
-## The steering follow-up
+## Recorded verdicts
 
-`steering/` tests a second account over the same objects: each protected part of the
-principal has a proper driver; a part is *broken* when it stops following it and
-*steered* when its value varies with the adviser's aim; two standards, arm's-length and
-faithful-adviser. All names provisional.
+Each bank carries, beside its cases, verdicts pre-registered for a definition of legitimacy
+tested on it. What was computed against them is recorded in
+`prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md`, §1–§8 and *Follow-up of
+2026-11-10*, and summarized by the two lines the round's record in `state/rounds.json`
+quotes.
 
-| path | what |
-|---|---|
-| `steering/PRIOR_WORK.md` | the survey, written first; C1–C8 against what is published |
-| `steering/DEFINITIONS.md` | parts, drivers, working, steered, broken, the standards, attainable value; C1–C8 as tested |
-| `steering/CASE_BANK.md` | N1–N14 and the predictions for all thirty-three cases, frozen before the code |
-| `steering/DIVERGENCES.md` | computed verdicts that differ from their predictions |
-| `steering/PER_CASE_CHOICES.md` | the renaming test; none |
-| `steering/THEOREMS.md` | C1–C8, each with one status and its check |
-| `steering/model.py`, `steering/value.py` | the fixture layer over the first pass's run map; the abstract layer |
-| `steering/cases/` | one module per new case; `x_*.py` are counterexamples and separating cases outside the bank |
-| `steering/theorems.py`, `steering/run.py` | the checks behind C1–C8; the follow-up's runner |
+Verdict: DEFINITION-SURVIVES-THE-BANK — nineteen computed verdicts match their pre-registrations with no forced revision; every clause is forced by a banked case, W under the free vocabulary only; the honest class factors through an explicit replay F; the coarsened L convicts B4 and the refined L acquits T10. L0 must read the transition function, the replay F absorbs L0 and L3 on this bank, and L1 and L3 overlap on every direct standards write so that T5 alone forces L3. Nothing registered; every component open or a living note.
 
-The round's report is `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md`.
+Follow-up verdict (the steering account): CLARIFIES and REDUCES-TO-KNOWN, a mixture — the steering account's proper drivers, its broken/steered distinction and its two standards restate published notions (malfunction of a function; pathology against manipulation by a parasite; arm's length against fiduciary duty; no effect of the adviser's aim on a delicate state), and C1, C2 and C7 are instances or corollaries of known results. What the follow-up adds: on 38 variants of 33 cases the faithful-adviser standard's acquittals lie inside the arm's-length standard's, which lie inside those of L0–L3 ∧ W, with the replay form comparable to none of the three; and C4, following the proper driver is a guarantee against an adviser who may be opposed and fails against one whose aim is hers when she cannot take in everything it knows. C3 and C5 are refuted as written; C8 is open. Twenty-seven of 33 cases match their predictions in every column, seven verdicts on six cases diverge, and no per-case choice was needed. Nothing registered; every component open or a living note.
