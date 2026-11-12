@@ -1,6 +1,7 @@
 # The purpose-first account, stated over a model
 
-Committed with `CASE_BANK.md` and `LEAN_MAP.md` before any code of this pass. The account is
+Committed with `CASE_BANK.md` and `LEAN_MAP.md` before any code of this pass; *uniformly in
+range* and the note under *Manipulation* were added with `THEOREMS.md`. The account is
 that of `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-2.md` §1; the
 idea that manipulation is the distortion of an actor away from its purpose is Sam
 Eisenstat's. §4 lists every point at which this statement departs from the prompt's. Every
@@ -74,6 +75,11 @@ asked of `ρ_v`.
 **Exactly in range** is `α_u = 1`: her picture of the source is the source. `1 − α_u` is the
 in-range defect.
 
+**Uniformly in range**: the actual source is the same function of the world at every aim
+in `U`, and in range. It is a property of the adviser's map `u ↦ σ_u`, not of one stretch.
+Statements 2, 3 and 8 of `THEOREMS.md` need this reading; the verdicts on the bank use
+`α > 0`.
+
 **Maintained** (over a stretch) is two conditions:
 
 - **M1**: every change to a coordinate of her state is produced by `ρ` on an input, by the
@@ -88,6 +94,11 @@ it stays in `K`: sound and in range at every step, and maintained. A change in h
 **Manipulation.** The stretch at the actual aim `u*` is not legitimate, and some clause that
 fails at `u*` holds at `∅`. It is **internal** when that clause is *maintained* and
 **external** when it is *in range*.
+
+The test holds her allowed set fixed while the aim varies. Where she has been told of the
+adviser's aim, her allowed set holds the aimed policy and the null aim's policy falls
+outside it, so an in-range failure in such a case computes as *not manipulation* (P3 of the
+bank).
 
 **Verdicts.** A case's verdict is the set of clauses failing at `u*` (empty: `legitimate`)
 and whether the stretch is manipulation.

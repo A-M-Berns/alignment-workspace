@@ -25,20 +25,35 @@ A stretch is **legitimate** when all three hold; a change in her values is **her
 it happens within a legitimate stretch; **manipulation** is another party causing a clause
 to fail for its own ends. All names are provisional.
 
+## What was found
+
+`teleology/THEOREMS.md` carries eight statements about the account, each with one status.
+Follow-up verdict (the purpose-first account): MIXED — her later judgment is at least as good by her own lights for expectations (proved, the value-of-information inequality) and not for values (refuted: the three clauses give no martingale); trust is not manufactured and the gate gains nothing are both refuted for in range as "the true source has weight" and hold when the source is the same at every aim, which is the class-level transparency the workspace's Lean already asks, and under which sound is not needed; her allowed set does the work, since nineteen of twenty-one in-range failures become legitimate once she allows for every aim, the two that remain being the two whose source she cannot represent; a threat fails no clause. Fifty-four of fifty-five banked predictions match. Nothing registered; every component open or a living note.
+
 ## Run
 
-    python3 run.py
+    python3 run.py          # the bank under the account, then the eight statements
+    python3 run.py --json   # the same as data
 
-Reads the two case banks below and exits nonzero when either parses to nothing. Python 3.9+
-standard library; exact rationals; no network. `tests/run.py` hands over to `run.py` so the
-repository-level runner finds it.
+Exit nonzero when a bank parses to nothing, when a computed verdict diverges from
+`teleology/CASE_BANK.md` without a line in `teleology/DIVERGENCES.md`, when a listed
+divergence does not occur, or when a status in `teleology/THEOREMS.md` is not the one its
+check supports. Python 3.9+ standard library; exact rationals; no network. `tests/run.py`
+hands over to `run.py` so the repository-level runner finds it.
 
 ## Layout
 
 | path | what |
 |---|---|
-| `CASE_BANK.md` | nineteen cases, B1–B6 and T1–T13, each with a scenario and a source; test material for the account |
-| `steering/CASE_BANK.md` | fourteen further cases, N1–N14, on one scene template; test material for the account |
+| `teleology/ACCOUNT.md` | the account over a model in which her update rule and allowed set are coordinates of her state |
+| `teleology/LEAN_MAP.md` | each notion against the existing Lean declaration, with the exact difference |
+| `teleology/CASE_BANK.md` | fifty-five cases with predictions frozen before the code: the dispatch's fifteen, the thirty-three of the two banks below, seven added |
+| `teleology/DIVERGENCES.md` | the one computed verdict that differs from its prediction |
+| `teleology/THEOREMS.md` | statements 1–8, each with one status and its check |
+| `teleology/model.py`, `teleology/cases.py`, `teleology/bank.py` | the model and its clauses; the cases; the bank's reader and matching rule |
+| `teleology/theorems.py`, `teleology/run.py` | the checks behind the statements; this pass's runner |
+| `CASE_BANK.md` | nineteen cases, B1–B6 and T1–T13, each with a scenario and a source |
+| `steering/CASE_BANK.md` | fourteen further cases, N1–N14, on one scene template |
 | `steering/PRIOR_WORK.md` | survey of published work on manipulation, persuasion, function and fiduciary duty, by source |
 | `steering/DIVERGENCES.md` | seven computed verdicts that differ from `steering/CASE_BANK.md`'s predictions; cited from `DECISIONS.md`, *Awaiting the author* |
 | `REMOVED.md` | files removed from this directory on 2026-11-11, each with its reason |
