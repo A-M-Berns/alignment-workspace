@@ -2839,3 +2839,133 @@ account that pays for them, and what certifies or refutes it.
   "note": "FloorSchedule.market: on day n the firm's strategy has its day-n price features substituted by lo + (1 − lo)·price (liftDay; lo the level at the floored sentence, 0 elsewhere), the pinned MarketMaker prices the substituted strategy, and the posted prices are lo + (1 − lo)·quote. The multiplier on the floor is max 0 of minus the firm's aggregate position on the floored sentence; floor_day_le proves the day inequality at every cube valuation for an arbitrary lower-bound function. Tolerances marketMakerError n, epsTotal 1. ComputableMarket is not proved for the result. plainMarket: the unconstrained market of AssessmentFirm with the empty condition and zero multipliers."
 }
 ```
+
+### statistical.finite-losses-affordable
+
+```json
+{
+  "project": "normativity",
+  "short_name": "one floor per day at strength c, settled by the next day, with at most R false instances: the account is bounded below by U((1 − c)^-(R+1) − 1)",
+  "origin_round": "2026-11-12-statistical-conditions",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.StatisticalConditions.DualCertifiedMarket.accountBounded_of_finite_losses"
+  },
+  "answers_item": "138",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-12-statistical-conditions",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-12-statistical-conditions/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-12-statistical-conditions/REPORT.md"
+  },
+  "note": "0 ≤ c < 1; M.C = floors φ (fun _ => c); a world live at N gives φ i the value b i for i < N; on day n a world affirming φ n is live; lost c (realized b) N ≤ R for all N. Conclusion: M.AccountBounded (M.U ((1 − c)^-(R+1) − 1)). From Losses.headroom_le (the distance to the ceiling grows by a factor of at most (1 − c)^-1 at each lost instance and not otherwise) through DualCertifiedMarket.account_ge_of_losses, which states the bound at each N with the count of false instances before N. Tight on sequences: Losses.compound_prior and compound_ceiling give a staker under the per-day ceiling whose settled account is exactly −U((1 − c)^-lost − 1). Inhabited: finiteLosses_witness — fresh atoms at a constant c ∈ (0, 1) over truthProcess oneLoss, the first atom settling false; bound 3((1 − c)^-2 − 1); no efficiently computable trader exploits."
+}
+```
+
+### statistical.slack-floor-bounded
+
+```json
+{
+  "project": "normativity",
+  "short_name": "a floor whose prices clear it by a margin δ from some day on costs an account bounded below by c(ε/δ + the multipliers of the earlier days)",
+  "origin_round": "2026-11-12-statistical-conditions",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.StatisticalConditions.DualCertifiedMarket.accountBounded_of_eventually_slack"
+  },
+  "answers_item": "138",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-12-statistical-conditions",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-12-statistical-conditions/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-12-statistical-conditions/REPORT.md"
+  },
+  "note": "0 ≤ c; M.C = floors φ (fun _ => c); δ > 0; c + δ ≤ M.P n (φ n) for n ≥ N₀. Conclusion: M.AccountBounded (c (M.epsTotal/δ + Σ_{n<N₀} M.mu n 0)). From DualCertifiedMarket.stake_prices_le — in any dual-certified market the day's rows staked by the multipliers and evaluated at the posted prices are worth at most the day's tolerance, the day inequality read at the valuation w = P n — and account_ge_slack, which bounds the account at every N by the multipliers of the days whose price clears the floor by less than δ. The hypothesis is on the market's own prices; no declaration derives it from the truth sequence. Its hypothesis package is inhabited only through DualCertifiedMarket.bounded_or_buyer_exploits, whose proof applies it on the summable branch, and through thresholdFrequency_witness."
+}
+```
+
+### statistical.bounded-or-buyer-exploits
+
+```json
+{
+  "project": "normativity",
+  "short_name": "under realized frequency at least c + γ along the weighting that reads whether the price is within δ < γ of the floor, either the account is bounded below or the buyer near the floor exploits",
+  "origin_round": "2026-11-12-statistical-conditions",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.StatisticalConditions.DualCertifiedMarket.bounded_or_buyer_exploits"
+  },
+  "answers_item": "139",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-12-statistical-conditions",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-12-statistical-conditions/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-12-statistical-conditions/REPORT.md"
+  },
+  "note": "0 ≤ c, 0 < δ < γ; M.C = floors φ (fun _ => c); a world live at N gives φ i the value b i for i < N; a world is live on every day; Frequency.Along c γ (realized b) (thresholdWeight M.P φ c δ): if the threshold weights min 1 (max 0 ((2/δ)(c + δ − price))) are not summable, their realized-value-weighted partial sums eventually exceed the c + γ fraction. Conclusion: (∃ B, M.AccountBounded B) ∨ M.L.Exploits (thresholdBuyer φ c δ) M.P. Summable weights give eventual clearance by δ/2 and accountBounded_of_eventually_slack; otherwise thresholdBuyer_exploits, stated for any history with prices at most one. Corollary accountBounded_iff_unexploited: with EfficientlyComputable (thresholdBuyer φ c δ) as a hypothesis, the account is bounded below iff no efficiently computable trader exploits. The frequency hypothesis is on a feature of the market's own prices; the theorem does not say which disjunct holds; efficiency of the buyer is not discharged; φ is unrestricted. Inhabited: thresholdFrequency_witness — the market of finiteLosses_witness, δ = (1 − c)/4, γ = (1 − c)/2, first disjunct."
+}
+```
+
+### statistical.table-mixture-unbounded
+
+```json
+{
+  "project": "normativity",
+  "short_name": "on sequences, a mixture at weights θ^R of stakers each staking on at most R lost instances meets the summed ceiling, and its account is at most −(c/(1 − θ)) times the number of losses when θ ≥ 1 − c",
+  "origin_round": "2026-11-12-statistical-conditions",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.StatisticalConditions.TableMixture.prior_le"
+  },
+  "answers_item": "138",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-12-statistical-conditions",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-12-statistical-conditions/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-12-statistical-conditions/REPORT.md"
+  },
+  "note": "Sequences only: 0 ≤ c < 1, 1 − c ≤ θ < 1, every instance with x n < c settling at 0. table c R x stakes (1 − c)^-(lost + 1) on each of the first R lost instances and has settled account −((1 − c)^-min(lost, R) − 1) (table_prior). stake c θ x is Σ'_R θ^(R+1) · table c (R+1) x (stake_eq_tsum), meets the per-day ceiling θ/(1 − θ) (ceiling), and has settled account −(c/(1 − θ)) Σ_{j<lost} (θ/(1 − c))^(j+1) (prior_eq). Conclusion: prior c x (stake c θ x) n ≤ −(c/(1 − θ)) · lost c x n. Beside it prior_ge: for θ < 1 − c the account is bounded below. What it refutes is the inference from a bound on each component to a bound on the weighted mixture. Not shown: that the tables are a uniformly computable family, that the pinned firm holds them at such weights, or that the mixture is the multiplier of any dual-certified market. Inhabited: every sequence whose lost instances settle at 0."
+}
+```
+
+### statistical.capital-bound-probability
+
+```json
+{
+  "project": "normativity",
+  "short_name": "with outcomes of conditional expectation at least c given the past and predictable stakes under the per-day ceiling, the settled account reaches −K with probability at most U/(U + K)",
+  "origin_round": "2026-11-12-statistical-conditions",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.StatisticalConditions.Betting.Fair.account_bound"
+  },
+  "answers_item": "140",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-12-statistical-conditions",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-11-12-statistical-conditions/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-11-12-statistical-conditions/REPORT.md"
+  },
+  "note": "A probability measure μ, a filtration ℱ over ℕ, Betting.Fair μ ℱ c U x mu: 0 ≤ c < 1; mu n is ℱ n-measurable and nonnegative; x n is ℱ (n+1)-measurable with values in [0, 1]; c ≤ E[x n | ℱ n] almost surely; account n + mu n (1 − c) ≤ U at every point, account n = Σ_{i<n} mu i (x i − c). K > 0. Conclusion: μ {ω | ∃ n, account n ω ≤ −K} ≤ ofReal (U/(U + K)). U − account is a nonnegative supermartingale (Fair.headroom_supermartingale; the stakes are bounded on each day by Losses.headroom_le, so no integrability is assumed), and ville is the maximal inequality for one, by optional stopping. Beside it Fair.ae_bounded_below. No margin γ and no market. Inhabited: Betting.witness — a fair coin on Bool staked one unit at c = U = 1/2, settled account −1/2 on tails."
+}
+```

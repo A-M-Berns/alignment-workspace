@@ -7417,3 +7417,24 @@ derives from the executing model.  It is added to `graph/policy.yaml`, and to th
 edit that admitted `@claude-fable-5`.  Rejected alternative: authoring the nodes under an
 existing handle, which would name a model that did not write them.
 
+### 2026-11-12 — a statistical floor is recorded as a dichotomy on one price-threshold weighting
+<!-- decision: 2026-11-12--statistical-floor-as-threshold-dichotomy; touches: item:138, item:139, item:140, item:141, claim:statistical.finite-losses-affordable, claim:statistical.slack-floor-bounded, claim:statistical.bounded-or-buyer-exploits, claim:statistical.table-mixture-unbounded, claim:statistical.capital-bound-probability -->
+
+**Agent-decided, reversible** (the statistical-conditions round,
+`prompts/2026-11-12-statistical-conditions/`).  For one floor per day settled by the next day, the statistical statement
+of record is `StatisticalConditions.DualCertifiedMarket.bounded_or_buyer_exploits`: under
+realized frequency at least `c + γ` along `thresholdWeight` — one expressible feature of the
+day's price — either the account is bounded below or `thresholdBuyer` exploits.  Three choices
+are the round's.  (1) The frequency hypothesis is the new predicate `Frequency.Along` on that
+one weighting.  Rejected alternatives: `Bridge.Frequency` on the market's normalized
+multipliers, which `bridge_frequency_iff_summable` shows to be the summability of those
+multipliers and nothing statistical; and the pinned `PseudorandomAbove`, which quantifies over
+every generable patient weighting and is connected to nothing in a floor market yet (item 141
+files the connection).  (2) Items 138 and 139 are restated in place to what the round leaves.
+Rejected alternative: keeping their text and filing the residue as new items, which would
+leave an item asking for a hypothesis that is a summability statement.  (3) The table mixture
+is registered against item 138 as a statement about sequences
+(`statistical.table-mixture-unbounded`).  Rejected alternative: leaving it as exploration; it
+is kernel-checked, and it is what refutes summing per-trader bounds.  Items 140 and 141 are
+filed under the dispatch's scope.  Pull requests #145 and #146 each file items numbered from
+136 on their own branches (136–138 and 136–139); this round numbers its new items from 140.
