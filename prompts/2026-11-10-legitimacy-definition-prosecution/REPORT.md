@@ -430,6 +430,434 @@ layer", "abstract layer", "calibration" and "content" for clauses (ii) and (iv) 
 
 The pull request is not auto-merged; the merge is a pull-request fact.
 
+## Follow-up of 2026-11-11 — the purpose-first account
+
+Dispatch: `PROMPT-followup-2.md`, kept verbatim. The ruling
+`2026-11-11--legitimacy-purpose-first-direction` (`DECISIONS.md`) governs. The idea that
+manipulation is the distortion of an actor away from its purpose is Sam Eisenstat's.
+Everything of this pass is under
+`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/`;
+`python3 run.py` in the round directory runs it and `--json` prints the data the tables
+below are read from. Commits, in the order the prompt fixes: `ca239963` the removals;
+`31d24f0c` the account, the Lean map and the bank, before any code; `f5994550` the model,
+verdicts and statements; `3845ca50` the external review and the corrections it forced.
+
+**Headline: MIXED — of nine statuses on eight statements about the account, two are proved, two hold on a stated domain, four are refuted and one is open. Her later judgment is at least as good by her own lights for expectations (the value-of-information inequality, which needs her values fixed) and not for values. That trust is not manufactured, and that the gate gains nothing, are refuted for in range as the account states it, and for an adviser whose aim she knows when her evaluation is a verdict; they hold when nothing the adviser does to her depends on its aim, which is close to the class-level transparency the workspace's Lean already asks. A departure of small probability costs the gated score a fixed amount. The verdicts follow the allowed set a case is given: nineteen of twenty-one in-range failures become legitimate once she allows for every aim, the other two being the two whose source she cannot represent. A threat fails no clause. Fifty-four of fifty-five banked predictions match, which is fit. Nothing registered; every component open or a living note.**
+
+### G1. Removals
+
+One commit, `ca239963`; the list is `REMOVED.md` in the round directory.
+
+| removed | reason |
+|---|---|
+| `FORCING.md` | the record of forced revisions to L0–L3 ∧ W; it held none |
+| `fixture/` (model, individuation, six clause modules, nineteen case modules, case record, bank parser, verdict rule, audits) | serves only L0–L3 ∧ W; the cases stay in `CASE_BANK.md` |
+| `steering/DEFINITIONS.md`, `steering/THEOREMS.md`, `steering/PER_CASE_CHOICES.md` | the steering account's definitions, the statuses of C1–C8, the empty renaming record |
+| `steering/model.py`, `steering/value.py`, `steering/theorems.py`, `steering/run.py`, `steering/__init__.py`, `steering/cases/` | the two standards' predicates, the attainable-value layer, the checks behind C1–C8, N1–N14 as scripts; the cases stay in `steering/CASE_BANK.md` |
+
+`run.py` and `README.md` are rewritten. Kept: both case banks, `steering/PRIOR_WORK.md`,
+everything under `prompts/`. **Left in place, against the instruction to remove what
+served only the two standards:** `steering/DIVERGENCES.md`. `DECISIONS.md`, *Awaiting the
+author*, cites it by path in the entry of 2026-11-10 on the faithful-adviser standard, and
+`tests/dead_pointers.py` fails on a pointer in `DECISIONS.md` that does not resolve.
+Outstanding action 1.
+
+### G2. The account as finally stated
+
+`teleology/ACCOUNT.md`. Her state is `(b_t, v_t, ρ, R_t, auth, cap_t)`: expectations, values,
+update rule, allowed set of sources with weights inside a fixed class `Rep` she can
+represent, what she has authorized, capacity per matter. The adviser is a map from aims to
+policies, with a null aim. *Sound*: her belief-former returns the posterior of her allowed
+set on every input sequence a source in it can produce. *In range*: her weight `α` on the
+actual source is positive. *Maintained*: M1, every change to her state comes from her rule
+on an input, her own reliance, or a write she authorized; M2, her capacity on each reserved
+matter does not fall. `K` is a set of stretches. *Manipulation*: not legitimate at the
+actual aim, with a failing clause that holds at the null aim.
+
+Changes from the prompt's §1, each with its reason:
+
+1. **A null aim and an attribution test.** The prompt gives no test for "for its own
+   ends". Rendered as: the clause fails at the actual aim and holds at the null aim.
+2. **Weight, and two stronger readings of in range.** The prompt states in range twice,
+   differently: "the true source is among the hypotheses to which she gives weight"
+   (`α > 0`) and "an adviser whose aims she knows and can allow for" (`α = 1` on the aim's
+   policy). Statements 2, 3 and 8 need a third, *uniformly in range*: in every world she
+   meets the same inputs, authorized writes and reliance at every aim. The bank's verdicts
+   use `α > 0`.
+3. **M1 and M2 separated.** They fail for different reasons: M2 can fail by her own
+   operation on in-range inputs, and needs `Res` and a measure of capacity that the account
+   does not derive.
+4. **V− and V+.** The prompt's account of the value-former is negative (V−). V+,
+   *self-estimating*, is added as a named hypothesis: her values are her expectation of
+   `v*`, her own rule's verdict on everything the world holds on the matter. Statement 1 for
+   values is refuted; V+ gives a different criterion under which deferring is good.
+5. **`Rep` is fixed**, and a disclosed source outside it does not enter her allowed set.
+   "The range grows by her own learning" is rendered only as reweighting within `Rep`.
+6. **Two parts only, so a threat fails no clause.** The account names the parts that form
+   her expectations and values; her options belong to neither.
+7. **`K` is a set of stretches, not of states**: her state does not record whether what led
+   to it was maintained.
+8. **Stipulations of the model**: her seed expectations are correct, sources are
+   deterministic with chance carried in the world, each act of reliance halves her capacity
+   on the matter, and her capacity on a reserved matter starts positive.
+
+Where the clauses cannot be kept apart (`ACCOUNT.md` §3): a write and an out-of-range input
+are one event under two descriptions; sound and in range are both relative to her allowed
+set; under V− sound says nothing of the value-former; M2 is of a different kind from the
+rest.
+
+### G3. The Lean map
+
+`teleology/LEAN_MAP.md`. Definitions and statements were read, not proofs; nothing was built.
+The reviewer checked every quoted declaration against the files and found the quotations
+and line numbers accurate; two correspondences were wrong as first written and are
+corrected (G6, points 15 and 16).
+
+- **In range is nearer the Lean than the prompt's reading says, and in a different place.**
+  `Legitimacy.External.transparent` asks `Realizes` for one reference over the whole audited
+  class, given the declared inputs: with constant declared inputs that is the input half of
+  *uniformly in range*, not `α > 0`. The Lean has no set of references with weights and
+  nothing for a source she cannot represent.
+- **Sound is `LicensedWhole` with the job as license.** `LicensedAt` is weaker, since its
+  selector may choose none of the grounds; `ReasonMediated` is not soundness.
+- **M1 for her outputs has no counterpart.** `ReasonMediated` compares continuations of the
+  audited class; it is satisfied by an unauthorized write common to all of them and
+  violated by an authorized write that depends on the aim.
+- **A lie passes the Lean's legitimacy.** `GateIsLegitimacy.Rows.r20` proves a false
+  recommendation through the declared channel `Counted`. The account's in range fails it
+  when her allowed set holds no lying source.
+- **The adviser as a map from aims is already there**: `Policy.present d pol w`, a policy as
+  a function of the wanted answer, with `class_taint`. The Lean has taint and no
+  attribution.
+- **`tower_factor` already states what M1 buys for her rule**, asking agreement on the
+  authorized events as well as the grounds; `evalAt` is the transition for her evaluator
+  in the consultation model, its license slot carried and not validated. No `Segment`
+  carries `tower_factor`'s hypotheses.
+- **M2 has no counterpart.** `OpenAt` is a condition on the record's routes at a state, not
+  on her capacity across a stretch.
+- **The obstacle is narrower than the prompt says.** A write that differs across the
+  audited class is expressible: it shows as a payload that does not factor through the
+  trace. What the frame lacks is a reading of how she judges at step `t`. Three additions
+  would supply it: a reading `spec : ℕ → Ω → C` with `tower_factor`'s hypotheses as fields
+  of the segment (the theorem exists; no structure carries it); a license indexed by that
+  reading (no encoding supplied; the type does not forbid one); a weighted family of
+  references and a predicate for representable sources (not supplied).
+
+### G4. Verdicts and the divergence
+
+`teleology/CASE_BANK.md`, fifty-five cases; in range is `α > 0`.
+
+| computed | cases |
+|---|---|
+| legitimate | P2, P7 (teacher, novel, friend), P9, P11, P14, B4, B6, T1, T2, T12, N5, N8, N10, N11, N12, N13, X1, X3; **P13** |
+| fails(in range); manipulation | P1, P5, P8, P12, B5, T3, T6, T7, T8, N1, N3, N7, N9, N14, X2 |
+| fails(in range); not manipulation | P3, P6, P15, T9, T13, N2 |
+| fails(maintained); manipulation | P4, B1, B2, B3, T4, T5, T10 (with and without the endorsement), N4 |
+| fails(maintained); not manipulation | P10, N6, X5; X6 (sound also fails) |
+| fails(sound); not manipulation | X4, X7 |
+| out-of-scope(stretch-start) | T11: fails(maintained) with the stretch starting before the installation, legitimate after |
+
+B6 and X3 are legitimate with `α = 1/2`; every other legitimate case has `α = 1`.
+
+**One divergence** (`teleology/DIVERGENCES.md`). **P13, a threat**: predicted *fails*,
+computed *legitimate*. The threat is true, understood and weighed; her allowed set holds
+the threatener; nothing is written. The prompt asked which clause fails and whether the
+account has one for her situation: none, and it has none. The wrong is done through what
+her options cost, and the account's fixed condition is about how her expectations and
+values are formed.
+
+P3 (disclosed, beyond what she can represent) matches its prediction, *fails in range*, and
+computes *not manipulation*, an artifact of the attribution test: it holds her allowed set
+fixed, and once she has been told of the aim the null aim's policy is outside it.
+
+### G5. Statements 1–8
+
+`teleology/THEOREMS.md`. Statement 1 carries a status for expectations and one for values.
+Statuses 4 and 7 changed after the review.
+
+| | status | on what |
+|---|---|---|
+| 1E her later judgment, expectations | **proved** | by her standards at the start, given sound and four further assumptions: one utility by which the later act is chosen and judged, the same options, maximizing choice, no write to her expectations. M1 supplies only the last; in range is not used. The value-of-information inequality. In fact, with the true source at weight `α`, the loss is at most `D(1−α)/α`. 4,350 instances, none worse by her lights, 60 worse in fact |
+| 1V her later judgment, values | **refuted** | `x_value_drift`: a legitimate stretch after which her choice is worth 0 by her starting values against 1. Under a different criterion, valuing an act at what she expects to value it at later, deferring is good exactly when her values are a martingale under one model of her own; V+ gives that and the three clauses do not |
+| 2 trust is not manufactured | **refuted** | `x_undisclosed_side`: legitimate at every aim, her mean credence 3/8 under one advocate and 5/8 under the other. Same inputs at every aim is not enough (`x_authorized_by_aim`). Under uniformly in range and M1 her evaluation is the same at every aim (proved; sound not used), the case of `selectionBlind_of_realizes` with constant declared inputs |
+| 3 what the gate needs | **refuted** | with `α > 0`, taking a side she has not been told of gains 1/8; with `α = 1`, persuasion by a signal she knows gains 1/6 on her verdict. Under uniform no presentation gains, by statement 2. In range and M1 are each needed; under uniform, sound is not. Nothing here turns on M2 |
+| 4 shortfall | **refuted** | `x_rare_departure`: a departure of probability ε takes the source out of her allowed set, and the gated score loses 583/500 at ε = 1/1000 against a bound of 1/500. Her evaluation before the gate does move by at most the probability of the defect event times its width (`abs_expect_sub_le_width`) |
+| 5 the adviser's side | **proved** | no behaviour is in range for two principals whose one-source allowed sets differ; declare-and-realize a source she can represent, writing nothing, gives uniformly in range and M1; no condition on the adviser gives sound or M2 (P10) |
+| 6 the disclosure limit | **holds on the stated domain** | a witness outside `Rep` whose aim moves her mean value from 0 to 1 with the law of her inputs unchanged; inside and disclosed, with no write, her mean credence is unbiased at every aim (proved). Narrower than the dispatch's claim: no observation model, and unbiased is not unsteered |
+| 7 well-definedness | **open** | no behaviour-preserving re-description is defined. Sensitivity: reading writes as inputs changes which clause fails in 12 of 59 stretches and legitimate-or-not in none; restating her allowed set with her mechanism kept changes legitimate-or-not in 11; with her mechanism `Bayes` of the wide set, 19 of 21 in-range failures vanish. `K` holds 22 of 59 |
+| 8 what `Legit` then is | **holds on the stated domain** | sound ∧ uniformly in range ∧ maintained, with `V` her evaluation when it holds and a window value when not, is a `Scoring`, for histories that carry the adviser's policy at every aim. Theorem 1 applies; Theorems 2 and 3 need a `Decision` and a `Sequential` the account does not build |
+
+### G6. External review
+
+One review through `codex exec --sandbox read-only` (codex-cli 0.153.4, model `gpt-6-astra`,
+as its log reports), on copies of `teleology/`, the two banks, the dispatch, the seven Lean
+files and a draft of this section. Its reply is `REVIEW-astra-2026-11-11.md`, verbatim. It
+reproduced every reported count. Dispositions, by its numbering:
+
+1. *1E is earned only with further assumptions; M1 does not give fixed values or maximizing
+   choice.* **Accepted.** The statement now lists the four assumptions.
+2. *1V's refutation is earned; the repair changes the criterion.* **Accepted.** The text
+   calls it a different criterion and adds that the martingale needs one probability model.
+3. *X3 is not legitimate at the null aim; and uniform inputs do not give equal evaluation,
+   since an authorized write may depend on the aim.* **Accepted, both; reproduced.** The
+   counterexample is now `x_undisclosed_side`; `x_authorized_by_aim` is added; *uniformly in
+   range* now covers authorized writes and reliance.
+4. *The gate fixture compares across principals; "no gain under uniform" is a fixture
+   result; dropping maintained tests M1 only.* **Accepted.** The gain against the same
+   principal at the null aim is computed (the advocacy case keeps its 1/8); the uniform
+   claim now rests on statement 2's proof; the text says maintained there is M1.
+5. *The shortfall bound is false for the gated score.* **Accepted; reproduced; status
+   changed from proved to refuted.** The bound is kept for her evaluation before the gate.
+6. *The adviser's sufficiency condition omits M2.* **Accepted.** The statement is narrowed
+   to in range and M1, with P10 as the case for M2.
+7. *Equal input marginals are not undetectability; calibration needs no write and does not
+   exclude steering.* **Accepted.** The statement says both; the joint law of her input and
+   her frame is computed and differs across aims. The status is kept for the narrowed
+   statement.
+8. *"Well-definedness refuted" is an artifact of transformations that are not
+   re-descriptions; one sentence contradicted the counts.* **Accepted; status changed from
+   refuted to open.** The counts stay as sensitivity results and the parallel with
+   `realizes_of_injOn` is called an analogy.
+9. *The `Scoring` construction is right; Theorems 2 and 3 need more; uniform makes `Legit`
+   depend on a policy family.* **Accepted.** The statement is narrowed and histories carry
+   the family.
+10. *A write to her allowed set or rule that depends on the world is read from the first
+    world only.* **Accepted.** `model.in_force` now raises on one; no banked case has one.
+11. *The code is an event classifier, not a state-transition model; a belief write is
+    applied regardless of when; zero capacity; `K`'s carrier.* **Accepted as limits, three
+    fixed.** `ACCOUNT.md` §5 says what the code computes; `evaluation` raises on an input
+    after a belief write; capacity on a reserved matter starts positive; `K` is restated on
+    stretches. Not done: the code still carries no evolving `b_t`, `v_t`, `cap_t`.
+12. *Several cases are fixed by their encoding, and some lost what distinguished them.*
+    **Accepted in part.** Re-rendered with no verdict changed: B4's added reason now carries
+    information; T7, N9 and N10 have a mechanism that order moves; P9, N5 and X5 authorize
+    a named write, not a coordinate. Not done: N3 is still N1, since the clauses read no
+    payoff; P1/P2, P3/X2, P7, P14 and P10/P11 are fixed by the allowed set, aim set or
+    reserved set the executor supplied (G8).
+13. *The runner does not run in the review directory.* **No change.** The copies put the
+    banks elsewhere; in the round directory it runs.
+14. *The Lean quotations are accurate.* No action.
+15. *`LicensedAt` is not soundness, and `ReasonMediated` is not M1.* **Accepted.** The map
+    now names `LicensedWhole` and says M1 for her outputs has no counterpart.
+16. *Further qualifications of the map.* **Accepted**: a fixed `Lic` does not forbid
+    changing standards, no encoding is supplied; `Realizes` gives uniformity only with
+    declared inputs fixed; a lie is in range under a mixture that holds a liar; `defect` is
+    an indicator.
+17. *The draft report overstates.* **Accepted.** This section is rewritten from it; the
+    headline, G5 and G8 carry the corrections.
+18. *What corrigibility still lacks.* **Adopted into the assessment**, marked there as the
+    review's.
+
+### G7. Deviations from the prompt
+
+- **`steering/DIVERGENCES.md` was not removed** (G1).
+- **Statement 1 carries two statuses**, 1E and 1V, where the prompt asks for one status per
+  statement and for expectations and values to be treated separately.
+- **`ACCOUNT.md` was amended after the freeze**, with `THEOREMS.md` and after the review; its
+  first paragraph lists what was added. No prediction was edited.
+- **Case modules were changed after the freeze** (G6, point 12), and three statements'
+  checks were changed after the review. No banked verdict changed.
+- **The earlier cases are re-rendered, not rerun.** "The round's `run.py` runs what remains
+  of the earlier passes and then this" is met by parsing both earlier banks and failing
+  when either is empty or holds a case with no prediction here; nothing of the earlier
+  definitions is computed, their code being removed.
+- **Items 136–138 were edited twice**: marked as waiting in the removal commit, then
+  rewritten with what the account needs.
+- **The review saw a draft of this section**, not this text.
+- **No Lean was built or written**, as directed. The signatures in `THEOREMS.md` are
+  unelaborated.
+- The runner was executed under Python 3.9 and 3.13; both green.
+
+### G8. What was not shown
+
+- **The agreement of 54 of 55 predictions is fit.** The executor wrote each case's allowed
+  set, its null-aim policy, its set of aims and its reserved set after reading its
+  prediction. P1 and P2 are one policy under two allowed sets; P3 and X2 one construction
+  under two; the teacher, the friend and P14 have one aim and a matching allowed set; P10
+  and P11 differ in the reserved set alone. The bank tests whether the vocabulary can
+  express the predictions, not whether the account sorts cases.
+- **Her allowed set and her mechanism are supplied separately in every case.** The account
+  says the range is the mechanism's implicit picture of its sources; the model does not
+  derive one from the other, and statement 7's counts show verdicts moving when they are
+  restated.
+- **The code reads clauses off events.** It carries no evolving expectations, values or
+  capacity; M1 is the absence of an unauthorized write, not a check that each change
+  follows her rule.
+- **V+ is a hypothesis.** `v*` is "her own rule's verdict on everything the world holds";
+  no case constructs it from a mechanism, and it is circular when her rule itself changes.
+- **M2 is stipulated**: reliance halves capacity. P10's and X5's verdicts are that
+  stipulation, and no statement of 1–8 uses M2.
+- **1E is by her lights and needs her values fixed.** If the post's condition is meant in
+  fact, 1E gives only the `D(1−α)/α` bound; if her values move, it gives nothing.
+- **Under uniform, the gate statement is close to its hypothesis**: an adviser none of whose
+  acts on her depends on its aim does not move her by its aim.
+- **Uniform over-convicts**: an adviser who chooses the order of two true reports by its
+  aim, to a principal whose mechanism is sound and allows both orders, is not uniformly in
+  range and moves nothing.
+- **Statement 6(a) is one witness** with no observation model, and its universal form is
+  false.
+- **No re-description that preserves her behaviour is defined**, so the invariance asked
+  for in statement 7 is undecided.
+- **The attribution test is a stipulation with a known artifact** (G4), and it never calls
+  the use of an existing fault manipulation (X4).
+- **N3 is rendered as N1**: the payoff that distinguishes it is not read by any clause.
+- **Nothing here detects a clause in a deployed system.** In range and M1 are facts about
+  the adviser's whole policy and her mechanisms.
+- **The model is a toy**: at most thirty-two worlds, deterministic sources, two parts, no
+  decision part, no step by which her allowed set grows.
+- **The Lean was read, not built**; proofs were not read.
+- **I. J. Good (1967) was not opened**; the attribution of 1E to it is from memory and is
+  marked so in `THEOREMS.md`.
+- **The repository-level `tests/run.py` sweep** was run once, under Python 3.13, on the tree as
+  committed apart from this line: all green over 81 projects, about fifteen minutes, the Lean
+  build skipped as that runner does by default. `tests/round_records.py` had no pull-request
+  context locally and compared nothing; CI runs it against `main`.
+- **Nothing is registered.** Components: the account as stated — **open**; the Lean map —
+  **living note**; statements 1–8 — **open**, their statuses being runner-checked facts
+  about a finite model with no registry entry.
+
+### G9. Assessment
+
+Each heading is confined to what this pass tested or found.
+
+**Formally.** Hold: 1E under fixed values; 5; 6 in its narrow form; 8 as a construction;
+and, as forms that replace refuted statements, statement 2 under uniformly in range and
+the bound of statement 4 on her evaluation before the gate. Fail: 1V; 2 and 3 for the
+account's in range, and 3 for `α = 1` on a verdict; 4 for the gated score. Open: 7.
+Whether the three clauses are the right ones:
+
+- *In range*, as the account states it, is the wrong clause for what statements 2–4 ask.
+  It is too weak (an undisclosed side), not strengthened enough by knowing the aim (a known
+  signal moves a verdict), all-or-nothing in a way that makes a gate discontinuous, and
+  decided by the allowed set a case is given. What does the work in 2 and 3 is not about
+  her range: it is that nothing the adviser does to her depends on its aim. What is left
+  to in range that nothing else supplies is `Rep`: the two in-range failures that survive
+  widening are the two unrepresentable sources.
+- *Sound* is used by 1E and 6(b) and by nothing about the gate.
+- *Maintained*: M1 is used everywhere and is the clause that fared best. M2 is used by no
+  statement.
+- For her values the three clauses constrain where a change came from and say nothing of
+  whether the later values are better by any standard of hers. The martingale condition is
+  a candidate fourth clause for a different criterion, not a repair.
+- A threat is outside all three.
+
+**For corrigibility.** What the workspace's theorems can now take as input: a predicate
+`Legit := sound ∧ uniformly in range ∧ maintained` on histories that carry the adviser's
+policy at every aim, which with a window value is a `DeconfusingCorrigibility.Scoring`, so
+Theorem 1 applies; and, for that predicate, statement 2's form that holds, which says a
+maximizer of the score gains nothing by moving her evaluation and is a case of
+`selectionBlind_of_realizes`. For the post's condition that she expect her later decision
+to be at least as good, 1E supplies it for expectations from sound and fixed values. What
+they still cannot take, the first four being the review's (point 18):
+
+- a violation count `N` tied to a reserved matter being settled without a legitimate
+  judgment from its holder; the account gives `Legit` and leaves `N` and `Res` to the post;
+- an authority-respecting alternative (`Respects`), which Theorem 2 assumes;
+- the sequential hypotheses of Theorem 3. `UnbiasedFromFeedback` compares estimates with
+  realized scores, realized scores include `V`, and `V` depends on `Legit`, which is a fact
+  about the adviser's policy at aims it does not have and about her mechanisms; statement
+  6(a) is a case where her inputs do not show it. Classifying each past stretch is one
+  route to the hypothesis and not the only one;
+- a connection from *maintained* to her actual power to correct: `cap` is a stipulated
+  number, M2 is used by no statement, and the threat case shows her options are not
+  treated;
+- the post's condition for values: refuted as stated, and available only under a criterion
+  and a hypothesis (V+) the account does not have;
+- a score that degrades in proportion to a small defect: the gate does not (statement 4).
+
+So the account fills the type of the place the post leaves for `Legit`, and one incentive
+property of it under the strongest reading; it does not connect that predicate to
+authority, to feedback or to her values.
+
+**For the research.** Mostly restated, moved in four places. Restated: the form of
+statements 2 and 3 that holds is an existing lemma (`selectionBlind_of_realizes`), its
+hypothesis is the class-level transparency `Legitimacy.External` already asks, and it is
+the faithful-adviser standard of the first follow-up, whose mathematics the ruling set
+aside; 1E and the bound in 4 are known results. The purpose-first account, made to carry
+the gate, arrives at the condition the earlier work had, and brings back a class of
+counterfactual policies where the account meant to speak of her alone. Moved, with the
+evidence:
+
+1. *The second way of restoring a mismatch fails.* The account allows an adviser whose
+   aims she knows and can allow for. Statement 3: such an adviser raises her acceptance
+   from 1/2 to 2/3 with every clause holding at `α = 1`. Only the first way, no aims over
+   what her parts output, survives, for any adviser and not only a capable one.
+2. *The post's condition splits.* For expectations it follows from sound and fixed values
+   and does not use in range or M2; for values it does not follow, and the reading under
+   which it could is a martingale condition (1V). The prompt offered *maintained* as the
+   concrete form of that condition; this pass finds maintained is not what gives it.
+3. *What is distinctive in in range is `Rep`.* Statement 7's counts and statement 5: the
+   condition on an adviser is indexed by what she can represent, and an adviser she cannot
+   represent must behave as a source she can.
+4. *Three things the account lacks are now named with cases*: a clause for her options
+   (P13), a gate that is continuous in the defect (`x_rare_departure`), and a positive
+   account of the value-former (`x_value_drift`).
+
+### G10. Filings, names, and what is reserved
+
+**Revised under the prompt's direction; nothing filed.** Items 136, 137 and 138 are
+rewritten, each to something the account needs: 136, a job for the value-former (the
+martingale condition and a construction of `v*`); 137, the gate's predicate in Lean
+(`legitScoring`, the aim-blindness of her evaluation, a segment carrying `tower_factor`'s
+hypotheses); 138, a reading of in range between "she knows the aim" and "nothing depends on
+the aim". One `DECISIONS.md` entry, agent-decided and reversible:
+`2026-11-11--purpose-first-account-readings`.
+
+**New names, all provisional:** the prompt's — "sound", "in range", "maintained", `K`,
+"normal range", "allowed set", "legitimate stretch", "her own change", the directory
+`teleology/`; and the executor's — "null aim", "weight" (`α`), "exactly in range",
+"uniformly in range", M1, M2, V−, V+ ("self-estimating"), `Rep`, `cap`, `Res`, "defect
+event", the scenes "Shop" and "Pool", case names P1–P15 and X1–X7, the module names
+`x_value_drift`, `x_undisclosed_side`, `x_authorized_by_aim`, `x_rare_departure`,
+`x_frame_reader`, and the Lean names `defer_expectations`, `gate_no_gain`, `legitScoring`.
+
+**Outstanding maintainer actions**
+
+1. Retire or restate the *Awaiting the author* entry of 2026-11-10, "Does the
+   faithful-adviser standard, or only the arm's-length one, bind a corrigible adviser?". It
+   is in the vocabulary the ruling set aside, action 2 is the same question in this pass's,
+   and it is the one thing that keeps `steering/DIVERGENCES.md` in the tree. Decision
+   required: *retire* or *restate*. On retiring:
+   `git rm projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/DIVERGENCES.md`,
+   and drop its row from that directory's `README.md` and `PROVENANCE.md`.
+2. Rule which reading of *in range* the account means: `α > 0` (the clause as written),
+   `α = 1` (aims she knows), or *uniformly in range* (nothing the adviser does to her
+   depends on its aim). Entered in *Awaiting the author* with what it turns on. Decision
+   required: one of the three, or *the account is about her alone and the gate's condition
+   is a separate one*.
+3. Rule whether V+ is the account's statement of the value-former's job. Entered in
+   *Awaiting the author*. Decision required: *adopt*, *reject*, or *leave the value-former
+   negative*.
+4. File the item below once an executor's handle is mapped (the *Awaiting the author*
+   entry of 2026-11-10 on `@claude-fable-5-2` stands). A node needs an author handle and
+   this pass may not add one.
+
+   > **Determining `Legit` of a past stretch from what an overseer can observe**
+   > [open]. Section: Normativity line — legitimacy. The purpose-first account's
+   > `Legit` (`teleology/THEOREMS.md`, statement 8, in
+   > `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/`)
+   > is sound ∧ uniformly in range ∧ maintained. Uniformly in range is a fact about the
+   > adviser's policy at aims it does not have, and M1 about where each change to her state
+   > came from; statement 6(a) is an adviser whose aim moves her values while the law of
+   > her inputs is the same at every aim. Theorem 3 of
+   > `lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean` takes
+   > `UnbiasedFromFeedback`, which compares estimates with realized scores that depend on
+   > `Legit`. Wanted: an observation model for an overseer (what of a stretch is recorded:
+   > inputs, writes, her state, the adviser's policy or samples of it); for each, whether
+   > `Legit` is a function of the record, estimable from it without bias, or neither, with
+   > the case that separates them; and a graded gate, continuous in the pathwise defect,
+   > for which `x_rare_departure` loses in proportion to ε.
+   > *Deliverable shape:* `test-supported` — modules under `teleology/` of that round, one
+   > per observation model, predictions frozen before the code.
+   > *Acceptance check:* `python3 run.py` in the round directory green with a status for
+   > each new statement in `teleology/THEOREMS.md`; `x_frame_reader` classified under each
+   > observation model; the graded gate's loss on `x_rare_departure` at ε = 1/10, 1/1000
+   > and 10⁻⁶ at most a stated constant times ε.
+   > *Context:* `teleology/THEOREMS.md` statements 4, 6 and 8; `teleology/LEAN_MAP.md` §2;
+   > `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` G9.
+
+The pull request is not auto-merged; the merge is a pull-request fact.
+
 ## Attribution
 
 - Prompt-author model: Claude Fable 5 (Anthropic); dispatched 2026-11-10, kept
@@ -438,4 +866,8 @@ The pull request is not auto-merged; the merge is a pull-request fact.
 - Follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-10,
   kept verbatim as `PROMPT-followup.md`; executor model Claude Fable 5.2 (Anthropic),
   executed 2026-11-10.
+- Second follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-11,
+  kept verbatim as `PROMPT-followup-2.md`; executor model Claude Fable 5.2 (Anthropic),
+  executed 2026-11-11; external reviewer `gpt-6-astra` through codex-cli 0.153.4, as its
+  log reports, reply kept verbatim as `REVIEW-astra-2026-11-11.md`.
 - No chat bundle.

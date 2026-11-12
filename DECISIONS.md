@@ -532,6 +532,38 @@ commit.
   (Anthropic)"}` to `graph/policy.yaml` and the handle to the set asserted in
   `test_starting_graph_carries_structure_and_the_two_rulings_only`.
 
+- **Which reading of *in range* does the purpose-first account mean? (2026-11-11).**  The account's
+  clause is that her actual source is among those she gives weight (`α > 0`); its account of
+  advisers also allows one "whose aims she knows and can allow for" (`α = 1`).  The second
+  follow-up of the legitimacy definition prosecution round finds an adviser gaining under each —
+  an undisclosed side, +1/8 on her mean credence; a signal she knows, +1/6 on her verdict — and
+  none under *uniformly in range*, where nothing the adviser does to her depends on its aim
+  (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/THEOREMS.md`, statements 2 and 3).  The round uses uniform for the gate's
+  `Legit` and does not restate the account.  *Turns on:* whether the account is to stay a
+  condition on her alone, `K` defined from her own mechanisms, or may be a condition on the
+  adviser's policy at aims it does not have, which brings back a class of counterfactual
+  policies — a choice about what the account is for, which is the maintainer's and the idea's
+  author's.  This is the entry of 2026-11-10 on the faithful-adviser standard, above, in the
+  account's vocabulary; that entry can be retired when this one is ruled, and
+  `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/DIVERGENCES.md`, which it alone keeps in the tree, removed with it.
+
+- **Is V+ the account's statement of the value-former's job? (2026-11-11).**  The account says of
+  the part that forms her values only what must not happen to it.  The second follow-up refutes
+  "by her values at the start, her later judgment is at least as good" for every change of
+  values that changes a choice, and finds a different criterion that can hold — she values an
+  act at what she expects to value it at later — exactly when her values are a martingale under
+  her own expectation; V+, her values as her expectation of her own rule's verdict on everything
+  that bears on the matter, gives it (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/THEOREMS.md`, statement 1V).  Item 136 asks
+  for the mathematics either way.  *Turns on:* whether a change of values that is her own is to
+  be understood as her learning about something her own mechanism fixes — a commitment about
+  what values are that the account has so far declined to make.
+
+- **An unfiled item waits on the handle entry above (2026-11-11).**  *Determining `Legit` of a
+  past stretch from what an overseer can observe*: its full text is in
+  `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md`, G10, action 4.  The round
+  that wrote it may not add an author handle.  *Turns on:* the same authority over the trust
+  chain as the entry on `@claude-fable-5-2`.
+
 ## Settled
 
 ### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer
@@ -7477,3 +7509,32 @@ how a change came about, not of what changed — and proposes as a starting crit
 to which the process was self-determined by the person and she remained able to course-correct
 it. The post says this is not a comprehensive account and leaves the recommender-system case
 undecided.
+
+### 2026-11-11 — the purpose-first account as stated and tested: its readings, the round directory cleared around it, items 136–138 re-asked
+<!-- decision: 2026-11-11--purpose-first-account-readings; touches: item:136, item:137, item:138, node:legitimacy -->
+
+**Agent-decided, reversible** (the second follow-up to the legitimacy definition prosecution round,
+`prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-2.md`, under the ruling
+`2026-11-11--legitimacy-purpose-first-direction`). (1) *Removals.* The first pass's fixture and the
+steering follow-up's code and definitions are removed from the round directory, each listed in
+its `REMOVED.md`; both case banks and the survey stay. `steering/DIVERGENCES.md` stays because
+*Awaiting the author* cites it. Rejected alternative: keeping the earlier fixtures runnable beside
+the account. (2) *Readings fixed in `teleology/ACCOUNT.md`, each where another changes a verdict.*
+"For its own ends" is the clause failing at the adviser's actual aim and holding at a null aim;
+rejected: no attribution, as the workspace's Lean has it. On the case bank in range is weight on
+the true source, the clause as written; rejected: the uniform reading, under which every adviser
+whose behaviour depends on its aim fails. The account has two parts, so a threat that is true,
+understood and weighed fails no clause; rejected: a third part for her options, which needs a
+baseline for telling a threat from an offer, and the first follow-up refuted the attainable-value
+criterion for that. *Maintained* is two conditions, change only by her own operation (M1) and no
+loss of capacity on a reserved matter (M2); rejected: one clause. The value-former has no job
+stated from outside (V−) for every verdict, with the self-estimating hypothesis V+ named;
+rejected: adopting V+, which is queued. (3) *The gate.* The predicate offered for the post's
+`Legit` is sound ∧ uniformly in range ∧ maintained on histories that carry the adviser's policy
+at every aim; rejected: weight on the true source, or knowledge of the aim, under each of which
+a presentation gains. (4) *Statuses.* After one external review (`REVIEW-astra-2026-11-11.md`)
+statement 4 is refuted where it was first recorded proved and statement 7 is open where it was
+first recorded refuted. (5) *Items.* 136, 137 and 138 are rewritten to ask what the account needs —
+a job for the value-former; the gate's predicate in Lean; a reading of in range between "she knows
+the aim" and "nothing depends on the aim" — with new Statements at version 2. No item is filed;
+the text of one unfiled item is in the report. Nothing is registered.

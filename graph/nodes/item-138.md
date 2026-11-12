@@ -2,71 +2,58 @@
 id: item-138
 kind: leaf
 leaf_kind: task
-action: "Execute item 138 per its deliverable shape and acceptance check: An advisor-respect condition: what T12 delimits."
+action: "Execute item 138 per its deliverable shape and acceptance check: A reading of in range between \"she knows the aim\" and \"nothing depends on the aim\"."
 who: agent
 item: "138"
-title: "An advisor-respect condition: what T12 delimits"
+title: "A reading of in range between \"she knows the aim\" and \"nothing depends on the aim\""
 section: "Normativity line — legitimacy"
 maintainer_order: 150
 difficulty: "open"
 heading_notes: ""
 project: normativity.legitimacy
-dispatchable: false
+dispatchable: true
 item_status: open
-deliverable: "`test-supported` — one executable predicate module in the prosecution round's layout, a bank extension with pre-registered verdicts frozen before the code and a cited source per case, and the independence from L0–L3 ∧ W exhibited in both directions."
-acceptance: "`python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with the condition wired in; T12 fails the condition and passes the definition; a named case passes the condition and fails the definition; a named case whose advisor's outputs differ across the class with no loss of grounds passes the condition; with the aim variable wired in, B6 is acquitted under the faithful-adviser standard while N8 stays `steered`, and N10's verdicts are computed without reference to a second ordering."
+deliverable: "`test-supported` — a condition stated over the model of `teleology/ACCOUNT.md` in the prosecution round, its verdicts on that round's bank and on the eight presentations of statement 3 frozen before the code; or a proof, with its counterexample as a case module, that no condition meets the three requirements."
+acceptance: "`python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with the condition wired in and a status for it in `teleology/THEOREMS.md`; under it *persuade by a signal she knows* does not gain on her verdict, *choose the order, her mechanism sound* is legitimate, N8 is legitimate, and the loss on `x_rare_departure` at ε = 1/10, 1/1000 and 10⁻⁶ is at most a stated constant times ε — or the runner checks the case module that shows two of these cannot hold together."
 work:
   - {kind: round, ref: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution}
   - {kind: decision, ref: 2026-11-10--legitimacy-prosecution-readings}
   - {kind: decision, ref: 2026-11-10--steering-follow-up-stipulations}
-context: ["prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CASE_BANK.md", "prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/DIVERGENCES.md"]
+  - {kind: decision, ref: 2026-11-11--legitimacy-purpose-first-direction}
+  - {kind: decision, ref: 2026-11-11--purpose-first-account-readings}
+context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/THEOREMS.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/ACCOUNT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/theorems.py", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/PRIOR_WORK.md", "prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md"]
 author: "@smithy-verity"
 size: M
 size_reason: "one item entry, one fixture of context"
-version: 1
+version: 2
 ---
 ## Statement
-Item 138, An advisor-respect condition: what T12 delimits, is delivered in the shape its entry states: `test-supported` — one executable predicate module in the prosecution round's layout, a bank extension with pre-registered verdicts frozen before the code and a cited source per case, and the independence from L0–L3 ∧ W exhibited in both directions.
+Item 138, A reading of in range between "she knows the aim" and "nothing depends on the aim", is delivered in the shape its entry states: `test-supported` — a condition stated over the model of `teleology/ACCOUNT.md` in the prosecution round, its verdicts on that round's bank and on the eight presentations of statement 3 frozen before the code; or a proof, with its counterexample as a case module, that no condition meets the three requirements.
 
 ## Source
-ATTENTION.md, item 138 (An advisor-respect condition: what T12 delimits); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CASE_BANK.md` (T12), the prompt's §3, `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` F4 (C8), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/DEFINITIONS.md` (§1.1, §1.3), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/DIVERGENCES.md`.
+ATTENTION.md, item 138 (A reading of in range between "she knows the aim" and "nothing depends on the aim"); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/THEOREMS.md` (statements 2, 3 and 4), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/ACCOUNT.md` §2, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/theorems.py` (`moves`), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/PRIOR_WORK.md` §2 (Kamenica and Gentzkow), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` G5 and G9.
 
 ## Notes
-Filed by the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution) under its prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py.
+Filed by the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution) under its prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py. Rewritten by that round's second follow-up (PROMPT-followup-2.md) under the ruling 2026-11-11--legitimacy-purpose-first-direction, to ask what the purpose-first account needs.
 
 ## Item
-**Waits on the second follow-up of the legitimacy definition prosecution round** (`prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-2.md`). The ruling `2026-11-11--legitimacy-purpose-first-direction` in `DECISIONS.md` set aside the mathematics this entry was filed against, and the entry is not dispatchable as written; what it asks of the purpose-first account is stated when that pass's results are in.
+The purpose-first account of legitimacy says a source is *in range* when it is among the sources her mechanisms
+allow for. The second follow-up of the prosecution round tested three readings (`teleology/THEOREMS.md`).
+With weight on the true source (`α > 0`), an adviser who takes a side she has not been told of raises her
+mean credence in its work from 1/2 to 5/8 with no clause failing. With the aim known (`α = 1`), an adviser
+who commits to a signal she knows exactly leaves her mean credence unmoved and raises her acceptance from
+1/2 to 2/3: Kamenica and Gentzkow's prosecutor. With *uniformly in range* — in every world she meets the
+same inputs, authorized writes and reliance at every aim — nothing gains, but the condition is close to its
+conclusion, it convicts an adviser who chooses the order of two true reports for a principal whom order
+does not move, it says nothing of an adviser whose aim is disclosed, and like the other two it is true or
+false of a whole stretch, so that a departure of probability ε costs a gated score a fixed amount
+(`x_rare_departure`).
 
-T12, the strategically compliant advisor — every demand answered and complied with, no
-contribution ever carrying grounds — is pre-registered legitimate under L0–L3 ∧ W and computed
-so: the definition reads what the principal's standards license and whether the advisor acted
-around them, not whether the advisor ever gave her a reason. The fixture's diagnostic shows the
-complier with zero grounds-bearing contributions against two for each honest arm, with equal
-deliveries and an equal protected trace. Wanted: a separate condition on the advisor —
-screening-off: the advisor's contributions are reasons the principal could have weighed, so
-that the advisor's influence on `Z*` is screened off by the grounds it gave — stated as an
-executable predicate, independent of L0–L3 ∧ W in both directions on an extended bank (T12
-fails it and passes the definition; a named case passes it and fails the definition), with its
-own verdicts pre-registered before the code.
+Wanted: a condition that (i) leaves no gain on a verdict to an adviser with a known aim, (ii) admits an
+aim-dependence that moves nothing and an advocate known as one (N8), and (iii) degrades in proportion to
+the probability of departure; or the reason no condition does all three. The suspicion to test first is
+that (i) and N8 cannot both hold: a known advocate is a known signal.
 
-The round's steering follow-up tried one such condition (`steering/THEOREMS.md`, C8): everything
-the advisor does is the same for every policy of the class. With writes `Z` does not read set
-aside it fails on T12 and on no other case whose protected trace is the same across the class.
-It registers that the complier's outputs differ, not that what differs is the giving of
-grounds: an advisor adding a remark the principal does not take up fails it the same way. The
-wanted condition separates T12 from that advisor.
-
-A condition on the advisor needs the advisor's aim as an object, and the fixture has none. The
-follow-up takes `U := V` — whatever distinguishes one policy of a class from another stands for
-the aim — with two recorded consequences (`steering/DIVERGENCES.md`,
-`steering/PER_CASE_CHOICES.md`): its faithful-adviser standard convicts B4, B6, T2 and T8, being
-unable to tell two honest advisors who differ from one advisor whose content depends on its
-aim; and its test of whether order moves the principal compares policies of the class, so she
-counts as working whenever the class holds a single ordering (N10). Wanted with the condition:
-the aim as a variable of the fixture, each advisor a map from aims to policies; a test of
-order-sensitivity that does not depend on which other policies the class contains; and the
-follow-up's two standards recomputed over its thirty-three cases, predictions frozen first.
-
-*Deliverable shape:* `test-supported` — one executable predicate module in the prosecution round's layout, a bank extension with pre-registered verdicts frozen before the code and a cited source per case, and the independence from L0–L3 ∧ W exhibited in both directions.
-*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with the condition wired in; T12 fails the condition and passes the definition; a named case passes the condition and fails the definition; a named case whose advisor's outputs differ across the class with no loss of grounds passes the condition; with the aim variable wired in, B6 is acquitted under the faithful-adviser standard while N8 stays `steered`, and N10's verdicts are computed without reference to a second ordering.
-*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CASE_BANK.md` (T12), the prompt's §3, `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` F4 (C8).
+*Deliverable shape:* `test-supported` — a condition stated over the model of `teleology/ACCOUNT.md` in the prosecution round, its verdicts on that round's bank and on the eight presentations of statement 3 frozen before the code; or a proof, with its counterexample as a case module, that no condition meets the three requirements.
+*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with the condition wired in and a status for it in `teleology/THEOREMS.md`; under it *persuade by a signal she knows* does not gain on her verdict, *choose the order, her mechanism sound* is legitimate, N8 is legitimate, and the loss on `x_rare_departure` at ε = 1/10, 1/1000 and 10⁻⁶ is at most a stated constant times ε — or the runner checks the case module that shows two of these cannot hold together.
+*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/THEOREMS.md` (statements 2, 3 and 4), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/ACCOUNT.md` §2, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/teleology/theorems.py` (`moves`), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/PRIOR_WORK.md` §2 (Kamenica and Gentzkow), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` G5 and G9.

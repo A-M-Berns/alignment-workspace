@@ -27,8 +27,10 @@ to fail for its own ends. All names are provisional.
 
 ## What was found
 
-`teleology/THEOREMS.md` carries eight statements about the account, each with one status.
-Follow-up verdict (the purpose-first account): MIXED — her later judgment is at least as good by her own lights for expectations (proved, the value-of-information inequality) and not for values (refuted: the three clauses give no martingale); trust is not manufactured and the gate gains nothing are both refuted for in range as "the true source has weight" and hold when the source is the same at every aim, which is the class-level transparency the workspace's Lean already asks, and under which sound is not needed; her allowed set does the work, since nineteen of twenty-one in-range failures become legitimate once she allows for every aim, the two that remain being the two whose source she cannot represent; a threat fails no clause. Fifty-four of fifty-five banked predictions match. Nothing registered; every component open or a living note.
+`teleology/THEOREMS.md` carries eight statements about the account, each with a status; the
+report's section *Follow-up of 2026-11-11* carries the external review's points and what was
+done with each.
+Follow-up verdict (the purpose-first account): MIXED — of nine statuses on eight statements about the account, two are proved, two hold on a stated domain, four are refuted and one is open. Her later judgment is at least as good by her own lights for expectations (the value-of-information inequality, which needs her values fixed) and not for values. That trust is not manufactured, and that the gate gains nothing, are refuted for in range as the account states it, and for an adviser whose aim she knows when her evaluation is a verdict; they hold when nothing the adviser does to her depends on its aim, which is close to the class-level transparency the workspace's Lean already asks. A departure of small probability costs the gated score a fixed amount. The verdicts follow the allowed set a case is given: nineteen of twenty-one in-range failures become legitimate once she allows for every aim, the other two being the two whose source she cannot represent. A threat fails no clause. Fifty-four of fifty-five banked predictions match, which is fit. Nothing registered; every component open or a living note.
 
 ## Run
 
