@@ -1,5 +1,10 @@
 # The account: purpose as a goal pursued through parts
 
+Amended after the freeze, with `THEOREMS.md`: §2, the rule for whose gap, is applied view by
+view (the alternative mechanism differs from hers on the view at hand only); §4, the
+stronger alternative for *independent* does not count situations where the part is forced.
+No prediction was edited.
+
 The account of `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-3.md`
 §1, stated over a finite model. The idea that manipulation is the distortion of an actor
 away from its purpose, with a whole's purpose conferring purposes on its parts, is Sam
@@ -65,10 +70,11 @@ the constraints fix.
 
 **Whose gap (added).** The dispatch separates a gap that is hers from one that is nobody's
 and gives no rule. Rule used: a gap of `p` at `s` is **the mechanism's** (hers) when some
-mechanism on `p`'s view scores strictly more by `g_p` at `s` and either has a strictly
-higher `ν`-expected score than `μ_p`, or an equal one while scoring at least as much as
-`μ_p` at every situation of `S`. Otherwise it is **the situation's** (nobody's): doing
-better here would have cost more elsewhere, which is the lemma of §5 applied.
+other move on `p`'s view at `s` scores strictly more by `g_p` at `s` and, over the
+situations with that view, either has a strictly higher `ν`-expected score than the move
+`μ_p` makes, or an equal one while scoring at least as much at every such situation of
+`S`. Otherwise it is **the situation's** (nobody's): doing better here would have cost
+more elsewhere, which is the lemma of §5 applied.
 
 ## 3. Four kinds of influence
 
@@ -118,7 +124,8 @@ A candidate is **admissible** when it meets:
 - **mostly serving**: each part serves on `ν`-measure at least `τ = 9/10`.
 - **independent** (first condition on being a part): `g_p` does not take `μ_p` as an
   argument, and is not constant in `p`'s move at every situation of `S`. (Stronger
-  alternative: also, `μ_p` is not `g_p`-optimal at every situation of `S`.)
+  alternative, *strong independence*: also, `μ_p` is not `g_p`-optimal at every situation
+  of `S` where `p` is not forced.)
 - **carriable** (second condition): some mechanism on `p`'s view serves on `ν`-measure at
   least `τ`. This follows from fit and mostly serving. (Strict alternative: serves on the
   whole support of `ν`.)
