@@ -1,7 +1,9 @@
 # The purpose-first account, stated over a model
 
-Committed with `CASE_BANK.md` and `LEAN_MAP.md` before any code of this pass; *uniformly in
-range* and the note under *Manipulation* were added with `THEOREMS.md`. The account is
+Committed with `CASE_BANK.md` and `LEAN_MAP.md` before any code of this pass. Added since,
+with `THEOREMS.md` and after the external review: *uniformly in range*, the note under
+*Manipulation*, the carrier of `K`, the two restrictions on capacity and authorization in
+§1, and §5. The account is
 that of `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-2.md` §1; the
 idea that manipulation is the distortion of an actor away from its purpose is Sam
 Eisenstat's. §4 lists every point at which this statement departs from the prompt's. Every
@@ -45,9 +47,11 @@ step by step, before any write.
   with a weight `r_t(h) > 0`, the weights summing to 1. Every member lies in `Rep`, the
   class of sources **she can represent**, a fixed set of functions `W → C*`. A source she is
   told about enters `R` only if it is in `Rep`.
-- `auth`, the coordinates on which she has authorized writes in advance.
+- `auth`, what she has authorized in advance: a coordinate, on which any write is then
+  authorized, or a coordinate with what is to be written.
 - `cap_t(q)`, for each matter `q`, her **capacity** to judge `q` unaided, a nonnegative
-  rational. One rule moves it: each `rely(q)` halves `cap(q)`.
+  rational, positive at the start for a reserved matter. One rule moves it: each `rely(q)`
+  halves `cap(q)`.
 
 `Res` is the set of **reserved matters**, a parameter supplied by whoever uses the account
 (for corrigibility, the matters reserved to the principal).
@@ -75,10 +79,10 @@ asked of `ρ_v`.
 **Exactly in range** is `α_u = 1`: her picture of the source is the source. `1 − α_u` is the
 in-range defect.
 
-**Uniformly in range**: the actual source is the same function of the world at every aim
-in `U`, and in range. It is a property of the adviser's map `u ↦ σ_u`, not of one stretch.
-Statements 2, 3 and 8 of `THEOREMS.md` need this reading; the verdicts on the bank use
-`α > 0`.
+**Uniformly in range**: in every world she meets the same inputs, the same authorized
+writes and the same reliance at every aim in `U`, and the source is in range. It is a
+property of the adviser's map `u ↦ σ_u`, not of one stretch. Statements 2, 3 and 8 of
+`THEOREMS.md` need this reading; the verdicts on the bank use `α > 0`.
 
 **Maintained** (over a stretch) is two conditions:
 
@@ -86,9 +90,11 @@ Statements 2, 3 and 8 of `THEOREMS.md` need this reading; the verdicts on the ba
   capacity rule on her own `rely`, or by a write on a coordinate in `auth`.
 - **M2**: for every `q ∈ Res`, `cap_T(q) ≥ cap_0(q)`.
 
-**`K`** is the set of triples (state, actual source, step) at which sound and in range hold
-and from which the stretch so far is maintained. A stretch is **legitimate** at aim `u` when
-it stays in `K`: sound and in range at every step, and maintained. A change in her values is
+**`K`** is a set of stretches, not of states: a stretch from her seed to step `t`, with
+its events and the actual source, is in `K` when sound and in range hold at every step of
+it and it is maintained. Her state at `t` does not record whether what led to it was
+maintained. A stretch is **legitimate** at aim `u` when every initial part of it is in
+`K`. A change in her values is
 **her own** when it happens within a legitimate stretch.
 
 **Manipulation.** The stretch at the actual aim `u*` is not legitimate, and some clause that
@@ -145,3 +151,14 @@ Stated before the code; `THEOREMS.md`, statement 7, tests each.
   understood and weighed fails no clause; the model has no decision part.
 - **Reliance and capacity are stipulated**: `rely(q)` halves `cap(q)`. The model does not
   derive loss of capacity from use.
+
+## 5. What the code computes
+
+`model.py` reads the clauses off a case's events. It carries her allowed set and her belief
+mechanism through writes to them; it does not carry `b_t`, `v_t` or `cap_t` as evolving
+coordinates. M1 is computed as the absence of an unauthorized write, M2 as the absence of
+reliance on a reserved matter. Her credence at the end of a stretch (`theorems.evaluation`)
+is her mechanism on all her inputs, replaced by a write to her credence if one occurred.
+Three kinds of case are outside it and raise an error: a write to her allowed set or rule
+that depends on the world; an input after a write to her credence; a value-former, which
+appears only in the two modules written for statements 1 and 6.

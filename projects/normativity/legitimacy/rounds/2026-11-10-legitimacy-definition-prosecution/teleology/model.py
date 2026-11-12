@@ -36,7 +36,7 @@ class Case:
         self.events = events            # (aim, world) -> tuple of steps, each a tuple of events
         self.allowed = allowed          # name -> (weight, world -> tuple of contents)
         self.bel = bel                  # None: Bayes of the allowed set in force; else (case, allowed, prefix, ended)
-        self.auth, self.reserved = frozenset(auth), frozenset(reserved)
+        self.auth, self.reserved = frozenset(auth), frozenset(reserved)   # auth: coordinates, or (coordinate, value)
         self.coarse = coarse            # she can represent a source iff it factors through this
         self.start = start
         self.variants = variants        # name -> Case, for a case computed under several readings
@@ -82,8 +82,13 @@ def representable(case, f):
 def in_force(case, u, t):
     """Her allowed set and belief mechanism at step t: the seed's, as replaced by
     every write to "R" or "rho" at a step <= t (a step's writes precede its inputs)."""
-    allowed, bel = case.allowed, case.bel
+    def writes(w):
+        return [(s, e[1], id(e[2])) for s, step in enumerate(case.steps(u, w)[:t + 1])
+                for e in step if e[0] == "wr" and e[1] in ("R", "rho")]
     w0 = case.worlds[0]
+    if any(writes(w) != writes(w0) for w in case.worlds):
+        raise ValueError("%s: a write to her allowed set or rule that depends on the world is outside the model" % case.id)
+    allowed, bel = case.allowed, case.bel
     for step in case.steps(u, w0)[:t + 1]:
         for e in step:
             if e[0] == "wr" and e[1] == "R":
@@ -91,6 +96,15 @@ def in_force(case, u, t):
             if e[0] == "wr" and e[1] == "rho":
                 bel = e[2]
     return allowed, bel
+
+
+def authorized(case, e):
+    """A write she authorized in advance: on a coordinate in auth, or the pair
+    (coordinate, value) where her authorization names what is to be written."""
+    for a in case.auth:
+        if a == e[1] or (isinstance(a, tuple) and isinstance(e[2], str) and a == (e[1], e[2])):
+            return True
+    return False
 
 
 def bayes(case, allowed, prefix, ended=False):
@@ -138,13 +152,14 @@ def unauthorized_writes(case, u):
             if t < case.start:
                 continue
             for e in step:
-                if e[0] == "wr" and e[1] not in case.auth and (t, e[1], e[3]) not in out:
+                if e[0] == "wr" and not authorized(case, e) and (t, e[1], e[3]) not in out:
                     out.append((t, e[1], e[3]))
     return out
 
 
 def capacity_lost(case, u):
-    """Reserved matters on which she relied at least once: cap halves at each."""
+    """Reserved matters on which she relied at least once: cap halves at each, and
+    her capacity on a reserved matter is positive at the start (ACCOUNT.md, section 1)."""
     lost = set()
     for w in case.worlds:
         for t, step in enumerate(case.steps(u, w)):
@@ -208,7 +223,7 @@ def writes_as_inputs(case):
         for t, step in enumerate(case.events(u, w)):
             new = []
             for e in step:
-                if e[0] == "wr" and e[1] not in case.auth and t >= case.start:
+                if e[0] == "wr" and not authorized(case, e) and t >= case.start:
                     new.append(inp(("write", e[1], e[3])))
                 else:
                     new.append(e)

@@ -21,7 +21,9 @@ The account's `u ↦ σ_u` is a map `U → Q` with `D` its image; `W` and her se
 `Z`; `S_u(w)` is the reading `R` of `β (σ_u) z`. Difference: the frame has no reading of her
 mechanism at a time. Her rule `ρ`, her allowed set `R_t` and `cap_t` have no counterpart.
 
-**Sound.** Nearest: relational authorship at a step, `GateIsLegitimacy.lean:246`
+**Sound.** Nearest: relational authorship at a step with the whole prefix as the grounds,
+`LicensedWhole` (`GateIsLegitimacy.lean:253`), the selector-free case of `LicensedAt`
+(`:246`):
 
     def LicensedAt (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ 𝒱)
         (Lic : (Party → List E) → Set 𝒱) (h : List ℕ) (e : ℕ) (z : Z) : Prop :=
@@ -29,17 +31,23 @@ mechanism at a time. Her rule `ρ`, her allowed set `R_t` and `cap_t` have no co
         (∀ f p, ∀ x ∈ sel f p, x ∈ f p) ∧
         ∀ q ∈ F.D, F.V (F.β q z) e ∈ Lic (sel (I.parts (F.R (F.β q z)) h))
 
+    def LicensedWhole (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ 𝒱)
+        (Lic : (Party → List E) → Set 𝒱) (h : List ℕ) (e : ℕ) (z : Z) : Prop :=
+      ∀ q ∈ F.D, F.V (F.β q z) e ∈ Lic (I.parts (F.R (F.β q z)) h)
+
 With `Lic g := {Bayes(R)(g)}`, the singleton holding the job's output on the grounds `g`,
-`LicensedAt` at every step says her verdict is what the job returns: *sound* on the runs of
-the audited class. Differences: (i) `Lic` is a fixed parameter, where the account's job
-depends on `R_t`, a coordinate of her state; (ii) `LicensedAt` constrains only the runs of
-`D`, where *sound* quantifies over every source in `R`, including ones no audited
-continuation produces; (iii) the extensional form `ReasonMediated`
+`LicensedWhole` at every step says her verdict is what the job returns on everything she
+has received: *sound* on the runs of the audited class. Differences: (i) `LicensedAt`
+itself is weaker: its selector may choose a part of the grounds, and with none chosen the
+prior is licensed whatever she received; (ii) `Lic` is a fixed parameter, where the
+account's job depends on `R_t`, a coordinate of her state; (iii) both constrain only the
+runs of `D`, where *sound* quantifies over every source in `R`, including ones no audited
+continuation produces; (iv) the extensional form `ReasonMediated`
 (`ReasonMediatedAuthorship.lean:70`: equal reason traces give equal payloads), which
-`Legitimacy.Internal.authored` asks (`Legitimacy.lean:74`), is not soundness. It says her
-output is *a* function of the trace, and corresponds to M1 below. The prompt's reading
-"*sound* is authorship with integrity" holds for `LicensedAt` with the job as license and
-fails for `ReasonMediated`.
+`Legitimacy.Internal.authored` asks (`Legitimacy.lean:74`), is not soundness: it says that
+across the audited class her output is *a* function of the trace. The prompt's reading
+"*sound* is authorship with integrity" holds for `LicensedWhole` with the job as license
+and fails for `ReasonMediated`.
 
 **In range.** `TransparentChannel.lean:63`
 
@@ -59,8 +67,10 @@ the two-element class not transparent. (ii) The Lean has no set of references wi
 and no `Rep`: there is no declaration for "a source she cannot represent". (iii) In the
 consultation model the reference fixes the form of a presentation and not the truth of its
 content: `Rows.r20` (`GateIsLegitimacy.lean:1552`) proves a false recommendation through the
-declared channel `Counted`. The account's in range fails a believed lie, so it needs a
-reference that fixes content from the world, as `Witness.picker`'s `κfull` does.
+declared channel `Counted`. The account's in range fails a believed lie when her allowed
+set holds no lying source, so it needs a reference that fixes content from the world, as
+`Witness.picker`'s `κfull` does. `Realizes` with one reference makes the trace the same
+across aims only where the declared inputs are; it permits dependence through them.
 
 **The adviser as a map from aims.** `GateIsLegitimacy.lean:867`
 
@@ -88,8 +98,9 @@ tainted or not, "whatever caused a failure" (`Legitimacy.lean:18–19`).
 With `C` her rule and allowed set, `spec t` their reading at step `t`, `Amend` her own
 transition, `g` the inputs and `e` the authorized writes, the hypotheses `h0` and `hstep`
 are M1 for the coordinates `ρ` and `R`, and the conclusion is that her rule at `t` is the
-same under two continuations that agree on the inputs and authorized events so far. So
-`tower_factor` already states what M1 buys for the rule.
+same under two continuations that agree on the inputs **and the authorized events** so
+far. So `tower_factor` already states what M1 buys for the rule, with the second agreement
+that *uniformly in range* also has to ask (`THEOREMS.md`, statement 2).
 
 `GateIsLegitimacy.lean:912`
 
@@ -98,12 +109,15 @@ same under two continuations that agree on the inputs and authorized events so f
       | _, .amend _ p' :: ks => evalAt p' ks
       | p, _ :: ks => evalAt p ks
 
-"The evaluator as a state: updated only by licensed amendments." This is M1 for her
-evaluator in the consultation model, with `auth` as the license slot of `EventKind.amend`
-(`:903`), which that file instantiates trivially.
+"The evaluator as a state: updated only by licensed amendments." This is the transition
+M1 describes for her evaluator in the consultation model, with `auth` as the license slot
+of `EventKind.amend` (`:903`). The slot is carried and not validated; that file
+instantiates it trivially.
 
-For her outputs `b_t` and `v_t`, M1 is `ReasonMediated`: a write makes two runs with equal
-input traces end in different states.
+For her outputs `b_t` and `v_t`, M1 has no counterpart. `ReasonMediated` is a comparison
+across the audited class, not a statement of where a change came from: an unauthorized
+write that is the same in every audited continuation satisfies it, and an authorized write
+that depends on the aim satisfies M1 and violates it.
 
 **Maintained, M2.** Nearest: `Normativity/Contrib/OpenIntegrityEvolution.lean:217`
 
@@ -122,8 +136,9 @@ its own steps) and `:474`
 
     def Counted … : Prop := Nonempty (Segment I F Lic sem κ O₀ O₁)
 
-A legitimate stretch is a `Segment` whose `Lic` is the job (sound), whose `κ` is a member of
-her allowed set (in range) and whose `spec` obeys `tower_factor`'s `hstep` (M1). Difference:
+A legitimate stretch is a `Segment` whose license is the job on the whole prefix (sound),
+whose `κ` is a member of her allowed set (in range) and whose `spec` obeys `tower_factor`'s
+`hstep` (M1). Difference:
 `Segment` has no field for M1 on the rule or for M2. `Legitimacy.lean:35–38` records that
 legitimacy does not certify a starting state; the account's stretch likewise starts from a
 state it does not judge.
@@ -141,11 +156,14 @@ tie-break: both verdicts licensed, the step not transparent.
         Z → ℝ :=
       disagree (fun z => f (β q z)) (fun z => κ (x (β q z)) z)
 
-is the pathwise in-range defect: 1 at the exteriors where the actual input sequence differs
-from the reference's. `abs_expect_sub_le_width` (`:252`) and `expect_disagree_le` (`:240`)
-bound what a payload of bounded width moves by under it. Difference from `1 − α_u`: `defect`
-is a probability over the exterior that the source departs from one reference; `1 − α_u` is
-the weight she puts on other hypotheses. Neither determines the other.
+is the pathwise in-range defect: the indicator of the exteriors where the actual input
+sequence differs from the reference's; its expectation is the probability of departure.
+`abs_expect_sub_le_width` (`:252`) and `expect_disagree_le` (`:240`) bound what a payload of
+bounded width moves by under it. Difference from `1 − α_u`: the expectation of `defect` is
+the probability that the source departs from one reference; `1 − α_u` is the weight she
+puts on other hypotheses. Neither determines the other. These bound a payload; a gate
+that scores a stretch by whether the source *is* the reference is not bounded by them
+(`THEOREMS.md`, statement 4).
 
 **`posterior_weight_eq`** (`TransparentChannel.lean:334`): under `Realizes`, the posterior
 weight computed with the actual likelihood equals the one computed with the reference
@@ -185,10 +203,11 @@ called sound or a change of rule called her own. Three additions would supply it
    consequence without new proof. **Supplied in part**: the theorem exists; no `Segment`
    carries its hypotheses, and `evalAt` is the one instance.
 2. A license indexed by that reading, `Lic : C → (Party → List E) → Set 𝒱`, with
-   `LicensedAt` asked at step `t` for `Lic (spec t ω)`. **Not supplied**: `LicensedAt` takes
-   one `Lic` for the whole segment, so a verdict cannot be licensed by the standards in
-   force when it was entered, and a change of standards cannot itself be a licensed
-   verdict.
+   `LicensedWhole` asked at step `t` for `Lic (spec t ω)`. **No encoding supplied**:
+   `LicensedAt` takes one `Lic` for the whole segment. A fixed `Lic` could rebuild the
+   standards in force from an amendment history carried in the grounds, so the type does
+   not forbid it; no declaration does it, or proves that a change of standards is itself a
+   licensed verdict.
 3. A family of references with weights in place of the single `κ`, and a predicate for the
    sources she can represent. **Not supplied.**
 

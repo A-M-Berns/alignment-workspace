@@ -6,8 +6,8 @@ from fractions import Fraction as Fr
 from itertools import combinations, product
 
 from . import cases as C
-from .model import (NULL, Case, bayes, clauses, flat, in_force, inp, representable, same_source, source, verdict,
-                    show, widened, wr, writes_as_inputs)
+from .model import (NULL, Case, authorized, bayes, clauses, failing, flat, in_force, same_source, show, source, verdict,
+                    widened, wr, writes_as_inputs)
 
 W2 = (0, 1)
 KERNELS = tuple(product((0, 1), repeat=2))       # a deterministic source W2 -> {0, 1}, as (k(0), k(1))
@@ -111,23 +111,33 @@ def evaluation(case, u, w, event=lambda w: w[1]):
     allowed, bel = in_force(case, u, len(steps) - 1)
     post = (bel or bayes)(case, allowed, flat(steps), True) or case.law
     e = sum(p for x, p in post.items() if event(x))
+    written = False
     for step in steps:
         for ev in step:
             if ev[0] == "wr" and ev[1] == "b":
-                e = ev[2]
+                e, written = ev[2], True
+            elif ev[0] == "in" and written:
+                raise ValueError("%s: an input after a write to her credence is outside the model" % case.id)
     return e
 
 
-def uniform_in_range(case):
-    """One hypothesis of hers is the source at every aim: the class-level form."""
+def same_inputs(case):
     s0 = source(case, NULL)
-    return all(same_source(case, source(case, u), s0) for u in case.aims) and \
+    return all(same_source(case, source(case, u), s0) for u in case.aims)
+
+
+def uniform(case):
+    """Uniformly in range: in every world she meets the same inputs, the same writes she
+    authorized and the same reliance at every aim, and the source is in range."""
+    def met(u, w):
+        return tuple(e for step in case.steps(u, w) for e in step if e[0] != "wr" or authorized(case, e))
+    return all(met(u, w) == met(NULL, w) for u in case.aims for w in case.worlds) and \
         all(clauses(case, u)["in range"] for u in case.aims)
 
 
 def s2():
     law = LAWS[0]
-    n = weak = weak_varies = uniform = uniform_varies = uniform_unsound_varies = 0
+    n = weak = weak_varies = uniform_n = uniform_varies = uniform_unsound_varies = 0
     for s0, s1 in product(KERNELS, repeat=2):
         for R in subsets(KERNELS):
             n += 1
@@ -137,26 +147,33 @@ def s2():
             varies = any(posterior(law, R, s0[w]) != posterior(law, R, s1[w]) for w in W2)
             weak_varies += varies
             if s0 == s1:
-                uniform += 1
+                uniform_n += 1
                 uniform_varies += varies
                 for e in product((0, 1), repeat=2):      # any evaluation of the message, sound or not
                     uniform_unsound_varies += any(e[s0[w]] != e[s1[w]] for w in W2)
-    x3 = C.X3()
+    side = C.x_undisclosed_side()
     both = (1, 1)
-    eA, eB = evaluation(x3, "A", both), evaluation(x3, "B", both)
-    legit_at = {u: not any(not clauses(x3, u)[k] for k in ("sound", "in range", "maintained")) for u in ("A", "B")}
-    mean = {u: sum(x3.law[w] * evaluation(x3, u, w) for w in x3.worlds) for u in ("A", "B")}
-    written = C.shop("x_write_by_aim", "", lambda u, w: C.steps(*C.truthful(w)) + (() if u is NULL else ((wr("b", Fr(1)),),)))
-    write_varies = evaluation(written, "B", (0, 0)) != evaluation(written, NULL, (0, 0))
-    ok = weak_varies > 0 and uniform_varies == 0 and uniform_unsound_varies == 0 and eA != eB and all(legit_at.values())
+    e = {u: evaluation(side, u, both) for u in side.aims}
+    legit_at = {u: not failing(side, u) for u in side.aims}
+    mean = {u: sum(side.law[w] * evaluation(side, u, w) for w in side.worlds) for u in side.aims}
+    x3 = C.X3()
+    x3_legit = {u: not failing(x3, u) for u in x3.aims}
+    auth = C.x_authorized_by_aim()
+    auth_mean = {u: sum(auth.law[w] * evaluation(auth, u, w) for w in auth.worlds) for u in auth.aims}
+    auth_ok = not failing(auth, NULL) and not failing(auth, "B") and same_inputs(auth)
+    ok = (weak_varies > 0 and uniform_varies == 0 and uniform_unsound_varies == 0 and e["A"] != e["B"]
+          and all(legit_at.values()) and auth_ok and auth_mean[NULL] != auth_mean["B"] and not uniform(auth))
     return {"supports": "refuted" if ok else "open", "adviser maps x allowed sets": n,
             "legitimate at both aims (in range as alpha > 0)": weak, "of those, her evaluation varies with the aim": weak_varies,
-            "uniformly in range": uniform, "of those, her evaluation varies": uniform_varies,
+            "the same source at both aims": uniform_n, "of those, her evaluation varies": uniform_varies,
             "of those, with any evaluation rule in place of Bayes, varies": uniform_unsound_varies,
-            "X3 at the world (A sound, B sound): her credence in B under aim A, under aim B": (eA, eB),
-            "X3 legitimate at aim A, at aim B": (legit_at["A"], legit_at["B"]),
-            "X3 her mean credence in B under aim A, under aim B (its truth: 1/2)": (mean["A"], mean["B"]),
-            "uniformly in range with a write by the aim: evaluation varies": write_varies}
+            "x_undisclosed_side legitimate at each aim": legit_at,
+            "x_undisclosed_side at the world (A sound, B sound): her credence in B at each aim": e,
+            "x_undisclosed_side her mean credence in B at each aim (its truth: 1/2)": mean,
+            "X3 legitimate at each aim": x3_legit,
+            "x_authorized_by_aim: same inputs at every aim and no clause failing at either": auth_ok,
+            "x_authorized_by_aim: her mean credence in B at each aim": auth_mean,
+            "x_authorized_by_aim: uniformly in range": uniform(auth)}
 
 
 # -- 3. what the gate needs ----------------------------------------------------
@@ -188,15 +205,13 @@ def moves():
         return C.steps(*C.truthful(w)) if u is NULL else ((wr("R", deaf),),) + C.steps(*C.truthful(w))
     def written(u, w):
         return C.steps(*C.truthful(w)) + (() if u is NULL else ((wr("b", Fr(1)),),))
-    third = Fr(1, 3)
-    sides = {"truthful": (third, C.truthful), "for A": (third, C.advocate("A")), "for B": (third, C.advocate("B"))}
     x1 = C.X1()
     return {
         "honest": C.shop("honest", "", C.const(C.truthful)),
         "lie": C.shop("lie", "", C.by_aim(C.liar, C.truthful)),
         "write her credence": C.shop("write her credence", "", written),
         "rewrite her allowed set": C.shop("rewrite her allowed set", "", rewritten),
-        "take a side she has not been told of": C.shop("take a side", "", C.by_aim(C.advocate("B"), C.truthful), sides),
+        "take a side she has not been told of": C.x_undisclosed_side(),
         "choose the order, her mechanism unsound": C.shop("choose the order", "", C.by_aim(C.b_first, C.truthful),
                                                           C.BOTH_ORDERS, bel=first_looks_better),
         "choose the order, her mechanism sound": C.shop("choose the order (sound)", "", C.by_aim(C.b_first, C.truthful),
@@ -213,7 +228,7 @@ def legit_under(case, u, reading, drop=None):
     c = clauses(case, u)
     in_range = {"alpha > 0": c["in range"], "alpha = 1": c["alpha"] == 1}.get(reading)
     if reading == "uniform":
-        in_range = uniform_in_range(case)
+        in_range = uniform(case)
     held = {"sound": c["sound"], "maintained": c["maintained"], "in range": in_range}
     return all(v for k, v in held.items() if k != drop)
 
@@ -244,12 +259,20 @@ def s3():
                 table["%s; %s%s" % (reading, kind, "" if drop is None else "; without " + drop)] = gains
     needed = {r: {c: any(set(table["%s; %s; without %s" % (r, k, c)]) - set(table["%s; %s" % (r, k)]) for k in KINDS)
                   for c in ("sound", "in range", "maintained")} for r in READINGS}
+    # the same principal, the adviser at its aim against the adviser at the null aim
+    same_principal = {}
+    for name, case in ms.items():
+        if legit_under(case, NULL, "alpha > 0") and legit_under(case, "B", "alpha > 0"):
+            same_principal[name] = {k: gate_score(case, "B", "alpha > 0", None, Fr(-1), k)
+                                    - gate_score(case, NULL, "alpha > 0", None, Fr(-1), k) for k in KINDS}
     refuted = bool(table["alpha > 0; credence"])
     ok = (refuted and not table["alpha = 1; credence"] and bool(table["alpha = 1; verdict"])
           and not table["uniform; credence"] and not table["uniform; verdict"]
-          and needed["uniform"]["in range"] and needed["uniform"]["maintained"])
+          and needed["uniform"]["in range"] and needed["uniform"]["maintained"]
+          and same_principal["take a side she has not been told of"]["credence"] > 0)
     return {"supports": "refuted" if ok else "open", "moves that gain over honest, by reading of legitimate": table,
-            "clause needed (some move gains only without it)": needed}
+            "clause needed (some move gains only without it)": needed,
+            "gain at the aim over the null aim, same principal, legitimate at both (alpha > 0)": same_principal}
 
 
 # -- 4. shortfall --------------------------------------------------------------
@@ -275,9 +298,20 @@ def s4():
     # a defect measured as the size of a change to her rule: her verdict is "accept iff credence >= theta"
     credence, theta = Fr(1, 2), Fr(1, 2)
     losses = {str(eta): int(credence >= theta) - int(credence >= theta + eta) for eta in (Fr(1, 10), Fr(1, 1000), Fr(1, 10 ** 9))}
-    ok = broken == 0 and all(v == 1 for v in losses.values())
-    return {"supports": "proved" if ok else "open", "stretches checked": n, "bound broken": broken,
+    # the gated score: a departure in one world of probability eps takes the source out of her allowed set
+    delta, window, gated = Fr(1), Fr(-1, 2), {}
+    for eps in (Fr(1, 10), Fr(1, 1000), Fr(1, 10 ** 6)):
+        case = C.x_rare_departure(eps)
+        loss = gate_score(case, NULL, "alpha > 0", None, window) - gate_score(case, "B", "alpha > 0", None, window)
+        raw = abs(sum(case.law[w] * (evaluation(case, "B", w) - evaluation(case, NULL, w)) for w in case.worlds))
+        gated[str(eps)] = {"defect mass": eps, "bound (1 + delta) * defect": (1 + delta) * eps,
+                           "loss in her mean evaluation": raw, "loss in the gated score": loss}
+    ok = (broken == 0 and all(v == 1 for v in losses.values())
+          and all(g["loss in the gated score"] > g["bound (1 + delta) * defect"] and g["loss in the gated score"] > 1
+                  and g["loss in her mean evaluation"] <= g["defect mass"] for g in gated.values()))
+    return {"supports": "refuted" if ok else "open", "stretches checked": n, "bound on her evaluation broken": broken,
             "largest |difference in mean evaluation| / defect mass": tight,
+            "x_rare_departure, by the probability of the departure": gated,
             "loss in her verdict when her threshold is written up by eta": losses}
 
 
@@ -298,9 +332,13 @@ def s5():
         k = declared if declared in consts else seed
         return verdict(principal(k, coarse=lambda w: 0)(sigma))["legitimate"]
     declare_and_realize = {s: responsive(consts[0], s, s) for s in KERNELS}
+    p10 = [c for c in C.all_cases() if c.id == "P10"][0]
+    relies = {"uniformly in range": uniform(p10), "unauthorized writes": clauses(p10, p10.actual)["writes"],
+              "verdict": show(verdict(p10))}
     ok = not one_for_all and not one_for_two and indexed and \
-        all(declare_and_realize[s] == (s in consts) for s in KERNELS)
-    return {"supports": "proved" if ok else "open",
+        all(declare_and_realize[s] == (s in consts) for s in KERNELS) and \
+        relies["uniformly in range"] and not relies["unauthorized writes"] and not verdict(p10)["legitimate"]
+    return {"supports": "proved" if ok else "open", "P10, a truthful source she pictures and no write": relies,
             "behaviours legitimate for every principal": one_for_all,
             "behaviours legitimate for two principals with different allowed sets": one_for_two,
             "realizing the source she pictures is legitimate for every principal": indexed,
@@ -322,8 +360,10 @@ def s6():
             law_of_inputs[u] = dist
             mean[u] = sum(case.law[w] * value(w, source(case, u)(w)[0][1]) for w in case.worlds)
         c = clauses(case, "X")
+        joint = {u: tuple(sorted((source(case, u)(w)[0][1], w[1]) for w in case.worlds)) for u in case.aims}
         return {"in range at X": c["in range"], "source representable at X": c["source representable"],
                 "law of her inputs the same at every aim": len({tuple(sorted(d.items())) for d in law_of_inputs.values()}) == 1,
+                "law of (her input, her frame) the same at every aim": len(set(joint.values())) == 1,
                 "her mean value at each aim": mean}
     reacts, ignores = run(True), run(False)
     # inside Rep and disclosed: every deterministic source on four worlds, her allowed set that source
@@ -379,9 +419,7 @@ def s7():
     c3 = compare(lambda c: widened(c, rederive=True))
     in_range_failures = sorted(i for i, v in base.items() if "in range" in v["failing"])
     flipped = [i for i in c3["legitimacy"] if i in in_range_failures]
-    ok = (not a1["legitimacy"] and a1["clauses"] and (a2["legitimacy"] or a2["manipulation"]) and flipped
-          and legit and len(legit) < len(bank))
-    return {"supports": "refuted" if ok else "open", "stretches": len(bank), "legitimate": len(legit),
+    return {"supports": "open", "stretches": len(bank), "legitimate": len(legit),
             "not legitimate": len(bank) - len(legit),
             "writes read as inputs": a1, "allowed set widened, her mechanism kept": a2,
             "allowed set widened, her mechanism Bayes of it": c3,

@@ -114,11 +114,23 @@ def write_values(id, title, party="adviser", own_step=False):
 
 def authorized(id, title):
     events = lambda u, w: steps(*truthful(w)) + ((wr("v", "as she instructed"),),)
-    return shop(id, title, events, auth=("v",))
+    return shop(id, title, events, auth=(("v", "as she instructed"),))
+
+
+def first_report_only(case, allowed, prefix, ended=False):
+    """Her belief-former where order moves her: Bayes of her allowed set on inputs it can
+    produce; on any other, she takes the first report and sets the rest aside."""
+    post = bayes(case, allowed, prefix, ended)
+    if post is not None or not prefix:
+        return post
+    first = prefix[0]
+    i = "AB".index(first[1])
+    keep = [w for w in case.worlds if w[i] == first[2]]
+    return {w: (Fr(1, len(keep)) if w in keep else Fr(0)) for w in case.worlds}
 
 
 def order_by_aim(id, title):
-    return shop(id, title, by_aim(b_first, truthful))
+    return shop(id, title, by_aim(b_first, truthful), bel=first_report_only)
 
 
 def reliance(id, title, reserved):
@@ -196,7 +208,7 @@ def B3():
 
 
 def B4():
-    more = lambda w: truthful(w) + (("reason", "both sound", w[0] & w[1]),)
+    more = lambda w: (rep("A", w[0]), ("reason", "B is sound" if w[1] else "B is unsound"))
     return shop("B4", "persuasion control", const(more), only(more), aims=(NULL,), actual=NULL)
 
 
@@ -303,7 +315,7 @@ def X4():
 def X5():
     events = lambda u, w: ((wr("v", "as she instructed"), rely("the matter")), (rely("the matter"),))
     return shop("X5", "a change she asked for that costs her the matter", events, only(lambda w: ()),
-                auth=("v",), reserved=("the matter",))
+                auth=(("v", "as she instructed"),), reserved=("the matter",))
 
 
 def misreads(case, allowed, prefix, ended=False):
@@ -344,7 +356,8 @@ def all_cases():
         write_values("N6", "her weighing disabled, no aim", party="nature"),
         weakness("N7", "true statement, known misfire"),
         shop("N8", "known advocate", by_aim(advocate("B"), truthful), only(advocate("B"))),
-        order_by_aim("N9", "order chosen by the aim"), shop("N10", "order by a fixed rule", const(truthful)),
+        order_by_aim("N9", "order chosen by the aim"),
+        shop("N10", "order by a fixed rule", const(truthful), bel=first_report_only),
         N11(), shop("N12", "a tool she controls", const(truthful)),
         shop("N13", "selects by her stated question", const(b_only), only(b_only)), N14(),
         X1(), beyond("X2", "a feed", "hold her", neutral), X3(), X4(), X5(), X6(),
@@ -370,6 +383,32 @@ def takes_up_the_last(values, content):
     if content[0] == "consideration" and content[1].startswith("for "):
         return {o: Fr(int(content[1] == "for " + o)) for o in values}
     return values
+
+
+def x_undisclosed_side():
+    """Statements 2 and 3: she allows for a truthful adviser and an advocate for each item,
+    at weight 1/3 each, and is not told which she has.  Legitimate at every aim."""
+    third = Fr(1, 3)
+    def events(u, w):
+        return steps(*(truthful(w) if u is NULL else advocate(u)(w)))
+    return shop("x_undisclosed_side", "a side she has not been told of", events,
+                {"truthful": (third, truthful), "for A": (third, advocate("A")), "for B": (third, advocate("B"))},
+                aims=(NULL, "A", "B"))
+
+
+def x_authorized_by_aim():
+    """Statement 2: the same truthful inputs at every aim, and a write to her credence that
+    she authorized, made only by the adviser with an aim.  No clause fails at either aim."""
+    events = lambda u, w: steps(*truthful(w)) + (() if u is NULL else ((wr("b", Fr(1)),),))
+    return shop("x_authorized_by_aim", "an authorized write made by the aim", events, auth=("b",))
+
+
+def x_rare_departure(eps):
+    """Statement 4: the adviser with an aim reports truthfully except in one world of
+    probability eps, where it reports B sound."""
+    law = {w: (eps if w == (0, 0) else (1 - eps) / 3) for w in SHOP}
+    bent = lambda w: (rep("A", 0), rep("B", 1)) if w == (0, 0) else truthful(w)
+    return shop("x_rare_departure", "a departure of small probability", by_aim(bent, truthful), law=law)
 
 
 FRAME = tuple(product((0, 1), repeat=2))         # (a chance bit she can see sources reading, her frame)
