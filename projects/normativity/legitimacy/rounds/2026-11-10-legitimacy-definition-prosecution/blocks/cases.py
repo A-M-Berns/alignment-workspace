@@ -39,7 +39,7 @@ def scene_3():
     table = {"eH": F(1), "eL": F(0), "hH": F(3, 4), "hL": F(3, 4), None: H2}
     return Scene([("eH", F(3, 8)), ("eL", F(3, 8)), ("hH", F(3, 16)), ("hL", F(1, 16))],
                  [listen(lambda th, a, mv: table[a.signal], target=lambda th, a: F(1 if th.endswith("H") else 0))],
-                 rule=lambda k: Act(k))
+                 rule=lambda k: Act(k), actions=tuple(Act(s) for s in ("eH", "eL", "hH", "hL")) + (NULL,))
 
 
 def scene_4(on_h=F(1)):
@@ -84,7 +84,7 @@ def scene_8(on_item=F(2, 3)):
             return is_h(th)
         return on_item if a.signal == "item" else F(0)
     return Scene([("H", H2), ("Lf", F(1, 4)), ("Ln", F(1, 4))], [listen(mech)],
-                 rule=lambda k: Act("item") if k in ("H", "Lf") else NULL, actions=(Act("truth"), NULL))
+                 rule=lambda k: Act("item") if k in ("H", "Lf") else NULL, actions=(Act("truth"), Act("item"), NULL))
 
 
 def scene_25():
@@ -196,15 +196,25 @@ def change_tokens(legit):
     return {"change: legitimate" if legit else "change: illegitimate"}
 
 
+def scene_17():
+    X = ["law", "music"]
+    part = Part("revise", "choice", lambda th, a, mv: "music", moves=tuple(LAW_MENU),
+                util=lambda th, a, m, mv: fit("career", LAW_MENU[m], LAW, X))
+    return Scene([("w", F(1))], [part])
+
+
 def case_17():
     X = ["law", "music"]
+    tokens, facts = classify(scene_17())
     top, scores = best_on_menu("career", LAW_MENU, LAW, X)
     after = {**LAW, "career": LAW_MENU["music"]}
     x0, xT = choice(LAW, X), choice(after, X)
     shift, g0, gT = whole_gaps(verdict_pairs(LAW, after, [(xT, F(1))], F(9, 2)))
-    tokens = {"in-range"} | change_tokens("music" in top)
-    return tokens, {"fit on the menu": scores, "choice before": x0, "choice after": xT, "verdict shift": shift,
-                    "g_0": g0, "g_T": gT}
+    if "in-range" in tokens and "music" in top:
+        tokens.add("change: legitimate")
+    facts.update({"fit on the menu": scores, "choice before": x0, "choice after": xT, "verdict shift": shift,
+                  "g_0": g0, "g_T": gT})
+    return tokens, facts
 
 
 def case_18():
@@ -281,10 +291,14 @@ def case_23():
 
 
 def ends_tokens(ends, X):
+    """Ends with *act*, which takes her choice and is for the outcome's value by her ends."""
+    act = Part("act", "choice", lambda th, a, mv: choice(ends, X), moves=tuple(X),
+               util=lambda th, a, m, mv: total(ends, m))
+    tokens, facts = classify(Scene([("w", F(1))], [act]))
     opp = {j: opposition(v, rest(ends, (j,)), X) for j, v in ends.items()}
-    tokens = {"in-range", "not adviser's"}
     tokens.add("fits" if all(o == 0 for o in opp.values()) else "opposition")
-    return tokens, {"choice": choice(ends, X), "opposition": opp}
+    facts.update({"choice": choice(ends, X), "opposition": opp})
+    return tokens, facts
 
 
 HIJACK = {"A": {"w": 3, "x": 2}, "B": {"x": 3}, "C": {"z": 1}}
@@ -303,15 +317,28 @@ def run_chain(ends, X, steps, **kw):
     return ends, log
 
 
+def scene_29():
+    """The chain as a scene: the adviser's signal gives each revising part its occasion in turn; a
+    revising part with no occasion keeps.  Each is scored by fit against her ends as they then are."""
+    (ja, menu_a, taken_a), (jb, menu_b, taken_b) = HIJACK_STEPS
+
+    def after_a(mv):
+        return {**HIJACK, ja: menu_a[mv["revise-A"]]}
+    part_a = Part("revise-A", "choice", lambda th, a, mv: taken_a if a.signal else "keep", moves=tuple(menu_a),
+                  util=lambda th, a, m, mv: fit(ja, menu_a[m], HIJACK, HIJACK_X))
+    part_b = Part("revise-B", "choice", lambda th, a, mv: taken_b if a.signal else "keep", moves=tuple(menu_b),
+                  util=lambda th, a, m, mv: fit(jb, menu_b[m], after_a(mv), HIJACK_X))
+    return Scene([("w", F(1))], [part_a, part_b], rule=lambda k: Act("A's occasion, then B's"))
+
+
 def case_29():
+    tokens, facts = classify(scene_29())
     ends, log = run_chain(HIJACK, HIJACK_X, HIJACK_STEPS)
     final = choice(ends, HIJACK_X)
-    tokens = set()
-    if all(step["greatest"] == [step["taken"]] for step in log):
-        tokens.add("in-range")
     if final == min(HIJACK_X, key=lambda x: total(HIJACK, x)):
         tokens.add("worst-by-start")
-    return tokens, {"steps": log, "final choice": final, "starting totals": {x: total(HIJACK, x) for x in HIJACK_X}}
+    facts.update({"steps": log, "final choice": final, "starting totals": {x: total(HIJACK, x) for x in HIJACK_X}})
+    return tokens, facts
 
 
 def case_30():

@@ -37,17 +37,30 @@ def check(ok, status, **facts):
 # ---- question 1 --------------------------------------------------------------------------
 
 def s_1_1():
-    """Two scenes with one law of (state, action, move) and one utility: in the first the adviser's
-    action is a signal the acting part follows, in the second a force."""
+    """Two scenes with the same state, move and utility at every state, and so the same gaps: in
+    the first the adviser's action is a signal the acting part follows, in the second a force.  The
+    actions differ; with their type forgotten nothing else does."""
     follow = Part("act", "choice", lambda th, a, mv: "comply" if a.signal == "go" else "refuse",
                   moves=("comply", "refuse"), util=lambda th, a, m, mv: {"comply": 0, "refuse": 1}[m])
     still = replace(follow, mech=lambda th, a, mv: "refuse")
     sig = Scene([("w", F(1))], [follow], rule=lambda k: Act("go"))
     frc = Scene([("w", F(1))], [still], rule=lambda k: Act(force=(("act", "comply"),)))
-    same = [mv for *_, mv in condition(sig)] == [mv for *_, mv in condition(frc)]
+    same = ([(th, pr, mv) for th, pr, _, mv in condition(sig)] == [(th, pr, mv) for th, pr, _, mv in condition(frc)]
+            and gap(sig, follow, condition(sig)) == gap(frc, still, condition(frc)))
     t1, t2 = classify(sig)[0], classify(frc)[0]
-    return check(same and "force(act)" in t2 and "force(act)" not in t1, HOLDS,
-                 signal=sorted(t1), force=sorted(t2))
+    return check(same and t2 - t1 == {"force(act)"} and t1 <= t2, HOLDS, signal=sorted(t1), force=sorted(t2))
+
+
+def s_1_4():
+    """A request must be made beforehand: case 22 with a requester that would not ask, forced by the
+    adviser to ask while it alters A, is not covered."""
+    s = c.scene_22()
+    s.parts[0].mech = lambda th, a, mv: "not"
+    forced = replace(s, rule=lambda k: Act(force=(("act", "ask"),), alter=(("A", "y2"),)),
+                     requests=lambda mv: {("alteration", "A"), ("force", "act")} if mv["act"] == "ask" else set())
+    tokens = classify(forced)[0]
+    return check("covered" not in tokens and "illegitimate" in tokens and "covered" in classify(c.scene_22())[0],
+                 HOLDS, forced_request=sorted(tokens))
 
 
 def s_1_2():
@@ -251,9 +264,10 @@ def s_4_2():
 
 
 def s_4_3():
+    # 33a and 33b are one scene by construction; they differ in a supplied fact about the branch
+    # not taken, which only the second null reads
     (ta, fa), (tb, fb) = c.case_33(False), c.case_33(True)
-    same_law = [mv for *_, mv in condition(c.scene_10())] == [mv for *_, mv in condition(c.scene_10())]
-    ok = same_law and ta == tb and fa["harm under the second null"] and not fb["harm under the second null"]
+    ok = ta == tb and fa["harm under the second null"] and not fb["harm under the second null"]
     return check(ok, HOLDS, absence_null=sorted(ta), second_null={"33a": fa["harm under the second null"],
                                                                    "33b": fb["harm under the second null"]})
 
@@ -331,7 +345,26 @@ def s_5_5():
     return check(facts["afterwards, greatest fit for D"] == ["new"], HOLDS, fit=facts["afterwards, fit of revising D"])
 
 
+def tie_scene(with_b):
+    """The adviser's aim decides which of two equally fitting replacements A's revising part
+    installs.  With `with_b`, B's revising part is among the parts and takes its menu's best."""
+    menu = {"keep": {"w": 3, "x": 2}, "drop": {}, "as-B": {"x": 3}}
+    menu_b = c.HIJACK_STEPS[1][1]
+
+    def after_a(mv):
+        return {**c.HIJACK, "A": menu[mv["revise-A"]]}
+    parts = [Part("revise-A", "choice", lambda th, a, mv: a.signal or "keep", moves=tuple(menu),
+                  util=lambda th, a, m, mv: fit("A", menu[m], c.HIJACK, c.HIJACK_X))]
+    if with_b:
+        parts.append(Part("revise-B", "choice",
+                          lambda th, a, mv: best_on_menu("B", menu_b, after_a(mv), c.HIJACK_X)[0][0],
+                          moves=tuple(menu_b), util=lambda th, a, m, mv: fit("B", menu_b[m], after_a(mv), c.HIJACK_X)))
+    aims = {"z": lambda k: Act("drop"), "x": lambda k: Act("as-B")}
+    return Scene([("w", F(1))], parts, rule=aims["z"], aims=aims)
+
+
 def s_5_6():
+    from .model import breaks_tie
     menu = {"keep": {"w": 3, "x": 2}, "drop": {}, "as-B": {"x": 3}}
     top, scores = best_on_menu("A", menu, c.HIJACK, c.HIJACK_X)
     finals = {}
@@ -340,7 +373,12 @@ def s_5_6():
         topb, _ = best_on_menu("B", c.HIJACK_STEPS[1][1], ends, c.HIJACK_X)
         ends["B"] = c.HIJACK_STEPS[1][1][topb[0]]
         finals[name] = choice(ends, c.HIJACK_X)
-    return check(sorted(top) == ["as-B", "drop"] and finals["drop"] != finals["as-B"], HOLDS, fit=scores, finals=finals)
+    alone, both = tie_scene(False), tie_scene(True)
+    scores_b = {aim: score(both, both.parts[1], condition(both, rule)) for aim, rule in both.aims.items()}
+    ok = (sorted(top) == ["as-B", "drop"] and finals["drop"] != finals["as-B"]
+          and breaks_tie(alone) and not breaks_tie(both) and "illegitimate" not in classify(both)[0])
+    return check(ok, HOLDS, fit=scores, finals=finals, tie_with_A_alone=breaks_tie(alone),
+                 tie_with_B_listed=breaks_tie(both), B_utility_by_aim=scores_b, tokens_with_B=sorted(classify(both)[0]))
 
 
 def s_5_7():
@@ -452,11 +490,22 @@ def s_7_3():
     s14 = c.scene_14()
     forced = replace(s14, aims={"x": lambda k: Act(force=(("act", "y"),)), "y": lambda k: NULL})
     const = replace(s14, aims={"x": lambda k: Act("x-first"), "y": lambda k: Act("x-first")})
+    # the reviewer's counterexample: no force, no alteration, one signal, a mechanism that reads
+    # the consequence component, which varies with the aim
+    reads = Part("act", "choice", lambda th, a, mv: "y" if a.conseq else "x", moves=("x", "y"),
+                 util=lambda th, a, m, mv: 1)
+    conseq = replace(s14, parts=[reads], aims={"x": lambda k: Act(conseq=0), "y": lambda k: Act(conseq=1)})
+    # and a force that happens to set the move the mechanism would have made
+    idle = replace(s14, aims={"x": lambda k: Act("x-first", force=(("act", "x"),)), "y": lambda k: Act("x-first")})
     rows = {"signal by aim (14)": (realizes(s14, "act"), False, blind(s14, "act")),
             "force by aim": (realizes(forced, "act"), True, blind(forced, "act")),
-            "one signal at every aim": (realizes(const, "act"), True, blind(const, "act"))}
+            "one signal at every aim": (realizes(const, "act"), True, blind(const, "act")),
+            "a mechanism reading the consequence": (realizes(conseq, "act"), True, blind(conseq, "act")),
+            "a force that sets the move the mechanism makes": (realizes(idle, "act"), True, blind(idle, "act"))}
     ok = (rows["signal by aim (14)"] == (True, False, False) and rows["force by aim"][0] is False
-          and rows["one signal at every aim"] == (True, True, True))
+          and rows["one signal at every aim"] == (True, True, True)
+          and rows["a mechanism reading the consequence"] == (False, True, False)
+          and rows["a force that sets the move the mechanism makes"] == (True, True, True))
     return check(ok, HOLDS, rows={k: {"Realizes": v[0], "signal the same at every aim": v[1], "move the same at every aim": v[2]}
                                   for k, v in rows.items()})
 
@@ -471,7 +520,7 @@ def s_7_4():
     return check(h1 == h2 and "illegitimate" in t1 and "illegitimate" not in t2, HOLDS)
 
 
-CHECKS = {"1.1": s_1_1, "1.2": s_1_2, "1.3": s_1_3,
+CHECKS = {"1.1": s_1_1, "1.2": s_1_2, "1.3": s_1_3, "1.4": s_1_4,
           "2.1": s_2_1, "2.2": s_2_2, "2.3": s_2_3, "2.4": s_2_4, "2.5": s_2_5, "2.6": s_2_6,
           "3.1": s_3_1, "3.2": s_3_2, "3.3": s_3_3, "3.4": s_3_4,
           "4.1": s_4_1, "4.2": s_4_2, "4.3": s_4_3,

@@ -202,8 +202,8 @@ Filled in after the results; each is a finding against the setting as dispatched
    believes leaves the part in range at every grain coarser than the adviser's knowledge,
    and that grain puts honest difficulty out of range as well (case 4b).
 5. **The verdict as one part's move.** The dispatch says no single part is the evaluator.
-   Without one, parts in range do not give a whole in range (case 30) and the whole-level
-   bound has nothing to attach to.
+   Parts in range do not give a verdict in range unless the aggregation of their moves is
+   itself calibrated (case 30), and the setting can require that only of a part.
 6. **The rule at other aims**, for the rule on ties only, where no gap exists to carry
    the verdict (case 14).
 7. **A menu for each end-revising part.** What fit selects depends on the menu (question
@@ -213,6 +213,11 @@ Not adopted, and what its absence costs: a **home condition** for a part, a seco
 under which its mechanism is taken to have been fitted. Without it "hers" and "nobody's"
 are one verdict (choice 11).
 
+Devices 2, 6 and 7 are supplied lists and device 1 a comparison, in the dispatch's terms.
+
 ## Amended after the freeze
 
-Nothing in §1–§3 was changed after the freeze. §4 was written after the results.
+Nothing in §1–§3 was changed after the freeze. §4 was written after the results and
+device 5 reworded after the external review. The code's reading of *covered* was
+corrected after the review to what §2 says: a request is read with the adviser's action
+null.

@@ -15,8 +15,9 @@ adviser's.
 
 *What it shows.* The null condition runs her mechanism where the scene never puts it. A
 response fitted to an adviser's presence — nothing shown means nothing favourable exists —
-is badly out of range in its absence, and any rule that speaks at all then narrows the
-gap. The comparison that was to say whether the adviser brought a gap about depends on a
+is badly out of range in its absence, and this advocate's rule then narrows the gap
+(not every rule would: one that showed an item exactly at the unfavourable states would
+widen it to 1). The comparison that was to say whether the adviser brought a gap about depends on a
 number the scenario does not fix. Had the rendering said 1/2 on nothing, the null gap
 would be 0, her gap under the advocate 7/48, and the case would match. Under the
 alternative reading of choice 5, a part out of range whose move the adviser's action

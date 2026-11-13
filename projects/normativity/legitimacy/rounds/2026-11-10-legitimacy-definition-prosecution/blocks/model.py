@@ -123,18 +123,23 @@ def gap(scene, part, cond, key=None):
 
 
 def gap_by_grain(scene, part, cond):
-    """The gap at each value of the scene's grain."""
-    out = {}
+    """For each value of the scene's grain: (what it contributes to the gap, the gap under the law
+    conditional on it).  The first is the second times the value's probability."""
+    out, mass = {}, {}
     for (g, _), rows in cells(scene, part, cond, scene_grain(scene)).items():
         got = sum(pr * part.u(theta, act, moves[part.name], moves) for theta, pr, act, moves in rows)
         out[g] = out.get(g, F(0)) + best_cell(part, rows) - got
-    return out
+        mass[g] = mass.get(g, F(0)) + sum(pr for _, pr, _, _ in rows)
+    return {g: (v, v / mass[g]) for g, v in out.items()}
 
 
 def adviser_left(scene, part):
-    """J: what the adviser's rule leaves on the table for the part, given what it knows."""
+    """J: what the adviser's rule leaves on the table for the part, given what it knows, among the
+    actions the scene lists and the ones the rule takes.  None where the scene lists no actions."""
     if scene.rule is None or not scene.actions:
-        return F(0)
+        return None
+    menu = list(scene.actions) + [a for a in {scene.rule(scene.know(th)) for th, _ in scene.states}
+                                  if a not in scene.actions]
     by_k = {}
     for theta, pr in scene.states:
         by_k.setdefault(scene.know(theta), []).append((theta, F(pr)))
@@ -143,7 +148,7 @@ def adviser_left(scene, part):
         def value(act):
             return sum(pr * part.u(theta, act, realized(scene, theta, act)[part.name], realized(scene, theta, act))
                        for theta, pr in rows)
-        total += max(value(a) for a in scene.actions) - value(scene.rule(k))
+        total += max(value(a) for a in menu) - value(scene.rule(k))
     return total
 
 
@@ -187,7 +192,7 @@ def classify(scene):
              "left by the adviser": adviser_left(scene, p)}
         by = gap_by_grain(scene, p, C)
         if len(by) > 1:
-            f["gap by grain value"] = by
+            f["by grain value: contribution, conditional gap"] = by
         if g > 0:
             tokens.add("out(%s)" % p.name)
         if g > g0:
@@ -216,13 +221,15 @@ def classify(scene):
     if not any(t.startswith("out(") for t in tokens):
         tokens.add("in-range")
     touched, uncovered = set(), False
-    for theta, pr, act, moves in C:
-        asked = scene.requests(moves) if scene.requests else set()
+    for (theta, pr, act, moves), (_, _, _, before) in zip(C, C0):
+        # a request is a move made beforehand: read with the adviser's action null, the requester
+        # in range under the null condition
+        asked = scene.requests(before) if scene.requests else set()
         for kind, comp in (("force", act.force), ("alteration", act.alter)):
             for name, _ in comp:
                 tokens.add("%s(%s)" % (kind, name))
                 touched.add((kind, name))
-                ok = (kind, name) in asked and gap(scene, scene.part(scene.requester), C) == 0
+                ok = (kind, name) in asked and gap(scene, scene.part(scene.requester), C0) == 0
                 uncovered = uncovered or not ok
     if touched and not uncovered:
         tokens.add("covered")
