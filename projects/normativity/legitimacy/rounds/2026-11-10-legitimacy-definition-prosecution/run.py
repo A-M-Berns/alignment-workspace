@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """The round's runner.  Reads the two earlier case banks (CASE_BANK.md,
 steering/CASE_BANK.md) as test material, runs the account the second follow-up tested
-(teleology/), then the current account (decomposition/): its bank, the checks behind its
-THEOREMS.md, and the facts its two addenda cite.
+(teleology/), the one the third tested (decomposition/: its bank, the checks behind its
+THEOREMS.md, and the facts its two addenda cite), then the current account (scored/): its
+bank and the checks behind its THEOREMS.md.
 
 Exit nonzero when a bank parses to nothing or holds a case twice, when an earlier case has
 no prediction in either later bank, when a computed verdict diverges from its prediction
-without a line in that pass's DIVERGENCES.md, or when a status in either THEOREMS.md is
-not the one the checks support.  `--json` prints both reports as data."""
+without a line in that pass's DIVERGENCES.md, or when a status in any THEOREMS.md is
+not the one the checks support.  `--json` prints the three reports as data."""
 from __future__ import annotations
 
 import pathlib
@@ -56,6 +57,8 @@ def earlier_banks():
 def main(argv):
     from decomposition import bank as dbank
     from decomposition import run as current
+    from scored import bank as sbank
+    from scored import run as scored
     from teleology import bank as tbank
     from teleology import run as account
 
@@ -68,11 +71,16 @@ def main(argv):
     unpredicted = sorted(set(tbank.load()) - set(dbank.load()))
     if unpredicted:
         failures.append("teleology cases with no prediction in decomposition/CASE_BANK.md: %s" % unpredicted)
+    unpredicted = sorted(set(dbank.load()) - {rid if rid[-1] not in "abc" else rid[:-1] for rid in sbank.load()})
+    if unpredicted:
+        failures.append("decomposition cases with no prediction in scored/CASE_BANK.md: %s" % unpredicted)
     code, report = account.main()
     code2, report2 = current.main()
-    failures = failures + ["teleology: " + f for f in report["failures"]] + ["decomposition: " + f for f in report2["failures"]]
+    code3, report3 = scored.main()
+    failures = (failures + ["teleology: " + f for f in report["failures"]]
+                + ["decomposition: " + f for f in report2["failures"]] + ["scored: " + f for f in report3["failures"]])
     if "--json" in argv:
-        print(account.dumps({"teleology": report, "decomposition": report2, "failures": failures}))
+        print(current.dumps({"teleology": report, "decomposition": report2, "scored": report3, "failures": failures}))
     else:
         for name, rows in banks.items():
             print("%s bank: %d cases" % (name, len(rows)))
@@ -80,8 +88,10 @@ def main(argv):
         print(account.render(report))
         print("\n== decomposition ==")
         print(current.render(report2))
+        print("\n== scored ==")
+        print(scored.render(report3))
         print("\n" + ("OK" if not failures else "FAILURES:\n  " + "\n  ".join(failures)))
-    return 1 if failures else max(code, code2)
+    return 1 if failures else max(code, code2, code3)
 
 
 if __name__ == "__main__":

@@ -1,5 +1,11 @@
 # The account: candidates weighted as explanations, influence judged against the adviser's aim
 
+Amended after the freeze, with `THEOREMS.md`: §3, the degraded part's own move under `deg`
+is the change and is not scored; §4, the history lengths reported beside 80 are 160, 320
+and 640, since 40 gives fractional counts, and a missed move at 4 and at 16 bits is
+reported beside 8; §4 and §10.1, the alternative reading of what a purpose predicts is
+computed as *view-best* and its reference distribution is stated. No prediction was edited.
+
 The account of `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-4.md`
 §1 and §2, stated over a finite model. The idea that manipulation is the distortion of an
 actor away from its purpose, with a whole's purpose conferring purposes on its parts, is
@@ -66,7 +72,8 @@ principal, and a language:
 - **handles**: `Hand(c) = r · Σ_{s ∈ T} Σ_p cost_c(p, s)`;
 
 where `cost_c(p, s)` is `⌈log₂ |B|⌉` when her move is in the predicted set `B`, and `ε`
-when it is not;
+when it is not (and 0 for the belief part under `deg`, whose move there is the change
+made to her and not her response);
 
 - **intersubjectivity**: `cost` is computed by the **second predictor**: the reader of §2
   who has the explanation and the scene alone, for whom private terms predict nothing.
@@ -100,10 +107,10 @@ dropped. *No intersubjectivity*: first-person `cost`.
 
 | parameter | value | alternative |
 |---|---|---|
-| what a purpose predicts off the exceptions | the part serves: a best move by its purpose at the situation as it is | the best move in expectation given what the part sees, under the usual situations; it needs a distribution on views the history lacks |
+| what a purpose predicts off the exceptions | *serves*: a best move by its purpose at the situation as it is | *view-best*: a best move in expectation over the situations with the part's view — the history's, by their counts, where the history has that view, and otherwise the probes with it, by their worlds' prior. Computed beside the first throughout `THEOREMS.md` |
 | what is predicted | each part's move, the other parts' moves as they were | her action alone, the parts' moves predicted in sequence; under it candidates differing only in the purposes of earlier parts predict alike |
 | exceptions | on views of the history only, one entry per view | rules that extend to unseen views, which are mechanism hypotheses and not purposes |
-| history length | `N = 80` steps drawn by the usual situations of the scene | 40, 160, 320, reported |
+| history length | `N = 80` steps drawn by the usual situations of the scene | 160, 320, 640, reported |
 | probe count | `r = 1`, every probe at every world of the scene's base worlds | 2, 4, reported; the four changes alone, reported |
 | the class's exception lists | for each goal and purposes: none (*bare*); every true entry the purposes do not already predict (*patched*); the subset of those that shortens the code (*best*); and, for the embedding of §5, the entries of the belief part's alternative mechanism | — |
 
