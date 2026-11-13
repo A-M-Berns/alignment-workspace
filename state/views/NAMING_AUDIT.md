@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `ATTENTION.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 1152 names, 611 of them Lean only
+## deference — 1152 names, 609 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -292,7 +292,7 @@ change, and the count of those is the size of the free choice remaining.
 | `evalOf` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIACorrigibility.LexParams.evalOf` |
 | `frame2` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIACorrigibility.Consult2.frame2` |
 | `frozenDrill` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIACorrigibility.frozenDrill` |
-| `harmed` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIACorrigibility.harmed` |
+| `harmed` | def | 2026-09-26-bria-corrigibility | prose | `Workspace.Deference.Contrib.BRIACorrigibility.harmed` |
 | `interface2` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIACorrigibility.Consult2.interface2` |
 | `licensed2` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIACorrigibility.Consult2.licensed2` |
 | `licensedB2` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIACorrigibility.Consult2.licensedB2` |
@@ -491,7 +491,7 @@ change, and the count of those is the size of the free choice remaining.
 | `raisesAnchored` | def | 2026-09-25-decision-component | wiki, prose | `Workspace.Deference.Contrib.DecisionComponent.raisesAnchored` |
 | `rampMass` | def | 2026-09-25-decision-component | Lean only | `Workspace.Deference.Contrib.DecisionComponent.rampMass` |
 | `Act` | inductive | 2026-10-17-post-companion-formalization | Lean only | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Witness.Act` |
-| `Decision` | structure | 2026-10-17-post-companion-formalization | wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Decision` |
+| `Decision` | structure | 2026-10-17-post-companion-formalization | wiki, prose | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Decision` |
 | `Exploration` | structure | 2026-10-17-post-companion-formalization | wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Exploration` |
 | `LimsupLE` | def | 2026-10-17-post-companion-formalization | wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.LimsupLE` |
 | `Maximizes` | def | 2026-10-17-post-companion-formalization | wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Sequential.Maximizes` |
@@ -744,7 +744,7 @@ change, and the count of those is the size of the free choice remaining.
 | `liftRef` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.liftRef` |
 | `ofFrameLevel` | def | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.ofFrameLevel` |
 | `one` | def | 2026-09-25-gate-is-legitimacy | wiki, note, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.one` |
-| `parts` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.TraceInterface.parts` |
+| `parts` | def | 2026-09-25-gate-is-legitimacy | prose | `Workspace.Deference.Contrib.GateIsLegitimacy.TraceInterface.parts` |
 | `presAt` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.presAt` |
 | `ref` | def | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.ref` |
 | `refProj` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.refProj` |
@@ -828,7 +828,7 @@ change, and the count of those is the size of the free choice remaining.
 | `frame` | def | 2026-09-25-legitimacy-internal-external | note, prose | `Workspace.Deference.Contrib.Legitimacy.Witness.frame` |
 | `gateValue` | def | 2026-09-25-legitimacy-internal-external | wiki | `Workspace.Deference.Contrib.Legitimacy.gateValue` |
 | `handledValue` | def | 2026-09-25-legitimacy-internal-external | Lean only | `Workspace.Deference.Contrib.Legitimacy.handledValue` |
-| `lastReport` | def | 2026-09-25-legitimacy-internal-external | prose | `Workspace.Deference.Contrib.Legitimacy.lastReport` |
+| `lastReport` | def | 2026-09-25-legitimacy-internal-external | Lean only | `Workspace.Deference.Contrib.Legitimacy.lastReport` |
 | `segment` | def | 2026-09-25-legitimacy-internal-external | wiki, prose | `Workspace.Deference.Contrib.Legitimacy.Witness.segment` |
 | `toOpenIntegrity` | def | 2026-09-25-legitimacy-internal-external | wiki, prose | `Workspace.Deference.Contrib.Legitimacy.Segment.toOpenIntegrity` |
 | `trans` | def | 2026-09-25-legitimacy-internal-external | wiki, prose | `Workspace.Deference.Contrib.Legitimacy.Segment.trans` |
@@ -991,7 +991,7 @@ change, and the count of those is the size of the free choice remaining.
 | `ReasonMediated` | def | 2026-09-07-reason-mediated-authorship | wiki, prose | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.ReasonMediated` |
 | `Rp` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.Rp` |
 | `Rₗ` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.Rₗ` |
-| `SelectionBlind` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.SelectionBlind` |
+| `SelectionBlind` | def | 2026-09-07-reason-mediated-authorship | prose | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.SelectionBlind` |
 | `Transient` | inductive | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.Transient` |
 | `V_F` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.V_F` |
 | `V_G` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.V_G` |

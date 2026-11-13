@@ -2,10 +2,10 @@
 id: item-138
 kind: leaf
 leaf_kind: task
-action: "Execute item 138 per its deliverable shape and acceptance check: The comparison action and the cut-off for \"the adviser widened a gap\"."
+action: "Execute item 138 per its deliverable shape and acceptance check: The range of aims an adviser's action is compared against, and harm done at every aim."
 who: agent
 item: "138"
-title: "The comparison action and the cut-off for \"the adviser widened a gap\""
+title: "The range of aims an adviser's action is compared against, and harm done at every aim"
 section: "Normativity line — legitimacy"
 maintainer_order: 150
 difficulty: "open"
@@ -13,8 +13,8 @@ heading_notes: ""
 project: normativity.legitimacy
 dispatchable: true
 item_status: open
-deliverable: "`test-supported` — a comparison action and a cut-off stated over the model of `decomposition/ACCOUNT.md` in the prosecution round, their verdicts on the 57 single-step renderings of statement 6 frozen before the code; or a proof, with its counterexample as a case module, that no comparison meets the four requirements."
-acceptance: "`python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with the comparison wired in and a status for it in `decomposition/THEOREMS.md`; under it selective withholding (B5) and the lie that leaves her better off (D2) are subversion, the careful teacher (D6) and silence (T13) are not, an adviser that teaches only what favours its aim either gains nothing on her choice or is subversion, and the drift of D16(a) is reported under the cut-off while a single step of 1/8 is not — or the runner checks the case module showing two of these cannot hold together."
+deliverable: "`test-supported` — modules under `scored/` of the prosecution round: a rule fixing the set of aims `U` of `scored/ACCOUNT.md` §6 from a scenario (candidates: the aims the scenario names; those and, for each part her evaluation reads, the aim that is that part's own purpose; the aims an overseer cannot exclude), with its verdicts on the bank frozen before the code; and statements in `scored/THEOREMS.md`, each with one status, on whether the gate's no-gain property holds under each rule for every candidate that scores by the facts, and on what convicts a harm done at every aim."
+acceptance: "`python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with a status for each new statement; under each rule the verdicts on Z2 (a lie told at every aim), Z4 and Z5 (teaching only what favours its aim, against two ranges), D6 (the careful teacher), B5 (withholding), T13 (silence by every aim) and an adviser that helps less than it could; the pairs of statement 5 recomputed; the drift of D16(a) reported under a cut-off on the running sum while a single step is not."
 work:
   - {kind: round, ref: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution}
   - {kind: decision, ref: 2026-11-10--legitimacy-prosecution-readings}
@@ -22,42 +22,42 @@ work:
   - {kind: decision, ref: 2026-11-11--legitimacy-purpose-first-direction}
   - {kind: decision, ref: 2026-11-11--purpose-first-account-readings}
   - {kind: decision, ref: 2026-11-12--decomposition-account-readings}
-context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/THEOREMS.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/ACCOUNT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/theorems.py", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/ADVISER_AS_PART.md", "lean/Workspace/Deference/Contrib/Legitimacy.lean", "prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md"]
+  - {kind: decision, ref: 2026-11-12--scored-account-readings}
+context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/THEOREMS.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/ACCOUNT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/CASE_BANK.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/ADVISER_AS_PART.md", "prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md"]
 author: "@smithy-verity"
 size: M
 size_reason: "one item entry, one fixture of context"
-version: 3
+version: 4
 ---
 ## Statement
-Item 138, The comparison action and the cut-off for "the adviser widened a gap", is delivered in the shape its entry states: `test-supported` — a comparison action and a cut-off stated over the model of `decomposition/ACCOUNT.md` in the prosecution round, their verdicts on the 57 single-step renderings of statement 6 frozen before the code; or a proof, with its counterexample as a case module, that no comparison meets the four requirements.
+Item 138, The range of aims an adviser's action is compared against, and harm done at every aim, is delivered in the shape its entry states: `test-supported` — modules under `scored/` of the prosecution round: a rule fixing the set of aims `U` of `scored/ACCOUNT.md` §6 from a scenario (candidates: the aims the scenario names; those and, for each part her evaluation reads, the aim that is that part's own purpose; the aims an overseer cannot exclude), with its verdicts on the bank frozen before the code; and statements in `scored/THEOREMS.md`, each with one status, on whether the gate's no-gain property holds under each rule for every candidate that scores by the facts, and on what convicts a harm done at every aim.
 
 ## Source
-ATTENTION.md, item 138 (The comparison action and the cut-off for "the adviser widened a gap"); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/THEOREMS.md` (statements 4 and 6), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/ACCOUNT.md` §3, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/theorems.py` (`comparisons`), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/ADVISER_AS_PART.md` (questions 2 and 3), `lean/Workspace/Deference/Contrib/Legitimacy.lean` (`lastReport`, `unreported_lt`), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` H4 and H10.
+ATTENTION.md, item 138 (The range of aims an adviser's action is compared against, and harm done at every aim); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/THEOREMS.md` (statements 4, 5 and 9), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/ACCOUNT.md` (§6, §7 and §10), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/CASE_BANK.md` (Z1–Z5), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/ADVISER_AS_PART.md` (questions 2 and 3), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (I3, I4 and I8).
 
 ## Notes
-Filed by the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution) under its prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py. Rewritten by that round's third follow-up (PROMPT-followup-3.md) under the ruling 2026-11-11--legitimacy-purpose-first-direction, to ask what the account of decomposition/ACCOUNT.md needs.
+Filed by the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution) under its prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py. Rewritten by that round's fourth follow-up (PROMPT-followup-4.md) under the ruling 2026-11-11--legitimacy-purpose-first-direction, to ask what the account of scored/ACCOUNT.md needs.
 
 ## Item
-In the account of `decomposition/ACCOUNT.md` an adviser's action is subversion when it leaves the gap of
-one of her parts wider than a comparison action would. The account does not say which comparison, and has a
-graded gap with no cut-off. The third follow-up computes four (`decomposition/THEOREMS.md`, statement 6).
-Against silence, 27 of 57 renderings are subversion, and withholding, a remark added to a true report and
-the lie that leaves her better off are not. Against the action leaving her parts the least total gap, 46
-are, among them the careful teacher, a harmless novelty and silence itself. Against the action best for
-her goal, 38 are, and the lie that offsets her own error is not, being that action. Against a declared
-reference the condition is the workspace's existing `Realizes`. Under none does "widens no gap" give the
-property a gate needs: an adviser that teaches only when the truth favours its aim widens none against
-silence and moves her choice, and against the least-total-gap baseline a threat moves her choice from
-21/40 to 39/40 with no gap widened, since harm is not subversion. On drift (statement 4), steps of 1/8 at
-the taste-forming part pass a per-step cut-off of 1/4 and a cut-off on their running sum reports, for
-which `Legitimacy.unreported_lt` is the theorem.
+In the account of `scored/ACCOUNT.md` of the prosecution round "the adviser widened a gap" means the gap is
+wider than under the action it would have taken with another aim, the other aim ranging over a stated set
+`U`; harm and force are judged the same way, and an aim that is a part's own purpose is permitted. The
+fourth follow-up finds (`scored/THEOREMS.md`, statements 4 and 5) that this fixes the comparison the third
+follow-up left open and closes its two counterexamples to the gate: teaching only what favours its aim is
+subversion at the world where the other aim would have taught, and an added threat is harm. On the bank 77
+of 89 cases match their evident character against 66. Three things are left. `U` is stipulated: one policy
+of selective teaching is illegitimate against an opposite aim and not against a silent one (Z4, Z5). A harm
+that does not vary with the aim passes: a lie told at every aim of `U` is not illegitimate (Z2). And the
+no-gain property is a property of the candidate: it holds under the stated candidate, and fails where her
+goal does not rank the options and under candidates that score a part by what it was handed.
 
-Wanted: a comparison action and a cut-off that (i) convict withholding and the lie that leaves her better
-off, (ii) acquit an adviser who helps less than it could, (iii) leave no gain on her choice to an adviser
-whose action depends on its aim, or convict it, harm included, and (iv) report a drift without reporting one small step;
-or the reason none does. The suspicion to test first is that (ii) and (iii) cannot both hold: the first
-follow-up's arm's-length and faithful-adviser standards part on exactly that.
+Wanted: a rule for `U`, and the consequences of each rule tried. In particular whether including, for each
+part her evaluation reads, the aim that is that part's own purpose holds her own adviser to more than a
+stranger in the way the steering follow-up's faithful-adviser standard did, convicting an adviser that
+helps less than it could; whether any rule both acquits that adviser and convicts selective teaching; and
+what, if anything in this account, convicts a harm done at every aim, or the argument that it belongs to
+her authority and not to legitimacy
 
-*Deliverable shape:* `test-supported` — a comparison action and a cut-off stated over the model of `decomposition/ACCOUNT.md` in the prosecution round, their verdicts on the 57 single-step renderings of statement 6 frozen before the code; or a proof, with its counterexample as a case module, that no comparison meets the four requirements.
-*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with the comparison wired in and a status for it in `decomposition/THEOREMS.md`; under it selective withholding (B5) and the lie that leaves her better off (D2) are subversion, the careful teacher (D6) and silence (T13) are not, an adviser that teaches only what favours its aim either gains nothing on her choice or is subversion, and the drift of D16(a) is reported under the cut-off while a single step of 1/8 is not — or the runner checks the case module showing two of these cannot hold together.
-*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/THEOREMS.md` (statements 4 and 6), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/ACCOUNT.md` §3, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/theorems.py` (`comparisons`), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/ADVISER_AS_PART.md` (questions 2 and 3), `lean/Workspace/Deference/Contrib/Legitimacy.lean` (`lastReport`, `unreported_lt`), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` H4 and H10.
+*Deliverable shape:* `test-supported` — modules under `scored/` of the prosecution round: a rule fixing the set of aims `U` of `scored/ACCOUNT.md` §6 from a scenario (candidates: the aims the scenario names; those and, for each part her evaluation reads, the aim that is that part's own purpose; the aims an overseer cannot exclude), with its verdicts on the bank frozen before the code; and statements in `scored/THEOREMS.md`, each with one status, on whether the gate's no-gain property holds under each rule for every candidate that scores by the facts, and on what convicts a harm done at every aim.
+*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with a status for each new statement; under each rule the verdicts on Z2 (a lie told at every aim), Z4 and Z5 (teaching only what favours its aim, against two ranges), D6 (the careful teacher), B5 (withholding), T13 (silence by every aim) and an adviser that helps less than it could; the pairs of statement 5 recomputed; the drift of D16(a) reported under a cut-off on the running sum while a single step is not.
+*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/THEOREMS.md` (statements 4, 5 and 9), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/ACCOUNT.md` (§6, §7 and §10), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/CASE_BANK.md` (Z1–Z5), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/ADVISER_AS_PART.md` (questions 2 and 3), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (I3, I4 and I8).

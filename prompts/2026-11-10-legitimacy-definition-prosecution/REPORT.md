@@ -1378,6 +1378,440 @@ and the Lean names `Candidate`, `gap`, `Determinate`, `legitScoring`.
 
 The pull request is not auto-merged; the merge is a pull-request fact.
 
+## Fourth follow-up (2026-11-12) — candidates weighted by explanatory quality, influence judged against the adviser's aim
+
+Dispatched by `PROMPT-followup-4.md`. The idea the account develops is Sam Eisenstat's; the
+four explanatory virtues and the five readings under test are the maintainer's, the
+readings provisional. Write scope: the round directory, this prompts directory, items
+136–138, `DECISIONS.md`, and the structured state the gates require. No Lean was written.
+
+**Headline.** The account is stated over a finite model in `scored/ACCOUNT.md`. Every
+result is a conditional calculation in that model — one small scene, three stipulated
+principals, two tabulated languages, one cost for a missed move — and the pass ran two
+investigations that the implementation does not join: weights over candidates on one
+scene, and a bank of cases judged under stated candidates. *Weights.* Scoring candidates
+by parsimony, fit and handles, read by a second predictor, concentrates the weight in
+mass and not on agreeing candidates. Under each principal, at 0.95 or more of the weight,
+the judging part is given either no purpose or a purpose that names its own mechanism,
+which the second predictor cannot use, and its behaviour is carried as a table of the
+history; under two principals the heavy candidates split on whether a lie is illegitimate
+and under the third on a trick, a temptation, a threat and a hard truth. This follows from
+choices fixed before the code: a wrongly predicted move costs 8 bits and an unpredicted
+one 1 or 2, and a part sees so little that a table is short. Under the other reading of
+what a purpose predicts (the best move on what the part sees) the belief part's purpose
+follows her corrections, as the dispatch expected and as the principals were built to
+show; the judging part's does not. The score is a loss and not, as first claimed, a code
+length. *The bank.* Judging influence against the adviser's aim, under stated candidates
+and aim structures the executor assigned, 77 of 89 cases match their evident character
+against the third follow-up's 66, by a changed standard; five of six honest-difficulty
+over-counts are gone because those cases are listed as the same at every aim, and a
+threat is illegitimate. No principal's weights favour the stated candidate, and under the
+corrector's heavy candidates a threat is not illegitimate. *The gate.* Choice-invariance
+between actions that harm, subvert and force nothing against each other holds under the
+stated candidate and fails under every candidate tied at the top for two of three
+principals; no maximizing adviser was analysed. The condition is strictly weaker than
+aim-freedom of the adviser's whole intervention, and the decomposition adds nothing to
+the mathematical guarantee aim-freedom gives: it adds a candidate-relative rule for which
+aim-dependent variation to permit.
+
+### I1. The account as stated
+
+`scored/ACCOUNT.md`. A **candidate** is a term: a goal, a purpose for each part, and
+exceptions *(part, view, move)* on views that occur in her history. At a situation it
+predicts, for each part with the other parts' moves as they were, the exception's move
+if one applies, and otherwise the moves best by the part's purpose. Its **weight** is
+`2^(−bits)` normalised, with `bits = DL + Fit + Hand`: the length of the term, plus the
+cost of each move on the history it does not predict, plus the same on the probes
+(adviser inputs she has not met, and four changes: a better instrument, a falsehood
+disclosed, a source shown unreliable, a part degraded). A move outside the predicted set
+costs 8 bits; a move inside a set of `k` costs `⌈log₂ k⌉`. The costs are computed by a
+**second predictor** who has the term and the scene, for whom a term that refers to her
+own mechanism or action predicts nothing. Three principals share one history on a chain
+of three parts and a part that states her aim: a **corrector**; a **non-corrector**; a
+**divided** principal who corrects her beliefs, says she aims at the good option, and
+takes a cue she could leave. The adviser is a rule from what it knows and its aim, over a
+stated set `U` of aims, to an action; an action is **aim-driven** where another aim of `U`
+acts differently; it **harms, subverts or forces** a part when it does so against that
+other aim's action; and the influence is **illegitimate** when in addition the aim is not
+that part's own purpose and no standing verdict of hers covers it.
+
+Choices made where §1 or §2 was ambiguous, each with its alternative (`ACCOUNT.md` §10):
+
+1. **A purpose predicts that the part serves at the situation as it is** (*serves*).
+   Alternative, *view-best*: the best move in expectation on what the part sees. Both are
+   computed; the difference is the largest in the pass.
+2. **Each part's move is behaviour to be predicted.** Alternative: her action alone, under
+   which candidates differing in the purposes of earlier parts predict alike.
+3. **Handles are scored against what she would do** and are part of the weight.
+   Alternative: definiteness alone, which rewards a confident wrong candidate.
+4. **The four virtues are terms of one sum in bits**, and nothing but prediction of her
+   record lowers it. Rejected: a weighted sum with free coefficients. The frozen account
+   called the sum a code length and the weight the probability a second predictor gives
+   her record; the review showed it is neither (I5, point 10), and the cost of a missed
+   move is such a coefficient.
+5. **The second predictor is given the scene** with the explanation.
+6. **"Another aim" ranges over a stated set `U`**, and a gap is the adviser's when wider
+   than under *some* other aim's action. In a banked case `U` has two members.
+7. **An aim is a part's own purpose when the objective is the part's goal function.**
+8. **In a banked case the other aim's action is the third follow-up's comparison action**
+   unless the case says otherwise.
+9. **Readings 3 and 4 are reported as conditions on candidates**, not applied to weights.
+10. **A heavy candidate** is one of the fewest that hold 99/100 of the weight.
+11. **The bank is computed under each scene's stated candidate**, with the weight of
+    illegitimacy beside it for cases on Chain.
+
+Also fixed by the executor and not by the dispatch: the two description languages as
+tables of lengths; the history (80 steps) and the probe set (84); the three principals'
+behaviour on the probes; the exception form (a table entry on a view of the history);
+the goal vocabulary, including `ease`, the goal the divided principal pursues.
+
+### I2. Verdicts and the divergences
+
+Ninety-four cases, 101 rows; 93 rows carry a prediction, 89 match, 4 diverge on three
+cases (`scored/DIVERGENCES.md`), each named in the bank before the code as expected to.
+
+| computed | rows |
+|---|---|
+| illegitimate: aim-driven subversion (with or without other kinds) | D1–D5, D13, D16a, D17, D18, D22, P1, P3, P5, P8, P12, B5, T3, T6, T8, N1, N3, N7, N8a, N8b, N11a, N11b, X1a, X2, X3, X4, Y8, Z4 |
+| illegitimate: aim-driven harm | D9, P13, T1, Y7a |
+| illegitimate: force | D10, P4, B1, B2, B3, T4, T5, T10, T11, N4 |
+| force, covered; not illegitimate | D12, P9, N5, X5 |
+| aim-driven, help only; not illegitimate | D6, D21, P2, P7b, P7c, P14, B4, B6, T2, T12, Y5, Z1, Z5 |
+| aim-driven, subversion of the part whose purpose is the aim; not illegitimate | Z3 |
+| aim-driven, nothing | D11, D15, D16b, T7, N9, N14, X1b, Y4 |
+| not aim-driven, a gap; not illegitimate | D14, P7a, P10, P11, T13, X7, Y6, Y9, Z2 |
+| not aim-driven, no gap | D20, P6, N2, N10, N12, N13, Y7b |
+| no adviser: a gap, hers or nobody's; in order | D7, D8, D19, D23, D24, P15, T9, N6, X6, Y2, Y10 |
+| weights | Y1 (the alarm part is for the goal at 0.992 under the corrector), Y3 (the idle part has a purpose at 0.9999) |
+
+**Divergences.** **P7b, P7c**: predicted not aim-driven; an author and a friend who show
+what serves their view are rendered as choosing by it; the verdict, not illegitimate, is
+the dispatch's. **N14**: predicted illegitimate; the rendering leaves her equally well off
+under both aims, and selection that changes no part's best or gap is nothing. **Y3**:
+predicted that a purpose for a part nothing depends on is carried only by low-weight
+candidates; a purpose predicts the idle part's moves, and each part's move is behaviour to
+be predicted.
+
+**Reported.** **Y5**, a lie that exchanges one error for another: help to judge and act,
+belief's gap unchanged, not illegitimate. **N8**, **N11**: illegitimate whether or not her
+mechanism discounts the known aim. **X1**: illegitimate when her mechanism reads the
+signal as sent, nothing when she reads at face. **D23**: no gap; expressed by reading 3
+and by reading 4 (statement 8).
+
+### I3. Statements 1–9
+
+`scored/THEOREMS.md`. After the review the statements of 5, 6, 8 and 9 were narrowed, and
+numbers in 1, 3, 4 and 5 corrected; no status changed.
+
+| | status | on what |
+|---|---|---|
+| 1 the weight concentrates on candidates that agree | **refuted** | for agreement; the mass does concentrate: the top ten of 4,000 hold 0.84, 0.90, 0.98, and 40, 22, 12 are heavy. They split on the belief part's purpose and on a lie (corrector, divided) or on a trick, a temptation, a threat and a hard truth (non-corrector), and give the judge `const` or a private `mech` at 0.95 or more. "Purpose equal to mechanism" as a rule is charged by intersubjectivity alone (644 bits; without it, it is the heaviest at 0.84); as a table it is within 14 bits of the heaviest under two principals. The stated candidate with no exceptions is 894, 1,062 and 876 bits above the heaviest. Without handles the three principals have the same weights. Language B changes the heaviest goal to "whatever she does" under two principals, and the class itself. Under view-best the belief part's purpose is fixed at 0.9999 under each principal and the judge's is not. Five parts: not reached |
+| 2 facts or what it was handed | **refuted** | read of every part. It holds at the belief part under both readings (facts 0.28 against 0.02 under the corrector, handed 0.9999 under the non-corrector) and fails at the judge and the acting part |
+| 3 lying | **refuted** | against a threshold of 99/100 the executor set. A lie she will act on, where she would otherwise be right: 0.28, 0.000025, 0.998 by principal (view-best 0.9999, 0.87, 0.9999), and at hard worlds alone 0.28, below 10⁻⁶, 0.28; about a matter nothing reads: below 0.0005 (view-best 0.9999, 0, 0.9999); to someone already wrong: 0 under every candidate, a fact about the rendering |
+| 4 the comparison by aim | **holds on the stated domain** | 77 of 89 match their evident character (66 before), 9 do not, 3 open; none that matched before fails now. Not a controlled comparison |
+| 5 the gate | **refuted** | as choice-invariance over pairs of base actions; no maximizing adviser is analysed. Both earlier counterexamples are closed. Under the stated candidate no two actions that harm, subvert and force nothing against each other leave her choice different. The statement fails where her goal does not rank the options (108 pairs), where every part is scored by what it was handed (84), and under every candidate tied at the top for the corrector (78 or 166) and the non-corrector (192) |
+| 6 intersubjectivity and the description language | **refuted** | the weights under the two languages are 0.96, 0.89, 0.80 apart in total variation with it and 0.89, 0.91, 0.89 without: further for the corrector. Whether a second party reproduces the verdicts of statement 4 was not shown |
+| 7 stated and pursued aims | **holds on the stated domain** | the divided principal: every heavy candidate has goal `ease` and explains her statement as saying the creditable thing. One atom buys any goal against any statement, and the goal and that purpose were put in the vocabulary for her |
+| 8 readings 3 and 4 | **holds on the stated domain** | D23 is expressed by either. Reading 3 is met vacuously by nearly all the weight (candidates whose exceptions leave no normal condition); reading 4 leaves 0.04, 0.06, 0.998 and, where it bites, favours the goal "whatever she does" |
+| 9 what `Legit` then is, candidate by candidate | **holds on the stated domain** | values within a `Scoring`'s bounds under each candidate, not elaborated; the graded predicate with a running sum is not shown to give one. Every one of five adviser inputs has positive weight of illegitimacy under every principal, so the cut-off decides |
+
+### I4. The third follow-up's table of what corrigibility needs, row by row
+
+| what corrigibility needs | third follow-up | now | what changed |
+|---|---|---|---|
+| a predicate `Legit` on histories | stated | stated, graded: a weight of illegitimacy in `[0, 1]` per step and a running sum | graded; and it now takes the adviser's rule at aims it does not have, as the second follow-up's *uniform* did |
+| a single-decision setting | a `Decision`; weights unargued | a `Decision` with weights from the score of `ACCOUNT.md` §3 | the weights have a rule behind them, with a free cost for a miss, and favour tables; `N` is still illegitimacy |
+| the violation probability `v` | depends on candidates no constraint separates | computed per action and principal | it depends on the principal's corrections: a lie has `v` 0.27, 0.00, 0.91 |
+| a comparison action | four computed, none fixed | the other aim's action | fixed given `U`; `U` is the new parameter (Z5), and harm done at every aim passes (Z2) |
+| the gate's no-gain property | not obtained | choice-invariance between actions that harm, subvert and force nothing against each other, under the stated candidate; fails under ties and under candidates scoring by what a part was handed; no maximizing adviser analysed | a property of the candidate; harm is gated, so the threat counterexample is closed |
+| her later judgment as the standard | a standing verdict can be wrong | unchanged; under the heavy candidates her judging part has no purpose | worse under the weights |
+| Theorem 3's hypotheses | not approached | not approached | none |
+| a graded score with a cut-off | the gap; a running sum | the weight of illegitimacy, a number in `[0, 1]`; a running sum | the grade no longer needs a common scale across parts; with a cut-off of 0 every action some candidate convicts is convicted; the sum is not connected to a `Scoring` |
+| invariance of the verdicts | only serving to not serving | not retested | harm is now gated, and harm is the kind statement 3 of the third follow-up found not invariant |
+
+### I5. External review
+
+One review through `codex exec --sandbox read-only` (codex-cli 0.153.4, model
+`gpt-6-astra`, as its log reports), on copies of the round directory, the dispatch with a
+local path replaced, four Lean files, the third follow-up's assessment and a draft of this
+section. Its reply is `REVIEW-astra-followup-4.md`, verbatim. It ran the runner and
+reproduced every status and every count it checked. Dispositions, by its numbering:
+
+1. *Statement 1 is refuted for agreement, not concentration; the non-corrector's heavy
+   set does not split on a lie.* **Accepted; the draft was wrong** about the non-corrector.
+   Corrected here and in the README.
+2. *Statement 2's refutation comes from reading "a part" as every part; the acting part's
+   result is unsurprising; the vocabulary sets the two scorings far apart.* **Accepted**;
+   all three said in the statement.
+3. *The 99/100 is invented; the quantity is the weight of candidates convicting at some
+   world of a set and hides variation between worlds; "already wrong" is a property of
+   the rendering.* **Accepted; computed** by kind of world and reported; the other two
+   said.
+4. *77 against 66 is not a controlled comparison, and the verdicts are the stated
+   candidate's.* **Accepted**; said in the statement and in the headline.
+5. *The gate statement is choice-invariance over nine actions, not the dispatch's
+   maximizing adviser.* **Accepted**; the statement says so. The optimization was not done.
+6. *The second-party reproduction was not computed: the code returned a count from the
+   absence of a private term.* **Accepted; a defect.** The claim and the code are removed
+   and the question is recorded as not shown.
+7. *Statement 7's check asked for half the weight, not every heavy candidate; the result
+   is constructed by `ease` and `please`.* **Accepted; the check strengthened** (it still
+   holds) and the construction said.
+8. *Reading 3 is vacuous for nearly all the weight; "a part with no purpose opposes
+   nothing" is false.* **Accepted; reproduced** (0.99999998 and 0.9999998 of the weight on
+   candidates with no normal condition; `const` belief opposing judge and act at a hard
+   world). The sentence is replaced.
+9. *The bounds hold candidate by candidate; the graded predicate is not given a `Scoring`;
+   "three lies" multiplied a world average.* **Accepted**; the statement is narrowed to
+   the candidate-relative construction and the three steps are computed at one world.
+10. *The residual code violates Kraft (0 bits for a hit, 8 for a miss); the weights are
+    not likelihoods; the 8 is a free coefficient.* **Accepted.** The interpretation is
+    withdrawn in `ACCOUNT.md` and `THEOREMS.md`: `bits` is a loss. Not repaired; no number
+    was recomputed under a normalised likelihood.
+11. *The headline's mechanisms are design artifacts; "not built in" draws too sharp a
+    line.* **Accepted.** I7 no longer claims any result as not built in, and the headline
+    calls the results conditional calculations.
+12. *"No purpose" conflates `const` with a private `mech`, which is a different goal
+    function.* **Accepted**; reworded throughout.
+13. *The language comparison changes the class (4,000 against 3,600 terms), and exception
+    lists and view-best's reference are chosen with the probes.* **Accepted; confirmed**;
+    said in statements 1 and 6 and in I7.
+14. *The bank has no objectives over outcomes: `OWN`, `constant` and `none` are lists of
+    case ids, and the old comparison action is relabelled the other aim's.* **Accepted**;
+    said in statement 4 and I7.
+15. *Which assignments decide the verdicts; only Z3 tests the own-purpose clause.*
+    **Accepted**; said. Honest, mistaken or compliant does not entail the same action at
+    every aim, and the bank's rule assumes it.
+16. *The lemma is false for legitimacy as defined, which admits covered and own-purpose
+    harm and subversion (Z3, N5).* **Accepted; a defect.** The lemma is restated for
+    actions that neither harm nor subvert, which is what the proof and the check use.
+17. *The gate analysis took one of several tied maximizers.* **Accepted; reproduced.**
+    Every tied candidate is now computed: 78 or 166 pairs for the corrector, and under
+    view-best none or 88 according to the acting part's purpose.
+18. *The relation to aim-freedom holds for the adviser's whole intervention, not for
+    Lean's `hx`; aim-freedom does not forbid teaching.* **Accepted**; both corrected.
+19. *`Realizes` has no fixed relation without `x`, the channel and the reference; the
+    decomposition adds nothing to the mathematical guarantee, and adds normative structure
+    that the calculation does not validate.* **Accepted and adopted** as the answer in
+    statement 5 and I8.
+20. *The "stated candidate" row was an eight-exception variant (the stated candidate is
+    894, 1,062, 876 bits above); two candidates tie without handles; "seven in eight" is
+    for two-valued moves; 1/2 and 21/40 are joint probabilities.* **Accepted; each
+    corrected.**
+21. *Rounded zeros are positive, and with a cut-off of 0 any positive weight convicts;
+    skipped mass is discarded.* **Accepted.** Statement 9 says so: every one of five
+    inputs is convicted at cut-off 0 under every principal. Skipped mass is reported where
+    computed.
+22. *Y1 and Y3 counted duplicate explanations.* **Accepted; fixed** (0.992 for 0.988; no
+    verdict changed).
+23. *What the draft still failed to say; "exemptions, not protection" understates; "no
+    subject" is unsupported; the urgent next result is a coherent predictive model.*
+    **Accepted.** I7 and I8 are rewritten on each, and item 136 asks for that model.
+
+### I6. Deviations from the prompt
+
+- **A second reading of what a purpose predicts was computed throughout** (*view-best*),
+  after the first results; the dispatch asked for a choice and its alternative.
+- **`scored/ACCOUNT.md` was amended after the freeze** in the places its head lists (the
+  degraded part's own move is not scored; history lengths 160, 320, 640 in place of 40,
+  which gives fractional counts). No prediction was edited.
+- **The class contains the third follow-up's 3,000 as 750 terms**: two candidates there
+  that differ in a mechanism only off the history are one explanation here.
+- **Statements 2, 3, 5, 6, 7, 8 and 9 were given the exact form their status needs** by the
+  executor; where the dispatch asked for a quantity (3, 7, 9) the status is of a stated
+  claim about it and the quantity is tabulated.
+- **Statement 1's model of five parts was not reached.**
+- **The bank is computed under stated candidates**, not under the weights; only Chain has
+  a class, and the weight of illegitimacy is reported for its rows.
+- **Seven renderings were changed beyond the five REPORT H9 names** (X3, P7, N8, X1, D13,
+  Y7, Y1, Y3 as `scored/CASE_BANK.md` lists), and five cases were added (Z1–Z5).
+- **The count of statement 4 uses a standard written down in this pass** (illegitimate or
+  not, per case); the third follow-up's 66 was by kinds.
+- **Statements and checks were changed after the review** (I5); the review saw a draft of
+  this section, not this text. No status changed and no prediction was edited.
+- **The dispatch's maximizing adviser was not analysed** in statement 5, and **whether a
+  second party reproduces the verdicts** in statement 6 was not computed.
+- **No new item is filed**; the text of one is under Outstanding maintainer actions.
+
+### I7. What was not shown
+
+- **How far the result depends on the three principals: entirely, for the results that
+  distinguish them.** Their behaviour on the probes is stipulated. The corrector was built
+  to correct at the belief and judging parts, the non-corrector to follow what she is
+  handed, the divided principal to take a cue she could leave; statement 2's result at
+  the belief part and statement 7's are the weights reading those stipulations back, and
+  view-best's reference distribution is built from the same records. The results that are
+  the same for all three (tables over purposes under *serves*; no usable purpose for the
+  judge) are not stipulated outcome by outcome, and are favoured by the design all the
+  same: a judge made vulnerable to framing and hard questions, a vocabulary with no public
+  purpose that predicts those vulnerabilities, and no exception that generalises.
+- **How far it depends on the description languages and the cost of a miss: decisively.**
+  Both languages are tables of lengths chosen by the executor. At 4 bits a missed move the
+  heaviest candidates have purposes at every part; at 8 and 16 they are tables. No value
+  was argued, and the score is not a valid code, so no likelihood stands behind the
+  weights. Language B changes the heaviest goal and the class.
+- **No held-out prediction.** Her record on the probes is in the weights, in the choice of
+  the *best* exception lists, and in view-best's reference. The ablation "no handles" drops
+  the probes' term from the score and keeps a class built with them.
+- **The scene is small.** A part sees a few flags, so a table of the history's views is 4
+  to 6 entries. The five-part model was not reached.
+- **One class**: the decomposition, what each part sees and the vocabularies are fixed.
+- **The bank is the executor's reading of its own renderings, under aim structures it
+  assigned.** No adviser objective is modelled; that a teacher's sample is "the same at
+  every aim" is an input, and honest, mistaken or compliant does not entail it. For most
+  cases the third follow-up's comparison action is relabelled the other aim's. Only Z3
+  tests the clause that an aim may be a part's own purpose. The unfixed comparison action
+  has become an unfixed range of aims: Z4 and Z5 are one policy with two ranges and
+  opposite verdicts.
+- **The bank's verdicts are not the weights'.** Shop, Pool, Values and Stuck have no
+  class; on Chain the weight of illegitimacy is reported beside each verdict and often
+  disagrees with it.
+- **Statement 5**: a lemma about actions that neither harm nor subvert, an enumeration
+  over nine actions on one scene, and counterexamples. Nothing about an adviser maximizing
+  the gated score, authorized writes, or the exemptions.
+- **Statement 6**: nothing about a second party.
+- **Statement 9**: the running-sum predicate is not connected to the candidate-relative
+  values; no reserved matters, respecting alternative, calibration or sequence.
+- **Candidates below 2⁻⁴⁰ of the weight are not evaluated** in statements 3, 8 and 9 and in
+  the per-row weights; a figure printed as 0.0000 is small and positive unless said.
+- **The relation to the Lean conditions is by reading their statements**, and depends on
+  how `x`, the channel and the reference are identified; nothing was built.
+- **The repository-level `tests/run.py` sweep** was run once under Python 3.13 on the tree
+  as committed apart from this line; its result is recorded with the commit that carries
+  this section.
+- **Nothing is registered.** Components: the account as stated — **open**; statements 1–9
+  — **open**, their statuses runner-checked facts about a finite model.
+
+### I8. Assessment
+
+Each heading is confined to what this pass tested or found, beside the third follow-up's
+corresponding finding.
+
+**As an account of teleology and manipulation.** *Third follow-up:* 66 of 89 cases matched
+their evident character; six over-counts, all honest difficulty; nine misses; a threat
+was harm with her verdict standing. *Now:* 77 of 89. Judging against the adviser's aim
+removes five of the six over-counts (the sixth, a surprise party, stays illegitimate
+absent a standing verdict), convicts the threat and the advocate for an undisclosed side,
+and labels the costly signal correctly. It leaves the misses the dispatch flagged (order
+and framing between equals, redirection her goal ignores) and N14, and it adds two the
+dispatch's own sentence implies: a lie told at every aim is not illegitimate (Z2), and
+selective teaching is not when no aim of `U` would have told her the rest (Z5). For
+teleology proper: the weighting has no threshold to deny a rarely performed function (Y1
+matches), and it grants a purpose to anything whose behaviour a purpose compresses,
+depended on or not (Y3).
+
+**For the legitimacy framework.** *Third follow-up:* a predicate with the right shapes,
+turning on a comparison action the account did not fix, and no no-gain property under any
+comparison because harm is not subversion. *Now:* the comparison is the other aim's
+action, given a range of aims that is as unfixed as the comparison was; harm is gated,
+and both counterexamples are closed. Between actions that harm, subvert and force nothing
+against each other her choice is the same under the stated candidate, and not under any
+candidate tied at the top for two of three principals; the dispatch's maximizing adviser
+was not analysed. The condition is strictly weaker than aim-freedom of the adviser's whole
+intervention, which the second follow-up found the gate needs.
+
+**For the research.** *Whether weighting restores what the yes-or-no constraints did
+not.* The third follow-up found eight admissible candidates, no two classifying alike. In
+this formalization weighting does not restore agreement: the weight is concentrated on
+candidates that mostly carry her behaviour as tables. Under one reading her corrections
+fix whether the belief part is scored by the facts or by what it was handed, in principals
+built to differ in exactly that. Candidates that refer to her own mechanism are removed
+only by a second predictor defined not to understand them, and the table is not removed.
+None of this is a finding about explanatory weighting in general; it is what this
+vocabulary, this cost of a miss and this scene give. *What the decomposition adds to
+aim-freedom.* To the guarantee, nothing: aim-freedom gives equality of her evaluation,
+and the condition gives equality of each part's best and gap under a candidate, which is
+real, conditional on the candidate, and not enough for her verdict. It adds normative
+structure — which aim-dependent variation to permit — that the calculation applies and
+does not validate. *The single most valuable next result:* the weighting as a coherent
+predictive model: one candidate class fixed across languages, an explicit likelihood for a
+part's departures from its purpose in place of a flat cost, exceptions chosen without the
+probes, and the probes then predicted and not fitted. Until that exists the question
+whether purposes outweigh tables has no answer that is not a choice of coefficient; item
+136 asks for it, on a scene where a table is dear.
+
+### I9. Filings, names, and what is reserved
+
+**Revised under the prompt's direction; nothing filed.** Items 136, 137 and 138 are
+rewritten to ask for what this account needs: 136, the weighting as a coherent predictive
+model (a fixed class, a likelihood for a miss, probes predicted and not fitted) on a scene
+where a table of her history is dear; 137, the lemma of
+statement 5, its strict implication from aim-freedom and `legitScoring` in Lean, the rest
+waiting on a ruling; 138, the range of aims an action is compared against, and harm done
+at every aim. `DECISIONS.md`: the maintainer's confirmation of the two addenda as a dated
+entry, its queue entry removed; one agent-decided entry,
+`2026-11-12--scored-account-readings`; the three queue entries of 2026-11-12 each given a
+line on the reading tested and its result; the entry of 2026-11-10 on the faithful-adviser
+standard restated; one new queue entry.
+
+**New names, all provisional:** the dispatch's — "explanation", "weight", "parsimony",
+"retrodictive fit", "handles", "intersubjectivity", "aim-driven", "illegitimate
+influence", "a part's own purpose", the directory `scored/`; and the executor's —
+"history", "probes", "changes", "exception", "second predictor", "public" and "private"
+term, "normal conditions" (of a candidate), "heavy", "serves" and "view-best" (readings of
+what a purpose predicts), "weight of illegitimacy", "size", "opposes", "unopposed", the
+scene "ChainR", the principals "corrector", "non-corrector", "divided", the goals `ease`
+and `does`, the purposes `handed`, `avow`, `please`, the exception policies *bare*,
+*patched*, *best*, "language A" and "language B", the aim structures "driven", "own",
+"constant", "none", case names Z1–Z5, and the Lean name `LegitAgainst` in item 137.
+
+**Outstanding maintainer actions**
+
+1. Rule what a purpose predicts of a part where no exception is listed. Entered in
+   *Awaiting the author* (2026-11-12). Decision required: *that it serves at the situation
+   as it is*, *that it does its best on what it sees*, or *leave open and dispatch item
+   136*.
+2. Rule which reading of its constraints the account means; the entry of 2026-11-12 stays,
+   with this pass's result. Decision required: for *never opposed* and *nothing left
+   over*, *a condition between parts with the best outcomes had together, applied to the
+   weights*, *reported only*, or *leave open*.
+3. Rule whether a part handed a falsehood is failing or serving; the entry of 2026-11-12
+   stays. Decision required: *by her corrections* (the reading tested, which holds at the
+   belief part only), *by the facts*, *by what it was handed*, or *the account does not
+   say*.
+4. Rule against what an adviser's action widens a gap; the entry of 2026-11-12 stays.
+   Decision required: *the action it would have taken with another aim, with a rule for
+   the range of aims* (item 138), *a declared reference*, or *leave open*; and whether a
+   harm done at every aim is illegitimate.
+5. Rule whether a change in what she cares about that her goal does not rank can be bad;
+   the entry of 2026-11-12 stays, untouched by this pass. Decision required: *yes, and the
+   account needs a second standard*, *no*, or *leave open*.
+6. Rule whether her own adviser is held to more than a stranger; the entry of 2026-11-10 is
+   restated as this. Decision required: *one standard*, or *her adviser's range of aims
+   includes aiming at her parts' own purposes*. On ruling, the entry of 2026-11-11 on *in
+   range* can be retired with it, and then
+   `git rm projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/steering/DIVERGENCES.md`,
+   dropping its row from that directory's `README.md` and `PROVENANCE.md`.
+7. File the items below once an executor's handle is mapped (the *Awaiting the author*
+   entry of 2026-11-10 on `@claude-fable-5-2` stands). The two of H11, action 7, are
+   carried; the second of them, *A kind for harm that preserves gaps, and a gate that sees
+   it*, is answered in part by this pass (harm is gated under reading 2; its scale is
+   not) and should be restated against `scored/` when filed. One is new:
+
+   > **Knowing the adviser's rule at aims it does not have** [open]. Section: Normativity
+   > line — legitimacy. In the account of `scored/ACCOUNT.md` (in
+   > `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/`)
+   > an adviser's influence is illegitimate when its action harms, subverts or forces a
+   > part against the action it would have taken with another aim. `Legit` is therefore
+   > not a predicate of the realized history: it reads the adviser's rule at aims it does
+   > not have, as the second follow-up's *uniformly in range* did
+   > (`teleology/THEOREMS.md`, statement 3). Wanted: an observation model for an overseer
+   > under which the rule at other aims is recorded or estimable — a committed policy, a
+   > population of advisers with different aims, interventions on the aim — and for each,
+   > whether `Legit` is a function of the record, estimable without bias as
+   > `UnbiasedFromFeedback` of
+   > `lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean` needs, or neither,
+   > with the separating case.
+   > *Deliverable shape:* `test-supported` — modules under `scored/` of that round, one per
+   > observation model, predictions frozen before the code.
+   > *Acceptance check:* `python3 run.py` in the round directory green with a status for
+   > each new statement in `scored/THEOREMS.md`; teaching only what favours its aim (Z4,
+   > Z5) and the lie told at every aim (Z2) classified under each observation model.
+   > *Context:* `scored/THEOREMS.md` statements 5 and 9; `scored/ACCOUNT.md` §6;
+   > `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` I4.
+
+The pull request is not auto-merged; the merge is a pull-request fact.
+
 ## Attribution
 
 - Prompt-author model: Claude Fable 5 (Anthropic); dispatched 2026-11-10, kept
@@ -1397,4 +1831,8 @@ The pull request is not auto-merged; the merge is a pull-request fact.
   model Claude Fable 5.2 (Anthropic), executed 2026-11-12; external reviewer `gpt-6-astra`
   through codex-cli 0.153.4, as its log reports, reply kept verbatim as
   `REVIEW-astra-2026-11-12.md`.
+- Fourth follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-12,
+  kept verbatim as `PROMPT-followup-4.md`; executor model Claude Fable 5.2 (Anthropic),
+  executed 2026-11-12; external reviewer `gpt-6-astra` through codex-cli 0.153.4, as its log
+  reports, reply kept verbatim as `REVIEW-astra-followup-4.md`.
 - No chat bundle.
