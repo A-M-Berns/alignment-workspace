@@ -4,7 +4,14 @@ Amended after the freeze, with `THEOREMS.md`: §3, the degraded part's own move 
 is the change and is not scored; §4, the history lengths reported beside 80 are 160, 320
 and 640, since 40 gives fractional counts, and a missed move at 4 and at 16 bits is
 reported beside 8; §4 and §10.1, the alternative reading of what a purpose predicts is
-computed as *view-best* and its reference distribution is stated. No prediction was edited.
+computed as *view-best* and its reference distribution is stated. After the external review:
+§3, `bits` is a loss and not a code length — a predicted move at 0 bits and a missed one at
+`ε` over-fill Kraft's inequality — so "the probability the second predictor assigns to her
+record" is withdrawn, the weight is an exponential weighting of that loss, and `ε` is a free
+rate of exchange of the kind the rejected weighted sum has; §4, the *best* exception lists
+are chosen with the language's lengths and with the probes, so the class differs between
+languages (4,000 terms under A, 3,600 under B); §7, with the cut-off at 0 any candidate of
+positive weight convicts. No prediction was edited.
 
 The account of `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-4.md`
 §1 and §2, stated over a finite model. The idea that manipulation is the distortion of an

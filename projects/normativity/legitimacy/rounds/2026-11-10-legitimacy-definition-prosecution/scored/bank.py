@@ -58,8 +58,11 @@ def _small_class(purposes, atoms, hist, prb, lang="A"):
             total = L["atom"] * atoms[name] + L["entry"] * len(entries) + sum(n * cost(v, w, m) for v, w, m, n in hist + prb)
             rows.append((name, policy, len(entries), total))
     top = max(t for *_, t in rows)
-    raw = {}
+    raw, seen = {}, set()
     for name, policy, k, t in rows:
+        if (name, k, t) in seen:        # the same explanation reached under two policy names
+            continue
+        seen.add((name, k, t))
         raw[name] = raw.get(name, 0) + (1 << (top - t))
     whole = sum(raw.values())
     return {name: F(v, whole) for name, v in raw.items()}, sorted(rows, key=lambda r: r[3])

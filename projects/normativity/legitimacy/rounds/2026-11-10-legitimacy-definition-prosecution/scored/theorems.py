@@ -71,7 +71,8 @@ CHEATS = {
     "stated, altered at belief": ("true", ("mech", "world", "world"), W.POLICIES),
     "stated, altered at judge": ("true", ("acc", "mech", "world"), W.POLICIES),
     "stated, altered at act": ("true", ("acc", "world", "mech"), W.POLICIES),
-    "the stated candidate": ("true", ("acc", "world", "world"), W.POLICIES),
+    "the stated purposes with the exceptions that serve them best": ("true", ("acc", "world", "world"), W.POLICIES),
+    "the stated candidate, no exceptions": ("true", ("acc", "world", "world"), ("bare",)),
 }
 
 
@@ -140,12 +141,16 @@ def cheats(principal):
             pick = [r for r in rows if r["goal"] == goal and r["purposes"] == purposes]
             if policies == ("bare",):
                 pick = [r for r in pick if r["entries"] == 0]
+        if policies == ("bare",):
+            pick = [r for r in pick if r["say"] == "avow" or goal == "does"]
         r = min(pick, key=W.bits)
         first = r["parsimony"] + r["fit1"] + r["handles1"]
         out[label] = {"bits above the heaviest": W.bits(r) - W.bits(top),
                       "of which parsimony, fit, handles": [r[k] - top[k] for k in ("parsimony", "fit", "handles")],
                       "intersubjectivity (bits it adds to this candidate)": W.bits(r) - first,
                       "exceptions": r["entries"], "say": r["say"]}
+        if policies == ("bare",):
+            assert r["entries"] == 0
     return out
 
 
@@ -216,10 +221,19 @@ def check_3():
                 total, skipped = weight_where(pr, wd, lambda g, pu: any(bad(pr, g, pu, a, c, w) for w in worlds))
                 out.setdefault(reading, {}).setdefault(pr, {})[label] = W.dec(total, 4)
                 exact[(reading, pr, label)] = total
+    by_world = {}
+    for reading in W.READINGS:
+        for pr in C.PRINCIPALS:
+            wd = W.weigh(W.table(pr, reading=reading))
+            for e in ("clear", "hard"):
+                total, skipped = weight_where(pr, wd, lambda g, pu: any(bad(pr, g, pu, C.INPUTS["lie"], C.NULL, w)
+                                                                         for w in C.WORLDS if w[1] == e))
+                by_world.setdefault(reading, {}).setdefault(pr, {})[e] = [W.dec(total, 6), "not evaluated: " + W.dec(skipped, 12)]
     first = "about what she will act on, where she would otherwise be right"
     ok = all(exact[("serves", pr, first)] >= F(99, 100) for pr in C.PRINCIPALS)
     stated = {label: any(bad("corrector", "true", C.STATED[0], a, c, w) for w in worlds) for label, (a, c, worlds) in lies.items()}
-    return {"supports": HOLDS if ok else REFUTED, "weight of illegitimacy": out, "under the stated candidate": stated}
+    return {"supports": HOLDS if ok else REFUTED, "weight of illegitimacy": out,
+            "the lie she will act on, by kind of world": by_world, "under the stated candidate": stated}
 
 
 # --- statement 4 ----------------------------------------------------------------------
@@ -386,8 +400,11 @@ def check_5():
     heavy = {}
     for p in C.PRINCIPALS:
         for reading in W.READINGS:
-            row = W.weigh(W.table(p, reading=reading))[0][0]
-            heavy["%s, %s: %s" % (p, reading, W.name(row))] = pairs(p, row["goal"], row["purposes"])
+            wd = W.weigh(W.table(p, reading=reading))
+            top = W.bits(wd[0][0])
+            tied = sorted({(r["goal"], r["purposes"]) for r, _ in wd if W.bits(r) == top})
+            for g2, pu2 in tied:
+                heavy["%s, %s: %s; %s" % (p, reading, g2, ", ".join(pu2))] = pairs(p, g2, pu2)
     # (d) against aim-freedom
     c = cand(pr, g, pu)
     x = lambda a, w, t=False: choice(pr, a, w, t)
@@ -434,24 +451,20 @@ def check_6():
                 "heavy explanations shared by A and B, of A's": "%d of %d" % (len(set(gp(A)) & set(gp(B))), len(gp(A)))}
             if reading == "serves":
                 closer &= with_ < without
-    # a second party with a heavy candidate's explanation and her record
-    rows = [r for r in K.all_rows() if r.chain]
-    second = {}
-    reproduces = True
+    private = {}
     for pr in C.PRINCIPALS:
         for drop in (None, "intersubjectivity"):
             wd = W.weigh(W.table(pr), drop)
-            row = wd[0][0]
-            private = "mech" in row["purposes"] or row["goal"] == "does"
-            priv_weight = summary(pr, drop=drop)["exact private"]
-            second["%s%s" % (pr, ", intersubjectivity removed" if drop else "")] = {
-                "heaviest": W.name(row), "it has a private term": private,
-                "Chain rows whose verdict a second party can compute from it": 0 if private else len(rows),
-                "of": len(rows), "weight on candidates with a private term": W.dec(priv_weight, 4)}
-            if drop is None:
-                reproduces &= not private
-    return {"supports": HOLDS if (closer and reproduces) else REFUTED, "by principal and reading": out,
-            "a second party": second}
+            top = W.bits(wd[0][0], drop)
+            tied = [r for r, _ in wd if W.bits(r, drop) == top]
+            private["%s%s" % (pr, ", intersubjectivity removed" if drop else "")] = {
+                "tied at the top": len(tied),
+                "of which with a private term": sum(1 for r in tied if "mech" in r["purposes"] or r["goal"] == "does"),
+                "weight on candidates with a private term": W.dec(summary(pr, drop=drop)["exact private"], 4)}
+    sizes = {"%s, %s" % (pr, reading): [len(W.table(pr, lang=l, reading=reading)) for l in ("A", "B")]
+             for pr in C.PRINCIPALS for reading in W.READINGS}
+    return {"supports": HOLDS if closer else REFUTED, "by principal and reading": out,
+            "private terms": private, "terms in the class under A, B": sizes}
 
 
 # --- statement 7 ----------------------------------------------------------------------
@@ -463,8 +476,8 @@ def check_7():
             s = summary(pr, reading=reading)
             out["%s, %s" % (pr, reading)] = {"share by goal": s["share by goal"], "share by say": s["share by say"],
                                              "judge": s["share by purpose"]["judge"], "act": s["share by purpose"]["act"]}
-    sh = summary("divided")["exact shares"]
-    ok = sh["goal"].get("ease", F(0)) > F(1, 2) and sh["say"].get("please", F(0)) > F(1, 2)
+    sd = summary("divided")
+    ok = sd["heavy goals"] == ["ease"] and sd["heavy says"] == ["please"]
     rows = W.table("divided")
     best = lambda goal, say: min((r for r in rows if r["goal"] == goal and r["say"] == say), key=W.bits)
     grid = {"%s, %s" % (g, s): {k: best(g, s)[k] for k in ("parsimony", "fit", "handles")} for g in ("true", "ease") for s in W.SAYS}
@@ -529,6 +542,7 @@ def check_8():
     for reading in W.READINGS:
         for pr in C.PRINCIPALS:
             wd = W.weigh(W.table(pr, reading=reading))
+            no_normal = sum(w for row, w in wd if not row["normal"])
             keep = {"reading 3": [], "reading 4": [], "both": []}
             mass = {k: F(0) for k in keep}
             skipped = F(0)
@@ -543,6 +557,7 @@ def check_8():
                         mass[label] += w
             out["%s, %s" % (pr, reading)] = {
                 "heaviest": W.name(wd[0][0]),
+                "weight on candidates with no normal condition in the history": W.dec(no_normal, 10),
                 "weight meeting reading 3, reading 4, both": [W.dec(mass[k], 4) for k in ("reading 3", "reading 4", "both")],
                 "heaviest meeting reading 3": W.name(keep["reading 3"][0][0]) if keep["reading 3"] else None,
                 "heaviest meeting reading 4": W.name(keep["reading 4"][0][0]) if keep["reading 4"] else None,
@@ -551,7 +566,9 @@ def check_8():
                     (W.bits(keep["both"][0][0]) - W.bits(wd[0][0])) if keep["both"] else None,
                 "weight not evaluated": W.dec(skipped, 12)}
     stated_row = next(r for r in W.table("corrector") if r["goal"] == "true" and r["purposes"] == C.STATED[0] and r["policy"] == "bare")
+    cw = cand("corrector", "true", ("const", "world", "world"))
     return {"supports": HOLDS if expressed else REFUTED, "D23 under the stated candidate": d23,
+            "a part with the purpose const opposing others (const, world, world at (0, hard))": sorted(oppositions(cw, (0, "hard"), {})),
             "the stated candidate meets reading 3, reading 4 on the history":
                 [reading3("corrector", stated_row), reading4("corrector", "true", C.STATED[0])],
             "by principal and reading": out}
@@ -583,7 +600,12 @@ def check_9():
         # three steps of the lie: the running sum of the weight of illegitimacy against cut-offs
         per_step = decision["lie"]["exact v"]
         running = [per_step * (t + 1) for t in range(3)]
-        out[pr] = {"decision": {k: {kk: vv for kk, vv in d.items() if kk != "exact v"} for k, d in decision.items()},
+        at_clear = sum(wt for (goal, purposes), wt in gw.items()
+                       if not legit(pr, goal, purposes, C.INPUTS["lie"], C.NULL, (0, "clear"))) / covered
+        positive = {name: decision[name]["exact v"] > 0 for name in BASE}
+        out[pr] = {"a lie at (0, clear), its weight of illegitimacy": W.dec(at_clear, 6),
+                   "actions with positive weight of illegitimacy among the candidates evaluated": sorted(n for n, x in positive.items() if x),
+                   "decision": {k: {kk: vv for kk, vv in d.items() if kk != "exact v"} for k, d in decision.items()},
                    "weight covered": W.dec(covered, 6),
                    "three lies, running sum": [W.dec(x, 4) for x in running],
                    "first step at which it exceeds 1/2, 1, 2": [next((t for t, x in enumerate(running) if x > c), None) for c in (F(1, 2), 1, 2)]}

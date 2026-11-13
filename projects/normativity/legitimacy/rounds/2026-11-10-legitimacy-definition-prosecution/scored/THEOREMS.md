@@ -5,7 +5,9 @@ small sets of views, three stipulated principals, two tabulated description lang
 fixed decomposition. A status is a fact about that formalization, computed by the check
 named and compared with this file by the runner. *Refuted* means the statement as written
 fails there, with the counterexample in the check; it does not mean no faithful version
-holds. Rerun everything with `python3 run.py` in the round directory; one check with
+holds. Statuses and their statements were corrected after the external review
+(`prompts/2026-11-10-legitimacy-definition-prosecution/REVIEW-astra-followup-4.md`); the
+report gives a disposition for each of its points. Rerun everything with `python3 run.py` in the round directory; one check with
 `python3 -c "import sys; sys.path.insert(0, '.'); from scored import theorems as T; print(T.check_1())"`.
 
 Numbers are at the fixed parameters (`ACCOUNT.md` §4, language A) unless said. *Serves* and
@@ -19,10 +21,10 @@ A candidate is written `goal; belief, judge, act; say; n exceptions`.
 | 3 | lying | **refuted** |
 | 4 | the comparison by aim, on the bank | **holds on the stated domain** |
 | 5 | the gate | **refuted** |
-| 6 | intersubjectivity | **refuted** |
+| 6 | intersubjectivity and the description language | **refuted** |
 | 7 | stated and pursued aims | **holds on the stated domain** |
 | 8 | readings 3 and 4 | **holds on the stated domain** |
-| 9 | what `Legit` then is | **holds on the stated domain** |
+| 9 | what `Legit` then is, candidate by candidate | **holds on the stated domain** |
 
 ## 1. Does the weight concentrate — refuted
 
@@ -38,7 +40,7 @@ part's purpose and on which adviser inputs harm, subvert or force which part.
 | divided | 0.140, 0.420, 0.980 | 12 | 6 |
 
 **What fails.** The heavy candidates disagree, and most of what they agree on is that a
-part has no purpose.
+part has `const` or the private `mech`.
 
 | principal | belief | judge | act | goal | heavy split on |
 |---|---|---|---|---|---|
@@ -46,15 +48,24 @@ part has no purpose.
 | non-corrector | `handed` 0.9999 | `const` 0.478, `mech` 0.478, `world` 0.039 | `const` 0.479, `mech` 0.479, `world` 0.039 | `true` 0.873, `does` 0.120 | `trick`, `tempt`, `threat`, `hard_truth` |
 | divided | as the corrector | `const` 0.500, `mech` 0.500 | `world` 0.998 | `ease` 0.998 | whether a lie is illegitimate |
 
-Read by the second predictor `mech` is `const`: a private term predicts nothing and costs
-one atom, as does "for nothing". So under each principal the judging part has no purpose
-at 0.95 or more of the weight, and its behaviour is carried by exceptions: its four views
-on the history cost 36 bits as a table. The heaviest candidates are tables with a purpose
+For the second predictor `mech` predicts as `const` does: a private term predicts nothing
+and costs one atom, as does "for nothing". They are different goal functions (`mech` is
+"match what this part does", and is used as that when an action is classified), and about
+half the judge's weight is on each. So under each principal, at 0.95 or more of the
+weight, the judging part has either no purpose or one the second predictor cannot use, and
+its behaviour is carried by exceptions: its four views on the history cost 36 bits as a
+table. The heaviest candidates are tables with a purpose
 left at one part. **The reason is arithmetic the account fixed:** a purpose that predicts
 wrongly costs 8 bits a move, a part with no purpose costs 1 or 2 bits a move off the
-history, and a table of the history's views costs 9 bits a view. A purpose earns weight
-only where it predicts more than seven moves in eight off the history, and under *serves*
-a purpose scored by the facts mispredicts every move she makes on a falsehood.
+history, and a table of the history's views costs 9 bits a view. Before description costs, a definite prediction of a two-valued move beats none only when
+right more than seven times in eight, and of the four-valued belief move three times in
+four; under *serves* a purpose scored by the facts mispredicts every move she makes on a
+falsehood. **`bits` is a loss and not a code length**: a predicted move at 0 bits and a
+missed one at 8 over-fill Kraft's inequality (257/256 for a two-valued move), so the
+weight is an exponential weighting of that loss, and the 8 is an unargued rate of
+exchange between a miss and a bit of description — the kind of free coefficient
+`ACCOUNT.md` §3 rejected a weighted sum for having. The sensitivity paragraph below varies
+it.
 
 **The cheats**, in bits above the heaviest candidate (corrector, non-corrector, divided),
 with the virtue that charges them:
@@ -67,10 +78,12 @@ with the virtue that charges them:
 | the goal "whatever she does", every purpose `mech` | 458, 554, 456 | intersubjectivity, 644 bits |
 | the goal "whatever she does", parts for it | 54, 230, 52 | handles (64, 208, 88); intersubjectivity 36 |
 | the stated candidate altered at belief, judge, act | 120, 120, 88; 192, 288, 248; 102, 102, 86 | handles |
-| the stated candidate itself | 158, 310, 140 | handles (172, 292, 180) |
+| the stated purposes with the eight exceptions that serve them best | 158, 310, 140 | handles (172, 292, 180) |
+| the stated candidate, no exceptions | 894, 1,062, 876 | handles (868, 1,004, 876) and fit (112) |
 
-**Ablations.** *No handles*: the three principals have one history, so one heaviest
-candidate, `true; handed, local, local; avow; 2 exceptions`, at 0.44, with six heavy;
+**Ablations.** *No handles*: the three principals have one history, so the same weights:
+two candidates tied at 0.44 each, `true; handed, local, local` and `true; handed, anti,
+local`, both with 2 exceptions, and six heavy;
 handles are what tells the principals apart, and with them the weight moves off purposes
 and onto tables. *No intersubjectivity*: `true; mech, mech, mech; avow`, as above. *No
 parsimony*: 96, 32 and 6 heavy; the same purposes. *No fit*: little change (48, 39, 13
@@ -79,7 +92,10 @@ heavy), since every heavy candidate fits the history exactly.
 **Sensitivity.** *Language B*: under the corrector and the non-corrector the heaviest goal
 is `does` with *say* `please`, the private goal being one atom and the creditable answer
 free; purposes as in A except that the corrector's heavy candidates no longer agree on
-the acting part (`local`, `const`, `mech`). The goal is not fixed across languages; the divided principal's is (`ease`).
+the acting part (`local`, `const`, `mech`). The goal is not fixed across languages; the divided principal's is (`ease`). The
+comparison does not isolate the encoding: which exceptions shorten the code depends on the
+language's lengths (and reads the probes), so the class has 4,000 distinct terms under A
+and 3,600 under B.
 *History* 160, 320, 640: the same heaviest candidates. *Probes counted* 2 and 4: the
 same, except that at 4 the corrector's acting part also goes to `const`. *The four changes
 alone*: belief `acc` for the corrector and the divided principal, `handed` for the
@@ -103,7 +119,8 @@ corrector, on those and `lie` under the non-corrector, on `tempt` under the divi
 
 **Statement.** For each part, the candidates that score it by the facts outweigh those
 that score it by what it was handed under the corrector, and the order reverses under the
-non-corrector.
+non-corrector. (The dispatch says "a part"; read of the belief part alone it holds, and
+the status is of the reading for every part.)
 
 **It holds for the belief part**, under both readings: by the facts 0.281 against handed
 0.018 under the corrector (*serves*; 0.9999 against 0 under *view-best*), and handed
@@ -111,9 +128,13 @@ non-corrector.
 
 **Counterexamples: the other two parts.** The judge: by the facts 0.027 against 0 under
 the corrector, and by the facts again, 0.039 against 0.002, under the non-corrector; the
-rest of the weight is on no purpose. The acting part: handed 0.999 under the corrector,
+rest of the weight is on `const` or `mech`. The acting part: handed 0.999 under the corrector,
 where the statement wants the facts; and under the non-corrector the facts 0.039 against
-handed 0.0001, with the rest on no purpose. Under *view-best* the same two parts fail.
+handed 0.0001, with the rest on `const` or `mech`. Under *view-best* the same two parts fail. The acting part's result says little: her
+action follows her verdict, mistakes included, and each part is predicted with the others'
+moves as they were, which favours `local` whatever she is for. And the vocabulary sets
+"by the facts" and "handed" far apart: `handed` does not count an instrument's reading, a
+disclosure or a warning about the source as something handed.
 
 **Why the belief part comes out, and how far it depends on the probes.** Bits of missed
 moves by the belief part with no exception listed, by probe family:
@@ -137,29 +158,39 @@ Under *view-best* `acc` predicts the corrector exactly except on the false reaso
 ## 3. Lying — refuted
 
 **Statement.** Under every principal a lie about something she will act on, told where she
-would otherwise be right, is illegitimate with weight at least 99/100.
+would otherwise be right, is illegitimate with weight at least 99/100. (The dispatch asks
+for the weights; the threshold is the executor's, to give the table a status.)
 
-The weight of illegitimacy (the other aim silent; for the matter nothing reads, the other
-aim tells the same truth without the false reason):
+The weight of the candidates under which the lie is illegitimate at some world of the set
+named (the other aim silent; for the matter nothing reads, the other aim tells the same
+truth without the false reason). A figure of 0.000 is below 0.0005 and not zero unless
+said.
 
 | | corrector | non-corrector | divided |
 |---|---|---|---|
-| a lie she will act on, where she would otherwise be right, *serves* | 0.281 | 0.000 | 0.998 |
+| a lie she will act on, where she would otherwise be right, *serves* | 0.281 | 0.000 (0.000025) | 0.998 |
 | the same, *view-best* | 0.9999 | 0.868 | 0.9999 |
 | a lie about a matter nothing reads, *serves* | 0.000 | 0.000 | 0.000 |
 | the same, *view-best* | 0.9999 | 0.000 | 0.9999 |
-| a lie to someone already wrong, both readings | 0.000 | 0.000 | 0.000 |
+| a lie to someone already wrong, both readings | 0 | 0 | 0 |
+
+The first row hides a difference between worlds. At clear worlds and at hard ones
+separately: corrector 0.281 and 0.281; non-corrector 0.000025 and below 10⁻⁶; divided 0.998
+and 0.281 (*view-best*: 0.9999 and 0.9999; 0.868 and below 10⁻⁶; 0.9999 and 0.9999). At a
+hard world her judge reverses what she believes, the lie leaves her action right, and the
+candidates that convict it through her action no longer do.
 
 Under the stated candidate the first two are illegitimate and the third is not.
 
 **Counterexample.** The non-corrector: the heavy candidates give her belief part the
 purpose of taking what it is handed, a lie leaves that part serving, and her judging and
-acting parts have no purpose to fall short of. The lie is illegitimate under none of them.
-For the divided principal the figure is high for a reason unrelated to belief: her acting
-part is scored by the goal `ease`, and the lie leaves her action worse by it.
+acting parts have `const` or `mech`. For the divided principal the figure is high for a
+reason unrelated to belief: her acting part is scored by the goal `ease`, and at a clear
+world the lie leaves her action worse by it.
 
-A lie to someone already wrong is illegitimate under no candidate of the class, as the
-third follow-up found for subversion.
+A lie to someone already wrong is illegitimate under no candidate of the class. In this
+rendering the false message repeats what her signal already told her, so nothing she does
+changes; it is a fact about the rendering.
 
 **Check** `check_3`.
 
@@ -177,6 +208,16 @@ weights, matched by their banked predictions. A case matches when its computed
 `illegitimate` agrees. The third follow-up's standard compared kinds; for the 66 it
 counted as matching, the two agree (none of them fails now).
 
+**The comparison is not controlled.** Between the two counts the standard changed (kinds
+then, illegitimate or not now), seven renderings and several alternative actions changed,
+D23 is counted as matching in both, and Y1 and Y3 are scored against banked predictions.
+The check tests only that the count is at least 66. The 77 is not eleven independently
+shown improvements, and it is a count under stated candidates with aim structures
+assigned by the executor (`cases.py`: `CONSTANT`, `NONE`, `OWN` are lists of case ids; no
+objective of an adviser is modelled or checked against a part's purpose). D14, P7a, X7, Y6
+and Y9 are acquitted because they are listed as constant, which is the dispatch's reading
+and not a computation.
+
 **Count: 77 of 89 match, 9 do not, 3 are open.** Of 93 banked rows 89 match their
 predictions (`DIVERGENCES.md`).
 
@@ -185,7 +226,7 @@ predictions (`DIVERGENCES.md`).
 | over-counts (6) | P7, Y6, X7, D14, Y9 | not illegitimate: the action is the same at every aim (P7b, P7c: aim-driven, help only). **Match** |
 | | D13 a surprise party | aim-driven subversion of belief; illegitimate, there being no standing verdict in the scenario. Still convicted |
 | misses (9) | X3 | illegitimate against the other side's advocate. **Match** |
-| | Y1 | the alarm part is for the goal at 0.988 of the weight under the corrector, and for fleeing at a rustle at 0.9999 under the non-corrector; no threshold. **Match** (the banked prediction is for the corrector) |
+| | Y1 | the alarm part is for the goal at 0.992 of the weight under the corrector, and for fleeing at a rustle at 0.9999 under the non-corrector; no threshold. **Match** (the banked prediction is for the corrector) |
 | | N14, T7, N9 | aim-driven, nothing harmed, subverted or forced. Still missed |
 | | Y4 | nothing. Still missed; left open by the dispatch |
 | | P10 | the model has no variable for a reserved matter. Still missed |
@@ -217,7 +258,7 @@ Under the weights:
 | | corrector | non-corrector | divided |
 |---|---|---|---|
 | D1 a plain lie | 0.281 | 0.000 | 0.998 |
-| D4 a trick; D9, P13, T1 a threat | 0.000 | 0.002 | 0.998 |
+| D4 a trick; D9, P13, T1 a threat | 0.000 (positive, below 10⁻⁷) | 0.002 | 0.998 |
 | D5 an open temptation; D22 timed | 0.9995 | 0.039 | 0.000 |
 | D13 a surprise party | 0.000 | 0.000 | 0.000 |
 | D10, B1, B3, T10, N4 force | 0.9999 | 0.9999 | 0.9999 |
@@ -225,92 +266,112 @@ Under the weights:
 
 Under *view-best*: D1 0.9999, 0.868, 0.9999; the trick and the threat 0.492, 0.868,
 0.9999; the temptation 0.9997, 0.005, 0.030. A threat is illegitimate under the stated
-candidate and at weight 0 under the corrector's heavy candidates, whose judging part has
-no purpose and whose acting part is for doing what the judge says.
+candidate and under none of the corrector's heavy candidates (weight below 10⁻⁷), whose judging part has
+`const` or `mech` and whose acting part is for doing what the judge says.
 
 **Check** `check_4`.
 
 ## 5. The gate — refuted
 
 **Statement.** With `Legit` read as "no illegitimate influence on a part her evaluation
-read" and her evaluation her choice, an adviser gains nothing by its aim: for any two
-aims whose actions are both legitimate at a world, her choice is the same.
+read" and her evaluation her choice, an adviser's aim does not move her choice: for any
+two aims whose actions each harm, subvert and force nothing against the other's at a
+world, her choice is the same.
+
+This is narrower than the dispatch's question. No adviser maximizing `V − λN` is
+optimized, and no no-gain theorem for that score is proved; the statement is
+choice-invariance over pairs of nine base actions on Chain, without authorized writes and
+without the exemption for an aim that is a part's own purpose.
 
 **The two counterexamples of the third follow-up are closed** (stated candidate, `U` the
 two aims over her choice). *Teaching only what favours its aim*: with aim 1 its silence at
 `(0, misleading)` is subversion of belief against the other aim's teaching; she chooses 1
-with probability 21/40, and on legitimate histories with probability 1/2, which is what
-teaching everything gives. *The added threat*: harm to judge and act at `(0, clear)`;
-39/40 in all and 21/40 on legitimate histories, the baseline's figure.
+with probability 21/40, and chooses 1 on a legitimate history with probability 1/2 (a
+joint probability), which is the probability she chooses 1 when taught everything. *The
+added threat*: harm to judge and act at `(0, clear)`; 39/40 in all, and 21/40 jointly with
+a legitimate history, the baseline's figure.
 
-**Lemma (proved).** If an action is legitimate against another, every part's best is at
-least, and its gap at most, what it is under the other; so its *got* is at least as much.
-If each is legitimate against the other, every part's best, gap and got are equal under
+**Lemma (proved).** If an action neither harms nor subverts any part against another, every
+part's best is at least, and its gap at most, what it is under the other; so its *got* is
+at least as much. If that holds each way, every part's best, gap and got are equal under
 the two. *Proof.* Not harmed: the best did not fall. Not subverted: the gap did not widen.
-Got is best less gap. ∎
+Got is best less gap. ∎ **It is not a lemma about legitimacy as `ACCOUNT.md` §7 defines
+it**, which also admits a harm or subversion that is covered or is of the part whose
+purpose is the aim: Z3 is legitimate and widens the judge's gap by 1/4, and N5 is covered
+and widens two gaps by 1.
 
 **Proposition (holds on Chain, by enumeration).** Under the stated candidate, over the six
-worlds and the 72 ordered pairs of nine actions: no mutually legitimate pair leaves her
-choice different (0 of 432); and of the 75 where one is legitimate against the other and
-her choice differs, in none is her goal lower under the legitimate one. So under that
-candidate an aim moves her choice legitimately only to a choice her goal scores at least
-as high, and gains nothing in the statement's sense.
+worlds and the 72 ordered pairs of nine actions: no pair that harms, subverts and forces
+nothing either way leaves her choice different (0 of 432); and of the 75 where that holds
+one way and her choice differs, in none is her goal lower under the action that harms
+nothing.
 
 **Counterexamples to the statement.**
 
-1. *Her goal does not read the option* (`tie`): 108 mutually legitimate pairs after which
-   her choice differs; the trick against silence at `(0, clear)`. D15.
+1. *Her goal does not read the option* (`tie`): 108 such pairs after which her choice
+   differs; the trick against silence at `(0, clear)`. D15.
 2. *Every part scored by what it was handed*: 84 pairs; the lie against silence at
    `(0, clear)`, and under the lie her goal is lower.
-3. *The heaviest candidates of statement 1.* Corrector (`true; acc_theta, const, local`):
-   78 pairs, the trick against silence. Non-corrector (`true; handed, const, const`): 192
-   pairs, the lie against silence. The divided principal's has none, but under it 5
-   one-sidedly legitimate pairs leave her goal `true` lower: a temptation is legitimate,
-   being what the goal ascribed to her wants. Under *view-best* the corrector's heaviest
-   has none.
+3. *The candidates tied at the top of statement 1*, every one of them. Corrector: 78 pairs
+   under the two with belief `acc_theta` and 166 under the four with `const` or `mech`
+   (a trick against silence). Non-corrector: 192 under each of four (a lie against
+   silence). Divided: none under any of six, but 5 or 7 pairs that hold one way leave her
+   goal `true` lower: a temptation harms nothing, being what the goal ascribed to her
+   wants. Under *view-best* the corrector's four tied candidates divide: none under the two
+   whose acting part is scored by the goal, 88 under the two whose acting part follows
+   the judge.
 
-So no-gain is a property of the candidate, and it fails under the candidates the weights
-select for two of three principals.
+So choice-invariance is a property of the candidate, and the weights do not single out a
+candidate that has it for two of three principals.
 
 **Against the workspace's existing conditions.** Take the selection of
 `selectionBlind_of_realizes` (`TransparentChannel.lean:135`) to be the aim.
 
-- *Aim-freedom at the level of its hypothesis* — `hx`: nothing the adviser does to her
-  varies with its aim (the second follow-up's *uniform*; with `Realizes` and
-  `ReasonMediated`, `blind_of_realizes` and `selectionBlind_of_realizes` conclude her
-  evaluation is the same at every aim). It **implies** legitimacy at every aim: an action
-  that is the same at every aim is not aim-driven. The converse fails, so the condition
-  here is **strictly weaker**. Separating cases: framing between equals (legitimate at
-  both aims; the action and her choice differ by aim); Z5 (a truthful action legitimate
-  at its aim; her choice differs).
-- *Aim-freedom at the level of its conclusion* — `SelectionBlind`: her evaluation is the
-  same at every aim. **Independent.** Legitimate at both aims and her choice differs:
-  framing between equals. Her choice the same at both aims and illegitimate at one: a
-  true statement given a false reason (subversion of belief; her choice unmoved).
-- `Realizes` for a declared reference is a condition on one channel at every continuation
-  and names no aim; legitimacy compares two continuations at one world. Neither is an
-  instance of the other (`../decomposition/LEAN_MAP.md`).
+- *Aim-freedom of the adviser's whole intervention* (everything it does to her is the same
+  at every aim; the second follow-up's *uniform*) **implies** that nothing is harmed,
+  subverted or forced in the sense of §6: an action that is the same at every aim is not
+  aim-driven. The converse fails, so the condition here is **strictly weaker**. Separating
+  cases: framing between equals; Z5. This is not Lean's `hx`, which says only that the
+  *declared inputs* `x` agree across selections; `blind_of_realizes` needs `Realizes` in
+  addition and the payload theorem needs mediation as well.
+- *Aim-freedom of her evaluation* (`SelectionBlind`: her evaluation is the same at every
+  aim). **Independent**, on the finite examples: framing between equals harms nothing and
+  her choice differs; a true statement given a false reason leaves her choice the same and
+  subverts belief.
+- `Realizes` has no fixed relation to the condition until `x`, the channel, the reference
+  and the audited class are fixed. With the whole intervention as the channel and
+  aim-blind declared inputs it implies action invariance and so the condition; with `x`
+  the channel itself and the identity reference it holds of every intervention, harmful
+  ones included; and framing between equals can fail to realize any one reference on
+  fixed inputs.
 
-**What the decomposition adds to aim-freedom.** No protection: every guarantee the
-condition gives her evaluation, aim-freedom gives, and aim-freedom gives it where the
-condition fails (ties; candidates that score by what a part was handed). What it adds is
-a set of **exemptions** from aim-freedom, stated by effect and not by aim: aim-driven
-action is permitted when it lowers no part's best and widens no part's gap. That admits
-teaching, offers and true warnings, which aim-freedom forbids to an adviser with an aim;
-it also admits framing between equals and, under a candidate that scores by what a part
-was handed, lies. The clause that an aim may be a part's own purpose changes one verdict
-of the bank (Z3). The prompt author's guess, "which aims are permitted", is close: it is
-which aim-driven *effects* are permitted, and the permission is as good as the candidate.
+**What the decomposition adds to aim-freedom.** To the mathematical guarantee, nothing:
+aim-freedom gives equality of her evaluation, and the condition here gives only equality
+of each part's best, gap and got under the candidate, which does not give equality of her
+verdict (ties; candidates that score by what a part was handed). Mutual absence of harm
+and subversion is `Blind` (`ReasonMediatedAuthorship.lean:123`) of the tuple of bests and
+gaps, with force treated separately; the existing Lean already takes arbitrary readings
+and already handles licensed ties. What the decomposition supplies is normative structure:
+a candidate-relative choice of which quantities must not move, and a rule for which
+aim-dependent variation to permit — variation that lowers no part's best and widens no
+part's gap, with exemptions for a part's own purpose and for what she authorized. That
+admits an adviser whose teaching, offers and warnings vary with its aim, which strict
+aim-freedom of the intervention does not (it admits the same teaching at every aim); it
+also admits framing between equals and, under a candidate that scores by what a part was
+handed, lies. The structure is proposed by the account and not validated by this
+calculation. The clause that an aim may be a part's own purpose changes one verdict of
+the bank (Z3). The prompt author's guess, "which aims are permitted", is close: it is
+which aim-dependent *effects* are permitted, and the permission is as good as the
+candidate.
 
 **Check** `check_5`.
 
 ## 6. Intersubjectivity — refuted
 
-**Statement.** (a) Requiring intersubjectivity brings the weights under the two languages
-closer, under each principal. (b) Under each principal a second party holding the
-heaviest candidate's explanation and her record computes the bank's verdicts on Chain.
+**Statement.** Requiring intersubjectivity brings the weights under the two languages
+closer, under each principal.
 
-**(a) fails.** Total variation between the weights under A and under B:
+Total variation between the weights under A and under B:
 
 | | with | without |
 |---|---|---|
@@ -318,19 +379,24 @@ heaviest candidate's explanation and her record computes the bank's verdicts on 
 | non-corrector | 0.886 | 0.908 |
 | divided | 0.802 | 0.886 |
 
-Closer for two principals and further for one, and far in every case: with it the
-heaviest candidates differ in goal between the languages (`true` against `does`), and
-without it both languages choose "every purpose its mechanism" and differ in goal again.
-Coarser: of the heavy explanations under A, 13 of 18, 12 of 18 and 6 of 8 are heavy under
-B. Under *view-best* the divided principal's weights nearly coincide (0.030 against
-0.863); the others' do not (0.927, 0.950).
+**Counterexample: the corrector**, for whom it is further. It is far in every case: with
+intersubjectivity the heaviest candidates differ in goal between the languages (`true`
+against `does`), and without it both languages choose "every purpose its mechanism" and
+differ in goal again. Coarser: of the heavy explanations under A, 13 of 18, 12 of 18 and 6
+of 8 are heavy under B. Under *view-best* the divided principal's weights nearly coincide
+(0.030 against 0.863); the others' do not (0.927, 0.950). The two classes are not the same
+set of terms (4,000 and 3,600; statement 1), so the distance is not of encodings alone.
 
-**(b) holds in part.** The heaviest candidate under each principal has no private term,
-and from it and her record a second party computes each of the 24 Chain rows. With
-intersubjectivity removed the heaviest is `true; mech, mech, mech`, from which a second
-party computes none. But 0.68, 0.77 and 0.68 of the weight is on candidates with a
-private term, tied with or near their `const` twins: intersubjectivity makes a private
-term worthless and does not make it costly.
+**Whether a second party holding a heavy candidate's explanation and the histories
+reproduces the verdicts of statement 4 was not shown.** No second predictor was given an
+explanation and a record and made to reconstruct her responses to the other aim's action,
+to force or to a replaced mechanism. What was computed: of the candidates tied at the top,
+4 of 6, 3 of 4 and 4 of 6 have a private term, and 0.68, 0.77 and 0.68 of all the weight
+is on candidates with one; with intersubjectivity removed the single heaviest is `true;
+mech, mech, mech`. Intersubjectivity makes a private term worthless and does not make it
+costly, and a second party cannot evaluate a candidate that has one. Nor could reproducing
+a heavy candidate's classifications reproduce the bank's, which are under the stated
+candidate and differ from them (statement 4).
 
 **Check** `check_6`.
 
@@ -340,7 +406,11 @@ term worthless and does not make it costly.
 pursues and not the one she states, and explain her statement as saying the creditable
 thing.
 
-Goal `ease` at 0.998 and *say* `please` at 0.998 (0.9999 under *view-best*). The shortest
+Every heavy candidate has goal `ease` and *say* `please`; in weight, 0.998 each (0.9999
+under *view-best*). **The result is largely constructed**: `ease` is the goal that rewards
+the optional cue only the divided principal takes, and `please` is the purpose that
+predicts the one statement every principal makes. It shows that the escape works, not
+that predictive weighting finds a pursued aim behind a disavowal in general. The shortest
 candidate by goal and by what *say* is for, in bits (parsimony, fit, handles): `true`,
 `avow`: 124, 0, 94; `ease`, `please`: 132, 0, 76; `ease`, `avow`: 128, 80, 76. Ascribing
 the goal she would disown costs 80 bits of fit if she is taken to avow her goal, and 4
@@ -348,8 +418,9 @@ bits if her statement is given another purpose; her corrections at the acting pa
 worth 18. So reading 5 holds as arithmetic and is cheap to escape: one atom buys any goal
 against any statement.
 
-**What a verdict of hers is then said to track.** Nothing: her judging part has no purpose
-(`const` or `mech`) at 0.9998 of the weight, and at 0.97 under *view-best*. Her action is said
+**What a verdict of hers is then said to track.** Nothing a second party can state: her
+judging part has `const` or the private `mech` at 0.9998 of the weight, and at 0.97 under
+*view-best*. Her action is said
 to track `ease`. Her statement of her aim is said to track what is creditable.
 
 **The other two principals.** Corrector: `true` 0.911, *say* `avow` 0.858. Non-corrector:
@@ -370,7 +441,7 @@ each); and the parts' maxima cannot be had together, so reading 4 fails there to
 expressed by either reading.
 
 **What the readings do to statement 1's weights** (weight held by the candidates meeting
-reading 3, reading 4, both):
+reading 3, reading 4, both; not a reweighted distribution):
 
 | | serves | view-best |
 |---|---|---|
@@ -378,32 +449,42 @@ reading 3, reading 4, both):
 | non-corrector | 0.9999, 0.065, 0.065 | 0.998, 0.877, 0.875 |
 | divided | 0.9999, 0.998, 0.998 | 0.9999, 0.9999, 0.9999 |
 
-Reading 3 removes almost nothing: a part with no purpose opposes nothing and is opposed
-by nothing. Reading 4 removes the candidates whose acting part is not scored by the goal,
-since parts with no purpose are at their maximum on every profile and then the goal must
-be too. Under the corrector and the non-corrector (*serves*) the heaviest candidate
-meeting both is four bits above the heaviest and has the goal `does`: `does; acc_theta,
-world, local; please` and `does; handed, world, world; please`. A goal that is whatever
-she does is at its maximum whenever her parts are, so reading 4 as a condition favours it.
+**Reading 3 is met vacuously.** It is asked on a candidate's normal conditions in the
+history, and a candidate whose exceptions cover a view has no normal condition with that
+view: 0.99999998, 0.9999998 and 0.9999999999 of the weight is on candidates with no normal
+condition in the history at all (0.971, 0.998, 0.970 under *view-best*). It is not that a
+part with the purpose `const` opposes nothing: under `const, world, world` at `(0, hard)`
+the belief part opposes both others. Reading 4 removes the candidates whose acting part is
+not scored by the goal, since a part with `const` is at its maximum on every profile and
+then the goal must be too. Under the corrector and the non-corrector (*serves*) the
+heaviest candidate meeting both is four bits above the heaviest and has the goal `does`:
+`does; acc_theta, world, local; please` and `does; handed, world, world; please`. A goal
+that is whatever she does is at its maximum whenever her parts are, so reading 4 as a
+condition favours it.
 
 **Check** `check_8`.
 
 ## 9. What `Legit` then is — holds on the stated domain
 
-**Statement.** The graded predicate gives a `Scoring` and a `Decision` in the shapes of
-`Deference/Contrib/DeconfusingCorrigibility.lean` on Chain: `V` within the bounds, and the
-null action respecting.
+**Statement.** Candidate by candidate, the predicate gives values within the bounds of a
+`Scoring` of `Deference/Contrib/DeconfusingCorrigibility.lean` on Chain, and the null
+action respects.
 
     Legit_c(w, a)   :=  no part is harmed, subverted or forced by a against the other
-                        aim's action (here silence), unless the aim is that part's purpose
-    ι(w, a)         :=  Σ_c weight(c) · [not Legit_c(w, a)]          (weight of illegitimacy)
-    Legit(h)        :=  Σ_t ι(w, a_t) ≤ cut-off
+                        aim's action (here silence)
     V_c(w, a)       :=  G(w, a) / 3 if Legit_c(w, a), else −δ/2      (δ = 1)
     N_c(w, a)       :=  [not Legit_c(w, a)]
     U(a), v(a)      :=  expectations of V − λN and of N over worlds and candidates (λ = 3)
+    ι(w, a)         :=  Σ_c weight(c) · [not Legit_c(w, a)]          (weight of illegitimacy)
+    Legit(h)        :=  Σ_t ι(w, a_t) ≤ cut-off
 
-Not elaborated in Lean. `V` is within the `Scoring`'s bounds at every (candidate, world,
-action) and `v` is 0 at the null action under each principal. `v` by action:
+Not elaborated in Lean. What is checked: `V_c` is in `[0, 1]` where `Legit_c` holds and in
+`[−δ, 0)` where it does not, at every (candidate, world, action) evaluated, and `v` is 0 at
+the null action, which is compared with itself. **The graded predicate `Legit(h)` is not
+shown to give a `Scoring`**: `V_c` is defined from `Legit_c`, and a history can fail the
+running sum while `V_c` is positive under a candidate that acquits it. Candidates below
+2⁻⁴⁰ of the weight are left out and the rest renormalised (the weight covered is above
+0.999999). `v` by action, averaged over worlds:
 
 | | lie | trick | tempt | threat | hard truth |
 |---|---|---|---|---|---|
@@ -411,13 +492,22 @@ action) and `v` is 0 at the null action under each principal. `v` by action:
 | non-corrector | 0.000 | 0.001 | 0.020 | 0.001 | 0.002 |
 | divided | 0.913 | 0.449 | 0.000 | 0.499 | 0.898 |
 
-Three lies in a row: the running sum is 0.27, 0.53, 0.80 under the corrector (past a
-cut-off of 1/2 at the second step, never past 1), 0 throughout under the non-corrector,
-0.91, 1.83, 2.74 under the divided. Slow drift (D16a, stated candidate): illegitimate at
-each of four steps; a running count passes a cut-off of `c` at step `c`.
+**None of these is zero.** Every candidate of a finite class has positive weight, and each
+of the five actions is illegitimate under some candidate evaluated, under every principal.
+With the cut-off at 0, which `ACCOUNT.md` §7 takes unless said, the graded predicate
+therefore convicts all five under every principal, the threat included, whatever the heavy
+candidates say; and with a positive cut-off it acquits a threat to the corrector. The
+cut-off decides, and the pass leaves it open as the dispatch does.
 
-`N` is still illegitimacy and no count of reserved matters; `V` uses the goal `true`
-under every candidate, including those that ascribe `ease`. The row-by-row comparison with
-the third follow-up's table is in the report.
+A lie at `(0, clear)` repeated for three steps: the weight of illegitimacy is 0.281 a step
+under the corrector (running sum 0.28, 0.56, 0.84: past 1/2 at the second step, never past
+1), 0.000025 under the non-corrector, 0.998 under the divided (past 1 at the second, past
+2 at the third). Slow drift (D16a, stated candidate): illegitimate at each of four steps; a
+running count passes a cut-off of `c` at step `c`.
+
+`N` is still illegitimacy and no count of reserved matters; `V` uses the goal `true` under
+every candidate, including those that ascribe `ease`; a respecting alternative at every
+decision, calibration and sequential optimization are absent. The row-by-row comparison
+with the third follow-up's table is in the report.
 
 **Check** `check_9`.
