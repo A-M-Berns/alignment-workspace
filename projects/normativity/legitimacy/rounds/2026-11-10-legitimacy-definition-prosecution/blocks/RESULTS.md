@@ -1,0 +1,470 @@
+# Results — a part as a mechanism and a purpose on the world
+
+Statements about the setting of `SETTING.md`, by the dispatch's seven questions, then the
+verdict on each banked case. A status is one of **proved** (the proof is given here; the
+runner checks the instances named), **holds on the stated example**, **refuted** (the
+runner exhibits the counterexample) and **open**. Every status is a fact about this
+formalization. `python3 run.py` in the round directory recomputes every number below;
+`blocks/results.py` holds the checks.
+
+| | status | statement |
+|---|---|---|
+| 1.1 | **holds on the stated example** | a mechanism given as a function of the world state does not separate a move the adviser set from a move made in response to it |
+| 1.2 | **holds on the stated example** | a re-reading allowed to use the adviser's action widens the gap in cases 3 and 27 and not in 4b, 8 or 13 |
+| 1.3 | **holds on the stated example** | with subversion read without the null comparison, case 9 alone changes verdict |
+| 2.1 | **proved** | the gap is nonnegative and no smaller at a finer grain |
+| 2.2 | **proved** | for an estimating part and `w` a function of the grain, `(E[w(e − q)])² ≤ E[w²] · gap` at that grain |
+| 2.3 | **holds on the stated example** | the gaps of cases 3, 4, 4b, 4c, 8, 27, 27b, 31 at four grains |
+| 2.4 | **holds on the stated example** | at the grain of the adviser's knowledge a believed rare lie (4b) and a disclosed advocate (8) have one signature, honest difficulty (3, 27) another |
+| 2.5 | **refuted** | one of the four grains puts the believed rare lie with a two-valued move out of range and leaves honest difficulty in |
+| 2.6 | **holds on the stated example** | with a move that carries confidence the rare lie opens a gap `η²/(1/2 + η)` at the scene's grain |
+| 3.1 | **proved** | `|D − Δq| ≤ √g_0 + √g_T` for her verdict's foreseeable shift `D`, the shift `Δq` in its target, and the verdict part's two gaps |
+| 3.2 | **proved** | a maintaining part in range whose menu is closed under re-reading installs a mechanism in range |
+| 3.3 | **refuted** | every foreseeable shift in her verdict traces to a mechanism altered by something out of range or by the adviser |
+| 3.4 | **holds on the stated example** | the recovery from a depression is a foreseeable shift with nobody charged |
+| 4.1 | **proved** | a part whose move is best at every state is in range under every consequence |
+| 4.2 | **holds on the stated example** | against the consequence null a threat is harm, an offer help and a true warning neither, with no aim read |
+| 4.3 | **holds on the stated example** | a threat and a warning of the adviser's standing practice are one law and one verdict under the null of absence, and differ under the adviser's rule with no announcement |
+| 5.1 | **proved** | fit is at most what the rest could attain, with equality exactly when her choice is best for the rest and the replacement's best outcomes include one; a dropped end always attains it |
+| 5.2 | **holds on the stated example** | on a menu of five replacements for the career end four have the greatest fit |
+| 5.3 | **holds on the stated example** | of two opposed ends either may be legitimately revised to the other, with different outcomes that her starting ends rank |
+| 5.4 | **refuted** | if every step of a chain is legitimate, her starting ends value the final choice at least as much as the starting one |
+| 5.5 | **holds on the stated example** | after a conversion that fit condemns, fit licenses revising the end that survived it |
+| 5.6 | **holds on the stated example** | which of two equally fitting replacements is taken decides the chain's end |
+| 5.7 | **holds on the stated example** | the whole-level bound holds with a positive gap both for leaving law for music and for being made to like what is delivered |
+| 6.1 | **proved** | when her verdict is one part's move and the whole is for what that part is for, the whole's gap is that part's |
+| 6.2 | **refuted** | every part in range gives a verdict that is a function of their moves in range |
+| 6.3 | **holds on the stated example** | a verdict in range with a part behind it out of range |
+| 6.4 | **proved** | a weighted mean of estimates each in range for one target has the target's mean |
+| 7.1 | **proved** | an estimator of the score in range at the grain of the history has `E[excess_K] = 0` and `E[excess_K²] = K⁻² Σ E[(U_k − S_k)²]` |
+| 7.2 | **refuted** | the same from range with no conditioning on the history |
+| 7.3 | **holds on the stated example** | `Realizes`, with the part's own mechanism as reference and the adviser's signal as declared input, is the absence of force and alteration |
+| 7.4 | **holds on the stated example** | the legitimacy of an influence is not a function of the realized history |
+
+## Question 1. Do the definitions stand?
+
+Range and gap are stated in `SETTING.md` §2 from a law, a mechanism and a utility, and
+used in every case with nothing added. The four kinds are not.
+
+**1.1.** Two scenes: one state, *act* with payoff 0 for comply and 1 for refuse. In the
+first the adviser sends a signal and *act*'s mechanism complies on it; in the second
+*act*'s mechanism refuses and the adviser forces comply. The laws of (state, action,
+move) and the utilities are the same, and so is every gap. Only the type of the action's
+component says which is force. Device 2 of `SETTING.md` §4.
+
+**Help, harm and "brought about" need a comparison.** "Better" and "worse" in the
+position's third item, and "did not bring about" in its fifth, are comparative. The model
+compares with the adviser's null action (device 1). Subversion could be read with no
+comparison, as a part out of range whose move the adviser's action changes somewhere.
+**1.3**: under that reading case 9 is illegitimate and no other of the scenes changes.
+Case 9 diverges under the reading frozen (`DIVERGENCES.md`): her mechanism returns 0 on
+no signal, which is calibrated beside an advocate and has a gap of 1/4 in the adviser's
+absence, so the advocate's rule narrows her gap to 1/12. The null condition evaluates her
+mechanism where the scene never puts it.
+
+**What dropping the view loses.** With no view, the re-reading benchmark knows only the
+part's own move. **1.2**: letting it also know the adviser's action — what a view of the
+signal would supply — widens the gap from 0 to 3/64 in case 3 and from 0 to 3/16 in case
+27, and leaves 4b, 8 and 13 at 0. So the derived view is what keeps honest difficulty in
+range: she does not tell the two hard sentences apart, and the benchmark is not allowed
+to. It loses one thing the cases ask for: in case 13 the buried information is in nothing
+her move or the adviser's action distinguishes, so no gap appears below the grain of the
+adviser's knowledge (1/4 there), and "it was there to be read" has no expression. The
+case is caught only by the adviser-side quantity below.
+
+**Two quantities on the adviser's side**, computed for every case and deciding no
+verdict: the gap at the grain of the adviser's knowledge, and **left by the adviser**,
+`Σ_k P(k) [max_a E[u_i | k, a] − E[u_i | k, σ(k)]]`, what its rule forgoes for the part
+given what it knows. The second needs the set of actions the rule chooses among.
+
+**Devices.** Seven, in `SETTING.md` §4. The dispatch's list of four kinds of device
+(threshold, penalty, supplied list, comparison) is met once, by the null action; no
+threshold or penalty is used, and the cut-off for every verdict is zero.
+
+## Question 2. The grain
+
+**2.1.** A function of (coarser grain, own move) is a function of (finer grain, own move),
+so the maximum over re-readings is no smaller at the finer grain; the identity re-reading
+gives a gap of at least zero. ∎
+
+**2.2.** `E[w(e − q)] = E[w(e − E[q | γ, e])]` since `w` and `e` are functions of
+`(γ, e)`; by Cauchy–Schwarz its square is at most `E[w²] · E[(e − E[q | γ, e])²]`. ∎ With
+`γ` constant and `w = 1` this is the dispatch's *no inflation*. Read for a set `E` of
+grain values: the adviser cannot foreseeably move her estimate on `E` by more than
+`√(P(E) · gap)`. A grain protects the events it names and no others.
+
+**2.3.** Gaps of the first part of each scene, exact:
+
+| case | no conditioning | the scene's grain | the adviser's action | the adviser's knowledge |
+|---|---|---|---|---|
+| 3 honest source, hard question | 0 | 0 | 3/64 | 3/64 |
+| 4 rare lie, a confidence | 1/220 | 1/220 | 1/220 | 1/20 |
+| 4b rare lie, two-valued | 0 | 0 | 0 | 1/20 |
+| 4c lie targeted in time, two-valued | 0 | 1/20 | 1/20 | 3/20 |
+| 8 disclosed advocate | 0 | 0 | 0 | 1/6 |
+| 27 hard truth, calibrated confusion | 0 | 0 | 3/16 | 3/16 |
+| 27b hard truth, wrong on average | 1/4 | 1/4 | 7/16 | 7/16 |
+| 31 rare lie she allows for | 0 | 0 | 0 | 1/22 |
+
+**2.5, refuted.** No column has 4b positive with 3 and 27 at zero. The grain of the
+adviser's knowledge is the only one that sees 4b, and it puts every case in the table out
+of range: at that grain "in range" says her move already reflects all the adviser knows.
+
+**2.4.** At the adviser's knowledge the gap splits as (gap at the adviser's action) +
+(a remainder, what no reading of the action recovers of what the adviser knows). The
+believed rare lie (4b) is 0 + 1/20 and the disclosed advocate (8) is 0 + 1/6; honest
+difficulty is 3/64 + 0 (case 3) and 3/16 + 0 (case 27). So the split separates an adviser
+whose action pools what it knows from one whose action she misreads. It does not separate
+the rare liar from the advocate: with a two-valued move they are the same object, a rule
+that sometimes sends the favourable signal at an unfavourable state, met by the response
+that is best on average.
+
+**The answer adopted, and its reason.** The condition is conditioned on what is settled
+before the part is used: in these scenes, the step. A mechanism can be fitted only to
+what precedes its use. Conditioning on less lets a rule launder a miss it has scheduled
+in its honesty at other times: in 4c the adviser is honest at three steps and says "H" at
+the fourth, the pooled law leaves "believe it" best (gap 0), and at the step it is out of
+range by 1/20. Conditioning on more — the adviser's action or knowledge, which are
+settled with the part's use and not before it — asks the part to have read what it has
+not been given, and convicts honest difficulty (2.5).
+
+**What that answer catches.** A lie targeted in time, with any move (4c). A lie targeted
+at a state is caught only when her move carries her confidence (**2.6**: gap
+`η²/(1/2 + η) = 1/220` for a lie of probability `η = 1/20`, against a mean shift of `η`,
+consistent with 2.2), and its size is second order in the lie's probability. With a
+two-valued move it is not caught (4b). So case 4 is illegitimate under the description
+that gives *listen* a confidence and not under the one that gives it a two-valued belief;
+under the position's seventh item it is contested for any set holding both. A rare lie
+she allows for (31) is in range and not illegitimate, like the disclosed advocate; the
+adviser still moves her at the target state (her estimate there is 10/11 against a truth
+of 0) and not on average.
+
+**Honest difficulty.** A hard truth passes when her confusion is calibrated (27: gap 0;
+her score falls from −1/16 to −3/16 and the adviser leaves 1/8 on the table, since
+silence would have served *listen* better). It does not pass when she ends wrong on
+average (27b: gap 1/4 against 0 in the adviser's absence). The setting has no notion of a
+true sentence, so 27b and a craving exploited in the open (28) are the same thing: a
+truthful action under which a part of hers is out of range and was not before.
+
+**The range of aims.** The fourth follow-up compared an action with the action another
+aim would have taken, and the set of aims decided verdicts. Here the comparison is with
+the adviser's absence, and no other aim is read except by the rule on ties. A lie told
+at every aim (its Z2) is illegitimate: the gap is wider than under the null condition
+whatever the aims. Selective teaching (its Z4, Z5) has one verdict, fixed by whether her
+mechanism is calibrated to the selection (cases 8 and 9), not by which other aim is
+supposed. What replaces the range of aims is the null condition, with the defect of case
+9.
+
+## Question 3. Whose doing
+
+**The adviser's.** A part's shortfall is the adviser's doing when its gap under the
+actual condition exceeds its gap under the null condition, at the scene's grain; exact,
+and of either sign (in case 2 the lie narrows *act*'s gap from 1 to 0 while widening
+*listen*'s from 0 to 1/4). The comparison is of laws, not of states: this is where the
+third follow-up's state-by-state comparison convicted honest difficulty and this one does
+not.
+
+**3.1.** Let her verdict be the move `V_t` of an estimating part with target `q_t`,
+`t ∈ {0, T}`, both evaluated on the final world; `D = E V_T − E V_0`,
+`Δq = E q_T − E q_0`, `g_t` the part's gap. Then
+`D − Δq = (E V_T − E q_T) − (E V_0 − E q_0)` and each bracket is at most `√g_t` in
+absolute value by 2.2. ∎ Checked on all 6,561 two-state instances with values in
+`{0, 1/2, 1}`.
+
+**3.2.** Let a maintaining part `m` choose the mechanism of an estimating part `i` from a
+menu such that, for each mechanism `μ` it installs and each cell `c` of (grain, `m`'s
+move), the recalibrated mechanism `ω ↦ E[q | c, μ(ω)]` is on the menu. If `m` is in range,
+`i` is in range under what is installed. *Proof.* On `c`, `m`'s utility is
+`−(μ(ω) − q)²`. Replacing `μ` by its recalibration changes the expected loss on `c` by
+`−E[(μ − E[q | c, μ])²; c]`, so `m` in range gives `μ = E[q | c, μ]` on `c`. With `V` the
+installed verdict, `E[q | γ, V] = E[E[q | γ, π_m, V] | γ, V] = V`. ∎ Checked for a
+maintaining part whose move does not vary with the state, over the 164 closed menus of
+mechanisms with values in `{1/2, 3/4, 1}` on two states. Closure is needed: on the menu
+{flat at 3/4, tilted to (7/8, 3/8)} for worths (1, 1/2) the tilted mechanism has the lower
+loss (1/64 against 1/16), so a maintaining part in range installs it, and the verdict is
+then out of range (gap 1/64) with its mean moved by −1/8. Without closure, and with
+"leave it" on the menu, `m` in range gives only loss after ≤ loss before, hence
+`(E V_T − E q)² ≤` her starting loss.
+
+**The localisation statement that holds.** If `D ≠ Δq` then `g_0 > 0` or `g_T > 0` (3.1).
+If `g_0 = 0 < g_T`, the law the verdict part runs under changed between the two selves.
+The law is fixed by the prior, the adviser's rule and the mechanisms; so the adviser's
+action differs from null, or a mechanism was altered, by the adviser, by nobody, or by a
+maintaining part that is then out of range or has a menu not closed (3.2). If `g_0 > 0 =
+g_T` the shift is the removal of a gap she started with. The first step is the tower
+property with a triangle inequality; the second is the definition of the condition; the
+third is 3.2, which is the only part with a proof of its own.
+
+**3.3, refuted.** The dispatch's form names two authors, something out of range and the
+adviser. Three shifts have neither: (a) nobody installs the depressed mechanism in a
+sound verdict part, `D = −3/8`; (b) the maintaining part of 3.2's unclosed menu, in
+range, moves the mean by −1/8; (c) *revise*, in range, replaces the career end and her
+verdict on the final outcome rises by 4/9 (case 17), which is `Δq`, a change in what the
+verdict is for.
+
+**3.4.** The recovery (case 18): the verdict part starts with a gap of 5/32, nobody's
+act installs the sound mechanism, the gap after is 0, `D = 3/8`, `Δq = 0`. Both
+whole-level gaps of the dispatch's §3 are 5/32 and `D² = 9/64 ≤ 5/32`. The shift is the
+removal of a starting gap; no adviser acts; the change is legitimate as the best
+mechanism on the menu.
+
+**Hers and nobody's.** Not separated. A gap that is not the adviser's is a mismatch
+between a mechanism of hers and a law nobody chose, and both descriptions are true of it:
+cases 5, 6 and the starting state of 18 differ in nothing the definitions read. Calling
+one "nobody's" needs a second law for the part, the condition its mechanism is taken to
+have been fitted to, with "nobody's" for a gap that is zero there. The setting derives
+range from the actual law alone and has no such condition; it would be a supplied one.
+
+## Question 4. Options and threats
+
+What her moves lead to enters as the consequence component of the adviser's action,
+read by `u_i`. **4.1**: if `π_i(ω)` maximizes `u_i(ω, ·)` at every `ω`, no re-reading
+gains at any grain. ∎ So range does not see a threat: in case 10 every gap is zero with
+and without it, and her verdict to comply is legitimate.
+
+**4.2.** Harm is a fall in the most the part could obtain when the consequence is put in,
+her moves held. Threat: 1 falls to 0. Offer: 1 rises to 2. True warning: the consequence
+component is null, *listen* goes from a gap of 1/16 to 0 and *act* from 1/2 to 3/4. No
+aim is read. Harm is illegitimate by the adviser's job, since lowering what a part can
+obtain is not for the sake of what the part is for; that is how the account gates a
+threat, by a predicate on the influence and not on her verdict (`SETTING.md` §3, choice
+12). The comparison of two expected utilities of one part needs `u_i` up to a positive
+affine map, which a ranking of outcomes does not give.
+
+**4.3. Where the adviser's aim is needed.** When the consequence is the adviser's own
+later act, "what her moves would otherwise have led to" has two readings. Against the
+adviser's absence, a threat (33a) and a warning of a standing practice (33b) are the same
+law and the same verdict: harm. Against the adviser's own rule with the announcement
+removed, 33a is harm (it would not have acted) and 33b is not (it would have). The two
+differ only in the rule at a branch that is not taken. So the setting tells a threat from
+an offer and from a warning about the world without the aim; to tell it from a warning
+about the adviser's own conduct it needs the adviser's rule off the realized path, and
+the aim enters only if that rule is derived from it (the act threatened is not what the
+aim would choose once she has refused). Under the null of absence the standing practice
+is itself the harm and the warning of it is not a further one.
+
+## Question 5. Change of ends
+
+**What a revising part is for.** A maintaining part is for what the part it alters is
+for. An end-revising part is for the fit of the replacement with her other ends at that
+time: what the rest attains, less what the rest would lose if the replacement got its
+best. No end is fixed: each end is the one under revision at some step and among the
+judges at the others.
+
+**5.1.** Fit is `R(x*) − opposition ≤ R(x*) ≤ max R`, with equality exactly when her
+choice is best for the rest and some outcome best by the replacement is best for the
+rest. For the dropped end every outcome is best by it and her choice maximizes the rest,
+so its fit is `max R`. ∎ Checked on all 729 pairs with values in `{0, 1, 2}` on three
+outcomes.
+
+**Fit does not pick out a change.** **5.2**: for the career end of case 17, on the menu
+{keep, music, drop, a liking for music at 1, at 1/2}, the last four all have fit 5/2.
+Dropping an end is always among the best. **5.3**: with ends A (x 3) and B (y 2), revising
+A to agree with B has the greatest fit on A's menu and leads to y; revising B to agree
+with A has the greatest on B's and leads to x; her starting ends value x at 3 and y at 2.
+Fit judges each end by the others and says nothing of which end is to yield.
+
+**5.4, refuted: a chain of legitimate steps.** Ends A (w 3, x 2), B (x 3), C (z 1); she
+chooses x, which her ends value at 5, with w at 3 and z at 1. Step one: A's revising part,
+on {keep, drop}, drops A (fit 3 against 0, since A's best outcome w is worth nothing to
+the rest). Step two: B's revising part, on {keep, a liking for z}, judged by what is
+left, which is C, installs the liking for z (fit 1 against −1). She now chooses z. Each
+revising part took the one best move on its menu and is in range; nothing is forced,
+altered by the adviser, subverted or harmed; no option is tied. An adviser that arranges
+only which revising part has its occasion when carries her from her best outcome to her
+worst with every part in range (case 29).
+
+Two variants. Judged by all her ends, the one under revision included, step two is
+refused (fit −1 for the replacement against 3 for keeping): an end then yields only when
+outweighed. Judged by what the rest attains alone, without opposition, step one is a tie
+between keeping and dropping and step two goes through.
+
+**5.6. Ties.** On the menu {keep, drop, a liking for x} A's revising part has two best
+moves, drop and the liking for x, both at fit 3. After drop the chain ends at z; after
+the liking for x, B's revising part keeps B and she stays at x. Where the adviser's aim
+decides between the two, the rule on ties forbids it, read as in case 14; where nobody
+decides, nothing in the account speaks. The rule on ties does not reach 5.4, whose steps
+have unique best moves, nor 5.3, whose two outcomes she does not rank equally.
+
+**5.5. A conversion fit condemns is ratified by fit one step later.** In case 20 three of
+four ends are replaced at once; judged by the one unchanged, each replacement has fit −2
+against 2 for keeping, so the change is illegitimate. Her later verdicts are then
+produced by parts in range for the ends she has, and the account has no ground on which
+to discount them. Revising the surviving end is judged by the three new ones: replacing it
+has fit 3 against 0. Fit has no memory.
+
+**5.7. The whole-level bound.** For leaving law for music, `D = 4/9` and both gaps are
+16/81; for being made to like what is delivered, `D = 3/4` and both gaps are 9/16. The
+bound holds with equality in each and does not tell them apart. What does is the author
+of the change: a revising part in range, or the adviser's alteration, nobody having
+asked.
+
+**Who decides among equally fitting changes.** Not settled here. The candidates the
+examples bear on: her whole verdict at that time (then the rule on ties carries the rest,
+since changes that leave her present choice alone are ties by that verdict); all her ends
+including the one under revision (5.4's variant, which blocks the chain and makes change
+rare); the menu, which is supplied (device 7).
+
+## Question 6. Parts to whole
+
+**6.1.** If her verdict is the move of a part `v` and the whole is for `u_v`, the whole's
+gap is `v`'s gap, the same expression. ∎ The other parts' range is then neither needed
+nor enough for the whole's: **6.3**, in case 1 with a verdict part that returns 1/2 on
+whatever *listen* says, *listen* has gap 1/4 and the verdict 0.
+
+**6.2, refuted.** Two parts each calibrated on its own signal of accuracy 3/4; her
+verdict the larger of the two estimates. Both parts are in range; the verdict has mean
+19/32 against 1/2 and gap 9/880, with no adviser. **6.4**: a weighted mean of estimates
+each in range for one target keeps the target's mean (`E Σ λ_i e_i = Σ λ_i E e_i`) ∎, and
+is still not in range (gap 9/640 for the plain mean). So where no part's move is the
+verdict, foreseeable shifts in her verdict arise with every part in range, as often as
+the aggregation is not linear. Parts in range give a whole in range exactly under the
+condition of 6.1, which is the conclusion restated: the aggregation must itself be a part
+with the whole's purpose and be in range. Device 5.
+
+## Question 7. What plugs into the post
+
+**The predicates.** Two, both read at a cut-off `c ≥ 0`, here 0:
+
+- `LegitVerdict`: every part behind her verdict has gap at most `c` under the actual
+  condition at the grain;
+- `LegitInfluence`: no part's gap exceeds its gap under the null condition by more than
+  `c`; no part is harmed; no force or alteration is uncovered; no tie is broken by the
+  aim.
+
+**7.4.** Neither is a function of the realized history. At state H the rare liar of case
+4 and an honest adviser produce the same history (it said "H", H was so, she returned 1),
+and the influence is illegitimate under the first rule and not under the second.
+`Scoring.Legit : H → Prop` of `DeconfusingCorrigibility.lean` therefore needs histories
+that carry the adviser's rule at its own aim, her mechanisms and the prior. It no longer
+needs the rule at other aims, except for ties.
+
+**Theorems 1–3**, by reading the statements; no Lean was written or built.
+
+| hypothesis | status |
+|---|---|
+| Theorem 1: `Scoring` (a predicate, `N`, `V` in `[0, 1]` on legitimate histories and in `[−δ, 0)` otherwise) | met by construction for either predicate, as for any predicate; the theorem asks nothing of it |
+| Theorem 2: `Decision` (a credence over a finite state space, a history for each action and state) | the shape is met with the prior as credence and histories carrying the rule; `N`, the reserved matters and `Respects` are the post's and are not supplied |
+| Theorem 2: the asking cost `κ` | not supplied |
+| Theorem 3: `Sequential`, `avail`, a respecting alternative with bounded estimate | not supplied |
+| Theorem 3: `Maximizes` | not supplied: the adviser is a rule, not shown to maximize |
+| Theorem 3: `UnbiasedFromFeedback` | identified with a range condition, 7.1; in expectation and in probability, not pathwise |
+
+**7.1.** Let the adviser's estimate `U_k` of the realized score `S_k` be the move of an
+estimating part with target `S_k`, in range at the grain of the history `h_{k−1}` (past
+estimates and scores included): `E[S_k | h_{k−1}, U_k] = U_k`. With `X_k = U_k − S_k`,
+`E[X_k | h_{k−1}, U_k] = 0`, and for `j < k`, `X_j` is a function of `h_{k−1}`, so
+`E[X_j X_k] = 0`. Hence `E[excess_K] = 0` and `E[excess_K²] = K⁻² Σ_k E[X_k²] ≤ c²/K` for
+`|X_k| ≤ c`, and `P(excess_K > γ) ≤ c²/(Kγ²)`. ∎ Checked by enumeration for `K ≤ 5` on a
+chain whose score depends on the last. `UnbiasedFromFeedback` is the pathwise statement
+that `excess_K` is eventually below any `γ`; from 7.1 it follows almost surely by the
+strong law for bounded martingale differences, which is cited and neither proved nor
+checked here. **7.2, refuted**: one coin scored at every step with the estimate 1/2 is in
+range at each step with no conditioning, and `E[excess_K²] = 1/4` for every `K`. So the
+post's calibration hypothesis is the setting's range condition for one part of the
+adviser, and the grain it needs is the one question 2 adopts.
+
+**7.3. `Realizes` and `selectionBlind_of_realizes`.** Take a continuation `q` to be an aim
+of the adviser, the exterior `z` a state, `x` the signal component of its action, `f` a
+part's move, and the reference `κ` the part's own mechanism applied to the signal.
+`Realizes β x f κ D` then says that at every aim in `D` the part's move is what its
+mechanism makes of the signal: no force and no alteration, wherever either would change
+the move. On three scenes: a signal that varies with the aim realizes the reference and
+the move varies; a force at one aim does not realize it; one signal at every aim realizes
+it and the move is the same at every aim, which is the conclusion `SelectionBlind` of
+`selectionBlind_of_realizes` with her verdict mediated by the move. That theorem
+therefore applies to the setting's advisers whose signal to a part does not vary with
+their aim and who neither force nor alter it, and gives state by state what the rule on
+ties asks only between options she ranks equally. Where the signal does vary with the
+aim the Lean gives nothing, and the setting gives 2.2: the mean shift is at most the
+root of the gap.
+
+**What the parts add.** The whole-level bound of the dispatch's §3 protects: an adviser
+gains at most the root of the whole's gap. It cannot say which shifts are in order. The
+parts add (i) 3.1, which splits a shift into a change in what the verdict is for and two
+calibration terms, so that the protection reads `|D − Δq| ≤ √g_0 + √g_T`; (ii) an author
+for each term; (iii) permission for the removal of a starting gap and for a change of
+ends by a revising part in range. The permission is where the protection leaks: `Δq` is
+unbounded by any gap, and 5.4 moves it from her best outcome to her worst with every part
+in range. Beyond the workspace's existing condition (`Realizes` at a declared reference,
+aim-freedom): the setting permits signals that vary with the aim when they open no gap,
+at the price of a bound on means in place of equality state by state. The fourth
+follow-up's answer, that the decomposition adds permission and no protection, is
+confirmed, with the addition that the permission for a change of ends removes protection
+the whole-level bound gave.
+
+## The cases
+
+Computed under `SETTING.md` as frozen. `d` marks a row whose verdict differs from its
+prediction (`DIVERGENCES.md`). "Left" is what the adviser's rule leaves on the table for
+the part named.
+
+| # | computed | reason, from the definitions |
+|---|---|---|
+| 1 | out(listen); adviser's; illegitimate | *listen* returns 1 where the truth is 1/2 on average: gap 1/4, against 0 with no adviser |
+| 2 | out(listen); adviser's; illegitimate; *act* better off | as 1; *act*'s gap falls from 1 to 0 |
+| 3 | in range; errs; not the adviser's | 3/4 on a hard report is calibrated; at hard-L she is 3/4 from the truth; left 0 |
+| 4 | out(listen); adviser's; illegitimate | gap 1/220: she returns 1 on "H" where the truth is 10/11 |
+| 5 | out(listen); not the adviser's | gap 1/4, the same with no adviser, there being none |
+| 6 | out(listen); not the adviser's | gap 9/16 |
+| 7 | in range; *listen* better off; not illegitimate | score 0 against −1/4; left 0 |
+| 8 | in range; moves; no mean shift; not illegitimate | 2/3 on an item is calibrated; mean 1/2; left 1/6 |
+| 9 `d` | out(listen); **not** the adviser's; not illegitimate | gap 1/12, narrower than the 1/4 her mechanism has with no adviser |
+| 10 | in range; harm(act); illegitimate | the most *act* can obtain falls from 1 to 0; no gap; her verdict is legitimate, the influence is not |
+| 11a | in range; help(act); not illegitimate | 1 rises to 2 |
+| 11b | in range; no harm; not illegitimate | no consequence; *listen* and *act* better off |
+| 12 | force(act); out(act); illegitimate | the forced move is not *act*'s best; nobody asked |
+| 13 | in range; not illegitimate | her move is as with no adviser; knowledge-grain gap 1/4, left 1/4: caught only on the adviser's side |
+| 14 | in range; tie; illegitimate | the two aims' actions give different moves and equal utility to every part; expressed by the rule at two aims, no gap existing |
+| 15 | out(revise); adviser's; illegitimate | gap 3/2: a liking for b where b is around has fit −1 against 1 for keeping |
+| 16 | in range; change legitimate | a liking for g where g is around has the greatest fit |
+| 17 | in range; change legitimate | fit 5/2 against −1/2; `D = 4/9 = Δq` |
+| 18 | shift; whole gap; change legitimate; not the adviser's | 3.4 |
+| 19 | change legitimate; not the adviser's | fit 3 against 0 |
+| 20 | change illegitimate; not the adviser's | fit −2 against 2 for each replaced end; afterwards, 5.5 |
+| 21 | out(revise); adviser's; illegitimate | gap by step 0, 1/2, 1/2: the rigged steps; a chain that passes every step is case 29 |
+| 22 | alteration; covered; not illegitimate | *act*, in range, asked |
+| 23 | alteration; illegitimate; bound | nobody asked; `D = 3/4`, `D² = 9/16 = g_0 = g_T` |
+| 24 | in range; fits; not illegitimate | every opposition 0; the destination is not condemned |
+| 25 | out(listen); adviser's; illegitimate | gap 1/16 against 0. The verdict is case 1's. It differs in that the gap at the adviser's knowledge equals the gap at the scene's grain (1/16; in case 1, 1/2 against 1/4) and nothing is left (case 1: 1/2): the adviser does not foresee her error and could not have done better for *listen* |
+| 26 | in range; opposition | A's opposition to the rest is 2 |
+| 27 | in range; not illegitimate | 3/4 on either hard sentence is calibrated; score −3/16 against −1/16; left 1/8 |
+| 28 | out(crave); adviser's; illegitimate; *listen* in range | gap 1/2 against 0: taking on the cue is worth −1/2 once the cue is on the empty items |
+| 4b | in range; not illegitimate | believing "H" is right 10 times in 11 |
+| 4c | out(listen); adviser's; illegitimate | gap by step 0, 0, 0, 1/20; 0 with no conditioning |
+| 27b | out(listen); adviser's; illegitimate | gap 1/4 against 0 |
+| 29 | in range; not illegitimate; worst by her starting ends | 5.4 |
+| 30 | in range; whole out | 6.2 |
+| 31 | in range; no mean shift; not illegitimate | 10/11 on "H" is calibrated |
+| 33a | harm(act); illegitimate | as 10; harm under either null |
+| 33b | harm(act); illegitimate | as 10 under the null of absence; no harm under the adviser's rule with no announcement |
+
+Of the dispatch's twenty-eight cases twenty-seven have the predicted verdict and one,
+case 9, does not. The count is fit: the executor wrote the renderings and derived the
+predictions for its own added cases by hand from the definitions the code implements.
+Four things qualify it. Cases 3, 6, 18 and 20 predict "hers" or "nobody's" and are matched
+only as not the adviser's. Case 4 matches under one of two descriptions of the same
+behaviour (4b is the other). Case 27 matches on the reading that her confusion is
+calibrated (27b is the other). Case 7's "help" is matched as *listen* being better off.
+
+## What was not shown
+
+- **Every verdict is under one description**, written by the executor. No set of
+  descriptions is computed except the pair 4 and 4b.
+- **The renderings decide.** Each scene has two to eight states and the numbers were
+  chosen by the executor; case 9 shows a verdict turning on a number (what her mechanism
+  returns on no signal) that the scenario does not fix.
+- **Statements marked proved are proved on paper**, with the runner checking instances;
+  nothing is kernel-checked. 3.2 is checked only for a maintaining part whose move does
+  not vary with the state.
+- **`UnbiasedFromFeedback` is not derived.** 7.1 gives moments and a bound in
+  probability; the almost-sure statement rests on a cited theorem.
+- **The Lean is read, not built**; 7.3 identifies `Realizes` on three small scenes by a
+  Python function written for the purpose.
+- **Change of ends is one model**: ends as additive valuations on at most three outcomes,
+  her choice their unweighted sum, fit as attained minus opposition. Weights on ends,
+  uncertainty about outcomes, and a revising part whose move varies with the state beyond
+  cases 15, 16 and 21 are not tried.
+- **Question 5's last point, who decides among equally fitting changes, is open.**
+- **No maximizing adviser is analysed**; an adviser is a rule.
+- **The rule on ties is applied in one case** (14) and discussed in 5.6.

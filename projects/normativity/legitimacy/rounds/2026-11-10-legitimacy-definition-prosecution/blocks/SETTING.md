@@ -185,8 +185,34 @@ second is computed the case says so.
 
 ## 4. Devices found needed beyond the dispatch's §2
 
-Filled in after the results.
+Filled in after the results; each is a finding against the setting as dispatched.
+`RESULTS.md`, question 1, gives the evidence for each.
+
+1. **The adviser's null action**: a comparison. Needed twice: to say the adviser brought
+   a gap about (choice 5), and to say what her moves would otherwise have led to (choice
+   6). For a consequence that is the adviser's own later act the null is not determined by
+   the setting (choice 7; cases 33a, 33b).
+2. **Typed actions.** A mechanism given only as a function of the world state does not
+   separate a move the adviser set from a move the mechanism made in response to the
+   adviser. Force and alteration are told from a signal by the type of the action's
+   component, which is supplied.
+3. **A grain per scene.** The dispatch's range is for one law. A scene of several steps
+   needs the conditioning stated; choice 3 states it by rule, and the rule is supplied.
+4. **A move that carries confidence.** With a two-valued move a rare lie that she
+   believes leaves the part in range at every grain coarser than the adviser's knowledge,
+   and that grain puts honest difficulty out of range as well (case 4b).
+5. **The verdict as one part's move.** The dispatch says no single part is the evaluator.
+   Without one, parts in range do not give a whole in range (case 30) and the whole-level
+   bound has nothing to attach to.
+6. **The rule at other aims**, for the rule on ties only, where no gap exists to carry
+   the verdict (case 14).
+7. **A menu for each end-revising part.** What fit selects depends on the menu (question
+   5); the menu is supplied.
+
+Not adopted, and what its absence costs: a **home condition** for a part, a second law
+under which its mechanism is taken to have been fitted. Without it "hers" and "nobody's"
+are one verdict (choice 11).
 
 ## Amended after the freeze
 
-None yet.
+Nothing in §1–§3 was changed after the freeze. §4 was written after the results.
