@@ -1676,9 +1676,10 @@ reproduced every status and every count it checked. Dispositions, by its numberi
   the per-row weights; a figure printed as 0.0000 is small and positive unless said.
 - **The relation to the Lean conditions is by reading their statements**, and depends on
   how `x`, the channel and the reference are identified; nothing was built.
-- **The repository-level `tests/run.py` sweep** was run once under Python 3.13 on the tree
-  as committed apart from this line; its result is recorded with the commit that carries
-  this section.
+- **The repository-level `tests/run.py` sweep** was run once, under Python 3.13, on the tree
+  as committed apart from this line: all green over 81 projects, the Lean build skipped as
+  that runner does by default. The round's own runner was run under Python 3.13 only.
+  `tests/round_records.py` had no pull-request context locally; CI runs it.
 - **Nothing is registered.** Components: the account as stated — **open**; statements 1–9
   — **open**, their statuses runner-checked facts about a finite model.
 
