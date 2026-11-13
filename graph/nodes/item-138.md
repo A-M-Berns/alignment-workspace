@@ -2,10 +2,10 @@
 id: item-138
 kind: leaf
 leaf_kind: task
-action: "Execute item 138 per its deliverable shape and acceptance check: The range of aims an adviser's action is compared against, and harm done at every aim."
+action: "Execute item 138 per its deliverable shape and acceptance check: The comparison that says an adviser brought a gap about."
 who: agent
 item: "138"
-title: "The range of aims an adviser's action is compared against, and harm done at every aim"
+title: "The comparison that says an adviser brought a gap about"
 section: "Normativity line — legitimacy"
 maintainer_order: 150
 difficulty: "open"
@@ -13,8 +13,8 @@ heading_notes: ""
 project: normativity.legitimacy
 dispatchable: true
 item_status: open
-deliverable: "`test-supported` — modules under `scored/` of the prosecution round: a rule fixing the set of aims `U` of `scored/ACCOUNT.md` §6 from a scenario (candidates: the aims the scenario names; those and, for each part her evaluation reads, the aim that is that part's own purpose; the aims an overseer cannot exclude), with its verdicts on the bank frozen before the code; and statements in `scored/THEOREMS.md`, each with one status, on whether the gate's no-gain property holds under each rule for every candidate that scores by the facts, and on what convicts a harm done at every aim."
-acceptance: "`python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with a status for each new statement; under each rule the verdicts on Z2 (a lie told at every aim), Z4 and Z5 (teaching only what favours its aim, against two ranges), D6 (the careful teacher), B5 (withholding), T13 (silence by every aim) and an adviser that helps less than it could; the pairs of statement 5 recomputed; the drift of D16(a) reported under a cut-off on the running sum while a single step is not."
+deliverable: "`test-supported` — modules under `blocks/` of the prosecution round: each candidate comparison as a function on a scene; predictions frozen before the code for cases 1–14, 25, 27, 27b, 28, 33a, 33b and three added (a part out of range before the adviser speaks, beside which it says something true; the same, where what it says narrows the gap; a mechanism fitted to an adviser's presence, as in case 9, under an honest adviser); and statements in `blocks/RESULTS.md`, each with one status, saying for each candidate which of those verdicts it changes and what it requires to be supplied."
+acceptance: "`python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with a status for each new statement; case 9 and the three added cases classified under each candidate; for each candidate, whether it gives different verdicts to cases 5 and 6 and to cases 33a and 33b."
 work:
   - {kind: round, ref: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution}
   - {kind: decision, ref: 2026-11-10--legitimacy-prosecution-readings}
@@ -23,41 +23,44 @@ work:
   - {kind: decision, ref: 2026-11-11--purpose-first-account-readings}
   - {kind: decision, ref: 2026-11-12--decomposition-account-readings}
   - {kind: decision, ref: 2026-11-12--scored-account-readings}
-context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/THEOREMS.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/ACCOUNT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/CASE_BANK.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/ADVISER_AS_PART.md", "prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md"]
+  - {kind: decision, ref: 2026-11-13--blocks-setting-readings}
+context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/RESULTS.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/DIVERGENCES.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/SETTING.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/model.py", "prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md"]
 author: "@smithy-verity"
 size: M
 size_reason: "one item entry, one fixture of context"
-version: 4
+version: 5
 ---
 ## Statement
-Item 138, The range of aims an adviser's action is compared against, and harm done at every aim, is delivered in the shape its entry states: `test-supported` — modules under `scored/` of the prosecution round: a rule fixing the set of aims `U` of `scored/ACCOUNT.md` §6 from a scenario (candidates: the aims the scenario names; those and, for each part her evaluation reads, the aim that is that part's own purpose; the aims an overseer cannot exclude), with its verdicts on the bank frozen before the code; and statements in `scored/THEOREMS.md`, each with one status, on whether the gate's no-gain property holds under each rule for every candidate that scores by the facts, and on what convicts a harm done at every aim.
+Item 138, The comparison that says an adviser brought a gap about, is delivered in the shape its entry states: `test-supported` — modules under `blocks/` of the prosecution round: each candidate comparison as a function on a scene; predictions frozen before the code for cases 1–14, 25, 27, 27b, 28, 33a, 33b and three added (a part out of range before the adviser speaks, beside which it says something true; the same, where what it says narrows the gap; a mechanism fitted to an adviser's presence, as in case 9, under an honest adviser); and statements in `blocks/RESULTS.md`, each with one status, saying for each candidate which of those verdicts it changes and what it requires to be supplied.
 
 ## Source
-ATTENTION.md, item 138 (The range of aims an adviser's action is compared against, and harm done at every aim); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/THEOREMS.md` (statements 4, 5 and 9), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/ACCOUNT.md` (§6, §7 and §10), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/CASE_BANK.md` (Z1–Z5), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/ADVISER_AS_PART.md` (questions 2 and 3), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (I3, I4 and I8).
+ATTENTION.md, item 138 (The comparison that says an adviser brought a gap about); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/RESULTS.md` (questions 1, 3 and 4; statements 1.3, 4.2 and 4.3), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/DIVERGENCES.md` (case 9), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/SETTING.md` (§2, *The four kinds*; §3, choices 5–7; §4, device 1), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/model.py` (`classify`), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Fifth follow-up*).
 
 ## Notes
-Filed by the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution) under its prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py. Rewritten by that round's fourth follow-up (PROMPT-followup-4.md) under the ruling 2026-11-11--legitimacy-purpose-first-direction, to ask what the account of scored/ACCOUNT.md needs.
+Filed by the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution) under its prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py. Rewritten by that round's fifth follow-up (PROMPT-followup-5.md) under the ruling 2026-11-11--legitimacy-purpose-first-direction, to ask what the setting of blocks/SETTING.md needs.
 
 ## Item
-In the account of `scored/ACCOUNT.md` of the prosecution round "the adviser widened a gap" means the gap is
-wider than under the action it would have taken with another aim, the other aim ranging over a stated set
-`U`; harm and force are judged the same way, and an aim that is a part's own purpose is permitted. The
-fourth follow-up finds (`scored/THEOREMS.md`, statements 4 and 5) that this fixes the comparison the third
-follow-up left open and closes its two counterexamples to the gate: teaching only what favours its aim is
-subversion at the world where the other aim would have taught, and an added threat is harm. On the bank 77
-of 89 cases match their evident character against 66. Three things are left. `U` is stipulated: one policy
-of selective teaching is illegitimate against an opposite aim and not against a silent one (Z4, Z5). A harm
-that does not vary with the aim passes: a lie told at every aim of `U` is not illegitimate (Z2). And the
-no-gain property is a property of the candidate: it holds under the stated candidate, and fails where her
-goal does not rank the options and under candidates that score a part by what it was handed.
+In the setting of `blocks/SETTING.md` of the prosecution round a part of the principal is in range when no
+re-reading of its own move does better by what the part is for, under the law the adviser's rule induces, and
+the adviser subverts it when its gap is wider than under the null condition, the law with the adviser's
+action removed. The fifth follow-up finds (`blocks/RESULTS.md`, questions 1–4; `blocks/DIVERGENCES.md`) that
+the comparison of laws acquits honest difficulty where the third follow-up's comparison state by state
+convicted it, and reads no range of aims; and that it has three defects. It runs her mechanism where the
+scene never puts it: an advocate for an undisclosed side is acquitted because her response to being shown
+nothing, fitted to the advocate's presence, has a larger gap in its absence (case 9). It cannot separate a
+gap that is hers from one that is nobody's, which would need a second law for the part (question 3). And for
+a consequence that is the adviser's own later act it is not determined: a threat and a warning of a standing
+practice are one verdict against the adviser's absence and two against its own rule with the announcement
+removed (cases 33a, 33b). Read with no comparison, as a part out of range whose move the adviser's action
+changes somewhere, case 9 is convicted and no other banked verdict changes, and the adviser is then charged
+with a gap she had already whenever it speaks to a part that was out of range.
 
-Wanted: a rule for `U`, and the consequences of each rule tried. In particular whether including, for each
-part her evaluation reads, the aim that is that part's own purpose holds her own adviser to more than a
-stranger in the way the steering follow-up's faithful-adviser standard did, convicting an adviser that
-helps less than it could; whether any rule both acquits that adviser and convicts selective teaching; and
-what, if anything in this account, convicts a harm done at every aim, or the argument that it belongs to
-her authority and not to legitimacy
+Wanted: the candidates for the comparison stated and tried: the null condition as now; no comparison; the
+null condition with her mechanism replaced by its best re-reading there; a home condition supplied for each
+part; the adviser's rule with one component of its action removed. For each, what it needs supplied, its
+verdicts, and whether it separates hers from nobody's and a threat from a warning of the adviser's own
+conduct
 
-*Deliverable shape:* `test-supported` — modules under `scored/` of the prosecution round: a rule fixing the set of aims `U` of `scored/ACCOUNT.md` §6 from a scenario (candidates: the aims the scenario names; those and, for each part her evaluation reads, the aim that is that part's own purpose; the aims an overseer cannot exclude), with its verdicts on the bank frozen before the code; and statements in `scored/THEOREMS.md`, each with one status, on whether the gate's no-gain property holds under each rule for every candidate that scores by the facts, and on what convicts a harm done at every aim.
-*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with a status for each new statement; under each rule the verdicts on Z2 (a lie told at every aim), Z4 and Z5 (teaching only what favours its aim, against two ranges), D6 (the careful teacher), B5 (withholding), T13 (silence by every aim) and an adviser that helps less than it could; the pairs of statement 5 recomputed; the drift of D16(a) reported under a cut-off on the running sum while a single step is not.
-*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/THEOREMS.md` (statements 4, 5 and 9), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/ACCOUNT.md` (§6, §7 and §10), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/CASE_BANK.md` (Z1–Z5), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/ADVISER_AS_PART.md` (questions 2 and 3), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (I3, I4 and I8).
+*Deliverable shape:* `test-supported` — modules under `blocks/` of the prosecution round: each candidate comparison as a function on a scene; predictions frozen before the code for cases 1–14, 25, 27, 27b, 28, 33a, 33b and three added (a part out of range before the adviser speaks, beside which it says something true; the same, where what it says narrows the gap; a mechanism fitted to an adviser's presence, as in case 9, under an honest adviser); and statements in `blocks/RESULTS.md`, each with one status, saying for each candidate which of those verdicts it changes and what it requires to be supplied.
+*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with a status for each new statement; case 9 and the three added cases classified under each candidate; for each candidate, whether it gives different verdicts to cases 5 and 6 and to cases 33a and 33b.
+*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/RESULTS.md` (questions 1, 3 and 4; statements 1.3, 4.2 and 4.3), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/DIVERGENCES.md` (case 9), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/SETTING.md` (§2, *The four kinds*; §3, choices 5–7; §4, device 1), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/model.py` (`classify`), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Fifth follow-up*).

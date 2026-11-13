@@ -1403,86 +1403,84 @@ fixture, with `certPlus_iff_robustOpen` and `robustOpen_of_persistence` instanti
 `lean/Workspace/Normativity/Contrib/NonCaptureCertificate.lean`; the claim
 `split-bill-is-robust-openness` of the map.
 
-### 136. The weighting as a predictive model: a fixed class, a likelihood for a miss, probes predicted, on a scene where a table is dear — **[open]**
+### 136. Which end yields, and what a chain of legitimate changes of ends can cost her — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-The account of legitimacy in `scored/ACCOUNT.md` of the prosecution round takes a candidate description of the
-principal to be an explanation — a goal, a purpose for each part, and the exceptions where she falls short —
-and weights candidates by one code length: the explanation, then every move of hers it does not predict, on
-her history and on probes, read by a second predictor. The fourth follow-up tests it on a chain of three
-parts under three principals (`scored/THEOREMS.md`, statement 1). The weight concentrates: the ten heaviest
-of 4,000 candidates hold 0.84 to 0.98. It concentrates on candidates that are mostly tables: the judging
-part has no purpose at 0.95 or more of the weight, and the heavy candidates split on whether a lie is
-illegitimate. The cause is arithmetic: a wrongly predicted move costs 8 bits, a move of a part with no
-purpose 1 or 2, and a table of the four to six views a part has on the history 9 bits a view. At 4 bits a
-missed move the heaviest candidates have a purpose at every part; at 16 they are tables. Read as the best
-move on what the part sees, and not as the part serving at the situation as it is, a purpose for the
-belief part is fixed by her corrections at 0.9999 of the weight; the judging part's is not.
+In the setting of `blocks/SETTING.md` of the prosecution round her ends are parts, each for what it values at
+the time, and a change of one end is made by a revising part that is for the fit of the replacement with her
+other ends: what they then attain, less what they would lose if the replacement got its best. The fifth
+follow-up finds (`blocks/RESULTS.md`, question 5) that this gives a revising part a purpose with no fixed
+final end and sorts the cases of exposure, sought experience, conversion and request; and that it does three
+things the position does not want. Dropping an end always has the greatest fit (5.1). Of two opposed ends
+either may be revised to agree with the other, and fit does not say which (5.3). And a chain of two steps,
+each the one best move of a revising part in range, carries her from the outcome her starting ends value most
+to the one they value least, with nothing forced, altered, subverted or harmed (5.4, case 29); the rule on
+ties does not reach it, and stops an aim choosing between equally fitting replacements only when the parts
+that later tell them apart are left out of the scene (5.6). Judged by all her ends, the one under revision
+included, the chain is refused at its second step, and an end then yields only when outweighed.
 
-The external review of that pass adds that the score is not a code length (a predicted move at 0 bits
-and a missed one at 8 over-fill Kraft's inequality), that the class differs between the two languages, and
-that the probes are used to choose exceptions, so nothing is predicted out of sample.
+Wanted: a stated class of conditions on the revision of ends (the judge: the rest, all her ends, her verdict
+at that time, weighted or not; the measure: attained, opposition, both; a memory of earlier ends or none),
+and for each member either a bound on how far a chain of legitimate steps can lower what her starting ends
+attain, or the chain that defeats it; with the cases the present rule sorts (15–24) kept sorted or the cost
+of each condition in cases stated. The adviser, the revising parts, their occasions over time and the
+carrying of one step's revision into the next are to be in the model, which they are not yet
 
-Wanted: the weighting as a coherent predictive model, where a table is dear. A scene of at least five
-parts, some purposes crossed by several mechanisms, each part with dozens of views on the history; one
-candidate class; a likelihood for a part's departures from its purpose, normalised, so that a purpose
-right half the time costs no more than no purpose; exceptions chosen from the history alone; both readings
-of what a purpose predicts; and the probes predicted by the weighted candidates and not fitted. The result
-wanted is whether candidates with a purpose at every part then hold the weight, agree, and predict the
-probes better than the table, per principal. That they do not is a result about that model
+*Deliverable shape:* `test-supported` — modules under `blocks/` of the prosecution round: a model of change of ends over several steps in which the adviser, each revising part and its occasion are parts of the scene and one step's revision is carried into the next; a stated class of revision conditions (judge, measure, memory); for each, predictions frozen before the code on cases 15–24 and 29 and on the two-end conflict of statement 5.3; and statements in `blocks/RESULTS.md`, each with one status, giving for each condition a bound on the fall in what her starting ends attain along any chain of legitimate steps, or the chain that defeats it.
+*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with a status for each new statement; the chain of case 29 and the aim-chosen pair of statement 5.6 classified under each condition; for each condition the number of cases 15–24 whose verdict changes.
+*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/RESULTS.md` (question 5; statements 3.1 and 5.1–5.7), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/SETTING.md` (§2, *Ends and change*; §3, choices 9 and 10), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/cases.py` (`run_chain`, `scene_29`), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/THEOREMS.md` (statements 8 and 9), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Fifth follow-up*).
 
-*Deliverable shape:* `test-supported` — modules under `scored/` of the prosecution round: a scene of at least five parts in which some purposes are crossed by several mechanisms and each part's views on the history number in the dozens; one candidate class fixed across description languages; a normalised likelihood for a part's departures from its purpose in place of a flat cost for a missed move; exception lists chosen from the history alone; the weights of statement 1 on it under both readings of what a purpose predicts, and the candidates' prediction of probes held out of the weights; and a statement in `scored/THEOREMS.md`, with one status, giving for each principal the share of the weight on candidates with a purpose at every part and whether the heavy candidates agree.
-*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with a status for the new statement; the bits by which the candidate whose every purpose is a table of its mechanism stands above the heaviest, for each principal; the weight of illegitimacy of a lie (statement 3) and the pairs of statement 5 recomputed under the heaviest candidates; the principals' behaviour on the probes and the predictions frozen before the code.
-*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/THEOREMS.md` (statements 1, 2 and 6), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/ACCOUNT.md` (§3, §4 and §9), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/weights.py` (`option`, `predicted`), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (I3, I7 and I8).
-
-### 137. The aim-relative condition in Lean: legitimacy of one action against another, its strict implication from aim-freedom, and `legitScoring` — **[moderate]**
+### 137. The setting's proved statements in Lean: the calibration bound on an event, the three-term bound, closure for a maintaining part, and the moments of an estimator calibrated on its history — **[moderate]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-In the account of `scored/ACCOUNT.md` of the prosecution round an adviser is a rule from what it knows and
-what it aims at to an action, and its influence on a part of the principal is illegitimate when the action
-harms, subverts or forces that part against the action another aim would have taken. The fourth follow-up
-proves on paper, and checks by enumeration on one scene, three things a kernel can hold
-(`scored/THEOREMS.md`, statement 5): an action legitimate against another leaves every part with a best at
-least, a gap at most and so a got at least what the other leaves it, with equality when each is legitimate
-against the other; a rule that takes one action at every aim is legitimate at every aim; and the converse
-fails, as does either implication between legitimacy at every aim and her evaluation being the same at
-every aim (`ReasonMediatedAuthorship.SelectionBlind`, the conclusion of
-`TransparentChannel.selectionBlind_of_realizes`). The witnesses are framing between options her goal ranks
-equal, and a true statement given a false reason.
+The fifth follow-up of the prosecution round proves on paper, and checks on instances, four statements a
+kernel can hold (`blocks/RESULTS.md`). On a finite probability space, for an estimate `e` and a target `q`
+in `[0, 1]` and `w` a function of a grain `γ`: `(E[w(e − q)])² ≤ E[w²] · E[(e − E[q | γ, e])²]` (2.2). For two
+estimates and two targets, `|E V_T − E V_0 − (E q_T − E q_0)| ≤ √g_0 + √g_T` with `g_t` the calibration gap of
+`V_t` for `q_t` (3.1). A choice among mechanisms that is optimal against every re-reading of its own move,
+from a menu containing the recalibration of each mechanism it installs on each cell of its move, installs a
+calibrated mechanism (3.2). And an estimate `U_k` of a bounded score `S_k` with `E[S_k | h_{k−1}, U_k] = U_k`
+has `E[excess_K] = 0` and `E[excess_K²] = K⁻² Σ E[(U_k − S_k)²]` (7.1), which is a sufficient condition in
+probability for the hypothesis `UnbiasedFromFeedback` of Theorem 3 of
+`DeconfusingCorrigibility.lean`; that hypothesis is one-sided and about one sequence, and is not equivalent
+to it. The same pass finds that `TransparentChannel.selectionBlind_of_realizes` applies to an adviser whose
+signal to a part does not vary with its aim, where the part reads nothing else of the action (7.3).
 
-Wanted: those statements in Lean, with `legitScoring` as before. Everything about weights — which
-candidate the predicate is evaluated under — waits on the ruling of what a purpose predicts (`DECISIONS.md`,
-*Awaiting the author*, 2026-11-12) and on item 136, and is not part of this item
+Wanted: those four statements in Lean over a finite probability space, and the instance of
+`selectionBlind_of_realizes`. Nothing here depends on how "the adviser brought a gap about" is read, which
+item 138 asks, or on how ends may be revised, which item 136 asks
 
-*Deliverable shape:* `lean-proved` — a file under `lean/Workspace/Deference/Contrib/` (namespace provisional) with a `Candidate` structure, `best`, `gap`, and `LegitAgainst` (no part harmed, subverted or forced by one action against another); the lemma that `LegitAgainst a a'` gives every part a best at least, a gap at most and a got at least what it has under `a'`, with equality when each is legitimate against the other; the theorem that an adviser rule constant in its aim is legitimate at every aim; two instances showing the converse fails and that legitimacy at every aim neither implies nor follows from `ReasonMediatedAuthorship.SelectionBlind` of her evaluation; `legitScoring`, a `Scoring` from a decidable predicate, an evaluation in `[0, 1]` and a window in `[−δ, 0)`; a nonvacuity witness for each hypothesis package.
+*Deliverable shape:* `lean-proved` — a file under `lean/Workspace/Deference/Contrib/` (namespace provisional) over a finite probability space with rational or real weights: the calibration gap of an estimate at a grain; the bound of statement 2.2; the bound of statement 3.1; the closure statement 3.2 for a choice among mechanisms; the two moment identities of statement 7.1 for a finite horizon; an instance of `TransparentChannel.Realizes` for a part whose move is its mechanism applied to a signal, with `selectionBlind_of_realizes` applied to continuations sending one signal; a nonvacuity witness for each hypothesis package.
 *Acceptance check:* the `lean` job green: the build, `#print axioms` on every new declaration auditing to `[propext, Classical.choice, Quot.sound]`, and each witness typechecking; `conservativity` unchanged.
-*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/THEOREMS.md` (statements 5 and 9), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/ACCOUNT.md` (§6 and §7), `lean/Workspace/Deference/Contrib/TransparentChannel.lean` (`Realizes`, `blind_of_realizes`, `selectionBlind_of_realizes`), `lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean` (`Scoring`, `Decision`), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (I3 and I4).
+*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/RESULTS.md` (statements 2.2, 3.1, 3.2, 7.1 and 7.3), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/SETTING.md` (§2, *Range and gap*), `lean/Workspace/Deference/Contrib/TransparentChannel.lean` (`Realizes`, `selectionBlind_of_realizes`), `lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean` (`Sequential`, `excess`, `UnbiasedFromFeedback`), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Fifth follow-up*).
 
-### 138. The range of aims an adviser's action is compared against, and harm done at every aim — **[open]**
+### 138. The comparison that says an adviser brought a gap about — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-In the account of `scored/ACCOUNT.md` of the prosecution round "the adviser widened a gap" means the gap is
-wider than under the action it would have taken with another aim, the other aim ranging over a stated set
-`U`; harm and force are judged the same way, and an aim that is a part's own purpose is permitted. The
-fourth follow-up finds (`scored/THEOREMS.md`, statements 4 and 5) that this fixes the comparison the third
-follow-up left open and closes its two counterexamples to the gate: teaching only what favours its aim is
-subversion at the world where the other aim would have taught, and an added threat is harm. On the bank 77
-of 89 cases match their evident character against 66. Three things are left. `U` is stipulated: one policy
-of selective teaching is illegitimate against an opposite aim and not against a silent one (Z4, Z5). A harm
-that does not vary with the aim passes: a lie told at every aim of `U` is not illegitimate (Z2). And the
-no-gain property is a property of the candidate: it holds under the stated candidate, and fails where her
-goal does not rank the options and under candidates that score a part by what it was handed.
+In the setting of `blocks/SETTING.md` of the prosecution round a part of the principal is in range when no
+re-reading of its own move does better by what the part is for, under the law the adviser's rule induces, and
+the adviser subverts it when its gap is wider than under the null condition, the law with the adviser's
+action removed. The fifth follow-up finds (`blocks/RESULTS.md`, questions 1–4; `blocks/DIVERGENCES.md`) that
+the comparison of laws acquits honest difficulty where the third follow-up's comparison state by state
+convicted it, and reads no range of aims; and that it has three defects. It runs her mechanism where the
+scene never puts it: an advocate for an undisclosed side is acquitted because her response to being shown
+nothing, fitted to the advocate's presence, has a larger gap in its absence (case 9). It cannot separate a
+gap that is hers from one that is nobody's, which would need a second law for the part (question 3). And for
+a consequence that is the adviser's own later act it is not determined: a threat and a warning of a standing
+practice are one verdict against the adviser's absence and two against its own rule with the announcement
+removed (cases 33a, 33b). Read with no comparison, as a part out of range whose move the adviser's action
+changes somewhere, case 9 is convicted and no other banked verdict changes, and the adviser is then charged
+with a gap she had already whenever it speaks to a part that was out of range.
 
-Wanted: a rule for `U`, and the consequences of each rule tried. In particular whether including, for each
-part her evaluation reads, the aim that is that part's own purpose holds her own adviser to more than a
-stranger in the way the steering follow-up's faithful-adviser standard did, convicting an adviser that
-helps less than it could; whether any rule both acquits that adviser and convicts selective teaching; and
-what, if anything in this account, convicts a harm done at every aim, or the argument that it belongs to
-her authority and not to legitimacy
+Wanted: the candidates for the comparison stated and tried: the null condition as now; no comparison; the
+null condition with her mechanism replaced by its best re-reading there; a home condition supplied for each
+part; the adviser's rule with one component of its action removed. For each, what it needs supplied, its
+verdicts, and whether it separates hers from nobody's and a threat from a warning of the adviser's own
+conduct
 
-*Deliverable shape:* `test-supported` — modules under `scored/` of the prosecution round: a rule fixing the set of aims `U` of `scored/ACCOUNT.md` §6 from a scenario (candidates: the aims the scenario names; those and, for each part her evaluation reads, the aim that is that part's own purpose; the aims an overseer cannot exclude), with its verdicts on the bank frozen before the code; and statements in `scored/THEOREMS.md`, each with one status, on whether the gate's no-gain property holds under each rule for every candidate that scores by the facts, and on what convicts a harm done at every aim.
-*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with a status for each new statement; under each rule the verdicts on Z2 (a lie told at every aim), Z4 and Z5 (teaching only what favours its aim, against two ranges), D6 (the careful teacher), B5 (withholding), T13 (silence by every aim) and an adviser that helps less than it could; the pairs of statement 5 recomputed; the drift of D16(a) reported under a cut-off on the running sum while a single step is not.
-*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/THEOREMS.md` (statements 4, 5 and 9), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/ACCOUNT.md` (§6, §7 and §10), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/scored/CASE_BANK.md` (Z1–Z5), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/ADVISER_AS_PART.md` (questions 2 and 3), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (I3, I4 and I8).
+*Deliverable shape:* `test-supported` — modules under `blocks/` of the prosecution round: each candidate comparison as a function on a scene; predictions frozen before the code for cases 1–14, 25, 27, 27b, 28, 33a, 33b and three added (a part out of range before the adviser speaks, beside which it says something true; the same, where what it says narrows the gap; a mechanism fitted to an adviser's presence, as in case 9, under an honest adviser); and statements in `blocks/RESULTS.md`, each with one status, saying for each candidate which of those verdicts it changes and what it requires to be supplied.
+*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with a status for each new statement; case 9 and the three added cases classified under each candidate; for each candidate, whether it gives different verdicts to cases 5 and 6 and to cases 33a and 33b.
+*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/RESULTS.md` (questions 1, 3 and 4; statements 1.3, 4.2 and 4.3), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/DIVERGENCES.md` (case 9), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/SETTING.md` (§2, *The four kinds*; §3, choices 5–7; §4, device 1), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/model.py` (`classify`), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Fifth follow-up*).
 
 ## Deference line
 Context for all three: `projects/deference/note-dump-2026-08-11/`, in particular

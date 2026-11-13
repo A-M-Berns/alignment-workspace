@@ -1813,6 +1813,355 @@ and `does`, the purposes `handed`, `avow`, `please`, the exception policies *bar
 
 The pull request is not auto-merged; the merge is a pull-request fact.
 
+## Fifth follow-up (2026-11-13) — a part as a mechanism and a purpose on the world
+
+Dispatched by `PROMPT-followup-5.md`. The idea the setting develops is Sam Eisenstat's; the
+rest of the position is the maintainer's and the prompt author's, parts of it provisional.
+Write scope: the round directory, this prompts directory, items 136–138, `DECISIONS.md`,
+and the structured state the gates require. No Lean was written. Purposes are given in
+this pass, not recovered from behaviour.
+
+**Headline.** The setting is stated over a finite model in `blocks/SETTING.md`. Range and
+gap can be stated and used once a grain is fixed. The four kinds of influence cannot be
+used as dispatched: they needed a comparison with the adviser's null action, typed
+actions, a move that carries confidence, her verdict as one part's move, the rule at
+other aims for ties, and a menu for each revising part. Twenty-six of the dispatch's
+twenty-seven cases with a prediction have the predicted verdict, under renderings the
+executor wrote; that is consistency, not a test. Of thirty-two statements nine are proved
+on paper, eighteen hold on a stated example and five are refuted. The positive results
+are applications of the law of iterated expectations with one exception (J3, 3.2); what
+the pass adds is mostly counterexamples.
+
+### J1. The setting as stated, and the choices made
+
+`blocks/SETTING.md` §2. States with a prior. An adviser: what it knows, an aim, a rule to
+an action with four typed components (signal, consequence, force, alteration). The actual
+condition is the law of state and action under its rule; the null condition is the law
+with no action. A part is moves, a mechanism from the world state to a move, and a
+utility, which is what it is for. A part is in range at a grain when no re-reading of its
+own move, allowed to use the grain, does better by its utility; the gap is what the best
+re-reading gains. Subversion is a gap wider than under the null condition. Harm to a
+choosing part is a fall in the most it could obtain when the consequence is put in, her
+moves held. An influence is illegitimate when it subverts or harms, forces or alters with
+no prior request from a part of hers in range, or breaks a tie by its aim; her verdict is
+legitimate when every part behind it is in range. An end is a part for what it values at
+the time; an end-revising part is for the fit of its replacement with her other ends
+(what they attain, less what they would lose if the replacement got its best); a
+maintaining part is for what the part it alters is for.
+
+Choices where §2 was open, each with its alternative, in `SETTING.md` §3; the ones a
+result turns on: the grain is what is settled before a part is used, the step in these
+scenes (alternatives computed: none, the adviser's action, the adviser's knowledge); an
+estimating part's move carries its confidence (alternative: two-valued, case 4b);
+subversion is a widening against the adviser's absence, between laws (alternatives: no
+comparison; state by state); the consequence removed for harm is the adviser's absence
+(alternative: its own rule with the announcement removed, cases 33a and 33b); her verdict
+is one part's move (alternative: case 30); fit is attained minus opposition, judged by
+the other ends (alternatives computed in question 5); "hers" and "nobody's" are one
+verdict.
+
+Devices found needed, `SETTING.md` §4: the null action (a comparison); typed actions; a
+grain per scene; a move that carries confidence; the verdict as a part's move; the rule
+at other aims, for ties; a menu for each revising part. Three of these are supplied
+lists. A home condition for a part was not adopted, and without it "hers" and "nobody's"
+are not separated.
+
+### J2. The cases
+
+`blocks/RESULTS.md`, *The cases*, gives each verdict with its reason. Thirty-seven rows:
+the dispatch's twenty-eight cases (case 11 as two rows) and eight added.
+
+| computed | rows |
+|---|---|
+| out of range, the adviser's; illegitimate | 1, 2, 4, 15, 21, 25, 28, 4c, 27b |
+| out of range, not the adviser's | 5, 6, 9 |
+| in range; the adviser's influence not illegitimate | 3, 7, 8, 11a, 11b, 13, 16, 27, 4b, 29, 31 |
+| in range; harm; illegitimate | 10, 33a, 33b |
+| force; illegitimate | 12 |
+| in range; a tie broken by the aim; illegitimate | 14 |
+| alteration, covered | 22 |
+| alteration, not covered; illegitimate | 23 |
+| a change of end or mechanism, legitimate | 16, 17, 18, 19 |
+| a change of ends, illegitimate, nobody's | 20 |
+| in range, no adviser | 24, 26, 30 |
+
+**One divergence**, case 9, an advocate for an undisclosed side (`blocks/DIVERGENCES.md`):
+predicted out of range and illegitimate; computed out of range and not the adviser's. The
+frozen rendering has her return 0 when shown nothing; in the adviser's absence that has a
+gap of 1/4, and under the advocate her gap is 1/12, which is narrower. With 1/2 on
+nothing the case would match. The comparison that says the adviser brought a gap about
+turns on a number the scenario does not fix.
+
+**The count.** Case 25 asks only for a report. Of the other twenty-seven, twenty-six
+match. Cases 3, 6, 18 and 20 predict "hers" or "nobody's" and are matched as not the
+adviser's. Case 4 matches under the description that gives her a confidence and not under
+the one that gives her a two-valued belief (4b). Case 27 matches when her confusion is
+calibrated and not when she ends wrong on average (27b). "Help" in case 7 is matched as
+her being better off. Where a prediction asks for something to be said, only its tokens
+are matched.
+
+**What the dispatch asked to be said.** *10*: the account gates a threat as harm, a
+predicate on the influence; her verdict to comply is legitimate. *13*: buried information
+leaves every part in range and is not illegitimate; it shows only in two adviser-side
+quantities that decide nothing (gap 1/4 at the adviser's knowledge; 1/4 left on the
+table). *14*: expressed by the rule at two aims, with no gap. *20*: her later verdicts are
+not discounted, and fit then licenses revising the end that survived. *21*: a chain that
+passes every step exists (case 29). *25*: the verdict is that of a plain lie; it differs
+in that the adviser's knowledge adds nothing to the gap and its three actions leave
+nothing on the table.
+
+### J3. What was established on each question
+
+1. **Do the definitions stand?** Range and gap: yes, given a grain. The four kinds: only
+   with the devices of J1. A move the adviser set and a move made in response to its
+   signal are told apart by the supplied type alone (1.1). Dropping the view is what
+   keeps honest difficulty in range: a re-reading allowed to know the adviser's action
+   opens a gap of 3/64 in case 3 and 3/16 in case 27 (1.2). It loses "it was there to be
+   read" (case 13).
+2. **The grain.** *Proved*: the gap grows with the grain (2.1); `(E[w(e − q)])² ≤ E[w²] ·
+   gap` for `w` a function of the grain (2.2), so a grain protects the events it names.
+   *Adopted*: what is settled before the part is used, for the reason that a mechanism
+   can be fitted only to what precedes its use. It catches a lie targeted in time with
+   any move (4c: gap 0 pooled, 1/5 at the step). A lie targeted at a state is caught only
+   when her move carries confidence, with a gap of `η²/(1/2 + η)`, second order in the
+   lie's probability (2.6). With a two-valued move, none of the four grains computed puts
+   it out of range while leaving honest difficulty in (2.5, refuted), and it is the same
+   object as a disclosed advocate (2.4). A hard truth passes when her confusion is
+   calibrated and is convicted when she ends wrong on average, as a craving exploited in
+   the open is. No range of aims is read: a lie told at every aim is illegitimate, and
+   selective teaching has one verdict.
+3. **Whose doing.** *Proved*: `|D − Δq| ≤ √g_0 + √g_T` for the foreseeable shift `D` in
+   her verdict, the shift `Δq` in what the verdict is for, and the verdict part's two gaps
+   (3.1); a maintaining part in range whose menu is closed under re-reading installs a
+   mechanism in range (3.2), with closure needed. *Refuted*: that every foreseeable shift
+   traces to something out of range or to the adviser (3.3): nobody's alteration, a
+   maintaining part in range with an unclosed menu, and a change of ends by a part in
+   range each give one. The recovering depressive is the removal of a starting gap, with
+   nobody charged (3.4). That a gap is the adviser's is a stipulated comparison of laws,
+   not a causal result. "Hers" and "nobody's" are not separated.
+4. **Options and threats.** Range does not see a threat (4.1). Against the consequence
+   removed, a threat is harm, an offer help, a true warning neither, with no aim read
+   (4.2). A threat and a warning of the adviser's own standing practice are one verdict
+   against its absence and two against its own rule without the announcement; what tells
+   them apart is a fact about the branch not taken, which the scene supplies (4.3). The
+   aim is needed only if that fact is to be derived from it.
+5. **Change of ends.** A revising part has a purpose with no fixed final end. *Proved*:
+   dropping an end always has the greatest fit (5.1). Fit leaves many changes (5.2) and
+   does not say which of two opposed ends yields (5.3). *Refuted*: that a chain of
+   legitimate steps keeps what her starting ends attain (5.4): two steps, each the one
+   best move of a revising part in range, take her from her best outcome to her worst,
+   with the adviser arranging only the occasions and its influence not illegitimate.
+   Judged by all her ends the chain is refused. The rule on ties forbids an aim choosing
+   between two equally fitting replacements only when the later revising part is left
+   out of the scene (5.6). A conversion fit condemns is followed by a revision fit
+   licenses (5.5). The whole-level bound holds with a positive gap for leaving law for
+   music and for being made to like what is delivered alike (5.7). Who decides among
+   equally fitting changes: open.
+6. **Parts to whole.** Parts in range do not give a verdict in range (6.2: the larger of
+   two calibrated estimates has mean 19/32 against 1/2). A weighted mean keeps the mean
+   and is still not in range (6.4). The whole is in range when the aggregation is
+   calibrated, which the setting can require only by making the verdict a part's move
+   (6.1); that is the conclusion restated.
+7. **What plugs into the post.** Two predicates, on her verdict and on the influence;
+   both depend on the model beyond the realized history (7.4), which is no obstruction to
+   a `Scoring` and is a statement of what an overseer must know. Theorem 1 takes any
+   predicate. Theorems 2 and 3: nothing is constructed. `UnbiasedFromFeedback` is implied
+   in probability, for a bounded score, by the range condition at the grain of the
+   history of the part of the adviser that estimates the score (7.1), and not by range at
+   a coarser grain (7.2); it is not equivalent to that condition and the almost-sure
+   statement is cited. `selectionBlind_of_realizes` applies, on one scene, to an adviser
+   whose signal to a part does not vary with its aim where the part reads nothing else of
+   the action (7.3). The fourth follow-up's answer is confirmed: the decomposition adds
+   permission and a rule of attribution and no protection; the whole-level bound stays
+   true, and the permission counts as in order shifts it does not limit.
+
+### J4. S1–S6 and F1–F6
+
+The reviewer wrote its judgments before reading the executor's. Where the executor's
+changed after the review, both are given.
+
+| | executor | reviewer | reason |
+|---|---|---|---|
+| S1 | not met | not met | seven devices, a comparison and three supplied lists among them |
+| S2 | met in part | met in part | 26 of 27 under the executor's renderings; one divergence; four predictions weakened in matching |
+| S3 | met in part | met in part | an answer with a reason; a state-targeted lie is caught only by a confidence; a hard truth passes only when her confusion is calibrated |
+| S4 | met in part | met in part | 3.1 and 3.2 are proved; they do not give authorship, and the dispatch's form is refuted |
+| S5 | met in part | met in part | a purpose with no fixed final end; cases 15–24 sort; menus are supplied and chains are not survived |
+| S6 | met, narrowly (first: met) | met, narrowly | one existing Lean theorem applies on one class of advisers; the executor's first judgment also rested on readings of `UnbiasedFromFeedback` and `Realizes` that the review corrected |
+| F1 | met in part (first: not met, with one exception) | met in part | with a two-valued move a believed rare lie leaves every part in range; that views must come back is not shown |
+| F2 | met in part | met in part | shifts with every part in range arise under an uncalibrated aggregation and under change of ends; not with a verdict part and fixed ends |
+| F3 | not met | not met | one form of purpose per part across the cases; the reviewer adds that the evidence does not show per-case purposes to be needed, not that the code verifies one purpose everywhere |
+| F4 | met in its second clause, on one example | met in part | the reviewer judged before 5.6 was computed: an aim then chooses between two equally fitting replacements with nothing illegitimate. A fixed reference is not shown to be needed; "common" is not shown |
+| F5 | met in part (first: met for the positive results) | met in part | 2.2, 3.1, 6.4 and 7.1 are familiar; 3.2 and the counterexamples are not the tower property |
+| F6 | met in part | met in part | no range of aims; the one grain that sees a two-valued rare lie convicts honest difficulty |
+
+**The prompt author's predictions.** At least 22 of 28: 26 of 27, by the count above. S1
+met: not met. S3 met: in part. S4 about even: in part. S5 in part, fit definable and not
+unique: so. F5 the criticism most likely pressed: the reviewer pressed the null
+comparison, the renderings and the Lean mapping harder, and rated F5 in part. Question 7
+stays "permission, not protection": so.
+
+### J5. External review
+
+One review through `codex exec --sandbox read-only` (codex-cli 0.153.4, model
+`gpt-6-astra`, as its log reports), on copies of the round directory, the dispatch with
+local paths replaced, three Lean files and a draft of this section, the executor's
+judgments in a separate file it was told to open last. Its reply is
+`REVIEW-astra-followup-5.md`, verbatim. It ran the runner and reproduced every number it
+checked. Dispositions, by its numbering:
+
+1. *A passing runner compares status strings with example checks and does not certify
+   the prose.* **Accepted**; `RESULTS.md` says so at its head.
+2. *`model.py` matches §2 for range, but: "requested beforehand" was not implemented and
+   an intervention could license itself; "the parts behind her verdict" is every part
+   listed; several cases over ends bypassed the model; descriptions are evaluated one at
+   a time.* **Accepted; the first a defect, fixed** (a request is read with the adviser's
+   action null; statement 1.4 added). Cases 17, 24, 26 and 29 are now scenes; the stubs
+   in 22 and 23 and the other two points are in J7.
+3. *1.1's two scenes do not have the same law, since the actions differ; supplied lists
+   and a threshold are used beyond the null comparison.* **Accepted**; 1.1 restated with
+   the type forgotten, and the devices counted by kind.
+4. *2.1–2.6 are sound in scope; 2.5 is about four grains; the event bound is `√(P(E) ·
+   gap)` and is not a bound on how far an adviser moved her; "gap by step" figures were
+   contributions.* **Accepted; each corrected.**
+5. *3.1–3.4 earn their statuses; the localisation paragraph names no author and omits the
+   prior; the null comparison is a stipulated rule of attribution.* **Accepted**; the
+   paragraph is rewritten.
+6. *4.1–4.3 earn theirs; in the warning it is the acting part's score that rises; the
+   check that 33a and 33b share a law compared a scene with itself.* **Accepted**; the
+   check removed, the two said to be one scene with a supplied fact.
+7. *5.1 is for one end; case 29 had no adviser; 5.5 does not make the conversion
+   legitimate after the fact; the tie claim of 5.6 was not implemented and the written
+   rule asks every part's utility to be equal.* **Accepted; the last a wrong claim.**
+   Computed: the rule fires with one revising part in the scene and not with both, so the
+   claim is withdrawn and 5.6 restated.
+8. *"Exactly" and "only" in question 6 are false: the joint posterior is a calibrated
+   aggregation that is not linear, whether or not it is called a part.* **Accepted**;
+   rewritten.
+9. *7.1 holds with its filtration and a bounded error; the history is finer than the
+   step; the Lean predicate is one-sided and about one sequence; the score is not in
+   `[0, 1]`.* **Accepted**; "identified with" withdrawn for "implied in probability, for
+   a bounded score".
+10. *The table of Theorems 1–3 misstated hypotheses: `κ` is a definition, 2(c) does not
+    need `Respects`, her verdict is not shown to be the post's `V`.* **Accepted**; the
+    table is rewritten.
+11. *`Realizes` is equality of outputs and not the absence of force and alteration, with
+    a counterexample; "the Lean gives nothing where the signal varies" is excessive; 2.2
+    does not bound the difference between two advisers by one term.* **Accepted;
+    reproduced.** Both of its counterexamples are in the check, and 7.3 is restated.
+12. *7.4 shows dependence on the model, not that a history must carry it.* **Accepted.**
+13. *"Left by the adviser" was 0 where no actions were listed; case 3 with its own
+    reports as alternatives leaves 3/64; "does not foresee her error" in case 25 is too
+    strong.* **Accepted; fixed** (the quantity is absent where no actions are listed; case
+    3 now reports 3/64; the sentence replaced).
+14. *Each of the thirty-seven rows follows for its rendering, and the rendering decides.*
+    **Accepted**, and adopted as the standing of the count. Its row notes are entered in
+    the case table where they change a reading (8, 21, 22, 23, 24, 25).
+15. *"27 of 28" is 26 of 27 with a prediction, a consistency count; the divergence note
+    over-generalised.* **Accepted; both corrected.**
+16. *Differences on F1, F4 and F5.* **F1 and F5 accepted.** F4: see J4.
+17. *What the draft overstated and omitted; the next result needs a fixed class of
+    conditions and a model with the adviser, the revising parts and time in it.*
+    **Accepted**; this section and item 136 are written accordingly.
+
+### J6. Deviations from the prompt
+
+- **Case 11 is two rows** and **eight cases were added** (4b, 4c, 27b, 29, 30, 31, 33a,
+  33b), each with the executor's prediction, in the freezing commit.
+- **`SETTING.md` §4 was written after the results**; §1–§3 and the bank were not edited
+  after the freeze. The dispatch asked for §1 and §2 "stated exactly": §1 is condensed,
+  not reproduced.
+- **Code, statements and prose were changed after the review** (J5). No status changed;
+  one statement was added (1.4); four cases whose range had been asserted are computed.
+  No prediction was edited and no banked verdict changed.
+- **The review saw a draft of this section**, not this text, and judged F4 before 5.6
+  was computed.
+- **The dispatch's "no single part is the evaluator" was not kept** (device 5), and its
+  two-line bounds are restated with a grain (2.2), not re-derived.
+- **Earlier banks are not re-predicted** under this setting; the round runner runs them
+  as they were.
+- **No new item is filed.**
+
+### J7. What was not shown
+
+`blocks/RESULTS.md`, *What was not shown*, in full. The ones a reader of this section
+needs:
+
+- **The match is consistency.** The executor chose every number, response, menu and null
+  behaviour; case 9 shows one such choice deciding a verdict.
+- **One description per case.** The position's rule for a set of descriptions is not
+  implemented; cases 4 and 4b are the only pair.
+- **"Proved" is on paper.** Nothing is kernel-checked; 3.2 is checked by the runner only
+  for a maintaining part whose move does not vary with the state.
+- **Nothing about attribution is causal**, and "hers" is not told from "nobody's".
+- **Change of ends is one small model**: additive valuations on at most three outcomes,
+  unweighted; case 21's steps do not accumulate; case 29 has no schedule; ends in cases 22
+  and 23 are stubs.
+- **No hypothesis of Theorems 2 or 3 is discharged.** The Lean was read, not built.
+- **The repository-level `tests/run.py` sweep** was run once, under Python 3.13, on the
+  tree as committed apart from this line: all green over 81 projects, the Lean build
+  skipped as that runner does by default. The round's runner was run under Python 3.9 and
+  3.13. `tests/round_records.py` had no pull-request context locally; CI runs it.
+- **Nothing is registered.** Components: the setting as stated — **open**; statements
+  1.1–7.4 — **open**, their statuses runner-checked facts about a finite model with no
+  registry entry.
+
+### J8. The single most valuable next result
+
+A model of change of ends in which the adviser, the revising parts, their occasions and
+time are all present, a stated class of conditions on revision (who judges, by what
+measure, with what memory), and for each condition either a bound on how far a chain of
+legitimate steps can lower what her starting ends attain or the chain that defeats it.
+`Δq` is the one term of 3.1 that no gap bounds, and until it is bounded or shown
+unboundable the account permits what it was meant to exclude. Item 136.
+
+### J9. Filings, names, and what is reserved
+
+**Revised under the prompt's direction; nothing filed.** Items 136, 137 and 138 are
+rewritten: 136, which end yields and what a chain of legitimate changes can cost; 137,
+statements 2.2, 3.1, 3.2 and 7.1 and the instance of `selectionBlind_of_realizes` in
+Lean; 138, the comparison that says an adviser brought a gap about. `DECISIONS.md`: one
+agent-decided entry, `2026-11-13--blocks-setting-readings`; each queue entry of the
+earlier passes given a line on what this pass found; two new queue entries.
+
+**New names, all provisional:** the dispatch's — "re-reading", "actual condition",
+"revising part", "fit among her ends", "localisation", "no inflation", "no profit from
+moving her", the directory `blocks/`; and the executor's — "null condition", "grain",
+"signal", "consequence" (components of an action), "estimating part", "choosing part",
+"end", "end-revising part", "maintaining part", "attained by the rest", "opposition" (of
+a replacement to the rest), "covered", "left by the adviser", "better off", the part
+names *listen*, *act*, *crave*, *verdict*, *revise*, *maintain*, the bank's tokens, and
+`LegitVerdict`, `LegitInfluence`.
+
+**Outstanding maintainer actions**
+
+1. Rule which end yields when two are opposed and who decides among equally fitting
+   changes. Entered in *Awaiting the author* (2026-11-13). Decision required: *the other
+   ends judge, as the position says* (then the chain of case 29 is legitimate), *all her
+   ends judge, the one under revision included*, *her verdict at that time judges*, or
+   *leave open and dispatch item 136*.
+2. Rule whether truthful influence under which a part of hers goes out of range is
+   manipulation. Entered in *Awaiting the author* (2026-11-13). Decision required: *yes,
+   what she then does is all that counts* (the setting as it is: cases 27b and 28 alike),
+   *no, truth exempts* (then content must be represented), or *leave open*.
+3. Rule against what an adviser's action widens a gap; the entry of 2026-11-12 stays,
+   with this pass's result. Decision required: *the adviser's absence, between laws* (the
+   reading tested, with the defect of case 9), *no comparison*, *a home condition for
+   each part*, or *leave open and dispatch item 138*.
+4. The seven other entries of 2026-11-10 to 2026-11-12 on this round stay as they are,
+   each with a line from this pass: the faithful-adviser standard; the reading of *in
+   range*; V+; the reading of the constraints; a part handed a falsehood; what a purpose
+   predicts; a change her goal does not rank. The last is restated by action 1 and can be
+   retired with it. What a purpose predicts bears only if recovery from behaviour is
+   resumed. Decision required for each: as its entry states.
+5. File the unfiled items once an executor's handle is mapped (the entry of 2026-11-10 on
+   `@claude-fable-5-2` stands): the two of H11, action 7, and the one of I9, action 7.
+   This pass adds none. *A kind for harm that preserves gaps* is answered here in part
+   (question 4) and *Knowing the adviser's rule at aims it does not have* now bears only
+   on ties; both should be restated against `blocks/` when filed.
+
+The pull request is not auto-merged; the merge is a pull-request fact.
+
 ## Attribution
 
 - Prompt-author model: Claude Fable 5 (Anthropic); dispatched 2026-11-10, kept
@@ -1836,4 +2185,8 @@ The pull request is not auto-merged; the merge is a pull-request fact.
   kept verbatim as `PROMPT-followup-4.md`; executor model Claude Fable 5.2 (Anthropic),
   executed 2026-11-12; external reviewer `gpt-6-astra` through codex-cli 0.153.4, as its log
   reports, reply kept verbatim as `REVIEW-astra-followup-4.md`.
+- Fifth follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-13,
+  kept verbatim as `PROMPT-followup-5.md`; executor model Claude Fable 5.2 (Anthropic),
+  executed 2026-11-13; external reviewer `gpt-6-astra` through codex-cli 0.153.4, as its log
+  reports, reply kept verbatim as `REVIEW-astra-followup-5.md`.
 - No chat bundle.
