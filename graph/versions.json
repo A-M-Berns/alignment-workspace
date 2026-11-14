@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "38abce41ea46e071ecad2dec",
-  "index.json": "74719b9682b6bac107524eb7"
+  "derived.json": "1df178b9469e7646126b3ef1",
+  "index.json": "1cf682da30d826a69a1f9549"
  },
- "generated_hash": "dbe28a86d40ba4af963907f1",
+ "generated_hash": "bbe5a01b9df08750014a262d",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -8872,6 +8872,11 @@
     "date": "2026-11-13",
     "normalized": "item 136 which end yields and what a chain of legitimate changes of ends can cost her is delivered in the shape its entry states test supported modules under blocks of the prosecution round a model of change of ends over several steps in which the adviser each revising part and its occasion are parts of the scene and one steps revision is carried into the next a stated class of revision conditions judge measure memory for each predictions frozen before the code on cases 15 24 and 29 and on the two end conflict of statement 5 3 and statements in blocks results md each with one status giving for each condition a bound on the fall in what her starting ends attain along any chain of legitimate steps or the chain that defeats it",
     "version": 5
+   },
+   {
+    "date": "2026-11-14",
+    "normalized": "item 136 an anchor for her true utility and what could identify it is delivered in the shape its entry states test supported modules under estimates of the prosecution round a stated class of anchors for her true utility on histories her starting values informed of the whole history her values at its end at least one condition on how her valuation may depend on her history elsters among them for each predictions frozen before the code on every case of estimates case_bank md in which her tastes or values change a model of several steps in which one steps change is carried into the next and statements in estimates results md each with one status saying for each anchor whether her verdicts over time with any further observable the anchor names identify it and giving a bound on what a chain of changes with no mistake can cost her by that anchor or the chain that defeats it",
+    "version": 6
    }
   ],
   "item-137": [
@@ -8899,6 +8904,11 @@
     "date": "2026-11-13",
     "normalized": "item 137 the settings proved statements in lean the calibration bound on an event the three term bound closure for a maintaining part and the moments of an estimator calibrated on its history is delivered in the shape its entry states lean proved a file under lean workspace deference contrib namespace provisional over a finite probability space with rational or real weights the calibration gap of an estimate at a grain the bound of statement 2 2 the bound of statement 3 1 the closure statement 3 2 for a choice among mechanisms the two moment identities of statement 7 1 for a finite horizon an instance of transparentchannel realizes for a part whose move is its mechanism applied to a signal with selectionblind_of_realizes applied to continuations sending one signal a nonvacuity witness for each hypothesis package",
     "version": 5
+   },
+   {
+    "date": "2026-11-14",
+    "normalized": "item 137 the accounts proved statements in lean no inflation deferring avoidable loss drift between time slices and the true score form of theorem 3 b is delivered in the shape its entry states lean proved one file under lean workspace deference contrib in a contribution namespace stating and proving on a finite probability space with the workspaces expectr statement 1 1 of estimates results md the squared mean error of an estimate is at most its miscalibration at any information 1 2 the loss of deciding now less the loss of deferring 1 3 with the constant 2 and the equality case of 1 4 4 2 the drift bound between two estimates of one quantity 5 1 and against deconfusingcorrigibility sequential truescore_noregret as stated in 1 11 each with a nonvacuity witness the last on witness sequential with a true utility sequence that differs from v at every step",
+    "version": 6
    }
   ],
   "item-138": [
@@ -8926,6 +8936,11 @@
     "date": "2026-11-13",
     "normalized": "item 138 the comparison that says an adviser brought a gap about is delivered in the shape its entry states test supported modules under blocks of the prosecution round each candidate comparison as a function on a scene predictions frozen before the code for cases 1 14 25 27 27b 28 33a 33b and three added a part out of range before the adviser speaks beside which it says something true the same where what it says narrows the gap a mechanism fitted to an advisers presence as in case 9 under an honest adviser and statements in blocks results md each with one status saying for each candidate which of those verdicts it changes and what it requires to be supplied",
     "version": 5
+   },
+   {
+    "date": "2026-11-14",
+    "normalized": "item 138 the comparison that says an adviser brought a mistake about is delivered in the shape its entry states test supported modules under estimates of the prosecution round computing each case of estimates case_bank md under a stated class of comparisons the honest counterpart under a truthful and under a forthright reporting norm the advisers policy toward another type of principal its policy toward a population in which nobody has the flaw its absence under both measures of worse total miscalibration and regret some listed quantity and a third the mean error of her verdict with and without a clause for deception she agreed to predictions frozen before the code and statements in estimates results md each with one status saying for each member of the class which of the missed and convicted cases it gets right and which case of the honest list it convicts",
+    "version": 6
    }
   ],
   "item-139": [

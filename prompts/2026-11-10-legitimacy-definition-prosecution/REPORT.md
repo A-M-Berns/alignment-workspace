@@ -2162,6 +2162,415 @@ names *listen*, *act*, *crave*, *verdict*, *revise*, *maintain*, the bank's toke
 
 The pull request is not auto-merged; the merge is a pull-request fact.
 
+## Sixth follow-up (2026-11-14) — manipulation as induced miscalibration of her estimates: a pressure test
+
+Dispatched by `PROMPT-followup-6.md`, with an addendum, `PROMPT-followup-6-addendum.md`,
+received during the pass from an agent session and attributed to the prompt author and
+the maintainer on that session's word; a second session relayed the maintainer's
+clarification that *trajectory* is the primary name of the concept the addendum asks
+for, with *history* and *future history* as the same concept. The account tested is
+stated in the dispatch's §1 and §2: the idea that manipulation is distortion of an actor
+away from what its faculties are for is Sam Eisenstat's, the account of manipulation as
+induced mistake is Robert Noggle's, and the statement in symbols is the maintainer's and
+the prompt author's. Write scope: the round directory, this prompts directory, items
+136–138, `DECISIONS.md`, the structured state the gates require, and, by the addendum,
+`graph/` for a source and `state/concepts.json`. No Lean was written.
+
+**Headline.** The account's inequalities hold, two of the six claims in corrected form.
+As a classifier it reads no intention and passes the bank's honest cases, and it is
+wrong on fourteen or fifteen of about a hundred cases under renderings the executor
+wrote; the external review then showed that its second comparison convicts ordinary
+honest help unless the comparison is with someone who differs from her only in the
+flaw, which the account does not say. Changes of taste sort only once the account is
+told which function her true utility is, and nothing on her side identifies it.
+Calibration bounds the inflation of her verdict in expectation and not along the
+realized sequence the post's theorem is about. For belief the workspace's existing
+conditions already give the account's in a stronger form.
+
+### VI.1 The setting and the choices made
+
+`estimates/SETTING.md`. Choices where §1 and §2 were open (§3 there), each with its
+alternative: her estimates are a fixed response to what she observes, run under each
+policy compared; calibration is against the true law, the adviser's actual policy
+included (alternative: the law she takes to hold); it is taken at what she observes
+(alternative: at the estimate alone, computed); the quantities she estimates are listed
+per scene and "worse" is a larger total (alternative: worse on some quantity, computed);
+a policy is a choice and a report, the honest counterpart keeps the choice, and the
+reporting norm is *truthful* (alternative: *forthright*, computed); "someone unable to
+make that mistake" is a second type of principal at which the scene gives the adviser's
+policy; `U*` is taken at two anchors, her starting values informed of the whole history
+(*start*) and her values at its end (*end*); coercion, tie and alteration are read from
+scene facts outside the account. Devices found needed (§4 there): eight, among them the
+list of quantities with a weighting, the reporting norm, a second type that differs
+from her in the flaw alone, and an anchor for `U*`.
+
+### VI.2 C1–C6
+
+| | status |
+|---|---|
+| C1 | holds as stated (1.1) |
+| C2 | holds as stated, under squared loss (1.2) |
+| C3 | holds as stated; it bounds her loss in true utility when her choice is a function of her information (1.3, 1.6); the constant 2 is not tight, `√2` is and is attained (1.4); any reference may replace "her information", with the bound then about that reference (1.5) |
+| C4 | the threshold holds, strictly above it (1.7); with a detected departure a violation it is `(1 − V_h)/(1 + δ₀ + λ) < 1/2` (1.9). The last clause fails when "right on average" means over an option taken at random: an honest adviser that maximizes her verdict scores 5/8 on outcomes worth 1/2 (1.8); it holds if she is right on average given the adviser's information and choice. For a principal who has sized up the policy, `E[V] = E[U*]` under every policy, so on one example detection buys information and not protection from inflation (1.10) |
+| C5 | holds as stated; Lean-ready statement in `RESULTS.md` 1.11; satisfiable non-trivially; sufficient, attained, not necessary (1.12); its conclusion is not regret in true utility (1.13) |
+| C6 | an identity; where the honest report would change what she does it needs a third term, the change in the outcome; in the selection example the second term is 1/8 and her miscalibration is the same with and without the selection (1.14) |
+
+### VI.3 The cases
+
+108 cases frozen before the code: Noggle's thirteen tactics and fourteen of his other
+cases, six of Elster's, every row of `blocks/CASE_BANK.md`, five of taste-shaping,
+eighteen legitimate changes, fourteen built for question 3, one of dependence. Evident
+character: 47 objectionable, 45 innocent, 7 her own, 9 contested. Predictions and
+renderings are the executor's.
+
+| | right | missed | convicted | routed | unfixed | not counted |
+|---|---|---|---|---|---|---|
+| *start* | 76 | 10 | 4 | 6 | 4 | 8 |
+| *end* | 72 | 11 | 4 | 12 | 0 | 9 |
+
+**Wrong.** *Missed*: K9, Q2 (an undisclosed advocate, strategic silence: truthful
+conduct and her own over-trust; manipulation under the forthright norm); K13 (buried
+information); K31 (a lie she allows for); K2, Q3, Q3b (lies that leave her total
+miscalibration no higher; K2 and Q3b are manipulation if "worse" is read per quantity);
+X3, Q11 (a narrowing feed, a craving exploited by a policy that treats everyone alike);
+D1 (dependence); under *end* also K29 (every end revised in turn). *Convicted*: NP13,
+Q5, Q6, Q7 (a teacher's feigned enthusiasm, a surprise party, a magician, a bluff).
+*Routed* to coercion or alteration: K10, K12, K33a, E6, N8b, X3b; under *end* also NP8,
+K15, K21, K23, X1, X2b. *Unfixed* under *start*: K17, K19, K24, L14. Seven divergences
+from the executor's own predictions: N8b, K2, K3, K27, X3b, Q3b, Q10
+(`estimates/DIVERGENCES.md`).
+
+**Objectionable cases with no mistake.** *Start*: 7 of 47 (3 in coercion, 4 nowhere:
+K13, K31, Q3, D1). *End*: 16 of 47 (4 in coercion, 7 in alteration, 5 nowhere). Taste
+shaped by a responsive adviser is an estimation mistake she is triggered into under
+*start* and alteration under *end*; pairing with a passing feeling is manipulation
+under both.
+
+The count is consistency with renderings, not a test: the model computes annotated
+scenes; "responsive", "blanket" and "endorsed" are stated in the rows that turn on
+them; K2, Q6 and Q7 are decided by details the rows do not fix; K21, K29, D1, E5 and L6
+are static scenes.
+
+### VI.4 What was established on each question
+
+1. C1–C6: VI.2.
+2. Cases: VI.3.
+3. The bank's honest cases are not convicted. Four honest scenes from the review are
+   *triggered* manipulation in the setting as frozen (3.1) and are not when the second
+   type differs from her only in the flaw (3.2). Honest difficulty is her own
+   estimation mistake at her information and none at the estimate alone. Withholding
+   from one who reads silence rightly is never manipulation. A lie that lowers her
+   total miscalibration is not manipulation, and the total depends on units (3.3).
+4. Reading A has a consistent model. Two calibrated time-slices may disagree at every
+   history (4.1): the commitment is that one is inaccurate, not that one is mistaken. A
+   foreseeable drift in the mean is bounded by the two miscalibrations (4.2). Reading A
+   includes the utility of whoever she ends as (4.3). Calibration to `U*` is not
+   identifiable from her verdicts (4.4), and conditioning with no drift has the law of
+   learning (4.5). What decides whether conditioning is caught is which function `U*`
+   is.
+5. C5's hypothesis is a sufficient condition on one realized sequence, where `Legit` is
+   a predicate of a history; with the gate it is enough that counted histories not be
+   inflated on average (5.2). Expected inflation is at most the root of her expected
+   miscalibration (5.1), a quantity honesty does not control; calibration at every step
+   gives no bound on realized inflation (5.5). The selection term is her own
+   miscalibration under the adviser's policy, zero on average when her verdict is her
+   posterior under it, and not zero given what the adviser knows (5.3). Manipulation
+   need not inflate (5.4).
+6. An honest phase in which she rightly defers, her own signal decays and detection
+   falls below C4's threshold, after which a departure pays (6.1); with no departure, a
+   growing selection term if her error grows (6.2). The account marks nothing in the
+   honest phase. These are separate calculations, not one model in which the post's
+   theorem fails. A norm of honest conduct toward her feelings needs `U*` or a list of
+   what each feeling is evidence of on the one example computed (6.3).
+7. `ThinLegitimacy.Correct`, `Transparent`, `Sufficient` and `Value`, and
+   `TransparentChannel.Realizes` and `abs_expect_sub_le_width`, give the belief side in
+   a stronger form. Added: her verdict read as an estimate of her own utility, graded
+   mistakes, manipulation as a comparison between policies, the squared-error forms.
+   `RESULTS.md`, question 7, has the table with file and line.
+8. Four negative results with proofs, `estimates/NEGATIVE_RESULTS.md`.
+
+### VI.5 S1–S5 and F1–F6
+
+The reviewer judged before reading the executor's. Where the executor's judgment
+changed after the review, the first is given.
+
+| | executor | reviewer | reason |
+|---|---|---|---|
+| S1 | met (first: in part) | met | corrected forms with short hypotheses exist for C3, C4 and C6; the criterion allows them |
+| S2 | not met | not met | 14 or 15 wrong, several central |
+| S3 | met in part (first: met) | not met | the bank's first-list cases pass on comparators the scenes stipulate; the review's four honest scenes are convicted; with the second type constrained they are not |
+| S4 | met in part | met in part | satisfiable; bounded by her miscalibration in expectation only; not every manipulation inflates |
+| S5 | met (first: in part) | met | a reading of her verdict as an estimate of her utility, graded mistakes and a comparison between policies are added; the criterion asks only that something be |
+| F1 | met in part | met in part | where taste-shaping goes is decided by an anchor the account does not choose; four or five objectionable cases with no mistake go nowhere |
+| F2 | met in part (first: not met) | met | no intent is read, but the second comparison convicts honest help unless constrained, and the constraint is not in the account |
+| F3 | not met (first: in part) | not met | a consistent model exists and no theorem needs `U*` known; that applying the account does is a different limitation |
+| F4 | met in part (first: not met as stated) | met in part | bounded in expectation; for the realized sequence no bound follows from calibration; impossibility of every bound not shown |
+| F5 | not met as stated (first: in part) | not met as stated | no one model has the post's theorem failing with its hypotheses and the account's conditions holding; 6.1 as first computed mixed two treatments of detection |
+| F6 | met in part | met in part | the belief side is there in stronger form; the comparison-based definition is not a renaming |
+
+Remaining difference: S3 and F2. The reviewer reads the account as stated (§3.6 puts no
+constraint on the second type); the executor counts that the constrained form passes
+the same scenes, on four scenes only.
+
+**The prompt author's predictions.** C1, C2, C3, C5 hold as stated: so, C3 with a
+constant that is not tight. C4 holds for the naive case and changes form for the
+sophisticated: the threshold holds, the last clause does not as the executor first read
+it, and the sophisticated case changes form on one example. C6 holds: as algebra, with
+a third term in general. S2 met with three to eight wrong: not met, fourteen or
+fifteen. F1 met in part, for pairing: in part, and not for pairing with a passing
+feeling, which is caught; the unplaced cases are buried information, a calibrated
+target of a lie, a beneficial lie and dependence. F2 not met: met in part (reviewer:
+met). F3 not met but the commitment about disagreeing time-slices uncomfortable: not
+met; the commitment is weaker than stated, since both slices can be calibrated. F4,
+`β` bounded for the induced part and not the selection part: both are bounded together
+in expectation, neither along a realized sequence. F5 met: not as stated. F6 met in
+part for the belief side: so.
+
+### VI.6 External review
+
+One review through `codex exec --sandbox read-only` (codex-cli 0.153.4, model
+`gpt-6-astra`, as its log reports), on copies of the round directory, the dispatch with
+local paths replaced, six Lean files and a draft of this section without the executor's
+judgments, which were in a separate file it was told to open last. It was told to write
+its ten cases after reading only the dispatch and `SETTING.md`. Its reply is
+`REVIEW-astra-followup-6.md`, verbatim. It ran both runners. Dispositions, by its
+numbering:
+
+1. *The runner compares status labels and does not certify the prose.* **Accepted**;
+   `RESULTS.md` says so at its head.
+2. *Ten cases (points 2–11).* Dependency without error: missed, as D1. Secret pleasant
+   pairing: alteration under *end*, as X2b. A covert commission in a tie; a threat:
+   routed, and routing does not say her authority was respected. **Accepted**; said in
+   question 3. An accurate disclosure that violates privacy: nowhere, a limit of
+   coverage and not of the definition. **Accepted.** Remedial teaching, a requested
+   disclosure, a disclosed advocate to a novice, a requested reminder: *triggered*, false
+   positives. **Accepted; reproduced** as statement 3.1, with the constrained form as
+   3.2. Sincere misinformation: not manipulation, as K25.
+3. *1.5 is not a bound on true utility when her choice uses finer information than the
+   reference.* **Accepted**; restated, with its counterexample. *1.6's check asserted
+   assigned values.* **Fixed**: the check builds the scene.
+4. *1.8 refutes one reading of "right on average"; under the other the clause is its own
+   hypothesis.* **Accepted**; restated. *1.10: a principal recalibrated to each policy is
+   not the fixed response; the claim is for a fixed outcome.* **Accepted**; said.
+5. *1.11's check is a finite-prefix inequality; 1.12 lacks a full instance.*
+   **Accepted**; said, and the instance described. The Lean-ready statement matches the
+   declarations; not elaborated.
+6. *C6: keeping the adviser's choice does not keep her move; a third term is needed.*
+   **Accepted; a defect.** 1.14 and `SETTING.md` §4 restated; the example is in the
+   check.
+7. *The end anchor does not make her final verdict calibrated without assuming she knows
+   her end values.* **Accepted**; said.
+8. *5.1 bounds expectations; C5 is about a realized sequence; a hidden bit drawn once
+   gives calibration at every step and realized inflation 1/2.* **Accepted; a defect in
+   the draft's central claim on `β`.** 5.1 restated, 5.5 added, question 5 rewritten.
+9. *Posterior calibration makes the selection term zero on average, not given the
+   adviser's information; at equality a departure ties; the inflation hypothesis is
+   sufficient, not "exact"; 5.2 is an inequality.* **Accepted; each corrected.**
+10. *6.1 mixed a believed report with a detected one: at step 4 inflation is 29/100 and
+    miscalibration 29/100, her own loss 21/100; "nothing can detect it" is false. 6.2 is
+    an illustration; 6.3 does not show no norm exists.* **Accepted; 6.1 recomputed** in
+    one treatment (the review's figures reproduced); 6.2 and 6.3 narrowed.
+11. *8.1 does not show how much of the adviser's side must be read; 8.2(b) is for one
+    mechanism; 8.4's ranking is the reachability indicator.* **Accepted**; each said.
+12. *`model.py` computes annotated scenes and validates no annotation.* **Accepted**;
+    said in question 2.
+13. *Renderings decide K2, the taste cases, Q6, Q7; K21, K29, D1, E5, L6 are static; Q9's
+    scene was not responsive as its row says.* **Accepted**; said, and Q9's scene fixed
+    (its verdict is unchanged).
+14. *Total miscalibration depends on units: Q3b flips with the reading rescaled.*
+    **Accepted; reproduced** as 3.3.
+15. *The Lean map: `Correct`, `Sufficient` and `Value` are stronger than their rows said;
+    `IsBest` is a zero-regret analogue; `ThinLegitimacy` has payoff functions;
+    `LicensedAt` is relational.* **Accepted**; five rows and the summary corrected.
+16. *Judgments on S1–S5, F1–F6.* VI.5. **S1, S5, F3, F4, F5 accepted. S3, F2 accepted in
+    part.**
+17. *The draft's headline "does not convict honest influence" is false; its `β` and
+    selection claims overreach; "two corrections" is optimistic; it understates the
+    `√2` result and the equivalence examples; innocent and misclassified are conflated
+    by the standard.* **Accepted**; this section is written accordingly.
+18. *What is new: the formulation and the failure analysis; the next result is a
+    sequential bridge from policy to C5's realized hypothesis, or its impossibility.*
+    **Adopted** as VI.9.
+
+### VI.7 Deviations from the prompt
+
+- **Every prediction and rendering is the executor's**; the dispatch gave none per case.
+- **`SETTING.md` §4 was written after the results and amended after the review**; §1–§3
+  and the bank were not edited after the freeze. §1 and §2 are condensed from the
+  dispatch, not reproduced word for word.
+- **Code, statements and prose were changed after the review** (VI.6). Four statements
+  were added (3.1–3.3, 5.5); no case verdict, count or prediction changed. The review
+  saw a draft of this section, not this text.
+- **The review's four honest scenes are statements, not bank rows**, the bank being
+  frozen.
+- **The freezing commit's message says 113 rows; the bank has 108.**
+- **The addendum arrived by another agent session**, with a clarification by a second;
+  both are followed on those sessions' word.
+- **Noggle's book and paper are not filed as a node**: a node needs an author handle
+  and `@claude-fable-5-2` is not in `graph/policy.yaml`. They are cited in items 136 and
+  138 and are the concept `noggle-mistake-account`; the node's text is under
+  *Outstanding maintainer actions*. No text of the book is in the repository.
+- **No merged-work entry was tagged**: `state/prs.json` holds merged pull requests, and
+  this one is open.
+- **No new item is filed.**
+
+### VI.8 What was not shown
+
+`estimates/RESULTS.md`, *What was not shown*, in full. The ones a reader of this section
+needs:
+
+- **The count is consistency** with renderings the executor wrote, and the standard
+  assumes manipulation is never innocent.
+- **Proofs are on paper.** Nothing is kernel-checked; the Lean was read, not built.
+- **No model joins** deterrence, the post's sequence and dependence, and no condition on
+  the adviser or on her learning is shown to give C5's hypothesis along a realized
+  sequence.
+- **A second type constrained to the flaw alone** was tried on four scenes; whether it
+  acquits honest influence in general and still convicts exploitation was not shown.
+- **Only the two extreme anchors for `U*`** were computed.
+- **Sources.** Noggle's book was read in the sections cited and Elster's chapter in
+  full. Bibliographic details of Dorst et al. 2021, Briggs 2009, Arntzenius 2008 and
+  Dietrich and List 2013 were confirmed against Crossref and their content from
+  abstracts (for Briggs, the opening pages); Total Trust's formal statement was not
+  confirmed from the paper. The psychology the prompt author relied on from memory
+  (misattribution of feelings: Schwarz and Clore 1983, Dutton and Aron 1974; forecasting
+  one's feelings: Wilson and Gilbert 2003, 2005; underestimating one's own change:
+  Loewenstein, O'Donoghue and Rabin 2003, Quoidbach, Gilbert and Wilson 2013; mere
+  exposure: Zajonc 1968) was checked bibliographically and at the level of abstracts
+  or secondary accounts; failed replications are on record for the first two. No
+  result here rests on any of it. Two attributions in `RESULTS.md` (the
+  calibration–refinement split; cheap talk with a sender who wants only a high verdict)
+  are from memory and marked so.
+- **The repository-level `tests/run.py` sweep** was run once, under Python 3.13, on the
+  tree as committed apart from this line: all green over 81 projects, the Lean build
+  skipped as that runner does by default. The round's runner was run under Python 3.13,
+  and this pass's part of it under Python 3.9 as well. `tests/round_records.py` had no
+  pull-request context locally; CI runs it.
+- **Nothing is registered.** Components: the account as stated — **open**; statements
+  1.1–8.4 — **open**, their statuses runner-checked facts about finite examples with no
+  registry entry; the seven concepts added to the map — **living notes**.
+
+### VI.9 The single most valuable next result
+
+A sequential model with her true utility, what she observes, the feedback she gets on
+it, the adviser's honest counterpart and detection in one probability space, and in it
+either conditions on the adviser's policy and on her learning that give C5's hypothesis
+along the realized sequence, or the proof that none of a stated class does. It must
+survive an error of hers that persists across steps (5.5) and the decay of her
+judgment (6.1). Until it exists the account's quantities are not connected to the
+post's guarantee. The item's text is under *Outstanding maintainer actions*.
+
+### VI.10 The addendum: a source and the concept map
+
+*Source.* Noggle's book (OUP 2025, doi:10.1093/9780198924920.001.0001; publication
+details confirmed against a bookseller's listing, the publisher's page not rendering)
+and paper (*Journal of Practical Ethics* 14(1), 2026, doi:10.3998/jpe.9951; confirmed
+against Crossref) are cited in the *Item* sections of `graph/nodes/item-136.md` and
+`item-138.md` and in the round's README, and are the concept `noggle-mistake-account`.
+A source node is not filed (VI.7).
+
+*Concept map.* `state/concepts.json` gains seven concepts and twelve links, none shown
+as established. `trajectory` (kind *object*, title "Trajectory (history, future
+history)") is new: no concept covered it under either name. By the maintainer's
+clarification *trajectory* is primary and *history* and *future history* are the same
+concept; the schema has no field for synonyms, so they are in the title and the blurb.
+Nothing in the Lean or the post's companion page is renamed. It is linked to
+`legitimacy-line`, `deconfusing-corrigibility` (the corrigibility score) and
+`evaluation-and-true-utility`. For this pass: `evaluation-and-true-utility`,
+`noggle-mistake-account` (prior work), `manipulation-as-induced-mistake`,
+`estimation-and-action-mistakes`, `honest-conduct`, `warranted-self-trust`, each with
+the standing the pass leaves it in its blurb. No concept is filed for a notion the pass
+refutes (C4's last clause as first read; calibration as a bound on realized inflation).
+`python3 -m checkers.workspace_state --check`, `python3 -m checkers.graph --root .` and
+`python3 site/build.py` pass. The six scoreable new concepts carry no score on any
+axis, which the daily freshness audit will report: an AI seed needs the handle.
+
+### VI.11 Filings, names, and what is reserved
+
+**Revised under the prompt's direction; nothing filed.** Items 136, 137 and 138 are
+rewritten at version 6: 136, an anchor for her true utility and what could identify it;
+137, the account's proved statements in Lean; 138, the comparison that says an adviser
+brought a mistake about. `DECISIONS.md`: one agent-decided entry,
+`2026-11-14--estimates-account-readings`; each queue entry of the earlier passes given a
+line on what this pass found; two new queue entries.
+
+**New names, all provisional:** the dispatch's — "estimation mistake", "action
+mistake", "miscalibration", "the three references", "honest conduct", "true utility",
+"true score", "inflation", "Reading A", the directory `estimates/`; the executor's —
+"induced", "triggered", "truthful" and "forthright" (reporting norms), "the other type",
+"responsive" and "blanket" (of a policy), "start" and "end" (anchors of her utility),
+"endorsed", "unfixed", "routed", "missed", "convicted", "nowhere", "evident character",
+case ids N, NP, E, K, X, L, Q, D, and the Lean name `trueScore_noRegret`; the concept
+ids `trajectory`, `evaluation-and-true-utility`, `noggle-mistake-account`,
+`manipulation-as-induced-mistake`, `estimation-and-action-mistakes`, `honest-conduct`,
+`warranted-self-trust`.
+
+**Outstanding maintainer actions**
+
+1. Rule which function her true utility is. Entered in *Awaiting the author*
+   (2026-11-14). Decision required: *her starting values, informed of the whole
+   history*, *the values of whoever she ends as*, *a condition on how her valuation may
+   depend on her history* (Elster's is the candidate), or *leave open and dispatch
+   item 136*.
+2. Rule whether her prior say, or a practice's rules, cover a deception. Entered in
+   *Awaiting the author* (2026-11-14). Decision required: *yes, as for alteration*,
+   *no, a deception is manipulation whatever she agreed to*, or *leave open* (item 138
+   computes the clause).
+3. The twelve entries of 2026-11-10 to 2026-11-13 on this round stay, each with a line
+   from this pass. *Which end yields* (2026-11-13) and *a change her goal does not
+   rank* (2026-11-12) are restated by action 1 and can be retired with it. *Truthful
+   influence that takes a part out of range* (2026-11-13) is answered by this account
+   in the form VI.4, point 3 gives, subject to 3.1. *Against what a gap is widened*
+   (2026-11-12) becomes item 138's class. The entries on *in range*, the constraints,
+   a part handed a falsehood and what a purpose predicts bear only if the parts account
+   is resumed. Decision required for each: as its entry states.
+4. Map the handle (the entry of 2026-11-10 on `@claude-fable-5-2` stands), then file:
+   the three unfiled items of H11 and I9; the item and the node below; and an AI seed
+   on the six new scoreable concepts.
+
+   > **From the adviser's policy to an uninflated verdict along the realized sequence**
+   > [open]. Section: Normativity line — legitimacy. The sixth follow-up of the
+   > prosecution round shows on paper that Theorem 3(b) of the post holds for a true
+   > score once the long-run average of `V_k − U*_k` is at most `β`
+   > (`estimates/RESULTS.md` 1.11, in
+   > `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/`),
+   > that her miscalibration bounds that average in expectation (5.1), and that
+   > calibration at every step gives no bound along the realized sequence when her
+   > error persists (5.5). Wanted: one sequential model with her true utility, what she
+   > observes, the feedback she gets on it, the adviser's honest counterpart, and
+   > detection, in one probability space; a stated class of conditions on the adviser's
+   > policy and on her learning; and for each either a proof that `LimsupLE` of the
+   > average inflation holds almost surely or in probability with a stated `β`, or the
+   > scene that defeats it, the hidden bit of 5.5 and the decay of 6.1 among the scenes
+   > tried.
+   > *Deliverable shape:* `test-supported` — modules under `estimates/` of that round,
+   > predictions frozen before the code; a Lean-ready statement of each condition that
+   > survives, against `DeconfusingCorrigibility.Sequential`.
+   > *Acceptance check:* `python3 run.py` in the round directory green with a status for
+   > each new statement; each condition classified on the scenes of 5.5 and 6.1.
+   > *Context:* `estimates/RESULTS.md` questions 5 and 6;
+   > `lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean`
+   > (`Sequential`, `UnbiasedFromFeedback`);
+   > `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` VI.9.
+
+   The source node, to be written as `graph/nodes/noggle-mistake-account.md` and listed
+   in the `holds` of the frame `legitimacy`; the checker has not been run on it:
+
+   > `id: noggle-mistake-account`; `kind: leaf`; `author: "@claude-fable-5-2"`;
+   > `size: L`; `size_reason: "a book of eleven chapters and a paper"`; `version: 1`.
+   > **Statement.** Manipulation is influence that operates by inducing a mistake in
+   > the target's psychological states or processes.
+   > **Source.** Robert Noggle, *Manipulation: Its Nature, Mechanisms, and Moral
+   > Status*, New Topics in Applied Philosophy, Oxford University Press, 2025,
+   > doi:10.1093/9780198924920.001.0001, ch. 6; Robert Noggle, "The Mistake Account of
+   > Manipulation", *Journal of Practical Ethics* 14(1), 2026, doi:10.3998/jpe.9951,
+   > whose abstract states it in nearly these words.
+   > **Notes.** The published account the legitimacy line's sixth candidate makes
+   > exact (`estimates/SETTING.md` of the prosecution round). Bears on items 136 and
+   > 138.
+
+The pull request is not auto-merged; the merge is a pull-request fact.
+
 ## Attribution
 
 - Prompt-author model: Claude Fable 5 (Anthropic); dispatched 2026-11-10, kept
@@ -2189,4 +2598,10 @@ The pull request is not auto-merged; the merge is a pull-request fact.
   kept verbatim as `PROMPT-followup-5.md`; executor model Claude Fable 5.2 (Anthropic),
   executed 2026-11-13; external reviewer `gpt-6-astra` through codex-cli 0.153.4, as its log
   reports, reply kept verbatim as `REVIEW-astra-followup-5.md`.
+- Sixth follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-14,
+  kept verbatim as `PROMPT-followup-6.md`, with an addendum of the same date kept verbatim as
+  `PROMPT-followup-6-addendum.md`, received from an agent session and attributed to the prompt
+  author on that session's word; executor model Claude Fable 5.2 (Anthropic), executed
+  2026-11-14; external reviewer `gpt-6-astra` through codex-cli 0.153.4, as its log reports,
+  reply kept verbatim as `REVIEW-astra-followup-6.md`.
 - No chat bundle.

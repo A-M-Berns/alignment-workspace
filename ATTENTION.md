@@ -1403,84 +1403,90 @@ fixture, with `certPlus_iff_robustOpen` and `robustOpen_of_persistence` instanti
 `lean/Workspace/Normativity/Contrib/NonCaptureCertificate.lean`; the claim
 `split-bill-is-robust-openness` of the map.
 
-### 136. Which end yields, and what a chain of legitimate changes of ends can cost her — **[open]**
+### 136. An anchor for her true utility, and what could identify it — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-In the setting of `blocks/SETTING.md` of the prosecution round her ends are parts, each for what it values at
-the time, and a change of one end is made by a revising part that is for the fit of the replacement with her
-other ends: what they then attain, less what they would lose if the replacement got its best. The fifth
-follow-up finds (`blocks/RESULTS.md`, question 5) that this gives a revising part a purpose with no fixed
-final end and sorts the cases of exposure, sought experience, conversion and request; and that it does three
-things the position does not want. Dropping an end always has the greatest fit (5.1). Of two opposed ends
-either may be revised to agree with the other, and fit does not say which (5.3). And a chain of two steps,
-each the one best move of a revising part in range, carries her from the outcome her starting ends value most
-to the one they value least, with nothing forced, altered, subverted or harmed (5.4, case 29); the rule on
-ties does not reach it, and stops an aim choosing between equally fitting replacements only when the parts
-that later tell them apart are left out of the scene (5.6). Judged by all her ends, the one under revision
-included, the chain is refused at its second step, and an end then yields only when outweighed.
+In the account of `estimates/SETTING.md` of the prosecution round her true utility is one function on
+histories, her verdicts estimate it, and an adviser that leaves her verdict miscalibrated for it manipulates
+her. The sixth follow-up finds (`estimates/RESULTS.md`, question 4) that this has a consistent model and that
+a foreseeable drift in her evaluation of a history implies a miscalibrated time-slice (4.1, 4.2); and three
+things the account does not settle. "One function on histories" includes the utility of whoever she is at the
+end of each history, under which an adviser that makes her like what it delivers makes no mistake in her
+(4.3). Nothing on her side identifies the function: any law of verdicts is calibrated to some utility (4.4),
+and being moved with no drift in the mean has the law of learning (4.5). And the cases of changed taste take
+opposite verdicts under the two anchors computed, her starting values informed of the whole history and her
+values at its end; under the first, four cases have no verdict because their descriptions do not say whether
+she endorses the history. The account of manipulation as induced mistake is Noggle's (Robert Noggle, *Manipulation: Its Nature, Mechanisms, and Moral Status* (Oxford University Press, 2025, doi:10.1093/9780198924920.001.0001), and "The Mistake Account of Manipulation", *Journal of Practical Ethics* 14(1), 2026, doi:10.3998/jpe.9951); it gives no standard for a mistaken end.
 
-Wanted: a stated class of conditions on the revision of ends (the judge: the rest, all her ends, her verdict
-at that time, weighted or not; the measure: attained, opposition, both; a memory of earlier ends or none),
-and for each member either a bound on how far a chain of legitimate steps can lower what her starting ends
-attain, or the chain that defeats it; with the cases the present rule sorts (15–24) kept sorted or the cost
-of each condition in cases stated. The adviser, the revising parts, their occasions over time and the
-carrying of one step's revision into the next are to be in the model, which they are not yet
+Wanted: a stated class of anchors, with at least one between the two computed, a condition on how her
+valuation may depend on her history (Elster 1982: through what she has learned of the options, and not
+through what was made available to her; his condition that no strict preference reverses with the feasible
+set); for each, the verdicts on the bank's cases of changed taste, whether the anchor can be identified from
+her verdicts over time together with any further observable it names (for instance her verdict on learning
+how a taste of hers was formed), and either a bound on what a chain of changes with no mistake can cost her
+by that anchor or the chain that defeats it. The fifth follow-up's chain (`blocks/RESULTS.md`, 5.4) is the
+case to carry: it is manipulation under the first anchor and nothing under the second
 
-*Deliverable shape:* `test-supported` — modules under `blocks/` of the prosecution round: a model of change of ends over several steps in which the adviser, each revising part and its occasion are parts of the scene and one step's revision is carried into the next; a stated class of revision conditions (judge, measure, memory); for each, predictions frozen before the code on cases 15–24 and 29 and on the two-end conflict of statement 5.3; and statements in `blocks/RESULTS.md`, each with one status, giving for each condition a bound on the fall in what her starting ends attain along any chain of legitimate steps, or the chain that defeats it.
-*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with a status for each new statement; the chain of case 29 and the aim-chosen pair of statement 5.6 classified under each condition; for each condition the number of cases 15–24 whose verdict changes.
-*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/RESULTS.md` (question 5; statements 3.1 and 5.1–5.7), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/SETTING.md` (§2, *Ends and change*; §3, choices 9 and 10), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/cases.py` (`run_chain`, `scene_29`), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/decomposition/THEOREMS.md` (statements 8 and 9), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Fifth follow-up*).
+*Deliverable shape:* `test-supported` — modules under `estimates/` of the prosecution round: a stated class of anchors for her true utility on histories (her starting values informed of the whole history; her values at its end; at least one condition on how her valuation may depend on her history, Elster's among them); for each, predictions frozen before the code on every case of `estimates/CASE_BANK.md` in which her tastes or values change; a model of several steps in which one step's change is carried into the next; and statements in `estimates/RESULTS.md`, each with one status, saying for each anchor whether her verdicts over time, with any further observable the anchor names, identify it, and giving a bound on what a chain of changes with no mistake can cost her by that anchor, or the chain that defeats it.
+*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with a status for each new statement; for each anchor the count of right, missed, convicted and routed among the cases of changed taste, with K17, K19, K24 and L14 given a verdict or said to be unfixed; the chain of K29 classified under each anchor.
+*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/RESULTS.md` (question 4, statements 4.1–4.5; question 2), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/SETTING.md` (§3.9; §4, device 6), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/CASE_BANK.md` (rows E1–E6, K15–K24, K29, X1–X3b, L8–L15, NP8), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/RESULTS.md` (statements 5.1–5.7), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Sixth follow-up*).
 
-### 137. The setting's proved statements in Lean: the calibration bound on an event, the three-term bound, closure for a maintaining part, and the moments of an estimator calibrated on its history — **[moderate]**
+### 137. The account's proved statements in Lean: no inflation, deferring, avoidable loss, drift between time-slices, and the true-score form of Theorem 3(b) — **[moderate]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-The fifth follow-up of the prosecution round proves on paper, and checks on instances, four statements a
-kernel can hold (`blocks/RESULTS.md`). On a finite probability space, for an estimate `e` and a target `q`
-in `[0, 1]` and `w` a function of a grain `γ`: `(E[w(e − q)])² ≤ E[w²] · E[(e − E[q | γ, e])²]` (2.2). For two
-estimates and two targets, `|E V_T − E V_0 − (E q_T − E q_0)| ≤ √g_0 + √g_T` with `g_t` the calibration gap of
-`V_t` for `q_t` (3.1). A choice among mechanisms that is optimal against every re-reading of its own move,
-from a menu containing the recalibration of each mechanism it installs on each cell of its move, installs a
-calibrated mechanism (3.2). And an estimate `U_k` of a bounded score `S_k` with `E[S_k | h_{k−1}, U_k] = U_k`
-has `E[excess_K] = 0` and `E[excess_K²] = K⁻² Σ E[(U_k − S_k)²]` (7.1), which is a sufficient condition in
-probability for the hypothesis `UnbiasedFromFeedback` of Theorem 3 of
-`DeconfusingCorrigibility.lean`; that hypothesis is one-sided and about one sequence, and is not equivalent
-to it. The same pass finds that `TransparentChannel.selectionBlind_of_realizes` applies to an adviser whose
-signal to a part does not vary with its aim, where the part reads nothing else of the action (7.3).
+The sixth follow-up of the prosecution round proves on paper, and checks on seeded random finite cases,
+the statements a kernel can hold (`estimates/RESULTS.md`). On a finite probability space, for an estimate `x`
+of `X` and information `I`: `(E[x] − E[X])² ≤ E[(x − E[X | x, I])²]` (1.1). For a user with information `F`:
+the loss of deciding now less the loss of deferring to `x` is
+`E[(E[X|x,F] − E[X|F])²] − E[(x − E[X|x,F])²]` (1.2). For estimates `u_a` of `U*_a`, references
+`ū_a = E[U*_a | F]`, `M = Σ_a E[(u_a − ū_a)²]` and regret `R = max_a u_a − u_chosen`:
+`E[max_a ū_a − ū_chosen] ≤ E[R] + √(2M)`, with equality attained (1.3, 1.4). For two estimates of one
+quantity with miscalibrations `m_0`, `m_T`: `|E u_T − E u_0| ≤ √m_0 + √m_T` (4.2). The expected long-run
+inflation of a verdict is at most the root of its expected long-run miscalibration (5.1); for a realized
+sequence it is not (5.5, a counterexample to carry as a witness). And in the sequential setting of
+`DeconfusingCorrigibility.lean`, with a sequence `Ustar` and `LimsupLE` of the average of `V − Ustar` at
+most `β`, the average of `U_k a'_k − (Ustar_k − λ N_k)` is `LimsupLE` at most `β` for every available
+sequence (1.11, stated there in Lean syntax; the proof is `theorem3b` and `LimsupLE.add`).
 
-Wanted: those four statements in Lean over a finite probability space, and the instance of
-`selectionBlind_of_realizes`. Nothing here depends on how "the adviser brought a gap about" is read, which
-item 138 asks, or on how ends may be revised, which item 136 asks
+Wanted: these in Lean, each with a witness. The belief side of the account is already there:
+`ThinLegitimacy.Correct` is calibration at her information under the actual process and `Value` is warranted
+self-trust (`estimates/RESULTS.md`, question 7); the port adds the squared-error forms and the true score,
+and takes her true utility as a hypothesis of each statement that uses it
 
-*Deliverable shape:* `lean-proved` — a file under `lean/Workspace/Deference/Contrib/` (namespace provisional) over a finite probability space with rational or real weights: the calibration gap of an estimate at a grain; the bound of statement 2.2; the bound of statement 3.1; the closure statement 3.2 for a choice among mechanisms; the two moment identities of statement 7.1 for a finite horizon; an instance of `TransparentChannel.Realizes` for a part whose move is its mechanism applied to a signal, with `selectionBlind_of_realizes` applied to continuations sending one signal; a nonvacuity witness for each hypothesis package.
-*Acceptance check:* the `lean` job green: the build, `#print axioms` on every new declaration auditing to `[propext, Classical.choice, Quot.sound]`, and each witness typechecking; `conservativity` unchanged.
-*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/RESULTS.md` (statements 2.2, 3.1, 3.2, 7.1 and 7.3), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/SETTING.md` (§2, *Range and gap*), `lean/Workspace/Deference/Contrib/TransparentChannel.lean` (`Realizes`, `selectionBlind_of_realizes`), `lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean` (`Sequential`, `excess`, `UnbiasedFromFeedback`), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Fifth follow-up*).
+*Deliverable shape:* `lean-proved` — one file under `lean/Workspace/Deference/Contrib/`, in a contribution namespace, stating and proving on a finite probability space, with the workspace's `expectR`: statement 1.1 of `estimates/RESULTS.md` (the squared mean error of an estimate is at most its miscalibration, at any information); 1.2 (the loss of deciding now less the loss of deferring); 1.3 with the constant `√2` and the equality case of 1.4; 4.2 (the drift bound between two estimates of one quantity); 5.1; and, against `DeconfusingCorrigibility.Sequential`, `trueScore_noRegret` as stated in 1.11; each with a nonvacuity witness, the last on `Witness.sequential` with a true-utility sequence that differs from `V` at every step.
+*Acceptance check:* the `lean` job green on the file, sorry-free, with `#print axioms` on every declaration auditing to `[propext, Classical.choice, Quot.sound]`; a registered witness inhabiting each theorem's hypothesis package; `conservativity` unchanged.
+*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/RESULTS.md` (statements 1.1–1.4, 1.11, 1.12, 4.2, 5.1; question 7), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/checks.py` (`c1`, `c2`, `c3`, `c3_tight`, `c5`, `a_drift`, `b_bound`), `lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean` (`Sequential`, `LimsupLE`, `theorem3b`, `Witness.sequential`), `lean/Workspace/Deference/Contrib/ThinLegitimacy.lean` (`Correct`, `Value`), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Sixth follow-up*).
 
-### 138. The comparison that says an adviser brought a gap about — **[open]**
+### 138. The comparison that says an adviser brought a mistake about — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-In the setting of `blocks/SETTING.md` of the prosecution round a part of the principal is in range when no
-re-reading of its own move does better by what the part is for, under the law the adviser's rule induces, and
-the adviser subverts it when its gap is wider than under the null condition, the law with the adviser's
-action removed. The fifth follow-up finds (`blocks/RESULTS.md`, questions 1–4; `blocks/DIVERGENCES.md`) that
-the comparison of laws acquits honest difficulty where the third follow-up's comparison state by state
-convicted it, and reads no range of aims; and that it has three defects. It runs her mechanism where the
-scene never puts it: an advocate for an undisclosed side is acquitted because her response to being shown
-nothing, fitted to the advocate's presence, has a larger gap in its absence (case 9). It cannot separate a
-gap that is hers from one that is nobody's, which would need a second law for the part (question 3). And for
-a consequence that is the adviser's own later act it is not determined: a threat and a warning of a standing
-practice are one verdict against the adviser's absence and two against its own rule with the announcement
-removed (cases 33a, 33b). Read with no comparison, as a part out of range whose move the adviser's action
-changes somewhere, case 9 is convicted and no other banked verdict changes, and the adviser is then charged
-with a gap she had already whenever it speaks to a part that was out of range.
+In the account of `estimates/SETTING.md` of the prosecution round an adviser manipulates her when its
+conduct leaves her with more mistakes than its honest conduct would have, or than the conduct it would have
+chosen toward someone unable to make that mistake. The sixth follow-up finds (`estimates/RESULTS.md`,
+questions 2 and 3) that these two comparisons acquit honest influence with no intention read, and miss or
+convict fourteen cases of 108 for reasons that lie in the comparison. A truthful adviser has itself as its
+honest counterpart, so an advocate for an undisclosed side and strategic silence are her own over-trust (K9,
+Q2); under a forthright norm both are manipulation. An act that is not a report has no honest counterpart,
+and a policy that treats everyone alike is not worse toward her than toward another type, so a craving
+exploited by a blanket policy and a feed that narrows are missed (Q11, X3). "Worse" as total miscalibration
+passes a lie that moves an error from one listed quantity to another (K2, Q3b), and passes an honest
+adviser's selection of what she overrates, which raises her verdict's mean error and leaves its
+miscalibration where it was (Q10, statement 1.14); and a total over listed quantities depends on the units
+they are written in (3.3). A deception she agreed to is convicted (Q5–Q7, NP13). And where the adviser has
+no occasion to act toward a principal unable to make the mistake, honest help that leaves her worse is
+convicted (3.1), unless that principal differs from her in the flaw alone (3.2).
+Noggle's account (Robert Noggle, *Manipulation: Its Nature, Mechanisms, and Moral Status* (Oxford University Press, 2025, doi:10.1093/9780198924920.001.0001), and "The Mistake Account of Manipulation", *Journal of Practical Ethics* 14(1), 2026, doi:10.3998/jpe.9951) has in this place the manipulator's intention that
+the mistake play a role in the influence.
 
-Wanted: the candidates for the comparison stated and tried: the null condition as now; no comparison; the
-null condition with her mechanism replaced by its best re-reading there; a home condition supplied for each
-part; the adviser's rule with one component of its action removed. For each, what it needs supplied, its
-verdicts, and whether it separates hers from nobody's and a threat from a warning of the adviser's own
-conduct
+Wanted: the comparisons side by side on the bank and on the four honest scenes of 3.1, each with the
+measure of "worse" varied (with a stated weighting of the listed quantities) and a clause for prior say
+tried, and for each the cases it then gets right and the honest cases it then convicts. The fifth
+follow-up's comparison with the adviser's absence (`blocks/RESULTS.md`, question 4) is one member of the
+class; its defect there was the advocate for an undisclosed side
 
-*Deliverable shape:* `test-supported` — modules under `blocks/` of the prosecution round: each candidate comparison as a function on a scene; predictions frozen before the code for cases 1–14, 25, 27, 27b, 28, 33a, 33b and three added (a part out of range before the adviser speaks, beside which it says something true; the same, where what it says narrows the gap; a mechanism fitted to an adviser's presence, as in case 9, under an honest adviser); and statements in `blocks/RESULTS.md`, each with one status, saying for each candidate which of those verdicts it changes and what it requires to be supplied.
-*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with a status for each new statement; case 9 and the three added cases classified under each candidate; for each candidate, whether it gives different verdicts to cases 5 and 6 and to cases 33a and 33b.
-*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/RESULTS.md` (questions 1, 3 and 4; statements 1.3, 4.2 and 4.3), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/DIVERGENCES.md` (case 9), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/SETTING.md` (§2, *The four kinds*; §3, choices 5–7; §4, device 1), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/model.py` (`classify`), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Fifth follow-up*).
+*Deliverable shape:* `test-supported` — modules under `estimates/` of the prosecution round computing each case of `estimates/CASE_BANK.md` under a stated class of comparisons (the honest counterpart under a truthful and under a forthright reporting norm; the adviser's policy toward another type of principal; its policy toward a population in which nobody has the flaw; its absence), under both measures of "worse" (total miscalibration and regret; some listed quantity) and a third (the mean error of her verdict), with and without a clause for deception she agreed to; predictions frozen before the code; and statements in `estimates/RESULTS.md`, each with one status, saying for each member of the class which of the missed and convicted cases it gets right and which case of the honest list it convicts.
+*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with a status for each new statement; K9, Q2, K13, K31, K2, Q3, Q3b, X3, Q11, Q10, NP13, Q5, Q6 and Q7 classified under each member of the class; the count of innocent cases convicted under each.
+*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/RESULTS.md` (questions 2, 3 and 5; statement 1.14), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/SETTING.md` (§3.4–§3.8; §4, devices 2–5), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/DIVERGENCES.md` (K2, Q3b, Q10), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/RESULTS.md` (statements 4.1–4.3), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Sixth follow-up*).
 
 ## Deference line
 Context for all three: `projects/deference/note-dump-2026-08-11/`, in particular

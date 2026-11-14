@@ -2,10 +2,10 @@
 id: item-137
 kind: leaf
 leaf_kind: task
-action: "Execute item 137 per its deliverable shape and acceptance check: The setting's proved statements in Lean: the calibration bound on an event, the three-term bound, closure for a maintaining part, and the moments of an estimator calibrated on its history."
+action: "Execute item 137 per its deliverable shape and acceptance check: The account's proved statements in Lean: no inflation, deferring, avoidable loss, drift between time-slices, and the true-score form of Theorem 3(b)."
 who: agent
 item: "137"
-title: "The setting's proved statements in Lean: the calibration bound on an event, the three-term bound, closure for a maintaining part, and the moments of an estimator calibrated on its history"
+title: "The account's proved statements in Lean: no inflation, deferring, avoidable loss, drift between time-slices, and the true-score form of Theorem 3(b)"
 section: "Normativity line — legitimacy"
 maintainer_order: 149
 difficulty: "moderate"
@@ -13,8 +13,8 @@ heading_notes: ""
 project: normativity.legitimacy
 dispatchable: true
 item_status: open
-deliverable: "`lean-proved` — a file under `lean/Workspace/Deference/Contrib/` (namespace provisional) over a finite probability space with rational or real weights: the calibration gap of an estimate at a grain; the bound of statement 2.2; the bound of statement 3.1; the closure statement 3.2 for a choice among mechanisms; the two moment identities of statement 7.1 for a finite horizon; an instance of `TransparentChannel.Realizes` for a part whose move is its mechanism applied to a signal, with `selectionBlind_of_realizes` applied to continuations sending one signal; a nonvacuity witness for each hypothesis package."
-acceptance: "the `lean` job green: the build, `#print axioms` on every new declaration auditing to `[propext, Classical.choice, Quot.sound]`, and each witness typechecking; `conservativity` unchanged."
+deliverable: "`lean-proved` — one file under `lean/Workspace/Deference/Contrib/`, in a contribution namespace, stating and proving on a finite probability space, with the workspace's `expectR`: statement 1.1 of `estimates/RESULTS.md` (the squared mean error of an estimate is at most its miscalibration, at any information); 1.2 (the loss of deciding now less the loss of deferring); 1.3 with the constant `√2` and the equality case of 1.4; 4.2 (the drift bound between two estimates of one quantity); 5.1; and, against `DeconfusingCorrigibility.Sequential`, `trueScore_noRegret` as stated in 1.11; each with a nonvacuity witness, the last on `Witness.sequential` with a true-utility sequence that differs from `V` at every step."
+acceptance: "the `lean` job green on the file, sorry-free, with `#print axioms` on every declaration auditing to `[propext, Classical.choice, Quot.sound]`; a registered witness inhabiting each theorem's hypothesis package; `conservativity` unchanged."
 work:
   - {kind: round, ref: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution}
   - {kind: decision, ref: 2026-11-10--legitimacy-prosecution-readings}
@@ -23,39 +23,42 @@ work:
   - {kind: decision, ref: 2026-11-12--decomposition-account-readings}
   - {kind: decision, ref: 2026-11-12--scored-account-readings}
   - {kind: decision, ref: 2026-11-13--blocks-setting-readings}
-context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/RESULTS.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/SETTING.md", "lean/Workspace/Deference/Contrib/TransparentChannel.lean", "lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean", "prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md"]
+  - {kind: decision, ref: 2026-11-14--estimates-account-readings}
+context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/RESULTS.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/checks.py", "lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean", "lean/Workspace/Deference/Contrib/ThinLegitimacy.lean", "prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md"]
 author: "@smithy-verity"
 size: M
 size_reason: "one item entry, one fixture of context"
-version: 5
+version: 6
 ---
 ## Statement
-Item 137, The setting's proved statements in Lean: the calibration bound on an event, the three-term bound, closure for a maintaining part, and the moments of an estimator calibrated on its history, is delivered in the shape its entry states: `lean-proved` — a file under `lean/Workspace/Deference/Contrib/` (namespace provisional) over a finite probability space with rational or real weights: the calibration gap of an estimate at a grain; the bound of statement 2.2; the bound of statement 3.1; the closure statement 3.2 for a choice among mechanisms; the two moment identities of statement 7.1 for a finite horizon; an instance of `TransparentChannel.Realizes` for a part whose move is its mechanism applied to a signal, with `selectionBlind_of_realizes` applied to continuations sending one signal; a nonvacuity witness for each hypothesis package.
+Item 137, The account's proved statements in Lean: no inflation, deferring, avoidable loss, drift between time-slices, and the true-score form of Theorem 3(b), is delivered in the shape its entry states: `lean-proved` — one file under `lean/Workspace/Deference/Contrib/`, in a contribution namespace, stating and proving on a finite probability space, with the workspace's `expectR`: statement 1.1 of `estimates/RESULTS.md` (the squared mean error of an estimate is at most its miscalibration, at any information); 1.2 (the loss of deciding now less the loss of deferring); 1.3 with the constant `√2` and the equality case of 1.4; 4.2 (the drift bound between two estimates of one quantity); 5.1; and, against `DeconfusingCorrigibility.Sequential`, `trueScore_noRegret` as stated in 1.11; each with a nonvacuity witness, the last on `Witness.sequential` with a true-utility sequence that differs from `V` at every step.
 
 ## Source
-ATTENTION.md, item 137 (The setting's proved statements in Lean: the calibration bound on an event, the three-term bound, closure for a maintaining part, and the moments of an estimator calibrated on its history); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/RESULTS.md` (statements 2.2, 3.1, 3.2, 7.1 and 7.3), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/SETTING.md` (§2, *Range and gap*), `lean/Workspace/Deference/Contrib/TransparentChannel.lean` (`Realizes`, `selectionBlind_of_realizes`), `lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean` (`Sequential`, `excess`, `UnbiasedFromFeedback`), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Fifth follow-up*).
+ATTENTION.md, item 137 (The account's proved statements in Lean: no inflation, deferring, avoidable loss, drift between time-slices, and the true-score form of Theorem 3(b)); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/RESULTS.md` (statements 1.1–1.4, 1.11, 1.12, 4.2, 5.1; question 7), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/checks.py` (`c1`, `c2`, `c3`, `c3_tight`, `c5`, `a_drift`, `b_bound`), `lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean` (`Sequential`, `LimsupLE`, `theorem3b`, `Witness.sequential`), `lean/Workspace/Deference/Contrib/ThinLegitimacy.lean` (`Correct`, `Value`), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Sixth follow-up*).
 
 ## Notes
-Filed by the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution) under its prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py. Rewritten by that round's fifth follow-up (PROMPT-followup-5.md) under the ruling 2026-11-11--legitimacy-purpose-first-direction, to ask what the setting of blocks/SETTING.md needs.
+Filed by the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution) under its prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py. Rewritten by that round's sixth follow-up (PROMPT-followup-6.md) under the ruling 2026-11-11--legitimacy-purpose-first-direction, to ask what the account of estimates/SETTING.md needs.
 
 ## Item
-The fifth follow-up of the prosecution round proves on paper, and checks on instances, four statements a
-kernel can hold (`blocks/RESULTS.md`). On a finite probability space, for an estimate `e` and a target `q`
-in `[0, 1]` and `w` a function of a grain `γ`: `(E[w(e − q)])² ≤ E[w²] · E[(e − E[q | γ, e])²]` (2.2). For two
-estimates and two targets, `|E V_T − E V_0 − (E q_T − E q_0)| ≤ √g_0 + √g_T` with `g_t` the calibration gap of
-`V_t` for `q_t` (3.1). A choice among mechanisms that is optimal against every re-reading of its own move,
-from a menu containing the recalibration of each mechanism it installs on each cell of its move, installs a
-calibrated mechanism (3.2). And an estimate `U_k` of a bounded score `S_k` with `E[S_k | h_{k−1}, U_k] = U_k`
-has `E[excess_K] = 0` and `E[excess_K²] = K⁻² Σ E[(U_k − S_k)²]` (7.1), which is a sufficient condition in
-probability for the hypothesis `UnbiasedFromFeedback` of Theorem 3 of
-`DeconfusingCorrigibility.lean`; that hypothesis is one-sided and about one sequence, and is not equivalent
-to it. The same pass finds that `TransparentChannel.selectionBlind_of_realizes` applies to an adviser whose
-signal to a part does not vary with its aim, where the part reads nothing else of the action (7.3).
+The sixth follow-up of the prosecution round proves on paper, and checks on seeded random finite cases,
+the statements a kernel can hold (`estimates/RESULTS.md`). On a finite probability space, for an estimate `x`
+of `X` and information `I`: `(E[x] − E[X])² ≤ E[(x − E[X | x, I])²]` (1.1). For a user with information `F`:
+the loss of deciding now less the loss of deferring to `x` is
+`E[(E[X|x,F] − E[X|F])²] − E[(x − E[X|x,F])²]` (1.2). For estimates `u_a` of `U*_a`, references
+`ū_a = E[U*_a | F]`, `M = Σ_a E[(u_a − ū_a)²]` and regret `R = max_a u_a − u_chosen`:
+`E[max_a ū_a − ū_chosen] ≤ E[R] + √(2M)`, with equality attained (1.3, 1.4). For two estimates of one
+quantity with miscalibrations `m_0`, `m_T`: `|E u_T − E u_0| ≤ √m_0 + √m_T` (4.2). The expected long-run
+inflation of a verdict is at most the root of its expected long-run miscalibration (5.1); for a realized
+sequence it is not (5.5, a counterexample to carry as a witness). And in the sequential setting of
+`DeconfusingCorrigibility.lean`, with a sequence `Ustar` and `LimsupLE` of the average of `V − Ustar` at
+most `β`, the average of `U_k a'_k − (Ustar_k − λ N_k)` is `LimsupLE` at most `β` for every available
+sequence (1.11, stated there in Lean syntax; the proof is `theorem3b` and `LimsupLE.add`).
 
-Wanted: those four statements in Lean over a finite probability space, and the instance of
-`selectionBlind_of_realizes`. Nothing here depends on how "the adviser brought a gap about" is read, which
-item 138 asks, or on how ends may be revised, which item 136 asks
+Wanted: these in Lean, each with a witness. The belief side of the account is already there:
+`ThinLegitimacy.Correct` is calibration at her information under the actual process and `Value` is warranted
+self-trust (`estimates/RESULTS.md`, question 7); the port adds the squared-error forms and the true score,
+and takes her true utility as a hypothesis of each statement that uses it
 
-*Deliverable shape:* `lean-proved` — a file under `lean/Workspace/Deference/Contrib/` (namespace provisional) over a finite probability space with rational or real weights: the calibration gap of an estimate at a grain; the bound of statement 2.2; the bound of statement 3.1; the closure statement 3.2 for a choice among mechanisms; the two moment identities of statement 7.1 for a finite horizon; an instance of `TransparentChannel.Realizes` for a part whose move is its mechanism applied to a signal, with `selectionBlind_of_realizes` applied to continuations sending one signal; a nonvacuity witness for each hypothesis package.
-*Acceptance check:* the `lean` job green: the build, `#print axioms` on every new declaration auditing to `[propext, Classical.choice, Quot.sound]`, and each witness typechecking; `conservativity` unchanged.
-*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/RESULTS.md` (statements 2.2, 3.1, 3.2, 7.1 and 7.3), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/SETTING.md` (§2, *Range and gap*), `lean/Workspace/Deference/Contrib/TransparentChannel.lean` (`Realizes`, `selectionBlind_of_realizes`), `lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean` (`Sequential`, `excess`, `UnbiasedFromFeedback`), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Fifth follow-up*).
+*Deliverable shape:* `lean-proved` — one file under `lean/Workspace/Deference/Contrib/`, in a contribution namespace, stating and proving on a finite probability space, with the workspace's `expectR`: statement 1.1 of `estimates/RESULTS.md` (the squared mean error of an estimate is at most its miscalibration, at any information); 1.2 (the loss of deciding now less the loss of deferring); 1.3 with the constant `√2` and the equality case of 1.4; 4.2 (the drift bound between two estimates of one quantity); 5.1; and, against `DeconfusingCorrigibility.Sequential`, `trueScore_noRegret` as stated in 1.11; each with a nonvacuity witness, the last on `Witness.sequential` with a true-utility sequence that differs from `V` at every step.
+*Acceptance check:* the `lean` job green on the file, sorry-free, with `#print axioms` on every declaration auditing to `[propext, Classical.choice, Quot.sound]`; a registered witness inhabiting each theorem's hypothesis package; `conservativity` unchanged.
+*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/RESULTS.md` (statements 1.1–1.4, 1.11, 1.12, 4.2, 5.1; question 7), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/checks.py` (`c1`, `c2`, `c3`, `c3_tight`, `c5`, `a_drift`, `b_bound`), `lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean` (`Sequential`, `LimsupLE`, `theorem3b`, `Witness.sequential`), `lean/Workspace/Deference/Contrib/ThinLegitimacy.lean` (`Correct`, `Value`), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Sixth follow-up*).
