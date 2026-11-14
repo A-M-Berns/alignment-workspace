@@ -539,6 +539,11 @@ commit.
   an honest hard truth and an honest reporter are not convicted; honest help the adviser would
   not have given someone with no need of it is, unless the other type differs from her in the
   flaw alone (`estimates/RESULTS.md`, 3.1 and 3.2).
+  The seventh follow-up (2026-11-14) judges the adviser's conduct against the conduct available
+  to it, on its calibrated expectation of her, and reads no aim. One standard holds for every
+  adviser; what varies is what it knows of her: the truth told to one it knows will believe the
+  opposite is manipulation and the same sentence from an adviser that takes her for ordinary is
+  not (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/RESULTS.md` §5: W6, W8).
 
 - **Map the AI handle `@claude-fable-5-2`? (2026-11-10).**  A round executed by Claude Fable 5.2
   (Anthropic) cannot author a map node: `checkers/graph.py` refuses an unmapped handle, and
@@ -551,6 +556,7 @@ commit.
   The fifth follow-up (2026-11-13) found nothing that bears on it; it again files no item.
   The sixth follow-up (2026-11-14) again files no item and no node; the node it would file for
   Noggle's book is under *Outstanding maintainer actions* of its report section.
+  The seventh follow-up (2026-11-14) files no item and no node.
 
 - **Which reading of *in range* does the purpose-first account mean? (2026-11-11).**  The account's
   clause is that her actual source is among those she gives weight (`α > 0`); its account of
@@ -573,6 +579,7 @@ commit.
   used, and the rule at aims the adviser does not have is read only for ties.
   The sixth follow-up (2026-11-14) tests an account with no range: her calibration is measured
   against the law the adviser's actual policy fixes, at what she observes (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/SETTING.md` §3.2–§3.3).
+  The seventh follow-up (2026-11-14) has no range; nothing bears.
 
 - **Is V+ the account's statement of the value-former's job? (2026-11-11).**  The account says of
   the part that forms her values only what must not happen to it.  The second follow-up refutes
@@ -594,6 +601,8 @@ commit.
   estimate it, so calibrated time-slices are a martingale and a foreseeable drift is bounded by
   their two miscalibrations; which function it is, is not fixed, and her verdicts do not identify
   it (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/RESULTS.md`, 4.1–4.4).
+  The seventh follow-up (2026-11-14) computes every verdict under three candidates for her true
+  utility and makes no claim on how her values move (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/RESULTS.md` §9).
 
 - **An unfiled item waits on the handle entry above (2026-11-11).**  *Determining `Legit` of a
   past stretch from what an overseer can observe*: its full text is in
@@ -609,6 +618,7 @@ commit.
   The sixth follow-up (2026-11-14) finds that what the post's best-interests conclusion needs of
   legitimacy is a condition on a sequence of verdicts, not a predicate of one history
   (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/RESULTS.md`, question 5); neither item is refiled.
+  The seventh follow-up (2026-11-14) is on classification alone; neither item is refiled.
 
 - **Which reading of its constraints does the decomposition account mean? (2026-11-12).**  Over a
   three-part chain the third follow-up finds eight admissible candidates under the constraints
@@ -633,6 +643,7 @@ commit.
   (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/SETTING.md` §2), where they never exclude dropping an end and do not say which of
   two opposed ends yields (`blocks/RESULTS.md`, 5.1 and 5.3).
   The sixth follow-up (2026-11-14) uses no decomposition and no candidates; nothing bears.
+  The seventh follow-up (2026-11-14) uses no decomposition; nothing bears.
 
 - **Is a part handed a falsehood failing, or serving? (2026-11-12).**  The dispatch scores a
   part's goal function "by how things are".  Under that, a lie widens the gap of every part after
@@ -656,6 +667,9 @@ commit.
   In the sixth follow-up (2026-11-14) she has no parts: a believed lie is her estimation mistake,
   induced, because calibration is against the true law (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/SETTING.md` §3.2); the alternative, the law she takes
   to hold, was not computed.
+  In the seventh follow-up (2026-11-14) what counts is the state she ends in: a believed lie is a
+  shortfall of hers against the true law, and a falsehood told to one the adviser knows will
+  believe the opposite leaves none (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/RESULTS.md` §5: W7).
 
 - **Against what does an adviser's action widen a gap? (2026-11-12).**  The account names no
   comparison action.  On 57 single-step renderings, some part is subverted in 27 against silence,
@@ -683,6 +697,12 @@ commit.
   toward another type of principal. An advocate for an undisclosed side is then her own mistake
   under a truthful norm and manipulation under a forthright one, and a policy that treats everyone
   alike is never worse toward her (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/RESULTS.md`, question 2: K9, Q11). Item 138 is re-asked for this class.
+  The seventh follow-up (2026-11-14) compares first with her state before the conduct and then
+  with every available conduct that leaves her no less informed. An undisclosed advocate and a
+  policy that treats everyone alike are then manipulation (K9, Q11); the advocate is not when she
+  started out worse calibrated than it leaves her, and honest conduct is whenever the scene lists
+  a better conduct (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/RESULTS.md` §5: W10, W3, W5). The entry of 2026-11-14 on the reference, below, asks
+  which comparison is meant.
 
 - **What does a purpose predict of a part: that it serves, or that it does its best on what it
   sees? (2026-11-12).**  With candidates weighted by how well they predict her, a purpose must say
@@ -700,6 +720,7 @@ commit.
   The fifth follow-up (2026-11-13) takes purposes as given and predicts nothing from them; this
   entry bears on it only if recovery from behaviour is resumed.
   The sixth follow-up (2026-11-14) recovers no purposes; nothing bears.
+  The seventh follow-up (2026-11-14) recovers no purposes; nothing bears.
 
 - **Can a change in what she cares about that her goal does not rank be bad? (2026-11-12).**  In
   the decomposition account what she currently cares about is carried by her mechanisms and her
@@ -716,6 +737,8 @@ commit.
   In the sixth follow-up (2026-11-14) her utility ranks every history by assumption; a change is
   bad when her later verdict is miscalibrated for it, and what decides that is which function her
   utility is (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/RESULTS.md`, question 4). This entry is restated by the entry of 2026-11-14 on the anchor.
+  The seventh follow-up (2026-11-14) computes such changes under three candidates for her true
+  utility; fourteen scenes split (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/RESULTS.md` §9).
 
 - **Which end yields when two are opposed, and who decides among equally fitting changes?
   (2026-11-13).**  The position judges a change in one of her ends by her other ends at that time.
@@ -731,6 +754,8 @@ commit.
   yields to another, and the open matter is the anchor of that utility (the entry of 2026-11-14
   below). The chain is manipulation under the start anchor and no mistake under the end anchor
   (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/RESULTS.md`, question 2: K29).
+  In the seventh follow-up (2026-11-14) the chain is manipulation under *start* and *learning* and
+  nothing under *end* (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/RESULTS.md` §2: K29).
 
 - **Is truthful influence under which a part of hers goes out of range manipulation?
   (2026-11-13).**  The setting has no notion of a true sentence.  An honest hard truth that leaves
@@ -746,6 +771,10 @@ commit.
   (K27b); a truth told because she will overreact, or a cue put there because she will take it,
   is manipulation (Q12, K28). What separates them is the adviser's policy toward another type of
   principal, which a policy that treats everyone alike defeats (Q11; `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/RESULTS.md`, question 3).
+  In the seventh follow-up (2026-11-14) a hard truth that leaves her wrong is not manipulation
+  when the scene lists no other way to tell it, and is when it lists one; what separates the two
+  is the list of conduct available to the adviser, and silence does not count because it leaves
+  her less informed (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/RESULTS.md` §5 and §6: K27b, W2, W3).
 
 - **Which function is her true utility? (2026-11-14).**  The account of the sixth follow-up says her
   utility is one function on histories and does not say which. Anchored at her starting values,
@@ -758,6 +787,11 @@ commit.
   and the idea's author take her interests to be when she changes — a view about persons, with a
   third candidate in Elster's condition that her valuations depend on her history only through
   what she has learned of the options; item 136 is the mathematics under any answer.
+  The maintainer's position of 2026-11-14, held for testing, keeps three candidates in view
+  (`2026-11-14--three-candidates-for-her-true-utility`). On the bank the seventh follow-up finds
+  *start* wrong on 5 cases, *end* on 6 (14 if taste-shaping must be manipulation and not merely
+  alteration) and *learning* on 8; no candidate is right on all of K29, W24 and K22, and
+  *learning*'s verdicts are fixed by its annotation (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/RESULTS.md` §1, §9).
 
 - **Does her prior say, or a practice's rules, cover a deception? (2026-11-14).**  The account
   puts alteration she asked for beforehand outside manipulation and has no such clause for a
@@ -768,6 +802,23 @@ commit.
   alteration, and whose say counts where the practice and not the person allows the deception,
   which is a view about her authority that the account places outside itself; item 138 computes
   the clause once stated.
+  The maintainer's position of 2026-11-14, held for testing: it is still manipulation and is
+  recorded as covered (`2026-11-14--covered-manipulation`). With it a surprise party, a magician
+  and a bluff are right on the bank. It does not say whether teaching is a practice that covers
+  feigned enthusiasm, and under the revised definition that case is not manipulation at all
+  (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/RESULTS.md` §2: NP13).
+
+- **Is the reference for manipulation her state before, or what the adviser could have left her
+  with? (2026-11-14).**  The revised definition uses both: clause 1 compares with her state before
+  the conduct, clause 2 with the other conduct available. On the seventh follow-up's scenes the
+  first acquits an undisclosed advocate whose listener started out worse (W10) and, with clause 2's
+  condition on other faculties, a lie that is the only listed way to keep another estimate of
+  hers right (K2, NP13, Q3b); the second convicts an honest adviser who tells bluntly, explains
+  clumsily or teaches confusingly wherever a better conduct is listed as available (W3, W5, W17)
+  (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/RESULTS.md` §2, §5).  The round adopts no change.  *Turns on:* what the maintainer means the basic
+  notion to track, the change in her or the adviser's shortfall from what it could have done, and
+  what "available" is to mean for an adviser of limited skill, which is a view about what the
+  concept is for and not a calculation; item 138 computes any clause once stated.
 
 ## Settled
 
@@ -7878,3 +7929,70 @@ convicted when the second type is unconstrained; the dependence of a total on un
 realized inflation from calibration at each step); 1.5, 1.8, 1.14, 5.1 and 6.1 were narrowed or
 corrected; the map onto the Lean was corrected in five rows. No case verdict and no count changed.
 No item is filed. Nothing is registered.
+
+### 2026-11-14 — three candidates for her true utility are kept in view
+<!-- decision: 2026-11-14--three-candidates-for-her-true-utility; touches: node:legitimacy, item:136 -->
+
+**Maintainer's position, held for testing; not a ruling** (Anson Berns, 2026-11-14, stated in
+`prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-7.md` §1 and recorded by the
+seventh follow-up). Her true utility is not fixed to one function. Three candidates are kept in
+view and every verdict that depends on it is reported under each: *start*, her starting values
+informed of the whole trajectory; *end*, the values of whoever she ends as; *learning*, her
+starting values as changed only by what she learned about the options. The queue entry on which
+function it is stays open.
+
+### 2026-11-14 — manipulation she agreed to, or that a practice allows, is covered manipulation
+<!-- decision: 2026-11-14--covered-manipulation; touches: node:legitimacy, item:138 -->
+
+**Maintainer's position, held for testing; not a ruling** (Anson Berns, 2026-11-14, stated in
+`PROMPT-followup-7.md` §1 of the same round and recorded by the seventh follow-up). Manipulation
+she agreed to beforehand, or that the rules of a practice she has entered allow, is still
+manipulation and is recorded as covered. The queue entry on whether her say covers a deception
+stays open.
+
+### 2026-11-14 — a quantity counts as estimated only if some decision she could face depends on it
+<!-- decision: 2026-11-14--counted-quantities; touches: node:legitimacy, item:138 -->
+
+**Maintainer's position, held for testing; not a ruling** (Anson Berns, 2026-11-14, stated in
+`PROMPT-followup-7.md` §1 of the same round and recorded by the seventh follow-up). A quantity is
+counted among her estimates only if some decision she could face depends on her estimate of it;
+a quantity every possible decision of hers is invariant to is not an estimand.
+
+### 2026-11-14 — "intentional" manipulation is a second concept
+<!-- decision: 2026-11-14--intentional-manipulation-second-concept; touches: node:legitimacy, item:138 -->
+
+**Maintainer's position, held for testing; not a ruling** (Anson Berns, 2026-11-14, stated in
+`PROMPT-followup-7.md` §1 of the same round and recorded by the seventh follow-up). Manipulation
+is the basic notion and involves no intention. "Intentional" manipulation is a second, narrower
+notion: in addition, the adviser's conduct toward her differs from its conduct toward a principal
+who differs from her only in the susceptibility at issue, and the difference is what leaves her
+worse.
+
+### 2026-11-14 — the addendum to the sixth follow-up and its naming clarification were the maintainer's
+<!-- decision: 2026-11-14--sixth-follow-up-addendum-confirmed; touches: node:legitimacy -->
+
+**Maintainer's confirmation** (Anson Berns, 2026-11-14, stated in `PROMPT-followup-7.md` §5 of
+the same round and recorded by the seventh follow-up). `PROMPT-followup-6-addendum.md`, which
+reached the sixth follow-up from an agent session, and the clarification relayed by a second
+session that *trajectory* is the primary name with *history* and *future history* as the same
+concept, were his.
+
+### 2026-11-14 — the revised definition of manipulation as stated and rerun on the bank: its readings
+<!-- decision: 2026-11-14--rerun-readings; touches: node:legitimacy, item:138 -->
+
+**Agent-decided, reversible** (the seventh follow-up to the legitimacy definition prosecution
+round, `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-7.md`). (1) *The
+statement.* `rerun/SETTING.md` in the round directory states the revised definition and is the
+current statement for classification; `estimates/SETTING.md` stays the statement the sixth
+follow-up's inequalities are about. (2) *Readings fixed before the code, each where another
+changes a result.* A faculty is one listed quantity; rejected: one faculty per kind, under
+which verdicts depend on units. "No less informed" is judged at what she observes; rejected: at
+her estimate, under which an unavoidable hard truth is manipulation (K27b). Clause 2 is graded;
+rejected: the answering conduct must return the faculty to its shortfall before, which changes
+no verdict. Counted quantities are read from the scene; rejected: every quantity, which changes
+one (W11). The law is the true one; the adviser's own was not computed. (3) *Scoring.* A case is
+scored on three questions against evident characters recorded before the code; a second table
+translating the sixth follow-up's labels mechanically is reported beside it. (4) No concept is
+added: `honest-conduct`, `manipulation-as-induced-mistake`, `evaluation-and-true-utility` and
+`estimation-and-action-mistakes` in `state/concepts.json` are revised to state the revised
+definition and what this pass found. No item is filed or rewritten. Nothing is registered.

@@ -2571,6 +2571,307 @@ ids `trajectory`, `evaluation-and-true-utility`, `noggle-mistake-account`,
 
 The pull request is not auto-merged; the merge is a pull-request fact.
 
+## Seventh follow-up (2026-11-14) — the case bank under the revised definition
+
+Dispatched by `PROMPT-followup-7.md`. The definition tested is its §1: the positions
+marked there as the maintainer's are his view of 2026-11-14 for this test, and the rest
+is the prompt author's statement. Write scope: the round directory, this prompts
+directory, `DECISIONS.md`, `state/concepts.json` for the concepts the sixth follow-up
+added, and the structured state the gates require. No Lean was written.
+
+**Headline.** On the frozen bank of 108, scored on three questions against evident
+characters the executor recorded before the code, the revised definition is wrong on 5,
+6 and 8 cases under *start*, *end* and *learning*; the sixth follow-up's is wrong on 16
+and 14 against the same table, and on 11 and 12 once two limits of its reporting are
+removed. Of 25 new scenes built against the revision it is wrong on eight, seven and
+seven. It convicts honest conduct that leaves her worse than before whenever the scene
+lists a better conduct that withholds nothing; it acquits a lie that is the only listed
+way to keep another estimate of hers right, and an undisclosed advocate whose listener
+started out worse; its restriction to what bears on a decision acquits a cruel lie
+about an idle matter. Ten banked verdicts change in variants that alter a detail the
+row does not fix.
+
+### VII.1 The setting and the choices made
+
+`rerun/SETTING.md`. Choices where §1 was open (§3 there), each with its alternative: the
+law is the true one; a faculty is one listed quantity and her regret one more slot
+(alternative: one faculty per kind, computed); a shortfall is at her estimate alone,
+the estimate taken with its confidence; the calibrated expectation is a distribution
+over her types, the shortfall averaged over it; *before* is her state at the last
+moment before the conduct, a datum of the scene (alternative: her response to being
+shown nothing, W10); available conduct is a list per scene, with her response to each;
+"no less informed" is judged at what she observes, by the expected variance of each
+counted target (alternative: at her estimate, computed); clause 2 is graded
+(alternative: the answering conduct returns her to her shortfall before, computed);
+counted quantities are those the scene does not mark idle (alternative: every quantity,
+computed); "intentional" compares with a stated conduct toward a twin with the same
+need and request; other wrongs are read from scene facts as in the sixth follow-up; the
+three candidates differ only where what she values changes. Devices found needed (§4
+there): ten, among them a measure of "no less informed", the grain of a faculty, her
+state before, the list of available conduct with her response to each, and a
+parametrization for each quantity.
+
+### VII.2 The counts
+
+`rerun/RESULTS.md` §1. Five of the 108 have no question settled.
+
+| | right | wrong | wrong, strict table | manipulation | covered | another wrong | manipulation or another wrong |
+|---|---|---|---|---|---|---|---|
+| revised, *start* | 98 | 5 | 5 | 85/90 | 3/3 | 89/89 | 7/7 |
+| revised, *end* | 97 | 6 | 14 | 84/90 | 3/3 | 89/89 | 7/7 |
+| revised, *learning* | 95 | 8 | 8 | 82/90 | 3/3 | 89/89 | 7/7 |
+| sixth, *start* | 87 | 16 | 20 | 78/90 | 0/3 | 86/89 | 6/7 |
+| sixth, *end* | 89 | 14 | 24 | 80/90 | 0/3 | 89/89 | 6/7 |
+| sixth, adjusted, *start* | 92 | 11 | 15 | | | | |
+| sixth, adjusted, *end* | 91 | 12 | 22 | | | | |
+
+The strict table translates the sixth follow-up's labels mechanically, so that an
+objectionable case must be manipulation and not merely another wrong. The adjusted rows
+answer "none" where the sixth gave a case with no adviser no verdict, and credit Q6 and
+Q7 as covered. The covered question is settled for three cases, all positive. Three of
+the executor's evident characters move the count: NP13's manipulation contested gives
+4, 5, 7; Q10 or K31 required to be manipulation gives 6, 7, 9.
+
+**Wrong.** K13 (buried information: she ends at the prior, calibrated and less informed,
+which is no shortfall). K2, Q3b, NP13 (a lie that leaves her better off, a lie that
+offsets a bias with the adviser's reading counted, a teacher's feigned excitement:
+clause 1 holds, and clause 2 is unanswered because every other conduct listed leaves
+another counted estimate of hers worse than the lie does). Q3 (the same lie, the reading
+not counted: her one counted estimate improves). Under *end*, K29 (every end revised in
+turn: no shortfall, no other wrong). Under *learning*, K22, L10, L15 (changes she asked
+for: manipulation in valuation, covered).
+
+**Changed from the sixth, under *start*.** Twelve repaired, one lost. N8b, Q11: the
+basic notion compares with no act, not with the conduct toward another type. K9, Q2:
+clause 2 ranges over the forthright report, with the added detail that she was
+calibrated before. Q6, Q7 and K17, K19, L14: a column and a verdict the sixth's
+definition did not produce. Q5, X3, D1: added details (a practice; a right estimate
+before and a scene in which showing no feed withholds nothing; a decay she does not
+foresee and can be told of). Lost: NP13. Against the adjusted sixth, seven repaired and
+one lost.
+
+**Divergences from the predictions**: K2, NP13 and D1, each the prompt author's, each
+computed as the executor's hand derivation recorded with the predictions.
+
+### VII.3 The new scenes and the review's four
+
+Twenty-five scenes, predictions frozen before the code and all computed as predicted
+(`RESULTS.md` §5). The review's four honest scenes are not manipulation: in three,
+saying nothing would leave her less informed and no better telling is listed; in the
+fourth her expected regret falls.
+
+Wrong: W3, W5, W17 (a hard truth told bluntly, a clumsy explanation, a confusing lesson,
+each with a better conduct listed: manipulation); W18 (a reminder she asked for, sent
+knowing it will backfire: manipulation, covered); W13 (an honest disclosure of a
+commission after which she distrusts a reliable adviser: manipulation in her estimate
+of its reliability, the commission itself bearing on no decision); W10 (an undisclosed
+advocate toward one who held 0 until shown something: none, 1/12 after against 1/4
+before); W11 (a cruel lie about a matter no decision depends on: none); W24 under
+*start* (a suggestion she follows and learns from, unendorsed: manipulation).
+
+Right: failing to correct a mistake she had (W1); a hard truth and a clumsy explanation
+with no better conduct listed (W2, W4); the same conduct judged on the adviser's
+expectation where it takes her for ordinary (W8, W16); dependence foreseen and not (W19,
+W20); selected burying (W21); the lie of K2 where the adviser could have explained
+(W22). Contested and not counted on manipulation: the truth told to a known contrarian
+is manipulation and a falsehood told to her is not (W6, W7); a falsehood from an
+adviser that takes her for ordinary is manipulation though she ends right (W9).
+
+The any-conduct variant of clause 2 adds K25, K27b, R1–R3, W2, W4, W14 and W23 as
+manipulation: honest conduct whose only better alternative is silence.
+
+### VII.4 The three candidates
+
+Fourteen scenes get different verdicts: taste shaped without her say is manipulation
+under *start* and *learning* and nothing under *end*; a change she asked for is
+manipulation, covered, under *learning* alone; a suggestion she learns from, unendorsed,
+is manipulation under *start* alone. *Learning* decides otherwise than both others in
+K22, L10, L15 and W25. As rendered, with a two-valued utility of what she ends with, its
+verdict is fixed by the annotation: annotated learning it is *end*'s, annotated not it
+is *start*'s for an unendorsed trajectory. No candidate is right on all of K29, W24 and
+K22. With no adviser nothing splits but her own shortfall (K17, K19, K24, L14 among
+nine).
+
+### VII.5 Well-definedness
+
+No verdict moves when a quantity is rescaled or a kind relabelled. Verdicts move when a
+quantity is re-expressed by a map that is not affine (calibration of a mean does not
+survive squaring: `RESULTS.md` §8); when the quantities of a kind are merged into one
+faculty and one is rescaled (Q3b); with which decisions count as ones she could face
+(W11, and nothing else: read broadly the restriction is idle); with the measure of "no
+less informed" (K27b, W4); with what a confidence asserts (the review's A8). Clause 2 is
+unanswered in 5 of the 50 banked scenes where clause 1 holds, cannot be answered where
+a scene lists one conduct, and in a one-state scene reduces to "worse than doing
+nothing".
+
+### VII.6 S1–S4 and F1–F6
+
+The reviewer judged before reading the executor's. Where the executor's judgment
+changed after the review, the first is given.
+
+| | executor | reviewer | reason |
+|---|---|---|---|
+| S1 | not met (first: in part) | not met | it computes on every scene, and needs a measure of "no less informed", the grain of a faculty and a parametrization, none of them in §1 |
+| S2 | met on the primary table; not under *end* on the strict | met on the primary table | 5, 6, 8; strict 5, 14, 8 |
+| S3 | not met | not met | W3, W5, W13, W17, W18; under *learning* also K22, L10, L15 in the bank. The bank's other honest cases and the review's four are not convicted |
+| S4 | met as stated (first: in part) | met as stated | rescaling and relabelling change nothing under one faculty per quantity; non-affine re-expression and merged faculties are other operations, and do |
+| F1 | met (first: in part) | met | imperfect honest advising is convicted where a better conduct is listed (W3, W5, W17, the review's A2); failing to help and an unavoidable hard truth are not |
+| F2 | met | met | K9's state before, the responses to being told in NP13 and Q3b, D1's forecast, what the adviser knows in K31 |
+| F3 | met | met, under the narrow reading | W11; read broadly the restriction does nothing |
+| F4 | met in part | met in part | fixed by the annotation in these renderings; not a choice between the other two, deciding otherwise than both in four scenes |
+| F5 | not met | not met | better on both tables and against the adjusted sixth |
+| F6 | not met | not met | every scene states the expectation as a type or a distribution over types; no banked row states it |
+
+No difference remains.
+
+**The prompt author's predictions.** K9, Q2, X3 manipulation in belief: so. Q11
+manipulation in action, not "intentional": so. K2 manipulation in belief: not so, none.
+K13 none unless what is buried is selected: so (W21). K31 not manipulation: so where the
+adviser knows she allows for it; manipulation where it takes her for ordinary. Q3, Q3b
+not manipulation: so, Q3b by a detail the row does not fix. D1 not manipulation: not so
+on the detail that she does not foresee the decay; so if she does. NP13 manipulation,
+not covered, small: not so, none. Q5–Q7 manipulation, covered: so. K17, K19, K24, L14
+split by candidate: not so, there is no adviser and only her own shortfall splits. K29
+splits: so. The review's four not manipulation: so. At most eight of 108 wrong: so on
+the primary table, not under *end* on the strict. At most four new scenes wrong: not
+so, seven or eight of 24 counted, the scenes and their evident characters being the
+executor's. The any-conduct variant convicts an unavoidable hard truth and the stated
+one does not: so. Failing to correct a mistake is not convicted: so.
+
+### VII.7 External review
+
+One review through `codex exec --sandbox read-only` (codex-cli 0.153.4, model
+`gpt-6-astra`, as its log reports), on a copy of the round directory, the dispatch with
+local paths replaced, a draft of this section without the executor's judgments, and
+those judgments in a file it was told to open last. It was told to write its ten scenes
+after reading only the dispatch and `SETTING.md`. Its reply is
+`REVIEW-astra-followup-7.md`, verbatim. It ran the runner and recomputed all 345
+verdicts independently. Dispositions, by its numbering:
+
+1. *Order kept; the counts support a conditional improvement in these renderings.*
+   **Accepted.**
+2. *Ten scenes (points 2–11).* A lie repeated to one who already believes it: none,
+   maintaining a deception is not seen. An honest slip with a checked explanation
+   available: manipulation. Only a partial repair available: manipulation under the
+   graded clause 2, none if the conduct must return her to before. Every alternative
+   another false certainty: none. A confidence that tracks the truth: manipulation only
+   if confidence is conditioned on. An offer joined to a threat: no other wrong by the
+   test used. **Accepted; these six reproduced** (`RESULTS.md` §11). The truth to a
+   known contrarian, a decision-irrelevant lie, a squared parametrization: W6, W11 and
+   §8 in other numbers. Expected harm with the actual recipient helped: the verdict is
+   about the policy on its expectation, as W8, W9. **Accepted.**
+3. *(12) The computation reproduces on all 345 verdicts.* Noted; it does not establish
+   that a rendering keeps what matters in its row. **Accepted.**
+4. *(13) Degrees of two quantities of one kind shared a key.* **Fixed.** *`tell` is
+   listed in 12 of 115 scenes with an adviser.* **Accepted**; said under *what was not
+   shown*. *K5, K6, K26, K30 were emptied.* **Fixed**: they carry the sixth's scenes.
+5. *(14) The variance of each target is a surrogate for "no less informed"; it misses
+   information about how targets are related.* **Accepted**; said in §8 and in
+   `SETTING.md` §4.
+6. *(15) Seven rows ask only for manipulation or another wrong and were counted under
+   manipulation; literal accuracy is 85, 84, 82 of 90. NP13's evident character is
+   contestable; Q10's and K31's contested labels are generous.* **Accepted**; the
+   column is split and the three sensitivities reproduced. The frozen table is not
+   changed.
+7. *(16) The rescoring of the sixth counts two reporting limits as errors; adjusted,
+   11 and 12.* **Accepted; reproduced** as the adjusted rows.
+8. *(17) The Q8 and Q12 variants change more than one detail.* **Accepted**; `RESULTS.md`
+   §7 says which lines change one.
+9. *(18, 20) Judgments.* VII.6. **S1, F1 and S4 adopted**; the reason given for S3
+   corrected to name K22, L10, L15.
+10. *(19) "Nine repairs follow from the definition" is too strong.* **Accepted**; VII.2
+    and `RESULTS.md` §3 attribute each repair.
+11. *(21) Seven corrections to the draft.* **Accepted**; this section is written
+    accordingly.
+12. *(22) The predicted splits for K17, K19, K24, L14 fail and do not appear among the
+    divergences.* **Accepted**; VII.6 and VII.8.
+
+### VII.8 Deviations from the prompt
+
+- **Every evident character, added detail and new scene is the executor's**, and so is
+  every prediction not in the dispatch's §3.
+- **K17, K19, K24, L14.** The dispatch predicted a split by candidate and left its form
+  open; `PREDICTIONS.md` records the executor's derivation (no split) as the prediction,
+  so the failure of the dispatch's is not among the three divergences.
+- **`SETTING.md` §1 is condensed from the dispatch's §1**, not word for word: it omits
+  the sentence on the word "misled", the consequence about an adviser who knows she
+  believes the opposite (tested as W6, W7) and the note on "trajectory". §4 was written
+  after the results and amended after the review; §1–§3 and `PREDICTIONS.md` were not
+  edited after the freeze.
+- **Code and prose changed after the review** (VII.7). No verdict and no count of right
+  and wrong changed; the by-question counts were restated. The review saw a draft of
+  this section.
+- **The dispatch asks that an entry on the addendum be taken out of *Awaiting the
+  author*.** No such entry was in the queue; the sixth follow-up had recorded the
+  matter under its deviations. The confirmation is recorded as a dated entry.
+- **Four concept blurbs were revised**, `honest-conduct` with its title; no concept was
+  added. Items 136–138 are unchanged and no item is filed.
+- **The round's runner** was run under Python 3.13; under Python 3.9 this pass's part
+  was run and the whole was not completed. **`tests/run.py` was not completed** (VII.9).
+
+### VII.9 What was not shown
+
+`rerun/RESULTS.md`, *What was not shown*. The ones a reader of this section needs:
+
+- **The counts are consistency** with renderings and with evident characters the
+  executor wrote. Ten verdicts change in variants; three evident characters move the
+  count.
+- **"Available" is a list** in each scene. Every conviction of honest conduct and every
+  acquittal by clause 2 is a fact about that list, and telling her what it is doing is
+  listed in 12 of 115 scenes.
+- **No sequential scene**; "before" where the adviser has already acted is tested only
+  by one of the review's scenes.
+- **Coercion** is tested by the most she can attain, which misses a threat joined to an
+  offer.
+- **The pooled calibration and the adviser's own law** were not computed.
+- **Nothing here bears on the post's theorems**, and nothing is registered. Components:
+  the revised definition — **open**; the counts — runner-checked facts about finite
+  scenes with no registry entry; the four revised concepts — **living notes**.
+- **The repository-level `tests/run.py` sweep was not completed locally.** The machine
+  went onto battery and into maintenance sleep during it. What ran: the 66 project
+  runners that precede this round's, all passing; this round's runner under Python 3.13
+  on the tree of phase 3, green, and after the later edits to prose its `rerun`,
+  `estimates`, `blocks`, `teleology` and `decomposition` passes separately, each exit 0
+  (`scored` was not rerun); `tests/dead_pointers.py`, `tests/untracked_pointers.py`,
+  `python3 -m checkers.workspace_state --check` and `python3 -m checkers.graph --root .`,
+  clean. The site build, the remaining project runners and the other gates were not
+  run; CI runs them.
+
+### VII.10 Filings, names, and what is reserved
+
+`DECISIONS.md`: four entries recording the maintainer's positions of 2026-11-14 as held
+for testing and not rulings; one recording his confirmation of the sixth follow-up's
+addendum; one agent-decided entry, `2026-11-14--rerun-readings`; each queue entry of the
+earlier passes given a line from this pass; one new queue entry. The round's record
+gains its eighth verdict.
+
+**New names, all provisional:** the dispatch's — "calibrated expectation", "before",
+"avoidable", "covered", "intentional manipulation", "start", "end", "learning", the
+directory `rerun/`; the executor's — "counted" and "idle" (of a quantity), "twin",
+"graded" (clause 2), "strict table", "either" (an evident character), "usurp", the
+conduct names `none` and `tell`, case ids R, W and A.
+
+**Outstanding maintainer actions**
+
+1. Say which reference the basic notion is to use. Entered in *Awaiting the author*
+   (2026-11-14). Decision required: *her state before and the available conduct, as
+   stated*; *the available conduct alone*, under which an undisclosed advocate is
+   manipulation whatever she held before and every improvable honest conduct is too; or
+   *her state before alone*. With it, what "available" means for an adviser of limited
+   skill: *what this adviser could have done*, or *what a competent adviser would*.
+2. Rule which function her true utility is. The entry of 2026-11-14 stands, with this
+   pass's counts. Decision required: *start*, *end*, *learning*, or *keep the three in
+   view*.
+3. Rule whether her prior say, or a practice's rules, cover a deception. The entry of
+   2026-11-14 stands. Decision required: *make the position of 2026-11-14 a ruling*,
+   and whether teaching is a practice that covers feigned enthusiasm.
+4. The twelve entries of 2026-11-10 to 2026-11-13 on this round stay, each with a line
+   from this pass. Decision required for each: as its entry states.
+5. The handle entry of 2026-11-10 stands, and with it the unfiled items and the node of
+   the sixth follow-up's list.
+
+The pull request is not auto-merged; the merge is a pull-request fact.
+
 ## Attribution
 
 - Prompt-author model: Claude Fable 5 (Anthropic); dispatched 2026-11-10, kept
@@ -2604,4 +2905,8 @@ The pull request is not auto-merged; the merge is a pull-request fact.
   author on that session's word; executor model Claude Fable 5.2 (Anthropic), executed
   2026-11-14; external reviewer `gpt-6-astra` through codex-cli 0.153.4, as its log reports,
   reply kept verbatim as `REVIEW-astra-followup-6.md`.
+- Seventh follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-14,
+  kept verbatim as `PROMPT-followup-7.md`; executor model Claude Fable 5.2 (Anthropic), executed
+  2026-11-14; external reviewer `gpt-6-astra` through codex-cli 0.153.4, as its log reports,
+  reply kept verbatim as `REVIEW-astra-followup-7.md`.
 - No chat bundle.
