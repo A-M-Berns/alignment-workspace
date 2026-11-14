@@ -47,19 +47,24 @@ Follow-up verdict (a part as a mechanism and a purpose on the world): MIXED — 
 
 ## Run
 
-    python3 run.py          # the five accounts: banks, statements, the addenda's facts
+    python3 run.py          # the five accounts and the rerun: banks, statements, the addenda's facts
     python3 run.py --json   # the same as data
 
 About two minutes. Exit nonzero when a bank parses to nothing, when a computed verdict
 diverges from its bank without a line in that pass's `DIVERGENCES.md`, when a listed
 divergence does not occur, or when a status in any `THEOREMS.md`, in `blocks/RESULTS.md` or
-under `estimates/` is not the one its check supports. Python 3.9+ standard library; exact rationals; no
+under `estimates/` is not the one its check supports, or when a count in `rerun/RESULTS.md` is not the one computed. Python 3.9+ standard library; exact rationals; no
 network. `tests/run.py` hands over to `run.py` so the repository-level runner finds it.
 
 ## Layout
 
 | path | what |
 |---|---|
+| `rerun/SETTING.md` | the revised definition, each choice with its alternative, and the devices found needed |
+| `rerun/PREDICTIONS.md` | frozen before the code: for each of the 108 cases of `estimates/CASE_BANK.md` the details the revised definition asks for, the evident character on three questions and the prediction; the review's four honest scenes; twenty-five new scenes |
+| `rerun/RESULTS.md` | the counts beside the sixth pass's, the wrong cases, the new scenes, the variants, the verdicts that turn on an unfixed detail, well-definedness, the three candidates for her true utility |
+| `rerun/DIVERGENCES.md` | the three cases whose computed verdict differs from its prediction |
+| `rerun/model.py`, `cases.py`, `run.py` | the definition over a finite scene; the cases as scenes; this pass's runner |
 | `estimates/SETTING.md` | the account in words and symbols, each choice with its alternative, and the devices found needed |
 | `estimates/CASE_BANK.md` | 108 cases frozen before the code, each with its evident character and the executor's prediction |
 | `estimates/RESULTS.md` | statements by question, each with one status and its proof or example; the case counts; the map onto the Lean |

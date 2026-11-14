@@ -132,3 +132,26 @@ Each with its alternative. "Computed" means `RESULTS.md` reports the alternative
     answer matches on each question the evident character settles. `con` marks a question
     as contested and not counted; `either` asks that manipulation or another wrong hold.
     The sixth follow-up's verdicts are scored against the same table.
+
+## 4. Devices found needed
+
+Written after the results. Each is something §1 does not supply and a verdict turns on.
+
+1. **A measure of "no less informed"** (§3.7). Taken at what she observes or at her
+   estimate, it decides K27b and W4.
+2. **The grain of a faculty** (§3.2): one quantity. With one faculty per kind the
+   verdicts depend on units.
+3. **Her state before, as a datum of the scene** (§3.5). It decides K9 against W10.
+4. **The list of available conduct, with her response to each** (§3.6), `tell` included.
+   It decides K2, NP13, Q3b and D1, and every conviction of honest conduct.
+5. **A parametrization for each quantity.** Calibration of a mean does not survive a
+   map that is not affine (`RESULTS.md` §8).
+6. **Which quantities bear on a decision** (§3.9), as a mark in the scene.
+7. **The conduct toward the twin**, for "intentional" (§3.10). For a lie no banked row
+   gives it.
+8. **The annotation** for *learning* (§3.13), as §1 says.
+9. **The adviser's absence as a comparison**, for coercion only (§3.12), outside the
+   definition, as in the sixth follow-up.
+
+Not found needed: a reporting norm; an honest counterpart; a second type of principal
+for the basic notion; a sum or weighting over quantities; an inner goal of the adviser.
