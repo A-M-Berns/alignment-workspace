@@ -3,13 +3,15 @@
 steering/CASE_BANK.md) as test material, runs the account the second follow-up tested
 (teleology/), the one the third tested (decomposition/: its bank, the checks behind its
 THEOREMS.md, and the facts its two addenda cite), the one the fourth tested (scored/: its bank
-and the checks behind its THEOREMS.md), then the current setting (blocks/): its bank and the
-checks behind its RESULTS.md.
+and the checks behind its THEOREMS.md), the setting the fifth tested (blocks/): its bank and the checks behind its
+RESULTS.md, then the current statement (estimates/): its bank and the checks behind its
+RESULTS.md and NEGATIVE_RESULTS.md.
 
 Exit nonzero when a bank parses to nothing or holds a case twice, when an earlier case has
 no prediction in either later bank, when a computed verdict diverges from its prediction
 without a line in that pass's DIVERGENCES.md, or when a status in any THEOREMS.md or in
-blocks/RESULTS.md is not the one the checks support.  `--json` prints the four reports as data."""
+blocks/RESULTS.md or estimates/ is not the one the checks support.  `--json` prints the five
+reports as data."""
 from __future__ import annotations
 
 import pathlib
@@ -57,6 +59,7 @@ def earlier_banks():
 
 def main(argv):
     from blocks import run as blocks
+    from estimates import run as estimates
     from decomposition import bank as dbank
     from decomposition import run as current
     from scored import bank as sbank
@@ -80,12 +83,14 @@ def main(argv):
     code2, report2 = current.main()
     code3, report3 = scored.main()
     code4, report4 = blocks.main()
+    code5, report5 = estimates.main()
     failures = (failures + ["teleology: " + f for f in report["failures"]]
                 + ["decomposition: " + f for f in report2["failures"]] + ["scored: " + f for f in report3["failures"]]
-                + ["blocks: " + f for f in report4["failures"]])
+                + ["blocks: " + f for f in report4["failures"]]
+                + ["estimates: " + f for f in report5["failures"]])
     if "--json" in argv:
         print(current.dumps({"teleology": report, "decomposition": report2, "scored": report3, "blocks": report4,
-                             "failures": failures}))
+                             "estimates": {k: v for k, v in report5.items() if k != "tally"}, "failures": failures}))
     else:
         for name, rows in banks.items():
             print("%s bank: %d cases" % (name, len(rows)))
@@ -97,8 +102,10 @@ def main(argv):
         print(scored.render(report3))
         print("\n== blocks ==")
         print(blocks.render(report4))
+        print("\n== estimates ==")
+        print(estimates.render(report5))
         print("\n" + ("OK" if not failures else "FAILURES:\n  " + "\n  ".join(failures)))
-    return 1 if failures else max(code, code2, code3, code4)
+    return 1 if failures else max(code, code2, code3, code4, code5)
 
 
 if __name__ == "__main__":

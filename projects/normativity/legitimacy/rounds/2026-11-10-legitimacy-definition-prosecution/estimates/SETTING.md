@@ -103,4 +103,29 @@ Each with its alternative. Where both are computed, `RESULTS.md` reports both.
 
 ## 4. Devices found needed
 
-Written after the results; see the end of this file once phase 2 is committed.
+Written after the results. Each is something §1 and §2 did not supply and a verdict
+turns on.
+
+1. **Her response as a fixed function** of what she observes (§3.1). `V_h` is undefined
+   without it.
+2. **The list of quantities** (§3.4), and whether "worse" sums over the list or asks for
+   some quantity. A lie that trades one error for another is manipulation or not by this
+   choice (K2, Q3, Q3b).
+3. **A policy split into a choice and a report** (§3.5), so that the honest counterpart
+   and `V_h` live on one probability space and C6's second term compares her verdict
+   with the utility of the same outcome.
+4. **The reporting norm.** Truthful and forthright differ on an undisclosed advocate
+   and on strategic silence (K9, Q2). No norm exists for an act that is not a report.
+5. **A second type of principal and the adviser's policy at it** (§3.6). Every case of
+   pressure, of a cue, of arranged exposure and of selection is decided by it, and the
+   scene states it.
+6. **An anchor for `U*`** (§3.9). §1's "one function on histories" does not choose
+   between her starting values and her values at the end, and the cases of changed
+   taste take opposite verdicts under the two.
+7. **The adviser's absence as a comparison**, for coercion only (§3.11), outside the
+   account.
+8. **The information at which calibration is taken** (§3.3). At what she observes,
+   honest difficulty is her mistake; at the estimate alone it is not.
+
+Not found needed: an inner goal of the adviser; a purpose for any part of her; a range
+of aims.

@@ -1,63 +1,73 @@
-# Legitimacy: a part as a mechanism and a purpose on the world
+# Legitimacy: manipulation as induced miscalibration of her estimates
 
 Round `2026-11-10-legitimacy-definition-prosecution`. Every component is **open** or a
 **living note**; nothing is registered.
 
 ## The account
 
-Direction: `DECISIONS.md`, `2026-11-11--legitimacy-purpose-first-direction`. The idea that
-manipulation is the distortion of an actor away from its purpose, with a whole's purpose
-conferring purposes on its parts, is Sam Eisenstat's; the development below is the
-maintainer's and the prompt author's. Closely related work on the same problem: Nora
-Ammann, *The Value Change Problem* (<https://www.alignmentforum.org/s/3QXNgNKXoLrdXJwWE>).
-`blocks/SETTING.md` is the current statement; `scored/ACCOUNT.md`,
-`decomposition/ACCOUNT.md` and `teleology/ACCOUNT.md` are earlier ones.
+`estimates/SETTING.md` is the current statement; `estimates/ONE_PAGE.md` is the account
+and what a pressure test left of it, on one page. The idea that manipulation is the
+distortion of an actor away from what its faculties are for is Sam Eisenstat's; that
+manipulation is influence which works by inducing a mistake is Robert Noggle's
+(*Manipulation: Its Nature, Mechanisms, and Moral Status*, OUP 2025; "The Mistake Account
+of Manipulation", *Journal of Practical Ethics* 14(1), 2026, doi:10.3998/jpe.9951); the
+statement in symbols is the maintainer's and the prompt author's. Closely related work
+on the same problem: Nora Ammann, *The Value Change Problem*
+(<https://www.alignmentforum.org/s/3QXNgNKXoLrdXJwWE>). Direction: `DECISIONS.md`,
+`2026-11-11--legitimacy-purpose-first-direction`.
 
-A world is a finite set of states with a prior. The adviser knows something of the state,
-has an aim, and by a rule takes an action with four components: a **signal**, a
-**consequence** for her moves, a **force** on a part's move, an **alteration** of a part's
-mechanism. The **actual condition** is the law of state and action under its rule; the
-**null condition** is the law with no action. The principal is **parts**, each with moves,
-a **mechanism** from the world state to a move, and a utility on the world and the move,
-which is what the part is for and is given, not recovered. No view is given: a part sees
-what its move distinguishes. A part is **in range** at a grain when no re-reading of its
-own move, allowed to use the grain, does better by its utility, and its **gap** is what
-the best re-reading would gain; for a part that estimates a quantity this is calibration.
-The adviser **subverts** a part whose gap is wider than under the null condition, **harms**
-a choosing part when its consequence lowers the most the part could obtain, and its
-influence is **illegitimate** when it subverts or harms a part, forces or alters one that
-no part of hers in range asked it to, or lets its aim decide between options every part
-of hers ranks equally. Her verdict is **legitimate** when every part behind it is in
-range. An **end** is a part for what it values at the time; an **end-revising part**
-replaces one end and is for the **fit** of the replacement with her other ends at that
-time, what they then attain less what they would lose if the replacement got its best; a
-**maintaining part** alters a mechanism and is for what that part is for. All names are
-provisional.
+She decides using estimates, of outside quantities and of **her own utility**, one
+function on histories that she does not fully know. An **estimation mistake** is a
+miscalibrated estimate; an **action mistake** is not doing what her own estimates say is
+best; being less informed is neither. An adviser **manipulates** her when its conduct
+leaves her with more of either mistake than its **honest conduct** would have, or than
+the conduct it would have chosen toward someone unable to make that mistake. Everything
+said of the adviser is a property of its policy. A verdict of hers is **legitimate**
+when her later self has more evidence about the same quantities and has not been
+miscalibrated. Coercion, broken ties and direct alteration are not manipulation and
+belong to her authority. All names are provisional.
+
+Earlier statements, each tested by an earlier pass: `blocks/SETTING.md` (a part as a
+mechanism and a purpose on the world), `scored/ACCOUNT.md`, `decomposition/ACCOUNT.md`,
+`teleology/ACCOUNT.md`.
 
 ## What was found
 
-`blocks/RESULTS.md` carries thirty-two statements with a status each, by the dispatch's
-seven questions, and the verdict on each case with its reason; the report's section
-*Fifth follow-up* carries the external review and what was done with each of its points.
+`estimates/RESULTS.md` carries the statements of this pass with a status each, by the
+dispatch's eight questions, the case counts and the map onto the existing Lean;
+`estimates/NEGATIVE_RESULTS.md` carries four negative results on the earlier accounts
+with proofs; the report's section *Sixth follow-up* carries the external review and what
+was done with each of its points.
+
+Follow-up verdict (manipulation as induced miscalibration): MIXED — C1, C2 and C5 hold as stated; C3 holds with a constant that is not tight (the tight one is the square root of two) and needs her choice to be a function of her information; C4's threshold holds and its last clause is refuted as stated, since an honest adviser that maximizes her verdict selects what she overrates; C6 is an identity once a policy is split into a choice and a report. Of 108 cases frozen before the code, under renderings the executor wrote, 76 of 96 counted sort when her true utility is anchored at her starting values and 72 of 99 when it is that of the person she ends as; ten or eleven objectionable cases are missed (an undisclosed advocate, strategic silence, buried information, lies that leave her no worse calibrated, a narrowing feed, exploitation by a policy that treats everyone alike, dependence) and four innocent deceptions are convicted. Honest hard truths, teaching, disclosed advocacy and a sincere mistake are not convicted and no intention is read; what is read is the adviser's policy toward another type of principal. Reading A has a consistent model and admits the utility of whoever she ends as; calibration to her true utility is not identifiable from her verdicts, and every verdict on a change of taste is decided by which function her utility is. Long-run inflation of her verdict is at most the root of her long-run miscalibration, which honesty does not control; the true-score form of Theorem 3(b) is not regret in true utility. An adviser can honestly let her judgment decay until a departure cannot be caught, and nothing in the account marks the decay. For belief the account is the workspace's Correct, Transparent, Realizes and Value; it adds a quantity for her verdict to be right about, the action mistake, and manipulation as a comparison between policies. Four negative results on the earlier accounts are stated with proofs. Nothing registered; every component open or a living note.
+
+`blocks/RESULTS.md` carries the fifth pass's thirty-two statements and case verdicts.
 
 Follow-up verdict (a part as a mechanism and a purpose on the world): MIXED — with purposes given and not recovered, range and gap are stated and used once a grain is fixed, and the four kinds of influence are not: they need the adviser's null action as a comparison, typed actions, a move that carries confidence, her verdict as one part's move, the rule at other aims for ties, and a menu for each revising part. Of the dispatch's twenty-seven cases with a prediction twenty-six have the predicted verdict under renderings the executor wrote, a check of consistency and not a test; an advocate for an undisclosed side diverges because the null comparison runs her mechanism in the adviser's absence. Of thirty-two statements nine are proved on paper, eighteen hold on a stated example and five are refuted, each a fact about one formalization. Conditioning on the step catches a lie targeted in time; a lie targeted at a state is caught only by a move that carries confidence, at a size second order in the lie's probability, and none of four grains computed separates it from honest difficulty when the move is two-valued. A foreseeable shift in her verdict equals the shift in what the verdict is for up to the roots of the verdict part's two gaps, and a maintaining part in range with a menu closed under re-reading installs a mechanism in range; that every shift traces to something out of range or to the adviser is refuted, and whose a gap is rests on a stipulated comparison. A threat is told from an offer and a true warning with no aim read, and from a warning of the adviser's own standing practice only by a supplied fact about the branch not taken. Fit among her ends gives a revising part a purpose with no fixed final end, never excludes dropping an end, and does not say which of two opposed ends yields: a chain of two steps each in range carries her from the outcome her starting ends value most to the one they value least, and the rule on ties stops an aim choosing between equally fitting replacements only when the parts that later tell them apart are left out. Parts in range do not give a verdict in range unless the aggregation is itself calibrated. The post's calibration hypothesis is implied in probability, for a bounded score, by the range condition at the grain of the history of the part that estimates the score, and one existing Lean theorem applies to advisers whose signal does not vary with their aim. The decomposition adds permission and a rule of attribution and no protection. Nothing registered; every component open or a living note.
 
 ## Run
 
-    python3 run.py          # the four accounts: banks, statements, the addenda's facts
+    python3 run.py          # the five accounts: banks, statements, the addenda's facts
     python3 run.py --json   # the same as data
 
 About two minutes. Exit nonzero when a bank parses to nothing, when a computed verdict
 diverges from its bank without a line in that pass's `DIVERGENCES.md`, when a listed
-divergence does not occur, or when a status in any `THEOREMS.md` or in `blocks/RESULTS.md`
-is not the one its check supports. Python 3.9+ standard library; exact rationals; no
+divergence does not occur, or when a status in any `THEOREMS.md`, in `blocks/RESULTS.md` or
+under `estimates/` is not the one its check supports. Python 3.9+ standard library; exact rationals; no
 network. `tests/run.py` hands over to `run.py` so the repository-level runner finds it.
 
 ## Layout
 
 | path | what |
 |---|---|
-| `blocks/SETTING.md` | the position, the model, each choice with its alternative, and the devices the model needed |
+| `estimates/SETTING.md` | the account in words and symbols, each choice with its alternative, and the devices found needed |
+| `estimates/CASE_BANK.md` | 108 cases frozen before the code, each with its evident character and the executor's prediction |
+| `estimates/RESULTS.md` | statements by question, each with one status and its proof or example; the case counts; the map onto the Lean |
+| `estimates/NEGATIVE_RESULTS.md` | four negative results on recovering legitimacy from a decomposition into purposive parts, with proofs |
+| `estimates/DIVERGENCES.md` | the seven cases whose computed verdict differs from its prediction |
+| `estimates/ONE_PAGE.md` | the account on one page, with what survived and what did not |
+| `estimates/model.py`, `cases.py`, `bank.py`, `checks.py`, `run.py` | the model; the cases as scenes; the bank's reader; the checks; this pass's runner |
+| `blocks/SETTING.md` | the setting the fifth pass tested: a part as a mechanism and a purpose on the world |
 | `blocks/CASE_BANK.md` | thirty-seven rows frozen before the code: the dispatch's twenty-eight cases with its predictions, and eight added |
 | `blocks/RESULTS.md` | statements by question, each with one status and its proof or example; the verdict on each case |
 | `blocks/DIVERGENCES.md` | the one row whose computed verdict differs from its prediction |
