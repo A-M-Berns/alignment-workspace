@@ -17,7 +17,7 @@ ROW = re.compile(r"^\|\s*((?:[A-Z]+\d+[abc]?)(?:\s*,\s*[A-Z]+\d+[abc]?)*)\s*\|(.
 LISTED = re.compile(r"^DIVERGENCE ([A-Z]+\d+[abc]?) \((start|end|learning|all)\):", re.M)
 COUNT = re.compile(r"^COUNT ([\w-]+) (\w+): right (\d+), wrong (\d+), not counted (\d+)$", re.M)
 WRONG = re.compile(r"^WRONG ([\w-]+) (\w+):(.*)$", re.M)
-QUESTION = re.compile(r"^QUESTION ([\w-]+): M (\d+)/(\d+), C (\d+)/(\d+), W (\d+)/(\d+)$", re.M)
+QUESTION = re.compile(r"^QUESTION ([\w-]+): M (\d+)/(\d+), C (\d+)/(\d+), W (\d+)/(\d+), M or W (\d+)/(\d+)$", re.M)
 STRICT_YES = ("NP8", "E6", "K15", "K21", "K23", "X1", "X2b", "X3b", "K31", "D1")
 STRICT_NO = ("NP13",)
 
@@ -103,7 +103,7 @@ def by_question(ev, m, c, w):
     out = {}
     em = ev.get("M", "con")
     if em == "either":
-        out["M"] = bool(m or w)
+        out["E"] = bool(m or w)
         return out
     if em in ("yes", "no"):
         out["M"] = m == (em == "yes")
@@ -124,6 +124,22 @@ def sixth():
         for st in ("start", "end"):
             t, _ = scene.tokens(st)
             out[cid][st] = None if "unfixed" in t else ("manipulation" in t, False, bool(t & {"coercion", "tie", "alteration"}))
+    return out
+
+
+def sixth_adjusted(old, scenes):
+    """The same, with the two reporting limits the external review names removed: a case with
+    no adviser is answered 'none' where the sixth gave no verdict, and Q6 and Q7, whose rows
+    state the permission, are credited as covered."""
+    out = {}
+    for cid, d in old.items():
+        out[cid] = {}
+        for st, v in d.items():
+            if v is None and not scenes[cid]().adviser:
+                v = (False, False, False)
+            if cid in ("Q6", "Q7") and v is not None and v[0]:
+                v = (v[0], True, v[2])
+            out[cid][st] = v
     return out
 
 
@@ -171,7 +187,7 @@ def main():
     perq = {}
 
     def add_q(label, ev, m, c, w):
-        t = perq.setdefault(label, {q: [0, 0] for q in "MCW"})
+        t = perq.setdefault(label, {q: [0, 0] for q in "MCWE"})
         for q, ok in by_question(ev, m, c, w).items():
             t[q][0] += ok
             t[q][1] += 1
@@ -220,17 +236,18 @@ def main():
                     if alt["M"] != verdicts[cand]["M"]:
                         variants[name].append("%s (%s): %s -> %s" % (cid, cand, verdicts[cand]["M"] or "none", alt["M"] or "none"))
     # the sixth follow-up's verdicts against the same evident characters
-    for st in ("start", "end"):
-        for table in ("primary", "strict"):
-            t = tally.setdefault(("sixth", st, table), {"right": [], "wrong": [], "not counted": []})
-            for cid in groups["bank"]:
-                ev = pre[cid]["evident"] if table == "primary" else strict_evident(cid, pre[cid]["evident"])
-                if old.get(cid, {}).get(st) is None:
-                    t["wrong" if score(ev, False, False, False)[0] != "not counted" else "not counted"].append(cid)
-                else:
-                    t[score(ev, *old[cid][st])[0]].append(cid)
-                if table == "primary":
-                    add_q("sixth-" + st, ev, *(old[cid][st] or (None, None, None)))
+    for group, verdicts6 in (("sixth", old), ("sixthadj", sixth_adjusted(old, scenes))):
+        for st in ("start", "end"):
+            for table in ("primary", "strict"):
+                t = tally.setdefault((group, st, table), {"right": [], "wrong": [], "not counted": []})
+                for cid in groups["bank"]:
+                    ev = pre[cid]["evident"] if table == "primary" else strict_evident(cid, pre[cid]["evident"])
+                    if verdicts6.get(cid, {}).get(st) is None:
+                        t["wrong" if score(ev, False, False, False)[0] != "not counted" else "not counted"].append(cid)
+                    else:
+                        t[score(ev, *verdicts6[cid][st])[0]].append(cid)
+                    if table == "primary" and group == "sixth":
+                        add_q("sixth-" + st, ev, *(old[cid][st] or (None, None, None)))
     # units: per quantity the verdict cannot move (each comparison is within one quantity);
     # with one faculty per kind it does
     units = {"per quantity": [], "one faculty per kind": []}
@@ -245,6 +262,23 @@ def main():
                     if scene.judge("start", pool=pool, scale={q: factor})["M"] != scene.judge("start", pool=pool)["M"]:
                         units[name].append("%s: %s x %s" % (cid, q, factor))
     nl = nonlinear()
+    sens = {}
+    for name, change in (("NP13 contested", {"NP13": {"M": "con", "W": "no"}}), ("Q10 manipulation", {"Q10": {"M": "yes", "W": "no"}}),
+                         ("K31 manipulation", {"K31": {"M": "yes", "W": "no"}})):
+        sens[name] = {}
+        for cand in CANDS:
+            n = 0
+            for cid in groups["bank"]:
+                v = scenes[cid]().judge(cand)
+                n += score(change.get(cid, pre[cid]["evident"]), bool(v["M"]), v["C"], bool(v["W"]))[0] == "wrong"
+            sens[name][cand] = n
+    review = {}
+    for rid, (what, make, m, w) in cases.REVIEW.items():
+        v = make().judge("start")
+        review[rid] = {"scene": what, "M": v["M"], "degree": {k: str(d) for k, d in v["degree"].items()}, "I": v["I"], "W": v["W"],
+                       "return to before": make().judge("start", strict=True)["M"]}
+        if v["M"] != m or v["W"] != w:
+            failures.append("the review's scene %s gives %s, %s; stated %s, %s" % (rid, v["M"], v["W"], m, w))
     alt = {}
     for cid, (what, make, expect) in cases.ALT.items():
         v = make().judge("start")
@@ -265,7 +299,7 @@ def main():
         failures.append("DIVERGENCES.md lists %s (%s), which does not diverge" % (cid, cand))
     rpath = HERE / "RESULTS.md"
     results = rpath.read_text(encoding="utf-8") if rpath.exists() else ""
-    names = {"bank": "", "sixth": "sixth-", "review": "review-", "new": "new-"}
+    names = {"bank": "", "sixth": "sixth-", "sixthadj": "sixth-adjusted-", "review": "review-", "new": "new-"}
     stated = {(m[0], m[1]): tuple(int(x) for x in m[2:]) for m in COUNT.findall(results)}
     stated_wrong = {(m[0], m[1]): sorted(m[2].split()) for m in WRONG.findall(results)}
     for (group, cand, table), t in tally.items():
@@ -277,21 +311,22 @@ def main():
             failures.append("RESULTS.md's WRONG line for %s %s is %s; computed %s" % (label[0], table, stated_wrong.get(label), sorted(t["wrong"])))
     stated_q = {m[0]: tuple(int(x) for x in m[1:]) for m in QUESTION.findall(results)}
     for label, t in perq.items():
-        have = tuple(x for q in "MCW" for x in t[q])
+        have = tuple(x for q in "MCWE" for x in t[q])
         if stated_q.get(label) != have:
             failures.append("RESULTS.md's QUESTION line for %s is %s; computed %s" % (label, stated_q.get(label), have))
     return (1 if failures else 0), {"by question": perq,
         "verdicts": rows, "tally": {"%s%s %s" % (names[g], c, tb): t for (g, c, tb), t in tally.items()},
         "diverging": sorted(diverging), "variants": variants, "split by candidate": split,
         "learning differs from both": learning_alone, "her own shortfall splits": own_split, "clause": clause,
-        "units": units, "re-expression": nl, "changed details": alt, "failures": failures}
+        "units": units, "re-expression": nl, "changed details": alt, "evident characters changed": sens,
+        "the review's scenes": review, "failures": failures}
 
 
 def render(report):
     out = ["case  candidate  M  I  C  W  standing"]
     for r in report.get("verdicts", []):
-        out.append("%-5s %-8s M=%-22s I=%-3s C=%-3s W=%-12s %s%s%s" % (
-            r["case"], r["candidate"], ",".join("%s %s" % (m, r["degree"][m]) for m in r["M"]) or "none",
+        out.append("%-5s %-8s M=%-30s I=%-3s C=%-3s W=%-12s %s%s%s" % (
+            r["case"], r["candidate"], ",".join("%s %s" % (k, d) for k, d in r["degree"].items()) or "none",
             "yes" if r["I"] else "no", "yes" if r["C"] else "no", ",".join(r["W"]) or "none",
             r["standing"][0] + (" on " + ",".join(r["standing"][1]) if r["standing"][1] else ""),
             "  [clause 2 unanswered: %s]" % ",".join(r["unanswered"]) if r["unanswered"] else "",
@@ -301,12 +336,12 @@ def render(report):
         out.append("COUNT %s: right %d, wrong %d, not counted %d" % (label, len(t["right"]), len(t["wrong"]), len(t["not counted"])))
         out.append("WRONG %s: %s" % (label, " ".join(sorted(t["wrong"]))))
     for label, t in report.get("by question", {}).items():
-        out.append("QUESTION %s: M %d/%d, C %d/%d, W %d/%d" % (label, *t["M"], *t["C"], *t["W"]))
+        out.append("QUESTION %s: M %d/%d, C %d/%d, W %d/%d, M or W %d/%d" % (label, *t["M"], *t["C"], *t["W"], *t["E"]))
     out.append("")
     out.append("diverging from predictions: %s" % ["%s (%s)" % d for d in report.get("diverging", [])])
     for name, items in report.get("variants", {}).items():
         out.append("variant, %s: %s" % (name, "; ".join(items) or "no change"))
-    for k in ("split by candidate", "learning differs from both", "her own shortfall splits", "clause", "units", "re-expression", "changed details"):
+    for k in ("split by candidate", "learning differs from both", "her own shortfall splits", "clause", "units", "re-expression", "changed details", "evident characters changed", "the review's scenes"):
         out.append("%s: %s" % (k, report.get(k)))
     out.append("")
     out.append("OK" if not report["failures"] else "FAILURES:\n  " + "\n  ".join(report["failures"]))

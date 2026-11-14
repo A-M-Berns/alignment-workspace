@@ -45,6 +45,17 @@ def nobody():
     return Scene({"s": 1}, {"actual": const(None)}, lambda t, o: {}, adviser=False)
 
 
+def k30():
+    prior = {}
+    for x in (0, 1):
+        for s1 in (0, 1):
+            for s2 in (0, 1):
+                prior[("H" if x else "L", s1, s2)] = F(1, 2) * (F(3, 4) if s1 == x else F(1, 4)) * (F(3, 4) if s2 == x else F(1, 4))
+    e = lambda b: F(3, 4) if b else F(1, 4)
+    return Scene(prior, {"actual": lambda s: (s[1], s[2])}, lambda t, o: {"e": {"X": F(1, 2) if o is None else max(e(o[0]), e(o[1]))}},
+                 Y=lambda q, s, act: xval(s[0]), adviser=False)
+
+
 def scalar(value, actual, before, alts=None, kind="belief", **kw):
     """One state, one quantity of true value `value`; her estimate under each conduct."""
     table = {"a": F(actual)}
@@ -200,6 +211,8 @@ K8 = {"H": F(1, 2), "Lf": F(1, 4), "Ln": F(1, 4)}
 K8_SAYS = {"H": "item", "Lf": "item", "Ln": "nothing"}
 K8_FORTH = {"H": "H", "Lf": "L", "Ln": "L"}
 K8_TOLD = lambda s: ("told", K8_SAYS[s])
+NOISE = {("H", "H"): F(1, 4), ("H", "L"): F(1, 4), ("L", "L"): F(1, 4), ("L", "H"): F(1, 4)}
+MISLEAD = {("H", "H"): F(1, 8), ("H", "L"): F(3, 8), ("L", "L"): F(1, 8), ("L", "H"): F(3, 8)}
 READ = {("H", "H"): F(3, 8), ("H", "L"): F(1, 8), ("L", "L"): F(3, 8), ("L", "H"): F(1, 8)}
 second = lambda s: s[1]
 xfirst = lambda q, s, act: xval(s[0])
@@ -254,7 +267,8 @@ CASES = {
                        {"eH": 1, "eL": 0, "hH": F(3, 4), "hL": F(3, 4)}, alts={"none": None},
                        X=lambda q, s, act: F(1) if s[1] == "H" else F(0)),
     "K4": lambda: tell(K4, K4_SAYS, BEL, alts={"truthful": K4_TRUE, "none": None}, twin="truthful"),
-    "K5": nobody, "K6": nobody,
+    "K5": lambda: tell(NOISE, second, BEL, X=xfirst, adviser=False),
+    "K6": lambda: tell(MISLEAD, second, BEL, X=xfirst, adviser=False),
     "K7": plain,
     "K8": lambda: advocate(F(2, 3)),
     "K9": lambda: advocate(1),
@@ -273,14 +287,14 @@ CASES = {
     "K23": shaped,
     "K24": lambda: taste(None, adviser=False),
     "K25": lambda: tell(READ, second, BEL, alts={"none": None}, X=xfirst),
-    "K26": nobody,
+    "K26": lambda: press("cost", adviser=False),
     "K27": lambda: tell({"H": F(3, 4), "L": F(1, 4)}, HARD, lambda t, o: F(3, 4), alts={"none": None}),
     "K27b": lambda: tell({"H": F(3, 4), "L": F(1, 4)}, HARD, lambda t, o: F(1, 4), alts={"none": None}),
     "K28": lambda: craving(),
     "K4b": lambda: tell(K4, K4_SAYS, BEL, alts={"truthful": K4_TRUE, "none": None}, twin="truthful"),
     "K4c": k4c,
     "K29": lambda: taste(False, twin="none"),
-    "K30": nobody,
+    "K30": k30,
     "K31": lambda: tell(K4, K4_SAYS, {"H": F(10, 11), "L": 0}, alts={"truthful": K4_TRUE}),
     "K33a": lambda: consequence("threat", threat),
     "K33b": lambda: consequence("threat", threat),
@@ -290,7 +304,7 @@ CASES = {
     "X2b": shaped,
     "X3": lambda: scalar(F(1, 2), F(9, 10), F(1, 2), alts={"tell": F(1, 2), "none": None}),
     "X3b": lambda: taste(False, flags=("alteration",)),
-    "L1": plain, "L2": nobody, "L3": plain,
+    "L1": plain, "L2": lambda: tell(NOISE, lambda s: s[0], BEL, X=xfirst, adviser=False), "L3": plain,
     "L4": lambda: tell({("H", "H"): F(9, 20), ("H", "L"): F(1, 20), ("L", "L"): F(9, 20), ("L", "H"): F(1, 20)}, second,
                        {"H": F(9, 10), "L": F(1, 10)}, alts={"none": None}, X=xfirst),
     "L5": lambda: tell({"H": F(1, 2), "La": F(1, 4), "Ln": F(1, 4)}, {"H": (1, 0), "La": (1, 1), "Ln": (0, 1)},
@@ -462,4 +476,34 @@ ALT = {
     "D1": ("she foresees the decay", lambda: dependence(True), []),
     "K13": ("only bad news is buried", lambda: tell(H2, {"H": "H", "L": "buried"}, {"H": 1, "buried": F(1, 2), "L": 0},
                                                     alts={"forthright": same, "none": None}), ["belief"]),
+}
+
+
+# -- six of the external review's ten scenes, as it states them: (scene, manipulation, other wrongs, what it shows) --
+
+def two_lies():
+    table = {None: (0, 0), "a": (1, 0), "b": (0, 1)}
+    return Scene({"s": 1}, {"actual": const("a"), "tell": const("b"), "none": const("b")},
+                 lambda t, o: {"e": {"P": F(table[o][0]), "Q": F(table[o][1])}})
+
+
+def confidence():
+    def respond(t, o):
+        if o is None or isinstance(o, tuple):
+            return {"e": {"X": F(1, 2) if o is None else xval(o[1])}}
+        return {"e": {"X": (F(1, 2), "high" if o == "L" else "low")}}
+    return Scene(H2, {"actual": same, "tell": lambda s: ("tell", s)}, respond, Y=lambda q, s, act: xval(s))
+
+
+def offer_and_threat(a, s, act, cand):
+    return (F(2) if act == "both" else F(0)) if a == "comply" else (F(-1) if act == "both" else F(1))
+
+
+REVIEW = {
+    "A1": ("a lie repeated to one who already believes it", lambda: scalar(0, 1, 1, alts={"tell": 0}), [], []),
+    "A2": ("an honest slip where a checked explanation was available", lambda: scalar(0, F(1, 2), 0, alts={"checked": 0}), ["belief"], []),
+    "A4": ("only a partial repair is available", lambda: scalar(0, 1, 0, alts={"tell": F(1, 2)}, twin="tell"), ["belief"], []),
+    "A5": ("every other conduct induces a different false certainty", two_lies, [], []),
+    "A8": ("the same estimate with a confidence that tracks the truth", confidence, ["belief"], []),
+    "A9": ("an offer combined with a threat", lambda: consequence("both", offer_and_threat), [], []),
 }

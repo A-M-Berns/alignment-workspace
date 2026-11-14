@@ -150,7 +150,7 @@ class Scene:
                 res["unanswered"].append(self._name(k))
                 continue
             res["M"].append(self._name(k))
-            res["degree"][self._name(k)] = min(ex1, a - best)
+            res["degree"][self._name(k) if k[0] == "kind" else "%s:%s" % (self.kind(k), k[1])] = min(ex1, a - best)
             if twin is not None and twin.get(k, F(0)) < a:
                 res["I"] = True
         res["M"] = sorted(set(res["M"]))

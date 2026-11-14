@@ -135,10 +135,12 @@ Each with its alternative. "Computed" means `RESULTS.md` reports the alternative
 
 ## 4. Devices found needed
 
-Written after the results. Each is something §1 does not supply and a verdict turns on.
+Written after the results and amended after the external review. Each is something §1 does not supply and a verdict turns on.
 
 1. **A measure of "no less informed"** (§3.7). Taken at what she observes or at her
-   estimate, it decides K27b and W4.
+   estimate, it decides K27b and W4. The one used, the variance of each counted target
+   given what she observes, is a surrogate: it does not see information about how
+   targets are related.
 2. **The grain of a faculty** (§3.2): one quantity. With one faculty per kind the
    verdicts depend on units.
 3. **Her state before, as a datum of the scene** (§3.5). It decides K9 against W10.
@@ -152,6 +154,8 @@ Written after the results. Each is something §1 does not supply and a verdict t
 8. **The annotation** for *learning* (§3.13), as §1 says.
 9. **The adviser's absence as a comparison**, for coercion only (§3.12), outside the
    definition, as in the sixth follow-up.
+10. **What a confidence asserts** (§3.3). No banked or new scene uses one; the external
+    review's scene A8 shows the conditioning deciding a verdict.
 
 Not found needed: a reporting norm; an honest counterpart; a second type of principal
 for the basic notion; a sum or weighting over quantities; an inner goal of the adviser.
