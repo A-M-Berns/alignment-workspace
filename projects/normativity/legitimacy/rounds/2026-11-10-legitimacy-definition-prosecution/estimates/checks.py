@@ -109,10 +109,20 @@ def c3_weaker():
 def c3_choice():
     """Refuted: C3 bounds her loss in true utility whatever her choice depends on.  Two states
     at 1/2, two moves; U* = (1, 0) at s1 and (0, 1) at s2; her information is trivial, u = ubar
-    = (1/2, 1/2); her choice is the worse move at each state (it depends on the state)."""
-    loss_ubar, R, M = F(0), F(0), F(0)
-    true_loss = F(1, 2) - F(0)
-    assert true_loss > R + 0 and M == 0 and loss_ubar == 0
+    = (1/2, 1/2); her choice is the worse move at each state (it depends on the state).  The
+    same scene refutes 1.5 read as a bound on true utility: the reference is coarser than what
+    her choice uses."""
+    p = [F(1, 2), F(1, 2)]
+    Ustar = [[F(1), F(0)], [F(0), F(1)]]                 # Ustar[a][state]
+    info = [0, 0]
+    ubar = [cond(p, Ustar[a], info) for a in (0, 1)]
+    u = ubar
+    c = [1, 0]
+    R = E(p, [max(u[a][s] for a in (0, 1)) - u[c[s]][s] for s in (0, 1)])
+    M = sum((E(p, [(u[a][s] - ubar[a][s]) ** 2 for s in (0, 1)]) for a in (0, 1)), F(0))
+    ref_loss = E(p, [max(ubar[a][s] for a in (0, 1)) - ubar[c[s]][s] for s in (0, 1)])
+    true_loss = E(p, [max(ubar[a][s] for a in (0, 1)) - Ustar[c[s]][s] for s in (0, 1)])
+    assert (R, M, ref_loss, true_loss) == (F(0), F(0), F(0), F(1, 2))
     return {"supports": REFUTED, "true loss": true_loss, "E[R]": R, "M": M}
 
 
@@ -240,6 +250,10 @@ def c6():
     m_rand, _ = sc.metrics("other", "start")
     assert infl == F(1, 8) and sc.inflation("other", "start") == 0
     assert sum(m_sel.values()) == sum(m_rand.values()) == F(1, 16)
+    # a report that changes her move: the lie has her treat (worth 1), the honest report has her
+    # skip (worth 0, and she rates it 0).  V = 1, V_h = 0, U* = 1, U*_h = 0.
+    V, Vh, U, Uh = F(1), F(0), F(1), F(0)
+    assert V - U == (V - Vh) + (Vh - Uh) + (Uh - U) and Vh - U == -1 and Vh - Uh == 0
     return {"supports": EXAMPLE, "induced part": F(0), "her error as the adviser meets it": infl,
             "miscalibration under selection": F(1, 16), "miscalibration with no selection": F(1, 16)}
 
@@ -366,32 +380,38 @@ def b_scatter():
 
 
 def d_dependence():
-    """T steps.  At each, the outcome is good (1) or bad (0) at even odds; the adviser knows.
+    """Twelve steps.  At each the outcome is good (1) or bad (0) at even odds; the adviser knows.
     Her own signal is right with probability q_k = 1/2 + (20 - k)/80: it decays as she stops
-    using it.  A false report is detected when her own signal contradicts it and she checks, which she
-    does with probability c_k = 2 q_k - 1.  Phase 1 (k < T0): the adviser reports honestly and
-    she returns its report.  Phase 2: from the first k with p_k < 1/(1 + d0 + lam) it reports
-    'good' always."""
+    using it.  When her signal contradicts a report she checks with probability 2 q_k - 1, and a
+    check of a false report detects it; a detected report is scored -d0 and counts as a
+    violation at weight lam.  So a false 'good' is detected with probability
+    p_k = q_k (2 q_k - 1).  Honest phase: the adviser reports the outcome and she returns the
+    report.  From the first k with p_k < 1/(1 + d0 + lam) it reports 'good' always."""
     d0, lam, T = F(1, 2), F(2), 12
     thr = 1 / (1 + d0 + lam)
     rows, first = [], None
     for k in range(T):
         q = F(1, 2) + F(20 - k, 80)
-        p_detect = q * (2 * q - 1)                       # her signal says 'bad' and she checks
-        defer_gain = F(1, 2) * (1 - q) * 1               # squared-error loss of her own guess minus the report's (0)
+        p_detect = q * (2 * q - 1)
+        own_loss = q * (1 - q)                          # squared loss of her posterior from her own signal
         if first is None and p_detect < thr:
             first = k
         lying = first is not None
-        m = F(1, 4) if lying else F(0)                   # 'good' always, believed: (1 - 1/2)^2
-        infl = F(1, 2) if lying else F(0)
-        pays = (1 - p_detect) * 1 + p_detect * (-d0 - lam) > F(0)   # against the honest score at a bad outcome
-        rows.append({"k": k, "p_detect": p_detect, "miscalibration": m, "inflation": infl, "departure pays at a bad outcome": pays,
-                     "deferring beats her own estimate": defer_gain > 0})
-    assert first is not None and first > 0
-    assert all(r["miscalibration"] == 0 and r["deferring beats her own estimate"] for r in rows[:first])
-    assert all(r["departure pays at a bad outcome"] for r in rows[first:]) and not rows[0]["departure pays at a bad outcome"]
+        if lying:
+            # her raw verdict is 1; her information is her signal (the report says nothing)
+            m = F(1, 2) * (1 - q) ** 2 + F(1, 2) * q ** 2
+            infl = F(1, 2) * ((1 - p_detect) * 1 + p_detect * (-d0))      # bad outcomes only; good ones are rated rightly
+        else:
+            m, infl = F(0), F(0)
+        pays = (1 - p_detect) * 1 + p_detect * (-d0 - lam) > F(0)          # against the honest score 0 at a bad outcome
+        rows.append({"k": k, "p_detect": p_detect, "miscalibration": m, "inflation": infl, "pays": pays,
+                     "defer": own_loss > 0})
+    assert first == 4
+    assert all(r["miscalibration"] == 0 and r["defer"] and not r["pays"] for r in rows[:first])
+    assert all(r["pays"] and r["inflation"] > 0 for r in rows[first:])
+    assert rows[4]["p_detect"] == F(7, 25) and rows[4]["inflation"] == F(29, 100) and rows[4]["miscalibration"] == F(29, 100)
     return {"supports": EXAMPLE, "first step a departure pays": first, "threshold": thr,
-            "inflation per step afterwards": F(1, 2), "p_detect": [r["p_detect"] for r in rows]}
+            "inflation by step": [r["inflation"] for r in rows], "p_detect": [r["p_detect"] for r in rows]}
 
 
 def d_honest_dependence():
@@ -503,12 +523,82 @@ def n_local():
     return {"supports": PROVED, "relations on 3 states": 512, "sampled on 4": 150}
 
 
+def honest_convicted():
+    """Refuted: with the second type of principal unconstrained, *triggered* convicts no honest
+    influence.  Four scenes from the external review: the adviser acts truthfully toward her and
+    does nothing toward a type that cannot make the mistake, because that type has no need of it."""
+    from . import cases
+    from .model import Scene
+    scenes = {
+        "a remedial lesson that confuses for a while": cases.scalar(0, 1, truthful_est=1, other_est=0),
+        "a disclosure she asked for, overgeneralized": cases.scalar(0, 1, truthful_est=1, other_est=0),
+        "a disclosed advocate's explanation to a novice": cases.scalar(F(1, 2), 1, truthful_est=1, other_est=F(1, 2)),
+        "a reminder she asked for that backfires": Scene(
+            {"s": 1}, {"actual": cases.const("remind"), "truthful": cases.const("remind"), "other": cases.const("none")},
+            lambda o: {"u": {"a": F(1), "b": F(0)}, "c": "b" if o == "remind" else "a"},
+            U=lambda a, s, act, stance: F(1) if a == "a" else F(0)),
+    }
+    out = {}
+    for name, sc in scenes.items():
+        tok, _ = sc.tokens("start")
+        assert "triggered" in tok and "induced" not in tok and "manipulation" in tok
+        out[name] = sorted(tok)
+    return {"supports": REFUTED, "scenes": out}
+
+
+def honest_same_need():
+    """The same four scenes with the second type differing from her only in the flaw: it has the
+    same need, so the adviser acts toward it as toward her.  None is manipulation."""
+    from . import cases
+    from .model import Scene
+    scenes = [cases.scalar(0, 1, truthful_est=1, other_est=1), cases.scalar(F(1, 2), 1, truthful_est=1, other_est=1),
+              Scene({"s": 1}, {"actual": cases.const("remind"), "truthful": cases.const("remind"), "other": cases.const("remind")},
+                    lambda o: {"u": {"a": F(1), "b": F(0)}, "c": "b" if o == "remind" else "a"},
+                    U=lambda a, s, act, stance: F(1) if a == "a" else F(0))]
+    for sc in scenes:
+        tok, _ = sc.tokens("start")
+        assert "manipulation" not in tok
+    return {"supports": EXAMPLE}
+
+
+def units():
+    """Q3b with the adviser's reading expressed in units half the size (estimate and truth both
+    doubled): the lie's total miscalibration is 1/4 against 1/16 under honest conduct, and the
+    verdict changes from not induced to induced."""
+    from . import cases
+    t1, _ = cases.q3(True).tokens("start")
+    t2, f2 = cases.q3(True, scale=2).tokens("start")
+    assert "induced" not in t1 and "induced" in t2
+    assert f2["miscalibration"] == F(1, 4) and f2["under truthful"]["miscalibration"] == F(1, 16)
+    return {"supports": EXAMPLE, "as banked": sorted(t1), "reading doubled": sorted(t2)}
+
+
+def hidden_bit():
+    """Refuted: calibration at every step bounds the realized long-run inflation.  One bit Z,
+    drawn once at even odds; U*_k = Z and V_k = 1/2 at every step; her information is trivial.
+    Every verdict is calibrated (m_k = 0) and expected inflation is 0; on Z = 0 the realized
+    average of V - U* is 1/2 at every K.  With U_k = V_k = 1/2 on every available action and
+    N = 0, Maximizes holds and the excess of estimate over realized score is 0 at every K."""
+    p = [F(1, 2), F(1, 2)]
+    Z = [F(0), F(1)]
+    V = [F(1, 2), F(1, 2)]
+    m = E(p, [(v - e) ** 2 for v, e in zip(V, cond(p, Z, [0, 0]))])
+    assert m == 0 and E(p, V) - E(p, Z) == 0
+    for K in (1, 10, 1000):
+        realized = [sum(V[z] - Z[z] for _ in range(K)) / K for z in (0, 1)]
+        assert realized == [F(1, 2), F(-1, 2)]
+        excess = sum(F(1, 2) - (F(1, 2) - 3 * 0) for _ in range(K)) / K
+        assert excess == 0
+    return {"supports": REFUTED, "m_k": m, "realized average on Z = 0": F(1, 2)}
+
+
 CHECKS = {
     "1.1": c1, "1.2": c2, "1.3": c3, "1.4": c3_tight, "1.5": c3_weaker, "1.6": c3_choice,
     "1.7": c4, "1.8": c4_score, "1.9": c4_violation, "1.10": c4_sophisticated,
     "1.11": c5, "1.12": c5_instance, "1.13": c5_regret, "1.14": c6,
+    "3.1": honest_convicted, "3.2": honest_same_need, "3.3": units,
     "4.1": a_martingale, "4.2": a_drift, "4.3": a_end, "4.4": a_unidentified, "4.5": a_meanzero,
-    "5.1": b_bound, "5.2": b_gate, "5.3": b_selection, "5.4": b_scatter,
+    "5.1": b_bound, "5.2": b_gate, "5.3": b_selection, "5.4": b_scatter, "5.5": hidden_bit,
     "6.1": d_dependence, "6.2": d_honest_dependence, "6.3": d_feelings,
     "8.1": n_her_side, "8.2": n_purpose, "8.3": n_merge, "8.4": n_local,
 }

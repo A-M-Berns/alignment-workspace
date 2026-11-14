@@ -110,15 +110,19 @@ turns on.
    without it.
 2. **The list of quantities** (§3.4), and whether "worse" sums over the list or asks for
    some quantity. A lie that trades one error for another is manipulation or not by this
-   choice (K2, Q3, Q3b).
+   choice (K2, Q3, Q3b), and a sum depends on the units each quantity is written in
+   (`RESULTS.md` 3.3): a weighting is needed and not supplied.
 3. **A policy split into a choice and a report** (§3.5), so that the honest counterpart
-   and `V_h` live on one probability space and C6's second term compares her verdict
-   with the utility of the same outcome.
+   and `V_h` live on one probability space. That keeps the adviser's choice and not her
+   move, so C6's second term compares her verdict with the utility of the same outcome
+   only where the honest report would not change what she does (`RESULTS.md` 1.14).
 4. **The reporting norm.** Truthful and forthright differ on an undisclosed advocate
    and on strategic silence (K9, Q2). No norm exists for an act that is not a report.
 5. **A second type of principal and the adviser's policy at it** (§3.6). Every case of
    pressure, of a cue, of arranged exposure and of selection is decided by it, and the
-   scene states it.
+   scene states it. Left unconstrained it convicts honest influence toward her that the
+   adviser has no occasion to give the other type; it must differ from her in the flaw
+   alone (`RESULTS.md` 3.1, 3.2), which §3.6 did not require.
 6. **An anchor for `U*`** (§3.9). §1's "one function on histories" does not choose
    between her starting values and her values at the end, and the cases of changed
    taste take opposite verdicts under the two.

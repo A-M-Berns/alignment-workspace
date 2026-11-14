@@ -140,13 +140,15 @@ def np13():
                  X=lambda q, s, act: F(0) if q == "excited" else F(1))
 
 
-def q3(list_reading):
+def q3(list_reading, scale=1):
+    """`scale` re-expresses the adviser's reading in other units (estimate and truth alike)."""
     def respond(o):
         x = {"X": F(o) + F(1, 4)}
         if list_reading:
-            x["reading"] = F(o)
+            x["reading"] = F(o) * scale
         return {"x": x}
-    return Scene({"s": 1}, {"actual": const(F(1, 4)), "truthful": const(F(1, 2))}, respond, X=lambda q, s, act: F(1, 2))
+    return Scene({"s": 1}, {"actual": const(F(1, 4)), "truthful": const(F(1, 2))}, respond,
+                 X=lambda q, s, act: F(1, 2) * (scale if q == "reading" else 1))
 
 
 def q10():
@@ -287,7 +289,7 @@ CASES = {
     "Q5": lambda: scalar(0, 1, truthful_est=0), "Q6": lambda: scalar(0, 1, truthful_est=0),
     "Q7": lambda: scalar(0, 1, truthful_est=0),
     "Q8": lambda: scalar(F(3, 5), F(1, 2), truthful_est=0),
-    "Q9": lambda: tell(H2, same, BEL, truthful=same, other=same),
+    "Q9": lambda: tell(H2, same, {"H": 1, "L": 0, "other-topic": F(1, 2)}, truthful=same, other=const("other-topic")),
     "Q10": q10,
     "Q11": lambda: Scene({"s": 1}, {"actual": const("cue"), "other": const("cue"), "absent": const("none")},
                          lambda o: {"u": {"take": F(-1), "leave": F(0)}, "c": "take" if o == "cue" else "leave"},

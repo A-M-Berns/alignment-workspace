@@ -17,16 +17,17 @@ even odds, she is told the state correctly with probability 3/4 and wrongly with
 and she believes what she is told. In the first the wrong reports are noise with no
 sender. In the second an adviser who knows the state sends them. The two scenes have the
 same law on her side (her miscalibration is 1/16 in both), so any function of her side
-takes one value on both; the first contains no adviser and the second a lie. ∎ The same
-pair defeats any definition of manipulation that does not read the adviser's policy,
-and the account of `SETTING.md` reads it (the second scene is *induced*, the first is
-not).
+takes one value on both; the first contains no adviser and the second a lie. ∎ The pair
+defeats a definition that reads her side only; it does not show how much of the
+adviser's side a definition must read. The account of `SETTING.md` reads its policy (the
+second scene is *induced*, the first is not).
 
 **8.2.** *Statement.* Let a mechanism be a function `m` from inputs to moves on finite
 sets with at least two moves. (a) There is a purpose (a utility on input and move)
 under which `m` is optimal at every input, and one under which it is suboptimal at
-every input. (b) There are two purposes that agree that `m` is optimal on every input
-of a set `N`, and disagree on whether `m` fails at an input outside `N`. *Proof.* (a)
+every input. (b) For the mechanism that returns what it is told, there are two purposes
+that agree that it is optimal on every input of a set `N` (the honest inputs), and
+disagree on whether it fails at each input outside `N`. *Proof.* (a)
 `g(i, v) = 1` if `v = m(i)` and 0 otherwise; and `1 − g`. (b) Inputs are pairs (truth,
 what she is told); `m` returns what she is told; `N` is the inputs where the two agree.
 "Match the truth" and "match what you were told" both score `m` 1 on `N`; at an input
@@ -54,4 +55,6 @@ reachable state lands in a reachable state, so no approved step lowers `f`;
 `f(s) = 1`, and `f(t) = 0` exactly when `t` is unreachable. ∎ The runner confirms the
 equivalence for all 512 relations on three states and 150 sampled on four. A test that
 approves each step by a local comparison protects against exactly the drifts some one
-fixed ranking forbids; without such a ranking, nothing.
+fixed ranking forbids; without such a ranking, nothing. The ranking the proof produces
+is the indicator of what is reachable: the result says a ranking is needed and gives no
+reason for any particular one.
