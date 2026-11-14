@@ -534,6 +534,49 @@
       "kind": "work",
       "url": "https://arxiv.org/abs/2405.17713",
       "blurb": "Carroll, Foote, Siththaranjan, Russell and Dragan: in dynamic reward MDPs, the static-preference assumption can implicitly reward influencing the user's preferences. The clearest external statement of the failure this program is trying to prevent, and a standing verification target."
+    },
+    {
+      "id": "trajectory",
+      "title": "Trajectory (history, future history)",
+      "kind": "object",
+      "blurb": "A whole course of events, from the start of an interaction to its end, including how the principal comes to value things along the way. It is the type of thing her utility and her evaluation take as input, the type a legitimacy predicate is a predicate of, and the argument of the corrigibility score. The post and the Lean call it a history (the type `H` of `Scoring` in `DeconfusingCorrigibility.lean`) and the continuation of one a future history; the three names are one concept, with trajectory primary."
+    },
+    {
+      "id": "evaluation-and-true-utility",
+      "title": "Her evaluation and her true utility",
+      "kind": "object",
+      "blurb": "Her evaluation is the verdict she gives on a trajectory (`V` in the post). Her true utility is a function on trajectories that the verdict estimates and that she does not fully know. The post has the evaluation only. With a true utility a verdict can be inflated, and Theorem 3(b) holds for a true score once verdicts are not inflated on average along the realized sequence (shown on paper, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/RESULTS.md` 1.11). Nothing on her side identifies the true utility (4.4 there). Three candidates are kept in view: her starting values informed of the whole trajectory, the values of whoever she ends as, and her starting values as changed only by what she learned about the options; on the cases where what she values changes they give different verdicts, none is right on all of them, and the third is fixed by an annotation of which influences are learning (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/RESULTS.md` §9). Open; nothing registered."
+    },
+    {
+      "id": "noggle-mistake-account",
+      "title": "The Mistake Account of manipulation (Noggle 2025, 2026)",
+      "kind": "work",
+      "url": "https://doi.org/10.1093/9780198924920.001.0001",
+      "blurb": "Robert Noggle, Manipulation: Its Nature, Mechanisms, and Moral Status (Oxford University Press, 2025), with the companion paper The Mistake Account of Manipulation, Journal of Practical Ethics 14(1), 2026, doi:10.3998/jpe.9951. Manipulation is influence that operates by inducing a mistake in the target's psychological states or processes: a false belief, an unfitting emotion, misplaced attention, a choice against her own judgment. Pressure large enough to make compliance her best option is coercion, and breaking a tie is meddling; neither is manipulation."
+    },
+    {
+      "id": "manipulation-as-induced-mistake",
+      "title": "Manipulation as induced mistake",
+      "kind": "philosophy",
+      "blurb": "An adviser's conduct manipulates the principal, in a given faculty, when on the adviser's calibrated expectation of her it leaves that faculty with a larger shortfall than it had before, and avoidably: some available conduct that leaves her no less informed would have left that faculty better and no other worse. No intention is read; conduct that differs toward someone who differs from her only in the susceptibility is the narrower notion, \"intentional\" manipulation; manipulation she agreed to, or a practice allows, is recorded as covered. On 108 cases under renderings the round wrote it is wrong on 5 to 8 by the candidate for her true utility, against 16 and 14 for the earlier statement (more mistakes than under the adviser's honest conduct, or than toward someone unable to make the mistake) on the same table. It misses buried information and a lie that is the only listed way to keep another estimate of hers right, convicts honest conduct wherever a better conduct is listed as available, and acquits an undisclosed advocate whose listener started out worse; ten of the banked verdicts change with one detail the case does not fix. Open; nothing registered (projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/RESULTS.md)."
+    },
+    {
+      "id": "estimation-and-action-mistakes",
+      "title": "Estimation mistakes and action mistakes",
+      "kind": "philosophy",
+      "blurb": "Two ways the principal can fall short by her own standards. An estimate of hers, of an outside quantity or of her own utility, is miscalibrated: its shortfall is taken at her own estimate, one faculty at a time from a fixed list, with nothing summed across faculties. Or she does not do what her own estimates say is best: her regret by her own lights. Being less informed is neither. A miscalibrated estimate is the only kind that can be off on average, and her avoidable loss is at most her regret by her own lights plus the square root of twice her miscalibration (shown on paper, projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/RESULTS.md 1.1, 1.3). Rescaling a quantity changes no comparison within a faculty; re-expressing it by a map that is not affine does (projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/RESULTS.md §8). Open; nothing registered."
+    },
+    {
+      "id": "honest-conduct",
+      "title": "The adviser's reference",
+      "kind": "philosophy",
+      "blurb": "The adviser's conduct is judged on its calibrated expectation of how the principal will read and respond to it, given what it knows about her: her actual type, or only that she is an ordinary advisee. It is compared with her state before the conduct and with the other conduct available to it that leaves her no less informed, telling her what it is doing among them. What counts is the state she ends in and not the literal truth of what is said: on the scenes computed, the truth told to one known to believe the opposite is manipulation, a falsehood told to her is not, and the same truth from an adviser that takes her for ordinary is not. The conduct available and her response to each are data of a scene; every conviction of honest conduct and every acquittal of a lie among the cases tried is a fact about that list (projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/RESULTS.md §5, §7). Open; nothing registered."
+    },
+    {
+      "id": "warranted-self-trust",
+      "title": "Legitimacy as warranted self-trust",
+      "kind": "philosophy",
+      "blurb": "A verdict of the principal's is legitimate when her earlier self is right to defer to it: her later self has more evidence about the same quantities and has not been miscalibrated. For belief, `Sufficient` and `Correct` in `ThinLegitimacy.lean` state this in a stronger form, and their consequence `Value` is kernel-checked there. Extended to her own utility it becomes the condition that her verdicts are not inflated over her true utility; in expectation that is bounded by her miscalibration, along a realized sequence it is not, and her verdicts cannot test it. Open for the extension; nothing registered by it."
     }
   ],
   "links": [
@@ -1768,6 +1811,103 @@
         "adjacent"
       ],
       "why": "the formal statement of why value revision must not be something the system is rewarded for causing — the same concern the thesis's legitimacy conditioning addresses from the other direction",
+      "undirected": true
+    },
+    {
+      "from": "trajectory",
+      "to": "legitimacy-line",
+      "rel": [
+        "substrate"
+      ],
+      "why": "a legitimacy predicate is a predicate of a trajectory, or of a segment of one"
+    },
+    {
+      "from": "trajectory",
+      "to": "deconfusing-corrigibility",
+      "rel": [
+        "substrate"
+      ],
+      "why": "the post's score is a function of a history: her evaluation of it less the weighted count of violations along it"
+    },
+    {
+      "from": "trajectory",
+      "to": "evaluation-and-true-utility",
+      "rel": [
+        "substrate"
+      ],
+      "why": "both take a whole trajectory as input, including the ones on which she ends up valuing differently"
+    },
+    {
+      "from": "evaluation-and-true-utility",
+      "to": "deconfusing-corrigibility",
+      "rel": [
+        "shapes"
+      ],
+      "why": "with a true utility beside her evaluation, the post's best-interests conclusion is about a true score once her verdicts are not inflated on average"
+    },
+    {
+      "from": "noggle-mistake-account",
+      "to": "manipulation-as-induced-mistake",
+      "rel": [
+        "shapes"
+      ],
+      "why": "the published account the definition makes exact: manipulation as influence that works by inducing a mistake"
+    },
+    {
+      "from": "manipulation-as-induced-mistake",
+      "to": "legitimacy-line",
+      "rel": [
+        "part"
+      ],
+      "why": "the line's current candidate for what the transparency condition forbids, stated by its effect on her and not by the channel"
+    },
+    {
+      "from": "estimation-and-action-mistakes",
+      "to": "manipulation-as-induced-mistake",
+      "rel": [
+        "defines"
+      ],
+      "why": "the mistakes whose increase is manipulation"
+    },
+    {
+      "from": "honest-conduct",
+      "to": "manipulation-as-induced-mistake",
+      "rel": [
+        "defines"
+      ],
+      "why": "the reference the adviser's conduct is judged on"
+    },
+    {
+      "from": "evaluation-and-true-utility",
+      "to": "estimation-and-action-mistakes",
+      "rel": [
+        "substrate"
+      ],
+      "why": "her true utility is one of the quantities her estimates can be miscalibrated for"
+    },
+    {
+      "from": "warranted-self-trust",
+      "to": "legitimacy-line",
+      "rel": [
+        "part"
+      ],
+      "why": "what a legitimate verdict is, on this account: one her earlier self is right to defer to"
+    },
+    {
+      "from": "total-trust",
+      "to": "warranted-self-trust",
+      "rel": [
+        "formalizes"
+      ],
+      "why": "for belief, deferring to a later self that is correct and better informed loses nothing on any decision problem"
+    },
+    {
+      "from": "authorship-transparency",
+      "to": "honest-conduct",
+      "rel": [
+        "adjacent"
+      ],
+      "why": "the adviser's expectation of her reading is one declared reference for the channel through which it reaches her",
       "undirected": true
     }
   ]
