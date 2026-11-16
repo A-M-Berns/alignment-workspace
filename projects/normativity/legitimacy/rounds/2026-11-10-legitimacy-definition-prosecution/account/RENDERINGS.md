@@ -41,6 +41,8 @@ Every disagreement on (b), (c) and (d) is the executor's `Y` or `N` against the
 reviewer's `?`; on no case do the two give opposite answers to those questions. All four
 answers are fixed by both in eight cases (C31, C45, R8, R9, R11, R12, A2, A8), where the
 verdicts agree, and agree with the recorded evident verdict in the six that have one.
+The counts of agreement include the cases both leave unfixed: 1, 4, 6 and 4 on (a) to
+(d).
 
 ## 2. Every disagreement
 
@@ -85,10 +87,12 @@ five, the same under both readings:
   and can leave.
 - **R3**, conditioning she declined, recorded illegitimate: `none`, with the idle policy
   the platform's absence. With the reference the service without conditioning,
-  condition 1 would be measured from that (`ACCOUNT.md` §11, choice 5).
+  condition 1 would be measured from that (`ACCOUNT.md` §11, choice 5); whether it would
+  then fail is not shown, the laws under that reference not being given.
 - **R7**, an invitation that uses a forecast she already had wrong, recorded legitimate:
-  `2`, because a move the adviser opens is charged with her miscalibration about it
-  (choice 4). Over the common moves only, nothing fails.
+  `2`, on the reading that the ticket opens a move she did not have, because a move the
+  adviser opens is charged with her miscalibration about it (choice 4). Over the common
+  moves only, or if going to the concert was open to her anyway, nothing fails.
 
 Against a verdict the eighth pass's executor recorded: none by either.
 
@@ -106,8 +110,9 @@ passes nothing the executor judges subversion except R3.
 The executor evaluated (b) from the protected features and the sets of moves alone in
 55 cases, needed her way of valuing in one (R1: what is removed is the combination of
 her job and her values as they are, which matters only by her valuing), and did not
-evaluate it in eight. The reviewer evaluated it in ten, in each because the conduct was
-its own reference, and in none needed her way of valuing; in the other 54 it did not
+evaluate it in eight. The reviewer evaluated it in ten, in eight because the conduct was
+its own reference and in two (C14, C25) on the reading that every course keeping the
+idle policy's protected feature is gone, and in none needed her way of valuing; in the other 54 it did not
 evaluate it at all, for want of the laws under the two policies and not for want of her
 way of valuing. The executor's narrow and wide verdicts differ in C2, C25 and C29,
 imposed changes where the narrow condition needs her way of valuing and the case does
@@ -129,6 +134,28 @@ not give it; the reviewer's never differ.
 On A6 the executor's rendering has condition 1 holding in the wide reading too: not
 using the assistant leaves her as she was, so every reference law on the protected
 features is still reachable.
+
+## 7. How the thresholds of the dispatch were read, and what the reviewer said of the executor's rendering
+
+`renderings.py` computes the dispatch's S2, S3 and F1–F3 with three readings that
+`TEST_CASES.md` did not fix: F1 as a case both judge plain subversion and both
+renderings pass; F3 as more than half the cases needing her way of valuing in both
+renderings; S3 on the wide verdicts. Under S3's rule a rendering that leaves a case
+undecided goes against nothing, so S3 can be met with few cases decided. One case is
+judged subversion by one renderer and passed by the other's rendering: R2.
+
+The reviewer, in its second stage (`REVIEW-astra-followup-9.md`, stage two, points
+35–40), holds that the executor's determinate answers commonly take declining an
+exposure for the keeping of her options, truthful or understood influence for
+comparative accuracy, and voluntary action for comparative self-command, none of which
+is the inequality the statement asks for; that C9, C27, C33, C38 and C44 rest on the
+executor's reading of what a role permits; and that some entries are slips: C19's,
+C34's and C2's failure of (d) is not fixed by the case against an unspecified
+reference; the verdicts `1` for C24, `2` for A5 and narrow `23` for C2 list the
+conditions fixed to fail while others are unknown, which is not the full string; and
+C25 and C29 infer accuracy and self-command from her having no move, where the
+conditions' maxima are undefined. It withdraws its own `V` for C22 in favour of `?`.
+Both renderings stand as committed.
 
 ## What was not shown
 

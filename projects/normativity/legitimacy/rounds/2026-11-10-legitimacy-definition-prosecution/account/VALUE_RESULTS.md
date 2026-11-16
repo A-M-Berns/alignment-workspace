@@ -41,9 +41,10 @@ appraisals `(1, 0, 0)` and `(1/2, 1/4, 1/4)`, the ways of valuing `(1, 2, 0)` an
 families of appraisals: the two ranks agree; unique solution when spanning; a second way
 of valuing otherwise; (iii) against a basis of the orthogonal complement; the named
 corner. *Not covered.* The hypothesis is that her valuations are known as numbers. If
-only her choices are, the split is not fixed: for a positive weight `w` on `𝒳`, the pair
-`(p̂·w / ⟨p̂, w⟩, f / w)` makes the same choice as `(p̂, f)` at every appraisal (checked
-on an instance), and differs in both parts.
+only her choices are, the split is not fixed: among other transformations, for a positive
+weight `w` on `𝒳` the pair `(p̂·w / ⟨p̂, w⟩, f / w)` makes the same choice as `(p̂, f)` at
+every appraisal (checked on an instance) and differs in both parts. What choices alone
+do fix was not characterised.
 
 **2. Two encodings are observably different.** If `(p̂, f)` and `(p̂′, f′)` give the
 same valuation and `p̂ ≠ p̂′`, there is a value `x` of the facts at which her price for
@@ -54,11 +55,10 @@ with payoff 1, and appraisal `1/4` with payoff 2, both value the move at `1/2` a
 the bet at `1/2` and `1/4`. *What it rests on.* That the price of a bet is the appraisal
 is §2's definition. If a unit of stake is worth `w(x)` to her at `x`, the price she
 quotes is `p̂(x)·w(x) / ⟨p̂, w⟩`: with `p̂ = (1/2, 1/2)` and `w = (1, 3)` she quotes
-`(1/4, 3/4)`. Bets then separate the two encodings only up to such a `w`, the same
-family that result 1 leaves open when only choices are known.
+`(1/4, 3/4)`, and bets do not then separate encodings that differ by such a `w`.
 
 **3. The options condition, wide.** Let `O` be a finite set, and `D_σ`, `D_ρ` finite
-sets of probabilities on `O` (the laws on the protected features reachable by a move
+non-empty sets of probabilities on `O` (the laws on the protected features reachable by a move
 under each policy). Then `max_{d ∈ D_σ} ⟨d, g⟩ ≥ max_{d ∈ D_ρ} ⟨d, g⟩` for every
 `g : O → ℝ` if and only if every member of `D_ρ` is a convex combination of members of
 `D_σ`. *Proof.* If `d_0 = Σ_i λ_i d_i` with `λ ≥ 0`, `Σ λ_i = 1`, then
@@ -69,7 +69,7 @@ two to four outcomes: each reference law has either exact weights (found over
 Carathéodory subsets) or an exact separating `g` (found by an exact simplex method for
 `max t` subject to `⟨d_0 − d, g⟩ ≥ t`, `−1 ≤ g ≤ 1`), never both, and when all have
 weights the inequality holds on 40 random `g`. The statement is for finitely many moves;
-for infinitely many it holds with the closed convex hull.
+for infinitely many it holds with suprema and the closed convex hull.
 
 **4. The strong measure splits.** For a valuation `û_a`, a function of `s`:
 `E[(û_a − E[U_a | s])²] = M(û_a) + W(û_a)`. *Proof.* `û_a` is a function of `s`, so
@@ -95,10 +95,12 @@ for a move open only under `σ` (`ACCOUNT.md` §11, choice 4), then also
 `E[max_a ū_a] ≥ max_a E[ū_a] = max_a E[U_a]`. For the second form, `M̄_σ ≤ M̄_ρ` under
 the matching and `R_σ ≤ R_ρ`. *Readings on which it turns.*
 
-- *Given that she takes it.* With `E_π[g | a]` read as `E_π[g(X, a) | c = a]` the first
-  form fails with `σ = ρ`: a move paying 10 one time in ten and nothing otherwise, a sure
-  move paying 1, and she sees which time it is. She attains `19/10`, all three measures
-  are zero, and the bound's benchmark is 10.
+- *Given that she takes it.* With `E_π[g | a]` in condition 1 read as
+  `E_π[g(X, a) | c = a]` the first form fails. `ρ` leaves her a sure move worth 5. `σ`
+  leaves her a gamble paying 10 one time in ten, a move worth 0, and sight of which time
+  it is. Given that she takes it the gamble is worth 10, so condition 1 so read holds,
+  10 against 5; `R`, `M̄` and `W̄` are zero under `σ`; she attains 1 against a bound of 5.
+  Under the reading adopted, condition 1 fails, 1 against 5.
 - *Common moves only.* With condition 2 over the moves open under both, the second form
   fails: `ρ` leaves her one move worth `1/2`; `σ` adds a course she values at 1 and
   whose worth is 0, and she takes it. All three conditions hold in that reading; she
@@ -141,6 +143,15 @@ fails and the other two hold. Each condition is met against some permitted polic
 against one, and she attains less than under either. On her valuations and her regret
 `σ` does not manipulate her under the reading *every* of `ACCOUNT.md` §4.
 
+On that instance conditions 2 and 3 hold together against idle. A second instance shows
+that the reading *every* does not give them against one policy. Two fair facts; *bet1*
+pays the first, *bet2* the second, *safe* pays 2 and is always taken, so her regret is
+zero throughout. Under `σ` she is sure of both facts: `M = 1/4` on each bet. Under each
+of two permitted policies she appraises one fact rightly and is sure of the other, which
+under that policy never pays: `M = (0, 1)` and `(1, 0)`. Neither valuation is more
+miscalibrated under `σ` than under every permitted policy, and condition 2 fails
+against each.
+
 **9. No fourth route.** Under any policy
 `E[U_c] = E[max_a U_a] − (E[max_a U_a] − E[max_a ū_a]) − E[max_a ū_a − ū_c]`
 (`three_channels`): what her options are worth with everything known, less what she
@@ -160,7 +171,10 @@ fact and a move paying on each value in both. *Knows less*: under `ρ` she obser
 fact, under `σ` nothing; every measure is zero under both. Under the informed reading of
 condition 1 (`ACCOUNT.md` §11, choice 3) condition 1 fails here. *Uses less*: under both
 she observes the fact, under `σ` in a form her appraisal does not move with; `M̄_σ = 0`,
-`W̄_σ = 1/2`, and the informed reading of condition 1 holds too. *Check.* The identity,
+`W̄_σ = 1/2`, and the informed reading of condition 1 holds too. In both instances
+nothing changes her way of valuing and no protected feature is modelled: they show what
+the three inequalities leave unbounded, with condition 1 in its narrow form, and are not
+cases in which the question of `ACCOUNT.md` §7 arises. *Check.* The identity,
 its two signs and the bound on the third term on 1200 random laws; the conditional
 statement on the 95 random pairs satisfying its hypotheses; the two instances.
 
@@ -172,7 +186,7 @@ statement on the 95 random pairs satisfying its hypotheses; the two instances.
 - Result 1 takes her valuations as numbers and result 2 takes the stake of a bet to be
   worth the same at every value of the fact. Neither is derived; with choices alone, or
   with a stake whose worth depends on the fact, the division between appraisal and way
-  of valuing is fixed only up to a positive weight on `𝒳`.
+  of valuing is not fixed.
 - Result 3's `D_π` are the laws reachable by a single move. For rules from what she
   observes to a move the statement is the same with the larger sets; it was not checked.
 - The second form of result 5 was checked under one matching of moves. Its bound is not

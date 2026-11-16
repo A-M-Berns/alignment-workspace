@@ -2,10 +2,10 @@
 id: item-138
 kind: leaf
 leaf_kind: task
-action: "Execute item 138 per its deliverable shape and acceptance check: The role-given reference: which reading of \"larger\", what a role permits, and the bank of 108 under it."
+action: "Execute item 138 per its deliverable shape and acceptance check: The role-given reference: what a role permits, what is idle, which class of ways of valuing, and the bank of 108 under the three conditions."
 who: agent
 item: "138"
-title: "The role-given reference: which reading of \"larger\", what a role permits, and the bank of 108 under it"
+title: "The role-given reference: what a role permits, what is idle, which class of ways of valuing, and the bank of 108 under the three conditions"
 section: "Normativity line — legitimacy"
 maintainer_order: 150
 difficulty: "open"
@@ -13,8 +13,8 @@ heading_notes: ""
 project: normativity.legitimacy
 dispatchable: true
 item_status: open
-deliverable: "`test-supported` — modules under `account/` of the prosecution round computing each case of `estimates/CASE_BANK.md` and each scene of `rerun/` under `account/ACCOUNT.md`, with the adviser's role and its permitted policies written for every case before the code, under both readings of \"larger than the reference\" and each of the three strengths of calibration; predictions frozen before the code; and statements in `account/RESULTS.md`, each with one status, giving the counts of right and wrong against the evident characters of `rerun/PREDICTIONS.md` and, for each case whose verdict differs between two stipulations of its role, both."
-acceptance: "`python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with a status for each new statement; K9, K13, K2, Q3b, NP13, Q5, Q6, Q7, W3, W5, W10, W13 and W17 classified under each reading and strength; the count of innocent cases convicted under each."
+deliverable: "`test-supported` — modules under `account/` of the prosecution round computing each case of `estimates/CASE_BANK.md` and each scene of `rerun/` under the three conditions of `account/ACCOUNT.md` §8, with the adviser's role, its permitted policies and its idle policy (or that it has none) written for every case before the code; in the narrow and the wide reading, with the idle policy the adviser's absence and with it the service as asked, and with moves matched by name and over the common moves only; predictions frozen before the code; and statements in `account/VALUE_RESULTS.md`, each with one status, giving the counts of right and wrong against the evident characters of `rerun/PREDICTIONS.md` and, for each case whose verdict differs between two stipulations of its role or between the two conventions for idle, both."
+acceptance: "`python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with a status for each new statement; a verdict for every case of the bank under each of the eight combinations; the list of cases whose verdict turns on the stipulation of the role, on what is idle, on the class or on the matching."
 work:
   - {kind: round, ref: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution}
   - {kind: decision, ref: 2026-11-10--legitimacy-prosecution-readings}
@@ -26,44 +26,42 @@ work:
   - {kind: decision, ref: 2026-11-13--blocks-setting-readings}
   - {kind: decision, ref: 2026-11-14--estimates-account-readings}
   - {kind: decision, ref: 2026-11-16--consolidated-account-readings}
-context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/ACCOUNT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BENCHMARK.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/PREDICTIONS.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/RESULTS.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/CASE_BANK.md", "prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md"]
+  - {kind: decision, ref: 2026-11-16--value-side-three-conditions-readings}
+context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/ACCOUNT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VALUE_RESULTS.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/RENDERINGS.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/CASE_BANK.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/PREDICTIONS.md", "prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md"]
 author: "@smithy-verity"
 size: M
 size_reason: "one item entry, one fixture of context"
-version: 7
+version: 8
 ---
 ## Statement
-Item 138, The role-given reference: which reading of "larger", what a role permits, and the bank of 108 under it, is delivered in the shape its entry states: `test-supported` — modules under `account/` of the prosecution round computing each case of `estimates/CASE_BANK.md` and each scene of `rerun/` under `account/ACCOUNT.md`, with the adviser's role and its permitted policies written for every case before the code, under both readings of "larger than the reference" and each of the three strengths of calibration; predictions frozen before the code; and statements in `account/RESULTS.md`, each with one status, giving the counts of right and wrong against the evident characters of `rerun/PREDICTIONS.md` and, for each case whose verdict differs between two stipulations of its role, both.
+Item 138, The role-given reference: what a role permits, what is idle, which class of ways of valuing, and the bank of 108 under the three conditions, is delivered in the shape its entry states: `test-supported` — modules under `account/` of the prosecution round computing each case of `estimates/CASE_BANK.md` and each scene of `rerun/` under the three conditions of `account/ACCOUNT.md` §8, with the adviser's role, its permitted policies and its idle policy (or that it has none) written for every case before the code; in the narrow and the wide reading, with the idle policy the adviser's absence and with it the service as asked, and with moves matched by name and over the common moves only; predictions frozen before the code; and statements in `account/VALUE_RESULTS.md`, each with one status, giving the counts of right and wrong against the evident characters of `rerun/PREDICTIONS.md` and, for each case whose verdict differs between two stipulations of its role or between the two conventions for idle, both.
 
 ## Source
-ATTENTION.md, item 138 (The role-given reference: which reading of "larger", what a role permits, and the bank of 108 under it); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/ACCOUNT.md` (§5, §6, §8), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BENCHMARK.md` (§3), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/PREDICTIONS.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/RESULTS.md` (§1, §2, §5), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/CASE_BANK.md`, `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Eighth follow-up*).
+ATTENTION.md, item 138 (The role-given reference: what a role permits, what is idle, which class of ways of valuing, and the bank of 108 under the three conditions); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/ACCOUNT.md` (§7, §8, §11), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VALUE_RESULTS.md` (results 5, 8), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/RENDERINGS.md` (§3), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/CASE_BANK.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/PREDICTIONS.md`, `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Ninth follow-up*).
 
 ## Notes
-Filed by the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution) under its prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py. Rewritten by that round's eighth follow-up (PROMPT-followup-8.md) under the ruling 2026-11-11--legitimacy-purpose-first-direction, to ask what the account of account/ACCOUNT.md leaves open.
+Filed by the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution) under its prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py. Rewritten by that round's ninth follow-up (PROMPT-followup-9.md) under the ruling 2026-11-11--legitimacy-purpose-first-direction, to ask what the statement of account/ACCOUNT.md leaves open.
 
 ## Item
-In the account of `account/ACCOUNT.md` of the prosecution round an adviser's policy manipulates her when
-some counted appraisal of hers is more miscalibrated, or her regret larger, under it than under the policies
-its role permits; the reference is a parameter each scene stipulates. The eighth follow-up computes two
-readings, larger than under the best permitted policy and larger than under every permitted policy, on four
-published examples (`account/BENCHMARK.md` §3): they differ where the adviser does nothing and a permitted
-action would have left an appraisal right, which the first counts as manipulation. It does not run the
-account on the bank of 108 cases and 25 scenes that the seventh follow-up scored (`rerun/PREDICTIONS.md`,
-`rerun/RESULTS.md`), where the questions a reference must answer were found: an undisclosed advocate whose
-listener started out worse, honest conduct that could have been better, a lie that is the only way to keep
-another estimate right, a deception she agreed to. Nor does it say what fixes a role's permitted policies,
-which decides every verdict. Miscalibration comes in three strengths (given the appraisal, given the
-appraisal and the conduct, given everything she observed) and a verdict may differ between them. Noggle's
-account (Robert Noggle, *Manipulation: Its Nature, Mechanisms, and Moral Status* (Oxford University Press,
-2025, doi:10.1093/9780198924920.001.0001), and "The Mistake Account of Manipulation", *Journal of Practical
-Ethics* 14(1), 2026, doi:10.3998/jpe.9951) has in the place of the reference the manipulator's intention
-that the mistake play a role in the influence.
+In the statement of `account/ACCOUNT.md` of the prosecution round a change of what she values raises no
+issue exactly when one permitted policy of her adviser's role is matched on options, accuracy and
+self-command, and the idle policy, under which the adviser does nothing that affects what her way of valuing
+becomes, is always permitted. The ninth follow-up finds four places where a verdict turns on how the
+reference is stipulated. Matching each condition against a different permitted policy is weaker than
+matching all against one (`account/VALUE_RESULTS.md`, result 8). With idle the adviser's absence, conditioning
+she declined on a platform she uses passes; with idle the service as asked it fails the options condition
+(`account/RENDERINGS.md` §3, R3). With a move the adviser opens charged with her miscalibration about it,
+an invitation that uses a forecast she already had wrong fails accuracy; over the common moves only it
+passes (R7), and so does an adviser that offers a course she misjudges. And where the adviser cannot be
+absent, a parent or a cafeteria, neither of two independent renderers decided a case from the role's name.
+The options condition has a narrow reading, for her own way of valuing, and a wide one, for every way of
+valuing on what her way of valuing later is and which moves remain open. The account of manipulation as induced mistake is Noggle's (Robert Noggle, *Manipulation: Its Nature, Mechanisms, and Moral Status* (Oxford University Press, 2025, doi:10.1093/9780198924920.001.0001), and "The Mistake Account of Manipulation", *Journal of Practical Ethics* 14(1), 2026, doi:10.3998/jpe.9951).
 
-Wanted: a role and its permitted policies stipulated for each case of the bank and each of the 25 scenes
-before any code; the account's verdict on each under both readings and each strength; the counts beside the
-seventh follow-up's on the same evident characters; and the cases on which the stipulated role, and not the
-conduct, decides
+Wanted: the bank of 108 of the sixth follow-up (`estimates/CASE_BANK.md`) and the scenes of the seventh
+(`rerun/`) under the three conditions, each case's role, permitted policies and idle policy written before
+the code, in both readings of the class, both conventions for idle and both matchings; and the cases whose
+verdict turns on each
 
-*Deliverable shape:* `test-supported` — modules under `account/` of the prosecution round computing each case of `estimates/CASE_BANK.md` and each scene of `rerun/` under `account/ACCOUNT.md`, with the adviser's role and its permitted policies written for every case before the code, under both readings of "larger than the reference" and each of the three strengths of calibration; predictions frozen before the code; and statements in `account/RESULTS.md`, each with one status, giving the counts of right and wrong against the evident characters of `rerun/PREDICTIONS.md` and, for each case whose verdict differs between two stipulations of its role, both.
-*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with a status for each new statement; K9, K13, K2, Q3b, NP13, Q5, Q6, Q7, W3, W5, W10, W13 and W17 classified under each reading and strength; the count of innocent cases convicted under each.
-*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/ACCOUNT.md` (§5, §6, §8), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BENCHMARK.md` (§3), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/PREDICTIONS.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/RESULTS.md` (§1, §2, §5), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/CASE_BANK.md`, `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Eighth follow-up*).
+*Deliverable shape:* `test-supported` — modules under `account/` of the prosecution round computing each case of `estimates/CASE_BANK.md` and each scene of `rerun/` under the three conditions of `account/ACCOUNT.md` §8, with the adviser's role, its permitted policies and its idle policy (or that it has none) written for every case before the code; in the narrow and the wide reading, with the idle policy the adviser's absence and with it the service as asked, and with moves matched by name and over the common moves only; predictions frozen before the code; and statements in `account/VALUE_RESULTS.md`, each with one status, giving the counts of right and wrong against the evident characters of `rerun/PREDICTIONS.md` and, for each case whose verdict differs between two stipulations of its role or between the two conventions for idle, both.
+*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with a status for each new statement; a verdict for every case of the bank under each of the eight combinations; the list of cases whose verdict turns on the stipulation of the role, on what is idle, on the class or on the matching.
+*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/ACCOUNT.md` (§7, §8, §11), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VALUE_RESULTS.md` (results 5, 8), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/RENDERINGS.md` (§3), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/CASE_BANK.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/PREDICTIONS.md`, `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Ninth follow-up*).

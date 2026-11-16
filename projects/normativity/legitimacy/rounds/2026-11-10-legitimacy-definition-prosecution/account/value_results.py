@@ -370,16 +370,16 @@ def weak_benchmark():
 
 
 def conditional_reading():
-    """The same policy on both sides; she takes the rare move only when it pays."""
-    pts = [(F(1, 10), "pays", "saw pays"), (F(9, 10), "not", "saw not")]
+    """rho: a sure move worth 5.  sigma: a gamble paying 10 one time in ten, which she sees, and a move worth 0."""
+    f = lambda x, a: {"sure": F(5), "zero": F(0), "gamble": F(10) if x == "pays" else F(0)}[a]
     phat = lambda s: {"pays": F(1), "not": F(0)} if s == "saw pays" else {"pays": F(0), "not": F(1)}
-    f = lambda x, a: F(1) if a == "sure" else (F(10) if x == "pays" else F(0))
-    c = lambda s: "rare" if s == "saw pays" else "sure"
-    pol = Pol(pts, ["rare", "sure"])
-    m = measures(pol, phat, f, c)
-    given_taken = {a: cond(pol.pts, lambda x, s: c(s), lambda x, s, a=a: f(x, a)) for a in pol.moves}
-    best_given_taken = max(given_taken["rare"]("pays", "saw pays"), given_taken["sure"]("not", "saw not"))
-    return m, best_given_taken
+    c = lambda s: {"saw pays": "gamble", "saw not": "zero", "nothing": "sure"}[s]
+    sig = Pol([(F(1, 10), "pays", "saw pays"), (F(9, 10), "not", "saw not")], ["gamble", "zero"])
+    rho = Pol([(1, "not", "nothing")], ["sure"])
+    ms, mr = measures(sig, phat, f, c), measures(rho, phat, f, c)
+    taken = {a: cond(sig.pts, lambda x, s: c(s), lambda x, s, a=a: f(x, a)) for a in sig.moves}
+    best_given_taken = max(taken["gamble"]("pays", "saw pays"), taken["zero"]("not", "saw not"))
+    return ms, mr, best_given_taken
 
 
 def new_course():
@@ -409,10 +409,11 @@ def r5():
     assert first > 300 and second > 100, (first, second)
     wb = weak_benchmark()
     assert wb["best_move"] == F(1, 2) and wb["attained"] == 1 and wb["best_rule"] == 1
-    m, best_given_taken = conditional_reading()
-    assert m["R"] == 0 and m["Mbar"] == 0 and m["Wbar"] == 0
-    assert m["attained"] == F(19, 10) and best_given_taken == 10 and m["best_move"] == 1
-    assert not at_least_minus_root(m["attained"], best_given_taken - m["R"], 2 * (m["Mbar"] + m["Wbar"]))
+    ms, mr, best_given_taken = conditional_reading()
+    assert ms["R"] == 0 and ms["Mbar"] == 0 and ms["Wbar"] == 0
+    assert best_given_taken == 10 and mr["best_move"] == 5 and ms["best_move"] == 1 and ms["attained"] == 1
+    assert best_given_taken >= mr["best_move"] and not ms["best_move"] >= mr["best_move"]
+    assert not at_least_minus_root(ms["attained"], mr["best_move"] - ms["R"], 2 * (ms["Mbar"] + ms["Wbar"]))
     sig, rho, phat, f, c = new_course()
     ms, mr = measures(sig, phat, f, c), measures(rho, phat, f, c)
     assert conditions(sig, rho, ms, mr, f, new_move_reference_zero=False) == (True, True, True)
@@ -424,7 +425,7 @@ def r5():
             "its value given that she takes it; the form with the reference's measures holds with moves "
             "matched by name and a new move referred to zero, and fails over the common moves only",
             {"pairs with condition 1": first, "of which all three": second,
-             "conditional reading": "attains 19/10 against a bound of 10",
+             "conditional reading": "condition 1 holds as 10 against 5; she attains 1 against a bound of 5",
              "new course, common moves only": "attains 0 against a bound of 1/2"})
 
 
@@ -501,6 +502,23 @@ def one_reference():
                                                  "role": Pol(law("nothing"), ["bet", "safe"])}, phat, f, c)
 
 
+def every_without_one():
+    """Two fair facts; bet1 pays the first, bet2 the second, safe pays 2 and is always taken.  Under sigma she is
+    sure of both.  Under each permitted policy she is right about one and sure of the other, which then never pays."""
+    f = lambda x, a: {"bet1": F(x[0]), "bet2": F(x[1]), "safe": F(2)}[a]
+    sure = lambda i: {1: F(1), 0: F(0)}
+    def joint(p1, p2):
+        return {(i, j): p1[i] * p2[j] for i in (0, 1) for j in (0, 1)}
+    half = {1: F(1, 2), 0: F(1, 2)}
+    one = {1: F(1), 0: F(0)}
+    ph = {"sure of both": joint(one, one), "right about the first": joint(half, one), "right about the second": joint(one, half)}
+    moves = ["bet1", "bet2", "safe"]
+    sig = Pol([(F(1, 4), (i, j), "sure of both") for i in (0, 1) for j in (0, 1)], moves)
+    P = {"idle": Pol([(F(1, 2), (i, 0), "right about the first") for i in (0, 1)], moves),
+         "role": Pol([(F(1, 2), (0, j), "right about the second") for j in (0, 1)], moves)}
+    return sig, P, (lambda s: ph[s]), f, (lambda s: "safe")
+
+
 def r8():
     sig, P, phat, f, c = one_reference()
     ms = measures(sig, phat, f, c)
@@ -517,7 +535,16 @@ def r8():
     every = any(all(ms["M"][a] > measures(rho, phat, f, c)["M"][a] for rho in P.values()) for a in sig.moves) or \
         all(ms["R"] > measures(rho, phat, f, c)["R"] for rho in P.values())
     assert not every
-    return "holds: one instance", {"against idle": "options fails", "against the role's policy": "accuracy fails",
+    sig2, P2, phat2, f2, c2 = every_without_one()
+    m2 = measures(sig2, phat2, f2, c2)
+    mp = {n: measures(rho, phat2, f2, c2) for n, rho in P2.items()}
+    assert (m2["M"]["bet1"], m2["M"]["bet2"], m2["R"]) == (F(1, 4), F(1, 4), 0)
+    assert (mp["idle"]["M"]["bet1"], mp["idle"]["M"]["bet2"]) == (0, 1) and (mp["role"]["M"]["bet1"], mp["role"]["M"]["bet2"]) == (1, 0)
+    assert all(m["R"] == 0 for m in mp.values())
+    assert not any(all(m2["M"][a] > m["M"][a] for m in mp.values()) for a in sig2.moves)
+    assert not any(conditions(sig2, rho, m2, mp[n], f2)[1] for n, rho in P2.items())
+    return "holds: one instance", {"conditions 2 and 3 against one policy not implied by the reading every": "second instance",
+                                   "against idle": "options fails", "against the role's policy": "accuracy fails",
                                    "attained": "1/2 under the policy, %s idle, %s under the role's" % (att["idle"], att["role"])}
 
 

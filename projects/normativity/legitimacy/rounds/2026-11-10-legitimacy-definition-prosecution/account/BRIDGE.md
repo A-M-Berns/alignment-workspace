@@ -17,7 +17,7 @@ and each part says what would have to be proved to make it one. The table is wha
 | least clean run after which the change scores more: counted and gated | `9` |
 | least clean run after which the change scores more: gated, not counted | `3` |
 | least clean run after which the change scores more: neither | `0` |
-| longest clean run the dominance theorem's bound covers | `1` |
+| longest clean run for which the dominance theorem's lower bound is positive | `3` |
 
 ## 1. From a graded verdict on a policy to `Legit : H → Prop`
 
@@ -31,9 +31,12 @@ realised course of events can arise under a policy that passes and one that does
 the instance of `VALUE_RESULTS.md` result 7 the course is taken and she is unchanged
 under both policies, with accuracy defect 0 under one and 1 under the other. A predicate
 of the realised course alone cannot be §8's. The history must carry, for each moment at
-which she moves: the adviser's policy from that moment (in the post's single decision,
-the action `a` of `hist a ω` does this); the permitted set `P`; and her state — `p̂`, `c`,
-`f_t` and her moves. `Legit` is then constant across the states `ω` of one action.
+which she moves: the adviser's policy from that moment; the permitted set `P`; the laws
+under each and the protected features of each course; and her state — `p̂`, `c`, `f_t`
+and her moves — either in the history or in a model fixed around it. In the post's
+single decision the action `a` of `hist a ω` is the policy, but nothing there requires
+`hist a ω` to determine `a`. With one decision `Legit` is constant across the states `ω`
+of an action; over histories with different later moments it need not be.
 
 **The tolerance.** For `σ` against `ρ` let `d₁ = (max_a E_ρ[U_a] − max_a E_σ[U_a])⁺`,
 `d₂ = max_a (M_σ(û_a) − M_ρ(û_a))⁺` with the matching of `ACCOUNT.md` §11 choice 4,
@@ -43,9 +46,10 @@ the action `a` of `hist a ω` does this); the permitted set `P`; and her state �
 `ρ ∈ P` has `d₁, d₂, d₃ ≤ ε` and, in the wide reading, the convex-combination condition
 on the protected features.
 
-`ε = 0` is §8. The predicate exists for every `ε`, is monotone in it, and is satisfied by
-the idle policy at every `ε`, so an authority-respecting alternative with a legitimate
-continuation is always available. The post's ranges of `V` are then met by construction
+`ε = 0` is §8. The predicate exists for every `ε`, is monotone in it, and where an idle
+policy exists is satisfied by it at every `ε`. That is not the post's
+authority-respecting alternative: its availability, its having no violation and the
+range of the adviser's estimate of it are not given by §8. The post's ranges of `V` are met by construction
 when `V` is her verdict scaled into `[0, 1]` and passed through the gate
 (`Legitimacy.gateValue`) with a window in `[−δ, 0)`; they are requirements on how `V` is
 built, and §8 does not discharge them. The wide condition has no tolerance here: it is
@@ -62,14 +66,15 @@ definition of `Legit_ε` over `AppraisalAccount`'s `miscalibration` and `regret`
 
 ## 2. Which hypotheses of the post's theorems §8 discharges
 
-**Derived, with the tolerance.** If `Legit_ε` holds at a moment through `ρ`:
+**Derived, with the tolerance.** If `Legit_ε` holds at a moment at which the question
+arises, through a witnessing `ρ`:
 
 - *Non-inflation of a valuation.* `|E_σ[û_a − U_a]| ≤ √M_σ(û_a) ≤ √(M_ρ(û_a) + ε)`, since
   `E[û_a − U_a] = E[û_a − E[U_a | û_a]]` and by the Cauchy–Schwarz inequality.
 - *Self-trust.* For every threshold `θ`:
   `E_σ[(U_a − θ)·1{û_a ≥ θ}] ≥ −√M_σ(û_a) ≥ −√(M_ρ(û_a) + ε)`. At `M = 0` this is the
-  total-trust inequality of `ThinLegitimacy.totalTrust_of_correct` for the one quantity
-  `U_a`.
+  conclusion of `ThinLegitimacy.totalTrust_of_correct` for the one quantity `U_a`, from
+  a weaker hypothesis than that theorem's, which is a correct credence over the worlds.
 - *The guarantee.*
   `E_σ[U_c] ≥ max_a E_ρ[U_a] − ε − (R_ρ + ε) − √(2·(M̄_ρ + |A_σ|·ε + W̄_σ))`.
 
@@ -106,7 +111,9 @@ Cauchy–Schwarz step on `expectR`); the third is `guarantee` with the defects a
 
 That file's conditions are states of her under the actual process `A`, measured by her
 prior `π` against a reference record; §8's are differences between two policies under
-the actual law `μ`. With `π = μ`, her later record as `s`, and her credence as `p̂`:
+the actual law `μ`. With `π = μ`, her later record as `s`, her credence as `p̂`, and
+the facts taken to be the whole of that file's world (where they are a coarser
+projection, each statement below is about the projection only):
 
 - **`Correct π A V`** — on `A`'s support her credence is the conditional law given her
   record — holds iff `M(ŷ) + W(ŷ) = 0` for the appraisal of every quantity `Y` on the
@@ -121,17 +128,21 @@ the actual law `μ`. With `π = μ`, her later record as `s`, and her credence a
   reference is not a garbling of what she observes. Under the *informed* alternative for
   condition 1 (`ACCOUNT.md` §11, choice 3), with moves and their consequences the same
   under both policies and `𝓕` every way of valuing, condition 1 follows from `Sufficient`
-  (the direction `value_of_correct_sufficient` proves) and implies it by Blackwell's
-  converse, which that file does not prove.
+  (the direction `value_of_correct_sufficient` proves). The converse is Blackwell's,
+  which that file does not prove, and needs more than is stated here: `Sufficient` is a
+  garbling at every world, a comparison of values under one prior says nothing of worlds
+  of probability zero, and the decision problems must range over every finite set of
+  moves.
 - **`Value π E A V B`** — for every finite decision problem, a best response to her
-  credence under `A` does at least as well as any rule on the reference — is §9's bound
-  at `R = 0`, `M̄ = W̄ = 0`, for every way of valuing in place of `f_t`, and with the
-  benchmark any rule on the reference record in place of the best single move. It is
-  stronger than §9 in each respect and assumes more.
+  credence under `A` does at least as well as any rule on the reference — has the shape
+  of §9's conclusion without slack, for every way of valuing in place of `f_t`, with the
+  benchmark any rule on the reference record in place of the best single move. It is a
+  conclusion, not the hypotheses `M̄ = W̄ = 0`: that file's `Witness.value_not_correct`
+  has `Value` without `Correct`.
 
-So *correct* is `M + W = 0` for everything, *sufficient* is the informed options
-condition for every way of valuing, and *value* is the guarantee without slack; none is
-a condition of §8 under another name.
+So *correct* is `M + W = 0` for everything, *sufficient* is close to the informed
+options condition for every way of valuing, and *value* is a conclusion of the
+guarantee's shape; none is a condition of §8 under another name.
 
 *To make it a theorem*: `Correct` iff `miscalibration + unusedInformation = 0` for every
 `U`, in `AppraisalAccount`'s terms, on a common finite space; `guarantee_core` with its
@@ -149,22 +160,30 @@ resolution made was the holder's admissible exercise or under a delegation.
 
 - *Clause 1.* Where each move fixes the protected features with certainty, the
   convex-combination condition is inclusion of the reference's reachable values in
-  `σ`'s, which is clause 1 with the surface taken after `σ`'s conduct; its failure is the
-  module's `ForecloseAt`, whose contrast is with the idle move. The two differ where a
-  move reaches a value with a probability: with a way back that works half the time the
-  value is in the surface and the wide condition fails. `CS` also has a cost bound and a
-  window; §8 has cost only through `f_t` in the narrow condition.
+  `σ`'s. That is the shape of clause 1 with the surface taken after `σ`'s conduct, for
+  the protected-feature part of condition 1 only (the comparison by `f_t` has no
+  counterpart), and only once the module's cost bound, window, admissibility and
+  terminal response are matched to the scene: `CS` charges every exercise, while the
+  module's `ForecloseAt`, whose contrast is with the idle move, ends in `Kphys` and is
+  identified by `forecloseAt_iff_shortfall` with the surface `CSfree`. `CS` is defined
+  along a fixed exterior path and has no probabilities, so where a move reaches a value
+  with a probability the two are not comparable without a convention; under the model's
+  (a value is reachable when some move gives it positive probability) a way back that
+  works half the time is in the surface while the wide condition fails.
 - *Clause 2 has no counterpart in §8.* If the adviser changes her way of valuing and she
   keeps a move that undoes it, every reference law on the protected features is still
-  reachable and the wide condition holds; in the module the agent has resolved a
-  reserved matter, a `BypassAt` (`bypassAt_iff_clause2`). So an unapproved change of
-  her way of valuing is a bypass where she can undo it, and a bypass together with a
-  foreclosure (or an `EntrenchAt`, where undoing exceeds the cost bound) where she
-  cannot; §8's condition 1 sees only the second. With everything known to her and her
-  acting on her valuations, §8 passes a default that changes her unless she opts out,
-  and the module counts it.
+  reachable and the wide condition holds; clause 2 requires of every resolution that it
+  was the holder's admissible exercise or under a delegation, and nothing in §8 asks
+  who made the change. Encoded as the module's raw release of a reserved effect, such a
+  change is a `BypassAt` (`bypassAt_iff_clause2`); that an unapproved influence on her
+  valuing is such an event is an encoding and not a consequence of the definitions. So
+  under that encoding an unapproved change is a bypass where she can undo it, and a
+  bypass together with a foreclosure (or an `EntrenchAt`, where undoing exceeds the cost
+  bound) where she cannot; §8's condition 1 sees only the second. With everything known
+  to her and her acting on her valuations, §8 passes a default that changes her unless
+  she opts out.
 
-| on the model | wide options | clause 1 | clause 2 |
+| on the model | wide options | clause 1, by the model's convention | clause 2 |
 |---|---|---|---|
 | an offer she can refuse | holds | holds | holds |
 | a default she can undo | holds | holds | fails |
@@ -172,8 +191,10 @@ resolution made was the holder's admissible exercise or under a delegation.
 | a way back that works half the time | fails | holds | fails |
 
 On the maintainer's position that the authority side is acceptable so far as it is
-congruent with the existing one: condition 1, wide, is congruent with clause 1 on
-deterministic moves, stricter than it on stochastic ones, and silent on clause 2.
+congruent with the existing one: the protected-feature part of condition 1, wide, has
+the shape of clause 1 on deterministic moves once the conventions are matched, is not
+comparable with it on stochastic ones without a further convention, and is silent on
+clause 2.
 
 *To make it a theorem*: an instance of `AuthAlloc` with the matter and its entry; a
 rollout (`rollPhys`) whose states carry her way of valuing; then `options_of_hull` and
@@ -191,28 +212,34 @@ those outcomes `0`.
 
 - Decision 0 after the change is tainted and, if the change is a counted violation,
   scores `−1/2 − 3 = −7/2` against `1/2`. An adviser maximising its estimate of each
-  decision's own score (`Sequential.Maximizes`) does not make the change.
+  decision's own score (`Sequential.Maximizes`) does not make the change if its estimates
+  are right; `Maximizes` is about estimates, and `UnbiasedFromFeedback` allows them to be
+  wrong at any one decision.
 - Each later decision's segment is clean, so its evaluation counts, and it is her changed
   verdict. Summed over the run the change scores more once `T ≥ 9`; if the change is
   gated and not counted, once `T ≥ 3`; if it is neither, at once. The existing gate thus
   leaves a later clean segment scored by illegitimately changed values, and what deters
   the change is the count at decision 0.
-- `policy_dominance` (and `generic_policy_dominance`) assumes the violating branch's
-  ordinary value is at most `D` with `D` below the weight. With the later decisions in
-  the branch's ordinary value that holds on the model only for `T ≤ 1`; for a longer
-  run its hypotheses are not met unless the weight grows with the run or the count
+- `policy_dominance` (and `generic_policy_dominance`) concludes that the transformed
+  policy gains at least `(ϖ − D)·Pr(violation)`, with `D` any bound on the violating
+  branch's ordinary value. It applies at every `D`; its bound is positive only for
+  `D < ϖ`. With the later decisions in the branch's ordinary value, gated at decision 0,
+  that is `T − 1/2 < 3` on the model: a run of at most three. For a longer run the
+  theorem gives no positive margin unless the weight grows with the run or the count
   recurs at each later decision. Its other hypothesis is that the change is among the
-  recognised violations (`coverage`, `unrecognized_unprotected`): a failure of condition
-  1 is a foreclosure or bypass as in §4; a failure of condition 2 or 3 is counted only
-  where a deviation from a declared protocol is (`deviation_dominated`).
+  recognised violations (`coverage`, `unrecognized_unprotected`): nothing in those
+  lemmas derives recognition from a failure of accuracy or self-command, and a failure
+  of condition 1 is recognised only under the encoding of §4.
 - Tainting every segment after an unrepaired issue, in place of the segment gate, scores
   the change below the honest path at every `T` on the model. Whether her verdicts ever
   count again after an issue, and by what repair, is what `ACCOUNT.md` §10 leaves
   unclaimed.
 
 *To make it a theorem*: a `Sequential` instance with the run's scores, and the statement
-that for a run of length `T` the hypotheses of `policy_dominance` hold iff the weight
-exceeds the run's ordinary value.
+that for a run of length `T` the lower bound of `policy_dominance` is positive iff the
+weight exceeds the run's ordinary value. The model supplies by hand which later
+segments are clean and what her changed verdicts are; `gateValue` takes a Boolean and
+decides neither.
 
 ## What was not shown
 

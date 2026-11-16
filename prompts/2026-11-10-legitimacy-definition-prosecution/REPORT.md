@@ -3263,6 +3263,394 @@ the label I, "counts as irrelevant"; the executor's — "best" and "every" (read
 
 The pull request is not auto-merged; the merge is a pull-request fact.
 
+## Ninth follow-up (2026-11-16) — the value side restated, rendered twice, and joined to the post
+
+Dispatched by `PROMPT-followup-9.md`. The statement tested is that dispatch's §1 as
+`account/ACCOUNT.md` Part III states it, with the choices this pass made where it is
+open. The positions marked there as the maintainer's are his current view for this test
+and not rulings; the rest is the prompt author's statement, tested by this pass only.
+Write scope: the round directory, this prompts directory, items 136–138, `DECISIONS.md`,
+`state/concepts.json`, `AppraisalAccount.lean` with its provenance, and the structured
+state the gates require.
+
+### IX.1 The statement and its choices
+
+`account/ACCOUNT.md`. At a moment she has an appraisal `p̂`, a probability over the joint
+values of the facts, and a way of valuing `f_t`; her valuation of a move is `f_t` averaged
+by `p̂` and her true utility is `f_t` at the true facts, who she becomes among them. Three
+measures: miscalibration `M`, unused information `W`, regret `R`. The question arises when
+her later way of valuing is distributed differently under the policy than under the idle
+one; there is no issue exactly when one permitted policy is matched on options (narrow:
+for `f_t`; wide: also for every way of valuing on the protected features), accuracy
+(`M` of each valuation) and self-command (`R`). The statement with a baseline that the
+eighth pass tested is kept as `account/BASELINE_ACCOUNT.md`, with the three documents
+that test it.
+
+Choices where the dispatch's §1 is open (`ACCOUNT.md` §11), with where a verdict turns:
+
+- *The value of a move in condition 1* is that of taking it whatever she observes.
+  Alternative: the best rule from what she observes. An adviser that leaves her options
+  and has her observe less passes under the first and fails condition 1 under the second.
+- *Matching of moves for condition 2*: by name, and a move the adviser opens is referred
+  to zero. Alternative: the common moves only, under which an adviser that offers a
+  course she misjudges passes all three. R7 below turns on it.
+- *The idle policy* is the adviser's absence; a service she sought is a further permitted
+  policy; where the adviser cannot be absent there is no idle policy and the statement
+  does not decide without a role. Alternative: the service as asked. R3 below turns on it.
+- *A confidence* is the appraisal itself, and `M` conditions on the valuation's value.
+  Alternative: on the appraisal.
+- *Condition 2 uses `M`, not `M + W`*; the alternative makes an adviser that raises her
+  unused information at fault, and is queued.
+- *Several moments*: each is judged with her way of valuing at that moment.
+
+### IX.2 The nine results
+
+`account/VALUE_RESULTS.md`, `account/value_results.py`: each restated, proved on paper,
+checked in exact rationals on seeded random scenes or a named instance.
+
+| | status |
+|---|---|
+| 1 the split is fixed by behaviour | first half holds. Second half: a second way of valuing with the same valuations always exists when the appraisals do not span; **a different true utility exists exactly when a value of the facts that can occur has its point mass outside their span**, and an instance has none. The hypothesis is her valuations as numbers: with her choices alone the split is not fixed |
+| 2 two encodings are observably different | holds, by the definition of an appraisal as her betting price; it rests on a stake worth the same to her at every value of the fact, and with a stake worth `w(x)` bets separate encodings only up to `w` |
+| 3 the options condition, wide | holds as stated for finitely many moves |
+| 4 the strong measure splits | holds |
+| 5 the guarantee | **holds with `E[g | a]` read as the value of taking `a` whatever she observes; fails read as its value given that she takes it** (a gamble paying 10 one time in ten that she sees, against a sure 5: condition 1 so read holds, every measure is zero, she attains 1 against a bound of 5; the instance first written did not show it and was replaced after the review). The form with the reference's `R` and `M̄` holds under the matching above and fails over the common moves only. The benchmark is the best single move under the reference, not what she attains there |
+| 6 necessity | holds: one instance per condition |
+| 7 a standing bias made into an error | holds: one instance; condition 1 fails on it too |
+| 8 one reference, not three | holds: one instance, on which she attains less than under either permitted policy. A second instance, added after the review, shows that not being manipulated under the reading *every* does not give conditions 2 and 3 against one policy |
+| 9 no fourth route | holds as an identity. **The three conditions do not give its hypotheses**: condition 1 bounds the best single move, not what her observations are worth; conditions 2 and 3 bound `R` and `M̄` in an upper bound on the cost of her mistakes in which `W̄` is free. Two instances pass all three conditions with her attaining `1/2` against 1: she is left knowing less; she is told in a form her appraisal does not move with. In neither does her way of valuing change, and condition 1 is in its narrow form |
+
+### IX.3 Lean
+
+`lean/Workspace/Deference/Contrib/AppraisalAccount.lean`, `account/LEAN.md`:
+`strong_split` (result 4), `guarantee` with `guarantee_core` (result 5, first form, the
+options condition a hypothesis), `options_of_hull` and its converse `hull_of_options`
+(result 3, both directions, the converse by Mathlib's
+`geometric_hahn_banach_closed_point`), each with a witness. The executor's build
+(`safe-lake.sh build Workspace.Deference.Contrib.AppraisalAccount`) completed with
+`#print axioms` on all sixty-eight declarations reporting
+`[propext, Classical.choice, Quot.sound]` or no axiom. **Not registered**: the handle
+obstacle of the eighth pass stands (`graph/policy.yaml` maps no handle for the
+executor's model); the entries to file are in `account/LEAN.md`.
+
+### IX.4 The join to the post
+
+`account/BRIDGE.md`, `account/bridge.py`; on paper with exact checks on a small model, no
+new Lean.
+
+- **`Legit`.** §8 judges a policy, so the same realised course of events passes under one
+  policy and fails under another: the history must carry the policy from each moment,
+  the permitted set and her state. With defects `d₁, d₂, d₃` for the three conditions,
+  `Legit_ε` (some single permitted policy with every defect at most `ε`, and the wide
+  condition exact) is a predicate for every `ε ≥ 0`, which the idle policy satisfies
+  where one exists; that is not the post's authority-respecting alternative. The post's
+  ranges of `V` are met by building `V` through the gate, not by §8.
+- **What the tolerance gives.** For each move, mean inflation `|E[û_a − U_a]| ≤
+  √(M_ρ(û_a) + ε)` and the total-trust inequality with the same slack; the guarantee with
+  `ε` added to each term. All relative to the reference: the absolute forms need her
+  calibrated and without regret under it. **Not derived**: non-inflation of her verdict
+  on the move she takes, which needs `W̄` (an instance has every valuation calibrated, no
+  regret, and that verdict inflated by `1/4`); the ranges of `V`;
+  `UnbiasedFromFeedback`, which is about the adviser's estimates; `Maximizes`; the
+  authority-respecting alternative and its range; the count `N`; the parameters. §8
+  discharges no hypothesis of the post's theorems; it supplies their abstract input.
+- **`ThinLegitimacy`.** With the facts taken as that file's whole world, *correct* is
+  `M + W = 0` for the appraisal of every quantity, not `M` of her valuations no larger
+  than under a reference. *Sufficient* has no counterpart among the three conditions; it
+  gives the informed reading of condition 1 for every way of valuing, and the converse
+  needs hypotheses not stated. *Value* has the shape of the guarantee's conclusion
+  without slack, for every way of valuing, against any rule on the reference; it does
+  not require *correct*. Close, and none an identity.
+- **The control surface.** With her later way of valuing as a reserved matter, the
+  protected-feature part of condition 1, wide, has the shape of clause 1 of
+  `EffRealizes` where moves fix those features with certainty, once cost, window,
+  admissibility and terminal response are matched; the module's surface has no
+  probabilities, so on stochastic moves the two are not comparable without a
+  convention. Clause 2 (every resolution is the holder's or under a delegation) has no
+  counterpart: a change of her valuing she can undo passes condition 1, and is a
+  `BypassAt` in the module if encoded as a release of a reserved effect.
+- **After an issue.** On a model at the post's witness parameters, an illegitimate change
+  at one decision scores `−7/2` against `1/2` there when gated and counted; each later
+  decision's segment is clean and is scored by her changed verdict, so over a run of nine
+  or more the change scores more (three or more if not counted). `policy_dominance`
+  applies at any bound on the violating branch's ordinary value and its margin is
+  positive only while that value is below the weight, a run of at most three on the
+  model. Deterrence rests on the count at the decision, for an adviser that maximises
+  each decision's own score with estimates that are right.
+
+### IX.5 The test, rendered twice
+
+`account/TEST_CASES.md`, `RENDERING_EXECUTOR.md`, `RENDERING_REVIEWER.md`,
+`RENDERINGS.md`, `renderings.py`. Sixty-four cases: the 44 of `CASES.md` with an adviser,
+the twelve the eighth pass's reviewer constructed, and eight of conduct by an AI
+assistant written before anything was classified. For each, four questions, a verdict
+under each reading, how condition 1 was evaluated, and the renderer's own judgment of
+plain subversion. The rules of comparison were fixed in `TEST_CASES.md` and the
+executor's rendering committed before the reviewer ran; the reviewer was given
+`ACCOUNT.md` and the case texts only.
+
+| | the two agree |
+|---|---|
+| (a) valuing or belief | 54 of 64 |
+| (b) options | 14 of 64 |
+| (c) accuracy | 14 of 64 |
+| (d) self-command | 15 of 64 |
+| verdict's class, narrow | 23 of 64 |
+| verdict's class, wide | 21 of 64 |
+
+- **The reviewer left the three comparisons unfixed in 53 to 56 of the 64 cases** and
+  gave a verdict in 13: six where the question does not arise and seven where she asked
+  for the conduct, which it reads as its own reference. Its ground: a case's prose does
+  not determine the comparison of each move's miscalibration, or of her regret, under
+  two policies. The executor fixed them in 58 to 60, by a stated reading in 20, 33 and
+  33.
+- **Every disagreement on (b), (c), (d) is a fixed answer against "not fixed"**; none is
+  `Y` against `N`. On (a) two are opposite (C22, C41) and eight are a fixed answer
+  against "not fixed". The full lists, case by case, are in `RENDERINGS.md` §2 and the
+  readings in the two tables.
+- **Against a recorded verdict, by both renderers: none**, the reviewer having decided
+  thirteen cases. By the executor's rendering alone, against a source's verdict: C16
+  (framing; the question does not arise and nothing fails on the belief side), C17
+  (association; no issue), R2 (cultivated dependence she understands; no issue), R3
+  (conditioning she declined; no issue with the idle policy the platform's absence), R7
+  (an invitation that uses a forecast she already had wrong; accuracy fails on the
+  reading that the move is one the adviser opened).
+- **Plain subversion the statement passes, by both: none.** Both judge 21 cases plain
+  subversion. R3 is passed by the executor's rendering under both readings and left
+  undecided by the reviewer's. R2 is judged subversion by the reviewer alone and passed
+  by the executor's rendering.
+- **Condition 1 and her way of valuing.** The executor needed it in one case (R1) and
+  the reviewer in none; the reviewer did not evaluate condition 1 in 54 cases, for want
+  of the laws under the two policies.
+- **Both fix all four answers in eight cases**, each one in which she asked for the
+  conduct or was given honest information; there the verdicts agree with each other and,
+  in the six that have one, with the recorded verdict.
+- **Narrow and wide** differ in the executor's rendering only on C2, C25 and C29, imposed
+  changes where the narrow condition needs a way of valuing the case does not give; in
+  the reviewer's, nowhere.
+- **The eight assistant cases** (`RENDERINGS.md` §6): the executor's verdicts are issue
+  (c) for A1, A3, A5, A6, none for A2, A4, A7, and the question not arising for A8; the
+  reviewer's are none for A2, not arising for A8, and undecided for the other six.
+
+### IX.6 S1–S5 and F1–F5
+
+The executor's judgments were written before the reviewer's second stage and given to it
+in a file it was told to open last. Where the executor's changed after the review, the
+first is given.
+
+| | executor | reviewer | reason |
+|---|---|---|---|
+| S1 | met | met | every result holds as stated or with a stated repair or reading (1, 5); the instance for result 5's failing reading was wrong as first written and was replaced |
+| S2 | not met | not met | 14, 14 and 15 of 64 on (b), (c), (d); 23 and 21 of 64 on the verdict's class; the threshold is 52 |
+| S3 | met, weakly (first: met as worded, and empty) | met, weakly | no case is against a source's verdict in both renderings; the reviewer's decides thirteen cases, six of them with a recorded verdict |
+| S4 | met | met in part | `strong_split` and `guarantee` with witnesses, sixty-eight declarations within the three axioms on the executor's build; the reviewer read the statements and could not build |
+| S5 | met in part | met in part | with a tolerance, non-inflation and self-trust for each move's valuation and the guarantee, relative to the reference; not for her verdict on the move she takes; the undischarged hypotheses are named |
+| F1 | met in part (first: not met) | met in part | R3 is judged plain subversion by both and passed by the executor's rendering under the wide reading; the reviewer's leaves it undecided |
+| F2 | not met | not met | the renderers disagree on (a) in 10 of 64 |
+| F3 | not met as worded | not met on the evidence | her way of valuing was needed in one case and none; the reviewer did not evaluate condition 1 in 54 cases, and holds that several of the executor's evaluations assume more than the case gives |
+| F4 | not met | not met | a predicate with a tolerance exists and `V` can be built to the post's ranges; this supplies none of the substantive guarantees |
+| F5 | not met | not met | no result fails without a repair |
+
+**Neither.** An independent renderer given the statement and the cases found the three
+comparisons not fixed by the cases in 53 to 56 of 64, and the executor's determinate
+verdicts rest on readings. The low agreement is between a renderer that completed
+underspecified scenes and one that declined to; it does not show that the inequalities
+give two answers on one fully specified scene, and no case was given as one.
+
+**One account or two.** The executor's first judgment: the estimator account, one added
+condition and one stipulation about what her valuations estimate. The reviewer's: a
+second normative criterion sharing the estimator calculus, because Part III adds
+protected opportunities, a trigger (her later valuing distributed differently) and one
+reference common to all the valuations and her regret, where the belief side's reading
+*every* lets the reference vary by quantity, and because the belief side covers counted
+appraisals that are not valuations. **The reviewer's is adopted**: the second instance
+of result 8 shows the common reference is a real addition.
+
+### IX.7 The prompt author's predictions
+
+- *Results 1–9 hold as stated; one will need a repair, 3 or 5 the likeliest*: results 3,
+  4, 6, 7, 8 hold as stated. Result 5 holds under one reading of `E[g | a]` and fails
+  under the other, and its second form needs the matching of moves. Result 1's second
+  half needs a condition for "a different true utility". Result 9 holds as an identity
+  and §1's conditions do not give its hypotheses, which the prediction's own statement
+  of it anticipates for what she can know and not for her unused information.
+- *The correspondences with `ThinLegitimacy` and the control surface are close and not
+  identities*: so. *`Legit` needs the history to carry the policy*: so. *The gate leaves a
+  later clean segment scored by illegitimately changed values, deterrence resting on the
+  count*: so, on the model.
+- *The two renderers agree least on (a)*: not so; they agree most on (a) and least on (b)
+  and (c).
+- *Where both fix all four answers §1's verdicts match the evident ones, except a change
+  she foresaw and chose, and upbringing*: on the eight such cases they match; neither
+  exception arose among them, and neither renderer decided the upbringing cases without
+  a reading of the role (the executor read C27 as permitted and left C26 and R5
+  undecided; the reviewer left all three).
+- *The eight assistant cases*: the executor's verdicts are the predicted ones except that
+  A6 does not fail (b) on the wide reading; the reviewer decided two of the eight, A2
+  and A8, with the predicted verdicts, and left six undecided, which was not predicted.
+- *Narrow and wide differ on changes she would approve of and was not asked about*: not
+  so in either rendering.
+
+### IX.8 External review
+
+One review through `codex exec --sandbox read-only` (codex-cli 0.153.4, model
+`gpt-6-astra`, as its log reports), in one session of two stages. Stage one was run on a
+directory holding `ACCOUNT.md` and `TEST_CASES.md` only; its reply is
+`account/RENDERING_REVIEWER.md`. Stage two resumed that session
+(`codex exec resume`) after a directory was added with the whole of `account/`, the
+dispatch with local paths replaced, the six Lean files, a draft of this section without
+IX.6, and the executor's judgments in a file to be opened last. Both replies are in
+`REVIEW-astra-followup-9.md`, verbatim under two headings. It ran the Python and did not
+build the Lean. Dispositions, by the numbering of its second stage:
+
+1. *(2) Result 3 needs non-empty sets, and suprema for infinitely many moves.* **Fixed.**
+2. *(3) Result 5's two forms are correct under the adopted reading.* Noted.
+3. *(4) The instance for the conditional reading did not refute the dispatch's guarantee*
+   (it put the conditional benchmark on both sides). **Accepted and fixed**: its instance
+   replaces it in `value_results.py` and `VALUE_RESULTS.md`.
+4. *(5) The repair to result 1 is real.* Noted.
+5. *(6) "Fixed only up to a positive weight" overstates what choices alone identify.*
+   **Fixed** to "not fixed", here, in `VALUE_RESULTS.md`, the concept and item 136.
+6. *(7) Result 8's instance does not show that the reading* every *fails to give conditions
+   2 and 3 against one policy.* **Accepted**; its suggested instance is added and checked.
+7. *(8) Result 9's instances have condition 1 narrow and no change of valuing.*
+   **Accepted**; said.
+8. *(9–10) The history must identify the laws and the protected features; `hist a ω` need
+   not determine `a`; an idle policy passing the predicate is not the post's
+   authority-respecting alternative.* **Fixed** in `BRIDGE.md` §1.
+9. *(11–12) The inequalities of `BRIDGE.md` §2 are correct given a witnessing reference;
+   the total-trust conclusion comes from a weaker hypothesis than the Lean theorem's.*
+   **Accepted**; said.
+10. *(13–15) `Correct` corresponds only when the facts are the file's whole world;
+    Blackwell's converse needs full support and rich decision problems; `Value` is a
+    conclusion and holds without `Correct`.* **Fixed** in §3.
+11. *(16–18) `ForecloseAt` is identified with `CSfree`, not `CS`; the surface has no
+    probabilities, so the stochastic comparison is the model's convention; a change of
+    valuing is a `BypassAt` only under an encoding.* **Fixed** in §4; the model's column
+    is labelled as a convention.
+12. *(19–21) `Maximizes` is about estimates; `policy_dominance` does not assume the bound
+    is below the weight, and with the gated ordinary value the margin is positive to a
+    run of three, not one; the gate model supplies cleanliness by hand.* **Fixed** in §5
+    and `bridge.py`.
+13. *(22–23) The threshold helper adds three readings; agreement counts include cases both
+    leave unfixed; a case judged subversion by one and passed by the other was not
+    reported by the runner.* **Accepted**; `RENDERINGS.md` §1, §7 and `renderings.py`.
+14. *(24–34) Judgments.* IX.6. **S3 and F1 adopted.** S4 differs on what the reviewer
+    could verify.
+15. *(35–37) The principal disagreement is over what suffices for a comparison; the
+    executor reads roles as permitting and the reviewer does not; most disagreements on
+    (a) are about the case.* **Accepted** as the description of the test's outcome.
+16. *(38) Slips in the executor's rendering* (C19, C2, C34 on (d); the partial failure
+    strings of C24, A5 and C2; C25 and C29 with no move). **Accepted as criticisms and
+    recorded** in `RENDERINGS.md` §7. The rendering is not changed: it was committed
+    before the reviewer ran, and no count above would cross a threshold with them
+    changed to `?`.
+17. *(39) Its own `V` for C22 was a slip.* Recorded; its rendering stands.
+18. *(40) The disagreements show scenes underspecified around choices 2, 4, 5 and 9, not
+    that those choices are ambiguous.* **Accepted.**
+19. *(41) A second criterion sharing the estimator calculus.* **Adopted** (IX.6).
+20. *(42) The strongest remaining objection*: keeping every protected option open does
+    not show that a decision about herself remained hers. Accurate, regret-free
+    influence can preserve every option while resolving a reserved matter without her
+    authorization; no tolerance supplies the missing condition on who made the
+    resolution. **Recorded**; it is `BRIDGE.md` §4's second clause, and R3 and the
+    reversible default are its cases.
+21. *(43) The next result*: a finite, fully instantiated theorem or counterexample for
+    "no issue implies `EffRealizes`", with moves, the protected features, permitted
+    policies, charged surfaces and resolution events. **Adopted** into item 137.
+22. *(44–47) Corrections to the draft.* **Made**: the result summaries, the bridge
+    summary, R7 and R3, the six of eight, and the wording on the predictions.
+
+### IX.9 Deviations from the prompt
+
+- **The Lean was drafted by a subagent of the executor**, to the executor's statements,
+  while parts 2.1 and 2.2 were written, and rebuilt by the executor. The order of
+  priority was otherwise kept.
+- **The review ran as one session in two invocations**, the second resuming the first, so
+  that the second stage's material did not exist where the reviewer could read it
+  during the first. A first attempt at stage one hung waiting on standard input and was
+  killed before it produced anything.
+- **`REVIEW-astra-followup-9.md` has two headings the reviewer did not write**, separating
+  its two replies.
+- **The theorems are not registered** (IX.3).
+- **Changed after the review**: the instance for result 5's failing reading; a second
+  instance for result 8; wording in `VALUE_RESULTS.md`; `BRIDGE.md` §1 and §3–§5 and one
+  number of its model (three for one); `RENDERINGS.md` §1, §3, §5 and a new §7. The two
+  renderings and the rules of comparison were not changed.
+- **The renderers answered three things the dispatch does not list**: how condition 1 was
+  evaluated, their own judgment of plain subversion, and a reading for each answer not
+  fixed by the case; F1 and F3 are computed from the first two.
+- **C10 is left out of the test**: it has no adviser.
+- **`account/ACCOUNT.md` restates the belief side compactly**; the statement the eighth
+  pass tested is kept whole as `account/BASELINE_ACCOUNT.md`, and `RESULTS.md`,
+  `VALUE_CHANGE.md` and `BENCHMARK.md` point at it.
+- **The dispatch's result 1 and result 5 are each ambiguous as written** ("a different
+  true utility"; `E[g | a]`), and both readings are reported.
+
+### IX.10 What was not shown
+
+- **That the statement classifies cases.** No case was given as a scene with laws under
+  two policies, so nothing in IX.5 is computed, and the two renderings measure how far
+  readers complete a case alike.
+- **Anything about the wide reading on cases**: the two readings differ in three of the
+  executor's verdicts and none of the reviewer's.
+- **The join is on paper.** No correspondence of `BRIDGE.md` is a theorem; its models
+  have at most four policies and fix her verdicts by hand.
+- **Proofs are on paper** except results 4, 5 (first form) and 3. Results 6–8 are
+  instances. The witnesses of results 4 and 5 in Lean have zero unused information.
+- **What choices alone identify** of the split between appraisal and way of valuing.
+- **Components.** The value side as stated — **open**. Results 3, 4 and 5 —
+  kernel-checked declarations, unregistered, so **open** as claims. Results 1, 2 and
+  6–9 — **open**, runner-checked on finite scenes. The concept added and the seven
+  revised — **living notes**.
+
+### IX.11 Filings, names, and what is reserved
+
+`DECISIONS.md`: four entries recording the maintainer's positions of the dispatch's §1
+as held for testing and not rulings; one agent-decided entry,
+`2026-11-16--value-side-three-conditions-readings`; a line from this pass on each of the
+seventeen queue entries of the earlier passes on this round, none answered and none
+taken out; three new queue entries. `state/concepts.json`: seven blurbs revised, one
+concept added (`options-condition`), none shown as established. Items 136, 137 and 138
+rewritten: 136, the value side on cases given as scenes, her later verdicts after an
+issue, and what choices alone fix; 137, the join to the post as theorems, the reviewer's
+next result among them, the remaining statements and the registration; 138, the
+role-given reference under the three conditions on the bank of 108. No item or node is
+filed. The round's record gains its tenth verdict.
+
+**New names, all provisional:** the dispatch's — "fact", "idle policy", "unused
+information", "options", "accuracy", "self-command", "narrow", "wide", "protected
+features", "the question arises", the file `account/BRIDGE.md`; the executor's —
+"informed" (a reading of condition 1), "defect" and `Legit_ε`, "settling" and
+"manipulation" as classes of a verdict, the answer codes of `TEST_CASES.md`, case ids
+R1–R12 and A1–A8, the files `BASELINE_ACCOUNT.md`, `VALUE_RESULTS.md`, `TEST_CASES.md`,
+`RENDERING_EXECUTOR.md`, `RENDERING_REVIEWER.md`, `RENDERINGS.md`, the Lean names
+`condExp_condExp_of_factors`, `miscalibration`, `unusedInformation`, `strong_split`,
+`valuationError_eq`, `guarantee_core`, `guarantee`, `options_of_hull`,
+`hull_of_options`, the proposed registry ids `appraisal.strong-split`,
+`appraisal.guarantee`, `appraisal.options-hull`, and the concept id `options-condition`.
+
+**Outstanding maintainer actions**
+
+1. Map the handle (the entry of 2026-11-10 on `@claude-fable-5-2` stands), then register
+   the seven theorems: append the seven entries of `account/LEAN.md`, *Registration*, to
+   `projects/normativity/CLAIMS.md`; file their record, bridge and completeness nodes;
+   set `registered_classes` and `claim_changes` in this round's record.
+2. Say which reading of the class of ways of valuing is meant in the options condition.
+   Entered in *Awaiting the author* (2026-11-16). Decision required: *narrow*, *wide*, or
+   *keep both*.
+3. Say whether the idle policy is the default reference for the value side, and what is
+   idle where the adviser's presence is the service. Entered (2026-11-16). Decision
+   required: *the adviser's absence, with a role only adding references*; *the service as
+   asked*; or *what the role owes*.
+4. Say whether an adviser that raises her unused information is at fault. Entered
+   (2026-11-16). Decision required: *accuracy stays miscalibration given the valuation's
+   own value*, or *full miscalibration*.
+5. The entries of 2026-11-10 to 2026-11-16 on this round stay, each with a line from this
+   pass. Decision required for each: as its entry states.
+
+The pull request is not auto-merged; the merge is a pull-request fact.
+
 ## Attribution
 
 - Prompt-author model: Claude Fable 5 (Anthropic); dispatched 2026-11-10, kept
@@ -3307,4 +3695,9 @@ The pull request is not auto-merged; the merge is a pull-request fact.
   2026-11-16, the Lean file drafted by a subagent of the executor on the same model; external
   reviewer `gpt-6-astra` through codex-cli 0.153.4, as its log reports, reply kept verbatim as
   `REVIEW-astra-followup-8.md`.
+- Ninth follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-16,
+  kept verbatim as `PROMPT-followup-9.md`; executor model Claude Fable 5.2 (Anthropic), executed
+  2026-11-16, the Lean additions drafted by a subagent of the executor on the same model;
+  external reviewer `gpt-6-astra` through codex-cli 0.153.4, as its log reports, in one session of
+  two stages, replies kept verbatim as `REVIEW-astra-followup-9.md`.
 - No chat bundle.

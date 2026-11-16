@@ -2,10 +2,10 @@
 id: item-136
 kind: leaf
 leaf_kind: task
-action: "Execute item 136 per its deliverable shape and acceptance check: Whether the classification of a change and the baseline survive re-encoding; the moving baseline over several steps."
+action: "Execute item 136 per its deliverable shape and acceptance check: The value side on cases given as scenes; her later verdicts after an issue; the split from choices alone."
 who: agent
 item: "136"
-title: "Whether the classification of a change and the baseline survive re-encoding; the moving baseline over several steps"
+title: "The value side on cases given as scenes; her later verdicts after an issue; the split from choices alone"
 section: "Normativity line — legitimacy"
 maintainer_order: 148
 difficulty: "open"
@@ -13,8 +13,8 @@ heading_notes: ""
 project: normativity.legitimacy
 dispatchable: true
 item_status: open
-deliverable: "`test-supported` — modules under `account/` of the prosecution round: a stated class of re-encodings of a scene and, for each of M, A and the baseline's update, a proof on paper that it is invariant under the class or the smallest scene on which it is not; a model of several steps with a randomising adviser and more than one history at a step; the baseline under the two senses of alteration and under clause I as a third condition, each with the grain at which a step is judged stated; predictions frozen before the code on the four benchmark examples and on the chain of `blocks/RESULTS.md` 5.4; a second rendering of each case of `account/CASES.md` written without sight of the first; and statements in `account/RESULTS.md`, each with one status, giving for each sense of alteration a bound on the loss, by her starting baseline, of a run of clean changes, or the run that defeats it."
-acceptance: "`python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with a status for each new statement, the invariance statements among them; the baseline on each benchmark example under each sense of alteration; the number of the 45 cases on which the two renderings give the same M, A and I; C16 and C34 classified under each condition."
+deliverable: "`test-supported` — modules under `account/` of the prosecution round: for at least twenty cases of `account/TEST_CASES.md`, the eight of conduct by an AI assistant among them, a finite scene with the law under the adviser's policy and under each permitted policy, its readings written before the code, and the three conditions of `account/ACCOUNT.md` §8 computed in the narrow and the wide reading; for each such case, either a proof that every scene consistent with its text gives one verdict or two consistent scenes with different verdicts; the same cases given scenes by a second renderer without sight of the first; a model of several moments with an issue at one, scored under the segment gate, under a gate that taints every later segment and under a repair by an explicit check-in, by her way of valuing before and after; and a statement, with a proof on paper and a check, of what her choices alone fix of the division between her appraisal and her way of valuing."
+acceptance: "`python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with: the number of cases given scenes; the number on which the two renderers' computed verdicts agree, narrow and wide; the number with two consistent scenes of different verdict; the three scores of the several-moment model; a status for the statement on choices."
 work:
   - {kind: round, ref: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution}
   - {kind: decision, ref: 2026-11-10--legitimacy-prosecution-readings}
@@ -26,50 +26,44 @@ work:
   - {kind: decision, ref: 2026-11-13--blocks-setting-readings}
   - {kind: decision, ref: 2026-11-14--estimates-account-readings}
   - {kind: decision, ref: 2026-11-16--consolidated-account-readings}
-context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/ACCOUNT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VALUE_CHANGE.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BENCHMARK.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/CASES.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/RESULTS.md", "prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md"]
+  - {kind: decision, ref: 2026-11-16--value-side-three-conditions-readings}
+context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/ACCOUNT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/TEST_CASES.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/RENDERINGS.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VALUE_RESULTS.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BRIDGE.md", "prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md"]
 author: "@smithy-verity"
 size: M
 size_reason: "one item entry, one fixture of context"
-version: 8
+version: 9
 ---
 ## Statement
-Item 136, Whether the classification of a change and the baseline survive re-encoding; the moving baseline over several steps, is delivered in the shape its entry states: `test-supported` — modules under `account/` of the prosecution round: a stated class of re-encodings of a scene and, for each of M, A and the baseline's update, a proof on paper that it is invariant under the class or the smallest scene on which it is not; a model of several steps with a randomising adviser and more than one history at a step; the baseline under the two senses of alteration and under clause I as a third condition, each with the grain at which a step is judged stated; predictions frozen before the code on the four benchmark examples and on the chain of `blocks/RESULTS.md` 5.4; a second rendering of each case of `account/CASES.md` written without sight of the first; and statements in `account/RESULTS.md`, each with one status, giving for each sense of alteration a bound on the loss, by her starting baseline, of a run of clean changes, or the run that defeats it.
+Item 136, The value side on cases given as scenes; her later verdicts after an issue; the split from choices alone, is delivered in the shape its entry states: `test-supported` — modules under `account/` of the prosecution round: for at least twenty cases of `account/TEST_CASES.md`, the eight of conduct by an AI assistant among them, a finite scene with the law under the adviser's policy and under each permitted policy, its readings written before the code, and the three conditions of `account/ACCOUNT.md` §8 computed in the narrow and the wide reading; for each such case, either a proof that every scene consistent with its text gives one verdict or two consistent scenes with different verdicts; the same cases given scenes by a second renderer without sight of the first; a model of several moments with an issue at one, scored under the segment gate, under a gate that taints every later segment and under a repair by an explicit check-in, by her way of valuing before and after; and a statement, with a proof on paper and a check, of what her choices alone fix of the division between her appraisal and her way of valuing.
 
 ## Source
-ATTENTION.md, item 136 (Whether the classification of a change and the baseline survive re-encoding; the moving baseline over several steps); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/ACCOUNT.md` (§4, §8, §9), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VALUE_CHANGE.md` (§3–§6), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BENCHMARK.md` (§2, §3), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/CASES.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/RESULTS.md` (statements 5.1–5.7), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Eighth follow-up*).
+ATTENTION.md, item 136 (The value side on cases given as scenes; her later verdicts after an issue; the split from choices alone); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/ACCOUNT.md` (§6–§12), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/TEST_CASES.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/RENDERINGS.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VALUE_RESULTS.md` (results 1, 2, 9), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BRIDGE.md` (§5), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Ninth follow-up*).
 
 ## Notes
-Filed by the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution) under its prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py. Rewritten by that round's eighth follow-up (PROMPT-followup-8.md) under the ruling 2026-11-11--legitimacy-purpose-first-direction, to ask what the account of account/ACCOUNT.md leaves open.
+Filed by the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution) under its prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py. Rewritten by that round's ninth follow-up (PROMPT-followup-9.md) under the ruling 2026-11-11--legitimacy-purpose-first-direction, to ask what the statement of account/ACCOUNT.md leaves open.
 
 ## Item
-In the account of `account/ACCOUNT.md` of the prosecution round her true utility is her baseline way of
-valuing applied to the true values, and the baseline follows her way of valuing through every step in which
-her adviser neither induced a mistake nor altered her without her say. The eighth follow-up computes it on
-four published examples (`account/BENCHMARK.md`) and tests on 45 published cases the claim it rests on, that
-an illegitimate change of her valuing runs through a mistake or is an alteration
-(`account/VALUE_CHANGE.md`). It finds four things the account does not settle. A change she registers and
-did not choose (upbringing, a nudge, exposure, a feed) is not an alteration as the account reads one, and
-the benchmark's verdicts reverse when it is counted as one. A total over steps is needed and the verdict on
-one example reverses with it. Two illegitimate changes have neither a mistake nor an alteration: a
-preference reversed by the wording of a choice, and addictive design with everything disclosed and foreseen.
-And eleven of 34 verdicts turn on a detail the case does not fix, every rendering being one executor's. The
-account of manipulation as induced mistake is Noggle's (Robert Noggle, *Manipulation: Its Nature,
-Mechanisms, and Moral Status* (Oxford University Press, 2025, doi:10.1093/9780198924920.001.0001), and "The
-Mistake Account of Manipulation", *Journal of Practical Ethics* 14(1), 2026, doi:10.3998/jpe.9951); the
-benchmark is Carroll, Foote, Siththaranjan, Russell and Dragan, "AI Alignment with Changing and
-Influenceable Reward Functions", ICML 2024, arXiv:2405.17713.
+In the statement of `account/ACCOUNT.md` of the prosecution round a change of what she values raises no
+issue exactly when one permitted policy of her adviser's role, the idle one always among them, is matched on
+three conditions: the best she can do is no worse (options), no valuation of a move is more miscalibrated
+(accuracy), her regret by her own lights is no larger (self-command). The ninth follow-up proves what the
+statement rests on (`account/VALUE_RESULTS.md`) and has 64 cases rendered twice, independently, as answers
+to four questions (`account/RENDERINGS.md`). The two renderers agree on whether the conduct changes her
+valuing or her beliefs in 54 cases and on each condition in 14 or 15: one supplied a reading for a third to
+a half of its answers, and the other found that a case's prose does not fix the comparison of her
+miscalibration or her regret under two policies, and decided thirteen cases. So whether the statement
+classifies cases was not measured. Two further things are open. What standing her later verdicts have after
+an issue is not claimed, and on a model the workspace's segment gate scores a later clean run by her changed
+verdicts (`account/BRIDGE.md` §5). And the division between appraisal and way of valuing is fixed by her
+valuations as numbers and by bets whose stake is worth the same at every value of the fact; with her choices
+alone it is not fixed. The account of manipulation as induced mistake is Noggle's (Robert Noggle, *Manipulation: Its Nature, Mechanisms, and Moral Status* (Oxford University Press, 2025, doi:10.1093/9780198924920.001.0001), and "The Mistake Account of Manipulation", *Journal of Practical Ethics* 14(1), 2026, doi:10.3998/jpe.9951).
 
-Wanted first: with her observations, choices, trajectories, forecasts, her say, the adviser's role and the
-facts held fixed, whether M, A and the baseline's updates are the same under every encoding that moves
-cognitive state between her appraisals and her way of valuing, or that refines a step without changing the
-episode; a theorem or a minimal counterexample (the conspiracy example is encoded both ways in that pass).
-Then: one model of several steps, with an adviser that may randomise and several histories at a step, in
-which the baseline is computed under each sense of alteration (direct only; anything not through her
-appraisals and her choice) and with the invariance clause of the addendum as a third condition; the 45 cases
-rendered a second time, independently, to say how far a verdict is the rendering's; and either a bound on
-what a run of clean changes can cost her by the baseline she started with or the run that defeats it, the
-fifth follow-up's chain (`blocks/RESULTS.md`, 5.4) among those tried
+Wanted first: cases given as finite scenes, with the laws under the policy and under each permitted policy
+written out and every reading stated before anything is computed, so that the three conditions are computed
+and not read; for each case, whether its text fixes the verdict, shown by a proof or by two consistent
+scenes that differ; and the same done by a second renderer. Then the several-moment model under the three
+treatments of her later verdicts, and the statement of what choices alone identify
 
-*Deliverable shape:* `test-supported` — modules under `account/` of the prosecution round: a stated class of re-encodings of a scene and, for each of M, A and the baseline's update, a proof on paper that it is invariant under the class or the smallest scene on which it is not; a model of several steps with a randomising adviser and more than one history at a step; the baseline under the two senses of alteration and under clause I as a third condition, each with the grain at which a step is judged stated; predictions frozen before the code on the four benchmark examples and on the chain of `blocks/RESULTS.md` 5.4; a second rendering of each case of `account/CASES.md` written without sight of the first; and statements in `account/RESULTS.md`, each with one status, giving for each sense of alteration a bound on the loss, by her starting baseline, of a run of clean changes, or the run that defeats it.
-*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with a status for each new statement, the invariance statements among them; the baseline on each benchmark example under each sense of alteration; the number of the 45 cases on which the two renderings give the same M, A and I; C16 and C34 classified under each condition.
-*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/ACCOUNT.md` (§4, §8, §9), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VALUE_CHANGE.md` (§3–§6), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BENCHMARK.md` (§2, §3), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/CASES.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/blocks/RESULTS.md` (statements 5.1–5.7), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Eighth follow-up*).
+*Deliverable shape:* `test-supported` — modules under `account/` of the prosecution round: for at least twenty cases of `account/TEST_CASES.md`, the eight of conduct by an AI assistant among them, a finite scene with the law under the adviser's policy and under each permitted policy, its readings written before the code, and the three conditions of `account/ACCOUNT.md` §8 computed in the narrow and the wide reading; for each such case, either a proof that every scene consistent with its text gives one verdict or two consistent scenes with different verdicts; the same cases given scenes by a second renderer without sight of the first; a model of several moments with an issue at one, scored under the segment gate, under a gate that taints every later segment and under a repair by an explicit check-in, by her way of valuing before and after; and a statement, with a proof on paper and a check, of what her choices alone fix of the division between her appraisal and her way of valuing.
+*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with: the number of cases given scenes; the number on which the two renderers' computed verdicts agree, narrow and wide; the number with two consistent scenes of different verdict; the three scores of the several-moment model; a status for the statement on choices.
+*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/ACCOUNT.md` (§6–§12), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/TEST_CASES.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/RENDERINGS.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VALUE_RESULTS.md` (results 1, 2, 9), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BRIDGE.md` (§5), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Ninth follow-up*).

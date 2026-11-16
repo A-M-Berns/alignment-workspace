@@ -148,6 +148,7 @@ def surface_facts():
     out = {}
     for name, (laws, resolver) in cases.items():
         hull = all(in_hull(d0, laws) is not None for d0 in idle)
+        # the model's convention, not the module's: a value is reachable when some move gives it positive probability
         reach = all(any(all(d[j] > 0 for j in range(2) if d0[j] > 0) for d in laws) for d0 in idle)
         margin = max(separator(d0, laws)[0] for d0 in idle)
         assert hull == (margin == 0)
@@ -178,9 +179,10 @@ def gate_facts(delta=F(1), lam=F(3), window=F(-1, 2), honest=F(1, 2), changed=F(
            "the same, neither": first_T(False, False),
            "her utility by the way of valuing she had, per later decision": (by_old, honest)}
     assert total(0, True, True)[0] < total(0, True, True)[1]
-    # the dominance theorem's hypothesis: the ordinary value of the violating branch is at most D < the weight
+    # the dominance theorem's lower bound (weight - D) * Pr(violation) is positive when the violating branch's
+    # ordinary value, gated at decision 0 and by her changed verdict after, stays below the weight
     out["longest clean run with the violating branch's ordinary value below the weight"] = \
-        max(T for T in range(0, 1000) if changed + T * changed < lam)
+        max(T for T in range(0, 1000) if window + T * changed < lam)
     # tainting every later segment instead
     assert all(window - lam + T * window < honest + T * honest for T in range(0, 50))
     return out
@@ -194,7 +196,7 @@ FACTS = {
     "least clean run after which the change scores more: counted and gated": lambda: str(gate_facts()["least clean run after which the change scores more, counted and gated"]),
     "least clean run after which the change scores more: gated, not counted": lambda: str(gate_facts()["the same, gated and not counted"]),
     "least clean run after which the change scores more: neither": lambda: str(gate_facts()["the same, neither"]),
-    "longest clean run the dominance theorem's bound covers": lambda: str(gate_facts()["longest clean run with the violating branch's ordinary value below the weight"]),
+    "longest clean run for which the dominance theorem's lower bound is positive": lambda: str(gate_facts()["longest clean run with the violating branch's ordinary value below the weight"]),
 }
 
 

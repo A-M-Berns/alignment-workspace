@@ -6,8 +6,9 @@ THEOREMS.md, and the facts its two addenda cite), the one the fourth tested (sco
 and the checks behind its THEOREMS.md), the setting the fifth tested (blocks/): its bank and the checks behind its
 RESULTS.md, the statement the sixth tested (estimates/): its bank and the checks behind its
 RESULTS.md and NEGATIVE_RESULTS.md, then the rerun of that bank under the revised definition
-(rerun/): its predictions, its new scenes and the counts in its RESULTS.md, then the consolidated
-account (account/): the checks behind its RESULTS.md, its value-change test and its benchmark.
+(rerun/): its predictions, its new scenes and the counts in its RESULTS.md, then the
+account (account/): the checks behind its RESULTS.md and VALUE_RESULTS.md, its value-change test, its
+benchmark, the model behind its BRIDGE.md and the comparison of the two renderings of its test.
 
 Exit nonzero when a bank parses to nothing or holds a case twice, when an earlier case has
 no prediction in either later bank, when a computed verdict diverges from its prediction

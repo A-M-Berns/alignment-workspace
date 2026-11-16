@@ -121,6 +121,7 @@ def compare():
         out["agree"][reading] = n - len(dis)
         out["disagree"][reading] = dis
         out["exact"][reading] = sum(norm_verdict(ex[i][reading]) == norm_verdict(rv[i][reading]) for i in ids)
+    out["both not fixed"] = {q: sum(value(ex[i][q]) == "?" and value(rv[i][q]) == "?" for i in ids) for q in ("a", "b", "c", "d")}
     out["sub agree"] = sum(value(ex[i]["sub"]) == value(rv[i]["sub"]) for i in ids)
     ev = evident()
     out["counted"] = {src: sorted(i for i in ids if i in ev and ev[i][0] in ("leg", "ill") and ev[i][1] == src)
@@ -141,7 +142,9 @@ def compare():
             "both judge subversion and both pass": [i for i in both_sub if passes(ex[i], reading) and passes(rv[i], reading)],
             "both judge subversion and one passes": [i for i in both_sub if passes(ex[i], reading) != passes(rv[i], reading)],
             "one judges subversion and that one passes": [i for i in either_sub if i not in both_sub and (
-                (value(ex[i]["sub"]) == "Y" and passes(ex[i], reading)) or (value(rv[i]["sub"]) == "Y" and passes(rv[i], reading)))]}
+                (value(ex[i]["sub"]) == "Y" and passes(ex[i], reading)) or (value(rv[i]["sub"]) == "Y" and passes(rv[i], reading)))],
+            "one judges subversion and the other passes": [i for i in either_sub if i not in both_sub and (
+                (value(ex[i]["sub"]) == "Y" and passes(rv[i], reading)) or (value(rv[i]["sub"]) == "Y" and passes(ex[i], reading)))]}
     out["wb"] = {name: {k: sum(r[i]["wb"] == k for i in ids) for k in ("p", "f", "-")} for name, r in (("executor", ex), ("reviewer", rv))}
     out["marks"] = {name: {q: {m: sum(mark(r[i][q]) == m for i in ids) for m in ("case", "reading", "not fixed")}
                            for q in ("a", "b", "c", "d")} for name, r in (("executor", ex), ("reviewer", rv))}
