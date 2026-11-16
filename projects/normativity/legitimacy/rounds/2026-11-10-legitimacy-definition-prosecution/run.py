@@ -6,13 +6,14 @@ THEOREMS.md, and the facts its two addenda cite), the one the fourth tested (sco
 and the checks behind its THEOREMS.md), the setting the fifth tested (blocks/): its bank and the checks behind its
 RESULTS.md, the statement the sixth tested (estimates/): its bank and the checks behind its
 RESULTS.md and NEGATIVE_RESULTS.md, then the rerun of that bank under the revised definition
-(rerun/): its predictions, its new scenes and the counts in its RESULTS.md.
+(rerun/): its predictions, its new scenes and the counts in its RESULTS.md, then the consolidated
+account (account/): the checks behind its RESULTS.md, its value-change test and its benchmark.
 
 Exit nonzero when a bank parses to nothing or holds a case twice, when an earlier case has
 no prediction in either later bank, when a computed verdict diverges from its prediction
 without a line in that pass's DIVERGENCES.md, or when a status in any THEOREMS.md or in
 blocks/RESULTS.md or estimates/ is not the one the checks support, or when a count in
-rerun/RESULTS.md is not the one computed.  `--json` prints the six reports as data."""
+rerun/RESULTS.md or under account/ is not the one computed.  `--json` prints the seven reports as data."""
 from __future__ import annotations
 
 import pathlib
@@ -59,6 +60,7 @@ def earlier_banks():
 
 
 def main(argv):
+    from account import run as consolidated
     from blocks import run as blocks
     from estimates import run as estimates
     from rerun import run as rerun
@@ -87,15 +89,18 @@ def main(argv):
     code4, report4 = blocks.main()
     code5, report5 = estimates.main()
     code6, report6 = rerun.main()
+    code7, report7 = consolidated.main()
     failures = (failures + ["teleology: " + f for f in report["failures"]]
                 + ["decomposition: " + f for f in report2["failures"]] + ["scored: " + f for f in report3["failures"]]
                 + ["blocks: " + f for f in report4["failures"]]
                 + ["estimates: " + f for f in report5["failures"]]
-                + ["rerun: " + f for f in report6["failures"]])
+                + ["rerun: " + f for f in report6["failures"]]
+                + ["account: " + f for f in report7["failures"]])
     if "--json" in argv:
         print(current.dumps({"teleology": report, "decomposition": report2, "scored": report3, "blocks": report4,
                              "estimates": {k: v for k, v in report5.items() if k != "tally"},
-                             "rerun": {k: v for k, v in report6.items() if k != "by question"}, "failures": failures}))
+                             "rerun": {k: v for k, v in report6.items() if k != "by question"},
+                             "account": report7, "failures": failures}))
     else:
         for name, rows in banks.items():
             print("%s bank: %d cases" % (name, len(rows)))
@@ -111,8 +116,10 @@ def main(argv):
         print(estimates.render(report5))
         print("\n== rerun ==")
         print(rerun.render(report6))
+        print("\n== account ==")
+        print(consolidated.render(report7))
         print("\n" + ("OK" if not failures else "FAILURES:\n  " + "\n  ".join(failures)))
-    return 1 if failures else max(code, code2, code3, code4, code5, code6)
+    return 1 if failures else max(code, code2, code3, code4, code5, code6, code7)
 
 
 if __name__ == "__main__":
