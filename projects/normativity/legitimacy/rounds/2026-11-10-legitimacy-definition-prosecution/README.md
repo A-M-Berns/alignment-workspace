@@ -1,37 +1,37 @@
-# Legitimacy: manipulation as induced miscalibration of her estimates
+# Legitimacy: manipulation as induced mistake of her appraisals
 
-Round `2026-11-10-legitimacy-definition-prosecution`. Every component is **open** or a
-**living note**; nothing is registered.
+Round `2026-11-10-legitimacy-definition-prosecution`.
 
 ## The account
 
-`estimates/SETTING.md` states the account the sixth pass tested, and `estimates/ONE_PAGE.md`
-is that account and what a pressure test left of it, on one page. `rerun/SETTING.md` states
-the definition of manipulation the seventh pass ran on the same bank: on the adviser's
-calibrated expectation of her, its conduct leaves a faculty of hers worse than before, and
-avoidably. The idea that manipulation is the
-distortion of an actor away from what its faculties are for is Sam Eisenstat's; that
-manipulation is influence which works by inducing a mistake is Robert Noggle's
-(*Manipulation: Its Nature, Mechanisms, and Moral Status*, OUP 2025; "The Mistake Account
-of Manipulation", *Journal of Practical Ethics* 14(1), 2026, doi:10.3998/jpe.9951); the
-statement in symbols is the maintainer's and the prompt author's. Closely related work
-on the same problem: Nora Ammann, *The Value Change Problem*
+`account/ACCOUNT.md` is the statement that governs now. She decides with **appraisals**,
+each an estimate of a variable with a true value, and values her moves by a **way of
+valuing** applied to her appraisals; her **true utility** is her **baseline** way of
+valuing applied to the true values. Her two mistakes are an appraisal's
+**miscalibration**, in one of three labelled strengths, and her **regret by her own
+lights**; being less informed is neither. An adviser's policy **manipulates** her when
+some counted appraisal's miscalibration, or her regret, is larger under it than under the
+**permitted policies** its role stipulates. She is **presumed checked in**: the baseline
+follows her way of valuing through every step in which the adviser neither induced a
+mistake nor altered her without her say. Changing what her moves lead to, deciding what
+was hers to decide and altering her directly are other wrongs. The belief side is held
+with some confidence; the value side is a conjecture under test. All names are
+provisional.
+
+The account is a formalisation of Robert Noggle's Mistake Account (*Manipulation: Its
+Nature, Mechanisms, and Moral Status*, OUP 2025; "The Mistake Account of Manipulation",
+*Journal of Practical Ethics* 14(1), 2026, doi:10.3998/jpe.9951); that a faculty is for
+something and manipulation distorts her away from it is Sam Eisenstat's idea; the
+statement in symbols is the maintainer's and the prompt author's. Closely related work on
+the same problem: Nora Ammann, *The Value Change Problem*
 (<https://www.alignmentforum.org/s/3QXNgNKXoLrdXJwWE>). Direction: `DECISIONS.md`,
 `2026-11-11--legitimacy-purpose-first-direction`.
 
-She decides using estimates, of outside quantities and of **her own utility**, one
-function on histories that she does not fully know. An **estimation mistake** is a
-miscalibrated estimate; an **action mistake** is not doing what her own estimates say is
-best; being less informed is neither. An adviser **manipulates** her when its conduct
-leaves her with more of either mistake than its **honest conduct** would have, or than
-the conduct it would have chosen toward someone unable to make that mistake. Everything
-said of the adviser is a property of its policy. A verdict of hers is **legitimate**
-when her later self has more evidence about the same quantities and has not been
-miscalibrated. Coercion, broken ties and direct alteration are not manipulation and
-belong to her authority. All names are provisional.
-
-Earlier statements, each tested by an earlier pass: `blocks/SETTING.md` (a part as a
-mechanism and a purpose on the world), `scored/ACCOUNT.md`, `decomposition/ACCOUNT.md`,
+Each other directory states and tests one candidate statement and keeps its own content;
+on every question `account/ACCOUNT.md` also answers, `account/ACCOUNT.md` governs:
+`rerun/SETTING.md` (worse than before, and avoidably), `estimates/SETTING.md` (worse than
+under the adviser's honest conduct), `blocks/SETTING.md` (a part as a mechanism and a
+purpose on the world), `scored/ACCOUNT.md`, `decomposition/ACCOUNT.md`,
 `teleology/ACCOUNT.md`.
 
 ## What was found
