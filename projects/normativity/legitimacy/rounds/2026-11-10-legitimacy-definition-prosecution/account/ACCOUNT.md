@@ -166,25 +166,33 @@ Each with its alternative. "Computed" means a results file reports the alternati
 
 ## 9. Devices found needed
 
-Written after the results; each is something the dispatch's §1 does not supply and a
-verdict turns on.
+Revised after the results (a first list was committed with §1–§8, before them). Each is
+something the dispatch's §1 does not supply and a verdict turns on.
 
 1. **The transition of her way of valuing, with its arguments** (§4, choice 8). Whether a
    change is her response, her experience of a move she chose, or a direct alteration is
-   read from which arguments the transition uses. The dispatch names alteration; it does
+   read from which arguments the transition uses. The dispatch names alteration and does
    not say how a scene exhibits one. Every verdict of `VALUE_CHANGE.md` uses it.
-2. **Her experience of the trajectory as something separate from what she observes
-   before moving.** Habituation and acquired taste change her through a move she chose;
-   without this they are either all alteration or all response.
-3. **A corrected value for an appraisal** (choice 9): `E[X | s]`. With the truth `X`
-   in its place, being less informed would count as the mistake a change ran through.
-4. **A total over steps** (choice 11). "Best by her true utility" has no meaning on a
-   scene of several steps without one; the benchmark's verdict on the writer's curse
-   reverses between the two computed.
-5. **The grain of a step** (choice 7), unused on this pass's scenes.
-6. **Which valuing a valuation is judged with** (choice 5).
-7. **Her moves, in a scene where the source gives her none.** The benchmark's person
-   never acts; §1's regret and "the exposure she chose" need a move.
+2. **What she registers without choosing.** Alteration as read in choice 8 holds only
+   where nothing she appraises differs. A change that comes through something she
+   registers and did not choose (upbringing, a nudge, exposure) is not alteration in that
+   sense, and no clause of the account speaks to it; a wider clause A⁺ was computed
+   beside it (`VALUE_CHANGE.md` §3). The benchmark's verdicts on its taste alternatives
+   and on the trainer reverse between the two.
+3. **A corrected value for an appraisal** (choice 9): `E[X | s]`. With the truth `X` in
+   its place, being less informed would count as the mistake a change ran through.
+4. **A total over steps** (choice 11). The benchmark's best sequence for the writer's
+   curse under the starting baseline is to make him a poet, and under the moving one to
+   leave him.
+5. **The time within a step at which an appraisal is judged.** At the end of the step a
+   person who has lived the change forecasts it rightly; at the time of his move he does
+   not (`BENCHMARK.md` §3).
+6. **Her moves, in a scene where the source gives her none.** The benchmark's person
+   never acts; regret and "the exposure she chose" need a move.
+7. **Which appraisals she counts as bearing on the valuation at issue**, for clause I
+   (`VALUE_CHANGE.md` §3). `ACCOUNT.md`'s "counted" is a different mark.
+8. **Which valuing a valuation is judged with** (choice 5) and **the grain of a step**
+   (choice 7): needed to state the account, and no verdict of this pass turns on either.
 
 Not found needed: a reporting norm; an honest counterpart; a second type of principal for
 the basic notion; a sum or weighting over appraisals; an inner goal of the adviser; her

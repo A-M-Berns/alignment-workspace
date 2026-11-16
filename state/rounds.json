@@ -2274,15 +2274,27 @@
           "kind": "follow-up-7",
           "value": "MIXED — on the bank of 108 frozen by the sixth pass, scored on three questions (manipulation, covered, another wrong) against evident characters the executor recorded before the code, the revised definition is wrong on 5, 6 and 8 cases under the three candidates for her true utility (her starting values, her values at the end, her starting values as changed by learning alone), against 16 and 14 for the sixth pass's definition on the same table and 11 and 12 once two limits of its reporting are removed; a stricter table that asks taste-shaping to be manipulation and not merely alteration gives 5, 14 and 8. It repairs an undisclosed advocate, strategic silence and a policy that exploits everyone alike, records a surprise party, a magician and a bluff as covered manipulation, and does not convict the external review's four honest scenes. It is wrong on buried information and on a lie that is the only listed way to keep another estimate of hers right. Of twenty-five new scenes built against it, it is wrong on seven or eight: it convicts honest conduct that leaves her worse than before wherever the scene lists a better conduct that withholds nothing, acquits an undisclosed advocate whose listener started out worse, and by its restriction to what bears on a decision acquits a cruel lie about an idle matter. Ten banked verdicts change in variants that alter a detail the case does not fix, and three evident characters move the count. Verdicts do not move with units; they move when a quantity is re-expressed by a map that is not affine, and with the measure of being no less informed. No candidate for her true utility is right on every case of changed values, and the learning candidate's verdicts are fixed by its annotation in these renderings. Nothing registered; every component open or a living note.",
           "source": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/README.md"
+        },
+        {
+          "kind": "follow-up-8",
+          "value": "MIXED — the account is stated once (appraisals with a true value each, a way of valuing applied to them, a baseline that follows her through every step in which her adviser neither induced a mistake nor altered her, a reference given by the adviser's role) and its belief side and value side are tested apart. Of eleven worked results nine hold as stated; the bound on what her choice costs holds with her valuations' miscalibration taken given everything she observed and fails at the two weaker strengths, since a principal who ignores an informative observation has no regret and no such miscalibration and still loses; that an appraisal which responds to conduct can be miscalibrated fails as stated, because a variable's true value may depend on the conduct, and holds if the appraisal is not exactly right under both conducts; calibration at every step gives a vanishing mean inflation along a run only with her true utility fed back. The split of mean squared error, the three channels, that bound and the deferring identity are kernel-checked with witnesses and registered against item 137. The claim the value side rests on, that an illegitimate change of what she values runs through a mistake of hers or is an alteration, has on 34 counted published cases, under renderings the executor wrote, two illegitimate changes with neither (a preference reversed by framing; addictive design with everything disclosed and foreseen), two more that are another wrong (a preference that follows the removal of options), and one legitimate change with a mistake (a teacher's feigned enthusiasm); twelve of the 34 verdicts turn on a detail the case does not fix, and a conversion by a sincere mistaken argument counts as illegitimate. An invariance clause added by an addendum convicts framing and adaptation and also two innocent exposures, on an annotation of what she counts as irrelevant. On four examples of Carroll et al., reproduced against the paper's table except for two cells, the account extended by details the paper does not have leaves the conspiracy example's person alone, refuses clickbait, leaves the writer where he is and nudges the trainer's client, agreeing with none of the paper's eight objectives on all four; the verdicts reverse where a change is one of taste with no truth, with whether a change she registers and did not choose is an alteration, and on one example with how true utility is totalled over steps. The value side is a conjecture with counterexamples under the definitions as frozen; every component not registered is open or a living note.",
+          "source": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/README.md"
         }
       ],
       "depends_on": [
         "2026-08-17-counterfactual-legitimacy"
       ],
       "depends_on_source": "report",
-      "registered_classes": [],
+      "registered_classes": [
+        "lean-proved"
+      ],
       "prompt": "prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT.md",
-      "claim_changes": []
+      "claim_changes": [
+        "appraisal.mse-split",
+        "appraisal.three-channels",
+        "appraisal.cost-of-mistakes",
+        "appraisal.deferring"
+      ]
     }
   ]
 }

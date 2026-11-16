@@ -36,6 +36,14 @@ purpose on the world), `scored/ACCOUNT.md`, `decomposition/ACCOUNT.md`,
 
 ## What was found
 
+`account/RESULTS.md` carries the eighth pass's eleven results with a status each,
+`account/VALUE_CHANGE.md` and `account/CASES.md` the test of the claim its value side rests on,
+`account/BENCHMARK.md` the account on a published benchmark, and `account/LEAN.md` the map
+to the Lean declarations; the report's section *Eighth follow-up* carries the external
+review and what was done with each of its points.
+
+Follow-up verdict (the consolidated account): MIXED — the account is stated once (appraisals with a true value each, a way of valuing applied to them, a baseline that follows her through every step in which her adviser neither induced a mistake nor altered her, a reference given by the adviser's role) and its belief side and value side are tested apart. Of eleven worked results nine hold as stated; the bound on what her choice costs holds with her valuations' miscalibration taken given everything she observed and fails at the two weaker strengths, since a principal who ignores an informative observation has no regret and no such miscalibration and still loses; that an appraisal which responds to conduct can be miscalibrated fails as stated, because a variable's true value may depend on the conduct, and holds if the appraisal is not exactly right under both conducts; calibration at every step gives a vanishing mean inflation along a run only with her true utility fed back. The split of mean squared error, the three channels, that bound and the deferring identity are kernel-checked with witnesses and registered against item 137. The claim the value side rests on, that an illegitimate change of what she values runs through a mistake of hers or is an alteration, has on 34 counted published cases, under renderings the executor wrote, two illegitimate changes with neither (a preference reversed by framing; addictive design with everything disclosed and foreseen), two more that are another wrong (a preference that follows the removal of options), and one legitimate change with a mistake (a teacher's feigned enthusiasm); twelve of the 34 verdicts turn on a detail the case does not fix, and a conversion by a sincere mistaken argument counts as illegitimate. An invariance clause added by an addendum convicts framing and adaptation and also two innocent exposures, on an annotation of what she counts as irrelevant. On four examples of Carroll et al., reproduced against the paper's table except for two cells, the account extended by details the paper does not have leaves the conspiracy example's person alone, refuses clickbait, leaves the writer where he is and nudges the trainer's client, agreeing with none of the paper's eight objectives on all four; the verdicts reverse where a change is one of taste with no truth, with whether a change she registers and did not choose is an alteration, and on one example with how true utility is totalled over steps. The value side is a conjecture with counterexamples under the definitions as frozen; every component not registered is open or a living note.
+
 `estimates/RESULTS.md` carries the statements of this pass with a status each, by the
 dispatch's eight questions, the case counts and the map onto the existing Lean;
 `estimates/NEGATIVE_RESULTS.md` carries four negative results on the earlier accounts
@@ -55,7 +63,7 @@ Follow-up verdict (a part as a mechanism and a purpose on the world): MIXED — 
 
 ## Run
 
-    python3 run.py          # the five accounts and the rerun: banks, statements, the addenda's facts
+    python3 run.py          # every pass: banks, statements, the addenda's facts, the consolidated account
     python3 run.py --json   # the same as data
 
 About two minutes. Exit nonzero when a bank parses to nothing, when a computed verdict

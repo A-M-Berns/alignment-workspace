@@ -121,11 +121,12 @@ If `V_t = E[U_t | H_t]` for every `t`, then `D_t = V_t − U_t` is a martingale 
 sequence, so `E[(Σ_{t≤T} D_t)²] = Σ_{t≤T} E[D_t²] ≤ c²T`, hence
 `E[((1/T) Σ D_t)²] ≤ c²/T`, and by the Azuma–Hoeffding inequality
 `P(|(1/T) Σ_{t≤T} D_t| ≥ ε) ≤ 2 exp(−ε²T / (2c²))` (K. Azuma, "Weighted sums of certain
-dependent random variables", *Tôhoku Mathematical Journal* 19(3), 1967, 357–367;
-W. Hoeffding, "Probability inequalities for sums of bounded random variables", *Journal
-of the American Statistical Association* 58(301), 1963, 13–30, the bounded-difference
-form being stated there for martingales in its §2 remark; both cited from memory of the
-literature and not opened in this pass). The right side is summable in `T`, so by the
+dependent random variables", *Tôhoku Mathematical Journal* 19(3), 1967, 357–367,
+doi:10.2748/tmj/1178243286; W. Hoeffding, "Probability inequalities for sums of bounded
+random variables", *Journal of the American Statistical Association* 58(301), 1963,
+13–30, doi:10.1080/01621459.1963.10500830; both confirmed bibliographically against
+Crossref in this pass, their text not opened: the inequality is stated here from the
+standard literature). The right side is summable in `T`, so by the
 Borel–Cantelli lemma the mean tends to zero almost surely. The adviser's policy may
 depend on the past in any way: calibration is under the actual policy. *Check, as a
 bound.* A hidden bit drawn once; an adviser whose conduct tracks it with probability 2/3;

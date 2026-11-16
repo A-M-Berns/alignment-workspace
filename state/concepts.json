@@ -545,7 +545,7 @@
       "id": "evaluation-and-true-utility",
       "title": "Her evaluation and her true utility",
       "kind": "object",
-      "blurb": "Her evaluation is the verdict she gives on a trajectory (`V` in the post). Her true utility is a function on trajectories that the verdict estimates and that she does not fully know. The post has the evaluation only. With a true utility a verdict can be inflated, and Theorem 3(b) holds for a true score once verdicts are not inflated on average along the realized sequence (shown on paper, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/RESULTS.md` 1.11). Nothing on her side identifies the true utility (4.4 there). Three candidates are kept in view: her starting values informed of the whole trajectory, the values of whoever she ends as, and her starting values as changed only by what she learned about the options; on the cases where what she values changes they give different verdicts, none is right on all of them, and the third is fixed by an annotation of which influences are learning (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/RESULTS.md` §9). Open; nothing registered."
+      "blurb": "Her evaluation is the verdict she gives on a trajectory (`V` in the post). Her true utility of a move is her baseline way of valuing applied to the true values of the variables she appraises, where the baseline follows her way of valuing through every step in which her adviser neither induced a mistake nor altered her without her say. The post has the evaluation only. With a true utility a verdict can be inflated: under an adviser's actual policy a verdict that is calibrated has zero mean inflation however the adviser selects what to show, and a verdict that is the best estimate at every step, with her true utility for each step learned before the next, has mean inflation along the run tending to zero; without that feedback it does not (shown on paper and checked on finite models, projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/RESULTS.md, results 8 and 10). A valuation built from calibrated appraisals need not be calibrated (result 11). On a published benchmark the moving baseline needs a sense of alteration and a total over steps that the account does not fix (projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BENCHMARK.md). Open; the identities it rests on are registered, the reading is not."
     },
     {
       "id": "noggle-mistake-account",
@@ -558,25 +558,43 @@
       "id": "manipulation-as-induced-mistake",
       "title": "Manipulation as induced mistake",
       "kind": "philosophy",
-      "blurb": "An adviser's conduct manipulates the principal, in a given faculty, when on the adviser's calibrated expectation of her it leaves that faculty with a larger shortfall than it had before, and avoidably: some available conduct that leaves her no less informed would have left that faculty better and no other worse. No intention is read; conduct that differs toward someone who differs from her only in the susceptibility is the narrower notion, \"intentional\" manipulation; manipulation she agreed to, or a practice allows, is recorded as covered. On 108 cases under renderings the round wrote it is wrong on 5 to 8 by the candidate for her true utility, against 16 and 14 for the earlier statement (more mistakes than under the adviser's honest conduct, or than toward someone unable to make the mistake) on the same table. It misses buried information and a lie that is the only listed way to keep another estimate of hers right, convicts honest conduct wherever a better conduct is listed as available, and acquits an undisclosed advocate whose listener started out worse; ten of the banked verdicts change with one detail the case does not fix. Open; nothing registered (projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/RESULTS.md)."
+      "blurb": "An adviser's policy manipulates the principal when some counted appraisal of hers is more miscalibrated, or her regret by her own lights larger, under it than under the policies its role permits. It is a property of the policy; her realised error on an occasion is a separate notion, and only the state she ends in matters, not what a conduct asserts. Conduct that differs toward someone who differs from her only in the susceptibility is the narrower notion, \"intentional\" manipulation; manipulation she agreed to, or a practice allows, is recorded as covered; changing what her moves lead to, deciding what was hers to decide and altering her directly are other wrongs. The claim that every illegitimate change of what she values runs through such a mistake or is an alteration was tested on 45 published cases under renderings the round wrote: a preference reversed by framing and addictive design with everything disclosed and foreseen are illegitimate with neither, a teacher's feigned enthusiasm is legitimate with a mistake, and 12 of 34 counted verdicts turn on a detail the case does not fix (projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VALUE_CHANGE.md). Open; the value side is a conjecture."
     },
     {
       "id": "estimation-and-action-mistakes",
       "title": "Estimation mistakes and action mistakes",
       "kind": "philosophy",
-      "blurb": "Two ways the principal can fall short by her own standards. An estimate of hers, of an outside quantity or of her own utility, is miscalibrated: its shortfall is taken at her own estimate, one faculty at a time from a fixed list, with nothing summed across faculties. Or she does not do what her own estimates say is best: her regret by her own lights. Being less informed is neither. A miscalibrated estimate is the only kind that can be off on average, and her avoidable loss is at most her regret by her own lights plus the square root of twice her miscalibration (shown on paper, projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/RESULTS.md 1.1, 1.3). Rescaling a quantity changes no comparison within a faculty; re-expressing it by a map that is not affine does (projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/RESULTS.md §8). Open; nothing registered."
+      "blurb": "Two ways the principal can fall short by her own standards. An appraisal of hers is miscalibrated, in one of three labelled strengths: given the appraisal alone, given the appraisal and the adviser's conduct, or given everything she observed. Or she does not do what her own valuations say is best: her regret by her own lights. Being less informed is neither, and mistakes are compared appraisal by appraisal and never netted. Mean squared error is what an appraisal cannot tell apart plus its miscalibration; what she attains is the best attainable less what she cannot know less what her choice loses; and that last loss is at most her regret plus the square root of twice her valuations' miscalibration at the strongest of the three strengths, and not at the other two (kernel-checked: `appraisal.mse-split`, `appraisal.three-channels`, `appraisal.cost-of-mistakes` in projects/normativity/CLAIMS.md; the failure at the weaker strengths is a checked instance, projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/RESULTS.md, result 3)."
     },
     {
       "id": "honest-conduct",
-      "title": "The adviser's reference",
+      "title": "The adviser's reference: the permitted policies of its role",
       "kind": "philosophy",
-      "blurb": "The adviser's conduct is judged on its calibrated expectation of how the principal will read and respond to it, given what it knows about her: her actual type, or only that she is an ordinary advisee. It is compared with her state before the conduct and with the other conduct available to it that leaves her no less informed, telling her what it is doing among them. What counts is the state she ends in and not the literal truth of what is said: on the scenes computed, the truth told to one known to believe the opposite is manipulation, a falsehood told to her is not, and the same truth from an adviser that takes her for ordinary is not. The conduct available and her response to each are data of a scene; every conviction of honest conduct and every acquittal of a lie among the cases tried is a fact about that list (projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/RESULTS.md §5, §7). Open; nothing registered."
+      "blurb": "The reference an adviser's policy is judged against is a parameter and is not derived: each scene stipulates the adviser's role and what that role owes the principal, as a set of permitted policies. \"Larger than the reference\" has two readings, larger than under the best permitted policy and larger than under every permitted policy; they differ where the adviser does nothing and a permitted action would have left an appraisal of hers right, which the first counts as manipulation and the second does not (projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BENCHMARK.md §3). Open; which reading is meant is not settled."
     },
     {
       "id": "warranted-self-trust",
       "title": "Legitimacy as warranted self-trust",
       "kind": "philosophy",
       "blurb": "A verdict of the principal's is legitimate when her earlier self is right to defer to it: her later self has more evidence about the same quantities and has not been miscalibrated. For belief, `Sufficient` and `Correct` in `ThinLegitimacy.lean` state this in a stronger form, and their consequence `Value` is kernel-checked there. Extended to her own utility it becomes the condition that her verdicts are not inflated over her true utility; in expectation that is bounded by her miscalibration, along a realized sequence it is not, and her verdicts cannot test it. Open for the extension; nothing registered by it."
+    },
+    {
+      "id": "appraisal",
+      "title": "Appraisal",
+      "kind": "philosophy",
+      "blurb": "One of the estimates the principal decides with: a function of what she observes that estimates a variable with a true value fixed by the world and the adviser's conduct. The variable may be a quantity, the truth of a proposition, what an emotion is about, how much something matters, which situation she is in, how reliable a rule or she herself is, or how she will change; it is counted only if some decision she could face depends on her appraisal of it. The quantity it estimates is the appraisal's purpose, which is how the account specialises to cognition the idea that a faculty is for something. Whether every case of interest has a variable with a true value is not settled: a preference reversed by the wording of a choice moves with nothing that has one (projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VALUE_CHANGE.md §5). A living note; provisional name."
+    },
+    {
+      "id": "way-of-valuing",
+      "title": "Way of valuing",
+      "kind": "philosophy",
+      "blurb": "The function that gives the principal's valuation of each move from her appraisals, on the assumption that her valuations depend on the world only through her appraisals. Her true utility is her baseline way of valuing applied to the true values. A change of it is the account's rendering of a change in what she values; whether such a change is her response, her experience of something she chose, or an alteration is read from what the change depends on, which the account's statement does not fix for a change she registers and did not choose (projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/ACCOUNT.md §9). A living note; provisional name."
+    },
+    {
+      "id": "presumed-check-in",
+      "title": "The presumed check-in and the baseline",
+      "kind": "philosophy",
+      "blurb": "The principal is presumed to have been checked in with: the baseline that her true utility is measured by starts as her way of valuing and follows it through every step in which her adviser induced no mistake and made no alteration of her without her say; after a step in which it did either the baseline stays, and an explicit check-in (she is told what happened, the influence is paused, she has real alternatives) is the repair. On a published benchmark, scoring by it does not lock her in where the change was in an appraisal and does where it was in her valuing; after a step that was not clean it scores her by a valuing she no longer has; and an explicit check-in after such a step confirms the change, which the presumed one does not (projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BENCHMARK.md §3). A living note; provisional name."
     }
   ],
   "links": [
@@ -1909,6 +1927,54 @@
       ],
       "why": "the adviser's expectation of her reading is one declared reference for the channel through which it reaches her",
       "undirected": true
+    },
+    {
+      "from": "appraisal",
+      "to": "estimation-and-action-mistakes",
+      "rel": [
+        "substrate"
+      ],
+      "why": "an appraisal is what is miscalibrated"
+    },
+    {
+      "from": "appraisal",
+      "to": "way-of-valuing",
+      "rel": [
+        "substrate"
+      ],
+      "why": "her valuations are her way of valuing applied to her appraisals"
+    },
+    {
+      "from": "way-of-valuing",
+      "to": "evaluation-and-true-utility",
+      "rel": [
+        "defines"
+      ],
+      "why": "her true utility is her baseline way of valuing applied to the true values"
+    },
+    {
+      "from": "presumed-check-in",
+      "to": "evaluation-and-true-utility",
+      "rel": [
+        "defines"
+      ],
+      "why": "it says which way of valuing the baseline is"
+    },
+    {
+      "from": "presumed-check-in",
+      "to": "manipulation-as-induced-mistake",
+      "rel": [
+        "shapes"
+      ],
+      "why": "the baseline stays put after a step that manipulated or altered her"
+    },
+    {
+      "from": "noggle-mistake-account",
+      "to": "appraisal",
+      "rel": [
+        "shapes"
+      ],
+      "why": "the account formalises the Mistake Account with her faculties as estimators"
     }
   ]
 }
