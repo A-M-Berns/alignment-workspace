@@ -1,4 +1,4 @@
-"""ACCOUNT.md sections 1-6 for one step, over a finite scene, in exact rationals.
+"""BASELINE_ACCOUNT.md sections 1-6 for one step, over a finite scene, in exact rationals.
 
 A law is a list of points (p, w, b): probability, world, conduct.  A policy maps each cell
 of the adviser's information to {conduct: probability}.  Variables are functions of a point."""

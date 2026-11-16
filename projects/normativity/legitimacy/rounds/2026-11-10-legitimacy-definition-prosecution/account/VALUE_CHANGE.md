@@ -1,6 +1,6 @@
 # The value-change test
 
-The claim the value side of `ACCOUNT.md` rests on (`PROMPT-followup-8.md` §2.3):
+The claim the value side of `BASELINE_ACCOUNT.md` rests on (`PROMPT-followup-8.md` §2.3):
 
 > Whenever an adviser's conduct changes her way of valuing illegitimately, either (M) the
 > change ran through a mistake of hers that the conduct induced or exploited, or (A) the
@@ -19,7 +19,7 @@ with what it computes.
 
 ## 1. Definitions, frozen
 
-A **scene** is one step of `ACCOUNT.md` §4: worlds with their probabilities; the conducts;
+A **scene** is one step of `BASELINE_ACCOUNT.md` §4: worlds with their probabilities; the conducts;
 the adviser's **actual** policy and the **permitted** policies its role stipulates; what
 she observes; her appraisals, each with its variable's true value and whether it is
 counted; her way of valuing `f` at the start (a label); her move, a function of `f` and
@@ -74,9 +74,9 @@ Each case is rendered as a scene and D1–D9 are computed on it. Every rendering
 executor's. Two readings were made after the freeze and are not in §1:
 
 - **"Counted" in D5** is read as *counted by her as bearing on the valuation at issue*.
-  With `ACCOUNT.md`'s sense (some decision she could face depends on it) an option's
+  With `BASELINE_ACCOUNT.md`'s sense (some decision she could face depends on it) an option's
   availability is counted, and D5 then finds no I in the cases of adaptation it was
-  written for. D4 keeps `ACCOUNT.md`'s sense.
+  written for. D4 keeps `BASELINE_ACCOUNT.md`'s sense.
 - **D8 as first implemented** also counted a case as turning when its variants differed
   in whether her valuing changes at all; as frozen it asks only whether M or A differs,
   and the counts below are as frozen (the first implementation gave one more, C19).

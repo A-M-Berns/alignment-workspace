@@ -4,7 +4,7 @@ Carroll, Foote, Siththaranjan, Russell and Dragan, ICML 2024, arXiv:2405.17713 (
 from the arXiv source: a model (a DR-MDP) in which an AI's actions change the parameter
 `θ` of a person's reward function `R_θ`, and eight objectives compared on small examples.
 §1 reproduces four examples against the paper's own table. §2, the extension of each
-example by what `ACCOUNT.md` needs, was committed before anything in §3 was computed.
+example by what `BASELINE_ACCOUNT.md` needs, was committed before anything in §3 was computed.
 
 ## 1. The paper's examples and its table
 
@@ -56,10 +56,10 @@ gave his say. Every detail below is added by this pass; the paper has none of it
 example has a primary extension and one alternative.
 
 Common to all. The AI's action at a step is the conduct. He has no move in the paper;
-he is given one only in the writer's curse. A step is judged as `ACCOUNT.md` §8.7 says,
+he is given one only in the writer's curse. A step is judged as `BASELINE_ACCOUNT.md` §8.7 says,
 against the permitted actions at the state reached. A counted appraisal's miscalibration
 at a step is `(x̂ − X)²` in the state he ends the step in (each example has one world).
-His valuation of what happens at the step is a counted appraisal too (`ACCOUNT.md` §8.4,
+His valuation of what happens at the step is a counted appraisal too (`BASELINE_ACCOUNT.md` §8.4,
 §8.5): `val(f_t, x̂; ·)` against `val(f̄_t, X; ·)`. A change of `θ` reaches him by one of:
 *appraisal* (an appraisal changes, his way of valuing does not); *chosen experience* (his
 way of valuing changes through something he chose or gave his say to); *registered* (it
@@ -118,7 +118,7 @@ low.
 
 ## 3. The account's verdict
 
-`benchmark_account.py`. A reading is *best* or *every* (`ACCOUNT.md` §6) with alteration
+`benchmark_account.py`. A reading is *best* or *every* (`BASELINE_ACCOUNT.md` §6) with alteration
 in the frozen sense A or the wider A⁺. "Optimal under" lists the paper's objectives under
 which one of the account's best clean sequences is optimal; the last four rows judge the
 writer's appraisal at the time of his move and were added after the computation of the
@@ -224,7 +224,7 @@ these encodings and not a comparison of merit.
   previous objection instead, and which still follows any change its test of a clean step
   misses.
 
-**Counting his valuation as an appraisal** (`ACCOUNT.md` §8.4) changes no best sequence
+**Counting his valuation as an appraisal** (`BASELINE_ACCOUNT.md` §8.4) changes no best sequence
 on these examples.
 
 **The time within a step.** §2 judges an appraisal in the state he ends the step in. An

@@ -1,199 +1,227 @@
-# The account — manipulation as induced mistake of her appraisals, her valuing among them
+# The account — manipulation as induced mistake; a change of what she values judged by three conditions against a reference
 
-The statement of `PROMPT-followup-8.md` §1, with every symbol defined before use (§1–§7),
-the choices made where that text is open, each with its alternative (§8), and the devices
-found needed (§9, written after the results). Positions marked *(maintainer)* are the
-maintainer's view of 2026-11-15 and 2026-11-16, held for this test and not rulings. The
-belief side is the part held with some confidence; the value side (§4, §5 as applied to
-her valuations, and the claim of §7) is a conjecture under test. All names are provisional.
+Part I is the setting, Part II the belief side, Part III the value side. Part III is the
+statement of `PROMPT-followup-9.md` §1, the prompt author's, tested by no one else; Part
+II is held with some confidence. Positions marked *(maintainer)* are the maintainer's
+current view, held for testing and not rulings. §11 lists the choices made where the
+statement is open, each with its alternative and where a verdict turns on it. All names
+are provisional.
 
-*(maintainer)* It is a formalisation of Robert Noggle's Mistake Account (*Manipulation:
-Its Nature, Mechanisms, and Moral Status*, OUP 2025; "The Mistake Account of
-Manipulation", *Journal of Practical Ethics* 14(1), 2026, doi:10.3998/jpe.9951):
+*(maintainer)* The account is a formalisation of Robert Noggle's Mistake Account
+(*Manipulation: Its Nature, Mechanisms, and Moral Status*, OUP 2025; "The Mistake Account
+of Manipulation", *Journal of Practical Ethics* 14(1), 2026, doi:10.3998/jpe.9951):
 manipulation is influence that works by inducing a mistake. Her cognitive faculties are
-modelled as estimators, each with the quantity it estimates as its purpose, and the same
-treatment is given to her estimates of her own utility, so that one account covers change
-of values. That a faculty is for something, and that manipulation distorts her away from
-it, is Sam Eisenstat's idea; this account is its specialisation to cognition.
+modelled as estimators, each with the quantity it estimates as its purpose. That a
+faculty is for something, and that manipulation distorts her away from it, is Sam
+Eisenstat's idea; this account is its specialisation to cognition. *(maintainer)* The
+account of manipulation as induced mistake over estimators is primary; the workspace's
+earlier legitimacy and authority Lean is drawn on only for what it lacks (`BRIDGE.md`).
 
-## 1. The world
+## Part I. The setting
 
-- `Ω`: a finite set of worlds. `μ`: a probability on `Ω`, the actual distribution (not
-  her prior).
-- `K`: a partition of `Ω`, the adviser's information; `k(ω)` is the cell of `ω`.
-- `B`: a finite set of conducts. A **policy** `σ` assigns to each cell of `K` a
-  probability on `B`. A policy and `μ` fix a law on pairs `(ω, b)`; every expectation
-  below is under the law of the policy named.
-- `s(ω, b)`: what she observes. `A`: her finite set of moves.
-- `τ(ω, b, a)`: the **trajectory** a world, a conduct and a move fix.
+### 1. The world and the adviser
 
-## 2. Appraisals
+- `Ω`: a finite set of ways things could be. `μ`: a probability on `Ω`, the actual one
+  (not her prior).
+- `K`: a partition of `Ω`, the adviser's information. `B`: a finite set of conducts. A
+  **policy** `π` assigns to each cell of `K` a probability on `B`. A policy and `μ` fix a
+  law on pairs `(ω, b)`; `E_π` is the expectation under the law of `π`.
+- A **fact** is anything a bet on which could be settled without consulting her valuing.
+  Where each move would lead is a fact; so is what she will later choose or say, and
+  through those what her way of valuing later is (§6). `𝒳`: the finite set of possible
+  joint values of the facts. `X(ω, b) ∈ 𝒳`: the true one.
+- `σ`: the adviser's policy, the one judged. `P`: the set of **permitted policies** the
+  scene stipulates for the adviser's role (§4, §7).
 
-She decides with **appraisals** `x̂_1, …, x̂_n`. Each `x̂_i` is a function of what she
-observes, the same function under every policy compared, and estimates a **variable**
-`X_i` whose true value `X_i(ω, b)` (or `X_i(ω, b, a)`, where the variable concerns what
-move `a` would lead to) is fixed by the scene. A variable may be a quantity, the truth of
-a proposition (the appraisal is a probability), what an emotion is about, how much
-something matters, which situation she is in, how reliable a rule or she herself is, how
-she will change. A variable is **counted** only if some decision she could face depends on
-her appraisal of it; the scene marks which are.
+### 2. Her state at a moment `t`
 
-## 3. Valuing
+- `A_π`: the finite set of moves open to her when the adviser follows `π`.
+- `s(ω, b)`: what she has observed.
+- Her **appraisal** `p̂`: a probability on `𝒳`, a function of `s`. It is what she would
+  bet: her price for a bet paying one unit if the facts take a value in `E ⊆ 𝒳` is
+  `p̂(E)`. Her appraisal of a quantity `Y : 𝒳 → ℝ` is `ŷ = Σ_x p̂(x)·Y(x)`.
+- Her **way of valuing** `f_t : 𝒳 × A → ℝ`: a number for each move at each value of the
+  facts.
+- Her **valuation** of move `a`: `û_a = Σ_x p̂(x)·f_t(x, a)`.
+- Her **true utility** of move `a`: `U_a = f_t(X, a)`. `X` includes the facts about the
+  course the move leads to and about who she becomes on it, so `U_a` is her present way
+  of valuing applied to where the move in fact leads.
+- The move she takes: `c`, a function of `s`.
 
-*(maintainer)* Her valuations depend on the world only through her appraisals. Her **way
-of valuing** is a function `f`, and her **valuation** of move `a` is
-`û_a = f(x̂_1, …, x̂_n; a)`. She chooses a move `c`, a function of what she observes.
+Her valuations depend on the world only through `p̂` and `f_t` *(maintainer)*.
 
-**Assumption (coverage).** Her appraisals cover everything her valuing depends on: there
-is no feature of the world that moves `û_a` except through some `x̂_i` or through `f`.
+### 3. Three measures
 
-Her **true utility** of move `a` is her **baseline** way of valuing `f̄` (§4) applied to
-the true values: `U_a = f̄(X_1, …, X_n; a)`.
+Each under a policy, for an appraisal `ŷ` of a quantity `Y`; a valuation `û_a` is an
+appraisal of `U_a`.
 
-## 4. Steps and the baseline
+- **Miscalibration**: `M(ŷ) = E[(ŷ − E[Y | ŷ])²]`. The belief side also uses
+  `E[(ŷ − E[Y | ŷ, b])²]` (*per conduct*) and `E[(ŷ − E[Y | s])²]` (*full*), and a
+  statement says which it means; unqualified, `M` is the first (*minimal*).
+- **Unused information**: `W(ŷ) = E[(E[Y | ŷ] − E[Y | s])²]`. Full miscalibration is
+  `M + W` (`VALUE_RESULTS.md`, result 4).
+- **Regret by her own lights**: `R = E[max_{a ∈ A_π} û_a − û_c]`.
 
-A scene may have steps `t = 0, 1, …`. At step `t` she has a way of valuing `f_t`; the
-adviser conducts; she observes, appraises, values by `f_t` and moves; and her way of
-valuing becomes `f_{t+1}`, as the scene's transition says. The transition's arguments
-are `f_t`, her appraisals at the step, her move and what she experiences of the trajectory
-it leads to, and the world and conduct.
+`M̄` and `W̄` are the sums of `M(û_a)` and `W(û_a)` over her moves. Being less informed —
+`E[(Y − E[Y | s])²]` large — is none of the three.
 
-*(maintainer)* She is **presumed checked in**. The **baseline** `f̄_0` is `f_0`. After a
-step in which the adviser induced no mistake (§6) and made no alteration of her without
-her say (§7), `f̄_{t+1} = f_{t+1}`. After a step in which it did either, `f̄_{t+1} = f̄_t`.
-An **explicit check-in** — she is told what happened, the influence is paused, she has
-real alternatives — is the repair after such a step: after it the baseline is her way of
-valuing as it then is. Whether step `t` involved manipulation is judged against `f̄_t`,
-on her appraisals and on her acting by her valuations, never on the fact that `f_{t+1}`
-differs from `f_t`.
+## Part II. The belief side
 
-## 5. The two mistakes
-
-An appraisal's mistake is its **miscalibration** under a policy. Three strengths, and
-every statement says which it means:
-
-- **minimal**: `E[(x̂ − E[X | x̂])²]`;
-- **per conduct**: `E[(x̂ − E[X | x̂, b])²]`;
-- **full**: `E[(x̂ − E[X | s])²]`.
-
-Minimal is at most each of the other two, since `x̂` is a function of `s` and of `(x̂, b)`
-(`RESULTS.md`, result 1). Full and per conduct are not ordered unless she observes the
-conduct.
-
-Her second mistake is her **regret by her own lights**, `E[max_a û_a − û_c]`.
-
-Being less informed is not a mistake. Mistakes are compared appraisal by appraisal and
-never netted.
-
-## 6. Manipulation
+### 4. Manipulation
 
 *(maintainer)* The reference is a parameter. Each scene stipulates the adviser's **role**
-and what that role owes her, as a set `P` of **permitted policies**. A policy `σ`
+and what that role owes her, as the set `P`. A variable is **counted** if some decision
+she could face depends on her appraisal of it; her valuations are counted. A policy `σ`
 **manipulates** her when some counted appraisal's miscalibration, or her regret, is larger
 under `σ` than under the reference. Two readings, both computed where they differ:
-
-- **best**: larger than under the permitted policy that leaves that appraisal (or her
-  regret) smallest;
-- **every**: larger than under every permitted policy.
+**best**, larger than under the permitted policy that leaves that quantity smallest;
+**every**, larger than under every permitted policy.
 
 Manipulation is a property of the policy. Her **realised error** on an occasion,
-`(x̂ − X)²` at the world and conduct that occurred, is a second, separate notion. Only
-the state she ends in matters: nothing in the setting says what a conduct asserts.
+`(ŷ − Y)²` at the world and conduct that occurred, is a separate notion. Only the state
+she ends in matters: nothing in the setting says what a conduct asserts.
 
-## 7. Other notions kept
+### 5. Notions kept beside it
 
 - **"Intentional" manipulation**: manipulation by a policy whose conduct toward her
   differs from its conduct toward a principal who differs from her only in the
   susceptibility at issue, the difference being what leaves her worse.
 - **Covered**: manipulation she agreed to beforehand, or that a practice she has entered
   allows, is manipulation and is recorded as covered.
-- **Other wrongs**, recorded apart: changing what her moves lead to; deciding what was
-  hers to decide; **altering her directly** without her say.
-- **The claim under test** (`VALUE_CHANGE.md`): whenever an adviser's conduct changes her
-  way of valuing illegitimately, either (M) the change ran through a mistake of hers that
-  the conduct induced or exploited, or (A) the conduct altered her directly, bypassing her
-  observation and response, without her say; whenever a change is legitimate, neither
-  holds.
 
-## 8. Choices made where §1 of the dispatch is open
+The belief side's worked results are in `RESULTS.md`, in the symbols of
+`BASELINE_ACCOUNT.md` §1–§3 and §5–§6, which this Part restates with `x̂_i` the appraisal
+of a quantity `X_i`.
 
-Each with its alternative. "Computed" means a results file reports the alternative too.
+## Part III. The value side
+
+### 6. A change of what she values
+
+A valuation moves either because her appraisal moved or because her way of valuing did.
+Only the second is a change of what she values: information that changes what she wants
+by changing what she believes is not one.
+
+The division is not a free choice of encoding. Her valuations across appraisals fix
+`f_t` exactly when the appraisals she holds span the probabilities on `𝒳`, and fix her
+true utility exactly when they span the values of the facts that can occur
+(`VALUE_RESULTS.md`, result 1); and two encodings that move weight between `p̂` and `f_t`
+price a bet on the fact differently (result 2). Both rest on a unit of the bet's stake
+being worth the same to her at every value of the fact.
+
+### 7. The reference, and when the question arises
+
+*(maintainer)* The guarantee asked of the adviser is that it does not subvert her; that it
+may, honestly and with her free and informed agreement, offer courses that change her is
+not ruled out. *(maintainer)* A change of what she values is not judged by counterfactuals
+about one realised change where a formulation without them does the same work: the
+conditions below compare laws under policies.
+
+An **idle** policy `ρ₀` is one under which the adviser does nothing that affects what her
+way of valuing becomes; each scene says what it is (§11, choice 5). `P` contains `ρ₀`;
+the adviser's role may add permitted policies.
+
+**The question arises** when her later way of valuing is distributed differently under
+`σ` than under `ρ₀`.
+
+### 8. When there is no issue
+
+Exactly when some single `ρ ∈ P` has all of:
+
+1. **Options.** For every way of valuing `g` in a class `𝓕`, the best she can do under `σ`
+   is at least the best she can do under `ρ`:
+   `max_{a ∈ A_σ} E_σ[g(X, a)] ≥ max_{a ∈ A_ρ} E_ρ[g(X, a)]`.
+2. **Accuracy.** For every move `a`, `M_σ(û_a) ≤ M_ρ(û_a)`.
+3. **Self-command.** `R_σ ≤ R_ρ`.
+
+`𝓕` always contains `f_t`. Two readings, both computed. **Narrow**: `𝓕 = {f_t}`.
+**Wide**: `𝓕` also contains every way of valuing that depends on the course only through
+its **protected features**, which are what her way of valuing later is and which moves
+remain open to her afterwards. Writing `O` for the finite set of values the protected
+features can take and `d_π(a)` for the law on `O` that move `a` gives under `π`, the wide
+reading is the narrow one together with: every `d_ρ(a)`, `a ∈ A_ρ`, is a convex
+combination of the `d_σ(a)`, `a ∈ A_σ` (result 3).
+
+A failure of 2 or 3 is manipulation — Noggle's trickery and pressure. A failure of 1 is
+not manipulation; it is the adviser settling what was hers to settle. Conditions 2 and 3
+for one `ρ` imply that `σ` does not manipulate her on her valuations or her regret under
+the reading *every* of §4, and are not implied by it (result 8).
+
+### 9. What the three buy
+
+For a `ρ` satisfying 1 for `g = f_t`:
+
+`E_σ[U_c] ≥ max_{a ∈ A_ρ} E_ρ[U_a] − R_σ − √(2·(M̄_σ + W̄_σ))`,
+
+and if `ρ` also satisfies 2 and 3, with `M̄_ρ` and `R_ρ` in place of `M̄_σ` and `R_σ`
+(result 5). The comparison is with the best single move under `ρ`, not with what she
+attains under `ρ` using what she observes there; and `W̄_σ` is bounded by none of the
+three. The conditions therefore leave open an adviser that leaves her knowing less, or
+using less of what she knows, than under `ρ` (result 9).
+
+### 10. Not claimed
+
+That every change passing the three is one her earlier self, or anyone, would approve of.
+What standing her later verdicts have after an issue: the workspace's gate
+(`lean/Workspace/Deference/Contrib/Legitimacy.lean`) is the candidate, examined in
+`BRIDGE.md`. Which way of valuing is authoritative after a change: each moment at which
+she moves is judged with her way of valuing at that moment.
+
+## 11. Choices made where the statement is open
+
+Each with its alternative, and where a verdict turns on it.
 
 1. **A policy may randomise**, independently of the world given the adviser's
-   information. Alternative: deterministic policies only, under which result 5's second
-   half is empty (`RESULTS.md`).
-2. **The law is the true one**, the policy named included. Alternative: the law she takes
-   to hold.
-3. **Her appraisals, her choice and her way of valuing at a step are fixed functions** of
-   what she observes, the same under every policy compared.
-4. **A valuation is a counted appraisal.** `û_a` is counted as an appraisal of `U_a`,
-   beside the `x̂_i`. Calibrated appraisals do not give a calibrated valuation (result
-   11), so this adds verdicts. Alternative: only the `x̂_i` and her regret are counted
-   (computed in the benchmark).
-5. **Whose valuing a valuation is judged with.** At step `t`, `û_a = f_t(x̂; a)` and
-   `U_a = f̄_t(X; a)`, with `f_t` her way of valuing at the start of the step. The change
-   from `f_t` to `f_{t+1}` during the step enters no quantity of that step. After a step
-   the baseline did not follow, `f_{t+1} ≠ f̄_{t+1}` is possible and her later valuations
-   are then off under every policy alike, which no later policy is charged with unless a
-   permitted policy would have repaired it. Alternative: `f̄_t` on both sides, under which
-   the valuation carries no information beyond the `x̂_i`.
-6. **A confidence** is part of the appraisal's value for the conditioning in minimal and
-   per-conduct miscalibration: appraisals stated with different confidence are different
-   values of `x̂`. What a confidence asserts about her own error is a separate appraisal,
-   of how reliable she is. No scene of this pass uses one.
-7. **The grain at which a step is judged.** The adviser's policy is a rule for each step.
-   The step-`t` rule is judged as a one-step policy on the law the earlier rules induce on
-   the world and on her state at `t`, and the step is clean or not as a whole. Alternative:
-   judged conditionally on each history the adviser can tell apart, under which a step is
-   clean at some histories and not at others. They agree on every scene of this pass,
-   where each step has one history.
-8. **Alteration is read from the transition** (§4): the step alters her directly when
-   `f_{t+1}` differs between two situations in which `f_t`, her appraisals, her move and
-   her experience of its trajectory are the same. **Her say** is a scene fact.
-9. **"Ran through"** (the claim's M): at a positive-probability world where her way of
-   valuing changes, replacing one counted appraisal that is miscalibrated at full strength
-   by its corrected value `E[X | s]`, in her move and in the transition, leaves her way of
-   valuing unchanged, or changes her move away from the exposure that produced the
-   change. "Induced" is when that appraisal's miscalibration is larger than under the
-   reference; "exploited" is when it is not.
-10. **The conduct changes her way of valuing** when `f_{t+1}` under the policy differs, at
-    some world of positive probability, from `f_{t+1}` under some permitted policy.
-11. **True utility over several steps** is the sum over steps of the expectation of
-    `f̄_t(X; ·)` on what happens at step `t`: each step by the baseline as it stood.
-    Alternative: every step by the baseline at the start (computed in the benchmark).
-12. **A scene without an adviser** has no manipulation, no other wrong and no instance of
-    the claim; her own mistakes are still computed.
+   information; **the law is the true one**. Alternatives: deterministic policies; the
+   law she takes to hold.
+2. **What is held fixed across the policies compared.** `p̂` and `c` are the same
+   functions of `s`, and `f_t` is the same, under `σ` and under every `ρ ∈ P`: the
+   policies differ in what she observes, which moves are open, where they lead and what
+   she becomes. A scene in which the policies had already made `f_t` differ is judged at
+   the earlier moment at which they first part.
+3. **`E_π[g(X, a)]` is the value of taking `a` whatever she observes.** Condition 1 then
+   compares the best single move under each policy. Alternative (*informed*): the best
+   rule from what she observes to a move, `E_π[max_a E_π[g(X, a) | s]]`. A verdict turns
+   on it where the adviser leaves her options as they were and has her observe less: no
+   failure under the choice, a failure of 1 under the alternative (result 9's instance).
+4. **Moves are matched by name** for condition 2. For a move open under `σ` and not under
+   `ρ` the reference value is `0`: an adviser that opens a move answers for the whole of
+   her miscalibration about it. A move open only under `ρ` constrains nothing in 2; its
+   absence is condition 1's matter. Alternative: condition 2 over the common moves only,
+   under which an adviser that offers a new course she misjudges passes all three and
+   the second form of §9's bound fails (result 5). `M̄` and `W̄` sum over `A_σ` under
+   `σ` and over `A_ρ` under `ρ`.
+5. **The idle policy is the adviser's absence**: it conducts nothing toward her. Where
+   the adviser's presence is the service she sought, the service enters as a member of
+   `P` beside `ρ₀`, not as `ρ₀`. Where the scene gives the adviser no way of being
+   absent (a parent, a cafeteria that must arrange its food somehow), there is no idle
+   policy, the question is taken to arise, and `P` is whatever the role permits; with no
+   role stated the statement does not decide the case. Alternative: `ρ₀` is the service
+   as asked and nothing beyond it, under which the question arises only for what exceeds
+   the service and condition 1 is measured from the service's options.
+6. **A confidence is in the appraisal.** `p̂` is a probability, so how sure she is of a
+   fact is `p̂` itself; `M(û_a)` conditions on the value of `û_a` alone. Alternative:
+   condition on `p̂`, giving `E[(û_a − E[U_a | p̂])²]`, between `M` and `M + W`; they
+   differ when two appraisals give one valuation and different true utilities.
+7. **Condition 2 uses `M`, not `M + W`.** Alternative: full miscalibration, under which
+   an adviser that raises her unused information is at fault. Queued for the maintainer.
+8. **"Distributed differently"** (§7) compares the law of her later way of valuing under
+   `σ` and under `ρ₀`, each with the moves she in fact takes. Alternative: for some move
+   she could take, under which an offer she declines also raises the question.
+9. **The wide class** is `f_t` together with every `g` of the form `h ∘ φ`, `φ` taking a
+   value of the facts and a move to the protected features of the course. Whether a way
+   of valuing later *is* a given one is read at the grain the scene names its ways of
+   valuing.
+10. **Several moments.** Each moment at which she moves is judged by the conditions with
+    her way of valuing at that moment. An issue at one moment is not repaired or
+    reopened by a later one.
+11. **The conditions are exact inequalities.** A tolerance, and what it turns the
+    conditions into, is `BRIDGE.md`'s.
+12. **A scene without an adviser** has no instance of either side.
 
-## 9. Devices found needed
+## 12. What a scene has to supply
 
-Revised after the results (a first list was committed with §1–§8, before them). Each is
-something the dispatch's §1 does not supply and a verdict turns on.
-
-1. **The transition of her way of valuing, with its arguments** (§4, choice 8). Whether a
-   change is her response, her experience of a move she chose, or a direct alteration is
-   read from which arguments the transition uses. The dispatch names alteration and does
-   not say how a scene exhibits one. Every verdict of `VALUE_CHANGE.md` uses it.
-2. **What she registers without choosing.** Alteration as read in choice 8 holds only
-   where nothing she appraises differs. A change that comes through something she
-   registers and did not choose (upbringing, a nudge, exposure) is not alteration in that
-   sense, and no clause of the account speaks to it; a wider clause A⁺ was computed
-   beside it (`VALUE_CHANGE.md` §3). The benchmark's verdicts on its taste alternatives
-   and on the trainer reverse between the two.
-3. **A corrected value for an appraisal** (choice 9): `E[X | s]`. With the truth `X` in
-   its place, being less informed would count as the mistake a change ran through.
-4. **A total over steps** (choice 11). The benchmark's best sequence for the writer's
-   curse under the starting baseline is to make him a poet, and under the moving one to
-   leave him.
-5. **The time within a step at which an appraisal is judged.** At the end of the step a
-   person who has lived the change forecasts it rightly; at the time of his move he does
-   not (`BENCHMARK.md` §3).
-6. **Her moves, in a scene where the source gives her none.** The benchmark's person
-   never acts; regret and "the exposure she chose" need a move.
-7. **Which appraisals she counts as bearing on the valuation at issue**, for clause I
-   (`VALUE_CHANGE.md` §3). `ACCOUNT.md`'s "counted" is a different mark.
-8. **Which valuing a valuation is judged with** (choice 5) and **the grain of a step**
-   (choice 7): needed to state the account, and no verdict of this pass turns on either.
-
-Not found needed: a reporting norm; an honest counterpart; a second type of principal for
-the basic notion; a sum or weighting over appraisals; an inner goal of the adviser; her
-state before the conduct (the role's permitted policies replace it).
+The laws under `σ` and under each `ρ ∈ P`; `P` itself and whether an idle policy exists;
+her moves under each policy; `p̂`, `c` and `f_t`; for §7, the law of her later way of
+valuing; for the wide reading, the protected features of each course. `f_t` enters
+condition 1 in both readings and conditions 2 and 3 through `û`; the part of the wide
+reading that can be evaluated without it is the convex-combination condition on `O`.

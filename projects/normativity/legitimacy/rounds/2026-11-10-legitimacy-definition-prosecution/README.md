@@ -1,22 +1,26 @@
-# Legitimacy: manipulation as induced mistake of her appraisals
+# Legitimacy: manipulation as induced mistake; a change of what she values judged against a reference
 
 Round `2026-11-10-legitimacy-definition-prosecution`.
 
 ## The account
 
-`account/ACCOUNT.md` is the statement that governs now. She decides with **appraisals**,
-each an estimate of a variable with a true value, and values her moves by a **way of
-valuing** applied to her appraisals; her **true utility** is her **baseline** way of
-valuing applied to the true values. Her two mistakes are an appraisal's
-**miscalibration**, in one of three labelled strengths, and her **regret by her own
-lights**; being less informed is neither. An adviser's policy **manipulates** her when
-some counted appraisal's miscalibration, or her regret, is larger under it than under the
-**permitted policies** its role stipulates. She is **presumed checked in**: the baseline
-follows her way of valuing through every step in which the adviser neither induced a
-mistake nor altered her without her say. Changing what her moves lead to, deciding what
-was hers to decide and altering her directly are other wrongs. The belief side is held
-with some confidence; the value side is a conjecture under test. All names are
-provisional.
+`account/ACCOUNT.md` is the statement that governs now. At a moment she has an
+**appraisal**, a probability over the possible joint values of the **facts**, and a **way
+of valuing**, a number for each move at each value of the facts; her **valuation** of a
+move is the one averaged by the other, and her **true utility** is her way of valuing at
+the true facts, among them where the move leads and who she becomes on it. Three
+measures: a valuation's **miscalibration**, her **unused information**, her **regret by
+her own lights**; being less informed is none of them. On the belief side an adviser's
+policy **manipulates** her when some counted appraisal's miscalibration, or her regret,
+is larger under it than under the **permitted policies** its role stipulates. On the
+value side the question arises when her later way of valuing is distributed differently
+under the policy than under the **idle** one, and there is no issue exactly when a single
+permitted policy is matched on **options** (the best she can do, for each way of valuing
+in a class read **narrow** or **wide**), on **accuracy** (each valuation's
+miscalibration) and on **self-command** (her regret). A failure of the last two is
+manipulation; a failure of the first is the adviser settling what was hers to settle.
+The belief side is held with some confidence; the value side is the prompt author's
+statement, tested in this round only. All names are provisional.
 
 The account is a formalisation of Robert Noggle's Mistake Account (*Manipulation: Its
 Nature, Mechanisms, and Moral Status*, OUP 2025; "The Mistake Account of Manipulation",
@@ -29,6 +33,8 @@ the same problem: Nora Ammann, *The Value Change Problem*
 
 Each other directory states and tests one candidate statement and keeps its own content;
 on every question `account/ACCOUNT.md` also answers, `account/ACCOUNT.md` governs:
+`account/BASELINE_ACCOUNT.md` (a baseline way of valuing that follows her through clean
+steps; tested by `account/RESULTS.md`, `account/VALUE_CHANGE.md`, `account/BENCHMARK.md`),
 `rerun/SETTING.md` (worse than before, and avoidably), `estimates/SETTING.md` (worse than
 under the adviser's honest conduct), `blocks/SETTING.md` (a part as a mechanism and a
 purpose on the world), `scored/ACCOUNT.md`, `decomposition/ACCOUNT.md`,

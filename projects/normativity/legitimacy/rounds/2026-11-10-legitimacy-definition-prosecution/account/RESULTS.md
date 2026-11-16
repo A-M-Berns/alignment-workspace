@@ -1,6 +1,6 @@
 # Results — the eleven worked results under the consolidated setting
 
-Symbols are those of `ACCOUNT.md`. Each result is restated exactly, with the strength of
+Symbols are those of `BASELINE_ACCOUNT.md`. Each result is restated exactly, with the strength of
 calibration it uses, a proof on paper, and its check in `results.py` (seeded random finite
 scenes and named instances, exact rationals). The table is what `run.py` compares with the
 checks; a status is a fact about the statement as written here and about finite scenes.
@@ -87,7 +87,7 @@ immediate for per conduct. *Check.* The instance, over every pure policy and a m
 351 scenes satisfying the corrected hypothesis, every pure policy enumerated; 386
 mixtures.
 
-**6. Relabelling** (each strength). Every quantity of `ACCOUNT.md` §5–§6 is unchanged
+**6. Relabelling** (each strength). Every quantity of `BASELINE_ACCOUNT.md` §5–§6 is unchanged
 when the conducts are renamed by a bijection and the policy, `s`, `τ` and every `X_i` are
 carried along. Merging two conducts is not a relabelling and changes per-conduct
 miscalibration. *Check.* 150 scenes: three miscalibrations, regret, the three channels.
