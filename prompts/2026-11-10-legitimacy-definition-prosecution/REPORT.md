@@ -3186,7 +3186,13 @@ and could not build the Lean. Dispositions, by its numbering:
   with one history each; its grain was not exercised.
 - **Proofs are on paper** except results 1, 2, 3 and 7. Result 10's inequality is stated
   from the standard literature, its sources confirmed bibliographically and not opened.
-- **Gates.** GATES_PLACEHOLDER
+- **Gates.** On the tree of commit `37c174c7`, under Python 3.13: `tests/run.py` all green
+  over 81 projects, the Lean build skipped as that runner does by default;
+  `tests/audit_axioms.py` clean, 4013 results across 124 files within the three axioms;
+  the round's runner green; and CI's seven required jobs green on that commit, the `lean`
+  job's build and audit among them. An earlier run of the sweep failed on the site build,
+  which is why the theorems are unregistered, and one on the review file not yet being
+  committed. `tests/round_records.py` has no pull-request context locally; CI runs it.
 - **Components.** The account as stated — **open**. The claim of §2.3 — **open**.
   Results 1, 2, 3 and 7 — kernel-checked declarations, unregistered, so **open** as
   claims. Results 4–6 and 8–11 — **open**, runner-checked on finite scenes. The three
