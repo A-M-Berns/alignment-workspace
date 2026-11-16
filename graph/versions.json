@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "218a8bcbcc7893f0b6c02482",
-  "index.json": "b0b282d85212bd4b2eb2b7a6"
+  "derived.json": "cad89eed7bc2beb7bfda252b",
+  "index.json": "bb964bfdd0e95db784b2576f"
  },
- "generated_hash": "762f560ee61721947f19cc9f",
+ "generated_hash": "eeab54a4d6e4e9ff9b605c16",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -8919,6 +8919,11 @@
     "date": "2026-11-16",
     "normalized": "item 137 the accounts remaining statements in lean vulnerability selection the run the drift bound and the true score form of theorem 3 b is delivered in the shape its entry states lean proved in lean workspace deference contrib appraisalaccount lean or a file beside it in a contribution namespace on a finite probability space with the workspaces expectr and that files condexp results 3 the failing instance 5 corrected form and failing instance 8 10 the finite bound and the witness without feedback and 11 of account results md statements 1 1 1 4 4 2 and 5 1 of estimates results md and truescore_noregret against deconfusingcorrigibility sequential on witness sequential with a true utility sequence that differs from v at every step each with a nonvacuity witness and a registry entry",
     "version": 7
+   },
+   {
+    "date": "2026-11-16",
+    "normalized": "item 137 the accounts remaining statements in lean vulnerability selection the run the drift bound and the true score form of theorem 3 b is delivered in the shape its entry states lean proved in lean workspace deference contrib appraisalaccount lean or a file beside it in a contribution namespace on a finite probability space with the workspaces expectr and that files condexp results 3 the failing instance 5 corrected form and failing instance 8 10 the finite bound and the witness without feedback and 11 of account results md statements 1 1 1 4 4 2 and 5 1 of estimates results md and truescore_noregret against deconfusingcorrigibility sequential on witness sequential with a true utility sequence that differs from v at every step each with a nonvacuity witness and a registry entry and the registry entries for the four theorems the file already proves account lean md registration",
+    "version": 8
    }
   ],
   "item-138": [

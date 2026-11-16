@@ -77,6 +77,11 @@ executor's. Two readings were made after the freeze and are not in §1:
   With `ACCOUNT.md`'s sense (some decision she could face depends on it) an option's
   availability is counted, and D5 then finds no I in the cases of adaptation it was
   written for. D4 keeps `ACCOUNT.md`'s sense.
+- **D8 as first implemented** also counted a case as turning when its variants differed
+  in whether her valuing changes at all; as frozen it asks only whether M or A differs,
+  and the counts below are as frozen (the first implementation gave one more, C19).
+  `says` now returns *outside* where D2 fails (no case), and a legitimate case with M
+  and her say would be listed as covered and not counted (no case).
 - **A⁺**, a wider alteration clause, is computed beside A: at one world, between two
   conducts, with every appraisal she counts as bearing on the matter and her move the
   same, `f′` differs. A, as frozen, holds only where nothing she registers differs. A⁺
@@ -105,7 +110,7 @@ rendering her way of valuing does not move.
 | C16 | ill | she registers the wording, counts it as irrelevant, and appraises both programmes rightly | — | — | I | I′ | A⁺ | leg | ill |  |
 | C17 | ill | her favourable regard is an appraisal of how good the product is, and the product is no better | M: how good the product is (induced) | — | — | — | — | ill | ill | yes |
 | C18 | leg | she rates the two the same and familiarity decides | — | — | I | I′ | A⁺ | leg | ill |  |
-| C19 | ill | her valuations still rate the other higher and she picks the familiar one; regret by her own lights | — | — | — | — | — | no change | no change | yes |
+| C19 | ill | her valuations still rate the other higher and she picks the familiar one; regret by her own lights | — | — | — | — | — | no change | no change |  |
 | C20 | ill | she adapts to what she can have and believes nothing false; another wrong: options | — | — | I | I′ | A⁺ | leg | ill | yes |
 | C21 | ill | she takes the terms for the only ones possible | M: better terms are possible (exploited) | — | — | — | — | ill | ill | yes |
 | C22 | leg | what she learns is true | — | — | — | — | — | leg | leg |  |
@@ -168,8 +173,8 @@ Of 34 counted cases (14 legitimate, 20 illegitimate):
 - **no change of valuing in the rendering**: 1 — C19.
 - **legitimate with a miscalibrated counted appraisal**: 1 — C38.
 - **legitimate with M**: 1 — C38.
-- **turn on a detail**: 16 — C3, C4, C5, C7, C11, C15, C17, C19, C20, C21, C24, C26, C32, C34, C36, C37.
-- **turn on a detail, counted**: 12 — C4, C5, C11, C15, C17, C19, C20, C21, C24, C26, C34, C36.
+- **turn on a detail**: 15 — C3, C4, C5, C7, C11, C15, C17, C20, C21, C24, C26, C32, C34, C36, C37.
+- **turn on a detail, counted**: 11 — C4, C5, C11, C15, C17, C20, C21, C24, C26, C34, C36.
 - **I convicts, M and A do not**: 8 — C14, C16, C18, C20, C28, C33, C37, C40.
 - **I′ convicts, M and A do not**: 13 — C1, C13, C14, C16, C18, C20, C27, C28, C30, C33, C37, C40, C45.
 - **A+ convicts, M and A do not**: 10 — C14, C16, C18, C20, C27, C28, C33, C37, C40, C45.
@@ -179,19 +184,21 @@ Of 34 counted cases (14 legitimate, 20 illegitimate):
 
 **Counterexamples to the claim with M and A.** Two illegitimate changes with neither:
 
-- **C16, framing.** Her preference reverses with the wording; she appraises both
-  programmes rightly and counts the wording as irrelevant. No appraisal of a variable
-  with a true value is miscalibrated, and she registers the wording, so nothing bypasses
-  her. The valuation that moved is the only candidate for the mistake, and D4 does not
+- **C16, framing.** In the rendering her preference reverses with the wording, her one
+  appraisal of the options is right, and she registers the wording and counts it as
+  irrelevant. No appraisal in the scene is miscalibrated, and she registers the wording,
+  so nothing bypasses her. The rendering carries no forecast of her own reversal and no
+  numerical valuations, so it does not show her calibrated about everything; and the
+  source shows a reversal between groups given different wordings, not one person's
+  state. The valuation that moved is the only candidate for the mistake, and D4 does not
   try valuations: were they tried, every change of valuing would count as its own
-  mistake. The scene is also one in which a valuation moves with no appraisal and no
-  lasting way of valuing moving (the dispatch's F5): to express it, her way of valuing
-  must take the wording as an argument, which the valuing assumption excludes, or the
-  wording must be an appraisal of a variable with no true value.
+  mistake. The valuing assumption does express the scene: which wording was used is a
+  variable with a true value, she appraises it rightly, and her way of valuing changes
+  with that appraisal.
 - **C34, addictive design with full disclosure**, in the rendering where she foresees
-  the change, plays, and her valuing changes. She is calibrated about everything, her own
-  change included, and nothing bypasses her. Whether that rendering is a *clear* case of
-  illegitimate change is the question: the evident verdict was recorded for the case as
+  the change, plays, and her valuing changes. Her forecast of her own change is right
+  and nothing bypasses her. The rendering changes the facts on which the evident verdict
+  was recorded, and whether it is a *clear* case of illegitimate change is the question: the evident verdict was recorded for the case as
   the source describes it, in which players do not foresee the compulsion (the second
   variant, where M holds); in a third rendering she plays against her own valuations,
   her valuing does not change, and the conduct is manipulation by her regret.
@@ -205,16 +212,19 @@ appraisal of the teacher's excitement is false, the teacher induced it, and the 
 runs through it. It is not a counterexample if teaching is a practice that allows it, a
 question in the maintainer's queue.
 
-**A conversion by reflection is legitimate only if the argument is sound** (C5's
-variant). A sincere and mistaken argument that she accepts is M, induced. The claim
-makes the legitimacy of a change depend on the truth of what she was persuaded of.
+**A conversion through a false belief sincerely argued for is M** (C5's variant: she
+comes to hold the conclusion with certainty, it is false, and the change would not have
+happened without it). On that rendering the claim makes the legitimacy of the change
+depend on the truth of what she was persuaded of. An unsound argument for a true
+conclusion, or one she accepts with fitting doubt, is not this rendering.
 
-**Upbringing** (C26, C27) is not A as frozen: a child registers how it is raised. It is
+**Upbringing** (C26, C27), rendered as habituation the child registers, is not A as
+frozen. It is
 A⁺. JoJo is convicted by M, through a false appraisal of how much others matter, and
 only if that variable has a true value; raised by habit alone he is not convicted and is
 indistinguishable from C27.
 
-**Details.** Twelve of the 34 counted verdicts turn on a detail the case does not fix,
+**Details.** Eleven of the 34 counted verdicts turn on a detail the case does not fix,
 most often whether she foresaw her own change and whether she would have gone on had
 she. A mistake is found in one of the 14 legitimate cases.
 
@@ -247,19 +257,31 @@ mistake though neither frame is*: the account has no mistake to point to (C16); 
 *Liking by association with something unrelated is a mistake*: the account agrees where
 her favourable regard is an appraisal of how good the thing is and the thing is no
 better (C17, primary), and has no verdict where she simply comes to enjoy it more (C17,
-variant); I convicts both. *A preference for the familiar is not itself a mistake, and
+variant); I convicts the second and not the first. *A preference for the familiar is not itself a mistake, and
 inducing it is manipulative only where it leads her to act against her own judgment*:
 the account agrees on both halves (C18 legitimate; C19 her regret), and I departs,
 convicting the tie-break.
 
 ## 7. What was not shown
 
-- The classification is consistency with renderings the executor wrote. A rendering
-  fixes which appraisals she has, which are counted, what she registers and what her
-  move would have been with an appraisal corrected; the builders in `value_change.py`
-  are five scene shapes, and a case's verdict is that of its shape.
+- The classification is consistency with renderings the executor wrote, and is not a
+  computation of the account on the cases as their sources state them. A rendering fixes
+  which appraisals she has, which are counted, what she registers and what her move
+  would have been with an appraisal corrected; `value_change.py` has five scene shapes,
+  a shape with no change, one with no adviser and one custom scene (C21), her way of
+  valuing is a label and not a function, what she observes is her appraisal vector, and
+  a case's verdict is that of its shape. The calibrated forecast of 1/2 in C1, C13 and
+  C30, the false propositions of C21, C23 and C26, and the counterfactual refusals of
+  C3, C4, C7, C15 and C36 are additions.
+- **D3 does not capture a direct effect she notices.** An injection she accurately
+  observes changes her through no appraisal, and D3 finds no pair of matched situations,
+  so it returns no A (the external review's instance). Matching what she registers is
+  not intervening on how the change reaches her.
+- C19's primary rendering marks her regret and does not compute it; C18's and C40's
+  treat a tie broken, and a liking acquired, as a change of her way of valuing.
 - The evident verdicts marked *e* are the executor's. C34's and C38's decide a
-  counterexample each.
+  counterexample each. C38 is from this round's own bank, named by the dispatch, and
+  C39, C40, C42 and C45 are constructed.
 - Noggle's 2026 paper was not read; his cases on emotion and desire are represented only
   by the three positions the addendum paraphrases.
 - No case has more than one step, a randomising adviser or more than two worlds. "Induced"

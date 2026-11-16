@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `ATTENTION.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 1170 names, 618 of them Lean only
+## deference — 1166 names, 618 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -44,7 +44,6 @@ change, and the count of those is the size of the free choice remaining.
 | `defect_bound` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.CertificateBounds.defect_bound` |
 | `deferred_ahead` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki, prose | `Workspace.Deference.Contrib.ShortfallSecurity.deferred_ahead` |
 | `deferred_eventually_excluded` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki, prose | `Workspace.Deference.Contrib.ShortfallSecurity.deferred_eventually_excluded` |
-| `deferring_identity` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry, prose | `Workspace.Deference.Contrib.AppraisalAccount.deferring_identity` |
 | `delegation_bridge` | theorem | 2026-08-11-phase-ii-promotion | registry, prose | `Workspace.Deference.Contrib.DelegationBridge.delegation_bridge` |
 | `delegation_bridge_unconditional` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.DelegationBridge.delegation_bridge_unconditional` |
 | `discount_defeats_exchange_rate` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki, prose | `Workspace.Deference.Contrib.EffectiveAuthority.discount_defeats_exchange_rate` |
@@ -70,8 +69,6 @@ change, and the count of those is the size of the free choice remaining.
 | `magnitude_not_traderPayoff` | theorem | 2026-08-11-phase-ii-prediction | registry | `Workspace.Deference.Contrib.MagnitudePrediction.magnitude_not_traderPayoff` |
 | `margin_forces_agreement` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.CertificateBounds.margin_forces_agreement` |
 | `marginal_not_correct` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.ThinLegitimacy.Witness.marginal_not_correct` |
-| `misuse_le` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry, prose | `Workspace.Deference.Contrib.AppraisalAccount.misuse_le` |
-| `mse_split` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry, prose | `Workspace.Deference.Contrib.AppraisalAccount.mse_split` |
 | `netWorth_eq_zero` | theorem | 2026-08-11-phase-ii-prediction | registry | `Workspace.Deference.Contrib.MagnitudePrediction.CoherentMixture.netWorth_eq_zero` |
 | `offProtocol_deviation_finite` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.AskList.offProtocol_deviation_finite` |
 | `order_by_want_tainted` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.AskList.Rows3.order_by_want_tainted` |
@@ -117,7 +114,6 @@ change, and the count of those is the size of the free choice remaining.
 | `theorem3a` | theorem | 2026-10-17-post-companion-formalization | registry, wiki, prose | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Sequential.theorem3a` |
 | `theorem3a_rate` | theorem | 2026-10-17-post-companion-formalization | registry, wiki, prose | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Sequential.theorem3a_rate` |
 | `theorem3b` | theorem | 2026-10-17-post-companion-formalization | registry, wiki, prose | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Sequential.theorem3b` |
-| `three_channels` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry, prose | `Workspace.Deference.Contrib.AppraisalAccount.three_channels` |
 | `unitTrader_netWorth_eq` | theorem | 2026-08-11-phase-ii-prediction | registry, note | `Workspace.Deference.Contrib.MagnitudePrediction.unitTrader_netWorth_eq` |
 | `unpredictability_separates` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.SubstitutionSeparation.unpredictability_separates` |
 | `value_eq_of_price_realization_eq` | theorem | 2026-08-11-stage-v-li-native | registry, note, prose | `Workspace.Deference.Contrib.StaticViewFactorization.value_eq_of_price_realization_eq` |

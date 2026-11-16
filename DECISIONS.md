@@ -558,7 +558,7 @@ commit.
   The sixth follow-up (2026-11-14) again files no item and no node; the node it would file for
   Noggle's book is under *Outstanding maintainer actions* of its report section.
   The seventh follow-up (2026-11-14) files no item and no node.
-  The eighth follow-up (2026-11-16) registers four Lean claims against item 137 and files no node for them or for anything else; their record nodes wait on this entry.
+  The eighth follow-up (2026-11-16) ships four kernel-checked theorems against item 137 unregistered, because the site build refuses a registered claim without a map node and a node needs this handle; the entries to file are in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md`.
 
 - **Which reading of *in range* does the purpose-first account mean? (2026-11-11).**  The account's
   clause is that her actual source is among those she gives weight (`α > 0`); its account of
@@ -8075,7 +8075,7 @@ mistake, with the cognitive faculties she decides with modelled as estimators, e
 quantity it estimates as its purpose, and extended to her estimates of her own utility so that
 the same account covers change of values.
 
-### 2026-11-16 — the consolidated account: its readings, and four Lean claims registered
+### 2026-11-16 — the consolidated account: its readings, and four Lean theorems shipped unregistered
 <!-- decision: 2026-11-16--consolidated-account-readings; touches: item:136, item:137, item:138, node:legitimacy -->
 
 **Agent-decided, reversible** (the eighth follow-up to the legitimacy definition prosecution
@@ -8089,9 +8089,10 @@ where nothing she registers differs; rejected: the wider clause, queued. A corre
 steps is summed with each step by the baseline as it stood; rejected: by the baseline at the
 start, which reverses the benchmark's verdict on the writer's curse. "Counted" in the addendum's
 clause I is read as counted by her as bearing on the valuation at issue; rejected: the account's
-own sense, under which the clause never holds where it was meant to. (3) *Registered.*
-`appraisal.mse-split`, `appraisal.three-channels`, `appraisal.cost-of-mistakes` and
-`appraisal.deferring` in `projects/normativity/CLAIMS.md`, class `lean-proved`, against item 137,
-which stays open with its remainder stated. (4) *Concepts and items.* The sixth follow-up's
+own sense, under which the clause never holds where it was meant to. (3) *Not registered.* `mse_split`, `three_channels`, `misuse_le` and
+`deferring_identity` in `lean/Workspace/Deference/Contrib/AppraisalAccount.lean` are kernel-checked
+with witnesses and ship unregistered: the site build refuses a registered claim that no map node
+carries, and a node needs the handle of the queue entry of 2026-11-10. The entries to file are in
+`account/LEAN.md` of the round directory. Item 137 stays open with its remainder stated. (4) *Concepts and items.* The sixth follow-up's
 concepts are revised to say what the account says; three are added (`appraisal`, `way-of-valuing`, `presumed-check-in`), none shown as established.
 Items 136, 137 and 138 are rewritten to what this pass leaves of them. Nothing else is filed.

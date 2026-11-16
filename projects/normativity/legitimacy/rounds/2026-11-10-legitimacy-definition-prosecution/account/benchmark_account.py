@@ -111,6 +111,8 @@ def writers(told_declines=True, at_move=False):
             if s == "no-poetry" and told_declines:
                 return (s, th, True)
             return ex.step(s, th, "influence") + (True,)
+        if a == "influence" and s == "no-poetry" and told and told_declines:
+            return (s, th, told)                       # told, he declines whenever he is motivated
         return ex.step(s, th, a) + (told,)
     def apps(st, a, st2):
         if at_move:        # at the time of his move: told by this action, or already told, or already a poet
@@ -123,7 +125,8 @@ def writers(told_declines=True, at_move=False):
                actions=["noop", "influence", "tell"], permitted=lambda st: ["noop", "influence", "tell"], step=step, apps=apps,
                uhat=lambda f, st, st2, a: ex.reward(f, st[0], a, st[0]), U=lambda fbar, st, a: ex.reward(fbar, st[0], a, st[0]),
                channel=lambda st, a, st2: "chosen" if st2[1] != st[1] else None,
-               effective=lambda st, a: ("noop" if (st[0] == "no-poetry" and told_declines) else "influence") if a == "tell" else a)
+               effective=lambda st, a: ("noop" if (st[0] == "no-poetry" and told_declines and (a == "tell" or st[2])) else "influence")
+               if a in ("tell", "influence") else a)
 
 
 def clickbait(belief=True):

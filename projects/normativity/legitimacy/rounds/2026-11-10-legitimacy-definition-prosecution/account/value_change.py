@@ -258,6 +258,8 @@ def says(cl, with_i=False):
     """D6: what the claim says of a classified scene."""
     if not cl["change"]:
         return "no change"
+    if not cl["caused"]:
+        return "outside"                    # D2: the change is not the conduct's
     return "ill" if (cl["M"] or cl["A"] or (with_i and cl["I"])) else "leg"
 
 
@@ -267,8 +269,8 @@ def compute():
     for cid, variants in CASES.items():
         cls = [(d, s, s.classify()) for d, s in variants]
         d0, s0, c0 = cls[0]
-        turns = len({(bool(c["M"]), c["A"], c["change"]) for _, _, c in cls}) > 1
-        table[cid] = dict(role=rows[cid][0], evident=rows[cid][1], detail=d0, cl=c0, wrong=s0.wrong, regret=s0.regret,
+        turns = len({(bool(c["M"]), c["A"]) for _, _, c in cls}) > 1          # D8: M or A differs between variants
+        table[cid] = dict(role=rows[cid][0], evident=rows[cid][1], detail=d0, cl=c0, wrong=s0.wrong, regret=s0.regret, say=s0.say,
                           turns=turns, variants=[(d, says(c), says(c, True), s.wrong, c) for d, s, c in cls])
     return table
 
@@ -280,7 +282,9 @@ def counts(table):
     def wrong(k, with_i):
         v = table[k]
         s = says(v["cl"], with_i)
-        return s != "no change" and s != v["evident"]
+        if v["evident"] == "leg" and v["cl"]["M"] and v["say"] and not v["cl"]["A"] and not (with_i and v["cl"]["I"]):
+            return False                    # D7: a mistake she agreed to be led into is covered, listed and not counted
+        return s not in ("no change", "outside") and s != v["evident"]
     out = {}
     for name, with_i in (("M, A", False), ("M, A, I", True)):
         cx_ill = [k for k in ill if wrong(k, with_i)]

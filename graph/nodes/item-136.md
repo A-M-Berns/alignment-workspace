@@ -52,7 +52,7 @@ did not choose (upbringing, a nudge, exposure, a feed) is not an alteration as t
 the benchmark's verdicts reverse when it is counted as one. A total over steps is needed and the verdict on
 one example reverses with it. Two illegitimate changes have neither a mistake nor an alteration: a
 preference reversed by the wording of a choice, and addictive design with everything disclosed and foreseen.
-And twelve of 34 verdicts turn on a detail the case does not fix, every rendering being one executor's. The
+And eleven of 34 verdicts turn on a detail the case does not fix, every rendering being one executor's. The
 account of manipulation as induced mistake is Noggle's (Robert Noggle, *Manipulation: Its Nature,
 Mechanisms, and Moral Status* (Oxford University Press, 2025, doi:10.1093/9780198924920.001.0001), and "The
 Mistake Account of Manipulation", *Journal of Practical Ethics* 14(1), 2026, doi:10.3998/jpe.9951); the

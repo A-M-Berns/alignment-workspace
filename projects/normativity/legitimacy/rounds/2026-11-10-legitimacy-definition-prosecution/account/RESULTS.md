@@ -46,12 +46,15 @@ valuations' full miscalibrations: `E[max_a ū_a − ū_c] ≤ E[max_a û_a − �
 minimal miscalibrations, or of per-conduct ones, it fails**: two equally likely worlds
 she observes; *stay* is worth 0 and *go* is worth 1 in one world and −1 in the other; she
 values both at 0 and stays. Her regret is 0, each valuation's minimal and per-conduct
-miscalibration is 0, its full miscalibration is 1, and the left side is 1/2. *What holds
+miscalibration is 0, the full miscalibration of *go* is 1 and of *stay* 0, and the left
+side is 1/2. *What holds
 at the weaker strengths.* For any reference `G` that `û` and `c` are functions of, with
 `ũ_a = E[U_a | G]`: `E[max_a ũ_a − ũ_c] ≤ regret + √(2 Σ_a E[(û_a − ũ_a)²])`; the loss it
 bounds is against `G`, and what she observed and did not use, `E[max ū] − E[max ũ]`, is
-outside it. *Check.* 150 scenes at full and at `G = (û, c)`; the instance. The constant
-`√2` is attained (`estimates/RESULTS.md` 1.4).
+outside it. *Check.* 150 scenes at full and at `G = (û, c)`; the instance. The coarser form is for
+one reference common to the moves, not for each move's own minimal miscalibration. The
+constant `√2` is attained: one world, true utilities (1, −1), valuations (0, 0), the
+second move chosen.
 
 **4. Manipulation helps only someone already in error** (no calibration used). Write
 `Best(σ) = E_σ[max_a U_a]`, `Ign(σ)` for the second term of result 2 and `Mis(σ)` for the
@@ -71,9 +74,10 @@ it at any strength. *With a hypothesis added it holds, at minimal and so at each
 strength*: if `μ(ω₀) > 0`, the adviser can condition on the world, and for two conducts
 `b, b'` the appraisal differs at `ω₀` and is not exactly right there under both, then
 some pure policy gives it positive minimal miscalibration. *Proof.* Fix the policy
-elsewhere and let `v ≠ v'` be her appraisal at `ω₀` under `b` and `b'`. If all four
-appraisal cells involved are calibrated, the cell of `v` has mean `v` with and without
-`ω₀`, so `X(ω₀, b) = v`; likewise `X(ω₀, b') = v'`. The hypothesis holds in particular
+elsewhere and let `v ≠ v'` be her appraisal at `ω₀` under `b` and `b'`. Calibration of a
+cell is zero weighted residual, `Σ μ(ω)(X − v) = 0` over the cell. Subtracting the
+equations for the cell of `v` with `ω₀` in it and without (the second is `0 = 0` if the
+cell is then empty) gives `μ(ω₀)(X(ω₀, b) − v) = 0`; likewise `X(ω₀, b') = v'`. The hypothesis holds in particular
 when the true value at `ω₀` does not depend on the conduct. *Second half, at each
 strength (the same in hypothesis and conclusion).* If the adviser's information is
 trivial and the appraisal is calibrated under each constant conduct, it is calibrated
@@ -115,10 +119,11 @@ the same conduct, observation and trajectory at the good world; her appraisal's
 miscalibration is 0 under the first and 1/4 under the second, at each strength.
 
 **10. The run** (full, at each step, given everything observed so far). Steps
-`t = 1, …, T`; `V_t` her verdict and `U_t` her true utility at step `t`, `|V_t − U_t| ≤ c`;
-`H_t` everything she has observed before giving `V_t`, which includes `U_1, …, U_{t−1}`.
-If `V_t = E[U_t | H_t]` for every `t`, then `D_t = V_t − U_t` is a martingale difference
-sequence, so `E[(Σ_{t≤T} D_t)²] = Σ_{t≤T} E[D_t²] ≤ c²T`, hence
+`t = 1, …, T`; `V_t` her verdict and `U_t` her true utility at step `t`; `H_t` everything
+she has observed before giving `V_t`, with `H_t ⊆ H_{t+1}` and `U_t` among what `H_{t+1}`
+holds. Added to the dispatch's statement: a uniform bound `|V_t − U_t| ≤ c`. If
+`V_t = E[U_t | H_t]` for every `t`, then `D_t = V_t − U_t` is a martingale difference
+sequence for the filtration `H_{t+1}`, so `E[(Σ_{t≤T} D_t)²] = Σ_{t≤T} E[D_t²] ≤ c²T`, hence
 `E[((1/T) Σ D_t)²] ≤ c²/T`, and by the Azuma–Hoeffding inequality
 `P(|(1/T) Σ_{t≤T} D_t| ≥ ε) ≤ 2 exp(−ε²T / (2c²))` (K. Azuma, "Weighted sums of certain
 dependent random variables", *Tôhoku Mathematical Journal* 19(3), 1967, 357–367,
@@ -132,14 +137,16 @@ depend on the past in any way: calibration is under the actual policy. *Check, a
 bound.* A hidden bit drawn once; an adviser whose conduct tracks it with probability 2/3;
 `T = 2, 4, 6`, every path enumerated: the orthogonality identity exactly, `E[mean²] ≤ 1/T`
 and the tail bound at `ε = 1/2` against a rational upper bound on the exponential. **Without
-the feedback it fails**: with the bit hidden and no earlier `U_t` observed, her verdict
+the feedback it fails** on one model (which also makes the conduct uninformative, so the
+comparison changes more than the feedback): with the bit hidden and no earlier `U_t`
+observed, her verdict
 1/2 is the best estimate given what she has seen at every step and
 `E[mean²] = 1/16 + 3/(16T)`, never below 1/16 (computed at `T = 2, 4, 6, 20`).
 
 **11. Calibrated appraisals, miscalibrated valuation** (every strength). One fair coin
 `X_1 = X_2`, nothing observed, `x̂_1 = x̂_2 = 1/2`, `f = x_1·x_2`: both appraisals are the
 best estimates given what she observes and the valuation 1/4 estimates a true utility
-with mean 1/2; its miscalibration is 1/16 at each strength. For a weighted sum, full
+with mean 1/2; it is off by 1/4 and its miscalibration is 1/16 at each strength. For a weighted sum, full
 calibration of the appraisals gives full calibration of the valuation (linearity of
 `E[· | s]`; 150 scenes), and minimal does not: an instance with both appraisals minimally
 calibrated and the sum off by 4/25.
