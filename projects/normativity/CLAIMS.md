@@ -2626,3 +2626,114 @@ Round `2026-10-21-rebuttal-and-end-to-end`; the dispatch's registration list, ag
   "note": "From IncompatibilitySemantics.certEntails_iff_sem, with a citation chosen for each weighted row. Consequences for WarrantInductor.Problem: where every inadequate response scores at most a rational t ≤ τ at every point of the region, upper certificates making Excludes hold exist (excludes_of_region); where every margin witness scores at least a rational t ≥ τ + δ, lower certificates making Margins hold at tolerance 0 exist (margins_of_region). Not derived: a threshold with no rational between it and the region's supremum, and Margins at a positive tolerance, where the tolerance multiplies the certificate's mass. The hypothesis is inhabited by citedFunctional_witness (SeedStatics.widenSeed)."
 }
 ```
+
+### The appraisal account
+
+Finite identities and one bound of the account in
+`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/ACCOUNT.md`, registered against item 137 by the eighth follow-up of the
+prosecution round. They are facts about expectations on a finite space; that the account's
+definitions are the right reading of manipulation is not among them.
+
+### appraisal.mse-split
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the split: on a finite space, the mean squared error of an appraisal constant on the cells of a labelling is the target's mean squared distance from its cell means plus the appraisal's mean squared distance from them",
+  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.AppraisalAccount.mse_split"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/RESULTS.md"
+  },
+  "note": "Result 1 of account/RESULTS.md. At the labelling given by the appraisal itself (mse_split_minimal) the second term is the minimal miscalibration; at the appraisal with the conduct, or at what she observes, it is the per-conduct or the full one. Holds for any non-negative weight; cells of zero mass included. Inhabited by Witness.mse_split_instance."
+}
+```
+
+### appraisal.three-channels
+
+```json
+{
+  "project": "normativity",
+  "short_name": "three channels: what she attains equals the best attainable, less what she cannot know, less what her choice loses against the true utilities averaged over what she observes, the two subtracted terms non-negative",
+  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.AppraisalAccount.three_channels"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/RESULTS.md"
+  },
+  "note": "Result 2 of account/RESULTS.md, for a choice that is a function of what she observes. Inhabited by Witness.three_channels_instance, whose observation is complete, so that only the third term is non-trivial on it."
+}
+```
+
+### appraisal.cost-of-mistakes
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the cost of mistakes: what her choice loses is at most her expected regret by her own lights plus the square root of twice the summed mean squared distance of her valuations from the true utilities averaged over what she observes",
+  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.AppraisalAccount.misuse_le"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/RESULTS.md"
+  },
+  "note": "Result 3 of account/RESULTS.md, at the full strength of calibration (valuationError conditions on what she observes). The same bound with the minimal or the per-conduct strength in its place is false (account/results.py, r3); that failure is checked in Python and is not a Lean declaration. Inhabited by Witness.misuse_le_instance."
+}
+```
+
+### appraisal.deferring
+
+```json
+{
+  "project": "normativity",
+  "short_name": "deferring: the adviser's squared error less her verdict's equals the mean squared distance of the adviser's estimate from the estimate given both, less that of her verdict; the first vanishes when her verdict is constant on the cells of the adviser's information",
+  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.AppraisalAccount.deferring_identity"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/RESULTS.md"
+  },
+  "note": "Result 7 of account/RESULTS.md. Inhabited by Witness.deferring_instance (a verdict not determined by the adviser's information), Witness.deferring_determined_instance and Witness.deferring_identity_instance."
+}
+```

@@ -43,6 +43,7 @@
 | `PostStatement.lean` | `prompts/2026-10-01-thin-legitimacy-and-effective-authority/` (`PROMPT.md`; executor: Claude Fable 5.1, Anthropic; prompt author: Claude Fable 5.1, Anthropic, from a conversation with the maintainer) | `ci-only` | 2026-10-01 | `prompts/2026-10-01-thin-legitimacy-and-effective-authority/` | — |
 | `AskListDimension.lean` | `prompts/2026-10-01-thin-legitimacy-and-effective-authority/` (`FOLLOWUP.md`; executor: Claude Fable 5.1, Anthropic; prompt author: Claude Fable 5.1, Anthropic, from a review with the maintainer) | `ci-only` | 2026-10-01 | `prompts/2026-10-01-thin-legitimacy-and-effective-authority/` | — |
 | `DeconfusingCorrigibility.lean` | `prompts/2026-10-17-post-companion-formalization/` (`PROMPT.md`; executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-10-17 | `prompts/2026-10-17-post-companion-formalization/` | — |
+| `AppraisalAccount.lean` | `prompts/2026-11-10-legitimacy-definition-prosecution/` (`PROMPT-followup-8.md` §2.5; executor: Claude Fable 5.2, Anthropic, the file drafted by a subagent of the executor to the executor's statements and rebuilt by the executor; prompt author: Claude Fable 5.2, Anthropic) | `ci-only` | 2026-11-16 | `prompts/2026-11-10-legitimacy-definition-prosecution/` | — |
 
 `InheritedAlgebra.lean` transcribes statements from
 `projects/deference/note-dump-2026-06-27/lean/LeanDeference.lean`; per-declaration
