@@ -3599,6 +3599,13 @@ build the Lean. Dispositions, by the numbering of its second stage:
 - **Proofs are on paper** except results 4, 5 (first form) and 3. Results 6–8 are
   instances. The witnesses of results 4 and 5 in Lean have zero unused information.
 - **What choices alone identify** of the split between appraisal and way of valuing.
+- **Gates.** Under Python 3.13: `tests/run.py` all green over 81 projects on the tree of
+  commit `5fd9f78a`, the Lean build skipped as that runner does by default;
+  `tests/audit_axioms.py` clean on the tree of `3b90c17c`, 4031 results across 124 files
+  within the three axioms; the round's runner green; and CI's seven required jobs green
+  on `3b90c17c`, the `lean` job's build and audit among them. `3b90c17c` differs from
+  `5fd9f78a` by one row of the root `PROVENANCE.md`. `tests/round_records.py` has no
+  pull-request context locally; CI runs it.
 - **Components.** The value side as stated — **open**. Results 3, 4 and 5 —
   kernel-checked declarations, unregistered, so **open** as claims. Results 1, 2 and
   6–9 — **open**, runner-checked on finite scenes. The concept added and the seven
