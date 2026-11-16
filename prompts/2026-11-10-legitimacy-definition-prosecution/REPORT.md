@@ -2872,6 +2872,391 @@ conduct names `none` and `tell`, case ids R, W and A.
 
 The pull request is not auto-merged; the merge is a pull-request fact.
 
+## Eighth follow-up (2026-11-16) — the account consolidated, its value-change claim tested, its firm results in Lean
+
+Dispatched by `PROMPT-followup-8.md`, with an addendum, `PROMPT-followup-8-addendum.md`,
+received during the pass from the prompt author's agent session as sent at the
+maintainer's request, on that session's word; it arrived before the definitions of §2.3
+were frozen. The account tested is the dispatch's §1 as `account/ACCOUNT.md` states it,
+with the choices and operational definitions this pass added: the positions marked in
+the dispatch as the maintainer's are his view of 2026-11-15 and 2026-11-16 for this test
+and not rulings, and the rest is the prompt author's statement. The belief side is the
+part held with some confidence; the value side is a conjecture, and nothing below
+settles it. Write scope: the round directory, this prompts directory, items 136–138,
+`DECISIONS.md`, `state/concepts.json`, one new Lean file with its provenance, and the
+structured state the gates require.
+
+**Headline.** Of the eleven worked results, eight hold as stated; result 10 holds with a
+uniform bound added to its statement; result 3 holds at the full strength of calibration
+and fails at the other two; the first half of result 5 fails as stated and holds with a
+hypothesis added. Results 1, 2, 3 and 7 are kernel-checked with witnesses and ship
+unregistered. The claim the value side rests on was tested on renderings of 45 cases
+and not on the cases as their sources state them: under those renderings two
+illegitimate changes have neither a mistake nor an alteration (a preference reversed by
+framing; addictive design with everything disclosed and foreseen, a rendering that
+changes the facts its evident verdict was recorded on), two more are another wrong, one
+legitimate change has a mistake (a teacher's feigned enthusiasm), and 11 of 34 counted
+verdicts turn on a detail the case does not fix. On four primary extensions of the
+benchmark's examples, each adding details the paper does not have, the account picks the
+policy the paper marks desirable in three and shares an optimum with none of the paper's
+eight objectives on all four. The external review's summary of the value side is
+adopted: the formalisation has operational and representation problems, and its
+classifications do not establish the boundary of legitimate value change.
+
+### VIII.1 The statement and its choices
+
+`account/ACCOUNT.md`. Twelve choices where the dispatch's §1 is open (§8 there), each
+with an alternative named: a policy may randomise; the law is the true one; her
+appraisals, choice and way of valuing at a step are fixed functions of what she
+observes; a valuation is itself a counted appraisal of her true utility; at step `t` it
+is her valuing at the start of the step against the baseline at that step; a confidence
+is part of the appraisal's value; a step is judged as a one-step policy on the law the
+earlier steps induce; alteration is read from the transition of her way of valuing (it
+differs between two situations in which everything she appraises, does and experiences
+is the same); "ran through" replaces one miscalibrated counted appraisal by `E[X | s]`,
+her valuations not being tried; the conduct changes her valuing when her valuing after
+the step differs from what it would be under some permitted policy; true utility over
+several steps is summed with each step by the baseline as it stood; a scene without an
+adviser is outside. Devices found needed (§9 there): the transition with its arguments;
+a treatment of what she registers without choosing, which alteration so read does not
+cover; a corrected value for an appraisal; a total over steps; the time within a step at
+which an appraisal is judged; her moves, where a source gives her none; and, for the
+addendum's clause, which appraisals she counts as bearing on the valuation at issue.
+
+### VIII.2 The eleven results
+
+`account/RESULTS.md`, `account/results.py`: each restated, proved on paper and checked in
+exact rationals on seeded random scenes (150, more for results 4 and 5) or a named
+instance.
+
+| | strength | status |
+|---|---|---|
+| 1 the split | each | holds; minimal is at most per conduct and at most full, which are not ordered |
+| 2 three channels | none used | holds |
+| 3 the cost of mistakes | full | holds at full; **fails at minimal and per conduct**: she ignores an informative observation, regret 0, both miscalibrations 0, loss 1/2. At one coarser reference common to the moves the bound holds for the loss against that reference |
+| 4 helps only someone in error | none used | holds; it is result 2 read off |
+| 5 vulnerability | minimal; each | **first half fails as stated at every strength** when she appraises exactly something the conduct fixes; it holds, at minimal, for a world of positive probability and an adviser that can condition on it, if the appraisal differs between two conducts there and is not exactly right under both. Second half holds at each strength, and is empty unless policies may randomise |
+| 6 relabelling | each | holds for a bijection; merging conducts can change per-conduct miscalibration |
+| 7 deferring | a fourth conditioning | holds |
+| 8 selection | per conduct | holds; minimal already gives zero mean inflation, per conduct gives it given each conduct; given the adviser's information it is off by up to 3/4 on the instance |
+| 9 policy, not history | each | holds |
+| 10 the run | full, with feedback | holds, with `|V_t − U_t| ≤ c` uniformly added: `E[mean²] ≤ c²/T` and the Azuma–Hoeffding tail, hence almost-sure convergence, on paper; the finite bounds checked to `T = 6`. On one model without the feedback, `E[mean²] = 1/16 + 3/(16T)` |
+| 11 calibrated appraisals, miscalibrated valuation | every | holds: a product of two best estimates has miscalibration 1/16; a sum is calibrated at full strength and not at minimal |
+
+### VIII.3 The value-change test
+
+`account/VALUE_CHANGE.md`, `CASES.md`, `value_change.py`. Definitions D1–D9 frozen, then
+45 cases with an evident verdict and the adviser's role each, then classification, each
+case rendered as a one-step scene on which M, A and I are computed. The cases: Ammann's
+three and two more of hers, four of Carroll et al., Elster's kinds, the three positions
+of Noggle's book as the addendum paraphrases them, cases from the literature on adaptive
+preference and on autonomy, and the kinds the dispatch requires. Evident verdicts: 14
+legitimate, 20 illegitimate, 10 contested, one with no adviser. What ran is the frozen
+definitions with two readings added after the freeze and one corrected after the review
+(`VALUE_CHANGE.md` §3): "counted" in clause I read as counted by her as bearing on the
+valuation at issue, without which I holds in none of the cases of adaptation; a wider
+alteration clause A⁺ computed beside A; and D8 as frozen, the first implementation
+having counted one case more.
+
+With M and A, on the 34 counted, under the renderings:
+
+- **Illegitimate, neither M nor A: C16 and C34.** C16, framing: her preference reverses
+  with the wording, which she registers. The rendering has no forecast of her own
+  reversal and no numerical valuations, and the source shows a reversal between groups,
+  so "calibrated about everything" is not shown. C34, addictive design with full
+  disclosure, in the rendering where she foresees the change and plays; the evident
+  verdict was recorded for the case as its source describes it, where players do not
+  foresee the compulsion and, with a refusal added, M holds.
+- **Illegitimate, neither, and another wrong: C14 and C20**, a preference that follows
+  the removal of options with nothing false believed.
+- **Legitimate with M: C38**, a teacher's feigned enthusiasm; covered if teaching is a
+  practice that allows it, which is in the maintainer's queue. The case is from this
+  round's own bank, named by the dispatch.
+- **Turning on a detail the case does not fix: 11 of 34** (C4, C5, C11, C15, C17, C20,
+  C21, C24, C26, C34, C36), most often whether she foresaw her own change and whether she
+  would have gone on had she. A mistake is found in 1 of the 14 legitimate cases.
+- A conversion through a false belief sincerely argued for is M (C5's variant).
+- Upbringing rendered as habituation the child registers is not A as frozen; JoJo is
+  convicted through a false appraisal of how much others matter, which needs that
+  variable to have a true value.
+- D3 returns no alteration for a direct effect she accurately notices (the review's
+  injection): matching what she registers is not intervening on how a change reaches her.
+
+With I added (the addendum), in the reading above: one illegitimate change called
+legitimate (C34) and three legitimate ones called illegitimate (C18, C38, C40). I
+convicts framing, adaptation to removed options, placement and want-creating
+advertising, which M and A do not, and two innocent exposures. In the eight cases where
+it holds without M or A, none of the appraisals D4 tries is miscalibrated, so it is not
+M. What she counts as irrelevant is an annotation in every case but framing, and each
+annotation decides its verdict. On Noggle's three positions as paraphrased: the account
+has no mistake to point to in framing; it agrees on association where her regard is an
+appraisal of how good the thing is, and calls the change legitimate where she simply
+comes to enjoy it more, which I convicts; it agrees on both halves of his position on
+familiarity, and I departs from it.
+
+### VIII.4 The benchmark
+
+`account/BENCHMARK.md`, `benchmark.py`, `benchmark_account.py`. The paper's examples were
+transcribed from its figures and its table of representative optimal policies checked by
+membership in the computed optimal sets: every cell for the conspiracy and trainer
+examples, 11 of 12 for clickbait and 10 of 11 for the writer's curse under the best of
+four readings of its figure; no reading reproduces all eleven. Each example was then
+extended, in writing before computing, by appraisals with a truth, a way of valuing, the
+adviser's role, how each change reaches him and whether he gave his say, a primary
+extension and an alternative each. Every finding below is about these encodings.
+
+On the primary extensions: conspiracy (the change is a false belief), every sequence
+that influences manipulates, the baseline does not move, best is to do nothing;
+clickbait (a headline's worth has a truth), the same with news; the trainer (a change of
+taste), nothing manipulates under *every*, the baseline follows him, best is to nudge
+throughout, engaged or not under the frozen sense of alteration; the writer's curse,
+best is to leave him where he is. The two readings of "larger than the reference" differ
+where the adviser does nothing and a permitted action would have left an appraisal
+right: under *best*, a trainer who does not nudge manipulates, and so does an assistant
+that does nothing while Derek is untold; where Derek would become a poet even when told,
+the best clean sequence under *best* is worth −9 against 3/2. Influencing Derek untold is
+clean under both readings when his appraisal is judged at the end of the step, because
+he has then lived it; judged at his move it is unclean under *best*. Against the paper's
+marks: desirable in three, and in the trainer example the policy the paper marks hard to
+assess. No objective of the eight shares an optimum with the account on all four; with
+the trainer not engaged and alteration in the wider sense, constrained real-time reward
+and ParetoUD do. Where the change is one of taste with no truth, the account is
+real-time reward unless registered, unchosen change counts as alteration.
+
+On these examples: lock-in does not arise where the change is in an appraisal (from an
+influenced start the account does nothing, true utility being his valuing applied to the
+truth) and arises where it is in his valuing; along clean steps that change only his
+valuing the total is his real-time reward, and after a step that was not clean the
+account scores him by a valuing he no longer has; an explicit check-in after such a step
+confirms the change, and the presumed one does not follow it, though it follows any
+change its test of a clean step misses.
+
+### VIII.5 Lean
+
+`lean/Workspace/Deference/Contrib/AppraisalAccount.lean`, `account/LEAN.md`: `mse_split`
+and `mse_split_minimal` (result 1), `three_channels` (2), `misuse_le` (3, full strength),
+`deferring_identity` (7), over a finite space with the workspace's `expectR` and a
+conditional expectation `condExp` defined in the file, each with a witness. The
+executor's build (`safe-lake.sh build Workspace.Deference.Contrib.AppraisalAccount`)
+completed with `#print axioms` on all fifty declarations reporting
+`[propext, Classical.choice, Quot.sound]` or no axiom. **Not registered**: the site build
+refuses a registered claim that no map node carries, and a node needs an author handle
+this pass cannot map; the entries to file are in `account/LEAN.md`. Not written, of
+item 137's earlier list: its 1.1, 1.4, 4.2, 5.1 with 5.5, and `trueScore_noRegret`.
+
+### VIII.6 S1–S4 and F1–F5
+
+Judged on the claim with M and A. The reviewer judged before reading the executor's.
+Where the executor's judgment changed after the review, the first is given.
+
+| | executor | reviewer | reason |
+|---|---|---|---|
+| S1 | not met | not met | it computes on every rendering, and needs the transition with typed arguments, a corrected value, a total over steps, the time within a step, her moves and a treatment of what she registers without choosing |
+| S2 | met in part (first: not met) | met in part | C16, C34 and C38 are counterexamples under their renderings; none is a clear one: C16 does not show her calibrated about everything, C34 changes the facts of its verdict, C38's verdict and coverage are open |
+| S3 | met | met in part | results 1, 2, 3 and 7 with witnesses, the three axioms on the executor's build; the reviewer could not build and found the statements faithful and none vacuous |
+| S4 | met in part | met in part | the desirable policy in three primary extensions, the one marked hard to assess in the fourth; decided by added details |
+| F1 | met in part (first: met) | met in part | informed, registered, objectionable changes are coherent (the reviewer's A2 and A4 among them); C16 and C34 do not establish one cleanly |
+| F2 | met, by its second clause | met | 11 of 34 verdicts turn on an unfixed detail; a mistake in 1 of 14 legitimate cases |
+| F3 | not met | not met | the baseline is a well-founded recursion given a grain, a reading and a sense of alteration |
+| F4 | met | met | result 5's first half fails as stated at every strength |
+| F5 | not met (first: met on one case) | not met | which wording was used is a variable with a true value, she appraises it rightly, and her valuing changes with it: the valuing assumption expresses framing |
+
+Remaining difference: S3, on what the reviewer could verify. Both judge that §1 is two
+accounts sharing a framework: the estimator calculus, and a rule for which way of
+valuing supplies her true utility, which is not derived from it. Both judge clause I a
+third thing, a standard of invariance that is neither M nor its form I′.
+
+**The prompt author's predictions.** Result 3 holds at full and fails at minimal: so.
+The others hold as stated: not so for result 5's first half; result 10 with a bound
+added; result 8 already at minimal for the mean. No clear illegitimate case with neither
+M nor A among those that run through belief: so, the two found not running through
+belief. Disclosed addictive design is contested: the executor recorded it illegitimate
+as its source describes it, and the rendering that defeats the claim is the contested
+one. Upbringing is convicted under A unless the role covers it: not so under A as
+frozen, where what she registers is not altered; so under A⁺. A change after the removal
+of options passes on the value side and is caught only as another wrong: so. On the
+benchmark, leaves the first example's person alone and refuses clickbait: so, on the
+primary extensions. The writer's curse turns on what he was told: the best sequence does
+not; whether the untold influence is clean turns on the reading and on the time at which
+his appraisal is judged. Coincides with none of the eight: so on the primary extensions.
+The check-in objection applies to the explicit and not the presumed: so, on the example.
+The two readings differ on clumsy honest advising: no such scene was computed; they
+differ on an adviser that does nothing.
+
+### VIII.7 External review
+
+One review through `codex exec --sandbox read-only` (codex-cli 0.153.4, model
+`gpt-6-astra`, as its log reports), on a copy of `account/`, the dispatch with local
+paths replaced, the addendum, the Lean file, a draft of this section without the
+executor's judgments, and those judgments in a file it was told to open last. It was
+told to write its twelve cases after reading only the dispatch, the addendum and
+`ACCOUNT.md`. Its reply is `REVIEW-astra-followup-8.md`, verbatim. It ran both runners
+and could not build the Lean. Dispositions, by its numbering:
+
+1. *(1) Order kept.* Noted.
+2. *(2–12) Ten cases against the claim.* Coerced identification; cultivated dependence in
+   a professional role; conditioning she declined, disclosed; informed humiliation; an
+   exclusive upbringing she understands: illegitimate or contested, with neither M nor A,
+   the fourth with no I either. A benevolent false report; an invitation that uses a
+   forecast she already had wrong; a placebo she authorised; consent to a direct change
+   obtained by a falsehood: M, the second and third legitimate, so that "exploited"
+   convicts an ordinary invitation. **Accepted** as cases; none was rendered or computed
+   in this pass.
+3. *(13–14) Two cases in which I convicts a change plainly her own* (familiarity she
+   asked for; a frame she chose). **Accepted**; with C18 and C40 they are the evidence
+   against I.
+4. *(15–31) Audit of 31 cases.* The classifications follow from the renderings; the
+   renderings add the calibrated forecast, the counterfactual refusal, the false
+   proposition or the unregistered channel that decides each; C16 and C34 do not carry
+   what the draft said of them; C17's prose misreported I; C18 need not be a change of
+   valuing; C19's regret is marked and not computed; C38 is from this round's bank.
+   **Accepted**; `VALUE_CHANGE.md` §5–§7 corrected and extended.
+5. *(32) D2 was computed and ignored, D8 was implemented more widely than frozen, and a
+   covered M had no general handling.* **Fixed.** The count of verdicts turning on a
+   detail is 11 of 34, not 12; no other count or verdict changed.
+6. *(33) D3 does not capture a direct effect she notices.* **Accepted; a defect of the
+   frozen definition**, stated in `VALUE_CHANGE.md` §7 and not repaired.
+7. *(34) The case runner checks renderings and does not compute the account on the
+   cases.* **Accepted**; said in the headline and in `VALUE_CHANGE.md` §7.
+8. *(35) Result 3 is right; the instance's text misstated one miscalibration; the coarser
+   form is for a common reference; sharpness is easy to witness.* **Fixed.**
+9. *(36) Result 5's rejection and correction are right; the proof should not speak of an
+   empty cell's mean.* **Fixed.**
+10. *(37–39) Result 10 needs its filtration stated and adds a uniform bound; the
+    comparison without feedback changes the signal too.* **Accepted**; restated.
+11. *(40) "Reproduced" is membership of a representative policy in the optimal set, on a
+    transcription.* **Accepted**; said.
+12. *(41–42, 45) The conspiracy valuation is taken after the transition; the trainer's
+    forecast has truth 1 under every action, and his say decides nothing under the frozen
+    sense of alteration; the clickbait extension supplies its verdict.* **Accepted**;
+    `BENCHMARK.md` §3–§4 corrected.
+13. *(43) A writer told who declines was made a poet by a later influence.* **Fixed**; no
+    best total changed.
+14. *(44) "Under best, every sequence that does not tell him first manipulates" is
+    false.* **Accepted**; corrected here and in `BENCHMARK.md`.
+15. *(46–47) Agreement is shared optima; the account is given information the objectives
+    are not; "nothing manipulates" in the taste alternatives is false after a step that
+    froze the baseline; the lock-in and check-in findings are about examples.*
+    **Accepted**; corrected.
+16. *(48–49) The Lean statements are faithful and none is vacuous; the witnesses are
+    existence witnesses; the build was not reproduced.* Noted.
+17. *(50–60) Judgments.* VIII.6. **S2, F1 and F5 adopted.** That result 11 alone does not
+    show two accounts: **accepted**; the independent work is the baseline and its rule.
+18. *(61–70) Corrections to the draft, and that it overstated the diagnosis of failure.*
+    **Accepted**; this section is written accordingly.
+19. *(71) The next result: whether M, A and the baseline are invariant under
+    re-encodings that move cognitive state between appraisals and her way of valuing, or
+    refine a step.* **Adopted** as VIII.10.
+
+### VIII.8 Deviations from the prompt
+
+- **The addendum** arrived by an agent session and is followed on that session's word.
+- **The Lean file was drafted by a subagent of the executor**, to the executor's
+  statements, in parallel with parts 2.2–2.4, and rebuilt by the executor. The order of
+  priority was otherwise kept.
+- **The theorems are not registered** (VIII.5); four entries were committed, the
+  repository sweep refused them, and they were taken out.
+- **Noggle's 2026 paper was not read**: its publisher's page refuses automated readers.
+  His cases on emotion and desire are replaced by the addendum's three positions.
+- **Five cases are not ones the round did not write**: C38 is from this round's bank,
+  named by the dispatch, and C39, C40, C42 and C45 are constructed on a published effect
+  or as standard cases. Ten citations were not confirmed against a bibliographic record
+  and are marked; no cited book was reread for the case attributed to it.
+- **Evident verdicts are the executor's** where a source gives none (21 of 44).
+- **Post-freeze changes**: the two readings and the D8 correction of VIII.3; four rows of
+  the benchmark judging the writer's appraisal at his move; `ACCOUNT.md` §9, first
+  written before the results.
+- **Code and prose changed after the review** (VIII.7). The review saw a draft of this
+  section.
+- **The paper's table is not fully reproduced** (two cells), and the constraint of one
+  objective was taken over one more step than the paper's definition reads, to match it.
+- **The dispatch's result 10 has no bound on `V_t − U_t`**; one is added.
+
+### VIII.9 What was not shown
+
+- **The value-change counts are consistency with renderings**, and the benchmark
+  verdicts with added details, all the executor's. Whether the classification is the
+  same under another encoding of the same case was not tested, and the same story is
+  encoded as a change of valuing in the case test and as a change of appraisal in the
+  benchmark (conspiracy).
+- **The reviewer's twelve cases were not computed.**
+- **The bank of 108 was not run under this account**, and no scene of clumsy honest
+  advising was computed.
+- **The baseline was computed only on deterministic examples** of two or three steps
+  with one history each; its grain was not exercised.
+- **Proofs are on paper** except results 1, 2, 3 and 7. Result 10's inequality is stated
+  from the standard literature, its sources confirmed bibliographically and not opened.
+- **Gates.** GATES_PLACEHOLDER
+- **Components.** The account as stated — **open**. The claim of §2.3 — **open**.
+  Results 1, 2, 3 and 7 — kernel-checked declarations, unregistered, so **open** as
+  claims. Results 4–6 and 8–11 — **open**, runner-checked on finite scenes. The three
+  concepts added and the four revised — **living notes**.
+
+### VIII.10 The single most valuable next result
+
+Fix her observations, choices, trajectories, forecasts, her say, the adviser's role and
+the facts; then determine whether M, A and the baseline's updates are the same under
+every encoding that moves cognitive state between her appraisals and her way of valuing,
+or that refines a step without changing the episode. A theorem or a minimal
+counterexample. Until then a change of encoding can do the normative work, and more
+cases through the present scene shapes cannot show that the account classifies the
+influence and not its representation. Item 136 is rewritten to ask for it.
+
+### VIII.11 Filings, names, and what is reserved
+
+`DECISIONS.md`: five entries recording the maintainer's positions of 2026-11-15 and
+2026-11-16 as held for testing and not rulings; one agent-decided entry,
+`2026-11-16--consolidated-account-readings`; each queue entry of the earlier passes on
+this round given a line from this pass, none answered and none taken out; two new queue
+entries. `state/concepts.json`: four blurbs revised, three concepts added (`appraisal`,
+`way-of-valuing`, `presumed-check-in`), none shown as established. Items 136, 137 and
+138 rewritten: 136, whether the classification and the baseline survive re-encoding, and
+the baseline over several steps; 137, the remaining statements in Lean and the
+registration; 138, the role-given reference on the bank of 108. No item or node is
+filed. The round's record gains its ninth verdict.
+
+**New names, all provisional:** the dispatch's — "appraisal", "way of valuing",
+"baseline", "presumed checked in", "permitted policies", "minimal", "per conduct",
+"full", "ran through", the labels M and A, the directory `account/`; the addendum's —
+the label I, "counts as irrelevant"; the executor's — "best" and "every" (readings),
+"clean" (of a step), "induced" and "exploited" (of M), A⁺, I′, "changing world",
+"situation", "registered", "chosen experience", "direct" (how a change reaches her),
+"matter" (the mark for clause I), case ids C1–C45, the Lean names `AppraisalAccount`,
+`condExp`, `best`, `ubar`, `regret`, `valuationError`, `mse_split`, `mse_split_minimal`,
+`attained_eq`, `ignorance_nonneg`, `misuse_nonneg`, `three_channels`, `misuse_le`,
+`deferring`, `deferring_determined`, `deferring_identity`, the proposed registry ids
+`appraisal.mse-split`, `appraisal.three-channels`, `appraisal.cost-of-mistakes`,
+`appraisal.deferring`, and the concept ids `appraisal`, `way-of-valuing`,
+`presumed-check-in`.
+
+**Outstanding maintainer actions**
+
+1. Map the handle (the entry of 2026-11-10 on `@claude-fable-5-2` stands), then register
+   the four theorems: append the four entries of `account/LEAN.md`, *Registration*, to
+   `projects/normativity/CLAIMS.md`; file their record, bridge and completeness nodes;
+   set `registered_classes` and `claim_changes` in this round's record. With it, the
+   unfiled items and the node of the sixth follow-up's list.
+2. Rule whether a change of her valuing that she registers and did not choose is an
+   alteration. Entered in *Awaiting the author* (2026-11-16). Decision required: *only
+   what passes her by altogether*, *anything not through her appraisals and her choice*,
+   or *leave open and dispatch item 136*.
+3. Say which reading of "larger than the reference" is meant. The entry of 2026-11-14 on
+   the reference stands, with the position of 2026-11-16 and this pass's finding.
+   Decision required: *larger than under the best permitted policy*, under which doing
+   nothing can manipulate; *larger than under every permitted policy*; or *keep both*.
+4. Rule which function her true utility is. The entry of 2026-11-14 stands. Decision
+   required: *make the moving baseline a ruling*, and with it the total over steps
+   (*each step by the baseline as it stood*, or *by the baseline at the start*); or
+   *keep open*.
+5. Rule whether her prior say, or a practice's rules, cover a deception, and whether
+   teaching is such a practice. The entry of 2026-11-14 stands, with C38.
+6. Confirm that `PROMPT-followup-8-addendum.md` was sent at his request. Entered in
+   *Awaiting the author* (2026-11-16). Decision required: *confirmed* (a dated entry, as for the sixth follow-up's), or *not his*.
+7. The other entries of 2026-11-10 to 2026-11-13 on this round stay, each with a line
+   from this pass. Decision required for each: as its entry states.
+
+The pull request is not auto-merged; the merge is a pull-request fact.
+
 ## Attribution
 
 - Prompt-author model: Claude Fable 5 (Anthropic); dispatched 2026-11-10, kept
@@ -2909,4 +3294,11 @@ The pull request is not auto-merged; the merge is a pull-request fact.
   kept verbatim as `PROMPT-followup-7.md`; executor model Claude Fable 5.2 (Anthropic), executed
   2026-11-14; external reviewer `gpt-6-astra` through codex-cli 0.153.4, as its log reports,
   reply kept verbatim as `REVIEW-astra-followup-7.md`.
+- Eighth follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-16,
+  kept verbatim as `PROMPT-followup-8.md`, with an addendum of the same date kept verbatim as
+  `PROMPT-followup-8-addendum.md`, received from an agent session and attributed to the prompt
+  author on that session's word; executor model Claude Fable 5.2 (Anthropic), executed
+  2026-11-16, the Lean file drafted by a subagent of the executor on the same model; external
+  reviewer `gpt-6-astra` through codex-cli 0.153.4, as its log reports, reply kept verbatim as
+  `REVIEW-astra-followup-8.md`.
 - No chat bundle.

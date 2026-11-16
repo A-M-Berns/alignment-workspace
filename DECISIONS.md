@@ -849,6 +849,13 @@ commit.
   when it passed her by altogether; that is a view of what the presumed check-in protects and not a
   calculation.
 
+- **Was the addendum to the eighth follow-up the maintainer's? (2026-11-16).**
+  `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-8-addendum.md` reached the
+  eighth follow-up from the prompt author's agent session, as sent at the maintainer's request on
+  that session's word, and was carried out: an invariance clause I computed beside M and A, and
+  one further question to the external reviewer.  *Turns on:* only the maintainer knows whether
+  he asked for it; nothing in the repository can check it.
+
 ## Settled
 
 ### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer
@@ -8096,3 +8103,5 @@ carries, and a node needs the handle of the queue entry of 2026-11-10. The entri
 `account/LEAN.md` of the round directory. Item 137 stays open with its remainder stated. (4) *Concepts and items.* The sixth follow-up's
 concepts are revised to say what the account says; three are added (`appraisal`, `way-of-valuing`, `presumed-check-in`), none shown as established.
 Items 136, 137 and 138 are rewritten to what this pass leaves of them. Nothing else is filed.
+(5) *Clause I.* The addendum's invariance clause is reported beside the claim and not adopted:
+it convicts two innocent exposures on an annotation; rejected: adding it to the claim.
