@@ -15,10 +15,22 @@ cells have positive mass).
 | 3, full strength | `misuse_le` | `0 ≤ μ`, `Σ μ = 1` | `Witness.misuse_le_instance` | `appraisal.cost-of-mistakes` |
 | 7 | `deferring_identity` (`deferring`, `deferring_determined`) | `0 ≤ μ` for the identity; none for the determined case | `Witness.deferring_instance`, `Witness.deferring_determined_instance`, `Witness.deferring_identity_instance` | `appraisal.deferring` |
 
+| result of `VALUE_RESULTS.md` | declaration | hypotheses | witness | proposed registry id |
+|---|---|---|---|---|
+| 4 | `strong_split` (`condExp_condExp_of_factors`, `miscalibration_nonneg`, `unusedInformation_nonneg`, `valuationError_eq`) | `0 ≤ μ`; the valuation constant on the cells of what she observes | `Witness.strong_split_instance` | `appraisal.strong-split` |
+| 5, first form | `guarantee` (`guarantee_core`) | `0 ≤ μ`, `Σ μ = 1`; the options condition for her way of valuing, as a hypothesis: each reference move's expected true utility is matched by a move of hers | `Witness.guarantee_instance` | `appraisal.guarantee` |
+| 3, both directions | `options_of_hull`, `hull_of_options` | finite outcome and move types; the families need not be distributions | `Witness.options_of_hull_instance`, `Witness.hull_of_options_instance` | `appraisal.options-hull` |
+
+`miscalibration μ uh U` is `E[(uh − E[U | uh])²]` and `unusedInformation μ s uh U` is
+`E[(E[U | uh] − E[U | s])²]`, both conditioning on the value of the valuation. In
+`guarantee` the reference is a second finite space with its own weight and moves, of
+which nothing is assumed; the measures are those under her own policy, as in the first
+form of result 5. `hull_of_options` uses Mathlib's `geometric_hahn_banach_closed_point`.
+
 Rerun: `~/.claude/scripts/safe-lake.sh build Workspace.Deference.Contrib.AppraisalAccount`
 from `lean/` (in CI, the `lean` job); the file ends with `#print axioms` on each of its
-fifty declarations, each reporting `[propext, Classical.choice, Quot.sound]` or no axiom.
-
+sixty-eight declarations, each reporting `[propext, Classical.choice, Quot.sound]` or no
+axiom.
 
 **Reuse of the deference line's Lean.** `expectR` and two of its lemmas
 (`DeconfusingCorrigibility.expectR_mono`, `expectR_sub`) are reused. `ThinLegitimacy`'s
@@ -29,7 +41,7 @@ not define, so `condExp` is new. `Legitimacy.lean`, `TransparentChannel.lean` an
 `GateIsLegitimacy.lean` state conditions on processes and channels and have no squared
 error; nothing in them is restated here.
 
-**Not in Lean.** Results 4–6 and 8–11. The failure of result 3 at the minimal and
+**Not in Lean.** Of `RESULTS.md`, results 4–6 and 8–11. Of `VALUE_RESULTS.md`, results 1, 2 and 6–9, the second form of result 5, and the derivation of `guarantee`'s options hypothesis from the conditions of `ACCOUNT.md` §8; the witnesses of results 4 and 5 have zero unused information. The failure of result 3 at the minimal and
 per-conduct strengths (`results.py`, `r3`) is a Python instance. Of item 137's own list,
 written for the sixth follow-up's statements: its 1.2 is `deferring`, and its 1.3 is
 `misuse_le`; the squared-mean form 1.1, the equality case 1.4, the drift bound 4.2, the
@@ -43,12 +55,12 @@ determined by the adviser's information.
 
 **Not registered.** The site build refuses a registered claim that no map node carries
 (`tests/site_build.py`), a node needs an author handle, and the executor's handle is not
-mapped in `graph/policy.yaml`, which this pass may not edit. The four theorems ship in
+mapped in `graph/policy.yaml`, which this pass may not edit. The seven theorems ship in
 the contribution namespace, unregistered. To register: map the handle; append the
 entries below to `projects/normativity/CLAIMS.md` under a heading *The appraisal
 account*; file the record, bridge and completeness nodes for each as for
 `seed.adapter-certificates-exist`; set `registered_classes` to `["lean-proved"]` and
-`claim_changes` to the four ids in this round's record in `state/rounds.json`.
+`claim_changes` to the seven ids in this round's record in `state/rounds.json`.
 
 ### appraisal.mse-split
 
@@ -151,5 +163,83 @@ account*; file the record, bridge and completeness nodes for each as for
     "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/RESULTS.md"
   },
   "note": "Result 7 of account/RESULTS.md. Inhabited by Witness.deferring_instance (a verdict not determined by the adviser's information), Witness.deferring_determined_instance and Witness.deferring_identity_instance."
+}
+```
+
+### appraisal.strong-split
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the strong measure splits: for a valuation constant on the cells of what she observes, its mean squared distance from the true utility averaged over what she observes is its miscalibration given its own value plus her unused information",
+  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.AppraisalAccount.strong_split"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VALUE_RESULTS.md"
+  },
+  "note": "Result 4 of account/VALUE_RESULTS.md. Holds for any non-negative weight. Inhabited by Witness.strong_split_instance, on which the unused information is zero."
+}
+```
+
+### appraisal.guarantee
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the guarantee: if each reference move's expected true utility is matched by a move of hers, what she attains is at least any reference move's expected true utility less her regret by her own lights less the square root of twice her summed miscalibration and unused information",
+  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.AppraisalAccount.guarantee"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VALUE_RESULTS.md"
+  },
+  "note": "Result 5 of account/VALUE_RESULTS.md, first form: the measures are those under her own policy. The options condition is a hypothesis; the benchmark is a single reference move, not what she attains under the reference. Inhabited by Witness.guarantee_instance."
+}
+```
+
+### appraisal.options-hull
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the options condition: if every reference family member is a convex combination of hers, then for every payoff on the outcomes each reference member's expected payoff is matched by one of hers",
+  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.AppraisalAccount.options_of_hull"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VALUE_RESULTS.md"
+  },
+  "note": "Result 3 of account/VALUE_RESULTS.md, one direction; the converse is hull_of_options in the same file, by a separation theorem. Inhabited by Witness.options_of_hull_instance and Witness.hull_of_options_instance."
 }
 ```

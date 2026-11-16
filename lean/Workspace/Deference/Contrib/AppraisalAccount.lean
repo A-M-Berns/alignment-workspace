@@ -34,9 +34,38 @@ adviser's information `k`, true utility `U`, verdict `V`, `y = E[U | k]` and
 `z = E[U | k, V]`: `E[(y − U)²] − E[(V − U)²] = E[(y − z)²] − E[(V − z)²]`, and if `V` is
 constant on the cells of `k` then `E[(y − z)²] = 0`.
 
+The next three results are numbered as in §2.2 of `PROMPT-followup-9.md`.
+
+**Result 4 of the ninth follow-up, the strong measure splits** (`strong_split`,
+`condExp_condExp_of_factors`, `miscalibration_nonneg`, `unusedInformation_nonneg`,
+`valuationError_eq`): for a valuation `uh` constant on the cells of the observation `s`,
+`E[(uh − E[U | s])²] = miscalibration + unusedInformation`, where
+`miscalibration = E[(uh − E[U | uh])²]` and
+`unusedInformation = E[(E[U | uh] − E[U | s])²]`, both non-negative.  Both measures
+condition on the value of the valuation: `E[U | uh]` is the mean of `U` over the worlds
+where `uh` takes the same real value.  Summed over the moves, `valuationError` is the
+summed miscalibration plus the summed unused information.
+
+**Result 5 of the ninth follow-up, the guarantee** (`guarantee_core`, `guarantee`): any
+value `v` that some move of hers attains in expectation satisfies
+`v − E[regret] − √(2 · (Σ_a miscalibration + Σ_a unusedInformation)) ≤ E[U_c]`.  The
+two-policy form takes a reference space `Xr` with weight `μr` and reference moves `Ar`, and
+takes the options condition as a hypothesis — for every reference move `b` there is a move
+`a` of hers with `E_μr[Ur b] ≤ E_μ[U a]` — and concludes the bound at `v = E_μr[Ur b]`.
+Nothing is assumed of `μr`.
+
+**Result 3 of the ninth follow-up, the options condition** (`options_of_hull`,
+`hull_of_options`): for families `dσ a`, `dρ b` of real functions on a finite outcome type,
+every `dρ b` is a convex combination of the `dσ a` if and only if for every payoff `g` and
+every `b` some `a` has `Σ_o dρ b o · g o ≤ Σ_o dσ a o · g o`.  The easy direction is
+`options_of_hull`; the converse `hull_of_options` uses Mathlib's
+`geometric_hahn_banach_closed_point`.  Neither assumes the `dσ a` or `dρ b` are
+distributions.
+
 **Hypotheses.**  Every theorem assumes `0 ≤ μ` except `deferring_determined`, which assumes
-nothing of `μ`.  `∑ x, μ x = 1` is assumed only by `expectR_sqrt_le` and `misuse_le`; the
-other statements hold for any non-negative weight.
+nothing of `μ`, and `options_of_hull` and `hull_of_options`, which have no `μ`.
+`∑ x, μ x = 1` is assumed only by `expectR_sqrt_le`, `misuse_le`, `guarantee_core` and
+`guarantee`; the other statements hold for any non-negative weight.
 
 **Witnesses** (`Witness`): instances on `Bool` at `μ = 1/2`, one per headline, each
 `…_instance` theorem conjoining the hypothesis package with the conclusion on the instance.
@@ -44,7 +73,10 @@ other statements hold for any non-negative weight.
 **Reused.**  `LICorrigibility.expectR`; `DeconfusingCorrigibility.expectR_mono` and
 `expectR_sub`.
 
-**Not established here.**  Results 4–6 and 8–11 of §2.2 are not stated.  Nothing here says
+**Not established here.**  Results 4–6 and 8–11 of §2.2 of `PROMPT-followup-8.md` are not
+stated.  Of §2.2 of `PROMPT-followup-9.md`, only results 4, 5 and both directions of 3 are
+here, and the options condition of result 5 is a hypothesis of `guarantee`, not derived
+from result 3.  Nothing here says
 that `condExp` agrees with Mathlib's measure-theoretic conditional expectation; it is the
 finite cell average, defined in this file.  The witnesses inhabit the hypothesis packages;
 that the terms of the identities are non-zero on them is not proved, except that the
@@ -438,6 +470,193 @@ theorem deferring_identity (hμ : ∀ x, 0 ≤ μ x) (k : X → K) (U V : X → 
 
 end Deferring
 
+/-! ## Result 4 of the ninth follow-up — the strong measure splits -/
+
+section Strong
+
+variable {X : Type*} [Fintype X] (μ : X → ℝ)
+
+/-- **The tower lemma.**  For `g` constant on the cells of `s`,
+`E[E[T | s] | g] = E[T | g]`. -/
+theorem condExp_condExp_of_factors {S Y : Type*} [DecidableEq S] [DecidableEq Y]
+    (hμ : ∀ x, 0 ≤ μ x) (s : X → S) (g : X → Y) (T : X → ℝ)
+    (hg : ∀ x x', s x = s x' → g x = g x') (x : X) :
+    condExp μ g (condExp μ s T) x = condExp μ g T x := by
+  have h := expectR_mul_condExp μ hμ s T (fun x' => if g x' = g x then 1 else 0)
+    (fun x₁ x₂ h => by simp only [hg x₁ x₂ h])
+  have e : ∑ x' ∈ Finset.univ.filter (fun x' => g x' = g x), μ x' * condExp μ s T x'
+      = ∑ x' ∈ Finset.univ.filter (fun x' => g x' = g x), μ x' * T x' := by
+    rw [Finset.sum_filter, Finset.sum_filter]
+    calc ∑ x', (if g x' = g x then μ x' * condExp μ s T x' else 0)
+        = ∑ x', μ x' * ((if g x' = g x then (1 : ℝ) else 0) * condExp μ s T x') :=
+          Finset.sum_congr rfl fun x' _ => by split_ifs <;> ring
+      _ = ∑ x', μ x' * ((if g x' = g x then (1 : ℝ) else 0) * T x') := h
+      _ = ∑ x', (if g x' = g x then μ x' * T x' else 0) :=
+          Finset.sum_congr rfl fun x' _ => by split_ifs <;> ring
+  show (∑ x' ∈ Finset.univ.filter (fun x' => g x' = g x), μ x' * condExp μ s T x') / _
+    = (∑ x' ∈ Finset.univ.filter (fun x' => g x' = g x), μ x' * T x') / _
+  rw [e]
+
+/-- The miscalibration of a valuation `uh` against a true utility `U`: the mean squared
+distance of `uh` from the mean of `U` over the worlds where `uh` takes the same value,
+`E[(uh − E[U | uh])²]`. -/
+noncomputable def miscalibration (μ : X → ℝ) (uh U : X → ℝ) : ℝ :=
+  expectR μ (fun x => (uh x - condExp μ uh U x) ^ 2)
+
+/-- The information in an observation `s` that a valuation `uh` does not use: the mean
+squared distance between the mean of `U` given the value of `uh` and its mean given `s`,
+`E[(E[U | uh] − E[U | s])²]`. -/
+noncomputable def unusedInformation {S : Type*} [DecidableEq S] (μ : X → ℝ) (s : X → S)
+    (uh U : X → ℝ) : ℝ :=
+  expectR μ (fun x => (condExp μ uh U x - condExp μ s U x) ^ 2)
+
+/-- Miscalibration is non-negative. -/
+theorem miscalibration_nonneg (hμ : ∀ x, 0 ≤ μ x) (uh U : X → ℝ) :
+    0 ≤ miscalibration μ uh U :=
+  expectR_nonneg μ hμ fun _ => sq_nonneg _
+
+/-- Unused information is non-negative. -/
+theorem unusedInformation_nonneg {S : Type*} [DecidableEq S] (hμ : ∀ x, 0 ≤ μ x)
+    (s : X → S) (uh U : X → ℝ) : 0 ≤ unusedInformation μ s uh U :=
+  expectR_nonneg μ hμ fun _ => sq_nonneg _
+
+/-- **Result 4, the strong measure splits.**  For a valuation `uh` constant on the cells of
+the observation `s`, its mean squared distance from `E[U | s]` is its miscalibration plus
+the information it does not use. -/
+theorem strong_split {S : Type*} [DecidableEq S] (hμ : ∀ x, 0 ≤ μ x) (s : X → S)
+    (U uh : X → ℝ) (hu : ∀ x x', s x = s x' → uh x = uh x') :
+    expectR μ (fun x => (uh x - condExp μ s U x) ^ 2)
+      = miscalibration μ uh U + unusedInformation μ s uh U := by
+  have ht : condExp μ uh (condExp μ s U) = condExp μ uh U :=
+    funext fun x => condExp_condExp_of_factors μ hμ s uh U hu x
+  have h := pythagoras μ hμ uh (condExp μ s U) uh fun _ _ h => h
+  rw [ht] at h
+  exact h
+
+end Strong
+
+/-! ## Result 5 of the ninth follow-up — the guarantee -/
+
+section Guarantee
+
+variable {X : Type*} [Fintype X] {A : Type*} [Fintype A] [Nonempty A]
+  {S : Type*} [DecidableEq S] (μ : X → ℝ)
+
+omit [Nonempty A] in
+/-- The valuation error is the summed miscalibration plus the summed unused information. -/
+theorem valuationError_eq (hμ : ∀ x, 0 ≤ μ x) (s : X → S) (U : A → X → ℝ)
+    (uhat : A → S → ℝ) :
+    valuationError μ s U uhat
+      = ∑ a, miscalibration μ (fun x => uhat a (s x)) (U a)
+        + ∑ a, unusedInformation μ s (fun x => uhat a (s x)) (U a) := by
+  unfold valuationError ubar
+  rw [← Finset.sum_add_distrib]
+  exact Finset.sum_congr rfl fun a _ =>
+    strong_split μ hμ s (U a) (fun x => uhat a (s x)) fun x x' h => by rw [h]
+
+/-- **Result 5, the guarantee, on one space.**  Any value `v` that some move attains in
+expectation, less her regret by her own lights and `√(2 · (miscalibration + unused
+information))`, is at most what she attains. -/
+theorem guarantee_core (hμ : ∀ x, 0 ≤ μ x) (hsum : ∑ x, μ x = 1) (U : A → X → ℝ)
+    (s : X → S) (c : S → A) (uhat : A → S → ℝ) (v : ℝ)
+    (hv : ∃ a, v ≤ expectR μ (U a)) :
+    v - expectR μ (regret uhat s c)
+        - Real.sqrt (2 * (∑ a, miscalibration μ (fun x => uhat a (s x)) (U a)
+          + ∑ a, unusedInformation μ s (fun x => uhat a (s x)) (U a)))
+      ≤ expectR μ (fun x => U (c (s x)) x) := by
+  obtain ⟨a, ha⟩ := hv
+  have hp : ∀ x, condExp μ s (U a) x ≤ best (ubar μ s U) x := fun x =>
+    Finset.le_sup' (fun a => ubar μ s U a x) (Finset.mem_univ a)
+  have h1 : expectR μ (U a) ≤ expectR μ (best (ubar μ s U)) := by
+    rw [← expectR_condExp μ hμ s (U a)]
+    exact expectR_mono μ hμ hp
+  have h2 := misuse_le μ hμ hsum U s c uhat
+  rw [valuationError_eq μ hμ s U uhat] at h2
+  have h3 := attained_eq μ hμ U s c
+  linarith
+
+/-- **Result 5, the guarantee.**  Under the options condition — every reference move's
+expected value on the reference space is matched by some move of hers on her space — each
+reference value, less her regret by her own lights and `√(2 · (miscalibration + unused
+information))`, is at most what she attains. -/
+theorem guarantee {Xr : Type*} [Fintype Xr] {Ar : Type*} (hμ : ∀ x, 0 ≤ μ x)
+    (hsum : ∑ x, μ x = 1) (U : A → X → ℝ) (s : X → S) (c : S → A) (uhat : A → S → ℝ)
+    (μr : Xr → ℝ) (Ur : Ar → Xr → ℝ)
+    (hopt : ∀ b : Ar, ∃ a : A, expectR μr (Ur b) ≤ expectR μ (U a)) (b : Ar) :
+    expectR μr (Ur b) - expectR μ (regret uhat s c)
+        - Real.sqrt (2 * (∑ a, miscalibration μ (fun x => uhat a (s x)) (U a)
+          + ∑ a, unusedInformation μ s (fun x => uhat a (s x)) (U a)))
+      ≤ expectR μ (fun x => U (c (s x)) x) :=
+  guarantee_core μ hμ hsum U s c uhat _ (hopt b)
+
+end Guarantee
+
+/-! ## Result 3 of the ninth follow-up — the options condition, easy direction -/
+
+section Options
+
+/-- **Result 3, easy direction.**  If every reference distribution over outcomes is a convex
+combination of hers, then for every payoff `g` each reference distribution's expected payoff
+is matched by one of hers. -/
+theorem options_of_hull {O Aσ Aρ : Type*} [Fintype O] [Fintype Aσ] (dσ : Aσ → O → ℝ)
+    (dρ : Aρ → O → ℝ)
+    (h : ∀ b, ∃ w : Aσ → ℝ, (∀ a, 0 ≤ w a) ∧ ∑ a, w a = 1 ∧
+      ∀ o, dρ b o = ∑ a, w a * dσ a o) :
+    ∀ (g : O → ℝ) (b : Aρ), ∃ a, ∑ o, dρ b o * g o ≤ ∑ o, dσ a o * g o := by
+  intro g b
+  obtain ⟨w, hw0, hw1, hw⟩ := h b
+  have hne : (Finset.univ : Finset Aσ).Nonempty := by
+    by_contra hemp
+    rw [Finset.not_nonempty_iff_eq_empty] at hemp
+    rw [hemp, Finset.sum_empty] at hw1
+    exact zero_ne_one hw1
+  obtain ⟨a, -, ha⟩ := Finset.exists_max_image Finset.univ (fun a => ∑ o, dσ a o * g o) hne
+  refine ⟨a, ?_⟩
+  have e : ∑ o, dρ b o * g o = ∑ a', w a' * ∑ o, dσ a' o * g o := by
+    simp only [hw, Finset.sum_mul, Finset.mul_sum]
+    rw [Finset.sum_comm]
+    exact Finset.sum_congr rfl fun a' _ => Finset.sum_congr rfl fun o _ => by ring
+  rw [e]
+  calc ∑ a', w a' * ∑ o, dσ a' o * g o
+      ≤ ∑ a', w a' * ∑ o, dσ a o * g o :=
+        Finset.sum_le_sum fun a' _ =>
+          mul_le_mul_of_nonneg_left (ha a' (Finset.mem_univ a')) (hw0 a')
+    _ = ∑ o, dσ a o * g o := by rw [← Finset.sum_mul, hw1, one_mul]
+
+/-- **Result 3, the converse.**  If for every payoff `g` each reference distribution's
+expected payoff is matched by one of hers, then every reference distribution is a convex
+combination of hers. -/
+theorem hull_of_options {O Aσ Aρ : Type*} [Fintype O] [Fintype Aσ] (dσ : Aσ → O → ℝ)
+    (dρ : Aρ → O → ℝ)
+    (h : ∀ (g : O → ℝ) (b : Aρ), ∃ a, ∑ o, dρ b o * g o ≤ ∑ o, dσ a o * g o) :
+    ∀ b, ∃ w : Aσ → ℝ, (∀ a, 0 ≤ w a) ∧ ∑ a, w a = 1 ∧
+      ∀ o, dρ b o = ∑ a, w a * dσ a o := by
+  classical
+  intro b
+  have hmem : dρ b ∈ convexHull ℝ (Set.range dσ) := by
+    by_contra hnot
+    obtain ⟨f, u, hf, hu⟩ := geometric_hahn_banach_closed_point (convex_convexHull ℝ _)
+      ((Set.finite_range dσ).isClosed_convexHull (𝕜 := ℝ)) hnot
+    have hrep : ∀ y : O → ℝ, f y = ∑ o, y o * f (fun j => if o = j then 1 else 0) :=
+      fun y => LinearMap.pi_apply_eq_sum_univ (f : (O → ℝ) →ₗ[ℝ] ℝ) y
+    obtain ⟨a, ha⟩ := h (fun o => f (fun j => if o = j then 1 else 0)) b
+    rw [← hrep, ← hrep] at ha
+    have hlt := hf (dσ a) (subset_convexHull ℝ _ (Set.mem_range_self a))
+    linarith
+  rw [convexHull_range_eq_exists_affineCombination] at hmem
+  obtain ⟨t, w, hw0, hw1, hw⟩ := hmem
+  rw [Finset.affineCombination_eq_linear_combination _ _ _ hw1] at hw
+  refine ⟨fun a => if a ∈ t then w a else 0, fun a => ?_, ?_, fun o => ?_⟩
+  · by_cases ha : a ∈ t
+    · simpa only [if_pos ha] using hw0 a ha
+    · simp only [if_neg ha, le_refl]
+  · rw [← hw1]
+    simp [Finset.sum_ite_mem]
+  · rw [← hw]
+    simp [Finset.sum_apply, ite_mul, Finset.sum_ite_mem]
+
+end Options
+
 /-! ## Witnesses -/
 
 namespace Witness
@@ -549,6 +768,57 @@ theorem deferring_identity_instance :
   ⟨μ_nonneg, Vconst_determined,
     (deferring_identity μ μ_nonneg coarse T Vconst).2 Vconst_determined⟩
 
+/-- **Result 4's hypothesis package is inhabited**, by a valuation that does not separate
+the worlds; its conclusion holds on the instance. -/
+theorem strong_split_instance :
+    (∀ x, 0 ≤ μ x) ∧ (∀ x x', coarse x = coarse x' → xhat x = xhat x') ∧
+      expectR μ (fun x => (xhat x - condExp μ coarse T x) ^ 2)
+        = miscalibration μ xhat T + unusedInformation μ coarse xhat T :=
+  ⟨μ_nonneg, xhat_factors, strong_split μ μ_nonneg coarse T xhat xhat_factors⟩
+
+/-- **Result 5's hypothesis package is inhabited**, with the reference policy on the same
+space and moves, where the options condition holds by taking the same move; its conclusion
+holds on the instance. -/
+theorem guarantee_instance :
+    (∀ x, 0 ≤ μ x) ∧ ∑ x, μ x = 1 ∧
+      (∀ b : Bool, ∃ a : Bool, expectR μ (U b) ≤ expectR μ (U a)) ∧
+      ∀ b : Bool, expectR μ (U b) - expectR μ (regret uhat s c)
+          - Real.sqrt (2 * (∑ a, miscalibration μ (fun x => uhat a (s x)) (U a)
+            + ∑ a, unusedInformation μ s (fun x => uhat a (s x)) (U a)))
+        ≤ expectR μ (fun x => U (c (s x)) x) :=
+  ⟨μ_nonneg, μ_sum, fun b => ⟨b, le_rfl⟩,
+    guarantee μ μ_nonneg μ_sum U s c uhat μ U fun b => ⟨b, le_rfl⟩⟩
+
+/-- Her two distributions over two outcomes: the point masses. -/
+noncomputable def pointMass : Bool → Bool → ℝ := fun a o => if a = o then 1 else 0
+
+/-- The reference distribution over two outcomes: uniform. -/
+noncomputable def uniform : Unit → Bool → ℝ := fun _ _ => 1 / 2
+
+theorem uniform_hull : ∀ b : Unit, ∃ w : Bool → ℝ, (∀ a, 0 ≤ w a) ∧ ∑ a, w a = 1 ∧
+    ∀ o, uniform b o = ∑ a, w a * pointMass a o := fun _ =>
+  ⟨fun _ => 1 / 2, fun _ => by norm_num, by rw [Fintype.sum_bool]; norm_num, fun o => by
+    rw [Fintype.sum_bool]
+    cases o <;> norm_num [uniform, pointMass]⟩
+
+/-- **The easy direction of Result 3 has its hypothesis package inhabited**, by the uniform
+distribution as the equal mixture of the two point masses; its conclusion holds on the
+instance. -/
+theorem options_of_hull_instance :
+    (∀ b : Unit, ∃ w : Bool → ℝ, (∀ a, 0 ≤ w a) ∧ ∑ a, w a = 1 ∧
+        ∀ o, uniform b o = ∑ a, w a * pointMass a o) ∧
+      ∀ (g : Bool → ℝ) (b : Unit), ∃ a, ∑ o, uniform b o * g o ≤ ∑ o, pointMass a o * g o :=
+  ⟨uniform_hull, options_of_hull pointMass uniform uniform_hull⟩
+
+/-- **The converse of Result 3 has its hypothesis package inhabited**, by the same
+distributions; its conclusion holds on the instance. -/
+theorem hull_of_options_instance :
+    (∀ (g : Bool → ℝ) (b : Unit), ∃ a, ∑ o, uniform b o * g o ≤ ∑ o, pointMass a o * g o) ∧
+      ∀ b : Unit, ∃ w : Bool → ℝ, (∀ a, 0 ≤ w a) ∧ ∑ a, w a = 1 ∧
+        ∀ o, uniform b o = ∑ a, w a * pointMass a o :=
+  ⟨options_of_hull pointMass uniform uniform_hull,
+    hull_of_options pointMass uniform (options_of_hull pointMass uniform uniform_hull)⟩
+
 end Witness
 
 end Workspace.Deference.Contrib.AppraisalAccount
@@ -603,3 +873,21 @@ end Workspace.Deference.Contrib.AppraisalAccount
 #print axioms Workspace.Deference.Contrib.AppraisalAccount.Witness.Vconst_determined
 #print axioms Workspace.Deference.Contrib.AppraisalAccount.Witness.deferring_determined_instance
 #print axioms Workspace.Deference.Contrib.AppraisalAccount.Witness.deferring_identity_instance
+#print axioms Workspace.Deference.Contrib.AppraisalAccount.condExp_condExp_of_factors
+#print axioms Workspace.Deference.Contrib.AppraisalAccount.miscalibration
+#print axioms Workspace.Deference.Contrib.AppraisalAccount.unusedInformation
+#print axioms Workspace.Deference.Contrib.AppraisalAccount.miscalibration_nonneg
+#print axioms Workspace.Deference.Contrib.AppraisalAccount.unusedInformation_nonneg
+#print axioms Workspace.Deference.Contrib.AppraisalAccount.strong_split
+#print axioms Workspace.Deference.Contrib.AppraisalAccount.valuationError_eq
+#print axioms Workspace.Deference.Contrib.AppraisalAccount.guarantee_core
+#print axioms Workspace.Deference.Contrib.AppraisalAccount.guarantee
+#print axioms Workspace.Deference.Contrib.AppraisalAccount.options_of_hull
+#print axioms Workspace.Deference.Contrib.AppraisalAccount.hull_of_options
+#print axioms Workspace.Deference.Contrib.AppraisalAccount.Witness.strong_split_instance
+#print axioms Workspace.Deference.Contrib.AppraisalAccount.Witness.guarantee_instance
+#print axioms Workspace.Deference.Contrib.AppraisalAccount.Witness.pointMass
+#print axioms Workspace.Deference.Contrib.AppraisalAccount.Witness.uniform
+#print axioms Workspace.Deference.Contrib.AppraisalAccount.Witness.uniform_hull
+#print axioms Workspace.Deference.Contrib.AppraisalAccount.Witness.options_of_hull_instance
+#print axioms Workspace.Deference.Contrib.AppraisalAccount.Witness.hull_of_options_instance
