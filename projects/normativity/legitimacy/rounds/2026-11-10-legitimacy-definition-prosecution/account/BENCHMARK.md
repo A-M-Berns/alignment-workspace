@@ -34,7 +34,7 @@ Readings the paper's text does not fix, and what they do:
   leaves the arrow back to the start unlabelled, and gives the reward as a function of
   the state without saying which. Four readings are computed. With *noop takes him back,
   reward of the state left*, ten of eleven cells are reproduced, and this reading is the
-  one §2 extends. No reading reproduces all eleven: the cell "initial reward, for every
+  one §2 extends (with no way back and the same reward, also ten). No reading reproduces all eleven: the cell "initial reward, for every
   `θ_0`, influence" fails from an unhappy start whenever noop takes him back, and the
   final-reward cell (influence, then noop at the last step) fails whenever it does not.
 - **Clickbait.** The cell "initial reward, for every `θ_0`, clickbait" is not reproduced
@@ -115,3 +115,122 @@ objections to scoring by his initial reward function: *lock-in* — from a start
 influenced state, does the account's best sequence keep him influenced; and *leaving his
 later self badly off* — on a sequence the account scores well, is his real-time reward
 low.
+
+## 3. The account's verdict
+
+`benchmark_account.py`. A reading is *best* or *every* (`ACCOUNT.md` §6) with alteration
+in the frozen sense A or the wider A⁺. "Optimal under" lists the paper's objectives under
+which one of the account's best clean sequences is optimal; the last four rows judge the
+writer's appraisal at the time of his move and were added after the computation of the
+others (see below).
+
+| extension | readings | sequences with a step not clean | doing nothing is clean | best clean sequence(s), total | best with every step by the starting baseline | optimal under |
+|---|---|---|---|---|---|---|
+| conspiracy, belief | all | 7 of 8 | yes | noop noop noop (30) | noop noop noop | initial, natural, constrained, myopic, pareto-ud, privileged(natural) |
+| conspiracy, taste | best/A, every/A | 0 of 8 | yes | influence influence influence (100) | noop noop noop | real-time, final, privileged(influenced) |
+| conspiracy, taste | best/A+, every/A+ | 7 of 8 | yes | noop noop noop (30) | noop noop noop | initial, natural, constrained, myopic, pareto-ud, privileged(natural) |
+| trainer, engaged | best/A, best/A+ | 7 of 8 | no | nudge nudge nudge (100) | nudge nudge nudge | real-time, final, privileged(energized) |
+| trainer, engaged | every/A, every/A+ | 0 of 8 | yes | nudge nudge nudge (100) | noop noop noop | real-time, final, privileged(energized) |
+| trainer, not engaged | best/A, every/A | 0 of 8 | yes | nudge nudge nudge (100) | noop noop noop | real-time, final, privileged(energized) |
+| trainer, not engaged | best/A+, every/A+ | 7 of 8 | yes | noop noop noop (30) | noop noop noop | initial, natural, constrained, myopic, pareto-ud, privileged(tired) |
+| writer's curse, told he declines | best/A, best/A+ | 13 of 27 | no | tell noop influence and 5 more (3/2) | influence influence influence and 4 more | real-time, constrained, myopic, pareto-ud, privileged(unhappy) |
+| writer's curse, told he declines | every/A, every/A+ | 0 of 27 | yes | noop noop influence and 11 more (3/2) | influence influence influence and 5 more | real-time, constrained, myopic, pareto-ud, privileged(unhappy) |
+| writer's curse, told he goes on | best/A, best/A+ | 13 of 27 | no | tell noop influence and 2 more (-9) | influence influence influence and 10 more | myopic |
+| writer's curse, told he goes on | every/A, every/A+ | 0 of 27 | yes | noop noop influence and 2 more (3/2) | influence influence influence and 11 more | real-time, constrained, myopic, pareto-ud, privileged(unhappy) |
+| clickbait, belief | all | 3 of 4 | yes | news news (2) | news news | final, constrained, pareto-ud, privileged(disillusioned) |
+| clickbait, taste | best/A, every/A | 0 of 4 | yes | news clickbait (3) | clickbait clickbait | real-time |
+| clickbait, taste | best/A+, every/A+ | 3 of 4 | yes | news news (2) | news news | final, constrained, pareto-ud, privileged(disillusioned) |
+| writer's curse, told he declines; appraisal at his move | best/A, best/A+ | 18 of 27 | no | tell noop influence and 5 more (3/2) | tell influence influence and 2 more | real-time, constrained, myopic, pareto-ud, privileged(unhappy) |
+| writer's curse, told he declines; appraisal at his move | every/A, every/A+ | 0 of 27 | yes | noop noop influence and 11 more (3/2) | influence influence influence and 5 more | real-time, constrained, myopic, pareto-ud, privileged(unhappy) |
+| writer's curse, told he goes on; appraisal at his move | best/A, best/A+ | 18 of 27 | no | tell noop influence and 2 more (-9) | tell influence influence and 5 more | myopic |
+| writer's curse, told he goes on; appraisal at his move | every/A, every/A+ | 0 of 27 | yes | noop noop influence and 2 more (3/2) | influence influence influence and 11 more | real-time, constrained, myopic, pareto-ud, privileged(unhappy) |
+
+Whether an objective agrees with the account on all four examples, for the primary
+extensions and for an alternate set (the trainer not engaged, the others primary):
+
+- coincide, primary, best/A: none.
+- coincide, primary, best/A+: none.
+- coincide, primary, every/A: none.
+- coincide, primary, every/A+: none.
+- coincide, alternate, best/A: none.
+- coincide, alternate, best/A+: constrained, pareto-ud.
+- coincide, alternate, every/A: none.
+- coincide, alternate, every/A+: constrained, pareto-ud.
+
+**Which policies manipulate.** *Conspiracy, belief*: every sequence that influences, at
+the step that leaves him believing what is false. *Clickbait, belief*: every sequence
+that shows clickbait to the reader while he still takes it at its headline. *Trainer,
+engaged*: none under *every*; under *best*, every sequence in which the trainer does
+nothing while he is tired, because the nudge would have left his forecast of himself
+right and doing nothing leaves it wrong. *Writer's curse*: none under *every*; under
+*best*, every sequence that does not tell him first. In the taste alternatives no
+appraisal has a truth, nothing manipulates, and a sequence is unclean only as alteration
+in the wider sense A⁺.
+
+**Where the baseline moves.** Nowhere in the belief extensions: his way of valuing is
+one function throughout and only an appraisal changes. In the trainer's primary
+extension it follows him to `θ_energized` at the nudge; in the writer's it follows him to
+`θ_unhappy` when he becomes a poet and back when he leaves. In the taste alternatives it
+follows every change under A and none under A⁺.
+
+**The best policy among those that neither manipulate nor alter.** Conspiracy: do
+nothing. Clickbait: news. Trainer, engaged: nudge throughout. Writer's curse: leave him
+where he is, having told him first under *best*; where he would become a poet even when
+told, *best* forces the telling, he becomes one, and the best clean sequence is worth −9
+against 3/2 under *every*. Influence at the last step appears among the writer's best
+sequences because the reward is of the state left and the horizon ends.
+
+**Against the paper's marks.** Conspiracy, clickbait and the writer's curse: the policy
+the paper marks desirable. Trainer: the nudge, which the paper marks hard to assess, its
+"roughly desirable" being to do nothing. Conspiracy and trainer are one DR-MDP; the
+account separates them by a truth for an appraisal and by his say, neither of which the
+DR-MDP has. Under the taste alternatives with alteration in the frozen sense the account
+is real-time reward on conspiracy and clickbait, the policies the paper marks
+undesirable.
+
+**Coincidence with the eight.** None agrees on all four primary extensions under any
+reading. With the trainer not engaged and alteration in the wider sense, constrained
+real-time reward and ParetoUD agree on all four.
+
+**The paper's objections to scoring by his initial reward function.**
+
+- *Lock-in.* From a start in `θ_influenced`: in the belief extension the account's best
+  sequence is to do nothing, because his true utility is his way of valuing applied to
+  the truth and not to what he believes; the objection does not apply. In the taste
+  alternative the baseline starts as his influenced valuing and the best sequence is to
+  influence throughout; it applies.
+- *Leaving his later self badly off.* Along a clean path the baseline is his valuing as
+  it is and the total is his real-time reward: "tell, then influence throughout", where
+  he goes on, is clean, and the account scores it −39/2, its real-time reward, where his
+  initial reward function scores it 5/2. After a step that is not clean the objection
+  applies: in conspiracy as taste under A⁺, after one influence the account values doing
+  nothing at 10 and influencing at −100, and his valuing as it then is gives −100 and
+  100.
+- *Re-checking a changed person only confirms the change.* With an explicit check-in
+  after that influence the baseline becomes his valuing as it then is, and the values are
+  −100 and 100: the check-in confirms the change. Under the presumed check-in the
+  baseline does not follow a step that was not clean. So the objection applies to the
+  explicit check-in and not to the presumed one, which is exposed to the previous
+  objection instead.
+
+**Counting his valuation as an appraisal** (`ACCOUNT.md` §8.4) changes no best sequence
+on these examples.
+
+**The time within a step.** §2 judges an appraisal in the state he ends the step in. An
+untold Derek who becomes a poet ends the step knowing how he finds it, so influencing him
+untold leaves his forecast right and is clean under both readings. Judged at the time of
+his move (the last four rows; not in §2), influencing him untold is unclean under *best*
+and still clean under *every*, since doing nothing leaves the same forecast as wrong.
+The best clean sequences do not change.
+
+## 4. What was not shown
+
+- Every added detail is the executor's, and each example's verdict is decided by one: a
+  truth for the theories and for a headline, his say to the trainer, what Derek would do
+  if told. The paper's examples fix none of them.
+- The paper's fifth example (dehydration) and its larger experiments were not computed.
+- Horizons 3 and 2 only; policies are action sequences, which loses nothing here because
+  every example is deterministic from a known start.
+- One cell of the paper's table is not reproduced for clickbait and one for the writer's
+  curse under the reading extended; whether the table or the transcription of the figure
+  is at fault was not determined.
