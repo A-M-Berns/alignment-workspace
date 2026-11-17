@@ -8,7 +8,8 @@ RESULTS.md, the statement the sixth tested (estimates/): its bank and the checks
 RESULTS.md and NEGATIVE_RESULTS.md, then the rerun of that bank under the revised definition
 (rerun/): its predictions, its new scenes and the counts in its RESULTS.md, then the
 account (account/): the checks behind its RESULTS.md and VALUE_RESULTS.md, its value-change test, its
-benchmark, the model behind its BRIDGE.md and the comparison of the two renderings of its test.
+benchmark, the model behind its BRIDGE.md and the comparison of the two renderings of its test, then the
+formal checks behind its BOARD_CHECKS.md and the counts of its LIT_RESULTS.md and LIT_RENDERINGS.md.
 
 Exit nonzero when a bank parses to nothing or holds a case twice, when an earlier case has
 no prediction in either later bank, when a computed verdict diverges from its prediction

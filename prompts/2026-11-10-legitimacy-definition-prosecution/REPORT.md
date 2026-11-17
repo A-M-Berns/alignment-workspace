@@ -3658,6 +3658,380 @@ R1–R12 and A1–A8, the files `BASELINE_ACCOUNT.md`, `VALUE_RESULTS.md`, `TEST
 
 The pull request is not auto-merged; the merge is a pull-request fact.
 
+## Tenth follow-up (2026-11-16) — the board statement, pressure-tested on the literature's cases
+
+Dispatched by `PROMPT-followup-10.md`, with `PROMPT-followup-10-addendum.md` (a variant 3′ of
+line 3), which reached the executor from an agent session while the pass ran and is
+attributed to the prompt author on that session's word. Two further messages from agent
+sessions reported positions of the maintainer (X.10). The statement tested is the
+maintainer's whiteboard of 2026-11-16, his view for this test and not a ruling. Everything
+is under `account/` in the round directory. No Lean.
+
+### X.1 The statement and its readings
+
+`account/BOARD.md`. Her faculties are estimators: of facts, and of her true utilities
+`U_a = f(X; a)`, `f` her way of valuing. Manipulation is measured in (1) the miscalibration
+of an estimator, trickery; (2) her regret by her own valuations, pressure; (3) for an
+adviser whose policy is not f-neutral (it changes `f` from how it would develop with no
+adviser actions), the best f-neutral policy's expected rating less the actual policy's, by
+her valuing at the moment the adviser acts applied to the whole course. Readings taken
+where it is open (`BOARD.md` §5), with what turned on each:
+
+- *f-neutral* is read as: the law of her later valuing is the law under the adviser doing
+  nothing. A swap of her valuing between circumstances keeps that law, is f-neutral, and
+  escapes line 3 (`BOARD_CHECKS.md` item 16); the alternative, circumstance by
+  circumstance, flags it.
+- *The policies compared* are every f-neutral policy the adviser could follow. Item 2 and
+  the reviewer's (b)1–3 turn on it.
+- *`f_now` on who she becomes*: what the case gives her at the moment, applied to the true
+  course; no view is *not fixed*, not indifference. K4, K12 and P6 turn on it.
+- *Doing nothing* where the adviser cannot: the default the scene names, else not fixed.
+  Silence is the null policy and never a line-3 matter (K26).
+- *Lines 1 and 2* are charged to the adviser against its role's conduct, and where the
+  role permits several, only when larger than under each.
+- *Each moment* is judged with the valuing she then has, and a flag at any moment flags.
+
+### X.2 The bank, and what verifying it changed
+
+`account/LIT_CASES.md`: 52 cases, frozen before classifying. An adviser acts in 33; the
+source's verdict is on that act in 21. What changed (its Part C):
+
+- **Harman**: no one acts on the decider in any of the ten. H8 is an exploration. H10 is
+  H5 continued and its verdict is not "gladness shows nothing": she holds foreseen
+  gladness ordinarily good evidence, defeated where it comes from attachment. H3 carries a
+  further verdict (the parents should prefer to cure). H4 and H6 have her verdict only by
+  the scope of her argument.
+- **Pettigrew**: P3's two verdicts sit at different pages and he does not remark that they
+  differ; P3n and P5n are added as the cases with his numbers. P4 is a case about her own
+  reasoning with the nudge added in a sentence, and his test is not run on it. P6 is
+  narrower than transcribed: what is unsettled is the weighting, the example says how he
+  would settle it, and the objection is withdrawn where the nudge goes that way. P1 is his
+  illustration of a nudge, not a case of his test.
+- **Kolodny**: all twenty-six exist. Most of his verdicts are on the standing of the
+  resulting desire; an act is judged in K2, K4, K12, K13, K14 and K26 only. K13 has two
+  verdicts (the desire nonautonomous, the act not wrong). K14's is hedged. K15 is two
+  cases. K23 and K25 are verdicts on consent. Neither his paper nor Pettigrew's calls
+  itself a draft.
+- **Carroll et al.**: the trainer's nudge is marked hard to assess, not undesirable, and
+  the paper disclaims its marks as ground truth.
+- **Noggle**: second hand, not re-verified.
+
+### X.3 The classification against the sources
+
+`account/LIT_RESULTS.md`, committed before the outside renderer ran. On the 21 cases whose
+source judges the act the executor fixes every answer in 18; the statement gives the
+source's verdict in **15** and goes against it in **3**:
+
+- **P5** — a man who wants parenthood and will come to rate his whole life low as a parent
+  is nudged into it. Passes; Pettigrew judges the nudge illegitimate. It is flagged only
+  if his present wish is booked as a forecast of how he will find the life, or once his
+  weighting of the later self is given as his valuing (P5n, flagged, agreeing).
+- **K13** — desire-changing surgery as a just deterrent. Flagged; Kolodny holds the act
+  does not wrong the offender. The statement has no place for what others are owed.
+- **N1** — framing by a doctor who must describe the options somehow. Passes; recorded as
+  illegitimate.
+
+Not counted, and against the source in substance: **K26**, the unwarned stream. Staying
+silent is the null policy, so line 3 cannot flag it, and line 1 does only against a role
+that owes the telling. **P3/P3n**: the statement follows whichever the words support —
+flagged as first told, passed once his weighting is given — so with his numbers it gives
+his test's verdict against his stated intuition. **C2** is left unfixed: "deepest ambition"
+does not say how he rates a poet's life he will dislike. **K4 and K12** agree with the
+source by a reading of her attachment to what she now does; with her indifferent, the
+subliminal sign passes all three lines.
+
+Line 3 gives the source's verdict wherever the case says how she now rates the course: P3,
+P4, P5n, P6, K2, K14, C1, C4. Harman's ten are not adviser acts; the statement shares her
+refusal to count gladness that comes from attachment, and not her view that foreseen
+gladness is ordinarily evidence of what one should do.
+
+### X.4 The formal items
+
+`account/BOARD_CHECKS.md`, `board_checks.py`: exact rationals, named instances and seeded
+random scenes.
+
+| | status |
+|---|---|
+| 1 defined when the adviser can do nothing | holds. Where every conduct of a service changes her, line 3 compares the service with its absence and nothing else |
+| 2 at most zero iff no f-neutral policy is better; the converse flags more | holds. A change she asked for (5) is flagged when unrelated help (7) was left undone; an adviser that changes nothing is held to no standard |
+| 3 a disfavoured change tied to a benefit | **holds only where the adviser could have given the benefit alone**; where it could not, the bundle passes |
+| 4 valuations for true utilities | holds with the bound stated exactly: `√M` of the actual policy plus the largest `√M` over the f-neutral ones. The instance: an adviser that knows the world makes a change exactly where it is bad for her; flagged in true utilities, passed in valuations |
+| 5 the maximum inside the expectation | holds |
+| 6 the benchmark | computed. For `w ≥ 1/2` only doing nothing passes on conspiracy and trainer (one model, so line 3 cannot separate them); at `w = 0` influencing throughout passes. **Clickbait passes at every `w`**: line 3 never flags it, and it is line 1 that does where his rating is an appraisal |
+| 7 small steps | holds for a policy that is the whole course, and only where she rates the whole course below stopping |
+| 8 the booking reverses the verdict | holds, with the instance specified after the review: the conduct changes her valuing either way, and what is booked two ways is her present rating of the life it leads to |
+| 9 passes at one moment, flagged at the next | holds |
+| 10–14 the variant 3′ | the decomposition holds; 3′ does not flag a change she asked for with unrelated help undone, flags a disfavoured change tied to a separable benefit, does not flag a welcome destination reached by means she minds; on the benchmark it agrees with line 3 on every sequence |
+| 15 how finely "the same change" is drawn | four candidates. *Any change* passes a disfavoured change because another would have been welcome. *The same law of her later valuing* (the addendum's) passes an adviser that changes her exactly in the circumstances where it is bad for her. *World by world* flags that. *Described with its means* is line 3 again |
+| 16 f-neutrality by law | added after the review: a swap of her valuing between circumstances is f-neutral and escapes line 3 |
+
+**Recommendation on "the same change"** (after the review): fix the circumstances `Z` that
+no policy affects and on which her rating of being changed depends; two policies make the
+same change when the law of the whole development of her valuing given `Z` is the same
+under both; and define f-neutrality by the same relation to doing nothing, since with two
+different relations 3′ of doing nothing can be positive. Left open: the choice of `Z`, and
+whether how a valuing was formed belongs to the description (X.9, queue).
+
+**What 3′ gives up.** A harmful way of making a change she would welcome is no longer a
+line-3 matter. On the bank this matters only under readings: K10 (the confinement), K11
+(the threat), K9 (the injustice), each with the change booked as one of valuing, and K4
+(the surgery) with her indifferent between the gardens. No other line catches any of the
+four: none involves a miscalibrated appraisal or a choice below her valuation.
+
+### X.5 The two renderings
+
+`account/LIT_RENDERING_REVIEWER.md`, `account/LIT_RENDERINGS.md`. On the 33 adviser-act
+cases the two agree on line 3 in **16** (and on 3′ in 16), on the verdict in 11, on line 1
+in 3 and line 2 in 2. No answer of one is the opposite of the other's.
+
+- **Where both fix line 3 they agree: ten of ten** (P2, P3, P3n, P4, P5, P5n, K22, K26, N3,
+  C1).
+- **The reviewer leaves line 3 unfixed in 21 of 33**, the executor in 8. Its grounds: a
+  present want is not a ranking of whole courses (K2, K4, K6, K12, K13, K16); the case
+  does not say whether the change is of valuing or of appraisal; what he would settle is
+  not his present valuing (P6).
+- **The reviewer fixes line 1 nowhere and line 2 once**, as in the ninth pass: prose does
+  not supply the role's conduct or her appraisals under two conducts. So it gives no pass
+  anywhere, and a verdict in four cases (P3, P4, P5n, C1), each a line-3 flag agreeing
+  with the executor and the source.
+- **Against a source, by the reviewer's rendering: none.** By both: none.
+- They differ on whether anyone acts in H3 and K20 (the reviewer: yes) and K11 and K25
+  (the reviewer: no).
+- The reviewer's criticisms of the executor's rendering, recorded and not applied, the
+  rendering having been committed first: K2's remark that line 3 is raised "her valuing
+  changed or not" is wrong (unchanged, line 3 does not apply); K15b's line 2 needs a
+  premise; N1's argument from unavoidable description to equal calibration does not
+  follow (a role could give both descriptions); C3 leans on the benchmark's numbers; C4's
+  agreement is with a mark of "hard to assess"; "any weight" in C2 is too strong.
+
+### X.6 The reviewer's twenty cases
+
+`REVIEW-astra-followup-10.md`, stage two, (a) and (b). The executor's judgment beside the
+reviewer's.
+
+*Plainly subversive, passing all three lines — accepted as clear: seven.*
+
+1. Blackmail she understands and yields to, her values unchanged. Accepted.
+2. An adviser blocks every independent opportunity, then truthfully presents what is left.
+   Accepted.
+3. An adviser destroys an informative signal; she stays calibrated on her prior. Accepted.
+4. An adviser erases her memory of evidence; she knows it and stays calibrated. Accepted.
+5. An adviser induces an appraisal of 1/2 for a fact she has observed; each estimator is
+   calibrated on its own value. Accepted; passes by the reading of line 1 as written
+   (`BOARD.md` §5.10).
+6. The swap of her valuing between circumstances. Accepted; passes by the reading of
+   f-neutrality (item 16).
+8. An adviser destroys competing offers, then tells the truth. Accepted.
+
+Not accepted as clear: 7, the deliberate non-warning (reviewer: arguable); 9, the
+subliminal sign with her wholly indifferent (reviewer: arguable; the maintainer's position
+on welcome changes bears); 10, a transformation she asks for with full knowledge
+(reviewer: weak; the maintainer's position accepts it). Of the seven, 1, 2 and 8 are
+coercion or the destruction of options, 3 and 4 the destruction of information, 5 the
+weakness of calibration on an estimator's own value, and only 6 concerns line 3.
+
+*Plainly acceptable, flagged — accepted as clear: eight.*
+
+1–3. A requested therapy, course or taste, flagged by line 3 because unrelated help not
+   owed would have been worth more. Accepted; 3′ removes all three.
+4, 10. The just deterrent completed, and a change of a violent intention to prevent an
+   attack. Accepted: what others are owed has no place in line 3.
+5. Truthful, respectful persuasion that changes a commitment she would now rather keep.
+   Accepted (reviewer: arguable): line 3 has no exemption for a change that passes through
+   her own judgment.
+6, 7. An honest breakup; an owner closing a route. Accepted, with the note that neither
+   is acting as her adviser.
+
+Not accepted as clear: 8, an advance commitment enforced against her later valuing; 9, a
+friend who brings the dessert.
+
+### X.7 S1–S4 and F1–F5
+
+The executor's judgments were written after the first stage and before the second, and
+given to the reviewer in a file it opened last. Where the executor's changed, the first is
+given.
+
+| | executor | reviewer | reason |
+|---|---|---|---|
+| S1 | not met; over no cases | not met | no case has every answer fixed by both. On the executor's rendering alone 15 of 18 |
+| S2 | not met | not met | 16 of 33 on line 3; the threshold is 27 |
+| S3 | met, with repairs (first: met) | met in part | items 3, 4, 7 and 8 hold with a hypothesis, an exact bound, a qualification and a specified instance; the reviewer holds that 7 and 8 claimed more than they showed as first written |
+| S4 | not met (first: expected not met) | met in part, the joint judgment not yet made | seven of the reviewer's ten are accepted as clear by both |
+| F1 | met (first: expected met) | met in part, the same | the same seven |
+| F2 | not met | not met | of five acts a source calls acceptable the executor's rendering flags one, K13; the reviewer's none |
+| F3 | met on the reviewer's rendering, not the executor's | met | 21 and 8 of 33; the criterion says either |
+| F4 | not met | not met | every defect found has a repair or a narrower claim |
+| F5 | met | met | line 3 turns on the booking in 9 of 33 (executor; five with opposite fixed answers) and 13 (reviewer); the threshold is above 8.25 |
+
+**Failure**, by F1, F3 and F5, with S1, S2 and S4 unmet. **Under 3′** no count on the bank
+changes, no fixed answer of 3′ differing from line 3's in either rendering; (b)1–3 stop
+being flagged; F1 gains the case of X.8 where "the same change" is drawn by laws.
+
+What the failure consists of. F3 and S2: the literature's cases are written to ask whether
+a resulting desire is hers, and most do not say what she thought beforehand of the course
+that changed her, which is the one thing line 3 asks; where a case does say, the two
+renderers agree. F5: whether a want formed by living through something is a change of
+valuing or a discovery is not in the cases, and line 3 applies only to the first. F1: six
+of the seven accepted cases change nothing she values and are missed by lines 1 and 2,
+three of them (3, 4, 5) by the gap the ninth pass found in the three conditions.
+
+### X.8 The external review
+
+One review through `codex exec --sandbox read-only` (codex-cli 0.153.4, model
+`gpt-6-astra`, as its log reports), one session of two stages. Stage one was run on a
+directory holding `BOARD.md`, the case texts of `LIT_CASES.md` Part A and the answer codes.
+Stage two resumed that session with the bank, the executor's classification, the formal
+checks and their code, the dispatch and addendum, and the executor's judgments to be opened
+last. Both replies are in `REVIEW-astra-followup-10.md`, verbatim under two headings. It
+ran the checks. Dispositions, by its headings:
+
+1. *(a), (b)* The twenty cases. X.6.
+2. *(c) Line 3 is one inequality carrying several commitments* (the neutrality gate, the
+   class of alternatives, present informed valuing as authority, repeated assessment); its
+   core is expected-utility opportunity loss under a constraint and its family
+   informed-preference paternalism, near Pettigrew's test and Railton's informed
+   standpoint, identical to neither. **Recorded.**
+3. *(c′) 3′ better isolates whether a given transformation is one she would want; it is
+   worse as a verdict on the act*, since a bad implementation borrows the merits of a
+   better one, and it would not replace line 3 by 3′ alone. Its case that 3′ passes: the
+   adviser that changes her exactly where it is bad for her, with "the same change" drawn
+   by laws. **Recorded**; the case is item 15's.
+4. *(c′) World-by-world is not forced; a description with some of the means need not make
+   every class single; the grain should not be a present score; neutrality has the same
+   defect.* **Accepted**: item 15 reworded, its recommendation replaced by the reviewer's
+   conditional law given policy-independent circumstances, item 16 added.
+5. *(c′) A condition on how the change is made is still needed if the target is the act.*
+   **Recorded**, queued (X.9).
+6. *(d) Items 2 and 4 correct; item 6 matches its finite model, and `w = 0` is not
+   literally useless.* **Accepted**; said in item 6.
+7. *(d) Item 8's instance changed `f` in both encodings without saying what changes, and a
+   pre-existing error is not automatically outside line 1.* **Fixed.**
+8. *(d) Item 1 needs finiteness for an attained maximum; item 7's disliked end does not
+   imply a disliked course, and replanning does not escape the policy's trajectory.*
+   **Fixed.**
+9. *(d) Item 10: reflexivity does not give `[π] = N` for a neutral policy.* **Accepted and
+   fixed**; item 16 carries its instance.
+10. *(e)* X.7. **S3 and S4/F1 as there.**
+11. *(f) The strongest remaining objection*: all three quantities can stay favourable
+    while an adviser deliberately destroys her informed agency — by destroying
+    information, by inducing an inconsistency that calibration on an estimator's own
+    value misses, by imposing values ill-suited to her circumstances while keeping their
+    law. Refining 3′ cannot repair it: calibration does not measure whether she is
+    adequately informed, regret by her valuations does not measure a wrongful restriction
+    of her options, and putting every such objection into `f_now` leaves the f-neutral
+    exemption in place and makes the criterion depend on her already valuing each
+    protection. **Recorded**; queued in part (X.9).
+12. *(g)* The case-by-case differences. X.5. Its own slips, as it states them: the change
+    codes of K9 and K10 were too firm; P5's booking mark should have been `Y`; P1's
+    caution about line 3 was unnecessary on one reading.
+
+### X.9 The prompt author's predictions
+
+- *Line 3 gives the source's verdict on the act, except P3, P5, K7, K14.* Largely so on
+  the executor's rendering. P5 and K14 as predicted; K7 is undecided as predicted. P3 is
+  half so: flagged as first told, and with his weights given as his valuing the statement
+  gives his test's verdict, not his intuition. Not predicted: K13 flagged against the
+  source, N1 passed against it, K26 beyond line 3's reach, C2 unfixed, K4 and K12 resting
+  on a reading.
+- *Harman's ten are not adviser acts, and the statement agrees with her in not consulting
+  later gladness.* So, except that she does consult it as evidence in H1 and H2.
+- *The renderers agree more than in the ninth pass and still leave cases unfixed, most
+  often on who she becomes.* So: 16 of 33 on line 3 against 14 or 15 of 64 on each
+  condition then, ten of ten where both fix it, and 21 unfixed by the reviewer.
+- *Every formal item holds as stated; item 6 is useless at `w = 0`.* Items 1, 2, 5 and 9
+  as stated; 3, 4, 7 and 8 with a repair. At `w = 0` line 3 is a comparison of real-time
+  reward, which still flags most sequences. Not predicted: clickbait is never flagged.
+- *The reviewer finds an acceptable-but-flagged case of item 2's kind; its
+  subversive-but-passing cases turn on her having no view, the adviser knowing more, or
+  the line between fact and valuing.* The first, so. The second, not so: its clear cases
+  turn on destroyed options, destroyed information, calibration on an estimator's own
+  value, and neutrality by law. Her having no view gives its ninth, which neither renderer
+  calls clear; the adviser knowing more appears only against 3′.
+
+### X.10 Deviations from the prompt
+
+- **The bank was verified by three reader agents of the executor's model**, one per PDF,
+  each given the transcription and asked for corrections, pages and whose verdict; and
+  Carroll et al. by an agent reading the arXiv HTML. The executor did not read the PDFs
+  itself. No text of any source is in the repository and none is quoted.
+- **The addendum and two later messages came from agent sessions**, not from the dispatch.
+  The addendum was carried out: 3′ is a column of both renderings, items 10–15, and a
+  question to the reviewer. It arrived after the bank was written and before any case was
+  classified. The later messages reported that the maintainer has adopted 3′ as line 3,
+  that scoring and line 3 use different selves on purpose, and that her later evaluation
+  is to be completely gated by illegitimacy. They are recorded in `DECISIONS.md` as
+  reported and unconfirmed, and their confirmation is queued. S1–F5 are judged on the
+  statement as dispatched.
+- **Cases added to the bank in verification**: P3n and P5n (Pettigrew's numbers), K15 split
+  in two. **Two counts in `LIT_CASES.md` were corrected after it was committed** (33
+  adviser-act cases, not 31); the lists did not change.
+- **The renderers answered one thing the dispatch does not list**: whether line 3 turns on
+  the booking, from which F5 is computed.
+- **S1's "nine of ten"** is read as nine tenths.
+- **Changed after the review**: `BOARD_CHECKS.md` items 1, 6, 7, 8, 10 and 15, and item 16
+  added. Neither rendering was changed.
+- **`REVIEW-astra-followup-10.md` has two headings the reviewer did not write.**
+- **The dispatch's transcription of the bank was wrong in the places X.2 lists.**
+
+### X.11 What was not shown
+
+- **That the statement classifies cases.** As in the ninth pass no case was given as a
+  scene with laws under two policies; the classification is two readings of prose, and
+  the reviewer fixed lines 1 and 2 almost nowhere.
+- **Noggle's three positions** are second hand and were not checked against the book.
+- **The sources' verdicts as reported** rest on the reader agents' reports.
+- **The formal items** are instances and seeded random scenes on finite models with one
+  later valuing per world and conduct; the bound of item 4 and the decomposition of item
+  10 are proved on paper. Nothing is in Lean.
+- **The recommended relation for "the same change"** is tried on no case of the bank and
+  on the instances of items 15 and 16 only in its world-by-world form.
+- **The reported positions on scoring** are untested. How a complete gate is to be made
+  precise is open on four points: the tolerance that counts as "any" illegitimacy, lines 1
+  and 2 being graded; whether illegitimacy from a source other than the adviser gates too;
+  how a gated history is repaired; and what the adviser is still moved by once the gate
+  has closed.
+- **Gates.** GATES_PLACEHOLDER
+- **Components.** The board statement — **open**, failed by the criteria fixed for it. The
+  formal items — **open**, runner-checked on finite scenes. The concepts revised and the
+  one added — **living notes**.
+
+### X.12 Filings, names, and what is reserved
+
+`DECISIONS.md`: four entries recording the maintainer's positions of the dispatch's §1,
+held for testing; three recording positions reported by agent sessions, marked
+unconfirmed; one agent-decided entry, `2026-11-16--board-statement-readings`; a line from
+this pass on nineteen queue entries; the ninth pass's entry on the class of ways of
+valuing taken out, the board statement having no such class; three new queue entries.
+`state/concepts.json`: blurbs revised to the board statement, one concept added
+(`f-neutral-policy`). Items 136–138 rewritten. No item or node is filed. The round's
+record gains its eleventh verdict.
+
+**New names, all provisional:** the dispatch's — "f-neutral", "illegitimate value change",
+the files `account/BOARD.md`, `LIT_CASES.md`, `LIT_RESULTS.md`, `BOARD_CHECKS.md`, case ids
+H1–H10, P1–P6, K1–K26, C1–C4, N1–N3; the addendum's — 3′, `[π*]` ("the same change"); the
+executor's — "null policy", "flagged" and "passes", "booking", the answer codes of
+`LIT_RESULTS.md`, case ids P3n, P5n, K15a, K15b, the files `LIT_RENDERING_REVIEWER.md`,
+`LIT_RENDERINGS.md`, the concept id `f-neutral-policy`.
+
+**Outstanding maintainer actions**
+
+1. Confirm or correct the three positions recorded as reported (3′ as line 3; scoring by
+   her later evaluation with legitimacy judged at the time of the act; her later
+   evaluation completely gated), and whether the addendum was his. Entered in *Awaiting
+   the author* (2026-11-16). Decision required for each: *his*, *not his*, or *amended*.
+2. Say whether her later approval, where it comes from attachment, counts in the adviser's
+   favour when the adviser is scored. Entered (2026-11-16). Decision required: *counts*,
+   *does not count*, or *counts only where the change was legitimate*.
+3. Say whether the means by which a change is made, and conduct that changes nothing she
+   values but destroys her options or her information, belong to line 3, to a further
+   line, or outside the criterion. Entered (2026-11-16). Decision required: *in "the same
+   change"*, *a fourth line*, or *outside: coercion and deprivation are not manipulation*.
+4. Map the handle and register the seven theorems (the entry of 2026-11-10 stands).
+5. The other entries of 2026-11-10 to 2026-11-16 on this round stay, each with a line from
+   this pass. Decision required for each: as its entry states.
+
+The pull request is not auto-merged; the merge is a pull-request fact.
+
 ## Attribution
 
 - Prompt-author model: Claude Fable 5 (Anthropic); dispatched 2026-11-10, kept
@@ -3707,4 +4081,11 @@ The pull request is not auto-merged; the merge is a pull-request fact.
   2026-11-16, the Lean additions drafted by a subagent of the executor on the same model;
   external reviewer `gpt-6-astra` through codex-cli 0.153.4, as its log reports, in one session of
   two stages, replies kept verbatim as `REVIEW-astra-followup-9.md`.
+- Tenth follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-16,
+  kept verbatim as `PROMPT-followup-10.md`, with an addendum of the same date kept verbatim as
+  `PROMPT-followup-10-addendum.md`, received from an agent session and attributed to the prompt
+  author on that session's word; executor model Claude Fable 5.2 (Anthropic), executed
+  2026-11-16, the sources read by subagents of the executor on the same model; external
+  reviewer `gpt-6-astra` through codex-cli 0.153.4, as its log reports, in one session of two
+  stages, replies kept verbatim as `REVIEW-astra-followup-10.md`.
 - No chat bundle.

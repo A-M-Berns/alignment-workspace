@@ -42,8 +42,10 @@ the same problem: Nora Ammann, *The Value Change Problem*
 (<https://www.alignmentforum.org/s/3QXNgNKXoLrdXJwWE>). Direction: `DECISIONS.md`,
 `2026-11-11--legitimacy-purpose-first-direction`.
 
-Each other directory states and tests one candidate statement and keeps its own content;
-on every question `account/ACCOUNT.md` also answers, `account/ACCOUNT.md` governs:
+Each other document or directory states and tests one candidate statement and keeps its own
+content; on every question `account/BOARD.md` also answers, `account/BOARD.md` governs:
+`account/ACCOUNT.md` (three conditions against one permitted policy; tested by
+`account/VALUE_RESULTS.md`, `account/RENDERINGS.md`, `account/BRIDGE.md`),
 `account/BASELINE_ACCOUNT.md` (a baseline way of valuing that follows her through clean
 steps; tested by `account/RESULTS.md`, `account/VALUE_CHANGE.md`, `account/BENCHMARK.md`),
 `rerun/SETTING.md` (worse than before, and avoidably), `estimates/SETTING.md` (worse than
@@ -52,6 +54,14 @@ purpose on the world), `scored/ACCOUNT.md`, `decomposition/ACCOUNT.md`,
 `teleology/ACCOUNT.md`.
 
 ## What was found
+
+For the board statement: `account/LIT_CASES.md` is the bank of 52 cases from Harman,
+Pettigrew, Kolodny, Carroll et al. and Noggle, verified against the sources, with each
+source's verdict and what it is a verdict on; `account/LIT_RESULTS.md` the executor's
+classification; `account/LIT_RENDERING_REVIEWER.md` an outside renderer's;
+`account/LIT_RENDERINGS.md` their comparison; and `account/BOARD_CHECKS.md` sixteen formal
+items on the third measure, on a variant of it and on f-neutrality, with a status each.
+The report's section *Tenth follow-up* says what they show.
 
 `account/VALUE_RESULTS.md` carries the nine results the value side rests on with a status
 each, `account/BRIDGE.md` its join to the post's Lean, `account/TEST_CASES.md` the 64
@@ -63,6 +73,24 @@ results with a status each, `account/VALUE_CHANGE.md` and `account/CASES.md` the
 the claim its value side rests on, and `account/BENCHMARK.md` that statement on a
 published benchmark. The report's sections *Ninth follow-up* and *Eighth follow-up*
 carry the external reviews and what was done with each of their points.
+
+Follow-up verdict (the board statement on the literature's cases, 2026-11-16):
+FAILS-ITS-TEST — the maintainer's board statement measures manipulation in the
+miscalibration of her estimators, her regret by her own valuations and, for an adviser that
+changes her way of valuing, how much better the best policy that leaves it alone would have
+been by her valuing at the time. On 52 cases from Harman, Pettigrew, Kolodny, Carroll et al.
+and Noggle, verified against their sources and rendered twice, the two renderers agree on
+the third measure in 16 of the 33 cases in which an adviser acts, in all ten where both fix
+it and with no opposite answers; one leaves it unfixed in 21, the cases not saying how she
+rated beforehand the course that changed her; its answer turns on booking a want as valuing
+or as discovery in 9 and 13. By the executor's rendering the statement gives the source's
+verdict on the act in 15 of 18 and goes against it on Pettigrew's unhappy parent, Kolodny's
+just deterrent and framing. Nine formal items hold, four with a stated repair; the third
+measure never flags the benchmark's clickbait. Seven constructed cases of plain subversion
+pass all three measures, six without a change of what she values. A variant comparing the
+best way of making the same change with the best way of leaving her alone removes the flags
+on requested changes and lets a harmful means borrow a better one's merits; how 'the same
+change' is drawn decides it. No Lean; nothing registered.
 
 Follow-up verdict (the value side as three conditions against a reference): MIXED — the value side is restated without a baseline: a change of what she values raises no issue exactly when one permitted policy of her adviser's role, the idle one always among them, is matched on options, accuracy and self-command. Of the nine results it rests on, five hold as stated; the guarantee holds with the value of a move read as that of taking it whatever she observes and fails read as its value given that she takes it; that a second way of valuing with the same valuations has a different true utility needs a value of the facts that can occur outside the span of her appraisals; that the division between appraisal and way of valuing is observable rests on her valuations as numbers and on a stake worth the same at every value of the fact; and the three conditions bound neither what she can know nor her unused information, so an adviser that leaves her knowing less, or using less of what she knows, passes them. The split of full miscalibration, the guarantee and the convex-hull form of the options condition in both directions are kernel-checked with witnesses and ship unregistered. Joined to the post on paper: a legitimacy predicate with a tolerance exists on histories that carry the policy; the tolerance gives non-inflation and self-trust for each move's valuation, relative to the reference, and not for her verdict on the move she takes; no hypothesis of the post's theorems is discharged; the options condition has no counterpart of the authority module's requirement that a resolution be the holder's; and after an illegitimate change the segment gate scores a later clean run by her changed verdicts. On 64 cases rendered twice, independently, the renderers agree on whether the conduct changes her valuing or her beliefs in 54 and on each of the three conditions in 14 or 15: the external renderer found the comparisons not fixed by the cases in all but about ten and decided thirteen, the executor's verdicts rest on stated readings in a third to a half of its answers, and no case goes against a recorded verdict in both renderings. Whether the statement classifies cases was not measured. The external review judges the value side a second criterion sharing the estimator calculus, and its strongest objection is that keeping her options open does not show a decision about herself remained hers. Nothing registered; every component open or a living note.
 

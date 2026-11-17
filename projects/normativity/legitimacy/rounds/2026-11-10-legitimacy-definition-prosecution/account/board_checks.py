@@ -1,4 +1,4 @@
-"""BOARD_CHECKS.md: the nine formal items on line 3 of BOARD.md and six on its variant 3', each by a named instance or seeded random
+"""BOARD_CHECKS.md: the nine formal items on line 3 of BOARD.md and seven on its variant 3' and on f-neutrality, each by a named instance or seeded random
 scenes in exact rationals.  A failure is a status or a benchmark row in BOARD_CHECKS.md that is not the
 one computed here, or a document that parses to nothing."""
 from __future__ import annotations
@@ -447,8 +447,29 @@ def item15():
             "13 has 3' at %s, which is line 3" % (coarse, law, by_law, by_world, l3, f3))
 
 
+def item16():
+    """Neutrality by the law of her later valuing: a swap between circumstances is f-neutral."""
+    prob = {"a": F(1, 2), "b": F(1, 2)}
+    tab = {("a", "nothing"): ("fA", F(0)), ("b", "nothing"): ("fB", F(0)),
+           ("a", "swap"): ("fB", F(-3)), ("b", "swap"): ("fA", F(-3)),
+           ("a", "swap and gift"): ("fB", F(1)), ("b", "swap and gift"): ("fA", F(1))}
+    s = Scene(prob, {"a": 0, "b": 0}, ["nothing", "swap", "swap and gift"], lambda w, b: tab[(w, b)], "nothing")
+    swap, null = ("swap",), s.null_policy()
+    by_law = s.line3(swap)                                           # None: f-neutral, line 3 does not apply
+    world_neutral = s.same_change(null, "world")
+    by_world = max(s.EU(q) for q in world_neutral) - s.EU(swap) if swap not in world_neutral else None
+    mixed = max(s.EU(q) for q in s.neutral()) - max(s.EU(q) for q in s.same_change(null, "world"))
+    ok = by_law is None and by_world == 3 and mixed == 1
+    return ("holds" if ok else "fails",
+            "doing nothing gives her one valuing in each of two equally likely circumstances; the adviser swaps "
+            "them, which she rates -3: the law of her later valuing is unchanged, so the swap is f-neutral and line "
+            "3 does not apply; with neutrality taken circumstance by circumstance line 3 is %s. With neutrality by "
+            "law and the same change taken circumstance by circumstance, 3' of doing nothing is %s where a swap "
+            "with a gift is rated 1" % (by_world, mixed))
+
+
 CHECKS = {"1": item1, "2": item2, "3": item3, "4": item4, "5": item5, "6": item6, "7": item7, "8": item8, "9": item9,
-          "10": item10, "11": item11, "12": item12, "13": item13, "14": item14, "15": item15}
+          "10": item10, "11": item11, "12": item12, "13": item13, "14": item14, "15": item15, "16": item16}
 
 
 def run_all():

@@ -1999,7 +1999,7 @@ change, and the count of those is the size of the free choice remaining.
 | `AffineForm.eval` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.AffineForm.eval` |
 | `Face` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face` |
 | `Regular` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.Regular` |
-| `candidate` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.candidate` |
+| `candidate` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.candidate` |
 | `cell` | def | unrecorded | note, prose | `Workspace.Normativity.Contrib.PolyhedralProjection.cell` |
 | `coefQ` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.coefQ` |
 | `coord` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.coord` |

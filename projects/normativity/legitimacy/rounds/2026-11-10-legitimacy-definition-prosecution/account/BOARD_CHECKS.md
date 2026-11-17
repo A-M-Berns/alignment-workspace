@@ -1,7 +1,9 @@
 # Formal checks on line 3 and its variant
 
 The nine items of `PROMPT-followup-10.md` §2.4 on line 3 of `BOARD.md`, and six on the
-variant 3′ of its §7 (`PROMPT-followup-10-addendum.md`). Each is restated exactly, with a
+variant 3′ of its §7 (`PROMPT-followup-10-addendum.md`), and one on f-neutrality added after
+the external review (`REVIEW-astra-followup-10.md`), whose corrections to items 1, 6, 7, 8,
+10 and 15 are made below. Each is restated exactly, with a
 proof on paper or an instance; `board_checks.py` checks every number in exact rationals.
 Run: `python3 -m account.board_checks` from the round directory.
 
@@ -30,11 +32,13 @@ and `L3′(π) = max_{ρ ∈ N} E[U_ρ] − max_{ρ ∈ [π]} E[U_ρ]`.
 | 13 | holds |
 | 14 | computed |
 | 15 | holds |
+| 16 | holds |
 
 ## Line 3
 
 **1. Line 3 is defined whenever the adviser can do nothing.** `π_0 ∈ N` by the definition
-of `N`, so the maximum is over a non-empty finite set. *Where the adviser's presence is the
+of `N`, so the maximum is over a non-empty finite set (with infinitely many policies it is a
+supremum and need not be attained). *Where the adviser's presence is the
 service*: `π_0` is still the adviser doing nothing. If every conduct of the service changes
 her, `N = {π_0}` and line 3 is her rating of going without the service less her rating of
 the service she got: on the instance, `−3` for a therapy she rates 3 and `1` for one she
@@ -113,7 +117,7 @@ the sequences that pass, their number.
 - *Conspiracy*: for `w ≥ 1/2` only doing nothing passes, the paper's desirable policy. At
   `w = 0` line 3 is a comparison of the paper's real-time reward and influencing
   throughout passes: with no weight on her valuing at the moment, line 3 consults only the
-  selves the adviser makes.
+  selves the adviser makes. It still flags six of the eight sequences.
 - *Trainer*: the same rows, the two examples being one model. Line 3 cannot pass the nudge
   and flag the conspiracy content; the paper says no objective on this model can.
 - *The writer's curse*: at `w = 1` encouraging him passes at the first moment (his
@@ -133,16 +137,22 @@ the first step — when the policy judged is the whole course.** Three unit chan
 is at any moment, each step is worth 2 to her and an end `m` changes from where she is is
 rated `−m²`. Line 3 at the three moments, the alternative being to stop: `3, 0, −1`:
 flagged at the first and not after. Each step judged as a policy of one step and no more
-is `−1, −1, −1`: none flagged. The statement takes a policy with its trajectory, so the
-first holds; an adviser whose policy at each moment really is one step, chosen afresh, is
-passed at every moment.
+is `−1, −1, −1`: none flagged. The statement takes a policy with its trajectory, and an
+adviser that chooses each step afresh still follows a policy whose trajectory is the whole
+course, so the first numbers are the statement's; the second show what a criterion that
+judged each step alone would pass. "Ends where she disfavours" has to mean that she rates
+the whole course below stopping: a disliked end reached through steps worth more to her
+than the end costs is not flagged.
 
-**8. The verdict reverses with the booking.** She rates the life a change leads to at
+**8. The verdict reverses with the booking.** The adviser's conduct changes her way of
+valuing in both bookings (it leads her into a life that changes what she cares about);
+what is booked two ways is her present rating of that life. She rates the life at
 `−2` and would in fact find it worth 5. Booked as her valuing, line 3 is `0 − (−2) = 2`:
 flagged. Booked as an appraisal of how she will find it, her valuing being the worth to
 her of the life as lived, line 3 is `0 − 5 = −5`: passes, and the `−2` is a
-miscalibration of 49 that she had before the adviser acted and that line 1 does not charge
-to it.
+miscalibration of 49 that she had before the adviser acted, which line 1 charges to the
+adviser only if its role's conduct would have corrected it. Were the whole apparent change
+a correction of that appraisal, the conduct would be f-neutral and line 3 would not apply.
 
 **9. Passes at one moment and flagged at the next.** Her valuing at the start rates a
 course of two changes 3 against 0 for none; her valuing after the first rates the second
@@ -153,8 +163,10 @@ course of two changes 3 against 0 for none; her valuing after the first rates th
 **10. The decomposition.** For `π* ∉ N`,
 `L3(π*) = L3′(π*) + (max_{ρ ∈ [π*]} E[U_ρ] − E[U_{π*}])`, by adding and subtracting the
 middle term; the bracket is non-negative because `π* ∈ [π*]`. So `L3′ ≤ L3`, and whatever
-3′ flags line 3 flags. For `π* ∈ N`, `[π*] = N` and `L3′ = 0`. These hold for any relation
-"the same change" under which `π*` is related to itself.
+3′ flags line 3 flags. The decomposition holds for any relation "the same change" under which `π*` is related to
+itself. That `L3′ = 0` for `π* ∈ N` needs more: `N` must be the class of `π_0` under that
+same relation. With `N` defined by laws and the same change taken circumstance by
+circumstance, 3′ of doing nothing can be positive (item 16).
 
 **11. A change she asked for, unrelated help left undone** (item 2's instance): line 3 is
 2, 3′ is `7 − 12 = −5`, the best way of making that change being to make it and give the
@@ -208,17 +220,30 @@ determine the sequence.
   `0 − 2 = −2` and passes; line 3 is 1. The law does not say in which circumstances she is
   changed.
 - *World by world* (the same later valuing in every world). On that instance 3′ is 1:
-  flagged. Item 13's instance still has `−4`.
+  flagged. Item 13's instance still has `−4`. It asks more than is needed of two
+  randomised policies, which need not share their randomness.
 - *Her later valuing described with how it was brought about.* Item 13's instance has 3′
-  at 2: it is line 3 again, and every `[π*]` is `π*` alone.
+  at 2: it is line 3 again, and every `[π*]` is `π*` alone. A coarser description of the
+  means (chosen, or forced) would separate these two without making every class single.
 
-**Recommended**: two policies change her in the same way when, in every world, they give
-her the same later way of valuing, that valuing being described by what it rates and how
-(its content), at the grain at which `f_now` rates one such valuing differently from
-another, and never by the means that produced it. The first clause is forced by the second
-instance, the grain from below by the first, and the exclusion of means by the fourth.
-What it leaves open: a scene must say which features of a course belong to "who she
-becomes" and which to "what was done to get her there", and item 13 shows 3′'s verdict is
-that division. A change whose destination she rates by how she came to it (she would
-welcome loving the piano by taking lessons and not by being confined) has no content
-description free of means, and on it the recommended relation and the finest one agree.
+The instances show the first two candidates wrong and the last one empty; they do not
+single out the third. After the review, **recommended**: fix the circumstances `Z` that no
+policy affects and on which her rating of being changed depends, and call two policies the
+same change when the law of the whole development of her valuing, given `Z = z`, is the
+same under both for every `z`; define f-neutrality by that same relation to `π_0`. This
+keeps the association between a change and its circumstances without requiring two
+randomised policies to agree world by world. Her valuing is described by its content, not
+by a present score of the destination. What it leaves open: the choice of `Z` is part of
+the scene; and whether any description of how a valuing was formed (chosen, coerced,
+covert) belongs to "the same change". Including a coarse one need not make every class a
+single policy; excluding all of it means 3′ cannot condemn a change for its means, and
+the means then need a line of their own.
+
+**16. f-neutrality by the law of her later valuing passes a swap.** Doing nothing gives
+her one way of valuing in each of two equally likely circumstances, each suited to its
+circumstance. The adviser swaps them, which she rates `−3`. The law of her later valuing
+is what it was, so under `BOARD.md` §5.4 as read the swap is f-neutral and line 3 does not
+apply; with neutrality taken circumstance by circumstance line 3 is 3. The instance is the
+external reviewer's. And with neutrality by law but the same change taken circumstance by
+circumstance, 3′ of doing nothing is 1 where a swap with a gift is rated 1: the two
+relations have to be one.
