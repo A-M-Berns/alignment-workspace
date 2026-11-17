@@ -1,5 +1,8 @@
 # The account — manipulation as induced mistake; a change of what she values judged by three conditions against a reference
 
+**`BOARD.md` is the statement that governs now**: three measures, the third one comparison in place of
+Part III's three conditions. This document is the statement the ninth follow-up tested.
+
 Part I is the setting, Part II the belief side, Part III the value side. Part III is the
 statement of `PROMPT-followup-9.md` §1, the prompt author's, tested by no one else; Part
 II is held with some confidence. Positions marked *(maintainer)* are the maintainer's

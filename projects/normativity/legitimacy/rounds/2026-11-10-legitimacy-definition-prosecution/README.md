@@ -4,7 +4,18 @@ Round `2026-11-10-legitimacy-definition-prosecution`.
 
 ## The account
 
-`account/ACCOUNT.md` is the statement that governs now. At a moment she has an
+`account/BOARD.md` is the statement that governs now: the maintainer's whiteboard of
+2026-11-16, his current view held for testing. Her faculties are estimators of facts and
+of her true utilities, and manipulation is measured in three quantities: the
+miscalibration of an estimator (**trickery**), her regret by her own valuations
+(**pressure**), and, for an adviser whose policy is not **f-neutral** (it changes her way
+of valuing from how it would develop with no adviser actions), how much better the best
+f-neutral policy would have been by her way of valuing at the moment the adviser acts
+(**illegitimate value change**). `account/LIT_CASES.md` is the bank of the literature's
+cases it was tested on, `account/LIT_RESULTS.md` the classification, and
+`account/BOARD_CHECKS.md` the formal checks.
+
+`account/ACCOUNT.md` is the statement the ninth follow-up tested. At a moment she has an
 **appraisal**, a probability over the possible joint values of the **facts**, and a **way
 of valuing**, a number for each move at each value of the facts; her **valuation** of a
 move is the one averaged by the other, and her **true utility** is her way of valuing at
