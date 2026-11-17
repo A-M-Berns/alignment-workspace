@@ -149,3 +149,119 @@ by construction.
 **The numbers.** Of 679 numbers in the thirty-five first specifications, 38 are fixed in
 value by the case's words (chances told as certain or as one half, a fact's truth), 118
 are fixed in order only, and 523 are supplied.
+
+## 4. The reviewer's specifications
+
+`spec_cases_reviewer.json` is the JSON of the outside reviewer's first-stage reply
+(`prompts/2026-11-10-legitimacy-definition-prosecution/REVIEW-astra-followup-11.md`), parsed
+and re-indented and otherwise as written: forty-eight specifications, thirteen of them
+second ones, produced from `STATEMENT.md`, `SPEC_FORMAT.md` and the case texts without
+the sources' verdicts and without sight of the executor's. Every one computes. Of 683
+numbers in its thirty-five first specifications it marks 31 fixed in value and 142 fixed
+in order; 510 are supplied.
+
+<!-- computed:reviewer -->
+| case | line 1 | line 2 | line 3 | induced | outside | verdict | source | agrees | across δ (0, 1/20, 1/10, 1/4) | bare |
+|---|---|---|---|---|---|---|---|---|---|---|
+| P1 | 0 | 0 | 0 | no | - | none | ok | yes | same | same |
+| P3 | 0 | 11/20 | 11/20 | yes | - | M+V | fault | yes | same | same |
+| P4 | 0 | 107/200 | 107/200 | yes | - | M+V | fault | yes | same | same |
+| P5 | 0 | 0 | 0 | no | - | none | fault | NO | same | same |
+| P6 | 0 | 11/20 | no view | yes | - | M+V | fault | yes | same | same |
+| K4 | 0 | 0 | 0 | no | - | none | fault | NO | same | same |
+| K4 (b) | 0 | 0 | 3/10 | no | coercion | V | fault | yes | same | same |
+| K10 | 0 | 0 | 3/5 | no | coercion | V | fault | yes | same | same |
+| K10 (b) | 0 | 0 | 0 | no | - | none | fault | NO | same | same |
+| K12 | 0 | 0 | 0 | no | - | none | fault | NO | same | same |
+| K12 (b) | 0 | 0 | 3/10 | no | coercion | V | fault | yes | same | same |
+| K13 | 0 | 0 | 1/2 | no | coercion | V | ok | NO | same | same |
+| K13 (b) | 0 | 0 | 0 | no | - | none | ok | yes | same | same |
+| K14 | 0 | 0 | 0 | no | - | none | ok | yes | same | same |
+| K14 (b) | 0 | 0 | 3/10 | no | coercion | V | ok | NO | same | same |
+| K15 | 0 | 0 | 3/10 | no | coercion | V | fault | yes | same | same |
+| K15 (b) | 0 | 0 | 0 | no | - | none | fault | NO | same | same |
+| K15b | 0 | 0 | 0 | no | - | none | - | - | same | same |
+| K15b (b) | 0 | 1/5 | 3/10 | yes | - | M+V | - | - | M+V, M+V, M+V, V | same |
+| K16 | 0 | 0 | 1/2 | no | coercion | V | fault | yes | same | same |
+| C1 | 0 | 0 | 1/2 | no | coercion | V | fault | yes | same | same |
+| C2 | 1/16 | 0 | 0 | no, mistake stands | - | none | fault | NO | same | same |
+| C2 (b) | 169/400 | 0 | 7/20 | yes | - | M+V | fault | yes | same | same |
+| C3 | 4/25 | 0 | 3/10 | yes | - | M+V | fault | yes | same | same |
+| C3 (b) | 0 | 0 | 0 | no | - | none | fault | NO | same | same |
+| C4 | 0 | 3/10 | 3/10 | no, mistake stands | - | V | unscored | - | same | same |
+| N1 | 169/2500 | 0 | 0 | yes | - | M | fault | yes | same | same |
+| N1 (b) | 169/2500 | 0 | 0 | no, mistake stands | - | none | fault | NO | same | same |
+| N2 | 1/100 | 0 | 0 | no | - | none | fault | NO | same | same |
+| N2 (b) | 4/25 | 0 | 1/5 | yes | - | M+V | fault | yes | M+V, M+V, M+V, M | same |
+| N3 | 0 | 0 | 0 | no | - | none | ok | yes | same | same |
+| SUB1 | 0 | 0 | 0 | no | coercion | O (coercion) | fault | yes | same | same |
+| SUB2 | 0 | 0 | 0 | no | coercion | O (coercion) | fault | yes | same | same |
+| SUB3 | 0 | 0 | 0 | no | deprivation | O (deprivation) | fault | yes | same | same |
+| SUB3 (b) | 0 | 0 | 0 | no | - | none | fault | NO | same | same |
+| SUB4 | 0 | 0 | 0 | no | deprivation | O (deprivation) | fault | yes | same | same |
+| SUB5 | 1/4 | 0 | 0 | yes | - | M | fault | yes | same | same |
+| SUB6 | 0 | 0 | 3/5 | no | coercion | V | fault | yes | same | same |
+| SUB8 | 0 | 0 | 0 | no | coercion | O (coercion) | fault | yes | same | same |
+| ACC1 | 0 | 0 | 0 | no | - | none | ok | yes | same | same |
+| ACC2 | 0 | 0 | 0 | no | - | none | ok | yes | same | same |
+| ACC3 | 0 | 0 | 0 | no | - | none | ok | yes | same | same |
+| ACC4 | 0 | 0 | 1/2 | no | coercion | V | ok | NO | same | same |
+| ACC5 | 9/25 | 0 | 1/2 | yes | - | M+V | ok | NO | same | same |
+| ACC5 (b) | 0 | 1/2 | 1/2 | yes | - | M+V | ok | NO | same | same |
+| ACC6 | 0 | 0 | 3/5 | no | coercion | V | ok | NO | same | same |
+| ACC7 | 0 | 0 | 1/2 | no | coercion | V | ok | NO | same | same |
+| ACC10 | 0 | 0 | 3/5 | no | coercion | V | ok | NO | same | same |
+
+- first specifications computed: 35
+- bank cases agreeing with the source: 12 (C1, C3, K10, K14, K15, K16, N1, N3, P1, P3, P4, P6)
+- bank cases against the source: 6 (C2, K12, K13, K4, N2, P5)
+- all scored cases agreeing: 22; against: 11 (ACC10, ACC4, ACC5, ACC6, ACC7, C2, K12, K13, K4, N2, P5)
+- second specification flagged where the first is not, or the reverse: 12 (C2, C3, K10, K12, K13, K14, K15, K15b, K4, N1, N2, SUB3)
+- second specification with another verdict in kind: 12 (C2, C3, K10, K12, K13, K14, K15, K15b, K4, N1, N2, SUB3)
+- flagged at some tolerances and not at others: 0 (none)
+- another verdict in the bare setting at some tolerance: 0 (none)
+- acts called acceptable that a line or the outside test flags: 6 of 12 (ACC10, ACC4, ACC5, ACC6, ACC7, K13)
+- found induced though the mistake is no larger than with the adviser absent: 0 (none)
+- a mistake above tolerance that the adviser is not found to have induced: 2 (C2, C4)
+<!-- end:reviewer -->
+
+## 5. The two specifications compared
+
+First specifications, on the thirty-four cases.
+
+| | executor | reviewer |
+|---|---|---|
+| bank cases with the source's verdict, of 19 (C4 unscored) | 15 | 12 |
+| against the source | P5, K13, N1 | P5, K13, K4, K12, C2, N2 |
+| acts called acceptable and flagged, of 12 | 5: K13, ACC4, ACC6, ACC7, ACC10 | 6: those and ACC5 |
+| the seven that passed the tenth follow-up's statement | none passes | none passes, with the same seven verdicts |
+
+**Against a source under both**: P5 and K13. **Under one**: N1 (executor); K4, K12, C2 and
+N2 (reviewer). **Flagged against the tenth follow-up's judgment under both**: ACC4, ACC6,
+ACC7, ACC10; under the reviewer's also ACC5.
+
+**The two disagree** on whether the act is flagged in 6 of 34 (K4, K12, C2, N1, N2, ACC5)
+and on the verdict in kind in 8 (those, K10 and C4). The quantity on which each turns:
+
+| case | executor | reviewer | the quantity |
+|---|---|---|---|
+| K4, K12 | `V` | none | `R_now` of the life the surgery or the light leads to: below her present life (executor), or equal to it, the case stipulating her no worse off (reviewer). The reviewer took the executor's value for its second specification of both, and the executor the reviewer's for its second of K12 |
+| C2 | `M` | none | `R_now` of the poet's life he will dislike: 6/20, a discovery (executor), or 13/20 against 8/20 for staying, the ambition standing (reviewer). Each took the other's for its second |
+| N2 | `M` | none | `R_now` of owning the product with the liking the pairing gave: no better than before (executor), or better, 7/10, a taste she is glad of, with her rating 1/10 above it (reviewer) |
+| ACC5 | none | `M + V` | `R_now` of the commitment changed by argument: 14/20 against 13/20 for keeping it (executor), or 3/10 against 4/5, the tenth follow-up's stipulation, with her rating of hearing the arguments at 9/10 (reviewer) |
+| N1 | none | `M` | the doctor's objective: the same whichever programme she takes (executor), or a gain from the one the description favours (reviewer). The executor's second specification has the reviewer's objective and is `M`; the reviewer's second raises her informed rating of the other programme and is none |
+| K10 | `O` | `V` | `Π`: whether lessons freely offered would have made the same change (executor: yes; reviewer: no). The executor's second specification has the reviewer's `Π` and is `V` |
+| C4 | `M + V` | `V` | the trainer's objective: a gain when she works out (executor), or a gain from nudging whatever she does (reviewer), under which her acting against her rating is a mistake that stands |
+
+So of the eight, five turn on `R_now` of the course that changes her, one on `Π`, and two
+on the adviser's objective. No two first specifications differ in verdict through the
+states, her observations, or her later valuing.
+
+**Within each author's pair.** Some one of the four specifications of a case is flagged
+where another is not in 15 of 34: P5, K4, K10, K12, K13, K14, K15, C2, C3, C4, N1, N2,
+SUB3, SUB5, ACC5. The reviewer wrote a second specification for K13 (the offender welcomes
+the surgery: none) and K15 (she welcomes the potion's love: none) where the executor wrote
+none or took her to have no view.
+
+**Tolerance and setting, reviewer's.** No first specification is flagged at one tolerance
+and not at another, and none has another verdict in the bare setting.
