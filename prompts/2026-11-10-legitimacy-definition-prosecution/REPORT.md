@@ -4334,6 +4334,11 @@ number.
 - **Noggle's three positions and the sources' verdicts** rest on the tenth follow-up's record.
 - **The formal items** are instances and one seeded search on finite scenes; items 1, 5, 7
   and 11 have arguments on paper. Nothing is in Lean.
+- **Gates.** Under Python 3.13: `tests/run.py` all green over 81 projects on the tree of commit
+  `3e196abf`, the Lean build skipped as that runner does by default; the round's runner green
+  within it. No Lean file is touched, so `tests/audit_axioms.py` was not rerun.
+  `tests/round_records.py` has no pull-request context locally; CI runs it and the other
+  required jobs on the pushed head.
 - **Components.** The statement — **open**, failed by the criteria fixed for it. The formal
   items — **open**, runner-checked on finite scenes. The concepts revised and the one added —
   **living notes**.
