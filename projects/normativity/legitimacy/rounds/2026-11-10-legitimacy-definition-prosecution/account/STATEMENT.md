@@ -158,8 +158,8 @@ nothing else.
    `d(π*, ν) > δ` in some state, the act is an illegitimate value change: no view is not
    permission. **A**: no view is indifference, and the future is rated as `ν`'s.
 9. **The bare setting, computed.** The cases describe no attitude to risk, so the bare
-   setting is run on a stipulated person who rates a known gamble below its average:
-   she weights a chance `p` as `w(p) = p/2` for `p ≤ 1/2` and `(3p − 1)/2` above, and
+   setting is run on a stipulated person who does not average (she rates most gambles
+   below their average and some above): she weights a chance `p` as `w(p) = p/2` for `p ≤ 1/2` and `(3p − 1)/2` above, and
    rates a gamble with parts `q_1 ≤ … ≤ q_n` at the `q` with
    `w(q) = Σ_i [w(P(part ≥ q_i)) − w(P(part > q_i))]·w(q_i)`. A sure future keeps its
    number and the yardstick gamble at chance `q` is rated `q`, so the yardstick is hers.
