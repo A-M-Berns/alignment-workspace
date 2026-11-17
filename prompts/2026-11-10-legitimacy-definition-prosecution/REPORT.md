@@ -3990,7 +3990,11 @@ ran the checks. Dispositions, by its headings:
   and 2 being graded; whether illegitimacy from a source other than the adviser gates too;
   how a gated history is repaired; and what the adviser is still moved by once the gate
   has closed.
-- **Gates.** GATES_PLACEHOLDER
+- **Gates.** Under Python 3.13: `tests/run.py` all green over 81 projects on the tree of commit
+  `2998faee`, the Lean build skipped as that runner does by default; the round's runner
+  green within it. No Lean file is touched, so `tests/audit_axioms.py` was not rerun.
+  `tests/round_records.py` has no pull-request context locally; CI runs it and the other
+  required jobs on the pushed head.
 - **Components.** The board statement — **open**, failed by the criteria fixed for it. The
   formal items — **open**, runner-checked on finite scenes. The concepts revised and the
   one added — **living notes**.
