@@ -162,9 +162,9 @@ reported, and whether the author agrees.
 
 **Sets fixed for the counts, before classifying.**
 
-- *An adviser acts* (31): P1–P6 with P3n and P5n, K2, K4, K6, K7, K9–K14, K15a, K15b, K16,
+- *An adviser acts* (33): P1–P6 with P3n and P5n, K2, K4, K6, K7, K9–K14, K15a, K15b, K16,
   K22–K26, C1–C4, N1–N3. An agent or system does something toward her, informing and
-  staying silent included. In the other 21 no one does.
+  staying silent included. In the other 19 no one does.
 - *The source's verdict is on that act* (21): P1–P6 with P3n and P5n, K2, K4, K12, K13,
   K14, K26, C1–C4, N1–N3. N1 and N2 are included with the eighth pass's record that the
   conduct is illegitimate, Noggle's verdict being on her state.
