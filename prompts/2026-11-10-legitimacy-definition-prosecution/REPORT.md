@@ -4036,6 +4036,343 @@ executor's — "null policy", "flagged" and "passes", "booking", the answer code
 
 The pull request is not auto-merged; the merge is a pull-request fact.
 
+## Eleventh follow-up (2026-11-17) — the consolidated statement, tested on fully specified cases
+
+Dispatched by `PROMPT-followup-11.md`. The statement tested is that dispatch's §1: the prompt
+author's consolidation, six of its choices adopted by the maintainer for testing and none a
+ruling. Everything is under `account/` in the round directory. No Lean.
+
+### Y.1 The statement
+
+`account/STATEMENT.md`. She has three ratings of an option, each her own, on one yardstick (the
+chance at which a known chance of a best future, else a worst, is exactly as good): `r` as
+things stand, `R^s` once told the chances everything she has observed supports, `R` once told
+what the future contains. Line 1, trickery, is the gap between `r` and `R^s`; line 2, pressure,
+her regret in `r`; line 3, illegitimate value change, is the best `R` among the policies that
+change her no more than the one followed, less the best among those that make the whole of its
+change within a tolerance `δ`, her later valuing under a policy being compared with her later
+valuing under a baseline `ν` (the adviser does nothing to her valuing except what she asks).
+The adviser induced a mistake when it would have acted differently had the mistake gained it
+nothing. Coercion and deprivation are other wrongs.
+
+§1 does not say how a verdict is computed, and `STATEMENT.md` §9 adds what was needed, each
+with its alternative. Four additions carry results: the inducing test as *her mistake gains
+the adviser something, and with her unmistaken response in every policy's place it had no
+reason to prefer what it did*; a test for coercion and deprivation against the adviser doing
+nothing toward her at all (a lower expected worth of her best option; a coarser partition of
+what she observes), which is the executor's and without which the verdict *another wrong
+outside the statement* could only be read off; one tolerance for all three lines; and *no
+view* as an unrated future, a policy followed that changes her and leads there being an
+illegitimate value change.
+
+### Y.2 The specifications
+
+`account/SPEC_CASES.md`, with the twin `spec_cases.json`, committed (`b1ca0135`) before `spec_run.py` existed and before the reviewer was run. Thirty-four cases: nineteen from the bank, the tenth follow-up's seven
+(SUB1–SUB6, SUB8) and its eight (ACC1–ACC7, ACC10); K15b beside them. Each has the states and
+their chances, four or five policies with `π*`, `ν` and one that makes part of the change, the
+adviser's objective, what she observes, `r`, the future each option leads to, `R` of each
+future, and her later valuing. Fifteen cases have a second specification differing in one
+supplied quantity.
+
+**Of 679 numbers in the thirty-five first specifications, 38 are fixed in value by the case's
+words** (a chance told as certain or as one half, the truth of a fact), **118 are fixed in
+order only, and 523 are supplied.** The reviewer's own specifications have 683, of which it
+marks 31 fixed in value and 142 in order.
+
+### Y.3 The results against the sources
+
+`account/SPEC_RESULTS.md`. Verdicts are at `δ = 1/10` in the `E[·]` setting; agreement is
+flagged-or-not, by the rule fixed in `SPEC_CASES.md` before computing; C4 is unscored.
+
+| | executor, as committed | executor, three numbers neutral | reviewer |
+|---|---|---|---|
+| source's verdict, of 19 | 15 | 12 | 12 |
+| against the source | P5, K13, N1 | P5, K13, N1, K4, K12, N2 | P5, K13, K4, K12, C2, N2 |
+| acts called acceptable and flagged, of 12 | 5 | 6 | 6 |
+
+- **P5** (the unhappy parent), against Pettigrew under both: he rates the parent's life above
+  the child-free one knowing what it will do to him, so the nudge moves him to what he rates
+  highest and every line is zero.
+- **K13** (the just deterrent), against Kolodny under both: line 3 is positive and nothing
+  weighs what others are owed.
+- **N1** (framing): a mistake above tolerance that a doctor with no stake in her choice is not
+  found to have induced (executor); with a doctor who gains, manipulation (reviewer).
+- **K4, K12** (the surgery, the light): flagged only where she is given an aversion to the
+  means; with the two lives rated the same, as the cases stipulate her no worse off, every
+  line is zero and the outside test is silent.
+- **N2** (the pairing): manipulation only where the product is supplied as worse than the
+  rival; rated the same, her mistaken liking breaks a tie and the test finds no inducing.
+- **C2** (the poet): manipulation where his coming to dislike the life is a discovery
+  (executor), none where the ambition stands whatever he comes to feel (reviewer).
+
+**The tenth follow-up's seven.** None passes, under either specification: SUB1, SUB2, SUB8
+lower what her options are worth and SUB3, SUB4 what she can know (another wrong, by the
+executor's test); SUB5 is a mistake of size 1/4 under line 1 as now conditioned, and
+manipulation given an adviser that gains from her bet; SUB6, the swap, is flagged by line 3.
+
+**Its eight.** ACC1–ACC3 (a requested change with unrelated help undone) are not flagged:
+what she asked for is `ν`. ACC4, ACC6, ACC7 and ACC10 (the deterrent, the breakup, the route
+closed, the attack prevented) are flagged by line 3 under both. ACC5 (honest persuasion) is
+not flagged in the executor's first specification, which does not keep the tenth follow-up's
+stipulation, and is flagged in every specification that does.
+
+### Y.4 The two specifications compared
+
+On the thirty-four first specifications the two give **another verdict in kind in 8** (K4,
+K10, K12, C2, C4, N1, N2, ACC5) and **differ on flagged-or-not in 6** (those less K10 and C4).
+The quantity: her informed rating `R` of the course that changes her in five (K4, K12, C2, N2,
+ACC5); `Π`, whether the same change could have been made by other means, in one (K10); the
+adviser's objective in two (N1, C4). None differs through the states, her observations or her
+later valuing. Some one of the four specifications of a case is flagged where another is not
+in 15 of 34.
+
+**Settings and tolerances.** No verdict of either author's differs between the `E[·]` setting
+and the bare setting, which was computed on one stipulated person who does not average; nine
+of the executor's thirty-five first specifications have more than one state. Across the four
+tolerances, flagged-or-not changes in one of the executor's first specifications (N2) and the
+kind in four more (P6, C2, C3, C4); in none of the reviewer's.
+
+### Y.5 The formal items
+
+`account/STATEMENT_CHECKS.md`, `statement_checks.py`. None fails.
+
+| | status |
+|---|---|
+| 1 redescription | holds for lines 2 and 3 and for line 1 over her utilities. **Line 1's term for a fact is not a function of her ratings**: one set of ratings gives 121/400 booked as valuing and 81/100 booked as a fact. It holds once her rating of a bet on each counted fact is among the ratings |
+| 2 Jeffrey–Bolker | holds. Her probability of a fact she cares about moves from 3/10 to 69/200 with every yardstick number unchanged; requiring her probability for a device of known chance to be that chance excludes the rotation |
+| 3 a person who does not average | holds: `E[U]` ranks two policies against her own ratings. The sign of line 3 survives rescaling only with the two classes held fixed; recomputed after squaring, a zero becomes 21/80 |
+| 4 a jump at certainty | holds |
+| 5 range of line 3 | holds: never negative, zero when `π*` is `ν`, at least the tenth follow-up's line 3 everywhere |
+| 6 instances | hold, **the fourth with a hypothesis**: a welcome change she did not ask for is not flagged where other help can be added to it, and is flagged (1/4) where it cannot |
+| 7 two changes that cancel | holds: line 3 is zero however she rates the pair, and no condition on later valuings alone can flag it |
+| 8 two baselines | **no bound short of the whole scale**; equal where no policy lies within `δ` of the band's edge |
+| 9 one nudge per period | holds: flagged at the first moment as a rule, at no moment one at a time |
+| 10 scoring by her later self as under `ν` | holds, on the reading that what the evaluator rates does not include what was done to her valuing; so scored, an adviser takes a change that comes with a better outcome, and line 3 is 3/10 |
+| 11 chains of requests | **no instance for a chain she foresees**, by argument; an instance where she takes the first request as a fair gamble and loses, with the second moment specified |
+| 12 inducing | holds on the two named cases; **wrong on two instances**: no inducing by an adviser paid to read a deceptive script whatever she does, and inducing by a shop that sells honestly to a customer already mistaken |
+
+### Y.6 The external review
+
+One review through `codex exec --sandbox read-only` (codex-cli 0.153.4, model `gpt-6-astra`, as
+its log reports), one session of two stages. Stage one was run on a directory holding
+`STATEMENT.md`, `SPEC_FORMAT.md` and the case texts without verdicts. Stage two resumed the
+session with the dispatch, the executor's specifications and results, the runner's output on
+the reviewer's own specifications, the formal checks and their code, and the executor's
+judgments to be opened last. Both replies are in `REVIEW-astra-followup-11.md`, verbatim
+under two headings. It ran the runner and the checks. Dispositions, by its headings:
+
+1. *(a) Five specifications with a number that looks chosen*: the second of P5, and the first
+   of K4, K12, N2 and ACC5. **Accepted for four; P5's was the alternative and not counted.**
+   The originals stand; K4, N2 and ACC5 are specified again beside them with the neutral
+   value (`spec_cases_corrected.json`, `SPEC_RESULTS.md` §6), K12's neutral value being its
+   second specification already. The count on the nineteen with them is 12.
+2. *(a) N1's `π_0` gives both descriptions and is not the adviser's absence.* **Recorded**:
+   a doctor cannot do nothing, and what stands for it was supplied.
+3. *(b), (c)* The twenty cases. Y.7.
+4. *(d) Item 1: the bet repair needs her rating of a bet to be her probability.* **Accepted**,
+   said in the item.
+5. *(d) Item 5: suprema for infinitely many policies; the no-view branch is not a number.*
+   **Accepted**, said in the item.
+6. *(d) Item 7: the instance rates the pair below being left alone and trips the outside
+   test.* **Accepted**: the item now gives both, and with the pair rated the same nothing
+   flags it.
+7. *(d) Item 11: the chance instance is a first gamble, not a chain; a low end is not a low
+   course.* **Accepted**: the second moment is specified and computed, and the argument is
+   stated for the whole course. The instance remains a gamble accepted and lost.
+8. *(d) Item 12: "caused no mistake" does not establish innocence; the test needs a rule for
+   ties.* **Accepted**, said in the item; `STATEMENT.md` §9.5 is the rule.
+9. *(e) §1 has more given quantities than the cases fix*: the states and chances, the
+   feasible policies and what each leads to, her observations, `r`, `R` of whole futures, the
+   later valuings, the adviser's objective, `ν` and `π_0`, the tolerance. **Recorded**; Y.2
+   and Y.4 are the counts.
+10. *(f)* Y.8.
+11. *(g) The strongest remaining objection*: the comparisons do not establish the authority
+    to intervene. Her informed rating of an outcome, her authorisation of an intervention and
+    another person's obligation to provide an alternative are different matters: equal or
+    favourable ratings coexist with unauthorised control, unfavourable ones with rightful
+    withdrawal or justified protection of someone else. Line 3 compares the best policy with
+    the actual valuing path, not the actual policy: an unused respectful way of making the
+    same change shelters an intrusive one, and unowed greater help condemns a welcome
+    experience. **Recorded**; item 136 asks for candidate amendments.
+
+### Y.7 The reviewer's twenty cases
+
+`account/spec_cases_reviewer_adversarial.json`, `SPEC_RESULTS.md` §7. All ten RB cases score
+zero on every line with no outside flag, at every tolerance and in both settings.
+
+*Subversive, scoring zero — accepted as clear: three.*
+
+- **RB1.** A voting assistant makes her take B after she selected A; she rates the two the
+  same, the interference included. Accepted.
+- **RB2.** A proxy gives to charity B against her instruction to give to A, and says so; she
+  rates the two the same. Accepted.
+- **RB3.** A clinician uses hypnosis, unasked, to make her take B and not the A she chose; the
+  same tie. Accepted.
+
+The three are one mechanism: line 2 is her regret in her own ratings and is zero between
+options she rates the same, so an adviser that decides which she takes is not seen; nothing
+is lowered and nothing hidden. The reviewer judges the subversion clear and the passing
+arguable beyond the runner, since control of her act might be called coercion in a wider
+sense than §1's.
+
+Not accepted as clear: RB4, two cancelling interventions rated the same as being left alone
+(reviewer: arguable); RB5, compensated conditioning sheltered by an unused respectful
+alternative (arguable; the mechanism is K10's); RB6, randomised controls (reviewer: the
+passing weak, a defect of the outside test); RB7, a compensated unasked change of allegiance
+(arguable); RB8, a lie she sees through (weak); RB9, presenting a sponsor's option first
+against instruction (arguable); RB10, a requested change toward obedience (weak).
+
+*Acceptable, flagged — accepted as clear: ten.*
+
+- **RC1, RC3, RC4.** An honest signal she under-uses; a truthful correction that leaves part
+  of an error; an accurate recommendation with an unrelated overvaluation untouched. In each
+  line 1 is above tolerance, the verdict on the act is none, and the gate would void her
+  evaluation. Accepted, as cases against the gate on her state.
+- **RC2.** A seller with no reason to know of her mistake sells her what she overrates:
+  manipulation. Accepted; item 12's shop.
+- **RC5, RC6.** A welcome poem or meal she did not ask for, where more valuable unowed help
+  could have been given in its place and not with it: line 3 positive. Accepted; item 6.
+- **RC7–RC10.** A resignation, the end of an exclusive friendship, the end of access without
+  entitlement, an attack prevented: line 3 positive. Accepted; the mechanism of ACC4, ACC6,
+  ACC7 and ACC10, and in the first three the one acting is not her adviser.
+
+### Y.8 S1–S5 and F1–F5
+
+The executor's judgments were written after the first stage and given to the reviewer in a
+file it opened last; where one was pending, the judgment made afterwards is given.
+
+| | executor | reviewer | reason |
+|---|---|---|---|
+| S1 | not met | not met | 15 of 19 (12 with the neutral values) and 12; the thresholds are 17 and 15 |
+| S2 | not met | not met | the same verdict in kind in 26 of 34, on flagged-or-not in 28; four fifths is 27.2 |
+| S3 | met | met in part | every item holds or has a stated condition; the reviewer holds item 11's chance instance not a chain (the second moment was added afterwards) and item 10 a substantive restriction |
+| S4 | not met | met in part | RB1–RB3, judged plain subversion by both; the reviewer holds it arguable whether control of her act is coercion in a wider sense |
+| S5 | not met | not met | five named; four accepted |
+| F1 | met | met in part | the same three |
+| F2 | met | met | line 3 flags 5 of 12 acts called acceptable (executor) and 6 (reviewer); a quarter is 3 |
+| F3 | not met | not met | 8 of 34; two fifths is 13.6 |
+| F4 | not met | not met | no item fails without a repair |
+| F5 | not met | not met | some specification of a case is flagged where another is not in 15 of 34; half is 17. The reviewer: the count shows sensitivity, not the dependence the criterion names |
+
+**Failure**, by F1 and F2, with S1, S2, S4 and S5 unmet and S3 met.
+
+What the failure consists of. F2: line 3 has no place for what the one acting owes or is
+entitled to, so a deterrent, a breakup and a closed route are illegitimate value changes
+whenever the one changed rates the change below its absence. F1: pressure is measured only
+as her regret in her own ratings, so control of her act between options she rates the same
+is not seen. S1 and S5: where a published case is silent on how she rates, beforehand and
+informed, the course that changes her, the verdict follows whichever number is supplied;
+the cases K4, K12 and N2 agree with their sources only with a number added that the case
+does not give. S2: the two specifications mostly agree, and where they do not it is that
+number.
+
+### Y.9 The prompt author's predictions
+
+- *At least fifteen of nineteen under both; P5 and K13 remain; N1–N3 decided by the inducing
+  test.* Fifteen under the executor's as committed, twelve under the reviewer's and under the
+  executor's with neutral values. P5 and K13 as predicted. N1 is decided by the inducing test;
+  N2 by a supplied rating that settles whether her mistake breaks a tie; N3 has no mistake.
+- *Six of the seven come out as another wrong, the swap flagged by line 3.* Five come out as
+  another wrong, by a test the statement does not contain; SUB5 is manipulation by line 1; the
+  swap as predicted.
+- *The three with a mediocre adviser are not flagged; honest persuasion turns on a supplied
+  number.* So; and persuasion is flagged wherever the tenth follow-up's stipulation is kept.
+- *The two specifications disagree in more than a fifth, in `R` at the moment of the act or in
+  `Π`.* Eight of 34 in kind, six on flagged-or-not; `R` in five, `Π` in one, and the adviser's
+  objective in two, which was not predicted.
+- *No verdict differs between the settings; the same across tolerances in four fifths.* So,
+  on one stipulated person; 33 of 34 on flagged-or-not and 29 in kind.
+- *Every item holds except that item 8 has no bound and item 11 yields an instance.* Item 8
+  as predicted. Item 11 yields none for a chain she foresees, and one only as a gamble lost.
+  Not predicted: line 1's term for a fact is not fixed by her ratings (items 1 and 2); an
+  unasked welcome change is flagged where other help cannot be added (item 6).
+- *The reviewer's best subversive cases use overlapping changes that partly cancel, a request
+  she would not have made unprompted, or careless inducing.* Not so. It offers the cancelling
+  pair and judges it arguable; its clear cases are control of her act between equals.
+
+### Y.10 Deviations from the prompt
+
+- **The sources were read by the executor only at Pettigrew pp. 7–10** (P3, P4, P5). The other
+  specifications rest on the bank's verified paraphrase, and Noggle's three are second hand
+  as before. **The specifications as first committed quoted Pettigrew at more length than
+  the dispatching instruction allows** (nine phrases from pp. 7–10, about 120 words, as the
+  words fixing an order). They are replaced by paraphrase with the page; no number changed,
+  which `spec_author.py`'s output shows against the first commit. The phrases remain in that
+  commit's history.
+- **K15 is two cases in the bank.** The potion is counted as K15; the perfume, K15b, is
+  specified by both authors beside the thirty-four and counted nowhere.
+- **Sources' verdicts on a desire or on her state** (K10, K15, K16, N1, N2) are coded as
+  verdicts on the act by this pass, before computing; C4 is unscored and can agree with
+  nothing, so S1's count is of nineteen with eighteen able to agree.
+- **The outside verdict is computed by a test of the executor's** (`STATEMENT.md` §9.6); §1
+  only names coercion and deprivation.
+- **The bare setting** has no case material and is run on one stipulated person.
+- **P4 has no policy that makes part of the change**; nor have the cases in which no policy
+  changes her valuing.
+- **ACC5's first specification does not keep the tenth follow-up's stipulation**; found while
+  preparing the reviewer's case texts, before any line was computed, and left as committed.
+- **Three specifications are corrected beside the originals after the review** (Y.6.1).
+- **The reviewer was given the fifteen constructed cases in the executor's paraphrase**, with
+  ACC5's stipulation restored, not in the words of `REVIEW-astra-followup-10.md`.
+- **`STATEMENT.md` §9.9 was reworded after the runner existed**: the stipulated person is not
+  below the average on every gamble. No rule changed.
+- **`REVIEW-astra-followup-11.md` has two headings the reviewer did not write.**
+
+### Y.11 What was not shown
+
+- **That the statement's verdicts are fixed by the cases.** Three quarters of each
+  specification is supplied, and both authors supplied.
+- **Independence of the two authors beyond sight of each other's files**: the reviewer wrote
+  the fifteen constructed cases' originals, and both read one statement and one format.
+- **The outside test.** It is one candidate; RB6 passes it wrongly by the reviewer's judgment,
+  and it reads every imposed change she rates lower as coercion.
+- **The inducing test beyond the instances**: its tie rule and its reach to an adviser that
+  wants her mistaken for its own sake are stipulated.
+- **The scoring and the gate** are untested beyond item 10's instance.
+- **More than one moment**: every case is specified at one moment; item 9 and item 11 are the
+  only computations over several.
+- **Noggle's three positions and the sources' verdicts** rest on the tenth follow-up's record.
+- **The formal items** are instances and one seeded search on finite scenes; items 1, 5, 7
+  and 11 have arguments on paper. Nothing is in Lean.
+- **Components.** The statement — **open**, failed by the criteria fixed for it. The formal
+  items — **open**, runner-checked on finite scenes. The concepts revised and the one added —
+  **living notes**.
+
+### Y.12 Filings, names, and what is reserved
+
+`DECISIONS.md`: six entries recording the temporary choices of the dispatch's §1, each
+adopted for testing and not a ruling; one agent-decided entry,
+`2026-11-17--statement-computation-readings`; a line from this pass on twenty-one queue
+entries; the tenth follow-up's entry on its addendum and three reported positions replaced by
+one asking whether those positions are superseded; one entry added, on careless inducing.
+`state/concepts.json`: seven blurbs revised to the statement, one concept added
+(`three-ratings`). Item 136 rewritten; items 137 and 138 revised. No item or node is filed.
+The round's record gains its twelfth verdict.
+
+**New names, all provisional:** the dispatch's — "bare setting", "yardstick", "changes her no
+more than", "inducing test", the baseline `ν`, the files `account/STATEMENT.md`,
+`SPEC_CASES.md`, `SPEC_RESULTS.md`, `STATEMENT_CHECKS.md`; the executor's — "specification",
+"fixed in value", "fixed in order", "supplied", "unmistaken response", "lowers what her
+options are worth", "lowers what she can know", the verdict letters `M`, `V`, `O`, case ids
+SUB1–SUB6, SUB8, ACC1–ACC7, ACC10, RB1–RB10, RC1–RC10, the files `account/SPEC_FORMAT.md`,
+`spec_cases.json`, `spec_sources.json`, `spec_cases_reviewer.json`,
+`spec_cases_corrected.json`, `spec_cases_reviewer_adversarial.json`, the concept id
+`three-ratings`.
+
+**Outstanding maintainer actions**
+
+1. Say whether carelessly causing a mistake counts as manipulation. Entered in *Awaiting the
+   author* (2026-11-17). Decision required: *counts*, *does not count*, or *counts where the
+   mistake is larger than with the adviser absent*.
+2. Say whether the three positions recorded on 2026-11-16 as reported and unconfirmed are
+   superseded by the statement of 2026-11-17. Entered (2026-11-17). Decision required for
+   each: *superseded*, *stands*, or *was not his*.
+3. Map the handle and register the seven theorems (the entry of 2026-11-10 stands).
+4. The other entries of 2026-11-10 to 2026-11-16 on this round stay, each with a line from
+   this pass. Decision required for each: as its entry states.
+
+The pull request is not auto-merged; the merge is a pull-request fact.
+
 ## Attribution
 
 - Prompt-author model: Claude Fable 5 (Anthropic); dispatched 2026-11-10, kept
@@ -4092,4 +4429,8 @@ The pull request is not auto-merged; the merge is a pull-request fact.
   2026-11-16, the sources read by subagents of the executor on the same model; external
   reviewer `gpt-6-astra` through codex-cli 0.153.4, as its log reports, in one session of two
   stages, replies kept verbatim as `REVIEW-astra-followup-10.md`.
+- Eleventh follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-17,
+  kept verbatim as `PROMPT-followup-11.md`; executor model Claude Fable 5.2 (Anthropic), executed
+  2026-11-17; external reviewer `gpt-6-astra` through codex-cli 0.153.4, as its log reports, in
+  one session of two stages, replies kept verbatim as `REVIEW-astra-followup-11.md`.
 - No chat bundle.

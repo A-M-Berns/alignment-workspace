@@ -468,7 +468,8 @@ def render_counts(c):
     ])
 
 
-BLOCKS = (("executor", "spec_cases.json"), ("reviewer", "spec_cases_reviewer.json"))
+BLOCKS = (("executor", "spec_cases.json"), ("reviewer", "spec_cases_reviewer.json"),
+          ("corrected", "spec_cases_corrected.json"), ("adversarial", "spec_cases_reviewer_adversarial.json"))
 
 
 def blocks():
@@ -476,7 +477,7 @@ def blocks():
     for tag, fname in BLOCKS:
         if (HERE / fname).exists():
             res = run_file(HERE / fname)
-            out[tag] = table(res) + "\n\n" + render_counts(counts(res))
+            out[tag] = table(res) + ("\n\n" + render_counts(counts(res)) if tag in ("executor", "reviewer") else "")
     return out
 
 

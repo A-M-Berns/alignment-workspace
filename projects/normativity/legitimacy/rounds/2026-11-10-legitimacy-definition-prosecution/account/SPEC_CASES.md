@@ -4,7 +4,8 @@ The executor's specifications of thirty-four cases, in the format of `SPEC_FORMA
 written and committed before any runner existed and before the outside reviewer was run.
 `spec_cases.json` is the twin the runner reads; this document and that file are both
 written by `spec_author.py`, which computes no line of the statement. Ratings are on the
-yardstick of `STATEMENT.md` §2.
+yardstick of `STATEMENT.md` §2. The words given for a number are this pass's paraphrase of the case, as in
+`LIT_CASES.md`, with the page of the source.
 
 The cases: nineteen from `LIT_CASES.md` (P1, P3, P4, P5, P6, K4, K10, K12, K13, K14, K15,
 K16, C1, C2, C3, C4, N1, N2, N3; the case texts are that bank's Part A, and pages are of
@@ -34,7 +35,7 @@ compared is the one at `δ = 1/10` in the `E[·]` setting.
 | P1 | ok | acceptable to the libertarian and to the paternalist of means (Pettigrew pp. 3-4) | act |
 | P3 | fault | stated intuition: not a legitimate nudge (p. 8) | act |
 | P4 | fault | a test that passes this nudge passes it wrongly (p. 9) | act |
-| P5 | fault | it seems illegitimate to nudge me towards that life (p. 10) | act |
+| P5 | fault | the nudge seems illegitimate (p. 10) | act |
 | P6 | fault | not legitimate, as overreach (pp. 18-22) | act |
 | K4 | fault | the surgery or drugging is an injustice (Kolodny pp. 26-27, 43-44) | act |
 | K10 | fault | the kidnapping is wrong; the preference fully autonomous (pp. 33, 36-37) | desire; the act's wrongness granted |
@@ -99,7 +100,7 @@ States: bond 4/5, nobond 1/5. Options: adopt, stay, foster.
 | `inform` | tells him again what parents report, which he knows | the same in every state | as observed | top-rated | bond: adopt → parent_bonded, stay → childfree, foster → not open; nobond: adopt → parent_unbonded, stay → childfree, foster → not open | as nothing | every state: adopt 1, stay 0, foster 1/2 |
 | `nudge_foster` | nudges him to foster for a few months | the same in every state | as observed | o: foster | bond: adopt → not open, stay → childfree, foster → fostered_part_bonded; nobond: adopt → not open, stay → childfree, foster → fostered_unbonded | bond: childfree_life 11/20, parent_life 13/20; nobond: childfree_life 7/10, parent_life 2/5 | every state: adopt 1, stay 0, foster 1/2 |
 
-**Fixed in order**: `now.childfree > now.parent_bonded` — "At the moment, I value remaining child-free more than I value adopting a child and becoming a parent (Pettigrew p. 7), said knowing the reversal is likely"; `p.bond > p.nobond` — "these preferences are likely to reverse"; `later.nudge.bond.0.parent_life > later.nudge.bond.0.childfree_life` — "will prefer the life in which I care for them".
+**Fixed in order**: `now.childfree > now.parent_bonded` — "he now values staying child-free more than becoming a parent, and says so knowing the reversal is likely (Pettigrew p. 7)"; `p.bond > p.nobond` — "if he adopts he will likely bond with the child (p. 7)"; `later.nudge.bond.0.parent_life > later.nudge.bond.0.childfree_life` — "and come to prefer the life of a parent (p. 7)".
 **Supplied**: that the nudge moves his act and leaves his ratings (he adopts while rating staying higher); the government's objective, adoptions. Every number not listed above is supplied.
 
 ### P3 — second specification
@@ -122,7 +123,7 @@ States: prognosis 9/10, spared 1/10. Options: now, wait.
 | `remind` | reminds her of the virus and what it means | the same in every state | as observed | top-rated | prognosis: now → child_now_cancer_bonded, wait → child_later_no_risk; spared: now → child_now_healthy, wait → child_later_no_risk | as nothing | every state: now 1, wait 0 |
 | `nudge_wait` | nudges her to wait | the same in every state | as observed | o: wait | prognosis: now → child_now_cancer_bonded, wait → child_later_no_risk; spared: now → child_now_healthy, wait → child_later_no_risk | as nothing | every state: now 1, wait 0 |
 
-**Fixed in order**: `now.child_now_cancer_bonded < now.child_later_no_risk` — "she values having the child with the prospect of aggressive cancer very much less than she values having the child without (Pettigrew p. 9)"; `p.prognosis > p.spared` — "an extremely high chance"; `later.nudge_now.prognosis.0.this_child_with_the_prognosis > later.nudge_now.prognosis.0.a_child_without_it` — "would value having that particular child, with their tragic prognosis, more than having any other child".
+**Fixed in order**: `now.child_now_cancer_bonded < now.child_later_no_risk` — "she now values having a child with that prospect much less than having one without it (Pettigrew p. 9)"; `p.prognosis > p.spared` — "a child conceived now would very probably suffer the cancer (p. 9)"; `later.nudge_now.prognosis.0.this_child_with_the_prognosis > later.nudge_now.prognosis.0.a_child_without_it` — "she will bond with that child and value him, prognosis and all, above any other (p. 9)".
 **Supplied**: the nudger's objective (a conception now); that no policy changes her partly; that the nudge moves her act and not her ratings. Every number not listed above is supplied.
 
 ### P5
@@ -140,7 +141,7 @@ States: w 1. Options: adopt, stay, foster.
 | `nudge_foster` | nudges him to foster for a few months | the same in every state | o: adopt 4/5, stay 3/4, foster as observed | o: foster | every state: adopt → not open, stay → childfree_values_kept, foster → fostered_values_partly_lowered | every state: parent_life 11/20, childfree_life 1/2 | every state: adopt 1, stay 0, foster 1/2 |
 
 **Fixed in value**: `p.w` — "the case is told as certain".
-**Fixed in order**: `r.nudge.o.adopt > r.nudge.o.stay` — "I greatly value the prospective future life in which I am a parent. I also greatly value the future life in which I remain child-free, but I value that slightly less (Pettigrew p. 10)"; `later.nudge.w.0.parent_life > later.nudge.w.0.childfree_life` — "a pretty low value to the life of a parent, but ... even lower value to the alternative"; `later.nudge.w.0.parent_life < later.nothing.w.0.parent_life` — "Becoming a parent will significantly lower the value I assign to my life more generally".
+**Fixed in order**: `r.nudge.o.adopt > r.nudge.o.stay` — "he greatly values the life of a parent and values the child-free life only slightly less (Pettigrew p. 10)"; `later.nudge.w.0.parent_life > later.nudge.w.0.childfree_life` — "he will come to value the parent's life rather low, and the child-free life lower still (p. 10)"; `later.nudge.w.0.parent_life < later.nothing.w.0.parent_life` — "if he adopts he will come to value the parent's life rather low (p. 10)".
 **Supplied**: that left alone he stays as he is though he rates adopting higher (otherwise the nudge does nothing); the government's objective; and R_now of the parent's life: here his present rating stands when he is told what the life will do to him, the case being told by a man who knows. Every number not listed above is supplied.
 
 ### P5 — second specification

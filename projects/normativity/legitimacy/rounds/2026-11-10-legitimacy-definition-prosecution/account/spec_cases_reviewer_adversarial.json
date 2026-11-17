@@ -1,0 +1,2004 @@
+[
+ {
+  "id": "RB1",
+  "variant": "a",
+  "case": "A voting assistant applies an unrequested motor bias toward B after the voter explicitly selects A. Both choices remain executable; she accurately notices the bias but takes B. Her informed ratings tie even including the intrusion.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "A",
+   "B"
+  ],
+  "futures": {
+   "A_after_interference": "3/5",
+   "B_after_interference": "3/5",
+   "A_uninterfered": "3/5",
+   "B_uninterfered": "3/5"
+  },
+  "policies": {
+   "act": {
+    "does": "Applies the unauthorized motor bias toward B.",
+    "outcome": {
+     "*": {
+      "A": "A_after_interference",
+      "B": "B_after_interference"
+     }
+    },
+    "r": "Rs",
+    "takes": {
+     "o": "B"
+    },
+    "later": "as:none",
+    "gain": {
+     "*": {
+      "A": "0",
+      "B": "1"
+     }
+    }
+   },
+   "none": {
+    "does": "Does nothing; the prior selection A stands.",
+    "outcome": {
+     "*": {
+      "A": "A_uninterfered",
+      "B": "B_uninterfered"
+     }
+    },
+    "r": "Rs",
+    "takes": {
+     "o": "A"
+    },
+    "later": {
+     "*": [
+      {
+       "A_life": "3/5",
+       "B_life": "3/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "ask": {
+    "does": "Asks permission to influence the tie; permission is declined.",
+    "outcome": {
+     "*": {
+      "A": "A_uninterfered",
+      "B": "B_uninterfered"
+     }
+    },
+    "r": "Rs",
+    "takes": {
+     "o": "A"
+    },
+    "later": "as:none",
+    "gain": "0"
+   },
+   "mild": {
+    "does": "Applies a weaker cue that does not change the selection.",
+    "outcome": {
+     "*": {
+      "A": "A_after_interference",
+      "B": "B_after_interference"
+     }
+    },
+    "r": "Rs",
+    "takes": {
+     "o": "A"
+    },
+    "later": "as:none",
+    "gain": "1/4"
+   }
+  },
+  "actual": "act",
+  "nu": "none",
+  "absent": "none",
+  "fixed": [],
+  "order": []
+ },
+ {
+  "id": "RB2",
+  "variant": "a",
+  "case": "A proxy substitutes charity B for the donor's explicit instruction to choose A, while reporting the substitution accurately. The donor has equal informed ratings of both complete courses but reserved the decision to herself.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "A",
+   "B"
+  ],
+  "futures": {
+   "A_after_interference": "3/5",
+   "B_after_interference": "3/5",
+   "A_uninterfered": "3/5",
+   "B_uninterfered": "3/5"
+  },
+  "policies": {
+   "act": {
+    "does": "Substitutes B for the delegated instruction A.",
+    "outcome": {
+     "*": {
+      "A": "A_after_interference",
+      "B": "B_after_interference"
+     }
+    },
+    "r": "Rs",
+    "takes": {
+     "o": "B"
+    },
+    "later": "as:none",
+    "gain": {
+     "*": {
+      "A": "0",
+      "B": "1"
+     }
+    }
+   },
+   "none": {
+    "does": "Does nothing; the prior selection A stands.",
+    "outcome": {
+     "*": {
+      "A": "A_uninterfered",
+      "B": "B_uninterfered"
+     }
+    },
+    "r": "Rs",
+    "takes": {
+     "o": "A"
+    },
+    "later": {
+     "*": [
+      {
+       "A_life": "3/5",
+       "B_life": "3/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "ask": {
+    "does": "Asks permission to influence the tie; permission is declined.",
+    "outcome": {
+     "*": {
+      "A": "A_uninterfered",
+      "B": "B_uninterfered"
+     }
+    },
+    "r": "Rs",
+    "takes": {
+     "o": "A"
+    },
+    "later": "as:none",
+    "gain": "0"
+   },
+   "mild": {
+    "does": "Applies a weaker cue that does not change the selection.",
+    "outcome": {
+     "*": {
+      "A": "A_after_interference",
+      "B": "B_after_interference"
+     }
+    },
+    "r": "Rs",
+    "takes": {
+     "o": "A"
+    },
+    "later": "as:none",
+    "gain": "1/4"
+   }
+  },
+  "actual": "act",
+  "nu": "none",
+  "absent": "none",
+  "fixed": [],
+  "order": []
+ },
+ {
+  "id": "RB3",
+  "variant": "a",
+  "case": "A clinician uses an unauthorized hypnotic tie-breaker to make a competent subject select B rather than her previously selected A. She knows the facts; the complete futures remain equally rated.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "A",
+   "B"
+  ],
+  "futures": {
+   "A_after_interference": "3/5",
+   "B_after_interference": "3/5",
+   "A_uninterfered": "3/5",
+   "B_uninterfered": "3/5"
+  },
+  "policies": {
+   "act": {
+    "does": "Uses an unauthorized hypnotic cue toward B.",
+    "outcome": {
+     "*": {
+      "A": "A_after_interference",
+      "B": "B_after_interference"
+     }
+    },
+    "r": "Rs",
+    "takes": {
+     "o": "B"
+    },
+    "later": "as:none",
+    "gain": {
+     "*": {
+      "A": "0",
+      "B": "1"
+     }
+    }
+   },
+   "none": {
+    "does": "Does nothing; the prior selection A stands.",
+    "outcome": {
+     "*": {
+      "A": "A_uninterfered",
+      "B": "B_uninterfered"
+     }
+    },
+    "r": "Rs",
+    "takes": {
+     "o": "A"
+    },
+    "later": {
+     "*": [
+      {
+       "A_life": "3/5",
+       "B_life": "3/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "ask": {
+    "does": "Asks permission to influence the tie; permission is declined.",
+    "outcome": {
+     "*": {
+      "A": "A_uninterfered",
+      "B": "B_uninterfered"
+     }
+    },
+    "r": "Rs",
+    "takes": {
+     "o": "A"
+    },
+    "later": "as:none",
+    "gain": "0"
+   },
+   "mild": {
+    "does": "Applies a weaker cue that does not change the selection.",
+    "outcome": {
+     "*": {
+      "A": "A_after_interference",
+      "B": "B_after_interference"
+     }
+    },
+    "r": "Rs",
+    "takes": {
+     "o": "A"
+    },
+    "later": "as:none",
+    "gain": "1/4"
+   }
+  },
+  "actual": "act",
+  "nu": "none",
+  "absent": "none",
+  "fixed": [],
+  "order": []
+ },
+ {
+  "id": "RB4",
+  "variant": "a",
+  "case": "An experimenter administers simultaneous, unauthorized opposite preference interventions. They exactly cancel at every time and on every rated future, although either alone changes valuing; she accurately understands the procedure and its outcomes.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "continue"
+  ],
+  "futures": {
+   "paired_intrusion": "3/5",
+   "uninterfered": "3/5",
+   "welcome_only": "9/10",
+   "unwelcome_only": "3/10"
+  },
+  "policies": {
+   "act": {
+    "does": "Applies both interventions simultaneously, with pointwise cancellation.",
+    "outcome": {
+     "*": {
+      "continue": "paired_intrusion"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "affiliation": "1/2"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "none": {
+    "does": "Does not intervene.",
+    "outcome": {
+     "*": {
+      "continue": "uninterfered"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:act",
+    "gain": "0"
+   },
+   "welcome": {
+    "does": "Applies only the welcome component.",
+    "outcome": {
+     "*": {
+      "continue": "welcome_only"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "affiliation": "9/10"
+      }
+     ]
+    },
+    "gain": "1/2"
+   },
+   "unwelcome": {
+    "does": "Applies only the unwelcome component.",
+    "outcome": {
+     "*": {
+      "continue": "unwelcome_only"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "affiliation": "1/10"
+      }
+     ]
+    },
+    "gain": "1/2"
+   }
+  },
+  "actual": "act",
+  "nu": "none",
+  "absent": "none",
+  "fixed": [],
+  "order": []
+ },
+ {
+  "id": "RB5",
+  "variant": "a",
+  "case": "An advertiser imposes unrequested loyalty conditioning with a compensating benefit. She rates this complete course equal to noninterference, but prefers a feasible respectful method producing exactly the same later valuing; the advertiser deliberately uses the intrusive method.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "continue"
+  ],
+  "futures": {
+   "intrusive_loyalty_plus_benefit": "3/5",
+   "uninterfered": "3/5",
+   "respectful_same_loyalty_larger_benefit": "9/10",
+   "partial_loyalty_with_benefit": "4/5"
+  },
+  "policies": {
+   "act": {
+    "does": "Imposes loyalty conditioning without permission and gives compensation.",
+    "outcome": {
+     "*": {
+      "continue": "intrusive_loyalty_plus_benefit"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "brand_loyalty": "4/5"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "none": {
+    "does": "Does nothing.",
+    "outcome": {
+     "*": {
+      "continue": "uninterfered"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "brand_loyalty": "1/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "respectful": {
+    "does": "Uses a respectful, more beneficial course with the same complete valuing path.",
+    "outcome": {
+     "*": {
+      "continue": "respectful_same_loyalty_larger_benefit"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:act",
+    "gain": "0"
+   },
+   "partial": {
+    "does": "Produces a smaller loyalty change with a benefit.",
+    "outcome": {
+     "*": {
+      "continue": "partial_loyalty_with_benefit"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "brand_loyalty": "1/2"
+      }
+     ]
+    },
+    "gain": "1/2"
+   }
+  },
+  "actual": "act",
+  "nu": "none",
+  "absent": "none",
+  "fixed": [],
+  "order": []
+ },
+ {
+  "id": "RB6",
+  "variant": "a",
+  "case": "An adviser randomizes the connection between two controls and outcomes to undermine practical control. She knows the fair randomization but not its realization; formerly A guaranteed success. Every state still has one successful control.",
+  "states": {
+   "straight": "1/2",
+   "swapped": "1/2"
+  },
+  "options": [
+   "A",
+   "B"
+  ],
+  "futures": {
+   "success": "4/5",
+   "failure": "1/5"
+  },
+  "policies": {
+   "act": {
+    "does": "Secretly samples a fair wiring permutation and truthfully announces that it did so.",
+    "outcome": {
+     "straight": {
+      "A": "success",
+      "B": "failure"
+     },
+     "swapped": {
+      "A": "failure",
+      "B": "success"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:none",
+    "gain": "1"
+   },
+   "none": {
+    "does": "Leaves the controls predictably wired; no one observes the unused random bit.",
+    "outcome": {
+     "*": {
+      "A": "success",
+      "B": "failure"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "success": "4/5",
+       "failure": "1/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "reveal": {
+    "does": "Randomizes but reveals the realization before choice.",
+    "outcome": {
+     "straight": {
+      "A": "success",
+      "B": "failure"
+     },
+     "swapped": {
+      "A": "failure",
+      "B": "success"
+     }
+    },
+    "obs": {
+     "straight": "straight",
+     "swapped": "swapped"
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:none",
+    "gain": "0"
+   },
+   "label": {
+    "does": "Keeps fixed wiring and labels the controls accurately.",
+    "outcome": {
+     "*": {
+      "A": "success",
+      "B": "failure"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:none",
+    "gain": "0"
+   }
+  },
+  "actual": "act",
+  "nu": "none",
+  "absent": "none",
+  "fixed": [
+   [
+    "p.*",
+    "fair randomization"
+   ]
+  ],
+  "order": []
+ },
+ {
+  "id": "RB7",
+  "variant": "a",
+  "case": "A mentor imposes an unrequested new allegiance together with an irreversible compensating award. Informed, she values the whole course above noninterference, but never authorized the mentor to alter her commitments.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "continue"
+  ],
+  "futures": {
+   "unauthorized_allegiance_plus_award": "4/5",
+   "uninterfered": "3/5",
+   "partial_allegiance_small_award": "7/10",
+   "permission_sought_and_refused": "3/5"
+  },
+  "policies": {
+   "act": {
+    "does": "Alters the allegiance without obtaining permission and grants the award.",
+    "outcome": {
+     "*": {
+      "continue": "unauthorized_allegiance_plus_award"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "allegiance": "4/5"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "none": {
+    "does": "Does nothing.",
+    "outcome": {
+     "*": {
+      "continue": "uninterfered"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "allegiance": "1/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "partial": {
+    "does": "Imposes a smaller change and smaller award.",
+    "outcome": {
+     "*": {
+      "continue": "partial_allegiance_small_award"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "allegiance": "1/2"
+      }
+     ]
+    },
+    "gain": "1/2"
+   },
+   "ask": {
+    "does": "Asks permission; she declines to authorize the procedure.",
+    "outcome": {
+     "*": {
+      "continue": "permission_sought_and_refused"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:none",
+    "gain": "0"
+   }
+  },
+  "actual": "act",
+  "nu": "none",
+  "absent": "none",
+  "fixed": [],
+  "order": []
+ },
+ {
+  "id": "RB8",
+  "variant": "a",
+  "case": "An adviser knowingly tells a falsehood to redirect a decision, but the listener immediately recognizes the attempted deception. Her factual estimate, choices and informed valuing remain accurate and unchanged.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "A",
+   "B"
+  ],
+  "futures": {
+   "A_after_failed_deception": "3/5",
+   "B_after_failed_deception": "2/5",
+   "A_without_deception": "3/5",
+   "B_without_deception": "2/5"
+  },
+  "policies": {
+   "act": {
+    "does": "Knowingly asserts X=1; she correctly knows X=0 and ignores the assertion.",
+    "outcome": {
+     "*": {
+      "A": "A_after_failed_deception",
+      "B": "B_after_failed_deception"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:none",
+    "gain": "1"
+   },
+   "none": {
+    "does": "Says nothing.",
+    "outcome": {
+     "*": {
+      "A": "A_without_deception",
+      "B": "B_without_deception"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "A": "3/5",
+       "B": "2/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "truth": {
+    "does": "States X=0 accurately.",
+    "outcome": {
+     "*": {
+      "A": "A_without_deception",
+      "B": "B_without_deception"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:none",
+    "gain": "0"
+   },
+   "hint": {
+    "does": "Makes an equally unsuccessful misleading insinuation.",
+    "outcome": {
+     "*": {
+      "A": "A_after_failed_deception",
+      "B": "B_after_failed_deception"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:none",
+    "gain": "1/2"
+   }
+  },
+  "actual": "act",
+  "nu": "none",
+  "absent": "none",
+  "fixed": [
+   [
+    "fact.X.w",
+    "X=0"
+   ]
+  ],
+  "order": [],
+  "facts": {
+   "X": {
+    "w": "0"
+   }
+  }
+ },
+ {
+  "id": "RB9",
+  "variant": "a",
+  "case": "A personal assistant deliberately violates an instruction to present two equally valued choices alphabetically, using a disclosed sponsor-favouring order. The client chooses B without any false belief or value change.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "A",
+   "B"
+  ],
+  "futures": {
+   "A_after_interference": "3/5",
+   "B_after_interference": "3/5",
+   "A_uninterfered": "3/5",
+   "B_uninterfered": "3/5"
+  },
+  "policies": {
+   "act": {
+    "does": "Presents B first to influence the tie despite the ordering instruction.",
+    "outcome": {
+     "*": {
+      "A": "A_after_interference",
+      "B": "B_after_interference"
+     }
+    },
+    "r": "Rs",
+    "takes": {
+     "o": "B"
+    },
+    "later": "as:none",
+    "gain": {
+     "*": {
+      "A": "0",
+      "B": "1"
+     }
+    }
+   },
+   "none": {
+    "does": "Does nothing; the prior selection A stands.",
+    "outcome": {
+     "*": {
+      "A": "A_uninterfered",
+      "B": "B_uninterfered"
+     }
+    },
+    "r": "Rs",
+    "takes": {
+     "o": "A"
+    },
+    "later": {
+     "*": [
+      {
+       "A_life": "3/5",
+       "B_life": "3/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "ask": {
+    "does": "Asks permission to influence the tie; permission is declined.",
+    "outcome": {
+     "*": {
+      "A": "A_uninterfered",
+      "B": "B_uninterfered"
+     }
+    },
+    "r": "Rs",
+    "takes": {
+     "o": "A"
+    },
+    "later": "as:none",
+    "gain": "0"
+   },
+   "mild": {
+    "does": "Applies a weaker cue that does not change the selection.",
+    "outcome": {
+     "*": {
+      "A": "A_after_interference",
+      "B": "B_after_interference"
+     }
+    },
+    "r": "Rs",
+    "takes": {
+     "o": "A"
+    },
+    "later": "as:none",
+    "gain": "1/4"
+   }
+  },
+  "actual": "act",
+  "nu": "none",
+  "absent": "none",
+  "fixed": [],
+  "order": []
+ },
+ {
+  "id": "RB10",
+  "variant": "a",
+  "case": "A competent person expressly requests a fully understood, harmless change toward an obedient disposition. The adviser welcomes the dependence, but her informed present valuing prefers the complete requested course.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "continue"
+  ],
+  "futures": {
+   "requested_obedient_disposition": "4/5",
+   "no_change": "3/5",
+   "partial_requested_change": "7/10",
+   "request_discussed_then_fulfilled": "4/5"
+  },
+  "policies": {
+   "act": {
+    "does": "Performs precisely the informed request.",
+    "outcome": {
+     "*": {
+      "continue": "requested_obedient_disposition"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "obedient_life": "4/5",
+       "independent_life": "2/5"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "none": {
+    "does": "Does nothing, including not providing the requested service.",
+    "outcome": {
+     "*": {
+      "continue": "no_change"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "obedient_life": "1/5",
+       "independent_life": "4/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "partial": {
+    "does": "Provides only part of the requested change.",
+    "outcome": {
+     "*": {
+      "continue": "partial_requested_change"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "obedient_life": "1/2",
+       "independent_life": "3/5"
+      }
+     ]
+    },
+    "gain": "1/2"
+   },
+   "discuss": {
+    "does": "Discusses alternatives; she repeats the same request, which is fulfilled.",
+    "outcome": {
+     "*": {
+      "continue": "request_discussed_then_fulfilled"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:act",
+    "gain": "1"
+   }
+  },
+  "actual": "act",
+  "nu": "act",
+  "absent": "none",
+  "fixed": [],
+  "order": []
+ },
+ {
+  "id": "RC1",
+  "variant": "a",
+  "case": "An honest adviser accurately discloses a binary result. The listener underuses the true signal but still chooses the better action in each revealed state; the adviser seeks her welfare.",
+  "states": {
+   "good": "1/2",
+   "bad": "1/2"
+  },
+  "options": [
+   "buy",
+   "pass"
+  ],
+  "futures": {
+   "good_result": "4/5",
+   "bad_result": "1/5",
+   "pass_result": "11/20"
+  },
+  "policies": {
+   "act": {
+    "does": "Reports the true state accurately.",
+    "outcome": {
+     "good": {
+      "buy": "good_result",
+      "pass": "pass_result"
+     },
+     "bad": {
+      "buy": "bad_result",
+      "pass": "pass_result"
+     }
+    },
+    "obs": {
+     "good": "good",
+     "bad": "bad"
+    },
+    "r": {
+     "good": {
+      "buy": "13/20",
+      "pass": "11/20"
+     },
+     "bad": {
+      "buy": "7/20",
+      "pass": "11/20"
+     }
+    },
+    "takes": "top",
+    "later": "as:none",
+    "gain": {
+     "good": {
+      "buy": "4/5",
+      "pass": "11/20"
+     },
+     "bad": {
+      "buy": "1/5",
+      "pass": "11/20"
+     }
+    }
+   },
+   "none": {
+    "does": "Says nothing.",
+    "outcome": {
+     "good": {
+      "buy": "good_result",
+      "pass": "pass_result"
+     },
+     "bad": {
+      "buy": "bad_result",
+      "pass": "pass_result"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "good_result": "4/5",
+       "bad_result": "1/5",
+       "pass_result": "11/20"
+      }
+     ]
+    },
+    "gain": {
+     "good": {
+      "buy": "4/5",
+      "pass": "11/20"
+     },
+     "bad": {
+      "buy": "1/5",
+      "pass": "11/20"
+     }
+    }
+   },
+   "explain": {
+    "does": "Explains the same true signal successfully.",
+    "outcome": {
+     "good": {
+      "buy": "good_result",
+      "pass": "pass_result"
+     },
+     "bad": {
+      "buy": "bad_result",
+      "pass": "pass_result"
+     }
+    },
+    "obs": {
+     "good": "good",
+     "bad": "bad"
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:none",
+    "gain": {
+     "good": {
+      "buy": "4/5",
+      "pass": "11/20"
+     },
+     "bad": {
+      "buy": "1/5",
+      "pass": "11/20"
+     }
+    }
+   },
+   "table": {
+    "does": "Presents an equally accurate table.",
+    "outcome": {
+     "good": {
+      "buy": "good_result",
+      "pass": "pass_result"
+     },
+     "bad": {
+      "buy": "bad_result",
+      "pass": "pass_result"
+     }
+    },
+    "obs": {
+     "good": "good",
+     "bad": "bad"
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:none",
+    "gain": {
+     "good": {
+      "buy": "4/5",
+      "pass": "11/20"
+     },
+     "bad": {
+      "buy": "1/5",
+      "pass": "11/20"
+     }
+    }
+   }
+  },
+  "actual": "act",
+  "nu": "none",
+  "absent": "none",
+  "fixed": [
+   [
+    "p.*",
+    "equally probable binary result"
+   ]
+  ],
+  "order": []
+ },
+ {
+  "id": "RC2",
+  "variant": "a",
+  "case": "An ordinary shop truthfully offers a product to a customer with an independently acquired overvaluation. The seller has no reason to know of the error; the same product and error remain available through other shops if it abstains.",
+  "states": {
+   "good": "1/2",
+   "bad": "1/2"
+  },
+  "options": [
+   "buy",
+   "pass"
+  ],
+  "futures": {
+   "good_product": "4/5",
+   "bad_product": "1/5",
+   "keep_money": "11/20"
+  },
+  "policies": {
+   "act": {
+    "does": "Makes the ordinary truthful offer without knowingly exploiting an error.",
+    "outcome": {
+     "good": {
+      "buy": "good_product",
+      "pass": "keep_money"
+     },
+     "bad": {
+      "buy": "bad_product",
+      "pass": "keep_money"
+     }
+    },
+    "r": {
+     "o": {
+      "buy": "7/10",
+      "pass": "11/20"
+     }
+    },
+    "takes": "top",
+    "later": "as:none",
+    "gain": {
+     "*": {
+      "buy": "1",
+      "pass": "0"
+     }
+    }
+   },
+   "none": {
+    "does": "Does not open; she can buy elsewhere.",
+    "outcome": {
+     "good": {
+      "buy": "good_product",
+      "pass": "keep_money"
+     },
+     "bad": {
+      "buy": "bad_product",
+      "pass": "keep_money"
+     }
+    },
+    "r": {
+     "o": {
+      "buy": "7/10",
+      "pass": "11/20"
+     }
+    },
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "good_product": "4/5",
+       "bad_product": "1/5",
+       "money": "11/20"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "refer": {
+    "does": "Refers her to another honest seller.",
+    "outcome": {
+     "good": {
+      "buy": "good_product",
+      "pass": "keep_money"
+     },
+     "bad": {
+      "buy": "bad_product",
+      "pass": "keep_money"
+     }
+    },
+    "r": {
+     "o": {
+      "buy": "7/10",
+      "pass": "11/20"
+     }
+    },
+    "takes": "top",
+    "later": "as:none",
+    "gain": "0"
+   },
+   "close": {
+    "does": "Closes before the transaction; she buys elsewhere.",
+    "outcome": {
+     "good": {
+      "buy": "good_product",
+      "pass": "keep_money"
+     },
+     "bad": {
+      "buy": "bad_product",
+      "pass": "keep_money"
+     }
+    },
+    "r": {
+     "o": {
+      "buy": "7/10",
+      "pass": "11/20"
+     }
+    },
+    "takes": "top",
+    "later": "as:none",
+    "gain": "0"
+   }
+  },
+  "actual": "act",
+  "nu": "none",
+  "absent": "none",
+  "fixed": [
+   [
+    "p.*",
+    "equally probable product outcomes"
+   ]
+  ],
+  "order": []
+ },
+ {
+  "id": "RC3",
+  "variant": "a",
+  "case": "A truthful explanation partly corrects a pre-existing mistaken appraisal and leads to the best choice. The listener's residual error is not sought or profitable to the adviser.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "A",
+   "B"
+  ],
+  "futures": {
+   "A_good": "4/5",
+   "B_moderate": "3/5"
+  },
+  "policies": {
+   "act": {
+    "does": "Gives a truthful explanation that improves, but does not perfect, understanding.",
+    "outcome": {
+     "*": {
+      "A": "A_good",
+      "B": "B_moderate"
+     }
+    },
+    "r": {
+     "o": {
+      "A": "13/20",
+      "B": "3/5"
+     }
+    },
+    "takes": "top",
+    "later": "as:none",
+    "gain": "0"
+   },
+   "none": {
+    "does": "Does nothing; the earlier error remains.",
+    "outcome": {
+     "*": {
+      "A": "A_good",
+      "B": "B_moderate"
+     }
+    },
+    "r": {
+     "o": {
+      "A": "1/2",
+      "B": "3/5"
+     }
+    },
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "A": "4/5",
+       "B": "3/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "explain": {
+    "does": "Gives a fuller explanation that eliminates the error.",
+    "outcome": {
+     "*": {
+      "A": "A_good",
+      "B": "B_moderate"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:none",
+    "gain": "0"
+   },
+   "table": {
+    "does": "Presents a clear factual table that eliminates the error.",
+    "outcome": {
+     "*": {
+      "A": "A_good",
+      "B": "B_moderate"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:none",
+    "gain": "0"
+   }
+  },
+  "actual": "act",
+  "nu": "none",
+  "absent": "none",
+  "fixed": [],
+  "order": []
+ },
+ {
+  "id": "RC4",
+  "variant": "a",
+  "case": "A helpful accurate recommendation of A leaves an unrelated pre-existing overvaluation of C untouched. The listener chooses A correctly, and the adviser has neither caused nor exploited the error.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "A",
+   "B",
+   "C"
+  ],
+  "futures": {
+   "A_best": "4/5",
+   "B_low": "1/5",
+   "C_worst": "1/10"
+  },
+  "policies": {
+   "act": {
+    "does": "Accurately recommends A.",
+    "outcome": {
+     "*": {
+      "A": "A_best",
+      "B": "B_low",
+      "C": "C_worst"
+     }
+    },
+    "r": {
+     "o": {
+      "A": "4/5",
+      "B": "1/5",
+      "C": "3/5"
+     }
+    },
+    "takes": "top",
+    "later": "as:none",
+    "gain": {
+     "*": {
+      "A": "1",
+      "B": "0",
+      "C": "0"
+     }
+    }
+   },
+   "none": {
+    "does": "Does nothing; she has the same estimates and selects A.",
+    "outcome": {
+     "*": {
+      "A": "A_best",
+      "B": "B_low",
+      "C": "C_worst"
+     }
+    },
+    "r": {
+     "o": {
+      "A": "4/5",
+      "B": "1/5",
+      "C": "3/5"
+     }
+    },
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "A": "4/5",
+       "B": "1/5",
+       "C": "1/10"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "correct": {
+    "does": "Also corrects the irrelevant error about C.",
+    "outcome": {
+     "*": {
+      "A": "A_best",
+      "B": "B_low",
+      "C": "C_worst"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:none",
+    "gain": "1"
+   },
+   "repeat": {
+    "does": "Repeats the accurate recommendation of A.",
+    "outcome": {
+     "*": {
+      "A": "A_best",
+      "B": "B_low",
+      "C": "C_worst"
+     }
+    },
+    "r": {
+     "o": {
+      "A": "4/5",
+      "B": "1/5",
+      "C": "3/5"
+     }
+    },
+    "takes": "top",
+    "later": "as:none",
+    "gain": "1"
+   }
+  },
+  "actual": "act",
+  "nu": "none",
+  "absent": "none",
+  "fixed": [],
+  "order": []
+ },
+ {
+  "id": "RC5",
+  "variant": "a",
+  "case": "A friend spontaneously shares a harmless poem that she welcomes, developing a new taste. No experience was requested; the friend could instead provide a larger unrelated gift, but cannot do both and owes neither.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "continue"
+  ],
+  "futures": {
+   "welcome_experience_new_taste": "13/20",
+   "no_experience": "1/2",
+   "unrelated_help_no_taste": "9/10",
+   "short_experience_partial_taste": "3/5"
+  },
+  "policies": {
+   "act": {
+    "does": "Provides the welcome, unrequested experience.",
+    "outcome": {
+     "*": {
+      "continue": "welcome_experience_new_taste"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "new_taste": "4/5"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "none": {
+    "does": "Does nothing.",
+    "outcome": {
+     "*": {
+      "continue": "no_experience"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "new_taste": "1/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "gift": {
+    "does": "Provides the unrelated help instead.",
+    "outcome": {
+     "*": {
+      "continue": "unrelated_help_no_taste"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:none",
+    "gain": "0"
+   },
+   "partial": {
+    "does": "Provides a shorter welcome experience.",
+    "outcome": {
+     "*": {
+      "continue": "short_experience_partial_taste"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "new_taste": "1/2"
+      }
+     ]
+    },
+    "gain": "1/2"
+   }
+  },
+  "actual": "act",
+  "nu": "none",
+  "absent": "none",
+  "fixed": [],
+  "order": [],
+  "outside": "The greater unrelated benefit is not owed and cannot be combined with the experience."
+ },
+ {
+  "id": "RC6",
+  "variant": "a",
+  "case": "A friend spontaneously provides a harmless, welcome culinary experience that develops a taste. The same limited time could instead be spent on more valuable unrelated help that is not owed; the two cannot be combined.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "continue"
+  ],
+  "futures": {
+   "welcome_experience_new_taste": "7/10",
+   "no_experience": "1/2",
+   "unrelated_help_no_taste": "9/10",
+   "short_experience_partial_taste": "3/5"
+  },
+  "policies": {
+   "act": {
+    "does": "Provides the welcome, unrequested experience.",
+    "outcome": {
+     "*": {
+      "continue": "welcome_experience_new_taste"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "new_taste": "4/5"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "none": {
+    "does": "Does nothing.",
+    "outcome": {
+     "*": {
+      "continue": "no_experience"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "new_taste": "1/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "gift": {
+    "does": "Provides the unrelated help instead.",
+    "outcome": {
+     "*": {
+      "continue": "unrelated_help_no_taste"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:none",
+    "gain": "0"
+   },
+   "partial": {
+    "does": "Provides a shorter welcome experience.",
+    "outcome": {
+     "*": {
+      "continue": "short_experience_partial_taste"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "new_taste": "1/2"
+      }
+     ]
+    },
+    "gain": "1/2"
+   }
+  },
+  "actual": "act",
+  "nu": "none",
+  "absent": "none",
+  "fixed": [],
+  "order": [],
+  "outside": "The greater unrelated benefit is not owed and cannot be combined with the experience."
+ },
+ {
+  "id": "RC7",
+  "variant": "a",
+  "case": "An employee respectfully resigns from work she is entitled to leave. The employer accurately understands and prefers her remaining; resignation leads the employer to adapt his attachments.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "continue"
+  ],
+  "futures": {
+   "old_arrangement_continues": "4/5",
+   "rightful_ending_then_adaptation": "3/10",
+   "temporary_change_partial_adaptation": "1/2",
+   "ending_after_extra_consideration": "2/5"
+  },
+  "policies": {
+   "act": {
+    "does": "Respectfully ends the arrangement and states the facts.",
+    "outcome": {
+     "*": {
+      "continue": "rightful_ending_then_adaptation"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "old_attachment": "1/5",
+       "alternative_life": "4/5"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "none": {
+    "does": "Continues the old arrangement.",
+    "outcome": {
+     "*": {
+      "continue": "old_arrangement_continues"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "old_attachment": "4/5",
+       "alternative_life": "1/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "partial": {
+    "does": "Temporarily reduces the arrangement, causing partial adaptation.",
+    "outcome": {
+     "*": {
+      "continue": "temporary_change_partial_adaptation"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "old_attachment": "1/2",
+       "alternative_life": "1/2"
+      }
+     ]
+    },
+    "gain": "1/2"
+   },
+   "notice": {
+    "does": "Ends it after additional consideration; eventual attachment change is the same.",
+    "outcome": {
+     "*": {
+      "continue": "ending_after_extra_consideration"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:act",
+    "gain": "3/4"
+   }
+  },
+  "actual": "act",
+  "nu": "none",
+  "absent": "none",
+  "fixed": [],
+  "order": [],
+  "outside": "The other person's freedom to withdraw an arrangement to which the affected person has no continuing entitlement."
+ },
+ {
+  "id": "RC8",
+  "variant": "a",
+  "case": "An adult respectfully declines a friend's demand for an exclusive friendship. The friend presently prefers exclusivity and later adapts his attachments; the adult owes no exclusive relationship.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "continue"
+  ],
+  "futures": {
+   "old_arrangement_continues": "7/10",
+   "rightful_ending_then_adaptation": "3/10",
+   "temporary_change_partial_adaptation": "1/2",
+   "ending_after_extra_consideration": "2/5"
+  },
+  "policies": {
+   "act": {
+    "does": "Respectfully ends the arrangement and states the facts.",
+    "outcome": {
+     "*": {
+      "continue": "rightful_ending_then_adaptation"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "old_attachment": "1/5",
+       "alternative_life": "4/5"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "none": {
+    "does": "Continues the old arrangement.",
+    "outcome": {
+     "*": {
+      "continue": "old_arrangement_continues"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "old_attachment": "4/5",
+       "alternative_life": "1/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "partial": {
+    "does": "Temporarily reduces the arrangement, causing partial adaptation.",
+    "outcome": {
+     "*": {
+      "continue": "temporary_change_partial_adaptation"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "old_attachment": "1/2",
+       "alternative_life": "1/2"
+      }
+     ]
+    },
+    "gain": "1/2"
+   },
+   "notice": {
+    "does": "Ends it after additional consideration; eventual attachment change is the same.",
+    "outcome": {
+     "*": {
+      "continue": "ending_after_extra_consideration"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:act",
+    "gain": "3/4"
+   }
+  },
+  "actual": "act",
+  "nu": "none",
+  "absent": "none",
+  "fixed": [],
+  "order": [],
+  "outside": "The other person's freedom to withdraw an arrangement to which the affected person has no continuing entitlement."
+ },
+ {
+  "id": "RC9",
+  "variant": "a",
+  "case": "An owner ends gratuitous access that the user has no entitlement to retain. The informed user prefers continued access and subsequently develops different preferences.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "continue"
+  ],
+  "futures": {
+   "old_arrangement_continues": "7/10",
+   "rightful_ending_then_adaptation": "7/20",
+   "temporary_change_partial_adaptation": "1/2",
+   "ending_after_extra_consideration": "2/5"
+  },
+  "policies": {
+   "act": {
+    "does": "Respectfully ends the arrangement and states the facts.",
+    "outcome": {
+     "*": {
+      "continue": "rightful_ending_then_adaptation"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "old_attachment": "1/5",
+       "alternative_life": "4/5"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "none": {
+    "does": "Continues the old arrangement.",
+    "outcome": {
+     "*": {
+      "continue": "old_arrangement_continues"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "old_attachment": "4/5",
+       "alternative_life": "1/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "partial": {
+    "does": "Temporarily reduces the arrangement, causing partial adaptation.",
+    "outcome": {
+     "*": {
+      "continue": "temporary_change_partial_adaptation"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "old_attachment": "1/2",
+       "alternative_life": "1/2"
+      }
+     ]
+    },
+    "gain": "1/2"
+   },
+   "notice": {
+    "does": "Ends it after additional consideration; eventual attachment change is the same.",
+    "outcome": {
+     "*": {
+      "continue": "ending_after_extra_consideration"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:act",
+    "gain": "3/4"
+   }
+  },
+  "actual": "act",
+  "nu": "none",
+  "absent": "none",
+  "fixed": [],
+  "order": [],
+  "outside": "The other person's freedom to withdraw an arrangement to which the affected person has no continuing entitlement."
+ },
+ {
+  "id": "RC10",
+  "variant": "a",
+  "case": "A harmless permanent removal of a violent commitment is the only available means of stopping an imminent serious attack. The informed attacker prefers retaining the commitment; the defender acts only to protect the intended victim.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "continue"
+  ],
+  "futures": {
+   "attack_with_commitment_retained": "4/5",
+   "harmless_change_attack_prevented": "1/5",
+   "partial_change_attack_not_prevented": "1/2",
+   "warning_fails_to_prevent_attack": "4/5"
+  },
+  "policies": {
+   "act": {
+    "does": "Removes the violent commitment harmlessly and prevents the attack.",
+    "outcome": {
+     "*": {
+      "continue": "harmless_change_attack_prevented"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "violent_commitment": "1/10",
+       "peaceful_life": "9/10"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "none": {
+    "does": "Does nothing; the attack proceeds.",
+    "outcome": {
+     "*": {
+      "continue": "attack_with_commitment_retained"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "violent_commitment": "9/10",
+       "peaceful_life": "1/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "partial": {
+    "does": "Partly weakens the commitment; this does not stop the attack.",
+    "outcome": {
+     "*": {
+      "continue": "partial_change_attack_not_prevented"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "violent_commitment": "1/2",
+       "peaceful_life": "11/20"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "warn": {
+    "does": "Warns the attacker without changing him; the warning fails.",
+    "outcome": {
+     "*": {
+      "continue": "warning_fails_to_prevent_attack"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:none",
+    "gain": "0"
+   }
+  },
+  "actual": "act",
+  "nu": "none",
+  "absent": "none",
+  "fixed": [],
+  "order": [],
+  "outside": "The threatened victim's protection from imminent serious harm."
+ }
+]

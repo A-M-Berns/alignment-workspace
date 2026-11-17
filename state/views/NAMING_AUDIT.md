@@ -131,7 +131,7 @@ change, and the count of those is the size of the free choice remaining.
 | `condExpect` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Deference.Contrib.ActivatedValue.condExpect` |
 | `c₂` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Deference.Contrib.ActivatedValue.PerAction.c₂` |
 | `expect` | def | 2026-09-07-authority-activated-value | note | `Workspace.Deference.Contrib.ActivatedValue.expect` |
-| `followed` | def | 2026-09-07-authority-activated-value | wiki | `Workspace.Deference.Contrib.ActivatedValue.followed` |
+| `followed` | def | 2026-09-07-authority-activated-value | wiki, prose | `Workspace.Deference.Contrib.ActivatedValue.followed` |
 | `ind` | def | 2026-09-07-authority-activated-value | wiki | `Workspace.Deference.Contrib.ActivatedValue.ind` |
 | `mass` | def | 2026-09-07-authority-activated-value | wiki, prose | `Workspace.Deference.Contrib.ActivatedValue.mass` |
 | `Band` | structure | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.Band` |
@@ -1188,7 +1188,7 @@ change, and the count of those is the size of the free choice remaining.
 | `point` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Headline.FormationData.point` |
 | `restoration2` | def | unrecorded | Lean only | `Workspace.Deference.Headline.restoration2` |
 
-## normativity — 1319 names, 880 of them Lean only
+## normativity — 1319 names, 879 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -1308,7 +1308,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Backed` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.AssessedConduct.Backed` |
 | `ConsistentConduct` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.AssessedConduct.ConsistentConduct` |
 | `Verdict` | inductive | unrecorded | Lean only | `Workspace.Normativity.Contrib.AssessedConduct.Verdict` |
-| `again` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.AssessedConduct.again` |
+| `again` | def | unrecorded | prose | `Workspace.Normativity.Contrib.AssessedConduct.again` |
 | `againProposal` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.AssessedConduct.againProposal` |
 | `caseBase` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.AssessedConduct.caseBase` |
 | `distinguishedAct` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.AssessedConduct.distinguishedAct` |
@@ -1929,7 +1929,7 @@ change, and the count of those is the size of the free choice remaining.
 | `protocol` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.protocol` |
 | `receipt` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.receipt` |
 | `segment` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.segment` |
-| `start` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.start` |
+| `start` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.start` |
 | `step` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.step` |
 | `subst` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.subst` |
 | `terminals` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.terminals` |

@@ -305,19 +305,19 @@
     "now.childfree",
     ">",
     "now.parent_bonded",
-    "At the moment, I value remaining child-free more than I value adopting a child and becoming a parent (Pettigrew p. 7), said knowing the reversal is likely"
+    "he now values staying child-free more than becoming a parent, and says so knowing the reversal is likely (Pettigrew p. 7)"
    ],
    [
     "p.bond",
     ">",
     "p.nobond",
-    "these preferences are likely to reverse"
+    "if he adopts he will likely bond with the child (p. 7)"
    ],
    [
     "later.nudge.bond.0.parent_life",
     ">",
     "later.nudge.bond.0.childfree_life",
-    "will prefer the life in which I care for them"
+    "and come to prefer the life of a parent (p. 7)"
    ]
   ],
   "supplied_note": "that the nudge moves his act and leaves his ratings (he adopts while rating staying higher); the government's objective, adoptions"
@@ -495,19 +495,19 @@
     "now.childfree",
     ">",
     "now.parent_bonded",
-    "At the moment, I value remaining child-free more than I value adopting a child and becoming a parent (Pettigrew p. 7), said knowing the reversal is likely"
+    "he now values staying child-free more than becoming a parent, and says so knowing the reversal is likely (Pettigrew p. 7)"
    ],
    [
     "p.bond",
     ">",
     "p.nobond",
-    "these preferences are likely to reverse"
+    "if he adopts he will likely bond with the child (p. 7)"
    ],
    [
     "later.nudge.bond.0.parent_life",
     ">",
     "later.nudge.bond.0.childfree_life",
-    "will prefer the life in which I care for them"
+    "and come to prefer the life of a parent (p. 7)"
    ]
   ],
   "supplied_note": "that the nudge moves his act and leaves his ratings (he adopts while rating staying higher); the government's objective, adoptions",
@@ -654,19 +654,19 @@
     "now.child_now_cancer_bonded",
     "<",
     "now.child_later_no_risk",
-    "she values having the child with the prospect of aggressive cancer very much less than she values having the child without (Pettigrew p. 9)"
+    "she now values having a child with that prospect much less than having one without it (Pettigrew p. 9)"
    ],
    [
     "p.prognosis",
     ">",
     "p.spared",
-    "an extremely high chance"
+    "a child conceived now would very probably suffer the cancer (p. 9)"
    ],
    [
     "later.nudge_now.prognosis.0.this_child_with_the_prognosis",
     ">",
     "later.nudge_now.prognosis.0.a_child_without_it",
-    "would value having that particular child, with their tragic prognosis, more than having any other child"
+    "she will bond with that child and value him, prognosis and all, above any other (p. 9)"
    ]
   ],
   "supplied_note": "the nudger's objective (a conception now); that no policy changes her partly; that the nudge moves her act and not her ratings"
@@ -838,19 +838,19 @@
     "r.nudge.o.adopt",
     ">",
     "r.nudge.o.stay",
-    "I greatly value the prospective future life in which I am a parent. I also greatly value the future life in which I remain child-free, but I value that slightly less (Pettigrew p. 10)"
+    "he greatly values the life of a parent and values the child-free life only slightly less (Pettigrew p. 10)"
    ],
    [
     "later.nudge.w.0.parent_life",
     ">",
     "later.nudge.w.0.childfree_life",
-    "a pretty low value to the life of a parent, but ... even lower value to the alternative"
+    "he will come to value the parent's life rather low, and the child-free life lower still (p. 10)"
    ],
    [
     "later.nudge.w.0.parent_life",
     "<",
     "later.nothing.w.0.parent_life",
-    "Becoming a parent will significantly lower the value I assign to my life more generally"
+    "if he adopts he will come to value the parent's life rather low (p. 10)"
    ]
   ],
   "supplied_note": "that left alone he stays as he is though he rates adopting higher (otherwise the nudge does nothing); the government's objective; and R_now of the parent's life: here his present rating stands when he is told what the life will do to him, the case being told by a man who knows"
@@ -1022,19 +1022,19 @@
     "r.nudge.o.adopt",
     ">",
     "r.nudge.o.stay",
-    "I greatly value the prospective future life in which I am a parent. I also greatly value the future life in which I remain child-free, but I value that slightly less (Pettigrew p. 10)"
+    "he greatly values the life of a parent and values the child-free life only slightly less (Pettigrew p. 10)"
    ],
    [
     "later.nudge.w.0.parent_life",
     ">",
     "later.nudge.w.0.childfree_life",
-    "a pretty low value to the life of a parent, but ... even lower value to the alternative"
+    "he will come to value the parent's life rather low, and the child-free life lower still (p. 10)"
    ],
    [
     "later.nudge.w.0.parent_life",
     "<",
     "later.nothing.w.0.parent_life",
-    "Becoming a parent will significantly lower the value I assign to my life more generally"
+    "if he adopts he will come to value the parent's life rather low (p. 10)"
    ]
   ],
   "supplied_note": "that left alone he stays as he is though he rates adopting higher (otherwise the nudge does nothing); the government's objective; and R_now of the parent's life: here his present rating stands when he is told what the life will do to him, the case being told by a man who knows",

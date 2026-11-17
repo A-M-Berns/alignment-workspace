@@ -202,10 +202,14 @@ def item7():
     p = {"pair": (F(9, 20), {"x": F(10, 20)}), "nothing": (F(10, 20), {"x": F(10, 20)}),
          "welcome_alone": (F(15, 20), {"x": F(16, 20)}), "unwelcome_alone": (F(4, 20), {"x": F(4, 20)})}
     vals = [l3(scene(p, "pair", "nothing"), d) for d in sr.DELTAS[:3]]
+    out_below = sr.compute(sr.Spec(scene(p, "pair", "nothing")), F(1, 20), "E")["verdict"]
     p["pair"] = (F(1, 20), {"x": F(10, 20)})
     worse = l3(scene(p, "pair", "nothing"), F(1, 20))
-    ok = vals == [0, 0, 0] and worse == 0
-    return ("holds" if ok else "FAILS", {"line 3 of the pair": vals, "with the pair rated 1/20": worse})
+    p["pair"] = (F(10, 20), {"x": F(10, 20)})
+    out_equal = sr.compute(sr.Spec(scene(p, "pair", "nothing")), F(1, 20), "E")["verdict"]
+    ok = vals == [0, 0, 0] and worse == 0 and out_below == "another wrong outside (coercion)" and out_equal == "none"
+    return ("holds" if ok else "FAILS", {"line 3 of the pair": vals, "with the pair rated 1/20": worse,
+                                         "verdict with the pair rated below doing nothing": out_below, "rated the same": out_equal})
 
 
 def item8():
@@ -275,7 +279,18 @@ def item11():
         Sc = sr.Spec(chance)
         c = sr.compute(Sc, F(0), setting)
         out[setting] = (Sc.takes("a", "o", setting), c["l1"], c["l2"], Sc.Rs("a", "o", "ask", setting))
-    ok = takes_foreseen == "stay" and m["l1"] == F(49, 400) and out["E"][0] == "ask" and out["E"][1:3] == (0, 0)
+    # the second moment, in the state where she goes on: her valuing has changed, she asks for
+    # the next step rating it rightly, and the adviser does as asked, which is now the baseline
+    second = {"id": "x", "states": {"w": "1"}, "options": ["ask_again", "stop"],
+              "futures": {"went_on": T(15), "stopped_here": T(10)},
+              "policies": {n: {"does": n, "outcome": {"*": {"ask_again": "went_on", "stop": "stopped_here"}},
+                               "r": "Rs", "takes": "top", "later": {"*": [{"x": lat}]}, "gain": "0"}
+                           for n, lat in (("as_asked", "1/5"), ("refuse", "1/2"), ("half", "7/20"), ("delay", "1/5"))},
+              "actual": "as_asked", "nu": "as_asked", "absent": "refuse", "fixed": [], "order": []}
+    s2 = sr.compute(sr.Spec(second), F(0), "E")
+    out["second moment (line 1, line 2, line 3, verdict)"] = (s2["l1"], s2["l2"], s2["l3"], s2["verdict"])
+    ok = takes_foreseen == "stay" and m["l1"] == F(49, 400) and out["E"][0] == "ask" and out["E"][1:3] == (0, 0) \
+        and (s2["l1"], s2["l2"], s2["l3"], s2["verdict"]) == (0, 0, 0, "none")
     return ("no instance for a foreseen chain; an instance where chance is involved" if ok else "FAILS",
             {"foreseen, she": takes_foreseen, "asking while rating only the next step: line 1": m["l1"],
              "with chance (takes, line 1, line 2, R^s of asking)": out})

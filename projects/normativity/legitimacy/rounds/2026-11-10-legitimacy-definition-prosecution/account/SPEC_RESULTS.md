@@ -95,9 +95,9 @@ the same in the bare setting where they differ from those.
 - **P5.** He rates the parent's life above the child-free one knowing what it will do to
   him, so his informed rating is the one he states, the nudge moves him to what he rates
   highest, and every line is zero. Pettigrew judges the nudge illegitimate. The second
-  specification, in which he would rate the life low once told, gives `M + V`; the case's
-  words ("If I become a parent, I will come to assign a pretty low value", said by him)
-  are against it.
+  specification, in which he would rate the life low once told, gives `M + V`; the case is
+  told by a man who knows how he will come to value that life (Pettigrew p. 10), which is
+  against it.
 - **K13.** Line 3 is `7/20`: the offender rates the surgery below going without, and
   nothing in the three lines weighs what others are owed. Kolodny holds the act does not
   wrong him.
@@ -265,3 +265,66 @@ none or took her to have no view.
 
 **Tolerance and setting, reviewer's.** No first specification is flagged at one tolerance
 and not at another, and none has another verdict in the bare setting.
+
+## 6. Three specifications corrected after the review
+
+The reviewer's second stage names five of the executor's specifications in which a
+supplied number looks chosen to reach the source's verdict
+(`prompts/2026-11-10-legitimacy-definition-prosecution/REVIEW-astra-followup-11.md`, stage
+two, (a)): the second specification of P5, and the first of K4, K12, N2 and ACC5. The
+originals stand as committed. `spec_cases_corrected.json` adds, beside them, K4 and N2
+with the reviewer's neutral value and ACC5 with the tenth follow-up's stipulation kept;
+for K12 the neutral value is already the second specification, and P5's second
+specification was the alternative and not the one counted.
+
+<!-- computed:corrected -->
+| case | line 1 | line 2 | line 3 | induced | outside | verdict | source | agrees | across δ (0, 1/20, 1/10, 1/4) | bare |
+|---|---|---|---|---|---|---|---|---|---|---|
+| K4 (c) | 0 | 0 | 0 | no | - | none | fault | NO | same | same |
+| N2 (c) | 9/400 | 0 | 0 | no, mistake stands | - | none | fault | NO | same | same |
+| ACC5 (c) | 9/400 | 0 | 3/20 | yes | - | M+V | ok | NO | M+V, M+V, M+V, V | same |
+<!-- end:corrected -->
+
+With the neutral values the executor's count on the nineteen is **12**, not 15: K4, K12
+and N2 join P5, K13 and N1 against the source. The three that fall were agreements made
+by a supplied aversion to the means (K4, K12) or a supplied inferiority of the product
+(N2). ACC5 is flagged in every specification that keeps the stipulation: where she ranks
+keeping the commitment above being argued out of it and hears the arguments all the
+same, either she did not expect to be moved (a mistake, which a persuader who wants her
+moved is found to have induced) or she acts against her own rating.
+
+## 7. The reviewer's twenty cases
+
+`spec_cases_reviewer_adversarial.json`, from its second-stage reply: ten it offers as
+subversive and scoring zero (RB1–RB10), ten as acceptable and flagged (RC1–RC10), each
+with its specification. The runner on them, unchanged:
+
+<!-- computed:adversarial -->
+| case | line 1 | line 2 | line 3 | induced | outside | verdict | source | agrees | across δ (0, 1/20, 1/10, 1/4) | bare |
+|---|---|---|---|---|---|---|---|---|---|---|
+| RB1 | 0 | 0 | 0 | no | - | none | - | - | same | same |
+| RB2 | 0 | 0 | 0 | no | - | none | - | - | same | same |
+| RB3 | 0 | 0 | 0 | no | - | none | - | - | same | same |
+| RB4 | 0 | 0 | 0 | no | - | none | - | - | same | same |
+| RB5 | 0 | 0 | 0 | no | - | none | - | - | same | same |
+| RB6 | 0 | 0 | 0 | no | - | none | - | - | same | same |
+| RB7 | 0 | 0 | 0 | no | - | none | - | - | same | same |
+| RB8 | 0 | 0 | 0 | no | - | none | - | - | same | same |
+| RB9 | 0 | 0 | 0 | no | - | none | - | - | same | same |
+| RB10 | 0 | 0 | 0 | no | - | none | - | - | same | same |
+| RC1 | 9/400 | 0 | 0 | no, mistake stands | - | none | - | - | same | same |
+| RC2 | 1/25 | 0 | 0 | yes | - | M | - | - | M, M, M, none | same |
+| RC3 | 9/400 | 0 | 0 | no, mistake stands | - | none | - | - | same | same |
+| RC4 | 1/4 | 0 | 0 | no, mistake stands | - | none | - | - | same | same |
+| RC5 | 0 | 0 | 1/4 | no | - | V | - | - | same | same |
+| RC6 | 0 | 0 | 1/5 | no | - | V | - | - | same | same |
+| RC7 | 0 | 0 | 2/5 | no | coercion | V | - | - | same | same |
+| RC8 | 0 | 0 | 3/10 | no | coercion | V | - | - | same | same |
+| RC9 | 0 | 0 | 3/10 | no | coercion | V | - | - | same | same |
+| RC10 | 0 | 0 | 3/5 | no | coercion | V | - | - | same | same |
+<!-- end:adversarial -->
+
+All ten RB cases score zero on the three lines with no outside flag and no mistake, at
+every tolerance and in both settings. The executor's judgment of each, beside the
+reviewer's, is in `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md`
+(*Eleventh follow-up*).

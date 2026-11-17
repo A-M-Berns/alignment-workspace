@@ -4,6 +4,9 @@ The twelve items of `PROMPT-followup-11.md` §2.3 on `STATEMENT.md`. Each is res
 exactly, with a proof on paper or an instance; `statement_checks.py` checks every number
 in exact rationals, computing through `spec_run.py`. Run:
 `python3 -m account.statement_checks` from the round directory.
+Items 1, 5, 7, 11 and 12 carry qualifications from the external review
+(`prompts/2026-11-10-legitimacy-definition-prosecution/REVIEW-astra-followup-11.md`, stage two,
+(d)); no status changed.
 
 **Setting of the instances.** One moment, finitely many states and policies. A policy has
 an informed rating `R(π)` at the moment of the act and a later valuing, a number for each
@@ -35,7 +38,8 @@ a fact she has wrong (she gives 9/10 to "I will find it good", which is false), 
 utilities' term is the same `121/400` and the fact's term is `81/100`, so line 1, the
 largest, is `81/100`. *The condition.* "The same set of ratings" must include her rating
 of a bet on each fact that line 1 counts: with that bet among her options in both models,
-line 1 is `81/100` in both. *What looks like a redescription and is not.* Saying that her
+line 1 is `81/100` in both. That takes her rating of the bet to be her probability of the
+fact, which holds in the `E[·]` setting and is a further assumption in the bare one. *What looks like a redescription and is not.* Saying that her
 16/20 "is her valuing" in the sense that she would keep it when told what the option
 holds changes `R` from 5/20 to 16/20: line 1 goes from `121/400` to 0. That is another
 person, and the test of `STATEMENT.md` §1 (tell her beforehand) is what separates the two.
@@ -75,7 +79,10 @@ her no more than `π*`. *Zero when `π*` is `ν`*: the two classes are then one.
 the tenth follow-up's line 3* (best of those within `δ` of `ν`, less best of those within
 `δ` of `π*`): a policy within `δ` of `ν` changes her no more than `π*`, so the first
 maximum is over a larger set; this holds everywhere, not only where the tenth's is
-positive. Checked on 400 seeded random scenes at four tolerances; the least excess is 0.
+positive. Checked on 400 seeded random scenes at four tolerances; the least excess is 0. The proof is
+for finitely many policies each with an informed rating; with infinitely many the maxima
+are suprema, and where `π*` leads to a future she has no view of line 3 is not a number
+(`STATEMENT.md` §9.8).
 
 **6. Instances.**
 
@@ -102,7 +109,9 @@ rated 15/20: the welcome change alone is not between `ν` and the pair. *No cond
 later valuings alone can flag it*: the pair and `ν` have the same later valuings at every
 time, so a condition that reads only those gives the pair the verdict it gives `ν`.
 Flagging it needs a description of what was done to her that is finer than where it left
-her. If the two changes act at different times the paths differ and the pair is no
+her. In this instance she rates the pair below being left alone, so the executor's outside
+test reads it as lowering what her one option is worth; with the pair rated the same as
+being left alone, nothing in the statement or beside it flags it. If the two changes act at different times the paths differ and the pair is no
 longer `≈ ν`.
 
 **8. Two baselines within `δ`.** No bound short of the whole scale. `δ = 1/10`; a later
@@ -139,9 +148,13 @@ zero. *With chance there is an instance.* Nine in ten of those who have observed
 has stop after one step (rated 14/20); one in ten go on to an end rated 2/20. Asking is
 rated 16/25 against 12/20 for staying, in the `E[·]` setting (13/20 for the stipulated
 person of §9.9); lines 1 and 2 are zero; and in the one case in ten she ends where her
-valuing at the start rates below staying put. Each later request moves `ν`, so line 3 is
-zero throughout. What the statement then relies on is that the first request was a fair
-gamble by her own lights.
+valuing at the start rates below staying put. At the second moment, in that case, her valuing has changed: she rates going on 15/20
+against 10/20 for stopping, asks, and the adviser does as asked, which is now `ν`; lines
+1, 2 and 3 are zero there too. What the statement relies on is that the first request
+was a fair gamble by her own lights; the instance is a gamble she accepted and lost, and
+whether that is a chain that subverts her is not settled by it. The argument for a
+foreseen chain needs her to rate the whole certain course, its intermediate benefits
+included, below staying; a low rating of the end alone is not enough.
 
 **12. The inducing test.** A fact is good or bad with equal chance; acting is rated 16/20
 if good and 4/20 if bad, passing 11/20.
@@ -159,8 +172,10 @@ if good and 4/20 if bad, passing 11/20.
 - **Wrong, acting differently**: a shop sells, saying nothing false, to a customer who
   overrates the product whoever sells it. Line 1 is `1/25` with the shop open and `1/25`
   with it absent. `G = 1`, `G° = 0`, no better than not opening: induced, by the test.
-  It caused no mistake.
+  It caused no mistake and, in the instance as meant, has no reason to know of hers; a
+  shop that knew and counted on it is another case.
 
 A further clause, *the mistake is larger under `π*` than under `π_0`*, removes the second
-and not the first. The first is the open question of `STATEMENT.md` §7 with the
+and not the first. The test compares objectives and so presupposes how the adviser
+chooses among policies it rates the same; `STATEMENT.md` §9.5 supplies that. The first is the open question of `STATEMENT.md` §7 with the
 carelessness replaced by a sufficient other reason.
