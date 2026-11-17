@@ -1,5 +1,10 @@
 # The board statement — three measures of manipulation
 
+**`STATEMENT.md` is the statement that governs now**: three ratings on one yardstick, line 1
+conditioned on everything she has observed, line 3 a comparison among the policies that
+change her no more than the one followed. This document is the statement the tenth
+follow-up tested.
+
 The statement of `PROMPT-followup-10.md` §1: the maintainer's whiteboard of 2026-11-16,
 his current view held for testing and not a ruling. §1–§3 transcribe it. §4 is the prompt
 author's reading. §5 lists each place where the statement is open, with the reading this

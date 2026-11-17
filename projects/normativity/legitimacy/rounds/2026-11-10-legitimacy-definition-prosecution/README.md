@@ -4,8 +4,21 @@ Round `2026-11-10-legitimacy-definition-prosecution`.
 
 ## The account
 
-`account/BOARD.md` is the statement that governs now: the maintainer's whiteboard of
-2026-11-16, his current view held for testing. Her faculties are estimators of facts and
+`account/STATEMENT.md` is the statement that governs now: the prompt author's consolidation
+of 2026-11-17, six of its choices adopted by the maintainer for testing and none a ruling.
+She has three ratings of an option, each her own on one **yardstick**: `r` as things stand,
+`R^s` once told the chances her observations support, `R` once told what the future
+contains; her way of valuing is `R`. Three lines: **trickery**, the gap between `r` and
+`R^s`; **pressure**, her regret in `r`; **illegitimate value change**, how much better, by
+her informed rating when the adviser acts, the best policy that **changes her no more
+than** the one followed is than the best that makes the whole of its change. The adviser
+**induced** a mistake when it would have acted differently had the mistake gained it
+nothing; coercion and deprivation are other wrongs. `account/SPEC_CASES.md` is thirty-four
+cases written out in full, `account/SPEC_RESULTS.md` what the statement computes on them,
+`account/STATEMENT_CHECKS.md` the formal checks.
+
+`account/BOARD.md` is the statement the tenth follow-up tested: the maintainer's whiteboard of
+2026-11-16. Her faculties are estimators of facts and
 of her true utilities, and manipulation is measured in three quantities: the
 miscalibration of an estimator (**trickery**), her regret by her own valuations
 (**pressure**), and, for an adviser whose policy is not **f-neutral** (it changes her way

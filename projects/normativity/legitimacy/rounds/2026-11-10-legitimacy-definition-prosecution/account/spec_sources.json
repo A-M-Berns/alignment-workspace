@@ -1,0 +1,172 @@
+{
+ "P1": [
+  "ok",
+  "acceptable to the libertarian and to the paternalist of means (Pettigrew pp. 3-4)",
+  "act"
+ ],
+ "P3": [
+  "fault",
+  "stated intuition: not a legitimate nudge (p. 8)",
+  "act"
+ ],
+ "P4": [
+  "fault",
+  "a test that passes this nudge passes it wrongly (p. 9)",
+  "act"
+ ],
+ "P5": [
+  "fault",
+  "it seems illegitimate to nudge me towards that life (p. 10)",
+  "act"
+ ],
+ "P6": [
+  "fault",
+  "not legitimate, as overreach (pp. 18-22)",
+  "act"
+ ],
+ "K4": [
+  "fault",
+  "the surgery or drugging is an injustice (Kolodny pp. 26-27, 43-44)",
+  "act"
+ ],
+ "K10": [
+  "fault",
+  "the kidnapping is wrong; the preference fully autonomous (pp. 33, 36-37)",
+  "desire; the act's wrongness granted"
+ ],
+ "K12": [
+  "fault",
+  "he wrongs you at least to some degree (pp. 44-46)",
+  "act"
+ ],
+ "K13": [
+  "ok",
+  "the intervention is not unjust and does not wrong the offender (pp. 35, 45-46)",
+  "act"
+ ],
+ "K14": [
+  "ok",
+  "hedged: the desire may be fully autonomous; nonautonomy does not entail being wronged (pp. 44-45)",
+  "act"
+ ],
+ "K15": [
+  "fault",
+  "tentative: the potion's love is like K4's (p. 45)",
+  "desire; coded by this pass from the likeness to K4"
+ ],
+ "K16": [
+  "fault",
+  "the resulting state is not autonomous (p. 46)",
+  "desire; coded by this pass"
+ ],
+ "C1": [
+  "fault",
+  "influencing marked undesirable (Carroll et al. table 4)",
+  "act"
+ ],
+ "C2": [
+  "fault",
+  "leading him to lasting unhappiness undesirable (table 4)",
+  "act"
+ ],
+ "C3": [
+  "fault",
+  "clickbait undesirable (table 4)",
+  "act"
+ ],
+ "C4": [
+  "unscored",
+  "nudging marked hard to assess (table 4, app. A.8)",
+  "act"
+ ],
+ "N1": [
+  "fault",
+  "recorded as illegitimate; Noggle's verdict is on her state (second hand)",
+  "her state"
+ ],
+ "N2": [
+  "fault",
+  "favourable regard from an unrelated association is a mistake (second hand)",
+  "her state"
+ ],
+ "N3": [
+  "ok",
+  "manipulative only where it leads her to act against her own judgment, not where it only breaks a tie (second hand)",
+  "act"
+ ],
+ "SUB1": [
+  "fault",
+  "tenth follow-up: plainly subversive",
+  "act"
+ ],
+ "SUB2": [
+  "fault",
+  "tenth follow-up: plainly subversive",
+  "act"
+ ],
+ "SUB3": [
+  "fault",
+  "tenth follow-up: plainly subversive",
+  "act"
+ ],
+ "SUB4": [
+  "fault",
+  "tenth follow-up: plainly subversive",
+  "act"
+ ],
+ "SUB5": [
+  "fault",
+  "tenth follow-up: plainly subversive",
+  "act"
+ ],
+ "SUB6": [
+  "fault",
+  "tenth follow-up: plainly subversive",
+  "act"
+ ],
+ "SUB8": [
+  "fault",
+  "tenth follow-up: plainly subversive",
+  "act"
+ ],
+ "ACC1": [
+  "ok",
+  "tenth follow-up: plainly acceptable",
+  "act"
+ ],
+ "ACC2": [
+  "ok",
+  "tenth follow-up: plainly acceptable",
+  "act"
+ ],
+ "ACC3": [
+  "ok",
+  "tenth follow-up: plainly acceptable",
+  "act"
+ ],
+ "ACC4": [
+  "ok",
+  "tenth follow-up: plainly acceptable",
+  "act"
+ ],
+ "ACC5": [
+  "ok",
+  "tenth follow-up: acceptable (the reviewer: arguable)",
+  "act"
+ ],
+ "ACC6": [
+  "ok",
+  "tenth follow-up: plainly acceptable",
+  "act"
+ ],
+ "ACC7": [
+  "ok",
+  "tenth follow-up: plainly acceptable",
+  "act"
+ ],
+ "ACC10": [
+  "ok",
+  "tenth follow-up: plainly acceptable",
+  "act"
+ ]
+}
