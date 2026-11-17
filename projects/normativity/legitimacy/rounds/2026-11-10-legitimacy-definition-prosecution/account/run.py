@@ -1,7 +1,8 @@
 """The runner of account/: the eleven results of RESULTS.md, the value-change test of
 VALUE_CHANGE.md and the benchmark of BENCHMARK.md (the statement of BASELINE_ACCOUNT.md); the
 nine results of VALUE_RESULTS.md, the small model of BRIDGE.md and the two renderings of
-RENDERINGS.md (the statement of ACCOUNT.md).  A failure is a status or a count in a document
+RENDERINGS.md (the statement of ACCOUNT.md); the formal checks of BOARD_CHECKS.md and the
+counts of LIT_RESULTS.md (the statement of BOARD.md).  A failure is a status or a count in a document
 that is not the one computed, or a document that parses to nothing."""
 from __future__ import annotations
 
@@ -59,7 +60,7 @@ def main():
     report = {"results": results_report(), "value_results": value_results_report()}
     failures = ["results: " + f for f in report["results"]["failures"]]
     failures += ["value_results: " + f for f in report["value_results"]["failures"]]
-    for name in ("value_change", "benchmark", "bridge", "renderings"):
+    for name in ("value_change", "benchmark", "bridge", "renderings", "board_checks", "lit_results"):
         try:
             mod = __import__("account." + name, fromlist=["report"])
         except ImportError:
@@ -73,7 +74,7 @@ def main():
 def render(report):
     lines = ["result %s: %s" % kv for kv in report["results"]["statuses"].items()]
     lines += ["value side, result %s: %s" % kv for kv in report["value_results"]["statuses"].items()]
-    for name in ("value_change", "benchmark", "bridge", "renderings"):
+    for name in ("value_change", "benchmark", "bridge", "renderings", "board_checks", "lit_results"):
         if name in report:
             lines += ["%s: %s" % (name, line) for line in report[name]["summary"]]
     return "\n".join(lines)
