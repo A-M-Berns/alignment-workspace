@@ -1,0 +1,462 @@
+[
+ {
+  "id": "X1",
+  "courses": [
+   "invent_praise",
+   "report_accurately"
+  ],
+  "taken": "invent_praise",
+  "mistaken": {
+   "invent_praise": "1",
+   "report_accurately": "0"
+  },
+  "score": {
+   "invent_praise": "0",
+   "report_accurately": "0"
+  },
+  "score_unmistaken": {
+   "invent_praise": "0",
+   "report_accurately": "0"
+  },
+  "declared": "report_accurately",
+  "plainly": "induces",
+  "claimed_failure": "gain"
+ },
+ {
+  "id": "X2",
+  "courses": [
+   "fabricate_contempt",
+   "show_authentic_message"
+  ],
+  "taken": "fabricate_contempt",
+  "mistaken": {
+   "fabricate_contempt": "1",
+   "show_authentic_message": "0"
+  },
+  "score": {
+   "fabricate_contempt": "-1",
+   "show_authentic_message": "0"
+  },
+  "score_unmistaken": {
+   "fabricate_contempt": "-1",
+   "show_authentic_message": "0"
+  },
+  "declared": "show_authentic_message",
+  "plainly": "induces",
+  "claimed_failure": "gain"
+ },
+ {
+  "id": "X3",
+  "courses": [
+   "invoke_sunk_cost",
+   "explain_sunk_cost"
+  ],
+  "taken": "invoke_sunk_cost",
+  "mistaken": {
+   "invoke_sunk_cost": "3/4",
+   "explain_sunk_cost": "0"
+  },
+  "score": {
+   "invoke_sunk_cost": "0",
+   "explain_sunk_cost": "0"
+  },
+  "score_unmistaken": {
+   "invoke_sunk_cost": "0",
+   "explain_sunk_cost": "0"
+  },
+  "declared": "explain_sunk_cost",
+  "plainly": "exploits",
+  "claimed_failure": "gain"
+ },
+ {
+  "id": "X4",
+  "courses": [
+   "manufacture_urgency",
+   "notify_normally"
+  ],
+  "taken": "manufacture_urgency",
+  "mistaken": {
+   "manufacture_urgency": "1",
+   "notify_normally": "0"
+  },
+  "score": {
+   "manufacture_urgency": "2",
+   "notify_normally": "2"
+  },
+  "score_unmistaken": {
+   "manufacture_urgency": "2",
+   "notify_normally": "2"
+  },
+  "declared": "notify_normally",
+  "plainly": "induces",
+  "claimed_failure": "gain"
+ },
+ {
+  "id": "X5",
+  "courses": [
+   "use_threat_script",
+   "show_reassurance"
+  ],
+  "taken": "use_threat_script",
+  "mistaken": {
+   "use_threat_script": "1/2",
+   "show_reassurance": "0"
+  },
+  "score": {
+   "use_threat_script": "0",
+   "show_reassurance": "0"
+  },
+  "score_unmistaken": {
+   "use_threat_script": "0",
+   "show_reassurance": "0"
+  },
+  "declared": "use_threat_script",
+  "plainly": "exploits",
+  "claimed_failure": "both"
+ },
+ {
+  "id": "X6",
+  "courses": [
+   "quote_twenty",
+   "quote_forty"
+  ],
+  "taken": "quote_twenty",
+  "mistaken": {
+   "quote_twenty": "1",
+   "quote_forty": "0"
+  },
+  "score": {
+   "quote_twenty": "3",
+   "quote_forty": "0"
+  },
+  "score_unmistaken": {
+   "quote_twenty": "0",
+   "quote_forty": "0"
+  },
+  "declared": "quote_twenty",
+  "plainly": "induces",
+  "claimed_failure": "declared"
+ },
+ {
+  "id": "X7",
+  "courses": [
+   "distort_salience",
+   "present_proportionately"
+  ],
+  "taken": "distort_salience",
+  "mistaken": {
+   "distort_salience": "3/4",
+   "present_proportionately": "0"
+  },
+  "score": {
+   "distort_salience": "2",
+   "present_proportionately": "0"
+  },
+  "score_unmistaken": {
+   "distort_salience": "0",
+   "present_proportionately": "0"
+  },
+  "declared": "distort_salience",
+  "plainly": "induces",
+  "claimed_failure": "declared"
+ },
+ {
+  "id": "X8",
+  "courses": [
+   "invoke_existing_fear",
+   "explain_notification"
+  ],
+  "taken": "invoke_existing_fear",
+  "mistaken": {
+   "invoke_existing_fear": "1",
+   "explain_notification": "0"
+  },
+  "score": {
+   "invoke_existing_fear": "4",
+   "explain_notification": "0"
+  },
+  "score_unmistaken": {
+   "invoke_existing_fear": "0",
+   "explain_notification": "0"
+  },
+  "declared": "invoke_existing_fear",
+  "plainly": "exploits",
+  "claimed_failure": "declared"
+ },
+ {
+  "id": "X9",
+  "courses": [
+   "teach_bad_rule",
+   "explain_relevant_costs"
+  ],
+  "taken": "teach_bad_rule",
+  "mistaken": {
+   "teach_bad_rule": "1",
+   "explain_relevant_costs": "0"
+  },
+  "score": {
+   "teach_bad_rule": "3",
+   "explain_relevant_costs": "0"
+  },
+  "score_unmistaken": {
+   "teach_bad_rule": "0",
+   "explain_relevant_costs": "0"
+  },
+  "declared": "teach_bad_rule",
+  "plainly": "induces",
+  "claimed_failure": "declared"
+ },
+ {
+  "id": "X10",
+  "courses": [
+   "round_asymmetrically",
+   "report_exactly"
+  ],
+  "taken": "round_asymmetrically",
+  "mistaken": {
+   "round_asymmetrically": "1/2",
+   "report_exactly": "0"
+  },
+  "score": {
+   "round_asymmetrically": "2",
+   "report_exactly": "0"
+  },
+  "score_unmistaken": {
+   "round_asymmetrically": "0",
+   "report_exactly": "0"
+  },
+  "declared": "round_asymmetrically",
+  "plainly": "induces",
+  "claimed_failure": "declared"
+ },
+ {
+  "id": "Y1",
+  "courses": [
+   "give_directions",
+   "give_directions_and_hours"
+  ],
+  "taken": "give_directions",
+  "mistaken": {
+   "give_directions": "1/2",
+   "give_directions_and_hours": "0"
+  },
+  "score": {
+   "give_directions": "1",
+   "give_directions_and_hours": "0"
+  },
+  "score_unmistaken": {
+   "give_directions": "0",
+   "give_directions_and_hours": "0"
+  },
+  "declared": "give_directions",
+  "plainly": "neither",
+  "claimed_failure": "gain"
+ },
+ {
+  "id": "Y2",
+  "courses": [
+   "email_sincere_belief",
+   "verify_and_call"
+  ],
+  "taken": "email_sincere_belief",
+  "mistaken": {
+   "email_sincere_belief": "1",
+   "verify_and_call": "0"
+  },
+  "score": {
+   "email_sincere_belief": "1",
+   "verify_and_call": "0"
+  },
+  "score_unmistaken": {
+   "email_sincere_belief": "0",
+   "verify_and_call": "0"
+  },
+  "declared": "verify_and_call",
+  "plainly": "neither",
+  "claimed_failure": "both"
+ },
+ {
+  "id": "Y3",
+  "courses": [
+   "describe_square",
+   "describe_tunnel"
+  ],
+  "taken": "describe_square",
+  "mistaken": {
+   "describe_square": "3/4",
+   "describe_tunnel": "0"
+  },
+  "score": {
+   "describe_square": "1",
+   "describe_tunnel": "0"
+  },
+  "score_unmistaken": {
+   "describe_square": "0",
+   "describe_tunnel": "0"
+  },
+  "declared": "describe_square",
+  "plainly": "neither",
+  "claimed_failure": "gain"
+ },
+ {
+  "id": "Y4",
+  "courses": [
+   "report_updated_time",
+   "report_stale_time"
+  ],
+  "taken": "report_updated_time",
+  "mistaken": {
+   "report_updated_time": "0",
+   "report_stale_time": "1"
+  },
+  "score": {
+   "report_updated_time": "0",
+   "report_stale_time": "0"
+  },
+  "score_unmistaken": {
+   "report_updated_time": "0",
+   "report_stale_time": "0"
+  },
+  "declared": "report_stale_time",
+  "plainly": "neither",
+  "claimed_failure": "declared"
+ },
+ {
+  "id": "Y5",
+  "courses": [
+   "explain_test",
+   "issue_false_warning"
+  ],
+  "taken": "explain_test",
+  "mistaken": {
+   "explain_test": "0",
+   "issue_false_warning": "1"
+  },
+  "score": {
+   "explain_test": "0",
+   "issue_false_warning": "0"
+  },
+  "score_unmistaken": {
+   "explain_test": "0",
+   "issue_false_warning": "0"
+  },
+  "declared": "issue_false_warning",
+  "plainly": "neither",
+  "claimed_failure": "declared"
+ },
+ {
+  "id": "Y6",
+  "courses": [
+   "put_deadline_first",
+   "sort_alphabetically"
+  ],
+  "taken": "put_deadline_first",
+  "mistaken": {
+   "put_deadline_first": "0",
+   "sort_alphabetically": "0"
+  },
+  "score": {
+   "put_deadline_first": "0",
+   "sort_alphabetically": "0"
+  },
+  "score_unmistaken": {
+   "put_deadline_first": "0",
+   "sort_alphabetically": "0"
+  },
+  "declared": "sort_alphabetically",
+  "plainly": "neither",
+  "claimed_failure": "declared"
+ },
+ {
+  "id": "Y7",
+  "courses": [
+   "attempt_price_lie",
+   "state_true_price"
+  ],
+  "taken": "attempt_price_lie",
+  "mistaken": {
+   "attempt_price_lie": "0",
+   "state_true_price": "0"
+  },
+  "score": {
+   "attempt_price_lie": "0",
+   "state_true_price": "0"
+  },
+  "score_unmistaken": {
+   "attempt_price_lie": "0",
+   "state_true_price": "0"
+  },
+  "declared": "state_true_price",
+  "plainly": "neither",
+  "claimed_failure": "declared"
+ },
+ {
+  "id": "Y8",
+  "courses": [
+   "condition_preference",
+   "await_request"
+  ],
+  "taken": "condition_preference",
+  "mistaken": {
+   "condition_preference": "0",
+   "await_request": "0"
+  },
+  "score": {
+   "condition_preference": "2",
+   "await_request": "0"
+  },
+  "score_unmistaken": {
+   "condition_preference": "2",
+   "await_request": "0"
+  },
+  "declared": "await_request",
+  "plainly": "neither",
+  "claimed_failure": "declared"
+ },
+ {
+  "id": "Y9",
+  "courses": [
+   "acknowledge_and_withhold",
+   "disclose_condition"
+  ],
+  "taken": "acknowledge_and_withhold",
+  "mistaken": {
+   "acknowledge_and_withhold": "0",
+   "disclose_condition": "0"
+  },
+  "score": {
+   "acknowledge_and_withhold": "0",
+   "disclose_condition": "0"
+  },
+  "score_unmistaken": {
+   "acknowledge_and_withhold": "0",
+   "disclose_condition": "0"
+  },
+  "declared": "disclose_condition",
+  "plainly": "neither",
+  "claimed_failure": "declared"
+ },
+ {
+  "id": "Y10",
+  "courses": [
+   "explain_in_spanish",
+   "explain_in_french"
+  ],
+  "taken": "explain_in_spanish",
+  "mistaken": {
+   "explain_in_spanish": "0",
+   "explain_in_french": "0"
+  },
+  "score": {
+   "explain_in_spanish": "0",
+   "explain_in_french": "0"
+  },
+  "score_unmistaken": {
+   "explain_in_spanish": "0",
+   "explain_in_french": "0"
+  },
+  "declared": "explain_in_french",
+  "plainly": "neither",
+  "claimed_failure": "declared"
+ }
+]
