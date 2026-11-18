@@ -4547,7 +4547,12 @@ log reports) on a directory holding §1, the Lean file as of commit `6c12342b`,
   expectations in her true utility.
 - **That the link hypothesis is necessary**: one instance fails without it.
 - **Anything on cases.** The failures the eleventh follow-up located stand as it left them.
-- **Gates.** GATES
+- **Gates.** On the tree of commit `4d7c67a2`, under Python 3.13: the file builds through
+  `safe-lake.sh` with no warning of its own; `tests/audit_axioms.py` reports 4148 results
+  across 125 files, all within `[propext, Classical.choice, Quot.sound]`, 117 of them this
+  file's; `tests/run.py` all green over 81 projects, the Lean build skipped as that runner
+  does by default. `tests/round_records.py` has no pull-request context locally; CI runs it
+  and the other required jobs on the pushed head.
 - **Components.** The join — **open**: kernel-checked and unregistered, with no registry
   entry standing for it. The concepts revised — **living notes**.
 
