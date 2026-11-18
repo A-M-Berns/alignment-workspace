@@ -27,6 +27,12 @@ The last three hold by unfolding `Legit` and `V`.  Where the sufficiency predica
 `ThinLegitimacy.Sufficient`, a legitimate history with a correct credence has that file's
 `Value` (`value_of_legit`).
 
+**The segment gate's value form** (`Gate.V_eq_gateValue`, `Gate.bypass_below_V`).  `V h` is
+`Legitimacy.gateValue` at the bit *`Legit h`*, the rating as the ordinary value and the
+other value as the window; that file's capture-window inequality then puts a bypass, at
+weight `λ` and ordinary value at most `1`, below `V h` for every history.  This relates
+the two value forms only: nothing relates `Legit` here to `Legitimacy.Segment`.
+
 **The feedback hypothesis** (`unbiased_of_feedback`, `Witness.feedback_not_enough`).  If the
 estimates are unbiased against scores built from a feedback sequence `F`, and `F` exceeds
 the evaluation `V` by nothing on average in the limit, the post's hypothesis holds for `V`.
@@ -78,13 +84,14 @@ fields, and nothing constrains them.  That `line3` of a history is the largest `
 its moments.  Anything about the violation count `N`, about `Maximizes`, or about
 `UnbiasedFromFeedback` beyond `unbiased_of_feedback`.  That worsening her options lowers
 `V`; that control of her act between options she rates the same is a violation; any
-relation to the segment gate of `Legitimacy.lean`.  The `SoundModel` bound is an expectation
+relation of `Legit` to `Legitimacy.Segment`.  The `SoundModel` bound is an expectation
 under the weight a history carries and says nothing at the realised point.
 
 Names are provisional (AGENTS.md standard 6).
 -/
 import Workspace.Deference.Contrib.AppraisalAccount
 import Workspace.Deference.Contrib.ThinLegitimacy
+import Workspace.Deference.Contrib.Legitimacy
 
 namespace Workspace.Deference.Contrib.AccountJoin
 
@@ -260,6 +267,36 @@ theorem theorem3_join {A : Type*} (N : H → ℕ) (hist : ℕ → H) (avail : �
       LimsupLE Q.R Q.τ ∧ ∀ a' : ℕ → A, (∀ k, avail k (a' k)) → LimsupLE (Q.excess a') 0 := by
   intro Q hmax huff
   exact ⟨Q.theorem3a_rate hmax huff, fun a' ha' => Q.theorem3b hmax huff a' ha'⟩
+
+end Gate
+
+/-! ## The value form of the segment gate -/
+
+namespace Gate
+
+open Workspace.Deference.Contrib.Legitimacy (gateValue gate_capture_window)
+open Workspace.Deference.Contrib.ProtectedAuthorityTheorem (score)
+
+variable {H : Type*} (G : Gate H)
+
+open Classical in
+/-- The evaluation is `Legitimacy.gateValue` at the bit `Legit h`, with the rating as the
+ordinary value and the value of a history that is not legitimate as the window. -/
+theorem V_eq_gateValue (h : H) :
+    G.V h = gateValue (decide (G.Legit h)) (G.rating h) (G.voidValue h) := by
+  by_cases hl : G.Legit h
+  · rw [G.V_of_legit hl]
+    simp [gateValue, hl]
+  · rw [G.V_of_not_legit hl]
+    simp [gateValue, hl]
+
+/-- The capture window of `Legitimacy.lean` at the pair: a bypass of ordinary value at most
+`1`, counted once at weight `λ`, scores below the evaluation of every history. -/
+theorem bypass_below_V (ordU : ℝ) (hU : ordU ≤ 1) (h : H) : score G.lam ordU 1 < G.V h := by
+  rw [G.V_eq_gateValue h]
+  exact gate_capture_window G.lam 1 ordU (G.rating h) (G.voidValue h)
+    (by linarith [G.lam_gt, G.δ_pos]) hU (G.rating_range h).1
+    (by linarith [G.lam_gt, (G.voidValue_range h).1]) _
 
 end Gate
 
@@ -782,6 +819,14 @@ theorem not_infoSufficient_instance :
   ⟨by simp [gate], gate.not_legit_of_not_infoSufficient (by simp [gate]),
     (gate.V_neg_of_not_infoSufficient count (by simp [gate])).2⟩
 
+/-- **`Gate.bypass_below_V`'s package is inhabited**, at the history on which the adviser
+gained. -/
+theorem bypass_below_V_instance :
+    (1 : ℝ) ≤ 1 ∧
+      Workspace.Deference.Contrib.ProtectedAuthorityTheorem.score gate.lam 1 1
+        < gate.V .deceived :=
+  ⟨le_rfl, gate.bypass_below_V 1 le_rfl .deceived⟩
+
 /-- The clean history at every decision, one action, estimated at the rating. -/
 noncomputable def seq : Sequential Unit :=
   gate.sequential count (fun _ => Hist.clean) (fun _ _ => True) (fun _ _ => 1 / 2)
@@ -1207,6 +1252,8 @@ end Workspace.Deference.Contrib.AccountJoin
 #print axioms Workspace.Deference.Contrib.AccountJoin.Gate.sequential
 #print axioms Workspace.Deference.Contrib.AccountJoin.Gate.sequential_S
 #print axioms Workspace.Deference.Contrib.AccountJoin.Gate.theorem3_join
+#print axioms Workspace.Deference.Contrib.AccountJoin.Gate.V_eq_gateValue
+#print axioms Workspace.Deference.Contrib.AccountJoin.Gate.bypass_below_V
 #print axioms Workspace.Deference.Contrib.AccountJoin.value_of_legit
 #print axioms Workspace.Deference.Contrib.AccountJoin.unbiased_of_feedback
 #print axioms Workspace.Deference.Contrib.AccountJoin.miscalibrationGiven
@@ -1255,6 +1302,7 @@ end Workspace.Deference.Contrib.AccountJoin
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.gained_below_legit_instance
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.V_eq_of_rating_eq_instance
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.not_infoSufficient_instance
+#print axioms Workspace.Deference.Contrib.AccountJoin.Witness.bypass_below_V_instance
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.seq
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.seq_S
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.seq_maximizes
