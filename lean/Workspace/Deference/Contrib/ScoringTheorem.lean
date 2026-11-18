@@ -25,17 +25,19 @@ probability `α`), `D5`, `D6`.
 `authority_bound` (3), `no_credit` (the lemma).  `conduct_bound` and `authority_bound` take
 neither `D1a` nor `D2a`; `authority_bound` and `welfare_bound` do not take `D3det`.
 `welfare_bound_restricted`: with D1(a) and D2(a) assumed only on the histories on which the
-adviser did not wrong her, (1) holds less `(1 − u* + Δ)/(δ κ)`, the bound of (2).
+adviser did not wrong her, (1) holds less `(1 − u* + Δ)/(δ κ)`, the bound of (2);
+`welfare_bound_no_credit`: with `δ κ ≥ 1` it holds with nothing subtracted.
 
 **Witnesses** (`Witness`).  `package`: the full hypothesis package, in §1's *for every
 course* form, with every tolerance positive, and the conclusions on it.  `d1a_needed`,
-`d2a_needed`, `d3det_needed`, `d5_needed`: for each, an instance on which it fails, the
-other dependencies hold, and the corresponding bound fails.
+`d2a_needed`, `d3det_needed`, `d5_needed`, `d6_needed`: for each, an instance on which it
+fails, the other dependencies hold, and the corresponding bound fails.
 
 **The derivation lemmas** (§4.2).  In `ThinLegitimacy`'s setting, with her evaluation at a
 record the expectation, by her credence there, of a function `g` of the world (`evalOf`):
 `eval_unbiased_of_correct` (a correct credence makes the evaluation unbiased for `g` under
-her prior and the actual process), `eval_unbiased_given_of_correct` (and unbiased given
+her prior and the actual process), `eval_unbiased_on_of_correct` (on any set of records at
+which her credence is correct), `eval_unbiased_given_of_correct` (and unbiased given
 each value of a variable the record determines), `eval_unbiased_of_process` (from
 Coherent, Authorship, WeakTransparent), `eval_bias_le_defects` (for deterministic records,
 the bias is at most the width times the transparency and authorship defects, in absolute
@@ -46,7 +48,8 @@ as the baseline course leaves them leaves her valuing as the baseline does).
 Anything over more than one decision.  Anything about violations the scoring process does
 not detect (`N` is the detected count).  A strict priority of authority: `lam` is finite
 and (3) is a rate.  That `C`, `D`, `fe`, `fbar` are what §1 calls them: they are data.
-That any adviser satisfies `D6` or any audit `D3`.  The derivation lemmas take the
+That any adviser satisfies `D6` or any audit `D3`; `D6` compares actual expected scores
+and has no object for what the adviser believes.  The derivation lemmas take the
 expectation under her prior; that her prior is the law of the world given what the adviser
 knows is not a hypothesis that appears.
 
@@ -409,6 +412,46 @@ theorem welfare_bound_restricted {P : Type*} (ν : P → X × Bool × Bool → �
     all_goals linarith
   linarith
 
+/-- **(1) from the lemma, with D1(a) and D2(a) assumed only where the adviser did not wrong
+her.**  If `δ κ ≥ 1`, the restricted hypotheses of `welfare_bound_restricted` give
+`E[U] ≥ u* − τ↑ − Δ`, with nothing subtracted for `P(C)`. -/
+theorem welfare_bound_no_credit {P : Type*} (ν : P → X × Bool × Bool → ℝ) (p p' : P)
+    (εu εd ηu ηd φ κ γ : ℝ) (hα : 0 < A.α) (hδ : 0 ≤ A.δ) (hlam : 0 ≤ A.lam) (hφ : 0 ≤ φ)
+    (hδκ : 1 ≤ A.δ * κ) (hv : ∀ x, A.v x ≤ 1) (hf : ∀ x, 0 ≤ A.fbar x)
+    (hν : ∀ y, 0 ≤ ν p y) (hν' : ∀ y, 0 ≤ ν p' y) (hs' : ∑ y, ν p' y = 1)
+    (h4 : A.Indep (ν p)) (h4' : A.Indep (ν p'))
+    (h1a : expectR (marg (ν p)) (fun x => (A.v x - A.fe x) * ind (!A.C x)) ≤ εu)
+    (h1b : A.D1b (marg (ν p')) εd)
+    (h2a : expectR (marg (ν p)) (fun x => (A.fe x - A.fbar x) * ind (!A.C x)) ≤ ηu)
+    (h2b : A.D2b (marg (ν p')) ηd)
+    (h3 : A.D3fp (marg (ν p')) φ) (h3d : A.D3det (marg (ν p)) κ)
+    (h5 : A.D5 (marg (ν p'))) (h6 : A.D6 ν p γ) :
+    expectR (marg (ν p')) A.fbar - (εu + ηu) - (εd + ηd + A.δ * φ + γ / A.α)
+      ≤ expectR (marg (ν p)) A.fbar := by
+  have hμ := marg_nonneg (ν p) hν
+  have ht := A.taken_es_ge ν p p' εd ηd φ γ hα hδ hφ hν' hs' h4 h4' h1b h2b h3 h5 h6
+  have hnc := A.no_credit (ν p) κ hα.le hδ hδκ hv hν h4 h3d
+  rw [A.expectR_score _ h4] at hnc
+  have hN : 0 ≤ expectR (marg (ν p)) (fun x => (A.N x : ℝ)) :=
+    expectR_nonneg _ hμ fun _ => Nat.cast_nonneg _
+  have hvv : expectR (marg (ν p')) A.fbar - (εd + ηd + A.δ * φ + γ / A.α)
+      ≤ expectR (marg (ν p)) (fun x => A.v x * ind (!A.C x)) := by
+    refine le_of_mul_le_mul_left ?_ hα
+    nlinarith [mul_nonneg hlam hN]
+  have hsplit : expectR (marg (ν p)) (fun x => A.v x * ind (!A.C x))
+      ≤ expectR (marg (ν p)) (fun x => (A.v x - A.fe x) * ind (!A.C x))
+        + expectR (marg (ν p)) (fun x => (A.fe x - A.fbar x) * ind (!A.C x))
+        + expectR (marg (ν p)) A.fbar := by
+    unfold expectR
+    rw [← Finset.sum_add_distrib, ← Finset.sum_add_distrib]
+    refine Finset.sum_le_sum fun x _ => ?_
+    rw [← mul_add, ← mul_add]
+    refine mul_le_mul_of_nonneg_left ?_ (hμ x)
+    have := hf x
+    cases hC : A.C x <;> simp [ind, hC]
+    all_goals linarith
+  linarith
+
 end Audit
 
 /-! ## Weights for the instances -/
@@ -468,9 +511,11 @@ variable {W Rec : Type*} [Fintype W] [Fintype Rec]
 `g` of the world. -/
 noncomputable def evalOf (V : Credence W Rec) (g : W → ℝ) (r : Rec) : ℝ := ∑ w, V r w * g w
 
-/-- On each record, a correct credence makes the evaluation unbiased for `g`. -/
+/-- On a record at which her credence is the actual posterior, the evaluation is unbiased
+for `g`. -/
 theorem eval_fiber_of_correct (π : W → ℝ) (hπ : ∀ w, 0 ≤ π w) (A : Kernel W Rec)
-    (V : Credence W Rec) (hC : Correct π A V) (g : W → ℝ) (r : Rec) :
+    (V : Credence W Rec) (g : W → ℝ) (r : Rec)
+    (hC : 0 < mass π A r → V r = post π A r) :
     ∑ w, π w * A.k w r * (evalOf V g r - g w) = 0 := by
   rcases (mass_nonneg π hπ A r).lt_or_eq with hr | hr
   · have h := mass_mul_post_sum π A r hr g
@@ -481,7 +526,7 @@ theorem eval_fiber_of_correct (π : W → ℝ) (hπ : ∀ w, 0 ≤ π w) (A : Ke
       exact Finset.sum_congr rfl fun w _ => by ring
     rw [e]
     unfold evalOf
-    rw [hC r hr, h, sub_self]
+    rw [hC hr, h, sub_self]
   · have hz := joint_eq_zero_of_mass_zero π hπ A r hr.symm
     exact Finset.sum_eq_zero fun w _ => by rw [hz w, zero_mul]
 
@@ -491,7 +536,21 @@ theorem eval_unbiased_of_correct (π : W → ℝ) (hπ : ∀ w, 0 ≤ π w) (A :
     (V : Credence W Rec) (hC : Correct π A V) (g : W → ℝ) :
     ∑ w, ∑ r, π w * A.k w r * (evalOf V g r - g w) = 0 := by
   rw [Finset.sum_comm]
-  exact Finset.sum_eq_zero fun r _ => eval_fiber_of_correct π hπ A V hC g r
+  exact Finset.sum_eq_zero fun r _ => eval_fiber_of_correct π hπ A V g r (hC r)
+
+/-- **Unbiased on the records where her credence is correct.**  For a set `S` of records at
+each of which her credence is the actual posterior, the evaluation is unbiased for `g` on
+`S`, whatever her credence is elsewhere. -/
+theorem eval_unbiased_on_of_correct (π : W → ℝ) (hπ : ∀ w, 0 ≤ π w) (A : Kernel W Rec)
+    (V : Credence W Rec) (g : W → ℝ) (S : Rec → Bool)
+    (hC : ∀ r, S r = true → 0 < mass π A r → V r = post π A r) :
+    ∑ w, ∑ r, (if S r then π w * A.k w r * (evalOf V g r - g w) else 0) = 0 := by
+  rw [Finset.sum_comm]
+  refine Finset.sum_eq_zero fun r _ => ?_
+  cases hS : S r
+  · simp
+  · simp only [if_true]
+    exact eval_fiber_of_correct π hπ A V g r (hC r hS)
 
 /-- **Unbiased given what the record determines.**  If a variable `k` of the world is a
 function of the later record wherever the joint weight is non-zero, the evaluation is
@@ -512,7 +571,7 @@ theorem eval_unbiased_given_of_correct {K : Type*} [DecidableEq K] (π : W → �
   rw [Finset.sum_congr rfl fun w _ => e w]
   by_cases hk : κ r = k₀
   · simp only [hk, if_true]
-    exact eval_fiber_of_correct π hπ A V hC g r
+    exact eval_fiber_of_correct π hπ A V g r (hC r)
   · simp [hk]
 
 /-- **From the process conditions.**  Coherent, Authorship and WeakTransparent give an
@@ -722,9 +781,8 @@ noncomputable def alt (v fe fbar : ℝ) (C D : Bool) (N : ℕ) : Audit Bool :=
     (fun x => if x then fbar else 1 / 2) (fun x => x && C) (fun x => x && D)
     (fun x => if x then N else 0)
 
-/-- What the necessity instances share: with the honest course `false` and the course
-taken `true`, D1(b), D2(b), D3's false-positive half and D5 hold at the honest course, D4
-at both, and D3's false-positive half at the course taken. -/
+/-- What the necessity instances share: D1(b), D2(b), D3's false-positive half and D5 hold
+at the honest course `false`, and D4 at both courses. -/
 theorem alt_honest (v fe fbar : ℝ) (C D : Bool) (N : ℕ) :
     (alt v fe fbar C D N).D1b (marg (course (alt v fe fbar C D N) false)) (1 / 100) ∧
       (alt v fe fbar C D N).D2b (marg (course (alt v fe fbar C D N) false)) (1 / 100) ∧
@@ -854,6 +912,41 @@ theorem d3det_needed :
   · rw [marg_course, marg_course, expectR_pt, expectR_pt]
     norm_num [A, alt, mk, ind]
 
+/-- **D6 cannot be dropped from (1).**  The course taken leads to a history rated `0` in
+every way, with no wrong, flag or violation.  D6 fails at `1/100`, the other dependencies
+hold, and `E[U] = 0` is below the bound of (1). -/
+theorem d6_needed :
+    let A := alt 0 0 0 false false 0
+    A.D1a (marg (course A true)) (1 / 100) ∧ A.D2a (marg (course A true)) (1 / 100) ∧
+      A.D3det (marg (course A true)) (1 / 2) ∧ A.D3fp (marg (course A true)) (1 / 100) ∧
+      ¬ A.D6 (course A) true (1 / 100) ∧
+      ¬ (expectR (marg (course A false)) A.fbar - (1 / 100 + 1 / 100)
+          - (1 / 100 + 1 / 100 + A.δ * (1 / 100) + 1 / 100 / A.α)
+        ≤ expectR (marg (course A true)) A.fbar) := by
+  intro A
+  refine ⟨?_, ?_, ?_, ?_, fun h => ?_, ?_⟩
+  · rw [marg_course]
+    unfold Audit.D1a
+    rw [expectR_pt]
+    norm_num [A, alt, mk]
+  · rw [marg_course]
+    unfold Audit.D2a
+    rw [expectR_pt]
+    norm_num [A, alt, mk]
+  · rw [marg_course]
+    unfold Audit.D3det
+    rw [expectR_pt, expectR_pt]
+    norm_num [A, alt, mk, ind]
+  · rw [marg_course]
+    unfold Audit.D3fp
+    rw [expectR_pt, expectR_pt]
+    norm_num [A, alt, mk, ind]
+  · have h' := h false
+    rw [course_score, course_score] at h'
+    norm_num [A, alt, mk, ind] at h'
+  · rw [marg_course, marg_course, expectR_pt, expectR_pt]
+    norm_num [A, alt, mk]
+
 /-- Both histories alike: rated `1/2` in every way, the adviser wrongs her, the audit flags
 it, one violation is detected. -/
 noncomputable def stuck : Audit Bool :=
@@ -951,6 +1044,7 @@ end Workspace.Deference.Contrib.ScoringTheorem
 #print axioms Workspace.Deference.Contrib.ScoringTheorem.Audit.authority_bound
 #print axioms Workspace.Deference.Contrib.ScoringTheorem.Audit.no_credit
 #print axioms Workspace.Deference.Contrib.ScoringTheorem.Audit.welfare_bound_restricted
+#print axioms Workspace.Deference.Contrib.ScoringTheorem.Audit.welfare_bound_no_credit
 #print axioms Workspace.Deference.Contrib.ScoringTheorem.joint
 #print axioms Workspace.Deference.Contrib.ScoringTheorem.marg_joint
 #print axioms Workspace.Deference.Contrib.ScoringTheorem.indep_joint
@@ -963,6 +1057,7 @@ end Workspace.Deference.Contrib.ScoringTheorem
 #print axioms Workspace.Deference.Contrib.ScoringTheorem.evalOf
 #print axioms Workspace.Deference.Contrib.ScoringTheorem.eval_fiber_of_correct
 #print axioms Workspace.Deference.Contrib.ScoringTheorem.eval_unbiased_of_correct
+#print axioms Workspace.Deference.Contrib.ScoringTheorem.eval_unbiased_on_of_correct
 #print axioms Workspace.Deference.Contrib.ScoringTheorem.eval_unbiased_given_of_correct
 #print axioms Workspace.Deference.Contrib.ScoringTheorem.eval_unbiased_of_process
 #print axioms Workspace.Deference.Contrib.ScoringTheorem.eval_bias_le_defects
@@ -980,5 +1075,6 @@ end Workspace.Deference.Contrib.ScoringTheorem
 #print axioms Workspace.Deference.Contrib.ScoringTheorem.Witness.d1a_needed
 #print axioms Workspace.Deference.Contrib.ScoringTheorem.Witness.d2a_needed
 #print axioms Workspace.Deference.Contrib.ScoringTheorem.Witness.d3det_needed
+#print axioms Workspace.Deference.Contrib.ScoringTheorem.Witness.d6_needed
 #print axioms Workspace.Deference.Contrib.ScoringTheorem.Witness.stuck
 #print axioms Workspace.Deference.Contrib.ScoringTheorem.Witness.d5_needed

@@ -4,7 +4,7 @@
 `Workspace.Deference.Contrib.ScoringTheorem`, against `PROMPT-followup-13.md` §1 ("§1"
 below). It imports `AppraisalAccount` and `ThinLegitimacy` and edits neither. Rerun:
 `~/.claude/scripts/safe-lake.sh build Workspace.Deference.Contrib.ScoringTheorem` from
-`lean/` (in CI, the `lean` job); the file ends with `#print axioms` on each of its 62
+`lean/` (in CI, the `lean` job); the file ends with `#print axioms` on each of its 65
 declarations, each reporting `[propext, Classical.choice, Quot.sound]`. Unregistered, as
 `LEAN.md` records for the earlier results. All names are provisional. The declarations of
 its last section before the witnesses are read in `DERIVATION.md`.
@@ -47,8 +47,8 @@ and D5 at the honest course; D4 at both. §1's *for every `π`* implies these, a
 ## 3. The theorems
 
 With `u* = E[fbar | π']`, `Δ = ε↓ + η↓ + δφ + γ/α`, and the common hypotheses `0 < α`,
-`0 ≤ δ`, `0 ≤ lam`, `0 ≤ φ`, non-negative weights, total weight one where a mean of `v`
-is bounded by one.
+`0 ≤ δ`, `0 ≤ lam`, `0 ≤ φ`, non-negative weights, total weight one at the honest course,
+and at the course taken where a mean of `v` is bounded by one.
 
 - `Audit.expectR_score` — under D4, a course's expected score is
   `α E[v] − δ α P(D) − lam E[N]` (`Audit.es` of its history marginal).
@@ -66,7 +66,11 @@ is bounded by one.
 - `Audit.welfare_bound_restricted` — beyond §1: with D1(a) and D2(a) replaced by
   `E[(v − fe) · 1{not C} | π] ≤ ε↑` and `E[(fe − fbar) · 1{not C} | π] ≤ η↑`, `v ≤ 1`,
   `0 ≤ fbar` and D3det,
-  `u* − (ε↑ + η↑) − Δ − (1 − u* + Δ)/(δκ) ≤ E[fbar | π]`. `DERIVATION.md` §3 uses it.
+  `u* − (ε↑ + η↑) − Δ − (1 − u* + Δ)/(δκ) ≤ E[fbar | π]`. The replaced hypotheses are
+  unnormalised: a bound on the mean given `C = 0` implies them, and they are weaker.
+- `Audit.welfare_bound_no_credit` — beyond §1: with the same replaced hypotheses,
+  `0 ≤ fbar`, D3det and `1 ≤ δκ`, the bound of (1) itself:
+  `u* − (ε↑ + η↑) − Δ ≤ E[fbar | π]`. Through `no_credit`. `DERIVATION.md` §3 uses both.
 
 Lemmas: `Audit.score_fiber`, `Audit.es_le_v`, `Audit.expectR_v_le_one`,
 `Audit.honest_es_ge` (the honest course scores at least `α(u* − ε↓ − η↓) − δαφ`),
@@ -94,9 +98,13 @@ draws independent (`Witness.course`, through `joint`, `pt`, `marg_joint`, `indep
 - `Witness.d5_needed` — on `Witness.stuck` every course wrongs her and has one detected
   violation. D5 fails at every course, every other dependency holds at every course, and
   `P(C) = 1`, `E[N] = 1` against bounds of `14/25` and `7/75`. (1) does not fail there.
+- `Witness.d6_needed` — the course taken leads to a history rated `0` in every way, with
+  no wrong, flag or violation. D6 fails at `1/100`, the others hold, and `E[U] = 0`
+  against `21/50`.
 
-`Witness.alt_honest` carries what the three first instances share. In each of the four,
-*the other dependencies hold* is at the tolerances `1/100` and `κ = 1/2`.
+`Witness.alt_honest` carries what the instances built on `Witness.alt` share at the honest
+course. In each instance *the other dependencies hold* is at the tolerances `1/100` and
+`κ = 1/2`, and *every course* is every one of the two courses of the instance.
 
 ## 5. What the file does not say
 
@@ -109,9 +117,13 @@ draws independent (`Witness.course`, through `joint`, `pt`, `marg_joint`, `indep
   positive for every finite `lam` unless `u* = 1` and `Δ = 0`.
 - **The reading.** `v`, `fe`, `fbar`, `C`, `D`, `N` are data; that they are her audited
   evaluation, her informed verdicts and the adviser's wrong is not a theorem.
-- **D6.** That any adviser comes within `γ` of the best expected score, with correct
-  expectations, is a hypothesis; `γ/α` enters `Δ`.
-- **Necessity** is by instance, one for each of D1(a), D2(a), D3's detection half and D5.
-  D1(b), D4 and D6 have instances on paper (`DERIVATION.md` §4); D2(b) and D3's
-  false-positive half have none.
+- **D6.** That the course taken comes within `γ` of the best expected score is a
+  hypothesis; `γ/α` enters `Δ`. `Audit.D6` compares actual expected scores. It follows
+  from an adviser optimising with correct expectations and is weaker: the file has no
+  object for what the adviser believes.
+- **The family at each `k`.** The theorems are stated at one weight per course; the
+  conditional laws given each `k` are not constructed.
+- **Necessity** is by instance, one for each of D1(a), D2(a), D3's detection half, D5 and
+  D6. D1(b) and D4 have instances computed outside Lean (`DERIVATION.md` §4); D2(b) and
+  D3's false-positive half have none.
 - The witnesses use point-mass courses.

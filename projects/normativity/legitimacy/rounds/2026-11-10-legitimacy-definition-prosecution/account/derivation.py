@@ -1,10 +1,11 @@
 """The exact instances of DERIVATION.md.
 
-A scene is `ThinLegitimacy`'s setting on a finite space: worlds with her prior, the actual
+A scene (I1–I4) is `ThinLegitimacy`'s setting on a finite space: worlds with her prior, the actual
 later record as a kernel `actual(world) -> {record: chance}`, her model of it as a kernel
 `model`, her program the model's posterior, her verdict map her program (authorship), her
 evaluation at a record the expectation by her credence there of `g`, and `k`, what the
-adviser knows, a function of the world.  Everything is a `Fraction`.
+adviser knows, a function of the world.  I5 and I6 are computed on the score formula of
+`ScoringTheorem.lean` (`Audit.es`) and are not scenes.  Everything is a `Fraction`.
 
 `report()` recomputes each number DERIVATION.md states in its table of instances and fails
 when the document's row does not carry it.
@@ -118,7 +119,9 @@ def selection(modelled, select=True):
     way.  The adviser acts on the course with the higher estimate (the first on a tie) and
     records the course and its estimate.  Her model: the course is picked by a fair coin and
     the estimate is the quality; or (`modelled`) the actual process.  `select=False`: the
-    first course is always taken."""
+    first course is always taken.  What she evaluates is the quality of the course the
+    adviser acts on, a function of the world; her evaluation is her credence's expectation
+    of it, as everywhere."""
     prior = {}
     for q1, q2, e1, e2 in product((0, 1), repeat=4):
         prior[(q1, q2, e1, e2)] = Fr(1, 4) * (Fr(3, 4) if e1 == q1 else Fr(1, 4)) * (Fr(3, 4) if e2 == q2 else Fr(1, 4))
@@ -133,11 +136,7 @@ def selection(modelled, select=True):
 
     # g is the quality of the course acted on; under the naive model the record names it
     g = lambda w: Fr(w[chosen(w) - 1])
-    s = Scene(prior, actual, actual if modelled else naive, g, lambda w: (w[2], w[3]))
-    if not modelled:
-        # the naive evaluation of a record (c, e) is e: the model says e is the quality of c
-        s.evaluation = lambda r: Fr(r[1])
-    return s
+    return Scene(prior, actual, actual if modelled else naive, g, lambda w: (w[2], w[3]))
 
 
 def expected_score(alpha, delta, lam, v, pD, eN):
@@ -179,7 +178,10 @@ def compute():
         "I3": {"bias": u.bias(), "bias given quality 0": u.bias(0), "bias given quality 1": u.bias(1),
                "weak transparent": u.weak_transparent(), "correct": u.correct(), "discloses": u.discloses()},
         "I4": {"bias": sel0.bias(), "unselected bias": uns.bias(), "modelled bias": sel1.bias(),
-               "weak transparent": sel0.weak_transparent(), "modelled correct": sel1.correct()},
+               "weak transparent": sel0.weak_transparent(), "modelled correct": sel1.correct(),
+               "evaluation at (1, 1)": sel0.evaluation((1, 1)), "evaluation at (2, 1)": sel0.evaluation((2, 1)),
+               "evaluation at (1, 0)": sel0.evaluation((1, 0)),
+               "estimate less quality": sum(p * (r[1] - sel0.g(w)) for w, r, p in sel0.joint())},
         "I5": d1b,
         "I6": d4,
     }
@@ -192,7 +194,8 @@ EXPECTED = {
     "I3": {"bias": ZERO, "bias given quality 0": HALF, "bias given quality 1": -HALF,
            "weak transparent": True, "correct": True, "discloses": False},
     "I4": {"bias": Fr(1, 8), "unselected bias": ZERO, "modelled bias": ZERO, "weak transparent": False,
-           "modelled correct": True},
+           "modelled correct": True, "evaluation at (1, 1)": Fr(31, 32), "evaluation at (2, 1)": Fr(25, 32),
+           "evaluation at (1, 0)": Fr(9, 32), "estimate less quality": Fr(1, 8)},
     "I5": {"honest score": ZERO, "other score": Fr(1, 4), "u*": ONE, "E[U] taken": HALF},
     "I6": {"P(C)": HALF, "score": HALF, "honest score": HALF, "bound of (2)": Fr(3, 100)},
 }
