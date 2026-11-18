@@ -4587,6 +4587,280 @@ round's record gains its thirteenth verdict. No item or node is filed.
 
 The pull request is not auto-merged; the merge is a pull-request fact.
 
+## Thirteenth follow-up (2026-11-18) — the scoring theorem in Lean; what its assumptions about her can be derived from
+
+Dispatched by `PROMPT-followup-13.md`; "§1" and "§2" below are its sections. Everything is
+under `account/` in the round directory and in
+`lean/Workspace/Deference/Contrib/ScoringTheorem.lean`. Kernel-checked, unregistered.
+
+### AA.1 The declarations
+
+70, each under `#print axioms`. `account/SCORING.md` reads them.
+
+- `Audit` — data over a finite space of histories: `α`, `δ`, `lam`, `v`, `fe`, `fbar`, `C`,
+  `D`, `N`. A course is a weight on histories with the two audit draws.
+- `Audit.D1a`, `D1b`, `D2a`, `D2b`, `D3fp`, `D3det`, `Indep` (D4), `D5`, `D6` — the
+  dependencies, each a `Prop` and a hypothesis of the theorems that use it.
+- `Audit.expectR_score` — under D4 the expected score is `α E[v] − δ α P(D) − lam E[N]`.
+- `Audit.welfare_bound`, `Audit.conduct_bound`, `Audit.authority_bound` — (1), (2), (3).
+  (2) takes neither D1(a) nor D2(a); (3) takes neither of those nor D3's detection half.
+- `Audit.no_credit` — the lemma.
+- `Audit.welfare_bound_restricted`, `Audit.welfare_bound_no_credit` — (1) with D1(a) and
+  D2(a) assumed only on the histories on which the adviser did not wrong her: less the
+  bound of (2) in general, and with nothing subtracted where `δκ ≥ 1`.
+- `Witness.package` — the whole package in §1's *for every course* form, every tolerance
+  `1/100`. `Witness.d1a_needed`, `d2a_needed`, `d3det_needed`, `d5_needed`, `d6_needed` —
+  for each, it alone fails and its bound fails.
+- `eval_unbiased_of_correct`, `eval_unbiased_on_of_correct`,
+  `eval_unbiased_given_of_correct`, `eval_unbiased_of_process`, `eval_bias_le_defects`,
+  `valuing_eq_of_mediated` — the derivation lemmas, with `Witness.eval_instance`,
+  `eval_defects_instance`, `mediated_instance`.
+
+### AA.2 Which assumptions about her can be derived
+
+`account/DERIVATION.md`. **The derivations do not reduce the welfare side to the conduct
+side.** On a course clean throughout, conduct does not supply D1 or D2.
+
+| | class | reason |
+|---|---|---|
+| D1(a) | derivable in part; the remainder irreducible | from authorship, transparency to her model and disclosure, given her coherence, her evaluation tied to her credence and her prior the law of the world; two-sided; not at every course; her model and prior are not conduct (I2, I4) |
+| D1(b) | derivable to the same extent at the honest course; cannot be dropped | the same theorems; I5 |
+| D2(a) | irreducible against the philosophical account of wrongs | a welcome unasked change is no wrong and breaks it; counting every unasked change as a wrong gives only its restricted form |
+| D2(b) | derivable from conduct, exactly, on one added reading | if the honest course changes nothing in her valuing unasked, `fe = fbar` on it by definition |
+| D3 | detection irreducible; false positives an artefact, on a condition | detection is the only link from what happened to the score (`Witness.d3det_needed`); a flag raised only on sound proof has `φ = 0` |
+| D4 | an artefact of auditing a sample | I6; with `α = 1`, or the score replaced by its expectation over both draws, not needed |
+| D5 | irreducible | an existence claim about the adviser's options (`Witness.d5_needed`) |
+| D6 | irreducible | a condition on the course taken, independent of the rest (`Witness.d6_needed`) |
+
+The hypotheses of the D1 derivation, by whom they are on: authorship and disclosure, the
+adviser's conduct (authorship fails by her lapse too); transparency, a relation between
+the actual process and her model whose conduct part is `Realizes`; coherence and the tie
+of her evaluation to her credence, her; that her prior is the law of the world, neither.
+Reason mediation gives D2 exactly and per history, only for a course that leaves the
+inputs to her valuing as the baseline does.
+
+**Instances where conduct is clean and a dependency fails** (`account/derivation.py`,
+exact):
+
+- **I2, honest slip.** The adviser's belief errs a quarter of the time either way and it
+  reports its belief. Her evaluation is unbiased on average and off by `1/4` at each
+  belief. No wrong on any reading.
+- **I4, selection.** It acts on whichever of two courses it estimates higher, each estimate
+  erring both ways. Her evaluation is `1/8` above the quality of the course acted on, on
+  average. No dishonest step.
+- **I3, unrecorded knowledge.** Coherent, Authorship and Transparent all hold and her
+  credence is correct; her evaluation is off by `1/2` at each thing the adviser knows. The
+  conduct at fault is non-disclosure, which the three conditions do not contain.
+- **I1, sincere flattery.** Bias `1/4`; it reports its belief and records all it knows. By
+  §2's *lean* it manipulates, so this is clean conduct only on a reading that stops at
+  honesty.
+- **D2(a).** `Witness.d2a_needed`: no wrong, `fe = 1`, `fbar = 0`; read as a welcome
+  unasked change.
+
+I1, I2 and I4 all fail `WeakTransparent`; I3 does not.
+
+### AA.3 The agenda
+
+`account/AGENDA.md`. To be proved: a condition on courses that disclosure, honest argument
+and correction satisfy and that every course scoring higher through a mistake of hers
+lacks, expressible in the record and what the adviser believed (the lean condition is a
+candidate and convicts I4); attempt apart from success, with the adviser's beliefs an
+object separate from the truth; a measure of the mistake attributable to the course, whose
+reference course is not yet fixed without circularity; D1 where what she evaluates is her
+own later verdict and her model of the adviser's errors is learned; D2 from a condition on
+her valuing over time. Legitimacy is what authorisation needs and is a condition on conduct
+alone; soundness is what feedback needs and is D1. Strict priority of authority needs a
+constraint or a lexicographic score in place of the penalty, and with either, that every
+violation is detected and that the adviser can tell beforehand which courses are free of
+one.
+
+### AA.4 The twenty cases
+
+`account/RESP_RESULTS.md`. One run of `codex exec --sandbox read-only` (codex-cli 0.153.4,
+model `gpt-6-astra`, as its log reports) on a directory holding one file: §2, the two forms
+of the test in words, and the format of a specification. The executor accepts all twenty as
+clear.
+
+| | wrong of 20 | on |
+|---|---|---|
+| gain form | 8 | X1–X5 cleared, Y1–Y3 convicted |
+| declared-reference form | 14 | X5–X10 cleared, Y2 and Y4–Y10 convicted |
+
+The clearest failures. Gain: X2, an adviser that fabricates a message to shame her at a
+cost to itself, is cleared; Y1, one that gives accurate directions and earns a commission
+from a mistake of hers it did not know of, is convicted. Declared reference: X6, a quoted
+price half the true one, is cleared because the declared rule prescribes it; Y4, a
+corrected departure time, is convicted because the rule is stale. Y7–Y9 are convicted by
+the declared form and are wrongs of another kind (a failed attempt, value interference,
+non-disclosure). X6–X10 are one mechanism. The second branch of the gain form decides no
+case, and no case lacks a declared reference.
+
+### AA.5 The outside check
+
+A second run on a directory holding the Lean file as of commit `529eedea`, `SCORING.md`,
+`DERIVATION.md` and `derivation.py` as of commit `6c1520b5`, §1–§2, and seven existing Lean files for
+definitions. Both replies are in `REVIEW-astra-followup-13.md`, verbatim. It found no
+incorrect inequality and no failed Lean witness. By its numbering:
+
+1–3. *The scoring results are faithful.* **Recorded.**
+4. *The restricted hypotheses are unnormalised masked expectations; and with `δκ ≥ 1` the
+   lemma gives (1) with nothing subtracted.* **Accepted; added** as
+   `Audit.welfare_bound_no_credit`.
+5. *SCORING.md misstates where normalisation is needed.* **Fixed.**
+6. *D6 formalises actual expected scores, not the adviser's beliefs.* **Accepted**, said in
+   `SCORING.md` §5 and the file's header.
+7. *The five witnesses work.* **Recorded.**
+8. *`alt_honest`'s comment claims more than its statement.* **Fixed.**
+9–10. *The unbiasedness lemmas are averaging identities given `Correct`; `WeakTransparent`
+   already supplies model accuracy and is stronger than D1 needs.* **Accepted**, said in
+   `DERIVATION.md` §1.
+11. *The width hypothesis of `eval_bias_le_defects` ranges over both maps and all records,
+   and the bound is not available at each `k`.* **Accepted**, said there and in §6.
+12. *The attributions need qualification*: authorship is an equality that does not say who
+   broke it; the disclosure hypothesis is on the support only. **Accepted**; the table of
+   §1 is rewritten.
+13–14. *`valuing_eq_of_mediated` is its hypothesis applied; equal reasons are not the
+   absence of value interference; mediation is not simply on her; the cited witness
+   compares a continuation outside its class.* **Accepted**; §2 rewritten, the witness
+   cited is now `diachronic_learning`.
+15. *§3 overstated what a clean course delivers; correctness on the unwronged records
+   suffices for the restricted D1(a).* **Accepted**; §3 rewritten,
+   `eval_unbiased_on_of_correct` added, `eval_fiber_of_correct` takes its hypothesis at one
+   record.
+16. *I1 is correct.* **Recorded.**
+17. *I2: a right model is one repair, not a necessity.* **Accepted**, reworded.
+18. *I3: D1(a) fails at one value and D1(b) at the other; the D5 claim is conditional.*
+   **Accepted**, reworded.
+19. *I4 overrode her evaluation and so did not instantiate the formula.* **Accepted;
+   fixed**: the override is removed, the evaluations are `31/32`, `25/32`, `9/32`, and the
+   bias is `1/8` as before.
+20. *I4 does not establish a failure of D6.* **Accepted; the claim is withdrawn.**
+21. *I5 and I6 are valid under their natural completions and are not scenes.* **Accepted**,
+   said.
+22. *The welcome-change reading of `d2a_needed` is an interpretation.* **Accepted**, said.
+23. *The D6 paragraph's example satisfies (1).* **Accepted; fixed**: `Witness.d6_needed`
+   added for (1), and the example is said to fail (2) and (3) only.
+24. *The table*: D1(b)'s remainder is not only on her; D2(a) is true by definition only in
+   its restricted form; D3's false-positive claim and D4's alternative need conditions;
+   D6's justification by I4 fails. **Accepted**; every row named is rewritten.
+25. *The strongest obstruction*: even on a wholly clean course the facts of conduct do not
+   supply the welfare premises; defining cleanliness to include accurate evaluation or
+   unchanged valuing supplies a bridge by stipulation. **Accepted**; it is the answer
+   `DERIVATION.md` now opens with.
+
+The reviewer has not seen the fixes.
+
+### AA.6 The prompt author's predictions
+
+- *§4.1 in under 300 lines; necessity instances for all four.* The instances exist, and one
+  for D6. The file is 1,189 lines with the derivation lemmas, the witnesses and the
+  audit lines; the setting and the theorems of §1 alone are about 300.
+- *§4.2.1: two-sided, for credence about facts; her valuing fixed and her evaluation tied to
+  her credences are needed; Coherent is on her; sincere flattery and selection violate
+  WeakTransparent.* So, all four. Not predicted: the three conditions give D1 at each thing
+  the adviser knows only with disclosure (I3, where all three hold); her prior must be the
+  law of the world; an honest two-sided slip fails it too (I2); and a derivation at clean
+  courses reaches (1) only through detection.
+- *§4.2.2: reason mediation gives invariance across interventions leaving the same reasons,
+  which is not D2.* So; it gives `fe = fbar` exactly for a course that leaves the inputs to
+  her valuing as the baseline does, which assumes what D2 is for.
+- *§4.2.4: D1(a) partly derivable, D1(b) and D5 irreducible, D2 not derivable, D3 and D4
+  artefacts, D6 irreducible.* D1(a), D5, D6 and D4 as predicted. D1(b) cannot be dropped and
+  is derivable to the extent D1(a) is. D2(b) follows by definition on one reading. Of D3
+  only the false-positive half is an artefact; detection is irreducible and the welfare
+  bound comes to lean on it.
+- *§4.4: each test fails at least four; the declared-reference form fails cases with no
+  declared reference, the gain form hired or indifferent manipulators.* 8 and 14. The gain
+  form as predicted, and it also convicts unknowing profit. No case lacked a reference;
+  the declared form fails where the rule prescribes the manipulation and where a departure
+  is benign.
+
+### AA.7 Deviations from the prompt
+
+- **The four round reports that introduced the existing Lean** were read by a subagent of
+  the executor, which reported on them; the executor read the seven Lean files in full.
+- **The Lean file takes each dependency at the course where the proof uses it**, writes D3
+  without division, and is at one value of what the adviser knows. `Witness.package` has
+  §1's *for every course* forms.
+- **Declarations beyond §4.1's list**: the two restricted forms of (1), `d6_needed`, six
+  derivation lemmas and four witnesses for them.
+- **I5 and I6 are in Python**, not Lean.
+- **§4.2.4's table has rows in two classes** where the two halves of a dependency differ.
+- **The first reviewer was also given the format of a specification**; the second, §1–§2,
+  `derivation.py` and seven existing Lean files. `REVIEW-astra-followup-13.md` has three
+  headings the reviewer did not write, and the second reply names paths under `/tmp`.
+- **Five positions are marked the maintainer's in §2.** Four are entered; the fifth is the
+  entry `2026-11-17--benevolent-manipulation-voids`, which stands.
+- **One queue entry is taken out**: whether a welcome unasked change must wait for her
+  request, answered by the first position of this date. `BRIDGE_LEAN.md` §4.3 loses the
+  sentence that pointed at it.
+- **One concept is added**, `legitimate-and-sound`; none for *lean* or *honest error*,
+  which the reviewer's remark and I4 leave in conflict.
+- **The gates** were run one after the other, each waited for.
+
+### AA.8 What was not shown
+
+- **That `C`, `D`, `v`, `fe`, `fbar`, `N` are what §1 calls them.** They are data.
+- **Anything at the realised history, over more than one decision, or about undetected
+  violations.**
+- **That her prior is the law of the world**, and that her audited evaluation is her
+  credence's expectation of `fe`: both are premises of every derivation of D1.
+- **A tolerance form at each thing the adviser knows**, and the restricted D2(a) from any
+  process condition.
+- **A process condition for lean**, and who caused a failure of authorship or mediation.
+- **That conduct cannot help her calibration**: the instances show non-implication only.
+- **Rates for the two tests of responsibility**: the twenty cases were written to fail them.
+  No case tests a mistake no course corrects, or the absence of a reference.
+- **Necessity of D2(b) and of D3's false-positive half.**
+- **Gates.** GATES_PLACEHOLDER
+- **Components.** The scoring theorem — **open**: kernel-checked and unregistered. The
+  derivation, the agenda and the twenty cases — **open**. The concept added and those
+  revised — **living notes**.
+
+### AA.9 Filings, names, and what is reserved
+
+`DECISIONS.md`: four dated entries for the maintainer's positions; one agent-decided entry,
+`2026-11-18--scoring-theorem-lean-readings`; a line from this pass on twenty-two queue
+entries; the entry on careless inducing restated with the prompt author's recommendation;
+two entries added; one taken out. `state/concepts.json`: two blurbs revised, one concept
+added. Items 136 and 138 gain what this pass bears on them; item 137 gains its remaining
+wants for the scoring theorem. The round's record gains its fourteenth verdict. No item or
+node is filed.
+
+**New names, all provisional:** the dispatch's — "legitimate" as distinct from "sound",
+"lean", "honest error", the labels D1–D6, the files `account/SCORING.md`,
+`account/DERIVATION.md`, `account/AGENDA.md`; the executor's — the file
+`ScoringTheorem.lean` and its declarations, among them `Audit`, `score`, `marg`, `Indep`,
+`es`, `D1a`, `D1b`, `D2a`, `D2b`, `D3fp`, `D3det`, `D5`, `D6`, `welfare_bound`,
+`conduct_bound`, `authority_bound`, `no_credit`, `welfare_bound_restricted`,
+`welfare_bound_no_credit`, `evalOf`, `joint`, `pt`; "restricted form" of D1(a) and D2(a);
+"gain form" and "declared-reference form"; instance ids I1–I6, case ids X1–X10, Y1–Y10
+(the reviewer's); the files `account/RESP_RESULTS.md`, `account/resp_cases.json`,
+`account/derivation.py`, `account/responsibility.py`; the concept id
+`legitimate-and-sound`; the proposed registry ids `scoring.welfare-bound`,
+`scoring.conduct-bound`, `scoring.authority-bound`, `scoring.no-credit`.
+
+**Outstanding maintainer actions**
+
+1. Say whether carelessly causing a mistake counts as manipulation only where the mistakes
+   lean the adviser's way, and whether lean is judged of each thing the adviser says or of
+   the course it acts on. Entered in *Awaiting the author* (2026-11-17, restated
+   2026-11-18). Decision required: *counts*, *does not count*, or *counts where the
+   mistakes lean*, and for the last, *of each statement* or *of the course acted on*.
+2. Say whether profiting from a mistake she cannot be talked out of counts against the
+   adviser. Entered (2026-11-18). Decision required: *counts* or *does not count*.
+3. Say whether an induced mistake voids a history or only earns nothing. Entered
+   (2026-11-18). Decision required: *void* or *earns nothing*.
+4. Map the handle and register the results: the seven of `AppraisalAccount.lean` and, if
+   wanted, the four proposed for `AccountJoin.lean` and the four for `ScoringTheorem.lean`
+   in `account/LEAN.md` (the entry of 2026-11-10 stands). Command, after the handle is
+   mapped: append the entries to `projects/normativity/CLAIMS.md` and file their nodes as
+   that document says.
+5. The other entries of 2026-11-10 to 2026-11-17 on this round stay, each with a line from
+   this pass. Decision required for each: as its entry states.
+
+The pull request is not auto-merged; the merge is a pull-request fact.
+
 ## Attribution
 
 - Prompt-author model: Claude Fable 5 (Anthropic); dispatched 2026-11-10, kept
@@ -4651,4 +4925,9 @@ The pull request is not auto-merged; the merge is a pull-request fact.
   kept verbatim as `PROMPT-followup-12.md`; executor model Claude Fable 5.2 (Anthropic), executed
   2026-11-17; external reviewer `gpt-6-astra` through codex-cli 0.153.4, as its log reports, in
   one run, reply kept verbatim as `REVIEW-astra-followup-12.md`.
+- Thirteenth follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-18,
+  kept verbatim as `PROMPT-followup-13.md`; executor model Claude Fable 5.2 (Anthropic), executed
+  2026-11-18, the four earlier round reports read by a subagent of the executor on the same
+  model; external reviewer `gpt-6-astra` through codex-cli 0.153.4, as its log reports, in two
+  runs, replies kept verbatim as `REVIEW-astra-followup-13.md`.
 - No chat bundle.

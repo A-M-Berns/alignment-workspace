@@ -68,6 +68,18 @@ purpose on the world), `scored/ACCOUNT.md`, `decomposition/ACCOUNT.md`,
 
 ## What was found
 
+For the scoring theorem and what its assumptions about her can be derived from:
+`lean/Workspace/Deference/Contrib/ScoringTheorem.lean` states the theorem of
+`PROMPT-followup-13.md` §1 and five lemmas for the derivation; `account/SCORING.md` reads the
+theorem in words and says what it does not say; `account/DERIVATION.md` says which
+assumptions follow from the process account already in Lean, with exact instances and a
+table; `account/AGENDA.md` says what would have to be proved to tell helping from
+engineering; `account/RESP_RESULTS.md` computes two forms of a test of responsibility on
+twenty cases an outside reviewer wrote. The report's section *Thirteenth follow-up* says
+what they show.
+
+Follow-up verdict (the scoring theorem and what its assumptions about her can be derived from, 2026-11-18): MIXED — the scoring theorem of the dispatch is in Lean on a finite space, 70 declarations, kernel-checked, none registered, with each of its dependencies a hypothesis of the theorems that use it: the bound on her expected true utility; the bound on the chance that the adviser wronged her, which uses neither of the two assumptions that her evaluation and her verdict do not run above her true utility; the bound on expected detected violations, which uses neither of those nor detection; and the lemma that a course's expected score is at most its audited evaluation on the histories without a wrong. A witness inhabits the whole package with every tolerance positive, and for each of five dependencies an instance has it alone fail and its bound fail. Of the assumptions about her: that her audited evaluation does not run above what she would say shown everything follows, two-sided, from her coherence, authorship and transparency of the actual process to her model, with her evaluation her credence's expectation of a fixed function and her prior the law of the world, and at each thing the adviser knows only if its record carries what it knows. It does not follow from conduct: an adviser whose honest errors fall both ways leaves her evaluation off by a quarter at each thing it believes, and one that acts on the course it estimates higher leaves it an eighth above that course's quality on average, and neither does wrong. That her verdict as she is does not run above her verdict with her valuing unshaped follows from reason mediation only for a course that leaves the inputs to her valuing as the baseline does. With the two assumptions made only where she was not wronged, the welfare bound holds where the penalty times the detection rate is at least one, so the welfare guarantee rests on detecting the adviser's wrongs. Detection, an honest course and the adviser's near-optimality are not derivable; independence of the audit draws and the false-positive rate come from the audit's design. On twenty cases an outside reviewer wrote from the vocabulary alone, the test of responsibility that reads the adviser's gain is wrong on 8 and the one that reads a declared reference on 14. Nothing registered; every component open or a living note.
+
 For the statement that governs: `account/STATEMENT.md` states it, with what a computation
 adds; `account/SPEC_FORMAT.md` is the format in which a case is written out in full;
 `account/SPEC_CASES.md` the executor's specifications of thirty-four cases, committed before
@@ -207,6 +219,10 @@ network. `tests/run.py` hands over to `run.py` so the repository-level runner fi
 
 | path | what |
 |---|---|
+| `account/SCORING.md` | the scoring theorem of the thirteenth pass read declaration by declaration, and what it does not say |
+| `account/DERIVATION.md`, `account/derivation.py` | which of its assumptions about her follow from the process account, with six exact instances and a table; the instances computed |
+| `account/AGENDA.md` | what would have to be proved to tell an adviser that helps her judge from one that engineers her judgment |
+| `account/RESP_RESULTS.md`, `account/resp_cases.json`, `account/responsibility.py` | two forms of a test of responsibility on twenty cases an outside reviewer wrote |
 | `rerun/SETTING.md` | the revised definition, each choice with its alternative, and the devices found needed |
 | `rerun/PREDICTIONS.md` | frozen before the code: for each of the 108 cases of `estimates/CASE_BANK.md` the details the revised definition asks for, the evident character on three questions and the prediction; the review's four honest scenes; twenty-five new scenes |
 | `rerun/RESULTS.md` | the counts beside the sixth pass's, the wrong cases, the new scenes, the variants, the verdicts that turn on an unfixed detail, well-definedness, the three candidates for her true utility |

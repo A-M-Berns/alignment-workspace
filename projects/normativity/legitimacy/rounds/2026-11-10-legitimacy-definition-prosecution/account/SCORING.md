@@ -4,7 +4,7 @@
 `Workspace.Deference.Contrib.ScoringTheorem`, against `PROMPT-followup-13.md` §1 ("§1"
 below). It imports `AppraisalAccount` and `ThinLegitimacy` and edits neither. Rerun:
 `~/.claude/scripts/safe-lake.sh build Workspace.Deference.Contrib.ScoringTheorem` from
-`lean/` (in CI, the `lean` job); the file ends with `#print axioms` on each of its 65
+`lean/` (in CI, the `lean` job); the file ends with `#print axioms` on each of its 70
 declarations, each reporting `[propext, Classical.choice, Quot.sound]`. Unregistered, as
 `LEAN.md` records for the earlier results. All names are provisional. The declarations of
 its last section before the witnesses are read in `DERIVATION.md`.
@@ -101,6 +101,13 @@ draws independent (`Witness.course`, through `joint`, `pt`, `marg_joint`, `indep
 - `Witness.d6_needed` — the course taken leads to a history rated `0` in every way, with
   no wrong, flag or violation. D6 fails at `1/100`, the others hold, and `E[U] = 0`
   against `21/50`.
+
+- `Witness.restricted_instance`, `Witness.eval_instance`, `Witness.eval_defects_instance`,
+  `Witness.mediated_instance` — the hypothesis packages of the two restricted forms of (1)
+  and of the derivation lemmas, inhabited: the first on `Witness.base`, the next two on
+  `ThinLegitimacy`'s two-world witness with the revealing record, the last on
+  `ReasonMediatedAuthorship`'s. On each the defects are zero and the conclusion is an
+  equality or a bound with slack.
 
 `Witness.alt_honest` carries what the instances built on `Witness.alt` share at the honest
 course. In each instance *the other dependencies hold* is at the tolerances `1/100` and

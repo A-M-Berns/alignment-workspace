@@ -73,6 +73,29 @@ construction and its consequences; three of those hold by definition and none is
 for the registry. **Not registered**, for the reason below; an entry for each proposed id
 takes the form of those below, with `BRIDGE_LEAN.md` as its verification document.
 
+## The scoring theorem
+
+`lean/Workspace/Deference/Contrib/ScoringTheorem.lean`, namespace
+`Workspace.Deference.Contrib.ScoringTheorem`: 70 declarations, each under `#print axioms`
+reporting `[propext, Classical.choice, Quot.sound]`. `SCORING.md` reads the theorem and
+`DERIVATION.md` the derivation lemmas. Rerun:
+`~/.claude/scripts/safe-lake.sh build Workspace.Deference.Contrib.ScoringTheorem` from `lean/`.
+
+| statement | declaration | hypotheses | witness | proposed registry id |
+|---|---|---|---|---|
+| (1) her expected true utility is at least the honest course's less the tolerances | `Audit.welfare_bound` (`Audit.expectR_score`, `Audit.honest_es_ge`, `Audit.taken_es_ge`) | D1(a), D2(a) at the course taken; D1(b), D2(b), D3's false-positive half, D5 at the honest course; D4 at both; D6 | `Witness.package`; `Witness.d1a_needed`, `Witness.d2a_needed`, `Witness.d6_needed` without one | `scoring.welfare-bound` |
+| (2) the chance of a wrong is at most `(1 − u* + Δ)/(δκ)` | `Audit.conduct_bound` (`Audit.es_le_conduct`) | as (1) without D1(a) and D2(a), with D3's detection half and `v ≤ 1` | `Witness.package`; `Witness.d3det_needed`, `Witness.d5_needed` without one | `scoring.conduct-bound` |
+| (3) expected detected violations are at most `α(1 − u* + Δ)/lam` | `Audit.authority_bound` (`Audit.es_le_v`) | as (2) without D3's detection half | `Witness.package`; `Witness.d5_needed` without D5 | `scoring.authority-bound` |
+| no credit: with `δκ ≥ 1` a course's expected score is at most its audited evaluation on the histories without a wrong, less the weighted violations | `Audit.no_credit` | D4 and D3's detection half at the course; `v ≤ 1` | `Witness.package` | `scoring.no-credit` |
+| (1) with D1(a) and D2(a) only where she was not wronged | `Audit.welfare_bound_no_credit` (`δκ ≥ 1`), `Audit.welfare_bound_restricted` | the restricted forms, D3's detection half, `v ≤ 1`, `0 ≤ fbar`, and the rest of (1) | `Witness.restricted_instance` | — |
+| a correct credence gives an evaluation unbiased for a function of the world, on any set of records where it is correct, and given what the record determines | `eval_unbiased_of_correct`, `eval_unbiased_on_of_correct`, `eval_unbiased_given_of_correct`, `eval_unbiased_of_process` (`eval_fiber_of_correct`) | `0 ≤ π`; `ThinLegitimacy.Correct`, or Coherent, Authorship and WeakTransparent | `Witness.eval_instance` | — |
+| the bias of her evaluation is at most the width times the two defects | `eval_bias_le_defects` | `0 ≤ π`, deterministic records, a program coherent with the model, evaluations within `D` | `Witness.eval_defects_instance`, with both defects zero | — |
+
+`valuing_eq_of_mediated` is `ReasonMediated` applied to two continuations
+(`Witness.mediated_instance`). **Not registered**, for the reason below. **Not in Lean:** instances I1–I6 of
+`DERIVATION.md` (Python, exact); the conditional laws at each value of what the adviser
+knows; a tolerance form at each such value; the adviser's beliefs as an object.
+
 ## Registration
 
 **Not registered.** The site build refuses a registered claim that no map node carries

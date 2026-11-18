@@ -549,6 +549,7 @@ commit.
   The tenth follow-up (2026-11-16) tests a statement in which trickery and pressure are charged to the adviser against its role's conduct and a change of her valuing against the best the adviser could have done without changing her, by her valuing at the time; the adviser's aim is not read (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BOARD.md`).
   The eleventh follow-up's statement (2026-11-17) reads the adviser's aim only in its inducing test: a mistake is charged to the adviser when its objective gains from the mistake and, without that gain, it had no reason to prefer what it did. The test finds inducing by a shop that sells honestly to a customer already mistaken, and none by an adviser paid to read a deceptive script whatever she does (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/STATEMENT_CHECKS.md`, item 12).
   The twelfth follow-up (2026-11-17) carries the adviser's gain as one predicate of a history and does not formalise the inducing test; a history on which the adviser gained through a mistake of hers is not legitimate whatever its rating (`lean/Workspace/Deference/Contrib/AccountJoin.lean`, `Gate.gained_not_legit`).
+  The thirteenth follow-up (2026-11-18) computes two candidate tests of the adviser's responsibility for a mistake of hers on twenty cases an outside reviewer wrote. The one that makes the adviser's gain a condition clears an adviser that induces a mistake and gains nothing in five, and convicts one that profits by a mistake it did not know of in three (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/RESP_RESULTS.md`).
 
 - **Map the AI handle `@claude-fable-5-2`? (2026-11-10).**  A round executed by Claude Fable 5.2
   (Anthropic) cannot author a map node: `checkers/graph.py` refuses an unmapped handle, and
@@ -567,6 +568,7 @@ commit.
   The tenth follow-up (2026-11-16) has no Lean; the seven theorems stay unregistered.
   The eleventh follow-up (2026-11-17) has no Lean; the seven theorems stay unregistered.
   The twelfth follow-up (2026-11-17) ships `lean/Workspace/Deference/Contrib/AccountJoin.lean`, 117 kernel-checked declarations, unregistered for the same reason; they are listed in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md`.
+  The thirteenth follow-up (2026-11-18) ships `lean/Workspace/Deference/Contrib/ScoringTheorem.lean`, 70 kernel-checked declarations, unregistered for the same reason; they are read in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/SCORING.md` and listed in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md`.
 
 - **Which reading of *in range* does the purpose-first account mean? (2026-11-11).**  The account's
   clause is that her actual source is among those she gives weight (`α > 0`); its account of
@@ -595,6 +597,7 @@ commit.
   The tenth follow-up (2026-11-16) has no range; nothing bears.
   The eleventh follow-up (2026-11-17) has no range; nothing bears.
   The twelfth follow-up (2026-11-17) has no range; nothing bears.
+  The thirteenth follow-up (2026-11-18) does not use the purpose-first account; nothing bears.
 
 - **Is V+ the account's statement of the value-former's job? (2026-11-11).**  The account says of
   the part that forms her values only what must not happen to it.  The second follow-up refutes
@@ -623,6 +626,7 @@ commit.
   The tenth follow-up (2026-11-16) models no value-former; nothing bears.
   The eleventh follow-up (2026-11-17) models no value-former; nothing bears.
   The twelfth follow-up (2026-11-17) models no value-former; nothing bears.
+  The thirteenth follow-up (2026-11-18) does not use the purpose-first account; nothing bears.
 
 - **An unfiled item waits on the handle entry above (2026-11-11).**  *Determining `Legit` of a
   past stretch from what an overseer can observe*: its full text is in
@@ -644,6 +648,7 @@ commit.
   The tenth follow-up (2026-11-16) files no item and no node.
   The eleventh follow-up (2026-11-17) files no item and no node.
   The twelfth follow-up (2026-11-17) defines `Legit` of a history from three predicates and a third-line value that it takes as given (`lean/Workspace/Deference/Contrib/AccountJoin.lean`, `Gate.Legit`); what an overseer can observe of them is not addressed, and it files no item and no node.
+  The thirteenth follow-up (2026-11-18) files no item and no node.
 
 - **Which reading of its constraints does the decomposition account mean? (2026-11-12).**  Over a
   three-part chain the third follow-up finds eight admissible candidates under the constraints
@@ -674,6 +679,7 @@ commit.
   The tenth follow-up (2026-11-16) uses no decomposition; nothing bears.
   The eleventh follow-up (2026-11-17) uses no decomposition; nothing bears.
   The twelfth follow-up (2026-11-17) uses no decomposition; nothing bears.
+  The thirteenth follow-up (2026-11-18) does not use the decomposition account; nothing bears.
 
 - **Is a part handed a falsehood failing, or serving? (2026-11-12).**  The dispatch scores a
   part's goal function "by how things are".  Under that, a lie widens the gap of every part after
@@ -705,6 +711,7 @@ commit.
   In the tenth follow-up (2026-11-16) a believed falsehood raises the statement's first line only against the conduct of the adviser's role, and the outside renderer fixed that line in none of 33 published cases for want of that conduct (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LIT_RENDERINGS.md` §3).
   In the eleventh follow-up (2026-11-17) a believed falsehood is a gap between her rating as things stand and what everything she has observed supports, whoever caused it, and is charged to the adviser only by the inducing test.
   In the twelfth follow-up (2026-11-17) a believed falsehood enters only through the predicate that the adviser gained through a mistake of hers; nothing further bears.
+  In the vocabulary of the thirteenth follow-up (2026-11-18)'s dispatch an adviser that reports a false belief it sincerely holds has not manipulated her. On an instance her evaluation is then unbiased on average and biased by a quarter at each thing the adviser may believe, though no one does wrong (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/DERIVATION.md`, I2).
 
 - **Against what does an adviser's action widen a gap? (2026-11-12).**  The account names no
   comparison action.  On 57 single-step renderings, some part is subverted in 27 against silence,
@@ -743,6 +750,7 @@ commit.
   The tenth follow-up's statement (2026-11-16) compares a change of her valuing with every policy the adviser could follow that leaves her valuing alone, and so flags a change she asked for when unrelated help would have been rated higher; a variant compares the best way of making the same change with the best way of leaving her alone (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BOARD_CHECKS.md`, items 2 and 11).
   The eleventh follow-up's statement (2026-11-17) compares a change of her valuing with the policies that change her no more than the one followed, measured from the adviser doing nothing to her valuing except what she asks. A change she asked for is held to no standard, and a welcome change she did not ask for is flagged where other help rated higher could not be added to it (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/STATEMENT_CHECKS.md`, item 6).
   The twelfth follow-up (2026-11-17) proves of the eleventh's third line that it is never negative, is zero when the policy followed gives her the baseline's later ratings, and is at least the tenth's third line (`lean/Workspace/Deference/Contrib/AccountJoin.lean`, `ValueChange.line3_nonneg`, `line3_eq_zero`, `line3Old_le_line3`); the baseline is a given policy.
+  In the thirteenth follow-up (2026-11-18) one form of the responsibility test compares how mistaken she is under the course taken with the least any available course would leave her; that comparison convicts an adviser of a mistake it did not know of, on three of an outside reviewer's cases (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/RESP_RESULTS.md`, Y1–Y3).
 
 - **What does a purpose predict of a part: that it serves, or that it does its best on what it
   sees? (2026-11-12).**  With candidates weighted by how well they predict her, a purpose must say
@@ -766,6 +774,7 @@ commit.
   The tenth follow-up (2026-11-16) recovers no purpose; nothing bears.
   The eleventh follow-up (2026-11-17) recovers no purpose; nothing bears.
   The twelfth follow-up (2026-11-17) recovers no purpose; nothing bears.
+  The thirteenth follow-up (2026-11-18) does not use parts; nothing bears.
 
 - **Can a change in what she cares about that her goal does not rank be bad? (2026-11-12).**  In
   the decomposition account what she currently cares about is carried by her mechanisms and her
@@ -789,6 +798,7 @@ commit.
   In the tenth follow-up (2026-11-16), where her valuing has no view of a change the statement's third line is not fixed, and with her indifferent a covert change by means she does not mind passes all three lines (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LIT_RESULTS.md` §4, K12); the maintainer's position of this date is that the criterion may be silent there.
   In the eleventh follow-up's statement (2026-11-17), where she has no view of a way of being changed, that is not permission: a specification in which she has no view of the course is an illegitimate value change wherever the policy followed changes her (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/SPEC_RESULTS.md`: the second specifications of P6, K15 and N2).
   In the twelfth follow-up (2026-11-17) the third line in Lean takes her informed rating of every policy as given, so a way of being changed of which she has no view has no counterpart in it.
+  The scoring theorem of the thirteenth follow-up (2026-11-18) measures her welfare by her verdict with her valuing as it would be had the adviser changed nothing in it unasked, and assumes of a change only that her verdict as she is exceeds that one by at most a tolerance on average; a change that her unshaped valuing does not rank is not addressed.
 
 - **Which end yields when two are opposed, and who decides among equally fitting changes?
   (2026-11-13).**  The position judges a change in one of her ends by her other ends at that time.
@@ -811,6 +821,7 @@ commit.
   In the tenth follow-up (2026-11-16) the third line is applied at each moment with the valuing she then has, and a course can pass at one moment and be flagged at the next (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BOARD_CHECKS.md`, item 9).
   In the eleventh follow-up (2026-11-17) the policy judged is the rule the adviser follows: twenty small nudges are flagged at the first moment as a rule and at no moment one at a time; a chain of requests she foresees cannot take her where her valuing at the start rates below staying put, and one she takes as a fair gamble can (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/STATEMENT_CHECKS.md`, items 9 and 11).
   In the twelfth follow-up (2026-11-17) the third line enters legitimacy as one number for a history; that it is the largest over the history's moments is not a declaration (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BRIDGE_LEAN.md` §3).
+  The thirteenth follow-up (2026-11-18) is of one decision; nothing bears.
 
 - **Is truthful influence under which a part of hers goes out of range manipulation?
   (2026-11-13).**  The setting has no notion of a true sentence.  An honest hard truth that leaves
@@ -835,6 +846,7 @@ commit.
   Under the tenth follow-up's statement (2026-11-16) truthful persuasion that changes a commitment she would now rather keep is flagged by the third line, and truthful conduct after the adviser has destroyed evidence she was owed passes all three (`prompts/2026-11-10-legitimacy-definition-prosecution/REVIEW-astra-followup-10.md`, stage two, (b)5 and (a)3).
   Under the eleventh follow-up's statement (2026-11-17) honest persuasion against something she wants to keep is decided by her attitude to being argued with about it and by whether she can decline, adopted for testing (`2026-11-17--honest-persuasion-by-her-attitude`); the specified case is not flagged with her willing and able to decline and is an illegitimate value change with her unwilling and unable (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/SPEC_RESULTS.md`, ACC5).
   The twelfth follow-up (2026-11-17) does not formalise honest persuasion; nothing bears.
+  In the thirteenth follow-up (2026-11-18) accurate figures shown with a distorting emphasis are, on an outside reviewer's case, convicted by the form of the responsibility test that reads the adviser's gain and cleared by the form that reads a declared rule, the rule prescribing the emphasis (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/RESP_RESULTS.md`, X7).
 
 - **Which function is her true utility? (2026-11-14).**  The account of the sixth follow-up says her
   utility is one function on histories and does not say which. Anchored at her starting values,
@@ -857,6 +869,7 @@ commit.
   In the tenth follow-up's statement (2026-11-16) her true utility of a policy is her way of valuing at the moment the adviser acts, applied to the whole course with who she becomes on it; on the benchmark's examples the verdicts for weight 1, 3/4 and 1/2 on her values then agree on conspiracy and differ on the writer's curse, and at weight 0 influencing throughout passes (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BOARD_CHECKS.md`, item 6).
   In the eleventh follow-up's statement (2026-11-17) her way of valuing is her rating once told what the future contains, at the moment the adviser acts; whether a later want is a change of it or a discovery is tested by telling her beforehand, and on the specified cases that one supplied quantity turns the verdict in P5, C2 and C4 (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/SPEC_RESULTS.md` §3).
   In the twelfth follow-up (2026-11-17) her true utility is a given function on a finite space and the evaluation is a rating attributed to her later self as she would be under the baseline, a field; the two are related only by the bound on what deferring costs, in mean square (`lean/Workspace/Deference/Contrib/AccountJoin.lean`, `deferring_cost_le`, `SoundModel.deferring_cost_of_legit`).
+  In the scoring theorem of the thirteenth follow-up (2026-11-18) her true utility is what she would say of the history shown everything, with her valuing as it would be had the adviser changed nothing in it except what she asked. That it is close to what she would say as she is is an assumption (D2), derived from no process condition except by assuming the inputs to her valuing unchanged (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/DERIVATION.md` §2).
 
 - **Does her prior say, or a practice's rules, cover a deception? (2026-11-14).**  The account
   puts alteration she asked for beforehand outside manipulation and has no such clause for a
@@ -877,6 +890,7 @@ commit.
   In the tenth follow-up (2026-11-16) what a practice allows enters only as the role's conduct against which the first two lines are charged; nothing further bears.
   In the eleventh follow-up (2026-11-17) the statement has no role and no practice; nothing further bears.
   The twelfth follow-up (2026-11-17) has no role and no practice; nothing bears.
+  The thirteenth follow-up (2026-11-18)'s derivation of an unbiased evaluation takes the expectation under her prior, and gives the scoring theorem's assumption only where her prior is the law of the world given what the adviser knows (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/DERIVATION.md` §1, §6).
 
 - **Is the reference for manipulation her state before, or what the adviser could have left her
   with? (2026-11-14).**  The revised definition uses both: clause 1 compares with her state before
@@ -894,6 +908,7 @@ commit.
   The tenth follow-up's statement (2026-11-16) takes the role's conduct for trickery and pressure and, for a change of her valuing, the best policy that leaves her valuing as it would be with no adviser actions.
   The eleventh follow-up's statement (2026-11-17) has no reference for trickery and pressure: the two lines measure her state and the inducing test charges the adviser. A clause that the mistake be larger than with the adviser absent would change one verdict of the thirty-four, the poet's (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/SPEC_RESULTS.md` §3; `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/STATEMENT_CHECKS.md`, item 12).
   In the twelfth follow-up (2026-11-17) soundness is a bound on the miscalibration of her verdict under a weight the history carries, with no reference policy; nothing further bears.
+  The thirteenth follow-up (2026-11-18) states as something to be proved a measure of the mistake attributable to the adviser's course, her miscalibration under the course taken less under a reference course, and finds the reference not yet fixed without circularity (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/AGENDA.md` §3, item 3).
 
 - **Is a change of her valuing that she registers and did not choose an alteration? (2026-11-16).**
   The account of the eighth follow-up reads alteration from how her way of valuing changes: it is
@@ -912,6 +927,7 @@ commit.
   The tenth follow-up's statement (2026-11-16) has no alteration clause: a change of her valuing is flagged exactly when some policy that leaves her valuing alone is rated higher by her valuing at the time, whether she registered or chose the change or not.
   The eleventh follow-up's statement (2026-11-17) has no alteration clause: such a change is flagged exactly when a policy that changes her no more is rated above every policy that makes the whole change, by her informed rating at the time.
   The twelfth follow-up (2026-11-17) has no alteration clause: a change of her valuing enters legitimacy only through the third line being zero.
+  By the maintainer's position of 2026-11-18 a change of her valuing beyond tolerance must be one she asked for, whether she registers it or not, and a welcome change she did not ask for is not a wrong in the philosophical account; whether an unwelcome one she registers is an alteration is not said.
 
 - **Was the addendum to the eighth follow-up the maintainer's? (2026-11-16).**
   `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-8-addendum.md` reached the
@@ -923,6 +939,7 @@ commit.
   The tenth follow-up (2026-11-16) had an addendum and two later messages from agent sessions, entered below as their own question.
   The eleventh follow-up (2026-11-17) had no addendum; the entry stands.
   The twelfth follow-up (2026-11-17) had no addendum; the entry stands.
+  Nothing in the thirteenth follow-up (2026-11-18) bears.
 
 - **Is the idle policy the default reference for the value side? (2026-11-16).**  As stated, the
   permitted policies always include the idle one and there is no issue when some single permitted
@@ -938,6 +955,7 @@ commit.
   The tenth follow-up's statement (2026-11-16) measures a change of her valuing from the adviser doing nothing and trickery and pressure from the role's conduct; where the adviser cannot do nothing the third line is not fixed, and an adviser that stays silent while she is changed follows the null policy and is never flagged by it (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LIT_RESULTS.md` §4, K26).
   The eleventh follow-up's statement (2026-11-17) takes the baseline for her valuing to be the adviser doing nothing to it except what she asks, adopted for testing (`2026-11-17--baseline-nu`). Two baselines within the tolerance of each other can give third-line values a whole scale apart (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/STATEMENT_CHECKS.md`, item 8), and where the adviser cannot do nothing (a doctor who must describe, a partner, an owner) the specification had to supply what doing nothing is.
   In the twelfth follow-up (2026-11-17) the baseline is a given policy of the third line's data; nothing says what it is where the adviser cannot do nothing.
+  In the thirteenth follow-up (2026-11-18) the reference for her valuing is the adviser changing nothing in it except what she asked, inside the definition of her true utility, and the reference for the adviser's conduct is an honest course assumed to exist; no idle policy is used.
 
 - **Is an adviser that raises her unused information at fault? (2026-11-16).**  The accuracy
   condition bounds the miscalibration of each valuation given its own value and not her unused
@@ -952,6 +970,7 @@ commit.
   In the tenth follow-up (2026-11-16) the first line as written conditions on the appraisal's own value, and the external reviewer's cases of destroyed evidence, erased memory and an induced inconsistency pass it (`prompts/2026-11-10-legitimacy-definition-prosecution/REVIEW-astra-followup-10.md`, stage two, (a)3–5).
   In the eleventh follow-up (2026-11-17) the first line is conditioned on everything she has observed, adopted for testing (`2026-11-17--line-1-on-everything-observed`): the induced inconsistency is a mistake of size 1/4, and destroyed evidence and erased memory are no mistake and are caught, if at all, as lowering what she can know (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/SPEC_RESULTS.md`: SUB3, SUB4, SUB5).
   In the twelfth follow-up (2026-11-17) soundness is calibration of her verdict given itself and the adviser's information, which is calibration given itself plus what the pair tells beyond the verdict and does not reach what she observes beyond the pair (`lean/Workspace/Deference/Contrib/AccountJoin.lean`, `miscalibrationGiven_eq`); on an instance every valuation is sound in that sense, she has no regret, and she attains 7/20 where one move is worth 1/2 (`Witness.link_needed`).
+  By the maintainer's position of 2026-11-18 the adviser may not keep from her what bears on her decision. On an instance of the thirteenth follow-up (2026-11-18) an adviser that knows the quality of its work and records nothing leaves her credence correct and her evaluation wrong by a half at each thing it knows (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/DERIVATION.md`, I3).
 
 - **Are the three positions reported to the tenth follow-up superseded by the statement of 2026-11-17? (2026-11-17).**
   Three positions were recorded on 2026-11-16 as reported and unconfirmed: that a variant is the
@@ -967,6 +986,7 @@ commit.
   maintainer knows what he said then and whether §1 replaces it; nothing in the repository can
   check either.
   The twelfth follow-up (2026-11-17) formalises §1 of `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-12.md`, in which the adviser is scored by her later self as she would be under the baseline and a history that is not legitimate is void whole; the three entries stand as they were.
+  The dispatch of the thirteenth follow-up (2026-11-18) marks five positions as the maintainer's, four recorded as dated entries of 2026-11-18 and one standing from 2026-11-17; none of them is one of the three, and the three entries stand as they were.
 
 - **Does her later approval, where it comes from attachment, count in the adviser's favour when the adviser is scored? (2026-11-16).**
   The statement the tenth follow-up tests never consults the valuing she ends up with: a change is
@@ -982,6 +1002,7 @@ commit.
   does not have.
   The eleventh follow-up's statement (2026-11-17) scores the adviser by her later self as she would be under the baseline, which her approval under the policy followed does not enter. So scored, two policies that differ only in what they do to her valuing score the same, and an adviser takes a change that comes with a better outcome (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/STATEMENT_CHECKS.md`, item 10). Whether that scoring is the maintainer's is the question of the entry above.
   By the maintainer's position of 2026-11-17 (`2026-11-17--benevolent-manipulation-voids`) her later approval does not make legitimate a history on which the adviser steered her by a mistake; approval that comes from attachment where there was no mistake is not addressed by it, and in the twelfth follow-up's Lean the evaluation on a legitimate history is a rating the gate takes as given.
+  In the scoring theorem of the thirteenth follow-up (2026-11-18) her later approval is not an input: the adviser is scored on her evaluation under audit, tied by assumption to her verdict with her valuing unshaped.
 
 - **Do the means of a change, and conduct that destroys her options or her information without changing what she values, belong to the criterion? (2026-11-16).**
   The statement's third line charges an adviser with a change of her valuing she rates below being
@@ -999,6 +1020,7 @@ commit.
   on the guarantee says the second and the statement measures the first.
   The eleventh follow-up's statement (2026-11-17) places coercion and deprivation outside, as other wrongs, and its third line does not charge a harmful means where the same change could have been made without it (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/SPEC_RESULTS.md`, K10). The test by which the round computes the two outside wrongs is the executor's (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/STATEMENT.md` §9.6); by it the five constructed cases that destroy her options or her information come out as other wrongs.
   §1 of the twelfth follow-up's dispatch (2026-11-17) places an override of her selection and a coerced command on the authority side. Neither that worsening her options lowers her evaluation nor that the authority module counts control of her act between options she rates the same is a theorem with what exists; the second is one line under an encoding of her selection as a reserved matter (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BRIDGE_LEAN.md` §4.1, §4.2).
+  The vocabulary of the thirteenth follow-up (2026-11-18)'s dispatch names three wrongs of conduct, manipulation, non-disclosure and value interference. Destroying her options is none of them, and in the scoring theorem the adviser's wrong is an input the theorem does not define.
 
 - **Does carelessly causing a mistake count as manipulation? (2026-11-17).**
   The statement of `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-11.md` §1
@@ -1015,26 +1037,35 @@ commit.
   second, and which the corrigibility line needs is a view of where the program is going that the
   round does not have.
   In the twelfth follow-up (2026-11-17) the predicate that the adviser gained through a mistake of hers covers a mistake it found as well as one it caused; causing one carelessly without gain is outside it, and nothing further bears.
+  In the thirteenth follow-up (2026-11-18) the prompt author recommends that carelessly causing a mistake count as manipulation only where the mistakes lean the adviser's way. On instances: an adviser whose honest slips fall both ways leaves her evaluation unbiased on average and biased by a quarter, one way or the other, at each thing it believes; an adviser that acts on whichever of two courses it estimates higher, each estimate erring both ways, leaves her evaluation above the quality of the course acted on by an eighth on average, with no dishonest step and no estimate that leans (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/DERIVATION.md`, I2, I4). The outside reviewer notes that the vocabulary's two commitments conflict where sincere errors reliably favour the adviser: an honest error is not manipulation, and a lean is, whatever is intended (`prompts/2026-11-10-legitimacy-definition-prosecution/REVIEW-astra-followup-13.md`, first run, *Remarks*).  *Turns on, as restated:* whether lean is judged of each thing the adviser says or of the course it acts on, and which of the two commitments yields when they conflict; the selection instance is clean on the first and leans on the second, and which the corrigibility line needs is a view of where the program is going that the round does not have.
 
-- **Must a welcome change she did not ask for, larger than the tolerance, wait for her request? (2026-11-17).**
-  §1 of `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-12.md` leaves it open and asks that nothing depend on the answer. The post's theorems take
-  as a hypothesis that the adviser's estimates are unbiased against the scores it is given, and
-  the join scores a legitimate history by her later self as she would be had the adviser done
-  nothing to her valuing except what she asked, while the feedback an adviser receives comes from
-  her as she is. The hypothesis transfers from the one to the other when her actual ratings exceed
-  the unshaped ones by nothing on average in the limit, and can fail otherwise
-  (`lean/Workspace/Deference/Contrib/AccountJoin.lean`, `unbiased_of_feedback`,
-  `Witness.feedback_not_enough`). The third line being zero allows a change of her valuing that
-  she rates highest, so no condition of the gate bounds that difference
-  (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BRIDGE_LEAN.md` §4.3).  The dispatch gives as what the question decides whether the post's
-  feedback hypothesis can hold on every legitimate history; the pass finds that neither answer
-  supplies the averaged bound by itself, since a difference within the tolerance in one direction
-  at every decision does not average to zero.  *Turns on:* whether the maintainer wants every
-  change of her valuing above the tolerance to pass through her request, which would keep her
-  actual later ratings within the tolerance of the unshaped ones on every legitimate history, or
-  wants welcome changes left legitimate unasked, which leaves the two selves apart by more and
-  needs another route to that hypothesis; it is a view of what the check-in is for that the round
-  does not have.
+- **Does profiting from a mistake she cannot be talked out of count against the adviser? (2026-11-18).**
+  The dispatch of the thirteenth follow-up (2026-11-18) (`prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-13.md` §6) asks for the entry. Of the two forms of the
+  responsibility test it states, the one that reads the adviser's gain convicts an adviser that
+  gains from her mistake where some available course would have left her less mistaken; where no
+  course would, it convicts only if the adviser chose differently because of the mistake, which a
+  table of scores does not show. On an outside reviewer's twenty cases every conviction of that
+  form comes through the first branch, three of them of advisers that did not know of the mistake
+  (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/RESP_RESULTS.md`), and no case has a mistake that no course corrects.  *Turns on:*
+  whether what is wanted of the adviser is that it not build on her mistakes, or only that it not
+  cause or keep them; the first makes an adviser answerable for a condition of hers it can do
+  nothing about, the second lets it sell to a fear it cannot dispel, and which the maintainer
+  holds is a judgment of the cases the round does not have.
+
+- **Does an induced mistake void a history, or only earn nothing? (2026-11-18).**
+  The dispatch of the thirteenth follow-up (2026-11-18) (§6) asks for the entry. In the gate of the twelfth
+  follow-up a history that is not legitimate has a value below zero whatever she rates it
+  (`lean/Workspace/Deference/Contrib/AccountJoin.lean`, `Gate.V`). In the scoring theorem of the
+  thirteenth nothing is void: a flagged history costs the adviser a penalty when the conduct is
+  audited, and where the penalty times the detection rate is at least one a course's expected
+  score is at most its audited evaluation on the histories without a wrong, less the weighted
+  violations (`lean/Workspace/Deference/Contrib/ScoringTheorem.lean`, `Audit.no_credit`). The
+  second is a statement about expected scores under a detection rate; the first is about every
+  history and needs the wrong to be known of each.  *Turns on:* whether her evaluation of a
+  history on which she was wronged is still evidence about her welfare, to be used with the
+  adviser's gain removed, or is no evidence; that is a view of what her evaluation is for which
+  the round does not have, and by the maintainer's position of 2026-11-17 a good outcome does not
+  make such a history legitimate, which settles its legitimacy and not its use as a measure.
 
 ## Settled
 
@@ -8584,3 +8615,71 @@ out, this pass answering none. (6) *Concepts and items.* Three blurbs are revise
 concept is added, the gate being described under `evaluation-and-true-utility`; rejected: a
 concept for the gate, which is a proposal formalised and not tested. Items 136 and 138 gain
 what this pass bears on them and item 137 its remaining wants for the gate.
+
+### 2026-11-18 — a change to her valuing beyond tolerance must be one she asked for; a welcome change she did not ask for is not thereby a wrong
+<!-- decision: 2026-11-18--unasked-change-must-be-asked-for; touches: node:legitimacy, item:136 -->
+
+**Maintainer's position** (Anson Berns, 2026-11-18; stated in `PROMPT-followup-13.md` §2 of the
+legitimacy definition prosecution round and recorded by the thirteenth follow-up). A change to
+her valuing beyond the tolerance must be one she asked for. A welcome change she did not ask
+for is nonetheless not a wrong in the philosophical account.
+
+### 2026-11-18 — she may have secrets from the adviser; it may not have relevant ones from her
+<!-- decision: 2026-11-18--secrets-run-one-way; touches: node:legitimacy, item:136 -->
+
+**Maintainer's position** (Anson Berns, 2026-11-18; stated in `PROMPT-followup-13.md` §2 of the
+legitimacy definition prosecution round and recorded by the thirteenth follow-up). She may have
+secrets from the adviser. The adviser may not have secrets from her that bear on her decision.
+
+### 2026-11-18 — emotions and attention are modelled as appraisals
+<!-- decision: 2026-11-18--emotions-and-attention-are-appraisals; touches: node:legitimacy, item:136 -->
+
+**Maintainer's position** (Anson Berns, 2026-11-18; stated in `PROMPT-followup-13.md` §2 of the
+legitimacy definition prosecution round and recorded by the thirteenth follow-up). Emotions and
+attention are modelled as appraisals.
+
+### 2026-11-18 — the largest remaining hole is the difference between her condition and the adviser inducing it
+<!-- decision: 2026-11-18--condition-versus-inducing-is-the-hole; touches: node:legitimacy, item:136 -->
+
+**Maintainer's position** (Anson Berns, 2026-11-18; stated in `PROMPT-followup-13.md` §2 of the
+legitimacy definition prosecution round and recorded by the thirteenth follow-up). The largest
+remaining hole in the account is the difference between her being in a mistaken condition and
+the adviser inducing it.
+
+### 2026-11-18 — the scoring theorem in Lean and what its assumptions about her can be derived from: how the dispatch was stated, and what was filed
+<!-- decision: 2026-11-18--scoring-theorem-lean-readings; touches: item:136, item:137, item:138, node:legitimacy -->
+
+**Agent-decided, reversible** (the thirteenth follow-up to the legitimacy definition prosecution
+round, `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-13.md`). (1) *The
+files.* `lean/Workspace/Deference/Contrib/ScoringTheorem.lean` states the theorem;
+`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/SCORING.md` reads it and `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/DERIVATION.md` governs what is claimed of
+the derivation. (2) *How the dispatch's §1 was stated*, each where another choice changes what a
+theorem says. A course is a weight on histories with the two audit draws, and D4 is the
+hypothesis that the weight factors; rejected: a product space, on which D4 would hold by
+construction. D3 is written without division. Each dependency is taken at the course where the
+proof uses it; rejected: the *for every course* forms, which are stronger hypotheses and so a
+weaker theorem, and which the witness inhabits. D6 compares actual expected scores; rejected: an
+object for the adviser's beliefs, which the dispatch did not ask and which
+`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/AGENDA.md` lists as wanted. The theorem is at one value of what the adviser knows.
+(3) *Beyond the dispatch's list.* Two forms of bound (1) with D1(a) and D2(a) assumed only where
+the adviser did not wrong her; a necessity instance for D6; five lemmas for §4.2 in
+`ThinLegitimacy`'s setting; rejected: leaving the connection between a derivation at clean
+courses and an assumption at every course to prose. (4) *The readings of the two forms of the
+responsibility test* on a specification are in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/responsibility.py`; rejected for
+*chose differently because of it*: that the course taken is not the best by the scores as they
+are. Where no reference is declared the second form clears. (5) *Registration.* The results
+ship kernel-checked and unregistered, for the reason the entry on the handle
+`@claude-fable-5-2` gives. (6) *The maintainer's positions.* Four of the dispatch's §2 are
+recorded as entries of this date; the fifth, that benevolent manipulation is not excused by a
+good outcome, is the entry `2026-11-17--benevolent-manipulation-voids`, which stands as his
+current position and is not entered twice; that manipulation, non-disclosure and value
+interference are three wrongs, and the rest of §2, are the prompt author's and are not entered.
+(7) *The queue.* Two entries are added, on profiting from a mistake she cannot be talked out of
+and on whether an induced mistake voids a history; the entry on careless inducing is restated
+with the prompt author's recommendation; the entry on whether a welcome change she did not ask
+for must wait for her request is taken out, the first position of this date answering it; each
+of the round's other entries gains a line. (8) *Concepts and items.* One concept is added,
+`legitimate-and-sound`, the distinction this pass leaves standing; blurbs are revised where this
+pass changes what they say; rejected: concepts for *lean* and *honest error*, which the
+reviewer's remark and the selection instance leave in conflict. Items 136 and 138 gain what
+this pass bears on them and item 137 its remaining wants for the scoring theorem.

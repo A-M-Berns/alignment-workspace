@@ -207,8 +207,8 @@ her actual later rating. Missing: any bound on `F − V`. Nothing in `Legit` giv
 this to whether a welcome change she did not ask for, above the tolerance, must wait for
 her request. Neither answer supplies the bound by itself: with every such change excluded
 her later ratings stay within the tolerance of the baseline's, and a difference of that
-size in one direction at every decision does not average to zero. The question is in the
-queue, and no declaration depends on its answer.
+size in one direction at every decision does not average to zero. The maintainer's position
+of 2026-11-18 is that such a change must be one she asked for; no declaration depends on it.
 
 **4.4 How the history-level gate relates to the segment gate of `Legitimacy.lean`.** The
 value forms are related, the predicates are not. `Gate.V_eq_gateValue`: `V h` is

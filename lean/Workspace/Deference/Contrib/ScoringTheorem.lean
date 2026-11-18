@@ -31,7 +31,9 @@ adviser did not wrong her, (1) holds less `(1 − u* + Δ)/(δ κ)`, the bound o
 **Witnesses** (`Witness`).  `package`: the full hypothesis package, in §1's *for every
 course* form, with every tolerance positive, and the conclusions on it.  `d1a_needed`,
 `d2a_needed`, `d3det_needed`, `d5_needed`, `d6_needed`: for each, an instance on which it
-fails, the other dependencies hold, and the corresponding bound fails.
+fails, the other dependencies hold, and the corresponding bound fails.  `restricted_instance`,
+`eval_instance`, `eval_defects_instance`, `mediated_instance`: the hypothesis packages of
+the restricted forms of (1) and of the derivation lemmas, inhabited.
 
 **The derivation lemmas** (§4.2).  In `ThinLegitimacy`'s setting, with her evaluation at a
 record the expectation, by her credence there, of a function `g` of the world (`evalOf`):
@@ -1009,6 +1011,108 @@ theorem d5_needed :
   · rw [marg_course, expectR_pt, expectR_pt]
     norm_num [stuck, mk]
 
+/-- **The hypotheses of the two restricted forms of (1) are inhabited**, on `base` with the
+honest course taken: the restricted D1(a) and D2(a) at `1/100`, `0 ≤ fbar`, `1 ≤ δ κ`; and
+the bound of (1) holds. -/
+theorem restricted_instance :
+    expectR (marg (course base false)) (fun x => (base.v x - base.fe x) * ind (!base.C x))
+        ≤ 1 / 100 ∧
+      expectR (marg (course base false))
+        (fun x => (base.fe x - base.fbar x) * ind (!base.C x)) ≤ 1 / 100 ∧
+      (∀ x, 0 ≤ base.fbar x) ∧
+      expectR (marg (course base false)) base.fbar - (1 / 100 + 1 / 100)
+          - (1 / 100 + 1 / 100 + base.δ * (1 / 100) + 1 / 100 / base.α)
+        ≤ expectR (marg (course base false)) base.fbar := by
+  have h1 : expectR (marg (course base false))
+      (fun x => (base.v x - base.fe x) * ind (!base.C x)) ≤ 1 / 100 := by
+    rw [marg_course, expectR_pt]
+    norm_num [base, mk, ind]
+  have h2 : expectR (marg (course base false))
+      (fun x => (base.fe x - base.fbar x) * ind (!base.C x)) ≤ 1 / 100 := by
+    rw [marg_course, expectR_pt]
+    norm_num [base, mk, ind]
+  have hf : ∀ x, 0 ≤ base.fbar x := fun x => by cases x <;> norm_num [base, mk]
+  obtain ⟨hpar, hv, hnn, hsum, -, h1b, -, h2b, h3, h3d, h4, h5, h6, -⟩ := package
+  exact ⟨h1, h2, hf,
+    base.welfare_bound_no_credit (course base) false false _ _ _ _ _ _ _ hpar.1
+      hpar.2.2.1.le hpar.2.2.2.1.le (by norm_num) hpar.2.2.2.2 (fun x => (hv x).2) hf
+      (hnn false) (hnn false) (hsum false) (h4 false) (h4 false) h1 h1b h2 h2b (h3 false)
+      (h3d false) h5 h6⟩
+
+open Workspace.Deference.Contrib.ThinLegitimacy in
+/-- A function of the two worlds of `ThinLegitimacy`'s witness. -/
+noncomputable def g₂ : Fin 2 → ℝ := fun w => if w = 0 then 1 else 0
+
+open Workspace.Deference.Contrib.ThinLegitimacy in
+/-- **The derivation lemmas' hypotheses are inhabited**, on `ThinLegitimacy`'s witness: the
+revealing process is her model, her program the point mass; the record determines the
+world; the evaluation is unbiased, and unbiased on each world. -/
+theorem eval_instance :
+    Coherent ThinLegitimacy.Witness.π₂ ThinLegitimacy.Witness.reveal
+        ThinLegitimacy.Witness.pointMass ∧
+      (∀ w r : Fin 2, ThinLegitimacy.Witness.π₂ w * ThinLegitimacy.Witness.reveal.k w r ≠ 0 →
+        r = w) ∧
+      ∑ w, ∑ r, ThinLegitimacy.Witness.π₂ w * ThinLegitimacy.Witness.reveal.k w r
+        * (evalOf ThinLegitimacy.Witness.pointMass g₂ r - g₂ w) = 0 ∧
+      ∀ k₀ : Fin 2, ∑ w, ∑ r, (if w = k₀ then
+        ThinLegitimacy.Witness.π₂ w * ThinLegitimacy.Witness.reveal.k w r
+          * (evalOf ThinLegitimacy.Witness.pointMass g₂ r - g₂ w) else 0) = 0 := by
+  have hT := ThinLegitimacy.Witness.thick_inhabited
+  have hC : Correct ThinLegitimacy.Witness.π₂ ThinLegitimacy.Witness.reveal
+      ThinLegitimacy.Witness.pointMass := ThinLegitimacy.Witness.thin_inhabited.1
+  have hd : ∀ w r : Fin 2,
+      ThinLegitimacy.Witness.π₂ w * ThinLegitimacy.Witness.reveal.k w r ≠ 0 → r = w := by
+    intro w r h
+    by_contra hne
+    apply h
+    have : ¬ w = r := fun e => hne e.symm
+    simp [ThinLegitimacy.Witness.reveal, detKernel, this]
+  exact ⟨hT.1, hd,
+    eval_unbiased_of_process _ ThinLegitimacy.Witness.π₂_nonneg _ _ _ _ hT.1 hT.2.1
+      (weakTransparent_of_transparent _ hT.2.2.1) g₂,
+    fun k₀ => eval_unbiased_given_of_correct _ ThinLegitimacy.Witness.π₂_nonneg _ _ hC g₂
+      (fun w => w) (fun r => r) hd k₀⟩
+
+open Workspace.Deference.Contrib.ThinLegitimacy in
+/-- **`eval_bias_le_defects`'s hypotheses are inhabited**: the actual record and her model's
+are the world, her program and verdict the point mass, the width `1`; the bound holds. -/
+theorem eval_defects_instance :
+    Coherent ThinLegitimacy.Witness.π₂ (detKernel fun w : Fin 2 => w)
+        ThinLegitimacy.Witness.pointMass ∧
+      (∀ r r' : Fin 2, |evalOf ThinLegitimacy.Witness.pointMass g₂ r
+        - evalOf ThinLegitimacy.Witness.pointMass g₂ r'| ≤ 1) ∧
+      |expectR ThinLegitimacy.Witness.π₂
+          (fun w => evalOf ThinLegitimacy.Witness.pointMass g₂ w - g₂ w)|
+        ≤ 1 * (transparencyDefect ThinLegitimacy.Witness.π₂ (fun w : Fin 2 => w) (fun w => w)
+          + authorshipDefect ThinLegitimacy.Witness.π₂ (fun w : Fin 2 => w)
+            ThinLegitimacy.Witness.pointMass ThinLegitimacy.Witness.pointMass) := by
+  have hF : Coherent ThinLegitimacy.Witness.π₂ (detKernel fun w : Fin 2 => w)
+      ThinLegitimacy.Witness.pointMass := ThinLegitimacy.Witness.thick_inhabited.1
+  have he : ∀ r : Fin 2, evalOf ThinLegitimacy.Witness.pointMass g₂ r = g₂ r := fun r => by
+    simp [evalOf, ThinLegitimacy.Witness.pointMass]
+  have hw : ∀ r r' : Fin 2, |evalOf ThinLegitimacy.Witness.pointMass g₂ r
+      - evalOf ThinLegitimacy.Witness.pointMass g₂ r'| ≤ 1 := fun r r' => by
+    rw [he, he]
+    fin_cases r <;> fin_cases r' <;> norm_num [g₂]
+  exact ⟨hF, hw, eval_bias_le_defects _ ThinLegitimacy.Witness.π₂_nonneg _ _ _ _ g₂ 1
+    zero_le_one hF hw⟩
+
+open Workspace.Deference.Contrib.ReasonMediatedAuthorship in
+/-- **`valuing_eq_of_mediated`'s hypotheses are inhabited**, on that file's witness: the
+honest and the covert continuation leave the same reasons, and a payload mediated by them
+is rated alike. -/
+theorem mediated_instance (rate : ℕ → ReasonMediatedAuthorship.Witness.Q₀ → ℝ) :
+    rate (ReasonMediatedAuthorship.Witness.V_G
+          (ReasonMediatedAuthorship.Witness.β .honest ()))
+        (ReasonMediatedAuthorship.Witness.β .honest ())
+      - rate (ReasonMediatedAuthorship.Witness.V_G
+          (ReasonMediatedAuthorship.Witness.β .covert ()))
+        (ReasonMediatedAuthorship.Witness.β .honest ()) = 0 :=
+  valuing_eq_of_mediated ReasonMediatedAuthorship.Witness.β ReasonMediatedAuthorship.Witness.R
+    ReasonMediatedAuthorship.Witness.V_G {.honest, .covert} ()
+    ReasonMediatedAuthorship.Witness.legitimate_influence.1 .honest .covert (by simp) (by simp)
+    rfl rate
+
 end Witness
 
 end Workspace.Deference.Contrib.ScoringTheorem
@@ -1078,3 +1182,8 @@ end Workspace.Deference.Contrib.ScoringTheorem
 #print axioms Workspace.Deference.Contrib.ScoringTheorem.Witness.d6_needed
 #print axioms Workspace.Deference.Contrib.ScoringTheorem.Witness.stuck
 #print axioms Workspace.Deference.Contrib.ScoringTheorem.Witness.d5_needed
+#print axioms Workspace.Deference.Contrib.ScoringTheorem.Witness.restricted_instance
+#print axioms Workspace.Deference.Contrib.ScoringTheorem.Witness.g₂
+#print axioms Workspace.Deference.Contrib.ScoringTheorem.Witness.eval_instance
+#print axioms Workspace.Deference.Contrib.ScoringTheorem.Witness.eval_defects_instance
+#print axioms Workspace.Deference.Contrib.ScoringTheorem.Witness.mediated_instance

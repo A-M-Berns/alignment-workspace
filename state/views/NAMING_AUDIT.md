@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `ATTENTION.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 1204 names, 635 of them Lean only
+## deference — 1228 names, 651 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -1069,6 +1069,30 @@ change, and the count of those is the size of the free choice remaining.
 | `Sensitive` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.Sensitive` |
 | `gatedPair` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.gatedPair` |
 | `gatedPair_validAt` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.gatedPair_validAt` |
+| `Audit` | structure | unrecorded | prose | `Workspace.Deference.Contrib.ScoringTheorem.Audit` |
+| `D1a` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D1a` |
+| `D1b` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D1b` |
+| `D2a` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D2a` |
+| `D2b` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D2b` |
+| `D3det` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D3det` |
+| `D3fp` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D3fp` |
+| `D5` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D5` |
+| `D6` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D6` |
+| `Indep` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.Indep` |
+| `alt` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Witness.alt` |
+| `base` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.ScoringTheorem.Witness.base` |
+| `bw` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.bw` |
+| `course` | def | unrecorded | prose | `Workspace.Deference.Contrib.ScoringTheorem.Witness.course` |
+| `es` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.es` |
+| `evalOf` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.ScoringTheorem.evalOf` |
+| `g₂` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Witness.g₂` |
+| `ind` | def | unrecorded | wiki | `Workspace.Deference.Contrib.ScoringTheorem.ind` |
+| `joint` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Contrib.ScoringTheorem.joint` |
+| `marg` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.marg` |
+| `mk` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Witness.mk` |
+| `pt` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.pt` |
+| `score` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.ScoringTheorem.Audit.score` |
+| `stuck` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Witness.stuck` |
 | `EXanti` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.EXanti` |
 | `EXnv` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.EXnv` |
 | `J` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.J` |
@@ -1106,7 +1130,7 @@ change, and the count of those is the size of the free choice remaining.
 | `lift` | def | 2026-10-01-thin-legitimacy-and-effective-authority | Lean only | `Workspace.Deference.Contrib.Sincerity.Rows.lift` |
 | `row20Lie` | def | 2026-10-01-thin-legitimacy-and-effective-authority | Lean only | `Workspace.Deference.Contrib.Sincerity.Rows.row20Lie` |
 | `row20TrueLie` | def | 2026-10-01-thin-legitimacy-and-effective-authority | Lean only | `Workspace.Deference.Contrib.Sincerity.Rows.row20TrueLie` |
-| `sincere` | def | 2026-10-01-thin-legitimacy-and-effective-authority | Lean only | `Workspace.Deference.Contrib.Sincerity.sincere` |
+| `sincere` | def | 2026-10-01-thin-legitimacy-and-effective-authority | prose | `Workspace.Deference.Contrib.Sincerity.sincere` |
 | `viewS` | def | 2026-10-01-thin-legitimacy-and-effective-authority | wiki | `Workspace.Deference.Contrib.Sincerity.viewS` |
 | `Architecture` | structure | 2026-08-11-stage-v-li-native | prose | `Workspace.Deference.Contrib.StaticViewFactorization.WorkedCase.Architecture` |
 | `FactorsThroughStaticView` | def | 2026-08-11-stage-v-li-native | note | `Workspace.Deference.Contrib.StaticViewFactorization.FactorsThroughStaticView` |
