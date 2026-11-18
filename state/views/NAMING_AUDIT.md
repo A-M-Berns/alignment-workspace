@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `ATTENTION.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 1228 names, 651 of them Lean only
+## deference — 1228 names, 650 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -1069,30 +1069,30 @@ change, and the count of those is the size of the free choice remaining.
 | `Sensitive` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.Sensitive` |
 | `gatedPair` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.gatedPair` |
 | `gatedPair_validAt` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.gatedPair_validAt` |
-| `Audit` | structure | unrecorded | prose | `Workspace.Deference.Contrib.ScoringTheorem.Audit` |
-| `D1a` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D1a` |
-| `D1b` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D1b` |
-| `D2a` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D2a` |
-| `D2b` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D2b` |
-| `D3det` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D3det` |
-| `D3fp` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D3fp` |
-| `D5` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D5` |
-| `D6` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D6` |
-| `Indep` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.Indep` |
-| `alt` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Witness.alt` |
-| `base` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.ScoringTheorem.Witness.base` |
-| `bw` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.bw` |
-| `course` | def | unrecorded | prose | `Workspace.Deference.Contrib.ScoringTheorem.Witness.course` |
-| `es` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.es` |
-| `evalOf` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.ScoringTheorem.evalOf` |
-| `g₂` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Witness.g₂` |
-| `ind` | def | unrecorded | wiki | `Workspace.Deference.Contrib.ScoringTheorem.ind` |
-| `joint` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Contrib.ScoringTheorem.joint` |
-| `marg` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.marg` |
-| `mk` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Witness.mk` |
-| `pt` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.pt` |
-| `score` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.ScoringTheorem.Audit.score` |
-| `stuck` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Witness.stuck` |
+| `Audit` | structure | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.ScoringTheorem.Audit` |
+| `D1a` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D1a` |
+| `D1b` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D1b` |
+| `D2a` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D2a` |
+| `D2b` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D2b` |
+| `D3det` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D3det` |
+| `D3fp` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D3fp` |
+| `D5` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D5` |
+| `D6` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D6` |
+| `Indep` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.Indep` |
+| `alt` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Witness.alt` |
+| `base` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.ScoringTheorem.Witness.base` |
+| `bw` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.bw` |
+| `course` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.ScoringTheorem.Witness.course` |
+| `es` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.es` |
+| `evalOf` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.ScoringTheorem.evalOf` |
+| `g₂` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Witness.g₂` |
+| `ind` | def | 2026-11-10-legitimacy-definition-prosecution | wiki | `Workspace.Deference.Contrib.ScoringTheorem.ind` |
+| `joint` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, note, prose | `Workspace.Deference.Contrib.ScoringTheorem.joint` |
+| `marg` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.marg` |
+| `mk` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Witness.mk` |
+| `pt` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.pt` |
+| `score` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.ScoringTheorem.Audit.score` |
+| `stuck` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Witness.stuck` |
 | `EXanti` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.EXanti` |
 | `EXnv` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.EXnv` |
 | `J` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.J` |
@@ -1246,7 +1246,7 @@ change, and the count of those is the size of the free choice remaining.
 | `point` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Headline.FormationData.point` |
 | `restoration2` | def | unrecorded | Lean only | `Workspace.Deference.Headline.restoration2` |
 
-## normativity — 1319 names, 879 of them Lean only
+## normativity — 1319 names, 877 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -1587,7 +1587,7 @@ change, and the count of those is the size of the free choice remaining.
 | `certZ` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.certZ` |
 | `certZ_lo` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.certZ_lo` |
 | `cert_hi` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.cert_hi` |
-| `clearing` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.clearing` |
+| `clearing` | def | 2026-10-21-rebuttal-and-end-to-end | prose | `Workspace.Normativity.Contrib.EndToEndWitness.Run.clearing` |
 | `coh` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.coh` |
 | `coordList5` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.coordList5` |
 | `docketAt` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.docketAt` |
@@ -2309,7 +2309,7 @@ change, and the count of those is the size of the free choice remaining.
 | `specialize` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.specialize` |
 | `system` | def | 2026-10-20-warrant-enforcement-semantics | wiki | `Workspace.Normativity.Contrib.SeedStatics.system` |
 | `toLinCon` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.toLinCon` |
-| `truth` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.truth` |
+| `truth` | def | 2026-10-20-warrant-enforcement-semantics | prose | `Workspace.Normativity.Contrib.SeedStatics.truth` |
 | `upperList` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.upperList` |
 | `widenSeed` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.widenSeed` |
 | `deficit` | def | 2026-08-16-traderized-enforcement | wiki, prose | `Workspace.Normativity.Contrib.TraderizedEnforcement.deficit` |
