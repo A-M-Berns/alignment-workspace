@@ -4378,6 +4378,210 @@ SUB1–SUB6, SUB8, ACC1–ACC7, ACC10, RB1–RB10, RC1–RC10, the files `accoun
 
 The pull request is not auto-merged; the merge is a pull-request fact.
 
+## Twelfth follow-up (2026-11-17) — the join to the post, in Lean
+
+Dispatched by `PROMPT-followup-12.md`; "§1" below is its section 1, the prompt author's proposal
+for the gate with three positions of the maintainer. No case is computed.
+`lean/Workspace/Deference/Contrib/AccountJoin.lean` states the join; `account/BRIDGE_LEAN.md`
+in the round directory reads it in words; `account/LEAN.md` lists it. Kernel-checked,
+unregistered.
+
+### Z.1 The declarations
+
+117, each under `#print axioms`. The headline ones:
+
+- `Gate` — the post's parameters; predicates *sound*, *information sufficient*, *the adviser
+  gained through a mistake of hers*; a non-negative `line3`; a rating in `[0, 1]`; a value in
+  `[−δ, 0)` for a history that is not legitimate.
+- `Gate.Legit`, `Gate.V`, `Gate.scoring` — the conjunction of §1's three conditions; the
+  rating on a legitimate history and the other value elsewhere; the post's `Scoring` on that
+  pair for a violation count given as an argument.
+- `Gate.theorem1_join`, `Gate.sequential`, `Gate.theorem3_join` — the post's Theorem 1 at the
+  pair, and its Theorem 3 on a sequence of realised histories under its two hypotheses.
+- `Gate.gained_below_legit`, `Gate.violated_below_violationFree` — a history on which the
+  adviser gained scores strictly below every legitimate violation-free history; a
+  violation-free history of any kind scores above every violated one.
+- `Gate.V_eq_of_rating_eq`, `Gate.not_legit_of_not_infoSufficient` — claims (4) and (5).
+- `Gate.V_eq_gateValue`, `Gate.bypass_below_V` — `V` is `Legitimacy.gateValue` at the bit
+  `Legit h`; that file's capture window puts a bypass below every `V h`.
+- `value_of_legit`, `not_legit_of_not_sufficient` — with the sufficiency predicate implying
+  `ThinLegitimacy.Sufficient`: a legitimate history with a correct credence has that file's
+  `Value`, and a history insufficient in that sense is not legitimate.
+- `unbiased_of_feedback`, `Witness.feedback_not_enough` — the post's feedback hypothesis for
+  the evaluation follows from the same hypothesis for a feedback sequence when the feedback
+  exceeds the evaluation by nothing on average in the limit; it can fail otherwise.
+- `miscalibrationGiven`, `deferring_cost_eq`, `deferring_cost_le`, `deferring_cost_eq_iff`,
+  `deferring_cost_eq_iff_pointwise`, `deferring_cost_le_of_calibrated`,
+  `deferring_cost_le_of_bound` — `E[(V − U)²] ≤ E[(E[U | k] − U)²] + E[(V − E[U | k, V])²]`,
+  with equality iff the adviser's estimate is the estimate given both wherever the weight is
+  positive.
+- `SoundModel`, `SoundModel.Sound`, `SoundModel.gate`, `SoundModel.deferring_cost_of_legit`
+  — histories carrying a probability weight on a finite space; *sound* defined as that
+  miscalibration being at most `m`; the bound on a legitimate history.
+- `valuationError_le_given`, `guarantee_of_given`, `guarantee_of_sound`,
+  `Witness.link_needed` — the guarantee from soundness, under a link hypothesis, and an
+  instance without it.
+- `ValueChange`, `Within`, `NoMore`, `line3`, `line3Old`, `line3_nonneg`, `line3_eq_zero`,
+  `line3Old_le_line3`, `Witness.separable_line3` — line 3 over finitely many policies and
+  claim (6); the instance has `line3 = 1/5` and the older form `−1/10`.
+- `Witness.blind` — a gate on which every history is legitimate and scores zero.
+
+### Z.2 The six claims
+
+| | status |
+|---|---|
+| (1) the post's theorems apply | **by construction, then by instantiation.** The ranges the post asks of `V` are fields of the gate. Theorem 3's maximisation and feedback hypotheses stay hypotheses; the alternative's availability and range are inputs; Theorem 2 is not instantiated |
+| (2) her evaluation is a sound signal | the inequality is **proved** on a finite space. **Weaker than §1 on a legitimate history**: it holds there because soundness is defined as a bound on the same miscalibration, with a tolerance `m`, under a weight the history carries; it is a mean squared error against her true utility and says nothing at the realised point |
+| (3) gained scores below legitimate | **proved from the ranges**, strictly, with no positive margin; it uses of *gained* only that the history is not legitimate. That such a history is not legitimate whatever its rating is by definition |
+| (4) same rating, same `V` | **by definition.** The gate has no field for what was done to her valuing |
+| (5) insufficient information is illegitimate | **by definition** for the gate's predicate; for `ThinLegitimacy.Sufficient` under the hypothesis that the predicate implies it |
+| (6) line 3's range | **proved**, all three parts, of `ValueChange.line3`; zero under the weaker hypothesis that the policy followed gives the baseline's later ratings. `Gate.line3` is a separate field |
+
+**`guarantee` and the deferring bound.** They do not compose as stated. The missing hypothesis:
+for each move, what she observes is determined by the adviser's information together with her
+valuation of that move (implied by the adviser knowing what she observes). With it,
+`v − E[regret] − √(2 Σ_a E[(V_a − E[U_a | k, V_a])²]) ≤ E[U_c]` for any `v` a move attains
+(`guarantee_of_given`, through `guarantee_core`). Without it, `Witness.link_needed`: the
+adviser knows nothing, she observes the world, each valuation is calibrated given the
+adviser's information and itself, she has no regret, and she attains `7/20` where one move is
+worth `1/2`.
+
+### Z.3 What does not go through
+
+`account/BRIDGE_LEAN.md` §4.
+
+1. *Worsening her options lowers `V`.* Not statable: the gate has no options, and no
+   declaration ties the rating to her true utility of what happened. As §1 stands a history
+   on which her options were worsened can be legitimate.
+2. *The authority module covers control of her act between options she rates the same.* Not
+   a theorem about this gate. Under an encoding of her selection as a reserved matter and the
+   override as an undelegated raw effect, `AuthorityModule.bypassAt_iff_clause2` makes it a
+   bypass, with no rating consulted; the encoding and a violation count defined from the
+   module are missing.
+3. *The feedback hypothesis when the self who gives feedback differs from the self who
+   scores.* Statable as a conditional, proved, and false without its condition (Z.1). No
+   declaration bounds her actual later rating over the unshaped one.
+4. *The history-level gate and the segment gate.* The value forms agree
+   (`Gate.V_eq_gateValue`); nothing relates `Legit` to `Legitimacy.Segment`.
+
+### Z.4 The external review
+
+One run of `codex exec --sandbox read-only` (codex-cli 0.153.4, model `gpt-6-astra`, as its
+log reports) on a directory holding §1, the Lean file as of commit `6c12342b`,
+`BRIDGE_LEAN.md`, and four of the existing Lean files for definitions. Reply verbatim in
+`REVIEW-astra-followup-12.md`. It found no error in a proof and no unsatisfiable package.
+
+1. *(a)1 `theorem3_join` states the rate corollary, not Theorem 3(a) in full.* **Fixed**: it
+   now concludes `limsup (R − T) ≤ 0` as well.
+2. *(a)2 "proved" is too generous for claim (2) on legitimate histories.* **Accepted**: Z.2.
+3. *(a)3, (a)4 hold for the supplied predicate and at the abstract level only.* **Accepted**,
+   said in Z.2 and `BRIDGE_LEAN.md` §1.
+4. *(a)5 definitional for the field, not for Blackwell sufficiency.* **Accepted**;
+   `not_legit_of_not_sufficient` added, with the implication as its hypothesis.
+5. *(a)6 `Gate.line3` is unconnected to `ValueChange.line3`; the older form could not be
+   checked against the tenth follow-up.* **Recorded**: the dispatch asks for no connection;
+   the older form is as `STATEMENT_CHECKS.md` item 5 writes it.
+6. *(b) `theorem1_instance` covers two of the three ranges.* **Fixed**: the witness has a
+   violated history.
+7. *(b) Restricted witnesses.* **Fixed for two** (`unbiased_of_feedback_instance` now has
+   three different sequences; `guarantee_of_sound_instance` valuations that are not the true
+   utilities); **recorded for** `theorem3_instance` and `Witness.model`.
+8. *(b) `SoundModel` permits a zero weight, under which every verdict is sound, and a
+   realised point of zero weight.* **Fixed**: the weight sums to one and is positive at the
+   realised point.
+9. *(c) The link is sufficient, not necessary; `guarantee` itself holds on
+   `Witness.link_needed`, its unused-information term being `4/25`.* **Accepted**, said in
+   `BRIDGE_LEAN.md`.
+10. *(c) The gap condition of `unbiased_of_feedback` is sufficient, not necessary.*
+    **Accepted**, said there.
+11. *(c) §4.3's sentence that the open question "decides whether" the bound is available is
+    unsupported, and makes a result depend on a question §1 leaves open.* **Accepted**:
+    reworded; neither answer supplies the averaged bound, and no declaration depends on it.
+    The dispatch's §5 gives that as what the queue entry turns on; the entry records both.
+12. *(c) §4.4's closing comparison is an interpretation.* **Accepted**: reworded.
+13. *(c) The comment on `theorem3_join` said "eventually at most `τ`".* **Fixed.**
+14. *(c) §4.2 cites a lemma of a file it was not given.* **Recorded**: the statement was
+    read by the executor at `AuthorityModule.lean`, `bypassAt_iff_clause2`.
+15. *(d) The strongest obstruction*: with every predicate trivial, line 3 zero, every rating
+    zero and no violation counted, every history is legitimate and every theorem holds; the
+    join never establishes that its inputs detect the conduct the guarantees are meant to
+    constrain. **Accepted**, and made a declaration: `Witness.blind`.
+
+### Z.5 The prompt author's predictions
+
+- *§2.1: each of (1), (3), (4), (5) a few lines; the reviewer says (4) and (5) are true by
+  construction.* So. The reviewer says the same of the ranges behind (1) and of (3)'s
+  dependence on the predicate.
+- *§2.2: under twenty lines from `deferring_identity`; `guarantee` does not compose without
+  a hypothesis relating the adviser's information to her observations.* So; the hypothesis
+  is Z.2's, and with it the bound is proved.
+- *§2.3: all of claim (6) holds; the instance exists.* So.
+- *§2.4: none of the four can be stated as a theorem with what exists.* Two cannot. The
+  third is stated as a conditional and proved, with an instance where it fails; of the
+  fourth the value form is a theorem and the predicates are unrelated.
+
+### Z.6 Deviations from the prompt
+
+- **Declarations beyond §2's list**: the feedback transfer and its failing instance, the
+  `gateValue` identity and the capture window, the two results on
+  `ThinLegitimacy.Sufficient`, `Gate.violated_below_violationFree`, `Witness.blind`.
+- **The violation count** is an argument of `scoring`; §2.1's list of fields has none.
+- **Line 3's states and indices** need not be finite; §2.3 says a finite space.
+- **Witnesses** are given for each theorem that has hypotheses beyond a non-negative weight
+  or a structure; lemmas used only inside a witnessed theorem (`bestOn_mono`,
+  `sq_dist_condExp_le_of_factors`, `valuationError_le_given`, the two `condExp_of_cell`
+  lemmas, the equality cases of the deferring bound) have none of their own.
+- **The import line**: the library is built by glob, so no existing file's import list
+  changed; the new file imports `AppraisalAccount`, `ThinLegitimacy` and `Legitimacy`.
+- **The reviewer** was also given four existing Lean files and a task file the executor
+  wrote; it reviewed the file before the fixes of Z.4, which it has not seen.
+- **No concept is added**; three blurbs are revised.
+
+### Z.7 What was not shown
+
+- **That the gate's predicates are §1's conditions**, or that any conduct fails them. They
+  are fields; `Witness.blind` satisfies every theorem with every history legitimate.
+- **The inducing test, the counterfactual later self, an adviser acting on her behalf, and
+  line 3 at every moment**: not modelled (`BRIDGE_LEAN.md` §3).
+- **A bound at the realised point or in `V`**: the sound-signal and guarantee results are
+  expectations in her true utility.
+- **That the link hypothesis is necessary**: one instance fails without it.
+- **Anything on cases.** The failures the eleventh follow-up located stand as it left them.
+- **Gates.** GATES
+- **Components.** The join — **open**: kernel-checked and unregistered, with no registry
+  entry standing for it. The concepts revised — **living notes**.
+
+### Z.8 Filings, names, and what is reserved
+
+`DECISIONS.md`: three dated entries (the maintainer's two positions; §1's gate as the prompt
+author's proposal adopted for this formalisation, not a ruling); one agent-decided entry,
+`2026-11-17--account-join-lean-readings`; a line from this pass on twenty-three queue
+entries, none taken out; one entry added, on whether a welcome change she did not ask for
+must wait for her request. `state/concepts.json`: three blurbs revised. Items 136 and 138
+gain what this pass bears on them; item 137 gains its remaining wants for the gate. The
+round's record gains its thirteenth verdict. No item or node is filed.
+
+**New names, all provisional:** the file `AccountJoin.lean` and its declarations, among them
+`Gate`, `Legit`, `InfoSufficient`, `Gained`, `voidValue`, `scoring`, `sequential`,
+`miscalibrationGiven`, `SoundModel`, `ValueChange`, `Within`, `NoMore`, `bestOn`, `line3`,
+`line3Old`, "the link" for the hypothesis of `guarantee_of_given`; the proposed registry ids
+`appraisal.deferring-cost`, `appraisal.guarantee-from-soundness`, `legitimacy.line3-range`,
+`corrigibility.feedback-transfer`; the file `account/BRIDGE_LEAN.md`.
+
+**Outstanding maintainer actions**
+
+1. Say whether a welcome change she did not ask for, larger than the tolerance, must wait
+   for her request. Entered in *Awaiting the author* (2026-11-17). Decision required: *must
+   wait*, or *legitimate unasked*.
+2. Map the handle and register the results: the seven of `AppraisalAccount.lean` and, if
+   wanted, the four proposed in `account/LEAN.md`, *The join to the post* (the entry of
+   2026-11-10 stands). Command, after the handle is mapped: append the entries to
+   `projects/normativity/CLAIMS.md` and file their nodes as that document says.
+3. The other entries of 2026-11-10 to 2026-11-17 on this round stay, each with a line from
+   this pass. Decision required for each: as its entry states.
+
+The pull request is not auto-merged; the merge is a pull-request fact.
+
 ## Attribution
 
 - Prompt-author model: Claude Fable 5 (Anthropic); dispatched 2026-11-10, kept
@@ -4438,4 +4642,8 @@ The pull request is not auto-merged; the merge is a pull-request fact.
   kept verbatim as `PROMPT-followup-11.md`; executor model Claude Fable 5.2 (Anthropic), executed
   2026-11-17; external reviewer `gpt-6-astra` through codex-cli 0.153.4, as its log reports, in
   one session of two stages, replies kept verbatim as `REVIEW-astra-followup-11.md`.
+- Twelfth follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-17,
+  kept verbatim as `PROMPT-followup-12.md`; executor model Claude Fable 5.2 (Anthropic), executed
+  2026-11-17; external reviewer `gpt-6-astra` through codex-cli 0.153.4, as its log reports, in
+  one run, reply kept verbatim as `REVIEW-astra-followup-12.md`.
 - No chat bundle.

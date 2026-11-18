@@ -103,6 +103,37 @@ cases, accepted by the executor as plain subversion, in which the adviser decide
 two options she rates the same she takes and every line is zero. No verdict differs between
 the two settings. No Lean; nothing registered.
 
+For the join to the post in Lean: `lean/Workspace/Deference/Contrib/AccountJoin.lean` states
+it; `account/BRIDGE_LEAN.md` reads each declaration in words, lists where the dispatch's
+wording was changed to state it, and says what does not go through; `account/LEAN.md` lists
+the results, unregistered. The report's section *Twelfth follow-up* says what they show.
+
+Follow-up verdict (the join to the post in Lean, 2026-11-17): MIXED — the join of the
+account to the corrigibility post is written in Lean, 117 declarations, kernel-checked, none
+registered: a gate on whole histories made of three predicates and a third-line value, the
+post's scoring built from it, and the post's Theorems 1 and 3 at that pair. Of the
+dispatch's six claims: that the post's theorems apply holds by construction and
+instantiation, the ranges the post asks for being fields of the gate; that a history on
+which the adviser gained through a mistake of hers scores below every legitimate
+violation-free history is proved from those ranges, strictly and with no margin; that two
+legitimate histories with one rating have one evaluation, and that a history on which her
+information is not sufficient is not legitimate, hold by definition; the bound on what
+deferring to her verdict costs is proved on a finite space, and holds on a legitimate
+history because soundness is there defined as a bound on the same miscalibration, with a
+tolerance; that the third line is never negative, is zero at the baseline and is at least
+its older form is proved in full, with an instance on which it is 1/5 and the older form is
+-1/10. The guarantee on what she attains composes with the deferring bound only under a
+hypothesis linking what she observes to what the adviser knows; on an instance without it
+every valuation is calibrated in the deferring sense, she has no regret, and she attains
+7/20 against a move worth 1/2. Of four further statements: that worsening her options lowers
+her evaluation, and that the authority module covers control of her act between options she
+rates the same, cannot be stated with what exists; the post's feedback hypothesis passes
+from the feedback she gives to the evaluation the join defines under a stated condition and
+fails on an instance without it; the gate's value is the segment gate's value form, and its
+predicate is unrelated to the segment gate's. A gate on which every history is legitimate
+satisfies every theorem: the predicates are given, and nothing connects them to the conduct
+the post's guarantees are meant to constrain.
+
 For the board statement: `account/LIT_CASES.md` is the bank of 52 cases from Harman,
 Pettigrew, Kolodny, Carroll et al. and Noggle, verified against the sources, with each
 source's verdict and what it is a verdict on; `account/LIT_RESULTS.md` the executor's

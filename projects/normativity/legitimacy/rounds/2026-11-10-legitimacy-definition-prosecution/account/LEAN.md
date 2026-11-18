@@ -51,6 +51,28 @@ hypothesis package; that the terms of the identities are non-zero on them is not
 in Lean, except that the verdict of `Witness.deferring_instance` is shown not to be
 determined by the adviser's information.
 
+## The join to the post
+
+`lean/Workspace/Deference/Contrib/AccountJoin.lean`, namespace
+`Workspace.Deference.Contrib.AccountJoin`: 117 declarations, each under `#print axioms`
+reporting `[propext, Classical.choice, Quot.sound]` or no axiom. `BRIDGE_LEAN.md` reads each
+in words and says which hold by definition. Rerun:
+`~/.claude/scripts/safe-lake.sh build Workspace.Deference.Contrib.AccountJoin` from `lean/`.
+
+| statement | declaration | hypotheses | witness | proposed registry id |
+|---|---|---|---|---|
+| what deferring costs: `E[(V − U)²] ≤ E[(E[U | k] − U)²] + E[(V − E[U | k, V])²]`, with the equality case | `deferring_cost_le` (`deferring_cost_eq`, `deferring_cost_eq_iff`, `deferring_cost_eq_iff_pointwise`, `miscalibrationGiven_eq`) | `0 ≤ μ` | `Witness.deferring_cost_instance` | `appraisal.deferring-cost` |
+| the guarantee from soundness given the adviser's information | `guarantee_of_given` (`valuationError_le_given`, `sq_dist_condExp_le_of_factors`, `guarantee_of_sound`) | `0 ≤ μ`, `Σ μ = 1`; for each move, her observation determined by the adviser's information with her valuation of it | `Witness.guarantee_of_sound_instance`; `Witness.link_needed` without the link | `appraisal.guarantee-from-soundness` |
+| line 3 is at least its older form, never negative, zero at the baseline | `ValueChange.line3Old_le_line3` (`line3_nonneg`, `line3_eq_zero`) | finitely many policies | `Witness.line3_instance`, `Witness.separable_line3` | `legitimacy.line3-range` |
+| the feedback hypothesis transfers when the feedback exceeds the evaluation by nothing on average | `unbiased_of_feedback` | the two eventual bounds | `Witness.unbiased_of_feedback_instance`; `Witness.feedback_not_enough` without the second | `corrigibility.feedback-transfer` |
+
+The gate (`Gate`, `Gate.scoring`, `Gate.theorem1_join`, `Gate.theorem3_join`,
+`Gate.gained_below_legit`, `Gate.V_eq_of_rating_eq`,
+`Gate.not_legit_of_not_infoSufficient`, `Gate.V_eq_gateValue`, `SoundModel`) is a
+construction and its consequences; three of those hold by definition and none is proposed
+for the registry. **Not registered**, for the reason below; an entry for each proposed id
+takes the form of those below, with `BRIDGE_LEAN.md` as its verification document.
+
 ## Registration
 
 **Not registered.** The site build refuses a registered claim that no map node carries

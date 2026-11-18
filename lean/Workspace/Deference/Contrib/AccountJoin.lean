@@ -17,15 +17,19 @@ post's `Scoring` on that pair, for any violation count `N`, which the gate does 
 
 **What holds of it.**  The post's Theorem 1 at this pair (`theorem1_join`), and Theorem 3 on
 a sequence of realised histories (`sequential`, `theorem3_join`), with maximisation and
-unbiasedness from feedback still hypotheses.  A history on which the adviser gained is not
+unbiasedness from feedback still hypotheses, and the alternative's availability and range
+inputs.  A history on which the adviser gained is not
 legitimate whatever its rating (`gained_not_legit`) and scores below every legitimate
 violation-free history, strictly, with no positive margin (`gained_below_legit`); it scores
 above every violated history when it is itself violation-free (`violated_below_violationFree`).
 Two legitimate histories with one rating have one `V` (`V_eq_of_rating_eq`).  A history on
 which her information is not sufficient is not legitimate (`not_legit_of_not_infoSufficient`).
-The last three hold by unfolding `Legit` and `V`.  Where the sufficiency predicate implies
+`gained_not_legit`, `V_eq_of_rating_eq` and `not_legit_of_not_infoSufficient` hold by
+unfolding `Legit` and `V`.  `Witness.blind` is a gate with every predicate trivial, on which
+every history is legitimate and scores zero: the structure by itself constrains nothing.  Where the sufficiency predicate implies
 `ThinLegitimacy.Sufficient`, a legitimate history with a correct credence has that file's
-`Value` (`value_of_legit`).
+`Value` (`value_of_legit`), and a history not sufficient in that sense is not legitimate
+(`not_legit_of_not_sufficient`).
 
 **The segment gate's value form** (`Gate.V_eq_gateValue`, `Gate.bypass_below_V`).  `V h` is
 `Legitimacy.gateValue` at the bit *`Legit h`*, the rating as the ordinary value and the
@@ -49,8 +53,8 @@ wherever `μ` is positive.  `miscalibrationGiven μ k V U` is `E[(V − z)²]`; 
 
 **A gate whose soundness is defined** (`SoundModel`, `SoundModel.Sound`, `SoundModel.gate`,
 `SoundModel.deferring_cost_of_legit`, `SoundModel.V_of_legit`).  Each history carries a
-weight on a finite space, the adviser's information, her verdict, her true utility and the
-realised point; *sound* is `miscalibrationGiven ≤ m`; the rating is her verdict at the
+probability weight on a finite space, the adviser's information, her verdict, her true
+utility and the realised point, of positive weight; *sound* is `miscalibrationGiven ≤ m`; the rating is her verdict at the
 realised point.  On a legitimate history the verdict's mean squared error is at most the
 adviser's own plus `m`.
 
@@ -257,16 +261,19 @@ theorem sequential_S {A : Type*} (N : H → ℕ) (hist : ℕ → H) (avail : ℕ
   rfl
 
 /-- **Claim (1), Theorem 3.**  On a sequence of realised histories scored by the pair, under
-the post's two hypotheses, the violation rate is eventually at most `τ` and no available
-sequence's estimates exceed the realised scores on average. -/
+the post's two hypotheses: `limsup (R_K − T_K) ≤ 0`, hence `limsup R_K ≤ τ`, and for every
+available sequence `limsup (1/K) Σ (U_k a'_k − S_k) ≤ 0`, each in the post's eventual form
+(`LimsupLE x c`: for every `γ > 0`, `x K ≤ c + γ` from some `K` on). -/
 theorem theorem3_join {A : Type*} (N : H → ℕ) (hist : ℕ → H) (avail : ℕ → A → Prop)
     (U : ℕ → A → ℝ) (a astar : ℕ → A) (h_avail : ∀ k, avail k (astar k))
     (h_range : ∀ k, -G.δ ≤ U k (astar k) ∧ U k (astar k) ≤ 1) :
     let Q := G.sequential N hist avail U a astar h_avail h_range
     Q.Maximizes → Q.UnbiasedFromFeedback →
-      LimsupLE Q.R Q.τ ∧ ∀ a' : ℕ → A, (∀ k, avail k (a' k)) → LimsupLE (Q.excess a') 0 := by
+      LimsupLE (fun K => Q.R K - Q.T K) 0 ∧ LimsupLE Q.R Q.τ ∧
+        ∀ a' : ℕ → A, (∀ k, avail k (a' k)) → LimsupLE (Q.excess a') 0 := by
   intro Q hmax huff
-  exact ⟨Q.theorem3a_rate hmax huff, fun a' ha' => Q.theorem3b hmax huff a' ha'⟩
+  exact ⟨Q.theorem3a hmax huff, Q.theorem3a_rate hmax huff,
+    fun a' ha' => Q.theorem3b hmax huff a' ha'⟩
 
 end Gate
 
@@ -318,6 +325,16 @@ theorem value_of_legit (G : Gate H) (π : W → ℝ) (hπ : ∀ w, 0 ≤ π w) (
     (hS : ∀ h, G.InfoSufficient h → Sufficient (E h) (A h) (B h)) {h : H} (hl : G.Legit h)
     (hC : Correct π (A h) (Cr h)) : Value π (E h) (A h) (Cr h) (B h) :=
   value_of_correct_sufficient π hπ (E h) (A h) (Cr h) (B h) hC (hS h hl.1.2)
+
+omit [Fintype W] in
+/-- Claim (5) under that reading: where the gate's sufficiency predicate implies
+`ThinLegitimacy.Sufficient`, a history whose processes are not sufficient in that sense is
+not legitimate. -/
+theorem not_legit_of_not_sufficient (G : Gate H) (E : H → W → Rec₀) (A : H → Kernel W Rec)
+    (B : H → Kernel W RecB)
+    (hS : ∀ h, G.InfoSufficient h → Sufficient (E h) (A h) (B h)) {h : H}
+    (hn : ¬ Sufficient (E h) (A h) (B h)) : ¬ G.Legit h :=
+  fun hl => hn (hS h hl.1.2)
 
 end Thin
 
@@ -446,13 +463,14 @@ end Sound
 
 /-! ## A gate whose soundness is defined from a finite space -/
 
-/-- **Histories carrying a finite model.**  For each history: a weight on a finite space
-`X`, the adviser's information, her verdict in `[0, 1]`, her true utility and the realised
-point; a bound `m`; and the gate's other components. -/
+/-- **Histories carrying a finite model.**  For each history: a probability weight on a
+finite space `X`, the adviser's information, her verdict in `[0, 1]`, her true utility and
+the realised point, of positive weight; a bound `m`; and the gate's other components. -/
 structure SoundModel (H X K : Type*) [Fintype X] [DecidableEq K] extends Params where
   /-- the weight a history carries -/
   μ : H → X → ℝ
   μ_nonneg : ∀ h x, 0 ≤ μ h x
+  μ_sum : ∀ h, ∑ x, μ h x = 1
   /-- the adviser's information -/
   k : H → X → K
   /-- her verdict -/
@@ -462,6 +480,7 @@ structure SoundModel (H X K : Type*) [Fintype X] [DecidableEq K] extends Params 
   U : H → X → ℝ
   /-- the realised point -/
   point : H → X
+  point_pos : ∀ h, 0 < μ h (point h)
   /-- the bound on miscalibration -/
   m : ℝ
   /-- her information is sufficient -/
@@ -774,8 +793,10 @@ noncomputable def gate : Gate Hist where
   voidValue := fun _ => -1 / 2
   voidValue_range := fun _ => by norm_num
 
-/-- No history is violated. -/
-def count : Hist → ℕ := fun _ => 0
+/-- The unsound history is violated once; no other is. -/
+def count : Hist → ℕ
+  | .unsound => 1
+  | _ => 0
 
 theorem legit_clean : gate.Legit .clean :=
   ⟨⟨by simp [gate], by simp [gate]⟩, by simp [gate], by simp [gate]⟩
@@ -783,15 +804,47 @@ theorem legit_clean : gate.Legit .clean :=
 theorem legit_helped : gate.Legit .helped :=
   ⟨⟨by simp [gate], by simp [gate]⟩, by simp [gate], by simp [gate]⟩
 
-/-- **Claim (1)'s package is inhabited**: the three ranges hold of a legitimate history and
-of one that is not. -/
+/-- **Claim (1)'s package is inhabited**: each of the three ranges holds of a history of
+its kind — legitimate and violation-free, violation-free and not legitimate, violated. -/
 theorem theorem1_instance :
-    gate.Legit .clean ∧ ¬ gate.Legit .deceived ∧
+    gate.Legit .clean ∧ ¬ gate.Legit .deceived ∧ 1 ≤ count .unsound ∧
       (0 ≤ (gate.scoring count).S .clean ∧ (gate.scoring count).S .clean ≤ 1) ∧
-      (-gate.δ ≤ (gate.scoring count).S .deceived ∧ (gate.scoring count).S .deceived < 0) :=
-  ⟨legit_clean, gate.gained_not_legit rfl,
+      (-gate.δ ≤ (gate.scoring count).S .deceived ∧ (gate.scoring count).S .deceived < 0) ∧
+      (gate.scoring count).S .unsound ≤ 1 - gate.lam :=
+  ⟨legit_clean, gate.gained_not_legit rfl, le_refl 1,
     (gate.theorem1_join count .clean).2.2 ⟨rfl, legit_clean⟩,
-    (gate.theorem1_join count .deceived).2.1 ⟨rfl, gate.gained_not_legit rfl⟩⟩
+    (gate.theorem1_join count .deceived).2.1 ⟨rfl, gate.gained_not_legit rfl⟩,
+    (gate.theorem1_join count .unsound).1.1 (le_refl 1)⟩
+
+/-- **`Gate.violated_below_violationFree`'s package is inhabited**: the violated history
+scores below a violation-free one. -/
+theorem violated_below_instance :
+    count .clean = 0 ∧ 1 ≤ count .unsound ∧
+      (gate.scoring count).S .unsound < (gate.scoring count).S .clean :=
+  ⟨rfl, le_refl 1, gate.violated_below_violationFree count rfl (le_refl 1)⟩
+
+/-- **The gate by itself constrains nothing.**  With every predicate trivial, line 3 zero,
+every rating zero and no violation counted, every history is legitimate and scores zero;
+the structure's fields and the theorems above hold of it. -/
+noncomputable def blind (H : Type*) : Gate H where
+  δ := 1
+  lam := 3
+  δ_pos := by norm_num
+  lam_gt := by norm_num
+  Sound := fun _ => True
+  InfoSufficient := fun _ => True
+  Gained := fun _ => False
+  line3 := fun _ => 0
+  line3_nonneg := fun _ => le_refl _
+  rating := fun _ => 0
+  rating_range := fun _ => by norm_num
+  voidValue := fun _ => -1 / 2
+  voidValue_range := fun _ => by norm_num
+
+theorem blind_all_legit {H : Type*} (h : H) :
+    (blind H).Legit h ∧ ((blind H).scoring fun _ => 0).S h = 0 :=
+  ⟨⟨⟨trivial, trivial⟩, fun hg => hg, rfl⟩,
+    (blind H).S_of_legit (fun _ => 0) ⟨⟨trivial, trivial⟩, fun hg => hg, rfl⟩ rfl⟩
 
 /-- **Claim (3)'s package is inhabited**, by a history on which the adviser gained and which
 has the highest rating: it scores below a legitimate violation-free history of lower
@@ -855,7 +908,8 @@ theorem seq_unbiased : seq.UnbiasedFromFeedback := by
 /-- **Theorem 3's package is inhabited at the pair**; its conclusions hold on the
 instance. -/
 theorem theorem3_instance :
-    seq.Maximizes ∧ seq.UnbiasedFromFeedback ∧ LimsupLE seq.R seq.τ ∧
+    seq.Maximizes ∧ seq.UnbiasedFromFeedback ∧ LimsupLE (fun K => seq.R K - seq.T K) 0 ∧
+      LimsupLE seq.R seq.τ ∧
       ∀ a' : ℕ → Unit, (∀ k, seq.avail k (a' k)) → LimsupLE (seq.excess a') 0 :=
   ⟨seq_maximizes, seq_unbiased,
     gate.theorem3_join count (fun _ => Hist.clean) (fun _ _ => True) (fun _ _ => 1 / 2)
@@ -883,6 +937,38 @@ theorem value_of_legit_instance :
       (fun _ => ThinLegitimacy.Witness.blank) (fun _ => ThinLegitimacy.Witness.pointMass)
       (fun _ _ => ThinLegitimacy.Witness.thin_inhabited.2.1) legit_clean
       ThinLegitimacy.Witness.thin_inhabited.1⟩
+
+/-- The process a history carries: uninformative on the uninformed history, revealing on
+every other. -/
+noncomputable def recordOf : Hist → ThinLegitimacy.Kernel (Fin 2) (Fin 2) := fun h =>
+  if h = .uninformed then ThinLegitimacy.Witness.uninformative
+  else ThinLegitimacy.Witness.reveal
+
+open Workspace.Deference.Contrib.ThinLegitimacy (Sufficient) in
+/-- **`not_legit_of_not_sufficient`'s package is inhabited**: her earlier record blank, the
+baseline revealing; the gate's predicate implies `Sufficient`, which fails on the uninformed
+history. -/
+theorem not_legit_of_not_sufficient_instance :
+    (∀ h : Hist, gate.InfoSufficient h →
+        Sufficient (fun _ : Fin 2 => ()) (recordOf h) ThinLegitimacy.Witness.reveal) ∧
+      ¬ Sufficient (fun _ : Fin 2 => ()) (recordOf .uninformed)
+        ThinLegitimacy.Witness.reveal ∧
+      ¬ gate.Legit .uninformed := by
+  have hS : ∀ h : Hist, gate.InfoSufficient h →
+      Sufficient (fun _ : Fin 2 => ()) (recordOf h) ThinLegitimacy.Witness.reveal := by
+    intro h hh
+    have hne : h ≠ Hist.uninformed := hh
+    unfold recordOf
+    rw [if_neg hne]
+    exact ThinLegitimacy.sufficient_of_integrity_openness _ _ _
+      ThinLegitimacy.Witness.thick_inhabited.2.2.2.1 (ThinLegitimacy.garbling_refl _)
+  have hn : ¬ Sufficient (fun _ : Fin 2 => ()) (recordOf .uninformed)
+      ThinLegitimacy.Witness.reveal := by
+    unfold recordOf
+    rw [if_pos rfl]
+    exact ThinLegitimacy.Witness.openness_necessary.2.2
+  exact ⟨hS, hn, not_legit_of_not_sufficient gate (fun _ _ => ()) recordOf
+    (fun _ => ThinLegitimacy.Witness.reveal) hS hn⟩
 
 /-! ### The feedback hypothesis -/
 
@@ -923,36 +1009,39 @@ theorem flat_feedback (est ev F : ℝ) (hev : ev ≤ 1) (hest : -1 ≤ est ∧ e
   field_simp
   ring
 
-/-- **`unbiased_of_feedback`'s package is inhabited**: estimates, feedback and evaluation
-all `1/2`. -/
+/-- **`unbiased_of_feedback`'s package is inhabited**, with the three sequences different:
+estimates `1/4`, feedback `1/2`, evaluation `3/4`. -/
 theorem unbiased_of_feedback_instance :
     (∀ γ > 0, ∃ N₀, ∀ K ≥ N₀,
         (∑ k ∈ Finset.range K,
-          ((flat (1 / 2) (1 / 2) (by norm_num) (by norm_num)).U k
-              ((flat (1 / 2) (1 / 2) (by norm_num) (by norm_num)).a k)
-            - ((1 / 2 : ℝ) - (flat (1 / 2) (1 / 2) (by norm_num) (by norm_num)).lam
-              * ((flat (1 / 2) (1 / 2) (by norm_num) (by norm_num)).N k : ℝ)))) / (K : ℝ)
+          ((flat (1 / 4) (3 / 4) (by norm_num) (by norm_num)).U k
+              ((flat (1 / 4) (3 / 4) (by norm_num) (by norm_num)).a k)
+            - ((1 / 2 : ℝ) - (flat (1 / 4) (3 / 4) (by norm_num) (by norm_num)).lam
+              * ((flat (1 / 4) (3 / 4) (by norm_num) (by norm_num)).N k : ℝ)))) / (K : ℝ)
           ≤ γ) ∧
       LimsupLE (fun K => (∑ k ∈ Finset.range K,
-        ((1 / 2 : ℝ) - (flat (1 / 2) (1 / 2) (by norm_num) (by norm_num)).V k)) / (K : ℝ)) 0 ∧
-      (flat (1 / 2) (1 / 2) (by norm_num) (by norm_num)).UnbiasedFromFeedback := by
+        ((1 / 2 : ℝ) - (flat (1 / 4) (3 / 4) (by norm_num) (by norm_num)).V k)) / (K : ℝ)) 0 ∧
+      (flat (1 / 4) (3 / 4) (by norm_num) (by norm_num)).UnbiasedFromFeedback := by
   have hF : ∀ γ > 0, ∃ N₀, ∀ K ≥ N₀,
       (∑ k ∈ Finset.range K,
-        ((flat (1 / 2) (1 / 2) (by norm_num) (by norm_num)).U k
-            ((flat (1 / 2) (1 / 2) (by norm_num) (by norm_num)).a k)
-          - ((1 / 2 : ℝ) - (flat (1 / 2) (1 / 2) (by norm_num) (by norm_num)).lam
-            * ((flat (1 / 2) (1 / 2) (by norm_num) (by norm_num)).N k : ℝ)))) / (K : ℝ)
+        ((flat (1 / 4) (3 / 4) (by norm_num) (by norm_num)).U k
+            ((flat (1 / 4) (3 / 4) (by norm_num) (by norm_num)).a k)
+          - ((1 / 2 : ℝ) - (flat (1 / 4) (3 / 4) (by norm_num) (by norm_num)).lam
+            * ((flat (1 / 4) (3 / 4) (by norm_num) (by norm_num)).N k : ℝ)))) / (K : ℝ)
         ≤ γ := by
     intro γ hγ
     refine ⟨1, fun K hK => ?_⟩
-    rw [flat_feedback (1 / 2) (1 / 2) (1 / 2) (by norm_num) (by norm_num) K hK]
+    rw [flat_feedback (1 / 4) (3 / 4) (1 / 2) (by norm_num) (by norm_num) K hK]
     linarith
   have hgap : LimsupLE (fun K => (∑ k ∈ Finset.range K,
-      ((1 / 2 : ℝ) - (flat (1 / 2) (1 / 2) (by norm_num) (by norm_num)).V k)) / (K : ℝ)) 0 := by
+      ((1 / 2 : ℝ) - (flat (1 / 4) (3 / 4) (by norm_num) (by norm_num)).V k)) / (K : ℝ)) 0 := by
     intro γ hγ
     refine ⟨0, fun K _ => ?_⟩
-    show (∑ _k ∈ Finset.range K, ((1 / 2 : ℝ) - 1 / 2)) / (K : ℝ) ≤ 0 + γ
-    rw [sub_self, Finset.sum_const_zero, zero_div]
+    show (∑ _k ∈ Finset.range K, ((1 / 2 : ℝ) - 3 / 4)) / (K : ℝ) ≤ 0 + γ
+    rw [Finset.sum_const, Finset.card_range, nsmul_eq_mul]
+    have hK : (0 : ℝ) ≤ K := Nat.cast_nonneg K
+    have h0 : (K : ℝ) * (1 / 2 - 3 / 4) / (K : ℝ) ≤ 0 :=
+      div_nonpos_of_nonpos_of_nonneg (by nlinarith) hK
     linarith
   exact ⟨hF, hgap, unbiased_of_feedback _ _ hF hgap⟩
 
@@ -1016,6 +1105,14 @@ theorem deferring_cost_instance :
     norm_num
   simp [expectR, hz]
 
+/-- **`deferring_cost_le_of_calibrated`'s package is inhabited**, by the same verdict. -/
+theorem deferring_calibrated_instance :
+    miscalibrationGiven μ₂ (fun _ : Bool => ()) T T = 0 ∧
+      expectR μ₂ (fun x => (T x - T x) ^ 2)
+        ≤ expectR μ₂ (fun x => (condExp μ₂ (fun _ : Bool => ()) T x - T x) ^ 2) :=
+  ⟨deferring_cost_instance.2.2,
+    deferring_cost_le_of_calibrated μ₂ μ₂_nonneg _ T T deferring_cost_instance.2.2⟩
+
 /-- One history carrying the two worlds: the adviser knows nothing, her verdict is her true
 utility, the bound is zero. -/
 noncomputable def model : SoundModel Unit Bool Unit where
@@ -1025,11 +1122,13 @@ noncomputable def model : SoundModel Unit Bool Unit where
   lam_gt := by norm_num
   μ := fun _ => μ₂
   μ_nonneg := fun _ => μ₂_nonneg
+  μ_sum := fun _ => μ₂_sum
   k := fun _ _ => ()
   verdict := fun _ => T
   verdict_range := fun _ x => by cases x <;> norm_num [T]
   U := fun _ => T
   point := fun _ => true
+  point_pos := fun _ => by norm_num [μ₂]
   m := 0
   InfoSufficient := fun _ => True
   Gained := fun _ => False
@@ -1056,29 +1155,37 @@ theorem model_instance :
 /-- Two moves; a move pays `1` in the world it names. -/
 noncomputable def Ud : Bool → Bool → ℝ := fun a x => if a = x then 1 else 0
 
-theorem Ud_given_zero (a : Bool) :
-    miscalibrationGiven μ₂ (fun x : Bool => x) (fun x => Ud a x) (Ud a) ≤ 0 := by
-  unfold miscalibrationGiven
-  have hz : ∀ x, (Ud a x - condExp μ₂ (fun x => (x, Ud a x)) (Ud a) x) ^ 2 = 0 := fun x => by
-    rw [condExp_of_cell_singleton μ₂ _ (Ud a) x (by norm_num [μ₂])
-      (fun x' h => congrArg Prod.fst h), sub_self]
-    norm_num
-  simp [expectR, hz]
+/-- Her valuations for the instance with the link: every move at `1/2`, whatever she
+observes. -/
+noncomputable def uhatd : Bool → Bool → ℝ := fun _ _ => 1 / 2
 
-/-- **`guarantee_of_sound`'s package is inhabited**: she observes the world, the adviser
-does too, her valuations are the true utilities, the reference is her own space; its
-conclusion holds on the instance. -/
+theorem Ud_given (a : Bool) :
+    miscalibrationGiven μ₂ (fun x : Bool => x) (fun x => uhatd a x) (Ud a) ≤ 1 / 4 := by
+  unfold miscalibrationGiven
+  have hz : ∀ x, (uhatd a x - condExp μ₂ (fun x => (x, uhatd a x)) (Ud a) x) ^ 2 = 1 / 4 :=
+    fun x => by
+      rw [condExp_of_cell_singleton μ₂ _ (Ud a) x (by norm_num [μ₂])
+        (fun x' h => congrArg Prod.fst h)]
+      cases a <;> cases x <;> norm_num [uhatd, Ud]
+  simp only [expectR, hz, Fintype.sum_bool, μ₂]
+  norm_num
+
+/-- **`guarantee_of_sound`'s package is inhabited**, with valuations that are not the true
+utilities: she observes the world and so does the adviser, she values every move at `1/2`
+and takes the move `true`, each valuation's miscalibration given the adviser's information
+is at most `1/4`, and the reference is her own space; its conclusion holds on the
+instance. -/
 theorem guarantee_of_sound_instance :
     (∀ x, 0 ≤ μ₂ x) ∧ ∑ x, μ₂ x = 1 ∧
-      (∀ (a : Bool) (x x' : Bool), x = x' → Ud a x = Ud a x' → x = x') ∧
-      (∀ a, miscalibrationGiven μ₂ (fun x : Bool => x) (fun x => Ud a x) (Ud a) ≤ 0) ∧
+      (∀ (a : Bool) (x x' : Bool), x = x' → uhatd a x = uhatd a x' → x = x') ∧
+      (∀ a, miscalibrationGiven μ₂ (fun x : Bool => x) (fun x => uhatd a x) (Ud a) ≤ 1 / 4) ∧
       (∀ b : Bool, ∃ a : Bool, expectR μ₂ (Ud b) ≤ expectR μ₂ (Ud a)) ∧
-      ∀ b : Bool, expectR μ₂ (Ud b) - expectR μ₂ (regret Ud (fun x => x) (fun s => s))
-          - Real.sqrt (2 * ((Fintype.card Bool : ℝ) * 0))
-        ≤ expectR μ₂ (fun x => Ud x x) :=
-  ⟨μ₂_nonneg, μ₂_sum, fun _ _ _ h _ => h, Ud_given_zero, fun b => ⟨b, le_rfl⟩,
-    guarantee_of_sound μ₂ μ₂_nonneg μ₂_sum Ud (fun x => x) (fun s => s) Ud (fun x => x)
-      (fun _ _ _ h _ => h) 0 Ud_given_zero μ₂ Ud fun b => ⟨b, le_rfl⟩⟩
+      ∀ b : Bool, expectR μ₂ (Ud b) - expectR μ₂ (regret uhatd (fun x => x) (fun _ => true))
+          - Real.sqrt (2 * ((Fintype.card Bool : ℝ) * (1 / 4)))
+        ≤ expectR μ₂ (fun x => Ud true x) :=
+  ⟨μ₂_nonneg, μ₂_sum, fun _ _ _ h _ => h, Ud_given, fun b => ⟨b, le_rfl⟩,
+    guarantee_of_sound μ₂ μ₂_nonneg μ₂_sum Ud (fun x => x) (fun _ => true) uhatd (fun x => x)
+      (fun _ _ _ h _ => h) (1 / 4) Ud_given μ₂ Ud fun b => ⟨b, le_rfl⟩⟩
 
 /-- True utilities for the instance without the link: move `false` pays `3/5` or `2/5` with
 the world, move `true` pays `9/10` or `1/10`. -/
@@ -1255,6 +1362,7 @@ end Workspace.Deference.Contrib.AccountJoin
 #print axioms Workspace.Deference.Contrib.AccountJoin.Gate.V_eq_gateValue
 #print axioms Workspace.Deference.Contrib.AccountJoin.Gate.bypass_below_V
 #print axioms Workspace.Deference.Contrib.AccountJoin.value_of_legit
+#print axioms Workspace.Deference.Contrib.AccountJoin.not_legit_of_not_sufficient
 #print axioms Workspace.Deference.Contrib.AccountJoin.unbiased_of_feedback
 #print axioms Workspace.Deference.Contrib.AccountJoin.miscalibrationGiven
 #print axioms Workspace.Deference.Contrib.AccountJoin.miscalibrationGiven_nonneg
@@ -1299,6 +1407,9 @@ end Workspace.Deference.Contrib.AccountJoin
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.legit_clean
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.legit_helped
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.theorem1_instance
+#print axioms Workspace.Deference.Contrib.AccountJoin.Witness.violated_below_instance
+#print axioms Workspace.Deference.Contrib.AccountJoin.Witness.blind
+#print axioms Workspace.Deference.Contrib.AccountJoin.Witness.blind_all_legit
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.gained_below_legit_instance
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.V_eq_of_rating_eq_instance
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.not_infoSufficient_instance
@@ -1309,6 +1420,8 @@ end Workspace.Deference.Contrib.AccountJoin
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.seq_unbiased
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.theorem3_instance
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.value_of_legit_instance
+#print axioms Workspace.Deference.Contrib.AccountJoin.Witness.recordOf
+#print axioms Workspace.Deference.Contrib.AccountJoin.Witness.not_legit_of_not_sufficient_instance
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.flat
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.flat_excess
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.flat_feedback
@@ -1319,11 +1432,13 @@ end Workspace.Deference.Contrib.AccountJoin
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.μ₂_sum
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.T
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.deferring_cost_instance
+#print axioms Workspace.Deference.Contrib.AccountJoin.Witness.deferring_calibrated_instance
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.model
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.model_legit
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.model_instance
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.Ud
-#print axioms Workspace.Deference.Contrib.AccountJoin.Witness.Ud_given_zero
+#print axioms Workspace.Deference.Contrib.AccountJoin.Witness.uhatd
+#print axioms Workspace.Deference.Contrib.AccountJoin.Witness.Ud_given
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.guarantee_of_sound_instance
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.Uc
 #print axioms Workspace.Deference.Contrib.AccountJoin.Witness.uhatc
