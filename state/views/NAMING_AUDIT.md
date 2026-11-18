@@ -123,40 +123,40 @@ change, and the count of those is the size of the free choice remaining.
 | `value_of_thick` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.ThinLegitimacy.value_of_thick` |
 | `volume_by_want_tainted` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.AskList.Rows3.volume_by_want_tainted` |
 | `namespaceIsLive` | def | unrecorded | Lean only | `Workspace.Deference.namespaceIsLive` |
-| `Gate` | structure | unrecorded | prose | `Workspace.Deference.Contrib.AccountJoin.Gate` |
-| `Hist` | inductive | unrecorded | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.Hist` |
-| `Legit` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.AccountJoin.Gate.Legit` |
-| `NoMore` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.AccountJoin.ValueChange.NoMore` |
-| `Pol` | inductive | unrecorded | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.Pol` |
-| `Sound` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.AccountJoin.SoundModel.Sound` |
-| `SoundModel` | structure | unrecorded | prose | `Workspace.Deference.Contrib.AccountJoin.SoundModel` |
-| `T` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Contrib.AccountJoin.Witness.T` |
-| `Uc` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.Uc` |
-| `Ud` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.Ud` |
-| `V` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Contrib.AccountJoin.Gate.V` |
-| `ValueChange` | structure | unrecorded | prose | `Workspace.Deference.Contrib.AccountJoin.ValueChange` |
-| `Within` | def | unrecorded | wiki | `Workspace.Deference.Contrib.AccountJoin.ValueChange.Within` |
-| `bestOn` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.AccountJoin.ValueChange.bestOn` |
-| `blind` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.AccountJoin.Witness.blind` |
-| `cc` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.cc` |
-| `count` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.AccountJoin.Witness.count` |
-| `flat` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.flat` |
-| `gate` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.AccountJoin.SoundModel.gate` |
-| `gate` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.AccountJoin.Witness.gate` |
-| `idle` | def | unrecorded | prose | `Workspace.Deference.Contrib.AccountJoin.Witness.idle` |
-| `informed` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.AccountJoin.Witness.informed` |
-| `laterRating` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.laterRating` |
-| `line3` | def | unrecorded | prose | `Workspace.Deference.Contrib.AccountJoin.ValueChange.line3` |
-| `line3Old` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.AccountJoin.ValueChange.line3Old` |
-| `miscalibrationGiven` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.AccountJoin.miscalibrationGiven` |
-| `model` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Contrib.AccountJoin.Witness.model` |
-| `recordOf` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.recordOf` |
-| `scoring` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.AccountJoin.Gate.scoring` |
-| `separable` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.separable` |
-| `seq` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.seq` |
-| `sequential` | def | unrecorded | wiki | `Workspace.Deference.Contrib.AccountJoin.Gate.sequential` |
-| `uhatc` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.uhatc` |
-| `uhatd` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.uhatd` |
+| `Gate` | structure | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.AccountJoin.Gate` |
+| `Hist` | inductive | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.Hist` |
+| `Legit` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.AccountJoin.Gate.Legit` |
+| `NoMore` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.AccountJoin.ValueChange.NoMore` |
+| `Pol` | inductive | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.Pol` |
+| `Sound` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.AccountJoin.SoundModel.Sound` |
+| `SoundModel` | structure | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.AccountJoin.SoundModel` |
+| `T` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, note, prose | `Workspace.Deference.Contrib.AccountJoin.Witness.T` |
+| `Uc` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.Uc` |
+| `Ud` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.Ud` |
+| `V` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, note, prose | `Workspace.Deference.Contrib.AccountJoin.Gate.V` |
+| `ValueChange` | structure | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.AccountJoin.ValueChange` |
+| `Within` | def | 2026-11-10-legitimacy-definition-prosecution | wiki | `Workspace.Deference.Contrib.AccountJoin.ValueChange.Within` |
+| `bestOn` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.AccountJoin.ValueChange.bestOn` |
+| `blind` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.AccountJoin.Witness.blind` |
+| `cc` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.cc` |
+| `count` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.AccountJoin.Witness.count` |
+| `flat` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.flat` |
+| `gate` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.AccountJoin.SoundModel.gate` |
+| `gate` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.AccountJoin.Witness.gate` |
+| `idle` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.AccountJoin.Witness.idle` |
+| `informed` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.AccountJoin.Witness.informed` |
+| `laterRating` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.laterRating` |
+| `line3` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.AccountJoin.ValueChange.line3` |
+| `line3Old` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.AccountJoin.ValueChange.line3Old` |
+| `miscalibrationGiven` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.AccountJoin.miscalibrationGiven` |
+| `model` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, note, prose | `Workspace.Deference.Contrib.AccountJoin.Witness.model` |
+| `recordOf` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.recordOf` |
+| `scoring` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.AccountJoin.Gate.scoring` |
+| `separable` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.separable` |
+| `seq` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.seq` |
+| `sequential` | def | 2026-11-10-legitimacy-definition-prosecution | wiki | `Workspace.Deference.Contrib.AccountJoin.Gate.sequential` |
+| `uhatc` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.uhatc` |
+| `uhatd` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.uhatd` |
 | `V` | def | 2026-09-07-authority-activated-value | wiki, note, prose | `Workspace.Deference.Contrib.ActivatedValue.Sharp.V` |
 | `V₂` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Deference.Contrib.ActivatedValue.PerAction.V₂` |
 | `activated` | def | 2026-09-07-authority-activated-value | wiki, prose | `Workspace.Deference.Contrib.ActivatedValue.activated` |
