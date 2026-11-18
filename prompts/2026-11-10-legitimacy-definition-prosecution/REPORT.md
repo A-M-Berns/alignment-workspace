@@ -4812,7 +4812,12 @@ The reviewer has not seen the fixes.
 - **Rates for the two tests of responsibility**: the twenty cases were written to fail them.
   No case tests a mistake no course corrects, or the absence of a reference.
 - **Necessity of D2(b) and of D3's false-positive half.**
-- **Gates.** GATES_PLACEHOLDER
+- **Gates.** On the tree of commit `2feadb81`, under Python 3.13: the file builds through
+  `safe-lake.sh` with no warning of its own; `tests/audit_axioms.py` reports 4218 results
+  across 126 files, all within `[propext, Classical.choice, Quot.sound]`, 70 of them this
+  file's; `tests/run.py` all green over 81 projects, the Lean build skipped as that runner
+  does by default, the round's runner green within it. `tests/round_records.py` has no
+  pull-request context locally; CI runs it and the other required jobs on the pushed head.
 - **Components.** The scoring theorem — **open**: kernel-checked and unregistered. The
   derivation, the agenda and the twenty cases — **open**. The concept added and those
   revised — **living notes**.
