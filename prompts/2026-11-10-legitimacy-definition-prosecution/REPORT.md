@@ -4866,6 +4866,234 @@ node is filed.
 
 The pull request is not auto-merged; the merge is a pull-request fact.
 
+## Fourteenth follow-up (2026-11-18) — consolidation: the current state stated once, earlier attempts marked, the queue answered
+
+Dispatched by `PROMPT-followup-14.md`; "§1", "§2" below are its sections. No research, no
+proof, no Lean edit. The branch head before the prompt's commit was `b0f98f59`, one commit
+after the `2feadb81` the prompt names. `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/` is the round directory.
+
+### AB.1 Corrections to §1 against the record
+
+Applied in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md`.
+
+1. *§1.1.2.* Trickery as measured is `valuationError`: her miscalibration given the
+   estimate's own value plus her unused information. Pressure as measured does not see an
+   adviser deciding which of two options she rates the same she takes (Y.7, RB1–RB3).
+2. *§1.1.3.* The bound on what her choices cost her holds with her miscalibration taken
+   given everything she observed and fails at the two weaker strengths (VIII.2). The
+   guarantee has the options condition as a hypothesis.
+3. *§1.1.4.* The distinctions are the vocabulary of `PROMPT-followup-13.md` §2, the prompt
+   author's except where marked there. Lean has `Gate.Legit` and `SoundModel.Sound` and
+   nothing shows they capture them. Destroying her options or information is a further
+   wrong outside the three.
+4. *§1.1.5, "each is needed, by instance".* In I3 the adviser does wrong (non-disclosure).
+   Necessity for the welfare bound is in Lean for D1(a) and D2(a) only; the reading of
+   `d2a_needed` as a welcome change is an interpretation (AA.5, 22).
+5. *§1.1.6.* The bounds on how often she is wronged and on violations use neither
+   assumption about her; the third is of *detected* violations; "a history on which she was
+   wronged adds nothing" holds in expectation and only where the penalty times the detection
+   rate is at least one. §1's list of hypotheses omits the halves at the honest course.
+   "An adviser that maximises" is D6: within a tolerance of the best actual expected score,
+   with no object for the adviser's beliefs. Whether she was wronged and whether an audit
+   flags it are data.
+6. *§1.1.7.* The process theorem gives an unbiased evaluation only if her evaluation is her
+   credence's expectation of a fixed function, and the scoring theorem's assumption only
+   with her prior the law of the world and the adviser's record carrying what it knows
+   (AA.2). `ThinLegitimacy.lean` is from the round of 2026-10-01, not this pull request.
+7. *§1.1.8.* Theorems 1 and 3, not "the post's theorems": Theorem 2 is not instantiated;
+   the ranges are fields of the gate; Theorem 3's hypotheses stay hypotheses;
+   `Witness.blind` satisfies everything (Z.2, Z.4).
+8. *§1.2, omissions.* The list omits the first pass's definition, the sixth pass's (induced
+   miscalibration) and the seventh's (worse than before, and avoidably). All three are in
+   `CURRENT.md` §2.
+9. *§1.2, "failed".* The ninth pass's value side neither passed nor failed (IX.6,
+   "Neither"). The eighth's claim has candidate counterexamples under its renderings, none
+   clear (VIII.6). The two tests of responsibility were run on cases written to fail them,
+   so no rate is shown (AA.8). That conduct does not supply her trustworthiness is
+   non-implication by instance, not impossibility (AA.8).
+10. *§1.3.* The thirteenth pass left partial derivations and counterexamples for the first
+    two problems. Two things §1.3 states are not in the record and are entered as
+    unevidenced: that the question of the distribution was raised when the board was
+    presented, and the two unwanted incentives of the audit (stated in item 137 as
+    conjectured, with no instance).
+11. *§2.4, "the three entries the thirteenth pass added".* It added two; the entry on
+    careless inducing is the eleventh's, restated by the thirteenth.
+12. *§2.5.* `account/LEAN.md` had full entries for seven results; the other eight had a
+    proposed id and a table row.
+13. *§2.6.* Pettigrew's paper is published: *Synthese* 201(1), 2023; the round read the
+    manuscript of December 2022.
+14. *§2.7.* The wiki's legitimacy page is the canonical statement of the generic theory
+    (two levels, two halves, the record half, the classification table), 501 lines, linked
+    from seventeen pages; it said nothing of this line.
+
+### AB.2 What was moved and what stayed
+
+Fifty-seven documents carry a status line: the earlier attempt, the pass that tested it,
+what it failed on, what replaced it. Fifteen are moved under `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/earlier-attempts/`, in
+their old layout: `teleology/ACCOUNT.md`, `teleology/LEAN_MAP.md`,
+`decomposition/ACCOUNT.md`, `LEAN_MAP.md`, `TWO_DECOMPOSITIONS.md`, `ADVISER_AS_PART.md`,
+`scored/ACCOUNT.md`, `blocks/SETTING.md`, `estimates/SETTING.md`, `estimates/ONE_PAGE.md`,
+`rerun/SETTING.md`, `account/BASELINE_ACCOUNT.md`, `account/ACCOUNT.md`,
+`account/BOARD.md`, `account/STATEMENT.md`. They are the statements of each account, and
+no code reads them. **Stayed, with the status line:** the forty-two banks, result,
+divergence, theorem and rendering documents, each read in place by the round's runner,
+and the Python packages beside them. **Stayed, unmarked:** `account/LEAN.md`,
+`BRIDGE_LEAN.md`, `SCORING.md`, `DERIVATION.md`, `AGENDA.md` (current);
+`steering/PRIOR_WORK.md` (a survey); `REMOVED.md`; the JSON specifications. Paths to the
+moved files were updated in `DECISIONS.md`, the root `PROVENANCE.md`, `state/concepts.json`
+and items 136–138; relative mentions inside the round's other documents and in docstrings
+were not, and `CURRENT.md` §2 is the map. `README.md` is a pointer with the runner's
+instructions; the verdict lines the round's record quotes are in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/VERDICTS.md`, and the
+record's `verdict_source` fields point there.
+
+`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/withdrawn/`: one exact instance against each of the five withdrawn claims, computed by
+`withdrawn/run.py`, which the round's runner calls. The claims were made outside the
+repository; each reading is the executor's and is stated beside its instance.
+
+### AB.3 The queue
+
+Twenty-five entries on this line before; two of them remain after, and this pass adds one,
+on the wiki's page (AB.5), so three stand. None of the twenty-five carried an
+anchor line. The dispositions are in the entry `2026-11-18--legitimacy-consolidation`:
+eight answered by a working position, twelve closed as moot with the account named, two
+(careless inducing; profiting from a mistake she cannot be talked out of) moved into item
+136(a) as open problems, one (the item waiting on the handle) folded into the handle's
+entry. Kept: the handle, restated; and whether a practice's rules cover a deception she did
+not herself ask for, restated from the entry of 2026-11-14, which working position 12
+answers only for a deception she asked for. The entry
+`2026-11-18--legitimacy-working-positions` records the fifteen positions of §1.4 as working
+positions.
+
+### AB.4 The handle, the registry, the map
+
+**The handle is not mapped, and nothing is registered.** `checkers/tests/test_graph.py`
+asserts the exact set of handles in `graph/policy.yaml`; adding one fails
+`tests/run.py`, and this pass may edit no test. A node needs an author and the executor
+has no handle, so no node is filed either: no registered claim (the site build refuses a
+claim no node carries), no source node, no new item. The whole filing is instead a patch,
+`prompts/2026-11-10-legitimacy-definition-prosecution/followup-14-registration.patch`, prepared by a subagent of the executor
+on a scratch copy: the handle's line and the one changed assertion; fifteen registry
+entries, each with its result, record, bridge and completeness nodes
+(`appraisal.mse-split`, `appraisal.three-channels`, `appraisal.cost-of-mistakes`,
+`appraisal.deferring`, `appraisal.strong-split`, `appraisal.guarantee`,
+`appraisal.options-hull`, `appraisal.deferring-cost`, `appraisal.guarantee-from-soundness`,
+`legitimacy.line3-range`, `corrigibility.feedback-transfer`, `scoring.welfare-bound`,
+`scoring.conduct-bound`, `scoring.authority-bound`, `scoring.no-credit`); item nodes
+139–146, one for each open problem of `CURRENT.md` §3, and 147, the item the entry of
+2026-11-11 held, with 136–138 closed onto them; the round's record; one wiki binding (the
+claim count on `wiki/Normativity.md`). With the patch applied, on the scratch copy: the
+graph checker passes at 2641 nodes; `checkers.run` exits 0; the state is valid at 217
+claims and 159 items; the attention render is equal; dead pointers are clean;
+`checkers.tests.test_graph` passes its 148 tests; the site builds with nothing unresolved;
+conservativity is unchanged. Not run on it: `tests/run.py`, the axiom audit, a Lean build.
+Item 139's number was used and removed on 2026-11-10 and `graph/versions.json` keeps that
+history, so the new item 139 is at version 2.
+
+Within the gate:
+
+- **Sources**, as prior-work concepts in `state/concepts.json`, each reference opened by a
+  subagent of the executor: `noggle-mistake-account` and `carroll-2024` (existing; book
+  DOI and paper DOI, arXiv page, confirmed), `kull-flach-2015`, `harman-2009`,
+  `pettigrew-2023`, `kolodny-2026` (added), and the post's URL added to
+  `deconfusing-corrigibility`. Routes: Crossref records for Noggle's two, Kull and Flach,
+  Harman and Pettigrew; the arXiv page; the PDF of Kolodny's manuscript on the NYU
+  colloquium's site, a URL that may not last; the LessWrong API for the post. The
+  PhilArchive record of Pettigrew's manuscript refused the fetch. Six links attach them to
+  the concepts they bear on. No text of any source is in the repository.
+- **Concepts.** Two blurbs rewritten to §1 (`manipulation-as-induced-mistake`,
+  `evaluation-and-true-utility`); seven that named a governing statement now name the
+  statement of 2026-11-17 as tested and not kept. No concept added beyond the four works.
+- **Items.** 136, 137 and 138 are rewritten to the eight open problems: 136 the first
+  four, 137 the fifth and seventh with the registration, 138 the sixth and eighth.
+
+`python3 -m checkers.graph --root .` passes; the site builds (`site/build.py`) and the
+pages for this line resolve: the concept pages of the two rewritten blurbs and of the four works, and
+items 136–138, carry the revised text. The site does not show a work concept's `url`, so
+each new work's reference is also in its blurb. That is workspace friction; it is not
+filed, an `F` item being a node.
+
+### AB.5 The wiki
+
+One section, *Manipulation: legitimate as distinct from sound*, inserted before *Where this
+is going* in `wiki/Legitimacy.md`; no other line of the page and no other page is changed.
+It is `git diff 3ad30258 HEAD -- wiki/Legitimacy.md`, sixty-odd added lines: what
+legitimacy is for; legitimate and sound; three wrongs of conduct; three ways her evaluation
+comes apart; what is proved; what is assumed; what is open; links pinned to commit
+`0411576e`. The page is not rewritten whole (AB.7).
+
+### AB.6 The outside check
+
+One run of `codex exec --sandbox read-only` (codex-cli 0.153.4, model `gpt-6-astra`, as its
+log reports) on a directory holding `CURRENT.md`, the wiki page, the report sections of the
+tenth to thirteenth passes and the three Lean headers. Reply verbatim in
+`REVIEW-astra-followup-14.md`; it names paths under `/private/tmp`. Sixteen findings.
+Fifteen accepted and fixed: 1–8 and 14–16 in `CURRENT.md` (they are corrections 1, 3, 4, 6,
+7, 9 and 10 above, and the limits of the join now in its §1.8); 10–13 and the wiki half of
+5 in the wiki section. **Not accepted:** 9, that only one question being queued is
+unsupported; the reviewer was not given `DECISIONS.md`. The reviewer has not seen the
+fixes.
+
+### AB.7 Deviations from the prompt
+
+- **§2.5 is not done in the tree** (AB.4). The prompt asks for the handle to be mapped and
+  forbids editing a test; the mapping needs the edit.
+- **§2.6: no source or item is a node**, for the same reason; sources are concepts and the
+  eight problems are in three existing items.
+- **§2.7: the page is extended, not rewritten.** Replacing it would delete the generic
+  theory's statement, which seventeen pages link to and which this line does not
+  supersede.
+- **§2.1: `VERDICTS.md`** is added so that `README.md` can be a pointer; the state check
+  requires each recorded verdict verbatim in its source.
+- **§2.4: one entry is kept that the prompt's rule would take out** (a practice's rules),
+  and the entry on voiding a history is answered by a working position and not made an
+  item of its own; it is in item 137(c).
+- **Reading.** Passes 1–7 of this report were read by a subagent of the executor, which
+  reported on them; the executor read passes 8–13. The queue's entries, and
+  `graph/PROTOCOL.md` with the checkers, were read by two further subagents. The patch was
+  prepared by a fourth, in a separate worktree.
+- **The status lines were written by script** from one sentence per account.
+
+### AB.8 What was not shown
+
+- **That the five instances refute the claims as their authors meant them.** The notes are
+  not in the repository.
+- **That each status line's one-sentence account of a failure is the whole of it**; the
+  pass's report section is the record.
+- **That the patch applies after later commits to this branch**; PATCHCHECK
+- **Anything new about the account.**
+- **Gates.** GATESPARA
+- **Components.** `CURRENT.md`, the status lines, the concepts and the wiki section —
+  **living notes**. The five instances — **open**, runner-checked. The fifteen results —
+  **open**: kernel-checked, unregistered.
+
+### AB.9 Filings, names, and what is reserved
+
+`DECISIONS.md`: `2026-11-18--legitimacy-working-positions`;
+`2026-11-18--legitimacy-consolidation` (agent-decided); the queue as AB.3.
+`state/concepts.json`: AB.4. Items 136–138 rewritten. `state/rounds.json`: the round's
+`verdict_source` fields; no verdict added, this pass testing nothing. No node filed.
+
+**New names, all provisional:** `CURRENT.md`, `VERDICTS.md`, `earlier-attempts/`,
+`withdrawn/WITHDRAWN.md`, `withdrawn/run.py`, instance ids W1–W5, the concept ids
+`kull-flach-2015`, `harman-2009`, `pettigrew-2023`, `kolodny-2026`, the anchors
+`open--map-ai-handle-claude-fable-5-2` and `open--practice-rules-cover-a-deception`; in the
+patch, item numbers 139–147.
+
+**Outstanding maintainer actions**
+
+1. Map the handle and register the fifteen results. Entered in *Awaiting the author*.
+   Command, from the repository root:
+   `git apply prompts/2026-11-10-legitimacy-definition-prosecution/followup-14-registration.patch`,
+   then `python3 -m checkers.graph --root .`, then commit. The patch edits one assertion of
+   `checkers/tests/test_graph.py`.
+2. Say whether the wiki's legitimacy page is to be replaced whole by the present picture.
+   Decision required: *keep the added section*, or *replace the page*.
+3. Say whether a practice's rules cover a deception she did not herself ask for. Entered in
+   *Awaiting the author* (2026-11-14, restated 2026-11-18). Decision required: *covered*,
+   *not covered*, or *covered where taking part is asking*.
+
+The pull request is not auto-merged; the merge is a pull-request fact.
+
 ## Attribution
 
 - Prompt-author model: Claude Fable 5 (Anthropic); dispatched 2026-11-10, kept
@@ -4935,4 +5163,10 @@ The pull request is not auto-merged; the merge is a pull-request fact.
   2026-11-18, the four earlier round reports read by a subagent of the executor on the same
   model; external reviewer `gpt-6-astra` through codex-cli 0.153.4, as its log reports, in two
   runs, replies kept verbatim as `REVIEW-astra-followup-13.md`.
+- Fourteenth follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-18,
+  kept verbatim as `PROMPT-followup-14.md`; executor model Claude Fable 5.2 (Anthropic), executed
+  2026-11-18, the first seven passes of this report, the queue and the map's protocol read by
+  subagents of the executor on the same model, which also verified the references and
+  prepared the patch; external reviewer `gpt-6-astra` through codex-cli 0.153.4, as its log
+  reports, in one run, reply kept verbatim as `REVIEW-astra-followup-14.md`.
 - No chat bundle.
