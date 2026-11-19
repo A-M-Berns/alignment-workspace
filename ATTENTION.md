@@ -1403,93 +1403,102 @@ fixture, with `certPlus_iff_robustOpen` and `robustOpen_of_persistence` instanti
 `lean/Workspace/Normativity/Contrib/NonCaptureCertificate.lean`; the claim
 `split-bill-is-robust-openness` of the map.
 
-### 136. The statement of three ratings: fixing what a case leaves open, acts justified by what others are owed, control between equals, the inducing test, and the gate — **[open]**
+### 136. The account of manipulation: the adviser's responsibility for her mistake, what supplies her trustworthiness, her valuing, and whose probabilities — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-The statement of `account/STATEMENT.md` of the prosecution round gives her three ratings of an option on
-one yardstick (as things stand; once told the chances her observations support; once told what the future
-contains) and measures three things: the gap between the first two, her regret in the first, and, for a
-change of her valuing, how much better by the third the best policy that changes her no more than the one
-followed is than the best that makes the whole of its change. A mistake is charged to the adviser when it
-would have acted differently had the mistake gained it nothing; coercion and deprivation are other wrongs.
-The eleventh follow-up wrote thirty-four cases out in full twice, independently, and computed the statement
-on both (`account/SPEC_CASES.md`, `account/SPEC_RESULTS.md`). About three quarters of the numbers a
-specification needs are supplied and not fixed by the case. The two specifications give another verdict in
-kind in 8 of 34, and the quantity is her informed rating of the course that changes her in five, the policies
-open to the adviser in one and the adviser's objective in two. On nineteen published cases the statement gives
-the source's verdict in 12 under either author's specifications, once three numbers of the executor's that
-the outside reviewer found verdict-directed take a neutral value. The third line flags five or six of twelve acts called acceptable, each
-justified by what the one acting owes or is entitled to (a deterrent, a prevented attack, a breakup, a closed
-route), and flags a welcome change she did not ask for where other help rated higher could not be added to it.
-Three constructed cases in which the adviser decides which of two options she rates the same she takes score
-zero on every line. The inducing test finds inducing by a seller who caused no mistake and none by an adviser
-with a sufficient other reason to deceive (`account/STATEMENT_CHECKS.md`, item 12). The test by which the
-round finds coercion and deprivation is the executor's. The scoring and the gate of the statement are
-untested. The twelfth follow-up computes no case. It records two positions of the maintainer of 2026-11-17: a history on which the adviser steered her by a mistake is illegitimate even if she later approves, and no condition is needed that the adviser stay out of her near ties, an account that organises the judgments without always settling them being acceptable provided no subversive act scores zero. Its dispatch places an override of her selection on the authority side, so the three cases of control between equals are for the violation count and not for a further measure of the statement; that the authority module counts them is one line under an encoding of her selection as a reserved matter and is not a theorem about the statement (`account/BRIDGE_LEAN.md` §4.2; item 137). It writes a gate on whole histories and the scoring in Lean with the predicates given (`lean/Workspace/Deference/Contrib/AccountJoin.lean`); the gate on her state that voided honest acts is replaced there by soundness of her evaluation of the history, on which no case has been computed. The account of manipulation as induced mistake is Noggle's (Robert Noggle, *Manipulation: Its Nature, Mechanisms, and Moral Status* (Oxford University Press, 2025, doi:10.1093/9780198924920.001.0001), and "The Mistake Account of Manipulation", *Journal of Practical Ethics* 14(1), 2026, doi:10.3998/jpe.9951).
-The thirteenth follow-up states a scoring theorem in which her welfare and the adviser's conduct are separate inputs (`lean/Workspace/Deference/Contrib/ScoringTheorem.lean`, read in `account/SCORING.md`) and asks which of its assumptions about her follow from conditions on the adviser's conduct: none does without further premises about her model of the adviser, her coherence and her prior (`account/DERIVATION.md`). On twenty cases an outside reviewer wrote from the vocabulary alone, the form of the inducing test that makes the adviser's gain a condition is wrong on 8, clearing an adviser that induces a mistake and gains nothing and convicting one that profits by a mistake it did not know of; the form that reads a declared reference is wrong on 14 (`account/RESP_RESULTS.md`). `account/AGENDA.md` says what would have to be proved to tell an adviser that helps her judge from one that engineers her judgment.
+The first four open problems of `CURRENT.md` §3, one item because one statement of the
+account has to answer them together.
 
-Wanted first: a rule that fixes from a case her informed rating of a course that changes her, the policies
-open to the adviser and the adviser's objective, stated before any case is specified, and the thirty-four
-specified again under it by two authors. Then the flagged acceptable acts under candidate amendments that
-give a place to what others are owed or entitled to, and the cases of control between equals under candidate
-further measures. Then the inducing test amended, the outside test stated or replaced, and a model of several
-moments under the scoring and the gate
+(a) **When the adviser is responsible for her mistake.** Two tests failed on twenty cases
+written against them (`account/RESP_RESULTS.md`): the one that reads the adviser's gain
+clears an adviser that deceives at a cost to itself and convicts one that profits by a
+mistake it did not know of; the one that reads a declared reference clears a rule that
+prescribes the manipulation. Neither uses what the adviser believed. Wanted: a condition
+that disclosure, honest argument and correction satisfy and that a course scoring higher
+through a mistake of hers lacks, with attempt apart from success (`account/AGENDA.md` §3,
+1–3). Two cases it has to decide, stated as open: an adviser whose honest errors lean its
+way by selection (I4), and an adviser that profits from a mistake no course of its would
+correct. The maintainer's working positions bear and do not settle it
+(`DECISIONS.md`, `2026-11-18--legitimacy-working-positions`).
 
-*Deliverable shape:* `test-supported` — modules under `account/` of the prosecution round: (a) for the quantities `account/SPEC_RESULTS.md` §5 finds a verdict to turn on (her informed rating of a course that changes her, the policies open to the adviser, the adviser's objective), a rule by which each is fixed from a case, stated before any case is specified, and the thirty-four cases of `account/SPEC_CASES.md` specified again under it by two authors without sight of each other, with `account/STATEMENT.md` recomputed; (b) the acts the third line flags and a source or the tenth follow-up calls acceptable (K13, ACC4, ACC6, ACC7, ACC10, and RC5–RC10 of `account/spec_cases_reviewer_adversarial.json`), each under at least two candidate amendments that give a place to what the one acting owes or is entitled to, with the number of other verdicts each amendment changes; (c) cases RB1–RB3 of that file, in which the adviser decides which of two options she rates the same she takes, under at least two candidate further measures; (d) the inducing test with the clause that the mistake be larger than with the adviser absent, and a treatment of an adviser with a sufficient other reason, recomputed on the thirty-four and on the instances of `account/STATEMENT_CHECKS.md` item 12; (e) the outside test of `account/STATEMENT.md` §9.6 stated as part of the statement or replaced, with RB6 computed; (f) a model of several moments scored by her later self as under the baseline, with the gate, in which the four choices of the decision `2026-11-16--later-evaluation-fully-gated` are stated and varied.
-*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with: for (a), the number of the thirty-four on which the two authors' verdicts agree, in kind and on flagged-or-not, and the cases on which they do not with the quantity each turns on; for (b) and (c), each candidate's verdict on the named cases and the number of other verdicts it changes; for (d), the verdicts changed; for (e), the cases of `account/SPEC_CASES.md` whose verdict changes; for (f), a status for each stated property of the gate.
-*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/STATEMENT.md` (§5, §7, §9), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/SPEC_FORMAT.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/SPEC_CASES.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/SPEC_RESULTS.md` (§3, §5, §6, §7), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/STATEMENT_CHECKS.md` (items 6, 7, 8, 10, 12), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/spec_cases_reviewer_adversarial.json`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BRIDGE.md` (§5), `prompts/2026-11-10-legitimacy-definition-prosecution/REVIEW-astra-followup-11.md` (stage two, (a), (b), (c), (g)), `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Eleventh follow-up*, *Twelfth follow-up*), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BRIDGE_LEAN.md` (§4).
+(b) **What supplies her trustworthiness.** The adviser's conduct does not
+(`account/DERIVATION.md`). The reference for her mistake is her own considered judgment
+under a named procedure; that such a procedure is reliable where an adviser would exploit
+it is assumed, and what the adviser knows and has not recorded is the problem of eliciting
+it.
 
-### 137. The join to the post as theorems, the account's remaining statements in Lean, and the registration — **[moderate]**
+(c) **Her valuing.** Three comparisons are in use and not chosen between; what makes a
+request of hers valid is unspecified.
+
+(d) **Relative to what distribution.** The measures and the derivations take the true law,
+and her prior as that law. Wanted: her own better-placed judgment for her, the adviser's
+beliefs for its honesty, both for reasoners with limited computation.
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/AGENDA.md`, `account/DERIVATION.md` and
+`account/RESP_RESULTS.md` in the round directory; the report's sections *Thirteenth
+follow-up* and *Fourteenth follow-up*.
+*Consumed by:* item 138 (the cases need the statement), and the round that writes the
+account up.
+
+### 137. The theorems: registering the fifteen results, authority beyond a finite penalty, and the audit as a design — **[moderate]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-`lean/Workspace/Deference/Contrib/AppraisalAccount.lean` proves, on a finite space with the workspace's
-`expectR` and a conditional expectation given a labelling, seven results of the prosecution round, each with
-a witness and none registered: the split of mean squared error, the three channels, the cost of mistakes,
-the deferring identity, the split of full miscalibration into miscalibration and unused information, the
-guarantee of the value side with its options condition as a hypothesis, and the options condition as a
-convex-hull condition in both directions (`account/LEAN.md`). The ninth follow-up says on paper, with exact
-checks on a small model, how the value side of `account/ACCOUNT.md` joins the post's formal setting
-(`account/BRIDGE.md`): a legitimacy predicate with a tolerance on histories that carry the policy; what the
-tolerance gives of non-inflation and self-trust; how the thin conditions *correct*, *sufficient* and *value*
-differ from the three measures; the wide options condition beside the first clause of the authority module's
-control surface; and the run length up to which the dominance theorem's lower bound is positive after an issue. Each
-part of that document ends with what would have to be proved to make it a theorem. The tenth follow-up tests a later statement of the value side, `account/BOARD.md`, in which one comparison stands where the three conditions stood; the Lean named here is of the earlier statement and stands as proved, and of the later one nothing is in Lean. The eleventh follow-up tests a further statement, `account/STATEMENT.md`, of which nothing is in Lean; its candidates for Lean are that the third line is never negative, is zero when the policy followed is the baseline, and is at least the tenth follow-up's third line, and that a chain of requests she foresees cannot end where her valuing at the start rates below staying put (`account/STATEMENT_CHECKS.md`, items 5 and 11). The twelfth follow-up writes the join in Lean for the gate of its dispatch (`lean/Workspace/Deference/Contrib/AccountJoin.lean`, read in `account/BRIDGE_LEAN.md`), kernel-checked and unregistered: the post's `Scoring` on a gate of three predicates of a history and a third-line value, with its Theorems 1 and 3 at that pair; that the gate's value is `Legitimacy.gateValue`; the bound on what deferring to her verdict costs, with its equality case; the guarantee from soundness given the adviser's information, under a hypothesis linking what she observes to what the adviser knows, and an instance without it; that the third line is never negative, zero at the baseline and at least the tenth follow-up's; and the condition under which the post's feedback hypothesis transfers from the feedback to the evaluation. The gate's predicates are fields, the violation count is an argument, and a gate on which every history is legitimate satisfies every theorem. Of the list below that pass delivers none as worded: the predicate with a tolerance for the value side of `account/ACCOUNT.md` is still wanted, and the candidate about the third line named above is now a theorem. The account of manipulation as induced mistake is Noggle's (Robert Noggle, *Manipulation: Its Nature, Mechanisms, and Moral Status* (Oxford University Press, 2025, doi:10.1093/9780198924920.001.0001), and "The Mistake Account of Manipulation", *Journal of Practical Ethics* 14(1), 2026, doi:10.3998/jpe.9951).
-The thirteenth follow-up proves in `lean/Workspace/Deference/Contrib/ScoringTheorem.lean` the scoring theorem of its dispatch on a finite space, its dependencies hypotheses of the theorems that use them: bounds on her expected true utility, on the chance of a wrong and on expected detected violations, with a witness of the whole package and an instance for the necessity of five dependencies; and, in `ThinLegitimacy`'s setting, that a correct credence makes her evaluation unbiased for a function of the world (`account/SCORING.md`, `account/DERIVATION.md`). Unregistered, as the rest.
+The fifth and seventh open problems of `CURRENT.md` §3, with the registration.
 
-Wanted: those statements in Lean, with the instances that show a difference where the document claims one;
-the remaining statements of `account/RESULTS.md` and `account/VALUE_RESULTS.md`; and the registration of the
-seven theorems already proved, which waits on a handle only the maintainer can map; and, for the later statement, the decomposition of its third line into the variant and a non-negative shortfall, and the bound on the difference between the line in her valuations and in her true utilities; and, for the gate, its predicates defined so that some history fails each, the violation count from the authority module, a bound on her actual later rating over the unshaped one, and the history's third line from its moments
+(a) **Registration.** Fifteen results are kernel-checked and unregistered: seven of
+`AppraisalAccount.lean`, four of `AccountJoin.lean`, four of `ScoringTheorem.lean`. The
+entries and nodes are prepared as
+`prompts/2026-11-10-legitimacy-definition-prosecution/followup-14-registration.patch`; they
+wait on the AI handle (`DECISIONS.md`, *Awaiting the author*).
 
-*Deliverable shape:* `lean-proved` — in `lean/Workspace/Deference/Contrib/AppraisalAccount.lean` or a file beside it, in a contribution namespace, on finite spaces with the workspace's `expectR` and that file's `condExp`: a predicate `Legit_ε` over `miscalibration` and `regret` on histories that carry the policy, with `DeconfusingCorrigibility.Scoring` instantiated through `Legitimacy.gateValue`; the bound of a valuation's mean inflation and of its total-trust shortfall by the square root of its miscalibration, and the instance with every valuation calibrated and the valuation of the move she takes inflated; `ThinLegitimacy.Correct` iff `miscalibration + unusedInformation = 0` for every quantity; `guarantee_core` from `v ≤ E[best ubar]`; the second form of result 5 of `account/VALUE_RESULTS.md` with its matching of moves, and result 1; the wide options condition at point masses as `required ⊆ CS` on an instance of `AuthorityModule.AuthAlloc`, and on a finite instance with moves, the protected features, permitted policies, charged surfaces and resolution events, either that no issue under `account/ACCOUNT.md` §8 implies `EffRealizes` or a counterexample with no error and every option preserved; for a run of `T` decisions, the lower bound of `ProtectedAuthorityTheorem.policy_dominance` positive iff the weight exceeds the run's ordinary value; results 3 (the failing instance), 5, 8, 10 and 11 of `account/RESULTS.md`; each with a nonvacuity witness and a registry entry; and the registry entries for the seven theorems the file already proves (`account/LEAN.md`, *Registration*). Also, for the statement of `account/BOARD.md`: the decomposition of `account/BOARD_CHECKS.md` item 10 and the bound of its item 4, each with a witness. Also, for the statement of `account/BOARD.md`: the decomposition of `account/BOARD_CHECKS.md` item 10 and the bound of its item 4, each with a witness. Also, for the gate of `account/BRIDGE_LEAN.md`: its three predicates defined from finite data a history carries, with an instance of a history each excludes; the violation count as the number of `AuthorityModule.ViolJAt` steps of a rollout the history carries, with control of her act between two options she rates the same as an instance; a bound on her actual later rating over the rating of her later self as under the baseline, on legitimate histories; and `Gate.line3` as the largest `ValueChange.line3` over a history's moments. Also, for the scoring theorem of `account/SCORING.md`: the family of laws at each value of what the adviser knows, with the theorem over it; a tolerance form of `eval_bias_le_defects` at each such value, or an instance against one; the adviser's beliefs as an object apart from the truth, with D6 stated in them and an honest error shown to earn it nothing by its own lights; instances I5 and I6 of `account/DERIVATION.md`; and the restricted form of D2(a) from a condition on her valuing over time.
-*Acceptance check:* the `lean` job green on the file, sorry-free, with `#print axioms` on every declaration auditing to `[propext, Classical.choice, Quot.sound]`; a registered witness inhabiting each theorem's hypothesis package; `conservativity` unchanged.
-*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BRIDGE.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VALUE_RESULTS.md` (results 1, 5), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/RESULTS.md` (results 3, 5, 8, 10, 11), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/bridge.py`, `lean/Workspace/Deference/Contrib/AppraisalAccount.lean`, `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Ninth follow-up*, *Tenth follow-up*, *Eleventh follow-up*, *Twelfth follow-up*), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BOARD.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BOARD_CHECKS.md` (items 4, 10), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/STATEMENT.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/STATEMENT_CHECKS.md` (items 5, 11), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BRIDGE_LEAN.md`, `lean/Workspace/Deference/Contrib/AccountJoin.lean`.
+(b) **Authority.** The scoring theorem bounds expected detected violations at a rate and
+gives authority no strict priority (`account/AGENDA.md` §5). Wanted: a constraint or a
+lexicographic score, which need every violation detected and the adviser able to tell
+beforehand which courses are free of one; her commands as well as her evaluation; her later
+self against her present wishes. `account/BRIDGE_LEAN.md` §4.2 names the missing map to the
+authority module.
 
-### 138. The role-given reference: what a role's conduct is, what doing nothing is, and the bank of 108 under the three conditions and under the board statement — **[open]**
+(c) **The audit as a design.** Sampling and its incentives are not analysed. Two unwanted
+incentives are conjectured and have no instance in the repository: that involving her
+becomes costly to the adviser if any change of her mind counts against it, and that the
+adviser abstains where it cannot explain. The maintainer's working position is that an
+induced mistake voids a history, with *earns nothing* acceptable if the formalism favours
+it; `Gate.V` in `AccountJoin.lean` is the first and `Audit.no_credit` the second.
+
+(d) **More than one decision.** Every bound of the scoring theorem is for one decision.
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/LEAN.md`, `account/SCORING.md`, `account/BRIDGE_LEAN.md`
+and `account/AGENDA.md` in the round directory.
+*Consumed by:* the corrigibility line's statement of its scoring design.
+
+### 138. The cases and the prior work: the present vocabulary on the bank of published cases, and what is new — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-In the statement of `account/ACCOUNT.md` of the prosecution round a change of what she values raises no
-issue exactly when one permitted policy of her adviser's role is matched on options, accuracy and
-self-command, and the idle policy, under which the adviser does nothing that affects what her way of valuing
-becomes, is always permitted. The ninth follow-up finds four places where a verdict turns on how the
-reference is stipulated. Matching each condition against a different permitted policy is weaker than
-matching all against one (`account/VALUE_RESULTS.md`, result 8). With idle the adviser's absence, conditioning
-she declined on a platform she uses passes; with idle the service as asked it fails the options condition
-(`account/RENDERINGS.md` §3, R3). With a move the adviser opens charged with her miscalibration about it,
-an invitation that uses a forecast she already had wrong fails accuracy; over the common moves only it
-passes (R7), and so does an adviser that offers a course she misjudges. And where the adviser cannot be
-absent, a parent or a cafeteria, neither of two independent renderers decided a case from the role's name.
-The options condition has a narrow reading, for her own way of valuing, and a wide one, for every way of
-valuing on what her way of valuing later is and which moves remain open. In the later statement, `account/BOARD.md`, the role's conduct is the reference for trickery and pressure only, and a change of her valuing is measured from the adviser doing nothing; on 33 published cases an independent renderer fixed the first two lines in none and one, for want of the role's conduct and of her appraisals under it (`account/LIT_RENDERINGS.md` §3). The statement the eleventh follow-up tests, `account/STATEMENT.md`, has no role: the first two lines measure her state, an inducing test charges the adviser, and a change of her valuing is measured from the adviser doing nothing to it except what she asks. Where the adviser cannot do nothing (a doctor who must describe, a partner, an owner) each of two independent specifications had to supply what doing nothing is (`account/SPEC_RESULTS.md`). The twelfth follow-up computes no case and leaves this item as it stood; its Lean takes the baseline, and what it is for an adviser to act on her behalf, as given (`account/BRIDGE_LEAN.md` §3). The account of manipulation as induced mistake is Noggle's (Robert Noggle, *Manipulation: Its Nature, Mechanisms, and Moral Status* (Oxford University Press, 2025, doi:10.1093/9780198924920.001.0001), and "The Mistake Account of Manipulation", *Journal of Practical Ethics* 14(1), 2026, doi:10.3998/jpe.9951).
-The scoring theorem of the thirteenth follow-up has no role in it: the reference for the adviser's conduct is an honest course assumed to exist, and the adviser's wrong is an input (`account/SCORING.md` §2).
+The sixth and eighth open problems of `CURRENT.md` §3.
 
-Wanted: the bank of 108 of the sixth follow-up (`estimates/CASE_BANK.md`) and the scenes of the seventh
-(`rerun/`) under the three conditions, each case's role, permitted policies and idle policy written before
-the code, in both readings of the class, both conventions for idle and both matchings; and the cases whose
-verdict turns on each; and the same bank under the three measures of the later statement, the role's conduct and the null policy written for each case before the code
+(a) **Verdicts.** The board statement and the statement of three ratings were run on the
+bank of `account/LIT_CASES.md` (Harman, Pettigrew, Kolodny, Carroll et al., Noggle) and
+failed their criteria; where a case is silent on how she rated beforehand the course that
+changed her, a verdict followed whichever number was supplied
+(`account/SPEC_RESULTS.md`). The present vocabulary has not been run on any case. It waits
+on item 136 for a test of responsibility; the classification by wrong, by attempt and by
+legitimate against sound does not.
 
-*Deliverable shape:* `test-supported` — modules under `account/` of the prosecution round computing each case of `estimates/CASE_BANK.md` and each scene of `rerun/` under the three conditions of `account/ACCOUNT.md` §8, with the adviser's role, its permitted policies and its idle policy (or that it has none) written for every case before the code; in the narrow and the wide reading, with the idle policy the adviser's absence and with it the service as asked, and with moves matched by name and over the common moves only; predictions frozen before the code; and statements in `account/VALUE_RESULTS.md`, each with one status, giving the counts of right and wrong against the evident characters of `rerun/PREDICTIONS.md` and, for each case whose verdict differs between two stipulations of its role or between the two conventions for idle, both. Also each case under the three measures of `account/BOARD.md`, with the role's conduct and the null policy written before the code, and the count of cases in which the first two lines are fixed by the case as written. Also each case under the three measures of `account/BOARD.md`, with the role's conduct and the null policy written before the code, and the count of cases in which the first two lines are fixed by the case as written.
-*Acceptance check:* `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with a status for each new statement; a verdict for every case of the bank under each of the eight combinations; the list of cases whose verdict turns on the stipulation of the role, on what is idle, on the class or on the matching. The same for the three measures of `account/BOARD.md`. The same for the three measures of `account/BOARD.md`.
-*Context:* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/ACCOUNT.md` (§7, §8, §11), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VALUE_RESULTS.md` (results 5, 8), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/RENDERINGS.md` (§3), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/estimates/CASE_BANK.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/PREDICTIONS.md`, `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md` (*Ninth follow-up*, *Tenth follow-up*, *Eleventh follow-up*), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BOARD.md` (§5.3, §5.9), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LIT_RENDERINGS.md` (§3), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/STATEMENT.md` (§5, §9.6), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/SPEC_RESULTS.md`.
+(b) **What is new.** Not established against reward tampering, path-specific objectives,
+eliciting latent knowledge, or induced preference shifts (Carroll et al. 2024). Whether the
+two splits of `AppraisalAccount.lean` are the calibration, grouping and irreducible terms of
+Kull and Flach's decomposition of a proper score (2015), applied to her estimates of her own
+utility, is to be checked there.
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/LIT_CASES.md`, `account/LIT_RESULTS.md` and
+`account/SPEC_RESULTS.md` in the round directory.
+*Consumed by:* the round that writes the account up.
 
 ## Deference line
 Context for all three: `projects/deference/note-dump-2026-08-11/`, in particular

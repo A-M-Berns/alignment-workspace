@@ -4,8 +4,9 @@ A checkpoint. The line aims at a formalism with defensible modelling choices tha
 intuitively correct things about manipulation, following Noggle, and proves safety theorems
 for the corrigibility design. It is not at that bar. Paths are relative to this directory;
 Lean files are under `lean/Workspace/Deference/Contrib/`. Every Lean result named is
-kernel-checked and registered `lean-proved` in `projects/normativity/CLAIMS.md` where an id
-is given; a registered result is what its declaration states and no more.
+kernel-checked. Those of this round are not yet registered: the id beside each is the one
+proposed in `account/LEAN.md`, and registration waits on the AI handle (`DECISIONS.md`,
+*Awaiting the author*). A result is what its declaration states and no more.
 
 ## 1. Solid
 
@@ -72,7 +73,7 @@ is given; a registered result is what its declaration states and no more.
    they hold for a gate built from the account's components (`Gate.theorem1_join`,
    `Gate.theorem3_join`); Theorem 2 is not instantiated. The gate's conditions are inputs:
    a gate on which every history is legitimate satisfies every theorem (`Witness.blind`).
-   Registered beside it: what deferring to her verdict costs (`deferring_cost_le`,
+   Proposed for the registry beside it: what deferring to her verdict costs (`deferring_cost_le`,
    `appraisal.deferring-cost`); the guarantee from soundness, under a hypothesis linking
    what she observes to what the adviser knows (`guarantee_of_given`,
    `appraisal.guarantee-from-soundness`); when the post's feedback hypothesis transfers
@@ -109,29 +110,32 @@ Five claims made in working notes and withdrawn, each with an exact instance:
 
 ## 3. In progress
 
-Each is an item in `ATTENTION.md`; none has a result.
+None has a result. `ATTENTION.md` items 136–138 carry them: 136 the first four, 137 the
+fifth and seventh, 138 the sixth and eighth.
 
-1. **When the adviser is responsible for her mistake** (item 139). The largest hole.
+1. **When the adviser is responsible for her mistake**. The largest hole.
    Neither test survives; an adviser that deceives at a cost to itself shows gain is not
    the heart of it; the adviser's beliefs are not yet an object apart from the truth.
-2. **What supplies her trustworthiness** (item 140). Not the adviser's conduct. Whether a
+2. **What supplies her trustworthiness**. Not the adviser's conduct. Whether a
    named procedure for her considered judgment is reliable where an adviser would exploit
    it is assumed, and what the adviser knows and has not recorded is the problem of
    eliciting it.
-3. **Her valuing** (item 141). Which comparison: with who she would have been, with her
+3. **Her valuing**. Which comparison: with who she would have been, with her
    ratings of fixed futures not moving with the adviser's conduct, or stability between
    check-ins; and what makes a request valid.
-4. **Relative to what distribution** (item 142). The measures and the derivations take the
+4. **Relative to what distribution**. The measures and the derivations take the
    true law, and her prior as that law. Whose beliefs each should take, for a limited
    reasoner, is not worked out.
-5. **Authority** (item 143). Her commands as well as her evaluation; strict priority,
+5. **Authority**. Her commands as well as her evaluation; strict priority,
    which a finite penalty does not give; her later self against her present wishes.
-6. **Verdicts on the literature's cases** (item 144). The present vocabulary has not been
+6. **Verdicts on the literature's cases**. The present vocabulary has not been
    run on the bank of `account/LIT_CASES.md`.
-7. **The audit as a design** (item 145). Sampling, and what the audit pays the adviser to
+7. **The audit as a design**. Sampling, and what the audit pays the adviser to
    do besides behave.
-8. **What is new** (item 146) against reward tampering, path-specific objectives,
+8. **What is new** against reward tampering, path-specific objectives,
    eliciting latent knowledge and induced preference shifts: not established.
 
 The maintainer's answers to the questions this line has queued are working positions, open
-to revision by the cases: `DECISIONS.md`, `2026-11-18--legitimacy-working-positions`.
+to revision by the cases: `DECISIONS.md`, `2026-11-18--legitimacy-working-positions`. One
+question on this line is still queued for him there: whether a practice's rules cover a
+deception she did not herself ask for.
