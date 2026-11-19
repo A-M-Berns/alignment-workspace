@@ -2626,3 +2626,401 @@ Round `2026-10-21-rebuttal-and-end-to-end`; the dispatch's registration list, ag
   "note": "From IncompatibilitySemantics.certEntails_iff_sem, with a citation chosen for each weighted row. Consequences for WarrantInductor.Problem: where every inadequate response scores at most a rational t ≤ τ at every point of the region, upper certificates making Excludes hold exist (excludes_of_region); where every margin witness scores at least a rational t ≥ τ + δ, lower certificates making Margins hold at tolerance 0 exist (margins_of_region). Not derived: a threshold with no rational between it and the region's supremum, and Margins at a positive tolerance, where the tolerance multiplies the certificate's mass. The hypothesis is inhabited by citedFunctional_witness (SeedStatics.widenSeed)."
 }
 ```
+
+### The appraisal account, its join to the post, and the scoring theorem
+
+Round `2026-11-10-legitimacy-definition-prosecution`, against item 137: seven results of
+`lean/Workspace/Deference/Contrib/AppraisalAccount.lean`, four of
+`lean/Workspace/Deference/Contrib/AccountJoin.lean` and four of
+`lean/Workspace/Deference/Contrib/ScoringTheorem.lean`. Each is what its declaration states;
+the note of each says what it does not establish.
+
+### appraisal.mse-split
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the split: on a finite space, the mean squared error of an appraisal constant on the cells of a labelling is the target's mean squared distance from its cell means plus the appraisal's mean squared distance from them",
+  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.AppraisalAccount.mse_split"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/RESULTS.md"
+  },
+  "note": "Result 1 of account/RESULTS.md. At the labelling given by the appraisal itself (mse_split_minimal) the second term is the minimal miscalibration; at the appraisal with the conduct, or at what she observes, it is the per-conduct or the full one. Holds for any non-negative weight; cells of zero mass included. Inhabited by Witness.mse_split_instance."
+}
+```
+
+### appraisal.three-channels
+
+```json
+{
+  "project": "normativity",
+  "short_name": "three channels: what she attains equals the best attainable, less what she cannot know, less what her choice loses against the true utilities averaged over what she observes, the two subtracted terms non-negative",
+  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.AppraisalAccount.three_channels"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/RESULTS.md"
+  },
+  "note": "Result 2 of account/RESULTS.md, for a choice that is a function of what she observes. Inhabited by Witness.three_channels_instance, whose observation is complete, so that only the third term is non-trivial on it."
+}
+```
+
+### appraisal.cost-of-mistakes
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the cost of mistakes: what her choice loses is at most her expected regret by her own lights plus the square root of twice the summed mean squared distance of her valuations from the true utilities averaged over what she observes",
+  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.AppraisalAccount.misuse_le"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/RESULTS.md"
+  },
+  "note": "Result 3 of account/RESULTS.md, at the full strength of calibration (valuationError conditions on what she observes). The same bound with the minimal or the per-conduct strength in its place is false (account/results.py, r3); that failure is checked in Python and is not a Lean declaration. Inhabited by Witness.misuse_le_instance."
+}
+```
+
+### appraisal.deferring
+
+```json
+{
+  "project": "normativity",
+  "short_name": "deferring: the adviser's squared error less her verdict's equals the mean squared distance of the adviser's estimate from the estimate given both, less that of her verdict; the first vanishes when her verdict is constant on the cells of the adviser's information",
+  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.AppraisalAccount.deferring_identity"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/RESULTS.md"
+  },
+  "note": "Result 7 of account/RESULTS.md. Inhabited by Witness.deferring_instance (a verdict not determined by the adviser's information), Witness.deferring_determined_instance and Witness.deferring_identity_instance."
+}
+```
+
+### appraisal.strong-split
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the strong measure splits: for a valuation constant on the cells of what she observes, its mean squared distance from the true utility averaged over what she observes is its miscalibration given its own value plus her unused information",
+  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.AppraisalAccount.strong_split"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VALUE_RESULTS.md"
+  },
+  "note": "Result 4 of account/VALUE_RESULTS.md. Holds for any non-negative weight. Inhabited by Witness.strong_split_instance, on which the unused information is zero."
+}
+```
+
+### appraisal.guarantee
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the guarantee: if each reference move's expected true utility is matched by a move of hers, what she attains is at least any reference move's expected true utility less her regret by her own lights less the square root of twice her summed miscalibration and unused information",
+  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.AppraisalAccount.guarantee"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VALUE_RESULTS.md"
+  },
+  "note": "Result 5 of account/VALUE_RESULTS.md, first form: the measures are those under her own policy. The options condition is a hypothesis; the benchmark is a single reference move, not what she attains under the reference. Inhabited by Witness.guarantee_instance."
+}
+```
+
+### appraisal.options-hull
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the options condition: if every reference family member is a convex combination of hers, then for every payoff on the outcomes each reference member's expected payoff is matched by one of hers",
+  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.AppraisalAccount.options_of_hull"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VALUE_RESULTS.md"
+  },
+  "note": "Result 3 of account/VALUE_RESULTS.md, one direction; the converse is hull_of_options in the same file, by a separation theorem. Inhabited by Witness.options_of_hull_instance and Witness.hull_of_options_instance."
+}
+```
+
+### appraisal.deferring-cost
+
+```json
+{
+  "project": "normativity",
+  "short_name": "what deferring costs: on a finite space with a non-negative weight, the mean squared error of her verdict is at most that of the adviser's estimate given its information plus the verdict's mean squared distance from the estimate given that information and the verdict",
+  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.AccountJoin.deferring_cost_le"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BRIDGE_LEAN.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md"
+  },
+  "note": "Claim (2) of account/BRIDGE_LEAN.md: E[(V − U)²] ≤ E[(E[U | k] − U)²] + E[(V − E[U | k, V])²], from AppraisalAccount.deferring. The exact form is deferring_cost_eq, with equality iff the adviser's estimate equals the estimate given both wherever the weight is positive (deferring_cost_eq_iff_pointwise). An expectation in her true utility U, nothing at the realised point. Not established: that the second term is small for anyone, or a bound on a legitimate history from an abstract Gate.Sound. Inhabited by Witness.deferring_cost_instance."
+}
+```
+
+### appraisal.guarantee-from-soundness
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the guarantee from soundness: on a finite space with a probability weight, where for each move what she observes is determined by the adviser's information together with her valuation of that move, any value some move attains in expectation, less her expected regret by her own lights and the square root of twice the summed miscalibration of her valuations given the adviser's information and themselves, is at most what she attains",
+  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.AccountJoin.guarantee_of_given"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BRIDGE_LEAN.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md"
+  },
+  "note": "The sound signal of account/BRIDGE_LEAN.md, through AppraisalAccount.guarantee_core, for a choice that is a function of what she observes. The link between what she observes and the adviser's information is a hypothesis: sufficient, and not shown necessary in general; Witness.link_needed is an instance without it on which the bound fails. The benchmark is a value some move of hers attains on the same space; the form with a reference space and the options condition is guarantee_of_sound. An expectation in her true utility. Not established: that the miscalibration is small for anyone. Inhabited by Witness.guarantee_of_sound_instance."
+}
+```
+
+### legitimacy.line3-range
+
+```json
+{
+  "project": "normativity",
+  "short_name": "line 3's range: for finitely many policies, the best informed rating among the policies whose later ratings lie within the tolerance of the baseline's, less the best among those within the tolerance of the policy followed, is at most the best among the policies whose later ratings lie between the baseline's and the followed policy's within the tolerance, less that same best",
+  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.AccountJoin.ValueChange.line3Old_le_line3"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BRIDGE_LEAN.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md"
+  },
+  "note": "Claim (6), third part, of account/BRIDGE_LEAN.md: ValueChange.line3Old ≤ ValueChange.line3. The quantity belongs to the statement of 2026-11-17, which failed its test (projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md §2); this entry registers only the range. line3_nonneg and line3_eq_zero are the other two parts. ValueChange.line3 is a quantity of one ValueChange; Gate.line3 is a separate field, and that a history's line 3 is the largest ValueChange.line3 over its moments is not shown. Inhabited by Witness.line3_instance; on Witness.separable_line3 line 3 is 1/5 and the older form −1/10."
+}
+```
+
+### corrigibility.feedback-transfer
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the feedback hypothesis transfers: if the average excess of the estimates over the scores built from a feedback sequence is eventually below every positive bound, and the average excess of the feedback over the evaluation has limit superior at most zero, the post's Unbiasedness From Feedback holds for the scores built from the evaluation",
+  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.AccountJoin.unbiased_of_feedback"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BRIDGE_LEAN.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md"
+  },
+  "note": "§4.3 of account/BRIDGE_LEAN.md, for a DeconfusingCorrigibility.Sequential and any real sequence as the feedback. The second condition is sufficient and not necessary; Witness.feedback_not_enough has the first without the second and the conclusion fails. Not established: any bound on the feedback less the evaluation; nothing in Gate.Legit gives one. Inhabited by Witness.unbiased_of_feedback_instance (estimates 1/4, feedback 1/2, evaluation 3/4)."
+}
+```
+
+### scoring.welfare-bound
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the welfare bound: in one audited decision, her expected true utility under the course taken is at least that under the honest course less ε↑ + η↑ + ε↓ + η↓ + δφ + γ/α, given D1(a) and D2(a) at the course taken, D1(b), D2(b), D3's false-positive half and D5 at the honest course, D4 at both, and D6",
+  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.ScoringTheorem.Audit.welfare_bound"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/SCORING.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md"
+  },
+  "note": "(1) of account/SCORING.md, whose §2 states D1–D6. Also assumed: 0 < α, 0 ≤ δ, 0 ≤ lam, 0 ≤ φ, non-negative weights, total weight one at the honest course. Not hypotheses: D3's detection half, a bound on v. v, fe, fbar, C, D and N are fields of an Audit, data with no hypothesis among them: that they are her audited evaluation, her verdicts shown everything, whether the adviser wronged her, what a conduct audit would flag and the violations detected is a reading, not a theorem. Expected values only, nothing at the realised history; one decision. D6 compares actual expected scores, and the file has no object for what the adviser believes. Inhabited by Witness.package; Witness.d1a_needed, Witness.d2a_needed and Witness.d6_needed are instances without one hypothesis on which the bound fails."
+}
+```
+
+### scoring.conduct-bound
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the conduct bound: in one audited decision, the chance of a wrong under the course taken is at most (1 − u* + Δ)/(δκ), with u* her expected true utility under the honest course and Δ = ε↓ + η↓ + δφ + γ/α, given D3's detection half at the course taken, D1(b), D2(b), D3's false-positive half and D5 at the honest course, D4 at both, D6, 0 < δκ and v ≤ 1",
+  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.ScoringTheorem.Audit.conduct_bound"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/SCORING.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md"
+  },
+  "note": "(2) of account/SCORING.md. Also assumed: 0 < α, 0 ≤ δ, 0 ≤ lam, 0 ≤ φ, non-negative weights of total one at both courses. Neither D1(a) nor D2(a) is a hypothesis. v, fe, fbar, C, D and N are fields of an Audit, data with no hypothesis among them: that they are her audited evaluation, her verdicts shown everything, whether the adviser wronged her, what a conduct audit would flag and the violations detected is a reading, not a theorem. The chance of a wrong is bounded only through D3's detection half. Expected values only; one decision. D6 compares actual expected scores, and the file has no object for what the adviser believes. Inhabited by Witness.package; Witness.d3det_needed and Witness.d5_needed are instances without one hypothesis on which the bound fails."
+}
+```
+
+### scoring.authority-bound
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the authority bound: in one audited decision, the expected number of detected violations of her authority under the course taken is at most α(1 − u* + Δ)/lam, with u* her expected true utility under the honest course and Δ = ε↓ + η↓ + δφ + γ/α, given D1(b), D2(b), D3's false-positive half and D5 at the honest course, D4 at both, D6, 0 < lam and v ≤ 1",
+  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.ScoringTheorem.Audit.authority_bound"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/SCORING.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md"
+  },
+  "note": "(3) of account/SCORING.md. Also assumed: 0 < α, 0 ≤ δ, 0 ≤ φ, non-negative weights of total one at both courses. Not hypotheses: D1(a), D2(a), D3's detection half. v, fe, fbar, C, D and N are fields of an Audit, data with no hypothesis among them: that they are her audited evaluation, her verdicts shown everything, whether the adviser wronged her, what a conduct audit would flag and the violations detected is a reading, not a theorem. Detected violations only: N is the count the scoring process detects, and nothing is said of an undetected one. The bound is a rate, positive for every finite lam unless u* = 1 and Δ = 0: authority has no strict priority. Expected values only; one decision. D6 compares actual expected scores, and the file has no object for what the adviser believes. Inhabited by Witness.package; Witness.d5_needed is an instance without D5 on which the bound fails."
+}
+```
+
+### scoring.no-credit
+
+```json
+{
+  "project": "normativity",
+  "short_name": "no credit: for a course with D4 and D3's detection half at rate κ, with 1 ≤ δκ and v ≤ 1, the expected score is at most α times the expected audited evaluation on the histories without a wrong, less lam times the expected number of detected violations",
+  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.ScoringTheorem.Audit.no_credit"
+  },
+  "answers_item": "137",
+  "provenance": {
+    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/SCORING.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md"
+  },
+  "note": "The lemma of account/SCORING.md §3. Also assumed: 0 ≤ α, 0 ≤ δ, a non-negative weight; total weight one is not assumed. v, fe, fbar, C, D and N are fields of an Audit, data with no hypothesis among them: that they are her audited evaluation, her verdicts shown everything, whether the adviser wronged her, what a conduct audit would flag and the violations detected is a reading, not a theorem. An expected score at one decision, nothing at the realised history; detected violations only. Inhabited by Witness.package."
+}
+```

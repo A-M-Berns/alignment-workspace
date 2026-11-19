@@ -2857,7 +2857,15 @@ class Fixtures(unittest.TestCase):
         for e, why in D["events"]["stale_reasons"].items():
             self.assertTrue(why in ("leaf became a table", "leaf became an and", "leaf became an or") or why.startswith("given against version"), (e, why))
         pol = g.parse_flat_yaml((self.root / "graph" / "policy.yaml").read_text())
-        self.assertEqual(set(pol["handles"]), {"@A-M-Berns", "@abramdemski", "@smithy-verity", "@smithy-verity-opus55", "@claude-fable-5"})
+        # the human handles and the legacy AI names are pinned here; an AI handle that is its model's slug is not (ruling of
+        # 2026-11-18): rule 5 already derives it from the model string and refuses any other, so a round maps its own model
+        # with one line of policy.yaml and no edit to this test
+        H = pol["handles"]
+        self.assertEqual({h for h, s in H.items() if s.get("kind") == "human"}, {"@A-M-Berns", "@abramdemski"})
+        self.assertEqual({h for h, s in H.items() if s.get("legacy") is True}, {"@smithy-verity", "@smithy-verity-opus55"})
+        self.assertEqual({h for h, s in H.items() if s.get("kind") != "human" and s.get("legacy") is not True},
+                         {"@" + g.model_slug(s["model"]) for s in H.values() if s.get("kind") == "ai" and s.get("legacy") is not True})
+        self.assertIn("@claude-fable-5", H)
         self.assertNotIn("illustrative", (self.root / "graph" / "policy.yaml").read_text())
         for r, R in D["roots"].items():
             self.assertEqual(R["status"], "open", r)                           # no human judgment yet, so nothing concedes

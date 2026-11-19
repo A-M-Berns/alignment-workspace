@@ -59,7 +59,7 @@ Owner @A-M-Berns, @abramdemski
 - rests on AI numbers (no human judgment yet): kernel-no-laundering
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @A-M-Berns, @abramdemski; holds 85 node(s); owner has not confirmed (drafted from the wiki)
+- frame owner @A-M-Berns, @abramdemski; holds 109 node(s); owner has not confirmed (drafted from the wiki)
 - a programme: informs through its steps
 - best next unit: re-examine legitimacy-as-local-rules
 #### corrigibility-landscape
@@ -390,7 +390,7 @@ Owner @A-M-Berns
 Owner @A-M-Berns; unspelled: no roots yet (its unit is spell-out)
 
 ## Sub-frame legitimacy (in the-program): What must stay true of a trajectory's record, verdicts and channels of influence, inside it and at its boundary, for a later judgment to count as the principal's own, and what does corrigibility consume from that?
-Owner @A-M-Berns, @abramdemski; holds 85 node(s)
+Owner @A-M-Berns, @abramdemski; holds 109 node(s)
 
 ### Plans
 #### integrity-and-record
@@ -517,6 +517,30 @@ Nodes this frame is about that are no goals of the ranking (held, not roots): li
 - item-136 (leaf/task)
 - item-137 (leaf/task)
 - item-138 (leaf/task)
+- item-139 (leaf/task)
+- item-140 (leaf/task)
+- item-141 (leaf/task)
+- item-142 (leaf/task)
+- item-143 (leaf/task)
+- item-144 (leaf/task)
+- item-145 (leaf/task)
+- item-146 (leaf/task)
+- item-147 (leaf/task)
+- appraisal.mse-split (and)
+- appraisal.three-channels (and)
+- appraisal.cost-of-mistakes (and)
+- appraisal.deferring (and)
+- appraisal.strong-split (and)
+- appraisal.guarantee (and)
+- appraisal.options-hull (and)
+- appraisal.deferring-cost (and)
+- appraisal.guarantee-from-soundness (and)
+- legitimacy.line3-range (and)
+- corrigibility.feedback-transfer (and)
+- scoring.welfare-bound (and)
+- scoring.conduct-bound (and)
+- scoring.authority-bound (and)
+- scoring.no-credit (and)
 - legit-definition-endorsement (cases)
 - legit-corrects-trust-principles (leaf/step)
 - legit-per-formalism-family (leaf/step)
@@ -3916,6 +3940,15 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - alice-bob-two-coin-example: Work the two-coin versus coin-and-parity example end to end in a note with a Python check of the candidate's hypotheses. (who: agent)
 - alignment-faking-ahead-of-time: Map the faking iff (d < (1-e)h - eg) onto the measured quantities of Greenblatt et al. 2024 (the compliance gap, the training-versus-deployment framing) and say which parameters the experiments pin. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/corr-joint-process, projects/deference/faf-cleanroom-2026-10-02/packages/corr-general-object
 - anti-naturality-walk: Continue the walk at the outline's re-ordered sequence (items 4, 6, 7, 5, 8, 3, 9), each session with the clean-room results on that item as its agenda, and close with a written definition of corrigibility that survives the arguments. (who: human); files: projects/deference/corrigibility-note-dump-2026-10-01/corrigibility-discussion-outline.md
+- appraisal.cost-of-mistakes: round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; work order: ATTENTION #137; decision: 2026-11-18--handle-mapped-fifteen-registered
+- appraisal.deferring-cost: round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; work order: ATTENTION #137; decision: 2026-11-18--handle-mapped-fifteen-registered
+- appraisal.deferring: round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; work order: ATTENTION #137; decision: 2026-11-18--handle-mapped-fifteen-registered
+- appraisal.guarantee-from-soundness: round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; work order: ATTENTION #137; decision: 2026-11-18--handle-mapped-fifteen-registered
+- appraisal.guarantee: round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; work order: ATTENTION #137; decision: 2026-11-18--handle-mapped-fifteen-registered
+- appraisal.mse-split: round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; work order: ATTENTION #137; decision: 2026-11-18--handle-mapped-fifteen-registered
+- appraisal.options-hull: round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; work order: ATTENTION #137; decision: 2026-11-18--handle-mapped-fifteen-registered
+- appraisal.strong-split: round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; work order: ATTENTION #137; decision: 2026-11-18--handle-mapped-fifteen-registered
+- appraisal.three-channels: round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; work order: ATTENTION #137; decision: 2026-11-18--handle-mapped-fifteen-registered
 - approval-directed-mapping: Write a mapping table between the eager-to-learn picture and Christiano's approval-directed agents (kept, differs, restated as a trajectory theorem). (who: agent)
 - approx-introspection-pins-discharge: Discharge the gap packages and the expert pins (ExpertPinsGaps) at grade (a) for a distinct inductor expert, not only for the self-expert, in the def-lattice-arrows and def-squeeze-diamond neighbourhood. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/packages/def-squeeze-diamond/, projects/deference/faf-cleanroom-2026-10-02/packages/def-lattice-arrows/
 - aq-engineering-note: Write the two-sided note on what a frame-level iff tells an engineer and why it is not constructive. (who: agent)
@@ -4007,6 +4040,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - corrigibility-architecture-round: round: projects/deference/rounds/2026-09-06-corrigibility-architecture
 - corrigibility-faithful-plus-legit-on-self: Prove corrigible_selection_closure_open: LUV-Total-Trust toward two experts implies trust toward their generable selection, building the quote package of a mixture that the trust-merge package lacks. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Trust/LegitLiRegister/, projects/deference/faf-cleanroom-2026-10-02/packages/trust-merge/
 - corrigibility-landscape: round: prompts/2026-08-11-corrigibility-phase-ii; round: prompts/2026-08-11-deference-corrigibility
+- corrigibility.feedback-transfer: round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; work order: ATTENTION #137; decision: 2026-11-18--handle-mapped-fifteen-registered
 - counterfactual-non-capture: Read the non-capture compilation round, the non-capture certificate round and the checkpoint's open problem 3 side by side; state whether the combined authority and non-capture theorem is the Layer III object or a different one, and set this node's status accordingly; if open, build the predicate with a soundness theorem against a manipulation model and a non-vacuity countermodel. (who: agent); files: projects/deference/rounds/2026-09-16-noncapture-compilation/, projects/normativity/legitimacy/rounds/2026-09-05-noncapture-certificate/, projects/normativity/legitimacy/checkpoint-2026-09-01/OPEN_PROBLEMS.md
 - counterfactual-oracle-not-special-case: Prove the actual-oracle case (the all-legitimate case recovers Tower) and state formally why the counterfactual oracle is not the other extreme, in a note with a fixture. (who: agent); files: projects/deference/note-dump-2026-08-11/related-chats/2026-07-05__theory-of-legitimacy__f57f5f2d.md, projects/deference/note-dump-2026-08-11/notes/li-deference.md
 - cross-agent-machine-checked-variant: Add a clean-room module stating and proving a cross-agent variant over FAF, building on def-squeeze-diamond's transport. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Deference/
@@ -4154,9 +4188,18 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - item-134: Attach a vocabulary change to the accounted state: a transition of the normative state carrying a coordinate map, the transport theorem for entitlement under stated hypotheses or its counterexample, the interpretation carrier a general translation needs, a defeasible form for a pulled-back row, and a procedure computing the image of a forced region. (who: agent); round: projects/normativity/rounds/2026-11-08-content-recollection; decision: 2026-11-08--vocabulary-change-is-translation-conservativity-criterion; decision: open--broken-commitment-bars-or-accounts; decision: 2026-11-09--forgetting-is-projection-settled-safe-live-not; decision: 2026-11-09--vocabulary-change-is-docket-occurrence-licence-and-challenge
 - item-135: Define the state a reasoner with bounded memory retains — the live docket, the specialized rows on unsettled coordinates, the holding on a finite universe of reason sets, the receipts of closed accounts — with the theorem that forced intervals and permissions computed from it equal those of the full record, a space bound or the fixture showing none, and the rule for a live coordinate. (who: agent); round: projects/normativity/rounds/2026-11-08-content-recollection; decision: 2026-11-09--forgetting-is-projection-settled-safe-live-not; decision: open--broken-commitment-bars-or-accounts
 - item-136: Execute item 136 per its deliverable shape and acceptance check: The account of manipulation: the adviser's responsibility for her mistake, what supplies her trustworthiness, her valuing, and whose probabilities. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-10--legitimacy-prosecution-readings; decision: 2026-11-10--steering-follow-up-stipulations; decision: 2026-11-11--legitimacy-purpose-first-direction; decision: 2026-11-11--purpose-first-account-readings; decision: 2026-11-12--decomposition-account-readings; decision: 2026-11-12--scored-account-readings; decision: 2026-11-13--blocks-setting-readings; decision: 2026-11-14--estimates-account-readings; decision: 2026-11-16--consolidated-account-readings; decision: 2026-11-16--value-side-three-conditions-readings; decision: 2026-11-16--board-statement-readings; decision: 2026-11-17--statement-computation-readings; decision: 2026-11-17--account-join-lean-readings; decision: 2026-11-18--scoring-theorem-lean-readings; decision: 2026-11-18--legitimacy-working-positions; decision: 2026-11-18--legitimacy-consolidation
-- item-137: Execute item 137 per its deliverable shape and acceptance check: The theorems: registering the fifteen results, authority beyond a finite penalty, and the audit as a design. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-10--legitimacy-prosecution-readings; decision: 2026-11-11--legitimacy-purpose-first-direction; decision: 2026-11-11--purpose-first-account-readings; decision: 2026-11-12--decomposition-account-readings; decision: 2026-11-12--scored-account-readings; decision: 2026-11-13--blocks-setting-readings; decision: 2026-11-14--estimates-account-readings; decision: 2026-11-16--consolidated-account-readings; decision: 2026-11-16--value-side-three-conditions-readings; decision: 2026-11-16--board-statement-readings; decision: 2026-11-17--statement-computation-readings; decision: 2026-11-17--account-join-lean-readings; decision: 2026-11-18--scoring-theorem-lean-readings; decision: 2026-11-18--legitimacy-working-positions; decision: 2026-11-18--legitimacy-consolidation
+- item-137: Execute item 137 per its deliverable shape and acceptance check: The registration of fifteen kernel-checked results of the legitimacy line. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-10--legitimacy-prosecution-readings; decision: 2026-11-11--legitimacy-purpose-first-direction; decision: 2026-11-11--purpose-first-account-readings; decision: 2026-11-12--decomposition-account-readings; decision: 2026-11-12--scored-account-readings; decision: 2026-11-13--blocks-setting-readings; decision: 2026-11-14--estimates-account-readings; decision: 2026-11-16--consolidated-account-readings; decision: 2026-11-16--value-side-three-conditions-readings; decision: 2026-11-16--board-statement-readings; decision: 2026-11-17--statement-computation-readings; decision: 2026-11-17--account-join-lean-readings; decision: 2026-11-18--scoring-theorem-lean-readings; decision: 2026-11-18--legitimacy-working-positions; decision: 2026-11-18--legitimacy-consolidation; decision: 2026-11-18--handle-mapped-fifteen-registered
 - item-138: Execute item 138 per its deliverable shape and acceptance check: The cases and the prior work: the present vocabulary on the bank of published cases, and what is new. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-10--legitimacy-prosecution-readings; decision: 2026-11-10--steering-follow-up-stipulations; decision: 2026-11-11--legitimacy-purpose-first-direction; decision: 2026-11-11--purpose-first-account-readings; decision: 2026-11-12--decomposition-account-readings; decision: 2026-11-12--scored-account-readings; decision: 2026-11-13--blocks-setting-readings; decision: 2026-11-14--estimates-account-readings; decision: 2026-11-16--consolidated-account-readings; decision: 2026-11-16--value-side-three-conditions-readings; decision: 2026-11-16--board-statement-readings; decision: 2026-11-17--statement-computation-readings; decision: 2026-11-17--account-join-lean-readings; decision: 2026-11-18--scoring-theorem-lean-readings; decision: 2026-11-18--legitimacy-working-positions; decision: 2026-11-18--legitimacy-consolidation
+- item-139: Execute item 139 per its deliverable shape and acceptance check: When the adviser is responsible for her mistake. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-18--legitimacy-working-positions
 - item-14: Continue ATTENTION item 14 (returned in wave 1) using wiki/faithful-acceleration-result.md and wiki/delay-and-visibility.md, not the June note dump's superseded ladder. (who: either); files: lean/Workspace/Deference/
+- item-140: Execute item 140 per its deliverable shape and acceptance check: What supplies her trustworthiness. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution
+- item-141: Execute item 141 per its deliverable shape and acceptance check: Her valuing: which comparison, and what makes a request valid. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-18--legitimacy-working-positions
+- item-142: Execute item 142 per its deliverable shape and acceptance check: Relative to what distribution: whose beliefs the measures and the derivations take. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution
+- item-143: Execute item 143 per its deliverable shape and acceptance check: Authority beyond a finite penalty. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution
+- item-144: Execute item 144 per its deliverable shape and acceptance check: Verdicts on the literature's cases under the present vocabulary. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution
+- item-145: Execute item 145 per its deliverable shape and acceptance check: The audit as a design: its incentives, void against earning nothing, and more than one decision. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-18--legitimacy-working-positions
+- item-146: Execute item 146 per its deliverable shape and acceptance check: What is new against prior work. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution
+- item-147: Execute item 147 per its deliverable shape and acceptance check: Determining `Legit` of a past stretch from what an overseer can observe. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution
 - item-15: Execute item 15 per its deliverable shape and acceptance check: Finite settlement classification, and the local delegation bridge. (who: agent)
 - item-16: Execute item 16 per its deliverable shape and acceptance check: The certificate inequality, derived. (who: agent)
 - item-17: Execute item 17 per its deliverable shape and acceptance check: Simulator substitution: the divergence witness. (who: agent)
@@ -4301,6 +4344,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - legitimacy.endpoint-trans: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: ATTENTION #78
 - legitimacy.evolution-conservation: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; decision: 2026-09-25--legitimacy-internal-external-robust-openness-external; work order: ATTENTION #78
 - legitimacy.faithful-carry: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: ATTENTION #78
+- legitimacy.line3-range: round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; work order: ATTENTION #137; decision: 2026-11-18--handle-mapped-fifteen-registered
 - legitimacy: decision: 2026-10-22--map-canonical-index-program-maintainer-handles; decision: 2026-10-23--map-follow-up-hypotheses-unread-registry-edge-derived-files-one-decomposition; round: projects/normativity/legitimacy/rounds/2026-08-12-legitimacy-architecture; round: projects/normativity/legitimacy/rounds/2026-08-13-procedural-legitimacy; round: projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge; round: projects/normativity/legitimacy/rounds/2026-08-17-counterfactual-legitimacy; round: projects/normativity/legitimacy/rounds/2026-08-21-internal-answerability; round: projects/normativity/legitimacy/rounds/2026-08-22-role-parametric-answerability; round: projects/normativity/legitimacy/rounds/2026-08-23-afoundational-inquiry; round: projects/normativity/legitimacy/rounds/2026-08-23-certified-interactive-service; round: projects/normativity/legitimacy/rounds/2026-08-23-reason-representation; round: projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates; round: projects/normativity/legitimacy/rounds/2026-08-24-reflective-integrity-core; round: projects/normativity/legitimacy/rounds/2026-08-25-carroll-legitimacy-test; round: projects/normativity/legitimacy/rounds/2026-08-25-end-to-end-vertical-slice; round: projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution; round: projects/normativity/legitimacy/rounds/2026-08-27-legitimate-improvement; round: projects/normativity/legitimacy/rounds/2026-08-28-answerable-challenge-service; round: projects/normativity/legitimacy/rounds/2026-08-28-answerable-revision; round: projects/normativity/legitimacy/rounds/2026-08-28-service-realization; round: projects/normativity/legitimacy/rounds/2026-08-29-normative-continuity-concordance; round: projects/normativity/legitimacy/rounds/2026-08-30-anchored-slices-auth-transfer; round: projects/normativity/legitimacy/rounds/2026-08-30-answerability-carriers; round: projects/normativity/legitimacy/rounds/2026-08-30-normative-continuity-settlement; round: projects/normativity/legitimacy/rounds/2026-08-30-proper-exercise-calculus; round: projects/normativity/legitimacy/rounds/2026-08-31-faithful-semantic-preservation; round: projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability; round: projects/normativity/legitimacy/checkpoint-2026-09-01; round: projects/normativity/legitimacy/rounds/2026-09-02-unified-grounds-answerable-defeat; round: projects/normativity/legitimacy/rounds/2026-09-03-defeat-landing-horty-standing; round: projects/normativity/legitimacy/rounds/2026-09-04-normative-inductor-realization; round: prompts/2026-09-05-author-consolidation; round: projects/normativity/legitimacy/rounds/2026-09-05-integrity-constructive; round: projects/normativity/legitimacy/rounds/2026-09-05-integrity-adversary; round: projects/normativity/legitimacy/rounds/2026-09-05-noncapture-certificate; round: projects/normativity/legitimacy/rounds/2026-09-05-practical-certificate; round: projects/normativity/legitimacy/rounds/2026-09-05-ni-gap-audit; round: projects/normativity/legitimacy/rounds/2026-09-05-integrity-synthesis; round: projects/normativity/legitimacy/rounds/2026-09-08-canonicalization
 - legitimacy.multiplicity-witness: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: ATTENTION #78
 - legitimacy.payload-of-view: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
@@ -4476,6 +4520,10 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - scoped-value-content-witness: Attack truthPrice_frequently_interior by the trader argument the round-3 audits sketch, in the clean room's DefArgmaxValue/Open.lean. (who: agent); open statement: `Cleanroom.Deference.DefArgmaxValue.truthPrice_frequently_interior`; files: projects/deference/faf-cleanroom-2026-10-02/Cleanroom/Deference/DefArgmaxValue/Open.lean
 - scoreside.conduct-on-prices-conflicts: round: projects/normativity/rounds/2026-11-07-score-side-binding; work order: ATTENTION #35; decision: 2026-11-07--conduct-binds-on-score-warrants-on-prices
 - scoreside.same-question-two-realizations: round: projects/normativity/rounds/2026-11-07-score-side-binding; work order: ATTENTION #35; decision: 2026-11-07--conduct-binds-on-score-warrants-on-prices
+- scoring.authority-bound: round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; work order: ATTENTION #137; decision: 2026-11-18--handle-mapped-fifteen-registered
+- scoring.conduct-bound: round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; work order: ATTENTION #137; decision: 2026-11-18--handle-mapped-fifteen-registered
+- scoring.no-credit: round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; work order: ATTENTION #137; decision: 2026-11-18--handle-mapped-fifteen-registered
+- scoring.welfare-bound: round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; work order: ATTENTION #137; decision: 2026-11-18--handle-mapped-fifteen-registered
 - secrecy-props-lean-checked: In one clean-room-style Lean file, check the first two clauses of secrecy-not-forbidden-by-criterion in a finite model with finitely many budgeted oracle traders, and state the third clause, on withholding policies, at the logical-induction register. (who: agent); files: projects/deference/faf-cleanroom-2026-10-02/
 - seed-theory: round: projects/normativity/seed/rounds/2026-09-16-seed-statics; round: projects/normativity/seed/rounds/2026-09-17-convergence-measure
 - seed.adapter-certificates-exist: round: projects/normativity/rounds/2026-11-08-content-recollection; work order: ATTENTION #118; decision: 2026-11-08--content-is-role-among-rows-expresses-demands-no-more
@@ -4791,6 +4839,42 @@ The outside option and the undescribed failure, each a cases node over the outco
 | anticipation-branchwise-dominance | leaf/step | 2 (both) | AI number, superseded by anticipation-branchwise-dominance--corrigibility-risk | open | 0 | 0 (informs no goal) |
 | anticipation-branchwise-dominance.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 1 | 1 |
 | anticipation-branchwise-dominance.setting | leaf/hypothesis | 2 (both) | AI number | open | 1 | 1 |
+| appraisal.cost-of-mistakes.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| appraisal.cost-of-mistakes.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| appraisal.cost-of-mistakes | and | 2 (both) | held by legitimacy, hypotheses unread | open | 0 | 0 (informs no goal) |
+| appraisal.cost-of-mistakes.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| appraisal.deferring-cost.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| appraisal.deferring-cost.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| appraisal.deferring-cost | and | 2 (both) | held by legitimacy, hypotheses unread | open | 0 | 0 (informs no goal) |
+| appraisal.deferring-cost.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| appraisal.deferring.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| appraisal.deferring.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| appraisal.deferring | and | 2 (both) | held by legitimacy, hypotheses unread | open | 0 | 0 (informs no goal) |
+| appraisal.deferring.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| appraisal.guarantee-from-soundness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| appraisal.guarantee-from-soundness.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| appraisal.guarantee-from-soundness | and | 2 (both) | held by legitimacy, hypotheses unread | open | 0 | 0 (informs no goal) |
+| appraisal.guarantee-from-soundness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| appraisal.guarantee.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| appraisal.guarantee.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| appraisal.guarantee | and | 2 (both) | held by legitimacy, hypotheses unread | open | 0 | 0 (informs no goal) |
+| appraisal.guarantee.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| appraisal.mse-split.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| appraisal.mse-split.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| appraisal.mse-split | and | 2 (both) | held by legitimacy, hypotheses unread | open | 0 | 0 (informs no goal) |
+| appraisal.mse-split.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| appraisal.options-hull.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| appraisal.options-hull.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| appraisal.options-hull | and | 2 (both) | held by legitimacy, hypotheses unread | open | 0 | 0 (informs no goal) |
+| appraisal.options-hull.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| appraisal.strong-split.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| appraisal.strong-split.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| appraisal.strong-split | and | 2 (both) | held by legitimacy, hypotheses unread | open | 0 | 0 (informs no goal) |
+| appraisal.strong-split.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| appraisal.three-channels.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| appraisal.three-channels.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| appraisal.three-channels | and | 2 (both) | held by legitimacy, hypotheses unread | open | 0 | 0 (informs no goal) |
+| appraisal.three-channels.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | approval-directed-mapping | leaf/question | 2 (both) | AI number | open | 0 | 2 |
 | approx-introspection-pins-discharge | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
 | approx-introspection-quantitative | leaf/question | 2 (both) | AI number | open | 1 | 0 (informs no goal) |
@@ -5148,6 +5232,10 @@ The outside option and the undescribed failure, each a cases node over the outco
 | corrigibility-less-anti-natural | leaf/step | 2 (both) | AI number, given anti-naturality-arguments-as-stated, interval not a bound (negative evidential edge) | open | 1 | 1 |
 | corrigibility-needs-consequentialist-wrapper | cases | 2 (both) | AI number, held by legitimacy, no belief, under attack | open | 0 | 2 |
 | corrigibility-needs-consequentialist-wrapper.partition | leaf/partition | 2 (both) | AI number | open | 0 | 2 |
+| corrigibility.feedback-transfer.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| corrigibility.feedback-transfer.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| corrigibility.feedback-transfer | and | 2 (both) | held by legitimacy, hypotheses unread | open | 0 | 0 (informs no goal) |
+| corrigibility.feedback-transfer.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | corrupt-strictly-contains-inadmissible | leaf/step | 2 (both) | AI number, given task-claim1-converse-witness, held by legitimacy | open | 0 | 0 (informs no goal) |
 | counterfactual-mugging-with-evidence.bridge | leaf/bridge | 2 (both) | AI number, attribution unvetted | open | 1 | 1 |
 | counterfactual-mugging-with-evidence.complete | leaf/completeness | 2 (both) | AI number | open | 1 | 1 |
@@ -5653,7 +5741,16 @@ The outside option and the undescribed failure, each a cases node over the outco
 | item-136 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
 | item-137 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
 | item-138 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-139 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
 | item-14 | leaf/task | 2 (both) | AI number | open | 0 | 1 |
+| item-140 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-141 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-142 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-143 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-144 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-145 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-146 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-147 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
 | item-15 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
 | item-16 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
 | item-17 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
@@ -5974,6 +6071,10 @@ The outside option and the undescribed failure, each a cases node over the outco
 | legitimacy.faithful-carry.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
 | legitimacy.faithful-carry | and | 2 (both) | held by integrity-and-record, hypotheses unread, superseded by integrity.faithful-carry | open | 0 | 0 (informs no goal) |
 | legitimacy.faithful-carry.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| legitimacy.line3-range.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| legitimacy.line3-range.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| legitimacy.line3-range | and | 2 (both) | held by legitimacy, hypotheses unread | open | 0 | 0 (informs no goal) |
+| legitimacy.line3-range.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | legitimacy | frame | 2 (both) | owner has not confirmed (drafted from wiki/Legitimacy.md) | open | 1 | 0 (informs no goal) |
 | legitimacy.multiplicity-witness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
 | legitimacy.multiplicity-witness.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
@@ -6789,6 +6890,22 @@ The outside option and the undescribed failure, each a cases node over the outco
 | scoreside.same-question-two-realizations.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
 | scoreside.same-question-two-realizations | and | 2 (both) | held by normative-inductor, hypotheses unread | open | 0 | 0 (informs no goal) |
 | scoreside.same-question-two-realizations.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| scoring.authority-bound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| scoring.authority-bound.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| scoring.authority-bound | and | 2 (both) | held by legitimacy, hypotheses unread | open | 0 | 0 (informs no goal) |
+| scoring.authority-bound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| scoring.conduct-bound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| scoring.conduct-bound.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| scoring.conduct-bound | and | 2 (both) | held by legitimacy, hypotheses unread | open | 0 | 0 (informs no goal) |
+| scoring.conduct-bound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| scoring.no-credit.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| scoring.no-credit.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| scoring.no-credit | and | 2 (both) | held by legitimacy, hypotheses unread | open | 0 | 0 (informs no goal) |
+| scoring.no-credit.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+| scoring.welfare-bound.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+| scoring.welfare-bound.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+| scoring.welfare-bound | and | 2 (both) | held by legitimacy, hypotheses unread | open | 0 | 0 (informs no goal) |
+| scoring.welfare-bound.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
 | secrecy-not-forbidden-by-criterion | leaf/step | 2 (both) | AI number, given secrecy-props-lean-checked, no belief | open | 1 | 1 |
 | secrecy-props-lean-checked | leaf/task | 2 (both) | AI number | open | 0 | 1 |
 | seed-theory | frame | 2 (both) | owner has not confirmed (drafted from wiki/Seed-Theory.md), spelled; nothing yet a goal (32 held) | open | 1 | 0 (informs no goal) |
@@ -7316,4 +7433,4 @@ The outside option and the undescribed failure, each a cases node over the outco
 | wirehead-iff-finite.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 1 |
 | wirehead-iff-finite.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 1 |
 | worlds-and-points-companion | leaf/question | 2 (both) | AI number | open | 0 | 8 |
-<!-- generated_hash: 6d3af30582f95818fa28959a -->
+<!-- generated_hash: 6653dfcb6fcef2d8d8850ac1 -->

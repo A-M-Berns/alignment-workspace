@@ -5,8 +5,8 @@
 It imports `AppraisalAccount`, `ThinLegitimacy` and `Legitimacy` and edits none. Rerun:
 `~/.claude/scripts/safe-lake.sh build Workspace.Deference.Contrib.AccountJoin` from `lean/`
 (in CI, the `lean` job); the file ends with `#print axioms` on each of its 117 declarations,
-each reporting `[propext, Classical.choice, Quot.sound]` or no axiom. Unregistered, as
-`LEAN.md` records for the earlier results. All names are provisional.
+each reporting `[propext, Classical.choice, Quot.sound]` or no axiom. `LEAN.md` lists the
+four results registered in `projects/normativity/CLAIMS.md`. All names are provisional.
 
 ## 1. The claims
 

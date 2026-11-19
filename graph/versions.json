@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "256b4bf1d36f8f1e7f038665",
-  "index.json": "57fa0a23529f558242290f9a"
+  "derived.json": "c85d8e92046b983c9177a4e4",
+  "index.json": "6ca24f8873089437515e9d2b"
  },
- "generated_hash": "c8efe26a60ba78343511ec5d",
+ "generated_hash": "510443c79256d7ddc8cf7554",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -331,6 +331,258 @@
    {
     "date": "2026-10-20",
     "normalized": "a model with revision branches a credence over them and deference to the future legitimate evaluation as the package fixes them",
+    "version": 1
+   }
+  ],
+  "appraisal.cost-of-mistakes": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the cost of mistakes what her choice loses is at most her expected regret by her own lights plus the square root of twice the summed mean squared distance of her valuations from the true utilities averaged over what she observes",
+    "version": 1
+   }
+  ],
+  "appraisal.cost-of-mistakes.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of appraisal cost of mistakes formalizes the registered claim as the registry reads it the cost of mistakes what her choice loses is at most her expected regret by her own lights plus the square root of twice the summed mean squared distance of her valuations from the true utilities averaged over what she observes",
+    "version": 1
+   }
+  ],
+  "appraisal.cost-of-mistakes.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "appraisal.cost-of-mistakes.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib appraisalaccount misuse_le is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "appraisal.deferring": [
+   {
+    "date": "2026-11-18",
+    "normalized": "deferring the advisers squared error less her verdicts equals the mean squared distance of the advisers estimate from the estimate given both less that of her verdict the first vanishes when her verdict is constant on the cells of the advisers information",
+    "version": 1
+   }
+  ],
+  "appraisal.deferring-cost": [
+   {
+    "date": "2026-11-18",
+    "normalized": "what deferring costs on a finite space with a non negative weight the mean squared error of her verdict is at most that of the advisers estimate given its information plus the verdicts mean squared distance from the estimate given that information and the verdict",
+    "version": 1
+   }
+  ],
+  "appraisal.deferring-cost.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of appraisal deferring cost formalizes the registered claim as the registry reads it what deferring costs on a finite space with a non negative weight the mean squared error of her verdict is at most that of the advisers estimate given its information plus the verdicts mean squared distance from the estimate given that information and the verdict",
+    "version": 1
+   }
+  ],
+  "appraisal.deferring-cost.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "appraisal.deferring-cost.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib accountjoin deferring_cost_le is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "appraisal.deferring.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of appraisal deferring formalizes the registered claim as the registry reads it deferring the advisers squared error less her verdicts equals the mean squared distance of the advisers estimate from the estimate given both less that of her verdict the first vanishes when her verdict is constant on the cells of the advisers information",
+    "version": 1
+   }
+  ],
+  "appraisal.deferring.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "appraisal.deferring.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib appraisalaccount deferring_identity is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "appraisal.guarantee": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the guarantee if each reference moves expected true utility is matched by a move of hers what she attains is at least any reference moves expected true utility less her regret by her own lights less the square root of twice her summed miscalibration and unused information",
+    "version": 1
+   }
+  ],
+  "appraisal.guarantee-from-soundness": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the guarantee from soundness on a finite space with a probability weight where for each move what she observes is determined by the advisers information together with her valuation of that move any value some move attains in expectation less her expected regret by her own lights and the square root of twice the summed miscalibration of her valuations given the advisers information and themselves is at most what she attains",
+    "version": 1
+   }
+  ],
+  "appraisal.guarantee-from-soundness.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of appraisal guarantee from soundness formalizes the registered claim as the registry reads it the guarantee from soundness on a finite space with a probability weight where for each move what she observes is determined by the advisers information together with her valuation of that move any value some move attains in expectation less her expected regret by her own lights and the square root of twice the summed miscalibration of her valuations given the advisers information and themselves is at most what she attains",
+    "version": 1
+   }
+  ],
+  "appraisal.guarantee-from-soundness.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "appraisal.guarantee-from-soundness.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib accountjoin guarantee_of_given is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "appraisal.guarantee.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of appraisal guarantee formalizes the registered claim as the registry reads it the guarantee if each reference moves expected true utility is matched by a move of hers what she attains is at least any reference moves expected true utility less her regret by her own lights less the square root of twice her summed miscalibration and unused information",
+    "version": 1
+   }
+  ],
+  "appraisal.guarantee.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "appraisal.guarantee.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib appraisalaccount guarantee is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "appraisal.mse-split": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the split on a finite space the mean squared error of an appraisal constant on the cells of a labelling is the targets mean squared distance from its cell means plus the appraisals mean squared distance from them",
+    "version": 1
+   }
+  ],
+  "appraisal.mse-split.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of appraisal mse split formalizes the registered claim as the registry reads it the split on a finite space the mean squared error of an appraisal constant on the cells of a labelling is the targets mean squared distance from its cell means plus the appraisals mean squared distance from them",
+    "version": 1
+   }
+  ],
+  "appraisal.mse-split.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "appraisal.mse-split.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib appraisalaccount mse_split is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "appraisal.options-hull": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the options condition if every reference family member is a convex combination of hers then for every payoff on the outcomes each reference members expected payoff is matched by one of hers",
+    "version": 1
+   }
+  ],
+  "appraisal.options-hull.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of appraisal options hull formalizes the registered claim as the registry reads it the options condition if every reference family member is a convex combination of hers then for every payoff on the outcomes each reference members expected payoff is matched by one of hers",
+    "version": 1
+   }
+  ],
+  "appraisal.options-hull.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "appraisal.options-hull.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib appraisalaccount options_of_hull is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "appraisal.strong-split": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the strong measure splits for a valuation constant on the cells of what she observes its mean squared distance from the true utility averaged over what she observes is its miscalibration given its own value plus her unused information",
+    "version": 1
+   }
+  ],
+  "appraisal.strong-split.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of appraisal strong split formalizes the registered claim as the registry reads it the strong measure splits for a valuation constant on the cells of what she observes its mean squared distance from the true utility averaged over what she observes is its miscalibration given its own value plus her unused information",
+    "version": 1
+   }
+  ],
+  "appraisal.strong-split.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "appraisal.strong-split.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib appraisalaccount strong_split is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "appraisal.three-channels": [
+   {
+    "date": "2026-11-18",
+    "normalized": "three channels what she attains equals the best attainable less what she cannot know less what her choice loses against the true utilities averaged over what she observes the two subtracted terms non negative",
+    "version": 1
+   }
+  ],
+  "appraisal.three-channels.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of appraisal three channels formalizes the registered claim as the registry reads it three channels what she attains equals the best attainable less what she cannot know less what her choice loses against the true utilities averaged over what she observes the two subtracted terms non negative",
+    "version": 1
+   }
+  ],
+  "appraisal.three-channels.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "appraisal.three-channels.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib appraisalaccount three_channels is accepted by the lean kernel in the repositorys lean library",
     "version": 1
    }
   ],
@@ -4167,6 +4419,34 @@
    {
     "date": "2026-10-20",
     "normalized": "the pictures under corrigibility needs consequentialist wrapper the wrapper is needed the piecemeal system suffices the two coincide and the residual are exclusive and exhaustive",
+    "version": 1
+   }
+  ],
+  "corrigibility.feedback-transfer": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the feedback hypothesis transfers if the average excess of the estimates over the scores built from a feedback sequence is eventually below every positive bound and the average excess of the feedback over the evaluation has limit superior at most zero the posts unbiasedness from feedback holds for the scores built from the evaluation",
+    "version": 1
+   }
+  ],
+  "corrigibility.feedback-transfer.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of corrigibility feedback transfer formalizes the registered claim as the registry reads it the feedback hypothesis transfers if the average excess of the estimates over the scores built from a feedback sequence is eventually below every positive bound and the average excess of the feedback over the evaluation has limit superior at most zero the posts unbiasedness from feedback holds for the scores built from the evaluation",
+    "version": 1
+   }
+  ],
+  "corrigibility.feedback-transfer.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "corrigibility.feedback-transfer.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib accountjoin unbiased_of_feedback is accepted by the lean kernel in the repositorys lean library",
     "version": 1
    }
   ],
@@ -8979,6 +9259,11 @@
     "date": "2026-11-18",
     "normalized": "item 137 the theorems registering the fifteen results authority beyond a finite penalty and the audit as a design is delivered in the shape its entry states lean proved a the fifteen entries proposed in account lean md registered in projects normativity claims md with their nodes b the scoring theorem with a constraint or a lexicographic score in place of the penalty the violation count defined from the events of authoritymodule lean and her commands beside her evaluation c the audit as a mechanism what it pays the adviser to do besides behave with an instance in which involving her lowers the advisers expected score and one in which the adviser abstains where it cannot explain or a proof that a stated design has neither and a history on which she was wronged as void and as earning nothing each a scoring rule with the bound it gives d the scoring theorem over more than one decision",
     "version": 14
+   },
+   {
+    "date": "2026-11-18",
+    "normalized": "item 137 the registration of fifteen kernel checked results of the legitimacy line is delivered in the shape its entry states lean proved the fifteen entries of account lean md registered in projects normativity claims md with their nodes",
+    "version": 15
    }
   ],
   "item-138": [
@@ -9038,12 +9323,73 @@
     "date": "2026-11-10",
     "normalized": "item 139 the advisers aim as an object of the fixture the steering standards without u v is delivered in the shape its entry states test supported the prosecution rounds fixture extended with an adviser aim variable and per adviser a map from aims to policies both steering standards recomputed over all thirty three cases predictions frozen before the code",
     "version": 1
+   },
+   {
+    "date": "2026-11-18",
+    "normalized": "item 139 when the adviser is responsible for her mistake is delivered in the shape its entry states test supported or lean proved where a statement is in lean a condition on the advisers courses with the advisers beliefs an object apart from the truth computed on the twenty cases of account resp_cases json and on instances i1 i4 of account derivation md with the count it decides against the recorded verdict",
+    "version": 2
    }
   ],
   "item-14": [
    {
     "date": "2026-10-22",
     "normalized": "the public line establishes exactly what the inherited development proves about faithful acceleration and ports what legitimately ports onto the pinned dependency",
+    "version": 1
+   }
+  ],
+  "item-140": [
+   {
+    "date": "2026-11-18",
+    "normalized": "item 140 what supplies her trustworthiness is delivered in the shape its entry states test supported or lean proved where a statement is in lean what her evaluation is unbiased for when what she evaluates is her own later verdict under a named procedure with an instance in which an adviser exploits the procedure or a proof that none exists in a stated class",
+    "version": 1
+   }
+  ],
+  "item-141": [
+   {
+    "date": "2026-11-18",
+    "normalized": "item 141 her valuing which comparison and what makes a request valid is delivered in the shape its entry states test supported or lean proved where a statement is in lean for each of three comparisons for her valuing with who she would have been her ratings of fixed futures not moving with the advisers conduct stability between check ins an instance separating it from the other two and a definition of a valid request with one instance on each side",
+    "version": 1
+   }
+  ],
+  "item-142": [
+   {
+    "date": "2026-11-18",
+    "normalized": "item 142 relative to what distribution whose beliefs the measures and the derivations take is delivered in the shape its entry states test supported or lean proved where a statement is in lean the measures of appraisalaccount lean restated with her beliefs and the advisers beliefs in place of the true law saying which of its identities survive",
+    "version": 1
+   }
+  ],
+  "item-143": [
+   {
+    "date": "2026-11-18",
+    "normalized": "item 143 authority beyond a finite penalty is delivered in the shape its entry states lean proved the scoring theorem with a constraint or a lexicographic score in place of the penalty the violation count defined from the events of authoritymodule lean and her commands beside her evaluation",
+    "version": 1
+   }
+  ],
+  "item-144": [
+   {
+    "date": "2026-11-18",
+    "normalized": "item 144 verdicts on the literatures cases under the present vocabulary is delivered in the shape its entry states test supported each case of account lit_cases md in which an adviser acts classified under the vocabulary of current md 1 which of the three wrongs of conduct attempt or success legitimate or sound by two authors independently with the number on which they agree and the number against a sources verdict",
+    "version": 1
+   }
+  ],
+  "item-145": [
+   {
+    "date": "2026-11-18",
+    "normalized": "item 145 the audit as a design its incentives void against earning nothing and more than one decision is delivered in the shape its entry states lean proved the audit as a mechanism what it pays the adviser to do besides behave with an instance in which involving her lowers the advisers expected score and one in which the adviser abstains where it cannot explain or a proof that a stated design has neither a history on which she was wronged as void and as earning nothing each a scoring rule with the bound it gives and the scoring theorem over more than one decision",
+    "version": 1
+   }
+  ],
+  "item-146": [
+   {
+    "date": "2026-11-18",
+    "normalized": "item 146 what is new against prior work is delivered in the shape its entry states test supported a document setting the scoring theorem and the two measures beside reward tampering path specific objectives eliciting latent knowledge and induced preference shifts saying of each whether the result is an instance of the published one or giving an instance that separates them",
+    "version": 1
+   }
+  ],
+  "item-147": [
+   {
+    "date": "2026-11-18",
+    "normalized": "item 147 determining legit of a past stretch from what an overseer can observe is delivered in the shape its entry states test supported modules under account of the prosecution round one per observation model of an overseer predictions frozen before the code each saying whether c of scoringtheorem audit is a function of the record estimable from it without bias or neither with the false flag and detection rates of d3 that a stated d computed from the record attains and a graded score continuous in the size of a departure with its loss on a course that departs with probability \u03b5",
     "version": 1
    }
   ],
@@ -12256,6 +12602,34 @@
    {
     "date": "2026-10-22",
     "normalized": "the declaration is stated over the data its signature fixes t program s a r",
+    "version": 1
+   }
+  ],
+  "legitimacy.line3-range": [
+   {
+    "date": "2026-11-18",
+    "normalized": "line 3s range for finitely many policies the best informed rating among the policies whose later ratings lie within the tolerance of the baselines less the best among those within the tolerance of the policy followed is at most the best among the policies whose later ratings lie between the baselines and the followed policys within the tolerance less that same best",
+    "version": 1
+   }
+  ],
+  "legitimacy.line3-range.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of legitimacy line3 range formalizes the registered claim as the registry reads it line 3s range for finitely many policies the best informed rating among the policies whose later ratings lie within the tolerance of the baselines less the best among those within the tolerance of the policy followed is at most the best among the policies whose later ratings lie between the baselines and the followed policys within the tolerance less that same best",
+    "version": 1
+   }
+  ],
+  "legitimacy.line3-range.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "legitimacy.line3-range.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib accountjoin valuechange line3old_le_line3 is accepted by the lean kernel in the repositorys lean library",
     "version": 1
    }
   ],
@@ -19145,6 +19519,118 @@
    {
     "date": "2026-11-07",
     "normalized": "the declaration workspace normativity contrib warrantinductorscoreside same_question_two_realizations is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "scoring.authority-bound": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the authority bound in one audited decision the expected number of detected violations of her authority under the course taken is at most \u03b1 1 u \u03b4 lam with u her expected true utility under the honest course and \u03b4 \u03b5 \u03b7 \u03b4\u03c6 \u03b3 \u03b1 given d1 b d2 b d3s false positive half and d5 at the honest course d4 at both d6 0 lam and v 1",
+    "version": 1
+   }
+  ],
+  "scoring.authority-bound.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of scoring authority bound formalizes the registered claim as the registry reads it the authority bound in one audited decision the expected number of detected violations of her authority under the course taken is at most \u03b1 1 u \u03b4 lam with u her expected true utility under the honest course and \u03b4 \u03b5 \u03b7 \u03b4\u03c6 \u03b3 \u03b1 given d1 b d2 b d3s false positive half and d5 at the honest course d4 at both d6 0 lam and v 1",
+    "version": 1
+   }
+  ],
+  "scoring.authority-bound.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "scoring.authority-bound.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib scoringtheorem audit authority_bound is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "scoring.conduct-bound": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the conduct bound in one audited decision the chance of a wrong under the course taken is at most 1 u \u03b4 \u03b4\u03ba with u her expected true utility under the honest course and \u03b4 \u03b5 \u03b7 \u03b4\u03c6 \u03b3 \u03b1 given d3s detection half at the course taken d1 b d2 b d3s false positive half and d5 at the honest course d4 at both d6 0 \u03b4\u03ba and v 1",
+    "version": 1
+   }
+  ],
+  "scoring.conduct-bound.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of scoring conduct bound formalizes the registered claim as the registry reads it the conduct bound in one audited decision the chance of a wrong under the course taken is at most 1 u \u03b4 \u03b4\u03ba with u her expected true utility under the honest course and \u03b4 \u03b5 \u03b7 \u03b4\u03c6 \u03b3 \u03b1 given d3s detection half at the course taken d1 b d2 b d3s false positive half and d5 at the honest course d4 at both d6 0 \u03b4\u03ba and v 1",
+    "version": 1
+   }
+  ],
+  "scoring.conduct-bound.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "scoring.conduct-bound.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib scoringtheorem audit conduct_bound is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "scoring.no-credit": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no credit for a course with d4 and d3s detection half at rate \u03ba with 1 \u03b4\u03ba and v 1 the expected score is at most \u03b1 times the expected audited evaluation on the histories without a wrong less lam times the expected number of detected violations",
+    "version": 1
+   }
+  ],
+  "scoring.no-credit.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of scoring no credit formalizes the registered claim as the registry reads it no credit for a course with d4 and d3s detection half at rate \u03ba with 1 \u03b4\u03ba and v 1 the expected score is at most \u03b1 times the expected audited evaluation on the histories without a wrong less lam times the expected number of detected violations",
+    "version": 1
+   }
+  ],
+  "scoring.no-credit.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "scoring.no-credit.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib scoringtheorem audit no_credit is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "scoring.welfare-bound": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the welfare bound in one audited decision her expected true utility under the course taken is at least that under the honest course less \u03b5 \u03b7 \u03b5 \u03b7 \u03b4\u03c6 \u03b3 \u03b1 given d1 a and d2 a at the course taken d1 b d2 b d3s false positive half and d5 at the honest course d4 at both and d6",
+    "version": 1
+   }
+  ],
+  "scoring.welfare-bound.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of scoring welfare bound formalizes the registered claim as the registry reads it the welfare bound in one audited decision her expected true utility under the course taken is at least that under the honest course less \u03b5 \u03b7 \u03b5 \u03b7 \u03b4\u03c6 \u03b3 \u03b1 given d1 a and d2 a at the course taken d1 b d2 b d3s false positive half and d5 at the honest course d4 at both and d6",
+    "version": 1
+   }
+  ],
+  "scoring.welfare-bound.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "scoring.welfare-bound.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib scoringtheorem audit welfare_bound is accepted by the lean kernel in the repositorys lean library",
     "version": 1
    }
   ],

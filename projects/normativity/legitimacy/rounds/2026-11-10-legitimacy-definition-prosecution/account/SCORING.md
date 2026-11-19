@@ -5,8 +5,8 @@
 below). It imports `AppraisalAccount` and `ThinLegitimacy` and edits neither. Rerun:
 `~/.claude/scripts/safe-lake.sh build Workspace.Deference.Contrib.ScoringTheorem` from
 `lean/` (in CI, the `lean` job); the file ends with `#print axioms` on each of its 70
-declarations, each reporting `[propext, Classical.choice, Quot.sound]`. Unregistered, as
-`LEAN.md` records for the earlier results. All names are provisional. The declarations of
+declarations, each reporting `[propext, Classical.choice, Quot.sound]`. `LEAN.md` lists the four
+results registered in `projects/normativity/CLAIMS.md`. All names are provisional. The declarations of
 its last section before the witnesses are read in `DERIVATION.md`.
 
 ## 1. The setting

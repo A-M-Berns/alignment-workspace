@@ -7,7 +7,7 @@ conditional expectation given a labelling `g` is `condExp μ g T`, the weighted 
 the cell of `g`, defined in the file (0 on a cell of zero mass, and no theorem assumes
 cells have positive mass).
 
-| result of `RESULTS.md` | declaration | hypotheses | witness | proposed registry id |
+| result of `RESULTS.md` | declaration | hypotheses | witness | registry id |
 |---|---|---|---|---|
 | 1, at any conditioning the appraisal is a function of | `mse_split` | `0 ≤ μ`; the appraisal constant on the cells | `Witness.mse_split_instance` | `appraisal.mse-split` |
 | 1, minimal | `mse_split_minimal` | `0 ≤ μ` | the same | — |
@@ -15,7 +15,7 @@ cells have positive mass).
 | 3, full strength | `misuse_le` | `0 ≤ μ`, `Σ μ = 1` | `Witness.misuse_le_instance` | `appraisal.cost-of-mistakes` |
 | 7 | `deferring_identity` (`deferring`, `deferring_determined`) | `0 ≤ μ` for the identity; none for the determined case | `Witness.deferring_instance`, `Witness.deferring_determined_instance`, `Witness.deferring_identity_instance` | `appraisal.deferring` |
 
-| result of `VALUE_RESULTS.md` | declaration | hypotheses | witness | proposed registry id |
+| result of `VALUE_RESULTS.md` | declaration | hypotheses | witness | registry id |
 |---|---|---|---|---|
 | 4 | `strong_split` (`condExp_condExp_of_factors`, `miscalibration_nonneg`, `unusedInformation_nonneg`, `valuationError_eq`) | `0 ≤ μ`; the valuation constant on the cells of what she observes | `Witness.strong_split_instance` | `appraisal.strong-split` |
 | 5, first form | `guarantee` (`guarantee_core`) | `0 ≤ μ`, `Σ μ = 1`; the options condition for her way of valuing, as a hypothesis: each reference move's expected true utility is matched by a move of hers | `Witness.guarantee_instance` | `appraisal.guarantee` |
@@ -59,7 +59,7 @@ reporting `[propext, Classical.choice, Quot.sound]` or no axiom. `BRIDGE_LEAN.md
 in words and says which hold by definition. Rerun:
 `~/.claude/scripts/safe-lake.sh build Workspace.Deference.Contrib.AccountJoin` from `lean/`.
 
-| statement | declaration | hypotheses | witness | proposed registry id |
+| statement | declaration | hypotheses | witness | registry id |
 |---|---|---|---|---|
 | what deferring costs: `E[(V − U)²] ≤ E[(E[U | k] − U)²] + E[(V − E[U | k, V])²]`, with the equality case | `deferring_cost_le` (`deferring_cost_eq`, `deferring_cost_eq_iff`, `deferring_cost_eq_iff_pointwise`, `miscalibrationGiven_eq`) | `0 ≤ μ` | `Witness.deferring_cost_instance` | `appraisal.deferring-cost` |
 | the guarantee from soundness given the adviser's information | `guarantee_of_given` (`valuationError_le_given`, `sq_dist_condExp_le_of_factors`, `guarantee_of_sound`) | `0 ≤ μ`, `Σ μ = 1`; for each move, her observation determined by the adviser's information with her valuation of it | `Witness.guarantee_of_sound_instance`; `Witness.link_needed` without the link | `appraisal.guarantee-from-soundness` |
@@ -69,9 +69,9 @@ in words and says which hold by definition. Rerun:
 The gate (`Gate`, `Gate.scoring`, `Gate.theorem1_join`, `Gate.theorem3_join`,
 `Gate.gained_below_legit`, `Gate.V_eq_of_rating_eq`,
 `Gate.not_legit_of_not_infoSufficient`, `Gate.V_eq_gateValue`, `SoundModel`) is a
-construction and its consequences; three of those hold by definition and none is proposed
-for the registry. **Not registered**, for the reason below; an entry for each proposed id
-takes the form of those below, with `BRIDGE_LEAN.md` as its verification document.
+construction and its consequences; three of those hold by definition and none is in the
+registry. The four ids of the table are registered in `projects/normativity/CLAIMS.md`,
+with `BRIDGE_LEAN.md` as their verification document.
 
 ## The scoring theorem
 
@@ -81,7 +81,7 @@ reporting `[propext, Classical.choice, Quot.sound]`. `SCORING.md` reads the theo
 `DERIVATION.md` the derivation lemmas. Rerun:
 `~/.claude/scripts/safe-lake.sh build Workspace.Deference.Contrib.ScoringTheorem` from `lean/`.
 
-| statement | declaration | hypotheses | witness | proposed registry id |
+| statement | declaration | hypotheses | witness | registry id |
 |---|---|---|---|---|
 | (1) her expected true utility is at least the honest course's less the tolerances | `Audit.welfare_bound` (`Audit.expectR_score`, `Audit.honest_es_ge`, `Audit.taken_es_ge`) | D1(a), D2(a) at the course taken; D1(b), D2(b), D3's false-positive half, D5 at the honest course; D4 at both; D6 | `Witness.package`; `Witness.d1a_needed`, `Witness.d2a_needed`, `Witness.d6_needed` without one | `scoring.welfare-bound` |
 | (2) the chance of a wrong is at most `(1 − u* + Δ)/(δκ)` | `Audit.conduct_bound` (`Audit.es_le_conduct`) | as (1) without D1(a) and D2(a), with D3's detection half and `v ≤ 1` | `Witness.package`; `Witness.d3det_needed`, `Witness.d5_needed` without one | `scoring.conduct-bound` |
@@ -92,20 +92,19 @@ reporting `[propext, Classical.choice, Quot.sound]`. `SCORING.md` reads the theo
 | the bias of her evaluation is at most the width times the two defects | `eval_bias_le_defects` | `0 ≤ π`, deterministic records, a program coherent with the model, evaluations within `D` | `Witness.eval_defects_instance`, with both defects zero | — |
 
 `valuing_eq_of_mediated` is `ReasonMediated` applied to two continuations
-(`Witness.mediated_instance`). **Not registered**, for the reason below. **Not in Lean:** instances I1–I6 of
+(`Witness.mediated_instance`). The four ids of the table are registered in
+`projects/normativity/CLAIMS.md`, with `SCORING.md` as their verification document.
+**Not in Lean:** instances I1–I6 of
 `DERIVATION.md` (Python, exact); the conditional laws at each value of what the adviser
 knows; a tolerance form at each such value; the adviser's beliefs as an object.
 
 ## Registration
 
-**Not registered.** The site build refuses a registered claim that no map node carries
-(`tests/site_build.py`), a node needs an author handle, and the executor's handle is not
-mapped in `graph/policy.yaml`, which this pass may not edit. The seven theorems ship in
-the contribution namespace, unregistered. To register: map the handle; append the
-entries below to `projects/normativity/CLAIMS.md` under a heading *The appraisal
-account*; file the record, bridge and completeness nodes for each as for
-`seed.adapter-certificates-exist`; set `registered_classes` to `["lean-proved"]` and
-`claim_changes` to the seven ids in this round's record in `state/rounds.json`.
+The fifteen ids of the tables above are registered `lean-proved` in
+`projects/normativity/CLAIMS.md`, under the heading *The appraisal account, its join to
+the post, and the scoring theorem*, against item 137. Each has a record, a bridge and a
+completeness node under `graph/nodes/`, and this round's record in `state/rounds.json`
+lists them. The entries of the seven results of `AppraisalAccount.lean`:
 
 ### appraisal.mse-split
 

@@ -2310,9 +2310,27 @@
         "2026-08-17-counterfactual-legitimacy"
       ],
       "depends_on_source": "report",
-      "registered_classes": [],
+      "registered_classes": [
+        "lean-proved"
+      ],
       "prompt": "prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT.md",
-      "claim_changes": []
+      "claim_changes": [
+        "appraisal.mse-split",
+        "appraisal.three-channels",
+        "appraisal.cost-of-mistakes",
+        "appraisal.deferring",
+        "appraisal.strong-split",
+        "appraisal.guarantee",
+        "appraisal.options-hull",
+        "appraisal.deferring-cost",
+        "appraisal.guarantee-from-soundness",
+        "legitimacy.line3-range",
+        "corrigibility.feedback-transfer",
+        "scoring.welfare-bound",
+        "scoring.conduct-bound",
+        "scoring.authority-bound",
+        "scoring.no-credit"
+      ]
     }
   ]
 }

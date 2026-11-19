@@ -13,13 +13,14 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `ATTENTION.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 1228 names, 660 of them Lean only
+## deference — 1243 names, 660 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
 | `advantage_estimate` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.CertificateBounds.advantage_estimate` |
 | `advisor_has_a_universal_veto` | theorem | 2026-08-12-reachable-corrective-control | registry | `Workspace.Deference.Contrib.ReachableCorrectiveControl.advisor_has_a_universal_veto` |
 | `atrophy_on_module` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.EffectiveAuthority.Dep.atrophy_on_module` |
+| `authority_bound` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry, wiki | `Workspace.Deference.Contrib.ScoringTheorem.Audit.authority_bound` |
 | `blind_payload_of_realizes` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.TransparentChannel.blind_payload_of_realizes` |
 | `box1_one_model` | theorem | 2026-09-27-corrigibility-kernel-phase2 | registry, wiki, prose | `Workspace.Deference.Headline.box1_one_model` |
 | `box2_dominance` | theorem | 2026-09-27-corrigibility-kernel-phase2 | registry, wiki, prose | `Workspace.Deference.Headline.box2_dominance` |
@@ -34,6 +35,7 @@ change, and the count of those is the size of the free choice remaining.
 | `canCorrectFuture_measures_advisor_cooperation` | theorem | 2026-08-12-reachable-corrective-control | registry | `Workspace.Deference.Contrib.ReachableCorrectiveControl.canCorrectFuture_measures_advisor_cooperation` |
 | `canCorrect_iff` | theorem | 2026-08-12-reachable-corrective-control | registry | `Workspace.Deference.Contrib.ReachableCorrectiveControl.canCorrect_iff` |
 | `comprehension_short` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki, prose | `Workspace.Deference.Contrib.EffectiveAuthority.comprehension_short` |
+| `conduct_bound` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry, wiki | `Workspace.Deference.Contrib.ScoringTheorem.Audit.conduct_bound` |
 | `content_fact_eq` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.Sincerity.content_fact_eq` |
 | `control_maximizer_floods_module` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.EffectiveAuthority.Dep.control_maximizer_floods_module` |
 | `corollary_a` | theorem | 2026-10-17-post-companion-formalization | registry, wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Exploration.corollary_a` |
@@ -44,6 +46,8 @@ change, and the count of those is the size of the free choice remaining.
 | `defect_bound` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.CertificateBounds.defect_bound` |
 | `deferred_ahead` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki, prose | `Workspace.Deference.Contrib.ShortfallSecurity.deferred_ahead` |
 | `deferred_eventually_excluded` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki, prose | `Workspace.Deference.Contrib.ShortfallSecurity.deferred_eventually_excluded` |
+| `deferring_cost_le` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry | `Workspace.Deference.Contrib.AccountJoin.deferring_cost_le` |
+| `deferring_identity` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry, wiki, prose | `Workspace.Deference.Contrib.AppraisalAccount.deferring_identity` |
 | `delegation_bridge` | theorem | 2026-08-11-phase-ii-promotion | registry, prose | `Workspace.Deference.Contrib.DelegationBridge.delegation_bridge` |
 | `delegation_bridge_unconditional` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.DelegationBridge.delegation_bridge_unconditional` |
 | `discount_defeats_exchange_rate` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki, prose | `Workspace.Deference.Contrib.EffectiveAuthority.discount_defeats_exchange_rate` |
@@ -60,17 +64,24 @@ change, and the count of those is the size of the free choice remaining.
 | `gradeRegister_strict` | theorem | 2026-08-11-phase-ii-promotion | registry, note | `Workspace.Deference.Contrib.CertificateBounds.gradeRegister_strict` |
 | `gradeTrust_of_refinement` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.DelegationBridge.gradeTrust_of_refinement` |
 | `greedy_duality` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.ExposureGeometry.greedy_duality` |
+| `guarantee` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry, prose | `Workspace.Deference.Contrib.AppraisalAccount.guarantee` |
+| `guarantee_of_given` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry | `Workspace.Deference.Contrib.AccountJoin.guarantee_of_given` |
 | `hierarchy_per_decision` | theorem | 2026-09-27-corrigibility-kernel-phase2 | registry, wiki | `Workspace.Deference.Headline.hierarchy_per_decision` |
 | `hindsight_instance` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.EffectiveAuthority.hindsight_instance` |
 | `history_hierarchy` | theorem | 2026-09-27-corrigibility-kernel-phase2 | registry, wiki, prose | `Workspace.Deference.Headline.history_hierarchy` |
 | `keep_counted` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki, prose | `Workspace.Deference.Contrib.Sincerity.Rows.keep_counted` |
 | `keep_tainted` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki, prose | `Workspace.Deference.Contrib.Sincerity.Rows.keep_tainted` |
 | `learned_weight_no_guarantee_at` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.EffectiveAuthority.learned_weight_no_guarantee_at` |
+| `line3Old_le_line3` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry | `Workspace.Deference.Contrib.AccountJoin.ValueChange.line3Old_le_line3` |
 | `magnitude_not_traderPayoff` | theorem | 2026-08-11-phase-ii-prediction | registry | `Workspace.Deference.Contrib.MagnitudePrediction.magnitude_not_traderPayoff` |
 | `margin_forces_agreement` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.CertificateBounds.margin_forces_agreement` |
 | `marginal_not_correct` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.ThinLegitimacy.Witness.marginal_not_correct` |
+| `misuse_le` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry, wiki, prose | `Workspace.Deference.Contrib.AppraisalAccount.misuse_le` |
+| `mse_split` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry, wiki, prose | `Workspace.Deference.Contrib.AppraisalAccount.mse_split` |
 | `netWorth_eq_zero` | theorem | 2026-08-11-phase-ii-prediction | registry | `Workspace.Deference.Contrib.MagnitudePrediction.CoherentMixture.netWorth_eq_zero` |
+| `no_credit` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry, prose | `Workspace.Deference.Contrib.ScoringTheorem.Audit.no_credit` |
 | `offProtocol_deviation_finite` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.AskList.offProtocol_deviation_finite` |
+| `options_of_hull` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry, prose | `Workspace.Deference.Contrib.AppraisalAccount.options_of_hull` |
 | `order_by_want_tainted` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.AskList.Rows3.order_by_want_tainted` |
 | `override_bound` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.CertificateBounds.override_bound` |
 | `payload_of_view` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki, prose | `Workspace.Deference.Contrib.Legitimacy.Segment.payload_of_view` |
@@ -103,6 +114,7 @@ change, and the count of those is the size of the free choice remaining.
 | `stable_counted` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki, prose | `Workspace.Deference.Contrib.AskList.Rows3.stable_counted` |
 | `stable_tainted` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki, prose | `Workspace.Deference.Contrib.AskList.Rows3.stable_tainted` |
 | `staticView_eq` | theorem | 2026-08-11-stage-v-li-native | registry, note | `Workspace.Deference.Contrib.StaticViewFactorization.staticView_eq` |
+| `strong_split` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry, prose | `Workspace.Deference.Contrib.AppraisalAccount.strong_split` |
 | `subjective_exchange_rate` | theorem | 2026-09-27-corrigibility-kernel-phase2 | registry, wiki, prose | `Workspace.Deference.Headline.subjective_exchange_rate` |
 | `sufficient_of_integrity_openness` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.ThinLegitimacy.sufficient_of_integrity_openness` |
 | `theorem1` | theorem | 2026-10-17-post-companion-formalization | registry, wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Scoring.theorem1` |
@@ -114,6 +126,8 @@ change, and the count of those is the size of the free choice remaining.
 | `theorem3a` | theorem | 2026-10-17-post-companion-formalization | registry, wiki, prose | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Sequential.theorem3a` |
 | `theorem3a_rate` | theorem | 2026-10-17-post-companion-formalization | registry, wiki, prose | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Sequential.theorem3a_rate` |
 | `theorem3b` | theorem | 2026-10-17-post-companion-formalization | registry, wiki, prose | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Sequential.theorem3b` |
+| `three_channels` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry, prose | `Workspace.Deference.Contrib.AppraisalAccount.three_channels` |
+| `unbiased_of_feedback` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry | `Workspace.Deference.Contrib.AccountJoin.unbiased_of_feedback` |
 | `unitTrader_netWorth_eq` | theorem | 2026-08-11-phase-ii-prediction | registry, note | `Workspace.Deference.Contrib.MagnitudePrediction.unitTrader_netWorth_eq` |
 | `unpredictability_separates` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.SubstitutionSeparation.unpredictability_separates` |
 | `value_eq_of_price_realization_eq` | theorem | 2026-08-11-stage-v-li-native | registry, note, prose | `Workspace.Deference.Contrib.StaticViewFactorization.value_eq_of_price_realization_eq` |
@@ -122,6 +136,7 @@ change, and the count of those is the size of the free choice remaining.
 | `value_of_correct_sufficient` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.ThinLegitimacy.value_of_correct_sufficient` |
 | `value_of_thick` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.ThinLegitimacy.value_of_thick` |
 | `volume_by_want_tainted` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.AskList.Rows3.volume_by_want_tainted` |
+| `welfare_bound` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry, wiki | `Workspace.Deference.Contrib.ScoringTheorem.Audit.welfare_bound` |
 | `namespaceIsLive` | def | unrecorded | Lean only | `Workspace.Deference.namespaceIsLive` |
 | `Gate` | structure | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.AccountJoin.Gate` |
 | `Hist` | inductive | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.Hist` |
@@ -165,7 +180,7 @@ change, and the count of those is the size of the free choice remaining.
 | `condExpect` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Deference.Contrib.ActivatedValue.condExpect` |
 | `c₂` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Deference.Contrib.ActivatedValue.PerAction.c₂` |
 | `expect` | def | 2026-09-07-authority-activated-value | note | `Workspace.Deference.Contrib.ActivatedValue.expect` |
-| `followed` | def | 2026-09-07-authority-activated-value | wiki | `Workspace.Deference.Contrib.ActivatedValue.followed` |
+| `followed` | def | 2026-09-07-authority-activated-value | wiki, prose | `Workspace.Deference.Contrib.ActivatedValue.followed` |
 | `ind` | def | 2026-09-07-authority-activated-value | wiki | `Workspace.Deference.Contrib.ActivatedValue.ind` |
 | `mass` | def | 2026-09-07-authority-activated-value | wiki, prose | `Workspace.Deference.Contrib.ActivatedValue.mass` |
 | `Band` | structure | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.Band` |

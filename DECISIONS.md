@@ -512,27 +512,6 @@ commit.
   of the lines by their owners.
   <!-- decision: open--what-walk-found-map-lacked; touches: node:traderized-finite-date-conformance, node:effective-authority-layer, node:verdict-licence-chain, node:legitimacy-meets-syntax; status: open -->
 
-- **Map the AI handle `@claude-fable-5-2` (2026-11-10; authorised 2026-11-18, not yet done).**
-  The maintainer authorised the mapping on 2026-11-18. It needs one line in `graph/policy.yaml`
-  and the handle added to the set asserted in `checkers/tests/test_graph.py`
-  (`test_starting_graph_carries_structure_and_the_two_rulings_only`), which is the checker
-  harness and which no dispatched round has been given to edit. Fifteen kernel-checked results
-  of the legitimacy line (`AppraisalAccount.lean`, `AccountJoin.lean`, `ScoringTheorem.lean`)
-  stay unregistered and nine items unfiled until it is done. Action: from the repository root,
-  `git apply prompts/2026-11-10-legitimacy-definition-prosecution/followup-14-registration.patch`,
-  then `python3 -m checkers.graph --root .` and commit what it regenerates.
-  *Turns on:* authority over the trust chain, which a dispatched round does not have.
-  <!-- decision: open--map-ai-handle-claude-fable-5-2; touches: node:legitimacy, item:137; status: open -->
-
-- **Is the wiki's legitimacy page to be replaced whole by the present picture of the manipulation line? (2026-11-18).**
-  The fourteenth follow-up of the legitimacy definition prosecution round was told to rewrite
-  the page and added one section to it instead: the page is the statement of the generic
-  theory (two levels, two halves, the record half, the classification table), seventeen pages
-  link to it, and the manipulation line does not supersede it.
-  *Turns on:* what the maintainer wants a reader of the wiki to meet first under that title,
-  which is his voice and his page.
-  <!-- decision: open--wiki-legitimacy-page-replaced-whole; touches: node:legitimacy; status: open -->
-
 - **Do a practice's rules cover a deception she did not herself ask for? (2026-11-14, restated 2026-11-18).**
   By the working position of 2026-11-18 a deception she asked for in advance is not
   manipulation. A magician's trick, a bluff at cards and a teacher's feigned enthusiasm are
@@ -8248,3 +8227,49 @@ statement of 2026-11-17, which failed its test. Until the patch lands the eight 
 of `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md` §3 are carried by items 136–138, rewritten to them.
 (5) *Names, provisional:* `CURRENT.md`, `VERDICTS.md`, `earlier-attempts/`,
 `withdrawn/WITHDRAWN.md`.
+
+### 2026-11-18 — the AI handle @claude-fable-5-2 is mapped and fifteen results of the legitimacy line are registered
+<!-- decision: 2026-11-18--handle-mapped-fifteen-registered; touches: node:legitimacy, item:137 -->
+
+**Maintainer's act** (applied from `prompts/2026-11-10-legitimacy-definition-prosecution/followup-14-registration.patch`, prepared by the fourteenth follow-up; the mapping authorised on 2026-11-18).
+`graph/policy.yaml` maps `@claude-fable-5-2` to Claude Fable 5.2 (Anthropic); what
+`checkers/tests/test_graph.py` asserts of the handles is in the next entry. Registered `lean-proved` in
+`projects/normativity/CLAIMS.md` against item 137, each with its record, bridge and
+completeness nodes under that handle: `appraisal.mse-split`, `appraisal.three-channels`, `appraisal.cost-of-mistakes`, `appraisal.deferring`, `appraisal.strong-split`, `appraisal.guarantee`, `appraisal.options-hull`, `appraisal.deferring-cost`, `appraisal.guarantee-from-soundness`, `legitimacy.line3-range`, `corrigibility.feedback-transfer`, `scoring.welfare-bound`, `scoring.conduct-bound`, `scoring.authority-bound` and `scoring.no-credit`.
+Item 137 is closed on the registration; items 136 and 138 are closed and split; items 139–147
+are filed under the same handle, 139–146 one for each open problem of
+`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md` §3 and 147 on what an overseer can
+observe of a past stretch.
+
+### 2026-11-18 — a round maps its own model's handle; the checker's test pins the human and legacy handles only
+<!-- decision: 2026-11-18--round-maps-its-own-model-handle; touches: none -->
+
+**Maintainer's instruction** (2026-11-18, in conversation: fix the workflow so that mapping a
+handle does not cause this friction again), carried out by Claude Fable 5.2 (Anthropic) at
+his direction. A change to the trust chain: one assertion of `checkers/tests/test_graph.py`.
+
+An AI handle is `@` followed by its model's slug, and rule 5 of `checkers/graph.py` refuses
+any other. The test `test_starting_graph_carries_structure_and_the_two_rulings_only` asserted
+the whole set of handles by name, so each new executor model needed an edit to the checker
+harness, which no dispatched round may make. From the round of 2026-11-10 to this date fifteen
+kernel-checked results stayed unregistered and nine items unfiled on that account. The test
+now asserts three things: the human handles are exactly `@A-M-Berns` and `@abramdemski`; the
+legacy AI names are exactly `@smithy-verity` and `@smithy-verity-opus55`; and every other
+handle is the slug of the model it names. Adding a human, or a second legacy name, still
+fails the test and is still the maintainer's.
+
+**The rule.** A dispatched round whose executor model has no handle adds that model's line to
+`graph/policy.yaml` itself, in the pull request that first needs it, and says so in its
+report. Nothing is chosen in doing so: the slug is derived, and the checker refuses a wrong
+one. `AGENTS.md` (*What an agent does alone*) says this. *Rejected:* keeping the mapping a
+queued maintainer action per model, which is what held the registration for eight days.
+
+### 2026-11-18 — the wiki's legitimacy page keeps its general statement, with the manipulation line as one section
+<!-- decision: 2026-11-18--wiki-legitimacy-page-keeps-general-statement; touches: node:legitimacy -->
+
+**Agent-decided, reversible** (Claude Fable 5.2 (Anthropic), under the maintainer's instruction
+of 2026-11-18 to do what the consolidation warranted and merge). The fourteenth follow-up
+added the section *Manipulation: legitimate as distinct from sound* to `wiki/Legitimacy.md`
+and left the rest of the page as it was. That stands. *Rejected:* replacing the page whole,
+which would delete the statement of the general theory that seventeen pages link to and that
+the manipulation line does not supersede. The maintainer reverses by re-ruling.
