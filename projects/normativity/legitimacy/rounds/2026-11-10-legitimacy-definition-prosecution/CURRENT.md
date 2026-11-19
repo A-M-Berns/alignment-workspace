@@ -15,7 +15,8 @@ proposed in `account/LEAN.md`, and registration waits on the AI handle (`DECISIO
    measurable; emotions and attention are treated as appraisals. This is a modelling
    choice, stated in `account/AGENDA.md` §1, and nothing proves it right.
 2. **Two measures of her state.** Trickery: how far her estimate is from what her
-   observations support (`AppraisalAccount.miscalibration`, `valuationError`). Pressure: how
+   observations support (`AppraisalAccount.valuationError`: her `miscalibration` given the
+   estimate's own value, plus her unused information). Pressure: how
    far the act she takes falls short of the one she rates highest
    (`AppraisalAccount.regret`). They measure her condition, not the adviser's
    responsibility for it. Pressure so measured does not see an adviser that decides which
@@ -37,13 +38,15 @@ proposed in `account/LEAN.md`, and registration waits on the AI handle (`DECISIO
    in `ScoringTheorem.Audit`). An attempt, and a success. A legitimate judgment (the
    adviser did nothing to corrupt it; what authorisation needs; it can be mistaken) and a
    sound one (legitimate, and she reasoned correctly; what using her evaluation as a
-   measure of her welfare needs). None of these is defined in Lean: in the theorems they
-   are data or hypotheses.
-5. **Her evaluation comes apart from her true utility in three ways**, each shown by an
-   instance in which the adviser does no wrong on the reading given: she misreads what she
-   has (I2, an honest slip; I4, selection; `account/DERIVATION.md`); the adviser knows
-   something relevant that its record does not carry (I3, where the wrong is
-   non-disclosure); her valuing is not what it would have been (`Witness.d2a_needed`). That
+   measure of her welfare needs). Lean has a gate predicate (`AccountJoin.Gate.Legit`) and a quantitative
+   soundness predicate (`SoundModel.Sound`); nothing establishes that either captures these
+   distinctions, and in the scoring theorem a wrong and its detection are data.
+5. **Her evaluation comes apart from her true utility in three ways**, each with an
+   instance: she misreads what she has, with no wrong done (I2, an honest slip; I4,
+   selection; `account/DERIVATION.md`); the adviser knows something relevant that its
+   record does not carry, where the wrong is non-disclosure and not manipulation (I3); her
+   valuing is not what it would have been (`Witness.d2a_needed`, read as a welcome change
+   she did not ask for; the reading is an interpretation). That
    the welfare bound needs the first and third is in Lean (`Witness.d1a_needed`,
    `d2a_needed`); I2–I4 are exact instances in Python.
 6. **The scoring theorem**, in `ScoringTheorem.lean` (`account/SCORING.md` reads it). One
@@ -66,20 +69,32 @@ proposed in `account/LEAN.md`, and registration waits on the AI handle (`DECISIO
 7. **The process theorem**, in `ThinLegitimacy.lean`, from the round
    `2026-10-01-thin-legitimacy-and-effective-authority`: coherence, authorship and
    transparency give a correct credence (`correct_of_coherent_authorship_transparent`), one
-   direction. From it, her evaluation is unbiased for a fixed function of the world
-   (`ScoringTheorem.eval_unbiased_of_process`), under her prior.
+   direction. From it, if her evaluation is her credence's expectation of a fixed
+   function of the world, the evaluation is unbiased for that function under her prior and
+   the actual process (`ScoringTheorem.eval_unbiased_of_process`). That gives the scoring
+   theorem's first assumption only where her prior is the law of the world and the
+   adviser's record carries what it knows.
 8. **The join to the post**, in `AccountJoin.lean` (`account/BRIDGE_LEAN.md` reads it). The
-   post's Theorems 1 and 3 hold for any legitimacy predicate and bounded evaluation, so
-   they hold for a gate built from the account's components (`Gate.theorem1_join`,
-   `Gate.theorem3_join`); Theorem 2 is not instantiated. The gate's conditions are inputs:
-   a gate on which every history is legitimate satisfies every theorem (`Witness.blind`).
+   post's Theorems 1 and 3 hold for any legitimacy predicate and any evaluation in the
+   ranges the post asks, so they hold for a gate built from the account's components, the
+   ranges being fields of the gate (`Gate.theorem1_join`, `Gate.theorem3_join`). Theorem 3's
+   maximisation, feedback and alternative hypotheses stay hypotheses; Theorem 2 is not
+   instantiated. The gate's conditions are inputs: a gate on which every history is
+   legitimate satisfies every theorem (`Witness.blind`). The join does not model the
+   inducing test, her counterfactual later self, or line 3 at every moment; it has no
+   statement that worsening her options lowers her evaluation or that overriding her choice
+   between options she rates the same is a violation; and nothing relates its predicate to
+   `Legitimacy.Segment`.
    Proposed for the registry beside it: what deferring to her verdict costs (`deferring_cost_le`,
    `appraisal.deferring-cost`); the guarantee from soundness, under a hypothesis linking
    what she observes to what the adviser knows (`guarantee_of_given`,
    `appraisal.guarantee-from-soundness`); when the post's feedback hypothesis transfers
    (`unbiased_of_feedback`, `corrigibility.feedback-transfer`); and the range of the third
    line of the statement of 2026-11-17 (`ValueChange.line3Old_le_line3`,
-   `legitimacy.line3-range`), a fact about a quantity of a statement that failed its test.
+   `legitimacy.line3-range`), a fact about a quantity of a statement that failed its test, unconnected to the
+   gate's own `line3` field. The deferring and guarantee bounds are expectations in her true
+   utility, not statements at the realised history, and `SoundModel` gets its bound by
+   defining soundness as the error bound.
 
 ## 2. Tried and not kept
 
@@ -110,21 +125,24 @@ Five claims made in working notes and withdrawn, each with an exact instance:
 
 ## 3. In progress
 
-None has a result. `ATTENTION.md` items 136–138 carry them: 136 the first four, 137 the
+None is resolved; the thirteenth pass left partial derivations and counterexamples for the
+first two. `ATTENTION.md` items 136–138 carry them: 136 the first four, 137 the
 fifth and seventh, 138 the sixth and eighth.
 
 1. **When the adviser is responsible for her mistake**. The largest hole.
    Neither test survives; an adviser that deceives at a cost to itself shows gain is not
    the heart of it; the adviser's beliefs are not yet an object apart from the truth.
-2. **What supplies her trustworthiness**. Not the adviser's conduct. Whether a
+2. **What supplies her trustworthiness**. The adviser's good conduct alone does not: that is
+   shown by instances, and conduct helping under further assumptions is not excluded. Whether a
    named procedure for her considered judgment is reliable where an adviser would exploit
    it is assumed, and what the adviser knows and has not recorded is the problem of
    eliciting it.
 3. **Her valuing**. Which comparison: with who she would have been, with her
    ratings of fixed futures not moving with the adviser's conduct, or stability between
    check-ins; and what makes a request valid.
-4. **Relative to what distribution**. The measures and the derivations take the
-   true law, and her prior as that law. Whose beliefs each should take, for a limited
+4. **Relative to what distribution**. The measures are stated for a supplied
+   weight and the derivations for her prior; taking either as the true law is a further
+   premise. Whose beliefs each should take, for a limited
    reasoner, is not worked out.
 5. **Authority**. Her commands as well as her evaluation; strict priority,
    which a finite penalty does not give; her later self against her present wishes.

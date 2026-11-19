@@ -123,7 +123,7 @@ change, and the count of those is the size of the free choice remaining.
 | `value_of_thick` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.ThinLegitimacy.value_of_thick` |
 | `volume_by_want_tainted` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.AskList.Rows3.volume_by_want_tainted` |
 | `namespaceIsLive` | def | unrecorded | Lean only | `Workspace.Deference.namespaceIsLive` |
-| `Gate` | structure | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.AccountJoin.Gate` |
+| `Gate` | structure | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.AccountJoin.Gate` |
 | `Hist` | inductive | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.AccountJoin.Witness.Hist` |
 | `Legit` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.AccountJoin.Gate.Legit` |
 | `NoMore` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.AccountJoin.ValueChange.NoMore` |
@@ -1069,7 +1069,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Sensitive` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.Sensitive` |
 | `gatedPair` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.gatedPair` |
 | `gatedPair_validAt` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.gatedPair_validAt` |
-| `Audit` | structure | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.ScoringTheorem.Audit` |
+| `Audit` | structure | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.ScoringTheorem.Audit` |
 | `D1a` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D1a` |
 | `D1b` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D1b` |
 | `D2a` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.ScoringTheorem.Audit.D2a` |
