@@ -5059,9 +5059,16 @@ fixes.
   not in the repository.
 - **That each status line's one-sentence account of a failure is the whole of it**; the
   pass's report section is the record.
-- **That the patch applies after later commits to this branch**; PATCHCHECK
+- **That the patch applies after later commits to this branch**; `git apply --check` passes on the tree of `5249bc1e`,
+  and a later commit to a file the patch touches can break it.
 - **Anything new about the account.**
-- **Gates.** GATESPARA
+- **Gates.** Under Python 3.13. `tests/run.py` on the tree of commit `5249bc1e`: all green over
+  81 projects, the Lean build skipped as that runner does by default, the round's runner
+  green within it. `tests/audit_axioms.py` on the tree of `0411576e`: 4218 results across
+  126 files, all within `[propext, Classical.choice, Quot.sound]`; no Lean file is touched
+  by this pass, before or after. `workspace_state --check` valid; the graph checker, the
+  wiki link and binding checkers and `site/build.py` pass. `tests/round_records.py` has no
+  pull-request context locally; CI runs it and the other required jobs on the pushed head.
 - **Components.** `CURRENT.md`, the status lines, the concepts and the wiki section —
   **living notes**. The five instances — **open**, runner-checked. The fifteen results —
   **open**: kernel-checked, unregistered.
