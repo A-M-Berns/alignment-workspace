@@ -504,12 +504,12 @@ the literature's cases. The audit as a design. What is new against reward tamper
 eliciting latent knowledge and induced preference shifts. Twelve earlier statements of the
 account were tested and not kept. The present state, with what carries each item, is the
 round's
-[`CURRENT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/283f99c72655d2222748e6e5ee537fb10a15f2ef/projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md)<!--ref:round:2026-11-10-legitimacy-definition-prosecution-->,
+[`CURRENT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/0411576e1145cc3afba80017289bca2f81dc4d0f/projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md)<!--ref:round:2026-11-10-legitimacy-definition-prosecution-->,
 with
-[`AppraisalAccount.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/283f99c72655d2222748e6e5ee537fb10a15f2ef/lean/Workspace/Deference/Contrib/AppraisalAccount.lean),
-[`AccountJoin.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/283f99c72655d2222748e6e5ee537fb10a15f2ef/lean/Workspace/Deference/Contrib/AccountJoin.lean)
+[`AppraisalAccount.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/0411576e1145cc3afba80017289bca2f81dc4d0f/lean/Workspace/Deference/Contrib/AppraisalAccount.lean),
+[`AccountJoin.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/0411576e1145cc3afba80017289bca2f81dc4d0f/lean/Workspace/Deference/Contrib/AccountJoin.lean)
 and
-[`ScoringTheorem.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/283f99c72655d2222748e6e5ee537fb10a15f2ef/lean/Workspace/Deference/Contrib/ScoringTheorem.lean).
+[`ScoringTheorem.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/0411576e1145cc3afba80017289bca2f81dc4d0f/lean/Workspace/Deference/Contrib/ScoringTheorem.lean).
 
 ## Where this is going
 

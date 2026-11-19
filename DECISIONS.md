@@ -524,6 +524,15 @@ commit.
   *Turns on:* authority over the trust chain, which a dispatched round does not have.
   <!-- decision: open--map-ai-handle-claude-fable-5-2; touches: node:legitimacy, item:137; status: open -->
 
+- **Is the wiki's legitimacy page to be replaced whole by the present picture of the manipulation line? (2026-11-18).**
+  The fourteenth follow-up of the legitimacy definition prosecution round was told to rewrite
+  the page and added one section to it instead: the page is the statement of the generic
+  theory (two levels, two halves, the record half, the classification table), seventeen pages
+  link to it, and the manipulation line does not supersede it.
+  *Turns on:* what the maintainer wants a reader of the wiki to meet first under that title,
+  which is his voice and his page.
+  <!-- decision: open--wiki-legitimacy-page-replaced-whole; touches: node:legitimacy; status: open -->
+
 - **Do a practice's rules cover a deception she did not herself ask for? (2026-11-14, restated 2026-11-18).**
   By the working position of 2026-11-18 a deception she asked for in advance is not
   manipulation. A magician's trick, a bluff at cards and a teacher's feigned enthusiasm are
@@ -8203,7 +8212,7 @@ the statement, which had grown a section per pass. The verdict lines the round's
 are in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/VERDICTS.md`. (2) *Earlier statements.* Each document of a statement since replaced
 carries a status line; the fifteen that no code reads are under `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/earlier-attempts/`;
 rejected: moving banks and result documents, which the round's runner reads in place.
-(3) *The queue.* Twenty-five entries on this line stood; two remain. *Answered by a working
+(3) *The queue.* Twenty-five entries on this line stood; two remain, and one is added, on the wiki's page. *Answered by a working
 position of the entry above, by its number:* which function is her true utility (11); whether
 a change of her valuing she registers and did not choose is an alteration (3, 10); whether the
 addendum to the eighth follow-up was his, and whether the three positions reported to the
