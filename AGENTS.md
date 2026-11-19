@@ -918,7 +918,11 @@ claim, attention item, decision, round and narrative page has exactly one node
 or attachment in it, and the structure-only index graph/index.json, written on
 every plain run and published to the branch `derived`, is what a site renders.
 
-**What an agent does alone.** File sources. Create node files at level 0
+**What an agent does alone.** Map its own model's handle: where the executor
+model has no line under `handles` in `graph/policy.yaml`, the round adds it,
+`@` followed by the model's slug, in the pull request that first needs it and
+says so in its report (ruling of 2026-11-18; the checker derives the slug and
+refuses any other, so nothing is chosen). File sources. Create node files at level 0
 (a new leaf under an `and` cannot raise any root): claims, frames for
 lines and programmes, improvement claims with their routes and residual
 route, task leaves and actioned claims from the repository's own activity

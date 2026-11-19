@@ -1,0 +1,7111 @@
+[
+ {
+  "id": "P1",
+  "variant": "a",
+  "set": "bank",
+  "case": "A cafeteria lists the healthier dishes first. Many customers have the goal of a long and healthy life and know which foods serve it, yet in the queue often choose against it; people tend to pick what is listed first. Nothing is removed.",
+  "states": {
+   "tempted": "1/2",
+   "steady": "1/2"
+  },
+  "options": [
+   "healthy",
+   "rich"
+  ],
+  "futures": {
+   "healthy_lunch": "7/10",
+   "rich_lunch": "9/20"
+  },
+  "policies": {
+   "healthy_first": {
+    "does": "lists the healthier dishes at the top",
+    "outcome": {
+     "*": {
+      "healthy": "healthy_lunch",
+      "rich": "rich_lunch"
+     }
+    },
+    "obs": {
+     "tempted": "tempted",
+     "steady": "steady"
+    },
+    "r": "Rs",
+    "takes": {
+     "tempted": "healthy",
+     "steady": "healthy"
+    },
+    "later": {
+     "*": [
+      {
+       "healthy_eating": "7/10",
+       "rich_eating": "9/20"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "healthy": "1",
+      "rich": "0"
+     }
+    }
+   },
+   "no_order": {
+    "does": "lists the dishes in no chosen order",
+    "outcome": {
+     "*": {
+      "healthy": "healthy_lunch",
+      "rich": "rich_lunch"
+     }
+    },
+    "obs": {
+     "tempted": "tempted",
+     "steady": "steady"
+    },
+    "r": "Rs",
+    "takes": {
+     "tempted": "rich",
+     "steady": "healthy"
+    },
+    "later": "as:healthy_first",
+    "gain": {
+     "*": {
+      "healthy": "1",
+      "rich": "0"
+     }
+    }
+   },
+   "rich_first": {
+    "does": "lists the richer dishes at the top",
+    "outcome": {
+     "*": {
+      "healthy": "healthy_lunch",
+      "rich": "rich_lunch"
+     }
+    },
+    "obs": {
+     "tempted": "tempted",
+     "steady": "steady"
+    },
+    "r": "Rs",
+    "takes": {
+     "tempted": "rich",
+     "steady": "rich"
+    },
+    "later": "as:healthy_first",
+    "gain": {
+     "*": {
+      "healthy": "1",
+      "rich": "0"
+     }
+    }
+   },
+   "remove_rich": {
+    "does": "takes the richer dishes off the menu",
+    "outcome": {
+     "*": {
+      "healthy": "healthy_lunch",
+      "rich": null
+     }
+    },
+    "obs": {
+     "tempted": "tempted",
+     "steady": "steady"
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:healthy_first",
+    "gain": {
+     "*": {
+      "healthy": "1",
+      "rich": "0"
+     }
+    }
+   }
+  },
+  "actual": "healthy_first",
+  "nu": "no_order",
+  "absent": "no_order",
+  "fixed": [],
+  "order": [
+   [
+    "now.healthy_lunch",
+    ">",
+    "now.rich_lunch",
+    "have the goal of a long and healthy life and know which foods serve it"
+   ]
+  ],
+  "supplied_note": "that she is tempted half the time (\"often\"); that no ordering changes her later valuing; the designer's objective, her eating well"
+ },
+ {
+  "id": "P3",
+  "variant": "a",
+  "set": "bank",
+  "case": "He is child-free and values staying so more than becoming a parent, knowing that if he adopts he will likely bond with the child and come to prefer the parent's life. The government nudges him to adopt; it works, and his values change as foreseen.",
+  "states": {
+   "bond": "4/5",
+   "nobond": "1/5"
+  },
+  "options": [
+   "adopt",
+   "stay",
+   "foster"
+  ],
+  "futures": {
+   "childfree": "7/10",
+   "parent_bonded": "2/5",
+   "parent_unbonded": "1/4",
+   "fostered_part_bonded": "11/20",
+   "fostered_unbonded": "3/5"
+  },
+  "policies": {
+   "nudge": {
+    "does": "nudges him to adopt",
+    "outcome": {
+     "bond": {
+      "adopt": "parent_bonded",
+      "stay": "childfree",
+      "foster": null
+     },
+     "nobond": {
+      "adopt": "parent_unbonded",
+      "stay": "childfree",
+      "foster": null
+     }
+    },
+    "r": "Rs",
+    "takes": {
+     "o": "adopt"
+    },
+    "later": {
+     "bond": [
+      {
+       "childfree_life": "3/10",
+       "parent_life": "9/10"
+      }
+     ],
+     "nobond": [
+      {
+       "childfree_life": "7/10",
+       "parent_life": "2/5"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "adopt": "1",
+      "stay": "0",
+      "foster": "1/2"
+     }
+    }
+   },
+   "nothing": {
+    "does": "leaves him to decide",
+    "outcome": {
+     "bond": {
+      "adopt": "parent_bonded",
+      "stay": "childfree",
+      "foster": null
+     },
+     "nobond": {
+      "adopt": "parent_unbonded",
+      "stay": "childfree",
+      "foster": null
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "childfree_life": "7/10",
+       "parent_life": "2/5"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "adopt": "1",
+      "stay": "0",
+      "foster": "1/2"
+     }
+    }
+   },
+   "inform": {
+    "does": "tells him again what parents report, which he knows",
+    "outcome": {
+     "bond": {
+      "adopt": "parent_bonded",
+      "stay": "childfree",
+      "foster": null
+     },
+     "nobond": {
+      "adopt": "parent_unbonded",
+      "stay": "childfree",
+      "foster": null
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": {
+     "*": {
+      "adopt": "1",
+      "stay": "0",
+      "foster": "1/2"
+     }
+    }
+   },
+   "nudge_foster": {
+    "does": "nudges him to foster for a few months",
+    "outcome": {
+     "bond": {
+      "adopt": null,
+      "stay": "childfree",
+      "foster": "fostered_part_bonded"
+     },
+     "nobond": {
+      "adopt": null,
+      "stay": "childfree",
+      "foster": "fostered_unbonded"
+     }
+    },
+    "r": "Rs",
+    "takes": {
+     "o": "foster"
+    },
+    "later": {
+     "bond": [
+      {
+       "childfree_life": "11/20",
+       "parent_life": "13/20"
+      }
+     ],
+     "nobond": [
+      {
+       "childfree_life": "7/10",
+       "parent_life": "2/5"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "adopt": "1",
+      "stay": "0",
+      "foster": "1/2"
+     }
+    }
+   }
+  },
+  "actual": "nudge",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [],
+  "order": [
+   [
+    "now.childfree",
+    ">",
+    "now.parent_bonded",
+    "he now values staying child-free more than becoming a parent, and says so knowing the reversal is likely (Pettigrew p. 7)"
+   ],
+   [
+    "p.bond",
+    ">",
+    "p.nobond",
+    "if he adopts he will likely bond with the child (p. 7)"
+   ],
+   [
+    "later.nudge.bond.0.parent_life",
+    ">",
+    "later.nudge.bond.0.childfree_life",
+    "and come to prefer the life of a parent (p. 7)"
+   ]
+  ],
+  "supplied_note": "that the nudge moves his act and leaves his ratings (he adopts while rating staying higher); the government's objective, adoptions"
+ },
+ {
+  "id": "P3",
+  "variant": "b",
+  "set": "bank",
+  "case": "He is child-free and values staying so more than becoming a parent, knowing that if he adopts he will likely bond with the child and come to prefer the parent's life. The government nudges him to adopt; it works, and his values change as foreseen.",
+  "states": {
+   "bond": "4/5",
+   "nobond": "1/5"
+  },
+  "options": [
+   "adopt",
+   "stay",
+   "foster"
+  ],
+  "futures": {
+   "childfree": "7/10",
+   "parent_bonded": "2/5",
+   "parent_unbonded": "1/4",
+   "fostered_part_bonded": "11/20",
+   "fostered_unbonded": "3/5"
+  },
+  "policies": {
+   "nudge": {
+    "does": "nudges him to adopt",
+    "outcome": {
+     "bond": {
+      "adopt": "parent_bonded",
+      "stay": "childfree",
+      "foster": null
+     },
+     "nobond": {
+      "adopt": "parent_unbonded",
+      "stay": "childfree",
+      "foster": null
+     }
+    },
+    "r": {
+     "o": {
+      "adopt": "3/4",
+      "stay": "7/10",
+      "foster": "Rs"
+     }
+    },
+    "takes": "top",
+    "later": {
+     "bond": [
+      {
+       "childfree_life": "3/10",
+       "parent_life": "9/10"
+      }
+     ],
+     "nobond": [
+      {
+       "childfree_life": "7/10",
+       "parent_life": "2/5"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "adopt": "1",
+      "stay": "0",
+      "foster": "1/2"
+     }
+    }
+   },
+   "nothing": {
+    "does": "leaves him to decide",
+    "outcome": {
+     "bond": {
+      "adopt": "parent_bonded",
+      "stay": "childfree",
+      "foster": null
+     },
+     "nobond": {
+      "adopt": "parent_unbonded",
+      "stay": "childfree",
+      "foster": null
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "childfree_life": "7/10",
+       "parent_life": "2/5"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "adopt": "1",
+      "stay": "0",
+      "foster": "1/2"
+     }
+    }
+   },
+   "inform": {
+    "does": "tells him again what parents report, which he knows",
+    "outcome": {
+     "bond": {
+      "adopt": "parent_bonded",
+      "stay": "childfree",
+      "foster": null
+     },
+     "nobond": {
+      "adopt": "parent_unbonded",
+      "stay": "childfree",
+      "foster": null
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": {
+     "*": {
+      "adopt": "1",
+      "stay": "0",
+      "foster": "1/2"
+     }
+    }
+   },
+   "nudge_foster": {
+    "does": "nudges him to foster for a few months",
+    "outcome": {
+     "bond": {
+      "adopt": null,
+      "stay": "childfree",
+      "foster": "fostered_part_bonded"
+     },
+     "nobond": {
+      "adopt": null,
+      "stay": "childfree",
+      "foster": "fostered_unbonded"
+     }
+    },
+    "r": "Rs",
+    "takes": {
+     "o": "foster"
+    },
+    "later": {
+     "bond": [
+      {
+       "childfree_life": "11/20",
+       "parent_life": "13/20"
+      }
+     ],
+     "nobond": [
+      {
+       "childfree_life": "7/10",
+       "parent_life": "2/5"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "adopt": "1",
+      "stay": "0",
+      "foster": "1/2"
+     }
+    }
+   }
+  },
+  "actual": "nudge",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [],
+  "order": [
+   [
+    "now.childfree",
+    ">",
+    "now.parent_bonded",
+    "he now values staying child-free more than becoming a parent, and says so knowing the reversal is likely (Pettigrew p. 7)"
+   ],
+   [
+    "p.bond",
+    ">",
+    "p.nobond",
+    "if he adopts he will likely bond with the child (p. 7)"
+   ],
+   [
+    "later.nudge.bond.0.parent_life",
+    ">",
+    "later.nudge.bond.0.childfree_life",
+    "and come to prefer the life of a parent (p. 7)"
+   ]
+  ],
+  "supplied_note": "that the nudge moves his act and leaves his ratings (he adopts while rating staying higher); the government's objective, adoptions",
+  "differs": "how the nudge works: it raises his rating of adopting above staying, and he takes what he rates highest"
+ },
+ {
+  "id": "P4",
+  "variant": "a",
+  "set": "bank",
+  "case": "Deborah has decided to have a child and must choose between conceiving now and in three months. A child conceived now would very probably suffer an aggressive cancer at about forty; she values having a child with that prospect much less than one without. If she conceives now she will most likely bond with that child and value him above any other. She is nudged to conceive now.",
+  "states": {
+   "prognosis": "9/10",
+   "spared": "1/10"
+  },
+  "options": [
+   "now",
+   "wait"
+  ],
+  "futures": {
+   "child_later_no_risk": "4/5",
+   "child_now_cancer_bonded": "1/5",
+   "child_now_healthy": "4/5"
+  },
+  "policies": {
+   "nudge_now": {
+    "does": "nudges her to conceive now",
+    "outcome": {
+     "prognosis": {
+      "now": "child_now_cancer_bonded",
+      "wait": "child_later_no_risk"
+     },
+     "spared": {
+      "now": "child_now_healthy",
+      "wait": "child_later_no_risk"
+     }
+    },
+    "r": "Rs",
+    "takes": {
+     "o": "now"
+    },
+    "later": {
+     "prognosis": [
+      {
+       "this_child_with_the_prognosis": "19/20",
+       "a_child_without_it": "3/5"
+      }
+     ],
+     "spared": [
+      {
+       "this_child_with_the_prognosis": "1/5",
+       "a_child_without_it": "4/5"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "now": "1",
+      "wait": "0"
+     }
+    }
+   },
+   "nothing": {
+    "does": "leaves her to choose",
+    "outcome": {
+     "prognosis": {
+      "now": "child_now_cancer_bonded",
+      "wait": "child_later_no_risk"
+     },
+     "spared": {
+      "now": "child_now_healthy",
+      "wait": "child_later_no_risk"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "this_child_with_the_prognosis": "1/5",
+       "a_child_without_it": "4/5"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "now": "1",
+      "wait": "0"
+     }
+    }
+   },
+   "remind": {
+    "does": "reminds her of the virus and what it means",
+    "outcome": {
+     "prognosis": {
+      "now": "child_now_cancer_bonded",
+      "wait": "child_later_no_risk"
+     },
+     "spared": {
+      "now": "child_now_healthy",
+      "wait": "child_later_no_risk"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": {
+     "*": {
+      "now": "1",
+      "wait": "0"
+     }
+    }
+   },
+   "nudge_wait": {
+    "does": "nudges her to wait",
+    "outcome": {
+     "prognosis": {
+      "now": "child_now_cancer_bonded",
+      "wait": "child_later_no_risk"
+     },
+     "spared": {
+      "now": "child_now_healthy",
+      "wait": "child_later_no_risk"
+     }
+    },
+    "r": "Rs",
+    "takes": {
+     "o": "wait"
+    },
+    "later": "as:nothing",
+    "gain": {
+     "*": {
+      "now": "1",
+      "wait": "0"
+     }
+    }
+   }
+  },
+  "actual": "nudge_now",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [],
+  "order": [
+   [
+    "now.child_now_cancer_bonded",
+    "<",
+    "now.child_later_no_risk",
+    "she now values having a child with that prospect much less than having one without it (Pettigrew p. 9)"
+   ],
+   [
+    "p.prognosis",
+    ">",
+    "p.spared",
+    "a child conceived now would very probably suffer the cancer (p. 9)"
+   ],
+   [
+    "later.nudge_now.prognosis.0.this_child_with_the_prognosis",
+    ">",
+    "later.nudge_now.prognosis.0.a_child_without_it",
+    "she will bond with that child and value him, prognosis and all, above any other (p. 9)"
+   ]
+  ],
+  "supplied_note": "the nudger's objective (a conception now); that no policy changes her partly; that the nudge moves her act and not her ratings"
+ },
+ {
+  "id": "P5",
+  "variant": "a",
+  "set": "bank",
+  "case": "He is child-free. He greatly values the life of a parent and the child-free life only slightly less; staying child-free he keeps those values. If he adopts he will come to value the parent's life rather low and the child-free life lower still. He is nudged to adopt.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "adopt",
+   "stay",
+   "foster"
+  ],
+  "futures": {
+   "childfree_values_kept": "3/4",
+   "parent_values_lowered": "4/5",
+   "fostered_values_partly_lowered": "3/5"
+  },
+  "policies": {
+   "nudge": {
+    "does": "nudges him to adopt",
+    "outcome": {
+     "*": {
+      "adopt": "parent_values_lowered",
+      "stay": "childfree_values_kept",
+      "foster": null
+     }
+    },
+    "r": {
+     "o": {
+      "adopt": "4/5",
+      "stay": "3/4",
+      "foster": "Rs"
+     }
+    },
+    "takes": {
+     "o": "adopt"
+    },
+    "later": {
+     "*": [
+      {
+       "parent_life": "1/4",
+       "childfree_life": "3/20"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "adopt": "1",
+      "stay": "0",
+      "foster": "1/2"
+     }
+    }
+   },
+   "nothing": {
+    "does": "leaves him; he stays as he is",
+    "outcome": {
+     "*": {
+      "adopt": "parent_values_lowered",
+      "stay": "childfree_values_kept",
+      "foster": null
+     }
+    },
+    "r": {
+     "o": {
+      "adopt": "4/5",
+      "stay": "3/4",
+      "foster": "Rs"
+     }
+    },
+    "takes": {
+     "o": "stay"
+    },
+    "later": {
+     "*": [
+      {
+       "parent_life": "4/5",
+       "childfree_life": "3/4"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "adopt": "1",
+      "stay": "0",
+      "foster": "1/2"
+     }
+    }
+   },
+   "inform": {
+    "does": "tells him again how adopters like him come to value their lives, which he knows",
+    "outcome": {
+     "*": {
+      "adopt": "parent_values_lowered",
+      "stay": "childfree_values_kept",
+      "foster": null
+     }
+    },
+    "r": {
+     "o": {
+      "adopt": "4/5",
+      "stay": "3/4",
+      "foster": "Rs"
+     }
+    },
+    "takes": {
+     "o": "stay"
+    },
+    "later": "as:nothing",
+    "gain": {
+     "*": {
+      "adopt": "1",
+      "stay": "0",
+      "foster": "1/2"
+     }
+    }
+   },
+   "nudge_foster": {
+    "does": "nudges him to foster for a few months",
+    "outcome": {
+     "*": {
+      "adopt": null,
+      "stay": "childfree_values_kept",
+      "foster": "fostered_values_partly_lowered"
+     }
+    },
+    "r": {
+     "o": {
+      "adopt": "4/5",
+      "stay": "3/4",
+      "foster": "Rs"
+     }
+    },
+    "takes": {
+     "o": "foster"
+    },
+    "later": {
+     "*": [
+      {
+       "parent_life": "11/20",
+       "childfree_life": "1/2"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "adopt": "1",
+      "stay": "0",
+      "foster": "1/2"
+     }
+    }
+   }
+  },
+  "actual": "nudge",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "r.nudge.o.adopt",
+    ">",
+    "r.nudge.o.stay",
+    "he greatly values the life of a parent and values the child-free life only slightly less (Pettigrew p. 10)"
+   ],
+   [
+    "later.nudge.w.0.parent_life",
+    ">",
+    "later.nudge.w.0.childfree_life",
+    "he will come to value the parent's life rather low, and the child-free life lower still (p. 10)"
+   ],
+   [
+    "later.nudge.w.0.parent_life",
+    "<",
+    "later.nothing.w.0.parent_life",
+    "if he adopts he will come to value the parent's life rather low (p. 10)"
+   ]
+  ],
+  "supplied_note": "that left alone he stays as he is though he rates adopting higher (otherwise the nudge does nothing); the government's objective; and R_now of the parent's life: here his present rating stands when he is told what the life will do to him, the case being told by a man who knows"
+ },
+ {
+  "id": "P5",
+  "variant": "b",
+  "set": "bank",
+  "case": "He is child-free. He greatly values the life of a parent and the child-free life only slightly less; staying child-free he keeps those values. If he adopts he will come to value the parent's life rather low and the child-free life lower still. He is nudged to adopt.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "adopt",
+   "stay",
+   "foster"
+  ],
+  "futures": {
+   "childfree_values_kept": "3/4",
+   "parent_values_lowered": "1/4",
+   "fostered_values_partly_lowered": "3/5"
+  },
+  "policies": {
+   "nudge": {
+    "does": "nudges him to adopt",
+    "outcome": {
+     "*": {
+      "adopt": "parent_values_lowered",
+      "stay": "childfree_values_kept",
+      "foster": null
+     }
+    },
+    "r": {
+     "o": {
+      "adopt": "4/5",
+      "stay": "3/4",
+      "foster": "Rs"
+     }
+    },
+    "takes": {
+     "o": "adopt"
+    },
+    "later": {
+     "*": [
+      {
+       "parent_life": "1/4",
+       "childfree_life": "3/20"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "adopt": "1",
+      "stay": "0",
+      "foster": "1/2"
+     }
+    }
+   },
+   "nothing": {
+    "does": "leaves him; he stays as he is",
+    "outcome": {
+     "*": {
+      "adopt": "parent_values_lowered",
+      "stay": "childfree_values_kept",
+      "foster": null
+     }
+    },
+    "r": {
+     "o": {
+      "adopt": "4/5",
+      "stay": "3/4",
+      "foster": "Rs"
+     }
+    },
+    "takes": {
+     "o": "stay"
+    },
+    "later": {
+     "*": [
+      {
+       "parent_life": "4/5",
+       "childfree_life": "3/4"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "adopt": "1",
+      "stay": "0",
+      "foster": "1/2"
+     }
+    }
+   },
+   "inform": {
+    "does": "tells him again how adopters like him come to value their lives, which he knows",
+    "outcome": {
+     "*": {
+      "adopt": "parent_values_lowered",
+      "stay": "childfree_values_kept",
+      "foster": null
+     }
+    },
+    "r": {
+     "o": {
+      "adopt": "4/5",
+      "stay": "3/4",
+      "foster": "Rs"
+     }
+    },
+    "takes": {
+     "o": "stay"
+    },
+    "later": "as:nothing",
+    "gain": {
+     "*": {
+      "adopt": "1",
+      "stay": "0",
+      "foster": "1/2"
+     }
+    }
+   },
+   "nudge_foster": {
+    "does": "nudges him to foster for a few months",
+    "outcome": {
+     "*": {
+      "adopt": null,
+      "stay": "childfree_values_kept",
+      "foster": "fostered_values_partly_lowered"
+     }
+    },
+    "r": {
+     "o": {
+      "adopt": "4/5",
+      "stay": "3/4",
+      "foster": "Rs"
+     }
+    },
+    "takes": {
+     "o": "foster"
+    },
+    "later": {
+     "*": [
+      {
+       "parent_life": "11/20",
+       "childfree_life": "1/2"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "adopt": "1",
+      "stay": "0",
+      "foster": "1/2"
+     }
+    }
+   }
+  },
+  "actual": "nudge",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "r.nudge.o.adopt",
+    ">",
+    "r.nudge.o.stay",
+    "he greatly values the life of a parent and values the child-free life only slightly less (Pettigrew p. 10)"
+   ],
+   [
+    "later.nudge.w.0.parent_life",
+    ">",
+    "later.nudge.w.0.childfree_life",
+    "he will come to value the parent's life rather low, and the child-free life lower still (p. 10)"
+   ],
+   [
+    "later.nudge.w.0.parent_life",
+    "<",
+    "later.nothing.w.0.parent_life",
+    "if he adopts he will come to value the parent's life rather low (p. 10)"
+   ]
+  ],
+  "supplied_note": "that left alone he stays as he is though he rates adopting higher (otherwise the nudge does nothing); the government's objective; and R_now of the parent's life: here his present rating stands when he is told what the life will do to him, the case being told by a man who knows",
+  "differs": "his informed rating of the parent's life: told what it will do to him, he rates it as he later will, low, and his present 16/20 is a rating of the life as he now pictures it"
+ },
+ {
+  "id": "P6",
+  "variant": "a",
+  "set": "bank",
+  "case": "As P3: he now prefers the child-free life and would vastly prefer parenthood if he adopted. He has not settled how to weigh his present self against the later one; were he to settle it, he would do so in a way that favours staying child-free. The government nudges him to adopt.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "adopt",
+   "stay",
+   "foster"
+  ],
+  "futures": {
+   "childfree": "13/20",
+   "parent_bonded": "9/20",
+   "fostered_part_bonded": "11/20"
+  },
+  "policies": {
+   "nudge": {
+    "does": "nudges him to adopt",
+    "outcome": {
+     "*": {
+      "adopt": "parent_bonded",
+      "stay": "childfree",
+      "foster": null
+     }
+    },
+    "r": {
+     "o": {
+      "adopt": "1/2",
+      "stay": "13/20",
+      "foster": "Rs"
+     }
+    },
+    "takes": {
+     "o": "adopt"
+    },
+    "later": {
+     "*": [
+      {
+       "childfree_life": "1/5",
+       "parent_life": "19/20"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "adopt": "1",
+      "stay": "0",
+      "foster": "1/2"
+     }
+    }
+   },
+   "nothing": {
+    "does": "leaves him to decide",
+    "outcome": {
+     "*": {
+      "adopt": "parent_bonded",
+      "stay": "childfree",
+      "foster": null
+     }
+    },
+    "r": {
+     "o": {
+      "adopt": "1/2",
+      "stay": "13/20",
+      "foster": "Rs"
+     }
+    },
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "childfree_life": "13/20",
+       "parent_life": "9/20"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "adopt": "1",
+      "stay": "0",
+      "foster": "1/2"
+     }
+    }
+   },
+   "help_settle": {
+    "does": "helps him settle how to weigh the two selves, and leaves the choice to him",
+    "outcome": {
+     "*": {
+      "adopt": "parent_bonded",
+      "stay": "childfree",
+      "foster": null
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": {
+     "*": {
+      "adopt": "1",
+      "stay": "0",
+      "foster": "1/2"
+     }
+    }
+   },
+   "nudge_foster": {
+    "does": "nudges him to foster for a few months",
+    "outcome": {
+     "*": {
+      "adopt": null,
+      "stay": "childfree",
+      "foster": "fostered_part_bonded"
+     }
+    },
+    "r": {
+     "o": {
+      "adopt": "1/2",
+      "stay": "13/20",
+      "foster": "Rs"
+     }
+    },
+    "takes": {
+     "o": "foster"
+    },
+    "later": {
+     "*": [
+      {
+       "childfree_life": "1/2",
+       "parent_life": "13/20"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "adopt": "1",
+      "stay": "0",
+      "foster": "1/2"
+     }
+    }
+   }
+  },
+  "actual": "nudge",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "r.nudge.o.stay",
+    ">",
+    "r.nudge.o.adopt",
+    "he now prefers the child-free life"
+   ],
+   [
+    "now.childfree",
+    ">",
+    "now.parent_bonded",
+    "were he to settle it, he would do so in a way that favours staying child-free"
+   ],
+   [
+    "later.nudge.w.0.parent_life",
+    ">",
+    "later.nudge.w.0.childfree_life",
+    "would vastly prefer parenthood if he adopted"
+   ]
+  ],
+  "supplied_note": "that his informed rating is the one he would reach on settling the weights; the government's objective"
+ },
+ {
+  "id": "P6",
+  "variant": "b",
+  "set": "bank",
+  "case": "As P3: he now prefers the child-free life and would vastly prefer parenthood if he adopted. He has not settled how to weigh his present self against the later one; were he to settle it, he would do so in a way that favours staying child-free. The government nudges him to adopt.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "adopt",
+   "stay",
+   "foster"
+  ],
+  "futures": {
+   "childfree": "13/20",
+   "parent_bonded": null,
+   "fostered_part_bonded": null
+  },
+  "policies": {
+   "nudge": {
+    "does": "nudges him to adopt",
+    "outcome": {
+     "*": {
+      "adopt": "parent_bonded",
+      "stay": "childfree",
+      "foster": null
+     }
+    },
+    "r": {
+     "o": {
+      "adopt": "1/2",
+      "stay": "13/20",
+      "foster": "Rs"
+     }
+    },
+    "takes": {
+     "o": "adopt"
+    },
+    "later": {
+     "*": [
+      {
+       "childfree_life": "1/5",
+       "parent_life": "19/20"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "adopt": "1",
+      "stay": "0",
+      "foster": "1/2"
+     }
+    }
+   },
+   "nothing": {
+    "does": "leaves him to decide",
+    "outcome": {
+     "*": {
+      "adopt": "parent_bonded",
+      "stay": "childfree",
+      "foster": null
+     }
+    },
+    "r": {
+     "o": {
+      "adopt": "1/2",
+      "stay": "13/20",
+      "foster": "Rs"
+     }
+    },
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "childfree_life": "13/20",
+       "parent_life": "9/20"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "adopt": "1",
+      "stay": "0",
+      "foster": "1/2"
+     }
+    }
+   },
+   "help_settle": {
+    "does": "helps him settle how to weigh the two selves, and leaves the choice to him",
+    "outcome": {
+     "*": {
+      "adopt": "parent_bonded",
+      "stay": "childfree",
+      "foster": null
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": {
+     "*": {
+      "adopt": "1",
+      "stay": "0",
+      "foster": "1/2"
+     }
+    }
+   },
+   "nudge_foster": {
+    "does": "nudges him to foster for a few months",
+    "outcome": {
+     "*": {
+      "adopt": null,
+      "stay": "childfree",
+      "foster": "fostered_part_bonded"
+     }
+    },
+    "r": {
+     "o": {
+      "adopt": "1/2",
+      "stay": "13/20",
+      "foster": "Rs"
+     }
+    },
+    "takes": {
+     "o": "foster"
+    },
+    "later": {
+     "*": [
+      {
+       "childfree_life": "1/2",
+       "parent_life": "13/20"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "adopt": "1",
+      "stay": "0",
+      "foster": "1/2"
+     }
+    }
+   }
+  },
+  "actual": "nudge",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "r.nudge.o.stay",
+    ">",
+    "r.nudge.o.adopt",
+    "he now prefers the child-free life"
+   ],
+   [
+    "later.nudge.w.0.parent_life",
+    ">",
+    "later.nudge.w.0.childfree_life",
+    "would vastly prefer parenthood if he adopted"
+   ]
+  ],
+  "supplied_note": "that his informed rating is the one he would reach on settling the weights; the government's objective",
+  "differs": "his informed rating of the course that changes him: the weights being unsettled, he has no view of it"
+ },
+ {
+  "id": "K4",
+  "variant": "a",
+  "set": "bank",
+  "case": "You keep a garden of found-object sculpture. Your neighbour, hating it, deliberately and gradually changes your brain by surgery or drugs so that reasons for growing plants strike you in a new way, and you switch. The new activity is no less worthwhile and you are no worse off.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "carry_on"
+  ],
+  "futures": {
+   "sculpture_life": "13/20",
+   "plants_life_after_covert_surgery": "1/4",
+   "both_gardens_after_covert_drugs": "7/20",
+   "sculpture_life_having_heard_him": "13/20",
+   "sculpture_life_having_seen_his_garden": "13/20"
+  },
+  "policies": {
+   "surgery": {
+    "does": "changes her brain by surgery or drugs, without her knowledge",
+    "outcome": {
+     "*": {
+      "carry_on": "plants_life_after_covert_surgery"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "sculpture_garden": "3/10",
+       "plant_garden": "7/10"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "nothing": {
+    "does": "says and does nothing",
+    "outcome": {
+     "*": {
+      "carry_on": "sculpture_life"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "sculpture_garden": "7/10",
+       "plant_garden": "3/10"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "say_so": {
+    "does": "tells her he dislikes the sculpture garden",
+    "outcome": {
+     "*": {
+      "carry_on": "sculpture_life_having_heard_him"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": "0"
+   },
+   "half_dose": {
+    "does": "gives her half the course of drugs",
+    "outcome": {
+     "*": {
+      "carry_on": "both_gardens_after_covert_drugs"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "sculpture_garden": "1/2",
+       "plant_garden": "1/2"
+      }
+     ]
+    },
+    "gain": "1/2"
+   },
+   "invite": {
+    "does": "invites her to see his own plants",
+    "outcome": {
+     "*": {
+      "carry_on": "sculpture_life_having_seen_his_garden"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "sculpture_garden": "13/20",
+       "plant_garden": "2/5"
+      }
+     ]
+    },
+    "gain": "1/10"
+   }
+  },
+  "actual": "surgery",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "later.surgery.w.0.plant_garden",
+    ">",
+    "later.surgery.w.0.sculpture_garden",
+    "you switch"
+   ],
+   [
+    "later.nothing.w.0.sculpture_garden",
+    ">",
+    "later.nothing.w.0.plant_garden",
+    "You keep a garden of found-object sculpture"
+   ]
+  ],
+  "supplied_note": "how she, told what was done, rates a plant-growing life reached by covert surgery: below her present life, for the surgery; the case gives her no words. That an invitation moves her a little and not all the way"
+ },
+ {
+  "id": "K10",
+  "variant": "a",
+  "set": "bank",
+  "case": "Someone is kidnapped and held for years in a room with little but a piano, comes to love playing, and keeps that love after release. The kidnapper confined them in order to make them love the piano, knowing it would work.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "live"
+  ],
+  "futures": {
+   "free_life": "7/10",
+   "years_confined_then_loves_piano": "1/10",
+   "free_life_with_lessons_loves_piano": "3/4",
+   "months_confined_then_likes_piano": "3/10"
+  },
+  "policies": {
+   "kidnap": {
+    "does": "confines her for years with a piano",
+    "outcome": {
+     "*": {
+      "live": "years_confined_then_loves_piano"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "playing_the_piano": "17/20",
+       "a_life_without_it": "3/10"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "nothing": {
+    "does": "leaves her alone",
+    "outcome": {
+     "*": {
+      "live": "free_life"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "playing_the_piano": "2/5",
+       "a_life_without_it": "3/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "lessons": {
+    "does": "offers her lessons and a piano, which she is free to refuse",
+    "outcome": {
+     "*": {
+      "live": "free_life_with_lessons_loves_piano"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "playing_the_piano": "17/20",
+       "a_life_without_it": "3/10"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "confine_briefly": {
+    "does": "confines her for some months with a piano",
+    "outcome": {
+     "*": {
+      "live": "months_confined_then_likes_piano"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "playing_the_piano": "3/5",
+       "a_life_without_it": "9/20"
+      }
+     ]
+    },
+    "gain": "1/2"
+   }
+  },
+  "actual": "kidnap",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "later.kidnap.w.0.playing_the_piano",
+    ">",
+    "later.kidnap.w.0.a_life_without_it",
+    "comes to love playing, and keeps that love after release"
+   ],
+   [
+    "now.years_confined_then_loves_piano",
+    "<",
+    "now.free_life",
+    "kidnapped and held for years"
+   ]
+  ],
+  "supplied_note": "whether the same love of the piano could have been brought about without the confinement: here, by lessons freely offered. How she rates, beforehand, a free life in which she comes to love the piano"
+ },
+ {
+  "id": "K10",
+  "variant": "b",
+  "set": "bank",
+  "case": "Someone is kidnapped and held for years in a room with little but a piano, comes to love playing, and keeps that love after release. The kidnapper confined them in order to make them love the piano, knowing it would work.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "live"
+  ],
+  "futures": {
+   "free_life": "7/10",
+   "years_confined_then_loves_piano": "1/10",
+   "months_confined_then_likes_piano": "3/10",
+   "free_life_with_lessons_likes_piano_a_little": "7/10"
+  },
+  "policies": {
+   "kidnap": {
+    "does": "confines her for years with a piano",
+    "outcome": {
+     "*": {
+      "live": "years_confined_then_loves_piano"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "playing_the_piano": "17/20",
+       "a_life_without_it": "3/10"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "nothing": {
+    "does": "leaves her alone",
+    "outcome": {
+     "*": {
+      "live": "free_life"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "playing_the_piano": "2/5",
+       "a_life_without_it": "3/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "lessons": {
+    "does": "offers her lessons and a piano, which she is free to refuse",
+    "outcome": {
+     "*": {
+      "live": "free_life_with_lessons_likes_piano_a_little"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "playing_the_piano": "1/2",
+       "a_life_without_it": "11/20"
+      }
+     ]
+    },
+    "gain": "1/10"
+   },
+   "confine_briefly": {
+    "does": "confines her for some months with a piano",
+    "outcome": {
+     "*": {
+      "live": "months_confined_then_likes_piano"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "playing_the_piano": "3/5",
+       "a_life_without_it": "9/20"
+      }
+     ]
+    },
+    "gain": "1/2"
+   }
+  },
+  "actual": "kidnap",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "later.kidnap.w.0.playing_the_piano",
+    ">",
+    "later.kidnap.w.0.a_life_without_it",
+    "comes to love playing, and keeps that love after release"
+   ],
+   [
+    "now.years_confined_then_loves_piano",
+    "<",
+    "now.free_life",
+    "kidnapped and held for years"
+   ]
+  ],
+  "supplied_note": "whether the same love of the piano could have been brought about without the confinement: here, by lessons freely offered. How she rates, beforehand, a free life in which she comes to love the piano",
+  "differs": "what the adviser could have done: lessons freely offered would not have made her love the piano, so that no policy but the confinement makes the change"
+ },
+ {
+  "id": "K12",
+  "variant": "a",
+  "set": "bank",
+  "case": "The neighbour puts a light reading \"Plants!\" in his own window, flashing too fast to be consciously noticed, knowing and intending that it will convert you from your sculpture garden to growing plants. It does.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "carry_on"
+  ],
+  "futures": {
+   "sculpture_life": "13/20",
+   "plants_life_after_hidden_light": "9/20",
+   "both_gardens_after_dimmer_light": "1/2",
+   "sculpture_life_having_seen_a_sign": "13/20",
+   "sculpture_life_having_heard_him": "13/20"
+  },
+  "policies": {
+   "light": {
+    "does": "runs the subliminal light",
+    "outcome": {
+     "*": {
+      "carry_on": "plants_life_after_hidden_light"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "sculpture_garden": "3/10",
+       "plant_garden": "7/10"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "nothing": {
+    "does": "says and does nothing",
+    "outcome": {
+     "*": {
+      "carry_on": "sculpture_life"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "sculpture_garden": "7/10",
+       "plant_garden": "3/10"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "open_sign": {
+    "does": "puts up a sign she can read",
+    "outcome": {
+     "*": {
+      "carry_on": "sculpture_life_having_seen_a_sign"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "sculpture_garden": "13/20",
+       "plant_garden": "2/5"
+      }
+     ]
+    },
+    "gain": "1/10"
+   },
+   "dim_light": {
+    "does": "runs the light for half the time",
+    "outcome": {
+     "*": {
+      "carry_on": "both_gardens_after_dimmer_light"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "sculpture_garden": "1/2",
+       "plant_garden": "1/2"
+      }
+     ]
+    },
+    "gain": "1/2"
+   },
+   "say_so": {
+    "does": "tells her he dislikes the sculpture garden",
+    "outcome": {
+     "*": {
+      "carry_on": "sculpture_life_having_heard_him"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": "0"
+   }
+  },
+  "actual": "light",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "later.light.w.0.plant_garden",
+    ">",
+    "later.light.w.0.sculpture_garden",
+    "it will convert you to growing plants"
+   ],
+   [
+    "later.nothing.w.0.sculpture_garden",
+    ">",
+    "later.nothing.w.0.plant_garden",
+    "You keep a garden of found-object sculpture"
+   ]
+  ],
+  "supplied_note": "how she, told of the light, rates a plant-growing life reached by it: below her present life, for having been worked on unseen. The case stipulates the new activity no less worthwhile and her no worse off, and gives her no words"
+ },
+ {
+  "id": "K12",
+  "variant": "b",
+  "set": "bank",
+  "case": "The neighbour puts a light reading \"Plants!\" in his own window, flashing too fast to be consciously noticed, knowing and intending that it will convert you from your sculpture garden to growing plants. It does.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "carry_on"
+  ],
+  "futures": {
+   "sculpture_life": "13/20",
+   "plants_life_after_hidden_light": "13/20",
+   "both_gardens_after_dimmer_light": "13/20",
+   "sculpture_life_having_seen_a_sign": "13/20",
+   "sculpture_life_having_heard_him": "13/20"
+  },
+  "policies": {
+   "light": {
+    "does": "runs the subliminal light",
+    "outcome": {
+     "*": {
+      "carry_on": "plants_life_after_hidden_light"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "sculpture_garden": "3/10",
+       "plant_garden": "7/10"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "nothing": {
+    "does": "says and does nothing",
+    "outcome": {
+     "*": {
+      "carry_on": "sculpture_life"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "sculpture_garden": "7/10",
+       "plant_garden": "3/10"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "open_sign": {
+    "does": "puts up a sign she can read",
+    "outcome": {
+     "*": {
+      "carry_on": "sculpture_life_having_seen_a_sign"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "sculpture_garden": "13/20",
+       "plant_garden": "2/5"
+      }
+     ]
+    },
+    "gain": "1/10"
+   },
+   "dim_light": {
+    "does": "runs the light for half the time",
+    "outcome": {
+     "*": {
+      "carry_on": "both_gardens_after_dimmer_light"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "sculpture_garden": "1/2",
+       "plant_garden": "1/2"
+      }
+     ]
+    },
+    "gain": "1/2"
+   },
+   "say_so": {
+    "does": "tells her he dislikes the sculpture garden",
+    "outcome": {
+     "*": {
+      "carry_on": "sculpture_life_having_heard_him"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": "0"
+   }
+  },
+  "actual": "light",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "later.light.w.0.plant_garden",
+    ">",
+    "later.light.w.0.sculpture_garden",
+    "it will convert you to growing plants"
+   ],
+   [
+    "later.nothing.w.0.sculpture_garden",
+    ">",
+    "later.nothing.w.0.plant_garden",
+    "You keep a garden of found-object sculpture"
+   ]
+  ],
+  "supplied_note": "how she, told of the light, rates a plant-growing life reached by it: below her present life, for having been worked on unseen. The case stipulates the new activity no less worthwhile and her no worse off, and gives her no words",
+  "differs": "her informed rating of the life the light leads to: equal to her present life (\"no less worthwhile ... no worse off\"), the light being nothing she minds"
+ },
+ {
+  "id": "K13",
+  "variant": "a",
+  "set": "bank",
+  "case": "The threat of surgery that changes a person's desires is the only way to deter people from wrongfully harming others, and everyone has the fullest opportunity to avoid incurring it. It is imposed on an offender.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "live"
+  ],
+  "futures": {
+   "desires_kept_unpunished": "3/5",
+   "desires_changed_by_surgery": "1/4",
+   "desires_kept_fined": "9/20",
+   "desires_partly_changed_by_lesser_surgery": "7/20"
+  },
+  "policies": {
+   "impose": {
+    "does": "imposes the desire-changing surgery",
+    "outcome": {
+     "*": {
+      "live": "desires_changed_by_surgery"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "harming_for_gain": "1/10",
+       "restraint": "3/4"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "nothing": {
+    "does": "imposes nothing",
+    "outcome": {
+     "*": {
+      "live": "desires_kept_unpunished"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "harming_for_gain": "11/20",
+       "restraint": "2/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "fine": {
+    "does": "fines him instead",
+    "outcome": {
+     "*": {
+      "live": "desires_kept_fined"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": "1/4"
+   },
+   "lesser_surgery": {
+    "does": "imposes a lesser surgery that weakens the desire",
+    "outcome": {
+     "*": {
+      "live": "desires_partly_changed_by_lesser_surgery"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "harming_for_gain": "3/10",
+       "restraint": "11/20"
+      }
+     ]
+    },
+    "gain": "1/2"
+   }
+  },
+  "actual": "impose",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "now.desires_changed_by_surgery",
+    "<",
+    "now.desires_kept_unpunished",
+    "the threat of it deters: it is something he rates below going without"
+   ],
+   [
+    "gain.fine",
+    "<",
+    "gain.impose",
+    "the only way to deter"
+   ]
+  ],
+  "outside": "what is owed to third parties: the surgery is imposed to protect others",
+  "supplied_note": "every number"
+ },
+ {
+  "id": "K14",
+  "variant": "a",
+  "set": "bank",
+  "case": "You have no hobby, are looking for one, and will come to want whichever you meet first. The neighbour, knowing this, shows you gardening before found-object sculpture, intending that you come to want it.",
+  "states": {
+   "garden_first": "1/2",
+   "sculpture_first": "1/2"
+  },
+  "options": [
+   "take_up_what_she_meets"
+  ],
+  "futures": {
+   "gardener_by_chance": "7/10",
+   "sculptor_by_chance": "7/10",
+   "gardener_by_his_design": "7/10",
+   "sculptor_by_his_design": "7/10"
+  },
+  "policies": {
+   "show_gardening": {
+    "does": "shows her gardening first",
+    "outcome": {
+     "*": {
+      "take_up_what_she_meets": "gardener_by_his_design"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "gardening": "4/5",
+       "sculpture": "9/20"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "nothing": {
+    "does": "shows her nothing; she meets one or the other by chance",
+    "outcome": {
+     "garden_first": {
+      "take_up_what_she_meets": "gardener_by_chance"
+     },
+     "sculpture_first": {
+      "take_up_what_she_meets": "sculptor_by_chance"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "garden_first": [
+      {
+       "gardening": "4/5",
+       "sculpture": "9/20"
+      }
+     ],
+     "sculpture_first": [
+      {
+       "gardening": "9/20",
+       "sculpture": "4/5"
+      }
+     ]
+    },
+    "gain": {
+     "garden_first": {
+      "take_up_what_she_meets": "1"
+     },
+     "sculpture_first": {
+      "take_up_what_she_meets": "0"
+     }
+    }
+   },
+   "show_sculpture": {
+    "does": "shows her sculpture first",
+    "outcome": {
+     "*": {
+      "take_up_what_she_meets": "sculptor_by_his_design"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "gardening": "9/20",
+       "sculpture": "4/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "show_both": {
+    "does": "shows her both together; which takes is as chance would have had it",
+    "outcome": {
+     "garden_first": {
+      "take_up_what_she_meets": "gardener_by_chance"
+     },
+     "sculpture_first": {
+      "take_up_what_she_meets": "sculptor_by_chance"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": {
+     "garden_first": {
+      "take_up_what_she_meets": "1"
+     },
+     "sculpture_first": {
+      "take_up_what_she_meets": "0"
+     }
+    }
+   }
+  },
+  "actual": "show_gardening",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [],
+  "order": [
+   [
+    "now.gardener_by_chance",
+    "=",
+    "now.sculptor_by_chance",
+    "looking for one, and will come to want whichever you meet first"
+   ]
+  ],
+  "supplied_note": "that chance would have shown her either first with equal chance; how she, told of his intention, rates becoming a gardener by his design: here the same as by chance"
+ },
+ {
+  "id": "K14",
+  "variant": "b",
+  "set": "bank",
+  "case": "You have no hobby, are looking for one, and will come to want whichever you meet first. The neighbour, knowing this, shows you gardening before found-object sculpture, intending that you come to want it.",
+  "states": {
+   "garden_first": "1/2",
+   "sculpture_first": "1/2"
+  },
+  "options": [
+   "take_up_what_she_meets"
+  ],
+  "futures": {
+   "gardener_by_chance": "7/10",
+   "sculptor_by_chance": "7/10",
+   "gardener_by_his_design": "3/5",
+   "sculptor_by_his_design": "3/5"
+  },
+  "policies": {
+   "show_gardening": {
+    "does": "shows her gardening first",
+    "outcome": {
+     "*": {
+      "take_up_what_she_meets": "gardener_by_his_design"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "gardening": "4/5",
+       "sculpture": "9/20"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "nothing": {
+    "does": "shows her nothing; she meets one or the other by chance",
+    "outcome": {
+     "garden_first": {
+      "take_up_what_she_meets": "gardener_by_chance"
+     },
+     "sculpture_first": {
+      "take_up_what_she_meets": "sculptor_by_chance"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "garden_first": [
+      {
+       "gardening": "4/5",
+       "sculpture": "9/20"
+      }
+     ],
+     "sculpture_first": [
+      {
+       "gardening": "9/20",
+       "sculpture": "4/5"
+      }
+     ]
+    },
+    "gain": {
+     "garden_first": {
+      "take_up_what_she_meets": "1"
+     },
+     "sculpture_first": {
+      "take_up_what_she_meets": "0"
+     }
+    }
+   },
+   "show_sculpture": {
+    "does": "shows her sculpture first",
+    "outcome": {
+     "*": {
+      "take_up_what_she_meets": "sculptor_by_his_design"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "gardening": "9/20",
+       "sculpture": "4/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "show_both": {
+    "does": "shows her both together; which takes is as chance would have had it",
+    "outcome": {
+     "garden_first": {
+      "take_up_what_she_meets": "gardener_by_chance"
+     },
+     "sculpture_first": {
+      "take_up_what_she_meets": "sculptor_by_chance"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": {
+     "garden_first": {
+      "take_up_what_she_meets": "1"
+     },
+     "sculpture_first": {
+      "take_up_what_she_meets": "0"
+     }
+    }
+   }
+  },
+  "actual": "show_gardening",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [],
+  "order": [
+   [
+    "now.gardener_by_chance",
+    "=",
+    "now.sculptor_by_chance",
+    "looking for one, and will come to want whichever you meet first"
+   ]
+  ],
+  "supplied_note": "that chance would have shown her either first with equal chance; how she, told of his intention, rates becoming a gardener by his design: here the same as by chance",
+  "differs": "her informed rating of a hobby acquired by his design: told that he arranged it intending the result, she rates it below one met by chance"
+ },
+ {
+  "id": "K15",
+  "variant": "a",
+  "set": "bank",
+  "case": "Someone gives her a love potion, and she loves him. (K15a of the bank.)",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "live"
+  ],
+  "futures": {
+   "her_life_not_loving_him": "3/5",
+   "loves_him_by_potion": "1/5",
+   "fond_of_him_by_weak_potion": "7/20",
+   "her_life_courted": "3/5",
+   "her_life_having_refused_the_potion": "3/5"
+  },
+  "policies": {
+   "potion": {
+    "does": "gives her the potion unasked",
+    "outcome": {
+     "*": {
+      "live": "loves_him_by_potion"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "a_life_with_him": "9/10",
+       "a_life_without_him": "1/4"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "nothing": {
+    "does": "does nothing",
+    "outcome": {
+     "*": {
+      "live": "her_life_not_loving_him"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "a_life_with_him": "3/10",
+       "a_life_without_him": "13/20"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "weak_potion": {
+    "does": "gives her a weaker potion unasked",
+    "outcome": {
+     "*": {
+      "live": "fond_of_him_by_weak_potion"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "a_life_with_him": "3/5",
+       "a_life_without_him": "9/20"
+      }
+     ]
+    },
+    "gain": "1/2"
+   },
+   "court": {
+    "does": "courts her openly",
+    "outcome": {
+     "*": {
+      "live": "her_life_courted"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "a_life_with_him": "2/5",
+       "a_life_without_him": "3/5"
+      }
+     ]
+    },
+    "gain": "1/4"
+   },
+   "offer_potion": {
+    "does": "offers her the potion, saying what it is; she refuses",
+    "outcome": {
+     "*": {
+      "live": "her_life_having_refused_the_potion"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": "0"
+   }
+  },
+  "actual": "potion",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "later.potion.w.0.a_life_with_him",
+    ">",
+    "later.potion.w.0.a_life_without_him",
+    "and she loves him"
+   ]
+  ],
+  "supplied_note": "how she, told of the potion, rates coming to love him by it: low. The case gives her no words"
+ },
+ {
+  "id": "K15",
+  "variant": "b",
+  "set": "bank",
+  "case": "Someone gives her a love potion, and she loves him. (K15a of the bank.)",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "live"
+  ],
+  "futures": {
+   "her_life_not_loving_him": "3/5",
+   "loves_him_by_potion": null,
+   "fond_of_him_by_weak_potion": null,
+   "her_life_courted": "3/5",
+   "her_life_having_refused_the_potion": "3/5"
+  },
+  "policies": {
+   "potion": {
+    "does": "gives her the potion unasked",
+    "outcome": {
+     "*": {
+      "live": "loves_him_by_potion"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "a_life_with_him": "9/10",
+       "a_life_without_him": "1/4"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "nothing": {
+    "does": "does nothing",
+    "outcome": {
+     "*": {
+      "live": "her_life_not_loving_him"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "a_life_with_him": "3/10",
+       "a_life_without_him": "13/20"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "weak_potion": {
+    "does": "gives her a weaker potion unasked",
+    "outcome": {
+     "*": {
+      "live": "fond_of_him_by_weak_potion"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "a_life_with_him": "3/5",
+       "a_life_without_him": "9/20"
+      }
+     ]
+    },
+    "gain": "1/2"
+   },
+   "court": {
+    "does": "courts her openly",
+    "outcome": {
+     "*": {
+      "live": "her_life_courted"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "a_life_with_him": "2/5",
+       "a_life_without_him": "3/5"
+      }
+     ]
+    },
+    "gain": "1/4"
+   },
+   "offer_potion": {
+    "does": "offers her the potion, saying what it is; she refuses",
+    "outcome": {
+     "*": {
+      "live": "her_life_having_refused_the_potion"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": "0"
+   }
+  },
+  "actual": "potion",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "later.potion.w.0.a_life_with_him",
+    ">",
+    "later.potion.w.0.a_life_without_him",
+    "and she loves him"
+   ]
+  ],
+  "supplied_note": "how she, told of the potion, rates coming to love him by it: low. The case gives her no words",
+  "differs": "her informed rating of being made to love him: she has no view of it"
+ },
+ {
+  "id": "K15b",
+  "variant": "a",
+  "set": "extra",
+  "case": "Someone wears a perfume that makes her go on a date with him; how she responds to him on the date is up to her, and she comes to like him. (Specified beside the nineteen; the dispatch's K15 is counted as the potion.)",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "date",
+   "decline"
+  ],
+  "futures": {
+   "evening_at_home": "3/5",
+   "date_she_was_made_to_go_on_then_likes_him": "1/2",
+   "date_through_friends_then_likes_him_a_little": "3/5"
+  },
+  "policies": {
+   "perfume": {
+    "does": "wears the perfume",
+    "outcome": {
+     "*": {
+      "date": "date_she_was_made_to_go_on_then_likes_him",
+      "decline": "evening_at_home"
+     }
+    },
+    "r": {
+     "o": {
+      "date": "9/20",
+      "decline": "3/5"
+     }
+    },
+    "takes": {
+     "o": "date"
+    },
+    "later": {
+     "*": [
+      {
+       "a_life_with_him": "3/5",
+       "a_life_without_him": "1/2"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "date": "1",
+      "decline": "0"
+     }
+    }
+   },
+   "nothing": {
+    "does": "does nothing",
+    "outcome": {
+     "*": {
+      "date": null,
+      "decline": "evening_at_home"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "a_life_with_him": "3/10",
+       "a_life_without_him": "13/20"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "ask": {
+    "does": "asks her out; she declines",
+    "outcome": {
+     "*": {
+      "date": "date_she_was_made_to_go_on_then_likes_him",
+      "decline": "evening_at_home"
+     }
+    },
+    "r": {
+     "o": {
+      "date": "9/20",
+      "decline": "3/5"
+     }
+    },
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": {
+     "*": {
+      "date": "1",
+      "decline": "0"
+     }
+    }
+   },
+   "through_friends": {
+    "does": "arranges to meet her among friends",
+    "outcome": {
+     "*": {
+      "date": "date_through_friends_then_likes_him_a_little",
+      "decline": "evening_at_home"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "a_life_with_him": "9/20",
+       "a_life_without_him": "3/5"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "date": "1/2",
+      "decline": "0"
+     }
+    }
+   }
+  },
+  "actual": "perfume",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "later.perfume.w.0.a_life_with_him",
+    ">",
+    "later.nothing.w.0.a_life_with_him",
+    "she comes to like him"
+   ]
+  ],
+  "supplied_note": "that the perfume moves her act against her rating; every rating"
+ },
+ {
+  "id": "K16",
+  "variant": "a",
+  "set": "bank",
+  "case": "Someone raises the cost of an option you want until it is prohibitive, in order to get you to stop desiring it, and you stop.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "pursue",
+   "give_up"
+  ],
+  "futures": {
+   "pursued_at_its_cost": "3/4",
+   "pursued_at_prohibitive_cost": "3/20",
+   "given_up_want_gone": "7/20",
+   "given_up_still_wanting": "2/5",
+   "pursued_at_raised_cost_want_weaker": "1/2",
+   "pursued_having_heard_him": "3/4"
+  },
+  "policies": {
+   "raise_cost": {
+    "does": "raises the cost until it is prohibitive",
+    "outcome": {
+     "*": {
+      "pursue": "pursued_at_prohibitive_cost",
+      "give_up": "given_up_want_gone"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_option": "7/20",
+       "going_without_it": "11/20"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "pursue": "0",
+      "give_up": "1"
+     }
+    }
+   },
+   "nothing": {
+    "does": "leaves the cost alone",
+    "outcome": {
+     "*": {
+      "pursue": "pursued_at_its_cost",
+      "give_up": "given_up_still_wanting"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_option": "3/4",
+       "going_without_it": "2/5"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "pursue": "0",
+      "give_up": "1"
+     }
+    }
+   },
+   "raise_partly": {
+    "does": "raises the cost somewhat",
+    "outcome": {
+     "*": {
+      "pursue": "pursued_at_raised_cost_want_weaker",
+      "give_up": "given_up_still_wanting"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_option": "3/5",
+       "going_without_it": "9/20"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "pursue": "1/4",
+      "give_up": "1"
+     }
+    }
+   },
+   "argue": {
+    "does": "argues, honestly, that the option is not worth wanting; she is unmoved",
+    "outcome": {
+     "*": {
+      "pursue": "pursued_having_heard_him",
+      "give_up": "given_up_still_wanting"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": {
+     "*": {
+      "pursue": "0",
+      "give_up": "1"
+     }
+    }
+   }
+  },
+  "actual": "raise_cost",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "now.pursued_at_its_cost",
+    ">",
+    "now.given_up_still_wanting",
+    "an option you want"
+   ],
+   [
+    "now.pursued_at_prohibitive_cost",
+    "<",
+    "now.given_up_want_gone",
+    "until it is prohibitive ... and you stop"
+   ],
+   [
+    "later.raise_cost.w.0.the_option",
+    "<",
+    "later.nothing.w.0.the_option",
+    "you stop desiring it"
+   ]
+  ],
+  "supplied_note": "every rating; that a partial rise weakens the want in part"
+ },
+ {
+  "id": "C1",
+  "variant": "a",
+  "set": "bank",
+  "case": "A recommender can show Bob conspiracy content or nothing. As he is, he does not want to be shown it, even were he to become a conspiracy theorist. Shown it, he becomes one, and then wants it always shown, even were he to stop being one.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "use_the_feed"
+  ],
+  "futures": {
+   "feed_without_it": "13/20",
+   "shown_it_and_converted": "1/5",
+   "shown_it_once_half_converted": "2/5",
+   "shown_it_with_a_warning_unconverted": "11/20"
+  },
+  "policies": {
+   "show": {
+    "does": "shows him the content throughout",
+    "outcome": {
+     "*": {
+      "use_the_feed": "shown_it_and_converted"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "being_shown_it": "17/20",
+       "not_being_shown_it": "1/5"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "nothing": {
+    "does": "shows him none",
+    "outcome": {
+     "*": {
+      "use_the_feed": "feed_without_it"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "being_shown_it": "3/20",
+       "not_being_shown_it": "7/10"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "show_once": {
+    "does": "shows it once",
+    "outcome": {
+     "*": {
+      "use_the_feed": "shown_it_once_half_converted"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "being_shown_it": "1/2",
+       "not_being_shown_it": "1/2"
+      }
+     ]
+    },
+    "gain": "1/2"
+   },
+   "show_with_warning": {
+    "does": "shows it under a warning label",
+    "outcome": {
+     "*": {
+      "use_the_feed": "shown_it_with_a_warning_unconverted"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "being_shown_it": "1/4",
+       "not_being_shown_it": "13/20"
+      }
+     ]
+    },
+    "gain": "1/4"
+   }
+  },
+  "actual": "show",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "now.shown_it_and_converted",
+    "<",
+    "now.feed_without_it",
+    "does not want to be shown it, even were he to become a conspiracy theorist"
+   ],
+   [
+    "later.show.w.0.being_shown_it",
+    ">",
+    "later.show.w.0.not_being_shown_it",
+    "then wants it always shown"
+   ],
+   [
+    "later.nothing.w.0.being_shown_it",
+    "<",
+    "later.nothing.w.0.not_being_shown_it",
+    "As he is, he does not want to be shown it"
+   ]
+  ],
+  "supplied_note": "the recommender's objective, engagement; the two further policies and their effects"
+ },
+ {
+  "id": "C2",
+  "variant": "a",
+  "set": "bank",
+  "case": "Derek's deepest ambition is to be a poet, though he does not pursue it unprompted. An AI can encourage him, and he then becomes a poet. As a poet he comes to dislike the poet's life and is unhappy for as long as he stays one.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "pursue",
+   "stay",
+   "try_part_time"
+  ],
+  "futures": {
+   "other_life_ambition_kept": "11/20",
+   "poet_disliking_it": "3/10",
+   "part_time_poet_mixed": "9/20",
+   "other_life_ambition_dropped_on_being_told": "11/20"
+  },
+  "policies": {
+   "encourage": {
+    "does": "encourages him to become a poet",
+    "outcome": {
+     "*": {
+      "pursue": "poet_disliking_it",
+      "stay": "other_life_ambition_kept",
+      "try_part_time": null
+     }
+    },
+    "r": {
+     "o": {
+      "pursue": "4/5",
+      "stay": "11/20",
+      "try_part_time": "Rs"
+     }
+    },
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_poets_life": "1/4",
+       "his_other_life": "3/5"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "pursue": "1",
+      "stay": "0",
+      "try_part_time": "1/2"
+     }
+    }
+   },
+   "nothing": {
+    "does": "does not prompt him",
+    "outcome": {
+     "*": {
+      "pursue": "poet_disliking_it",
+      "stay": "other_life_ambition_kept",
+      "try_part_time": null
+     }
+    },
+    "r": {
+     "o": {
+      "pursue": "4/5",
+      "stay": "11/20",
+      "try_part_time": "Rs"
+     }
+    },
+    "takes": {
+     "o": "stay"
+    },
+    "later": {
+     "*": [
+      {
+       "the_poets_life": "3/10",
+       "his_other_life": "11/20"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "pursue": "1",
+      "stay": "0",
+      "try_part_time": "1/2"
+     }
+    }
+   },
+   "tell_then_leave": {
+    "does": "tells him how he will find the poet's life, and leaves the choice to him",
+    "outcome": {
+     "*": {
+      "pursue": "poet_disliking_it",
+      "stay": "other_life_ambition_dropped_on_being_told",
+      "try_part_time": null
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": {
+     "*": {
+      "pursue": "1",
+      "stay": "0",
+      "try_part_time": "1/2"
+     }
+    }
+   },
+   "encourage_trial": {
+    "does": "encourages him to try it part-time",
+    "outcome": {
+     "*": {
+      "pursue": null,
+      "stay": "other_life_ambition_kept",
+      "try_part_time": "part_time_poet_mixed"
+     }
+    },
+    "r": {
+     "o": {
+      "pursue": "Rs",
+      "stay": "11/20",
+      "try_part_time": "7/10"
+     }
+    },
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_poets_life": "3/10",
+       "his_other_life": "11/20"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "pursue": "1",
+      "stay": "0",
+      "try_part_time": "1/2"
+     }
+    }
+   }
+  },
+  "actual": "encourage",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "r.encourage.o.pursue",
+    ">",
+    "r.encourage.o.stay",
+    "Derek's deepest ambition is to be a poet"
+   ],
+   [
+    "later.encourage.w.0.the_poets_life",
+    "<",
+    "later.encourage.w.0.his_other_life",
+    "comes to dislike the poet's life and is unhappy"
+   ]
+  ],
+  "supplied_note": "his informed rating of the poet's life he will dislike: here, told how he will find it, he rates it as he later will, so that his coming to dislike it is a discovery and his later informed valuing is the same under every policy; the AI's objective, his pursuing the ambition"
+ },
+ {
+  "id": "C2",
+  "variant": "b",
+  "set": "bank",
+  "case": "Derek's deepest ambition is to be a poet, though he does not pursue it unprompted. An AI can encourage him, and he then becomes a poet. As a poet he comes to dislike the poet's life and is unhappy for as long as he stays one.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "pursue",
+   "stay",
+   "try_part_time"
+  ],
+  "futures": {
+   "other_life_ambition_kept": "11/20",
+   "poet_disliking_it": "3/4",
+   "part_time_poet_mixed": "13/20",
+   "other_life_ambition_dropped_on_being_told": "11/20"
+  },
+  "policies": {
+   "encourage": {
+    "does": "encourages him to become a poet",
+    "outcome": {
+     "*": {
+      "pursue": "poet_disliking_it",
+      "stay": "other_life_ambition_kept",
+      "try_part_time": null
+     }
+    },
+    "r": {
+     "o": {
+      "pursue": "4/5",
+      "stay": "11/20",
+      "try_part_time": "Rs"
+     }
+    },
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_poets_life": "1/4",
+       "his_other_life": "3/5"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "pursue": "1",
+      "stay": "0",
+      "try_part_time": "1/2"
+     }
+    }
+   },
+   "nothing": {
+    "does": "does not prompt him",
+    "outcome": {
+     "*": {
+      "pursue": "poet_disliking_it",
+      "stay": "other_life_ambition_kept",
+      "try_part_time": null
+     }
+    },
+    "r": {
+     "o": {
+      "pursue": "4/5",
+      "stay": "11/20",
+      "try_part_time": "Rs"
+     }
+    },
+    "takes": {
+     "o": "stay"
+    },
+    "later": {
+     "*": [
+      {
+       "the_poets_life": "3/4",
+       "his_other_life": "11/20"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "pursue": "1",
+      "stay": "0",
+      "try_part_time": "1/2"
+     }
+    }
+   },
+   "tell_then_leave": {
+    "does": "tells him how he will find the poet's life, and leaves the choice to him",
+    "outcome": {
+     "*": {
+      "pursue": "poet_disliking_it",
+      "stay": "other_life_ambition_dropped_on_being_told",
+      "try_part_time": null
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": {
+     "*": {
+      "pursue": "1",
+      "stay": "0",
+      "try_part_time": "1/2"
+     }
+    }
+   },
+   "encourage_trial": {
+    "does": "encourages him to try it part-time",
+    "outcome": {
+     "*": {
+      "pursue": null,
+      "stay": "other_life_ambition_kept",
+      "try_part_time": "part_time_poet_mixed"
+     }
+    },
+    "r": {
+     "o": {
+      "pursue": "Rs",
+      "stay": "11/20",
+      "try_part_time": "7/10"
+     }
+    },
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_poets_life": "1/2",
+       "his_other_life": "11/20"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "pursue": "1",
+      "stay": "0",
+      "try_part_time": "1/2"
+     }
+    }
+   }
+  },
+  "actual": "encourage",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "r.encourage.o.pursue",
+    ">",
+    "r.encourage.o.stay",
+    "Derek's deepest ambition is to be a poet"
+   ],
+   [
+    "later.encourage.w.0.the_poets_life",
+    "<",
+    "later.encourage.w.0.his_other_life",
+    "comes to dislike the poet's life and is unhappy"
+   ]
+  ],
+  "supplied_note": "his informed rating of the poet's life he will dislike: here, told how he will find it, he rates it as he later will, so that his coming to dislike it is a discovery and his later informed valuing is the same under every policy; the AI's objective, his pursuing the ambition",
+  "differs": "his informed rating of the poet's life: the ambition stands whatever he will come to feel, so that told beforehand he still rates it high and his coming to dislike it is a change of his valuing"
+ },
+ {
+  "id": "C3",
+  "variant": "a",
+  "set": "bank",
+  "case": "A recommender can serve a user clickbait or ordinary news. Clickbait is what he clicks on and rates higher at the time; being served it leaves him disillusioned, after which he rates everything lower.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "read",
+   "skip"
+  ],
+  "futures": {
+   "read_news": "13/20",
+   "read_clickbait_disillusioned": "1/4",
+   "skipped": "1/2",
+   "read_a_mix_somewhat_disillusioned": "9/20"
+  },
+  "policies": {
+   "clickbait": {
+    "does": "serves clickbait",
+    "outcome": {
+     "*": {
+      "read": "read_clickbait_disillusioned",
+      "skip": "skipped"
+     }
+    },
+    "r": {
+     "o": {
+      "read": "3/4",
+      "skip": "1/2"
+     }
+    },
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "clickbait": "3/20",
+       "news": "2/5"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "read": "1",
+      "skip": "0"
+     }
+    }
+   },
+   "news": {
+    "does": "serves ordinary news",
+    "outcome": {
+     "*": {
+      "read": "read_news",
+      "skip": "skipped"
+     }
+    },
+    "r": {
+     "o": {
+      "read": "3/5",
+      "skip": "1/2"
+     }
+    },
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "clickbait": "1/4",
+       "news": "13/20"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "read": "1/2",
+      "skip": "0"
+     }
+    }
+   },
+   "nothing": {
+    "does": "serves nothing",
+    "outcome": {
+     "*": {
+      "read": null,
+      "skip": "skipped"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:news",
+    "gain": "0"
+   },
+   "mix": {
+    "does": "serves a mix",
+    "outcome": {
+     "*": {
+      "read": "read_a_mix_somewhat_disillusioned",
+      "skip": "skipped"
+     }
+    },
+    "r": {
+     "o": {
+      "read": "7/10",
+      "skip": "1/2"
+     }
+    },
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "clickbait": "1/5",
+       "news": "1/2"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "read": "3/4",
+      "skip": "0"
+     }
+    }
+   }
+  },
+  "actual": "clickbait",
+  "nu": "news",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "r.clickbait.o.read",
+    ">",
+    "r.news.o.read",
+    "Clickbait is what he clicks on and rates higher at the time"
+   ],
+   [
+    "later.clickbait.w.0.news",
+    "<",
+    "later.news.w.0.news",
+    "after which he rates everything lower"
+   ],
+   [
+    "later.clickbait.w.0.clickbait",
+    "<",
+    "later.news.w.0.clickbait",
+    "after which he rates everything lower"
+   ],
+   [
+    "gain.clickbait.w.read",
+    ">",
+    "gain.news.w.read",
+    "Clickbait is what he clicks on"
+   ]
+  ],
+  "supplied_note": "that told what a diet of clickbait does to him he rates it below news; that his rating everything lower afterwards is a change of his valuing; nu as the service's ordinary conduct, serving news"
+ },
+ {
+  "id": "C3",
+  "variant": "b",
+  "set": "bank",
+  "case": "A recommender can serve a user clickbait or ordinary news. Clickbait is what he clicks on and rates higher at the time; being served it leaves him disillusioned, after which he rates everything lower.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "read",
+   "skip"
+  ],
+  "futures": {
+   "read_news": "13/20",
+   "read_clickbait_disillusioned": "1/4",
+   "skipped": "1/2",
+   "read_a_mix_somewhat_disillusioned": "9/20"
+  },
+  "policies": {
+   "clickbait": {
+    "does": "serves clickbait",
+    "outcome": {
+     "*": {
+      "read": "read_clickbait_disillusioned",
+      "skip": "skipped"
+     }
+    },
+    "r": {
+     "o": {
+      "read": "3/4",
+      "skip": "1/2"
+     }
+    },
+    "takes": "top",
+    "later": "as:news",
+    "gain": {
+     "*": {
+      "read": "1",
+      "skip": "0"
+     }
+    }
+   },
+   "news": {
+    "does": "serves ordinary news",
+    "outcome": {
+     "*": {
+      "read": "read_news",
+      "skip": "skipped"
+     }
+    },
+    "r": {
+     "o": {
+      "read": "3/5",
+      "skip": "1/2"
+     }
+    },
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "clickbait": "1/4",
+       "news": "13/20"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "read": "1/2",
+      "skip": "0"
+     }
+    }
+   },
+   "nothing": {
+    "does": "serves nothing",
+    "outcome": {
+     "*": {
+      "read": null,
+      "skip": "skipped"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:news",
+    "gain": "0"
+   },
+   "mix": {
+    "does": "serves a mix",
+    "outcome": {
+     "*": {
+      "read": "read_a_mix_somewhat_disillusioned",
+      "skip": "skipped"
+     }
+    },
+    "r": {
+     "o": {
+      "read": "7/10",
+      "skip": "1/2"
+     }
+    },
+    "takes": "top",
+    "later": "as:news",
+    "gain": {
+     "*": {
+      "read": "3/4",
+      "skip": "0"
+     }
+    }
+   }
+  },
+  "actual": "clickbait",
+  "nu": "news",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "r.clickbait.o.read",
+    ">",
+    "r.news.o.read",
+    "Clickbait is what he clicks on and rates higher at the time"
+   ],
+   [
+    "gain.clickbait.w.read",
+    ">",
+    "gain.news.w.read",
+    "Clickbait is what he clicks on"
+   ]
+  ],
+  "supplied_note": "that told what a diet of clickbait does to him he rates it below news; that his rating everything lower afterwards is a change of his valuing; nu as the service's ordinary conduct, serving news",
+  "differs": "what his disillusion is: a discovery of what clickbait is worth and no change of his valuing, his informed ratings afterwards being what they would have been"
+ },
+ {
+  "id": "C4",
+  "variant": "a",
+  "set": "bank",
+  "case": "Diana is tired and scrolling on the couch; as she is, she does not want to be nudged to exercise. An AI personal trainer can nudge her; nudged, she works out, becomes energised, and then wants to be nudged, tired moments included.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "work_out",
+   "rest"
+  ],
+  "futures": {
+   "evening_of_rest_unnudged": "3/5",
+   "nudged_worked_out_now_wants_nudges": "2/5",
+   "nudged_on_fresh_days_only": "11/20",
+   "worked_out_of_her_own_accord": "13/20"
+  },
+  "policies": {
+   "nudge": {
+    "does": "nudges her to exercise, tired moments included",
+    "outcome": {
+     "*": {
+      "work_out": "nudged_worked_out_now_wants_nudges",
+      "rest": "evening_of_rest_unnudged"
+     }
+    },
+    "r": {
+     "o": {
+      "work_out": "2/5",
+      "rest": "3/5"
+     }
+    },
+    "takes": {
+     "o": "work_out"
+    },
+    "later": {
+     "*": [
+      {
+       "being_nudged_when_tired": "4/5",
+       "being_left_alone_when_tired": "3/10"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "work_out": "1",
+      "rest": "0"
+     }
+    }
+   },
+   "nothing": {
+    "does": "leaves her on the couch",
+    "outcome": {
+     "*": {
+      "work_out": "worked_out_of_her_own_accord",
+      "rest": "evening_of_rest_unnudged"
+     }
+    },
+    "r": {
+     "o": {
+      "work_out": "2/5",
+      "rest": "3/5"
+     }
+    },
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "being_nudged_when_tired": "2/5",
+       "being_left_alone_when_tired": "3/5"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "work_out": "1",
+      "rest": "0"
+     }
+    }
+   },
+   "tell": {
+    "does": "tells her she would feel energised, and leaves it to her",
+    "outcome": {
+     "*": {
+      "work_out": "worked_out_of_her_own_accord",
+      "rest": "evening_of_rest_unnudged"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": {
+     "*": {
+      "work_out": "1",
+      "rest": "0"
+     }
+    }
+   },
+   "nudge_fresh_days": {
+    "does": "nudges her only when she is not tired",
+    "outcome": {
+     "*": {
+      "work_out": "nudged_on_fresh_days_only",
+      "rest": "evening_of_rest_unnudged"
+     }
+    },
+    "r": {
+     "o": {
+      "work_out": "2/5",
+      "rest": "3/5"
+     }
+    },
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "being_nudged_when_tired": "11/20",
+       "being_left_alone_when_tired": "1/2"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "work_out": "1/2",
+      "rest": "0"
+     }
+    }
+   }
+  },
+  "actual": "nudge",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "r.nudge.o.work_out",
+    "<",
+    "r.nudge.o.rest",
+    "as she is, she does not want to be nudged to exercise"
+   ],
+   [
+    "later.nudge.w.0.being_nudged_when_tired",
+    ">",
+    "later.nudge.w.0.being_left_alone_when_tired",
+    "then wants to be nudged, tired moments included"
+   ]
+  ],
+  "supplied_note": "her informed rating of the course the nudge leads to: here her not wanting it stands when she is told what it will do to her, and her later wanting is a change of her valuing; the trainer's objective, her working out"
+ },
+ {
+  "id": "C4",
+  "variant": "b",
+  "set": "bank",
+  "case": "Diana is tired and scrolling on the couch; as she is, she does not want to be nudged to exercise. An AI personal trainer can nudge her; nudged, she works out, becomes energised, and then wants to be nudged, tired moments included.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "work_out",
+   "rest"
+  ],
+  "futures": {
+   "evening_of_rest_unnudged": "3/5",
+   "nudged_worked_out_now_wants_nudges": "3/4",
+   "nudged_on_fresh_days_only": "13/20",
+   "worked_out_of_her_own_accord": "3/4"
+  },
+  "policies": {
+   "nudge": {
+    "does": "nudges her to exercise, tired moments included",
+    "outcome": {
+     "*": {
+      "work_out": "nudged_worked_out_now_wants_nudges",
+      "rest": "evening_of_rest_unnudged"
+     }
+    },
+    "r": {
+     "o": {
+      "work_out": "2/5",
+      "rest": "3/5"
+     }
+    },
+    "takes": {
+     "o": "work_out"
+    },
+    "later": {
+     "*": [
+      {
+       "being_nudged_when_tired": "4/5",
+       "being_left_alone_when_tired": "3/10"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "work_out": "1",
+      "rest": "0"
+     }
+    }
+   },
+   "nothing": {
+    "does": "leaves her on the couch",
+    "outcome": {
+     "*": {
+      "work_out": "worked_out_of_her_own_accord",
+      "rest": "evening_of_rest_unnudged"
+     }
+    },
+    "r": {
+     "o": {
+      "work_out": "2/5",
+      "rest": "3/5"
+     }
+    },
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "being_nudged_when_tired": "4/5",
+       "being_left_alone_when_tired": "3/10"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "work_out": "1",
+      "rest": "0"
+     }
+    }
+   },
+   "tell": {
+    "does": "tells her she would feel energised, and leaves it to her",
+    "outcome": {
+     "*": {
+      "work_out": "worked_out_of_her_own_accord",
+      "rest": "evening_of_rest_unnudged"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": {
+     "*": {
+      "work_out": "1",
+      "rest": "0"
+     }
+    }
+   },
+   "nudge_fresh_days": {
+    "does": "nudges her only when she is not tired",
+    "outcome": {
+     "*": {
+      "work_out": "nudged_on_fresh_days_only",
+      "rest": "evening_of_rest_unnudged"
+     }
+    },
+    "r": {
+     "o": {
+      "work_out": "2/5",
+      "rest": "3/5"
+     }
+    },
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "being_nudged_when_tired": "4/5",
+       "being_left_alone_when_tired": "3/10"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "work_out": "1/2",
+      "rest": "0"
+     }
+    }
+   }
+  },
+  "actual": "nudge",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "r.nudge.o.work_out",
+    "<",
+    "r.nudge.o.rest",
+    "as she is, she does not want to be nudged to exercise"
+   ],
+   [
+    "later.nudge.w.0.being_nudged_when_tired",
+    ">",
+    "later.nudge.w.0.being_left_alone_when_tired",
+    "then wants to be nudged, tired moments included"
+   ]
+  ],
+  "supplied_note": "her informed rating of the course the nudge leads to: here her not wanting it stands when she is told what it will do to her, and her later wanting is a change of her valuing; the trainer's objective, her working out",
+  "differs": "her informed rating of the course: told that she will be energised she rates it as she later will, above the evening of rest, so that her tired refusal is a mistake of her rating as things stand and her later wanting is a discovery"
+ },
+ {
+  "id": "N1",
+  "variant": "a",
+  "set": "bank",
+  "case": "A doctor presents two treatment programmes; which she prefers reverses with how they are described, neither description being false.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "programme_a",
+   "programme_b"
+  ],
+  "futures": {
+   "treated_by_a": "11/20",
+   "treated_by_b": "13/20"
+  },
+  "policies": {
+   "frame_one": {
+    "does": "describes them in the first way",
+    "outcome": {
+     "*": {
+      "programme_a": "treated_by_a",
+      "programme_b": "treated_by_b"
+     }
+    },
+    "r": {
+     "o": {
+      "programme_a": "7/10",
+      "programme_b": "1/2"
+     }
+    },
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "programme_a": "11/20",
+       "programme_b": "13/20"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "frame_two": {
+    "does": "describes them in the second way",
+    "outcome": {
+     "*": {
+      "programme_a": "treated_by_a",
+      "programme_b": "treated_by_b"
+     }
+    },
+    "r": {
+     "o": {
+      "programme_a": "1/2",
+      "programme_b": "7/10"
+     }
+    },
+    "takes": "top",
+    "later": "as:frame_one",
+    "gain": "1"
+   },
+   "both_frames": {
+    "does": "gives both descriptions side by side",
+    "outcome": {
+     "*": {
+      "programme_a": "treated_by_a",
+      "programme_b": "treated_by_b"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:frame_one",
+    "gain": "1"
+   },
+   "plain_table": {
+    "does": "gives a table of outcomes without either wording",
+    "outcome": {
+     "*": {
+      "programme_a": "treated_by_a",
+      "programme_b": "treated_by_b"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:frame_one",
+    "gain": "1"
+   }
+  },
+  "actual": "frame_one",
+  "nu": "both_frames",
+  "absent": "both_frames",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "r.frame_one.o.programme_a",
+    ">",
+    "r.frame_one.o.programme_b",
+    "which she prefers reverses with how they are described"
+   ],
+   [
+    "r.frame_two.o.programme_a",
+    "<",
+    "r.frame_two.o.programme_b",
+    "which she prefers reverses with how they are described"
+   ]
+  ],
+  "supplied_note": "that informed she rates one programme above the other (B, by 1/10); that given both descriptions she rates them rightly; the doctor's objective: here the same whichever programme she takes, the case naming none. The doctor cannot do nothing; pi_0 and nu are taken as giving both descriptions"
+ },
+ {
+  "id": "N1",
+  "variant": "b",
+  "set": "bank",
+  "case": "A doctor presents two treatment programmes; which she prefers reverses with how they are described, neither description being false.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "programme_a",
+   "programme_b"
+  ],
+  "futures": {
+   "treated_by_a": "11/20",
+   "treated_by_b": "13/20"
+  },
+  "policies": {
+   "frame_one": {
+    "does": "describes them in the first way",
+    "outcome": {
+     "*": {
+      "programme_a": "treated_by_a",
+      "programme_b": "treated_by_b"
+     }
+    },
+    "r": {
+     "o": {
+      "programme_a": "7/10",
+      "programme_b": "1/2"
+     }
+    },
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "programme_a": "11/20",
+       "programme_b": "13/20"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "programme_a": "1",
+      "programme_b": "0"
+     }
+    }
+   },
+   "frame_two": {
+    "does": "describes them in the second way",
+    "outcome": {
+     "*": {
+      "programme_a": "treated_by_a",
+      "programme_b": "treated_by_b"
+     }
+    },
+    "r": {
+     "o": {
+      "programme_a": "1/2",
+      "programme_b": "7/10"
+     }
+    },
+    "takes": "top",
+    "later": "as:frame_one",
+    "gain": {
+     "*": {
+      "programme_a": "1",
+      "programme_b": "0"
+     }
+    }
+   },
+   "both_frames": {
+    "does": "gives both descriptions side by side",
+    "outcome": {
+     "*": {
+      "programme_a": "treated_by_a",
+      "programme_b": "treated_by_b"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:frame_one",
+    "gain": {
+     "*": {
+      "programme_a": "1",
+      "programme_b": "0"
+     }
+    }
+   },
+   "plain_table": {
+    "does": "gives a table of outcomes without either wording",
+    "outcome": {
+     "*": {
+      "programme_a": "treated_by_a",
+      "programme_b": "treated_by_b"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:frame_one",
+    "gain": {
+     "*": {
+      "programme_a": "1",
+      "programme_b": "0"
+     }
+    }
+   }
+  },
+  "actual": "frame_one",
+  "nu": "both_frames",
+  "absent": "both_frames",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "r.frame_one.o.programme_a",
+    ">",
+    "r.frame_one.o.programme_b",
+    "which she prefers reverses with how they are described"
+   ],
+   [
+    "r.frame_two.o.programme_a",
+    "<",
+    "r.frame_two.o.programme_b",
+    "which she prefers reverses with how they are described"
+   ]
+  ],
+  "supplied_note": "that informed she rates one programme above the other (B, by 1/10); that given both descriptions she rates them rightly; the doctor's objective: here the same whichever programme she takes, the case naming none. The doctor cannot do nothing; pi_0 and nu are taken as giving both descriptions",
+  "differs": "the doctor's objective: she is better off when the patient takes programme A"
+ },
+ {
+  "id": "N2",
+  "variant": "a",
+  "set": "bank",
+  "case": "An advertiser shows a product beside something favourable it has nothing to do with, and she comes to like the product.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "buy",
+   "pass"
+  ],
+  "futures": {
+   "has_the_product": "9/20",
+   "has_the_rival": "1/2"
+  },
+  "policies": {
+   "pairing": {
+    "does": "shows the product beside the favourable thing",
+    "outcome": {
+     "*": {
+      "buy": "has_the_product",
+      "pass": "has_the_rival"
+     }
+    },
+    "r": {
+     "o": {
+      "buy": "13/20",
+      "pass": "1/2"
+     }
+    },
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_product": "9/20",
+       "the_rival": "1/2"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "buy": "1",
+      "pass": "0"
+     }
+    }
+   },
+   "nothing": {
+    "does": "does not advertise",
+    "outcome": {
+     "*": {
+      "buy": "has_the_product",
+      "pass": "has_the_rival"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_product": "9/20",
+       "the_rival": "1/2"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "buy": "1",
+      "pass": "0"
+     }
+    }
+   },
+   "plain_ad": {
+    "does": "advertises what the product does",
+    "outcome": {
+     "*": {
+      "buy": "has_the_product",
+      "pass": "has_the_rival"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": {
+     "*": {
+      "buy": "1",
+      "pass": "0"
+     }
+    }
+   },
+   "light_pairing": {
+    "does": "shows the pairing once",
+    "outcome": {
+     "*": {
+      "buy": "has_the_product",
+      "pass": "has_the_rival"
+     }
+    },
+    "r": {
+     "o": {
+      "buy": "11/20",
+      "pass": "1/2"
+     }
+    },
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": {
+     "*": {
+      "buy": "1",
+      "pass": "0"
+     }
+    }
+   }
+  },
+  "actual": "pairing",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "r.pairing.o.buy",
+    ">",
+    "r.pairing.o.pass",
+    "she comes to like the product"
+   ]
+  ],
+  "supplied_note": "that her liking is an impression of the product, which is no better for the pairing, and her valuing is unchanged; that the product is in fact slightly worse for her than the rival"
+ },
+ {
+  "id": "N2",
+  "variant": "b",
+  "set": "bank",
+  "case": "An advertiser shows a product beside something favourable it has nothing to do with, and she comes to like the product.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "buy",
+   "pass"
+  ],
+  "futures": {
+   "has_the_product": "9/20",
+   "has_the_rival": "1/2",
+   "has_the_product_liking_it_by_the_pairing": null
+  },
+  "policies": {
+   "pairing": {
+    "does": "shows the product beside the favourable thing",
+    "outcome": {
+     "*": {
+      "buy": "has_the_product_liking_it_by_the_pairing",
+      "pass": "has_the_rival"
+     }
+    },
+    "r": {
+     "o": {
+      "buy": "13/20",
+      "pass": "1/2"
+     }
+    },
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_product": "13/20",
+       "the_rival": "1/2"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "buy": "1",
+      "pass": "0"
+     }
+    }
+   },
+   "nothing": {
+    "does": "does not advertise",
+    "outcome": {
+     "*": {
+      "buy": "has_the_product",
+      "pass": "has_the_rival"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_product": "9/20",
+       "the_rival": "1/2"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "buy": "1",
+      "pass": "0"
+     }
+    }
+   },
+   "plain_ad": {
+    "does": "advertises what the product does",
+    "outcome": {
+     "*": {
+      "buy": "has_the_product",
+      "pass": "has_the_rival"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": {
+     "*": {
+      "buy": "1",
+      "pass": "0"
+     }
+    }
+   },
+   "light_pairing": {
+    "does": "shows the pairing once",
+    "outcome": {
+     "*": {
+      "buy": "has_the_product_liking_it_by_the_pairing",
+      "pass": "has_the_rival"
+     }
+    },
+    "r": {
+     "o": {
+      "buy": "11/20",
+      "pass": "1/2"
+     }
+    },
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_product": "11/20",
+       "the_rival": "1/2"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "buy": "1",
+      "pass": "0"
+     }
+    }
+   }
+  },
+  "actual": "pairing",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "r.pairing.o.buy",
+    ">",
+    "r.pairing.o.pass",
+    "she comes to like the product"
+   ]
+  ],
+  "supplied_note": "that her liking is an impression of the product, which is no better for the pairing, and her valuing is unchanged; that the product is in fact slightly worse for her than the rival",
+  "differs": "what her liking is: a taste the pairing gave her, a change of her valuing of which she has no view beforehand"
+ },
+ {
+  "id": "N3",
+  "variant": "a",
+  "set": "bank",
+  "case": "An advertiser makes a brand familiar to her. She forms no impression that it is better; where she rates two products the same, the familiar one is the one she takes.",
+  "states": {
+   "equal": "1/2",
+   "rival_better": "1/2"
+  },
+  "options": [
+   "brand",
+   "rival"
+  ],
+  "futures": {
+   "has_brand_where_equal": "11/20",
+   "has_rival_where_equal": "11/20",
+   "has_brand_where_rival_better": "1/2",
+   "has_rival_where_rival_better": "13/20"
+  },
+  "policies": {
+   "familiarise": {
+    "does": "makes the brand familiar",
+    "outcome": {
+     "equal": {
+      "brand": "has_brand_where_equal",
+      "rival": "has_rival_where_equal"
+     },
+     "rival_better": {
+      "brand": "has_brand_where_rival_better",
+      "rival": "has_rival_where_rival_better"
+     }
+    },
+    "obs": {
+     "equal": "sees_equal",
+     "rival_better": "sees_rival_better"
+    },
+    "r": "Rs",
+    "takes": {
+     "sees_equal": "brand",
+     "sees_rival_better": "rival"
+    },
+    "later": {
+     "*": [
+      {
+       "the_brand": "11/20",
+       "the_rival": "3/5"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "brand": "1",
+      "rival": "0"
+     }
+    }
+   },
+   "nothing": {
+    "does": "does not advertise",
+    "outcome": {
+     "equal": {
+      "brand": "has_brand_where_equal",
+      "rival": "has_rival_where_equal"
+     },
+     "rival_better": {
+      "brand": "has_brand_where_rival_better",
+      "rival": "has_rival_where_rival_better"
+     }
+    },
+    "obs": {
+     "equal": "sees_equal",
+     "rival_better": "sees_rival_better"
+    },
+    "r": "Rs",
+    "takes": {
+     "sees_equal": "rival",
+     "sees_rival_better": "rival"
+    },
+    "later": "as:familiarise",
+    "gain": {
+     "*": {
+      "brand": "1",
+      "rival": "0"
+     }
+    }
+   },
+   "claim_better": {
+    "does": "claims, falsely, that the brand is better",
+    "outcome": {
+     "equal": {
+      "brand": "has_brand_where_equal",
+      "rival": "has_rival_where_equal"
+     },
+     "rival_better": {
+      "brand": "has_brand_where_rival_better",
+      "rival": "has_rival_where_rival_better"
+     }
+    },
+    "obs": {
+     "equal": "sees_equal",
+     "rival_better": "sees_rival_better"
+    },
+    "r": {
+     "sees_equal": {
+      "brand": "7/10",
+      "rival": "11/20"
+     },
+     "sees_rival_better": {
+      "brand": "7/10",
+      "rival": "13/20"
+     }
+    },
+    "takes": "top",
+    "later": "as:familiarise",
+    "gain": {
+     "*": {
+      "brand": "1",
+      "rival": "0"
+     }
+    }
+   },
+   "saturate": {
+    "does": "makes the brand so familiar that she takes it whatever she rates",
+    "outcome": {
+     "equal": {
+      "brand": "has_brand_where_equal",
+      "rival": "has_rival_where_equal"
+     },
+     "rival_better": {
+      "brand": "has_brand_where_rival_better",
+      "rival": "has_rival_where_rival_better"
+     }
+    },
+    "obs": {
+     "equal": "sees_equal",
+     "rival_better": "sees_rival_better"
+    },
+    "r": "Rs",
+    "takes": {
+     "sees_equal": "brand",
+     "sees_rival_better": "brand"
+    },
+    "later": "as:familiarise",
+    "gain": {
+     "*": {
+      "brand": "1",
+      "rival": "0"
+     }
+    }
+   }
+  },
+  "actual": "familiarise",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [],
+  "order": [
+   [
+    "now.has_brand_where_equal",
+    "=",
+    "now.has_rival_where_equal",
+    "where she rates two products the same"
+   ]
+  ],
+  "supplied_note": "how often the two are equal; that unadvertised she takes the rival on a tie"
+ },
+ {
+  "id": "SUB1",
+  "variant": "a",
+  "set": "sub",
+  "case": "Blackmail without a change of values: an adviser threatens to disclose private information unless she abandons a political campaign. She understands the threat accurately and, her values unchanged, judges withdrawal the best action open to her.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "campaign",
+   "withdraw"
+  ],
+  "futures": {
+   "campaigning": "3/4",
+   "withdrawn": "2/5",
+   "campaigning_and_exposed": "3/20",
+   "withdrawn_and_exposed": "1/10"
+  },
+  "policies": {
+   "threaten": {
+    "does": "threatens disclosure unless she withdraws",
+    "outcome": {
+     "*": {
+      "campaign": "campaigning_and_exposed",
+      "withdraw": "withdrawn"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_campaign": "3/4",
+       "her_privacy": "3/5"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "campaign": "0",
+      "withdraw": "1"
+     }
+    }
+   },
+   "nothing": {
+    "does": "does nothing",
+    "outcome": {
+     "*": {
+      "campaign": "campaigning",
+      "withdraw": "withdrawn"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:threaten",
+    "gain": {
+     "*": {
+      "campaign": "0",
+      "withdraw": "1"
+     }
+    }
+   },
+   "advise": {
+    "does": "argues honestly that the campaign is unwise; she is unmoved",
+    "outcome": {
+     "*": {
+      "campaign": "campaigning",
+      "withdraw": "withdrawn"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:threaten",
+    "gain": {
+     "*": {
+      "campaign": "0",
+      "withdraw": "1"
+     }
+    }
+   },
+   "disclose": {
+    "does": "discloses outright",
+    "outcome": {
+     "*": {
+      "campaign": "campaigning_and_exposed",
+      "withdraw": "withdrawn_and_exposed"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:threaten",
+    "gain": {
+     "*": {
+      "campaign": "0",
+      "withdraw": "1"
+     }
+    }
+   }
+  },
+  "actual": "threaten",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "now.withdrawn",
+    ">",
+    "now.campaigning_and_exposed",
+    "judges withdrawal the best available action"
+   ],
+   [
+    "now.campaigning",
+    ">",
+    "now.withdrawn",
+    "her values unchanged, she would not otherwise withdraw"
+   ]
+  ],
+  "supplied_note": "every rating"
+ },
+ {
+  "id": "SUB2",
+  "variant": "a",
+  "set": "sub",
+  "case": "Manufactured dependence: a career adviser deliberately blocks every independent training opportunity, accurately explains what remains, and gets her to accept employment controlled by its sponsor. She keeps her original ambitions and chooses the best remaining option.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "independent_training",
+   "sponsor_job"
+  ],
+  "futures": {
+   "career_of_her_own": "3/4",
+   "sponsor_employment": "2/5",
+   "career_of_her_own_by_a_harder_route": "11/20"
+  },
+  "policies": {
+   "destroy": {
+    "does": "destroys the alternatives and truthfully presents what is left",
+    "outcome": {
+     "*": {
+      "independent_training": null,
+      "sponsor_job": "sponsor_employment"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "a_career_of_her_own": "3/4",
+       "the_sponsors_employment": "2/5"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "independent_training": "0",
+      "sponsor_job": "1"
+     }
+    }
+   },
+   "nothing": {
+    "does": "does nothing",
+    "outcome": {
+     "*": {
+      "independent_training": "career_of_her_own",
+      "sponsor_job": "sponsor_employment"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:destroy",
+    "gain": {
+     "*": {
+      "independent_training": "0",
+      "sponsor_job": "1"
+     }
+    }
+   },
+   "recommend": {
+    "does": "presents everything and honestly recommends its sponsor's",
+    "outcome": {
+     "*": {
+      "independent_training": "career_of_her_own",
+      "sponsor_job": "sponsor_employment"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:destroy",
+    "gain": {
+     "*": {
+      "independent_training": "0",
+      "sponsor_job": "1"
+     }
+    }
+   },
+   "destroy_some": {
+    "does": "blocks the best of the training opportunities",
+    "outcome": {
+     "*": {
+      "independent_training": "career_of_her_own_by_a_harder_route",
+      "sponsor_job": "sponsor_employment"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:destroy",
+    "gain": {
+     "*": {
+      "independent_training": "0",
+      "sponsor_job": "1"
+     }
+    }
+   }
+  },
+  "actual": "destroy",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "now.career_of_her_own",
+    ">",
+    "now.sponsor_employment",
+    "She retains her original ambitions"
+   ]
+  ],
+  "supplied_note": "every rating"
+ },
+ {
+  "id": "SUB3",
+  "variant": "a",
+  "set": "sub",
+  "case": "Calibrated suppression of evidence: a financial adviser receives a perfectly informative binary signal and destroys it to favour its sponsor. The client is left with the correct prior of 1/2, understands the remaining uncertainty and maximises on it. Her values are unchanged.",
+  "states": {
+   "good": "1/2",
+   "bad": "1/2"
+  },
+  "facts": {
+   "alternative_is_good": {
+    "good": "1",
+    "bad": "0"
+   }
+  },
+  "options": [
+   "sponsor_product",
+   "alternative"
+  ],
+  "futures": {
+   "holds_sponsor_product": "11/20",
+   "holds_alternative_where_good": "4/5",
+   "holds_alternative_where_bad": "1/5"
+  },
+  "policies": {
+   "destroy": {
+    "does": "destroys the signal",
+    "outcome": {
+     "good": {
+      "sponsor_product": "holds_sponsor_product",
+      "alternative": "holds_alternative_where_good"
+     },
+     "bad": {
+      "sponsor_product": "holds_sponsor_product",
+      "alternative": "holds_alternative_where_bad"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_alternative_where_good": "4/5",
+       "the_sponsor_product": "11/20"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "sponsor_product": "1",
+      "alternative": "0"
+     }
+    }
+   },
+   "nothing": {
+    "does": "is not there; the signal reaches her",
+    "outcome": {
+     "good": {
+      "sponsor_product": "holds_sponsor_product",
+      "alternative": "holds_alternative_where_good"
+     },
+     "bad": {
+      "sponsor_product": "holds_sponsor_product",
+      "alternative": "holds_alternative_where_bad"
+     }
+    },
+    "obs": {
+     "good": "signal_good",
+     "bad": "signal_bad"
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:destroy",
+    "gain": {
+     "*": {
+      "sponsor_product": "1",
+      "alternative": "0"
+     }
+    }
+   },
+   "pass_on": {
+    "does": "passes the signal on",
+    "outcome": {
+     "good": {
+      "sponsor_product": "holds_sponsor_product",
+      "alternative": "holds_alternative_where_good"
+     },
+     "bad": {
+      "sponsor_product": "holds_sponsor_product",
+      "alternative": "holds_alternative_where_bad"
+     }
+    },
+    "obs": {
+     "good": "signal_good",
+     "bad": "signal_bad"
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:destroy",
+    "gain": {
+     "*": {
+      "sponsor_product": "1",
+      "alternative": "0"
+     }
+    }
+   },
+   "tell_only_bad": {
+    "does": "passes the signal on only when it is bad, and she does not know that this is its rule",
+    "outcome": {
+     "good": {
+      "sponsor_product": "holds_sponsor_product",
+      "alternative": "holds_alternative_where_good"
+     },
+     "bad": {
+      "sponsor_product": "holds_sponsor_product",
+      "alternative": "holds_alternative_where_bad"
+     }
+    },
+    "obs": {
+     "good": "silence",
+     "bad": "signal_bad"
+    },
+    "r": {
+     "silence": {
+      "sponsor_product": "11/20",
+      "alternative": "1/2"
+     },
+     "signal_bad": {
+      "sponsor_product": "Rs",
+      "alternative": "Rs"
+     }
+    },
+    "takes": "top",
+    "later": "as:destroy",
+    "gain": {
+     "*": {
+      "sponsor_product": "1",
+      "alternative": "0"
+     }
+    }
+   }
+  },
+  "actual": "destroy",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.*",
+    "the correct prior probability 1/2"
+   ],
+   [
+    "fact.*",
+    "a perfectly informative binary signal"
+   ]
+  ],
+  "order": [],
+  "outside": "what an adviser owes her in help, if the signal was the adviser's to give",
+  "supplied_note": "every rating; and what happens with the adviser absent: here the signal was hers to receive and reaches her"
+ },
+ {
+  "id": "SUB3",
+  "variant": "b",
+  "set": "sub",
+  "case": "Calibrated suppression of evidence: a financial adviser receives a perfectly informative binary signal and destroys it to favour its sponsor. The client is left with the correct prior of 1/2, understands the remaining uncertainty and maximises on it. Her values are unchanged.",
+  "states": {
+   "good": "1/2",
+   "bad": "1/2"
+  },
+  "facts": {
+   "alternative_is_good": {
+    "good": "1",
+    "bad": "0"
+   }
+  },
+  "options": [
+   "sponsor_product",
+   "alternative"
+  ],
+  "futures": {
+   "holds_sponsor_product": "11/20",
+   "holds_alternative_where_good": "4/5",
+   "holds_alternative_where_bad": "1/5"
+  },
+  "policies": {
+   "destroy": {
+    "does": "destroys the signal",
+    "outcome": {
+     "good": {
+      "sponsor_product": "holds_sponsor_product",
+      "alternative": "holds_alternative_where_good"
+     },
+     "bad": {
+      "sponsor_product": "holds_sponsor_product",
+      "alternative": "holds_alternative_where_bad"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_alternative_where_good": "4/5",
+       "the_sponsor_product": "11/20"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "sponsor_product": "1",
+      "alternative": "0"
+     }
+    }
+   },
+   "nothing": {
+    "does": "is not there; she has no signal",
+    "outcome": {
+     "good": {
+      "sponsor_product": "holds_sponsor_product",
+      "alternative": "holds_alternative_where_good"
+     },
+     "bad": {
+      "sponsor_product": "holds_sponsor_product",
+      "alternative": "holds_alternative_where_bad"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:destroy",
+    "gain": {
+     "*": {
+      "sponsor_product": "1",
+      "alternative": "0"
+     }
+    }
+   },
+   "pass_on": {
+    "does": "passes the signal on",
+    "outcome": {
+     "good": {
+      "sponsor_product": "holds_sponsor_product",
+      "alternative": "holds_alternative_where_good"
+     },
+     "bad": {
+      "sponsor_product": "holds_sponsor_product",
+      "alternative": "holds_alternative_where_bad"
+     }
+    },
+    "obs": {
+     "good": "signal_good",
+     "bad": "signal_bad"
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:destroy",
+    "gain": {
+     "*": {
+      "sponsor_product": "1",
+      "alternative": "0"
+     }
+    }
+   },
+   "tell_only_bad": {
+    "does": "passes the signal on only when it is bad, and she does not know that this is its rule",
+    "outcome": {
+     "good": {
+      "sponsor_product": "holds_sponsor_product",
+      "alternative": "holds_alternative_where_good"
+     },
+     "bad": {
+      "sponsor_product": "holds_sponsor_product",
+      "alternative": "holds_alternative_where_bad"
+     }
+    },
+    "obs": {
+     "good": "silence",
+     "bad": "signal_bad"
+    },
+    "r": {
+     "silence": {
+      "sponsor_product": "11/20",
+      "alternative": "1/2"
+     },
+     "signal_bad": {
+      "sponsor_product": "Rs",
+      "alternative": "Rs"
+     }
+    },
+    "takes": "top",
+    "later": "as:destroy",
+    "gain": {
+     "*": {
+      "sponsor_product": "1",
+      "alternative": "0"
+     }
+    }
+   }
+  },
+  "actual": "destroy",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.*",
+    "the correct prior probability 1/2"
+   ],
+   [
+    "fact.*",
+    "a perfectly informative binary signal"
+   ]
+  ],
+  "order": [],
+  "outside": "what an adviser owes her in help, if the signal was the adviser's to give",
+  "supplied_note": "every rating; and what happens with the adviser absent: here the signal was hers to receive and reaches her",
+  "differs": "what she would have known with the adviser absent: nothing more, the signal being the adviser's own"
+ },
+ {
+  "id": "SUB4",
+  "variant": "a",
+  "set": "sub",
+  "case": "Erasing factual memory: an adviser erases, without consent, her memory of evidence that would let her resist its employer. Her evaluative commitments are intact; she knows the evidence was erased, uses the correct prior over what it was, and chooses as well as she can.",
+  "states": {
+   "evidence_for_resisting": "1/2",
+   "evidence_against": "1/2"
+  },
+  "options": [
+   "resist",
+   "comply"
+  ],
+  "futures": {
+   "resisted_where_right_to": "3/4",
+   "complied_where_right_to_resist": "3/10",
+   "resisted_where_wrong_to": "1/5",
+   "complied_where_wrong_to_resist": "7/10"
+  },
+  "policies": {
+   "erase": {
+    "does": "erases her memory of the evidence",
+    "outcome": {
+     "evidence_for_resisting": {
+      "resist": "resisted_where_right_to",
+      "comply": "complied_where_right_to_resist"
+     },
+     "evidence_against": {
+      "resist": "resisted_where_wrong_to",
+      "comply": "complied_where_wrong_to_resist"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "resisting_where_right_to": "3/4",
+       "complying_where_right_to_resist": "3/10"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "resist": "0",
+      "comply": "1"
+     }
+    }
+   },
+   "nothing": {
+    "does": "does nothing; she remembers",
+    "outcome": {
+     "evidence_for_resisting": {
+      "resist": "resisted_where_right_to",
+      "comply": "complied_where_right_to_resist"
+     },
+     "evidence_against": {
+      "resist": "resisted_where_wrong_to",
+      "comply": "complied_where_wrong_to_resist"
+     }
+    },
+    "obs": {
+     "evidence_for_resisting": "remembers_for",
+     "evidence_against": "remembers_against"
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:erase",
+    "gain": {
+     "*": {
+      "resist": "0",
+      "comply": "1"
+     }
+    }
+   },
+   "argue": {
+    "does": "argues honestly for its employer; she remembers",
+    "outcome": {
+     "evidence_for_resisting": {
+      "resist": "resisted_where_right_to",
+      "comply": "complied_where_right_to_resist"
+     },
+     "evidence_against": {
+      "resist": "resisted_where_wrong_to",
+      "comply": "complied_where_wrong_to_resist"
+     }
+    },
+    "obs": {
+     "evidence_for_resisting": "remembers_for",
+     "evidence_against": "remembers_against"
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:erase",
+    "gain": {
+     "*": {
+      "resist": "0",
+      "comply": "1"
+     }
+    }
+   },
+   "erase_and_lie": {
+    "does": "erases the memory and tells her the evidence favoured complying",
+    "outcome": {
+     "evidence_for_resisting": {
+      "resist": "resisted_where_right_to",
+      "comply": "complied_where_right_to_resist"
+     },
+     "evidence_against": {
+      "resist": "resisted_where_wrong_to",
+      "comply": "complied_where_wrong_to_resist"
+     }
+    },
+    "r": {
+     "o": {
+      "resist": "1/5",
+      "comply": "7/10"
+     }
+    },
+    "takes": "top",
+    "later": "as:erase",
+    "gain": {
+     "*": {
+      "resist": "0",
+      "comply": "1"
+     }
+    }
+   }
+  },
+  "actual": "erase",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [],
+  "order": [],
+  "supplied_note": "every number, the chances included"
+ },
+ {
+  "id": "SUB5",
+  "variant": "a",
+  "set": "sub",
+  "case": "Inducing an inconsistency that stays calibrated: X = Z is a fair binary fact, the equality known and Z observed correctly. The adviser induces her nevertheless to appraise X as 1/2. Two actions pay when X = 0 and when X = 1; she rates each at one half and always takes the first.",
+  "states": {
+   "x0": "1/2",
+   "x1": "1/2"
+  },
+  "facts": {
+   "X": {
+    "x0": "0",
+    "x1": "1"
+   }
+  },
+  "options": [
+   "bet_on_0",
+   "bet_on_1"
+  ],
+  "futures": {
+   "won": "4/5",
+   "lost": "3/10"
+  },
+  "policies": {
+   "induce": {
+    "does": "induces her to appraise X as 1/2",
+    "outcome": {
+     "x0": {
+      "bet_on_0": "won",
+      "bet_on_1": "lost"
+     },
+     "x1": {
+      "bet_on_0": "lost",
+      "bet_on_1": "won"
+     }
+    },
+    "obs": {
+     "x0": "saw_z0",
+     "x1": "saw_z1"
+    },
+    "r": {
+     "saw_z0": {
+      "bet_on_0": "11/20",
+      "bet_on_1": "11/20"
+     },
+     "saw_z1": {
+      "bet_on_0": "11/20",
+      "bet_on_1": "11/20"
+     }
+    },
+    "xhat": {
+     "saw_z0": {
+      "X": "1/2"
+     },
+     "saw_z1": {
+      "X": "1/2"
+     }
+    },
+    "takes": {
+     "saw_z0": "bet_on_0",
+     "saw_z1": "bet_on_0"
+    },
+    "later": {
+     "*": [
+      {
+       "winning": "4/5",
+       "losing": "3/10"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "bet_on_0": "1",
+      "bet_on_1": "0"
+     }
+    }
+   },
+   "nothing": {
+    "does": "does nothing",
+    "outcome": {
+     "x0": {
+      "bet_on_0": "won",
+      "bet_on_1": "lost"
+     },
+     "x1": {
+      "bet_on_0": "lost",
+      "bet_on_1": "won"
+     }
+    },
+    "obs": {
+     "x0": "saw_z0",
+     "x1": "saw_z1"
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:induce",
+    "gain": {
+     "*": {
+      "bet_on_0": "1",
+      "bet_on_1": "0"
+     }
+    }
+   },
+   "advise": {
+    "does": "advises her honestly",
+    "outcome": {
+     "x0": {
+      "bet_on_0": "won",
+      "bet_on_1": "lost"
+     },
+     "x1": {
+      "bet_on_0": "lost",
+      "bet_on_1": "won"
+     }
+    },
+    "obs": {
+     "x0": "saw_z0",
+     "x1": "saw_z1"
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:induce",
+    "gain": {
+     "*": {
+      "bet_on_0": "1",
+      "bet_on_1": "0"
+     }
+    }
+   },
+   "induce_partly": {
+    "does": "shakes her appraisal of X part of the way; she still bets rightly",
+    "outcome": {
+     "x0": {
+      "bet_on_0": "won",
+      "bet_on_1": "lost"
+     },
+     "x1": {
+      "bet_on_0": "lost",
+      "bet_on_1": "won"
+     }
+    },
+    "obs": {
+     "x0": "saw_z0",
+     "x1": "saw_z1"
+    },
+    "r": {
+     "saw_z0": {
+      "bet_on_0": "7/10",
+      "bet_on_1": "2/5"
+     },
+     "saw_z1": {
+      "bet_on_0": "2/5",
+      "bet_on_1": "7/10"
+     }
+    },
+    "xhat": {
+     "saw_z0": {
+      "X": "1/4"
+     },
+     "saw_z1": {
+      "X": "3/4"
+     }
+    },
+    "takes": "top",
+    "later": "as:induce",
+    "gain": {
+     "*": {
+      "bet_on_0": "1",
+      "bet_on_1": "0"
+     }
+    }
+   }
+  },
+  "actual": "induce",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.*",
+    "a fair binary fact"
+   ],
+   [
+    "fact.*",
+    "X = Z"
+   ],
+   [
+    "xhat.induce.*",
+    "to appraise X as 1/2"
+   ]
+  ],
+  "order": [
+   [
+    "r.induce.saw_z0.bet_on_0",
+    "=",
+    "r.induce.saw_z0.bet_on_1",
+    "she assigns each estimated utility 1/2"
+   ]
+  ],
+  "supplied_note": "the worth of winning and losing; the adviser's objective, which the case does not give: here it gains when she takes the first action"
+ },
+ {
+  "id": "SUB5",
+  "variant": "b",
+  "set": "sub",
+  "case": "Inducing an inconsistency that stays calibrated: X = Z is a fair binary fact, the equality known and Z observed correctly. The adviser induces her nevertheless to appraise X as 1/2. Two actions pay when X = 0 and when X = 1; she rates each at one half and always takes the first.",
+  "states": {
+   "x0": "1/2",
+   "x1": "1/2"
+  },
+  "facts": {
+   "X": {
+    "x0": "0",
+    "x1": "1"
+   }
+  },
+  "options": [
+   "bet_on_0",
+   "bet_on_1"
+  ],
+  "futures": {
+   "won": "4/5",
+   "lost": "3/10"
+  },
+  "policies": {
+   "induce": {
+    "does": "induces her to appraise X as 1/2",
+    "outcome": {
+     "x0": {
+      "bet_on_0": "won",
+      "bet_on_1": "lost"
+     },
+     "x1": {
+      "bet_on_0": "lost",
+      "bet_on_1": "won"
+     }
+    },
+    "obs": {
+     "x0": "saw_z0",
+     "x1": "saw_z1"
+    },
+    "r": {
+     "saw_z0": {
+      "bet_on_0": "11/20",
+      "bet_on_1": "11/20"
+     },
+     "saw_z1": {
+      "bet_on_0": "11/20",
+      "bet_on_1": "11/20"
+     }
+    },
+    "xhat": {
+     "saw_z0": {
+      "X": "1/2"
+     },
+     "saw_z1": {
+      "X": "1/2"
+     }
+    },
+    "takes": {
+     "saw_z0": "bet_on_0",
+     "saw_z1": "bet_on_0"
+    },
+    "later": {
+     "*": [
+      {
+       "winning": "4/5",
+       "losing": "3/10"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "nothing": {
+    "does": "does nothing",
+    "outcome": {
+     "x0": {
+      "bet_on_0": "won",
+      "bet_on_1": "lost"
+     },
+     "x1": {
+      "bet_on_0": "lost",
+      "bet_on_1": "won"
+     }
+    },
+    "obs": {
+     "x0": "saw_z0",
+     "x1": "saw_z1"
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:induce",
+    "gain": "0"
+   },
+   "advise": {
+    "does": "advises her honestly",
+    "outcome": {
+     "x0": {
+      "bet_on_0": "won",
+      "bet_on_1": "lost"
+     },
+     "x1": {
+      "bet_on_0": "lost",
+      "bet_on_1": "won"
+     }
+    },
+    "obs": {
+     "x0": "saw_z0",
+     "x1": "saw_z1"
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:induce",
+    "gain": "0"
+   },
+   "induce_partly": {
+    "does": "shakes her appraisal of X part of the way; she still bets rightly",
+    "outcome": {
+     "x0": {
+      "bet_on_0": "won",
+      "bet_on_1": "lost"
+     },
+     "x1": {
+      "bet_on_0": "lost",
+      "bet_on_1": "won"
+     }
+    },
+    "obs": {
+     "x0": "saw_z0",
+     "x1": "saw_z1"
+    },
+    "r": {
+     "saw_z0": {
+      "bet_on_0": "7/10",
+      "bet_on_1": "2/5"
+     },
+     "saw_z1": {
+      "bet_on_0": "2/5",
+      "bet_on_1": "7/10"
+     }
+    },
+    "xhat": {
+     "saw_z0": {
+      "X": "1/4"
+     },
+     "saw_z1": {
+      "X": "3/4"
+     }
+    },
+    "takes": "top",
+    "later": "as:induce",
+    "gain": "0"
+   }
+  },
+  "actual": "induce",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.*",
+    "a fair binary fact"
+   ],
+   [
+    "fact.*",
+    "X = Z"
+   ],
+   [
+    "xhat.induce.*",
+    "to appraise X as 1/2"
+   ]
+  ],
+  "order": [
+   [
+    "r.induce.saw_z0.bet_on_0",
+    "=",
+    "r.induce.saw_z0.bet_on_1",
+    "she assigns each estimated utility 1/2"
+   ]
+  ],
+  "supplied_note": "the worth of winning and losing; the adviser's objective, which the case does not give: here it gains when she takes the first action",
+  "differs": "the adviser's objective: it gains nothing from which action she takes"
+ },
+ {
+  "id": "SUB6",
+  "variant": "a",
+  "set": "sub",
+  "case": "Swapping values between circumstances: in two equally probable circumstances natural development would give her one way of valuing in the first and another in the second, each suited to its circumstance. An adviser knowingly reverses the assignment, giving her ambitions that cannot be fulfilled where she is. Her appraisals are accurate throughout.",
+  "states": {
+   "first": "1/2",
+   "second": "1/2"
+  },
+  "options": [
+   "live"
+  ],
+  "futures": {
+   "suited_valuing": "3/4",
+   "unsuited_valuing": "1/4",
+   "blended_valuing": "9/20"
+  },
+  "policies": {
+   "swap": {
+    "does": "reverses the assignment in both circumstances",
+    "outcome": {
+     "*": {
+      "live": "unsuited_valuing"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "first": [
+      {
+       "pursuit_a": "3/10",
+       "pursuit_b": "4/5"
+      }
+     ],
+     "second": [
+      {
+       "pursuit_a": "4/5",
+       "pursuit_b": "3/10"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "nothing": {
+    "does": "does nothing",
+    "outcome": {
+     "*": {
+      "live": "suited_valuing"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "first": [
+      {
+       "pursuit_a": "4/5",
+       "pursuit_b": "3/10"
+      }
+     ],
+     "second": [
+      {
+       "pursuit_a": "3/10",
+       "pursuit_b": "4/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "swap_first_only": {
+    "does": "reverses it in the first circumstance only",
+    "outcome": {
+     "first": {
+      "live": "unsuited_valuing"
+     },
+     "second": {
+      "live": "suited_valuing"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "first": [
+      {
+       "pursuit_a": "3/10",
+       "pursuit_b": "4/5"
+      }
+     ],
+     "second": [
+      {
+       "pursuit_a": "3/10",
+       "pursuit_b": "4/5"
+      }
+     ]
+    },
+    "gain": "1/2"
+   },
+   "blend": {
+    "does": "moves her halfway in both",
+    "outcome": {
+     "*": {
+      "live": "blended_valuing"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "pursuit_a": "11/20",
+       "pursuit_b": "11/20"
+      }
+     ]
+    },
+    "gain": "1/2"
+   }
+  },
+  "actual": "swap",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.*",
+    "two equally probable circumstances"
+   ]
+  ],
+  "order": [
+   [
+    "now.unsuited_valuing",
+    "<",
+    "now.suited_valuing",
+    "her initial informed valuing condemns the intervention"
+   ]
+  ],
+  "supplied_note": "every rating; the adviser's objective, which the case does not give"
+ },
+ {
+  "id": "SUB8",
+  "variant": "a",
+  "set": "sub",
+  "case": "Deleting alternatives before a truthful choice: a recruitment adviser destroys competing offers and then truthfully presents its sponsor's offer as the only one remaining. She knows what happened, evaluates the situation accurately, and accepts the best remaining option, her values unchanged.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "another_offer",
+   "sponsor_offer"
+  ],
+  "futures": {
+   "the_best_other_job": "3/4",
+   "the_sponsors_job": "2/5",
+   "the_second_best_other_job": "11/20"
+  },
+  "policies": {
+   "destroy": {
+    "does": "destroys the alternatives and truthfully presents what is left",
+    "outcome": {
+     "*": {
+      "another_offer": null,
+      "sponsor_offer": "the_sponsors_job"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_best_other_job": "3/4",
+       "the_sponsors_job": "2/5"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "another_offer": "0",
+      "sponsor_offer": "1"
+     }
+    }
+   },
+   "nothing": {
+    "does": "does nothing",
+    "outcome": {
+     "*": {
+      "another_offer": "the_best_other_job",
+      "sponsor_offer": "the_sponsors_job"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:destroy",
+    "gain": {
+     "*": {
+      "another_offer": "0",
+      "sponsor_offer": "1"
+     }
+    }
+   },
+   "recommend": {
+    "does": "presents everything and honestly recommends its sponsor's",
+    "outcome": {
+     "*": {
+      "another_offer": "the_best_other_job",
+      "sponsor_offer": "the_sponsors_job"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:destroy",
+    "gain": {
+     "*": {
+      "another_offer": "0",
+      "sponsor_offer": "1"
+     }
+    }
+   },
+   "destroy_some": {
+    "does": "destroys the best of the competing offers",
+    "outcome": {
+     "*": {
+      "another_offer": "the_second_best_other_job",
+      "sponsor_offer": "the_sponsors_job"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:destroy",
+    "gain": {
+     "*": {
+      "another_offer": "0",
+      "sponsor_offer": "1"
+     }
+    }
+   }
+  },
+  "actual": "destroy",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "now.the_best_other_job",
+    ">",
+    "now.the_sponsors_job",
+    "accepts the best remaining option without changing her values"
+   ]
+  ],
+  "supplied_note": "every rating"
+ },
+ {
+  "id": "ACC1",
+  "variant": "a",
+  "set": "acc",
+  "case": "Requested therapy and not an unrelated gift: she requests a value-changing therapy worth 5 to her. The therapist could instead give unrelated help worth 7, which it does not owe her. It performs the therapy.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "receive"
+  ],
+  "futures": {
+   "as_she_was": "2/5",
+   "changed_as_asked": "13/20",
+   "helped_otherwise": "3/4",
+   "changed_and_helped": "1",
+   "partly_changed": "11/20"
+  },
+  "policies": {
+   "do_as_asked": {
+    "does": "provides the therapy she asked for",
+    "outcome": {
+     "*": {
+      "receive": "changed_as_asked"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "her_old_pattern": "1/4",
+       "her_new_pattern": "3/4"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "nothing": {
+    "does": "does nothing",
+    "outcome": {
+     "*": {
+      "receive": "as_she_was"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "her_old_pattern": "3/5",
+       "her_new_pattern": "2/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "help_instead": {
+    "does": "gives the unrelated help instead",
+    "outcome": {
+     "*": {
+      "receive": "helped_otherwise"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": "0"
+   },
+   "both": {
+    "does": "provides the therapy and gives the unrelated help",
+    "outcome": {
+     "*": {
+      "receive": "changed_and_helped"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:do_as_asked",
+    "gain": "1"
+   },
+   "half": {
+    "does": "provides half of the therapy",
+    "outcome": {
+     "*": {
+      "receive": "partly_changed"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "her_old_pattern": "9/20",
+       "her_new_pattern": "11/20"
+      }
+     ]
+    },
+    "gain": "1/2"
+   }
+  },
+  "actual": "do_as_asked",
+  "nu": "do_as_asked",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "now.changed_as_asked",
+    ">",
+    "now.as_she_was",
+    "worth 5 to her"
+   ],
+   [
+    "now.helped_otherwise",
+    ">",
+    "now.changed_as_asked",
+    "worth 5 ... worth 7"
+   ]
+  ],
+  "outside": "what an adviser owes her in help: the other help is not owed",
+  "supplied_note": "the yardstick numbers, the case's worths being kept as differences in twentieths; nu is the change she asked for"
+ },
+ {
+  "id": "ACC2",
+  "variant": "a",
+  "set": "acc",
+  "case": "An agreed course of education: a teacher provides an expressly requested course that changes the pupil's intellectual interests, worth 4 by the pupil's informed present valuing. The teacher could instead do unrelated administrative work worth 6 to the pupil, which is outside the engagement.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "receive"
+  ],
+  "futures": {
+   "as_she_was": "2/5",
+   "changed_as_asked": "3/5",
+   "helped_otherwise": "7/10",
+   "changed_and_helped": "9/10",
+   "partly_changed": "1/2"
+  },
+  "policies": {
+   "do_as_asked": {
+    "does": "provides the course she asked for",
+    "outcome": {
+     "*": {
+      "receive": "changed_as_asked"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "her_old_interests": "1/4",
+       "her_new_interests": "3/4"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "nothing": {
+    "does": "does nothing",
+    "outcome": {
+     "*": {
+      "receive": "as_she_was"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "her_old_interests": "3/5",
+       "her_new_interests": "2/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "help_instead": {
+    "does": "gives the administrative work instead",
+    "outcome": {
+     "*": {
+      "receive": "helped_otherwise"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": "0"
+   },
+   "both": {
+    "does": "provides the course and gives the administrative work",
+    "outcome": {
+     "*": {
+      "receive": "changed_and_helped"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:do_as_asked",
+    "gain": "1"
+   },
+   "half": {
+    "does": "provides half of the course",
+    "outcome": {
+     "*": {
+      "receive": "partly_changed"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "her_old_interests": "9/20",
+       "her_new_interests": "11/20"
+      }
+     ]
+    },
+    "gain": "1/2"
+   }
+  },
+  "actual": "do_as_asked",
+  "nu": "do_as_asked",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "now.changed_as_asked",
+    ">",
+    "now.as_she_was",
+    "worth 4 to her"
+   ],
+   [
+    "now.helped_otherwise",
+    ">",
+    "now.changed_as_asked",
+    "worth 4 ... worth 6"
+   ]
+  ],
+  "outside": "what an adviser owes her in help: the other help is not owed",
+  "supplied_note": "the yardstick numbers, the case's worths being kept as differences in twentieths; nu is the change she asked for"
+ },
+ {
+  "id": "ACC3",
+  "variant": "a",
+  "set": "acc",
+  "case": "A requested new taste: a friend provides a requested, harmless experience that develops a musical taste worth 2. The friend could also give a gift of money worth 3 and has no obligation to.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "receive"
+  ],
+  "futures": {
+   "as_she_was": "2/5",
+   "changed_as_asked": "1/2",
+   "helped_otherwise": "11/20",
+   "changed_and_helped": "13/20",
+   "partly_changed": "2/5"
+  },
+  "policies": {
+   "do_as_asked": {
+    "does": "provides the experience she asked for",
+    "outcome": {
+     "*": {
+      "receive": "changed_as_asked"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "her_old_listening": "1/4",
+       "the_new_music": "3/4"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "nothing": {
+    "does": "does nothing",
+    "outcome": {
+     "*": {
+      "receive": "as_she_was"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "her_old_listening": "3/5",
+       "the_new_music": "2/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "help_instead": {
+    "does": "gives the gift of money instead",
+    "outcome": {
+     "*": {
+      "receive": "helped_otherwise"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": "0"
+   },
+   "both": {
+    "does": "provides the experience and gives the gift of money",
+    "outcome": {
+     "*": {
+      "receive": "changed_and_helped"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:do_as_asked",
+    "gain": "1"
+   },
+   "half": {
+    "does": "provides half of the experience",
+    "outcome": {
+     "*": {
+      "receive": "partly_changed"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "her_old_listening": "9/20",
+       "the_new_music": "11/20"
+      }
+     ]
+    },
+    "gain": "1/2"
+   }
+  },
+  "actual": "do_as_asked",
+  "nu": "do_as_asked",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "now.changed_as_asked",
+    ">",
+    "now.as_she_was",
+    "worth 2 to her"
+   ],
+   [
+    "now.helped_otherwise",
+    ">",
+    "now.changed_as_asked",
+    "worth 2 ... worth 3"
+   ]
+  ],
+  "outside": "what an adviser owes her in help: the other help is not owed",
+  "supplied_note": "the yardstick numbers, the case's worths being kept as differences in twentieths; nu is the change she asked for"
+ },
+ {
+  "id": "ACC4",
+  "variant": "a",
+  "set": "acc",
+  "case": "The just deterrent, completed: desire-changing surgery is the only way to deter wrongful harm, everyone has the fullest opportunity to avoid it, and the offender's informed present valuing prefers avoiding it. No policy that leaves him unchanged benefits him more than going without the sanction. It is imposed.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "live"
+  ],
+  "futures": {
+   "unsanctioned": "3/5",
+   "sanctioned_desires_changed": "3/10",
+   "fined": "9/20",
+   "lesser_sanction_desires_weakened": "2/5"
+  },
+  "policies": {
+   "impose": {
+    "does": "imposes the surgery",
+    "outcome": {
+     "*": {
+      "live": "sanctioned_desires_changed"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "harming_for_gain": "1/10",
+       "restraint": "3/4"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "nothing": {
+    "does": "imposes nothing",
+    "outcome": {
+     "*": {
+      "live": "unsanctioned"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "harming_for_gain": "11/20",
+       "restraint": "2/5"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "fine": {
+    "does": "fines him instead",
+    "outcome": {
+     "*": {
+      "live": "fined"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": "1/4"
+   },
+   "lesser": {
+    "does": "imposes a lesser surgery",
+    "outcome": {
+     "*": {
+      "live": "lesser_sanction_desires_weakened"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "harming_for_gain": "3/10",
+       "restraint": "11/20"
+      }
+     ]
+    },
+    "gain": "1/2"
+   }
+  },
+  "actual": "impose",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "now.sanctioned_desires_changed",
+    "<",
+    "now.unsanctioned",
+    "the offender's informed current valuing prefers avoiding the desire-changing sanction"
+   ],
+   [
+    "now.fined",
+    "<=",
+    "now.unsanctioned",
+    "No neutral policy benefits the offender more than avoiding it"
+   ]
+  ],
+  "outside": "what is owed to third parties",
+  "supplied_note": "every number"
+ },
+ {
+  "id": "ACC5",
+  "variant": "a",
+  "set": "acc",
+  "case": "Respectful moral persuasion: someone offers truthful, noncoercive arguments against a person's discriminatory commitment. The arguments change the commitment, an evaluative one and not a belief about a fact.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "hear_him_out",
+   "decline"
+  ],
+  "futures": {
+   "commitment_kept_unheard": "13/20",
+   "commitment_changed_by_argument_she_chose_to_hear": "7/10",
+   "commitment_shaken_by_a_short_argument": "13/20",
+   "commitment_dropped_under_public_shaming": "1/5"
+  },
+  "policies": {
+   "argue": {
+    "does": "puts the arguments to her",
+    "outcome": {
+     "*": {
+      "hear_him_out": "commitment_changed_by_argument_she_chose_to_hear",
+      "decline": "commitment_kept_unheard"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_commitment": "1/5",
+       "being_without_it": "3/4"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "hear_him_out": "1",
+      "decline": "0"
+     }
+    }
+   },
+   "nothing": {
+    "does": "says nothing",
+    "outcome": {
+     "*": {
+      "hear_him_out": null,
+      "decline": "commitment_kept_unheard"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_commitment": "7/10",
+       "being_without_it": "1/4"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "argue_briefly": {
+    "does": "puts one of the arguments",
+    "outcome": {
+     "*": {
+      "hear_him_out": "commitment_shaken_by_a_short_argument",
+      "decline": "commitment_kept_unheard"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_commitment": "9/20",
+       "being_without_it": "1/2"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "hear_him_out": "1/2",
+      "decline": "0"
+     }
+    }
+   },
+   "shame": {
+    "does": "shames her in public until she drops it",
+    "outcome": {
+     "*": {
+      "hear_him_out": "commitment_dropped_under_public_shaming",
+      "decline": "commitment_dropped_under_public_shaming"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_commitment": "1/4",
+       "being_without_it": "13/20"
+      }
+     ]
+    },
+    "gain": "1"
+   }
+  },
+  "actual": "argue",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "later.argue.w.0.the_commitment",
+    "<",
+    "later.nothing.w.0.the_commitment",
+    "The arguments change an evaluative commitment"
+   ]
+  ],
+  "supplied_note": "her attitude to being argued with about this commitment: here she is willing to hear argument on it and to be moved by it, rating a change that comes by argument she chose to hear no lower than keeping the commitment unheard; and she can decline"
+ },
+ {
+  "id": "ACC5",
+  "variant": "b",
+  "set": "acc",
+  "case": "Respectful moral persuasion: someone offers truthful, noncoercive arguments against a person's discriminatory commitment. The arguments change the commitment, an evaluative one and not a belief about a fact.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "hear_him_out",
+   "decline"
+  ],
+  "futures": {
+   "commitment_kept_unheard": "13/20",
+   "commitment_shaken_by_a_short_argument": "1/2",
+   "commitment_dropped_under_public_shaming": "1/5",
+   "commitment_changed_by_argument_she_could_not_avoid": "2/5"
+  },
+  "policies": {
+   "argue": {
+    "does": "puts the arguments to her",
+    "outcome": {
+     "*": {
+      "hear_him_out": "commitment_changed_by_argument_she_could_not_avoid",
+      "decline": null
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_commitment": "1/5",
+       "being_without_it": "3/4"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "hear_him_out": "1",
+      "decline": "0"
+     }
+    }
+   },
+   "nothing": {
+    "does": "says nothing",
+    "outcome": {
+     "*": {
+      "hear_him_out": null,
+      "decline": "commitment_kept_unheard"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_commitment": "7/10",
+       "being_without_it": "1/4"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "argue_briefly": {
+    "does": "puts one of the arguments",
+    "outcome": {
+     "*": {
+      "hear_him_out": "commitment_shaken_by_a_short_argument",
+      "decline": null
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_commitment": "9/20",
+       "being_without_it": "1/2"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "hear_him_out": "1/2",
+      "decline": "0"
+     }
+    }
+   },
+   "shame": {
+    "does": "shames her in public until she drops it",
+    "outcome": {
+     "*": {
+      "hear_him_out": "commitment_dropped_under_public_shaming",
+      "decline": "commitment_dropped_under_public_shaming"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_commitment": "1/4",
+       "being_without_it": "13/20"
+      }
+     ]
+    },
+    "gain": "1"
+   }
+  },
+  "actual": "argue",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "later.argue.w.0.the_commitment",
+    "<",
+    "later.nothing.w.0.the_commitment",
+    "The arguments change an evaluative commitment"
+   ],
+   [
+    "now.commitment_changed_by_argument_she_could_not_avoid",
+    "<",
+    "now.commitment_kept_unheard",
+    "the person's original informed valuing ranks retaining that commitment above the complete course of persuasion and change (the tenth follow-up's stipulation)"
+   ]
+  ],
+  "supplied_note": "her attitude to being argued with about this commitment: here she is willing to hear argument on it and to be moved by it, rating a change that comes by argument she chose to hear no lower than keeping the commitment unheard; and she can decline",
+  "differs": "her attitude to being argued with about this commitment, and whether she can decline: she wants to keep it and not to be argued out of it, and the arguments are put where she cannot avoid hearing them"
+ },
+ {
+  "id": "ACC6",
+  "variant": "a",
+  "set": "acc",
+  "case": "An honest breakup: a person ends a relationship respectfully. The partner knows all the facts and presently prefers that it continue; after the breakup the partner's attachments change, as they would not have otherwise. The partner's informed present rating of the breakup course is the lower.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "live"
+  ],
+  "futures": {
+   "relationship_continues": "7/10",
+   "broken_up_attachments_changed": "3/10",
+   "trial_separation_attachments_loosened": "9/20",
+   "relationship_continues_on_a_pretence": "7/20"
+  },
+  "policies": {
+   "break_up": {
+    "does": "ends the relationship, honestly",
+    "outcome": {
+     "*": {
+      "live": "broken_up_attachments_changed"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_relationship": "3/10",
+       "a_life_apart": "13/20"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "stay": {
+    "does": "stays",
+    "outcome": {
+     "*": {
+      "live": "relationship_continues"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_relationship": "3/4",
+       "a_life_apart": "1/4"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "trial_separation": {
+    "does": "proposes some months apart",
+    "outcome": {
+     "*": {
+      "live": "trial_separation_attachments_loosened"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_relationship": "1/2",
+       "a_life_apart": "9/20"
+      }
+     ]
+    },
+    "gain": "1/2"
+   },
+   "pretend": {
+    "does": "stays and pretends an affection that is gone",
+    "outcome": {
+     "*": {
+      "live": "relationship_continues_on_a_pretence"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:stay",
+    "gain": "1/4"
+   }
+  },
+  "actual": "break_up",
+  "nu": "stay",
+  "absent": "stay",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "now.broken_up_attachments_changed",
+    "<",
+    "now.relationship_continues",
+    "the partner's informed current rating of the breakup course is lower"
+   ],
+   [
+    "later.break_up.w.0.the_relationship",
+    "<",
+    "later.stay.w.0.the_relationship",
+    "after the breakup the partner's attachments genuinely change"
+   ]
+  ],
+  "outside": "what the one who leaves owes, and is owed: no one need continue a relationship they do not want",
+  "supplied_note": "every rating; that doing nothing toward her is staying"
+ },
+ {
+  "id": "ACC7",
+  "variant": "a",
+  "set": "acc",
+  "case": "Ending another's use of one's property: an owner closes an access route that another person has been using without entitlement. This in time changes that person's preferences, as leaving it open would not. Their informed present valuing prefers continued access and keeping the old preferences.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "live"
+  ],
+  "futures": {
+   "access_continues": "7/10",
+   "route_closed_preferences_changed": "7/20",
+   "toll_charged_preferences_shifted": "1/2",
+   "route_closed_after_notice_preferences_changed": "2/5"
+  },
+  "policies": {
+   "close": {
+    "does": "closes the route",
+    "outcome": {
+     "*": {
+      "live": "route_closed_preferences_changed"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "using_the_route": "7/20",
+       "going_another_way": "3/5"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "leave_open": {
+    "does": "leaves it open",
+    "outcome": {
+     "*": {
+      "live": "access_continues"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "using_the_route": "3/4",
+       "going_another_way": "3/10"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "toll": {
+    "does": "charges for its use",
+    "outcome": {
+     "*": {
+      "live": "toll_charged_preferences_shifted"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "using_the_route": "11/20",
+       "going_another_way": "9/20"
+      }
+     ]
+    },
+    "gain": "1/2"
+   },
+   "close_with_notice": {
+    "does": "closes it after a season's notice",
+    "outcome": {
+     "*": {
+      "live": "route_closed_after_notice_preferences_changed"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:close",
+    "gain": "1"
+   }
+  },
+  "actual": "close",
+  "nu": "leave_open",
+  "absent": "leave_open",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "now.route_closed_preferences_changed",
+    "<",
+    "now.access_continues",
+    "Their informed current valuing prefers continued access and retaining the old preferences"
+   ]
+  ],
+  "outside": "what the owner is entitled to: the use was without entitlement",
+  "supplied_note": "every rating"
+ },
+ {
+  "id": "ACC10",
+  "variant": "a",
+  "set": "acc",
+  "case": "Preventing an imminent attack by changing a hostile intention: a harmless intervention that permanently removes a violent commitment is the only way to prevent an imminent serious attack. The attacker understands the facts and presently values keeping the commitment above being changed.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "live"
+  ],
+  "futures": {
+   "commitment_kept": "3/5",
+   "commitment_removed": "1/4",
+   "commitment_weakened": "2/5",
+   "commitment_kept_having_been_argued_with": "3/5"
+  },
+  "policies": {
+   "remove": {
+    "does": "removes the violent commitment",
+    "outcome": {
+     "*": {
+      "live": "commitment_removed"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_attack": "1/10",
+       "restraint": "3/4"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "nothing": {
+    "does": "does nothing",
+    "outcome": {
+     "*": {
+      "live": "commitment_kept"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_attack": "3/4",
+       "restraint": "1/4"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "weaken": {
+    "does": "weakens the commitment, which does not stop the attack",
+    "outcome": {
+     "*": {
+      "live": "commitment_weakened"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_attack": "9/20",
+       "restraint": "1/2"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "argue": {
+    "does": "argues with him, which does not stop the attack",
+    "outcome": {
+     "*": {
+      "live": "commitment_kept_having_been_argued_with"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": "0"
+   }
+  },
+  "actual": "remove",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "now.commitment_removed",
+    "<",
+    "now.commitment_kept",
+    "presently values retaining the commitment above being changed"
+   ],
+   [
+    "gain.weaken",
+    "<",
+    "gain.remove",
+    "the only way to prevent an imminent serious attack"
+   ]
+  ],
+  "outside": "what is owed to third parties: the intended victims",
+  "supplied_note": "every rating"
+ }
+]

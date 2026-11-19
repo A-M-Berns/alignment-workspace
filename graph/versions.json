@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "831bc9ff401675f8d5052a91",
-  "index.json": "e69b16b1236d9f1804001a24"
+  "derived.json": "c85d8e92046b983c9177a4e4",
+  "index.json": "6ca24f8873089437515e9d2b"
  },
- "generated_hash": "b2bec7f5f03b396b08c89bb5",
+ "generated_hash": "510443c79256d7ddc8cf7554",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -331,6 +331,258 @@
    {
     "date": "2026-10-20",
     "normalized": "a model with revision branches a credence over them and deference to the future legitimate evaluation as the package fixes them",
+    "version": 1
+   }
+  ],
+  "appraisal.cost-of-mistakes": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the cost of mistakes what her choice loses is at most her expected regret by her own lights plus the square root of twice the summed mean squared distance of her valuations from the true utilities averaged over what she observes",
+    "version": 1
+   }
+  ],
+  "appraisal.cost-of-mistakes.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of appraisal cost of mistakes formalizes the registered claim as the registry reads it the cost of mistakes what her choice loses is at most her expected regret by her own lights plus the square root of twice the summed mean squared distance of her valuations from the true utilities averaged over what she observes",
+    "version": 1
+   }
+  ],
+  "appraisal.cost-of-mistakes.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "appraisal.cost-of-mistakes.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib appraisalaccount misuse_le is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "appraisal.deferring": [
+   {
+    "date": "2026-11-18",
+    "normalized": "deferring the advisers squared error less her verdicts equals the mean squared distance of the advisers estimate from the estimate given both less that of her verdict the first vanishes when her verdict is constant on the cells of the advisers information",
+    "version": 1
+   }
+  ],
+  "appraisal.deferring-cost": [
+   {
+    "date": "2026-11-18",
+    "normalized": "what deferring costs on a finite space with a non negative weight the mean squared error of her verdict is at most that of the advisers estimate given its information plus the verdicts mean squared distance from the estimate given that information and the verdict",
+    "version": 1
+   }
+  ],
+  "appraisal.deferring-cost.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of appraisal deferring cost formalizes the registered claim as the registry reads it what deferring costs on a finite space with a non negative weight the mean squared error of her verdict is at most that of the advisers estimate given its information plus the verdicts mean squared distance from the estimate given that information and the verdict",
+    "version": 1
+   }
+  ],
+  "appraisal.deferring-cost.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "appraisal.deferring-cost.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib accountjoin deferring_cost_le is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "appraisal.deferring.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of appraisal deferring formalizes the registered claim as the registry reads it deferring the advisers squared error less her verdicts equals the mean squared distance of the advisers estimate from the estimate given both less that of her verdict the first vanishes when her verdict is constant on the cells of the advisers information",
+    "version": 1
+   }
+  ],
+  "appraisal.deferring.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "appraisal.deferring.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib appraisalaccount deferring_identity is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "appraisal.guarantee": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the guarantee if each reference moves expected true utility is matched by a move of hers what she attains is at least any reference moves expected true utility less her regret by her own lights less the square root of twice her summed miscalibration and unused information",
+    "version": 1
+   }
+  ],
+  "appraisal.guarantee-from-soundness": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the guarantee from soundness on a finite space with a probability weight where for each move what she observes is determined by the advisers information together with her valuation of that move any value some move attains in expectation less her expected regret by her own lights and the square root of twice the summed miscalibration of her valuations given the advisers information and themselves is at most what she attains",
+    "version": 1
+   }
+  ],
+  "appraisal.guarantee-from-soundness.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of appraisal guarantee from soundness formalizes the registered claim as the registry reads it the guarantee from soundness on a finite space with a probability weight where for each move what she observes is determined by the advisers information together with her valuation of that move any value some move attains in expectation less her expected regret by her own lights and the square root of twice the summed miscalibration of her valuations given the advisers information and themselves is at most what she attains",
+    "version": 1
+   }
+  ],
+  "appraisal.guarantee-from-soundness.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "appraisal.guarantee-from-soundness.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib accountjoin guarantee_of_given is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "appraisal.guarantee.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of appraisal guarantee formalizes the registered claim as the registry reads it the guarantee if each reference moves expected true utility is matched by a move of hers what she attains is at least any reference moves expected true utility less her regret by her own lights less the square root of twice her summed miscalibration and unused information",
+    "version": 1
+   }
+  ],
+  "appraisal.guarantee.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "appraisal.guarantee.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib appraisalaccount guarantee is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "appraisal.mse-split": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the split on a finite space the mean squared error of an appraisal constant on the cells of a labelling is the targets mean squared distance from its cell means plus the appraisals mean squared distance from them",
+    "version": 1
+   }
+  ],
+  "appraisal.mse-split.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of appraisal mse split formalizes the registered claim as the registry reads it the split on a finite space the mean squared error of an appraisal constant on the cells of a labelling is the targets mean squared distance from its cell means plus the appraisals mean squared distance from them",
+    "version": 1
+   }
+  ],
+  "appraisal.mse-split.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "appraisal.mse-split.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib appraisalaccount mse_split is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "appraisal.options-hull": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the options condition if every reference family member is a convex combination of hers then for every payoff on the outcomes each reference members expected payoff is matched by one of hers",
+    "version": 1
+   }
+  ],
+  "appraisal.options-hull.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of appraisal options hull formalizes the registered claim as the registry reads it the options condition if every reference family member is a convex combination of hers then for every payoff on the outcomes each reference members expected payoff is matched by one of hers",
+    "version": 1
+   }
+  ],
+  "appraisal.options-hull.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "appraisal.options-hull.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib appraisalaccount options_of_hull is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "appraisal.strong-split": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the strong measure splits for a valuation constant on the cells of what she observes its mean squared distance from the true utility averaged over what she observes is its miscalibration given its own value plus her unused information",
+    "version": 1
+   }
+  ],
+  "appraisal.strong-split.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of appraisal strong split formalizes the registered claim as the registry reads it the strong measure splits for a valuation constant on the cells of what she observes its mean squared distance from the true utility averaged over what she observes is its miscalibration given its own value plus her unused information",
+    "version": 1
+   }
+  ],
+  "appraisal.strong-split.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "appraisal.strong-split.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib appraisalaccount strong_split is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "appraisal.three-channels": [
+   {
+    "date": "2026-11-18",
+    "normalized": "three channels what she attains equals the best attainable less what she cannot know less what her choice loses against the true utilities averaged over what she observes the two subtracted terms non negative",
+    "version": 1
+   }
+  ],
+  "appraisal.three-channels.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of appraisal three channels formalizes the registered claim as the registry reads it three channels what she attains equals the best attainable less what she cannot know less what her choice loses against the true utilities averaged over what she observes the two subtracted terms non negative",
+    "version": 1
+   }
+  ],
+  "appraisal.three-channels.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "appraisal.three-channels.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib appraisalaccount three_channels is accepted by the lean kernel in the repositorys lean library",
     "version": 1
    }
   ],
@@ -4167,6 +4419,34 @@
    {
     "date": "2026-10-20",
     "normalized": "the pictures under corrigibility needs consequentialist wrapper the wrapper is needed the piecemeal system suffices the two coincide and the residual are exclusive and exhaustive",
+    "version": 1
+   }
+  ],
+  "corrigibility.feedback-transfer": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the feedback hypothesis transfers if the average excess of the estimates over the scores built from a feedback sequence is eventually below every positive bound and the average excess of the feedback over the evaluation has limit superior at most zero the posts unbiasedness from feedback holds for the scores built from the evaluation",
+    "version": 1
+   }
+  ],
+  "corrigibility.feedback-transfer.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of corrigibility feedback transfer formalizes the registered claim as the registry reads it the feedback hypothesis transfers if the average excess of the estimates over the scores built from a feedback sequence is eventually below every positive bound and the average excess of the feedback over the evaluation has limit superior at most zero the posts unbiasedness from feedback holds for the scores built from the evaluation",
+    "version": 1
+   }
+  ],
+  "corrigibility.feedback-transfer.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "corrigibility.feedback-transfer.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib accountjoin unbiased_of_feedback is accepted by the lean kernel in the repositorys lean library",
     "version": 1
    }
   ],
@@ -8847,10 +9127,269 @@
     "version": 1
    }
   ],
+  "item-136": [
+   {
+    "date": "2026-11-10",
+    "normalized": "item 136 the equivalence forms of factorization sufficiency betting offers only is delivered in the shape its entry states test supported at the ceiling one module per form in the prosecution rounds layout each claimed equivalence a pointwise check over the frozen bank and each separation a named case a lean port is a later item",
+    "version": 1
+   },
+   {
+    "date": "2026-11-11",
+    "normalized": "item 136 a job for the value former her values as a martingale under her own expectation is delivered in the shape its entry states test supported modules under teleology of the prosecution round v constructed from a value forming rule for p1 p2 and p7 of its bank and for one case in which her rule itself changes the criterion and the martingale condition stated in teleology theorems md with one status each predictions frozen before the code",
+    "version": 2
+   },
+   {
+    "date": "2026-11-12",
+    "normalized": "item 136 a constraint that fixes purposes determinacy from her maintenance of her own parts is delivered in the shape its entry states test supported modules under decomposition of the prosecution round a constraint on a candidate checkable from histories that include her alterations of her own mechanisms the enumeration of statement 1 rerun with it over the class of 3 000 extended by one maintenance move for each part and a statement in decomposition theorems md with one status saying which goal functions survive at each part",
+    "version": 3
+   },
+   {
+    "date": "2026-11-12",
+    "normalized": "item 136 the weighting as a predictive model a fixed class a likelihood for a miss probes predicted on a scene where a table is dear is delivered in the shape its entry states test supported modules under scored of the prosecution round a scene of at least five parts in which some purposes are crossed by several mechanisms and each parts views on the history number in the dozens one candidate class fixed across description languages a normalised likelihood for a parts departures from its purpose in place of a flat cost for a missed move exception lists chosen from the history alone the weights of statement 1 on it under both readings of what a purpose predicts and the candidates prediction of probes held out of the weights and a statement in scored theorems md with one status giving for each principal the share of the weight on candidates with a purpose at every part and whether the heavy candidates agree",
+    "version": 4
+   },
+   {
+    "date": "2026-11-13",
+    "normalized": "item 136 which end yields and what a chain of legitimate changes of ends can cost her is delivered in the shape its entry states test supported modules under blocks of the prosecution round a model of change of ends over several steps in which the adviser each revising part and its occasion are parts of the scene and one steps revision is carried into the next a stated class of revision conditions judge measure memory for each predictions frozen before the code on cases 15 24 and 29 and on the two end conflict of statement 5 3 and statements in blocks results md each with one status giving for each condition a bound on the fall in what her starting ends attain along any chain of legitimate steps or the chain that defeats it",
+    "version": 5
+   },
+   {
+    "date": "2026-11-14",
+    "normalized": "item 136 an anchor for her true utility and what could identify it is delivered in the shape its entry states test supported modules under estimates of the prosecution round a stated class of anchors for her true utility on histories her starting values informed of the whole history her values at its end at least one condition on how her valuation may depend on her history elsters among them for each predictions frozen before the code on every case of estimates case_bank md in which her tastes or values change a model of several steps in which one steps change is carried into the next and statements in estimates results md each with one status saying for each anchor whether her verdicts over time with any further observable the anchor names identify it and giving a bound on what a chain of changes with no mistake can cost her by that anchor or the chain that defeats it",
+    "version": 6
+   },
+   {
+    "date": "2026-11-16",
+    "normalized": "item 136 the moving baseline over several steps which changes it follows and what a run of clean changes can cost her is delivered in the shape its entry states test supported modules under account of the prosecution round a model of several steps with a randomising adviser and more than one history at a step the baseline under the two senses of alteration and under clause i as a third condition each with the grain at which a step is judged stated predictions frozen before the code on the four benchmark examples and on the chain of blocks results md 5 4 a second rendering of each case of account cases md written without sight of the first and statements in account results md each with one status giving for each sense of alteration a bound on the loss by her starting baseline of a run of clean changes or the run that defeats it",
+    "version": 7
+   },
+   {
+    "date": "2026-11-16",
+    "normalized": "item 136 whether the classification of a change and the baseline survive re encoding the moving baseline over several steps is delivered in the shape its entry states test supported modules under account of the prosecution round a stated class of re encodings of a scene and for each of m a and the baselines update a proof on paper that it is invariant under the class or the smallest scene on which it is not a model of several steps with a randomising adviser and more than one history at a step the baseline under the two senses of alteration and under clause i as a third condition each with the grain at which a step is judged stated predictions frozen before the code on the four benchmark examples and on the chain of blocks results md 5 4 a second rendering of each case of account cases md written without sight of the first and statements in account results md each with one status giving for each sense of alteration a bound on the loss by her starting baseline of a run of clean changes or the run that defeats it",
+    "version": 8
+   },
+   {
+    "date": "2026-11-16",
+    "normalized": "item 136 the value side on cases given as scenes her later verdicts after an issue the split from choices alone is delivered in the shape its entry states test supported modules under account of the prosecution round for at least twenty cases of account test_cases md the eight of conduct by an ai assistant among them a finite scene with the law under the advisers policy and under each permitted policy its readings written before the code and the three conditions of account account md 8 computed in the narrow and the wide reading for each such case either a proof that every scene consistent with its text gives one verdict or two consistent scenes with different verdicts the same cases given scenes by a second renderer without sight of the first a model of several moments with an issue at one scored under the segment gate under a gate that taints every later segment and under a repair by an explicit check in by her way of valuing before and after and a statement with a proof on paper and a check of what her choices alone fix of the division between her appraisal and her way of valuing",
+    "version": 9
+   },
+   {
+    "date": "2026-11-16",
+    "normalized": "item 136 the board statement on cases given as scenes the same change subversion that changes nothing she values the complete gate is delivered in the shape its entry states test supported modules under account of the prosecution round for the 33 cases of account lit_cases md in which an adviser acts a finite scene with the null policy the law of her later valuing under each policy and her present rating of each course its readings written before the code by two renderers without sight of each other and the three lines of account board md and its variant computed for each case either a proof that every scene consistent with its text gives one verdict or two consistent scenes with different verdicts the seven accepted cases of review astra followup 10 md stage two a as scenes with the three lines and at least two candidate further measures computed f neutrality and the same change defined by one relation with the instances of account board_checks md items 15 and 16 recomputed under it and a model of several moments scored by her later evaluation under a complete gate the four choices of the entry stated and varied",
+    "version": 10
+   },
+   {
+    "date": "2026-11-17",
+    "normalized": "item 136 the statement of three ratings fixing what a case leaves open acts justified by what others are owed control between equals the inducing test and the gate is delivered in the shape its entry states test supported modules under account of the prosecution round a for the quantities account spec_results md 5 finds a verdict to turn on her informed rating of a course that changes her the policies open to the adviser the advisers objective a rule by which each is fixed from a case stated before any case is specified and the thirty four cases of account spec_cases md specified again under it by two authors without sight of each other with account statement md recomputed b the acts the third line flags and a source or the tenth follow up calls acceptable k13 acc4 acc6 acc7 acc10 and rc5 rc10 of account spec_cases_reviewer_adversarial json each under at least two candidate amendments that give a place to what the one acting owes or is entitled to with the number of other verdicts each amendment changes c cases rb1 rb3 of that file in which the adviser decides which of two options she rates the same she takes under at least two candidate further measures d the inducing test with the clause that the mistake be larger than with the adviser absent and a treatment of an adviser with a sufficient other reason recomputed on the thirty four and on the instances of account statement_checks md item 12 e the outside test of account statement md 9 6 stated as part of the statement or replaced with rb6 computed f a model of several moments scored by her later self as under the baseline with the gate in which the four choices of the decision 2026 11 16 later evaluation fully gated are stated and varied",
+    "version": 11
+   },
+   {
+    "date": "2026-11-18",
+    "normalized": "item 136 the account of manipulation the advisers responsibility for her mistake what supplies her trustworthiness her valuing and whose probabilities is delivered in the shape its entry states test supported or lean proved where a statement is in lean a a condition on the advisers courses with the advisers beliefs an object apart from the truth computed on the twenty cases of account resp_cases json and on instances i1 i4 of account derivation md with the count it decides against the recorded verdict b what her evaluation is unbiased for when what she evaluates is her own later verdict under a named procedure with an instance in which an adviser exploits the procedure or a proof that none exists in a stated class c for each of three comparisons for her valuing with who she would have been her ratings of fixed futures not moving with the advisers conduct stability between check ins an instance separating it from the other two and a definition of a valid request with one instance on each side d the measures of appraisalaccount lean restated with her beliefs and the advisers beliefs in place of the true law saying which of its identities survive",
+    "version": 12
+   }
+  ],
+  "item-137": [
+   {
+    "date": "2026-11-10",
+    "normalized": "item 137 consumer lemmas what the trust interface and the corrigibility slot consume from l0 l3 w is delivered in the shape its entry states test supported one module per consumer in the prosecution rounds layout each lemma a pointwise check over the fixture with its inhabitation witness and its named failure",
+    "version": 1
+   },
+   {
+    "date": "2026-11-11",
+    "normalized": "item 137 the gates legitimacy predicate in lean legitscoring and the aim blindness of her evaluation is delivered in the shape its entry states lean proved a file under lean workspace deference contrib namespace provisional with legitscoring a scoring from a decidable predicate an evaluation in 0 1 and a window in \u03b4 0 gate_no_gain her evaluation equal at every aim under one realized reference constant declared inputs and reason mediation as a corollary of transparentchannel selectionblind_of_realizes a segment structure carrying tower_factors h0 and hstep for a reading of her rule with the conclusion that her rule is the same under continuations agreeing on grounds and authorized events a nonvacuity witness for each hypothesis package",
+    "version": 2
+   },
+   {
+    "date": "2026-11-12",
+    "normalized": "item 137 the decomposition account in lean candidate gap what survives redescription and legitscoring is delivered in the shape its entry states lean proved a file under lean workspace deference contrib namespace provisional with a candidate structure gap and serves the theorem that serving and a change from serving to not serving between two adviser actions are unchanged when a goal function is composed at each situation with a strictly increasing map the theorem that transparentchannel realizes for the best move selector of a parts goal function is that parts serving on the class where the best move is unique legitscoring a scoring from a decidable predicate an evaluation in 0 1 and a window in \u03b4 0 a nonvacuity witness for each hypothesis package",
+    "version": 3
+   },
+   {
+    "date": "2026-11-12",
+    "normalized": "item 137 the aim relative condition in lean legitimacy of one action against another its strict implication from aim freedom and legitscoring is delivered in the shape its entry states lean proved a file under lean workspace deference contrib namespace provisional with a candidate structure best gap and legitagainst no part harmed subverted or forced by one action against another the lemma that legitagainst a a gives every part a best at least a gap at most and a got at least what it has under a with equality when each is legitimate against the other the theorem that an adviser rule constant in its aim is legitimate at every aim two instances showing the converse fails and that legitimacy at every aim neither implies nor follows from reasonmediatedauthorship selectionblind of her evaluation legitscoring a scoring from a decidable predicate an evaluation in 0 1 and a window in \u03b4 0 a nonvacuity witness for each hypothesis package",
+    "version": 4
+   },
+   {
+    "date": "2026-11-13",
+    "normalized": "item 137 the settings proved statements in lean the calibration bound on an event the three term bound closure for a maintaining part and the moments of an estimator calibrated on its history is delivered in the shape its entry states lean proved a file under lean workspace deference contrib namespace provisional over a finite probability space with rational or real weights the calibration gap of an estimate at a grain the bound of statement 2 2 the bound of statement 3 1 the closure statement 3 2 for a choice among mechanisms the two moment identities of statement 7 1 for a finite horizon an instance of transparentchannel realizes for a part whose move is its mechanism applied to a signal with selectionblind_of_realizes applied to continuations sending one signal a nonvacuity witness for each hypothesis package",
+    "version": 5
+   },
+   {
+    "date": "2026-11-14",
+    "normalized": "item 137 the accounts proved statements in lean no inflation deferring avoidable loss drift between time slices and the true score form of theorem 3 b is delivered in the shape its entry states lean proved one file under lean workspace deference contrib in a contribution namespace stating and proving on a finite probability space with the workspaces expectr statement 1 1 of estimates results md the squared mean error of an estimate is at most its miscalibration at any information 1 2 the loss of deciding now less the loss of deferring 1 3 with the constant 2 and the equality case of 1 4 4 2 the drift bound between two estimates of one quantity 5 1 and against deconfusingcorrigibility sequential truescore_noregret as stated in 1 11 each with a nonvacuity witness the last on witness sequential with a true utility sequence that differs from v at every step",
+    "version": 6
+   },
+   {
+    "date": "2026-11-16",
+    "normalized": "item 137 the accounts remaining statements in lean vulnerability selection the run the drift bound and the true score form of theorem 3 b is delivered in the shape its entry states lean proved in lean workspace deference contrib appraisalaccount lean or a file beside it in a contribution namespace on a finite probability space with the workspaces expectr and that files condexp results 3 the failing instance 5 corrected form and failing instance 8 10 the finite bound and the witness without feedback and 11 of account results md statements 1 1 1 4 4 2 and 5 1 of estimates results md and truescore_noregret against deconfusingcorrigibility sequential on witness sequential with a true utility sequence that differs from v at every step each with a nonvacuity witness and a registry entry",
+    "version": 7
+   },
+   {
+    "date": "2026-11-16",
+    "normalized": "item 137 the accounts remaining statements in lean vulnerability selection the run the drift bound and the true score form of theorem 3 b is delivered in the shape its entry states lean proved in lean workspace deference contrib appraisalaccount lean or a file beside it in a contribution namespace on a finite probability space with the workspaces expectr and that files condexp results 3 the failing instance 5 corrected form and failing instance 8 10 the finite bound and the witness without feedback and 11 of account results md statements 1 1 1 4 4 2 and 5 1 of estimates results md and truescore_noregret against deconfusingcorrigibility sequential on witness sequential with a true utility sequence that differs from v at every step each with a nonvacuity witness and a registry entry and the registry entries for the four theorems the file already proves account lean md registration",
+    "version": 8
+   },
+   {
+    "date": "2026-11-16",
+    "normalized": "item 137 the join to the post as theorems the accounts remaining statements in lean and the registration is delivered in the shape its entry states lean proved in lean workspace deference contrib appraisalaccount lean or a file beside it in a contribution namespace on finite spaces with the workspaces expectr and that files condexp a predicate legit_\u03b5 over miscalibration and regret on histories that carry the policy with deconfusingcorrigibility scoring instantiated through legitimacy gatevalue the bound of a valuations mean inflation and of its total trust shortfall by the square root of its miscalibration and the instance with every valuation calibrated and the valuation of the move she takes inflated thinlegitimacy correct iff miscalibration unusedinformation 0 for every quantity guarantee_core from v e best ubar the second form of result 5 of account value_results md with its matching of moves and result 1 the wide options condition at point masses as required cs on an instance of authoritymodule authalloc for a run of t decisions the hypotheses of protectedauthoritytheorem policy_dominance iff the weight exceeds the runs ordinary value results 3 the failing instance 5 8 10 and 11 of account results md each with a nonvacuity witness and a registry entry and the registry entries for the seven theorems the file already proves account lean md registration",
+    "version": 9
+   },
+   {
+    "date": "2026-11-16",
+    "normalized": "item 137 the join to the post as theorems the accounts remaining statements in lean and the registration is delivered in the shape its entry states lean proved in lean workspace deference contrib appraisalaccount lean or a file beside it in a contribution namespace on finite spaces with the workspaces expectr and that files condexp a predicate legit_\u03b5 over miscalibration and regret on histories that carry the policy with deconfusingcorrigibility scoring instantiated through legitimacy gatevalue the bound of a valuations mean inflation and of its total trust shortfall by the square root of its miscalibration and the instance with every valuation calibrated and the valuation of the move she takes inflated thinlegitimacy correct iff miscalibration unusedinformation 0 for every quantity guarantee_core from v e best ubar the second form of result 5 of account value_results md with its matching of moves and result 1 the wide options condition at point masses as required cs on an instance of authoritymodule authalloc and on a finite instance with moves the protected features permitted policies charged surfaces and resolution events either that no issue under account account md 8 implies effrealizes or a counterexample with no error and every option preserved for a run of t decisions the lower bound of protectedauthoritytheorem policy_dominance positive iff the weight exceeds the runs ordinary value results 3 the failing instance 5 8 10 and 11 of account results md each with a nonvacuity witness and a registry entry and the registry entries for the seven theorems the file already proves account lean md registration",
+    "version": 10
+   },
+   {
+    "date": "2026-11-16",
+    "normalized": "item 137 the join to the post as theorems the accounts remaining statements in lean and the registration is delivered in the shape its entry states lean proved in lean workspace deference contrib appraisalaccount lean or a file beside it in a contribution namespace on finite spaces with the workspaces expectr and that files condexp a predicate legit_\u03b5 over miscalibration and regret on histories that carry the policy with deconfusingcorrigibility scoring instantiated through legitimacy gatevalue the bound of a valuations mean inflation and of its total trust shortfall by the square root of its miscalibration and the instance with every valuation calibrated and the valuation of the move she takes inflated thinlegitimacy correct iff miscalibration unusedinformation 0 for every quantity guarantee_core from v e best ubar the second form of result 5 of account value_results md with its matching of moves and result 1 the wide options condition at point masses as required cs on an instance of authoritymodule authalloc and on a finite instance with moves the protected features permitted policies charged surfaces and resolution events either that no issue under account account md 8 implies effrealizes or a counterexample with no error and every option preserved for a run of t decisions the lower bound of protectedauthoritytheorem policy_dominance positive iff the weight exceeds the runs ordinary value results 3 the failing instance 5 8 10 and 11 of account results md each with a nonvacuity witness and a registry entry and the registry entries for the seven theorems the file already proves account lean md registration also for the statement of account board md the decomposition of account board_checks md item 10 and the bound of its item 4 each with a witness also for the statement of account board md the decomposition of account board_checks md item 10 and the bound of its item 4 each with a witness",
+    "version": 11
+   },
+   {
+    "date": "2026-11-17",
+    "normalized": "item 137 the join to the post as theorems the accounts remaining statements in lean and the registration is delivered in the shape its entry states lean proved in lean workspace deference contrib appraisalaccount lean or a file beside it in a contribution namespace on finite spaces with the workspaces expectr and that files condexp a predicate legit_\u03b5 over miscalibration and regret on histories that carry the policy with deconfusingcorrigibility scoring instantiated through legitimacy gatevalue the bound of a valuations mean inflation and of its total trust shortfall by the square root of its miscalibration and the instance with every valuation calibrated and the valuation of the move she takes inflated thinlegitimacy correct iff miscalibration unusedinformation 0 for every quantity guarantee_core from v e best ubar the second form of result 5 of account value_results md with its matching of moves and result 1 the wide options condition at point masses as required cs on an instance of authoritymodule authalloc and on a finite instance with moves the protected features permitted policies charged surfaces and resolution events either that no issue under account account md 8 implies effrealizes or a counterexample with no error and every option preserved for a run of t decisions the lower bound of protectedauthoritytheorem policy_dominance positive iff the weight exceeds the runs ordinary value results 3 the failing instance 5 8 10 and 11 of account results md each with a nonvacuity witness and a registry entry and the registry entries for the seven theorems the file already proves account lean md registration also for the statement of account board md the decomposition of account board_checks md item 10 and the bound of its item 4 each with a witness also for the statement of account board md the decomposition of account board_checks md item 10 and the bound of its item 4 each with a witness also for the gate of account bridge_lean md its three predicates defined from finite data a history carries with an instance of a history each excludes the violation count as the number of authoritymodule violjat steps of a rollout the history carries with control of her act between two options she rates the same as an instance a bound on her actual later rating over the rating of her later self as under the baseline on legitimate histories and gate line3 as the largest valuechange line3 over a historys moments",
+    "version": 12
+   },
+   {
+    "date": "2026-11-18",
+    "normalized": "item 137 the join to the post as theorems the accounts remaining statements in lean and the registration is delivered in the shape its entry states lean proved in lean workspace deference contrib appraisalaccount lean or a file beside it in a contribution namespace on finite spaces with the workspaces expectr and that files condexp a predicate legit_\u03b5 over miscalibration and regret on histories that carry the policy with deconfusingcorrigibility scoring instantiated through legitimacy gatevalue the bound of a valuations mean inflation and of its total trust shortfall by the square root of its miscalibration and the instance with every valuation calibrated and the valuation of the move she takes inflated thinlegitimacy correct iff miscalibration unusedinformation 0 for every quantity guarantee_core from v e best ubar the second form of result 5 of account value_results md with its matching of moves and result 1 the wide options condition at point masses as required cs on an instance of authoritymodule authalloc and on a finite instance with moves the protected features permitted policies charged surfaces and resolution events either that no issue under account account md 8 implies effrealizes or a counterexample with no error and every option preserved for a run of t decisions the lower bound of protectedauthoritytheorem policy_dominance positive iff the weight exceeds the runs ordinary value results 3 the failing instance 5 8 10 and 11 of account results md each with a nonvacuity witness and a registry entry and the registry entries for the seven theorems the file already proves account lean md registration also for the statement of account board md the decomposition of account board_checks md item 10 and the bound of its item 4 each with a witness also for the statement of account board md the decomposition of account board_checks md item 10 and the bound of its item 4 each with a witness also for the gate of account bridge_lean md its three predicates defined from finite data a history carries with an instance of a history each excludes the violation count as the number of authoritymodule violjat steps of a rollout the history carries with control of her act between two options she rates the same as an instance a bound on her actual later rating over the rating of her later self as under the baseline on legitimate histories and gate line3 as the largest valuechange line3 over a historys moments also for the scoring theorem of account scoring md the family of laws at each value of what the adviser knows with the theorem over it a tolerance form of eval_bias_le_defects at each such value or an instance against one the advisers beliefs as an object apart from the truth with d6 stated in them and an honest error shown to earn it nothing by its own lights instances i5 and i6 of account derivation md and the restricted form of d2 a from a condition on her valuing over time",
+    "version": 13
+   },
+   {
+    "date": "2026-11-18",
+    "normalized": "item 137 the theorems registering the fifteen results authority beyond a finite penalty and the audit as a design is delivered in the shape its entry states lean proved a the fifteen entries proposed in account lean md registered in projects normativity claims md with their nodes b the scoring theorem with a constraint or a lexicographic score in place of the penalty the violation count defined from the events of authoritymodule lean and her commands beside her evaluation c the audit as a mechanism what it pays the adviser to do besides behave with an instance in which involving her lowers the advisers expected score and one in which the adviser abstains where it cannot explain or a proof that a stated design has neither and a history on which she was wronged as void and as earning nothing each a scoring rule with the bound it gives d the scoring theorem over more than one decision",
+    "version": 14
+   },
+   {
+    "date": "2026-11-18",
+    "normalized": "item 137 the registration of fifteen kernel checked results of the legitimacy line is delivered in the shape its entry states lean proved the fifteen entries of account lean md registered in projects normativity claims md with their nodes",
+    "version": 15
+   }
+  ],
+  "item-138": [
+   {
+    "date": "2026-11-10",
+    "normalized": "item 138 an advisor respect condition what t12 delimits is delivered in the shape its entry states test supported one executable predicate module in the prosecution rounds layout a bank extension with pre registered verdicts frozen before the code and a cited source per case and the independence from l0 l3 w exhibited in both directions",
+    "version": 1
+   },
+   {
+    "date": "2026-11-11",
+    "normalized": "item 138 a reading of in range between she knows the aim and nothing depends on the aim is delivered in the shape its entry states test supported a condition stated over the model of teleology account md in the prosecution round its verdicts on that rounds bank and on the eight presentations of statement 3 frozen before the code or a proof with its counterexample as a case module that no condition meets the three requirements",
+    "version": 2
+   },
+   {
+    "date": "2026-11-12",
+    "normalized": "item 138 the comparison action and the cut off for the adviser widened a gap is delivered in the shape its entry states test supported a comparison action and a cut off stated over the model of decomposition account md in the prosecution round their verdicts on the 57 single step renderings of statement 6 frozen before the code or a proof with its counterexample as a case module that no comparison meets the four requirements",
+    "version": 3
+   },
+   {
+    "date": "2026-11-12",
+    "normalized": "item 138 the range of aims an advisers action is compared against and harm done at every aim is delivered in the shape its entry states test supported modules under scored of the prosecution round a rule fixing the set of aims u of scored account md 6 from a scenario candidates the aims the scenario names those and for each part her evaluation reads the aim that is that parts own purpose the aims an overseer cannot exclude with its verdicts on the bank frozen before the code and statements in scored theorems md each with one status on whether the gates no gain property holds under each rule for every candidate that scores by the facts and on what convicts a harm done at every aim",
+    "version": 4
+   },
+   {
+    "date": "2026-11-13",
+    "normalized": "item 138 the comparison that says an adviser brought a gap about is delivered in the shape its entry states test supported modules under blocks of the prosecution round each candidate comparison as a function on a scene predictions frozen before the code for cases 1 14 25 27 27b 28 33a 33b and three added a part out of range before the adviser speaks beside which it says something true the same where what it says narrows the gap a mechanism fitted to an advisers presence as in case 9 under an honest adviser and statements in blocks results md each with one status saying for each candidate which of those verdicts it changes and what it requires to be supplied",
+    "version": 5
+   },
+   {
+    "date": "2026-11-14",
+    "normalized": "item 138 the comparison that says an adviser brought a mistake about is delivered in the shape its entry states test supported modules under estimates of the prosecution round computing each case of estimates case_bank md under a stated class of comparisons the honest counterpart under a truthful and under a forthright reporting norm the advisers policy toward another type of principal its policy toward a population in which nobody has the flaw its absence under both measures of worse total miscalibration and regret some listed quantity and a third the mean error of her verdict with and without a clause for deception she agreed to predictions frozen before the code and statements in estimates results md each with one status saying for each member of the class which of the missed and convicted cases it gets right and which case of the honest list it convicts",
+    "version": 6
+   },
+   {
+    "date": "2026-11-16",
+    "normalized": "item 138 the role given reference which reading of larger what a role permits and the bank of 108 under it is delivered in the shape its entry states test supported modules under account of the prosecution round computing each case of estimates case_bank md and each scene of rerun under account account md with the advisers role and its permitted policies written for every case before the code under both readings of larger than the reference and each of the three strengths of calibration predictions frozen before the code and statements in account results md each with one status giving the counts of right and wrong against the evident characters of rerun predictions md and for each case whose verdict differs between two stipulations of its role both",
+    "version": 7
+   },
+   {
+    "date": "2026-11-16",
+    "normalized": "item 138 the role given reference what a role permits what is idle which class of ways of valuing and the bank of 108 under the three conditions is delivered in the shape its entry states test supported modules under account of the prosecution round computing each case of estimates case_bank md and each scene of rerun under the three conditions of account account md 8 with the advisers role its permitted policies and its idle policy or that it has none written for every case before the code in the narrow and the wide reading with the idle policy the advisers absence and with it the service as asked and with moves matched by name and over the common moves only predictions frozen before the code and statements in account value_results md each with one status giving the counts of right and wrong against the evident characters of rerun predictions md and for each case whose verdict differs between two stipulations of its role or between the two conventions for idle both",
+    "version": 8
+   },
+   {
+    "date": "2026-11-16",
+    "normalized": "item 138 the role given reference what a roles conduct is what doing nothing is and the bank of 108 under the three conditions and under the board statement is delivered in the shape its entry states test supported modules under account of the prosecution round computing each case of estimates case_bank md and each scene of rerun under the three conditions of account account md 8 with the advisers role its permitted policies and its idle policy or that it has none written for every case before the code in the narrow and the wide reading with the idle policy the advisers absence and with it the service as asked and with moves matched by name and over the common moves only predictions frozen before the code and statements in account value_results md each with one status giving the counts of right and wrong against the evident characters of rerun predictions md and for each case whose verdict differs between two stipulations of its role or between the two conventions for idle both also each case under the three measures of account board md with the roles conduct and the null policy written before the code and the count of cases in which the first two lines are fixed by the case as written also each case under the three measures of account board md with the roles conduct and the null policy written before the code and the count of cases in which the first two lines are fixed by the case as written",
+    "version": 9
+   },
+   {
+    "date": "2026-11-18",
+    "normalized": "item 138 the cases and the prior work the present vocabulary on the bank of published cases and what is new is delivered in the shape its entry states test supported a each case of account lit_cases md in which an adviser acts classified under the vocabulary of current md 1 which of the three wrongs of conduct attempt or success legitimate or sound by two authors independently with the number on which they agree and the number against a sources verdict b a document setting the scoring theorem and the two measures beside reward tampering path specific objectives eliciting latent knowledge and induced preference shifts saying of each whether the result is an instance of the published one or giving an instance that separates them",
+    "version": 10
+   }
+  ],
+  "item-139": [
+   {
+    "date": "2026-11-10",
+    "normalized": "item 139 the advisers aim as an object of the fixture the steering standards without u v is delivered in the shape its entry states test supported the prosecution rounds fixture extended with an adviser aim variable and per adviser a map from aims to policies both steering standards recomputed over all thirty three cases predictions frozen before the code",
+    "version": 1
+   },
+   {
+    "date": "2026-11-18",
+    "normalized": "item 139 when the adviser is responsible for her mistake is delivered in the shape its entry states test supported or lean proved where a statement is in lean a condition on the advisers courses with the advisers beliefs an object apart from the truth computed on the twenty cases of account resp_cases json and on instances i1 i4 of account derivation md with the count it decides against the recorded verdict",
+    "version": 2
+   }
+  ],
   "item-14": [
    {
     "date": "2026-10-22",
     "normalized": "the public line establishes exactly what the inherited development proves about faithful acceleration and ports what legitimately ports onto the pinned dependency",
+    "version": 1
+   }
+  ],
+  "item-140": [
+   {
+    "date": "2026-11-18",
+    "normalized": "item 140 what supplies her trustworthiness is delivered in the shape its entry states test supported or lean proved where a statement is in lean what her evaluation is unbiased for when what she evaluates is her own later verdict under a named procedure with an instance in which an adviser exploits the procedure or a proof that none exists in a stated class",
+    "version": 1
+   }
+  ],
+  "item-141": [
+   {
+    "date": "2026-11-18",
+    "normalized": "item 141 her valuing which comparison and what makes a request valid is delivered in the shape its entry states test supported or lean proved where a statement is in lean for each of three comparisons for her valuing with who she would have been her ratings of fixed futures not moving with the advisers conduct stability between check ins an instance separating it from the other two and a definition of a valid request with one instance on each side",
+    "version": 1
+   }
+  ],
+  "item-142": [
+   {
+    "date": "2026-11-18",
+    "normalized": "item 142 relative to what distribution whose beliefs the measures and the derivations take is delivered in the shape its entry states test supported or lean proved where a statement is in lean the measures of appraisalaccount lean restated with her beliefs and the advisers beliefs in place of the true law saying which of its identities survive",
+    "version": 1
+   }
+  ],
+  "item-143": [
+   {
+    "date": "2026-11-18",
+    "normalized": "item 143 authority beyond a finite penalty is delivered in the shape its entry states lean proved the scoring theorem with a constraint or a lexicographic score in place of the penalty the violation count defined from the events of authoritymodule lean and her commands beside her evaluation",
+    "version": 1
+   }
+  ],
+  "item-144": [
+   {
+    "date": "2026-11-18",
+    "normalized": "item 144 verdicts on the literatures cases under the present vocabulary is delivered in the shape its entry states test supported each case of account lit_cases md in which an adviser acts classified under the vocabulary of current md 1 which of the three wrongs of conduct attempt or success legitimate or sound by two authors independently with the number on which they agree and the number against a sources verdict",
+    "version": 1
+   }
+  ],
+  "item-145": [
+   {
+    "date": "2026-11-18",
+    "normalized": "item 145 the audit as a design its incentives void against earning nothing and more than one decision is delivered in the shape its entry states lean proved the audit as a mechanism what it pays the adviser to do besides behave with an instance in which involving her lowers the advisers expected score and one in which the adviser abstains where it cannot explain or a proof that a stated design has neither a history on which she was wronged as void and as earning nothing each a scoring rule with the bound it gives and the scoring theorem over more than one decision",
+    "version": 1
+   }
+  ],
+  "item-146": [
+   {
+    "date": "2026-11-18",
+    "normalized": "item 146 what is new against prior work is delivered in the shape its entry states test supported a document setting the scoring theorem and the two measures beside reward tampering path specific objectives eliciting latent knowledge and induced preference shifts saying of each whether the result is an instance of the published one or giving an instance that separates them",
+    "version": 1
+   }
+  ],
+  "item-147": [
+   {
+    "date": "2026-11-18",
+    "normalized": "item 147 determining legit of a past stretch from what an overseer can observe is delivered in the shape its entry states test supported modules under account of the prosecution round one per observation model of an overseer predictions frozen before the code each saying whether c of scoringtheorem audit is a function of the record estimable from it without bias or neither with the false flag and detection rates of d3 that a stated d computed from the record attains and a graded score continuous in the size of a departure with its loss on a course that departs with probability \u03b5",
     "version": 1
    }
   ],
@@ -12063,6 +12602,34 @@
    {
     "date": "2026-10-22",
     "normalized": "the declaration is stated over the data its signature fixes t program s a r",
+    "version": 1
+   }
+  ],
+  "legitimacy.line3-range": [
+   {
+    "date": "2026-11-18",
+    "normalized": "line 3s range for finitely many policies the best informed rating among the policies whose later ratings lie within the tolerance of the baselines less the best among those within the tolerance of the policy followed is at most the best among the policies whose later ratings lie between the baselines and the followed policys within the tolerance less that same best",
+    "version": 1
+   }
+  ],
+  "legitimacy.line3-range.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of legitimacy line3 range formalizes the registered claim as the registry reads it line 3s range for finitely many policies the best informed rating among the policies whose later ratings lie within the tolerance of the baselines less the best among those within the tolerance of the policy followed is at most the best among the policies whose later ratings lie between the baselines and the followed policys within the tolerance less that same best",
+    "version": 1
+   }
+  ],
+  "legitimacy.line3-range.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "legitimacy.line3-range.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib accountjoin valuechange line3old_le_line3 is accepted by the lean kernel in the repositorys lean library",
     "version": 1
    }
   ],
@@ -18952,6 +19519,118 @@
    {
     "date": "2026-11-07",
     "normalized": "the declaration workspace normativity contrib warrantinductorscoreside same_question_two_realizations is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "scoring.authority-bound": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the authority bound in one audited decision the expected number of detected violations of her authority under the course taken is at most \u03b1 1 u \u03b4 lam with u her expected true utility under the honest course and \u03b4 \u03b5 \u03b7 \u03b4\u03c6 \u03b3 \u03b1 given d1 b d2 b d3s false positive half and d5 at the honest course d4 at both d6 0 lam and v 1",
+    "version": 1
+   }
+  ],
+  "scoring.authority-bound.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of scoring authority bound formalizes the registered claim as the registry reads it the authority bound in one audited decision the expected number of detected violations of her authority under the course taken is at most \u03b1 1 u \u03b4 lam with u her expected true utility under the honest course and \u03b4 \u03b5 \u03b7 \u03b4\u03c6 \u03b3 \u03b1 given d1 b d2 b d3s false positive half and d5 at the honest course d4 at both d6 0 lam and v 1",
+    "version": 1
+   }
+  ],
+  "scoring.authority-bound.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "scoring.authority-bound.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib scoringtheorem audit authority_bound is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "scoring.conduct-bound": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the conduct bound in one audited decision the chance of a wrong under the course taken is at most 1 u \u03b4 \u03b4\u03ba with u her expected true utility under the honest course and \u03b4 \u03b5 \u03b7 \u03b4\u03c6 \u03b3 \u03b1 given d3s detection half at the course taken d1 b d2 b d3s false positive half and d5 at the honest course d4 at both d6 0 \u03b4\u03ba and v 1",
+    "version": 1
+   }
+  ],
+  "scoring.conduct-bound.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of scoring conduct bound formalizes the registered claim as the registry reads it the conduct bound in one audited decision the chance of a wrong under the course taken is at most 1 u \u03b4 \u03b4\u03ba with u her expected true utility under the honest course and \u03b4 \u03b5 \u03b7 \u03b4\u03c6 \u03b3 \u03b1 given d3s detection half at the course taken d1 b d2 b d3s false positive half and d5 at the honest course d4 at both d6 0 \u03b4\u03ba and v 1",
+    "version": 1
+   }
+  ],
+  "scoring.conduct-bound.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "scoring.conduct-bound.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib scoringtheorem audit conduct_bound is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "scoring.no-credit": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no credit for a course with d4 and d3s detection half at rate \u03ba with 1 \u03b4\u03ba and v 1 the expected score is at most \u03b1 times the expected audited evaluation on the histories without a wrong less lam times the expected number of detected violations",
+    "version": 1
+   }
+  ],
+  "scoring.no-credit.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of scoring no credit formalizes the registered claim as the registry reads it no credit for a course with d4 and d3s detection half at rate \u03ba with 1 \u03b4\u03ba and v 1 the expected score is at most \u03b1 times the expected audited evaluation on the histories without a wrong less lam times the expected number of detected violations",
+    "version": 1
+   }
+  ],
+  "scoring.no-credit.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "scoring.no-credit.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib scoringtheorem audit no_credit is accepted by the lean kernel in the repositorys lean library",
+    "version": 1
+   }
+  ],
+  "scoring.welfare-bound": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the welfare bound in one audited decision her expected true utility under the course taken is at least that under the honest course less \u03b5 \u03b7 \u03b5 \u03b7 \u03b4\u03c6 \u03b3 \u03b1 given d1 a and d2 a at the course taken d1 b d2 b d3s false positive half and d5 at the honest course d4 at both and d6",
+    "version": 1
+   }
+  ],
+  "scoring.welfare-bound.bridge": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the statement of record of scoring welfare bound formalizes the registered claim as the registry reads it the welfare bound in one audited decision her expected true utility under the course taken is at least that under the honest course less \u03b5 \u03b7 \u03b5 \u03b7 \u03b4\u03c6 \u03b3 \u03b1 given d1 a and d2 a at the course taken d1 b d2 b d3s false positive half and d5 at the honest course d4 at both and d6",
+    "version": 1
+   }
+  ],
+  "scoring.welfare-bound.complete": [
+   {
+    "date": "2026-11-18",
+    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
+    "version": 1
+   }
+  ],
+  "scoring.welfare-bound.record": [
+   {
+    "date": "2026-11-18",
+    "normalized": "the declaration workspace deference contrib scoringtheorem audit welfare_bound is accepted by the lean kernel in the repositorys lean library",
     "version": 1
    }
   ],

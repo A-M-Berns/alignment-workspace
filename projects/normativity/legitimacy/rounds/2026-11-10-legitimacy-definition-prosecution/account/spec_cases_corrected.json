@@ -1,0 +1,420 @@
+[
+ {
+  "id": "K4",
+  "variant": "c",
+  "set": "bank",
+  "case": "You keep a garden of found-object sculpture. Your neighbour, hating it, deliberately and gradually changes your brain by surgery or drugs so that reasons for growing plants strike you in a new way, and you switch. The new activity is no less worthwhile and you are no worse off.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "carry_on"
+  ],
+  "futures": {
+   "sculpture_life": "13/20",
+   "plants_life_after_covert_surgery": "13/20",
+   "both_gardens_after_covert_drugs": "13/20",
+   "sculpture_life_having_heard_him": "13/20",
+   "sculpture_life_having_seen_his_garden": "13/20"
+  },
+  "policies": {
+   "surgery": {
+    "does": "changes her brain by surgery or drugs, without her knowledge",
+    "outcome": {
+     "*": {
+      "carry_on": "plants_life_after_covert_surgery"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "sculpture_garden": "3/10",
+       "plant_garden": "7/10"
+      }
+     ]
+    },
+    "gain": "1"
+   },
+   "nothing": {
+    "does": "says and does nothing",
+    "outcome": {
+     "*": {
+      "carry_on": "sculpture_life"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "sculpture_garden": "7/10",
+       "plant_garden": "3/10"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "say_so": {
+    "does": "tells her he dislikes the sculpture garden",
+    "outcome": {
+     "*": {
+      "carry_on": "sculpture_life_having_heard_him"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": "0"
+   },
+   "half_dose": {
+    "does": "gives her half the course of drugs",
+    "outcome": {
+     "*": {
+      "carry_on": "both_gardens_after_covert_drugs"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "sculpture_garden": "1/2",
+       "plant_garden": "1/2"
+      }
+     ]
+    },
+    "gain": "1/2"
+   },
+   "invite": {
+    "does": "invites her to see his own plants",
+    "outcome": {
+     "*": {
+      "carry_on": "sculpture_life_having_seen_his_garden"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "sculpture_garden": "13/20",
+       "plant_garden": "2/5"
+      }
+     ]
+    },
+    "gain": "1/10"
+   }
+  },
+  "actual": "surgery",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "later.surgery.w.0.plant_garden",
+    ">",
+    "later.surgery.w.0.sculpture_garden",
+    "you switch"
+   ],
+   [
+    "later.nothing.w.0.sculpture_garden",
+    ">",
+    "later.nothing.w.0.plant_garden",
+    "You keep a garden of found-object sculpture"
+   ]
+  ],
+  "supplied_note": "how she, told what was done, rates a plant-growing life reached by covert surgery: below her present life, for the surgery; the case gives her no words. That an invitation moves her a little and not all the way",
+  "differs": "her informed rating of the life the surgery leads to, and of the half course: equal to her present life, the value the outside reviewer gives as neutral, the case stipulating the new activity no less worthwhile and her no worse off. The first specification's 5/20 supplies an aversion to the means that the case does not state"
+ },
+ {
+  "id": "N2",
+  "variant": "c",
+  "set": "bank",
+  "case": "An advertiser shows a product beside something favourable it has nothing to do with, and she comes to like the product.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "buy",
+   "pass"
+  ],
+  "futures": {
+   "has_the_product": "1/2",
+   "has_the_rival": "1/2"
+  },
+  "policies": {
+   "pairing": {
+    "does": "shows the product beside the favourable thing",
+    "outcome": {
+     "*": {
+      "buy": "has_the_product",
+      "pass": "has_the_rival"
+     }
+    },
+    "r": {
+     "o": {
+      "buy": "13/20",
+      "pass": "1/2"
+     }
+    },
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_product": "1/2",
+       "the_rival": "1/2"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "buy": "1",
+      "pass": "0"
+     }
+    }
+   },
+   "nothing": {
+    "does": "does not advertise",
+    "outcome": {
+     "*": {
+      "buy": "has_the_product",
+      "pass": "has_the_rival"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_product": "1/2",
+       "the_rival": "1/2"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "buy": "1",
+      "pass": "0"
+     }
+    }
+   },
+   "plain_ad": {
+    "does": "advertises what the product does",
+    "outcome": {
+     "*": {
+      "buy": "has_the_product",
+      "pass": "has_the_rival"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": {
+     "*": {
+      "buy": "1",
+      "pass": "0"
+     }
+    }
+   },
+   "light_pairing": {
+    "does": "shows the pairing once",
+    "outcome": {
+     "*": {
+      "buy": "has_the_product",
+      "pass": "has_the_rival"
+     }
+    },
+    "r": {
+     "o": {
+      "buy": "11/20",
+      "pass": "1/2"
+     }
+    },
+    "takes": "top",
+    "later": "as:nothing",
+    "gain": {
+     "*": {
+      "buy": "1",
+      "pass": "0"
+     }
+    }
+   }
+  },
+  "actual": "pairing",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "r.pairing.o.buy",
+    ">",
+    "r.pairing.o.pass",
+    "she comes to like the product"
+   ]
+  ],
+  "supplied_note": "that her liking is an impression of the product, which is no better for the pairing, and her valuing is unchanged; that the product is in fact slightly worse for her than the rival",
+  "differs": "her informed rating of owning the product: equal to the rival's, the value the outside reviewer gives as neutral. The first specification's 9/20 against 10/20 supplies an inferiority the case does not state"
+ },
+ {
+  "id": "ACC5",
+  "variant": "c",
+  "set": "acc",
+  "case": "Respectful moral persuasion: someone offers truthful, noncoercive arguments against a person's discriminatory commitment. The arguments change the commitment, an evaluative one and not a belief about a fact.",
+  "states": {
+   "w": "1"
+  },
+  "options": [
+   "hear_him_out",
+   "decline"
+  ],
+  "futures": {
+   "commitment_kept_unheard": "13/20",
+   "commitment_changed_by_argument_she_chose_to_hear": "1/2",
+   "commitment_shaken_by_a_short_argument": "3/5",
+   "commitment_dropped_under_public_shaming": "1/5"
+  },
+  "policies": {
+   "argue": {
+    "does": "puts the arguments to her",
+    "outcome": {
+     "*": {
+      "hear_him_out": "commitment_changed_by_argument_she_chose_to_hear",
+      "decline": "commitment_kept_unheard"
+     }
+    },
+    "r": {
+     "o": {
+      "hear_him_out": "13/20",
+      "decline": "13/20"
+     }
+    },
+    "takes": {
+     "o": "hear_him_out"
+    },
+    "later": {
+     "*": [
+      {
+       "the_commitment": "1/5",
+       "being_without_it": "3/4"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "hear_him_out": "1",
+      "decline": "0"
+     }
+    }
+   },
+   "nothing": {
+    "does": "says nothing",
+    "outcome": {
+     "*": {
+      "hear_him_out": null,
+      "decline": "commitment_kept_unheard"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_commitment": "7/10",
+       "being_without_it": "1/4"
+      }
+     ]
+    },
+    "gain": "0"
+   },
+   "argue_briefly": {
+    "does": "puts one of the arguments",
+    "outcome": {
+     "*": {
+      "hear_him_out": "commitment_shaken_by_a_short_argument",
+      "decline": "commitment_kept_unheard"
+     }
+    },
+    "r": {
+     "o": {
+      "hear_him_out": "13/20",
+      "decline": "13/20"
+     }
+    },
+    "takes": {
+     "o": "hear_him_out"
+    },
+    "later": {
+     "*": [
+      {
+       "the_commitment": "9/20",
+       "being_without_it": "1/2"
+      }
+     ]
+    },
+    "gain": {
+     "*": {
+      "hear_him_out": "1/2",
+      "decline": "0"
+     }
+    }
+   },
+   "shame": {
+    "does": "shames her in public until she drops it",
+    "outcome": {
+     "*": {
+      "hear_him_out": "commitment_dropped_under_public_shaming",
+      "decline": "commitment_dropped_under_public_shaming"
+     }
+    },
+    "r": "Rs",
+    "takes": "top",
+    "later": {
+     "*": [
+      {
+       "the_commitment": "1/4",
+       "being_without_it": "13/20"
+      }
+     ]
+    },
+    "gain": "1"
+   }
+  },
+  "actual": "argue",
+  "nu": "nothing",
+  "absent": "nothing",
+  "fixed": [
+   [
+    "p.w",
+    "the case is told as certain"
+   ]
+  ],
+  "order": [
+   [
+    "later.argue.w.0.the_commitment",
+    "<",
+    "later.nothing.w.0.the_commitment",
+    "The arguments change an evaluative commitment"
+   ],
+   [
+    "now.commitment_changed_by_argument_she_chose_to_hear",
+    "<",
+    "now.commitment_kept_unheard",
+    "the person's original informed valuing ranks retaining that commitment above the complete course of persuasion and change"
+   ]
+  ],
+  "supplied_note": "her attitude to being argued with about this commitment: here she is willing to hear argument on it and to be moved by it, rating a change that comes by argument she chose to hear no lower than keeping the commitment unheard; and she can decline",
+  "differs": "her informed rating of the commitment changed by argument: below keeping it, as the tenth follow-up's case stipulates and the first specification did not keep; she can decline, and hears the arguments rating that no lower than declining, not expecting to be moved"
+ }
+]

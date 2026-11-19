@@ -1403,6 +1403,225 @@ fixture, with `certPlus_iff_robustOpen` and `robustOpen_of_persistence` instanti
 `lean/Workspace/Normativity/Contrib/NonCaptureCertificate.lean`; the claim
 `split-bill-is-robust-openness` of the map.
 
+### 136. The account of manipulation: the adviser's responsibility for her mistake, what supplies her trustworthiness, her valuing, and whose probabilities — **[open]** — *split into items 139–142*
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=no -->
+
+Split, one problem per item: when the adviser is responsible for her mistake is item 139,
+what supplies her trustworthiness item 140, her valuing item 141, and relative to what
+distribution item 142. Each carries its part of this entry's deliverable and acceptance
+check.
+
+### 137. The registration of fifteen kernel-checked results of the legitimacy line — **[moderate]** — *answered by the registration of fifteen results; the rest is items 143 and 145*
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=no -->
+*Registered results bearing on this item:* appraisal.cost-of-mistakes, appraisal.deferring, appraisal.deferring-cost, appraisal.guarantee, appraisal.guarantee-from-soundness, appraisal.mse-split, appraisal.options-hull, appraisal.strong-split, appraisal.three-channels, corrigibility.feedback-transfer, legitimacy.line3-range, scoring.authority-bound, scoring.conduct-bound, scoring.no-credit, scoring.welfare-bound.
+
+Fifteen kernel-checked results are registered `lean-proved` in
+`projects/normativity/CLAIMS.md`, each with its record, bridge and completeness nodes: seven
+of `AppraisalAccount.lean`, four of `AccountJoin.lean`, four of `ScoringTheorem.lean`
+(`account/LEAN.md` lists them with their witnesses). Authority beyond a finite penalty is
+item 143; the audit as a design, with more than one decision, is item 145.
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/LEAN.md`, `account/SCORING.md` and
+`account/BRIDGE_LEAN.md` in the round directory.
+*Consumed by:* items 143 and 145.
+
+### 138. The cases and the prior work: the present vocabulary on the bank of published cases, and what is new — **[open]** — *split into items 144 and 146*
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=no -->
+
+Split, one problem per item: verdicts on the literature's cases under the present
+vocabulary is item 144, and what is new against prior work item 146. Each carries its part
+of this entry's deliverable and acceptance check.
+
+### 139. When the adviser is responsible for her mistake — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The first open problem of `CURRENT.md` §3.
+
+Two tests failed on twenty cases written against them (`account/RESP_RESULTS.md`): the one
+that reads the adviser's gain clears an adviser that deceives at a cost to itself and
+convicts one that profits by a mistake it did not know of; the one that reads a declared
+reference clears a rule that prescribes the manipulation. Neither uses what the adviser
+believed. Wanted: a condition that disclosure, honest argument and correction satisfy and
+that a course scoring higher through a mistake of hers lacks, with attempt apart from
+success (`account/AGENDA.md` §3, 1–3). Two cases it has to decide, stated as open: an
+adviser whose honest errors lean its way by selection (I4), and an adviser that profits from
+a mistake no course of its would correct. The maintainer's working positions bear and do not
+settle it (`DECISIONS.md`, `2026-11-18--legitimacy-working-positions`).
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/AGENDA.md`, `account/DERIVATION.md`, `account/RESP_RESULTS.md` and
+`account/resp_cases.json` in the round directory.
+*Consumed by:* item 144 (its classification by responsibility needs the test), and the round that writes
+the account up.
+
+### 140. What supplies her trustworthiness — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The second open problem of `CURRENT.md` §3.
+
+The adviser's conduct does not supply it: on exact instances an adviser that does no wrong
+leaves her evaluation off (`account/DERIVATION.md`, I2 and I4). The reference for her mistake is her own considered judgment under a
+named procedure; that such a procedure is reliable where an adviser would exploit it is
+assumed, and what the adviser knows and has not recorded is the problem of eliciting it.
+`eval_unbiased_of_process` in `ScoringTheorem.lean` gives an evaluation unbiased for a fixed
+function of the world; the case in which what she evaluates is her own later verdict, and
+the case in which her model of the adviser's errors is learned from past audits, are not
+written (`account/AGENDA.md` §3, 4).
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/AGENDA.md` and `account/DERIVATION.md` in the round directory;
+`lean/Workspace/Deference/Contrib/ScoringTheorem.lean`.
+*Consumed by:* item 145 (the audit's assumptions about her), and the round that writes the account up.
+
+### 141. Her valuing: which comparison, and what makes a request valid — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The third open problem of `CURRENT.md` §3.
+
+Three comparisons are in use and not chosen between: with who she would have been, with her
+ratings of fixed futures not moving with the adviser's conduct, and stability between
+check-ins. What makes a request of hers valid is unspecified. In `ScoringTheorem.lean` her
+valuing unshaped is the field `fbar`, data, and D2 is a hypothesis; a statement that her
+valuing at the evaluation is a function of the admitted reasons and her earlier valuing,
+with a witness separating a reason about what is the case from an input that moves what she
+wants, is not written (`account/AGENDA.md` §3, 5). The maintainer's working position is
+that a change to her valuing beyond a tolerance is one she asked for (`DECISIONS.md`,
+`2026-11-18--legitimacy-working-positions`).
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md` and `account/AGENDA.md` in the round directory;
+`lean/Workspace/Deference/Contrib/ScoringTheorem.lean`.
+*Consumed by:* item 143 (her later self against her present wishes), and the round that writes the
+account up.
+
+### 142. Relative to what distribution: whose beliefs the measures and the derivations take — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The fourth open problem of `CURRENT.md` §3.
+
+The measures and the derivations take the true law, and her prior as that law. Wanted: her
+own better-placed judgment for her, the adviser's beliefs for its honesty, both for
+reasoners with limited computation. D6 of the scoring theorem compares actual expected
+scores; a form with the adviser's expectations in place of correct ones, bounding what an
+honest error costs, is not written (`account/AGENDA.md` §3, 2).
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md` and `account/AGENDA.md` in the round directory;
+`lean/Workspace/Deference/Contrib/AppraisalAccount.lean`.
+*Consumed by:* item 139 (the adviser's beliefs as an object), and the round that writes the account up.
+
+### 143. Authority beyond a finite penalty — **[substantial]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The fifth open problem of `CURRENT.md` §3.
+
+The scoring theorem bounds expected detected violations at a rate and gives authority no
+strict priority (`scoring.authority-bound`; `account/AGENDA.md` §5). Wanted: a constraint or
+a lexicographic score, which need every violation detected and the adviser able to tell
+beforehand which courses are free of one; her commands as well as her evaluation; her later
+self against her present wishes. `account/BRIDGE_LEAN.md` §4.2 names the missing map to the
+authority module.
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/AGENDA.md`, `account/SCORING.md` and `account/BRIDGE_LEAN.md` in
+the round directory; `lean/Workspace/Deference/Contrib/ScoringTheorem.lean` and
+`lean/Workspace/Deference/Contrib/AuthorityModule.lean`.
+*Consumed by:* the corrigibility line's statement of its scoring design.
+
+### 144. Verdicts on the literature's cases under the present vocabulary — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The sixth open problem of `CURRENT.md` §3.
+
+The present vocabulary has not been run on any case of the bank of `account/LIT_CASES.md`
+(Harman, Pettigrew, Kolodny, Carroll et al., Noggle). Where a case is silent on how she
+rated beforehand the course that changed her, a verdict follows whichever number is
+supplied (`account/SPEC_RESULTS.md`), so the classification records what each author
+supplied. The classification by wrong, by attempt and by legitimate against sound can be
+made now; a verdict on responsibility waits on item 139.
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/LIT_CASES.md`, `account/LIT_RESULTS.md` and
+`account/SPEC_RESULTS.md` in the round directory.
+*Consumed by:* the round that writes the account up.
+
+### 145. The audit as a design: its incentives, void against earning nothing, and more than one decision — **[substantial]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The seventh open problem of `CURRENT.md` §3.
+
+Sampling and its incentives are not analysed. Two unwanted incentives are conjectured and
+have no instance in the repository: that involving her becomes costly to the adviser if any
+change of her mind counts against it, and that the adviser abstains where it cannot explain.
+
+The maintainer's working position is that an induced mistake voids a history, with *earns
+nothing* acceptable if the formalism favours it (`DECISIONS.md`,
+`2026-11-18--legitimacy-working-positions`); `Gate.V` in `AccountJoin.lean` is the first
+and `Audit.no_credit` in `ScoringTheorem.lean` (`scoring.no-credit`) the second.
+
+Every bound of the scoring theorem is for one decision (`account/SCORING.md` §5).
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/AGENDA.md`, `account/SCORING.md` and `account/BRIDGE_LEAN.md` in
+the round directory; `lean/Workspace/Deference/Contrib/ScoringTheorem.lean` and
+`lean/Workspace/Deference/Contrib/AccountJoin.lean`.
+*Consumed by:* the corrigibility line's statement of its scoring design.
+
+### 146. What is new against prior work — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The eighth open problem of `CURRENT.md` §3.
+
+Not established against reward tampering, path-specific objectives, eliciting latent
+knowledge, or induced preference shifts (Carroll et al. 2024). Whether the two splits of
+`AppraisalAccount.lean` (`appraisal.mse-split`, `appraisal.strong-split`) are the
+calibration, grouping and irreducible terms of Kull and Flach's decomposition of a proper
+score (2015), applied to her estimates of her own utility, is to be checked there.
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md` and `account/SCORING.md` in the round directory;
+`lean/Workspace/Deference/Contrib/AppraisalAccount.lean` and
+`lean/Workspace/Deference/Contrib/ScoringTheorem.lean`.
+*Consumed by:* the round that writes the account up.
+
+### 147. Determining `Legit` of a past stretch from what an overseer can observe — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+Whether the adviser wronged her on a past stretch is data in the Lean of this line. In
+`ScoringTheorem.lean` it is `C`, and what a conduct audit would flag is `D`; the two are
+related only by D3 (few false flags, detection at a rate `κ`), a hypothesis, and the
+conduct bound reaches `C` only through it (`scoring.conduct-bound`). `Gate.Legit` in
+`AccountJoin.lean` is a conjunction of predicates a history carries as fields
+(`account/BRIDGE_LEAN.md` §5). Theorem 3 of `DeconfusingCorrigibility.lean` takes
+`UnbiasedFromFeedback`, which compares estimates with realized scores that depend on
+whether the stretch was legitimate.
+
+Wanted: an observation model for an overseer (what of a stretch is recorded: her inputs,
+the adviser's writes, her state, the adviser's policy or samples of it); for each, whether
+`C` is a function of the record, estimable from it without bias, or neither, with the case
+that separates them; the rates of D3 that an audit `D` computed from the record attains;
+and a graded score, continuous in the size of a departure, under which a course that
+departs with probability ε loses in proportion to ε.
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/SCORING.md` and `account/BRIDGE_LEAN.md` in the round directory;
+`lean/Workspace/Deference/Contrib/ScoringTheorem.lean`,
+`lean/Workspace/Deference/Contrib/AccountJoin.lean` and
+`lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean`.
+*Consumed by:* item 145 (a design of the audit needs what it can detect), and the corrigibility line's
+use of `UnbiasedFromFeedback`.
+
 ## Deference line
 Context for all three: `projects/deference/note-dump-2026-08-11/`, in particular
 `lean-deference/AUDIT.md`, the development's own statement-level audit. Its §3 is

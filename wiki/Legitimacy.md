@@ -441,6 +441,76 @@ channel. Following without trust among her grounds fails authorship, not transpa
 the license refuses it. And a forged approval never reaches the record: authentication
 refuses the receipt, so there is no state for a segment to exclude.
 
+## Manipulation: legitimate as distinct from sound
+
+**Status: a working account, in progress. Its theorems are kernel-checked and not yet
+registered; its definitions of wrongdoing are not settled.**
+
+**What legitimacy is for.** The corrigibility design uses the principal's judgment twice.
+Her permission authorises what the adviser does, and her evaluation is the measure the
+adviser is scored by. The two uses need different things of her judgment.
+
+- Her judgment is **legitimate** when the adviser did nothing to corrupt it. That is a
+  condition on the adviser's conduct, and it is what authorisation needs. A legitimate
+  judgment can be mistaken: an adviser whose honest slips fall both ways leaves her wrong
+  and her permission stands. Sincerity alone does not make conduct clean.
+- Her judgment is **sound** when it is legitimate and she also reasoned correctly. That is
+  what using her evaluation as a measure of her welfare needs. Sound implies legitimate and
+  not the reverse.
+
+**Three wrongs of conduct**, kept apart. *Manipulation* is inducing or exploiting a mistake
+of hers, following Noggle's Mistake Account; the faculties she decides with are treated as
+estimators, which makes a mistake measurable — *trickery* as how far her estimate is from
+what her observations support, *pressure* as how far the act she takes falls short of the
+one she rates highest. *Non-disclosure* is not telling her what bears on her decision;
+withholding is not manipulation. *Value interference* is changing what she wants without
+her asking; which unasked changes count is not settled, and the working position is that a
+welcome one is no wrong. Destroying her options or her information is a further wrong outside all three.
+The two measures describe her condition; they do not say when the adviser is responsible
+for it.
+
+**Three ways her evaluation comes apart from her true utility**, each with an instance in
+which the adviser does no wrong of the first kind: she misreads what she has; the adviser
+knows something relevant that its record does not carry; her valuing is not what it would
+have been had the adviser changed nothing in it but what she asked.
+
+**What is proved.** On a finite space: the split of her squared error into what she cannot
+tell apart and her miscalibration, the bound on what her choices cost her, and what
+deferring to her verdict costs (Lean `AppraisalAccount.mse_split`, `misuse_le`,
+`deferring_identity`). The post's Theorems 1 and 3 at a gate built from the account's
+components, with the score ranges the post asks; the gate's conditions are inputs, and
+Theorem 3's maximisation, feedback and alternative hypotheses stay hypotheses (Lean
+`AccountJoin.Gate.theorem1_join`, `theorem3_join`). And a scoring theorem for one audited decision: bounds, in expectation, on
+her welfare, on how often she is wronged and on detected violations of her authority (Lean
+`ScoringTheorem.Audit.welfare_bound`, `conduct_bound`, `authority_bound`).
+
+**What is assumed.** The scoring theorem takes as hypotheses that her audited judgment is
+not fooled upward and her valuing not made easier to please at the course taken, with the
+reverse at an honest course; that a conduct audit has few false flags and some power; that
+the audit draws are independent; that an honest course exists; and that the adviser comes
+within a tolerance of the best actual expected score.
+Whether she was wronged, and whether an audit would flag it, are data to the theorem. The
+assumptions about her do not follow from the adviser's good conduct: correct credence
+follows from coherence, authorship and transparency as above, and that needs her model of
+the adviser to be right. The theorem is for one decision: it bounds her expected true
+utility, the chance she is wronged, and expected *detected* violations of her authority,
+and its finite penalty gives authority no strict priority.
+
+**What is open.** When the adviser is responsible for her mistake — the largest hole; two
+tests, by the adviser's gain and by a declared reference, both fail on cases. What supplies
+her trustworthiness. How a change of her valuing is to be judged, and what makes a request
+valid. Whose probabilities the measures take. Strict priority of her authority. Verdicts on
+the literature's cases. The audit as a design. What is new against reward tampering,
+eliciting latent knowledge and induced preference shifts. Twelve earlier statements of the
+account were tested and not kept. The present state, with what carries each item, is the
+round's
+[`CURRENT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/0411576e1145cc3afba80017289bca2f81dc4d0f/projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md)<!--ref:round:2026-11-10-legitimacy-definition-prosecution-->,
+with
+[`AppraisalAccount.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/0411576e1145cc3afba80017289bca2f81dc4d0f/lean/Workspace/Deference/Contrib/AppraisalAccount.lean),
+[`AccountJoin.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/0411576e1145cc3afba80017289bca2f81dc4d0f/lean/Workspace/Deference/Contrib/AccountJoin.lean)
+and
+[`ScoringTheorem.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/0411576e1145cc3afba80017289bca2f81dc4d0f/lean/Workspace/Deference/Contrib/ScoringTheorem.lean).
+
 ## Where this is going
 
 The consumer is [corrigibility](Corrigibility), where corrigibility is faithfulness to

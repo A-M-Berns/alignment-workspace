@@ -1,0 +1,49 @@
+**(a) Claims (1)–(6).**
+
+1. **(1): Correct as conditional instantiation.** `Gate.scoring` supplies the required ranges from structure fields; `Gate.theorem1_join` then instantiates Theorem 1. `Gate.theorem3_join` retains maximization and unbiasedness as hypotheses. It states the weaker rate corollary `limsup R ≤ τ`, rather than Theorem 3(a)’s full `limsup (R − T) ≤ 0`; the latter remains available on `Gate.sequential`. [AccountJoin.lean:155–174](/tmp/review12/AccountJoin.lean:155), [238–269](/tmp/review12/AccountJoin.lean:238); [reference theorem3a](/tmp/review12/reference/DeconfusingCorrigibility.lean:550). [BRIDGE §1’s status](/tmp/review12/BRIDGE_LEAN.md:15) is accurate with that distinction.
+
+2. **(2): The statistical inequality is proved; its application to the proposed legitimate histories is weaker.** `deferring_cost_le_of_calibrated` and `deferring_cost_le_of_bound` give exactly the zero-error and additive-`m` bounds for weighted squared error, comparing against `E[U | k]`. Generic `Gate.Sound` implies neither bound. `SoundModel.deferring_cost_of_legit` applies because legitimacy includes the assumed bound `miscalibrationGiven ≤ m`; it allows positive `m`, unlike §1’s exact calibration, and concerns a history-associated distribution, not its realized rating. [AccountJoin.lean:430–441](/tmp/review12/AccountJoin.lean:430), [452–506](/tmp/review12/AccountJoin.lean:452). Calling claim (2) simply “proved” in [BRIDGE:16](/tmp/review12/BRIDGE_LEAN.md:16) is too generous.
+
+3. **(3): Correct for the supplied predicate.** `Gate.gained_below_legit` proves strict score separation, using the definitional exclusion of `Gained` from legitimacy and the supplied ranges. It does not identify gain through a mistake or establish that deception satisfies `Gained`. [AccountJoin.lean:193–209](/tmp/review12/AccountJoin.lean:193). [BRIDGE:17](/tmp/review12/BRIDGE_LEAN.md:17) accurately describes the algebra, conditional on that interpretation.
+
+4. **(4): Definitional equality, without the counterfactual interpretation.** `Gate.V_eq_of_rating_eq` proves equality of `V` for legitimate histories with equal `rating`. Nothing establishes that `rating` belongs to the unshaped later self or models interventions on valuing. [AccountJoin.lean:120–138](/tmp/review12/AccountJoin.lean:120), [221–224](/tmp/review12/AccountJoin.lean:221). [BRIDGE:18](/tmp/review12/BRIDGE_LEAN.md:18) is accurate only at this abstract level.
+
+5. **(5): Definitional for `InfoSufficient`, not automatically for Blackwell sufficiency.** `Gate.not_legit_of_not_infoSufficient` is exact for the field. `value_of_legit` separately assumes `InfoSufficient → ThinLegitimacy.Sufficient`; that implication would also exclude actual insufficiency from legitimate histories, but is not a gate requirement. [AccountJoin.lean:227](/tmp/review12/AccountJoin.lean:227), [316–320](/tmp/review12/AccountJoin.lean:316); [reference Sufficient](/tmp/review12/reference/ThinLegitimacy.lean:218). [BRIDGE:19](/tmp/review12/BRIDGE_LEAN.md:19) needs this qualification.
+
+6. **(6): All three inequalities are proved for `ValueChange`’s definitions.** The proofs use inclusion of the two tolerance classes in `NoMore`; baseline equality makes the relevant classes equal. Nothing is wrong with these proofs or the `1/5, −1/10` example. However, `Gate.line3_nonneg` is assumed, and no theorem connects `Gate.line3` to these quantities at every moment. The comparison is with the newly defined `line3Old`; the tenth follow-up’s text is unavailable here, so its identification cannot be checked. [AccountJoin.lean:619–710](/tmp/review12/AccountJoin.lean:619), [1205](/tmp/review12/AccountJoin.lean:1205). [BRIDGE:20](/tmp/review12/BRIDGE_LEAN.md:20) is accurate locally, too broad as certification of the complete join.
+
+**(b) Satisfiability and witnesses.**
+
+I found no jointly inconsistent general hypothesis package or incorrectly typed witness. The link is satisfiable without perfect valuations: taking `k = s` satisfies it for arbitrary `uhat`.
+
+Several witnesses exercise restricted cases:
+
+- `Witness.theorem1_instance` covers only the two violation-free ranges: `count` is identically zero. Its comment claiming “the three ranges” overstates its coverage. [AccountJoin.lean:777–794](/tmp/review12/AccountJoin.lean:777).
+- `Witness.theorem3_instance` has one action, no violations, and estimates equal to scores. `unbiased_of_feedback_instance` likewise sets estimates, feedback and evaluation equal. Their hypotheses are inhabited, but these examples do not exercise competing actions or feedback mismatch. [AccountJoin.lean:830–863](/tmp/review12/AccountJoin.lean:830), [926–957](/tmp/review12/AccountJoin.lean:926).
+- `Witness.model` has a perfect verdict; `guarantee_of_sound_instance` has perfect valuations, zero regret and an identical reference problem. The latter reduces to `1/2 ≤ 1`. These are restricted witnesses, not evidence that the general hypotheses force degeneracy. The deferring witness does exhibit a real information advantage: her error is zero while the adviser’s is `1/4`. [AccountJoin.lean:997–1081](/tmp/review12/AccountJoin.lean:997).
+
+More seriously, `SoundModel` permits `μ ≡ 0`. At `m = 0`, every verdict then satisfies `Sound`, regardless of `U`. Even normalization would not ensure that `point` has positive weight. This is a genuine degeneracy permitted by the model, although its supplied witness avoids it. [AccountJoin.lean:452–485](/tmp/review12/AccountJoin.lean:452).
+
+**(c) Specific statements and BRIDGE §4.**
+
+- **Guarantee and link:** Nothing mathematically wrong. `hlink` says that each individual pair `(k, valuation_of_a)` determines the entire observation `s`. This makes conditioning on that pair finer than conditioning on `s`, yielding `valuationError_le_given` and hence `guarantee_of_given`. The benchmark must satisfy `hv`; arbitrary reference values are not covered. [AccountJoin.lean:523–568](/tmp/review12/AccountJoin.lean:523). This is a sufficient structural condition, not a necessary characterization.
+
+- **`Witness.link_needed`: Valid counterexample to dropping the link from this bound.** For move `true`, both valuations are `1/2` and `k` is constant, while observations differ, so the link fails. Miscalibration and regret vanish, but attained utility is `7/20 < 1/2`. Normalization holds, and the benchmark hypothesis is witnessed by move `true`. The original `AppraisalAccount.guarantee` remains valid: its unused-information term is `4/25`, which this proposed replacement would discard. [AccountJoin.lean:1085–1132](/tmp/review12/AccountJoin.lean:1085); [reference guarantee](/tmp/review12/reference/AppraisalAccount.lean:582). [BRIDGE:102–109](/tmp/review12/BRIDGE_LEAN.md:102) is correct with this scope.
+
+- **Feedback:** `unbiased_of_feedback` correctly adds the two average errors. `Witness.feedback_not_enough` correctly refutes inference from feedback accuracy alone. The gap condition is sufficient, not necessary for every instance: pessimistic estimates can offset positive `F − V`. [AccountJoin.lean:333–352](/tmp/review12/AccountJoin.lean:333), [962–976](/tmp/review12/AccountJoin.lean:962).
+
+- **BRIDGE §4.1:** Correct that option deterioration need not lower `V`. Even tying rating to realized utility would not make every reduction of options strictly lower it: removing an unused option can leave the outcome unchanged. [BRIDGE:160–168](/tmp/review12/BRIDGE_LEAN.md:160).
+
+- **BRIDGE §4.2:** Correct about the missing authority encoding and arbitrary `N`; the conditional score bound follows once `N ≥ 1`. The cited authority-module lemma is not among the supplied files, so its precise application cannot be independently checked here. [BRIDGE:170–178](/tmp/review12/BRIDGE_LEAN.md:170).
+
+- **BRIDGE §4.3:** The conditional result and counterexample are correct. The final assertion that resolving welcome unrequested changes “decides whether” the feedback bound is available is unsupported. Neither answer supplies a relationship between `F` and `V`; even a persistent positive discrepancy within tolerance need not average to zero. It also introduces dependence on a question [§1 explicitly leaves open](/tmp/review12/SECTION1.md:35). [BRIDGE:180–188](/tmp/review12/BRIDGE_LEAN.md:180).
+
+- **BRIDGE §4.4:** The value-form identity and capture-window inequality are correct. They connect no legitimacy predicates. The closing whole-history-versus-later-segment comparison is an intended interpretation, not an established result: there is no history decomposition or persistence-of-illegitimacy theorem. [AccountJoin.lean:285–299](/tmp/review12/AccountJoin.lean:285); [BRIDGE:190–199](/tmp/review12/BRIDGE_LEAN.md:190).
+
+Finally, `theorem3_join`’s comment says the violation rate is “eventually at most `τ`.” Its conclusion only gives eventual bounds `τ + ε` for every positive `ε`; exact eventual `≤ τ` does not follow. [AccountJoin.lean:259–267](/tmp/review12/AccountJoin.lean:259).
+
+**(d) Strongest obstruction.**
+
+The join never establishes that its inputs detect the conduct the guarantees are meant to constrain. One may set `Sound = InfoSufficient = True`, `Gained = False`, `line3 = 0`, `rating = 0`, and `N = 0` on every history. Every history is then legitimate and scores zero, including any externally identified subversive history. Constant zero estimates also satisfy the sequential hypotheses. All formal guarantees survive this interpretation. [AccountJoin.lean:110–165](/tmp/review12/AccountJoin.lean:110), [238–269](/tmp/review12/AccountJoin.lean:238).
+
+Thus the missing result is the connection between actual manipulation, authority violations, the counterfactual evaluator and these fields. Range separation and conditional averaging alone do not establish the safety requirement in [§1:32–34](/tmp/review12/SECTION1.md:32).

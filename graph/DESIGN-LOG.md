@@ -85,3 +85,4 @@
 - 2026-11-05 change @anson — re-ruled: a research thread takes importance and clarity, only reliability stays off it; the eleven threads seeded on both
 - 2026-11-05 change @anson — the item ledger renamed to ATTENTION.md; the scores ordering at /priorities/ is the priority system (the pointer kind priorities and the priority event keep their names)
 - 2026-11-09 change @A-M-Berns — a human handle is the GitHub login; @anson and @abram become @A-M-Berns and @abramdemski, the maintainer ledger renamed with its events' by and ids
+- 2026-11-18 change @A-M-Berns — a round maps its own model's handle in policy.yaml; the test of the starting graph pins the human and legacy handles and checks every other handle is its model's slug, so a new executor model needs no edit to the checker harness (the mapping of @claude-fable-5-2 had held fifteen registrations for eight days)
