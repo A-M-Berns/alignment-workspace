@@ -1,5 +1,7 @@
 # Cases of change in what someone values
 
+> **Earlier attempt.** This document belongs to the consolidated account with a baseline way of valuing, and its claim that an illegitimate change of what she values runs through a mistake of hers or is an alteration, tested by the eighth follow-up (2026-11-16): under the renderings used the claim has candidate counterexamples, none clear, eleven of 34 verdicts turn on a detail the case does not fix, and the classification is not shown independent of how a case is encoded. Results 1, 2, 3 and 7 of `account/RESULTS.md` are kernel-checked in `AppraisalAccount.lean` and stand. What replaced it: the value side as three conditions (`earlier-attempts/account/ACCOUNT.md`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 Forty-five cases, none written by this round except where a row says *constructed on* a
 published effect. Committed with each case's evident verdict and the adviser's role
 before any case was classified; the classification is in `VALUE_CHANGE.md` §3. The

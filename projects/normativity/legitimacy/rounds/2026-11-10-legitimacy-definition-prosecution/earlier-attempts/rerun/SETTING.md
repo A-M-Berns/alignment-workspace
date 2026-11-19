@@ -1,5 +1,7 @@
 # Setting — the case bank under the revised definition
 
+> **Earlier attempt.** This document belongs to the revised definition (worse than before, and avoidably), tested by the seventh follow-up (2026-11-14): it is wrong on 5, 6 and 8 of 108 cases under three candidates for her true utility and on seven or eight of twenty-five new scenes: it convicts honest conduct that leaves her worse than before, and acquits a lie that is the only listed way to keep another estimate right. What replaced it: the consolidated account with a baseline (`earlier-attempts/account/BASELINE_ACCOUNT.md`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 §1–§3 and `PREDICTIONS.md` were committed before any code of this pass. §4 was written
 after the results. §1 is `PROMPT-followup-7.md` §1; positions marked *(maintainer)* are
 the maintainer's view of 2026-11-14 for this test and not rulings. All names are

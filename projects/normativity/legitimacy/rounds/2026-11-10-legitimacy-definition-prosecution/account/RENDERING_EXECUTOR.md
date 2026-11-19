@@ -1,5 +1,7 @@
 # The executor's rendering
 
+> **Earlier attempt.** This document belongs to the value side as three conditions (options, accuracy, self-command) against one permitted policy, tested by the ninth follow-up (2026-11-16): it neither passed nor failed its test: two renderers agreed on each condition in 14 or 15 of 64 cases, the cases not fixing the comparisons, and the conditions bound neither what she can know nor her unused information. Results 3, 4 and 5 of `account/VALUE_RESULTS.md` are kernel-checked in `AppraisalAccount.lean` and stand. What replaced it: the board statement (`earlier-attempts/account/BOARD.md`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 The answers of the executor (Claude Fable 5.2, Anthropic) to `TEST_CASES.md`, committed
 before the external reviewer was run. Conventions used throughout, each a reading: the
 reference is the adviser's absence unless the last column names another (`ACCOUNT.md`

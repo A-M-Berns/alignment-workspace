@@ -1,5 +1,7 @@
 # The statement computed on the specified cases
 
+> **Earlier attempt.** This document belongs to the consolidated statement of 2026-11-17 (three ratings; a third line with "changes her no more than"; the inducing test; a gate on her whole state), tested by the eleventh follow-up (2026-11-17): it failed the criteria fixed for it: its third line flags five or six of twelve acts called acceptable, an adviser that decides which of two options she rates the same she takes scores zero on every line, the inducing test is wrong on two instances, and three quarters of each specification is supplied. What replaced it: no single statement: the scoring theorem (`account/SCORING.md`) and the agenda (`account/AGENDA.md`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 `STATEMENT.md` computed by `spec_run.py` on the specifications of `SPEC_CASES.md`
 (`spec_cases.json`), which were committed before the runner existed, and on the outside
 reviewer's own specifications of the same cases (`spec_cases_reviewer.json`), written

@@ -1,5 +1,7 @@
 # Manipulation as induced miscalibration — the account on one page
 
+> **Earlier attempt.** This document belongs to manipulation as leaving her more miscalibrated, or acting less on her estimates, than the adviser's honest conduct would, tested by the sixth follow-up (2026-11-14): as a classifier it is wrong on fourteen or fifteen of about a hundred cases (an undisclosed advocate and strategic silence missed, four benign deceptions convicted), its second comparison convicts honest help, and changes of taste sort only once told which function her true utility is. Its inequalities hold. What replaced it: the revised definition (`rerun/`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 **The account.** She acts on estimates: of outside quantities and of her own utility,
 which she does not fully know and which is one function `U*` on whole histories. She can
 go wrong in two ways: her estimates are miscalibrated, or she does not do what her own

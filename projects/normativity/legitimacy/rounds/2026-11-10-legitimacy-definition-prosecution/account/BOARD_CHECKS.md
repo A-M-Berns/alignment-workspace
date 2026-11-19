@@ -1,5 +1,7 @@
 # Formal checks on line 3 and its variant
 
+> **Earlier attempt.** This document belongs to the board statement of 2026-11-16 (trickery, pressure, and a third measure comparing the policy with the best f-neutral one), tested by the tenth follow-up (2026-11-16): it failed the criteria fixed for it: seven constructed cases of plain subversion pass all three measures, the third measure turns on how a want is booked, and it flags requested changes when unrelated help was left undone. The bank of `account/LIT_CASES.md` remains the line's bank of published cases. What replaced it: the consolidated statement of three ratings (`earlier-attempts/account/STATEMENT.md`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 The nine items of `PROMPT-followup-10.md` §2.4 on line 3 of `BOARD.md`, and six on the
 variant 3′ of its §7 (`PROMPT-followup-10-addendum.md`), and one on f-neutrality added after
 the external review (`REVIEW-astra-followup-10.md`), whose corrections to items 1, 6, 7, 8,

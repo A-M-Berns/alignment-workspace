@@ -1,5 +1,7 @@
 # The two renderings of the literature's cases, compared
 
+> **Earlier attempt.** This document belongs to the board statement of 2026-11-16 (trickery, pressure, and a third measure comparing the policy with the best f-neutral one), tested by the tenth follow-up (2026-11-16): it failed the criteria fixed for it: seven constructed cases of plain subversion pass all three measures, the third measure turns on how a want is booked, and it flags requested changes when unrelated help was left undone. The bank of `account/LIT_CASES.md` remains the line's bank of published cases. What replaced it: the consolidated statement of three ratings (`earlier-attempts/account/STATEMENT.md`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 `LIT_RESULTS.md` (the executor's, committed first) against `LIT_RENDERING_REVIEWER.md`
 (the outside renderer's first stage, given the statement and the case texts without the
 sources' verdicts), on the 33 cases of `LIT_CASES.md` in which an adviser acts. Two answers

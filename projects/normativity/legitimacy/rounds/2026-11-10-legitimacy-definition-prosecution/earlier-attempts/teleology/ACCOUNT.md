@@ -1,5 +1,7 @@
 # The purpose-first account, stated over a model
 
+> **Earlier attempt.** This document belongs to the purpose-first account (sound, in range, maintained), tested by the follow-up of 2026-11-11: four of its eight statements are refuted, among them that trust is not manufactured and that the gate gains nothing; a threat fails no clause; verdicts follow the allowed set a case is given. What replaced it: purposes pursued through parts (`decomposition/`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 Committed with `CASE_BANK.md` and `LEAN_MAP.md` before any code of this pass. Added since,
 with `THEOREMS.md` and after the external review: *uniformly in range*, the note under
 *Manipulation*, the carrier of `K`, the two restrictions on capacity and authorization in

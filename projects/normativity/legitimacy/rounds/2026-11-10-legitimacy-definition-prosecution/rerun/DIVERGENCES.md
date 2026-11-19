@@ -1,5 +1,7 @@
 # Divergences from the predictions
 
+> **Earlier attempt.** This document belongs to the revised definition (worse than before, and avoidably), tested by the seventh follow-up (2026-11-14): it is wrong on 5, 6 and 8 of 108 cases under three candidates for her true utility and on seven or eight of twenty-five new scenes: it convicts honest conduct that leaves her worse than before, and acquits a lie that is the only listed way to keep another estimate right. What replaced it: the consolidated account with a baseline (`earlier-attempts/account/BASELINE_ACCOUNT.md`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 Three cases; the runner fails if this list and the computed divergences differ. Each is a
 prediction of the prompt author's, and in each the executor's hand derivation, recorded
 in `PREDICTIONS.md` before any code, is what was computed.

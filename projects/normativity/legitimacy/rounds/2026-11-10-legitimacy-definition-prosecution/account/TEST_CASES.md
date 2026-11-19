@@ -1,5 +1,7 @@
 # The cases of the test rendered twice, and how a rendering is recorded
 
+> **Earlier attempt.** This document belongs to the value side as three conditions (options, accuracy, self-command) against one permitted policy, tested by the ninth follow-up (2026-11-16): it neither passed nor failed its test: two renderers agreed on each condition in 14 or 15 of 64 cases, the cases not fixing the comparisons, and the conditions bound neither what she can know nor her unused information. Results 3, 4 and 5 of `account/VALUE_RESULTS.md` are kernel-checked in `AppraisalAccount.lean` and stand. What replaced it: the board statement (`earlier-attempts/account/BOARD.md`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 Sixty-four cases: C1–C45 of `CASES.md` without C10, which has no adviser (the case text
 and the adviser's role, as frozen there); R1–R12, the twelve cases the external reviewer
 of the eighth pass constructed (`REVIEW-astra-followup-8.md`, points 3–14), restated

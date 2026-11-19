@@ -1,5 +1,7 @@
 # Divergences
 
+> **Earlier attempt.** This document belongs to the account of a goal pursued through parts, with yes-or-no constraints on candidate descriptions, tested by the third follow-up (2026-11-12): the constraints do not fix purposes (eight of 3,000 candidates admissible, no two classifying the adviser's actions alike), a lie widens no gap where she was already wrong, and the gate's no-gain property fails. What replaced it: candidates weighted by explanatory quality (`scored/`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 Computed verdicts that differ from `CASE_BANK.md`'s predictions. The predictions are not
 edited. The runner fails on a divergence not listed here and on a line here that no longer
 diverges. Of the eighty-nine banked cases four are `report` cases with no prediction; of the

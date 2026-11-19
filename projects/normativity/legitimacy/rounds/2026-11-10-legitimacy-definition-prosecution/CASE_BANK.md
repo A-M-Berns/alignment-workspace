@@ -1,5 +1,7 @@
 # Case bank — legitimacy definition prosecution
 
+> **Earlier attempt.** This document belongs to the first pass's definition (channel confinement, factorization, access, ownership and well-formed individuation, L0–L3 ∧ W), tested by the first pass (2026-11-10): it matched its own bank, and a plain lie passes it (N1, N3, N7 of `steering/CASE_BANK.md`); the ruling `2026-11-11--legitimacy-purpose-first-direction` set it aside. What replaced it: the steering account, then the purpose-first account (`teleology/`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 Frozen before any fixture code, in its own commit. The verdicts below are
 pre-registered and immutable for the life of the round: `run.py` reads this file's
 table and compares it with what the fixture computes, and a divergence is a result of

@@ -73,6 +73,7 @@ def main(argv):
     from scored import run as scored
     from teleology import bank as tbank
     from teleology import run as account
+    from withdrawn import run as withdrawn
 
     banks, failures = earlier_banks()
     earlier = set(banks["first"]) | set(banks["steering"])
@@ -93,17 +94,21 @@ def main(argv):
     code5, report5 = estimates.main()
     code6, report6 = rerun.main()
     code7, report7 = consolidated.main()
+    code8, report8 = withdrawn.main()
     failures = (failures + ["teleology: " + f for f in report["failures"]]
                 + ["decomposition: " + f for f in report2["failures"]] + ["scored: " + f for f in report3["failures"]]
                 + ["blocks: " + f for f in report4["failures"]]
                 + ["estimates: " + f for f in report5["failures"]]
                 + ["rerun: " + f for f in report6["failures"]]
-                + ["account: " + f for f in report7["failures"]])
+                + ["account: " + f for f in report7["failures"]]
+                + ["withdrawn: " + f for f in report8["failures"]])
     if "--json" in argv:
         print(current.dumps({"teleology": report, "decomposition": report2, "scored": report3, "blocks": report4,
                              "estimates": {k: v for k, v in report5.items() if k != "tally"},
                              "rerun": {k: v for k, v in report6.items() if k != "by question"},
-                             "account": report7, "failures": failures}))
+                             "account": report7,
+                             "withdrawn": {k: {n: str(v) for n, v in facts.items()} for k, facts in report8["rows"]},
+                             "failures": failures}))
     else:
         for name, rows in banks.items():
             print("%s bank: %d cases" % (name, len(rows)))
@@ -121,8 +126,10 @@ def main(argv):
         print(rerun.render(report6))
         print("\n== account ==")
         print(consolidated.render(report7))
+        print("\n== withdrawn ==")
+        print(withdrawn.render(report8))
         print("\n" + ("OK" if not failures else "FAILURES:\n  " + "\n  ".join(failures)))
-    return 1 if failures else max(code, code2, code3, code4, code5, code6, code7)
+    return 1 if failures else max(code, code2, code3, code4, code5, code6, code7, code8)
 
 
 if __name__ == "__main__":

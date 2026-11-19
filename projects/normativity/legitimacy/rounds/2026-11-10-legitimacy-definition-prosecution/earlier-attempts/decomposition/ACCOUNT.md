@@ -1,5 +1,7 @@
 # The account: purpose as a goal pursued through parts
 
+> **Earlier attempt.** This document belongs to the account of a goal pursued through parts, with yes-or-no constraints on candidate descriptions, tested by the third follow-up (2026-11-12): the constraints do not fix purposes (eight of 3,000 candidates admissible, no two classifying the adviser's actions alike), a lie widens no gap where she was already wrong, and the gate's no-gain property fails. What replaced it: candidates weighted by explanatory quality (`scored/`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 Amended after the freeze, with `THEOREMS.md` and after the external review: §2, the rule for
 whose gap, is applied view by view (the alternative mechanism differs from hers on the view
 at hand only); §4, the stronger alternative for *independent* does not count situations

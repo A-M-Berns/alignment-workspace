@@ -1,5 +1,7 @@
 # Divergences
 
+> **Earlier attempt.** This document belongs to the steering account (proper drivers; broken against steered; arm's-length and faithful-adviser standards), tested by the follow-up of 2026-11-10: its notions restate published ones, two of its statements are refuted as written, and the faithful-adviser standard convicts two honest advisers who differ, and an offer. What replaced it: the purpose-first account (`teleology/`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 Computed verdicts that differ from `CASE_BANK.md`'s predictions. The predictions are not
 edited. `run.py` fails on a divergence not listed here and on a line here that no longer
 diverges. Twenty-seven of the thirty-three cases match in every column; seven verdicts on

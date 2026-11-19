@@ -1,5 +1,7 @@
 # The statement on the literature's cases — the executor's classification
 
+> **Earlier attempt.** This document belongs to the board statement of 2026-11-16 (trickery, pressure, and a third measure comparing the policy with the best f-neutral one), tested by the tenth follow-up (2026-11-16): it failed the criteria fixed for it: seven constructed cases of plain subversion pass all three measures, the third measure turns on how a want is booked, and it flags requested changes when unrelated help was left undone. The bank of `account/LIT_CASES.md` remains the line's bank of published cases. What replaced it: the consolidated statement of three ratings (`earlier-attempts/account/STATEMENT.md`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 `BOARD.md` applied to the 52 cases of `LIT_CASES.md`, by the executor, committed before
 the outside renderer was run. The answers are readings of prose: no case is given as a
 scene with laws under two policies, and nothing here is computed.

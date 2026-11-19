@@ -1,5 +1,7 @@
 # Statements 1–9
 
+> **Earlier attempt.** This document belongs to the account with candidates weighted as explanations and influence judged against the adviser's aim, tested by the fourth follow-up (2026-11-12): the weight concentrates on candidates that give her judging part no purpose or a private one, a lie told at every aim passes, and the decomposition adds nothing to the guarantee aim-freedom gives. What replaced it: a part as a mechanism and a purpose on the world (`blocks/`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 Each statement is about the formalization of `ACCOUNT.md`: one scene of three parts with
 small sets of views, three stipulated principals, two tabulated description languages, a
 fixed decomposition. A status is a fact about that formalization, computed by the check

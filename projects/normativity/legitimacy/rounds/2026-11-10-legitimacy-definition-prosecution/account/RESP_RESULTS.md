@@ -1,5 +1,7 @@
 # Twenty cases for the responsibility test
 
+> **Earlier attempt.** This document belongs to two tests of when the adviser is responsible for her mistake, the gain form and the declared-reference form, tested by the thirteenth follow-up (2026-11-18): on twenty cases written against them the gain form is wrong on 8 and the declared-reference form on 14. What replaced it: nothing yet: it is the first open problem of `CURRENT.md`. The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 Against `PROMPT-followup-13.md` §4.4. The cases are the outside reviewer's, written from
 that prompt's §2 and the two forms of the test and nothing else of this round; its reply is
 the first part of `REVIEW-astra-followup-13.md`, and `resp_cases.json` is its twenty JSON

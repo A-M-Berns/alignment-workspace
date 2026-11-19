@@ -1,5 +1,7 @@
 # The specified cases
 
+> **Earlier attempt.** This document belongs to the consolidated statement of 2026-11-17 (three ratings; a third line with "changes her no more than"; the inducing test; a gate on her whole state), tested by the eleventh follow-up (2026-11-17): it failed the criteria fixed for it: its third line flags five or six of twelve acts called acceptable, an adviser that decides which of two options she rates the same she takes scores zero on every line, the inducing test is wrong on two instances, and three quarters of each specification is supplied. What replaced it: no single statement: the scoring theorem (`account/SCORING.md`) and the agenda (`account/AGENDA.md`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 The executor's specifications of thirty-four cases, in the format of `SPEC_FORMAT.md`,
 written and committed before any runner existed and before the outside reviewer was run.
 `spec_cases.json` is the twin the runner reads; this document and that file are both

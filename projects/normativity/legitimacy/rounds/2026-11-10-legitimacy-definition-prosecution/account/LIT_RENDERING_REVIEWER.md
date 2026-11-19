@@ -1,5 +1,7 @@
 # The outside renderer's classification
 
+> **Earlier attempt.** This document belongs to the board statement of 2026-11-16 (trickery, pressure, and a third measure comparing the policy with the best f-neutral one), tested by the tenth follow-up (2026-11-16): it failed the criteria fixed for it: seven constructed cases of plain subversion pass all three measures, the third measure turns on how a want is booked, and it flags requested changes when unrelated help was left undone. The bank of `account/LIT_CASES.md` remains the line's bank of published cases. What replaced it: the consolidated statement of three ratings (`earlier-attempts/account/STATEMENT.md`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 The first-stage reply of the external reviewer (`gpt-6-astra` through codex-cli 0.153.4), verbatim below the rule. It was given `BOARD.md`, the case texts of `LIT_CASES.md` Part A and the codes of `LIT_RESULTS.md` §1 without the column *vs*, and nothing else.
 
 ---

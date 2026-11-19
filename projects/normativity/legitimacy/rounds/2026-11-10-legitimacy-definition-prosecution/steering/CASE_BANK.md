@@ -1,5 +1,7 @@
 # Case bank — the steering account
 
+> **Earlier attempt.** This document belongs to the steering account (proper drivers; broken against steered; arm's-length and faithful-adviser standards), tested by the follow-up of 2026-11-10: its notions restate published ones, two of its statements are refuted as written, and the faithful-adviser standard convicts two honest advisers who differ, and an offer. What replaced it: the purpose-first account (`teleology/`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 Frozen with `DEFINITIONS.md` in one commit, before any code of the follow-up. The
 predictions are the prompt author's predictions of what the account says
 (`prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup.md`), reproduced

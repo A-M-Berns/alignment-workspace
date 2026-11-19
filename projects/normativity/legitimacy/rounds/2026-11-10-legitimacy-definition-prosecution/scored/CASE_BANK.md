@@ -1,5 +1,7 @@
 # Case bank — weighted candidates, influence judged against the adviser's aim
 
+> **Earlier attempt.** This document belongs to the account with candidates weighted as explanations and influence judged against the adviser's aim, tested by the fourth follow-up (2026-11-12): the weight concentrates on candidates that give her judging part no purpose or a private one, a lie told at every aim passes, and the decomposition adds nothing to the guarantee aim-freedom gives. What replaced it: a part as a mechanism and a purpose on the world (`blocks/`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 Frozen with `ACCOUNT.md` in one commit, before any code of this pass, and immutable
 afterwards. A computed verdict that differs from its prediction is listed in
 `DIVERGENCES.md`; no prediction is edited.

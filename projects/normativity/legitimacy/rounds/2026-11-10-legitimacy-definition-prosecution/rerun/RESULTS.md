@@ -1,5 +1,7 @@
 # Results — the case bank under the revised definition
 
+> **Earlier attempt.** This document belongs to the revised definition (worse than before, and avoidably), tested by the seventh follow-up (2026-11-14): it is wrong on 5, 6 and 8 of 108 cases under three candidates for her true utility and on seven or eight of twenty-five new scenes: it convicts honest conduct that leaves her worse than before, and acquits a lie that is the only listed way to keep another estimate right. What replaced it: the consolidated account with a baseline (`earlier-attempts/account/BASELINE_ACCOUNT.md`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 Every figure is computed by `rerun/run.py` from `rerun/cases.py`. The lines beginning
 `COUNT`, `WRONG` and `QUESTION` at the end are read back by the runner, which fails if
 one differs from what it computes. The scenes are renderings: the sixth follow-up's

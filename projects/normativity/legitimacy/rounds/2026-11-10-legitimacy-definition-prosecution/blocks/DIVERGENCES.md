@@ -1,5 +1,7 @@
 # Divergences — computed verdicts that differ from their predictions
 
+> **Earlier attempt.** This document belongs to the account of a part as a mechanism and a purpose on the world, purposes given, tested by the fifth follow-up (2026-11-13): the four kinds of influence could not be used as dispatched, a chain of steps each in range carries her from her best outcome to her worst, and the decomposition adds permission and a rule of attribution and no protection. What replaced it: manipulation as induced miscalibration of her estimates (`estimates/`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 One row of thirty-seven. `run.py` fails when a row diverges and is not listed here, and
 when a row listed here does not diverge.
 

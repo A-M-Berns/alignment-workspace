@@ -1,5 +1,7 @@
 # The adviser as one of her parts
 
+> **Earlier attempt.** This document belongs to the account of a goal pursued through parts, with yes-or-no constraints on candidate descriptions, tested by the third follow-up (2026-11-12): the constraints do not fix purposes (eight of 3,000 candidates admissible, no two classifying the adviser's actions alike), a lie widens no gap where she was already wrong, and the gate's no-gain property fails. What replaced it: candidates weighted by explanatory quality (`scored/`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 Answer to `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-3-addendum.md`.
 The idea is the prompt author's guess and is not part of `ACCOUNT.md`. Computed facts are
 `decomposition/extensions.py`, `adviser_as_part`, printed by `python3 run.py --json` under

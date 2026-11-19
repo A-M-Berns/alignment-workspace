@@ -1,5 +1,7 @@
 # The account: candidates weighted as explanations, influence judged against the adviser's aim
 
+> **Earlier attempt.** This document belongs to the account with candidates weighted as explanations and influence judged against the adviser's aim, tested by the fourth follow-up (2026-11-12): the weight concentrates on candidates that give her judging part no purpose or a private one, a lie told at every aim passes, and the decomposition adds nothing to the guarantee aim-freedom gives. What replaced it: a part as a mechanism and a purpose on the world (`blocks/`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 Amended after the freeze, with `THEOREMS.md`: §3, the degraded part's own move under `deg`
 is the change and is not scored; §4, the history lengths reported beside 80 are 160, 320
 and 640, since 40 gives fractional counts, and a missed move at 4 and at 16 bits is

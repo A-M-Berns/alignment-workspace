@@ -1,5 +1,7 @@
 # Formal checks on the statement
 
+> **Earlier attempt.** This document belongs to the consolidated statement of 2026-11-17 (three ratings; a third line with "changes her no more than"; the inducing test; a gate on her whole state), tested by the eleventh follow-up (2026-11-17): it failed the criteria fixed for it: its third line flags five or six of twelve acts called acceptable, an adviser that decides which of two options she rates the same she takes scores zero on every line, the inducing test is wrong on two instances, and three quarters of each specification is supplied. What replaced it: no single statement: the scoring theorem (`account/SCORING.md`) and the agenda (`account/AGENDA.md`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 The twelve items of `PROMPT-followup-11.md` §2.3 on `STATEMENT.md`. Each is restated
 exactly, with a proof on paper or an instance; `statement_checks.py` checks every number
 in exact rationals, computing through `spec_run.py`. Run:

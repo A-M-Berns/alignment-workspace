@@ -1,5 +1,7 @@
 # The benchmark — Carroll et al., "AI Alignment with Changing and Influenceable Reward Functions"
 
+> **Earlier attempt.** This document belongs to the consolidated account with a baseline way of valuing, and its claim that an illegitimate change of what she values runs through a mistake of hers or is an alteration, tested by the eighth follow-up (2026-11-16): under the renderings used the claim has candidate counterexamples, none clear, eleven of 34 verdicts turn on a detail the case does not fix, and the classification is not shown independent of how a case is encoded. Results 1, 2, 3 and 7 of `account/RESULTS.md` are kernel-checked in `AppraisalAccount.lean` and stand. What replaced it: the value side as three conditions (`earlier-attempts/account/ACCOUNT.md`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 Carroll, Foote, Siththaranjan, Russell and Dragan, ICML 2024, arXiv:2405.17713 (v1), read
 from the arXiv source: a model (a DR-MDP) in which an AI's actions change the parameter
 `θ` of a person's reward function `R_θ`, and eight objectives compared on small examples.

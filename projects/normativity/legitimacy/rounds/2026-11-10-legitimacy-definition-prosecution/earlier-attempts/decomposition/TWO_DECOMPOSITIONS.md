@@ -1,5 +1,7 @@
 # Two decompositions and a relation between them
 
+> **Earlier attempt.** This document belongs to the account of a goal pursued through parts, with yes-or-no constraints on candidate descriptions, tested by the third follow-up (2026-11-12): the constraints do not fix purposes (eight of 3,000 candidates admissible, no two classifying the adviser's actions alike), a lie widens no gap where she was already wrong, and the gate's no-gain property fails. What replaced it: candidates weighted by explanatory quality (`scored/`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 Answer to `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-3-addendum-2.md`.
 The generalisation is the maintainer's and the prompt author's and is not part of
 `ACCOUNT.md`. Tried because statement 1 found a purpose alterable at one part with nothing

@@ -1,5 +1,7 @@
 # The account — manipulation as induced mistake; a change of what she values judged by three conditions against a reference
 
+> **Earlier attempt.** This document belongs to the value side as three conditions (options, accuracy, self-command) against one permitted policy, tested by the ninth follow-up (2026-11-16): it neither passed nor failed its test: two renderers agreed on each condition in 14 or 15 of 64 cases, the cases not fixing the comparisons, and the conditions bound neither what she can know nor her unused information. Results 3, 4 and 5 of `account/VALUE_RESULTS.md` are kernel-checked in `AppraisalAccount.lean` and stand. What replaced it: the board statement (`earlier-attempts/account/BOARD.md`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 **`STATEMENT.md` is the statement that governs now**; `BOARD.md` is the statement the tenth
 follow-up tested, and this document the one the ninth tested.
 

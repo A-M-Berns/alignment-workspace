@@ -1,5 +1,7 @@
 # The setting: a part as a mechanism and a purpose on the world
 
+> **Earlier attempt.** This document belongs to the account of a part as a mechanism and a purpose on the world, purposes given, tested by the fifth follow-up (2026-11-13): the four kinds of influence could not be used as dispatched, a chain of steps each in range carries her from her best outcome to her worst, and the decomposition adds permission and a rule of attribution and no protection. What replaced it: manipulation as induced miscalibration of her estimates (`estimates/`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 The current statement of the round's account. Purposes are given, not recovered from
 behaviour. Every name is provisional. §1 is the position, §2 the model, §3 the choices
 made where the dispatch left the model open, each with its alternative, §4 the devices the

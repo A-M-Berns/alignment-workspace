@@ -1,5 +1,7 @@
 # Divergences
 
+> **Earlier attempt.** This document belongs to the purpose-first account (sound, in range, maintained), tested by the follow-up of 2026-11-11: four of its eight statements are refuted, among them that trust is not manufactured and that the gate gains nothing; a threat fails no clause; verdicts follow the allowed set a case is given. What replaced it: purposes pursued through parts (`decomposition/`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 Computed verdicts that differ from `CASE_BANK.md`'s predictions. The predictions are not
 edited. The runner fails on a divergence not listed here and on a line here that no longer
 diverges. Fifty-four of the fifty-five banked cases match; one diverges.

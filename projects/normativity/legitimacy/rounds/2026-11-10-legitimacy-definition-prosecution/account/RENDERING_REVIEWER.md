@@ -1,5 +1,7 @@
 # The external reviewer's rendering
 
+> **Earlier attempt.** This document belongs to the value side as three conditions (options, accuracy, self-command) against one permitted policy, tested by the ninth follow-up (2026-11-16): it neither passed nor failed its test: two renderers agreed on each condition in 14 or 15 of 64 cases, the cases not fixing the comparisons, and the conditions bound neither what she can know nor her unused information. Results 3, 4 and 5 of `account/VALUE_RESULTS.md` are kernel-checked in `AppraisalAccount.lean` and stand. What replaced it: the board statement (`earlier-attempts/account/BOARD.md`). The present state of the line is `CURRENT.md` at the root of this round's directory.
+
 The stage-one reply of the external reviewer (`gpt-6-astra` through codex-cli 0.153.4, as its log
 reports), verbatim below the rule: given only `ACCOUNT.md` and `TEST_CASES.md`, without sight of
 `RENDERING_EXECUTOR.md`, which was committed before it ran.
