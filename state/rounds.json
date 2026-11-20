@@ -2337,7 +2337,7 @@
       "date": "2026-11-18",
       "project": "naturalized-agency",
       "path": "projects/naturalized-agency/rounds/2026-11-18-function-and-purpose-finite-model",
-      "verdict": "MODEL-BUILT-NOTHING-REGISTERED — a finite model of self-maintaining wholes, the functions of their parts and the aims of regulators, with a theorem on splitting a part proved on paper and exact computations on worked systems; the ascription of functions changes with the choice of parts, an aim is relative to a class of admissible targets, and one nested system agrees with a closed-form threshold for which no derivation is given. Every component is open.",
+      "verdict": "MODEL-BUILT-NOTHING-REGISTERED — a finite model of self-maintaining wholes, the functions of their parts and the aims of regulators, with a theorem on splitting a part proved on paper and exact computations on worked systems; the ascription of functions changes with the choice of parts, an aim is relative to a class of admissible targets, in a nested system a part lives longer by serving its whole exactly when its independence is below a closed-form threshold, and a part able to build its own support lives longer by building it and then defecting once that support is durable enough. Every component is open.",
       "verdict_source": "projects/naturalized-agency/rounds/2026-11-18-function-and-purpose-finite-model/README.md",
       "depends_on": [],
       "registered_classes": [],

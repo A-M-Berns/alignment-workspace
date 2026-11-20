@@ -88,7 +88,7 @@ def lifetime(pol, alive, eps, eps_b, h, rho, start=START):
 
 def threshold(u, v, h):
     """The independence at which serving and defecting give the part equal expected
-    lifetime, in the two-policy calculation of README section 5; None when u <= v*h."""
+    lifetime (README 5.1), with u = (1 - eps)**2, v = (1 - eps_b)**2; None when u <= v*h."""
     if u <= v * h:
         return None
     return (1 - v * (1 - h) * (1 - u) / (u - v * h)) / v

@@ -1,10 +1,10 @@
 # Function and purpose in a finite model
 
-**Verdict.** MODEL-BUILT-NOTHING-REGISTERED — a finite model of self-maintaining wholes, the functions of their parts and the aims of regulators, with a theorem on splitting a part proved on paper and exact computations on worked systems; the ascription of functions changes with the choice of parts, an aim is relative to a class of admissible targets, and one nested system agrees with a closed-form threshold for which no derivation is given. Every component is open.
+**Verdict.** MODEL-BUILT-NOTHING-REGISTERED — a finite model of self-maintaining wholes, the functions of their parts and the aims of regulators, with a theorem on splitting a part proved on paper and exact computations on worked systems; the ascription of functions changes with the choice of parts, an aim is relative to a class of admissible targets, in a nested system a part lives longer by serving its whole exactly when its independence is below a closed-form threshold, and a part able to build its own support lives longer by building it and then defecting once that support is durable enough. Every component is open.
 
 Nothing here is registered; the support of each statement is named beside it.
 
-Rerun: `python3 tests/run.py` from this directory (28 tests, about three seconds,
+Rerun: `python3 tests/run.py` from this directory (32 tests, about four seconds,
 standard library, exact rationals throughout).
 
 All names in this document are **provisional**.
@@ -141,21 +141,26 @@ the whole's target (*serve*) or to one that lowers its own failure rate from `ε
 `ε′` (*defect*). Expected lifetimes are computed exactly from the Markov chain on its
 32 states.
 
-A two-policy calculation with per-step survival `u` of the part at the whole's target,
-`v > u` at its own, and `h` of the whole off its target gives equal expected lifetimes
-of the part under the two policies at
+**5.1** Let `u = (1 − ε)²` and `v = (1 − ε′)²`. If `u > vh`, put
 
-    ρ* = (1 − v(1 − h)(1 − u) / (u − vh)) / v        (u > vh),
+    ρ* = (1 − v(1 − h)(1 − u) / (u − vh)) / v.
 
-serving being better for the part below `ρ*`.
+The part's expected lifetime is longer under serve than under defect exactly when
+`ρ < ρ*`, and the two are equal at `ρ*`. *Proof.* Under serve the service arrives every
+step, the whole persists, and the part survives each step with probability `u`: its
+expected lifetime is `1/(1 − u)`. Under defect the first step is taken at the
+unlowered rate with the whole still supplied, so the part survives it with probability
+`u` and the whole survives it surely. From then on, with the whole alive the part
+survives a step with probability `v` and the whole with probability `h`; with the whole
+gone the part survives a step with probability `ρv`. The expected lifetimes `A` and `B`
+from those two states satisfy `B = 1 + ρvB` and `A = 1 + v(hA + (1 − h)B)`, so
+`A = (1 + v(1 − h)/(1 − ρv)) / (1 − vh)`, increasing in `ρ`. The part's expected
+lifetime under defect is `1 + uA`, and `1 + uA < 1/(1 − u)` exactly when
+`A < 1/(1 − u)`, which rearranges to `ρ < ρ*`. ∎
 
-**Observation.** With `u = (1 − ε)²` and `v = (1 − ε′)²`, the part's expected lifetimes
-under serve and defect in the 32-state system are exactly equal at `ρ*`, with serve
-longer just below and defect longer just above, for
-`(ε, ε′, h) = (1/10, 1/40, 1/2), (1/5, 1/20, 1/4), (1/10, 1/20, 3/4)`; at
-`(1/4, 1/100, 1/2)` the formula is negative and defect is longer at `ρ = 0`. The
-32-state system delays both the service and the lowered failure rate by a step, which
-the two-policy calculation does not; no derivation of the agreement is given.
+`test_nested.py` checks the equality at `ρ*` exactly and the two strict inequalities at
+`ρ* ± 1/1000` for `(ε, ε′, h) = (1/10, 1/40, 1/2), (1/5, 1/20, 1/4), (1/10, 1/20, 3/4)`,
+and that at `(1/4, 1/100, 1/2)`, where `ρ* < 0`, defect is longer at `ρ = 0`.
 
 At `(1/10, 1/40, 1/2)` and `ρ = 1/2` the whole's expected lifetime is `157/19` with the
 part serving, `3` with it defecting and `3` with it absent. Of the 125 policies with
@@ -165,6 +170,22 @@ actions in `{−2, …, 2}`, compared with the idle policy on both lifetimes:
 |---|---|---|---|
 | 1/2 | 16 | 0 | 1 |
 | 9/10 | 7 | 9 | 10 |
+
+## 6. Independence the part builds (`src/acquired.py`, `tests/test_acquired.py`)
+
+The outside source is replaced by a store `X` that feeds the inner loop when the whole
+does not. The intact inner loop steers each step to one of three targets: *serve*,
+*boost* (the lowered failure rate) or *build* (`X` present on the next step). `X` lapses
+each step with probability `δ` unless rebuilt. A policy names a target for each of `X`
+absent and `X` present, nine policies in all. At `(ε, ε′, h) = (1/10, 1/40, 1/2)`:
+
+- at `δ = 1/4` no policy gives the part a longer expected lifetime than serving in both
+  cases, `100/19`;
+- at `δ = 1/10` the policy *build while `X` is absent, boost while it is present* gives
+  the part `5500218221251/817862668900`, longer than every other policy, and gives the
+  whole expected lifetime `3`, its lifetime with the part absent; at `δ = 0` the part's
+  is `4771/316`;
+- that policy overtakes serving between `δ = 2/11` and `δ = 1/6`.
 
 ## What is not shown
 
@@ -176,8 +197,8 @@ actions in `{−2, …, 2}`, compared with the idle policy on both lifetimes:
 - That the function definition of §1 is stable under any re-carving. The theorem is
   about influence; "function strength" as a single number is not defined.
 - That the admissible targets of §4 can be chosen without reference to an observer.
-- The agreement in §5 beyond the four parameter settings, or any statement about
-  nested systems in general. `ρ` is an input.
+- Any statement about nested systems other than the two of §§5 and 6. §6 is computed at
+  one setting of `(ε, ε′, h)`, and its nine policies cannot condition on the whole's state.
 - Anything comparing two descriptions arrived at separately, beyond 4.2.
 
 ## Sources read for this round
