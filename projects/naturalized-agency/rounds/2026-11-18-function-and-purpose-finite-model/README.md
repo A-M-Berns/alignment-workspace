@@ -4,7 +4,7 @@
 
 Nothing here is registered; the support of each statement is named beside it.
 
-Rerun: `python3 tests/run.py` from this directory (32 tests, about four seconds,
+Rerun: `python3 tests/run.py` from this directory (36 tests, about five seconds,
 standard library, exact rationals throughout).
 
 All names in this document are **provisional**.
@@ -35,6 +35,9 @@ Write `S = G(P)`.
   `p ∉ G(S ∖ T ∖ {q})`.
 - *Influence.* Let each part `x` fail independently with probability `r(x)`, `T` the
   set of failed parts. `I(q → p) = P(p ∈ G(S ∖ T) | q ∉ T) − P(p ∈ G(S ∖ T) | q ∈ T)`.
+  It has the form of the component importance that reliability theory attributes to
+  Birnbaum (1969), for the system that works when `p` survives; the attribution is from
+  secondary sources and was not checked against the original.
 
 **1.2** Necessity is transitive. *Proof.* If `p ∉ G(S ∖ {q})` then `G(S ∖ {q})` is a
 self-maintaining subset of `S ∖ {p}`, hence inside `G(S ∖ {p})`; anything missing from
@@ -76,7 +79,10 @@ For (3), `q₁` survives when `q` does if `q₂` is alive; the two differ only o
 that `q₁` is alive and `q₂` has failed, of probability `(1 − r₁)r₂`, on which the
 difference of conditional probabilities lies in `[−1, 1]`. ∎
 
-The proof is on paper and not machine-checked. `test_splitting.py` checks (1) and (2)
+Parts (1) and (2) have the form of the product rule reported for that importance
+measure (a component's importance is its importance within a module times the
+module's), again from secondary sources; (3) concerns the module as the thing that
+survives. The proof is on paper and not machine-checked. `test_splitting.py` checks (1) and (2)
 with exact equality and (3) with the bound attained, on the systems of a fixed
 pseudo-random family whose greatest self-maintaining set has at least three parts.
 
@@ -161,6 +167,30 @@ lifetime under defect is `1 + uA`, and `1 + uA < 1/(1 − u)` exactly when
 `test_nested.py` checks the equality at `ρ*` exactly and the two strict inequalities at
 `ρ* ± 1/1000` for `(ε, ε′, h) = (1/10, 1/40, 1/2), (1/5, 1/20, 1/4), (1/10, 1/20, 3/4)`,
 and that at `(1/4, 1/100, 1/2)`, where `ρ* < 0`, defect is longer at `ρ = 0`.
+
+**5.2 (dependence bounds defection).** Take any process in discrete time with two
+absorbing deaths, a whole's and a part's, and write `L_W` and `L_w` for the expected
+numbers of steps each is alive. Suppose that whenever the whole is dead at a step, the
+part is alive at the next with conditional probability at most `ρ < 1`, whatever the
+history. Then
+
+    L_w ≤ L_W + 1/(1 − ρ).
+
+*Proof.* The steps at which the part is alive are those at which the whole is also
+alive, at most `L_W` in expectation, and those from the whole's death on. At the step
+of the whole's death the part is alive with probability at most 1, and `k` steps later
+with probability at most `ρᵏ`. ∎
+
+The statement uses nothing about policies, parts or processes beyond the hypothesis.
+Two consequences. If a behaviour gives the part an expected lifetime at least that of a
+reference behaviour `σ`, it gives the whole at least `L_w(σ) − 1/(1 − ρ)`. And for a
+part inside a whole inside a larger whole, with independences `ρ₁` and `ρ₂`, the
+part's expected lifetime is at most the largest whole's plus
+`1/(1 − ρ₁) + 1/(1 − ρ₂)`. In the system of this section the hypothesis holds with the
+`ρ` of the outside source. `test_dependence.py` checks the inequality and the first
+consequence over all 125 policies at `ρ = 0, 1/2, 9/10`; at `ρ = 1` the hypothesis
+fails and defect gives the part more than 17 against the whole's 3; at `ρ = 0` defect
+gives the part more than the whole and less than the whole plus one.
 
 At `(1/10, 1/40, 1/2)` and `ρ = 1/2` the whole's expected lifetime is `157/19` with the
 part serving, `3` with it defecting and `3` with it absent. Of the 125 policies with

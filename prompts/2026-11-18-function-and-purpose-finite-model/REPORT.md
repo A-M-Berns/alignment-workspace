@@ -18,7 +18,7 @@ and are not restated here. Every component is **open**.
   Everitt, arXiv:2402.10877, were read through a fetching subagent's report, the former
   without its last section, the latter without its Section 4 and proofs; neither is
   relied on by a statement in the README.
-- Built the model of README §§1–6 and its 32 tests.
+- Built the model of README §§1–6 and its 36 tests.
 
 ## Corrections to the dispatch
 
