@@ -71,8 +71,10 @@ def _solve(A, b):
     return [M[i][n] for i in range(n)]
 
 
-def lifetime(pol, alive, eps, eps_b, h, rho, start=START):
-    """Expected number of steps for which `alive` holds, from `start`."""
+def lifetime(pol, alive, eps, eps_b, h, rho, start=START, count=None):
+    """Expected number of steps for which `alive` holds, from `start`; with `count`, the
+    expected number of those steps at which `count` also holds.  `alive` must be
+    absorbing in its failure: once false it stays false."""
     states = [frozenset(n for n, bit in zip(NAMES, bits) if bit) for bits in product([0, 1], repeat=len(NAMES))]
     live = [s for s in states if alive(s)]
     idx = {s: i for i, s in enumerate(live)}
@@ -83,7 +85,12 @@ def lifetime(pol, alive, eps, eps_b, h, rho, start=START):
         for t, p in transitions(s, pol, eps, eps_b, h, rho).items():
             if t in idx:
                 A[i][idx[t]] -= p
-    return _solve(A, [Fraction(1)] * len(live))[idx[start]]
+    b = [Fraction(1 if count is None or count(s) else 0) for s in live]
+    return _solve(A, b)[idx[start]]
+
+
+def unserved(s):
+    return "Service" not in s
 
 
 def threshold(u, v, h):

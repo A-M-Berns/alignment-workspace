@@ -1,10 +1,10 @@
 # Function and purpose in a finite model
 
-**Verdict.** MODEL-BUILT-NOTHING-REGISTERED — a finite model of self-maintaining wholes, the functions of their parts and the aims of regulators, with a theorem on splitting a part proved on paper and exact computations on worked systems; the ascription of functions changes with the choice of parts, an aim is relative to a class of admissible targets, in a nested system a part lives longer by serving its whole exactly when its independence is below a closed-form threshold, and a part able to build its own support lives longer by building it and then defecting once that support is durable enough. Every component is open.
+**Verdict.** MODEL-BUILT-NOTHING-REGISTERED — a finite model of self-maintaining wholes, the functions of their parts and the aims of regulators. Proved on paper for any discrete-time process: a part that seldom outlasts its dead whole cannot outlive it by more than a constant, and when the whole in turn seldom outlasts a step unserved, the expected number of steps at which the part is alive and the whole unserved is at most a constant. In worked systems, computed exactly: the ascription of functions changes with the choice of parts, an aim is relative to a class of admissible targets, a part lives longer by serving exactly when its independence is below a closed-form threshold, and a part able to build durable support lives longer by building it and then defecting. Every component is open.
 
 Nothing here is registered; the support of each statement is named beside it.
 
-Rerun: `python3 tests/run.py` from this directory (36 tests, about five seconds,
+Rerun: `python3 tests/run.py` from this directory (41 tests, under ten seconds,
 standard library, exact rationals throughout).
 
 All names in this document are **provisional**.
@@ -53,6 +53,11 @@ two kinds of such parts. This follows the three conditions of Mossio, Saborido a
 Moreno, "An organizational account of biological functions", *BJPS* 60 (2009), §5:
 contribution to the maintenance of the organisation, production under its constraints,
 and organisational differentiation.
+Montévil and Mossio, "Biological organisation as closure of constraints", *J. Theor.
+Biol.* (2015), doi:10.1016/j.jtbi.2015.02.029, Definition 4, require of a closed set that
+each constraint depend directly on another member and have another member depend on
+it, which a single self-sustaining pattern cannot meet; the two-kinds condition here
+plays that role.
 
 ## 2. Re-carving (`split`, `merge`)
 
@@ -192,6 +197,30 @@ consequence over all 125 policies at `ρ = 0, 1/2, 9/10`; at `ρ = 1` the hypoth
 fails and defect gives the part more than 17 against the whole's 3; at `ρ = 0` defect
 gives the part more than the whole and less than the whole plus one.
 
+**5.3 (closure bounds shirking).** Take a process as in 5.2 with a third indicator, that
+the whole is *served* at a step. Suppose the hypothesis of 5.2, and suppose that
+whenever the whole is alive and unserved at a step it is alive at the next with
+conditional probability at most `h < 1`, whatever the history. Then the expected
+number of steps at which the part is alive and the whole is unserved is at most
+
+    1/(1 − h) + 1/(1 − ρ).
+
+*Proof.* Such steps with the whole dead number at most `1/(1 − ρ)` in expectation, as
+in 5.2. For those with the whole alive, let `N` count the steps at which the whole is
+alive and unserved; each is survived by the whole with probability at most `h`, so
+`P(N ≥ k) ≤ hᵏ⁻¹` and `E N ≤ 1/(1 − h)`. ∎
+
+The two hypotheses are quantitative forms of conditions C2 and C1 of the
+organisational account as §1 cites it: the part is maintained by the whole, and the
+whole is maintained through what the part does. The conclusion holds for every
+behaviour of the part. A part whose expected lifetime is `L` has therefore served at
+all but `1/(1 − h) + 1/(1 − ρ)` of its steps in expectation. In the system of this
+section, with *served* read as `Service` present, both hypotheses hold.
+`test_closure_bounds_shirking.py` checks the bound over all 125 policies at
+`h = 1/4, 1/2` and `ρ = 0, 1/2, 9/10`, with some policy above half the bound; at
+`ρ = 1`, and separately at `h = 1`, a hypothesis fails and defect leaves the whole
+unserved for more than 16 of the part's steps.
+
 At `(1/10, 1/40, 1/2)` and `ρ = 1/2` the whole's expected lifetime is `157/19` with the
 part serving, `3` with it defecting and `3` with it absent. Of the 125 policies with
 actions in `{−2, …, 2}`, compared with the idle policy on both lifetimes:
@@ -246,6 +275,10 @@ Sets", arXiv:1205.0584; Beer, "The Cognitive Domain of a Glider in the Game of L
 *Artificial Life* 20 (2014); Krakauer et al., "The Information Theory of
 Individuality", arXiv:1412.2447 (abstract and measures); Kenton et al., "Discovering
 Agents", arXiv:2208.08345 (introduction and assumptions). Huseby and Dahl (2024), cited in §1
-(Chapter 5, sections 5.1–5.2, and the definition of a module in section 3.3). The closure-under-union and
+(Chapter 5, sections 5.1–5.2, and the definition of a module in section 3.3). Montévil and
+Mossio (2015), cited in §1 (Definitions 1–4 and section 6.1). Di Paolo, "Autopoiesis,
+adaptivity, teleology, agency", *Phenomenology and the Cognitive Sciences* 4 (2005)
+(the definition of adaptivity and the argument around it). Millikan, "In Defense of
+Proper Functions", *Philosophy of Science* 56 (1989). The closure-under-union and
 lattice structure of §1 follows Dittrich and Speroni di Fenizio; the target-relative
 gain of §4 takes its baseline from Dennett's lectern in "True Believers".
