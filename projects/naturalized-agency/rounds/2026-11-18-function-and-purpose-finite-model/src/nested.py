@@ -93,6 +93,57 @@ def unserved(s):
     return "Service" not in s
 
 
+def survival(pol, alive, eps, eps_b, h, rho, t, start=START):
+    """P(`alive` holds at step t), from `start`."""
+    dist = {start: Fraction(1)}
+    for _ in range(t):
+        nxt = {}
+        for s, p in dist.items():
+            if not alive(s):
+                continue
+            for s2, q in transitions(s, pol, eps, eps_b, h, rho).items():
+                if alive(s2):
+                    nxt[s2] = nxt.get(s2, 0) + p * q
+        dist = nxt
+    return sum(dist.values(), Fraction(0))
+
+
+def shirk_tail(pol, eps, eps_b, h, rho, m, start=START):
+    """P(the part is alive with the whole unserved at m or more steps), from `start`."""
+    states = [frozenset(n for n, bit in zip(NAMES, bits) if bit) for bits in product([0, 1], repeat=len(NAMES))]
+    live = [s for s in states if inner_alive(s)]
+    counted = [s for s in live if unserved(s)]
+    plain = [s for s in live if not unserved(s)]
+    idx = {s: i for i, s in enumerate(plain)}
+    trans = {s: transitions(s, pol, eps, eps_b, h, rho) for s in live}
+    if m == 0:
+        return Fraction(1)
+    above = None
+    for _ in range(m):
+        # layer[s]: P(reaching m | at s with c steps counted before s); a counted s makes c + 1
+        if above is None:
+            layer = {s: Fraction(1) for s in counted}
+        else:
+            layer = {s: sum((p * above[t] for t, p in trans[s].items() if t in above), Fraction(0)) for s in counted}
+        if plain:
+            A = [[Fraction(0)] * len(plain) for _ in plain]
+            b = []
+            for s in plain:
+                i = idx[s]
+                A[i][i] += 1
+                rhs = Fraction(0)
+                for t, p in trans[s].items():
+                    if t in idx:
+                        A[i][idx[t]] -= p
+                    elif t in layer:
+                        rhs += p * layer[t]
+                b.append(rhs)
+            sol = _solve(A, b)
+            layer.update({s: sol[idx[s]] for s in plain})
+        above = layer
+    return above[start]
+
+
 def threshold(u, v, h):
     """The independence at which serving and defecting give the part equal expected
     lifetime (README 5.1), with u = (1 - eps)**2, v = (1 - eps_b)**2; None when u <= v*h."""

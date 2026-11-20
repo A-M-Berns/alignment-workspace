@@ -4,7 +4,7 @@
 
 Nothing here is registered; the support of each statement is named beside it.
 
-Rerun: `python3 tests/run.py` from this directory (41 tests, under ten seconds,
+Rerun: `python3 tests/run.py` from this directory (47 tests, about ten seconds,
 standard library, exact rationals throughout).
 
 All names in this document are **provisional**.
@@ -221,6 +221,39 @@ section, with *served* read as `Service` present, both hypotheses hold.
 `ρ = 1`, and separately at `h = 1`, a hypothesis fails and defect leaves the whole
 unserved for more than 16 of the part's steps.
 
+**5.4 (the tail).** Under the hypotheses of 5.3, with `θ = max(h, ρ)`, the probability
+that the part is alive with the whole unserved at `m` or more steps is at most
+`(m + 1) θ^(m − 2)`. *Proof.* Let `N₁` count such steps with the whole alive and `N₂`
+those with it dead; the former precede the latter. Conditioning step by step,
+`P(N₁ ≥ j, N₂ ≥ k) ≤ h^(j−1) ρ^(k−1)` with an exponent read as 0 when negative, and
+`N₁ + N₂ ≥ m` forces `N₁ ≥ j` and `N₂ ≥ m − j` for one of the `m + 1` values of `j`. ∎
+`test_tail_and_long_run.py` checks it for three policies, three settings of `(h, ρ)`
+and `m = 2, …, 8`, and that the exact tail sums to the expectation of 5.3.
+
+5.2–5.4 use no distribution on failures or disturbances: `ρ` and `h` are bounds on two
+conditional probabilities, required to hold after every history, and the conclusions
+hold conditionally on any history as well.
+
+**5.5 (who is left).** In the system of this section, the probability that the part is
+alive at step `t` is `uᵗ` under serve, and under defect it is, for `t ≥ 2`,
+
+    u · ( (vh)^(t−1) + Σ_{k=0}^{t−2} (vh)^k · v(1 − h) · (ρv)^(t−2−k) ),
+
+which decays at rate `v · max(h, ρ)`. So for large `t` the part is likelier to be alive
+under serve exactly when `u > v · max(h, ρ)`, and a part drawn to serve or to defect
+with any fixed positive probabilities is, given that it is alive at `t`, a server with
+probability tending to 1 in that case and to 0 when the inequality is reversed.
+*Proof.* Under serve the whole persists and the part survives each step with
+probability `u`. Under defect the first step is survived with probability `u` and the
+whole survives it; thereafter each step with the whole alive is survived by both with
+probability `vh` and by the part alone with probability `v(1 − h)`, and each step with
+the whole dead is survived with probability `ρv`. ∎
+
+The condition is symmetric in the two independences and differs from 5.1: at
+`(ε, ε′, h, ρ) = (1/10, 1/40, 1/2, 4/5)` defect gives the longer expected lifetime and
+serve the higher probability of being alive at step 400. `test_tail_and_long_run.py`
+checks the sign of the comparison at step 400 against the inequality at four settings.
+
 At `(1/10, 1/40, 1/2)` and `ρ = 1/2` the whole's expected lifetime is `157/19` with the
 part serving, `3` with it defecting and `3` with it absent. Of the 125 policies with
 actions in `{−2, …, 2}`, compared with the idle policy on both lifetimes:
@@ -256,6 +289,8 @@ absent and `X` present, nine policies in all. At `(ε, ε′, h) = (1/10, 1/40, 
 - That the function definition of §1 is stable under any re-carving. The theorem is
   about influence; "function strength" as a single number is not defined.
 - That the admissible targets of §4 can be chosen without reference to an observer.
+- More than a few lines of argument in 5.2–5.4: each conclusion is close to its
+  hypotheses, and what they add is the form of the hypotheses and the constants.
 - Any statement about nested systems other than the two of §§5 and 6. §6 is computed at
   one setting of `(ε, ε′, h)`, and its nine policies cannot condition on the whole's state.
 - Anything comparing two descriptions arrived at separately, beyond 4.2.
