@@ -1,0 +1,94 @@
+"""A self-maintaining part inside a self-maintaining whole.
+
+Inner loop: C and M maintain each other while fed, by the whole (Wb present) or by an
+outside source present with probability rho.  Outer loop: Wb persists if Service was
+delivered on the previous step, or from a reserve present with probability h.  Each step
+the inner loop, while intact, answers a disturbance d with pol[d]; outcome 0 delivers
+Service, outcome 1 delivers Boost, which lowers the failure rate of C and M from eps to
+eps_b on the following step.
+"""
+from fractions import Fraction
+from itertools import product
+
+D = [-1, 0, 1]
+ACTIONS = [-2, -1, 0, 1, 2]
+NAMES = ["C", "M", "Wb", "Service", "Boost"]
+START = frozenset(["C", "M", "Wb", "Service"])
+SERVE = {d: -d for d in D}
+DEFECT = {d: 1 - d for d in D}
+NOTHING = {d: 0 for d in D}
+
+
+def inner_alive(s):
+    return "C" in s and "M" in s
+
+
+def whole_alive(s):
+    return "Wb" in s
+
+
+def transitions(X, pol, eps, eps_b, h, rho):
+    inner = inner_alive(X)
+    fail = eps_b if "Boost" in X else eps
+    out = {}
+    for d in D:
+        o = d + (pol[d] if inner else 0)
+        for reserve, pr in ((True, h), (False, 1 - h)):
+            for wild, pw in ((True, rho), (False, 1 - rho)):
+                base = Fraction(1, 3) * pr * pw
+                nxt = set()
+                if inner and o == 0:
+                    nxt.add("Service")
+                if inner and o == 1:
+                    nxt.add("Boost")
+                if "Wb" in X and ("Service" in X or reserve):
+                    nxt.add("Wb")
+                fed = inner and ("Wb" in X or wild)
+                for fc, pc in ((False, 1 - fail), (True, fail)):
+                    for fm, pm in ((False, 1 - fail), (True, fail)):
+                        n2 = set(nxt)
+                        if fed and not fc:
+                            n2.add("C")
+                        if fed and not fm:
+                            n2.add("M")
+                        k = frozenset(n2)
+                        out[k] = out.get(k, 0) + base * pc * pm
+    return out
+
+
+def _solve(A, b):
+    n = len(b)
+    M = [row[:] + [b[i]] for i, row in enumerate(A)]
+    for c in range(n):
+        p = next(r for r in range(c, n) if M[r][c] != 0)
+        M[c], M[p] = M[p], M[c]
+        inv = 1 / M[c][c]
+        M[c] = [x * inv for x in M[c]]
+        for r in range(n):
+            if r != c and M[r][c] != 0:
+                f = M[r][c]
+                M[r] = [x - f * y for x, y in zip(M[r], M[c])]
+    return [M[i][n] for i in range(n)]
+
+
+def lifetime(pol, alive, eps, eps_b, h, rho, start=START):
+    """Expected number of steps for which `alive` holds, from `start`."""
+    states = [frozenset(n for n, bit in zip(NAMES, bits) if bit) for bits in product([0, 1], repeat=len(NAMES))]
+    live = [s for s in states if alive(s)]
+    idx = {s: i for i, s in enumerate(live)}
+    A = [[Fraction(0)] * len(live) for _ in live]
+    for s in live:
+        i = idx[s]
+        A[i][i] += 1
+        for t, p in transitions(s, pol, eps, eps_b, h, rho).items():
+            if t in idx:
+                A[i][idx[t]] -= p
+    return _solve(A, [Fraction(1)] * len(live))[idx[start]]
+
+
+def threshold(u, v, h):
+    """The independence at which serving and defecting give the part equal expected
+    lifetime, in the two-policy calculation of README section 5; None when u <= v*h."""
+    if u <= v * h:
+        return None
+    return (1 - v * (1 - h) * (1 - u) / (u - v * h)) / v

@@ -11,6 +11,7 @@ Generated from `state/projects.json` by `python3 -m checkers.workspace_state --w
 | decision-theory | Decision theory | active | — | projects/decision-theory | `projects/decision-theory/README.md`<br>`projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/PROBLEM_STATEMENT.md`<br>`projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/TEST_SUITE.md`<br>`projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/AUDIT.md` |
 | leverage | Leverage | deprecated | — | — | — |
 | enabling | Enabling work | active | — | projects/enabling | `projects/enabling/README.md` |
+| naturalized-agency | Naturalized agency | active | — | projects/naturalized-agency | `projects/naturalized-agency/README.md`<br>`projects/naturalized-agency/rounds/2026-11-18-function-and-purpose-finite-model/README.md` |
 
 ## Foundation claim sources
 
