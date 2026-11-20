@@ -80,6 +80,17 @@
       "entry_points": [
         "projects/enabling/README.md"
       ]
+    },
+    {
+      "id": "naturalized-agency",
+      "name": "Naturalized agency",
+      "path": "projects/naturalized-agency",
+      "status": "active",
+      "parent": null,
+      "entry_points": [
+        "projects/naturalized-agency/README.md",
+        "projects/naturalized-agency/rounds/2026-11-18-function-and-purpose-finite-model/README.md"
+      ]
     }
   ]
 }
