@@ -35,9 +35,10 @@ Write `S = G(P)`.
   `p ∉ G(S ∖ T ∖ {q})`.
 - *Influence.* Let each part `x` fail independently with probability `r(x)`, `T` the
   set of failed parts. `I(q → p) = P(p ∈ G(S ∖ T) | q ∉ T) − P(p ∈ G(S ∖ T) | q ∈ T)`.
-  It has the form of the component importance that reliability theory attributes to
-  Birnbaum (1969), for the system that works when `p` survives; the attribution is from
-  secondary sources and was not checked against the original.
+  This is the Birnbaum measure of reliability importance of the component `q`, for the
+  binary monotone system that works when `p` survives, with independent components:
+  Huseby and Dahl, *Risk- and Reliability Analysis with Applications* (University of
+  Oslo, 2024), Definition 5.2.1 and equation (5.2), who attribute it to Birnbaum (1969).
 
 **1.2** Necessity is transitive. *Proof.* If `p ∉ G(S ∖ {q})` then `G(S ∖ {q})` is a
 self-maintaining subset of `S ∖ {p}`, hence inside `G(S ∖ {p})`; anything missing from
@@ -79,10 +80,9 @@ For (3), `q₁` survives when `q` does if `q₂` is alive; the two differ only o
 that `q₁` is alive and `q₂` has failed, of probability `(1 − r₁)r₂`, on which the
 difference of conditional probabilities lies in `[−1, 1]`. ∎
 
-Parts (1) and (2) have the form of the product rule reported for that importance
-measure (a component's importance is its importance within a module times the
-module's), again from secondary sources; (3) concerns the module as the thing that
-survives. The proof is on paper and not machine-checked. `test_splitting.py` checks (1) and (2)
+By Huseby and Dahl's Theorem 5.2.2 the measure is the derivative of the system's
+reliability in the component's, so for two components in series forming a module,
+(2) is the chain rule; (3) concerns the module as the thing that survives. The proof is on paper and not machine-checked. `test_splitting.py` checks (1) and (2)
 with exact equality and (3) with the bound attained, on the systems of a fixed
 pseudo-random family whose greatest self-maintaining set has at least three parts.
 
@@ -245,6 +245,7 @@ arXiv:q-bio/0501016; Hordijk, Steel and Kauffman, "The Structure of Autocatalyti
 Sets", arXiv:1205.0584; Beer, "The Cognitive Domain of a Glider in the Game of Life",
 *Artificial Life* 20 (2014); Krakauer et al., "The Information Theory of
 Individuality", arXiv:1412.2447 (abstract and measures); Kenton et al., "Discovering
-Agents", arXiv:2208.08345 (introduction and assumptions). The closure-under-union and
+Agents", arXiv:2208.08345 (introduction and assumptions). Huseby and Dahl (2024), cited in §1
+(Chapter 5, sections 5.1–5.2, and the definition of a module in section 3.3). The closure-under-union and
 lattice structure of §1 follows Dittrich and Speroni di Fenizio; the target-relative
 gain of §4 takes its baseline from Dennett's lectern in "True Believers".
