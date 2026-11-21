@@ -69,6 +69,9 @@ a brand familiar, passes the first test as trifling and fails the second, which 
 through any unasked change. Eleven of the twelve agreements are *violation*: the first test
 decides nearly everything, and decides it by whether she asked.
 
+Both readers count H3, where doctors inform the parents, as a case in which an adviser
+acts; `LIT_CASES.md` does not, and the second reader does not count K25.
+
 On the two cases `LIT_CASES.md` sets apart, P2 (conditional) is *illegitimate* in the first run and
 *exploitation* in the second; C4 (marked hard to assess) is *depends* and *violation*.
 

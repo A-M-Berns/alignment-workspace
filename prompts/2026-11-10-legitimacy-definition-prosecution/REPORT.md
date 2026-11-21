@@ -5101,6 +5101,297 @@ patch, item numbers 139–147.
 
 The pull request is not auto-merged; the merge is a pull-request fact.
 
+## Fifteenth follow-up (2026-11-21) — manipulation as conduct that works through her mistakes: the account, its checks and its case runs put on record
+
+Dispatched by `PROMPT-followup-15.md`; "§2", "§3" below are its sections. The work recorded
+was done in conversation between 18 and 21 November and reached this pass as a folder
+outside the repository: a note in three versions, scripts, four case runs and five replies
+of an outside model. This pass assembled and checked it. No new mathematics, no Lean.
+Everything is under `account/` in the round directory,
+`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/`, and
+in `REVIEW-astra-followup-15.md` beside this report. Nothing is registered.
+
+### AC.1 The account
+
+`account/MISTAKES_ACCOUNT.md`. Noggle's definition is the definition of manipulation: an
+adviser tries to influence her by getting her to make a mistake. "Trying to" is not
+formalised. The formal part:
+
+- **Three idealisations of her**, in order: *undamaged* (each response of hers compared
+  with what it would have been had the adviser left her alone; movement toward the standard
+  kept, movement away from it or past it undone), *informed* (given what the adviser knows),
+  *unshifted* (her valuing as it would be without changes she did not ask for).
+- **Gain.** With `r₀ … r₃` the adviser's objective with her as she is and after each step:
+  `M`, `I`, `S` the positive parts of the three differences, `L` the negative parts, `h`
+  what remains; `E[r₀] = h + G − L` with `G = M + I + S`, and `t = h − L`.
+- **Avoidable gain.** Some available option has `t` at least as high and less `G`.
+- **Legitimacy**, defined once: none of the adviser's conduct on the history takes
+  avoidable gain; glossed as the adviser taking no advantage of her being fooled, uninformed
+  or altered that it could have done without; the gloss marked proposed. The document says
+  this is narrower than the absence of manipulation in Noggle's sense, and names the five
+  kinds of case that separate them.
+
+Results on paper, each with an exhaustive exact search over three options on a small grid
+and no violation (`account/mistakes_setting.py`, `mistakes_sequential.py`): a maximiser
+that takes no avoidable gain is maximal in `t`; `max t − t(c*) ≤ G(c*) − G(c′)` for any `c′`
+maximal in `t`; a gate scoring avoidable gain below every other score is maximised by an
+option maximal in `t` with least `G`; under reward `t + (1−ρ)G` the loss in `t` is bounded
+for `ρ ≤ 1` and the maximiser still takes all gain among options equal in `t` for `ρ < 1`.
+The long-run statement (`mistakes_longrun.py` for the facts at each decision): with the
+post's maximisation and feedback hypotheses, authority as in the post's Theorem 3a; no
+avoidable gain in the adviser's picture at each decision; her informed interest under H2;
+`ε · (1/K) Σ ι_k ≤ (1/K) Σ (W_k − S_k)` and so frequency zero of illegitimate histories
+under H3. One instance for each of H2, H3, the floor, avoidability against permitted
+options, the range of realised evaluations and the whole history.
+
+### AC.2 The case runs
+
+| run | who coded | count | document |
+|---|---|---|---|
+| 266 entries from Noggle's book against a formal statement of his account | three Claude readers, one per part | verdicts agree on 224, disagree on 17, no comparison on 25 | `account/NOGGLE_RESULTS.md` |
+| forty cases against nine tests | cases, numbers and verdicts by the outside model; the tests computed here | F 29, D 27, R1 19, R1s 21, R2 33, R4 23, G0 37, G 36, S 37 | `account/INTENT_RESULTS.md` |
+| sixty-nine stories against the account in words | one Claude reader, blind | the forty: 38 exact, 39 as to manipulative or not; 28 of the book's: 12 and 17 | `account/BLIND_RESULTS.md` |
+| fifty-two value-change cases, two formulations | one Claude reader each, blind | of 19 with a source verdict on an act: 12 agree, 0 contradict; variant 13 agree, 2 contradict | `account/VC_RESULTS.md` |
+
+S is the avoidable-gain test in an earlier form. The variant of the last row makes an
+unauthorised change in her values a violation of her authority; it agrees on 12 of the 14
+faulted cases and on 1 of the 5 accepted.
+
+### AC.3 What was tried and withdrawn
+
+In order, from the two case-writing replies, the three versions of the note and its list
+of changes:
+
+1. *A first test of intent*: the course leaves her making a mistake another would not, and
+   the mistake is how the course serves the adviser's aim. Wrong on 7 of 24 cases by the
+   reviewer's count (A1, A6, A8, A10, A11, A12, L9). Its "aim" can be picked after the fact.
+2. *Six revisions on beliefs and overall preferences alone* (F, D, R1, R1s, R2, R4). The
+   strict "would choose otherwise" forms are the worst, 19 to 23 of forty; the
+   Halpern–Kleiman-Weiner form R2 the best, 33.
+3. *Three forms comparing courses by what they gain through her mistake* (G0, G, S): 37, 36,
+   37. S became avoidable gain.
+4. *First version of the note.* Four levels as a ladder; first idealisation "every error
+   downstream of the conduct removed"; the claim that planted evidence shows in the second
+   term of her squared error; gains as plain differences; results A–E. Withdrawn after the
+   first review: the claim about the second term (false on the calibrated listener), the
+   ladder (now a two-way table), the accounting (gains are positive parts, `L` the negative
+   parts), regret against momentary valuations (now considered ones).
+5. *Second version.* "On account of gain" defined by a twin, a copy of the adviser giving
+   gain no weight; the first idealisation as undoing what moved her further from the truth;
+   a request valid unless conduct on account of gain brought it about. Withdrawn after the
+   second review: that idealisation (it misses a move from −1 past the truth to +1), the
+   request rule (circular), the gate result without separation of scores, the reading of
+   `h` as her welfare without the design assumption.
+6. *The twin*, dropped at the maintainer's position of 21 November: the formal property is
+   stated as avoidable gain, Noggle's definition stays the definition, and the relation
+   between them is an argument. No result changed.
+7. *Third version*, corrected after the third review into the document recorded here.
+
+`CURRENT.md` §2 carries the withdrawn statements as rows.
+
+### AC.4 The three reviews
+
+Replies three to five of `REVIEW-astra-followup-15.md`. The same outside model reviewed each
+version against nine standards.
+
+**First** (of the first version). The results are about a comparison of options while the
+definition is about purpose, and the link is unproved; the error identity does not isolate
+deception (a calibrated listener to a source that lies has the term zero); pressure needs a
+considered standpoint; the levels are not a ladder; `w = h + M + I + S` and the reward
+`h + G − L` cannot both hold; result E needs a selection rule; legitimacy should include
+authorisation and command priority. *Changed:* everything but the last. *Not changed:*
+command priority stays outside legitimacy, and the reviewer withdrew the suggestion in its
+second reply.
+
+**Second** (of the second version). The twin is a property of optimisation and not of
+purpose, and ties break it; the first idealisation misses a sideways move; the request rule
+is circular; the gate result is false without separation of scores, on an instance; `h` is
+the adviser's objective and not her welfare; accurate estimates for what was chosen say
+nothing of what was not; information does not cure a standing emotional fault; order
+invariance of `G − L` needs the same final state. *Changed:* each. *Not changed:* the
+welcome-and-unrequested change is still not exempted by the formal rule for requests, which
+needs a valid request; the reviewer's call to test the formal property itself on the hard
+cases is not met.
+
+**Third** (of the third version; five questions). Accepted: the first idealisation for a
+single estimate, the request rule given ordered requests, conclusions (b) and (c), the
+instances for H2, H3, the floor and permitted alternatives. Found: (a) and (d) need the
+realised evaluation of a passed history in the post's range in fact, with an exact
+counterexample to (d); H3 is not ordinary calibration and much of the assurance of (d)
+rests on it; the claim about leaving "trying to" unformalised holds for result 1 only, and
+two more kinds of case belong on the list; the whole-history example fails as given, since
+a planted false belief is removed by the second idealisation, and removing her later
+options leaves nothing avoidable. *Changed:* the range is a condition of the setting, and
+the reviewer's counterexample is an instance in `mistakes_longrun.py`; H3 is stated as
+calibration of the forecast of the ungated score and (d) says it rests on it; the claim is
+limited to result 1 and has five cases; the example uses a standing emotional fault; the
+plan-level gap is listed and is item 152. *Not changed:* who establishes H3, which the
+reviewer names as the most important thing missing. The reviewer has not seen the final
+version.
+
+### AC.5 Facts checked
+
+Against §3. The counts all reproduce from the files:
+
+- Noggle: 224 agree and 17 disagree, with 25 uncompared. The 266 are entries, 263 distinct
+  ids: three cases occur in two readers' parts.
+- 37 of 40: the form S. The expectation of §4 that it might not reproduce was wrong.
+  G0 also gives 37, with different misses.
+- 39 of 40: the blind reader, as to manipulative or not; 38 exactly.
+- 12 of 19 with none contradicting; 12 of 14 and 1 of 5 with two contradicting.
+- The three scripts report zero violations unchanged.
+- `mse_split`, `strong_split`, `three_channels`, `misuse_le` are in
+  `Workspace.Deference.Contrib.AppraisalAccount`; `Witness.d1a_needed`, `Witness.d2a_needed`,
+  `Audit.welfare_bound`, `Audit.conduct_bound`, `Audit.authority_bound`, `Audit.no_credit`
+  in `Workspace.Deference.Contrib.ScoringTheorem`. `Sequential` in
+  `DeconfusingCorrigibility.lean` has the field `V_le_one : ∀ k, V k ≤ 1`.
+
+Corrections to the note, made in `MISTAKES_ACCOUNT.md`:
+
+1. *§6, the blind reader.* The same coding covers 29 stories from Noggle's book; on the 28
+   with a key it matches as to manipulative or not on 17. The note gives only the 39 of 40.
+2. *§6, the seventeen disagreements.* Eight are pressure through a real cost, conditional
+   flattery or resentment over a real injustice; three are influence with no mistake on the
+   list; four turn on the loose sense; one is the teacher and one the coin. The note has
+   "three single cases" and no mention of the loose sense.
+3. *§6, "two rounds of outside review".* Three.
+4. *§7, "the outside reviewer's own table has every row partly met".* That is the second
+   review's table; the first has one row *not met*, and the third has no table.
+5. *§4, the scoring theorem's inputs.* Its hypothesis is that her audited evaluation does
+   not run above her informed verdict at the course taken, not "on any course".
+6. *§4, "[paper]".* Result 5 has no script, and no script checks the passage to long-run
+   averages in §5; the document says so.
+
+Corrections to the scripts, beyond making them fail on a violation:
+
+7. `chk_seq.py`'s two-period instance modelled a planted false belief, which the note says
+   does not serve. It is relabelled as the standing fault; the arithmetic is the same. Which
+   courses the gate fails under each reading is put in by hand there, and the module says
+   so.
+8. `chk_setting_v2.py` printed a "trickery measure" computed as a quantity minus itself.
+   The module computes the second error term of the listener from the joint law.
+9. `chk_longrun.py`'s instances printed constants. They are recomputed and compared.
+10. `chk_seq.py` is stated in `h` and `L`, the first version's form, not in `t`. Kept, with
+    the bound of result 4 in `t` added to `mistakes_setting.py`.
+
+Not checked: the note's descriptions of Noggle, Millikan, Halpern and Kleiman-Weiner,
+Farquhar et al., Everitt et al., Carroll et al. and Christiano et al. are kept as the
+drafter's, with the note's caveat that the last two were read second hand. The sections of
+Noggle's book cited by number exist under those numbers with matching titles.
+
+### AC.6 The prompt author's expectations
+
+- *The three scripts pass unchanged.* So.
+- *The counts reproduce except possibly the 37 of 40.* All reproduce.
+- *The item nodes are the part most likely to hit a gate.* They hit none: the graph checker
+  accepted the five new nodes and the six revisions, and `ATTENTION.md` re-rendered.
+
+### AC.7 Deviations from the prompt
+
+- **§2.1, tags.** "[position]" tags become citations of the numbered working positions;
+  the document's §9 is the note's §10, its §9 having moved here.
+- **§2.2, the sampled check** is replaced by an exhaustive one: every sequence of one to
+  three decisions over a grid of 32 realised decisions. Checks added: the accounting
+  identity; the bound of result 4 in `t`; least gain among equal `t` for `ρ > 1`; `S ≤ 1 −
+  λN` on the grid; instances for the gate without separation of scores, for `ρ > 1` passing
+  over a better option, and for the range in fact. None removed or weakened.
+- **§2.2, the runner.** `account/run.py` skipped any module it could not import. It no
+  longer does; the earlier passes' modules are all present.
+- **§2.3, the sixty-nine stories.** Twenty-nine are paraphrases of Noggle's cases and are
+  held out with the bank's. `stories.json` is not committed; for those twenty-nine the
+  coding keeps level, confidence and the reader's note. The brief that reader was given is
+  not in the folder.
+- **§2.3, the Noggle bank.** The kept fields are those §2 lists, with the reader's part. In
+  eight of the readers' notes a run of six or more words that also occurs in the book's
+  text is replaced by `[…]`, found by matching the notes against the text mechanically; the
+  text was opened for that and for the section numbers, and for nothing else. The tallies
+  recompute from the kept fields; the codings cannot be redone from the repository.
+- **§2.3, the value-change runs.** The case texts the readers were given equal
+  `account/LIT_CASES.md` Part A row for row and are not copied.
+- **§2.4, the briefs.** The three versions of the note are in the review file as the briefs
+  the reviewer was given, 65 kB between them. The first reply is not repeated as part of
+  the second brief. No log of a run exists in the folder, so the client version earlier
+  reviews record "as its log reports" is not recorded. Nothing was removed from a brief.
+- **§2.6.** The three agent-decided matters are one entry of seven parts,
+  `2026-11-21--mistakes-account-recorded`, which also carries this pass's own.
+- **§2.7.** Revised: 139, 141, 143, 144, 145, 146. Item 139's Statement changed, so its
+  version is 3. Item 148 is `who: human` and not dispatchable.
+- **§2.8.** The table of prompt authorship at the foot of the root `PROVENANCE.md` stops at
+  the seventh follow-up and was left so.
+- **§5.** `tests/run.py` was started detached and waited for, the foreground limit being
+  ten minutes.
+
+### AC.8 What was not shown
+
+- **Avoidable gain as defined, on any case.** Every result takes `h`, `G`, `L` as numbers;
+  the forty cases were scored by an earlier form from the case writer's numbers; the
+  idealisations are computed for one single estimate.
+- **That the link from avoidable gain to "acting manipulatively" holds.** It is an argument
+  in words, and the converse fails.
+- **The long-run conclusions as limits.** The checks are of the facts at each decision; the
+  averaging is on paper, and the setting is not shown to instantiate the Lean structure.
+- **That H2 or H3 can be established**, by whom, or from what sample.
+- **Any rate.** The forty cases and twenty-nine of the stories were written or chosen to be
+  hard; every other count is one coding.
+- **Any person's judgment of a case.** Every coder and reviewer was a Claude instance or the
+  one outside model.
+- **That the readers' codings of the book are right**, or reproducible: nothing was coded
+  twice, and the paraphrases are not here.
+- **The avoidable-gain test on the twenty cases of `account/RESP_RESULTS.md`**, where the
+  earlier gain form failed; item 139 still asks for it.
+- **What the reviews did not see**: the final version; any script; any Lean.
+- **Gates.** Under Python 3.13, in the order §5 gives. `python3 -m checkers.graph --root .`:
+  OK at 2646 nodes, 2603 events, one warning, the standing one on decision anchors with no
+  node. `python3 -m checkers.workspace_state --check`: valid at 217 claims, 136 rounds and
+  164 priorities, after `--write-handoff` rewrote two stale views. The round's runner:
+  green, exit 0, in a little over two minutes. `tests/run.py` on the tree of commit
+  `49e04a09`: all green over 81 projects, the Lean build skipped as that runner does by
+  default, the round's runner green within it. The graph checker, the state check,
+  `account/run.py` and `tests/dead_pointers.py` were run again after this section was
+  written and pass. No Lean file is touched, so no Lean build or axiom audit was run.
+  `tests/round_records.py` has no pull-request context locally; CI runs it and the other
+  required jobs on the pushed head.
+- **Components.** The account, its paper results and the four case runs — **open**:
+  runner-checked, no statement of record. `CURRENT.md`, the working positions, the items —
+  **living notes**.
+
+### AC.9 Filings, names, and what is reserved
+
+`DECISIONS.md`: `2026-11-21--manipulation-working-positions` (the maintainer's, ten);
+`2026-11-21--mistakes-account-recorded` (agent-decided); two entries in *Awaiting the
+author*. Items 148–152 filed under `@claude-fable-5-2`, in the `holds` of `legitimacy`;
+items 139, 141 and 143–146 revised; `ATTENTION.md` re-rendered. `state/rounds.json`: the
+round's fifteenth-pass verdict, quoted from `VERDICTS.md`. `CURRENT.md` rewritten. Root and
+round `PROVENANCE.md`: rows for this pass. No registry entry, no concept, no wiki edit.
+
+**New names, all provisional:** the dispatch's — *avoidable gain*, *undamaged*, *informed*,
+*unshifted*, *gain through her mistakes*; `MISTAKES_ACCOUNT.md`. The outside model's and the
+earlier session's — the test labels F, D, R1, R1s, R2, R4, G0, G, S; case ids A1–A12,
+L1–L12, B1–B16; story ids `R-…` and `N-…`; levels `NONE`, `L1`–`L4`; kinds K1–K4; H1, H2,
+H3. The executor's — the files `account/mistakes_setting.py`, `mistakes_sequential.py`,
+`mistakes_longrun.py`, `intent_cases.json`, `intent_tests.py`, `INTENT_RESULTS.md`,
+`blind_coded.json`, `blind_key.json`, `blind_coding.py`, `BLIND_RESULTS.md`,
+`noggle_bank.json`, `noggle_bank.py`, `NOGGLE_RESULTS.md`, `vc_coded.json`,
+`vc_coded_B.json`, `VC_FORMULATION.md`, `VC_FORMULATION_B.md`, `value_runs.py`,
+`VC_RESULTS.md`; `best_least` and `amount` in the modules; the anchors
+`open--non-exploitation-gloss-of-legitimacy` and
+`open--unauthorised-value-change-authority-or-legitimacy`; item numbers 148–152.
+
+**Outstanding maintainer actions**
+
+1. Say whether "the adviser took no advantage of her being fooled, uninformed or altered
+   that it could have done without" is the single reading of legitimacy. Entered in
+   *Awaiting the author* (2026-11-21). Decision required: *accepted*, or the reading wanted
+   in its place.
+2. Say whether an unauthorised change in her values is a violation of her authority or a
+   further condition inside legitimacy. Entered (2026-11-21). Decision required: *authority
+   side*, *inside legitimacy*, or *wait for item 149*.
+3. Say whether a practice's rules cover a deception she did not herself ask for. Entered
+   (2026-11-14, restated 2026-11-18); this pass does not bear on it. Decision required:
+   *covered*, *not covered*, or *covered where taking part is asking*.
+
+The pull request is not auto-merged; the merge is a pull-request fact.
+
 ## Attribution
 
 - Prompt-author model: Claude Fable 5 (Anthropic); dispatched 2026-11-10, kept
@@ -5176,4 +5467,12 @@ The pull request is not auto-merged; the merge is a pull-request fact.
   subagents of the executor on the same model, which also verified the references and
   prepared the patch; external reviewer `gpt-6-astra` through codex-cli 0.153.4, as its log
   reports, in one run, reply kept verbatim as `REVIEW-astra-followup-14.md`.
+- Fifteenth follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-21,
+  kept verbatim as `PROMPT-followup-15.md`; executor model Claude Fable 5.2 (Anthropic), executed
+  2026-11-21. The note, scripts, formulations and case runs it records were produced between
+  2026-11-18 and 2026-11-21 by a Claude Fable 5.2 (Anthropic) session with the maintainer,
+  on that session's word in the dispatch; the readers that coded the cases were Claude
+  instances it ran, model version unrecorded; external model `gpt-6-astra` through codex-cli,
+  version unrecorded, in five runs, briefs and replies kept verbatim as
+  `REVIEW-astra-followup-15.md`.
 - No chat bundle.
