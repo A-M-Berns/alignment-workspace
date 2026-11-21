@@ -522,6 +522,35 @@ commit.
   and whether taking part is asking: a judgment of the cases the round does not have.
   <!-- decision: open--practice-rules-cover-a-deception; touches: node:legitimacy; status: open -->
 
+- **Is "took no advantage it could have done without" the single reading of legitimacy? (2026-11-21).**
+  `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/MISTAKES_ACCOUNT.md` §3 defines a history as legitimate when none of the
+  adviser's conduct on it takes avoidable gain, glossed: the adviser took no advantage of her
+  being fooled, uninformed or altered that it could have done without. That is narrower than
+  the absence of manipulation in Noggle's sense: a deception that gains the adviser nothing,
+  one it had a second sufficient reason for, and one forced by its options all leave a
+  history legitimate. By the working position of 2026-11-21 legitimacy has one reading; the
+  gloss is the fifteenth follow-up's proposal for it. Decision required: *accepted*, or the
+  reading wanted in its place.
+  *Turns on:* what legitimacy is for in the corrigibility design: whether a history's
+  standing should fail on the adviser's attempt as such or only on what the attempt takes,
+  which is the maintainer's to say.
+  <!-- decision: open--non-exploitation-gloss-of-legitimacy; touches: node:legitimacy; status: open -->
+
+- **Is an unauthorised change in her values a violation of her authority, or a further condition inside legitimacy? (2026-11-21).**
+  The account counts gain through an unasked shift in her valuing as the third kind of gain,
+  so a change the adviser gains nothing by is no wrong on it. A variant makes any change
+  she did not ask for, cannot see and stop, and that is not trifling a violation of her
+  authority, gain or no gain. On the nineteen literature cases with a source verdict on an
+  act the first agrees on 12 and contradicts none; the second agrees on 12 of the 14 the
+  sources fault and contradicts two of the five they accept
+  (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VC_RESULTS.md`; one reader each). The fifteenth follow-up states the account
+  the first way and records the second as a direction (item 149). Decision required:
+  *authority side*, *inside legitimacy*, or *wait for item 149*.
+  *Turns on:* whether her say over what she values is to be a right of command, which holds
+  against a benefactor, or a protected interest, which a welcome change does not touch: a
+  choice about where the program's authority component is going.
+  <!-- decision: open--unauthorised-value-change-authority-or-legitimacy; touches: node:legitimacy; status: open -->
+
 ## Settled
 
 ### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer
@@ -8273,3 +8302,61 @@ added the section *Manipulation: legitimate as distinct from sound* to `wiki/Leg
 and left the rest of the page as it was. That stands. *Rejected:* replacing the page whole,
 which would delete the statement of the general theory that seventeen pages link to and that
 the manipulation line does not supersede. The maintainer reverses by re-ruling.
+
+### 2026-11-21 — on manipulation: Noggle's definition is the definition, avoidable gain is a separate guarantee, and legitimacy has one reading
+<!-- decision: 2026-11-21--manipulation-working-positions; touches: node:legitimacy, item:139, item:141, item:146 -->
+
+**Maintainer's working positions; not rulings and not constraints on the account** (Anson Berns,
+20 and 21 November 2026; stated in `PROMPT-followup-15.md` §2, deliverable 6, of the legitimacy
+definition prosecution round and recorded by the fifteenth follow-up). Each is held as of 2026-11-21 and
+is open to revision by the cases.
+
+1. Noggle's definition is the definition of manipulation: an adviser manipulates when it
+   tries to influence her by getting her to make a mistake. "Trying to" may stay unformalised
+   provided the safety guarantees are not significantly worse for it.
+2. Avoidable gain stands as a separate guarantee, with results of its own; it is not the
+   definition of manipulation.
+3. The definition contains no imagined counterpart of the adviser, such as a copy of it that
+   gives gain no weight.
+4. Choosing what she will over-rate, because she will over-rate it, is manipulation, even if
+   nothing false is said.
+5. An unwitting habit, reinforced because people give in to it, meets the weaker levels only:
+   conduct shaped to work through her mistake, not an adviser trying to.
+6. A kind deception is manipulation.
+7. Value interference should be definable without a comparison self.
+8. Legitimacy has one reading, not a philosophical reading and a formal stand-in.
+9. Novelty against the neighbouring literature is not a gate on this line.
+10. Theorems at this stage are proofs of concept for the setting.
+
+### 2026-11-21 — the work of 18–21 November on the legitimacy line is recorded as a fifteenth follow-up; the paraphrases of Noggle's cases stay out; the account's value-change part is stated as gain through an unasked shift
+<!-- decision: 2026-11-21--mistakes-account-recorded; touches: node:legitimacy, item:139, item:141, item:144 -->
+
+**Agent-decided, reversible** (the fifteenth follow-up to the legitimacy definition prosecution
+round, `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-15.md`; (1)–(3)
+are the dispatch's, adopted). (1) *The record.* The note, its checks, its case runs and the
+outside model's five replies enter as a fifteenth follow-up of the round of 2026-11-10;
+rejected: a new round, which would split one line's record across two directories.
+(2) *Noggle's cases.* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/noggle_bank.json` keeps each case's id, section and name,
+kind of mistake, the two verdicts, whether they match and the reader's note; the paraphrases
+and the rest of each encoding are held outside the repository, and so are the twenty-nine
+paraphrases among the stories of `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BLIND_RESULTS.md`; rejected: committing the
+paraphrases, which are 266 passages of a 2025 book restated. Consequences taken by the
+executor: for those twenty-nine stories the reader's coding keeps its level, confidence and
+note only; eight runs of six or more words in the kept notes that also occur in the book's
+text are replaced by `[…]`; the counts of `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/NOGGLE_RESULTS.md` are tallies of
+recorded judgments. (3) *Value change.* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/MISTAKES_ACCOUNT.md` states the
+value-change part as gain through an unasked shift in her valuing; rejected for now: the
+variant that makes an unauthorised change a violation of her authority, which is recorded as
+a direction (item 149) and queued above. (4) *The gloss.* Legitimacy is defined once in that
+document and its gloss marked proposed; rejected: keeping a separate philosophical reading
+beside it. (5) *The checks.* The three scripts are modules of the round's runner
+(`mistakes_setting.py`, `mistakes_sequential.py`, `mistakes_longrun.py`), each failing on a
+non-zero violation count; the sampled check of the frequency inequality is replaced by an
+exhaustive one over every sequence of up to three decisions on a grid; rejected: keeping
+the sample with a label. The runner of `account/` no longer skips a module it cannot import;
+rejected: leaving the skip, under which a missing check reads as a passing one. (6) *Nothing
+is registered.* No result of this pass is a statement of record: the results of
+`MISTAKES_ACCOUNT.md` §4 and §5 are paper proofs with exact searches and the case runs are
+single codings. (7) *Names, provisional:* *avoidable gain*, *undamaged*, *informed*,
+*unshifted*, *gain through her mistakes*, `MISTAKES_ACCOUNT.md`, and the file and module
+names of this pass.

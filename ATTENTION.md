@@ -1442,17 +1442,31 @@ The first open problem of `CURRENT.md` §3.
 Two tests failed on twenty cases written against them (`account/RESP_RESULTS.md`): the one
 that reads the adviser's gain clears an adviser that deceives at a cost to itself and
 convicts one that profits by a mistake it did not know of; the one that reads a declared
-reference clears a rule that prescribes the manipulation. Neither uses what the adviser
-believed. Wanted: a condition that disclosure, honest argument and correction satisfy and
-that a course scoring higher through a mistake of hers lacks, with attempt apart from
-success (`account/AGENDA.md` §3, 1–3). Two cases it has to decide, stated as open: an
-adviser whose honest errors lean its way by selection (I4), and an adviser that profits from
-a mistake no course of its would correct. The maintainer's working positions bear and do not
-settle it (`DECISIONS.md`, `2026-11-18--legitimacy-working-positions`).
+reference clears a rule that prescribes the manipulation. Six tests of intent on a single
+mistake failed on forty more (`account/INTENT_RESULTS.md`).
+
+The account as it stands (`account/MISTAKES_ACCOUNT.md`) keeps Noggle's definition, an
+adviser trying to influence her by getting her to make a mistake, leaves "trying to"
+unformalised, and gives a checkable property beside it: *avoidable gain*, that another
+option open to the adviser was as good otherwise and took less gain through mistakes its
+conduct caused, her not knowing, or an unasked shift. Knowingly taking avoidable gain is
+acting manipulatively by an argument; the converse fails on five named kinds of case. An
+earlier form of the property, read off an outside reviewer's numbers, agrees with that
+reviewer's verdict on 37 of forty cases.
+
+Not done: the property as §3 states it has been computed on no case (that needs item 151);
+it has not been run on the twenty cases, where a deception at a cost to the adviser takes no
+gain and so passes; and what the adviser "believes", its own picture in §5, is not said for
+a trained system. Two cases still to be decided, stated as open: an adviser whose honest
+errors lean its way by selection (I4), and an adviser that profits from a mistake no course
+of its would correct. The maintainer's working positions bear and do not settle it
+(`DECISIONS.md`, `2026-11-18--legitimacy-working-positions` and
+`2026-11-21--manipulation-working-positions`).
 
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
-*Context:* `CURRENT.md`, `account/AGENDA.md`, `account/DERIVATION.md`, `account/RESP_RESULTS.md` and
+*Context:* `CURRENT.md`, `account/MISTAKES_ACCOUNT.md`, `account/INTENT_RESULTS.md`,
+`account/intent_cases.json`, `account/AGENDA.md`, `account/DERIVATION.md`, `account/RESP_RESULTS.md` and
 `account/resp_cases.json` in the round directory.
 *Consumed by:* item 144 (its classification by responsibility needs the test), and the round that writes
 the account up.
@@ -1482,15 +1496,22 @@ written (`account/AGENDA.md` §3, 4).
 
 The third open problem of `CURRENT.md` §3.
 
-Three comparisons are in use and not chosen between: with who she would have been, with her
-ratings of fixed futures not moving with the adviser's conduct, and stability between
-check-ins. What makes a request of hers valid is unspecified. In `ScoringTheorem.lean` her
+Three comparisons have been used: with who she would have been, with her ratings of fixed
+futures not moving with the adviser's conduct, and stability between check-ins.
+`account/MISTAKES_ACCOUNT.md` §3 takes the first in one form, her valuing as it would be
+had the adviser left her alone, with a change she would welcome credited by her unshifted
+self, and states a rule for requests: a request is valid when her idealised self at the
+time, idealised using only earlier valid requests, would also make it. The rule needs a
+convention for requests made at the same moment and for an idealised self that could answer
+more than one way, and has been checked only on the example that prompted it. Whether an
+unauthorised change is instead a violation of her authority is item 149. In `ScoringTheorem.lean` her
 valuing unshaped is the field `fbar`, data, and D2 is a hypothesis; a statement that her
 valuing at the evaluation is a function of the admitted reasons and her earlier valuing,
 with a witness separating a reason about what is the case from an input that moves what she
 wants, is not written (`account/AGENDA.md` §3, 5). The maintainer's working position is
-that a change to her valuing beyond a tolerance is one she asked for (`DECISIONS.md`,
-`2026-11-18--legitimacy-working-positions`).
+that a change to her valuing beyond a tolerance is one she asked for, and that value
+interference should be definable without a comparison self (`DECISIONS.md`,
+`2026-11-18--legitimacy-working-positions`, `2026-11-21--manipulation-working-positions`).
 
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
@@ -1526,7 +1547,8 @@ strict priority (`scoring.authority-bound`; `account/AGENDA.md` §5). Wanted: a 
 a lexicographic score, which need every violation detected and the adviser able to tell
 beforehand which courses are free of one; her commands as well as her evaluation; her later
 self against her present wishes. `account/BRIDGE_LEAN.md` §4.2 names the missing map to the
-authority module.
+authority module. Whether a change in her values that she did not authorise is a violation
+of her authority is item 149.
 
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
@@ -1540,8 +1562,12 @@ the round directory; `lean/Workspace/Deference/Contrib/ScoringTheorem.lean` and
 
 The sixth open problem of `CURRENT.md` §3.
 
-The present vocabulary has not been run on any case of the bank of `account/LIT_CASES.md`
-(Harman, Pettigrew, Kolodny, Carroll et al., Noggle). Where a case is silent on how she
+`account/VC_RESULTS.md` has two single codings of the bank of `account/LIT_CASES.md`
+(Harman, Pettigrew, Kolodny, Carroll et al., Noggle), each by one reader against one
+formulation: the account's value-change part agrees with the source on 12 of the 19 cases
+whose source judges an act and contradicts none, seven being undecided for facts the
+stories do not give. Neither is the classification by two authors independently that this
+item asks for, and neither classifies by attempt or success. Where a case is silent on how she
 rated beforehand the course that changed her, a verdict follows whichever number is
 supplied (`account/SPEC_RESULTS.md`), so the classification records what each author
 supplied. The classification by wrong, by attempt and by legitimate against sound can be
@@ -1568,6 +1594,9 @@ nothing* acceptable if the formalism favours it (`DECISIONS.md`,
 and `Audit.no_credit` in `ScoringTheorem.lean` (`scoring.no-credit`) the second.
 
 Every bound of the scoring theorem is for one decision (`account/SCORING.md` §5).
+`account/MISTAKES_ACCOUNT.md` §5 has a statement over many decisions on paper; its second and
+third hypotheses need the value gain aside and the ungated score observed on decisions
+sampled independently of the adviser's choice, and who establishes them is not said.
 
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
@@ -1582,7 +1611,11 @@ the round directory; `lean/Workspace/Deference/Contrib/ScoringTheorem.lean` and
 The eighth open problem of `CURRENT.md` §3.
 
 Not established against reward tampering, path-specific objectives, eliciting latent
-knowledge, or induced preference shifts (Carroll et al. 2024). Whether the two splits of
+knowledge, or induced preference shifts (Carroll et al. 2024). By the maintainer's working
+position novelty against the neighbouring literature is not a gate on the line
+(`DECISIONS.md`, `2026-11-21--manipulation-working-positions`); the comparison is wanted
+for the write-up. `account/MISTAKES_ACCOUNT.md` §4 says of result 4 that a path-specific
+objective is the corresponding design. Whether the two splits of
 `AppraisalAccount.lean` (`appraisal.mse-split`, `appraisal.strong-split`) are the
 calibration, grouping and irreducible terms of Kull and Flach's decomposition of a proper
 score (2015), applied to her estimates of her own utility, is to be checked there.
@@ -1621,6 +1654,114 @@ departs with probability ε loses in proportion to ε.
 `lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean`.
 *Consumed by:* item 145 (a design of the audit needs what it can detect), and the corrigibility line's
 use of `UnbiasedFromFeedback`.
+
+### 148. A person's check of a sample of the case encodings — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=no -->
+
+The ninth open problem of `CURRENT.md` §3.
+
+Every verdict and encoding behind the counts of `account/INTENT_RESULTS.md`,
+`account/BLIND_RESULTS.md`, `account/NOGGLE_RESULTS.md` and `account/VC_RESULTS.md` was
+produced by a language model: the outside reviewer wrote the forty cases, their numbers and
+their verdicts; Claude readers coded the rest. No person has read a story against its
+encoding. Wanted: one person's verdicts on a sample, given before seeing the recorded ones,
+and the agreement computed. The cases of Noggle's book cannot be sampled from the
+repository, their paraphrases being held outside it; a check of those needs the book.
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/INTENT_RESULTS.md`, `account/intent_cases.json`, `account/VC_RESULTS.md`,
+`account/LIT_CASES.md`, `account/BLIND_RESULTS.md` and `account/NOGGLE_RESULTS.md` in the round directory.
+*Consumed by:* items 139 and 144, whose counts rest on these encodings, and the round that writes the account up.
+
+### 149. An unauthorised change in her values as a violation of her authority: the variant rerun — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The tenth open problem of `CURRENT.md` §3.
+
+`account/VC_RESULTS.md`: the account's value-change part, which counts gain through an
+unasked shift, agrees with the source on 12 of 19 cases and contradicts none; a variant
+that makes an unauthorised change in what she values a violation of her authority agrees on
+12 of the 14 the sources fault and contradicts two of the five they accept. One
+contradiction is a nudge whose result he foresees, adopts by his own choice and would
+welcome (P3n), a violation only because he did not ask; the other is an advertiser making a
+brand familiar (N3), which passes the first test as trifling and fails the second, where
+the exemption is not stated. Each run was one reader. Wanted: the variant with a clause for
+changes she knowingly brings on herself and the trifling exemption in both tests, coded
+twice. Which side an unauthorised change belongs on is queued for the maintainer
+(`DECISIONS.md`, *Awaiting the author*).
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/VC_RESULTS.md`, `account/VC_FORMULATION.md`, `account/VC_FORMULATION_B.md`,
+`account/LIT_CASES.md` and `account/MISTAKES_ACCOUNT.md` in the round directory.
+*Consumed by:* item 141 (her valuing) and item 143 (authority), and the round that writes the account up.
+
+### 150. The long-run statement of the mistakes account in Lean, with its witnesses — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The eleventh open problem of `CURRENT.md` §3.
+
+`account/MISTAKES_ACCOUNT.md` §5 extends Theorem 3 of the corrigibility post
+(`Sequential.theorem3a` in `DeconfusingCorrigibility.lean`) on paper: authority as in the
+post; no avoidable gain in the adviser's picture at every decision, from maximisation
+alone; her informed interest, from that and a hypothesis that its estimate of the value
+gain aside is not too high on average (H2); rarity of illegitimate histories in fact, from
+the post's hypothesis, a hypothesis that its estimate is not below the ungated score on
+average (H3) and a floor on what the gate takes off. `account/mistakes_longrun.py` checks
+the facts at each decision exhaustively on a grid and recomputes an instance for each
+piece; the passage to long-run averages is not machine-checked. The outside reviewer found
+conclusions (a) and (d) false without the range of realised evaluations, which the
+statement now carries, and has not seen it since. Wanted: the statement in Lean. A Lean
+headline registers at merge.
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/MISTAKES_ACCOUNT.md`, `account/mistakes_longrun.py` and `account/LEAN.md` in the
+round directory; `lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean`.
+*Consumed by:* item 145 (the audit as a design, over more than one decision), and the round that writes the account up.
+
+### 151. The causal model behind the three idealisations, for one worked interaction — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The twelfth open problem of `CURRENT.md` §3.
+
+In every check behind `account/MISTAKES_ACCOUNT.md` the quantities `h`, `G` and `L` are
+given numbers. The idealisations that define them (undamaged: keep what moved her toward
+the standard, undo what moved her away or past it, against how she would have been left
+alone; informed; unshifted) are worked for a single estimate only, on a listener calibrated
+to a source that sometimes lies. Not specified: which of her states are variables, what
+leaving her alone is, what *toward the standard* means for a response that is not one
+number, how a plan responds to each intervention, and the convention for requests made
+together. Wanted: one interaction worked in full, with the choices the document leaves open
+made and named.
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/MISTAKES_ACCOUNT.md`, `account/mistakes_setting.py` and `account/intent_cases.json`
+in the round directory.
+*Consumed by:* item 139 (the candidate condition computed on cases), item 141 (requests), and the round that writes the account up.
+
+### 152. Comparing whole plans, for an adviser that plans ahead — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The thirteenth open problem of `CURRENT.md` §3.
+
+The long-run statement of `account/MISTAKES_ACCOUNT.md` §5 judges avoidable gain at each
+decision against the actions then available. An adviser that plans ahead can by earlier
+conduct remove her later honest options; at the later decision nothing is then avoidable
+and the decision passes. Counting gain that arrives through earlier damage, as §5 does,
+does not supply the missing alternative. The outside reviewer raised this of the
+two-period example, and in `account/mistakes_sequential.py` which courses pass under each
+reading is put in by hand. Wanted: plans compared from the start, which the post's
+decision-by-decision setting does not provide.
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/MISTAKES_ACCOUNT.md`, `account/mistakes_sequential.py` and
+`account/mistakes_longrun.py` in the round directory;
+`lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean`.
+*Consumed by:* item 150 (the Lean statement, if the plan-level form replaces the decision-level one), and the round that writes the account up.
 
 ## Deference line
 Context for all three: `projects/deference/note-dump-2026-08-11/`, in particular

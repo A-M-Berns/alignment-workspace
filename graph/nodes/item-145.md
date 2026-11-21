@@ -18,7 +18,7 @@ acceptance: "each new Lean file under `lean/Workspace/Deference/Contrib/` builds
 work:
   - {kind: round, ref: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution}
   - {kind: decision, ref: 2026-11-18--legitimacy-working-positions}
-context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/AGENDA.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/SCORING.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BRIDGE_LEAN.md", "lean/Workspace/Deference/Contrib/ScoringTheorem.lean", "lean/Workspace/Deference/Contrib/AccountJoin.lean"]
+context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/AGENDA.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/SCORING.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BRIDGE_LEAN.md", "lean/Workspace/Deference/Contrib/ScoringTheorem.lean", "lean/Workspace/Deference/Contrib/AccountJoin.lean", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/MISTAKES_ACCOUNT.md"]
 author: "@claude-fable-5-2"
 size: M
 size_reason: "one item entry, one fixture of context"
@@ -28,7 +28,7 @@ version: 1
 Item 145, The audit as a design: its incentives, void against earning nothing, and more than one decision, is delivered in the shape its entry states: `lean-proved` — the audit as a mechanism: what it pays the adviser to do besides behave, with an instance in which involving her lowers the adviser's expected score and one in which the adviser abstains where it cannot explain, or a proof that a stated design has neither; a history on which she was wronged as void and as earning nothing, each a scoring rule with the bound it gives; and the scoring theorem over more than one decision.
 
 ## Source
-ATTENTION.md, item 145 (The audit as a design: its incentives, void against earning nothing, and more than one decision); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/AGENDA.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/SCORING.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BRIDGE_LEAN.md`, `lean/Workspace/Deference/Contrib/ScoringTheorem.lean`, `lean/Workspace/Deference/Contrib/AccountJoin.lean`.
+ATTENTION.md, item 145 (The audit as a design: its incentives, void against earning nothing, and more than one decision); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/AGENDA.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/SCORING.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BRIDGE_LEAN.md`, `lean/Workspace/Deference/Contrib/ScoringTheorem.lean`, `lean/Workspace/Deference/Contrib/AccountJoin.lean`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/MISTAKES_ACCOUNT.md`.
 
 ## Notes
 Filed by the fourteenth follow-up to the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution, PROMPT-followup-14.md) under the round prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py.
@@ -46,6 +46,9 @@ nothing* acceptable if the formalism favours it (`DECISIONS.md`,
 and `Audit.no_credit` in `ScoringTheorem.lean` (`scoring.no-credit`) the second.
 
 Every bound of the scoring theorem is for one decision (`account/SCORING.md` §5).
+`account/MISTAKES_ACCOUNT.md` §5 has a statement over many decisions on paper; its second and
+third hypotheses need the value gain aside and the ungated score observed on decisions
+sampled independently of the adviser's choice, and who establishes them is not said.
 
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
