@@ -8273,3 +8273,21 @@ added the section *Manipulation: legitimate as distinct from sound* to `wiki/Leg
 and left the rest of the page as it was. That stands. *Rejected:* replacing the page whole,
 which would delete the statement of the general theory that seventeen pages link to and that
 the manipulation line does not supersede. The maintainer reverses by re-ruling.
+
+### 2026-11-22 — the maintenance sweep writes the AI seed scores the freshness audit reports due
+<!-- decision: 2026-11-22--sweep-writes-due-ai-seeds; touches: graph/events/claude-fable-5-2.jsonl, state/concepts.json -->
+
+**Agent-decided, reversible** (the maintenance sweep of 2026-11-22).  The freshness audit
+reported thirty-nine unscored axes on thirteen concepts of the legitimacy line, each with the
+words *an AI seeding pass should score it*.  The standing dispatch names digests and friction
+items and does not name seeds; the ruling of 2026-11-05 (*seed refresh is maintenance*) makes
+an unscored axis an audit finding, and the sweep is the only round the audit's findings reach.
+The sweep took them: thirty-nine `assessment` events in `graph/events/claude-fable-5-2.jsonl`,
+the executor's own ledger, each with its reasoning in `gloss` drawn from the concept's blurb
+and the documents the blurb cites.  Each is starred as an AI number in every display and is
+displaced by the first human score; the scores move the order of `/priorities/`.  The sweep
+also corrected two blurbs of `state/concepts.json` that called three results unregistered
+which #145 registered (`appraisal.deferring-cost`, `appraisal.guarantee-from-soundness`,
+`legitimacy.line3-range`).  *Rejected alternative:* a queue entry asking whether seeds are the
+sweep's to write, which names nothing the maintainer has that the sweep lacks.  The maintainer
+reverses by re-ruling, and withdraws any seed by scoring the axis.
