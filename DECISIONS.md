@@ -69,6 +69,18 @@ commit.
   live across a change of vocabulary, which the docket does not record.  None is a theorem's.
   <!-- decision: open--broken-commitment-bars-or-accounts; touches: item:134, item:135; status: open -->
 
+- **Whether the maintenance sweep writes the AI seed scores the audit reports due (2026-11-23).**
+  The freshness audit reports thirty-nine unscored axes on thirteen concepts of the
+  legitimacy line, each as work for *an AI seeding pass*.  The standing dispatch names
+  digests and friction items and does not name seeds.  The sweep of 2026-11-23 wrote none.
+  A drafted set of thirty-nine is on the unmerged branch `maintenance/2026-11-22-sweep`, in
+  a ledger for the handle `@claude-fable-5-2`, with an agent-decided entry adopting them.  The
+  sweep's recommendation: the sweep writes them, one seed per finding, from the concept's
+  blurb and the documents it cites.  *Turns on:* whether the maintainer wants model-written
+  scores that reorder `/priorities/` to land from an unattended daily run, or only from a
+  round dispatched to read the concepts; that is a grant of scope under the dispatch.
+  <!-- decision: open--sweep-writes-ai-seeds; touches: graph/events/, prompts/2026-11-05-standing-maintenance/PROMPT.md; status: open -->
+
 - **What a research round files for itself on the map — F10 (2026-11-10).**  The protocol
   has no node kind for a round: a round appears only as `round` work pointers on the nodes
   for its results, items and decisions, and the two research rounds landed since the map
