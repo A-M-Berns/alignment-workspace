@@ -73,8 +73,8 @@ commit.
   The freshness audit reports thirty-nine unscored axes on thirteen concepts of the
   legitimacy line, each as work for *an AI seeding pass*.  The standing dispatch names
   digests and friction items and does not name seeds.  The sweep of 2026-11-23 wrote none.
-  A drafted set of thirty-nine is on the unmerged branch `maintenance/2026-11-22-sweep`
-  (`graph/events/claude-fable-5-2.jsonl`), with an agent-decided entry adopting them.  The
+  A drafted set of thirty-nine is on the unmerged branch `maintenance/2026-11-22-sweep`, in
+  a ledger for the handle `@claude-fable-5-2`, with an agent-decided entry adopting them.  The
   sweep's recommendation: the sweep writes them, one seed per finding, from the concept's
   blurb and the documents it cites.  *Turns on:* whether the maintainer wants model-written
   scores that reorder `/priorities/` to land from an unattended daily run, or only from a
