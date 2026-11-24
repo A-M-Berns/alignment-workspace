@@ -42,7 +42,11 @@ Four refutations, each from one failing clause: `Model.not_legit_of_untold` (F1)
 on from `1/2` to `1`; stopping is an option.  `Witness.legit_open`: with the move one she can
 pick out, `Legit 0 (1/4) 0` holds, and the move bears an effect (`Witness.bears`), so the
 statement is inhabited by conduct that does something to her.  `Witness.not_legit_covert`: the
-same move, not one she can pick out, is not legitimate at any `θ`, `κ`.
+same move, not one she can pick out, is not legitimate at any `θ`, `κ`.  On the witness only
+the start rule and `F2` do work: he has no views, so `F1`, `ProperOffer` and `DeclineStands`
+hold with nothing to check; she never goes against her earlier rating under any course
+(`Witness.not_against`) and never rates stopping higher (`Witness.not_prefersStop`), so `F2'`
+and `F3` hold with both weights zero.
 
 **The link to the corrigibility result.**  `gatedScoring`: any decidable predicate on
 histories gives a `DeconfusingCorrigibility.Scoring` through `Legitimacy.gateValue`.
@@ -83,8 +87,12 @@ and in four more:
 9. `declined` is a field: `DeclineStands` asks that the view was on offer at an earlier
    decision, not that she declined it then.
 
-**Not established here.**  That the model's verdicts agree with the statement in words on any
-case beyond the witness.  That `Legit` is unchanged when a move is split into finer moves.
+**Not established here.**  That `Legit` is satisfiable with `F1`, `F2'` or `F3` doing work: no
+instance here has a view of his, a move that changes her act, or a case in which she rates
+stopping higher.  That the model's verdicts agree with the statement in words on any case
+beyond the witness.  That `legit_transport` covers more than her state: it says nothing of a
+rescaling of her scores, against which `θ` and `η` are compared, or of his conduct cut into
+other moves.  That `Legit` is unchanged when a move is split into finer moves.
 Anything about what stopping costs her: that is the authority side's.  That any process can
 evaluate `Legit`: the gate theorem takes the two error probabilities as numbers.  In
 `legitScoring`, `mdl`, `N` and `ord` are data, and the relation between the adviser's picture
