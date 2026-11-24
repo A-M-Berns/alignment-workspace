@@ -48,7 +48,15 @@ both of two views (`d10`, `d11`), and two variants of cases whose own data give 
 improper offer or a decline that does not stand as not designated at all.
 
 **Theorems.**  For each term `x`: `x_has`, the clauses that hold (`Supplied.Has`), and
-`x_verdict`, `Legit` or its negation.
+`x_verdict`, `Legit` or its negation.  `table`: the 41 of the table together.
+
+**Terms inhabiting the hypotheses of five theorems of `LegitimacyModel.lean`.**
+`Model.legit_of_nothing` at `nothing` (`nothing_instance`); `Model.not_legit_of_untold` at `c3`
+(`untold_instance`); `Model.not_legit_of_unstoppable` at `a7` (`unstoppable_instance`);
+`Model.not_legit_of_against` at `b1` (`against_instance`); `Model.not_bears_of_inert` at
+`still`, a model written out field by field in which his one move changes nothing
+(`inert_instance`).  No `Case` can serve for the last: her state in a `Case` records the
+course of his conduct, so it differs when a move is left out.
 
 **Not established here.**  That a term is the only reading of its case: the construction
 above and the added data are choices.  Anything about cases with more than two decisions, with
@@ -937,6 +945,140 @@ theorem d11_has : d11.Has ⟨true, true, true, true, true, true, true⟩ :=
 theorem d11_verdict : d11.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
   d11_has.legit
 
+/-- **The table.**  The clauses of `Legit` that hold on the term of each of the 41 cases. -/
+theorem table :
+    a1.Has ⟨true, true, true, true, true, true, true⟩ ∧
+    a2.Has ⟨true, true, true, true, true, false, true⟩ ∧
+    a3.Has ⟨true, true, true, true, false, true, true⟩ ∧
+    a4.Has ⟨true, true, true, true, true, true, true⟩ ∧
+    a5.Has ⟨true, true, true, true, false, true, true⟩ ∧
+    a6.Has ⟨true, true, true, true, false, true, true⟩ ∧
+    a7.Has ⟨true, true, true, true, false, true, true⟩ ∧
+    a8.Has ⟨true, true, true, true, true, true, true⟩ ∧
+    a9.Has ⟨true, true, true, true, true, true, true⟩ ∧
+    a10.Has ⟨true, true, true, true, false, true, true⟩ ∧
+    a11.Has ⟨true, true, true, true, true, true, true⟩ ∧
+    a12.Has ⟨true, true, true, true, true, true, true⟩ ∧
+    b1.Has ⟨true, true, true, true, true, false, true⟩ ∧
+    b2.Has ⟨true, true, true, true, true, false, true⟩ ∧
+    b3.Has ⟨true, true, true, true, true, true, true⟩ ∧
+    b4.Has ⟨true, true, true, true, true, true, true⟩ ∧
+    b5.Has ⟨true, true, true, true, true, false, true⟩ ∧
+    b6.Has ⟨true, true, true, true, true, true, true⟩ ∧
+    b7.Has ⟨true, true, true, true, true, true, true⟩ ∧
+    b8.Has ⟨true, true, true, true, true, true, true⟩ ∧
+    b9.Has ⟨true, true, true, true, true, true, true⟩ ∧
+    b10.Has ⟨true, true, true, true, true, false, true⟩ ∧
+    b11.Has ⟨true, true, true, true, true, true, true⟩ ∧
+    c1.Has ⟨true, true, true, true, true, true, true⟩ ∧
+    c2.Has ⟨true, true, true, true, true, true, true⟩ ∧
+    c3.Has ⟨true, true, true, false, true, true, true⟩ ∧
+    c4.Has ⟨true, true, true, true, false, true, true⟩ ∧
+    c5.Has ⟨true, true, true, false, true, true, true⟩ ∧
+    c6.Has ⟨true, true, true, false, true, true, true⟩ ∧
+    c7.Has ⟨true, true, true, true, true, true, true⟩ ∧
+    d1.Has ⟨true, false, true, true, true, true, true⟩ ∧
+    d2.Has ⟨true, true, true, true, true, true, true⟩ ∧
+    d3.Has ⟨true, true, true, true, true, true, true⟩ ∧
+    d4.Has ⟨true, true, false, true, true, true, true⟩ ∧
+    d5.Has ⟨true, true, true, false, true, true, true⟩ ∧
+    d6.Has ⟨true, false, true, true, true, true, true⟩ ∧
+    d7.Has ⟨true, false, true, true, true, true, true⟩ ∧
+    d8.Has ⟨true, false, true, true, true, true, true⟩ ∧
+    d9.Has ⟨true, true, true, true, true, true, true⟩ ∧
+    d10.Has ⟨true, false, true, true, true, true, true⟩ ∧
+    d11.Has ⟨true, true, true, true, true, true, true⟩ :=
+  ⟨a1_has, a2_has, a3_has, a4_has, a5_has, a6_has, a7_has, a8_has, a9_has, a10_has, a11_has, a12_has, b1_has, b2_has, b3_has, b4_has, b5_has, b6_has, b7_has, b8_has, b9_has, b10_has, b11_has, c1_has, c2_has, c3_has, c4_has, c5_has, c6_has, c7_has, d1_has, d2_has, d3_has, d4_has, d5_has, d6_has, d7_has, d8_has, d9_has, d10_has, d11_has⟩
+
+/-! ## Terms inhabiting the hypotheses of five theorems of `LegitimacyModel.lean` -/
+
+/-- No moves, no views. -/
+def nothing : Supplied Opt Empty Empty Unit Lab Empty := plain Empty Empty Unit
+
+/-- `Model.legit_of_nothing` has an instance. -/
+theorem nothing_instance : nothing.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
+  Model.legit_of_nothing _ _ _ _ rfl (fun _ _ => Finset.empty_subset _) (fun _ _ => rfl)
+    (fun _ _ => rfl)
+
+/-- `Model.not_legit_of_untold` has an instance: the cancelled consultation of `c3`. -/
+theorem untold_instance : ¬ c3.case.model.Legit (1 / 20) (1 / 100) (1 / 10) := by
+  refine Model.not_legit_of_untold _ _ _ _ 1 (by decide +kernel) () {()} (by decide +kernel)
+    (by decide +kernel) OptC.consult (by decide +kernel) ?_
+  show (1 / 20 : ℝ) <
+    |((c3.case.r (St.tell {()} (St.init c3.case.c () 1)) OptC.consult : ℚ) : ℝ) -
+      ((c3.case.r (St.init c3.case.c () 1) OptC.consult : ℚ) : ℝ)|
+  have h : (1 / 20 : ℚ) <
+      |c3.case.r (St.tell {()} (St.init c3.case.c () 1)) OptC.consult -
+        c3.case.r (St.init c3.case.c () 1) OptC.consult| := by decide +kernel
+  have h' := (Rat.cast_lt (K := ℝ)).mpr h
+  push_cast at h'
+  exact h'
+
+/-- `Model.not_legit_of_unstoppable` has an instance: the influence of `a7`. -/
+theorem unstoppable_instance : ¬ a7.case.model.Legit (1 / 20) (1 / 100) (1 / 10) := by
+  have hm : a7.case.model.InPlay (1 / 100) 1 0 := by
+    rw [show (1 / 100 : ℝ) = ((1 / 100 : ℚ) : ℝ) by norm_num, Case.model_inPlay]
+    decide +kernel
+  exact Model.not_legit_of_unstoppable _ _ _ _ 1 (by decide +kernel) () 0 hm (by decide +kernel)
+
+/-- `Model.not_legit_of_against` has an instance: the nagging of `b1`. -/
+theorem against_instance : ¬ b1.case.model.Legit (1 / 20) (1 / 100) (1 / 10) := by
+  refine Model.not_legit_of_against _ _ _ _ 1 (by decide +kernel) {0} (by decide +kernel)
+    (by decide +kernel) (by decide +kernel) (by decide +kernel) 0
+    ((Case.model_lastBefore _ _ _).mpr (by decide +kernel)) (by decide) ?_
+  show b1.case.model.wt (fun ω => b1.case.model.Against (b1.case.c \ {0}) 0 1 ω) + 1 / 100 <
+    b1.case.model.wt (fun ω => b1.case.model.Against b1.case.c 0 1 ω)
+  rw [b1.case.model_wt _ (fun ω => b1.case.Against (b1.case.c \ {0}) 0 1 ω)
+      (fun ω => b1.case.model_against _ 0 1 ω),
+    b1.case.model_wt _ (fun ω => b1.case.Against b1.case.c 0 1 ω)
+      (fun ω => b1.case.model_against _ 0 1 ω)]
+  have h : b1.case.wt (fun ω => b1.case.Against (b1.case.c \ {0}) 0 1 ω) + 1 / 100 <
+      b1.case.wt (fun ω => b1.case.Against b1.case.c 0 1 ω) := by decide +kernel
+  have h' := (Rat.cast_lt (K := ℝ)).mpr h
+  push_cast at h'
+  exact h'
+
+/-- A model in which his one move changes nothing: her state, scores, options and act are
+the same under every course of conduct. -/
+noncomputable def still : Model Unit Unit Empty Unit Unit Unit Empty where
+  μ := fun _ => 1
+  μ_nonneg := fun _ => zero_le_one
+  dec := {0}
+  c := {()}
+  start := fun _ => 1
+  finish := fun _ => 1
+  st := fun _ _ _ => ()
+  opts := fun _ _ _ => {()}
+  act := fun _ _ _ => ()
+  course := fun _ _ _ _ => ()
+  items := fun _ _ _ => ∅
+  xopts := fun _ _ _ => ∅
+  ρ := fun _ _ => 0
+  r := fun _ _ => 0
+  views := fun _ => ∅
+  told := fun _ => ∅
+  declined := fun _ => ∅
+  offered := fun _ => ∅
+  tell := fun _ s => s
+  tell_empty := fun _ => rfl
+  tell_idem := fun _ _ => rfl
+  rev := fun _ _ _ => ∅
+  hearOpt := fun v => v.elim
+  toldBear := fun _ => ∅
+  toldMag := fun _ => 0
+  toldReveals := fun _ => True
+  stHeard := fun _ _ _ => ()
+  optsHeard := fun _ _ _ => ∅
+  known := fun _ _ => ∅
+  stops := fun _ _ => ∅
+  asked := ∅
+  tellings := ∅
+
+/-- `Model.not_bears_of_inert` has an instance. -/
+theorem inert_instance : ¬ still.Bears (1 / 100) () :=
+  Model.not_bears_of_inert still (1 / 100) () (fun _ _ _ => rfl) (fun _ _ _ _ => rfl)
+    (fun _ _ _ => rfl) (fun _ _ _ => rfl) (fun _ _ _ => Iff.rfl)
+
 end Workspace.Deference.Contrib.LegitimacyModel.Cases
 
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.Supplied.has
@@ -1040,3 +1182,9 @@ end Workspace.Deference.Contrib.LegitimacyModel.Cases
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d10o_verdict
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d11_has
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d11_verdict
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.table
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.nothing_instance
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.untold_instance
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.unstoppable_instance
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.against_instance
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.inert_instance

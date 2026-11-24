@@ -1706,25 +1706,27 @@ registers at merge.
 `lean/Workspace/Deference/Contrib/LegitimacyModel.lean`, `lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean`.
 *Consumed by:* item 145 (the audit as a design, over more than one decision), and the round that writes the account up.
 
-### 151. The Lean model on cases: a witness exercising every clause, the forty-one cases as terms, the simplifications removed — **[open]**
+### 151. The Lean model on cases: the table's cases restated so that each fixes its term, the simplifications removed — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-Rows 20 to 27 of `account/LEDGER.md`, and the derived number rows 6 and 7 ask for.
+Rows 22 to 27, 37 and 38 of `account/LEDGER.md`.
 
 `LegitimacyModel.lean` carries the statement as a predicate on a model of the adviser's
-picture. Its one witness is a single move that she can pick out and
-stop: on it only the rule that a move starts after a decision of hers and the first half of
-sentence 2 do work, and the other clauses hold with nothing to check. The forty-one exact
-cases of `account/LEGITIMACY_CHECKS.md` are computed by a separate transcription of the
-statement, which takes the chance that she goes against her earlier rating as a number. And
-the model is simpler than the statement in nine respects its header lists. Wanted, in that
-order: a witness on which every clause does work; the cases as terms of the model; the
-simplifications removed or made hypotheses. A Lean headline registers at merge.
+picture. `LegitimacyWitness.lean` has a term on which every clause does work, with seven
+neighbours each failing by one clause, and `LegitimacyCases.lean` has each of the forty-one
+exact cases of `account/LEGITIMACY_CHECKS.md` as a term with its verdict proved
+(`account/LEAN_CASES.md`). Three things remain. The terms of A5 and A8 give verdicts that are
+not the table's, on data of the cases that the table's script does not check. Eight terms
+carry data their case does not supply, written with the table's verdict in view. And the
+model is simpler than the statement in nine respects its header lists. Wanted: the two cases
+and the eight restated so that each fixes its term; the simplifications removed or made
+hypotheses. A Lean headline registers at merge.
 
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
-*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md`, `account/LEGITIMACY_CHECKS.md`, `account/legitimacy_checks.py`
-and `account/LEDGER.md` in the round directory; `lean/Workspace/Deference/Contrib/LegitimacyModel.lean`.
+*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md`, `account/LEGITIMACY_CHECKS.md`, `account/legitimacy_checks.py`,
+`account/LEAN_CASES.md`, `account/lean_cases.py` and `account/LEDGER.md` in the round directory;
+`LegitimacyModel.lean`, `LegitimacyCase.lean`, `LegitimacyWitness.lean` and `LegitimacyCases.lean` under `lean/Workspace/Deference/Contrib/`.
 *Consumed by:* items 150, 152 and 153, and the round that writes the account up.
 
 ### 152. The verdict when his conduct is cut into finer moves, and what a decision of hers is — **[open]**

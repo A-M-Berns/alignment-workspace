@@ -163,8 +163,17 @@ What stands behind it, none of it a statement of record:
   scoring it gives through `Legitimacy.gateValue` is a `DeconfusingCorrigibility.Scoring`;
   and a gate with soundness error `ρ` and completeness error `ρ'` gives legitimate conduct the
   higher expected score when `ρ(1 − w) < −w(1 − ρ')`. The model is simpler than the statement
-  in nine respects its header lists, and on its one witness only the start rule and F2 do
-  work.
+  in nine respects its header lists.
+- **The model on a full witness and on the exact cases** (`account/LEAN_CASES.md`).
+  `LegitimacyWitness.lean` has a term on which every clause does work, proved legitimate,
+  and seven terms differing from it in one field, on each of which one clause fails and the
+  other six hold. `LegitimacyCases.lean` has each of the 41 exact cases as a term, built by one
+  stated construction, with the clauses that hold on it proved. The verdict is the table's on
+  39: by the same clause on 32, by the offer or the decline clause where the table says F1 on
+  6, and on one by a term that cannot say what the case is about. It is not the table's on A5
+  and A8, on data of those cases that the table's script does not check. Eight of the terms
+  carry data their case does not supply, written with the table's verdict in view; in the
+  terms the chance that she goes against her earlier rating is derived.
 - **Exact cases**, in the runner: 41 of the formal statement (`account/LEGITIMACY_CHECKS.md`)
   and 20 of a candidate clause for what stopping costs her, which is the authority side's
   (`account/STOPPING_COST.md`). Expectations were fixed first; statement and cases are by one
@@ -179,14 +188,14 @@ What stands behind it, none of it a statement of record:
   directory), two of them blind to the project. Each found errors of form in the version it
   saw; none has seen the present statement or the Lean.
 
-**Open.** `account/LEDGER.md` has 36 rows: 11 closed, each a Lean declaration; 19 open; 6
+**Open.** `account/LEDGER.md` has 38 rows: 13 closed, each a Lean declaration; 19 open; 6
 living notes. Its last section ranks the open work. By `ATTENTION.md` item:
 
-1. **A witness on which every clause does work, the 41 cases as terms of the model, the
-   simplifications removed** (item 151).
-2. **An outside review of the Lean statement** (item 153).
-3. **A second coding of the bank, and a set of cases of bent judgement** (item 154); a
+1. **An outside review of the Lean statement** (item 153).
+2. **A second coding of the bank, and a set of cases of bent judgement** (item 154); a
    person's check of a sample (item 148).
+3. **The table's cases restated so that each fixes its term, and the model's
+   simplifications removed** (item 151).
 4. **The cost of a decision of hers on the authority side** (item 149).
 5. **Composition with the sequential corrigibility theorems** (item 150).
 6. **Whether a gate can evaluate legitimacy at all** (item 147).

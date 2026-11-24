@@ -180,7 +180,18 @@ a different profile.
 | `d8o` | D8 | nothing is designated as on offer | fails | F1 |
 | `d10o` | D10 | nothing is designated as on offer | fails | F1 |
 
-## 5. What checks this document
+## 5. Instances of the model's general theorems
+
+`Cases.table` states the Lean columns of §3 as one theorem. Five theorems of
+`LegitimacyModel.lean` had no term inhabiting their hypotheses; each has one in
+`LegitimacyCases.lean`: `Model.legit_of_nothing` (`Cases.nothing_instance`),
+`Model.not_legit_of_untold` on the term of C3 (`untold_instance`),
+`Model.not_legit_of_unstoppable` on that of A7 (`unstoppable_instance`),
+`Model.not_legit_of_against` on that of B1 (`against_instance`), and
+`Model.not_bears_of_inert` on a model written out field by field (`inert_instance`), her state
+in a `Case` recording his conduct and so never unchanged when a move is left out.
+
+## 6. What checks this document
 
 The theorems are checked by the Lean build and by `python3 tests/audit_axioms.py`, which
 reports every one on `[propext, Classical.choice, Quot.sound]`. The rows of §1, §3 and §4 and
@@ -190,7 +201,7 @@ compares them with the rows `legitimacy_checks.py` computes, and fails on a diff
 this document. It does not run Lean. The outcome `not expressible`, the column of additions and
 the prose are by hand.
 
-## 6. Not shown
+## 7. Not shown
 
 - That `Model.Legit` gives the statement's verdict on any case outside these. The 41 cases and
   the statement are by one hand, and the terms by another session of the same model.

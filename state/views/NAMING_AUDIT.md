@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `ATTENTION.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 1271 names, 677 of them Lean only
+## deference — 1404 names, 794 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -899,6 +899,122 @@ change, and the count of those is the size of the free choice remaining.
 | `segment` | def | 2026-09-25-legitimacy-internal-external | wiki, prose | `Workspace.Deference.Contrib.Legitimacy.Witness.segment` |
 | `toOpenIntegrity` | def | 2026-09-25-legitimacy-internal-external | wiki, prose | `Workspace.Deference.Contrib.Legitimacy.Segment.toOpenIntegrity` |
 | `trans` | def | 2026-09-25-legitimacy-internal-external | wiki, prose | `Workspace.Deference.Contrib.Legitimacy.Segment.trans` |
+| `Against` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.Against` |
+| `BearingHolds` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.BearingHolds` |
+| `Bears` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.Bears` |
+| `Case` | structure | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case` |
+| `Contributes` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.Contributes` |
+| `DeclineStands` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.DeclineStands` |
+| `Declines` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.Declines` |
+| `Declines` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.Declines` |
+| `Departs` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.Departs` |
+| `EveryF1` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.EveryF1` |
+| `EveryF1` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.EveryF1` |
+| `EveryF2` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.EveryF2` |
+| `EveryF2` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.EveryF2` |
+| `EveryF2'` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.EveryF2'` |
+| `EveryF2'` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.EveryF2'` |
+| `EveryF3` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.EveryF3` |
+| `EveryF3` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.EveryF3` |
+| `F1` | def | 2026-11-10-legitimacy-definition-prosecution | note | `Workspace.Deference.Contrib.LegitimacyModel.Case.F1` |
+| `F2` | def | 2026-11-10-legitimacy-definition-prosecution | note | `Workspace.Deference.Contrib.LegitimacyModel.Case.F2` |
+| `F2'` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.F2'` |
+| `F3` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.F3` |
+| `HasProfile` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.HasProfile` |
+| `HerDiff` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.HerDiff` |
+| `InPlay` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.InPlay` |
+| `LastBefore` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.LastBefore` |
+| `Offers` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.Offers` |
+| `Offers` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.Offers` |
+| `PrefersStop` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.PrefersStop` |
+| `Profile` | structure | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Profile` |
+| `Profile.all` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Profile.all` |
+| `ProperOffer` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.ProperOffer` |
+| `St` | structure | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.St` |
+| `StartRule` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.StartRule` |
+| `StartRule` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.StartRule` |
+| `Window` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.Window` |
+| `earlier` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyModel.Case.earlier` |
+| `gap` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, note, prose | `Workspace.Deference.Contrib.LegitimacyModel.Case.gap` |
+| `init` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.St.init` |
+| `model` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, note, prose | `Workspace.Deference.Contrib.LegitimacyModel.Case.model` |
+| `profile` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.profile` |
+| `tell` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.St.tell` |
+| `untold` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.untold` |
+| `wt` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.wt` |
+| `Has` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.Supplied.Has` |
+| `Lab` | inductive | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.Lab` |
+| `Opt` | inductive | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.Opt` |
+| `OptC` | inductive | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.OptC` |
+| `OptD` | inductive | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.OptD` |
+| `OptL` | inductive | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.OptL` |
+| `Supplied` | structure | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.Supplied` |
+| `ViewD` | inductive | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.ViewD` |
+| `a1` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.a1` |
+| `a10` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.a10` |
+| `a11` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.a11` |
+| `a12` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.a12` |
+| `a2` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.a2` |
+| `a3` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.a3` |
+| `a4` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.a4` |
+| `a5` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.a5` |
+| `a5q` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.a5q` |
+| `a6` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.a6` |
+| `a7` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.a7` |
+| `a8` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.a8` |
+| `a8w` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.a8w` |
+| `a9` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.a9` |
+| `at1` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.at1` |
+| `b1` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.b1` |
+| `b10` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.b10` |
+| `b11` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.b11` |
+| `b2` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.b2` |
+| `b3` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.b3` |
+| `b4` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.b4` |
+| `b5` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.b5` |
+| `b6` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.b6` |
+| `b7` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.b7` |
+| `b8` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.b8` |
+| `b9` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.b9` |
+| `bentAct` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.bentAct` |
+| `bentRate` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.bentRate` |
+| `c1` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.c1` |
+| `c2` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.c2` |
+| `c3` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.c3` |
+| `c4` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.c4` |
+| `c5` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.c5` |
+| `c6` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.c6` |
+| `c7` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.c7` |
+| `case` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyModel.Cases.Supplied.case` |
+| `d1` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.d1` |
+| `d10` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.d10` |
+| `d10o` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.d10o` |
+| `d11` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.d11` |
+| `d1o` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.d1o` |
+| `d2` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.d2` |
+| `d3` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.d3` |
+| `d4` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.d4` |
+| `d4o` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.d4o` |
+| `d5` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.d5` |
+| `d6` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.d6` |
+| `d6o` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.d6o` |
+| `d7` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.d7` |
+| `d7o` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.d7o` |
+| `d8` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.d8` |
+| `d8o` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.d8o` |
+| `d9` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.d9` |
+| `eff` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.LegitimacyModel.Cases.eff` |
+| `hearD` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.hearD` |
+| `heardD` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.heardD` |
+| `nothing` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.LegitimacyModel.Cases.nothing` |
+| `one` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, note, prose | `Workspace.Deference.Contrib.LegitimacyModel.Cases.one` |
+| `plain` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyModel.Cases.plain` |
+| `plainRate` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.plainRate` |
+| `rateD` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.rateD` |
+| `rateD2` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.rateD2` |
+| `rating` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.Supplied.rating` |
+| `slip` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.slip` |
+| `still` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.LegitimacyModel.Cases.still` |
 | `Against` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.Against` |
 | `BearingHolds` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.BearingHolds` |
 | `Bears` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.Bears` |
@@ -927,6 +1043,23 @@ change, and the count of those is the size of the free choice remaining.
 | `transport` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.LegitimacyModel.Model.transport` |
 | `untold` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.untold` |
 | `wt` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.wt` |
+| `Cs` | inductive | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Full.Cs` |
+| `Move` | inductive | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Full.Move` |
+| `Opt` | inductive | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Full.Opt` |
+| `View` | inductive | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Full.View` |
+| `act` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.LegitimacyModel.Full.act` |
+| `actLed` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Full.actLed` |
+| `actStuck` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Full.actStuck` |
+| `covert` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Full.covert` |
+| `early` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Full.early` |
+| `full` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.LegitimacyModel.Full.full` |
+| `led` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Full.led` |
+| `rate` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.LegitimacyModel.Full.rate` |
+| `spent` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Full.spent` |
+| `stuck` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Full.stuck` |
+| `unoffered` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Full.unoffered` |
+| `weight` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.LegitimacyModel.Full.weight` |
+| `withheld` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyModel.Full.withheld` |
 | `CoherentMixture` | structure | 2026-08-11-phase-ii-prediction | Lean only | `Workspace.Deference.Contrib.MagnitudePrediction.CoherentMixture` |
 | `coinMixture` | def | 2026-08-11-phase-ii-prediction | Lean only | `Workspace.Deference.Contrib.MagnitudePrediction.coinMixture` |
 | `coinPrices` | def | 2026-08-11-phase-ii-prediction | Lean only | `Workspace.Deference.Contrib.MagnitudePrediction.coinPrices` |
