@@ -53,8 +53,8 @@ An adviser's conduct toward a principal is **legitimate** when, by his own light
 what he tells her, then her decision, then the rest of what he does.
 
 **Her.** A state `s_t`. A finite universe `𝒪` of options; at each decision `τ` a non-empty
-`O_τ ⊆ 𝒪` that she knows she has. A score `ρ(s, x) ∈ [0, 1]` of courses of events `x`, on a
-fixed scale; `r(s, a)`, for every `a ∈ 𝒪`, her score of the course she expects from `a`. Her
+`O_τ ⊆ 𝒪` that she knows she has. A proper score `ρ(s, x) ∈ [0, 1]` of courses of events `x`,
+on a fixed scale; `r(s, a)`, for every `a ∈ 𝒪`, her score of the course she expects from `a`. Her
 act `a*_τ`; she **departs** when `a*_τ ∉ argmax_{O_τ} r(s_τ, ·)`. `ω_τ` and `Oˣ_τ`: the items
 that have reached her, and the options open to her, that originate with sources other than
 him, whatever channel they come through.
