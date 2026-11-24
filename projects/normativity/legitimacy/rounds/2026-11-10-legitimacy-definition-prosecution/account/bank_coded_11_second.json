@@ -1,0 +1,3388 @@
+[
+{
+"id": "adam-crocodile-tears",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "yes"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "advise-yield-to-mugger",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "akrasia-without-decision",
+"has_influencer": "no",
+"seeks_response": "no",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "alligator-hotel",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "alligator-swamp-lure",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "anger-at-fair-winner",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "anger-mismanagement",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "anne-bert",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "reliance_on_A",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "anne-bert-game-switch",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "attention",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "announced-guilt-trip",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "announced-nagging-phone",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "appropriate-fear-danger",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "appropriate-guilt-remorse",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "arguing-to-convince-wears-down",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "associative-plausible",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "assumed-close",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "atmospherics-direct-akratic",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "atmospherics-direct-tiebreak",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "atmospherics-good-mood",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "atmospherics-halo",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "atmospherics-linger",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "aunt-vicky",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "aunt-vicky-carl",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "ayn-rand-consent",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "bad-boyfriend",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+},
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "baked-goods-scent",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "bargaining-ladder",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "baron-nervous-requestee",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "batteries-at-checkout",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "bill-janice-guilt-trip",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+},
+{
+"kind": "feeling_or_weight",
+"told": "no"
+},
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "black-ice",
+"has_influencer": "no",
+"seeks_response": "no",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "black-ice-mirage",
+"has_influencer": "no",
+"seeks_response": "no",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "blackmail-version-1",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "blackmail-version-2",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "bogus-headache-remedy",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "brand-ads-honest-signal",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "bully-coward-taunt",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "buridan-illustrations",
+"has_influencer": "no",
+"seeks_response": "no",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "byron-tunnel-vision",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "caesar-corleone-favours",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "cafeteria-akratic",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "cafeteria-false-impression",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "cafeteria-first-considered",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "cafeteria-recommendation",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "cafeteria-tiebreak",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "camping-trip-1",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "camping-trip-2",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "candy-1-dora",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "candy-1-larry",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "candy-2-dora",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "car-salesperson-misemphasis",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "attention",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "car-seller-ike",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "carl-edna-uniform",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "cassius-brutus",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "chair-conditional-flattery",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "charm-offensive",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "charm-offensive-motorist",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "cialdini-presuasion-tips",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "coercive-threats",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "coffee-shop-atmosphere",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "commercial-trivial-consent",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "con-conflict-aversion",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "conditional-compliments-mundane",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "consented-manipulation",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "yes"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "convoluted-missed-train",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "dave-tracy-mile",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "deep-cover-donnie",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "diet-product-ads",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "disguised-advertisements",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "disguised-sales-proposal",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "reliance_on_A",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "dish-soap-false-impression",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "dish-soap-tiebreak",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "doubt-is-our-product",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "electronic-nagging",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "embryo-empathy-activist",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "yes",
+"value_change_known": "yes"
+},
+{
+"id": "emotional-blackmail",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "employer-fire-nonperformer",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "evaporative-cooler-ads",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "facilitators",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "reliance_on_A",
+"told": "no"
+},
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "false-urgency",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+},
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "fear-envy-to-hatred",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+},
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "fear-mongering-ads",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "feigned-expertise",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "reliance_on_A",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "fictitious-disaster-con",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+},
+{
+"kind": "reliance_on_A",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "fishing-gear",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "fixation-on-real-injury",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "attention",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "flawed-procedure",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "flick-triple-dog-dare",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "framing-accurate-leak",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "framing-false-leak",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "friendly-encounter-script",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "reliance_on_A",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "funny-movie",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "gardener",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "global-warming-politician",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "attention",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "good-faith-bargain",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "greedy-mark",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "gregory-paula-gaslight",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+},
+{
+"kind": "reliance_on_A",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "guilt-for-real-wrong",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "guilt-trip-mike-janice",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "gym-rewards",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "hammer-bump",
+"has_influencer": "yes",
+"seeks_response": "no",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "highway-mix-up",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "honest-eyes-reminder",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "honest-eyes-watched",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "honey-trap",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "iago-backfire-accident",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "iago-engrossed",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "iago-handkerchief",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "iago-invited",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+},
+{
+"kind": "feeling_or_weight",
+"told": "no"
+},
+{
+"kind": "reliance_on_A",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "iago-othello",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+},
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "iago-own-grievance",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "iago-wrong-method",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "impulse-purchase-area",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "inebriated-friend",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "informational-nudges",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "ingrid-tom-empathy",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "yes",
+"value_change_known": "yes"
+},
+{
+"id": "inherited-guilt",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "insecure-approval",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "insecurity-advertising",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+},
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "intoxicants-fatigue",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "intoxicated-friend",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "irene-recommends",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "reliance_on_A",
+"told": "no"
+},
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "irene-todd",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+},
+{
+"kind": "attention",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "jo-allen-bluffing",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "jo-allen-not-bluffing",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "jones-innocent-reflection",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "jonestown",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+},
+{
+"kind": "reliance_on_A",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "larry-wendy-promotion",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+},
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "lawn-mower-ice-cream",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "lawn-offer-unknown",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "layered-tactics",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+},
+{
+"kind": "belief",
+"told": "no"
+},
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "lucrative-suicide",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "luxury-car-salesperson",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "magician-misdirection",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "attention",
+"told": "yes"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "mail-in-rebates",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "mandy-tara-emotional-blackmail",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "mandy-tara-emotions",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+},
+{
+"kind": "feeling_or_weight",
+"told": "no"
+},
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "mandy-tara-gaslighting",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+},
+{
+"kind": "reliance_on_A",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "mandy-tara-misemphasis",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "attention",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "mandy-tara-nagging",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "mandy-tara-reciprocity",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "mandy-ursula-pressure",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+},
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "many-apples",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "marlboro-man-belief",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "marlboro-man-halo",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "mash-gaslight",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "mike-thaddeus-bee",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "military-decoy",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "attention",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "missed-train",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "missed-train-compulsion",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "missed-train-paternalistic",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "money-or-banana-head",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "money-or-life",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "mood-as-facilitator",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "mood-fit-examples",
+"has_influencer": "no",
+"seeks_response": "no",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "mood-to-emotion",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "nagging-akratic",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "nagging-reminder",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "nagging-teen",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "negging",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+},
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "new-job-anne",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "new-job-mel",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "nora-tammy-scotch",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "nora-ted-scotch",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "on-the-spot-request",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "onerous-favor",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "onerous-request-awkwardness",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "open-peer-pressure-smoking",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "ostracism-threat",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "p1-iago-emotions",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+},
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "p10-conflict-aversion",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "p11-panhandlers",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "p12-negging",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+},
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "p13-conditional-flattery",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "p2-pickpocket",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "attention",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "p3-gregory-paula",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+},
+{
+"kind": "reliance_on_A",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "p5-jonestown",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "p6-flick-dare",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "p6-flick-variant",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "p7-jo-allen",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+},
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "p7-jo-variant",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "p8-nagging-variant",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "p8-teen-nagging",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "p9-charm-variant",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "p9-motorist-charm",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+},
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "panhandler-guides",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "paternalistic-mandy-ursula",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "peppermint-patty-deep-down",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "peppermint-patty-innocent",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "physician-displeasure",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "pickpocket",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "attention",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "point-out-snake",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "poison-pill",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "political-disinformation",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "political-emotions",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "political-misemphasis",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "attention",
+"told": "no"
+},
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "preselected-options",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "reliance_on_A",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "pretense-roles",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "prison-cell-colour",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "probabilistic-recommendation",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "professor-conditioned",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "puffery-calibrated",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "puffery-sincere",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "puffery-taken-literally",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "pyramid-payoff",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "attention",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "pyramid-scheme-misdirection",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "attention",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "quick-temper-retribution",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+},
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "racist-candidate",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "radar-slipped-pass",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "attention",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "radiologist-photos",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "resentment-real-injustice",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+},
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "retirement-default-self-serving",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "reliance_on_A",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "retirement-default-sincere",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "rigged-coin",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "risky-investments-script",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "reliance_on_A",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "risky-investments-trust",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "reliance_on_A",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "roach-motel-akratic",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "roach-motel-outweighed",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "roach-motel-persist",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "road-lines",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "sales-misemphasis-and-false-friend",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "attention",
+"told": "no"
+},
+{
+"kind": "reliance_on_A",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "salience-misaligned",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "attention",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "salient-menu-or-showroom",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "save-more-tomorrow",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "scam-on-the-susceptible",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "security-reminder",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "sincere-advocacy",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "sincere-empathy-appeal",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "unclear",
+"value_change_known": "na"
+},
+{
+"id": "smith-admitting-physician",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "smith-police-officer",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "snake-warning-sign",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "snow-flurries-1-fails",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+},
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "snow-flurries-1-succeeds",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+},
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "snow-flurries-2",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+},
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "social-media-engagement",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "social-proof-reliable",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "spin-and-success-stories",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "state-as-end",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "unclear",
+"value_change_known": "na"
+},
+{
+"id": "subliminal-hypnosis",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "success-framing-recommendation",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "tailgating",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+},
+{
+"kind": "attention",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "teacher-feigns-excitement",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "ted-exposure-akratic",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "feeling_or_weight",
+"told": "no"
+}
+],
+"lapse_expected": "yes",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "ted-exposure-belief",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "ted-exposure-tiebreak",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "tennis-forehand",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "attention",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "therapist",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "thermostat",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "thug-advice",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "tide-priming",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "tobacco-risk",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "tour-guide-social-proof",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "trademark-imitation",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "traffic-safety-films",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "trained-professor-akratic",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "trained-professor-buridan",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "trained-professor-false-belief",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "transparent-sales-proposal",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "tricky-buttons",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "belief",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "trust-me",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "reliance_on_A",
+"told": "no"
+}
+],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "walker-preschool-walk",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "no",
+"value_change_known": "na"
+},
+{
+"id": "white-supremacist-will",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [],
+"lapse_expected": "no",
+"value_change_expected": "unclear",
+"value_change_known": "na"
+},
+{
+"id": "wont-be-your-friend",
+"has_influencer": "yes",
+"seeks_response": "yes",
+"mistakes": [
+{
+"kind": "unclear",
+"told": "unclear"
+}
+],
+"lapse_expected": "unclear",
+"value_change_expected": "no",
+"value_change_known": "na"
+}
+]
