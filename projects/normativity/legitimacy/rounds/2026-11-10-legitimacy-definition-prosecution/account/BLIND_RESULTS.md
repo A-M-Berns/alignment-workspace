@@ -1,5 +1,7 @@
 # Sixty-nine stories coded blind against the account in words
 
+> **Earlier attempt.** These counts test, in words, the account of manipulation as conduct that works through her mistakes, with legitimacy as the absence of *avoidable gain*, recorded by the fifteenth follow-up (2026-11-21). It is not the governing account: every form of it measures her against the facts or against an idealised version of herself (undamaged, informed, unshifted), and avoidable gain was never computed on a case, its quantities being supplied numbers. Noggle's definition of manipulation stays the definition. What replaced it: mistakes judged by the adviser's lights and legitimacy as three sentences (`account/LEGITIMACY_STATEMENT.md`). The present state of the line is `CURRENT.md` at the root of this round's directory. The counts stand as counts.
+
 One fresh Claude reader was given sixty-nine stories without verdicts and the account in
 words, and coded each to a level: `NONE`; `L1`, a mistake of hers was caused with no design
 on it; `L2`, the conduct is shaped to work through her mistake; `L3`, the adviser acts

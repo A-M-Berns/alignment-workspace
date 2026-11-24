@@ -1,5 +1,7 @@
 # Two blind runs on the literature's cases of value change
 
+> **Earlier attempt.** These counts test the value-change part of the account of manipulation as conduct that works through her mistakes, with legitimacy as the absence of *avoidable gain*, recorded by the fifteenth follow-up (2026-11-21). It is not the governing account: every form of it measures her against the facts or against an idealised version of herself (undamaged, informed, unshifted), and avoidable gain was never computed on a case, its quantities being supplied numbers. Noggle's definition of manipulation stays the definition. What replaced it: mistakes judged by the adviser's lights and legitimacy as three sentences (`account/LEGITIMACY_STATEMENT.md`). The present state of the line is `CURRENT.md` at the root of this round's directory. The counts stand as counts.
+
 The fifty-two cases are those of `LIT_CASES.md` Part A, given to each reader as case texts
 without verdicts. Two fresh Claude readers, one per run, each coded all fifty-two against
 one formulation and nothing else of this round.

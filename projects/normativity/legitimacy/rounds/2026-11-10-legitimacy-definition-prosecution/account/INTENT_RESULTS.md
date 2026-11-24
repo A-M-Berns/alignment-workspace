@@ -1,5 +1,7 @@
 # Forty cases for a test of "acts manipulatively"
 
+> **Earlier attempt.** These counts test an earlier form of the account of manipulation as conduct that works through her mistakes, with legitimacy as the absence of *avoidable gain*, recorded by the fifteenth follow-up (2026-11-21). It is not the governing account: every form of it measures her against the facts or against an idealised version of herself (undamaged, informed, unshifted), and avoidable gain was never computed on a case, its quantities being supplied numbers. Noggle's definition of manipulation stays the definition. What replaced it: mistakes judged by the adviser's lights and legitimacy as three sentences (`account/LEGITIMACY_STATEMENT.md`). The present state of the line is `CURRENT.md` at the root of this round's directory. The counts stand as counts.
+
 `intent_cases.json` is the JSON block of the outside reviewer's second reply
 (`prompts/2026-11-10-legitimacy-definition-prosecution/REVIEW-astra-followup-15.md`, second
 heading), unaltered: its twenty-four cases of the first reply (A1–A12 written against a
