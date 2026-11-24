@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "dba8aec782cad70e6ee00591",
-  "index.json": "9040af537b1107768adec88c"
+  "derived.json": "8f585625fd510e81ecabd330",
+  "index.json": "f67282f726d93c02ab5f7d41"
  },
- "generated_hash": "d087e36a1e88e331e7e9bb24",
+ "generated_hash": "d9ce296db2c9f44ee663392d",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -9487,6 +9487,11 @@
     "date": "2026-11-24",
     "normalized": "item 154 a second coding of the bank and a set of cases of bent judgement is delivered in the shape its entry states test supported account bank_coding_11 md and account bank_coding_16 md each coded again by a coder that has seen neither the first coding nor a verdict the answers keyed by case id in files beside the first a set of at least twenty cases in which her judgement is bent for a while and she acts on it each with a published verdict and its citation coded twice under sheet 16 and account case_runs py extended to count per question the cases on which the two coders agree the rules verdicts under each coding and the clauses verdicts on the new set with predictions written before the codings",
     "version": 1
+   },
+   {
+    "date": "2026-11-24",
+    "normalized": "item 154 a set of cases of bent judgement coded twice is delivered in the shape its entry states test supported a set of at least twenty cases in which her judgement is bent for a while and she acts on it each with a published verdict and its citation coded under account bank_coding_16 md by two coders of different models that have seen no verdict the answers keyed by case id in files beside account bank_coded_16 json and a script beside account second_coding py wired into account run py counting per question the cases on which the two coders agree and the clauses verdicts on the set under each coding against the published verdicts with predictions committed before the codings the scorer of account case_runs py unchanged",
+    "version": 2
    }
   ],
   "item-155": [

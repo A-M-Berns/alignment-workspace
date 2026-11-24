@@ -178,12 +178,17 @@ What stands behind it, none of it a statement of record:
   and 20 of a candidate clause for what stopping costs her, which is the authority side's
   (`account/STOPPING_COST.md`). Expectations were fixed first; statement and cases are by one
   hand; the chance that she goes against her earlier rating is supplied to each case.
-- **Case runs** (`account/CASE_RUNS.md`), each one blind coding by a language model against a
-  scorer written first. On the 240 cases of Noggle's book with a definite verdict the
-  disclosure rule settles 219 and agrees on 214, the rule having been formed with the bank in
-  view. The clause on her earlier rating settles 33 of the 39 cases where a lapse is expected
-  and agrees on all 33, convicting 1 of 69 controls. A judgement bent for a while occurs in
-  four cases of 152 as coded. The statement has not been run on a case of value change.
+- **Case runs** (`account/CASE_RUNS.md`), blind codings by language models against scorers
+  written first; the two sheets behind the counts here are each coded twice, by coders of
+  different models. On the 240 cases of Noggle's book with a definite verdict the disclosure
+  rule settles 219 and agrees on 214 on the first coding, 216 and 212 on the second, the rule
+  having been formed with the bank in view; its verdict is the same under both on 227. The
+  clause on her earlier rating settles 33 of the 39 cases where a lapse is expected and agrees
+  on all 33 on the first coding, convicting 1 of 69 controls; 30, 29 and no control on the
+  second; its verdict is the same under both on 131 of 152. A judgement bent for a while
+  occurs in four cases of 152 on one coding and ten on the other, none where a lapse is
+  expected. No person has read a case against a coding. The statement has not been run on a
+  case of value change.
 - **Nine outside reviews** by one model (`REVIEW-astra-followup-16.md` in the prompts
   directory), two of them blind to the project. Each found errors of form in the version it
   saw; none has seen the present statement or the Lean.
@@ -192,8 +197,8 @@ What stands behind it, none of it a statement of record:
 living notes. Its last section ranks the open work. By `ATTENTION.md` item:
 
 1. **An outside review of the Lean statement** (item 153).
-2. **A second coding of the bank, and a set of cases of bent judgement** (item 154); a
-   person's check of a sample (item 148).
+2. **A set of cases of bent judgement, coded twice** (item 154); a person's check of a
+   sample of the codings (item 148).
 3. **The table's cases restated so that each fixes its term, and the model's
    simplifications removed** (item 151).
 4. **The cost of a decision of hers on the authority side** (item 149).

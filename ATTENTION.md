@@ -1766,25 +1766,24 @@ which every clause does work.
 `lean/Workspace/Deference/Contrib/LegitimacyModel.lean`; `REVIEW-astra-followup-16.md` in the round's prompts directory.
 *Consumed by:* item 151's third part, and the round that writes the account up.
 
-### 154. A second coding of the bank, and a set of cases of bent judgement — **[open]**
+### 154. A set of cases of bent judgement, coded twice — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-Rows 3, 6, 7, 8, 10 and 35 of `account/LEDGER.md`.
+Rows 6, 8 and 10 of `account/LEDGER.md`.
 
-The disclosure rule and the clause on her earlier rating each rest on one coding of the bank
-of cases from Noggle's book by one language model: 214 of 219 settled cases for the first,
-33 of 33 for the second, with one control convicted. The rule was formed with the bank in
-view. Three questions worded alike on two sheets were answered alike by two coders on 142,
-142 and 148 of 152 cases, which is the only measure of agreement there is. A judgement bent
-for a while, which the clause is ruled to cover, occurs in four of the 152 cases as coded
-and in none of those where a lapse is expected. The paraphrases the coders read are outside
-the repository and must be supplied to the round. Wanted: each sheet coded a second time,
-and a set of cases of bent judgement.
+A judgement bent for a while, which the clause on her earlier rating is ruled to cover,
+occurs in four of the 152 bank cases on the first coding of sheet 16 and in ten on the
+second, and on neither in a case where a lapse is expected; the clause convicts one of the
+four and two of the ten. The prediction written for such cases has gone untested each time.
+The sheets were each coded a second time on the bank (`account/CASE_RUNS.md`, last section).
+Wanted: a set of cases of bent judgement with published verdicts, coded twice, and the
+clause's verdicts on it counted.
 
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
-*Context:* `CURRENT.md`, `account/CASE_RUNS.md`, `account/case_runs.py`, the two coding sheets,
-`account/noggle_bank.json` and `account/LEDGER.md` in the round directory.
+*Context:* `CURRENT.md`, `account/CASE_RUNS.md`, `account/case_runs.py`, `account/SECOND_CODING.md`,
+`account/second_coding.py`, the two coding sheets, `account/noggle_bank.json` and `account/LEDGER.md`
+in the round directory.
 *Consumed by:* item 148, and the round that writes the account up.
 
 ### 155. The legitimacy statement on cases of value change — **[open]**

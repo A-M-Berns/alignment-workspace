@@ -4215,7 +4215,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - item-151: Execute item 151 per its deliverable shape and acceptance check: The Lean model on cases: the table's cases restated so that each fixes its term, the simplifications removed. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-24--legitimacy-statement-working-positions
 - item-152: Execute item 152 per its deliverable shape and acceptance check: The verdict when his conduct is cut into finer moves, and what a decision of hers is. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-24--legitimacy-statement-working-positions
 - item-153: Execute item 153 per its deliverable shape and acceptance check: An outside review of the Lean statement of legitimacy. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-24--legitimacy-statement-working-positions
-- item-154: Execute item 154 per its deliverable shape and acceptance check: A second coding of the bank, and a set of cases of bent judgement. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-24--legitimacy-statement-working-positions
+- item-154: Execute item 154 per its deliverable shape and acceptance check: A set of cases of bent judgement, coded twice. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-24--legitimacy-statement-working-positions
 - item-155: Execute item 155 per its deliverable shape and acceptance check: The legitimacy statement on cases of value change. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-24--legitimacy-statement-working-positions
 - item-16: Execute item 16 per its deliverable shape and acceptance check: The certificate inequality, derived. (who: agent)
 - item-17: Execute item 17 per its deliverable shape and acceptance check: Simulator substitution: the divergence witness. (who: agent)
@@ -7457,4 +7457,4 @@ The outside option and the undescribed failure, each a cases node over the outco
 | wirehead-iff-finite.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 1 |
 | wirehead-iff-finite.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 1 |
 | worlds-and-points-companion | leaf/question | 2 (both) | AI number | open | 0 | 8 |
-<!-- generated_hash: c99bc07f0f82dcaa42fdaf0b -->
+<!-- generated_hash: 2b38fba384c17685d700b6db -->
