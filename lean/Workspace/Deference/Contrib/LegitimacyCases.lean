@@ -988,7 +988,10 @@ theorem table :
     d9.Has ⟨true, true, true, true, true, true, true⟩ ∧
     d10.Has ⟨true, false, true, true, true, true, true⟩ ∧
     d11.Has ⟨true, true, true, true, true, true, true⟩ :=
-  ⟨a1_has, a2_has, a3_has, a4_has, a5_has, a6_has, a7_has, a8_has, a9_has, a10_has, a11_has, a12_has, b1_has, b2_has, b3_has, b4_has, b5_has, b6_has, b7_has, b8_has, b9_has, b10_has, b11_has, c1_has, c2_has, c3_has, c4_has, c5_has, c6_has, c7_has, d1_has, d2_has, d3_has, d4_has, d5_has, d6_has, d7_has, d8_has, d9_has, d10_has, d11_has⟩
+  ⟨a1_has, a2_has, a3_has, a4_has, a5_has, a6_has, a7_has, a8_has, a9_has, a10_has, a11_has,
+    a12_has, b1_has, b2_has, b3_has, b4_has, b5_has, b6_has, b7_has, b8_has, b9_has, b10_has,
+    b11_has, c1_has, c2_has, c3_has, c4_has, c5_has, c6_has, c7_has, d1_has, d2_has, d3_has,
+    d4_has, d5_has, d6_has, d7_has, d8_has, d9_has, d10_has, d11_has⟩
 
 /-! ## Terms inhabiting the hypotheses of five theorems of `LegitimacyModel.lean` -/
 
