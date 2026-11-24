@@ -5631,6 +5631,201 @@ the anchors `open--request-licenses-pressure` and
 
 The pull request is not auto-merged; the merge is a pull-request fact.
 
+## Seventeenth follow-up (2026-11-24) — a witness on which every clause does work, and the exact cases as terms of the model
+
+Dispatched by `PROMPT-followup-17.md`; "§" with a number below is a section of it. Lean files
+are under `lean/Workspace/Deference/Contrib/`; `account/` is in the round directory,
+`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/`.
+Tolerances throughout: θ = 1/20, η = 1/100, κ = 1/10. Nothing is registered.
+`account/LEAN_CASES.md` carries the tables and is not repeated here.
+
+### AE.1 What was shown
+
+**How.** `LegitimacyCase.lean` names the seven conjuncts of `Model.Legit` (the start rule,
+proper offers, declines, F1, F2, F2′, F3, each over every decision; `Model.legit_iff`),
+defines rational models (`Case`) whose state has a fixed form and on which each conjunct is
+decidable, and proves definition by definition that the decided conjunct is the conjunct of
+`LegitimacyModel.lean` on the term `Case.model` (`Case.hasProfile`). A result below is a
+theorem that the conjuncts holding on a term of `Model` are exactly a stated seven booleans,
+proved by kernel evaluation (`decide +kernel`) and that bridge. No theorem uses
+`native_decide`; every one audits to the three axioms.
+
+**A.** `Full.legit` in `LegitimacyWitness.lean`: a term with everything §2 A lists, and a
+declined view besides, is legitimate. Seven terms each differ from it in one field of `Model`
+(`Full.<name>_model`, by `rfl`), and on each the clause meant fails and the other six hold:
+`early` (`start`; the start rule), `spent` (`optsHeard`; proper offers), `unoffered`
+(`declined`; declines), `withheld` (`offered`; F1), `covert` (`known`; F2), `led` (`act`;
+F2′), `stuck` (`act`; F3).
+
+**B.** `LegitimacyCases.lean`: each of the 41 cases as a term built by one construction
+(`Cases.Supplied.case`, stated in the file's header and in `LEAN_CASES.md` §2), with the
+conjuncts that hold on it and the verdict proved, in the table's order; `Cases.table` states
+all 41 at once. Outcomes: **agrees 32, agrees by another clause 6, differs 2, not expressible
+1.** All 41 were done. Eight further terms are variants (`LEAN_CASES.md` §4).
+
+**The instances.** Five theorems of `LegitimacyModel.lean` had no term inhabiting their
+hypotheses. Each has one: `Cases.nothing_instance`, `untold_instance` (the term of C3),
+`unstoppable_instance` (A7), `against_instance` (B1), `inert_instance`.
+
+### AE.2 The differences, the inexpressible case, and the terms with added data
+
+- **A5, differs.** The case lists her options as `go` and `leave` and its stopping option as
+  `quit`. The statement's `S_τ` is a subset of `O_τ`; `Model.F2` asks it and fails;
+  `legitimacy_checks.py` asks only that the stopping set be non-empty. With `quit` among her
+  options the term is legitimate (`Cases.a5q_has`).
+- **A8, differs.** The case supplies a chance of 1/2 that she stops given that she rates
+  stopping strictly higher, and ratings on which she never does. The statement's F3 is
+  satisfied when its condition has probability zero; `Model.F3` holds on the term, which is
+  A9's; `legitimacy_checks.py` compares the supplied chance with 1 − κ whatever the
+  condition's probability. I judge the table's verdict wrong against the statement on the
+  case's own data. With cases of weight 1/5 in which she rates stopping higher and stops in
+  half, F3 fails alone (`Cases.a8w_has`).
+- **D1, D4, D6, D7, D8, D10, another clause.** An offer is improper, or (D4) a decline no
+  longer stands. The table drops it and finds the view untold: F1. In `Model` what is on
+  offer and what is declined are sets he designates (the header's respects 5 and 9), so
+  `Legit` fails by the offer or the decline clause and F1 holds. Not designated, each fails
+  by F1 alone (`Cases.d1o_has` and five more).
+- **B6, not expressible.** The case is an influence on something she had no view about,
+  where F2′ is silent. `Model` scores every course from every state (respect 4). The term
+  its numbers give has the shape of B7's and is legitimate; missing is a rating that can be
+  absent.
+- **Eight terms carry data their case does not supply.** B2, B5, B10: the case gives a
+  chance of going against her earlier rating with none of acting against her present one,
+  and a rating that does not vary with his conduct; the term adds her rating without his
+  move, in cases of the supplied weight, and that addition is what makes F2′ fail. D3, D4,
+  D5: the case gives a flag that an earlier offer was valid; the term adds the earlier
+  decision. D10, D11: the case gives her ratings after hearing one of two views; the term
+  adds her state after taking up both. I wrote each with the table's verdict in view; the
+  eight agreements are weaker evidence than the other thirty-one.
+
+### AE.3 Changes to a definition
+
+None. No case showed a definition of `LegitimacyModel.lean` failing to say what the statement
+says in a way a contained fix would mend: the two differences are in the cases' data, and
+the six by another clause and B6 are simplifications the file's header already lists. The
+header of `LegitimacyModel.lean` has two sentences changed under *Not established here*;
+nothing else in that file is touched. One thing noticed and left: `Model.F3` has no
+counterpart of the statement's condition `S_τ ≠ O_τ`; where every option of hers stops his
+moves `PrefersStop` holds vacuously and F3 asks that her act be a stopping option, which it
+is whenever her act is among her options.
+
+### AE.4 Corrections to the prompt
+
+1. *§1, "leaves three of the four clauses with nothing to check".* `Legit` has seven
+   conjuncts, the seven §2 A lists; on the earlier witness five are idle (proper offers,
+   declines, F1, F2′, F3).
+2. *§2 B, "each case … as a term of `Model`".* A case of the table does not fix a term. The
+   table speaks of a chance for each set of moves and of flags; `Model` of her act and
+   rating in each case of his, and of an earlier decision. Every term rests on the
+   construction, and eight on data added besides.
+3. *§2 B, the four outcomes.* They classify a term against the table. Whether the term
+   carries data the case lacks is a fifth fact, recorded in its own column.
+4. *§2 D, "any closed theorem that now has a term".* A and B gave none of the five a term by
+   themselves: each needed an instance theorem, written in this pass, and
+   `Model.not_bears_of_inert` cannot be inhabited by any `Case`, her state there recording
+   his conduct; its instance is a model written out field by field.
+
+### AE.5 Deviations from the prompt
+
+- **A.** The witness and its neighbours are `Case`s, and the terms of `Model` are their
+  `Case.model`. Three new files, not one.
+- **B.** Beyond the 41: eight variants, `Cases.table`, the five instances.
+- **C.** `account/lean_cases.py` recomputes the document's three tables and its counts and is
+  wired into the runner. It reads the booleans in the theorems' statements as text and does
+  not run Lean; the outcome `not expressible` and the column of additions are set by hand in
+  it.
+- **D.** Rows 37 and 38 are attached to item 151, which is revised to three parts: the two
+  differing cases, the eight terms with added data, the simplifications. Rows 4 to 9, 12 to
+  14, 16, 17 and 25 to 27 of the ledger are revised as well as 20 and 21. `DECISIONS.md` is
+  not among the paths §2 names and is not touched: this pass's choices (the construction,
+  the additions, B6 as not expressible) are recorded in `LEAN_CASES.md` and here, with no
+  agent-decided entry. No concept, no wiki edit, no node other than item 151.
+- **The registration patch** keeps its name and has new content: it is rebuilt on the tree of
+  commit `e05f87d5`, since the earlier patch no longer applied to the ledger and `CURRENT.md`,
+  and registers thirteen results, the six of the sixteenth follow-up and
+  `legitimacy.inert-move-bears-nothing`, `legitimacy.nothing-is-legitimate`,
+  `legitimacy.untold-refutes`, `legitimacy.unstoppable-move-refutes`,
+  `legitimacy.against-earlier-rating-refutes`, `legitimacy.full-witness` (`Full.legit`) and
+  `legitimacy.model-on-the-exact-cases` (`Cases.table`), one for each closed row of the
+  ledger. Its decision anchor is `2026-11-24--thirteen-model-results-registered`. On a clone
+  with it applied: `checkers.run` exit 0 at 125 entries; the graph checker OK at 2701 nodes;
+  the state valid at 230 claims; the attention render equal; dead pointers, untracked
+  pointers, the wiki's bindings and references clean; the site builds with nothing
+  unresolved. `checkers.wiki_links` failed there on two links pinned to commits the clone did
+  not fetch, and passes on this tree. Not run on it: `tests/run.py`, the axiom audit. The
+  bridge theorems of `LegitimacyCase.lean` are not in it.
+- **E.** The pull request's title and body cover the three follow-ups on the branch and name
+  `PROMPT-followup-18.md`, which is on the branch and is not this pass's.
+
+### AE.6 What was not shown
+
+- **That `Model.Legit` gives the statement's verdict** on any case outside the 41 and the
+  witness's eight terms. The statement, the model and the table are by one hand; the terms
+  are by another session of the same model; no outside review has seen any of the Lean.
+- **That the 32 and 6 agreements are independent of the table.** The construction was fixed
+  before any profile was evaluated and the 49 profiles I had worked out by hand matched the
+  first evaluation, so no term was adjusted after seeing its verdict; but the eight
+  additions were chosen knowing the verdict wanted.
+- **F2′ beyond one device.** In every term she goes against her earlier rating only by an act
+  rated lower at time 0; no term has a course that changes with his conduct, a gap, or more
+  than two decisions.
+- **The start rule on the cases**: every move starts after a decision. `Full.early` alone
+  exercises it.
+- **Seven of the nine simplifications.** The cases run into respects 4, 5 and 9 only.
+- **Anything general about the clauses.** The neighbours show each fails alone at one point.
+- **That `lean_cases.py` agrees with the build**: it trusts the text of the statements, and
+  the build and the audit are what check them.
+- **Gates.** Under Python 3.13, on the tree of commit `6f49505c` with this section, less this
+  paragraph, in the working tree. The round's runner: green, exit 0, 187 seconds.
+  `python3 tests/run.py`: all green over 81 projects, exit 0, 912 seconds, the Lean build
+  skipped as that runner does by default. `lake build` of the library through `safe-lake.sh`:
+  completed, 4120 jobs. The axiom audit, `python3 tests/audit_axioms.py`, started after the
+  last change to a Lean file: 4425 results across 130 files, all within the three axioms, exit
+  0, 1332 seconds. `python3 -m checkers.graph --root .`: OK at 2649 nodes, 2603 events, one
+  warning, the standing one on decision anchors with no node; it rewrote nothing.
+  `python3 -m checkers.workspace_state --check`: valid at 217 claims, 136 rounds and 167
+  priorities. `tests/dead_pointers.py`: clean. `tests/round_records.py` and the other jobs that
+  need a pull-request context run in CI on the pushed head.
+- **Components.** Thirteen rows of the ledger — **closed**, each a Lean declaration: the
+  eleven of the sixteenth follow-up, row 20 (`Full.legit`) and row 21 (`Cases.table`), their
+  reopening event the ledger's shared one. Nineteen — **open**, rows 37 and 38 among them.
+  Six — **living notes**.
+
+### AE.7 Filings, names, and what is reserved
+
+Item 151 revised through its node, version 3, and `ATTENTION.md` re-rendered; no item filed.
+`state/rounds.json`: the round's seventeenth-pass verdict, quoted from `VERDICTS.md`.
+`CURRENT.md` §3 revised. Root, round and Lean `PROVENANCE.md`: one row each. No registry
+entry, no `DECISIONS.md` entry, no queue entry.
+
+**New names, all provisional.** Files: `LegitimacyCase.lean`, `LegitimacyWitness.lean`,
+`LegitimacyCases.lean`; `account/LEAN_CASES.md`, `account/lean_cases.py`. In the namespace
+`Workspace.Deference.Contrib.LegitimacyModel`: `Model.StartRule`, `Offers`, `Declines`,
+`EveryF1`, `EveryF2`, `EveryF2'`, `EveryF3`, `legit_iff`, `HasProfile` with `legit` and
+`not_legit`; `Profile`, `Profile.all`; `St`, `St.init`, `St.tell`; `Case`, `Case.model`, the
+rational clause definitions of the same names as the model's, `Case.profile`, the `Case.model_*`
+theorems, `Case.hasProfile`, `hasProfile_std`. In `Full`: `Opt`, `View`, `Move`, `Cs`,
+`weight`, `rate`, `act`, `full`, `legit`, `bears_m`, `not_bears_n`, `act_differs`,
+`against_weights`, `wary_stops`, `views_at_one`, and `early`, `spent`, `unoffered`,
+`withheld`, `covert`, `led`, `stuck` with their `_model`, `_profile` and `_not_legit`. In
+`Cases`: `Supplied`, `Supplied.case`, `rating`, `Has`, `has`, `eff`, `at1`, `plain`, `slip`,
+`bentRate`, `bentAct`, the option, label and view types, the terms `a1` to `d11`, the
+variants `a5q`, `a8w`, `d1o`, `d4o`, `d6o`, `d7o`, `d8o`, `d10o`, each with `_has` and
+`_verdict`, `table`, `nothing`, `still`, and the five `_instance` theorems. The outcome labels
+*agrees*, *agrees, other clause*, *differs*, *not expressible* are the dispatch's. In the
+patch: the seven claim ids of AE.5 and the anchor `2026-11-24--thirteen-model-results-registered`.
+
+**Outstanding maintainer actions**
+
+1. Apply or decline the registration of thirteen Lean results:
+   `git apply prompts/2026-11-10-legitimacy-definition-prosecution/followup-16-registration.patch`,
+   then `python3 -m checkers.graph --root .` and `python3 -m checkers.workspace_state --check`.
+   The patch applies to the tree of this pass's last commit.
+
+The three entries of *Awaiting the author* that the sixteenth follow-up's list names stand
+as they were; this pass adds none and answers none. The pull request is not auto-merged; the
+merge is a pull-request fact.
+
 ## Attribution
 
 - Prompt-author model: Claude Fable 5 (Anthropic); dispatched 2026-11-10, kept
@@ -5723,4 +5918,7 @@ The pull request is not auto-merged; the merge is a pull-request fact.
   models it ran, model version unrecorded; the outside reviewer is the model of the earlier
   reviews of this round, named `gpt-6-astra` there, client version and logs not among the
   files handed over, in nine runs, briefs and replies kept as `REVIEW-astra-followup-16.md`.
+- Seventeenth follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-24,
+  kept verbatim as `PROMPT-followup-17.md`; executor model Claude Fable 5.2 (Anthropic), executed
+  2026-11-24, with no subagent and no outside review.
 - No chat bundle.
