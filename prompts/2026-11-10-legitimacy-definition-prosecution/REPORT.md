@@ -5573,7 +5573,14 @@ them coded on the same bank, so run 11 is not a test on fresh cases; `CASE_RUNS.
 - **That a gate can evaluate the predicate**, or anything over more than one decision.
 - **What the reviews did not see**: the statement as it stands, and any of the Lean.
 - **That the codings can be redone**: the texts the coders read are outside the repository.
-- **Gates.** @@GATES@@
+- **Gates.** Under Python 3.13. The round's runner: green, exit 0, 198 seconds, on the tree of the fourth commit of this pass, and green again
+  within `tests/run.py`. `python3 tests/run.py` on the tree of commit `a55af866`: all green over 81 projects, exit 0, 613 seconds, the Lean
+  build skipped as that runner does by default. The axiom audit, `python3 tests/audit_axioms.py`, started after the last change to a Lean
+  file: 4257 results across 127 files, all within the three axioms, exit 0, 865 seconds; `lake build` of the new module completed before it.
+  `python3 -m checkers.graph --root .`: OK at 2649 nodes, 2603 events, one warning, the standing one on decision anchors with no node.
+  `python3 -m checkers.workspace_state --check`: valid at 217 claims, 136 rounds and 167 priorities, after `--write-handoff` rewrote stale
+  views. `tests/dead_pointers.py`: clean. The commit after `a55af866` changes this paragraph only. `tests/round_records.py` and the other
+  jobs that need a pull-request context run in CI on the pushed head.
 - **Components.** Eleven rows of the ledger — **closed**, each a Lean declaration. Nineteen —
   **open**. Six — **living notes**. `CURRENT.md`, the working positions and the items —
   **living notes**.
