@@ -1,8 +1,9 @@
 # Case runs: the bank of cases from Noggle's book, and the value-change test
 
 Counts from codings by language models. Every line beginning `- run`, `- lapse clause`,
-`- rule` or `- value change` is recomputed by `case_runs.py` under the round's runner
-(`python3 run.py` in the round directory), which fails on a difference. A count is a count of
+`- rule` or `- value change` is recomputed by `case_runs.py`, and every line beginning
+`- second coding` by `second_coding.py`, under the round's runner (`python3 run.py` in the
+round directory), which fails on a difference. A count is a count of
 cases in a bank assembled for this work, not a rate in any population: the bank is every case
 three readers found in one book, and the other sets were written or chosen to be hard.
 
@@ -14,9 +15,9 @@ and are outside the repository, as are the few words each coder wrote beside an 
 coding cannot be redone or audited from here.
 
 **What each run was.** One language-model coder per coding (run 11: one per third of the bank),
-given the sheet and the case texts without verdicts and told to open nothing else. No case was
-coded by two coders under one sheet, except three cases that fall in two thirds of the bank under
-sheet 11. No person checked a coding. In every run the scoring rule was written before the coding
+given the sheet and the case texts without verdicts and told to open nothing else. Sheets 11
+and 16 were each coded a second time by one coder of another model (the last section); under
+sheets 14 and 15 each case has one coding. No person checked a coding. In every run the scoring rule was written before the coding
 existed. The bank itself was not fresh: ten sheets precede sheet 11 in this work, at least seven
 of them coded on this bank, with four lists of the failures found; they are outside the
 repository. The rule run 11 scores was formed with the bank's cases in view. Runs 14 to 16
@@ -515,3 +516,210 @@ redescription pair. The three adversarial cases the clause passes against the ou
 an influence switched on over her express refusal with a stop available (`X6`), an open refusal to
 broaden her tastes (`X11`), and a change she asks for, fully informed, that the outside model
 faults for its content (`X19`).
+
+## A second coding of sheets 11 and 16 (2026-11-24)
+
+Each sheet coded once more: one subagent per sheet, run as `claude-opus-5-5`, given a folder
+holding the sheet and the case texts in a fresh random order and told to open nothing else and
+to use no web. The model of the first coders is not recorded; they were run from a Claude
+session. Sheet 11 was coded on all 263 cases (for the three ids that occur in two parts, on the
+later part's text, whose first coding the scorer reads), sheet 16 on the 152 of run 16. The
+measures, the tolerance within which a prediction holds, and the predictions were committed
+before either coding was made (`SECOND_CODING.md`). The scorers are those of runs 11 and 16,
+called by `second_coding.py` with the coding they load replaced.
+
+**Sheet 11.** Cases on which the two codings give the same answer, by field; then the rule's
+verdict; then, for the 240 cases with a definite verdict of the author's, the two verdicts
+against each other.
+
+- second coding, sheet 11: cases coded twice: **263**
+- second coding, sheet 11, has_influencer the same: **263**
+- second coding, sheet 11, seeks_response the same: **263**
+- second coding, sheet 11, lapse_expected the same: **237**
+- second coding, sheet 11, value_change_expected the same: **257**
+- second coding, sheet 11, value_change_known the same: **261**
+- second coding, sheet 11, what is told the same: **223**
+- second coding, sheet 11, the multiset of (kind, told) the same: **157**
+- second coding, sheet 11, the rule's verdict the same, of 263: **249**
+- second coding, sheet 11, the rule's verdict the same, of the 240: **227**
+- second coding, sheet 11, of the 240, first fails and second fails: **137**
+- second coding, sheet 11, of the 240, first fails and second passes: **2**
+- second coding, sheet 11, of the 240, first fails and second not settled: **6**
+- second coding, sheet 11, of the 240, first passes and second fails: **0**
+- second coding, sheet 11, of the 240, first passes and second passes: **73**
+- second coding, sheet 11, of the 240, first passes and second not settled: **1**
+- second coding, sheet 11, of the 240, first not settled and second fails: **2**
+- second coding, sheet 11, of the 240, first not settled and second passes: **2**
+- second coding, sheet 11, of the 240, first not settled and second not settled: **17**
+
+The second coding against the author, by the scorer of run 11 (the first coding: 219 settled,
+214 agree, none missed, 5 over), and the cases it convicts against him or misses:
+
+- second coding, sheet 11, second coding against the author: settled: **216**
+- second coding, sheet 11, second coding against the author: agree: **212**
+- second coding, sheet 11, second coding against the author: missed: **1**
+- second coding, sheet 11, second coding against the author: over: **3**
+- second coding, sheet 11, second coding against the author: not settled: **24**
+- second coding, sheet 11, second coding against the author, without the lapse clause: settled: **219**
+- second coding, sheet 11, second coding against the author, without the lapse clause: agree: **208**
+- second coding, sheet 11, second coding against the author, without the lapse clause: missed: **8**
+- second coding, sheet 11, second coding against the author, without the lapse clause: over: **3**
+- second coding, sheet 11, second coding, over: `teacher-feigns-excitement`, `trust-me`, `rigged-coin`
+- second coding, sheet 11, second coding, missed: `conditional-compliments-mundane`
+
+The fourteen cases on which the rule's verdict differs. In brackets: the first coding's answers
+the rule reads, the second coding's, the author's verdict.
+
+- second coding, sheet 11, verdict differs, first fails and second passes: `trained-professor-buridan [told no, lapse no; told none, lapse no; author: not]`, `white-supremacist-will [told none, lapse yes; told none, lapse no; author: not]`
+- second coding, sheet 11, verdict differs, first fails and second not settled: `adam-crocodile-tears [told yes, lapse yes; told yes, lapse unclear; author: manipulation]`, `camping-trip-2 [told none, lapse yes; told unclear, lapse unclear; author: manipulation]`, `charm-offensive-motorist [told no, lapse yes; told unclear, lapse unclear; author: manipulation]`, `cialdini-presuasion-tips [told no, lapse unclear; told unclear, lapse unclear; author: none]`, `nagging-teen [told none, lapse yes; told unclear, lapse unclear; author: manipulation]`, `peppermint-patty-deep-down [told none, lapse yes; told unclear, lapse unclear; author: manipulation]`, `trained-professor-akratic [told no, lapse yes; told unclear, lapse unclear; author: manipulation]`
+- second coding, sheet 11, verdict differs, first passes and second fails: none
+- second coding, sheet 11, verdict differs, first passes and second not settled: `smith-admitting-physician [told none, lapse no; told unclear, lapse no; author: not]`
+- second coding, sheet 11, verdict differs, first not settled and second fails: `jonestown [told unclear, lapse unclear; told no, lapse unclear; author: manipulation]`, `roach-motel-persist [told none, lapse unclear; told no, lapse yes; author: manipulation]`
+- second coding, sheet 11, verdict differs, first not settled and second passes: `conditional-compliments-mundane [told unclear, lapse unclear; told none, lapse no; author: manipulation]`, `gardener [told unclear, lapse no; told none, lapse no; author: not]`
+
+**Sheet 16.** Cases on which the two codings give the same answer, by field; the clause's
+verdict; the two verdicts against each other on the 152.
+
+- second coding, sheet 16: cases coded twice: **152**
+- second coding, sheet 16, act_sought the same: **144**
+- second coding, sheet 16, earlier_rating the same: **124**
+- second coding, sheet 16, means the same: **140**
+- second coding, sheet 16, form the same: **116**
+- second coding, sheet 16, asked the same: **147**
+- second coding, sheet 16, the clause's verdict the same, of 152: **131**
+- second coding, sheet 16, first convicts and second convicts: **32**
+- second coding, sheet 16, first convicts and second passes: **2**
+- second coding, sheet 16, first convicts and second not settled: **4**
+- second coding, sheet 16, first passes and second convicts: **0**
+- second coding, sheet 16, first passes and second passes: **60**
+- second coding, sheet 16, first passes and second not settled: **10**
+- second coding, sheet 16, first not settled and second convicts: **2**
+- second coding, sheet 16, first not settled and second passes: **3**
+- second coding, sheet 16, first not settled and second not settled: **39**
+
+The second coding against the author, by the scorer of run 16, with the three sets and what is
+untold read from the first coding of sheet 11 as in run 16 (the first coding: with a lapse
+expected 33 settled and 33 agree; of 69 controls 64 settled and 1 convicted):
+
+- second coding, sheet 16, second coding, lapse expected: cases: **39**
+- second coding, sheet 16, second coding, lapse expected: manipulation on the author's verdict: **38**
+- second coding, sheet 16, second coding, lapse expected, the clause alone: settled: **30**
+- second coding, sheet 16, second coding, lapse expected, the clause alone: agree: **29**
+- second coding, sheet 16, second coding, lapse expected, the clause alone: missed: **1**
+- second coding, sheet 16, second coding, lapse expected, the clause alone: over: **0**
+- second coding, sheet 16, second coding, lapse unclear: cases: **44**
+- second coding, sheet 16, second coding, lapse unclear: manipulation on the author's verdict: **43**
+- second coding, sheet 16, second coding, lapse unclear, the clause alone: settled: **12**
+- second coding, sheet 16, second coding, lapse unclear, the clause alone: agree: **6**
+- second coding, sheet 16, second coding, lapse unclear, the clause alone: missed: **6**
+- second coding, sheet 16, second coding, lapse unclear, the clause alone: over: **0**
+- second coding, sheet 16, second coding, control: cases: **69**
+- second coding, sheet 16, second coding, control: manipulation on the author's verdict: **0**
+- second coding, sheet 16, second coding, control, the clause alone: settled: **57**
+- second coding, sheet 16, second coding, control, the clause alone: agree: **57**
+- second coding, sheet 16, second coding, control, the clause alone: missed: **0**
+- second coding, sheet 16, second coding, control, the clause alone: over: **0**
+- second coding, sheet 16, second coding, all coded, untold mistake or the clause: settled: **117**
+- second coding, sheet 16, second coding, all coded, untold mistake or the clause: agree: **116**
+- second coding, sheet 16, second coding, all coded, untold mistake or the clause: missed: **1**
+- second coding, sheet 16, second coding, all coded, untold mistake or the clause: over: **0**
+- second coding, sheet 16, second coding, earlier rating lower: cases: **35**
+- second coding, sheet 16, second coding, earlier rating not_lower: cases: **18**
+- second coding, sheet 16, second coding, earlier rating no_view: cases: **24**
+- second coding, sheet 16, second coding, earlier rating unclear: cases: **75**
+- second coding, sheet 16, second coding, form bend: cases: **10**
+- second coding, sheet 16, second coding, form bend, with a lapse expected: cases: **0**
+- second coding, sheet 16, second coding, form bend: convicted by the clause: **2**
+- second coding, sheet 16, second coding, byron-tunnel-vision convicted by the clause (1 yes, 0 no): **0**
+- second coding, sheet 16, second coding, missed-train-paternalistic convicted by the clause (1 yes, 0 no): **1**
+- second coding, sheet 16, second coding, control cases convicted: none
+- second coding, sheet 16, second coding, lapse expected, not convicted: `adam-crocodile-tears (not settled)`, `assumed-close (not settled)`, `con-conflict-aversion (not settled)`, `lawn-mower-ice-cream (passes)`, `nora-ted-scotch (not settled)`, `on-the-spot-request (not settled)`, `onerous-request-awkwardness (not settled)`, `p10-conflict-aversion (not settled)`, `peppermint-patty-deep-down (not settled)`, `quick-temper-retribution (not settled)`, `white-supremacist-will (passes)`
+
+The same with the sets and what is untold read from the second coding of sheet 11. The set
+called control is then the 76 cases with no lapse expected on that coding, untold mistakes
+included, six of them manipulation on the author's verdict; the three it lists as convicted
+are among the six.
+
+- second coding, sheet 16, second coding of both sheets, lapse expected: cases: **33**
+- second coding, sheet 16, second coding of both sheets, lapse expected: manipulation on the author's verdict: **33**
+- second coding, sheet 16, second coding of both sheets, lapse expected, the clause alone: settled: **26**
+- second coding, sheet 16, second coding of both sheets, lapse expected, the clause alone: agree: **25**
+- second coding, sheet 16, second coding of both sheets, lapse expected, the clause alone: missed: **1**
+- second coding, sheet 16, second coding of both sheets, lapse expected, the clause alone: over: **0**
+- second coding, sheet 16, second coding of both sheets, lapse unclear: cases: **43**
+- second coding, sheet 16, second coding of both sheets, lapse unclear: manipulation on the author's verdict: **42**
+- second coding, sheet 16, second coding of both sheets, lapse unclear, the clause alone: settled: **12**
+- second coding, sheet 16, second coding of both sheets, lapse unclear, the clause alone: agree: **6**
+- second coding, sheet 16, second coding of both sheets, lapse unclear, the clause alone: missed: **6**
+- second coding, sheet 16, second coding of both sheets, lapse unclear, the clause alone: over: **0**
+- second coding, sheet 16, second coding of both sheets, control: cases: **76**
+- second coding, sheet 16, second coding of both sheets, control: manipulation on the author's verdict: **6**
+- second coding, sheet 16, second coding of both sheets, control, the clause alone: settled: **61**
+- second coding, sheet 16, second coding of both sheets, control, the clause alone: agree: **61**
+- second coding, sheet 16, second coding of both sheets, control, the clause alone: missed: **0**
+- second coding, sheet 16, second coding of both sheets, control, the clause alone: over: **0**
+- second coding, sheet 16, second coding of both sheets, all coded, untold mistake or the clause: settled: **121**
+- second coding, sheet 16, second coding of both sheets, all coded, untold mistake or the clause: agree: **120**
+- second coding, sheet 16, second coding of both sheets, all coded, untold mistake or the clause: missed: **1**
+- second coding, sheet 16, second coding of both sheets, all coded, untold mistake or the clause: over: **0**
+- second coding, sheet 16, second coding of both sheets, control cases convicted: `car-salesperson-misemphasis`, `iago-othello`, `risky-investments-script`
+- second coding, sheet 16, second coding of both sheets, lapse expected, not convicted: `assumed-close (not settled)`, `con-conflict-aversion (not settled)`, `lawn-mower-ice-cream (passes)`, `nora-ted-scotch (not settled)`, `on-the-spot-request (not settled)`, `onerous-request-awkwardness (not settled)`, `p10-conflict-aversion (not settled)`, `quick-temper-retribution (not settled)`
+
+The twenty-one cases on which the clause's verdict differs. In brackets: the first coding's
+four answers the clause reads, the second coding's, the author's verdict.
+
+- second coding, sheet 16, verdict differs, first convicts and second passes: `lawn-mower-ice-cream [act sought yes, earlier rating lower, means other, asked no; act sought yes, earlier rating no_view, means other, asked no; author: manipulation]`, `peppermint-patty-innocent [act sought yes, earlier rating lower, means other, asked no; act sought yes, earlier rating no_view, means other, asked no; author: not]`
+- second coding, sheet 16, verdict differs, first convicts and second not settled: `adam-crocodile-tears [act sought yes, earlier rating lower, means other, asked no; act sought yes, earlier rating unclear, means other, asked no; author: manipulation]`, `nora-ted-scotch [act sought yes, earlier rating lower, means other, asked no; act sought yes, earlier rating unclear, means other, asked no; author: manipulation]`, `onerous-request-awkwardness [act sought yes, earlier rating lower, means other, asked no; act sought yes, earlier rating unclear, means other, asked no; author: manipulation]`, `peppermint-patty-deep-down [act sought yes, earlier rating lower, means other, asked no; act sought yes, earlier rating unclear, means other, asked no; author: manipulation]`
+- second coding, sheet 16, verdict differs, first passes and second convicts: none
+- second coding, sheet 16, verdict differs, first passes and second not settled: `batteries-at-checkout [act sought yes, earlier rating not_lower, means other, asked no; act sought yes, earlier rating unclear, means other, asked no; author: not]`, `cafeteria-recommendation [act sought yes, earlier rating no_view, means other, asked no; act sought yes, earlier rating unclear, means other, asked no; author: not]`, `fixation-on-real-injury [act sought no, earlier rating unclear, means other, asked no; act sought unclear, earlier rating unclear, means other, asked no; author: manipulation]`, `framing-accurate-leak [act sought unclear, earlier rating no_view, means telling, asked unclear; act sought yes, earlier rating unclear, means both, asked unclear; author: not]`, `ingrid-tom-empathy [act sought no, earlier rating unclear, means both, asked no; act sought unclear, earlier rating unclear, means both, asked no; author: not]`, `insecurity-advertising [act sought yes, earlier rating no_view, means other, asked no; act sought yes, earlier rating unclear, means both, asked no; author: manipulation]`, `retirement-default-sincere [act sought yes, earlier rating no_view, means other, asked no; act sought yes, earlier rating unclear, means other, asked no; author: not]`, `sincere-empathy-appeal [act sought no, earlier rating unclear, means both, asked no; act sought unclear, earlier rating unclear, means both, asked no; author: not]`, `smith-admitting-physician [act sought yes, earlier rating not_lower, means other, asked no; act sought yes, earlier rating unclear, means other, asked no; author: not]`, `success-framing-recommendation [act sought yes, earlier rating no_view, means both, asked unclear; act sought yes, earlier rating unclear, means both, asked unclear; author: not]`
+- second coding, sheet 16, verdict differs, first not settled and second convicts: `greedy-mark [act sought yes, earlier rating unclear, means other, asked no; act sought yes, earlier rating lower, means other, asked no; author: manipulation]`, `iago-othello [act sought yes, earlier rating unclear, means other, asked no; act sought yes, earlier rating lower, means both, asked no; author: manipulation]`
+- second coding, sheet 16, verdict differs, first not settled and second passes: `coffee-shop-atmosphere [act sought yes, earlier rating unclear, means other, asked unclear; act sought yes, earlier rating no_view, means other, asked no; author: not]`, `p11-panhandlers [act sought yes, earlier rating unclear, means other, asked no; act sought yes, earlier rating no_view, means other, asked no; author: manipulation]`, `panhandler-guides [act sought yes, earlier rating unclear, means other, asked no; act sought yes, earlier rating no_view, means other, asked no; author: manipulation]`
+
+**The predictions.**
+
+- second coding, prediction 1, sheet 11, has_influencer the same: predicted **256** within 10, counted **263**, held
+- second coding, prediction 2, sheet 11, seeks_response the same: predicted **252** within 10, counted **263**, failed
+- second coding, prediction 3, sheet 11, lapse_expected the same: predicted **180** within 10, counted **237**, failed
+- second coding, prediction 4, sheet 11, value_change_expected the same: predicted **240** within 10, counted **257**, failed
+- second coding, prediction 5, sheet 11, value_change_known the same: predicted **240** within 10, counted **261**, failed
+- second coding, prediction 6, sheet 11, what is told the same: predicted **205** within 10, counted **223**, failed
+- second coding, prediction 7, sheet 11, the multiset of (kind, told) the same: predicted **105** within 10, counted **157**, failed
+- second coding, prediction 8, sheet 11, the rule's verdict the same, of 263: predicted **205** within 10, counted **249**, failed
+- second coding, prediction 9, sheet 11, the rule's verdict the same, of the 240: predicted **188** within 10, counted **227**, failed
+- second coding, prediction 10, sheet 11, second coding against the author: settled: predicted **212** within 5, counted **216**, held
+- second coding, prediction 11, sheet 11, second coding against the author: agree: predicted **197** within 5, counted **212**, failed
+- second coding, prediction 12, sheet 11, second coding against the author: missed: predicted **8** within 2, counted **1**, failed
+- second coding, prediction 13, sheet 11, second coding against the author: over: predicted **7** within 2, counted **3**, failed
+- second coding, prediction 14, sheet 16, act_sought the same: predicted **138** within 10, counted **144**, held
+- second coding, prediction 15, sheet 16, means the same: predicted **136** within 10, counted **140**, held
+- second coding, prediction 16, sheet 16, asked the same: predicted **144** within 10, counted **147**, held
+- second coding, prediction 17, sheet 16, earlier_rating the same: predicted **100** within 10, counted **124**, failed
+- second coding, prediction 18, sheet 16, form the same: predicted **95** within 10, counted **116**, failed
+- second coding, prediction 19, sheet 16, the clause's verdict the same, of 152: predicted **112** within 10, counted **131**, failed
+- second coding, prediction 20, sheet 16, second coding, lapse expected, the clause alone: settled: predicted **31** within 5, counted **30**, held
+- second coding, prediction 21, sheet 16, second coding, lapse expected, the clause alone: agree: predicted **29** within 5, counted **29**, held
+- second coding, prediction 22, sheet 16, second coding, lapse expected, the clause alone: missed: predicted **2** within 2, counted **1**, held
+- second coding, prediction 23, sheet 16, second coding, control, the clause alone: settled: predicted **60** within 5, counted **57**, held
+- second coding, prediction 24, sheet 16, second coding, control, the clause alone: over: predicted **3** within 2, counted **0**, failed
+- second coding, prediction 25, sheet 16, second coding of both sheets, all coded, untold mistake or the clause: agree: predicted **112** within 5, counted **120**, failed
+- second coding, predictions that failed: 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 17, 18, 19, 24, 25
+
+Nine predictions held and sixteen failed, all sixteen in one direction: the two codings agree
+more, and the second coding agrees with the author more, than predicted.
+
+On sheet 11 seven of the fourteen differences are cases the first coding convicts and the second
+leaves unsettled, six of them by coding the lapse "unclear" where the first has "yes". The two
+the first convicts and the second passes, `trained-professor-buridan` and
+`white-supremacist-will`, are two of the five the first coding convicts against the author. On
+sheet 16 eighteen of the twenty-one differ in `earlier_rating` and the other three in
+`act_sought`; fourteen are cases the second coding leaves unsettled. No case is failed by one
+coding of sheet 11 and passed by the other except the two named, and none is passed by the
+first coding of either sheet and convicted by the second. The control the first coding of
+sheet 16 convicts, `peppermint-patty-innocent`, the second passes, coding her earlier rating
+"no_view"; `lawn-mower-ice-cream`, which the author calls manipulation and the first coding
+convicts, the second passes on the same answer. The second coding has ten cases of judgement
+bent for a while where the first has four, again none with a lapse expected.
+
+These are counts on one second coding by one language model, of paraphrases both coders read.
+They are not a rate of agreement among readers, and no person has read a case against either
+coding.

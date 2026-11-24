@@ -9,7 +9,7 @@ cases of RESP_RESULTS.md.  Then the exact checks behind MISTAKES_ACCOUNT.md (one
 correcting the reward and two periods, the long-run statement) and the counts of
 INTENT_RESULTS.md, BLIND_RESULTS.md, NOGGLE_RESULTS.md and VC_RESULTS.md.  Then the exact
 cases of LEGITIMACY_CHECKS.md (the statement of LEGITIMACY_STATEMENT.md) and of STOPPING_COST.md,
-and the counts of CASE_RUNS.md.  Then the tables of LEAN_CASES.md, recomputed from the
+and the counts of CASE_RUNS.md, those of its second coding included.  Then the tables of LEAN_CASES.md, recomputed from the
 statements of the Lean theorems read as text.  A failure is a
 status or a count in a document that is not the one computed, a document that parses to
 nothing, or a violation count that is not zero."""
@@ -70,7 +70,7 @@ def main():
     failures = ["results: " + f for f in report["results"]["failures"]]
     failures += ["value_results: " + f for f in report["value_results"]["failures"]]
     for name in ("value_change", "benchmark", "bridge", "renderings", "board_checks", "lit_results", "statement_checks", "spec_run", "derivation", "responsibility",
-                 "mistakes_setting", "mistakes_sequential", "mistakes_longrun", "intent_tests", "blind_coding", "noggle_bank", "value_runs", "legitimacy_checks", "stopping_cost", "case_runs", "lean_cases"):
+                 "mistakes_setting", "mistakes_sequential", "mistakes_longrun", "intent_tests", "blind_coding", "noggle_bank", "value_runs", "legitimacy_checks", "stopping_cost", "case_runs", "second_coding", "lean_cases"):
         mod = __import__("account." + name, fromlist=["report"])
         report[name] = mod.report()
         failures += ["%s: %s" % (name, f) for f in report[name]["failures"]]
@@ -82,7 +82,7 @@ def render(report):
     lines = ["result %s: %s" % kv for kv in report["results"]["statuses"].items()]
     lines += ["value side, result %s: %s" % kv for kv in report["value_results"]["statuses"].items()]
     for name in ("value_change", "benchmark", "bridge", "renderings", "board_checks", "lit_results", "statement_checks", "spec_run", "derivation", "responsibility",
-                 "mistakes_setting", "mistakes_sequential", "mistakes_longrun", "intent_tests", "blind_coding", "noggle_bank", "value_runs", "legitimacy_checks", "stopping_cost", "case_runs", "lean_cases"):
+                 "mistakes_setting", "mistakes_sequential", "mistakes_longrun", "intent_tests", "blind_coding", "noggle_bank", "value_runs", "legitimacy_checks", "stopping_cost", "case_runs", "second_coding", "lean_cases"):
         if name in report:
             lines += ["%s: %s" % (name, line) for line in report[name]["summary"]]
     return "\n".join(lines)
