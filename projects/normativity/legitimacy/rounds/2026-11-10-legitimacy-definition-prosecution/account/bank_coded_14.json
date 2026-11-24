@@ -1,0 +1,749 @@
+[
+ {
+  "id": "adam-crocodile-tears",
+  "open": "yes",
+  "knows_effect": "yes",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "unclear"
+ },
+ {
+  "id": "anger-mismanagement",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "anne-bert",
+  "open": "no",
+  "knows_effect": "no",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "announced-nagging-phone",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "unclear"
+ },
+ {
+  "id": "assumed-close",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "yes",
+  "stop_cost": "unclear",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "atmospherics-direct-akratic",
+  "open": "unclear",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "bill-janice-guilt-trip",
+  "open": "no",
+  "knows_effect": "no",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "blackmail-version-2",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "no",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "bully-coward-taunt",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "unclear"
+ },
+ {
+  "id": "cafeteria-akratic",
+  "open": "unclear",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "camping-trip-2",
+  "open": "yes",
+  "knows_effect": "yes",
+  "can_stop": "no",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "car-salesperson-misemphasis",
+  "open": "unclear",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "chair-conditional-flattery",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "unclear"
+ },
+ {
+  "id": "charm-offensive",
+  "open": "unclear",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "unclear"
+ },
+ {
+  "id": "charm-offensive-motorist",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "unclear"
+ },
+ {
+  "id": "commercial-trivial-consent",
+  "open": "unclear",
+  "knows_effect": "unclear",
+  "can_stop": "yes",
+  "stop_cost": "unclear",
+  "asked": "unclear",
+  "real_incentive": "unclear"
+ },
+ {
+  "id": "con-conflict-aversion",
+  "open": "unclear",
+  "knows_effect": "unclear",
+  "can_stop": "yes",
+  "stop_cost": "unclear",
+  "asked": "no",
+  "real_incentive": "unclear"
+ },
+ {
+  "id": "conditional-compliments-mundane",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "unclear"
+ },
+ {
+  "id": "consented-manipulation",
+  "open": "unclear",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "yes",
+  "real_incentive": "unclear"
+ },
+ {
+  "id": "convoluted-missed-train",
+  "open": "yes",
+  "knows_effect": "yes",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "electronic-nagging",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "no",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "emotional-blackmail",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "unclear"
+ },
+ {
+  "id": "false-urgency",
+  "open": "no",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "fear-mongering-ads",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "fixation-on-real-injury",
+  "open": "unclear",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "flick-triple-dog-dare",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "no",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "unclear"
+ },
+ {
+  "id": "friendly-encounter-script",
+  "open": "unclear",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "greedy-mark",
+  "open": "unclear",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "honest-eyes-watched",
+  "open": "no",
+  "knows_effect": "no",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "honey-trap",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "iago-othello",
+  "open": "yes",
+  "knows_effect": "no",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "impulse-purchase-area",
+  "open": "unclear",
+  "knows_effect": "unclear",
+  "can_stop": "no",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "insecure-approval",
+  "open": "yes",
+  "knows_effect": "yes",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "insecurity-advertising",
+  "open": "unclear",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "intoxicants-fatigue",
+  "open": "unclear",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "jo-allen-bluffing",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "jo-allen-not-bluffing",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "unclear"
+ },
+ {
+  "id": "jonestown",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "no",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "unclear"
+ },
+ {
+  "id": "lawn-mower-ice-cream",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "mandy-tara-emotional-blackmail",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "no",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "mandy-tara-nagging",
+  "open": "yes",
+  "knows_effect": "yes",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "mandy-tara-reciprocity",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "mandy-ursula-pressure",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "marlboro-man-halo",
+  "open": "unclear",
+  "knows_effect": "no",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "missed-train",
+  "open": "no",
+  "knows_effect": "no",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "missed-train-compulsion",
+  "open": "no",
+  "knows_effect": "no",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "missed-train-paternalistic",
+  "open": "no",
+  "knows_effect": "no",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "mood-as-facilitator",
+  "open": "unclear",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "mood-to-emotion",
+  "open": "unclear",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "nagging-akratic",
+  "open": "yes",
+  "knows_effect": "yes",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "nagging-teen",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "unclear"
+ },
+ {
+  "id": "negging",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "nora-ted-scotch",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "on-the-spot-request",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "yes",
+  "stop_cost": "cheap",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "onerous-request-awkwardness",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "yes",
+  "stop_cost": "cheap",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "open-peer-pressure-smoking",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "unclear"
+ },
+ {
+  "id": "ostracism-threat",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "no",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "unclear"
+ },
+ {
+  "id": "p10-conflict-aversion",
+  "open": "unclear",
+  "knows_effect": "unclear",
+  "can_stop": "yes",
+  "stop_cost": "unclear",
+  "asked": "no",
+  "real_incentive": "unclear"
+ },
+ {
+  "id": "p11-panhandlers",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "p13-conditional-flattery",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "unclear"
+ },
+ {
+  "id": "p5-jonestown",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "unclear"
+ },
+ {
+  "id": "p6-flick-dare",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "no",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "p7-jo-allen",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "p8-teen-nagging",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "p9-motorist-charm",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "panhandler-guides",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "paternalistic-mandy-ursula",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "no",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "peppermint-patty-deep-down",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "yes",
+  "stop_cost": "unclear",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "physician-displeasure",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "unclear"
+ },
+ {
+  "id": "professor-conditioned",
+  "open": "no",
+  "knows_effect": "no",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "unclear"
+ },
+ {
+  "id": "quick-temper-retribution",
+  "open": "unclear",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "resentment-real-injustice",
+  "open": "unclear",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "risky-investments-script",
+  "open": "no",
+  "knows_effect": "no",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "roach-motel-akratic",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "yes",
+  "stop_cost": "unclear",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "roach-motel-persist",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "yes",
+  "stop_cost": "unclear",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "salience-misaligned",
+  "open": "unclear",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "social-media-engagement",
+  "open": "unclear",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "state-as-end",
+  "open": "unclear",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "unclear"
+ },
+ {
+  "id": "subliminal-hypnosis",
+  "open": "no",
+  "knows_effect": "no",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "unclear",
+  "real_incentive": "no"
+ },
+ {
+  "id": "ted-exposure-akratic",
+  "open": "unclear",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "trained-professor-akratic",
+  "open": "no",
+  "knows_effect": "no",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "white-supremacist-will",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "unclear",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "no"
+ },
+ {
+  "id": "wont-be-your-friend",
+  "open": "yes",
+  "knows_effect": "unclear",
+  "can_stop": "no",
+  "stop_cost": "na",
+  "asked": "no",
+  "real_incentive": "unclear"
+ }
+]
