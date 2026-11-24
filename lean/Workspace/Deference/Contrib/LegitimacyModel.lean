@@ -90,7 +90,8 @@ and in four more:
 **Not established here.**  `Legit` with `F1`, `F2'` or `F3` doing work: no instance in this
 file has a view of his, a move that changes her act, or a case in which she rates stopping
 higher; `LegitimacyWitness.lean` has one with all three.  That the model's verdicts agree with
-the statement in words on any case beyond the witness.  That `legit_transport` covers more than her state: it says nothing of a
+the statement in words: `LegitimacyCases.lean` gives its verdicts on the 41 cases of
+`account/LEGITIMACY_CHECKS.md`, two of which differ from that table's.  That `legit_transport` covers more than her state: it says nothing of a
 rescaling of her scores, against which `θ` and `η` are compared, or of his conduct cut into
 other moves.  That `Legit` is unchanged when a move is split into finer moves.
 Anything about what stopping costs her: that is the authority side's.  That any process can
