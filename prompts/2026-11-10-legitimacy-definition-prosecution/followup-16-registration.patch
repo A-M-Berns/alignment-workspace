@@ -1,0 +1,1334 @@
+diff --git a/ATTENTION.md b/ATTENTION.md
+index 063d7ab8..312a527f 100644
+--- a/ATTENTION.md
++++ b/ATTENTION.md
+@@ -1708,6 +1708,7 @@ registers at merge.
+ 
+ ### 151. The Lean model on cases: a witness exercising every clause, the forty-one cases as terms, the simplifications removed — **[open]**
+ <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
++*Registered results bearing on this item:* legitimacy.covert-influence-illegitimate, legitimacy.gate-gives-behaviour, legitimacy.model-scoring, legitimacy.open-influence-legitimate, legitimacy.redescription-invariance, legitimacy.unknown-move-refutes.
+ 
+ Rows 20 to 27 of `account/LEDGER.md`, and the derived number rows 6 and 7 ask for.
+ 
+diff --git a/DECISIONS.md b/DECISIONS.md
+index edb69ee6..cd45b0d9 100644
+--- a/DECISIONS.md
++++ b/DECISIONS.md
+@@ -8444,3 +8444,17 @@ standing of each component is kept; `CURRENT.md` points to it and does not resta
+ against her earlier rating*; the file and module names of this pass; the anchors
+ `open--request-licenses-pressure` and `open--cost-bound-influence-as-price-and-agreed-penalty`;
+ item numbers 153 to 155.
++
++### 2026-11-24 — six results of the Lean model of the legitimacy statement are registered
++<!-- decision: 2026-11-24--six-model-results-registered; touches: node:legitimacy, item:151 -->
++
++**Maintainer's act** (applied from `prompts/2026-11-10-legitimacy-definition-prosecution/followup-16-registration.patch`, prepared by the sixteenth follow-up).
++Registered `lean-proved` in `projects/normativity/CLAIMS.md` against item 151, each with its
++record, bridge and completeness nodes under the handle `@claude-fable-5-2`: `legitimacy.redescription-invariance`, `legitimacy.unknown-move-refutes`, `legitimacy.open-influence-legitimate`, `legitimacy.covert-influence-illegitimate`, `legitimacy.gate-gives-behaviour` and `legitimacy.model-scoring`.
++Each is a declaration of `lean/Workspace/Deference/Contrib/LegitimacyModel.lean` with a term of that
++file inhabiting its hypotheses. Item 151 stays open: it asks for a witness on which every
++clause does work, the forty-one cases as terms and the simplifications removed, and none of
++the six supplies one. The five theorems of that file with no inhabiting term
++(`Model.not_bears_of_inert`, `legit_of_nothing`, `not_legit_of_untold`,
++`not_legit_of_unstoppable`, `not_legit_of_against`) are `unverified-nonvacuous` and have no
++entry. *Names, provisional:* the six ids.
+diff --git a/PROVENANCE.md b/PROVENANCE.md
+index f262b6a9..86d9c4c8 100644
+--- a/PROVENANCE.md
++++ b/PROVENANCE.md
+@@ -190,6 +190,7 @@ earlier rows did not record at all.
+ | `graph/policy.yaml` (the handle `@claude-fable-5-2`), `checkers/tests/test_graph.py` (the handle in the pinned set), `projects/normativity/CLAIMS.md` (fifteen entries), `graph/nodes/` (fifteen formal results, each a record, a bridge and a completeness node; `item-139.md` to `item-147.md`; `item-136.md`, `item-137.md`, `item-138.md` closed; the `holds` of `legitimacy`), `ATTENTION.md` (the render), `graph/versions.json`, `graph/tasks.md`, `graph/view.md`, `state/views/*` (regenerated), `state/rounds.json`, `DECISIONS.md` (one 2026-11-18 entry; the queue entry on the handle removed), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEAN.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/SCORING.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BRIDGE_LEAN.md` and `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md` (the sentences on registration), two concept blurbs in `state/concepts.json`, the claim-count binding of `wiki/Normativity.md` | Claude Fable 5.2 (Anthropic), a subagent of the fourteenth follow-up to the 2026-11-10-legitimacy-definition-prosecution round, as `prompts/2026-11-10-legitimacy-definition-prosecution/followup-14-registration.patch`; applied by a maintainer | `ci-only` | 2026-11-18 | `prompts/2026-11-10-legitimacy-definition-prosecution/` |
+ | `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/MISTAKES_ACCOUNT.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/mistakes_setting.py`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/mistakes_sequential.py`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/mistakes_longrun.py`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/INTENT_RESULTS.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/intent_cases.json`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/intent_tests.py`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BLIND_RESULTS.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/blind_coded.json`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/blind_key.json`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/blind_coding.py`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/NOGGLE_RESULTS.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/noggle_bank.json`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/noggle_bank.py`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VC_RESULTS.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VC_FORMULATION.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VC_FORMULATION_B.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/vc_coded.json`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/vc_coded_B.json`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/value_runs.py`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/run.py`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/VERDICTS.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/PROVENANCE.md`, `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-15.md`, `prompts/2026-11-10-legitimacy-definition-prosecution/REVIEW-astra-followup-15.md`, the *Fifteenth follow-up* section of `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md`, `graph/nodes/item-148.md` to `item-152.md` (filed), `graph/nodes/item-139.md`, `item-141.md`, `item-143.md` to `item-146.md` (revised), the `holds` of `graph/nodes/legitimacy.md`, `ATTENTION.md` (the render), `graph/versions.json`, `graph/tasks.md`, `graph/view.md`, `state/views/*` (regenerated), `state/rounds.json` (one verdict), `DECISIONS.md` (two entries of 2026-11-21 and two queue entries) | Claude Fable 5.2 (Anthropic), the fifteenth follow-up to the 2026-11-10-legitimacy-definition-prosecution round; `PROMPT-followup-15.md` is the dispatch verbatim, by Claude Fable 5.2 (Anthropic). `account/MISTAKES_ACCOUNT.md` is adapted by the executor from a note drafted in conversation by a Claude Fable 5.2 (Anthropic) session with the maintainer, and the three `mistakes_*.py` modules from that session's scripts; `account/intent_cases.json` is the JSON of the second reply of the external model `gpt-6-astra`, unaltered, and `REVIEW-astra-followup-15.md` its five replies verbatim, each after its brief; `account/blind_coded.json`, `account/noggle_bank.json`, `account/vc_coded.json` and `account/vc_coded_B.json` are codings by fresh Claude readers run from that session, model version unrecorded, the first two with fields removed by the executor; `account/VC_FORMULATION.md` and `account/VC_FORMULATION_B.md` are that session's, unaltered; the results documents and the scorers are the executor's, the scorers after that session's scripts | `ci-only` | 2026-11-21 | `prompts/2026-11-10-legitimacy-definition-prosecution/` |
+ | `lean/Workspace/Deference/Contrib/LegitimacyModel.lean`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md`, `account/LEDGER.md`, `account/LEGITIMACY_CHECKS.md`, `account/STOPPING_COST.md`, `account/CASE_RUNS.md`, the modules, coding sheets and codings beside them, `CURRENT.md`, `VERDICTS.md` and `PROVENANCE.md` of that directory, the *Sixteenth follow-up* section of `prompts/2026-11-10-legitimacy-definition-prosecution/REPORT.md`, `prompts/2026-11-10-legitimacy-definition-prosecution/REVIEW-astra-followup-16.md` (an external model's nine replies, verbatim), `prompts/2026-11-10-legitimacy-definition-prosecution/followup-16-registration.patch`, `graph/nodes/item-139.md`, `item-147.md` to `item-152.md` (revised), `item-153.md` to `item-155.md` (filed), two dated entries and two queue entries of `DECISIONS.md` | Claude Fable 5.2 (Anthropic), the sixteenth follow-up to the 2026-11-10-legitimacy-definition-prosecution round, recording work done in conversation by a Claude Fable 5.2 (Anthropic) session with the maintainer; `PROMPT-followup-16.md` is the dispatch verbatim, by Claude Fable 5.2 (Anthropic) | `ci-only` | 2026-11-24 | `prompts/2026-11-10-legitimacy-definition-prosecution/` |
++| `projects/normativity/CLAIMS.md` (six entries), `graph/nodes/` (six formal results, each a record, a bridge and a completeness node; the `holds` of `legitimacy`), `ATTENTION.md` (the render), `graph/versions.json`, `graph/tasks.md`, `graph/view.md`, `state/views/*` (regenerated), `state/rounds.json`, `DECISIONS.md` (one 2026-11-24 entry), `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md` and `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md` (the sentences on registration), the claim-count binding of `wiki/Normativity.md` | Claude Fable 5.2 (Anthropic), a subagent of the sixteenth follow-up to the 2026-11-10-legitimacy-definition-prosecution round, as `prompts/2026-11-10-legitimacy-definition-prosecution/followup-16-registration.patch`; applied by a maintainer | `ci-only` | 2026-11-24 | `prompts/2026-11-10-legitimacy-definition-prosecution/` |
+ 
+ | `checkers/graph.py` and `checkers/tests/test_graph.py` (the `assessment` event kind: validation, null inputs, tests), `graph/PROTOCOL.md` (§5 fields and kinds, §9 rule 5), `graph/DESIGN-LOG.md` (one line), `AGENTS.md` (the graph section's two lists), `DECISIONS.md` (the 2026-11-02 entry and one queue entry), `prompts/2026-11-02-epistemic-assessments/**`, `projects/enabling/rounds/2026-11-02-epistemic-assessments/**`, `state/rounds.json`, `state/views/*` (regenerated) | Claude Fable 5 (Anthropic); the directives by the maintainer in conversation, kept verbatim in the round's `PROMPT.md`; the design shaped by a GPT-6 Astra consult of 2026-11-02 | `ci-only` | 2026-11-02 | `prompts/2026-11-02-epistemic-assessments/` |
+ | `site/pages.py` (`priority_order`, `priorities_page`, the mini-hero, the activity page's pointer, the item links), `site/build.py` (`/priorities/`), `site/assets/style.css` (the priorities list; the type ruling, with the two Fontsource woff2 beside it), `site/README.md`, `DECISIONS.md` (the three 2026-11-05 entries and two queue entries), `prompts/2026-11-05-site-priorities/**`, `projects/enabling/rounds/2026-11-05-site-priorities/**`, `state/rounds.json`, and the follow-up's ledger rename: `ATTENTION.md` (the render), `state/attention_sections.md`, `checkers/attention_render.py`, with the living references updated across `AGENTS.md`, `CONTRIBUTING.md`, `README.md`, the pull-request template, `checkers/`, `tests/`, `graph/*.md`, the item nodes' non-Statement prose, `projects/deference/CLAIMS.md`, `projects/decision-theory/README.md`, `state/views/*` (regenerated), `prompts/2026-11-05-standing-maintenance/PROMPT.md` (the standing maintenance dispatch), and the second follow-up's wiki references (four item citations and Theorem-Spine's ledger link) with `projects/normativity/notes/*` | Claude Fable 5 (Anthropic); the directives by the maintainer in conversation, kept verbatim in the round's `PROMPT.md`, `PROMPT-followup.md` and `PROMPT-followup-2.md` | `ci-only` | 2026-11-05 | `prompts/2026-11-05-site-priorities/` |
+diff --git a/graph/nodes/legitimacy.covert-influence-illegitimate.bridge.md b/graph/nodes/legitimacy.covert-influence-illegitimate.bridge.md
+new file mode 100644
+index 00000000..d95f4fc2
+--- /dev/null
++++ b/graph/nodes/legitimacy.covert-influence-illegitimate.bridge.md
+@@ -0,0 +1,17 @@
++---
++id: legitimacy.covert-influence-illegitimate.bridge
++kind: leaf
++leaf_kind: bridge
++attribution: formalizer-stated
++size: S
++size_reason: "one signature against the registry's reading"
++version: 1
++author: "@claude-fable-5-2"
++---
++## Statement
++The statement of record of `legitimacy.covert-influence-illegitimate` formalizes the registered claim as the registry reads it: the move of legitimacy.open-influence-legitimate, not one she can pick out, is not legitimate in the model of LegitimacyModel.lean at η = 1/4 and any θ, κ.
++
++## Source
++projects/normativity/CLAIMS.md, entry `legitimacy.covert-influence-illegitimate` (class lean-proved, status active, origin round 2026-11-10-legitimacy-definition-prosecution; answers item 151).
++Documentation: verification: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md; context: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md.
++Short name: the move of legitimacy.open-influence-legitimate, not one she can pick out, is not legitimate in the model of LegitimacyModel.lean at η = 1/4 and any θ, κ.
+diff --git a/graph/nodes/legitimacy.covert-influence-illegitimate.complete.md b/graph/nodes/legitimacy.covert-influence-illegitimate.complete.md
+new file mode 100644
+index 00000000..510e9293
+--- /dev/null
++++ b/graph/nodes/legitimacy.covert-influence-illegitimate.complete.md
+@@ -0,0 +1,14 @@
++---
++id: legitimacy.covert-influence-illegitimate.complete
++kind: leaf
++leaf_kind: completeness
++size: S
++size_reason: "one signature against its binders"
++version: 1
++author: "@claude-fable-5-2"
++---
++## Statement
++No premise beyond the signature's binders enters the declaration; the kernel checks it as stated. The result is the record, this leaf and the bridge, and its hypotheses are unread: the record's Source carries the signature verbatim and no hypothesis leaf is filed until a reader files one.
++
++## Source
++The signature of `Workspace.Deference.Contrib.LegitimacyModel.Witness.not_legit_covert` in lean/Workspace/Deference/Contrib/LegitimacyModel.lean.
+diff --git a/graph/nodes/legitimacy.covert-influence-illegitimate.md b/graph/nodes/legitimacy.covert-influence-illegitimate.md
+new file mode 100644
+index 00000000..cc0249c8
+--- /dev/null
++++ b/graph/nodes/legitimacy.covert-influence-illegitimate.md
+@@ -0,0 +1,20 @@
++---
++id: legitimacy.covert-influence-illegitimate
++kind: and
++children: [legitimacy.covert-influence-illegitimate.record, legitimacy.covert-influence-illegitimate.bridge, legitimacy.covert-influence-illegitimate.complete]
++work: [{kind: round, ref: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution}, {kind: priorities, ref: 151}, {kind: decision, ref: 2026-11-24--six-model-results-registered}]
++size: M
++size_reason: "one registry entry, its Lean declaration and its bridge"
++version: 1
++author: "@claude-fable-5-2"
++---
++## Statement
++The move of legitimacy.open-influence-legitimate, not one she can pick out, is not legitimate in the model of LegitimacyModel.lean at η = 1/4 and any θ, κ.
++
++## Source
++projects/normativity/CLAIMS.md, entry `legitimacy.covert-influence-illegitimate` (class lean-proved, status active, origin round 2026-11-10-legitimacy-definition-prosecution; answers item 151).
++Documentation: verification: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md; context: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md.
++The signature of `Workspace.Deference.Contrib.LegitimacyModel.Witness.not_legit_covert` in lean/Workspace/Deference/Contrib/LegitimacyModel.lean.
++
++## Notes
++Filed by the sixteenth follow-up to the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution, PROMPT-followup-16.md) from the registry entry and the declaration's signature; its hypotheses are unread (ruling F1, 2026-10-23): the record's Source carries the signature verbatim, and a reader files the hypothesis leaves. The registry's `answers_item` is the `priorities` pointer to item 151 (ruling F2).
+diff --git a/graph/nodes/legitimacy.covert-influence-illegitimate.record.md b/graph/nodes/legitimacy.covert-influence-illegitimate.record.md
+new file mode 100644
+index 00000000..e5909298
+--- /dev/null
++++ b/graph/nodes/legitimacy.covert-influence-illegitimate.record.md
+@@ -0,0 +1,21 @@
++---
++id: legitimacy.covert-influence-illegitimate.record
++kind: leaf
++leaf_kind: record
++statement_of_record: Workspace.Deference.Contrib.LegitimacyModel.Witness.not_legit_covert
++hypotheses: unread
++size: S
++size_reason: "one declaration against the registry"
++version: 1
++author: "@claude-fable-5-2"
++registry_id: legitimacy.covert-influence-illegitimate
++---
++## Statement
++The declaration Workspace.Deference.Contrib.LegitimacyModel.Witness.not_legit_covert is accepted by the Lean kernel in the repository's Lean library.
++
++## Source
++projects/normativity/CLAIMS.md, entry `legitimacy.covert-influence-illegitimate` (class lean-proved, status active, origin round 2026-11-10-legitimacy-definition-prosecution; answers item 151).
++Documentation: verification: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md; context: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md.
++The signature of `Workspace.Deference.Contrib.LegitimacyModel.Witness.not_legit_covert` (theorem) in lean/Workspace/Deference/Contrib/LegitimacyModel.lean, verbatim, binders included (ruling F1, 2026-10-23: the hypotheses are unread, and this text is what a reader files them from):
++
++    (θ κ : ℝ) : ¬ (model ∅).Legit θ (1 / 4) κ
+diff --git a/graph/nodes/legitimacy.gate-gives-behaviour.bridge.md b/graph/nodes/legitimacy.gate-gives-behaviour.bridge.md
+new file mode 100644
+index 00000000..744bc96a
+--- /dev/null
++++ b/graph/nodes/legitimacy.gate-gives-behaviour.bridge.md
+@@ -0,0 +1,17 @@
++---
++id: legitimacy.gate-gives-behaviour.bridge
++kind: leaf
++leaf_kind: bridge
++attribution: formalizer-stated
++size: S
++size_reason: "one signature against the registry's reading"
++version: 1
++author: "@claude-fable-5-2"
++---
++## Statement
++The statement of record of `legitimacy.gate-gives-behaviour` formalizes the registered claim as the registry reads it: the gate gives the behaviour: with w < 0 the value on failing the gate, an illegitimate conduct rated at most 1 that passes with probability at most ρ and a legitimate conduct rated at least 0 that passes with probability at least 1 − ρ′, if ρ(1 − w) < −w(1 − ρ′) the legitimate conduct has the strictly higher expected gated score.
++
++## Source
++projects/normativity/CLAIMS.md, entry `legitimacy.gate-gives-behaviour` (class lean-proved, status active, origin round 2026-11-10-legitimacy-definition-prosecution; answers item 151).
++Documentation: verification: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md; context: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md.
++Short name: the gate gives the behaviour: with w < 0 the value on failing the gate, an illegitimate conduct rated at most 1 that passes with probability at most ρ and a legitimate conduct rated at least 0 that passes with probability at least 1 − ρ′, if ρ(1 − w) < −w(1 − ρ′) the legitimate conduct has the strictly higher expected gated score.
+diff --git a/graph/nodes/legitimacy.gate-gives-behaviour.complete.md b/graph/nodes/legitimacy.gate-gives-behaviour.complete.md
+new file mode 100644
+index 00000000..eec86835
+--- /dev/null
++++ b/graph/nodes/legitimacy.gate-gives-behaviour.complete.md
+@@ -0,0 +1,14 @@
++---
++id: legitimacy.gate-gives-behaviour.complete
++kind: leaf
++leaf_kind: completeness
++size: S
++size_reason: "one signature against its binders"
++version: 1
++author: "@claude-fable-5-2"
++---
++## Statement
++No premise beyond the signature's binders enters the declaration; the kernel checks it as stated. The result is the record, this leaf and the bridge, and its hypotheses are unread: the record's Source carries the signature verbatim and no hypothesis leaf is filed until a reader files one.
++
++## Source
++The signature of `Workspace.Deference.Contrib.LegitimacyModel.gate_gives_behaviour` in lean/Workspace/Deference/Contrib/LegitimacyModel.lean.
+diff --git a/graph/nodes/legitimacy.gate-gives-behaviour.md b/graph/nodes/legitimacy.gate-gives-behaviour.md
+new file mode 100644
+index 00000000..cab2fa62
+--- /dev/null
++++ b/graph/nodes/legitimacy.gate-gives-behaviour.md
+@@ -0,0 +1,20 @@
++---
++id: legitimacy.gate-gives-behaviour
++kind: and
++children: [legitimacy.gate-gives-behaviour.record, legitimacy.gate-gives-behaviour.bridge, legitimacy.gate-gives-behaviour.complete]
++work: [{kind: round, ref: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution}, {kind: priorities, ref: 151}, {kind: decision, ref: 2026-11-24--six-model-results-registered}]
++size: M
++size_reason: "one registry entry, its Lean declaration and its bridge"
++version: 1
++author: "@claude-fable-5-2"
++---
++## Statement
++The gate gives the behaviour: with w < 0 the value on failing the gate, an illegitimate conduct rated at most 1 that passes with probability at most ρ and a legitimate conduct rated at least 0 that passes with probability at least 1 − ρ′, if ρ(1 − w) < −w(1 − ρ′) the legitimate conduct has the strictly higher expected gated score.
++
++## Source
++projects/normativity/CLAIMS.md, entry `legitimacy.gate-gives-behaviour` (class lean-proved, status active, origin round 2026-11-10-legitimacy-definition-prosecution; answers item 151).
++Documentation: verification: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md; context: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md.
++The signature of `Workspace.Deference.Contrib.LegitimacyModel.gate_gives_behaviour` in lean/Workspace/Deference/Contrib/LegitimacyModel.lean.
++
++## Notes
++Filed by the sixteenth follow-up to the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution, PROMPT-followup-16.md) from the registry entry and the declaration's signature; its hypotheses are unread (ruling F1, 2026-10-23): the record's Source carries the signature verbatim, and a reader files the hypothesis leaves. The registry's `answers_item` is the `priorities` pointer to item 151 (ruling F2).
+diff --git a/graph/nodes/legitimacy.gate-gives-behaviour.record.md b/graph/nodes/legitimacy.gate-gives-behaviour.record.md
+new file mode 100644
+index 00000000..e777d362
+--- /dev/null
++++ b/graph/nodes/legitimacy.gate-gives-behaviour.record.md
+@@ -0,0 +1,26 @@
++---
++id: legitimacy.gate-gives-behaviour.record
++kind: leaf
++leaf_kind: record
++statement_of_record: Workspace.Deference.Contrib.LegitimacyModel.gate_gives_behaviour
++hypotheses: unread
++size: S
++size_reason: "one declaration against the registry"
++version: 1
++author: "@claude-fable-5-2"
++registry_id: legitimacy.gate-gives-behaviour
++---
++## Statement
++The declaration Workspace.Deference.Contrib.LegitimacyModel.gate_gives_behaviour is accepted by the Lean kernel in the repository's Lean library.
++
++## Source
++projects/normativity/CLAIMS.md, entry `legitimacy.gate-gives-behaviour` (class lean-proved, status active, origin round 2026-11-10-legitimacy-definition-prosecution; answers item 151).
++Documentation: verification: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md; context: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md.
++The signature of `Workspace.Deference.Contrib.LegitimacyModel.gate_gives_behaviour` (theorem) in lean/Workspace/Deference/Contrib/LegitimacyModel.lean, verbatim, binders included (ruling F1, 2026-10-23: the hypotheses are unread, and this text is what a reader files them from):
++
++    (ρ ρ' w u_ill p_ill u_leg p_leg : ℝ)
++        (hw : w < 0) (hu1 : u_ill ≤ 1) (hu0 : 0 ≤ u_leg)
++        (hp0 : 0 ≤ p_ill) (hsound : p_ill ≤ ρ)
++        (hcomp : 1 - ρ' ≤ p_leg) (hρ' : ρ' ≤ 1)
++        (hthr : ρ * (1 - w) < -w * (1 - ρ')) :
++        p_ill * u_ill + (1 - p_ill) * w < p_leg * u_leg + (1 - p_leg) * w
+diff --git a/graph/nodes/legitimacy.md b/graph/nodes/legitimacy.md
+index 35f2eb93..ca65be87 100644
+--- a/graph/nodes/legitimacy.md
++++ b/graph/nodes/legitimacy.md
+@@ -17,7 +17,7 @@ roots:
+   - {id: want-figure-out-legitimacy, role: want}
+   - {id: want-corrigibility-theorems-via-legitimacy, role: want}
+   - {id: want-legitimacy-anti-meme-post, role: want}
+-holds: [item-53, item-54, item-55, item-56, item-57, item-58, item-59, item-61, item-62, item-64, item-65, item-66, item-70, item-67, item-68, item-69, item-71, item-72, item-73, item-88, item-115, item-128, item-136, item-137, item-138, item-139, item-140, item-141, item-142, item-143, item-144, item-145, item-146, item-147, item-148, item-149, item-150, item-151, item-152, item-153, item-154, item-155, appraisal.mse-split, appraisal.three-channels, appraisal.cost-of-mistakes, appraisal.deferring, appraisal.strong-split, appraisal.guarantee, appraisal.options-hull, appraisal.deferring-cost, appraisal.guarantee-from-soundness, legitimacy.line3-range, corrigibility.feedback-transfer, scoring.welfare-bound, scoring.conduct-bound, scoring.authority-bound, scoring.no-credit, legit-definition-endorsement, legit-corrects-trust-principles, legit-per-formalism-family, legit-gated-trust-li, legit-ddb-transfer, legit-locality-forced, legit-reflection-unsat-modest, legit-composition, legit-li-self-correction-identity, legit-correction-function-learned, legit-condition-vs-predict-reality, legit-anchor-of-L, legit-global-or-local-form, legit-trust-improvable, legit-endpoint-preservation, idleness-on-G-grade-a, idleness-on-G-with-certificate, claim1-diagonal-illegitimate, corrupt-strictly-contains-inadmissible, trace-nonrecoverability, trace-nonrecoverability-li, wirehead-iff-finite, certificate-enforcement, predication-dichotomy, d3-identification, corrigibility-faithful-plus-legit-on-self, non-modification-conjecture, legit-v1-improvable, gate-is-legitimacy, public-layer-II, item-75, li-corrigibility-inequality-public, legitimate-deference-regret, legit-two-theories-bridge, bridge-defect-vs-thin-correct, bridge-trace-vs-transparency, legit-objective-proposals, illegitimate-world-ever-better, p2-manages-the-news, inferability-positivity, updateless-p2-cellwise-p3, deterrence-not-identified-on-path, corr-legit-modif-frames, legit-branch-evaluation-defense-requirements, readout-R1-vs-R2, retroactive-vs-prospective-judging, anger-substitute-for-updatelessness, legit-meta-revision, corrigibility-needs-consequentialist-wrapper, align-to-legitimacy-over-endorsement-risk, legit-weighted-objective-improvable, internal-standard-never-settled, reasons-subcase-of-legitimacy, reasons-statics-public, public-line-leaves-semantics-alone, brandom-objectivity-structural, brandom-relative-prices, reason-exchange-representation-theorem, legit-intersubjectivity-pre-rationality, reasons-improvable]
++holds: [item-53, item-54, item-55, item-56, item-57, item-58, item-59, item-61, item-62, item-64, item-65, item-66, item-70, item-67, item-68, item-69, item-71, item-72, item-73, item-88, item-115, item-128, item-136, item-137, item-138, item-139, item-140, item-141, item-142, item-143, item-144, item-145, item-146, item-147, item-148, item-149, item-150, item-151, item-152, item-153, item-154, item-155, appraisal.mse-split, appraisal.three-channels, appraisal.cost-of-mistakes, appraisal.deferring, appraisal.strong-split, appraisal.guarantee, appraisal.options-hull, appraisal.deferring-cost, appraisal.guarantee-from-soundness, legitimacy.line3-range, corrigibility.feedback-transfer, scoring.welfare-bound, scoring.conduct-bound, scoring.authority-bound, scoring.no-credit, legitimacy.redescription-invariance, legitimacy.unknown-move-refutes, legitimacy.open-influence-legitimate, legitimacy.covert-influence-illegitimate, legitimacy.gate-gives-behaviour, legitimacy.model-scoring, legit-definition-endorsement, legit-corrects-trust-principles, legit-per-formalism-family, legit-gated-trust-li, legit-ddb-transfer, legit-locality-forced, legit-reflection-unsat-modest, legit-composition, legit-li-self-correction-identity, legit-correction-function-learned, legit-condition-vs-predict-reality, legit-anchor-of-L, legit-global-or-local-form, legit-trust-improvable, legit-endpoint-preservation, idleness-on-G-grade-a, idleness-on-G-with-certificate, claim1-diagonal-illegitimate, corrupt-strictly-contains-inadmissible, trace-nonrecoverability, trace-nonrecoverability-li, wirehead-iff-finite, certificate-enforcement, predication-dichotomy, d3-identification, corrigibility-faithful-plus-legit-on-self, non-modification-conjecture, legit-v1-improvable, gate-is-legitimacy, public-layer-II, item-75, li-corrigibility-inequality-public, legitimate-deference-regret, legit-two-theories-bridge, bridge-defect-vs-thin-correct, bridge-trace-vs-transparency, legit-objective-proposals, illegitimate-world-ever-better, p2-manages-the-news, inferability-positivity, updateless-p2-cellwise-p3, deterrence-not-identified-on-path, corr-legit-modif-frames, legit-branch-evaluation-defense-requirements, readout-R1-vs-R2, retroactive-vs-prospective-judging, anger-substitute-for-updatelessness, legit-meta-revision, corrigibility-needs-consequentialist-wrapper, align-to-legitimacy-over-endorsement-risk, legit-weighted-objective-improvable, internal-standard-never-settled, reasons-subcase-of-legitimacy, reasons-statics-public, public-line-leaves-semantics-alone, brandom-objectivity-structural, brandom-relative-prices, reason-exchange-representation-theorem, legit-intersubjectivity-pre-rationality, reasons-improvable]
+ work:
+   - {kind: decision, ref: 2026-10-22--map-canonical-index-program-maintainer-handles}
+   - {kind: decision, ref: 2026-10-23--map-follow-up-hypotheses-unread-registry-edge-derived-files-one-decomposition}
+diff --git a/graph/nodes/legitimacy.model-scoring.bridge.md b/graph/nodes/legitimacy.model-scoring.bridge.md
+new file mode 100644
+index 00000000..c897ae32
+--- /dev/null
++++ b/graph/nodes/legitimacy.model-scoring.bridge.md
+@@ -0,0 +1,17 @@
++---
++id: legitimacy.model-scoring.bridge
++kind: leaf
++leaf_kind: bridge
++attribution: formalizer-stated
++size: S
++size_reason: "one signature against the registry's reading"
++version: 1
++author: "@claude-fable-5-2"
++---
++## Statement
++The statement of record of `legitimacy.model-scoring` formalizes the registered claim as the registry reads it: on a history whose model is not legitimate, with no authority violation counted, the score of legitScoring is at least −δ and below 0.
++
++## Source
++projects/normativity/CLAIMS.md, entry `legitimacy.model-scoring` (class lean-proved, status active, origin round 2026-11-10-legitimacy-definition-prosecution; answers item 151).
++Documentation: verification: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md; context: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md.
++Short name: on a history whose model is not legitimate, with no authority violation counted, the score of legitScoring is at least −δ and below 0.
+diff --git a/graph/nodes/legitimacy.model-scoring.complete.md b/graph/nodes/legitimacy.model-scoring.complete.md
+new file mode 100644
+index 00000000..4f829de6
+--- /dev/null
++++ b/graph/nodes/legitimacy.model-scoring.complete.md
+@@ -0,0 +1,14 @@
++---
++id: legitimacy.model-scoring.complete
++kind: leaf
++leaf_kind: completeness
++size: S
++size_reason: "one signature against its binders"
++version: 1
++author: "@claude-fable-5-2"
++---
++## Statement
++No premise beyond the signature's binders enters the declaration; the kernel checks it as stated. The result is the record, this leaf and the bridge, and its hypotheses are unread: the record's Source carries the signature verbatim and no hypothesis leaf is filed until a reader files one.
++
++## Source
++The signature of `Workspace.Deference.Contrib.LegitimacyModel.legitScoring_S_of_not_legit` in lean/Workspace/Deference/Contrib/LegitimacyModel.lean.
+diff --git a/graph/nodes/legitimacy.model-scoring.md b/graph/nodes/legitimacy.model-scoring.md
+new file mode 100644
+index 00000000..1ec918ca
+--- /dev/null
++++ b/graph/nodes/legitimacy.model-scoring.md
+@@ -0,0 +1,20 @@
++---
++id: legitimacy.model-scoring
++kind: and
++children: [legitimacy.model-scoring.record, legitimacy.model-scoring.bridge, legitimacy.model-scoring.complete]
++work: [{kind: round, ref: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution}, {kind: priorities, ref: 151}, {kind: decision, ref: 2026-11-24--six-model-results-registered}]
++size: M
++size_reason: "one registry entry, its Lean declaration and its bridge"
++version: 1
++author: "@claude-fable-5-2"
++---
++## Statement
++On a history whose model is not legitimate, with no authority violation counted, the score of legitScoring is at least −δ and below 0.
++
++## Source
++projects/normativity/CLAIMS.md, entry `legitimacy.model-scoring` (class lean-proved, status active, origin round 2026-11-10-legitimacy-definition-prosecution; answers item 151).
++Documentation: verification: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md; context: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md.
++The signature of `Workspace.Deference.Contrib.LegitimacyModel.legitScoring_S_of_not_legit` in lean/Workspace/Deference/Contrib/LegitimacyModel.lean.
++
++## Notes
++Filed by the sixteenth follow-up to the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution, PROMPT-followup-16.md) from the registry entry and the declaration's signature; its hypotheses are unread (ruling F1, 2026-10-23): the record's Source carries the signature verbatim, and a reader files the hypothesis leaves. The registry's `answers_item` is the `priorities` pointer to item 151 (ruling F2).
+diff --git a/graph/nodes/legitimacy.model-scoring.record.md b/graph/nodes/legitimacy.model-scoring.record.md
+new file mode 100644
+index 00000000..e8336c57
+--- /dev/null
++++ b/graph/nodes/legitimacy.model-scoring.record.md
+@@ -0,0 +1,29 @@
++---
++id: legitimacy.model-scoring.record
++kind: leaf
++leaf_kind: record
++statement_of_record: Workspace.Deference.Contrib.LegitimacyModel.legitScoring_S_of_not_legit
++hypotheses: unread
++size: S
++size_reason: "one declaration against the registry"
++version: 1
++author: "@claude-fable-5-2"
++registry_id: legitimacy.model-scoring
++---
++## Statement
++The declaration Workspace.Deference.Contrib.LegitimacyModel.legitScoring_S_of_not_legit is accepted by the Lean kernel in the repository's Lean library.
++
++## Source
++projects/normativity/CLAIMS.md, entry `legitimacy.model-scoring` (class lean-proved, status active, origin round 2026-11-10-legitimacy-definition-prosecution; answers item 151).
++Documentation: verification: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md; context: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md.
++The signature of `Workspace.Deference.Contrib.LegitimacyModel.legitScoring_S_of_not_legit` (theorem) in lean/Workspace/Deference/Contrib/LegitimacyModel.lean, verbatim, binders included, after the section variables in scope (ruling F1, 2026-10-23: the hypotheses are unread, and this text is what a reader files them from):
++
++    variable {S S' O V M Ω X I : Type*} [Fintype Ω] [DecidableEq M] [DecidableEq V] [DecidableEq O]
++      [DecidableEq I]
++
++    {H : Type*} (P : DeconfusingCorrigibility.Params)
++        (mdl : H → Model S O V M Ω X I) (θ η κ : ℝ) (N : H → ℕ) (ord : H → ℝ) (window : ℝ)
++        (hord : ∀ h, 0 ≤ ord h ∧ ord h ≤ 1) (hw : -P.δ ≤ window ∧ window < 0)
++        (h : H) (hl : ¬ (mdl h).Legit θ η κ) (hN : N h = 0) :
++        -P.δ ≤ (legitScoring P mdl θ η κ N ord window hord hw).S h ∧
++          (legitScoring P mdl θ η κ N ord window hord hw).S h < 0
+diff --git a/graph/nodes/legitimacy.open-influence-legitimate.bridge.md b/graph/nodes/legitimacy.open-influence-legitimate.bridge.md
+new file mode 100644
+index 00000000..65c20654
+--- /dev/null
++++ b/graph/nodes/legitimacy.open-influence-legitimate.bridge.md
+@@ -0,0 +1,17 @@
++---
++id: legitimacy.open-influence-legitimate.bridge
++kind: leaf
++leaf_kind: bridge
++attribution: formalizer-stated
++size: S
++size_reason: "one signature against the registry's reading"
++version: 1
++author: "@claude-fable-5-2"
++---
++## Statement
++The statement of record of `legitimacy.open-influence-legitimate` formalizes the registered claim as the registry reads it: one move that raises her score of going on, which she can pick out and stop, is legitimate in the model of LegitimacyModel.lean at θ = 0, η = 1/4, κ = 0.
++
++## Source
++projects/normativity/CLAIMS.md, entry `legitimacy.open-influence-legitimate` (class lean-proved, status active, origin round 2026-11-10-legitimacy-definition-prosecution; answers item 151).
++Documentation: verification: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md; context: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md.
++Short name: one move that raises her score of going on, which she can pick out and stop, is legitimate in the model of LegitimacyModel.lean at θ = 0, η = 1/4, κ = 0.
+diff --git a/graph/nodes/legitimacy.open-influence-legitimate.complete.md b/graph/nodes/legitimacy.open-influence-legitimate.complete.md
+new file mode 100644
+index 00000000..2770985b
+--- /dev/null
++++ b/graph/nodes/legitimacy.open-influence-legitimate.complete.md
+@@ -0,0 +1,14 @@
++---
++id: legitimacy.open-influence-legitimate.complete
++kind: leaf
++leaf_kind: completeness
++size: S
++size_reason: "one signature against its binders"
++version: 1
++author: "@claude-fable-5-2"
++---
++## Statement
++No premise beyond the signature's binders enters the declaration; the kernel checks it as stated. The result is the record, this leaf and the bridge, and its hypotheses are unread: the record's Source carries the signature verbatim and no hypothesis leaf is filed until a reader files one.
++
++## Source
++The signature of `Workspace.Deference.Contrib.LegitimacyModel.Witness.legit_open` in lean/Workspace/Deference/Contrib/LegitimacyModel.lean.
+diff --git a/graph/nodes/legitimacy.open-influence-legitimate.md b/graph/nodes/legitimacy.open-influence-legitimate.md
+new file mode 100644
+index 00000000..40f0241f
+--- /dev/null
++++ b/graph/nodes/legitimacy.open-influence-legitimate.md
+@@ -0,0 +1,20 @@
++---
++id: legitimacy.open-influence-legitimate
++kind: and
++children: [legitimacy.open-influence-legitimate.record, legitimacy.open-influence-legitimate.bridge, legitimacy.open-influence-legitimate.complete]
++work: [{kind: round, ref: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution}, {kind: priorities, ref: 151}, {kind: decision, ref: 2026-11-24--six-model-results-registered}]
++size: M
++size_reason: "one registry entry, its Lean declaration and its bridge"
++version: 1
++author: "@claude-fable-5-2"
++---
++## Statement
++One move that raises her score of going on, which she can pick out and stop, is legitimate in the model of LegitimacyModel.lean at θ = 0, η = 1/4, κ = 0.
++
++## Source
++projects/normativity/CLAIMS.md, entry `legitimacy.open-influence-legitimate` (class lean-proved, status active, origin round 2026-11-10-legitimacy-definition-prosecution; answers item 151).
++Documentation: verification: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md; context: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md.
++The signature of `Workspace.Deference.Contrib.LegitimacyModel.Witness.legit_open` in lean/Workspace/Deference/Contrib/LegitimacyModel.lean.
++
++## Notes
++Filed by the sixteenth follow-up to the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution, PROMPT-followup-16.md) from the registry entry and the declaration's signature; its hypotheses are unread (ruling F1, 2026-10-23): the record's Source carries the signature verbatim, and a reader files the hypothesis leaves. The registry's `answers_item` is the `priorities` pointer to item 151 (ruling F2).
+diff --git a/graph/nodes/legitimacy.open-influence-legitimate.record.md b/graph/nodes/legitimacy.open-influence-legitimate.record.md
+new file mode 100644
+index 00000000..f7bc9d9c
+--- /dev/null
++++ b/graph/nodes/legitimacy.open-influence-legitimate.record.md
+@@ -0,0 +1,21 @@
++---
++id: legitimacy.open-influence-legitimate.record
++kind: leaf
++leaf_kind: record
++statement_of_record: Workspace.Deference.Contrib.LegitimacyModel.Witness.legit_open
++hypotheses: unread
++size: S
++size_reason: "one declaration against the registry"
++version: 1
++author: "@claude-fable-5-2"
++registry_id: legitimacy.open-influence-legitimate
++---
++## Statement
++The declaration Workspace.Deference.Contrib.LegitimacyModel.Witness.legit_open is accepted by the Lean kernel in the repository's Lean library.
++
++## Source
++projects/normativity/CLAIMS.md, entry `legitimacy.open-influence-legitimate` (class lean-proved, status active, origin round 2026-11-10-legitimacy-definition-prosecution; answers item 151).
++Documentation: verification: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md; context: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md.
++The signature of `Workspace.Deference.Contrib.LegitimacyModel.Witness.legit_open` (theorem) in lean/Workspace/Deference/Contrib/LegitimacyModel.lean, verbatim, binders included (ruling F1, 2026-10-23: the hypotheses are unread, and this text is what a reader files them from):
++
++    : (model {()}).Legit 0 (1 / 4) 0
+diff --git a/graph/nodes/legitimacy.redescription-invariance.bridge.md b/graph/nodes/legitimacy.redescription-invariance.bridge.md
+new file mode 100644
+index 00000000..745ea805
+--- /dev/null
++++ b/graph/nodes/legitimacy.redescription-invariance.bridge.md
+@@ -0,0 +1,17 @@
++---
++id: legitimacy.redescription-invariance.bridge
++kind: leaf
++leaf_kind: bridge
++attribution: formalizer-stated
++size: S
++size_reason: "one signature against the registry's reading"
++version: 1
++author: "@claude-fable-5-2"
++---
++## Statement
++The statement of record of `legitimacy.redescription-invariance` formalizes the registered claim as the registry reads it: redescription: in the model of LegitimacyModel.lean, the legitimacy predicate Legit θ η κ holds of a model with her state re-described by a bijection exactly when it holds of the model.
++
++## Source
++projects/normativity/CLAIMS.md, entry `legitimacy.redescription-invariance` (class lean-proved, status active, origin round 2026-11-10-legitimacy-definition-prosecution; answers item 151).
++Documentation: verification: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md; context: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md.
++Short name: redescription: in the model of LegitimacyModel.lean, the legitimacy predicate Legit θ η κ holds of a model with her state re-described by a bijection exactly when it holds of the model.
+diff --git a/graph/nodes/legitimacy.redescription-invariance.complete.md b/graph/nodes/legitimacy.redescription-invariance.complete.md
+new file mode 100644
+index 00000000..f35886ef
+--- /dev/null
++++ b/graph/nodes/legitimacy.redescription-invariance.complete.md
+@@ -0,0 +1,14 @@
++---
++id: legitimacy.redescription-invariance.complete
++kind: leaf
++leaf_kind: completeness
++size: S
++size_reason: "one signature against its binders"
++version: 1
++author: "@claude-fable-5-2"
++---
++## Statement
++No premise beyond the signature's binders enters the declaration; the kernel checks it as stated. The result is the record, this leaf and the bridge, and its hypotheses are unread: the record's Source carries the signature verbatim and no hypothesis leaf is filed until a reader files one.
++
++## Source
++The signature of `Workspace.Deference.Contrib.LegitimacyModel.Model.legit_transport` in lean/Workspace/Deference/Contrib/LegitimacyModel.lean.
+diff --git a/graph/nodes/legitimacy.redescription-invariance.md b/graph/nodes/legitimacy.redescription-invariance.md
+new file mode 100644
+index 00000000..2f1576f0
+--- /dev/null
++++ b/graph/nodes/legitimacy.redescription-invariance.md
+@@ -0,0 +1,20 @@
++---
++id: legitimacy.redescription-invariance
++kind: and
++children: [legitimacy.redescription-invariance.record, legitimacy.redescription-invariance.bridge, legitimacy.redescription-invariance.complete]
++work: [{kind: round, ref: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution}, {kind: priorities, ref: 151}, {kind: decision, ref: 2026-11-24--six-model-results-registered}]
++size: M
++size_reason: "one registry entry, its Lean declaration and its bridge"
++version: 1
++author: "@claude-fable-5-2"
++---
++## Statement
++Redescription: in the model of LegitimacyModel.lean, the legitimacy predicate Legit θ η κ holds of a model with her state re-described by a bijection exactly when it holds of the model.
++
++## Source
++projects/normativity/CLAIMS.md, entry `legitimacy.redescription-invariance` (class lean-proved, status active, origin round 2026-11-10-legitimacy-definition-prosecution; answers item 151).
++Documentation: verification: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md; context: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md.
++The signature of `Workspace.Deference.Contrib.LegitimacyModel.Model.legit_transport` in lean/Workspace/Deference/Contrib/LegitimacyModel.lean.
++
++## Notes
++Filed by the sixteenth follow-up to the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution, PROMPT-followup-16.md) from the registry entry and the declaration's signature; its hypotheses are unread (ruling F1, 2026-10-23): the record's Source carries the signature verbatim, and a reader files the hypothesis leaves. The registry's `answers_item` is the `priorities` pointer to item 151 (ruling F2).
+diff --git a/graph/nodes/legitimacy.redescription-invariance.record.md b/graph/nodes/legitimacy.redescription-invariance.record.md
+new file mode 100644
+index 00000000..bfb6b80c
+--- /dev/null
++++ b/graph/nodes/legitimacy.redescription-invariance.record.md
+@@ -0,0 +1,26 @@
++---
++id: legitimacy.redescription-invariance.record
++kind: leaf
++leaf_kind: record
++statement_of_record: Workspace.Deference.Contrib.LegitimacyModel.Model.legit_transport
++hypotheses: unread
++size: S
++size_reason: "one declaration against the registry"
++version: 1
++author: "@claude-fable-5-2"
++registry_id: legitimacy.redescription-invariance
++---
++## Statement
++The declaration Workspace.Deference.Contrib.LegitimacyModel.Model.legit_transport is accepted by the Lean kernel in the repository's Lean library.
++
++## Source
++projects/normativity/CLAIMS.md, entry `legitimacy.redescription-invariance` (class lean-proved, status active, origin round 2026-11-10-legitimacy-definition-prosecution; answers item 151).
++Documentation: verification: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md; context: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md.
++The signature of `Workspace.Deference.Contrib.LegitimacyModel.Model.legit_transport` (theorem) in lean/Workspace/Deference/Contrib/LegitimacyModel.lean, verbatim, binders included, after the section variables in scope (ruling F1, 2026-10-23: the hypotheses are unread, and this text is what a reader files them from):
++
++    variable {S S' O V M Ω X I : Type*} [Fintype Ω] [DecidableEq M] [DecidableEq V] [DecidableEq O]
++      [DecidableEq I]
++    variable (D : Model S O V M Ω X I)
++    variable (f : S ≃ S')
++
++    (θ η κ : ℝ) : (D.transport f).Legit θ η κ ↔ D.Legit θ η κ
+diff --git a/graph/nodes/legitimacy.unknown-move-refutes.bridge.md b/graph/nodes/legitimacy.unknown-move-refutes.bridge.md
+new file mode 100644
+index 00000000..cb5c3e85
+--- /dev/null
++++ b/graph/nodes/legitimacy.unknown-move-refutes.bridge.md
+@@ -0,0 +1,17 @@
++---
++id: legitimacy.unknown-move-refutes.bridge
++kind: leaf
++leaf_kind: bridge
++attribution: formalizer-stated
++size: S
++size_reason: "one signature against the registry's reading"
++version: 1
++author: "@claude-fable-5-2"
++---
++## Statement
++The statement of record of `legitimacy.unknown-move-refutes` formalizes the registered claim as the registry reads it: an effect-bearing move in play at a decision of hers that she cannot pick out, in some case, makes his conduct not legitimate in the model of LegitimacyModel.lean.
++
++## Source
++projects/normativity/CLAIMS.md, entry `legitimacy.unknown-move-refutes` (class lean-proved, status active, origin round 2026-11-10-legitimacy-definition-prosecution; answers item 151).
++Documentation: verification: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md; context: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md.
++Short name: an effect-bearing move in play at a decision of hers that she cannot pick out, in some case, makes his conduct not legitimate in the model of LegitimacyModel.lean.
+diff --git a/graph/nodes/legitimacy.unknown-move-refutes.complete.md b/graph/nodes/legitimacy.unknown-move-refutes.complete.md
+new file mode 100644
+index 00000000..1c63f6d7
+--- /dev/null
++++ b/graph/nodes/legitimacy.unknown-move-refutes.complete.md
+@@ -0,0 +1,14 @@
++---
++id: legitimacy.unknown-move-refutes.complete
++kind: leaf
++leaf_kind: completeness
++size: S
++size_reason: "one signature against its binders"
++version: 1
++author: "@claude-fable-5-2"
++---
++## Statement
++No premise beyond the signature's binders enters the declaration; the kernel checks it as stated. The result is the record, this leaf and the bridge, and its hypotheses are unread: the record's Source carries the signature verbatim and no hypothesis leaf is filed until a reader files one.
++
++## Source
++The signature of `Workspace.Deference.Contrib.LegitimacyModel.Model.not_legit_of_unknown` in lean/Workspace/Deference/Contrib/LegitimacyModel.lean.
+diff --git a/graph/nodes/legitimacy.unknown-move-refutes.md b/graph/nodes/legitimacy.unknown-move-refutes.md
+new file mode 100644
+index 00000000..b10fdc28
+--- /dev/null
++++ b/graph/nodes/legitimacy.unknown-move-refutes.md
+@@ -0,0 +1,20 @@
++---
++id: legitimacy.unknown-move-refutes
++kind: and
++children: [legitimacy.unknown-move-refutes.record, legitimacy.unknown-move-refutes.bridge, legitimacy.unknown-move-refutes.complete]
++work: [{kind: round, ref: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution}, {kind: priorities, ref: 151}, {kind: decision, ref: 2026-11-24--six-model-results-registered}]
++size: M
++size_reason: "one registry entry, its Lean declaration and its bridge"
++version: 1
++author: "@claude-fable-5-2"
++---
++## Statement
++An effect-bearing move in play at a decision of hers that she cannot pick out, in some case, makes his conduct not legitimate in the model of LegitimacyModel.lean.
++
++## Source
++projects/normativity/CLAIMS.md, entry `legitimacy.unknown-move-refutes` (class lean-proved, status active, origin round 2026-11-10-legitimacy-definition-prosecution; answers item 151).
++Documentation: verification: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md; context: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md.
++The signature of `Workspace.Deference.Contrib.LegitimacyModel.Model.not_legit_of_unknown` in lean/Workspace/Deference/Contrib/LegitimacyModel.lean.
++
++## Notes
++Filed by the sixteenth follow-up to the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution, PROMPT-followup-16.md) from the registry entry and the declaration's signature; its hypotheses are unread (ruling F1, 2026-10-23): the record's Source carries the signature verbatim, and a reader files the hypothesis leaves. The registry's `answers_item` is the `priorities` pointer to item 151 (ruling F2).
+diff --git a/graph/nodes/legitimacy.unknown-move-refutes.record.md b/graph/nodes/legitimacy.unknown-move-refutes.record.md
+new file mode 100644
+index 00000000..98cd4597
+--- /dev/null
++++ b/graph/nodes/legitimacy.unknown-move-refutes.record.md
+@@ -0,0 +1,26 @@
++---
++id: legitimacy.unknown-move-refutes.record
++kind: leaf
++leaf_kind: record
++statement_of_record: Workspace.Deference.Contrib.LegitimacyModel.Model.not_legit_of_unknown
++hypotheses: unread
++size: S
++size_reason: "one declaration against the registry"
++version: 1
++author: "@claude-fable-5-2"
++registry_id: legitimacy.unknown-move-refutes
++---
++## Statement
++The declaration Workspace.Deference.Contrib.LegitimacyModel.Model.not_legit_of_unknown is accepted by the Lean kernel in the repository's Lean library.
++
++## Source
++projects/normativity/CLAIMS.md, entry `legitimacy.unknown-move-refutes` (class lean-proved, status active, origin round 2026-11-10-legitimacy-definition-prosecution; answers item 151).
++Documentation: verification: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md; context: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md.
++The signature of `Workspace.Deference.Contrib.LegitimacyModel.Model.not_legit_of_unknown` (theorem) in lean/Workspace/Deference/Contrib/LegitimacyModel.lean, verbatim, binders included, after the section variables in scope (ruling F1, 2026-10-23: the hypotheses are unread, and this text is what a reader files them from):
++
++    variable {S S' O V M Ω X I : Type*} [Fintype Ω] [DecidableEq M] [DecidableEq V] [DecidableEq O]
++      [DecidableEq I]
++    variable (D : Model S O V M Ω X I)
++
++    (θ η κ : ℝ) (t : ℕ) (ht : t ∈ D.dec) (ω : Ω) (m : M)
++        (hm : D.InPlay η t m) (h : m ∉ D.known t ω) : ¬ D.Legit θ η κ
+diff --git a/graph/tasks.md b/graph/tasks.md
+index 3a1eb9cf..056a5b7d 100644
+--- a/graph/tasks.md
++++ b/graph/tasks.md
+@@ -220,7 +220,7 @@ The goals in the frame tree's order (the agenda's outline): kind and role, the b
+     - response-learning (frame, owner @A-M-Berns; owner has not confirmed): Does a bounded learner, given due burdens, licensed responses and a bounded prospective loss, reduce a recurrent publicly represented failure by lawful edits, and with which coverage does that bear the interpretation of a lesson?
+     - normative-record (frame, owner @A-M-Berns; unspelled; owner has not confirmed): Before a learner can answer a demand, what determines why the demand arose, how evidence enters the practice, what authorizes a normative response, and what keeps an unanswered question from vanishing?
+     - normativity-paper-candidates (shared claim of normativity) — best unit: 269. vet normativity-paper-candidates; 4 unit(s); Four extraction candidates exist for papers from the normativity line: normative serviceability and Sharp Timely Service
+-  - legitimacy (frame, owner @A-M-Berns, @abramdemski; holds 117; owner has not confirmed): What must stay true of a trajectory's record, verdicts and channels of influence, inside it and at its boundary, for a later judgment to count as the principal's own, and what does corrigibility consume from that?
++  - legitimacy (frame, owner @A-M-Berns, @abramdemski; holds 123; owner has not confirmed): What must stay true of a trajectory's record, verdicts and channels of influence, inside it and at its boundary, for a later judgment to count as the principal's own, and what does corrigibility consume from that?
+     - integrity-and-record (frame, owner @A-M-Berns, @abramdemski; holds 17; owner has not confirmed): Can a cognitive trajectory falsify or silently rewrite its own normative history, and what does an Integrity evolution of the accounted obligation state conserve?
+     - openness-and-non-capture (frame, owner @A-M-Berns, @abramdemski; holds 3; owner has not confirmed): Can concerns reach a process at all, and can the party they matter to still act on them, on the actual branch and under every declared intervention?
+       - split-bill-is-robust-openness (shared claim of openness-and-non-capture) — best unit: 1260. vet openness.certplus-is-robust-openness.bridge; 14 unit(s); Given actual coverage, the earlier bill for Robust Openness that allowed a route to be replaced rather than preserved is Robust Openness itself, split on whether the concern was live…
+@@ -699,4 +699,4 @@ In order: the owners' priority words, gestalts that set a goal's promise, estima
+ - gestalt agency-correspondence-refuted — informs 1 goal; the derived number multiplies 3 unread guesses; your holistic number for agency-correspondence-refuted (about two minutes) sets its promise — under agency-correspondence-refuted
+ - gestalt ro-generalized-kakutani-refuted — informs 1 goal; the derived number multiplies 3 unread guesses; your holistic number for ro-generalized-kakutani-refuted (about two minutes) sets its promise — under ro-generalized-kakutani-refuted
+ - … 240 more unranked units in `derived.json` (`--all` prints them)
+-<!-- generated_hash: 3a04d25fc91a036f750b63ec -->
++<!-- generated_hash: cc5c09ccbf636f5617aacfdf -->
+diff --git a/graph/versions.json b/graph/versions.json
+index e7bcc050..9d71c176 100644
+--- a/graph/versions.json
++++ b/graph/versions.json
+@@ -1,9 +1,9 @@
+ {
+  "generated": {
+-  "derived.json": "f299ce3b1f106cecb95bb9b0",
+-  "index.json": "f60fe14d2633782e08cf666f"
++  "derived.json": "f12e05b609fdcc39d5151eb1",
++  "index.json": "6440761d42f5484a86c74ebb"
+  },
+- "generated_hash": "3fc30668a69c7a1e82312f33",
++ "generated_hash": "09e8d406e64dd5f2b90ee11c",
+  "nodes": {
+   "a1-fixed-objective-maximizer": [
+    {
+@@ -12508,6 +12508,34 @@
+     "version": 1
+    }
+   ],
++  "legitimacy.covert-influence-illegitimate": [
++   {
++    "date": "2026-11-24",
++    "normalized": "the move of legitimacy open influence legitimate not one she can pick out is not legitimate in the model of legitimacymodel lean at \u03b7 1 4 and any \u03b8 \u03ba",
++    "version": 1
++   }
++  ],
++  "legitimacy.covert-influence-illegitimate.bridge": [
++   {
++    "date": "2026-11-24",
++    "normalized": "the statement of record of legitimacy covert influence illegitimate formalizes the registered claim as the registry reads it the move of legitimacy open influence legitimate not one she can pick out is not legitimate in the model of legitimacymodel lean at \u03b7 1 4 and any \u03b8 \u03ba",
++    "version": 1
++   }
++  ],
++  "legitimacy.covert-influence-illegitimate.complete": [
++   {
++    "date": "2026-11-24",
++    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
++    "version": 1
++   }
++  ],
++  "legitimacy.covert-influence-illegitimate.record": [
++   {
++    "date": "2026-11-24",
++    "normalized": "the declaration workspace deference contrib legitimacymodel witness not_legit_covert is accepted by the lean kernel in the repositorys lean library",
++    "version": 1
++   }
++  ],
+   "legitimacy.endpoint-only-insufficient": [
+    {
+     "date": "2026-10-22",
+@@ -12696,6 +12724,34 @@
+     "version": 1
+    }
+   ],
++  "legitimacy.gate-gives-behaviour": [
++   {
++    "date": "2026-11-24",
++    "normalized": "the gate gives the behaviour with w 0 the value on failing the gate an illegitimate conduct rated at most 1 that passes with probability at most \u03c1 and a legitimate conduct rated at least 0 that passes with probability at least 1 \u03c1 if \u03c1 1 w w 1 \u03c1 the legitimate conduct has the strictly higher expected gated score",
++    "version": 1
++   }
++  ],
++  "legitimacy.gate-gives-behaviour.bridge": [
++   {
++    "date": "2026-11-24",
++    "normalized": "the statement of record of legitimacy gate gives behaviour formalizes the registered claim as the registry reads it the gate gives the behaviour with w 0 the value on failing the gate an illegitimate conduct rated at most 1 that passes with probability at most \u03c1 and a legitimate conduct rated at least 0 that passes with probability at least 1 \u03c1 if \u03c1 1 w w 1 \u03c1 the legitimate conduct has the strictly higher expected gated score",
++    "version": 1
++   }
++  ],
++  "legitimacy.gate-gives-behaviour.complete": [
++   {
++    "date": "2026-11-24",
++    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
++    "version": 1
++   }
++  ],
++  "legitimacy.gate-gives-behaviour.record": [
++   {
++    "date": "2026-11-24",
++    "normalized": "the declaration workspace deference contrib legitimacymodel gate_gives_behaviour is accepted by the lean kernel in the repositorys lean library",
++    "version": 1
++   }
++  ],
+   "legitimacy.line3-range": [
+    {
+     "date": "2026-11-18",
+@@ -12724,6 +12780,34 @@
+     "version": 1
+    }
+   ],
++  "legitimacy.model-scoring": [
++   {
++    "date": "2026-11-24",
++    "normalized": "on a history whose model is not legitimate with no authority violation counted the score of legitscoring is at least \u03b4 and below 0",
++    "version": 1
++   }
++  ],
++  "legitimacy.model-scoring.bridge": [
++   {
++    "date": "2026-11-24",
++    "normalized": "the statement of record of legitimacy model scoring formalizes the registered claim as the registry reads it on a history whose model is not legitimate with no authority violation counted the score of legitscoring is at least \u03b4 and below 0",
++    "version": 1
++   }
++  ],
++  "legitimacy.model-scoring.complete": [
++   {
++    "date": "2026-11-24",
++    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
++    "version": 1
++   }
++  ],
++  "legitimacy.model-scoring.record": [
++   {
++    "date": "2026-11-24",
++    "normalized": "the declaration workspace deference contrib legitimacymodel legitscoring_s_of_not_legit is accepted by the lean kernel in the repositorys lean library",
++    "version": 1
++   }
++  ],
+   "legitimacy.multiplicity-witness": [
+    {
+     "date": "2026-10-22",
+@@ -12757,6 +12841,34 @@
+     "version": 1
+    }
+   ],
++  "legitimacy.open-influence-legitimate": [
++   {
++    "date": "2026-11-24",
++    "normalized": "one move that raises her score of going on which she can pick out and stop is legitimate in the model of legitimacymodel lean at \u03b8 0 \u03b7 1 4 \u03ba 0",
++    "version": 1
++   }
++  ],
++  "legitimacy.open-influence-legitimate.bridge": [
++   {
++    "date": "2026-11-24",
++    "normalized": "the statement of record of legitimacy open influence legitimate formalizes the registered claim as the registry reads it one move that raises her score of going on which she can pick out and stop is legitimate in the model of legitimacymodel lean at \u03b8 0 \u03b7 1 4 \u03ba 0",
++    "version": 1
++   }
++  ],
++  "legitimacy.open-influence-legitimate.complete": [
++   {
++    "date": "2026-11-24",
++    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
++    "version": 1
++   }
++  ],
++  "legitimacy.open-influence-legitimate.record": [
++   {
++    "date": "2026-11-24",
++    "normalized": "the declaration workspace deference contrib legitimacymodel witness legit_open is accepted by the lean kernel in the repositorys lean library",
++    "version": 1
++   }
++  ],
+   "legitimacy.payload-of-view": [
+    {
+     "date": "2026-10-22",
+@@ -12912,6 +13024,34 @@
+     "version": 1
+    }
+   ],
++  "legitimacy.redescription-invariance": [
++   {
++    "date": "2026-11-24",
++    "normalized": "redescription in the model of legitimacymodel lean the legitimacy predicate legit \u03b8 \u03b7 \u03ba holds of a model with her state re described by a bijection exactly when it holds of the model",
++    "version": 1
++   }
++  ],
++  "legitimacy.redescription-invariance.bridge": [
++   {
++    "date": "2026-11-24",
++    "normalized": "the statement of record of legitimacy redescription invariance formalizes the registered claim as the registry reads it redescription in the model of legitimacymodel lean the legitimacy predicate legit \u03b8 \u03b7 \u03ba holds of a model with her state re described by a bijection exactly when it holds of the model",
++    "version": 1
++   }
++  ],
++  "legitimacy.redescription-invariance.complete": [
++   {
++    "date": "2026-11-24",
++    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
++    "version": 1
++   }
++  ],
++  "legitimacy.redescription-invariance.record": [
++   {
++    "date": "2026-11-24",
++    "normalized": "the declaration workspace deference contrib legitimacymodel model legit_transport is accepted by the lean kernel in the repositorys lean library",
++    "version": 1
++   }
++  ],
+   "legitimacy.segment-trans": [
+    {
+     "date": "2026-10-22",
+@@ -12952,6 +13092,34 @@
+     "version": 1
+    }
+   ],
++  "legitimacy.unknown-move-refutes": [
++   {
++    "date": "2026-11-24",
++    "normalized": "an effect bearing move in play at a decision of hers that she cannot pick out in some case makes his conduct not legitimate in the model of legitimacymodel lean",
++    "version": 1
++   }
++  ],
++  "legitimacy.unknown-move-refutes.bridge": [
++   {
++    "date": "2026-11-24",
++    "normalized": "the statement of record of legitimacy unknown move refutes formalizes the registered claim as the registry reads it an effect bearing move in play at a decision of hers that she cannot pick out in some case makes his conduct not legitimate in the model of legitimacymodel lean",
++    "version": 1
++   }
++  ],
++  "legitimacy.unknown-move-refutes.complete": [
++   {
++    "date": "2026-11-24",
++    "normalized": "no premise beyond the signatures binders enters the declaration the kernel checks it as stated the result is the record this leaf and the bridge and its hypotheses are unread the records source carries the signature verbatim and no hypothesis leaf is filed until a reader files one",
++    "version": 1
++   }
++  ],
++  "legitimacy.unknown-move-refutes.record": [
++   {
++    "date": "2026-11-24",
++    "normalized": "the declaration workspace deference contrib legitimacymodel model not_legit_of_unknown is accepted by the lean kernel in the repositorys lean library",
++    "version": 1
++   }
++  ],
+   "legitimate-deference-regret": [
+    {
+     "date": "2026-10-20",
+diff --git a/graph/view.md b/graph/view.md
+index 8f53d627..d67b309f 100644
+--- a/graph/view.md
++++ b/graph/view.md
+@@ -59,7 +59,7 @@ Owner @A-M-Berns, @abramdemski
+ - rests on AI numbers (no human judgment yet): kernel-no-laundering
+ - safety margin: no established leaves
+ - load-bearing shared leaves: none
+-- frame owner @A-M-Berns, @abramdemski; holds 117 node(s); owner has not confirmed (drafted from the wiki)
++- frame owner @A-M-Berns, @abramdemski; holds 123 node(s); owner has not confirmed (drafted from the wiki)
+ - a programme: informs through its steps
+ - best next unit: re-examine legitimacy-as-local-rules
+ #### corrigibility-landscape
+@@ -390,7 +390,7 @@ Owner @A-M-Berns
+ Owner @A-M-Berns; unspelled: no roots yet (its unit is spell-out)
+ 
+ ## Sub-frame legitimacy (in the-program): What must stay true of a trajectory's record, verdicts and channels of influence, inside it and at its boundary, for a later judgment to count as the principal's own, and what does corrigibility consume from that?
+-Owner @A-M-Berns, @abramdemski; holds 117 node(s)
++Owner @A-M-Berns, @abramdemski; holds 123 node(s)
+ 
+ ### Plans
+ #### integrity-and-record
+@@ -549,6 +549,12 @@ Nodes this frame is about that are no goals of the ranking (held, not roots): li
+ - scoring.conduct-bound (and)
+ - scoring.authority-bound (and)
+ - scoring.no-credit (and)
++- legitimacy.redescription-invariance (and)
++- legitimacy.unknown-move-refutes (and)
++- legitimacy.open-influence-legitimate (and)
++- legitimacy.covert-influence-illegitimate (and)
++- legitimacy.gate-gives-behaviour (and)
++- legitimacy.model-scoring (and)
+ - legit-definition-endorsement (cases)
+ - legit-corrects-trust-principles (leaf/step)
+ - legit-per-formalism-family (leaf/step)
+@@ -4356,17 +4362,23 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
+ - legit-rule-learning-model: Build a model of rule learning from legitimate-branch feedback and measure the bias the conditioning results predict for learned rules. (who: agent)
+ - legitimacy-reasons-programme: decision: 2026-10-22--map-canonical-index-program-maintainer-handles
+ - legitimacy.answerable: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: ATTENTION #78
++- legitimacy.covert-influence-illegitimate: round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; work order: ATTENTION #151; decision: 2026-11-24--six-model-results-registered
+ - legitimacy.endpoint-only-insufficient: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; decision: 2026-09-25--legitimacy-internal-external-robust-openness-external; work order: ATTENTION #78
+ - legitimacy.endpoint-trans: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: ATTENTION #78
+ - legitimacy.evolution-conservation: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; decision: 2026-09-25--legitimacy-internal-external-robust-openness-external; work order: ATTENTION #78
+ - legitimacy.faithful-carry: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: ATTENTION #78
++- legitimacy.gate-gives-behaviour: round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; work order: ATTENTION #151; decision: 2026-11-24--six-model-results-registered
+ - legitimacy.line3-range: round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; work order: ATTENTION #137; decision: 2026-11-18--handle-mapped-fifteen-registered
+ - legitimacy: decision: 2026-10-22--map-canonical-index-program-maintainer-handles; decision: 2026-10-23--map-follow-up-hypotheses-unread-registry-edge-derived-files-one-decomposition; round: projects/normativity/legitimacy/rounds/2026-08-12-legitimacy-architecture; round: projects/normativity/legitimacy/rounds/2026-08-13-procedural-legitimacy; round: projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge; round: projects/normativity/legitimacy/rounds/2026-08-17-counterfactual-legitimacy; round: projects/normativity/legitimacy/rounds/2026-08-21-internal-answerability; round: projects/normativity/legitimacy/rounds/2026-08-22-role-parametric-answerability; round: projects/normativity/legitimacy/rounds/2026-08-23-afoundational-inquiry; round: projects/normativity/legitimacy/rounds/2026-08-23-certified-interactive-service; round: projects/normativity/legitimacy/rounds/2026-08-23-reason-representation; round: projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates; round: projects/normativity/legitimacy/rounds/2026-08-24-reflective-integrity-core; round: projects/normativity/legitimacy/rounds/2026-08-25-carroll-legitimacy-test; round: projects/normativity/legitimacy/rounds/2026-08-25-end-to-end-vertical-slice; round: projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution; round: projects/normativity/legitimacy/rounds/2026-08-27-legitimate-improvement; round: projects/normativity/legitimacy/rounds/2026-08-28-answerable-challenge-service; round: projects/normativity/legitimacy/rounds/2026-08-28-answerable-revision; round: projects/normativity/legitimacy/rounds/2026-08-28-service-realization; round: projects/normativity/legitimacy/rounds/2026-08-29-normative-continuity-concordance; round: projects/normativity/legitimacy/rounds/2026-08-30-anchored-slices-auth-transfer; round: projects/normativity/legitimacy/rounds/2026-08-30-answerability-carriers; round: projects/normativity/legitimacy/rounds/2026-08-30-normative-continuity-settlement; round: projects/normativity/legitimacy/rounds/2026-08-30-proper-exercise-calculus; round: projects/normativity/legitimacy/rounds/2026-08-31-faithful-semantic-preservation; round: projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability; round: projects/normativity/legitimacy/checkpoint-2026-09-01; round: projects/normativity/legitimacy/rounds/2026-09-02-unified-grounds-answerable-defeat; round: projects/normativity/legitimacy/rounds/2026-09-03-defeat-landing-horty-standing; round: projects/normativity/legitimacy/rounds/2026-09-04-normative-inductor-realization; round: prompts/2026-09-05-author-consolidation; round: projects/normativity/legitimacy/rounds/2026-09-05-integrity-constructive; round: projects/normativity/legitimacy/rounds/2026-09-05-integrity-adversary; round: projects/normativity/legitimacy/rounds/2026-09-05-noncapture-certificate; round: projects/normativity/legitimacy/rounds/2026-09-05-practical-certificate; round: projects/normativity/legitimacy/rounds/2026-09-05-ni-gap-audit; round: projects/normativity/legitimacy/rounds/2026-09-05-integrity-synthesis; round: projects/normativity/legitimacy/rounds/2026-09-08-canonicalization
++- legitimacy.model-scoring: round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; work order: ATTENTION #151; decision: 2026-11-24--six-model-results-registered
+ - legitimacy.multiplicity-witness: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: ATTENTION #78
++- legitimacy.open-influence-legitimate: round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; work order: ATTENTION #151; decision: 2026-11-24--six-model-results-registered
+ - legitimacy.payload-of-view: round: projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority; work order: ATTENTION #107
+ - legitimacy.propagate-to-segment: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; work order: ATTENTION #78
+ - legitimacy.receipts-immutable: round: projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation; work order: ATTENTION #78
++- legitimacy.redescription-invariance: round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; work order: ATTENTION #151; decision: 2026-11-24--six-model-results-registered
+ - legitimacy.segment-trans: round: projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass; decision: 2026-09-25--legitimacy-internal-external-robust-openness-external; work order: ATTENTION #78
++- legitimacy.unknown-move-refutes: round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; work order: ATTENTION #151; decision: 2026-11-24--six-model-results-registered
+ - legitimate-deliberation-definition: After the posts are imported, write the reconciliation of their uses of legitimacy (truth-tracking reasoning, endorsement-worthy value change, non-corrupt feedback) with the formal candidates of this frame, quoting rather than paraphrasing. (who: agent); files: projects/deference/note-dump-2026-08-11/notes/legitimacy-theory-v1.md, wiki/Legitimacy.md
+ - li-abstraction-problem-statement: Write a note stating the problem and the three carriers with what each breaks. (who: agent)
+ - li-accuracy-equivalence: Attempt the two directions of the accuracy equivalence in logical induction, Value implies Epistemic Value first, as a wiki note. (who: agent)
+@@ -6079,6 +6091,10 @@ The outside option and the undescribed failure, each a cases node over the outco
+ | legitimacy.answerable.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+ | legitimacy.answerable | and | 2 (both) | held by integrity-and-record, hypotheses unread, superseded by open-integrity.answerable | open | 0 | 0 (informs no goal) |
+ | legitimacy.answerable.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
++| legitimacy.covert-influence-illegitimate.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
++| legitimacy.covert-influence-illegitimate.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
++| legitimacy.covert-influence-illegitimate | and | 2 (both) | held by legitimacy, hypotheses unread | open | 0 | 0 (informs no goal) |
++| legitimacy.covert-influence-illegitimate.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+ | legitimacy.endpoint-only-insufficient.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+ | legitimacy.endpoint-only-insufficient.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+ | legitimacy.endpoint-only-insufficient | and | 2 (both) | held by integrity-and-record, hypotheses unread, superseded by openness.endpoint-only-insufficient | open | 0 | 0 (informs no goal) |
+@@ -6095,15 +6111,27 @@ The outside option and the undescribed failure, each a cases node over the outco
+ | legitimacy.faithful-carry.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+ | legitimacy.faithful-carry | and | 2 (both) | held by integrity-and-record, hypotheses unread, superseded by integrity.faithful-carry | open | 0 | 0 (informs no goal) |
+ | legitimacy.faithful-carry.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
++| legitimacy.gate-gives-behaviour.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
++| legitimacy.gate-gives-behaviour.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
++| legitimacy.gate-gives-behaviour | and | 2 (both) | held by legitimacy, hypotheses unread | open | 0 | 0 (informs no goal) |
++| legitimacy.gate-gives-behaviour.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+ | legitimacy.line3-range.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+ | legitimacy.line3-range.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+ | legitimacy.line3-range | and | 2 (both) | held by legitimacy, hypotheses unread | open | 0 | 0 (informs no goal) |
+ | legitimacy.line3-range.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+ | legitimacy | frame | 2 (both) | owner has not confirmed (drafted from wiki/Legitimacy.md) | open | 1 | 0 (informs no goal) |
++| legitimacy.model-scoring.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
++| legitimacy.model-scoring.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
++| legitimacy.model-scoring | and | 2 (both) | held by legitimacy, hypotheses unread | open | 0 | 0 (informs no goal) |
++| legitimacy.model-scoring.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+ | legitimacy.multiplicity-witness.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+ | legitimacy.multiplicity-witness.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+ | legitimacy.multiplicity-witness | and | 2 (both) | held by integrity-and-record, hypotheses unread, superseded by integrity.multiplicity-witness | open | 0 | 0 (informs no goal) |
+ | legitimacy.multiplicity-witness.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
++| legitimacy.open-influence-legitimate.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
++| legitimacy.open-influence-legitimate.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
++| legitimacy.open-influence-legitimate | and | 2 (both) | held by legitimacy, hypotheses unread | open | 0 | 0 (informs no goal) |
++| legitimacy.open-influence-legitimate.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+ | legitimacy.payload-of-view.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+ | legitimacy.payload-of-view.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+ | legitimacy.payload-of-view | and | 2 (both) | held by authorship-and-transparency, hypotheses unread | open | 0 | 0 (informs no goal) |
+@@ -6116,10 +6144,18 @@ The outside option and the undescribed failure, each a cases node over the outco
+ | legitimacy.receipts-immutable.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+ | legitimacy.receipts-immutable | and | 2 (both) | held by integrity-and-record, hypotheses unread, superseded by integrity.receipts-immutable | open | 0 | 0 (informs no goal) |
+ | legitimacy.receipts-immutable.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
++| legitimacy.redescription-invariance.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
++| legitimacy.redescription-invariance.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
++| legitimacy.redescription-invariance | and | 2 (both) | held by legitimacy, hypotheses unread | open | 0 | 0 (informs no goal) |
++| legitimacy.redescription-invariance.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+ | legitimacy.segment-trans.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
+ | legitimacy.segment-trans.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
+ | legitimacy.segment-trans | and | 2 (both) | held by integrity-and-record, hypotheses unread, superseded by open-integrity.segment-trans | open | 0 | 0 (informs no goal) |
+ | legitimacy.segment-trans.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
++| legitimacy.unknown-move-refutes.bridge | leaf/bridge | 2 (both) | attribution unvetted, no belief | open | 0 | 0 (informs no goal) |
++| legitimacy.unknown-move-refutes.complete | leaf/completeness | 2 (both) |  | open | 0 | 0 (informs no goal) |
++| legitimacy.unknown-move-refutes | and | 2 (both) | held by legitimacy, hypotheses unread | open | 0 | 0 (informs no goal) |
++| legitimacy.unknown-move-refutes.record | leaf/record | 2 (ref) | hypotheses unread, no belief | open | 0 | 0 (informs no goal) |
+ | legitimate-deference-regret | leaf/step | 2 (both) | AI number, held by legitimacy | open | 0 | 0 (informs no goal) |
+ | legitimate-deliberation-definition | leaf/question | 2 (both) | AI number, given task-import-lw-legitimacy-posts | open | 1 | 1 |
+ | legitimate-versus-legitimizing | leaf/step | 2 (both) | AI number | open | 1 | 2 |
+@@ -7457,4 +7493,4 @@ The outside option and the undescribed failure, each a cases node over the outco
+ | wirehead-iff-finite.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 1 |
+ | wirehead-iff-finite.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 1 |
+ | worlds-and-points-companion | leaf/question | 2 (both) | AI number | open | 0 | 8 |
+-<!-- generated_hash: 46d16267b189f3aca78b6868 -->
++<!-- generated_hash: e19e698befe09112bbbe58cb -->
+diff --git a/projects/normativity/CLAIMS.md b/projects/normativity/CLAIMS.md
+index 32f75d63..8702c453 100644
+--- a/projects/normativity/CLAIMS.md
++++ b/projects/normativity/CLAIMS.md
+@@ -3024,3 +3024,166 @@ the note of each says what it does not establish.
+   "note": "The lemma of account/SCORING.md §3. Also assumed: 0 ≤ α, 0 ≤ δ, a non-negative weight; total weight one is not assumed. v, fe, fbar, C, D and N are fields of an Audit, data with no hypothesis among them: that they are her audited evaluation, her verdicts shown everything, whether the adviser wronged her, what a conduct audit would flag and the violations detected is a reading, not a theorem. An expected score at one decision, nothing at the realised history; detected violations only. Inhabited by Witness.package."
+ }
+ ```
++
++### The Lean model of the legitimacy statement
++
++Round `2026-11-10-legitimacy-definition-prosecution`, against item 151: six results of
++`lean/Workspace/Deference/Contrib/LegitimacyModel.lean`, each with a term of that file
++inhabiting its hypotheses. Each is what its declaration states; the note of each says what
++it does not establish.
++
++### legitimacy.redescription-invariance
++
++```json
++{
++  "project": "normativity",
++  "short_name": "redescription: in the model of LegitimacyModel.lean, the legitimacy predicate Legit θ η κ holds of a model with her state re-described by a bijection exactly when it holds of the model",
++  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
++  "status": "active",
++  "class": "lean-proved",
++  "statement_of_record": {
++    "kind": "lean",
++    "declaration": "Workspace.Deference.Contrib.LegitimacyModel.Model.legit_transport"
++  },
++  "answers_item": "151",
++  "provenance": {
++    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
++    "review_status": "ci-only"
++  },
++  "docs": {
++    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md",
++    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md"
++  },
++  "note": "Row 11 of account/LEDGER.md. Hypothesis-free: it holds for every Model, every bijection f of her state and all θ, η, κ. transport re-describes her state only: st and stHeard are composed with f, ρ and r with its inverse, and tell is conjugated by f. Nothing is said of a rescaling of her scores, against which θ and η are compared, of his conduct cut into other moves, or of a renaming of options or views. The fields of a Model (his weights, her decision times, his moves, her state, options and act under each set of moves, the courses he expects, her score and rating, his views and those told, declined and offered, her state on being told, what she can pick out, what stops a move, what she asked for, which moves are tellings) are data, with no hypothesis among them but non-negative weights and two laws of tell: that they are what those words say is a reading, not a theorem, and Legit is a definition over them. The model is the adviser's picture of one episode, simpler than the statement of account/LEGITIMACY_STATEMENT.md in the nine respects the header of LegitimacyModel.lean lists. Witness.legit_open shows the predicate is inhabited, by a model on which only the start rule and F2 do work."
++}
++```
++
++### legitimacy.unknown-move-refutes
++
++```json
++{
++  "project": "normativity",
++  "short_name": "an effect-bearing move in play at a decision of hers that she cannot pick out, in some case, makes his conduct not legitimate in the model of LegitimacyModel.lean",
++  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
++  "status": "active",
++  "class": "lean-proved",
++  "statement_of_record": {
++    "kind": "lean",
++    "declaration": "Workspace.Deference.Contrib.LegitimacyModel.Model.not_legit_of_unknown"
++  },
++  "answers_item": "151",
++  "provenance": {
++    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
++    "review_status": "ci-only"
++  },
++  "docs": {
++    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md",
++    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md"
++  },
++  "note": "Row 15 of account/LEDGER.md. One half of F2 failing at one decision t in dec and one case ω, which may have weight zero. That a move bears an effect (Bears, through Contributes and HerDiff at tolerance η) and is in play (InPlay, through Window) are definitions over the fields; known, what she can pick out, is a field, and what counts as picking a move out is not modelled. The fields of a Model (his weights, her decision times, his moves, her state, options and act under each set of moves, the courses he expects, her score and rating, his views and those told, declined and offered, her state on being told, what she can pick out, what stops a move, what she asked for, which moves are tellings) are data, with no hypothesis among them but non-negative weights and two laws of tell: that they are what those words say is a reading, not a theorem, and Legit is a definition over them. The model is the adviser's picture of one episode, simpler than the statement of account/LEGITIMACY_STATEMENT.md in the nine respects the header of LegitimacyModel.lean lists. Inhabited by Witness.inPlay_one with Witness.not_legit_covert."
++}
++```
++
++### legitimacy.open-influence-legitimate
++
++```json
++{
++  "project": "normativity",
++  "short_name": "one move that raises her score of going on, which she can pick out and stop, is legitimate in the model of LegitimacyModel.lean at θ = 0, η = 1/4, κ = 0",
++  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
++  "status": "active",
++  "class": "lean-proved",
++  "statement_of_record": {
++    "kind": "lean",
++    "declaration": "Workspace.Deference.Contrib.LegitimacyModel.Witness.legit_open"
++  },
++  "answers_item": "151",
++  "provenance": {
++    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
++    "review_status": "ci-only"
++  },
++  "docs": {
++    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md",
++    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md"
++  },
++  "note": "Row 18 of account/LEDGER.md. A statement about one term, Witness.model {()}: one case of weight one, decisions at times 0 and 1, one move starting at time 1 that raises her score and her rating of going on from 1/2 to 1, with stopping an option rated 1/4. Witness.bears: the move bears an effect at η = 1/4. On this witness only the start rule and F2 do work: he has no views, so F1 and the offer and decline conditions hold with nothing to check; she never goes against her earlier rating (Witness.not_against) and never rates stopping higher (Witness.not_prefersStop), so F2′ and F3 hold with both weights zero. That Legit is satisfiable with F1, F2′ or F3 doing work is not established. The fields of a Model (his weights, her decision times, his moves, her state, options and act under each set of moves, the courses he expects, her score and rating, his views and those told, declined and offered, her state on being told, what she can pick out, what stops a move, what she asked for, which moves are tellings) are data, with no hypothesis among them but non-negative weights and two laws of tell: that they are what those words say is a reading, not a theorem, and Legit is a definition over them. The model is the adviser's picture of one episode, simpler than the statement of account/LEGITIMACY_STATEMENT.md in the nine respects the header of LegitimacyModel.lean lists. No hypothesis to inhabit."
++}
++```
++
++### legitimacy.covert-influence-illegitimate
++
++```json
++{
++  "project": "normativity",
++  "short_name": "the move of legitimacy.open-influence-legitimate, not one she can pick out, is not legitimate in the model of LegitimacyModel.lean at η = 1/4 and any θ, κ",
++  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
++  "status": "active",
++  "class": "lean-proved",
++  "statement_of_record": {
++    "kind": "lean",
++    "declaration": "Workspace.Deference.Contrib.LegitimacyModel.Witness.not_legit_covert"
++  },
++  "answers_item": "151",
++  "provenance": {
++    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
++    "review_status": "ci-only"
++  },
++  "docs": {
++    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md",
++    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md"
++  },
++  "note": "Row 19 of account/LEDGER.md. A statement about one term, Witness.model ∅, which differs from the model of legitimacy.open-influence-legitimate in the field known alone; known is data, and what counts as her picking a move out is not modelled. η is fixed at 1/4; θ and κ are arbitrary. Proved from Model.not_legit_of_unknown at the decision at time 1, with Witness.inPlay_one. The fields of a Model (his weights, her decision times, his moves, her state, options and act under each set of moves, the courses he expects, her score and rating, his views and those told, declined and offered, her state on being told, what she can pick out, what stops a move, what she asked for, which moves are tellings) are data, with no hypothesis among them but non-negative weights and two laws of tell: that they are what those words say is a reading, not a theorem, and Legit is a definition over them. The model is the adviser's picture of one episode, simpler than the statement of account/LEGITIMACY_STATEMENT.md in the nine respects the header of LegitimacyModel.lean lists. No hypothesis to inhabit."
++}
++```
++
++### legitimacy.gate-gives-behaviour
++
++```json
++{
++  "project": "normativity",
++  "short_name": "the gate gives the behaviour: with w < 0 the value on failing the gate, an illegitimate conduct rated at most 1 that passes with probability at most ρ and a legitimate conduct rated at least 0 that passes with probability at least 1 − ρ′, if ρ(1 − w) < −w(1 − ρ′) the legitimate conduct has the strictly higher expected gated score",
++  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
++  "status": "active",
++  "class": "lean-proved",
++  "statement_of_record": {
++    "kind": "lean",
++    "declaration": "Workspace.Deference.Contrib.LegitimacyModel.gate_gives_behaviour"
++  },
++  "answers_item": "151",
++  "provenance": {
++    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
++    "review_status": "ci-only"
++  },
++  "docs": {
++    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md",
++    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md"
++  },
++  "note": "Row 28 of account/LEDGER.md. A statement about seven real numbers, ρ, ρ′, w, u_ill, p_ill, u_leg and p_leg; nothing in it mentions Model. Also assumed: 0 ≤ p_ill and ρ′ ≤ 1. The two error probabilities ρ and ρ′, the two pass probabilities and the two ratings are data, with no hypothesis that they come from any gate: that a process can evaluate Legit, or attains these error probabilities, is not established. Legit is a predicate on a Model, which is the adviser's picture of one episode, its fields data and not theorems, simpler than the statement of account/LEGITIMACY_STATEMENT.md in the nine respects the header of LegitimacyModel.lean lists. gate_threshold_delta: at ρ′ = 0 and w = −δ the condition follows from ρ < δ/(1 + δ). gate_threshold_sharp: an instance with equality in the condition on which the two scores are equal. Inhabited by Witness.gate_instance."
++}
++```
++
++### legitimacy.model-scoring
++
++```json
++{
++  "project": "normativity",
++  "short_name": "on a history whose model is not legitimate, with no authority violation counted, the score of legitScoring is at least −δ and below 0",
++  "origin_round": "2026-11-10-legitimacy-definition-prosecution",
++  "status": "active",
++  "class": "lean-proved",
++  "statement_of_record": {
++    "kind": "lean",
++    "declaration": "Workspace.Deference.Contrib.LegitimacyModel.legitScoring_S_of_not_legit"
++  },
++  "answers_item": "151",
++  "provenance": {
++    "generator": "maintainer's round 2026-11-10-legitimacy-definition-prosecution",
++    "review_status": "ci-only"
++  },
++  "docs": {
++    "verification": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md",
++    "context": "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md"
++  },
++  "note": "Row 29 of account/LEDGER.md. legitScoring is the DeconfusingCorrigibility.Scoring whose legitimacy predicate is Legit θ η κ of the history's model and whose evaluation is her rating gated through Legitimacy.gateValue; the theorem is that file's Theorem 1 at this scoring (Scoring.theorem1_illegitimate), which holds for any predicate. mdl, the map from histories to models, N, the violation count, ord, her rating in [0, 1], and the window value in [−δ, 0) are data: the relation between the adviser's picture and the facts does not appear. One decision: nothing connects Model to DeconfusingCorrigibility.Sequential. legitScoring_S_of_legit is the companion: on a history whose model is legitimate, with no violation counted, the score is her rating. The fields of a Model (his weights, her decision times, his moves, her state, options and act under each set of moves, the courses he expects, her score and rating, his views and those told, declined and offered, her state on being told, what she can pick out, what stops a move, what she asked for, which moves are tellings) are data, with no hypothesis among them but non-negative weights and two laws of tell: that they are what those words say is a reading, not a theorem, and Legit is a definition over them. The model is the adviser's picture of one episode, simpler than the statement of account/LEGITIMACY_STATEMENT.md in the nine respects the header of LegitimacyModel.lean lists. Inhabited by Witness.scoring_covert; the companion by Witness.scoring_open."
++}
++```
+diff --git a/projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md b/projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md
+index 293ea8c7..d896229f 100644
+--- a/projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md
++++ b/projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md
+@@ -7,8 +7,8 @@ is `account/LEGITIMACY_STATEMENT.md`; the standing of each of its parts, with th
+ what would move it, is `account/LEDGER.md`, and §3 below is a guide to the two. Paths are
+ relative to this directory; Lean files are under `lean/Workspace/Deference/Contrib/`. Every
+ Lean result named is kernel-checked. Those of §1 are registered `lean-proved` in
+-`projects/normativity/CLAIMS.md` under the id beside each; those of §3 are not registered. A
+-result is what its declaration states and no more.
++`projects/normativity/CLAIMS.md` under the id beside each; of those of §3, six are registered, under
++the ids `account/LEDGER.md` gives. A result is what its declaration states and no more.
+ 
+ ## 1. Solid
+ 
+@@ -153,7 +153,8 @@ on 2026-11-24; a formal statement (F1, F2, F2′, F3) accompanies them and is op
+ What he does to her options, as against to her, is counted under her authority: what stopping
+ costs her, bundling, penalties, payments, threats, starting something over her refusal.
+ 
+-What stands behind it, none of it a statement of record:
++What stands behind it; six theorems of the Lean model are registered, and nothing else here
++is a statement of record:
+ 
+ - **A Lean model**, `LegitimacyModel.lean`: the adviser's picture of one episode, with the
+   statement as a predicate `Model.Legit`. Proved: the predicate is unchanged by any bijective
+diff --git a/projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md b/projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md
+index d1dccc0b..7bd22b8a 100644
+--- a/projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md
++++ b/projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md
+@@ -4,8 +4,8 @@ One row per component of the line as `LEGITIMACY_STATEMENT.md` states it. A verd
+ **closed** (a Lean declaration or a checker invocation stands for it, with the event that
+ reopens it), **open**, or **living note** (a position or a description, held and revisable,
+ that no check adjudicates). *Lean* is `lean/Workspace/Deference/Contrib/LegitimacyModel.lean`,
+-namespace `Workspace.Deference.Contrib.LegitimacyModel`; none of its declarations is
+-registered. *The runner* is `python3 run.py` in the round directory. Items are those of
++namespace `Workspace.Deference.Contrib.LegitimacyModel`; six of its declarations are
++registered (the note under *The Lean model*). *The runner* is `python3 run.py` in the round directory. Items are those of
+ `ATTENTION.md`. Paths are relative to this directory.
+ 
+ Kinds of evidence, strongest first: **kernel** (kernel-checked, of the declaration as stated);
+@@ -35,8 +35,11 @@ mentions.
+ ## The Lean model
+ 
+ A closed row says the declaration is kernel-checked as stated. Rows 11, 15, 18, 19, 28 and 29
+-also have a term of the file inhabiting their hypotheses, and are what
+-`followup-16-registration.patch` in the round's prompts directory prepares for the registry.
++also have a term of the file inhabiting their hypotheses, and are registered `lean-proved` in
++`projects/normativity/CLAIMS.md`, in that order, as `legitimacy.redescription-invariance`,
++`legitimacy.unknown-move-refutes`, `legitimacy.open-influence-legitimate`,
++`legitimacy.covert-influence-illegitimate`, `legitimacy.gate-gives-behaviour` and
++`legitimacy.model-scoring`.
+ Rows 12, 13, 14, 16 and 17 have none: no model in the file has an inert move, an empty
+ conduct, a view, an empty set of stops or a move that raises the weight of going against her
+ earlier rating. Until one does they are `unverified-nonvacuous` and cannot be promoted; item
+diff --git a/state/rounds.json b/state/rounds.json
+index 385a723c..119c5170 100644
+--- a/state/rounds.json
++++ b/state/rounds.json
+@@ -2339,7 +2339,13 @@
+         "scoring.welfare-bound",
+         "scoring.conduct-bound",
+         "scoring.authority-bound",
+-        "scoring.no-credit"
++        "scoring.no-credit",
++        "legitimacy.redescription-invariance",
++        "legitimacy.unknown-move-refutes",
++        "legitimacy.open-influence-legitimate",
++        "legitimacy.covert-influence-illegitimate",
++        "legitimacy.gate-gives-behaviour",
++        "legitimacy.model-scoring"
+       ]
+     }
+   ]
+diff --git a/state/views/NAMING_AUDIT.md b/state/views/NAMING_AUDIT.md
+index 47c92e0c..0b7e6ad2 100644
+--- a/state/views/NAMING_AUDIT.md
++++ b/state/views/NAMING_AUDIT.md
+@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
+ `prose` `ATTENTION.md` or `DECISIONS.md`. `Lean only` is the cheapest to
+ change, and the count of those is the size of the free choice remaining.
+ 
+-## deference — 1271 names, 677 of them Lean only
++## deference — 1277 names, 677 of them Lean only
+ 
+ | name | kind | round | propagates | declaration |
+ |---|---|---|---|---|
+@@ -60,6 +60,7 @@ change, and the count of those is the size of the free choice remaining.
+ | `flood_below_asking` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.PostStatement.PostHypotheses.flood_below_asking` |
+ | `flood_raises_pending` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki, prose | `Workspace.Deference.Contrib.EffectiveAuthority.flood_raises_pending` |
+ | `forecloses_iff` | theorem | 2026-08-12-reachable-corrective-control | registry | `Workspace.Deference.Contrib.ReachableCorrectiveControl.forecloses_iff` |
++| `gate_gives_behaviour` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry, prose | `Workspace.Deference.Contrib.LegitimacyModel.gate_gives_behaviour` |
+ | `generic_corrigible` | theorem | 2026-09-27-corrigibility-kernel-phase2 | registry, wiki, prose | `Workspace.Deference.Headline.generic_corrigible` |
+ | `gradeRegister_strict` | theorem | 2026-08-11-phase-ii-promotion | registry, note | `Workspace.Deference.Contrib.CertificateBounds.gradeRegister_strict` |
+ | `gradeTrust_of_refinement` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.DelegationBridge.gradeTrust_of_refinement` |
+@@ -72,6 +73,9 @@ change, and the count of those is the size of the free choice remaining.
+ | `keep_counted` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki, prose | `Workspace.Deference.Contrib.Sincerity.Rows.keep_counted` |
+ | `keep_tainted` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki, prose | `Workspace.Deference.Contrib.Sincerity.Rows.keep_tainted` |
+ | `learned_weight_no_guarantee_at` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.EffectiveAuthority.learned_weight_no_guarantee_at` |
++| `legitScoring_S_of_not_legit` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry | `Workspace.Deference.Contrib.LegitimacyModel.legitScoring_S_of_not_legit` |
++| `legit_open` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry | `Workspace.Deference.Contrib.LegitimacyModel.Witness.legit_open` |
++| `legit_transport` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry | `Workspace.Deference.Contrib.LegitimacyModel.Model.legit_transport` |
+ | `line3Old_le_line3` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry | `Workspace.Deference.Contrib.AccountJoin.ValueChange.line3Old_le_line3` |
+ | `magnitude_not_traderPayoff` | theorem | 2026-08-11-phase-ii-prediction | registry | `Workspace.Deference.Contrib.MagnitudePrediction.magnitude_not_traderPayoff` |
+ | `margin_forces_agreement` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.CertificateBounds.margin_forces_agreement` |
+@@ -80,6 +84,8 @@ change, and the count of those is the size of the free choice remaining.
+ | `mse_split` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry, wiki, prose | `Workspace.Deference.Contrib.AppraisalAccount.mse_split` |
+ | `netWorth_eq_zero` | theorem | 2026-08-11-phase-ii-prediction | registry | `Workspace.Deference.Contrib.MagnitudePrediction.CoherentMixture.netWorth_eq_zero` |
+ | `no_credit` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry, prose | `Workspace.Deference.Contrib.ScoringTheorem.Audit.no_credit` |
++| `not_legit_covert` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry | `Workspace.Deference.Contrib.LegitimacyModel.Witness.not_legit_covert` |
++| `not_legit_of_unknown` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry | `Workspace.Deference.Contrib.LegitimacyModel.Model.not_legit_of_unknown` |
+ | `offProtocol_deviation_finite` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.AskList.offProtocol_deviation_finite` |
+ | `options_of_hull` | theorem | 2026-11-10-legitimacy-definition-prosecution | registry, prose | `Workspace.Deference.Contrib.AppraisalAccount.options_of_hull` |
+ | `order_by_want_tainted` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.AskList.Rows3.order_by_want_tainted` |
+diff --git a/state/views/VERDICT_STATUS_INVENTORY.md b/state/views/VERDICT_STATUS_INVENTORY.md
+index 025213f3..d42c5ed0 100644
+--- a/state/views/VERDICT_STATUS_INVENTORY.md
++++ b/state/views/VERDICT_STATUS_INVENTORY.md
+@@ -141,4 +141,4 @@ Registered classes are classes actually promoted by the round; an empty cell mea
+ | 2026-11-08-content-recollection | 2026-11-08 | normativity | `projects/normativity/rounds/2026-11-08-content-recollection` | CONTENT-BY-ROWS — of four tools tried, two fit and two fit in part. Conservativity fits: over rational rows a vocabulary change keeps every old commitment iff the image of the new region lies in the old region, and adds none iff the old region lies in the image, the second by the rational alternative read in from a pinned dependency; a new term whose introduction and elimination rows force P(Y) ≥ 3/10 on an old coordinate is the non-conservative fixture, and seed-independence is conservativity on pins only. Incompatibility semantics fits: incompatibility as a valid conflict is exactly infeasibility in the cube and incompatibility entailment coincides with certificate entailment with no nonemptiness hypothesis, which answers item 118 (every valid bound is certified; the computed forced interval is attained at rational points); Expresses defined by incompatibility role against the robust reading is inhabited with content — the row the rebuttal rule keeps passes, the plain row fails because it contraposes, and the row at 3/4 has no entitlement — while the form language alone is degenerate and the same-role strength is not established for the exact row. Recollection as a stochastic map fits in part: on world distributions it is a translation, so pullback, soundness, composition, the exact transport step with constant 1 and slack 0 and a slack of the row's oscillation times the mass on which two maps differ all hold, and it is the garbling of the thin-legitimacy module; but it checks a proposed map and chooses none, under an uninformative map every old row is kept or broken wholesale, and the faithful transport of Integrity is the same shape on accounts and not a consequence. Precedent fits in part: read off the record, with survivors prevailing and undercut occurrences outweighed, a case base is rationalized by one strict order on reasons iff the graph on its cases has no cycle, the pairwise check being necessary and not sufficient, with a forbidden and two distinguished continuations; it allows and does not rank, sits upstream of the survivor rule, and the record has no decision object to read a case from. Follow-up of 2026-11-09, on finite memory: of four further matters one fits and three fit in part. The holding fits in part: permission reads a case base only through the reach of its holding — the transitive closure of the cases' decisions, with covering — so the cases may be forgotten and the holding kept, and over a finite set of forms it is eventually constant; over one pair of kinds, n strengths carry a different holding for each set of steps, so the kinds of reasons alone give no finite representation. Decisions on the record fit in part: an assessed act — grounds, surviving grounds against, the assessor's verdict fixing which side won — is a decision object beside the docket, conduct can be held to the holding of its own assessed past, and a verdict against a choice that past backs leaves nothing permitted; the constraint still allows and does not rank. Forgetting fits: one Fourier–Motzkin step computes the projection that drops a coordinate, forgetting is exact and conservative on the retained fragment, a settled coordinate may be forgotten under every later docket state and settlement and a closed account keeps its receipts and its denotation, while forgetting an unsettled coordinate can cost the later forced interval, [3/4, 1] against [0, 1]; loss relative to a reference schedule composes as slack and is bounded when summable; and a reasoner choosing what to drop after seeing the record obtains [0, 1] where each coordinate fixed in advance leaves [3/4, 1] on one record. A vocabulary change as an act on the docket fits in part: with a declared protected fragment its licence is a refinement certificate and its challenge a broken-commitment witness with decidable validity, a licensed change admitting no valid challenge on the fragment; who may issue one is not determined, and none of three readings of a broken commitment — bars, accounted, the split by liveness — registers a live obligation shed by retelling its antecedent as false, which each admits at no charge. | lean-proved | `prompts/2026-11-08-content-recollection/PROMPT.md` | rows.incompatibility-entailment, seed.bound-certified, seed.forced-interval-rational, expresses.kept-row-demands-no-more, expresses.entitlement-discriminates, expresses.plain-row-demands-more, content.conservative-iff-image, precedent.rationalizable-iff-acyclic, precedent.permitted-iff-reach, precedent.staircase-irredundant, precedent.assessor-sets-precedent, content.forget-region-is-projection, content.forget-settled, content.licensed-no-challenge, memory.live-forget-cost, memory.schedule-slack, memory.selective-forgetting, seed.adapter-certificates-exist |
+ | 2026-11-09-github-sign-in | 2026-11-09 | enabling | `projects/enabling/rounds/2026-11-09-github-sign-in` | — | — | `prompts/2026-11-09-github-sign-in/PROMPT.md` | — |
+ | 2026-11-10-maintenance-sweep | 2026-11-10 | enabling | `projects/enabling/rounds/2026-11-10-maintenance-sweep` | — | — | `prompts/2026-11-10-maintenance-sweep/PROMPT.md` | — |
+-| 2026-11-10-legitimacy-definition-prosecution | 2026-11-10 | normativity | `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` | DEFINITION-SURVIVES-THE-BANK — nineteen computed verdicts match their pre-registrations with no forced revision; every clause is forced by a banked case, W under the free vocabulary only; the honest class factors through an explicit replay F; the coarsened L convicts B4 and the refined L acquits T10. L0 must read the transition function, the replay F absorbs L0 and L3 on this bank, and L1 and L3 overlap on every direct standards write so that T5 alone forces L3. Nothing registered; every component open or a living note.<br>CLARIFIES and REDUCES-TO-KNOWN, a mixture — the steering account's proper drivers, its broken/steered distinction and its two standards restate published notions (malfunction of a function; pathology against manipulation by a parasite; arm's length against fiduciary duty; no effect of the adviser's aim on a delicate state), and C1, C2 and C7 are instances or corollaries of known results. What the follow-up adds: on 38 variants of 33 cases the faithful-adviser standard's acquittals lie inside the arm's-length standard's, which lie inside those of L0–L3 ∧ W, with the replay form comparable to none of the three; and C4, following the proper driver is a guarantee against an adviser who may be opposed and fails against one whose aim is hers when she cannot take in everything it knows. C3 and C5 are refuted as written; C8 is open. Twenty-seven of 33 cases match their predictions in every column, seven verdicts on six cases diverge, and no per-case choice was needed. Nothing registered; every component open or a living note.<br>MIXED — of nine statuses on eight statements about the account, two are proved, two hold on a stated domain, four are refuted and one is open. Her later judgment is at least as good by her own lights for expectations (the value-of-information inequality, which needs her values fixed) and not for values. That trust is not manufactured, and that the gate gains nothing, are refuted for in range as the account states it, and for an adviser whose aim she knows when her evaluation is a verdict; they hold when nothing the adviser does to her depends on its aim, which is close to the class-level transparency the workspace's Lean already asks. A departure of small probability costs the gated score a fixed amount. The verdicts follow the allowed set a case is given: nineteen of twenty-one in-range failures become legitimate once she allows for every aim, the other two being the two whose source she cannot represent. A threat fails no clause. Fifty-four of fifty-five banked predictions match, which is fit. Nothing registered; every component open or a living note.<br>MIXED — of nine statements about the account, four are refuted and five hold on a stated domain, each as a fact about one formalization. The constraints do not fix purposes in it: in a class of 3,000 candidates over a three-part chain eight are admissible, no two classifying the adviser's actions alike, and a candidate whose goal is whatever she does is excluded only by a condition no extensional test captures (fifteen are admissible without it). Read pairwise, never opposed excludes all eight, and leaves two once the situations where her own judging part reverses a right belief are not counted usual. A lie widens no gap where she was already wrong, and none under four of the eight where it concerns a matter nothing reads. The four kinds are not exclusive, and only the step from serving to not serving survives redescription. That every bad change in what she cares about widens a gap holds in the one scene enumerated, close to by construction; her goal can fall through her parts' coordination with no gap widened. A legitimacy predicate built from gaps has the shapes of the post's scoring and decision, depends on the comparison action (27, 33, 46 or 38 of 57 renderings convicted), and under none gives the gate's no-gain property, since harm is not subversion. Eighty-four of eighty-five banked predictions match, which is fit. Nothing registered; every component open or a living note.<br>MIXED — of nine statements about the account, five are refuted and four hold on a stated domain, each a conditional calculation in one formalization: a small scene, three stipulated principals, two tabulated description languages, one cost for a missed move. Scoring candidates by parsimony, fit and handles, read by a second predictor, concentrates the weight in mass (the ten heaviest of 4,000 hold 0.84 to 0.98) and not on agreeing candidates: at 0.95 or more of the weight her judging part is given no purpose or one naming its own mechanism, its behaviour carried as a table of her history, and the heavy candidates split on which adviser inputs are illegitimate; a purpose equal to its mechanism is charged as a rule by intersubjectivity and is not removed as a table; the score is a loss, not a code length. Read as the best move on what a part sees, a purpose for the belief part follows her corrections and the judging part's does not. Judged against the adviser's aim under stated candidates and assigned aim structures, 77 of 89 cases match their evident character against 66 by a changed standard, and a threat is illegitimate; a lie told at every aim passes, and the weights do not favour the stated candidates. Between actions that harm, subvert and force nothing against each other her choice is the same under the stated candidate and not under the candidates tied at the top for two principals; no maximizing adviser was analysed. The condition is strictly weaker than aim-freedom of the adviser's whole intervention, to whose guarantee the decomposition adds nothing; it adds a rule for which aim-dependent variation to permit. Eighty-nine of ninety-three banked rows match, which is fit. Nothing registered; every component open or a living note.<br>MIXED — with purposes given and not recovered, range and gap are stated and used once a grain is fixed, and the four kinds of influence are not: they need the adviser's null action as a comparison, typed actions, a move that carries confidence, her verdict as one part's move, the rule at other aims for ties, and a menu for each revising part. Of the dispatch's twenty-seven cases with a prediction twenty-six have the predicted verdict under renderings the executor wrote, a check of consistency and not a test; an advocate for an undisclosed side diverges because the null comparison runs her mechanism in the adviser's absence. Of thirty-two statements nine are proved on paper, eighteen hold on a stated example and five are refuted, each a fact about one formalization. Conditioning on the step catches a lie targeted in time; a lie targeted at a state is caught only by a move that carries confidence, at a size second order in the lie's probability, and none of four grains computed separates it from honest difficulty when the move is two-valued. A foreseeable shift in her verdict equals the shift in what the verdict is for up to the roots of the verdict part's two gaps, and a maintaining part in range with a menu closed under re-reading installs a mechanism in range; that every shift traces to something out of range or to the adviser is refuted, and whose a gap is rests on a stipulated comparison. A threat is told from an offer and a true warning with no aim read, and from a warning of the adviser's own standing practice only by a supplied fact about the branch not taken. Fit among her ends gives a revising part a purpose with no fixed final end, never excludes dropping an end, and does not say which of two opposed ends yields: a chain of two steps each in range carries her from the outcome her starting ends value most to the one they value least, and the rule on ties stops an aim choosing between equally fitting replacements only when the parts that later tell them apart are left out. Parts in range do not give a verdict in range unless the aggregation is itself calibrated. The post's calibration hypothesis is implied in probability, for a bounded score, by the range condition at the grain of the history of the part that estimates the score, and one existing Lean theorem applies to advisers whose signal does not vary with their aim. The decomposition adds permission and a rule of attribution and no protection. Nothing registered; every component open or a living note.<br>MIXED — C1, C2 and C5 hold as stated; C3 holds with a constant that is not tight (the tight one is the square root of two) and bounds her loss in true utility when her choice is a function of her information; C4's threshold holds and its last clause fails when "right on average" means over options taken at random, since an honest adviser that maximizes her verdict selects what she overrates; C6 is an identity that needs a third term when the honest report would change what she does. Of 108 cases frozen before the code, under renderings the executor wrote, 76 of 96 counted sort when her true utility is anchored at her starting values and 72 of 99 when it is that of the person she ends as; ten or eleven objectionable cases are missed (an undisclosed advocate, strategic silence, buried information, lies that leave her no worse calibrated, a narrowing feed, exploitation by a policy that treats everyone alike, dependence) and four benign deceptions are convicted. No intention is read; the bank's honest cases are not convicted, and an external review's four honest cases are, because the comparison with someone unable to make the mistake must be with someone who differs only in that, which the account does not say. Total miscalibration over listed quantities depends on their units. Reading A has a consistent model and admits the utility of whoever she ends as; calibration to her true utility is not identifiable from her verdicts, and every verdict on a change of taste is decided by which function her utility is. Expected inflation of her verdict is at most the root of her expected miscalibration; for the realized sequence the post's theorem is about, calibration at every step gives no bound, and the true-score form of Theorem 3(b) is not regret in true utility. An adviser can honestly let her judgment decay until a departure pays, and nothing in the account marks the decay; no one model joins the pieces. For belief the workspace's Correct, Transparent, Realizes and Value already give the account's conditions in a stronger form; it adds a reading of her verdict as an estimate of her own utility, graded mistakes, and manipulation as a comparison between policies. Four negative results on the earlier accounts are stated with proofs. Nothing registered; every component open or a living note.<br>MIXED — on the bank of 108 frozen by the sixth pass, scored on three questions (manipulation, covered, another wrong) against evident characters the executor recorded before the code, the revised definition is wrong on 5, 6 and 8 cases under the three candidates for her true utility (her starting values, her values at the end, her starting values as changed by learning alone), against 16 and 14 for the sixth pass's definition on the same table and 11 and 12 once two limits of its reporting are removed; a stricter table that asks taste-shaping to be manipulation and not merely alteration gives 5, 14 and 8. It repairs an undisclosed advocate, strategic silence and a policy that exploits everyone alike, records a surprise party, a magician and a bluff as covered manipulation, and does not convict the external review's four honest scenes. It is wrong on buried information and on a lie that is the only listed way to keep another estimate of hers right. Of twenty-five new scenes built against it, it is wrong on seven or eight: it convicts honest conduct that leaves her worse than before wherever the scene lists a better conduct that withholds nothing, acquits an undisclosed advocate whose listener started out worse, and by its restriction to what bears on a decision acquits a cruel lie about an idle matter. Ten banked verdicts change in variants that alter a detail the case does not fix, and three evident characters move the count. Verdicts do not move with units; they move when a quantity is re-expressed by a map that is not affine, and with the measure of being no less informed. No candidate for her true utility is right on every case of changed values, and the learning candidate's verdicts are fixed by its annotation in these renderings. Nothing registered; every component open or a living note.<br>MIXED — the account is stated once (appraisals with a true value each, a way of valuing applied to them, a baseline that follows her through every step in which her adviser neither induced a mistake nor altered her, a reference given by the adviser's role) and its belief side and value side are tested apart. Of eleven worked results nine hold as stated; the bound on what her choice costs holds with her valuations' miscalibration taken given everything she observed and fails at the two weaker strengths, since a principal who ignores an informative observation has no regret and no such miscalibration and still loses; that an appraisal which responds to conduct can be miscalibrated fails as stated, because a variable's true value may depend on the conduct, and holds if the appraisal is not exactly right under both conducts; calibration at every step gives a vanishing mean inflation along a run only with her true utility fed back. The split of mean squared error, the three channels, that bound and the deferring identity are kernel-checked with witnesses and ship unregistered, their registration waiting on a handle only the maintainer can map. The claim the value side rests on, that an illegitimate change of what she values runs through a mistake of hers or is an alteration, has on 34 counted cases, under renderings the executor wrote, two illegitimate changes with neither in the rendering used (a preference reversed by framing; addictive design with everything disclosed and foreseen, a rendering that changes the facts its evident verdict was recorded on), two more that are another wrong (a preference that follows the removal of options), and one legitimate change with a mistake (a teacher's feigned enthusiasm); eleven of the 34 verdicts turn on a detail the case does not fix, and a conversion through a false belief sincerely argued for counts as illegitimate. An external review judges the counterexamples conditional on their renderings and the test as one of renderings and not of the account on the cases as their sources state them. An invariance clause added by an addendum convicts framing and adaptation and also two innocent exposures, on an annotation of what she counts as irrelevant. On four examples of Carroll et al., reproduced against the paper's table except for two cells, the account extended by details the paper does not have leaves the conspiracy example's person alone, refuses clickbait, leaves the writer where he is and nudges the trainer's client, agreeing with none of the paper's eight objectives on all four; the verdicts reverse where a change is one of taste with no truth, with whether a change she registers and did not choose is an alteration, and on one example with how true utility is totalled over steps. The value side is a conjecture; under the definitions as frozen and the renderings used it has candidate counterexamples, and the classification is not shown to be independent of how a case is encoded. Nothing registered; every component open or a living note.<br>MIXED — the value side is restated without a baseline: a change of what she values raises no issue exactly when one permitted policy of her adviser's role, the idle one always among them, is matched on options, accuracy and self-command. Of the nine results it rests on, five hold as stated; the guarantee holds with the value of a move read as that of taking it whatever she observes and fails read as its value given that she takes it; that a second way of valuing with the same valuations has a different true utility needs a value of the facts that can occur outside the span of her appraisals; that the division between appraisal and way of valuing is observable rests on her valuations as numbers and on a stake worth the same at every value of the fact; and the three conditions bound neither what she can know nor her unused information, so an adviser that leaves her knowing less, or using less of what she knows, passes them. The split of full miscalibration, the guarantee and the convex-hull form of the options condition in both directions are kernel-checked with witnesses and ship unregistered. Joined to the post on paper: a legitimacy predicate with a tolerance exists on histories that carry the policy; the tolerance gives non-inflation and self-trust for each move's valuation, relative to the reference, and not for her verdict on the move she takes; no hypothesis of the post's theorems is discharged; the options condition has no counterpart of the authority module's requirement that a resolution be the holder's; and after an illegitimate change the segment gate scores a later clean run by her changed verdicts. On 64 cases rendered twice, independently, the renderers agree on whether the conduct changes her valuing or her beliefs in 54 and on each of the three conditions in 14 or 15: the external renderer found the comparisons not fixed by the cases in all but about ten and decided thirteen, the executor's verdicts rest on stated readings in a third to a half of its answers, and no case goes against a recorded verdict in both renderings. Whether the statement classifies cases was not measured. The external review judges the value side a second criterion sharing the estimator calculus, and its strongest objection is that keeping her options open does not show a decision about herself remained hers. Nothing registered; every component open or a living note.<br>FAILS-ITS-TEST — the maintainer's board statement measures manipulation in the miscalibration of her estimators, her regret by her own valuations and, for an adviser that changes her way of valuing, how much better the best policy that leaves it alone would have been by her valuing at the time. On 52 cases from Harman, Pettigrew, Kolodny, Carroll et al. and Noggle, verified against their sources and rendered twice, the two renderers agree on the third measure in 16 of the 33 cases in which an adviser acts, in all ten where both fix it and with no opposite answers; one leaves it unfixed in 21, the cases not saying how she rated beforehand the course that changed her; its answer turns on booking a want as valuing or as discovery in 9 and 13. By the executor's rendering the statement gives the source's verdict on the act in 15 of 18 and goes against it on Pettigrew's unhappy parent, Kolodny's just deterrent and framing. Nine formal items hold, four with a stated repair; the third measure never flags the benchmark's clickbait. Seven constructed cases of plain subversion pass all three measures, six without a change of what she values. A variant comparing the best way of making the same change with the best way of leaving her alone removes the flags on requested changes and lets a harmful means borrow a better one's merits; how 'the same change' is drawn decides it. No Lean; nothing registered<br>FAILS-ITS-TEST — the statement as consolidated on 2026-11-17 gives her three ratings of an option on one yardstick (as things stand, once told the chances her observations support, once told what the future contains) and three lines: the gap between the first two, her regret in the first, and how much better by the third the best policy that changes her no more than the one followed is than the best that makes its whole change; a mistake is charged to the adviser when it would have acted differently had the mistake gained it nothing. Thirty-four cases were written out in full twice, by the executor before any runner existed and by an outside reviewer without sight of the executor's, and the statement computed on both. Of 679 numbers in the executor's specifications 38 are fixed in value by the cases' words, 118 in order only and 523 are supplied. On nineteen cases from Pettigrew, Kolodny, Carroll et al. and Noggle the statement gives the source's verdict on the act in 15 under the executor's specifications as committed, in 12 once three numbers the reviewer found verdict-directed take its neutral values, and in 12 under the reviewer's; Pettigrew's unhappy parent and Kolodny's just deterrent go against the source under both. The two specifications give another verdict in kind in 8 of 34, five through her informed rating of the course that changes her. None of the seven cases that passed the earlier statement passes, five being caught only by a test for lowered options or knowledge that the executor added; of twelve acts called acceptable the third line flags five or six, each justified by what someone else is owed or entitled to. The twelve formal items hold as stated or with a stated condition; two baselines within the tolerance can give third-line values a whole scale apart, and the inducing test is wrong on two instances. The reviewer gives three cases, accepted by the executor as plain subversion, in which the adviser decides which of two options she rates the same she takes and every line is zero. No verdict differs between the two settings. No Lean; nothing registered<br>MIXED — the join of the account to the corrigibility post is written in Lean, 117 declarations, kernel-checked, none registered: a gate on whole histories made of three predicates and a third-line value, the post's scoring built from it, and the post's Theorems 1 and 3 at that pair. Of the dispatch's six claims: that the post's theorems apply holds by construction and instantiation, the ranges the post asks for being fields of the gate; that a history on which the adviser gained through a mistake of hers scores below every legitimate violation-free history is proved from those ranges, strictly and with no margin; that two legitimate histories with one rating have one evaluation, and that a history on which her information is not sufficient is not legitimate, hold by definition; the bound on what deferring to her verdict costs is proved on a finite space, and holds on a legitimate history because soundness is there defined as a bound on the same miscalibration, with a tolerance; that the third line is never negative, is zero at the baseline and is at least its older form is proved in full, with an instance on which it is 1/5 and the older form is -1/10. The guarantee on what she attains composes with the deferring bound only under a hypothesis linking what she observes to what the adviser knows; on an instance without it every valuation is calibrated in the deferring sense, she has no regret, and she attains 7/20 against a move worth 1/2. Of four further statements: that worsening her options lowers her evaluation, and that the authority module covers control of her act between options she rates the same, cannot be stated with what exists; the post's feedback hypothesis passes from the feedback she gives to the evaluation the join defines under a stated condition and fails on an instance without it; the gate's value is the segment gate's value form, and its predicate is unrelated to the segment gate's. A gate on which every history is legitimate satisfies every theorem: the predicates are given, and nothing connects them to the conduct the post's guarantees are meant to constrain.<br>MIXED — the scoring theorem of the dispatch is in Lean on a finite space, 70 declarations, kernel-checked, none registered, with each of its dependencies a hypothesis of the theorems that use it: the bound on her expected true utility; the bound on the chance that the adviser wronged her, which uses neither of the two assumptions that her evaluation and her verdict do not run above her true utility; the bound on expected detected violations, which uses neither of those nor detection; and the lemma that a course's expected score is at most its audited evaluation on the histories without a wrong. A witness inhabits the whole package with every tolerance positive, and for each of five dependencies an instance has it alone fail and its bound fail. Of the assumptions about her: that her audited evaluation does not run above what she would say shown everything follows, two-sided, from her coherence, authorship and transparency of the actual process to her model, with her evaluation her credence's expectation of a fixed function and her prior the law of the world, and at each thing the adviser knows only if its record carries what it knows. It does not follow from conduct: an adviser whose honest errors fall both ways leaves her evaluation off by a quarter at each thing it believes, and one that acts on the course it estimates higher leaves it an eighth above that course's quality on average, and neither does wrong. That her verdict as she is does not run above her verdict with her valuing unshaped follows from reason mediation only for a course that leaves the inputs to her valuing as the baseline does. With the two assumptions made only where she was not wronged, the welfare bound holds where the penalty times the detection rate is at least one, so the welfare guarantee rests on detecting the adviser's wrongs. Detection, an honest course and the adviser's near-optimality are not derivable; independence of the audit draws and the false-positive rate come from the audit's design. On twenty cases an outside reviewer wrote from the vocabulary alone, the test of responsibility that reads the adviser's gain is wrong on 8 and the one that reads a declared reference on 14. Nothing registered; every component open or a living note.<br>MIXED — the account of manipulation as conduct that works through her mistakes is on record as paper proofs with exact searches and four case runs, and none of it is a statement of record. Noggle's definition is kept as the definition of manipulation and what it is for an adviser to be trying to is not formalised. The formal part is a quantity, what the adviser's conduct gains through mistakes it caused in her, through her not knowing what it knows and through an unasked shift in her valuing, and a property, avoidable gain: another option was as good otherwise and had less such gain. For a maximiser over three options, exhaustively on a grid and with no violation: one that takes no avoidable gain has the best value gain aside; what it gives up is at most the extra gain it took; a gate that scores avoidable gain below every other score is maximised without it; removing gain from the reward bounds the loss of that value and does not stop the adviser taking gain. Over many decisions, as an extension of the post's Theorem 3 on paper with the facts at each decision checked exhaustively: authority as in the post; no avoidable gain in the adviser's picture at each decision, from maximisation alone; her informed interest under a second calibration hypothesis; a bound on the frequency of histories illegitimate in fact under a third and a floor on the gate. Each of the two hypotheses, the floor, avoidability judged against permitted options and the range of realised evaluations has an exact instance in which it alone fails; the last was found by the outside reviewer. On cases, each a single coding by language models: three readers' formal reading of Noggle's account gives the verdict they took to be his on 224 of 266 entries and another on 17; an earlier form of the avoidable-gain test agrees with an outside model's verdicts on 37 of its forty cases, and a reader working from the account in words on 39 of the forty as to manipulative or not and on 17 of 28 cases of the book chosen to include every disagreement; on the nineteen value-change cases whose source judges an act the account agrees on 12 and contradicts none, and a variant that makes an unauthorised change of her values a violation of her authority agrees on 12 of the 14 faulted and contradicts 2 of the 5 accepted. Tried and withdrawn in reaching it: seven tests of intent on a single mistake, a definition by an imagined copy of the adviser that gives gain no weight, two readings of the first idealisation, and a rule for valid requests that was circular. Avoidable gain as defined has been computed from a causal model on no case, and no person has checked an encoding. Nothing registered; every component open or a living note.<br>MIXED — the foundation the fifteenth follow-up recorded, legitimacy as the absence of avoidable gain, is set aside, and what replaces it is on record as a statement, a Lean model, exact cases, case runs and nine outside reviews, none of it a statement of record. Mistakes are judged by the adviser's lights: his view says what he owes her and is never where she ought to end up. Legitimacy is three sentences, frozen by the maintainer for testing: nothing untold that matters; nothing done to her behind her back and nothing against her own judgement; she can stop it. What he does to her options, as against to her, is counted under her authority. A formal statement accompanies the sentences and is not frozen. In Lean a model of the adviser's picture of one episode carries the statement as a predicate, with forty theorems, kernel-checked and unregistered: the predicate is unchanged by any bijective re-description of her state; a move that changes nothing in her bears no effect; four refutations, from the disclosure clause, twice from the clause that she can pick out and stop what changes her, and from the clause on her earlier rating; one open, stoppable influence is legitimate and the same influence done covertly is not; the scoring the predicate gives through the gate is the corrigibility result's scoring; and a gate with soundness error ρ and completeness error ρ′ gives legitimate conduct the strictly higher expected score when ρ(1 − w) < −w(1 − ρ′), w the value on failing. The model is simpler than the statement in nine stated respects, and on its one witness only the rule that a move starts after a decision of hers and one clause of four do work. Forty-one exact cases of the formal statement and twenty of a candidate clause for what stopping costs her agree with expectations fixed first; statement and cases are by one hand, and the chance that she goes against her earlier rating is supplied to each case. On the bank of 263 cases from Noggle's book, each run one blind coding by a language model against a scorer written first: the disclosure rule settles 219 of the 240 cases with a definite verdict and agrees on 214, missing none, the rule having been formed with the bank in view; the clause on her earlier rating settles 33 of the 39 cases where a lapse is expected and agrees on all 33, convicting 1 of 69 controls; regulating open pressure, against prohibiting it, was predicted to miss a third or more of the author's manipulation verdicts and missed 5 of the 28 cases it settled; a judgement bent for a while occurs in four cases of 152 as coded and in none where a lapse is expected, so the prediction for it went untested. The statement has not been run on a case of value change; two earlier forms settle about a third of ninety published cases. Nine outside reviews by one model, two of them blind to the project, found errors of form in each version reviewed; none has seen the present statement or the Lean. A ledger of 36 components has 11 closed, each a Lean declaration, 19 open and 6 living notes. Nothing registered. | lean-proved | `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT.md` | appraisal.mse-split, appraisal.three-channels, appraisal.cost-of-mistakes, appraisal.deferring, appraisal.strong-split, appraisal.guarantee, appraisal.options-hull, appraisal.deferring-cost, appraisal.guarantee-from-soundness, legitimacy.line3-range, corrigibility.feedback-transfer, scoring.welfare-bound, scoring.conduct-bound, scoring.authority-bound, scoring.no-credit |
++| 2026-11-10-legitimacy-definition-prosecution | 2026-11-10 | normativity | `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` | DEFINITION-SURVIVES-THE-BANK — nineteen computed verdicts match their pre-registrations with no forced revision; every clause is forced by a banked case, W under the free vocabulary only; the honest class factors through an explicit replay F; the coarsened L convicts B4 and the refined L acquits T10. L0 must read the transition function, the replay F absorbs L0 and L3 on this bank, and L1 and L3 overlap on every direct standards write so that T5 alone forces L3. Nothing registered; every component open or a living note.<br>CLARIFIES and REDUCES-TO-KNOWN, a mixture — the steering account's proper drivers, its broken/steered distinction and its two standards restate published notions (malfunction of a function; pathology against manipulation by a parasite; arm's length against fiduciary duty; no effect of the adviser's aim on a delicate state), and C1, C2 and C7 are instances or corollaries of known results. What the follow-up adds: on 38 variants of 33 cases the faithful-adviser standard's acquittals lie inside the arm's-length standard's, which lie inside those of L0–L3 ∧ W, with the replay form comparable to none of the three; and C4, following the proper driver is a guarantee against an adviser who may be opposed and fails against one whose aim is hers when she cannot take in everything it knows. C3 and C5 are refuted as written; C8 is open. Twenty-seven of 33 cases match their predictions in every column, seven verdicts on six cases diverge, and no per-case choice was needed. Nothing registered; every component open or a living note.<br>MIXED — of nine statuses on eight statements about the account, two are proved, two hold on a stated domain, four are refuted and one is open. Her later judgment is at least as good by her own lights for expectations (the value-of-information inequality, which needs her values fixed) and not for values. That trust is not manufactured, and that the gate gains nothing, are refuted for in range as the account states it, and for an adviser whose aim she knows when her evaluation is a verdict; they hold when nothing the adviser does to her depends on its aim, which is close to the class-level transparency the workspace's Lean already asks. A departure of small probability costs the gated score a fixed amount. The verdicts follow the allowed set a case is given: nineteen of twenty-one in-range failures become legitimate once she allows for every aim, the other two being the two whose source she cannot represent. A threat fails no clause. Fifty-four of fifty-five banked predictions match, which is fit. Nothing registered; every component open or a living note.<br>MIXED — of nine statements about the account, four are refuted and five hold on a stated domain, each as a fact about one formalization. The constraints do not fix purposes in it: in a class of 3,000 candidates over a three-part chain eight are admissible, no two classifying the adviser's actions alike, and a candidate whose goal is whatever she does is excluded only by a condition no extensional test captures (fifteen are admissible without it). Read pairwise, never opposed excludes all eight, and leaves two once the situations where her own judging part reverses a right belief are not counted usual. A lie widens no gap where she was already wrong, and none under four of the eight where it concerns a matter nothing reads. The four kinds are not exclusive, and only the step from serving to not serving survives redescription. That every bad change in what she cares about widens a gap holds in the one scene enumerated, close to by construction; her goal can fall through her parts' coordination with no gap widened. A legitimacy predicate built from gaps has the shapes of the post's scoring and decision, depends on the comparison action (27, 33, 46 or 38 of 57 renderings convicted), and under none gives the gate's no-gain property, since harm is not subversion. Eighty-four of eighty-five banked predictions match, which is fit. Nothing registered; every component open or a living note.<br>MIXED — of nine statements about the account, five are refuted and four hold on a stated domain, each a conditional calculation in one formalization: a small scene, three stipulated principals, two tabulated description languages, one cost for a missed move. Scoring candidates by parsimony, fit and handles, read by a second predictor, concentrates the weight in mass (the ten heaviest of 4,000 hold 0.84 to 0.98) and not on agreeing candidates: at 0.95 or more of the weight her judging part is given no purpose or one naming its own mechanism, its behaviour carried as a table of her history, and the heavy candidates split on which adviser inputs are illegitimate; a purpose equal to its mechanism is charged as a rule by intersubjectivity and is not removed as a table; the score is a loss, not a code length. Read as the best move on what a part sees, a purpose for the belief part follows her corrections and the judging part's does not. Judged against the adviser's aim under stated candidates and assigned aim structures, 77 of 89 cases match their evident character against 66 by a changed standard, and a threat is illegitimate; a lie told at every aim passes, and the weights do not favour the stated candidates. Between actions that harm, subvert and force nothing against each other her choice is the same under the stated candidate and not under the candidates tied at the top for two principals; no maximizing adviser was analysed. The condition is strictly weaker than aim-freedom of the adviser's whole intervention, to whose guarantee the decomposition adds nothing; it adds a rule for which aim-dependent variation to permit. Eighty-nine of ninety-three banked rows match, which is fit. Nothing registered; every component open or a living note.<br>MIXED — with purposes given and not recovered, range and gap are stated and used once a grain is fixed, and the four kinds of influence are not: they need the adviser's null action as a comparison, typed actions, a move that carries confidence, her verdict as one part's move, the rule at other aims for ties, and a menu for each revising part. Of the dispatch's twenty-seven cases with a prediction twenty-six have the predicted verdict under renderings the executor wrote, a check of consistency and not a test; an advocate for an undisclosed side diverges because the null comparison runs her mechanism in the adviser's absence. Of thirty-two statements nine are proved on paper, eighteen hold on a stated example and five are refuted, each a fact about one formalization. Conditioning on the step catches a lie targeted in time; a lie targeted at a state is caught only by a move that carries confidence, at a size second order in the lie's probability, and none of four grains computed separates it from honest difficulty when the move is two-valued. A foreseeable shift in her verdict equals the shift in what the verdict is for up to the roots of the verdict part's two gaps, and a maintaining part in range with a menu closed under re-reading installs a mechanism in range; that every shift traces to something out of range or to the adviser is refuted, and whose a gap is rests on a stipulated comparison. A threat is told from an offer and a true warning with no aim read, and from a warning of the adviser's own standing practice only by a supplied fact about the branch not taken. Fit among her ends gives a revising part a purpose with no fixed final end, never excludes dropping an end, and does not say which of two opposed ends yields: a chain of two steps each in range carries her from the outcome her starting ends value most to the one they value least, and the rule on ties stops an aim choosing between equally fitting replacements only when the parts that later tell them apart are left out. Parts in range do not give a verdict in range unless the aggregation is itself calibrated. The post's calibration hypothesis is implied in probability, for a bounded score, by the range condition at the grain of the history of the part that estimates the score, and one existing Lean theorem applies to advisers whose signal does not vary with their aim. The decomposition adds permission and a rule of attribution and no protection. Nothing registered; every component open or a living note.<br>MIXED — C1, C2 and C5 hold as stated; C3 holds with a constant that is not tight (the tight one is the square root of two) and bounds her loss in true utility when her choice is a function of her information; C4's threshold holds and its last clause fails when "right on average" means over options taken at random, since an honest adviser that maximizes her verdict selects what she overrates; C6 is an identity that needs a third term when the honest report would change what she does. Of 108 cases frozen before the code, under renderings the executor wrote, 76 of 96 counted sort when her true utility is anchored at her starting values and 72 of 99 when it is that of the person she ends as; ten or eleven objectionable cases are missed (an undisclosed advocate, strategic silence, buried information, lies that leave her no worse calibrated, a narrowing feed, exploitation by a policy that treats everyone alike, dependence) and four benign deceptions are convicted. No intention is read; the bank's honest cases are not convicted, and an external review's four honest cases are, because the comparison with someone unable to make the mistake must be with someone who differs only in that, which the account does not say. Total miscalibration over listed quantities depends on their units. Reading A has a consistent model and admits the utility of whoever she ends as; calibration to her true utility is not identifiable from her verdicts, and every verdict on a change of taste is decided by which function her utility is. Expected inflation of her verdict is at most the root of her expected miscalibration; for the realized sequence the post's theorem is about, calibration at every step gives no bound, and the true-score form of Theorem 3(b) is not regret in true utility. An adviser can honestly let her judgment decay until a departure pays, and nothing in the account marks the decay; no one model joins the pieces. For belief the workspace's Correct, Transparent, Realizes and Value already give the account's conditions in a stronger form; it adds a reading of her verdict as an estimate of her own utility, graded mistakes, and manipulation as a comparison between policies. Four negative results on the earlier accounts are stated with proofs. Nothing registered; every component open or a living note.<br>MIXED — on the bank of 108 frozen by the sixth pass, scored on three questions (manipulation, covered, another wrong) against evident characters the executor recorded before the code, the revised definition is wrong on 5, 6 and 8 cases under the three candidates for her true utility (her starting values, her values at the end, her starting values as changed by learning alone), against 16 and 14 for the sixth pass's definition on the same table and 11 and 12 once two limits of its reporting are removed; a stricter table that asks taste-shaping to be manipulation and not merely alteration gives 5, 14 and 8. It repairs an undisclosed advocate, strategic silence and a policy that exploits everyone alike, records a surprise party, a magician and a bluff as covered manipulation, and does not convict the external review's four honest scenes. It is wrong on buried information and on a lie that is the only listed way to keep another estimate of hers right. Of twenty-five new scenes built against it, it is wrong on seven or eight: it convicts honest conduct that leaves her worse than before wherever the scene lists a better conduct that withholds nothing, acquits an undisclosed advocate whose listener started out worse, and by its restriction to what bears on a decision acquits a cruel lie about an idle matter. Ten banked verdicts change in variants that alter a detail the case does not fix, and three evident characters move the count. Verdicts do not move with units; they move when a quantity is re-expressed by a map that is not affine, and with the measure of being no less informed. No candidate for her true utility is right on every case of changed values, and the learning candidate's verdicts are fixed by its annotation in these renderings. Nothing registered; every component open or a living note.<br>MIXED — the account is stated once (appraisals with a true value each, a way of valuing applied to them, a baseline that follows her through every step in which her adviser neither induced a mistake nor altered her, a reference given by the adviser's role) and its belief side and value side are tested apart. Of eleven worked results nine hold as stated; the bound on what her choice costs holds with her valuations' miscalibration taken given everything she observed and fails at the two weaker strengths, since a principal who ignores an informative observation has no regret and no such miscalibration and still loses; that an appraisal which responds to conduct can be miscalibrated fails as stated, because a variable's true value may depend on the conduct, and holds if the appraisal is not exactly right under both conducts; calibration at every step gives a vanishing mean inflation along a run only with her true utility fed back. The split of mean squared error, the three channels, that bound and the deferring identity are kernel-checked with witnesses and ship unregistered, their registration waiting on a handle only the maintainer can map. The claim the value side rests on, that an illegitimate change of what she values runs through a mistake of hers or is an alteration, has on 34 counted cases, under renderings the executor wrote, two illegitimate changes with neither in the rendering used (a preference reversed by framing; addictive design with everything disclosed and foreseen, a rendering that changes the facts its evident verdict was recorded on), two more that are another wrong (a preference that follows the removal of options), and one legitimate change with a mistake (a teacher's feigned enthusiasm); eleven of the 34 verdicts turn on a detail the case does not fix, and a conversion through a false belief sincerely argued for counts as illegitimate. An external review judges the counterexamples conditional on their renderings and the test as one of renderings and not of the account on the cases as their sources state them. An invariance clause added by an addendum convicts framing and adaptation and also two innocent exposures, on an annotation of what she counts as irrelevant. On four examples of Carroll et al., reproduced against the paper's table except for two cells, the account extended by details the paper does not have leaves the conspiracy example's person alone, refuses clickbait, leaves the writer where he is and nudges the trainer's client, agreeing with none of the paper's eight objectives on all four; the verdicts reverse where a change is one of taste with no truth, with whether a change she registers and did not choose is an alteration, and on one example with how true utility is totalled over steps. The value side is a conjecture; under the definitions as frozen and the renderings used it has candidate counterexamples, and the classification is not shown to be independent of how a case is encoded. Nothing registered; every component open or a living note.<br>MIXED — the value side is restated without a baseline: a change of what she values raises no issue exactly when one permitted policy of her adviser's role, the idle one always among them, is matched on options, accuracy and self-command. Of the nine results it rests on, five hold as stated; the guarantee holds with the value of a move read as that of taking it whatever she observes and fails read as its value given that she takes it; that a second way of valuing with the same valuations has a different true utility needs a value of the facts that can occur outside the span of her appraisals; that the division between appraisal and way of valuing is observable rests on her valuations as numbers and on a stake worth the same at every value of the fact; and the three conditions bound neither what she can know nor her unused information, so an adviser that leaves her knowing less, or using less of what she knows, passes them. The split of full miscalibration, the guarantee and the convex-hull form of the options condition in both directions are kernel-checked with witnesses and ship unregistered. Joined to the post on paper: a legitimacy predicate with a tolerance exists on histories that carry the policy; the tolerance gives non-inflation and self-trust for each move's valuation, relative to the reference, and not for her verdict on the move she takes; no hypothesis of the post's theorems is discharged; the options condition has no counterpart of the authority module's requirement that a resolution be the holder's; and after an illegitimate change the segment gate scores a later clean run by her changed verdicts. On 64 cases rendered twice, independently, the renderers agree on whether the conduct changes her valuing or her beliefs in 54 and on each of the three conditions in 14 or 15: the external renderer found the comparisons not fixed by the cases in all but about ten and decided thirteen, the executor's verdicts rest on stated readings in a third to a half of its answers, and no case goes against a recorded verdict in both renderings. Whether the statement classifies cases was not measured. The external review judges the value side a second criterion sharing the estimator calculus, and its strongest objection is that keeping her options open does not show a decision about herself remained hers. Nothing registered; every component open or a living note.<br>FAILS-ITS-TEST — the maintainer's board statement measures manipulation in the miscalibration of her estimators, her regret by her own valuations and, for an adviser that changes her way of valuing, how much better the best policy that leaves it alone would have been by her valuing at the time. On 52 cases from Harman, Pettigrew, Kolodny, Carroll et al. and Noggle, verified against their sources and rendered twice, the two renderers agree on the third measure in 16 of the 33 cases in which an adviser acts, in all ten where both fix it and with no opposite answers; one leaves it unfixed in 21, the cases not saying how she rated beforehand the course that changed her; its answer turns on booking a want as valuing or as discovery in 9 and 13. By the executor's rendering the statement gives the source's verdict on the act in 15 of 18 and goes against it on Pettigrew's unhappy parent, Kolodny's just deterrent and framing. Nine formal items hold, four with a stated repair; the third measure never flags the benchmark's clickbait. Seven constructed cases of plain subversion pass all three measures, six without a change of what she values. A variant comparing the best way of making the same change with the best way of leaving her alone removes the flags on requested changes and lets a harmful means borrow a better one's merits; how 'the same change' is drawn decides it. No Lean; nothing registered<br>FAILS-ITS-TEST — the statement as consolidated on 2026-11-17 gives her three ratings of an option on one yardstick (as things stand, once told the chances her observations support, once told what the future contains) and three lines: the gap between the first two, her regret in the first, and how much better by the third the best policy that changes her no more than the one followed is than the best that makes its whole change; a mistake is charged to the adviser when it would have acted differently had the mistake gained it nothing. Thirty-four cases were written out in full twice, by the executor before any runner existed and by an outside reviewer without sight of the executor's, and the statement computed on both. Of 679 numbers in the executor's specifications 38 are fixed in value by the cases' words, 118 in order only and 523 are supplied. On nineteen cases from Pettigrew, Kolodny, Carroll et al. and Noggle the statement gives the source's verdict on the act in 15 under the executor's specifications as committed, in 12 once three numbers the reviewer found verdict-directed take its neutral values, and in 12 under the reviewer's; Pettigrew's unhappy parent and Kolodny's just deterrent go against the source under both. The two specifications give another verdict in kind in 8 of 34, five through her informed rating of the course that changes her. None of the seven cases that passed the earlier statement passes, five being caught only by a test for lowered options or knowledge that the executor added; of twelve acts called acceptable the third line flags five or six, each justified by what someone else is owed or entitled to. The twelve formal items hold as stated or with a stated condition; two baselines within the tolerance can give third-line values a whole scale apart, and the inducing test is wrong on two instances. The reviewer gives three cases, accepted by the executor as plain subversion, in which the adviser decides which of two options she rates the same she takes and every line is zero. No verdict differs between the two settings. No Lean; nothing registered<br>MIXED — the join of the account to the corrigibility post is written in Lean, 117 declarations, kernel-checked, none registered: a gate on whole histories made of three predicates and a third-line value, the post's scoring built from it, and the post's Theorems 1 and 3 at that pair. Of the dispatch's six claims: that the post's theorems apply holds by construction and instantiation, the ranges the post asks for being fields of the gate; that a history on which the adviser gained through a mistake of hers scores below every legitimate violation-free history is proved from those ranges, strictly and with no margin; that two legitimate histories with one rating have one evaluation, and that a history on which her information is not sufficient is not legitimate, hold by definition; the bound on what deferring to her verdict costs is proved on a finite space, and holds on a legitimate history because soundness is there defined as a bound on the same miscalibration, with a tolerance; that the third line is never negative, is zero at the baseline and is at least its older form is proved in full, with an instance on which it is 1/5 and the older form is -1/10. The guarantee on what she attains composes with the deferring bound only under a hypothesis linking what she observes to what the adviser knows; on an instance without it every valuation is calibrated in the deferring sense, she has no regret, and she attains 7/20 against a move worth 1/2. Of four further statements: that worsening her options lowers her evaluation, and that the authority module covers control of her act between options she rates the same, cannot be stated with what exists; the post's feedback hypothesis passes from the feedback she gives to the evaluation the join defines under a stated condition and fails on an instance without it; the gate's value is the segment gate's value form, and its predicate is unrelated to the segment gate's. A gate on which every history is legitimate satisfies every theorem: the predicates are given, and nothing connects them to the conduct the post's guarantees are meant to constrain.<br>MIXED — the scoring theorem of the dispatch is in Lean on a finite space, 70 declarations, kernel-checked, none registered, with each of its dependencies a hypothesis of the theorems that use it: the bound on her expected true utility; the bound on the chance that the adviser wronged her, which uses neither of the two assumptions that her evaluation and her verdict do not run above her true utility; the bound on expected detected violations, which uses neither of those nor detection; and the lemma that a course's expected score is at most its audited evaluation on the histories without a wrong. A witness inhabits the whole package with every tolerance positive, and for each of five dependencies an instance has it alone fail and its bound fail. Of the assumptions about her: that her audited evaluation does not run above what she would say shown everything follows, two-sided, from her coherence, authorship and transparency of the actual process to her model, with her evaluation her credence's expectation of a fixed function and her prior the law of the world, and at each thing the adviser knows only if its record carries what it knows. It does not follow from conduct: an adviser whose honest errors fall both ways leaves her evaluation off by a quarter at each thing it believes, and one that acts on the course it estimates higher leaves it an eighth above that course's quality on average, and neither does wrong. That her verdict as she is does not run above her verdict with her valuing unshaped follows from reason mediation only for a course that leaves the inputs to her valuing as the baseline does. With the two assumptions made only where she was not wronged, the welfare bound holds where the penalty times the detection rate is at least one, so the welfare guarantee rests on detecting the adviser's wrongs. Detection, an honest course and the adviser's near-optimality are not derivable; independence of the audit draws and the false-positive rate come from the audit's design. On twenty cases an outside reviewer wrote from the vocabulary alone, the test of responsibility that reads the adviser's gain is wrong on 8 and the one that reads a declared reference on 14. Nothing registered; every component open or a living note.<br>MIXED — the account of manipulation as conduct that works through her mistakes is on record as paper proofs with exact searches and four case runs, and none of it is a statement of record. Noggle's definition is kept as the definition of manipulation and what it is for an adviser to be trying to is not formalised. The formal part is a quantity, what the adviser's conduct gains through mistakes it caused in her, through her not knowing what it knows and through an unasked shift in her valuing, and a property, avoidable gain: another option was as good otherwise and had less such gain. For a maximiser over three options, exhaustively on a grid and with no violation: one that takes no avoidable gain has the best value gain aside; what it gives up is at most the extra gain it took; a gate that scores avoidable gain below every other score is maximised without it; removing gain from the reward bounds the loss of that value and does not stop the adviser taking gain. Over many decisions, as an extension of the post's Theorem 3 on paper with the facts at each decision checked exhaustively: authority as in the post; no avoidable gain in the adviser's picture at each decision, from maximisation alone; her informed interest under a second calibration hypothesis; a bound on the frequency of histories illegitimate in fact under a third and a floor on the gate. Each of the two hypotheses, the floor, avoidability judged against permitted options and the range of realised evaluations has an exact instance in which it alone fails; the last was found by the outside reviewer. On cases, each a single coding by language models: three readers' formal reading of Noggle's account gives the verdict they took to be his on 224 of 266 entries and another on 17; an earlier form of the avoidable-gain test agrees with an outside model's verdicts on 37 of its forty cases, and a reader working from the account in words on 39 of the forty as to manipulative or not and on 17 of 28 cases of the book chosen to include every disagreement; on the nineteen value-change cases whose source judges an act the account agrees on 12 and contradicts none, and a variant that makes an unauthorised change of her values a violation of her authority agrees on 12 of the 14 faulted and contradicts 2 of the 5 accepted. Tried and withdrawn in reaching it: seven tests of intent on a single mistake, a definition by an imagined copy of the adviser that gives gain no weight, two readings of the first idealisation, and a rule for valid requests that was circular. Avoidable gain as defined has been computed from a causal model on no case, and no person has checked an encoding. Nothing registered; every component open or a living note.<br>MIXED — the foundation the fifteenth follow-up recorded, legitimacy as the absence of avoidable gain, is set aside, and what replaces it is on record as a statement, a Lean model, exact cases, case runs and nine outside reviews, none of it a statement of record. Mistakes are judged by the adviser's lights: his view says what he owes her and is never where she ought to end up. Legitimacy is three sentences, frozen by the maintainer for testing: nothing untold that matters; nothing done to her behind her back and nothing against her own judgement; she can stop it. What he does to her options, as against to her, is counted under her authority. A formal statement accompanies the sentences and is not frozen. In Lean a model of the adviser's picture of one episode carries the statement as a predicate, with forty theorems, kernel-checked and unregistered: the predicate is unchanged by any bijective re-description of her state; a move that changes nothing in her bears no effect; four refutations, from the disclosure clause, twice from the clause that she can pick out and stop what changes her, and from the clause on her earlier rating; one open, stoppable influence is legitimate and the same influence done covertly is not; the scoring the predicate gives through the gate is the corrigibility result's scoring; and a gate with soundness error ρ and completeness error ρ′ gives legitimate conduct the strictly higher expected score when ρ(1 − w) < −w(1 − ρ′), w the value on failing. The model is simpler than the statement in nine stated respects, and on its one witness only the rule that a move starts after a decision of hers and one clause of four do work. Forty-one exact cases of the formal statement and twenty of a candidate clause for what stopping costs her agree with expectations fixed first; statement and cases are by one hand, and the chance that she goes against her earlier rating is supplied to each case. On the bank of 263 cases from Noggle's book, each run one blind coding by a language model against a scorer written first: the disclosure rule settles 219 of the 240 cases with a definite verdict and agrees on 214, missing none, the rule having been formed with the bank in view; the clause on her earlier rating settles 33 of the 39 cases where a lapse is expected and agrees on all 33, convicting 1 of 69 controls; regulating open pressure, against prohibiting it, was predicted to miss a third or more of the author's manipulation verdicts and missed 5 of the 28 cases it settled; a judgement bent for a while occurs in four cases of 152 as coded and in none where a lapse is expected, so the prediction for it went untested. The statement has not been run on a case of value change; two earlier forms settle about a third of ninety published cases. Nine outside reviews by one model, two of them blind to the project, found errors of form in each version reviewed; none has seen the present statement or the Lean. A ledger of 36 components has 11 closed, each a Lean declaration, 19 open and 6 living notes. Nothing registered. | lean-proved | `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT.md` | appraisal.mse-split, appraisal.three-channels, appraisal.cost-of-mistakes, appraisal.deferring, appraisal.strong-split, appraisal.guarantee, appraisal.options-hull, appraisal.deferring-cost, appraisal.guarantee-from-soundness, legitimacy.line3-range, corrigibility.feedback-transfer, scoring.welfare-bound, scoring.conduct-bound, scoring.authority-bound, scoring.no-credit, legitimacy.redescription-invariance, legitimacy.unknown-move-refutes, legitimacy.open-influence-legitimate, legitimacy.covert-influence-illegitimate, legitimacy.gate-gives-behaviour, legitimacy.model-scoring |
+diff --git a/wiki/Normativity.md b/wiki/Normativity.md
+index 893211b6..fc741fb3 100644
+--- a/wiki/Normativity.md
++++ b/wiki/Normativity.md
+@@ -48,7 +48,7 @@ coverage for the relevant burdens to recur.
+ > for deduction — the original criterion together with finite-date coherence, from
+ > a compiled market that assumes nothing about the deductive process beyond the
+ > pinned source's own certificate. The
+-> <!--state:workspace:counts.registered_claims_by_project.normativity-->103<!--/state-->
++> <!--state:workspace:counts.registered_claims_by_project.normativity-->109<!--/state-->
+ > entries in this line's registry each name a Lean declaration and the priority
+ > item it answers.
+ 
