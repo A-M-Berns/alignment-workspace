@@ -49,6 +49,13 @@ that separates them; the rates of D3 that an audit `D` computed from the record 
 and a graded score, continuous in the size of a departure, under which a course that
 departs with probability ε loses in proportion to ε.
 
+The statement of `account/LEGITIMACY_STATEMENT.md` makes legitimacy a property of what the
+adviser believes and expects, so a gate needs his picture or a proxy for it, and a sincere
+adviser who is wrong passes whatever her record shows. `LegitimacyModel.gate_gives_behaviour`
+takes a gate's two error probabilities as numbers; row 32 of `account/LEDGER.md` is what
+this item answers for that statement: the error probabilities a stated procedure attains
+under one observation model, or two pictures with different verdicts and the same record.
+
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
 *Context:* `CURRENT.md`, `account/SCORING.md` and `account/BRIDGE_LEAN.md` in the round directory;

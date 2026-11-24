@@ -34,6 +34,14 @@ mentions.
 
 ## The Lean model
 
+A closed row says the declaration is kernel-checked as stated. Rows 11, 15, 18, 19, 28 and 29
+also have a term of the file inhabiting their hypotheses, and are what
+`followup-16-registration.patch` in the round's prompts directory prepares for the registry.
+Rows 12, 13, 14, 16 and 17 have none: no model in the file has an inert move, an empty
+conduct, a view, an empty set of stops or a move that raises the weight of going against her
+earlier rating. Until one does they are `unverified-nonvacuous` and cannot be promoted; item
+151 asks for the terms.
+
 | # | component | verdict | evidence, and its kind | what would move it | item |
 |---|---|---|---|---|---|
 | 11 | Redescription: `Legit` is unchanged by any bijective re-description of her state | closed | *Kernel*: `Model.legit_transport`. It covers her state only: not a rescaling of her scores, against which the tolerances are compared, not his conduct cut into other moves, not a renaming of options or views | The shared event | — |

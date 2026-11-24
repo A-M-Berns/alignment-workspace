@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `ATTENTION.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 1243 names, 660 of them Lean only
+## deference — 1271 names, 677 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -899,6 +899,34 @@ change, and the count of those is the size of the free choice remaining.
 | `segment` | def | 2026-09-25-legitimacy-internal-external | wiki, prose | `Workspace.Deference.Contrib.Legitimacy.Witness.segment` |
 | `toOpenIntegrity` | def | 2026-09-25-legitimacy-internal-external | wiki, prose | `Workspace.Deference.Contrib.Legitimacy.Segment.toOpenIntegrity` |
 | `trans` | def | 2026-09-25-legitimacy-internal-external | wiki, prose | `Workspace.Deference.Contrib.Legitimacy.Segment.trans` |
+| `Against` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.Against` |
+| `BearingHolds` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.BearingHolds` |
+| `Bears` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.Bears` |
+| `Contributes` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.Contributes` |
+| `DeclineStands` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.DeclineStands` |
+| `Departs` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.Departs` |
+| `F1` | def | 2026-11-10-legitimacy-definition-prosecution | note | `Workspace.Deference.Contrib.LegitimacyModel.Model.F1` |
+| `F2` | def | 2026-11-10-legitimacy-definition-prosecution | note | `Workspace.Deference.Contrib.LegitimacyModel.Model.F2` |
+| `F2'` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.F2'` |
+| `F3` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.F3` |
+| `HerDiff` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.HerDiff` |
+| `InPlay` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.InPlay` |
+| `LastBefore` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.LastBefore` |
+| `Legit` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.LegitimacyModel.Model.Legit` |
+| `Model` | structure | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyModel.Model` |
+| `PrefersStop` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.PrefersStop` |
+| `ProperOffer` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.ProperOffer` |
+| `Window` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.Window` |
+| `earlier` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyModel.Model.earlier` |
+| `gap` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, note, prose | `Workspace.Deference.Contrib.LegitimacyModel.Model.gap` |
+| `gatedScoring` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyModel.gatedScoring` |
+| `legitScoring` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyModel.legitScoring` |
+| `model` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, note, prose | `Workspace.Deference.Contrib.LegitimacyModel.Witness.model` |
+| `params` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Witness.params` |
+| `scoring` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.LegitimacyModel.Witness.scoring` |
+| `transport` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.LegitimacyModel.Model.transport` |
+| `untold` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.untold` |
+| `wt` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.wt` |
 | `CoherentMixture` | structure | 2026-08-11-phase-ii-prediction | Lean only | `Workspace.Deference.Contrib.MagnitudePrediction.CoherentMixture` |
 | `coinMixture` | def | 2026-08-11-phase-ii-prediction | Lean only | `Workspace.Deference.Contrib.MagnitudePrediction.coinMixture` |
 | `coinPrices` | def | 2026-08-11-phase-ii-prediction | Lean only | `Workspace.Deference.Contrib.MagnitudePrediction.coinPrices` |

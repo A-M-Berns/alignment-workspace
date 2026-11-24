@@ -2,10 +2,10 @@
 id: item-152
 kind: leaf
 leaf_kind: task
-action: "Execute item 152 per its deliverable shape and acceptance check: Comparing whole plans, for an adviser that plans ahead."
+action: "Execute item 152 per its deliverable shape and acceptance check: The verdict when his conduct is cut into finer moves, and what a decision of hers is."
 who: agent
 item: "152"
-title: "Comparing whole plans, for an adviser that plans ahead"
+title: "The verdict when his conduct is cut into finer moves, and what a decision of hers is"
 section: "Normativity line — legitimacy"
 maintainer_order: 164
 difficulty: "open"
@@ -13,40 +13,39 @@ heading_notes: ""
 project: normativity.legitimacy
 dispatchable: true
 item_status: open
-deliverable: "`test-supported`, or `lean-proved` where a statement is in Lean — a statement of avoidable gain for whole plans compared from the start, in the setting of `account/MISTAKES_ACCOUNT.md` §5, under which a plan that first removes her later honest options and then takes what is left does not pass; with the conclusions of §5 that survive the change and those that do not, each with a proof on paper and an exact search or an instance; and the two-period instance of `account/mistakes_sequential.py` computed from the statement, not put in by hand."
-acceptance: "`python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with a status for each conclusion; an exact instance of an adviser that removes her later honest option, on which the decision-by-decision statement of §5 passes every decision and the plan-level statement fails the plan; any Lean under `lean/Workspace/Deference/Contrib/` builds with `#print axioms` within the three axioms and a witness for each theorem."
+deliverable: "`lean-proved`, or `test-supported` for an instance — a theorem that `LegitimacyModel.Model.Legit` is unchanged when a move is replaced by two that are made together in every course, under stated conditions on `known`, `stops`, `asked` and `tellings`, or an instance on which the verdict changes; and a statement of what a decision of hers is under which a move running between two decisions has a stop asked of it, with the timing instance of the eighth and ninth outside reviews (decisions at 0 and 3, a move from 1 to 2) decided."
+acceptance: "The `lean` job green: the file builds, every theorem is under `#print axioms` within `[propext, Classical.choice, Quot.sound]`, no `sorry`, no `maxHeartbeats` option for any Lean; `python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with a status for any instance in exact rationals; rows 9 and 34 of `account/LEDGER.md` of the prosecution round name the declaration or the instance."
 work:
   - {kind: round, ref: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution}
-context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/MISTAKES_ACCOUNT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/mistakes_sequential.py", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/mistakes_longrun.py", "lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean"]
+  - {kind: decision, ref: 2026-11-24--legitimacy-statement-working-positions}
+context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md", "lean/Workspace/Deference/Contrib/LegitimacyModel.lean", "prompts/2026-11-10-legitimacy-definition-prosecution/REVIEW-astra-followup-16.md"]
 author: "@claude-fable-5-2"
 size: M
 size_reason: "one item entry, one fixture of context"
-version: 1
+version: 2
 ---
 ## Statement
-Item 152, Comparing whole plans, for an adviser that plans ahead, is delivered in the shape its entry states: `test-supported`, or `lean-proved` where a statement is in Lean — a statement of avoidable gain for whole plans compared from the start, in the setting of `account/MISTAKES_ACCOUNT.md` §5, under which a plan that first removes her later honest options and then takes what is left does not pass; with the conclusions of §5 that survive the change and those that do not, each with a proof on paper and an exact search or an instance; and the two-period instance of `account/mistakes_sequential.py` computed from the statement, not put in by hand.
+Item 152, The verdict when his conduct is cut into finer moves, and what a decision of hers is, is delivered in the shape its entry states: `lean-proved`, or `test-supported` for an instance — a theorem that `LegitimacyModel.Model.Legit` is unchanged when a move is replaced by two that are made together in every course, under stated conditions on `known`, `stops`, `asked` and `tellings`, or an instance on which the verdict changes; and a statement of what a decision of hers is under which a move running between two decisions has a stop asked of it, with the timing instance of the eighth and ninth outside reviews (decisions at 0 and 3, a move from 1 to 2) decided.
 
 ## Source
-ATTENTION.md, item 152 (Comparing whole plans, for an adviser that plans ahead); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/MISTAKES_ACCOUNT.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/mistakes_sequential.py`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/mistakes_longrun.py`, `lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean`.
+ATTENTION.md, item 152 (The verdict when his conduct is cut into finer moves, and what a decision of hers is); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md`, `lean/Workspace/Deference/Contrib/LegitimacyModel.lean`, `prompts/2026-11-10-legitimacy-definition-prosecution/REVIEW-astra-followup-16.md`.
 
 ## Notes
 Filed by the fifteenth follow-up to the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution, PROMPT-followup-15.md) under the round prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py.
 
 ## Item
-The thirteenth open problem of `CURRENT.md` §3.
+Rows 9 and 34 of `account/LEDGER.md`.
 
-The long-run statement of `account/MISTAKES_ACCOUNT.md` §5 judges avoidable gain at each
-decision against the actions then available. An adviser that plans ahead can by earlier
-conduct remove her later honest options; at the later decision nothing is then avoidable
-and the decision passes. Counting gain that arrives through earlier damage, as §5 does,
-does not supply the missing alternative. The outside reviewer raised this of the
-two-period example, and in `account/mistakes_sequential.py` which courses pass under each
-reading is put in by hand. Wanted: plans compared from the start, which the post's
-decision-by-decision setting does not provide.
+The statement speaks of each thing an adviser does; the formal statement of each move, and
+of her decisions. Both are primitives. The ninth outside review showed a form of the
+statement under which one notice passed as a single move and failed as two; that case passes
+both ways now, and nothing general is shown. The eighth and ninth both observed that a stop
+is asked only at her decisions, so a move that starts and ends between two of them has none
+asked of it while it runs. Wanted: invariance under cutting, or the instance that breaks it;
+and a statement of what a decision is that settles the timing case.
 
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
-*Context:* `CURRENT.md`, `account/MISTAKES_ACCOUNT.md`, `account/mistakes_sequential.py` and
-`account/mistakes_longrun.py` in the round directory;
-`lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean`.
-*Consumed by:* item 150 (the Lean statement, if the plan-level form replaces the decision-level one), and the round that writes the account up.
+*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md` and `account/LEDGER.md` in the round directory;
+`lean/Workspace/Deference/Contrib/LegitimacyModel.lean`; `REVIEW-astra-followup-16.md` in the round's prompts directory.
+*Consumed by:* item 150, and the round that writes the account up.

@@ -1,21 +1,24 @@
-# Legitimacy and manipulation: where the line stands (2026-11-21)
+# Legitimacy and manipulation: where the line stands (2026-11-24)
 
 A checkpoint. The line aims at a formalism with defensible modelling choices that says
 intuitively correct things about manipulation, following Noggle, and proves safety theorems
-for the corrigibility design. It is not at that bar. The account as it stands is
-`account/MISTAKES_ACCOUNT.md`; §3 below says what of it is checked and how. Paths are relative to this directory;
-Lean files are under `lean/Workspace/Deference/Contrib/`. Every Lean result named is
-kernel-checked. Those of this round are registered `lean-proved` in
-`projects/normativity/CLAIMS.md` under the id beside each. A result is what its declaration
-states and no more.
+for the corrigibility design. It is not at that bar. The statement of legitimacy as it stands
+is `account/LEGITIMACY_STATEMENT.md`; the standing of each of its parts, with the evidence and
+what would move it, is `account/LEDGER.md`, and §3 below is a guide to the two. Paths are
+relative to this directory; Lean files are under `lean/Workspace/Deference/Contrib/`. Every
+Lean result named is kernel-checked. Those of §1 are registered `lean-proved` in
+`projects/normativity/CLAIMS.md` under the id beside each; those of §3 are not registered. A
+result is what its declaration states and no more.
 
 ## 1. Solid
 
 1. **The idea.** An adviser manipulates when it tries to influence her by getting her to
    make a mistake (Noggle's Mistake Account; his definition is kept as the definition). The
    faculties she decides with are treated as estimators, so a mistake is measurable;
-   emotions and attention are treated as appraisals. This is a modelling choice, stated in
-   `account/MISTAKES_ACCOUNT.md` §1, and nothing proves it right.
+   emotions and attention are treated as appraisals. This is a modelling choice and nothing
+   proves it right. Whether a state of hers is a mistake is judged by the adviser's lights
+   (§3); the measures of item 2 compare her with what her observations support and are
+   measures of her condition, not the test of his conduct.
 2. **Two measures of her state.** Trickery: how far her estimate is from what her
    observations support (`AppraisalAccount.valuationError`: her `miscalibration` given the
    estimate's own value, plus her unused information). Pressure: how
@@ -128,97 +131,80 @@ runner reads them.
 | the first idealisation read as correct reasoning from her evidence (deception shows as her distance from the best estimate her observations allow) | fifteenth | a listener who correctly allows for a source that lies one time in five has that distance zero and is deceived on the lying occasions | `account/mistakes_setting.py` (the listener); the third reply, §2 |
 | the first idealisation as undoing only what moved her further from the truth | fifteenth | a move from −1 past a truth of 0 to +1 leaves her distance unchanged and is not undone | the fourth reply, §3 |
 | the rule that a request is valid unless conduct on account of gain brought it about | fifteenth | circular: for a plan that induces a request and then grants it, counting the request valid and counting it invalid both satisfy the rule | the fourth reply, §4 |
+| legitimacy as the absence of avoidable gain: the adviser took no advantage of her being fooled, uninformed or altered that it could have done without | fifteenth; set aside 22–24 November | it measures her against the facts and against idealised versions of herself, which takes a standpoint more accurate than hers; its quantities were supplied numbers on every case | `account/MISTAKES_ACCOUNT.md` |
+| the disclosure rule with a lapse clause: manipulation iff a relevant mistake of hers, by his lights, is untold, or he expects her response to be a lapse from her considered rating | sixteenth | not failed on the bank (214 of 219 settled cases); its first half is sentence 1; the lapse clause gave way to the clause on her earlier rating after the ninth review's case of a judgement bent for a while | `account/CASE_RUNS.md`, run 11 |
+| a clause for value change: a change in how she rates things by a route other than content she judges must be known to her and stoppable | sixteenth | needs her judging of content as a primitive, which the maintainer's position 7 avoids; passes three of an outside model's twenty adversarial cases that it faults; settles a third of ninety published cases | `account/CASE_RUNS.md`, the value-change test |
+| the cost of stopping as part of sentence 3 | sixteenth | the cost is zero where the best option's influence-free counterpart is impossible though another could be supplied; two influences each cheap to stop are costly to stop together; moved to her authority by the ruling of 2026-11-24 | the eighth reply of `REVIEW-astra-followup-16.md` in the prompts directory |
+| the pressure clause read on her rating of the moment | sixteenth | an open, stoppable presentation that reverses her ranking for a while passes | the ninth reply |
+| regulating open pressure (it fails only where hidden or unstoppable) in place of prohibiting it | sixteenth | ruled out by the maintainer; on the bank it settles 28 of 39 cases with a lapse expected and passes 5 the author calls manipulation | `account/CASE_RUNS.md`, run 14 |
 
 Five claims made in working notes and withdrawn, each with an exact instance:
 `withdrawn/WITHDRAWN.md`.
 
 ## 3. In progress
 
-**The account as it stands** is `account/MISTAKES_ACCOUNT.md`. Noggle's definition is the
-definition of manipulation, and "trying to" is not formalised. The formal part is a
-quantity and a property. The quantity is what the adviser's conduct gains through mistakes
-it caused in her, through her not knowing what it knows, and through an unasked shift in
-her valuing, found by comparing what the conduct achieves with her as she is and with her
-*undamaged*, *informed* and *unshifted* in turn. The property is *avoidable gain*: another
-option open to the adviser was as good otherwise and had less such gain. A history is
-legitimate when none of the adviser's conduct on it takes avoidable gain: the adviser took
-no advantage of her being fooled, uninformed or altered that it could have done without.
-That gloss is proposed and queued. Legitimacy so defined is narrower than the absence of
-manipulation in Noggle's sense.
+**The statement as it stands** is `account/LEGITIMACY_STATEMENT.md`. Noggle's definition is
+kept as the definition of manipulation, with a mistake judged by the adviser's lights: his
+view says what he owes her and is never where she ought to end up, and he is not assumed more
+accurate than she is. An adviser's conduct is legitimate when, by his own lights, nothing
+that matters is untold; nothing is done to her behind her back and nothing against her own
+judgement; and she can stop it. The three sentences are the maintainer's, frozen for testing
+on 2026-11-24; a formal statement (F1, F2, F2′, F3) accompanies them and is open to revision.
+What he does to her options, as against to her, is counted under her authority: what stopping
+costs her, bundling, penalties, payments, threats, starting something over her refusal.
 
-What supports it, none of it a statement of record:
+What stands behind it, none of it a statement of record:
 
-- **Paper proofs with exact searches** (`account/mistakes_setting.py`,
-  `mistakes_sequential.py`, `mistakes_longrun.py`, in the runner). For a maximiser over
-  finitely many options: no avoidable gain gives the best value gain aside; what it gives
-  up is at most the extra gain it took; a gate that scores avoidable gain below every
-  other score is maximised without it; removing gain from the reward protects that value
-  and does not stop the adviser taking gain. Over many decisions, extending the post's
-  Theorem 3 on paper: authority as in the post; no avoidable gain in the adviser's picture
-  at every decision; her informed interest under a second calibration hypothesis; rarity of
-  illegitimate histories in fact under a third and a floor on the gate. Each hypothesis has
-  an exact instance in which it alone fails. The idealisations are not computed from a
-  causal model in any of these: `h`, `G` and `L` are given numbers.
-- **Case runs**, each one coding by language models, no person having checked an encoding.
-  Three readers coded 266 cases of Noggle's book against a formal statement of his account:
-  224 agree, 17 disagree, 25 give no comparison (`account/NOGGLE_RESULTS.md`; the
-  paraphrases are outside the repository). On forty cases an outside model wrote, an
-  earlier form of the avoidable-gain test agrees with its verdicts on 37
-  (`account/INTENT_RESULTS.md`), and a reader given the stories and the account in words on
-  39 as to manipulative or not (`account/BLIND_RESULTS.md`). On the nineteen cases of
-  `account/LIT_CASES.md` whose source judges an act, a reader applying the account's
-  value-change part agrees on 12 and contradicts none; a variant that makes an
-  unauthorised change of her values a violation of her authority agrees on 12 of the 14
-  faulted and contradicts two of the five accepted (`account/VC_RESULTS.md`).
-- **Three outside reviews** of earlier versions
-  (`REVIEW-astra-followup-15.md` in the prompts directory). The last, of the version before
-  this one, accepted the first idealisation for a single estimate, the rule for requests
-  and two of the four long-run conclusions as stated, and gave the range condition the
-  other two now carry; it holds that the weight of the fourth conclusion is in its third
-  hypothesis, and that who would establish that hypothesis is the main thing missing.
+- **A Lean model**, `LegitimacyModel.lean`: the adviser's picture of one episode, with the
+  statement as a predicate `Model.Legit`. Proved: the predicate is unchanged by any bijective
+  re-description of her state; a move that changes nothing in her bears no effect; no moves
+  and nothing untold is legitimate; a failure of F1, of either half of F2, or of F2′ refutes
+  it; one open, stoppable influence is legitimate and the same done covertly is not; the
+  scoring it gives through `Legitimacy.gateValue` is a `DeconfusingCorrigibility.Scoring`;
+  and a gate with soundness error `ρ` and completeness error `ρ'` gives legitimate conduct the
+  higher expected score when `ρ(1 − w) < −w(1 − ρ')`. The model is simpler than the statement
+  in nine respects its header lists, and on its one witness only the start rule and F2 do
+  work.
+- **Exact cases**, in the runner: 41 of the formal statement (`account/LEGITIMACY_CHECKS.md`)
+  and 20 of a candidate clause for what stopping costs her, which is the authority side's
+  (`account/STOPPING_COST.md`). Expectations were fixed first; statement and cases are by one
+  hand; the chance that she goes against her earlier rating is supplied to each case.
+- **Case runs** (`account/CASE_RUNS.md`), each one blind coding by a language model against a
+  scorer written first. On the 240 cases of Noggle's book with a definite verdict the
+  disclosure rule settles 219 and agrees on 214, the rule having been formed with the bank in
+  view. The clause on her earlier rating settles 33 of the 39 cases where a lapse is expected
+  and agrees on all 33, convicting 1 of 69 controls. A judgement bent for a while occurs in
+  four cases of 152 as coded. The statement has not been run on a case of value change.
+- **Nine outside reviews** by one model (`REVIEW-astra-followup-16.md` in the prompts
+  directory), two of them blind to the project. Each found errors of form in the version it
+  saw; none has seen the present statement or the Lean.
 
-**Open.** `ATTENTION.md` items 139–146 carry problems 1–8, in order, and items 148–152
-problems 9–13.
+**Open.** `account/LEDGER.md` has 36 rows: 11 closed, each a Lean declaration; 19 open; 6
+living notes. Its last section ranks the open work. By `ATTENTION.md` item:
 
-1. **When the adviser is responsible for her mistake**. Avoidable gain is the candidate for
-   the checkable part; what "believes" and "is trying to" mean for a trained system is not
-   settled, and the candidate has not been run on the twenty cases of
-   `account/RESP_RESULTS.md` or computed from a causal model of any case.
-2. **What supplies her trustworthiness**. The adviser's good conduct alone does not: that is
-   shown by instances, and conduct helping under further assumptions is not excluded. Whether a
-   named procedure for her considered judgment is reliable where an adviser would exploit
-   it is assumed, and what the adviser knows and has not recorded is the problem of
-   eliciting it.
-3. **Her valuing**. The account compares her with how she would have been left alone and
-   counts an unasked shift as gain; the rule for a valid request is stated and needs a
-   convention for requests made together and for an idealised self that could answer more
-   than one way. Whether an unauthorised change belongs with her authority is queued.
-4. **Relative to what distribution**. The measures are stated for a supplied
-   weight and the derivations for her prior; taking either as the true law is a further
-   premise. The long-run statement separates the adviser's picture from the facts and
-   leaves open what that picture is for a trained system.
-5. **Authority**. Her commands as well as her evaluation; strict priority,
-   which a finite penalty does not give; her later self against her present wishes.
-6. **Verdicts on the literature's cases**. Two single codings exist
-   (`account/VC_RESULTS.md`); none by two authors independently, and seven of nineteen are
-   undecided for facts the stories do not give.
-7. **The audit as a design**. Sampling, and what the audit pays the adviser to
-   do besides behave; who establishes the long-run statement's second and third hypotheses.
-8. **What is new** against reward tampering, path-specific objectives,
-   eliciting latent knowledge and induced preference shifts: not established, and by the
-   maintainer's working position not a gate on the line.
-9. **A person's check of the encodings** (item 148).
-10. **The authority variant**, with a clause for changes she knowingly brings on herself
-    and the trifling exemption in both tests (item 149).
-11. **The long-run statement in Lean**, with its witnesses (item 150).
-12. **The causal model behind the three idealisations**, for one worked interaction
-    (item 151).
-13. **Whole plans compared**, for an adviser that plans ahead and removes her later honest
-    options (item 152).
+1. **A witness on which every clause does work, the 41 cases as terms of the model, the
+   simplifications removed** (item 151).
+2. **An outside review of the Lean statement** (item 153).
+3. **A second coding of the bank, and a set of cases of bent judgement** (item 154); a
+   person's check of a sample (item 148).
+4. **The cost of a decision of hers on the authority side** (item 149).
+5. **Composition with the sequential corrigibility theorems** (item 150).
+6. **Whether a gate can evaluate legitimacy at all** (item 147).
+7. **The statement on cases of value change** (item 155).
+8. **The verdict when conduct is cut into finer moves, and what a decision of hers is**
+   (item 152).
+9. **What the adviser believes and expects, for a trained system** (item 139).
 
-The maintainer's answers to the questions this line has queued are working positions, open
-to revision by the cases: `DECISIONS.md`, `2026-11-18--legitimacy-working-positions` and
-`2026-11-21--manipulation-working-positions`. Three questions on this line are queued for
-him there: whether a practice's rules cover a deception she did not herself ask for;
-whether the gloss above is the single reading of legitimacy; and whether an unauthorised
-change in her values belongs with her authority or inside legitimacy.
+Open from before and not touched by the statement: what supplies her trustworthiness (item
+140); her valuing and what makes a request valid (item 141); relative to what distribution
+the measures of §1 are taken (item 142); authority beyond a finite penalty (item 143);
+verdicts on the literature's cases by two authors (item 144); the audit as a design (item
+145); what is new against prior work (item 146).
+
+The maintainer's positions are working positions, open to revision by the cases:
+`DECISIONS.md`, `2026-11-24--legitimacy-statement-working-positions`, with those of
+`2026-11-18--legitimacy-working-positions` and `2026-11-21--manipulation-working-positions`
+where the later entry does not replace them. Three questions on this line are queued for him
+there: whether a practice's rules cover a deception she did not herself ask for; whether her
+asking makes legitimate what would otherwise be manipulation; and what bounds the cost of a
+decision of hers where the influence is the price or she agreed to the penalty.

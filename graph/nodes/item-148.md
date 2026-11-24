@@ -2,10 +2,10 @@
 id: item-148
 kind: leaf
 leaf_kind: task
-action: "Execute item 148 per its deliverable shape and acceptance check: A person's check of a sample of the case encodings."
+action: "Execute item 148 per its deliverable shape and acceptance check: A person's check of a sample of the case codings."
 who: human
 item: "148"
-title: "A person's check of a sample of the case encodings"
+title: "A person's check of a sample of the case codings"
 section: "Normativity line — legitimacy"
 maintainer_order: 160
 difficulty: "open"
@@ -13,38 +13,37 @@ heading_notes: ""
 project: normativity.legitimacy
 dispatchable: false
 item_status: open
-deliverable: "`test-supported` — a file `account/human_check.json` under the prosecution round holding one person's own verdict, given before seeing the recorded ones, on a stated sample: at least ten of the forty cases of `account/intent_cases.json` (the story against the reviewer's `plainly` and against its numbers), and at least ten of the nineteen value-change cases scored in `account/VC_RESULTS.md` (the case text of `account/LIT_CASES.md` against each reader's verdict); with a module that computes the number on which the person agrees with each recorded verdict, and a results document stating how the sample was drawn."
-acceptance: "`python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with those counts computed from `account/human_check.json` and stated in the results document; the sample's ids fixed in the file before any verdict is entered, shown by the order of commits."
+deliverable: "`test-supported` — a file `account/human_check.json` under the prosecution round holding one person's own answers, given before seeing the recorded ones, on a stated sample: at least twenty cases of the bank of `account/noggle_bank.json`, read in the book, against the questions of `account/BANK_CODING_11.md` and `account/BANK_CODING_16.md`; and at least ten of the forty cases of `account/intent_cases.json` against the first; with a module that computes, per question, the number on which the person agrees with the recorded answer and the number on which the rule's verdict is the same under both, and a results document stating how the sample was drawn."
+acceptance: "`python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with those counts computed from `account/human_check.json` and stated in the results document; the sample's ids fixed in the file before any answer is entered, shown by the order of commits."
 work:
   - {kind: round, ref: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution}
-context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/INTENT_RESULTS.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/intent_cases.json", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VC_RESULTS.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LIT_CASES.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BLIND_RESULTS.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/NOGGLE_RESULTS.md"]
+  - {kind: decision, ref: 2026-11-24--legitimacy-statement-working-positions}
+context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/CASE_RUNS.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/case_runs.py", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/noggle_bank.json", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BANK_CODING_11.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BANK_CODING_16.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/intent_cases.json", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md"]
 author: "@claude-fable-5-2"
 size: M
 size_reason: "one item entry, one fixture of context"
-version: 1
+version: 2
 ---
 ## Statement
-Item 148, A person's check of a sample of the case encodings, is delivered in the shape its entry states: `test-supported` — a file `account/human_check.json` under the prosecution round holding one person's own verdict, given before seeing the recorded ones, on a stated sample: at least ten of the forty cases of `account/intent_cases.json` (the story against the reviewer's `plainly` and against its numbers), and at least ten of the nineteen value-change cases scored in `account/VC_RESULTS.md` (the case text of `account/LIT_CASES.md` against each reader's verdict); with a module that computes the number on which the person agrees with each recorded verdict, and a results document stating how the sample was drawn.
+Item 148, A person's check of a sample of the case codings, is delivered in the shape its entry states: `test-supported` — a file `account/human_check.json` under the prosecution round holding one person's own answers, given before seeing the recorded ones, on a stated sample: at least twenty cases of the bank of `account/noggle_bank.json`, read in the book, against the questions of `account/BANK_CODING_11.md` and `account/BANK_CODING_16.md`; and at least ten of the forty cases of `account/intent_cases.json` against the first; with a module that computes, per question, the number on which the person agrees with the recorded answer and the number on which the rule's verdict is the same under both, and a results document stating how the sample was drawn.
 
 ## Source
-ATTENTION.md, item 148 (A person's check of a sample of the case encodings); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/INTENT_RESULTS.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/intent_cases.json`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VC_RESULTS.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LIT_CASES.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BLIND_RESULTS.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/NOGGLE_RESULTS.md`.
+ATTENTION.md, item 148 (A person's check of a sample of the case codings); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/CASE_RUNS.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/case_runs.py`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/noggle_bank.json`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BANK_CODING_11.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BANK_CODING_16.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/intent_cases.json`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md`.
 
 ## Notes
 Filed by the fifteenth follow-up to the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution, PROMPT-followup-15.md) under the round prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py.
 
 ## Item
-The ninth open problem of `CURRENT.md` §3.
+Row 35 of `account/LEDGER.md`.
 
-Every verdict and encoding behind the counts of `account/INTENT_RESULTS.md`,
-`account/BLIND_RESULTS.md`, `account/NOGGLE_RESULTS.md` and `account/VC_RESULTS.md` was
-produced by a language model: the outside reviewer wrote the forty cases, their numbers and
-their verdicts; Claude readers coded the rest. No person has read a story against its
-encoding. Wanted: one person's verdicts on a sample, given before seeing the recorded ones,
-and the agreement computed. The cases of Noggle's book cannot be sampled from the
-repository, their paraphrases being held outside it; a check of those needs the book.
+Every answer behind the counts of `account/CASE_RUNS.md` was given by a language model, once.
+No person has read a case against its coding. The texts the coders read are paraphrases of
+the cases of Noggle's book and are held outside the repository, so a check needs the book.
+Wanted: one person's answers on a sample, given before seeing the recorded ones, and the
+agreement counted, per question and on the rule's verdict.
 
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
-*Context:* `CURRENT.md`, `account/INTENT_RESULTS.md`, `account/intent_cases.json`, `account/VC_RESULTS.md`,
-`account/LIT_CASES.md`, `account/BLIND_RESULTS.md` and `account/NOGGLE_RESULTS.md` in the round directory.
-*Consumed by:* items 139 and 144, whose counts rest on these encodings, and the round that writes the account up.
+*Context:* `CURRENT.md`, `account/CASE_RUNS.md`, `account/case_runs.py`, `account/noggle_bank.json`, the two
+coding sheets, `account/intent_cases.json` and `account/LEDGER.md` in the round directory.
+*Consumed by:* item 154, whose second coding it calibrates, and the round that writes the account up.

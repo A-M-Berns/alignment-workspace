@@ -522,34 +522,31 @@ commit.
   and whether taking part is asking: a judgment of the cases the round does not have.
   <!-- decision: open--practice-rules-cover-a-deception; touches: node:legitimacy; status: open -->
 
-- **Is "took no advantage it could have done without" the single reading of legitimacy? (2026-11-21).**
-  `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/MISTAKES_ACCOUNT.md` §3 defines a history as legitimate when none of the
-  adviser's conduct on it takes avoidable gain, glossed: the adviser took no advantage of her
-  being fooled, uninformed or altered that it could have done without. That is narrower than
-  the absence of manipulation in Noggle's sense: a deception that gains the adviser nothing,
-  one it had a second sufficient reason for, and one forced by its options all leave a
-  history legitimate. By the working position of 2026-11-21 legitimacy has one reading; the
-  gloss is the fifteenth follow-up's proposal for it. Decision required: *accepted*, or the
-  reading wanted in its place.
-  *Turns on:* what legitimacy is for in the corrigibility design: whether a history's
-  standing should fail on the adviser's attempt as such or only on what the attempt takes,
-  which is the maintainer's to say.
-  <!-- decision: open--non-exploitation-gloss-of-legitimacy; touches: node:legitimacy; status: open -->
+- **Does her asking for it make conduct legitimate that would otherwise be manipulation? (2026-11-24).**
+  Sentence 2 of `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md` forbids, other than by telling, what he
+  expects to lead her to choose what she rated lower at her last decision before he began,
+  *unless she asked for it*. The outside reviewer's view, with Noggle, is that a request makes
+  such a thing permissible and does not make it stop being manipulation. By working position 4
+  of 2026-11-24 legitimacy is non-manipulation together with openness, so the exception and
+  the position cannot both stand as worded. The sixteenth follow-up keeps the exception, on
+  which the exact cases and the bank coding were run (five of the 152 cases are coded as
+  asked for under the sheet of run 16). Decision required: *a request licenses it and legitimacy is what she has not
+  authorised*, *a request does not license it*, or *it licenses it and the conduct is still
+  called manipulation*.
+  *Turns on:* whether legitimacy is to mean freedom from manipulation in Noggle's sense or
+  conduct she has not authorised: which of the maintainer's own positions 1 and 4 gives way.
+  <!-- decision: open--request-licenses-pressure; touches: node:legitimacy, item:154; status: open -->
 
-- **Is an unauthorised change in her values a violation of her authority, or a further condition inside legitimacy? (2026-11-21).**
-  The account counts gain through an unasked shift in her valuing as the third kind of gain,
-  so a change the adviser gains nothing by is no wrong on it. A variant makes any change
-  she did not ask for, cannot see and stop, and that is not trifling a violation of her
-  authority, gain or no gain. On the nineteen literature cases with a source verdict on an
-  act the first agrees on 12 and contradicts none; the second agrees on 12 of the 14 the
-  sources fault and contradicts two of the five they accept
-  (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/VC_RESULTS.md`; one reader each). The fifteenth follow-up states the account
-  the first way and records the second as a direction (item 149). Decision required:
-  *authority side*, *inside legitimacy*, or *wait for item 149*.
-  *Turns on:* whether her say over what she values is to be a right of command, which holds
-  against a benefactor, or a protected interest, which a welcome change does not touch: a
-  choice about where the program's authority component is going.
-  <!-- decision: open--unauthorised-value-change-authority-or-legitimacy; touches: node:legitimacy; status: open -->
+- **What bounds the cost of a decision of hers where the influence is the price, and where she agreed to the penalty? (2026-11-24).**
+  By the ruling of 2026-11-24 the cost of stopping is her authority's business. The candidate
+  clause of `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/STOPPING_COST.md` decides two cases no position covers: a free
+  service paid for by its influence fails, because he could run it without at a loss to
+  himself; an exit penalty she knowingly agreed to, which he can no longer call off, holds.
+  Item 149 cannot fix its statement without them. Decision required, for each: *as the clause
+  gives*, or the verdict wanted.
+  *Turns on:* what an adviser may charge for and what her earlier agreement binds: where the
+  program's authority component is going, and what a deployed service must be allowed to be.
+  <!-- decision: open--cost-bound-influence-as-price-and-agreed-penalty; touches: node:legitimacy, item:149; status: open -->
 
 ## Settled
 
@@ -8360,3 +8357,90 @@ is registered.* No result of this pass is a statement of record: the results of
 single codings. (7) *Names, provisional:* *avoidable gain*, *undamaged*, *informed*,
 *unshifted*, *gain through her mistakes*, `MISTAKES_ACCOUNT.md`, and the file and module
 names of this pass.
+
+### 2026-11-24 — on legitimacy: mistakes are judged by the adviser's lights, legitimacy is three sentences, and what he does to her options is her authority's
+<!-- decision: 2026-11-24--legitimacy-statement-working-positions; touches: node:legitimacy, item:139, item:147, item:148, item:149, item:150, item:151, item:152, item:153, item:154, item:155 -->
+
+**Maintainer's working positions, each held for testing unless marked ruled** (Anson Berns,
+22 to 24 November 2026; stated in conversation and given in `PROMPT-followup-16.md` §3 of the
+legitimacy definition prosecution round, which the sixteenth follow-up records; words in
+quotation marks are his). They answer the two questions the fifteenth follow-up queued:
+the reading of legitimacy is the three sentences of position 12 with position 4, and an
+unauthorised change in her values has no clause of its own (position 4), starting it over
+her refusal being a violation of her authority (position 6).
+
+1. Mistakes are classed by whether the adviser takes them to be mistakes. "I want to ensure
+   we're not ever smuggling in an idea that like the advisor is always accurate or even more
+   accurate than the principal." Noggle's definition "is absolutely what we should stick with
+   as much as we can".
+2. The bank of cases from Noggle's book is the standard a definition is tested against, in
+   preference to his own case-by-case intuitions.
+3. Disclosure is "a prerequisite to any deal with someone you think is misvaluing the
+   relevant concerns". For every estimate of hers it is assumed open to him to tell her his
+   own estimate and how sure he is.
+4. Legitimacy is non-manipulation together with openness about what his conduct does to what
+   she values. There is no separate clause for value change and no limit of substance on what
+   she may come to value.
+5. Slow drift in which each step is consented to is legitimate where there is no other wrong.
+   Legitimacy must not turn on classifying a change as discovery or as change; robustness to
+   redescription is "important/indispensable". The earlier value has priority, and this must
+   not become an incentive to lock her values in.
+6. Starting a stoppable influence without her agreement is acceptable where it violates no
+   authority of hers; starting it over her refusal is a violation of her authority, not a
+   failure of legitimacy.
+7. A primitive of "response to content" or of her judgment is to be avoided; her response to
+   being told his views is the one primitive of that kind kept.
+8. Accepted: a drift he foresees is disclosed at the start if it would change her mind then;
+   an influence that makes her want it to continue is legitimate if told, as position 11
+   narrows it; he must say that he has something relevant and she may decline; unannounced
+   help in acting on her own rating is legitimate; a sincere adviser who is wrong satisfies
+   the statement.
+9. **Ruled 24 November.** The cost of stopping, bundling and coercion belong to the authority
+   side, "as long as it can easily" handle them.
+10. **Ruled 24 November.** "Akratic mistake pressure is relevantly different from coercion",
+    and "open, stoppable nagging should fail legitimacy".
+11. **Ruled 24 November.** "Her own rating" in the pressure clause is her rating as of her
+    last decision before he began; a passing state is not a decision. This is the check-in
+    of the positions `2026-11-16--presumed-check-in-and-moving-baseline` and
+    `2026-11-17--gate-on-her-state`, and he may not count on her ratifying afterwards.
+12. The statement in words is frozen for testing in the form of
+    `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md` §1 and §2. The formal statement is not frozen.
+
+**Open, and not positions:** whether an adviser must mention an option he believes she would
+rate above those she has, including someone else's; whether "unless she asked" is the right
+exception, given the view that consented manipulation is still manipulation; what the bound
+on the cost of a decision of hers is for a service paid for by its influence, and for an exit
+penalty she knowingly agreed to that he can no longer call off. The second and third are in
+*Awaiting the author*.
+
+### 2026-11-24 — the work of 22–24 November on the legitimacy line is recorded as a sixteenth follow-up; the codings enter as answers by case id; the Lean model's theorems are prepared for registration and not registered
+<!-- decision: 2026-11-24--legitimacy-statement-recorded; touches: node:legitimacy, item:149, item:151, item:153, item:154, item:155 -->
+
+**Agent-decided, reversible** (the sixteenth follow-up to the legitimacy definition prosecution
+round, `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-16.md`; (1), (2)
+and (5) are the dispatch's, adopted). (1) *The record.* The statement, its Lean model, its
+exact cases, the case runs and nine outside reviews enter as a sixteenth follow-up of the
+round of 2026-11-10; rejected: a new round. (2) *The governing account.* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md` governs;
+`MISTAKES_ACCOUNT.md` and the five documents that state or test it carry a status line saying
+so; rejected: moving them, since the runner reads them where they are. (3) *The codings.*
+Each coding is kept as the coder's categorical answers keyed by case id; the case texts and
+the words a coder wrote beside an answer stay outside the repository; rejected: keeping the
+coders' words, which describe cases of a 2025 book case by case. (4) *The value-change test
+of 23 November.* The texts this line or the outside model wrote are in the repository in
+full; for the 90 published cases only ids, the source's verdict and the coders' answers;
+rejected: the descriptions, which were written from the sources. (5) *Registration.* The
+theorems of `lean/Workspace/Deference/Contrib/LegitimacyModel.lean` are kernel-checked and
+unregistered; the registry entries and their nodes are prepared as
+`prompts/2026-11-10-legitimacy-definition-prosecution/followup-16-registration.patch` for the
+maintainer to apply; rejected: editing a claims registry in the round. (6) *An option of
+someone else's.* The formal statement keeps the second half of F1, under which he must
+mention an option he believes she would rate above those she has, whoever offers it;
+rejected for now: limiting the duty to his own options, which the outside reviewer did not
+ask for and no case supports. The maintainer has not ruled; the clause is the formal
+statement's, which is not frozen. (7) *The ledger.* `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md` is where the
+standing of each component is kept; `CURRENT.md` points to it and does not restate it.
+(8) *Names, provisional:* `LegitimacyModel` and its declarations; `legitScoring`,
+`gatedScoring`; *properly on offer*, *bearing*, *bears an effect*, *contributes*, *goes
+against her earlier rating*; the file and module names of this pass; the anchors
+`open--request-licenses-pressure` and `open--cost-bound-influence-as-price-and-agreed-penalty`;
+item numbers 153 to 155.

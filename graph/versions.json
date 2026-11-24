@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "6dd46590797dab403bc1b95c",
-  "index.json": "c8b02c097570c086af4e6494"
+  "derived.json": "f299ce3b1f106cecb95bb9b0",
+  "index.json": "f60fe14d2633782e08cf666f"
  },
- "generated_hash": "474cb114588153b224285dd4",
+ "generated_hash": "3fc30668a69c7a1e82312f33",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -9333,6 +9333,11 @@
     "date": "2026-11-21",
     "normalized": "item 139 when the adviser is responsible for her mistake is delivered in the shape its entry states test supported or lean proved where a statement is in lean a condition on the advisers courses with the advisers beliefs an object apart from the truth computed on the twenty cases of account resp_cases json on the forty of account intent_cases json and on instances i1 i4 of account derivation md with the count it decides against the recorded verdict the avoidable gain condition of account mistakes_account md 3 is the candidate computed as that section states it",
     "version": 3
+   },
+   {
+    "date": "2026-11-24",
+    "normalized": "item 139 what the adviser believes and expects for a trained system is delivered in the shape its entry states test supported or lean proved where a statement is in lean a stated procedure that yields for a system and an episode the weights and expected courses that legitimacymodel model takes as his picture \u03bc st act course with one instance in which a system whose reported picture differs from the one it acts on is told apart from a sincere one and one instance in which it cannot be",
+    "version": 4
    }
   ],
   "item-14": [
@@ -9403,6 +9408,11 @@
     "date": "2026-11-21",
     "normalized": "item 148 a persons check of a sample of the case encodings is delivered in the shape its entry states test supported a file account human_check json under the prosecution round holding one persons own verdict given before seeing the recorded ones on a stated sample at least ten of the forty cases of account intent_cases json the story against the reviewers plainly and against its numbers and at least ten of the nineteen value change cases scored in account vc_results md the case text of account lit_cases md against each readers verdict with a module that computes the number on which the person agrees with each recorded verdict and a results document stating how the sample was drawn",
     "version": 1
+   },
+   {
+    "date": "2026-11-24",
+    "normalized": "item 148 a persons check of a sample of the case codings is delivered in the shape its entry states test supported a file account human_check json under the prosecution round holding one persons own answers given before seeing the recorded ones on a stated sample at least twenty cases of the bank of account noggle_bank json read in the book against the questions of account bank_coding_11 md and account bank_coding_16 md and at least ten of the forty cases of account intent_cases json against the first with a module that computes per question the number on which the person agrees with the recorded answer and the number on which the rules verdict is the same under both and a results document stating how the sample was drawn",
+    "version": 2
    }
   ],
   "item-149": [
@@ -9410,6 +9420,11 @@
     "date": "2026-11-21",
     "normalized": "item 149 an unauthorised change in her values as a violation of her authority the variant rerun is delivered in the shape its entry states test supported a formulation under account of the prosecution round that keeps the two tests of account vc_formulation_b md and adds a clause for a change she knowingly brings on herself and the trifling exemption in both tests the fifty two cases of account lit_cases md part a coded against it by two readers independently neither shown a source verdict and the scores of both against the sets account lit_cases md fixed with the number on which the two readers agree",
     "version": 1
+   },
+   {
+    "date": "2026-11-24",
+    "normalized": "item 149 the cost of a decision of hers on the authority side is delivered in the shape its entry states lean proved under lean workspace deference contrib on the objects of authoritymodule lean and effectiveauthority lean a statement of what a decision of hers costs her against a bound under which a penalty he attaches to her stopping a payment that depends on her continuing a thing bundled with another he could supply apart and a threat are each a shortfall he caused or are shown not to be starting something over her refusal as a violation the twenty cases of account stopping_cost md as instances with the verdicts of its table or a stated divergence for each that differs and a term inhabiting each hypothesis package",
+    "version": 2
    }
   ],
   "item-15": [
@@ -9424,6 +9439,11 @@
     "date": "2026-11-21",
     "normalized": "item 150 the long run statement of the mistakes account in lean with its witnesses is delivered in the shape its entry states lean proved in a contribution namespace under lean workspace deference contrib a structure extending or instantiating deconfusingcorrigibility sequential with the estimates and realised quantities of account mistakes_account md 5 the estimated and realised value gain aside gain and violations the set of authority respecting actions the gate with its floor the range of realised evaluations the hypotheses h2 and h3 as predicates and theorems for conclusions a to d each taking only the hypotheses the document says it uses a term inhabiting the whole hypothesis package and for each of h2 h3 the floor avoidability against authority respecting actions and the range in fact an instance on which it alone fails and its conclusion fails",
     "version": 1
+   },
+   {
+    "date": "2026-11-24",
+    "normalized": "item 150 the legitimacy model composed with the sequential corrigibility theorems is delivered in the shape its entry states lean proved in a contribution namespace under lean workspace deference contrib a structure instantiating deconfusingcorrigibility sequential from a sequence of legitimacymodel models one for each decision with the gate of legitimacymodel legitscoring sequential theorem3a and sequential theorem3b applied to it the hypothesis relating his picture at each decision to the realised evaluation stated as a predicate and taken by the theorems that use it a term inhabiting the whole hypothesis package and an instance on which that hypothesis alone fails and the conclusion fails",
+    "version": 2
    }
   ],
   "item-151": [
@@ -9431,12 +9451,43 @@
     "date": "2026-11-21",
     "normalized": "item 151 the causal model behind the three idealisations for one worked interaction is delivered in the shape its entry states test supported a module under account of the prosecution round stating one interaction as a finite causal model in exact rationals her states as variables at each time the advisers plan the plan of leaving her alone the facts each response is compared with from which the three idealised versions of her and the quantities m i s l h of account mistakes_account md 3 are computed and not assigned covering at least one response that is not a single estimate an emotion or a weight with a range as its standard one standing fault the conduct triggers one valid and one invalid request with the verdict of avoidable gain on each of the advisers plans and predictions for each frozen before the code",
     "version": 1
+   },
+   {
+    "date": "2026-11-24",
+    "normalized": "item 151 the lean model on cases a witness exercising every clause the forty one cases as terms the simplifications removed is delivered in the shape its entry states lean proved in lean workspace deference contrib legitimacymodel lean or a file beside it a a term of model with a view properly on offer a move that changes her act and a case in which she rates stopping higher proved legit and for each of f1 f2 f2 f3 a neighbouring term on which that clause alone fails b each case of account legitimacy_checks md as a term of model with legit proved or refuted the chance that she goes against her earlier rating derived from the term and not supplied c for each of the nine respects the files header lists in which the model is simpler than the statement the definition changed to the statements or the respect kept as a named hypothesis with an instance on which the two differ",
+    "version": 2
    }
   ],
   "item-152": [
    {
     "date": "2026-11-21",
     "normalized": "item 152 comparing whole plans for an adviser that plans ahead is delivered in the shape its entry states test supported or lean proved where a statement is in lean a statement of avoidable gain for whole plans compared from the start in the setting of account mistakes_account md 5 under which a plan that first removes her later honest options and then takes what is left does not pass with the conclusions of 5 that survive the change and those that do not each with a proof on paper and an exact search or an instance and the two period instance of account mistakes_sequential py computed from the statement not put in by hand",
+    "version": 1
+   },
+   {
+    "date": "2026-11-24",
+    "normalized": "item 152 the verdict when his conduct is cut into finer moves and what a decision of hers is is delivered in the shape its entry states lean proved or test supported for an instance a theorem that legitimacymodel model legit is unchanged when a move is replaced by two that are made together in every course under stated conditions on known stops asked and tellings or an instance on which the verdict changes and a statement of what a decision of hers is under which a move running between two decisions has a stop asked of it with the timing instance of the eighth and ninth outside reviews decisions at 0 and 3 a move from 1 to 2 decided",
+    "version": 2
+   }
+  ],
+  "item-153": [
+   {
+    "date": "2026-11-24",
+    "normalized": "item 153 an outside review of the lean statement of legitimacy is delivered in the shape its entry states no registry entry a review record review astra followup n md beside the prosecution rounds report a brief holding legitimacymodel lean and account legitimacy_statement md 1 to 4 and asking where model legit says more less or other than 4 which fields can be chosen so that it holds of conduct 1 faults and whether each theorem says what its docstring says the reply of an outside model run in an empty folder with a read only sandbox verbatim with the log line showing what it read and in the report a table of each finding whether it holds on a recomputation and what was done",
+    "version": 1
+   }
+  ],
+  "item-154": [
+   {
+    "date": "2026-11-24",
+    "normalized": "item 154 a second coding of the bank and a set of cases of bent judgement is delivered in the shape its entry states test supported account bank_coding_11 md and account bank_coding_16 md each coded again by a coder that has seen neither the first coding nor a verdict the answers keyed by case id in files beside the first a set of at least twenty cases in which her judgement is bent for a while and she acts on it each with a published verdict and its citation coded twice under sheet 16 and account case_runs py extended to count per question the cases on which the two coders agree the rules verdicts under each coding and the clauses verdicts on the new set with predictions written before the codings",
+    "version": 1
+   }
+  ],
+  "item-155": [
+   {
+    "date": "2026-11-24",
+    "normalized": "item 155 the legitimacy statement on cases of value change is delivered in the shape its entry states test supported a coding sheet for account legitimacy_statement md 1 what is untold whether she can pick out and stop what changes her her rating at her last decision before he began written with its scorer before any coding the 90 published cases keyed in account vc2_key json and the 68 texts and 20 adversarial cases of account vc2_cases json coded under it by two coders the counts against the sources verdicts the intended verdicts and the outside models in account case_runs md and a stated verdict of the statement on the adversarial cases x6 x11 and x19",
     "version": 1
    }
   ],
