@@ -1,7 +1,8 @@
 /-
 # A witness on which every clause of the legitimacy statement does work
 
-Round `prompts/2026-11-10-legitimacy-definition-prosecution/` (`PROMPT-followup-17.md` §2 A).
+Round `prompts/2026-11-10-legitimacy-definition-prosecution/` (`PROMPT-followup-17.md` §2 A,
+`PROMPT-followup-19.md` §1 A).
 `Full.full` is a `Case` (`LegitimacyCase.lean`); `Full.full.model` is the term of `Model`.
 Tolerances throughout: `θ = 1/20`, `η = 1/100`, `κ = 1/10`.
 
@@ -14,9 +15,11 @@ Ratings: `go` 3/5, `stop` 2/5 (9/10 in `wary`), `hearV` and `hearD` 1/5, `alt` 1
 - His views are `v`, `u`, `d`.  Telling `v` lowers `go` by 1/10 and shows her `alt`; telling `d`
   lowers `stop` by 1/10; telling `u` lowers `hearV` by 1/40.  `v` is on offer at both
   decisions, `d` at time 0, each with its bearing told; hearing leaves her where telling would.
-  She has declined `d` by time 1.  `u` is untold and within `θ`.
+  She has declined `d` by time 1: it was on offer at time 0 and she took another option.  `u`
+  is untold and within `θ`, and cannot be heard: its hearing is `alt`.
 - His moves are `m` and `n`, both starting at time 1.  `m` raises her rating of `go` from 3/5 to
-  4/5: it bears an effect (`bears_m`), she can pick it out, and `stop` stops it.  `n` is an
+  4/5: it bears an effect (`bears_m`), she can pick it out, and `stop` stops it: she takes
+  `stop` to end it, and after `stop` he goes on with neither move.  `n` is an
   unannounced reminder: without it she takes `hearV` in `slip` at time 1, against her rating;
   with it she takes `go`.  `n` bears no effect (`not_bears_n`), her act differs with and without
   it (`act_differs`), and she goes against her earlier rating with weight 0 under his conduct
@@ -24,7 +27,7 @@ Ratings: `go` 3/5, `stop` 2/5 (9/10 in `wary`), `hearV` and `hearD` 1/5, `alt` 1
 - In `wary`, of weight 1/4, she rates `stop` strictly above every other option and stops
   (`wary_stops`).
 
-**Theorems.**  `legit`: `full.model` is legitimate.  Seven neighbours, each a `Case` differing
+**Theorems.**  `legit`: `full.model` is legitimate.  Eight neighbours, each a `Case` differing
 from `full` in the one field named, with the clauses that hold on it (`*_profile`) and
 `¬ Legit` (`*_not_legit`); on each, the clause named fails and the other six hold.
 
@@ -33,18 +36,23 @@ from `full` in the one field named, with the clauses that hold on it (`*_profile
 | `early` | `start` | both moves start at time 0, with no decision before | the start rule |
 | `spent` | `optsHeard` | hearing `v` leaves her without `go` | proper offers |
 | `unoffered` | `declined` | at time 1 she has also declined `u`, never on offer | declines |
-| `withheld` | `offered` | at time 1 nothing is on offer, so `v` is untold | F1 |
+| `withheld` | `r` | telling `u`, which is untold, would lower her rating of `hearV` by 1/10 | F1 |
 | `covert` | `known` | she can pick out no move | F2 |
+| `ongoing` | `goesOn` | after `stop` he goes on with `m` | F2 |
 | `led` | `act` | in `calm`, with `m` made, she takes `hearV` at time 1 | F2′ |
 | `stuck` | `act` | in `wary` she takes `go` | F3 |
 
 `*_model`: the `Model` of each neighbour is `full.model` with that one field replaced.
 
+`undesignated`: `full` with `offered` empty at time 1, where `v` is properly on offer.  The
+offer clause fails, `offered` not being what is on offer, and F1 fails, `v` counting as untold
+(`undesignated_profile`).
+
 **Not established here.**  Any clause doing work in a second way: in particular F1's second
-half (an untold view showing a better option), the gap, `items`, `xopts`, `asked`, `tellings`
-and `told` are idle on this witness (every gap is zero, the last five are empty), and `F2`
-fails on `covert` by `known` only, not by `stops`.  That the seven clauses are independent in
-general: the neighbours show each can fail alone at this one point.
+half (an untold view showing a better option), the gap, `items`, `xopts`, `asked`, `plain`,
+`told` and `rated` are idle on this witness (every gap is zero, the next five are empty, and
+she has a rating of every course), and his belief is the same at every time.  That the seven
+clauses are independent in general: the neighbours show each can fail alone at this one point.
 
 Names are provisional (AGENTS.md standard 6).
 -/
@@ -90,8 +98,9 @@ def act (Y : Finset Move) (ω : Cs) (t : ℕ) : Opt :=
 
 /-- The witness. -/
 def full : Case Opt View Move Cs Opt Empty where
-  μ := weight
-  μ_nonneg := fun ω => by cases ω <;> norm_num [weight]
+  μ := fun _ => weight
+  μ_nonneg := fun _ ω => by cases ω <;> norm_num [weight]
+  μ_sum := fun _ => by decide +kernel
   dec := {0, 1}
   c := {Move.m, Move.n}
   start := fun _ => 1
@@ -104,6 +113,7 @@ def full : Case Opt View Move Cs Opt Empty where
   xopts := fun _ _ _ => ∅
   ρ := rate
   r := rate
+  rated := fun _ _ => true
   views := fun _ => {View.v, View.u, View.d}
   told := fun _ => ∅
   declined := fun t => if t = 0 then ∅ else {View.d}
@@ -111,7 +121,8 @@ def full : Case Opt View Move Cs Opt Empty where
   rev := fun _ _ T => if View.v ∈ T then {Opt.alt} else ∅
   hearOpt := fun x => match x with
     | .d => Opt.hearD
-    | _ => Opt.hearV
+    | .v => Opt.hearV
+    | .u => Opt.alt
   toldBear := fun x => match x with
     | .v => {Opt.go}
     | .d => {Opt.stop}
@@ -125,9 +136,10 @@ def full : Case Opt View Move Cs Opt Empty where
   stHeard := fun t ω T => ⟨T, {Move.m, Move.n}, ω, t, true⟩
   optsHeard := fun _ _ _ => {Opt.go, Opt.stop, Opt.alt}
   known := fun _ _ => {Move.m}
-  stops := fun _ _ => {Opt.stop}
+  goesOn := fun _ _ a => if a = Opt.stop then ∅ else {Move.m, Move.n}
+  herStops := fun _ _ => {Opt.stop}
   asked := ∅
-  tellings := ∅
+  plain := fun _ => ∅
 
 theorem full_profile : full.profile (1 / 20) (1 / 100) (1 / 10) = Profile.all := by
   decide +kernel
@@ -141,12 +153,12 @@ theorem legit : full.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
 theorem cast_eta : ((1 / 100 : ℚ) : ℝ) = 1 / 100 := by norm_num
 
 /-- `m` bears an effect. -/
-theorem bears_m : full.model.Bears (1 / 100) Move.m := by
+theorem bears_m : full.model.Bears 1 (1 / 100) Move.m := by
   rw [← cast_eta, Case.model_bears]
   decide +kernel
 
 /-- `n` bears none. -/
-theorem not_bears_n : ¬ full.model.Bears (1 / 100) Move.n := by
+theorem not_bears_n : ¬ full.model.Bears 1 (1 / 100) Move.n := by
   rw [← cast_eta, Case.model_bears]
   decide +kernel
 
@@ -158,29 +170,31 @@ theorem act_differs :
 /-- She goes against her earlier rating at time 1 with weight 0 under his conduct and 1/4
 without `n`. -/
 theorem against_weights :
-    full.model.wt (fun ω => full.model.Against full.model.c 0 1 ω) = 0 ∧
-      full.model.wt (fun ω => full.model.Against (full.model.c \ {Move.n}) 0 1 ω) = 1 / 4 := by
-  show full.model.wt (fun ω => full.model.Against full.c 0 1 ω) = 0 ∧
-    full.model.wt (fun ω => full.model.Against (full.c \ {Move.n}) 0 1 ω) = 1 / 4
-  rw [full.model_wt _ (fun ω => full.Against full.c 0 1 ω) (fun ω => full.model_against _ 0 1 ω),
-    full.model_wt _ (fun ω => full.Against (full.c \ {Move.n}) 0 1 ω)
+    full.model.wt 1 (fun ω => full.model.Against full.model.c 0 1 ω) = 0 ∧
+      full.model.wt 1 (fun ω => full.model.Against (full.model.c \ {Move.n}) 0 1 ω) = 1 / 4 := by
+  show full.model.wt 1 (fun ω => full.model.Against full.c 0 1 ω) = 0 ∧
+    full.model.wt 1 (fun ω => full.model.Against (full.c \ {Move.n}) 0 1 ω) = 1 / 4
+  rw [full.model_wt 1 _ (fun ω => full.Against full.c 0 1 ω) (fun ω => full.model_against _ 0 1 ω),
+    full.model_wt 1 _ (fun ω => full.Against (full.c \ {Move.n}) 0 1 ω)
       (fun ω => full.model_against _ 0 1 ω)]
-  have h1 : full.wt (fun ω => full.Against full.c 0 1 ω) = 0 := by decide +kernel
-  have h2 : full.wt (fun ω => full.Against (full.c \ {Move.n}) 0 1 ω) = 1 / 4 := by decide +kernel
+  have h1 : full.wt 1 (fun ω => full.Against full.c 0 1 ω) = 0 := by decide +kernel
+  have h2 : full.wt 1 (fun ω => full.Against (full.c \ {Move.n}) 0 1 ω) = 1 / 4 := by
+    decide +kernel
   rw [h1, h2]
   norm_num
 
 /-- In `wary`, of positive weight, she rates stopping strictly above every other option at
 time 1, and stops. -/
 theorem wary_stops :
-    0 < full.model.μ Cs.wary ∧ full.model.PrefersStop 1 Cs.wary ∧
-      full.model.act full.model.c Cs.wary 1 ∈ full.model.stops 1 Cs.wary := by
+    0 < full.model.μ 1 Cs.wary ∧ full.model.PrefersStop (1 / 100) 1 Cs.wary ∧
+      full.model.Stops (1 / 100) 1 Cs.wary (full.model.act full.model.c Cs.wary 1) := by
   refine ⟨?_, ?_, ?_⟩
   · show (0 : ℝ) < ((weight Cs.wary : ℚ) : ℝ)
     norm_num [weight]
-  · rw [Case.model_prefersStop]
+  · rw [← cast_eta, Case.model_prefersStop]
     decide +kernel
-  · decide +kernel
+  · rw [← cast_eta, Case.model_stops]
+    decide +kernel
 
 /-- At time 1 the view `u` is untold, the view `v` on offer and the view `d` declined. -/
 theorem views_at_one :
@@ -188,7 +202,7 @@ theorem views_at_one :
       full.model.declined 1 = {View.d} := by
   refine ⟨?_, ?_, ?_⟩ <;> decide +kernel
 
-/-! ## Seven neighbours, each failing by one clause -/
+/-! ## Eight neighbours, each failing by one clause, and one failing by two -/
 
 /-- Both moves start at time 0. -/
 def early : Case Opt View Move Cs Opt Empty := { full with start := fun _ => 0 }
@@ -232,13 +246,16 @@ theorem unoffered_profile :
 theorem unoffered_not_legit : ¬ unoffered.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
   unoffered_profile.not_legit (by decide)
 
-/-- At time 1 nothing is on offer, so `v` is untold. -/
-def withheld : Case Opt View Move Cs Opt Empty :=
-  { full with offered := fun t => if t = 0 then {View.v, View.d} else ∅ }
+/-- Her rating where telling `u` lowers `hearV` by 1/10. -/
+def rateU (s : St View Move Cs) : Opt → ℚ
+  | .hearV => 1 / 5 - (if View.u ∈ s.heard then 1 / 10 else 0)
+  | a => rate s a
+
+/-- Telling `u`, which is untold, would lower her rating of `hearV` by 1/10. -/
+def withheld : Case Opt View Move Cs Opt Empty := { full with r := rateU }
 
 theorem withheld_model :
-    withheld.model =
-      { full.model with offered := fun t => if t = 0 then {View.v, View.d} else ∅ } := rfl
+    withheld.model = { full.model with r := fun s a => ((rateU s a : ℚ) : ℝ) } := rfl
 
 theorem withheld_profile :
     withheld.model.HasProfile (1 / 20) (1 / 100) (1 / 10)
@@ -247,6 +264,16 @@ theorem withheld_profile :
 
 theorem withheld_not_legit : ¬ withheld.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
   withheld_profile.not_legit (by decide)
+
+/-- At time 1 `offered` is empty, while `v` is properly on offer: `offered` is not what is on
+offer, and `v` counts as untold. -/
+def undesignated : Case Opt View Move Cs Opt Empty :=
+  { full with offered := fun t => if t = 0 then {View.v, View.d} else ∅ }
+
+theorem undesignated_profile :
+    undesignated.model.HasProfile (1 / 20) (1 / 100) (1 / 10)
+      ⟨true, false, true, false, true, true, true⟩ :=
+  undesignated.hasProfile_std (by decide +kernel)
 
 /-- She can pick out no move. -/
 def covert : Case Opt View Move Cs Opt Empty := { full with known := fun _ _ => ∅ }
@@ -259,6 +286,18 @@ theorem covert_profile :
 
 theorem covert_not_legit : ¬ covert.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
   covert_profile.not_legit (by decide)
+
+/-- After `stop` he goes on with `m`. -/
+def ongoing : Case Opt View Move Cs Opt Empty := { full with goesOn := fun _ _ _ => {Move.m} }
+
+theorem ongoing_model : ongoing.model = { full.model with goesOn := fun _ _ _ => {Move.m} } := rfl
+
+theorem ongoing_profile :
+    ongoing.model.HasProfile (1 / 20) (1 / 100) (1 / 10) ⟨true, true, true, true, false, true, true⟩ :=
+  ongoing.hasProfile_std (by decide +kernel)
+
+theorem ongoing_not_legit : ¬ ongoing.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
+  ongoing_profile.not_legit (by decide)
 
 /-- Her act where, in `calm` with `m` made, she takes `hearV` at time 1. -/
 def actLed (Y : Finset Move) (ω : Cs) (t : ℕ) : Opt :=
@@ -319,9 +358,13 @@ end Workspace.Deference.Contrib.LegitimacyModel.Full
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Full.withheld_model
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Full.withheld_profile
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Full.withheld_not_legit
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Full.undesignated_profile
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Full.covert_model
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Full.covert_profile
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Full.covert_not_legit
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Full.ongoing_model
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Full.ongoing_profile
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Full.ongoing_not_legit
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Full.led_model
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Full.led_profile
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Full.led_not_legit

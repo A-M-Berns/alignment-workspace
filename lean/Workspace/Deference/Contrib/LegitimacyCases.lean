@@ -18,7 +18,8 @@ unsaid, and so decides what they test:
    the course in which he makes no move (`eff`).  Time 0 is there to be her last decision
    before he began, which `Legit` requires for an effect-bearing move and `F2'` compares
    against.  The table's cases have one decision, which is time 1 here.
-2. His cases are a finite type with weights `weight ω / total`.  A chance the table supplies
+2. His cases are a finite type with weights in proportion to `weight` (`Supplied.prob`), the
+   same at every time.  A chance the table supplies
    as a number is supplied here as her act in each case (`act`), the weights being chosen so
    that the weight of the cases in which she takes a lower-rated option is that number
    (cases are ordered and she takes the lower-rated option below a threshold, `slip`).
@@ -32,7 +33,8 @@ unsaid, and so decides what they test:
 5. He has told her nothing (`told` is empty), as in every case of the table.
 6. Her options, the options that stop his moves and the moves she can pick out are the same in
    every case of his and under every course of conduct; her options may differ between the
-   two decisions.
+   two decisions.  An option in `stops` is one she takes to stop his moves and after which he
+   goes on with none; after any other option he goes on with all.
 7. What is on offer is the set the case designates (`offered`), at the times it designates;
    `toldBear`, `toldMag` and `toldReveals` are what he told her each view bears on.  The
    table's flag "relevance told" is rendered: false as nothing told; true as the options the
@@ -49,6 +51,14 @@ improper offer or a decline that does not stand as not designated at all.
 
 **Theorems.**  For each term `x`: `x_has`, the clauses that hold (`Supplied.Has`), and
 `x_verdict`, `Legit` or its negation.  `table`: the 41 of the table together.
+
+**Three instances for `LegitimacyModel.lean`'s renderings.**  `twoOffers_none`: a model on
+which two sets of views are each properly on offer and no set is the largest.  `d11s`, with
+`d11s_alone`: two views that move a rating only together, nothing told of what either bears on,
+fail F1, where each alone moves nothing.  `learnt`, beside `foreseen`: a move that bears an
+effect on his belief when it starts and none on his belief at the decision before fails the
+start rule and no other clause (`learnt_profile`, `learnt_bears`); with his later belief held
+from the start it is legitimate (`foreseen_has`).
 
 **Terms inhabiting the hypotheses of five theorems of `LegitimacyModel.lean`.**
 `Model.legit_of_nothing` at `nothing` (`nothing_instance`); `Model.not_legit_of_untold` at `c3`
@@ -84,9 +94,8 @@ structure Supplied (O V M Ω K I : Type) where
   act : Finset M → Ω → O
   /-- the option of hearing a view -/
   hearOpt : V → O
-  /-- his cases have weights `weight ω / total` -/
+  /-- his cases have weights in proportion to `weight` -/
   weight : Ω → ℕ := fun _ => 1
-  total : ℕ := 1
   /-- how she scores labelled courses, by the moves in effect -/
   her : Finset M → K → ℚ := fun _ _ => 0
   /-- what reaches her, and is open to her, from others, by the moves in effect -/
@@ -95,7 +104,8 @@ structure Supplied (O V M Ω K I : Type) where
   moves : Finset M := ∅
   known : Finset M := ∅
   asked : Finset M := ∅
-  tellings : Finset M := ∅
+  /-- the moves that would plainly tell her what a move tells her -/
+  plain : M → Finset M := fun _ => ∅
   stops : Finset O := ∅
   views : ℕ → Finset V := fun _ => ∅
   offered : ℕ → Finset V := fun _ => ∅
@@ -105,6 +115,8 @@ structure Supplied (O V M Ω K I : Type) where
   toldBear : V → Finset O := fun _ => ∅
   toldMag : V → ℚ := fun _ => 0
   toldReveals : V → Bool := fun _ => false
+  /-- the options of whose course she had no rating at time 0 -/
+  unrated : O → Bool := fun _ => false
   /-- her rating, and her options, after hearing what is on offer -/
   after : O → ℚ := fun _ => 0
   optsHeard : Finset O := ∅
@@ -123,10 +135,37 @@ variable {O V M Ω K I : Type} (S : Supplied O V M Ω K I)
 def rating (s : St V M Ω) (a : O) : ℚ :=
   if s.byOffer then S.after a else S.rate s.heard (eff s.made s.time) s.case s.time a
 
+section Weights
+
+variable [Fintype Ω] [DecidableEq Ω] [Inhabited Ω]
+
+/-- His weight on a case: `weight` over its sum (all on one case, should the sum be zero). -/
+def prob (ω : Ω) : ℚ :=
+  if (∑ ω', (S.weight ω' : ℚ)) = 0 then (if ω = default then 1 else 0)
+  else (S.weight ω : ℚ) / ∑ ω', (S.weight ω' : ℚ)
+
+theorem prob_nonneg (ω : Ω) : 0 ≤ S.prob ω := by
+  unfold prob
+  split_ifs
+  · exact zero_le_one
+  · exact le_refl 0
+  · exact div_nonneg (Nat.cast_nonneg _) (Finset.sum_nonneg fun _ _ => Nat.cast_nonneg _)
+
+theorem prob_sum : ∑ ω, S.prob ω = 1 := by
+  unfold prob
+  by_cases h : (∑ ω', (S.weight ω' : ℚ)) = 0
+  · simp [h]
+  · simp only [if_neg h]
+    rw [← Finset.sum_div]
+    exact div_self h
+
+end Weights
+
 /-- The rational model of a supplied case. -/
-def case : Case O V M Ω (K ⊕ O) I where
-  μ := fun ω => (S.weight ω : ℚ) / S.total
-  μ_nonneg := fun _ => div_nonneg (Nat.cast_nonneg _) (Nat.cast_nonneg _)
+def case [Fintype Ω] [DecidableEq Ω] [Inhabited Ω] [DecidableEq O] : Case O V M Ω (K ⊕ O) I where
+  μ := fun _ => S.prob
+  μ_nonneg := fun _ => S.prob_nonneg
+  μ_sum := fun _ => S.prob_sum
   dec := {0, 1}
   c := S.moves
   start := fun _ => 1
@@ -140,6 +179,9 @@ def case : Case O V M Ω (K ⊕ O) I where
     | Sum.inl k => S.her (eff s.made s.time) k
     | Sum.inr a => S.rating s a
   r := S.rating
+  rated := fun s x => match x with
+    | Sum.inl _ => true
+    | Sum.inr a => !(s.time == 0 && S.unrated a)
   views := S.views
   told := fun _ => ∅
   declined := S.declined
@@ -152,11 +194,13 @@ def case : Case O V M Ω (K ⊕ O) I where
   stHeard := fun t ω T => ⟨T, S.moves, ω, t, true⟩
   optsHeard := fun _ _ _ => S.optsHeard
   known := fun _ _ => S.known
-  stops := fun _ _ => S.stops
+  goesOn := fun _ _ a => if a ∈ S.stops then ∅ else S.moves
+  herStops := fun _ _ => S.stops
   asked := S.asked
-  tellings := S.tellings
+  plain := S.plain
 
-variable [Fintype Ω] [DecidableEq M] [DecidableEq V] [DecidableEq O] [DecidableEq I]
+variable [Fintype Ω] [DecidableEq Ω] [Inhabited Ω] [DecidableEq M] [DecidableEq V] [DecidableEq O]
+  [DecidableEq I]
 
 /-- The clauses of `Legit` that hold on the model of a supplied case, at the table's
 tolerances, are those marked in `p`. -/
@@ -220,7 +264,6 @@ def a1 : Supplied Opt Empty (Fin 1) (Fin 3) Lab Empty :=
   { plain Empty (Fin 1) (Fin 3) with
     moves := {0}
     weight := ![1, 1, 8]
-    total := 10
     act := fun Y => slip (if 0 ∈ Y then 1 else 2) }
 
 /-- Move 0 is the reminder, move 1 the distraction.  Chances: none 1/5, distraction alone 4/5,
@@ -230,7 +273,6 @@ def a2 : Supplied Opt Empty (Fin 2) (Fin 4) Lab Empty :=
     moves := {0, 1}
     known := {1}
     weight := ![1, 1, 6, 2]
-    total := 10
     act := fun Y => slip (if 0 ∈ Y then (if 1 ∈ Y then 2 else 1) else (if 1 ∈ Y then 3 else 2)) }
 
 /-- Four moves, each raising her score of `go` by 1/200. -/
@@ -287,7 +329,6 @@ def a8w : Supplied Opt Empty (Fin 1) (Fin 3) Lab Empty :=
       | .go => if 0 ∈ Y then 7 / 10 else 1 / 2
       | _ => 0
     weight := ![8, 1, 1]
-    total := 10
     rate := fun _ _ ω _ a => match a with
       | .leave => if ω.val = 0 then 1 / 2 else 9 / 10
       | a => plainRate a
@@ -324,7 +365,6 @@ def b1 : Supplied Opt Empty (Fin 1) (Fin 3) Lab Empty :=
     moves := {0}
     known := {0}
     weight := ![1, 5, 4]
-    total := 10
     act := fun Y => slip (if 0 ∈ Y then 2 else 1) }
 
 /-- The case supplies: her score of giving in 4/5 with the nagging and 1/5 without; no chance
@@ -336,7 +376,6 @@ def b2 : Supplied Opt Empty (Fin 1) (Fin 2) Lab Empty :=
     moves := {0}
     known := {0}
     weight := ![3, 2]
-    total := 5
     her := fun Y k => match k with
       | .giveIn => if 0 ∈ Y then 4 / 5 else 1 / 5
       | _ => 0
@@ -360,7 +399,6 @@ def b5 : Supplied Opt Empty (Fin 1) (Fin 2) Lab Empty :=
     moves := {0}
     known := {0}
     weight := ![7, 3]
-    total := 10
     her := fun Y k => match k with
       | .go => if 0 ∈ Y then 9 / 10 else 3 / 10
       | _ => 0
@@ -388,19 +426,17 @@ rating: 1/5 with the first part alone, otherwise 0. -/
 def b8 : Supplied Opt Empty (Fin 2) (Fin 2) Lab Empty :=
   { plain Empty (Fin 2) (Fin 2) with
     moves := {0, 1}
-    tellings := {0, 1}
+    plain := fun m => {m}
     weight := ![1, 4]
-    total := 5
     act := fun Y => slip (if 0 ∈ Y ∧ 1 ∉ Y then 1 else 0) }
 
 /-- The warning is a telling she can pick out.  Chance of a slip: 0 without, 1/50 with. -/
 def b9 : Supplied Opt Empty (Fin 1) (Fin 2) Lab Empty :=
   { plain Empty (Fin 1) (Fin 2) with
     moves := {0}
-    tellings := {0}
+    plain := fun m => {m}
     known := {0}
     weight := ![1, 49]
-    total := 50
     act := fun Y => slip (if 0 ∈ Y then 1 else 0) }
 
 /-- Move 0 is the telling, move 1 its manner; she can pick out both.  The case supplies: no
@@ -409,10 +445,9 @@ manner is there.  Added: as in `b2`, with case 0 of weight 1/2 and the manner as
 def b10 : Supplied Opt Empty (Fin 2) (Fin 2) Lab Empty :=
   { plain Empty (Fin 2) (Fin 2) with
     moves := {0, 1}
-    tellings := {0}
+    plain := fun m => if m = 0 then {0} else ∅
     known := {0, 1}
     weight := ![1, 1]
-    total := 2
     rate := fun _ Y ω _ => bentRate 1 Y ω
     act := bentAct 1 }
 
@@ -649,6 +684,14 @@ def d11 : Supplied OptD ViewD Empty Unit Empty Empty :=
       | .buy => 1 / 10
       | _ => 1 / 2
     optsHeard := {OptD.buy, OptD.leave, OptD.hearX, OptD.hearY} }
+
+/-- `d11` with nothing told of what either view bears on, and so nothing on offer.  Alone,
+neither view moves a rating (`d11s_alone`); together they move `buy` by 4/5. -/
+def d11s : Supplied OptD ViewD Empty Unit Empty Empty :=
+  { d11 with
+    toldBear := fun _ => ∅
+    toldMag := fun _ => 0
+    offered := fun _ => ∅ }
 
 /-! ## The clauses that hold on each, and the verdicts -/
 theorem a1_has : a1.Has ⟨true, true, true, true, true, true, true⟩ :=
@@ -945,6 +988,17 @@ theorem d11_has : d11.Has ⟨true, true, true, true, true, true, true⟩ :=
 theorem d11_verdict : d11.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
   d11_has.legit
 
+theorem d11s_has : d11s.Has ⟨true, true, true, false, true, true, true⟩ :=
+  Supplied.has (by decide +kernel)
+
+theorem d11s_verdict : ¬ d11s.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
+  d11s_has.not_legit (by decide)
+
+/-- On `d11s`, being told `x` alone, or `y` alone, changes no rating of hers. -/
+theorem d11s_alone : ∀ v ∈ ({ViewD.x, ViewD.y} : Finset ViewD), ∀ a,
+    d11s.case.r (St.tell {v} (St.init ∅ () 1)) a = d11s.case.r (St.init ∅ () 1) a := by
+  decide +kernel
+
 /-- **The table.**  The clauses of `Legit` that hold on the term of each of the 41 cases. -/
 theorem table :
     a1.Has ⟨true, true, true, true, true, true, true⟩ ∧
@@ -993,6 +1047,72 @@ theorem table :
     b11_has, c1_has, c2_has, c3_has, c4_has, c5_has, c6_has, c7_has, d1_has, d2_has, d3_has,
     d4_has, d5_has, d6_has, d7_has, d8_has, d9_has, d10_has, d11_has⟩
 
+/-! ## Two proper offers with no largest -/
+
+/-- `d11`, except that hearing `x` or `y` alone leaves her as being told it would, with the other
+still hearable, and hearing both leaves her without `buy`. -/
+def twoOffers : Case OptD ViewD Empty Unit (Empty ⊕ OptD) Empty :=
+  { d11.case with
+    stHeard := fun t ω T => ⟨T, ∅, ω, t, decide (T = {ViewD.x, ViewD.y})⟩
+    optsHeard := fun _ _ T => if T = {ViewD.x, ViewD.y} then {OptD.leave}
+      else {OptD.buy, OptD.leave, OptD.hearX, OptD.hearY} }
+
+/-- On `twoOffers.model` at time 1 the set `{x}` is properly on offer and so is `{y}`, and no set
+is the largest properly on offer. -/
+theorem twoOffers_none :
+    twoOffers.model.ProperOffer (1 / 20) 1 {ViewD.x} ∧
+      twoOffers.model.ProperOffer (1 / 20) 1 {ViewD.y} ∧
+      ∀ T, ¬ twoOffers.model.OnOffer (1 / 20) 1 T := by
+  have e : (1 / 20 : ℝ) = ((1 / 20 : ℚ) : ℝ) := by norm_num
+  rw [e]
+  simp only [Case.model_properOffer, Case.model_onOffer]
+  decide +kernel
+
+/-! ## A move he learns at its start to bear an effect -/
+
+/-- His one move, which she can pick out and can stop, raises her rating of `go` in case 1 and
+does nothing to her in case 0.  He gives all his weight to case 1. -/
+def foreseen : Supplied Opt Empty (Fin 1) (Fin 2) Lab Empty :=
+  { plain Empty (Fin 1) (Fin 2) with
+    moves := {0}
+    known := {0}
+    weight := ![0, 1]
+    rate := fun _ Y ω _ a => match a with
+      | .go => if ω.val = 1 ∧ 0 ∈ Y then 9 / 10 else 7 / 10
+      | a => plainRate a }
+
+theorem foreseen_has : foreseen.Has ⟨true, true, true, true, true, true, true⟩ :=
+  Supplied.has (by decide +kernel)
+
+/-- `foreseen`, except that at time 0 he gives all his weight to case 0, and from time 1, when
+the move starts, to case 1. -/
+def learnt : Case Opt Empty (Fin 1) (Fin 2) (Lab ⊕ Opt) Empty :=
+  { foreseen.case with
+    μ := fun t ω => if (t = 0 ∧ ω.val = 0) ∨ (1 ≤ t ∧ ω.val = 1) then 1 else 0
+    μ_nonneg := fun t ω => by split_ifs <;> norm_num
+    μ_sum := fun t => by
+      rw [Fin.sum_univ_two]
+      by_cases h : t = 0
+      · subst h; simp
+      · have h1 : 1 ≤ t := Nat.one_le_iff_ne_zero.mpr h
+        simp [h, h1] }
+
+/-- On `learnt` the start rule fails and every other clause holds. -/
+theorem learnt_profile :
+    learnt.model.HasProfile (1 / 20) (1 / 100) (1 / 10) ⟨false, true, true, true, true, true, true⟩ :=
+  learnt.hasProfile_std (by decide +kernel)
+
+theorem learnt_not_legit : ¬ learnt.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
+  learnt_profile.not_legit (by decide)
+
+/-- On `learnt` the move bears an effect on his belief at time 1 and none on his belief at
+time 0. -/
+theorem learnt_bears : learnt.model.Bears 1 (1 / 100) 0 ∧ ¬ learnt.model.Bears 0 (1 / 100) 0 := by
+  have e : (1 / 100 : ℝ) = ((1 / 100 : ℚ) : ℝ) := by norm_num
+  rw [e]
+  simp only [Case.model_bears]
+  decide +kernel
+
 /-! ## Terms inhabiting the hypotheses of five theorems of `LegitimacyModel.lean` -/
 
 /-- No moves, no views. -/
@@ -1005,7 +1125,8 @@ theorem nothing_instance : nothing.case.model.Legit (1 / 20) (1 / 100) (1 / 10) 
 
 /-- `Model.not_legit_of_untold` has an instance: the cancelled consultation of `c3`. -/
 theorem untold_instance : ¬ c3.case.model.Legit (1 / 20) (1 / 100) (1 / 10) := by
-  refine Model.not_legit_of_untold _ _ _ _ 1 (by decide +kernel) () {()} (by decide +kernel)
+  refine Model.not_legit_of_untold _ _ _ _ 1 (by decide +kernel) ()
+    ((Case.model_μ_pos _ _ _).mpr (by decide +kernel)) {()} (by decide +kernel)
     (by decide +kernel) OptC.consult (by decide +kernel) ?_
   show (1 / 20 : ℝ) <
     |((c3.case.r (St.tell {()} (St.init c3.case.c () 1)) OptC.consult : ℚ) : ℝ) -
@@ -1022,21 +1143,23 @@ theorem unstoppable_instance : ¬ a7.case.model.Legit (1 / 20) (1 / 100) (1 / 10
   have hm : a7.case.model.InPlay (1 / 100) 1 0 := by
     rw [show (1 / 100 : ℝ) = ((1 / 100 : ℚ) : ℝ) by norm_num, Case.model_inPlay]
     decide +kernel
-  exact Model.not_legit_of_unstoppable _ _ _ _ 1 (by decide +kernel) () 0 hm (by decide +kernel)
+  exact Model.not_legit_of_unstoppable _ _ _ _ 1 (by decide +kernel) ()
+    ((Case.model_μ_pos _ _ _).mpr (by decide +kernel)) 0 hm
+    (fun a ha => Finset.notMem_empty a ha.2.1)
 
 /-- `Model.not_legit_of_against` has an instance: the nagging of `b1`. -/
 theorem against_instance : ¬ b1.case.model.Legit (1 / 20) (1 / 100) (1 / 10) := by
   refine Model.not_legit_of_against _ _ _ _ 1 (by decide +kernel) {0} (by decide +kernel)
-    (by decide +kernel) (by decide +kernel) (by decide +kernel) 0
+    (by decide +kernel) (by decide +kernel) 0
     ((Case.model_lastBefore _ _ _).mpr (by decide +kernel)) (by decide) ?_
-  show b1.case.model.wt (fun ω => b1.case.model.Against (b1.case.c \ {0}) 0 1 ω) + 1 / 100 <
-    b1.case.model.wt (fun ω => b1.case.model.Against b1.case.c 0 1 ω)
-  rw [b1.case.model_wt _ (fun ω => b1.case.Against (b1.case.c \ {0}) 0 1 ω)
+  show b1.case.model.wt 1 (fun ω => b1.case.model.Against (b1.case.toldInstead {0}) 0 1 ω) + 1 / 100 <
+    b1.case.model.wt 1 (fun ω => b1.case.model.Against b1.case.c 0 1 ω)
+  rw [b1.case.model_wt 1 _ (fun ω => b1.case.Against (b1.case.toldInstead {0}) 0 1 ω)
       (fun ω => b1.case.model_against _ 0 1 ω),
-    b1.case.model_wt _ (fun ω => b1.case.Against b1.case.c 0 1 ω)
+    b1.case.model_wt 1 _ (fun ω => b1.case.Against b1.case.c 0 1 ω)
       (fun ω => b1.case.model_against _ 0 1 ω)]
-  have h : b1.case.wt (fun ω => b1.case.Against (b1.case.c \ {0}) 0 1 ω) + 1 / 100 <
-      b1.case.wt (fun ω => b1.case.Against b1.case.c 0 1 ω) := by decide +kernel
+  have h : b1.case.wt 1 (fun ω => b1.case.Against (b1.case.toldInstead {0}) 0 1 ω) + 1 / 100 <
+      b1.case.wt 1 (fun ω => b1.case.Against b1.case.c 0 1 ω) := by decide +kernel
   have h' := (Rat.cast_lt (K := ℝ)).mpr h
   push_cast at h'
   exact h'
@@ -1044,8 +1167,9 @@ theorem against_instance : ¬ b1.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
 /-- A model in which his one move changes nothing: her state, scores, options and act are
 the same under every course of conduct. -/
 noncomputable def still : Model Unit Unit Empty Unit Unit Unit Empty where
-  μ := fun _ => 1
-  μ_nonneg := fun _ => zero_le_one
+  μ := fun _ _ => 1
+  μ_nonneg := fun _ _ => zero_le_one
+  μ_sum := fun _ => by simp
   dec := {0}
   c := {()}
   start := fun _ => 1
@@ -1058,6 +1182,7 @@ noncomputable def still : Model Unit Unit Empty Unit Unit Unit Empty where
   xopts := fun _ _ _ => ∅
   ρ := fun _ _ => 0
   r := fun _ _ => 0
+  rated := fun _ _ => True
   views := fun _ => ∅
   told := fun _ => ∅
   declined := fun _ => ∅
@@ -1073,17 +1198,20 @@ noncomputable def still : Model Unit Unit Empty Unit Unit Unit Empty where
   stHeard := fun _ _ _ => ()
   optsHeard := fun _ _ _ => ∅
   known := fun _ _ => ∅
-  stops := fun _ _ => ∅
+  goesOn := fun _ _ _ => ∅
+  herStops := fun _ _ => ∅
   asked := ∅
-  tellings := ∅
+  plain := fun _ => ∅
 
 /-- `Model.not_bears_of_inert` has an instance. -/
-theorem inert_instance : ¬ still.Bears (1 / 100) () :=
-  Model.not_bears_of_inert still (1 / 100) () (fun _ _ _ => rfl) (fun _ _ _ _ => rfl)
+theorem inert_instance (u : ℕ) : ¬ still.Bears u (1 / 100) () :=
+  Model.not_bears_of_inert still u (1 / 100) () (fun _ _ _ => rfl) (fun _ _ _ _ => rfl)
     (fun _ _ _ => rfl) (fun _ _ _ => rfl) (fun _ _ _ => Iff.rfl)
 
 end Workspace.Deference.Contrib.LegitimacyModel.Cases
 
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.Supplied.prob_nonneg
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.Supplied.prob_sum
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.Supplied.has
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.Supplied.Has.legit
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.Supplied.Has.not_legit
@@ -1185,7 +1313,15 @@ end Workspace.Deference.Contrib.LegitimacyModel.Cases
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d10o_verdict
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d11_has
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d11_verdict
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d11s_has
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d11s_verdict
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d11s_alone
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.table
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.twoOffers_none
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.foreseen_has
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.learnt_profile
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.learnt_not_legit
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.learnt_bears
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.nothing_instance
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.untold_instance
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.unstoppable_instance

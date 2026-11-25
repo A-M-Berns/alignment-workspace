@@ -1,7 +1,8 @@
 /-
 # Rational models of the legitimacy statement, and which clauses hold on one
 
-Round `prompts/2026-11-10-legitimacy-definition-prosecution/` (`PROMPT-followup-17.md`).
+Round `prompts/2026-11-10-legitimacy-definition-prosecution/` (`PROMPT-followup-17.md`,
+`PROMPT-followup-19.md` §1 A).
 `LegitimacyModel.lean` states legitimacy as `Model.Legit`, a predicate on a `Model` with real
 weights, scores and ratings.  This file gives a way to build terms of `Model` on which every
 clause of `Legit` is decided by the kernel.
@@ -18,7 +19,8 @@ state is fixed in form: a `St` records the views she has heard beyond what he ha
 (`heard`), the course of his conduct (`made`), the case, the time, and whether the state was
 reached through an offer of his (`byOffer`).  `Case.model` is the `Model` it stands for: her state
 in a course of conduct, case and time is `St.init`, with nothing heard and `byOffer` false; being
-told a set of views adds it to `heard` (`St.tell`); every rational is cast to a real.  Every
+told a set of views adds it to `heard` (`St.tell`); every rational is cast to a real, and
+`rated` and `toldReveals` are booleans.  Every
 other field of the `Model` is the field of the `Case` of the same name.  `Case.ρ` and `Case.r`
 are arbitrary functions of the state, so a `Case` fixes how her state is written and nothing
 about what depends on it.
@@ -55,12 +57,13 @@ namespace Model
 variable {S O V M Ω X I : Type*} [Fintype Ω] [DecidableEq M] [DecidableEq V] [DecidableEq O]
   [DecidableEq I] (D : Model S O V M Ω X I)
 
-/-- Every effect-bearing move starts after some decision of hers. -/
-def StartRule (η : ℝ) : Prop := ∀ m ∈ D.c, D.Bears η m → ∃ t ∈ D.dec, t < D.start m
+/-- Every move that bears an effect on his belief when it starts was in play, and bore an effect
+on his belief, at a decision of hers before it started. -/
+def StartRule (η : ℝ) : Prop :=
+  ∀ m ∈ D.c, D.Bears (D.start m) η m → ∃ t ∈ D.dec, t < D.start m ∧ D.InPlay η t m
 
-/-- At every decision, what is on offer is properly on offer. -/
-def Offers (θ : ℝ) : Prop :=
-  ∀ t ∈ D.dec, (D.offered t).Nonempty → D.ProperOffer θ t (D.offered t)
+/-- At every decision, `offered` is what is on offer. -/
+def Offers (θ : ℝ) : Prop := ∀ t ∈ D.dec, D.OnOffer θ t (D.offered t)
 
 /-- At every decision, every decline stands. -/
 def Declines (θ : ℝ) : Prop := ∀ t ∈ D.dec, D.DeclineStands θ t
@@ -175,9 +178,10 @@ end St
 /-! ## A rational model -/
 
 /-- The fields of `Model` with rational values, her state being a `St`. -/
-structure Case (O V M Ω X I : Type) where
-  μ : Ω → ℚ
-  μ_nonneg : ∀ ω, 0 ≤ μ ω
+structure Case (O V M Ω X I : Type) [Fintype Ω] where
+  μ : ℕ → Ω → ℚ
+  μ_nonneg : ∀ t ω, 0 ≤ μ t ω
+  μ_sum : ∀ t, ∑ ω, μ t ω = 1
   dec : Finset ℕ
   c : Finset M
   start : M → ℕ
@@ -189,6 +193,7 @@ structure Case (O V M Ω X I : Type) where
   xopts : Finset M → Ω → ℕ → Finset O
   ρ : St V M Ω → X → ℚ
   r : St V M Ω → O → ℚ
+  rated : St V M Ω → X → Bool
   views : ℕ → Finset V
   told : ℕ → Finset V
   declined : ℕ → Finset V
@@ -201,9 +206,10 @@ structure Case (O V M Ω X I : Type) where
   stHeard : ℕ → Ω → Finset V → St V M Ω
   optsHeard : ℕ → Ω → Finset V → Finset O
   known : ℕ → Ω → Finset M
-  stops : ℕ → Ω → Finset O
+  goesOn : ℕ → Ω → O → Finset M
+  herStops : ℕ → Ω → Finset O
   asked : Finset M
-  tellings : Finset M
+  plain : M → Finset M
 
 namespace Case
 
@@ -212,8 +218,9 @@ variable {O V M Ω X I : Type} [Fintype Ω] [DecidableEq M] [DecidableEq V] [Dec
 
 /-- The `Model` a `Case` stands for. -/
 noncomputable def model : Model (St V M Ω) O V M Ω X I where
-  μ := fun ω => (C.μ ω : ℝ)
-  μ_nonneg := fun ω => by exact_mod_cast C.μ_nonneg ω
+  μ := fun t ω => (C.μ t ω : ℝ)
+  μ_nonneg := fun t ω => by exact_mod_cast C.μ_nonneg t ω
+  μ_sum := fun t => by exact_mod_cast C.μ_sum t
   dec := C.dec
   c := C.c
   start := C.start
@@ -226,6 +233,7 @@ noncomputable def model : Model (St V M Ω) O V M Ω X I where
   xopts := C.xopts
   ρ := fun s x => (C.ρ s x : ℝ)
   r := fun s a => (C.r s a : ℝ)
+  rated := fun s x => C.rated s x = true
   views := C.views
   told := C.told
   declined := C.declined
@@ -241,32 +249,42 @@ noncomputable def model : Model (St V M Ω) O V M Ω X I where
   stHeard := C.stHeard
   optsHeard := C.optsHeard
   known := C.known
-  stops := C.stops
+  goesOn := C.goesOn
+  herStops := C.herStops
   asked := C.asked
-  tellings := C.tellings
+  plain := C.plain
 
 /-! ### The definitions of `LegitimacyModel.lean`, over the rationals -/
 
 def untold (t : ℕ) : Finset V := ((C.views t \ C.told t) \ C.declined t) \ C.offered t
 
 def BearingHolds (θ : ℚ) (t : ℕ) (v : V) : Prop :=
-  ∀ ω, (∀ a ∈ C.opts C.c ω t,
+  ∀ ω, 0 < C.μ t ω → ∀ T ∈ (C.views t).powerset, v ∈ T →
+    (∀ a ∈ C.opts C.c ω t,
       (a ∉ C.toldBear v →
-        |C.r (St.tell {v} (St.init C.c ω t)) a - C.r (St.init C.c ω t) a| ≤ θ) ∧
-      |C.r (St.tell {v} (St.init C.c ω t)) a - C.r (St.init C.c ω t) a| ≤ C.toldMag v + θ) ∧
-    ((C.rev t ω {v}).Nonempty → C.toldReveals v = true)
+        |C.r (St.tell T (St.init C.c ω t)) a - C.r (St.tell (T.erase v) (St.init C.c ω t)) a| ≤ θ) ∧
+      |C.r (St.tell T (St.init C.c ω t)) a - C.r (St.tell (T.erase v) (St.init C.c ω t)) a| ≤
+        C.toldMag v + θ) ∧
+    ((C.rev t ω T \ C.rev t ω (T.erase v)).Nonempty → C.toldReveals v = true)
 
 def ProperOffer (θ : ℚ) (t : ℕ) (T : Finset V) : Prop :=
-  (∀ v ∈ T, C.BearingHolds θ t v ∧ ∀ ω, C.hearOpt v ∈ C.opts C.c ω t) ∧
-  ∀ ω, ∀ a ∈ C.opts C.c ω t ∪ C.rev t ω T, (∀ v ∈ T, a ≠ C.hearOpt v) →
+  (∀ v ∈ T, C.BearingHolds θ t v ∧ ∀ ω, 0 < C.μ t ω → C.hearOpt v ∈ C.opts C.c ω t) ∧
+  ∀ ω, 0 < C.μ t ω → ∀ a ∈ C.opts C.c ω t ∪ C.rev t ω T, (∀ v ∈ T, a ≠ C.hearOpt v) →
     a ∈ C.optsHeard t ω T ∧
     |C.r (C.stHeard t ω T) a - C.r (St.tell T (St.init C.c ω t)) a| ≤ θ
 
+def OnOffer (θ : ℚ) (t : ℕ) (T : Finset V) : Prop :=
+  T ⊆ C.views t \ C.told t ∧ (T.Nonempty → C.ProperOffer θ t T) ∧
+    ∀ T' ∈ (C.views t \ C.told t).powerset, T'.Nonempty → C.ProperOffer θ t T' → T' ⊆ T
+
 def DeclineStands (θ : ℚ) (t : ℕ) : Prop :=
-  ∀ v ∈ C.declined t, (∃ t₀ ∈ C.dec, t₀ ≤ t ∧ v ∈ C.offered t₀) ∧ C.BearingHolds θ t v
+  ∀ v ∈ C.declined t,
+    (∃ t₀ ∈ C.dec, t₀ < t ∧ v ∈ C.offered t₀ ∧
+      ∀ ω, 0 < C.μ t ω → C.act C.c ω t₀ ≠ C.hearOpt v) ∧
+      C.BearingHolds θ t v
 
 def F1 (θ : ℚ) (t : ℕ) : Prop :=
-  ∀ ω, ∀ T ∈ (C.untold t).powerset, T.Nonempty →
+  ∀ ω, 0 < C.μ t ω → ∀ T ∈ (C.untold t).powerset, T.Nonempty →
     (∀ a ∈ C.opts C.c ω t,
       |C.r (St.tell T (St.init C.c ω t)) a - C.r (St.init C.c ω t) a| ≤ θ) ∧
     (∀ b ∈ C.rev t ω T, ∃ a ∈ C.opts C.c ω t,
@@ -285,13 +303,16 @@ def HerDiff [Fintype X] [Fintype O] (η : ℚ) (Y Y' : Finset M) (ω : Ω) (t : 
 def Departs (Y : Finset M) (ω : Ω) (t : ℕ) : Prop :=
   ∃ b ∈ C.opts Y ω t, C.r (St.init Y ω t) (C.act Y ω t) < C.r (St.init Y ω t) b
 
-def wt (p : Ω → Prop) [DecidablePred p] : ℚ := ∑ ω, if p ω then C.μ ω else 0
+def wt (u : ℕ) (p : Ω → Prop) [DecidablePred p] : ℚ := ∑ ω, if p ω then C.μ u ω else 0
 
 instance (θ : ℚ) (t : ℕ) (v : V) : Decidable (C.BearingHolds θ t v) := by
   unfold BearingHolds; infer_instance
 
 instance (θ : ℚ) (t : ℕ) (T : Finset V) : Decidable (C.ProperOffer θ t T) := by
   unfold ProperOffer; infer_instance
+
+instance (θ : ℚ) (t : ℕ) (T : Finset V) : Decidable (C.OnOffer θ t T) := by
+  unfold OnOffer; infer_instance
 
 instance (θ : ℚ) (t : ℕ) : Decidable (C.DeclineStands θ t) := by
   unfold DeclineStands; infer_instance
@@ -310,17 +331,17 @@ section Moves
 
 variable [Fintype X] [Fintype O] [Fintype M]
 
-def Contributes (η : ℚ) (G : Finset M) : Prop :=
-  ∃ t ∈ C.dec, (∃ ω, 0 < C.μ ω ∧ C.HerDiff η C.c (C.c \ G) ω t) ∨
-    C.wt (fun ω => C.Departs (C.c \ G) ω t) + η < C.wt (fun ω => C.Departs C.c ω t)
+def Contributes (u : ℕ) (η : ℚ) (G : Finset M) : Prop :=
+  ∃ t ∈ C.dec, (∃ ω, 0 < C.μ u ω ∧ C.HerDiff η C.c (C.c \ G) ω t) ∨
+    C.wt u (fun ω => C.Departs (C.c \ G) ω t) + η < C.wt u (fun ω => C.Departs C.c ω t)
 
-instance (η : ℚ) (G : Finset M) : Decidable (C.Contributes η G) := by
+instance (u : ℕ) (η : ℚ) (G : Finset M) : Decidable (C.Contributes u η G) := by
   unfold Contributes; infer_instance
 
-def Bears (η : ℚ) (m : M) : Prop :=
-  ∃ G ∈ C.c.powerset, m ∈ G ∧ C.Contributes η G ∧ ¬ C.Contributes η (G.erase m)
+def Bears (u : ℕ) (η : ℚ) (m : M) : Prop :=
+  ∃ G ∈ C.c.powerset, m ∈ G ∧ C.Contributes u η G ∧ ¬ C.Contributes u η (G.erase m)
 
-instance (η : ℚ) (m : M) : Decidable (C.Bears η m) := by
+instance (u : ℕ) (η : ℚ) (m : M) : Decidable (C.Bears u η m) := by
   unfold Bears; infer_instance
 
 def Window (m : M) (t : ℕ) : Prop :=
@@ -329,14 +350,20 @@ def Window (m : M) (t : ℕ) : Prop :=
 instance (m : M) (t : ℕ) : Decidable (C.Window m t) := by
   unfold Window; infer_instance
 
-def InPlay (η : ℚ) (t : ℕ) (m : M) : Prop := m ∈ C.c ∧ C.Window m t ∧ C.Bears η m
+def InPlay (η : ℚ) (t : ℕ) (m : M) : Prop := m ∈ C.c ∧ C.Window m t ∧ C.Bears t η m
 
 instance (η : ℚ) (t : ℕ) (m : M) : Decidable (C.InPlay η t m) := by
   unfold InPlay; infer_instance
 
+def Stops (η : ℚ) (t : ℕ) (ω : Ω) (a : O) : Prop :=
+  a ∈ C.opts C.c ω t ∧ a ∈ C.herStops t ω ∧ ∀ m ∈ C.goesOn t ω a, ¬ C.InPlay η t m
+
+instance (η : ℚ) (t : ℕ) (ω : Ω) (a : O) : Decidable (C.Stops η t ω a) := by
+  unfold Stops; infer_instance
+
 def F2 (η : ℚ) (t : ℕ) : Prop :=
-  ∀ ω, (∀ m, C.InPlay η t m → m ∈ C.known t ω) ∧
-    ((∃ m, C.InPlay η t m) → (C.stops t ω).Nonempty ∧ C.stops t ω ⊆ C.opts C.c ω t)
+  ∀ ω, 0 < C.μ t ω → (∀ m, C.InPlay η t m → m ∈ C.known t ω) ∧
+    ((∃ m, C.InPlay η t m) → ∃ a ∈ C.opts C.c ω t, C.Stops η t ω a)
 
 instance (η : ℚ) (t : ℕ) : Decidable (C.F2 η t) := by
   unfold F2; infer_instance
@@ -353,39 +380,44 @@ def earlier (t₀ t : ℕ) (ω : Ω) : St V M Ω :=
 
 def Against (Y : Finset M) (t₀ t : ℕ) (ω : Ω) : Prop :=
   ∃ b ∈ C.opts Y ω t,
+    C.rated (C.earlier t₀ t ω) (C.course Y ω t (C.act Y ω t)) = true ∧
+    C.rated (C.earlier t₀ t ω) (C.course Y ω t b) = true ∧
     C.ρ (C.earlier t₀ t ω) (C.course Y ω t (C.act Y ω t)) <
       C.ρ (C.earlier t₀ t ω) (C.course Y ω t b)
 
 instance (Y : Finset M) (t₀ t : ℕ) (ω : Ω) : Decidable (C.Against Y t₀ t ω) := by
   unfold Against; infer_instance
 
+def toldInstead (G : Finset M) : Finset M := (C.c \ G) ∪ G.biUnion C.plain
+
 def F2' (η : ℚ) (t : ℕ) : Prop :=
-  ∀ G ∈ C.c.powerset, G.Nonempty → Disjoint G C.asked → Disjoint G C.tellings →
+  ∀ G ∈ C.c.powerset, G.Nonempty → Disjoint G C.asked →
     ∀ t₀ ∈ C.dec, C.LastBefore G t₀ → t₀ ≤ t →
-      C.wt (fun ω => C.Against C.c t₀ t ω) ≤ C.wt (fun ω => C.Against (C.c \ G) t₀ t ω) + η
+      C.wt t (fun ω => C.Against C.c t₀ t ω) ≤
+        C.wt t (fun ω => C.Against (C.toldInstead G) t₀ t ω) + η
 
 instance (η : ℚ) (t : ℕ) : Decidable (C.F2' η t) := by
   unfold F2'; infer_instance
 
-def PrefersStop (t : ℕ) (ω : Ω) : Prop :=
-  ∃ a ∈ C.stops t ω, ∀ b ∈ C.opts C.c ω t, b ∉ C.stops t ω →
+def PrefersStop (η : ℚ) (t : ℕ) (ω : Ω) : Prop :=
+  ∃ a ∈ C.opts C.c ω t, C.Stops η t ω a ∧ ∀ b ∈ C.opts C.c ω t, ¬ C.Stops η t ω b →
     C.r (St.init C.c ω t) b < C.r (St.init C.c ω t) a
 
-instance (t : ℕ) (ω : Ω) : Decidable (C.PrefersStop t ω) := by
+instance (η : ℚ) (t : ℕ) (ω : Ω) : Decidable (C.PrefersStop η t ω) := by
   unfold PrefersStop; infer_instance
 
 def F3 (η κ : ℚ) (t : ℕ) : Prop :=
   (∃ m, C.InPlay η t m) →
-    (1 - κ) * C.wt (fun ω => C.PrefersStop t ω) ≤
-      C.wt (fun ω => C.PrefersStop t ω ∧ C.act C.c ω t ∈ C.stops t ω)
+    (1 - κ) * C.wt t (fun ω => C.PrefersStop η t ω) ≤
+      C.wt t (fun ω => C.PrefersStop η t ω ∧ C.Stops η t ω (C.act C.c ω t))
 
 instance (η κ : ℚ) (t : ℕ) : Decidable (C.F3 η κ t) := by
   unfold F3; infer_instance
 
-def StartRule (η : ℚ) : Prop := ∀ m ∈ C.c, C.Bears η m → ∃ t ∈ C.dec, t < C.start m
+def StartRule (η : ℚ) : Prop :=
+  ∀ m ∈ C.c, C.Bears (C.start m) η m → ∃ t ∈ C.dec, t < C.start m ∧ C.InPlay η t m
 
-def Offers (θ : ℚ) : Prop :=
-  ∀ t ∈ C.dec, (C.offered t).Nonempty → C.ProperOffer θ t (C.offered t)
+def Offers (θ : ℚ) : Prop := ∀ t ∈ C.dec, C.OnOffer θ t (C.offered t)
 
 def Declines (θ : ℚ) : Prop := ∀ t ∈ C.dec, C.DeclineStands θ t
 
@@ -416,27 +448,39 @@ end Moves
 
 theorem model_untold (t : ℕ) : C.model.untold t = C.untold t := rfl
 
+theorem model_μ_pos (t : ℕ) (ω : Ω) : 0 < C.model.μ t ω ↔ 0 < C.μ t ω := by
+  show (0 : ℝ) < ((C.μ t ω : ℚ) : ℝ) ↔ _
+  norm_cast
+
 theorem model_bearingHolds (θ : ℚ) (t : ℕ) (v : V) :
     C.model.BearingHolds (θ : ℝ) t v ↔ C.BearingHolds θ t v := by
-  simp only [Model.BearingHolds, BearingHolds, model]
+  simp only [Model.BearingHolds, BearingHolds, model_μ_pos]
+  simp only [model, mem_powerset]
   norm_cast
 
 theorem model_properOffer (θ : ℚ) (t : ℕ) (T : Finset V) :
     C.model.ProperOffer (θ : ℝ) t T ↔ C.ProperOffer θ t T := by
   unfold Model.ProperOffer ProperOffer
-  simp only [model_bearingHolds]
+  simp only [model_bearingHolds, model_μ_pos]
   simp only [model]
   norm_cast
+
+theorem model_onOffer (θ : ℚ) (t : ℕ) (T : Finset V) :
+    C.model.OnOffer (θ : ℝ) t T ↔ C.OnOffer θ t T := by
+  unfold Model.OnOffer OnOffer
+  simp only [model_properOffer, mem_powerset]
+  rfl
 
 theorem model_declineStands (θ : ℚ) (t : ℕ) :
     C.model.DeclineStands (θ : ℝ) t ↔ C.DeclineStands θ t := by
   unfold Model.DeclineStands DeclineStands
-  simp only [model_bearingHolds]
+  simp only [model_bearingHolds, model_μ_pos]
   rfl
 
 theorem model_F1 (θ : ℚ) (t : ℕ) : C.model.F1 (θ : ℝ) t ↔ C.F1 θ t := by
   unfold Model.F1 F1
   rw [model_untold]
+  simp only [model_μ_pos]
   simp only [model, mem_powerset]
   norm_cast
 
@@ -450,8 +494,8 @@ theorem model_departs (Y : Finset M) (ω : Ω) (t : ℕ) :
   simp only [Model.Departs, Departs, model]
   norm_cast
 
-theorem model_wt (P : Ω → Prop) (p : Ω → Prop) [DecidablePred p] (h : ∀ ω, P ω ↔ p ω) :
-    C.model.wt P = ((C.wt p : ℚ) : ℝ) := by
+theorem model_wt (u : ℕ) (P : Ω → Prop) (p : Ω → Prop) [DecidablePred p] (h : ∀ ω, P ω ↔ p ω) :
+    C.model.wt u P = ((C.wt u p : ℚ) : ℝ) := by
   classical
   unfold Model.wt wt
   rw [Rat.cast_sum]
@@ -477,13 +521,9 @@ theorem model_against (Y : Finset M) (t₀ t : ℕ) (ω : Ω) :
   simp only [Model.Against, Against, Model.earlier, earlier, model]
   norm_cast
 
-theorem model_prefersStop (t : ℕ) (ω : Ω) : C.model.PrefersStop t ω ↔ C.PrefersStop t ω := by
-  simp only [Model.PrefersStop, PrefersStop, model]
-  norm_cast
-
 theorem model_offers (θ : ℚ) : C.model.Offers (θ : ℝ) ↔ C.Offers θ := by
   unfold Model.Offers Offers
-  simp only [model_properOffer]
+  simp only [model_onOffer]
   rfl
 
 theorem model_declines (θ : ℚ) : C.model.Declines (θ : ℝ) ↔ C.Declines θ := by
@@ -500,20 +540,21 @@ section Moves
 
 variable [Fintype X] [Fintype O]
 
-theorem model_contributes (η : ℚ) (G : Finset M) :
-    C.model.Contributes (η : ℝ) G ↔ C.Contributes η G := by
+theorem model_contributes (u : ℕ) (η : ℚ) (G : Finset M) :
+    C.model.Contributes u (η : ℝ) G ↔ C.Contributes u η G := by
   unfold Model.Contributes Contributes
   simp only [model_herDiff]
   rw [show C.model.c = C.c from rfl, show C.model.dec = C.dec from rfl]
   refine exists_congr fun t => and_congr Iff.rfl (or_congr ?_ ?_)
   · refine exists_congr fun ω => and_congr ?_ Iff.rfl
-    show (0 : ℝ) < (C.μ ω : ℝ) ↔ 0 < C.μ ω
+    show (0 : ℝ) < (C.μ u ω : ℝ) ↔ 0 < C.μ u ω
     norm_cast
-  · rw [C.model_wt _ (fun ω => C.Departs (C.c \ G) ω t) (fun ω => C.model_departs _ ω t),
-      C.model_wt _ (fun ω => C.Departs C.c ω t) (fun ω => C.model_departs _ ω t)]
+  · rw [C.model_wt u _ (fun ω => C.Departs (C.c \ G) ω t) (fun ω => C.model_departs _ ω t),
+      C.model_wt u _ (fun ω => C.Departs C.c ω t) (fun ω => C.model_departs _ ω t)]
     norm_cast
 
-theorem model_bears (η : ℚ) (m : M) : C.model.Bears (η : ℝ) m ↔ C.Bears η m := by
+theorem model_bears (u : ℕ) (η : ℚ) (m : M) :
+    C.model.Bears u (η : ℝ) m ↔ C.Bears u η m := by
   unfold Model.Bears Bears
   simp only [model_contributes, mem_powerset]
   rfl
@@ -525,41 +566,55 @@ theorem model_inPlay (η : ℚ) (t : ℕ) (m : M) : C.model.InPlay (η : ℝ) t 
   · rintro ⟨a, b, c⟩; exact ⟨a, c, b⟩
   · rintro ⟨a, b, c⟩; exact ⟨a, c, b⟩
 
-theorem model_F2 (η : ℚ) (t : ℕ) : C.model.F2 (η : ℝ) t ↔ C.F2 η t := by
-  unfold Model.F2 F2
+theorem model_stops (η : ℚ) (t : ℕ) (ω : Ω) (a : O) :
+    C.model.Stops (η : ℝ) t ω a ↔ C.Stops η t ω a := by
+  unfold Model.Stops Stops
   simp only [model_inPlay]
   rfl
+
+theorem model_F2 (η : ℚ) (t : ℕ) : C.model.F2 (η : ℝ) t ↔ C.F2 η t := by
+  unfold Model.F2 F2
+  simp only [model_inPlay, model_stops, model_μ_pos]
+  rfl
+
+theorem model_prefersStop (η : ℚ) (t : ℕ) (ω : Ω) :
+    C.model.PrefersStop (η : ℝ) t ω ↔ C.PrefersStop η t ω := by
+  unfold Model.PrefersStop PrefersStop
+  simp only [model_stops]
+  simp only [model]
+  norm_cast
 
 omit [Fintype X] [Fintype O] in
 theorem model_F2' (η : ℚ) (t : ℕ) : C.model.F2' (η : ℝ) t ↔ C.F2' η t := by
   unfold Model.F2' F2'
   have key : ∀ (Y : Finset M) (t₀ : ℕ),
-      C.model.wt (fun ω => C.model.Against Y t₀ t ω) =
-        ((C.wt (fun ω => C.Against Y t₀ t ω) : ℚ) : ℝ) :=
-    fun Y t₀ => C.model_wt _ _ (fun ω => C.model_against Y t₀ t ω)
-  rw [show C.model.c = C.c from rfl, show C.model.asked = C.asked from rfl,
-    show C.model.tellings = C.tellings from rfl]
-  simp only [key, model_lastBefore, mem_powerset]
+      C.model.wt t (fun ω => C.model.Against Y t₀ t ω) =
+        ((C.wt t (fun ω => C.Against Y t₀ t ω) : ℚ) : ℝ) :=
+    fun Y t₀ => C.model_wt t _ _ (fun ω => C.model_against Y t₀ t ω)
+  have hT : ∀ G, C.model.toldInstead G = C.toldInstead G := fun _ => rfl
+  rw [show C.model.c = C.c from rfl, show C.model.asked = C.asked from rfl]
+  simp only [hT, key, model_lastBefore, mem_powerset]
   constructor
-  · intro h G hG hne ha htl t₀ _ h0 hle
-    have := h G hG hne ha htl t₀ h0 hle
+  · intro h G hG hne ha t₀ _ h0 hle
+    have := h G hG hne ha t₀ h0 hle
     exact_mod_cast this
-  · intro h G hG hne ha htl t₀ h0 hle
-    have := h G hG hne ha htl t₀ h0.1 h0 hle
+  · intro h G hG hne ha t₀ h0 hle
+    have := h G hG hne ha t₀ h0.1 h0 hle
     exact_mod_cast this
 
-theorem model_F3 (η κ : ℚ) (t : ℕ) : C.model.F3 (η : ℝ) (κ : ℝ) t ↔ C.F3 η κ t := by
+theorem model_F3 [Fintype M] (η κ : ℚ) (t : ℕ) : C.model.F3 (η : ℝ) (κ : ℝ) t ↔ C.F3 η κ t := by
   unfold Model.F3 F3
   simp only [model_inPlay]
-  rw [C.model_wt _ (fun ω => C.PrefersStop t ω) (fun ω => C.model_prefersStop t ω),
-    C.model_wt (fun ω => C.model.PrefersStop t ω ∧ C.model.act C.model.c ω t ∈ C.model.stops t ω)
-      (fun ω => C.PrefersStop t ω ∧ C.act C.c ω t ∈ C.stops t ω)
-      (fun ω => and_congr (C.model_prefersStop t ω) Iff.rfl)]
+  rw [C.model_wt t _ (fun ω => C.PrefersStop η t ω) (fun ω => C.model_prefersStop η t ω),
+    C.model_wt t (fun ω => C.model.PrefersStop (η : ℝ) t ω ∧
+        C.model.Stops (η : ℝ) t ω (C.model.act C.model.c ω t))
+      (fun ω => C.PrefersStop η t ω ∧ C.Stops η t ω (C.act C.c ω t))
+      (fun ω => and_congr (C.model_prefersStop η t ω) (C.model_stops η t ω _))]
   norm_cast
 
 theorem model_startRule (η : ℚ) : C.model.StartRule (η : ℝ) ↔ C.StartRule η := by
   unfold Model.StartRule StartRule
-  simp only [model_bears]
+  simp only [model_bears, model_inPlay]
   rfl
 
 theorem model_everyF2 (η : ℚ) : C.model.EveryF2 (η : ℝ) ↔ C.EveryF2 η := by
@@ -573,7 +628,7 @@ theorem model_everyF2' (η : ℚ) : C.model.EveryF2' (η : ℝ) ↔ C.EveryF2' �
   simp only [model_F2']
   rfl
 
-theorem model_everyF3 (η κ : ℚ) : C.model.EveryF3 (η : ℝ) (κ : ℝ) ↔ C.EveryF3 η κ := by
+theorem model_everyF3 [Fintype M] (η κ : ℚ) : C.model.EveryF3 (η : ℝ) (κ : ℝ) ↔ C.EveryF3 η κ := by
   unfold Model.EveryF3 EveryF3
   simp only [model_F3]
   rfl
@@ -610,8 +665,10 @@ end Workspace.Deference.Contrib.LegitimacyModel
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.St.tell_empty
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.St.tell_idem
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Case.model_untold
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Case.model_μ_pos
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Case.model_bearingHolds
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Case.model_properOffer
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Case.model_onOffer
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Case.model_declineStands
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Case.model_F1
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Case.model_gap
@@ -622,6 +679,7 @@ end Workspace.Deference.Contrib.LegitimacyModel
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Case.model_bears
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Case.model_window
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Case.model_inPlay
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Case.model_stops
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Case.model_F2
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Case.model_lastBefore
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Case.model_against
