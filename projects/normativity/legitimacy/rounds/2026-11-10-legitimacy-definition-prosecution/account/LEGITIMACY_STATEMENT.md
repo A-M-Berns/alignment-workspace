@@ -146,8 +146,8 @@ The first eight are accepted by the maintainer (the entry above, positions 8 to 
 
 | what | where | kind | rerun |
 |---|---|---|---|
-| a temporal model in which the statement is a predicate, with nine theorems | `lean/Workspace/Deference/Contrib/LegitimacyModel.lean` | kernel-checked; simpler than §3 and §4 in the respects its header lists | `python3 tests/audit_axioms.py` |
-| 41 exact cases of §4, expectations fixed before running | `legitimacy_checks.py`, `LEGITIMACY_CHECKS.md` | exact check on supplied inputs | `python3 run.py` in the round directory |
+| a temporal model in which the statement is a predicate, with its theorems | `lean/Workspace/Deference/Contrib/LegitimacyModel.lean` | kernel-checked; its header says how each part of §3 and §4 is rendered and what it takes as given | `python3 tests/audit_axioms.py` |
+| 41 exact cases of §4, expectations fixed before running | `legitimacy_checks.py`, `LEGITIMACY_CHECKS.md`; as terms of the model, `LEAN_CASES.md` | exact check on supplied inputs | `python3 run.py` in the round directory |
 | four blind codings of the bank of cases from Noggle's book | `bank_runs.py`, `BANK_RUNS.md` | one language model's coding against a pre-written scorer | the same |
 | nine outside reviews | `prompts/2026-11-10-legitimacy-definition-prosecution/REVIEW-astra-followup-16.md` | one outside model; two of the nine blind to the project | — |
 

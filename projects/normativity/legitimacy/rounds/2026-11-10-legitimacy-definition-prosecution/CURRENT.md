@@ -162,22 +162,29 @@ What stands behind it, none of it a statement of record:
   it; one open, stoppable influence is legitimate and the same done covertly is not; the
   scoring it gives through `Legitimacy.gateValue` is a `DeconfusingCorrigibility.Scoring`;
   and a gate with soundness error `ρ` and completeness error `ρ'` gives legitimate conduct the
-  higher expected score when `ρ(1 − w) < −w(1 − ρ')`. The model is simpler than the statement
-  in nine respects its header lists.
+  higher expected score when `ρ(1 − w) < −w(1 − ρ')`. In the model his belief is indexed by
+  time, a view's bearing is computed jointly with his other views, what is on offer is the
+  largest set properly on offer, a stopping option is one after which he goes on with no
+  effect-bearing move, and the clause on her earlier rating is silent where she had none. Its
+  header says how each part of the statement is rendered and what it takes as given: what she
+  can pick out, what she asked for, what a decision of hers is, a move's plain telling, his
+  conduct after an option of hers. Two places where the formal statement does not fix a
+  reading were found in rendering it: the largest set on offer need not exist, and the
+  bearing of a view "with other views of his" can be read two ways.
 - **The model on a full witness and on the exact cases** (`account/LEAN_CASES.md`).
   `LegitimacyWitness.lean` has a term on which every clause does work, proved legitimate,
-  and seven terms differing from it in one field, on each of which one clause fails and the
+  and eight terms differing from it in one field, on each of which one clause fails and the
   other six hold. `LegitimacyCases.lean` has each of the 41 exact cases as a term, built by one
-  stated construction, with the clauses that hold on it proved. The verdict is the table's on
-  39: by the same clause on 32, by the offer or the decline clause where the table says F1 on
-  6, and on one by a term that cannot say what the case is about. It is not the table's on A5
-  and A8, on data of those cases that the table's script does not check. Eight of the terms
-  carry data their case does not supply, written with the table's verdict in view; in the
-  terms the chance that she goes against her earlier rating is derived.
+  stated construction, with the clauses that hold on it proved. Verdict and failing clause are
+  the table's on all 41. For eleven of them the case's data and the term were brought to each
+  other by one session with the expected verdict in view. In the terms the chance that she
+  goes against her earlier rating is derived. A move he learns at its start to bear an effect
+  is refuted by the start rule alone.
 - **Exact cases**, in the runner: 41 of the formal statement (`account/LEGITIMACY_CHECKS.md`)
   and 20 of a candidate clause for what stopping costs her, which is the authority side's
   (`account/STOPPING_COST.md`). Expectations were fixed first; statement and cases are by one
-  hand; the chance that she goes against her earlier rating is supplied to each case.
+  hand; the chance that she goes against her earlier rating is supplied to a case, or, where
+  her judgement is bent, computed from her stated rating without his move.
 - **Case runs** (`account/CASE_RUNS.md`), blind codings by language models against scorers
   written first; the two sheets behind the counts here are each coded twice, by coders of
   different models. On the 240 cases of Noggle's book with a definite verdict the disclosure
@@ -193,14 +200,14 @@ What stands behind it, none of it a statement of record:
   directory), two of them blind to the project. Each found errors of form in the version it
   saw; none has seen the present statement or the Lean.
 
-**Open.** `account/LEDGER.md` has 38 rows: 13 closed, each a Lean declaration; 19 open; 6
-living notes. Its last section ranks the open work. By `ATTENTION.md` item:
+**Open.** `account/LEDGER.md` has 38 rows: 18 closed, each a Lean declaration or the runner;
+14 open; 6 living notes. Its last section ranks the open work. By `ATTENTION.md` item:
 
 1. **An outside review of the Lean statement** (item 153).
 2. **A set of cases of bent judgement, coded twice** (item 154); a person's check of a
    sample of the codings (item 148).
-3. **The table's cases restated so that each fixes its term, and the model's
-   simplifications removed** (item 151).
+3. **The restated cases rebuilt by another hand, and what the model still takes as given**
+   (item 151).
 4. **The cost of a decision of hers on the authority side** (item 149).
 5. **Composition with the sequential corrigibility theorems** (item 150).
 6. **Whether a gate can evaluate legitimacy at all** (item 147).

@@ -1706,21 +1706,22 @@ registers at merge.
 `lean/Workspace/Deference/Contrib/LegitimacyModel.lean`, `lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean`.
 *Consumed by:* item 145 (the audit as a design, over more than one decision), and the round that writes the account up.
 
-### 151. The Lean model on cases: the table's cases restated so that each fixes its term, the simplifications removed — **[open]**
+### 151. The Lean model on cases: the restated cases rebuilt by another hand, and what the model still takes as given — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-Rows 22 to 27, 37 and 38 of `account/LEDGER.md`.
+Rows 24, 27 and 38 of `account/LEDGER.md`.
 
 `LegitimacyModel.lean` carries the statement as a predicate on a model of the adviser's
-picture. `LegitimacyWitness.lean` has a term on which every clause does work, with seven
-neighbours each failing by one clause, and `LegitimacyCases.lean` has each of the forty-one
-exact cases of `account/LEGITIMACY_CHECKS.md` as a term with its verdict proved
-(`account/LEAN_CASES.md`). Three things remain. The terms of A5 and A8 give verdicts that are
-not the table's, on data of the cases that the table's script does not check. Eight terms
-carry data their case does not supply, written with the table's verdict in view. And the
-model is simpler than the statement in nine respects its header lists. Wanted: the two cases
-and the eight restated so that each fixes its term; the simplifications removed or made
-hypotheses. A Lean headline registers at merge.
+picture, with his belief at each time, a view's bearing computed jointly, what is on offer as
+the largest proper set, stopping options defined by his conduct after them, and the pressure
+clause silent where she had no earlier rating. `LegitimacyCases.lean` has each of the forty-one
+exact cases of `account/LEGITIMACY_CHECKS.md` as a term, with verdict and failing clause the
+table's on all forty-one (`account/LEAN_CASES.md`). Three things remain. Eleven cases and their
+terms were brought to each other by one session with the expected verdict in view. A move's
+plain telling and his conduct after an option of hers are fields that nothing ties to `tell`
+or to the courses. And a decline is checked on no term where she heard the view. Wanted: the
+eleven built again by another hand, and the two fields derived. A Lean headline registers at
+merge.
 
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
