@@ -5826,6 +5826,142 @@ The three entries of *Awaiting the author* that the sixteenth follow-up's list n
 as they were; this pass adds none and answers none. The pull request is not auto-merged; the
 merge is a pull-request fact.
 
+## Eighteenth follow-up (2026-11-24) — a second coding of the bank
+
+Dispatched by `PROMPT-followup-18.md`; "§" with a number below is a section of it. `account/`
+is in the round directory,
+`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/`. The
+measures, the predictions and every count are in `account/SECOND_CODING.md` and the last
+section of `account/CASE_RUNS.md`, which the runner recomputes; the lists of cases are there
+and not here. Nothing is registered. No Lean file is touched.
+
+### AF.1 The counts
+
+Each sheet was coded once more by one subagent, requested through the harness as `opus`; each
+reported its model as `claude-opus-5-5`. Sheet 11 on 263 cases, sheet 16 on 152.
+
+| | sheet 11, the disclosure rule | sheet 16, the clause on her earlier rating |
+|---|---|---|
+| the rule's verdict the same under the two codings | 249 of 263; 227 of the 240 with a definite verdict of the author's | 131 of 152 |
+| fields answered the same | `has_influencer` 263, `seeks_response` 263, `lapse_expected` 237, `value_change_expected` 257, `value_change_known` 261, what is told 223, the (kind, told) pairs 157 | `act_sought` 144, `earlier_rating` 124, `means` 140, `form` 116, `asked` 147 |
+| first coding against the author | 219 settled, 214 agree, 0 missed, 5 over | lapse expected (39): 33 settled, 33 agree; controls (69): 64 settled, 1 convicted |
+| second coding against the author | 216 settled, 212 agree, 1 missed, 3 over | lapse expected (39): 30 settled, 29 agree, 1 missed; controls (69): 57 settled, 0 convicted |
+
+With the three sets of sheet 16 and what is untold read from the second coding of sheet 11
+instead of the first, the clause settles 26 of 33 cases with a lapse expected and agrees on 25;
+over all 152, an untold mistake or the clause settles 121 and agrees on 120.
+
+### AF.2 The predictions that failed
+
+Sixteen of 25: numbers 2 to 9, 11 to 13, 17 to 19, 24 and 25. Each expected less agreement,
+between the codings or with the author, than was counted. The largest misses: `lapse_expected`
+the same on 237 where 180 was predicted; the rule's verdict the same on 249 where 205; the
+second coding of sheet 11 agreeing with the author on 212 where 197, with 1 missed where 8.
+Predictions 20 to 22, that a second coding of sheet 16 would not agree with the author on every
+settled case with a lapse expected, held: 29 of 30. Prediction 24, three controls convicted,
+failed at none.
+
+### AF.3 What the disagreements have in common
+
+On sheet 11, 12 of the 14 cases whose verdict differs are unsettled on one coding; 7 are
+convicted by the first and unsettled on the second, 6 of those by a lapse coded "yes" by the
+first and "unclear" by the second. The remaining 2 are convicted by the first and passed by
+the second, and are 2 of the 5 the first coding convicts against the author. On sheet 16, 19
+of the 21 are unsettled on one coding, 14 of them on the second; 18 differ in `earlier_rating`
+and 3 in `act_sought`. The two cases one coding convicts and the other passes are both "lower"
+on the first and "no_view" on the second: whether she had settled the matter before he
+started. On neither sheet does the second coding convict a case the first passes.
+
+### AF.4 Corrections to the prompt
+
+1. *§1, "one coding of the bank by one language model".* Sheet 11's first coding is by three
+   coders, one for each third of the bank (`CASE_RUNS.md`). The model of every first coder is
+   unrecorded (the round's `PROVENANCE.md`).
+2. *§3 B, "a different model from the first coder's".* Since the first coders' model is
+   unrecorded, what can be said is that the second coder is `claude-opus-5-5`, a different
+   model from the executor's and from that of the Claude Fable 5.2 session that ran the first
+   coders; whether it differs from the first coders' own is not known.
+3. *§2, the three files as lists of `{id, case}`.* They hold 266 entries for 263 ids; three ids
+   occur in two files with different wording. The second coder was given the later file's
+   text, whose first coding is the one the scorer reads.
+4. *§3 C against item 154.* The item's deliverable asked for `case_runs.py` to be extended;
+   §3 A forbids changing the scorers. The counts are in a new module, and the item's deliverable
+   is reworded to match.
+
+### AF.5 Deviations from the prompt
+
+- **A.** `SECOND_CODING.md` also fixes the tolerance within which a prediction holds (10 cases
+  for agreement between codings, 5 for *settled* and *agree* against the author, 2 for
+  *missed*, *over* and controls convicted), the handling of the three repeated ids, and what
+  would be sent back to a coder. Nothing was sent back: both outputs were complete and within
+  the sheets' vocabularies.
+- **B.** Each subagent was given, beyond the sheet, a short brief: the folder, the output path,
+  to read only the two files, no web, no subagents, to code each case by reading it. Each wrote
+  its answers as a table in a script in its folder; I read both scripts and they hold one
+  hand-written entry per case and no rule. The words each coder wrote (`after`, `what`, `note`)
+  are removed and the entries ordered by id.
+- **C.** `second_coding.py` repeats the clause of `run_prior`, which is local to that function,
+  to get a verdict per case, and fails if the copy's tallies are not the scorer's on any
+  coding. The scorers are called with `case_runs.load` redirected to the second coding's file.
+  Sheet 16's second coding is counted against the author twice, with the sets read from each
+  coding of sheet 11.
+- **D.** Beyond the paths §3 D names: `VERDICTS.md` (one line), the regenerated
+  `state/views/VERDICT_STATUS_INVENTORY.md`, and `followup-16-registration.patch`, which the
+  edits of this pass to `PROVENANCE.md` and the generated files stopped from applying; it is
+  rebuilt on a clone of this branch by applying the earlier patch without its four conflicting
+  files, re-entering its one `PROVENANCE.md` row and regenerating, with the same thirteen
+  entries. On the clone: `checkers.run` exit 0 at 125 entries, the graph checker OK at 2701
+  nodes, the state valid at 230 claims. Rows 3, 7 and 35 of the ledger now point at item 148
+  and not 154, and the ranking gains an eleventh entry for it. Row 8 is not revised; the second
+  coding's count of bent judgement is in `CASE_RUNS.md` and in item 154. No `DECISIONS.md`
+  entry: nothing was decided between alternatives and nothing is reserved.
+
+### AF.6 What was not shown
+
+- **A rate of agreement among readers.** One second coding, by one language model. Both
+  coders are language models, and no person has read a case against either coding (item 148).
+- **That the two coders' models differ**, the first being unrecorded.
+- **Anything about the paraphrases.** Both coders read the same texts, written for this work
+  from the book; an error in a paraphrase is shared, and agreement between the codings does
+  not bear on it.
+- **That the rule is right on cases it was not formed against.** The bank is the one the
+  disclosure rule was formed with in view, on either coding.
+- **That the coders read nothing else.** Each was told to; nothing enforced it. They ran with
+  this repository as working directory. Their tool-call counts (9 and 7) fit reading two files
+  and writing one, and I did not inspect the calls.
+- **Sheet 16 independently of sheet 11.** The 152 cases and their three sets were fixed by the
+  first coding of sheet 11.
+- **Bent judgement.** Ten cases on the second coding, four on the first, none with a lapse
+  expected on either; the prediction written for such cases is still untested.
+- **Sheets 14 and 15, and the 84 cases outside the book**, which have one coding.
+- The tolerances are mine, fixed in advance; with other tolerances other predictions fail.
+- **Gates.** Under Python 3.13. The round's runner, on the tree of commit `fc49fb8d` with the rebuilt patch in the working tree: green, exit 0. `python3 tests/run.py`, on the tree of commit `fc49fb8d`: all green over 81 projects, exit 0, the Lean build skipped as that runner does by default. `python3 -m checkers.graph --root .`: OK at 2649 nodes, 2603 events, one warning, the standing one on decision anchors with no node. `python3 -m checkers.workspace_state --check`: valid at 217 claims, 136 rounds and 167 priorities, after `--write-handoff` rewrote `state/views/VERDICT_STATUS_INVENTORY.md`. No Lean file is touched, so no build and no axiom audit was run. The jobs that need a pull-request context run in CI on the pushed head.
+- **Components.** No row changes verdict: rows 3 and 35 — **living notes**; row 7 — **open**.
+  The ledger keeps thirteen rows **closed**, nineteen **open**, six **living notes**.
+
+### AF.7 Filings, names, and what is reserved
+
+Item 154 revised through its node, version 2, to the set of cases of bent judgement, and
+`ATTENTION.md` re-rendered; no item filed. `state/rounds.json`: the round's eighteenth-pass
+verdict, quoted from `VERDICTS.md`. `CURRENT.md` §3 revised. Root and round `PROVENANCE.md`:
+two rows each. No registry entry, no `DECISIONS.md` entry, no queue entry.
+
+**New names, all provisional.** Files: `account/SECOND_CODING.md`, `account/second_coding.py`,
+`account/bank_coded_11_second.json`, `account/bank_coded_16_second.json`. The phrase *second
+coding* and the line prefix `- second coding` in `CASE_RUNS.md`. The verdict kind
+`follow-up-18` in `state/rounds.json`.
+
+**Outstanding maintainer actions**
+
+1. Apply or decline the registration of thirteen Lean results, carried from the seventeenth
+   follow-up:
+   `git apply prompts/2026-11-10-legitimacy-definition-prosecution/followup-16-registration.patch`,
+   then `python3 -m checkers.graph --root .` and `python3 -m checkers.workspace_state --check`.
+   The patch applies to the tree of this pass's last commit.
+
+This pass reserves nothing and adds no entry to *Awaiting the author*. The pull request is not
+auto-merged; the merge is a pull-request fact.
+
 ## Attribution
 
 - Prompt-author model: Claude Fable 5 (Anthropic); dispatched 2026-11-10, kept
@@ -5921,4 +6057,8 @@ merge is a pull-request fact.
 - Seventeenth follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-24,
   kept verbatim as `PROMPT-followup-17.md`; executor model Claude Fable 5.2 (Anthropic), executed
   2026-11-24, with no subagent and no outside review.
+- Eighteenth follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-24,
+  kept verbatim as `PROMPT-followup-18.md`; executor model Claude Fable 5.2 (Anthropic), executed
+  2026-11-24; the two second codings by two subagents of the executor, each requested through
+  the harness as `opus` and each reporting its model as `claude-opus-5-5`; no outside review.
 - No chat bundle.
