@@ -1,12 +1,12 @@
 /-
 # The forty-one exact cases as terms of the model
 
-Round `prompts/2026-11-10-legitimacy-definition-prosecution/` (`PROMPT-followup-17.md` §2 B).
-`account/LEGITIMACY_CHECKS.md` in the round directory tabulates 41 cases of the legitimacy
-statement, computed by `account/legitimacy_checks.py`.  Here each is a term of `Model`
-(`LegitimacyModel.lean`), with the clauses of `Legit` that hold on it proved by the kernel
-through `Case.hasProfile_std` (`LegitimacyCase.lean`), at `θ = 1/20`, `η = 1/100`, `κ = 1/10`.
-`account/LEAN_CASES.md` sets the results beside the table.
+Round `prompts/2026-11-10-legitimacy-definition-prosecution/` (`PROMPT-followup-17.md` §2 B,
+`PROMPT-followup-19.md` §1 A and B).  `account/LEGITIMACY_CHECKS.md` in the round directory
+tabulates 41 cases of the legitimacy statement, computed by `account/legitimacy_checks.py`.
+Here each is a term of `Model` (`LegitimacyModel.lean`), with the clauses of `Legit` that hold
+on it proved by the kernel through `Case.hasProfile_std` (`LegitimacyCase.lean`), at
+`θ = 1/20`, `η = 1/100`, `κ = 1/10`.  `account/LEAN_CASES.md` sets the results beside the table.
 
 **The construction** (`Supplied`, `Supplied.case`).  A `Supplied` holds what a case of the
 table supplies, in the table's vocabulary; `Supplied.case` is the `Case` built from it, and
@@ -19,46 +19,51 @@ unsaid, and so decides what they test:
    before he began, which `Legit` requires for an effect-bearing move and `F2'` compares
    against.  The table's cases have one decision, which is time 1 here.
 2. His cases are a finite type with weights in proportion to `weight` (`Supplied.prob`), the
-   same at every time.  A chance the table supplies
-   as a number is supplied here as her act in each case (`act`), the weights being chosen so
-   that the weight of the cases in which she takes a lower-rated option is that number
-   (cases are ordered and she takes the lower-rated option below a threshold, `slip`).
+   same at every time.  A chance the table supplies as a number is supplied here as her act in
+   each case (`act`), the weights being chosen so that the weight of the cases in which she
+   takes a lower-rated option is that number (cases are ordered and she takes the lower-rated
+   option below a threshold, `slip`).
 3. Her rating `rate` is a function of the views she has heard, the moves in effect, the case
    and the time.  A course of events is a label of `K`, scored by `her` as a function of the
    moves in effect, or the course of an option, scored as she rates the option: every gap is
    zero, and what he expects an option to lead to does not vary with his conduct.
 4. So she goes against her earlier rating exactly when her act is rated below another option
-   by her rating at time 0, when no move was in effect.  The table supplies that chance as a
-   separate number; here it is derived.
+   by her rating at time 0, when no move was in effect, and she then had a rating of both
+   (`unrated` lists the options of whose course she had none at time 0).  Where the table
+   supplies that chance as a separate number, here it is derived.
 5. He has told her nothing (`told` is empty), as in every case of the table.
 6. Her options, the options that stop his moves and the moves she can pick out are the same in
    every case of his and under every course of conduct; her options may differ between the
    two decisions.  An option in `stops` is one she takes to stop his moves and after which he
    goes on with none; after any other option he goes on with all.
-7. What is on offer is the set the case designates (`offered`), at the times it designates;
-   `toldBear`, `toldMag` and `toldReveals` are what he told her each view bears on.  The
-   table's flag "relevance told" is rendered: false as nothing told; true as the options the
-   view changes and the size of the largest change.  Her state after hearing what is on offer
-   is marked `byOffer`, and her rating in it is `after`; her options then are `optsHeard`.
+7. `offered` is the set properly on offer, which `Legit` requires it to be: empty where the
+   case's offer is not a proper one.  `toldBear`, `toldMag` and `toldReveals` are what he told
+   her each view bears on.  The table's flag "relevance told" is rendered: false as nothing
+   told; true as the options the view changes and the size of the largest change.  Her state
+   after hearing what is on offer is marked `byOffer`, and her rating in it is `after`; her
+   options then are `optsHeard`.  `declined` holds a decline only where it stands.
 8. An option the case gives no rating is rated 0.
+9. A move that tells her something has in `plain` the move that would plainly tell it; a move
+   that is a plain telling has itself.
 
-**Data added to a case.**  Ten terms carry data the table's case does not supply, each stated
-at the term: an earlier decision at which a declined view was on offer (`d3`, `d4`, `d5`), her
-rating in the course of conduct without his move (`b2`, `b5`, `b10`), her rating after hearing
-both of two views (`d10`, `d11`), and two variants of cases whose own data give another verdict
-(`a5q`, `a8w`).  Six further variants (`d1o`, `d4o`, `d6o`, `d7o`, `d8o`, `d10o`) take an
-improper offer or a decline that does not stand as not designated at all.
+**Each term's data is its case's.**  `legitimacy_checks.py` states, for each case, the data
+its term carries: for B2, B5, B6 and B10 her rating in the course without his move (`bentRate`,
+`bentAct`); for D3, D4 and D5 the earlier decision at which the view was on offer; for D10 and
+D11 her ratings after taking up both offers; for A5 the stopping option among her options; for
+A8 the cases in which she rates stopping higher.  The script's data for B2, B5, B6, B10 and
+D3 to D5 was written from these terms, not before them.
+
+**Variants and instances.**  `b6r`: B6 with a rating of going on at the earlier decision; F2′
+fails, so on `b6` the silence of the clause is what passes it.  `d11s`, with `d11s_alone`: D11
+with nothing told of what either view bears on; the two views move a rating only together, each
+alone moves nothing, and F1 fails.  `twoOffers_none`: a model on which two sets of views are
+each properly on offer and no set is the largest.  `learnt`, beside `foreseen`: a move that
+bears an effect on his belief when it starts and none on his belief at the decision before
+fails the start rule and no other clause (`learnt_profile`, `learnt_bears`); with his later
+belief held from the start it is legitimate (`foreseen_has`).
 
 **Theorems.**  For each term `x`: `x_has`, the clauses that hold (`Supplied.Has`), and
 `x_verdict`, `Legit` or its negation.  `table`: the 41 of the table together.
-
-**Three instances for `LegitimacyModel.lean`'s renderings.**  `twoOffers_none`: a model on
-which two sets of views are each properly on offer and no set is the largest.  `d11s`, with
-`d11s_alone`: two views that move a rating only together, nothing told of what either bears on,
-fail F1, where each alone moves nothing.  `learnt`, beside `foreseen`: a move that bears an
-effect on his belief when it starts and none on his belief at the decision before fails the
-start rule and no other clause (`learnt_profile`, `learnt_bears`); with his later belief held
-from the start it is legitimate (`foreseen_has`).
 
 **Terms inhabiting the hypotheses of five theorems of `LegitimacyModel.lean`.**
 `Model.legit_of_nothing` at `nothing` (`nothing_instance`); `Model.not_legit_of_untold` at `c3`
@@ -69,10 +74,10 @@ from the start it is legitimate (`foreseen_has`).
 course of his conduct, so it differs when a move is left out.
 
 **Not established here.**  That a term is the only reading of its case: the construction
-above and the added data are choices.  Anything about cases with more than two decisions, with
-a move in progress across a decision, or with gaps.  `b6` is the term its numbers give; that
-she had no earlier rating of the matter, which is what the case is about, is not something
-`Model` can say (`LegitimacyModel.lean`, respect 4).
+above is a choice.  Anything about cases with more than two decisions, with a move in progress
+across a decision, with gaps, or, `learnt` apart, with a belief of his that changes.  That
+`plain` in `b10` is the telling of the mannered move's content: the model does not tie a move
+to `tell` (`LegitimacyModel.lean`, rendering 7).
 
 Names are provisional (AGENTS.md standard 6).
 -/
@@ -285,22 +290,27 @@ def a3 : Supplied Opt Empty (Fin 4) Unit Lab Empty :=
 
 def a4 : Supplied Opt Empty (Fin 4) Unit Lab Empty := { a3 with known := univ }
 
-/-- Two feeds; her score of `buy` is 1/2 with either and 1/10 with neither.  The stopping
-option is `quit`, which the case does not list among her options. -/
-def a5 : Supplied Opt Empty (Fin 2) Unit Lab Empty :=
+/-- The table's `feeds`: two feeds; her score of `buy` is 1/2 with either and 1/10 with neither.
+No option stops them. -/
+def feeds : Supplied Opt Empty (Fin 2) Unit Lab Empty :=
   { plain Empty (Fin 2) Unit with
     moves := univ
     known := univ
     her := fun Y k => match k with
       | .buy => if Y.Nonempty then 1 / 2 else 1 / 10
       | _ => 0
+    stops := ∅ }
+
+/-- The feeds, with a third option `quit`, rated 3/10, which stops both. -/
+def a5 : Supplied Opt Empty (Fin 2) Unit Lab Empty :=
+  { feeds with
+    opts := fun _ => {Opt.go, Opt.leave, Opt.quit}
+    rate := fun _ _ _ _ a => match a with
+      | .quit => 3 / 10
+      | a => plainRate a
     stops := {Opt.quit} }
 
-/-- `a5` with `quit` among her options (added). -/
-def a5q : Supplied Opt Empty (Fin 2) Unit Lab Empty :=
-  { a5 with opts := fun _ => {Opt.go, Opt.leave, Opt.quit} }
-
-def a6 : Supplied Opt Empty (Fin 2) Unit Lab Empty := { a5 with stops := ∅ }
+def a6 : Supplied Opt Empty (Fin 2) Unit Lab Empty := feeds
 
 /-- The table's `one`: a move raising her score of `go` from 1/2 to 7/10, which she can pick
 out. -/
@@ -314,14 +324,10 @@ def one : Supplied Opt Empty (Fin 1) Unit Lab Empty :=
 
 def a7 : Supplied Opt Empty (Fin 1) Unit Lab Empty := { one with stops := ∅ }
 
-/-- The case supplies, beyond `a9`, the chance 1/2 that she stops given that she rates stopping
-strictly higher.  By its ratings she rates stopping lower in every case of his, so the term is
-that of `a9`. -/
-def a8 : Supplied Opt Empty (Fin 1) Unit Lab Empty := one
-
-/-- `a8` with cases added in which she rates stopping higher (added): in cases 1 and 2, of
-weight 1/10 each, she rates `leave` at 9/10; she stops in case 1 and not in case 2. -/
-def a8w : Supplied Opt Empty (Fin 1) (Fin 3) Lab Empty :=
+/-- The influence of `one`, where the chance that she rates stopping strictly higher is 1/5 and
+the chance that she then stops is 1/2: in cases 1 and 2, of weight 1/10 each, she rates `leave`
+at 9/10; she stops in case 1 and not in case 2. -/
+def a8 : Supplied Opt Empty (Fin 1) (Fin 3) Lab Empty :=
   { plain Empty (Fin 1) (Fin 3) with
     moves := {0}
     known := {0}
@@ -367,10 +373,9 @@ def b1 : Supplied Opt Empty (Fin 1) (Fin 3) Lab Empty :=
     weight := ![1, 5, 4]
     act := fun Y => slip (if 0 ∈ Y then 2 else 1) }
 
-/-- The case supplies: her score of giving in 4/5 with the nagging and 1/5 without; no chance
-of acting against her rating; chance 3/5 of going against her earlier rating with it, 0 without.
-Added: in case 0, of weight 3/5, without the nagging she rates `go` at 3/10, below `leave`, and
-takes `leave`; with it she rates as the case says and takes `go`. -/
+/-- Her score of giving in is 4/5 with the nagging and 1/5 without.  In case 0, of weight 3/5,
+without the nagging she rates `go` at 3/10, below `leave`, and takes `leave`; with it she rates
+`go` at 7/10 and takes it. -/
 def b2 : Supplied Opt Empty (Fin 1) (Fin 2) Lab Empty :=
   { plain Empty (Fin 1) (Fin 2) with
     moves := {0}
@@ -392,8 +397,8 @@ def b4 : Supplied Opt Empty (Fin 1) Unit Lab Empty :=
       | .giveIn => if 0 ∈ Y then 4 / 5 else 3 / 5
       | _ => 0 }
 
-/-- The case supplies: her score of `go` 9/10 with the influence and 3/10 without; chance 7/10
-of going against her earlier rating with it.  Added: as in `b2`, with case 0 of weight 7/10. -/
+/-- Her score of `go` is 9/10 with the influence and 3/10 without.  Her rating as in `b2`, with
+case 0 of weight 7/10. -/
 def b5 : Supplied Opt Empty (Fin 1) (Fin 2) Lab Empty :=
   { plain Empty (Fin 1) (Fin 2) with
     moves := {0}
@@ -405,13 +410,22 @@ def b5 : Supplied Opt Empty (Fin 1) (Fin 2) Lab Empty :=
     rate := fun _ Y ω _ => bentRate 0 Y ω
     act := bentAct 0 }
 
-def b6 : Supplied Opt Empty (Fin 1) Unit Lab Empty :=
-  { plain Empty (Fin 1) Unit with
+/-- `b6` with a rating of going on at the earlier decision. -/
+def b6r : Supplied Opt Empty (Fin 1) (Fin 2) Lab Empty :=
+  { plain Empty (Fin 1) (Fin 2) with
     moves := {0}
     known := {0}
+    weight := ![7, 3]
     her := fun Y k => match k with
       | .go => if 0 ∈ Y then 9 / 10 else 1 / 2
-      | _ => 0 }
+      | _ => 0
+    rate := fun _ Y ω _ => bentRate 0 Y ω
+    act := bentAct 0 }
+
+/-- Her score of `go` is 9/10 with the influence and 1/2 without.  Her rating and act as in `b5`;
+at the earlier decision she had no rating of what going on leads to. -/
+def b6 : Supplied Opt Empty (Fin 1) (Fin 2) Lab Empty :=
+  { b6r with unrated := fun a => a == Opt.go }
 
 def b7 : Supplied Opt Empty (Fin 1) Unit Lab Empty :=
   { plain Empty (Fin 1) Unit with
@@ -439,17 +453,18 @@ def b9 : Supplied Opt Empty (Fin 1) (Fin 2) Lab Empty :=
     weight := ![1, 49]
     act := fun Y => slip (if 0 ∈ Y then 1 else 0) }
 
-/-- Move 0 is the telling, move 1 its manner; she can pick out both.  The case supplies: no
-chance of acting against her rating; chance 1/2 of going against her earlier rating when the
-manner is there.  Added: as in `b2`, with case 0 of weight 1/2 and the manner as the move. -/
+/-- Move 0 is his telling her his view in a manner that does more than the telling would; she
+can pick it out.  Move 1, which he does not make, is the plain telling of the same view.  Her
+rating as in `b2`, with case 0 of weight 1/2: told plainly, or not at all, she rates `go` at
+3/10 there and takes `leave`. -/
 def b10 : Supplied Opt Empty (Fin 2) (Fin 2) Lab Empty :=
   { plain Empty (Fin 2) (Fin 2) with
-    moves := {0, 1}
-    plain := fun m => if m = 0 then {0} else ∅
-    known := {0, 1}
+    moves := {0}
+    plain := fun _ => {1}
+    known := {0}
     weight := ![1, 1]
-    rate := fun _ Y ω _ => bentRate 1 Y ω
-    act := bentAct 1 }
+    rate := fun _ Y ω _ => bentRate 0 Y ω
+    act := bentAct 0 }
 
 def b11 : Supplied Opt Empty (Fin 1) Unit Lab Empty :=
   { plain Empty (Fin 1) Unit with
@@ -536,19 +551,16 @@ def heardD : OptD → ℚ
   | .leave => 1 / 2
   | _ => 1 / 20
 
-/-- Both views on offer, with nothing told of what either bears on. -/
+/-- Both views can be heard, with nothing told of what either bears on: neither is properly on
+offer. -/
 def d1 : Supplied OptD ViewD Empty Unit Empty Empty where
   opts := fun _ => {OptD.buy, OptD.leave, OptD.hearX, OptD.hearH}
   rate := fun T _ _ _ => rateD T
   act := fun _ _ => OptD.buy
   hearOpt := hearD
   views := at1 {ViewD.x, ViewD.h}
-  offered := at1 {ViewD.x, ViewD.h}
   after := heardD
   optsHeard := {OptD.buy, OptD.leave, OptD.hearX, OptD.hearH}
-
-/-- `d1` with nothing designated as on offer. -/
-def d1o : Supplied OptD ViewD Empty Unit Empty Empty := { d1 with offered := fun _ => ∅ }
 
 /-- `x` on offer; he has told her it bears on `buy`, by 4/5. -/
 def d2 : Supplied OptD ViewD Empty Unit Empty Empty where
@@ -563,9 +575,8 @@ def d2 : Supplied OptD ViewD Empty Unit Empty Empty where
   after := heardD
   optsHeard := {OptD.buy, OptD.leave, OptD.hearX, OptD.hearH}
 
-/-- The case supplies a flag that the offer was valid when she declined.  Added: time 0 is the
-decision of `d2`, with `x` on offer; at time 1 she has declined it and hearing is not among her
-options. -/
+/-- Time 0 is the decision of `d2`, with `x` on offer, at which she takes `buy`; at time 1 she
+has declined it and hearing is not among her options. -/
 def d3 : Supplied OptD ViewD Empty Unit Empty Empty :=
   { d2 with
     opts := fun t => if t = 0 then {OptD.buy, OptD.leave, OptD.hearX} else {OptD.buy, OptD.leave}
@@ -573,9 +584,9 @@ def d3 : Supplied OptD ViewD Empty Unit Empty Empty :=
     offered := fun t => if t = 0 then {ViewD.x} else ∅
     declined := at1 {ViewD.x} }
 
-/-- The case supplies flags that the offer was valid and that the view bears on more since.
-Added: as `d3`, where at time 0 hearing `x` would have lowered `buy` to 4/5 and he told her it
-bore on `buy` by 1/10; at time 1 it would lower `buy` to 1/10. -/
+/-- As `d3`, where at time 0 hearing `x` would have lowered `buy` to 4/5 and he told her it
+bore on `buy` by 1/10; at time 1 it would lower `buy` to 1/10, so her decline no longer stands
+and `declined` is empty. -/
 def d4 : Supplied OptD ViewD Empty Unit Empty Empty :=
   { d3 with
     rate := fun T _ _ t a => match a with
@@ -586,14 +597,11 @@ def d4 : Supplied OptD ViewD Empty Unit Empty Empty :=
     after := fun a => match a with
       | .buy => 4 / 5
       | .leave => 1 / 2
-      | _ => 1 / 20 }
+      | _ => 1 / 20
+    declined := fun _ => ∅ }
 
-/-- `d4` with the decline not designated. -/
-def d4o : Supplied OptD ViewD Empty Unit Empty Empty := { d4 with declined := fun _ => ∅ }
-
-/-- The case supplies a valid earlier decline of a view `e` other than `x`.  Added: at time 0
-his one view is `e`, which changes no rating, on offer with nothing told to bear; at time 1 she
-has declined `e` and his view is `x`. -/
+/-- At time 0 his one view is `e`, which changes no rating, on offer with nothing told to bear;
+at time 1 she has declined `e` and his view is `x`. -/
 def d5 : Supplied OptD ViewD Empty Unit Empty Empty where
   opts := fun t => if t = 0 then {OptD.buy, OptD.leave, OptD.hearE} else {OptD.buy, OptD.leave}
   rate := fun T _ _ _ => rateD T
@@ -608,27 +616,28 @@ def d5 : Supplied OptD ViewD Empty Unit Empty Empty where
     | _ => 1 / 20
   optsHeard := {OptD.buy, OptD.leave}
 
-/-- After hearing, `buy` is no longer among her options. -/
-def d6 : Supplied OptD ViewD Empty Unit Empty Empty := { d2 with optsHeard := {OptD.leave} }
+/-- After hearing, `buy` is no longer among her options: `x` is not properly on offer. -/
+def d6 : Supplied OptD ViewD Empty Unit Empty Empty :=
+  { d2 with
+    optsHeard := {OptD.leave}
+    offered := fun _ => ∅ }
 
-def d6o : Supplied OptD ViewD Empty Unit Empty Empty := { d6 with offered := fun _ => ∅ }
-
-/-- After hearing she rates `buy` at 0 and `leave` at 1/5. -/
+/-- After hearing she rates `buy` at 0 and `leave` at 1/5: `x` is not properly on offer. -/
 def d7 : Supplied OptD ViewD Empty Unit Empty Empty :=
   { d2 with
     after := fun a => match a with
       | .buy => 0
       | .leave => 1 / 5
       | _ => 1 / 20
-    optsHeard := {OptD.buy, OptD.leave} }
-
-def d7o : Supplied OptD ViewD Empty Unit Empty Empty := { d7 with offered := fun _ => ∅ }
+    optsHeard := {OptD.buy, OptD.leave}
+    offered := fun _ => ∅ }
 
 inductive OptL | a | b | hearX
   deriving DecidableEq, Fintype
 
-/-- The table's `late`: his view would show her `b`, rated 9/10, against `a` at 2/5.  On offer,
-with her told that it shows an option; after hearing, `b` is not among her options. -/
+/-- The table's `late`: his view would show her `b`, rated 9/10, against `a` at 2/5.  It can be
+heard, with her told that it shows an option; after hearing, `b` is not among her options, so
+it is not properly on offer. -/
 def d8 : Supplied OptL Unit Empty Unit Empty Empty where
   opts := fun _ => {OptL.a, OptL.hearX}
   rate := fun _ _ _ _ o => match o with
@@ -638,7 +647,6 @@ def d8 : Supplied OptL Unit Empty Unit Empty Empty where
   act := fun _ _ => OptL.a
   hearOpt := fun _ => OptL.hearX
   views := at1 {()}
-  offered := at1 {()}
   rev := fun T => if () ∈ T then {OptL.b} else ∅
   toldReveals := fun _ => true
   after := fun o => match o with
@@ -647,9 +655,11 @@ def d8 : Supplied OptL Unit Empty Unit Empty Empty where
     | .hearX => 3 / 10
   optsHeard := {OptL.a}
 
-def d8o : Supplied OptL Unit Empty Unit Empty Empty := { d8 with offered := fun _ => ∅ }
-
-def d9 : Supplied OptL Unit Empty Unit Empty Empty := { d8 with optsHeard := {OptL.a, OptL.b} }
+/-- After hearing, `b` is among her options, and the view is on offer. -/
+def d9 : Supplied OptL Unit Empty Unit Empty Empty :=
+  { d8 with
+    optsHeard := {OptL.a, OptL.b}
+    offered := at1 {()} }
 
 /-- The table's `r2`: `buy` is 9/10, or 1/10 once she has heard both `x` and `y`; every other
 option 1/2. -/
@@ -657,16 +667,15 @@ def rateD2 (T : Finset ViewD) : OptD → ℚ
   | .buy => if ViewD.x ∈ T ∧ ViewD.y ∈ T then 1 / 10 else 9 / 10
   | _ => 1 / 2
 
-/-- `x` and `y` on offer, each told to bear on `buy` by 4/5.  The case supplies her ratings
-after hearing one, when the other can no longer be heard.  Added: that state, with `buy` at
-9/10, is her state after taking up the offer of both. -/
+/-- `x` and `y` can each be heard, each told to bear on `buy` by 4/5.  After hearing one the
+other can no longer be heard, and that state, with `buy` at 9/10, is her state after taking up
+both: neither view, and no set of them, is properly on offer. -/
 def d10 : Supplied OptD ViewD Empty Unit Empty Empty where
   opts := fun _ => {OptD.buy, OptD.leave, OptD.hearX, OptD.hearY}
   rate := fun T _ _ _ => rateD2 T
   act := fun _ _ => OptD.buy
   hearOpt := hearD
   views := at1 {ViewD.x, ViewD.y}
-  offered := at1 {ViewD.x, ViewD.y}
   toldBear := fun _ => {OptD.buy}
   toldMag := fun _ => 4 / 5
   after := fun a => match a with
@@ -674,16 +683,15 @@ def d10 : Supplied OptD ViewD Empty Unit Empty Empty where
     | _ => 1 / 2
   optsHeard := {OptD.buy, OptD.leave}
 
-def d10o : Supplied OptD ViewD Empty Unit Empty Empty := { d10 with offered := fun _ => ∅ }
-
-/-- The case supplies her ratings after hearing one, with the other still hearable.  Added:
-after hearing both she rates `buy` at 1/10, as being told both would leave her. -/
+/-- After hearing one the other can still be heard, and after hearing both she rates `buy` at
+1/10, as being told both would leave her: both are on offer. -/
 def d11 : Supplied OptD ViewD Empty Unit Empty Empty :=
   { d10 with
     after := fun a => match a with
       | .buy => 1 / 10
       | _ => 1 / 2
-    optsHeard := {OptD.buy, OptD.leave, OptD.hearX, OptD.hearY} }
+    optsHeard := {OptD.buy, OptD.leave, OptD.hearX, OptD.hearY}
+    offered := at1 {ViewD.x, ViewD.y} }
 
 /-- `d11` with nothing told of what either view bears on, and so nothing on offer.  Alone,
 neither view moves a rating (`d11s_alone`); together they move `buy` by 4/5. -/
@@ -718,17 +726,11 @@ theorem a4_has : a4.Has ⟨true, true, true, true, true, true, true⟩ :=
 theorem a4_verdict : a4.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
   a4_has.legit
 
-theorem a5_has : a5.Has ⟨true, true, true, true, false, true, true⟩ :=
+theorem a5_has : a5.Has ⟨true, true, true, true, true, true, true⟩ :=
   Supplied.has (by decide +kernel)
 
-theorem a5_verdict : ¬ a5.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
-  a5_has.not_legit (by decide)
-
-theorem a5q_has : a5q.Has ⟨true, true, true, true, true, true, true⟩ :=
-  Supplied.has (by decide +kernel)
-
-theorem a5q_verdict : a5q.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
-  a5q_has.legit
+theorem a5_verdict : a5.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
+  a5_has.legit
 
 theorem a6_has : a6.Has ⟨true, true, true, true, false, true, true⟩ :=
   Supplied.has (by decide +kernel)
@@ -742,17 +744,11 @@ theorem a7_has : a7.Has ⟨true, true, true, true, false, true, true⟩ :=
 theorem a7_verdict : ¬ a7.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
   a7_has.not_legit (by decide)
 
-theorem a8_has : a8.Has ⟨true, true, true, true, true, true, true⟩ :=
+theorem a8_has : a8.Has ⟨true, true, true, true, true, true, false⟩ :=
   Supplied.has (by decide +kernel)
 
-theorem a8_verdict : a8.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
-  a8_has.legit
-
-theorem a8w_has : a8w.Has ⟨true, true, true, true, true, true, false⟩ :=
-  Supplied.has (by decide +kernel)
-
-theorem a8w_verdict : ¬ a8w.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
-  a8w_has.not_legit (by decide)
+theorem a8_verdict : ¬ a8.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
+  a8_has.not_legit (by decide)
 
 theorem a9_has : a9.Has ⟨true, true, true, true, true, true, true⟩ :=
   Supplied.has (by decide +kernel)
@@ -886,17 +882,11 @@ theorem c7_has : c7.Has ⟨true, true, true, true, true, true, true⟩ :=
 theorem c7_verdict : c7.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
   c7_has.legit
 
-theorem d1_has : d1.Has ⟨true, false, true, true, true, true, true⟩ :=
+theorem d1_has : d1.Has ⟨true, true, true, false, true, true, true⟩ :=
   Supplied.has (by decide +kernel)
 
 theorem d1_verdict : ¬ d1.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
   d1_has.not_legit (by decide)
-
-theorem d1o_has : d1o.Has ⟨true, true, true, false, true, true, true⟩ :=
-  Supplied.has (by decide +kernel)
-
-theorem d1o_verdict : ¬ d1o.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
-  d1o_has.not_legit (by decide)
 
 theorem d2_has : d2.Has ⟨true, true, true, true, true, true, true⟩ :=
   Supplied.has (by decide +kernel)
@@ -910,17 +900,11 @@ theorem d3_has : d3.Has ⟨true, true, true, true, true, true, true⟩ :=
 theorem d3_verdict : d3.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
   d3_has.legit
 
-theorem d4_has : d4.Has ⟨true, true, false, true, true, true, true⟩ :=
+theorem d4_has : d4.Has ⟨true, true, true, false, true, true, true⟩ :=
   Supplied.has (by decide +kernel)
 
 theorem d4_verdict : ¬ d4.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
   d4_has.not_legit (by decide)
-
-theorem d4o_has : d4o.Has ⟨true, true, true, false, true, true, true⟩ :=
-  Supplied.has (by decide +kernel)
-
-theorem d4o_verdict : ¬ d4o.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
-  d4o_has.not_legit (by decide)
 
 theorem d5_has : d5.Has ⟨true, true, true, false, true, true, true⟩ :=
   Supplied.has (by decide +kernel)
@@ -928,41 +912,23 @@ theorem d5_has : d5.Has ⟨true, true, true, false, true, true, true⟩ :=
 theorem d5_verdict : ¬ d5.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
   d5_has.not_legit (by decide)
 
-theorem d6_has : d6.Has ⟨true, false, true, true, true, true, true⟩ :=
+theorem d6_has : d6.Has ⟨true, true, true, false, true, true, true⟩ :=
   Supplied.has (by decide +kernel)
 
 theorem d6_verdict : ¬ d6.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
   d6_has.not_legit (by decide)
 
-theorem d6o_has : d6o.Has ⟨true, true, true, false, true, true, true⟩ :=
-  Supplied.has (by decide +kernel)
-
-theorem d6o_verdict : ¬ d6o.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
-  d6o_has.not_legit (by decide)
-
-theorem d7_has : d7.Has ⟨true, false, true, true, true, true, true⟩ :=
+theorem d7_has : d7.Has ⟨true, true, true, false, true, true, true⟩ :=
   Supplied.has (by decide +kernel)
 
 theorem d7_verdict : ¬ d7.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
   d7_has.not_legit (by decide)
 
-theorem d7o_has : d7o.Has ⟨true, true, true, false, true, true, true⟩ :=
-  Supplied.has (by decide +kernel)
-
-theorem d7o_verdict : ¬ d7o.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
-  d7o_has.not_legit (by decide)
-
-theorem d8_has : d8.Has ⟨true, false, true, true, true, true, true⟩ :=
+theorem d8_has : d8.Has ⟨true, true, true, false, true, true, true⟩ :=
   Supplied.has (by decide +kernel)
 
 theorem d8_verdict : ¬ d8.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
   d8_has.not_legit (by decide)
-
-theorem d8o_has : d8o.Has ⟨true, true, true, false, true, true, true⟩ :=
-  Supplied.has (by decide +kernel)
-
-theorem d8o_verdict : ¬ d8o.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
-  d8o_has.not_legit (by decide)
 
 theorem d9_has : d9.Has ⟨true, true, true, true, true, true, true⟩ :=
   Supplied.has (by decide +kernel)
@@ -970,23 +936,23 @@ theorem d9_has : d9.Has ⟨true, true, true, true, true, true, true⟩ :=
 theorem d9_verdict : d9.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
   d9_has.legit
 
-theorem d10_has : d10.Has ⟨true, false, true, true, true, true, true⟩ :=
+theorem d10_has : d10.Has ⟨true, true, true, false, true, true, true⟩ :=
   Supplied.has (by decide +kernel)
 
 theorem d10_verdict : ¬ d10.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
   d10_has.not_legit (by decide)
-
-theorem d10o_has : d10o.Has ⟨true, true, true, false, true, true, true⟩ :=
-  Supplied.has (by decide +kernel)
-
-theorem d10o_verdict : ¬ d10o.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
-  d10o_has.not_legit (by decide)
 
 theorem d11_has : d11.Has ⟨true, true, true, true, true, true, true⟩ :=
   Supplied.has (by decide +kernel)
 
 theorem d11_verdict : d11.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
   d11_has.legit
+
+theorem b6r_has : b6r.Has ⟨true, true, true, true, true, false, true⟩ :=
+  Supplied.has (by decide +kernel)
+
+theorem b6r_verdict : ¬ b6r.case.model.Legit (1 / 20) (1 / 100) (1 / 10) :=
+  b6r_has.not_legit (by decide)
 
 theorem d11s_has : d11s.Has ⟨true, true, true, false, true, true, true⟩ :=
   Supplied.has (by decide +kernel)
@@ -1005,10 +971,10 @@ theorem table :
     a2.Has ⟨true, true, true, true, true, false, true⟩ ∧
     a3.Has ⟨true, true, true, true, false, true, true⟩ ∧
     a4.Has ⟨true, true, true, true, true, true, true⟩ ∧
-    a5.Has ⟨true, true, true, true, false, true, true⟩ ∧
+    a5.Has ⟨true, true, true, true, true, true, true⟩ ∧
     a6.Has ⟨true, true, true, true, false, true, true⟩ ∧
     a7.Has ⟨true, true, true, true, false, true, true⟩ ∧
-    a8.Has ⟨true, true, true, true, true, true, true⟩ ∧
+    a8.Has ⟨true, true, true, true, true, true, false⟩ ∧
     a9.Has ⟨true, true, true, true, true, true, true⟩ ∧
     a10.Has ⟨true, true, true, true, false, true, true⟩ ∧
     a11.Has ⟨true, true, true, true, true, true, true⟩ ∧
@@ -1031,16 +997,16 @@ theorem table :
     c5.Has ⟨true, true, true, false, true, true, true⟩ ∧
     c6.Has ⟨true, true, true, false, true, true, true⟩ ∧
     c7.Has ⟨true, true, true, true, true, true, true⟩ ∧
-    d1.Has ⟨true, false, true, true, true, true, true⟩ ∧
+    d1.Has ⟨true, true, true, false, true, true, true⟩ ∧
     d2.Has ⟨true, true, true, true, true, true, true⟩ ∧
     d3.Has ⟨true, true, true, true, true, true, true⟩ ∧
-    d4.Has ⟨true, true, false, true, true, true, true⟩ ∧
+    d4.Has ⟨true, true, true, false, true, true, true⟩ ∧
     d5.Has ⟨true, true, true, false, true, true, true⟩ ∧
-    d6.Has ⟨true, false, true, true, true, true, true⟩ ∧
-    d7.Has ⟨true, false, true, true, true, true, true⟩ ∧
-    d8.Has ⟨true, false, true, true, true, true, true⟩ ∧
+    d6.Has ⟨true, true, true, false, true, true, true⟩ ∧
+    d7.Has ⟨true, true, true, false, true, true, true⟩ ∧
+    d8.Has ⟨true, true, true, false, true, true, true⟩ ∧
     d9.Has ⟨true, true, true, true, true, true, true⟩ ∧
-    d10.Has ⟨true, false, true, true, true, true, true⟩ ∧
+    d10.Has ⟨true, true, true, false, true, true, true⟩ ∧
     d11.Has ⟨true, true, true, true, true, true, true⟩ :=
   ⟨a1_has, a2_has, a3_has, a4_has, a5_has, a6_has, a7_has, a8_has, a9_has, a10_has, a11_has,
     a12_has, b1_has, b2_has, b3_has, b4_has, b5_has, b6_has, b7_has, b8_has, b9_has, b10_has,
@@ -1225,16 +1191,12 @@ end Workspace.Deference.Contrib.LegitimacyModel.Cases
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.a4_verdict
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.a5_has
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.a5_verdict
-#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.a5q_has
-#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.a5q_verdict
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.a6_has
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.a6_verdict
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.a7_has
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.a7_verdict
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.a8_has
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.a8_verdict
-#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.a8w_has
-#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.a8w_verdict
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.a9_has
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.a9_verdict
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.a10_has
@@ -1281,38 +1243,28 @@ end Workspace.Deference.Contrib.LegitimacyModel.Cases
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.c7_verdict
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d1_has
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d1_verdict
-#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d1o_has
-#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d1o_verdict
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d2_has
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d2_verdict
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d3_has
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d3_verdict
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d4_has
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d4_verdict
-#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d4o_has
-#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d4o_verdict
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d5_has
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d5_verdict
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d6_has
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d6_verdict
-#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d6o_has
-#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d6o_verdict
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d7_has
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d7_verdict
-#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d7o_has
-#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d7o_verdict
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d8_has
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d8_verdict
-#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d8o_has
-#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d8o_verdict
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d9_has
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d9_verdict
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d10_has
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d10_verdict
-#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d10o_has
-#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d10o_verdict
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d11_has
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d11_verdict
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.b6r_has
+#print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.b6r_verdict
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d11s_has
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d11s_verdict
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Cases.d11s_alone

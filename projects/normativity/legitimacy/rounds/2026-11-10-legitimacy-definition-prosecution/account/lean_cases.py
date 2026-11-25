@@ -11,8 +11,9 @@ It checks that each is stated with the proof `Supplied.has (by decide +kernel)` 
 
 An outcome is computed for each of the 41 cases from the Lean profile and the row
 legitimacy_checks.py computes: `differs` when the verdicts differ; `agrees, other clause` when
-both fail and the clauses differ; `agrees` otherwise.  `not expressible` is set by hand below,
-with the cases that carry data the table's case does not supply and the variants.
+both fail and the clauses differ; `agrees` otherwise.  `not expressible`, the cases that carry
+data the table's case does not supply, and the variants are set by hand below; the first two
+lists are empty.
 
 `report()` fails when a case has no theorem, when a theorem is not stated in the expected form,
 when either file is missing, or when LEAN_CASES.md's rows or counts are not the ones computed.
@@ -26,35 +27,19 @@ HERE = pathlib.Path(__file__).resolve().parent
 DOC = "LEAN_CASES.md"
 CLAUSES = ["start rule", "proper offers", "declines", "F1", "F2", "F2'", "F3"]
 
-NOT_EXPRESSIBLE = {
-    "B6": "no field says she had no earlier rating of the matter",
-}
-ADDED = {
-    "B2": "her rating without the nagging",
-    "B5": "her rating without the influence",
-    "B10": "her rating without the manner",
-    "D3": "an earlier decision with the view on offer",
-    "D4": "an earlier decision with the view on offer, and its bearing then",
-    "D5": "an earlier decision with the other view on offer",
-    "D10": "her state after taking up both offers",
-    "D11": "her ratings after hearing both",
-}
+NOT_EXPRESSIBLE = {}
+ADDED = {}
 VARIANTS = [
-    ("a5q", "A5", "`quit` is among her options"),
-    ("a8w", "A8", "in cases of weight 1/5 she rates stopping higher, and stops in half of them"),
-    ("d1o", "D1", "nothing is designated as on offer"),
-    ("d4o", "D4", "the decline is not designated"),
-    ("d6o", "D6", "nothing is designated as on offer"),
-    ("d7o", "D7", "nothing is designated as on offer"),
-    ("d8o", "D8", "nothing is designated as on offer"),
-    ("d10o", "D10", "nothing is designated as on offer"),
+    ("b6r", "B6", "she had a rating of going on at the earlier decision"),
+    ("d11s", "D11", "nothing is told of what either view bears on"),
 ]
 NEIGHBOURS = [
     ("early", "`start`", "start rule"),
     ("spent", "`optsHeard`", "proper offers"),
     ("unoffered", "`declined`", "declines"),
-    ("withheld", "`offered`", "F1"),
+    ("withheld", "`r`", "F1"),
     ("covert", "`known`", "F2"),
+    ("ongoing", "`goesOn`", "F2"),
     ("led", "`act`", "F2'"),
     ("stuck", "`act`", "F3"),
 ]

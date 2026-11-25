@@ -9,29 +9,37 @@ Supplied by a case:
   reveals(T)            the options telling T would show her
   offers[x]             for a view on offer: whether he told her what it bears on ("relevance told"),
                         and her rating of each option she has after hearing it ("after")
-  declined[x]           two flags: the offer was valid when she declined; it bears on more since
+  after all             her rating of each option she has after taking up everything on offer
+  declined[x]           the earlier decision ("earlier"): her options and rating then, his offer of
+                        the view, the options he told her it bore on and by how much, what she took
   moves, known, asked,  his moves; those she can pick out; those she asked for; those that are plain
-  tellings              tellings
+  tellings, plain       tellings; for a move that tells her something, the plain telling of it
   world(X)              for the conduct in which exactly the moves X are made: 'her' (how she scores
                         given courses, and her gaps), 'dep' (the chance she acts against her own
                         rating), 'items' and 'xopts' (what reaches her, and is open to her, from
                         others), 'against' (the chance she goes against her earlier rating; equal to
                         'dep' where a case does not give it)
   stops(B)              the options that stop the effect-bearing moves B
-  pstop                 the chance he gives to her stopping, given she rates stopping strictly higher
+  prefers stop, pstop   the chance he gives to her rating stopping strictly higher, and to her
+                        stopping given that she does
 
 Computed:
   U                     views less told, validly offered and validly declined
   F1                    over every non-empty subset T of U
   contributes, bears    by enumeration of every subset G of his moves
-  F2, F2', F3           from the above; F2' over every non-empty set of moves neither asked for nor tellings
+  F2, F2', F3           from the above; a stopping option counts only if it is an option of hers; F2'
+                        over every non-empty set G of moves not asked for, against the conduct with
+                        each move of G replaced by its plain telling, or left out where it has none;
+                        F3 only where the chance that she rates stopping higher is positive
+  a decline             stands when the earlier offer was valid on the earlier data, she took another
+                        option than the hearing, and the view now changes no rating by more than he
+                        told her then
+  'against', where her  in B2, B5, B6 and B10 (`bent`): from her stated rating in the course without
+  judgement is bent     the move, which is her earlier rating, and the options she had no rating of
 
-Not computed: the chance that she goes against her earlier rating ('against' is supplied, per case
-and per course of conduct), the validity of an earlier offer and the growth of a view's bearing since
-(two flags), the chance she would stop (one number).  Not exercised: the rule that an effect-bearing
-move starts after a decision of hers; the joint condition on a set of offers beyond each view's own
-(an offer's validity is checked view by view, the other hearings counted among the options that must
-stay open).
+Not computed: the chance that she goes against her earlier rating in the other cases ('against' is
+supplied, per case and per course of conduct), the two chances of F3 (two numbers).  Not exercised:
+the rule that an effect-bearing move starts after a decision of hers.
 
 `report()` fails when a computed verdict is not the expectation, or when LEGITIMACY_CHECKS.md's table
 is not the one computed.
@@ -58,12 +66,19 @@ def legit(case):
     told = frozenset(case.get("told", ()))
     r, opts = case["r"], case["options"]
     rev = case.get("reveals", lambda T: [])
-    def offer_valid(x, o):
+    def offer_valid(x, o, r=r, opts=opts):
         if not o["relevance told"]: return False
         need = [a for a in opts if a != "hear " + x] + list(rev(frozenset([x])))
         return all(a in o["after"] and abs(o["after"][a] - r(told | {x}, a)) <= theta for a in need)
     offered = {x for x, o in case.get("offers", {}).items() if offer_valid(x, o)}
-    declined = {x for x, d in case.get("declined", {}).items() if d["offer was valid"] and not d["bears on more since"]}
+    if offered and "after all" in case:
+        need = [a for a in opts if not a.startswith("hear ")] + list(rev(frozenset(offered)))
+        if not all(a in case["after all"] and abs(case["after all"][a] - r(told | offered, a)) <= theta for a in need): offered = set()
+    def stands(x, d):
+        e = d["earlier"]
+        if e["took"] == "hear " + x or "hear " + x not in e["options"] or not offer_valid(x, e["offer"], e["r"], e["options"]): return False
+        return all(abs(r(told | {x}, a) - r(told, a)) <= (e["told"]["by"] if a in e["told"]["bears"] else 0) + theta for a in opts)
+    declined = {x for x, d in case.get("declined", {}).items() if stands(x, d)}
     U = [v for v in case.get("views", ()) if v not in told and v not in offered and v not in declined]
     for T in subsets(U):
         if any(abs(r(told | T, a) - r(told, a)) > theta for a in opts): why.append("F1"); break
@@ -72,11 +87,12 @@ def legit(case):
     if c:
         world = case["world"]; eb = effect_bearing(c, world)
         if any(m not in case.get("known", ()) for m in eb): why.append("F2 (not known)")
-        if eb and not case["stops"](frozenset(eb)): why.append("F2 (no way to stop)")
-        exempt = set(case.get("asked", ())) | set(case.get("tellings", ()))
-        if any(world(c)["against"] - world(c - G)["against"] > eta for G in subsets(c - exempt)): why.append("F2' (against her earlier rating)")
+        if eb and not set(case["stops"](frozenset(eb))) & set(opts): why.append("F2 (no way to stop)")
+        plain_of = dict(case.get("plain", {}), **{m: m for m in case.get("tellings", ())})
+        instead = lambda G: (c - G) | frozenset(plain_of[m] for m in G if m in plain_of)
+        if any(world(c)["against"] - world(instead(G))["against"] > eta for G in subsets(c - set(case.get("asked", ())))): why.append("F2' (against her earlier rating)")
         p = case.get("pstop")
-        if eb and p is not None and p < 1 - kappa: why.append("F3")
+        if eb and p is not None and case.get("prefers stop", F(0)) > 0 and p < 1 - kappa: why.append("F3")
     return ("holds", "") if not why else ("fails", ", ".join(why))
 
 CASES = []
@@ -86,6 +102,17 @@ def check(name, case, want): CASES.append((SECTION[0], name, case, want))
 W = lambda her=None, dep=F(0), items=(), xopts=(), against=None: {"her": her or {}, "dep": dep, "items": frozenset(items), "xopts": frozenset(xopts), "against": dep if against is None else against}
 plain = {"options": ["go", "leave"], "r": lambda T, a: {"go": F(7, 10), "leave": F(1, 2)}[a]}
 some = lambda G: {"leave"}
+def bent(move, weight, without, her, unrated=()):
+    """In cases of his of the given weight her rating in a course without `move` is `without`; with it, and in his other
+    cases, it is `plain`'s.  She takes what she then rates highest.  Her earlier rating is her rating without the move: she
+    goes against it when it puts her act below another option, where she had a rating of both."""
+    now = {a: plain["r"](frozenset(), a) for a in plain["options"]}
+    def world(X):
+        act = max(now, key=now.get) if move in X else max(without, key=without.get)
+        beaten = any(without[b] > without[act] for b in without if b not in unrated and act not in unrated)
+        return W(her=her(X), dep=F(0), against=weight if beaten else F(0))
+    return world
+low = {"go": F(3, 10), "leave": F(1, 2)}
 
 section("A", "What he does to her, and stopping it")
 dep = {frozenset(): F(1, 5), frozenset("h"): F(4, 5), frozenset("g"): F(1, 10), frozenset("gh"): F(1, 5)}
@@ -95,11 +122,12 @@ small = dict(plain, moves=list("abcd"), world=lambda X: W(her={"go": F(1, 2) + F
 check("four influences each below the threshold, together above it, none known to her", dict(small, known=set()), "fails")
 check("the same four, each known, and she can stop them", dict(small, known=set("abcd")), "holds")
 feeds = dict(plain, moves=["m1", "m2"], known={"m1", "m2"}, world=lambda X: W(her={"buy": F(1, 2) if X else F(1, 10)}))
-check("two feeds, stoppable together only by giving up the service (the cost is the authority side's)", dict(feeds, stops=lambda G: {"quit"}), "holds")
+quits = dict(feeds, options=["go", "leave", "quit"], r=lambda T, a: {"go": F(7, 10), "leave": F(1, 2), "quit": F(3, 10)}[a])
+check("two feeds, stoppable together only by giving up the service (the cost is the authority side's)", dict(quits, stops=lambda G: {"quit"}), "holds")
 check("two feeds, no way to stop both", dict(feeds, stops=lambda G: set()), "fails")
 one = dict(plain, moves=["m"], world=lambda X: W(her={"go": F(7, 10) if X else F(1, 2)}))
 check("an influence she knows of and cannot stop", dict(one, known={"m"}, stops=lambda G: set()), "fails")
-check("she could stop it, but he expects she would not manage to even if she rated stopping higher", dict(one, known={"m"}, stops=some, pstop=F(1, 2)), "fails")
+check("she could stop it, but he expects she would not manage to even if she rated stopping higher", dict(one, known={"m"}, stops=some, **{"prefers stop": F(1, 5)}, pstop=F(1, 2)), "fails")
 check("separable bundle: the only stop is to quit a service he could keep running (authority side's)", dict(one, known={"m"}, stops=some), "holds")
 dull = dict(plain, moves=["dull"], world=lambda X: W(her={"go": F(7, 10), "go, if warned": F(7, 10) if X else F(1, 10)}))
 check("he does something that makes her deaf to his later warnings; she does not know of it", dict(dull, known=set(), stops=some), "fails")
@@ -111,22 +139,22 @@ section("B", "Leading her to choose what she rated lower before he began")
 nag = dict(plain, moves=["nag"], known={"nag"}, stops=some)
 check("open, stoppable nagging; she gives in while still judging it the worse option", dict(nag, world=lambda X: W(dep=F(3, 5) if X else F(1, 10))), "fails")
 check("open, stoppable nagging that bends her judgement for a while; she gives in thinking it best then",
-      dict(nag, world=lambda X: W(her={"give in": F(4, 5) if X else F(1, 5)}, dep=F(0), against=F(3, 5) if X else F(0))), "fails")
+      dict(nag, world=bent("nag", F(3, 5), low, lambda X: {"give in": F(4, 5) if X else F(1, 5)})), "fails")
 check("the same, which she asked him to do", dict(nag, asked={"nag"}, world=lambda X: W(dep=F(3, 5) if X else F(1, 10))), "holds")
 check("he asks repeatedly; told beforehand what that would do, she did not rate giving in lower",
       dict(nag, world=lambda X: W(her={"give in": F(4, 5) if X else F(3, 5)}, against=F(0))), "holds")
 check("an influence she was told would make her want it to continue, and she rated that outcome lower beforehand",
-      dict(nag, world=lambda X: W(her={"go": F(9, 10) if X else F(3, 10)}, against=F(7, 10) if X else F(0))), "fails")
+      dict(nag, world=bent("nag", F(7, 10), low, lambda X: {"go": F(9, 10) if X else F(3, 10)})), "fails")
 check("an influence on something she had no view about beforehand, open and stoppable",
-      dict(nag, world=lambda X: W(her={"go": F(9, 10) if X else F(1, 2)}, against=F(0))), "holds")
+      dict(nag, world=bent("nag", F(7, 10), low, lambda X: {"go": F(9, 10) if X else F(1, 2)}, unrated={"go"})), "holds")
 check("he comforts her; she then chooses what she had not rated lower", dict(nag, world=lambda X: W(her={"go": F(4, 5) if X else F(1, 2)}, against=F(0))), "holds")
 notice = {frozenset(): F(0), frozenset("u"): F(1, 5), frozenset("v"): F(0), frozenset("uv"): F(0)}
 check("a notice in two parts; the first alone would confuse, the whole does not", dict(plain, moves=["u", "v"], tellings={"u", "v"}, world=lambda X: W(dep=notice[frozenset(X)]), stops=some), "holds")
 check("an appropriate unsolicited warning that startles her: chance of a slip up from 0 to 1/50",
       dict(plain, moves=["warn"], tellings={"warn"}, known={"warn"}, world=lambda X: W(dep=F(1, 50) if X else F(0)), stops=some), "holds")
 check("he tells her his view in a manner that does more than the telling would, and she gives in against her earlier rating",
-      dict(plain, moves=["tell", "manner"], tellings={"tell"}, known={"tell", "manner"}, stops=some,
-           world=lambda X: W(dep=F(0), against=F(1, 2) if "manner" in X else F(0))), "fails")
+      dict(plain, moves=["mannered"], plain={"mannered": "tell"}, known={"mannered"}, stops=some,
+           world=bent("mannered", F(1, 2), low, lambda X: {})), "fails")
 check("a threat: he makes refusing really worse, she rates it correctly and complies (authority side's)",
       dict(plain, moves=["threat"], known={"threat"}, world=lambda X: W(), stops=some), "holds")
 
@@ -155,11 +183,16 @@ check("the warning and the note that it matters are both merely available, under
 base1 = {"options": ["buy", "leave", "hear X"], "r": r, "views": ["X"]}
 good = {"X": {"relevance told": True, "after": heard}}
 check("he has told her it bears on buying; she can hear it and then decide as if told", dict(base1, offers=good), "holds")
-check("she declines to hear it", dict(base1, options=["buy", "leave"], declined={"X": {"offer was valid": True, "bears on more since": False}}), "holds")
+before = {"options": ["buy", "leave", "hear X"], "r": r, "offer": good["X"], "told": {"bears": {"buy"}, "by": F(4, 5)}, "took": "buy"}
+check("she declines to hear it", dict(base1, options=["buy", "leave"], declined={"X": {"earlier": before}}), "holds")
+slight = dict(before, r=lambda T, a: F(4, 5) if a == "buy" and "X" in T else r(frozenset(), a), told={"bears": {"buy"}, "by": F(1, 10)},
+              offer={"relevance told": True, "after": {"buy": F(4, 5), "leave": F(1, 2)}})
 check("she declined when it bore slightly on buying; it would now reverse her choice, and he has not said so",
-      dict(base1, options=["buy", "leave"], declined={"X": {"offer was valid": True, "bears on more since": True}}), "fails")
+      dict(base1, options=["buy", "leave"], declined={"X": {"earlier": slight}}), "fails")
+details = {"options": ["buy", "leave", "hear E"], "r": r, "offer": {"relevance told": True, "after": {"buy": F(9, 10), "leave": F(1, 2)}},
+           "told": {"bears": set(), "by": F(0)}, "took": "buy"}
 check("she declined 'further details' earlier; the view he holds now is a new one",
-      dict(base1, options=["buy", "leave"], declined={"earlier details": {"offer was valid": True, "bears on more since": False}}), "fails")
+      dict(base1, options=["buy", "leave"], declined={"E": {"earlier": details}}), "fails")
 check("hearing it would use up the chance to buy", dict(base1, offers={"X": {"relevance told": True, "after": {"leave": F(1, 2)}}}), "fails")
 check("hearing it is made to cost her 3/10 on every option, where telling her would have cost nothing",
       dict(base1, offers={"X": {"relevance told": True, "after": {"buy": F(0), "leave": F(1, 5)}}}), "fails")
@@ -173,9 +206,10 @@ def r2(T, a):
 two = {"options": ["buy", "leave", "hear X", "hear Y"], "r": r2, "views": ["X", "Y"]}
 half = {"buy": F(9, 10), "leave": F(1, 2)}; full = dict(half, **{"hear X": F(1, 2), "hear Y": F(1, 2)})
 check("two things that matter only together; having heard one she can no longer hear the other",
-      dict(two, offers={"X": {"relevance told": True, "after": half}, "Y": {"relevance told": True, "after": half}}), "fails")
+      dict(two, offers={"X": {"relevance told": True, "after": half}, "Y": {"relevance told": True, "after": half}}, **{"after all": half}), "fails")
 check("the same two, both flagged as bearing on buying, both hearable before she decides",
-      dict(two, offers={"X": {"relevance told": True, "after": full}, "Y": {"relevance told": True, "after": full}}), "holds")
+      dict(two, offers={"X": {"relevance told": True, "after": full}, "Y": {"relevance told": True, "after": full}},
+           **{"after all": {"buy": F(1, 10), "leave": F(1, 2)}}), "holds")
 
 
 HERE = pathlib.Path(__file__).resolve().parent

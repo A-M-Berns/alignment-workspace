@@ -9,24 +9,27 @@ from the expectation or from this table.
 
 **Supplied by a case**: her options and her rating of each, as a function of which of his views she
 has been told; his views; what telling a set of them would show her; for a view on offer, whether
-he told her what it bears on and her ratings after hearing it; for a declined view, two flags
-(the offer was valid then; it bears on more since); his moves, and which she can pick out, asked
-for, or are plain tellings; for each subset of his moves, how she scores courses and her gaps, the
-chance she acts against her own rating, what reaches her from others, and **the chance she goes
-against her earlier rating**; which options stop the effect-bearing moves; the chance he gives to
-her stopping when she rates stopping strictly higher.
+he told her what it bears on and her ratings after hearing it, and her ratings after taking up
+everything on offer; for a declined view, the earlier decision (her options and rating then, his
+offer, what he told her the view bore on and by how much, what she took); his moves, and which she
+can pick out, asked for, or are plain tellings, and for a move that tells her something the plain
+telling of it; for each subset of his moves, how she scores courses and her gaps, the chance she
+acts against her own rating, what reaches her from others, and the chance she goes against her
+earlier rating; which options stop the effect-bearing moves; the chance he gives to her rating
+stopping strictly higher, and to her stopping when she does.
 
-**Computed**: what is untold (his views less those told, validly offered, validly declined); F1
-over every non-empty subset of it; which sets of moves contribute and which moves bear an effect,
-by enumeration of every subset; F2, F2′ over every non-empty set of moves neither asked for nor
-tellings, and F3.
+**Computed**: what is untold (his views less those told, validly offered, validly declined); a
+decline's standing, from the earlier decision's data and what the view changes now; F1 over every
+non-empty subset of what is untold; which sets of moves contribute and which moves bear an effect,
+by enumeration of every subset; F2, a stopping option counting only if it is an option of hers;
+F2′ over every non-empty set of moves not asked for, each compared with its plain telling or, where
+it has none, with its absence; F3, where the chance that she rates stopping higher is positive.
 
-So F2′ is exercised as a comparison of supplied chances: nothing in a case derives the chance of
-going against her earlier rating from her earlier state, and in B2 and B5, where her judgement is
-bent, the verdict comes from that supplied number alone. Not exercised: the rule that an
-effect-bearing move starts after a decision of hers; the joint condition on a set of offers beyond
-each view's own (D10 and D11 reach it only through the requirement that the other hearing stay
-open); time, there being one decision per case.
+In B2, B5, B6 and B10, where her judgement is bent, the chance of going against her earlier rating
+is computed from her stated rating in the course without the move, which is her earlier rating,
+and from the options she then had no rating of. In the other cases it is a supplied number. Not
+exercised: the rule that an effect-bearing move starts after a decision of hers; time, there being
+one decision per case and, for a decline, one before it.
 
 Columns: expectation, computed verdict, the clauses computed to fail.
 
@@ -92,3 +95,27 @@ Columns: expectation, computed verdict, the clauses computed to fail.
 | D11 | the same two, both flagged as bearing on buying, both hearable before she decides | holds | holds | none |
 
 Counts: 41 cases, 41 as expected; 20 hold, 21 fail.
+
+## Errata
+
+The seventeenth follow-up built each case as a term of the Lean model (`LEAN_CASES.md`) and found
+two rows whose verdict did not follow from the case's data. The nineteenth corrected the data and
+the script; the rows above are unchanged.
+
+- Case A5 gave her options as `go` and `leave` and the stopping option as `quit`. The statement's
+  stopping options are options of hers, so on that data F2 fails; the script asked only that the
+  set of stopping options be non-empty and computed "holds". The case now has `quit` among her
+  options, rated 3/10, and the script counts a stopping option only if it is an option of hers.
+  On the old data the script now computes "fails, F2 (no way to stop)".
+- Case A8 gave the chance 1/2 that she stops given that she rates stopping strictly higher, with
+  ratings (`go` 7/10, `leave` 1/2) on which she never does. F3 is satisfied when its condition has
+  probability zero; the script compared the supplied chance with 1 − κ and computed "fails". The
+  case now gives the condition the chance 1/5, and the script applies F3 only where that chance is
+  positive. On the old data the script now computes "holds".
+
+Nine cases state data they did not state before, which their Lean terms carried: B2, B5 and B10
+her rating in the course without his move (in cases of his of weight 3/5, 7/10 and 1/2: `go` at
+3/10, below `leave`), B6 the same rating with none, at the earlier decision, of what going on
+leads to; D3, D4 and D5 the earlier decision at which the view was on offer, in place of two
+flags; D10 and D11 her ratings after taking up both offers. In B10 the telling and its manner are
+one move, compared with the plain telling of the same view. The data was written from the terms.
