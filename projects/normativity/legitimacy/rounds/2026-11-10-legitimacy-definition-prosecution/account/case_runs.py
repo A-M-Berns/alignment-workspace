@@ -1,17 +1,17 @@
-"""The counts of CASE_RUNS.md: four blind codings of the bank of cases from Noggle's book, and the
+"""The counts of CASE_RUNS.md: five blind codings of the bank of cases from Noggle's book, and the
 value-change test of 2026-11-23.
 
 Verdicts on the book's cases are read from `noggle_bank.json` (`author_verdict`; where an id occurs in
 two readers' parts the later part is used, and the three such ids carry the same verdict in both).  The
 codings are the coders' categorical answers keyed by case id: `bank_coded_11.json` (sheet
 BANK_CODING_11.md, all 263 cases), `bank_coded_11_small.json` with `bank_small_key.json` (the same sheet
-on 84 cases written outside the book), `bank_coded_14.json`, `bank_coded_15.json`, `bank_coded_16.json`
-(sheets BANK_CODING_14.md to _16.md, on subsets fixed by run 11's answers).  The case texts the coders
+on 84 cases written outside the book), `bank_coded_14.json`, `bank_coded_15.json`, `bank_coded_16.json`,
+`bank_coded_17.json` (sheets BANK_CODING_14.md to _17.md, on subsets fixed by run 11's answers).  The case texts the coders
 read, and the words they wrote beside their answers, are not in the repository, so no coding can be
 redone from it.
 
 Each scoring rule below is the rule of the scorer that was written before its coding existed, moved
-here unchanged in substance.  A rule's value is True (the conduct fails), False, or None (not settled:
+here unchanged in substance, except `posthoc17`, which was written after run 17's result was seen.  A rule's value is True (the conduct fails), False, or None (not settled:
 no answer makes it fail and an unclear answer could).
 
 `report()` fails when a count line of CASE_RUNS.md is not among those computed, or the reverse.
@@ -220,6 +220,58 @@ def run_prior(counts, lists, n):
         counts["%s, %s convicted by the clause (1 yes, 0 no)" % (tag, i)] = int(prior(i) is True) if i in cod else 0
 
 
+# ---------------------------------------------------------------- run 17: her prior view of the hypothetical
+
+def run17(counts, lists):
+    bank, c11 = bank_and_c11()
+    c17 = {c["id"]: c for c in load("bank_coded_17.json")}
+    c16 = {c["id"]: c for c in load("bank_coded_16.json")}
+    counts["run 17: cases coded"] = len(c17)
+    untold = lambda i: any(x["told"] == "no" for x in c11[i]["mistakes"])
+    unc11 = lambda i: any(x["told"] == "unclear" for x in c11[i]["mistakes"])
+
+    def clause(i):
+        c = c17[i]
+        parts = [{"yes": True, "no": False}.get(c["act_sought"]), {"yes": True, "no": False}.get(c["moved"]),
+                 {"would_not": True, "would": False, "cannot_say": False}.get(c["prior_view"]), {"no": True, "yes": False}.get(c["asked"])]
+        return False if any(p is False for p in parts) else None if any(p is None for p in parts) else True
+
+    def posthoc17(i):
+        """Written after the result of `clause` was seen: the same, and her earlier rating on sheet 16 is "lower"."""
+        a, b = c17[i], c16[i]
+        parts = [{"yes": True, "no": False}.get(a["act_sought"]), {"yes": True, "no": False}.get(a["moved"]),
+                 {"would_not": True, "would": False, "cannot_say": False}.get(a["prior_view"]),
+                 {"lower": True, "not_lower": False, "no_view": False}.get(b["earlier_rating"]), {"no": True, "yes": False}.get(a["asked"])]
+        return False if any(p is False for p in parts) else None if any(p is None for p in parts) else True
+    rule = lambda i: either(True if untold(i) else None if unc11(i) else False, clause(i))
+    sets = collections.OrderedDict([
+        ("lapse expected", [i for i in c17 if c11[i]["lapse_expected"] == "yes"]),
+        ("lapse unclear", [i for i in c17 if c11[i]["lapse_expected"] == "unclear"]),
+        ("control", [i for i in c17 if c11[i]["lapse_expected"] == "no"])])
+    for name, sel in sets.items():
+        counts["run 17, %s: cases" % name] = len(sel)
+        counts["run 17, %s: manipulation on the author's verdict" % name] = sum(tN(bank[i]["author_verdict"]) for i in sel)
+        for title, f in (("the clause alone", clause), ("untold mistake or the clause", rule),
+                         ("written after the result, the clause with sheet 16's earlier rating", posthoc17)):
+            t = tally([(tN(bank[i]["author_verdict"]), f(i)) for i in sel])
+            for k in ("settled", "agree", "missed", "over"):
+                counts["run 17, %s, %s: %s" % (name, title, k)] = t[k]
+        for val in ("would", "would_not", "cannot_say", "unclear"):
+            counts["run 17, %s, prior view %s: cases" % (name, val)] = sum(c17[i]["prior_view"] == val for i in sel)
+        for val in ("yes", "no", "unclear"):
+            counts["run 17, %s, moved %s: cases" % (name, val)] = sum(c17[i]["moved"] == val for i in sel)
+    t = tally([(tN(bank[i]["author_verdict"]), rule(i)) for i in c17])
+    for k in ("settled", "agree", "missed", "over"):
+        counts["run 17, all coded, untold mistake or the clause: %s" % k] = t[k]
+    over = [i for i in sets["control"] if clause(i) is True]
+    for val in ("lower", "not_lower", "no_view", "unclear"):
+        counts["run 17, control cases convicted, earlier rating on sheet 16 %s: cases" % val] = sum(c16[i]["earlier_rating"] == val for i in over)
+    lists["run 17, control cases convicted"] = over
+    lists["run 17, lapse expected, not convicted"] = ["%s (%s)" % (i, "passes" if clause(i) is False else "not settled") for i in sets["lapse expected"] if clause(i) is not True]
+    lists["run 17, written after the result, control cases convicted"] = [i for i in sets["control"] if posthoc17(i) is True]
+    lists["run 17, written after the result, lapse unclear, missed"] = [i for i in sets["lapse unclear"] if tN(bank[i]["author_verdict"]) and posthoc17(i) is False]
+
+
 # ---------------------------------------------------------------- the value-change test of 2026-11-23
 
 def clause(c):
@@ -321,6 +373,7 @@ def compute():
     run14(counts, lists)
     run_prior(counts, lists, 15)
     run_prior(counts, lists, 16)
+    run17(counts, lists)
     vc2(counts, lists)
     return counts, lists
 
@@ -335,7 +388,7 @@ def report():
     lines = render()
     path = HERE / DOC
     text = path.read_text(encoding="utf-8") if path.exists() else ""
-    stated = [l for l in text.splitlines() if re.match(r"^- (run 1[1456]|lapse clause|rule with|value change)", l)]
+    stated = [l for l in text.splitlines() if re.match(r"^- (run 1[14567]|lapse clause|rule with|value change)", l)]
     for l in lines:
         if l not in stated:
             failures.append("%s does not state: %s" % (DOC, l))
@@ -346,7 +399,8 @@ def report():
         failures.append("nothing computed")
     counts, _ = compute()
     pick = ("run 11, manipulation, all: settled", "run 11, manipulation, all: agree", "run 16, lapse expected, the clause alone: settled",
-            "run 16, lapse expected, the clause alone: agree", "run 16, control, the clause alone: over")
+            "run 16, lapse expected, the clause alone: agree", "run 16, control, the clause alone: over",
+            "run 17, lapse expected, the clause alone: settled", "run 17, lapse expected, the clause alone: agree", "run 17, control, the clause alone: over")
     return {"summary": ["%s: %d" % (k, counts[k]) for k in pick] + ["%d count lines" % len(lines)], "failures": failures}
 
 

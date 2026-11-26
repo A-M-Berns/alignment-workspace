@@ -8,7 +8,7 @@ cases in a bank assembled for this work, not a rate in any population: the bank 
 three readers found in one book, and the other sets were written or chosen to be hard.
 
 **What the repository holds.** For each run: its coding sheet as the coder was given it
-(`BANK_CODING_11.md`, `_14`, `_15`, `_16`); the coder's categorical answers keyed by case id
+(`BANK_CODING_11.md`, `_14`, `_15`, `_16`, `_17`); the coder's categorical answers keyed by case id
 (`bank_coded_*.json`); the scoring rule, in `case_runs.py`. The verdicts on the book's cases are
 read from `noggle_bank.json`. The case texts the coders read are paraphrases of the book's cases
 and are outside the repository, as are the few words each coder wrote beside an answer, so a
@@ -17,10 +17,10 @@ coding cannot be redone or audited from here.
 **What each run was.** One language-model coder per coding (run 11: one per third of the bank),
 given the sheet and the case texts without verdicts and told to open nothing else. Sheets 11
 and 16 were each coded a second time by one coder of another model (the last section); under
-sheets 14 and 15 each case has one coding. No person checked a coding. In every run the scoring rule was written before the coding
-existed. The bank itself was not fresh: ten sheets precede sheet 11 in this work, at least seven
+sheets 14, 15 and 17 each case has one coding. No person checked a coding. In every run the scoring rule was written before the coding
+existed; run 17 has in addition one combination written after its result, marked as such. The bank itself was not fresh: ten sheets precede sheet 11 in this work, at least seven
 of them coded on this bank, with four lists of the failures found; they are outside the
-repository. The rule run 11 scores was formed with the bank's cases in view. Runs 14 to 16
+repository. The rule run 11 scores was formed with the bank's cases in view. Runs 14 to 17
 code subsets fixed by run 11's answers and inherit its coding of what is untold.
 
 Columns of every tally: *settled*, the rule gives a verdict; *agree*, it is the author's;
@@ -346,6 +346,112 @@ the sheets ask what she rated and how he gets the response, not what he expects.
 Between the two sheets the cases with her earlier rating unclear fall from 89 to 65 of 152 and
 those with no view rise from 8 to 22. The two codings are by different coders, so the change is
 the sheet's and the coder's together.
+
+## Run 17: her prior view of the hypothetical (2026-11-25)
+
+The same 152 cases, a fresh coding under `BANK_CODING_17.md`, which asks one question the
+earlier sheets do not: before he started, at a calm moment, would she have said that seeing
+and hearing exactly this makes doing what he is after the better thing to do on her own
+judgement ("would", "would_not", "cannot_say" where it turns on information or an argument
+she had not met, "unclear"). The clause scored: his conduct fails iff what he is after is an
+act or choice of hers, his conduct moves her to it, her answer is "would_not", and she did
+not ask. It is sentence 2's second half with her judgement read as her prior view of the
+hypothetical. The sheet does not ask whether what she is moved to is something she rated
+lower.
+
+Predictions written in advance, with the scorer: with a lapse expected the clause settles at
+least 70% and agrees with the author on at least 85% of what it settles (held: 36 of 39, and
+all 36); it convicts at most 4 controls (**failed: 8**); with a lapse expected it does no
+worse than run 16's 33 settled and 33 agreeing by more than 4 cases either way (held); at
+most 5 cases with a lapse expected are answered "would" (held: none).
+
+Of the 8 controls convicted, sheet 16 codes her earlier rating as not lower or as no view on
+6, lower on 1 and unclear on 1: the sheet has no question that screens out a tie broken
+between options she rates the same.
+
+**Written after the result was seen**, and so not a test: the clause with one more
+condition, that sheet 16 codes her earlier rating "lower". It combines two existing codings
+by two coders. On the controls it settles 64 and convicts 1, `peppermint-patty-innocent`,
+the control run 16 convicts; with a lapse expected it settles 30 and agrees on all 30, fewer
+than either sheet alone.
+
+- run 17: cases coded: **152**
+- run 17, lapse expected: cases: **39**
+- run 17, lapse expected: manipulation on the author's verdict: **38**
+- run 17, lapse expected, the clause alone: settled: **36**
+- run 17, lapse expected, the clause alone: agree: **36**
+- run 17, lapse expected, the clause alone: missed: **0**
+- run 17, lapse expected, the clause alone: over: **0**
+- run 17, lapse expected, untold mistake or the clause: settled: **37**
+- run 17, lapse expected, untold mistake or the clause: agree: **37**
+- run 17, lapse expected, untold mistake or the clause: missed: **0**
+- run 17, lapse expected, untold mistake or the clause: over: **0**
+- run 17, lapse expected, written after the result, the clause with sheet 16's earlier rating: settled: **30**
+- run 17, lapse expected, written after the result, the clause with sheet 16's earlier rating: agree: **30**
+- run 17, lapse expected, written after the result, the clause with sheet 16's earlier rating: missed: **0**
+- run 17, lapse expected, written after the result, the clause with sheet 16's earlier rating: over: **0**
+- run 17, lapse expected, prior view would: cases: **0**
+- run 17, lapse expected, prior view would_not: cases: **39**
+- run 17, lapse expected, prior view cannot_say: cases: **0**
+- run 17, lapse expected, prior view unclear: cases: **0**
+- run 17, lapse expected, moved yes: cases: **35**
+- run 17, lapse expected, moved no: cases: **1**
+- run 17, lapse expected, moved unclear: cases: **3**
+- run 17, lapse unclear: cases: **44**
+- run 17, lapse unclear: manipulation on the author's verdict: **43**
+- run 17, lapse unclear, the clause alone: settled: **24**
+- run 17, lapse unclear, the clause alone: agree: **18**
+- run 17, lapse unclear, the clause alone: missed: **6**
+- run 17, lapse unclear, the clause alone: over: **0**
+- run 17, lapse unclear, untold mistake or the clause: settled: **31**
+- run 17, lapse unclear, untold mistake or the clause: agree: **29**
+- run 17, lapse unclear, untold mistake or the clause: missed: **2**
+- run 17, lapse unclear, untold mistake or the clause: over: **0**
+- run 17, lapse unclear, written after the result, the clause with sheet 16's earlier rating: settled: **11**
+- run 17, lapse unclear, written after the result, the clause with sheet 16's earlier rating: agree: **4**
+- run 17, lapse unclear, written after the result, the clause with sheet 16's earlier rating: missed: **7**
+- run 17, lapse unclear, written after the result, the clause with sheet 16's earlier rating: over: **0**
+- run 17, lapse unclear, prior view would: cases: **1**
+- run 17, lapse unclear, prior view would_not: cases: **35**
+- run 17, lapse unclear, prior view cannot_say: cases: **0**
+- run 17, lapse unclear, prior view unclear: cases: **8**
+- run 17, lapse unclear, moved yes: cases: **22**
+- run 17, lapse unclear, moved no: cases: **2**
+- run 17, lapse unclear, moved unclear: cases: **20**
+- run 17, control: cases: **69**
+- run 17, control: manipulation on the author's verdict: **0**
+- run 17, control, the clause alone: settled: **60**
+- run 17, control, the clause alone: agree: **52**
+- run 17, control, the clause alone: missed: **0**
+- run 17, control, the clause alone: over: **8**
+- run 17, control, untold mistake or the clause: settled: **60**
+- run 17, control, untold mistake or the clause: agree: **52**
+- run 17, control, untold mistake or the clause: missed: **0**
+- run 17, control, untold mistake or the clause: over: **8**
+- run 17, control, written after the result, the clause with sheet 16's earlier rating: settled: **64**
+- run 17, control, written after the result, the clause with sheet 16's earlier rating: agree: **63**
+- run 17, control, written after the result, the clause with sheet 16's earlier rating: missed: **0**
+- run 17, control, written after the result, the clause with sheet 16's earlier rating: over: **1**
+- run 17, control, prior view would: cases: **45**
+- run 17, control, prior view would_not: cases: **11**
+- run 17, control, prior view cannot_say: cases: **3**
+- run 17, control, prior view unclear: cases: **10**
+- run 17, control, moved yes: cases: **44**
+- run 17, control, moved no: cases: **0**
+- run 17, control, moved unclear: cases: **25**
+- run 17, all coded, untold mistake or the clause: settled: **128**
+- run 17, all coded, untold mistake or the clause: agree: **118**
+- run 17, all coded, untold mistake or the clause: missed: **2**
+- run 17, all coded, untold mistake or the clause: over: **8**
+- run 17, control cases convicted, earlier rating on sheet 16 lower: cases: **1**
+- run 17, control cases convicted, earlier rating on sheet 16 not_lower: cases: **3**
+- run 17, control cases convicted, earlier rating on sheet 16 no_view: cases: **3**
+- run 17, control cases convicted, earlier rating on sheet 16 unclear: cases: **1**
+
+- run 17, control cases convicted: `peppermint-patty-innocent`, `ted-exposure-tiebreak`, `cafeteria-first-considered`, `tide-priming`, `atmospherics-direct-tiebreak`, `dish-soap-tiebreak`, `baron-nervous-requestee`, `cafeteria-tiebreak`
+- run 17, lapse expected, not convicted: `white-supremacist-will (passes)`, `mandy-tara-reciprocity (not settled)`, `mandy-tara-emotional-blackmail (not settled)`, `nagging-teen (not settled)`
+- run 17, written after the result, control cases convicted: `peppermint-patty-innocent`
+- run 17, written after the result, lapse unclear, missed: `state-as-end`, `consented-manipulation`, `insecurity-advertising`, `fixation-on-real-injury`, `false-urgency`, `roach-motel-persist`, `mood-to-emotion`
 
 ## The value-change test (2026-11-23)
 
