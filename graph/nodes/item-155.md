@@ -34,7 +34,7 @@ ATTENTION.md, item 155 (The legitimacy statement on cases of value change); its 
 Filed by the sixteenth follow-up to the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution, PROMPT-followup-16.md) under the round prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py.
 
 ## Item
-Row 33 of `account/LEDGER.md`.
+Row 57 of `account/LEDGER.md`.
 
 The statement has no clause for a change in what she values: an influence on her values is
 legitimate when nothing that matters is untold, she can pick it out, it does not lead her

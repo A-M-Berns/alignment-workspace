@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `ATTENTION.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 1412 names, 801 of them Lean only
+## deference — 1425 names, 805 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -941,7 +941,7 @@ change, and the count of those is the size of the free choice remaining.
 | `init` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.St.init` |
 | `model` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, note, prose | `Workspace.Deference.Contrib.LegitimacyModel.Case.model` |
 | `profile` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.profile` |
-| `tell` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyModel.St.tell` |
+| `tell` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.St.tell` |
 | `toldInstead` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.toldInstead` |
 | `untold` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.untold` |
 | `wt` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Case.wt` |
@@ -1017,6 +1017,7 @@ change, and the count of those is the size of the free choice remaining.
 | `slip` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.slip` |
 | `still` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.LegitimacyModel.Cases.still` |
 | `twoOffers` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Cases.twoOffers` |
+| `gatedScoring` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyGate.gatedScoring` |
 | `Against` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.Against` |
 | `BearingHolds` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.BearingHolds` |
 | `Bears` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.Bears` |
@@ -1039,7 +1040,6 @@ change, and the count of those is the size of the free choice remaining.
 | `Window` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.Window` |
 | `earlier` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyModel.Model.earlier` |
 | `gap` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, note, prose | `Workspace.Deference.Contrib.LegitimacyModel.Model.gap` |
-| `gatedScoring` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyModel.gatedScoring` |
 | `legitScoring` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyModel.legitScoring` |
 | `model` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, note, prose | `Workspace.Deference.Contrib.LegitimacyModel.Witness.model` |
 | `params` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Witness.params` |
@@ -1048,6 +1048,19 @@ change, and the count of those is the size of the free choice remaining.
 | `transport` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.LegitimacyModel.Model.transport` |
 | `untold` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.untold` |
 | `wt` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.wt` |
+| `CanStop` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyStatement.Episode.CanStop` |
+| `Episode` | structure | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyStatement.Episode` |
+| `Legit` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.LegitimacyStatement.Episode.Legit` |
+| `NothingBehind` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyStatement.Episode.NothingBehind` |
+| `NothingUntold` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyStatement.Episode.NothingUntold` |
+| `ep` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyStatement.Witness.ep` |
+| `idle` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyStatement.Witness.idle` |
+| `keeps` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.LegitimacyStatement.Witness.keeps` |
+| `legitScoring` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyStatement.legitScoring` |
+| `params` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyStatement.Witness.params` |
+| `requested` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyStatement.Witness.requested` |
+| `scoring` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.LegitimacyStatement.Witness.scoring` |
+| `untold` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyStatement.Episode.untold` |
 | `Cs` | inductive | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Full.Cs` |
 | `Move` | inductive | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Full.Move` |
 | `Opt` | inductive | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Full.Opt` |

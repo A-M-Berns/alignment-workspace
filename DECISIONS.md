@@ -512,29 +512,32 @@ commit.
   of the lines by their owners.
   <!-- decision: open--what-walk-found-map-lacked; touches: node:traderized-finite-date-conformance, node:effective-authority-layer, node:verdict-licence-chain, node:legitimacy-meets-syntax; status: open -->
 
-- **Do a practice's rules cover a deception she did not herself ask for? (2026-11-14, restated 2026-11-18).**
-  By the working position of 2026-11-18 a deception she asked for in advance is not
-  manipulation. A magician's trick, a bluff at cards and a teacher's feigned enthusiasm are
-  deceptions a practice allows and she did not ask for one by one; the sixth and seventh
-  follow-ups of the legitimacy definition prosecution round compute them as manipulation, the
-  seventh as covered (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/rerun/RESULTS.md`).
-  *Turns on:* whose say counts where the practice and not the person allows the deception,
-  and whether taking part is asking: a judgment of the cases the round does not have.
+- **Do a practice's rules cover what she did not herself ask for: the teacher's put-on enthusiasm? (2026-11-14, restated 2026-11-26).**
+  By sentence 2 of `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md` a teacher whose
+  enthusiasm, partly put on, brings a pupil who had said "I'll never care about poetry" to love
+  it has led her against her judgement, unasked: case 19 of `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/HARD_CASES.md`, on which
+  the maintainer's verdict of 26 November is "unsure". A magician's trick and a bluff at cards
+  are the same shape: a practice allows them and she did not ask for them one by one. Taking up
+  an offer, unpressed and told what it is hoped to do, is asking (position 6 of
+  `2026-11-26--legitimacy-statement-at-the-level-of-its-words`); a pupil was told nothing of
+  the kind. Decision required: *the statement's verdict stands and the teacher is convicted*,
+  or *taking part in a practice is asking for what the practice allows*.
+  *Turns on:* whose say counts where the practice and not the person allows the thing: a
+  judgment of the cases the round does not have.
   <!-- decision: open--practice-rules-cover-a-deception; touches: node:legitimacy; status: open -->
 
-- **Does her asking for it make conduct legitimate that would otherwise be manipulation? (2026-11-24).**
-  Sentence 2 of `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md` forbids, other than by telling, what he
-  expects to lead her to choose what she rated lower at her last decision before he began,
-  *unless she asked for it*. The outside reviewer's view, with Noggle, is that a request makes
-  such a thing permissible and does not make it stop being manipulation. By working position 4
-  of 2026-11-24 legitimacy is non-manipulation together with openness, so the exception and
-  the position cannot both stand as worded. The sixteenth follow-up keeps the exception, on
-  which the exact cases and the bank coding were run (five of the 152 cases are coded as
-  asked for under the sheet of run 16). Decision required: *a request licenses it and legitimacy is what she has not
-  authorised*, *a request does not license it*, or *it licenses it and the conduct is still
-  called manipulation*.
+- **Does her asking make a thing not manipulation, or manipulation that is permitted? (2026-11-24, restated 2026-11-26).**
+  Sentence 2 of `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md` forbids what he does to her that he
+  expects to lead her to choose what she rated lower at her last settled decision, *unless she
+  asked for it*, and by position 6 of 26 November taking up an offer is asking. The outside
+  reviewer's view, with Noggle, is that a request makes such a thing permissible and does not
+  make it stop being manipulation. By working position 4 of 2026-11-24 legitimacy is
+  non-manipulation together with openness, so the exception and that position cannot both stand
+  as worded. The statement keeps the exception; the formal statement has it as the field
+  `asked`. Decision required: *a request licenses it and legitimacy is what she has not
+  authorised*, or *it licenses it and the conduct is still called manipulation*.
   *Turns on:* whether legitimacy is to mean freedom from manipulation in Noggle's sense or
-  conduct she has not authorised: which of the maintainer's own positions 1 and 4 gives way.
+  conduct she has not authorised: which of the maintainer's own positions gives way.
   <!-- decision: open--request-licenses-pressure; touches: node:legitimacy, item:154; status: open -->
 
 - **What bounds the cost of a decision of hers where the influence is the price, and where she agreed to the penalty? (2026-11-24).**
@@ -542,11 +545,22 @@ commit.
   clause of `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/STOPPING_COST.md` decides two cases no position covers: a free
   service paid for by its influence fails, because he could run it without at a loss to
   himself; an exit penalty she knowingly agreed to, which he can no longer call off, holds.
-  Item 149 cannot fix its statement without them. Decision required, for each: *as the clause
-  gives*, or the verdict wanted.
+  Item 149 can state a penalty, a payment, a bundle and a threat without them and cannot fix
+  these two. Decision required, for each: *as the clause gives*, or the verdict wanted.
   *Turns on:* what an adviser may charge for and what her earlier agreement binds: where the
   program's authority component is going, and what a deployed service must be allowed to be.
   <!-- decision: open--cost-bound-influence-as-price-and-agreed-penalty; touches: node:legitimacy, item:149; status: open -->
+
+- **What makes a decision of hers settled? (2026-11-26).**
+  Sentence 2 judges what he does to her against her judgement at her last settled decision,
+  and a passing state is not one. Which of her choices are settled is supplied by hand in
+  every hard case, every coding sheet and every episode of the interpretation
+  (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md`, rows 9 and 30). One candidate, untested: a check-in settles it, as
+  in `2026-11-16--presumed-check-in-and-moving-baseline`. Decision required: a criterion, or
+  that it stays a notion taken as given.
+  *Turns on:* whose judgement governs when she has changed her mind by herself, which is the
+  idea the round does not have.
+  <!-- decision: open--what-makes-a-decision-settled; touches: node:legitimacy, item:152; status: open -->
 
 ## Settled
 
@@ -8444,3 +8458,85 @@ standing of each component is kept; `CURRENT.md` points to it and does not resta
 against her earlier rating*; the file and module names of this pass; the anchors
 `open--request-licenses-pressure` and `open--cost-bound-influence-as-price-and-agreed-penalty`;
 item numbers 153 to 155.
+
+### 2026-11-26 — on legitimacy: the statement is at the level of its words, her judgement of the hypothetical is the standard, and the notions it uses are taken as given
+<!-- decision: 2026-11-26--legitimacy-statement-at-the-level-of-its-words; touches: node:legitimacy, item:150, item:152, item:153, item:156, item:157 -->
+
+**Maintainer's working positions, each held for testing unless marked ruled** (Anson Berns,
+25 and 26 November 2026; stated in conversation and given in `PROMPT-followup-20.md` §3 of the
+legitimacy definition prosecution round, which the twentieth follow-up records; words in
+quotation marks are his). Sentence 2 of
+`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md` reads as that file gives it, in place of the wording
+frozen by position 12 of `2026-11-24--legitimacy-statement-working-positions`; sentences 1
+and 3 are unchanged in substance. Position 7 of that entry, that a primitive of her judgment
+is to be avoided, gives way to positions 2 and 3 here.
+
+1. A history is to be the fundamental object of any model of an episode, with "enough
+   representational richness to deal with these issues".
+2. The only response of hers the account may use is her conditioning on what she observes:
+   "It has to just be conditioning on some new observation, not separating content from
+   presentation."
+3. Her conditioning is her settled self's own view of the hypothetical ("I think adopting it
+   seems good"), meaning her judgement of whether seeing or hearing something should move her,
+   not her prediction that she will give way.
+4. What she could not have judged in advance is her own response and is exempt from the
+   pressure rule, like a new argument; the difference this makes from Noggle's treatment of
+   moving appeals is accepted.
+5. His verdicts on the twenty hard cases of `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/HARD_CASES.md`, by case number:
+   1 "fine-ish but idk i guess maybe wrong to be on the safe side? unsure"; 2 "wrong"; 3 "wrong"; 4 "fine"; 5 "fine i guess? somewhat unsure"; 6 "lean fine"; 7 "fine"; 8 "fine, as long as he doesn't force her to go (and tells her the point of the trip)"; 9 "fine"; 10 "wrong"; 11 "lean wrong"; 12 "seems fine to me (again no force, she agrees to taste)"; 13 "wrong"; 14 "fine"; 15 "wrong"; 16 "Hmmm i feel unsure here but lean wrong"; 17 "seems fine"; 18 "seems fine"; 19 "unsure"; 20 "fine".
+6. Taking up an offer, unpressed and told what it is hoped to do, is asking; merely not
+   stopping him is not ("yeah go for that").
+7. **Ruled 26 November.** The definition is stated at the level of its words, with the
+   notions it uses taken as given, and how they are worked out in an episode treated as a
+   separate, continuing question ("Ok let's do it").
+
+**Open, and not positions:** the teacher of case 19; whether her asking makes a thing not
+manipulation or merely permitted; what makes a decision settled; the two bounds on the
+authority side. Each is in *Awaiting the author*. Whether he must mention a better option
+that is someone else's is not ruled and not queued: the sentence as worded says he must.
+
+### 2026-11-26 — the work of 24–26 November on the legitimacy line is recorded as a twentieth follow-up: the statement in Lean over notions taken as given, the history model as an interpretation with its faults listed, the table model marked
+<!-- decision: 2026-11-26--legitimacy-twentieth-followup-readings; touches: node:legitimacy, item:150, item:151, item:152, item:153, item:154, item:156, item:157 -->
+
+**Agent-decided, reversible** (the twentieth follow-up to the legitimacy definition
+prosecution round, `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-20.md`;
+(1) and (2) are the dispatch's, adopted). (1) *The statement of the line.*
+`lean/Workspace/Deference/Contrib/LegitimacyStatement.lean` carries the formal statement; the
+model on a table of his moves (`LegitimacyModel.lean` and the three files beside it) is
+marked at the head as an interpretation that outside review rejected, and is not repaired;
+rejected: deleting it, since its theorems hold of its definitions and the runner reads its
+cases. (2) *The interpretation.* The fifth design on histories, its model and its episodes
+are under `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/interpretation/`, in Python, as a regression set with its known faults
+checked by the runner; rejected: a Lean port now, which would certify the faults. (3) *The
+scoring link and the gate theorem* are in `LegitimacyGate.lean`, which both Lean statements
+import; `gate_instance` is there and no longer under `Witness`; rejected: a copy in each file.
+(4) *A reading of the exemption.* Her response to something she could not have judged in
+advance is her own; that covers her response to the thing seen or heard, not another effect of
+the act that delivers it. The words of the statement are unchanged, the fourteenth outside
+review having asked that they say this; rejected: rewording sentence 2's gloss, which is the
+maintainer's. (5) *Added beyond the files handed over.* Nine instance theorems and three terms
+in `LegitimacyStatement.lean`, so that each theorem but the second half of
+`informed_choice` has a term inhabiting its hypotheses; an eighth known-fault episode, H, the
+fourteenth review's episode G with the changed ratings among her options, on which the
+model's fault shows where on G it does not. (6) *Registration.* The theorems of
+`LegitimacyStatement.lean` and `LegitimacyGate.lean` are kernel-checked and unregistered; the
+registry entries are prepared as
+`prompts/2026-11-10-legitimacy-definition-prosecution/followup-20-registration.patch`; the
+patch that prepared thirteen results of the table model is withdrawn, the model not being the
+statement; rejected: offering both. (7) *Items.* 153 is re-asked of the new file, the tenth
+review having delivered it for the table model; 151 is closed, its subject being that model;
+150 and 154 are restated on `Episode` and on sheet 17; 152 is restated as what makes a
+decision settled and where "could not have judged in advance" falls; 156 (properties of the
+given notions, and the history model as an instance) and 157 (the interpretation's faults)
+are filed. (8) *The queue.* The entry on a practice's rules is restated on the teacher of
+case 19; the entry on asking is restated on the present sentence 2; an entry on what makes a
+decision settled is added; rejected for the queue: whether he must mention someone else's
+better option, on which the sentence's own words give the answer adopted. The two readings the
+nineteenth follow-up reserved, on the largest set on offer and on a view's bearing, concern the
+table model's formal text and lapse with it. (9) *Names, provisional:*
+`LegitimacyStatement`, `Episode` and its fields, `NothingUntold`, `NothingBehind`, `CanStop`,
+`Legit`, the theorem names of that file, `Witness.requested`, `keeps`, `idle`;
+`LegitimacyGate`; *the interpretation*, *site*, *covered site*, *reference self*, *comparison
+course*, *known fault*; the module names under `interpretation/`; `run17`, `posthoc17`; the
+anchor `open--what-makes-a-decision-settled`; item numbers 156 and 157; the verdict kind
+`follow-up-20`.

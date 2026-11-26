@@ -55,7 +55,8 @@ are not legitimate: `Witness.not_legit_untold`, `not_legit_covert`, `not_legit_a
 `Witness.requested`: the thing asked for and his weight on leading her against her judgement
 `1`; sentence 2 holds at every `κ` (`requested_behind`) and the episode is legitimate
 (`requested_legit`).  `Witness.keeps`: the thing keeps from her something from someone else
-and she cannot pick it out; not legitimate (`not_legit_keeps`).  `Witness.legit_looser`,
+and she cannot pick it out; not legitimate (`not_legit_keeps`).  `Witness.idle`: nothing done
+and both views told; legitimate at every tolerance (`idle_legit`).  `Witness.legit_looser`,
 `against_instance`, `scoring_open`, `scoring_covert`: `Legit.mono`, `against_le` and the two
 scoring theorems at the witness and its covert neighbour.
 
@@ -394,6 +395,14 @@ noncomputable def keeps : Episode Unit Bool Bool Unit :=
 theorem not_legit_keeps : ¬ keeps.Legit (1 / 10) (1 / 10) :=
   Episode.not_legit_of_withheld _ _ _ (m := ()) (by simp [keeps, ep]) trivial (fun h => h)
 
+/-- The witness with nothing done and both views told. -/
+noncomputable def idle : Episode Unit Bool Bool Unit :=
+  { ep True True 0 0 with conduct := ∅, told := fun _ => {true, false} }
+
+/-- `legit_of_nothing` on it. -/
+theorem idle_legit (θ κ : ℝ) : idle.Legit θ κ :=
+  Episode.legit_of_nothing _ θ κ rfl (fun _ _ => Finset.Subset.refl _)
+
 /-- `Legit.mono` on the witness. -/
 theorem legit_looser : (ep True True (1 / 20) (1 / 40)).Legit (1 / 5) (1 / 5) :=
   Episode.Legit.mono _ (by norm_num) (by norm_num) legit
@@ -447,6 +456,7 @@ end Workspace.Deference.Contrib.LegitimacyStatement
 #print axioms Workspace.Deference.Contrib.LegitimacyStatement.Witness.requested_behind
 #print axioms Workspace.Deference.Contrib.LegitimacyStatement.Witness.requested_legit
 #print axioms Workspace.Deference.Contrib.LegitimacyStatement.Witness.not_legit_keeps
+#print axioms Workspace.Deference.Contrib.LegitimacyStatement.Witness.idle_legit
 #print axioms Workspace.Deference.Contrib.LegitimacyStatement.Witness.legit_looser
 #print axioms Workspace.Deference.Contrib.LegitimacyStatement.Witness.against_instance
 #print axioms Workspace.Deference.Contrib.LegitimacyStatement.Witness.scoring_open

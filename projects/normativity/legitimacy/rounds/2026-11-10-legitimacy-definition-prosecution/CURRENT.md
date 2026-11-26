@@ -1,12 +1,13 @@
-# Legitimacy and manipulation: where the line stands (2026-11-24)
+# Legitimacy and manipulation: where the line stands (2026-11-26)
 
 A checkpoint. The line aims at a formalism with defensible modelling choices that says
 intuitively correct things about manipulation, following Noggle, and proves safety theorems
 for the corrigibility design. It is not at that bar. The statement of legitimacy as it stands
-is `account/LEGITIMACY_STATEMENT.md`; the standing of each of its parts, with the evidence and
-what would move it, is `account/LEDGER.md`, and §3 below is a guide to the two. Paths are
-relative to this directory; Lean files are under `lean/Workspace/Deference/Contrib/`. Every
-Lean result named is kernel-checked. Those of §1 are registered `lean-proved` in
+is `account/LEGITIMACY_STATEMENT.md`: three sentences, and a formal statement over the notions
+they use, which are taken as given. The standing of each part, with the evidence and what
+would move it, is `account/LEDGER.md`, and §3 below is a guide to the two. Paths are relative
+to this directory; Lean files are under `lean/Workspace/Deference/Contrib/`. Every Lean
+result named is kernel-checked. Those of §1 are registered `lean-proved` in
 `projects/normativity/CLAIMS.md` under the id beside each; those of §3 are not registered. A
 result is what its declaration states and no more.
 
@@ -137,6 +138,11 @@ runner reads them.
 | the cost of stopping as part of sentence 3 | sixteenth | the cost is zero where the best option's influence-free counterpart is impossible though another could be supplied; two influences each cheap to stop are costly to stop together; moved to her authority by the ruling of 2026-11-24 | the eighth reply of `REVIEW-astra-followup-16.md` in the prompts directory |
 | the pressure clause read on her rating of the moment | sixteenth | an open, stoppable presentation that reverses her ranking for a while passes | the ninth reply |
 | regulating open pressure (it fails only where hidden or unstoppable) in place of prohibiting it | sixteenth | ruled out by the maintainer; on the bank it settles 28 of 39 cases with a lapse expected and passes 5 the author calls manipulation | `account/CASE_RUNS.md`, run 14 |
+| the statement as a predicate on a table of his moves (`LegitimacyModel.lean`: F1, F2, F2′, F3 over courses indexed by which moves are made) | sixteenth to nineteenth; reviewed in the twentieth | an outside review found it not a rendering of the three sentences: its pressure clause scores her options by where he expects them to lead and never reads her rating of them, so open nagging passes and a helpful reminder fails; it compares net weights, so harm in one case is offset by help in another | the tenth reply of `REVIEW-astra-followup-20.md` in the prompts directory; the Lean files, marked at the head |
+| sentence 2 worded on "changes her" and "other than by telling her his views" | sixteenth | it needed her response to being told as a primitive apart from how she is told; replaced by her judgement, at her last settled decision, of how seeing and hearing a thing should move her | `DECISIONS.md`, `2026-11-26--legitimacy-statement-at-the-level-of-its-words` |
+| her view of the hypothetical read as her prediction of how she will respond | twentieth | a weakness she foresees and disowns passes | the thirteenth reply; `account/HARD_CASES.md`, case 13 |
+| three rules for what she could not have judged in advance: the exemption lost where she wants to keep her view; what he says always hers; nothing counted if she keeps the new view | twentieth | each differs from a verdict of the maintainer's on the twenty hard cases, on 2, 4 and 3 of them | `account/HARD_CASES.md` |
+| a history design as the formal statement and gate: four designs, each with a model run on episodes | twentieth | each was reviewed and found not ready; the last gives the wrong verdict on seven of eight episodes written against it; it is kept as the interpretation | the eleventh to fourteenth replies; `account/interpretation/INTERPRETATION.md` §3 |
 
 Five claims made in working notes and withdrawn, each with an exact instance:
 `withdrawn/WITHDRAWN.md`.
@@ -144,77 +150,65 @@ Five claims made in working notes and withdrawn, each with an exact instance:
 ## 3. In progress
 
 **The statement as it stands** is `account/LEGITIMACY_STATEMENT.md`. Noggle's definition is
-kept as the definition of manipulation, with a mistake judged by the adviser's lights: his
-view says what he owes her and is never where she ought to end up, and he is not assumed more
-accurate than she is. An adviser's conduct is legitimate when, by his own lights, nothing
-that matters is untold; nothing is done to her behind her back and nothing against her own
-judgement; and she can stop it. The three sentences are the maintainer's, frozen for testing
-on 2026-11-24; a formal statement (F1, F2, F2′, F3) accompanies them and is open to revision.
-What he does to her options, as against to her, is counted under her authority: what stopping
-costs her, bundling, penalties, payments, threats, starting something over her refusal.
+kept as the definition of manipulation, with a mistake judged by the adviser's lights. An
+adviser's conduct is legitimate when, by his own lights: nothing that matters is untold;
+nothing is done to her behind her back and nothing against her own judgement, where he does
+something to her when her mind moves otherwise than she, at her last settled decision, would
+have judged that seeing and hearing it should; and she can stop it. The three sentences are
+the maintainer's. By his ruling of 2026-11-26 the definition is stated at the level of its
+words: the notions the sentences use are taken as given, and how they are worked out in a
+concrete episode is a separate, continuing question, the interpretation.
 
-What stands behind it, none of it a statement of record:
+Three layers, none a statement of record:
 
-- **A Lean model**, `LegitimacyModel.lean`: the adviser's picture of one episode, with the
-  statement as a predicate `Model.Legit`. Proved: the predicate is unchanged by any bijective
-  re-description of her state; a move that changes nothing in her bears no effect; no moves
-  and nothing untold is legitimate; a failure of F1, of either half of F2, or of F2′ refutes
-  it; one open, stoppable influence is legitimate and the same done covertly is not; the
-  scoring it gives through `Legitimacy.gateValue` is a `DeconfusingCorrigibility.Scoring`;
-  and a gate with soundness error `ρ` and completeness error `ρ'` gives legitimate conduct the
-  higher expected score when `ρ(1 − w) < −w(1 − ρ')`. In the model his belief is indexed by
-  time, a view's bearing is computed jointly with his other views, what is on offer is the
-  largest set properly on offer, a stopping option is one after which he goes on with no
-  effect-bearing move, and the clause on her earlier rating is silent where she had none. Its
-  header says how each part of the statement is rendered and what it takes as given: what she
-  can pick out, what she asked for, what a decision of hers is, a move's plain telling, his
-  conduct after an option of hers. Two places where the formal statement does not fix a
-  reading were found in rendering it: the largest set on offer need not exist, and the
-  bearing of a view "with other views of his" can be read two ways.
-- **The model on a full witness and on the exact cases** (`account/LEAN_CASES.md`).
-  `LegitimacyWitness.lean` has a term on which every clause does work, proved legitimate,
-  and eight terms differing from it in one field, on each of which one clause fails and the
-  other six hold. `LegitimacyCases.lean` has each of the 41 exact cases as a term, built by one
-  stated construction, with the clauses that hold on it proved. Verdict and failing clause are
-  the table's on all 41. For eleven of them the case's data and the term were brought to each
-  other by one session with the expected verdict in view. In the terms the chance that she
-  goes against her earlier rating is derived. A move he learns at its start to bear an effect
-  is refuted by the start rule alone.
-- **Exact cases**, in the runner: 41 of the formal statement (`account/LEGITIMACY_CHECKS.md`)
-  and 20 of a candidate clause for what stopping costs her, which is the authority side's
-  (`account/STOPPING_COST.md`). Expectations were fixed first; statement and cases are by one
-  hand; the chance that she goes against her earlier rating is supplied to a case, or, where
-  her judgement is bent, computed from her stated rating without his move.
-- **Case runs** (`account/CASE_RUNS.md`), blind codings by language models against scorers
-  written first; the two sheets behind the counts here are each coded twice, by coders of
-  different models. On the 240 cases of Noggle's book with a definite verdict the disclosure
-  rule settles 219 and agrees on 214 on the first coding, 216 and 212 on the second, the rule
-  having been formed with the bank in view; its verdict is the same under both on 227. The
-  clause on her earlier rating settles 33 of the 39 cases where a lapse is expected and agrees
-  on all 33 on the first coding, convicting 1 of 69 controls; 30, 29 and no control on the
-  second; its verdict is the same under both on 131 of 152. A judgement bent for a while
-  occurs in four cases of 152 on one coding and ten on the other, none where a lapse is
-  expected. No person has read a case against a coding. The statement has not been run on a
-  case of value change.
-- **Nine outside reviews** by one model (`REVIEW-astra-followup-16.md` in the prompts
-  directory), two of them blind to the project. Each found errors of form in the version it
-  saw; none has seen the present statement or the Lean.
+- **The words.** The maintainer's verdicts on twenty hard cases select sentence 2's rule
+  over three alternatives (`account/HARD_CASES.md`); he marks two of the twenty unsure and
+  four as leanings. Blind codings of the bank of cases from Noggle's book by language models
+  (`account/CASE_RUNS.md`): the disclosure rule settles 219 of 240 cases and agrees on 214,
+  216 and 212 on a second coding; sentence 2's second half, with her judgement read as her
+  prior view of the hypothetical, settles 36 of 39 cases where a lapse is expected and agrees
+  on all 36, and convicts 8 of 60 controls where at most 4 were predicted, 1 of 64 with a
+  screen for ties added after the result. No person has read a case against a coding.
+- **The formal statement**, `LegitimacyStatement.lean`: an `Episode` whose fields are the
+  given notions, three definitions and their conjunction `Legit`. Proved: larger tolerances
+  loosen it; no conduct and every view told is legitimate; under sentence 1 an option within
+  `ε` of the best she rates stays within `ε + 2θ` of the best on being told anything untold;
+  five refutations, one for each way a sentence can fail; what she asked for is unconstrained
+  by sentence 2's second half; the scoring it gives is a `DeconfusingCorrigibility.Scoring`.
+  A witness on which it holds, with four neighbours each failing by one value. The scoring
+  link and the gate theorem for any predicate are in `LegitimacyGate.lean`. The statement
+  relates the fields by nothing but the three definitions: an episode on which he does
+  nothing to her, by the field, satisfies sentences 2 and 3 whatever he does. No outside
+  review has seen the file.
+- **The interpretation**, `account/interpretation/`: a design on histories with an exact
+  model in Python, 68 episodes at their expected verdicts as a regression set, and 8
+  episodes of known faults on 7 of which the model's verdict is wrong. Model and episodes are
+  by one hand and the model was corrected against the episodes. `LegitimacyModel.lean` and
+  the three files beside it are an earlier interpretation, on a table of his moves, which
+  outside review rejected as a rendering of the sentences; its theorems hold of its
+  definitions.
 
-**Open.** `account/LEDGER.md` has 38 rows: 18 closed, each a Lean declaration or the runner;
-14 open; 6 living notes. Its last section ranks the open work. By `ATTENTION.md` item:
+Fourteen outside reviews by one model (`REVIEW-astra-followup-16.md` and
+`REVIEW-astra-followup-20.md` in the prompts directory), the last seven each a fresh session
+that read only its brief. Each found the formal object before it unfaithful. Of the words, the
+last two pressed one thing: the exemption for what she could not have judged in advance, which
+the thirteenth objects to and the fourteenth asks to be narrowed to her response to the thing
+observed.
 
-1. **An outside review of the Lean statement** (item 153).
-2. **A set of cases of bent judgement, coded twice** (item 154); a person's check of a
-   sample of the codings (item 148).
-3. **The restated cases rebuilt by another hand, and what the model still takes as given**
-   (item 151).
-4. **The cost of a decision of hers on the authority side** (item 149).
-5. **Composition with the sequential corrigibility theorems** (item 150).
-6. **Whether a gate can evaluate legitimacy at all** (item 147).
-7. **The statement on cases of value change** (item 155).
-8. **The verdict when conduct is cut into finer moves, and what a decision of hers is**
-   (item 152).
-9. **What the adviser believes and expects, for a trained system** (item 139).
+**Open.** `account/LEDGER.md` has 58 rows: 14 closed, each a Lean declaration or the runner;
+28 open; 16 living notes. Its last section ranks the open work. By `ATTENTION.md` item:
+
+1. **Properties the given notions must have, in Lean** (item 156, first part).
+2. **An outside review of the Lean statement** (item 153).
+3. **The cost of a decision of hers on the authority side** (item 149).
+4. **Composition with the sequential corrigibility theorems, on `Episode`** (item 150).
+5. **The interpretation's known faults** (item 157).
+6. **The history model as an instance of the statement** (item 156, second part).
+7. **What makes a decision settled** (item 152).
+8. **Cases of bent judgement, and of value change** (items 154, 155).
+9. **A person's check of a sample of the codings** (item 148).
+10. **Whether a gate can evaluate legitimacy at all** (item 147).
+11. **What the adviser believes and expects, for a trained system** (item 139).
 
 Open from before and not touched by the statement: what supplies her trustworthiness (item
 140); her valuing and what makes a request valid (item 141); relative to what distribution
@@ -223,9 +217,11 @@ verdicts on the literature's cases by two authors (item 144); the audit as a des
 145); what is new against prior work (item 146).
 
 The maintainer's positions are working positions, open to revision by the cases:
-`DECISIONS.md`, `2026-11-24--legitimacy-statement-working-positions`, with those of
-`2026-11-18--legitimacy-working-positions` and `2026-11-21--manipulation-working-positions`
-where the later entry does not replace them. Three questions on this line are queued for him
-there: whether a practice's rules cover a deception she did not herself ask for; whether her
-asking makes legitimate what would otherwise be manipulation; and what bounds the cost of a
-decision of hers where the influence is the price or she agreed to the penalty.
+`DECISIONS.md`, `2026-11-26--legitimacy-statement-at-the-level-of-its-words`, with those of
+`2026-11-24--legitimacy-statement-working-positions`, `2026-11-18--legitimacy-working-positions`
+and `2026-11-21--manipulation-working-positions` where a later entry does not replace them.
+Four questions on this line are queued for him there: whether a practice's rules cover what
+she did not herself ask for, on the teacher's put-on enthusiasm; whether her asking makes a
+thing not manipulation or manipulation that is permitted; what bounds the cost of a decision
+of hers where the influence is the price or she agreed to the penalty; and what makes a
+decision of hers settled.

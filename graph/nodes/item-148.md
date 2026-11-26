@@ -34,7 +34,7 @@ ATTENTION.md, item 148 (A person's check of a sample of the case codings); its c
 Filed by the fifteenth follow-up to the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution, PROMPT-followup-15.md) under the round prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py.
 
 ## Item
-Row 35 of `account/LEDGER.md`.
+Row 51 of `account/LEDGER.md`.
 
 Every answer behind the counts of `account/CASE_RUNS.md` was given by a language model, once.
 No person has read a case against its coding. The texts the coders read are paraphrases of

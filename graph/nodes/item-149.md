@@ -14,7 +14,7 @@ project: normativity.legitimacy
 dispatchable: true
 item_status: open
 deliverable: "`lean-proved` — under `lean/Workspace/Deference/Contrib/`, on the objects of `AuthorityModule.lean` and `EffectiveAuthority.lean`, a statement of what a decision of hers costs her against a bound, under which a penalty he attaches to her stopping, a payment that depends on her continuing, a thing bundled with another he could supply apart, and a threat are each a shortfall he caused or are shown not to be; starting something over her refusal as a violation; the twenty cases of `account/STOPPING_COST.md` as instances with the verdicts of its table, or a stated divergence for each that differs; and a term inhabiting each hypothesis package."
-acceptance: "The `lean` job green: the file builds, every theorem is under `#print axioms` within `[propext, Classical.choice, Quot.sound]`, no `sorry`, no `maxHeartbeats` option; the instances and the inhabitation witnesses are declarations of the file; row 30 of `account/LEDGER.md` of the prosecution round names each declaration against the case it decides."
+acceptance: "The `lean` job green: the file builds, every theorem is under `#print axioms` within `[propext, Classical.choice, Quot.sound]`, no `sorry`, no `maxHeartbeats` option; the instances and the inhabitation witnesses are declarations of the file; row 52 of `account/LEDGER.md` of the prosecution round names each declaration against the case it decides."
 work:
   - {kind: round, ref: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution}
   - {kind: decision, ref: 2026-11-24--legitimacy-statement-working-positions}
@@ -34,7 +34,7 @@ ATTENTION.md, item 149 (The cost of a decision of hers, on the authority side); 
 Filed by the fifteenth follow-up to the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution, PROMPT-followup-15.md) under the round prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py.
 
 ## Item
-Rows 5, 9 and 30 of `account/LEDGER.md`.
+Rows 13 and 52 of `account/LEDGER.md`.
 
 By the maintainer's ruling of 2026-11-24 what an adviser does to her options, as against to
 her, is her authority's business and no part of legitimacy: what stopping costs her,

@@ -1437,12 +1437,12 @@ of this entry's deliverable and acceptance check.
 ### 139. What the adviser believes and expects, for a trained system — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-Rows 1 and 2 of `account/LEDGER.md`.
+Rows 11 and 15 of `account/LEDGER.md`.
 
 The statement of `account/LEGITIMACY_STATEMENT.md` judges an adviser's conduct by his own
 lights: what is untold is what he believes and has not said, an effect is one he expects, and
-a sincere adviser who is wrong satisfies it. In `LegitimacyModel.lean` his lights are the
-weights `μ` on a finite set of cases and, for each set of his moves, the course he expects.
+a sincere adviser who is wrong satisfies it. In `LegitimacyStatement.lean` his lights are the
+fields of `Episode`: her ratings as he takes them, his views, and his two weights.
 Nothing says what those are for a trained system, and the whole verdict rests on them: two
 systems that act alike and differ in what they expect of her get different verdicts.
 Wanted: a procedure that produces the picture, and the two instances that show what it can
@@ -1451,7 +1451,7 @@ and cannot tell apart.
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
 *Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md` and `account/LEDGER.md` in the round directory;
-`lean/Workspace/Deference/Contrib/LegitimacyModel.lean`.
+`lean/Workspace/Deference/Contrib/LegitimacyStatement.lean`.
 *Consumed by:* item 147 (what a gate can observe), and the round that writes the account up.
 
 ### 140. What supplies her trustworthiness — **[open]**
@@ -1631,8 +1631,8 @@ departs with probability ε loses in proportion to ε.
 
 The statement of `account/LEGITIMACY_STATEMENT.md` makes legitimacy a property of what the
 adviser believes and expects, so a gate needs his picture or a proxy for it, and a sincere
-adviser who is wrong passes whatever her record shows. `LegitimacyModel.gate_gives_behaviour`
-takes a gate's two error probabilities as numbers; row 32 of `account/LEDGER.md` is what
+adviser who is wrong passes whatever her record shows. `LegitimacyGate.gate_gives_behaviour`
+takes a gate's two error probabilities as numbers; row 55 of `account/LEDGER.md` is what
 this item answers for that statement: the error probabilities a stated procedure attains
 under one observation model, or two pictures with different verdicts and the same record.
 
@@ -1648,7 +1648,7 @@ use of `UnbiasedFromFeedback`.
 ### 148. A person's check of a sample of the case codings — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=no -->
 
-Row 35 of `account/LEDGER.md`.
+Row 51 of `account/LEDGER.md`.
 
 Every answer behind the counts of `account/CASE_RUNS.md` was given by a language model, once.
 No person has read a case against its coding. The texts the coders read are paraphrases of
@@ -1665,7 +1665,7 @@ coding sheets, `account/intent_cases.json` and `account/LEDGER.md` in the round 
 ### 149. The cost of a decision of hers, on the authority side — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-Rows 5, 9 and 30 of `account/LEDGER.md`.
+Rows 13 and 52 of `account/LEDGER.md`.
 
 By the maintainer's ruling of 2026-11-24 what an adviser does to her options, as against to
 her, is her authority's business and no part of legitimacy: what stopping costs her,
@@ -1687,90 +1687,84 @@ and `account/LEDGER.md` in the round directory; `lean/Workspace/Deference/Contri
 `lean/Workspace/Deference/Contrib/AuthorityModule.lean`.
 *Consumed by:* item 143 (authority beyond a finite penalty), and the round that writes the account up.
 
-### 150. The legitimacy model composed with the sequential corrigibility theorems — **[open]**
+### 150. The legitimacy statement composed with the sequential corrigibility theorems — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-Row 31 of `account/LEDGER.md`.
+Row 53 of `account/LEDGER.md`.
 
-`LegitimacyModel.legitScoring` turns the legitimacy predicate into the scoring of the
+`LegitimacyStatement.legitScoring` turns the legitimacy predicate into the scoring of the
 corrigibility result for one decision, with no authority violation. The sequential theorems
 (`Sequential.theorem3a`, `theorem3b` in `DeconfusingCorrigibility.lean`) are about realised
-evaluations over many decisions; `Model` is one episode as the adviser pictures it. Nothing
-relates the two. Wanted: the composition in Lean, with whatever must be assumed about his
-picture against the facts named as a hypothesis and shown necessary. A Lean headline
+evaluations over many decisions; an `Episode` is one stretch as the adviser pictures it.
+Nothing relates the two. Wanted: the composition in Lean, with whatever must be assumed about
+his picture against the facts named as a hypothesis and shown necessary. A Lean headline
 registers at merge.
 
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
 *Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md` and `account/LEDGER.md` in the round directory;
-`lean/Workspace/Deference/Contrib/LegitimacyModel.lean`, `lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean`.
+`LegitimacyStatement.lean`, `LegitimacyGate.lean` and `DeconfusingCorrigibility.lean` under `lean/Workspace/Deference/Contrib/`.
 *Consumed by:* item 145 (the audit as a design, over more than one decision), and the round that writes the account up.
 
-### 151. The Lean model on cases: the restated cases rebuilt by another hand, and what the model still takes as given — **[open]**
-<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+### 151. The model on a table of his moves: the restated cases rebuilt by another hand, and what it takes as given — **[open]** — *closed: outside review rejected the model as a rendering of the statement*
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=no -->
 
-Rows 24, 27 and 38 of `account/LEDGER.md`.
+Row 50 of `account/LEDGER.md`.
 
-`LegitimacyModel.lean` carries the statement as a predicate on a model of the adviser's
-picture, with his belief at each time, a view's bearing computed jointly, what is on offer as
-the largest proper set, stopping options defined by his conduct after them, and the pressure
-clause silent where she had no earlier rating. `LegitimacyCases.lean` has each of the forty-one
-exact cases of `account/LEGITIMACY_CHECKS.md` as a term, with verdict and failing clause the
-table's on all forty-one (`account/LEAN_CASES.md`). Three things remain. Eleven cases and their
-terms were brought to each other by one session with the expected verdict in view. A move's
-plain telling and his conduct after an option of hers are fields that nothing ties to `tell`
-or to the courses. And a decline is checked on no term where she heard the view. Wanted: the
-eleven built again by another hand, and the two fields derived. A Lean headline registers at
-merge.
+Closed without delivery. The tenth outside review found `LegitimacyModel.lean` not a faithful
+rendering of the three sentences of legitimacy, its pressure clause scoring her options by
+where he expects them to lead, and the model is kept as an interpretation whose theorems hold
+of its definitions. Work on its cases and its free fields would not bear on the statement,
+which is `LegitimacyStatement.lean`. The corresponding work on the present interpretation is
+item 157.
 
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
-*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md`, `account/LEGITIMACY_CHECKS.md`, `account/legitimacy_checks.py`,
-`account/LEAN_CASES.md`, `account/lean_cases.py` and `account/LEDGER.md` in the round directory;
-`LegitimacyModel.lean`, `LegitimacyCase.lean`, `LegitimacyWitness.lean` and `LegitimacyCases.lean` under `lean/Workspace/Deference/Contrib/`.
-*Consumed by:* items 150, 152 and 153, and the round that writes the account up.
+*Context:* `CURRENT.md` and `account/LEDGER.md` in the round directory; `lean/Workspace/Deference/Contrib/LegitimacyModel.lean`;
+`REVIEW-astra-followup-20.md` in the round's prompts directory.
+*Consumed by:* nothing.
 
-### 152. The verdict when his conduct is cut into finer moves, and what a decision of hers is — **[open]**
+### 152. What makes a decision of hers settled, and where what she could not have judged in advance begins — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-Rows 9 and 34 of `account/LEDGER.md`.
+Rows 5, 9 and 30 of `account/LEDGER.md`.
 
-The statement speaks of each thing an adviser does; the formal statement of each move, and
-of her decisions. Both are primitives. The ninth outside review showed a form of the
-statement under which one notice passed as a single move and failed as two; that case passes
-both ways now, and nothing general is shown. The eighth and ninth both observed that a stop
-is asked only at her decisions, so a move that starts and ends between two of them has none
-asked of it while it runs. Wanted: invariance under cutting, or the instance that breaks it;
-and a statement of what a decision is that settles the timing case.
+Sentence 2 of the statement judges what he does to her against her judgement at her last
+settled decision, and exempts her response to what she could not have judged in advance.
+Which choices are settled, and which observations she could not have judged, are written by
+hand in every hard case, every coding sheet and every episode. One candidate for the first,
+untested: a check-in settles it. The criterion itself is queued for the maintainer
+(`DECISIONS.md`, `open--what-makes-a-decision-settled`); this item is the test of a criterion
+once there is one.
 
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
-*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md` and `account/LEDGER.md` in the round directory;
-`lean/Workspace/Deference/Contrib/LegitimacyModel.lean`; `REVIEW-astra-followup-16.md` in the round's prompts directory.
-*Consumed by:* item 150, and the round that writes the account up.
+*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md`, `account/HARD_CASES.md`, `account/interpretation/INTERPRETATION.md`,
+`account/interpretation/history_model.py` and `account/LEDGER.md` in the round directory.
+*Consumed by:* item 157, and the round that writes the account up.
 
 ### 153. An outside review of the Lean statement of legitimacy — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-Rows 4 and 27 of `account/LEDGER.md`.
+Rows 16 and 51 of `account/LEDGER.md`.
 
-Nine outside reviews pressed the statement in words and its formal counterpart; none has seen
-`LegitimacyModel.lean`, and none has seen the statement since the clause on her earlier
-rating and the repairs to the offer and decline rules. The file is by the hand that wrote the
-statement. Wanted: one review of the Lean predicate against the statement, by an outside
-model that can read nothing else. It is worth most after item 151's first part, a witness on
-which every clause does work.
+Fourteen outside reviews have pressed the statement in words and five formal objects built
+from it; each formal object a review saw was found not to say what the sentences say. None
+has seen `LegitimacyStatement.lean`, which states legitimacy over notions taken as given and
+is by the hand that wrote the sentences' formal counterparts before it. Wanted: one review of
+that file against the sentences, by an outside model that can read nothing else. It is worth
+most after the first part of item 156, when the properties the fields must have are stated.
 
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
 *Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md` and `account/LEDGER.md` in the round directory;
-`lean/Workspace/Deference/Contrib/LegitimacyModel.lean`; `REVIEW-astra-followup-16.md` in the round's prompts directory.
-*Consumed by:* item 151's third part, and the round that writes the account up.
+`lean/Workspace/Deference/Contrib/LegitimacyStatement.lean`; `REVIEW-astra-followup-20.md` in the round's prompts directory.
+*Consumed by:* items 150 and 156, and the round that writes the account up.
 
 ### 154. A set of cases of bent judgement, coded twice — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-Rows 6, 8 and 10 of `account/LEDGER.md`.
+Rows 2 and 56 of `account/LEDGER.md`.
 
 A judgement bent for a while, which the clause on her earlier rating is ruled to cover,
 occurs in four of the 152 bank cases on the first coding of sheet 16 and in ten on the
@@ -1790,7 +1784,7 @@ in the round directory.
 ### 155. The legitimacy statement on cases of value change — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-Row 33 of `account/LEDGER.md`.
+Row 57 of `account/LEDGER.md`.
 
 The statement has no clause for a change in what she values: an influence on her values is
 legitimate when nothing that matters is untold, she can pick it out, it does not lead her
@@ -1808,6 +1802,48 @@ the same sets.
 *Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md`, `account/CASE_RUNS.md`, `account/case_runs.py`,
 `account/vc2_key.json`, `account/vc2_cases.json` and `account/LEDGER.md` in the round directory.
 *Consumed by:* item 141 (her valuing), and the round that writes the account up.
+
+### 156. The properties the statement's given notions must have, and the history model as an instance — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+Rows 29 and 49 of `account/LEDGER.md`.
+
+`LegitimacyStatement.lean` states legitimacy over notions taken as given: what is told, on
+offer or declined; what each thing he does does to her; whether she can tell, asked, can
+stop; his two weights. The three definitions are the only relation among the fields, so an
+episode whose field `doesToHer` is false throughout satisfies sentences 2 and 3 whatever he
+does, and no theorem says otherwise. Wanted first: what each field must satisfy to be the
+notion it is named for, as Lean predicates, each shown to do work. Wanted second, once the
+interpretation's known faults are repaired: the history model as an instance, so that its
+verdict is `Legit` of an episode with those properties. A Lean headline registers at merge.
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md`, `account/LEDGER.md` and `account/interpretation/INTERPRETATION.md` in the round directory;
+`lean/Workspace/Deference/Contrib/LegitimacyStatement.lean`.
+*Consumed by:* items 150 and 153, and the round that writes the account up.
+
+### 157. The interpretation's known faults — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+Rows 31 to 47 of `account/LEDGER.md`.
+
+The interpretation works the statement's given notions out on histories: an exact model with
+68 episodes as a regression set. The fourteenth outside review gave seven episodes; the model
+gives the wrong verdict on six, and on an eighth that shows the seventh's fault. Three are
+leaks (a hidden mechanism delivered with an unfamiliar observation; uptake obtained by a
+threat; a disabled response the probe list leaves out) and four are over-reach (her own later
+learning counted against his aid; a better menu counted as regret; a signal she can read from
+memory; two influences each with its own switch). The review also names five things the
+design leaves undetermined. Wanted: each repaired without moving a present verdict, and the
+result reviewed from outside.
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md`, `account/LEDGER.md`, `account/interpretation/INTERPRETATION.md`,
+`account/interpretation/history_model.py` and `account/interpretation/known_faults.py` in the round directory;
+`REVIEW-astra-followup-20.md` in the round's prompts directory.
+*Consumed by:* item 156's second part, item 152, and the round that writes the account up.
 
 ## Deference line
 Context for all three: `projects/deference/note-dump-2026-08-11/`, in particular

@@ -51,8 +51,8 @@ departs with probability ε loses in proportion to ε.
 
 The statement of `account/LEGITIMACY_STATEMENT.md` makes legitimacy a property of what the
 adviser believes and expects, so a gate needs his picture or a proxy for it, and a sincere
-adviser who is wrong passes whatever her record shows. `LegitimacyModel.gate_gives_behaviour`
-takes a gate's two error probabilities as numbers; row 32 of `account/LEDGER.md` is what
+adviser who is wrong passes whatever her record shows. `LegitimacyGate.gate_gives_behaviour`
+takes a gate's two error probabilities as numbers; row 55 of `account/LEDGER.md` is what
 this item answers for that statement: the error probabilities a stated procedure attains
 under one observation model, or two pictures with different verdicts and the same record.
 
