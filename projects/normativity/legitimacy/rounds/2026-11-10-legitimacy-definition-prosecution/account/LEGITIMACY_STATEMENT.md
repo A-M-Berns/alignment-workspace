@@ -171,8 +171,10 @@ is `precededByChoice`. An episode is his picture; nothing in it is the facts.
   thing, and what it bears on, and how much, is still what she was told.
 - **A thing he does; that it does something to her.** One act of his on one occasion. It
   does something to her when her mind moves otherwise than she, at her last settled decision,
-  would have judged that seeing and hearing it should; where she could not have judged it in
-  advance, it does not.
+  would have judged that seeing and hearing it should. Her response to something she could
+  not have judged in advance is her own; that covers her response to the thing seen or heard,
+  not another effect of the act that delivers it (a reading, `DECISIONS.md`,
+  `2026-11-26--legitimacy-twentieth-followup-readings`).
 - **That it keeps something from her.** After it, an item or an option that reaches her from
   someone other than him is missing.
 - **She can pick it out.** She can tell that he is doing it.
