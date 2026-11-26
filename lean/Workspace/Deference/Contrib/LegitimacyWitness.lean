@@ -1,6 +1,13 @@
 /-
 # A witness on which every clause of the legitimacy statement does work
 
+**Status: part of an interpretation, not the statement of record.**  `LegitimacyModel.lean`
+works the three sentences of legitimacy out on a table of the adviser's moves, and outside
+review rejected it as a rendering of them (`REVIEW-astra-followup-20.md` in the round's prompts
+directory, the tenth review).  The theorems here hold of that file's definitions, and "the
+legitimacy statement" below is its `Model.Legit`.  The statement of the line is
+`LegitimacyStatement.lean`.
+
 Round `prompts/2026-11-10-legitimacy-definition-prosecution/` (`PROMPT-followup-17.md` §2 A,
 `PROMPT-followup-19.md` §1 A).
 `Full.full` is a `Case` (`LegitimacyCase.lean`); `Full.full.model` is the term of `Model`.

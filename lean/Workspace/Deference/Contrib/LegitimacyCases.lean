@@ -1,6 +1,13 @@
 /-
 # The forty-one exact cases as terms of the model
 
+**Status: part of an interpretation, not the statement of record.**  `LegitimacyModel.lean`
+works the three sentences of legitimacy out on a table of the adviser's moves, and outside
+review rejected it as a rendering of them (`REVIEW-astra-followup-20.md` in the round's prompts
+directory, the tenth review).  The theorems here hold of that file's definitions, and "the
+legitimacy statement" below is its `Model.Legit`.  The statement of the line is
+`LegitimacyStatement.lean`.
+
 Round `prompts/2026-11-10-legitimacy-definition-prosecution/` (`PROMPT-followup-17.md` §2 B,
 `PROMPT-followup-19.md` §1 A and B).  `account/LEGITIMACY_CHECKS.md` in the round directory
 tabulates 41 cases of the legitimacy statement, computed by `account/legitimacy_checks.py`.

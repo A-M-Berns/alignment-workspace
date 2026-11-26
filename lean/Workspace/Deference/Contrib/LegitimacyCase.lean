@@ -1,9 +1,15 @@
 /-
 # Rational models of the legitimacy statement, and which clauses hold on one
 
+**Status: part of an interpretation, not the statement of record.**  `LegitimacyModel.lean`
+works the three sentences of legitimacy out on a table of the adviser's moves, and outside
+review rejected it as a rendering of them (`REVIEW-astra-followup-20.md` in the round's prompts
+directory, the tenth review).  The theorems here hold of that file's definitions.  The
+statement of the line is `LegitimacyStatement.lean`.
+
 Round `prompts/2026-11-10-legitimacy-definition-prosecution/` (`PROMPT-followup-17.md`,
 `PROMPT-followup-19.md` §1 A).
-`LegitimacyModel.lean` states legitimacy as `Model.Legit`, a predicate on a `Model` with real
+`LegitimacyModel.lean` has `Model.Legit`, a predicate on a `Model` with real
 weights, scores and ratings.  This file gives a way to build terms of `Model` on which every
 clause of `Legit` is decided by the kernel.
 

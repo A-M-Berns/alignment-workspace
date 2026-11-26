@@ -1,9 +1,15 @@
 /-
 # A temporal model of an adviser's conduct, and the legitimacy statement over it
 
+**Status: an interpretation, not the statement of record.**  This file works the three
+sentences of legitimacy out on a table of the adviser's moves.  Outside review rejected it as a
+rendering of the three sentences (`REVIEW-astra-followup-20.md` in the round's prompts
+directory, the tenth review).  Its theorems hold of its definitions.  The statement of the
+line is `LegitimacyStatement.lean`.
+
 Round `prompts/2026-11-10-legitimacy-definition-prosecution/` (`PROMPT-followup-16.md` §4 B,
-`PROMPT-followup-19.md` §1 A).  `account/LEGITIMACY_STATEMENT.md` in the round directory is the
-statement this file models; "the statement" below is that document's §3 and §4.
+`PROMPT-followup-19.md` §1 A).  "The statement" below is the formal text this file models:
+times, her states, his moves and the clauses F1, F2, F2′, F3, as its definitions give them.
 
 **Setting** (`Model`).  The adviser's picture of one episode.  A finite type `Ω` of cases; his
 weights `μ u` on them as he believes at each time `u`, nonnegative and summing to one; her
@@ -58,20 +64,13 @@ he has no views, so `F1`, `OnOffer` and `DeclineStands` hold with nothing to che
 goes against her earlier rating under any course (`Witness.not_against`) and never rates
 stopping higher (`Witness.not_prefersStop`), so `F2'` and `F3` hold with both weights zero.
 
-**The link to the corrigibility result.**  `gatedScoring`: any decidable predicate on
-histories gives a `DeconfusingCorrigibility.Scoring` through `Legitimacy.gateValue`.
-`legitScoring`: the case where histories are read as models and the predicate is `Legit`.
+**The link to the corrigibility result.**  `legitScoring`: `LegitimacyGate.gatedScoring`
+(`LegitimacyGate.lean`) where histories are read as models and the predicate is `Legit`.
 `legitScoring_S_of_legit`, `legitScoring_S_of_not_legit`: with no authority violation the
 score is her rating on a legitimate history and in `[−δ, 0)` on an illegitimate one.
 `Witness.scoring`, `scoring_open`, `scoring_covert` inhabit both.  Every theorem of
-`DeconfusingCorrigibility.Scoring` then applies, since those hold for any predicate.
-
-**The gate theorem.**  `gate_gives_behaviour`: a gate that passes illegitimate conduct with
-probability at most `ρ` and legitimate conduct with probability at least `1 − ρ'` gives a
-legitimate conduct strictly higher expected gated score than an illegitimate one whenever
-`ρ (1 − w) < −w (1 − ρ')`, `w < 0` the value on failing.  `gate_threshold_delta`: at `ρ' = 0`,
-`w = −δ` that is `ρ < δ/(1 + δ)`.  `gate_threshold_sharp`: equality of the two scores at the
-threshold.  `Witness.gate_instance` inhabits the hypotheses.
+`DeconfusingCorrigibility.Scoring` then applies, since those hold for any predicate.  The gate
+theorem is in `LegitimacyGate.lean`.
 
 **How each part of the statement is rendered**, where a reading was needed:
 
@@ -127,7 +126,7 @@ told her of a view's bearing, her state and options after hearing, `herStops`, `
 file has a view of his, a move that changes her act, or a case in which she rates stopping
 higher; `LegitimacyWitness.lean` has one with all three.  That the model's verdicts agree with
 the statement in words: `LegitimacyCases.lean` gives its verdicts on the 41 cases of
-`account/LEGITIMACY_CHECKS.md`.  That `legit_transport` covers more than her state: it says
+`account/LEGITIMACY_CHECKS.md` in the round directory.  That `legit_transport` covers more than her state: it says
 nothing of a rescaling of her scores, against which `θ` and `η` are compared, or of his
 conduct cut into other moves.  That `Legit` is unchanged when a move is split into finer
 moves.  F3's premise that some option does not stop his moves: where every option of hers
@@ -135,15 +134,13 @@ stops them, `F3` asks that her act be one of them.  That `ρ` lies in `[0, 1]`, 
 is her score of the course she expects, that `rev` shows only options she does not have, or
 that the tolerances lie in `[0, 1]`: none is required.  The order within a time (what he tells
 her, her decision, the rest of what he does).  Anything about what stopping costs her: that is
-the authority side's.  That any process can evaluate `Legit`: the gate theorem takes the two
-error probabilities as numbers.  In `legitScoring`, `mdl`, `N` and `ord` are data, and the
+the authority side's.  That any process can evaluate `Legit`.  In `legitScoring`, `mdl`, `N` and `ord` are data, and the
 relation between the adviser's picture and the facts does not appear.  The link gives the
 one-decision Theorem 1; nothing connects `Model` to `DeconfusingCorrigibility.Sequential`.
 
 Names are provisional (AGENTS.md standard 6).
 -/
-import Workspace.Deference.Contrib.DeconfusingCorrigibility
-import Workspace.Deference.Contrib.Legitimacy
+import Workspace.Deference.Contrib.LegitimacyGate
 
 namespace Workspace.Deference.Contrib.LegitimacyModel
 
@@ -765,27 +762,7 @@ end Witness
 
 section Link
 
-/-- Any decidable predicate on histories, a violation count, a rating in `[0, 1]` and a window
-value in `[−δ, 0)` give a `DeconfusingCorrigibility.Scoring` whose evaluation is the rating
-gated by the predicate through `Legitimacy.gateValue`. -/
-noncomputable def gatedScoring {H : Type*} (P : DeconfusingCorrigibility.Params)
-    (L : H → Prop) [DecidablePred L] (N : H → ℕ) (ord : H → ℝ) (window : ℝ)
-    (hord : ∀ h, 0 ≤ ord h ∧ ord h ≤ 1) (hw : -P.δ ≤ window ∧ window < 0) :
-    DeconfusingCorrigibility.Scoring H where
-  toParams := P
-  Legit := L
-  N := N
-  V := fun h => Legitimacy.gateValue (decide (L h)) (ord h) window
-  V_legit := by
-    intro h hl
-    have hd : decide (L h) = true := decide_eq_true hl
-    simp only [hd]
-    exact hord h
-  V_illegit := by
-    intro h hl
-    have hd : decide (L h) = false := decide_eq_false hl
-    simp only [hd]
-    exact hw
+open LegitimacyGate
 
 open Classical in
 /-- **The scoring of a model.**  Histories `H`, each read as a `Model` by `mdl`: the scoring
@@ -822,60 +799,6 @@ theorem legitScoring_S_of_not_legit {H : Type*} (P : DeconfusingCorrigibility.Pa
 
 end Link
 
-/-! ## The gate theorem -/
-
-section GateTheorem
-
-/-- **The gate gives the behaviour.**  `w < 0` is the value he receives when the gate fails
-him.  An illegitimate conduct passes the gate with probability `p_ill ≤ ρ` (soundness error) and
-is then rated at most `1`; a legitimate conduct passes with probability `p_leg ≥ 1 − ρ'`
-(completeness error) and is rated at least `0`.  If `ρ (1 − w) < −w (1 − ρ')`, the legitimate
-conduct has strictly higher expected gated score. -/
-theorem gate_gives_behaviour (ρ ρ' w u_ill p_ill u_leg p_leg : ℝ)
-    (hw : w < 0) (hu1 : u_ill ≤ 1) (hu0 : 0 ≤ u_leg)
-    (hp0 : 0 ≤ p_ill) (hsound : p_ill ≤ ρ)
-    (hcomp : 1 - ρ' ≤ p_leg) (hρ' : ρ' ≤ 1)
-    (hthr : ρ * (1 - w) < -w * (1 - ρ')) :
-    p_ill * u_ill + (1 - p_ill) * w < p_leg * u_leg + (1 - p_leg) * w := by
-  have h1 : p_ill * (u_ill - w) ≤ ρ * (1 - w) := by
-    have a : p_ill * (u_ill - w) ≤ p_ill * (1 - w) :=
-      mul_le_mul_of_nonneg_left (by linarith) hp0
-    have b : p_ill * (1 - w) ≤ ρ * (1 - w) :=
-      mul_le_mul_of_nonneg_right hsound (by linarith)
-    linarith
-  have hpl : 0 ≤ p_leg := by linarith
-  have h2 : (1 - ρ') * (-w) ≤ p_leg * (u_leg - w) := by
-    have a : (1 - ρ') * (-w) ≤ p_leg * (-w) :=
-      mul_le_mul_of_nonneg_right hcomp (by linarith)
-    have b : p_leg * (-w) ≤ p_leg * (u_leg - w) :=
-      mul_le_mul_of_nonneg_left (by linarith) hpl
-    linarith
-  have e1 : p_ill * u_ill + (1 - p_ill) * w = w + p_ill * (u_ill - w) := by ring
-  have e2 : p_leg * u_leg + (1 - p_leg) * w = w + p_leg * (u_leg - w) := by ring
-  have e3 : (1 - ρ') * (-w) = -w * (1 - ρ') := by ring
-  rw [e1, e2]
-  linarith
-
-/-- With a gate that never fails legitimate conduct (`ρ' = 0`) and the corrigibility file's
-floor `w = −δ`, the condition of `gate_gives_behaviour` is `ρ < δ / (1 + δ)`. -/
-theorem gate_threshold_delta (ρ δ : ℝ) (hδ : 0 < δ) (h : ρ < δ / (1 + δ)) :
-    ρ * (1 - (-δ)) < -(-δ) * (1 - 0) := by
-  have h1 : (0:ℝ) < 1 + δ := by linarith
-  have h2 : ρ * (1 + δ) < δ := by
-    have := (lt_div_iff₀ h1).mp h
-    linarith
-  linarith
-
-/-- The threshold is sharp: at `ρ = 1/2`, `w = −1`, `ρ' = 0`, where `ρ (1 − w) = −w (1 − ρ')`,
-an illegitimate conduct rated `1` and a legitimate conduct rated `0` have the same expected
-gated score. -/
-theorem gate_threshold_sharp :
-    (1/2 : ℝ) * (1 - (-1)) = -(-1) * (1 - 0) ∧
-      (1/2 : ℝ) * 1 + (1 - 1/2) * (-1) = 1 * 0 + (1 - 1) * (-1) := by
-  constructor <;> norm_num
-
-end GateTheorem
-
 namespace Witness
 
 open Model
@@ -898,17 +821,6 @@ theorem scoring_open : scoring.S true = 1 / 2 :=
 theorem scoring_covert : -params.δ ≤ scoring.S false ∧ scoring.S false < 0 :=
   legitScoring_S_of_not_legit params _ 0 (1 / 4) 0 _ _ (-1) _ _ false
     (by simpa using not_legit_covert 0 0) rfl
-
-/-- **The gate theorem's hypothesis package is inhabited**: soundness error `1/4`, no
-completeness error, window value `−1`; the illegitimate conduct rated `1` passes with
-probability `1/4`, the legitimate conduct rated `0` always passes. -/
-theorem gate_instance :
-    ((-1 : ℝ) < 0 ∧ (1 : ℝ) ≤ 1 ∧ (0 : ℝ) ≤ 0 ∧ (0 : ℝ) ≤ 1 / 4 ∧ (1 / 4 : ℝ) ≤ 1 / 4 ∧
-        (1 : ℝ) - 0 ≤ 1 ∧ (0 : ℝ) ≤ 1 ∧ (1 / 4 : ℝ) * (1 - (-1)) < -(-1) * (1 - 0)) ∧
-      (1 / 4 : ℝ) * 1 + (1 - 1 / 4) * (-1) < 1 * 0 + (1 - 1) * (-1) := by
-  refine ⟨by norm_num, ?_⟩
-  exact gate_gives_behaviour (1 / 4) 0 (-1) 1 (1 / 4) 0 1 (by norm_num) (by norm_num)
-    (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
 
 end Witness
 
@@ -952,9 +864,5 @@ end Workspace.Deference.Contrib.LegitimacyModel
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Witness.not_legit_covert
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.legitScoring_S_of_legit
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.legitScoring_S_of_not_legit
-#print axioms Workspace.Deference.Contrib.LegitimacyModel.gate_gives_behaviour
-#print axioms Workspace.Deference.Contrib.LegitimacyModel.gate_threshold_delta
-#print axioms Workspace.Deference.Contrib.LegitimacyModel.gate_threshold_sharp
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Witness.scoring_open
 #print axioms Workspace.Deference.Contrib.LegitimacyModel.Witness.scoring_covert
-#print axioms Workspace.Deference.Contrib.LegitimacyModel.Witness.gate_instance
