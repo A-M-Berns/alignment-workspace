@@ -6497,6 +6497,194 @@ Names gone: `LegitimacyModel.gatedScoring`, `LegitimacyModel.gate_gives_behaviou
    then `python3 -m checkers.graph --root .` and `python3 -m checkers.workspace_state --check`.
 7. Merge or decline pull request #149. Auto-merge is off.
 
+## Twenty-first follow-up (2026-11-26) — the connecting theorem, and the fifteenth review's corrections
+
+Dispatch: `PROMPT-followup-21.md`, verbatim. One result is put on record: a theorem in Lean
+whose hypotheses are the three sentences of the legitimacy statement read at one decision of
+hers and whose conclusion is two bounds on her failing to stop him
+(`lean/Workspace/Deference/Contrib/LegitimacyStop.lean`; read in
+`account/CONNECTING_THEOREM.md` of the round directory). With it: the Lean statement
+corrected in three definitions after a fifteenth outside review, that review verbatim
+(`REVIEW-astra-followup-21.md`), and the ledger brought to both.
+
+### AI.1 What is on record
+
+- **The theorem.** `StopDecision.stops_if_informed_would` and `stops_if_reference_would`, with
+  five necessity instances, `shortfall_le` for any decision, the two in-fact forms and the two
+  long-run theorems; `Reading` and `legit_protects_stop` with its in-fact form. 50 theorems in
+  the file, each under `#print axioms`, each on `[propext, Classical.choice, Quot.sound]`.
+- **A reading was inhabited.** `Witness.reading : Reading stopEp () stopD (1/10)`, where
+  `stopEp` is the witness of `LegitimacyStatement.lean` with `pNoStop = 1/10` and `stopD` a
+  decision of three cases (weights 9/10, 1/20, 1/20: she stops; she rates stopping higher and
+  does not; his unasked work leads her not to). `Witness.protects_instance` is
+  `legit_protects_stop` applied to it, and `Witness.protects_tight` shows its first bound
+  attained. The reading was written to fit the episode's two weights.
+- **The link to the scoring is a theorem**, a light one. `legit_of_score_nonneg`: a history
+  whose `legitScoring` score is not negative is legitimate, whatever its violation count.
+  `scored_protects_stop`: on such a history both bounds hold at each decision of it with a
+  reading. It is `legit_protects_stop` composed with the contrapositive of the illegitimate
+  range. `Witness.scored_instance` applies it.
+- **The statement corrected.** `NothingUntold` compares `rTold (S ∪ H)` with `rTold H` for
+  untold `S` and offered `H`, with the field `rTold_empty`; `CanStop` covers
+  `doesToHer ∨ newToHer`; `canRefuse` stands where `precededByChoice` stood. The twentieth
+  follow-up's instance theorems are repaired. Two instances added: `Witness.offeredMatters`
+  (legitimate at `θ = 0`, though telling both views together moves a rating by 1) and
+  `Witness.newThing` (not legitimate, sentences 1 and 2 holding). 33 theorems in the file.
+
+### AI.2 The fifteenth review
+
+One reply, to a brief that gave the formal statement and the theorem in mathematical notation
+as they stood before the corrections. *Checked* says how the finding was checked here; none
+was put to the reviewer again.
+
+| # | finding | checked | what was done |
+|---|---|---|---|
+| 1 | Formal sentence 1 convicts an untold view that adds nothing when it is told together with an offered view that matters | In Lean: `Witness.offeredMatters_total` exhibits the set and the change of 1 that the earlier definition bounded by `θ` | `NothingUntold` measures what the untold adds to the offered; `Witness.offeredMatters_legit` |
+| 2 | `pAgainst G` must weigh `G` in its actual circumstances, or an unasked thing that works only with an asked one escapes | By reading: the earlier doc did not say | In the doc of `pAgainst`. No definition changed; ledger row 16 |
+| 3 | "Preceded by a choice" is stronger than a way to stop before the start | By reading the sentence | The field is `canRefuse`, an opportunity |
+| 4 | A stop asked at listed decisions leaves a thing that passes beyond calling off between two of them | By reading | In the doc of `inPlay`: the decisions include every such point. Not enforced; row 29 |
+| 5 | Formal sentence 3 leaves out what is new to her, which the words put under sentences 1 and 3 | By inspection: the earlier `CanStop` quantified over `doesToHer` only, so `Witness.newThing` satisfied it | `newToHer`; `CanStop` over `doesToHer ∨ newToHer`; `Witness.not_legit_newThing` |
+| 6 | "Nothing untold and nothing done to her suffices" needs a qualification about withholding | Against the file: `Episode.legit_of_nothing` assumes he does nothing at all, so no withholding is among his conduct | None. The sentence is the brief's summary, not the theorem |
+| 7 | No given notion lets a bad adviser pass on every faithful reading; the substance sits in `doesToHer`, `asked`, the offer and decline, and `pAgainst` | Not checkable | Recorded, rows 16 and 29 |
+| 8 | Hypothesis 3 as a share of the cases where she prefers stopping differs from the statement's joint weight, and the conclusions need only the plain bound | By arithmetic on the reply's example (1/100 against 1/100, and against 1/10000) and by the proofs, which go through | `WouldStop κ` is the plain bound; `Reading.noStop` likewise; `pNoStop`'s doc |
+| 9 | A reference self that copies her actual change lets him erase `ReferenceWould`; what is needed is a rule admitting only the response she would have judged appropriate | By reading | In the meaning of `ρ` (the header and `CONNECTING_THEOREM.md` §11). `ρ` is supplied; no definition states the rule |
+| 10 | `ReferenceWould` asks every way of stopping to beat every way of going on | By the reply's ratings 2, 1, 0 | Not changed. Stated wherever the result is described |
+| 11 | "Own drift" includes changes he caused, overlaps `Led`, and omits that she does not stop | By inspection of the earlier definition on the reply's two examples | `Parted`, with `¬ Stops` and `¬ Led` added; described as a cover, not a division into causes |
+| 12 | The hypotheses contain the conclusion: the objection succeeds against the result as a guarantee, not as a cover that shows where protection fails | Not checkable; the cover is the proof | Ledger rows 72 and 73 |
+| 13 | The any-decision corollary carries baseline quality over and does not establish it; an informed form and a three-way form need more | By the statement | Recorded, row 65. Neither form was built |
+| 14 | The long-run hypotheses need feedback about the target events; a check-in answer may report a changed state; eventual revelation is not enough; the two directions differ | By reading | Not corrected. Row 71; item 158 |
+| 15 | Sentence 1 does not give `Told` when a relevant view is on offer and nothing is untold | Against the worked file as it stood: its reading took her rating told the untold views only, so `Told` holds there and the reply's instance is one of the brief's description | The first conclusion is worded for what is untold; the misdescription is recorded at the head of the review file |
+| 16 | `led_le` is substantive, and the statement's "rated lower at her last settled decision" is a different yardstick from an updated reference | By the reply's case | The doc of `pAgainst` takes the updated reading; the words are unchanged and the question is queued (`open--sentence-two-yardstick`); `LEGITIMACY_STATEMENT.md` §7; row 59 |
+| 17 | Accepted as a conditional event-decomposition lemma with its averaged form; not accepted as showing that the three sentences protect her ability to stop him | — | Recorded: `CONNECTING_THEOREM.md` §11, the verdict, rows 70 to 74 |
+
+### AI.3 Corrections to the prompt
+
+- §3 C asks that the ledger's rows on whether the conditions are more basic than the
+  conclusion and on triviality be brought to what is now shown. The ledger had no such rows.
+  They are added, rows 72 and 73.
+- §3 C asks that the item that asked for a result using what the statement says be revised or
+  closed. No item of `ATTENTION.md` asks that. Nothing was revised or closed under that
+  description.
+- §3 C says item 153 is delivered by the fifteenth review for the file as it stood. That
+  item's deliverable asks for a brief holding `LegitimacyStatement.lean` and a log line
+  showing what the reviewer read. The fifteenth brief gives the statement in notation, not the
+  file, and no log was among the files handed over. The item is re-asked with the brief
+  required to quote the Lean.
+- §3 C names "both `PROVENANCE.md` files". Three carry rows of this round: the repository's,
+  the round directory's and the Lean directory's. All three have a row.
+- §3 A 2 describes the scoring link for "a history that scores her rating (legitimate, no
+  authority violation)". The theorem's hypothesis is weaker: a score that is not negative,
+  with any violation count.
+
+### AI.4 Deviations from the prompt
+
+- **A.** The theorem and the link are one file. The reading is of `Witness.stopEp`, the
+  witness with `pNoStop = 1/10`, not of the witness as it is: on the witness she rates
+  stopping higher in every case and `pNoStop = 0`, so its only readings have her stop in
+  every case and both conclusions hold of nothing. `Episode` gains the instance argument
+  `[DecidableEq O]`, as in the worked file, for the union of her options with revealed ones.
+  Added beyond what was asked: `StopDecision.close_self`, `UnbiasedAbove.refl`,
+  `Witness.stopScoring`, and instances of the in-fact form, `shortfall_le`, the long-run
+  theorems and the scoring link; in `LegitimacyStatement.lean`, `offeredMatters_untold`,
+  `offeredMatters_total` and `newThing_others` beside the two instances asked for. The two
+  instance terms with a degenerate hypothesis (the in-fact form at `β = 0` with the second
+  weighting his own; the long-run theorems with the facts his own weights) show the packages
+  consistent and exercise nothing of the accuracy hypotheses.
+- **A, definitions changed.** Those of §1 of the dispatch and no other: `NothingUntold`,
+  `CanStop`, `canRefuse` for `precededByChoice`, `rTold_empty` and `newToHer` added. The new
+  `NothingUntold` is neither weaker nor stronger than the one it replaces: it bounds the
+  marginal change where the other bounded the total, and it includes the options a set on
+  offer would show her. `informed_choice`, `not_legit_of_untold` and
+  `not_legit_of_unstoppable` are restated to them.
+- **B.** `CONNECTING_THEOREM.md` has two sections the dispatch does not list: the link to the
+  scoring, and the terms that inhabit each package.
+- **C.** `LEGITIMACY_STATEMENT.md` §3, §4 and §6 are brought to the corrected Lean and §7
+  added; §1 and §2 are untouched. One paragraph of `interpretation/INTERPRETATION.md`, on how
+  the model stands to the statement's notions, is brought to the corrected fields. Three rows
+  are added to §2 of `CURRENT.md`. Ledger rows keep their numbers and new rows take 59 to
+  74, so a row's number is its identifier and not its position. Item 156 gains a third part,
+  a reading derived from a model, in place of a new item. The ranking differs from the
+  maintainer's ordering in one place, stated under it with both. Items 149 and 157 keep their
+  version, their Statement being unchanged. The registration patch is in a commit of its own
+  after the record, being built on the record's tree.
+- **The registration patch** is a new file, `followup-21-registration.patch`, built by a
+  subagent on a clone of commit `5d1700fb`. `followup-20-registration.patch` is withdrawn and
+  left in place as the record of what was prepared; its notes describe definitions that have
+  changed. The new patch, as the subagent reports: 112 files; twenty-four entries in
+  `projects/normativity/CLAIMS.md` with four nodes each, the thirteen ids of the earlier patch
+  with their notes rewritten to the corrected statement and eleven new ones (two instances of
+  the statement, nine results of `LegitimacyStop.lean`); its entries answer items 156
+  (eighteen), 150 (four), 147 (one) and 158 (one), none of which it closes; it writes a
+  `DECISIONS.md` entry headed as the maintainer's act, true only once he applies it. On the
+  clone with it applied: the graph checker OK at 2748 nodes, the state valid at 241 claims,
+  `checkers.run` exit 0 at 136 entries, the attention render equal, dead pointers and the
+  wiki's bindings clean, the site build with nothing unresolved, `checkers/tests` 148 tests
+  passing. `checkers.wiki_links` fails on the clone with and without the patch, a local
+  clone lacking the commits the wiki pins, and was not run on a patched tree where it passes.
+  `git apply --check` passes on this tree. I read nine of the twenty-four notes and the
+  decision entry, not every entry line by line. The notes name `Witness.protects_instance` as
+  inhabiting the two one-decision bounds, which it reaches through `legit_protects_stop`.
+
+### AI.5 What was not shown
+
+- **That the three sentences protect her decision to stop him.** The theorem is conditional
+  on a reading, whose `led_le` and `noStop` assert that his weights in the statement cover
+  the theorem's cases. The one reading on record is written to fit a witness, by the hand
+  that wrote the theorem (rows 70, 72, 73).
+- **Anything in fact.** Every bound is on his weights. `Close` and `UnbiasedAbove` are
+  assumed, about events nothing reveals to him by default (row 71).
+- **Any bound on how often her judgement parts**, or that a `Parted` case is her own doing
+  (row 74).
+- **That the corrected Lean statement says what the sentences say.** No reviewer has seen it.
+  Findings 2, 4 and 9 are answered in a field's meaning, which no definition enforces.
+- **That the words of sentence 2 and the theorem use one yardstick** (row 59).
+- **The review's findings by a second party.** Each was checked by the executor, one in Lean
+  and the rest by reading, arithmetic or inspection of the earlier definitions.
+- **The use of the first halves of sentences 2 and 3.** They enter no proof of the file.
+
+### AI.6 Filings, names, and what is reserved
+
+`DECISIONS.md`: `2026-11-26--legitimacy-twenty-first-followup-connecting-theorem`
+(agent-decided, reversible); in *Awaiting the author* one entry added,
+`open--sentence-two-yardstick`. Item 158 filed under this dispatch's scope; 149, 150, 153,
+156 and 157 revised through their nodes. `state/rounds.json`: the round's twenty-first-pass
+verdict. Root, round and Lean `PROVENANCE.md`. No registry entry.
+
+**New names, all provisional.** Lean, `LegitimacyStop`: `StopDecision` and its fields, `wt`,
+`wt_nonneg`, `wt_mono`, `wt_le_one`, `wt_or_le`, `wt_false`, `Stops`, `Prefers`,
+`InformedWould`, `ReferenceWould`, `Led`, `Parted`, `Told`, `NotLed`, `WouldStop`,
+`stops_if_informed_would`, `stops_if_reference_would`, `Short`, `Short₀`, `shortfall_le`,
+`wtBy`, `Close`, `close_self`, the two `_in_fact` theorems, `avg`, `avg_le_const`,
+`UnbiasedAbove`, `UnbiasedAbove.refl`, `long_run_const`, `long_run_diff`,
+`long_run_stop_informed`, `long_run_stop_reference`, `Reading` and its fields,
+`Reading.told`, `Reading.notLed`, `Reading.wouldStop`, `legit_protects_stop`,
+`legit_protects_stop_in_fact`, `legit_of_score_nonneg`, `scored_protects_stop`; under
+`Witness`: `W` with its seven lemmas, the five `needs_*`, `stopEp`, `stopEp_legit`, `stopD`
+with its six lemmas, `reading`, `protects_instance`, `protects_tight`,
+`protects_in_fact_instance`, `shortfall_instance`, `long_run_instance`, `stopScoring`,
+`stopScoring_true`, `scored_instance`. Lean, `LegitimacyStatement`: the fields `rTold_empty`,
+`newToHer`, `canRefuse`; `Witness.offeredMatters`, `offeredMatters_untold`,
+`offeredMatters_legit`, `offeredMatters_total`, `newThing`, `newThing_others`,
+`not_legit_newThing`. Documents: `CONNECTING_THEOREM.md`. Vocabulary: *the connecting
+theorem*, *a reading*, *parted*. The registry ids of the patch. The anchor
+`open--sentence-two-yardstick`; item 158; the verdict kind `follow-up-21`. Name gone:
+`Episode.precededByChoice`.
+
+**Outstanding maintainer actions**
+
+1. Rule on which judgement sentence 2 measures against (`DECISIONS.md`,
+   `open--sentence-two-yardstick`): the words change to her judgement brought up to date, or
+   the words stand and the theorem's reference self is her ratings as she settled them.
+2. Run an outside review of `LegitimacyStatement.lean` and `LegitimacyStop.lean` as corrected
+   (item 153), with the brief quoting the Lean.
+3. Apply or decline the registration of the Lean results:
+   `git apply prompts/2026-11-10-legitimacy-definition-prosecution/followup-21-registration.patch`,
+   then `python3 -m checkers.graph --root .` and `python3 -m checkers.workspace_state --check`.
+4. The four entries of *Awaiting the author* listed under the twentieth follow-up stand
+   unanswered: the teacher of case 19, what her asking does, the two bounds on the authority
+   side, and what makes a decision settled.
+5. Merge or decline pull request #149. Auto-merge is off.
+
 ## Attribution
 
 - Prompt-author model: Claude Fable 5 (Anthropic); dispatched 2026-11-10, kept
@@ -6611,4 +6799,13 @@ Names gone: `LegitimacyModel.gatedScoring`, `LegitimacyModel.gate_gives_behaviou
   outside reviewer is the model of the earlier reviews of this round, named `gpt-6-astra` there,
   client version and logs not among the files handed over, in five runs, briefs and replies kept
   as `REVIEW-astra-followup-20.md`.
+- Twenty-first follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-26,
+  kept verbatim as `PROMPT-followup-21.md`; executor model Claude Fable 5.2 (Anthropic), executed
+  2026-11-26, with one subagent on the same model, reporting itself as `claude-fable-5-2`, that
+  built the registration patch on a clone. The theorem, its hypotheses, the corrections to the
+  Lean statement and the page the result in words restates were produced on 2026-11-26 by a
+  Claude Fable 5.2 (Anthropic) session with the maintainer, on that session's word in the
+  dispatch; the outside reviewer is the model of the earlier reviews of this round, named
+  `gpt-6-astra` there, client version and log not among the files handed over, in one run,
+  brief and reply kept as `REVIEW-astra-followup-21.md`.
 - No chat bundle.
