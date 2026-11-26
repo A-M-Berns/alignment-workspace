@@ -6642,6 +6642,23 @@ was put to the reviewer again.
   and the rest by reading, arithmetic or inspection of the earlier definitions.
 - **The use of the first halves of sentences 2 and 3.** They enter no proof of the file.
 
+- **Gates.** Under Python 3.13. `LegitimacyStatement.lean` and `LegitimacyStop.lean`
+  typechecked and the second built through `safe-lake.sh` after `resource-guard.sh check`,
+  with no error and no warning in them and no `maxHeartbeats` option; the whole library was
+  not rebuilt with `lake build`. The axiom audit, `python3 tests/audit_axioms.py`, started
+  after the last change to a Lean file: 4515 results across 133 files, all within the three
+  axioms, exit 0. The round's runner, `python3 run.py`: green, exit 0. `python3 tests/run.py`,
+  on the tree of the commit that carries this section without this paragraph: all green over
+  81 projects, exit 0, the Lean build skipped as that runner does by default.
+  `python3 -m checkers.graph --root .`: OK at 2652 nodes, 2603 events, one warning, the
+  standing one on decision anchors with no node. `python3 -m checkers.workspace_state
+  --check`: valid at 217 claims, 136 rounds and 170 priorities. The jobs that need a
+  pull-request context run in CI on the pushed head.
+- **Components.** Ledger rows 60 to 69 — **closed**, each on the Lean declarations named in
+  the row, reopened by the ledger's shared event. Rows 59, 70, 71, 73 and 74 — **open**. Row
+  72 — **living note**. The ledger has twenty-four rows **closed**, thirty-three **open**,
+  seventeen **living notes**.
+
 ### AI.6 Filings, names, and what is reserved
 
 `DECISIONS.md`: `2026-11-26--legitimacy-twenty-first-followup-connecting-theorem`
