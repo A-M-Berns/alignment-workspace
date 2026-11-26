@@ -6229,6 +6229,274 @@ and the case keys `after all`, `earlier`, `plain`, `prefers stop`. The verdict k
 Actions 1 and 2 are not in `DECISIONS.md`'s *Awaiting the author*, which this pass had no
 scope to write. The pull request is not auto-merged; the merge is a pull-request fact.
 
+## Twentieth follow-up (2026-11-26) — the statement at the level of its words, and its interpretation kept apart
+
+Dispatched by `PROMPT-followup-20.md`; "§" with a number below is a section of it. `account/`
+is in the round directory,
+`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/`; Lean
+files are under `lean/Workspace/Deference/Contrib/`. "The statement" is
+`account/LEGITIMACY_STATEMENT.md`, "the ledger" `account/LEDGER.md`. Nothing is registered.
+
+### AH.1 What was tried and rejected, 24–26 November
+
+Five formal objects, each built to be the statement and each sent to an outside review that
+read only its brief.
+
+1. **The model on a table of his moves** (`LegitimacyModel.lean`, as the nineteenth follow-up
+   left it). The tenth review: not a faithful rendering. Its pressure clause scores, with her
+   scoring from before he began, the courses he expects her options to lead to; her rating of
+   the options is never read. Kept, marked as an interpretation.
+2. **A first design on histories**, a page with no model: her state moved by one rule, his
+   acts replaced by idle ones to find what he does to her. The eleventh review: build on
+   histories, do not implement this. The pressure comparison valued her choice by the picture
+   his act gave her.
+3. **A second design**, with her ratings primitive, a comparison course in which her mind
+   moves by her conditioning alone, and an exact model on 32 episodes. The twelfth review:
+   two modellers who agree on what happened can call the same response her conditioning or
+   his effect, so the conditioning absorbs the nagging it is meant to catch.
+4. **A third design**, her conditioning read as her settled self's view of the hypothetical,
+   with twelve episodes pairing the same events with different views. The thirteenth review:
+   "her view" read as her prediction lets a foreseen, disowned weakness pass; an unfamiliar
+   procedure is exempt whatever it is built to do; forgetting an option, kinds of act and the
+   test of what she can tell each leak.
+5. **The fifth design**, her judgement at her last settled decision, single acts in place of
+   kinds, and the maintainer's verdicts on the hard cases as specification; 68 episodes. The
+   fourteenth review: not ready for formal verification; seven episodes, on six of which the
+   model is wrong.
+
+Rejected along the way, each with where: her view as her prediction (hard case 13); three
+alternative rules for what she could not have judged in advance (`account/HARD_CASES.md`);
+counting whether she keeps the new view, again (cases 3 and 11); a Lean port of a history
+design before its faults are repaired. `CURRENT.md` §2 has a row for each.
+
+What the maintainer then adopted is §3's position 7: the definition is stated over the
+notions its words use, taken as given, and working those notions out is a separate question.
+
+### AH.2 The reviews
+
+`REVIEW-astra-followup-20.md` holds the five briefs and replies. "Held" below is a claim
+about the formal object reviewed, not about whether the conduct is manipulation.
+
+**Review 10** (of `LegitimacyModel.lean`). Checked by a subagent of the executor, by hand
+against the definitions in the file, nothing built or run; 44 claims in the reply were
+checked and all held, five of them needing field values the reply leaves unstated. The
+reviewer's concrete models and its ranked findings:
+
+| finding | held when checked | what was done |
+|---|---|---|
+| Ranked 1. `Against` scores, with her scoring from before he began, the courses *he* expects her options to lead to; her rating `r` of the options is never read. So open, stoppable nagging into the option she rates lower satisfies `Legit`, and a reminder that helps her take her top-rated option fails it | held: with `r a = 2` and `ρ (course a) = 0`, which no field forbids, `F2'` passes the nagging and fails the reminder | the model is not repaired; the history designs take her rating of options as primitive (`episodes_core` 12, 13, 15) |
+| Ranked 2. `F2'` compares net weights: harm in one case offset by help in another passes, and so does moving her from an inferior option to a worse one | held, on both models | `episodes_core` 16 and 17, each failing as the sentences say |
+| Ranked 3. The effect test misses a covert move that makes her unresponsive to a view, and any change in her that is restored before her next decision | held | `episodes_core` 11; a change between decisions is still not asked about (ledger row 38) |
+| Ranked 4. Stopping and plain telling are free fields: `goesOn` and `plain` are tied to no course | held; both already listed in the brief as known | the history designs compute both from the history |
+| Ranked 5. `F1` ranges over subsets of what is untold, so an offered view shields an untold one that matters only with it | held; the weakest on the sentences' reading, her having been told the offered view's joint bearing | `NothingUntold` ranges over untold and on-offer views together; `episodes_core` 28 |
+| A later change of his belief removes the pressure test for an effect he expected when he acted | held | `episodes_core` 18 |
+| Splitting one move into two flips a verdict; raising `η` makes a move newly effect-bearing; a move masked by another bears no effect | held, each on a table the reply partly leaves to the reader | sites in place of moves; invariance under regrouping is not shown (ledger row 47) |
+| An open change to what an option leads to counts as a change in her through the gap | held on the reviewer's encoding, avoidable on another | `episodes_core` 26, 27 |
+| `asked = c`, `dec = ∅` or `rated` false everywhere each make a clause vacuous | held | the same holds of the fields of `Episode` (ledger row 29) |
+| No dependence on an external standard of truth or of good values | not checkable: a "none found" | — |
+
+**Review 11** (of the first design on histories, which was a page with no model). Checked by
+a subagent of the executor, by hand against the design text of the brief; 28 claims were
+checked, 26 held and 2 held in part. One complaint is aimed at something the brief does not
+do: that his information must not include the case, where the brief already conditions on
+the acts alone. The ranked findings and the further leaks:
+
+| finding | held when checked | what was done |
+|---|---|---|
+| Ranked 1. The pressure clause values the choice by her picture after his act, so an open act that swaps her picture of two options justifies the choice it causes | held | ratings primitive, shortfall against her reference self; `episodes_core` 14 fails |
+| Ranked 2. The replacement course can change the decision problem: he reverses her values and offers the old option only if he has | held | the comparison course keeps his policy and changes only how her mind moves; `episodes_core` 20 fails. What is left is faults D and E |
+| Ranked 3. Markings, timing within a step and free group membership can put a passing or obsolete state in place of her judgement | held; the over-reach by an idle move rests on reading the clause as "for every set" | `episodes_core` 21 fails and 23 holds; settled decisions are still supplied (ledger rows 9, 30) |
+| Ranked 4. A seen improvement of an option counts as an effect on her, and a hidden change to how she would respond to being told goes untested | held | what an act does to her is her movement beyond her conditioning; `episodes_core` 26 holds and 11 fails. What is left is fault C |
+| Ranked 5. The content of an act and her response to being told are supplied, and can fix the verdict | held | her conditioning is her judgement at her last settled decision (`episodes_views`); `episodes_core` 22 fails. Both are still supplied |
+| "What she sees differs from his doing nothing" does not show she can identify the act | held in part: the description is right, "too weak" a judgement | the test across his cases; `episodes_review13` 10. What is left is fault F |
+| A one-shot act that starts a process is trivially stopped | held | `episodes_core` 10 re-encoded as an influence kept up; no ongoing process is represented |
+| Sequences of tellings are not probed | held | nothing: probes are still sets (ledger row 31) |
+| Told, on offer and declined are not exclusive as computed; forcing an option at a history that already has her act is ill-typed; no initial state is supplied | held | a precedence among the three; the model forces her choice at a step and has an initial state |
+
+**Review 12** (of the second design on histories, with its model). The seven episodes of the
+reply are `episodes_review12`; that file records that on the first run, against the model
+the review saw, six of its nine episodes came out wrong as the reviewer said. Which six is
+not recorded, and that model is not among the files handed over. On the repaired model, and
+on the present one, all nine are as expected.
+
+| finding | held when checked | what was done |
+|---|---|---|
+| Ranked 1. Admissible conditioning can absorb open nagging: two modellers who agree on what happened can call the same response her conditioning or his effect | held, on the file's record | her conditioning read as her settled self's view of the hypothetical (positions 2, 3); `episodes_review12` 1 and 2, `episodes_views` |
+| Ranked 2. "Same policy, same acts, same observations" cannot all be kept when her choices differ | not an episode; the design text was ambiguous as the reply says | the policy is kept and the course rerun; what the supplied functions do on histories only the rerun reaches is still open (ledger row 47) |
+| Ranked 3. The reference is obsolete after a later settled decision, and a weak-willed reference on a larger menu acquits a harmful act | held | reference self at the last settled decision, best-rated option as benchmark; `episodes_review12` 6 and 8. Different menus still go wrong (fault E) |
+| Ranked 4. Silent deletion of something from someone else, and a change to how she would respond to another's warning, pass every rule | held | the keeps-from-her rule, `episodes_review12` 3 and 4; a supplied list of what others might show her, episode 5. Off the list it still passes (fault C) |
+| Ranked 5. A completed intervention is asked for a stop after the fact; two tied stops make the stopping condition vacuous | held | `episodes_review12` 7 and 9 |
+| A proper offer checks ratings and options, not her disposition or responsiveness; a hearing cost already sunk need not show in her ratings | not checked on a model | nothing beyond `episodes_core` 31 |
+| The supplied mechanisms must be his model, or a sincere adviser wrong about them is not covered | not checkable: a reading | the design says everything supplied is his model |
+
+**Review 13** (of the third design on histories). The reply's ten episodes were run on the
+model the review saw, unchanged: the model gave the wrong verdict by the reviewer's reading
+of the sentences on 8, and what the reviewer said the rules give on 9 of the 10.
+
+| finding | held when checked | what was done |
+|---|---|---|
+| Ranked 1. "Her view" read as her prediction lets a foreseen, disowned weakness pass; an engineered unfamiliar exercise passes; a single repetition that lands fails | held on all three as claims about the model | the first by position 3, her judgement (`episodes_review13` 1, 2). On the second the maintainer's verdict is "lean fine" where the reviewer expected "fails": the episode is kept as holding, with the uptake made explicit (3). On the third his verdict is wrong "to be on the safe side" where the reviewer expected "holds": kept as failing (5) |
+| Ranked 2. Covertly making her forget her best option passes every rule | held | awareness tested directly, the reference self keeps the option; `episodes_review13` 6 and 7 |
+| Ranked 3. An unfamiliar experience with no way out is asked for no stop | held | covered sites; `episodes_review13` 4 |
+| Ranked 4. Kinds of act fix both the obligations and the time at which risk is judged: an unnoticed reminder is condemned with a later change of the same kind, and a second act he knows will turn her passes on the first act's odds | the first held; the second did not: the model failed that episode where the reviewer said it would hold | sites in place of kinds, his belief at each site; `episodes_review13` 8 and 9 |
+| Ranked 5. A lamp that is red or blue either way differs in each case and tells her nothing | held | the test across his cases; `episodes_review13` 10. It now rejects a signal she can read (fault F) |
+| A passing mood can change her view of the hypothetical | held | her view at her last settled decision; `episodes_review13` 11 |
+| "Told" is permanent; a bearing needs to be relative to what else she has heard; a later view needs a time stamp | not checked on a model | nothing (ledger rows 1, 32) |
+
+**Review 14** (of the fifth design). The reply's seven episodes are `known_faults` A to G, run
+on the model unchanged.
+
+| finding | held when checked | what was done |
+|---|---|---|
+| Ranked 1. An unfamiliar observation exempts other effects bundled into the same site (A) | held | nothing in the model; the reading that the exemption covers only her response to the thing observed is adopted in words (ledger rows 5, 40) |
+| Ranked 2. Whole-course divergence and a shifting benchmark misclassify her later learning (D) and a better menu (E) | held, both | nothing (rows 43, 44) |
+| Ranked 3. Pressured uptake gets the asking exemption (B) | held | nothing; the words already say "unpressed" (rows 7, 41) |
+| Ranked 4. Recognition uses the current observation only (F) | held | nothing (row 45) |
+| Ranked 5. Stopping each influence is replaced by ending all further activity (G) | did not hold on the reviewer's episode as encoded, where neither influence bears an effect; held on H, the same with the changed ratings among her options | H added (row 46) |
+| A latent impairment evades a probe list that leaves the warning out (C) | held | nothing (row 42) |
+| The conditioning of her whole state, the telling observation, the null act, his information, and off-policy histories are undetermined | not episodes | nothing (row 47) |
+| No necessary appeal to external truth, to his accuracy, or to good values | not checkable: a "none found" | — |
+
+### AH.3 Corrections to the prompt
+
+- §1 says the last two reviews found no fault with the three sentences themselves. The
+  thirteenth objects to the exemption for what she could not have judged in advance, in words
+  as well as in the design; the fourteenth says it has not established that any sentence is
+  the wrong idea and asks that the exemption's wording be narrowed. The maintainer's verdicts
+  on cases 5 and 6 answer the thirteenth; the fourteenth's request is taken as a reading
+  (AH.4).
+- §1 says four further designs were each built, run on episodes and reviewed. The first of
+  them was a page with no model (brief 11).
+- §2 and §4 C call the fourteenth review's seven episodes known faults with a recorded wrong
+  verdict on each. The model is wrong on six. On the seventh, G, it gives the verdict the
+  sentences call for, because the encoding puts the ratings his two influences change on
+  options she does not have, so neither bears an effect. With those options on her menu the
+  model fails the episode as the reviewer said: that is the eighth episode, H.
+- §2 says each review's log shows one command. No log was among the files handed over.
+- §4 C asks which three episodes were re-encoded. The files record three re-encodings of two
+  episodes, a change to a third marked "second run", and a rewriting of the thirteenth
+  review's set that goes further (`account/interpretation/INTERPRETATION.md` §2).
+- §4 E says the episode files record, for reviews 12 to 14, whether each finding held. For
+  the twelfth the file records a count, six of nine wrong on the first run, and the model
+  that review saw is not among the files.
+- The restated page says six of the eight controls run 17 convicts are tie-breaks. No coding
+  says what a case is; recorded instead is that sheet 16 codes her earlier rating as not
+  lower or as no view on six of them.
+
+### AH.4 Deviations from the prompt
+
+- **A.** The statement's §4 carries a reading the words do not state: the exemption covers
+  her response to the thing seen or heard, not another effect of the act that delivers it.
+  Consequence 11 states the cost the restated page accepts in prose. The earlier formal text
+  (F1, F2, F2′, F3) is kept as `account/TABLE_MODEL_STATEMENT.md`, marked, since
+  `LEGITIMACY_CHECKS.md` and `LEAN_CASES.md` are cases of it; both are marked at the head.
+- **B.** The scoring link and the gate theorem were **moved**: `gatedScoring`,
+  `gate_gives_behaviour`, `gate_threshold_delta`, `gate_threshold_sharp` and `gate_instance`
+  are in `LegitimacyGate.lean`, which `LegitimacyModel.lean` and `LegitimacyStatement.lean`
+  import; `gate_instance` was `Witness.gate_instance`. `legitScoring` and its two theorems
+  stay in each file, being about that file's predicate. No definition and no theorem
+  statement changed in any file. Added to the worked file: `Witness.requested`, `keeps`,
+  `idle`, `params`, `scoring`, and nine instance theorems (`informed_instance`,
+  `requested_behind`, `requested_legit`, `not_legit_keeps`, `idle_legit`, `legit_looser`,
+  `against_instance`, `scoring_open`, `scoring_covert`), so that every theorem but the second
+  half of `informed_choice` has a term inhabiting its hypotheses; `#print axioms` on
+  `mem_conduct` and `mem_decisions`, which the worked file left out. One sentence of
+  `LegitimacyCase.lean`'s header was reworded beside the mark.
+- **C.** Each episode file's import lines, `check` function and prints are replaced so that
+  an episode is recorded with its expectation and run by the package; two annotations
+  "[is this over-reach?]" on episodes whose verdicts are now accepted consequences 9 and 10
+  are dropped; episode H is added. Nothing else in an episode is changed.
+- **D.** The coding of sheet 17 is kept without the coder's notes. The post hoc combination
+  is computed under count lines that begin "written after the result".
+- **E.** The checks of reviews 10 and 11 were made by two subagents, by hand against the
+  definitions and the design text; no Lean term and no new episode was built for a finding.
+  The tables give each review's ranked findings and concrete models, not every claim.
+- **F.** The ranking differs from the dispatch's in four ways, stated under it.
+- **G.** The patch is a new file, `followup-20-registration.patch`, built by a subagent on a
+  clone. `followup-16-registration.patch`, which prepared thirteen results of the table model,
+  is withdrawn and left in place as the record of what was prepared; it no longer applies, the
+  gate theorem having moved. The new patch, as the subagent reports: 67 files; thirteen entries
+  in `projects/normativity/CLAIMS.md` with four nodes each; its entries answer items 156
+  (eleven), 150 (the scoring link) and 147 (the gate theorem), none of which it closes; it
+  writes a `DECISIONS.md` entry headed as the maintainer's act, true only once he applies it.
+  On a clean checkout of commit `6153bc5e` with it applied: the graph checker OK at 2703
+  nodes, the state valid at 230 claims, `checkers.run` exit 0 at 125 entries, the attention
+  render equal, the wiki's bindings and dead pointers clean. `git apply --check` passes on
+  this tree. I did not read the entries line by line. Item 151 is closed without delivery, its
+  subject being the table model. Items 139 and 147 to 155 have their ledger rows renumbered.
+  The two readings the nineteenth follow-up reserved to the maintainer lapse with the table
+  model's formal text.
+
+### AH.5 What was not shown
+
+- **That the Lean statement says what the three sentences say.** No review has seen it
+  (ledger row 16).
+- **That the statement constrains anything once the notions are given freely.** An episode
+  whose field `doesToHer` is false throughout satisfies sentences 2 and 3; nothing states
+  what a field must satisfy to be the notion it is named for (row 29).
+- **That any procedure works the notions out.** The interpretation gives the wrong verdict
+  on seven of eight episodes written against it; its 68 agreements are a regression set by
+  one hand, the model having been corrected against 64 of them; no map from a history to an
+  `Episode` exists (rows 40 to 49).
+- **The reviews' findings on a machine.** Those of reviews 10 and 11 were checked by hand by
+  subagents; those of 12 on the word of a file's docstring.
+- **The maintainer's verdicts as more than one person's.** Two of the twenty are "unsure" and
+  four are leanings; the rule's agreement with them counts leanings as verdicts.
+- **Run 17 as a test of the rule the statement has.** Its sheet has no question about her
+  earlier rating; one of its four predictions failed; the repair was written after the
+  result. One coder, model unrecorded.
+- **Anything about a sequence of decisions, the authority side, or whether a gate can
+  evaluate `Legit`** (rows 52, 53, 55).
+- **Gates.** Under Python 3.13. The six Lean files built through `safe-lake.sh` after `resource-guard.sh check`, with no error and no warning in them and no `maxHeartbeats` option; the whole library was not rebuilt with `lake build`. The axiom audit, `python3 tests/audit_axioms.py`, started after the last change to a Lean file: 4460 results across 132 files, all within the three axioms, exit 0. The round's runner: green, exit 0 (68 episodes as expected, 8 known-fault episodes as recorded, 442 count lines of `CASE_RUNS.md`). `python3 tests/run.py`, on the tree of commit `7ba80962` with this section in the working tree: all green over 81 projects, exit 0, the Lean build skipped as that runner does by default. `python3 -m checkers.graph --root .`: OK at 2651 nodes, 2603 events, one warning, the standing one on decision anchors with no node. `python3 -m checkers.workspace_state --check`: valid at 217 claims, 136 rounds and 169 priorities, after `--write-handoff` rewrote two views. A first audit run was stopped by the executor when one instance was added to `LegitimacyStatement.lean`; the run reported is the second, complete one. The jobs that need a pull-request context run in CI on the pushed head.
+- **Components.** Ledger rows 17 to 28 and 54 — **closed**, each on the Lean declarations
+  named in the row, reopened by the ledger's shared event. Row 48 — **closed**, on the
+  runner's check of `account/interpretation/INTERPRETATION.md`; reopened when the runner
+  fails on it. The other 28 rows that are not living notes — **open**. The ledger has
+  fourteen rows **closed**, twenty-eight **open**, sixteen **living notes**.
+
+### AH.6 Filings, names, and what is reserved
+
+`DECISIONS.md`: `2026-11-26--legitimacy-statement-at-the-level-of-its-words` (the
+maintainer's positions) and `2026-11-26--legitimacy-twentieth-followup-readings`
+(agent-decided, reversible); in *Awaiting the author* three entries restated and one added. Items 156 and 157 filed under this dispatch's scope; 150, 152, 153 and 154 restated;
+151 closed. `state/rounds.json`: the round's twentieth-pass verdict. Root, round and Lean
+`PROVENANCE.md`. No registry entry.
+
+**New names, all provisional.** Lean: `LegitimacyStatement`, `Episode` and its nineteen
+fields, `untold`, `NothingUntold`, `NothingBehind`, `CanStop`, `Legit`, `Legit.mono`,
+`legit_of_nothing`, `informed_choice`, `against_le`, `not_legit_of_untold`,
+`not_legit_of_covert`, `not_legit_of_withheld`, `not_legit_of_against`,
+`not_legit_of_unstoppable`, `asked_unconstrained`, `legitScoring` and its two theorems in
+that namespace, `Witness.ep` and the declarations under `Witness` named in AH.4;
+`LegitimacyGate`. Python: the package `interpretation` and its modules `history_model`,
+`episodes_core`, `episodes_views`, `episodes_review12`, `episodes_review13`,
+`episodes_hard_cases`, `known_faults`; `run17`, `posthoc17`. Documents:
+`HARD_CASES.md`, `INTERPRETATION.md`, `TABLE_MODEL_STATEMENT.md`, `BANK_CODING_17.md`.
+Vocabulary: *the interpretation*, *taken as given*, *site*, *covered site*, *comparison
+course*, *reference self*, *known fault*. The registry ids of the patch,
+`legitimacy.statement-*` and `legitimacy.gate-gives-behaviour`. The anchor
+`open--what-makes-a-decision-settled`; items 156 and 157; the verdict kind `follow-up-20`.
+Names gone: `LegitimacyModel.gatedScoring`, `LegitimacyModel.gate_gives_behaviour`,
+`gate_threshold_delta`, `gate_threshold_sharp`, `Witness.gate_instance` under that namespace.
+
+**Outstanding maintainer actions**
+
+1. Rule on the teacher of hard case 19 (`DECISIONS.md`,
+   `open--practice-rules-cover-a-deception`): the statement convicts, or taking part in a
+   practice is asking.
+2. Rule on whether her asking makes a thing not manipulation or manipulation that is
+   permitted (`open--request-licenses-pressure`).
+3. Rule on the two bounds on the authority side
+   (`open--cost-bound-influence-as-price-and-agreed-penalty`).
+4. Give a criterion for a settled decision, or rule that it stays a notion taken as given
+   (`open--what-makes-a-decision-settled`).
+5. Run the outside review of `LegitimacyStatement.lean` (item 153), after item 156's first
+   part.
+6. Apply or decline the registration of thirteen Lean results:
+   `git apply prompts/2026-11-10-legitimacy-definition-prosecution/followup-20-registration.patch`,
+   then `python3 -m checkers.graph --root .` and `python3 -m checkers.workspace_state --check`.
+7. Merge or decline pull request #149. Auto-merge is off.
+
 ## Attribution
 
 - Prompt-author model: Claude Fable 5 (Anthropic); dispatched 2026-11-10, kept
@@ -6332,4 +6600,15 @@ scope to write. The pull request is not auto-merged; the merge is a pull-request
   kept verbatim as `PROMPT-followup-19.md`; executor model Claude Fable 5.2 (Anthropic), executed
   2026-11-24, with one subagent on the same model that rebuilt the registration patch; no
   outside review.
+- Twentieth follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-26,
+  kept verbatim as `PROMPT-followup-20.md`; executor model Claude Fable 5.2 (Anthropic), executed
+  2026-11-26, with three subagents on the same model: two that checked the findings of the tenth
+  and eleventh reviews by hand, and one that built the registration patch on a clone. The
+  restated statement, the Lean statement, the history model and its episodes, the hard cases
+  with the four rules' verdicts, sheet 17 and its scorers were produced between 2026-11-24 and
+  2026-11-26 by a Claude Fable 5.2 (Anthropic) session with the maintainer, on that session's
+  word in the dispatch; the coder of sheet 17 was a language model it ran, model unrecorded; the
+  outside reviewer is the model of the earlier reviews of this round, named `gpt-6-astra` there,
+  client version and logs not among the files handed over, in five runs, briefs and replies kept
+  as `REVIEW-astra-followup-20.md`.
 - No chat bundle.
