@@ -10,7 +10,8 @@ any way of working the notions out in a concrete episode: that is a separate and
 question, the *interpretation*, whose current attempt and known faults are in
 `interpretation/INTERPRETATION.md`. The words are the maintainer's (`DECISIONS.md`,
 `2026-11-26--legitimacy-statement-at-the-level-of-its-words`); they govern where the formal
-statement differs from them. What stands behind each part, and how firmly, is `LEDGER.md`.
+statement differs from them. What the statement gives for her decision to stop him is
+`CONNECTING_THEOREM.md`. What stands behind each part, and how firmly, is `LEDGER.md`.
 All names are provisional. Paths are relative to this directory unless they begin with
 `lean/`, `prompts/` or `DECISIONS.md`.
 
@@ -89,7 +90,7 @@ the notions taken as given; §4 says what each means.
 | `decisions` | `Finset δ` | her decisions in the episode |
 | `opts d` | `Finset O` | the options she has at decision `d` |
 | `r d a` | `ℝ` | how she rates option `a` at `d` |
-| `rTold d T a` | `ℝ` | how she would rate `a` were he to tell her the set `T` of his views then |
+| `rTold d T a` | `ℝ` | how she would rate `a` were he to tell her the set `T` of his views then; `rTold d ∅ a = r d a` (`rTold_empty`) |
 | `reveals d T` | `Finset O` | the options that telling her `T` would show her |
 | `views d`, `told d`, `offered d`, `declined d` | `Finset V` | his views at `d`; those told, properly on offer, declined |
 | `conduct` | `Finset M` | the things he does |
@@ -97,26 +98,28 @@ the notions taken as given; §4 says what each means.
 | `withholds m` | `Prop` | `m` keeps from her an item or an option that comes from someone else |
 | `canTell m` | `Prop` | she can pick `m` out |
 | `asked m` | `Prop` | she asked for `m`, or took up his offer of it without being pressed |
-| `pAgainst G` | `ℝ` | his weight on the set `G` of things he does leading her to choose what she rated lower at her last settled decision |
-| `precededByChoice m` | `Prop` | a decision of hers comes before `m` starts |
-| `inPlay d m` | `Prop` | at `d` he is doing `m` or could still call it off |
+| `newToHer m` | `Prop` | she could not have judged in advance how seeing or undergoing `m` should move her; her response to it is her own |
+| `pAgainst G` | `ℝ` | his weight on the set `G` of things he does, in the circumstances in which he does them, leading her to choose what her settled judgement rates lower; the Lean reads that judgement as brought up to date (§7) |
+| `canRefuse m` | `Prop` | before `m` starts she has the opportunity to refuse it; she need not have used it |
+| `inPlay d m` | `Prop` | at `d` he is doing `m` or could still call it off; the decisions include every point at which `m` could pass beyond calling off |
 | `canStop d m` | `Prop` | at `d` she has a way to stop `m` |
-| `pNoStop d` | `ℝ` | his weight, among the cases where she rates stopping strictly above going on at `d`, on her not stopping |
+| `pNoStop d` | `ℝ` | his weight on: she rates stopping strictly above going on at `d`, and does not stop |
 
 **Definitions**, for an episode `E` and tolerances `θ`, `κ`:
 
 - `E.untold d = ((views d \ told d) \ offered d) \ declined d`.
-- **Sentence 1**, `E.NothingUntold θ`: for every `d ∈ decisions` and every
-  `T ⊆ untold d ∪ offered d` containing an untold view: `|rTold d T a − r d a| ≤ θ` for every
-  `a ∈ opts d`, and every `b ∈ reveals d T` has some `a ∈ opts d` with
-  `rTold d T b ≤ rTold d T a + θ`.
+- **Sentence 1**, `E.NothingUntold θ`: for every `d ∈ decisions`, every non-empty
+  `S ⊆ untold d` and every `H ⊆ offered d`: `|rTold d (S ∪ H) a − rTold d H a| ≤ θ` for every
+  `a ∈ opts d ∪ reveals d H`, and every `b ∈ reveals d (S ∪ H)` has some
+  `a ∈ opts d ∪ reveals d H` with `rTold d (S ∪ H) b ≤ rTold d (S ∪ H) a + θ`. What is
+  measured is what the untold adds to whatever on offer she hears: an untold view that
+  matters only together with an offered one is caught, and one that adds nothing is not.
 - **Sentence 2**, `E.NothingBehind κ`: every `m ∈ conduct` with `doesToHer m` or
   `withholds m` has `canTell m`; and every non-empty `G ⊆ conduct` all of whose members have
   `doesToHer` and not `asked` has `pAgainst G ≤ κ`.
-- **Sentence 3**, `E.CanStop κ`: every `m ∈ conduct` with `doesToHer m` has
-  `precededByChoice m`, and `canStop d m` at every `d ∈ decisions` with `inPlay d m`; and at
-  every `d ∈ decisions` at which some `m ∈ conduct` with `doesToHer m` is in play,
-  `pNoStop d ≤ κ`.
+- **Sentence 3**, `E.CanStop κ`: every `m ∈ conduct` with `doesToHer m` or `newToHer m` has
+  `canRefuse m`, and `canStop d m` at every `d ∈ decisions` with `inPlay d m`; and at
+  every `d ∈ decisions` at which some such `m` is in play, `pNoStop d ≤ κ`.
 - `E.Legit θ κ` is the conjunction of the three.
 
 **What follows**, each a theorem with the definitions above as its only hypotheses beyond
@@ -126,13 +129,13 @@ those stated:
 |---|---|
 | `Episode.Legit.mono` | if `θ ≤ θ'` and `κ ≤ κ'`, `Legit θ κ` gives `Legit θ' κ'` |
 | `Episode.legit_of_nothing` | with `conduct` empty and every view told at every decision, `Legit θ κ` for all `θ`, `κ` |
-| `Episode.informed_choice` | under `NothingUntold θ`: if at `d` her option `a` is within `ε` of the best she rates, then for any `T ⊆ untold d ∪ offered d` containing an untold view, `a` is within `ε + 2θ` of the best she would rate among her options told `T`, and within `ε + 3θ` of any option `T` would show her |
+| `Episode.informed_choice` | under `NothingUntold θ`, for any `H ⊆ offered d`: if, told `H`, her option `a` is within `ε` of the best she rates among `opts d ∪ reveals d H`, then for any non-empty `S ⊆ untold d`, told `S ∪ H`, `a` is within `ε + 2θ` of the best she would rate among those options, and within `ε + 3θ` of any option `S ∪ H` would show her |
 | `Episode.against_le` | under `NothingBehind κ`: `pAgainst G ≤ κ` for every non-empty set `G` of unasked things he does to her |
-| `Episode.not_legit_of_untold` | an untold `T` as above moving some rating of an option of hers by more than `θ` refutes `Legit θ κ` |
+| `Episode.not_legit_of_untold` | an untold `S` moving, on top of some `H` on offer, a rating of an option of hers by more than `θ` refutes `Legit θ κ` |
 | `Episode.not_legit_of_covert` | a thing he does to her that she cannot pick out refutes it |
 | `Episode.not_legit_of_withheld` | keeping from her something from someone else, where she cannot pick that out, refutes it |
 | `Episode.not_legit_of_against` | `κ < pAgainst G` for a non-empty set of unasked things he does to her refutes it |
-| `Episode.not_legit_of_unstoppable` | a thing he does to her, in play at a decision at which she cannot stop it, refutes it |
+| `Episode.not_legit_of_unstoppable` | a thing he does to her, or a thing new to her, in play at a decision at which she cannot stop it, refutes it |
 | `Episode.asked_unconstrained` | if she asked for everything he does and can pick out what sentence 2's first half names, `NothingBehind κ` holds for every `κ` |
 | `legitScoring`, `legitScoring_S_of_legit`, `legitScoring_S_of_not_legit` | histories each read as an episode give a `DeconfusingCorrigibility.Scoring` whose predicate is `Legit`: with no authority violation a legitimate history scores her rating and an illegitimate one scores in `[−δ, 0)` |
 
@@ -147,15 +150,32 @@ one she can pick out and stop, his weight on leading her against her judgement 1
 `bump` 1/40, the episode is legitimate at `θ = κ = 1/10`. Four neighbours each differ in one
 value and are not legitimate: `Witness.not_legit_untold` (`bump` 1/2),
 `not_legit_covert` (she cannot pick it out), `not_legit_against` (his weight 1/2),
-`not_legit_unstoppable` (she cannot stop it).
+`not_legit_unstoppable` (she cannot stop it). `Witness.offeredMatters`: one view properly on
+offer that would move each rating by 1 and one untold view that adds nothing to any set;
+legitimate at `θ = 0` (`offeredMatters_legit`), though telling her both together moves a
+rating by 1 (`offeredMatters_total`). `Witness.newThing`: the one thing he does is not
+something done to her, is new to her, can be picked out and cannot be stopped; sentences 1
+and 2 hold (`newThing_others`) and it is not legitimate (`not_legit_newThing`).
+
+**What it gives for her decision to stop him.**
+`lean/Workspace/Deference/Contrib/LegitimacyStop.lean`, `legit_protects_stop`: at a decision
+of a legitimate episode at which something he does to her, or new to her, is in play, set
+out case by case by a *reading*, his weight on her not stopping though told all that is
+untold she would rate stopping higher by more than `2θ` is at most `κ`, and his weight on her
+not stopping though her reference self rates stopping higher by more than `η` is at most `2κ`
+plus his weight on her judgement having parted from that judgement otherwise than by his
+unasked work making her choice worse. The statement, its hypotheses and what it does not show
+are `CONNECTING_THEOREM.md`.
 
 **What the formal statement does not say.** It relates the fields by nothing beyond the
 three definitions. That a view is *properly* on offer, that a decline *stands*, that
 `doesToHer` is the comparison with her settled judgement, that `asked` is unpressed, that
 `pAgainst` and `pNoStop` are probabilities or are monotone in the set, that his views include
 what he expects his conduct to do to her: each is part of the meaning of a field (§4) and
-none is a hypothesis or a theorem. The stop is asked at her decisions; "from before he starts"
-is `precededByChoice`. An episode is his picture; nothing in it is the facts.
+none is a hypothesis or a theorem. The stop is asked at her decisions, which by the meaning
+of `inPlay` include every point at which a thing could pass beyond calling off; "from before
+he starts" is `canRefuse`, an opportunity and not a choice made. Nothing requires `doesToHer`
+and `newToHer` to exclude each other. An episode is his picture; nothing in it is the facts.
 
 ## 4. The notions taken as given
 
@@ -180,13 +200,18 @@ is `precededByChoice`. An episode is his picture; nothing in it is the facts.
 - **She can pick it out.** She can tell that he is doing it.
 - **She asked.** She asked for it, or took up his offer of it unpressed, having been told
   what it is hoped to do.
+- **New to her.** Something she could not have judged in advance, because it turns on an
+  argument she had not heard or on something she had not seen or experienced. Sentences 1 and
+  3 govern it; sentence 2's second half does not.
 - **His weight on leading her against her judgement.** His probability, when he acts, that a
-  set of things he does to her brings her to choose what she rated lower at her last settled
-  decision, beyond what she would have chosen without them.
-- **In play; she can stop it.** From before he starts a thing until he could no longer call
-  it off; she has an option that ends what he is still doing of it.
-- **His weight on her not stopping.** Among the cases where she rates stopping strictly
-  above going on, his probability that she does not stop.
+  set of things he does to her, in the circumstances in which he does them, brings her to
+  choose what her settled judgement rates lower, beyond what she would have chosen without
+  them. Which judgement is meant has two readings (§7).
+- **She can refuse it; in play; she can stop it.** Before he starts a thing she has the
+  opportunity to refuse it. It is in play from then until he could no longer call it off; she
+  has an option that ends what he is still doing of it.
+- **His weight on her not stopping.** His probability that she rates stopping strictly above
+  going on and does not stop.
 
 ## 5. Consequences accepted
 
@@ -222,10 +247,11 @@ believes she would rate above those she has, someone else's included (`LEDGER.md
 | what | where | kind | rerun |
 |---|---|---|---|
 | the formal statement and what follows from it | `lean/Workspace/Deference/Contrib/LegitimacyStatement.lean`, `LegitimacyGate.lean` | kernel-checked, of the declarations as stated | `python3 tests/audit_axioms.py` |
+| what it gives for her decision to stop him | `lean/Workspace/Deference/Contrib/LegitimacyStop.lean`, read in `CONNECTING_THEOREM.md` | kernel-checked, of the declarations as stated; the reading is a hypothesis | the same |
 | the maintainer's verdicts on twenty hard cases, against four candidate rules | `HARD_CASES.md` | one person's verdicts | — |
 | five blind codings of the bank of cases from Noggle's book | `CASE_RUNS.md` | language models' codings against scorers written first | `python3 run.py` in the round directory |
 | the interpretation: an exact model on histories, 68 episodes as a regression set and 7 known faults | `interpretation/INTERPRETATION.md` | exact check on supplied inputs, model and episodes by one hand | the same |
-| fourteen outside reviews | `REVIEW-astra-followup-16.md` and `REVIEW-astra-followup-20.md` in the round's prompts directory | one outside model | — |
+| fifteen outside reviews | `REVIEW-astra-followup-16.md`, `REVIEW-astra-followup-20.md` and `REVIEW-astra-followup-21.md` in the round's prompts directory | one outside model; the fifteenth read the formal statement and the connecting theorem as they stood before the corrections it led to | — |
 
 `lean/Workspace/Deference/Contrib/LegitimacyModel.lean`, with `LegitimacyCase.lean`,
 `LegitimacyWitness.lean` and `LegitimacyCases.lean`, is an interpretation on a table of his
@@ -233,3 +259,23 @@ moves that outside review rejected as a rendering of the three sentences; its th
 of its definitions (`LEDGER.md`, part 3). `TABLE_MODEL_STATEMENT.md` is its formal text, and
 `LEGITIMACY_CHECKS.md` and `LEAN_CASES.md` its cases. `STOPPING_COST.md` checks a candidate clause for what stopping costs her, which belongs
 to the authority side.
+
+## 7. Open: the yardstick of sentence 2
+
+Sentence 2's second half forbids what he expects to lead her to choose "what she rated lower
+at her last settled decision". Two readings of the judgement meant:
+
+- **As she settled it.** Her ratings at her last settled decision, as they then were.
+- **Brought up to date.** That judgement as moved by what she has since seen and heard, in
+  the way she would have judged it should move her.
+
+They differ on this case, the fifteenth outside review's: at her last settled decision she
+rated going on above stopping; she then learns something, and by her own judgement of how
+such news should move her now rates stopping above going on; he then works on her, unasked,
+and she goes on. On the first reading he has led her to what she rated higher, and sentence
+2 is silent. On the second he has led her against her judgement.
+
+The formal statement and the connecting theorem take the second reading: the doc of
+`pAgainst` says so, and the theorem's reference self is that judgement brought up to date.
+The words of §1 say the first and are unchanged. Whether the words change to match is the
+maintainer's decision, queued in `DECISIONS.md` under *Awaiting the author*.

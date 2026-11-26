@@ -562,6 +562,22 @@ commit.
   idea the round does not have.
   <!-- decision: open--what-makes-a-decision-settled; touches: node:legitimacy, item:152; status: open -->
 
+- **Which judgement of hers does sentence 2 measure against: as she last settled it, or that judgement brought up to date? (2026-11-26).**
+  Sentence 2 of `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md` forbids what he expects to lead her to
+  choose "what she rated lower at her last settled decision". The connecting theorem
+  (`lean/Workspace/Deference/Contrib/LegitimacyStop.lean`) and the doc of `pAgainst` in the
+  formal statement measure against that judgement brought up to date by what she has since
+  seen and heard, as she would have judged it should move her. The fifteenth outside review's
+  case separates them: she settled on going on; news she endorses reverses her ranking; he
+  then works on her, unasked, and she goes on. As worded, sentence 2 is silent; brought up to
+  date, he has led her against her judgement (§7 of that file). The words are unchanged.
+  Decision required: *the words change to the judgement brought up to date*, or *the words
+  stand and the theorem's reference self is her ratings as she settled them*, under which the
+  second conclusion says nothing of a case like this one.
+  *Turns on:* what "her own judgement" is to mean between two settled decisions, which is the
+  maintainer's wording and a choice about whose judgement governs.
+  <!-- decision: open--sentence-two-yardstick; touches: node:legitimacy, item:152, item:158; status: open -->
+
 ## Settled
 
 ### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer
@@ -8540,3 +8556,47 @@ table model's formal text and lapse with it. (9) *Names, provisional:*
 course*, *known fault*; the module names under `interpretation/`; `run17`, `posthoc17`; the
 anchor `open--what-makes-a-decision-settled`; item numbers 156 and 157; the verdict kind
 `follow-up-20`.
+
+### 2026-11-26 — the connecting theorem is recorded as a twenty-first follow-up, and the Lean statement of legitimacy is corrected after a fifteenth outside review
+<!-- decision: 2026-11-26--legitimacy-twenty-first-followup-connecting-theorem; touches: node:legitimacy, item:149, item:150, item:153, item:156, item:157, item:158 -->
+
+**Agent-decided, reversible** (the twenty-first follow-up to the legitimacy definition
+prosecution round, `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-21.md`;
+(1) and (2) are the dispatch's, adopted). (1) *The statement corrected.*
+`lean/Workspace/Deference/Contrib/LegitimacyStatement.lean`, unregistered, changes in three
+definitions: `NothingUntold` compares her rating told an untold set on top of an offered one
+with her rating told the offered one, with the field `rTold_empty`; `CanStop` covers what is
+new to her (`newToHer`) as well as what he does to her; `canRefuse`, the opportunity to
+refuse before a thing starts, stands where `precededByChoice` stood. The docs of `pAgainst`,
+`inPlay` and `pNoStop` are reworded. Rejected: leaving the file as the fifteenth review read
+it, each change answering a finding of that review that holds. (2) *The connecting theorem.*
+`LegitimacyStop.lean` carries `StopDecision`, the hypotheses `Told`, `NotLed`, `WouldStop`,
+the two conclusions, the necessity instances, the in-fact and long-run forms, `Reading` and
+`legit_protects_stop`. Hypothesis 3 is the plain bound and the residual of the second
+conclusion is `Parted`; the result is described as a cover by three kinds of case. (3) *The
+link to the scoring is a theorem.* `legit_of_score_nonneg` and `scored_protects_stop` take a
+score that is not negative as their hypothesis, which gives `Legit` whatever the violation
+count; rejected: a note in the header only, the hypothesis `Legit` being derivable from the
+score and the derivation two lines. (4) *Added beyond the files handed over.* In
+`LegitimacyStop.lean`: `Witness.stopEp`, `stopD` and `reading`, with instances of
+`legit_protects_stop`, its in-fact form, `shortfall_le`, the two long-run theorems and the
+scoring link; `StopDecision.close_self`, `UnbiasedAbove.refl`. In `LegitimacyStatement.lean`:
+`Witness.offeredMatters` and `Witness.newThing` with five theorems. (5) *Registration.* The
+theorems of the three files are kernel-checked and unregistered; the entries are prepared as
+`prompts/2026-11-10-legitimacy-definition-prosecution/followup-21-registration.patch`, which
+stands in place of `followup-20-registration.patch`; rejected: two patches, the earlier one's
+notes describing definitions that have changed. (6) *Items.* 158, a feedback model for the
+long-run form, is filed. 153 is re-asked of the corrected files and of the theorem, the
+fifteenth review having delivered it for the file as it stood. 150 is restated on what the
+long-run theorems leave. 156 gains a third part, a reading derived from a model, which no
+item asked for and on which the theorem's standing turns; rejected: a new item, the subject
+being 156's, the statement and its given notions. 149 and 157 carry the maintainer's ordering
+of 26 November. (7) *The queue.* One entry added, on which judgement sentence 2 measures
+against; the words of the statement are unchanged. (8) *Names, provisional:*
+`LegitimacyStop`, `StopDecision` and its fields, `wt`, `wtBy`, `Stops`, `Prefers`,
+`InformedWould`, `ReferenceWould`, `Led`, `Parted`, `Short`, `Short₀`, `Told`, `NotLed`,
+`WouldStop`, `Close`, `avg`, `UnbiasedAbove`, `Reading` and its fields, the theorem names of
+that file, `Witness.W`, `stopEp`, `stopD`, `reading`, `stopScoring`; in
+`LegitimacyStatement`, `newToHer`, `canRefuse`, `rTold_empty`, `Witness.offeredMatters`,
+`Witness.newThing`; *the connecting theorem*, *a reading*, *parted*; the anchor
+`open--sentence-two-yardstick`; item number 158; the verdict kind `follow-up-21`.

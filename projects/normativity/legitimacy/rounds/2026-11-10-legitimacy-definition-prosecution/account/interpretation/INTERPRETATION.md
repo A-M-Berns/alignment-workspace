@@ -90,9 +90,13 @@ is supplied.
 **How it stands to the statement's notions.** `doesToHer` is a site bearing an effect;
 `canTell` the observation test; `withholds` an act that keeps something from her; `asked` the
 asking or taking-up option; `pAgainst` the weight of the cases in which he leads her against
-her judgement; `precededByChoice`, `inPlay`, `canStop` and `pNoStop` the covered sites, the
-stopping options and the share that does not stop; `told`, `offered`, `declined` as sentence 1
-computes them. That the model's verdict on an episode is `Legit` of an `Episode` built from it
+her judgement; `newToHer` a site whose observation she could not have judged in advance;
+`canRefuse`, `inPlay`, `canStop` and `pNoStop` the covered sites, the stopping options and the
+share that does not stop, where the statement's `canRefuse` is an opportunity to refuse and
+its `pNoStop` the weight of rating stopping higher and not stopping, not a share among the
+cases where she does; `told`, `offered`, `declined` as sentence 1 computes them, the model's
+sentence 1 bounding the whole effect of a telling where the statement's bounds what the
+untold adds to the offered. That the model's verdict on an episode is `Legit` of an `Episode` built from it
 is not proved: the model is not in Lean.
 
 **Not handled.** Making her forget something he told her does not make it untold; views he

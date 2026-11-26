@@ -18,7 +18,7 @@ acceptance: "`python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11
 work:
   - {kind: round, ref: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution}
   - {kind: decision, ref: 2026-11-26--legitimacy-statement-at-the-level-of-its-words}
-context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/interpretation/INTERPRETATION.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/interpretation/history_model.py", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/interpretation/known_faults.py", "prompts/2026-11-10-legitimacy-definition-prosecution/REVIEW-astra-followup-20.md"]
+context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/interpretation/INTERPRETATION.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/interpretation/history_model.py", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/interpretation/known_faults.py", "prompts/2026-11-10-legitimacy-definition-prosecution/REVIEW-astra-followup-20.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/CONNECTING_THEOREM.md"]
 author: "@claude-fable-5-2"
 size: L
 size_reason: "one item entry, one fixture of context"
@@ -28,7 +28,7 @@ version: 1
 Item 157, The interpretation's known faults, is delivered in the shape its entry states: `test-supported` — `account/interpretation/` of the prosecution round with: her response to what she observes represented apart from other effects of the act that delivers it (fault A); his act compared with her mind as it would have been through the same actual events, in place of a whole course rerun, and what she chooses compared in place of regret against each course's menu (D, E); unpressed uptake computed (B); what she can tell taken from all she has observed (F); stopping indexed by the thing stopped (G, H); the probes of her future responses exhaustive for a stated domain (C); and, for each of the five things the fourteenth outside review found undetermined, a definition or a stated restriction. Each episode of `known_faults.py` moved to the regression files with the verdict the sentences give; then an outside review of the repaired design, by a model that can read only its brief, verbatim beside the round's report with a table of its findings.
 
 ## Source
-ATTENTION.md, item 157 (The interpretation's known faults); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/interpretation/INTERPRETATION.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/interpretation/history_model.py`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/interpretation/known_faults.py`, `prompts/2026-11-10-legitimacy-definition-prosecution/REVIEW-astra-followup-20.md`.
+ATTENTION.md, item 157 (The interpretation's known faults); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/interpretation/INTERPRETATION.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/interpretation/history_model.py`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/interpretation/known_faults.py`, `prompts/2026-11-10-legitimacy-definition-prosecution/REVIEW-astra-followup-20.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/CONNECTING_THEOREM.md`.
 
 ## Notes
 Filed by the twentieth follow-up to the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution, PROMPT-followup-20.md) under the round prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py.
@@ -46,9 +46,15 @@ memory; two influences each with its own switch). The review also names five thi
 design leaves undetermined. Wanted: each repaired without moving a present verdict, and the
 result reviewed from outside.
 
+By the maintainer's ordering of 26 November (`PROMPT-followup-21.md` §3 C in the round's
+prompts directory) these repairs are on the path to the line's result, after a fresh outside
+review, the feedback model of item 158, item 148 and item 149. The interpretation is where
+what she would have taken and her reference self's ratings, which
+`LegitimacyStop.StopDecision` takes as supplied, would be computed.
+
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
-*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md`, `account/LEDGER.md`, `account/interpretation/INTERPRETATION.md`,
+*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md`, `account/LEDGER.md`, `account/CONNECTING_THEOREM.md`, `account/interpretation/INTERPRETATION.md`,
 `account/interpretation/history_model.py` and `account/interpretation/known_faults.py` in the round directory;
 `REVIEW-astra-followup-20.md` in the round's prompts directory.
 *Consumed by:* item 156's second part, item 152, and the round that writes the account up.

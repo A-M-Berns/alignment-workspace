@@ -59,7 +59,7 @@ Owner @A-M-Berns, @abramdemski
 - rests on AI numbers (no human judgment yet): kernel-no-laundering
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @A-M-Berns, @abramdemski; holds 119 node(s); owner has not confirmed (drafted from the wiki)
+- frame owner @A-M-Berns, @abramdemski; holds 120 node(s); owner has not confirmed (drafted from the wiki)
 - a programme: informs through its steps
 - best next unit: re-examine legitimacy-as-local-rules
 #### corrigibility-landscape
@@ -390,7 +390,7 @@ Owner @A-M-Berns
 Owner @A-M-Berns; unspelled: no roots yet (its unit is spell-out)
 
 ## Sub-frame legitimacy (in the-program): What must stay true of a trajectory's record, verdicts and channels of influence, inside it and at its boundary, for a later judgment to count as the principal's own, and what does corrigibility consume from that?
-Owner @A-M-Berns, @abramdemski; holds 119 node(s)
+Owner @A-M-Berns, @abramdemski; holds 120 node(s)
 
 ### Plans
 #### integrity-and-record
@@ -536,6 +536,7 @@ Nodes this frame is about that are no goals of the ranking (held, not roots): li
 - item-155 (leaf/task)
 - item-156 (leaf/task)
 - item-157 (leaf/task)
+- item-158 (leaf/task)
 - appraisal.mse-split (and)
 - appraisal.three-channels (and)
 - appraisal.cost-of-mistakes (and)
@@ -4216,11 +4217,12 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - item-150: Execute item 150 per its deliverable shape and acceptance check: The legitimacy statement composed with the sequential corrigibility theorems. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-26--legitimacy-statement-at-the-level-of-its-words
 - item-151: Execute item 151 per its deliverable shape and acceptance check: The model on a table of his moves: the restated cases rebuilt by another hand, and what it takes as given. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-26--legitimacy-statement-at-the-level-of-its-words
 - item-152: Execute item 152 per its deliverable shape and acceptance check: What makes a decision of hers settled, and where what she could not have judged in advance begins. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-26--legitimacy-statement-at-the-level-of-its-words
-- item-153: Execute item 153 per its deliverable shape and acceptance check: An outside review of the Lean statement of legitimacy. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-26--legitimacy-statement-at-the-level-of-its-words
+- item-153: Execute item 153 per its deliverable shape and acceptance check: An outside review of the Lean statement of legitimacy and the connecting theorem. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-26--legitimacy-statement-at-the-level-of-its-words
 - item-154: Execute item 154 per its deliverable shape and acceptance check: A set of cases of bent judgement, coded twice. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-24--legitimacy-statement-working-positions
 - item-155: Execute item 155 per its deliverable shape and acceptance check: The legitimacy statement on cases of value change. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-24--legitimacy-statement-working-positions
 - item-156: Execute item 156 per its deliverable shape and acceptance check: The properties the statement's given notions must have, and the history model as an instance. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-26--legitimacy-statement-at-the-level-of-its-words
 - item-157: Execute item 157 per its deliverable shape and acceptance check: The interpretation's known faults. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-26--legitimacy-statement-at-the-level-of-its-words
+- item-158: Execute item 158 per its deliverable shape and acceptance check: A feedback model for the long-run form of the connecting theorem. (who: agent); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution; decision: 2026-11-26--legitimacy-twenty-first-followup-connecting-theorem
 - item-16: Execute item 16 per its deliverable shape and acceptance check: The certificate inequality, derived. (who: agent)
 - item-17: Execute item 17 per its deliverable shape and acceptance check: Simulator substitution: the divergence witness. (who: agent)
 - item-18: Execute item 18 per its deliverable shape and acceptance check: Bounded densification study. (who: agent)
@@ -5782,6 +5784,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | item-155 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
 | item-156 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
 | item-157 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
+| item-158 | leaf/task | 2 (both) | held by legitimacy, no belief | open | 0 | 0 (informs no goal) |
 | item-16 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
 | item-17 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
 | item-18 | leaf/task | 2 (both) | held by deference-and-trust, no belief | open | 0 | 0 (informs no goal) |
@@ -7463,4 +7466,4 @@ The outside option and the undescribed failure, each a cases node over the outco
 | wirehead-iff-finite.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 1 |
 | wirehead-iff-finite.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 1 |
 | worlds-and-points-companion | leaf/question | 2 (both) | AI number | open | 0 | 8 |
-<!-- generated_hash: dbbc9e0ee87e3872a85af247 -->
+<!-- generated_hash: 860a62b5eb1c68924e31a93a -->

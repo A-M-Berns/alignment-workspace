@@ -1680,30 +1680,44 @@ a free service paid for by its influence, and an exit penalty she knowingly agre
 can no longer call off (`DECISIONS.md`, *Awaiting the author*). Wanted: the statement in Lean.
 A Lean headline registers at merge.
 
+`LegitimacyStop.legit_protects_stop` bounds his weight on her not stopping where she rates
+stopping strictly above going on, or would if told what is untold, or her reference self
+does. A cost he attaches to stopping moves how she rates it and so moves which cases those
+are, and nothing in that theorem limits it: this item is what would. By the maintainer's
+ordering of 26 November (`PROMPT-followup-21.md` §3 C in the round's prompts directory) it is
+on the path to the line's result, after a fresh outside review, the feedback model of item
+158 and item 148.
+
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
-*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md`, `account/STOPPING_COST.md`, `account/stopping_cost.py`
-and `account/LEDGER.md` in the round directory; `lean/Workspace/Deference/Contrib/EffectiveAuthority.lean`,
-`lean/Workspace/Deference/Contrib/AuthorityModule.lean`.
+*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md`, `account/STOPPING_COST.md`, `account/stopping_cost.py`,
+`account/LEDGER.md` and `account/CONNECTING_THEOREM.md` in the round directory; `lean/Workspace/Deference/Contrib/EffectiveAuthority.lean`,
+`lean/Workspace/Deference/Contrib/AuthorityModule.lean`, `lean/Workspace/Deference/Contrib/LegitimacyStop.lean`.
 *Consumed by:* item 143 (authority beyond a finite penalty), and the round that writes the account up.
 
 ### 150. The legitimacy statement composed with the sequential corrigibility theorems — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-Row 53 of `account/LEDGER.md`.
+Rows 53 and 67 of `account/LEDGER.md`.
 
 `LegitimacyStatement.legitScoring` turns the legitimacy predicate into the scoring of the
 corrigibility result for one decision, with no authority violation. The sequential theorems
 (`Sequential.theorem3a`, `theorem3b` in `DeconfusingCorrigibility.lean`) are about realised
 evaluations over many decisions; an `Episode` is one stretch as the adviser pictures it.
-Nothing relates the two. Wanted: the composition in Lean, with whatever must be assumed about
-his picture against the facts named as a hypothesis and shown necessary. A Lean headline
-registers at merge.
+`LegitimacyStop.long_run_stop_informed` and `long_run_stop_reference` answer part of this:
+with the three sentences' hypotheses at every decision of a sequence and accuracy hypotheses
+of the form of `UnbiasedFromFeedback`, the two bounds on her failing to stop him hold of
+long-run averages. They are not an instance of `Sequential`, their accuracy hypotheses are
+assumed (item 158 asks for a model that yields them), and no statement gives an adviser who
+satisfies the corrigibility hypotheses with this legitimacy test both guarantees at once.
+Wanted: that joint statement in Lean, with whatever must be assumed about his picture
+against the facts named as a hypothesis and shown necessary. A Lean headline registers at
+merge.
 
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
-*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md` and `account/LEDGER.md` in the round directory;
-`LegitimacyStatement.lean`, `LegitimacyGate.lean` and `DeconfusingCorrigibility.lean` under `lean/Workspace/Deference/Contrib/`.
+*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md`, `account/LEDGER.md` and `account/CONNECTING_THEOREM.md` in the round directory;
+`LegitimacyStatement.lean`, `LegitimacyGate.lean`, `LegitimacyStop.lean` and `DeconfusingCorrigibility.lean` under `lean/Workspace/Deference/Contrib/`.
 *Consumed by:* item 145 (the audit as a design, over more than one decision), and the round that writes the account up.
 
 ### 151. The model on a table of his moves: the restated cases rebuilt by another hand, and what it takes as given — **[open]** — *closed: outside review rejected the model as a rendering of the statement*
@@ -1743,23 +1757,30 @@ once there is one.
 `account/interpretation/history_model.py` and `account/LEDGER.md` in the round directory.
 *Consumed by:* item 157, and the round that writes the account up.
 
-### 153. An outside review of the Lean statement of legitimacy — **[open]**
+### 153. An outside review of the Lean statement of legitimacy and the connecting theorem — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-Rows 16 and 51 of `account/LEDGER.md`.
+Rows 16, 51 and 73 of `account/LEDGER.md`.
 
-Fourteen outside reviews have pressed the statement in words and five formal objects built
-from it; each formal object a review saw was found not to say what the sentences say. None
-has seen `LegitimacyStatement.lean`, which states legitimacy over notions taken as given and
-is by the hand that wrote the sentences' formal counterparts before it. Wanted: one review of
-that file against the sentences, by an outside model that can read nothing else. It is worth
-most after the first part of item 156, when the properties the fields must have are stated.
+The fifteenth outside review (`REVIEW-astra-followup-21.md` in the round's prompts directory)
+read `LegitimacyStatement.lean` and the connecting theorem as they stood on 26 November. It
+found the proofs sound, five places where the formal statement differed from the sentences,
+and did not accept the theorem as showing that the three sentences protect her ability to
+stop him, the weight resting on the link from the statement to the theorem's hypotheses. The
+definitions were then corrected: sentence 1 measures what the untold adds to the offered,
+sentence 3 covers what is new to her and asks for an opportunity to refuse, hypothesis 3 is
+the plain bound, and the residual of the second conclusion is `Parted`. No reviewer has seen
+the corrected files. Wanted: one review of both files as they stand against the sentences,
+by an outside model that can read nothing else, with the brief quoting the Lean and not a
+description of it: the fifteenth brief described one definition otherwise than the file had
+it, and one finding of the reply was about the description.
 
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
-*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md` and `account/LEDGER.md` in the round directory;
-`lean/Workspace/Deference/Contrib/LegitimacyStatement.lean`; `REVIEW-astra-followup-20.md` in the round's prompts directory.
-*Consumed by:* items 150 and 156, and the round that writes the account up.
+*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md`, `account/LEDGER.md` and `account/CONNECTING_THEOREM.md` in the round directory;
+`lean/Workspace/Deference/Contrib/LegitimacyStatement.lean` and `LegitimacyStop.lean`; `REVIEW-astra-followup-20.md` and
+`REVIEW-astra-followup-21.md` in the round's prompts directory.
+*Consumed by:* items 150, 156 and 158, and the round that writes the account up.
 
 ### 154. A set of cases of bent judgement, coded twice — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
@@ -1806,7 +1827,7 @@ the same sets.
 ### 156. The properties the statement's given notions must have, and the history model as an instance — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-Rows 29 and 49 of `account/LEDGER.md`.
+Rows 29, 49 and 70 of `account/LEDGER.md`.
 
 `LegitimacyStatement.lean` states legitimacy over notions taken as given: what is told, on
 offer or declined; what each thing he does does to her; whether she can tell, asked, can
@@ -1815,12 +1836,20 @@ episode whose field `doesToHer` is false throughout satisfies sentences 2 and 3 
 does, and no theorem says otherwise. Wanted first: what each field must satisfy to be the
 notion it is named for, as Lean predicates, each shown to do work. Wanted second, once the
 interpretation's known faults are repaired: the history model as an instance, so that its
-verdict is `Legit` of an episode with those properties. A Lean headline registers at merge.
+verdict is `Legit` of an episode with those properties. Wanted third:
+`LegitimacyStop.legit_protects_stop` reaches the statement through a `Reading`, which
+asserts that his weight on leading her against her judgement covers the cases in which what
+she takes falls below what she would otherwise have taken (`led_le`), and the like for her
+not stopping (`noStop`). The one reading on record is written to fit a witness. A reading
+whose two inequalities follow from a model, or a demonstration that none can, is what
+decides whether the theorem is more than a cover of cases. A Lean headline registers at
+merge.
 
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
-*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md`, `account/LEDGER.md` and `account/interpretation/INTERPRETATION.md` in the round directory;
-`lean/Workspace/Deference/Contrib/LegitimacyStatement.lean`.
+*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md`, `account/LEDGER.md`, `account/CONNECTING_THEOREM.md` and
+`account/interpretation/INTERPRETATION.md` in the round directory;
+`lean/Workspace/Deference/Contrib/LegitimacyStatement.lean` and `LegitimacyStop.lean`.
 *Consumed by:* items 150 and 153, and the round that writes the account up.
 
 ### 157. The interpretation's known faults — **[open]**
@@ -1838,12 +1867,45 @@ memory; two influences each with its own switch). The review also names five thi
 design leaves undetermined. Wanted: each repaired without moving a present verdict, and the
 result reviewed from outside.
 
+By the maintainer's ordering of 26 November (`PROMPT-followup-21.md` §3 C in the round's
+prompts directory) these repairs are on the path to the line's result, after a fresh outside
+review, the feedback model of item 158, item 148 and item 149. The interpretation is where
+what she would have taken and her reference self's ratings, which
+`LegitimacyStop.StopDecision` takes as supplied, would be computed.
+
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
-*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md`, `account/LEDGER.md`, `account/interpretation/INTERPRETATION.md`,
+*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md`, `account/LEDGER.md`, `account/CONNECTING_THEOREM.md`, `account/interpretation/INTERPRETATION.md`,
 `account/interpretation/history_model.py` and `account/interpretation/known_faults.py` in the round directory;
 `REVIEW-astra-followup-20.md` in the round's prompts directory.
 *Consumed by:* item 156's second part, item 152, and the round that writes the account up.
+
+### 158. A feedback model for the long-run form of the connecting theorem — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+Rows 71 and 74 of `account/LEDGER.md`.
+
+`LegitimacyStop.long_run_stop_informed` and `long_run_stop_reference` bound the long-run
+frequency with which she fails to stop him, given that at every decision the three
+sentences' hypotheses hold on his picture and that two accuracy hypotheses hold: on average
+his weights are not below the frequency of her failing to stop, and his weights on her
+judgement having parted are not above the frequency of that. Both are assumed. The events
+are counterfactual or inner (what she would rate if told, how her reference self rates,
+what she would have taken), so nothing reveals them to him unless something is built to;
+the fifteenth outside review adds that an answer she gives at a check-in may report a state
+the question changed, that eventual revelation alone gives no average guarantee, and that
+the two directions differ, an adviser who over-weights her parting satisfying the first and
+breaking the second. The theorems also take her reference self afresh at each decision.
+Wanted: a model of what he observes after each decision under which the accuracy hypotheses
+are theorems, and which says how one settled decision hands over to the next. A Lean
+headline registers at merge.
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/CONNECTING_THEOREM.md`, `account/LEGITIMACY_STATEMENT.md` and `account/LEDGER.md` in the round directory;
+`LegitimacyStop.lean`, `LegitimacyStatement.lean` and `DeconfusingCorrigibility.lean` under `lean/Workspace/Deference/Contrib/`;
+`REVIEW-astra-followup-21.md` in the round's prompts directory.
+*Consumed by:* item 150 (the joint statement with the corrigibility theorems), item 147 (what an overseer can observe), and the round that writes the account up.
 
 ## Deference line
 Context for all three: `projects/deference/note-dump-2026-08-11/`, in particular

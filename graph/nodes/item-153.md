@@ -2,10 +2,10 @@
 id: item-153
 kind: leaf
 leaf_kind: task
-action: "Execute item 153 per its deliverable shape and acceptance check: An outside review of the Lean statement of legitimacy."
+action: "Execute item 153 per its deliverable shape and acceptance check: An outside review of the Lean statement of legitimacy and the connecting theorem."
 who: agent
 item: "153"
-title: "An outside review of the Lean statement of legitimacy"
+title: "An outside review of the Lean statement of legitimacy and the connecting theorem"
 section: "Normativity line — legitimacy"
 maintainer_order: 165
 difficulty: "open"
@@ -13,38 +13,45 @@ heading_notes: ""
 project: normativity.legitimacy
 dispatchable: true
 item_status: open
-deliverable: "no registry entry — a review record `REVIEW-astra-followup-<n>.md` beside the prosecution round's report: a brief holding `LegitimacyStatement.lean` and `account/LEGITIMACY_STATEMENT.md` §1, §2 and §4 and asking where `Episode.Legit` says more, less or other than the three sentences, which fields can be chosen so that it holds of conduct the sentences fault, and whether each theorem says what its docstring says; the reply of an outside model run in an empty folder with a read-only sandbox, verbatim, with the log line showing what it read; and in the report a table of each finding, whether it holds on a recomputation, and what was done."
-acceptance: "The review file and the report section exist with the access conditions stated at the top of the file; each finding marked as holding has a repair in `lean/Workspace/Deference/Contrib/LegitimacyStatement.lean` under a green `lean` job or a row of `account/LEDGER.md` recording it as open."
+deliverable: "no registry entry — a review record `REVIEW-astra-followup-<n>.md` beside the prosecution round's report: a brief holding the definitions and theorem statements of `LegitimacyStatement.lean` and `LegitimacyStop.lean` as they stand, verbatim, and `account/LEGITIMACY_STATEMENT.md` §1, §2, §4 and §7, and asking where `Episode.Legit` says more, less or other than the three sentences, which fields can be chosen so that it holds of conduct the sentences fault, whether each theorem says what its docstring says, whether a `Reading` can be had without assuming the conclusion, and whether `legit_protects_stop` shows that the three sentences protect her decision to stop him; the reply of an outside model run in an empty folder with a read-only sandbox, verbatim, with the log line showing what it read; and in the report a table of each finding, whether it holds on a recomputation, and what was done."
+acceptance: "The review file and the report section exist with the access conditions stated at the top of the file; each finding marked as holding has a repair in `lean/Workspace/Deference/Contrib/LegitimacyStatement.lean` or `LegitimacyStop.lean` under a green `lean` job or a row of `account/LEDGER.md` recording it as open."
 work:
   - {kind: round, ref: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution}
   - {kind: decision, ref: 2026-11-26--legitimacy-statement-at-the-level-of-its-words}
-context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md", "lean/Workspace/Deference/Contrib/LegitimacyStatement.lean", "prompts/2026-11-10-legitimacy-definition-prosecution/REVIEW-astra-followup-20.md"]
+context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md", "lean/Workspace/Deference/Contrib/LegitimacyStatement.lean", "prompts/2026-11-10-legitimacy-definition-prosecution/REVIEW-astra-followup-20.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/CONNECTING_THEOREM.md", "lean/Workspace/Deference/Contrib/LegitimacyStop.lean", "prompts/2026-11-10-legitimacy-definition-prosecution/REVIEW-astra-followup-21.md"]
 author: "@claude-fable-5-2"
 size: M
 size_reason: "one item entry, one fixture of context"
-version: 2
+version: 3
 ---
 ## Statement
-Item 153, An outside review of the Lean statement of legitimacy, is delivered in the shape its entry states: no registry entry — a review record `REVIEW-astra-followup-<n>.md` beside the prosecution round's report: a brief holding `LegitimacyStatement.lean` and `account/LEGITIMACY_STATEMENT.md` §1, §2 and §4 and asking where `Episode.Legit` says more, less or other than the three sentences, which fields can be chosen so that it holds of conduct the sentences fault, and whether each theorem says what its docstring says; the reply of an outside model run in an empty folder with a read-only sandbox, verbatim, with the log line showing what it read; and in the report a table of each finding, whether it holds on a recomputation, and what was done.
+Item 153, An outside review of the Lean statement of legitimacy and the connecting theorem, is delivered in the shape its entry states: no registry entry — a review record `REVIEW-astra-followup-<n>.md` beside the prosecution round's report: a brief holding the definitions and theorem statements of `LegitimacyStatement.lean` and `LegitimacyStop.lean` as they stand, verbatim, and `account/LEGITIMACY_STATEMENT.md` §1, §2, §4 and §7, and asking where `Episode.Legit` says more, less or other than the three sentences, which fields can be chosen so that it holds of conduct the sentences fault, whether each theorem says what its docstring says, whether a `Reading` can be had without assuming the conclusion, and whether `legit_protects_stop` shows that the three sentences protect her decision to stop him; the reply of an outside model run in an empty folder with a read-only sandbox, verbatim, with the log line showing what it read; and in the report a table of each finding, whether it holds on a recomputation, and what was done.
 
 ## Source
-ATTENTION.md, item 153 (An outside review of the Lean statement of legitimacy); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md`, `lean/Workspace/Deference/Contrib/LegitimacyStatement.lean`, `prompts/2026-11-10-legitimacy-definition-prosecution/REVIEW-astra-followup-20.md`.
+ATTENTION.md, item 153 (An outside review of the Lean statement of legitimacy and the connecting theorem); its context: `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md`, `lean/Workspace/Deference/Contrib/LegitimacyStatement.lean`, `prompts/2026-11-10-legitimacy-definition-prosecution/REVIEW-astra-followup-20.md`, `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/CONNECTING_THEOREM.md`, `lean/Workspace/Deference/Contrib/LegitimacyStop.lean`, `prompts/2026-11-10-legitimacy-definition-prosecution/REVIEW-astra-followup-21.md`.
 
 ## Notes
 Filed by the sixteenth follow-up to the legitimacy definition prosecution round (prompts/2026-11-10-legitimacy-definition-prosecution, PROMPT-followup-16.md) under the round prompt's scope grant; the entry's text is the Item section below, rendered into ATTENTION.md by checkers/attention_render.py.
 
 ## Item
-Rows 16 and 51 of `account/LEDGER.md`.
+Rows 16, 51 and 73 of `account/LEDGER.md`.
 
-Fourteen outside reviews have pressed the statement in words and five formal objects built
-from it; each formal object a review saw was found not to say what the sentences say. None
-has seen `LegitimacyStatement.lean`, which states legitimacy over notions taken as given and
-is by the hand that wrote the sentences' formal counterparts before it. Wanted: one review of
-that file against the sentences, by an outside model that can read nothing else. It is worth
-most after the first part of item 156, when the properties the fields must have are stated.
+The fifteenth outside review (`REVIEW-astra-followup-21.md` in the round's prompts directory)
+read `LegitimacyStatement.lean` and the connecting theorem as they stood on 26 November. It
+found the proofs sound, five places where the formal statement differed from the sentences,
+and did not accept the theorem as showing that the three sentences protect her ability to
+stop him, the weight resting on the link from the statement to the theorem's hypotheses. The
+definitions were then corrected: sentence 1 measures what the untold adds to the offered,
+sentence 3 covers what is new to her and asks for an opportunity to refuse, hypothesis 3 is
+the plain bound, and the residual of the second conclusion is `Parted`. No reviewer has seen
+the corrected files. Wanted: one review of both files as they stand against the sentences,
+by an outside model that can read nothing else, with the brief quoting the Lean and not a
+description of it: the fifteenth brief described one definition otherwise than the file had
+it, and one finding of the reply was about the description.
 
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
-*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md` and `account/LEDGER.md` in the round directory;
-`lean/Workspace/Deference/Contrib/LegitimacyStatement.lean`; `REVIEW-astra-followup-20.md` in the round's prompts directory.
-*Consumed by:* items 150 and 156, and the round that writes the account up.
+*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md`, `account/LEDGER.md` and `account/CONNECTING_THEOREM.md` in the round directory;
+`lean/Workspace/Deference/Contrib/LegitimacyStatement.lean` and `LegitimacyStop.lean`; `REVIEW-astra-followup-20.md` and
+`REVIEW-astra-followup-21.md` in the round's prompts directory.
+*Consumed by:* items 150, 156 and 158, and the round that writes the account up.

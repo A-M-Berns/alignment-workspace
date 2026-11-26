@@ -4,8 +4,9 @@ A checkpoint. The line aims at a formalism with defensible modelling choices tha
 intuitively correct things about manipulation, following Noggle, and proves safety theorems
 for the corrigibility design. It is not at that bar. The statement of legitimacy as it stands
 is `account/LEGITIMACY_STATEMENT.md`: three sentences, and a formal statement over the notions
-they use, which are taken as given. The standing of each part, with the evidence and what
-would move it, is `account/LEDGER.md`, and §3 below is a guide to the two. Paths are relative
+they use, which are taken as given. What that statement gives for her decision to stop him is
+`account/CONNECTING_THEOREM.md`. The standing of each part, with the evidence and what
+would move it, is `account/LEDGER.md`, and §3 below is a guide to the three. Paths are relative
 to this directory; Lean files are under `lean/Workspace/Deference/Contrib/`. Every Lean
 result named is kernel-checked. Those of §1 are registered `lean-proved` in
 `projects/normativity/CLAIMS.md` under the id beside each; those of §3 are not registered. A
@@ -143,6 +144,9 @@ runner reads them.
 | her view of the hypothetical read as her prediction of how she will respond | twentieth | a weakness she foresees and disowns passes | the thirteenth reply; `account/HARD_CASES.md`, case 13 |
 | three rules for what she could not have judged in advance: the exemption lost where she wants to keep her view; what he says always hers; nothing counted if she keeps the new view | twentieth | each differs from a verdict of the maintainer's on the twenty hard cases, on 2, 4 and 3 of them | `account/HARD_CASES.md` |
 | a history design as the formal statement and gate: four designs, each with a model run on episodes | twentieth | each was reviewed and found not ready; the last gives the wrong verdict on seven of eight episodes written against it; it is kept as the interpretation | the eleventh to fourteenth replies; `account/interpretation/INTERPRETATION.md` §3 |
+| formal sentence 1 as a bound on the whole effect of telling her any set of untold and on-offer views containing an untold one | twenty-first | it convicts an untold view that adds nothing when told together with an offered view that matters; replaced by what the untold adds to the offered | the reply of `REVIEW-astra-followup-21.md` in the prompts directory, §1; `LegitimacyStatement.Witness.offeredMatters_total` |
+| formal sentence 3 over the things he does to her only, each preceded by a choice of hers | twenty-first | the words put what is new to her under sentence 3 and ask for a way to stop before the start, not a choice made; a disclosed thing new to her that she cannot stop passed | the same reply, §1; `LegitimacyStatement.Witness.not_legit_newThing` |
+| the residual of the connecting theorem's second conclusion read as her own drift, not his doing | twenty-first | its cases include changes he brought about by what she asked for or showed her, and as first defined overlapped the cases in which he led her; it is `Parted` and the result is a cover, not a division into causes | the same reply, §5; `account/CONNECTING_THEOREM.md` §4 |
 
 Five claims made in working notes and withdrawn, each with an exact instance:
 `withdrawn/WITHDRAWN.md`.
@@ -159,7 +163,7 @@ the maintainer's. By his ruling of 2026-11-26 the definition is stated at the le
 words: the notions the sentences use are taken as given, and how they are worked out in a
 concrete episode is a separate, continuing question, the interpretation.
 
-Three layers, none a statement of record:
+Three layers and one result, none a statement of record:
 
 - **The words.** The maintainer's verdicts on twenty hard cases select sentence 2's rule
   over three alternatives (`account/HARD_CASES.md`); he marks two of the twenty unsure and
@@ -168,18 +172,43 @@ Three layers, none a statement of record:
   216 and 212 on a second coding; sentence 2's second half, with her judgement read as her
   prior view of the hypothetical, settles 36 of 39 cases where a lapse is expected and agrees
   on all 36, and convicts 8 of 60 controls where at most 4 were predicted, 1 of 64 with a
-  screen for ties added after the result. No person has read a case against a coding.
+  screen for ties added after the result. No person has read a case against a coding. One
+  question about the words is open and queued: whether sentence 2 measures against her
+  judgement as she last settled it or that judgement brought up to date
+  (`account/LEGITIMACY_STATEMENT.md` §7).
 - **The formal statement**, `LegitimacyStatement.lean`: an `Episode` whose fields are the
-  given notions, three definitions and their conjunction `Legit`. Proved: larger tolerances
-  loosen it; no conduct and every view told is legitimate; under sentence 1 an option within
-  `ε` of the best she rates stays within `ε + 2θ` of the best on being told anything untold;
-  five refutations, one for each way a sentence can fail; what she asked for is unconstrained
-  by sentence 2's second half; the scoring it gives is a `DeconfusingCorrigibility.Scoring`.
-  A witness on which it holds, with four neighbours each failing by one value. The scoring
+  given notions, three definitions and their conjunction `Legit`. Sentence 1 measures what
+  telling her the untold would add to whatever on offer she hears; sentence 3 covers what he
+  does to her and what is new to her, and asks that she can refuse it before it starts.
+  Proved: larger tolerances loosen it; no conduct and every view told is legitimate; under
+  sentence 1 an option within `ε` of the best she rates stays within `ε + 2θ` of the best on
+  being told in addition anything untold; five refutations, one for each way a sentence can
+  fail; what she asked for is unconstrained by sentence 2's second half; the scoring it gives
+  is a `DeconfusingCorrigibility.Scoring`. A witness on which it holds, with four neighbours
+  each failing by one value; an episode on which an untold view that adds nothing does not
+  convict; one on which a disclosed thing new to her that she cannot stop does. The scoring
   link and the gate theorem for any predicate are in `LegitimacyGate.lean`. The statement
-  relates the fields by nothing but the three definitions: an episode on which he does
-  nothing to her, by the field, satisfies sentences 2 and 3 whatever he does. No outside
-  review has seen the file.
+  relates the fields by nothing but the three definitions: an episode on which, by the
+  fields, he does nothing to her, keeps nothing from her and nothing is new to her satisfies
+  sentences 2 and 3 whatever he does.
+- **The connecting theorem**, `LegitimacyStop.lean`, read in
+  `account/CONNECTING_THEOREM.md`. At one decision of hers at which she can stop him, set out
+  case by case on his weights, with what she would have taken, her rating told all that is
+  untold and her reference self's rating supplied: if nothing untold would move a rating by
+  more than `θ` and his weight on her rating stopping higher and not stopping is at most
+  `κ`, his weight on her not stopping though told all that is untold she would rate stopping
+  higher by more than `2θ` is at most `κ`; if his weight on leading her below what she would
+  otherwise have taken is at most `κ`, his weight on her not stopping though her reference
+  self rates stopping higher by more than `η` is at most `2κ` plus his weight on her
+  judgement having parted from that judgement otherwise than by his unasked work making her
+  choice worse. Each hypothesis is shown needed by an instance, and so is the last term. With
+  a *reading* of a decision of an episode as such a case set, `Legit` gives both
+  (`legit_protects_stop`), and one reading is exhibited for the witness. The bounds also
+  hold of a second weighting close to his on every condition, and of long-run averages under
+  two accuracy hypotheses. What is not shown: a reading is a hypothesis and asserts that his
+  weight in the statement covers the theorem's cases; everything is by his weights, and the
+  accuracy hypotheses are assumed; nothing bounds how often her judgement parts; only the
+  second halves of sentences 2 and 3 are used.
 - **The interpretation**, `account/interpretation/`: a design on histories with an exact
   model in Python, 68 episodes at their expected verdicts as a regression set, and 8
   episodes of known faults on 7 of which the model's verdict is wrong. Model and episodes are
@@ -188,27 +217,36 @@ Three layers, none a statement of record:
   outside review rejected as a rendering of the sentences; its theorems hold of its
   definitions.
 
-Fourteen outside reviews by one model (`REVIEW-astra-followup-16.md` and
-`REVIEW-astra-followup-20.md` in the prompts directory), the last seven each a fresh session
-that read only its brief. Each found the formal object before it unfaithful. Of the words, the
-last two pressed one thing: the exemption for what she could not have judged in advance, which
-the thirteenth objects to and the fourteenth asks to be narrowed to her response to the thing
-observed.
+Fifteen outside reviews by one model (`REVIEW-astra-followup-16.md`,
+`REVIEW-astra-followup-20.md` and `REVIEW-astra-followup-21.md` in the prompts directory),
+the last eight each a fresh session that read only its brief. Reviews 10 to 14 each found the
+formal object before it unfaithful. Of the words, the thirteenth and fourteenth pressed one
+thing: the exemption for what she could not have judged in advance, which the thirteenth
+objects to and the fourteenth asks to be narrowed to her response to the thing observed. The
+fifteenth read the Lean statement and the connecting theorem as they stood before this
+checkpoint's corrections: it found the proofs sound, five differences between the formal
+statement and the sentences, and accepted the theorem as a lemma that covers the ways she
+can fail to stop him, not as showing that the three sentences protect her ability to. No
+reviewer has seen the corrected files.
 
-**Open.** `account/LEDGER.md` has 58 rows: 14 closed, each a Lean declaration or the runner;
-28 open; 16 living notes. Its last section ranks the open work. By `ATTENTION.md` item:
+**Open.** `account/LEDGER.md` has 74 rows: 24 closed, each a Lean declaration or the runner;
+33 open; 17 living notes. Its last section ranks the open work, the first five entries in the
+maintainer's ordering of 26 November. By `ATTENTION.md` item:
 
-1. **Properties the given notions must have, in Lean** (item 156, first part).
-2. **An outside review of the Lean statement** (item 153).
-3. **The cost of a decision of hers on the authority side** (item 149).
-4. **Composition with the sequential corrigibility theorems, on `Episode`** (item 150).
+1. **An outside review of the statement and the connecting theorem as corrected** (item 153).
+2. **A feedback model that yields the long-run accuracy hypotheses and says how one settled
+   decision hands over to the next** (item 158).
+3. **A person's check of a sample of the codings** (item 148).
+4. **The cost of a decision of hers on the authority side** (item 149).
 5. **The interpretation's known faults** (item 157).
-6. **The history model as an instance of the statement** (item 156, second part).
-7. **What makes a decision settled** (item 152).
-8. **Cases of bent judgement, and of value change** (items 154, 155).
-9. **A person's check of a sample of the codings** (item 148).
-10. **Whether a gate can evaluate legitimacy at all** (item 147).
-11. **What the adviser believes and expects, for a trained system** (item 139).
+6. **A reading derived, and the properties the given notions must have** (item 156, first
+   and third parts).
+7. **The joint statement with the sequential corrigibility theorems** (item 150).
+8. **The history model as an instance of the statement** (item 156, second part).
+9. **What makes a decision settled** (item 152).
+10. **Cases of bent judgement, and of value change** (items 154, 155).
+11. **Whether a gate can evaluate legitimacy at all** (item 147).
+12. **What the adviser believes and expects, for a trained system** (item 139).
 
 Open from before and not touched by the statement: what supplies her trustworthiness (item
 140); her valuing and what makes a request valid (item 141); relative to what distribution
@@ -220,8 +258,8 @@ The maintainer's positions are working positions, open to revision by the cases:
 `DECISIONS.md`, `2026-11-26--legitimacy-statement-at-the-level-of-its-words`, with those of
 `2026-11-24--legitimacy-statement-working-positions`, `2026-11-18--legitimacy-working-positions`
 and `2026-11-21--manipulation-working-positions` where a later entry does not replace them.
-Four questions on this line are queued for him there: whether a practice's rules cover what
+Five questions on this line are queued for him there: whether a practice's rules cover what
 she did not herself ask for, on the teacher's put-on enthusiasm; whether her asking makes a
 thing not manipulation or manipulation that is permitted; what bounds the cost of a decision
-of hers where the influence is the price or she agreed to the penalty; and what makes a
-decision of hers settled.
+of hers where the influence is the price or she agreed to the penalty; what makes a
+decision of hers settled; and which judgement of hers sentence 2 measures against.

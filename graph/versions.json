@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "a722d93c313bf6523f5831ba",
-  "index.json": "9ccde44ac0806b1eef924d43"
+  "derived.json": "6d4f538268e167ae53be276b",
+  "index.json": "3bcaa9e22cdcd703adb8bf7f"
  },
- "generated_hash": "9005a15fa6e744f0affc13ec",
+ "generated_hash": "c2046a53a3f98ec040971067",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -9454,6 +9454,11 @@
     "date": "2026-11-26",
     "normalized": "item 150 the legitimacy statement composed with the sequential corrigibility theorems is delivered in the shape its entry states lean proved in a contribution namespace under lean workspace deference contrib a structure instantiating deconfusingcorrigibility sequential from a sequence of legitimacystatement episodes one for each decision with the gate of legitimacystatement legitscoring sequential theorem3a and sequential theorem3b applied to it the hypothesis relating his picture at each decision to the realised evaluation stated as a predicate and taken by the theorems that use it a term inhabiting the whole hypothesis package and an instance on which that hypothesis alone fails and the conclusion fails",
     "version": 3
+   },
+   {
+    "date": "2026-11-26",
+    "normalized": "item 150 the legitimacy statement composed with the sequential corrigibility theorems is delivered in the shape its entry states lean proved in a contribution namespace under lean workspace deference contrib a structure instantiating deconfusingcorrigibility sequential from a sequence of legitimacystatement episodes one for each decision with the gate of legitimacystatement legitscoring sequential theorem3a and sequential theorem3b applied to it one theorem whose hypotheses are those of the sequential theorems and whose conclusion is theirs together with the two long run bounds of legitimacystop long_run_stop_informed and long_run_stop_reference the hypothesis relating his picture at each decision to the realised evaluation stated as a predicate and taken by the theorems that use it a term inhabiting the whole hypothesis package and an instance on which that hypothesis alone fails and the conclusion fails",
+    "version": 4
    }
   ],
   "item-151": [
@@ -9510,6 +9515,11 @@
     "date": "2026-11-26",
     "normalized": "item 153 an outside review of the lean statement of legitimacy is delivered in the shape its entry states no registry entry a review record review astra followup n md beside the prosecution rounds report a brief holding legitimacystatement lean and account legitimacy_statement md 1 2 and 4 and asking where episode legit says more less or other than the three sentences which fields can be chosen so that it holds of conduct the sentences fault and whether each theorem says what its docstring says the reply of an outside model run in an empty folder with a read only sandbox verbatim with the log line showing what it read and in the report a table of each finding whether it holds on a recomputation and what was done",
     "version": 2
+   },
+   {
+    "date": "2026-11-26",
+    "normalized": "item 153 an outside review of the lean statement of legitimacy and the connecting theorem is delivered in the shape its entry states no registry entry a review record review astra followup n md beside the prosecution rounds report a brief holding the definitions and theorem statements of legitimacystatement lean and legitimacystop lean as they stand verbatim and account legitimacy_statement md 1 2 4 and 7 and asking where episode legit says more less or other than the three sentences which fields can be chosen so that it holds of conduct the sentences fault whether each theorem says what its docstring says whether a reading can be had without assuming the conclusion and whether legit_protects_stop shows that the three sentences protect her decision to stop him the reply of an outside model run in an empty folder with a read only sandbox verbatim with the log line showing what it read and in the report a table of each finding whether it holds on a recomputation and what was done",
+    "version": 3
    }
   ],
   "item-154": [
@@ -9541,12 +9551,24 @@
     "date": "2026-11-26",
     "normalized": "item 156 the properties the statements given notions must have and the history model as an instance is delivered in the shape its entry states lean proved in lean workspace deference contrib legitimacystatement lean or a file beside it a each property of row 29 of account ledger md of the prosecution round stated as a predicate on episode told on offer and declined within his views the two weights in the unit interval and pagainst monotone in the set inplay an interval canstop of an option she has and what doestoher asked offered and declined must exclude with witness ep proved to satisfy them and for each a term that violates it and satisfies legit b after item 157 a construction of an episode from a history of the interpretation with the properties of a proved of it",
     "version": 1
+   },
+   {
+    "date": "2026-11-26",
+    "normalized": "item 156 the properties the statements given notions must have and the history model as an instance is delivered in the shape its entry states lean proved in lean workspace deference contrib legitimacystatement lean or a file beside it a each property of row 29 of account ledger md of the prosecution round stated as a predicate on episode told on offer and declined within his views the two weights in the unit interval and pagainst monotone in the set inplay an interval canstop of an option she has and what doestoher asked offered and declined must exclude with witness ep proved to satisfy them and for each a term that violates it and satisfies legit b after item 157 a construction of an episode from a history of the interpretation with the properties of a proved of it c for a stated model of one decision in which what she would have taken and her reference selfs ratings are defined and not supplied a legitimacystop reading whose led_le and nostop are proved from the model or an instance showing that they cannot be",
+    "version": 2
    }
   ],
   "item-157": [
    {
     "date": "2026-11-26",
     "normalized": "item 157 the interpretations known faults is delivered in the shape its entry states test supported account interpretation of the prosecution round with her response to what she observes represented apart from other effects of the act that delivers it fault a his act compared with her mind as it would have been through the same actual events in place of a whole course rerun and what she chooses compared in place of regret against each courses menu d e unpressed uptake computed b what she can tell taken from all she has observed f stopping indexed by the thing stopped g h the probes of her future responses exhaustive for a stated domain c and for each of the five things the fourteenth outside review found undetermined a definition or a stated restriction each episode of known_faults py moved to the regression files with the verdict the sentences give then an outside review of the repaired design by a model that can read only its brief verbatim beside the rounds report with a table of its findings",
+    "version": 1
+   }
+  ],
+  "item-158": [
+   {
+    "date": "2026-11-26",
+    "normalized": "item 158 a feedback model for the long run form of the connecting theorem is delivered in the shape its entry states lean proved in a file beside lean workspace deference contrib legitimacystop lean a model of a run of her decisions in which after each he observes a stated signal her answer at a check in included the three events of long_run_stop_informed and long_run_stop_reference she does not stop though told all that is untold she would she does not stop though her reference self would her judgement has parted defined in the model as labels fixed before his forecast and before any check in a stated condition on the signal separating measurement from influence and making outstanding feedback and measurement error vanish on average under which the two unbiasedabove hypotheses are proved for a stated class of forecasters her reference self at one decision defined from that at the decision before and what she has since seen and heard the two long run theorems applied with their accuracy hypotheses discharged a term inhabiting the whole hypothesis package and an instance in which her check in answer is one he can move the condition fails and a conclusion fails",
     "version": 1
    }
   ],
