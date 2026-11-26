@@ -1,5 +1,9 @@
 # The legitimacy statement in Lean: a full witness, and the forty-one cases as terms
 
+> **Cases of an interpretation, not of the statement.** The formal statement these cases are of is the table model's,
+> `TABLE_MODEL_STATEMENT.md`, which outside review rejected as a rendering of the three sentences (`LEDGER.md`, row 50).
+> "The statement" and "the legitimacy statement" below are that text and `Model.Legit`.
+
 `lean/Workspace/Deference/Contrib/LegitimacyModel.lean` states legitimacy as `Model.Legit`.
 This document records what three further files show of it, all at θ = 1/20, η = 1/100,
 κ = 1/10. Nothing here is registered. Names are provisional.

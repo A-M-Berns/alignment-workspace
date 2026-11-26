@@ -1,6 +1,10 @@
 # Forty-one exact cases of the formal statement
 
-`legitimacy_checks.py` computes the formal statement of `LEGITIMACY_STATEMENT.md` §4 on 41 small
+> **Cases of an interpretation, not of the statement.** The formal statement these cases are of is the table model's,
+> `TABLE_MODEL_STATEMENT.md`, which outside review rejected as a rendering of the three sentences (`LEDGER.md`, row 50).
+> "The statement" and "the legitimacy statement" below are that text and `Model.Legit`.
+
+`legitimacy_checks.py` computes the formal statement of `TABLE_MODEL_STATEMENT.md` §3 on 41 small
 cases in exact rationals, at θ = 1/20, η = 1/100, κ = 1/10. The expectation in each row was fixed
 before the case was run. The statement and the cases are by one hand, the session that wrote the
 dispatch of the sixteenth follow-up; no second party wrote a case or an expectation. The round's

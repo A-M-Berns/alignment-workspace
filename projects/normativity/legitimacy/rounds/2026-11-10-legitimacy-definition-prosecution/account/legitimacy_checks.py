@@ -1,4 +1,4 @@
-"""Forty-one exact cases of the formal statement of LEGITIMACY_STATEMENT.md §4, on a small model.
+"""Forty-one exact cases of the formal statement of TABLE_MODEL_STATEMENT.md §3, on a small model.
 
 Each case is a dictionary of supplied quantities; `legit` computes the verdict and the clauses that
 fail.  The expectation beside each case was fixed before the case was run.

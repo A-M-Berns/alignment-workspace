@@ -230,6 +230,6 @@ believes she would rate above those she has, someone else's included (`LEDGER.md
 `lean/Workspace/Deference/Contrib/LegitimacyModel.lean`, with `LegitimacyCase.lean`,
 `LegitimacyWitness.lean` and `LegitimacyCases.lean`, is an interpretation on a table of his
 moves that outside review rejected as a rendering of the three sentences; its theorems hold
-of its definitions (`LEDGER.md`, part 3). `LEGITIMACY_CHECKS.md` and `LEAN_CASES.md` are its
-cases. `STOPPING_COST.md` checks a candidate clause for what stopping costs her, which belongs
+of its definitions (`LEDGER.md`, part 3). `TABLE_MODEL_STATEMENT.md` is its formal text, and
+`LEGITIMACY_CHECKS.md` and `LEAN_CASES.md` its cases. `STOPPING_COST.md` checks a candidate clause for what stopping costs her, which belongs
 to the authority side.

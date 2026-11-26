@@ -8,7 +8,7 @@ exact instances of DERIVATION.md and the two forms of the responsibility test on
 cases of RESP_RESULTS.md.  Then the exact checks behind MISTAKES_ACCOUNT.md (one decision,
 correcting the reward and two periods, the long-run statement) and the counts of
 INTENT_RESULTS.md, BLIND_RESULTS.md, NOGGLE_RESULTS.md and VC_RESULTS.md.  Then the exact
-cases of LEGITIMACY_CHECKS.md (the statement of LEGITIMACY_STATEMENT.md) and of STOPPING_COST.md,
+cases of LEGITIMACY_CHECKS.md (the table model of TABLE_MODEL_STATEMENT.md) and of STOPPING_COST.md,
 and the counts of CASE_RUNS.md, those of its second coding included.  Then the tables of LEAN_CASES.md, recomputed from the
 statements of the Lean theorems read as text.  Then the history model of interpretation/ on its
 episodes and known faults, against INTERPRETATION.md.  A failure is a
