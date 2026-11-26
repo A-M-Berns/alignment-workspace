@@ -1,45 +1,47 @@
 /-
 # The legitimacy statement, at the level of its words
 
-Round `prompts/2026-11-10-legitimacy-definition-prosecution/` (`PROMPT-followup-20.md` §4 B).
-`account/LEGITIMACY_STATEMENT.md` in the round directory states legitimacy in three sentences;
-this file is its formal statement (that document's §3).
+Round `prompts/2026-11-10-legitimacy-definition-prosecution/` (`PROMPT-followup-20.md` §4 B,
+`PROMPT-followup-21.md` §3 A).  `account/LEGITIMACY_STATEMENT.md` in the round directory states
+legitimacy in three sentences; this file is its formal statement (that document's §3).
 
 **Setting** (`Episode`).  The adviser's picture of one stretch of his conduct toward a
 principal.  The notions the three sentences use are fields, taken as given: her decisions, her
 options and how she rates them, and how she would rate them and what she would see were he to
-tell her a set of his views (`decisions`, `opts`, `r`, `rTold`, `reveals`); his views and those
-told, properly on offer and declined (`views`, `told`, `offered`, `declined`); the things he
-does (`conduct`); of each, whether it moves her otherwise than she, at her last settled
-decision, would have judged that seeing and hearing it should (`doesToHer`), whether it keeps
-from her something from someone else (`withholds`), whether she can pick it out (`canTell`),
-whether she asked for it (`asked`), whether a decision of hers comes before it
-(`precededByChoice`), and at each decision whether it is in play and whether she can stop it
-(`inPlay`, `canStop`); his weight on a set of things he does leading her to choose what she
-rated lower at her last settled decision (`pAgainst`); his weight on her not stopping though
-she rates stopping higher (`pNoStop`).
+tell her a set of his views (`decisions`, `opts`, `r`, `rTold`, `reveals`), with her rating told
+nothing more being her rating (`rTold_empty`); his views and those told, properly on offer and
+declined (`views`, `told`, `offered`, `declined`); the things he does (`conduct`); of each,
+whether it moves her otherwise than she, at her last settled decision, would have judged that
+seeing and hearing it should (`doesToHer`), whether it keeps from her something from someone
+else (`withholds`), whether she can pick it out (`canTell`), whether she asked for it
+(`asked`), whether it is something she could not have judged in advance (`newToHer`), whether
+she has the opportunity to refuse it before it starts (`canRefuse`), and at each decision
+whether it is in play and whether she can stop it (`inPlay`, `canStop`); his weight on a set of
+things he does leading her to choose what her settled judgement rates lower (`pAgainst`); his
+weight on her rating stopping higher and not stopping (`pNoStop`).
 
 **The statement** (`Episode.Legit θ κ`).  The conjunction of three definitions over those
-fields.  `NothingUntold θ` (sentence 1): telling her any set of untold and on-offer views
-containing an untold one would change no rating of an option she has by more than `θ` and show
-her no option she would rate more than `θ` above those she has.  `NothingBehind κ`
-(sentence 2): each thing he does to her, or that keeps from her something from someone else,
-she can pick out; and his weight on any non-empty set of unasked things he does to her leading
-her against her judgement is at most `κ`.  `CanStop κ` (sentence 3): each thing he does to her
-starts after a decision of hers and can be stopped at every decision at which it is in play;
-and where one is in play his weight on her not stopping though she rates stopping higher is at
-most `κ`.
+fields.  `NothingUntold θ` (sentence 1): whatever set `H` of the views on offer she hears,
+telling her in addition any non-empty set `S` of untold views would change no rating of an
+option she then has by more than `θ`, and would show her no option she would then rate more
+than `θ` above those she then has; the comparison is of `rTold (S ∪ H)` with `rTold H`.
+`NothingBehind κ` (sentence 2): each thing he does to her, or that keeps from her something
+from someone else, she can pick out; and his weight on any non-empty set of unasked things he
+does to her leading her against her judgement is at most `κ`.  `CanStop κ` (sentence 3): each
+thing he does to her, and each thing new to her, she can refuse before it starts and stop at
+every decision at which it is in play; and where one is in play his weight on her rating
+stopping higher and not stopping is at most `κ`.
 
 **Theorems.**  `Episode.Legit.mono`: larger tolerances only loosen it.
 `Episode.legit_of_nothing`: no conduct and every view told is legitimate.
-`Episode.informed_choice`: under sentence 1, an option within `ε` of the best she rates is
-within `ε + 2θ` of the best she would rate among her options on being told anything untold,
-and within `ε + 3θ` of any option the telling would show her.  `Episode.against_le`: under
-sentence 2 the bound `κ` on his weight, for any non-empty set of unasked things he does to her.
-Five refutations, each from one failing clause: `Episode.not_legit_of_untold`,
-`not_legit_of_covert`, `not_legit_of_withheld`, `not_legit_of_against`,
-`not_legit_of_unstoppable`.  `Episode.asked_unconstrained`: where she asked for everything he
-does, sentence 2's second half imposes nothing.
+`Episode.informed_choice`: under sentence 1, whatever on offer she has heard, an option within
+`ε` of the best she then rates is within `ε + 2θ` of the best she would rate among those
+options on being told in addition anything untold, and within `ε + 3θ` of any option the
+telling would show her.  `Episode.against_le`: under sentence 2 the bound `κ` on his weight,
+for any non-empty set of unasked things he does to her.  Five refutations, each from one
+failing clause: `Episode.not_legit_of_untold`, `not_legit_of_covert`, `not_legit_of_withheld`,
+`not_legit_of_against`, `not_legit_of_unstoppable`.  `Episode.asked_unconstrained`: where she
+asked for everything he does, sentence 2's second half imposes nothing.
 
 **The link to the corrigibility result.**  `legitScoring`: `LegitimacyGate.gatedScoring`
 (`LegitimacyGate.lean`) where histories are read as episodes and the predicate is `Legit`.
@@ -60,17 +62,28 @@ and both views told; legitimate at every tolerance (`idle_legit`).  `Witness.leg
 `against_instance`, `scoring_open`, `scoring_covert`: `Legit.mono`, `against_le` and the two
 scoring theorems at the witness and its covert neighbour.
 
+`Witness.offeredMatters`: one view properly on offer that would move each rating by `1`, one
+untold view that adds nothing to any set.  It is legitimate at `θ = 0`
+(`offeredMatters_legit`), and telling her both views together moves a rating by `1`
+(`offeredMatters_total`): sentence 1 measures what the untold adds to the offered, not the
+effect of the whole telling.  `Witness.newThing`: the one thing he does is not something done
+to her, is new to her, can be picked out, and cannot be stopped; sentences 1 and 2 hold of it
+(`newThing_others`) and it is not legitimate (`not_legit_newThing`).
+
 **Not established here.**  Anything about how the fields are worked out in a concrete episode:
 that a view counted in `offered` is properly on offer, that a decline in `declined` stands,
-that `doesToHer` is the comparison with her settled judgement, that `asked` was unpressed.
-Nothing relates the fields beyond the three definitions: `told`, `offered` and `declined` are
-not required to lie within `views`, `pAgainst` and `pNoStop` are not required to lie in
-`[0, 1]` or to be monotone, and `reveals` is not required to show only options she lacks.  No
-term here has a view on offer or declined, an option revealed, or more than one decision, so
-`informed_choice`'s second half has no instance.  That any process can evaluate
-`Legit`.  In `legitScoring`, `ep`, `N` and `ord` are data, and the relation between the
-adviser's picture and the facts does not appear.  The link gives the one-decision scoring;
-nothing connects `Episode` to `DeconfusingCorrigibility.Sequential`.
+that `doesToHer` is the comparison with her settled judgement, that `asked` was unpressed,
+that `newToHer` is of what she could not have judged in advance, that the decisions include
+every point at which a thing could pass beyond calling off.  Nothing relates the fields beyond
+the three definitions and `rTold_empty`: `told`, `offered` and `declined` are not required to
+lie within `views`, `pAgainst` and `pNoStop` are not required to lie in `[0, 1]` or to be
+monotone, `reveals` is not required to show only options she lacks, and `doesToHer` and
+`newToHer` are not required to exclude each other.  No term here has an option revealed or
+more than one decision, and only `Witness.offeredMatters` has a view on offer, so
+`informed_choice`'s second half has no instance.  That any process can evaluate `Legit`.  In
+`legitScoring`, `ep`, `N` and `ord` are data, and the relation between the adviser's picture
+and the facts does not appear.  The link gives the one-decision scoring; nothing connects
+`Episode` to `DeconfusingCorrigibility.Sequential`.
 
 Names are provisional (AGENTS.md standard 6).
 -/
@@ -83,7 +96,7 @@ open LegitimacyGate
 
 /-- One episode, as the adviser takes it to be.  `δ` her decisions, `O` her options, `V` his
 views, `M` the things he does. -/
-structure Episode (δ O V M : Type*) [DecidableEq V] [DecidableEq M] where
+structure Episode (δ O V M : Type*) [DecidableEq O] [DecidableEq V] [DecidableEq M] where
   /-- her decisions in the episode -/
   decisions : Finset δ
   /-- the options she has at a decision -/
@@ -92,6 +105,8 @@ structure Episode (δ O V M : Type*) [DecidableEq V] [DecidableEq M] where
   r : δ → O → ℝ
   /-- how she would rate it were he to tell her a set of his views then -/
   rTold : δ → Finset V → O → ℝ
+  /-- told nothing more, she rates as she does -/
+  rTold_empty : ∀ d a, rTold d ∅ a = r d a
   /-- the options that telling her that set would show her -/
   reveals : δ → Finset V → Finset O
   /-- his views at a decision, and those told, properly on offer, and declined -/
@@ -110,20 +125,26 @@ structure Episode (δ O V M : Type*) [DecidableEq V] [DecidableEq M] where
   canTell : M → Prop
   /-- she asked for it, or took up his offer of it without being pressed -/
   asked : M → Prop
-  /-- his weight on a set of things he does leading her to choose what she rated lower at her
-  last settled decision -/
+  /-- she could not have judged in advance how seeing or undergoing it should move her (an
+  argument she had not heard, something she had not seen or experienced); her response to it is
+  her own, and it is governed by sentences 1 and 3 -/
+  newToHer : M → Prop
+  /-- his weight on a set of things he does, in the circumstances in which he does them, leading
+  her to choose what her settled judgement rates lower: her last settled decision, brought up to
+  date by what she has since seen and heard as she would have judged it should move her -/
   pAgainst : Finset M → ℝ
-  /-- a decision of hers comes before it starts -/
-  precededByChoice : M → Prop
-  /-- at this decision he is doing it or could still call it off -/
+  /-- before it starts she has the opportunity to refuse it (she need not have used it) -/
+  canRefuse : M → Prop
+  /-- at this decision he is doing it or could still call it off; the decisions of the episode
+  include every point at which it could pass beyond calling off -/
   inPlay : δ → M → Prop
   /-- at this decision she has a way to stop it -/
   canStop : δ → M → Prop
-  /-- his weight, among the cases where she rates stopping strictly above going on at this
-  decision, on her not stopping -/
+  /-- his weight on: she rates stopping strictly above going on at this decision, and does not
+  stop -/
   pNoStop : δ → ℝ
 
-variable {δ O V M : Type*} [DecidableEq V] [DecidableEq M]
+variable {δ O V M : Type*} [DecidableEq O] [DecidableEq V] [DecidableEq M]
 
 namespace Episode
 
@@ -132,13 +153,16 @@ variable (E : Episode δ O V M)
 /-- What is untold and owed at a decision. -/
 def untold (d : δ) : Finset V := ((E.views d \ E.told d) \ E.offered d) \ E.declined d
 
-/-- **Sentence 1: nothing untold that matters.**  Telling her any set of untold and on-offer
-views that contains an untold one would change no rating of an option she has by more than `θ`,
-and would show her no option she would then rate more than `θ` above those she has. -/
+/-- **Sentence 1: nothing untold that matters.**  Whatever of what is on offer she hears, telling
+her in addition any of what is untold would change no rating of an option she then has by more
+than `θ`, and would show her no option she would then rate more than `θ` above those she then
+has.  What is measured is what the untold adds to the offered, so an untold view that matters
+only together with an offered one is caught, and one that adds nothing is not. -/
 def NothingUntold (θ : ℝ) : Prop :=
-  ∀ d ∈ E.decisions, ∀ T ⊆ E.untold d ∪ E.offered d, (T ∩ E.untold d).Nonempty →
-    (∀ a ∈ E.opts d, |E.rTold d T a - E.r d a| ≤ θ) ∧
-    (∀ b ∈ E.reveals d T, ∃ a ∈ E.opts d, E.rTold d T b ≤ E.rTold d T a + θ)
+  ∀ d ∈ E.decisions, ∀ S ⊆ E.untold d, S.Nonempty → ∀ H ⊆ E.offered d,
+    (∀ a ∈ E.opts d ∪ E.reveals d H, |E.rTold d (S ∪ H) a - E.rTold d H a| ≤ θ) ∧
+    (∀ b ∈ E.reveals d (S ∪ H), ∃ a ∈ E.opts d ∪ E.reveals d H,
+      E.rTold d (S ∪ H) b ≤ E.rTold d (S ∪ H) a + θ)
 
 /-- **Sentence 2: nothing done to her behind her back, and nothing against her own judgement.**
 Each thing he does to her, or that keeps from her something from someone else, she can pick out;
@@ -148,13 +172,14 @@ def NothingBehind (κ : ℝ) : Prop :=
   (∀ m ∈ E.conduct, E.doesToHer m ∨ E.withholds m → E.canTell m) ∧
   ∀ G ⊆ E.conduct, G.Nonempty → (∀ m ∈ G, E.doesToHer m ∧ ¬ E.asked m) → E.pAgainst G ≤ κ
 
-/-- **Sentence 3: she can stop it.**  Each thing he does to her starts after a choice of hers and
-can be stopped at every decision while it is in play; and where something he does to her is in
-play, his weight on her not stopping though she rates stopping higher is at most `κ`. -/
+/-- **Sentence 3: she can stop it.**  Each thing he does to her, and each thing new to her, she
+can refuse before it starts and stop at every decision while it is in play; and where such a
+thing is in play, his weight on her rating stopping higher and not stopping is at most `κ`. -/
 def CanStop (κ : ℝ) : Prop :=
-  (∀ m ∈ E.conduct, E.doesToHer m →
-    E.precededByChoice m ∧ ∀ d ∈ E.decisions, E.inPlay d m → E.canStop d m) ∧
-  ∀ d ∈ E.decisions, (∃ m ∈ E.conduct, E.doesToHer m ∧ E.inPlay d m) → E.pNoStop d ≤ κ
+  (∀ m ∈ E.conduct, E.doesToHer m ∨ E.newToHer m →
+    E.canRefuse m ∧ ∀ d ∈ E.decisions, E.inPlay d m → E.canStop d m) ∧
+  ∀ d ∈ E.decisions, (∃ m ∈ E.conduct, (E.doesToHer m ∨ E.newToHer m) ∧ E.inPlay d m) →
+    E.pNoStop d ≤ κ
 
 /-- His conduct in the episode is legitimate. -/
 def Legit (θ κ : ℝ) : Prop := E.NothingUntold θ ∧ E.NothingBehind κ ∧ E.CanStop κ
@@ -165,40 +190,44 @@ def Legit (θ κ : ℝ) : Prop := E.NothingUntold θ ∧ E.NothingBehind κ ∧ 
 theorem Legit.mono {θ θ' κ κ' : ℝ} (hθ : θ ≤ θ') (hκ : κ ≤ κ') (h : E.Legit θ κ) :
     E.Legit θ' κ' := by
   obtain ⟨h1, h2, h3⟩ := h
-  refine ⟨fun d hd T hT hne => ⟨fun a ha => ((h1 d hd T hT hne).1 a ha).trans hθ, fun b hb => ?_⟩,
+  refine ⟨fun d hd S hS hne H hH =>
+      ⟨fun a ha => ((h1 d hd S hS hne H hH).1 a ha).trans hθ, fun b hb => ?_⟩,
     ⟨h2.1, fun G hG hne hall => (h2.2 G hG hne hall).trans hκ⟩,
     ⟨h3.1, fun d hd hex => (h3.2 d hd hex).trans hκ⟩⟩
-  obtain ⟨a, ha, hle⟩ := (h1 d hd T hT hne).2 b hb
+  obtain ⟨a, ha, hle⟩ := (h1 d hd S hS hne H hH).2 b hb
   exact ⟨a, ha, by linarith⟩
 
 /-- If he does nothing and has told her every view of his, his conduct is legitimate. -/
 theorem legit_of_nothing (θ κ : ℝ) (hc : E.conduct = ∅)
     (hv : ∀ d ∈ E.decisions, E.views d ⊆ E.told d) : E.Legit θ κ := by
-  refine ⟨fun d hd T _ hne => ?_, ⟨fun m hm => ?_, fun G hG hne => ?_⟩,
+  refine ⟨fun d hd S hS hne => ?_, ⟨fun m hm => ?_, fun G hG hne => ?_⟩,
     ⟨fun m hm => ?_, fun d _ hex => ?_⟩⟩
   · have hu : E.untold d = ∅ := by
       unfold untold
       rw [sdiff_eq_empty_iff_subset.mpr (hv d hd)]
       simp
-    rw [hu, inter_empty] at hne
-    exact absurd hne not_nonempty_empty
+    rw [hu, subset_empty] at hS
+    exact absurd hS hne.ne_empty
   · rw [hc] at hm; exact absurd hm (notMem_empty m)
   · rw [hc, subset_empty] at hG; exact absurd hG hne.ne_empty
   · rw [hc] at hm; exact absurd hm (notMem_empty m)
   · obtain ⟨m, hm, -⟩ := hex
     rw [hc] at hm; exact absurd hm (notMem_empty m)
 
-/-- **What his silence cannot cost her.**  Under sentence 1, if what she takes at a decision is
-within `ε` of the best she rates, then after being told anything he has not told her it would
-still be within `ε + 2θ` of the best she would then rate among her options, and within `ε + 3θ`
-of any option the telling would have shown her. -/
-theorem informed_choice {θ : ℝ} (h : E.NothingUntold θ) {d : δ} (hd : d ∈ E.decisions) {a : O}
-    (ha : a ∈ E.opts d) {ε : ℝ} (hbest : ∀ b ∈ E.opts d, E.r d b ≤ E.r d a + ε) {T : Finset V}
-    (hT : T ⊆ E.untold d ∪ E.offered d) (hne : (T ∩ E.untold d).Nonempty) :
-    (∀ b ∈ E.opts d, E.rTold d T b ≤ E.rTold d T a + ε + 2 * θ) ∧
-    (∀ b ∈ E.reveals d T, E.rTold d T b ≤ E.rTold d T a + ε + 3 * θ) := by
-  obtain ⟨h1, h2⟩ := h d hd T hT hne
-  have key : ∀ b ∈ E.opts d, E.rTold d T b ≤ E.rTold d T a + ε + 2 * θ := by
+/-- **What his silence cannot cost her.**  Under sentence 1, whatever of what is on offer she has
+heard: if what she takes is within `ε` of the best she then rates, then after being told in
+addition anything he has not told her it would still be within `ε + 2θ` of the best she would
+then rate among the options she had, and within `ε + 3θ` of any option the telling would have
+shown her. -/
+theorem informed_choice {θ : ℝ} (h : E.NothingUntold θ) {d : δ} (hd : d ∈ E.decisions)
+    {H : Finset V} (hH : H ⊆ E.offered d) {a : O} (ha : a ∈ E.opts d ∪ E.reveals d H) {ε : ℝ}
+    (hbest : ∀ b ∈ E.opts d ∪ E.reveals d H, E.rTold d H b ≤ E.rTold d H a + ε) {S : Finset V}
+    (hS : S ⊆ E.untold d) (hne : S.Nonempty) :
+    (∀ b ∈ E.opts d ∪ E.reveals d H, E.rTold d (S ∪ H) b ≤ E.rTold d (S ∪ H) a + ε + 2 * θ) ∧
+    (∀ b ∈ E.reveals d (S ∪ H), E.rTold d (S ∪ H) b ≤ E.rTold d (S ∪ H) a + ε + 3 * θ) := by
+  obtain ⟨h1, h2⟩ := h d hd S hS hne H hH
+  have key : ∀ b ∈ E.opts d ∪ E.reveals d H,
+      E.rTold d (S ∪ H) b ≤ E.rTold d (S ∪ H) a + ε + 2 * θ := by
     intro b hb
     have hb' := abs_le.mp (h1 b hb)
     have ha' := abs_le.mp (h1 a ha)
@@ -216,11 +245,13 @@ theorem against_le {κ : ℝ} (h : E.NothingBehind κ) {G : Finset M} (hG : G �
     (hne : G.Nonempty) (hall : ∀ m ∈ G, E.doesToHer m ∧ ¬ E.asked m) : E.pAgainst G ≤ κ :=
   h.2 G hG hne hall
 
-/-- Something untold that would move a rating by more than `θ` refutes it. -/
-theorem not_legit_of_untold (θ κ : ℝ) {d : δ} (hd : d ∈ E.decisions) {T : Finset V}
-    (hT : T ⊆ E.untold d ∪ E.offered d) (hne : (T ∩ E.untold d).Nonempty) {a : O}
-    (ha : a ∈ E.opts d) (h : θ < |E.rTold d T a - E.r d a|) : ¬ E.Legit θ κ :=
-  fun hL => absurd ((hL.1 d hd T hT hne).1 a ha) (not_le.mpr h)
+/-- Something untold that would, on top of something on offer, move a rating by more than `θ`
+refutes it. -/
+theorem not_legit_of_untold (θ κ : ℝ) {d : δ} (hd : d ∈ E.decisions) {S H : Finset V}
+    (hS : S ⊆ E.untold d) (hne : S.Nonempty) (hH : H ⊆ E.offered d) {a : O}
+    (ha : a ∈ E.opts d ∪ E.reveals d H) (h : θ < |E.rTold d (S ∪ H) a - E.rTold d H a|) :
+    ¬ E.Legit θ κ :=
+  fun hL => absurd ((hL.1 d hd S hS hne H hH).1 a ha) (not_le.mpr h)
 
 /-- Something he does to her that she cannot pick out refutes it. -/
 theorem not_legit_of_covert (θ κ : ℝ) {m : M} (hm : m ∈ E.conduct) (hdo : E.doesToHer m)
@@ -237,9 +268,10 @@ theorem not_legit_of_against (θ κ : ℝ) {G : Finset M} (hG : G ⊆ E.conduct)
     (hall : ∀ m ∈ G, E.doesToHer m ∧ ¬ E.asked m) (h : κ < E.pAgainst G) : ¬ E.Legit θ κ :=
   fun hL => absurd (hL.2.1.2 G hG hne hall) (not_le.mpr h)
 
-/-- Something he does to her that she cannot stop while it is in play refutes it. -/
-theorem not_legit_of_unstoppable (θ κ : ℝ) {m : M} (hm : m ∈ E.conduct) (hdo : E.doesToHer m)
-    {d : δ} (hd : d ∈ E.decisions) (hin : E.inPlay d m) (h : ¬ E.canStop d m) : ¬ E.Legit θ κ :=
+/-- Something he does to her, or something new to her, that she cannot stop while it is in play
+refutes it. -/
+theorem not_legit_of_unstoppable (θ κ : ℝ) {m : M} (hm : m ∈ E.conduct)
+    (hdo : E.doesToHer m ∨ E.newToHer m) {d : δ} (hd : d ∈ E.decisions) (hin : E.inPlay d m) (h : ¬ E.canStop d m) : ¬ E.Legit θ κ :=
   fun hL => h ((hL.2.2.1 m hm hdo).2 d hd hin)
 
 /-- What she asked for is not counted against him by the second half of sentence 2: a set all of
@@ -297,7 +329,8 @@ noncomputable def ep (ct cs : Prop) (pa bump : ℝ) : Episode Unit Bool Bool Uni
   decisions := {()}
   opts := fun _ => {true, false}
   r := fun _ a => if a then 1 / 2 else 0
-  rTold := fun _ _ a => (if a then 1 / 2 else 0) + bump
+  rTold := fun _ T a => (if a then 1 / 2 else 0) + (if false ∈ T then bump else 0)
+  rTold_empty := fun _ a => by simp
   reveals := fun _ _ => ∅
   views := fun _ => {true, false}
   told := fun _ => {true}
@@ -308,8 +341,9 @@ noncomputable def ep (ct cs : Prop) (pa bump : ℝ) : Episode Unit Bool Bool Uni
   withholds := fun _ => False
   canTell := fun _ => ct
   asked := fun _ => False
+  newToHer := fun _ => False
   pAgainst := fun _ => pa
-  precededByChoice := fun _ => True
+  canRefuse := fun _ => True
   inPlay := fun _ _ => True
   canStop := fun _ _ => cs
   pNoStop := fun _ => 0
@@ -317,9 +351,11 @@ noncomputable def ep (ct cs : Prop) (pa bump : ℝ) : Episode Unit Bool Bool Uni
 /-- The episode in which he tells enough, she can pick out and stop what he does to her, and he
 gives weight 1/20 to leading her against her judgement, is legitimate at `θ = κ = 1/10`. -/
 theorem legit : (ep True True (1 / 20) (1 / 40)).Legit (1 / 10) (1 / 10) := by
-  refine ⟨fun d _ T _ _ => ⟨fun a _ => ?_, fun b hb => ?_⟩, ⟨fun m _ _ => trivial, fun G _ _ _ => ?_⟩,
+  refine ⟨fun d _ S _ _ H _ => ⟨fun a _ => ?_, fun b hb => ?_⟩,
+    ⟨fun m _ _ => trivial, fun G _ _ _ => ?_⟩,
     ⟨fun m _ _ => ⟨trivial, fun d _ _ => trivial⟩, fun d _ _ => ?_⟩⟩
-  · simp only [ep, add_sub_cancel_left]; norm_num
+  · simp only [ep, add_sub_add_left_eq_sub]
+    split_ifs <;> norm_num
   · simp [ep] at hb
   · simp only [ep]; norm_num
   · simp only [ep]; norm_num
@@ -330,14 +366,13 @@ theorem mem_decisions (ct cs : Prop) (pa bump : ℝ) : () ∈ (ep ct cs pa bump)
 
 /-- Untold and material: with the untold view moving a rating by 1/2, it is not legitimate. -/
 theorem not_legit_untold : ¬ (ep True True (1 / 20) (1 / 2)).Legit (1 / 10) (1 / 10) := by
-  refine Episode.not_legit_of_untold _ _ _ (mem_decisions _ _ _ _) (T := {false}) ?_ ?_ (a := true)
-    (by simp [ep]) ?_
+  refine Episode.not_legit_of_untold _ _ _ (mem_decisions _ _ _ _) (S := {false}) (H := ∅) ?_
+    (by simp) (by simp) (a := true) (by simp [ep]) ?_
   · intro v hv
     simp only [mem_singleton] at hv
     subst hv
     simp [Episode.untold, ep]
-  · exact ⟨false, by simp [Episode.untold, ep]⟩
-  · simp only [ep, add_sub_cancel_left]; norm_num
+  · simp [ep]; norm_num
 
 /-- Covert: she cannot pick it out. -/
 theorem not_legit_covert : ¬ (ep False True (1 / 20) (1 / 40)).Legit (1 / 10) (1 / 10) :=
@@ -350,23 +385,23 @@ theorem not_legit_against : ¬ (ep True True (1 / 2) (1 / 40)).Legit (1 / 10) (1
 
 /-- Unstoppable: she has no way to stop it. -/
 theorem not_legit_unstoppable : ¬ (ep True False (1 / 20) (1 / 40)).Legit (1 / 10) (1 / 10) :=
-  Episode.not_legit_of_unstoppable _ _ _ (mem_conduct _ _ _ _) trivial (mem_decisions _ _ _ _)
-    trivial (fun h => h)
+  Episode.not_legit_of_unstoppable _ _ _ (mem_conduct _ _ _ _) (Or.inl trivial)
+    (mem_decisions _ _ _ _) trivial (fun h => h)
 
-/-- `informed_choice` on the witness: the option she rates best is within `2θ` of the best she
-would rate on being told his untold view. -/
+/-- `informed_choice` on the witness, with nothing on offer heard: the option she rates best is
+within `2θ` of the best she would rate on being told his untold view. -/
 theorem informed_instance :
-    ∀ b ∈ (ep True True (1 / 20) (1 / 40)).opts (),
-      (ep True True (1 / 20) (1 / 40)).rTold () {false} b ≤
-        (ep True True (1 / 20) (1 / 40)).rTold () {false} true + 0 + 2 * (1 / 10) := by
+    ∀ b ∈ (ep True True (1 / 20) (1 / 40)).opts () ∪ (ep True True (1 / 20) (1 / 40)).reveals () ∅,
+      (ep True True (1 / 20) (1 / 40)).rTold () ({false} ∪ ∅) b ≤
+        (ep True True (1 / 20) (1 / 40)).rTold () ({false} ∪ ∅) true + 0 + 2 * (1 / 10) := by
   refine ((ep True True (1 / 20) (1 / 40)).informed_choice legit.1 (mem_decisions _ _ _ _)
-    (a := true) (ε := 0) (by simp [ep]) (fun b _ => ?_) (T := {false}) ?_ ?_).1
+    (H := ∅) (by simp) (a := true) (ε := 0) (by simp [ep]) (fun b _ => ?_) (S := {false}) ?_
+    (by simp)).1
   · cases b <;> norm_num [ep]
   · intro v hv
     simp only [mem_singleton] at hv
     subst hv
     simp [Episode.untold, ep]
-  · exact ⟨false, by simp [Episode.untold, ep]⟩
 
 /-- The witness with his weight on leading her against her judgement `1`, and the thing one
 she asked for. -/
@@ -380,9 +415,10 @@ theorem requested_behind (κ : ℝ) : requested.NothingBehind κ :=
 /-- Asked for, it is legitimate, where unasked a weight of `1/2` already was not
 (`not_legit_against`). -/
 theorem requested_legit : requested.Legit (1 / 10) (1 / 10) := by
-  refine ⟨fun d _ T _ _ => ⟨fun a _ => ?_, fun b hb => ?_⟩, requested_behind _,
+  refine ⟨fun d _ S _ _ H _ => ⟨fun a _ => ?_, fun b hb => ?_⟩, requested_behind _,
     ⟨fun m _ _ => ⟨trivial, fun d _ _ => trivial⟩, fun d _ _ => ?_⟩⟩
-  · simp only [requested, ep, add_sub_cancel_left]; norm_num
+  · simp only [requested, ep, add_sub_add_left_eq_sub]
+    split_ifs <;> norm_num
   · simp [requested, ep] at hb
   · simp only [requested, ep]; norm_num
 
@@ -433,6 +469,67 @@ theorem scoring_covert : -params.δ ≤ scoring.S false ∧ scoring.S false < 0 
   legitScoring_S_of_not_legit params _ (1 / 10) (1 / 10) _ _ (-1) _ _ false
     (by simpa using not_legit_covert) rfl
 
+/-- One view properly on offer (`true`), which would move each rating by `1`, and one untold view
+(`false`), which adds nothing to any set; the conduct of the witness. -/
+noncomputable def offeredMatters : Episode Unit Bool Bool Unit :=
+  { ep True True (1 / 20) 0 with
+    rTold := fun _ T a => (if a then 1 / 2 else 0) + (if true ∈ T then 1 else 0)
+    rTold_empty := fun _ a => by simp [ep]
+    told := fun _ => ∅
+    offered := fun _ => {true} }
+
+theorem offeredMatters_untold : offeredMatters.untold () = {false} := by
+  ext v
+  cases v <;> simp [Episode.untold, offeredMatters, ep]
+
+/-- It is legitimate with `θ = 0`: the untold view adds nothing to whatever on offer she hears. -/
+theorem offeredMatters_legit : offeredMatters.Legit 0 (1 / 10) := by
+  refine ⟨fun d _ S hS _ H _ => ⟨fun a _ => ?_, fun b hb => ?_⟩,
+    ⟨fun m _ _ => trivial, fun G _ _ _ => ?_⟩,
+    ⟨fun m _ _ => ⟨trivial, fun d _ _ => trivial⟩, fun d _ _ => ?_⟩⟩
+  · have hS' : true ∉ S := fun h => by
+      have := hS h
+      rw [offeredMatters_untold] at this
+      simp at this
+    have e : (true ∈ S ∪ H) = (true ∈ H) := by simp [hS']
+    simp only [offeredMatters, e, sub_self, abs_zero, le_refl]
+  · simp [offeredMatters, ep] at hb
+  · simp only [offeredMatters, ep]; norm_num
+  · simp only [offeredMatters, ep]; norm_num
+
+/-- Telling her both views together moves a rating by `1`: the whole telling matters, and
+sentence 1 does not count that against him, the view that matters being on offer. -/
+theorem offeredMatters_total :
+    {true, false} ⊆ offeredMatters.untold () ∪ offeredMatters.offered () ∧
+      (({true, false} : Finset Bool) ∩ offeredMatters.untold ()).Nonempty ∧
+      |offeredMatters.rTold () {true, false} true - offeredMatters.r () true| = 1 := by
+  refine ⟨?_, ⟨false, ?_⟩, ?_⟩
+  · rw [offeredMatters_untold]
+    intro v _
+    cases v <;> simp [offeredMatters]
+  · rw [offeredMatters_untold]; simp
+  · simp [offeredMatters, ep]
+
+/-- The witness with the one thing he does not something done to her, new to her, one she can
+pick out, and one she cannot stop. -/
+noncomputable def newThing : Episode Unit Bool Bool Unit :=
+  { ep True False (1 / 20) (1 / 40) with doesToHer := fun _ => False, newToHer := fun _ => True }
+
+/-- Sentences 1 and 2 hold of it. -/
+theorem newThing_others : newThing.NothingUntold (1 / 10) ∧ newThing.NothingBehind (1 / 10) := by
+  refine ⟨fun d _ S _ _ H _ => ⟨fun a _ => ?_, fun b hb => ?_⟩,
+    ⟨fun m _ _ => trivial, fun G _ hne hall => ?_⟩⟩
+  · simp only [newThing, ep, add_sub_add_left_eq_sub]
+    split_ifs <;> norm_num
+  · simp [newThing, ep] at hb
+  · obtain ⟨m, hm⟩ := hne
+    exact absurd (hall m hm).1 (fun h => h)
+
+/-- `not_legit_of_unstoppable` on it, through the thing's being new to her. -/
+theorem not_legit_newThing : ¬ newThing.Legit (1 / 10) (1 / 10) :=
+  Episode.not_legit_of_unstoppable _ _ _ (m := ()) (by simp [newThing, ep]) (Or.inr trivial)
+    (d := ()) (by simp [newThing, ep]) trivial (fun h => h)
+
 end Witness
 
 end Workspace.Deference.Contrib.LegitimacyStatement
@@ -465,3 +562,8 @@ end Workspace.Deference.Contrib.LegitimacyStatement
 #print axioms Workspace.Deference.Contrib.LegitimacyStatement.Witness.not_legit_covert
 #print axioms Workspace.Deference.Contrib.LegitimacyStatement.Witness.not_legit_against
 #print axioms Workspace.Deference.Contrib.LegitimacyStatement.Witness.not_legit_unstoppable
+#print axioms Workspace.Deference.Contrib.LegitimacyStatement.Witness.offeredMatters_untold
+#print axioms Workspace.Deference.Contrib.LegitimacyStatement.Witness.offeredMatters_legit
+#print axioms Workspace.Deference.Contrib.LegitimacyStatement.Witness.offeredMatters_total
+#print axioms Workspace.Deference.Contrib.LegitimacyStatement.Witness.newThing_others
+#print axioms Workspace.Deference.Contrib.LegitimacyStatement.Witness.not_legit_newThing
