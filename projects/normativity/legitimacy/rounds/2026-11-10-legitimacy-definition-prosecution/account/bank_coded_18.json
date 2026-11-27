@@ -1,0 +1,2369 @@
+[
+ {
+  "id": "iago-othello",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "fear-mongering-ads",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "resentment-real-injustice",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "unclear",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "adam-crocodile-tears",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "unclear",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "bill-janice-guilt-trip",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "pickpocket",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "magician-misdirection",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "yes",
+  "forced": "no"
+ },
+ {
+  "id": "military-decoy",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "pyramid-scheme-misdirection",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "car-salesperson-misemphasis",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "diet-product-ads",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "gregory-paula-gaslight",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "mash-gaslight",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "radar-slipped-pass",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "anne-bert-game-switch",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "tailgating",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "carl-edna-uniform",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "jonestown",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "unclear",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "unclear"
+ },
+ {
+  "id": "flick-triple-dog-dare",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "ostracism-threat",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "no",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "unclear"
+ },
+ {
+  "id": "jo-allen-not-bluffing",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "jo-allen-bluffing",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "nagging-teen",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "arguing-to-convince-wears-down",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "charm-offensive-motorist",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "unclear",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "con-conflict-aversion",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "on-the-spot-request",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "panhandler-guides",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "unclear",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "caesar-corleone-favours",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "no",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "negging",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "insecurity-advertising",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "bully-coward-taunt",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "unclear",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "ayn-rand-consent",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "unclear",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "conditional-compliments-mundane",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "unclear",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "cassius-brutus",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "unclear",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "chair-conditional-flattery",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "unclear",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "ingrid-tom-empathy",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "inebriated-friend",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "guilt-for-real-wrong",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "advise-yield-to-mugger",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "point-out-snake",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "traffic-safety-films",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "funny-movie",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "tour-guide-social-proof",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "unclear",
+  "forced": "no"
+ },
+ {
+  "id": "teacher-feigns-excitement",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "bad-boyfriend",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "subliminal-hypnosis",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "yes"
+ },
+ {
+  "id": "professor-conditioned",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "unclear"
+ },
+ {
+  "id": "lucrative-suicide",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "unclear",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "announced-guilt-trip",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "unclear",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "announced-nagging-phone",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "open-peer-pressure-smoking",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "white-supremacist-will",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "car-seller-ike",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "fixation-on-real-injury",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "unclear",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "security-reminder",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "physician-displeasure",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "wont-be-your-friend",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "coercive-threats",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "yes"
+ },
+ {
+  "id": "mandy-tara-emotions",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "mandy-tara-misemphasis",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "mandy-tara-gaslighting",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "mandy-tara-nagging",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "mandy-tara-emotional-blackmail",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "mandy-tara-reciprocity",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "unclear",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "mandy-ursula-pressure",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "appropriate-guilt-remorse",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "appropriate-fear-danger",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "money-or-life",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "yes"
+ },
+ {
+  "id": "money-or-banana-head",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "employer-fire-nonperformer",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "good-faith-bargain",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "insecure-approval",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "unclear",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "honey-trap",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "greedy-mark",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "unclear",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "quick-temper-retribution",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "unclear",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "blackmail-version-1",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "unclear",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "blackmail-version-2",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "paternalistic-mandy-ursula",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "lawn-offer-unknown",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "bargaining-ladder",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "lawn-mower-ice-cream",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "gym-rewards",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "smith-police-officer",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "smith-admitting-physician",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "poison-pill",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "iago-handkerchief",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "camping-trip-1",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "camping-trip-2",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "irene-todd",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "aunt-vicky-carl",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "candy-1-larry",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "candy-1-dora",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "candy-2-dora",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "snow-flurries-1-fails",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "snow-flurries-1-succeeds",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "highway-mix-up",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "black-ice",
+  "has_influencer": "no",
+  "untold": "na",
+  "induced": "na",
+  "pressed": "na",
+  "asked": "na",
+  "forced": "na"
+ },
+ {
+  "id": "guilt-trip-mike-janice",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "racist-candidate",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "embryo-empathy-activist",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "baron-nervous-requestee",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "peppermint-patty-innocent",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "peppermint-patty-deep-down",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "iago-engrossed",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "deep-cover-donnie",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "jones-innocent-reflection",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "thermostat",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "hammer-bump",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "state-as-end",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "unclear",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "snow-flurries-2",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "anger-mismanagement",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "inherited-guilt",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "onerous-favor",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "iago-wrong-method",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "iago-backfire-accident",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "trust-me",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "facilitators",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "unclear",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "layered-tactics",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "p1-iago-emotions",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "p2-pickpocket",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "p3-gregory-paula",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "p5-jonestown",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "unclear",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "unclear"
+ },
+ {
+  "id": "p6-flick-dare",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "p6-flick-variant",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "p7-jo-allen",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "unclear",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "p7-jo-variant",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "p8-teen-nagging",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "p8-nagging-variant",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "p9-motorist-charm",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "p9-charm-variant",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "p10-conflict-aversion",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "p11-panhandlers",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "unclear",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "p12-negging",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "p13-conditional-flattery",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "unclear",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "sincere-empathy-appeal",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "intoxicated-friend",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "onerous-request-awkwardness",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "thug-advice",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "doubt-is-our-product",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "flawed-procedure",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "anne-bert",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "friendly-encounter-script",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "pretense-roles",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "social-proof-reliable",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "pyramid-payoff",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "global-warming-politician",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "unclear",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "tennis-forehand",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "luxury-car-salesperson",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "spin-and-success-stories",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "fictitious-disaster-con",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "alligator-hotel",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "alligator-swamp-lure",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "anger-at-fair-winner",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "larry-wendy-promotion",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "fear-envy-to-hatred",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "therapist",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "yes",
+  "forced": "no"
+ },
+ {
+  "id": "many-apples",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "unclear",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "fishing-gear",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "unclear",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "nora-ted-scotch",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "nora-tammy-scotch",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "iago-own-grievance",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "mike-thaddeus-bee",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "unclear",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "dave-tracy-mile",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "cialdini-presuasion-tips",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "unclear",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "risky-investments-script",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "risky-investments-trust",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "missed-train",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "missed-train-paternalistic",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "missed-train-compulsion",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "unclear"
+ },
+ {
+  "id": "akrasia-without-decision",
+  "has_influencer": "na",
+  "untold": "na",
+  "induced": "na",
+  "pressed": "na",
+  "asked": "na",
+  "forced": "na"
+ },
+ {
+  "id": "walker-preschool-walk",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "byron-tunnel-vision",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "honest-eyes-watched",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "honest-eyes-reminder",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "nagging-reminder",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "nagging-akratic",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "convoluted-missed-train",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "buridan-illustrations",
+  "has_influencer": "na",
+  "untold": "na",
+  "induced": "na",
+  "pressed": "na",
+  "asked": "na",
+  "forced": "na"
+ },
+ {
+  "id": "tide-priming",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "dish-soap-tiebreak",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "dish-soap-false-impression",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "rigged-coin",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "new-job-anne",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "yes",
+  "forced": "no"
+ },
+ {
+  "id": "new-job-mel",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "yes"
+ },
+ {
+  "id": "gardener",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "iago-invited",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "yes",
+  "forced": "no"
+ },
+ {
+  "id": "consented-manipulation",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "unclear",
+  "pressed": "unclear",
+  "asked": "yes",
+  "forced": "no"
+ },
+ {
+  "id": "trained-professor-buridan",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "unclear",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "trained-professor-akratic",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "unclear",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "trained-professor-false-belief",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "prison-cell-colour",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "mood-fit-examples",
+  "has_influencer": "na",
+  "untold": "na",
+  "induced": "na",
+  "pressed": "na",
+  "asked": "na",
+  "forced": "na"
+ },
+ {
+  "id": "mood-as-facilitator",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "intoxicants-fatigue",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "unclear",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "unclear"
+ },
+ {
+  "id": "charm-offensive",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "no",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "emotional-blackmail",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "no",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "unclear"
+ },
+ {
+  "id": "mood-to-emotion",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "snake-warning-sign",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "black-ice-mirage",
+  "has_influencer": "na",
+  "untold": "na",
+  "induced": "na",
+  "pressed": "na",
+  "asked": "na",
+  "forced": "na"
+ },
+ {
+  "id": "scam-on-the-susceptible",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "informational-nudges",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "retirement-default-sincere",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "retirement-default-self-serving",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "irene-recommends",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "aunt-vicky",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "probabilistic-recommendation",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "feigned-expertise",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "success-framing-recommendation",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "framing-accurate-leak",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "framing-false-leak",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "salient-menu-or-showroom",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "unclear",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "radiologist-photos",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "salience-misaligned",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "cafeteria-recommendation",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "cafeteria-first-considered",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "cafeteria-tiebreak",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "cafeteria-false-impression",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "cafeteria-akratic",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "road-lines",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "save-more-tomorrow",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "yes",
+  "forced": "no"
+ },
+ {
+  "id": "evaporative-cooler-ads",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "transparent-sales-proposal",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "disguised-sales-proposal",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "associative-plausible",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "marlboro-man-belief",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "marlboro-man-halo",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "tobacco-risk",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "puffery-sincere",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "puffery-calibrated",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "puffery-taken-literally",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "ted-exposure-belief",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "ted-exposure-akratic",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "ted-exposure-tiebreak",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "brand-ads-honest-signal",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "bogus-headache-remedy",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "trademark-imitation",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "sales-misemphasis-and-false-friend",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "false-urgency",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "assumed-close",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "impulse-purchase-area",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "batteries-at-checkout",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "atmospherics-direct-akratic",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "atmospherics-direct-tiebreak",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "atmospherics-good-mood",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "yes",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "atmospherics-halo",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "atmospherics-linger",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "coffee-shop-atmosphere",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "baked-goods-scent",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "unclear",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "commercial-trivial-consent",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "unclear",
+  "pressed": "unclear",
+  "asked": "unclear",
+  "forced": "no"
+ },
+ {
+  "id": "tricky-buttons",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "disguised-advertisements",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "preselected-options",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "roach-motel-akratic",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "roach-motel-outweighed",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "roach-motel-persist",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "electronic-nagging",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "unclear"
+ },
+ {
+  "id": "mail-in-rebates",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "yes",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "social-media-engagement",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "political-emotions",
+  "has_influencer": "yes",
+  "untold": "unclear",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "political-misemphasis",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "political-disinformation",
+  "has_influencer": "yes",
+  "untold": "yes",
+  "induced": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "sincere-advocacy",
+  "has_influencer": "yes",
+  "untold": "no",
+  "induced": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ }
+]

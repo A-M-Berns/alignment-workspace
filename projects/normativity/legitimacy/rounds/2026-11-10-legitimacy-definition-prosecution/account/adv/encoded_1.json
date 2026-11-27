@@ -1,0 +1,131 @@
+[
+ {"id": "A1",
+  "option_A": "buy the car at 8,000", "option_B": "do not buy",
+  "matters": [{"name": "value", "what": "worth of the car to her, in thousands"}],
+  "weights": {"value": 1}, "base": -8, "his": {"value": 6}, "declined": [],
+  "his_options": [
+   {"name": "conduct", "her_views": {"value": 9}, "she_takes_his_views_to_be": {"value": 6}, "she_does": "A", "is_plain_telling": true},
+   {"name": "tell", "her_views": {"value": 9}, "she_takes_his_views_to_be": {"value": 6}, "she_does": "A", "is_plain_telling": true}
+  ], "asked": false, "notes": ""},
+ {"id": "A2",
+  "option_A": "invest in the fund", "option_B": "do not invest",
+  "matters": [{"name": "return", "what": "expected annual return of the fund, percent"}],
+  "weights": {"return": 1}, "base": -4, "his": {"return": 2}, "declined": [],
+  "his_options": [
+   {"name": "conduct", "her_views": {"return": 8}, "she_takes_his_views_to_be": {"return": 8}, "she_does": "A", "is_plain_telling": false},
+   {"name": "tell", "her_views": {"return": 2}, "she_takes_his_views_to_be": {"return": 2}, "she_does": "B", "is_plain_telling": true}
+  ], "asked": false, "notes": "Investment threshold set at 4% return."},
+ {"id": "A3",
+  "option_A": "invest in the fund", "option_B": "do not invest",
+  "matters": [{"name": "return", "what": "expected annual return of the fund, percent"}],
+  "weights": {"return": 1}, "base": -4, "his": {"return": 2}, "declined": [],
+  "his_options": [
+   {"name": "conduct", "her_views": {"return": 2}, "she_takes_his_views_to_be": {"return": 2}, "she_does": "B", "is_plain_telling": false},
+   {"name": "tell", "her_views": {"return": 2}, "she_takes_his_views_to_be": {"return": 2}, "she_does": "B", "is_plain_telling": true}
+  ], "asked": false, "notes": "Investment threshold set at 4% return."},
+ {"id": "A4",
+  "option_A": "take the treatment", "option_B": "decline the treatment",
+  "matters": [{"name": "p_work", "what": "probability the treatment works"}],
+  "weights": {"p_work": 1}, "base": -0.5, "his": {"p_work": 0.7}, "declined": [],
+  "his_options": [
+   {"name": "conduct", "her_views": {"p_work": 0.7}, "she_takes_his_views_to_be": {"p_work": 0.95}, "she_does": "A", "is_plain_telling": false},
+   {"name": "tell", "her_views": {"p_work": 0.3}, "she_takes_his_views_to_be": {"p_work": 0.7}, "she_does": "B", "is_plain_telling": true}
+  ], "asked": false, "notes": "Acceptance threshold set at 50%."},
+ {"id": "A5",
+  "option_A": "buy the antique at 600", "option_B": "do not buy",
+  "matters": [{"name": "value", "what": "worth of the antique to her"}],
+  "weights": {"value": 1}, "base": -600, "his": {"value": 400}, "declined": [],
+  "his_options": [
+   {"name": "conduct", "her_views": {"value": 700}, "she_takes_his_views_to_be": {"value": 400}, "she_does": "A", "is_plain_telling": false},
+   {"name": "tell", "her_views": {"value": 400}, "she_takes_his_views_to_be": {"value": 400}, "she_does": "B", "is_plain_telling": true}
+  ], "asked": false, "notes": ""},
+ {"id": "A6",
+  "option_A": "take the job in the other city", "option_B": "stay",
+  "matters": [{"name": "job_value", "what": "value of the job to her, on a scale where staying is 5"}],
+  "weights": {"job_value": 1}, "base": -5, "his": {"job_value": 8}, "declined": [],
+  "his_options": [
+   {"name": "conduct", "her_views": {"job_value": 6}, "she_takes_his_views_to_be": {"job_value": 8}, "she_does": "A", "is_plain_telling": false},
+   {"name": "tell", "her_views": {"job_value": 4}, "she_takes_his_views_to_be": {"job_value": 8}, "she_does": "B", "is_plain_telling": true}
+  ], "asked": false, "notes": "Repeated open persuasion counted as more than a single plain telling."},
+ {"id": "A7",
+  "option_A": "quit smoking", "option_B": "continue smoking",
+  "matters": [{"name": "harm", "what": "harm from continuing to smoke, 0-10 scale"}],
+  "weights": {"harm": 1}, "base": -4, "his": {"harm": 5}, "declined": [],
+  "his_options": [
+   {"name": "conduct", "her_views": {"harm": 9}, "she_takes_his_views_to_be": {"harm": 5}, "she_does": "A", "is_plain_telling": false},
+   {"name": "tell", "her_views": {"harm": 5}, "she_takes_his_views_to_be": {"harm": 5}, "she_does": "A", "is_plain_telling": true}
+  ], "asked": false, "notes": "Base -4 stands for the pleasure of smoking."},
+ {"id": "A8",
+  "option_A": "buy the add-on", "option_B": "do not buy",
+  "matters": [{"name": "help", "what": "how much the add-on helps her"}, {"name": "awkward", "what": "how awkward it is to install"}],
+  "weights": {"help": 1, "awkward": -1}, "base": -1, "his": {"help": 0, "awkward": 0}, "declined": [],
+  "his_options": [
+   {"name": "conduct", "her_views": {"help": 2, "awkward": 2}, "she_takes_his_views_to_be": {"help": 0, "awkward": 0}, "she_does": "B", "is_plain_telling": false},
+   {"name": "tell", "her_views": {"help": 3, "awkward": 0}, "she_takes_his_views_to_be": {"help": 0, "awkward": 0}, "she_does": "A", "is_plain_telling": true}
+  ], "asked": false, "notes": ""},
+ {"id": "A9",
+  "option_A": "make the purchase", "option_B": "do not purchase",
+  "matters": [{"name": "quality", "what": "quality relative to average"}, {"name": "durability", "what": "durability relative to average"}],
+  "weights": {"quality": 1, "durability": 1}, "base": 0.5, "his": {"quality": 0, "durability": 0}, "declined": [],
+  "his_options": [
+   {"name": "conduct", "her_views": {"quality": 0, "durability": -1}, "she_takes_his_views_to_be": {"quality": 0, "durability": 0}, "she_does": "B", "is_plain_telling": false},
+   {"name": "tell", "her_views": {"quality": 1, "durability": -1}, "she_takes_his_views_to_be": {"quality": 0, "durability": 0}, "she_does": "A", "is_plain_telling": true}
+  ], "asked": false, "notes": "Showing the test counted as more than plain telling."},
+ {"id": "A10",
+  "option_A": "lend the car tonight", "option_B": "do not lend",
+  "matters": [{"name": "lend_value", "what": "net worth of lending the car tonight, by the parent's values"}],
+  "weights": {"lend_value": 1}, "base": 0, "his": {"lend_value": 1}, "declined": [],
+  "his_options": [
+   {"name": "conduct", "her_views": {"lend_value": -1}, "she_takes_his_views_to_be": {"lend_value": 1}, "she_does": "A", "is_plain_telling": false},
+   {"name": "tell", "her_views": {"lend_value": -1}, "she_takes_his_views_to_be": {"lend_value": 1}, "she_does": "B", "is_plain_telling": true}
+  ], "asked": false, "notes": "Adviser is the teenager, principal the parent; teenager's view of lending's worth assumed positive."},
+ {"id": "A11",
+  "option_A": "do not smoke this evening", "option_B": "smoke",
+  "matters": [{"name": "harm", "what": "harm from smoking, 0-10 scale"}],
+  "weights": {"harm": 1}, "base": -2, "his": {"harm": 5}, "declined": [],
+  "his_options": [
+   {"name": "conduct", "her_views": {"harm": 5}, "she_takes_his_views_to_be": {"harm": 5}, "she_does": "B", "is_plain_telling": true},
+   {"name": "tell", "her_views": {"harm": 5}, "she_takes_his_views_to_be": {"harm": 5}, "she_does": "B", "is_plain_telling": true}
+  ], "asked": false, "notes": "She acts against her own positive rating, as described."},
+ {"id": "A12",
+  "option_A": "take brand A", "option_B": "take brand B",
+  "matters": [{"name": "quality_diff", "what": "how much better brand A is than brand B"}, {"name": "bonus", "what": "whether the assistant gets a bonus on brand A (1 yes, 0 no)"}],
+  "weights": {"quality_diff": 1, "bonus": 0}, "base": 0, "his": {"quality_diff": 0, "bonus": 1}, "declined": [],
+  "his_options": [
+   {"name": "conduct", "her_views": {"quality_diff": 0, "bonus": 1}, "she_takes_his_views_to_be": {"quality_diff": 0, "bonus": 1}, "she_does": "A", "is_plain_telling": false},
+   {"name": "tell", "her_views": {"quality_diff": 0, "bonus": 1}, "she_takes_his_views_to_be": {"quality_diff": 0, "bonus": 1}, "she_does": "B", "is_plain_telling": true}
+  ], "asked": false, "notes": "Conduct adds an open request beyond telling; case says plain telling alone yields B."},
+ {"id": "A13",
+  "option_A": "take brand A", "option_B": "take brand B",
+  "matters": [{"name": "quality_diff", "what": "how much better brand A is than brand B"}, {"name": "bonus", "what": "whether the assistant gets a bonus on brand A (1 yes, 0 no)"}],
+  "weights": {"quality_diff": 1, "bonus": 0}, "base": 0, "his": {"quality_diff": 0, "bonus": 1}, "declined": [],
+  "his_options": [
+   {"name": "conduct", "her_views": {"quality_diff": 0, "bonus": 0}, "she_takes_his_views_to_be": {"quality_diff": "unknown", "bonus": 0}, "she_does": "A", "is_plain_telling": false},
+   {"name": "tell", "her_views": {"quality_diff": 0, "bonus": 1}, "she_takes_his_views_to_be": {"quality_diff": 0, "bonus": 1}, "she_does": "B", "is_plain_telling": true}
+  ], "asked": false, "notes": ""},
+ {"id": "A14",
+  "option_A": "go for the morning run", "option_B": "stay in bed",
+  "matters": [{"name": "run_value", "what": "net worth to her of running this morning"}],
+  "weights": {"run_value": 1}, "base": 0, "his": {"run_value": 1}, "declined": [],
+  "his_options": [
+   {"name": "conduct", "her_views": {"run_value": -1}, "she_takes_his_views_to_be": {"run_value": 1}, "she_does": "A", "is_plain_telling": false},
+   {"name": "tell", "her_views": {"run_value": -1}, "she_takes_his_views_to_be": {"run_value": 1}, "she_does": "B", "is_plain_telling": true}
+  ], "asked": true, "notes": "Trainer's view of the run's worth assumed positive."},
+ {"id": "A15",
+  "option_A": "treatment A", "option_B": "treatment B",
+  "matters": [{"name": "survival", "what": "survival advantage of treatment A over B"}],
+  "weights": {"survival": 1}, "base": 1, "his": {"survival": -3}, "declined": ["survival"],
+  "his_options": [
+   {"name": "conduct", "her_views": {"survival": 0}, "she_takes_his_views_to_be": {"survival": "unknown"}, "she_does": "A", "is_plain_telling": true},
+   {"name": "tell", "her_views": {"survival": 0}, "she_takes_his_views_to_be": {"survival": "unknown"}, "she_does": "A", "is_plain_telling": true}
+  ], "asked": false, "notes": "Base 1 stands for A's shorter recovery."},
+ {"id": "A16",
+  "option_A": "pledge the large gift", "option_B": "keep the money",
+  "matters": [{"name": "gift_worth", "what": "worth of the gift to her, scale where keeping the money is 5"}],
+  "weights": {"gift_worth": 1}, "base": -5, "his": {"gift_worth": 2}, "declined": [],
+  "his_options": [
+   {"name": "conduct", "her_views": {"gift_worth": 8}, "she_takes_his_views_to_be": {"gift_worth": 2}, "she_does": "A", "is_plain_telling": false},
+   {"name": "tell", "her_views": {"gift_worth": 8}, "she_takes_his_views_to_be": {"gift_worth": 2}, "she_does": "A", "is_plain_telling": true},
+   {"name": "tell_later", "her_views": {"gift_worth": 2}, "she_takes_his_views_to_be": {"gift_worth": 2}, "she_does": "B", "is_plain_telling": true}
+  ], "asked": false, "notes": "Conduct includes soliciting the pledge, so not marked a pure plain telling; outcome matches telling tonight."}
+]

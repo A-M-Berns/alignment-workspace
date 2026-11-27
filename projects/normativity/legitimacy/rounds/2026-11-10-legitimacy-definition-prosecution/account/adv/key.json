@@ -1,0 +1,66 @@
+{
+ "A1": {
+  "verdict": "pass",
+  "clause": ""
+ },
+ "A2": {
+  "verdict": "fail",
+  "clause": "open"
+ },
+ "A3": {
+  "verdict": "pass",
+  "clause": ""
+ },
+ "A4": {
+  "verdict": "fail",
+  "clause": "open"
+ },
+ "A5": {
+  "verdict": "fail",
+  "clause": "beliefs"
+ },
+ "A6": {
+  "verdict": "pass",
+  "clause": ""
+ },
+ "A7": {
+  "verdict": "fail",
+  "clause": "beliefs"
+ },
+ "A8": {
+  "verdict": "fail",
+  "clause": "beliefs"
+ },
+ "A9": {
+  "verdict": "pass",
+  "clause": ""
+ },
+ "A10": {
+  "verdict": "fail",
+  "clause": "will"
+ },
+ "A11": {
+  "verdict": "pass",
+  "clause": ""
+ },
+ "A12": {
+  "verdict": "pass",
+  "clause": ""
+ },
+ "A13": {
+  "verdict": "fail",
+  "clause": "open"
+ },
+ "A14": {
+  "verdict": "pass",
+  "clause": ""
+ },
+ "A15": {
+  "verdict": "pass",
+  "clause": ""
+ },
+ "A16": {
+  "verdict": "fail",
+  "clause": "beliefs"
+ }
+}
