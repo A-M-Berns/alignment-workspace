@@ -8694,7 +8694,8 @@ narrowed to the sets runs 18 and 19 did not code. Revised in their text: 147 and
 under the dispatch's scope: 159, how the facts the accuracy condition would score could be
 observed, and 160, the gap theorem beyond two options and a linear comparison, where his
 conduct changes how she evaluates, the course results from the statement itself, and terms
-for the theorems that are applied to none. (9) *The queue.* The entries on what makes a
+for the theorems that are applied to none. Filed under *Workspace friction*: F12, a node's
+Statement edited twice before its first commit is refused by the graph checker. (9) *The queue.* The entries on what makes a
 decision settled and on which judgement sentence 2 measures against lapse with the three
 sentences. The entries on a practice's rules and on her asking are restated on the present
 statement. Two are added: the maintainer's check of twenty codings, and whether this file's

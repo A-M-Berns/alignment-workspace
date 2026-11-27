@@ -108,7 +108,7 @@ Owner @A-M-Berns, @abramdemski
 - rests on AI numbers (no human judgment yet): crux-formalize-before-write-up.partition
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- frame owner @A-M-Berns, @abramdemski; holds 18 node(s)
+- frame owner @A-M-Berns, @abramdemski; holds 19 node(s)
 - a programme: informs through its steps
 - best next unit: none
 
@@ -3867,7 +3867,7 @@ Owner @abramdemski
 - best next unit: do never-settled-standard
 
 ## Sub-frame enabling-work (in the-program): Which repository infrastructure makes the trust research vettable and publishable?
-Owner @A-M-Berns, @abramdemski; holds 18 node(s)
+Owner @A-M-Berns, @abramdemski; holds 19 node(s)
 
 ### Shared claims
 #### enabling-vetting-and-prioritization-system
@@ -3938,6 +3938,7 @@ Nodes this frame is about that are no goals of the ranking (held, not roots): li
 - item-38 (leaf/task)
 - item-f10 (leaf/task)
 - item-f11 (leaf/task)
+- item-f12 (leaf/task)
 
 ## Tasks and work pointers
 Task leaves and actioned claims (the work to do, who does it) and pointers to the repository's own work orders, open statements and rounds.
@@ -4318,6 +4319,7 @@ Task leaves and actioned claims (the work to do, who does it) and pointers to th
 - item-f1: Execute item F1 once the maintainers have specified it: Job names in prose, and root documents that classify into no layer. (who: either)
 - item-f10: Say in graph/PROTOCOL.md §2 or §5 what a research round files for itself on the map — a node of its own, or only the round pointers on its formal results and items — and have the checker or the render reflect the choice. (who: either); decision: open--research-round-node-on-map
 - item-f11: Add a gate that refuses a tracked living document carrying merge-conflict marker lines, with its null-input case, or say which existing gate is to see them. (who: either); decision: 2026-11-10--conflict-markers-gate
+- item-f12: Have checkers/graph.py take its version baseline from graph/versions.json as committed, or say in graph/PROTOCOL.md that a plain run mints a version and a later uncommitted edit is a revision. (who: either); round: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution
 - item-f2: Execute item F2 once the maintainers have specified it: The deference line has no claims registry — *closed*. (who: either); decision: 2026-09-02--post-merge-terminology-corrections-frozen-september
 - item-f3: Execute item F3 once the maintainers have specified it: A layer's theory is authoritative and its only code is in a disposable tree. (who: either); decision: 2026-09-02--grounds-unified-defeat-answerable-coalition-proof
 - item-f4: Execute item F4 once the maintainers have specified it: A pointer into a superseded source tree still resolves — *closed*. (who: either)
@@ -5883,6 +5885,7 @@ The outside option and the undescribed failure, each a cases node over the outco
 | item-f1 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
 | item-f10 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
 | item-f11 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
+| item-f12 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
 | item-f2 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
 | item-f3 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
 | item-f4 | leaf/task | 2 (both) | held by enabling-work, no belief | open | 0 | 0 (informs no goal) |
@@ -7472,4 +7475,4 @@ The outside option and the undescribed failure, each a cases node over the outco
 | wirehead-iff-finite.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 1 |
 | wirehead-iff-finite.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 1 |
 | worlds-and-points-companion | leaf/question | 2 (both) | AI number | open | 0 | 8 |
-<!-- generated_hash: f15a98602742b501c77c0569 -->
+<!-- generated_hash: 2811e087f90e78502ac93b69 -->

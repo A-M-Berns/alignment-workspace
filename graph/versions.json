@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "6fd7be20d5737815ace42c70",
-  "index.json": "197c20d0fe1a3035edb286ad"
+  "derived.json": "b08cd234f6891174d7994aae",
+  "index.json": "b2fb37819de1e87b7a21ca1c"
  },
- "generated_hash": "f40f780a12823c66382d93fc",
+ "generated_hash": "d6d06201fcd5a11455ec28f0",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -10253,6 +10253,13 @@
     "date": "2026-11-10",
     "normalized": "item f11 no gate refuses committed conflict markers closed is answered as its entry specifies",
     "version": 2
+   }
+  ],
+  "item-f12": [
+   {
+    "date": "2026-11-27",
+    "normalized": "item f12 a nodes statement edited twice before its first commit is refused is answered as its entry specifies",
+    "version": 1
    }
   ],
   "item-f2": [

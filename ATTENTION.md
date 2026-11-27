@@ -4901,6 +4901,23 @@ marker line planted in `DECISIONS.md`.
 for git's opening and closing marker lines, fails on a tree with no tracked files, and runs
 under `tests/run.py`.
 
+### F12 — A node's Statement edited twice before its first commit is refused
+<!-- workspace-priority: project=none; dispatchable=yes -->
+
+The plain run of `checkers/graph.py` writes `graph/versions.json`, recording version 1 of a
+new node's Statement. A round that files a node, runs the checker, corrects the node's
+Statement and runs the checker again before committing is refused (`Statement changed
+without a version bump`), though no version of the node has been committed. The
+twenty-second follow-up of the legitimacy prosecution round hit this on item 160 and
+restored the three committed generated files from `HEAD` before running the checker again,
+so that the node ships at version 1. The other way through is a bump to version 2, which
+records a first version that never shipped. Wanted: one of the two behaviours stated, so
+that a round does not choose.
+
+*Deliverable shape:* either `checkers/graph.py` reading `graph/versions.json` as committed for its baseline, with a null-input case, or one sentence of `graph/PROTOCOL.md` saying that a plain run mints version 1 and what a round does on a second edit before it commits.
+*Acceptance check:* `python3 -m checkers.graph --root .` run twice on a new node whose Statement is edited between the runs, neither run committed, passes without a version bump, or refuses with a message naming the rule the protocol states.
+*Context:* `checkers/graph.py`; `graph/PROTOCOL.md`.
+
 ## Infrastructure
 
 ### 10. Build the Lean in CI — **[entry]**
