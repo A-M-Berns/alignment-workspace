@@ -6702,6 +6702,184 @@ theorem*, *a reading*, *parted*. The registry ids of the patch. The anchor
    side, and what makes a decision settled.
 5. Merge or decline pull request #149. Auto-merge is off.
 
+## Twenty-second follow-up (2026-11-27) — the statement against plain telling, and the gap between it and the outcome
+
+Dispatch: `PROMPT-followup-22.md`, verbatim. The statement of legitimacy is replaced. On
+record: the statement against plain telling in Lean
+(`lean/Workspace/Deference/Contrib/LegitimacyPlainTelling.lean`), read in
+`account/PLAIN_TELLING_STATEMENT.md` of the round directory; the forms that preceded it and
+what each fell to (`account/PLAIN_TELLING_HISTORY.md`); four outside reviews verbatim
+(`REVIEW-astra-followup-22.md`); three tests under the round's runner
+(`account/PLAIN_TELLING_TESTS.md`); and the ledger brought to all of it. The statement in
+three sentences, its Lean and its documents are marked as superseded.
+
+### AJ.1 What is on record
+
+- **The statement.** `Problem`, the adviser's decision problem as he takes it to be, and
+  `Legit θ τ κ c`: `Open`, `Beliefs` and `Will`, each against every plain telling open to him
+  and up to a weight on his cases. 82 theorems in the file, each under `#print axioms`, each
+  on `[propext, Classical.choice, Quot.sound]`. No definition or statement of the file handed
+  over is changed.
+- **The main result.** `gap`: for two options, nothing declined, an unchanged evaluation and
+  a comparison linear in her views, her view between on every matter and a worse outcome by
+  his views leave four possibilities: a lapse of hers under his conduct, one under the plain
+  telling, a near-even choice, or offsetting mistakes that the plain telling would leave.
+  With `weighing_of_beliefs`, `bridge`, `outcome_of_views`.
+- **Additions asked for.** A.1: `Witness.gap_instance` and `Witness.weighing_instance`
+  inhabit the two hypothesis packages; `Witness.gap_instance_offsetting` shows the
+  conclusion of `gap` on that term is its fourth item. A.2: the scoring is a restatement;
+  `legitScoring` is a definition and no theorem is stated for it. A.3: `Witness.W4`,
+  `w4_legit` and `w4_needs_same_evaluation`: every hypothesis of `gap` but the unchanged
+  evaluation holds, the statement holds at no tolerance, none of the four items holds, and
+  the outcome guarantee fails. A.4: `gap_in_weights`, through `weighing_of_beliefs_tol`:
+  under `Beliefs θ κ c` unasked, his weight on a worse outcome by more than `θ·W + lam` is
+  at most `κ` plus his weight on the four items, `W` bounding the absolute weights of the
+  comparison; inhabited by `Witness.gap_in_weights_instance`.
+- **The tests.** Blind run 18: 4 of 8 predictions failed. Blind run 19, two coders: 1 of 10.
+  The adversarial test: both encodings at the key's verdict and clause on 16 of 16; 1 of 5
+  predictions failed. Six cases from reviews 18 to 20 computed on the present clauses.
+- **The reviews.** Four briefs and replies verbatim, with a table per review of what was
+  checked of each finding and how, and six places where a brief misdescribes what was
+  reviewed.
+
+### AJ.2 Corrections to the prompt
+
+- §2 says each of the three earlier forms kept beside the working file is the one a review
+  saw. `LegitPlain.lean.outcome-in-definition` was read by no review: no brief quotes its
+  definition, and brief 20 describes it as a form held for a few hours and undone. The other
+  two equal the Lean quoted in briefs 19 and 20 (compared by script, setting aside the
+  import, blank lines, `#print axioms` lines and one `open` line).
+- §2 gives 38 audited results. The working file has 38 `#print axioms` lines and 69
+  theorems. The repository file audits all 82 of its theorems.
+- §1 speaks of the fifteenth and sixteenth outside reviews. The sixteenth is not among the
+  inputs of §2 and is not on record in the repository; nothing here rests on it.
+- §3 C lists "no further from his view than plain telling" as one form. Two versions of it
+  were reviewed, by reviews 18 and 19, and each fell to a different case; both are recorded.
+- §3 F names the items "the new statement answers". None is answered outright. Item 155 is
+  answered in part, by the two runs on the 90 published value-change cases, and is narrowed.
+
+### AJ.3 Deviations from the prompt
+
+- **A.** Beyond the four additions: `Witness.w3_legit_and_worse` and
+  `Witness.w2_tips_legit_and_worse`, which show that the two instances of the dispatch
+  satisfy `Legit` at no tolerance while `Outcome` fails (the file handed over showed the
+  parts and not `Legit`); `Witness.wt_unit_of`, a lemma they use. `legitScoring` is added
+  as a definition though the link is a restatement. `#print axioms` is at the end of the
+  file with full names, on every theorem. Fourteen theorems of the file are applied to no
+  term (`Problem.legit_only_telling`, `Problem.LegitW.mono`, the three `not_legit_of_*`,
+  `outcome_of_views`, `Problem.chooses_as_informed`, `Problem.gain_le`,
+  `Course.not_led_astray_of_legit`, `signal_le_of_noSignal`, `under_of_noShift`,
+  `over_of_noShift`, `long_run_informed`, `long_run_not_led_astray`); the dispatch asked for
+  terms for two, and item 160 asks for the rest. The four files of the table model still
+  say at their head that the statement of the line is `LegitimacyStatement.lean`; they were
+  not edited, the dispatch naming two files to mark, and that file's head now points on.
+- **B.** The statement page has a section the dispatch does not list, on what follows from
+  the outcome guarantee and the weighing form.
+- **C.** The history has a first section on where the line left the three sentences and a
+  last on what the reviews reported that was not repaired. One claim in it is by arithmetic
+  and not a Lean theorem, and says so: that the distortion induced openly for her good
+  passed the form with the outcome test inside.
+- **D.** One file. The reviewer's model is recorded as unrecorded: the dispatch names none
+  and no log was kept.
+- **E.** One document for the three tests and two modules. The scorers and the checker are
+  moved into the modules unchanged in substance; what they printed of case texts and coders'
+  notes is not reproduced. `vc2_judges_conduct.json` carries, as a list of ids, which
+  sources judge conduct, computed with the rule of run 19's scorer from a description that
+  stays outside. The complement of that list is labelled "something other than conduct",
+  the working label "the resulting desire" fitting only some of it. Prediction P5 of the
+  adversarial test is computed as: the two encodings of A3 or of A16 differ in verdict or
+  clauses. Added: `adv/review_cases.json`, six models written in this round from the
+  replies, each failing the runner if it does not get the verdict recorded for it.
+- **F.** The ledger is rewritten around the present statement; earlier rows keep their
+  numbers and gain a column. Twenty-eight rows that were open are living notes, their
+  questions not arising under the present statement. The interpretation on histories is
+  recorded as not wanted as it stands and item 157 is closed; this is the round's answer to
+  the question the dispatch's ordering leaves, and is reversible. Status lines are added to
+  `account/CONNECTING_THEOREM.md`, `account/interpretation/INTERPRETATION.md` and
+  `account/HARD_CASES.md`, and one pointer in `account/TABLE_MODEL_STATEMENT.md` is brought
+  to the present statement. The queue gains an entry the dispatch does not ask for, on
+  registration. A workspace friction is filed, F12.
+- **The registration patch** of the twenty-first follow-up is withdrawn and not rebuilt.
+  Twenty-three of its twenty-four entries are of the superseded statement and the items
+  they answer are closed or restated. No registry entry is filed for the new file, where
+  `AGENTS.md` has a round file the entry for a Lean headline in the same pull request: a
+  patch would need an item for its entries to answer, and whether this statement is to be
+  citable before it is written up is queued for the maintainer
+  (`open--register-plain-telling-results`).
+- **Not touched:** the wiki; the claims registries.
+
+### AJ.4 What was not shown
+
+- **What `account/PLAIN_TELLING_STATEMENT.md` §8 lists**: more than two options; a comparison
+  not linear in her views, or a matter declined; conduct that changes how she evaluates;
+  that the list of four is complete outside the setting; the course and long-run results
+  for the statement itself; anything in fact; that `gap_in_weights` is tight; a verdict on
+  a concrete case; that clear telling is available; links between decisions.
+- **That the statement includes non-manipulation**, which the maintainer's rule 3 asks. The
+  sixth structural fact says it is narrower than Noggle's notion in one respect (ledger row
+  95).
+- **The present form to any reviewer.** The four reviews read the forms before it.
+- **The reviews' findings by a second party.** Each was checked by the executor: six by the
+  runner on models the executor wrote, some by a kernel-checked instance, the rest by
+  reading or arithmetic.
+- **Anything about the formal clauses by runs 18 and 19**, which put questions in words.
+- **That the clauses give verdicts on cases as they come.** The adversarial cases say what
+  plain telling would have done and are by the author of the account.
+- **Any coding against a person's reading.**
+- **The tolerance of `gap_in_weights` at work**: its one instance is at `θ = κ = 0`.
+- **That conduct produces the pattern of `Witness.W4`**, or of any instance: they are
+  numerical patterns.
+- **That each form the reviews read typechecked**, which is on the briefs' word.
+
+- **Components.** Ledger rows 77 to 87 and 97 to 100 — **closed**, each on the Lean
+  declarations or the runner document named in the row. Rows 76, 89, 92, 94, 95 and 101 —
+  **open**. Rows 75, 88, 90, 91, 93, 96 and 102 — **living note**. The ledger has thirty-nine
+  rows **closed**, eleven **open**, fifty-two **living notes**.
+
+### AJ.5 Filings, names, and what is reserved
+
+`DECISIONS.md`: `2026-11-27--legitimacy-statement-against-plain-telling` (the maintainer's
+rules) and `2026-11-27--legitimacy-twenty-second-followup-plain-telling` (agent-decided,
+reversible); in *Awaiting the author* two entries restated, two removed as lapsed, two
+added. Items 159 and 160 and friction F12 filed under this dispatch's scope; 152, 153, 154,
+156, 157 and 158 closed; 139, 148, 150 and 155 restated; 147 and 149 revised.
+`state/rounds.json`: the round's twenty-second-pass verdict. Root, round and Lean
+`PROVENANCE.md`. No registry entry.
+
+**New names, all provisional.** Lean, `LegitimacyPlainTelling`: `Problem` and its fields,
+`live`, `rate`, `wt`, `Short`, `Regrets`, `Hidden`, `WorseByHim`, `Worse`, `rateAs`,
+`Between`, `Misweighs`, `Open`, `Weighing`, `Will`, `LegitW`, `Outcome`, `ClearAt`,
+`NearEven`, `BetweenViews`, `Mistaken`, `Beliefs`, `Legit`, `Offsetting`, `viewsPart`,
+`evalPart`, `avg`, `NoSignalBeats`, `shifts`, `Course` and its fields, `Course.toProblem`,
+`Off`, `LedAstray`, `sincereWrong`, `legitScoring`, and the theorem names of the file;
+under `Witness`: `W`, `W2`, `W3`, `W4` and the theorems on them. Documents:
+`PLAIN_TELLING_STATEMENT.md`, `PLAIN_TELLING_HISTORY.md`, `PLAIN_TELLING_TESTS.md`,
+`BANK_CODING_18.md`, `BANK_CODING_19.md`. Modules and data: `plain_telling_tests`,
+`plain_telling_adv`, `bank_coded_18.json`, `bank_coded_19_1.json`, `bank_coded_19_2.json`,
+`vc2_coded_18.json`, `vc2_coded_19_1.json`, `vc2_coded_19_2.json`,
+`vc2_judges_conduct.json`, `adv/` and its files. Vocabulary: *plain telling*, *the gap*,
+*offsetting*, *the weighing form*, *the outcome guarantee*, *structural fact*. The anchors
+`open--maintainer-check-of-twenty-codings` and `open--register-plain-telling-results`;
+items 159, 160 and F12; the verdict kind `follow-up-22`. Names gone from the queue:
+`open--what-makes-a-decision-settled`, `open--sentence-two-yardstick`.
+
+**Outstanding maintainer actions**
+
+1. Answer the sheet of twenty cases held outside the repository before seeing the recorded
+   answers (`DECISIONS.md`, `open--maintainer-check-of-twenty-codings`; item 148).
+2. Rule on whether the results of `LegitimacyPlainTelling.lean` are registered before the
+   write-up (`open--register-plain-telling-results`): *register on merge*, an item being
+   filed for the entries to answer, or *leave unregistered*.
+3. Rule on the teacher's put-on enthusiasm (`open--practice-rules-cover-a-deception`): *the
+   statement's verdict stands*, or *taking part in a practice is declining to hear what it
+   conceals*.
+4. Rule on what her asking does (`open--request-licenses-pressure`), and with it how rule 3
+   of 27 November reads where she asked.
+5. The two bounds on the authority side stand unanswered
+   (`open--cost-bound-influence-as-price-and-agreed-penalty`).
+6. Say whether the interpretation on histories is wanted after all; if so, re-open item 157.
+7. Merge or decline pull request #149. Auto-merge is off.
+
 ## Attribution
 
 - Prompt-author model: Claude Fable 5 (Anthropic); dispatched 2026-11-10, kept
@@ -6825,4 +7003,14 @@ theorem*, *a reading*, *parted*. The registry ids of the patch. The anchor
   dispatch; the outside reviewer is the model of the earlier reviews of this round, named
   `gpt-6-astra` there, client version and log not among the files handed over, in one run,
   brief and reply kept as `REVIEW-astra-followup-21.md`.
+- Twenty-second follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-27,
+  kept verbatim as `PROMPT-followup-22.md`; executor model Claude Fable 5.2 (Anthropic), executed
+  2026-11-27, with no subagent. The statement, the Lean file but for the executor's additions,
+  the four briefs, coding sheets 18 and 19 with their scorers, the adversarial cases with their
+  key and checker, and the page the history is rewritten from were produced on 2026-11-26 and
+  2026-11-27 by a Claude Fable 5.2 (Anthropic) session with the maintainer, on that session's
+  word in the dispatch; the coders and encoders were language models it ran (Claude Opus and
+  Claude Sonnet, versions unrecorded); the outside reviewer's model is unrecorded, the dispatch
+  naming none and no log being kept, in four runs, briefs and replies kept as
+  `REVIEW-astra-followup-22.md`.
 - No chat bundle.
