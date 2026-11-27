@@ -1,6 +1,13 @@
 /-
 # The legitimacy statement, at the level of its words
 
+**Status: superseded, not the statement of record.**  This file states legitimacy as three
+sentences over notions taken as given.  The statement of the line is
+`LegitimacyPlainTelling.lean`, which compares his conduct with plainly telling her
+(`account/PLAIN_TELLING_STATEMENT.md` in the round directory; `account/PLAIN_TELLING_HISTORY.md`
+says why).  The theorems here hold of this file's definitions, and "the statement" below is
+its `Episode.Legit`.
+
 Round `prompts/2026-11-10-legitimacy-definition-prosecution/` (`PROMPT-followup-20.md` §4 B,
 `PROMPT-followup-21.md` §3 A).  `account/LEGITIMACY_STATEMENT.md` in the round directory states
 legitimacy in three sentences; this file is its formal statement (that document's §3).

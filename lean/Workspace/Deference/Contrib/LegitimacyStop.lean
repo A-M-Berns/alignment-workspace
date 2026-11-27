@@ -1,6 +1,12 @@
 /-
 # Legitimate conduct and her decision to stop him
 
+**Status: about a superseded statement, not the statement of record.**  The hypotheses here
+are the three sentences of `LegitimacyStatement.lean` read at one decision.  The statement of
+the line is `LegitimacyPlainTelling.lean`, which compares his conduct with plainly telling her
+(`account/PLAIN_TELLING_STATEMENT.md` in the round directory).  The theorems here hold of this
+file's definitions and of that file's `Episode.Legit`.
+
 Round `prompts/2026-11-10-legitimacy-definition-prosecution/` (`PROMPT-followup-21.md` §3 A).
 `account/CONNECTING_THEOREM.md` in the round directory reads this file.
 
