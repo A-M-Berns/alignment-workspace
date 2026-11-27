@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `ATTENTION.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 1450 names, 801 of them Lean only
+## deference — 1489 names, 825 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -1048,6 +1048,45 @@ change, and the count of those is the size of the free choice remaining.
 | `transport` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.LegitimacyModel.Model.transport` |
 | `untold` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyModel.Model.untold` |
 | `wt` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyModel.Model.wt` |
+| `Beliefs` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.Beliefs` |
+| `Between` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.Between` |
+| `BetweenViews` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.BetweenViews` |
+| `ClearAt` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.ClearAt` |
+| `Course` | structure | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Course` |
+| `Hidden` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.Hidden` |
+| `LedAstray` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Course.LedAstray` |
+| `Legit` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.Legit` |
+| `LegitW` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.LegitW` |
+| `Mistaken` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.Mistaken` |
+| `Misweighs` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.Misweighs` |
+| `NearEven` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.NearEven` |
+| `NoSignalBeats` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyPlainTelling.NoSignalBeats` |
+| `Off` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Course.Off` |
+| `Offsetting` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.Offsetting` |
+| `Open` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.Open` |
+| `Outcome` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.Outcome` |
+| `Problem` | structure | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem` |
+| `Regrets` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.Regrets` |
+| `Short` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.Short` |
+| `W` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, note, prose | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Witness.W` |
+| `W2` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Witness.W2` |
+| `W3` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Witness.W3` |
+| `W4` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Witness.W4` |
+| `Weighing` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.Weighing` |
+| `Will` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.Will` |
+| `Worse` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.Worse` |
+| `WorseByHim` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.WorseByHim` |
+| `avg` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.LegitimacyPlainTelling.avg` |
+| `evalPart` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.evalPart` |
+| `legitScoring` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyPlainTelling.legitScoring` |
+| `live` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, note, prose | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.live` |
+| `rate` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.rate` |
+| `rateAs` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.rateAs` |
+| `shifts` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyPlainTelling.shifts` |
+| `sincereWrong` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyPlainTelling.sincereWrong` |
+| `toProblem` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Course.toProblem` |
+| `viewsPart` | def | 2026-11-10-legitimacy-definition-prosecution | Lean only | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.viewsPart` |
+| `wt` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyPlainTelling.Problem.wt` |
 | `CanStop` | def | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyStatement.Episode.CanStop` |
 | `Episode` | structure | 2026-11-10-legitimacy-definition-prosecution | prose | `Workspace.Deference.Contrib.LegitimacyStatement.Episode` |
 | `Legit` | def | 2026-11-10-legitimacy-definition-prosecution | wiki, prose | `Workspace.Deference.Contrib.LegitimacyStatement.Episode.Legit` |

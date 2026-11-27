@@ -3,7 +3,7 @@
 > **An interpretation, not the statement.** The formal text below works the three sentences of legitimacy out on a table of
 > the adviser's moves, against sentence 2 as it was worded on 2026-11-24. `lean/Workspace/Deference/Contrib/LegitimacyModel.lean`
 > renders it, and an outside review found that rendering not to say what the sentences say (`LEDGER.md`, row 50). The statement
-> of the line is `LEGITIMACY_STATEMENT.md`.
+> of the line is `PLAIN_TELLING_STATEMENT.md`; the three sentences are `LEGITIMACY_STATEMENT.md`.
 
 What `LEGITIMACY_CHECKS.md` computes on 41 cases and `LegitimacyModel.lean` models: the wording of the sentences it was written
 against (§1), its setting (§2) and its clauses F1, F2, F2′, F3 (§3). Eight places where this text is unclear or wrong are listed in

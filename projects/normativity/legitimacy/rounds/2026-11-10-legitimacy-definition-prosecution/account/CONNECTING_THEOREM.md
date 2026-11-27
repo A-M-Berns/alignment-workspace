@@ -1,5 +1,7 @@
 # The connecting theorem: legitimate conduct and her decision to stop him
 
+> **About a superseded statement.** The theorem's hypotheses are the three sentences of `LEGITIMACY_STATEMENT.md`, which no longer govern. The statement of the line is `PLAIN_TELLING_STATEMENT.md`; what stands between it and what she does is §5 of that page. The theorem holds of its definitions (`LEDGER.md` §7).
+
 `lean/Workspace/Deference/Contrib/LegitimacyStop.lean`, namespace
 `Workspace.Deference.Contrib.LegitimacyStop`; it imports `LegitimacyStatement.lean`, whose
 `Episode` and `Legit` are the formal statement of `LEGITIMACY_STATEMENT.md` §3. Every

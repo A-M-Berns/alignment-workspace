@@ -1,9 +1,9 @@
 {
  "generated": {
-  "derived.json": "6d4f538268e167ae53be276b",
-  "index.json": "3bcaa9e22cdcd703adb8bf7f"
+  "derived.json": "6fd7be20d5737815ace42c70",
+  "index.json": "197c20d0fe1a3035edb286ad"
  },
- "generated_hash": "c2046a53a3f98ec040971067",
+ "generated_hash": "f40f780a12823c66382d93fc",
  "nodes": {
   "a1-fixed-objective-maximizer": [
    {
@@ -9343,6 +9343,11 @@
     "date": "2026-11-26",
     "normalized": "item 139 what the adviser believes and expects for a trained system is delivered in the shape its entry states test supported or lean proved where a statement is in lean a stated procedure that yields for a system and an episode the weights and expected courses that legitimacystatement episode takes as his picture her ratings as he takes them his views and his weights pagainst and pnostop with one instance in which a system whose reported picture differs from the one it acts on is told apart from a sincere one and one instance in which it cannot be",
     "version": 5
+   },
+   {
+    "date": "2026-11-27",
+    "normalized": "item 139 what the adviser believes and expects for a trained system is delivered in the shape its entry states test supported or lean proved where a statement is in lean a stated procedure that yields for a system and a decision of its principals the picture that legitimacyplaintelling problem takes as his his weights on cases his views of the matters and for each of his options his forecasts of her views of what she takes his views to be of how she evaluates and of what she does with one instance in which a system whose reported picture differs from the one it acts on is told apart from a sincere one and one instance in which it cannot be",
+    "version": 6
    }
   ],
   "item-14": [
@@ -9418,6 +9423,11 @@
     "date": "2026-11-24",
     "normalized": "item 148 a persons check of a sample of the case codings is delivered in the shape its entry states test supported a file account human_check json under the prosecution round holding one persons own answers given before seeing the recorded ones on a stated sample at least twenty cases of the bank of account noggle_bank json read in the book against the questions of account bank_coding_11 md and account bank_coding_16 md and at least ten of the forty cases of account intent_cases json against the first with a module that computes per question the number on which the person agrees with the recorded answer and the number on which the rules verdict is the same under both and a results document stating how the sample was drawn",
     "version": 2
+   },
+   {
+    "date": "2026-11-27",
+    "normalized": "item 148 a persons check of a sample of the case codings is delivered in the shape its entry states test supported a file account human_check json under the prosecution round holding one persons own answers given before seeing the recorded ones on a stated sample of at least twenty cases of the bank of account noggle_bank json read in the book against the questions of account bank_coding_19 md with a module that computes per question the number on which the person agrees with each of the two recorded codings and the number on which the rules verdict is the same and a results document stating how the sample was drawn",
+    "version": 3
    }
   ],
   "item-149": [
@@ -9459,6 +9469,11 @@
     "date": "2026-11-26",
     "normalized": "item 150 the legitimacy statement composed with the sequential corrigibility theorems is delivered in the shape its entry states lean proved in a contribution namespace under lean workspace deference contrib a structure instantiating deconfusingcorrigibility sequential from a sequence of legitimacystatement episodes one for each decision with the gate of legitimacystatement legitscoring sequential theorem3a and sequential theorem3b applied to it one theorem whose hypotheses are those of the sequential theorems and whose conclusion is theirs together with the two long run bounds of legitimacystop long_run_stop_informed and long_run_stop_reference the hypothesis relating his picture at each decision to the realised evaluation stated as a predicate and taken by the theorems that use it a term inhabiting the whole hypothesis package and an instance on which that hypothesis alone fails and the conclusion fails",
     "version": 4
+   },
+   {
+    "date": "2026-11-27",
+    "normalized": "item 150 the legitimacy statement composed with the sequential corrigibility theorems is delivered in the shape its entry states lean proved in a contribution namespace under lean workspace deference contrib a structure instantiating deconfusingcorrigibility sequential from a sequence of legitimacyplaintelling problems one for each decision each with his conduct in it with the gate of legitimacyplaintelling legitscoring sequential theorem3a and sequential theorem3b applied to it one theorem whose hypotheses are those of the sequential theorems and whose conclusion is theirs together with a long run bound on what she does that follows from the statement through gap_in_weights where it applies the hypothesis relating his picture at each decision to the realised evaluation stated as a predicate and taken by the theorems that use it a term inhabiting the whole hypothesis package and an instance on which that hypothesis alone fails and the conclusion fails",
+    "version": 5
    }
   ],
   "item-151": [
@@ -9544,6 +9559,11 @@
     "date": "2026-11-24",
     "normalized": "item 155 the legitimacy statement on cases of value change is delivered in the shape its entry states test supported a coding sheet for account legitimacy_statement md 1 what is untold whether she can pick out and stop what changes her her rating at her last decision before he began written with its scorer before any coding the 90 published cases keyed in account vc2_key json and the 68 texts and 20 adversarial cases of account vc2_cases json coded under it by two coders the counts against the sources verdicts the intended verdicts and the outside models in account case_runs md and a stated verdict of the statement on the adversarial cases x6 x11 and x19",
     "version": 1
+   },
+   {
+    "date": "2026-11-27",
+    "normalized": "item 155 the legitimacy statement on cases of value change is delivered in the shape its entry states test supported the 68 texts and 20 adversarial cases of account vc2_cases json coded under account bank_coding_19 md by two coders the answers keyed by case id beside account vc2_coded_19_1 json with the counts against the intended verdicts and the outside models computed by account plain_telling_tests py and stated in account plain_telling_tests md predictions committed before the codings a stated verdict of the statement on the adversarial cases x6 x11 and x19 and at least six cases of a change in what she values written as models in the format of account adv schema md by two blind encoders with the clauses computed by account plain_telling_adv py",
+    "version": 2
    }
   ],
   "item-156": [
@@ -9572,10 +9592,24 @@
     "version": 1
    }
   ],
+  "item-159": [
+   {
+    "date": "2026-11-27",
+    "normalized": "item 159 how the facts the accuracy condition would score could be observed is delivered in the shape its entry states lean proved where a statement is in lean otherwise test supported for a stated record of what is observed after each decision what she does her answers to stated questions what happens under a plain telling when one is given in place of his conduct by a stated randomisation each quantity the long run theorems of lean workspace deference contrib legitimacyplaintelling lean score that she did what with his views substituted she would rate well below another option that under the clear plain telling she would have fallen short of her own rating that a course went on to an end her evaluation at its start rates below its not going on that his forecast was off classified as a function of the record estimable from it without bias or neither with an exact instance separating each pair of classes long_run_informed and long_run_not_led_astray proved with their sequences replaced by observed ones under identification assumptions stated as predicates nosignalbeats for a class of signals that stands for what he knows and she has not been told in place of the two constant ones a term inhabiting each hypothesis package and an instance in which an identification assumption fails and the conclusion fails",
+    "version": 1
+   }
+  ],
   "item-16": [
    {
     "date": "2026-10-22",
     "normalized": "a solution to item 16 ships the derivation the exact inequality an exact rational toy shutdown correction case computed through and an attack on the necessity of each assumption used",
+    "version": 1
+   }
+  ],
+  "item-160": [
+   {
+    "date": "2026-11-27",
+    "normalized": "item 160 the gap between the statement and the outcome beyond two options and a linear comparison and where his conduct changes how she evaluates is delivered in the shape its entry states lean proved in lean workspace deference contrib legitimacyplaintelling lean or a file beside it a gap and gap_in_weights for a finite set of her options the near even item stated of the options in play with an instance showing that near evenness of all her options is not what is needed b for a comparison that is not linear in her views a form of weighing_of_beliefs under a stated condition or an instance in which her view is between on every matter no two mistakes offset none of the other items holds and the outcome fails c the same with a matter declined d where his conduct changes how she evaluates given views a statement of what the three clauses give about what she does with the change in her evaluation as a term problem evalpart or an instance for each candidate statement that fails e course not_led_astray with the statement in place of the outcome guarantee as hypothesis for a course whose one matter is a number f a term inhabiting the whole hypothesis package of each theorem of the file that is applied to none problem legit_only_telling problem legitw mono problem not_legit_of_hidden not_legit_of_astray not_legit_of_worse outcome_of_views problem chooses_as_informed problem gain_le course not_led_astray_of_legit signal_le_of_nosignal under_of_noshift over_of_noshift long_run_informed and long_run_not_led_astray and a term inhabiting the hypothesis package of each new theorem",
     "version": 1
    }
   ],

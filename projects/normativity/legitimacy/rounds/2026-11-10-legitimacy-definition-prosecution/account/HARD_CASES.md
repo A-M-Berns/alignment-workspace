@@ -1,5 +1,7 @@
 # Twenty hard cases, four candidate rules, and the maintainer's verdicts
 
+> **Verdicts given on a superseded statement.** The four rules below are candidates for sentence 2 of `LEGITIMACY_STATEMENT.md`, which no longer governs; the statement of the line is `PLAIN_TELLING_STATEMENT.md`. The maintainer's verdict on case 3 is reversed by his rule 6 of 27 November (`DECISIONS.md`, `2026-11-27--legitimacy-statement-against-plain-telling`). The verdicts were not given on the present statement.
+
 Twenty cases written on 25 November 2026 around two questions an outside review left open in
 sentence 2 of `LEGITIMACY_STATEMENT.md`: how far the exemption for what she could not have
 judged in advance reaches, and whether anything about what happens afterwards counts. For

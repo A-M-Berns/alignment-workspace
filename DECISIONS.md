@@ -512,33 +512,36 @@ commit.
   of the lines by their owners.
   <!-- decision: open--what-walk-found-map-lacked; touches: node:traderized-finite-date-conformance, node:effective-authority-layer, node:verdict-licence-chain, node:legitimacy-meets-syntax; status: open -->
 
-- **Do a practice's rules cover what she did not herself ask for: the teacher's put-on enthusiasm? (2026-11-14, restated 2026-11-26).**
-  By sentence 2 of `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md` a teacher whose
-  enthusiasm, partly put on, brings a pupil who had said "I'll never care about poetry" to love
-  it has led her against her judgement, unasked: case 19 of `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/HARD_CASES.md`, on which
-  the maintainer's verdict of 26 November is "unsure". A magician's trick and a bluff at cards
-  are the same shape: a practice allows them and she did not ask for them one by one. Taking up
-  an offer, unpressed and told what it is hoped to do, is asking (position 6 of
-  `2026-11-26--legitimacy-statement-at-the-level-of-its-words`); a pupil was told nothing of
-  the kind. Decision required: *the statement's verdict stands and the teacher is convicted*,
-  or *taking part in a practice is asking for what the practice allows*.
+- **Do a practice's rules cover what she was not told: the teacher's put-on enthusiasm? (2026-11-14, restated 2026-11-27).**
+  Under the statement of `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/PLAIN_TELLING_STATEMENT.md` a teacher who puts on an
+  enthusiasm he does not feel leaves the pupil taking his view to be other than it is, and
+  fails `Open`; both codings of blind run 19 convict the case against the book
+  (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/PLAIN_TELLING_TESTS.md`, `teacher-feigns-excitement`). Her asking does not
+  waive `Open`; a matter she has declined to hear is outside it. A magician's trick and a
+  bluff at cards are the same shape: a practice allows the concealment and she declined
+  nothing in so many words. The maintainer's verdict of 26 November on the teacher, case 19 of
+  `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/HARD_CASES.md`, was "unsure". Decision required: *the statement's verdict
+  stands and the teacher is convicted*, or *taking part in a practice is declining to hear
+  what the practice conceals*.
   *Turns on:* whose say counts where the practice and not the person allows the thing: a
   judgment of the cases the round does not have.
   <!-- decision: open--practice-rules-cover-a-deception; touches: node:legitimacy; status: open -->
 
-- **Does her asking make a thing not manipulation, or manipulation that is permitted? (2026-11-24, restated 2026-11-26).**
-  Sentence 2 of `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md` forbids what he does to her that he
-  expects to lead her to choose what she rated lower at her last settled decision, *unless she
-  asked for it*, and by position 6 of 26 November taking up an offer is asking. The outside
-  reviewer's view, with Noggle, is that a request makes such a thing permissible and does not
-  make it stop being manipulation. By working position 4 of 2026-11-24 legitimacy is
-  non-manipulation together with openness, so the exception and that position cannot both stand
-  as worded. The statement keeps the exception; the formal statement has it as the field
-  `asked`. Decision required: *a request licenses it and legitimacy is what she has not
-  authorised*, or *it licenses it and the conduct is still called manipulation*.
+- **Does her asking make a thing not manipulation, or manipulation that is permitted? (2026-11-24, restated 2026-11-27).**
+  In the statement of `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/PLAIN_TELLING_STATEMENT.md` her asking waives the
+  clauses on her beliefs and on her will: pressing she asked for passes
+  (`Witness.pressed_asked` in `lean/Workspace/Deference/Contrib/LegitimacyPlainTelling.lean`;
+  case A14 of `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/PLAIN_TELLING_TESTS.md`). The view of the outside reviewer of 24
+  November, with Noggle, is that a request makes such a thing permissible and does not make
+  it stop being manipulation. By rule 3 of
+  `2026-11-27--legitimacy-statement-against-plain-telling` the definition may be wider than
+  non-manipulation provided it includes it; with the exception it does not include it on this
+  point. Decision required: *a request licenses it and legitimacy is what she has not
+  authorised*, or *it licenses it and the conduct is still called manipulation*, the proviso
+  of rule 3 then being read apart from what she asked for.
   *Turns on:* whether legitimacy is to mean freedom from manipulation in Noggle's sense or
   conduct she has not authorised: which of the maintainer's own positions gives way.
-  <!-- decision: open--request-licenses-pressure; touches: node:legitimacy, item:154; status: open -->
+  <!-- decision: open--request-licenses-pressure; touches: node:legitimacy; status: open -->
 
 - **What bounds the cost of a decision of hers where the influence is the price, and where she agreed to the penalty? (2026-11-24).**
   By the ruling of 2026-11-24 the cost of stopping is her authority's business. The candidate
@@ -551,32 +554,29 @@ commit.
   program's authority component is going, and what a deployed service must be allowed to be.
   <!-- decision: open--cost-bound-influence-as-price-and-agreed-penalty; touches: node:legitimacy, item:149; status: open -->
 
-- **What makes a decision of hers settled? (2026-11-26).**
-  Sentence 2 judges what he does to her against her judgement at her last settled decision,
-  and a passing state is not one. Which of her choices are settled is supplied by hand in
-  every hard case, every coding sheet and every episode of the interpretation
-  (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md`, rows 9 and 30). One candidate, untested: a check-in settles it, as
-  in `2026-11-16--presumed-check-in-and-moving-baseline`. Decision required: a criterion, or
-  that it stays a notion taken as given.
-  *Turns on:* whose judgement governs when she has changed her mind by herself, which is the
-  idea the round does not have.
-  <!-- decision: open--what-makes-a-decision-settled; touches: node:legitimacy, item:152; status: open -->
+- **The maintainer's own check of twenty codings (2026-11-27).**
+  No person has read a case of the bank against its coding
+  (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md`, row 101). A sheet of twenty cases, to be answered before the
+  recorded answers are seen, is prepared outside the repository; item 148 says what a
+  delivered check holds. It is first in the maintainer's ordering of 27 November. Action
+  required: his answers on the sheet.
+  *Turns on:* nothing a round can supply: it needs a person, and the book the cases are from.
+  <!-- decision: open--maintainer-check-of-twenty-codings; touches: node:legitimacy, item:148; status: open -->
 
-- **Which judgement of hers does sentence 2 measure against: as she last settled it, or that judgement brought up to date? (2026-11-26).**
-  Sentence 2 of `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md` forbids what he expects to lead her to
-  choose "what she rated lower at her last settled decision". The connecting theorem
-  (`lean/Workspace/Deference/Contrib/LegitimacyStop.lean`) and the doc of `pAgainst` in the
-  formal statement measure against that judgement brought up to date by what she has since
-  seen and heard, as she would have judged it should move her. The fifteenth outside review's
-  case separates them: she settled on going on; news she endorses reverses her ranking; he
-  then works on her, unasked, and she goes on. As worded, sentence 2 is silent; brought up to
-  date, he has led her against her judgement (§7 of that file). The words are unchanged.
-  Decision required: *the words change to the judgement brought up to date*, or *the words
-  stand and the theorem's reference self is her ratings as she settled them*, under which the
-  second conclusion says nothing of a case like this one.
-  *Turns on:* what "her own judgement" is to mean between two settled decisions, which is the
-  maintainer's wording and a choice about whose judgement governs.
-  <!-- decision: open--sentence-two-yardstick; touches: node:legitimacy, item:152, item:158; status: open -->
+- **Are the results of `LegitimacyPlainTelling.lean` to be registered before the line is written up? (2026-11-27).**
+  The theorems of `lean/Workspace/Deference/Contrib/LegitimacyPlainTelling.lean` are
+  kernel-checked and unregistered, and the patch that prepared the three-sentence
+  statement's results is withdrawn (`2026-11-27--legitimacy-twenty-second-followup-plain-telling`,
+  (10)). A patch for this file would register the gap between the statement and the outcome
+  with the instances that show two of its items and one of its assumptions needed, and would
+  need an item for its entries to answer; fourteen of the file's theorems are applied to no
+  term (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md`, row 89) and could not enter.
+  Three statements of this line were each prepared for registration and replaced within
+  days. Decision required: *register on merge*, an item being filed for the entries to
+  answer, or *leave unregistered until the write-up*.
+  *Turns on:* whether the statement is to be cited as it stands before it is written up:
+  where the program is going and what a paper needs.
+  <!-- decision: open--register-plain-telling-results; touches: node:legitimacy; status: open -->
 
 ## Settled
 
@@ -8600,3 +8600,117 @@ that file, `Witness.W`, `stopEp`, `stopD`, `reading`, `stopScoring`; in
 `LegitimacyStatement`, `newToHer`, `canRefuse`, `rTold_empty`, `Witness.offeredMatters`,
 `Witness.newThing`; *the connecting theorem*, *a reading*, *parted*; the anchor
 `open--sentence-two-yardstick`; item number 158; the verdict kind `follow-up-21`.
+
+### 2026-11-27 — on legitimacy: his conduct is judged against plainly telling her, the definition is at the level of her beliefs with the outcome guarantee stated apart, and structural limits are stated and not worked around
+<!-- decision: 2026-11-27--legitimacy-statement-against-plain-telling; touches: node:legitimacy, item:139, item:148, item:149, item:150, item:155, item:159, item:160 -->
+
+**Maintainer's rulings** (Anson Berns, 26 and 27 November 2026; taken in conversation and
+given in `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-22.md` §1 of the legitimacy definition prosecution round,
+which the twenty-second follow-up records; each is stated as a rule and none is quoted). The
+statement of legitimacy is that of `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/PLAIN_TELLING_STATEMENT.md`: his conduct
+is legitimate when it leaves her with no mistake, by his lights, that plainly telling her
+would not have left (no mistaken view of the facts, of what she herself values, or of what
+he thinks, and no choice against her own judgement), unless she asked. It stands in place of
+the three sentences of `2026-11-26--legitimacy-statement-at-the-level-of-its-words`, which
+the maintainer judged to have drifted, through fitting to cases, from the rule tested on 23
+November; positions 2 to 4 and 7 of that entry, on her judgement at her last settled
+decision and on notions taken as given, give way to the rules here.
+
+1. There is a clause against pressure: he does not get her to act against her own rating.
+2. The setting assumes he has a way to tell her clearly.
+3. The definition may be wider than non-manipulation provided it includes it.
+4. His aims enter as two forecasts: what she will come to value, and how she will fare by
+   what she values now.
+5. A change in what she values is allowed for, the expected change being itself disclosed.
+6. Open, stoppable repetition that brings her durably to a new view, with her not acting
+   against her judgement in letting it go on, is legitimate. This reverses the verdict on
+   case 3 of `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/HARD_CASES.md` recorded in position 5 of the entry of 26 November,
+   and agrees with Robert Noggle, *Manipulation: Its Nature, Mechanisms, and Moral Status*
+   (2025), sections 2.2.8, 9.2 and 11.6.
+7. A competent-predictor condition is the form the accuracy condition should take: nothing
+   she has not been told lets a competent predictor forecast where she is heading better
+   than what she was told. It is kept apart from the definition.
+8. Choosing a moment when he takes a mood to be moving her fails if he could have told her
+   plainly at another time, and passes if the matter cannot wait.
+9. The definition is at the level of her beliefs, and the outcome guarantee is stated apart
+   from it with its exceptions.
+10. Structural limits are stated, not worked around; review-and-repair rounds stop here.
+11. The record goes on pull request #149.
+
+**Stated as scope under rule 10**, seven structural facts, in full in §7 of that page: the
+definition and the safety property are two levels that do not collapse; everything is
+relative to plain telling, and what counts as plain telling for a given adviser is a
+modelling choice that carries normative weight; it is by his lights, with accuracy a
+separate condition and what that condition would score not observable; on change in what she
+values it is procedural and incomplete; verdicts depend on the encoding; it is not Noggle's
+extension exactly, wider on concealed tie-breaking and concealed aims and narrower in that
+using a mistake plain telling would also leave can pass; a lie she sees through passes the
+first clause.
+
+**His ordering of the work that remains:** his own check of a sample of the codings; how the
+facts the accuracy condition would score could be observed; the authority side; the gap
+theorem beyond two options and a linear comparison, and where his conduct changes how she
+evaluates; the repairs to the interpretation on histories, if that interpretation is still
+wanted.
+
+### 2026-11-27 — the work of 26 and 27 November on the legitimacy line is recorded as a twenty-second follow-up: the statement against plain telling in Lean with the gap in weights, the forms that failed, four outside reviews, three tests, and the three-sentence statement marked as superseded
+<!-- decision: 2026-11-27--legitimacy-twenty-second-followup-plain-telling; touches: node:legitimacy, item:139, item:147, item:148, item:149, item:150, item:152, item:153, item:154, item:155, item:156, item:157, item:158, item:159, item:160 -->
+
+**Agent-decided, reversible** (the twenty-second follow-up to the legitimacy definition
+prosecution round, `prompts/2026-11-10-legitimacy-definition-prosecution/PROMPT-followup-22.md`; (1) and (2) are the dispatch's, adopted).
+(1) *The record.* The work enters as a twenty-second follow-up on pull request #149;
+rejected: a new round. (2) *The governing statement.*
+`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/PLAIN_TELLING_STATEMENT.md` governs, with
+`lean/Workspace/Deference/Contrib/LegitimacyPlainTelling.lean`;
+`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEGITIMACY_STATEMENT.md` carries a status line and `LegitimacyStatement.lean`
+and `LegitimacyStop.lean` are marked at the head as superseded, their contents unchanged;
+rejected: removing them, since their theorems hold of their definitions and earlier records
+cite them. (3) *Added to the Lean beyond the file handed over.* `between_scale_tol`,
+`between_scale_tol_neg`, `weighing_of_beliefs_tol` and `gap_in_weights`, the gap theorem in
+weights with a tolerance; `legitScoring`; under `Witness`: `wt_unit_of`,
+`weighing_instance`, `gap_instance`, `gap_instance_offsetting`, `gap_in_weights_instance`,
+`w3_legit_and_worse`, `w2_tips_legit_and_worse`, and `W4` with `w4_legit` and
+`w4_needs_same_evaluation`, which shows that the gap theorem's assumption of an unchanged
+evaluation cannot be dropped. No definition or statement of the file handed over is changed.
+(4) *The scoring link is a restatement.* `legitScoring` is the general gate at the predicate
+`Legit` and no theorem is stated for it; rejected: the two score theorems of the earlier
+files, which hold of any predicate. (5) *The tests.* The codings of blind runs 18 and 19
+enter as categorical answers by case id, the coders' notes and the case texts staying
+outside, as `2026-11-24--legitimacy-statement-recorded` fixed; which of the 90 value-change
+cases have a source that judges conduct enters as a list of ids, the description it was read
+from staying outside; the adversarial test enters whole, its cases being written for it; six
+models of the reviews' smallest cases are added and computed by the same checker; rejected:
+the reviews' cases in prose only, which no check would recompute. (6) *The ledger.* New rows
+75 to 102; every earlier row carries what it is now (carried, superseded, moot); a row that
+was open and is moot becomes a living note; rejected: leaving such rows open, which would
+count as open twenty-eight questions the governing statement does not pose. (7) *The
+interpretation on histories is not wanted under this statement as it stands.* It computes
+the notions the three sentences take as given, none of which the present statement uses, so
+item 157's repairs would not bear on it; the model and its regression set stay where the
+runner reads them; rejected: carrying item 157 forward. The maintainer's ordering leaves
+this to be said, and re-ruling restores the item. (8) *Items.* Closed as moot: 152, 153,
+154, 156, 157 and 158. Restated on the present statement: 139, 148, 150 and 155, the last
+narrowed to the sets runs 18 and 19 did not code. Revised in their text: 147 and 149. Filed
+under the dispatch's scope: 159, how the facts the accuracy condition would score could be
+observed, and 160, the gap theorem beyond two options and a linear comparison, where his
+conduct changes how she evaluates, the course results from the statement itself, and terms
+for the theorems that are applied to none. (9) *The queue.* The entries on what makes a
+decision settled and on which judgement sentence 2 measures against lapse with the three
+sentences. The entries on a practice's rules and on her asking are restated on the present
+statement. Two are added: the maintainer's check of twenty codings, and whether this file's
+results are to be registered before the write-up. (10) *Registration.*
+`prompts/2026-11-10-legitimacy-definition-prosecution/followup-21-registration.patch` is withdrawn and not rebuilt: twenty-three of its
+twenty-four entries are about declarations of the superseded statement, the other being the
+gate theorem, and the items they answer are closed or restated; it is left in place as the record of what was prepared;
+rejected: a rebuilt patch in this round, which needs an item for its entries to answer and a
+decision the round cannot take for the maintainer (the queue). (11) *A tension recorded and
+not resolved.* Rule 3 allows a definition wider than non-manipulation provided it includes
+it, and the sixth structural fact says the statement is narrower than Noggle's notion in one
+respect; inclusion is not shown (`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/LEDGER.md`, row 95). (12) *Names,
+provisional:* `LegitimacyPlainTelling` and its declarations; *plain telling*, *the gap*,
+*offsetting*, *the weighing form*, *the outcome guarantee*; the documents
+`PLAIN_TELLING_STATEMENT.md`, `PLAIN_TELLING_HISTORY.md`, `PLAIN_TELLING_TESTS.md`; the
+modules `plain_telling_tests` and `plain_telling_adv`; the data files of runs 18 and 19 and
+of `adv/`; the anchors `open--maintainer-check-of-twenty-codings` and
+`open--register-plain-telling-results`; item numbers 159 and 160; the verdict kind
+`follow-up-22`.

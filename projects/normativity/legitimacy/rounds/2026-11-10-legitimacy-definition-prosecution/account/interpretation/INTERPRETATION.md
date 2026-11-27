@@ -1,5 +1,7 @@
 # The interpretation: the legitimacy statement worked out on histories
 
+> **Not wanted as it stands.** This directory works out the notions the three sentences of `../LEGITIMACY_STATEMENT.md` take as given. The statement of the line is `../PLAIN_TELLING_STATEMENT.md`, which takes none of them, so the repairs listed here are not pursued (`../LEDGER.md` §6 and the ranking, entry 5). The model and its episodes stay under the runner.
+
 `../LEGITIMACY_STATEMENT.md` states legitimacy over notions it takes as given. This directory
 is the current attempt to work those notions out in a concrete episode: a design on histories
 (§1), an exact model of it (`history_model.py`), 68 episodes on which the model gives the
