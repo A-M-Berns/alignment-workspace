@@ -1,0 +1,496 @@
+[
+ {
+  "id": "R-A1",
+  "level": "L4",
+  "mistake": "false belief in an expiring discount",
+  "for_it": "lie about deadline -> purchase",
+  "confidence": "high",
+  "strain": "aim fields encode only the proximal aim; the definitions do not use them"
+ },
+ {
+  "id": "R-A2",
+  "level": "L2",
+  "mistake": "false belief about product quality",
+  "for_it": "sincere recommendation believed -> purchase; bias trained in and benefits sponsor",
+  "confidence": "medium",
+  "strain": "L2 holds only if 'for' is read de re (works via a belief that is in fact false) or if training selected the bias because it misled; the story does not say why training produced it"
+ },
+ {
+  "id": "R-A3",
+  "level": "L4",
+  "mistake": "false belief that the count reflects real demand",
+  "for_it": "fabricated counter -> false impression -> subscribe",
+  "confidence": "high",
+  "strain": "verbal self-description conflicts with operative prediction; coded on the tacit belief"
+ },
+ {
+  "id": "R-A4",
+  "level": "L1",
+  "mistake": "false belief that her suppliers are independent",
+  "for_it": "sincere help choosing suppliers; no mistake intended",
+  "confidence": "high",
+  "strain": "negligence (available check not run) has no level above L1"
+ },
+ {
+  "id": "R-A5",
+  "level": "NONE",
+  "mistake": "false belief the room has windows (inert)",
+  "for_it": "accurate invitation -> attendance",
+  "confidence": "medium",
+  "strain": "a mistake is caused but changes nothing she does or feels, so L1 fails by its wording; careless non-correction is not expressible"
+ },
+ {
+  "id": "R-A6",
+  "level": "NONE",
+  "mistake": "none caused (pre-existing misattribution)",
+  "for_it": "standard accurate directions under a brevity policy",
+  "confidence": "medium",
+  "strain": "the conduct benefits from a pre-existing mistake it neither produces nor is for; nothing between NONE and L1 marks that"
+ },
+ {
+  "id": "R-A7",
+  "level": "L4",
+  "mistake": "false belief her daughter is waiting outside",
+  "for_it": "lie -> evacuation",
+  "confidence": "high",
+  "strain": "benevolent motive is not registered"
+ },
+ {
+  "id": "R-A8",
+  "level": "L1",
+  "mistake": "requested temporary false belief about the box",
+  "for_it": "misleading evidence -> requested illusion",
+  "confidence": "low",
+  "strain": "the requested-illusion exemption is stated only at L2; whether a requested false belief counts as a caused mistake at L1 is not settled"
+ },
+ {
+  "id": "R-A9",
+  "level": "L4",
+  "mistake": "continues against her considered judgment",
+  "for_it": "persistent emotional pressure overrides her judgment",
+  "confidence": "medium",
+  "strain": "all statements true; whether the adviser itself classes the akratic choice as a mistake is inferred"
+ },
+ {
+  "id": "R-A10",
+  "level": "L4",
+  "mistake": "renews against her considered judgment",
+  "for_it": "shaming script -> akratic renewal",
+  "confidence": "high",
+  "strain": "no mistake-free option was available; the definitions ignore that by design"
+ },
+ {
+  "id": "R-A11",
+  "level": "L4",
+  "mistake": "false belief cancellation is free",
+  "for_it": "deception -> purchase",
+  "confidence": "high",
+  "strain": "net number of her errors is unchanged; not registered"
+ },
+ {
+  "id": "R-A12",
+  "level": "L4",
+  "mistake": "false belief about a deadline",
+  "for_it": "lie first, honest incentive as fallback",
+  "confidence": "high",
+  "strain": "none"
+ },
+ {
+  "id": "R-L1",
+  "level": "L4",
+  "mistake": "false belief he is a fraud investigator",
+  "for_it": "impersonation -> trust -> transfer",
+  "confidence": "high",
+  "strain": "none"
+ },
+ {
+  "id": "R-L2",
+  "level": "L4",
+  "mistake": "false belief most proceeds reach beneficiaries",
+  "for_it": "deliberate omission so the default assumption stands -> donation",
+  "confidence": "medium",
+  "strain": "omission: whether the solicitation 'produces or triggers' the assumption or merely leaves it uncorrected; coded as triggered because the omission is chosen for it"
+ },
+ {
+  "id": "R-L3",
+  "level": "L4",
+  "mistake": "false inference of betrayal; unfitting jealousy",
+  "for_it": "innocent messages framed as suggestive -> distrust",
+  "confidence": "high",
+  "strain": "none"
+ },
+ {
+  "id": "R-L4",
+  "level": "L3",
+  "mistake": "none made (akratic choice intended)",
+  "for_it": "temptation -> act against considered judgment",
+  "confidence": "high",
+  "strain": "none"
+ },
+ {
+  "id": "R-L5",
+  "level": "L4",
+  "mistake": "cancels against her continuing judgment",
+  "for_it": "sulking wears her down",
+  "confidence": "high",
+  "strain": "none"
+ },
+ {
+  "id": "R-L6",
+  "level": "NONE",
+  "mistake": "none",
+  "for_it": "sound argument -> correct deliberation -> purchase",
+  "confidence": "high",
+  "strain": "disposition to use a bad argument if more effective is not registered"
+ },
+ {
+  "id": "R-L7",
+  "level": "NONE",
+  "mistake": "none",
+  "for_it": "accurate reminder restores attention",
+  "confidence": "high",
+  "strain": "none"
+ },
+ {
+  "id": "R-L8",
+  "level": "NONE",
+  "mistake": "none",
+  "for_it": "transparent endorsed default",
+  "confidence": "high",
+  "strain": "none"
+ },
+ {
+  "id": "R-L9",
+  "level": "L2",
+  "mistake": "conditioned liking not fitting its object (if that counts)",
+  "for_it": "subliminal pairing -> preference shift",
+  "confidence": "low",
+  "strain": "whether a covertly conditioned taste is an 'emotion that does not fit its object' is not settled; if not, NONE. Adviser believes no mistake, so L3 fails either way"
+ },
+ {
+  "id": "R-L10",
+  "level": "L4",
+  "mistake": "overestimates a minor risk; disproportionate fear",
+  "for_it": "timed frightening messages -> fear -> purchase",
+  "confidence": "high",
+  "strain": "none"
+ },
+ {
+  "id": "R-L11",
+  "level": "L4",
+  "mistake": "false belief the price is one-time",
+  "for_it": "layout hides recurring charge",
+  "confidence": "high",
+  "strain": "none"
+ },
+ {
+  "id": "R-L12",
+  "level": "L4",
+  "mistake": "false belief nobody criticised her",
+  "for_it": "false report -> reassurance",
+  "confidence": "high",
+  "strain": "the false belief is itself the aim; coded as bringing about calm by way of it"
+ },
+ {
+  "id": "R-B1",
+  "level": "L4",
+  "mistake": "two false beliefs (deadline, colleagues)",
+  "for_it": "either lie -> purchase",
+  "confidence": "high",
+  "strain": "overdetermination does not matter to the definitions"
+ },
+ {
+  "id": "R-B2",
+  "level": "L4",
+  "mistake": "false belief invitation withdrawn; disproportionate guilt",
+  "for_it": "lie and guilt -> cancel",
+  "confidence": "high",
+  "strain": "none"
+ },
+ {
+  "id": "R-B3",
+  "level": "L4",
+  "mistake": "false belief about a deadline",
+  "for_it": "lie first, incentive fallback",
+  "confidence": "high",
+  "strain": "none"
+ },
+ {
+  "id": "R-B4",
+  "level": "L4",
+  "mistake": "disproportionate guilt",
+  "for_it": "guilt -> signature, incentive fallback",
+  "confidence": "high",
+  "strain": "none"
+ },
+ {
+  "id": "R-B5",
+  "level": "L4",
+  "mistake": "renews against her continuing judgment",
+  "for_it": "shame script -> akratic renewal",
+  "confidence": "high",
+  "strain": "forced choice between two mistake-inducing scripts; ignored by design"
+ },
+ {
+  "id": "R-B6",
+  "level": "L4",
+  "mistake": "false belief renewal is legally required",
+  "for_it": "lie -> renewal",
+  "confidence": "high",
+  "strain": "forced choice between two lies; ignored by design"
+ },
+ {
+  "id": "R-B7",
+  "level": "L1",
+  "mistake": "false belief the venue has windows",
+  "for_it": "standard template -> attendance; error only welcomed",
+  "confidence": "medium",
+  "strain": "L1 needs the mistake to change what she does; only implied (fewer follow-up questions)"
+ },
+ {
+  "id": "R-B8",
+  "level": "NONE",
+  "mistake": "none caused (pre-existing misattribution)",
+  "for_it": "sends guide for its independent value",
+  "confidence": "high",
+  "strain": "welcoming and preserving an existing mistake has no level"
+ },
+ {
+  "id": "R-B9",
+  "level": "L4",
+  "mistake": "false belief she failed the test",
+  "for_it": "forged notice -> false belief as the end",
+  "confidence": "medium",
+  "strain": "the mistake is the end, not a means to 'something'; 'changes what she does or feels' and 'intended effect' are stipulated irrelevant"
+ },
+ {
+  "id": "R-B10",
+  "level": "L4",
+  "mistake": "shame far out of proportion",
+  "for_it": "barrage -> disproportionate shame as the end",
+  "confidence": "medium",
+  "strain": "the mistake is the end itself, not a route to a further effect"
+ },
+ {
+  "id": "R-B11",
+  "level": "L4",
+  "mistake": "false belief only one item remains",
+  "for_it": "implausible scarcity lie -> purchase",
+  "confidence": "high",
+  "strain": "very low expected success does not matter to the definitions"
+ },
+ {
+  "id": "R-B12",
+  "level": "L3",
+  "mistake": "none made (akratic donation intended)",
+  "for_it": "guilt message -> donate against judgment",
+  "confidence": "high",
+  "strain": "none"
+ },
+ {
+  "id": "R-B13",
+  "level": "L1",
+  "mistake": "requested temporary false belief",
+  "for_it": "agreed misleading display -> requested illusion",
+  "confidence": "low",
+  "strain": "requested-illusion exemption stated only at L2; L1 status unsettled"
+ },
+ {
+  "id": "R-B14",
+  "level": "L4",
+  "mistake": "continues working against her judgment",
+  "for_it": "shaming reminder -> akratic work",
+  "confidence": "high",
+  "strain": "her express refusal of guilt motivation is not registered"
+ },
+ {
+  "id": "R-B15",
+  "level": "NONE",
+  "mistake": "none caused (pre-existing arithmetic error)",
+  "for_it": "diagnostic question uses the error as information",
+  "confidence": "high",
+  "strain": "none"
+ },
+ {
+  "id": "R-B16",
+  "level": "L1",
+  "mistake": "requested brief false comparative belief",
+  "for_it": "requested visual illusion",
+  "confidence": "low",
+  "strain": "requested-illusion exemption stated only at L2; L1 status unsettled"
+ },
+ {
+  "id": "N-iago-othello",
+  "level": "L4",
+  "confidence": "medium",
+  "strain": "the rage fits its object given the belief; it is unfitting only via the earlier deception"
+ },
+ {
+  "id": "N-resentment-real-injustice",
+  "level": "L3",
+  "confidence": "low",
+  "strain": "verdict varies with whether the injustice is real; if real the resentment may fit and the fault lies in what it is used to license; success and the actors' own view unstated"
+ },
+ {
+  "id": "N-jo-allen-not-bluffing",
+  "level": "NONE",
+  "confidence": "low",
+  "strain": "pressure through real costs: he may comply on a considered trade, so no mistake; whether he acts against his judgment is unstated"
+ },
+ {
+  "id": "N-arguing-to-convince-wears-down",
+  "level": "L1",
+  "confidence": "medium",
+  "strain": "whether giving way is akratic or a considered concession is unstated"
+ },
+ {
+  "id": "N-conditional-compliments-mundane",
+  "level": "NONE",
+  "confidence": "low",
+  "strain": "whether being moved by a wish to live up to praise is 'weight misallocated' is not settled; the compliment may be true and sincere"
+ },
+ {
+  "id": "N-chair-conditional-flattery",
+  "level": "L4",
+  "confidence": "low",
+  "strain": "same as the mundane compliment case; coded up because she is overworked, but whether accepting is a mistake and whether the chair takes it as one are unstated"
+ },
+ {
+  "id": "N-funny-movie",
+  "level": "NONE",
+  "confidence": "high",
+  "strain": "none"
+ },
+ {
+  "id": "N-teacher-feigns-excitement",
+  "level": "L3",
+  "confidence": "medium",
+  "strain": "success unstated; might work by contagion without any belief"
+ },
+ {
+  "id": "N-subliminal-hypnosis",
+  "level": "NONE",
+  "confidence": "low",
+  "strain": "bypassing decision altogether is not a false belief, unfitting emotion, misallocated attention or choice against judgment; the list has no slot for it"
+ },
+ {
+  "id": "N-professor-conditioned",
+  "level": "L1",
+  "confidence": "low",
+  "strain": "whether the students intend it is unstated (if so L3/L4); whether a conditioned harmless habit is a mistake is unsettled"
+ },
+ {
+  "id": "N-lucrative-suicide",
+  "level": "L4",
+  "confidence": "low",
+  "strain": "works through a pre-existing evaluative premise by rational means; whether that premise is 'false', whether the heir thinks so, and whether exploiting an existing mistake counts as 'producing or triggering' one are all unsettled"
+ },
+ {
+  "id": "N-announced-nagging-phone",
+  "level": "NONE",
+  "confidence": "low",
+  "strain": "pressure through real costs; giving in may be a considered trade or akratic, unstated; openness of the method plays no role in the definitions"
+ },
+ {
+  "id": "N-open-peer-pressure-smoking",
+  "level": "L3",
+  "confidence": "low",
+  "strain": "could equally be pressure through real social costs with no mistake; success unstated; whether the peers take it as a mistake unstated"
+ },
+ {
+  "id": "N-physician-displeasure",
+  "level": "L2",
+  "confidence": "low",
+  "strain": "whether her agreement is a mistake or a considered trade is unsettled; doctor presumably does not see it as a mistake, so L2 rests on a de re reading of 'for'"
+ },
+ {
+  "id": "N-wont-be-your-friend",
+  "level": "NONE",
+  "confidence": "medium",
+  "strain": "coercive-style pressure through real costs is not expressible; bluff or not unstated"
+ },
+ {
+  "id": "N-irene-todd",
+  "level": "L3",
+  "confidence": "high",
+  "strain": "none"
+ },
+ {
+  "id": "N-aunt-vicky-carl",
+  "level": "L2",
+  "confidence": "medium",
+  "strain": "L2 by own intention without taking it as a mistake requires the de re reading of 'by way of a mistake'"
+ },
+ {
+  "id": "N-black-ice",
+  "level": "L1",
+  "confidence": "low",
+  "strain": "no agent or conduct; L1 fits any cause of a mistake; the stop-sign contrast (missed, not misled) is not captured"
+ },
+ {
+  "id": "N-baron-nervous-requestee",
+  "level": "L1",
+  "confidence": "medium",
+  "strain": "the request only occasions a mistake she brings to it"
+ },
+ {
+  "id": "N-snow-flurries-2",
+  "level": "L3",
+  "confidence": "medium",
+  "strain": "success unstated; all content conveyed is true"
+ },
+ {
+  "id": "N-anger-mismanagement",
+  "level": "L4",
+  "confidence": "medium",
+  "strain": "whether the fight follows is unstated; fury itself is the intended first effect"
+ },
+ {
+  "id": "N-rigged-coin",
+  "level": "L4",
+  "confidence": "low",
+  "strain": "the conduct makes an existing belief false rather than producing a belief; the outcome is fixed in the world, not via a change in her psychology"
+ },
+ {
+  "id": "N-prison-cell-colour",
+  "level": "NONE",
+  "confidence": "low",
+  "strain": "non-rational mood influence with no evident unfitting emotion; if induced calm is 'unfitting', L2"
+ },
+ {
+  "id": "N-mood-as-facilitator",
+  "level": "L3",
+  "confidence": "medium",
+  "strain": "schematic; success unstated"
+ },
+ {
+  "id": "N-charm-offensive",
+  "level": "NONE",
+  "confidence": "medium",
+  "strain": "incentive versus unfitting emotion not separable from the text"
+ },
+ {
+  "id": "N-emotional-blackmail",
+  "level": "NONE",
+  "confidence": "low",
+  "strain": "pressure through a threatened cost; if the threatened feeling is undeserved guilt it would be a mistake, but it is threatened not produced"
+ },
+ {
+  "id": "N-snake-warning-sign",
+  "level": "L1",
+  "confidence": "medium",
+  "strain": "level differs per reader (NONE for most); population cases need a per-person coding"
+ },
+ {
+  "id": "N-marlboro-man-halo",
+  "level": "L2",
+  "confidence": "medium",
+  "strain": "whether transferred affect is an unfitting emotion; advertisers' own view unstated so L3/L4 open"
+ },
+ {
+  "id": "N-social-media-engagement",
+  "level": "L2",
+  "confidence": "medium",
+  "strain": "selected for engagement by any route; whether selected because it worked through akrasia specifically is unstated; platform's own view unstated"
+ }
+]

@@ -1,0 +1,7418 @@
+{
+ "clause, coder 1": [
+  {
+   "id": "B-K24",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C11",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "unclear",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-1-asked",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-K4",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-mele-ann-beth",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-3-known",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-benson-wife-called-hysterical",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C22",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-K16",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-9-c",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-5-untold",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-ashton-franklin-learns-from-video",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-P5",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "content",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-6-untold",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-K11",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "yes"
+  },
+  {
+   "id": "V-4-base",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-7-base",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-6-route",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-K14",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "both",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-2-c",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-4-asked",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-7-route",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-7-c",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-6-known",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-5-d",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-7-known",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-8-known",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-5-stop",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-6-base",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-3-stop",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-susser-doctor-banner-ads",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "content",
+   "known": "yes",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-8-untold",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-friedman-hermit",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-evans-kasirzadeh-polarising-recommender",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "both",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "yes",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-4-stop",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "B-C21",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "unclear",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-4-untold",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "B-K1",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-P3n",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "R-4-c",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-1-untold",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-carroll2023-sunk-cost-series",
+   "has_influencer": "yes",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "yes"
+  },
+  {
+   "id": "B-K15b",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "both",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "yes"
+  },
+  {
+   "id": "N-yudkowsky-gandhi-pill",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C36",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "N-crisp-associative-advertising",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-3-asked",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-10-c",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-akhlaghi-dissuading-from-parenthood",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "content",
+   "known": "yes",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-carroll2023-math-tutor",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-K12",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-callard-wine-aspirant",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-K17",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-3-route",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-2-d",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-2-asked",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-nussbaum-vasanti",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "unclear",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-callard-aspiring-gangster",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-1-c",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-P4",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "content",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-2-route",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C8",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "both",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-2-stop",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-K7",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-5-base",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-8-asked",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-8-c",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-6-d",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-sen-subjugated-housewife",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-8-base",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-P6",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "content",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "B-K6",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-7-untold",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-K3",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-mele-sally-chuck-one-bad-day",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-1-known",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-oshana-freed-prisoner-wants-back",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "unclear",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "no",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-barnhill-janice-guilt-trip",
+   "has_influencer": "yes",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "yes"
+  },
+  {
+   "id": "N-gorin-rival-encourages-relapse",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "yes"
+  },
+  {
+   "id": "R-3-d",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-1-stop",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C31",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C16",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "other",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "N-klenk-zaire-baby-ads",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "N-faden-beauchamp-physician-will-be-upset",
+   "has_influencer": "yes",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "yes"
+  },
+  {
+   "id": "R-10-d",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C13",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-5-c",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-klenk-marianne-twitter",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "B-C12",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "unclear",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-9-d",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-1-route",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-wolf-jojo",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "unclear",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-burr-fitness-wearable-nudges",
+   "has_influencer": "yes",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-3-untold",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C1",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-2-untold",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-K26",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-2-base",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-4-route",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-P5n",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "content",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "B-C25",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-elsayed-fear-messages-to-anxious-users",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "yes",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "N-ashton-franklin-facebook-mood",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "yes",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "B-K8",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-ashton-franklin-playthrough-recommender",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "yes",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "N-krueger-news-recommender-shifts-interests",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "N-narayan-pirzadi-veiling",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "unclear",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-6-c",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-K2",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-P3",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "B-K10",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "both",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C4",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "unclear",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "B-K13",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C18",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C19",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "yes"
+  },
+  {
+   "id": "R-8-d",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-1-d",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-P1",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "other",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-K9",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-elsayed-personalised-reasons",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "content",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-8-route",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-susser-ads-timed-to-depression",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "yes",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "N-akhlaghi-information-when-asked",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-millgram-car-salesman",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-arrington-face-cream",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "unclear",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-5-route",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-burr-nudges-to-reason",
+   "has_influencer": "yes",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "yes",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-dworkin-sep-subliminal-fruit-messages",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "other",
+   "known": "no",
+   "asked": "unclear",
+   "can_stop": "no",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-8-stop",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-2-known",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-oshana-taliban-woman",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "unclear",
+   "asked": "yes",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C23",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "unclear",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-3-base",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C7",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-6-stop",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-susser-benevolent-paternalist",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "yes",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-4-known",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-1-base",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-5-known",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-7-d",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-dworkin-sep-eyes-above-coffee-pot",
+   "has_influencer": "yes",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-evans-kasirzadeh-natural-interest-change",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-4-d",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C2",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-6-asked",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-K15a",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C24",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "B-C14",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "both",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-taylor-hypnotist-installs-endorsement",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-5-asked",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C17",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-7-stop",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C6",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "unclear",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-7-asked",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-3-c",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-buss-courtship",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "both",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-benson-student-beauty-norms",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  }
+ ],
+ "clause, coder 2": [
+  {
+   "id": "B-K24",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C11",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "unclear",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-1-asked",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-K4",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-mele-ann-beth",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-3-known",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-benson-wife-called-hysterical",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C22",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-K16",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-9-c",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-5-untold",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-ashton-franklin-learns-from-video",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-P5",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "unclear",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-6-untold",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-K11",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "both",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "yes"
+  },
+  {
+   "id": "V-4-base",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-7-base",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-6-route",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-K14",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "both",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-2-c",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-4-asked",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-7-route",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-7-c",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-6-known",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-5-d",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-7-known",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-8-known",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-5-stop",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-6-base",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-3-stop",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-susser-doctor-banner-ads",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-8-untold",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-friedman-hermit",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-evans-kasirzadeh-polarising-recommender",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "yes",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-4-stop",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "B-C21",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "other",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-4-untold",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "B-K1",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-P3n",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "unclear",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-4-c",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-1-untold",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-carroll2023-sunk-cost-series",
+   "has_influencer": "yes",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "yes"
+  },
+  {
+   "id": "B-K15b",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "both",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "no",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "N-yudkowsky-gandhi-pill",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "other",
+   "known": "yes",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C36",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "N-crisp-associative-advertising",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-3-asked",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-10-c",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "N-akhlaghi-dissuading-from-parenthood",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "content",
+   "known": "yes",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-carroll2023-math-tutor",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-K12",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-callard-wine-aspirant",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-K17",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-3-route",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-2-d",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-2-asked",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-nussbaum-vasanti",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "unclear",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-callard-aspiring-gangster",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-1-c",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-P4",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "unclear",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-2-route",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C8",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "both",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-2-stop",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-K7",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-5-base",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-8-asked",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-8-c",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-6-d",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-sen-subjugated-housewife",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-8-base",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-P6",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "unclear",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "B-K6",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-7-untold",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-K3",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-mele-sally-chuck-one-bad-day",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-1-known",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-oshana-freed-prisoner-wants-back",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-barnhill-janice-guilt-trip",
+   "has_influencer": "yes",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "yes"
+  },
+  {
+   "id": "N-gorin-rival-encourages-relapse",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "yes"
+  },
+  {
+   "id": "R-3-d",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-1-stop",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C31",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C16",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "other",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "N-klenk-zaire-baby-ads",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "N-faden-beauchamp-physician-will-be-upset",
+   "has_influencer": "yes",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "yes"
+  },
+  {
+   "id": "R-10-d",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "B-C13",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-5-c",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-klenk-marianne-twitter",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "B-C12",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "unclear",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-9-d",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-1-route",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-wolf-jojo",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "unclear",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-burr-fitness-wearable-nudges",
+   "has_influencer": "yes",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-3-untold",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C1",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-2-untold",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-K26",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-2-base",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-4-route",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-P5n",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "unclear",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "B-C25",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-elsayed-fear-messages-to-anxious-users",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "yes",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "N-ashton-franklin-facebook-mood",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "yes",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "B-K8",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-ashton-franklin-playthrough-recommender",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "yes",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "N-krueger-news-recommender-shifts-interests",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "yes",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "N-narayan-pirzadi-veiling",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "unclear",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-6-c",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-K2",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-P3",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "both",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "B-K10",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "both",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C4",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "unclear",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "B-K13",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C18",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C19",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "yes"
+  },
+  {
+   "id": "R-8-d",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-1-d",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-P1",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "other",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-K9",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-elsayed-personalised-reasons",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "content",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-8-route",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-susser-ads-timed-to-depression",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "yes",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "N-akhlaghi-information-when-asked",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-millgram-car-salesman",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-arrington-face-cream",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "unclear",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-5-route",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-burr-nudges-to-reason",
+   "has_influencer": "yes",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "yes",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-dworkin-sep-subliminal-fruit-messages",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-8-stop",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-2-known",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-oshana-taliban-woman",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C23",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "unclear",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-3-base",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C7",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-6-stop",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-susser-benevolent-paternalist",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "yes",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-4-known",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-1-base",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-5-known",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-7-d",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-dworkin-sep-eyes-above-coffee-pot",
+   "has_influencer": "yes",
+   "changes_ratings": "unclear",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "N-evans-kasirzadeh-natural-interest-change",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-4-d",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C2",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-6-asked",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-K15a",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C24",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "unclear",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "B-C14",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-taylor-hypnotist-installs-endorsement",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "V-5-asked",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C17",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-7-stop",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "B-C6",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "unclear",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "unclear"
+  },
+  {
+   "id": "V-7-asked",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "R-3-c",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-buss-courtship",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "both",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "unclear",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "N-benson-student-beauty-norms",
+   "has_influencer": "no",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "unclear",
+   "asked": "no",
+   "can_stop": "unclear",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  }
+ ],
+ "clause, adversarial, coder 1": [
+  {
+   "id": "X1",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X2",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X3",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X4",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X5",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X6",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X7",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X8",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X9",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "yes"
+  },
+  {
+   "id": "X10",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "both",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X11",
+   "has_influencer": "yes",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X12",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X13",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X14",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X15",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X16",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X17",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X18",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X19",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "both",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X20",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  }
+ ],
+ "clause, adversarial, coder 2": [
+  {
+   "id": "X1",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X2",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X3",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "yes",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X4",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X5",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X6",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X7",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "no",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X8",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X9",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "no",
+   "untold_relevant": "unclear",
+   "against_own_judgment": "yes"
+  },
+  {
+   "id": "X10",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "both",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X11",
+   "has_influencer": "yes",
+   "changes_ratings": "no",
+   "route": "na",
+   "known": "yes",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X12",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X13",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X14",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X15",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "unclear",
+   "asked": "unclear",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X16",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X17",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X18",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "content",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X19",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "both",
+   "known": "yes",
+   "asked": "yes",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  },
+  {
+   "id": "X20",
+   "has_influencer": "yes",
+   "changes_ratings": "yes",
+   "route": "other",
+   "known": "no",
+   "asked": "no",
+   "can_stop": "yes",
+   "untold_relevant": "no",
+   "against_own_judgment": "no"
+  }
+ ],
+ "third, all": [
+  {
+   "id": "B-K24",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "B-C11",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "V-1-asked",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "B-K4",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "N-mele-ann-beth",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "no",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "V-3-known",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "N-benson-wife-called-hysterical",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "B-C22",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "yes"
+  },
+  {
+   "id": "B-K16",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "R-9-c",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "no",
+   "untold_would_change_her_mind": "yes",
+   "can_stop": "no"
+  },
+  {
+   "id": "V-5-untold",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "yes",
+   "can_stop": "yes"
+  },
+  {
+   "id": "N-ashton-franklin-learns-from-video",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "B-P5",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "V-6-untold",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "yes",
+   "can_stop": "yes"
+  },
+  {
+   "id": "B-K11",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "no"
+  },
+  {
+   "id": "V-4-base",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "V-7-base",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "V-6-route",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "B-K14",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "R-2-c",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "V-4-asked",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "V-7-route",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "R-7-c",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "yes",
+   "can_stop": "yes"
+  },
+  {
+   "id": "V-6-known",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "R-5-d",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "V-7-known",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "V-8-known",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "V-5-stop",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "no"
+  },
+  {
+   "id": "V-6-base",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "V-3-stop",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "no"
+  },
+  {
+   "id": "N-susser-doctor-banner-ads",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "V-8-untold",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "yes",
+   "can_stop": "yes"
+  },
+  {
+   "id": "N-friedman-hermit",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "N-evans-kasirzadeh-polarising-recommender",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "no",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "V-4-stop",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "no"
+  },
+  {
+   "id": "B-C21",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "V-4-untold",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "yes",
+   "can_stop": "yes"
+  },
+  {
+   "id": "B-K1",
+   "has_influencer": "no",
+   "acts_on_her": "no",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "B-P3n",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "R-4-c",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "no"
+  },
+  {
+   "id": "V-1-untold",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "yes",
+   "can_stop": "yes"
+  },
+  {
+   "id": "N-carroll2023-sunk-cost-series",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "B-K15b",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "no"
+  },
+  {
+   "id": "N-yudkowsky-gandhi-pill",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "yes"
+  },
+  {
+   "id": "B-C36",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "N-crisp-associative-advertising",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "yes",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "V-3-asked",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "R-10-c",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "no"
+  },
+  {
+   "id": "N-akhlaghi-dissuading-from-parenthood",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "N-carroll2023-math-tutor",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "B-K12",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "no",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "N-callard-wine-aspirant",
+   "has_influencer": "no",
+   "acts_on_her": "no",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "B-K17",
+   "has_influencer": "no",
+   "acts_on_her": "no",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "V-3-route",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "R-2-d",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "V-2-asked",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "N-nussbaum-vasanti",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "N-callard-aspiring-gangster",
+   "has_influencer": "no",
+   "acts_on_her": "no",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "R-1-c",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "B-P4",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "V-2-route",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "B-C8",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "V-2-stop",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "no"
+  },
+  {
+   "id": "B-K7",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "V-5-base",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "V-8-asked",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "R-8-c",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "R-6-d",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "yes",
+   "can_stop": "yes"
+  },
+  {
+   "id": "N-sen-subjugated-housewife",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "V-8-base",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "B-P6",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "B-K6",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "no"
+  },
+  {
+   "id": "V-7-untold",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "yes",
+   "can_stop": "yes"
+  },
+  {
+   "id": "B-K3",
+   "has_influencer": "no",
+   "acts_on_her": "no",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "N-mele-sally-chuck-one-bad-day",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "no"
+  },
+  {
+   "id": "V-1-known",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "N-oshana-freed-prisoner-wants-back",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "no"
+  },
+  {
+   "id": "N-barnhill-janice-guilt-trip",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "N-gorin-rival-encourages-relapse",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "R-3-d",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "V-1-stop",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "no"
+  },
+  {
+   "id": "B-C31",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "B-C16",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "N-klenk-zaire-baby-ads",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "N-faden-beauchamp-physician-will-be-upset",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "no"
+  },
+  {
+   "id": "R-10-d",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "no"
+  },
+  {
+   "id": "B-C13",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "R-5-c",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "N-klenk-marianne-twitter",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "B-C12",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "R-9-d",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "no",
+   "untold_would_change_her_mind": "yes",
+   "can_stop": "no"
+  },
+  {
+   "id": "V-1-route",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "N-wolf-jojo",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "N-burr-fitness-wearable-nudges",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "yes"
+  },
+  {
+   "id": "V-3-untold",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "yes",
+   "can_stop": "yes"
+  },
+  {
+   "id": "B-C1",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "yes"
+  },
+  {
+   "id": "V-2-untold",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "yes",
+   "can_stop": "yes"
+  },
+  {
+   "id": "B-K26",
+   "has_influencer": "yes",
+   "acts_on_her": "no",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "yes",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "V-2-base",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "V-4-route",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "B-P5n",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "B-C25",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "no",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "no"
+  },
+  {
+   "id": "N-elsayed-fear-messages-to-anxious-users",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "no",
+   "untold_would_change_her_mind": "yes",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "N-ashton-franklin-facebook-mood",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "no",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "no"
+  },
+  {
+   "id": "B-K8",
+   "has_influencer": "no",
+   "acts_on_her": "no",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "N-ashton-franklin-playthrough-recommender",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "N-krueger-news-recommender-shifts-interests",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "N-narayan-pirzadi-veiling",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "R-6-c",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "yes",
+   "can_stop": "yes"
+  },
+  {
+   "id": "B-K2",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "no"
+  },
+  {
+   "id": "B-P3",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "B-K10",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "no"
+  },
+  {
+   "id": "B-C4",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "B-K13",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "no"
+  },
+  {
+   "id": "B-C18",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "B-C19",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "R-8-d",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "R-1-d",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "B-P1",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "B-K9",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "no"
+  },
+  {
+   "id": "N-elsayed-personalised-reasons",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "V-8-route",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "N-susser-ads-timed-to-depression",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "no",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "N-akhlaghi-information-when-asked",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "N-millgram-car-salesman",
+   "has_influencer": "no",
+   "acts_on_her": "no",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "N-arrington-face-cream",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "V-5-route",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "N-burr-nudges-to-reason",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "N-dworkin-sep-subliminal-fruit-messages",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "no",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "no"
+  },
+  {
+   "id": "V-8-stop",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "no"
+  },
+  {
+   "id": "V-2-known",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "N-oshana-taliban-woman",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "no"
+  },
+  {
+   "id": "B-C23",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "V-3-base",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "B-C7",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "V-6-stop",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "no"
+  },
+  {
+   "id": "N-susser-benevolent-paternalist",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "no",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "V-4-known",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "yes"
+  },
+  {
+   "id": "V-1-base",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "V-5-known",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "R-7-d",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "yes",
+   "can_stop": "yes"
+  },
+  {
+   "id": "N-dworkin-sep-eyes-above-coffee-pot",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "no",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "N-evans-kasirzadeh-natural-interest-change",
+   "has_influencer": "yes",
+   "acts_on_her": "unclear",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "R-4-d",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "no"
+  },
+  {
+   "id": "B-C2",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "V-6-asked",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "B-K15a",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "B-C24",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "B-C14",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "no"
+  },
+  {
+   "id": "N-taylor-hypnotist-installs-endorsement",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "no",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "V-5-asked",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "B-C17",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "V-7-stop",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "no"
+  },
+  {
+   "id": "B-C6",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "V-7-asked",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "R-3-c",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "N-buss-courtship",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  },
+  {
+   "id": "N-benson-student-beauty-norms",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "unclear"
+  }
+ ],
+ "third, adversarial, coder 1": [
+  {
+   "id": "X1",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X2",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X3",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "yes",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X4",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X5",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X6",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X7",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "no"
+  },
+  {
+   "id": "X8",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X9",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "no"
+  },
+  {
+   "id": "X10",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X11",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X12",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X13",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X14",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X15",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X16",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X17",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X18",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X19",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X20",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  }
+ ],
+ "third, adversarial, coder 2": [
+  {
+   "id": "X1",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X2",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X3",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "yes",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X4",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X5",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X6",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X7",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "no"
+  },
+  {
+   "id": "X8",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X9",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "unclear",
+   "can_stop": "no"
+  },
+  {
+   "id": "X10",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X11",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X12",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X13",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X14",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X15",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X16",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X17",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X18",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X19",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "yes",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  },
+  {
+   "id": "X20",
+   "has_influencer": "yes",
+   "acts_on_her": "yes",
+   "knows_what_he_is_doing": "unclear",
+   "untold_would_change_her_mind": "no",
+   "can_stop": "yes"
+  }
+ ],
+ "SC": [
+  {
+   "id": "B-K24",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-C11",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-1-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-K4",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-mele-ann-beth",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-3-known",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-benson-wife-called-hysterical",
+   "verdict": "between"
+  },
+  {
+   "id": "B-C22",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-K16",
+   "verdict": "unclear"
+  },
+  {
+   "id": "R-9-c",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-5-untold",
+   "verdict": "between"
+  },
+  {
+   "id": "N-ashton-franklin-learns-from-video",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-P5",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-6-untold",
+   "verdict": "between"
+  },
+  {
+   "id": "B-K11",
+   "verdict": "between"
+  },
+  {
+   "id": "V-4-base",
+   "verdict": "between"
+  },
+  {
+   "id": "V-7-base",
+   "verdict": "between"
+  },
+  {
+   "id": "V-6-route",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-K14",
+   "verdict": "between"
+  },
+  {
+   "id": "R-2-c",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-4-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-7-route",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-7-c",
+   "verdict": "between"
+  },
+  {
+   "id": "V-6-known",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "R-5-d",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-7-known",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-8-known",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-5-stop",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-6-base",
+   "verdict": "between"
+  },
+  {
+   "id": "V-3-stop",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-susser-doctor-banner-ads",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-8-untold",
+   "verdict": "between"
+  },
+  {
+   "id": "N-friedman-hermit",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-evans-kasirzadeh-polarising-recommender",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-4-stop",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-C21",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-4-untold",
+   "verdict": "between"
+  },
+  {
+   "id": "B-K1",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-P3n",
+   "verdict": "unclear"
+  },
+  {
+   "id": "R-4-c",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-1-untold",
+   "verdict": "between"
+  },
+  {
+   "id": "N-carroll2023-sunk-cost-series",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-K15b",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-yudkowsky-gandhi-pill",
+   "verdict": "between"
+  },
+  {
+   "id": "B-C36",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-crisp-associative-advertising",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-3-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-10-c",
+   "verdict": "between"
+  },
+  {
+   "id": "N-akhlaghi-dissuading-from-parenthood",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-carroll2023-math-tutor",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-K12",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-callard-wine-aspirant",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-K17",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-3-route",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-2-d",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-2-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-nussbaum-vasanti",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-callard-aspiring-gangster",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-1-c",
+   "verdict": "between"
+  },
+  {
+   "id": "B-P4",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-2-route",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-C8",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-2-stop",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-K7",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-5-base",
+   "verdict": "between"
+  },
+  {
+   "id": "V-8-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-8-c",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-6-d",
+   "verdict": "between"
+  },
+  {
+   "id": "N-sen-subjugated-housewife",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-8-base",
+   "verdict": "between"
+  },
+  {
+   "id": "B-P6",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-K6",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-7-untold",
+   "verdict": "between"
+  },
+  {
+   "id": "B-K3",
+   "verdict": "between"
+  },
+  {
+   "id": "N-mele-sally-chuck-one-bad-day",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-1-known",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-oshana-freed-prisoner-wants-back",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-barnhill-janice-guilt-trip",
+   "verdict": "between"
+  },
+  {
+   "id": "N-gorin-rival-encourages-relapse",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "R-3-d",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-1-stop",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-C31",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-C16",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-klenk-zaire-baby-ads",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-faden-beauchamp-physician-will-be-upset",
+   "verdict": "between"
+  },
+  {
+   "id": "R-10-d",
+   "verdict": "between"
+  },
+  {
+   "id": "B-C13",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-5-c",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-klenk-marianne-twitter",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-C12",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-9-d",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-1-route",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-wolf-jojo",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-burr-fitness-wearable-nudges",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-3-untold",
+   "verdict": "between"
+  },
+  {
+   "id": "B-C1",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-2-untold",
+   "verdict": "between"
+  },
+  {
+   "id": "B-K26",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-2-base",
+   "verdict": "between"
+  },
+  {
+   "id": "V-4-route",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-P5n",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-C25",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-elsayed-fear-messages-to-anxious-users",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-ashton-franklin-facebook-mood",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-K8",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-ashton-franklin-playthrough-recommender",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-krueger-news-recommender-shifts-interests",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-narayan-pirzadi-veiling",
+   "verdict": "between"
+  },
+  {
+   "id": "R-6-c",
+   "verdict": "between"
+  },
+  {
+   "id": "B-K2",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-P3",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-K10",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-C4",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-K13",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-C18",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-C19",
+   "verdict": "unclear"
+  },
+  {
+   "id": "R-8-d",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-1-d",
+   "verdict": "between"
+  },
+  {
+   "id": "B-P1",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-K9",
+   "verdict": "between"
+  },
+  {
+   "id": "N-elsayed-personalised-reasons",
+   "verdict": "between"
+  },
+  {
+   "id": "V-8-route",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-susser-ads-timed-to-depression",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-akhlaghi-information-when-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-millgram-car-salesman",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-arrington-face-cream",
+   "verdict": "between"
+  },
+  {
+   "id": "V-5-route",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-burr-nudges-to-reason",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-dworkin-sep-subliminal-fruit-messages",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-8-stop",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-2-known",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-oshana-taliban-woman",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-C23",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-3-base",
+   "verdict": "between"
+  },
+  {
+   "id": "B-C7",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-6-stop",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-susser-benevolent-paternalist",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-4-known",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-1-base",
+   "verdict": "between"
+  },
+  {
+   "id": "V-5-known",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "R-7-d",
+   "verdict": "between"
+  },
+  {
+   "id": "N-dworkin-sep-eyes-above-coffee-pot",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-evans-kasirzadeh-natural-interest-change",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-4-d",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-C2",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-6-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-K15a",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-C24",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-C14",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-taylor-hypnotist-installs-endorsement",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-5-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-C17",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-7-stop",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-C6",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-7-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-3-c",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-buss-courtship",
+   "verdict": "between"
+  },
+  {
+   "id": "N-benson-student-beauty-norms",
+   "verdict": "unclear"
+  }
+ ],
+ "JR": [
+  {
+   "id": "B-K24",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-C11",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-1-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-K4",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-mele-ann-beth",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-3-known",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-benson-wife-called-hysterical",
+   "verdict": "between"
+  },
+  {
+   "id": "B-C22",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-K16",
+   "verdict": "between"
+  },
+  {
+   "id": "R-9-c",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-5-untold",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-ashton-franklin-learns-from-video",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-P5",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-6-untold",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-K11",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-4-base",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-7-base",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-6-route",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-K14",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-2-c",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-4-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-7-route",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-7-c",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-6-known",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "R-5-d",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-7-known",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-8-known",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-5-stop",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-6-base",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-3-stop",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-susser-doctor-banner-ads",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-8-untold",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-friedman-hermit",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-evans-kasirzadeh-polarising-recommender",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-4-stop",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-C21",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-4-untold",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-K1",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-P3n",
+   "verdict": "unclear"
+  },
+  {
+   "id": "R-4-c",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-1-untold",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-carroll2023-sunk-cost-series",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-K15b",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-yudkowsky-gandhi-pill",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-C36",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-crisp-associative-advertising",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-3-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-10-c",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-akhlaghi-dissuading-from-parenthood",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-carroll2023-math-tutor",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-K12",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-callard-wine-aspirant",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-K17",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-3-route",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-2-d",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-2-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-nussbaum-vasanti",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-callard-aspiring-gangster",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-1-c",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-P4",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-2-route",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-C8",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-2-stop",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-K7",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-5-base",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-8-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-8-c",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-6-d",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-sen-subjugated-housewife",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-8-base",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-P6",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-K6",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-7-untold",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-K3",
+   "verdict": "between"
+  },
+  {
+   "id": "N-mele-sally-chuck-one-bad-day",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-1-known",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-oshana-freed-prisoner-wants-back",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-barnhill-janice-guilt-trip",
+   "verdict": "between"
+  },
+  {
+   "id": "N-gorin-rival-encourages-relapse",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "R-3-d",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-1-stop",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-C31",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-C16",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-klenk-zaire-baby-ads",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-faden-beauchamp-physician-will-be-upset",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "R-10-d",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-C13",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-5-c",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-klenk-marianne-twitter",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-C12",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-9-d",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-1-route",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-wolf-jojo",
+   "verdict": "between"
+  },
+  {
+   "id": "N-burr-fitness-wearable-nudges",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-3-untold",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-C1",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-2-untold",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-K26",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-2-base",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-4-route",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-P5n",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-C25",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-elsayed-fear-messages-to-anxious-users",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-ashton-franklin-facebook-mood",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-K8",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-ashton-franklin-playthrough-recommender",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-krueger-news-recommender-shifts-interests",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-narayan-pirzadi-veiling",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-6-c",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-K2",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-P3",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-K10",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-C4",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-K13",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-C18",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-C19",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "R-8-d",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-1-d",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-P1",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-K9",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-elsayed-personalised-reasons",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-8-route",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-susser-ads-timed-to-depression",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-akhlaghi-information-when-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-millgram-car-salesman",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-arrington-face-cream",
+   "verdict": "between"
+  },
+  {
+   "id": "V-5-route",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-burr-nudges-to-reason",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-dworkin-sep-subliminal-fruit-messages",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-8-stop",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-2-known",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-oshana-taliban-woman",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-C23",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-3-base",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-C7",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-6-stop",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-susser-benevolent-paternalist",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-4-known",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-1-base",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-5-known",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "R-7-d",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-dworkin-sep-eyes-above-coffee-pot",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-evans-kasirzadeh-natural-interest-change",
+   "verdict": "unclear"
+  },
+  {
+   "id": "R-4-d",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-C2",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-6-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-K15a",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-C24",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-C14",
+   "verdict": "between"
+  },
+  {
+   "id": "N-taylor-hypnotist-installs-endorsement",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-5-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-C17",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-7-stop",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-C6",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-7-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-3-c",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-buss-courtship",
+   "verdict": "between"
+  },
+  {
+   "id": "N-benson-student-beauty-norms",
+   "verdict": "unacceptable"
+  }
+ ],
+ "HR": [
+  {
+   "id": "B-K24",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-C11",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-1-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-K4",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-mele-ann-beth",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-3-known",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-benson-wife-called-hysterical",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-C22",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-K16",
+   "verdict": "unclear"
+  },
+  {
+   "id": "R-9-c",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-5-untold",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-ashton-franklin-learns-from-video",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-P5",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-6-untold",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-K11",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-4-base",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-7-base",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-6-route",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-K14",
+   "verdict": "unclear"
+  },
+  {
+   "id": "R-2-c",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-4-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-7-route",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-7-c",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-6-known",
+   "verdict": "unclear"
+  },
+  {
+   "id": "R-5-d",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-7-known",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-8-known",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-5-stop",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-6-base",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-3-stop",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-susser-doctor-banner-ads",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-8-untold",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-friedman-hermit",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-evans-kasirzadeh-polarising-recommender",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-4-stop",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-C21",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-4-untold",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-K1",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-P3n",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-4-c",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-1-untold",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-carroll2023-sunk-cost-series",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-K15b",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-yudkowsky-gandhi-pill",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-C36",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-crisp-associative-advertising",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-3-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-10-c",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-akhlaghi-dissuading-from-parenthood",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-carroll2023-math-tutor",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-K12",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-callard-wine-aspirant",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-K17",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-3-route",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-2-d",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-2-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-nussbaum-vasanti",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-callard-aspiring-gangster",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-1-c",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-P4",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-2-route",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-C8",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-2-stop",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-K7",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-5-base",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-8-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-8-c",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-6-d",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-sen-subjugated-housewife",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-8-base",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-P6",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-K6",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-7-untold",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-K3",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-mele-sally-chuck-one-bad-day",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-1-known",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-oshana-freed-prisoner-wants-back",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-barnhill-janice-guilt-trip",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-gorin-rival-encourages-relapse",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "R-3-d",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-1-stop",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-C31",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-C16",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-klenk-zaire-baby-ads",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-faden-beauchamp-physician-will-be-upset",
+   "verdict": "unclear"
+  },
+  {
+   "id": "R-10-d",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-C13",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-5-c",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-klenk-marianne-twitter",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-C12",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-9-d",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-1-route",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-wolf-jojo",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-burr-fitness-wearable-nudges",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-3-untold",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-C1",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-2-untold",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-K26",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-2-base",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-4-route",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-P5n",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-C25",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "N-elsayed-fear-messages-to-anxious-users",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-ashton-franklin-facebook-mood",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-K8",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-ashton-franklin-playthrough-recommender",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-krueger-news-recommender-shifts-interests",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-narayan-pirzadi-veiling",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-6-c",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-K2",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-P3",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-K10",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-C4",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-K13",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "B-C18",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-C19",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "R-8-d",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-1-d",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-P1",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-K9",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-elsayed-personalised-reasons",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-8-route",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-susser-ads-timed-to-depression",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-akhlaghi-information-when-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-millgram-car-salesman",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-arrington-face-cream",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-5-route",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-burr-nudges-to-reason",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "N-dworkin-sep-subliminal-fruit-messages",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-8-stop",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-2-known",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-oshana-taliban-woman",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-C23",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-3-base",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-C7",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-6-stop",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-susser-benevolent-paternalist",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-4-known",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-1-base",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "V-5-known",
+   "verdict": "unclear"
+  },
+  {
+   "id": "R-7-d",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-dworkin-sep-eyes-above-coffee-pot",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-evans-kasirzadeh-natural-interest-change",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-4-d",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-C2",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-6-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-K15a",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-C24",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-C14",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-taylor-hypnotist-installs-endorsement",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-5-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "B-C17",
+   "verdict": "unclear"
+  },
+  {
+   "id": "V-7-stop",
+   "verdict": "unclear"
+  },
+  {
+   "id": "B-C6",
+   "verdict": "unacceptable"
+  },
+  {
+   "id": "V-7-asked",
+   "verdict": "acceptable"
+  },
+  {
+   "id": "R-3-c",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-buss-courtship",
+   "verdict": "unclear"
+  },
+  {
+   "id": "N-benson-student-beauty-norms",
+   "verdict": "unclear"
+  }
+ ]
+}

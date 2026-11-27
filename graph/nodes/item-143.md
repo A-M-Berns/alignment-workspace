@@ -40,7 +40,8 @@ strict priority (`scoring.authority-bound`; `account/AGENDA.md` §5). Wanted: a 
 a lexicographic score, which need every violation detected and the adviser able to tell
 beforehand which courses are free of one; her commands as well as her evaluation; her later
 self against her present wishes. `account/BRIDGE_LEAN.md` §4.2 names the missing map to the
-authority module.
+authority module. Whether a change in her values that she did not authorise is a violation
+of her authority is item 149.
 
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.

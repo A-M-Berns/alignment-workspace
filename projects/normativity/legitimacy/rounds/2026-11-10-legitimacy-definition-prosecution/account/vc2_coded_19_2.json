@@ -1,0 +1,812 @@
+[
+ {
+  "id": "B-C1",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "unclear",
+  "forced": "no"
+ },
+ {
+  "id": "B-C2",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "yes",
+  "pressed": "yes",
+  "asked": "unclear",
+  "forced": "yes"
+ },
+ {
+  "id": "B-C4",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "unclear",
+  "pressed": "no",
+  "asked": "unclear",
+  "forced": "no"
+ },
+ {
+  "id": "B-C6",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "unclear",
+  "pressed": "no",
+  "asked": "unclear",
+  "forced": "no"
+ },
+ {
+  "id": "B-C7",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "unclear",
+  "pressed": "unclear",
+  "asked": "unclear",
+  "forced": "no"
+ },
+ {
+  "id": "B-C8",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "unclear",
+  "pressed": "no",
+  "asked": "unclear",
+  "forced": "no"
+ },
+ {
+  "id": "B-C11",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "yes",
+  "pressed": "unclear",
+  "asked": "unclear",
+  "forced": "unclear"
+ },
+ {
+  "id": "B-C12",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "yes",
+  "forced": "no"
+ },
+ {
+  "id": "B-C13",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "unclear",
+  "forced": "no"
+ },
+ {
+  "id": "B-C14",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "unclear",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "yes"
+ },
+ {
+  "id": "B-C16",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "unclear",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "B-C17",
+  "has_influencer": "yes",
+  "hidden": "yes",
+  "astray": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "B-C18",
+  "has_influencer": "yes",
+  "hidden": "yes",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "B-C19",
+  "has_influencer": "yes",
+  "hidden": "yes",
+  "astray": "yes",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "B-C21",
+  "has_influencer": "no",
+  "hidden": "na",
+  "astray": "na",
+  "pressed": "na",
+  "asked": "na",
+  "forced": "na"
+ },
+ {
+  "id": "B-C22",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "yes",
+  "forced": "no"
+ },
+ {
+  "id": "B-C23",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "unclear",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "B-C24",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "yes",
+  "pressed": "unclear",
+  "asked": "unclear",
+  "forced": "unclear"
+ },
+ {
+  "id": "B-C25",
+  "has_influencer": "yes",
+  "hidden": "yes",
+  "astray": "unclear",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "yes"
+ },
+ {
+  "id": "B-C31",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "yes",
+  "forced": "no"
+ },
+ {
+  "id": "B-C36",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "unclear",
+  "pressed": "no",
+  "asked": "unclear",
+  "forced": "no"
+ },
+ {
+  "id": "B-P1",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "B-P3",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "unclear",
+  "pressed": "no",
+  "asked": "unclear",
+  "forced": "no"
+ },
+ {
+  "id": "B-P3n",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "unclear",
+  "pressed": "no",
+  "asked": "unclear",
+  "forced": "no"
+ },
+ {
+  "id": "B-P4",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "unclear",
+  "pressed": "unclear",
+  "asked": "unclear",
+  "forced": "no"
+ },
+ {
+  "id": "B-P5",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "unclear",
+  "pressed": "unclear",
+  "asked": "unclear",
+  "forced": "no"
+ },
+ {
+  "id": "B-P5n",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "unclear",
+  "pressed": "unclear",
+  "asked": "unclear",
+  "forced": "no"
+ },
+ {
+  "id": "B-P6",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "unclear",
+  "pressed": "no",
+  "asked": "unclear",
+  "forced": "no"
+ },
+ {
+  "id": "B-K1",
+  "has_influencer": "no",
+  "hidden": "na",
+  "astray": "na",
+  "pressed": "na",
+  "asked": "na",
+  "forced": "na"
+ },
+ {
+  "id": "B-K2",
+  "has_influencer": "no",
+  "hidden": "na",
+  "astray": "na",
+  "pressed": "na",
+  "asked": "na",
+  "forced": "na"
+ },
+ {
+  "id": "B-K3",
+  "has_influencer": "no",
+  "hidden": "na",
+  "astray": "na",
+  "pressed": "na",
+  "asked": "na",
+  "forced": "na"
+ },
+ {
+  "id": "B-K4",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "yes"
+ },
+ {
+  "id": "B-K6",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "unclear",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "yes"
+ },
+ {
+  "id": "B-K7",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "B-K8",
+  "has_influencer": "no",
+  "hidden": "na",
+  "astray": "na",
+  "pressed": "na",
+  "asked": "na",
+  "forced": "na"
+ },
+ {
+  "id": "B-K9",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "yes"
+ },
+ {
+  "id": "B-K10",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "yes"
+ },
+ {
+  "id": "B-K11",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "B-K12",
+  "has_influencer": "yes",
+  "hidden": "yes",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "B-K13",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "unclear",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "yes"
+ },
+ {
+  "id": "B-K14",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "B-K15a",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "yes",
+  "pressed": "unclear",
+  "asked": "unclear",
+  "forced": "unclear"
+ },
+ {
+  "id": "B-K15b",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "no",
+  "pressed": "yes",
+  "asked": "unclear",
+  "forced": "yes"
+ },
+ {
+  "id": "B-K16",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "B-K17",
+  "has_influencer": "no",
+  "hidden": "na",
+  "astray": "na",
+  "pressed": "na",
+  "asked": "na",
+  "forced": "na"
+ },
+ {
+  "id": "B-K24",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "unclear",
+  "forced": "no"
+ },
+ {
+  "id": "B-K26",
+  "has_influencer": "yes",
+  "hidden": "yes",
+  "astray": "unclear",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "N-ashton-franklin-facebook-mood",
+  "has_influencer": "yes",
+  "hidden": "yes",
+  "astray": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "N-ashton-franklin-learns-from-video",
+  "has_influencer": "no",
+  "hidden": "na",
+  "astray": "na",
+  "pressed": "na",
+  "asked": "na",
+  "forced": "na"
+ },
+ {
+  "id": "N-ashton-franklin-playthrough-recommender",
+  "has_influencer": "yes",
+  "hidden": "yes",
+  "astray": "unclear",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "N-klenk-zaire-baby-ads",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "N-klenk-marianne-twitter",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "N-barnhill-janice-guilt-trip",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "N-gorin-rival-encourages-relapse",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "N-evans-kasirzadeh-polarising-recommender",
+  "has_influencer": "yes",
+  "hidden": "yes",
+  "astray": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "N-evans-kasirzadeh-natural-interest-change",
+  "has_influencer": "no",
+  "hidden": "na",
+  "astray": "na",
+  "pressed": "na",
+  "asked": "na",
+  "forced": "na"
+ },
+ {
+  "id": "N-krueger-news-recommender-shifts-interests",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "unclear",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "N-susser-ads-timed-to-depression",
+  "has_influencer": "yes",
+  "hidden": "yes",
+  "astray": "yes",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "N-susser-doctor-banner-ads",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "N-susser-benevolent-paternalist",
+  "has_influencer": "yes",
+  "hidden": "yes",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "N-carroll2023-sunk-cost-series",
+  "has_influencer": "yes",
+  "hidden": "yes",
+  "astray": "yes",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "N-carroll2023-math-tutor",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "yes",
+  "forced": "no"
+ },
+ {
+  "id": "N-elsayed-personalised-reasons",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "N-elsayed-fear-messages-to-anxious-users",
+  "has_influencer": "yes",
+  "hidden": "yes",
+  "astray": "yes",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "N-burr-fitness-wearable-nudges",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "yes",
+  "forced": "no"
+ },
+ {
+  "id": "N-burr-nudges-to-reason",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "unclear",
+  "forced": "no"
+ },
+ {
+  "id": "N-mele-ann-beth",
+  "has_influencer": "yes",
+  "hidden": "yes",
+  "astray": "unclear",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "yes"
+ },
+ {
+  "id": "N-mele-sally-chuck-one-bad-day",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "unclear",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "yes"
+ },
+ {
+  "id": "N-wolf-jojo",
+  "has_influencer": "no",
+  "hidden": "na",
+  "astray": "na",
+  "pressed": "na",
+  "asked": "na",
+  "forced": "na"
+ },
+ {
+  "id": "N-oshana-taliban-woman",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "no",
+  "pressed": "yes",
+  "asked": "unclear",
+  "forced": "yes"
+ },
+ {
+  "id": "N-benson-wife-called-hysterical",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "N-benson-student-beauty-norms",
+  "has_influencer": "no",
+  "hidden": "na",
+  "astray": "na",
+  "pressed": "na",
+  "asked": "na",
+  "forced": "na"
+ },
+ {
+  "id": "N-narayan-pirzadi-veiling",
+  "has_influencer": "no",
+  "hidden": "na",
+  "astray": "na",
+  "pressed": "na",
+  "asked": "na",
+  "forced": "na"
+ },
+ {
+  "id": "N-friedman-hermit",
+  "has_influencer": "no",
+  "hidden": "na",
+  "astray": "na",
+  "pressed": "na",
+  "asked": "na",
+  "forced": "na"
+ },
+ {
+  "id": "N-taylor-hypnotist-installs-endorsement",
+  "has_influencer": "yes",
+  "hidden": "yes",
+  "astray": "unclear",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "yes"
+ },
+ {
+  "id": "N-millgram-car-salesman",
+  "has_influencer": "no",
+  "hidden": "na",
+  "astray": "na",
+  "pressed": "na",
+  "asked": "na",
+  "forced": "na"
+ },
+ {
+  "id": "N-faden-beauchamp-physician-will-be-upset",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "no",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "N-buss-courtship",
+  "has_influencer": "yes",
+  "hidden": "yes",
+  "astray": "unclear",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "N-callard-wine-aspirant",
+  "has_influencer": "no",
+  "hidden": "na",
+  "astray": "na",
+  "pressed": "na",
+  "asked": "na",
+  "forced": "na"
+ },
+ {
+  "id": "N-callard-aspiring-gangster",
+  "has_influencer": "no",
+  "hidden": "na",
+  "astray": "na",
+  "pressed": "na",
+  "asked": "na",
+  "forced": "na"
+ },
+ {
+  "id": "N-akhlaghi-dissuading-from-parenthood",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "N-akhlaghi-information-when-asked",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "yes",
+  "forced": "unclear"
+ },
+ {
+  "id": "N-dworkin-sep-eyes-above-coffee-pot",
+  "has_influencer": "yes",
+  "hidden": "yes",
+  "astray": "yes",
+  "pressed": "yes",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "N-dworkin-sep-subliminal-fruit-messages",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "no",
+  "pressed": "unclear",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "N-crisp-associative-advertising",
+  "has_influencer": "yes",
+  "hidden": "yes",
+  "astray": "yes",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "N-arrington-face-cream",
+  "has_influencer": "yes",
+  "hidden": "unclear",
+  "astray": "unclear",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "N-yudkowsky-gandhi-pill",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "no",
+  "forced": "no"
+ },
+ {
+  "id": "N-sen-subjugated-housewife",
+  "has_influencer": "no",
+  "hidden": "na",
+  "astray": "na",
+  "pressed": "na",
+  "asked": "na",
+  "forced": "na"
+ },
+ {
+  "id": "N-oshana-freed-prisoner-wants-back",
+  "has_influencer": "no",
+  "hidden": "na",
+  "astray": "na",
+  "pressed": "na",
+  "asked": "na",
+  "forced": "na"
+ },
+ {
+  "id": "N-nussbaum-vasanti",
+  "has_influencer": "yes",
+  "hidden": "no",
+  "astray": "no",
+  "pressed": "no",
+  "asked": "yes",
+  "forced": "no"
+ }
+]

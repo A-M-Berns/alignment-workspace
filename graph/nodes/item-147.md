@@ -17,6 +17,7 @@ deliverable: "`test-supported` — modules under `account/` of the prosecution r
 acceptance: "`python3 run.py` in `projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution` green with a status for each observation model; an instance separating *a function of the record* from *estimable without bias* and one separating that from *neither*, in exact rationals; the graded score's loss at ε = 1/10, 1/1000 and 10⁻⁶ at most a stated constant times ε."
 work:
   - {kind: round, ref: projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution}
+  - {kind: decision, ref: 2026-11-27--legitimacy-twenty-second-followup-plain-telling}
 context: ["projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/CURRENT.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/SCORING.md", "projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/account/BRIDGE_LEAN.md", "lean/Workspace/Deference/Contrib/ScoringTheorem.lean", "lean/Workspace/Deference/Contrib/AccountJoin.lean", "lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean"]
 author: "@claude-fable-5-2"
 size: M
@@ -48,6 +49,14 @@ the adviser's writes, her state, the adviser's policy or samples of it); for eac
 that separates them; the rates of D3 that an audit `D` computed from the record attains;
 and a graded score, continuous in the size of a departure, under which a course that
 departs with probability ε loses in proportion to ε.
+
+The statement of `account/PLAIN_TELLING_STATEMENT.md` makes legitimacy a property of what the
+adviser believes and forecasts, so a gate needs his picture or a proxy for it, and a sincere
+adviser who is wrong passes whatever her record shows. `LegitimacyGate.gate_gives_behaviour`
+takes a gate's two error probabilities as numbers; row 55 of `account/LEDGER.md` is what
+this item answers for that statement: the error probabilities a stated procedure attains
+under one observation model, or two pictures with different verdicts and the same record.
+Item 159 asks the neighbouring question of the accuracy condition.
 
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.

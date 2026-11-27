@@ -1,0 +1,2662 @@
+[
+ {
+  "part": "A",
+  "id": "iago-othello",
+  "where": "2.2.1 Playing on the Emotions (paradigm); also 2.4, 3.9",
+  "kind": "K2",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The quoted scene involves no new deception; relative to what Othello has been led to observe, his anger may be what his evidence supports. The emotion is unfitting relative to the facts (3.9: she has been faithful), not relative to his evidence, unless the earlier planted K1 is counted as the fault used."
+ },
+ {
+  "part": "A",
+  "id": "fear-mongering-ads",
+  "where": "2.2.1, Willie Horton ad and Daisy ad",
+  "kind": "K2",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The Horton events were real; what makes the fear disproportionate is a standard of proportion the text does not give. The admakers' beliefs about proportionality are not stated. Mass audience, not one person. A footnote adds an appeal to racist attitudes, which is not an estimate off from evidence in any obvious way."
+ },
+ {
+  "part": "A",
+  "id": "resentment-real-injustice",
+  "where": "2.2.1, resentment over past injustices",
+  "kind": "K2",
+  "author_verdict": "manipulates",
+  "formal_verdict": "contested or unclear",
+  "match": false,
+  "expressibility": "Where the injustice is real, no estimate is identifiably off; the author still counts the lever as manipulative. The fault would have to be the transfer of blame to a present group or the disproportion of the response, which needs a fittingness standard not supplied."
+ },
+ {
+  "part": "A",
+  "id": "adam-crocodile-tears",
+  "where": "2.2.1, Adam's Rib",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Adam says the earlier tears were real though producible at will; if the feeling is real but deployed on purpose, no estimate of hers is off. The verdict depends on reading the tears as feigned."
+ },
+ {
+  "part": "A",
+  "id": "bill-janice-guilt-trip",
+  "where": "2.2.1, guilt trip (Simon)",
+  "kind": "K2",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "She is told the doctor's view that the dose was not dangerous and discounts it, so the guilt is off from her own evidence; this fits. Bill's belief that her guilt is unwarranted is inferred from 'ploy'."
+ },
+ {
+  "part": "A",
+  "id": "pickpocket",
+  "where": "2.2.2 Misdirection/Misemphasis (paradigm); 3.9",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Strain on three points. (a) The inattention is perceptual capture, not an estimate of how much a consideration matters. (b) Given what he observes (a bump), attending to it is what his evidence supports; the fault is relative to the facts, not his evidence. (c) The pickpocket's real aim is the wallet, not any act, belief or feeling of the victim; the victim does nothing as a result of the mistake."
+ },
+ {
+  "part": "A",
+  "id": "magician-misdirection",
+  "where": "2.2.2, stage magician",
+  "kind": "K3",
+  "author_verdict": "contested or unclear",
+  "formal_verdict": "manipulates",
+  "match": null,
+  "expressibility": "The audience has consented to and wants the misdirection; the formal statement has no place for consent or for a mistake she welcomes."
+ },
+ {
+  "part": "A",
+  "id": "military-decoy",
+  "where": "2.2.2, military decoys",
+  "kind": "K1",
+  "author_verdict": "contested or unclear",
+  "formal_verdict": "manipulates",
+  "match": null,
+  "expressibility": "The enemy's estimate may be exactly what its observations support (it sees the decoy); the error is relative to the facts."
+ },
+ {
+  "part": "A",
+  "id": "pyramid-scheme-misdirection",
+  "where": "2.2.2, con artists",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "A",
+  "id": "car-salesperson-misemphasis",
+  "where": "2.2.2, manipulative car salesperson",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The standard for correct weight is the customer's own stated budget and needs, not 'what his observations support'; the vocabulary's evidence-relative wording fits weights only loosely."
+ },
+ {
+  "part": "A",
+  "id": "diet-product-ads",
+  "where": "2.2.2, dubious diet products",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "A",
+  "id": "gregory-paula-gaslight",
+  "where": "2.2.3 Gaslighting (paradigm); 3.9",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "A process over time rather than one estimate. Gregory manufactures her evidence, so her low self-trust may come to be what her observations support; the fault is then relative to the facts (her judgment is sound), not her evidence."
+ },
+ {
+  "part": "A",
+  "id": "mash-gaslight",
+  "where": "2.2.3, M*A*S*H",
+  "kind": "K1",
+  "author_verdict": "contested or unclear",
+  "formal_verdict": "acts manipulatively only",
+  "match": null,
+  "expressibility": "none"
+ },
+ {
+  "part": "A",
+  "id": "radar-slipped-pass",
+  "where": "2.2.3, M*A*S*H back-story",
+  "kind": "K3",
+  "author_verdict": "contested or unclear",
+  "formal_verdict": "manipulates",
+  "match": null,
+  "expressibility": "none"
+ },
+ {
+  "part": "A",
+  "id": "anne-bert-game-switch",
+  "where": "2.2.4 Game Switching (Herzog)",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The author stresses that Bert forms no […] and that the switch is automatic. Calling it 'an estimate that the rule applies here' attributes an estimate where the text says there is none. By Bert's own earlier guardedness it could also be read as K4."
+ },
+ {
+  "part": "A",
+  "id": "tailgating",
+  "where": "2.2.4 Game Switching (paradigm); 3.9",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The author says the habit fires with little or no thought and the employee never forms […] belongs. The 'estimate that the rule applies' is therefore a fiction: the fault is the absence of an estimate. 2.2.10 adds that conflict aversion may also be at work, which would be a pressure reading of the same act."
+ },
+ {
+  "part": "A",
+  "id": "carl-edna-uniform",
+  "where": "2.2.4 and 2.4, delivery uniform / scam email",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "A",
+  "id": "jonestown",
+  "where": "2.2.5 Social Proof (paradigm); 3.9",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The text says isolation and uncertainty left members with no other source of guidance, which makes following others closer to what their evidence supports; the heuristic is unreliable relative to the facts. The relocation a year earlier is a process over time that creates the fault. Whether Jones regarded their following as a mistake is not determinate. Other factors (peer pressure, authority) are acknowledged."
+ },
+ {
+  "part": "A",
+  "id": "flick-triple-dog-dare",
+  "where": "2.2.6 Peer Pressure (paradigm); 3.9, 3.10",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The author describes the mechanism as a real cost (peer disapproval) attached to refusing. If that cost makes compliance Flick's best option by his own rating, the formal statement says incentive, not manipulation; the K4 reading rests on his remark that it is dumb. 3.9 says no faulty mental state is induced. Whether Schwartz thinks compliance is against Flick's judgment is not stated."
+ },
+ {
+  "part": "A",
+  "id": "ostracism-threat",
+  "where": "2.2.6, extreme peer pressure",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "The author says the […] is hard to draw and is one of degree; the formal statement draws it by whether she acts against her own rating, which is a different axis."
+ },
+ {
+  "part": "A",
+  "id": "jo-allen-not-bluffing",
+  "where": "2.2.7 Emotional Blackmail (paradigm); 3.9, 3.10; also tantrums, sulking, silent treatment",
+  "kind": "cannot say",
+  "author_verdict": "manipulates",
+  "formal_verdict": "contested or unclear",
+  "match": false,
+  "expressibility": "The author says outright (3.9) that no faulty mental state is induced when Jo is not bluffing. The text does not say Allen acts against his own judgment; the unpleasantness is a real cost and may make compliance his best option, which the formal statement classes as an incentive. Nothing in the vocabulary separates this from honest bargaining within a relationship."
+ },
+ {
+  "part": "A",
+  "id": "jo-allen-bluffing",
+  "where": "3.9, Jo bluffing variant",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "A",
+  "id": "nagging-teen",
+  "where": "2.2.8 Nagging (paradigm); 3.9, 3.10",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "A process over time: resistance is worn down, compared to an itch. The author describes it as a punishment removed on compliance, i.e. a real cost; if ending it makes yielding the parents' best option all things considered, the formal statement gives incentive. The K4 reading rests on '[…] teen's view of whether yielding is a mistake is not stated."
+ },
+ {
+  "part": "A",
+  "id": "arguing-to-convince-wears-down",
+  "where": "2.2.8, Baron's contrast",
+  "kind": "K4",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "loose sense only",
+  "match": false,
+  "expressibility": "none"
+ },
+ {
+  "part": "A",
+  "id": "charm-offensive-motorist",
+  "where": "2.2.9 Charm Offensive (paradigm, Hare)",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The author's analysis is two-step: she gets him to care about her approval, then makes approval depend on compliance. The first step is an induced desire, not an estimate; the vocabulary has no slot for 'made to want something'. It could be forced into K3 (too much weight on her approval) or K4 (he 'gives in'), but the text supports neither over the other. The author calls it the carrot to emotional blackmail's stick, i.e. an incentive."
+ },
+ {
+  "part": "A",
+  "id": "con-conflict-aversion",
+  "where": "2.2.10 Exploiting Conflict Aversion (paradigm, Wilson); 3.9, 3.10",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Could equally be K3 (momentary awkwardness overweighted against the loss) or a real cost that makes staying his preferred act. The author says no faulty mental state is induced and that some aversion to conflict is reasonable; where reasonable aversion ends is not given."
+ },
+ {
+  "part": "A",
+  "id": "on-the-spot-request",
+  "where": "2.2.10, on the spot / presumed agreement; 2.5; 3.6",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The K3 reading leans on the author's contrast of 'onerous' with 'momentary'; no standard for the right weight on awkwardness is given, and K4 is as good a reading. Author adds that the tactic stays manipulative when the target sees exactly what is being done, so no belief is off."
+ },
+ {
+  "part": "A",
+  "id": "panhandler-guides",
+  "where": "2.2.11 Exploiting Reciprocity (paradigm, Gass and Seiter); 3.10",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The author files this under pressure (3.10): the discomfort of refusing is what moves them, which is K4 or a real cost, not a script misfire. The same case fits K3 and K4 and the text does not choose."
+ },
+ {
+  "part": "A",
+  "id": "caesar-corleone-favours",
+  "where": "2.2.11, Caesar and Don Corleone",
+  "kind": "cannot say",
+  "author_verdict": "contested or unclear",
+  "formal_verdict": "not manipulation",
+  "match": null,
+  "expressibility": "The author says cases where the favour can be declined are less clearly manipulative; the formal statement has no degrees of clarity."
+ },
+ {
+  "part": "A",
+  "id": "negging",
+  "where": "2.2.12 Negging (paradigm)",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Self-esteem is a feeling as much as an estimate; treating its drop as a belief off from evidence is a strain (the remark, e.g. about her roots, may be true). The second step is an induced need plus an offered way to meet it, closer to an incentive he has manufactured than to a mistaken estimate. The author later groups this with pressure-like tactics by 'motivational lynchpin: need for self-esteem'."
+ },
+ {
+  "part": "A",
+  "id": "insecurity-advertising",
+  "where": "2.2.12, advertising variant",
+  "kind": "K2",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Insecurity as an appraisal of 'how much this feature matters' has no stated standard of fit; 'alleged defect' suggests the author thinks it false but he does not say."
+ },
+ {
+  "part": "A",
+  "id": "bully-coward-taunt",
+  "where": "2.2.12, schoolyard taunt",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "What moves the child may be the sting of the label and the wish to remove it, not any estimate; could be K4. The bully's belief is not stated."
+ },
+ {
+  "part": "A",
+  "id": "ayn-rand-consent",
+  "where": "2.2.13, Ayn Rand (Baron)",
+  "kind": "K3",
+  "author_verdict": "contested or unclear",
+  "formal_verdict": "contested or unclear",
+  "match": true,
+  "expressibility": "Rand may sincerely hold that consent marks the better person, in which case by her beliefs there is no mistake; the influencer's belief is not determinate."
+ },
+ {
+  "part": "A",
+  "id": "conditional-compliments-mundane",
+  "where": "2.2.13, mundane examples and Recker",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "contested or unclear",
+  "match": false,
+  "expressibility": "The compliment may be true and the inference (a strong person can move the machine) sound. No estimate is identifiably off; what moves the hearer is wanting to keep a pleasant self-image, a desire not an estimate. The quoted source hedges ('may be' manipulation, especially for the unsure)."
+ },
+ {
+  "part": "A",
+  "id": "cassius-brutus",
+  "where": "2.2.13, Julius Caesar",
+  "kind": "cannot say",
+  "author_verdict": "contested or unclear",
+  "formal_verdict": "contested or unclear",
+  "match": true,
+  "expressibility": "Whether the consideration is a good reason depends on the social context (a family-honour ethos), so the standard for the weight is neither her evidence nor fixed."
+ },
+ {
+  "part": "A",
+  "id": "chair-conditional-flattery",
+  "where": "2.2.13 Conditional Flattery (paradigm)",
+  "kind": "cannot say",
+  "author_verdict": "manipulates",
+  "formal_verdict": "contested or unclear",
+  "match": false,
+  "expressibility": "The praise may be accurate. The mechanism named is the pleasantness of inflated self-esteem and the wish to keep it, a motive not an estimate. 'Overworked' hints that accepting is against her interest, not that it is against her judgment. The chair's belief is not stated."
+ },
+ {
+  "part": "A",
+  "id": "ingrid-tom-empathy",
+  "where": "2.5 Dual Use; 3.2 (clergy), 3.9",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "Fittingness of empathy is asserted ('undeserved'), with no account of how much is fitting."
+ },
+ {
+  "part": "A",
+  "id": "inebriated-friend",
+  "where": "2.5 Dual Use; 3.9",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "A",
+  "id": "guilt-for-real-wrong",
+  "where": "2.5 Dual Use; 3.9",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "'Appropriate level' is the whole test and is not specified."
+ },
+ {
+  "part": "A",
+  "id": "advise-yield-to-mugger",
+  "where": "2.5 Dual Use",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "A",
+  "id": "point-out-snake",
+  "where": "2.5 Dual Use; 3.9",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "A",
+  "id": "traffic-safety-films",
+  "where": "3.2; 3.7 (Tim)",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "Graphic footage works by vividness, which could push the felt risk above the statistical risk; the author stipulates 'healthy' and gives no measure. Structurally the same as the fear adverts, separated only by the unstated proportion standard."
+ },
+ {
+  "part": "A",
+  "id": "funny-movie",
+  "where": "3.2",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "A mood change that is not an appraisal of anything: on the appraisal reading of emotion one would have to ask whether her cheer 'fits' her situation, and if her sadness was warranted the film makes her estimate less accurate. The verdicts agree only because no one treats the mood as an estimate."
+ },
+ {
+  "part": "A",
+  "id": "tour-guide-social-proof",
+  "where": "3.2; 3.9",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "A",
+  "id": "teacher-feigns-excitement",
+  "where": "3.2",
+  "kind": "K1",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "manipulates",
+  "match": false,
+  "expressibility": "Fits the vocabulary cleanly, which is the problem: a deliberately induced false belief used as the means. The author's verdict here rests on ordinary usage and absence of moral complaint, used against the Moderately Expansive Account; he may treat it differently once his own account is stated."
+ },
+ {
+  "part": "A",
+  "id": "bad-boyfriend",
+  "where": "3.4 Bad Boyfriend",
+  "kind": "K2",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "A",
+  "id": "subliminal-hypnosis",
+  "where": "3.5, subliminal advertising and hypnosis as popularly imagined",
+  "kind": "cannot say",
+  "author_verdict": "manipulates",
+  "formal_verdict": "contested or unclear",
+  "match": false,
+  "expressibility": "Behaviour is driven directly, with decision-making not engaged. Line 1 needs an estimate and line 2 needs her own rating of acts and a choice; the case has neither. It can be forced into K4 only by saying the act falls below what she would have rated highest had she chosen."
+ },
+ {
+  "part": "A",
+  "id": "professor-conditioned",
+  "where": "3.5, students condition a professor",
+  "kind": "cannot say",
+  "author_verdict": "manipulates",
+  "formal_verdict": "not manipulation",
+  "match": false,
+  "expressibility": "The students supply a real, contingent reward; on the formal statement this is an incentive or a tie-break between options she rates the same. What is wrong is her unawareness of the contingency, which is neither an estimate off from her evidence nor a choice against her judgment. A process over time."
+ },
+ {
+  "part": "A",
+  "id": "lucrative-suicide",
+  "where": "3.5 Lucrative Suicide (Gorin)",
+  "kind": "none",
+  "author_verdict": "manipulates",
+  "formal_verdict": "not manipulation",
+  "match": false,
+  "expressibility": "The case is built so that no estimate is off from his evidence and he acts on his own top-rated option. A mistake appears only if James himself believes God exists, or believes premise (b) false, and the case does not say; the influencer's belief is not determinate. The wrong seems to lie in James's aim, which the vocabulary cannot register without a mistake."
+ },
+ {
+  "part": "A",
+  "id": "announced-guilt-trip",
+  "where": "3.6 (Barnhill, Belohrad)",
+  "kind": "K2",
+  "author_verdict": "contested or unclear",
+  "formal_verdict": "contested or unclear",
+  "match": true,
+  "expressibility": "If the target knows the guilt is being engineered and still feels and acts on it, it is unclear whether an estimate is off or he is simply choosing; openness plays no role in the formal statement, while the author allows it might matter for guilt."
+ },
+ {
+  "part": "A",
+  "id": "announced-nagging-phone",
+  "where": "3.6, teen nags for a phone and says so",
+  "kind": "cannot say",
+  "author_verdict": "manipulates",
+  "formal_verdict": "contested or unclear",
+  "match": false,
+  "expressibility": "Everything is in the open, so no belief is off. Unlike the 2.2.8 paradigm the text does not say the parents think the purchase a bad idea; if ending the nagging is worth the phone to them, the formal statement gives incentive."
+ },
+ {
+  "part": "A",
+  "id": "open-peer-pressure-smoking",
+  "where": "3.6",
+  "kind": "cannot say",
+  "author_verdict": "manipulates",
+  "formal_verdict": "contested or unclear",
+  "match": false,
+  "expressibility": "Same gap as the other pressure cases: approval is a real good to him, and the text does not say he rates not smoking higher all things considered."
+ },
+ {
+  "part": "A",
+  "id": "white-supremacist-will",
+  "where": "3.7 White Supremacist Will",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "The fit of the emotion is judged by a moral standard external to Will; by his own values the empathy is unfitting, and 'what her observations support' does not settle which standard governs. Isabel also knowingly produces a feeling he would rate as a mistake. If fit were taken relative to his outlook, the formal statement would call it manipulation."
+ },
+ {
+  "part": "A",
+  "id": "car-seller-ike",
+  "where": "3.8 Car Seller",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "A",
+  "id": "fixation-on-real-injury",
+  "where": "3.9, non-deceptive emotional manipulation",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "All beliefs are true and the emotion has a real object; the fault is purely one of degree, with no measure given for how much attention or anger the injury warrants."
+ },
+ {
+  "part": "A",
+  "id": "security-reminder",
+  "where": "3.9",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "A",
+  "id": "physician-displeasure",
+  "where": "3.10 (Faden, Beauchamp and King)",
+  "kind": "cannot say",
+  "author_verdict": "manipulates",
+  "formal_verdict": "contested or unclear",
+  "match": false,
+  "expressibility": "The quoted analysis locates manipulation in altered options plus resistibility short of coercion. The formal statement has no resistibility scale; it asks whether she acts below her own top-rated act, which the case does not say and rather denies."
+ },
+ {
+  "part": "A",
+  "id": "wont-be-your-friend",
+  "where": "3.10 (Baron)",
+  "kind": "cannot say",
+  "author_verdict": "manipulates",
+  "formal_verdict": "contested or unclear",
+  "match": false,
+  "expressibility": "A sincere conditional threat that leaves a reasonable alternative. On the formal statement it is an incentive unless compliance is against her own judgment, which is not stated; 'reasonable alternative' has no counterpart in the vocabulary."
+ },
+ {
+  "part": "A",
+  "id": "coercive-threats",
+  "where": "3.10, mobster and kill-your-children threats",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "mandy-tara-emotions",
+  "where": "4.2 University I, Playing on the Emotions",
+  "kind": "K2",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "Resentment 'out of spite' as an appraisal of how much the parents are at fault is a mild strain; fear and guilt fit cleanly."
+ },
+ {
+  "part": "B",
+  "id": "mandy-tara-misemphasis",
+  "where": "4.2 University I, Misdirection/Misemphasis; revisited 7.6",
+  "kind": "K3",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "Author says (7.6) there may be no uniquely correct weight, only clearly mistaken ones; 'off from what her evidence supports' presupposes a reference value that the book denies exists in general."
+ },
+ {
+  "part": "B",
+  "id": "mandy-tara-gaslighting",
+  "where": "4.2 University I, Gaslighting",
+  "kind": "K1",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "The mistake is doubt rather than a false belief (Belief Mistake II); expressible as a too-low estimate. Author allows it to be a separate kind (doubting a reliable epistemic practice)."
+ },
+ {
+  "part": "B",
+  "id": "mandy-tara-nagging",
+  "where": "4.2 University I, Nagging",
+  "kind": "K4",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "mandy-tara-emotional-blackmail",
+  "where": "4.2 University I, Emotional Blackmail",
+  "kind": "K4",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "mandy-tara-reciprocity",
+  "where": "4.2 University I, Exploiting Reciprocity",
+  "kind": "K4",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "Could equally be coded K2 (felt obligation overestimates what is owed) or K3 (reciprocity norm misapplied); the author insists it can run with no faulty state, so K4. The kind is underdetermined by the case."
+ },
+ {
+  "part": "B",
+  "id": "mandy-ursula-pressure",
+  "where": "4.2 University II",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Fits because line 2 is relative to her own rating, not to what is good for her. The book locates the mistake in the process, not the decision's content (7.9 n.11)."
+ },
+ {
+  "part": "B",
+  "id": "appropriate-guilt-remorse",
+  "where": "4.2 and 6.8, 7.7 (dual use)",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "The standard of fit for guilt is moral (responsibility for a wrong), not something her observations fix."
+ },
+ {
+  "part": "B",
+  "id": "appropriate-fear-danger",
+  "where": "4.2; 7.7 alligator tourist; 7.8",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "money-or-life",
+  "where": "4.4 (Condition C)",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "money-or-banana-head",
+  "where": "4.4 (Condition C)",
+  "kind": "K4",
+  "author_verdict": "contested or unclear",
+  "formal_verdict": "contested or unclear",
+  "match": null,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "employer-fire-nonperformer",
+  "where": "4.4",
+  "kind": "none",
+  "author_verdict": "contested or unclear",
+  "formal_verdict": "not manipulation",
+  "match": null,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "good-faith-bargain",
+  "where": "4.4",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "insecure-approval",
+  "where": "4.5",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Where the manipulator first makes her insecure, the case is a two-stage process."
+ },
+ {
+  "part": "B",
+  "id": "honey-trap",
+  "where": "4.5",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "greedy-mark",
+  "where": "4.5",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "quick-temper-retribution",
+  "where": "4.5",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Where the affront is imagined or engineered the case is also K1/K2; the book files it under akrasia only."
+ },
+ {
+  "part": "B",
+  "id": "blackmail-version-1",
+  "where": "4.7 Mandy's Emotional Blackmail, Version 1",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Could be K1 (false belief about relative importance) as well as K3. The book's point is that nothing should hang on whether this or Version 2 occurred, and that there is often no fact of the matter; the formal statement must pick a line."
+ },
+ {
+  "part": "B",
+  "id": "blackmail-version-2",
+  "where": "4.7 Mandy's Emotional Blackmail, Version 2",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "paternalistic-mandy-ursula",
+  "where": "4.8",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "On the judgment-reversal reading her estimate of what is best moves toward the truth, so line 1 is positive only if the mis-scored estimate is the size of the incentive, not which act is best. The influencer believes both that the response is a mistake (as process) and that the resulting act is correct; 'believes it is a mistake' needs that split."
+ },
+ {
+  "part": "B",
+  "id": "lawn-offer-unknown",
+  "where": "4.9",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "bargaining-ladder",
+  "where": "4.9",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "If she happened to accept an early low offer akratically, the formal statement gives 'loose sense only' or 'foreseen mistake with no role'; the book does not discuss that outcome."
+ },
+ {
+  "part": "B",
+  "id": "lawn-mower-ice-cream",
+  "where": "4.9 Lawn Mower",
+  "kind": "K4",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "gym-rewards",
+  "where": "4.9",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "smith-police-officer",
+  "where": "4.10 (Rudinow's malingerer)",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The officer's false belief is what his observations support (a staged scene). Line 1 as 'off from what her observations support' is not literally positive; the book's standard for belief is falsity."
+ },
+ {
+  "part": "B",
+  "id": "smith-admitting-physician",
+  "where": "4.10 (Rudinow's malingerer)",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "The book grants that ordinary usage says Smith manipulated her; the formal statement has no label for situational manipulation, only 'not manipulation'."
+ },
+ {
+  "part": "B",
+  "id": "poison-pill",
+  "where": "4.10 (Riker, heresthetic)",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "iago-handkerchief",
+  "where": "4.10",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Planted evidence: the false belief is supported by what he observes, so line 1 read as 'off from her observations' is strained."
+ },
+ {
+  "part": "B",
+  "id": "camping-trip-1",
+  "where": "4.10 Camping Trip I (Barnhill)",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "camping-trip-2",
+  "where": "4.10 Camping Trip II",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The partner's belief is inferred (he has heard your reasons); the text does not say he regards your giving in as a mistake."
+ },
+ {
+  "part": "B",
+  "id": "irene-todd",
+  "where": "5.2 Irene's New Coworkers; 5.6; 6.4",
+  "kind": "K2",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "aunt-vicky-carl",
+  "where": "5.2 Aunt Vicky and Vaccines; 5.6",
+  "kind": "K2",
+  "author_verdict": "loose sense only",
+  "formal_verdict": "loose sense only",
+  "match": true,
+  "expressibility": "The formal loose sense says 'with no intent that it do so', but Vicky does intend the state that is the mistake; what is missing is the belief that it is a mistake. The clause should be read that way."
+ },
+ {
+  "part": "B",
+  "id": "candy-1-larry",
+  "where": "5.3 Candy in the Cupboard, Part I",
+  "kind": "K1",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "candy-1-dora",
+  "where": "5.3 Candy in the Cupboard, Part I",
+  "kind": "K1",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "candy-2-dora",
+  "where": "5.4 Candy in the Cupboard, Part II; 5.5",
+  "kind": "K1",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "Dora does deceive Tim about her own beliefs; the formal statement needs the mistake indexed to a particular proposition to keep that apart, as the book stipulates."
+ },
+ {
+  "part": "B",
+  "id": "snow-flurries-1-fails",
+  "where": "5.3 Snow Flurries I",
+  "kind": "K2",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "snow-flurries-1-succeeds",
+  "where": "6.9; 7.7; 7.8 (Snow Flurries I, success variant)",
+  "kind": "K2",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Tim's fear may be what his evidence (Maddie's doctored report) supports; it is unfitting relative to the actual forecast, not his observations. The appraisal reading makes K1 and K2 the same thing here, which the book welcomes."
+ },
+ {
+  "part": "B",
+  "id": "highway-mix-up",
+  "where": "5.6 Highway Mix-up",
+  "kind": "K1",
+  "author_verdict": "loose sense only",
+  "formal_verdict": "loose sense only",
+  "match": true,
+  "expressibility": "Dan's belief is what his evidence (sincere testimony) supports, so line 1 as written is not positive; the mistake is relative to the facts."
+ },
+ {
+  "part": "B",
+  "id": "black-ice",
+  "where": "5.6; 6.5",
+  "kind": "K1",
+  "author_verdict": "loose sense only",
+  "formal_verdict": "contested or unclear",
+  "match": null,
+  "expressibility": "The formal statement has an influencer with beliefs and a target; it has no clause for objects. The book's metaphorical sense for things requires a tendency to induce mistakes, and its derivative sense refers to the designer's perspective (6.5); neither is in the formal vocabulary."
+ },
+ {
+  "part": "B",
+  "id": "guilt-trip-mike-janice",
+  "where": "5.6 Guilt Trip (Barnhill)",
+  "kind": "K2",
+  "author_verdict": "loose sense only",
+  "formal_verdict": "loose sense only",
+  "match": true,
+  "expressibility": "Whether the guilt is excessive is settled by a moral standard on which observers differ, not by Janice's observations."
+ },
+ {
+  "part": "B",
+  "id": "racist-candidate",
+  "where": "5.6 Racist Candidate (Hanna)",
+  "kind": "K2",
+  "author_verdict": "loose sense only",
+  "formal_verdict": "loose sense only",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "embryo-empathy-activist",
+  "where": "5.7 Contested Mistakes",
+  "kind": "cannot say",
+  "author_verdict": "contested or unclear",
+  "formal_verdict": "contested or unclear",
+  "match": true,
+  "expressibility": "The book says the question is not settled even among people who accept the same empirical facts. So the mistake, if any, is not an estimate off from what her observations support; line 1 has no purchase on a contested moral appraisal."
+ },
+ {
+  "part": "B",
+  "id": "baron-nervous-requestee",
+  "where": "5.8 (Baron's example)",
+  "kind": "K4",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "loose sense only",
+  "match": false,
+  "expressibility": "Whether a bare request 'causes' the mistake is unclear; the book stresses she did nothing to make declining harder. The formal loose sense needs a notion of causing that separates occasioning from inducing."
+ },
+ {
+  "part": "B",
+  "id": "peppermint-patty-innocent",
+  "where": "5.10 (first interpretation)",
+  "kind": "K4",
+  "author_verdict": "loose sense only",
+  "formal_verdict": "loose sense only",
+  "match": true,
+  "expressibility": "The mistake is an omission under social awkwardness; 'the act she takes' has to include not speaking."
+ },
+ {
+  "part": "B",
+  "id": "peppermint-patty-deep-down",
+  "where": "5.10 (second interpretation)",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Fits because the formal statement counts tacit beliefs. Whether a 'deep down' belief is a current belief or one she would only infer is exactly the line the book says it cannot draw precisely."
+ },
+ {
+  "part": "B",
+  "id": "iago-engrossed",
+  "where": "5.10",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "deep-cover-donnie",
+  "where": "5.10 Deep Cover",
+  "kind": "K1",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "jones-innocent-reflection",
+  "where": "5.10",
+  "kind": "K1",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "thermostat",
+  "where": "6.2",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The final aim (sweating) is a bodily state, not an act, belief or feeling. The author says 'manipulated into sweating' is odd and 'manipulated into turning up the heat' is not; the formal T has to be taken as the act."
+ },
+ {
+  "part": "B",
+  "id": "tailgating",
+  "where": "6.2; 6.7 item 4; 7.3",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Strain. The book says the employee forms no belief and that prompting an estimate would defeat the tactic; the behaviour may not even be an action. 'An estimate that the rule applies here' is exactly what is absent. A 'seeming' is the nearest thing."
+ },
+ {
+  "part": "B",
+  "id": "hammer-bump",
+  "where": "6.2",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "state-as-end",
+  "where": "6.2",
+  "kind": "cannot say",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "Dependence and subservience are standing conditions, not single estimates or choices; scoring 'love' or 'respect' as an appraisal that is off is a stretch."
+ },
+ {
+  "part": "B",
+  "id": "snow-flurries-2",
+  "where": "6.3 Snow Flurries II",
+  "kind": "K2",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "The new estimate is correctly derived from his prior plus a true report; it is off only if the standing prior is itself scored against the evidence."
+ },
+ {
+  "part": "B",
+  "id": "anger-mismanagement",
+  "where": "6.3 Anger Mismanagement",
+  "kind": "K2",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The existing fault is a temperament, which the book calls 'mistakenly short'; a trait is not an estimate or choice, so only the triggered anger is a mistake in the formal sense."
+ },
+ {
+  "part": "B",
+  "id": "inherited-guilt",
+  "where": "6.3 Inherited Guilt",
+  "kind": "K2",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The underlying fault is a false moral principle, not an estimate her observations bear on."
+ },
+ {
+  "part": "B",
+  "id": "lucrative-suicide",
+  "where": "6.3 Lucrative Suicide (Gorin)",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The mistaken state is a normative conclusion validly drawn from his own premises and good arguments. No estimate is off from what his observations support; the book just calls the mistake self-evident."
+ },
+ {
+  "part": "B",
+  "id": "onerous-favor",
+  "where": "6.4 The Onerous Favor",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The intended mistake (K3 or K4) and the actual one (K1) fall under different lines; the match rests entirely on 'roughly that mistake', which the kinds do not measure."
+ },
+ {
+  "part": "B",
+  "id": "iago-wrong-method",
+  "where": "6.4",
+  "kind": "K2",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "iago-backfire-accident",
+  "where": "6.4",
+  "kind": "K2",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "How far the causal route may deviate is left to ordinary standards of successful action; 'roughly' in the formal statement inherits that vagueness."
+ },
+ {
+  "part": "B",
+  "id": "trust-me",
+  "where": "6.6 n.5 Trust Me (Gorin)",
+  "kind": "K1",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "contested or unclear",
+  "match": null,
+  "expressibility": "A process over time whose only mistake-inducing step is never taken. The formal statement does not say whether conduct preparatory to inducing a mistake counts as 'producing' one by the influencer's beliefs. If her trust is counted as the mistake (Belohrad's reading, which the author reports), it is a belief well supported by her evidence and false about his intentions."
+ },
+ {
+  "part": "B",
+  "id": "facilitators",
+  "where": "6.6",
+  "kind": "none",
+  "author_verdict": "contested or unclear",
+  "formal_verdict": "not manipulation",
+  "match": null,
+  "expressibility": "The formal statement scores single estimates and choices. Raising her general susceptibility to error is not a mistake on either line, and the book says there may be no fact about how many instances of manipulation a long process contains."
+ },
+ {
+  "part": "B",
+  "id": "layered-tactics",
+  "where": "6.6",
+  "kind": "cannot say",
+  "author_verdict": "manipulates",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "If the charm offensive really raises how much she values the relationship, a later threat may be optimalizing by her own (induced) ratings, and line 2 is not positive at the second step; the mistake has to be located in the earlier valuation, whose standard of correctness is unclear."
+ },
+ {
+  "part": "B",
+  "id": "p1-iago-emotions",
+  "where": "6.7 item 1; 6.8; 7.8",
+  "kind": "K2",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "A long multi-tactic process (6.6); the single-mistake format compresses it."
+ },
+ {
+  "part": "B",
+  "id": "p2-pickpocket",
+  "where": "6.7 item 2; 7.6",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Strain. Attention is captured reflexively; the victim makes no estimate of how much the jostle matters, and given what he can observe the jostle is the salient thing. The misallocation is relative to a fact he has no evidence of. The target is a non-noticing, not an act, belief or feeling."
+ },
+ {
+  "part": "B",
+  "id": "p3-gregory-paula",
+  "where": "6.7 item 3",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Gregory supplies fabricated evidence, so her doubt may be what her observations support. The fuller gaslighting the author mentions (undermining agential authority) is a standing condition, not one estimate."
+ },
+ {
+  "part": "B",
+  "id": "p5-jonestown",
+  "where": "6.7 item 5; 7.5",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Using a heuristic is not obviously making an estimate that it applies; the book says heuristics run without such a judgment. Reliability is a fact about the environment, not what her observations support."
+ },
+ {
+  "part": "B",
+  "id": "p6-flick-dare",
+  "where": "6.7 item 6",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "contested or unclear",
+  "match": null,
+  "expressibility": "A child influencer whose view of whether complying is a mistake for Flick is not given; the formal verdict turns on it (manipulates if he holds it, loose sense only if not)."
+ },
+ {
+  "part": "B",
+  "id": "p6-flick-variant",
+  "where": "6.7 item 6 (parenthesis)",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "The book speaks of what he 'would suffer'; the formal line 2 uses his own rating. These can differ."
+ },
+ {
+  "part": "B",
+  "id": "p7-jo-allen",
+  "where": "6.7 item 7",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Disjunctive: K1 or K4, and the book does not choose."
+ },
+ {
+  "part": "B",
+  "id": "p7-jo-variant",
+  "where": "6.7 item 7 (parenthesis)",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "p8-teen-nagging",
+  "where": "6.7 item 8",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The teen presumably thinks taking the device is fine; what he must believe is only that giving in goes against his parents' own judgment. The formal 'by its own beliefs it is a mistake' has to be read as target-relative, as 7.9 says."
+ },
+ {
+  "part": "B",
+  "id": "p8-nagging-variant",
+  "where": "6.7 item 8 (parenthesis)",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "p9-motorist-charm",
+  "where": "6.7 item 9",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Disjunctive K1 or K4. The charm works by inducing positive feelings that make him care about her approval; whether that induced caring is itself a mis-scored estimate is not settled by the vocabulary."
+ },
+ {
+  "part": "B",
+  "id": "p9-charm-variant",
+  "where": "6.7 item 9 (parenthesis)",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "p10-conflict-aversion",
+  "where": "6.7 item 10",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "p11-panhandlers",
+  "where": "6.7 item 11",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "For a small sum it is doubtful the tourist rates keeping the money above avoiding the awkwardness; if not, line 2 is zero and the case would be optimalizing. The book does not address this."
+ },
+ {
+  "part": "B",
+  "id": "p12-negging",
+  "where": "6.7 item 12",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Self-esteem as an estimate of one's worth 'off from the evidence' is a stretch; the book offers K1 and K4 readings together."
+ },
+ {
+  "part": "B",
+  "id": "p13-conditional-flattery",
+  "where": "6.7 item 13",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Author hedges with 'insofar as'; the chair's belief that accepting is a mistake for her is assumed, not stated."
+ },
+ {
+  "part": "B",
+  "id": "sincere-empathy-appeal",
+  "where": "6.8; 7.7",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "intoxicated-friend",
+  "where": "6.8",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "onerous-request-awkwardness",
+  "where": "6.8",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Contrast with the Baron case (5.8), which has the same mistake and differs only in the requester's aim."
+ },
+ {
+  "part": "B",
+  "id": "thug-advice",
+  "where": "6.8",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "doubt-is-our-product",
+  "where": "7.3",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "flawed-procedure",
+  "where": "7.4",
+  "kind": "cannot say",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "contested or unclear",
+  "match": null,
+  "expressibility": "Know-how is not an estimate or a choice. It can be forced into K1 (a false belief that the procedure works) but the book separates procedural from declarative mistakes."
+ },
+ {
+  "part": "B",
+  "id": "anne-bert",
+  "where": "7.4 (Herzog)",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The book says Bert forms no belief that the situation is collaborative and would reject it if it occurred to him. So there is no 'estimate that the rule applies here' to score; the script is triggered automatically."
+ },
+ {
+  "part": "B",
+  "id": "friendly-encounter-script",
+  "where": "7.4",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Sharpest script case: her explicit estimate is correct (he is not a friend) and the mistake still occurs. Line 1 has nothing to score unless behaviour is read as an implicit estimate that contradicts her explicit one; and it is not line 2 either unless she has a rating she acts against."
+ },
+ {
+  "part": "B",
+  "id": "pretense-roles",
+  "where": "7.4",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Mechanism left open between K1 and K3; the manipulator may not know or care which (7.5 n.4)."
+ },
+ {
+  "part": "B",
+  "id": "social-proof-reliable",
+  "where": "7.5",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "pyramid-payoff",
+  "where": "7.6",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "global-warming-politician",
+  "where": "7.6 n.5 Global Warming (Gorin)",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "contested or unclear",
+  "match": null,
+  "expressibility": "How much attention the issue deserves in a voter's decision depends on the voter's own priorities, not on evidence; the politician's view of whether the inattention is a mistake for them is not given."
+ },
+ {
+  "part": "B",
+  "id": "tennis-forehand",
+  "where": "7.6 (Gigerenzer)",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "contested or unclear",
+  "match": null,
+  "expressibility": "Does not fit. No estimate is off and no choice is made against his judgment; attention here is not an estimate of how much something matters to a decision, it interferes with motor execution. The aim is degraded performance, not an act, belief or feeling. Only by calling it K3 by fiat does the formal statement reach the book's verdict."
+ },
+ {
+  "part": "B",
+  "id": "luxury-car-salesperson",
+  "where": "7.6",
+  "kind": "K3",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "contested or unclear",
+  "match": null,
+  "expressibility": "For a wealthy buyer low weight on fuel cost may be within the acceptable range the book allows; importance is relative to her own ends, not evidence, and the book gives no reference weight."
+ },
+ {
+  "part": "B",
+  "id": "spin-and-success-stories",
+  "where": "7.6",
+  "kind": "K3",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "The diet case is cleanly an estimate off from the evidence (a base rate); political spin has no stated reference weighting."
+ },
+ {
+  "part": "B",
+  "id": "bad-boyfriend",
+  "where": "7.7 Bad Boyfriend (from 3.4)",
+  "kind": "K2",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Fits: the emotion is prudent but mis-scores its particular object, and the formal statement scores the particular estimate. Anger at Al in general would be fitting, so the object must be individuated finely."
+ },
+ {
+  "part": "B",
+  "id": "fictitious-disaster-con",
+  "where": "7.7",
+  "kind": "K2",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The unfittingness is wholly inherited from a false belief; given the lie, the empathy is what their evidence supports."
+ },
+ {
+  "part": "B",
+  "id": "alligator-hotel",
+  "where": "7.8",
+  "kind": "K2",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The book says […] intensities and only the extremes are clear mistakes; the formal line needs a band, not a point, to score against."
+ },
+ {
+  "part": "B",
+  "id": "alligator-swamp-lure",
+  "where": "7.8",
+  "kind": "K2",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "anger-at-fair-winner",
+  "where": "7.7",
+  "kind": "K2",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "Anger's fit turns on whether he has a 'legitimate complaint', a normative matter; it becomes an estimate of fact only if recast as a belief that the race was unfair."
+ },
+ {
+  "part": "B",
+  "id": "larry-wendy-promotion",
+  "where": "7.7",
+  "kind": "K2",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "The existing state used (fitting disappointment) is not a fault; the formal 'uses a fault she already has' does not cover building on a correct state. Redirecting the anger afterwards is a process over time."
+ },
+ {
+  "part": "B",
+  "id": "fear-envy-to-hatred",
+  "where": "7.7",
+  "kind": "K2",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "Envy's fit includes that the other's having the thing is unfair; fairness is not fixed by observation."
+ },
+ {
+  "part": "B",
+  "id": "therapist",
+  "where": "7.8",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "many-apples",
+  "where": "7.8",
+  "kind": "K1",
+  "author_verdict": "contested or unclear",
+  "formal_verdict": "contested or unclear",
+  "match": true,
+  "expressibility": "Vague content: 'really a mistake' has no determinate value. The formal statement reproduces the book's split (determinate on the influencer's side, indeterminate on hers) only if indeterminacy is allowed as a value."
+ },
+ {
+  "part": "B",
+  "id": "fishing-gear",
+  "where": "7.9",
+  "kind": "cannot say",
+  "author_verdict": "contested or unclear",
+  "formal_verdict": "contested or unclear",
+  "match": null,
+  "expressibility": "How Nick does it is not said. A lapse (forgetting) is neither an estimate off from evidence nor a choice against his own judgment; it would need a false belief (K1) or distraction (K3) underneath to be expressible. The book also calls the outcome itself a mistake, though by 6.2 the mistake must be in his psychological states or processes."
+ },
+ {
+  "part": "B",
+  "id": "nora-ted-scotch",
+  "where": "7.9",
+  "kind": "K4",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "With addiction it is unclear which act he 'himself rates highest' at the moment of choice; the book fixes the true magnitude by his values, plans and priorities, a considered standard, not his momentary rating."
+ },
+ {
+  "part": "B",
+  "id": "nora-tammy-scotch",
+  "where": "7.9",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "iago-own-grievance",
+  "where": "7.9",
+  "kind": "K2",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Fit of the emotion is relative to the person: 'how blameworthy is she' has to be read as 'how much has she wronged me', or the estimate would be the same for both men."
+ },
+ {
+  "part": "B",
+  "id": "mike-thaddeus-bee",
+  "where": "7.9",
+  "kind": "K2",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "B",
+  "id": "dave-tracy-mile",
+  "where": "7.9",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "C",
+  "id": "cialdini-presuasion-tips",
+  "where": "10.3, Cialdini's priming advice",
+  "kind": "cannot say",
+  "author_verdict": "contested or unclear",
+  "formal_verdict": "contested or unclear",
+  "match": null,
+  "expressibility": "The verdict is conditional on a psychological mechanism the author treats as unknown; the formal statement needs a determinate mistake and cannot carry the conditional."
+ },
+ {
+  "part": "C",
+  "id": "risky-investments-script",
+  "where": "10.4, Risky Investments (script reading)",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "C",
+  "id": "risky-investments-trust",
+  "where": "10.4, Risky Investments (trust reading)",
+  "kind": "K2",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The author leaves open whether trust is an epistemic attitude (K1) or an emotion (K2); both are expressible, the kind is not determined by the case."
+ },
+ {
+  "part": "C",
+  "id": "missed-train",
+  "where": "10.4, Missed Train",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The act is not chosen: no decision to walk slowly is made, so 'choice below her top-rated act' must be read as 'behaviour below it'. The author concedes 'akrasia-like'."
+ },
+ {
+  "part": "C",
+  "id": "missed-train-paternalistic",
+  "where": "10.4, Missed Train, five-martini variant",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "none; line 2 is scored by her own rating, which is what the case needs"
+ },
+ {
+  "part": "C",
+  "id": "missed-train-compulsion",
+  "where": "10.4, Missed Train, compulsion variants",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "In the legs-refuse version he chooses correctly and the body fails to execute; line 2 scores a choice, and here choice and act come apart. Expressible only if 'act' means bodily behaviour."
+ },
+ {
+  "part": "C",
+  "id": "akrasia-without-decision",
+  "where": "10.4, skipped run and phone in bed",
+  "kind": "K4",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "No influencer. Shows that line 2 must cover omissions and undecided behaviour."
+ },
+ {
+  "part": "C",
+  "id": "walker-preschool-walk",
+  "where": "10.5, slow walk for the preschool tour",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "C",
+  "id": "byron-tunnel-vision",
+  "where": "10.5, Byron's family outing",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "The influence removes an existing K3 mistake; the formal statement has no positive category for mistake-correcting influence, only 'no mistake'."
+ },
+ {
+  "part": "C",
+  "id": "honest-eyes-watched",
+  "where": "10.5, honest eyes (being-watched mechanism)",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "A 'perception' of being watched, not a belief she would avow, and one that is false against the facts while tracking the stimulus she is given; 'off from what her observations support' holds only by strain. The poster-placer's beliefs are not given."
+ },
+ {
+  "part": "C",
+  "id": "honest-eyes-reminder",
+  "where": "10.5, honest eyes (reminder mechanism)",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "C",
+  "id": "nagging-reminder",
+  "where": "10.5, nagging as reminder",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "C",
+  "id": "nagging-akratic",
+  "where": "10.5, nagging that induces akratic compliance",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "A process over time. If the nagging is itself a cost, compliance may become her top-rated act and no line-2 mistake remains; the case stipulates otherwise without saying how the rating is fixed."
+ },
+ {
+  "part": "C",
+  "id": "convoluted-missed-train",
+  "where": "10.5, Convoluted Missed Train",
+  "kind": "K4",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "none; the intended mistake does not occur although the target behaviour does"
+ },
+ {
+  "part": "C",
+  "id": "buridan-illustrations",
+  "where": "10.6, Buridan's ass and the falling piano",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "No influencer. The author's ties include unnoticeable differences, incommensurable options and satisficing; 'options she rates the same' covers the first and third, incommensurability only by strain."
+ },
+ {
+  "part": "C",
+  "id": "tide-priming",
+  "where": "10.6, ocean/moon and Tide",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "C",
+  "id": "dish-soap-tiebreak",
+  "where": "10.6-10.7, Dish Soap (no false impression)",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "The author's residual complaint (the tie was hers to break) has no counterpart in the formal vocabulary, which sees only 'no mistake'."
+ },
+ {
+  "part": "C",
+  "id": "dish-soap-false-impression",
+  "where": "10.6, Dish Soap (false-impression mechanism)",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "A 'false impression' short of belief counts for the author. If she infers popularity from placement, that inference may be reasonable on her evidence, so the mistake is relative to the facts, not to what she observes."
+ },
+ {
+  "part": "C",
+  "id": "rigged-coin",
+  "where": "10.7, rigged tie-breaking coin",
+  "kind": "cannot say",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "contested or unclear",
+  "match": false,
+  "expressibility": "She relies on a false belief (the coin is fair) that the influencer exploits, yet the author treats the case as mistake-free because no worse choice results. The formal statement counts any off estimate used as a means and cannot say 'a false belief that does not make the choice mistaken'."
+ },
+ {
+  "part": "C",
+  "id": "new-job-anne",
+  "where": "10.7, New Job 1",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "C",
+  "id": "new-job-mel",
+  "where": "10.7, New Job 2",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "Unwelcomeness, avoidability and the self-regarding scope of the decision carry the author's objection; none is expressible. Persistent pestering could also work as pressure, but the case stipulates no mistake."
+ },
+ {
+  "part": "C",
+  "id": "gardener",
+  "where": "10.7, Gardener (Renzo)",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "The ulterior motive is concealed and the listener may take the remarks as disinterested; the author stipulates no mistake, while the formal statement would have to ask whether that tacit estimate of the speaker's motive is off."
+ },
+ {
+  "part": "C",
+  "id": "iago-invited",
+  "where": "10.7, Othello invites Iago's counsel",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The belief is false against the facts but follows the evidence Iago supplies; 'off from what her observations support' holds only by strain."
+ },
+ {
+  "part": "C",
+  "id": "consented-manipulation",
+  "where": "10.7, consent to manipulation or deception",
+  "kind": "cannot say",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "none; consent is not a term of the formal statement, and the author agrees it does not change the classification"
+ },
+ {
+  "part": "C",
+  "id": "trained-professor-buridan",
+  "where": "10.8, Trained Professor (indifferent)",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "A conditioning process over time; expressible only by its end state."
+ },
+ {
+  "part": "C",
+  "id": "trained-professor-akratic",
+  "where": "10.8, Trained Professor (has a reason to stand elsewhere)",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Conditioning might change what she prefers and not make her act against a standing preference; the case stipulates the latter. Process over time; the students' belief that it is against her judgment is not given."
+ },
+ {
+  "part": "C",
+  "id": "trained-professor-false-belief",
+  "where": "10.8, Trained Professor (false belief)",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Her belief follows the rigged evidence (the students do look more attentive), so it is off against the facts, not against her observations. The defective 'how-to belief' is procedural knowledge; calling it an estimate is a stretch."
+ },
+ {
+  "part": "C",
+  "id": "prison-cell-colour",
+  "where": "10.9, calming prison colours (Douglas)",
+  "kind": "cannot say",
+  "author_verdict": "contested or unclear",
+  "formal_verdict": "contested or unclear",
+  "match": null,
+  "expressibility": "A mood has no object, so it is not an appraisal of anything and line 1 cannot score it. The author concedes the same gap and leaves the case open."
+ },
+ {
+  "part": "C",
+  "id": "mood-fit-examples",
+  "where": "10.9, moods that might be mistaken",
+  "kind": "K2",
+  "author_verdict": "contested or unclear",
+  "formal_verdict": "contested or unclear",
+  "match": null,
+  "expressibility": "The author doubts moods have intentional objects and declines to rest on these examples; only the derivative cases (spider, colleague) fit K2 or K1 cleanly."
+ },
+ {
+  "part": "C",
+  "id": "mood-as-facilitator",
+  "where": "10.9, mood alteration to make mistakes likelier",
+  "kind": "cannot say",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "The influencer intends no particular mistake m, only a raised chance of some mistake; clause (i) wants a specific m. The mood is a non-mistaken intermediate step, and the whole is a process over time."
+ },
+ {
+  "part": "C",
+  "id": "intoxicants-fatigue",
+  "where": "10.9, intoxicants, fatigue, sleep deprivation, distraction",
+  "kind": "cannot say",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "Same as mood-as-facilitator: a probabilistic, unspecified mistake. Includes helping her 'fail to notice existing mistakes', which is not producing a mistake. The author leaves the link to brainwashing outside the book."
+ },
+ {
+  "part": "C",
+  "id": "charm-offensive",
+  "where": "10.9, charm offensive",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "contested or unclear",
+  "match": null,
+  "expressibility": "If the pleasant mood is a real benefit of complying, compliance may be her top-rated act and no line-2 mistake remains; the pressure reading needs the further fact that she acts against her judgment, which the passage does not give."
+ },
+ {
+  "part": "C",
+  "id": "emotional-blackmail",
+  "where": "10.9, emotional blackmail",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "contested or unclear",
+  "match": null,
+  "expressibility": "Same strain as charm-offensive: a threatened bad mood is a disincentive, and whether she acts below her own top-rated act once it is counted is not stated. The formal line between an incentive that makes compliance best and pressure is not drawn by the case."
+ },
+ {
+  "part": "C",
+  "id": "mood-to-emotion",
+  "where": "10.9, mood as a route to emotional manipulation",
+  "kind": "K2",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Two-step process; the first step (mood) is not a scoreable estimate. Unfittingness of the resulting emotion is assumed, not shown."
+ },
+ {
+  "part": "C",
+  "id": "snake-warning-sign",
+  "where": "11.2, snake warning sign",
+  "kind": "K2",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "loose sense only",
+  "match": false,
+  "expressibility": "The author's metaphorical sense needs a tendency strong enough to mislead a typical person; the formal loose sense has no threshold and no population, so any caused behaviour-changing mistake qualifies."
+ },
+ {
+  "part": "C",
+  "id": "black-ice-mirage",
+  "where": "11.2, black ice and highway mirage",
+  "kind": "K1",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "No agent and no conduct, so the influencer's side does not apply. Degree of manipulativeness (strength of tendency, effort to resist, share misled) is not expressible."
+ },
+ {
+  "part": "C",
+  "id": "scam-on-the-susceptible",
+  "where": "11.2, scams that work only on the susceptible",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Mass influence: the target is a population and only a subset makes the mistake; 'manipulates' holds per victim, 'acts manipulatively' toward the rest."
+ },
+ {
+  "part": "C",
+  "id": "informational-nudges",
+  "where": "11.3, readable nutrition labels and card agreements",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "C",
+  "id": "retirement-default-sincere",
+  "where": "11.5, Retirement Choices (reliable default)",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "C",
+  "id": "retirement-default-self-serving",
+  "where": "11.5, unscrupulous employer's default",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Treating a default as a recommendation is, on the author's account, reasonable; so her estimate matches her evidence and is off only against the facts."
+ },
+ {
+  "part": "C",
+  "id": "irene-recommends",
+  "where": "11.5, Irene's New Coworkers",
+  "kind": "K1",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "none; the influencer's-beliefs clause handles it"
+ },
+ {
+  "part": "C",
+  "id": "aunt-vicky",
+  "where": "11.5, Aunt Vicky",
+  "kind": "K1",
+  "author_verdict": "loose sense only",
+  "formal_verdict": "loose sense only",
+  "match": true,
+  "expressibility": "The loose sense as stated says 'no intent that it do so'; she does intend the belief, only not as a mistake. Fits only if the loose sense means 'not believed by the influencer to be a mistake'."
+ },
+ {
+  "part": "C",
+  "id": "probabilistic-recommendation",
+  "where": "11.5, 90 percent treatment that fails",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none; here 'relative to her evidence' and not to outcomes is exactly the author's standard"
+ },
+ {
+  "part": "C",
+  "id": "feigned-expertise",
+  "where": "11.5, recommendation implying competence the speaker lacks",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The recommender may sincerely think the option good while overstating his competence; the formal verdict needs him to believe he is inducing the competence mistake, which the passage does not say."
+ },
+ {
+  "part": "C",
+  "id": "success-framing-recommendation",
+  "where": "11.5, Success Framing (as recommendation)",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "C",
+  "id": "framing-accurate-leak",
+  "where": "11.5, medication framed as 90 percent effective",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "C",
+  "id": "framing-false-leak",
+  "where": "11.5, medication framed as 10 percent failure",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The stated number is true and she has it; the mistake is a pragmatic inference from the choice of frame. By ordinary conversational norms that inference is what her observations support, so it is off only against the facts."
+ },
+ {
+  "part": "C",
+  "id": "salient-menu-or-showroom",
+  "where": "11.5, dish featured on a menu, car in the showroom",
+  "kind": "cannot say",
+  "author_verdict": "contested or unclear",
+  "formal_verdict": "contested or unclear",
+  "match": null,
+  "expressibility": "none beyond needing the recommender's sincerity"
+ },
+ {
+  "part": "C",
+  "id": "radiologist-photos",
+  "where": "11.5, patient photos on scans",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "C",
+  "id": "salience-misaligned",
+  "where": "11.5, salience pushed out of line with importance",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "'How much a consideration matters' needs a standard; the author uses 'actual importance', the formal statement 'what her observations support'. The verdict is stated for influence 'intended or likely' to induce the mistake, so the nudger's belief is assumed."
+ },
+ {
+  "part": "C",
+  "id": "cafeteria-recommendation",
+  "where": "11.5, Cafeteria (read as recommendation)",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "Conditional on an unknown mechanism; the author says the Cafeteria question as a whole is unsettled."
+ },
+ {
+  "part": "C",
+  "id": "cafeteria-first-considered",
+  "where": "11.5, Cafeteria (satisficers)",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "A satisficer has no single 'act she rates highest'; line 2 must be read as 'below her threshold'. Order of consideration changes the outcome with no estimate off."
+ },
+ {
+  "part": "C",
+  "id": "cafeteria-tiebreak",
+  "where": "11.5, Cafeteria (tie-break)",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "C",
+  "id": "cafeteria-false-impression",
+  "where": "11.5, salience creating an impression of quality",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "A 'false impression' short of belief; the formal vocabulary must treat it as an estimate."
+ },
+ {
+  "part": "C",
+  "id": "cafeteria-akratic",
+  "where": "11.5, Cafeteria (direct inclination)",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Conditional on an unknown mechanism, and stated for placement 'intended or likely' to induce the akratic choice; the nudger's belief is assumed. In the benevolent cafeteria the akratic choice is the healthy one, which line 2 handles because it is self-relative."
+ },
+ {
+  "part": "C",
+  "id": "road-lines",
+  "where": "11.5, Road Lines",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The driver's impression follows what he observes (the lines are a rigged speed indicator), so it is off against the facts, not against his observations. It is a perceptual impression he may not endorse as a belief."
+ },
+ {
+  "part": "C",
+  "id": "save-more-tomorrow",
+  "where": "11.5, Save More Tomorrow",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "Mistake-preventing influence has no positive category. Line 2 needs a time index: the act she rates highest when committing versus when tempted."
+ },
+ {
+  "part": "C",
+  "id": "evaporative-cooler-ads",
+  "where": "11.6, evaporative cooler advertisements",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Mistake by omission: with the fact hidden, her estimate may match her evidence and is off only against the facts. Mass audience."
+ },
+ {
+  "part": "C",
+  "id": "transparent-sales-proposal",
+  "where": "11.6, plain sales proposal made salient",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "C",
+  "id": "disguised-sales-proposal",
+  "where": "11.6, sales proposal disguised as disinterested advice",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Her estimate follows the disguise she is shown; off against the facts, not against her observations."
+ },
+ {
+  "part": "C",
+  "id": "associative-plausible",
+  "where": "11.6, excitement with sports cars, vigour with gym kit",
+  "kind": "cannot say",
+  "author_verdict": "contested or unclear",
+  "formal_verdict": "contested or unclear",
+  "match": true,
+  "expressibility": "Manipulativeness is a matter of degree here (how excessive the optimism); the formal statement is binary."
+ },
+ {
+  "part": "C",
+  "id": "marlboro-man-belief",
+  "where": "11.6, Marlboro Man",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Whether viewers hold any estimate, as against a bare association or impression, is left open. Mass audience; the advertiser's beliefs are not stated."
+ },
+ {
+  "part": "C",
+  "id": "marlboro-man-halo",
+  "where": "11.6, Marlboro Man via halo effect or evaluative conditioning",
+  "kind": "K2",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "A bare, possibly implicit liking is not an appraisal of any stated magnitude; reading 'regards in a positive light' as an estimate of how good the product is is a stretch. The author needs a 'minor modification' of his own analysis here."
+ },
+ {
+  "part": "C",
+  "id": "tobacco-risk",
+  "where": "11.6 n.23, tobacco advertising and personal risk",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "none; the author stresses the outcome estimate, not the bias, as the formal statement does"
+ },
+ {
+  "part": "C",
+  "id": "puffery-sincere",
+  "where": "11.6, 'World's Best Coffee'",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "C",
+  "id": "puffery-calibrated",
+  "where": "11.6, puffery tuned to deceive a subset",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Mass influence aimed at a subset: the influencer has no belief about any individual, and 'manipulates' holds only of those who believe the boast."
+ },
+ {
+  "part": "C",
+  "id": "puffery-taken-literally",
+  "where": "11.6, puffery believed though not meant literally",
+  "kind": "K1",
+  "author_verdict": "contested or unclear",
+  "formal_verdict": "loose sense only",
+  "match": null,
+  "expressibility": "none"
+ },
+ {
+  "part": "C",
+  "id": "ted-exposure-belief",
+  "where": "11.6, Ted and the familiar soap (false impression)",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Impression short of belief; conditional on an unknown mechanism; the advertiser's beliefs are not given (the author says '[…]')."
+ },
+ {
+  "part": "C",
+  "id": "ted-exposure-akratic",
+  "where": "11.6, Ted (preference against judgment)",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "A liking that conflicts with his judgment: the formal statement must fix which of the two is 'the act she herself rates highest'. The author takes judgment; a preference-based rating would give no mistake."
+ },
+ {
+  "part": "C",
+  "id": "ted-exposure-tiebreak",
+  "where": "11.6, Ted (tie-break)",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "C",
+  "id": "brand-ads-honest-signal",
+  "where": "11.6, brand advertising as a quality signal",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "C",
+  "id": "bogus-headache-remedy",
+  "where": "11.6, psychological arbitrage (Sheff)",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The author says the familiarity-to-quality inference is in general reasonable, so her estimate matches her evidence; the mistake is relative to the facts. Could equally be coded K1."
+ },
+ {
+  "part": "C",
+  "id": "trademark-imitation",
+  "where": "11.6, imitating a better brand's marks",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Her estimate follows the copied marks she observes; off against the facts, not against her observations. The subtler version is a transferred impression, not a belief."
+ },
+ {
+  "part": "C",
+  "id": "sales-misemphasis-and-false-friend",
+  "where": "11.7, misemphasis and insincere friendliness (recalled from 7.4, 7.6)",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "C",
+  "id": "false-urgency",
+  "where": "11.7, false urgency and feigned scarcity",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The author files this under pressure (K4), but a buyer who believes the false deadline may be choosing her top-rated act on her beliefs; the scoreable mistake is then K1 (deadline, quality) or K2 (fear). The kind is not determined, though some mistake is present on any reading."
+ },
+ {
+  "part": "C",
+  "id": "assumed-close",
+  "where": "11.7, salesperson acts as if the customer has agreed",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Only a subset is manipulated. Whether a given customer's compliance is akratic or a rational avoidance of a real psychic cost is the whole difference between manipulated and not, and the formal statement needs her rating with that cost counted, which the case does not fix."
+ },
+ {
+  "part": "C",
+  "id": "impulse-purchase-area",
+  "where": "11.7, sweets at the checkout",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Mass influence with a subset affected. The author says […]'; if the store has no belief about akrasia the formal verdict drops to the loose sense."
+ },
+ {
+  "part": "C",
+  "id": "batteries-at-checkout",
+  "where": "11.7, batteries or healthy snacks at the checkout",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "C",
+  "id": "atmospherics-direct-akratic",
+  "where": "11.7, store atmosphere acting directly on behaviour",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Conditional on a mechanism the author thinks unlikely; the store's beliefs are not given."
+ },
+ {
+  "part": "C",
+  "id": "atmospherics-direct-tiebreak",
+  "where": "11.7, store atmosphere as tie-breaker",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "C",
+  "id": "atmospherics-good-mood",
+  "where": "11.7, atmosphere inducing a careless good mood",
+  "kind": "cannot say",
+  "author_verdict": "contested or unclear",
+  "formal_verdict": "contested or unclear",
+  "match": true,
+  "expressibility": "The mood is not a scoreable estimate, and the eventual mistake is unspecified and only made likelier."
+ },
+ {
+  "part": "C",
+  "id": "atmospherics-halo",
+  "where": "11.7, atmosphere transferring to the goods",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Impression short of belief, produced by affect transfer; conditional on an unknown mechanism; the shop's beliefs are not given."
+ },
+ {
+  "part": "C",
+  "id": "atmospherics-linger",
+  "where": "11.7, atmosphere that makes people stay longer",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "C",
+  "id": "coffee-shop-atmosphere",
+  "where": "11.7, coffee shops and bookshops",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "C",
+  "id": "baked-goods-scent",
+  "where": "11.7, baking smell at a house viewing",
+  "kind": "cannot say",
+  "author_verdict": "contested or unclear",
+  "formal_verdict": "contested or unclear",
+  "match": null,
+  "expressibility": "Conditional on an unknown mechanism (mood, halo, mere pleasantness)."
+ },
+ {
+  "part": "C",
+  "id": "commercial-trivial-consent",
+  "where": "11.7, trivial manipulation in commercial spaces",
+  "kind": "cannot say",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "none; moral status and consent are outside the formal statement"
+ },
+ {
+  "part": "C",
+  "id": "tricky-buttons",
+  "where": "11.8, Tricky Buttons",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Her estimate follows the misleading design she observes; off against the facts, not against her observations."
+ },
+ {
+  "part": "C",
+  "id": "disguised-advertisements",
+  "where": "11.8, Disguised Advertisements",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Same as tricky-buttons: off against the facts, supported by what she is shown."
+ },
+ {
+  "part": "C",
+  "id": "preselected-options",
+  "where": "11.8, Pre-selected Options",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The author's analysis runs through the recommendation reading (K1); a user who merely overlooks the box makes an attention lapse (K3), which is not an estimate she holds at all."
+ },
+ {
+  "part": "C",
+  "id": "roach-motel-akratic",
+  "where": "11.8, Roach Motel (third group)",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "The boundary with the next group is whether she still rates cancelling highest once the hassle is counted; the formal statement needs that rating fixed, and the case stipulates it. The designer need not distinguish the two ways of not cancelling."
+ },
+ {
+  "part": "C",
+  "id": "roach-motel-outweighed",
+  "where": "11.8, Roach Motel (second group)",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "The author's complaint about the imposed cost is outside the formal vocabulary, which files this with incentives that make compliance her best option."
+ },
+ {
+  "part": "C",
+  "id": "roach-motel-persist",
+  "where": "11.8, Roach Motel (first group)",
+  "kind": "none",
+  "author_verdict": "acts manipulatively only",
+  "formal_verdict": "acts manipulatively only",
+  "match": true,
+  "expressibility": "none"
+ },
+ {
+  "part": "C",
+  "id": "electronic-nagging",
+  "where": "11.8, Electronic Nagging",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Only a subset is manipulated. Same boundary problem as the Roach Motel: giving in to stop the pop-ups may be her best option once the nuisance is counted."
+ },
+ {
+  "part": "C",
+  "id": "mail-in-rebates",
+  "where": "11.8 n.37, mail-in rebates",
+  "kind": "K4",
+  "author_verdict": "contested or unclear",
+  "formal_verdict": "contested or unclear",
+  "match": null,
+  "expressibility": "Process over time: the mistake occurs after the sale, and could equally be K1 (a wrong forecast of her own behaviour)."
+ },
+ {
+  "part": "C",
+  "id": "social-media-engagement",
+  "where": "11.8, social media design",
+  "kind": "K4",
+  "author_verdict": "manipulates",
+  "formal_verdict": "loose sense only",
+  "match": false,
+  "expressibility": "The influencer is an optimising system whose aim is engagement; the author says […] gets there through value or weakness and that designers may never raise the distinction. There is then no belief that m is a mistake and no intention that m be the means, though the system selects for it. 'By its own beliefs' has no reading for selection without belief. Also a process over time."
+ },
+ {
+  "part": "C",
+  "id": "political-emotions",
+  "where": "11.9, baseless fear, unwarranted anger, irrational hatred",
+  "kind": "K2",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Unfittingness is stipulated by the adjectives; who sets the standard of fit in contested politics is not addressed, and hatred is hard to read as an estimate of a magnitude. Mass audience; the influencer's sincerity is not given."
+ },
+ {
+  "part": "C",
+  "id": "political-misemphasis",
+  "where": "11.9, narrative confirmation, misemphasis, microtargeted facts",
+  "kind": "K3",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "Where facts are hidden from her, her weighting may match her evidence; the mistake is relative to the full facts. Mass audience."
+ },
+ {
+  "part": "C",
+  "id": "political-disinformation",
+  "where": "11.9, election and COVID disinformation",
+  "kind": "K1",
+  "author_verdict": "manipulates",
+  "formal_verdict": "manipulates",
+  "match": true,
+  "expressibility": "False against the facts but supported by the sources she is given. Spreaders who believe the falsehoods fall under the loose sense only, as with Aunt Vicky; the author does not separate them."
+ },
+ {
+  "part": "C",
+  "id": "sincere-advocacy",
+  "where": "11.9, sincere advocacy of views one does not share",
+  "kind": "none",
+  "author_verdict": "not manipulation",
+  "formal_verdict": "not manipulation",
+  "match": true,
+  "expressibility": "none; if the view is in fact mistaken the formal statement adds 'loose sense', which the author does not discuss here"
+ }
+]

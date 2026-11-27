@@ -5,8 +5,17 @@ RENDERINGS.md (the statement of ACCOUNT.md); the formal checks of BOARD_CHECKS.m
 counts of LIT_RESULTS.md (the statement of BOARD.md).  Then the formal checks of
 STATEMENT_CHECKS.md and the computed tables of SPEC_RESULTS.md (the statement of STATEMENT.md).  Then the
 exact instances of DERIVATION.md and the two forms of the responsibility test on the twenty
-cases of RESP_RESULTS.md.  A failure is a status or a count in a document
-that is not the one computed, or a document that parses to nothing."""
+cases of RESP_RESULTS.md.  Then the exact checks behind MISTAKES_ACCOUNT.md (one decision,
+correcting the reward and two periods, the long-run statement) and the counts of
+INTENT_RESULTS.md, BLIND_RESULTS.md, NOGGLE_RESULTS.md and VC_RESULTS.md.  Then the exact
+cases of LEGITIMACY_CHECKS.md (the table model of TABLE_MODEL_STATEMENT.md) and of STOPPING_COST.md,
+and the counts of CASE_RUNS.md, those of its second coding included.  Then the tables of LEAN_CASES.md, recomputed from the
+statements of the Lean theorems read as text.  Then the history model of interpretation/ on its
+episodes and known faults, against INTERPRETATION.md.  Then the counts of PLAIN_TELLING_TESTS.md:
+blind runs 18 and 19, and the adversarial test of the formal clauses with the reviews' cases,
+computed exactly.  A failure is a
+status or a count in a document that is not the one computed, a document that parses to
+nothing, or a violation count that is not zero."""
 from __future__ import annotations
 
 import pathlib
@@ -63,11 +72,9 @@ def main():
     report = {"results": results_report(), "value_results": value_results_report()}
     failures = ["results: " + f for f in report["results"]["failures"]]
     failures += ["value_results: " + f for f in report["value_results"]["failures"]]
-    for name in ("value_change", "benchmark", "bridge", "renderings", "board_checks", "lit_results", "statement_checks", "spec_run", "derivation", "responsibility"):
-        try:
-            mod = __import__("account." + name, fromlist=["report"])
-        except ImportError:
-            continue
+    for name in ("value_change", "benchmark", "bridge", "renderings", "board_checks", "lit_results", "statement_checks", "spec_run", "derivation", "responsibility",
+                 "mistakes_setting", "mistakes_sequential", "mistakes_longrun", "intent_tests", "blind_coding", "noggle_bank", "value_runs", "legitimacy_checks", "stopping_cost", "case_runs", "second_coding", "lean_cases", "interpretation", "plain_telling_tests", "plain_telling_adv"):
+        mod = __import__("account." + name, fromlist=["report"])
         report[name] = mod.report()
         failures += ["%s: %s" % (name, f) for f in report[name]["failures"]]
     report["failures"] = failures
@@ -77,7 +84,8 @@ def main():
 def render(report):
     lines = ["result %s: %s" % kv for kv in report["results"]["statuses"].items()]
     lines += ["value side, result %s: %s" % kv for kv in report["value_results"]["statuses"].items()]
-    for name in ("value_change", "benchmark", "bridge", "renderings", "board_checks", "lit_results", "statement_checks", "spec_run", "derivation", "responsibility"):
+    for name in ("value_change", "benchmark", "bridge", "renderings", "board_checks", "lit_results", "statement_checks", "spec_run", "derivation", "responsibility",
+                 "mistakes_setting", "mistakes_sequential", "mistakes_longrun", "intent_tests", "blind_coding", "noggle_bank", "value_runs", "legitimacy_checks", "stopping_cost", "case_runs", "second_coding", "lean_cases", "interpretation", "plain_telling_tests", "plain_telling_adv"):
         if name in report:
             lines += ["%s: %s" % (name, line) for line in report[name]["summary"]]
     return "\n".join(lines)

@@ -1434,28 +1434,24 @@ Split, one problem per item: verdicts on the literature's cases under the presen
 vocabulary is item 144, and what is new against prior work item 146. Each carries its part
 of this entry's deliverable and acceptance check.
 
-### 139. When the adviser is responsible for her mistake — **[open]**
+### 139. What the adviser believes and expects, for a trained system — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-The first open problem of `CURRENT.md` §3.
+Rows 11, 15 and 92 of `account/LEDGER.md`.
 
-Two tests failed on twenty cases written against them (`account/RESP_RESULTS.md`): the one
-that reads the adviser's gain clears an adviser that deceives at a cost to itself and
-convicts one that profits by a mistake it did not know of; the one that reads a declared
-reference clears a rule that prescribes the manipulation. Neither uses what the adviser
-believed. Wanted: a condition that disclosure, honest argument and correction satisfy and
-that a course scoring higher through a mistake of hers lacks, with attempt apart from
-success (`account/AGENDA.md` §3, 1–3). Two cases it has to decide, stated as open: an
-adviser whose honest errors lean its way by selection (I4), and an adviser that profits from
-a mistake no course of its would correct. The maintainer's working positions bear and do not
-settle it (`DECISIONS.md`, `2026-11-18--legitimacy-working-positions`).
+The statement of `account/PLAIN_TELLING_STATEMENT.md` judges an adviser's conduct by his own
+lights: a mistake of hers is one by his views, what his conduct leaves her with is what he
+forecasts, and a sincere adviser who is wrong satisfies it. In `LegitimacyPlainTelling.lean`
+his lights are the fields of `Problem`. Nothing says what those are for a trained system,
+and the whole verdict rests on them: two systems that act alike and differ in what they
+expect of her get different verdicts. Wanted: a procedure that produces the picture, and the
+two instances that show what it can and cannot tell apart.
 
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
-*Context:* `CURRENT.md`, `account/AGENDA.md`, `account/DERIVATION.md`, `account/RESP_RESULTS.md` and
-`account/resp_cases.json` in the round directory.
-*Consumed by:* item 144 (its classification by responsibility needs the test), and the round that writes
-the account up.
+*Context:* `CURRENT.md`, `account/PLAIN_TELLING_STATEMENT.md` and `account/LEDGER.md` in the round directory;
+`lean/Workspace/Deference/Contrib/LegitimacyPlainTelling.lean`.
+*Consumed by:* item 147 (what a gate can observe), item 159, and the round that writes the account up.
 
 ### 140. What supplies her trustworthiness — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
@@ -1482,15 +1478,22 @@ written (`account/AGENDA.md` §3, 4).
 
 The third open problem of `CURRENT.md` §3.
 
-Three comparisons are in use and not chosen between: with who she would have been, with her
-ratings of fixed futures not moving with the adviser's conduct, and stability between
-check-ins. What makes a request of hers valid is unspecified. In `ScoringTheorem.lean` her
+Three comparisons have been used: with who she would have been, with her ratings of fixed
+futures not moving with the adviser's conduct, and stability between check-ins.
+`account/MISTAKES_ACCOUNT.md` §3 takes the first in one form, her valuing as it would be
+had the adviser left her alone, with a change she would welcome credited by her unshifted
+self, and states a rule for requests: a request is valid when her idealised self at the
+time, idealised using only earlier valid requests, would also make it. The rule needs a
+convention for requests made at the same moment and for an idealised self that could answer
+more than one way, and has been checked only on the example that prompted it. Whether an
+unauthorised change is instead a violation of her authority is item 149. In `ScoringTheorem.lean` her
 valuing unshaped is the field `fbar`, data, and D2 is a hypothesis; a statement that her
 valuing at the evaluation is a function of the admitted reasons and her earlier valuing,
 with a witness separating a reason about what is the case from an input that moves what she
 wants, is not written (`account/AGENDA.md` §3, 5). The maintainer's working position is
-that a change to her valuing beyond a tolerance is one she asked for (`DECISIONS.md`,
-`2026-11-18--legitimacy-working-positions`).
+that a change to her valuing beyond a tolerance is one she asked for, and that value
+interference should be definable without a comparison self (`DECISIONS.md`,
+`2026-11-18--legitimacy-working-positions`, `2026-11-21--manipulation-working-positions`).
 
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
@@ -1526,7 +1529,8 @@ strict priority (`scoring.authority-bound`; `account/AGENDA.md` §5). Wanted: a 
 a lexicographic score, which need every violation detected and the adviser able to tell
 beforehand which courses are free of one; her commands as well as her evaluation; her later
 self against her present wishes. `account/BRIDGE_LEAN.md` §4.2 names the missing map to the
-authority module.
+authority module. Whether a change in her values that she did not authorise is a violation
+of her authority is item 149.
 
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
@@ -1540,8 +1544,12 @@ the round directory; `lean/Workspace/Deference/Contrib/ScoringTheorem.lean` and
 
 The sixth open problem of `CURRENT.md` §3.
 
-The present vocabulary has not been run on any case of the bank of `account/LIT_CASES.md`
-(Harman, Pettigrew, Kolodny, Carroll et al., Noggle). Where a case is silent on how she
+`account/VC_RESULTS.md` has two single codings of the bank of `account/LIT_CASES.md`
+(Harman, Pettigrew, Kolodny, Carroll et al., Noggle), each by one reader against one
+formulation: the account's value-change part agrees with the source on 12 of the 19 cases
+whose source judges an act and contradicts none, seven being undecided for facts the
+stories do not give. Neither is the classification by two authors independently that this
+item asks for, and neither classifies by attempt or success. Where a case is silent on how she
 rated beforehand the course that changed her, a verdict follows whichever number is
 supplied (`account/SPEC_RESULTS.md`), so the classification records what each author
 supplied. The classification by wrong, by attempt and by legitimate against sound can be
@@ -1568,6 +1576,9 @@ nothing* acceptable if the formalism favours it (`DECISIONS.md`,
 and `Audit.no_credit` in `ScoringTheorem.lean` (`scoring.no-credit`) the second.
 
 Every bound of the scoring theorem is for one decision (`account/SCORING.md` §5).
+`account/MISTAKES_ACCOUNT.md` §5 has a statement over many decisions on paper; its second and
+third hypotheses need the value gain aside and the ungated score observed on decisions
+sampled independently of the adviser's choice, and who establishes them is not said.
 
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
@@ -1582,7 +1593,11 @@ the round directory; `lean/Workspace/Deference/Contrib/ScoringTheorem.lean` and
 The eighth open problem of `CURRENT.md` §3.
 
 Not established against reward tampering, path-specific objectives, eliciting latent
-knowledge, or induced preference shifts (Carroll et al. 2024). Whether the two splits of
+knowledge, or induced preference shifts (Carroll et al. 2024). By the maintainer's working
+position novelty against the neighbouring literature is not a gate on the line
+(`DECISIONS.md`, `2026-11-21--manipulation-working-positions`); the comparison is wanted
+for the write-up. `account/MISTAKES_ACCOUNT.md` §4 says of result 4 that a path-specific
+objective is the corresponding design. Whether the two splits of
 `AppraisalAccount.lean` (`appraisal.mse-split`, `appraisal.strong-split`) are the
 calibration, grouping and irreducible terms of Kull and Flach's decomposition of a proper
 score (2015), applied to her estimates of her own utility, is to be checked there.
@@ -1613,6 +1628,14 @@ that separates them; the rates of D3 that an audit `D` computed from the record 
 and a graded score, continuous in the size of a departure, under which a course that
 departs with probability ε loses in proportion to ε.
 
+The statement of `account/PLAIN_TELLING_STATEMENT.md` makes legitimacy a property of what the
+adviser believes and forecasts, so a gate needs his picture or a proxy for it, and a sincere
+adviser who is wrong passes whatever her record shows. `LegitimacyGate.gate_gives_behaviour`
+takes a gate's two error probabilities as numbers; row 55 of `account/LEDGER.md` is what
+this item answers for that statement: the error probabilities a stated procedure attains
+under one observation model, or two pictures with different verdicts and the same record.
+Item 159 asks the neighbouring question of the accuracy condition.
+
 *Deliverable shape:* as the entry's deliverable field states.
 *Acceptance check:* as the entry's acceptance field states.
 *Context:* `CURRENT.md`, `account/SCORING.md` and `account/BRIDGE_LEAN.md` in the round directory;
@@ -1621,6 +1644,299 @@ departs with probability ε loses in proportion to ε.
 `lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean`.
 *Consumed by:* item 145 (a design of the audit needs what it can detect), and the corrigibility line's
 use of `UnbiasedFromFeedback`.
+
+### 148. A person's check of a sample of the case codings — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=no -->
+
+Rows 51 and 101 of `account/LEDGER.md`.
+
+Every answer behind the counts of `account/PLAIN_TELLING_TESTS.md` and `account/CASE_RUNS.md` was
+given by a language model. No person has read a case against its coding. The texts the
+coders read are paraphrases of the cases of Noggle's book and are held outside the
+repository, so a check needs the book. Wanted: one person's answers on a sample, given
+before seeing the recorded ones, and the agreement counted, per question and on the rule's
+verdict.
+
+First in the maintainer's ordering of 27 November. A sheet of twenty cases is prepared
+outside the repository and awaits him (`DECISIONS.md`,
+`open--maintainer-check-of-twenty-codings`).
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/PLAIN_TELLING_TESTS.md`, `account/plain_telling_tests.py`, `account/noggle_bank.json`,
+`account/BANK_CODING_19.md`, the two codings of run 19 and `account/LEDGER.md` in the round directory.
+*Consumed by:* the round that writes the account up.
+
+### 149. The cost of a decision of hers, on the authority side — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+Rows 13 and 52 of `account/LEDGER.md`.
+
+By the maintainer's ruling of 2026-11-24 what an adviser does to her options, as against to
+her, is her authority's business and no part of legitimacy: what stopping costs her,
+bundling, penalties, payments, threats, and starting something over her refusal. The ruling
+holds as long as the authority side can carry these easily. `EffectiveAuthority.lean` has
+the cost of an exercise of hers against a bound, a shortfall the agent caused as one present
+after its move and absent after idling, and revocation with a dependency; it has no cost he
+attaches to one of her options, no bundle and no refusal, and it compares with his idling
+where the candidate clause of `account/STOPPING_COST.md` compares with the best course he
+could bring about with the thing stopped. Two of that clause's twenty cases are not ruled on:
+a free service paid for by its influence, and an exit penalty she knowingly agreed to that he
+can no longer call off (`DECISIONS.md`, *Awaiting the author*). Wanted: the statement in Lean.
+A Lean headline registers at merge.
+
+In the statement of `account/PLAIN_TELLING_STATEMENT.md` her not stopping him where she rates
+stopping higher is a choice against her own rating, which `Will` counts where plain telling
+would not have left it. A cost he attaches to stopping moves how she rates it and so moves
+which cases those are, and nothing in the statement limits it: this item is what would. It
+is third in the maintainer's ordering of 27 November (`PROMPT-followup-22.md` §3 F in the
+round's prompts directory), after his own check of a sample of the codings and item 159.
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/PLAIN_TELLING_STATEMENT.md`, `account/STOPPING_COST.md`, `account/stopping_cost.py`
+and `account/LEDGER.md` in the round directory; `lean/Workspace/Deference/Contrib/EffectiveAuthority.lean`,
+`lean/Workspace/Deference/Contrib/AuthorityModule.lean`, `lean/Workspace/Deference/Contrib/LegitimacyPlainTelling.lean`.
+*Consumed by:* item 143 (authority beyond a finite penalty), and the round that writes the account up.
+
+### 150. The legitimacy statement composed with the sequential corrigibility theorems — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+Rows 53, 86 and 88 of `account/LEDGER.md`.
+
+`LegitimacyPlainTelling.legitScoring` turns the legitimacy predicate into the scoring of the
+corrigibility result for one decision; the theorems of that scoring hold of any predicate.
+The sequential theorems (`Sequential.theorem3a`, `theorem3b` in `DeconfusingCorrigibility.lean`)
+are about realised evaluations over many decisions; a `Problem` is one decision as the
+adviser pictures it. `long_run_informed` and `long_run_not_led_astray` answer part of this:
+with the outcome guarantee at every decision of a sequence and an accuracy condition on his
+forecasts, a bound on what she does holds of long-run averages. They are not an instance of
+`Sequential`, their hypothesis is the outcome guarantee and not the statement, their accuracy
+hypotheses are assumed (item 159 asks how what they score could be observed), and no
+statement gives an adviser who satisfies the corrigibility hypotheses with this legitimacy
+test both guarantees at once. Wanted: that joint statement in Lean, with whatever must be
+assumed about his picture against the facts named as a hypothesis and shown necessary. A
+Lean headline registers at merge.
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/PLAIN_TELLING_STATEMENT.md` and `account/LEDGER.md` in the round directory;
+`LegitimacyPlainTelling.lean`, `LegitimacyGate.lean` and `DeconfusingCorrigibility.lean` under `lean/Workspace/Deference/Contrib/`.
+*Consumed by:* item 145 (the audit as a design, over more than one decision), and the round that writes the account up.
+
+### 151. The model on a table of his moves: the restated cases rebuilt by another hand, and what it takes as given — **[open]** — *closed: outside review rejected the model as a rendering of the statement*
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=no -->
+
+Row 50 of `account/LEDGER.md`.
+
+Closed without delivery. The tenth outside review found `LegitimacyModel.lean` not a faithful
+rendering of the three sentences of legitimacy, its pressure clause scoring her options by
+where he expects them to lead, and the model is kept as an interpretation whose theorems hold
+of its definitions. Work on its cases and its free fields would not bear on the statement,
+which is `LegitimacyStatement.lean`. The corresponding work on the present interpretation is
+item 157.
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md` and `account/LEDGER.md` in the round directory; `lean/Workspace/Deference/Contrib/LegitimacyModel.lean`;
+`REVIEW-astra-followup-20.md` in the round's prompts directory.
+*Consumed by:* nothing.
+
+### 152. What makes a decision of hers settled, and where what she could not have judged in advance begins — **[open]** — *closed: the statement that governs uses neither notion*
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=no -->
+
+Rows 5, 9 and 30 of `account/LEDGER.md`.
+
+Closed without delivery. The statement that governs
+(`account/PLAIN_TELLING_STATEMENT.md`) compares his conduct with plainly telling her. It judges
+nothing against her judgement at a last settled decision and has no exemption for what she
+could not have judged in advance, so no criterion for either is wanted. The queue entry on
+what makes a decision settled lapsed with the three sentences (`DECISIONS.md`,
+`2026-11-27--legitimacy-twenty-second-followup-plain-telling`).
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md`, `account/HARD_CASES.md`, `account/interpretation/INTERPRETATION.md`,
+`account/interpretation/history_model.py` and `account/LEDGER.md` in the round directory.
+*Consumed by:* nothing.
+
+### 153. An outside review of the Lean statement of legitimacy and the connecting theorem — **[open]** — *closed: the files are superseded, and by ruling no round of review and repair follows*
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=no -->
+
+Rows 16, 51 and 73 of `account/LEDGER.md`.
+
+Closed without delivery. `LegitimacyStatement.lean` and `LegitimacyStop.lean` are superseded by
+`LegitimacyPlainTelling.lean`, and a review of them would not bear on the statement of the
+line. Four outside reviews of 27 November read the forms that led to the present statement
+(`REVIEW-astra-followup-22.md` in the round's prompts directory); none has read the present
+form. By the maintainer's rule 10 of 27 November review-and-repair rounds stop there and a
+structural limit found is stated, so the item is not re-asked of the new file (row 102 of
+`account/LEDGER.md`).
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md`, `account/LEDGER.md` and `account/CONNECTING_THEOREM.md` in the round directory;
+`lean/Workspace/Deference/Contrib/LegitimacyStatement.lean` and `LegitimacyStop.lean`; `REVIEW-astra-followup-20.md` and
+`REVIEW-astra-followup-21.md` in the round's prompts directory.
+*Consumed by:* nothing.
+
+### 154. A set of cases of bent judgement, coded twice — **[open]** — *closed: the clause on her earlier rating is not in the statement that governs*
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=no -->
+
+Rows 2 and 56 of `account/LEDGER.md`.
+
+Closed without delivery. The item asked for cases of a judgement bent for a while, coded under
+sheets 16 and 17, to test the clause on her earlier rating. The statement that governs
+(`account/PLAIN_TELLING_STATEMENT.md`) has no such clause: a mood he takes to be moving her is
+a mistaken view of what she values, by his lights, and his conduct fails if he could have
+told her plainly at another time (the maintainer's rule 8 of 27 November). Sheet 19 asks it
+within its second question (`account/BANK_CODING_19.md`), and the adversarial test has one
+such case, A16 (`account/PLAIN_TELLING_TESTS.md`).
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/CASE_RUNS.md`, `account/case_runs.py`, `account/SECOND_CODING.md`,
+`account/second_coding.py`, the two coding sheets, `account/noggle_bank.json` and `account/LEDGER.md`
+in the round directory.
+*Consumed by:* nothing.
+
+### 155. The legitimacy statement on cases of value change — **[open]** — *narrowed 2026-11-27: the 90 published cases are coded under sheets 18 and 19; what remains is the 68 texts and 20 adversarial cases, and a case of value change computed on the formal clauses*
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+Rows 57 and 93 of `account/LEDGER.md`.
+
+On a change in what she values the statement of `account/PLAIN_TELLING_STATEMENT.md` is
+procedural: the change goes ahead past her present evaluation, told what he expects she will
+come to value. Blind runs 18 and 19 put the statement as questions in words to the 90
+published cases (`account/PLAIN_TELLING_TESTS.md`): it settles 54 to 60 and agrees with the
+source on 44 to 45, and of the nine cases run 18 passes against the source, seven are ones
+where the source judges something other than anyone's conduct. It was not run on the 68
+texts and 20 adversarial cases an earlier form was run on (`account/CASE_RUNS.md`, the
+value-change test), where that form passed three cases an outside model faults; and the
+formal clauses have been computed on no case of value change. Wanted: both.
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/PLAIN_TELLING_STATEMENT.md`, `account/PLAIN_TELLING_TESTS.md`, `account/plain_telling_tests.py`,
+`account/plain_telling_adv.py`, `account/BANK_CODING_19.md`, `account/adv/SCHEMA.md`, `account/vc2_key.json`,
+`account/vc2_cases.json`, `account/CASE_RUNS.md` and `account/LEDGER.md` in the round directory.
+*Consumed by:* item 141 (her valuing), and the round that writes the account up.
+
+### 156. The properties the statement's given notions must have, and the history model as an instance — **[open]** — *closed: its three parts are about the superseded formal statement*
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=no -->
+
+Rows 29, 49 and 70 of `account/LEDGER.md`.
+
+Closed without delivery. Each part asked something of `LegitimacyStatement.lean` or
+`LegitimacyStop.lean`: properties of the fields of `Episode`, the history model as an
+instance of it, and a `Reading` derived from a model. Those files are superseded by
+`LegitimacyPlainTelling.lean`, whose `Problem` takes none of those notions as given. What
+that file's theorems lack is item 160.
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md`, `account/LEDGER.md`, `account/CONNECTING_THEOREM.md` and
+`account/interpretation/INTERPRETATION.md` in the round directory;
+`lean/Workspace/Deference/Contrib/LegitimacyStatement.lean` and `LegitimacyStop.lean`.
+*Consumed by:* nothing.
+
+### 157. The interpretation's known faults — **[open]** — *closed: the interpretation is not wanted under the statement that governs*
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=no -->
+
+Rows 31 to 47 of `account/LEDGER.md`.
+
+Closed without delivery. The interpretation computes, from a history, the notions the three
+sentences take as given: what he does to her, her reference self, what is properly on offer,
+what she can pick out and stop. The statement that governs
+(`account/PLAIN_TELLING_STATEMENT.md`) takes none of them; its inputs are his forecasts under
+each of his options. The eight known faults are faults in computing notions it does not use,
+so the repairs would not bear on it. The model and its 68 episodes stay under the round's
+runner as they are. What the statement lacks in that place is a way from a case as it comes
+to a `Problem` (row 94 of `account/LEDGER.md`).
+
+An agent decision, reversible by the maintainer's word (`DECISIONS.md`,
+`2026-11-27--legitimacy-twenty-second-followup-plain-telling`, (7)): his ordering of 27
+November asks that it be said whether the interpretation is still wanted.
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/LEGITIMACY_STATEMENT.md`, `account/LEDGER.md`, `account/CONNECTING_THEOREM.md`, `account/interpretation/INTERPRETATION.md`,
+`account/interpretation/history_model.py` and `account/interpretation/known_faults.py` in the round directory;
+`REVIEW-astra-followup-20.md` in the round's prompts directory.
+*Consumed by:* nothing.
+
+### 158. A feedback model for the long-run form of the connecting theorem — **[open]** — *closed: superseded by item 159*
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=no -->
+
+Rows 71 and 74 of `account/LEDGER.md`.
+
+Closed without delivery. The item asked for a feedback model yielding the accuracy hypotheses of
+`LegitimacyStop.long_run_stop_informed` and `long_run_stop_reference`, whose events (her
+reference self, her judgement having parted) belong to the superseded statement. The present
+form of the question, how the facts the accuracy condition of `LegitimacyPlainTelling.lean`
+would score could be observed, is item 159.
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/CONNECTING_THEOREM.md`, `account/LEGITIMACY_STATEMENT.md` and `account/LEDGER.md` in the round directory;
+`LegitimacyStop.lean`, `LegitimacyStatement.lean` and `DeconfusingCorrigibility.lean` under `lean/Workspace/Deference/Contrib/`;
+`REVIEW-astra-followup-21.md` in the round's prompts directory.
+*Consumed by:* nothing.
+
+### 159. How the facts the accuracy condition would score could be observed — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+Rows 86 and 92 of `account/LEDGER.md`.
+
+The statement of `account/PLAIN_TELLING_STATEMENT.md` is by his lights: an adviser whose
+picture of her is wrong or absent can satisfy it. A guarantee in fact needs a second
+condition, on his forecasts. By the maintainer's rule 7 of 27 November its form is that
+nothing she has not been told lets a competent predictor forecast where she is heading
+better than what she was told. `LegitimacyPlainTelling.lean` has it for two constant signals
+(`NoSignalBeats`, `shifts`) and proves long-run bounds from it, about real sequences that
+nothing ties to events. What those sequences are meant as is counterfactual or inner: her
+rating with his views substituted, what she would have done under a plain telling, where a
+course ended by her evaluation at its start. The nineteenth outside review
+(`REVIEW-astra-followup-22.md` in the round's prompts directory, answer 9) adds that
+randomising between tellings identifies averages and not the joint event, and that her later
+endorsement does not recover her starting evaluation; the fifteenth
+(`REVIEW-astra-followup-21.md`) that an answer she gives at a check-in may report a state the
+question changed. Wanted: what of this can be observed, under what assumptions, and the
+long-run results for that. Second in the maintainer's ordering of 27 November. A Lean
+headline registers at merge.
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/PLAIN_TELLING_STATEMENT.md` and `account/LEDGER.md` in the round directory;
+`LegitimacyPlainTelling.lean` and `DeconfusingCorrigibility.lean` under `lean/Workspace/Deference/Contrib/`;
+`REVIEW-astra-followup-22.md` and `REVIEW-astra-followup-21.md` in the round's prompts directory.
+*Consumed by:* item 150 (the joint statement with the corrigibility theorems), item 147 (what an overseer can observe), and the round that writes the account up.
+
+### 160. The gap between the statement and the outcome beyond two options and a linear comparison, and where his conduct changes how she evaluates — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+Rows 80, 84 to 87 and 89 of `account/LEDGER.md`.
+
+The statement of `account/PLAIN_TELLING_STATEMENT.md` is about her beliefs and the safety
+property about what she does. `gap` in `LegitimacyPlainTelling.lean` says how the second can
+fail while the first holds: a lapse of hers under his conduct, one under plain telling, a
+choice she rates nearly even, or mistakes that plain telling would leave and that offset one
+another; `gap_in_weights` is that in his weights, with a tolerance. Both are for two
+options, nothing declined, a comparison linear in her views, and conduct that does not
+change how she evaluates; `Witness.w4_needs_same_evaluation` shows the last cannot be
+dropped, and the twentieth outside review (`REVIEW-astra-followup-22.md` in the round's
+prompts directory, answer 6) gives a three-option case in which near-evenness of all her
+options is the wrong exception. The course and long-run results take the outcome guarantee
+or the weighing form as hypothesis and not the statement, and fourteen theorems of the file
+are applied to no term. Wanted: each of these in Lean, or the instance showing
+it cannot be had. Fourth in the maintainer's ordering of 27 November. A Lean headline
+registers at merge.
+
+*Deliverable shape:* as the entry's deliverable field states.
+*Acceptance check:* as the entry's acceptance field states.
+*Context:* `CURRENT.md`, `account/PLAIN_TELLING_STATEMENT.md`, `account/PLAIN_TELLING_HISTORY.md` and `account/LEDGER.md` in the round directory;
+`lean/Workspace/Deference/Contrib/LegitimacyPlainTelling.lean`; `REVIEW-astra-followup-22.md` in the round's prompts directory.
+*Consumed by:* item 150, and the round that writes the account up.
 
 ## Deference line
 Context for all three: `projects/deference/note-dump-2026-08-11/`, in particular
@@ -4584,6 +4900,23 @@ marker line planted in `DECISIONS.md`.
 `tests/conflict_markers.py` reads every tracked text file outside completed round records
 for git's opening and closing marker lines, fails on a tree with no tracked files, and runs
 under `tests/run.py`.
+
+### F12 — A node's Statement edited twice before its first commit is refused
+<!-- workspace-priority: project=none; dispatchable=yes -->
+
+The plain run of `checkers/graph.py` writes `graph/versions.json`, recording version 1 of a
+new node's Statement. A round that files a node, runs the checker, corrects the node's
+Statement and runs the checker again before committing is refused (`Statement changed
+without a version bump`), though no version of the node has been committed. The
+twenty-second follow-up of the legitimacy prosecution round hit this on item 160 and
+restored the three committed generated files from `HEAD` before running the checker again,
+so that the node ships at version 1. The other way through is a bump to version 2, which
+records a first version that never shipped. Wanted: one of the two behaviours stated, so
+that a round does not choose.
+
+*Deliverable shape:* either `checkers/graph.py` reading `graph/versions.json` as committed for its baseline, with a null-input case, or one sentence of `graph/PROTOCOL.md` saying that a plain run mints version 1 and what a round does on a second edit before it commits.
+*Acceptance check:* `python3 -m checkers.graph --root .` run twice on a new node whose Statement is edited between the runs, neither run committed, passes without a version bump, or refuses with a message naming the rule the protocol states.
+*Context:* `checkers/graph.py`; `graph/PROTOCOL.md`.
 
 ## Infrastructure
 

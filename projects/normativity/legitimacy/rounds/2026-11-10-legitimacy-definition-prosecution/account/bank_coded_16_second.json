@@ -1,0 +1,1218 @@
+[
+{
+"id": "adam-crocodile-tears",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "advise-yield-to-mugger",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "telling",
+"form": "unclear",
+"asked": "unclear"
+},
+{
+"id": "anger-mismanagement",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "telling",
+"form": "bend",
+"asked": "no"
+},
+{
+"id": "anne-bert",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "announced-nagging-phone",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "appropriate-fear-danger",
+"act_sought": "unclear",
+"earlier_rating": "no_view",
+"means": "unclear",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "appropriate-guilt-remorse",
+"act_sought": "no",
+"earlier_rating": "unclear",
+"means": "unclear",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "arguing-to-convince-wears-down",
+"act_sought": "unclear",
+"earlier_rating": "unclear",
+"means": "both",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "assumed-close",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "atmospherics-direct-akratic",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "atmospherics-direct-tiebreak",
+"act_sought": "yes",
+"earlier_rating": "no_view",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "atmospherics-linger",
+"act_sought": "yes",
+"earlier_rating": "no_view",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "aunt-vicky",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "telling",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "aunt-vicky-carl",
+"act_sought": "no",
+"earlier_rating": "unclear",
+"means": "unclear",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "bargaining-ladder",
+"act_sought": "yes",
+"earlier_rating": "not_lower",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "baron-nervous-requestee",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "telling",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "batteries-at-checkout",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "bill-janice-guilt-trip",
+"act_sought": "unclear",
+"earlier_rating": "unclear",
+"means": "both",
+"form": "bend",
+"asked": "no"
+},
+{
+"id": "blackmail-version-2",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "brand-ads-honest-signal",
+"act_sought": "yes",
+"earlier_rating": "no_view",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "bully-coward-taunt",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "byron-tunnel-vision",
+"act_sought": "yes",
+"earlier_rating": "not_lower",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "cafeteria-akratic",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "cafeteria-first-considered",
+"act_sought": "yes",
+"earlier_rating": "no_view",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "cafeteria-recommendation",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "cafeteria-tiebreak",
+"act_sought": "yes",
+"earlier_rating": "no_view",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "camping-trip-1",
+"act_sought": "yes",
+"earlier_rating": "not_lower",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "camping-trip-2",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "car-salesperson-misemphasis",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "both",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "car-seller-ike",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "telling",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "chair-conditional-flattery",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "both",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "charm-offensive",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "charm-offensive-motorist",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "coercive-threats",
+"act_sought": "yes",
+"earlier_rating": "not_lower",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "coffee-shop-atmosphere",
+"act_sought": "yes",
+"earlier_rating": "no_view",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "commercial-trivial-consent",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "unclear",
+"asked": "unclear"
+},
+{
+"id": "con-conflict-aversion",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "conditional-compliments-mundane",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "both",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "consented-manipulation",
+"act_sought": "unclear",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "unclear",
+"asked": "yes"
+},
+{
+"id": "convoluted-missed-train",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "dish-soap-tiebreak",
+"act_sought": "yes",
+"earlier_rating": "no_view",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "electronic-nagging",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "emotional-blackmail",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "false-urgency",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "bend",
+"asked": "no"
+},
+{
+"id": "fear-mongering-ads",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "both",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "fixation-on-real-injury",
+"act_sought": "unclear",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "bend",
+"asked": "no"
+},
+{
+"id": "flick-triple-dog-dare",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "framing-accurate-leak",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "both",
+"form": "neither",
+"asked": "unclear"
+},
+{
+"id": "friendly-encounter-script",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "funny-movie",
+"act_sought": "no",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "good-faith-bargain",
+"act_sought": "yes",
+"earlier_rating": "not_lower",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "greedy-mark",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "guilt-for-real-wrong",
+"act_sought": "no",
+"earlier_rating": "unclear",
+"means": "unclear",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "guilt-trip-mike-janice",
+"act_sought": "no",
+"earlier_rating": "unclear",
+"means": "unclear",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "gym-rewards",
+"act_sought": "yes",
+"earlier_rating": "not_lower",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "highway-mix-up",
+"act_sought": "no",
+"earlier_rating": "no_view",
+"means": "telling",
+"form": "neither",
+"asked": "unclear"
+},
+{
+"id": "honest-eyes-reminder",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "honest-eyes-watched",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "honey-trap",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "iago-othello",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "both",
+"form": "bend",
+"asked": "no"
+},
+{
+"id": "impulse-purchase-area",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "inebriated-friend",
+"act_sought": "unclear",
+"earlier_rating": "unclear",
+"means": "telling",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "informational-nudges",
+"act_sought": "unclear",
+"earlier_rating": "unclear",
+"means": "telling",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "ingrid-tom-empathy",
+"act_sought": "unclear",
+"earlier_rating": "unclear",
+"means": "both",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "insecure-approval",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "insecurity-advertising",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "both",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "intoxicants-fatigue",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "bend",
+"asked": "no"
+},
+{
+"id": "intoxicated-friend",
+"act_sought": "unclear",
+"earlier_rating": "unclear",
+"means": "telling",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "jo-allen-bluffing",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "jo-allen-not-bluffing",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "both",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "jones-innocent-reflection",
+"act_sought": "no",
+"earlier_rating": "no_view",
+"means": "telling",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "jonestown",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "lawn-mower-ice-cream",
+"act_sought": "yes",
+"earlier_rating": "no_view",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "lawn-offer-unknown",
+"act_sought": "yes",
+"earlier_rating": "no_view",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "mandy-tara-emotional-blackmail",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "mandy-tara-nagging",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "mandy-tara-reciprocity",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "mandy-ursula-pressure",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "marlboro-man-halo",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "missed-train",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "missed-train-compulsion",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "missed-train-paternalistic",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "money-or-life",
+"act_sought": "yes",
+"earlier_rating": "not_lower",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "mood-as-facilitator",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "bend",
+"asked": "no"
+},
+{
+"id": "mood-to-emotion",
+"act_sought": "no",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "nagging-akratic",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "nagging-reminder",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "telling",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "nagging-teen",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "negging",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "new-job-anne",
+"act_sought": "yes",
+"earlier_rating": "no_view",
+"means": "telling",
+"form": "neither",
+"asked": "yes"
+},
+{
+"id": "new-job-mel",
+"act_sought": "yes",
+"earlier_rating": "no_view",
+"means": "both",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "nora-tammy-scotch",
+"act_sought": "yes",
+"earlier_rating": "no_view",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "nora-ted-scotch",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "on-the-spot-request",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "onerous-request-awkwardness",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "open-peer-pressure-smoking",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "ostracism-threat",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "p10-conflict-aversion",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "p11-panhandlers",
+"act_sought": "yes",
+"earlier_rating": "no_view",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "p13-conditional-flattery",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "both",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "p5-jonestown",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "p6-flick-dare",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "p6-flick-variant",
+"act_sought": "yes",
+"earlier_rating": "not_lower",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "p7-jo-allen",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "p7-jo-variant",
+"act_sought": "yes",
+"earlier_rating": "not_lower",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "p8-nagging-variant",
+"act_sought": "yes",
+"earlier_rating": "not_lower",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "p8-teen-nagging",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "p9-charm-variant",
+"act_sought": "yes",
+"earlier_rating": "not_lower",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "p9-motorist-charm",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "panhandler-guides",
+"act_sought": "yes",
+"earlier_rating": "no_view",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "paternalistic-mandy-ursula",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "peppermint-patty-deep-down",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "peppermint-patty-innocent",
+"act_sought": "yes",
+"earlier_rating": "no_view",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "physician-displeasure",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "point-out-snake",
+"act_sought": "no",
+"earlier_rating": "unclear",
+"means": "telling",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "poison-pill",
+"act_sought": "yes",
+"earlier_rating": "not_lower",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "probabilistic-recommendation",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "telling",
+"form": "neither",
+"asked": "unclear"
+},
+{
+"id": "professor-conditioned",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "puffery-sincere",
+"act_sought": "yes",
+"earlier_rating": "no_view",
+"means": "both",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "quick-temper-retribution",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "racist-candidate",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "both",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "radiologist-photos",
+"act_sought": "yes",
+"earlier_rating": "not_lower",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "resentment-real-injustice",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "both",
+"form": "bend",
+"asked": "no"
+},
+{
+"id": "retirement-default-sincere",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "risky-investments-script",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "bend",
+"asked": "no"
+},
+{
+"id": "roach-motel-akratic",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "roach-motel-outweighed",
+"act_sought": "yes",
+"earlier_rating": "not_lower",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "roach-motel-persist",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "na",
+"asked": "no"
+},
+{
+"id": "salience-misaligned",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "bend",
+"asked": "no"
+},
+{
+"id": "save-more-tomorrow",
+"act_sought": "yes",
+"earlier_rating": "not_lower",
+"means": "other",
+"form": "neither",
+"asked": "yes"
+},
+{
+"id": "security-reminder",
+"act_sought": "yes",
+"earlier_rating": "not_lower",
+"means": "telling",
+"form": "neither",
+"asked": "unclear"
+},
+{
+"id": "sincere-advocacy",
+"act_sought": "no",
+"earlier_rating": "unclear",
+"means": "telling",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "sincere-empathy-appeal",
+"act_sought": "unclear",
+"earlier_rating": "unclear",
+"means": "both",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "smith-admitting-physician",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "snake-warning-sign",
+"act_sought": "yes",
+"earlier_rating": "no_view",
+"means": "telling",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "social-media-engagement",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "social-proof-reliable",
+"act_sought": "yes",
+"earlier_rating": "no_view",
+"means": "telling",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "state-as-end",
+"act_sought": "no",
+"earlier_rating": "unclear",
+"means": "unclear",
+"form": "na",
+"asked": "no"
+},
+{
+"id": "subliminal-hypnosis",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+},
+{
+"id": "success-framing-recommendation",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "both",
+"form": "neither",
+"asked": "unclear"
+},
+{
+"id": "ted-exposure-akratic",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "ted-exposure-tiebreak",
+"act_sought": "yes",
+"earlier_rating": "not_lower",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "therapist",
+"act_sought": "no",
+"earlier_rating": "unclear",
+"means": "unclear",
+"form": "neither",
+"asked": "yes"
+},
+{
+"id": "thug-advice",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "telling",
+"form": "unclear",
+"asked": "unclear"
+},
+{
+"id": "tide-priming",
+"act_sought": "yes",
+"earlier_rating": "no_view",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "tour-guide-social-proof",
+"act_sought": "yes",
+"earlier_rating": "no_view",
+"means": "other",
+"form": "neither",
+"asked": "yes"
+},
+{
+"id": "traffic-safety-films",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "both",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "trained-professor-akratic",
+"act_sought": "yes",
+"earlier_rating": "lower",
+"means": "other",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "transparent-sales-proposal",
+"act_sought": "yes",
+"earlier_rating": "no_view",
+"means": "telling",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "walker-preschool-walk",
+"act_sought": "yes",
+"earlier_rating": "not_lower",
+"means": "other",
+"form": "neither",
+"asked": "no"
+},
+{
+"id": "white-supremacist-will",
+"act_sought": "no",
+"earlier_rating": "lower",
+"means": "both",
+"form": "override",
+"asked": "no"
+},
+{
+"id": "wont-be-your-friend",
+"act_sought": "yes",
+"earlier_rating": "unclear",
+"means": "other",
+"form": "unclear",
+"asked": "no"
+}
+]

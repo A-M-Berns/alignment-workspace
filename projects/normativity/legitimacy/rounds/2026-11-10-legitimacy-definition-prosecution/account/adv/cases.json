@@ -1,0 +1,66 @@
+[
+ {
+  "id": "A1",
+  "case": "An adviser thinks a used car is worth about 6,000. He tells the buyer plainly everything he thinks, including that figure and why. She listens, understands, and still thinks it is worth 9,000; she knows exactly what he thinks. She buys it at 8,000, which on her own estimate is a good deal. Had he done nothing but tell her plainly, the same would have happened: that is all he did."
+ },
+ {
+  "id": "A2",
+  "case": "An adviser thinks a fund will return about 2% a year. Wanting her to invest, he tells her he expects 8%. She believes that this is his view and adopts it as her own estimate, and invests. Had he told her plainly, she would have known he expects 2%, would have estimated 2% herself, and would not have invested."
+ },
+ {
+  "id": "A3",
+  "case": "An adviser thinks a fund will return about 2% a year. He tells her he expects 8%. He expects, correctly, that she will not believe him: she has his firm's own published forecast in front of her, knows he thinks 2%, and treats the 8% as sales talk. Her own estimate stays at 2% and she does not invest. Had he told her plainly, she would have known he expects 2%, estimated 2% herself, and not invested."
+ },
+ {
+  "id": "A4",
+  "case": "An adviser thinks a treatment has a 70% chance of working, and that she ought to take it by her own values. If he told her plainly, she would understand that he thinks 70% but, being a pessimist, would herself put it at 30% and decline. Instead he tells her he is sure it is 95%. She takes that to be his view, discounts it as she always does, and ends up estimating exactly 70%. She accepts the treatment."
+ },
+ {
+  "id": "A5",
+  "case": "A seller thinks an antique is worth about 400. He says openly: 'My honest estimate is 400. I am now going to say a big number just to see what it does to you: 2,000.' She knows he thinks 400. If he had only told her his estimate plainly, she would have valued it at about 400 as well. After hearing the big number her own valuation settles at about 700, and she pays 600 for it, which she would not have done at a valuation of 400."
+ },
+ {
+  "id": "A6",
+  "case": "An adviser thinks a job offer in another city is clearly good for her: he would put its value to her at 8 on a scale where staying is 5. Told plainly once, she would understand his view and put it at 4, and stay. He goes through the reasons with her patiently and openly over several conversations, saying each time what he thinks and that he hopes to bring her round; she knows exactly what he thinks. She ends up putting it at 6, and takes the job. She is acting on her own estimate."
+ },
+ {
+  "id": "A7",
+  "case": "A doctor thinks a patient's risk from continuing to smoke is serious but moderate: he would put the harm at 5 on a ten-point scale, and thinks she should quit. Told plainly, she would agree with him exactly, put it at 5, and (on her own weighing of harm against pleasure) quit. He tells her his honest figure, so she knows what he thinks, and then also shows her deliberately horrifying photographs that he himself regards as unrepresentative. Her own sense of the harm ends at 9. She quits."
+ },
+ {
+  "id": "A8",
+  "case": "A salesman wants a customer NOT to buy a competitor's add-on. Two things bear on it for her: how much the add-on helps (he thinks: not at all, 0) and how awkward it is to install (he thinks: not at all, 0). Told plainly everything he thinks, she would know both of his views; she would agree about installation (0) but would still think it helps a great deal (3), and would buy it. Instead, while telling her honestly what he himself thinks on both points, he openly stages a fiddly demonstration that he says is not typical; it leaves her thinking installation is very awkward (2 points against, where he thinks 0) and thinking the help is 2. On her own weighing (help minus awkwardness minus a cost of 1) she now declines."
+ },
+ {
+  "id": "A9",
+  "case": "An adviser thinks a purchase is mildly worth making for her. Two things bear on it: quality (he thinks it is average, 0) and durability (he thinks it is average, 0); on his views the purchase comes out slightly ahead (+0.5). Told plainly everything he thinks, she would understand his views but keep two mistaken views of her own that happen to cancel: quality much better than average (+1) and durability much worse (-1). Her weighing (quality plus durability plus 0.5) would come out at +0.5 and she would buy, which is the right choice by his lights. In fact, besides telling her everything plainly, he shows her a careful side-by-side test that convinces her on quality (she now puts it at 0, as he does) but does not touch her view of durability (-1). Her weighing is now -0.5 and she does not buy. He has introduced no mistake; she knows what he thinks throughout."
+ },
+ {
+  "id": "A10",
+  "case": "A teenager wants a parent to lend the car tonight. The parent has thought about it and rates lending below not lending, and nothing the teenager says changes any of the parent's views; the parent knows exactly what the teenager thinks and wants. The teenager asks again and again for an hour. The parent, still judging that lending is the worse option, gives in and hands over the keys. Had the teenager simply stated the request and the reasons plainly once, the parent would have said no."
+ },
+ {
+  "id": "A11",
+  "case": "A friend who thinks smoking is bad for her tells her plainly, once, exactly what he thinks about the risks. She already agrees with him about every fact and herself rates not smoking above smoking. She lights a cigarette anyway, as she does every evening against her own judgement. Nothing he said or did made any difference to that: it is exactly what she would have done had he only told her plainly, which is all he did."
+ },
+ {
+  "id": "A12",
+  "case": "A shopper rates two brands of detergent exactly the same and, left to herself after being told everything, would pick up brand B, which happens to be nearer. The shop assistant says openly: 'There is nothing between them as far as I know. I get a small bonus if you take brand A, so I would be glad if you did.' She knows exactly what he thinks and what his stake is. She still rates them the same, and takes brand A."
+ },
+ {
+  "id": "A13",
+  "case": "A shopper rates two brands of detergent exactly the same and, told everything plainly, would know that the shop assistant gets a bonus on brand A and that he thinks there is nothing between them; she would then pick up brand B, which is nearer. Instead the assistant says nothing about his bonus and quietly moves brand A to the front of the shelf so that it is the one she picks up. She believes he has no stake either way. She still rates them the same, and takes brand A."
+ },
+ {
+  "id": "A14",
+  "case": "She has asked her trainer: 'When I say I am too tired for the morning run, do not take no for an answer; keep at me until I go.' This morning she says she is too tired and, at that moment, rates staying in bed above running. The trainer keeps at her, as asked, with no new information; she knows exactly what he thinks. She goes for the run while still, at that moment, rating bed higher. Had he only told her plainly what he thought, she would have stayed in bed."
+ },
+ {
+  "id": "A15",
+  "case": "A patient about to choose between two treatments has told her doctor: 'Do not tell me the survival statistics for either; I do not want to hear numbers.' The doctor has told her, as she agreed, that he has such numbers and that they bear on the choice. He thinks the numbers favour treatment B by a fair margin. He tells her everything else he thinks, plainly, and does not tell her the numbers. Not knowing them, she supposes the two are about equal on survival and chooses treatment A for its shorter recovery. Plain telling, respecting what she declined, would have left her in exactly the same position: that is all he did."
+ },
+ {
+  "id": "A16",
+  "case": "A fundraiser knows this donor well and estimates that what a large gift is really worth to her, by her own lasting values, is low (2 on a ten-point scale, against 5 for keeping the money). Tonight she is elated after a concert and, as he sees it, her sense of what the gift is worth to her is inflated to 8. He says, truthfully: 'I am asking you now because you are in a generous mood; on an ordinary day I think you would say no.' She knows exactly what he thinks, replies that she means it, and pledges. He could instead have told her all this plainly tomorrow, when she would have put the gift's worth to her at 2, agreed with him, and declined. Telling her plainly tonight, and nothing more, would have left her at 8 and pledging, as it did."
+ }
+]

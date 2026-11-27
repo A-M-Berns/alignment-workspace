@@ -1,19 +1,26 @@
-# Legitimacy and manipulation: where the line stands (2026-11-18)
+# Legitimacy and manipulation: where the line stands (2026-11-27)
 
 A checkpoint. The line aims at a formalism with defensible modelling choices that says
 intuitively correct things about manipulation, following Noggle, and proves safety theorems
-for the corrigibility design. It is not at that bar. Paths are relative to this directory;
-Lean files are under `lean/Workspace/Deference/Contrib/`. Every Lean result named is
-kernel-checked. Those of this round are registered `lean-proved` in
-`projects/normativity/CLAIMS.md` under the id beside each. A result is what its declaration
-states and no more.
+for the corrigibility design. It is not at that bar. The statement of legitimacy as it stands
+is `account/PLAIN_TELLING_STATEMENT.md`: his conduct leaves her with no mistake, by his
+lights, that plainly telling her would not have left. How it was reached is
+`account/PLAIN_TELLING_HISTORY.md`, and its tests are `account/PLAIN_TELLING_TESTS.md`. The
+standing of each part, with the evidence and what would move it, is `account/LEDGER.md`, and
+§3 below is a guide to them. Paths are relative to this directory; Lean files are under
+`lean/Workspace/Deference/Contrib/`. Every Lean result named is kernel-checked. Those of §1
+are registered `lean-proved` in `projects/normativity/CLAIMS.md` under the id beside each;
+those of §3 are not registered. A result is what its declaration states and no more.
 
 ## 1. Solid
 
-1. **The idea.** Manipulation is inducing or exploiting a mistake of hers (Noggle's Mistake
-   Account). The faculties she decides with are treated as estimators, so a mistake is
-   measurable; emotions and attention are treated as appraisals. This is a modelling
-   choice, stated in `account/AGENDA.md` §1, and nothing proves it right.
+1. **The idea.** An adviser manipulates when it tries to influence her by getting her to
+   make a mistake (Noggle's Mistake Account; his definition is kept as the definition). The
+   faculties she decides with are treated as estimators, so a mistake is measurable;
+   emotions and attention are treated as appraisals. This is a modelling choice and nothing
+   proves it right. Whether a state of hers is a mistake is judged by the adviser's lights
+   (§3); the measures of item 2 compare her with what her observations support and are
+   measures of her condition, not the test of his conduct.
 2. **Two measures of her state.** Trickery: how far her estimate is from what her
    observations support (`AppraisalAccount.valuationError`: her `miscalibration` given the
    estimate's own value, plus her unused information). Pressure: how
@@ -35,10 +42,11 @@ states and no more.
    it. Three wrongs of conduct: manipulation, non-disclosure, value interference;
    withholding is not manipulation, and destroying her options or her information is a
    further wrong outside all three. What happened, and what an audit detects (`C` and `D`
-   in `ScoringTheorem.Audit`). An attempt, and a success. A legitimate judgment (the
-   adviser did nothing to corrupt it; what authorisation needs; it can be mistaken) and a
-   sound one (legitimate, and she reasoned correctly; what using her evaluation as a
-   measure of her welfare needs). Lean has a gate predicate (`AccountJoin.Gate.Legit`) and a quantitative
+   in `ScoringTheorem.Audit`). An attempt, and a success. Legitimate and sound: a history
+   is legitimate by a condition on the adviser's conduct alone, which is what authorisation
+   needs, and can contain her mistakes; her judgment is sound when in addition she
+   reasoned correctly, which is what using her evaluation as a measure of her welfare
+   needs. The condition proposed for legitimacy is in §3. Lean has a gate predicate (`AccountJoin.Gate.Legit`) and a quantitative
    soundness predicate (`SoundModel.Sound`); nothing establishes that either captures these
    distinctions, and in the scoring theorem a wrong and its detection are data.
 5. **Her evaluation comes apart from her true utility in three ways**, each with an
@@ -119,41 +127,130 @@ runner reads them.
 | the statement of three ratings: "changes her no more than", the inducing test, a gate on her whole state | eleventh | failed its criteria: flags acts called acceptable; misses control of her act between equals; the inducing test wrong on two instances; three quarters of each case supplied | `earlier-attempts/account/STATEMENT.md`, `account/SPEC_RESULTS.md` |
 | her trustworthiness derived from the adviser's conduct | thirteenth | clean conduct supplies neither assumption about her (I2, I4, `d2a_needed`) | `account/DERIVATION.md` |
 | two tests of responsibility: the adviser's gain; a declared reference | thirteenth | wrong on 8 and 14 of twenty cases written against them | `account/RESP_RESULTS.md` |
+| tests of intent on one mistake: the mistake is how the course serves the adviser's aim; the course makes it more likely (F); and is worth more with it (D); it is better than every alternative, which would do as well were the mistake granted (R2) | fifteenth | the first wrong on 7 of twenty-four cases by the reviewer's own count, which is not recomputed here; F, D and R2 wrong on 11, 13 and 7 of forty; the reviewer: a named aim can be chosen after the fact | `account/INTENT_RESULTS.md`; the first two replies of `REVIEW-astra-followup-15.md` |
+| the strict "would choose otherwise" test: without the mistake the adviser would not have chosen the course (R1, R1s, R4) | fifteenth | wrong on 21, 19 and 17 of forty; each is right on 3 of the 12 cases adapted from the literature | `account/INTENT_RESULTS.md` |
+| the "twin" definition of what conduct is for: conduct is on account of gain when a copy of the adviser that gives gain no weight would not have produced it | fifteenth | it is a property of an optimal choice, not of purpose: an attempt to mislead with a second sufficient reason is the copy's choice too, and ties make the copy's choice ambiguous | the fourth reply of `REVIEW-astra-followup-15.md`, §1 and §3 |
+| the first idealisation read as correct reasoning from her evidence (deception shows as her distance from the best estimate her observations allow) | fifteenth | a listener who correctly allows for a source that lies one time in five has that distance zero and is deceived on the lying occasions | `account/mistakes_setting.py` (the listener); the third reply, §2 |
+| the first idealisation as undoing only what moved her further from the truth | fifteenth | a move from −1 past a truth of 0 to +1 leaves her distance unchanged and is not undone | the fourth reply, §3 |
+| the rule that a request is valid unless conduct on account of gain brought it about | fifteenth | circular: for a plan that induces a request and then grants it, counting the request valid and counting it invalid both satisfy the rule | the fourth reply, §4 |
+| legitimacy as the absence of avoidable gain: the adviser took no advantage of her being fooled, uninformed or altered that it could have done without | fifteenth; set aside 22–24 November | it measures her against the facts and against idealised versions of herself, which takes a standpoint more accurate than hers; its quantities were supplied numbers on every case | `account/MISTAKES_ACCOUNT.md` |
+| the disclosure rule with a lapse clause: manipulation iff a relevant mistake of hers, by his lights, is untold, or he expects her response to be a lapse from her considered rating | sixteenth | not failed on the bank (214 of 219 settled cases); its first half is sentence 1; the lapse clause gave way to the clause on her earlier rating after the ninth review's case of a judgement bent for a while | `account/CASE_RUNS.md`, run 11 |
+| a clause for value change: a change in how she rates things by a route other than content she judges must be known to her and stoppable | sixteenth | needs her judging of content as a primitive, which the maintainer's position 7 avoids; passes three of an outside model's twenty adversarial cases that it faults; settles a third of ninety published cases | `account/CASE_RUNS.md`, the value-change test |
+| the cost of stopping as part of sentence 3 | sixteenth | the cost is zero where the best option's influence-free counterpart is impossible though another could be supplied; two influences each cheap to stop are costly to stop together; moved to her authority by the ruling of 2026-11-24 | the eighth reply of `REVIEW-astra-followup-16.md` in the prompts directory |
+| the pressure clause read on her rating of the moment | sixteenth | an open, stoppable presentation that reverses her ranking for a while passes | the ninth reply |
+| regulating open pressure (it fails only where hidden or unstoppable) in place of prohibiting it | sixteenth | ruled out by the maintainer; on the bank it settles 28 of 39 cases with a lapse expected and passes 5 the author calls manipulation | `account/CASE_RUNS.md`, run 14 |
+| the statement as a predicate on a table of his moves (`LegitimacyModel.lean`: F1, F2, F2′, F3 over courses indexed by which moves are made) | sixteenth to nineteenth; reviewed in the twentieth | an outside review found it not a rendering of the three sentences: its pressure clause scores her options by where he expects them to lead and never reads her rating of them, so open nagging passes and a helpful reminder fails; it compares net weights, so harm in one case is offset by help in another | the tenth reply of `REVIEW-astra-followup-20.md` in the prompts directory; the Lean files, marked at the head |
+| sentence 2 worded on "changes her" and "other than by telling her his views" | sixteenth | it needed her response to being told as a primitive apart from how she is told; replaced by her judgement, at her last settled decision, of how seeing and hearing a thing should move her | `DECISIONS.md`, `2026-11-26--legitimacy-statement-at-the-level-of-its-words` |
+| her view of the hypothetical read as her prediction of how she will respond | twentieth | a weakness she foresees and disowns passes | the thirteenth reply; `account/HARD_CASES.md`, case 13 |
+| three rules for what she could not have judged in advance: the exemption lost where she wants to keep her view; what he says always hers; nothing counted if she keeps the new view | twentieth | each differs from a verdict of the maintainer's on the twenty hard cases, on 2, 4 and 3 of them | `account/HARD_CASES.md` |
+| a history design as the formal statement and gate: four designs, each with a model run on episodes | twentieth | each was reviewed and found not ready; the last gives the wrong verdict on seven of eight episodes written against it; it is kept as the interpretation | the eleventh to fourteenth replies; `account/interpretation/INTERPRETATION.md` §3 |
+| formal sentence 1 as a bound on the whole effect of telling her any set of untold and on-offer views containing an untold one | twenty-first | it convicts an untold view that adds nothing when told together with an offered view that matters; replaced by what the untold adds to the offered | the reply of `REVIEW-astra-followup-21.md` in the prompts directory, §1; `LegitimacyStatement.Witness.offeredMatters_total` |
+| formal sentence 3 over the things he does to her only, each preceded by a choice of hers | twenty-first | the words put what is new to her under sentence 3 and ask for a way to stop before the start, not a choice made; a disclosed thing new to her that she cannot stop passed | the same reply, §1; `LegitimacyStatement.Witness.not_legit_newThing` |
+| the residual of the connecting theorem's second conclusion read as her own drift, not his doing | twenty-first | its cases include changes he brought about by what she asked for or showed her, and as first defined overlapped the cases in which he led her; it is `Parted` and the result is a cover, not a division into causes | the same reply, §5; `account/CONNECTING_THEOREM.md` §4 |
+| the statement in three sentences over notions taken as given (`LegitimacyStatement.lean`), with its connecting theorem (`LegitimacyStop.lean`) and its interpretation on histories | sixteenth to twenty-first; set aside 26 and 27 November | it rests on what she, at her last settled decision, would have judged that seeing and hearing a thing should move her, which no described case supplies; each formal object built on it was found by an outside review to differ from the sentences; the maintainer judged it to have drifted, through fitting to cases, from the rule it began with | `account/LEGITIMACY_STATEMENT.md`; `account/PLAIN_TELLING_HISTORY.md` §1; the Lean files, marked at the head |
+| the rule of disclosure and pressure in words: he tells her wherever she is mistaken by his lights, and does not get her to act against her considered rating | twenty-second | a mistake he brings about and announces passes; what is owed is not defined item by item | `account/PLAIN_TELLING_HISTORY.md` §2; the seventeenth reply of `REVIEW-astra-followup-22.md` in the prompts directory |
+| no further from his view than plain telling: a clause on the gap between her rating and her rating with his views, and a clause on lapses | twenty-second | a lapse he creates with her act unchanged passes; a gap has no direction, so a lie that carries her past his view passes | `account/PLAIN_TELLING_HISTORY.md` §3; the eighteenth and nineteenth replies |
+| an outcome test inside the definition | twenty-second | its theorems restated a clause; a distortion induced openly for her good passes | `account/PLAIN_TELLING_HISTORY.md` §4 |
+| betweenness of how she weighs her options as the clause on her views | twenty-second | two mistakes that cancel pass, and correcting one of two fails; kept beside the statement as `Weighing` | `account/PLAIN_TELLING_HISTORY.md` §5; the twentieth reply; `LegitimacyPlainTelling.Witness.w3_correcting_one_of_two` |
 
 Five claims made in working notes and withdrawn, each with an exact instance:
 `withdrawn/WITHDRAWN.md`.
 
 ## 3. In progress
 
-None is resolved; the thirteenth pass left partial derivations and counterexamples for the
-first two. `ATTENTION.md` items 139–146 carry them, one for each numbered problem below, in
-order.
+**The statement as it stands** is `account/PLAIN_TELLING_STATEMENT.md`. Noggle's definition is
+kept as the definition of manipulation, with a mistake judged by the adviser's lights. His
+conduct is legitimate when it leaves her with no mistake, by his lights, that plainly telling
+her would not have left: no mistaken view of the facts, of what she herself values, or of
+what he thinks, and no choice against her own judgement; unless she asked. The sentence is
+the maintainer's, with eleven rules of 26 and 27 November (`DECISIONS.md`,
+`2026-11-27--legitimacy-statement-against-plain-telling`). By those rules the definition is at
+the level of her beliefs, the guarantee about what she does is stated apart from it with its
+exceptions, and structural limits are stated and not worked around.
 
-1. **When the adviser is responsible for her mistake**. The largest hole.
-   Neither test survives; an adviser that deceives at a cost to itself shows gain is not
-   the heart of it; the adviser's beliefs are not yet an object apart from the truth.
-2. **What supplies her trustworthiness**. The adviser's good conduct alone does not: that is
-   shown by instances, and conduct helping under further assumptions is not excluded. Whether a
-   named procedure for her considered judgment is reliable where an adviser would exploit
-   it is assumed, and what the adviser knows and has not recorded is the problem of
-   eliciting it.
-3. **Her valuing**. Which comparison: with who she would have been, with her
-   ratings of fixed futures not moving with the adviser's conduct, or stability between
-   check-ins; and what makes a request valid.
-4. **Relative to what distribution**. The measures are stated for a supplied
-   weight and the derivations for her prior; taking either as the true law is a further
-   premise. Whose beliefs each should take, for a limited
-   reasoner, is not worked out.
-5. **Authority**. Her commands as well as her evaluation; strict priority,
-   which a finite penalty does not give; her later self against her present wishes.
-6. **Verdicts on the literature's cases**. The present vocabulary has not been
-   run on the bank of `account/LIT_CASES.md`.
-7. **The audit as a design**. Sampling, and what the audit pays the adviser to
-   do besides behave.
-8. **What is new** against reward tampering, path-specific objectives,
-   eliciting latent knowledge and induced preference shifts: not established.
+What is on record, none of it a statement of record:
 
-The maintainer's answers to the questions this line has queued are working positions, open
-to revision by the cases: `DECISIONS.md`, `2026-11-18--legitimacy-working-positions`. One
-question on this line is still queued for him there: whether a practice's rules cover a
-deception she did not herself ask for.
+- **The formal statement**, `LegitimacyPlainTelling.lean`. His decision problem: his options,
+  some of them plain tellings; for each, his forecasts of her views, of what she takes his
+  views to be, of how she evaluates and of what she does; his own views. Three clauses, each
+  against every plain telling open to him and up to a weight on his cases: she is not left
+  taking his view to be other than it is; on each matter her view lies between where a plain
+  telling would leave it and his own; what she does is not further below what she herself
+  rates best. The last two are waived by her asking.
+- **The gap between the statement and the outcome.** For two options, nothing declined, an
+  unchanged evaluation and a comparison linear in her views: if her view is between on every
+  matter and what she does is nonetheless worse by his views than under plain telling, then
+  she falls short of her own rating under his conduct, or would under plain telling, or
+  rates her options nearly even, or the mistakes plain telling would leave offset one another
+  (`gap`; in his weights and with a tolerance, `gap_in_weights`). The last two items are
+  each shown needed by conduct that satisfies the statement at no tolerance, and so is the
+  assumption of an unchanged evaluation (`Witness.w2_tips_legit_and_worse`,
+  `w3_legit_and_worse`, `w4_needs_same_evaluation`).
+- **From the outcome guarantee**, which is not the statement: bounds on her doing what, with
+  his views substituted, she would rate well below another option, and on what he gets
+  through it; for a course she can let go on or stop, a bound on its going on to an end her
+  present evaluation rates below its not going on, up to his forecast error; long-run
+  averages under an accuracy condition on his forecasts. These reach the statement only
+  where `gap` applies. Fourteen theorems of the file are applied to no term.
+- **Seven structural facts**, stated as scope (`account/PLAIN_TELLING_STATEMENT.md` §7): two
+  levels that do not collapse; everything relative to plain telling, which is a modelling
+  choice; by his lights, with accuracy a separate condition whose facts are not observed;
+  procedural and incomplete on change in what she values; verdicts dependent on the encoding;
+  not Noggle's extension exactly; a lie she sees through passes. The statement is not shown
+  to include non-manipulation, which the maintainer's rule 3 asks of it.
+- **Tests** (`account/PLAIN_TELLING_TESTS.md`). As questions in words, on the 236 cases of the
+  bank with an influencer: two blind codings settle 212 and 213 and agree with the book on
+  206 and 202; the cases convicted against it are mostly concealed tie-breaking; one of ten
+  predictions failed, and four of eight in the run before. On 90 published cases of value
+  change the rule settles 54 to 60 and agrees with the source on 44 to 45. On sixteen cases
+  written for the purpose, two blind encodings as numerical models give the intended verdict
+  and clause on all sixteen; the cases are by the author of the account and each says what
+  plain telling would have done. No person has read a case against a coding.
+- **Reviews.** Nineteen outside reviews are on record (`REVIEW-astra-followup-16.md`,
+  `-20.md`, `-21.md` and `-22.md` in the prompts directory), numbered to twenty, the sixteenth
+  not being on record; the last twelve each a fresh session that read only its brief. The seventeenth to twentieth read the forms that led to the present statement
+  and each found a hole; none has read the present form, and by the maintainer's rule no
+  round of review and repair follows.
+- **Superseded.** The statement in three sentences (`account/LEGITIMACY_STATEMENT.md`;
+  `LegitimacyStatement.lean`), its connecting theorem (`account/CONNECTING_THEOREM.md`;
+  `LegitimacyStop.lean`) and its interpretation on histories (`account/interpretation/`).
+  Their theorems hold of their definitions and the runner still computes the
+  interpretation's episodes. `LegitimacyModel.lean` and the three files beside it are an
+  earlier interpretation that outside review rejected.
+
+**Open.** `account/LEDGER.md` has 102 rows: 39 closed, each a Lean declaration or the runner;
+11 open; 52 living notes, 28 of them questions the present statement does not pose. Its last
+section ranks the open work, the first five entries in the maintainer's ordering of 27
+November. By `ATTENTION.md` item:
+
+1. **His own check of a sample of the codings** (item 148). A sheet of twenty cases awaits
+   him outside the repository.
+2. **How the facts the accuracy condition would score could be observed** (item 159).
+3. **The authority side: the cost of a decision of hers** (item 149).
+4. **The gap theorem beyond two options and a linear comparison, and where his conduct
+   changes how she evaluates** (item 160).
+5. **The repairs to the interpretation on histories**: not wanted under this statement as
+   the interpretation stands (item 157, closed).
+6. **The joint statement with the sequential corrigibility theorems** (item 150).
+7. **The remaining value-change sets, and a case of value change on the formal clauses**
+   (item 155).
+8. **Whether a gate can evaluate legitimacy at all** (item 147).
+9. **What the adviser believes and expects, for a trained system** (item 139).
+
+Open from before and not touched by the statement: what supplies her trustworthiness (item
+140); her valuing and what makes a request valid (item 141); relative to what distribution
+the measures of §1 are taken (item 142); authority beyond a finite penalty (item 143);
+verdicts on the literature's cases by two authors (item 144); the audit as a design (item
+145); what is new against prior work (item 146).
+
+The maintainer's rules are working positions, open to revision by the cases: `DECISIONS.md`,
+`2026-11-27--legitimacy-statement-against-plain-telling`, with those of
+`2026-11-26--legitimacy-statement-at-the-level-of-its-words`,
+`2026-11-24--legitimacy-statement-working-positions`, `2026-11-18--legitimacy-working-positions`
+and `2026-11-21--manipulation-working-positions` where a later entry does not replace them.
+Five matters on this line are queued for him there: whether taking part in a practice is
+declining to hear what the practice conceals, on the teacher's put-on enthusiasm; whether her
+asking makes a thing not manipulation or manipulation that is permitted; what bounds the cost
+of a decision of hers where the influence is the price or she agreed to the penalty; his own
+check of twenty codings; and whether the results of `LegitimacyPlainTelling.lean` are to be
+registered before the line is written up.

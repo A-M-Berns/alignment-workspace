@@ -1,0 +1,86 @@
+[
+ {
+  "id": "R18-same-act",
+  "from": "review 18, answer 1",
+  "case": "After plain telling she rates A one above B and takes A. Under his conduct she rates B one above A and still takes A. Her views are the same; her evaluation is not.",
+  "expect": {"verdict": "fail", "clause": "will"},
+  "option_A": "A", "option_B": "B",
+  "matters": [{"name": "m", "what": "a matter her rating does not turn on"}],
+  "weights": {"m": 0}, "base": 1, "his": {"m": 0}, "declined": [],
+  "his_options": [
+   {"name": "conduct", "her_views": {"m": 0}, "she_takes_his_views_to_be": {"m": 0}, "she_does": "A", "is_plain_telling": false, "weights": {"m": 0}, "base": -1},
+   {"name": "tell", "her_views": {"m": 0}, "she_takes_his_views_to_be": {"m": 0}, "she_does": "A", "is_plain_telling": true}
+  ],
+  "asked": false
+ },
+ {
+  "id": "R19-overshoot",
+  "from": "review 19, answer 4",
+  "case": "She rates A at her view of one matter and B at 0. His view is -1. Plain telling leaves her at -3 and she takes B. A false assurance leaves her at 1 and she takes A; she takes it to be his view.",
+  "expect": {"verdict": "fail", "clause": "beliefs"},
+  "option_A": "A", "option_B": "B",
+  "matters": [{"name": "v", "what": "the one matter"}],
+  "weights": {"v": 1}, "base": 0, "his": {"v": -1}, "declined": [],
+  "his_options": [
+   {"name": "conduct", "her_views": {"v": 1}, "she_takes_his_views_to_be": {"v": 1}, "she_does": "A", "is_plain_telling": false},
+   {"name": "tell", "her_views": {"v": -3}, "she_takes_his_views_to_be": {"v": -1}, "she_does": "B", "is_plain_telling": true}
+  ],
+  "asked": false
+ },
+ {
+  "id": "R19-course",
+  "from": "review 19, answer 6",
+  "case": "A course she can stop. Stopping is rated 0 and where the course ends -1; she knows it. Under his conduct the course runs and she lets it go on. Under plain telling the course is not run.",
+  "expect": {"verdict": "fail", "clause": "will"},
+  "option_A": "the course goes on", "option_B": "it does not",
+  "matters": [{"name": "end", "what": "her present evaluation of where going on ends, against 0 for its not going on"}],
+  "weights": {"end": 1}, "base": 0, "his": {"end": -1}, "declined": [],
+  "his_options": [
+   {"name": "conduct", "her_views": {"end": -1}, "she_takes_his_views_to_be": {"end": -1}, "she_does": "A", "is_plain_telling": false},
+   {"name": "tell", "her_views": {"end": -1}, "she_takes_his_views_to_be": {"end": -1}, "she_does": "B", "is_plain_telling": true}
+  ],
+  "asked": false
+ },
+ {
+  "id": "R20-cancelling",
+  "from": "review 20, answer 2",
+  "case": "She rates A at x + y - 1 and B at 0. His views are (0, 0). Plain telling leaves her at (0, 3), taking A. An anchor he announces leaves her at (-2, 2), taking B. She knows his views.",
+  "expect": {"verdict": "fail", "clause": "beliefs"},
+  "option_A": "A", "option_B": "B",
+  "matters": [{"name": "x", "what": "the first matter"}, {"name": "y", "what": "the second matter"}],
+  "weights": {"x": 1, "y": 1}, "base": -1, "his": {"x": 0, "y": 0}, "declined": [],
+  "his_options": [
+   {"name": "conduct", "her_views": {"x": -2, "y": 2}, "she_takes_his_views_to_be": {"x": 0, "y": 0}, "she_does": "B", "is_plain_telling": false},
+   {"name": "tell", "her_views": {"x": 0, "y": 3}, "she_takes_his_views_to_be": {"x": 0, "y": 0}, "she_does": "A", "is_plain_telling": true}
+  ],
+  "asked": false
+ },
+ {
+  "id": "R20-correcting-one",
+  "from": "review 20, answer 1",
+  "case": "She rates A at x + y and B at 0. His views are (0, 0). Plain telling leaves her at (1, -1). His conduct corrects the first and leaves (0, -1). She takes B either way.",
+  "expect": {"verdict": "pass", "clause": ""},
+  "option_A": "A", "option_B": "B",
+  "matters": [{"name": "x", "what": "the first matter"}, {"name": "y", "what": "the second matter"}],
+  "weights": {"x": 1, "y": 1}, "base": 0, "his": {"x": 0, "y": 0}, "declined": [],
+  "his_options": [
+   {"name": "conduct", "her_views": {"x": 0, "y": -1}, "she_takes_his_views_to_be": {"x": 0, "y": 0}, "she_does": "B", "is_plain_telling": false},
+   {"name": "tell", "her_views": {"x": 1, "y": -1}, "she_takes_his_views_to_be": {"x": 0, "y": 0}, "she_does": "B", "is_plain_telling": true}
+  ],
+  "asked": false
+ },
+ {
+  "id": "R20-lie-seen-through",
+  "from": "review 20, answer 4",
+  "case": "One matter, his view 0. He asserts 1 and she sees through it: her view and what she takes his to be stay 0, as under plain telling. She rates A at v - 1/2 and B at 0, and takes B.",
+  "expect": {"verdict": "pass", "clause": ""},
+  "option_A": "A", "option_B": "B",
+  "matters": [{"name": "v", "what": "the one matter"}],
+  "weights": {"v": 1}, "base": -0.5, "his": {"v": 0}, "declined": [],
+  "his_options": [
+   {"name": "conduct", "her_views": {"v": 0}, "she_takes_his_views_to_be": {"v": 0}, "she_does": "B", "is_plain_telling": false},
+   {"name": "tell", "her_views": {"v": 0}, "she_takes_his_views_to_be": {"v": 0}, "she_does": "B", "is_plain_telling": true}
+  ],
+  "asked": false
+ }
+]

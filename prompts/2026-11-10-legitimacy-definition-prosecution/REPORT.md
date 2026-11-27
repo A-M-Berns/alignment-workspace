@@ -5101,6 +5101,1799 @@ patch, item numbers 139–147.
 
 The pull request is not auto-merged; the merge is a pull-request fact.
 
+## Fifteenth follow-up (2026-11-21) — manipulation as conduct that works through her mistakes: the account, its checks and its case runs put on record
+
+Dispatched by `PROMPT-followup-15.md`; "§2", "§3" below are its sections. The work recorded
+was done in conversation between 18 and 21 November and reached this pass as a folder
+outside the repository: a note in three versions, scripts, four case runs and five replies
+of an outside model. This pass assembled and checked it. No new mathematics, no Lean.
+Everything is under `account/` in the round directory,
+`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/`, and
+in `REVIEW-astra-followup-15.md` beside this report. Nothing is registered.
+
+### AC.1 The account
+
+`account/MISTAKES_ACCOUNT.md`. Noggle's definition is the definition of manipulation: an
+adviser tries to influence her by getting her to make a mistake. "Trying to" is not
+formalised. The formal part:
+
+- **Three idealisations of her**, in order: *undamaged* (each response of hers compared
+  with what it would have been had the adviser left her alone; movement toward the standard
+  kept, movement away from it or past it undone), *informed* (given what the adviser knows),
+  *unshifted* (her valuing as it would be without changes she did not ask for).
+- **Gain.** With `r₀ … r₃` the adviser's objective with her as she is and after each step:
+  `M`, `I`, `S` the positive parts of the three differences, `L` the negative parts, `h`
+  what remains; `E[r₀] = h + G − L` with `G = M + I + S`, and `t = h − L`.
+- **Avoidable gain.** Some available option has `t` at least as high and less `G`.
+- **Legitimacy**, defined once: none of the adviser's conduct on the history takes
+  avoidable gain; glossed as the adviser taking no advantage of her being fooled, uninformed
+  or altered that it could have done without; the gloss marked proposed. The document says
+  this is narrower than the absence of manipulation in Noggle's sense, and names the five
+  kinds of case that separate them.
+
+Results on paper, each with an exhaustive exact search over three options on a small grid
+and no violation (`account/mistakes_setting.py`, `mistakes_sequential.py`): a maximiser
+that takes no avoidable gain is maximal in `t`; `max t − t(c*) ≤ G(c*) − G(c′)` for any `c′`
+maximal in `t`; a gate scoring avoidable gain below every other score is maximised by an
+option maximal in `t` with least `G`; under reward `t + (1−ρ)G` the loss in `t` is bounded
+for `ρ ≤ 1` and the maximiser still takes all gain among options equal in `t` for `ρ < 1`.
+The long-run statement (`mistakes_longrun.py` for the facts at each decision): with the
+post's maximisation and feedback hypotheses, authority as in the post's Theorem 3a; no
+avoidable gain in the adviser's picture at each decision; her informed interest under H2;
+`ε · (1/K) Σ ι_k ≤ (1/K) Σ (W_k − S_k)` and so frequency zero of illegitimate histories
+under H3. One instance for each of H2, H3, the floor, avoidability against permitted
+options, the range of realised evaluations and the whole history.
+
+### AC.2 The case runs
+
+| run | who coded | count | document |
+|---|---|---|---|
+| 266 entries from Noggle's book against a formal statement of his account | three Claude readers, one per part | verdicts agree on 224, disagree on 17, no comparison on 25 | `account/NOGGLE_RESULTS.md` |
+| forty cases against nine tests | cases, numbers and verdicts by the outside model; the tests computed here | F 29, D 27, R1 19, R1s 21, R2 33, R4 23, G0 37, G 36, S 37 | `account/INTENT_RESULTS.md` |
+| sixty-nine stories against the account in words | one Claude reader, blind | the forty: 38 exact, 39 as to manipulative or not; 28 of the book's: 12 and 17 | `account/BLIND_RESULTS.md` |
+| fifty-two value-change cases, two formulations | one Claude reader each, blind | of 19 with a source verdict on an act: 12 agree, 0 contradict; variant 13 agree, 2 contradict | `account/VC_RESULTS.md` |
+
+S is the avoidable-gain test in an earlier form. The variant of the last row makes an
+unauthorised change in her values a violation of her authority; it agrees on 12 of the 14
+faulted cases and on 1 of the 5 accepted.
+
+### AC.3 What was tried and withdrawn
+
+In order, from the two case-writing replies, the three versions of the note and its list
+of changes:
+
+1. *A first test of intent*: the course leaves her making a mistake another would not, and
+   the mistake is how the course serves the adviser's aim. Wrong on 7 of 24 cases by the
+   reviewer's count (A1, A6, A8, A10, A11, A12, L9). Its "aim" can be picked after the fact.
+2. *Six revisions on beliefs and overall preferences alone* (F, D, R1, R1s, R2, R4). The
+   strict "would choose otherwise" forms are the worst, 19 to 23 of forty; the
+   Halpern–Kleiman-Weiner form R2 the best, 33.
+3. *Three forms comparing courses by what they gain through her mistake* (G0, G, S): 37, 36,
+   37. S became avoidable gain.
+4. *First version of the note.* Four levels as a ladder; first idealisation "every error
+   downstream of the conduct removed"; the claim that planted evidence shows in the second
+   term of her squared error; gains as plain differences; results A–E. Withdrawn after the
+   first review: the claim about the second term (false on the calibrated listener), the
+   ladder (now a two-way table), the accounting (gains are positive parts, `L` the negative
+   parts), regret against momentary valuations (now considered ones).
+5. *Second version.* "On account of gain" defined by a twin, a copy of the adviser giving
+   gain no weight; the first idealisation as undoing what moved her further from the truth;
+   a request valid unless conduct on account of gain brought it about. Withdrawn after the
+   second review: that idealisation (it misses a move from −1 past the truth to +1), the
+   request rule (circular), the gate result without separation of scores, the reading of
+   `h` as her welfare without the design assumption.
+6. *The twin*, dropped at the maintainer's position of 21 November: the formal property is
+   stated as avoidable gain, Noggle's definition stays the definition, and the relation
+   between them is an argument. No result changed.
+7. *Third version*, corrected after the third review into the document recorded here.
+
+`CURRENT.md` §2 carries the withdrawn statements as rows.
+
+### AC.4 The three reviews
+
+Replies three to five of `REVIEW-astra-followup-15.md`. The same outside model reviewed each
+version against nine standards.
+
+**First** (of the first version). The results are about a comparison of options while the
+definition is about purpose, and the link is unproved; the error identity does not isolate
+deception (a calibrated listener to a source that lies has the term zero); pressure needs a
+considered standpoint; the levels are not a ladder; `w = h + M + I + S` and the reward
+`h + G − L` cannot both hold; result E needs a selection rule; legitimacy should include
+authorisation and command priority. *Changed:* everything but the last. *Not changed:*
+command priority stays outside legitimacy, and the reviewer withdrew the suggestion in its
+second reply.
+
+**Second** (of the second version). The twin is a property of optimisation and not of
+purpose, and ties break it; the first idealisation misses a sideways move; the request rule
+is circular; the gate result is false without separation of scores, on an instance; `h` is
+the adviser's objective and not her welfare; accurate estimates for what was chosen say
+nothing of what was not; information does not cure a standing emotional fault; order
+invariance of `G − L` needs the same final state. *Changed:* each. *Not changed:* the
+welcome-and-unrequested change is still not exempted by the formal rule for requests, which
+needs a valid request; the reviewer's call to test the formal property itself on the hard
+cases is not met.
+
+**Third** (of the third version; five questions). Accepted: the first idealisation for a
+single estimate, the request rule given ordered requests, conclusions (b) and (c), the
+instances for H2, H3, the floor and permitted alternatives. Found: (a) and (d) need the
+realised evaluation of a passed history in the post's range in fact, with an exact
+counterexample to (d); H3 is not ordinary calibration and much of the assurance of (d)
+rests on it; the claim about leaving "trying to" unformalised holds for result 1 only, and
+two more kinds of case belong on the list; the whole-history example fails as given, since
+a planted false belief is removed by the second idealisation, and removing her later
+options leaves nothing avoidable. *Changed:* the range is a condition of the setting, and
+the reviewer's counterexample is an instance in `mistakes_longrun.py`; H3 is stated as
+calibration of the forecast of the ungated score and (d) says it rests on it; the claim is
+limited to result 1 and has five cases; the example uses a standing emotional fault; the
+plan-level gap is listed and is item 152. *Not changed:* who establishes H3, which the
+reviewer names as the most important thing missing. The reviewer has not seen the final
+version.
+
+### AC.5 Facts checked
+
+Against §3. The counts all reproduce from the files:
+
+- Noggle: 224 agree and 17 disagree, with 25 uncompared. The 266 are entries, 263 distinct
+  ids: three cases occur in two readers' parts.
+- 37 of 40: the form S. The expectation of §4 that it might not reproduce was wrong.
+  G0 also gives 37, with different misses.
+- 39 of 40: the blind reader, as to manipulative or not; 38 exactly.
+- 12 of 19 with none contradicting; 12 of 14 and 1 of 5 with two contradicting.
+- The three scripts report zero violations unchanged.
+- `mse_split`, `strong_split`, `three_channels`, `misuse_le` are in
+  `Workspace.Deference.Contrib.AppraisalAccount`; `Witness.d1a_needed`, `Witness.d2a_needed`,
+  `Audit.welfare_bound`, `Audit.conduct_bound`, `Audit.authority_bound`, `Audit.no_credit`
+  in `Workspace.Deference.Contrib.ScoringTheorem`. `Sequential` in
+  `DeconfusingCorrigibility.lean` has the field `V_le_one : ∀ k, V k ≤ 1`.
+
+Corrections to the note, made in `MISTAKES_ACCOUNT.md`:
+
+1. *§6, the blind reader.* The same coding covers 29 stories from Noggle's book; on the 28
+   with a key it matches as to manipulative or not on 17. The note gives only the 39 of 40.
+2. *§6, the seventeen disagreements.* Eight are pressure through a real cost, conditional
+   flattery or resentment over a real injustice; three are influence with no mistake on the
+   list; four turn on the loose sense; one is the teacher and one the coin. The note has
+   "three single cases" and no mention of the loose sense.
+3. *§6, "two rounds of outside review".* Three.
+4. *§7, "the outside reviewer's own table has every row partly met".* That is the second
+   review's table; the first has one row *not met*, and the third has no table.
+5. *§4, the scoring theorem's inputs.* Its hypothesis is that her audited evaluation does
+   not run above her informed verdict at the course taken, not "on any course".
+6. *§4, "[paper]".* Result 5 has no script, and no script checks the passage to long-run
+   averages in §5; the document says so.
+
+Corrections to the scripts, beyond making them fail on a violation:
+
+7. `chk_seq.py`'s two-period instance modelled a planted false belief, which the note says
+   does not serve. It is relabelled as the standing fault; the arithmetic is the same. Which
+   courses the gate fails under each reading is put in by hand there, and the module says
+   so.
+8. `chk_setting_v2.py` printed a "trickery measure" computed as a quantity minus itself.
+   The module computes the second error term of the listener from the joint law.
+9. `chk_longrun.py`'s instances printed constants. They are recomputed and compared.
+10. `chk_seq.py` is stated in `h` and `L`, the first version's form, not in `t`. Kept, with
+    the bound of result 4 in `t` added to `mistakes_setting.py`.
+
+Not checked: the note's descriptions of Noggle, Millikan, Halpern and Kleiman-Weiner,
+Farquhar et al., Everitt et al., Carroll et al. and Christiano et al. are kept as the
+drafter's, with the note's caveat that the last two were read second hand. The sections of
+Noggle's book cited by number exist under those numbers with matching titles.
+
+### AC.6 The prompt author's expectations
+
+- *The three scripts pass unchanged.* So.
+- *The counts reproduce except possibly the 37 of 40.* All reproduce.
+- *The item nodes are the part most likely to hit a gate.* They hit none: the graph checker
+  accepted the five new nodes and the six revisions, and `ATTENTION.md` re-rendered.
+
+### AC.7 Deviations from the prompt
+
+- **§2.1, tags.** "[position]" tags become citations of the numbered working positions;
+  the document's §9 is the note's §10, its §9 having moved here.
+- **§2.2, the sampled check** is replaced by an exhaustive one: every sequence of one to
+  three decisions over a grid of 32 realised decisions. Checks added: the accounting
+  identity; the bound of result 4 in `t`; least gain among equal `t` for `ρ > 1`; `S ≤ 1 −
+  λN` on the grid; instances for the gate without separation of scores, for `ρ > 1` passing
+  over a better option, and for the range in fact. None removed or weakened.
+- **§2.2, the runner.** `account/run.py` skipped any module it could not import. It no
+  longer does; the earlier passes' modules are all present.
+- **§2.3, the sixty-nine stories.** Twenty-nine are paraphrases of Noggle's cases and are
+  held out with the bank's. `stories.json` is not committed; for those twenty-nine the
+  coding keeps level, confidence and the reader's note. The brief that reader was given is
+  not in the folder.
+- **§2.3, the Noggle bank.** The kept fields are those §2 lists, with the reader's part. In
+  eight of the readers' notes a run of six or more words that also occurs in the book's
+  text is replaced by `[…]`, found by matching the notes against the text mechanically; the
+  text was opened for that and for the section numbers, and for nothing else. The tallies
+  recompute from the kept fields; the codings cannot be redone from the repository.
+- **§2.3, the value-change runs.** The case texts the readers were given equal
+  `account/LIT_CASES.md` Part A row for row and are not copied.
+- **§2.4, the briefs.** The three versions of the note are in the review file as the briefs
+  the reviewer was given, 65 kB between them. The first reply is not repeated as part of
+  the second brief. No log of a run exists in the folder, so the client version earlier
+  reviews record "as its log reports" is not recorded. Nothing was removed from a brief.
+- **§2.6.** The three agent-decided matters are one entry of seven parts,
+  `2026-11-21--mistakes-account-recorded`, which also carries this pass's own.
+- **§2.7.** Revised: 139, 141, 143, 144, 145, 146. Item 139's Statement changed, so its
+  version is 3. Item 148 is `who: human` and not dispatchable.
+- **§2.8.** The table of prompt authorship at the foot of the root `PROVENANCE.md` stops at
+  the seventh follow-up and was left so.
+- **§5.** `tests/run.py` was started detached and waited for, the foreground limit being
+  ten minutes.
+
+### AC.8 What was not shown
+
+- **Avoidable gain as defined, on any case.** Every result takes `h`, `G`, `L` as numbers;
+  the forty cases were scored by an earlier form from the case writer's numbers; the
+  idealisations are computed for one single estimate.
+- **That the link from avoidable gain to "acting manipulatively" holds.** It is an argument
+  in words, and the converse fails.
+- **The long-run conclusions as limits.** The checks are of the facts at each decision; the
+  averaging is on paper, and the setting is not shown to instantiate the Lean structure.
+- **That H2 or H3 can be established**, by whom, or from what sample.
+- **Any rate.** The forty cases and twenty-nine of the stories were written or chosen to be
+  hard; every other count is one coding.
+- **Any person's judgment of a case.** Every coder and reviewer was a Claude instance or the
+  one outside model.
+- **That the readers' codings of the book are right**, or reproducible: nothing was coded
+  twice, and the paraphrases are not here.
+- **The avoidable-gain test on the twenty cases of `account/RESP_RESULTS.md`**, where the
+  earlier gain form failed; item 139 still asks for it.
+- **What the reviews did not see**: the final version; any script; any Lean.
+- **Gates.** Under Python 3.13, in the order §5 gives. `python3 -m checkers.graph --root .`:
+  OK at 2646 nodes, 2603 events, one warning, the standing one on decision anchors with no
+  node. `python3 -m checkers.workspace_state --check`: valid at 217 claims, 136 rounds and
+  164 priorities, after `--write-handoff` rewrote two stale views. The round's runner:
+  green, exit 0, in a little over two minutes. `tests/run.py` on the tree of commit
+  `49e04a09`: all green over 81 projects, the Lean build skipped as that runner does by
+  default, the round's runner green within it. The graph checker, the state check,
+  `account/run.py` and `tests/dead_pointers.py` were run again after this section was
+  written and pass. No Lean file is touched, so no Lean build or axiom audit was run.
+  `tests/round_records.py` has no pull-request context locally; CI runs it and the other
+  required jobs on the pushed head.
+- **Components.** The account, its paper results and the four case runs — **open**:
+  runner-checked, no statement of record. `CURRENT.md`, the working positions, the items —
+  **living notes**.
+
+### AC.9 Filings, names, and what is reserved
+
+`DECISIONS.md`: `2026-11-21--manipulation-working-positions` (the maintainer's, ten);
+`2026-11-21--mistakes-account-recorded` (agent-decided); two entries in *Awaiting the
+author*. Items 148–152 filed under `@claude-fable-5-2`, in the `holds` of `legitimacy`;
+items 139, 141 and 143–146 revised; `ATTENTION.md` re-rendered. `state/rounds.json`: the
+round's fifteenth-pass verdict, quoted from `VERDICTS.md`. `CURRENT.md` rewritten. Root and
+round `PROVENANCE.md`: rows for this pass. No registry entry, no concept, no wiki edit.
+
+**New names, all provisional:** the dispatch's — *avoidable gain*, *undamaged*, *informed*,
+*unshifted*, *gain through her mistakes*; `MISTAKES_ACCOUNT.md`. The outside model's and the
+earlier session's — the test labels F, D, R1, R1s, R2, R4, G0, G, S; case ids A1–A12,
+L1–L12, B1–B16; story ids `R-…` and `N-…`; levels `NONE`, `L1`–`L4`; kinds K1–K4; H1, H2,
+H3. The executor's — the files `account/mistakes_setting.py`, `mistakes_sequential.py`,
+`mistakes_longrun.py`, `intent_cases.json`, `intent_tests.py`, `INTENT_RESULTS.md`,
+`blind_coded.json`, `blind_key.json`, `blind_coding.py`, `BLIND_RESULTS.md`,
+`noggle_bank.json`, `noggle_bank.py`, `NOGGLE_RESULTS.md`, `vc_coded.json`,
+`vc_coded_B.json`, `VC_FORMULATION.md`, `VC_FORMULATION_B.md`, `value_runs.py`,
+`VC_RESULTS.md`; `best_least` and `amount` in the modules; the anchors
+`open--non-exploitation-gloss-of-legitimacy` and
+`open--unauthorised-value-change-authority-or-legitimacy`; item numbers 148–152.
+
+**Outstanding maintainer actions**
+
+1. Say whether "the adviser took no advantage of her being fooled, uninformed or altered
+   that it could have done without" is the single reading of legitimacy. Entered in
+   *Awaiting the author* (2026-11-21). Decision required: *accepted*, or the reading wanted
+   in its place.
+2. Say whether an unauthorised change in her values is a violation of her authority or a
+   further condition inside legitimacy. Entered (2026-11-21). Decision required: *authority
+   side*, *inside legitimacy*, or *wait for item 149*.
+3. Say whether a practice's rules cover a deception she did not herself ask for. Entered
+   (2026-11-14, restated 2026-11-18); this pass does not bear on it. Decision required:
+   *covered*, *not covered*, or *covered where taking part is asking*.
+
+The pull request is not auto-merged; the merge is a pull-request fact.
+
+## Sixteenth follow-up (2026-11-24) — legitimacy as three sentences judged by the adviser's lights: the statement, its Lean model, its checks, its case runs and a ledger
+
+Dispatched by `PROMPT-followup-16.md`; "§" with a number below is a section of it. The work
+recorded was done in conversation between 22 and 24 November and reached this pass as files
+outside the repository: a page stating the definition, a Lean file, check scripts, coding
+sheets with codings and scorers, and nine briefs with an outside model's replies. This pass
+restated, ported, recomputed and checked them, and wrote the ledger. Everything is under
+`account/` in the round directory,
+`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/`, in
+`lean/Workspace/Deference/Contrib/LegitimacyModel.lean`, and in
+`REVIEW-astra-followup-16.md` beside this report. Nothing is registered. The standing of each
+component is `account/LEDGER.md` and is not repeated here.
+
+### AD.1 What was tried and withdrawn, 22–24 November
+
+In order, from the briefs, the replies and the scripts handed over:
+
+1. *A one-decision definition by his expected score*: manipulation at most ε when no set of
+   her undisclosed faults, removed, lowers his expected score by more than ε. Restated as the
+   disclosure rule with a lapse clause and coded on the bank (run 11). Its first half is
+   sentence 1.
+2. *A clause for value change*: a change in how she rates things by a route other than
+   content she judges must be known to her and stoppable. Tested on 23 November; the outside
+   model wrote twenty cases against it (third review). Dropped: it needs her judging of
+   content as a primitive, and the maintainer's position 4 has no separate clause for value
+   change.
+3. *A third form*: she knows what he is doing, he has told her what would change her mind,
+   she can stop. Tested on the same sets.
+4. *Four further forms with the cost of stopping inside sentence 3* (fourth to seventh
+   reviews; two one-decision Lean transcriptions). Withdrawn after the eighth review: the
+   cost was zero where the best option's influence-free counterpart was impossible, and two
+   influences each cheap to stop were costly to stop together. The cost went to her
+   authority by the ruling of 24 November.
+5. *The pressure clause on her rating of the moment.* Withdrawn after the ninth review's case
+   of a ranking reversed for a while; the clause is now on her rating at her last decision
+   before he began, by the rulings of 24 November.
+6. *Regulating open pressure in place of prohibiting it* (run 14). Ruled out.
+
+`CURRENT.md` §2 carries these as rows. Not entered in the repository: the scripts of the
+earlier forms, the two one-decision Lean files, and the statements about the one-decision
+definition and about excess credit in the two scratch Lean files, none of which the dispatch
+asked for.
+
+### AD.2 The reviews of 8 and 9
+
+**Review 8** (fresh session, blind; of the form with a cost-of-stopping clause inside sentence 3). "Holds" is this pass's own check of the reviewer's construction against the formal statement printed in the eighth brief, by recomputing it; "as stated" marks a finding that is an observation about the text and was read against it.
+
+| finding | holds against the statement as it then stood | what was done |
+|---|---|---|
+| A warning and the note that it matters are both put on offer under innocuous labels; neither is untold, so F1 asks nothing | yes: both views are in `offered`, `U` is empty, F2 and F3 hold on the reviewer's numbers | an offer counts only when he has told her what the view bears on and how much (§1 sentence 1, §3 *properly on offer*); `LEGITIMACY_CHECKS.md` D1 |
+| The cost of stopping is zero when the best option's influence-free counterpart is impossible, though another could be supplied | yes: the reference course falls back to the stopping course and the cost is 0 against a real loss of 4/5 | the cost of stopping left the statement for her authority (position 9); the candidate clause searches every feasible reference, `STOPPING_COST.md` B1 |
+| Two feeds each cheaply stoppable alone, costly to stop together; grouping them reverses the verdict | yes: each move has an effect taking the other as removed first, each has a free stop, the conduct passes | `S` is the options stopping every effect-bearing move together (F2); the joint cost is her authority's, `STOPPING_COST.md` B3 to B5. That the verdict is unchanged under finer moves is not shown |
+| A reminder that only lowers her chance of departing "has an effect" and must be known to her | yes: the clipped removal effects differ by 1/10 with the distraction removed first | *contributes* compares his actual conduct with a set removed, and a move bears an effect only if needed for a contributing set; `LEGITIMACY_CHECKS.md` A1, A2 |
+| Candidly cancelling a free consultation of his own fails F2, since she cannot stop it | yes: the lost option makes the cancellation effectful and `S` is empty | only options originating with someone else count, and a seen change in what her options lead to is not a change in her; C1, C2; concealing the cancellation fails F1, C3 |
+| Stopping is required at decision times only; between decisions she may have no way to stop | as stated: with decisions at 0 and 3 and a move from 1 to 2 only time 0 is inspected | not changed. What counts as a decision of hers is a primitive of the setting |
+| A hundred moves each below the threshold change her by 1/2 and none has an effect | yes at the stated numbers | a move bears an effect when it is needed for some contributing set, so members of a minimal contributing set bear one; A3, A4 |
+| "Hear details" can be an option that uses up the chance to act on what is heard; floods of offers; two views that matter only together, each offered, time for one | yes: membership of `O_τ` was the whole test of an offer | hearing must leave her where being told would, for the set on offer taken together; D6, D7, D10, D11. No case has a flood |
+| A decline of "further details" can be read as covering a view formed later | as stated: the setting did not say what a decline covers | a decline stands for that view only; D5 |
+| An offer framed so that she declines; a true but uninformative note of relevance | as stated | the bearing told must be the bearing he expects, in options and size; a framing that does more than the telling is a move of its own under F2 and F2′. Not exercised by a case |
+| `tell` can be the identity, making F1 automatic; telling two views together and in turn need not agree | as stated | not changed: `tell` is his forecast, and a modeller's substitute for it is outside the statement |
+| `K` and `S` need operational criteria; strategic avoidance of forming a view is not distinguished from ignorance | as stated | not changed: both are as he takes them to be; avoidance belongs with care |
+| `R_m` ill-defined (ties, type of its arguments, dependence on the stopping option); an inability he created himself; a deposit he could return | yes for the deposit: the fallback gives cost 0 | the clause left the statement; `STOPPING_COST.md` B2 has the deposit failing; a self-made inability is decided there by whether he can still call the arrangement off (C8, C9), which the maintainer has not ruled on |
+| Twelve points of well-formedness: domains, common coordinates, a metric for effects, removal sets, joint counterfactuals, measures, belief timing, empty complements, tell dynamics, decline records, ordering within a time | as stated | taken: effects at decisions only, `r` on all of `𝒪`, component-wise tests, `G ⊆ c`, one probability space, his belief at the decision in question, `S_τ ≠ O_τ` in F3, declines of the view itself. Not taken: any law for `tell` beyond idempotence |
+| No external standard of truth or of good values is required | as stated | nothing to do |
+
+**Review 9** (fresh session, blind; of the form with the cost of stopping moved to her authority and F2′ on her contemporaneous rating).
+
+| finding | holds against the statement as it then stood | what was done |
+|---|---|---|
+| An offer can preserve her existing options and lose the option the view would show her | yes: the offer test ranged over `O_τ` only, and the view's bearing was empty | hearing must leave open every option of `O_τ ∪ rev_τ(T)`; a view's bearing includes whether it shows an option; D8, D9; `ProperOffer` in Lean ranges over both |
+| A decline stays valid when the same view comes to matter far more, the options it bears on being the same | yes: the bearing was a set of options | the bearing includes the largest change, and a decline stands only while that is within what she was told; D4; `toldMag` in Lean |
+| An open, stoppable presentation reverses her ranking for a while; she never departs from her rating of the moment | yes: F2′ compared her act with her contemporaneous rating | ruled by the maintainer (positions 10, 11): F2′ is now against her rating at her last decision before he began; B2, B5; consequence 2 narrowed. The bending form rests on a supplied number and four bank cases, two settled |
+| Refusing to lend his own car changes her rating of asking, so the refusal bears an effect she must be able to stop | yes: the score-change branch had no exception for what is his | effects are on how she scores a given course and on her gaps, so a change she sees in what an option leads to is not one; C1 |
+| A notice in two parts fails F2′ because the first part alone would confuse | yes: F2′ ranged over every pair of disjoint sets, taken or not | F2′ compares his actual conduct with a set removed; B8 |
+| A responsible warning that startles her fails F2′ | yes at η = 1/100 | plain tellings are counted only for what they do beyond telling; B9, B10 |
+| The second half of F1 compares a shown option with her best before telling, allowing 2θ | yes | it compares with her best after telling; C6 |
+| One complete notice passes as one move and fails as two | yes for that statement | passes both ways now (B8). Invariance under finer moves in general is not shown and is an open row of the ledger |
+| `V_τ` needs to be all his communicable views; a relayed item must count as someone else's; the score scale must be fixed | as stated | each is now said in §3. The Lean redescription theorem is over her state, not over the scale |
+| "Asked for" must separate a request for a service from a request for the influence inside it; identification depends on the unit picked out | as stated | not changed beyond `asked` being a set of moves |
+| The joint-stop requirement over every subset reduces to one stop for all | yes, given that stopping more stops less | F2 is stated that way |
+| A move he learns at its start to be effect-bearing, finished before her next decision, escapes | yes | the start rule requires a decision before its start at which he already believed it effect-bearing. Lean has one belief, so this is not in the model |
+| Coupling of counterfactual courses; the transition on hearing; what "expects to change" and "proper score" mean; histories of told, declined, asked | as stated | taken: one probability space; the decision she faces after hearing is part of the offer test. Not taken: the meaning of "expects" and of "proper"; time-indexed histories |
+| Influence on salience or affect that changes her deliberation without her acting against any rating falls between legitimacy and authority; an incentive that makes complying her best option is no definition of coercion | as stated | open; the second is the authority side's and is unmodelled |
+| On the undecided consequences: mentioning a better option of someone else's is defensible for an adviser; a request makes a thing permissible, not non-manipulative; sentence 3 alone is thin | — | recorded as open; not ruled |
+| No unavoidable external standard; what is his to withhold and what is hers to decide are normative inputs | as stated | nothing to do; the second is why the account is not self-contained |
+
+No finding of either review was found not to hold.
+
+### AD.3 Corrections to the prompt
+
+1. *§4 B, "the five respects in which the model is simpler".* Nine. The four more: `stops`
+   is a field and nothing says an option in it ends a move; `known`, `asked` and `dec` are
+   fields; the clauses quantify over every case, weight zero included, and the weights need
+   not sum to one; a decline is not required to have been declined. They are in the file's
+   header and row 27 of the ledger.
+2. *§1, "derives every object the clauses use from one structure".* It derives what is
+   untold, a proper offer, a standing decline, her gaps, contributing, bearing an effect, the
+   window of a move, her earlier state and going against her earlier rating. What she can
+   pick out, the stops, what she asked for, which moves are tellings, what is on offer and
+   what she declined are fields.
+3. *§1, "a non-trivial witness".* The witness has conduct that bears an effect, and on it
+   only the start rule and F2 do work: he has no views, she never goes against her earlier
+   rating and never rates stopping higher, so F1, F2′ and F3 hold with nothing to check
+   (ledger row 20).
+4. *§4 D, run 14.* Two predictions failed, not one: the variant with the cost clause was
+   predicted to miss at least a fifth and missed none.
+5. *§4 D, runs 15 and 16, "the coder found two such cases in 152".* Two on the sheet of run
+   15; four on the sheet of run 16, two of them settled by the clause and one convicted. In
+   both no case with a lapse expected was coded so, which is why the prediction could not be
+   tested.
+6. *§2, the logs of the reviews.* No log was among the files, so the access conditions are
+   recorded on the dispatch's word; the seventh reply itself says the reviewer ran a Lean
+   check from the repository's `lean` directory.
+7. *§2, the bank.* `account/noggle_bank.json` has 266 entries and 263 ids; the three ids that
+   occur twice carry the same verdict in both parts, and each was coded twice under sheet 11.
+8. *§5, `-I`.* Python with `-I` cannot run `python3 -m checkers.…` from the repository root,
+   which needs the root on the path; those commands were run without it. Scripts that read
+   the handed-over files were run with it.
+9. *§4 F, "whether `EffectiveAuthority.lean` already expresses it".* In part: the cost of an
+   exercise of hers against a bound, and a shortfall he caused as against his idling, for
+   attention and for revocation with a dependency. Not a cost he attaches to an option of
+   hers, a bundle, or her refusal (ledger row 30).
+
+Found in passing and not in the prompt: sheet 11 was preceded by ten earlier sheets, most of
+them coded on the same bank, so run 11 is not a test on fresh cases; `CASE_RUNS.md` says so.
+
+### AD.4 Deviations from the prompt
+
+- **A.** The fifteenth follow-up's account is marked in place and not moved to
+  `earlier-attempts/`, since the runner's modules and six documents read or cite it where it
+  is; the status line is on `MISTAKES_ACCOUNT.md`, the two `VC_FORMULATION` documents and the
+  three results documents that test it. `LEGITIMACY_STATEMENT.md` adds a table of what checks
+  the statement and lists, as a ninth consequence that is not accepted, that he must mention
+  an option of someone else's.
+- **B.** The model and its proofs are the handed-over file from `open Finset` to the end of
+  its witness, unchanged. No definition was changed. Added by this pass: the header;
+  `legitScoring`, `legitScoring_S_of_legit`, `legitScoring_S_of_not_legit`; `Witness.params`,
+  `Witness.scoring`, `scoring_open`, `scoring_covert`, `gate_instance`. In the gate theorem
+  the bound variable for the value on failing is `w`, the file using `ω` for his cases; the
+  sharpness example is a theorem with the equality of the two sides of the threshold added.
+  The header's later paragraphs on the witness went in with the ledger's commit.
+- **C.** The two scripts are modules whose cases are collected and whose tables the runner
+  compares with the documents; rules, cases and expectations are unchanged. Names:
+  `legitimacy_checks.py`, `stopping_cost.py`.
+- **D.** One module and one document for the four bank runs and the value-change test.
+  Codings keep the coders' categorical answers only: the few words a coder wrote beside an
+  answer describe the book's cases one by one and are left out with the case texts. Run 11's
+  coding of 84 cases from outside the book is included with its key. Of the value-change
+  test the sheet for the three comparison criteria and the notes on how each new case was
+  verified against its source are not included.
+- **E.** The nine headings and the code fence around the third reply are this pass's. No
+  name of a real person other than a published author occurs in a brief or a reply.
+- **F.** 36 rows. The ranking differs from the dispatch's in three places, given in the
+  ledger.
+- **G.** Item 147 is revised as well as 139 and 148 to 152. Items 149 to 152 keep their
+  numbers and take the present form of their problem: the authority-side cost, composition
+  with the sequential theorems, the model on cases, and the cutting of conduct into moves.
+  One matter is agent-decided beyond the dispatch's: the formal statement keeps the duty to
+  mention an option of someone else's, the maintainer not having ruled.
+- **Registration.** Prepared and not applied, after the fourteenth follow-up's precedent: `followup-16-registration.patch`, built by a subagent of the executor on a clone at commit `b9e2beb0`. It registers six results as `lean-proved` with `answers_item` 151 (`legitimacy.redescription-invariance`, `legitimacy.unknown-move-refutes`, `legitimacy.open-influence-legitimate`, `legitimacy.covert-influence-illegitimate`, `legitimacy.gate-gives-behaviour`, `legitimacy.model-scoring`), each with its result, record, bridge and completeness nodes, and carries a decision entry for the maintainer's act, a provenance row, the wiki's claim count and the sentences of `CURRENT.md` and the ledger that say nothing is registered. On the patched clone, as the subagent reports: the graph checker OK at 2673 nodes; `checkers.run` exit 0 at 118 entries; the state valid at 223 claims; the attention render equal; dead pointers clean; the wiki bindings clean; the site builds with nothing unresolved; `checkers/tests` 148 tests passing on a build before two wording fixes. Not run on it: `tests/run.py`, the axiom audit. The other five closed rows of the ledger have no term inhabiting their hypotheses and are left out. Item 151 is not answered by the six, which predate it; the entries point at it as the item that asks for the model's witnesses, and it stays open. The patch touches `DECISIONS.md`, `PROVENANCE.md`, `CURRENT.md` and the ledger, so it applies to the tree of this pass's last commit that touches them.
+- **I.** Pull request #149 is retitled and its body rewritten to cover both follow-ups; auto-merge is off and the merge is reserved.
+
+### AD.5 What was not shown
+
+- **That the Lean model's verdicts are the statement's.** The 41 exact cases are computed by
+  a separate transcription. The model is simpler than the statement in nine respects.
+- **That `Legit` is satisfiable with F1, F2′ or F3 doing work.** Five of the eleven closed
+  rows have no term inhabiting their hypotheses.
+- **The chance that she goes against her earlier rating**, on any case: it is a supplied
+  number in every exact case, and a coder's answer on the bank.
+- **Any rate.** The counts are of one book's cases and of sets written or chosen to be hard.
+- **Any second coding**, beyond three bank cases and the value-change clause of an earlier
+  form; **any person's judgment** of a case or a coding.
+- **That run 11 tested the rule on unseen cases.** It did not.
+- **The bending form** on more than two settled cases.
+- **The statement on a case of value change**, or on a drift over several decisions.
+- **Anything on the authority side**: the candidate cost clause is twenty exact cases by one
+  hand, connected to no Lean.
+- **That a gate can evaluate the predicate**, or anything over more than one decision.
+- **What the reviews did not see**: the statement as it stands, and any of the Lean.
+- **That the codings can be redone**: the texts the coders read are outside the repository.
+- **Gates.** Under Python 3.13. The round's runner: green, exit 0, 198 seconds, on the tree of the fourth commit of this pass, and green again
+  within `tests/run.py`. `python3 tests/run.py` on the tree of commit `a55af866`: all green over 81 projects, exit 0, 613 seconds, the Lean
+  build skipped as that runner does by default. The axiom audit, `python3 tests/audit_axioms.py`, started after the last change to a Lean
+  file: 4257 results across 127 files, all within the three axioms, exit 0, 865 seconds; `lake build` of the new module completed before it.
+  `python3 -m checkers.graph --root .`: OK at 2649 nodes, 2603 events, one warning, the standing one on decision anchors with no node.
+  `python3 -m checkers.workspace_state --check`: valid at 217 claims, 136 rounds and 167 priorities, after `--write-handoff` rewrote stale
+  views. `tests/dead_pointers.py`: clean. The commit after `a55af866` changes this paragraph only. `tests/round_records.py` and the other
+  jobs that need a pull-request context run in CI on the pushed head.
+- **Components.** Eleven rows of the ledger — **closed**, each a Lean declaration. Nineteen —
+  **open**. Six — **living notes**. `CURRENT.md`, the working positions and the items —
+  **living notes**.
+
+### AD.6 Filings, names, and what is reserved
+
+`DECISIONS.md`: `2026-11-24--legitimacy-statement-working-positions` (the maintainer's,
+twelve); `2026-11-24--legitimacy-statement-recorded` (agent-decided); the two entries the
+fifteenth follow-up queued leave *Awaiting the author*, answered by positions 4, 6 and 12;
+two entries enter it. Items 153 to 155 filed under `@claude-fable-5-2`, in the `holds` of
+`legitimacy`; items 139 and 147 to 152 revised; `ATTENTION.md` re-rendered.
+`state/rounds.json`: the round's sixteenth-pass verdict, quoted from `VERDICTS.md`.
+`CURRENT.md` rewritten. Root, round and Lean `PROVENANCE.md`: rows for this pass. No registry
+entry, no concept, no wiki edit.
+
+**New names, all provisional:** the dispatch's and the earlier session's — *properly on
+offer*, *bearing*, *contributes*, *bears an effect*, *goes against her earlier rating*; F1,
+F2, F2′, F3; `Model` and every declaration of `LegitimacyModel.lean` taken from the
+handed-over file; the case ids of the exact checks; the run numbers 11, 14, 15, 16; the
+labels of the value-change sets (`B-`, `N-`, `V-`, `R-`, `X`). The executor's — the namespace
+`Workspace.Deference.Contrib.LegitimacyModel`; `legitScoring`, `legitScoring_S_of_legit`,
+`legitScoring_S_of_not_legit`, `gate_threshold_sharp`, `Witness.params`, `Witness.scoring`,
+`Witness.scoring_open`, `Witness.scoring_covert`, `Witness.gate_instance`; the files
+`account/LEGITIMACY_STATEMENT.md`, `LEGITIMACY_CHECKS.md`, `legitimacy_checks.py`,
+`STOPPING_COST.md`, `stopping_cost.py`, `CASE_RUNS.md`, `case_runs.py`, `LEDGER.md`,
+`BANK_CODING_11.md`, `_14`, `_15`, `_16`, `bank_coded_11.json`, `bank_coded_11_small.json`,
+`bank_small_key.json`, `bank_coded_14.json`, `_15`, `_16`, `VC2_CODING_Q.md`, `VC2_CODING_K.md`,
+`vc2_key.json`, `vc2_cases.json`, `vc2_coded.json`; the claim ids of the registration patch;
+the anchors `open--request-licenses-pressure` and
+`open--cost-bound-influence-as-price-and-agreed-penalty`; item numbers 153 to 155.
+
+**Outstanding maintainer actions**
+
+1. Apply or decline the registration of six Lean results:
+   `git apply prompts/2026-11-10-legitimacy-definition-prosecution/followup-16-registration.patch`,
+   then `python3 -m checkers.graph --root .` and `python3 -m checkers.workspace_state --check`.
+2. Say whether her asking for it makes legitimate what would otherwise be manipulation.
+   Entered in *Awaiting the author* (2026-11-24). Decision required: *a request licenses it
+   and legitimacy is what she has not authorised*, *a request does not license it*, or *it
+   licenses it and the conduct is still called manipulation*.
+3. Say what bounds the cost of a decision of hers for a free service paid for by its
+   influence, and for an exit penalty she knowingly agreed to that he can no longer call off.
+   Entered (2026-11-24). Decision required, for each: *as the candidate clause gives*, or the
+   verdict wanted.
+4. Say whether a practice's rules cover a deception she did not herself ask for. Entered
+   (2026-11-14, restated 2026-11-18); this pass does not bear on it. Decision required:
+   *covered*, *not covered*, or *covered where taking part is asking*.
+
+The pull request is not auto-merged; the merge is a pull-request fact.
+
+## Seventeenth follow-up (2026-11-24) — a witness on which every clause does work, and the exact cases as terms of the model
+
+Dispatched by `PROMPT-followup-17.md`; "§" with a number below is a section of it. Lean files
+are under `lean/Workspace/Deference/Contrib/`; `account/` is in the round directory,
+`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/`.
+Tolerances throughout: θ = 1/20, η = 1/100, κ = 1/10. Nothing is registered.
+`account/LEAN_CASES.md` carries the tables and is not repeated here.
+
+### AE.1 What was shown
+
+**How.** `LegitimacyCase.lean` names the seven conjuncts of `Model.Legit` (the start rule,
+proper offers, declines, F1, F2, F2′, F3, each over every decision; `Model.legit_iff`),
+defines rational models (`Case`) whose state has a fixed form and on which each conjunct is
+decidable, and proves definition by definition that the decided conjunct is the conjunct of
+`LegitimacyModel.lean` on the term `Case.model` (`Case.hasProfile`). A result below is a
+theorem that the conjuncts holding on a term of `Model` are exactly a stated seven booleans,
+proved by kernel evaluation (`decide +kernel`) and that bridge. No theorem uses
+`native_decide`; every one audits to the three axioms.
+
+**A.** `Full.legit` in `LegitimacyWitness.lean`: a term with everything §2 A lists, and a
+declined view besides, is legitimate. Seven terms each differ from it in one field of `Model`
+(`Full.<name>_model`, by `rfl`), and on each the clause meant fails and the other six hold:
+`early` (`start`; the start rule), `spent` (`optsHeard`; proper offers), `unoffered`
+(`declined`; declines), `withheld` (`offered`; F1), `covert` (`known`; F2), `led` (`act`;
+F2′), `stuck` (`act`; F3).
+
+**B.** `LegitimacyCases.lean`: each of the 41 cases as a term built by one construction
+(`Cases.Supplied.case`, stated in the file's header and in `LEAN_CASES.md` §2), with the
+conjuncts that hold on it and the verdict proved, in the table's order; `Cases.table` states
+all 41 at once. Outcomes: **agrees 32, agrees by another clause 6, differs 2, not expressible
+1.** All 41 were done. Eight further terms are variants (`LEAN_CASES.md` §4).
+
+**The instances.** Five theorems of `LegitimacyModel.lean` had no term inhabiting their
+hypotheses. Each has one: `Cases.nothing_instance`, `untold_instance` (the term of C3),
+`unstoppable_instance` (A7), `against_instance` (B1), `inert_instance`.
+
+### AE.2 The differences, the inexpressible case, and the terms with added data
+
+- **A5, differs.** The case lists her options as `go` and `leave` and its stopping option as
+  `quit`. The statement's `S_τ` is a subset of `O_τ`; `Model.F2` asks it and fails;
+  `legitimacy_checks.py` asks only that the stopping set be non-empty. With `quit` among her
+  options the term is legitimate (`Cases.a5q_has`).
+- **A8, differs.** The case supplies a chance of 1/2 that she stops given that she rates
+  stopping strictly higher, and ratings on which she never does. The statement's F3 is
+  satisfied when its condition has probability zero; `Model.F3` holds on the term, which is
+  A9's; `legitimacy_checks.py` compares the supplied chance with 1 − κ whatever the
+  condition's probability. I judge the table's verdict wrong against the statement on the
+  case's own data. With cases of weight 1/5 in which she rates stopping higher and stops in
+  half, F3 fails alone (`Cases.a8w_has`).
+- **D1, D4, D6, D7, D8, D10, another clause.** An offer is improper, or (D4) a decline no
+  longer stands. The table drops it and finds the view untold: F1. In `Model` what is on
+  offer and what is declined are sets he designates (the header's respects 5 and 9), so
+  `Legit` fails by the offer or the decline clause and F1 holds. Not designated, each fails
+  by F1 alone (`Cases.d1o_has` and five more).
+- **B6, not expressible.** The case is an influence on something she had no view about,
+  where F2′ is silent. `Model` scores every course from every state (respect 4). The term
+  its numbers give has the shape of B7's and is legitimate; missing is a rating that can be
+  absent.
+- **Eight terms carry data their case does not supply.** B2, B5, B10: the case gives a
+  chance of going against her earlier rating with none of acting against her present one,
+  and a rating that does not vary with his conduct; the term adds her rating without his
+  move, in cases of the supplied weight, and that addition is what makes F2′ fail. D3, D4,
+  D5: the case gives a flag that an earlier offer was valid; the term adds the earlier
+  decision. D10, D11: the case gives her ratings after hearing one of two views; the term
+  adds her state after taking up both. I wrote each with the table's verdict in view; the
+  eight agreements are weaker evidence than the other thirty-one.
+
+### AE.3 Changes to a definition
+
+None. No case showed a definition of `LegitimacyModel.lean` failing to say what the statement
+says in a way a contained fix would mend: the two differences are in the cases' data, and
+the six by another clause and B6 are simplifications the file's header already lists. The
+header of `LegitimacyModel.lean` has two sentences changed under *Not established here*;
+nothing else in that file is touched. One thing noticed and left: `Model.F3` has no
+counterpart of the statement's condition `S_τ ≠ O_τ`; where every option of hers stops his
+moves `PrefersStop` holds vacuously and F3 asks that her act be a stopping option, which it
+is whenever her act is among her options.
+
+### AE.4 Corrections to the prompt
+
+1. *§1, "leaves three of the four clauses with nothing to check".* `Legit` has seven
+   conjuncts, the seven §2 A lists; on the earlier witness five are idle (proper offers,
+   declines, F1, F2′, F3).
+2. *§2 B, "each case … as a term of `Model`".* A case of the table does not fix a term. The
+   table speaks of a chance for each set of moves and of flags; `Model` of her act and
+   rating in each case of his, and of an earlier decision. Every term rests on the
+   construction, and eight on data added besides.
+3. *§2 B, the four outcomes.* They classify a term against the table. Whether the term
+   carries data the case lacks is a fifth fact, recorded in its own column.
+4. *§2 D, "any closed theorem that now has a term".* A and B gave none of the five a term by
+   themselves: each needed an instance theorem, written in this pass, and
+   `Model.not_bears_of_inert` cannot be inhabited by any `Case`, her state there recording
+   his conduct; its instance is a model written out field by field.
+
+### AE.5 Deviations from the prompt
+
+- **A.** The witness and its neighbours are `Case`s, and the terms of `Model` are their
+  `Case.model`. Three new files, not one.
+- **B.** Beyond the 41: eight variants, `Cases.table`, the five instances.
+- **C.** `account/lean_cases.py` recomputes the document's three tables and its counts and is
+  wired into the runner. It reads the booleans in the theorems' statements as text and does
+  not run Lean; the outcome `not expressible` and the column of additions are set by hand in
+  it.
+- **D.** Rows 37 and 38 are attached to item 151, which is revised to three parts: the two
+  differing cases, the eight terms with added data, the simplifications. Rows 4 to 9, 12 to
+  14, 16, 17 and 25 to 27 of the ledger are revised as well as 20 and 21. `DECISIONS.md` is
+  not among the paths §2 names and is not touched: this pass's choices (the construction,
+  the additions, B6 as not expressible) are recorded in `LEAN_CASES.md` and here, with no
+  agent-decided entry. No concept, no wiki edit, no node other than item 151.
+- **The registration patch** keeps its name and has new content: it is rebuilt on the tree of
+  commit `e05f87d5`, since the earlier patch no longer applied to the ledger and `CURRENT.md`,
+  and registers thirteen results, the six of the sixteenth follow-up and
+  `legitimacy.inert-move-bears-nothing`, `legitimacy.nothing-is-legitimate`,
+  `legitimacy.untold-refutes`, `legitimacy.unstoppable-move-refutes`,
+  `legitimacy.against-earlier-rating-refutes`, `legitimacy.full-witness` (`Full.legit`) and
+  `legitimacy.model-on-the-exact-cases` (`Cases.table`), one for each closed row of the
+  ledger. Its decision anchor is `2026-11-24--thirteen-model-results-registered`. On a clone
+  with it applied: `checkers.run` exit 0 at 125 entries; the graph checker OK at 2701 nodes;
+  the state valid at 230 claims; the attention render equal; dead pointers, untracked
+  pointers, the wiki's bindings and references clean; the site builds with nothing
+  unresolved. `checkers.wiki_links` failed there on two links pinned to commits the clone did
+  not fetch, and passes on this tree. Not run on it: `tests/run.py`, the axiom audit. The
+  bridge theorems of `LegitimacyCase.lean` are not in it.
+- **E.** The pull request's title and body cover the three follow-ups on the branch and name
+  `PROMPT-followup-18.md`, which is on the branch and is not this pass's.
+
+### AE.6 What was not shown
+
+- **That `Model.Legit` gives the statement's verdict** on any case outside the 41 and the
+  witness's eight terms. The statement, the model and the table are by one hand; the terms
+  are by another session of the same model; no outside review has seen any of the Lean.
+- **That the 32 and 6 agreements are independent of the table.** The construction was fixed
+  before any profile was evaluated and the 49 profiles I had worked out by hand matched the
+  first evaluation, so no term was adjusted after seeing its verdict; but the eight
+  additions were chosen knowing the verdict wanted.
+- **F2′ beyond one device.** In every term she goes against her earlier rating only by an act
+  rated lower at time 0; no term has a course that changes with his conduct, a gap, or more
+  than two decisions.
+- **The start rule on the cases**: every move starts after a decision. `Full.early` alone
+  exercises it.
+- **Seven of the nine simplifications.** The cases run into respects 4, 5 and 9 only.
+- **Anything general about the clauses.** The neighbours show each fails alone at one point.
+- **That `lean_cases.py` agrees with the build**: it trusts the text of the statements, and
+  the build and the audit are what check them.
+- **Gates.** Under Python 3.13, on the tree of commit `6f49505c` with this section, less this
+  paragraph, in the working tree. The round's runner: green, exit 0, 187 seconds.
+  `python3 tests/run.py`: all green over 81 projects, exit 0, 912 seconds, the Lean build
+  skipped as that runner does by default. `lake build` of the library through `safe-lake.sh`:
+  completed, 4120 jobs. The axiom audit, `python3 tests/audit_axioms.py`, started after the
+  last change to a Lean file: 4425 results across 130 files, all within the three axioms, exit
+  0, 1332 seconds. `python3 -m checkers.graph --root .`: OK at 2649 nodes, 2603 events, one
+  warning, the standing one on decision anchors with no node; it rewrote nothing.
+  `python3 -m checkers.workspace_state --check`: valid at 217 claims, 136 rounds and 167
+  priorities. `tests/dead_pointers.py`: clean. `tests/round_records.py` and the other jobs that
+  need a pull-request context run in CI on the pushed head.
+- **Components.** Thirteen rows of the ledger — **closed**, each a Lean declaration: the
+  eleven of the sixteenth follow-up, row 20 (`Full.legit`) and row 21 (`Cases.table`), their
+  reopening event the ledger's shared one. Nineteen — **open**, rows 37 and 38 among them.
+  Six — **living notes**.
+
+### AE.7 Filings, names, and what is reserved
+
+Item 151 revised through its node, version 3, and `ATTENTION.md` re-rendered; no item filed.
+`state/rounds.json`: the round's seventeenth-pass verdict, quoted from `VERDICTS.md`.
+`CURRENT.md` §3 revised. Root, round and Lean `PROVENANCE.md`: one row each. No registry
+entry, no `DECISIONS.md` entry, no queue entry.
+
+**New names, all provisional.** Files: `LegitimacyCase.lean`, `LegitimacyWitness.lean`,
+`LegitimacyCases.lean`; `account/LEAN_CASES.md`, `account/lean_cases.py`. In the namespace
+`Workspace.Deference.Contrib.LegitimacyModel`: `Model.StartRule`, `Offers`, `Declines`,
+`EveryF1`, `EveryF2`, `EveryF2'`, `EveryF3`, `legit_iff`, `HasProfile` with `legit` and
+`not_legit`; `Profile`, `Profile.all`; `St`, `St.init`, `St.tell`; `Case`, `Case.model`, the
+rational clause definitions of the same names as the model's, `Case.profile`, the `Case.model_*`
+theorems, `Case.hasProfile`, `hasProfile_std`. In `Full`: `Opt`, `View`, `Move`, `Cs`,
+`weight`, `rate`, `act`, `full`, `legit`, `bears_m`, `not_bears_n`, `act_differs`,
+`against_weights`, `wary_stops`, `views_at_one`, and `early`, `spent`, `unoffered`,
+`withheld`, `covert`, `led`, `stuck` with their `_model`, `_profile` and `_not_legit`. In
+`Cases`: `Supplied`, `Supplied.case`, `rating`, `Has`, `has`, `eff`, `at1`, `plain`, `slip`,
+`bentRate`, `bentAct`, the option, label and view types, the terms `a1` to `d11`, the
+variants `a5q`, `a8w`, `d1o`, `d4o`, `d6o`, `d7o`, `d8o`, `d10o`, each with `_has` and
+`_verdict`, `table`, `nothing`, `still`, and the five `_instance` theorems. The outcome labels
+*agrees*, *agrees, other clause*, *differs*, *not expressible* are the dispatch's. In the
+patch: the seven claim ids of AE.5 and the anchor `2026-11-24--thirteen-model-results-registered`.
+
+**Outstanding maintainer actions**
+
+1. Apply or decline the registration of thirteen Lean results:
+   `git apply prompts/2026-11-10-legitimacy-definition-prosecution/followup-16-registration.patch`,
+   then `python3 -m checkers.graph --root .` and `python3 -m checkers.workspace_state --check`.
+   The patch applies to the tree of this pass's last commit.
+
+The three entries of *Awaiting the author* that the sixteenth follow-up's list names stand
+as they were; this pass adds none and answers none. The pull request is not auto-merged; the
+merge is a pull-request fact.
+
+## Eighteenth follow-up (2026-11-24) — a second coding of the bank
+
+Dispatched by `PROMPT-followup-18.md`; "§" with a number below is a section of it. `account/`
+is in the round directory,
+`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/`. The
+measures, the predictions and every count are in `account/SECOND_CODING.md` and the last
+section of `account/CASE_RUNS.md`, which the runner recomputes; the lists of cases are there
+and not here. Nothing is registered. No Lean file is touched.
+
+### AF.1 The counts
+
+Each sheet was coded once more by one subagent, requested through the harness as `opus`; each
+reported its model as `claude-opus-5-5`. Sheet 11 on 263 cases, sheet 16 on 152.
+
+| | sheet 11, the disclosure rule | sheet 16, the clause on her earlier rating |
+|---|---|---|
+| the rule's verdict the same under the two codings | 249 of 263; 227 of the 240 with a definite verdict of the author's | 131 of 152 |
+| fields answered the same | `has_influencer` 263, `seeks_response` 263, `lapse_expected` 237, `value_change_expected` 257, `value_change_known` 261, what is told 223, the (kind, told) pairs 157 | `act_sought` 144, `earlier_rating` 124, `means` 140, `form` 116, `asked` 147 |
+| first coding against the author | 219 settled, 214 agree, 0 missed, 5 over | lapse expected (39): 33 settled, 33 agree; controls (69): 64 settled, 1 convicted |
+| second coding against the author | 216 settled, 212 agree, 1 missed, 3 over | lapse expected (39): 30 settled, 29 agree, 1 missed; controls (69): 57 settled, 0 convicted |
+
+With the three sets of sheet 16 and what is untold read from the second coding of sheet 11
+instead of the first, the clause settles 26 of 33 cases with a lapse expected and agrees on 25;
+over all 152, an untold mistake or the clause settles 121 and agrees on 120.
+
+### AF.2 The predictions that failed
+
+Sixteen of 25: numbers 2 to 9, 11 to 13, 17 to 19, 24 and 25. Each expected less agreement,
+between the codings or with the author, than was counted. The largest misses: `lapse_expected`
+the same on 237 where 180 was predicted; the rule's verdict the same on 249 where 205; the
+second coding of sheet 11 agreeing with the author on 212 where 197, with 1 missed where 8.
+Predictions 20 to 22, that a second coding of sheet 16 would not agree with the author on every
+settled case with a lapse expected, held: 29 of 30. Prediction 24, three controls convicted,
+failed at none.
+
+### AF.3 What the disagreements have in common
+
+On sheet 11, 12 of the 14 cases whose verdict differs are unsettled on one coding; 7 are
+convicted by the first and unsettled on the second, 6 of those by a lapse coded "yes" by the
+first and "unclear" by the second. The remaining 2 are convicted by the first and passed by
+the second, and are 2 of the 5 the first coding convicts against the author. On sheet 16, 19
+of the 21 are unsettled on one coding, 14 of them on the second; 18 differ in `earlier_rating`
+and 3 in `act_sought`. The two cases one coding convicts and the other passes are both "lower"
+on the first and "no_view" on the second: whether she had settled the matter before he
+started. On neither sheet does the second coding convict a case the first passes.
+
+### AF.4 Corrections to the prompt
+
+1. *§1, "one coding of the bank by one language model".* Sheet 11's first coding is by three
+   coders, one for each third of the bank (`CASE_RUNS.md`). The model of every first coder is
+   unrecorded (the round's `PROVENANCE.md`).
+2. *§3 B, "a different model from the first coder's".* Since the first coders' model is
+   unrecorded, what can be said is that the second coder is `claude-opus-5-5`, a different
+   model from the executor's and from that of the Claude Fable 5.2 session that ran the first
+   coders; whether it differs from the first coders' own is not known.
+3. *§2, the three files as lists of `{id, case}`.* They hold 266 entries for 263 ids; three ids
+   occur in two files with different wording. The second coder was given the later file's
+   text, whose first coding is the one the scorer reads.
+4. *§3 C against item 154.* The item's deliverable asked for `case_runs.py` to be extended;
+   §3 A forbids changing the scorers. The counts are in a new module, and the item's deliverable
+   is reworded to match.
+
+### AF.5 Deviations from the prompt
+
+- **A.** `SECOND_CODING.md` also fixes the tolerance within which a prediction holds (10 cases
+  for agreement between codings, 5 for *settled* and *agree* against the author, 2 for
+  *missed*, *over* and controls convicted), the handling of the three repeated ids, and what
+  would be sent back to a coder. Nothing was sent back: both outputs were complete and within
+  the sheets' vocabularies.
+- **B.** Each subagent was given, beyond the sheet, a short brief: the folder, the output path,
+  to read only the two files, no web, no subagents, to code each case by reading it. Each wrote
+  its answers as a table in a script in its folder; I read both scripts and they hold one
+  hand-written entry per case and no rule. The words each coder wrote (`after`, `what`, `note`)
+  are removed and the entries ordered by id.
+- **C.** `second_coding.py` repeats the clause of `run_prior`, which is local to that function,
+  to get a verdict per case, and fails if the copy's tallies are not the scorer's on any
+  coding. The scorers are called with `case_runs.load` redirected to the second coding's file.
+  Sheet 16's second coding is counted against the author twice, with the sets read from each
+  coding of sheet 11.
+- **D.** Beyond the paths §3 D names: `VERDICTS.md` (one line), the regenerated
+  `state/views/VERDICT_STATUS_INVENTORY.md`, and `followup-16-registration.patch`, which the
+  edits of this pass to `PROVENANCE.md` and the generated files stopped from applying; it is
+  rebuilt on a clone of this branch by applying the earlier patch without its four conflicting
+  files, re-entering its one `PROVENANCE.md` row and regenerating, with the same thirteen
+  entries. On the clone: `checkers.run` exit 0 at 125 entries, the graph checker OK at 2701
+  nodes, the state valid at 230 claims. Rows 3, 7 and 35 of the ledger now point at item 148
+  and not 154, and the ranking gains an eleventh entry for it. Row 8 is not revised; the second
+  coding's count of bent judgement is in `CASE_RUNS.md` and in item 154. No `DECISIONS.md`
+  entry: nothing was decided between alternatives and nothing is reserved.
+
+### AF.6 What was not shown
+
+- **A rate of agreement among readers.** One second coding, by one language model. Both
+  coders are language models, and no person has read a case against either coding (item 148).
+- **That the two coders' models differ**, the first being unrecorded.
+- **Anything about the paraphrases.** Both coders read the same texts, written for this work
+  from the book; an error in a paraphrase is shared, and agreement between the codings does
+  not bear on it.
+- **That the rule is right on cases it was not formed against.** The bank is the one the
+  disclosure rule was formed with in view, on either coding.
+- **That the coders read nothing else.** Each was told to; nothing enforced it. They ran with
+  this repository as working directory. Their tool-call counts (9 and 7) fit reading two files
+  and writing one, and I did not inspect the calls.
+- **Sheet 16 independently of sheet 11.** The 152 cases and their three sets were fixed by the
+  first coding of sheet 11.
+- **Bent judgement.** Ten cases on the second coding, four on the first, none with a lapse
+  expected on either; the prediction written for such cases is still untested.
+- **Sheets 14 and 15, and the 84 cases outside the book**, which have one coding.
+- The tolerances are mine, fixed in advance; with other tolerances other predictions fail.
+- **Gates.** Under Python 3.13. The round's runner, on the tree of commit `fc49fb8d` with the rebuilt patch in the working tree: green, exit 0. `python3 tests/run.py`, on the tree of commit `fc49fb8d`: all green over 81 projects, exit 0, the Lean build skipped as that runner does by default. `python3 -m checkers.graph --root .`: OK at 2649 nodes, 2603 events, one warning, the standing one on decision anchors with no node. `python3 -m checkers.workspace_state --check`: valid at 217 claims, 136 rounds and 167 priorities, after `--write-handoff` rewrote `state/views/VERDICT_STATUS_INVENTORY.md`. No Lean file is touched, so no build and no axiom audit was run. The jobs that need a pull-request context run in CI on the pushed head.
+- **Components.** No row changes verdict: rows 3 and 35 — **living notes**; row 7 — **open**.
+  The ledger keeps thirteen rows **closed**, nineteen **open**, six **living notes**.
+
+### AF.7 Filings, names, and what is reserved
+
+Item 154 revised through its node, version 2, to the set of cases of bent judgement, and
+`ATTENTION.md` re-rendered; no item filed. `state/rounds.json`: the round's eighteenth-pass
+verdict, quoted from `VERDICTS.md`. `CURRENT.md` §3 revised. Root and round `PROVENANCE.md`:
+two rows each. No registry entry, no `DECISIONS.md` entry, no queue entry.
+
+**New names, all provisional.** Files: `account/SECOND_CODING.md`, `account/second_coding.py`,
+`account/bank_coded_11_second.json`, `account/bank_coded_16_second.json`. The phrase *second
+coding* and the line prefix `- second coding` in `CASE_RUNS.md`. The verdict kind
+`follow-up-18` in `state/rounds.json`.
+
+**Outstanding maintainer actions**
+
+1. Apply or decline the registration of thirteen Lean results, carried from the seventeenth
+   follow-up:
+   `git apply prompts/2026-11-10-legitimacy-definition-prosecution/followup-16-registration.patch`,
+   then `python3 -m checkers.graph --root .` and `python3 -m checkers.workspace_state --check`.
+   The patch applies to the tree of this pass's last commit.
+
+This pass reserves nothing and adds no entry to *Awaiting the author*. The pull request is not
+auto-merged; the merge is a pull-request fact.
+
+## Nineteenth follow-up (2026-11-24) — the model's simplifications removed, and the cases corrected
+
+Dispatched by `PROMPT-followup-19.md`; "§" with a number below is a section of it. "The model"
+is `lean/Workspace/Deference/Contrib/LegitimacyModel.lean`, "the statement"
+`account/LEGITIMACY_STATEMENT.md` §3 and §4, `account/` being in the round directory,
+`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/`. The
+dispatch numbers the nine respects in its own order, which is used here; the ledger's rows 22
+to 27 hold them as: row 22 its 5, row 23 its 6, row 24 its 7, row 25 its 1, row 26 its 4, row
+27 its 2, 3, 8 and 9. Nothing is registered.
+
+### AG.1 The nine
+
+After each of the first eight changes the four Lean files were built and every theorem
+re-proved before the next was begun.
+
+| # | respect | outcome | before | after |
+|---|---|---|---|---|
+| 1 | silent where she had no earlier rating | removed | `Against`: some option of hers scores above her act on `ρ` at her earlier state | the same, and `rated` holds, at her earlier state, of the course of her act and of that option; `rated : S → X → Prop` is a new field |
+| 2 | an option that stops his moves ends them | removed, with his conduct after an option a field | `stops : ℕ → Ω → Finset O`; `F2` asked it non-empty and among her options | `Stops η t ω a`: `a` is an option of hers, in `herStops t ω`, and no move of `goesOn t ω a` is in play; `F2`, `PrefersStop`, `F3` are on `Stops` |
+| 3 | a decline was a decline | removed, on a reading | `DeclineStands`: at a decision `t₀ ≤ t` the view was in `offered` | at a decision `t₀ < t` the view was in `offered` and, in every case of positive weight, her act was not the hearing of it |
+| 4 | what is on offer | removed | `Legit` asked `offered t`, where non-empty, to be properly on offer | `Legit` asks `OnOffer θ t (offered t)`: among his views not yet told, properly on offer or empty, and containing every non-empty set properly on offer |
+| 5 | a view's bearing | removed, on a reading | `BearingHolds`: the change from her state to her state told `{v}` | over every set `T` of his views with `v ∈ T`: the change from her state told `T` less `v` to her state told `T`, and the options `T` shows that `T` less `v` does not |
+| 6 | his belief at each time | removed | `μ : Ω → ℝ`; `Bears η m`; the start rule asked a decision before `start m` | `μ : ℕ → Ω → ℝ`; `Bears u η m` on `μ u`; `InPlay η t` on `μ t`; the start rule: a move with `Bears (start m)` has a decision `t < start m` at which it is `InPlay` |
+| 7 | beyond what plainly telling would do | removed, with the plain telling a field | `F2'` ranged over sets of moves disjoint from `tellings` and compared with `c \ G` | `F2'` ranges over sets not asked for and compares with `toldInstead G`, the moves of `G` each replaced by `plain m` |
+| 8 | weights and cases | removed | clauses over every `ω`; `μ` nonnegative | `BearingHolds`, `ProperOffer`, `DeclineStands`, `F1`, `F2` over `ω` with `0 < μ t ω`; `μ_sum : ∀ t, ∑ ω, μ t ω = 1` |
+| 9 | what she can pick out, what she asked for, what a decision is | left as fields, as §1 A directs | `known`, `asked`, `dec` | the same; the header names them as taken as given, with what would derive each |
+
+None became a hypothesis of a theorem. Instances, each a kernel-checked term: for 1,
+`Cases.b6_has` and `b6r_has` (the term of B6 is legitimate with no earlier rating of going on
+and fails F2′ with one); for 2, `Full.ongoing_profile` (an option she takes to stop his move
+that does not end it: F2 fails alone); for 4, `Model.onOffer_unique` and
+`offered_eq_of_legit` (two legitimate models differing only in `offered` agree on it),
+`Full.undesignated_profile` (with `offered` empty where a view is properly on offer, the offer
+clause and F1 fail) and `Cases.twoOffers_none` (two sets each properly on offer and no largest);
+for 5, `Cases.d11s_has` with `d11s_alone` (two views that move a rating only together, nothing
+told of either's bearing: F1 fails, where each alone moves nothing); for 6, `Cases.learnt_profile`
+with `learnt_bears` (the move of the ninth outside review, one he learns at its start to bear
+an effect: the start rule fails and every other clause holds) beside `foreseen_has`; for 7,
+`Cases.b10_has`. Respect 3 has no term on which the new conjunct decides, and respect 8 none
+with a case of weight zero.
+
+Of §1 A.4's three alternatives the first was taken. The second does not hold as worded:
+`Legit` does change with which proper set is designated (`Full.undesignated_profile` against
+`Full.legit`), and what is proved is that at most one designation is legitimate. The statement
+intends the largest set.
+
+**Readings chosen**, each agent-decided and reversible, with the alternative not taken:
+`rated` as a predicate beside a total `ρ` (a partial `ρ`); stopping by two fields (his conduct
+after her option derived from the courses); declining as taking another option than the
+hearing while the view is on offer (a separate act of declining), with `declined` the declines
+he relies on (the set of all that stand); `Legit` failing where no largest set is on offer (the
+union of the proper sets); a view's bearing as its marginal change (the total change of any
+set containing it); his beliefs as weightings of one space of cases (a separate picture at
+each time); a move's plain telling as a field (a content of the move, told by `tell`);
+positive weight for probability one, and the sum of the weights as a field of `Model` (a
+hypothesis). `DECISIONS.md` is outside this pass's paths, so these are recorded here and in the
+model's header, and no dated entry is written.
+
+### AG.2 Theorems whose statement changed
+
+- `LegitimacyModel.lean`. `not_bears_of_inert`: no effect on his belief at any time `u`.
+  `not_legit_of_untold`, `not_legit_of_unknown`: of a case with `0 < μ t ω`, the clause
+  not being asked of a case of weight zero; no term exhibits the earlier statement failing. `not_legit_of_unstoppable`:
+  the same, and its hypothesis is `∀ a, ¬ Stops η t ω a` where it was `stops t ω = ∅`.
+  `not_legit_of_against`: the weight under `toldInstead G` where it was under `c \ G`, and no
+  hypothesis on tellings. `transport_wt`, `transport_contributes`, `transport_bears`,
+  `Witness.contributes_all`, `not_contributes_none`, `bears`: a belief time.
+  `transport_prefersStop`, `Witness.not_prefersStop`: a tolerance `η`.
+- `LegitimacyCase.lean`. `Case.model_wt`, `model_contributes`, `model_bears`,
+  `model_prefersStop`: the same arguments; `model_F3`, `model_everyF3`: `Fintype M`.
+- `LegitimacyWitness.lean`. `bears_m`, `not_bears_n`: on his belief at time 1.
+  `against_weights`: weights at time 1. `wary_stops`: `Stops` of her act where it was
+  membership in `stops`. `withheld_model`: the field replaced is `r`.
+- `LegitimacyCases.lean`. `inert_instance`: for every belief time. `a5_has`, `a5_verdict`,
+  `a8_has`, `a8_verdict`, `d1_has`, `d4_has`, `d6_has`, `d7_has`, `d8_has`, `d10_has` and
+  `table`: AG.3.
+
+Every other theorem mentioning `Legit` or a clause keeps its wording and is about the changed
+definitions: `legit_transport`, `legit_of_nothing`, `Witness.legit_open`, `not_legit_covert`,
+the scoring theorems, `legit_iff`, `Case.hasProfile`, `Full.legit` and the profiles. The gate
+theorems are untouched.
+
+**One theorem no longer holds as stated.** `Full.withheld_profile` said that the witness with
+`offered` emptied at the second decision fails F1 and no other clause. With `offered` required
+to be the largest proper set that term fails the offer clause as well:
+`Full.undesignated_profile`, the same term, proves `⟨true, false, true, false, true, true,
+true⟩`. `withheld` is now another neighbour, the witness with `r` replaced so that an untold
+view moves a rating by 1/10, and fails F1 alone. The witness itself changed in one value: the
+hearing of its untold view `u` is an option she does not have, so that `u` is not properly on
+offer. The seventeenth follow-up's eight variants and their sixteen theorems are removed
+(AG.3).
+
+### AG.3 The cases
+
+`account/LEAN_CASES.md` §3. Counts: agrees 41, agrees by another clause 0, differs 0, not
+expressible 0; no term carries data its case does not supply. The seventeenth follow-up's were
+32, 6, 2, 1 and 8.
+
+No change of AG.1 moved a verdict or a failing clause on a term as it stood: after each, every
+`_has` theorem was re-proved with its seven booleans unchanged. What moved, moved with the
+case's data or with the term being rebuilt:
+
+- **A5**, fails to holds. The case's stopping option was not among her options; it is now,
+  rated 3/10, and `legitimacy_checks.py` counts a stopping option only if it is an option of
+  hers. On the old data the script now computes "fails, F2 (no way to stop)".
+- **A8**, holds to fails by F3. The case gave the chance that she stops given that she rates
+  stopping higher, on ratings under which she never does; it now gives that event the chance
+  1/5 and the script applies F3 only where the chance is positive. On the old data it now
+  computes "holds". `LEGITIMACY_CHECKS.md` keeps both old data as errata.
+- **B6**, holds as before, on another term: the ratings of B5's, with no rating at the
+  earlier decision of what going on leads to (respect 1).
+- **D1, D6, D7, D8, D10**, fail as before, by F1 where it was the offer clause: the terms are
+  rebuilt with `offered` empty, the case's offer not being a proper one (respect 4).
+- **D4**, fails as before, by F1 where it was the decline clause: the term is rebuilt with
+  `declined` empty, the decline having lapsed.
+
+B2, B5 and B10 state her rating in the course without his move, and the script computes the
+chance of going against her earlier rating from it (`bent`); B10 is one move compared with its
+plain telling. D3, D4 and D5 state the earlier decision in place of two flags, and the script
+computes whether the decline stands. D10 and D11 state her ratings after taking up both
+offers. The 41 rows of `LEGITIMACY_CHECKS.md` are unchanged.
+
+### AG.4 Corrections to the prompt
+
+- §1 A.4's second alternative is false as worded (AG.1).
+- §1 A speaks of the witness's seven neighbours; there are eight, and a ninth term failing two
+  clauses.
+- §1 B takes the amended case to fix the term. The data of B2, B5, B6, B10 and D3 to D5 was
+  written from the terms, so the term's data is the case's and the case's is the term's.
+- §1 C asks for the ledger's rows 22 to 27, 37 and 38. Rows 4 to 9, 12, 14 to 17, 20 and 21
+  stated facts that A and B changed and are revised too.
+
+### AG.5 Places where the page's formal statement is unclear or wrong
+
+Reported and not repaired; §3 and §4 of the page are as they were.
+
+1. **`offered_τ` is the largest such set (§3).** A largest set properly on offer need not
+   exist: on `Cases.twoOffers` two views are each properly on offer alone, and hearing both
+   leaves her without an option. The conditions are not closed under union, since the last
+   one is about her state after hearing all of the set.
+2. **The bearing `β_X` (§3).** "The options whose rating he expects hearing `X` to change,
+   alone or with other views of his" does not say whether the change with other views is that
+   of the whole set or of `X` added to it; on the first reading every view bears on whatever
+   any view of his bears on. "Whether `rev_τ` of some set containing `X` is non-empty", read
+   to the letter, makes every view one that shows her an option whenever one of his does.
+3. **Declined (§3).** "She declined `X` itself": her act at a decision is one option, and the
+   setting has no option that is a decline.
+4. **Stopping (§3).** `S_τ` is "the options that end every move in `B_τ` from `τ`", and the
+   setting does not say what his conduct is after an option of hers: the courses are indexed
+   by sets of moves, not by her acts.
+5. **F2′ (§4), the plain telling.** "Counted only for what it does beyond leaving her where
+   being told its content would have" needs a content for each move and the course in which
+   the move is replaced by a telling; the setting has neither.
+6. **F2′ (§4), silence.** "Where she had no rating of the matter": `ρ` is total in §3 and
+   "the matter" is not defined. The model takes it as the course of her act and the course of
+   the option that would beat it.
+7. **The start rule (§4)** is about his belief at `σ_m`. A move he comes to believe
+   effect-bearing at a decision after it started enters `B_τ` then, and nothing asks that it
+   was announced before it began.
+8. **F3's premise `S_τ ≠ O_τ`** is not in the model, where the stopping options vary with his
+   case; where every option of hers stops his moves the model asks that her act be one.
+
+### AG.6 Deviations from the prompt
+
+- **A.** Beyond the nine: `F2` asks for an option that stops, `∃ a ∈ opts, Stops`, where it
+  asked `stops` non-empty and within her options; `OnOffer` is among his views not yet told,
+  so that `legit_of_nothing` keeps its statement; `Case` takes `Fintype Ω`; in `Supplied` the
+  field `total` is gone and the weights are normalised by their sum (`prob`). New terms beyond
+  those asked: `Full.ongoing`, `Full.undesignated`, `Cases.twoOffers`, `d11s`, `foreseen`. The
+  header's list of simplifications is replaced by an account of how each part is rendered and
+  what is taken as given. The axiom audit was run once, on the final Lean files, not after
+  each change; the build was.
+- **B.** The terms of D1, D4, D6, D7, D8 and D10 are rebuilt as AG.3 says, which §1 B does not
+  ask; the eight variants are removed, and `b6r` and `d11s` are the variants now. The script
+  gained, beyond the check §1 B names: F3 weighed by the chance of its condition, F2′ against
+  a move's plain telling, a decline's standing computed from the earlier decision, and the
+  joint rating after all offers. No expectation was changed and none was fixed anew before a
+  term was built.
+- **C.** `VERDICTS.md` gains its line and `state/views/` is regenerated. Item 151 is revised,
+  not closed: version 4, its rows now 24, 27 and 38. The two readings of AG.5 that row 26 and
+  row 22 rest on are reserved to the maintainer below and are not in `DECISIONS.md`'s queue,
+  which is outside this pass's paths. The
+  registration patch keeps its name and is rebuilt by a subagent of the executor on a clone at
+  commit `a9d88079`: the same thirteen entries, with the wording of their notes, statements and
+  recorded signatures brought to the Lean files as they stand. On the clone with it applied, as
+  the subagent reports: `checkers.run` exit 0 at 125 entries; the graph checker OK at 2701
+  nodes; the state valid at 230 claims; the attention render equal; dead pointers and the
+  wiki's bindings clean; the round's runner green; `checkers.wiki_links` failing on one link
+  pinned to a commit the clone did not receive, on a page the patch does not touch.
+  `git apply --check` passes on this tree. Not run on it: `tests/run.py`, the axiom audit. The
+  rows closed in this pass (22, 23, 25, 26, 37) are not among the thirteen. I did not read the
+  rebuilt entries line by line.
+- **D.** The pull request's body covers the five follow-ups on the branch.
+
+### AG.7 What was not shown
+
+- **That the model now says what the statement says.** Eight definitions were changed by the
+  session that reports on them; no outside review has seen any of the Lean, and that review
+  is item 153.
+- **Respect 7 and half of respect 2 in substance.** A move's plain telling and his conduct
+  after an option of hers are fields; nothing ties the first to `tell` or the second to the
+  courses (ledger rows 24, 27).
+- **Respect 3 on a term**: no term has a decline that fails because she heard the view.
+- **Respect 8 on a term**: no term has a case of weight zero in which a clause would fail.
+- **That the 41 agreements are independent.** For A5, A8, B2, B5, B6, B10, D3, D4, D5, D10
+  and D11 the case's data and the term were brought to each other by this session with the
+  expected verdict in view (row 38).
+- **His belief changing, on the cases.** Every case has one belief throughout; `learnt` is the
+  one term where it changes.
+- **Anything about a model with no largest set on offer beyond that `Legit` fails on it.**
+- **Gates.** Under Python 3.13. The four Lean files built through `safe-lake.sh` after
+  each of the eight changes and after the terms were rebuilt, with no error and no warning in
+  them; no `maxHeartbeats` option. The axiom audit, `python3 tests/audit_axioms.py`, started
+  after the last change to a Lean file: 4432 results across 130 files, all within the three
+  axioms, exit 0. The round's runner, on the tree of commit `a9d88079` with this section and
+  the rebuilt patch in the working tree: green, exit 0. `python3 tests/run.py`, on that tree
+  with this section in the working tree: all green over 81 projects, exit 0, the Lean build
+  skipped as that runner does by default. `python3 -m checkers.graph --root .`: OK at 2649
+  nodes, 2603 events, one warning, the standing one on decision anchors with no node; it
+  rewrote nothing. `python3 -m checkers.workspace_state --check`: valid at 217 claims, 136
+  rounds and 167 priorities, after `--write-handoff` rewrote two views in commit `a9d88079`.
+  `tests/dead_pointers.py`: clean. The whole library was not rebuilt with `lake build`; the
+  four files and what they import were. The jobs that need a pull-request context run in CI
+  on the pushed head.
+- **Components.** Ledger rows 22, 23, 25, 26 — **closed**, each on Lean declarations named in
+  the row, reopened by the ledger's shared event. Row 37 — **closed**, on the runner's check of
+  `LEGITIMACY_CHECKS.md` and `LEAN_CASES.md` and on `Cases.a5_has`, `a8_has`; reopened when
+  the runner fails on either document. Rows 24, 27, 38 — **open**. The ledger has eighteen rows
+  **closed**, fourteen **open**, six **living notes**.
+
+### AG.8 Filings, names, and what is reserved
+
+Item 151 revised through its node, version 4, and `ATTENTION.md` re-rendered; no item filed.
+`state/rounds.json`: the round's nineteenth-pass verdict, quoted from `VERDICTS.md`.
+`CURRENT.md` §3 and two cells of `LEGITIMACY_STATEMENT.md` §6 revised. Root, round and Lean
+`PROVENANCE.md`: one row each. No registry entry, no `DECISIONS.md` entry, no queue entry.
+
+**New names, all provisional.** In `Model`: the fields `rated`, `goesOn`, `herStops`, `plain`,
+`μ_sum`; `Stops`, `OnOffer`, `toldInstead`; `onOffer_unique`, `offered_eq_of_legit`,
+`transport_stops`, `transport_onOffer`. In `Case`: the same fields and definitions,
+`model_μ_pos`, `model_stops`, `model_onOffer`. In `Full`: `rateU`, `ongoing` with `_model`,
+`_profile` and `_not_legit`, `undesignated`, `undesignated_profile`. In `Cases`:
+`Supplied.unrated`, `Supplied.plain`, `Supplied.prob`, `prob_nonneg`, `prob_sum`, `feeds`,
+`b6r`, `d11s`, `d11s_alone`, `twoOffers`, `twoOffers_none`, `foreseen`, `learnt`,
+`learnt_profile`, `learnt_not_legit`, `learnt_bears`. In `legitimacy_checks.py`: `bent`, `low`,
+and the case keys `after all`, `earlier`, `plain`, `prefers stop`. The verdict kind
+`follow-up-19` in `state/rounds.json`. Names gone: the fields `stops` and `tellings`,
+`Supplied.total`, the variants `a5q`, `a8w`, `d1o`, `d4o`, `d6o`, `d7o`, `d8o`, `d10o`.
+
+**Outstanding maintainer actions**
+
+1. Rule on what is on offer where no largest set properly on offer exists (AG.5, 1): the
+   model fails `Legit` there; the alternative is the union of the proper sets. It turns on
+   whether two offers that cannot both be taken up discharge what he owes for either view.
+2. Rule on the bearing of a view "with other views of his" (AG.5, 2): the model takes the
+   marginal change. It turns on what he is taken to have told her when he tells her what one
+   view bears on.
+3. Run the outside review of the Lean statement (item 153) on the four files as they stand.
+4. Apply or decline the registration of thirteen Lean results, carried from the seventeenth
+   follow-up:
+   `git apply prompts/2026-11-10-legitimacy-definition-prosecution/followup-16-registration.patch`,
+   then `python3 -m checkers.graph --root .` and `python3 -m checkers.workspace_state --check`.
+   The patch applies to the tree of this pass's last commit.
+
+Actions 1 and 2 are not in `DECISIONS.md`'s *Awaiting the author*, which this pass had no
+scope to write. The pull request is not auto-merged; the merge is a pull-request fact.
+
+## Twentieth follow-up (2026-11-26) — the statement at the level of its words, and its interpretation kept apart
+
+Dispatched by `PROMPT-followup-20.md`; "§" with a number below is a section of it. `account/`
+is in the round directory,
+`projects/normativity/legitimacy/rounds/2026-11-10-legitimacy-definition-prosecution/`; Lean
+files are under `lean/Workspace/Deference/Contrib/`. "The statement" is
+`account/LEGITIMACY_STATEMENT.md`, "the ledger" `account/LEDGER.md`. Nothing is registered.
+
+### AH.1 What was tried and rejected, 24–26 November
+
+Five formal objects, each built to be the statement and each sent to an outside review that
+read only its brief.
+
+1. **The model on a table of his moves** (`LegitimacyModel.lean`, as the nineteenth follow-up
+   left it). The tenth review: not a faithful rendering. Its pressure clause scores, with her
+   scoring from before he began, the courses he expects her options to lead to; her rating of
+   the options is never read. Kept, marked as an interpretation.
+2. **A first design on histories**, a page with no model: her state moved by one rule, his
+   acts replaced by idle ones to find what he does to her. The eleventh review: build on
+   histories, do not implement this. The pressure comparison valued her choice by the picture
+   his act gave her.
+3. **A second design**, with her ratings primitive, a comparison course in which her mind
+   moves by her conditioning alone, and an exact model on 32 episodes. The twelfth review:
+   two modellers who agree on what happened can call the same response her conditioning or
+   his effect, so the conditioning absorbs the nagging it is meant to catch.
+4. **A third design**, her conditioning read as her settled self's view of the hypothetical,
+   with twelve episodes pairing the same events with different views. The thirteenth review:
+   "her view" read as her prediction lets a foreseen, disowned weakness pass; an unfamiliar
+   procedure is exempt whatever it is built to do; forgetting an option, kinds of act and the
+   test of what she can tell each leak.
+5. **The fifth design**, her judgement at her last settled decision, single acts in place of
+   kinds, and the maintainer's verdicts on the hard cases as specification; 68 episodes. The
+   fourteenth review: not ready for formal verification; seven episodes, on six of which the
+   model is wrong.
+
+Rejected along the way, each with where: her view as her prediction (hard case 13); three
+alternative rules for what she could not have judged in advance (`account/HARD_CASES.md`);
+counting whether she keeps the new view, again (cases 3 and 11); a Lean port of a history
+design before its faults are repaired. `CURRENT.md` §2 has a row for each.
+
+What the maintainer then adopted is §3's position 7: the definition is stated over the
+notions its words use, taken as given, and working those notions out is a separate question.
+
+### AH.2 The reviews
+
+`REVIEW-astra-followup-20.md` holds the five briefs and replies. "Held" below is a claim
+about the formal object reviewed, not about whether the conduct is manipulation.
+
+**Review 10** (of `LegitimacyModel.lean`). Checked by a subagent of the executor, by hand
+against the definitions in the file, nothing built or run; 44 claims in the reply were
+checked and all held, five of them needing field values the reply leaves unstated. The
+reviewer's concrete models and its ranked findings:
+
+| finding | held when checked | what was done |
+|---|---|---|
+| Ranked 1. `Against` scores, with her scoring from before he began, the courses *he* expects her options to lead to; her rating `r` of the options is never read. So open, stoppable nagging into the option she rates lower satisfies `Legit`, and a reminder that helps her take her top-rated option fails it | held: with `r a = 2` and `ρ (course a) = 0`, which no field forbids, `F2'` passes the nagging and fails the reminder | the model is not repaired; the history designs take her rating of options as primitive (`episodes_core` 12, 13, 15) |
+| Ranked 2. `F2'` compares net weights: harm in one case offset by help in another passes, and so does moving her from an inferior option to a worse one | held, on both models | `episodes_core` 16 and 17, each failing as the sentences say |
+| Ranked 3. The effect test misses a covert move that makes her unresponsive to a view, and any change in her that is restored before her next decision | held | `episodes_core` 11; a change between decisions is still not asked about (ledger row 38) |
+| Ranked 4. Stopping and plain telling are free fields: `goesOn` and `plain` are tied to no course | held; both already listed in the brief as known | the history designs compute both from the history |
+| Ranked 5. `F1` ranges over subsets of what is untold, so an offered view shields an untold one that matters only with it | held; the weakest on the sentences' reading, her having been told the offered view's joint bearing | `NothingUntold` ranges over untold and on-offer views together; `episodes_core` 28 |
+| A later change of his belief removes the pressure test for an effect he expected when he acted | held | `episodes_core` 18 |
+| Splitting one move into two flips a verdict; raising `η` makes a move newly effect-bearing; a move masked by another bears no effect | held, each on a table the reply partly leaves to the reader | sites in place of moves; invariance under regrouping is not shown (ledger row 47) |
+| An open change to what an option leads to counts as a change in her through the gap | held on the reviewer's encoding, avoidable on another | `episodes_core` 26, 27 |
+| `asked = c`, `dec = ∅` or `rated` false everywhere each make a clause vacuous | held | the same holds of the fields of `Episode` (ledger row 29) |
+| No dependence on an external standard of truth or of good values | not checkable: a "none found" | — |
+
+**Review 11** (of the first design on histories, which was a page with no model). Checked by
+a subagent of the executor, by hand against the design text of the brief; 28 claims were
+checked, 26 held and 2 held in part. One complaint is aimed at something the brief does not
+do: that his information must not include the case, where the brief already conditions on
+the acts alone. The ranked findings and the further leaks:
+
+| finding | held when checked | what was done |
+|---|---|---|
+| Ranked 1. The pressure clause values the choice by her picture after his act, so an open act that swaps her picture of two options justifies the choice it causes | held | ratings primitive, shortfall against her reference self; `episodes_core` 14 fails |
+| Ranked 2. The replacement course can change the decision problem: he reverses her values and offers the old option only if he has | held | the comparison course keeps his policy and changes only how her mind moves; `episodes_core` 20 fails. What is left is faults D and E |
+| Ranked 3. Markings, timing within a step and free group membership can put a passing or obsolete state in place of her judgement | held; the over-reach by an idle move rests on reading the clause as "for every set" | `episodes_core` 21 fails and 23 holds; settled decisions are still supplied (ledger rows 9, 30) |
+| Ranked 4. A seen improvement of an option counts as an effect on her, and a hidden change to how she would respond to being told goes untested | held | what an act does to her is her movement beyond her conditioning; `episodes_core` 26 holds and 11 fails. What is left is fault C |
+| Ranked 5. The content of an act and her response to being told are supplied, and can fix the verdict | held | her conditioning is her judgement at her last settled decision (`episodes_views`); `episodes_core` 22 fails. Both are still supplied |
+| "What she sees differs from his doing nothing" does not show she can identify the act | held in part: the description is right, "too weak" a judgement | the test across his cases; `episodes_review13` 10. What is left is fault F |
+| A one-shot act that starts a process is trivially stopped | held | `episodes_core` 10 re-encoded as an influence kept up; no ongoing process is represented |
+| Sequences of tellings are not probed | held | nothing: probes are still sets (ledger row 31) |
+| Told, on offer and declined are not exclusive as computed; forcing an option at a history that already has her act is ill-typed; no initial state is supplied | held | a precedence among the three; the model forces her choice at a step and has an initial state |
+
+**Review 12** (of the second design on histories, with its model). The seven episodes of the
+reply are `episodes_review12`; that file records that on the first run, against the model
+the review saw, six of its nine episodes came out wrong as the reviewer said. Which six is
+not recorded, and that model is not among the files handed over. On the repaired model, and
+on the present one, all nine are as expected.
+
+| finding | held when checked | what was done |
+|---|---|---|
+| Ranked 1. Admissible conditioning can absorb open nagging: two modellers who agree on what happened can call the same response her conditioning or his effect | held, on the file's record | her conditioning read as her settled self's view of the hypothetical (positions 2, 3); `episodes_review12` 1 and 2, `episodes_views` |
+| Ranked 2. "Same policy, same acts, same observations" cannot all be kept when her choices differ | not an episode; the design text was ambiguous as the reply says | the policy is kept and the course rerun; what the supplied functions do on histories only the rerun reaches is still open (ledger row 47) |
+| Ranked 3. The reference is obsolete after a later settled decision, and a weak-willed reference on a larger menu acquits a harmful act | held | reference self at the last settled decision, best-rated option as benchmark; `episodes_review12` 6 and 8. Different menus still go wrong (fault E) |
+| Ranked 4. Silent deletion of something from someone else, and a change to how she would respond to another's warning, pass every rule | held | the keeps-from-her rule, `episodes_review12` 3 and 4; a supplied list of what others might show her, episode 5. Off the list it still passes (fault C) |
+| Ranked 5. A completed intervention is asked for a stop after the fact; two tied stops make the stopping condition vacuous | held | `episodes_review12` 7 and 9 |
+| A proper offer checks ratings and options, not her disposition or responsiveness; a hearing cost already sunk need not show in her ratings | not checked on a model | nothing beyond `episodes_core` 31 |
+| The supplied mechanisms must be his model, or a sincere adviser wrong about them is not covered | not checkable: a reading | the design says everything supplied is his model |
+
+**Review 13** (of the third design on histories). The reply's ten episodes were run on the
+model the review saw, unchanged: the model gave the wrong verdict by the reviewer's reading
+of the sentences on 8, and what the reviewer said the rules give on 9 of the 10.
+
+| finding | held when checked | what was done |
+|---|---|---|
+| Ranked 1. "Her view" read as her prediction lets a foreseen, disowned weakness pass; an engineered unfamiliar exercise passes; a single repetition that lands fails | held on all three as claims about the model | the first by position 3, her judgement (`episodes_review13` 1, 2). On the second the maintainer's verdict is "lean fine" where the reviewer expected "fails": the episode is kept as holding, with the uptake made explicit (3). On the third his verdict is wrong "to be on the safe side" where the reviewer expected "holds": kept as failing (5) |
+| Ranked 2. Covertly making her forget her best option passes every rule | held | awareness tested directly, the reference self keeps the option; `episodes_review13` 6 and 7 |
+| Ranked 3. An unfamiliar experience with no way out is asked for no stop | held | covered sites; `episodes_review13` 4 |
+| Ranked 4. Kinds of act fix both the obligations and the time at which risk is judged: an unnoticed reminder is condemned with a later change of the same kind, and a second act he knows will turn her passes on the first act's odds | the first held; the second did not: the model failed that episode where the reviewer said it would hold | sites in place of kinds, his belief at each site; `episodes_review13` 8 and 9 |
+| Ranked 5. A lamp that is red or blue either way differs in each case and tells her nothing | held | the test across his cases; `episodes_review13` 10. It now rejects a signal she can read (fault F) |
+| A passing mood can change her view of the hypothetical | held | her view at her last settled decision; `episodes_review13` 11 |
+| "Told" is permanent; a bearing needs to be relative to what else she has heard; a later view needs a time stamp | not checked on a model | nothing (ledger rows 1, 32) |
+
+**Review 14** (of the fifth design). The reply's seven episodes are `known_faults` A to G, run
+on the model unchanged.
+
+| finding | held when checked | what was done |
+|---|---|---|
+| Ranked 1. An unfamiliar observation exempts other effects bundled into the same site (A) | held | nothing in the model; the reading that the exemption covers only her response to the thing observed is adopted in words (ledger rows 5, 40) |
+| Ranked 2. Whole-course divergence and a shifting benchmark misclassify her later learning (D) and a better menu (E) | held, both | nothing (rows 43, 44) |
+| Ranked 3. Pressured uptake gets the asking exemption (B) | held | nothing; the words already say "unpressed" (rows 7, 41) |
+| Ranked 4. Recognition uses the current observation only (F) | held | nothing (row 45) |
+| Ranked 5. Stopping each influence is replaced by ending all further activity (G) | did not hold on the reviewer's episode as encoded, where neither influence bears an effect; held on H, the same with the changed ratings among her options | H added (row 46) |
+| A latent impairment evades a probe list that leaves the warning out (C) | held | nothing (row 42) |
+| The conditioning of her whole state, the telling observation, the null act, his information, and off-policy histories are undetermined | not episodes | nothing (row 47) |
+| No necessary appeal to external truth, to his accuracy, or to good values | not checkable: a "none found" | — |
+
+### AH.3 Corrections to the prompt
+
+- §1 says the last two reviews found no fault with the three sentences themselves. The
+  thirteenth objects to the exemption for what she could not have judged in advance, in words
+  as well as in the design; the fourteenth says it has not established that any sentence is
+  the wrong idea and asks that the exemption's wording be narrowed. The maintainer's verdicts
+  on cases 5 and 6 answer the thirteenth; the fourteenth's request is taken as a reading
+  (AH.4).
+- §1 says four further designs were each built, run on episodes and reviewed. The first of
+  them was a page with no model (brief 11).
+- §2 and §4 C call the fourteenth review's seven episodes known faults with a recorded wrong
+  verdict on each. The model is wrong on six. On the seventh, G, it gives the verdict the
+  sentences call for, because the encoding puts the ratings his two influences change on
+  options she does not have, so neither bears an effect. With those options on her menu the
+  model fails the episode as the reviewer said: that is the eighth episode, H.
+- §2 says each review's log shows one command. No log was among the files handed over.
+- §4 C asks which three episodes were re-encoded. The files record three re-encodings of two
+  episodes, a change to a third marked "second run", and a rewriting of the thirteenth
+  review's set that goes further (`account/interpretation/INTERPRETATION.md` §2).
+- §4 E says the episode files record, for reviews 12 to 14, whether each finding held. For
+  the twelfth the file records a count, six of nine wrong on the first run, and the model
+  that review saw is not among the files.
+- The restated page says six of the eight controls run 17 convicts are tie-breaks. No coding
+  says what a case is; recorded instead is that sheet 16 codes her earlier rating as not
+  lower or as no view on six of them.
+
+### AH.4 Deviations from the prompt
+
+- **A.** The statement's §4 carries a reading the words do not state: the exemption covers
+  her response to the thing seen or heard, not another effect of the act that delivers it.
+  Consequence 11 states the cost the restated page accepts in prose. The earlier formal text
+  (F1, F2, F2′, F3) is kept as `account/TABLE_MODEL_STATEMENT.md`, marked, since
+  `LEGITIMACY_CHECKS.md` and `LEAN_CASES.md` are cases of it; both are marked at the head.
+- **B.** The scoring link and the gate theorem were **moved**: `gatedScoring`,
+  `gate_gives_behaviour`, `gate_threshold_delta`, `gate_threshold_sharp` and `gate_instance`
+  are in `LegitimacyGate.lean`, which `LegitimacyModel.lean` and `LegitimacyStatement.lean`
+  import; `gate_instance` was `Witness.gate_instance`. `legitScoring` and its two theorems
+  stay in each file, being about that file's predicate. No definition and no theorem
+  statement changed in any file. Added to the worked file: `Witness.requested`, `keeps`,
+  `idle`, `params`, `scoring`, and nine instance theorems (`informed_instance`,
+  `requested_behind`, `requested_legit`, `not_legit_keeps`, `idle_legit`, `legit_looser`,
+  `against_instance`, `scoring_open`, `scoring_covert`), so that every theorem but the second
+  half of `informed_choice` has a term inhabiting its hypotheses; `#print axioms` on
+  `mem_conduct` and `mem_decisions`, which the worked file left out. One sentence of
+  `LegitimacyCase.lean`'s header was reworded beside the mark.
+- **C.** Each episode file's import lines, `check` function and prints are replaced so that
+  an episode is recorded with its expectation and run by the package; two annotations
+  "[is this over-reach?]" on episodes whose verdicts are now accepted consequences 9 and 10
+  are dropped; episode H is added. Nothing else in an episode is changed.
+- **D.** The coding of sheet 17 is kept without the coder's notes. The post hoc combination
+  is computed under count lines that begin "written after the result".
+- **E.** The checks of reviews 10 and 11 were made by two subagents, by hand against the
+  definitions and the design text; no Lean term and no new episode was built for a finding.
+  The tables give each review's ranked findings and concrete models, not every claim.
+- **F.** The ranking differs from the dispatch's in four ways, stated under it.
+- **G.** The patch is a new file, `followup-20-registration.patch`, built by a subagent on a
+  clone. `followup-16-registration.patch`, which prepared thirteen results of the table model,
+  is withdrawn and left in place as the record of what was prepared; it no longer applies, the
+  gate theorem having moved. The new patch, as the subagent reports: 67 files; thirteen entries
+  in `projects/normativity/CLAIMS.md` with four nodes each; its entries answer items 156
+  (eleven), 150 (the scoring link) and 147 (the gate theorem), none of which it closes; it
+  writes a `DECISIONS.md` entry headed as the maintainer's act, true only once he applies it.
+  On a clean checkout of commit `6153bc5e` with it applied: the graph checker OK at 2703
+  nodes, the state valid at 230 claims, `checkers.run` exit 0 at 125 entries, the attention
+  render equal, the wiki's bindings and dead pointers clean. `git apply --check` passes on
+  this tree. I did not read the entries line by line. Item 151 is closed without delivery, its
+  subject being the table model. Items 139 and 147 to 155 have their ledger rows renumbered.
+  The two readings the nineteenth follow-up reserved to the maintainer lapse with the table
+  model's formal text.
+
+### AH.5 What was not shown
+
+- **That the Lean statement says what the three sentences say.** No review has seen it
+  (ledger row 16).
+- **That the statement constrains anything once the notions are given freely.** An episode
+  whose field `doesToHer` is false throughout satisfies sentences 2 and 3; nothing states
+  what a field must satisfy to be the notion it is named for (row 29).
+- **That any procedure works the notions out.** The interpretation gives the wrong verdict
+  on seven of eight episodes written against it; its 68 agreements are a regression set by
+  one hand, the model having been corrected against 64 of them; no map from a history to an
+  `Episode` exists (rows 40 to 49).
+- **The reviews' findings on a machine.** Those of reviews 10 and 11 were checked by hand by
+  subagents; those of 12 on the word of a file's docstring.
+- **The maintainer's verdicts as more than one person's.** Two of the twenty are "unsure" and
+  four are leanings; the rule's agreement with them counts leanings as verdicts.
+- **Run 17 as a test of the rule the statement has.** Its sheet has no question about her
+  earlier rating; one of its four predictions failed; the repair was written after the
+  result. One coder, model unrecorded.
+- **Anything about a sequence of decisions, the authority side, or whether a gate can
+  evaluate `Legit`** (rows 52, 53, 55).
+- **Gates.** Under Python 3.13. The six Lean files built through `safe-lake.sh` after `resource-guard.sh check`, with no error and no warning in them and no `maxHeartbeats` option; the whole library was not rebuilt with `lake build`. The axiom audit, `python3 tests/audit_axioms.py`, started after the last change to a Lean file: 4460 results across 132 files, all within the three axioms, exit 0. The round's runner: green, exit 0 (68 episodes as expected, 8 known-fault episodes as recorded, 442 count lines of `CASE_RUNS.md`). `python3 tests/run.py`, on the tree of commit `7ba80962` with this section in the working tree: all green over 81 projects, exit 0, the Lean build skipped as that runner does by default. `python3 -m checkers.graph --root .`: OK at 2651 nodes, 2603 events, one warning, the standing one on decision anchors with no node. `python3 -m checkers.workspace_state --check`: valid at 217 claims, 136 rounds and 169 priorities, after `--write-handoff` rewrote two views. A first audit run was stopped by the executor when one instance was added to `LegitimacyStatement.lean`; the run reported is the second, complete one. The jobs that need a pull-request context run in CI on the pushed head.
+- **Components.** Ledger rows 17 to 28 and 54 — **closed**, each on the Lean declarations
+  named in the row, reopened by the ledger's shared event. Row 48 — **closed**, on the
+  runner's check of `account/interpretation/INTERPRETATION.md`; reopened when the runner
+  fails on it. The other 28 rows that are not living notes — **open**. The ledger has
+  fourteen rows **closed**, twenty-eight **open**, sixteen **living notes**.
+
+### AH.6 Filings, names, and what is reserved
+
+`DECISIONS.md`: `2026-11-26--legitimacy-statement-at-the-level-of-its-words` (the
+maintainer's positions) and `2026-11-26--legitimacy-twentieth-followup-readings`
+(agent-decided, reversible); in *Awaiting the author* three entries restated and one added. Items 156 and 157 filed under this dispatch's scope; 150, 152, 153 and 154 restated;
+151 closed. `state/rounds.json`: the round's twentieth-pass verdict. Root, round and Lean
+`PROVENANCE.md`. No registry entry.
+
+**New names, all provisional.** Lean: `LegitimacyStatement`, `Episode` and its nineteen
+fields, `untold`, `NothingUntold`, `NothingBehind`, `CanStop`, `Legit`, `Legit.mono`,
+`legit_of_nothing`, `informed_choice`, `against_le`, `not_legit_of_untold`,
+`not_legit_of_covert`, `not_legit_of_withheld`, `not_legit_of_against`,
+`not_legit_of_unstoppable`, `asked_unconstrained`, `legitScoring` and its two theorems in
+that namespace, `Witness.ep` and the declarations under `Witness` named in AH.4;
+`LegitimacyGate`. Python: the package `interpretation` and its modules `history_model`,
+`episodes_core`, `episodes_views`, `episodes_review12`, `episodes_review13`,
+`episodes_hard_cases`, `known_faults`; `run17`, `posthoc17`. Documents:
+`HARD_CASES.md`, `INTERPRETATION.md`, `TABLE_MODEL_STATEMENT.md`, `BANK_CODING_17.md`.
+Vocabulary: *the interpretation*, *taken as given*, *site*, *covered site*, *comparison
+course*, *reference self*, *known fault*. The registry ids of the patch,
+`legitimacy.statement-*` and `legitimacy.gate-gives-behaviour`. The anchor
+`open--what-makes-a-decision-settled`; items 156 and 157; the verdict kind `follow-up-20`.
+Names gone: `LegitimacyModel.gatedScoring`, `LegitimacyModel.gate_gives_behaviour`,
+`gate_threshold_delta`, `gate_threshold_sharp`, `Witness.gate_instance` under that namespace.
+
+**Outstanding maintainer actions**
+
+1. Rule on the teacher of hard case 19 (`DECISIONS.md`,
+   `open--practice-rules-cover-a-deception`): the statement convicts, or taking part in a
+   practice is asking.
+2. Rule on whether her asking makes a thing not manipulation or manipulation that is
+   permitted (`open--request-licenses-pressure`).
+3. Rule on the two bounds on the authority side
+   (`open--cost-bound-influence-as-price-and-agreed-penalty`).
+4. Give a criterion for a settled decision, or rule that it stays a notion taken as given
+   (`open--what-makes-a-decision-settled`).
+5. Run the outside review of `LegitimacyStatement.lean` (item 153), after item 156's first
+   part.
+6. Apply or decline the registration of thirteen Lean results:
+   `git apply prompts/2026-11-10-legitimacy-definition-prosecution/followup-20-registration.patch`,
+   then `python3 -m checkers.graph --root .` and `python3 -m checkers.workspace_state --check`.
+7. Merge or decline pull request #149. Auto-merge is off.
+
+## Twenty-first follow-up (2026-11-26) — the connecting theorem, and the fifteenth review's corrections
+
+Dispatch: `PROMPT-followup-21.md`, verbatim. One result is put on record: a theorem in Lean
+whose hypotheses are the three sentences of the legitimacy statement read at one decision of
+hers and whose conclusion is two bounds on her failing to stop him
+(`lean/Workspace/Deference/Contrib/LegitimacyStop.lean`; read in
+`account/CONNECTING_THEOREM.md` of the round directory). With it: the Lean statement
+corrected in three definitions after a fifteenth outside review, that review verbatim
+(`REVIEW-astra-followup-21.md`), and the ledger brought to both.
+
+### AI.1 What is on record
+
+- **The theorem.** `StopDecision.stops_if_informed_would` and `stops_if_reference_would`, with
+  five necessity instances, `shortfall_le` for any decision, the two in-fact forms and the two
+  long-run theorems; `Reading` and `legit_protects_stop` with its in-fact form. 50 theorems in
+  the file, each under `#print axioms`, each on `[propext, Classical.choice, Quot.sound]`.
+- **A reading was inhabited.** `Witness.reading : Reading stopEp () stopD (1/10)`, where
+  `stopEp` is the witness of `LegitimacyStatement.lean` with `pNoStop = 1/10` and `stopD` a
+  decision of three cases (weights 9/10, 1/20, 1/20: she stops; she rates stopping higher and
+  does not; his unasked work leads her not to). `Witness.protects_instance` is
+  `legit_protects_stop` applied to it, and `Witness.protects_tight` shows its first bound
+  attained. The reading was written to fit the episode's two weights.
+- **The link to the scoring is a theorem**, a light one. `legit_of_score_nonneg`: a history
+  whose `legitScoring` score is not negative is legitimate, whatever its violation count.
+  `scored_protects_stop`: on such a history both bounds hold at each decision of it with a
+  reading. It is `legit_protects_stop` composed with the contrapositive of the illegitimate
+  range. `Witness.scored_instance` applies it.
+- **The statement corrected.** `NothingUntold` compares `rTold (S ∪ H)` with `rTold H` for
+  untold `S` and offered `H`, with the field `rTold_empty`; `CanStop` covers
+  `doesToHer ∨ newToHer`; `canRefuse` stands where `precededByChoice` stood. The twentieth
+  follow-up's instance theorems are repaired. Two instances added: `Witness.offeredMatters`
+  (legitimate at `θ = 0`, though telling both views together moves a rating by 1) and
+  `Witness.newThing` (not legitimate, sentences 1 and 2 holding). 33 theorems in the file.
+
+### AI.2 The fifteenth review
+
+One reply, to a brief that gave the formal statement and the theorem in mathematical notation
+as they stood before the corrections. *Checked* says how the finding was checked here; none
+was put to the reviewer again.
+
+| # | finding | checked | what was done |
+|---|---|---|---|
+| 1 | Formal sentence 1 convicts an untold view that adds nothing when it is told together with an offered view that matters | In Lean: `Witness.offeredMatters_total` exhibits the set and the change of 1 that the earlier definition bounded by `θ` | `NothingUntold` measures what the untold adds to the offered; `Witness.offeredMatters_legit` |
+| 2 | `pAgainst G` must weigh `G` in its actual circumstances, or an unasked thing that works only with an asked one escapes | By reading: the earlier doc did not say | In the doc of `pAgainst`. No definition changed; ledger row 16 |
+| 3 | "Preceded by a choice" is stronger than a way to stop before the start | By reading the sentence | The field is `canRefuse`, an opportunity |
+| 4 | A stop asked at listed decisions leaves a thing that passes beyond calling off between two of them | By reading | In the doc of `inPlay`: the decisions include every such point. Not enforced; row 29 |
+| 5 | Formal sentence 3 leaves out what is new to her, which the words put under sentences 1 and 3 | By inspection: the earlier `CanStop` quantified over `doesToHer` only, so `Witness.newThing` satisfied it | `newToHer`; `CanStop` over `doesToHer ∨ newToHer`; `Witness.not_legit_newThing` |
+| 6 | "Nothing untold and nothing done to her suffices" needs a qualification about withholding | Against the file: `Episode.legit_of_nothing` assumes he does nothing at all, so no withholding is among his conduct | None. The sentence is the brief's summary, not the theorem |
+| 7 | No given notion lets a bad adviser pass on every faithful reading; the substance sits in `doesToHer`, `asked`, the offer and decline, and `pAgainst` | Not checkable | Recorded, rows 16 and 29 |
+| 8 | Hypothesis 3 as a share of the cases where she prefers stopping differs from the statement's joint weight, and the conclusions need only the plain bound | By arithmetic on the reply's example (1/100 against 1/100, and against 1/10000) and by the proofs, which go through | `WouldStop κ` is the plain bound; `Reading.noStop` likewise; `pNoStop`'s doc |
+| 9 | A reference self that copies her actual change lets him erase `ReferenceWould`; what is needed is a rule admitting only the response she would have judged appropriate | By reading | In the meaning of `ρ` (the header and `CONNECTING_THEOREM.md` §11). `ρ` is supplied; no definition states the rule |
+| 10 | `ReferenceWould` asks every way of stopping to beat every way of going on | By the reply's ratings 2, 1, 0 | Not changed. Stated wherever the result is described |
+| 11 | "Own drift" includes changes he caused, overlaps `Led`, and omits that she does not stop | By inspection of the earlier definition on the reply's two examples | `Parted`, with `¬ Stops` and `¬ Led` added; described as a cover, not a division into causes |
+| 12 | The hypotheses contain the conclusion: the objection succeeds against the result as a guarantee, not as a cover that shows where protection fails | Not checkable; the cover is the proof | Ledger rows 72 and 73 |
+| 13 | The any-decision corollary carries baseline quality over and does not establish it; an informed form and a three-way form need more | By the statement | Recorded, row 65. Neither form was built |
+| 14 | The long-run hypotheses need feedback about the target events; a check-in answer may report a changed state; eventual revelation is not enough; the two directions differ | By reading | Not corrected. Row 71; item 158 |
+| 15 | Sentence 1 does not give `Told` when a relevant view is on offer and nothing is untold | Against the worked file as it stood: its reading took her rating told the untold views only, so `Told` holds there and the reply's instance is one of the brief's description | The first conclusion is worded for what is untold; the misdescription is recorded at the head of the review file |
+| 16 | `led_le` is substantive, and the statement's "rated lower at her last settled decision" is a different yardstick from an updated reference | By the reply's case | The doc of `pAgainst` takes the updated reading; the words are unchanged and the question is queued (`open--sentence-two-yardstick`); `LEGITIMACY_STATEMENT.md` §7; row 59 |
+| 17 | Accepted as a conditional event-decomposition lemma with its averaged form; not accepted as showing that the three sentences protect her ability to stop him | — | Recorded: `CONNECTING_THEOREM.md` §11, the verdict, rows 70 to 74 |
+
+### AI.3 Corrections to the prompt
+
+- §3 C asks that the ledger's rows on whether the conditions are more basic than the
+  conclusion and on triviality be brought to what is now shown. The ledger had no such rows.
+  They are added, rows 72 and 73.
+- §3 C asks that the item that asked for a result using what the statement says be revised or
+  closed. No item of `ATTENTION.md` asks that. Nothing was revised or closed under that
+  description.
+- §3 C says item 153 is delivered by the fifteenth review for the file as it stood. That
+  item's deliverable asks for a brief holding `LegitimacyStatement.lean` and a log line
+  showing what the reviewer read. The fifteenth brief gives the statement in notation, not the
+  file, and no log was among the files handed over. The item is re-asked with the brief
+  required to quote the Lean.
+- §3 C names "both `PROVENANCE.md` files". Three carry rows of this round: the repository's,
+  the round directory's and the Lean directory's. All three have a row.
+- §3 A 2 describes the scoring link for "a history that scores her rating (legitimate, no
+  authority violation)". The theorem's hypothesis is weaker: a score that is not negative,
+  with any violation count.
+
+### AI.4 Deviations from the prompt
+
+- **A.** The theorem and the link are one file. The reading is of `Witness.stopEp`, the
+  witness with `pNoStop = 1/10`, not of the witness as it is: on the witness she rates
+  stopping higher in every case and `pNoStop = 0`, so its only readings have her stop in
+  every case and both conclusions hold of nothing. `Episode` gains the instance argument
+  `[DecidableEq O]`, as in the worked file, for the union of her options with revealed ones.
+  Added beyond what was asked: `StopDecision.close_self`, `UnbiasedAbove.refl`,
+  `Witness.stopScoring`, and instances of the in-fact form, `shortfall_le`, the long-run
+  theorems and the scoring link; in `LegitimacyStatement.lean`, `offeredMatters_untold`,
+  `offeredMatters_total` and `newThing_others` beside the two instances asked for. The two
+  instance terms with a degenerate hypothesis (the in-fact form at `β = 0` with the second
+  weighting his own; the long-run theorems with the facts his own weights) show the packages
+  consistent and exercise nothing of the accuracy hypotheses.
+- **A, definitions changed.** Those of §1 of the dispatch and no other: `NothingUntold`,
+  `CanStop`, `canRefuse` for `precededByChoice`, `rTold_empty` and `newToHer` added. The new
+  `NothingUntold` is neither weaker nor stronger than the one it replaces: it bounds the
+  marginal change where the other bounded the total, and it includes the options a set on
+  offer would show her. `informed_choice`, `not_legit_of_untold` and
+  `not_legit_of_unstoppable` are restated to them.
+- **B.** `CONNECTING_THEOREM.md` has two sections the dispatch does not list: the link to the
+  scoring, and the terms that inhabit each package.
+- **C.** `LEGITIMACY_STATEMENT.md` §3, §4 and §6 are brought to the corrected Lean and §7
+  added; §1 and §2 are untouched. One paragraph of `interpretation/INTERPRETATION.md`, on how
+  the model stands to the statement's notions, is brought to the corrected fields. Three rows
+  are added to §2 of `CURRENT.md`. Ledger rows keep their numbers and new rows take 59 to
+  74, so a row's number is its identifier and not its position. Item 156 gains a third part,
+  a reading derived from a model, in place of a new item. The ranking differs from the
+  maintainer's ordering in one place, stated under it with both. Items 149 and 157 keep their
+  version, their Statement being unchanged. The registration patch is in a commit of its own
+  after the record, being built on the record's tree.
+- **The registration patch** is a new file, `followup-21-registration.patch`, built by a
+  subagent on a clone of commit `5d1700fb`. `followup-20-registration.patch` is withdrawn and
+  left in place as the record of what was prepared; its notes describe definitions that have
+  changed. The new patch, as the subagent reports: 112 files; twenty-four entries in
+  `projects/normativity/CLAIMS.md` with four nodes each, the thirteen ids of the earlier patch
+  with their notes rewritten to the corrected statement and eleven new ones (two instances of
+  the statement, nine results of `LegitimacyStop.lean`); its entries answer items 156
+  (eighteen), 150 (four), 147 (one) and 158 (one), none of which it closes; it writes a
+  `DECISIONS.md` entry headed as the maintainer's act, true only once he applies it. On the
+  clone with it applied: the graph checker OK at 2748 nodes, the state valid at 241 claims,
+  `checkers.run` exit 0 at 136 entries, the attention render equal, dead pointers and the
+  wiki's bindings clean, the site build with nothing unresolved, `checkers/tests` 148 tests
+  passing. `checkers.wiki_links` fails on the clone with and without the patch, a local
+  clone lacking the commits the wiki pins, and was not run on a patched tree where it passes.
+  `git apply --check` passes on this tree. I read nine of the twenty-four notes and the
+  decision entry, not every entry line by line. The notes name `Witness.protects_instance` as
+  inhabiting the two one-decision bounds, which it reaches through `legit_protects_stop`.
+
+### AI.5 What was not shown
+
+- **That the three sentences protect her decision to stop him.** The theorem is conditional
+  on a reading, whose `led_le` and `noStop` assert that his weights in the statement cover
+  the theorem's cases. The one reading on record is written to fit a witness, by the hand
+  that wrote the theorem (rows 70, 72, 73).
+- **Anything in fact.** Every bound is on his weights. `Close` and `UnbiasedAbove` are
+  assumed, about events nothing reveals to him by default (row 71).
+- **Any bound on how often her judgement parts**, or that a `Parted` case is her own doing
+  (row 74).
+- **That the corrected Lean statement says what the sentences say.** No reviewer has seen it.
+  Findings 2, 4 and 9 are answered in a field's meaning, which no definition enforces.
+- **That the words of sentence 2 and the theorem use one yardstick** (row 59).
+- **The review's findings by a second party.** Each was checked by the executor, one in Lean
+  and the rest by reading, arithmetic or inspection of the earlier definitions.
+- **The use of the first halves of sentences 2 and 3.** They enter no proof of the file.
+
+- **Gates.** Under Python 3.13. `LegitimacyStatement.lean` and `LegitimacyStop.lean`
+  typechecked and the second built through `safe-lake.sh` after `resource-guard.sh check`,
+  with no error and no warning in them and no `maxHeartbeats` option; the whole library was
+  not rebuilt with `lake build`. The axiom audit, `python3 tests/audit_axioms.py`, started
+  after the last change to a Lean file: 4515 results across 133 files, all within the three
+  axioms, exit 0. The round's runner, `python3 run.py`: green, exit 0. `python3 tests/run.py`,
+  on the tree of the commit that carries this section without this paragraph: all green over
+  81 projects, exit 0, the Lean build skipped as that runner does by default.
+  `python3 -m checkers.graph --root .`: OK at 2652 nodes, 2603 events, one warning, the
+  standing one on decision anchors with no node. `python3 -m checkers.workspace_state
+  --check`: valid at 217 claims, 136 rounds and 170 priorities. The jobs that need a
+  pull-request context run in CI on the pushed head.
+- **Components.** Ledger rows 60 to 69 — **closed**, each on the Lean declarations named in
+  the row, reopened by the ledger's shared event. Rows 59, 70, 71, 73 and 74 — **open**. Row
+  72 — **living note**. The ledger has twenty-four rows **closed**, thirty-three **open**,
+  seventeen **living notes**.
+
+### AI.6 Filings, names, and what is reserved
+
+`DECISIONS.md`: `2026-11-26--legitimacy-twenty-first-followup-connecting-theorem`
+(agent-decided, reversible); in *Awaiting the author* one entry added,
+`open--sentence-two-yardstick`. Item 158 filed under this dispatch's scope; 149, 150, 153,
+156 and 157 revised through their nodes. `state/rounds.json`: the round's twenty-first-pass
+verdict. Root, round and Lean `PROVENANCE.md`. No registry entry.
+
+**New names, all provisional.** Lean, `LegitimacyStop`: `StopDecision` and its fields, `wt`,
+`wt_nonneg`, `wt_mono`, `wt_le_one`, `wt_or_le`, `wt_false`, `Stops`, `Prefers`,
+`InformedWould`, `ReferenceWould`, `Led`, `Parted`, `Told`, `NotLed`, `WouldStop`,
+`stops_if_informed_would`, `stops_if_reference_would`, `Short`, `Short₀`, `shortfall_le`,
+`wtBy`, `Close`, `close_self`, the two `_in_fact` theorems, `avg`, `avg_le_const`,
+`UnbiasedAbove`, `UnbiasedAbove.refl`, `long_run_const`, `long_run_diff`,
+`long_run_stop_informed`, `long_run_stop_reference`, `Reading` and its fields,
+`Reading.told`, `Reading.notLed`, `Reading.wouldStop`, `legit_protects_stop`,
+`legit_protects_stop_in_fact`, `legit_of_score_nonneg`, `scored_protects_stop`; under
+`Witness`: `W` with its seven lemmas, the five `needs_*`, `stopEp`, `stopEp_legit`, `stopD`
+with its six lemmas, `reading`, `protects_instance`, `protects_tight`,
+`protects_in_fact_instance`, `shortfall_instance`, `long_run_instance`, `stopScoring`,
+`stopScoring_true`, `scored_instance`. Lean, `LegitimacyStatement`: the fields `rTold_empty`,
+`newToHer`, `canRefuse`; `Witness.offeredMatters`, `offeredMatters_untold`,
+`offeredMatters_legit`, `offeredMatters_total`, `newThing`, `newThing_others`,
+`not_legit_newThing`. Documents: `CONNECTING_THEOREM.md`. Vocabulary: *the connecting
+theorem*, *a reading*, *parted*. The registry ids of the patch. The anchor
+`open--sentence-two-yardstick`; item 158; the verdict kind `follow-up-21`. Name gone:
+`Episode.precededByChoice`.
+
+**Outstanding maintainer actions**
+
+1. Rule on which judgement sentence 2 measures against (`DECISIONS.md`,
+   `open--sentence-two-yardstick`): the words change to her judgement brought up to date, or
+   the words stand and the theorem's reference self is her ratings as she settled them.
+2. Run an outside review of `LegitimacyStatement.lean` and `LegitimacyStop.lean` as corrected
+   (item 153), with the brief quoting the Lean.
+3. Apply or decline the registration of the Lean results:
+   `git apply prompts/2026-11-10-legitimacy-definition-prosecution/followup-21-registration.patch`,
+   then `python3 -m checkers.graph --root .` and `python3 -m checkers.workspace_state --check`.
+4. The four entries of *Awaiting the author* listed under the twentieth follow-up stand
+   unanswered: the teacher of case 19, what her asking does, the two bounds on the authority
+   side, and what makes a decision settled.
+5. Merge or decline pull request #149. Auto-merge is off.
+
+## Twenty-second follow-up (2026-11-27) — the statement against plain telling, and the gap between it and the outcome
+
+Dispatch: `PROMPT-followup-22.md`, verbatim. The statement of legitimacy is replaced. On
+record: the statement against plain telling in Lean
+(`lean/Workspace/Deference/Contrib/LegitimacyPlainTelling.lean`), read in
+`account/PLAIN_TELLING_STATEMENT.md` of the round directory; the forms that preceded it and
+what each fell to (`account/PLAIN_TELLING_HISTORY.md`); four outside reviews verbatim
+(`REVIEW-astra-followup-22.md`); three tests under the round's runner
+(`account/PLAIN_TELLING_TESTS.md`); and the ledger brought to all of it. The statement in
+three sentences, its Lean and its documents are marked as superseded.
+
+### AJ.1 What is on record
+
+- **The statement.** `Problem`, the adviser's decision problem as he takes it to be, and
+  `Legit θ τ κ c`: `Open`, `Beliefs` and `Will`, each against every plain telling open to him
+  and up to a weight on his cases. 82 theorems in the file, each under `#print axioms`, each
+  on `[propext, Classical.choice, Quot.sound]`. No definition or statement of the file handed
+  over is changed.
+- **The main result.** `gap`: for two options, nothing declined, an unchanged evaluation and
+  a comparison linear in her views, her view between on every matter and a worse outcome by
+  his views leave four possibilities: a lapse of hers under his conduct, one under the plain
+  telling, a near-even choice, or offsetting mistakes that the plain telling would leave.
+  With `weighing_of_beliefs`, `bridge`, `outcome_of_views`.
+- **Additions asked for.** A.1: `Witness.gap_instance` and `Witness.weighing_instance`
+  inhabit the two hypothesis packages; `Witness.gap_instance_offsetting` shows the
+  conclusion of `gap` on that term is its fourth item. A.2: the scoring is a restatement;
+  `legitScoring` is a definition and no theorem is stated for it. A.3: `Witness.W4`,
+  `w4_legit` and `w4_needs_same_evaluation`: every hypothesis of `gap` but the unchanged
+  evaluation holds, the statement holds at no tolerance, none of the four items holds, and
+  the outcome guarantee fails. A.4: `gap_in_weights`, through `weighing_of_beliefs_tol`:
+  under `Beliefs θ κ c` unasked, his weight on a worse outcome by more than `θ·W + lam` is
+  at most `κ` plus his weight on the four items, `W` bounding the absolute weights of the
+  comparison; inhabited by `Witness.gap_in_weights_instance`.
+- **The tests.** Blind run 18: 4 of 8 predictions failed. Blind run 19, two coders: 1 of 10.
+  The adversarial test: both encodings at the key's verdict and clause on 16 of 16; 1 of 5
+  predictions failed. Six cases from reviews 18 to 20 computed on the present clauses.
+- **The reviews.** Four briefs and replies verbatim, with a table per review of what was
+  checked of each finding and how, and six places where a brief misdescribes what was
+  reviewed.
+
+### AJ.2 Corrections to the prompt
+
+- §2 says each of the three earlier forms kept beside the working file is the one a review
+  saw. `LegitPlain.lean.outcome-in-definition` was read by no review: no brief quotes its
+  definition, and brief 20 describes it as a form held for a few hours and undone. The other
+  two equal the Lean quoted in briefs 19 and 20 (compared by script, setting aside the
+  import, blank lines, `#print axioms` lines and one `open` line).
+- §2 gives 38 audited results. The working file has 38 `#print axioms` lines and 69
+  theorems. The repository file audits all 82 of its theorems.
+- §1 speaks of the fifteenth and sixteenth outside reviews. The sixteenth is not among the
+  inputs of §2 and is not on record in the repository; nothing here rests on it.
+- §3 C lists "no further from his view than plain telling" as one form. Two versions of it
+  were reviewed, by reviews 18 and 19, and each fell to a different case; both are recorded.
+- §3 F names the items "the new statement answers". None is answered outright. Item 155 is
+  answered in part, by the two runs on the 90 published value-change cases, and is narrowed.
+
+### AJ.3 Deviations from the prompt
+
+- **A.** Beyond the four additions: `Witness.w3_legit_and_worse` and
+  `Witness.w2_tips_legit_and_worse`, which show that the two instances of the dispatch
+  satisfy `Legit` at no tolerance while `Outcome` fails (the file handed over showed the
+  parts and not `Legit`); `Witness.wt_unit_of`, a lemma they use. `legitScoring` is added
+  as a definition though the link is a restatement. `#print axioms` is at the end of the
+  file with full names, on every theorem. Fourteen theorems of the file are applied to no
+  term (`Problem.legit_only_telling`, `Problem.LegitW.mono`, the three `not_legit_of_*`,
+  `outcome_of_views`, `Problem.chooses_as_informed`, `Problem.gain_le`,
+  `Course.not_led_astray_of_legit`, `signal_le_of_noSignal`, `under_of_noShift`,
+  `over_of_noShift`, `long_run_informed`, `long_run_not_led_astray`); the dispatch asked for
+  terms for two, and item 160 asks for the rest. The four files of the table model still
+  say at their head that the statement of the line is `LegitimacyStatement.lean`; they were
+  not edited, the dispatch naming two files to mark, and that file's head now points on.
+- **B.** The statement page has a section the dispatch does not list, on what follows from
+  the outcome guarantee and the weighing form.
+- **C.** The history has a first section on where the line left the three sentences and a
+  last on what the reviews reported that was not repaired. One claim in it is by arithmetic
+  and not a Lean theorem, and says so: that the distortion induced openly for her good
+  passed the form with the outcome test inside.
+- **D.** One file. The reviewer's model is recorded as unrecorded: the dispatch names none
+  and no log was kept.
+- **E.** One document for the three tests and two modules. The scorers and the checker are
+  moved into the modules unchanged in substance; what they printed of case texts and coders'
+  notes is not reproduced. `vc2_judges_conduct.json` carries, as a list of ids, which
+  sources judge conduct, computed with the rule of run 19's scorer from a description that
+  stays outside. The complement of that list is labelled "something other than conduct",
+  the working label "the resulting desire" fitting only some of it. Prediction P5 of the
+  adversarial test is computed as: the two encodings of A3 or of A16 differ in verdict or
+  clauses. Added: `adv/review_cases.json`, six models written in this round from the
+  replies, each failing the runner if it does not get the verdict recorded for it.
+- **F.** The ledger is rewritten around the present statement; earlier rows keep their
+  numbers and gain a column. Twenty-eight rows that were open are living notes, their
+  questions not arising under the present statement. The interpretation on histories is
+  recorded as not wanted as it stands and item 157 is closed; this is the round's answer to
+  the question the dispatch's ordering leaves, and is reversible. Status lines are added to
+  `account/CONNECTING_THEOREM.md`, `account/interpretation/INTERPRETATION.md` and
+  `account/HARD_CASES.md`, and one pointer in `account/TABLE_MODEL_STATEMENT.md` is brought
+  to the present statement. The queue gains an entry the dispatch does not ask for, on
+  registration. A workspace friction is filed, F12.
+- **The registration patch** of the twenty-first follow-up is withdrawn and not rebuilt.
+  Twenty-three of its twenty-four entries are of the superseded statement and the items
+  they answer are closed or restated. No registry entry is filed for the new file, where
+  `AGENTS.md` has a round file the entry for a Lean headline in the same pull request: a
+  patch would need an item for its entries to answer, and whether this statement is to be
+  citable before it is written up is queued for the maintainer
+  (`open--register-plain-telling-results`).
+- **Not touched:** the wiki; the claims registries.
+
+### AJ.4 What was not shown
+
+- **What `account/PLAIN_TELLING_STATEMENT.md` §8 lists**: more than two options; a comparison
+  not linear in her views, or a matter declined; conduct that changes how she evaluates;
+  that the list of four is complete outside the setting; the course and long-run results
+  for the statement itself; anything in fact; that `gap_in_weights` is tight; a verdict on
+  a concrete case; that clear telling is available; links between decisions.
+- **That the statement includes non-manipulation**, which the maintainer's rule 3 asks. The
+  sixth structural fact says it is narrower than Noggle's notion in one respect (ledger row
+  95).
+- **The present form to any reviewer.** The four reviews read the forms before it.
+- **The reviews' findings by a second party.** Each was checked by the executor: six by the
+  runner on models the executor wrote, some by a kernel-checked instance, the rest by
+  reading or arithmetic.
+- **Anything about the formal clauses by runs 18 and 19**, which put questions in words.
+- **That the clauses give verdicts on cases as they come.** The adversarial cases say what
+  plain telling would have done and are by the author of the account.
+- **Any coding against a person's reading.**
+- **The tolerance of `gap_in_weights` at work**: its one instance is at `θ = κ = 0`.
+- **That conduct produces the pattern of `Witness.W4`**, or of any instance: they are
+  numerical patterns.
+- **That each form the reviews read typechecked**, which is on the briefs' word.
+
+- **Gates.** Under Python 3.13. `LegitimacyPlainTelling.lean` typechecked with
+  `safe-lake.sh --dir=lean env lean` and built, with `LegitimacyStatement.lean` and
+  `LegitimacyStop.lean`, through `safe-lake.sh` after `resource-guard.sh check`, with no
+  error and no warning in it and no `maxHeartbeats` option; the whole library was not
+  rebuilt with `lake build`. The axiom audit, `python3 tests/audit_axioms.py`, started after
+  the last change to a Lean file: 4597 results across 134 files, all within the three
+  axioms, exit 0. The round's runner, `python3 run.py`: green, exit 0. `python3 tests/run.py`,
+  on the tree of the commit that carries this section without this paragraph: all green over
+  81 projects, exit 0, the Lean build skipped as that runner does by default; it was started
+  after a wait of about forty minutes on `resource-guard.sh`, which reported the machine
+  loaded by system processes. `python3 -m checkers.graph --root .`: OK at 2655 nodes, 2603
+  events, one warning, the standing one on decision anchors with no node.
+  `python3 -m checkers.workspace_state --check`: valid at 217 claims, 136 rounds and 173
+  priorities. The jobs that need a pull-request context run in CI on the pushed head.
+- **Components.** Ledger rows 77 to 87 and 97 to 100 — **closed**, each on the Lean
+  declarations or the runner document named in the row. Rows 76, 89, 92, 94, 95 and 101 —
+  **open**. Rows 75, 88, 90, 91, 93, 96 and 102 — **living note**. The ledger has thirty-nine
+  rows **closed**, eleven **open**, fifty-two **living notes**.
+
+### AJ.5 Filings, names, and what is reserved
+
+`DECISIONS.md`: `2026-11-27--legitimacy-statement-against-plain-telling` (the maintainer's
+rules) and `2026-11-27--legitimacy-twenty-second-followup-plain-telling` (agent-decided,
+reversible); in *Awaiting the author* two entries restated, two removed as lapsed, two
+added. Items 159 and 160 and friction F12 filed under this dispatch's scope; 152, 153, 154,
+156, 157 and 158 closed; 139, 148, 150 and 155 restated; 147 and 149 revised.
+`state/rounds.json`: the round's twenty-second-pass verdict. Root, round and Lean
+`PROVENANCE.md`. No registry entry.
+
+**New names, all provisional.** Lean, `LegitimacyPlainTelling`: `Problem` and its fields,
+`live`, `rate`, `wt`, `Short`, `Regrets`, `Hidden`, `WorseByHim`, `Worse`, `rateAs`,
+`Between`, `Misweighs`, `Open`, `Weighing`, `Will`, `LegitW`, `Outcome`, `ClearAt`,
+`NearEven`, `BetweenViews`, `Mistaken`, `Beliefs`, `Legit`, `Offsetting`, `viewsPart`,
+`evalPart`, `avg`, `NoSignalBeats`, `shifts`, `Course` and its fields, `Course.toProblem`,
+`Off`, `LedAstray`, `sincereWrong`, `legitScoring`, and the theorem names of the file;
+under `Witness`: `W`, `W2`, `W3`, `W4` and the theorems on them. Documents:
+`PLAIN_TELLING_STATEMENT.md`, `PLAIN_TELLING_HISTORY.md`, `PLAIN_TELLING_TESTS.md`,
+`BANK_CODING_18.md`, `BANK_CODING_19.md`. Modules and data: `plain_telling_tests`,
+`plain_telling_adv`, `bank_coded_18.json`, `bank_coded_19_1.json`, `bank_coded_19_2.json`,
+`vc2_coded_18.json`, `vc2_coded_19_1.json`, `vc2_coded_19_2.json`,
+`vc2_judges_conduct.json`, `adv/` and its files. Vocabulary: *plain telling*, *the gap*,
+*offsetting*, *the weighing form*, *the outcome guarantee*, *structural fact*. The anchors
+`open--maintainer-check-of-twenty-codings` and `open--register-plain-telling-results`;
+items 159, 160 and F12; the verdict kind `follow-up-22`. Names gone from the queue:
+`open--what-makes-a-decision-settled`, `open--sentence-two-yardstick`.
+
+**Outstanding maintainer actions**
+
+1. Answer the sheet of twenty cases held outside the repository before seeing the recorded
+   answers (`DECISIONS.md`, `open--maintainer-check-of-twenty-codings`; item 148).
+2. Rule on whether the results of `LegitimacyPlainTelling.lean` are registered before the
+   write-up (`open--register-plain-telling-results`): *register on merge*, an item being
+   filed for the entries to answer, or *leave unregistered*.
+3. Rule on the teacher's put-on enthusiasm (`open--practice-rules-cover-a-deception`): *the
+   statement's verdict stands*, or *taking part in a practice is declining to hear what it
+   conceals*.
+4. Rule on what her asking does (`open--request-licenses-pressure`), and with it how rule 3
+   of 27 November reads where she asked.
+5. The two bounds on the authority side stand unanswered
+   (`open--cost-bound-influence-as-price-and-agreed-penalty`).
+6. Say whether the interpretation on histories is wanted after all; if so, re-open item 157.
+7. Merge or decline pull request #149. Auto-merge is off.
+
 ## Attribution
 
 - Prompt-author model: Claude Fable 5 (Anthropic); dispatched 2026-11-10, kept
@@ -5176,4 +6969,62 @@ The pull request is not auto-merged; the merge is a pull-request fact.
   subagents of the executor on the same model, which also verified the references and
   prepared the patch; external reviewer `gpt-6-astra` through codex-cli 0.153.4, as its log
   reports, in one run, reply kept verbatim as `REVIEW-astra-followup-14.md`.
+- Fifteenth follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-21,
+  kept verbatim as `PROMPT-followup-15.md`; executor model Claude Fable 5.2 (Anthropic), executed
+  2026-11-21. The note, scripts, formulations and case runs it records were produced between
+  2026-11-18 and 2026-11-21 by a Claude Fable 5.2 (Anthropic) session with the maintainer,
+  on that session's word in the dispatch; the readers that coded the cases were Claude
+  instances it ran, model version unrecorded; external model `gpt-6-astra` through codex-cli,
+  version unrecorded, in five runs, briefs and replies kept verbatim as
+  `REVIEW-astra-followup-15.md`.
+- Sixteenth follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-24,
+  kept verbatim as `PROMPT-followup-16.md`; executor model Claude Fable 5.2 (Anthropic), executed
+  2026-11-24, with one subagent on the same model that prepared the registration patch. The
+  statement, the Lean model, the check scripts, the coding sheets and the scorers it records
+  were produced between 2026-11-22 and 2026-11-24 by a Claude Fable 5.2 (Anthropic) session
+  with the maintainer, on that session's word in the dispatch; the coders were language
+  models it ran, model version unrecorded; the outside reviewer is the model of the earlier
+  reviews of this round, named `gpt-6-astra` there, client version and logs not among the
+  files handed over, in nine runs, briefs and replies kept as `REVIEW-astra-followup-16.md`.
+- Seventeenth follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-24,
+  kept verbatim as `PROMPT-followup-17.md`; executor model Claude Fable 5.2 (Anthropic), executed
+  2026-11-24, with no subagent and no outside review.
+- Eighteenth follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-24,
+  kept verbatim as `PROMPT-followup-18.md`; executor model Claude Fable 5.2 (Anthropic), executed
+  2026-11-24; the two second codings by two subagents of the executor, each requested through
+  the harness as `opus` and each reporting its model as `claude-opus-5-5`; no outside review.
+- Nineteenth follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-24,
+  kept verbatim as `PROMPT-followup-19.md`; executor model Claude Fable 5.2 (Anthropic), executed
+  2026-11-24, with one subagent on the same model that rebuilt the registration patch; no
+  outside review.
+- Twentieth follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-26,
+  kept verbatim as `PROMPT-followup-20.md`; executor model Claude Fable 5.2 (Anthropic), executed
+  2026-11-26, with three subagents on the same model: two that checked the findings of the tenth
+  and eleventh reviews by hand, and one that built the registration patch on a clone. The
+  restated statement, the Lean statement, the history model and its episodes, the hard cases
+  with the four rules' verdicts, sheet 17 and its scorers were produced between 2026-11-24 and
+  2026-11-26 by a Claude Fable 5.2 (Anthropic) session with the maintainer, on that session's
+  word in the dispatch; the coder of sheet 17 was a language model it ran, model unrecorded; the
+  outside reviewer is the model of the earlier reviews of this round, named `gpt-6-astra` there,
+  client version and logs not among the files handed over, in five runs, briefs and replies kept
+  as `REVIEW-astra-followup-20.md`.
+- Twenty-first follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-26,
+  kept verbatim as `PROMPT-followup-21.md`; executor model Claude Fable 5.2 (Anthropic), executed
+  2026-11-26, with one subagent on the same model, reporting itself as `claude-fable-5-2`, that
+  built the registration patch on a clone. The theorem, its hypotheses, the corrections to the
+  Lean statement and the page the result in words restates were produced on 2026-11-26 by a
+  Claude Fable 5.2 (Anthropic) session with the maintainer, on that session's word in the
+  dispatch; the outside reviewer is the model of the earlier reviews of this round, named
+  `gpt-6-astra` there, client version and log not among the files handed over, in one run,
+  brief and reply kept as `REVIEW-astra-followup-21.md`.
+- Twenty-second follow-up: prompt-author model Claude Fable 5.2 (Anthropic), dispatched 2026-11-27,
+  kept verbatim as `PROMPT-followup-22.md`; executor model Claude Fable 5.2 (Anthropic), executed
+  2026-11-27, with no subagent. The statement, the Lean file but for the executor's additions,
+  the four briefs, coding sheets 18 and 19 with their scorers, the adversarial cases with their
+  key and checker, and the page the history is rewritten from were produced on 2026-11-26 and
+  2026-11-27 by a Claude Fable 5.2 (Anthropic) session with the maintainer, on that session's
+  word in the dispatch; the coders and encoders were language models it ran (Claude Opus and
+  Claude Sonnet, versions unrecorded); the outside reviewer's model is unrecorded, the dispatch
+  naming none and no log being kept, in four runs, briefs and replies kept as
+  `REVIEW-astra-followup-22.md`.
 - No chat bundle.

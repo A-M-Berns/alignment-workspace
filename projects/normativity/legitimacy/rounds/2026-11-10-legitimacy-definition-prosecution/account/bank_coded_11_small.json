@@ -1,0 +1,1099 @@
+[
+ {
+  "id": "I-A1",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "belief",
+    "told": "no"
+   },
+   {
+    "kind": "reliance_on_A",
+    "told": "no"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-A2",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-A3",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "belief",
+    "told": "no"
+   },
+   {
+    "kind": "reliance_on_A",
+    "told": "no"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-A4",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-A5",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-A6",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "belief",
+    "told": "no"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-A7",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "belief",
+    "told": "no"
+   },
+   {
+    "kind": "reliance_on_A",
+    "told": "no"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-A8",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "belief",
+    "told": "yes"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-A9",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "yes",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-A10",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "yes",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-A11",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "belief",
+    "told": "no"
+   },
+   {
+    "kind": "reliance_on_A",
+    "told": "no"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-A12",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "belief",
+    "told": "no"
+   },
+   {
+    "kind": "reliance_on_A",
+    "told": "no"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-L1",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "reliance_on_A",
+    "told": "no"
+   },
+   {
+    "kind": "belief",
+    "told": "no"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-L2",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "belief",
+    "told": "no"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-L3",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "belief",
+    "told": "no"
+   },
+   {
+    "kind": "feeling_or_weight",
+    "told": "no"
+   },
+   {
+    "kind": "reliance_on_A",
+    "told": "no"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-L4",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "yes",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-L5",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "yes",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-L6",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-L7",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-L8",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-L9",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "no",
+  "value_change_expected": "yes",
+  "value_change_known": "no"
+ },
+ {
+  "id": "I-L10",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "belief",
+    "told": "no"
+   },
+   {
+    "kind": "feeling_or_weight",
+    "told": "no"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-L11",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "belief",
+    "told": "no"
+   },
+   {
+    "kind": "attention",
+    "told": "no"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-L12",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "belief",
+    "told": "no"
+   },
+   {
+    "kind": "reliance_on_A",
+    "told": "no"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-B1",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "belief",
+    "told": "no"
+   },
+   {
+    "kind": "belief",
+    "told": "no"
+   },
+   {
+    "kind": "reliance_on_A",
+    "told": "no"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-B2",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "belief",
+    "told": "no"
+   },
+   {
+    "kind": "feeling_or_weight",
+    "told": "no"
+   },
+   {
+    "kind": "reliance_on_A",
+    "told": "no"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-B3",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "belief",
+    "told": "no"
+   },
+   {
+    "kind": "reliance_on_A",
+    "told": "no"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-B4",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "feeling_or_weight",
+    "told": "no"
+   }
+  ],
+  "lapse_expected": "unclear",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-B5",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "yes",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-B6",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "belief",
+    "told": "no"
+   },
+   {
+    "kind": "reliance_on_A",
+    "told": "no"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-B7",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-B8",
+  "has_influencer": "yes",
+  "seeks_response": "no",
+  "mistakes": [],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-B9",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "belief",
+    "told": "no"
+   },
+   {
+    "kind": "reliance_on_A",
+    "told": "no"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-B10",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "feeling_or_weight",
+    "told": "no"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-B11",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "belief",
+    "told": "no"
+   },
+   {
+    "kind": "reliance_on_A",
+    "told": "no"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-B12",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "yes",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-B13",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "belief",
+    "told": "yes"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-B14",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "yes",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-B15",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "belief",
+    "told": "yes"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "I-B16",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "belief",
+    "told": "yes"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "E-C1",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "no",
+  "value_change_expected": "unclear",
+  "value_change_known": "na"
+ },
+ {
+  "id": "E-C2",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "unclear",
+  "value_change_expected": "yes",
+  "value_change_known": "unclear"
+ },
+ {
+  "id": "E-C3",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "unclear",
+  "value_change_expected": "unclear",
+  "value_change_known": "na"
+ },
+ {
+  "id": "E-C4",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "unclear",
+  "value_change_expected": "yes",
+  "value_change_known": "unclear"
+ },
+ {
+  "id": "E-C5",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "no",
+  "value_change_expected": "yes",
+  "value_change_known": "yes"
+ },
+ {
+  "id": "E-C6",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "unclear",
+  "value_change_expected": "yes",
+  "value_change_known": "unclear"
+ },
+ {
+  "id": "E-C7",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "unclear",
+  "value_change_known": "na"
+ },
+ {
+  "id": "E-C8",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "belief",
+    "told": "no"
+   }
+  ],
+  "lapse_expected": "unclear",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "E-C9",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "no",
+  "value_change_expected": "unclear",
+  "value_change_known": "na"
+ },
+ {
+  "id": "E-C11",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "unclear",
+  "value_change_expected": "yes",
+  "value_change_known": "unclear"
+ },
+ {
+  "id": "E-C12",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "no",
+  "value_change_expected": "yes",
+  "value_change_known": "yes"
+ },
+ {
+  "id": "E-C13",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "no",
+  "value_change_expected": "unclear",
+  "value_change_known": "na"
+ },
+ {
+  "id": "E-C14",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "unclear",
+  "value_change_known": "na"
+ },
+ {
+  "id": "E-C15",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "unclear",
+  "value_change_expected": "unclear",
+  "value_change_known": "na"
+ },
+ {
+  "id": "E-C16",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "unclear",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "E-C17",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "feeling_or_weight",
+    "told": "no"
+   }
+  ],
+  "lapse_expected": "unclear",
+  "value_change_expected": "yes",
+  "value_change_known": "no"
+ },
+ {
+  "id": "E-C18",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "E-C19",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "yes",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "E-C20",
+  "has_influencer": "yes",
+  "seeks_response": "no",
+  "mistakes": [],
+  "lapse_expected": "no",
+  "value_change_expected": "unclear",
+  "value_change_known": "na"
+ },
+ {
+  "id": "E-C21",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "unclear",
+  "value_change_expected": "unclear",
+  "value_change_known": "na"
+ },
+ {
+  "id": "E-C22",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "no",
+  "value_change_expected": "yes",
+  "value_change_known": "unclear"
+ },
+ {
+  "id": "E-C23",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "unclear",
+  "value_change_expected": "yes",
+  "value_change_known": "unclear"
+ },
+ {
+  "id": "E-C24",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "unclear",
+  "value_change_expected": "yes",
+  "value_change_known": "unclear"
+ },
+ {
+  "id": "E-C25",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "unclear",
+  "value_change_expected": "yes",
+  "value_change_known": "unclear"
+ },
+ {
+  "id": "E-C26",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "unclear",
+  "value_change_expected": "yes",
+  "value_change_known": "unclear"
+ },
+ {
+  "id": "E-C27",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "no",
+  "value_change_expected": "yes",
+  "value_change_known": "yes"
+ },
+ {
+  "id": "E-C28",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "unclear",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "E-C29",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "unclear",
+  "value_change_expected": "yes",
+  "value_change_known": "no"
+ },
+ {
+  "id": "E-C30",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "no",
+  "value_change_expected": "unclear",
+  "value_change_known": "na"
+ },
+ {
+  "id": "E-C31",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "no",
+  "value_change_expected": "yes",
+  "value_change_known": "yes"
+ },
+ {
+  "id": "E-C32",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "unclear",
+  "value_change_known": "na"
+ },
+ {
+  "id": "E-C33",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "unclear",
+  "value_change_expected": "unclear",
+  "value_change_known": "na"
+ },
+ {
+  "id": "E-C34",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "yes",
+  "value_change_expected": "unclear",
+  "value_change_known": "na"
+ },
+ {
+  "id": "E-C35",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "belief",
+    "told": "no"
+   }
+  ],
+  "lapse_expected": "unclear",
+  "value_change_expected": "unclear",
+  "value_change_known": "na"
+ },
+ {
+  "id": "E-C36",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "unclear",
+  "value_change_expected": "yes",
+  "value_change_known": "unclear"
+ },
+ {
+  "id": "E-C37",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "unclear",
+  "value_change_expected": "yes",
+  "value_change_known": "unclear"
+ },
+ {
+  "id": "E-C38",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "reliance_on_A",
+    "told": "no"
+   }
+  ],
+  "lapse_expected": "no",
+  "value_change_expected": "unclear",
+  "value_change_known": "na"
+ },
+ {
+  "id": "E-C39",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "unclear",
+  "value_change_expected": "yes",
+  "value_change_known": "unclear"
+ },
+ {
+  "id": "E-C40",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "no",
+  "value_change_expected": "unclear",
+  "value_change_known": "na"
+ },
+ {
+  "id": "E-C41",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "no",
+  "value_change_expected": "unclear",
+  "value_change_known": "na"
+ },
+ {
+  "id": "E-C42",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [
+   {
+    "kind": "unclear",
+    "told": "unclear"
+   }
+  ],
+  "lapse_expected": "unclear",
+  "value_change_expected": "yes",
+  "value_change_known": "yes"
+ },
+ {
+  "id": "E-C43",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "no",
+  "value_change_expected": "no",
+  "value_change_known": "na"
+ },
+ {
+  "id": "E-C44",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "no",
+  "value_change_expected": "yes",
+  "value_change_known": "unclear"
+ },
+ {
+  "id": "E-C45",
+  "has_influencer": "yes",
+  "seeks_response": "yes",
+  "mistakes": [],
+  "lapse_expected": "no",
+  "value_change_expected": "yes",
+  "value_change_known": "yes"
+ }
+]
