@@ -6831,6 +6831,20 @@ three sentences, its Lean and its documents are marked as superseded.
   numerical patterns.
 - **That each form the reviews read typechecked**, which is on the briefs' word.
 
+- **Gates.** Under Python 3.13. `LegitimacyPlainTelling.lean` typechecked with
+  `safe-lake.sh --dir=lean env lean` and built, with `LegitimacyStatement.lean` and
+  `LegitimacyStop.lean`, through `safe-lake.sh` after `resource-guard.sh check`, with no
+  error and no warning in it and no `maxHeartbeats` option; the whole library was not
+  rebuilt with `lake build`. The axiom audit, `python3 tests/audit_axioms.py`, started after
+  the last change to a Lean file: 4597 results across 134 files, all within the three
+  axioms, exit 0. The round's runner, `python3 run.py`: green, exit 0. `python3 tests/run.py`,
+  on the tree of the commit that carries this section without this paragraph: all green over
+  81 projects, exit 0, the Lean build skipped as that runner does by default; it was started
+  after a wait of about forty minutes on `resource-guard.sh`, which reported the machine
+  loaded by system processes. `python3 -m checkers.graph --root .`: OK at 2655 nodes, 2603
+  events, one warning, the standing one on decision anchors with no node.
+  `python3 -m checkers.workspace_state --check`: valid at 217 claims, 136 rounds and 173
+  priorities. The jobs that need a pull-request context run in CI on the pushed head.
 - **Components.** Ledger rows 77 to 87 and 97 to 100 — **closed**, each on the Lean
   declarations or the runner document named in the row. Rows 76, 89, 92, 94, 95 and 101 —
   **open**. Rows 75, 88, 90, 91, 93, 96 and 102 — **living note**. The ledger has thirty-nine
