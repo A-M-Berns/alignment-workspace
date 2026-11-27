@@ -1,5 +1,7 @@
 # Legitimacy: the statement in three sentences
 
+> **Superseded.** This document states legitimacy in three sentences over notions taken as given, as recorded by the twentieth and twenty-first follow-ups (2026-11-26). It is not the governing statement. What governs now is `PLAIN_TELLING_STATEMENT.md`: his conduct leaves her with no mistake, by his lights, that plainly telling her would not have left. The three sentences rest on what she, at her last settled decision, would have judged that seeing and hearing a thing should move her, which no episode supplies; `PLAIN_TELLING_HISTORY.md` §1 says how the line left them. The Lean of this document (`LegitimacyStatement.lean`, `LegitimacyStop.lean`) is marked at its head and its theorems hold of its definitions.
+
 An adviser (he) and a principal (she). The statement is three sentences (§1) with what is
 understood with them (§2), and a formal statement of the same length (§3) over the notions
 the sentences use: what he has told her, has on offer, or she has declined; what he does to
